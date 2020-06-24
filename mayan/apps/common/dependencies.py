@@ -357,7 +357,7 @@ PythonDependency(
 
 PythonDependency(
     environment=environment_documentation, module=__name__, name='Sphinx',
-    version_string='==2.4.4'
+    version_string='==3.0.3'
 )
 PythonDependency(
     environment=environment_documentation, module=__name__,
@@ -384,8 +384,6 @@ PythonDependency(
     name='sphinxcontrib-spelling',
     version_string='==4.3.0'
 )
-# sphinx-autobuild has a dependency on Tornado,
-# but Tornado 6.0 dropped support for Python 2.7
 PythonDependency(
     environment=environment_documentation, module=__name__, name='tornado',
     version_string='==6.0.4'

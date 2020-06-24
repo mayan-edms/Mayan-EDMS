@@ -9,6 +9,9 @@
 - Minor fixes to the optional services in the default Docker compose file.
 - Add support for selecting texts in cards.
 - Allow passing environment entries to the Tesseract OCR backend.
+- Update Sphinx from version 2.4.4 to version 3.0.3 and django-cors-headers
+  from version 2.5.2 to version 3.2.1. Closes GitLab issue #835. Thanks to
+  Girum Bizuayehu (@gbizuayehu) for the report.
 
 3.4.9 (2020-05-26)
 ==================
