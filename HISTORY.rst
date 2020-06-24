@@ -15,6 +15,9 @@
 - Allow using non unique GID and UID when starting the Docker image.
   Closes GitLab issue #834. Thanks to Alexander Schlüter (@alexschlueter)
   for the report and solution.
+- Fix the storage name used in the DOCUMENTS_CACHE_MAXIMUM_SIZE callback
+  function. Closes GitLab issue #838. Thanks to forum user @Obelix1981
+  for the report and debug information.
 
 3.4.9 (2020-05-26)
 ==================
