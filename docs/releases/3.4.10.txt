@@ -1,11 +1,69 @@
 Version 3.4.10
 ==============
 
-Released: June XX, 2020
-
+Released: June 24, 2020
 
 Changes
 -------
+
+Docker
+^^^^^^
+
+The Docker image now allows using UID and GID that already exists.
+Errors setting the UID and/or GID are not longer silenced.
+
+The optional services in the default Docker compose file were fixed to match
+the expected name.
+
+
+Dependencies
+^^^^^^^^^^^^
+
+A few dependencies were updated:
+
+- Sphinx from version 2.4.4 to version 3.0.3
+- django-cors-headers from version 2.5.2 to version 3.2.1
+- Django from version 2.2.12 to version 2.2.13.
+
+Although the Python graphviz package does not allow passing the full path
+to the dot binary used to generate the preview of the workflows, the binary
+is now tracked as dependency to allow users to detect if it is missing.
+
+
+File caching
+^^^^^^^^^^^^
+
+An issue with the DOCUMENTS_CACHE_MAXIMUM_SIZE setting callback was fixed.
+It is now possible to change this setting from the user interface.
+
+
+Indexing
+^^^^^^^^
+
+Some index columns that were appearing repeated were fixed.
+
+
+OCR
+^^^
+
+Support was added to passing environment entries to the Tesseract OCR backend
+to modify its behavior.
+
+
+User interface
+^^^^^^^^^^^^^^
+
+The drop-down widgets will now switch vertical direction if there is not enough
+space for them to open in their normal downward mode.
+
+Support was added for selecting texts in the document cards.
+
+
+Workflows
+^^^^^^^^^
+
+The help text for the workflow state action and transition condition field
+was rephrased for clarity.
 
 
 Removals
