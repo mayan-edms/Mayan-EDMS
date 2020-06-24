@@ -12,6 +12,9 @@
 - Update Sphinx from version 2.4.4 to version 3.0.3 and django-cors-headers
   from version 2.5.2 to version 3.2.1. Closes GitLab issue #835. Thanks to
   Girum Bizuayehu (@gbizuayehu) for the report.
+- Allow using non unique GID and UID when starting the Docker image.
+  Closes GitLab issue #834. Thanks to Alexander Schlüter (@alexschlueter)
+  for the report and solution.
 
 3.4.9 (2020-05-26)
 ==================

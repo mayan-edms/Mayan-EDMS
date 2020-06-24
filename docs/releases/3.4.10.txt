@@ -197,6 +197,8 @@ Issues closed
 -------------
 
 - :gitlab-issue:`830` 3.4.9: Tumbnail displaymode, actions dissapear under the window when to low
+- :gitlab-issue:`834` Docker entrypoint.sh fails if UID already exists
+- :gitlab-issue:`835` Upgrade some libraries for docker-compose pass safety check
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
 
