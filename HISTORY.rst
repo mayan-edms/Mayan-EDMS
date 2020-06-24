@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-3.4.10 (2020-06-XX)
+3.4.10 (2020-06-24)
 ===================
 - Fix repeated columns in the document index node list view.
 - Rephrase the help text for the workflow state action and transition
@@ -21,6 +20,7 @@
 - Add a dependency tracking for the graphviz dot executable used to generate
   workflow previews. It is not possible to pass a path to the graphviz Python
   library therefore this setting is only informational.
+- Update Django from version 2.2.12 to version 2.2.13.
 
 3.4.9 (2020-05-26)
 ==================
