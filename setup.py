@@ -56,7 +56,7 @@ def find_packages(directory):
     return packages
 
 install_requires = """
-django==2.2.12
+django==2.2.13
 Pillow==7.1.2
 PyPDF2==1.26.0
 PyYAML==5.3.1
@@ -64,7 +64,7 @@ celery==4.3.0
 django-activity-stream==0.8.0
 django-celery-beat==2.0.0
 django-colorful==1.3
-django-cors-headers==2.5.2
+django-cors-headers==3.2.1
 django-formtools==2.2
 django-mathfilters==1.0.0
 django-model-utils==4.0.0
