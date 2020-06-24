@@ -1,4 +1,4 @@
-|pypi| |python| |license| |docker_pulls| |docker_stars| |commit_activity| |support| |donation|
+|pypi| |python| |license| |docker_pulls| |docker_stars| |commit_activity| |support| |store| |donation|
 
 
 .. image:: https://gitlab.com/mayan-edms/mayan-edms/raw/master/docs/_static/mayan_logo.png
