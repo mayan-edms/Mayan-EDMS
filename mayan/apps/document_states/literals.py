@@ -1,5 +1,6 @@
 from django.utils.translation import ugettext_lazy as _
 
+DEFAULT_GRAPHVIZ_DOT_PATH = '/usr/bin/dot'
 DEFAULT_WORKFLOW_IMAGE_CACHE_MAXIMUM_SIZE = 50 * 2 ** 20  # 50 Megabytes
 
 FIELD_TYPE_CHOICE_CHAR = 1

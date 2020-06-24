@@ -18,6 +18,9 @@
 - Fix the storage name used in the DOCUMENTS_CACHE_MAXIMUM_SIZE callback
   function. Closes GitLab issue #838. Thanks to forum user @Obelix1981
   for the report and debug information.
+- Add a dependency tracking for the graphviz dot executable used to generate
+  workflow previews. It is not possible to pass a path to the graphviz Python
+  library therefore this setting is only informational.
 
 3.4.9 (2020-05-26)
 ==================
