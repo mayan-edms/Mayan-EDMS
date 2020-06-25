@@ -65,7 +65,6 @@
   This backend will be the default one in a future release.
 - Improve and unify the way icon shadows is produced. Removed the
   ``shadow_class`` and ``shadow_class_transformation_list`` arguments.
-- Add support for selecting texts in cards.
 - Improve and simplify the logging system. It is now possible to change
   the level of the logging. The settings have been renamed for clarity
   and uniformity.
