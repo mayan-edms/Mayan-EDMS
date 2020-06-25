@@ -7,9 +7,7 @@
     - coverage from 5.0.4 to 5.1
     - coveralls from 1.11.1 to 2.0.0
     - drf-yasg from 1.6.0 to 1.17.1
-    - django from 2.2.12 to 2.2.13
     - djangorestframework from 3.7.7 to 3.11.0
-    - django-cors-headers from 2.5.2 to 3.2.1
     - django-extensions from 2.2.8 to 2.2.9
     - django-rosetta from 0.9.3 to 0.9.4
     - flake8 from 3.7.9 to 3.8.3
@@ -18,10 +16,8 @@
     - graphviz from 0.13.2 to 0.14
     - ipython from 7.13.0 to 7.15.0
     - kombu from 4.6.7 to 4.6.8
-    - pyocr from 0.6 to 0.7.2
     - python_gnupg from 0.4.5 to 0.4.6
     - pytz from 2019.1 to 2020.1
-    - Sphinx from 2.4.4 to 3.0.3
     - safety from 1.8.7 to 1.9.0
     - select2 from 4.0.3 to 4.0.13
     - sh from 1.12.14 to 1.13.1
@@ -136,6 +132,34 @@
 - Allow passing environment entries to the Tesseract OCR backend.
 - Improve main menu styling and JavaScript code. Improve hover highlighting
   and maximize space.
+
+3.4.11 (2020-XX-XX)
+===================
+- Don't asume local filesystem when testing the mirroring app.
+
+3.4.10 (2020-06-24)
+===================
+- Fix repeated columns in the document index node list view.
+- Rephrase the help text for the workflow state action and transition
+  condition field.
+- Switch direction of dropdowns when there is not enough area left at the
+  bottom. Close GitLab issue #830. Thanks to Bw (@bwakkie) for the report.
+- Minor fixes to the optional services in the default Docker compose file.
+- Add support for selecting texts in cards.
+- Allow passing environment entries to the Tesseract OCR backend.
+- Update Sphinx from version 2.4.4 to version 3.0.3 and django-cors-headers
+  from version 2.5.2 to version 3.2.1. Closes GitLab issue #835. Thanks to
+  Girum Bizuayehu (@gbizuayehu) for the report.
+- Allow using non unique GID and UID when starting the Docker image.
+  Closes GitLab issue #834. Thanks to Alexander Schlüter (@alexschlueter)
+  for the report and solution.
+- Fix the storage name used in the DOCUMENTS_CACHE_MAXIMUM_SIZE callback
+  function. Closes GitLab issue #838. Thanks to forum user @Obelix1981
+  for the report and debug information.
+- Add a dependency tracking for the graphviz dot executable used to generate
+  workflow previews. It is not possible to pass a path to the graphviz Python
+  library therefore this setting is only informational.
+- Update Django from version 2.2.12 to version 2.2.13.
 
 3.4.9 (2020-05-26)
 ==================

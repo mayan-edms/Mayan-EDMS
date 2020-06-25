@@ -119,8 +119,8 @@ pip_installs() {
 
 update_uid_gid() {
     echo "mayan: update_uid_gid()"
-    groupmod mayan -g ${MAYAN_USER_GID} 2>/dev/null || true
-    usermod mayan -u ${MAYAN_USER_UID} -g ${MAYAN_USER_GID} 2>/dev/null
+    groupmod mayan -o -g ${MAYAN_USER_GID}
+    usermod mayan -o -u ${MAYAN_USER_UID}
 
     if [ ${MAYAN_USER_UID} -ne ${DEFAULT_USER_UID} ] || [ ${MAYAN_USER_GID} -ne ${DEFAULT_USER_GID} ]; then
         echo "mayan: Updating file ownership. This might take a while if there are many documents."

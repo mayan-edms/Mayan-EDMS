@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:21-0400\n"
-"PO-Revision-Date: 2020-03-28 07:23+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-06-22 23:19-0400\n"
+"PO-Revision-Date: 2020-06-16 09:55+0000\n"
+"Last-Translator: Thanh Long Hoàng <hoangthanhlong@gmail.com>\n"
 "Language-Team: Vietnamese (http://www.transifex.com/rosarior/mayan-edms/language/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -35,11 +35,11 @@ msgstr ""
 
 #: apps.py:103 forms.py:74
 msgid "None"
-msgstr ""
+msgstr "None"
 
 #: apps.py:106
 msgid "Type"
-msgstr ""
+msgstr "Kiểu"
 
 #: forms.py:17 forms.py:31 workflow_actions.py:19
 msgid "Key"
@@ -113,7 +113,7 @@ msgstr ""
 
 #: links.py:43
 msgid "Delete"
-msgstr ""
+msgstr "Xóa"
 
 #: links.py:50
 msgid "Sign detached"
@@ -121,11 +121,11 @@ msgstr ""
 
 #: links.py:57
 msgid "Details"
-msgstr ""
+msgstr "Chi tiết"
 
 #: links.py:64
 msgid "Download"
-msgstr ""
+msgstr "Tải xuống"
 
 #: links.py:70
 msgid "Sign embedded"
@@ -137,7 +137,7 @@ msgstr ""
 
 #: models.py:39
 msgid "Document version"
-msgstr ""
+msgstr "Phiên bản của tài liệu"
 
 #: models.py:43
 msgid "Date signed"

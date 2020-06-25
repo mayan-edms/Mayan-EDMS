@@ -5,11 +5,20 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.smart_settings.classes import SettingNamespace
 
-from .literals import DEFAULT_WORKFLOW_IMAGE_CACHE_MAXIMUM_SIZE
+from .literals import (
+    DEFAULT_GRAPHVIZ_DOT_PATH, DEFAULT_WORKFLOW_IMAGE_CACHE_MAXIMUM_SIZE
+)
 from .setting_callbacks import callback_update_workflow_image_cache_size
 
 namespace = SettingNamespace(label=_('Workflows'), name='document_states')
 
+setting_graphviz_dot_path = namespace.add_setting(
+    global_name='WORKFLOWS_GRAPHVIZ_DOT_PATH', default=DEFAULT_GRAPHVIZ_DOT_PATH,
+    help_text=_(
+        'File path to the graphviz dot program used to generate workflow previews.'
+    ),
+    is_path=True
+)
 setting_workflow_image_cache_maximum_size = namespace.add_setting(
     global_name='WORKFLOWS_IMAGE_CACHE_MAXIMUM_SIZE',
     default=DEFAULT_WORKFLOW_IMAGE_CACHE_MAXIMUM_SIZE,

@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Thanh Long Hoàng <hoangthanhlong@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:23-0400\n"
-"PO-Revision-Date: 2020-05-25 06:18+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-06-22 23:20-0400\n"
+"PO-Revision-Date: 2020-06-16 09:55+0000\n"
+"Last-Translator: Thanh Long Hoàng <hoangthanhlong@gmail.com>\n"
 "Language-Team: Vietnamese (http://www.transifex.com/rosarior/mayan-edms/language/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -35,7 +36,7 @@ msgstr ""
 
 #: apps.py:76
 msgid "Type"
-msgstr ""
+msgstr "Kiểu"
 
 #: apps.py:87
 msgid "Created"
@@ -43,7 +44,7 @@ msgstr ""
 
 #: apps.py:93
 msgid "Thumbnail"
-msgstr ""
+msgstr "Hình xem trước"
 
 #: apps.py:101 models/base.py:248
 msgid "Date time"
@@ -65,7 +66,7 @@ msgstr ""
 
 #: forms.py:26
 msgid "Comment"
-msgstr ""
+msgstr "Ghi chú"
 
 #: forms.py:40 serializers.py:21
 msgid "Expand compressed files"
@@ -81,11 +82,11 @@ msgstr ""
 
 #: forms.py:67 forms.py:72
 msgid "File"
-msgstr ""
+msgstr "Tệp tin"
 
 #: handlers.py:25
 msgid "Default"
-msgstr ""
+msgstr "Mặc định"
 
 #: links.py:51
 msgid "New document"
@@ -117,11 +118,11 @@ msgstr ""
 
 #: links.py:99 links.py:116
 msgid "Delete"
-msgstr ""
+msgstr "Xóa"
 
 #: links.py:104
 msgid "Edit"
-msgstr ""
+msgstr "Sửa"
 
 #: links.py:109
 msgid "Document sources"
@@ -209,11 +210,11 @@ msgstr ""
 
 #: models/base.py:29
 msgid "Label"
-msgstr ""
+msgstr "Nhãn"
 
 #: models/base.py:31
 msgid "Enabled"
-msgstr ""
+msgstr "Đã kích hoạt"
 
 #: models/base.py:37 models/base.py:245
 msgid "Source"
@@ -245,7 +246,7 @@ msgstr ""
 
 #: models/base.py:180 serializers.py:17
 msgid "Document type"
-msgstr ""
+msgstr "Loại tài liệu"
 
 #: models/base.py:184
 msgid "Whether to expand or not, compressed archives."
@@ -781,7 +782,7 @@ msgstr ""
 
 #: views.py:672
 msgid "Submit"
-msgstr ""
+msgstr "Gửi"
 
 #: wizards.py:95
 msgid "Select document type"

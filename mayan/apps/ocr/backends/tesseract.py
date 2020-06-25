@@ -54,7 +54,6 @@ class Tesseract(OCRBackendBase):
                 keyword_arguments['_env'] = environment
 
                 try:
-
                     result = self.command_tesseract(
                         *arguments, **keyword_arguments
                     )

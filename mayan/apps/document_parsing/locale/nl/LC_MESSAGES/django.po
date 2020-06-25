@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:21-0400\n"
+"POT-Creation-Date: 2020-06-22 23:19-0400\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
@@ -27,7 +27,7 @@ msgstr "Document aan het opmaken"
 
 #: apps.py:106
 msgid "A generator returning the document's pages parsed content."
-msgstr ""
+msgstr "Een verwerker die de ontleden inhoud van de documentpagina's levert."
 
 #: apps.py:107 apps.py:140 apps.py:144 links.py:19 links.py:36 models.py:25
 msgid "Content"
@@ -41,10 +41,12 @@ msgstr "Resultaat"
 msgid ""
 "Utility from the poppler-utils package used to text content from PDF files."
 msgstr ""
+"Hulpmiddel uit het poppler-utils pakket dat gebruikt wordt om tekstinhoud "
+"uit PDF-bestanden te extraheren."
 
 #: events.py:10
 msgid "Document parsed content deleted"
-msgstr ""
+msgstr "Ontlede inhoud document verwijderd"
 
 #: events.py:14
 msgid "Document version submitted for parsing"
@@ -65,7 +67,7 @@ msgstr "Inhoud"
 
 #: links.py:25 links.py:30
 msgid "Delete parsed content"
-msgstr ""
+msgstr "Ontlede inhoud verwijderen"
 
 #: links.py:42 links.py:80 views.py:228
 msgid "Parsing errors"
@@ -93,7 +95,7 @@ msgstr "Documentpagina"
 
 #: models.py:23
 msgid "The actual text content as extracted by the document parsing backend."
-msgstr ""
+msgstr "De tekstinhoud die door de ontledingsbackend is opgesteld."
 
 #: models.py:31
 msgid "Document page content"
@@ -181,8 +183,8 @@ msgstr ""
 #: views.py:35
 msgid "Delete the parsed content of the selected document?"
 msgid_plural "Delete the parsed content of the selected documents?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "De ontlede inhoud van het geselecteerde document verwijderen?"
+msgstr[1] "De ontlede inhoud van de geselecteerde documenten verwijderen?"
 
 #: views.py:70
 #, python-format
@@ -213,8 +215,8 @@ msgstr "%(count)d documenten toegevoegd aan de opmaak wachtrij"
 #, python-format
 msgid "Submit %(count)d document to the parsing queue?"
 msgid_plural "Submit %(count)d documents to the parsing queue?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%(count)d document indienen voor de wachtrij voor ontleding?"
+msgstr[1] "%(count)ddocumenten indienen voor de wachtrij voor ontleding?"
 
 #: views.py:158
 #, python-format
@@ -224,13 +226,13 @@ msgstr "Document \"%s\" indienen voor de opmaak wachtrij"
 #: views.py:185
 #, python-format
 msgid "Edit parsing settings for document type: %s."
-msgstr ""
+msgstr "Ontledingsinstellingen bewerken voor documenttype: %s."
 
 #: views.py:195
 msgid "Submit all documents of a type for parsing"
-msgstr ""
+msgstr "Alle documenten van een type indienen voor ontleding"
 
 #: views.py:216
 #, python-format
 msgid "%(count)d documents added to the parsing queue."
-msgstr ""
+msgstr "%(count)d documenten toegevoegd aan de wachtrij voor ontleding."

@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:22-0400\n"
-"PO-Revision-Date: 2020-03-28 07:23+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-06-22 23:19-0400\n"
+"PO-Revision-Date: 2020-06-22 15:21+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -41,29 +41,29 @@ msgstr "Vrátí hodnotu dokončení aktuálního stavu vybraného workflow."
 msgid ""
 "Return the last workflow instance log entry. The log entry itself has the "
 "following fields: datetime, transition, user, and comment."
-msgstr ""
+msgstr "Vraťte poslední položku protokolu instance workflow. Samotná položka protokolu má následující pole: datetime, transition, user a comment."
 
 #: apps.py:177
 msgid "Get last log entry"
-msgstr ""
+msgstr "Získejte poslední položku protokolu"
 
 #: apps.py:183
 msgid ""
 "Return the current context dictionary which includes runtime data from the "
 "workflow transition fields."
-msgstr ""
+msgstr "Vraťte aktuální kontextový slovník, který obsahuje runtime data z polí postupu workflou."
 
 #: apps.py:185
 msgid "Get the context"
-msgstr ""
+msgstr "Získejte kontext"
 
 #: apps.py:191
 msgid "Return the transition of the workflow instance."
-msgstr ""
+msgstr "Vraťte průchod instance workflow."
 
 #: apps.py:192
 msgid "Get last transition"
-msgstr ""
+msgstr "Získejte poslední průchod"
 
 #: apps.py:206 apps.py:216 apps.py:225 apps.py:231
 msgid "None"
@@ -104,7 +104,7 @@ msgstr "Typ akce"
 #: apps.py:320
 msgid ""
 "Triggers are system events that will cause the transition to be applied."
-msgstr ""
+msgstr "Spouštěče jsou systémové události, které způsobí změnu stavu."
 
 #: apps.py:322
 msgid "Triggers"
@@ -397,11 +397,11 @@ msgid ""
 "The condition is evaluated against the workflow instance. Conditions that "
 "return None or an empty string ('') are considered to be logical false, any "
 "other value is considered to be the logical true."
-msgstr ""
+msgstr "Podmínka, která určí, zda je tato stavová akce provedena nebo ne. Podmínka je vyhodnocena na základě instance workflow. Podmínky, které vracejí None nebo prázdný řetězec (&#39;&#39;) jsou považovány za logické nepravdy, jakákoli jiná hodnota je považována za logickou pravdivou hodnotu."
 
 #: models.py:631 models.py:718
 msgid "Condition"
-msgstr ""
+msgstr "Stav"
 
 #: models.py:637
 msgid "Workflow state action"
@@ -414,11 +414,11 @@ msgstr "Neznámý typ akce"
 #: models.py:684
 msgid ""
 "The state action will be executed, depending on the condition return value."
-msgstr ""
+msgstr "Akce stavu bude provedena v závislosti na návratové hodnotě podmínky."
 
 #: models.py:687 models.py:746
 msgid "Has a condition?"
-msgstr ""
+msgstr "Má stav?"
 
 #: models.py:700
 msgid "A short text to describe the transition."
@@ -438,7 +438,7 @@ msgid ""
 "condition is evaluated against the workflow instance. Conditions that return"
 " None or an empty string ('') are considered to be logical false, any other "
 "value is considered to be the logical true."
-msgstr ""
+msgstr "Podmínka, která určí, zda je tento přechod povolen nebo ne. Podmínka je vyhodnocena na základě instance weorkflow. Podmínky, které vracejí None nebo prázdný řetězec (&#39;&#39;) jsou považovány za logické nepravdy, jakákoli jiná hodnota je považována za logickou pravdivou hodnotu."
 
 #: models.py:726
 msgid "Workflow transition"
@@ -451,7 +451,7 @@ msgstr "Krokz workflow"
 #: models.py:743
 msgid ""
 "The transition will be available, depending on the condition return value."
-msgstr ""
+msgstr "Průchod bude k dispozici v závislosti na návratové hodnotě podmínky."
 
 #: models.py:760
 msgid ""
@@ -641,11 +641,11 @@ msgstr "Argumenty, které mají být předány na WORKFLOWS_IMAGE_CACHE_STORAGE_
 msgid ""
 "Unable to initialize the workflow preview storage. Check the settings {} and"
 " {} for formatting errors."
-msgstr ""
+msgstr "Nelze inicializovat úložiště náhledu workflow. Zkontrolujte v nastavení {} a {} chyby formátování."
 
 #: storages.py:21
 msgid "Workflow preview images"
-msgstr ""
+msgstr "Obrázky náhledu workflow"
 
 #: templates/document_states/forms/widgets/workflow_image.html:2
 msgid "Workflow preview"
@@ -1062,7 +1062,7 @@ msgstr "Heslo, které se použije pro provedení požadavku s HTTP Basic Auth. M
 
 #: workflow_actions.py:133
 msgid "Method"
-msgstr ""
+msgstr "Metoda"
 
 #: workflow_actions.py:136
 msgid ""
@@ -1072,7 +1072,7 @@ msgid ""
 "as part of their context via the variable \"entry_log\". The \"entry_log\" "
 "in turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
 "\"user\", and \"comment\" attributes."
-msgstr ""
+msgstr "Metoda HTTP, která se má použít pro požadavek. Typické volby jsou OPTIONS, HEAD, POST, GET, PUT, PATCH, DELETE. Může to být statická hodnota nebo šablona, která vrací text metody. Šablony obdrží instanci záznamu workflow jako součást svého kontextu prostřednictvím proměnné &quot;entry_log&quot;. &quot;Entry_log&quot; zase poskytuje atributy &quot;workflow_instance&quot;, &quot;datetime&quot;, &quot;transition&quot;, &quot;user&quot; a &quot;comment&quot;."
 
 #: workflow_actions.py:147
 msgid "Headers"
@@ -1089,7 +1089,7 @@ msgstr "Záhlaví k odeslání s požadavkem HTTP. Musí být ve formátu JSON. 
 
 #: workflow_actions.py:164
 msgid "Perform an HTTP request"
-msgstr ""
+msgstr "Proveďte požadavek HTTP"
 
 #: workflow_actions.py:193
 #, python-format

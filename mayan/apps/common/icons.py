@@ -28,6 +28,7 @@ icon_social_paypal = Icon(
     driver_name='fontawesomecss', css_classes='fab fa-paypal'
 )
 icon_source_code = Icon(driver_name='fontawesome', symbol='code-branch')
+icon_store = Icon(driver_name='fontawesome', symbol='tshirt')
 icon_support = Icon(
     driver_name='fontawesome', symbol='phone'
 )

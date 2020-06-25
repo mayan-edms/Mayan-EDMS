@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:21-0400\n"
-"PO-Revision-Date: 2020-04-02 07:08+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-06-22 23:19-0400\n"
+"PO-Revision-Date: 2020-06-22 15:13+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -205,19 +205,19 @@ msgstr "Hodnota"
 
 #: models.py:387 models.py:513
 msgid "Index instance node"
-msgstr ""
+msgstr "Uzel instance indexu"
 
 #: models.py:388
 msgid "Indexes instances node"
-msgstr ""
+msgstr "Indexi instancí uzlu"
 
 #: models.py:450
 msgid "The path to the index including all ancestors."
-msgstr ""
+msgstr "Cesta k indexu včetně všech předků."
 
 #: models.py:452
 msgid "Full path"
-msgstr ""
+msgstr "Celá cesta"
 
 #: models.py:506
 msgid "Document index node instance"
@@ -229,7 +229,7 @@ msgstr "Instance uzlů rejstříků dokumentů"
 
 #: models.py:514
 msgid "Index instance nodes"
-msgstr ""
+msgstr "Uzly instance indexu"
 
 #: permissions.py:5 queues.py:7
 msgid "Indexing"
@@ -277,7 +277,7 @@ msgstr "Typ dokumentu"
 
 #: search.py:30
 msgid "Document MIME type"
-msgstr ""
+msgstr "Typ MIME dokumentu"
 
 #: search.py:33
 msgid "Document label"
@@ -289,11 +289,11 @@ msgstr "Popis dokumentu"
 
 #: search.py:39
 msgid "Document UUID"
-msgstr ""
+msgstr "UUID dokumentu"
 
 #: search.py:43
 msgid "Document checksum"
-msgstr ""
+msgstr "Kontrolní součet dokumentů"
 
 #: views.py:45
 msgid "Available indexes"

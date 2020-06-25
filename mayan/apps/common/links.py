@@ -5,8 +5,8 @@ from mayan.apps.navigation.classes import Link
 from .icons import (
     icon_about, icon_book, icon_current_user_locale_profile_details,
     icon_current_user_locale_profile_edit, icon_documentation,
-    icon_forum, icon_license, icon_setup, icon_source_code, icon_support,
-    icon_tools
+    icon_forum, icon_license, icon_setup, icon_source_code, icon_store,
+    icon_support, icon_tools
 )
 
 link_about = Link(
@@ -43,6 +43,10 @@ link_setup = Link(
 link_source_code = Link(
     icon_class=icon_source_code, tags='new_window', text=_('Source code'),
     url='https://gitlab.com/mayan-edms/mayan-edms'
+)
+link_store = Link(
+    icon_class=icon_store, tags='new_window', text=_('Online store'),
+    url='https://teespring.com/stores/mayan-edms'
 )
 link_support = Link(
     icon_class=icon_support, tags='new_window', text=_('Get support'),

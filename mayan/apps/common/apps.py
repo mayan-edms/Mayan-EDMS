@@ -22,7 +22,7 @@ from .handlers import (
 )
 from .links import (
     link_about, link_book, link_current_user_locale_profile_edit, link_license,
-    link_setup, link_support, link_tools
+    link_setup, link_store, link_support, link_tools
 )
 
 from .literals import MESSAGE_SQLITE_WARNING
@@ -156,8 +156,8 @@ class CommonApp(AppConfigLoggingMixin, MayanAppConfig):
 
         menu_about.bind_links(
             links=(
-                link_tools, link_setup, link_about, link_book, link_support,
-                link_license,
+                link_tools, link_setup, link_about, link_book, link_store,
+                link_support, link_license,
             )
         )
 
