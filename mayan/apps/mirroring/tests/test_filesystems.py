@@ -10,7 +10,6 @@ from mayan.apps.common.tests.base import BaseTestCase
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.tests.mixins import DocumentTestMixin
 from mayan.apps.document_indexing.tests.mixins import IndexTestMixin
-from mayan.apps.storage.utils import fs_cleanup
 
 from ..filesystems import IndexFilesystem
 
@@ -75,7 +74,11 @@ class IndexFilesystemTestCase(
         index_filesystem = IndexFilesystem(index_slug=self.test_index.slug)
 
         self._upload_test_document()
-        fs_cleanup(filename=self.test_document.latest_version.file.file.name)
+
+        # Delete the physical document file without deleting the document
+        # database entry.
+        document_file = self.test_document.latest_version.file
+        document_file.storage.delete(document_file.name)
 
         self.assertEqual(
             index_filesystem.getattr(

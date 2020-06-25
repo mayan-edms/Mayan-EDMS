@@ -1,3 +1,7 @@
+3.4.11 (2020-XX-XX)
+===================
+- Don't asume local filesystem when testing the mirroring app.
+
 3.4.10 (2020-06-24)
 ===================
 - Fix repeated columns in the document index node list view.
