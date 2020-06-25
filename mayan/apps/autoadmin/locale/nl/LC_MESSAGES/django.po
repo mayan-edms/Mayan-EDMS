@@ -6,14 +6,15 @@
 # Translators:
 # Roberto Rosario, 2020
 # j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
+# Comprax <info@comprax.nl>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:33-0400\n"
+"POT-Creation-Date: 2020-06-22 23:18-0400\n"
 "PO-Revision-Date: 2019-04-14 04:06+0000\n"
-"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020\n"
+"Last-Translator: Comprax <info@comprax.nl>, 2020\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +24,7 @@ msgstr ""
 
 #: apps.py:13 settings.py:7
 msgid "Auto administrator"
-msgstr ""
+msgstr "Auto administrator"
 
 #: auth/allauth.py:54
 msgid ""
@@ -46,25 +47,29 @@ msgstr "Wachtwoord-hash"
 
 #: models.py:25
 msgid "Autoadmin properties"
-msgstr ""
+msgstr "Autoadmin eigenschappen"
 
 #: settings.py:12
 msgid "Sets the email of the automatically created super user account."
 msgstr ""
+"Stelt de e-mail in van het automatisch aangemaakte supergebruikersaccount."
 
 #: settings.py:18
 msgid ""
 "The password of the automatically created super user account. If it is equal"
 " to None, the password is randomly generated."
 msgstr ""
+"Het wachtwoord van het automatisch aangemaakte supergebruikersaccount. Als "
+"het gelijk is aan \"None\", wordt het wachtwoord willekeurig gegenereerd."
 
 #: settings.py:25
 msgid "The username of the automatically created super user account."
 msgstr ""
+"De gebruikersnaam van het automatisch aangemaakte supergebruikersaccount."
 
 #: templates/autoadmin/credentials.html:11
 msgid "Automatic credentials"
-msgstr ""
+msgstr "Automatische referenties"
 
 #: templates/autoadmin/credentials.html:16
 #, python-format

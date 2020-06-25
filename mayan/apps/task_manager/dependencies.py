@@ -106,7 +106,7 @@ PythonDependency(
             django-celery-beat under the GPL license.  The BSD license, unlike the GPL,
             let you distribute a modified version without making your
             changes open source.
-    ''', module=__name__, name='django-celery-beat', version_string='==1.5.0'
+    ''', module=__name__, name='django-celery-beat', version_string='==2.0.0'
 )
 PythonDependency(
     module=__name__, name='kombu', version_string='==4.6.7'

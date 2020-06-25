@@ -2,7 +2,6 @@ import shlex
 
 from django.core.exceptions import ValidationError
 from django.db import models, transaction
-from django.template import Context, Template
 from django.urls import reverse
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.module_loading import import_string
@@ -10,6 +9,7 @@ from django.utils.six import PY2
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.documents.models import Document, DocumentType
+from mayan.apps.templating.classes import Template
 
 from .classes import MetadataLookup
 from .events import (
@@ -124,14 +124,14 @@ class MetadataType(models.Model):
             return [force_text(e) for e in splitter]
 
     def get_default_value(self):
-        template = Template(self.default)
-        context = Context()
-        return template.render(context=context)
+        template = Template(template_string=self.default)
+        return template.render()
 
     def get_lookup_values(self):
-        template = Template(self.lookup)
-        context = Context(MetadataLookup.get_as_context())
-        return MetadataType.comma_splitter(template.render(context=context))
+        template = Template(template_string=self.lookup)
+        return MetadataType.comma_splitter(
+            template.render(context=MetadataLookup.get_as_context())
+        )
 
     def get_required_for(self, document_type):
         """

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:34-0400\n"
+"POT-Creation-Date: 2020-06-22 23:18-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>, 2020\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -22,27 +22,27 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:48 apps.py:122 apps.py:129 apps.py:134 apps.py:137 events.py:5
-#: forms.py:14 links.py:22 menus.py:14 models.py:48 models.py:165
+#: apps.py:48 apps.py:123 apps.py:130 apps.py:135 apps.py:138 events.py:5
+#: forms.py:14 links.py:22 menus.py:14 models.py:48 models.py:170
 #: permissions.py:5 views.py:164 workflow_actions.py:20
 msgid "Cabinets"
 msgstr "Kabinety"
 
 #: events.py:9
 msgid "Cabinet created"
-msgstr ""
+msgstr "Kabinet vytvořen"
 
 #: events.py:12
 msgid "Cabinet edited"
-msgstr ""
+msgstr "Kabinet byl upraven"
 
 #: events.py:15
 msgid "Document added to cabinet"
-msgstr ""
+msgstr "Dokument byl přidán do kabinetu"
 
 #: events.py:18
 msgid "Document removed from cabinet"
-msgstr ""
+msgstr "Dokument byl odstraněn z kabinetu"
 
 #: links.py:28 links.py:42 workflow_actions.py:74
 msgid "Remove from cabinets"
@@ -78,11 +78,11 @@ msgstr "Detail"
 
 #: methods.py:20
 msgid "Return a list of cabinets containing the document."
-msgstr ""
+msgstr "Vraťte seznam kabinetů obsahujících dokument."
 
 #: methods.py:22
 msgid "get_cabinets()"
-msgstr ""
+msgstr "get_cabinets()"
 
 #: models.py:34
 msgid "A short text used to identify the cabinet."
@@ -96,18 +96,18 @@ msgstr "Označení"
 msgid "Documents"
 msgstr "Dokumenty"
 
-#: models.py:47 models.py:144 models.py:164 serializers.py:136
+#: models.py:47 models.py:144 models.py:169 serializers.py:136
 #: workflow_actions.py:66
 msgid "Cabinet"
 msgstr "Kabinet"
 
 #: models.py:110
 msgid "The path to the cabinet including all ancestors."
-msgstr ""
+msgstr "Cesta ke kabinetu včetně všech rodičů."
 
 #: models.py:112
 msgid "Full path"
-msgstr ""
+msgstr "Celá cesta"
 
 #: models.py:145 serializers.py:137
 msgid "Parent and Label"
@@ -118,11 +118,11 @@ msgstr "Nadřízený a označení"
 msgid "%(model_name)s with this %(field_labels)s already exists."
 msgstr "%(model_name)s s tímto %(field_labels)s již existuje."
 
-#: models.py:176
+#: models.py:181
 msgid "Document cabinet"
 msgstr "Kabinet dokumentu"
 
-#: models.py:177
+#: models.py:182
 msgid "Document cabinets"
 msgstr "Kabinety dokumentů"
 
@@ -156,7 +156,7 @@ msgstr "Typ dokumentu"
 
 #: search.py:29
 msgid "Document MIME type"
-msgstr ""
+msgstr "Typ MIME dokumentu"
 
 #: search.py:32
 msgid "Document label"
@@ -168,11 +168,11 @@ msgstr "Popis dokumentu"
 
 #: search.py:38
 msgid "Document UUID"
-msgstr ""
+msgstr "UUID dokumentu"
 
 #: search.py:42
 msgid "Document checksum"
-msgstr ""
+msgstr "Kontrolní součet dokumentů"
 
 #: serializers.py:17
 msgid "List of children cabinets."
@@ -271,12 +271,12 @@ msgstr "Kabinety obsahující dokument: %s"
 #: views.py:223
 #, python-format
 msgid "Add to cabinet request performed on %(count)d document."
-msgstr ""
+msgstr "Přidat do kabinetu požadavky provedené v dokumentu %(count)d."
 
 #: views.py:226
 #, python-format
 msgid "Add to cabinet request performed on %(count)d documents."
-msgstr ""
+msgstr "Přidat do kabinetu požadavky provedené na dokumentech %(count)d."
 
 #: views.py:233
 msgid "Add"
@@ -286,10 +286,10 @@ msgstr "Přidat"
 #, python-format
 msgid "Add %(count)d document to cabinets"
 msgid_plural "Add %(count)d documents to cabinets"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Přidejte dokument %(count)d do skříní"
+msgstr[1] "Přidejte do skříní dokumenty %(count)d"
+msgstr[2] "Přidejte do skříní dokumenty %(count)d"
+msgstr[3] "Přidejte do kabinetů dokumenty %(count)d"
 
 #: views.py:248
 #, python-format
@@ -313,12 +313,12 @@ msgstr "Dokument: %(document)s byl přidán do kabinetu: %(cabinet)s úspěšně
 #: views.py:314
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d document."
-msgstr ""
+msgstr "Odebrat z kabinetu požadavky provedené v dokumentu %(count)d."
 
 #: views.py:317
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d documents."
-msgstr ""
+msgstr "Odebrat z kabinetu požadavky provedené na dokumentech %(count)d."
 
 #: views.py:324
 msgid "Remove"
@@ -328,15 +328,15 @@ msgstr "Odstranit"
 #, python-format
 msgid "Remove %(count)d document from cabinets"
 msgid_plural "Remove %(count)d documents from cabinets"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Vyjměte dokument %(count)d ze skříní"
+msgstr[1] "Odstraňte %(count)d dokumenty ze skříní"
+msgstr[2] "Odstraňte %(count)d dokumenty ze skříní"
+msgstr[3] "Odstraňte %(count)d dokumenty z kabinetů"
 
 #: views.py:339
 #, python-format
 msgid "Remove document \"%s\" from cabinets"
-msgstr ""
+msgstr "Odstraňte dokument &quot;%s&quot; z kabinetů"
 
 #: views.py:350
 msgid "Cabinets from which the selected documents will be removed."
@@ -354,12 +354,12 @@ msgstr "Dokument: %(document)s byl odstraněn z kabinetu: %(cabinet)s."
 
 #: wizard_steps.py:15
 msgid "Select cabinets"
-msgstr ""
+msgstr "Vyberte kabinety"
 
 #: wizard_steps.py:29 workflow_actions.py:23
 msgid "Cabinets to which the document will be added."
-msgstr ""
+msgstr "Kabinety, do kterých bude dokument přidán."
 
 #: workflow_actions.py:69
 msgid "Cabinets from which the document will be removed."
-msgstr ""
+msgstr "Kabinety, ze kterých bude dokument odstraněn."

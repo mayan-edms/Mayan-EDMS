@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:35-0400\n"
-"PO-Revision-Date: 2020-03-28 07:23+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-06-22 23:20-0400\n"
+"PO-Revision-Date: 2020-06-22 15:22+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,11 +22,11 @@ msgstr ""
 msgid "Mailer"
 msgstr "Mailer"
 
-#: apps.py:61 apps.py:82
+#: apps.py:62 apps.py:83
 msgid "Date and time"
 msgstr "Datum a čas"
 
-#: apps.py:64 apps.py:86 models.py:28 models.py:228
+#: apps.py:65 apps.py:87 models.py:28 models.py:230
 msgid "Message"
 msgstr "Zpráva"
 
@@ -225,7 +225,7 @@ msgstr "Cesta k souboru"
 msgid "Django file based backend"
 msgstr "Backend založený na souborech Django"
 
-#: models.py:25 models.py:225
+#: models.py:25 models.py:227
 msgid "Date time"
 msgstr "Datum a čas"
 
@@ -273,21 +273,21 @@ msgstr "Backend data"
 
 #: models.py:84
 msgid "The backend class for this entry."
-msgstr ""
+msgstr "Třída backendu pro tuto položku."
 
-#: models.py:216
+#: models.py:218
 msgid "Test email from Mayan EDMS"
 msgstr "Vyzkoušejte e-mail od Mayan EDMS"
 
-#: models.py:222
+#: models.py:224
 msgid "User mailer"
 msgstr "Uživatel mailer"
 
-#: models.py:234
+#: models.py:236
 msgid "User mailer log entry"
 msgstr "Záznam protokolu uživatele maileru"
 
-#: models.py:235
+#: models.py:237
 msgid "User mailer log entries"
 msgstr "Položky protokolu uživatele poštovní schránky"
 

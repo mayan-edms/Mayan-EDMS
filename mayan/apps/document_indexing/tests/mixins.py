@@ -8,6 +8,15 @@ from .literals import (
 )
 
 
+class DocumentIndexViewTestMixin:
+    def _request_test_document_index_list_view(self):
+        return self.get(
+            viewname='indexing:document_index_list', kwargs={
+                'document_id': self.test_document.pk
+            }
+        )
+
+
 class IndexInstaceViewTestMixin(object):
     def _request_test_index_instance_node_view(self, index_instance_node):
         return self.get(

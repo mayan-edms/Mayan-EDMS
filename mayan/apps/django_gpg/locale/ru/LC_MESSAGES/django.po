@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:34-0400\n"
+"POT-Creation-Date: 2020-06-22 23:19-0400\n"
 "PO-Revision-Date: 2020-04-14 08:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
@@ -110,47 +110,47 @@ msgstr "Секретные ключи"
 msgid "Public keys"
 msgstr "Открытые ключи"
 
-#: literals.py:12 literals.py:20
+#: literals.py:14 literals.py:22
 msgid "Public"
 msgstr "Открытый"
 
-#: literals.py:13 literals.py:21
+#: literals.py:15 literals.py:23
 msgid "Secret"
 msgstr "секретный"
 
-#: literals.py:29 literals.py:34
+#: literals.py:31 literals.py:36
 msgid "RSA"
 msgstr "RSA"
 
-#: literals.py:30
+#: literals.py:32
 msgid "DSA"
 msgstr "DSA"
 
-#: literals.py:35
+#: literals.py:37
 msgid "Elgamal"
 msgstr "Elgamal"
 
-#: literals.py:49
+#: literals.py:51
 msgid "Bad signature."
 msgstr "Неверная подпись"
 
-#: literals.py:52
+#: literals.py:54
 msgid "Document not signed or invalid signature."
 msgstr "Документ не подписан, либо подпись неверна."
 
-#: literals.py:55
+#: literals.py:57
 msgid "Signature error."
 msgstr "Ошибка подписи."
 
-#: literals.py:59
+#: literals.py:61
 msgid "Document is signed but no public key is available for verification."
 msgstr "Документ подписан, но нет открытого ключа для проверки."
 
-#: literals.py:64
+#: literals.py:66
 msgid "Document is signed, and signature is good."
 msgstr "Документ подписан и подпись верна."
 
-#: literals.py:67
+#: literals.py:69
 msgid "Document is signed with a valid signature."
 msgstr "Документ подписан допустимой подписью."
 

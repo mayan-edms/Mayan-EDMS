@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Iliya Georgiev <inactive+iliicho7@transifex.com>, 2019
+# 295005be79b88987cac803400975dbae_87f6b64 <412e4e8df9c702a35ac89972be5f12ff_27148>, 2019
 # Pavlin Koldamov <pkoldamov@gmail.com>, 2019
 # Roberto Rosario, 2019
 # Lyudmil Antonov <lantonov.here@gmail.com>, 2020
@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:34-0400\n"
+"POT-Creation-Date: 2020-06-22 23:19-0400\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2020\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -39,11 +39,11 @@ msgstr "Вътрешно име"
 msgid "Description"
 msgstr "Описание"
 
-#: apps.py:45 classes.py:153
+#: apps.py:45 classes.py:154
 msgid "Type"
 msgstr "Тип"
 
-#: apps.py:49 classes.py:155
+#: apps.py:49 classes.py:156
 msgid "Other data"
 msgstr "Други данни"
 
@@ -51,77 +51,77 @@ msgstr "Други данни"
 msgid "Declared by"
 msgstr "Декларирано от"
 
-#: apps.py:57 classes.py:153
+#: apps.py:57 classes.py:154
 msgid "Version"
 msgstr "Версия"
 
-#: apps.py:61 classes.py:154 classes.py:783
+#: apps.py:61 classes.py:155 classes.py:802
 msgid "Environment"
 msgstr "Среда"
 
-#: apps.py:64 classes.py:155
+#: apps.py:64 classes.py:156
 msgid "Check"
 msgstr "Проверка"
 
-#: classes.py:153
+#: classes.py:154
 msgid "Name"
 msgstr "Име"
 
-#: classes.py:154
+#: classes.py:155
 msgid "App"
 msgstr "Приложение"
 
-#: classes.py:269
+#: classes.py:270
 msgid "Need to specify at least one: app_label or module."
 msgstr "Трябва да посочите поне едно: app_label или модул."
 
-#: classes.py:274
+#: classes.py:275
 #, python-format
 msgid "Dependency \"%s\" already registered."
 msgstr "Зависимостта „%s“ вече е регистрирана."
 
-#: classes.py:300
+#: classes.py:301
 #, python-format
 msgid "Installing package: %s... "
 msgstr "Инсталиране на пакет: %s ..."
 
-#: classes.py:305
+#: classes.py:306
 msgid "Already installed."
 msgstr "Вече е инсталирано."
 
-#: classes.py:308 classes.py:313 classes.py:317
+#: classes.py:309 classes.py:314 classes.py:318
 msgid "Complete."
 msgstr "Завършено."
 
-#: classes.py:343
+#: classes.py:344
 msgid "Installed and correct version"
 msgstr "Инсталирана е правилна версия"
 
-#: classes.py:345
+#: classes.py:346
 msgid "Missing or incorrect version"
 msgstr "Липсваща или неправилна версия"
 
-#: classes.py:374
+#: classes.py:375
 msgid "None"
 msgstr "Няма"
 
-#: classes.py:383
+#: classes.py:384
 msgid "Not specified"
 msgstr "Не  е конкретизирано"
 
-#: classes.py:386
+#: classes.py:387
 msgid "Patching files... "
 msgstr "Пачване на файлове ..."
 
-#: classes.py:414
+#: classes.py:415
 msgid "Executables that are called directly by the code."
 msgstr "Изпълними файлове, които се извикват директно от кода."
 
-#: classes.py:416
+#: classes.py:417
 msgid "Binary"
 msgstr "Двоичен файл"
 
-#: classes.py:433
+#: classes.py:434
 msgid ""
 "JavaScript libraries downloaded the from NPM registry and used for front-end"
 " functionality."
@@ -129,51 +129,51 @@ msgstr ""
 "JavaScript библиотеките са изтеглени от регистъра на NPM и са използвани за "
 "функционалност на интерфейса."
 
-#: classes.py:436
+#: classes.py:437
 msgid "JavaScript"
 msgstr "JavaScript"
 
-#: classes.py:470 classes.py:703
+#: classes.py:471 classes.py:722
 msgid "Downloading... "
 msgstr "Изтегля се ..."
 
-#: classes.py:473
+#: classes.py:474
 msgid "Verifying... "
 msgstr "Проверява се ..."
 
-#: classes.py:476 classes.py:706
+#: classes.py:477 classes.py:725
 msgid "Extracting... "
 msgstr "Извличане ..."
 
-#: classes.py:655
+#: classes.py:664
 msgid "Python packages downloaded from PyPI."
 msgstr "Пакети Python, изтеглени от PyPI."
 
-#: classes.py:657
+#: classes.py:666
 msgid "Python"
 msgstr "Python"
 
-#: classes.py:684
+#: classes.py:703
 msgid "Fonts downloaded from fonts.googleapis.com."
 msgstr "Шрифтове, изтеглени от fonts.googleapis.com."
 
-#: classes.py:686
+#: classes.py:705
 msgid "Google font"
 msgstr "Google шрифт"
 
-#: classes.py:765
+#: classes.py:784
 msgid "Declared in app"
 msgstr "Декларирано в приложение"
 
-#: classes.py:766
+#: classes.py:785
 msgid "Show dependencies by the app that declared them."
 msgstr "Показване зависимостите от приложението, което ги е декларирало."
 
-#: classes.py:770
+#: classes.py:789
 msgid "Class"
 msgstr "Клас"
 
-#: classes.py:771
+#: classes.py:790
 msgid ""
 "Show the different classes of dependencies. Classes are usually divided by "
 "language or the file types of the dependency."
@@ -181,11 +181,11 @@ msgstr ""
 "Покажете различните класове на зависимости. Класовете обикновено се разделят"
 " по език или файлови типове на зависимостта."
 
-#: classes.py:776
+#: classes.py:795
 msgid "State"
 msgstr "Състояние"
 
-#: classes.py:777
+#: classes.py:796
 msgid ""
 "Show the different states of the dependencies. True means that the "
 "dependencies is installed and is of a correct version. False means the "
@@ -195,7 +195,7 @@ msgstr ""
 "зависимостите са инсталирани и са с правилна версия. Грешно означава, че "
 "зависимостите липсват или е налице неправилна версия."
 
-#: classes.py:784
+#: classes.py:803
 msgid ""
 "Dependencies required for an environment might not be required for another. "
 "Example environments: Production, Development."

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:36-0400\n"
+"POT-Creation-Date: 2020-06-22 23:20-0400\n"
 "PO-Revision-Date: 2020-03-28 07:24+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>, 2020\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -24,27 +24,27 @@ msgstr ""
 #: apps.py:36 events.py:6 links.py:33 models.py:32 permissions.py:5
 #: views.py:134
 msgid "Quotas"
-msgstr ""
+msgstr "Kvóty"
 
 #: classes.py:63
 msgid "none"
-msgstr ""
+msgstr "žádný"
 
-#: classes.py:143
+#: classes.py:163
 msgid "Does not apply"
-msgstr ""
+msgstr "Nepoužito"
 
-#: classes.py:147 classes.py:154
+#: classes.py:167 classes.py:174
 msgid "Null backend"
 msgstr "Null backend"
 
 #: events.py:10
 msgid "Quota created"
-msgstr ""
+msgstr "Kvóta byla vytvořena"
 
 #: events.py:13
 msgid "Quota edited"
-msgstr ""
+msgstr "Kvóta byla upravena"
 
 #: forms.py:15 models.py:55
 msgid "Backend"
@@ -52,11 +52,11 @@ msgstr "Backend"
 
 #: forms.py:16
 msgid "The quota driver for this entry."
-msgstr ""
+msgstr "Ovladač kvóty pro tuto položku."
 
 #: links.py:13
 msgid "Create quota"
-msgstr ""
+msgstr "Vytvořit kvótu"
 
 #: links.py:18
 msgid "Delete"
@@ -68,17 +68,19 @@ msgstr "Upravit"
 
 #: links.py:28
 msgid "Quotas list"
-msgstr ""
+msgstr "Seznam kvót"
 
 #: mixins.py:17
 msgid "All document types"
-msgstr ""
+msgstr "Všechny typy dokumentů"
 
 #: mixins.py:20
 msgid ""
 "Apply to all document types. Enabling this, the quota will ignore the "
 "indiviual document type selection."
 msgstr ""
+"Použít na všechny typy dokumentů. Pokud to povolíte, kvóta bude ignorovat "
+"individuální výběr typu dokumentu."
 
 #: mixins.py:26
 msgid "Document types"
@@ -86,16 +88,16 @@ msgstr "Typy dokumentů"
 
 #: mixins.py:33
 msgid "Document types to which the quota will be applied."
-msgstr ""
+msgstr "Typy dokumentů, na které se kvóta použije."
 
 #: mixins.py:67
 msgid "all document types"
-msgstr ""
+msgstr "všechny typy dokumentů"
 
 #: mixins.py:70
 #, python-format
 msgid "document types: %(document_types)s"
-msgstr ""
+msgstr "typy dokumentů: %(document_types)s"
 
 #: mixins.py:94
 msgid "Groups"
@@ -103,11 +105,11 @@ msgstr "Skupiny"
 
 #: mixins.py:101
 msgid "Groups to which the quota will be applied."
-msgstr ""
+msgstr "Skupiny, na které se kvóta použije."
 
 #: mixins.py:105
 msgid "All users"
-msgstr ""
+msgstr "Všichni uživatelé"
 
 #: mixins.py:108
 msgid ""
@@ -115,6 +117,9 @@ msgid ""
 "Enabling this option, the quota will ignore the indiviual user and group "
 "selection."
 msgstr ""
+"Použijte kvótu na všechny uživatele v systému, s výjimkou správců a "
+"zaměstnanců. Pokud tuto možnost povolíte, kvóta bude ignorovat individuální "
+"výběr uživatelů a skupin."
 
 #: mixins.py:115
 msgid "Users"
@@ -122,16 +127,16 @@ msgstr "Uživatelé"
 
 #: mixins.py:122
 msgid "Users to which the quota will be applied."
-msgstr ""
+msgstr "Uživatelé, na které se kvóta použije."
 
 #: mixins.py:160
 msgid "all users"
-msgstr ""
+msgstr "všichni uživatelé"
 
 #: mixins.py:162
 #, python-format
 msgid "groups: %(groups)s, users: %(users)s"
-msgstr ""
+msgstr "skupiny: %(groups)s, uživatelé: %(users)s"
 
 #: models.py:18
 msgid "The dotted Python path to the backend class."
@@ -147,7 +152,7 @@ msgstr "Backend data"
 
 #: models.py:26
 msgid "Allow quick disable or enable of the quota."
-msgstr ""
+msgstr "Povolit rychlé zakázání nebo povolení kvóty."
 
 #: models.py:27
 msgid "Enabled"
@@ -155,11 +160,11 @@ msgstr "Povoleno"
 
 #: models.py:31
 msgid "Quota"
-msgstr ""
+msgstr "Kvóta"
 
 #: models.py:54
 msgid "Driver used for this quota entry."
-msgstr ""
+msgstr "Ovladač použitý pro tuto položku kvóty."
 
 #: models.py:59
 msgid "Arguments"
@@ -167,85 +172,85 @@ msgstr "Argumenty"
 
 #: models.py:63
 msgid "Usage"
-msgstr ""
+msgstr "Používání"
 
 #: permissions.py:8
 msgid "Create a quota"
-msgstr ""
+msgstr "Vytvořte kvótu"
 
 #: permissions.py:11
 msgid "Delete a quota"
-msgstr ""
+msgstr "Odstranit kvótu"
 
 #: permissions.py:14
 msgid "Edit a quota"
-msgstr ""
+msgstr "Upravte kvótu"
 
 #: permissions.py:17
 msgid "View a quota"
-msgstr ""
+msgstr "Zobrazit kvótu"
 
-#: quota_backends.py:23
+#: quota_backends.py:68 quota_backends.py:168
 msgid "Document count quota exceeded."
-msgstr ""
+msgstr "Kvóta počtu dokumentů překročena."
 
-#: quota_backends.py:27
+#: quota_backends.py:72
 msgid "Documents limit"
-msgstr ""
+msgstr "Limit dokumentů"
 
-#: quota_backends.py:30
+#: quota_backends.py:75
 msgid "Maximum number of documents."
-msgstr ""
+msgstr "Maximální počet dokumentů."
 
-#: quota_backends.py:34
+#: quota_backends.py:79
 msgid "Document count limit"
-msgstr ""
+msgstr "Limit počtu dokumentů"
 
-#: quota_backends.py:53
+#: quota_backends.py:104
 #, python-format
 msgid "document count: %(document_count)s"
-msgstr ""
+msgstr "počet dokumentů: %(document_count)s"
 
-#: quota_backends.py:117 quota_backends.py:171
-msgid "Document size quota exceeded."
-msgstr ""
-
-#: quota_backends.py:127 quota_backends.py:132
+#: quota_backends.py:178 quota_backends.py:183
 msgid "Document size limit"
-msgstr ""
+msgstr "Limit velikosti dokumentu"
 
-#: quota_backends.py:129
+#: quota_backends.py:180
 msgid "Maximum document size in megabytes (MB)."
-msgstr ""
+msgstr "Maximální velikost dokumentu v megabajtech (MB)."
 
-#: quota_backends.py:151
+#: quota_backends.py:208
 #, python-format
 msgid "document size: %(formatted_file_size)s"
-msgstr ""
+msgstr "velikost dokumentu: %(formatted_file_size)s"
+
+#: quota_backends.py:228
+msgid "Document size quota exceeded."
+msgstr "Kvóta velikosti dokumentu byla překročena."
 
 #: views.py:24
 msgid "New quota backend selection"
-msgstr ""
+msgstr "Nový výběr backendu kvóty"
 
 #: views.py:52
 #, python-format
 msgid "Create a \"%s\" quota"
-msgstr ""
+msgstr "Vytvořte kvótu „%s“"
 
 #: views.py:84
 #, python-format
 msgid "Delete quota: %s"
-msgstr ""
+msgstr "Smazat kvótu: %s"
 
 #: views.py:99
 #, python-format
 msgid "Edit quota: %s"
-msgstr ""
+msgstr "Upravit kvótu: %s"
 
 #: views.py:131
 msgid "Quotas restrict usage of system resources. "
-msgstr ""
+msgstr "Kvóty omezují využití systémových prostředků."
 
 #: views.py:133
 msgid "No quotas available"
-msgstr ""
+msgstr "K dispozici nejsou žádné kvóty"

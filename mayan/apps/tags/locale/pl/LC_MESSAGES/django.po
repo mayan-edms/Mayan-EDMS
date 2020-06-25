@@ -5,15 +5,16 @@
 # Translators:
 # Annunnaky <doublemiu@gmail.com>, 2015
 # mic <winterfall24@gmail.com>, 2012,2015
+# Tomasz Szymanowicz <alakdae@gmail.com>, 2020
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2017-2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:37-0400\n"
-"PO-Revision-Date: 2020-03-18 05:34+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-06-22 23:21-0400\n"
+"PO-Revision-Date: 2020-05-18 09:46+0000\n"
+"Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,11 +38,11 @@ msgstr "Tag załączony do dokumentu"
 
 #: events.py:11
 msgid "Tag created"
-msgstr ""
+msgstr "Tag został utworzony"
 
 #: events.py:14
 msgid "Tag edited"
-msgstr ""
+msgstr "Tag edytowany"
 
 #: events.py:17
 msgid "Tag removed from document"
@@ -77,15 +78,15 @@ msgstr "Wszystkie"
 
 #: methods.py:18
 msgid "Return a the tags attached to the document."
-msgstr ""
+msgstr "Zwróć tagi dołączone do dokumentu."
 
 #: methods.py:20
 msgid "get_tags()"
-msgstr ""
+msgstr "get_tags ()"
 
 #: models.py:26
 msgid "A short text used as the tag name."
-msgstr ""
+msgstr "Krótki tekst używany jako nazwa taga."
 
 #: models.py:27 search.py:14
 msgid "Label"
@@ -93,7 +94,7 @@ msgstr "Etykieta"
 
 #: models.py:30
 msgid "The RGB color values for the tag."
-msgstr ""
+msgstr "Wartości kolorów RGB dla taga."
 
 #: models.py:31 search.py:18
 msgid "Color"
@@ -247,11 +248,11 @@ msgstr "Edytuj tag: %s"
 msgid ""
 "Tags are color coded properties that can be attached or removed from "
 "documents."
-msgstr ""
+msgstr "Tagi to właściwości oznaczone kolorami, które można dołączać lub usuwać z dokumentów."
 
 #: views.py:222
 msgid "No tags available"
-msgstr ""
+msgstr "Brak dostępnych tagów"
 
 #: views.py:246
 #, python-format
@@ -260,7 +261,7 @@ msgstr "Dokumenty z tagiem: %s"
 
 #: views.py:270
 msgid "Document has no tags attached"
-msgstr ""
+msgstr "Dokument nie ma dołączonych tagów"
 
 #: views.py:273
 #, python-format
@@ -285,10 +286,10 @@ msgstr "Usuń"
 #, python-format
 msgid "Remove tags from %(count)d document"
 msgid_plural "Remove tags from %(count)d documents"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Usuń tagi z dokumentu %(count)d"
+msgstr[1] "Usuń tagi z dokumentów %(count)d"
+msgstr[2] "Usuń tagi z dokumentów %(count)d"
+msgstr[3] "Usuń tagi z %(count)d dokumentów "
 
 #: views.py:314
 #, python-format
@@ -311,7 +312,7 @@ msgstr "Tag \"%(tag)s\" usunięty z dokumentu \"%(document)s\"."
 
 #: wizard_steps.py:15
 msgid "Select tags"
-msgstr ""
+msgstr "Wybierz tagi"
 
 #: workflow_actions.py:20
 msgid "Tags to attach to the document"

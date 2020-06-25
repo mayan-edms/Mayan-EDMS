@@ -12,7 +12,7 @@ from mayan.apps.common.menus import (
     menu_setup, menu_tools
 )
 from mayan.apps.documents.signals import post_document_created, post_initial_document_type
-from mayan.apps.events.classes import ModelEventType
+from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list
 )
@@ -55,7 +55,6 @@ class DocumentIndexingApp(MayanAppConfig):
 
     def ready(self):
         super(DocumentIndexingApp, self).ready()
-        from actstream import registry
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'
@@ -76,6 +75,8 @@ class DocumentIndexingApp(MayanAppConfig):
             model_name='IndexInstanceNodeSearchResult'
         )
         IndexTemplateNode = self.get_model(model_name='IndexTemplateNode')
+
+        EventModelRegistry.register(model=Index)
 
         ModelEventType.register(
             event_types=(
@@ -114,7 +115,7 @@ class DocumentIndexingApp(MayanAppConfig):
             attribute='slug', include_label=True, is_sortable=True,
             source=Index
         )
-        column_index_slug.add_exclude(IndexInstance)
+        column_index_slug.add_exclude(source=IndexInstance)
         column_index_enabled = SourceColumn(
             attribute='enabled', include_label=True, is_sortable=True,
             source=Index, widget=TwoStateWidget
@@ -150,22 +151,17 @@ class DocumentIndexingApp(MayanAppConfig):
             source=IndexTemplateNode, widget=TwoStateWidget
         )
 
-        SourceColumn(
+        column_index_instance_node_level = SourceColumn(
             func=lambda context: index_instance_item_link(context['object']),
             is_identifier=True, is_sortable=True, label=_('Level'),
             sort_field='value', source=IndexInstanceNode
         )
+        column_index_instance_node_level.add_exclude(
+            source=DocumentIndexInstanceNode
+        )
         SourceColumn(
             func=lambda context: context['object'].get_descendants_count(),
             include_label=True, label=_('Levels'), source=IndexInstanceNode
-        )
-        SourceColumn(
-            func=lambda context: context[
-                'object'
-            ].get_descendants_document_count(
-                user=context['request'].user
-            ), include_label=True, label=_('Documents'),
-            source=IndexInstanceNode
         )
         SourceColumn(
             func=lambda context: context[
@@ -189,19 +185,6 @@ class DocumentIndexingApp(MayanAppConfig):
                 index_instance_node=context['object'],
             ), include_label=True, is_sortable=True, label=_('Level'),
             sort_field='value', source=DocumentIndexInstanceNode
-        )
-        SourceColumn(
-            func=lambda context: context['object'].get_descendants_count(),
-            include_label=True, label=_('Levels'),
-            source=DocumentIndexInstanceNode
-        )
-        SourceColumn(
-            func=lambda context: context[
-                'object'
-            ].get_descendants_document_count(
-                user=context['request'].user
-            ), include_label=True, label=_('Documents'),
-            source=DocumentIndexInstanceNode
         )
 
         menu_facet.bind_links(
@@ -271,5 +254,3 @@ class DocumentIndexingApp(MayanAppConfig):
             receiver=handler_remove_document,
             sender=Document
         )
-
-        registry.register(Index)

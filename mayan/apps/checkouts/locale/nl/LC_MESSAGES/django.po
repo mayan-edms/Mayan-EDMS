@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:34-0400\n"
-"PO-Revision-Date: 2020-04-28 03:38+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-06-22 23:18-0400\n"
+"PO-Revision-Date: 2020-05-02 12:46+0000\n"
+"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,7 +30,7 @@ msgstr "Uitgecheckte documenten"
 
 #: events.py:8
 msgid "Document automatically checked in"
-msgstr "Document automatisch in-gecheckt"
+msgstr "Document automatisch ingecheckt"
 
 #: events.py:12
 msgid "Document checked in"
@@ -46,7 +46,7 @@ msgstr "Document geforceerd ingecheckt"
 
 #: exceptions.py:16
 msgid "Document not checked out."
-msgstr ""
+msgstr "Document niet uitgecheckt."
 
 #: exceptions.py:25
 msgid "Document already checked out."
@@ -66,7 +66,7 @@ msgstr "Uitcheck tijd"
 
 #: forms.py:46
 msgid "Check out expiration"
-msgstr ""
+msgstr "Uitchecken verloopt"
 
 #: forms.py:51
 msgid "New versions allowed?"
@@ -118,11 +118,11 @@ msgstr "Uitcheckdatum en tijd"
 
 #: models.py:36
 msgid "Amount of time to hold the document checked out in minutes."
-msgstr "Hoelang in minuten uitgedrukt het document uit-gecheckt houden. "
+msgstr "Hoelang in minuten uitgedrukt het document uitgecheckt houden. "
 
 #: models.py:38
 msgid "Check out expiration date and time"
-msgstr "Check-out verloopdatum en tijd"
+msgstr "Uitcheck verloopdatum en tijd"
 
 #: models.py:47
 msgid "Do not allow new version of this document to be uploaded."
@@ -142,15 +142,15 @@ msgstr "Document check-outs"
 
 #: models.py:66
 msgid "Check out expiration date and time must be in the future."
-msgstr "Check-out verloopdatum en tijd moet in de toekomst liggen."
+msgstr "Uitcheck verloopdatum en -tijd moet in de toekomst liggen."
 
 #: models.py:118
 msgid "New version block"
-msgstr ""
+msgstr "Nieuwe versie blokkering"
 
 #: models.py:119
 msgid "New version blocks"
-msgstr ""
+msgstr "Nieuwe versie blokkeringen"
 
 #: models.py:139
 msgid "Checkout time and date"
@@ -158,7 +158,7 @@ msgstr "Uitcheckdatum en tijd"
 
 #: models.py:144
 msgid "Checkout expiration"
-msgstr ""
+msgstr "Uitchecken verloopt"
 
 #: permissions.py:8
 msgid "Check in documents"
@@ -166,7 +166,7 @@ msgstr "Documenten inchecken"
 
 #: permissions.py:11
 msgid "Forcefully check in documents"
-msgstr ""
+msgstr "Documenten geforceerd inchecken"
 
 #: permissions.py:14
 msgid "Check out documents"
@@ -174,54 +174,54 @@ msgstr "Documenten uitchecken"
 
 #: permissions.py:17
 msgid "Check out details view"
-msgstr ""
+msgstr "Overzicht uitcheck details"
 
 #: queues.py:11
 msgid "Checkouts periodic"
-msgstr ""
+msgstr "Periodieke checkouts"
 
 #: queues.py:15
 msgid "Check expired checkouts"
-msgstr ""
+msgstr "Controleren op verlopen checkouts"
 
 #: serializers.py:29
 msgid "Primary key of the document to be checked out."
-msgstr ""
+msgstr "Primaire sleutel van het document dat uitgecheckt moet worden."
 
 #: views.py:35
 #, python-format
 msgid "Check in %(count)d document"
 msgid_plural "Check in %(count)d documents"
 msgstr[0] "%(count)d document in-checken"
-msgstr[1] "%(count)d documenten in-checken"
+msgstr[1] "%(count)d documenten inchecken"
 
 #: views.py:48
 #, python-format
 msgid "Check in document: %s"
-msgstr "In-checken document: %s"
+msgstr "Inchecken document: %s"
 
 #: views.py:106
 #, python-format
 msgid "Checkout %(count)d document"
 msgid_plural "Checkout %(count)d documents"
 msgstr[0] "%(count)d document uit-checken"
-msgstr[1] "%(count)d documenten uit-checken"
+msgstr[1] "%(count)d documenten uitchecken"
 
 #: views.py:119
 #, python-format
 msgid "Check out document: %s"
-msgstr "Uit-checken document: %s"
+msgstr "Uitchecken document: %s"
 
 #: views.py:158
 #, python-format
 msgid "Check out details for document: %s"
-msgstr "Uit-check details voor document: %s"
+msgstr "Uitcheck details voor document: %s"
 
 #: views.py:177
 msgid ""
 "Checking out a document, blocks certain operations for a predetermined "
 "amount of time."
-msgstr ""
+msgstr "Een document uitchecken blokkeert bepaalde bewerkingen voor een voorafingestelde tijd."
 
 #: views.py:180
 msgid "No documents have been checked out"

@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:33-0400\n"
-"PO-Revision-Date: 2020-03-28 07:22+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-06-22 23:18-0400\n"
+"PO-Revision-Date: 2020-06-22 14:54+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -117,7 +117,7 @@ msgstr "Primární klíče role, ke které se tento seznam řízení přístupu 
 msgid ""
 "An ACL for \"%(object)s\" using role \"%(role)s\" already exists. Edit that "
 "ACL entry instead."
-msgstr ""
+msgstr "ACL pro &quot;%(object)s&quot; používající roli &quot;%(role)s&quot; již existuje. Místo toho upravte tuto položku ACL."
 
 #: views.py:53
 #, python-format
@@ -138,7 +138,7 @@ msgid ""
 "ACL stands for Access Control List and is a precise method to control user "
 "access to objects in the system. ACLs allow granting a permission to a role "
 "but only for a specific object or set of objects."
-msgstr ""
+msgstr "ACL je zkratka pro seznam řízení přístupu a je to přesná metoda řízení přístupu uživatelů k objektům v systému. Seznamy ACL umožňují udělit oprávnění roli, ale pouze pro určitý objekt nebo skupinu objektů."
 
 #: views.py:143
 #, python-format

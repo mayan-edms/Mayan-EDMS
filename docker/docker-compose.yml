@@ -75,6 +75,7 @@ services:
     restart: unless-stopped
     volumes:
       - ${MAYAN_REDIS_VOLUME:-redis}:/data
+
   # Optional services
 
   # celery_flower:
@@ -83,7 +84,7 @@ services:
   #     - flower
   #   depends_on:
   #     - postgresql
-  #     - results
+  #     - redis
   #     # Enable to use RabbitMQ
   #     # - rabbitmq
   #   environment:
@@ -97,9 +98,7 @@ services:
 
   # Enable to use RabbitMQ
   # rabbitmq:
-  #   container_name: mayan-edms-rabbitmq
-  #   hostname: mayan-edms-rabbitmq
-  #   image: healthcheck/rabbitmq
+  #   image: rabbitmq:3.8-alpine
   #   environment:
   #     RABBITMQ_DEFAULT_USER: ${MAYAN_RABBITMQ_USER:-mayan}
   #     RABBITMQ_DEFAULT_PASS: ${MAYAN_RABBITMQ_PASSWORD:-mayanrabbitpass}
@@ -116,8 +115,8 @@ services:
   #     - run_worker
   #     - fast
   #   depends_on:
-  #     - db
-  #     - results
+  #     - postgresql
+  #     - redis
   #     # Enable to use RabbitMQ
   #     # - rabbitmq
   #   environment:
@@ -134,8 +133,8 @@ services:
   #   command:
   #     - run_frontend
   #   depends_on:
-  #     - db
-  #     - results
+  #     - postgresql
+  #     - redis
   #     # Enable to use RabbitMQ
   #     # - rabbitmq
   #   environment:

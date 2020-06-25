@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:37-0400\n"
+"POT-Creation-Date: 2020-06-22 23:21-0400\n"
 "PO-Revision-Date: 2019-12-03 05:24+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>, 2020\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -59,7 +59,7 @@ msgstr "Karanténa"
 msgid "Use the template sandbox"
 msgstr "Použijte karanténu šablony"
 
-#: views.py:36
+#: views.py:37
 #, python-format
 msgid "Template sandbox for: %s"
 msgstr "Karanténa šablony pro: %s"

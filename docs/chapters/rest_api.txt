@@ -49,15 +49,15 @@ Get a list of document types::
      u'next': None,
      u'previous': None,
      u'results': [{u'delete_time_period': 30,
-       u'delete_time_unit': u'days',
-       u'documents_count': 12,
-       u'documents_url': u'http://127.0.0.1:8000/api/document_types/1/documents/',
-       u'filenames': [],
-       u'id': 1,
-       u'label': u'Default',
-       u'trash_time_period': None,
-       u'trash_time_unit': None,
-       u'url': u'http://127.0.0.1:8000/api/document_types/1/'}]}
+     u'delete_time_unit': u'days',
+     u'documents_count': 12,
+     u'documents_url': u'http://127.0.0.1:8000/api/document_types/1/documents/',
+     u'filenames': [],
+     u'id': 1,
+     u'label': u'Default',
+     u'trash_time_period': None,
+     u'trash_time_unit': None,
+     u'url': u'http://127.0.0.1:8000/api/document_types/1/'}]}
 
 Upload a new document:
 

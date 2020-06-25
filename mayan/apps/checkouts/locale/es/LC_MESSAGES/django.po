@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Roberto Rosario, 2015-2019
+# Roberto Rosario, 2015-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:34-0400\n"
-"PO-Revision-Date: 2020-04-28 03:38+0000\n"
+"POT-Creation-Date: 2020-06-22 23:18-0400\n"
+"PO-Revision-Date: 2020-04-30 15:38+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -44,7 +44,7 @@ msgstr "Documento devuelto forzosamente"
 
 #: exceptions.py:16
 msgid "Document not checked out."
-msgstr ""
+msgstr "El documento no ha sido reservado."
 
 #: exceptions.py:25
 msgid "Document already checked out."

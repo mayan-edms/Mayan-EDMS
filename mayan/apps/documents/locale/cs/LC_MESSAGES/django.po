@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:35-0400\n"
-"PO-Revision-Date: 2020-04-02 06:56+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-06-22 23:19-0400\n"
+"PO-Revision-Date: 2020-06-22 15:15+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,59 +18,60 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:130 apps.py:339 events.py:5 menus.py:8 models/document_models.py:94
-#: permissions.py:5 queues.py:25 settings.py:17 statistics.py:234
+#: apps.py:130 apps.py:343 events.py:5 menus.py:8
+#: models/document_models.py:130 permissions.py:5 queues.py:25 settings.py:17
+#: statistics.py:234
 msgid "Documents"
 msgstr "Dokumenty"
 
-#: apps.py:151
+#: apps.py:155
 msgid "Create a document type"
 msgstr "Vytvořit typ dokumentu"
 
-#: apps.py:153
+#: apps.py:157
 msgid ""
 "Every uploaded document must be assigned a document type, it is the basic "
 "way Mayan EDMS categorizes documents."
 msgstr "Každému nahranému dokumentu musí být přiřazen typ dokumentu, jedná se o základní způsob, jakým Mayan EDMS kategorizuje dokumenty."
 
-#: apps.py:192
+#: apps.py:196
 msgid "Versions comment"
 msgstr "Komentáře k verzím"
 
-#: apps.py:196
+#: apps.py:200
 msgid "Versions encoding"
 msgstr "Verze kódování"
 
-#: apps.py:200
+#: apps.py:204
 msgid "Versions mime type"
 msgstr "Verze mime type"
 
-#: apps.py:204
+#: apps.py:208
 msgid "Versions timestamp"
 msgstr "Časová značka verzí"
 
-#: apps.py:209
+#: apps.py:213
 msgid "Return the lastest version of the document."
 msgstr "Vraťte poslední verzi dokumentu."
 
-#: apps.py:210
+#: apps.py:214
 msgid "Latest version"
 msgstr "Poslední verze"
 
-#: apps.py:274 apps.py:305 apps.py:323 apps.py:370
+#: apps.py:278 apps.py:309 apps.py:327 apps.py:374
 msgid "Thumbnail"
 msgstr "Náhled"
 
-#: apps.py:282 apps.py:375 forms/document_forms.py:183
+#: apps.py:286 apps.py:379 forms/document_forms.py:183
 #: links/document_version_page_links.py:135
 msgid "Pages"
 msgstr "Strany"
 
-#: apps.py:291 links/duplicated_document_links.py:12
+#: apps.py:295 links/duplicated_document_links.py:12
 msgid "Duplicates"
 msgstr "Duplikáty"
 
-#: apps.py:327
+#: apps.py:331
 msgid "Type"
 msgstr "Typ"
 
@@ -114,7 +115,7 @@ msgstr "Nová verze byla nahrána"
 
 #: events.py:17
 msgid "New version created"
-msgstr ""
+msgstr "Byla vytvořena nová verze"
 
 #: events.py:20
 msgid "Document properties edited"
@@ -183,11 +184,11 @@ msgstr "Vezme příponu souboru a přesune ji na konec názvu souboru, což umo�
 msgid "Date added"
 msgstr "Datum přidání"
 
-#: forms/document_forms.py:152 models/document_models.py:41 search.py:41
+#: forms/document_forms.py:152 models/document_models.py:61 search.py:41
 msgid "UUID"
 msgstr "UUID"
 
-#: forms/document_forms.py:154 models/document_models.py:66
+#: forms/document_forms.py:154 models/document_models.py:86
 msgid "Language"
 msgstr "Jazyk"
 
@@ -215,7 +216,7 @@ msgstr "Existuje v úložišti"
 msgid "File path in storage"
 msgstr "Cesta k souboru v úložišti"
 
-#: forms/document_forms.py:182 models/document_version_models.py:105
+#: forms/document_forms.py:182 models/document_version_models.py:106
 #: search.py:45 search.py:70
 msgid "Checksum"
 msgstr "Kontrolní součet"
@@ -230,7 +231,7 @@ msgid ""
 "transformations will be lost."
 msgstr "Číslo stránky, ze kterého budou klonovány všechny transformace. Stávající transformace budou ztraceny."
 
-#: forms/document_type_forms.py:40 models/document_models.py:46
+#: forms/document_type_forms.py:40 models/document_models.py:66
 #: models/document_type_models.py:58 models/document_type_models.py:153
 #: search.py:33 search.py:57
 msgid "Document type"
@@ -325,7 +326,7 @@ msgid "Download version"
 msgstr "Stáhnout verzi"
 
 #: links/document_version_links.py:37 links/document_version_page_links.py:96
-#: models/document_models.py:93 models/document_version_models.py:69
+#: models/document_models.py:129 models/document_version_models.py:70
 #: models/misc_models.py:33 models/misc_models.py:63 models/misc_models.py:92
 msgid "Document"
 msgstr "Dokument"
@@ -444,82 +445,82 @@ msgstr "Výchozí"
 msgid "All pages"
 msgstr "Všechny strany"
 
-#: models/document_models.py:39
+#: models/document_models.py:59
 msgid ""
 "UUID of a document, universally Unique ID. An unique identifier generated "
 "for each document."
 msgstr "UUID dokumentu, univerzálně jedinečné ID. Jedinečný identifikátor vygenerovaný pro každý dokument."
 
-#: models/document_models.py:44
+#: models/document_models.py:64
 msgid "The document type of the document."
 msgstr "Typ dokumentu."
 
-#: models/document_models.py:50
+#: models/document_models.py:70
 msgid "The name of the document."
 msgstr "Název dokumentu."
 
-#: models/document_models.py:50 models/document_page_models.py:256
+#: models/document_models.py:70 models/document_page_models.py:256
 #: models/document_type_models.py:30 models/document_type_models.py:156
 #: search.py:38 search.py:64
 msgid "Label"
 msgstr "Jmenovky"
 
-#: models/document_models.py:54
+#: models/document_models.py:74
 msgid "An optional short text describing a document."
 msgstr "Volitelný krátký text popisující dokument."
 
-#: models/document_models.py:55 search.py:39 search.py:67
+#: models/document_models.py:75 search.py:39 search.py:67
 msgid "Description"
 msgstr "Popis"
 
-#: models/document_models.py:59
+#: models/document_models.py:79
 msgid ""
 "The server date and time when the document was finally processed and added "
 "to the system."
 msgstr "Datum a čas serveru, kdy byl dokument nakonec zpracován a přidán do systému."
 
-#: models/document_models.py:61 models/misc_models.py:39
+#: models/document_models.py:81 models/misc_models.py:39
 msgid "Added"
 msgstr "Přidáno"
 
-#: models/document_models.py:65
+#: models/document_models.py:85
 msgid "The dominant language in the document."
 msgstr "Dominantní jazyk v dokumentu."
 
-#: models/document_models.py:70
+#: models/document_models.py:90
 msgid "Whether or not this document is in the trash."
 msgstr "Je tento dokument v koši, či není?"
 
-#: models/document_models.py:71
+#: models/document_models.py:91
 msgid "In trash?"
 msgstr "V koši?"
 
-#: models/document_models.py:75
+#: models/document_models.py:95
 msgid "The server date and time when the document was moved to the trash."
 msgstr "Datum a čas serveru, kdy byl dokument přesunut do koše."
 
-#: models/document_models.py:77
+#: models/document_models.py:97
 msgid "Date and time trashed"
 msgstr "Datum a čas vyhození"
 
-#: models/document_models.py:81
+#: models/document_models.py:101
 msgid ""
 "A document stub is a document with an entry on the database but no file "
 "uploaded. This could be an interrupted upload or a deferred upload via the "
 "API."
 msgstr "Útržek dokumentu je dokument s položkou v databázi, ale není nahrán žádný soubor. Může to být přerušené nahrávání nebo odložené nahrávání prostřednictvím rozhraní API."
 
-#: models/document_models.py:84
+#: models/document_models.py:104
 msgid "Is stub?"
 msgstr "Je to útržek?"
 
-#: models/document_models.py:97
+#: models/document_models.py:133
 #, python-format
 msgid "Document stub, id: %d"
 msgstr "Útržek dokumentu, id: %d"
 
-#: models/document_page_models.py:40 models/document_version_models.py:110
-#: models/document_version_models.py:111
+#: models/document_page_models.py:40 models/document_version_models.py:111
+#: models/document_version_models.py:112
 msgid "Document version"
 msgstr "Verze dokumentu"
 
@@ -584,44 +585,44 @@ msgstr "Typy dokumentů"
 msgid "Quick label"
 msgstr "Rychlé jmenovky"
 
-#: models/document_version_models.py:73
+#: models/document_version_models.py:74
 msgid "The server date and time when the document version was processed."
 msgstr "Datum a čas serveru, kdy byla zpracována verze dokumentu."
 
-#: models/document_version_models.py:74
+#: models/document_version_models.py:75
 msgid "Timestamp"
 msgstr "Časové razítko"
 
-#: models/document_version_models.py:78
+#: models/document_version_models.py:79
 msgid "An optional short text describing the document version."
 msgstr "Volitelný krátký text popisující verzi dokumentu."
 
-#: models/document_version_models.py:79
+#: models/document_version_models.py:80
 msgid "Comment"
 msgstr "Komentář"
 
-#: models/document_version_models.py:84
+#: models/document_version_models.py:85
 msgid "File"
 msgstr "Soubor"
 
-#: models/document_version_models.py:88
+#: models/document_version_models.py:89
 msgid ""
 "The document version's file mimetype. MIME types are a standard way to "
 "describe the format of a file, in this case the file format of the document."
 " Some examples: \"text/plain\" or \"image/jpeg\". "
 msgstr "Mimetype souboru verze dokumentu. Typy MIME jsou standardním způsobem, jak popsat formát souboru, v tomto případě formát souboru dokumentu. Několik příkladů: „text / plain“ nebo „image / jpeg“."
 
-#: models/document_version_models.py:92 search.py:36 search.py:61
+#: models/document_version_models.py:93 search.py:36 search.py:61
 msgid "MIME type"
 msgstr "Typ MIME"
 
-#: models/document_version_models.py:96
+#: models/document_version_models.py:97
 msgid ""
 "The document version file encoding. binary 7-bit, binary 8-bit, text, "
 "base64, etc."
 msgstr "Kódování souboru verze dokumentu. binární 7bitové, binární 8bitové, textové, base64 atd."
 
-#: models/document_version_models.py:98
+#: models/document_version_models.py:99
 msgid "Encoding"
 msgstr "Kódování"
 
@@ -854,7 +855,7 @@ msgstr "Argumenty k předání do DOCUMENT_STORAGE_BACKEND."
 #: settings.py:150
 msgid ""
 "Time after which a document stub will be considered invalid and deleted."
-msgstr ""
+msgstr "Čas, po kterém bude útržek dokumentu považován za neplatný a odstraněný."
 
 #: settings.py:156
 msgid "Height in pixels of the document thumbnail image."
@@ -952,7 +953,7 @@ msgstr "Celkový počet stránek dokumentu v každém měsíci"
 msgid ""
 "Unable to initialize the document image storage. Check the settings {} and "
 "{} for formatting errors."
-msgstr ""
+msgstr "Nelze inicializovat úložiště obrázků dokumentu. Zkontrolujte v nastavení {} a {} chyby formátování."
 
 #: storages.py:23
 msgid "Document images"
@@ -962,11 +963,11 @@ msgstr "Obrázky dokumentů"
 msgid ""
 "Unable to initialize the document version storage. Check the settings {} and"
 " {} for formatting errors."
-msgstr ""
+msgstr "Nelze inicializovat úložiště verze dokumentu. Zkontrolujte v nastavení {} a {} chyby formátování."
 
 #: storages.py:37
 msgid "Document version files"
-msgstr ""
+msgstr "Soubory verze dokumentů"
 
 #: templates/documents/document_print.html:12
 msgid "Document page image preview"
@@ -1429,12 +1430,12 @@ msgstr "Koš se úspěšně vyprázdnil"
 #: views/trashed_document_views.py:85
 #, python-format
 msgid "%(count)d trashed document submitted for deletion."
-msgstr ""
+msgstr "%(count)d vyhozený dokument předložený k odstranění."
 
 #: views/trashed_document_views.py:88
 #, python-format
 msgid "%(count)d trashed documents submitted for deletion."
-msgstr ""
+msgstr "%(count)d vyhozené dokumenty předložené k odstranění."
 
 #: views/trashed_document_views.py:96
 msgid "Delete the selected trashed document?"
@@ -1480,4 +1481,4 @@ msgstr "Strany: %d"
 
 #: workflow_actions.py:7
 msgid "Send document to trash"
-msgstr ""
+msgstr "Odeslat dokument do koše"

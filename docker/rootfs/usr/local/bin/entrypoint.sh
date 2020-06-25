@@ -20,6 +20,9 @@ export MAYAN_INSTALL_DIR=/opt/mayan-edms
 export MAYAN_PYTHON_BIN_DIR=/opt/mayan-edms/bin/
 export MAYAN_MEDIA_ROOT=/var/lib/mayan
 export MAYAN_SETTINGS_MODULE=${MAYAN_SETTINGS_MODULE:-mayan.settings.production}
+
+# Set DJANGO_SETTINGS_MODULE to MAYAN_SETTINGS_MODULE to avoid two
+# different environments for the setting file.
 export DJANGO_SETTINGS_MODULE=${MAYAN_SETTINGS_MODULE}
 
 export MAYAN_GUNICORN_BIN=${MAYAN_PYTHON_BIN_DIR}gunicorn
@@ -71,6 +74,11 @@ apt_get_install() {
 
 initialsetup() {
     echo "mayan: initialsetup()"
+
+    # Change the owner of the /var/lib/mayan always to allow adding the
+    # initial files. Top level only.
+    chown mayan:mayan ${MAYAN_MEDIA_ROOT}
+
     su mayan -c "${MAYAN_BIN} initialsetup --force --no-dependencies"
 }
 
@@ -111,8 +119,8 @@ pip_installs() {
 
 update_uid_gid() {
     echo "mayan: update_uid_gid()"
-    groupmod mayan -g ${MAYAN_USER_GID} 2>/dev/null || true
-    usermod mayan -u ${MAYAN_USER_UID} -g ${MAYAN_USER_GID} 2>/dev/null
+    groupmod mayan -o -g ${MAYAN_USER_GID}
+    usermod mayan -o -u ${MAYAN_USER_UID}
 
     if [ ${MAYAN_USER_UID} -ne ${DEFAULT_USER_UID} ] || [ ${MAYAN_USER_GID} -ne ${DEFAULT_USER_GID} ]; then
         echo "mayan: Updating file ownership. This might take a while if there are many documents."

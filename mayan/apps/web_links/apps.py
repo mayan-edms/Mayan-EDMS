@@ -9,7 +9,7 @@ from mayan.apps.common.html_widgets import TwoStateWidget
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_object, menu_secondary, menu_setup
 )
-from mayan.apps.events.classes import ModelEventType
+from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list
 )
@@ -38,7 +38,6 @@ class WebLinksApp(MayanAppConfig):
 
     def ready(self):
         super(WebLinksApp, self).ready()
-        from actstream import registry
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'
@@ -49,6 +48,9 @@ class WebLinksApp(MayanAppConfig):
 
         ResolvedWebLink = self.get_model(model_name='ResolvedWebLink')
         WebLink = self.get_model(model_name='WebLink')
+
+        EventModelRegistry.register(model=ResolvedWebLink)
+        EventModelRegistry.register(model=WebLink)
 
         ModelEventType.register(
             event_types=(
@@ -124,6 +126,3 @@ class WebLinksApp(MayanAppConfig):
             )
         )
         menu_setup.bind_links(links=(link_web_link_setup,))
-
-        registry.register(ResolvedWebLink)
-        registry.register(WebLink)

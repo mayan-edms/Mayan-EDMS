@@ -134,7 +134,7 @@ def common_project_information(attribute_name):
 def common_render_subtemplate(context, template_name, template_context):
     """
     Renders the specified template with the mixed parent and
-    subtemplate contexts
+    subtemplate contexts.
     """
     new_context = Context(context.flatten())
     new_context.update(Context(template_context))

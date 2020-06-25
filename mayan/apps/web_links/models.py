@@ -1,11 +1,11 @@
 from django.db import models, transaction
-from django.template import Context, Template
 from django.urls import reverse
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.documents.events import event_document_type_edited
 from mayan.apps.documents.models import DocumentType
+from mayan.apps.templating.classes import Template
 
 from .events import event_web_link_created, event_web_link_edited
 from .managers import WebLinkManager
@@ -97,6 +97,6 @@ class ResolvedWebLink(WebLink):
         proxy = True
 
     def get_url_for(self, document):
-        context = Context({'document': document})
-
-        return Template(self.template).render(context=context)
+        return Template(template_string=self.template).render(
+            context={'document': document}
+        )

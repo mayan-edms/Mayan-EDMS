@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:35-0400\n"
+"POT-Creation-Date: 2020-06-22 23:19-0400\n"
 "PO-Revision-Date: 2019-12-13 05:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
@@ -24,7 +24,7 @@ msgstr ""
 msgid "Linking"
 msgstr ""
 
-#: apps.py:75 models.py:26
+#: apps.py:76 models.py:26
 msgid "Label"
 msgstr "Nome"
 
@@ -155,66 +155,66 @@ msgstr ""
 msgid "Dynamic label"
 msgstr ""
 
-#: models.py:34 models.py:194
+#: models.py:34 models.py:191
 msgid "Enabled"
 msgstr ""
 
-#: models.py:44 models.py:172
+#: models.py:44 models.py:169
 msgid "Smart link"
 msgstr ""
 
-#: models.py:84
+#: models.py:83
 #, python-format
 msgid "Error generating dynamic label; %s"
 msgstr ""
 
-#: models.py:99
+#: models.py:98
 msgid "This smart link is not allowed for the selected document's type."
 msgstr ""
 
-#: models.py:176
+#: models.py:173
 msgid "The inclusion is ignored for the first item."
 msgstr "A inclusão é ignorada para o primeiro item."
 
-#: models.py:180
+#: models.py:177
 msgid "This represents the metadata of all other documents."
 msgstr ""
 
-#: models.py:181
+#: models.py:178
 msgid "Foreign document attribute"
 msgstr ""
 
-#: models.py:186
+#: models.py:183
 msgid ""
 "The expression using document properties to be evaluated against the foreign"
 " document field."
 msgstr ""
 
-#: models.py:188
+#: models.py:185
 msgid "Expression"
 msgstr ""
 
-#: models.py:191
+#: models.py:188
 msgid "Inverts the logic of the operator."
 msgstr "Inverte a lógica do operador."
 
-#: models.py:192
+#: models.py:189
 msgid "Negated"
 msgstr ""
 
-#: models.py:197
+#: models.py:194
 msgid "Link condition"
 msgstr ""
 
-#: models.py:198
+#: models.py:195
 msgid "Link conditions"
 msgstr ""
 
-#: models.py:206
+#: models.py:203
 msgid "not"
 msgstr "não"
 
-#: models.py:210
+#: models.py:207
 msgid "Full label"
 msgstr ""
 

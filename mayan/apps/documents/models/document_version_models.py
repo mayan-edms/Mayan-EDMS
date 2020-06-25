@@ -6,7 +6,6 @@ import uuid
 
 from django.apps import apps
 from django.db import models, transaction
-from django.template import Context, Template
 from django.urls import reverse
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils.functional import cached_property
@@ -19,6 +18,7 @@ from mayan.apps.converter.transformations import TransformationRotate
 from mayan.apps.converter.utils import get_converter_class
 from mayan.apps.mimetype.api import get_mimetype
 from mayan.apps.storage.classes import DefinedStorageLazy
+from mayan.apps.templating.classes import Template
 
 from ..events import event_document_version_new, event_document_version_revert
 from ..literals import (
@@ -60,6 +60,7 @@ class DocumentVersion(models.Model):
     document is modified after upload it's checksum will not match, used for
     detecting file tampering among other things.
     """
+    _hooks_pre_create = []
     _pre_open_hooks = []
     _pre_save_hooks = []
     _post_save_hooks = []
@@ -129,9 +130,25 @@ class DocumentVersion(models.Model):
         hook_list.insert(order, func)
 
     @classmethod
+    def execute_pre_create_hooks(cls, kwargs=None):
+        """
+        Helper method to allow checking if it is possible to create
+        a new document version.
+        """
+        cls._execute_hooks(
+            hook_list=cls._hooks_pre_create, instance=None, kwargs=kwargs
+        )
+
+    @classmethod
     def register_post_save_hook(cls, func, order=None):
         cls._insert_hook_entry(
             hook_list=cls._post_save_hooks, func=func, order=order
+        )
+
+    @classmethod
+    def register_pre_create_hook(cls, func, order=None):
+        cls._insert_hook_entry(
+            hook_list=cls._hooks_pre_create, func=func, order=order
         )
 
     @classmethod
@@ -253,12 +270,14 @@ class DocumentVersion(models.Model):
             )
         else:
             return Template(
-                '{{ instance.document }} - {{ instance.timestamp }}'
-            ).render(context=Context({'instance': self}))
+                template_string='{{ instance.document }} - {{ instance.timestamp }}'
+            ).render(context={'instance': self})
 
     def get_rendered_timestamp(self):
-        return Template('{{ instance.timestamp }}').render(
-            context=Context({'instance': self})
+        return Template(
+            template_string='{{ instance.timestamp }}'
+        ).render(
+            context={'instance': self}
         )
 
     def natural_key(self):

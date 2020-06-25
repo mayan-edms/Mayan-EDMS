@@ -1,3 +1,54 @@
+3.4.10 (2020-06-24)
+===================
+- Fix repeated columns in the document index node list view.
+- Rephrase the help text for the workflow state action and transition
+  condition field.
+- Switch direction of dropdowns when there is not enough area left at the
+  bottom. Close GitLab issue #830. Thanks to Bw (@bwakkie) for the report.
+- Minor fixes to the optional services in the default Docker compose file.
+- Add support for selecting texts in cards.
+- Allow passing environment entries to the Tesseract OCR backend.
+- Update Sphinx from version 2.4.4 to version 3.0.3 and django-cors-headers
+  from version 2.5.2 to version 3.2.1. Closes GitLab issue #835. Thanks to
+  Girum Bizuayehu (@gbizuayehu) for the report.
+- Allow using non unique GID and UID when starting the Docker image.
+  Closes GitLab issue #834. Thanks to Alexander Schlüter (@alexschlueter)
+  for the report and solution.
+- Fix the storage name used in the DOCUMENTS_CACHE_MAXIMUM_SIZE callback
+  function. Closes GitLab issue #838. Thanks to forum user @Obelix1981
+  for the report and debug information.
+- Add a dependency tracking for the graphviz dot executable used to generate
+  workflow previews. It is not possible to pass a path to the graphviz Python
+  library therefore this setting is only informational.
+- Update Django from version 2.2.12 to version 2.2.13.
+
+3.4.9 (2020-05-26)
+==================
+- Add the packaging library explicitly as a dependency.
+  Closes GitLab issue #825. Thanks to Martin (@efelon) for the
+  report and debug information.
+
+3.4.8 (2020-05-25)
+==================
+- Move django-qsstats-magic to the mayan_statistics app.
+- Update Pillow from version 7.0.0 to 7.1.2.
+- Update Werkzeug from version 1.0.0 to 1.0.1.
+- Update devpi-server from version 5.4.1 to 5.5.0.
+- Update django-celery-beat from version 1.5.0 to 2.0.0.
+- Update translation files.
+- Encapsulate actstream registry inside a EventModelRegistry.
+- Improve default binary path detections in OpenBSD 6.7.
+- Fix README link to installation chapter. Closes GitLab issue #823.
+  Thanks to Matthias Löblich (@startmat) for the report.
+- Add document and document version pre creation hooks.
+- Use pre creation hooks to check quotas before document or document
+  version creation and block user early on before
+  the task is submitted.
+- Wrap around long texts in the panel's body.
+- Wrap around long tags when showing them in a panel's body.
+- Move templating to the templating app.
+- Expose Django's ``AUTHENTICATION_BACKENDS`` setting.
+
 3.4.7 (2020-04-28)
 ==================
 - Darken dropdown menu text to increase contrast and legibility.

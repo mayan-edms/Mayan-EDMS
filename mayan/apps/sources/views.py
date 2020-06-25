@@ -16,7 +16,9 @@ from mayan.apps.common.generics import (
 from mayan.apps.common.menus import menu_facet
 from mayan.apps.common.mixins import ExternalObjectMixin
 from mayan.apps.common.models import SharedUploadedFile
-from mayan.apps.documents.models import DocumentType, Document
+from mayan.apps.documents.models import (
+    DocumentType, Document, DocumentVersion
+)
 from mayan.apps.documents.permissions import (
     permission_document_create, permission_document_new_version
 )
@@ -433,8 +435,10 @@ class UploadInteractiveView(UploadBaseView):
             )
 
             if not self.request.user.is_anonymous:
+                user = self.request.user
                 user_id = self.request.user.pk
             else:
+                user = None
                 user_id = None
 
             try:
@@ -446,6 +450,21 @@ class UploadInteractiveView(UploadBaseView):
             querystring.update(self.request.POST)
 
             try:
+                Document.execute_pre_create_hooks(
+                    kwargs={
+                        'document_type': self.document_type,
+                        'user': user
+                    }
+                )
+
+                DocumentVersion.execute_pre_create_hooks(
+                    kwargs={
+                        'document_type': self.document_type,
+                        'shared_uploaded_file': shared_uploaded_file,
+                        'user': user
+                    }
+                )
+
                 task_source_handle_upload.apply_async(
                     kwargs=dict(
                         description=forms['document_form'].cleaned_data.get('description'),
@@ -590,23 +609,48 @@ class DocumentVersionUploadInteractiveView(UploadBaseView):
                 messages.error(message=exception, request=self.request)
 
             if not self.request.user.is_anonymous:
+                user = self.request.user
                 user_id = self.request.user.pk
             else:
+                user = None
                 user_id = None
 
-            task_upload_new_version.apply_async(kwargs=dict(
-                shared_uploaded_file_id=shared_uploaded_file.pk,
-                document_id=self.document.pk,
-                user_id=user_id,
-                comment=forms['document_form'].cleaned_data.get('comment')
-            ))
+            try:
+                DocumentVersion.execute_pre_create_hooks(
+                    kwargs={
+                        'document': self.document,
+                        'shared_uploaded_file': shared_uploaded_file,
+                        'user': user
+                    }
+                )
 
-            messages.success(
-                message=_(
-                    'New document version queued for upload and will be '
-                    'available shortly.'
-                ), request=self.request
-            )
+                task_upload_new_version.apply_async(kwargs=dict(
+                    shared_uploaded_file_id=shared_uploaded_file.pk,
+                    document_id=self.document.pk,
+                    user_id=user_id,
+                    comment=forms['document_form'].cleaned_data.get('comment')
+                ))
+            except Exception as exception:
+                message = _(
+                    'Error executing document version upload task; '
+                    '%(exception)s'
+                ) % {
+                    'exception': exception,
+                }
+                logger.critical(msg=message, exc_info=True)
+                if self.request.is_ajax():
+                    return JsonResponse(
+                        data={'error': force_text(message)}, status=500
+                    )
+                else:
+                    raise type(exception)(message)
+            else:
+                messages.success(
+                    message=_(
+                        'New document version queued for upload and will be '
+                        'available shortly.'
+                    ), request=self.request
+                )
 
         return HttpResponseRedirect(
             redirect_to=reverse(

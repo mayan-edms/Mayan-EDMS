@@ -5,12 +5,12 @@ from furl import furl
 
 from django.core import mail
 from django.db import models, transaction
-from django.template import Context, Template
 from django.utils.html import strip_tags
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.settings import setting_project_url
+from mayan.apps.templating.classes import Template
 
 from .classes import NullBackend
 from .events import event_email_sent
@@ -183,13 +183,15 @@ class UserMailer(models.Model):
             'document': document
         }
 
-        context = Context(context_dictionary)
+        body_template = Template(template_string=body)
+        body_html_content = body_template.render(
+            context=context_dictionary
+        )
 
-        body_template = Template(body)
-        body_html_content = body_template.render(context)
-
-        subject_template = Template(subject)
-        subject_text = strip_tags(subject_template.render(context))
+        subject_template = Template(template_string=subject)
+        subject_text = strip_tags(
+            subject_template.render(context=context_dictionary)
+        )
 
         attachments = []
         if as_attachment:

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:34-0400\n"
+"POT-Creation-Date: 2020-06-22 23:19-0400\n"
 "PO-Revision-Date: 2020-04-14 08:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
@@ -110,47 +110,47 @@ msgstr "Privātās atslēgas"
 msgid "Public keys"
 msgstr "Publiskās atslēgas"
 
-#: literals.py:12 literals.py:20
+#: literals.py:14 literals.py:22
 msgid "Public"
 msgstr "Publiska"
 
-#: literals.py:13 literals.py:21
+#: literals.py:15 literals.py:23
 msgid "Secret"
 msgstr "Noslēpums"
 
-#: literals.py:29 literals.py:34
+#: literals.py:31 literals.py:36
 msgid "RSA"
 msgstr "RSA"
 
-#: literals.py:30
+#: literals.py:32
 msgid "DSA"
 msgstr "DSA"
 
-#: literals.py:35
+#: literals.py:37
 msgid "Elgamal"
 msgstr "Elgamāls"
 
-#: literals.py:49
+#: literals.py:51
 msgid "Bad signature."
 msgstr "Slikts paraksts."
 
-#: literals.py:52
+#: literals.py:54
 msgid "Document not signed or invalid signature."
 msgstr "Dokuments nav parakstīts vai nederīgs paraksts."
 
-#: literals.py:55
+#: literals.py:57
 msgid "Signature error."
 msgstr "Paraksta kļūda."
 
-#: literals.py:59
+#: literals.py:61
 msgid "Document is signed but no public key is available for verification."
 msgstr "Dokuments ir parakstīts, bet verifikācijai nav pieejama publiska atslēga."
 
-#: literals.py:64
+#: literals.py:66
 msgid "Document is signed, and signature is good."
 msgstr "Dokuments ir parakstīts, un paraksts ir labs."
 
-#: literals.py:67
+#: literals.py:69
 msgid "Document is signed with a valid signature."
 msgstr "Dokumentu paraksta ar derīgu parakstu."
 

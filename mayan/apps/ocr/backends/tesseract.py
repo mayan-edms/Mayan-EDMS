@@ -1,4 +1,5 @@
 import logging
+import os
 import shutil
 
 import sh
@@ -19,8 +20,9 @@ logger = logging.getLogger(name=__name__)
 
 class Tesseract(OCRBackendBase):
     def __init__(self, *args, **kwargs):
+        kwargs.pop('environment', {})
         auto_initialize = kwargs.pop('auto_initialize', True)
-        super(Tesseract, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
         if auto_initialize:
             self.initialize()
@@ -49,8 +51,11 @@ class Tesseract(OCRBackendBase):
                 if self.language:
                     keyword_arguments['l'] = self.language
 
-                try:
+                environment = os.environ.copy()
+                environment.update(self.environment)
+                keyword_arguments['_env'] = environment
 
+                try:
                     result = self.command_tesseract(
                         *arguments, **keyword_arguments
                     )
@@ -108,10 +113,12 @@ class Tesseract(OCRBackendBase):
             logger.debug('Available languages: %s', ', '.join(self.languages))
 
     def read_settings(self):
-        self.tesseract_binary_path = setting_ocr_backend_arguments.value.get(
-            'tesseract_path', DEFAULT_TESSERACT_BINARY_PATH
-        )
-
         self.command_timeout = setting_ocr_backend_arguments.value.get(
             'timeout', DEFAULT_TESSERACT_TIMEOUT
+        )
+        self.environment = setting_ocr_backend_arguments.value.get(
+            'environment', {}
+        )
+        self.tesseract_binary_path = setting_ocr_backend_arguments.value.get(
+            'tesseract_path', DEFAULT_TESSERACT_BINARY_PATH
         )

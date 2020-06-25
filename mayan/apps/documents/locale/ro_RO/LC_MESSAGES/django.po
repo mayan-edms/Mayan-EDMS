@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:35-0400\n"
+"POT-Creation-Date: 2020-06-22 23:19-0400\n"
 "PO-Revision-Date: 2020-04-21 07:42+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -19,59 +19,60 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:130 apps.py:339 events.py:5 menus.py:8 models/document_models.py:94
-#: permissions.py:5 queues.py:25 settings.py:17 statistics.py:234
+#: apps.py:130 apps.py:343 events.py:5 menus.py:8
+#: models/document_models.py:130 permissions.py:5 queues.py:25 settings.py:17
+#: statistics.py:234
 msgid "Documents"
 msgstr "Documente"
 
-#: apps.py:151
+#: apps.py:155
 msgid "Create a document type"
 msgstr "Creați un tip de document"
 
-#: apps.py:153
+#: apps.py:157
 msgid ""
 "Every uploaded document must be assigned a document type, it is the basic "
 "way Mayan EDMS categorizes documents."
 msgstr "Fiecare document încărcat trebuie să fie atribuit unui tip de document, acesta este modul de bază în care Mayan EDMS categorizează documente."
 
-#: apps.py:192
+#: apps.py:196
 msgid "Versions comment"
 msgstr "Comentarii la versiuni"
 
-#: apps.py:196
+#: apps.py:200
 msgid "Versions encoding"
 msgstr "Codificare versiuni"
 
-#: apps.py:200
+#: apps.py:204
 msgid "Versions mime type"
 msgstr "Tip MIME pt. versiuni"
 
-#: apps.py:204
+#: apps.py:208
 msgid "Versions timestamp"
 msgstr "Marcă temporală versiuni"
 
-#: apps.py:209
+#: apps.py:213
 msgid "Return the lastest version of the document."
 msgstr "Returnați ultima versiune a documentului."
 
-#: apps.py:210
+#: apps.py:214
 msgid "Latest version"
 msgstr "Ultima versiune"
 
-#: apps.py:274 apps.py:305 apps.py:323 apps.py:370
+#: apps.py:278 apps.py:309 apps.py:327 apps.py:374
 msgid "Thumbnail"
 msgstr "Miniatură"
 
-#: apps.py:282 apps.py:375 forms/document_forms.py:183
+#: apps.py:286 apps.py:379 forms/document_forms.py:183
 #: links/document_version_page_links.py:135
 msgid "Pages"
 msgstr "Pagini"
 
-#: apps.py:291 links/duplicated_document_links.py:12
+#: apps.py:295 links/duplicated_document_links.py:12
 msgid "Duplicates"
 msgstr "Dubluri"
 
-#: apps.py:327
+#: apps.py:331
 msgid "Type"
 msgstr "Tip"
 
@@ -184,11 +185,11 @@ msgstr "Ia extensia de fișier și o mută până la capătul fișierului, permi
 msgid "Date added"
 msgstr "Dată adaugată"
 
-#: forms/document_forms.py:152 models/document_models.py:41 search.py:41
+#: forms/document_forms.py:152 models/document_models.py:61 search.py:41
 msgid "UUID"
 msgstr "UUID"
 
-#: forms/document_forms.py:154 models/document_models.py:66
+#: forms/document_forms.py:154 models/document_models.py:86
 msgid "Language"
 msgstr "Limba"
 
@@ -216,7 +217,7 @@ msgstr "Există în arhivă"
 msgid "File path in storage"
 msgstr "Cale fisier in arhiva"
 
-#: forms/document_forms.py:182 models/document_version_models.py:105
+#: forms/document_forms.py:182 models/document_version_models.py:106
 #: search.py:45 search.py:70
 msgid "Checksum"
 msgstr "Suma de control"
@@ -231,7 +232,7 @@ msgid ""
 "transformations will be lost."
 msgstr "Numărul paginii din care vor fi clonate toate transformările. Transformările existente vor fi pierdute."
 
-#: forms/document_type_forms.py:40 models/document_models.py:46
+#: forms/document_type_forms.py:40 models/document_models.py:66
 #: models/document_type_models.py:58 models/document_type_models.py:153
 #: search.py:33 search.py:57
 msgid "Document type"
@@ -326,7 +327,7 @@ msgid "Download version"
 msgstr "Descărcare versiune"
 
 #: links/document_version_links.py:37 links/document_version_page_links.py:96
-#: models/document_models.py:93 models/document_version_models.py:69
+#: models/document_models.py:129 models/document_version_models.py:70
 #: models/misc_models.py:33 models/misc_models.py:63 models/misc_models.py:92
 msgid "Document"
 msgstr "Document"
@@ -445,82 +446,82 @@ msgstr "Iniţial"
 msgid "All pages"
 msgstr "Toate paginile"
 
-#: models/document_models.py:39
+#: models/document_models.py:59
 msgid ""
 "UUID of a document, universally Unique ID. An unique identifier generated "
 "for each document."
 msgstr "UUID al unui document, identificator unic universal. Un identificator unic generat pentru fiecare document."
 
-#: models/document_models.py:44
+#: models/document_models.py:64
 msgid "The document type of the document."
 msgstr "Tipul de document al documentului."
 
-#: models/document_models.py:50
+#: models/document_models.py:70
 msgid "The name of the document."
 msgstr "Numele documentului."
 
-#: models/document_models.py:50 models/document_page_models.py:256
+#: models/document_models.py:70 models/document_page_models.py:256
 #: models/document_type_models.py:30 models/document_type_models.py:156
 #: search.py:38 search.py:64
 msgid "Label"
 msgstr "Etichetă"
 
-#: models/document_models.py:54
+#: models/document_models.py:74
 msgid "An optional short text describing a document."
 msgstr "Un text scurt opțional care descrie un document."
 
-#: models/document_models.py:55 search.py:39 search.py:67
+#: models/document_models.py:75 search.py:39 search.py:67
 msgid "Description"
 msgstr "Descriere"
 
-#: models/document_models.py:59
+#: models/document_models.py:79
 msgid ""
 "The server date and time when the document was finally processed and added "
 "to the system."
 msgstr "Data și ora serverului când documentul a fost procesat și adăugat în sistem."
 
-#: models/document_models.py:61 models/misc_models.py:39
+#: models/document_models.py:81 models/misc_models.py:39
 msgid "Added"
 msgstr "Adăugat"
 
-#: models/document_models.py:65
+#: models/document_models.py:85
 msgid "The dominant language in the document."
 msgstr "Limbajul dominant în document."
 
-#: models/document_models.py:70
+#: models/document_models.py:90
 msgid "Whether or not this document is in the trash."
 msgstr "Dacă acest document este sau nu în coșul de gunoi."
 
-#: models/document_models.py:71
+#: models/document_models.py:91
 msgid "In trash?"
 msgstr "În gunoi?"
 
-#: models/document_models.py:75
+#: models/document_models.py:95
 msgid "The server date and time when the document was moved to the trash."
 msgstr "Data și ora serverului când documentul a fost mutat în coșul de gunoi."
 
-#: models/document_models.py:77
+#: models/document_models.py:97
 msgid "Date and time trashed"
 msgstr "Data și ora în gunoi"
 
-#: models/document_models.py:81
+#: models/document_models.py:101
 msgid ""
 "A document stub is a document with an entry on the database but no file "
 "uploaded. This could be an interrupted upload or a deferred upload via the "
 "API."
 msgstr "Un stub document este un document cu o intrare în baza de date, dar nu se încarcat niciun fișier. Aceasta ar putea fi o încărcare întreruptă sau o încărcare amânată prin API."
 
-#: models/document_models.py:84
+#: models/document_models.py:104
 msgid "Is stub?"
 msgstr "Este stub?"
 
-#: models/document_models.py:97
+#: models/document_models.py:133
 #, python-format
 msgid "Document stub, id: %d"
 msgstr "Stub document, id: %d"
 
-#: models/document_page_models.py:40 models/document_version_models.py:110
-#: models/document_version_models.py:111
+#: models/document_page_models.py:40 models/document_version_models.py:111
+#: models/document_version_models.py:112
 msgid "Document version"
 msgstr "Versiune document"
 
@@ -585,44 +586,44 @@ msgstr "Tipuri de documente"
 msgid "Quick label"
 msgstr "Etichetă rapidă"
 
-#: models/document_version_models.py:73
+#: models/document_version_models.py:74
 msgid "The server date and time when the document version was processed."
 msgstr "Data și ora serverului la care a fost procesată versiunea documentului."
 
-#: models/document_version_models.py:74
+#: models/document_version_models.py:75
 msgid "Timestamp"
 msgstr "Marcaj temporal"
 
-#: models/document_version_models.py:78
+#: models/document_version_models.py:79
 msgid "An optional short text describing the document version."
 msgstr "Un text scurt opțional care descrie versiunea documentului."
 
-#: models/document_version_models.py:79
+#: models/document_version_models.py:80
 msgid "Comment"
 msgstr "Comentariu"
 
-#: models/document_version_models.py:84
+#: models/document_version_models.py:85
 msgid "File"
 msgstr "Fișier"
 
-#: models/document_version_models.py:88
+#: models/document_version_models.py:89
 msgid ""
 "The document version's file mimetype. MIME types are a standard way to "
 "describe the format of a file, in this case the file format of the document."
 " Some examples: \"text/plain\" or \"image/jpeg\". "
 msgstr "Mimetype pentru versiunea documentuli. Tipurile MIME sunt o modalitate standard de a descrie formatul unui fișier, în acest caz formatul de fișier al documentului. Câteva exemple: \"text / plain\" sau \"image / jpeg\"."
 
-#: models/document_version_models.py:92 search.py:36 search.py:61
+#: models/document_version_models.py:93 search.py:36 search.py:61
 msgid "MIME type"
 msgstr "Tip MIME"
 
-#: models/document_version_models.py:96
+#: models/document_version_models.py:97
 msgid ""
 "The document version file encoding. binary 7-bit, binary 8-bit, text, "
 "base64, etc."
 msgstr "Codarea fișierului de versiune a documentului. binar 7-bit, binar 8-bit, text, base64, etc."
 
-#: models/document_version_models.py:98
+#: models/document_version_models.py:99
 msgid "Encoding"
 msgstr "Encodare"
 

@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Thanh Long Hoàng <hoangthanhlong@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:36-0400\n"
-"PO-Revision-Date: 2020-01-28 07:59+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-06-22 23:20-0400\n"
+"PO-Revision-Date: 2020-06-16 09:55+0000\n"
+"Last-Translator: Thanh Long Hoàng <hoangthanhlong@gmail.com>\n"
 "Language-Team: Vietnamese (http://www.transifex.com/rosarior/mayan-edms/language/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -99,7 +100,7 @@ msgstr ""
 
 #: models.py:18
 msgid "Document type"
-msgstr ""
+msgstr "Kiểu tài liệu"
 
 #: models.py:22
 msgid "Automatically queue newly created documents for OCR."
@@ -115,7 +116,7 @@ msgstr ""
 
 #: models.py:43
 msgid "Document page"
-msgstr ""
+msgstr "Trang tài liệu"
 
 #: models.py:47
 msgid "The actual text content extracted by the OCR backend."
@@ -135,7 +136,7 @@ msgstr ""
 
 #: models.py:69
 msgid "Document version"
-msgstr ""
+msgstr "Phiên bản của tài liệu"
 
 #: models.py:72
 msgid "Date time submitted"

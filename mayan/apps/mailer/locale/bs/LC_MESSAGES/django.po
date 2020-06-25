@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:35-0400\n"
+"POT-Creation-Date: 2020-06-22 23:20-0400\n"
 "PO-Revision-Date: 2020-03-28 07:23+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (http://www.transifex.com/rosarior/mayan-edms/language/bs/)\n"
@@ -22,11 +22,11 @@ msgstr ""
 msgid "Mailer"
 msgstr "Mailer"
 
-#: apps.py:61 apps.py:82
+#: apps.py:62 apps.py:83
 msgid "Date and time"
 msgstr "Datum i vreme"
 
-#: apps.py:64 apps.py:86 models.py:28 models.py:228
+#: apps.py:65 apps.py:87 models.py:28 models.py:230
 msgid "Message"
 msgstr "Poruke"
 
@@ -225,7 +225,7 @@ msgstr "Putanja fajla"
 msgid "Django file based backend"
 msgstr "Django bazirani fajl"
 
-#: models.py:25 models.py:225
+#: models.py:25 models.py:227
 msgid "Date time"
 msgstr "Datum vreme"
 
@@ -275,19 +275,19 @@ msgstr "Backend podaci"
 msgid "The backend class for this entry."
 msgstr ""
 
-#: models.py:216
+#: models.py:218
 msgid "Test email from Mayan EDMS"
 msgstr "Testirajte email od Mayan EDMS"
 
-#: models.py:222
+#: models.py:224
 msgid "User mailer"
 msgstr "Korisnički poštar"
 
-#: models.py:234
+#: models.py:236
 msgid "User mailer log entry"
 msgstr "Unos dnevnika korisnika mailera"
 
-#: models.py:235
+#: models.py:237
 msgid "User mailer log entries"
 msgstr "Stavke evidencije korisnika mailera"
 

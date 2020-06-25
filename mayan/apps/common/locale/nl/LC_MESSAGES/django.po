@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:34-0400\n"
-"PO-Revision-Date: 2020-04-26 09:26+0000\n"
+"POT-Creation-Date: 2020-06-22 23:18-0400\n"
+"PO-Revision-Date: 2020-06-03 21:26+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -27,35 +27,35 @@ msgstr "Gemeenschappelijk"
 
 #: classes.py:187
 msgid "Model properties"
-msgstr ""
+msgstr "Model eigenschappen"
 
 #: classes.py:192
 msgid "Model fields"
-msgstr ""
+msgstr "Model velden"
 
 #: classes.py:235
 msgid "Model related fields"
-msgstr ""
+msgstr "Model gerelateerde velden"
 
 #: classes.py:240
 msgid "Model reverse fields"
 msgstr ""
 
-#: dependencies.py:309
+#: dependencies.py:281
 msgid "Used to allow offline translation of the code text strings."
-msgstr ""
+msgstr "Gebruikt om offline vertaling van de codetekststrings toe te staan."
 
-#: dependencies.py:314
+#: dependencies.py:286
 msgid "Provides style checking."
-msgstr ""
+msgstr "Biedt stijlcontrole."
 
-#: dependencies.py:319
+#: dependencies.py:291
 msgid "Command line environment with autocompletion."
-msgstr ""
+msgstr "Opdrachtregelomgeving met automatisch aanvullen."
 
-#: dependencies.py:324
+#: dependencies.py:296
 msgid "Checks proper formatting of the README file."
-msgstr ""
+msgstr "Controleert de juiste opmaak van het README-bestand."
 
 #: forms.py:25
 msgid "Selection"
@@ -70,14 +70,14 @@ msgid ""
 "Select entries to be removed. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
-msgstr ""
+msgstr "Items selecteren die moeten worden verwijderd. Houd Control ingedrukt om meerdere items te selecteren. Zodra de selectie is voltooid, klikt u op de onderstaande knop of dubbelklikt u op de lijst om de actie te activeren."
 
 #: generics.py:151
 msgid ""
 "Select entries to be added. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
-msgstr ""
+msgstr "Items selecteren die moeten worden toegevoegd. Houd Control ingedrukt om meerdere items te selecteren. Zodra de selectie is voltooid, klikt u op de onderstaande knop of dubbelklikt u op de lijst om de actie te activeren."
 
 #: generics.py:284
 msgid "Add all"
@@ -98,7 +98,7 @@ msgstr "Verwijderen"
 #: generics.py:522
 #, python-format
 msgid "Duplicate data error: %(error)s"
-msgstr ""
+msgstr "Dubbele gegevensfout: %(error)s"
 
 #: generics.py:543
 #, python-format
@@ -123,20 +123,20 @@ msgstr "%(object)s met succes verwijderd."
 #: generics.py:740
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
-msgstr "%(object)s niet geupdate, foutmelding: %(error)s."
+msgstr "%(object)s niet bijgewerkt, foutmelding: %(error)s."
 
 #: generics.py:751
 #, python-format
 msgid "%(object)s updated successfully."
-msgstr "%(object)s werden met succes geupdate."
+msgstr "%(object)s werden met succes bijgewerkt."
 
 #: links.py:34
 msgid "About this"
-msgstr ""
+msgstr "Over Mayan EDMS"
 
 #: links.py:37
 msgid "Get the book"
-msgstr ""
+msgstr "Koop het boek"
 
 #: links.py:42
 msgid "Locale profile"
@@ -185,7 +185,7 @@ msgstr "Gereedschappen"
 #: literals.py:16
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
-msgstr ""
+msgstr "Deze functie is achterhaald en zal worden verwijderd in een toekomstige versie."
 
 #: literals.py:19
 msgid ""
@@ -211,7 +211,7 @@ msgstr "Systeem"
 
 #: menus.py:10 menus.py:11
 msgid "Facet"
-msgstr ""
+msgstr "Facet"
 
 #: menus.py:14
 msgid "Actions"
@@ -219,7 +219,7 @@ msgstr "Acties"
 
 #: menus.py:15
 msgid "Secondary"
-msgstr ""
+msgstr "Secundair"
 
 #: menus.py:20 models.py:94
 msgid "User"
@@ -228,7 +228,7 @@ msgstr "Gebruiker"
 #: mixins.py:314
 #, python-format
 msgid "No %(verbose_name)s found matching the query"
-msgstr ""
+msgstr "Geen %(verbose_name)s gevonden die aan zoekopdracht voldoet"
 
 #: mixins.py:427
 msgid "Object"
@@ -300,11 +300,11 @@ msgstr ""
 
 #: queues.py:20
 msgid "Delete stale uploads"
-msgstr ""
+msgstr "Afgebroken uploads verwijderen"
 
 #: settings.py:20
 msgid "Automatically enable logging to all apps."
-msgstr ""
+msgstr "Loggen naar alle apps automatisch inschakelen."
 
 #: settings.py:26
 msgid ""
@@ -318,7 +318,7 @@ msgid ""
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
 "Python path to: an application configuration class (preferred), or a package"
 " containing an application."
-msgstr ""
+msgstr "Een lijst met tekenreeksen die alle toepassingen aanduiden die moeten worden verwijderd uit de lijst die normaal door Mayan EDMS wordt geïnstalleerd. Elke string moet een Python-pad zijn naar: een toepassingsconfiguratieklasse (bij voorkeur) of een pakket met een toepassing."
 
 #: settings.py:44
 msgid ""
@@ -326,33 +326,33 @@ msgid ""
 "those normally installed by Mayan EDMS. Each string should be a dotted "
 "Python path to: an application configuration class (preferred), or a package"
 " containing an application."
-msgstr ""
+msgstr "Een lijst met tekenreeksen die alle applicaties aanduiden die zijn geïnstalleerd buiten de applicaties die normaal door Mayan EDMS zijn geïnstalleerd. Elke tekenreeks moet een Python-pad zijn naar: een toepassingsconfiguratieklasse (bij voorkeur) of een pakket met een toepassing."
 
 #: settings.py:53
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
-msgstr ""
+msgstr "Naam van de overzicht gekoppeld aan het logo in het hoofdmenu. Dit is ook het overzicht waarnaar gebruikers worden doorgestuurd nadat ze zich hebben aangemeld."
 
 #: settings.py:62
 msgid "The number objects that will be displayed per page."
-msgstr ""
+msgstr "Het aantal objecten dat per pagina wordt weergegeven."
 
 #: settings.py:69
 msgid "Enable error logging outside of the system error logging capabilities."
-msgstr ""
+msgstr "Foutregistratie inschakelen buiten de mogelijkheden van systeemfoutregistratie."
 
 #: settings.py:76
 msgid "Path to the logfile that will track errors during production."
-msgstr ""
+msgstr "Pad naar het logbestand dat de fouten tijdens productie volgt."
 
 #: settings.py:83
 msgid "Name to be displayed in the main menu."
-msgstr ""
+msgstr "Naam die wordt weergegeven in het hoofdmenu."
 
 #: settings.py:89
 msgid "URL of the installation or homepage of the project."
-msgstr ""
+msgstr "URL van de installatie of homepage van het project."
 
 #: settings.py:95
 msgid "A storage backend that all workers can use to share files."
@@ -360,13 +360,13 @@ msgstr "Een opslagbackend die alle werkers kunnen gebruiken om bestanden te dele
 
 #: settings.py:103
 msgid "Base URL path to use for all views."
-msgstr ""
+msgstr "Basis URL-pad voor alle overzichten."
 
 #: storages.py:13
 msgid ""
 "Unable to initialize the shared uploaded file storage. Check the settings {}"
 " and {} for formatting errors."
-msgstr ""
+msgstr "Niet mogelijk om de geüploade bestandsopslag te initialiseren. Controleer de instellingen {} en {} op opmaakfouten."
 
 #: templatetags/common_tags.py:34
 msgid "Confirm delete"
@@ -432,7 +432,7 @@ msgstr "Foutenlog invoer wissen voor: %s"
 
 #: views.py:129
 msgid "Object error log cleared successfully"
-msgstr ""
+msgstr "Object foutenlog met succes gewist"
 
 #: views.py:148
 msgid "Date and time"
@@ -442,7 +442,7 @@ msgstr "Datum en tijd"
 msgid ""
 "This view displays the error log of different object. An empty list is a "
 "good thing."
-msgstr ""
+msgstr "Dit overzicht geeft de foutenlog van verschillende objecten weer. Een lege lijst is een goed teken."
 
 #: views.py:158
 msgid "There are no error log entries"
@@ -461,7 +461,7 @@ msgstr "Geen instellingsopties beschikbaar."
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
-msgstr ""
+msgstr "Geen resultaten betekent dat u onvoldoende verplichte toegangsrechten heeft om de beheertaak uit te voeren."
 
 #: views.py:197
 msgid "Setup items"
@@ -469,7 +469,7 @@ msgstr "Setup items"
 
 #: views.py:199
 msgid "Here you can configure all aspects of the system."
-msgstr ""
+msgstr "Hier kunt u alle aspecten van het systeem instellen."
 
 #: views.py:214
 msgid "These modules are used to do system maintenance."

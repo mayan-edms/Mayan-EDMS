@@ -4,6 +4,7 @@ import unittest
 from fuse import FuseOSError
 
 from django.db import connection
+from django.test import tag
 
 from mayan.apps.common.tests.base import BaseTestCase
 from mayan.apps.documents.models import Document
@@ -21,6 +22,7 @@ from .literals import (
 )
 
 
+@tag('mirroring')
 @unittest.skipIf(connection.vendor == 'mysql', 'Known to fail due to unsupported feature of database manager.')
 class IndexFilesystemTestCase(
     IndexTestMixin, DocumentTestMixin, BaseTestCase

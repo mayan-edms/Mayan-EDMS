@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:34-0400\n"
+"POT-Creation-Date: 2020-06-22 23:19-0400\n"
 "PO-Revision-Date: 2020-04-14 08:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
@@ -111,47 +111,47 @@ msgstr "کلید شخصی"
 msgid "Public keys"
 msgstr "کلید عمومی"
 
-#: literals.py:12 literals.py:20
+#: literals.py:14 literals.py:22
 msgid "Public"
 msgstr "عمومی"
 
-#: literals.py:13 literals.py:21
+#: literals.py:15 literals.py:23
 msgid "Secret"
 msgstr "سری و یا رمز"
 
-#: literals.py:29 literals.py:34
+#: literals.py:31 literals.py:36
 msgid "RSA"
 msgstr "RSA"
 
-#: literals.py:30
+#: literals.py:32
 msgid "DSA"
 msgstr "DSA"
 
-#: literals.py:35
+#: literals.py:37
 msgid "Elgamal"
 msgstr "الگمال Elgmal"
 
-#: literals.py:49
+#: literals.py:51
 msgid "Bad signature."
 msgstr "امضای اشتباه"
 
-#: literals.py:52
+#: literals.py:54
 msgid "Document not signed or invalid signature."
 msgstr "سند امضا نشده و یا امضا قابل قبول نییست"
 
-#: literals.py:55
+#: literals.py:57
 msgid "Signature error."
 msgstr "خطا در امضا"
 
-#: literals.py:59
+#: literals.py:61
 msgid "Document is signed but no public key is available for verification."
 msgstr "سند امضا شده است ولیکن کلید عمومی جهت بررسی صحت امضا وجود ندارد."
 
-#: literals.py:64
+#: literals.py:66
 msgid "Document is signed, and signature is good."
 msgstr "سند امضا شده است و امضا مورد تایید میباشد."
 
-#: literals.py:67
+#: literals.py:69
 msgid "Document is signed with a valid signature."
 msgstr "سند با امضای مورد تایید امضا شده است."
 

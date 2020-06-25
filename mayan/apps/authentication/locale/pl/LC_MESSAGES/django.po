@@ -5,16 +5,16 @@
 # Translators:
 # kicior kicior <kiciorek+github@gmail.com>, 2020
 # Marcin Lozynski <mlozynski@wp.pl>, 2019
-# Tomasz Szymanowicz <alakdae@gmail.com>, 2019
+# Tomasz Szymanowicz <alakdae@gmail.com>, 2019-2020
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016-2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:33-0400\n"
-"PO-Revision-Date: 2020-03-28 07:23+0000\n"
-"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
+"POT-Creation-Date: 2020-06-22 23:18-0400\n"
+"PO-Revision-Date: 2020-05-13 14:17+0000\n"
+"Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,11 +28,11 @@ msgstr "Uwierzytelnianie"
 
 #: events.py:10
 msgid "User impersonation ended"
-msgstr ""
+msgstr "Zakończono podszywanie się pod użytkownika"
 
 #: events.py:13
 msgid "User impersonation started"
-msgstr ""
+msgstr "Rozpoczęto podszywanie się pod użytkownika"
 
 #: forms.py:17
 msgid "Email"
@@ -62,15 +62,15 @@ msgstr "Użytkownik"
 
 #: forms.py:78
 msgid "User to be impersonated."
-msgstr ""
+msgstr "Użytkownik, pod którego mam się podszyć."
 
 #: forms.py:82
 msgid "Permanent"
-msgstr ""
+msgstr "Stały"
 
 #: forms.py:83
 msgid "If selected, disables ending impersonation."
-msgstr ""
+msgstr "Jeśli ta opcja jest wybrana, wyłącza zakończenie podszywania."
 
 #: links.py:22
 msgid "Logout"
@@ -82,7 +82,7 @@ msgstr "Zmień hasło"
 
 #: links.py:32 views.py:68
 msgid "Impersonate user"
-msgstr ""
+msgstr "Podszyj się pod użytkownika"
 
 #: links.py:37 links.py:44
 msgid "Set password"
@@ -90,7 +90,7 @@ msgstr "Ustaw hasło"
 
 #: permissions.py:10
 msgid "Impersonate users"
-msgstr ""
+msgstr "Podszywaj się pod użytkowników"
 
 #: settings.py:11
 msgid ""

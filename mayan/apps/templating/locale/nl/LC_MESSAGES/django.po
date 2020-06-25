@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:37-0400\n"
+"POT-Creation-Date: 2020-06-22 23:21-0400\n"
 "PO-Revision-Date: 2019-12-03 05:24+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: apps.py:18 permissions.py:5
 msgid "Templating"
-msgstr ""
+msgstr "Sjablonering"
 
 #: fields.py:21
 #, python-format
@@ -32,10 +32,13 @@ msgid ""
 "(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
 " The {{ %(variable)s }} variable is available to the template."
 msgstr ""
+"Django's standaard sjabloneringstaal gebruiken "
+"(https://docs.djangoproject.com/en/%(django_version)s/ref/templates/builtins/)."
+" The {{ %(variable)s }} variabele is beschikbaar voor het sjabloon."
 
 #: forms.py:9
 msgid "Resulting text from the evaluated template."
-msgstr ""
+msgstr "Resultaattekst uit het beoordeelde sjabloon."
 
 #: forms.py:10
 msgid "Result"
@@ -43,7 +46,7 @@ msgstr "Resultaat"
 
 #: forms.py:20
 msgid "The template string to be evaluated."
-msgstr ""
+msgstr "De sjabloon tekenreeks om te beoordelen."
 
 #: forms.py:21
 msgid "Template"
@@ -51,18 +54,18 @@ msgstr "Sjabloon"
 
 #: links.py:12
 msgid "Sandbox"
-msgstr ""
+msgstr "Sandbox"
 
 #: permissions.py:8
 msgid "Use the template sandbox"
-msgstr ""
+msgstr "De sjabloon sandbox gebruiken"
 
-#: views.py:36
+#: views.py:37
 #, python-format
 msgid "Template sandbox for: %s"
-msgstr ""
+msgstr "Sjabloon sandbox voor: %s"
 
 #: views.py:53
 #, python-format
 msgid "Template error; %(exception)s"
-msgstr ""
+msgstr "Sjabloonfout; %(exception)s"

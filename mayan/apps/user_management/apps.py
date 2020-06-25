@@ -15,7 +15,7 @@ from mayan.apps.common.menus import (
     menu_user
 )
 from mayan.apps.dashboards.dashboards import dashboard_main
-from mayan.apps.events.classes import ModelEventType
+from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list
 )
@@ -81,7 +81,6 @@ class UserManagementApp(MayanAppConfig):
 
     def ready(self):
         super(UserManagementApp, self).ready()
-        from actstream import registry
 
         Group = apps.get_model(app_label='auth', model_name='Group')
         User = get_user_model()
@@ -90,6 +89,9 @@ class UserManagementApp(MayanAppConfig):
             klass=get_user_model(),
             serializer_class='mayan.apps.user_management.serializers.UserSerializer'
         )
+
+        EventModelRegistry.register(model=Group)
+        EventModelRegistry.register(model=User)
 
         # Silence UnorderedObjectListWarning
         # "Pagination may yield inconsistent result"
@@ -287,6 +289,3 @@ class UserManagementApp(MayanAppConfig):
             receiver=handler_user_logged_out,
             sender=User
         )
-
-        registry.register(Group)
-        registry.register(User)

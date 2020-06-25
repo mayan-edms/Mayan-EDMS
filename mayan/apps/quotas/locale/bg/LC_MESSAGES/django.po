@@ -5,7 +5,7 @@
 # 
 # Translators:
 # Roberto Rosario, 2020
-# Iliya Georgiev <inactive+iliicho7@transifex.com>, 2020
+# 295005be79b88987cac803400975dbae_87f6b64 <412e4e8df9c702a35ac89972be5f12ff_27148>, 2020
 # Pavlin Koldamov <pkoldamov@gmail.com>, 2020
 # Lyudmil Antonov <lantonov.here@gmail.com>, 2020
 # 
@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:36-0400\n"
+"POT-Creation-Date: 2020-06-22 23:20-0400\n"
 "PO-Revision-Date: 2020-03-28 07:24+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2020\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -32,11 +32,11 @@ msgstr "Квоти"
 msgid "none"
 msgstr "няма"
 
-#: classes.py:143
+#: classes.py:163
 msgid "Does not apply"
 msgstr "Не се прилага"
 
-#: classes.py:147 classes.py:154
+#: classes.py:167 classes.py:174
 msgid "Null backend"
 msgstr "Нулев бекенд"
 
@@ -192,43 +192,43 @@ msgstr "Редактиране на квота"
 msgid "View a quota"
 msgstr "Вижте квота"
 
-#: quota_backends.py:23
+#: quota_backends.py:68 quota_backends.py:168
 msgid "Document count quota exceeded."
 msgstr "Превишена квота за брой документи."
 
-#: quota_backends.py:27
+#: quota_backends.py:72
 msgid "Documents limit"
 msgstr "Ограничение на документи"
 
-#: quota_backends.py:30
+#: quota_backends.py:75
 msgid "Maximum number of documents."
 msgstr "Максимален брой документи."
 
-#: quota_backends.py:34
+#: quota_backends.py:79
 msgid "Document count limit"
 msgstr "Ограничение на броя на документите"
 
-#: quota_backends.py:53
+#: quota_backends.py:104
 #, python-format
 msgid "document count: %(document_count)s"
 msgstr "брой на документите: %(document_count)s"
 
-#: quota_backends.py:117 quota_backends.py:171
-msgid "Document size quota exceeded."
-msgstr "Квотата за размер на документа е надвишена."
-
-#: quota_backends.py:127 quota_backends.py:132
+#: quota_backends.py:178 quota_backends.py:183
 msgid "Document size limit"
 msgstr "Ограничение на размера на документа"
 
-#: quota_backends.py:129
+#: quota_backends.py:180
 msgid "Maximum document size in megabytes (MB)."
 msgstr "Максимален размер на документа в мегабайти (MB)."
 
-#: quota_backends.py:151
+#: quota_backends.py:208
 #, python-format
 msgid "document size: %(formatted_file_size)s"
 msgstr "размер на документа: %(formatted_file_size)s"
+
+#: quota_backends.py:228
+msgid "Document size quota exceeded."
+msgstr "Квотата за размер на документа е надвишена."
 
 #: views.py:24
 msgid "New quota backend selection"

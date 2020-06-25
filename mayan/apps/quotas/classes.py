@@ -75,6 +75,13 @@ class QuotaBackend(
                     )
 
         for backend in QuotaBackend.get_all():
+            backend._initialize()
+
+        QuotaBackend.connect_signals()
+
+    @staticmethod
+    def connect_signals():
+        for backend in QuotaBackend.get_all():
             if backend.signal:
                 backend.signal.connect(
                     dispatch_uid='quotas_handler_process_signal',
@@ -113,12 +120,27 @@ class QuotaBackend(
         ]
 
     @classmethod
+    def _initialize(cls):
+        """
+        Allow the quota backend to run code when the app initializes.
+        """
+
+    @classmethod
     def create(cls, **kwargs):
         Quota = apps.get_model(app_label='quotas', model_name='Quota')
-        dotted_path = '{}.{}'.format(cls.__module__, cls.__name__)
         return Quota.objects.create(
-            backend_path=dotted_path, backend_data=json.dumps(obj=kwargs)
+            backend_path=cls.get_dotted_path(),
+            backend_data=json.dumps(obj=kwargs)
         )
+
+    @classmethod
+    def get_dotted_path(cls):
+        return '{}.{}'.format(cls.__module__, cls.__name__)
+
+    @classmethod
+    def get_instances(cls):
+        Quota = apps.get_model(app_label='quotas', model_name='Quota')
+        return Quota.objects.filter(backend_path=cls.get_dotted_path())
 
     def _allowed_filter_display(self):
         return ''
@@ -135,9 +157,7 @@ class QuotaBackend(
 
     def process(self, **kwargs):
         if self._usage() >= self._allowed():
-            raise QuotaExceeded(
-                _(self.error_message)
-            )
+            raise QuotaExceeded(self.error_message)
 
     def usage(self):
         return _('Does not apply')

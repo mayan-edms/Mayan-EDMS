@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-27 23:35-0400\n"
-"PO-Revision-Date: 2020-04-26 10:13+0000\n"
+"POT-Creation-Date: 2020-06-22 23:20-0400\n"
+"PO-Revision-Date: 2020-05-02 20:08+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -58,7 +58,7 @@ msgstr "Namespacelijst"
 #. More info: https://docs.djangoproject.com/en/1.7/glossary/#term-slug
 #: models.py:12
 msgid "Slug"
-msgstr ""
+msgstr "Slug"
 
 #: models.py:14
 msgid "Date time"
@@ -74,7 +74,7 @@ msgstr "Statistiekresultaten"
 
 #: models.py:20
 msgid "Statistics results"
-msgstr ""
+msgstr "Statistiekresultaten"
 
 #: permissions.py:8
 msgid "View statistics"
