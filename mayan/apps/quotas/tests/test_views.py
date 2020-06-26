@@ -22,20 +22,48 @@ class QuotaViewTestCase(
         response = self._request_test_quota_backend_selection_get_view()
         self.assertEqual(response.status_code, 200)
 
-    def test_quota_create_view_no_permissions(self):
+    def test_quota_create_get_view_no_permissions(self):
         quota_count = Quota.objects.count()
 
-        response = self._request_test_quota_create_view()
+        response = self._request_test_quota_create_get_view()
         self.assertEqual(response.status_code, 403)
 
         self.assertEqual(Quota.objects.count(), quota_count)
 
-    def test_quota_create_view_with_permissions(self):
+    def test_quota_create_get_view_with_permissions(self):
         self.grant_permission(permission=permission_quota_create)
 
         quota_count = Quota.objects.count()
 
-        response = self._request_test_quota_create_view()
+        response = self._request_test_quota_create_get_view()
+        self.assertEqual(response.status_code, 200)
+
+        self.assertEqual(Quota.objects.count(), quota_count)
+
+    def test_quota_with_mixins_create_get_view_with_permissions(self):
+        self.grant_permission(permission=permission_quota_create)
+
+        quota_count = Quota.objects.count()
+
+        response = self._request_test_quota_with_mixins_create_get_view()
+        self.assertEqual(response.status_code, 200)
+
+        self.assertEqual(Quota.objects.count(), quota_count)
+
+    def test_quota_create_post_view_no_permissions(self):
+        quota_count = Quota.objects.count()
+
+        response = self._request_test_quota_create_post_view()
+        self.assertEqual(response.status_code, 403)
+
+        self.assertEqual(Quota.objects.count(), quota_count)
+
+    def test_quota_create_post_view_with_permissions(self):
+        self.grant_permission(permission=permission_quota_create)
+
+        quota_count = Quota.objects.count()
+
+        response = self._request_test_quota_create_post_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(Quota.objects.count(), quota_count + 1)
