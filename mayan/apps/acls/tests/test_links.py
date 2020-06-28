@@ -11,9 +11,7 @@ from .mixins import ACLTestMixin
 
 
 class ACLsLinksTestCase(ACLTestMixin, GenericViewTestCase):
-    def setUp(self):
-        super(ACLsLinksTestCase, self).setUp()
-        self._setup_test_object()
+    auto_create_acl_test_object = True
 
     def test_object_acl_create_link(self):
         self.grant_access(
@@ -29,7 +27,7 @@ class ACLsLinksTestCase(ACLTestMixin, GenericViewTestCase):
         self.assertEqual(
             resolved_link.url, reverse(
                 viewname=link_acl_create.view,
-                kwargs=self.test_content_object_view_kwargs
+                kwargs=self.test_object_view_kwargs
             )
         )
 
@@ -85,6 +83,6 @@ class ACLsLinksTestCase(ACLTestMixin, GenericViewTestCase):
         self.assertEqual(
             resolved_link.url, reverse(
                 viewname=link_acl_list.view,
-                kwargs=self.test_content_object_view_kwargs
+                kwargs=self.test_object_view_kwargs
             )
         )

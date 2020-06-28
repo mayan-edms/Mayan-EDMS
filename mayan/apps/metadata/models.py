@@ -286,7 +286,7 @@ class DocumentTypeMetadataType(models.Model):
         verbose_name=_('Document type')
     )
     metadata_type = models.ForeignKey(
-        on_delete=models.CASCADE, to=MetadataType,
+        on_delete=models.CASCADE, related_name='document_types', to=MetadataType,
         verbose_name=_('Metadata type')
     )
     required = models.BooleanField(default=False, verbose_name=_('Required'))

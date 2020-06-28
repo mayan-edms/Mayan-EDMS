@@ -9,7 +9,7 @@ from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import (
-    ModelFieldRelated, ModelProperty, ModelQueryFields
+    ModelCopy, ModelFieldRelated, ModelProperty, ModelQueryFields
 )
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_multi_item, menu_object, menu_secondary,
@@ -93,6 +93,23 @@ class MetadataApp(MayanAppConfig):
 
         EventModelRegistry.register(model=MetadataType)
         EventModelRegistry.register(model=DocumentTypeMetadataType)
+
+        ModelCopy(
+            model=DocumentTypeMetadataType,
+        ).add_fields(
+            field_names=(
+                'document_type', 'metadata_type', 'required'
+            )
+        )
+
+        ModelCopy(
+            model=MetadataType, bind_link=True, register_permission=True
+        ).add_fields(
+            field_names=(
+                'name', 'label', 'default', 'lookup', 'validation', 'parser',
+                'document_types'
+            ),
+        )
 
         ModelProperty(
             model=Document, name='metadata_value_of.< metadata type name >',

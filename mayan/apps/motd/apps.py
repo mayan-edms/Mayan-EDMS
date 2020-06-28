@@ -6,6 +6,7 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
+from mayan.apps.common.classes import ModelCopy
 from mayan.apps.common.menus import (
     menu_list_facet, menu_object, menu_secondary, menu_setup
 )
@@ -36,6 +37,15 @@ class MOTDApp(MayanAppConfig):
         super(MOTDApp, self).ready()
 
         Message = self.get_model(model_name='Message')
+
+        ModelCopy(
+            model=Message, bind_link=True, register_permission=True
+        ).add_fields(
+            field_names=(
+                'label', 'message', 'enabled', 'start_datetime', 'end_datetime'
+            ),
+        )
+
         ModelPermission.register(
             model=Message, permissions=(
                 permission_acl_edit, permission_acl_view,

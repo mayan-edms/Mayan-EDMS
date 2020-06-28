@@ -21,6 +21,9 @@ icon_menu_about = Icon(
 icon_menu_user = Icon(
     driver_name='fontawesome', symbol='user-circle'
 )
+icon_object_copy = Icon(
+    driver_name='fontawesome', symbol='stamp'
+)
 icon_setup = Icon(
     driver_name='fontawesome', symbol='cog'
 )

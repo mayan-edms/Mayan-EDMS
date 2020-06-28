@@ -58,7 +58,9 @@ def get_cascade_condition(
     return condition
 
 
-def get_content_type_kwargs_factory(variable_name, result_map=None):
+def get_content_type_kwargs_factory(
+    variable_name='resolved_object', result_map=None
+):
     if not result_map:
         result_map = {
             'app_label': 'app_label',

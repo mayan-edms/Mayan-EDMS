@@ -9,6 +9,7 @@ from mayan.apps.acls.permissions import (
 )
 
 from mayan.apps.common.apps import MayanAppConfig
+from mayan.apps.common.classes import ModelCopy
 from mayan.apps.common.menus import (
     menu_list_facet, menu_object, menu_secondary, menu_setup
 )
@@ -54,6 +55,19 @@ class PermissionsApp(MayanAppConfig):
         Group.add_to_class(name='roles_remove', value=method_group_roles_remove)
 
         EventModelRegistry.register(model=Role)
+
+        ModelCopy(
+            model=Role, bind_link=True, register_permission=True
+        ).add_fields(
+            field_names=(
+                'label', 'permissions', 'groups',
+            ),
+        )
+        ModelCopy.add_fields_lazy(
+            model=Group, field_names=(
+                'roles',
+            ),
+        )
 
         ModelEventType.register(
             event_types=(event_role_created, event_role_edited), model=Role

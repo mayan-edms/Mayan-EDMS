@@ -6,7 +6,7 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.links import link_acl_list
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import (
-    ModelField, ModelProperty, ModelReverseField
+    ModelCopy, ModelField, ModelProperty, ModelReverseField
 )
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_main, menu_object, menu_secondary,
@@ -103,6 +103,55 @@ class DocumentStatesApp(MayanAppConfig):
         EventModelRegistry.register(model=Workflow)
 
         WorkflowAction.load_modules()
+
+        ModelCopy(model=WorkflowState).add_fields(
+            field_names=(
+                'actions', 'workflow', 'label', 'initial', 'completion'
+            )
+        )
+        ModelCopy(model=WorkflowStateAction).add_fields(
+            field_names=(
+                'state', 'label', 'enabled', 'when', 'action_path',
+                'action_data', 'condition'
+            )
+        )
+        ModelCopy(model=WorkflowTransition).add_fields(
+            field_names=(
+                'workflow', 'label', 'origin_state', 'destination_state',
+                'condition', 'fields', 'trigger_events'
+            ),
+            field_value_gets={
+                'origin_state': {
+                    'workflow': '{workflow.pk}',
+                    'label': '{instance.origin_state.label}'
+                },
+                'destination_state': {
+                    'workflow': '{workflow.pk}',
+                    'label': '{instance.destination_state.label}'
+                },
+            }
+        )
+        ModelCopy(
+            model=WorkflowTransitionTriggerEvent
+        ).add_fields(
+            field_names=('transition', 'event_type')
+        )
+        ModelCopy(
+            model=WorkflowTransitionField
+        ).add_fields(
+            field_names=(
+                'transition', 'field_type', 'name', 'label', 'help_text',
+                'required', 'widget', 'widget_kwargs',
+            )
+        )
+        ModelCopy(
+            model=Workflow, bind_link=True, register_permission=True
+        ).add_fields(
+            field_names=(
+                'internal_name', 'label', 'document_types', 'states',
+                'transitions'
+            ),
+        )
 
         ModelEventType.register(
             event_types=(event_workflow_edited,), model=Workflow

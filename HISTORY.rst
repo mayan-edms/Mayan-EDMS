@@ -132,6 +132,9 @@
 - Allow passing environment entries to the Tesseract OCR backend.
 - Improve main menu styling and JavaScript code. Improve hover highlighting
   and maximize space.
+- Add support for copying: document types, groups, mailing profils,
+  metadata types, messages of the day, workflows, quotas, roles, smart links,
+  tags, weblinks.
 
 3.4.11 (2020-XX-XX)
 ===================

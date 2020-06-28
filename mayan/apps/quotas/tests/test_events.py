@@ -12,7 +12,7 @@ class QuotaEventsTestCase(QuotaTestMixin, QuotaViewTestMixin, GenericViewTestCas
     def test_quota_created_event_no_permissions(self):
         Action.objects.all().delete()
 
-        response = self._request_test_quota_create_view()
+        response = self._request_test_quota_create_post_view()
         self.assertEqual(response.status_code, 403)
         self.assertEqual(Action.objects.count(), 0)
 
@@ -20,7 +20,7 @@ class QuotaEventsTestCase(QuotaTestMixin, QuotaViewTestMixin, GenericViewTestCas
         Action.objects.all().delete()
 
         self.grant_permission(permission=permission_quota_create)
-        response = self._request_test_quota_create_view()
+        response = self._request_test_quota_create_post_view()
         self.assertEqual(response.status_code, 302)
 
         event = Action.objects.first()

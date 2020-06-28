@@ -6,6 +6,7 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
+from mayan.apps.common.classes import ModelCopy
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_main, menu_object, menu_secondary,
     menu_setup, menu_tools
@@ -77,6 +78,22 @@ class DocumentIndexingApp(MayanAppConfig):
         IndexTemplateNode = self.get_model(model_name='IndexTemplateNode')
 
         EventModelRegistry.register(model=Index)
+
+        ModelCopy(
+            model=IndexTemplateNode, excludes={'parent__isnull': False},
+            extra_kwargs={'get_or_create': True}
+        ).add_fields(
+            field_names=(
+                'index', 'expression', 'enabled', 'link_documents'
+            ),
+        )
+        ModelCopy(
+            model=Index, bind_link=True, register_permission=True
+        ).add_fields(
+            field_names=(
+                'label', 'slug', 'enabled', 'document_types', 'node_templates'
+            ),
+        )
 
         ModelEventType.register(
             event_types=(

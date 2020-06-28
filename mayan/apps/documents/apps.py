@@ -6,7 +6,7 @@ from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import (
-    MissingItem, ModelField, ModelFieldRelated, ModelProperty,
+    MissingItem, ModelCopy, ModelField, ModelFieldRelated, ModelProperty,
     ModelQueryFields, Template
 )
 from mayan.apps.common.menus import (
@@ -159,6 +159,20 @@ class DocumentsApp(MayanAppConfig):
                 'it is the basic way Mayan EDMS categorizes documents.'
             ), condition=lambda: not DocumentType.objects.exists(),
             view='documents:document_type_list'
+        )
+
+        ModelCopy(model=DocumentTypeFilename).add_fields(
+            field_names=(
+                'document_type', 'filename', 'enabled'
+            )
+        )
+        ModelCopy(
+            model=DocumentType, bind_link=True, register_permission=True
+        ).add_fields(
+            field_names=(
+                'label', 'trash_time_period', 'trash_time_unit',
+                'delete_time_period', 'delete_time_unit', 'filenames'
+            )
         )
 
         ModelEventType.register(

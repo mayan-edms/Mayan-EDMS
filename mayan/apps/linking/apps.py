@@ -5,6 +5,7 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
+from mayan.apps.common.classes import ModelCopy
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_object, menu_secondary, menu_setup
 )
@@ -54,6 +55,23 @@ class LinkingApp(MayanAppConfig):
         SmartLinkCondition = self.get_model(model_name='SmartLinkCondition')
 
         EventModelRegistry.register(model=SmartLink)
+
+        ModelCopy(
+            model=SmartLinkCondition
+        ).add_fields(
+            field_names=(
+                'smart_link', 'inclusion', 'foreign_document_data', 'operator', 'expression',
+                'negated', 'enabled',
+            )
+        )
+        ModelCopy(
+            model=SmartLink, bind_link=True, register_permission=True
+        ).add_fields(
+            field_names=(
+                'label', 'dynamic_label', 'enabled', 'document_types',
+                'conditions'
+            ),
+        )
 
         ModelEventType.register(
             event_types=(event_smart_link_edited,), model=SmartLink

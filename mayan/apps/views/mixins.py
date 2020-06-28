@@ -421,8 +421,9 @@ class ObjectNameMixin:
         object_name = context.get('object_name')
 
         if not object_name:
+            view_object = getattr(self, 'object', context['object'])
             try:
-                object_name = self.object._meta.verbose_name
+                object_name = view_object._meta.verbose_name
             except AttributeError:
                 object_name = _('Object')
 

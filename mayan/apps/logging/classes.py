@@ -3,8 +3,8 @@ from django.db.models.signals import pre_delete
 
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.menus import menu_list_facet
-from mayan.apps.logging.links import link_object_error_list
 
+from .links import link_object_error_list
 from .literals import DEFAULT_ERROR_LOG_PARTITION_ENTRY_LIMIT
 from .permissions import permission_error_log_view
 

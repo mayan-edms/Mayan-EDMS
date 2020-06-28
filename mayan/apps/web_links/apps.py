@@ -5,6 +5,7 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
+from mayan.apps.common.classes import ModelCopy
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_object, menu_secondary, menu_setup
 )
@@ -51,6 +52,14 @@ class WebLinksApp(MayanAppConfig):
 
         EventModelRegistry.register(model=ResolvedWebLink)
         EventModelRegistry.register(model=WebLink)
+
+        ModelCopy(
+            model=WebLink, bind_link=True, register_permission=True
+        ).add_fields(
+            field_names=(
+                'label', 'template', 'enabled', 'document_types',
+            ),
+        )
 
         ModelEventType.register(
             event_types=(

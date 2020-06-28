@@ -9,7 +9,7 @@ from .api_views import (
 from .views import (
     AboutView, CurrentUserLocaleProfileDetailsView,
     CurrentUserLocaleProfileEditView, FaviconRedirectView, HomeView,
-    LicenseView, RootView, SetupListView, ToolsListView
+    LicenseView, ObjectCopyView, RootView, SetupListView, ToolsListView
 )
 
 urlpatterns_user_locale = [
@@ -30,7 +30,11 @@ urlpatterns_misc = [
     url(
         regex=r'^jsi18n/(?P<packages>\S+?)/$', name='javascript_catalog',
         view=JavaScriptCatalog.as_view()
-    )
+    ),
+    url(
+        regex=r'^object/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/(?P<object_id>\d+)/copy/$',
+        name='object_copy', view=ObjectCopyView.as_view()
+    ),
 ]
 
 urlpatterns = [

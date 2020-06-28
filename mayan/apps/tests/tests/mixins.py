@@ -23,6 +23,7 @@ from django.utils.encoding import DjangoUnicodeDecodeError, force_text
 from stronghold.decorators import public
 
 from mayan.apps.acls.classes import ModelPermission
+from mayan.apps.permissions.tests.mixins import PermissionTestMixin
 from mayan.apps.storage.settings import setting_temporary_directory
 from mayan.apps.views.compat import FileResponse
 
@@ -415,8 +416,12 @@ class TempfileCheckTestCasekMixin:
         super(TempfileCheckTestCasekMixin, self).tearDown()
 
 
-class TestModelTestMixin:
+class TestModelTestMixin(PermissionTestMixin):
     _test_models = []
+    auto_create_test_object = False
+    auto_create_test_object_fields = None
+    auto_create_test_object_instance_kwargs = None
+    auto_create_test_object_permission = False
 
     @classmethod
     def setUpClass(cls):
@@ -424,6 +429,16 @@ class TestModelTestMixin:
             connection.disable_constraint_checking()
 
         super().setUpClass()
+
+    def setUp(self):
+        super().setUp()
+
+        if self.auto_create_test_object:
+            self._create_test_object(
+                fields=self.auto_create_test_object_fields,
+                create_test_permission=self.auto_create_test_object_permission,
+                instance_kwargs=self.auto_create_test_object_instance_kwargs
+            )
 
     def tearDown(self):
         # Delete the test models' content type entries and deregister the
@@ -437,36 +452,6 @@ class TestModelTestMixin:
             ModelPermission.deregister(model=model)
 
         super(TestModelTestMixin, self).tearDown()
-
-    def _get_test_model_meta(self):
-        self.db_table = '{}_{}'.format(
-            self.app_config.label, self.model_name.lower()
-        )
-
-        class Meta:
-            app_label = self.app_config.label
-            db_table = self.db_table
-            verbose_name = self.model_name
-
-        if self.options:
-            for key, value in self.options.items():
-                setattr(Meta, key, value)
-
-        return Meta
-
-    def _get_test_model_save_method(self):
-        def save(instance, *args, **kwargs):
-            # Custom .save() method to use random primary key values.
-            if instance.pk:
-                return models.Model.self(instance, *args, **kwargs)
-            else:
-                instance.pk = RandomPrimaryKeyModelMonkeyPatchMixin.get_unique_primary_key(
-                    model=instance._meta.model
-                )
-                instance.id = instance.pk
-
-                return instance.save_base(force_insert=True)
-        return save
 
     def _create_test_model(
         self, base_class=models.Model, fields=None, model_name=None,
@@ -511,6 +496,66 @@ class TestModelTestMixin:
         ContentType.objects.clear_cache()
 
         return model
+
+    def _create_test_object(
+        self, fields=None, model_name=None, create_test_permission=False,
+        instance_kwargs=None
+    ):
+        instance_kwargs = instance_kwargs or {}
+
+        self.TestModel = self._create_test_model(fields=fields, model_name=model_name)
+        self.test_object = self.TestModel.objects.create(**instance_kwargs)
+        self._inject_test_object_content_type()
+
+        if create_test_permission:
+            self._create_test_permission()
+
+            ModelPermission.register(
+                model=self.TestModel, permissions=(
+                    self.test_permission,
+                )
+            )
+
+    def _get_test_model_meta(self):
+        self.db_table = '{}_{}'.format(
+            self.app_config.label, self.model_name.lower()
+        )
+
+        class Meta:
+            app_label = self.app_config.label
+            db_table = self.db_table
+            verbose_name = self.model_name
+
+        if self.options:
+            for key, value in self.options.items():
+                setattr(Meta, key, value)
+
+        return Meta
+
+    def _get_test_model_save_method(self):
+        def save(instance, *args, **kwargs):
+            # Custom .save() method to use random primary key values.
+            if instance.pk:
+                return models.Model.self(instance, *args, **kwargs)
+            else:
+                instance.pk = RandomPrimaryKeyModelMonkeyPatchMixin.get_unique_primary_key(
+                    model=instance._meta.model
+                )
+                instance.id = instance.pk
+
+                return instance.save_base(force_insert=True)
+        return save
+
+    def _inject_test_object_content_type(self):
+        self.test_object_content_type = ContentType.objects.get_for_model(
+            model=self.test_object
+        )
+
+        self.test_object_view_kwargs = {
+            'app_label': self.test_object_content_type.app_label,
+            'model_name': self.test_object_content_type.model,
+            'object_id': self.test_object.pk
+        }
 
 
 class TestServerTestCaseMixin:

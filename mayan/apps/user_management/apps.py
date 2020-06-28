@@ -8,6 +8,7 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
+from mayan.apps.common.classes import ModelCopy
 from mayan.apps.common.menus import (
     menu_list_facet, menu_multi_item, menu_object, menu_secondary, menu_setup,
     menu_user
@@ -83,6 +84,7 @@ class UserManagementApp(MayanAppConfig):
 
         Group = apps.get_model(app_label='auth', model_name='Group')
         User = get_user_model()
+        UserOptions = self.get_model(model_name='UserOptions')
 
         DynamicSerializerField.add_serializer(
             klass=get_user_model(),
@@ -108,11 +110,14 @@ class UserManagementApp(MayanAppConfig):
         User._meta.verbose_name_plural = _('Users')
         User._meta.ordering = ('last_name', 'first_name')
 
-        User._meta.get_field('username').verbose_name = _('Username')
-        User._meta.get_field('first_name').verbose_name = _('First name')
-        User._meta.get_field('last_name').verbose_name = _('Last name')
         User._meta.get_field('email').verbose_name = _('Email')
+        User._meta.get_field('first_name').verbose_name = _('First name')
+        User._meta.get_field('groups').verbose_name = _('Groups')
         User._meta.get_field('is_active').verbose_name = _('Is active?')
+        User._meta.get_field('last_name').verbose_name = _('Last name')
+        User._meta.get_field('password').verbose_name = _('Password')
+        User._meta.get_field('username').verbose_name = _('Username')
+
         User.has_usable_password.short_description = _(
             'Has usable password?'
         )
@@ -135,6 +140,28 @@ class UserManagementApp(MayanAppConfig):
         MetadataLookup(
             description=_('All the users.'), name='users',
             value=get_users
+        )
+
+        ModelCopy(
+            model=Group, bind_link=True, register_permission=True
+        ).add_fields(
+            field_names=(
+                'name', 'user',
+            ),
+        )
+        ModelCopy(model=UserOptions).add_fields(
+            field_names=('user', 'block_password_change'),
+            field_value_templates={
+                'id': '{user.user_options.id}'
+            }
+        )
+        ModelCopy(
+            model=User, bind_link=True, register_permission=True
+        ).add_fields(
+            field_names=(
+                'username', 'first_name', 'last_name', 'email', 'is_active',
+                'password', 'groups', 'user_options'
+            ),
         )
 
         ModelEventType.register(

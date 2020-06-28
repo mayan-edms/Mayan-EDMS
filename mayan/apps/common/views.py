@@ -1,17 +1,25 @@
 from django.conf import settings
+from django.contrib import messages
 from django.templatetags.static import static
 from django.urls import reverse_lazy
 from django.utils import timezone, translation
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import RedirectView
 
-from mayan.apps.views.generics import SingleObjectEditView, SimpleView
+from mayan.apps.views.generics import (
+    ConfirmView, SingleObjectEditView, SimpleView
+)
+from mayan.apps.views.mixins import (
+    ExternalContentTypeObjectMixin, ObjectNameMixin
+)
 
+from .classes import ModelCopy
 from .forms import (
     LicenseForm, LocaleProfileForm, LocaleProfileForm_view,
 )
 from .icons import icon_setup
 from .menus import menu_tools, menu_setup
+from .permissions import permission_object_copy
 from .settings import setting_home_view
 
 
@@ -96,6 +104,36 @@ class LicenseView(SimpleView):
         'title': _('License'),
     }
     template_name = 'appearance/generic_form.html'
+
+
+class ObjectCopyView(ExternalContentTypeObjectMixin, ObjectNameMixin, ConfirmView):
+    external_object_permission = permission_object_copy
+
+    def get_extra_context(self):
+        model_copy = ModelCopy.get(model=self.external_object._meta.model)
+        context = {
+            'object': self.external_object,
+            'subtitle': _('Fields to be copied: %s') % ', '.join(
+                sorted(
+                    map(
+                        str, model_copy.get_fields_verbose_names()
+                    )
+                )
+            )
+        }
+
+        context['title'] = _('Make a copy of %(object_name)s "%(object)s"?') % {
+            'object_name': self.get_object_name(context=context), 'object': self.external_object
+        }
+
+        return context
+
+    def view_action(self):
+        self.external_object.copy_instance()
+        messages.success(
+            message=_('Object copied successfully.'),
+            request=self.request
+        )
 
 
 class RootView(SimpleView):

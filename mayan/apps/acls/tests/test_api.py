@@ -10,7 +10,7 @@ from .mixins import ACLAPIViewTestMixin, ACLTestMixin
 
 
 class ACLAPIViewTestCase(ACLTestMixin, ACLAPIViewTestMixin, BaseAPITestCase):
-    auto_create_test_object = True
+    auto_create_acl_test_object = True
 
     def test_acl_create_api_view_no_permission(self):
         acl_count = AccessControlList.objects.count()
