@@ -7,22 +7,20 @@ from ..models import Notification
 from ..permissions import permission_events_view
 
 from .mixins import (
-    NotificationTestMixin, NotificationViewTestMixin, UserEventViewsTestMixin
+    EventTypeTestMixin, EventsViewTestMixin, NotificationTestMixin,
+    NotificationViewTestMixin, UserEventViewsTestMixin
 )
 
 
-class EventsViewTestMixin:
-    def _request_events_for_object_view(self):
-        return self.get(
-            viewname='events:events_for_object', kwargs=self.view_arguments
-        )
-
-
-class EventsViewTestCase(EventsViewTestMixin, GenericDocumentViewTestCase):
+class EventsViewTestCase(
+    EventTypeTestMixin, EventsViewTestMixin, GenericDocumentViewTestCase
+):
     auto_upload_test_document = False
 
     def setUp(self):
         super(EventsViewTestCase, self).setUp()
+        self._create_test_event_type()
+        self._create_test_user()
         self.test_object = self.test_document_type
 
         content_type = ContentType.objects.get_for_model(model=self.test_object)
@@ -32,6 +30,9 @@ class EventsViewTestCase(EventsViewTestMixin, GenericDocumentViewTestCase):
             'model_name': content_type.model,
             'object_id': self.test_object.pk
         }
+        self.test_event_type.commit(
+            actor=self.test_user, action_object=self.test_object
+        )
 
     def test_events_for_object_view_no_permission(self):
         response = self._request_events_for_object_view()
@@ -39,7 +40,7 @@ class EventsViewTestCase(EventsViewTestMixin, GenericDocumentViewTestCase):
             response=response, text=self.test_object.label, status_code=404
         )
 
-    def test_events_for_object_view_with_permission(self):
+    def test_events_for_object_view_with_access(self):
         self.grant_access(
             obj=self.test_object, permission=permission_events_view
         )

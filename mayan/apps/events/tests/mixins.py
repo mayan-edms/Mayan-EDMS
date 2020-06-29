@@ -42,6 +42,13 @@ class EventTypeTestMixin:
         )
 
 
+class EventsViewTestMixin:
+    def _request_events_for_object_view(self):
+        return self.get(
+            viewname='events:events_for_object', kwargs=self.view_arguments
+        )
+
+
 class NotificationTestMixin:
     def _create_test_notification(self):
         self.test_notification = Notification.objects.create(
