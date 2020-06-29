@@ -5,7 +5,9 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.dynamic_search.classes import SearchModel
 from mayan.apps.views.literals import LIST_MODE_CHOICE_ITEM
 
-from .permissions import permission_document_view
+from .permissions import (
+    permission_document_type_view, permission_document_view
+)
 
 
 def transformation_format_uuid(term_string):
@@ -69,3 +71,10 @@ document_page_search.add_model_field(
 document_page_search.add_model_field(
     field='document_version__checksum', label=_('Checksum')
 )
+
+document_type_search = SearchModel(
+    app_label='documents', list_mode=LIST_MODE_CHOICE_ITEM,
+    model_name='DocumentType', permission=permission_document_type_view,
+    serializer_path='mayan.apps.documents.serializers.DocumentTypeSerializer'
+)
+document_type_search.add_model_field(field='label', label=_('Label'))

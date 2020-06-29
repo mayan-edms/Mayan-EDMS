@@ -135,6 +135,7 @@
 - Add support for copying: document types, groups, mailing profils,
   metadata types, messages of the day, workflows, quotas, roles, smart links,
   tags, weblinks.
+- Add document type searches.
 
 3.4.11 (2020-XX-XX)
 ===================
