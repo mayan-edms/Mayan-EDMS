@@ -1,3 +1,4 @@
+import json
 import logging
 
 from django.apps import apps
@@ -7,6 +8,8 @@ from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from actstream import action
+
+from mayan.apps.templating.classes import Template
 
 from .permissions import permission_events_view
 
@@ -43,8 +46,8 @@ class EventTypeNamespace:
     def __str__(self):
         return force_text(self.label)
 
-    def add_event_type(self, name, label):
-        event_type = EventType(namespace=self, name=name, label=label)
+    def add_event_type(self, **kwargs):
+        event_type = EventType(namespace=self, **kwargs)
         self.event_types.append(event_type)
         return event_type
 
@@ -81,22 +84,32 @@ class EventType:
             event_type.stored_event_type = None
             event_type.get_stored_event_type()
 
-    def __init__(self, namespace, name, label):
-        self.namespace = namespace
-        self.name = name
+    def __init__(self, namespace, label, name, extra_data_template_name=None):
+        self.extra_data_template_name = extra_data_template_name
         self.label = label
+        self.name = name
+        self.namespace = namespace
         self.stored_event_type = None
+        if extra_data_template_name:
+            self.template = Template(template_name=extra_data_template_name)
+        else:
+            self.template = None
         self.__class__._registry[self.id] = self
 
     def __str__(self):
         return force_text('{}: {}'.format(self.namespace.label, self.label))
 
-    def commit(self, actor=None, action_object=None, target=None):
+    def commit(self, actor=None, action_object=None, target=None, extra_data=None):
+        extra_data = extra_data or {}
+
         AccessControlList = apps.get_model(
             app_label='acls', model_name='AccessControlList'
         )
         Action = apps.get_model(
             app_label='actstream', model_name='Action'
+        )
+        ActionExtraData = apps.get_model(
+            app_label='events', model_name='ActionExtraData'
         )
         ContentType = apps.get_model(
             app_label='contenttypes', model_name='ContentType'
@@ -112,6 +125,10 @@ class EventType:
 
         for handler, result in results:
             if isinstance(result, Action):
+                ActionExtraData.objects.create(
+                    action=result, data=json.dumps(extra_data)
+                )
+
                 for user in get_user_model().objects.all():
                     notification = None
 

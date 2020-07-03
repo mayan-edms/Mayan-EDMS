@@ -9,13 +9,15 @@ from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.views.html_widgets import TwoStateWidget
 
 from .html_widgets import (
-    ObjectLinkWidget, widget_event_actor_link, widget_event_type_link
+    ActionExtraDataWidget, ObjectLinkWidget, widget_event_actor_link,
+    widget_event_type_link
 )
 from .links import (
     link_current_user_events, link_event_types_subscriptions_list,
     link_events_list, link_notification_mark_read,
     link_notification_mark_read_all, link_user_notifications_list,
 )
+from .methods import method_action_get_extra_data, method_action_get_event_type
 
 
 class EventsApp(MayanAppConfig):
@@ -31,6 +33,13 @@ class EventsApp(MayanAppConfig):
         Action = apps.get_model(app_label='actstream', model_name='Action')
         Notification = self.get_model(model_name='Notification')
         StoredEventType = self.get_model(model_name='StoredEventType')
+
+        Action.add_to_class(
+            name='get_extra_data', value=method_action_get_extra_data
+        )
+        Action.add_to_class(
+            name='get_event_type', value=method_action_get_event_type
+        )
 
         # Add labels to Action model, they are not marked translatable in the
         # upstream package.
@@ -53,6 +62,10 @@ class EventsApp(MayanAppConfig):
         SourceColumn(
             attribute='action_object', label=_('Action object'),
             include_label=True, source=Action, widget=ObjectLinkWidget
+        )
+        SourceColumn(
+            attribute='get_extra_data', label=_('Extra data'),
+            include_label=True, source=Action, widget=ActionExtraDataWidget
         )
 
         SourceColumn(

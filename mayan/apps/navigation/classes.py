@@ -861,6 +861,7 @@ class SourceColumn:
             if self.check_widget_condition(context=context):
                 widget_instance = self.widget()
                 widget_instance.column = self
+                widget_instance.obj = context['object']
                 return widget_instance.render(name=self.attribute, value=result)
 
         if not result:

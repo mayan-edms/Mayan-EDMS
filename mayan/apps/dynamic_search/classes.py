@@ -14,6 +14,7 @@ from mayan.apps.common.utils import (
 )
 from mayan.apps.views.literals import LIST_MODE_CHOICE_LIST
 
+from .events import event_search_advanced, event_search_simple
 from .settings import (
     setting_search_backend, setting_search_backend_arguments
 )
@@ -43,6 +44,15 @@ class SearchBackend:
         AccessControlList = apps.get_model(
             app_label='acls', model_name='AccessControlList'
         )
+
+        if 'q' in query_string:
+            event_search_simple.commit(
+                actor=user, extra_data={'q': query_string['q']}
+            )
+        else:
+            event_search_advanced.commit(
+                actor=user, extra_data={'query_string': query_string}
+            )
 
         # Clean up the query_string
         # The original query_string is immutable, create a new

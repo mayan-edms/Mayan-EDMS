@@ -9,6 +9,19 @@ from mayan.apps.templating.classes import Template
 from .classes import EventType
 
 
+class ActionExtraDataWidget:
+    def render(self, name=None, value=None):
+        if value:
+            template = self.obj.get_event_type().template
+            if template:
+                return template.render(context=value)
+            else:
+                if value:
+                    return ', '.join(['{}: {}'.format(key, value) for key, value in value.items()])
+
+        return ''
+
+
 class ObjectLinkWidget:
     template_string = '<a href="{{ url }}">{{ object_type }}{{ label }}</a>'
 

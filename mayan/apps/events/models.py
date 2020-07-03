@@ -1,3 +1,5 @@
+import json
+
 from django.conf import settings
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
@@ -12,6 +14,21 @@ from .managers import (
     EventSubscriptionManager, NotificationManager,
     ObjectEventSubscriptionManager
 )
+
+
+class ActionExtraData(models.Model):
+    action = models.OneToOneField(
+        on_delete=models.CASCADE, related_name='extra_data', to=Action,
+        verbose_name=_('Action')
+    )
+    data = models.TextField(blank=True, verbose_name=_('Backend data'))
+
+    def dumps(self, data):
+        self.data = json.dumps(obj=data)
+        self.save()
+
+    def loads(self):
+        return json.loads(s=self.data)
 
 
 class StoredEventType(models.Model):

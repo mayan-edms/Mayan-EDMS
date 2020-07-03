@@ -5,6 +5,7 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import menu_facet
 
+from .classes import Template
 from .links import link_document_template_sandbox
 from .permissions import permission_template_sandbox
 
