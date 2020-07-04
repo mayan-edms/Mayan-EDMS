@@ -204,7 +204,7 @@ Backward incompatible changes
 Issues closed
 -------------
 
-- :gitlab-issue:`XX`
+- :gitlab-issue:`804` Feature Request: Action to Copy anything (Documenttypes, Roles, Groups, Workflows, ...)
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
 
