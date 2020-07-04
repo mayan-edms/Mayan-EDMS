@@ -93,11 +93,6 @@
   - extract-msg from common to storage
   - gevent, gunicorn, whitenoise from common to platform
 
-- Templating improvements:
-
-  - Enable mathfilters by default.
-  - Add a 'set' tag to allow setting template variables.
-
 - Add a tags and filters selection to the template widget.
 - Remove runtime.py modules and move instancing to base class.
   Avoids keeping long lived objects in memory.
@@ -136,6 +131,18 @@
   metadata types, messages of the day, workflows, quotas, roles, smart links,
   tags, weblinks.
 - Add document type searches.
+- Templating improvements:
+
+  - Enable mathfilters by default.
+  - Add a 'set' tag to allow setting template variables.
+  - Add |dict_get filter that returns a given dictionay key.
+  - Add {% method %} tag to call an objects method with or without keyword
+    arguments.
+  - Add regular expression tags: regex_findall, regex_match, regex_search,
+    regex_sub. Each regex tag supports the flags: ascii, ignorecase, locale,
+    multiline, dotall, verbose.
+  - Add |split filter to split a value by a delimiter.
+
 
 3.4.11 (2020-XX-XX)
 ===================

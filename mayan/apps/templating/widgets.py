@@ -44,6 +44,7 @@ class TemplateWidget(NamedMultiWidget):
                 title, body, metadata = admindocs.utils.parse_docstring(
                     function.__doc__
                 )
+                title = _(title)
                 result.append(
                     (
                         name_template.format(name), '{} - {}'.format(name, title)
