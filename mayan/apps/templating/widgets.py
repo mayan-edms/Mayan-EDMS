@@ -18,7 +18,10 @@ class TemplateWidget(NamedMultiWidget):
         widgets = OrderedDict()
 
         widgets['model_attribute'] = forms.widgets.Select(
-            attrs={'data-template-fields': 'model_attribute'}
+            attrs={
+                'data-autocopy': 'true',
+                'data-field-template': '{{ ${ $idTemplate.data("model-variable") }.${ $this.val() } }}'
+            }
         )
         widgets['builtin_tags'] = forms.widgets.Select(
             attrs={
