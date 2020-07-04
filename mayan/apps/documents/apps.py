@@ -224,9 +224,21 @@ class DocumentsApp(MayanAppConfig):
             name='versions__timestamp'
         )
 
+        ModelField(
+            model=DocumentPage, label=_('Document version'),
+            name='document_version'
+        )
+        ModelField(
+            model=DocumentPage, label=_('Page number'), name='page_number'
+        )
+
         ModelProperty(
             description=_('Return the lastest version of the document.'),
             model=Document, label=_('Latest version'), name='latest_version'
+        )
+        ModelProperty(
+            description=_('Return the document instance.'),
+            model=DocumentPage, label=_('Document'), name='document'
         )
 
         ModelPermission.register(

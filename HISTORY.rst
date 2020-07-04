@@ -143,6 +143,7 @@
     multiline, dotall, verbose.
   - Add |split filter to split a value by a delimiter.
 
+- Add workflow action to update document OCR content.
 
 3.4.11 (2020-XX-XX)
 ===================

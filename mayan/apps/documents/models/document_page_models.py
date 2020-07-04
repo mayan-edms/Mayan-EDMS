@@ -244,13 +244,16 @@ class DocumentPage(models.Model):
         return self.document.is_in_trash
 
     def get_label(self):
-        return _(
-            'Page %(page_num)d out of %(total_pages)d of %(document)s'
-        ) % {
-            'document': force_text(self.document),
-            'page_num': self.page_number,
-            'total_pages': self.document_version.pages.all().count()
-        }
+        if getattr(self, 'document_version', None):
+            return _(
+                'Page %(page_num)d out of %(total_pages)d of %(document)s'
+            ) % {
+                'document': force_text(self.document),
+                'page_num': self.page_number,
+                'total_pages': self.document_version.pages.all().count()
+            }
+        else:
+            return None
     get_label.short_description = _('Label')
 
     def natural_key(self):
