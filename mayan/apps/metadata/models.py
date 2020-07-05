@@ -53,23 +53,15 @@ class MetadataType(models.Model):
         max_length=48, verbose_name=_('Label')
     )
     default = models.CharField(
-        blank=True, max_length=128, null=True,
-        help_text=_(
-            'Enter a template to render. '
-            'Use Django\'s default templating language '
-            '(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)'
-        ),
-        verbose_name=_('Default')
+        blank=True, max_length=128, null=True, help_text=_(
+            'Enter a template to render.'
+        ), verbose_name=_('Default')
     )
     lookup = models.TextField(
-        blank=True, null=True,
-        help_text=_(
-            'Enter a template to render. '
-            'Must result in a comma delimited string. '
-            'Use Django\'s default templating language '
-            '(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/).'
-        ),
-        verbose_name=_('Lookup')
+        blank=True, null=True, help_text=_(
+            'Enter a template to render. Must result in a comma delimited '
+            'string.'
+        ), verbose_name=_('Lookup')
     )
     validation = models.CharField(
         blank=True, choices=validation_choices(),

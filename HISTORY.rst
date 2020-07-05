@@ -146,6 +146,7 @@
 - Add workflow action to update document OCR content.
 - Split TemplateField into TemplateField and ModelTemplateField.
 - Split TemplateWidget into TemplateWidget and ModelTemplateWidget.
+- Use TemplateField for metadata type's default and lookup fields.
 
 
 3.4.11 (2020-XX-XX)
