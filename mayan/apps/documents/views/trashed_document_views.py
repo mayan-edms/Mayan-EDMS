@@ -58,13 +58,13 @@ class DocumentTrashView(MultipleObjectConfirmActionView):
 
 
 class EmptyTrashCanView(ConfirmView):
+    action_cancel_redirect = post_action_redirect = reverse_lazy(
+        'documents:document_list_deleted'
+    )
     extra_context = {
         'title': _('Empty trash?')
     }
     view_permission = permission_empty_trash
-    action_cancel_redirect = post_action_redirect = reverse_lazy(
-        'documents:document_list_deleted'
-    )
 
     def view_action(self):
         task_trashcan_empty.apply_async()
