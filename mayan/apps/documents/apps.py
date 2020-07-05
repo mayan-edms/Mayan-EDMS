@@ -554,11 +554,6 @@ class DocumentsApp(MayanAppConfig):
                 link_document_multiple_document_type_edit,
             ), sources=(Document,)
         )
-        menu_multi_item.bind_links(
-            links=(
-                link_document_multiple_restore, link_document_multiple_delete
-            ), sources=(DeletedDocument,)
-        )
 
         # Document pages
         menu_facet.add_unsorted_source(source=DocumentPage)
@@ -608,6 +603,14 @@ class DocumentsApp(MayanAppConfig):
                 link_document_version_return_document,
                 link_document_version_return_list
             ), sources=(DocumentVersion,)
+        )
+
+        # Trashed documents
+        menu_multi_item.add_proxy_exclusion(source=DeletedDocument)
+        menu_multi_item.bind_links(
+            links=(
+                link_document_multiple_restore, link_document_multiple_delete
+            ), sources=(DeletedDocument,)
         )
 
         post_delete.connect(
