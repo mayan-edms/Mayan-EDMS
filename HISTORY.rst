@@ -154,7 +154,7 @@
 - Use same trash icon for the empty trashed document list view.
 - Use proxy exclusion to disable the normal multi item document
   links from being displayed for trashed documents.
-
+- Add subwidgets_order to NamedMultiWidget class.
 
 3.4.11 (2020-XX-XX)
 ===================
