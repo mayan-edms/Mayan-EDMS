@@ -46,6 +46,7 @@ link_document_multiple_restore = Link(
     text=_('Restore'), view='documents:document_multiple_restore'
 )
 link_trash_can_empty = Link(
+    icon_class_path='mayan.apps.documents.icons.icon_trash_can_empty',
     permissions=(permission_empty_trash,), text=_('Empty trash'),
     view='documents:trash_can_empty'
 )

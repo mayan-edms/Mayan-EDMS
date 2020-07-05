@@ -150,6 +150,8 @@
 - Convert the trash emptying action into a background task.
 - Add support for excluding model proxies from menu link resolving via the
   .add_proxy_exclusion() menu method.
+- Add icon to the empty trash link.
+- Use same trash icon for the empty trashed document list view.
 
 
 3.4.11 (2020-XX-XX)
