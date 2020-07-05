@@ -506,12 +506,6 @@ class DocumentStatesApp(MayanAppConfig):
             )
         )
         menu_secondary.bind_links(
-            links=(link_workflow_runtime_proxy_list,),
-            sources=(
-                WorkflowRuntimeProxy,
-            )
-        )
-        menu_secondary.bind_links(
             links=(link_workflow_template_state_action_selection,),
             sources=(
                 WorkflowState,
@@ -536,18 +530,7 @@ class DocumentStatesApp(MayanAppConfig):
             )
         )
 
-        # Remove workflow template links and duplicated links that are added
-        # because the navigation system correctly sees WorkflowRuntimeProxy
-        # as a valid subclass of Workflow, but in this case this is not a
-        # desired behavior.
-        menu_secondary.unbind_links(
-            links=(
-                link_workflow_runtime_proxy_list,
-                link_workflow_template_create, link_workflow_template_list,
-            ), sources=(
-                WorkflowRuntimeProxy,
-            )
-        )
+        menu_secondary.add_proxy_exclusion(source=WorkflowRuntimeProxy)
 
         menu_setup.bind_links(links=(link_workflow_template_list,))
 
