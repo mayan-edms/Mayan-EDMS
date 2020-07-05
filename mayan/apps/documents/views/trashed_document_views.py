@@ -17,7 +17,7 @@ from ..permissions import (
     permission_document_trash, permission_document_view,
     permission_empty_trash
 )
-from ..tasks import task_delete_document
+from ..tasks import task_trashcan_empty
 
 from .document_views import DocumentListView
 
@@ -67,13 +67,11 @@ class EmptyTrashCanView(ConfirmView):
     )
 
     def view_action(self):
-        for deleted_document in DeletedDocument.objects.all():
-            task_delete_document.apply_async(
-                kwargs={'trashed_document_id': deleted_document.pk}
-            )
+        task_trashcan_empty.apply_async()
 
         messages.success(
-            message=_('Trash emptied successfully'), request=self.request
+            message=_('The trash emptying task has been queued.'),
+            request=self.request
         )
 
 

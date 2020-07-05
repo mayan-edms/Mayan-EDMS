@@ -147,6 +147,7 @@
 - Split TemplateField into TemplateField and ModelTemplateField.
 - Split TemplateWidget into TemplateWidget and ModelTemplateWidget.
 - Use TemplateField for metadata type's default and lookup fields.
+- Convert the trash emptying action into a background task.
 
 
 3.4.11 (2020-XX-XX)

@@ -101,6 +101,18 @@ def task_scan_duplicates_for(document_id):
     DuplicatedDocument.objects.scan_for(document=document)
 
 
+@app.task(ignore_result=True)
+def task_trashcan_empty():
+    DeletedDocument = apps.get_model(
+        app_label='documents', model_name='DeletedDocument'
+    )
+
+    for deleted_document in DeletedDocument.objects.all():
+        task_delete_document.apply_async(
+            kwargs={'trashed_document_id': deleted_document.pk}
+        )
+
+
 @app.task(bind=True, default_retry_delay=UPDATE_PAGE_COUNT_RETRY_DELAY, ignore_result=True)
 def task_update_page_count(self, version_id):
     DocumentVersion = apps.get_model(
