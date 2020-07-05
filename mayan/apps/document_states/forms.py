@@ -7,7 +7,7 @@ from django.forms.formsets import formset_factory
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.templating.fields import TemplateField
+from mayan.apps.templating.fields import ModelTemplateField
 from mayan.apps.views.forms import DynamicModelForm
 
 from .classes import WorkflowAction
@@ -56,7 +56,7 @@ class WorkflowStateActionDynamicForm(DynamicModelForm):
             for key, value in json.loads(s=self.instance.action_data).items():
                 self.fields[key].initial = value
 
-        self.fields['condition'] = TemplateField(
+        self.fields['condition'] = ModelTemplateField(
             initial_help_text=self.fields['condition'].help_text,
             label=self.fields['condition'].label, model=WorkflowInstance,
             model_variable='workflow_instance', required=False
@@ -114,7 +114,7 @@ class WorkflowTransitionForm(forms.ModelForm):
             'destination_state'
         ].queryset.filter(workflow=workflow)
 
-        self.fields['condition'] = TemplateField(
+        self.fields['condition'] = ModelTemplateField(
             initial_help_text=self.fields['condition'].help_text,
             label=self.fields['condition'].label, model=WorkflowInstance,
             model_variable='workflow_instance', required=False

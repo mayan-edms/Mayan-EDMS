@@ -3,7 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.classes import ModelField, ModelFieldRelated
 from mayan.apps.documents.models import Document
-from mayan.apps.templating.fields import TemplateField
+from mayan.apps.templating.fields import ModelTemplateField
 
 from .models import SmartLink, SmartLinkCondition
 
@@ -11,7 +11,7 @@ from .models import SmartLink, SmartLinkCondition
 class SmartLinkForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(SmartLinkForm, self).__init__(*args, **kwargs)
-        self.fields['dynamic_label'] = TemplateField(
+        self.fields['dynamic_label'] = ModelTemplateField(
             initial_help_text=self.fields['dynamic_label'].help_text,
             label=self.fields['dynamic_label'].label, model=Document,
             model_variable='document', required=False
@@ -44,7 +44,7 @@ class SmartLinkConditionForm(forms.ModelForm):
         self.fields['foreign_document_data'] = forms.ChoiceField(
             choices=choices, label=_('Foreign document field')
         )
-        self.fields['expression'] = TemplateField(
+        self.fields['expression'] = ModelTemplateField(
             initial_help_text=self.fields['expression'].help_text,
             label=self.fields['expression'].label, model=Document,
             model_variable='document', required=False

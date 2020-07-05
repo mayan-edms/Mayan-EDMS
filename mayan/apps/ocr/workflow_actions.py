@@ -13,7 +13,8 @@ class UpdateDocumentPageOCRAction(WorkflowAction):
     fields = {
         'page_condition': {
             'label': _('Page condition'),
-            'class': 'mayan.apps.templating.fields.TemplateField', 'kwargs': {
+            'class': 'mayan.apps.templating.fields.ModelTemplateField',
+            'kwargs': {
                 'initial_help_text': _(
                     'The condition that will determine if a document page\'s '
                     'OCR content will be modified or not. The condition is '
@@ -28,7 +29,8 @@ class UpdateDocumentPageOCRAction(WorkflowAction):
         },
         'page_content': {
             'label': _('Page content'),
-            'class': 'mayan.apps.templating.fields.TemplateField', 'kwargs': {
+            'class': 'mayan.apps.templating.fields.ModelTemplateField',
+            'kwargs': {
                 'initial_help_text': _(
                     'A template that will generate the OCR content to be '
                     'saved.'

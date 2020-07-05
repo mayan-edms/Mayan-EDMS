@@ -144,6 +144,9 @@
   - Add |split filter to split a value by a delimiter.
 
 - Add workflow action to update document OCR content.
+- Split TemplateField into TemplateField and ModelTemplateField.
+- Split TemplateWidget into TemplateWidget and ModelTemplateWidget.
+
 
 3.4.11 (2020-XX-XX)
 ===================
