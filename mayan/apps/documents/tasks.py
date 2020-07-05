@@ -102,7 +102,7 @@ def task_scan_duplicates_for(document_id):
 
 
 @app.task(ignore_result=True)
-def task_trashcan_empty():
+def task_trash_can_empty():
     DeletedDocument = apps.get_model(
         app_label='documents', model_name='DeletedDocument'
     )

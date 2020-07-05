@@ -17,7 +17,7 @@ from ..permissions import (
     permission_document_trash, permission_document_view,
     permission_empty_trash
 )
-from ..tasks import task_trashcan_empty
+from ..tasks import task_trash_can_empty
 
 from .document_views import DocumentListView
 
@@ -67,7 +67,7 @@ class EmptyTrashCanView(ConfirmView):
     view_permission = permission_empty_trash
 
     def view_action(self):
-        task_trashcan_empty.apply_async()
+        task_trash_can_empty.apply_async()
 
         messages.success(
             message=_('The trash emptying task has been queued.'),

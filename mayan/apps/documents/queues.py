@@ -39,8 +39,8 @@ queue_documents.add_task_type(
     label=_('Clean empty duplicate lists')
 )
 queue_documents.add_task_type(
-    dotted_path='mayan.apps.documents.tasks.task_trashcan_empty',
-    label=_('Empty the trashcan')
+    dotted_path='mayan.apps.documents.tasks.task_trash_can_empty',
+    label=_('Empty the trash can')
 )
 
 queue_documents_periodic.add_task_type(
