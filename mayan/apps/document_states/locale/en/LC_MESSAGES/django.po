@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-22 23:19-0400\n"
+"POT-Creation-Date: 2020-07-09 00:03-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: apps.py:68 events.py:6 links.py:18 links.py:54 links.py:196 links.py:220
-#: models.py:72 settings.py:11 views/workflow_proxy_views.py:66
+#: models.py:72 settings.py:13 views/workflow_proxy_views.py:66
 #: views/workflow_template_views.py:232
 msgid "Workflows"
 msgstr ""
@@ -108,7 +108,7 @@ msgstr ""
 msgid "Triggers"
 msgstr ""
 
-#: apps.py:336 models.py:756
+#: apps.py:336 models.py:758
 msgid "Type"
 msgstr ""
 
@@ -125,7 +125,7 @@ msgstr ""
 msgid "%(field_name)s template error: %(exception)s"
 msgstr ""
 
-#: error_logs.py:6 models.py:638
+#: error_logs.py:6 models.py:639
 msgid "Workflow state actions"
 msgstr ""
 
@@ -149,8 +149,8 @@ msgstr ""
 msgid "Namespace"
 msgstr ""
 
-#: forms.py:134 models.py:59 models.py:525 models.py:607 models.py:701
-#: models.py:767
+#: forms.py:134 models.py:59 models.py:525 models.py:607 models.py:702
+#: models.py:769
 msgid "Label"
 msgstr ""
 
@@ -170,7 +170,7 @@ msgstr ""
 msgid "Select a transition to execute in the next step."
 msgstr ""
 
-#: forms.py:192 links.py:202 models.py:440 models.py:753 models.py:808
+#: forms.py:192 links.py:202 models.py:440 models.py:755 models.py:810
 msgid "Transition"
 msgstr ""
 
@@ -255,23 +255,23 @@ msgstr ""
 msgid "Launch all workflows"
 msgstr ""
 
-#: literals.py:8
+#: literals.py:9
 msgid "Character"
 msgstr ""
 
-#: literals.py:9
+#: literals.py:10
 msgid "Number (Integer)"
 msgstr ""
 
-#: literals.py:19
+#: literals.py:20
 msgid "Text area"
 msgstr ""
 
-#: literals.py:30
+#: literals.py:31
 msgid "On entry"
 msgstr ""
 
-#: literals.py:31
+#: literals.py:32
 msgid "On exit"
 msgstr ""
 
@@ -281,7 +281,7 @@ msgid ""
 "contain letters, numbers, and underscores."
 msgstr ""
 
-#: models.py:55 models.py:762
+#: models.py:55 models.py:764
 msgid "Internal name"
 msgstr ""
 
@@ -289,7 +289,7 @@ msgstr ""
 msgid "A short text to describe the workflow."
 msgstr ""
 
-#: models.py:71 models.py:279 models.py:521 models.py:697
+#: models.py:71 models.py:279 models.py:521 models.py:698
 msgid "Workflow"
 msgstr ""
 
@@ -392,142 +392,144 @@ msgstr ""
 #: models.py:626
 msgid ""
 "The condition that will determine if this state action is executed or not. "
-"The condition is evaluated against the workflow instance. Conditions that "
-"return None or an empty string ('') are considered to be logical false, any "
-"other value is considered to be the logical true."
+"The condition is evaluated against the workflow instance. Conditions that do "
+"not return any value, that return the Python logical None, or an empty "
+"string ('') are considered to be logical false, any other value is "
+"considered to be the logical true."
 msgstr ""
 
-#: models.py:631 models.py:718
+#: models.py:632 models.py:720
 msgid "Condition"
 msgstr ""
 
-#: models.py:637
+#: models.py:638
 msgid "Workflow state action"
 msgstr ""
 
-#: models.py:679
+#: models.py:680
 msgid "Unknown action type"
 msgstr ""
 
-#: models.py:684
+#: models.py:685
 msgid ""
 "The state action will be executed, depending on the condition return value."
 msgstr ""
 
-#: models.py:687 models.py:746
+#: models.py:688 models.py:748
 msgid "Has a condition?"
 msgstr ""
 
-#: models.py:700
+#: models.py:701
 msgid "A short text to describe the transition."
 msgstr ""
 
-#: models.py:705
+#: models.py:706
 msgid "Origin state"
 msgstr ""
 
-#: models.py:709
+#: models.py:710
 msgid "Destination state"
 msgstr ""
 
-#: models.py:713
+#: models.py:714
 msgid ""
 "The condition that will determine if this transition is enabled or not. The "
-"condition is evaluated against the workflow instance. Conditions that return "
-"None or an empty string ('') are considered to be logical false, any other "
-"value is considered to be the logical true."
+"condition is evaluated against the workflow instance. Conditions that do not "
+"return any value, that return the Python logical None, or an empty string "
+"('') are considered to be logical false, any other value is considered to be "
+"the logical true."
 msgstr ""
 
-#: models.py:726
+#: models.py:728
 msgid "Workflow transition"
 msgstr ""
 
-#: models.py:727
+#: models.py:729
 msgid "Workflow transitions"
 msgstr ""
 
-#: models.py:743
+#: models.py:745
 msgid ""
 "The transition will be available, depending on the condition return value."
 msgstr ""
 
-#: models.py:760
+#: models.py:762
 msgid ""
 "The name that will be used to identify this field in other parts of the "
 "workflow system."
 msgstr ""
 
-#: models.py:766
+#: models.py:768
 msgid "The field name that will be shown on the user interface."
 msgstr ""
 
-#: models.py:770
+#: models.py:772
 msgid ""
 "An optional message that will help users better understand the purpose of "
 "the field and data to provide."
 msgstr ""
 
-#: models.py:772
+#: models.py:774
 msgid "Help text"
 msgstr ""
 
-#: models.py:776
+#: models.py:778
 msgid "Whether this fields needs to be filled out or not to proceed."
 msgstr ""
 
-#: models.py:777
+#: models.py:779
 msgid "Required"
 msgstr ""
 
-#: models.py:781
+#: models.py:783
 msgid "An optional class to change the default presentation of the field."
 msgstr ""
 
-#: models.py:782
+#: models.py:784
 msgid "Widget class"
 msgstr ""
 
-#: models.py:786
+#: models.py:788
 msgid "A group of keyword arguments to customize the widget. Use YAML format."
 msgstr ""
 
-#: models.py:789
+#: models.py:791
 msgid "Widget keyword arguments"
 msgstr ""
 
-#: models.py:794
+#: models.py:796
 msgid "Workflow transition field"
 msgstr ""
 
-#: models.py:795
+#: models.py:797
 msgid "Workflow transition fields"
 msgstr ""
 
-#: models.py:812
+#: models.py:814
 msgid "Event type"
 msgstr ""
 
-#: models.py:816
+#: models.py:818
 msgid "Workflow transition trigger event"
 msgstr ""
 
-#: models.py:817
+#: models.py:819
 msgid "Workflow transitions trigger events"
 msgstr ""
 
-#: models.py:826
+#: models.py:828
 msgid "Workflow runtime proxy"
 msgstr ""
 
-#: models.py:827
+#: models.py:829
 msgid "Workflow runtime proxies"
 msgstr ""
 
-#: models.py:844
+#: models.py:846
 msgid "Workflow state runtime proxy"
 msgstr ""
 
-#: models.py:845
+#: models.py:847
 msgid "Workflow state runtime proxies"
 msgstr ""
 
@@ -613,25 +615,30 @@ msgstr ""
 msgid "Primary key of the transition to be added."
 msgstr ""
 
-#: settings.py:17
+#: settings.py:18
+msgid ""
+"File path to the graphviz dot program used to generate workflow previews."
+msgstr ""
+
+#: settings.py:26
 msgid ""
 "The threshold at which the WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest workflow image cache files. Specify the size in bytes."
 msgstr ""
 
-#: settings.py:25
+#: settings.py:34
 msgid ""
 "Time in seconds that the browser should cache the supplied workflow images. "
 "The default of 31559626 seconds corresponde to 1 year."
 msgstr ""
 
-#: settings.py:32
+#: settings.py:41
 msgid ""
 "Path to the Storage subclass to use when storing the cached workflow image "
 "files."
 msgstr ""
 
-#: settings.py:40
+#: settings.py:49
 msgid "Arguments to pass to the WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND."
 msgstr ""
 

@@ -7,6 +7,7 @@
 # Franck Boucher <boucher.fk@gmail.com>, 2016
 # Frédéric Escudero <frederic.escudero@gmail.com>, 2017
 # Frédéric Sheedy <sheedf@gmail.com>, 2019-2020
+# Guillaume Trottier <gui.trottier@gmail.com>, 2020
 # Olivier W, 2019
 # PatrickHetu <patrick.hetu@gmail.com>, 2012
 # 0041b687dd284925c1885ba94464aacd_fde037b <fc746b00d74cefecce9698255909a24f_28512>, 2012
@@ -17,8 +18,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-22 23:18-0400\n"
-"PO-Revision-Date: 2020-04-19 04:46+0000\n"
+"POT-Creation-Date: 2020-07-09 00:03-0400\n"
+"PO-Revision-Date: 2020-07-09 04:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -95,7 +96,7 @@ msgstr "Ajouter"
 
 #: generics.py:303
 msgid "Remove all"
-msgstr "Retirer tout"
+msgstr "Tout retirer"
 
 #: generics.py:312
 msgid "Remove"
@@ -181,10 +182,14 @@ msgid "Source code"
 msgstr "Code source"
 
 #: links.py:81
+msgid "Online store"
+msgstr ""
+
+#: links.py:85
 msgid "Get support"
 msgstr "Obtenez de l'aide"
 
-#: links.py:85 queues.py:13 views.py:212
+#: links.py:89 queues.py:13 views.py:212
 msgid "Tools"
 msgstr "Outils"
 
@@ -366,13 +371,13 @@ msgstr "Un espace de stockage que tous les agents pourront utiliser pour partage
 
 #: settings.py:103
 msgid "Base URL path to use for all views."
-msgstr ""
+msgstr " Chemin de l'URL de base à utiliser pour tous les affichages."
 
 #: storages.py:13
 msgid ""
 "Unable to initialize the shared uploaded file storage. Check the settings {}"
 " and {} for formatting errors."
-msgstr ""
+msgstr "Impossible d'initialiser le stockage de fichiers téléchargés partagés. Vérifiez les paramètres {} et {} pour les erreurs de formatage."
 
 #: templatetags/common_tags.py:34
 msgid "Confirm delete"

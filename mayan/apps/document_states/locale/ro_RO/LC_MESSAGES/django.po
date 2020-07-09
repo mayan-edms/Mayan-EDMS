@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-22 23:19-0400\n"
-"PO-Revision-Date: 2020-03-28 21:36+0000\n"
-"Last-Translator: Harald Ersch\n"
+"POT-Creation-Date: 2020-07-09 00:03-0400\n"
+"PO-Revision-Date: 2020-07-09 04:06+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
 #: apps.py:68 events.py:6 links.py:18 links.py:54 links.py:196 links.py:220
-#: models.py:72 settings.py:11 views/workflow_proxy_views.py:66
+#: models.py:72 settings.py:13 views/workflow_proxy_views.py:66
 #: views/workflow_template_views.py:232
 msgid "Workflows"
 msgstr "Fluxuri de lucru"
@@ -110,7 +110,7 @@ msgstr "Declanșatoarele sunt evenimente de sistem care vor determina aplicarea 
 msgid "Triggers"
 msgstr "Declanșatoare"
 
-#: apps.py:336 models.py:756
+#: apps.py:336 models.py:758
 msgid "Type"
 msgstr "Tip"
 
@@ -127,7 +127,7 @@ msgstr "Documente"
 msgid "%(field_name)s template error: %(exception)s"
 msgstr "%(field_name)s eroare de șablon: %(exception)s"
 
-#: error_logs.py:6 models.py:638
+#: error_logs.py:6 models.py:639
 msgid "Workflow state actions"
 msgstr "Acțiuni de stare de lucru"
 
@@ -151,8 +151,8 @@ msgstr "Acțiune"
 msgid "Namespace"
 msgstr "Spațiu de nume"
 
-#: forms.py:134 models.py:59 models.py:525 models.py:607 models.py:701
-#: models.py:767
+#: forms.py:134 models.py:59 models.py:525 models.py:607 models.py:702
+#: models.py:769
 msgid "Label"
 msgstr "Etichetă"
 
@@ -172,7 +172,7 @@ msgstr "Da"
 msgid "Select a transition to execute in the next step."
 msgstr "Selectați o tranziție de executat în pasul următor."
 
-#: forms.py:192 links.py:202 models.py:440 models.py:753 models.py:808
+#: forms.py:192 links.py:202 models.py:440 models.py:755 models.py:810
 msgid "Transition"
 msgstr "Tranziție"
 
@@ -257,23 +257,23 @@ msgstr "Stare documente"
 msgid "Launch all workflows"
 msgstr "Lansați toate fluxurile de lucru"
 
-#: literals.py:8
+#: literals.py:9
 msgid "Character"
 msgstr "Caracter"
 
-#: literals.py:9
+#: literals.py:10
 msgid "Number (Integer)"
 msgstr "Număr (număr întreg)"
 
-#: literals.py:19
+#: literals.py:20
 msgid "Text area"
 msgstr "Zona de text"
 
-#: literals.py:30
+#: literals.py:31
 msgid "On entry"
 msgstr "La intrare"
 
-#: literals.py:31
+#: literals.py:32
 msgid "On exit"
 msgstr "La ieșire"
 
@@ -283,7 +283,7 @@ msgid ""
 "contain letters, numbers, and underscores."
 msgstr "Această valoare va fi utilizată de alte aplicații pentru a face referire la acest flux de lucru. Pot conține numai litere, numere și subliniere."
 
-#: models.py:55 models.py:762
+#: models.py:55 models.py:764
 msgid "Internal name"
 msgstr "Nume intern"
 
@@ -291,7 +291,7 @@ msgstr "Nume intern"
 msgid "A short text to describe the workflow."
 msgstr "Un text scurt pentru a descrie fluxul de lucru."
 
-#: models.py:71 models.py:279 models.py:521 models.py:697
+#: models.py:71 models.py:279 models.py:521 models.py:698
 msgid "Workflow"
 msgstr "Flux de lucru"
 
@@ -394,142 +394,144 @@ msgstr "Datele privind acțiunile de intrare"
 #: models.py:626
 msgid ""
 "The condition that will determine if this state action is executed or not. "
-"The condition is evaluated against the workflow instance. Conditions that "
-"return None or an empty string ('') are considered to be logical false, any "
-"other value is considered to be the logical true."
-msgstr "Condiția care va determina dacă această stare a acțiunii este executată sau nu. Starea este evaluată pe baza instanței fluxului de lucru. Condițiile care returnează Niciuna sau un șir gol ('') sunt considerate logic false, orice altă valoare este considerată ca fiind logic adevărată."
+"The condition is evaluated against the workflow instance. Conditions that do"
+" not return any value, that return the Python logical None, or an empty "
+"string ('') are considered to be logical false, any other value is "
+"considered to be the logical true."
+msgstr ""
 
-#: models.py:631 models.py:718
+#: models.py:632 models.py:720
 msgid "Condition"
 msgstr "Condiție"
 
-#: models.py:637
+#: models.py:638
 msgid "Workflow state action"
 msgstr "Acțiune de stare de flux de lucru"
 
-#: models.py:679
+#: models.py:680
 msgid "Unknown action type"
 msgstr "Tip de acțiune necunoscut"
 
-#: models.py:684
+#: models.py:685
 msgid ""
 "The state action will be executed, depending on the condition return value."
 msgstr "Starea acțiunii va fi executată, în funcție de valoarea de returnare a condiției."
 
-#: models.py:687 models.py:746
+#: models.py:688 models.py:748
 msgid "Has a condition?"
 msgstr "Are o condiție?"
 
-#: models.py:700
+#: models.py:701
 msgid "A short text to describe the transition."
 msgstr "Un text scurt pentru a descrie tranziția."
 
-#: models.py:705
+#: models.py:706
 msgid "Origin state"
 msgstr "Stare originală"
 
-#: models.py:709
+#: models.py:710
 msgid "Destination state"
 msgstr "Stare destinație"
 
-#: models.py:713
+#: models.py:714
 msgid ""
 "The condition that will determine if this transition is enabled or not. The "
-"condition is evaluated against the workflow instance. Conditions that return"
-" None or an empty string ('') are considered to be logical false, any other "
-"value is considered to be the logical true."
-msgstr "Condiția care va determina dacă această tranziție este activată sau nu. Starea este evaluată pe baza instanței fluxului de lucru. Condițiile care returnează Niciuna sau un șir gol ('') sunt considerate logic false, orice altă valoare este considerată ca fiind logic adevărată."
+"condition is evaluated against the workflow instance. Conditions that do not"
+" return any value, that return the Python logical None, or an empty string "
+"('') are considered to be logical false, any other value is considered to be"
+" the logical true."
+msgstr ""
 
-#: models.py:726
+#: models.py:728
 msgid "Workflow transition"
 msgstr "Tranziția fluxului de lucru"
 
-#: models.py:727
+#: models.py:729
 msgid "Workflow transitions"
 msgstr "Tranziții ale fluxului de lucru"
 
-#: models.py:743
+#: models.py:745
 msgid ""
 "The transition will be available, depending on the condition return value."
 msgstr "Tranziția va fi disponibilă, în funcție de valoarea  întoarsă de condiție."
 
-#: models.py:760
+#: models.py:762
 msgid ""
 "The name that will be used to identify this field in other parts of the "
 "workflow system."
 msgstr "Numele care va fi utilizat pentru a identifica acest câmp în alte părți ale sistemului de flux de lucru."
 
-#: models.py:766
+#: models.py:768
 msgid "The field name that will be shown on the user interface."
 msgstr "Numele câmpului care va fi afișat pe interfața de utilizator."
 
-#: models.py:770
+#: models.py:772
 msgid ""
 "An optional message that will help users better understand the purpose of "
 "the field and data to provide."
 msgstr "Un mesaj opțional care îi va ajuta pe utilizatori să înțeleagă mai bine scopul câmpului și datele pe care să le furnizeze."
 
-#: models.py:772
+#: models.py:774
 msgid "Help text"
 msgstr "Text de ajutor"
 
-#: models.py:776
+#: models.py:778
 msgid "Whether this fields needs to be filled out or not to proceed."
 msgstr "Specificați dacă aceste câmpuri trebuie completate sau nu."
 
-#: models.py:777
+#: models.py:779
 msgid "Required"
 msgstr "Necesară"
 
-#: models.py:781
+#: models.py:783
 msgid "An optional class to change the default presentation of the field."
 msgstr "O clasă opțională pentru a modifica prezentarea implicită a câmpului."
 
-#: models.py:782
+#: models.py:784
 msgid "Widget class"
 msgstr "Clasa widget"
 
-#: models.py:786
+#: models.py:788
 msgid "A group of keyword arguments to customize the widget. Use YAML format."
 msgstr "Un grup de argumente de cuvinte cheie pentru a personaliza widget-ul. Folosiți formatul YAML."
 
-#: models.py:789
+#: models.py:791
 msgid "Widget keyword arguments"
 msgstr "Argumentele cuvintelor cheie pentru Widget "
 
-#: models.py:794
+#: models.py:796
 msgid "Workflow transition field"
 msgstr "Câmpul de tranziție a fluxului de lucru"
 
-#: models.py:795
+#: models.py:797
 msgid "Workflow transition fields"
 msgstr "Câmpuri de tranziție a fluxului de lucru"
 
-#: models.py:812
+#: models.py:814
 msgid "Event type"
 msgstr "Tip eveniment"
 
-#: models.py:816
+#: models.py:818
 msgid "Workflow transition trigger event"
 msgstr "Evenimentul de declanșare a tranziției fluxului de lucru"
 
-#: models.py:817
+#: models.py:819
 msgid "Workflow transitions trigger events"
 msgstr "Evenimente de declanșare a tranzițiilor fluxului de lucru"
 
-#: models.py:826
+#: models.py:828
 msgid "Workflow runtime proxy"
 msgstr "Proxy runtime pentru fluxul de lucru"
 
-#: models.py:827
+#: models.py:829
 msgid "Workflow runtime proxies"
 msgstr "Proxy-uri de runtime pentru fluxul de lucru"
 
-#: models.py:844
+#: models.py:846
 msgid "Workflow state runtime proxy"
 msgstr "Proxy de runtime pentru starea fluxului de lucru"
 
-#: models.py:845
+#: models.py:847
 msgid "Workflow state runtime proxies"
 msgstr "Proxy-uri runtime de stare de flux de lucru"
 
@@ -615,25 +617,30 @@ msgstr "Listă separată prin virgule de chei primare de tip de documente la car
 msgid "Primary key of the transition to be added."
 msgstr "Cheia primară a tranziției care urmează să fie adăugată."
 
-#: settings.py:17
+#: settings.py:18
+msgid ""
+"File path to the graphviz dot program used to generate workflow previews."
+msgstr ""
+
+#: settings.py:26
 msgid ""
 "The threshold at which the WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest workflow image cache files. Specify the size in bytes."
 msgstr "Pragul la care WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND va începe să șteargă cele mai vechi fișiere de memorie cache a imaginilor fluxului de lucru. Specificați dimensiunea în octeți."
 
-#: settings.py:25
+#: settings.py:34
 msgid ""
 "Time in seconds that the browser should cache the supplied workflow images. "
 "The default of 31559626 seconds corresponde to 1 year."
 msgstr "Timp în secunde care browser-ul trebuie să cacheze imaginile fluxului de lucru furnizate. Valoarea implicită de 31559626 secunde corespunde unui an."
 
-#: settings.py:32
+#: settings.py:41
 msgid ""
 "Path to the Storage subclass to use when storing the cached workflow image "
 "files."
 msgstr "Calea către subclasa de stocare pe care să o utilizați la stocarea fișierelor de imagine ale fluxului de lucru din cache"
 
-#: settings.py:40
+#: settings.py:49
 msgid "Arguments to pass to the WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND."
 msgstr "Argumente de transmis la WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND."
 

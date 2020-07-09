@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-22 23:19-0400\n"
-"PO-Revision-Date: 2020-05-18 08:55+0000\n"
-"Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>\n"
+"POT-Creation-Date: 2020-07-09 00:03-0400\n"
+"PO-Revision-Date: 2020-07-09 04:06+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:68 events.py:6 links.py:18 links.py:54 links.py:196 links.py:220
-#: models.py:72 settings.py:11 views/workflow_proxy_views.py:66
+#: models.py:72 settings.py:13 views/workflow_proxy_views.py:66
 #: views/workflow_template_views.py:232
 msgid "Workflows"
 msgstr "Przepływy pracy"
@@ -112,7 +112,7 @@ msgstr "Wyzwalacze to zdarzenia systemowe, które spowodują zastosowanie przej�
 msgid "Triggers"
 msgstr "Wyzwalacze"
 
-#: apps.py:336 models.py:756
+#: apps.py:336 models.py:758
 msgid "Type"
 msgstr "Typ"
 
@@ -129,7 +129,7 @@ msgstr "Dokumenty"
 msgid "%(field_name)s template error: %(exception)s"
 msgstr "Błąd szablonu %(field_name)s: %(exception)s"
 
-#: error_logs.py:6 models.py:638
+#: error_logs.py:6 models.py:639
 msgid "Workflow state actions"
 msgstr "Akcje stanu przepływu pracy"
 
@@ -153,8 +153,8 @@ msgstr "Akcja"
 msgid "Namespace"
 msgstr "Przestrzeń nazw"
 
-#: forms.py:134 models.py:59 models.py:525 models.py:607 models.py:701
-#: models.py:767
+#: forms.py:134 models.py:59 models.py:525 models.py:607 models.py:702
+#: models.py:769
 msgid "Label"
 msgstr "Etykieta"
 
@@ -174,7 +174,7 @@ msgstr "Tak"
 msgid "Select a transition to execute in the next step."
 msgstr "Wybierz przejście do wykonania w następnym kroku."
 
-#: forms.py:192 links.py:202 models.py:440 models.py:753 models.py:808
+#: forms.py:192 links.py:202 models.py:440 models.py:755 models.py:810
 msgid "Transition"
 msgstr "Przejście"
 
@@ -259,23 +259,23 @@ msgstr "Stan dokumentów"
 msgid "Launch all workflows"
 msgstr "Uruchom wszystkie przepływy pracy"
 
-#: literals.py:8
+#: literals.py:9
 msgid "Character"
 msgstr "Znak"
 
-#: literals.py:9
+#: literals.py:10
 msgid "Number (Integer)"
 msgstr "Liczba (liczba całkowita)"
 
-#: literals.py:19
+#: literals.py:20
 msgid "Text area"
 msgstr "Obszar tekstowy"
 
-#: literals.py:30
+#: literals.py:31
 msgid "On entry"
 msgstr "Przy wejściu"
 
-#: literals.py:31
+#: literals.py:32
 msgid "On exit"
 msgstr "Przy wyjściu"
 
@@ -285,7 +285,7 @@ msgid ""
 "contain letters, numbers, and underscores."
 msgstr "Ta wartość będzie używana przez inne aplikacje w odniesieniu do tego przepływu pracy. Może zawierać tylko litery, cyfry i znaki podkreślenia."
 
-#: models.py:55 models.py:762
+#: models.py:55 models.py:764
 msgid "Internal name"
 msgstr "Nazwa wewnętrzna"
 
@@ -293,7 +293,7 @@ msgstr "Nazwa wewnętrzna"
 msgid "A short text to describe the workflow."
 msgstr "Krótki tekst opisujący przepływ pracy."
 
-#: models.py:71 models.py:279 models.py:521 models.py:697
+#: models.py:71 models.py:279 models.py:521 models.py:698
 msgid "Workflow"
 msgstr "Obieg dokumentów"
 
@@ -396,142 +396,144 @@ msgstr "Wpis danych działania"
 #: models.py:626
 msgid ""
 "The condition that will determine if this state action is executed or not. "
-"The condition is evaluated against the workflow instance. Conditions that "
-"return None or an empty string ('') are considered to be logical false, any "
-"other value is considered to be the logical true."
-msgstr "Warunek, który określi, czy to działanie zostanie wykonane, czy nie. Warunek jest oceniany względem instancji przepływu pracy. Warunki, które zwracają Brak lub pusty ciąg („”) są uważane za logicznie fałszywe, każda inna wartość jest uważana za logiczną prawdę."
+"The condition is evaluated against the workflow instance. Conditions that do"
+" not return any value, that return the Python logical None, or an empty "
+"string ('') are considered to be logical false, any other value is "
+"considered to be the logical true."
+msgstr ""
 
-#: models.py:631 models.py:718
+#: models.py:632 models.py:720
 msgid "Condition"
 msgstr "Warunek"
 
-#: models.py:637
+#: models.py:638
 msgid "Workflow state action"
 msgstr "Akcja stanu przepływu pracy"
 
-#: models.py:679
+#: models.py:680
 msgid "Unknown action type"
 msgstr "Nieznany rodzaj akcji"
 
-#: models.py:684
+#: models.py:685
 msgid ""
 "The state action will be executed, depending on the condition return value."
 msgstr "Działanie zostanie wykonane w zależności od wartości zwracanej warunku."
 
-#: models.py:687 models.py:746
+#: models.py:688 models.py:748
 msgid "Has a condition?"
 msgstr "Ma warunek?"
 
-#: models.py:700
+#: models.py:701
 msgid "A short text to describe the transition."
 msgstr "Krótki tekst opisujący przejście."
 
-#: models.py:705
+#: models.py:706
 msgid "Origin state"
 msgstr "Stan pochodzenia"
 
-#: models.py:709
+#: models.py:710
 msgid "Destination state"
 msgstr "Stan docelowy"
 
-#: models.py:713
+#: models.py:714
 msgid ""
 "The condition that will determine if this transition is enabled or not. The "
-"condition is evaluated against the workflow instance. Conditions that return"
-" None or an empty string ('') are considered to be logical false, any other "
-"value is considered to be the logical true."
-msgstr "Warunek, który określi, czy to przejście jest włączone, czy nie. Warunek jest oceniany względem instancji przepływu pracy. Warunki, które zwracają Brak lub pusty ciąg („”) są uważane za logicznie fałszywe, każda inna wartość jest uważana za logiczną prawdę."
+"condition is evaluated against the workflow instance. Conditions that do not"
+" return any value, that return the Python logical None, or an empty string "
+"('') are considered to be logical false, any other value is considered to be"
+" the logical true."
+msgstr ""
 
-#: models.py:726
+#: models.py:728
 msgid "Workflow transition"
 msgstr "Przejście przepływu pracy"
 
-#: models.py:727
+#: models.py:729
 msgid "Workflow transitions"
 msgstr "Przejścia przepływu pracy"
 
-#: models.py:743
+#: models.py:745
 msgid ""
 "The transition will be available, depending on the condition return value."
 msgstr "Przejście będzie dostępne w zależności od wartości zwracanej warunku."
 
-#: models.py:760
+#: models.py:762
 msgid ""
 "The name that will be used to identify this field in other parts of the "
 "workflow system."
 msgstr "Nazwa, która będzie używana do identyfikacji tego pola w innych częściach systemu przepływu pracy."
 
-#: models.py:766
+#: models.py:768
 msgid "The field name that will be shown on the user interface."
 msgstr "Nazwa pola, która będzie wyświetlana w interfejsie użytkownika."
 
-#: models.py:770
+#: models.py:772
 msgid ""
 "An optional message that will help users better understand the purpose of "
 "the field and data to provide."
 msgstr "Opcjonalny komunikat, który pomoże użytkownikom lepiej zrozumieć do czego służy pole i dane, które należy podać."
 
-#: models.py:772
+#: models.py:774
 msgid "Help text"
 msgstr "Tekst pomocy"
 
-#: models.py:776
+#: models.py:778
 msgid "Whether this fields needs to be filled out or not to proceed."
 msgstr "Czy pola te należy wypełnić, aby kontynuować."
 
-#: models.py:777
+#: models.py:779
 msgid "Required"
 msgstr "Wymagane"
 
-#: models.py:781
+#: models.py:783
 msgid "An optional class to change the default presentation of the field."
 msgstr "Opcjonalna klasa do zmiany domyślnej prezentacji pola."
 
-#: models.py:782
+#: models.py:784
 msgid "Widget class"
 msgstr "Klasa widżetów"
 
-#: models.py:786
+#: models.py:788
 msgid "A group of keyword arguments to customize the widget. Use YAML format."
 msgstr "Argumenty słów kluczowych do dostosowania widżetu. Użyj formatu YAML."
 
-#: models.py:789
+#: models.py:791
 msgid "Widget keyword arguments"
 msgstr "Argumenty słów kluczowych widgetu"
 
-#: models.py:794
+#: models.py:796
 msgid "Workflow transition field"
 msgstr "Pole przejścia przepływu pracy"
 
-#: models.py:795
+#: models.py:797
 msgid "Workflow transition fields"
 msgstr "Pola przejściowe przepływu pracy"
 
-#: models.py:812
+#: models.py:814
 msgid "Event type"
 msgstr "Typ zdarzenia"
 
-#: models.py:816
+#: models.py:818
 msgid "Workflow transition trigger event"
 msgstr "Zdarzenie uruchamiające przejście przepływu pracy"
 
-#: models.py:817
+#: models.py:819
 msgid "Workflow transitions trigger events"
 msgstr "Zdarzenia uruchamiające przejścia przepływu pracy"
 
-#: models.py:826
+#: models.py:828
 msgid "Workflow runtime proxy"
 msgstr "Serwer proxy środowiska wykonawczego przepływu pracy"
 
-#: models.py:827
+#: models.py:829
 msgid "Workflow runtime proxies"
 msgstr "Proxy środowiska uruchomieniowego przepływu pracy"
 
-#: models.py:844
+#: models.py:846
 msgid "Workflow state runtime proxy"
 msgstr "Serwer proxy środowiska wykonawczego stanu przepływu pracy"
 
-#: models.py:845
+#: models.py:847
 msgid "Workflow state runtime proxies"
 msgstr "Serwery proxy środowiska wykonawczego stanu przepływu pracy"
 
@@ -617,25 +619,30 @@ msgstr "Rozdzielona przecinkami lista kluczy podstawowych typu dokumentu, do kt�
 msgid "Primary key of the transition to be added."
 msgstr "Klucz podstawowy przejścia, które należy dodać."
 
-#: settings.py:17
+#: settings.py:18
+msgid ""
+"File path to the graphviz dot program used to generate workflow previews."
+msgstr ""
+
+#: settings.py:26
 msgid ""
 "The threshold at which the WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest workflow image cache files. Specify the size in bytes."
 msgstr "Próg, poniżej którego WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND rozpocznie usuwanie najstarszych plików pamięci podręcznej obrazów przepływu pracy. Określ rozmiar w bajtach."
 
-#: settings.py:25
+#: settings.py:34
 msgid ""
 "Time in seconds that the browser should cache the supplied workflow images. "
 "The default of 31559626 seconds corresponde to 1 year."
 msgstr "Czas w sekundach, przez który przeglądarka powinna buforować dostarczone obrazy przepływu pracy. Domyślnie 31559626 sekund odpowiada 1 rokowi."
 
-#: settings.py:32
+#: settings.py:41
 msgid ""
 "Path to the Storage subclass to use when storing the cached workflow image "
 "files."
 msgstr "Ścieżka do podklasy Storage, która ma być używana podczas przechowywania buforowanych plików obrazów przepływu pracy."
 
-#: settings.py:40
+#: settings.py:49
 msgid "Arguments to pass to the WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND."
 msgstr "Argumenty do przekazania do WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND."
 
