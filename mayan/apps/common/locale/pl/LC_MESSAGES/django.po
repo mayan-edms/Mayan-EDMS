@@ -16,9 +16,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-22 23:18-0400\n"
-"PO-Revision-Date: 2020-05-13 14:21+0000\n"
-"Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>\n"
+"POT-Creation-Date: 2020-07-09 00:03-0400\n"
+"PO-Revision-Date: 2020-07-09 04:05+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -180,10 +180,14 @@ msgid "Source code"
 msgstr "Kod źródłowy"
 
 #: links.py:81
+msgid "Online store"
+msgstr ""
+
+#: links.py:85
 msgid "Get support"
 msgstr "Uzyskaj wsparcie"
 
-#: links.py:85 queues.py:13 views.py:212
+#: links.py:89 queues.py:13 views.py:212
 msgid "Tools"
 msgstr "Narzędzia"
 

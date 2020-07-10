@@ -1,5 +1,6 @@
 3.4.11 (2020-XX-XX)
 ===================
+- Don't asume local filesystem when testing the mirroring app.
 - Fix stale document instance in cascade state actions. Fixes GitLab
   issue #841. Thanks to Alexander Schlüter (@alexschlueter) for the
   report, investigation, test code, and suggested solutions.
