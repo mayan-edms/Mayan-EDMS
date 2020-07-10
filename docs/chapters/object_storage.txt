@@ -21,19 +21,19 @@ for documents on a Mayan EDMS instance
        is stopped first and that every file from the existing storage
        directory is copied to the new storage location before starting
        Mayan EDMS configured with with the new backend.
-       Also, Ensure you have taken a backup before beginning this process
+       Also, ensure you have made a backup before beginning this process.
 
    .. note::
 
        The below configuration only updates the primary
        ``document_storage`` location. You will need to add
        additional variables if you also want to update the location
-       of the Caches, Tempoary Location, Shared Folders, Etc.
+       of the Caches, Temporary Location, Shared Folders, Etc.
        Anything that is currently configured with
        the ``django.core.files.storage.FileSystemStorage`` backend
        can have its backend changed, but this is not advisable
        for caches and tempoary files locations due to performance
-       reasons
+       reasons.
 
 
 Docker Deployments
@@ -44,7 +44,7 @@ in the ``environment`` section:
 
   .. code-block:: console
 
-    MAYAN_PIP_INSTALLS='django-storages boto3'
+    MAYAN_PIP_INSTALLS: 'django-storages boto3'
     MAYAN_DOCUMENTS_STORAGE_BACKEND: storages.backends.s3boto3.S3Boto3Storage
     MAYAN_DOCUMENTS_STORAGE_BACKEND_ARGUMENTS: "{'access_key':'yourS3accesskey','secret_key':'yourS3secretkey','bucket_name':'yourS3bucketname','default_acl':'private'}"
 
