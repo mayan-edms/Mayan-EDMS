@@ -1,3 +1,9 @@
+3.4.11 (2020-XX-XX)
+===================
+- Fix stale document instance in cascade state actions. Fixes GitLab
+  issue #841. Thanks to Alexander Schlüter (@alexschlueter) for the
+  report, investigation, test code, and suggested solutions.
+
 3.4.10 (2020-06-24)
 ===================
 - Fix repeated columns in the document index node list view.
