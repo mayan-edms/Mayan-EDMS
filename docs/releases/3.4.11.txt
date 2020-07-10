@@ -195,6 +195,7 @@ Issues closed
 -------------
 
 - :gitlab-issue:`841` Stale document model when workflow actions trigger further actions
+- :gitlab-issue:`843` Long cabinet full path overflows document card
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
 

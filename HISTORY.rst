@@ -4,6 +4,9 @@
 - Fix stale document instance in cascade state actions. Fixes GitLab
   issue #841. Thanks to Alexander Schlüter (@alexschlueter) for the
   report, investigation, test code, and suggested solutions.
+- Wrap around long cabinet names in the document card. Fixes GitLab
+  issue #843. Thanks to Will Wright (@fireatwill) for the report and
+  debug information.
 
 3.4.10 (2020-06-24)
 ===================
