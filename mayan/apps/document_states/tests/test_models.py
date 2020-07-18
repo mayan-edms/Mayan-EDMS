@@ -158,12 +158,12 @@ class WorkflowStateActionModelTestCase(
         state_1_action_data = json.dumps(obj={
             'document_label': TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_TEXT_LABEL
         })
-        test_workflow_state_1_action_1 = self.test_workflow_state_1.actions.create(
+        self.test_workflow_state_1.actions.create(
             label=TEST_WORKFLOW_STATE_ACTION_LABEL,
             action_path=TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_DOTTED_PATH,
             action_data=state_1_action_data
         )
-        test_workflow_state_1_action_2 = self.test_workflow_state_1.actions.create(
+        self.test_workflow_state_1.actions.create(
             label=TEST_WORKFLOW_STATE_ACTION_LABEL_2,
             action_path=TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_DOTTED_PATH,
             action_data=state_1_action_data
@@ -172,13 +172,13 @@ class WorkflowStateActionModelTestCase(
         state_2_action_data = json.dumps(obj={
             'document_description': TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_TEXT_DESCRIPTION
         })
-        test_workflow_state_2_action = self.test_workflow_state_2.actions.create(
+        self.test_workflow_state_2.actions.create(
             label=TEST_WORKFLOW_STATE_ACTION_LABEL,
             action_path=TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_DOTTED_PATH,
             action_data=state_2_action_data
         )
 
-        test_workflow_trigger = self.test_workflow_transition.trigger_events.create(
+        self.test_workflow_transition.trigger_events.create(
             event_type=event_document_properties_edit.get_stored_event_type()
         )
 
