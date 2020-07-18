@@ -1,10 +1,42 @@
 Version 3.4.11
 ==============
 
-Released: XX XX, 2020
+Released: July 18, 2020
 
 Changes
 -------
+
+
+Cabinets
+^^^^^^^^
+
+The CSS for cabinet names in document cards was updated to wrap around
+long cabinet names that would not normally fit in the card.
+
+
+Mirroring
+^^^^^^^^^
+
+The mirroring test code was updated to not assume that a local filesystem
+was being used. Documents files are now deleted in the test using the document
+storage driver entry from the database.
+
+
+Translations
+^^^^^^^^^^^^
+
+Include non Mayan app translations when switching locales. This change
+allows password forms that contain translated texts processed outside Mayan,
+to properly switch language when the user locale is updated.
+
+
+Workflows
+^^^^^^^^^
+
+A fix was added to avoid document references in workflows that use a
+cascade of state actions, to become stale as each state action modifies the
+document.
+
 
 Removals
 --------
