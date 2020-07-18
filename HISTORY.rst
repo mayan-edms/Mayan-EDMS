@@ -7,6 +7,9 @@
 - Wrap around long cabinet names in the document card. Fixes GitLab
   issue #843. Thanks to Will Wright (@fireatwill) for the report and
   debug information.
+- Include non Mayan app translations when switching locales.
+  Closes GitLab issue #848. Thanks to Frédéric Sheedy (@fsheedy) for the
+  report.
 
 3.4.10 (2020-06-24)
 ===================
