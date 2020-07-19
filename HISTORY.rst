@@ -135,13 +135,13 @@
 
   - Enable mathfilters by default.
   - Add a 'set' tag to allow setting template variables.
-  - Add |dict_get filter that returns a given dictionay key.
+  - Add dict_get filter that returns a given dictionay key.
   - Add {% method %} tag to call an objects method with or without keyword
     arguments.
   - Add regular expression tags: regex_findall, regex_match, regex_search,
     regex_sub. Each regex tag supports the flags: ascii, ignorecase, locale,
     multiline, dotall, verbose.
-  - Add |split filter to split a value by a delimiter.
+  - Add split filter to split a value by a delimiter.
 
 - Add workflow action to update document OCR content.
 - Split TemplateField into TemplateField and ModelTemplateField.
@@ -155,6 +155,7 @@
 - Use proxy exclusion to disable the normal multi item document
   links from being displayed for trashed documents.
 - Add subwidgets_order to NamedMultiWidget class.
+- Update the statistics icon.
 
 3.4.11 (2020-07-18)
 ===================
