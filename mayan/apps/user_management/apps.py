@@ -10,8 +10,8 @@ from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import ModelCopy
 from mayan.apps.common.menus import (
-    menu_list_facet, menu_multi_item, menu_object, menu_secondary, menu_setup,
-    menu_user
+    menu_list_facet, menu_multi_item, menu_object, menu_related,
+    menu_secondary, menu_setup, menu_user
 )
 from mayan.apps.dashboards.dashboards import dashboard_main
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
@@ -272,6 +272,20 @@ class UserManagementApp(MayanAppConfig):
         menu_object.bind_links(
             links=(link_user_delete, link_user_edit,), sources=(User,)
         )
+        menu_related.bind_links(
+            links=(link_user_list,), sources=(
+                'user_management:group_multiple_delete',
+                'user_management:group_list', 'user_management:group_create',
+                Group
+            )
+        )
+        menu_related.bind_links(
+            links=(link_group_setup,), sources=(
+                User, 'authentication:user_multiple_set_password',
+                'user_management:user_multiple_delete',
+                'user_management:user_list', 'user_management:user_create'
+            )
+        )
         menu_secondary.bind_links(
             links=(link_group_list, link_group_create), sources=(
                 'user_management:group_multiple_delete',
@@ -286,6 +300,7 @@ class UserManagementApp(MayanAppConfig):
                 'user_management:user_list', 'user_management:user_create'
             )
         )
+
         menu_setup.bind_links(links=(link_user_setup, link_group_setup))
         menu_user.bind_links(
             links=(

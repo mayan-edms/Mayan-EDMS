@@ -7,7 +7,11 @@ from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import ModelCopy
 from mayan.apps.common.menus import (
-    menu_facet, menu_list_facet, menu_object, menu_secondary, menu_setup
+    menu_facet, menu_list_facet, menu_object, menu_related, menu_secondary,
+    menu_setup
+)
+from mayan.apps.documents.links.document_type_links import (
+    link_document_type_create, link_document_type_list
 )
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.events.links import (
@@ -126,6 +130,20 @@ class WebLinksApp(MayanAppConfig):
             links=(
                 link_web_link_delete, link_web_link_edit
             ), sources=(ResolvedWebLink,)
+        )
+        menu_related.bind_links(
+            links=(link_web_link_list,),
+            sources=(
+                DocumentType, 'documents:document_type_list',
+                'documents:document_type_create'
+            )
+        )
+        menu_related.bind_links(
+            links=(link_document_type_list,),
+            sources=(
+                WebLink, 'web_links:web_link_list',
+                'web_links:web_link_create'
+            )
         )
         menu_secondary.bind_links(
             links=(link_web_link_list, link_web_link_create),

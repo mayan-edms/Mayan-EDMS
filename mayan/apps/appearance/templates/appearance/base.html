@@ -80,7 +80,7 @@
                 {% include 'appearance/calculate_form_title.html' %}
 
                 {# action menu #}
-                {% navigation_resolve_menus names='object,secondary' sort_results=True as action_menus_link_results %}
+                {% navigation_resolve_menus names='object,secondary,related' sort_results=True as action_menus_link_results %}
                 {% if action_menus_link_results %}
                     <div class="pull-right btn-group" id="menu-actions">
                         <button aria-expanded="true" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown" type="button">

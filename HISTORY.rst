@@ -158,6 +158,7 @@
 - Update the statistics icon.
 - Add support to change the dashboard widget details link icon.
 - Fix icon for the add document to favorites link.
+- Add related actions menu.
 
 3.4.11 (2020-07-18)
 ===================

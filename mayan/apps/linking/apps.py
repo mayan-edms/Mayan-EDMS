@@ -7,8 +7,10 @@ from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import ModelCopy
 from mayan.apps.common.menus import (
-    menu_facet, menu_list_facet, menu_object, menu_secondary, menu_setup
+    menu_facet, menu_list_facet, menu_object, menu_related, menu_secondary,
+    menu_setup
 )
+from mayan.apps.documents.links.document_type_links import link_document_type_list
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list
@@ -152,6 +154,20 @@ class LinkingApp(MayanAppConfig):
         menu_object.unbind_links(
             links=(link_smart_link_delete, link_smart_link_edit,),
             sources=(ResolvedSmartLink,)
+        )
+        menu_related.bind_links(
+            links=(link_smart_link_list,),
+            sources=(
+                DocumentType, 'documents:document_type_list',
+                'documents:document_type_create'
+            )
+        )
+        menu_related.bind_links(
+            links=(link_document_type_list,),
+            sources=(
+                SmartLink, 'linking:smart_link_list',
+                'linking:smart_link_create'
+            )
         )
         menu_secondary.bind_links(
             links=(link_smart_link_list, link_smart_link_create),

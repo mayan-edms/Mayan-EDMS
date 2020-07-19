@@ -9,9 +9,10 @@ from mayan.apps.common.classes import (
     ModelCopy, ModelField, ModelProperty, ModelReverseField
 )
 from mayan.apps.common.menus import (
-    menu_facet, menu_list_facet, menu_main, menu_object, menu_secondary,
-    menu_setup, menu_tools
+    menu_facet, menu_list_facet, menu_main, menu_object, menu_related,
+    menu_secondary, menu_setup, menu_tools
 )
+from mayan.apps.documents.links.document_type_links import link_document_type_list
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list
@@ -491,7 +492,20 @@ class DocumentStatesApp(MayanAppConfig):
                 link_workflow_template_state_action_delete,
             ), sources=(WorkflowStateAction,)
         )
-
+        menu_related.bind_links(
+            links=(link_workflow_template_list,),
+            sources=(
+                DocumentType, 'documents:document_type_list',
+                'documents:document_type_create'
+            )
+        )
+        menu_related.bind_links(
+            links=(link_document_type_list,),
+            sources=(
+                Workflow, 'document_states:workflow_template_create',
+                'document_states:workflow_template_list'
+            )
+        )
         menu_secondary.bind_links(
             links=(link_workflow_template_list, link_workflow_template_create),
             sources=(

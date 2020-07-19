@@ -10,8 +10,8 @@ from mayan.apps.common.classes import (
     ModelQueryFields, Template
 )
 from mayan.apps.common.menus import (
-    menu_facet, menu_list_facet, menu_main, menu_object, menu_secondary,
-    menu_setup, menu_multi_item, menu_tools
+    menu_facet, menu_list_facet, menu_main, menu_object, menu_related,
+    menu_secondary, menu_setup, menu_multi_item, menu_tools
 )
 from mayan.apps.common.signals import signal_post_initial_setup
 from mayan.apps.dashboards.dashboards import dashboard_main
@@ -589,7 +589,7 @@ class DocumentsApp(MayanAppConfig):
             links=(link_document_page_disable, link_document_page_enable),
             sources=(DocumentPage,)
         )
-        menu_secondary.bind_links(
+        menu_related.bind_links(
             links=(link_document_page_return,),
             sources=(DocumentPage,)
         )
@@ -598,10 +598,14 @@ class DocumentsApp(MayanAppConfig):
         menu_list_facet.bind_links(
             links=(link_document_version_view,), sources=(DocumentVersion,)
         )
-        menu_secondary.bind_links(
+        menu_related.bind_links(
             links=(
                 link_document_version_return_document,
-                link_document_version_return_list
+            ), sources=(DocumentVersion,)
+        )
+        menu_secondary.bind_links(
+            links=(
+                link_document_version_return_list,
             ), sources=(DocumentVersion,)
         )
 
