@@ -156,6 +156,7 @@
   links from being displayed for trashed documents.
 - Add subwidgets_order to NamedMultiWidget class.
 - Update the statistics icon.
+- Add support to change the dashboard widget details link icon.
 
 3.4.11 (2020-07-18)
 ===================
