@@ -157,6 +157,7 @@
 - Add subwidgets_order to NamedMultiWidget class.
 - Update the statistics icon.
 - Add support to change the dashboard widget details link icon.
+- Fix icon for the add document to favorites link.
 
 3.4.11 (2020-07-18)
 ===================

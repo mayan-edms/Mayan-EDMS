@@ -59,10 +59,6 @@ icon_document_transformations_clone = Icon(
 
 icon_document_type_change = icon_document_type
 
-icon_favorite_document_add = Icon(
-    driver_name='fontawesome-dual', primary_symbol='star',
-    secondary_symbol='plus'
-)
 icon_document_image_loading = Icon(
     driver_name='fontawesomecss', css_classes='far fa-clock fa-2x'
 )
@@ -73,11 +69,17 @@ icon_document_list_deleted = Icon(
 icon_document_list_recent_access = Icon(
     driver_name='fontawesome', symbol='clock'
 )
-icon_document_return = icon_favorite_document_add = Icon(
+icon_document_return = Icon(
     driver_name='fontawesome-dual', primary_symbol='book',
     secondary_symbol='chevron-left'
 )
 
+# Favorites
+
+icon_favorite_document_add = Icon(
+    driver_name='fontawesome-dual', primary_symbol='star',
+    secondary_symbol='plus'
+)
 icon_favorite_document_list = Icon(driver_name='fontawesome', symbol='star')
 icon_favorite_document_remove = Icon(
     driver_name='fontawesome-dual', primary_symbol='star',
