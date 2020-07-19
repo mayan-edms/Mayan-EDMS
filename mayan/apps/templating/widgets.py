@@ -9,6 +9,10 @@ from .literals import EMPTY_LABEL
 
 
 class TemplateWidget(NamedMultiWidget):
+    builtin_excludes = {
+        'tags': ('csrf_token',)
+    }
+
     subwidgets = {
         'builtin_tags': forms.widgets.Select(
             attrs={
@@ -32,15 +36,16 @@ class TemplateWidget(NamedMultiWidget):
         ]
         for module_name, library in builtin_libraries:
             for name, function in getattr(library, klass).items():
-                title, body, metadata = admindocs.utils.parse_docstring(
-                    function.__doc__
-                )
-                title = _(title)
-                result.append(
-                    (
-                        name_template.format(name), '{} - {}'.format(name, title)
+                if name not in self.builtin_excludes.get(klass, ()):
+                    title, body, metadata = admindocs.utils.parse_docstring(
+                        function.__doc__
                     )
-                )
+                    title = _(title)
+                    result.append(
+                        (
+                            name_template.format(name), '{} - {}'.format(name, title)
+                        )
+                    )
 
         result = sorted(result, key=lambda x: x[0])
 
