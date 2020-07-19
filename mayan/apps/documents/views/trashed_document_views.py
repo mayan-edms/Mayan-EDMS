@@ -17,7 +17,7 @@ from ..permissions import (
     permission_document_trash, permission_document_view,
     permission_empty_trash
 )
-from ..tasks import task_trash_can_empty
+from ..tasks import task_delete_document, task_trash_can_empty
 
 from .document_views import DocumentListView
 
