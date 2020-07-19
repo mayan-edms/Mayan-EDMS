@@ -156,9 +156,18 @@
   links from being displayed for trashed documents.
 - Add subwidgets_order to NamedMultiWidget class.
 
-3.4.11 (2020-XX-XX)
+3.4.11 (2020-07-18)
 ===================
 - Don't asume local filesystem when testing the mirroring app.
+- Fix stale document instance in cascade state actions. Fixes GitLab
+  issue #841. Thanks to Alexander Schlüter (@alexschlueter) for the
+  report, investigation, test code, and suggested solutions.
+- Wrap around long cabinet names in the document card. Fixes GitLab
+  issue #843. Thanks to Will Wright (@fireatwill) for the report and
+  debug information.
+- Include non Mayan app translations when switching locales.
+  Closes GitLab issue #848. Thanks to Frédéric Sheedy (@fsheedy) for the
+  report.
 
 3.4.10 (2020-06-24)
 ===================

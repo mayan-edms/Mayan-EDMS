@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-22 23:19-0400\n"
+"POT-Creation-Date: 2020-07-17 23:59-0400\n"
 "PO-Revision-Date: 2020-04-21 18:43+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
@@ -46,15 +46,15 @@ msgstr "Gesamtanzahl Ebenen"
 msgid "Total documents"
 msgstr "Alle Dokumente"
 
-#: apps.py:142 apps.py:156 apps.py:181 apps.py:191
+#: apps.py:142 apps.py:156 apps.py:176 apps.py:186
 msgid "Level"
 msgstr "Ebene"
 
-#: apps.py:161 apps.py:196
+#: apps.py:164
 msgid "Levels"
 msgstr "Ebenen"
 
-#: apps.py:168 apps.py:176 apps.py:204 models.py:381
+#: apps.py:171 models.py:381
 msgid "Documents"
 msgstr "Index bearbeitet"
 

@@ -1,6 +1,17 @@
-from mayan.apps.tests.tests.base import BaseTestCase
-from mayan.apps.documents.tests.base import GenericDocumentTestCase
+import json
 
+from mayan.apps.documents.events import event_document_properties_edit
+from mayan.apps.documents.tests.base import GenericDocumentTestCase
+from mayan.apps.events.classes import EventType
+from mayan.apps.tests.tests.base import BaseTestCase
+
+from .literals import (
+    TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_DOTTED_PATH,
+    TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_TEXT_LABEL,
+    TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_TEXT_DESCRIPTION,
+    TEST_WORKFLOW_STATE_ACTION_LABEL,
+    TEST_WORKFLOW_STATE_ACTION_LABEL_2
+)
 from .mixins import WorkflowStateActionTestMixin, WorkflowTestMixin
 
 
@@ -141,3 +152,48 @@ class WorkflowStateActionModelTestCase(
         )
         self.test_workflow_instance.do_transition(transition=self.test_workflow_transition)
         self.assertTrue(self._get_test_workflow_state_action_execute_flag())
+
+    def test_workflow_state_action_event_trigger(self):
+        # actions 1 and 2 both trigger the transition event, to make this
+        # test case independent of the order of execution of actions 1 and 2
+        state_1_action_data = json.dumps(obj={
+            'document_label': TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_TEXT_LABEL
+        })
+        self.test_workflow_state_1.actions.create(
+            label=TEST_WORKFLOW_STATE_ACTION_LABEL,
+            action_path=TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_DOTTED_PATH,
+            action_data=state_1_action_data
+        )
+        self.test_workflow_state_1.actions.create(
+            label=TEST_WORKFLOW_STATE_ACTION_LABEL_2,
+            action_path=TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_DOTTED_PATH,
+            action_data=state_1_action_data
+        )
+
+        state_2_action_data = json.dumps(obj={
+            'document_description': TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_TEXT_DESCRIPTION
+        })
+        self.test_workflow_state_2.actions.create(
+            label=TEST_WORKFLOW_STATE_ACTION_LABEL,
+            action_path=TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_DOTTED_PATH,
+            action_data=state_2_action_data
+        )
+
+        EventType.refresh()
+
+        self.test_workflow_transition.trigger_events.create(
+            event_type=event_document_properties_edit.get_stored_event_type()
+        )
+
+        self.test_workflow.launch_for(
+            document=self.test_document
+        )
+
+        self.assertEqual(
+            self.test_document.label,
+            TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_TEXT_LABEL
+        )
+        self.assertEqual(
+            self.test_document.description,
+            TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_TEXT_DESCRIPTION
+        )

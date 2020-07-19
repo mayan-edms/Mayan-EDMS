@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-22 23:19-0400\n"
+"POT-Creation-Date: 2020-07-17 23:59-0400\n"
 "PO-Revision-Date: 2020-04-02 07:32+0000\n"
 "Last-Translator: xisafe <root@xisafe.com>\n"
 "Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-edms/language/zh-Hans/)\n"
@@ -39,15 +39,15 @@ msgstr "总级别"
 msgid "Total documents"
 msgstr "文档总数"
 
-#: apps.py:142 apps.py:156 apps.py:181 apps.py:191
+#: apps.py:142 apps.py:156 apps.py:176 apps.py:186
 msgid "Level"
 msgstr "级别"
 
-#: apps.py:161 apps.py:196
+#: apps.py:164
 msgid "Levels"
 msgstr "级别"
 
-#: apps.py:168 apps.py:176 apps.py:204 models.py:381
+#: apps.py:171 models.py:381
 msgid "Documents"
 msgstr "文档"
 
