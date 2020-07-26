@@ -6,12 +6,15 @@ from django.db import OperationalError
 from mayan.apps.lock_manager.exceptions import LockError
 from mayan.celery import app
 
-from .literals import RETRY_DELAY
+from .settings import setting_task_retry
 
 logger = logging.getLogger(name=__name__)
 
 
-@app.task(bind=True, default_retry_delay=RETRY_DELAY, max_retries=None, ignore_result=True)
+@app.task(
+    bind=True, default_retry_delay=setting_task_retry.value, max_retries=None,
+    ignore_result=True
+)
 def task_delete_empty(self):
     IndexInstanceNode = apps.get_model(
         app_label='document_indexing', model_name='IndexInstanceNode'
@@ -23,7 +26,10 @@ def task_delete_empty(self):
         raise self.retry(exc=exception)
 
 
-@app.task(bind=True, default_retry_delay=RETRY_DELAY, max_retries=None, ignore_result=True)
+@app.task(
+    bind=True, default_retry_delay=setting_task_retry.value, max_retries=None,
+    ignore_result=True
+)
 def task_index_document(self, document_id):
     Document = apps.get_model(
         app_label='documents', model_name='Document'
@@ -55,7 +61,10 @@ def task_index_document(self, document_id):
             raise self.retry(exc=exception)
 
 
-@app.task(bind=True, default_retry_delay=RETRY_DELAY, ignore_result=True)
+@app.task(
+    bind=True, default_retry_delay=setting_task_retry.value,
+    ignore_result=True
+)
 def task_rebuild_index(self, index_id):
     Index = apps.get_model(
         app_label='document_indexing', model_name='Index'
@@ -69,7 +78,10 @@ def task_rebuild_index(self, index_id):
         raise self.retry(exc=exception)
 
 
-@app.task(bind=True, default_retry_delay=RETRY_DELAY, max_retries=None, ignore_result=True)
+@app.task(
+    bind=True, default_retry_delay=setting_task_retry.value, max_retries=None,
+    ignore_result=True
+)
 def task_remove_document(self, document_id):
     Document = apps.get_model(
         app_label='documents', model_name='Document'

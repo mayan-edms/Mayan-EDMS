@@ -200,6 +200,10 @@
   workflow previews. It is not possible to pass a path to the graphviz Python
   library therefore this setting is only informational.
 - Update Django from version 2.2.12 to version 2.2.13.
+- Convert the document indexing task retry delay constant into a setting
+  option. The option name is ``DOCUMENT_INDEXING_TASK_RETRY_DELAY`` and
+  defaults to the previous value of 5 seconds.
+
 
 3.4.9 (2020-05-26)
 ==================
