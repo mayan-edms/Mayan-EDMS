@@ -17,6 +17,13 @@ class StatisticsApp(MayanAppConfig):
     has_static_media = True
     has_tests = True
     name = 'mayan.apps.mayan_statistics'
+    static_media_ignore_patterns = (
+        'statistics/node_modules/chart.js/book.*',
+        'statistics/node_modules/chart.js/karma.conf.*',
+        'statistics/node_modules/chart.js/samples/*',
+        'statistics/node_modules/chart.js/src/*',
+        'statistics/node_modules/chart.js/*docs*',
+    )
     verbose_name = _('Statistics')
 
     def ready(self):

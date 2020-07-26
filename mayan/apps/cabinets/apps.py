@@ -45,6 +45,11 @@ class CabinetsApp(MayanAppConfig):
     has_static_media = True
     has_tests = True
     name = 'mayan.apps.cabinets'
+    static_media_ignore_patterns = (
+        'cabinets/node_modules/jstree/component.json',
+        'cabinets/node_modules/jstree/jstree.jquery.json',
+        'cabinets/node_modules/jstree/src/*',
+    )
     verbose_name = _('Cabinets')
 
     def ready(self):

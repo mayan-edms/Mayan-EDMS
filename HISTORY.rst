@@ -163,6 +163,10 @@
   new ``CELERY_BROKER_LOGIN_METHOD`` and ``CELERY_BROKER_USE_SSL`` settings.
   ``CELERY_BROKER_LOGIN_METHOD`` defaults to ``AMQPLAIN`` and
   ``CELERY_BROKER_USE_SSL`` defaults to ``None``.
+- Add support for each app to specify their own static media ignore patterns
+  via the app config attribute ``static_media_ignore_patterns``.
+- Updated the ``static_media_ignore_patterns`` of apps to remove more unused
+  media files. Lowers the static media folder size from 83MB to 51MB.
 
 3.4.11 (2020-07-18)
 ===================

@@ -127,6 +127,9 @@ class CommonApp(AppConfigLoggingMixin, MayanAppConfig):
     has_rest_api = True
     has_tests = True
     name = 'mayan.apps.common'
+    static_media_ignore_patterns = (
+        'mptt/*',
+    )
     verbose_name = _('Common')
 
     def ready(self):
