@@ -159,6 +159,10 @@
 - Add support to change the dashboard widget details link icon.
 - Fix icon for the add document to favorites link.
 - Add related actions menu.
+- Expose Celery's ``BROKER_LOGIN_METHOD`` and ``BROKER_USE_SSL`` via the
+  new ``CELERY_BROKER_LOGIN_METHOD`` and ``CELERY_BROKER_USE_SSL`` settings.
+  ``CELERY_BROKER_LOGIN_METHOD`` defaults to ``AMQPLAIN`` and
+  ``CELERY_BROKER_USE_SSL`` defaults to ``None``.
 
 3.4.11 (2020-07-18)
 ===================

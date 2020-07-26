@@ -364,7 +364,13 @@ SettingNamespaceSingleton.register_setting(
     }
 )
 SettingNamespaceSingleton.register_setting(
+    name='CELERY_BROKER_LOGIN_METHOD', klass=BaseSetting
+)
+SettingNamespaceSingleton.register_setting(
     name='CELERY_BROKER_URL', klass=BaseSetting
+)
+SettingNamespaceSingleton.register_setting(
+    name='CELERY_BROKER_USE_SSL', klass=BaseSetting
 )
 SettingNamespaceSingleton.register_setting(
     name='CELERY_RESULT_BACKEND', klass=BaseSetting
