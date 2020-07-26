@@ -86,7 +86,7 @@
 - Allow access to document stubs.
 - Mirroring improvements. Allow running the mountindex in the background.
   Display a message when running on the foreground to avoid confusion.
-  Add internat FUSE logging and allow control of the log level.
+  Add internal FUSE logging and allow control of the log level.
 - Move dependencies to their respective app:
 
   - django-mathfilters from common to templating
@@ -112,7 +112,7 @@
 - Support setting a limit of error log entries.
 - Refactor the OCR process to use Celery canvas.
 - Increase atomicity of the OCR process. GitLab issue #209.
-- Disable Tesseract multithreading to speed up processing when running
+- Disable Tesseract multi threading to speed up processing when running
   multiple instances at the same time.
 - Search improvements:
 
@@ -127,15 +127,15 @@
 - Allow passing environment entries to the Tesseract OCR backend.
 - Improve main menu styling and JavaScript code. Improve hover highlighting
   and maximize space.
-- Add support for copying: document types, groups, mailing profils,
+- Add support for copying: document types, groups, mailing profiles,
   metadata types, messages of the day, workflows, quotas, roles, smart links,
-  tags, weblinks.
+  tags, web links.
 - Add document type searches.
 - Templating improvements:
 
   - Enable mathfilters by default.
   - Add a 'set' tag to allow setting template variables.
-  - Add dict_get filter that returns a given dictionay key.
+  - Add dict_get filter that returns a given dictionary key.
   - Add {% method %} tag to call an objects method with or without keyword
     arguments.
   - Add regular expression tags: regex_findall, regex_match, regex_search,
@@ -166,7 +166,7 @@
 
 3.4.11 (2020-07-18)
 ===================
-- Don't asume local filesystem when testing the mirroring app.
+- Don't assume local filesystem when testing the mirroring app.
 - Fix stale document instance in cascade state actions. Fixes GitLab
   issue #841. Thanks to Alexander Schlüter (@alexschlueter) for the
   report, investigation, test code, and suggested solutions.
