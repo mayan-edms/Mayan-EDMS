@@ -34,7 +34,8 @@ from .links import (
     link_document_single_workflow_templates_launch,
     link_workflow_instance_list, link_document_type_workflow_templates,
     link_workflow_template_document_types, link_workflow_template_create,
-    link_workflow_template_delete, link_workflow_template_edit,
+    link_workflow_template_multiple_delete,
+    link_workflow_template_single_delete, link_workflow_template_edit,
     link_workflow_template_launch, link_workflow_template_list,
     link_workflow_template_state_list,
     link_workflow_template_state_action_delete,
@@ -459,9 +460,14 @@ class DocumentStatesApp(MayanAppConfig):
             links=(link_document_multiple_workflow_templates_launch,),
             sources=(Document,)
         )
+        menu_multi_item.bind_links(
+            links=(link_workflow_template_multiple_delete,),
+            sources=(Workflow,)
+        )
         menu_object.bind_links(
             links=(
-                link_workflow_template_delete, link_workflow_template_edit,
+                link_workflow_template_single_delete,
+                link_workflow_template_edit,
                 link_workflow_template_launch
             ), sources=(Workflow,)
         )

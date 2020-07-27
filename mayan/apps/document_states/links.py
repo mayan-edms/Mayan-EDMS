@@ -23,12 +23,17 @@ link_workflow_template_create = Link(
     permissions=(permission_workflow_create,),
     text=_('Create workflow'), view='document_states:workflow_template_create'
 )
-link_workflow_template_delete = Link(
+link_workflow_template_multiple_delete = Link(
+    icon_class_path='mayan.apps.document_states.icons.icon_workflow_template_delete',
+    tags='dangerous', text=_('Delete'),
+    view='document_states:workflow_template_multiple_delete',
+)
+link_workflow_template_single_delete = Link(
     args='resolved_object.pk',
     icon_class_path='mayan.apps.document_states.icons.icon_workflow_template_delete',
     permissions=(permission_workflow_delete,),
     tags='dangerous', text=_('Delete'),
-    view='document_states:workflow_template_delete',
+    view='document_states:workflow_template_single_delete',
 )
 link_workflow_template_document_types = Link(
     args='resolved_object.pk',

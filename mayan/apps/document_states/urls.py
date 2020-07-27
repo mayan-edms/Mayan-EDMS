@@ -167,7 +167,12 @@ urlpatterns_workflow_templates = [
     ),
     url(
         regex=r'^workflow_templates/(?P<workflow_template_id>\d+)/delete/$',
-        name='workflow_template_delete',
+        name='workflow_template_single_delete',
+        view=WorkflowTemplateDeleteView.as_view()
+    ),
+    url(
+        regex=r'^workflow_templates/multiple/delete/$',
+        name='workflow_template_multiple_delete',
         view=WorkflowTemplateDeleteView.as_view()
     ),
     url(
