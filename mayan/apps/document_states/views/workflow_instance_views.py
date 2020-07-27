@@ -32,7 +32,7 @@ class WorkflowInstanceListView(ExternalObjectMixin, SingleObjectListView):
                 'to have this document execute those workflows. '
             ),
             'no_results_title': _(
-                'There are no workflow for this document'
+                'There are no workflows for this document'
             ),
             'object': self.external_object,
             'title': _(
