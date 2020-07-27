@@ -36,7 +36,7 @@ class WorkflowActionSelectionForm(forms.Form):
 
 class WorkflowForm(forms.ModelForm):
     class Meta:
-        fields = ('label', 'internal_name')
+        fields = ('label', 'internal_name', 'auto_launch')
         model = Workflow
 
 

@@ -18,27 +18,38 @@ from .mixins import WorkflowStateActionTestMixin, WorkflowTestMixin
 class WorkflowInstanceModelTestCase(
     WorkflowTestMixin, GenericDocumentTestCase
 ):
-    def test_workflow_transition_no_condition(self):
+    auto_upload_document = False
+
+    def setUp(self):
+        super().setUp()
         self._create_test_workflow()
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
+        self.test_workflow.document_types.add(self.test_document_type)
 
-        self.test_workflow_instance = self.test_workflow.launch_for(
-            document=self.test_document
-        )
+    def test_workflow_method_get_absolute_url(self):
+        self._upload_test_document()
+        self.test_workflow_instance = self.test_document.workflows.first()
 
+        self.test_workflow_instance.get_absolute_url()
+
+    def test_workflow_no_auto_launche(self):
+        self.test_workflow.auto_launch = False
+        self.test_workflow.save()
+
+        self._upload_test_document()
+        self.assertEqual(self.test_document.workflows.count(), 0)
+
+    def test_workflow_transition_no_condition(self):
+        self._upload_test_document()
+        self.test_workflow_instance = self.test_document.workflows.first()
         self.assertEqual(
             self.test_workflow_instance.get_transition_choices().count(), 1
         )
 
     def test_workflow_transition_false_condition(self):
-        self._create_test_workflow()
-        self._create_test_workflow_states()
-        self._create_test_workflow_transition()
-
-        self.test_workflow_instance = self.test_workflow.launch_for(
-            document=self.test_document
-        )
+        self._upload_test_document()
+        self.test_workflow_instance = self.test_document.workflows.first()
 
         self.test_workflow_transition.condition = '{{ invalid_variable }}'
         self.test_workflow_transition.save()
@@ -48,13 +59,8 @@ class WorkflowInstanceModelTestCase(
         )
 
     def test_workflow_transition_true_condition(self):
-        self._create_test_workflow()
-        self._create_test_workflow_states()
-        self._create_test_workflow_transition()
-
-        self.test_workflow_instance = self.test_workflow.launch_for(
-            document=self.test_document
-        )
+        self._upload_test_document()
+        self.test_workflow_instance = self.test_document.workflows.first()
 
         self.test_workflow_transition.condition = '{{ workflow_instance }}'
         self.test_workflow_transition.save()
@@ -62,17 +68,6 @@ class WorkflowInstanceModelTestCase(
         self.assertEqual(
             self.test_workflow_instance.get_transition_choices().count(), 1
         )
-
-    def test_workflow_method_get_absolute_url(self):
-        self._create_test_workflow()
-        self._create_test_workflow_states()
-        self._create_test_workflow_transition()
-
-        self.test_workflow_instance = self.test_workflow.launch_for(
-            document=self.test_document
-        )
-
-        self.test_workflow_instance.get_absolute_url()
 
 
 class WorkflowModelTestCase(WorkflowTestMixin, BaseTestCase):

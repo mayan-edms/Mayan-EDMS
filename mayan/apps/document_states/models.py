@@ -45,6 +45,11 @@ class Workflow(models.Model):
     Fields:
     * label - Identifier. A name/label to call the workflow
     """
+    auto_launch = models.BooleanField(
+        default=True, help_text=_(
+            'Launch workflow when document is created.'
+        ), verbose_name=_('Auto launch')
+    )
     internal_name = models.CharField(
         db_index=True, help_text=_(
             'This value will be used by other apps to reference this '

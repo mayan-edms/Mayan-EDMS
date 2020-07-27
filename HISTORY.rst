@@ -167,6 +167,8 @@
   via the app config attribute ``static_media_ignore_patterns``.
 - Updated the ``static_media_ignore_patterns`` of apps to remove more unused
   media files. Lowers the static media folder size from 83MB to 51MB.
+- Add boolean field to workflows to control whether or not they will launch
+  when a new document is created.
 
 3.4.11 (2020-07-18)
 ===================
