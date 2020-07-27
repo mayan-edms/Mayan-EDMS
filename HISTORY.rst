@@ -170,6 +170,10 @@
 - Add boolean field to workflows to control whether or not they will launch
   when a new document is created.
 - Add views to launch workflows for single or multiple documents.
+- Workflow to document type matching is now enforced when launching workflows.
+- Two background tasks were added to make launching workflows an asynchronous
+  event. This speeds up uploading documents in bulk.
+- Add the workflow action to the context of the initial state actions.
 
 3.4.11 (2020-07-18)
 ===================

@@ -28,7 +28,9 @@ from ..permissions import (
     permission_workflow_edit, permission_workflow_tools,
     permission_workflow_view,
 )
-from ..tasks import task_launch_all_workflows, task_launch_workflow
+from ..tasks import (
+    task_launch_all_workflows, task_launch_workflow, task_launch_workflow_for
+)
 
 
 class DocumentTypeWorkflowTemplatesView(AddRemoveView):
@@ -143,7 +145,11 @@ class DocumentWorkflowTemplatesLaunchView(MultipleObjectFormActionView):
         )
 
         for workflow in workflow_queryset:
-            workflow.launch_for(document=instance)
+            task_launch_workflow_for.apply_async(
+                kwargs={
+                    'document_id': instance.pk, 'workflow_id': workflow.pk
+                }
+            )
 
 
 class WorkflowTemplateCreateView(SingleObjectCreateView):

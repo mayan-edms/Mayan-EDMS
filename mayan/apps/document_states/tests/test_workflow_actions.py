@@ -281,21 +281,22 @@ class DocumentPropertiesEditActionTestCase(
 
     def test_document_properties_edit_action_workflow_execute(self):
         self._create_test_workflow()
-        self._create_test_workflow_state()
+        self._create_test_workflow_states()
+        self._create_test_workflow_transitions()
 
-        self.test_workflow_state.actions.create(
+        self.test_workflow_states[1].actions.create(
             action_data=json.dumps(
                 obj=TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_TEXT_DATA
             ),
             action_path=TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_DOTTED_PATH,
             label='', when=WORKFLOW_ACTION_ON_ENTRY,
         )
-
-        self.test_workflow_state.initial = True
-        self.test_workflow_state.save()
         self.test_workflow.document_types.add(self.test_document_type)
 
         self._upload_test_document()
+
+        test_workflow_instance = self.test_document.workflows.first()
+        test_workflow_instance.do_transition(transition=self.test_workflow_transition)
 
         self.assertEqual(
             self.test_document.label,

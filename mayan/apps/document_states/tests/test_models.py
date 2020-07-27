@@ -84,6 +84,7 @@ class WorkflowStateActionModelTestCase(
         self._create_test_workflow()
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
+        self.test_workflow.document_types.add(self.test_document_type)
 
     def _get_test_workflow_state_action_execute_flag(self):
         return getattr(
