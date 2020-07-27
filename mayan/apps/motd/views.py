@@ -1,12 +1,13 @@
 import logging
 
+from django.contrib import messages
 from django.template import RequestContext
 from django.urls import reverse_lazy
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _, ungettext
 
 from mayan.apps.views.generics import (
-    SingleObjectCreateView, SingleObjectDeleteView, SingleObjectEditView,
-    SingleObjectListView
+    MultipleObjectConfirmActionView, SingleObjectCreateView,
+    SingleObjectEditView, SingleObjectListView
 )
 
 from .icons import icon_message_list
@@ -31,23 +32,57 @@ class MessageCreateView(SingleObjectCreateView):
         }
 
 
-class MessageDeleteView(SingleObjectDeleteView):
+class MessageDeleteView(MultipleObjectConfirmActionView):
     model = Message
     object_permission = permission_message_delete
+    pk_url_kwarg = 'message_id'
     post_action_redirect = reverse_lazy(viewname='motd:message_list')
+    success_message = _('Delete request performed on %(count)d message')
+    success_message_plural = _(
+        'Delete request performed on %(count)d messages'
+    )
 
     def get_extra_context(self):
-        return {
-            'message': None,
-            'object': self.object,
-            'title': _('Delete the message: %s?') % self.object,
+        result = {
+            'delete_view': True,
+            'title': ungettext(
+                singular='Delete the selected message?',
+                plural='Delete the selected messages?',
+                number=self.object_list.count()
+            )
         }
+
+        if self.object_list.count() == 1:
+            result.update(
+                {
+                    'object': self.object_list.first(),
+                    'title': _('Delete message: %s?') % self.object_list.first()
+                }
+            )
+
+        return result
+
+    def object_action(self, instance, form=None):
+        try:
+            instance.delete()
+            messages.success(
+                message=_(
+                    'Message "%s" deleted successfully.'
+                ) % instance, request=self.request
+            )
+        except Exception as exception:
+            messages.error(
+                message=_('Error deleting message "%(message)s": %(error)s') % {
+                    'message': instance, 'error': exception
+                }, request=self.request
+            )
 
 
 class MessageEditView(SingleObjectEditView):
     fields = ('label', 'message', 'enabled', 'start_datetime', 'end_datetime')
     model = Message
     object_permission = permission_message_edit
+    pk_url_kwarg = 'message_id'
     post_action_redirect = reverse_lazy(viewname='motd:message_list')
 
     def get_extra_context(self):

@@ -152,13 +152,12 @@ class TagDeleteActionView(MultipleObjectConfirmActionView):
         queryset = self.object_list
 
         result = {
+            'delete_view': True,
             'message': _('Will be removed from all documents.'),
-            'submit_icon_class': icon_tag_delete_submit,
-            'submit_label': _('Delete'),
             'title': ungettext(
-                'Delete the selected tag?',
-                'Delete the selected tags?',
-                queryset.count()
+                singular='Delete the selected tag?',
+                plural='Delete the selected tags?',
+                number=queryset.count()
             )
         }
 
@@ -166,7 +165,7 @@ class TagDeleteActionView(MultipleObjectConfirmActionView):
             result.update(
                 {
                     'object': queryset.first(),
-                    'title': _('Delete tag: %s') % queryset.first()
+                    'title': _('Delete tag: %s?') % queryset.first()
                 }
             )
 

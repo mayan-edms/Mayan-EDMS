@@ -175,6 +175,7 @@
   event. This speeds up uploading documents in bulk.
 - Add the workflow action to the context of the initial state actions.
 - Add multiple workflow delete view.
+- Add multiple message delete view.
 
 3.4.11 (2020-07-18)
 ===================

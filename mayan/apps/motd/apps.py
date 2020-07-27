@@ -8,14 +8,14 @@ from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import ModelCopy
 from mayan.apps.common.menus import (
-    menu_list_facet, menu_object, menu_secondary, menu_setup
+    menu_list_facet, menu_multi_item, menu_object, menu_secondary, menu_setup
 )
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.views.html_widgets import TwoStateWidget
 
 from .links import (
-    link_message_create, link_message_delete, link_message_edit,
-    link_message_list
+    link_message_create, link_message_multiple_delete,
+    link_message_single_delete, link_message_edit, link_message_list
 )
 from .permissions import (
     permission_message_delete, permission_message_edit,
@@ -75,9 +75,12 @@ class MOTDApp(MayanAppConfig):
                 link_acl_list,
             ), sources=(Message,)
         )
+        menu_multi_item.bind_links(
+            links=(link_message_multiple_delete,), sources=(Message,)
+        )
         menu_object.bind_links(
             links=(
-                link_message_delete, link_message_edit
+                link_message_single_delete, link_message_edit
             ), sources=(Message,)
         )
         menu_secondary.bind_links(
