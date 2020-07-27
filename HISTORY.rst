@@ -169,6 +169,7 @@
   media files. Lowers the static media folder size from 83MB to 51MB.
 - Add boolean field to workflows to control whether or not they will launch
   when a new document is created.
+- Add views to launch workflows for single or multiple documents.
 
 3.4.11 (2020-07-18)
 ===================

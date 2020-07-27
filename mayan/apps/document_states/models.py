@@ -152,27 +152,33 @@ class Workflow(models.Model):
     get_initial_state.short_description = _('Initial state')
 
     def launch_for(self, document):
-        try:
-            logger.info(
-                'Launching workflow %s for document %s', self, document
-            )
-            workflow_instance = self.instances.create(document=document)
-            initial_state = self.get_initial_state()
-            if initial_state:
-                for action in initial_state.entry_actions.filter(enabled=True):
-                    action.execute(
-                        context=workflow_instance.get_context(),
-                        workflow_instance=workflow_instance
-                    )
-        except IntegrityError:
-            logger.info(
-                'Workflow %s already launched for document %s', self, document
-            )
+        if document.document_type in self.document_types.all():
+            try:
+                logger.info(
+                    'Launching workflow %s for document %s', self, document
+                )
+                workflow_instance = self.instances.create(document=document)
+                initial_state = self.get_initial_state()
+                if initial_state:
+                    for action in initial_state.entry_actions.filter(enabled=True):
+                        action.execute(
+                            context=workflow_instance.get_context(),
+                            workflow_instance=workflow_instance
+                        )
+            except IntegrityError:
+                logger.info(
+                    'Workflow %s already launched for document %s', self, document
+                )
+            else:
+                logger.info(
+                    'Workflow %s launched for document %s', self, document
+                )
+                return workflow_instance
         else:
-            logger.info(
-                'Workflow %s launched for document %s', self, document
+            logger.error(
+                'This workflow is not valid for the document type of the '
+                'document.'
             )
-            return workflow_instance
 
     def render(self):
         diagram = Digraph(

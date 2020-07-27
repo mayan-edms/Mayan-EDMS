@@ -8,7 +8,7 @@ from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.templating.fields import ModelTemplateField
-from mayan.apps.views.forms import DynamicModelForm
+from mayan.apps.views.forms import DynamicModelForm, FilteredSelectionForm
 
 from .classes import WorkflowAction
 from .fields import WorfklowImageField
@@ -38,6 +38,15 @@ class WorkflowForm(forms.ModelForm):
     class Meta:
         fields = ('label', 'internal_name', 'auto_launch')
         model = Workflow
+
+
+class WorkflowMultipleSelectionForm(FilteredSelectionForm):
+    class Meta:
+        allow_multiple = True
+        field_name = 'workflows'
+        label = _('Workflows')
+        required = False
+        widget_attributes = {'class': 'select2'}
 
 
 class WorkflowStateActionDynamicForm(DynamicModelForm):

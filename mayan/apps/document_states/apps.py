@@ -9,8 +9,8 @@ from mayan.apps.common.classes import (
     ModelCopy, ModelField, ModelProperty, ModelReverseField
 )
 from mayan.apps.common.menus import (
-    menu_facet, menu_list_facet, menu_main, menu_object, menu_related,
-    menu_secondary, menu_setup, menu_tools
+    menu_facet, menu_list_facet, menu_main, menu_multi_item, menu_object,
+    menu_related, menu_secondary, menu_setup, menu_tools
 )
 from mayan.apps.documents.links.document_type_links import link_document_type_list
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
@@ -30,6 +30,8 @@ from .handlers import (
 )
 from .html_widgets import WorkflowLogExtraDataWidget, widget_transition_events
 from .links import (
+    link_document_multiple_workflow_templates_launch,
+    link_document_single_workflow_templates_launch,
     link_workflow_instance_list, link_document_type_workflow_templates,
     link_workflow_template_document_types, link_workflow_template_create,
     link_workflow_template_delete, link_workflow_template_edit,
@@ -175,7 +177,9 @@ class DocumentStatesApp(MayanAppConfig):
         )
 
         ModelPermission.register(
-            model=Document, permissions=(permission_workflow_view,)
+            model=Document, permissions=(
+                permission_workflow_tools, permission_workflow_view,
+            )
         )
         ModelPermission.register(
             model=Workflow, permissions=(
@@ -413,6 +417,14 @@ class DocumentStatesApp(MayanAppConfig):
         menu_facet.bind_links(
             links=(link_workflow_instance_list,), sources=(Document,)
         )
+        menu_secondary.bind_links(
+            links=(link_document_single_workflow_templates_launch,),
+            sources=(
+                'document_states:document_multiple_workflow_templates_launch',
+                'document_states:document_single_workflow_templates_launch',
+                'document_states:workflow_instance_list', WorkflowInstance,
+            )
+        )
 
         menu_list_facet.bind_links(
             links=(
@@ -440,7 +452,13 @@ class DocumentStatesApp(MayanAppConfig):
             ), sources=(DocumentType,)
         )
 
-        menu_main.bind_links(links=(link_workflow_runtime_proxy_list,), position=10)
+        menu_main.bind_links(
+            links=(link_workflow_runtime_proxy_list,), position=10
+        )
+        menu_multi_item.bind_links(
+            links=(link_document_multiple_workflow_templates_launch,),
+            sources=(Document,)
+        )
         menu_object.bind_links(
             links=(
                 link_workflow_template_delete, link_workflow_template_edit,

@@ -19,11 +19,11 @@ from .views.workflow_proxy_views import (
     WorkflowRuntimeProxyStateListView
 )
 from .views.workflow_template_views import (
-    DocumentTypeWorkflowTemplatesView, ToolLaunchWorkflows,
-    WorkflowTemplateCreateView, WorkflowTemplateDeleteView,
-    WorkflowTemplateEditView, WorkflowTemplateLaunchView,
-    WorkflowTemplateListView, WorkflowTemplatePreviewView,
-    WorkflowTemplateDocumentTypesView
+    DocumentTypeWorkflowTemplatesView, DocumentWorkflowTemplatesLaunchView,
+    ToolLaunchWorkflows, WorkflowTemplateCreateView,
+    WorkflowTemplateDeleteView, WorkflowTemplateEditView,
+    WorkflowTemplateLaunchView, WorkflowTemplateListView,
+    WorkflowTemplatePreviewView, WorkflowTemplateDocumentTypesView
 )
 from .views.workflow_template_state_views import (
     WorkflowTemplateStateActionCreateView,
@@ -145,6 +145,16 @@ urlpatterns_workflow_templates = [
         regex=r'^document_types/(?P<document_type_id>\d+)/workflow_templates/$',
         name='document_type_workflow_templates',
         view=DocumentTypeWorkflowTemplatesView.as_view()
+    ),
+    url(
+        regex=r'^documents/(?P<document_id>\d+)/workflow_templates/launch/$',
+        name='document_single_workflow_templates_launch',
+        view=DocumentWorkflowTemplatesLaunchView.as_view()
+    ),
+    url(
+        regex=r'^documents/multiple/workflow_templates/launch/$',
+        name='document_multiple_workflow_templates_launch',
+        view=DocumentWorkflowTemplatesLaunchView.as_view()
     ),
     url(
         regex=r'^workflow_templates/$', name='workflow_template_list',
