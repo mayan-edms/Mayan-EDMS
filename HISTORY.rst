@@ -5,6 +5,19 @@
   investigation.
 - Unify the delete tag view behavior.
 - Update Django from version 2.2.13 to 2.2.14.
+- Expose Celery settings: ``CELERY_BROKER_LOGIN_METHOD`` and
+  ``CELERY_BROKER_USE_SSL``. These default to ``AMQPLAIN`` and ``None``
+  respectively.
+
+SettingNamespaceSingleton.register_setting(
+    name='CELERY_BROKER_LOGIN_METHOD', klass=BaseSetting
+)
+SettingNamespaceSingleton.register_setting(
+    name='CELERY_BROKER_URL', klass=BaseSetting
+)
+SettingNamespaceSingleton.register_setting(
+    name='CELERY_BROKER_USE_SSL', klass=BaseSetting
+
 
 3.4.11 (2020-07-18)
 ===================
