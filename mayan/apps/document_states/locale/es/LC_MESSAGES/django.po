@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-17 23:59-0400\n"
-"PO-Revision-Date: 2020-07-09 04:06+0000\n"
+"POT-Creation-Date: 2020-07-28 02:15-0400\n"
+"PO-Revision-Date: 2020-07-18 05:34+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -399,7 +399,7 @@ msgid ""
 " not return any value, that return the Python logical None, or an empty "
 "string ('') are considered to be logical false, any other value is "
 "considered to be the logical true."
-msgstr ""
+msgstr "La condición que determinará si esta acción de estado se ejecuta o no. La condición se evalúa contra la instancia de flujo de trabajo. Las condiciones que no devuelven ningún valor, que devuelven el lógico Python None o una cadena vacía (\"\") se consideran lógicamente falsas, cualquier otro valor se considera lógico verdadero."
 
 #: models.py:636 models.py:724
 msgid "Condition"
@@ -441,7 +441,7 @@ msgid ""
 " return any value, that return the Python logical None, or an empty string "
 "('') are considered to be logical false, any other value is considered to be"
 " the logical true."
-msgstr ""
+msgstr "La condición que determinará si esta transición está habilitada o no. La condición se evalúa contra la instancia de flujo de trabajo. Las condiciones que no devuelven ningún valor, que devuelven el lógico Python None o una cadena vacía (\"\") se consideran lógicamente falsas, cualquier otro valor se considera lógico verdadero."
 
 #: models.py:732
 msgid "Workflow transition"
@@ -621,7 +621,7 @@ msgstr "Llave primaria de la transición a añadir."
 #: settings.py:18
 msgid ""
 "File path to the graphviz dot program used to generate workflow previews."
-msgstr ""
+msgstr "Ruta del archivo al programa de puntos graphviz utilizado para generar vistas previas del flujo de trabajo."
 
 #: settings.py:26
 msgid ""

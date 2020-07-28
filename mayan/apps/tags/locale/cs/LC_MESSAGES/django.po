@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-18 00:01-0400\n"
+"POT-Creation-Date: 2020-07-28 02:17-0400\n"
 "PO-Revision-Date: 2020-06-22 15:26+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: apps.py:50 apps.py:104 apps.py:111 apps.py:128 apps.py:130 events.py:5
 #: forms.py:15 links.py:23 menus.py:14 models.py:40 permissions.py:5
-#: views.py:223 workflow_actions.py:18 workflow_actions.py:66
+#: views.py:220 workflow_actions.py:18 workflow_actions.py:66
 msgid "Tags"
 msgstr "Značky"
 
@@ -60,7 +60,7 @@ msgstr "Odebrat značky"
 msgid "Create new tag"
 msgstr "Vytvořit novou značku"
 
-#: links.py:48 links.py:65 views.py:156
+#: links.py:48 links.py:65
 msgid "Delete"
 msgstr "Odstranit"
 
@@ -152,21 +152,21 @@ msgstr "URL API směřující ke značce ve vztahu k dokumentu k ní připojené
 msgid "Primary key of the tag to be added."
 msgstr "Primární klíč značky, která má být přidána."
 
-#: views.py:37
+#: views.py:35
 #, python-format
 msgid "Tag attach request performed on %(count)d document"
 msgstr "Žádost o připojení značky provedená v dokumentu %(count)d"
 
-#: views.py:39
+#: views.py:37
 #, python-format
 msgid "Tag attach request performed on %(count)d documents"
 msgstr "Žádost o připojení značky provedená na dokumentech %(count)d"
 
-#: views.py:46
+#: views.py:44
 msgid "Attach"
 msgstr "Připojit"
 
-#: views.py:48
+#: views.py:46
 #, python-format
 msgid "Attach tags to %(count)d document"
 msgid_plural "Attach tags to %(count)d documents"
@@ -175,44 +175,44 @@ msgstr[1] "Připojte značky k dokumentům %(count)d"
 msgstr[2] "Připojte značky k dokumentům %(count)d"
 msgstr[3] "Připojte značky k dokumentům %(count)d"
 
-#: views.py:60
+#: views.py:58
 #, python-format
 msgid "Attach tags to document: %s"
 msgstr "Připojit značky k dokumentu: %s"
 
-#: views.py:69 wizard_steps.py:27
+#: views.py:67 wizard_steps.py:27
 msgid "Tags to be attached."
 msgstr "Značky, které mají být připojeny."
 
-#: views.py:111
+#: views.py:109
 #, python-format
 msgid "Document \"%(document)s\" is already tagged as \"%(tag)s\""
 msgstr "Dokument „%(document)s“ je již označen jako „%(tag)s“"
 
-#: views.py:121
+#: views.py:119
 #, python-format
 msgid "Tag \"%(tag)s\" attached successfully to document \"%(document)s\"."
 msgstr "Značka „%(tag)s“ byla úspěšně připojena k dokumentu „%(document)s“."
 
-#: views.py:130
+#: views.py:128
 msgid "Create tag"
 msgstr "Vytvořit značku"
 
-#: views.py:145
+#: views.py:143
 #, python-format
 msgid "Tag delete request performed on %(count)d tag"
 msgstr "Žádost o odstranění značky provedená na značce %(count)d"
 
-#: views.py:147
+#: views.py:145
 #, python-format
 msgid "Tag delete request performed on %(count)d tags"
 msgstr "Žádost o odstranění značky provedená na značkách %(count)d"
 
-#: views.py:154
+#: views.py:153
 msgid "Will be removed from all documents."
 msgstr "Bude odstraněna ze všech dokumentů."
 
-#: views.py:158
+#: views.py:155
 msgid "Delete the selected tag?"
 msgid_plural "Delete the selected tags?"
 msgstr[0] "Smazat vybranou značku?"
@@ -220,65 +220,65 @@ msgstr[1] "Smazat vybrané značky?"
 msgstr[2] "Smazat vybrané značky?"
 msgstr[3] "Smazat vybrané značky?"
 
-#: views.py:168
+#: views.py:165
 #, python-format
 msgid "Delete tag: %s"
 msgstr "Smazat značku: %s"
 
-#: views.py:179
+#: views.py:176
 #, python-format
 msgid "Tag \"%s\" deleted successfully."
 msgstr "Značka „%s“ byla úspěšně odstraněna."
 
-#: views.py:184
+#: views.py:181
 #, python-format
 msgid "Error deleting tag \"%(tag)s\": %(error)s"
 msgstr "Chyba při odstraňování značky „%(tag)s“: %(error)s"
 
-#: views.py:200
+#: views.py:197
 #, python-format
 msgid "Edit tag: %s"
 msgstr "Upravit značku: %s"
 
-#: views.py:219
+#: views.py:216
 msgid ""
 "Tags are color coded properties that can be attached or removed from "
 "documents."
 msgstr "Značky jsou barevně označené vlastnosti, které lze připojit nebo odebrat z dokumentů."
 
-#: views.py:222
+#: views.py:219
 msgid "No tags available"
 msgstr "Nejsou k dispozici žádné značky"
 
-#: views.py:246
+#: views.py:243
 #, python-format
 msgid "Documents with the tag: %s"
 msgstr "Dokumenty se značkou: %s"
 
-#: views.py:270
+#: views.py:267
 msgid "Document has no tags attached"
 msgstr "K dokumentu nejsou připojeny žádné značky"
 
-#: views.py:273
+#: views.py:270
 #, python-format
 msgid "Tags for document: %s"
 msgstr "Značky pro dokument: %s"
 
-#: views.py:290
+#: views.py:287
 #, python-format
 msgid "Tag remove request performed on %(count)d document"
 msgstr "Žádost o odstranění značky provedená v dokumentu %(count)d"
 
-#: views.py:292
+#: views.py:289
 #, python-format
 msgid "Tag remove request performed on %(count)d documents"
 msgstr "Žádost o odstranění značky provedená na dokumentech %(count)d"
 
-#: views.py:300
+#: views.py:297
 msgid "Remove"
 msgstr "Odstranit"
 
-#: views.py:302
+#: views.py:299
 #, python-format
 msgid "Remove tags from %(count)d document"
 msgid_plural "Remove tags from %(count)d documents"
@@ -287,21 +287,21 @@ msgstr[1] "Odstraňte značky z dokumentů %(count)d"
 msgstr[2] "Odstraňte značky z dokumentů %(count)d"
 msgstr[3] "Odstraňte značky z dokumentů %(count)d"
 
-#: views.py:314
+#: views.py:311
 #, python-format
 msgid "Remove tags from document: %s"
 msgstr "Odebrat značky z dokumentu: %s"
 
-#: views.py:323
+#: views.py:320
 msgid "Tags to be removed."
 msgstr "Značky, které mají být odstraněny."
 
-#: views.py:363
+#: views.py:360
 #, python-format
 msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s"
 msgstr "Dokument „%(document)s“ nebyl označen jako „%(tag)s"
 
-#: views.py:372
+#: views.py:369
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr "Značka \"%(tag)s\" byla úspěšně odstraněna z dokumentu \"%(document)s\"."

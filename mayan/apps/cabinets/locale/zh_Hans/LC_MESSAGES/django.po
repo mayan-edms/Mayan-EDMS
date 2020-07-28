@@ -5,14 +5,15 @@
 # 
 # Translators:
 # Roberto Rosario, 2020
+# yan songwei <yansw@vip.163.com>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-17 23:59-0400\n"
+"POT-Creation-Date: 2020-07-28 02:14-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
-"Last-Translator: Roberto Rosario, 2020\n"
+"Last-Translator: yan songwei <yansw@vip.163.com>, 2020\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,19 +29,19 @@ msgstr "文档柜"
 
 #: events.py:9
 msgid "Cabinet created"
-msgstr ""
+msgstr "文档柜创建"
 
 #: events.py:12
 msgid "Cabinet edited"
-msgstr ""
+msgstr "文档柜编辑"
 
 #: events.py:15
 msgid "Document added to cabinet"
-msgstr ""
+msgstr "文件已添加到文档柜"
 
 #: events.py:18
 msgid "Document removed from cabinet"
-msgstr ""
+msgstr "文档从文档柜中移除"
 
 #: links.py:28 links.py:42 workflow_actions.py:74
 msgid "Remove from cabinets"
@@ -76,15 +77,15 @@ msgstr "细节"
 
 #: methods.py:20
 msgid "Return a list of cabinets containing the document."
-msgstr ""
+msgstr "返回包含文档的文档柜列表。"
 
 #: methods.py:22
 msgid "get_cabinets()"
-msgstr ""
+msgstr "get_cabinets()"
 
 #: models.py:34
 msgid "A short text used to identify the cabinet."
-msgstr ""
+msgstr "用于标识文档柜的简短文本。"
 
 #: models.py:35 search.py:22
 msgid "Label"
@@ -105,7 +106,7 @@ msgstr ""
 
 #: models.py:112
 msgid "Full path"
-msgstr ""
+msgstr "完整路径"
 
 #: models.py:145 serializers.py:137
 msgid "Parent and Label"
@@ -154,23 +155,23 @@ msgstr "文档类型"
 
 #: search.py:29
 msgid "Document MIME type"
-msgstr ""
+msgstr "MIME类型文件"
 
 #: search.py:32
 msgid "Document label"
-msgstr ""
+msgstr "文件标签"
 
 #: search.py:35
 msgid "Document description"
-msgstr ""
+msgstr "文件说明"
 
 #: search.py:38
 msgid "Document UUID"
-msgstr ""
+msgstr "文件UUID"
 
 #: search.py:42
 msgid "Document checksum"
-msgstr ""
+msgstr "文件校验和"
 
 #: serializers.py:17
 msgid "List of children cabinets."
@@ -336,12 +337,12 @@ msgstr "文档：%(document)s从文档柜中删除：%(cabinet)s。"
 
 #: wizard_steps.py:15
 msgid "Select cabinets"
-msgstr ""
+msgstr "选择文件柜"
 
 #: wizard_steps.py:29 workflow_actions.py:23
 msgid "Cabinets to which the document will be added."
-msgstr ""
+msgstr "文件将添加到的文件柜。"
 
 #: workflow_actions.py:69
 msgid "Cabinets from which the document will be removed."
-msgstr ""
+msgstr "文档将会从文件柜中移除"
