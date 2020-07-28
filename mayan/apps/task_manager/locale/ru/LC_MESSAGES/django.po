@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-18 00:01-0400\n"
+"POT-Creation-Date: 2020-07-28 02:17-0400\n"
 "PO-Revision-Date: 2017-06-30 22:04+0000\n"
 "Last-Translator: lilo.panic, 2017\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -70,11 +70,15 @@ msgstr ""
 msgid "View tasks"
 msgstr ""
 
-#: settings.py:8
+#: settings.py:13
 msgid "Celery"
 msgstr ""
 
-#: settings.py:13
+#: settings.py:18
+msgid "Default: \"AMQPLAIN\". Set custom amqp login method."
+msgstr ""
+
+#: settings.py:24
 msgid ""
 "Default: \"amqp://\". Default broker URL. This must be a URL in the form of:"
 " transport://userid:password@hostname:port/virtual_host Only the scheme part"
@@ -82,7 +86,13 @@ msgid ""
 "specific transports default values."
 msgstr ""
 
-#: settings.py:22
+#: settings.py:33
+msgid ""
+"Default: \"Disabled\". Toggles SSL usage on broker connection and SSL "
+"settings. The valid values for this option vary by transport."
+msgstr ""
+
+#: settings.py:41
 msgid ""
 "Default: No result backend enabled by default. The backend used to store "
 "task results (tombstones). Refer to "
