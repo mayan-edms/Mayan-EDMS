@@ -3,6 +3,7 @@
 - Decode fonts dependencies when downloading. Closes GitLab
   issue #849. Thanks to Olaf (@oohlaf) for the report and
   investigation.
+- Unify the delete tag view behavior.
 
 3.4.11 (2020-07-18)
 ===================
