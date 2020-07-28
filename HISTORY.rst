@@ -1,4 +1,4 @@
-3.4.12 (2020-07-XX)
+3.4.12 (2020-07-28)
 ===================
 - Decode fonts dependencies when downloading. Closes GitLab
   issue #849. Thanks to Olaf (@oohlaf) for the report and
@@ -8,16 +8,6 @@
 - Expose Celery settings: ``CELERY_BROKER_LOGIN_METHOD`` and
   ``CELERY_BROKER_USE_SSL``. These default to ``AMQPLAIN`` and ``None``
   respectively.
-
-SettingNamespaceSingleton.register_setting(
-    name='CELERY_BROKER_LOGIN_METHOD', klass=BaseSetting
-)
-SettingNamespaceSingleton.register_setting(
-    name='CELERY_BROKER_URL', klass=BaseSetting
-)
-SettingNamespaceSingleton.register_setting(
-    name='CELERY_BROKER_USE_SSL', klass=BaseSetting
-
 
 3.4.11 (2020-07-18)
 ===================

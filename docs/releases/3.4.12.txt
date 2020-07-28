@@ -1,41 +1,39 @@
-Version 3.4.11
+Version 3.4.12
 ==============
 
-Released: July 18, 2020
+Released: July 28, 2020
 
 Changes
 -------
 
 
-Cabinets
-^^^^^^^^
-
-The CSS for cabinet names in document cards was updated to wrap around
-long cabinet names that would not normally fit in the card.
-
-
-Mirroring
-^^^^^^^^^
-
-The mirroring test code was updated to not assume that a local filesystem
-was being used. Documents files are now deleted in the test using the document
-storage driver entry from the database.
-
-
-Translations
+Dependencies
 ^^^^^^^^^^^^
 
-Include non Mayan app translations when switching locales. This change
-allows password forms that contain translated texts processed outside Mayan,
-to properly switch language when the user locale is updated.
+The Django version used was updated from 2.2.13 to 2.2.14
+(https://docs.djangoproject.com/en/3.0/releases/2.2.14/)
 
 
-Workflows
-^^^^^^^^^
+Tags
+^^^^
 
-A fix was added to avoid document references in workflows that use a
-cascade of state actions, to become stale as each state action modifies the
-document.
+The buttons of the tag deletion view confirmation box were updated to match the
+appearance of the rest of the deletion views.
+
+
+Task manager
+^^^^^^^^^^^^
+
+New Celery settings were expose. These were the ``CELERY_BROKER_LOGIN_METHOD``
+and ``CELERY_BROKER_USE_SSL``. These default to ``AMQPLAIN`` and ``None``
+respectively.
+
+
+User interface
+^^^^^^^^^^^^^^
+
+The code that downloads fonts during the initial setup was updated to decode
+the response and correctly save fonts that are served in a compressed format.
 
 
 Removals
@@ -148,7 +146,7 @@ Upgrading from Mayan EDMS 3.3.x
 
    .. code-block:: bash
 
-    sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install mayan-edms==3.4.11
+    sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install mayan-edms==3.4.12
 
    the requirements will also be updated automatically.
 
@@ -226,9 +224,7 @@ Backward incompatible changes
 Issues closed
 -------------
 
-- :gitlab-issue:`841` Stale document model when workflow actions trigger further actions
-- :gitlab-issue:`843` Long cabinet full path overflows document card
-- :gitlab-issue:`848` Translations: imported translations from django.contrib.auth.views not displayed
+- :gitlab-issue:`849` Firefox and Chrome warn about blocking fonts
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
 
