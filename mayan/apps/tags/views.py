@@ -16,9 +16,7 @@ from mayan.apps.documents.models import Document
 from mayan.apps.documents.views.document_views import DocumentListView
 
 from .forms import TagMultipleSelectionForm
-from .icons import (
-    icon_menu_tags, icon_tag_delete_submit, icon_document_tag_remove_submit
-)
+from .icons import icon_menu_tags, icon_document_tag_remove_submit
 from .links import link_document_tag_multiple_attach, link_tag_create
 from .models import Tag
 from .permissions import (
@@ -151,13 +149,12 @@ class TagDeleteActionView(MultipleObjectConfirmActionView):
         queryset = self.object_list
 
         result = {
+            'delete_view': True,
             'message': _('Will be removed from all documents.'),
-            'submit_icon_class': icon_tag_delete_submit,
-            'submit_label': _('Delete'),
             'title': ungettext(
-                'Delete the selected tag?',
-                'Delete the selected tags?',
-                queryset.count()
+                singular='Delete the selected tag?',
+                plural='Delete the selected tags?',
+                number=queryset.count()
             )
         }
 
