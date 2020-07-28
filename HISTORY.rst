@@ -1,3 +1,9 @@
+3.4.12 (2020-07-XX)
+===================
+- Decode fonts dependencies when downloading. Closes GitLab
+  issue #849. Thanks to Olaf (@oohlaf) for the report and
+  investigation.
+
 3.4.11 (2020-07-18)
 ===================
 - Don't asume local filesystem when testing the mirroring app.
