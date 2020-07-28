@@ -4,6 +4,7 @@
   issue #849. Thanks to Olaf (@oohlaf) for the report and
   investigation.
 - Unify the delete tag view behavior.
+- Update Django from version 2.2.13 to 2.2.14.
 
 3.4.11 (2020-07-18)
 ===================
