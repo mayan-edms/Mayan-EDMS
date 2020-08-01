@@ -17,9 +17,7 @@ from mayan.apps.views.generics import (
 from mayan.apps.views.mixins import ExternalObjectMixin
 
 from .forms import TagMultipleSelectionForm
-from .icons import (
-    icon_menu_tags, icon_tag_delete_submit, icon_document_tag_remove_submit
-)
+from .icons import icon_menu_tags, icon_document_tag_remove_submit
 from .links import link_document_tag_multiple_attach, link_tag_create
 from .models import Tag
 from .permissions import (

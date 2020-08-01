@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-17 23:59-0400\n"
+"POT-Creation-Date: 2020-07-28 02:43-0400\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: Ingo Buchholz <ingo.buchholz@takwa.de>, 2020\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
@@ -42,11 +42,11 @@ msgstr "Interner Name"
 msgid "Description"
 msgstr "Beschreibung"
 
-#: apps.py:45 classes.py:154
+#: apps.py:45 classes.py:155
 msgid "Type"
 msgstr "Typ"
 
-#: apps.py:49 classes.py:156
+#: apps.py:49 classes.py:157
 msgid "Other data"
 msgstr "Andere Daten"
 
@@ -54,78 +54,78 @@ msgstr "Andere Daten"
 msgid "Declared by"
 msgstr "Deklariert von"
 
-#: apps.py:57 classes.py:154
+#: apps.py:57 classes.py:155
 msgid "Version"
 msgstr "Version"
 
-#: apps.py:61 classes.py:155 classes.py:802
+#: apps.py:61 classes.py:156 classes.py:810
 msgid "Environment"
 msgstr "Umgebung"
 
-#: apps.py:64 classes.py:156
+#: apps.py:64 classes.py:157
 msgid "Check"
 msgstr "Überprüfen"
 
-#: classes.py:154
+#: classes.py:155
 msgid "Name"
 msgstr "Name"
 
-#: classes.py:155
+#: classes.py:156
 msgid "App"
 msgstr "App"
 
-#: classes.py:270
+#: classes.py:271
 msgid "Need to specify at least one: app_label or module."
 msgstr ""
 "Es muss wenigstens eines von beiden angegeben werden: app_label oder Modul."
 
-#: classes.py:275
+#: classes.py:276
 #, python-format
 msgid "Dependency \"%s\" already registered."
 msgstr "Abhängigkeit \"%s\" bereits registriert."
 
-#: classes.py:301
+#: classes.py:302
 #, python-format
 msgid "Installing package: %s... "
 msgstr "Installiere Paket: %s... "
 
-#: classes.py:306
+#: classes.py:307
 msgid "Already installed."
 msgstr "Bereits installiert."
 
-#: classes.py:309 classes.py:314 classes.py:318
+#: classes.py:310 classes.py:315 classes.py:319
 msgid "Complete."
 msgstr "Vollständig."
 
-#: classes.py:344
+#: classes.py:345
 msgid "Installed and correct version"
 msgstr "Installierte und korrekte Version"
 
-#: classes.py:346
+#: classes.py:347
 msgid "Missing or incorrect version"
 msgstr "Fehlende oder inkorrekte Version"
 
-#: classes.py:375
+#: classes.py:376
 msgid "None"
 msgstr "Keine"
 
-#: classes.py:384
+#: classes.py:385
 msgid "Not specified"
 msgstr "Nicht spezifiziert"
 
-#: classes.py:387
+#: classes.py:388
 msgid "Patching files... "
 msgstr "Dateien werden gepatcht ..."
 
-#: classes.py:415
+#: classes.py:416
 msgid "Executables that are called directly by the code."
 msgstr "Programme, die direkt durch den Code aufgerufen werden."
 
-#: classes.py:417
+#: classes.py:418
 msgid "Binary"
 msgstr "Binärdatei"
 
-#: classes.py:434
+#: classes.py:435
 msgid ""
 "JavaScript libraries downloaded the from NPM registry and used for front-end"
 " functionality."
@@ -133,51 +133,51 @@ msgstr ""
 "JavaScript Bibliotheken, die aus der NPM Registry heruntergeladen werden und"
 " für die Front-End-Funktionalität benötigt werden."
 
-#: classes.py:437
+#: classes.py:438
 msgid "JavaScript"
 msgstr "JavaScript"
 
-#: classes.py:471 classes.py:722
+#: classes.py:472 classes.py:723
 msgid "Downloading... "
 msgstr "Herunterladen..."
 
-#: classes.py:474
+#: classes.py:475
 msgid "Verifying... "
 msgstr "Verifizieren..."
 
-#: classes.py:477 classes.py:725
+#: classes.py:478 classes.py:726
 msgid "Extracting... "
 msgstr "Entpacken..."
 
-#: classes.py:664
+#: classes.py:665
 msgid "Python packages downloaded from PyPI."
 msgstr "Pythonpakete, die von PyPI heruntergeladen werden."
 
-#: classes.py:666
+#: classes.py:667
 msgid "Python"
 msgstr "Python"
 
-#: classes.py:703
+#: classes.py:704
 msgid "Fonts downloaded from fonts.googleapis.com."
 msgstr "Von fonts.googleapis.com heruntergeladene Schriftarten."
 
-#: classes.py:705
+#: classes.py:706
 msgid "Google font"
 msgstr "Google-Schriftart"
 
-#: classes.py:784
+#: classes.py:792
 msgid "Declared in app"
 msgstr "In App deklariert"
 
-#: classes.py:785
+#: classes.py:793
 msgid "Show dependencies by the app that declared them."
 msgstr "Abhängigkeiten nach der deklarierenden App anzeigen."
 
-#: classes.py:789
+#: classes.py:797
 msgid "Class"
 msgstr "Klasse"
 
-#: classes.py:790
+#: classes.py:798
 msgid ""
 "Show the different classes of dependencies. Classes are usually divided by "
 "language or the file types of the dependency."
@@ -185,11 +185,11 @@ msgstr ""
 "Unterschiedliche Klassen von Abhängigkeiten anzeigen. Klassen sind "
 "üblicherweise unterteilt nach Sprache oder Dateityp der Abhängigkeit."
 
-#: classes.py:795
+#: classes.py:803
 msgid "State"
 msgstr "Status"
 
-#: classes.py:796
+#: classes.py:804
 msgid ""
 "Show the different states of the dependencies. True means that the "
 "dependencies is installed and is of a correct version. False means the "
@@ -200,7 +200,7 @@ msgstr ""
 "False (Falsch) bedeutet eine fehlende oder inkorrekte Version der "
 "Abhängigkeit."
 
-#: classes.py:803
+#: classes.py:811
 msgid ""
 "Dependencies required for an environment might not be required for another. "
 "Example environments: Production, Development."

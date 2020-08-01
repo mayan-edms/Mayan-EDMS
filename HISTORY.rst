@@ -177,6 +177,17 @@
 - Add multiple message delete view.
 - Moved the statistics queue from the slow worker to the medium worker.
 
+3.4.12 (2020-07-28)
+===================
+- Decode fonts dependencies when downloading. Closes GitLab
+  issue #849. Thanks to Olaf (@oohlaf) for the report and
+  investigation.
+- Unify the delete tag view behavior.
+- Update Django from version 2.2.13 to 2.2.14.
+- Expose Celery settings: ``CELERY_BROKER_LOGIN_METHOD`` and
+  ``CELERY_BROKER_USE_SSL``. These default to ``AMQPLAIN`` and ``None``
+  respectively.
+
 3.4.11 (2020-07-18)
 ===================
 - Don't assume local filesystem when testing the mirroring app.

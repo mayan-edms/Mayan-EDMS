@@ -4,14 +4,15 @@
 # 
 # Translators:
 # Haiyuan Zhang <zhanghaiyuan@gmail.com>, 2019
+# yan songwei <yansw@vip.163.com>, 2020
 # yulin Gong <540538248@qq.com>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-17 23:58-0400\n"
-"PO-Revision-Date: 2020-03-28 07:22+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-07-28 02:42-0400\n"
+"PO-Revision-Date: 2020-07-18 06:14+0000\n"
+"Last-Translator: yan songwei <yansw@vip.163.com>\n"
 "Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-edms/language/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -117,7 +118,7 @@ msgstr "此访问控制列表绑定到的角色的主键。"
 msgid ""
 "An ACL for \"%(object)s\" using role \"%(role)s\" already exists. Edit that "
 "ACL entry instead."
-msgstr ""
+msgstr "已经存在使用角色“ %(role)s”的“ %(object)s”的ACL。请改为编辑该ACL条目。"
 
 #: views.py:53
 #, python-format
@@ -138,7 +139,7 @@ msgid ""
 "ACL stands for Access Control List and is a precise method to control user "
 "access to objects in the system. ACLs allow granting a permission to a role "
 "but only for a specific object or set of objects."
-msgstr ""
+msgstr "ACL代表访问控制列表，是控制用户对系统中对象的访问的精确方法。 ACL允许授予角色权限，但只能授予特定对象或一组对象的权限。"
 
 #: views.py:143
 #, python-format
@@ -164,7 +165,7 @@ msgid ""
 "to the role and can't be removed from this view. Inherited permissions need "
 "to be removed from the parent object's ACL or from them role via the Setup "
 "menu."
-msgstr ""
+msgstr "禁用的权限是从父对象继承或直接授予角色的，不能从此视图中删除。需要通过“设置”菜单从父对象的ACL或角色中删除继承的权限。"
 
 #: workflow_actions.py:23
 msgid "Object type"
