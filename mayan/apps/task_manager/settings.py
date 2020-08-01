@@ -7,11 +7,6 @@ from .literals import (
     DEFAULT_CELERY_BROKER_USE_SSL, DEFAULT_CELERY_RESULT_BACKEND
 )
 
-from .literals import (
-    DEFAULT_CELERY_BROKER_LOGIN_METHOD, DEFAULT_CELERY_BROKER_URL,
-    DEFAULT_CELERY_BROKER_USE_SSL, DEFAULT_CELERY_RESULT_BACKEND
-)
-
 # Don't import anything on star import, we just want to make it easy
 # for apps.py to activate the settings in this module.
 __all__ = ()
