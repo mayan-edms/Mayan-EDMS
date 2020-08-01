@@ -176,6 +176,7 @@
 - Add the workflow action to the context of the initial state actions.
 - Add multiple workflow delete view.
 - Add multiple message delete view.
+- Moved the statistics queue from the slow worker to the medium worker.
 
 3.4.11 (2020-07-18)
 ===================
