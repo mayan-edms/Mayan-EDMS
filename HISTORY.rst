@@ -176,6 +176,9 @@
 - Add multiple workflow delete view.
 - Add multiple message delete view.
 - Moved the statistics queue from the slow worker to the medium worker.
+- Retry document page image generation tasks on lock error.
+- Add settings named ``DOCUMENT_TASK_GENERATE_DOCUMENT_PAGE_IMAGE_RETRY_DELAY``
+  to adjust the retry delay of the document page image generation task.
 
 3.4.12 (2020-07-28)
 ===================
