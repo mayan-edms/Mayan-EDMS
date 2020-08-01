@@ -15,7 +15,6 @@
     - gevent from 1.4.0 to 20.4.0
     - graphviz from 0.13.2 to 0.14
     - ipython from 7.13.0 to 7.15.0
-    - kombu from 4.6.7 to 4.6.8
     - python_gnupg from 0.4.5 to 0.4.6
     - pytz from 2019.1 to 2020.1
     - safety from 1.8.7 to 1.9.0
