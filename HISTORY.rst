@@ -179,6 +179,7 @@
 - Retry document page image generation tasks on lock error.
 - Add settings named ``DOCUMENT_TASK_GENERATE_DOCUMENT_PAGE_IMAGE_RETRY_DELAY``
   to adjust the retry delay of the document page image generation task.
+- Add workflow action to launch other workflows.
 
 3.4.12 (2020-07-28)
 ===================

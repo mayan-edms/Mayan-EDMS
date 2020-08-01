@@ -7,8 +7,11 @@ from mayan.apps.tests.tests.mocks import request_method_factory
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 
 from ..literals import WORKFLOW_ACTION_ON_ENTRY
+from ..models import Workflow
 from ..permissions import permission_workflow_edit
-from ..workflow_actions import DocumentPropertiesEditAction, HTTPAction
+from ..workflow_actions import (
+    DocumentPropertiesEditAction, DocumentWorkflowLaunchAction, HTTPAction
+)
 
 from .literals import (
     TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_DOTTED_PATH,
@@ -305,4 +308,28 @@ class DocumentPropertiesEditActionTestCase(
         self.assertEqual(
             self.test_document.description,
             TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_TEXT_DESCRIPTION
+        )
+
+
+class DocumentWorkflowLaunchActionTestCase(
+    WorkflowTestMixin, GenericDocumentViewTestCase
+):
+    auto_upload_test_document = False
+
+    def test_document_workflow_launch_action(self):
+        self._create_test_workflow(add_document_type=True, auto_launch=False)
+        self._create_test_workflow_state()
+
+        self._upload_test_document()
+
+        action = DocumentWorkflowLaunchAction(
+            form_data={'workflows': Workflow.objects.all()}
+        )
+
+        workflow_count = self.test_document.workflows.count()
+
+        action.execute(context={'document': self.test_document})
+
+        self.assertTrue(
+            workflow_count + 1, self.test_document.workflows.count()
         )

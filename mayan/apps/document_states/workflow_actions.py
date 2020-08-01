@@ -7,6 +7,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from .classes import WorkflowAction
 from .exceptions import WorkflowStateActionError
+from .models import Workflow
+from .tasks import task_launch_workflow_for
 
 logger = logging.getLogger(name=__name__)
 DEFAULT_TIMEOUT = 4  # 4 seconds
@@ -64,6 +66,78 @@ class DocumentPropertiesEditAction(WorkflowAction):
             document.description = new_description or document.description
 
             document.save()
+
+
+class DocumentWorkflowLaunchAction(WorkflowAction):
+    fields = {
+        'workflows': {
+            'label': _('Workflows'),
+            'class': 'django.forms.ModelMultipleChoiceField', 'kwargs': {
+                'help_text': _(
+                    'Additional workflows to launch for the document.'
+                ), 'queryset': Workflow.objects.none()
+            },
+        },
+    }
+    field_order = ('workflows',)
+    label = _('Launch workflows')
+    widgets = {
+        'workflows': {
+            'class': 'django.forms.widgets.SelectMultiple', 'kwargs': {
+                'attrs': {'class': 'select2'},
+            }
+        }
+    }
+
+    def get_form_schema(self, request, workflow_state):
+        result = super().get_form_schema(request=request)
+
+        workflows_union = Workflow.objects.filter(
+            document_types__in=workflow_state.workflow.document_types.all()
+        ).distinct()
+
+        result['fields']['workflows']['kwargs']['queryset'] = workflows_union
+
+        return result
+
+    def execute(self, context):
+        for workflow in self.form_data['workflows']:
+            task_launch_workflow_for.apply_async(
+                kwargs={
+                    'document_id': context['document'].pk,
+                    'workflow_id': workflow.pk
+                }
+            )
+
+        pass
+        """
+        #self.fields[
+        #    'transition'
+        #].queryset = workflow_instance.get_transition_choices(_user=user)
+
+
+        self.document_label = self.form_data.get('document_label')
+        self.document_description = self.form_data.get('document_description')
+        new_label = None
+        new_description = None
+
+        if self.document_label:
+            new_label = self.render_field(
+                field_name='document_label', context=context
+            )
+
+        if self.document_description:
+            new_description = self.render_field(
+                field_name='document_description', context=context
+            )
+
+        if new_label or new_description:
+            document = context['document']
+            document.label = new_label or document.label
+            document.description = new_description or document.description
+
+            document.save()
+        """
 
 
 class HTTPAction(WorkflowAction):
