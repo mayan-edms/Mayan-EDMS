@@ -2,7 +2,7 @@
 ================
 - Update dependencies versions:
 
-    - celery from 4.3.0 to 4.4.5
+    - celery from 4.3.0 to 4.4.7
     - chart.js from 2.7.2 to 2.7.3
     - coverage from 5.0.4 to 5.1
     - coveralls from 1.11.1 to 2.0.0
