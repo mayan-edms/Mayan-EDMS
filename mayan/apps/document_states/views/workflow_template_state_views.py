@@ -126,7 +126,7 @@ class WorkflowTemplateStateActionEditView(SingleObjectDynamicFormEditView):
 
     def get_form_schema(self):
         return self.object.get_class_instance().get_form_schema(
-            request=self.request
+            request=self.request, workflow_state=self.object.state
         )
 
     def get_post_action_redirect(self):

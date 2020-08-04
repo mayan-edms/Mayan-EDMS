@@ -58,19 +58,17 @@ class DocumentSignatureDetachedAction(WorkflowAction):
             'passphrase': self.form_data.get('passphrase')
         }
 
-    def get_form_schema(self, request):
-        user = request.user
-        logger.debug('user: %s', user)
+    def get_form_schema(self, **kwargs):
+        result = super().get_form_schema(**kwargs)
 
         queryset = AccessControlList.objects.restrict_queryset(
             permission=permission_key_sign, queryset=Key.objects.all(),
-            user=user
+            user=kwargs['request'].user
         )
 
-        self.fields['key']['kwargs']['queryset'] = queryset
-        return super(DocumentSignatureDetachedAction, self).get_form_schema(
-            request=request
-        )
+        result['fields']['key']['kwargs']['queryset'] = queryset
+
+        return result
 
     def execute(self, context):
         DetachedSignature.objects.sign_document_version(

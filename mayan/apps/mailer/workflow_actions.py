@@ -78,22 +78,17 @@ class EmailAction(WorkflowAction):
             to=recipient, subject=subject, body=body,
         )
 
-    def get_form_schema(self, request):
-        user = request.user
-        logger.debug('user: %s', user)
+    def get_form_schema(self, **kwargs):
+        result = super().get_form_schema(**kwargs)
 
         queryset = AccessControlList.objects.restrict_queryset(
             permission=self.permission, queryset=UserMailer.objects.all(),
-            user=user
+            user=kwargs['request'].user
         )
 
-        self.fields['mailing_profile']['kwargs']['queryset'] = queryset
+        result['fields']['mailing_profile']['kwargs']['queryset'] = queryset
 
-        return {
-            'field_order': self.field_order,
-            'fields': self.fields,
-            'widgets': self.widgets
-        }
+        return result
 
     def get_user_mailer(self):
         return UserMailer.objects.get(pk=self.form_data['mailing_profile'])

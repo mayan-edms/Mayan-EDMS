@@ -89,8 +89,8 @@ class DocumentWorkflowLaunchAction(WorkflowAction):
         }
     }
 
-    def get_form_schema(self, request, workflow_state):
-        result = super().get_form_schema(request=request)
+    def get_form_schema(self, **kwargs):
+        result = super().get_form_schema(**kwargs)
 
         workflows_union = Workflow.objects.filter(
             document_types__in=workflow_state.workflow.document_types.all()
@@ -108,36 +108,6 @@ class DocumentWorkflowLaunchAction(WorkflowAction):
                     'workflow_id': workflow.pk
                 }
             )
-
-        pass
-        """
-        #self.fields[
-        #    'transition'
-        #].queryset = workflow_instance.get_transition_choices(_user=user)
-
-
-        self.document_label = self.form_data.get('document_label')
-        self.document_description = self.form_data.get('document_description')
-        new_label = None
-        new_description = None
-
-        if self.document_label:
-            new_label = self.render_field(
-                field_name='document_label', context=context
-            )
-
-        if self.document_description:
-            new_description = self.render_field(
-                field_name='document_description', context=context
-            )
-
-        if new_label or new_description:
-            document = context['document']
-            document.label = new_label or document.label
-            document.description = new_description or document.description
-
-            document.save()
-        """
 
 
 class HTTPAction(WorkflowAction):

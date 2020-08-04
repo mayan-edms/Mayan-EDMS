@@ -92,7 +92,7 @@ class WorkflowAction(
     def __init__(self, form_data=None):
         self.form_data = form_data
 
-    def get_form_schema(self, request=None):
+    def get_form_schema(self, workflow_state, request=None):
         result = {
             'fields': self.fields or {},
             'media': getattr(self, 'media', {}),
