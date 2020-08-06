@@ -362,7 +362,7 @@ class WorkflowViewTestMixin:
 
     def _request_test_workflow_delete_view(self):
         return self.post(
-            viewname='document_states:workflow_template_delete', kwargs={
+            viewname='document_states:workflow_template_single_delete', kwargs={
                 'workflow_template_id': self.test_workflow.pk
             }
         )
