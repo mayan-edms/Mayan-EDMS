@@ -2,6 +2,8 @@
 ===================
 - Ensure tag attach and remove events are committed when using the REST API.
   GitLab issue #850. Thanks to Olaf (@oohlaf) for the report.
+- Expose the document type OCR settings model via the REST API. Closes
+  GitLab issue #851. Thanks to Mike Mansell (@diamondq) for the report.
 
 3.4.12 (2020-07-28)
 ===================

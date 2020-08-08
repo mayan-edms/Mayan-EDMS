@@ -6,6 +6,13 @@ Released: XX XX, XXXX
 Changes
 -------
 
+
+OCR
+---
+
+Expose the document type OCR settings model via the REST API.
+
+
 Removals
 --------
 
@@ -195,6 +202,7 @@ Issues closed
 -------------
 
 - :gitlab-issue:`850` API call for adding tags does not trigger an event
+- :gitlab-issue:`851` REST API missing OCR Setting for document_type
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
 

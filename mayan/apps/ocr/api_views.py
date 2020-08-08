@@ -6,9 +6,31 @@ from rest_framework.response import Response
 from mayan.apps.documents.models import Document, DocumentVersion
 from mayan.apps.rest_api import generics
 
-from .models import DocumentPageOCRContent
-from .permissions import permission_ocr_content_view, permission_ocr_document
-from .serializers import DocumentPageOCRContentSerializer
+from .models import DocumentPageOCRContent, DocumentTypeSettings
+from .permissions import (
+    permission_document_type_ocr_setup, permission_ocr_content_view,
+    permission_ocr_document,
+)
+from .serializers import (
+    DocumentPageOCRContentSerializer, DocumentTypeOCRSettingsSerializer
+)
+
+
+class APIDocumentTypeOCRSettingsView(generics.RetrieveUpdateAPIView):
+    """
+    get: Return the document type OCR settings.
+    patch: Set the document type OCR settings.
+    put: Set the document type OCR settings.
+    """
+    lookup_field = 'document_type__pk'
+    lookup_url_kwarg = 'pk'
+    mayan_object_permissions = {
+        'GET': (permission_document_type_ocr_setup,),
+        'PATCH': (permission_document_type_ocr_setup,),
+        'PUT': (permission_document_type_ocr_setup,)
+    }
+    queryset = DocumentTypeSettings.objects.all()
+    serializer_class = DocumentTypeOCRSettingsSerializer
 
 
 class APIDocumentOCRView(generics.GenericAPIView):
