@@ -149,8 +149,6 @@
 - Convert the trash emptying action into a background task.
 - Add support for excluding model proxies from menu link resolving via the
   .add_proxy_exclusion() menu method.
-- Add icon to the empty trash link.
-- Use same trash icon for the empty trashed document list view.
 - Use proxy exclusion to disable the normal multi item document
   links from being displayed for trashed documents.
 - Add subwidgets_order to NamedMultiWidget class.
@@ -180,7 +178,7 @@
 - Add settings named ``DOCUMENT_TASK_GENERATE_DOCUMENT_PAGE_IMAGE_RETRY_DELAY``
   to adjust the retry delay of the document page image generation task.
 - Add workflow action to launch other workflows.
-- Update the workflow action ``.get_form_schema() to accept the workflow state
+- Update the workflow action ``.get_form_schema()`` to accept the workflow state
   for which the action is being created.
 
 
