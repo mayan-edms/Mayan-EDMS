@@ -13,6 +13,8 @@
 - Backport search app icon updates from version 3.5a1.
 - Backport trashed document icon updates from version 3.5a1.
 - Fix post embedded signing redirection URL.
+- Update Django from version 2.2.14 to 2.2.15.
+- Update Sphinx from version 3.0.3 to 3.0.4.
 
 3.4.12 (2020-07-28)
 ===================
