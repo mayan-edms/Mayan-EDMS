@@ -10,6 +10,7 @@
 - Add support to search documents and document pages by workflow transition
   comments. Closes GitLab issue #846. Thanks to Sven Gaechter (@sgaechter)
   for the report.
+- Backport search app icon updates from version 3.5a1.
 
 3.4.12 (2020-07-28)
 ===================
