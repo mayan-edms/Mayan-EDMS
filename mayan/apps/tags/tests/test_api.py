@@ -8,7 +8,7 @@ from mayan.apps.events.tests.mixins import EventTestCaseMixin
 from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
 from ..events import (
-    event_tag_attach, event_tag_created, event_tag_edited, event_tag_remove
+    event_tag_attach, event_tag_created, event_tag_edited, event_tag_removed
 )
 from ..models import Tag
 from ..permissions import (
@@ -443,4 +443,4 @@ class TagDocumentAPIViewTestCase(
         self.assertFalse(self.test_tag in self.test_document.tags.all())
 
         event = self._get_test_object_event()
-        self.assertEqual(event.verb, event_tag_remove.id)
+        self.assertEqual(event.verb, event_tag_removed.id)
