@@ -1,4 +1,4 @@
-3.4.13 (2020-08-XX)
+3.4.13 (2020-08-08)
 ===================
 - Ensure tag attach and remove events are committed when using the REST API.
   GitLab issue #850. Thanks to Olaf (@oohlaf) for the report.

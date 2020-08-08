@@ -1,16 +1,69 @@
 Version 3.4.13
 ==============
 
-Released: XX XX, XXXX
+Released: August 8, 2020
 
 Changes
 -------
 
 
-OCR
----
+Dependencies
+^^^^^^^^^^^^
 
-Expose the document type OCR settings model via the REST API.
+The Django version used was updated from 2.2.14 to 2.2.15
+(https://docs.djangoproject.com/en/3.0/releases/2.2.15/)
+
+The Sphinx version used was updated from version 3.0.3 to 3.0.4.
+(https://www.sphinx-doc.org/en/master/changes.html)
+
+
+Document signing
+^^^^^^^^^^^^^^^^
+
+The URL used for redirection after creating an embedded signature was fixed.
+The URL generated will point to the latest document version created as
+part of the signing process.
+
+
+OCR
+^^^
+
+The document type OCR settings are now exposed via the REST API.
+
+
+Parsing
+^^^^^^^
+
+The document type parsing settings are now exposed via the REST API.
+
+
+Tags
+^^^^
+
+The tags API was updated to use the same internal services to attach and
+remove tags, this ensures that the tag events are triggered like they
+do when using the normal HTML views.
+
+
+Workflows
+^^^^^^^^^
+
+Support was added to search documents and document pages by their workflow
+transition comments.
+
+
+User interface
+^^^^^^^^^^^^^^
+
+Updates for the search app icons and the document trash can icon were
+backported from version 3.5a1.
+
+
+Other
+^^^^^
+
+- Add keyword arguments to the ``any_stream()`` function.
+- Rename ``event_tag_remove`` to ``event_tag_removed``.
 
 
 Removals
