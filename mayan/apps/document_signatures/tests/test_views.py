@@ -412,6 +412,9 @@ class EmbeddedSignaturesViewTestCase(
 
         response = self._request_test_document_version_signature_create_view()
         self.assertEqual(response.status_code, 302)
+        self.assertTrue(
+            str(self.test_document.latest_version.pk) in response.url
+        )
 
         self.assertEqual(
             self.test_document.latest_version.signatures.count(),

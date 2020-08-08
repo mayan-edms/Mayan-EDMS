@@ -12,6 +12,7 @@
   for the report.
 - Backport search app icon updates from version 3.5a1.
 - Backport trashed document icon updates from version 3.5a1.
+- Fix post embedded signing redirection URL.
 
 3.4.12 (2020-07-28)
 ===================
