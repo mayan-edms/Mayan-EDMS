@@ -53,3 +53,25 @@ class DocumentTypeContentViewsTestMixin(object):
             viewname='document_parsing:document_type_parsing_settings',
             kwargs={'document_type_id': self.test_document_type.pk}
         )
+
+
+class DocumentTypeParsingSettingsAPIViewTestMixin():
+    def _request_document_type_parsing_settings_details_api_view(self):
+        return self.get(
+            viewname='rest_api:document-type-parsing-settings-view',
+            kwargs={'pk': self.test_document_type.pk}
+        )
+
+    def _request_document_type_parsing_settings_patch_api_view(self):
+        return self.patch(
+            viewname='rest_api:document-type-parsing-settings-view',
+            kwargs={'pk': self.test_document_type.pk},
+            data={'auto_parsing': True}
+        )
+
+    def _request_document_type_parsing_settings_put_api_view(self):
+        return self.put(
+            viewname='rest_api:document-type-parsing-settings-view',
+            kwargs={'pk': self.test_document_type.pk},
+            data={'auto_parsing': True}
+        )
