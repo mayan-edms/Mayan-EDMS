@@ -67,7 +67,9 @@ icon_document_image_loading = Icon(
     driver_name='fontawesomecss', css_classes='far fa-clock fa-2x'
 )
 icon_document_list = Icon(driver_name='fontawesome', symbol='book')
-icon_document_list_deleted = Icon(driver_name='fontawesome', symbol='trash')
+icon_document_list_deleted = Icon(
+    driver_name='fontawesome', symbol='trash-alt'
+)
 icon_document_list_recent_access = Icon(
     driver_name='fontawesome', symbol='clock'
 )
@@ -188,7 +190,8 @@ icon_recent_added_document_list = Icon(
 )
 
 icon_trash_can_empty = Icon(
-    driver_name='fontawesome', symbol='trash-alt'
+    driver_name='fontawesome-dual-classes', primary_class='fas fa-trash-alt',
+    secondary_class='fas fa-minus'
 )
 icon_trashed_document_delete = Icon(
     driver_name='fontawesome', symbol='times'
