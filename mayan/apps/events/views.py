@@ -187,7 +187,7 @@ class ObjectEventListView(EventListView):
         )
 
     def get_source_queryset(self):
-        return any_stream(self.object)
+        return any_stream(obj=self.object)
 
 
 class ObjectEventTypeSubscriptionListView(FormView):
