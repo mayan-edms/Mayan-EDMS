@@ -6,12 +6,13 @@
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2016
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2017
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011-2012
+# Roberto Rosario, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 02:45-0400\n"
-"PO-Revision-Date: 2019-12-13 05:15+0000\n"
+"POT-Creation-Date: 2020-08-08 06:23-0400\n"
+"PO-Revision-Date: 2020-08-08 10:18+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -30,15 +31,15 @@ msgstr "Permessi insufficienti"
 
 #: dashboard_widgets.py:13
 msgid "Total roles"
-msgstr ""
+msgstr "Ruoli totali"
 
 #: events.py:10
 msgid "Role created"
-msgstr ""
+msgstr "Ruolo creato"
 
 #: events.py:13
 msgid "Role edited"
-msgstr ""
+msgstr "Ruolo modificato"
 
 #: links.py:14 links.py:38 models.py:115 views.py:171
 msgid "Roles"
@@ -78,7 +79,7 @@ msgstr "Autorizzazione "
 
 #: models.py:99
 msgid "A short text describing the role."
-msgstr ""
+msgstr "Un breve testo che descrive il ruolo."
 
 #: models.py:100 search.py:14
 msgid "Label"
@@ -106,7 +107,7 @@ msgstr "Vedi i ruoli"
 
 #: search.py:18
 msgid "Group name"
-msgstr ""
+msgstr "Nome del gruppo"
 
 #: serializers.py:44
 msgid ""
@@ -125,16 +126,16 @@ msgstr "Nessun permesso: %s"
 
 #: views.py:30
 msgid "Available roles"
-msgstr ""
+msgstr "Ruoli disponibili"
 
 #: views.py:31
 msgid "Group roles"
-msgstr ""
+msgstr "Ruoli di gruppo"
 
 #: views.py:40
 #, python-format
 msgid "Roles of group: %s"
-msgstr ""
+msgstr "Ruoli del gruppo: %s"
 
 #: views.py:82
 msgid "Available groups"
@@ -153,7 +154,7 @@ msgstr "Gruppi del ruolo: %s"
 msgid ""
 "Add groups to be part of a role. They will inherit the role's permissions "
 "and access controls."
-msgstr ""
+msgstr "Aggiungi gruppi per far parte di un ruolo. Erediteranno le autorizzazioni del ruolo e i controlli di accesso."
 
 #: views.py:107
 msgid "Available permissions"
@@ -166,7 +167,7 @@ msgstr "Autorizzazioni concesse  "
 #: views.py:143
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
-msgstr ""
+msgstr "Le autorizzazioni concesse qui verranno applicate all'intero sistema ea tutti gli oggetti."
 
 #: views.py:146
 #, python-format
@@ -179,8 +180,8 @@ msgid ""
 "role permissions for the entire system. Roles can also part of access "
 "controls lists. Access controls list are permissions granted to a role for "
 "specific objects which its group members inherit."
-msgstr ""
+msgstr "I ruoli sono unità di autorizzazione. Contengono gruppi di utenti che ereditano le autorizzazioni del ruolo per l'intero sistema. I ruoli possono anche far parte degli elenchi dei controlli di accesso. Gli elenchi di controlli di accesso sono autorizzazioni concesse a un ruolo per oggetti specifici ereditati dai membri del gruppo."
 
 #: views.py:170
 msgid "There are no roles"
-msgstr ""
+msgstr "Non ci sono ruoli"

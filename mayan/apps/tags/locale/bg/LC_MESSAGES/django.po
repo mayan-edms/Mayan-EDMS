@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 02:45-0400\n"
+"POT-Creation-Date: 2020-08-08 06:23-0400\n"
 "PO-Revision-Date: 2020-03-28 14:18+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
@@ -143,13 +143,13 @@ msgid ""
 "attached."
 msgstr "Разделен със запетаи списък на основни ключове за документ, към които ще бъде прикачен този маркер."
 
-#: serializers.py:83
+#: serializers.py:85
 msgid ""
 "API URL pointing to a tag in relation to the document attached to it. This "
 "URL is different than the canonical tag URL."
 msgstr "URL адрес на API, сочещ към маркер във връзка с прикачения към него документ. Този URL адрес е различен от основния URL адрес на маркера."
 
-#: serializers.py:103
+#: serializers.py:105
 msgid "Primary key of the tag to be added."
 msgstr "Основен ключ на маркера, който трябва да се добави."
 

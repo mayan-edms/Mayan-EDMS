@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 02:44-0400\n"
-"PO-Revision-Date: 2020-04-15 02:39+0000\n"
+"POT-Creation-Date: 2020-08-08 06:22-0400\n"
+"PO-Revision-Date: 2020-08-08 10:08+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -435,7 +435,7 @@ msgstr "Cestino"
 msgid "Restore"
 msgstr "Ripristina"
 
-#: links/trashed_document_links.py:49 permissions.py:49
+#: links/trashed_document_links.py:50 permissions.py:49
 msgid "Empty trash"
 msgstr "Svuota cestino"
 
@@ -776,7 +776,7 @@ msgstr "Cerca duplicati del documento"
 msgid ""
 "The threshold at which the DOCUMENT_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest document image cache files. Specify the size in bytes."
-msgstr ""
+msgstr "La soglia alla quale DOCUMENT_CACHE_STORAGE_BACKEND inizierà a eliminare i file di cache delle immagini dei documenti meno recenti. Specifica la dimensione in byte."
 
 #: settings.py:33
 msgid ""
@@ -857,7 +857,7 @@ msgstr "Argomenti da passare a DOCUMENT_STORAGE_BACKEND."
 #: settings.py:150
 msgid ""
 "Time after which a document stub will be considered invalid and deleted."
-msgstr ""
+msgstr "Tempo trascorso il quale uno stub di documento verrà considerato non valido ed eliminato."
 
 #: settings.py:156
 msgid "Height in pixels of the document thumbnail image."
@@ -955,7 +955,7 @@ msgstr "Totale pagine documento per ogni mese"
 msgid ""
 "Unable to initialize the document image storage. Check the settings {} and "
 "{} for formatting errors."
-msgstr ""
+msgstr "Impossibile inizializzare l'archiviazione dell'immagine del documento. Controlla le impostazioni {} e {} per errori di formattazione."
 
 #: storages.py:23
 msgid "Document images"
@@ -965,15 +965,15 @@ msgstr "Immagini di documenti"
 msgid ""
 "Unable to initialize the document version storage. Check the settings {} and"
 " {} for formatting errors."
-msgstr ""
+msgstr "Impossibile inizializzare l'archiviazione della versione del documento. Controlla le impostazioni {} e {} per errori di formattazione."
 
 #: storages.py:37
 msgid "Document version files"
-msgstr ""
+msgstr "File di versione del documento"
 
 #: templates/documents/document_print.html:12
 msgid "Document page image preview"
-msgstr ""
+msgstr "Anteprima dell'immagine della pagina del documento"
 
 #: templates/documents/forms/widgets/document_page_carousel.html:16
 #, python-format
@@ -989,7 +989,7 @@ msgstr "Nessuna pagina da visualizzare"
 
 #: templates/documents/forms/widgets/document_page_image.html:13
 msgid "Document image"
-msgstr ""
+msgstr "Immagine del documento"
 
 #: utils.py:20
 #, python-format
@@ -1029,14 +1029,14 @@ msgstr "Immagine di: %s"
 #: views/document_page_views.py:265
 msgid "Disable the selected document page?"
 msgid_plural "Disable the selected document pages?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Disabilitare la pagina del documento selezionata?"
+msgstr[1] "Disabilitare le pagine del documento selezionate?"
 
 #: views/document_page_views.py:295
 msgid "Enable the selected document page?"
 msgid_plural "Enable the selected document pages?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Abilitare la pagina del documento selezionata?"
+msgstr[1] "Abilitare le pagine del documento selezionate?"
 
 #: views/document_type_views.py:50
 #, python-format
@@ -1156,12 +1156,12 @@ msgstr "Nessun documento disponibile"
 #: views/document_views.py:108
 #, python-format
 msgid "Document type change request performed on %(count)d document"
-msgstr ""
+msgstr "Richiesta di modifica del tipo di documento eseguita su un documento %(count)d"
 
 #: views/document_views.py:111
 #, python-format
 msgid "Document type change request performed on %(count)d documents"
-msgstr ""
+msgstr "Richiesta di modifica del tipo di documento eseguita sui documenti %(count)d"
 
 #: views/document_views.py:118
 msgid "Change"
@@ -1170,8 +1170,8 @@ msgstr "Modifica"
 #: views/document_views.py:120
 msgid "Change the type of the selected document"
 msgid_plural "Change the type of the selected documents"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Cambia il tipo di documento selezionato"
+msgstr[1] "Cambia il tipo dei documenti selezionati"
 
 #: views/document_views.py:131
 #, python-format
@@ -1205,12 +1205,12 @@ msgstr "Proprietà del documento: %s"
 #: views/document_views.py:361
 #, python-format
 msgid "%(count)d document queued for page count recalculation"
-msgstr ""
+msgstr "%(count)d documento in coda per il ricalcolo del conteggio delle pagine"
 
 #: views/document_views.py:364
 #, python-format
 msgid "%(count)d documents queued for page count recalculation"
-msgstr ""
+msgstr "%(count)d documenti in coda per il ricalcolo del conteggio delle pagine"
 
 #: views/document_views.py:372
 msgid "Recalculate the page count of the selected document?"
@@ -1221,35 +1221,35 @@ msgstr[1] "Ricalcolare il conteggio delle pagine dei documenti selezionati?"
 #: views/document_views.py:383
 #, python-format
 msgid "Recalculate the page count of the document: %s?"
-msgstr ""
+msgstr "Ricalcola il conteggio delle pagine del documento: %s?"
 
 #: views/document_views.py:399
 #, python-format
 msgid ""
 "Document \"%(document)s\" is empty. Upload at least one document version "
 "before attempting to detect the page count."
-msgstr ""
+msgstr "Il documento \"%(document)s\" è vuoto. Carica almeno una versione del documento prima di tentare di rilevare il conteggio delle pagine."
 
 #: views/document_views.py:413
 #, python-format
 msgid "Transformation clear request processed for %(count)d document"
-msgstr ""
+msgstr "Richiesta di cancellazione della trasformazione elaborata per il documento %(count)d"
 
 #: views/document_views.py:416
 #, python-format
 msgid "Transformation clear request processed for %(count)d documents"
-msgstr ""
+msgstr "Richiesta di cancellazione della trasformazione elaborata per i documenti %(count)d"
 
 #: views/document_views.py:424
 msgid "Clear all the page transformations for the selected document?"
 msgid_plural "Clear all the page transformations for the selected document?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Cancella tutte le trasformazioni di pagina per il documento selezionato?"
+msgstr[1] "Cancella tutte le trasformazioni di pagina per il documento selezionato?"
 
 #: views/document_views.py:435
 #, python-format
 msgid "Clear all the page transformations for the document: %s?"
-msgstr ""
+msgstr "Cancella tutte le trasformazioni di pagina per il documento: %s?"
 
 #: views/document_views.py:450
 #, python-format
@@ -1263,7 +1263,7 @@ msgstr "Errore nella cancellazione della trasformazione della pagina per il docu
 msgid ""
 "Error cloning the page transformations for document: %(document)s; "
 "%(error)s."
-msgstr ""
+msgstr "Errore durante la clonazione delle trasformazioni di pagina per il documento: %(document)s; %(error)s."
 
 #: views/document_views.py:490
 msgid "Transformations cloned successfully."
@@ -1276,7 +1276,7 @@ msgstr "Invia"
 #: views/document_views.py:508
 #, python-format
 msgid "Clone page transformations for document: %s"
-msgstr ""
+msgstr "Clona trasformazioni di pagina per il documento: %s"
 
 #: views/document_views.py:586
 #, python-format
