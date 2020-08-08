@@ -195,7 +195,9 @@ class APIDocumentTagView(generics.RetrieveDestroyAPIView):
 
     def perform_destroy(self, instance):
         try:
-            instance.documents.remove(self.get_document())
+            instance.remove_from(
+                document=self.get_document(), user=self.request.user
+            )
         except Exception as exception:
             raise ValidationError(exception)
 

@@ -1,3 +1,8 @@
+3.4.13 (2020-08-XX)
+===================
+- Ensure tag attach and remove events are committed when using the REST API.
+  GitLab issue #850. Thanks to Olaf (@oohlaf) for the report.
+
 3.4.12 (2020-07-28)
 ===================
 - Decode fonts dependencies when downloading. Closes GitLab
