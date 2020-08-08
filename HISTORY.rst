@@ -5,6 +5,11 @@
 - Expose the document type OCR settings model via the REST API. Closes
   GitLab issue #851. Thanks to Mike Mansell (@diamondq) for the report.
 - Expose the document type parsing settings model via the REST API.
+- Add keyword arguments to the any_stream function.
+- Rename event_tag_remove to event_tag_removed.
+- Add support to search documents and document pages by workflow transition
+  comments. Closes GitLab issue #846. Thanks to Sven Gaechter (@sgaechter)
+  for the report.
 
 3.4.12 (2020-07-28)
 ===================

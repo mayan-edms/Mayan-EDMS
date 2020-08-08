@@ -201,6 +201,7 @@ Backward incompatible changes
 Issues closed
 -------------
 
+- :gitlab-issue:`846` Comments in Workflows are not indexed
 - :gitlab-issue:`850` API call for adding tags does not trigger an event
 - :gitlab-issue:`851` REST API missing OCR Setting for document_type
 
