@@ -43,7 +43,7 @@ class APIObjectEventListView(generics.ListAPIView):
             user=self.request.user
         )
 
-        return any_stream(obj)
+        return any_stream(obj=obj)
 
 
 class APIEventTypeNamespaceDetailView(generics.RetrieveAPIView):

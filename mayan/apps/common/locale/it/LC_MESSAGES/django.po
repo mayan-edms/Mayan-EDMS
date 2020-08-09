@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 02:43-0400\n"
-"PO-Revision-Date: 2020-07-09 04:05+0000\n"
+"POT-Creation-Date: 2020-08-08 06:21-0400\n"
+"PO-Revision-Date: 2020-08-08 09:58+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -30,7 +30,7 @@ msgstr "Comune"
 
 #: classes.py:187
 msgid "Model properties"
-msgstr ""
+msgstr "Proprietà del modello"
 
 #: classes.py:192
 msgid "Model fields"
@@ -179,7 +179,7 @@ msgstr "Codice sorgente"
 
 #: links.py:81
 msgid "Online store"
-msgstr ""
+msgstr "Negozio online"
 
 #: links.py:85
 msgid "Get support"
@@ -325,7 +325,7 @@ msgid ""
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
 "Python path to: an application configuration class (preferred), or a package"
 " containing an application."
-msgstr ""
+msgstr "Un elenco di stringhe che designano tutte le applicazioni che devono essere rimosse dall'elenco normalmente installato da Mayan EDMS. Ogni stringa dovrebbe essere un percorso Python puntato a: una classe di configurazione dell'applicazione (preferita) o un pacchetto contenente un'applicazione."
 
 #: settings.py:44
 msgid ""
@@ -333,7 +333,7 @@ msgid ""
 "those normally installed by Mayan EDMS. Each string should be a dotted "
 "Python path to: an application configuration class (preferred), or a package"
 " containing an application."
-msgstr ""
+msgstr "Un elenco di stringhe che designano tutte le applicazioni installate oltre a quelle normalmente installate da Mayan EDMS. Ogni stringa dovrebbe essere un percorso Python puntato a: una classe di configurazione dell'applicazione (preferita) o un pacchetto contenente un'applicazione."
 
 #: settings.py:53
 msgid ""
@@ -343,11 +343,11 @@ msgstr "Nome della vista collegata all'ancora brand nel menù principale. Questa
 
 #: settings.py:62
 msgid "The number objects that will be displayed per page."
-msgstr ""
+msgstr "Il numero di oggetti che verranno visualizzati per pagina."
 
 #: settings.py:69
 msgid "Enable error logging outside of the system error logging capabilities."
-msgstr ""
+msgstr "Abilita la registrazione degli errori al di fuori delle capacità di registrazione degli errori di sistema."
 
 #: settings.py:76
 msgid "Path to the logfile that will track errors during production."
@@ -367,13 +367,13 @@ msgstr "Un backend di memorizzazione che tutti i lavoratori possono utilizzare p
 
 #: settings.py:103
 msgid "Base URL path to use for all views."
-msgstr ""
+msgstr "Percorso URL di base da utilizzare per tutte le visualizzazioni."
 
 #: storages.py:13
 msgid ""
 "Unable to initialize the shared uploaded file storage. Check the settings {}"
 " and {} for formatting errors."
-msgstr ""
+msgstr "Impossibile inizializzare l'archivio file caricato condiviso. Controlla le impostazioni {} e {} per errori di formattazione."
 
 #: templatetags/common_tags.py:34
 msgid "Confirm delete"
@@ -449,7 +449,7 @@ msgstr "Data e ora"
 msgid ""
 "This view displays the error log of different object. An empty list is a "
 "good thing."
-msgstr ""
+msgstr "Questa vista mostra il registro degli errori di un oggetto diverso. Un elenco vuoto è una buona cosa."
 
 #: views.py:158
 msgid "There are no error log entries"
@@ -476,8 +476,8 @@ msgstr "Impostazione elementi"
 
 #: views.py:199
 msgid "Here you can configure all aspects of the system."
-msgstr ""
+msgstr "Qui puoi configurare tutti gli aspetti del sistema."
 
 #: views.py:214
 msgid "These modules are used to do system maintenance."
-msgstr ""
+msgstr "Questi moduli vengono utilizzati per eseguire la manutenzione del sistema."

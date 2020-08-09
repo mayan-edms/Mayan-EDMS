@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 02:44-0400\n"
+"POT-Creation-Date: 2020-08-08 06:22-0400\n"
 "PO-Revision-Date: 2020-04-15 02:40+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
@@ -44,16 +44,16 @@ msgstr "Se selezionato, verranno restituiti solo i risultati che corrispondono a
 msgid "Search terms"
 msgstr "Cerca termini "
 
-#: links.py:6 settings.py:5 templates/dynamic_search/search_box.html:43
+#: links.py:11 settings.py:5 templates/dynamic_search/search_box.html:43
 #: views.py:59 views.py:72
 msgid "Search"
 msgstr "Cerca"
 
-#: links.py:9 templates/dynamic_search/search_box.html:45 views.py:86
+#: links.py:15 templates/dynamic_search/search_box.html:45 views.py:86
 msgid "Advanced search"
 msgstr "Ricerca avanzata"
 
-#: links.py:13
+#: links.py:19
 msgid "Search again"
 msgstr "Cerca ancora"
 
