@@ -16,6 +16,7 @@ from mayan.apps.converter.transformations import (
     BaseTransformation, TransformationResize, TransformationRotate,
     TransformationZoom
 )
+from mayan.apps.lock_manager.backends.base import LockingBackend
 
 from ..managers import DocumentPageManager, ValidDocumentPageManager
 from ..settings import (
@@ -86,19 +87,30 @@ class DocumentPage(models.Model):
         # Check is transformed image is available
         logger.debug('transformations cache filename: %s', combined_cache_filename)
 
-        if self.cache_partition.get_file(filename=combined_cache_filename):
-            logger.debug(
-                'transformations cache file "%s" found', combined_cache_filename
+        try:
+            lock = LockingBackend.get_instance().acquire_lock(
+                name='document_page_generate_image_{}_{}'.format(
+                    self.pk, combined_cache_filename
+                )
             )
+        except:
+            raise
         else:
-            logger.debug(
-                'transformations cache file "%s" not found', combined_cache_filename
-            )
-            image = self.get_image(transformations=transformation_list)
-            with self.cache_partition.create_file(filename=combined_cache_filename) as file_object:
-                file_object.write(image.getvalue())
+            if self.cache_partition.get_file(filename=combined_cache_filename):
+                logger.debug(
+                    'transformations cache file "%s" found', combined_cache_filename
+                )
+            else:
+                logger.debug(
+                    'transformations cache file "%s" not found', combined_cache_filename
+                )
+                image = self.get_image(transformations=transformation_list)
+                with self.cache_partition.create_file(filename=combined_cache_filename) as file_object:
+                    file_object.write(image.getvalue())
 
-        return combined_cache_filename
+            lock.release()
+
+            return combined_cache_filename
 
     def get_absolute_url(self):
         return reverse(

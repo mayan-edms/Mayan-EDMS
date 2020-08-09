@@ -180,6 +180,8 @@
 - Add workflow action to launch other workflows.
 - Update the workflow action ``.get_form_schema()`` to accept the workflow state
   for which the action is being created.
+- Add locking to the document page image generation to avoid a race condition
+  on high load.
 
 
 3.4.12 (2020-07-28)
