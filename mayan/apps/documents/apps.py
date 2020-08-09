@@ -14,6 +14,7 @@ from mayan.apps.common.menus import (
     menu_secondary, menu_setup, menu_multi_item, menu_tools
 )
 from mayan.apps.common.signals import signal_post_initial_setup
+from mayan.apps.converter.layers import layer_decorations
 from mayan.apps.dashboards.dashboards import dashboard_main
 from mayan.apps.converter.links import link_transformation_list
 from mayan.apps.converter.permissions import (
@@ -141,6 +142,11 @@ class DocumentsApp(MayanAppConfig):
         DocumentTypeFilename = self.get_model(model_name='DocumentTypeFilename')
         DocumentVersion = self.get_model(model_name='DocumentVersion')
         DuplicatedDocument = self.get_model(model_name='DuplicatedDocument')
+
+        link_decorations_list = link_transformation_list.copy(
+            layer=layer_decorations
+        )
+        link_decorations_list.text = _('Decorations')
 
         DynamicSerializerField.add_serializer(
             klass=Document,
@@ -575,6 +581,9 @@ class DocumentsApp(MayanAppConfig):
                 link_document_page_navigation_next,
                 link_document_page_navigation_last
             ), sources=(DocumentPage,)
+        )
+        menu_list_facet.bind_links(
+            links=(link_decorations_list,), sources=(DocumentPage,)
         )
         menu_list_facet.bind_links(
             links=(link_transformation_list,), sources=(DocumentPage,)

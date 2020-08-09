@@ -1,4 +1,5 @@
 import logging
+import uuid
 
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
@@ -6,12 +7,56 @@ from django.db import models
 from django.db.models import Max
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.common.validators import validate_internal_name
+from mayan.apps.storage.classes import DefinedStorageLazy
+
 from .classes import Layer
+from .literals import STORAGE_NAME_ASSETS
 from .managers import LayerTransformationManager
 from .transformations import BaseTransformation
 from .validators import YAMLValidator
 
 logger = logging.getLogger(name=__name__)
+
+
+def upload_to(instance, filename):
+    return 'converter-asset-{}'.format(uuid.uuid4().hex)
+
+
+class Asset(models.Model):
+    """
+    This model keeps track of files that will be available for use with
+    transformations.
+    """
+    label = models.CharField(
+        max_length=96, unique=True, verbose_name=_('Label')
+    )
+    internal_name = models.CharField(
+        db_index=True, help_text=_(
+            'This value will be used when referencing this asset. '
+            'Can only contain letters, numbers, and underscores.'
+        ), max_length=255, unique=True, validators=[validate_internal_name],
+        verbose_name=_('Internal name')
+    )
+    file = models.FileField(
+        storage=DefinedStorageLazy(name=STORAGE_NAME_ASSETS),
+        upload_to=upload_to, verbose_name=_('File')
+    )
+
+    class Meta:
+        ordering = ('label',)
+        verbose_name = _('Asset')
+        verbose_name_plural = _('Assets')
+
+    def __str__(self):
+        return self.label
+
+    def delete(self, *args, **kwargs):
+        self.file.storage.delete(name=self.file.name)
+        return super().delete(*args, **kwargs)
+
+    def open(self):
+        return self.file.storage.open(name=self.file.name)
 
 
 class StoredLayer(models.Model):
@@ -22,13 +67,13 @@ class StoredLayer(models.Model):
         db_index=True, unique=True, verbose_name=_('Order')
     )
 
-    def __str__(self):
-        return self.name
-
     class Meta:
         ordering = ('order',)
         verbose_name = _('Stored layer')
         verbose_name_plural = _('Stored layers')
+
+    def __str__(self):
+        return self.name
 
     def get_layer(self):
         return Layer.get(name=self.name)

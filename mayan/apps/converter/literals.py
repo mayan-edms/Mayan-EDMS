@@ -64,3 +64,5 @@ DEFAULT_PILLOW_MAXIMUM_IMAGE_PIXELS = 89478485  # Upstream default as of v6.2.1 
 
 DEFAULT_PDFTOPPM_DPI = 300
 DEFAULT_PDFTOPPM_FORMAT = 'jpeg'  # Possible values jpeg, png, tiff
+
+STORAGE_NAME_ASSETS = 'converter__assets'

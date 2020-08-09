@@ -183,7 +183,9 @@
 - Add locking to the document page image generation to avoid a race condition
   on high load.
 - Update the redactions layer to use an order of 0.
-
+- Add decorations layer.
+- Add converter assets.
+- Add asset paste transformation.
 
 3.4.12 (2020-07-28)
 ===================

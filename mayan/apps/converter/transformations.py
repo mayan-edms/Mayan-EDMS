@@ -3,11 +3,12 @@ import logging
 
 from PIL import Image, ImageColor, ImageDraw, ImageFilter
 
+from django.apps import apps
 from django.utils.encoding import force_bytes, force_text
 from django.utils.text import format_lazy
 from django.utils.translation import ugettext_lazy as _
 
-from .layers import layer_saved_transformations
+from .layers import layer_decorations, layer_saved_transformations
 
 logger = logging.getLogger(name=__name__)
 
@@ -90,6 +91,90 @@ class BaseTransformation(metaclass=BaseTransformationType):
     def execute_on(self, image):
         self.image = image
         self.aspect = 1.0 * image.size[0] / image.size[1]
+
+
+class TransformationAssetPaste(BaseTransformation):
+    arguments = (
+        'left', 'top', 'asset_name', 'rotation', 'transparency', 'zoom'
+    )
+    label = _('Paste an asset')
+    name = 'paste_asset'
+
+    def execute_on(self, *args, **kwargs):
+        super().execute_on(*args, **kwargs)
+
+        try:
+            left = int(self.left or '0')
+        except ValueError:
+            left = 0
+
+        try:
+            top = int(self.top or '0')
+        except ValueError:
+            top = 0
+
+        try:
+            transparency = float(self.transparency or '100.0')
+        except ValueError:
+            transparency = 100
+
+        if transparency < 0:
+            transparency = 0
+        elif transparency > 100:
+            transparency = 100
+
+        try:
+            rotation = int(self.rotation or '0') % 360
+        except ValueError:
+            rotation = 0
+
+        try:
+            zoom = float(self.zoom or '100.0')
+        except ValueError:
+            zoom = 100.0
+
+        asset_name = getattr(self, 'asset_name', None)
+
+        if asset_name:
+            Asset = apps.get_model(app_label='converter', model_name='Asset')
+
+            try:
+                asset = Asset.objects.get(internal_name=asset_name)
+            except Asset.DoesNotExist:
+                logger.error('Asset "%s" not found.', asset_name)
+                return self.image
+            else:
+                with asset.open() as file_object:
+                    image_asset = Image.open(fp=file_object)
+
+                    if image_asset.mode != 'RGBA':
+                        image_asset.putalpha(alpha=255)
+
+                    image_asset = image_asset.rotate(
+                        angle=360 - rotation, resample=Image.BICUBIC,
+                        expand=True
+                    )
+
+                    if zoom != 100.0:
+                        decimal_value = zoom / 100.0
+                        image_asset = image_asset.resize(
+                            (
+                                int(image_asset.size[0] * decimal_value),
+                                int(image_asset.size[1] * decimal_value)
+                            ), Image.ANTIALIAS
+                        )
+
+                    paste_mask = image_asset.getchannel(channel='A').point(
+                        lambda i: i * transparency / 100.0
+                    )
+
+                    self.image.paste(
+                        im=image_asset, box=(top, left), mask=paste_mask
+                    )
+        else:
+            logger.error('No asset name specified.')
+
+        return self.image
 
 
 class TransformationCrop(BaseTransformation):
@@ -534,6 +619,9 @@ class TransformationZoom(BaseTransformation):
 
 
 BaseTransformation.register(
+    layer=layer_decorations, transformation=TransformationAssetPaste
+)
+BaseTransformation.register(
     layer=layer_saved_transformations, transformation=TransformationCrop
 )
 BaseTransformation.register(
@@ -579,3 +667,46 @@ BaseTransformation.register(
 BaseTransformation.register(
     layer=layer_saved_transformations, transformation=TransformationZoom
 )
+
+"""
+
+
+class TransformationWatermark(BaseTransformation):
+    arguments = ('box',)
+    label = _('Paste an asset as watermark')
+    name = 'paste_asset_watermark'
+
+    # x_offset, y_offset, x_increment, y_increment, rotation, alpha
+
+    def execute_on(self, *args, **kwargs):
+        super().execute_on(*args, **kwargs)
+
+        box = getattr(self, 'box', None)
+
+        source_image = Image.open('/tmp/test_image.png')
+        source_image.putalpha(75)
+        source_image = source_image.rotate(
+            angle=45, resample=Image.BICUBIC
+            #, expand=True,
+            #fillcolor=fillcolor
+        )
+
+
+        for i in range(0, self.image.size[0], 500):
+            for j in range(0, self.image.size[1], 250):
+                self.image.paste(source_image, (i, j), source_image)
+
+        #self.image.paste(im=source_image, box=box, mask=source_image)
+        #background.paste(im=source_image, box=box, mask=source_image)
+        return self.image
+        #return background
+
+        #background = self.image.convert('RGBA')
+        #return Image.alpha_composite(background, source_image)
+
+
+
+BaseTransformation.register(
+    layer=layer_decorations, transformation=TransformationWatermark
+)
+"""
