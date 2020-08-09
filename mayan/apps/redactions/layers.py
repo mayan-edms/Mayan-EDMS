@@ -14,7 +14,7 @@ layer_redactions = Layer(
         'Redactions allow removing access to confidential and '
         'sensitive information without having to modify the document.'
     ), label=_('Redactions'), name='redactions',
-    order=layer_saved_transformations.order - 1, permissions={
+    order=0, permissions={
         'create': permission_redaction_create,
         'delete': permission_redaction_delete,
         'exclude': permission_redaction_exclude,
