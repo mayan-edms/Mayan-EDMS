@@ -96,21 +96,23 @@ class DocumentPage(models.Model):
         except:
             raise
         else:
-            if self.cache_partition.get_file(filename=combined_cache_filename):
-                logger.debug(
-                    'transformations cache file "%s" found', combined_cache_filename
-                )
-            else:
-                logger.debug(
-                    'transformations cache file "%s" not found', combined_cache_filename
-                )
-                image = self.get_image(transformations=transformation_list)
-                with self.cache_partition.create_file(filename=combined_cache_filename) as file_object:
-                    file_object.write(image.getvalue())
-
-            lock.release()
-
-            return combined_cache_filename
+            # Second try block to release the lock even on fatal errors inside
+            # the block.
+            try:
+                if self.cache_partition.get_file(filename=combined_cache_filename):
+                    logger.debug(
+                        'transformations cache file "%s" found', combined_cache_filename
+                    )
+                else:
+                    logger.debug(
+                        'transformations cache file "%s" not found', combined_cache_filename
+                    )
+                    image = self.get_image(transformations=transformation_list)
+                    with self.cache_partition.create_file(filename=combined_cache_filename) as file_object:
+                        file_object.write(image.getvalue())
+                return combined_cache_filename
+            finally:
+                lock.release()
 
     def get_absolute_url(self):
         return reverse(
