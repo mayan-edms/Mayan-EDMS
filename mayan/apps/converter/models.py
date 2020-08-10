@@ -5,7 +5,7 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.db.models import Max
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext, ugettext_lazy as _
 
 from mayan.apps.common.validators import validate_internal_name
 from mayan.apps.storage.classes import DefinedStorageLazy
@@ -97,6 +97,16 @@ class ObjectLayer(models.Model):
         verbose_name = _('Object layer')
         verbose_name_plural = _('Object layers')
 
+    def get_next_order(self):
+        last_order = self.transformations.aggregate(
+            Max('order')
+        )['order__max']
+
+        if last_order is not None:
+            return last_order + 1
+        else:
+            return 0
+
 
 class LayerTransformation(models.Model):
     """
@@ -120,10 +130,7 @@ class LayerTransformation(models.Model):
             'unchanged, an automatic order value will be assigned.'
         ), verbose_name=_('Order')
     )
-    name = models.CharField(
-        choices=BaseTransformation.get_transformation_choices(),
-        max_length=128, verbose_name=_('Name')
-    )
+    name = models.CharField(max_length=128, verbose_name=_('Name'))
     arguments = models.TextField(
         blank=True, help_text=_(
             'Enter the arguments for the transformation as a YAML '
@@ -141,16 +148,15 @@ class LayerTransformation(models.Model):
         verbose_name_plural = _('Layer transformations')
 
     def __str__(self):
-        return self.get_name_display()
+        try:
+            return str(BaseTransformation.get(name=self.name))
+        except KeyError:
+            return ugettext('Unknown transformation class')
 
     def get_transformation_class(self):
         return BaseTransformation.get(name=self.name)
 
     def save(self, *args, **kwargs):
         if not self.order:
-            last_order = LayerTransformation.objects.filter(
-                object_layer=self.object_layer
-            ).aggregate(Max('order'))['order__max']
-            if last_order is not None:
-                self.order = last_order + 1
+            self.order = self.object_layer.get_next_order()
         super(LayerTransformation, self).save(*args, **kwargs)

@@ -185,7 +185,14 @@
 - Update the redactions layer to use an order of 0.
 - Add decorations layer.
 - Add converter assets.
-- Add asset paste transformation.
+- Add asset paste transformation by coordinates and by percentage.
+- Add asset watermark transformation by coordinates.
+- Remove transformation choices from layer model.
+- Disable edit button on invalid transformations.
+- Disable edit button on transformations without arguments.
+- Remove transformation order field default. An empty value is more intuitive
+  to the purpose of the field.
+- Make transformation order column sortable.
 
 3.4.12 (2020-07-28)
 ===================

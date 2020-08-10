@@ -17,7 +17,7 @@ layer_decorations = Layer(
         'edit': permission_transformation_edit,
         'select': permission_transformation_create,
         'view': permission_transformation_view,
-    }, symbol='highlighter'
+    }, symbol='paint-roller'
 )
 
 layer_saved_transformations = Layer(

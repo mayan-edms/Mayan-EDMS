@@ -45,9 +45,14 @@ class BaseTransformation(metaclass=BaseTransformationType):
         return cls._registry[name]
 
     @classmethod
+    def get_arguments(cls):
+        return cls.arguments
+
+    @classmethod
     def get_label(cls):
-        if cls.arguments:
-            return format_lazy('{}: {}', cls.label, ', '.join(cls.arguments))
+        arguments = cls.get_arguments()
+        if arguments:
+            return format_lazy('{}: {}', cls.label, ', '.join(arguments))
         else:
             return cls.label
 
@@ -74,7 +79,7 @@ class BaseTransformation(metaclass=BaseTransformationType):
 
     def __init__(self, **kwargs):
         self.kwargs = {}
-        for argument_name in self.arguments:
+        for argument_name in self.__class__.get_arguments():
             setattr(self, argument_name, kwargs.get(argument_name))
             self.kwargs[argument_name] = kwargs.get(argument_name)
 
@@ -93,26 +98,15 @@ class BaseTransformation(metaclass=BaseTransformationType):
         self.aspect = 1.0 * image.size[0] / image.size[1]
 
 
-class TransformationAssetPaste(BaseTransformation):
-    arguments = (
-        'left', 'top', 'asset_name', 'rotation', 'transparency', 'zoom'
-    )
-    label = _('Paste an asset')
-    name = 'paste_asset'
+class AssertTransformationMixin:
+    @classmethod
+    def get_arguments(cls):
+        arguments = super().get_arguments() + (
+            'asset_name', 'rotation', 'transparency', 'zoom'
+        )
+        return arguments
 
-    def execute_on(self, *args, **kwargs):
-        super().execute_on(*args, **kwargs)
-
-        try:
-            left = int(self.left or '0')
-        except ValueError:
-            left = 0
-
-        try:
-            top = int(self.top or '0')
-        except ValueError:
-            top = 0
-
+    def get_asset_images(self, asset_name):
         try:
             transparency = float(self.transparency or '100.0')
         except ValueError:
@@ -133,44 +127,191 @@ class TransformationAssetPaste(BaseTransformation):
         except ValueError:
             zoom = 100.0
 
+        Asset = apps.get_model(app_label='converter', model_name='Asset')
+
+        try:
+            asset = Asset.objects.get(internal_name=asset_name)
+        except Asset.DoesNotExist:
+            logger.error('Asset "%s" not found.', asset_name)
+            raise
+        else:
+            with asset.open() as file_object:
+                image_asset = Image.open(fp=file_object)
+
+                if image_asset.mode != 'RGBA':
+                    image_asset.putalpha(alpha=255)
+
+                image_asset = image_asset.rotate(
+                    angle=360 - rotation, resample=Image.BICUBIC,
+                    expand=True
+                )
+
+                if zoom != 100.0:
+                    decimal_value = zoom / 100.0
+                    image_asset = image_asset.resize(
+                        (
+                            int(image_asset.size[0] * decimal_value),
+                            int(image_asset.size[1] * decimal_value)
+                        ), Image.ANTIALIAS
+                    )
+
+                paste_mask = image_asset.getchannel(channel='A').point(
+                    lambda i: i * transparency / 100.0
+                )
+
+                return {
+                    'image_asset': image_asset, 'paste_mask': paste_mask
+                }
+
+
+class TransformationAssetPaste(AssertTransformationMixin, BaseTransformation):
+    arguments = ('left', 'top')
+    label = _('Paste an asset')
+    name = 'paste_asset'
+
+    def _execute_on(self, *args, **kwargs):
+        try:
+            left = int(self.left or '0')
+        except ValueError:
+            left = 0
+
+        try:
+            top = int(self.top or '0')
+        except ValueError:
+            top = 0
+
         asset_name = getattr(self, 'asset_name', None)
 
         if asset_name:
-            Asset = apps.get_model(app_label='converter', model_name='Asset')
+            align_horizontal = getattr(self, 'align_horizontal', 'left')
+            align_vertical = getattr(self, 'align_vertical', 'top')
 
-            try:
-                asset = Asset.objects.get(internal_name=asset_name)
-            except Asset.DoesNotExist:
-                logger.error('Asset "%s" not found.', asset_name)
-                return self.image
-            else:
-                with asset.open() as file_object:
-                    image_asset = Image.open(fp=file_object)
+            result = self.get_asset_images(asset_name=asset_name)
+            if result:
+                if align_horizontal == 'left':
+                    left = left
+                elif align_horizontal == 'center':
+                    left = int(left - result['image_asset'].size[0] / 2)
+                elif align_horizontal == 'right':
+                    left = int(left - result['image_asset'].size[0])
 
-                    if image_asset.mode != 'RGBA':
-                        image_asset.putalpha(alpha=255)
+                if align_vertical == 'top':
+                    top = top
+                elif align_vertical == 'middle':
+                    top = int(top - result['image_asset'].size[1] / 2)
+                elif align_vertical == 'bottom':
+                    top = int(top - result['image_asset'].size[1])
 
-                    image_asset = image_asset.rotate(
-                        angle=360 - rotation, resample=Image.BICUBIC,
-                        expand=True
-                    )
+                self.image.paste(
+                    im=result['image_asset'], box=(left, top),
+                    mask=result['paste_mask']
+                )
+        else:
+            logger.error('No asset name specified.')
 
-                    if zoom != 100.0:
-                        decimal_value = zoom / 100.0
-                        image_asset = image_asset.resize(
-                            (
-                                int(image_asset.size[0] * decimal_value),
-                                int(image_asset.size[1] * decimal_value)
-                            ), Image.ANTIALIAS
+        return self.image
+
+    def execute_on(self, *args, **kwargs):
+        super().execute_on(*args, **kwargs)
+        return self._execute_on(self, *args, **kwargs)
+
+
+class TransformationAssetPastePercent(TransformationAssetPaste):
+    label = _('Paste an asset (percents coordinates)')
+    name = 'paste_asset_percent'
+
+    def execute_on(self, *args, **kwargs):
+        super(TransformationAssetPaste, self).execute_on(*args, **kwargs)
+
+        try:
+            left = float(self.left or '0')
+        except ValueError:
+            left = 0
+
+        try:
+            top = float(self.top or '0')
+        except ValueError:
+            top = 0
+
+        if left < 0:
+            left = 0
+
+        if left > 100:
+            left = 100
+
+        if top < 0:
+            top = 0
+
+        if top > 100:
+            top = 100
+
+        self.left = left / 100.0 * self.image.size[0]
+        self.top = top / 100.0 * self.image.size[1]
+        self.align_horizontal = 'center'
+        self.align_vertical = 'middle'
+
+        return self._execute_on(self, *args, **kwargs)
+
+
+class TransformationAssetWatermark(
+    AssertTransformationMixin, BaseTransformation
+):
+    arguments = (
+        'left', 'top', 'right', 'bottom', 'horizontal_increment',
+        'vertical_increment'
+    )
+    label = _('Paste an asset as watermark')
+    name = 'paste_asset_watermark'
+
+    def execute_on(self, *args, **kwargs):
+        super().execute_on(*args, **kwargs)
+        try:
+            left = int(self.left or '0')
+        except ValueError:
+            left = 0
+
+        try:
+            top = int(self.top or '0')
+        except ValueError:
+            top = 0
+
+        try:
+            right = int(self.right or '0')
+        except ValueError:
+            right = 0
+
+        try:
+            bottom = int(self.bottom or '0')
+        except ValueError:
+            bottom = 0
+
+        asset_name = getattr(self, 'asset_name', None)
+
+        if asset_name:
+            result = self.get_asset_images(asset_name=asset_name)
+            if result:
+                try:
+                    horizontal_increment = int(self.horizontal_increment or '0')
+                except ValueError:
+                    horizontal_increment = 0
+
+                try:
+                    vertical_increment = int(self.vertical_increment or '0')
+                except ValueError:
+                    vertical_increment = 0
+
+                if horizontal_increment == 0:
+                    horizontal_increment = result['paste_mask'].size[0]
+
+                if vertical_increment == 0:
+                    vertical_increment = result['paste_mask'].size[1]
+
+                for x in range(left, right or self.image.size[0], horizontal_increment):
+                    for y in range(top, bottom or self.image.size[1], vertical_increment):
+                        self.image.paste(
+                            im=result['image_asset'], box=(x, y),
+                            mask=result['paste_mask']
                         )
-
-                    paste_mask = image_asset.getchannel(channel='A').point(
-                        lambda i: i * transparency / 100.0
-                    )
-
-                    self.image.paste(
-                        im=image_asset, box=(top, left), mask=paste_mask
-                    )
         else:
             logger.error('No asset name specified.')
 
@@ -622,6 +763,12 @@ BaseTransformation.register(
     layer=layer_decorations, transformation=TransformationAssetPaste
 )
 BaseTransformation.register(
+    layer=layer_decorations, transformation=TransformationAssetPastePercent
+)
+BaseTransformation.register(
+    layer=layer_decorations, transformation=TransformationAssetWatermark
+)
+BaseTransformation.register(
     layer=layer_saved_transformations, transformation=TransformationCrop
 )
 BaseTransformation.register(
@@ -667,46 +814,3 @@ BaseTransformation.register(
 BaseTransformation.register(
     layer=layer_saved_transformations, transformation=TransformationZoom
 )
-
-"""
-
-
-class TransformationWatermark(BaseTransformation):
-    arguments = ('box',)
-    label = _('Paste an asset as watermark')
-    name = 'paste_asset_watermark'
-
-    # x_offset, y_offset, x_increment, y_increment, rotation, alpha
-
-    def execute_on(self, *args, **kwargs):
-        super().execute_on(*args, **kwargs)
-
-        box = getattr(self, 'box', None)
-
-        source_image = Image.open('/tmp/test_image.png')
-        source_image.putalpha(75)
-        source_image = source_image.rotate(
-            angle=45, resample=Image.BICUBIC
-            #, expand=True,
-            #fillcolor=fillcolor
-        )
-
-
-        for i in range(0, self.image.size[0], 500):
-            for j in range(0, self.image.size[1], 250):
-                self.image.paste(source_image, (i, j), source_image)
-
-        #self.image.paste(im=source_image, box=box, mask=source_image)
-        #background.paste(im=source_image, box=box, mask=source_image)
-        return self.image
-        #return background
-
-        #background = self.image.convert('RGBA')
-        #return Image.alpha_composite(background, source_image)
-
-
-
-BaseTransformation.register(
-    layer=layer_decorations, transformation=TransformationWatermark
-)
-"""

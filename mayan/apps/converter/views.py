@@ -72,6 +72,7 @@ class TransformationCreateView(
 
     def get_form_extra_kwargs(self):
         return {
+            'initial': {'order': None},
             'transformation_name': self.kwargs['transformation_name']
         }
 

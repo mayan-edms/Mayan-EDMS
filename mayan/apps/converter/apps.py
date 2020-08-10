@@ -30,7 +30,8 @@ class ConverterApp(MayanAppConfig):
         )
 
         SourceColumn(
-            attribute='order', is_identifier=True, source=LayerTransformation
+            attribute='order', is_identifier=True, is_sortable=True,
+            source=LayerTransformation
         )
         SourceColumn(
             func=lambda context: force_text(context['object']),

@@ -2,10 +2,20 @@ from django.utils.translation import ugettext_lazy as _
 
 from .classes import LayerLink
 from .layers import layer_saved_transformations
+from .transformations import BaseTransformation
 
 
 def conditional_active(context, resolved_link):
     return resolved_link.link.view == resolved_link.current_view_name and context.get('layer_name', None) == resolved_link.link.layer_name
+
+
+def condition_valid_transformation_and_arguments(context):
+    try:
+        transformation = BaseTransformation.get(name=context['object'].name)
+    except KeyError:
+        return False
+    else:
+        return transformation.arguments
 
 
 link_transformation_delete = LayerLink(
@@ -17,7 +27,8 @@ link_transformation_delete = LayerLink(
     tags='dangerous', text=_('Delete'), view='converter:transformation_delete'
 )
 link_transformation_edit = LayerLink(
-    action='edit', kwargs={
+    action='edit', condition=condition_valid_transformation_and_arguments,
+    kwargs={
         'layer_name': 'layer_name', 'transformation_id': 'resolved_object.pk'
     }, icon_class_path='mayan.apps.converter.icons.icon_transformation_edit',
     layer=layer_saved_transformations,
