@@ -87,7 +87,6 @@
                         <tbody>
                             {% for object in object_list %}
                                 <tr>
-
                                     {% if links_multi_menus_results %}
                                         <td>
                                             <input class="form-multi-object-action-checkbox check-all-slave checkbox" name="pk_{{ object.pk }}" type="checkbox" value="" />
@@ -98,8 +97,8 @@
                                         <td>{% if not hide_link %}<a href="{{ object.get_absolute_url }}">{{ object }}</a>{% else %}{{ object }}{% endif %}</td>
                                     {% else %}
                                         {% navigation_get_source_columns source=object only_identifier=True as source_column %}
-                                        {% navigation_source_column_resolve column=source_column as column_value %}
-                                        {% if column_value %}
+                                        {% if source_column %}
+                                            {% navigation_source_column_resolve column=source_column as column_value %}
                                             <td>
                                                 {{ column_value }}
                                             </td>
