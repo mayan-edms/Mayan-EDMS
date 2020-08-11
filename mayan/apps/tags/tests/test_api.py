@@ -184,6 +184,7 @@ class TagDocumentAPIViewTestCase(
 
     def setUp(self):
         super().setUp()
+        self._upload_test_document()
         self._create_test_tag()
 
     def test_tag_document_list_view_no_access(self):
