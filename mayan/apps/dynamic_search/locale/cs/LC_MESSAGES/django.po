@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 02:44-0400\n"
+"POT-Creation-Date: 2020-08-08 06:22-0400\n"
 "PO-Revision-Date: 2020-06-22 15:21+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
@@ -40,16 +40,16 @@ msgstr "Po zaškrtnutí budou vráceny pouze výsledky, které odpovídají vše
 msgid "Search terms"
 msgstr "Hledané výrazy"
 
-#: links.py:6 settings.py:5 templates/dynamic_search/search_box.html:43
+#: links.py:11 settings.py:5 templates/dynamic_search/search_box.html:43
 #: views.py:59 views.py:72
 msgid "Search"
 msgstr "Vyhledávání"
 
-#: links.py:9 templates/dynamic_search/search_box.html:45 views.py:86
+#: links.py:15 templates/dynamic_search/search_box.html:45 views.py:86
 msgid "Advanced search"
 msgstr "Pokročilé vyhledávání"
 
-#: links.py:13
+#: links.py:19
 msgid "Search again"
 msgstr "Hledej znovu"
 

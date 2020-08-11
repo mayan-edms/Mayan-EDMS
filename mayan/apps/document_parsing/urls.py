@@ -1,6 +1,8 @@
 from django.conf.urls import url
 
-from .api_views import APIDocumentPageContentView
+from .api_views import (
+    APIDocumentPageContentView, APIDocumentTypeParsingSettingsView
+)
 from .views import (
     DocumentContentView, DocumentContentDeleteView,
     DocumentContentDownloadView, DocumentPageContentView,
@@ -61,6 +63,11 @@ urlpatterns = [
 ]
 
 api_urls = [
+    url(
+        regex=r'^document_types/(?P<pk>\d+)/parsing/settings/$',
+        name='document-type-parsing-settings-view',
+        view=APIDocumentTypeParsingSettingsView.as_view()
+    ),
     url(
         regex=r'^documents/(?P<document_pk>\d+)/versions/(?P<version_pk>\d+)/pages/(?P<page_pk>\d+)/content/$',
         name='document-page-content-view',

@@ -61,6 +61,7 @@ from .permissions import (
     permission_workflow_tools, permission_workflow_transition,
     permission_workflow_view
 )
+from .search import *  # NOQA
 
 
 class DocumentStatesApp(MayanAppConfig):

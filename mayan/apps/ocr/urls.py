@@ -2,7 +2,7 @@ from django.conf.urls import url
 
 from .api_views import (
     APIDocumentOCRView, APIDocumentPageOCRContentView,
-    APIDocumentVersionOCRView
+    APIDocumentTypeOCRSettingsView, APIDocumentVersionOCRView
 )
 from .views import (
     DocumentOCRContentDeleteView, DocumentOCRContentView,
@@ -61,6 +61,11 @@ urlpatterns = [
 ]
 
 api_urls = [
+    url(
+        regex=r'^document_types/(?P<pk>\d+)/ocr/settings/$',
+        name='document-type-ocr-settings-view',
+        view=APIDocumentTypeOCRSettingsView.as_view()
+    ),
     url(
         regex=r'^documents/(?P<pk>\d+)/ocr/submit/$',
         name='document-ocr-submit-view', view=APIDocumentOCRView.as_view()

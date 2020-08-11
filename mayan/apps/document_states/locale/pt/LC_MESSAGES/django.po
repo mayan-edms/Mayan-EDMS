@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 02:44-0400\n"
-"PO-Revision-Date: 2020-07-09 04:06+0000\n"
+"POT-Creation-Date: 2020-08-08 06:21-0400\n"
+"PO-Revision-Date: 2020-08-08 09:38+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -17,107 +17,107 @@ msgstr ""
 "Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:68 events.py:6 links.py:18 links.py:54 links.py:196 links.py:220
+#: apps.py:69 events.py:6 links.py:18 links.py:54 links.py:196 links.py:220
 #: models.py:72 settings.py:13 views/workflow_proxy_views.py:66
 #: views/workflow_template_views.py:232
 msgid "Workflows"
 msgstr ""
 
-#: apps.py:112 apps.py:119
+#: apps.py:113 apps.py:120
 msgid "Current state of a workflow"
 msgstr ""
 
-#: apps.py:113
+#: apps.py:114
 msgid "Return the current state of the selected workflow."
 msgstr ""
 
-#: apps.py:120
+#: apps.py:121
 msgid ""
 "Return the completion value of the current state of the selected workflow."
 msgstr ""
 
-#: apps.py:174
+#: apps.py:175
 msgid ""
 "Return the last workflow instance log entry. The log entry itself has the "
 "following fields: datetime, transition, user, and comment."
 msgstr ""
 
-#: apps.py:177
+#: apps.py:178
 msgid "Get last log entry"
 msgstr ""
 
-#: apps.py:183
+#: apps.py:184
 msgid ""
 "Return the current context dictionary which includes runtime data from the "
 "workflow transition fields."
 msgstr ""
 
-#: apps.py:185
+#: apps.py:186
 msgid "Get the context"
 msgstr ""
 
-#: apps.py:191
+#: apps.py:192
 msgid "Return the transition of the workflow instance."
 msgstr ""
 
-#: apps.py:192
+#: apps.py:193
 msgid "Get last transition"
 msgstr ""
 
-#: apps.py:206 apps.py:216 apps.py:225 apps.py:231
+#: apps.py:207 apps.py:217 apps.py:226 apps.py:232
 msgid "None"
 msgstr "Nenhum"
 
-#: apps.py:212
+#: apps.py:213
 msgid "Current state"
 msgstr ""
 
-#: apps.py:217 apps.py:241 models.py:448
+#: apps.py:218 apps.py:242 models.py:448
 msgid "User"
 msgstr "Utilizador"
 
-#: apps.py:221
+#: apps.py:222
 msgid "Last transition"
 msgstr ""
 
-#: apps.py:226 apps.py:237
+#: apps.py:227 apps.py:238
 msgid "Date and time"
 msgstr ""
 
-#: apps.py:232 models.py:542
+#: apps.py:233 models.py:542
 msgid "Completion"
 msgstr ""
 
-#: apps.py:262
+#: apps.py:263
 msgid "Additional details"
 msgstr "Detalhes adicionais"
 
-#: apps.py:289
+#: apps.py:290
 msgid "When?"
 msgstr ""
 
-#: apps.py:293
+#: apps.py:294
 msgid "Action type"
 msgstr ""
 
-#: apps.py:320
+#: apps.py:321
 msgid ""
 "Triggers are system events that will cause the transition to be applied."
 msgstr ""
 
-#: apps.py:322
+#: apps.py:323
 msgid "Triggers"
 msgstr ""
 
-#: apps.py:336 models.py:762
+#: apps.py:337 models.py:762
 msgid "Type"
 msgstr "Tipo"
 
-#: apps.py:344
+#: apps.py:345
 msgid "Widget"
 msgstr ""
 
-#: apps.py:355 apps.py:361
+#: apps.py:356 apps.py:362
 msgid "Documents"
 msgstr "Documentos"
 
@@ -576,6 +576,10 @@ msgstr ""
 
 #: queues.py:23
 msgid "Generate workflow previews"
+msgstr ""
+
+#: search.py:9 search.py:14
+msgid "Workflow transition comment"
 msgstr ""
 
 #: serializers.py:20

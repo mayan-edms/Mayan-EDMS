@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 02:45-0400\n"
+"POT-Creation-Date: 2020-08-08 06:23-0400\n"
 "PO-Revision-Date: 2020-03-18 05:34+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/language/hu/)\n"
@@ -142,13 +142,13 @@ msgid ""
 "attached."
 msgstr "Vesszővel elválasztott lista az elsődleges dokumentum kulcsokkal amihez ez a címke hozzá lesz rendelve."
 
-#: serializers.py:83
+#: serializers.py:85
 msgid ""
 "API URL pointing to a tag in relation to the document attached to it. This "
 "URL is different than the canonical tag URL."
 msgstr "A dokumentumhoz kapcsolt címke API URL hivatkozása. Ez az URL más a kanonikus címke URL-től. "
 
-#: serializers.py:103
+#: serializers.py:105
 msgid "Primary key of the tag to be added."
 msgstr "A hozzáadandó címke elsődleges kulcsa."
 

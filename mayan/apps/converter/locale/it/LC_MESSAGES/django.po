@@ -5,12 +5,13 @@
 # Translators:
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011,2015
+# Roberto Rosario, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 02:43-0400\n"
-"PO-Revision-Date: 2020-01-31 04:42+0000\n"
+"POT-Creation-Date: 2020-08-08 06:21-0400\n"
+"PO-Revision-Date: 2020-08-08 09:57+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -49,7 +50,7 @@ msgstr "Non è un formato di file office"
 msgid ""
 "Transformations allow changing the visual appearance of documents without "
 "making permanent changes to the document file themselves."
-msgstr ""
+msgstr "Le trasformazioni consentono di modificare l'aspetto visivo dei documenti senza apportare modifiche permanenti al file del documento stesso."
 
 #: classes.py:398
 msgid "transformation"
@@ -57,26 +58,26 @@ msgstr "trasformazione"
 
 #: dependencies.py:14
 msgid "Utility from the poppler-utils package used to inspect PDF files."
-msgstr ""
+msgstr "Utilità dal pacchetto poppler-utils utilizzato per ispezionare i file PDF."
 
 #: dependencies.py:19
 msgid ""
 "Utility from the popper-utils package used to extract pages from PDF files "
 "into PPM format images."
-msgstr ""
+msgstr "Utilità dal pacchetto popper-utils utilizzato per estrarre pagine da file PDF in immagini in formato PPM."
 
 #: forms.py:22
 msgid "Available transformations for this layer."
-msgstr ""
+msgstr "Trasformazioni disponibili per questo livello."
 
 #: forms.py:59
 #, python-format
 msgid "\"%s\" not a valid entry."
-msgstr ""
+msgstr "\"%s\" non è una voce valida."
 
 #: layers.py:10
 msgid "Saved transformations"
-msgstr ""
+msgstr "Trasformazioni salvate"
 
 #: links.py:17
 msgid "Delete"
@@ -92,7 +93,7 @@ msgstr "Trasformazioni"
 
 #: links.py:34
 msgid "Select new transformation"
-msgstr ""
+msgstr "Seleziona nuova trasformazione"
 
 #: models.py:21 models.py:83
 msgid "Name"
@@ -104,11 +105,11 @@ msgstr "Ordine"
 
 #: models.py:32 models.py:48
 msgid "Stored layer"
-msgstr ""
+msgstr "Livello memorizzato"
 
 #: models.py:33
 msgid "Stored layers"
-msgstr ""
+msgstr "Livelli memorizzati"
 
 #: models.py:45 models.py:91
 msgid "Enabled"
@@ -116,11 +117,11 @@ msgstr "Abilitato"
 
 #: models.py:54 models.py:73
 msgid "Object layer"
-msgstr ""
+msgstr "Livello di oggetti"
 
 #: models.py:55
 msgid "Object layers"
-msgstr ""
+msgstr "Livelli di oggetti"
 
 #: models.py:77
 msgid ""
@@ -140,11 +141,11 @@ msgstr "Argomenti"
 
 #: models.py:98
 msgid "Layer transformation"
-msgstr ""
+msgstr "Trasformazione dei livelli"
 
 #: models.py:99
 msgid "Layer transformations"
-msgstr ""
+msgstr "Trasformazioni di livello"
 
 #: permissions.py:8
 msgid "Create new transformations"
@@ -176,11 +177,11 @@ msgstr "Taglia"
 
 #: transformations.py:176
 msgid "Draw rectangle"
-msgstr ""
+msgstr "Disegna un rettangolo"
 
 #: transformations.py:278
 msgid "Draw rectangle (percents coordinates)"
-msgstr ""
+msgstr "Disegna rettangolo (coordinate percentuali)"
 
 #: transformations.py:375
 msgid "Flip"
@@ -233,14 +234,14 @@ msgstr "Inserisci un valore YAML valido."
 #: views.py:51
 #, python-format
 msgid "Error creating transformation: %s."
-msgstr ""
+msgstr "Errore durante la creazione della trasformazione: %s."
 
 #: views.py:68
 #, python-format
 msgid ""
 "Create layer \"%(layer)s\" transformation \"%(transformation)s\" for: "
 "%(object)s"
-msgstr ""
+msgstr "Crea la trasformazione \"%(layer)s\" del livello \"%(transformation)s\" per: %(object)s"
 
 #: views.py:123
 #, python-format
@@ -255,16 +256,16 @@ msgstr "Modifica le trasformazioni \"%(transformation)s\" per: %(content_object)
 #: views.py:231
 #, python-format
 msgid "There are no entries for layer \"%(layer_name)s\""
-msgstr ""
+msgstr "Non ci sono voci per il livello \"%(layer_name)s\""
 
 #: views.py:234
 #, python-format
 msgid "Layer \"%(layer)s\" transformations for: %(object)s"
-msgstr ""
+msgstr "Trasformazioni del livello \"%(layer)s\" per: %(object)s"
 
 #: views.py:286
 msgid "Transformation created successfully."
-msgstr ""
+msgstr "Trasformazione creata con successo."
 
 #: views.py:310
 msgid "Select"
@@ -273,4 +274,4 @@ msgstr "Seleziona"
 #: views.py:312
 #, python-format
 msgid "Select new layer \"%(layer)s\" transformation for: %(object)s"
-msgstr ""
+msgstr "Seleziona la trasformazione del nuovo livello \"%(layer)s\" per: %(object)s"

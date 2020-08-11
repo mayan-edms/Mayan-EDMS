@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-28 02:44-0400\n"
+"POT-Creation-Date: 2020-08-08 06:22-0400\n"
 "PO-Revision-Date: 2020-05-10 20:11+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
@@ -43,16 +43,16 @@ msgstr "Indien aangevinkt worden alleen resultaten weergegeven die aan alle term
 msgid "Search terms"
 msgstr "Zoektermen"
 
-#: links.py:6 settings.py:5 templates/dynamic_search/search_box.html:43
+#: links.py:11 settings.py:5 templates/dynamic_search/search_box.html:43
 #: views.py:59 views.py:72
 msgid "Search"
 msgstr "Zoeken"
 
-#: links.py:9 templates/dynamic_search/search_box.html:45 views.py:86
+#: links.py:15 templates/dynamic_search/search_box.html:45 views.py:86
 msgid "Advanced search"
 msgstr "Geavanceerd zoeken"
 
-#: links.py:13
+#: links.py:19
 msgid "Search again"
 msgstr "Opnieuw zoeken"
 

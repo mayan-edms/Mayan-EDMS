@@ -6,9 +6,12 @@ from mayan.apps.documents.tests.literals import TEST_HYBRID_DOCUMENT
 from mayan.apps.documents.tests.mixins import DocumentTestMixin
 from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
-from ..permissions import permission_content_view
+from ..permissions import (
+    permission_content_view, permission_document_type_parsing_setup
+)
 
 from .literals import TEST_DOCUMENT_CONTENT
+from .mixins import DocumentTypeParsingSettingsAPIViewTestMixin
 
 
 @override_settings(DOCUMENT_PARSING_AUTO_PARSING=True)
@@ -39,3 +42,52 @@ class DocumentParsingAPITestCase(DocumentTestMixin, BaseAPITestCase):
         self.assertTrue(
             TEST_DOCUMENT_CONTENT in response.data['content']
         )
+
+
+class DocumentTypeParsingSettingsAPIViewTestCase(
+    DocumentTestMixin, DocumentTypeParsingSettingsAPIViewTestMixin,
+    BaseAPITestCase
+):
+    auto_upload_test_document = False
+
+    def test_document_type_parsing_settings_details_api_view_no_permission(self):
+        response = self._request_document_type_parsing_settings_details_api_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+    def test_document_type_parsing_settings_details_api_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document_type,
+            permission=permission_document_type_parsing_setup
+        )
+
+        response = self._request_document_type_parsing_settings_details_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data, {'auto_parsing': False})
+
+    def test_document_type_parsing_settings_patch_api_view_no_permission(self):
+        response = self._request_document_type_parsing_settings_patch_api_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+    def test_document_type_parsing_settings_patch_api_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document_type,
+            permission=permission_document_type_parsing_setup
+        )
+
+        response = self._request_document_type_parsing_settings_patch_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data, {'auto_parsing': True})
+
+    def test_document_type_parsing_settings_put_api_view_no_permission(self):
+        response = self._request_document_type_parsing_settings_put_api_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+    def test_document_type_parsing_settings_put_api_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document_type,
+            permission=permission_document_type_parsing_setup
+        )
+
+        response = self._request_document_type_parsing_settings_put_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data, {'auto_parsing': True})

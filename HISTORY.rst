@@ -194,6 +194,24 @@
   to the purpose of the field.
 - Make transformation order column sortable.
 
+3.4.13 (2020-08-08)
+===================
+- Ensure tag attach and remove events are committed when using the REST API.
+  GitLab issue #850. Thanks to Olaf (@oohlaf) for the report.
+- Expose the document type OCR settings model via the REST API. Closes
+  GitLab issue #851. Thanks to Mike Mansell (@diamondq) for the report.
+- Expose the document type parsing settings model via the REST API.
+- Add keyword arguments to the any_stream function.
+- Rename event_tag_remove to event_tag_removed.
+- Add support to search documents and document pages by workflow transition
+  comments. Closes GitLab issue #846. Thanks to Sven Gaechter (@sgaechter)
+  for the report.
+- Backport search app icon updates from version 3.5a1.
+- Backport trashed document icon updates from version 3.5a1.
+- Fix post embedded signing redirection URL.
+- Update Django from version 2.2.14 to 2.2.15.
+- Update Sphinx from version 3.0.3 to 3.0.4.
+
 3.4.12 (2020-07-28)
 ===================
 - Decode fonts dependencies when downloading. Closes GitLab
