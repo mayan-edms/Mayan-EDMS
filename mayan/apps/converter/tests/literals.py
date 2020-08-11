@@ -1,3 +1,15 @@
+import os
+
+from django.conf import settings
+
+TEST_ASSET_LABEL = 'test asset label'
+TEST_ASSET_LABEL_EDITED = 'test asset label edited'
+TEST_ASSET_INTERNAL_NAME = 'test_asset_internal_name'
+TEST_ASSET_PATH = os.path.join(
+    settings.BASE_DIR, 'apps', 'converter', 'tests', 'contrib',
+    'test_files', 'test_asset.png'
+)
+
 TEST_TRANSFORMATION_NAME = 'rotate'
 TEST_TRANSFORMATION_ARGUMENT = 'degrees: 180'
 TEST_TRANSFORMATION_ARGUMENT_EDITED = 'degrees: 270'
