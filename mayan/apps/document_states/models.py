@@ -325,7 +325,8 @@ class WorkflowInstance(models.Model):
                     )
             except AttributeError:
                 # No initial state has been set for this workflow
-                pass
+                if settings.DEBUG:
+                    raise
 
     def dumps(self, context):
         """
