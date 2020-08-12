@@ -21,17 +21,12 @@ from .models import (
 class WorkflowActionSelectionForm(forms.Form):
     klass = forms.ChoiceField(
         choices=(), help_text=_('The action type for this action entry.'),
-        label=_('Action')
+        label=_('Action'), widget=forms.Select(attrs={'class': 'select2'})
     )
 
     def __init__(self, *args, **kwargs):
         super(WorkflowActionSelectionForm, self).__init__(*args, **kwargs)
-
-        self.fields['klass'].choices = [
-            (
-                klass.id(), klass.label
-            ) for klass in WorkflowAction.get_all()
-        ]
+        self.fields['klass'].choices = WorkflowAction.get_choices()
 
 
 class WorkflowForm(forms.ModelForm):

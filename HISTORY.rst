@@ -193,6 +193,8 @@
 - Remove transformation order field default. An empty value is more intuitive
   to the purpose of the field.
 - Make transformation order column sortable.
+- Group workflow actions choices by app.
+- Use select2 widget for the workflow action selection field.
 
 3.4.13 (2020-08-08)
 ===================
