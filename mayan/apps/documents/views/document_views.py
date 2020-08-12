@@ -549,7 +549,7 @@ class DocumentPrint(FormView):
 
             if self.page_group == PAGE_RANGE_RANGE:
                 if self.page_range:
-                    page_range = parse_range(self.page_range)
+                    page_range = parse_range(astr=self.page_range)
                     pages = instance.pages.filter(page_number__in=page_range)
                 else:
                     pages = instance.pages.all()
