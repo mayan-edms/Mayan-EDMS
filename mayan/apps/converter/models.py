@@ -12,7 +12,7 @@ from mayan.apps.storage.classes import DefinedStorageLazy
 
 from .classes import Layer
 from .literals import STORAGE_NAME_ASSETS
-from .managers import LayerTransformationManager
+from .managers import LayerTransformationManager, ObjectLayerManager
 from .transformations import BaseTransformation
 from .validators import YAMLValidator
 
@@ -90,6 +90,8 @@ class ObjectLayer(models.Model):
         on_delete=models.CASCADE, related_name='object_layers', to=StoredLayer,
         verbose_name=_('Stored layer')
     )
+
+    objects = ObjectLayerManager()
 
     class Meta:
         ordering = ('stored_layer__order',)

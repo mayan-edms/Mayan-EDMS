@@ -49,6 +49,12 @@ class BaseTransformation(metaclass=BaseTransformationType):
         return cls.arguments
 
     @classmethod
+    def get_assigned_layer(cls):
+        for layer, transformations in cls._layer_transformations.items():
+            if cls in transformations:
+                return layer
+
+    @classmethod
     def get_label(cls):
         arguments = cls.get_arguments()
         if arguments:
@@ -57,7 +63,7 @@ class BaseTransformation(metaclass=BaseTransformationType):
             return cls.label
 
     @classmethod
-    def get_transformation_choices(cls, layer=None):
+    def get_transformation_choices(cls, group_by_layer=False, layer=None):
         if layer:
             transformation_list = [
                 (transformation.name, transformation) for transformation in cls._layer_transformations[layer]
@@ -65,11 +71,33 @@ class BaseTransformation(metaclass=BaseTransformationType):
         else:
             transformation_list = cls._registry.items()
 
-        return sorted(
-            [
-                (name, klass.get_label()) for name, klass in transformation_list
+        if group_by_layer:
+            flat_transformation_list = [
+                klass for name, klass in transformation_list
             ]
-        )
+
+            result = {}
+            for layer, transformations in cls._layer_transformations.items():
+                for transformation in transformations:
+                    if transformation in flat_transformation_list:
+                        result.setdefault(layer, [])
+                        result[layer].append(
+                            (transformation.name, transformation.get_label())
+                        )
+
+            result = [
+                (layer.label, transformations) for layer, transformations in result.items()
+            ]
+
+            # Sort by transformation group, then each transformation in the
+            # group.
+            return sorted(result, key=lambda x: (x[0], x[1]))
+        else:
+            return sorted(
+                [
+                    (name, klass.get_label()) for name, klass in transformation_list
+                ]
+            )
 
     @classmethod
     def register(cls, layer, transformation):

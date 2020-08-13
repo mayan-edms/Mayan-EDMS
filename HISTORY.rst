@@ -195,6 +195,7 @@
 - Make transformation order column sortable.
 - Group workflow actions choices by app.
 - Use select2 widget for the workflow action selection field.
+- Add workflow action to add transformations to document pages.
 
 3.4.13 (2020-08-08)
 ===================

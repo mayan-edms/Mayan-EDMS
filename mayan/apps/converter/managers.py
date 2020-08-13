@@ -125,3 +125,13 @@ class LayerTransformationManager(models.Manager):
             return result
         else:
             return transformations
+
+
+class ObjectLayerManager(models.Manager):
+    def get_for(self, layer, obj):
+        content_type = ContentType.objects.get_for_model(model=obj)
+
+        return self.get_or_create(
+            content_type=content_type, object_id=obj.pk,
+            stored_layer=layer.stored_layer
+        )

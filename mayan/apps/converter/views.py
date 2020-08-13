@@ -118,17 +118,12 @@ class AssetListView(SingleObjectListView):
         }
 
 
-class TransformationCreateView(
-    LayerViewMixin, ExternalContentTypeObjectMixin, SingleObjectCreateView
-):
+class TransformationCreateView(LayerViewMixin, SingleObjectCreateView):
     form_class = LayerTransformationForm
 
     def form_valid(self, form):
-        layer = self.layer
-        content_type = self.get_content_type()
-        object_layer, created = ObjectLayer.objects.get_or_create(
-            content_type=content_type, object_id=self.external_object.pk,
-            stored_layer=layer.stored_layer
+        object_layer, created = ObjectLayer.objects.get_for(
+            obj=self.external_object, layer=self.layer
         )
 
         instance = form.save(commit=False)
@@ -331,9 +326,7 @@ class TransformationListView(
         return self.layer.get_transformations_for(obj=self.external_object)
 
 
-class TransformationSelectView(
-    LayerViewMixin, ExternalContentTypeObjectMixin, FormView
-):
+class TransformationSelectView(LayerViewMixin, FormView):
     form_class = LayerTransformationSelectForm
     template_name = 'appearance/generic_form.html'
 
@@ -357,11 +350,8 @@ class TransformationSelectView(
                 )
             )
         else:
-            layer = self.layer
-            content_type = self.get_content_type()
-            object_layer, created = ObjectLayer.objects.get_or_create(
-                content_type=content_type, object_id=self.external_object.pk,
-                stored_layer=layer.stored_layer
+            object_layer, created = ObjectLayer.objects.get_for(
+                obj=self.external_object, layer=self.layer
             )
             object_layer.transformations.create(
                 name=form.cleaned_data['transformation']
