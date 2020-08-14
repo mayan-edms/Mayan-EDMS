@@ -196,6 +196,8 @@
 - Group workflow actions choices by app.
 - Use select2 widget for the workflow action selection field.
 - Add workflow action to add transformations to document pages.
+- Add support to change the Gunicorn worker class via the environment variable
+  ``MAYAN_GUNICORN_WORKER_CLASS``.
 
 3.4.13 (2020-08-08)
 ===================
