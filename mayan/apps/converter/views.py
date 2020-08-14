@@ -118,7 +118,9 @@ class AssetListView(SingleObjectListView):
         }
 
 
-class TransformationCreateView(LayerViewMixin, SingleObjectCreateView):
+class TransformationCreateView(
+    LayerViewMixin, ExternalContentTypeObjectMixin, SingleObjectCreateView
+):
     form_class = LayerTransformationForm
 
     def form_valid(self, form):
@@ -326,7 +328,9 @@ class TransformationListView(
         return self.layer.get_transformations_for(obj=self.external_object)
 
 
-class TransformationSelectView(LayerViewMixin, FormView):
+class TransformationSelectView(
+    LayerViewMixin, ExternalContentTypeObjectMixin, FormView
+):
     form_class = LayerTransformationSelectForm
     template_name = 'appearance/generic_form.html'
 
