@@ -204,7 +204,9 @@ Backward incompatible changes
 Issues closed
 -------------
 
+- :gitlab-issue:`638` Server communication error when using default search
 - :gitlab-issue:`804` Feature Request: Action to Copy anything (Documenttypes, Roles, Groups, Workflows, ...)
+
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
 
