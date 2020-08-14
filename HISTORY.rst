@@ -198,6 +198,7 @@
 - Add workflow action to add transformations to document pages.
 - Add support to change the Gunicorn worker class via the environment variable
   ``MAYAN_GUNICORN_WORKER_CLASS``.
+- Add support for document type filename generators.
 
 3.4.13 (2020-08-08)
 ===================

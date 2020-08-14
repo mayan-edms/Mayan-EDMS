@@ -68,8 +68,9 @@ from .links.document_type_links import (
     link_document_type_create, link_document_type_delete,
     link_document_type_edit, link_document_type_filename_create,
     link_document_type_filename_delete, link_document_type_filename_edit,
-    link_document_type_filename_list, link_document_type_list,
-    link_document_type_policies, link_document_type_setup
+    link_document_type_filename_list, link_document_type_filename_generator,
+    link_document_type_list, link_document_type_policies,
+    link_document_type_setup
 )
 from .links.document_version_page_links import (
     link_document_multiple_update_page_count, link_document_page_disable,
@@ -469,6 +470,7 @@ class DocumentsApp(MayanAppConfig):
             links=(
                 link_document_type_filename_list,
                 link_document_type_policies,
+                link_document_type_filename_generator,
                 link_acl_list, link_object_event_types_user_subcriptions_list,
                 link_events_for_object,
             ), sources=(DocumentType,)

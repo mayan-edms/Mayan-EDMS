@@ -1,6 +1,14 @@
+import uuid
+
 from django.db import migrations, models
+from django.utils.encoding import force_text
+
 import mayan.apps.documents.models.document_version_models
 import mayan.apps.storage.classes
+
+
+def UUID_FUNCTION(*args, **kwargs):
+    return force_text(uuid.uuid4())
 
 
 class Migration(migrations.Migration):
@@ -14,7 +22,7 @@ class Migration(migrations.Migration):
             name='file',
             field=models.FileField(
                 storage=mayan.apps.storage.classes.FakeStorageSubclass(),
-                upload_to=mayan.apps.documents.models.document_version_models.UUID_FUNCTION,
+                upload_to=UUID_FUNCTION,
                 verbose_name='File'
             ),
         ),

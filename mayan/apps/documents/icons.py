@@ -157,6 +157,13 @@ icon_document_type_filename_list = Icon(
     driver_name='fontawesome', symbol='keyboard'
 )
 
+icon_document_type_filename_generator = Icon(
+    driver_name='fontawesome-layers', data=[
+        {'class': 'far fa-file'},
+        {'class': 'fas fa-cog', 'transform': 'shrink-8 down-2'}
+    ]
+)
+
 icon_document_type_policies = Icon(driver_name='fontawesome', symbol='times')
 icon_document_type_setup = icon_document_type
 

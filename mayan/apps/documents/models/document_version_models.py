@@ -2,7 +2,6 @@ import hashlib
 import logging
 import os
 import shutil
-import uuid
 
 from django.apps import apps
 from django.db import models, transaction
@@ -40,8 +39,10 @@ def hash_function():
     return hashlib.sha256()
 
 
-def UUID_FUNCTION(*args, **kwargs):
-    return force_text(uuid.uuid4())
+def upload_to(instance, filename):
+    return instance.document.document_type.get_upload_filename(
+        instance=instance, filename=filename
+    )
 
 
 class DocumentVersion(models.Model):
@@ -82,7 +83,7 @@ class DocumentVersion(models.Model):
     # File related fields
     file = models.FileField(
         storage=DefinedStorageLazy(name=STORAGE_NAME_DOCUMENT_VERSION),
-        upload_to=UUID_FUNCTION, verbose_name=_('File')
+        upload_to=upload_to, verbose_name=_('File')
     )
     mimetype = models.CharField(
         blank=True, editable=False, help_text=_(
