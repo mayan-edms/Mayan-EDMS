@@ -1,7 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.dependencies.classes import (
-    GoogleFontDependency, JavaScriptDependency
+    GoogleFontDependency, JavaScriptDependency, PythonDependency
 )
 
 GoogleFontDependency(
@@ -58,4 +58,8 @@ JavaScriptDependency(
 )
 JavaScriptDependency(
     label=_('URI.js'), module=__name__, name='urijs', version_string='=1.19.1'
+)
+
+PythonDependency(
+    module=__name__, name='bleach', version_string='==3.1.5'
 )

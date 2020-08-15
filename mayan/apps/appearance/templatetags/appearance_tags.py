@@ -1,3 +1,5 @@
+import bleach
+
 from django.apps import apps
 from django.conf import settings
 from django.template import Library
@@ -50,6 +52,19 @@ def appearance_get_form_media_js(form):
 @register.simple_tag
 def appearance_get_icon(icon_path):
     return import_string(dotted_path=icon_path).render()
+
+
+@register.simple_tag
+def appearance_get_user_theme_stylesheet(user):
+    theme = user.theme_settings.theme
+
+    if theme:
+        return bleach.clean(
+            text=user.theme_settings.theme.stylesheet,
+            tags=('style',)
+        )
+    else:
+        return ''
 
 
 @register.simple_tag

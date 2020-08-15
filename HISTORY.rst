@@ -199,6 +199,8 @@
 - Add support to change the Gunicorn worker class via the environment variable
   ``MAYAN_GUNICORN_WORKER_CLASS``.
 - Add support for document type filename generators.
+- Add themes support via the appearance app.
+- Add new ``bleach`` dependency to sanitize the themes stylesheets.
 
 3.4.13 (2020-08-08)
 ===================
