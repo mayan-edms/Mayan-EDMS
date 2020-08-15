@@ -201,6 +201,11 @@
 - Add support for document type filename generators.
 - Add themes support via the appearance app.
 - Add new ``bleach`` dependency to sanitize the themes stylesheets.
+- Preserve the original document filename when executing the EXIFToolDriver by
+  using a temporary folder instead of a temporary file. Closes GitLab
+  issue #745. Thanks to the Jeroen Van den Keybus (@vdkeybus) for the report
+  and solution suggestion.
+- Release file metadata lock on errors.
 
 3.4.13 (2020-08-08)
 ===================

@@ -1,11 +1,12 @@
 import json
 import logging
+from pathlib import Path
 
 import sh
 
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.storage.utils import NamedTemporaryFile
+from mayan.apps.storage.utils import fs_cleanup, mkdtemp
 
 from ..literals import DEFAULT_EXIF_PATH
 from ..classes import FileMetadataDriver
@@ -33,22 +34,26 @@ class EXIFToolDriver(FileMetadataDriver):
 
     def _process(self, document_version):
         if self.command_exiftool:
-            temporary_fileobject = NamedTemporaryFile()
+            temporary_folder = mkdtemp()
+            path_temporary_file = Path(temporary_folder, document_version.document.label)
 
             try:
-                document_version.save_to_file(file_object=temporary_fileobject)
-                temporary_fileobject.seek(0)
-                try:
-                    result = self.command_exiftool(temporary_fileobject.name)
-                except sh.ErrorReturnCode_1 as exception:
-                    result = json.loads(s=exception.stdout)[0]
-                    if result.get('Error', '') == 'Unknown file type':
-                        # Not a fatal error
-                        return result
-                else:
-                    return json.loads(s=result.stdout)[0]
+                with path_temporary_file.open(mode='xb') as temporary_fileobject:
+                    document_version.save_to_file(file_object=temporary_fileobject)
+                    temporary_fileobject.seek(0)
+                    try:
+                        result = self.command_exiftool(temporary_fileobject.name)
+                    except sh.ErrorReturnCode_1 as exception:
+                        result = json.loads(s=exception.stdout)[0]
+                        if result.get('Error', '') == 'Unknown file type':
+                            # Not a fatal error
+                            return result
+                    else:
+                        return json.loads(s=result.stdout)[0]
+            except Exception as exception:
+                raise
             finally:
-                temporary_fileobject.close()
+                fs_cleanup(filename=str(path_temporary_file))
         else:
             logger.warning(
                 'EXIFTool binary not found, not processing document '
