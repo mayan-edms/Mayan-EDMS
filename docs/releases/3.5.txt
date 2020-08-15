@@ -204,6 +204,7 @@ Backward incompatible changes
 Issues closed
 -------------
 
+- :gitlab-issue:`741` Search is slow on large pagesets - Limited by Postgres' single core limitations
 - :gitlab-issue:`745` Feature request: file metadata
 - :gitlab-issue:`570` Allow user-generated stylesheets
 - :gitlab-issue:`638` Server communication error when using default search
