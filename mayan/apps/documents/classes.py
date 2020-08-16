@@ -29,7 +29,7 @@ class BaseDocumentFilenameGenerator:
     def get_default(cls):
         for backend in cls._registry.values():
             if backend.default:
-                return backend
+                return backend.name
 
     @classmethod
     def register(cls, klass):

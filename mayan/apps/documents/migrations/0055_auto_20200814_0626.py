@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
             model_name='documenttype',
             name='filename_generator_backend',
             field=models.CharField(
-                default=mayan.apps.documents.classes.UUIDDocumentFilenameGenerator,
+                default='uuid',
                 help_text='The class responsible for producing the actual '
                 'filename used to store the uploaded documents.',
                 max_length=224, verbose_name='Filename generator backend'
