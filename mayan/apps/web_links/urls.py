@@ -17,7 +17,7 @@ urlpatterns = [
         name='document_web_link_list', view=DocumentWebLinkListView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<document_id>\d+)/(?P<web_link_id>\d+)/$',
+        regex=r'^documents/(?P<document_id>\d+)/web_links/(?P<web_link_id>\d+)/$',
         name='web_link_instance_view', view=ResolvedWebLinkView.as_view()
     ),
     url(
