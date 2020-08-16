@@ -1,3 +1,9 @@
+3.4.14 (2020-08-XX)
+==================
+- Fix resolved web link bug introduced by the commit
+  79ff84f7675ba0d78b1802b9f469fc67074433a0. Thanks for forum user @qra for
+  the report.
+
 3.4.13 (2020-08-08)
 ===================
 - Ensure tag attach and remove events are committed when using the REST API.

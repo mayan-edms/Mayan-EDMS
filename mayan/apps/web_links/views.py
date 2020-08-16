@@ -131,7 +131,6 @@ class WebLinkDocumentTypesView(AddRemoveView):
 
 
 class WebLinkListView(SingleObjectListView):
-    model = WebLink
     object_permission = permission_web_link_view
 
     def get_extra_context(self):
@@ -152,6 +151,12 @@ class WebLinkListView(SingleObjectListView):
             ),
             'title': _('Web links'),
         }
+
+    def get_source_queryset(self):
+        return self.get_web_link_queryset()
+
+    def get_web_link_queryset(self):
+        return WebLink.objects.all()
 
 
 class DocumentWebLinkListView(ExternalObjectMixin, WebLinkListView):
