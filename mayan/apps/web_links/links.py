@@ -14,6 +14,12 @@ link_document_type_web_links = Link(
     permissions=(permission_document_type_edit,), text=_('Web links'),
     view='web_links:document_type_web_links',
 )
+link_document_web_link_list = Link(
+    args='resolved_object.pk',
+    icon_class_path='mayan.apps.web_links.icons.icon_document_web_link_list',
+    permissions=(permission_web_link_instance_view,), text=_('Web links'),
+    view='web_links:document_web_link_list',
+)
 link_web_link_create = Link(
     icon_class_path='mayan.apps.web_links.icons.icon_web_link_create',
     permissions=(permission_web_link_create,),
@@ -42,12 +48,6 @@ link_web_link_instance_view = Link(
     args=('document.pk', 'object.pk',),
     permissions=(permission_web_link_instance_view,), tags='new_window',
     text=_('Navigate'), view='web_links:web_link_instance_view',
-)
-link_document_web_link_list = Link(
-    args='resolved_object.pk',
-    icon_class_path='mayan.apps.web_links.icons.icon_document_web_link_list',
-    permissions=(permission_web_link_instance_view,), text=_('Web links'),
-    view='web_links:document_web_link_list',
 )
 link_web_link_list = Link(
     icon_class_path='mayan.apps.web_links.icons.icon_web_link_list',
