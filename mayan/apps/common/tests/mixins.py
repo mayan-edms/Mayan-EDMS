@@ -570,6 +570,19 @@ class TestViewTestCaseMixin(object):
             urlconf.urlpatterns.pop(0)
         super(TestViewTestCaseMixin, self).tearDown()
 
+    def _get_context_from_test_response(self, response):
+        if isinstance(response.context, ContextList):
+            # template widget rendering causes test client response to be
+            # ContextList rather than RequestContext. Typecast to dictionary
+            # before updating.
+            result = dict(response.context).copy()
+            result.update({'request': response.wsgi_request})
+            return Context(result)
+        else:
+            result = response.context or {}
+            result.update({'request': response.wsgi_request})
+            return Context(result)
+
     def _test_view_factory(self, test_object=None):
         def test_view(request):
             template = Template(template_string=self.test_view_template)
@@ -598,14 +611,4 @@ class TestViewTestCaseMixin(object):
 
     def get_test_view(self):
         response = self.get(viewname=self.test_view_name)
-        if isinstance(response.context, ContextList):
-            # template widget rendering causes test client response to be
-            # ContextList rather than RequestContext. Typecast to dictionary
-            # before updating.
-            result = dict(response.context).copy()
-            result.update({'request': response.wsgi_request})
-            return Context(result)
-        else:
-            result = response.context or {}
-            result.update({'request': response.wsgi_request})
-            return Context(result)
+        return self._get_context_from_test_response(response=response)
