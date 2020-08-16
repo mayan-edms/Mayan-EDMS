@@ -6,10 +6,12 @@ from .literals import (
 
 
 class WebLinkTestMixin(object):
-    def _create_test_web_link(self):
+    def _create_test_web_link(self, add_document_type=False):
         self.test_web_link = WebLink.objects.create(
             label=TEST_WEB_LINK_LABEL, template=TEST_WEB_LINK_TEMPLATE,
         )
+        if add_document_type:
+            self.test_web_link.document_types.add(self.test_document_type)
 
 
 class WebLinkViewTestMixin(object):

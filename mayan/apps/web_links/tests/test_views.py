@@ -3,7 +3,8 @@ from django.utils.encoding import force_text
 from mayan.apps.common.tests.base import GenericViewTestCase
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 
-from ..models import WebLink
+from ..links import link_web_link_instance_view
+from ..models import ResolvedWebLink, WebLink
 from ..permissions import (
     permission_web_link_create, permission_web_link_delete,
     permission_web_link_edit, permission_web_link_view,
@@ -109,8 +110,7 @@ class DocumentWebLinkViewTestCase(
 ):
     def setUp(self):
         super(DocumentWebLinkViewTestCase, self).setUp()
-        self._create_test_web_link()
-        self.test_web_link.document_types.add(self.test_document_type)
+        self._create_test_web_link(add_document_type=True)
 
     def test_document_web_links_list_view_no_permissions(self):
         response = self._request_test_document_web_link_list_view()
@@ -172,6 +172,18 @@ class DocumentWebLinkViewTestCase(
         )
         self.assertContains(
             response=response, text=force_text(self.test_web_link),
+            status_code=200
+        )
+        # Test if a valid resolved link navigate link is present.
+        # Ensures the view is returning ResolvedWebLink proxies and not the
+        # base model WebLink.
+        context = self._get_context_from_test_response(response=response)
+        context['object'] = ResolvedWebLink.objects.get_for(
+            document=self.test_document, user=self._test_case_user
+        ).first()
+        resolved_web_link_link = link_web_link_instance_view.resolve(context=context)
+        self.assertContains(
+            response=response, text=resolved_web_link_link.url,
             status_code=200
         )
 
