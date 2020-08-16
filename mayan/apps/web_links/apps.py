@@ -84,11 +84,12 @@ class WebLinksApp(MayanAppConfig):
             attribute='label', is_identifier=True, is_sortable=True,
             source=WebLink
         )
-        SourceColumn(
+        source_column_enabled = SourceColumn(
             attribute='enabled', include_label=True, is_sortable=True,
             source=WebLink,
             widget=TwoStateWidget
         )
+        source_column_enabled.add_exclude(source=ResolvedWebLink)
 
         menu_facet.bind_links(
             links=(link_document_web_link_list,),
