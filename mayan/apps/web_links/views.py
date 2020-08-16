@@ -17,7 +17,7 @@ from mayan.apps.documents.events import event_document_type_edited
 from mayan.apps.documents.models import Document, DocumentType
 from mayan.apps.documents.permissions import permission_document_type_edit
 
-from .events import event_web_link_edited, event_web_link_navigated
+from .events import event_web_link_edited
 from .forms import WebLinkForm
 from .icons import icon_web_link_setup
 from .links import link_web_link_create
@@ -83,13 +83,9 @@ class ResolvedWebLinkView(ExternalObjectMixin, RedirectView):
     external_object_permission = permission_web_link_instance_view
 
     def get_redirect_url(self, *args, **kwargs):
-        event_web_link_navigated.commit(
-            actor=self.request.user, action_object=self.external_object,
-            target=self.get_web_link()
-        )
-        return self.get_web_link().get_url_for(
-            document=self.external_object
-        )
+        return self.get_web_link().get_redirect(
+            document=self.external_object, user=self.request.user
+        ).url
 
     def get_web_link(self):
         return get_object_or_404(
