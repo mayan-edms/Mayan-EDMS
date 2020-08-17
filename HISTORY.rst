@@ -1,7 +1,7 @@
 3.4.14 (2020-08-XX)
 ==================
 - Fix resolved web link bug introduced by the commit
-  79ff84f7675ba0d78b1802b9f469fc67074433a0. Thanks for forum user @qra for
+  79ff84f7675ba0d78b1802b9f469fc67074433a0. Thanks to forum user @qra for
   the report.
 - Add web links API.
 - Release file metadata lock on errors.
@@ -9,6 +9,8 @@
 - Add keyword argument to parse_range.
 - Remove extra spaces in ``document_signatures/storages.py`` and
   ``document_signatures/settings.py``.
+- Ensure metadata default values are applied when using the REST API.
+  Thanks to forum user @qra for the report and debugging.
 
 3.4.13 (2020-08-08)
 ===================

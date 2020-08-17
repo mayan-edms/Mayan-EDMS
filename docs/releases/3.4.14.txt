@@ -197,6 +197,7 @@ Issues closed
 
 - :gitlab-issue:``
 - :forum-topic:`2885` Problem with "web links"
+- :forum-topic:`2887` Problem with default metadata values
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
 
