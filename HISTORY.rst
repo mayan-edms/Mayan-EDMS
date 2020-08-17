@@ -5,6 +5,10 @@
   the report.
 - Add web links API.
 - Release file metadata lock on errors.
+- Raise workflow attribute errors on DEBUG.
+- Add keyword argument to parse_range.
+- Remove extra spaces in ``document_signatures/storages.py`` and
+  ``document_signatures/settings.py``.
 
 3.4.13 (2020-08-08)
 ===================
