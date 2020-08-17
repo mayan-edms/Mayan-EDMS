@@ -31,7 +31,9 @@ def task_process_document_version(document_version_id):
     except LockError:
         logger.debug('unable to obtain lock: %s' % lock_id)
     else:
-        FileMetadataDriver.process_document_version(
-            document_version=document_version
-        )
-        lock.release()
+        try:
+            FileMetadataDriver.process_document_version(
+                document_version=document_version
+            )
+        finally:
+            lock.release()
