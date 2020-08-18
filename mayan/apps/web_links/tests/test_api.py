@@ -1,5 +1,6 @@
 from rest_framework import status
 
+from mayan.apps.documents.permissions import permission_document_type_edit
 from mayan.apps.documents.tests.base import DocumentTestMixin
 from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
@@ -50,9 +51,39 @@ class WebLinkAPIViewTestCase(
 
         self.assertEqual(WebLink.objects.count(), 0)
 
-    def test_web_link_create_with_document_types_view_with_permission(self):
+    def test_web_link_create_with_document_types_view_web_link_permission(self):
         self._create_test_document_type()
         self.grant_permission(permission=permission_web_link_create)
+
+        response = self._request_test_web_link_create_with_document_type_api_view()
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+        web_link = WebLink.objects.first()
+        self.assertEqual(response.data['id'], web_link.pk)
+        self.assertEqual(response.data['label'], TEST_WEB_LINK_LABEL)
+
+        self.assertEqual(WebLink.objects.count(), 1)
+        self.assertEqual(web_link.label, TEST_WEB_LINK_LABEL)
+        self.assertTrue(
+            self.test_document_type not in web_link.document_types.all()
+        )
+
+    def test_web_link_create_with_document_types_view_with_document_type_access(self):
+        self._create_test_document_type()
+        self.grant_access(
+            obj=self.test_document_type, permission=permission_document_type_edit
+        )
+        response = self._request_test_web_link_create_with_document_type_api_view()
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+        self.assertEqual(WebLink.objects.count(), 0)
+
+    def test_web_link_create_with_document_types_view_with_full_access(self):
+        self._create_test_document_type()
+        self.grant_permission(permission=permission_web_link_create)
+        self.grant_access(
+            obj=self.test_document_type, permission=permission_document_type_edit
+        )
 
         response = self._request_test_web_link_create_with_document_type_api_view()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
