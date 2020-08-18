@@ -1,5 +1,5 @@
 3.4.14 (2020-08-18)
-==================
+===================
 - Fix resolved web link bug introduced by the commit
   79ff84f7675ba0d78b1802b9f469fc67074433a0. Thanks to forum user @qra for
   the report.
