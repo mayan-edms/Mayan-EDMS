@@ -1,11 +1,41 @@
 Version 3.4.14
 ==============
 
-Released: August XX, 2020
+Released: August 18, 2020
 
 Changes
 -------
 
+
+File metadata
+^^^^^^^^^^^^^
+
+The file metadata background task was updated to release the resource lock
+on errors. This avoids file metadata processing for specific documents from
+remaining locked until timeout after an error.
+
+
+Metadata
+^^^^^^^^
+
+The metadata default value code was updated to work over the API in the same
+way that it works from the HTTP views.
+
+
+Web links
+^^^^^^^^^
+
+A web link regression was fixed. The API endpoints for web links were also
+added.
+
+
+Other
+^^^^^
+
+- Raise workflow attribute errors on DEBUG.
+- Add keyword argument to the document parse_range() function.
+- Remove extra spaces in ``document_signatures/storages.py`` and
+  ``document_signatures/settings.py``.
 
 Removals
 --------
@@ -195,9 +225,7 @@ Backward incompatible changes
 Issues closed
 -------------
 
-- :gitlab-issue:``
 - :forum-topic:`2885` Problem with "web links"
 - :forum-topic:`2887` Problem with default metadata values
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
-
