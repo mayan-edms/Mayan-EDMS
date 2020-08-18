@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-08 06:20-0400\n"
-"PO-Revision-Date: 2020-07-19 10:39+0000\n"
+"POT-Creation-Date: 2020-08-18 03:10-0400\n"
+"PO-Revision-Date: 2020-08-12 08:47+0000\n"
 "Last-Translator: Marco Morais <marco@edgoo.io>\n"
 "Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -95,18 +95,18 @@ msgstr "URL do API que aponta para uma permissão em relação à lista de contr
 
 #: serializers.py:89
 msgid "Primary key of the new permission to grant to the access control list."
-msgstr "Chave primária da nova permissão a adicionar à lista de controlo de acesso."
+msgstr "Chave primária da nova permissão a atribuir à lista de controlo de acesso."
 
 #: serializers.py:113 serializers.py:189
 #, python-format
 msgid "No such permission: %s"
-msgstr "Permissão não existente: \"%s\""
+msgstr "Permissão inexistente: \"%s\""
 
 #: serializers.py:128
 msgid ""
 "Comma separated list of permission primary keys to grant to this access "
 "control list."
-msgstr "Lista de chaves primárias de permissões a adicionar a esta lista de controlo de acesso, separadas por vírgulas."
+msgstr "Lista de chaves primárias de permissões a atribuir a esta lista de controlo de acesso, separadas por vírgulas."
 
 #: serializers.py:140
 msgid "Primary keys of the role to which this access control list binds to."
@@ -164,7 +164,7 @@ msgid ""
 "to the role and can't be removed from this view. Inherited permissions need "
 "to be removed from the parent object's ACL or from them role via the Setup "
 "menu."
-msgstr "Permissões desativadas são herdadas de um objeto pai ou atribuídas diretamente à função e não podem ser removidas. Permissões herdadas têm que ser removidas da ACL do objeto pai ou da função associada ao mesmo via o meno Definições."
+msgstr "Permissões desativadas são herdadas de um objeto pai ou atribuídas diretamente à função e não podem ser removidas. Permissões herdadas têm que ser removidas da ACL do objeto pai ou da função associada ao mesmo através do menu Definições."
 
 #: workflow_actions.py:23
 msgid "Object type"
@@ -172,7 +172,7 @@ msgstr "Tipo de Objeto"
 
 #: workflow_actions.py:26
 msgid "Type of the object for which the access will be modified."
-msgstr "Tipo de objeto para qual o acesso será modificado."
+msgstr "Tipo de objeto para o qual o acesso será modificado."
 
 #: workflow_actions.py:32
 msgid "Object ID"
@@ -181,7 +181,7 @@ msgstr "ID do Objeto"
 #: workflow_actions.py:35
 msgid ""
 "Numeric identifier of the object for which the access will be modified."
-msgstr "Identificador numérico do objeto para qual o acesso será modificado."
+msgstr "Identificador numérico do objeto para o qual o acesso será modificado."
 
 #: workflow_actions.py:40 workflow_actions.py:155
 msgid "Roles"

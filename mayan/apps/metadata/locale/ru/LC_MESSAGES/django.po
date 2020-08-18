@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-08 06:22-0400\n"
+"POT-Creation-Date: 2020-08-18 03:12-0400\n"
 "PO-Revision-Date: 2020-01-28 07:59+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
@@ -309,7 +309,7 @@ msgstr ""
 msgid "Primary key of the metadata type to be added."
 msgstr "Первичный ключ добавляемого типа метаданных."
 
-#: serializers.py:133
+#: serializers.py:135
 msgid "Primary key of the metadata type to be added to the document."
 msgstr ""
 
