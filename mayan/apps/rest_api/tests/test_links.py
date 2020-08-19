@@ -1,6 +1,6 @@
 from django.test import override_settings
 
-from mayan.apps.tests.tests.base import GenericViewTestCase
+from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..links import (
     link_api, link_api_documentation, link_api_documentation_redoc

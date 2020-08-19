@@ -1,7 +1,7 @@
 from django.core.exceptions import ValidationError
 
 from mayan.apps.documents.tests.mixins import DocumentTestMixin
-from mayan.apps.tests.tests.base import BaseTestCase
+from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..models import Cabinet
 

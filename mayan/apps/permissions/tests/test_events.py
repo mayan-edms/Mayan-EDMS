@@ -1,6 +1,6 @@
 from actstream.models import Action
 
-from mayan.apps.tests.tests.base import GenericViewTestCase
+from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..events import event_role_created, event_role_edited
 from ..permissions import permission_role_create, permission_role_edit

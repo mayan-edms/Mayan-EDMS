@@ -2,7 +2,7 @@ import mock
 
 import mayan
 
-from mayan.apps.tests.tests.base import BaseTestCase
+from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..utils import PyPIClient
 

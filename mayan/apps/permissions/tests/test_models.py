@@ -1,7 +1,7 @@
 from django.contrib.auth.models import AnonymousUser
 from django.core.exceptions import PermissionDenied
 
-from mayan.apps.tests.tests.base import BaseTestCase
+from mayan.apps.testing.tests.base import BaseTestCase
 from mayan.apps.user_management.tests.mixins import GroupTestMixin
 
 from ..classes import Permission, PermissionNamespace

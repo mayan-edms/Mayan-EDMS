@@ -2,7 +2,6 @@ import json
 
 from django.core import mail
 
-from mayan.apps.tests.tests.base import GenericViewTestCase
 from mayan.apps.documents.tests.mixins import DocumentTestMixin
 from mayan.apps.document_states.literals import WORKFLOW_ACTION_ON_ENTRY
 from mayan.apps.document_states.permissions import permission_workflow_edit
@@ -11,6 +10,7 @@ from mayan.apps.document_states.tests.mixins import (
     WorkflowStateActionViewTestMixin, WorkflowTestMixin
 )
 from mayan.apps.metadata.tests.mixins import MetadataTypeTestMixin
+from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..permissions import permission_user_mailer_use
 from ..workflow_actions import EmailAction

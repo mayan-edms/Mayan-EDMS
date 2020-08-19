@@ -1,7 +1,7 @@
 from actstream.models import Action
 
-from mayan.apps.tests.tests.base import GenericViewTestCase
 from mayan.apps.documents.tests.test_models import GenericDocumentTestCase
+from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..events import (
     event_cabinet_created, event_cabinet_edited, event_cabinet_add_document,

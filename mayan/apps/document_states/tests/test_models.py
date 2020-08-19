@@ -3,7 +3,7 @@ import json
 from mayan.apps.documents.events import event_document_properties_edit
 from mayan.apps.documents.tests.base import GenericDocumentTestCase
 from mayan.apps.events.classes import EventType
-from mayan.apps.tests.tests.base import BaseTestCase
+from mayan.apps.testing.tests.base import BaseTestCase
 
 from .literals import (
     TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_DOTTED_PATH,

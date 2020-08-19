@@ -1,6 +1,6 @@
 from mayan.apps.common.settings import setting_home_view
-from mayan.apps.tests.tests.base import GenericViewTestCase
-from mayan.apps.tests.tests.utils import mute_stdout
+from mayan.apps.testing.tests.base import GenericViewTestCase
+from mayan.apps.testing.tests.utils import mute_stdout
 
 from ..models import AutoAdminSingleton
 

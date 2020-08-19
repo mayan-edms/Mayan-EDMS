@@ -1,12 +1,12 @@
 from django.utils.encoding import force_text
 
-from mayan.apps.tests.tests.base import BaseTestCase
 from mayan.apps.documents.tests.base import DocumentTestMixin
 from mayan.apps.documents.tests.literals import (
     TEST_DOCUMENT_DESCRIPTION, TEST_DOCUMENT_DESCRIPTION_EDITED,
     TEST_DOCUMENT_LABEL_EDITED, TEST_SMALL_DOCUMENT_PATH
 )
 from mayan.apps.metadata.models import MetadataType, DocumentTypeMetadataType
+from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..models import Index, IndexInstanceNode, IndexTemplateNode
 

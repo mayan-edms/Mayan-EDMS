@@ -1,6 +1,5 @@
 from django.test import override_settings
 
-from mayan.apps.tests.tests.base import GenericViewTestCase
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.permissions import (
     permission_document_create, permission_document_new_version
@@ -10,6 +9,7 @@ from mayan.apps.documents.tests.literals import (
     TEST_COMPRESSED_DOCUMENT_PATH, TEST_DOCUMENT_DESCRIPTION,
     TEST_SMALL_DOCUMENT_CHECKSUM, TEST_SMALL_DOCUMENT_PATH
 )
+from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..literals import SOURCE_CHOICE_WEB_FORM, SOURCE_UNCOMPRESS_CHOICE_Y
 from ..models import WebFormSource

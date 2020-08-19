@@ -1,7 +1,7 @@
 from django.utils.encoding import force_text
 
-from mayan.apps.tests.tests.base import GenericViewTestCase
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
+from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..links import link_web_link_instance_view
 from ..models import ResolvedWebLink, WebLink

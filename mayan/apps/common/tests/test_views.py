@@ -1,7 +1,7 @@
 from django.db import models
 
-from mayan.apps.tests.tests.base import GenericViewTestCase
-from mayan.apps.tests.tests.mixins import TestModelTestMixin
+from mayan.apps.testing.tests.base import GenericViewTestCase
+from mayan.apps.testing.tests.mixins import TestModelTestMixin
 
 from ..classes import ModelCopy
 from ..permissions import permission_object_copy

@@ -1,5 +1,5 @@
-from mayan.apps.tests.tests.base import GenericViewTestCase
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
+from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..models import WorkflowTransition
 from ..permissions import (

@@ -2,7 +2,7 @@ import mock
 
 import mayan
 
-from mayan.apps.tests.tests.base import GenericViewTestCase
+from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..utils import (
     MESSAGE_NOT_LATEST, MESSAGE_UNKNOWN_VERSION, MESSAGE_UP_TO_DATE

@@ -2,7 +2,7 @@ from io import StringIO
 
 from django.core import management
 
-from mayan.apps.tests.tests.base import BaseTestCase
+from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..classes import PlatformTemplate
 

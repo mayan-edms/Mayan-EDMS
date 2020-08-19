@@ -1,6 +1,6 @@
 from actstream.models import Action
 
-from mayan.apps.tests.tests.base import BaseTestCase
+from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..events import event_cache_created, event_cache_purged
 from ..models import Cache

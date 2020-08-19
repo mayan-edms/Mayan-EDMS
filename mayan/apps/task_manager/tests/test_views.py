@@ -1,4 +1,4 @@
-from mayan.apps.tests.tests.base import GenericViewTestCase
+from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..classes import Worker, CeleryQueue
 from ..permissions import permission_task_view

@@ -6,8 +6,8 @@ from django.conf import settings
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 
 from mayan.apps.events.tests.mixins import EventTestCaseMixin
-from mayan.apps.tests.tests.base import GenericViewTestCase
-from mayan.apps.tests.tests.mixins import SeleniumTestMixin
+from mayan.apps.testing.tests.base import GenericViewTestCase
+from mayan.apps.testing.tests.mixins import SeleniumTestMixin
 
 from ..events import event_theme_created, event_theme_edited
 from ..models import Theme

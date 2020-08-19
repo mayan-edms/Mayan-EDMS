@@ -1,5 +1,5 @@
 from mayan.apps.events.tests.mixins import EventTestCaseMixin
-from mayan.apps.tests.tests.base import BaseTestCase
+from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..events import event_theme_created, event_theme_edited
 

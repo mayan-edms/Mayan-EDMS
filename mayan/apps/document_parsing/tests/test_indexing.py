@@ -1,8 +1,8 @@
-from mayan.apps.tests.tests.base import BaseTransactionTestCase
 from mayan.apps.documents.tests.literals import TEST_HYBRID_DOCUMENT
 from mayan.apps.documents.tests.mixins import DocumentTestMixin
 from mayan.apps.document_indexing.models import Index, IndexInstanceNode
 from mayan.apps.document_indexing.tests.literals import TEST_INDEX_LABEL
+from mayan.apps.testing.tests.base import BaseTransactionTestCase
 
 from .literals import TEST_PARSING_INDEX_NODE_TEMPLATE
 

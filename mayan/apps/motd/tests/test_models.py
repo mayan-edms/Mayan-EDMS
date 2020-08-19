@@ -2,7 +2,7 @@ from datetime import timedelta
 
 from django.utils import timezone
 
-from mayan.apps.tests.tests.base import BaseTestCase
+from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..models import Message
 

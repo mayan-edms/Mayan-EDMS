@@ -4,7 +4,7 @@ from mayan.apps.documents.models.document_models import Document
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.search import document_search
 from mayan.apps.documents.tests.mixins import DocumentTestMixin
-from mayan.apps.tests.tests.base import GenericViewTestCase
+from mayan.apps.testing.tests.base import GenericViewTestCase
 from mayan.apps.storage.utils import fs_cleanup, mkdtemp
 
 from ..classes import SearchBackend, SearchModel

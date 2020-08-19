@@ -2,9 +2,9 @@ from pathlib import Path
 
 import shutil
 
-from mayan.apps.tests.tests.base import BaseTestCase
-from mayan.apps.tests.tests.utils import mute_stdout
 from mayan.apps.storage.utils import mkdtemp
+from mayan.apps.testing.tests.base import BaseTestCase
+from mayan.apps.testing.tests.utils import mute_stdout
 
 from .mocks import TestDependency
 

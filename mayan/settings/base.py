@@ -94,7 +94,7 @@ INSTALLED_APPS = (
     'mayan.apps.smart_settings',
     'mayan.apps.task_manager',
     'mayan.apps.templating',
-    'mayan.apps.tests',
+    'mayan.apps.testing',
     'mayan.apps.user_management',
     'mayan.apps.views',
     # Project apps

@@ -1,4 +1,4 @@
-from mayan.apps.tests.tests.base import GenericViewTestCase
+from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..models import WorkflowState
 from ..permissions import permission_workflow_edit, permission_workflow_view

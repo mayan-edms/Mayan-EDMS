@@ -3,8 +3,8 @@ from pathlib import Path
 from django.conf import settings
 from django.utils.encoding import force_text
 
-from mayan.apps.tests.tests.base import BaseTestCase
 from mayan.apps.storage.utils import fs_cleanup
+from mayan.apps.testing.tests.base import BaseTestCase
 from mayan.apps.views.settings import setting_paginate_by
 
 from ..classes import Setting
