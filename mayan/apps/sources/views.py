@@ -58,9 +58,9 @@ class SourceCheckView(ExternalObjectMixin, ConfirmView):
     Trigger the task_check_interval_source task for a given source to
     test/debug their configuration irrespective of the schedule task setup.
     """
+    external_object_permission = permission_sources_setup_create
     external_object_pk_url_kwarg = 'source_id'
     external_object_queryset = Source.objects.select_subclasses()
-    external_object_permission = permission_sources_setup_create
 
     def get_extra_context(self):
         return {
@@ -111,9 +111,9 @@ class SourceCreateView(SingleObjectCreateView):
 
 
 class SourceDeleteView(ExternalObjectMixin, SingleObjectDeleteView):
-    external_object_queryset = Source.objects.select_subclasses()
     external_object_permission = permission_sources_setup_delete
     external_object_pk_url_kwarg = 'source_id'
+    external_object_queryset = Source.objects.select_subclasses()
     post_action_redirect = reverse_lazy(
         viewname='sources:setup_source_list'
     )
@@ -132,9 +132,9 @@ class SourceDeleteView(ExternalObjectMixin, SingleObjectDeleteView):
 
 
 class SourceEditView(ExternalObjectMixin, SingleObjectEditView):
-    external_object_queryset = Source.objects.select_subclasses()
     external_object_permission = permission_sources_setup_edit
     external_object_pk_url_kwarg = 'source_id'
+    external_object_queryset = Source.objects.select_subclasses()
     post_action_redirect = reverse_lazy(
         viewname='sources:setup_source_list'
     )
