@@ -205,6 +205,7 @@
   using a temporary folder instead of a temporary file. Closes GitLab
   issue #745. Thanks to the Jeroen Van den Keybus (@vdkeybus) for the report
   and solution suggestion.
+- Move mailing profile choice generation from the form to the class.
 
 3.4.14 (2020-08-18)
 ===================
