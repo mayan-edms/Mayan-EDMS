@@ -206,6 +206,9 @@
   issue #745. Thanks to the Jeroen Van den Keybus (@vdkeybus) for the report
   and solution suggestion.
 - Move mailing profile choice generation from the form to the class.
+- Add "No results" text for empty file metadata driver lists.
+- Add file metadata submit link for "No results" file metadata driver
+  template.
 
 3.4.14 (2020-08-18)
 ===================

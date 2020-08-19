@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.http import HttpResponseRedirect
+from django.template import RequestContext
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext
@@ -13,6 +14,7 @@ from mayan.apps.views.generics import (
 from mayan.apps.views.mixins import ExternalObjectMixin
 
 from .icons import icon_file_metadata
+from .links import link_document_submit
 from .models import DocumentVersionDriverEntry
 from .permissions import (
     permission_document_type_file_metadata_setup,
@@ -29,6 +31,13 @@ class DocumentDriverListView(ExternalObjectMixin, SingleObjectListView):
         return {
             'hide_object': True,
             'no_results_icon': icon_file_metadata,
+            'no_results_main_link': link_document_submit.resolve(
+                context=RequestContext(
+                    dict_={
+                        'resolved_object': self.external_object
+                    }, request=self.request
+                )
+            ),
             'no_results_text': _(
                 'File metadata are the attributes of the document\'s file. '
                 'They can range from camera information used to take a photo '
@@ -38,7 +47,7 @@ class DocumentDriverListView(ExternalObjectMixin, SingleObjectListView):
                 'same as the document metadata, which are user defined and '
                 'reside in the database.'
             ),
-            'no_results_title': _('No file metadata available.'),
+            'no_results_title': _('No file metadata available'),
             'object': self.external_object,
             'title': _(
                 'File metadata drivers for: %s'
@@ -49,7 +58,9 @@ class DocumentDriverListView(ExternalObjectMixin, SingleObjectListView):
         return self.external_object.latest_version.file_metadata_drivers.all()
 
 
-class DocumentVersionDriverEntryFileMetadataListView(ExternalObjectMixin, SingleObjectListView):
+class DocumentVersionDriverEntryFileMetadataListView(
+    ExternalObjectMixin, SingleObjectListView
+):
     external_object_class = DocumentVersionDriverEntry
     external_object_permission = permission_file_metadata_view
     external_object_pk_url_kwarg = 'document_version_driver_id'
@@ -57,7 +68,22 @@ class DocumentVersionDriverEntryFileMetadataListView(ExternalObjectMixin, Single
     def get_extra_context(self):
         return {
             'hide_object': True,
-            'no_results_title': _('No file metadata available.'),
+            'no_results_icon': icon_file_metadata,
+            'no_results_main_link': link_document_submit.resolve(
+                context=RequestContext(
+                    dict_={
+                        'resolved_object': self.external_object.document_version.document
+                    }, request=self.request
+                )
+            ),
+            'no_results_text': _(
+                'This could mean that the file metadata detection has not '
+                'completed or that the driver does not support '
+                'any metadata field for the file type of this document.'
+            ),
+            'no_results_title': _(
+                'No file metadata available for this driver'
+            ),
             'object': self.external_object.document_version.document,
             'title': _(
                 'File metadata attribures for: %(document)s, for driver: %(driver)s'
