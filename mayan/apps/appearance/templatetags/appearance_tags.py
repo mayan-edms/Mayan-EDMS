@@ -56,15 +56,16 @@ def appearance_get_icon(icon_path):
 
 @register.simple_tag
 def appearance_get_user_theme_stylesheet(user):
-    theme = user.theme_settings.theme
+    if user and user.is_authenticated:
+        theme = user.theme_settings.theme
 
-    if theme:
-        return bleach.clean(
-            text=user.theme_settings.theme.stylesheet,
-            tags=('style',)
-        )
-    else:
-        return ''
+        if theme:
+            return bleach.clean(
+                text=user.theme_settings.theme.stylesheet,
+                tags=('style',)
+            )
+
+    return ''
 
 
 @register.simple_tag
