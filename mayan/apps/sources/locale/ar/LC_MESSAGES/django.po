@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-08 06:23-0400\n"
-"PO-Revision-Date: 2020-05-25 06:18+0000\n"
+"POT-Creation-Date: 2020-08-18 03:13-0400\n"
+"PO-Revision-Date: 2020-08-18 07:10+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
@@ -134,35 +134,35 @@ msgstr ""
 
 #: links.py:127
 msgid "Logs"
-msgstr ""
+msgstr "السجلات"
 
 #: links.py:133
 msgid "Check now"
-msgstr ""
+msgstr "تأكد الان"
 
 #: literals.py:16
 msgid "Flatbed"
-msgstr ""
+msgstr "مسطحة"
 
 #: literals.py:17
 msgid "Document feeder"
-msgstr ""
+msgstr "وحدة تغذية المستندات"
 
 #: literals.py:24
 msgid "Simplex"
-msgstr ""
+msgstr "البسيط"
 
 #: literals.py:25
 msgid "Duplex"
-msgstr ""
+msgstr "دوبلكس"
 
 #: literals.py:33
 msgid "Lineart"
-msgstr ""
+msgstr "فن الخط"
 
 #: literals.py:34
 msgid "Monochrome"
-msgstr ""
+msgstr "أحادي اللون"
 
 #: literals.py:35
 msgid "Color"
@@ -182,31 +182,31 @@ msgstr "اسئل المستخدم"
 
 #: literals.py:61
 msgid "Scanner"
-msgstr ""
+msgstr "الماسح الضوئي"
 
 #: literals.py:62 models/webform_sources.py:40
 msgid "Web form"
-msgstr ""
+msgstr "Web form"
 
 #: literals.py:63 models/staging_folder_sources.py:67
 msgid "Staging folder"
-msgstr ""
+msgstr "مجلد التدريج"
 
 #: literals.py:64 models/watch_folder_sources.py:45
 msgid "Watch folder"
-msgstr ""
+msgstr "مشاهدة المجلد"
 
 #: literals.py:65
 msgid "POP3 email"
-msgstr ""
+msgstr "بريد POP3 الإلكتروني"
 
 #: literals.py:66 models/email_sources.py:249 models/email_sources.py:250
 msgid "IMAP email"
-msgstr ""
+msgstr "بريد IMAP الإلكتروني"
 
 #: models/base.py:28
 msgid "A short text to describe this source."
-msgstr ""
+msgstr "نص قصير لوصف هذه الوثيقة"
 
 #: models/base.py:29
 msgid "Label"
@@ -218,31 +218,31 @@ msgstr "مفعل"
 
 #: models/base.py:37 models/base.py:245
 msgid "Source"
-msgstr ""
+msgstr "مصدر"
 
 #: models/base.py:156
 msgid "Interactive source"
-msgstr ""
+msgstr "مصدر تفاعلي"
 
 #: models/base.py:157
 msgid "Interactive sources"
-msgstr ""
+msgstr "مصادر تفاعلية"
 
 #: models/base.py:166 models/base.py:167
 msgid "Out of process"
-msgstr ""
+msgstr "خارج العملية"
 
 #: models/base.py:173
 msgid "Interval in seconds between checks for new documents."
-msgstr ""
+msgstr "ثواني بين الشيكات للمستندات الجديدة"
 
 #: models/base.py:174
 msgid "Interval"
-msgstr ""
+msgstr "فترة"
 
 #: models/base.py:178
 msgid "Assign a document type to documents uploaded from this source."
-msgstr ""
+msgstr "قم بتعيين نوع مستند إلى المستندات التي تم إنشاؤها من هذا الموقع"
 
 #: models/base.py:180 serializers.py:17
 msgid "Document type"
@@ -511,11 +511,11 @@ msgstr "حذف الملف بعد رفعه بنجاح."
 
 #: models/staging_folder_sources.py:61
 msgid "Delete after upload"
-msgstr ""
+msgstr "حذف بعد التحميل"
 
 #: models/staging_folder_sources.py:68
 msgid "Staging folders"
-msgstr ""
+msgstr "مجلدات التدريج"
 
 #: models/staging_folder_sources.py:80
 #, python-format
@@ -529,7 +529,7 @@ msgstr "غير قادر على ايجاد قائمة بملفات الاعداد
 
 #: models/watch_folder_sources.py:31
 msgid "Server side filesystem path to scan for files."
-msgstr ""
+msgstr "مسار ملف الخادم للصفحات الممسوحة ضوئيًا"
 
 #: models/watch_folder_sources.py:36
 msgid ""
@@ -640,19 +640,19 @@ msgstr ""
 
 #: templates/sources/dropzone.html:85
 msgid "Your browser does not support drag and drop file uploads."
-msgstr ""
+msgstr "السحب والإفلات لا يدعمه متصفحك"
 
 #: templates/sources/dropzone.html:86
 msgid "Please use the fallback form below to upload your files."
-msgstr ""
+msgstr "الرجاء استخدام النموذج أدناه لتحميل الملفات الخاصة بك"
 
 #: templates/sources/dropzone.html:87
 msgid "Clear"
-msgstr ""
+msgstr "مسح / إزالة"
 
 #: templates/sources/dropzone.html:88
 msgid "Server responded with {{statusCode}} code."
-msgstr ""
+msgstr "استجاب الخادم برمز {{statusCode}}."
 
 #: views.py:70
 msgid ""
@@ -741,7 +741,7 @@ msgstr ""
 
 #: views.py:327
 msgid "Files in staging path"
-msgstr ""
+msgstr "الملفات في مسار الإرسال"
 
 #: views.py:338
 msgid "Scan"
@@ -773,7 +773,7 @@ msgstr ""
 
 #: views.py:650
 msgid "New document version queued for upload and will be available shortly."
-msgstr ""
+msgstr "إصدار جديد من المستند قيد التحميل وسيكون متاحًا قريبًا"
 
 #: views.py:669
 #, python-format
@@ -786,7 +786,7 @@ msgstr "ارسال"
 
 #: wizards.py:95
 msgid "Select document type"
-msgstr ""
+msgstr "حدد نوع المستند"
 
 #: wizards.py:176
 #, python-format
@@ -799,4 +799,4 @@ msgstr "الخطوة التالية"
 
 #: wizards.py:183
 msgid "Document upload wizard"
-msgstr ""
+msgstr "مساعد تحميل المستند"

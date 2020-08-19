@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-08 06:21-0400\n"
-"PO-Revision-Date: 2020-03-28 07:23+0000\n"
+"POT-Creation-Date: 2020-08-18 03:11-0400\n"
+"PO-Revision-Date: 2020-08-18 04:38+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/language/hu/)\n"
 "MIME-Version: 1.0\n"
@@ -245,16 +245,16 @@ msgid "Path to the Storage subclass to use when storing detached signatures."
 msgstr ""
 
 #: settings.py:28
-msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND. "
+msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND."
 msgstr ""
 
-#: storages.py:14
+#: storages.py:13
 msgid ""
 "Unable to initialize the detached signatures storage. Check the settings {} "
 "and {} for formatting errors."
 msgstr ""
 
-#: storages.py:21
+#: storages.py:20
 msgid "Detached signatures"
 msgstr ""
 

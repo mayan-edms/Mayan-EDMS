@@ -14,7 +14,10 @@ from ..permissions import (
     permission_metadata_type_edit, permission_metadata_type_view
 )
 
-from .literals import TEST_METADATA_VALUE, TEST_METADATA_VALUE_EDITED
+from .literals import (
+    TEST_METADATA_TYPE_DEFAULT_VALUE, TEST_METADATA_VALUE,
+    TEST_METADATA_VALUE_EDITED
+)
 from .mixins import MetadataTypeAPIViewTestMixin, MetadataTypeTestMixin
 
 
@@ -335,13 +338,16 @@ class DocumentTypeMetadataTypeAPITestCase(
 
 
 class DocumentMetadataAPITestMixin:
-    def _request_document_metadata_create_view(self):
+    def _request_document_metadata_create_view(self, extra_data=None):
+        data = {
+            'metadata_type_pk': self.test_metadata_type.pk,
+            'value': TEST_METADATA_VALUE
+        }
+        data.update(extra_data or {})
+
         return self.post(
             viewname='rest_api:documentmetadata-list',
-            kwargs={'document_pk': self.test_document.pk}, data={
-                'metadata_type_pk': self.test_metadata_type.pk,
-                'value': TEST_METADATA_VALUE
-            }
+            kwargs={'document_pk': self.test_document.pk}, data=data
         )
 
     def _request_document_metadata_delete_view(self):
@@ -353,26 +359,32 @@ class DocumentMetadataAPITestMixin:
             }
         )
 
-    def _request_document_metadata_edit_view_via_patch(self):
+    def _request_document_metadata_edit_view_via_patch(self, extra_data=None):
+        data = {
+            'value': TEST_METADATA_VALUE_EDITED
+        }
+        data.update(extra_data or {})
+
         return self.patch(
             viewname='rest_api:documentmetadata-detail',
             kwargs={
                 'document_pk': self.test_document.pk,
                 'metadata_pk': self.test_document_metadata.pk
-            }, data={
-                'value': TEST_METADATA_VALUE_EDITED
-            }
+            }, data=data
         )
 
-    def _request_document_metadata_edit_view_via_put(self):
+    def _request_document_metadata_edit_view_via_put(self, extra_data=None):
+        data = {
+            'value': TEST_METADATA_VALUE_EDITED
+        }
+        data.update(extra_data or {})
+
         return self.put(
             viewname='rest_api:documentmetadata-detail',
             kwargs={
                 'document_pk': self.test_document.pk,
                 'metadata_pk': self.test_document_metadata.pk
-            }, data={
-                'value': TEST_METADATA_VALUE_EDITED
-            }
+            }, data=data
         )
 
     def _request_document_metadata_list_view(self):
@@ -390,6 +402,8 @@ class DocumentMetadataAPITestCase(
     def setUp(self):
         super(DocumentMetadataAPITestCase, self).setUp()
         self._create_test_metadata_type()
+        self.test_metadata_type.default = TEST_METADATA_TYPE_DEFAULT_VALUE
+        self.test_metadata_type.save()
         self.test_document_type.metadata.create(
             metadata_type=self.test_metadata_type, required=False
         )
@@ -441,6 +455,30 @@ class DocumentMetadataAPITestCase(
         self.assertEqual(response.data['id'], document_metadata.pk)
         self.assertEqual(document_metadata.metadata_type, self.test_metadata_type)
         self.assertEqual(document_metadata.value, TEST_METADATA_VALUE)
+
+    def test_document_metadata_create_default_value_view_with_full_access(self):
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_metadata_add
+        )
+        self.grant_access(
+            obj=self.test_metadata_type,
+            permission=permission_document_metadata_add
+        )
+
+        response = self._request_document_metadata_create_view(
+            extra_data={'value': ''}
+        )
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+        document_metadata = self.test_document.metadata.first()
+        self.assertEqual(response.data['id'], document_metadata.pk)
+        self.assertEqual(
+            document_metadata.metadata_type, self.test_metadata_type
+        )
+        self.assertEqual(
+            document_metadata.value, TEST_METADATA_TYPE_DEFAULT_VALUE
+        )
 
     def test_document_metadata_create_duplicate_view(self):
         self._create_document_metadata()
@@ -616,6 +654,30 @@ class DocumentMetadataAPITestCase(
             self.test_document_metadata.value, TEST_METADATA_VALUE_EDITED
         )
 
+    def test_document_metadata_patch_default_value_view_with_full_access(self):
+        self._create_document_metadata()
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_metadata_edit
+        )
+        self.grant_access(
+            obj=self.test_metadata_type,
+            permission=permission_document_metadata_edit
+        )
+
+        response = self._request_document_metadata_edit_view_via_patch(
+            extra_data={'value': ''}
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.test_document_metadata.refresh_from_db()
+        self.assertEqual(
+            response.data['value'], TEST_METADATA_TYPE_DEFAULT_VALUE
+        )
+        self.assertEqual(
+            self.test_document_metadata.value, TEST_METADATA_TYPE_DEFAULT_VALUE
+        )
+
     def test_document_metadata_put_view_no_access(self):
         self._create_document_metadata()
 
@@ -671,6 +733,30 @@ class DocumentMetadataAPITestCase(
         )
         self.assertEqual(
             self.test_document_metadata.value, TEST_METADATA_VALUE_EDITED
+        )
+
+    def test_document_metadata_put_default_value_view_with_full_access(self):
+        self._create_document_metadata()
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_metadata_edit
+        )
+        self.grant_access(
+            obj=self.test_metadata_type,
+            permission=permission_document_metadata_edit
+        )
+
+        response = self._request_document_metadata_edit_view_via_put(
+            extra_data={'value': ''}
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.test_document_metadata.refresh_from_db()
+        self.assertEqual(
+            response.data['value'], TEST_METADATA_TYPE_DEFAULT_VALUE
+        )
+        self.assertEqual(
+            self.test_document_metadata.value, TEST_METADATA_TYPE_DEFAULT_VALUE
         )
 
 

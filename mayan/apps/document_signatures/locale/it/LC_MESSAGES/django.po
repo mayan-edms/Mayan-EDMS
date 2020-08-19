@@ -7,12 +7,13 @@
 # Daniele Bortoluzzi <daniele@elkos.it>, 2019
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2012,2015
+# Roberto Rosario, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-08 06:21-0400\n"
-"PO-Revision-Date: 2020-03-28 07:23+0000\n"
+"POT-Creation-Date: 2020-08-18 03:11-0400\n"
+"PO-Revision-Date: 2020-08-18 06:57+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -149,7 +150,7 @@ msgstr "Data firma"
 
 #: models.py:46
 msgid "ID of the key that will be used to sign the document."
-msgstr ""
+msgstr "ID della chiave che verrà utilizzata per firmare il documento."
 
 #: models.py:56
 msgid "Public key fingerprint"
@@ -181,7 +182,7 @@ msgstr "Firme incorporate versione documento"
 
 #: models.py:134
 msgid "Signature file previously generated."
-msgstr ""
+msgstr "File della firma generato in precedenza."
 
 #: models.py:137
 msgid "Signature file"
@@ -248,18 +249,18 @@ msgid "Path to the Storage subclass to use when storing detached signatures."
 msgstr "Percorso alla sottoclasse Storage da usare per l'archiviazione delle firme separate."
 
 #: settings.py:28
-msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND. "
-msgstr "Argomenti da passare al SIGNATURE_STORAGE_BACKEND. "
+msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND."
+msgstr "Argomenti da passare a SIGNATURE_STORAGE_BACKEND."
 
-#: storages.py:14
+#: storages.py:13
 msgid ""
 "Unable to initialize the detached signatures storage. Check the settings {} "
 "and {} for formatting errors."
-msgstr ""
+msgstr "Impossibile inizializzare l'archiviazione delle firme scollegate. Controlla le impostazioni {} e {} per errori di formattazione."
 
-#: storages.py:21
+#: storages.py:20
 msgid "Detached signatures"
-msgstr ""
+msgstr "Firme separate"
 
 #: views.py:68 views.py:156
 msgid "Passphrase is needed to unlock this key."
@@ -275,7 +276,7 @@ msgstr "La versione del documento è stata firmata con successo."
 
 #: views.py:122 views.py:217
 msgid "Sign"
-msgstr ""
+msgstr "Firmare"
 
 #: views.py:124
 #, python-format
@@ -332,18 +333,18 @@ msgstr "Verifica firme messo in coda con successo."
 
 #: workflow_actions.py:22
 msgid "Private key that will be used to sign the document version."
-msgstr ""
+msgstr "Chiave privata che verrà utilizzata per firmare la versione del documento."
 
 #: workflow_actions.py:37
 msgid "Sign document (detached)"
-msgstr ""
+msgstr "Firma documento (staccato)"
 
 #: workflow_actions.py:49
 msgid ""
 "Document has no version to sign. You might be trying to use this action in "
 "an initial state before the created document is yet to be processed."
-msgstr ""
+msgstr "Il documento non ha una versione da firmare. Potresti provare a utilizzare questa azione in uno stato iniziale prima che il documento creato debba ancora essere elaborato."
 
 #: workflow_actions.py:82
 msgid "Sign document (embedded)"
-msgstr ""
+msgstr "Firma documento (incorporato)"

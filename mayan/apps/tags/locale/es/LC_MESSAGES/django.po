@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-08 06:23-0400\n"
-"PO-Revision-Date: 2020-03-19 01:54+0000\n"
+"POT-Creation-Date: 2020-08-18 03:13-0400\n"
+"PO-Revision-Date: 2020-08-18 07:17+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -75,8 +75,8 @@ msgid "All"
 msgstr "Todos"
 
 #: methods.py:18
-msgid "Return a the tags attached to the document."
-msgstr "Devover las etiquetas adjuntas al documento."
+msgid "Return the tags attached to the document."
+msgstr "Devuelve las etiquetas adjuntas al documento."
 
 #: methods.py:20
 msgid "get_tags()"

@@ -1,4 +1,5 @@
 from django.db import models, transaction
+from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
@@ -6,7 +7,9 @@ from mayan.apps.documents.events import event_document_type_edited
 from mayan.apps.documents.models import DocumentType
 from mayan.apps.templating.classes import Template
 
-from .events import event_web_link_created, event_web_link_edited
+from .events import (
+    event_web_link_created, event_web_link_edited, event_web_link_navigated
+)
 from .managers import WebLinkManager
 
 
@@ -30,8 +33,6 @@ class WebLink(models.Model):
         related_name='web_links', to=DocumentType,
         verbose_name=_('Document types')
     )
-
-    objects = WebLinkManager()
 
     class Meta:
         ordering = ('label',)
@@ -91,10 +92,21 @@ class ResolvedWebLink(WebLink):
     Proxy model to represent an already resolved web link. Used for easier
     colums registration.
     """
+    objects = WebLinkManager()
+
     class Meta:
         proxy = True
 
-    def get_url_for(self, document):
+    def get_redirect(self, document, user):
+        event_web_link_navigated.commit(
+            actor=user, action_object=document,
+            target=self
+        )
+        return HttpResponseRedirect(
+            redirect_to=self.get_redirect_url_for(document=document)
+        )
+
+    def get_redirect_url_for(self, document):
         return Template(template_string=self.template).render(
             context={'document': document}
         )

@@ -36,7 +36,7 @@ from .permissions import (
 class WebLinksApp(MayanAppConfig):
     app_namespace = 'web_links'
     app_url = 'web_links'
-    has_rest_api = False
+    has_rest_api = True
     has_tests = True
     name = 'mayan.apps.web_links'
     verbose_name = _('Links')
@@ -97,11 +97,12 @@ class WebLinksApp(MayanAppConfig):
             attribute='label', is_identifier=True, is_sortable=True,
             source=WebLink
         )
-        SourceColumn(
+        source_column_enabled = SourceColumn(
             attribute='enabled', include_label=True, is_sortable=True,
             source=WebLink,
             widget=TwoStateWidget
         )
+        source_column_enabled.add_exclude(source=ResolvedWebLink)
 
         menu_facet.bind_links(
             links=(link_document_web_link_list,),

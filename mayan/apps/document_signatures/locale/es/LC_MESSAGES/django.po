@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-08 06:21-0400\n"
-"PO-Revision-Date: 2020-03-28 07:51+0000\n"
+"POT-Creation-Date: 2020-08-18 03:11-0400\n"
+"PO-Revision-Date: 2020-08-18 06:45+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -248,16 +248,16 @@ msgid "Path to the Storage subclass to use when storing detached signatures."
 msgstr "Ruta a la subclase Storage para usar cuando se almacenan firmas separadas."
 
 #: settings.py:28
-msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND. "
-msgstr "Argumentos para pasar a SIGNATURE_STORAGE_BACKEND."
+msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND."
+msgstr "Argumentos para pasar al SIGNATURE_STORAGE_BACKEND."
 
-#: storages.py:14
+#: storages.py:13
 msgid ""
 "Unable to initialize the detached signatures storage. Check the settings {} "
 "and {} for formatting errors."
 msgstr "No se puede inicializar el almacenamiento de firmas separadas. Verifique las configuraciones {} y {} para errores de formato."
 
-#: storages.py:21
+#: storages.py:20
 msgid "Detached signatures"
 msgstr "Firmas separadas"
 

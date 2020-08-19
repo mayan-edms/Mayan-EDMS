@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-08 06:21-0400\n"
-"PO-Revision-Date: 2020-08-08 09:38+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-08-18 03:11-0400\n"
+"PO-Revision-Date: 2020-08-10 13:10+0000\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -77,7 +77,7 @@ msgstr "Nenhum"
 msgid "Current state"
 msgstr "Estado atual"
 
-#: apps.py:218 apps.py:242 models.py:448
+#: apps.py:218 apps.py:242 models.py:449
 msgid "User"
 msgstr "Usuário"
 
@@ -89,7 +89,7 @@ msgstr "Última transição"
 msgid "Date and time"
 msgstr "Data e hora"
 
-#: apps.py:233 models.py:542
+#: apps.py:233 models.py:543
 msgid "Completion"
 msgstr "Finalização"
 
@@ -114,7 +114,7 @@ msgstr "Triggers são eventos do sistema que fazem com que essa transição seja
 msgid "Triggers"
 msgstr "Triggers"
 
-#: apps.py:337 models.py:762
+#: apps.py:337 models.py:763
 msgid "Type"
 msgstr "Tipo"
 
@@ -131,7 +131,7 @@ msgstr "Documentos"
 msgid "%(field_name)s template error: %(exception)s"
 msgstr "%(field_name)serro de template %(exception)s"
 
-#: error_logs.py:6 models.py:643
+#: error_logs.py:6 models.py:644
 msgid "Workflow state actions"
 msgstr "Ações do estado do workflow"
 
@@ -155,12 +155,12 @@ msgstr "Ação"
 msgid "Namespace"
 msgstr "Namespace"
 
-#: forms.py:134 models.py:59 models.py:529 models.py:611 models.py:706
-#: models.py:773
+#: forms.py:134 models.py:59 models.py:530 models.py:612 models.py:707
+#: models.py:774
 msgid "Label"
 msgstr "Rótulo"
 
-#: forms.py:138 models.py:613
+#: forms.py:138 models.py:614
 msgid "Enabled"
 msgstr "Habilitado"
 
@@ -176,7 +176,7 @@ msgstr "Sim"
 msgid "Select a transition to execute in the next step."
 msgstr "Escolha uma transição para ser executada no próximo passo."
 
-#: forms.py:192 links.py:202 models.py:444 models.py:759 models.py:814
+#: forms.py:192 links.py:202 models.py:445 models.py:760 models.py:815
 msgid "Transition"
 msgstr "Transição"
 
@@ -287,7 +287,7 @@ msgid ""
 "contain letters, numbers, and underscores."
 msgstr "Este valor será usado por outros aplicativos para referenciar este workflow. Pode conter apenas letras, números e subtraços."
 
-#: models.py:55 models.py:768
+#: models.py:55 models.py:769
 msgid "Internal name"
 msgstr "Nome interno"
 
@@ -295,7 +295,7 @@ msgstr "Nome interno"
 msgid "A short text to describe the workflow."
 msgstr "Um texto curto para descrever o workflow."
 
-#: models.py:71 models.py:279 models.py:525 models.py:702
+#: models.py:71 models.py:279 models.py:526 models.py:703
 msgid "Workflow"
 msgstr "Workflow"
 
@@ -311,7 +311,7 @@ msgstr "Documento"
 msgid "Context"
 msgstr "Contexto"
 
-#: models.py:292 models.py:437
+#: models.py:292 models.py:438
 msgid "Workflow instance"
 msgstr "Instância do workflow"
 
@@ -319,83 +319,83 @@ msgstr "Instância do workflow"
 msgid "Workflow instances"
 msgstr "Instâncias do workflow"
 
-#: models.py:440
+#: models.py:441
 msgid "Datetime"
 msgstr "Hora e data"
 
-#: models.py:450 views/workflow_instance_views.py:118
+#: models.py:451 views/workflow_instance_views.py:118
 msgid "Comment"
 msgstr "Comentário"
 
-#: models.py:451
+#: models.py:452
 msgid "Extra data"
 msgstr "Dados extra"
 
-#: models.py:455
+#: models.py:456
 msgid "Workflow instance log entry"
 msgstr "Entrada do log de instâncias do workflow"
 
-#: models.py:456
+#: models.py:457
 msgid "Workflow instance log entries"
 msgstr "Entradas do log de instâncias do workflow"
 
-#: models.py:463
+#: models.py:464
 msgid "Not a valid transition choice."
 msgstr "Não é uma opção de transição válida."
 
-#: models.py:528
+#: models.py:529
 msgid "A short text to describe the workflow state."
 msgstr "Um texto curto para descrever o estado do workflow."
 
-#: models.py:534
+#: models.py:535
 msgid ""
 "The state at which the workflow will start in. Only one state can be the "
 "initial state."
 msgstr "O estado no qual o workflow irá se iniciar. Somente um estado pode ser o estado inicial."
 
-#: models.py:536
+#: models.py:537
 msgid "Initial"
 msgstr "Inicial"
 
-#: models.py:540
+#: models.py:541
 msgid ""
 "The percent of completion that this state represents in relation to the "
 "workflow. Use numbers without the percent sign."
 msgstr "O percentual de compleição que este estado representa em relação ao workflow. Use números sem o sinal de porcento."
 
-#: models.py:548 models.py:607
+#: models.py:549 models.py:608
 msgid "Workflow state"
 msgstr "Estado do workflow"
 
-#: models.py:549
+#: models.py:550
 msgid "Workflow states"
 msgstr "Estados do workflow"
 
-#: models.py:610
+#: models.py:611
 msgid "A short text describing the action."
 msgstr "Um texto curto descrevendo a ação."
 
-#: models.py:617
+#: models.py:618
 msgid "At which moment of the state this action will execute."
 msgstr "Em que momento do workflow essa ação será executada."
 
-#: models.py:618
+#: models.py:619
 msgid "When"
 msgstr "Quando"
 
-#: models.py:622
+#: models.py:623
 msgid "The dotted Python path to the workflow action class to execute."
 msgstr "O caminho pontuado em Python para a classe de ação do workflow que será executado."
 
-#: models.py:623
+#: models.py:624
 msgid "Entry action path"
 msgstr "Caminho da ação de entrada"
 
-#: models.py:626
+#: models.py:627
 msgid "Entry action data"
 msgstr "Dados da ação de entrada"
 
-#: models.py:630
+#: models.py:631
 msgid ""
 "The condition that will determine if this state action is executed or not. "
 "The condition is evaluated against the workflow instance. Conditions that do"
@@ -404,40 +404,40 @@ msgid ""
 "considered to be the logical true."
 msgstr "A condição que determina se essa ação de estado será executada ou não. A condição é avaliada em relação à instância do workflow. As condições que não retornam nenhum valor, que retornam o lógico Python None ou uma string vazia ('') são consideradas lógicas false. Qualquer outro valor é considerado lógico true."
 
-#: models.py:636 models.py:724
+#: models.py:637 models.py:725
 msgid "Condition"
 msgstr "condição"
 
-#: models.py:642
+#: models.py:643
 msgid "Workflow state action"
 msgstr "Ação do estado do workflow"
 
-#: models.py:684
+#: models.py:685
 msgid "Unknown action type"
 msgstr "Tipo de ação desconhecido"
 
-#: models.py:689
+#: models.py:690
 msgid ""
 "The state action will be executed, depending on the condition return value."
 msgstr "A ação de estado será executada dependendo o valor de retorno da condição."
 
-#: models.py:692 models.py:752
+#: models.py:693 models.py:753
 msgid "Has a condition?"
 msgstr "Possui uma condição?"
 
-#: models.py:705
+#: models.py:706
 msgid "A short text to describe the transition."
 msgstr "Um texto curto para descrever a transição."
 
-#: models.py:710
+#: models.py:711
 msgid "Origin state"
 msgstr "Estado original"
 
-#: models.py:714
+#: models.py:715
 msgid "Destination state"
 msgstr "Estado  de destino"
 
-#: models.py:718
+#: models.py:719
 msgid ""
 "The condition that will determine if this transition is enabled or not. The "
 "condition is evaluated against the workflow instance. Conditions that do not"
@@ -446,96 +446,96 @@ msgid ""
 " the logical true."
 msgstr "A condição que determina se essa transição será ativada ou não. A condição é avaliada em relação à instância do fluxo de trabalho. As condições que não retornam nenhum valor, que retornam o lógico Python None ou uma string vazia ('') são consideradas lógicas false. Qualquer outro valor é considerado lógico true."
 
-#: models.py:732
+#: models.py:733
 msgid "Workflow transition"
 msgstr "Transição do workflow"
 
-#: models.py:733
+#: models.py:734
 msgid "Workflow transitions"
 msgstr "Transições do workflow"
 
-#: models.py:749
+#: models.py:750
 msgid ""
 "The transition will be available, depending on the condition return value."
 msgstr "A condição estará disponível, dependendo do valor de retorno da condição."
 
-#: models.py:766
+#: models.py:767
 msgid ""
 "The name that will be used to identify this field in other parts of the "
 "workflow system."
 msgstr "O nome que será usado para identificar este campo em outras partes do sistema de workflow."
 
-#: models.py:772
+#: models.py:773
 msgid "The field name that will be shown on the user interface."
 msgstr "O nome de campo que será mostrado na interface de usuário."
 
-#: models.py:776
+#: models.py:777
 msgid ""
 "An optional message that will help users better understand the purpose of "
 "the field and data to provide."
 msgstr "Uma mensagem opcional que ajudará os usuários a entenderem melhor o propósito do campo e dos dados a serem fornecidos."
 
-#: models.py:778
+#: models.py:779
 msgid "Help text"
 msgstr "Texto de ajuda"
 
-#: models.py:782
+#: models.py:783
 msgid "Whether this fields needs to be filled out or not to proceed."
 msgstr "Se este campo precisa ser preenchido para prosseguir."
 
-#: models.py:783
+#: models.py:784
 msgid "Required"
 msgstr "Obrigatório"
 
-#: models.py:787
+#: models.py:788
 msgid "An optional class to change the default presentation of the field."
 msgstr "Uma classe opcional para alterar a apresentação padrão do campo."
 
-#: models.py:788
+#: models.py:789
 msgid "Widget class"
 msgstr "Classe do widget"
 
-#: models.py:792
+#: models.py:793
 msgid "A group of keyword arguments to customize the widget. Use YAML format."
 msgstr "Um grupo de palavras chave para customizar o widget. Use o formato YAML."
 
-#: models.py:795
+#: models.py:796
 msgid "Widget keyword arguments"
 msgstr "Argumentos keyword do widget"
 
-#: models.py:800
+#: models.py:801
 msgid "Workflow transition field"
 msgstr "Campo de transição do workflow"
 
-#: models.py:801
+#: models.py:802
 msgid "Workflow transition fields"
 msgstr "Campos de transição do workflow"
 
-#: models.py:818
+#: models.py:819
 msgid "Event type"
 msgstr "Tipo de Evento"
 
-#: models.py:822
+#: models.py:823
 msgid "Workflow transition trigger event"
 msgstr "Evento trigger de transição do workflow"
 
-#: models.py:823
+#: models.py:824
 msgid "Workflow transitions trigger events"
 msgstr "Eventos trigger de transições de workflow"
 
-#: models.py:832
+#: models.py:833
 msgid "Workflow runtime proxy"
 msgstr "Proxy de tempo de execução do workflow"
 
-#: models.py:833
+#: models.py:834
 msgid "Workflow runtime proxies"
 msgstr "Proxies de tempo de execução do workflow"
 
-#: models.py:850
+#: models.py:851
 msgid "Workflow state runtime proxy"
 msgstr "Proxy de tempo de execução do workflow"
 
-#: models.py:851
+#: models.py:852
 msgid "Workflow state runtime proxies"
 msgstr "Proxies de tempo de execução do workflow"
 
@@ -585,7 +585,7 @@ msgstr "Gerar pré-visualização do workflow"
 
 #: search.py:9 search.py:14
 msgid "Workflow transition comment"
-msgstr ""
+msgstr "Comentário de transição do workflow"
 
 #: serializers.py:20
 msgid "Primary key of the document type to be added."

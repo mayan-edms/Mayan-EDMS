@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-08 06:22-0400\n"
-"PO-Revision-Date: 2020-08-08 10:15+0000\n"
+"POT-Creation-Date: 2020-08-18 03:12-0400\n"
+"PO-Revision-Date: 2020-08-18 07:08+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -311,7 +311,7 @@ msgstr "Aggiungi il tipo di metadati richiesto"
 msgid "Primary key of the metadata type to be added."
 msgstr "Chiave primaria del tipo metadato da aggiungere."
 
-#: serializers.py:133
+#: serializers.py:135
 msgid "Primary key of the metadata type to be added to the document."
 msgstr "Chiave primaria del tipo di metadati da aggiungere al documento."
 
@@ -505,8 +505,8 @@ msgstr "Tipi di metadati per il tipo di documento: %s"
 #: views.py:676
 #, python-format
 msgid "Document types for metadata type: %s"
-msgstr ""
+msgstr "Tipi di documento per il tipo di metadati: %s"
 
 #: wizard_steps.py:13
 msgid "Enter document metadata"
-msgstr ""
+msgstr "Inserisci i metadati del documento"
