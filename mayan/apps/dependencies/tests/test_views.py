@@ -8,11 +8,10 @@ from ..utils import (
     MESSAGE_NOT_LATEST, MESSAGE_UNKNOWN_VERSION, MESSAGE_UP_TO_DATE
 )
 
+from .mixins import CheckVersionViewTestMixin
 
-class CheckVersionViewTestCase(GenericViewTestCase):
-    def _request_check_version_view(self):
-        return self.get(viewname='dependencies:check_version_view')
 
+class CheckVersionViewTestCase(CheckVersionViewTestMixin, GenericViewTestCase):
     @mock.patch('mayan.apps.dependencies.utils.PyPIClient.get_versions', autospec=True)
     def test_check_version_not_latest_version(self, mock_package_releases):
         mock_package_releases.return_value = ('0.0.0',)

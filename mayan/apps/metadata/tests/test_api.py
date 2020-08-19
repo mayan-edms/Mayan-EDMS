@@ -18,7 +18,10 @@ from .literals import (
     TEST_METADATA_TYPE_DEFAULT_VALUE, TEST_METADATA_VALUE,
     TEST_METADATA_VALUE_EDITED
 )
-from .mixins import MetadataTypeAPIViewTestMixin, MetadataTypeTestMixin
+from .mixins import (
+    DocumentMetadataAPIViewTestMixin, DocumentTypeMetadataTypeAPIViewTestMixin,
+    MetadataTypeAPIViewTestMixin, MetadataTypeTestMixin
+)
 
 
 class MetadataTypeAPITestCase(
@@ -168,25 +171,18 @@ class MetadataTypeAPITestCase(
 
 
 class DocumentTypeMetadataTypeAPITestCase(
-    DocumentTestMixin, MetadataTypeTestMixin, BaseAPITestCase
+    DocumentTestMixin, DocumentTypeMetadataTypeAPIViewTestMixin,
+    MetadataTypeTestMixin, BaseAPITestCase
 ):
     auto_upload_test_document = False
 
     def setUp(self):
-        super(DocumentTypeMetadataTypeAPITestCase, self).setUp()
+        super().setUp()
         self._create_test_metadata_type()
 
     def _create_test_document_type_metadata_type(self):
         self.test_document_type_metadata_type = self.test_document_type.metadata.create(
             metadata_type=self.test_metadata_type, required=False
-        )
-
-    def _request_document_type_metadata_type_create_view(self):
-        return self.post(
-            viewname='rest_api:documenttypemetadatatype-list',
-            kwargs={'document_type_pk': self.test_document_type.pk}, data={
-                'metadata_type_pk': self.test_metadata_type.pk, 'required': False
-            }
         )
 
     def test_document_type_metadata_type_create_view_no_access(self):
@@ -215,15 +211,6 @@ class DocumentTypeMetadataTypeAPITestCase(
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertEqual(list(response.data.keys())[0], 'non_field_errors')
 
-    def _request_document_type_metadata_type_delete_view(self):
-        return self.delete(
-            viewname='rest_api:documenttypemetadatatype-detail',
-            kwargs={
-                'document_type_pk': self.test_document_type.pk,
-                'metadata_type_pk': self.test_document_type_metadata_type.pk
-            }
-        )
-
     def test_document_type_metadata_type_delete_view_no_access(self):
         self._create_test_document_type_metadata_type()
 
@@ -244,13 +231,6 @@ class DocumentTypeMetadataTypeAPITestCase(
 
         self.assertEqual(self.test_document_type.metadata.all().count(), 0)
 
-    def _request_document_type_metadata_type_list_view(self):
-        return self.get(
-            viewname='rest_api:documenttypemetadatatype-list', kwargs={
-                'document_type_pk': self.test_document_type.pk
-            }
-        )
-
     def test_document_type_metadata_type_list_view_no_access(self):
         self._create_test_document_type_metadata_type()
 
@@ -269,17 +249,6 @@ class DocumentTypeMetadataTypeAPITestCase(
         self.assertEqual(
             response.data['results'][0]['id'],
             self.test_document_type_metadata_type.pk
-        )
-
-    def _request_document_type_metadata_type_edit_view_via_patch(self):
-        return self.patch(
-            viewname='rest_api:documenttypemetadatatype-detail',
-            kwargs={
-                'document_type_pk': self.test_document_type.pk,
-                'metadata_type_pk': self.test_document_type_metadata_type.pk
-            }, data={
-                'required': True
-            }
         )
 
     def test_document_type_metadata_type_patch_view_no_access(self):
@@ -304,17 +273,6 @@ class DocumentTypeMetadataTypeAPITestCase(
         document_type_metadata_type = DocumentTypeMetadataType.objects.first()
         self.assertEqual(document_type_metadata_type.required, True)
 
-    def _request_document_type_metadata_type_edit_view_via_put(self):
-        return self.put(
-            viewname='rest_api:documenttypemetadatatype-detail',
-            kwargs={
-                'document_type_pk': self.test_document_type.pk,
-                'metadata_type_pk': self.test_document_type_metadata_type.pk
-            }, data={
-                'required': True
-            }
-        )
-
     def test_document_type_metadata_type_put_view_no_access(self):
         self._create_test_document_type_metadata_type()
 
@@ -337,70 +295,12 @@ class DocumentTypeMetadataTypeAPITestCase(
         self.assertEqual(document_type_metadata_type.required, True)
 
 
-class DocumentMetadataAPITestMixin:
-    def _request_document_metadata_create_view(self, extra_data=None):
-        data = {
-            'metadata_type_pk': self.test_metadata_type.pk,
-            'value': TEST_METADATA_VALUE
-        }
-        data.update(extra_data or {})
-
-        return self.post(
-            viewname='rest_api:documentmetadata-list',
-            kwargs={'document_pk': self.test_document.pk}, data=data
-        )
-
-    def _request_document_metadata_delete_view(self):
-        return self.delete(
-            viewname='rest_api:documentmetadata-detail',
-            kwargs={
-                'document_pk': self.test_document.pk,
-                'metadata_pk': self.test_document_metadata.pk
-            }
-        )
-
-    def _request_document_metadata_edit_view_via_patch(self, extra_data=None):
-        data = {
-            'value': TEST_METADATA_VALUE_EDITED
-        }
-        data.update(extra_data or {})
-
-        return self.patch(
-            viewname='rest_api:documentmetadata-detail',
-            kwargs={
-                'document_pk': self.test_document.pk,
-                'metadata_pk': self.test_document_metadata.pk
-            }, data=data
-        )
-
-    def _request_document_metadata_edit_view_via_put(self, extra_data=None):
-        data = {
-            'value': TEST_METADATA_VALUE_EDITED
-        }
-        data.update(extra_data or {})
-
-        return self.put(
-            viewname='rest_api:documentmetadata-detail',
-            kwargs={
-                'document_pk': self.test_document.pk,
-                'metadata_pk': self.test_document_metadata.pk
-            }, data=data
-        )
-
-    def _request_document_metadata_list_view(self):
-        return self.get(
-            viewname='rest_api:documentmetadata-list', kwargs={
-                'document_pk': self.test_document.pk
-            }
-        )
-
-
-class DocumentMetadataAPITestCase(
-    DocumentTestMixin, DocumentMetadataAPITestMixin, MetadataTypeTestMixin,
+class DocumentMetadataAPIViewTestCase(
+    DocumentTestMixin, DocumentMetadataAPIViewTestMixin, MetadataTypeTestMixin,
     BaseAPITestCase
 ):
     def setUp(self):
-        super(DocumentMetadataAPITestCase, self).setUp()
+        super().setUp()
         self._create_test_metadata_type()
         self.test_metadata_type.default = TEST_METADATA_TYPE_DEFAULT_VALUE
         self.test_metadata_type.save()
@@ -760,7 +660,7 @@ class DocumentMetadataAPITestCase(
         )
 
 
-class DocumentStubMetadataAPITestCase(DocumentMetadataAPITestCase):
+class DocumentStubMetadataAPITestCase(DocumentMetadataAPIViewTestCase):
     auto_upload_document = False
 
     def setUp(self):

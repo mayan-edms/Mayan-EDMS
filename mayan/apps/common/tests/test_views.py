@@ -7,12 +7,7 @@ from ..classes import ModelCopy
 from ..permissions import permission_object_copy
 
 from .literals import TEST_OBJECT_LABEL
-from .mixins import ObjectCopyViewTestMixin
-
-
-class CommonViewTestMixin:
-    def _request_about_view(self):
-        return self.get(viewname='common:about_view')
+from .mixins import CommonViewTestMixin, ObjectCopyViewTestMixin
 
 
 class CommonViewTestCase(CommonViewTestMixin, GenericViewTestCase):

@@ -1,11 +1,12 @@
 from rest_framework import status
 
-from mayan.apps.documents.search import document_search
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.tests.base import DocumentTestMixin
 from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
 from ..classes import SearchModel
+
+from .mixins import SearchAPIViewTestMixin
 
 
 class SearchModelAPIViewTestCase(BaseAPITestCase):
@@ -18,25 +19,6 @@ class SearchModelAPIViewTestCase(BaseAPITestCase):
         self.assertEqual(
             [search_model['pk'] for search_model in response.data['results']],
             [search_model.pk for search_model in SearchModel.all()]
-        )
-
-
-class SearchAPIViewTestMixin:
-    def _request_search_view(self):
-        query = {'q': self.test_document.label}
-        return self.get(
-            viewname='rest_api:search-view', kwargs={
-                'search_model': document_search.get_full_name()
-            }, query=query
-        )
-
-    def _request_advanced_search_view(self):
-        query = {'document_type__label': self.test_document.document_type.label}
-
-        return self.get(
-            viewname='rest_api:advanced-search-view', kwargs={
-                'search_model': document_search.get_full_name()
-            }, query=query
         )
 
 

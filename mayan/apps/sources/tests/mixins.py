@@ -1,6 +1,8 @@
 import shutil
 
-from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH
+from mayan.apps.documents.tests.literals import (
+    TEST_DOCUMENT_DESCRIPTION, TEST_SMALL_DOCUMENT_PATH
+)
 from mayan.apps.storage.utils import fs_cleanup, mkdtemp
 
 from ..literals import SOURCE_CHOICE_WEB_FORM, SOURCE_UNCOMPRESS_CHOICE_Y
@@ -14,20 +16,26 @@ from .literals import (
 )
 
 
-class DocumentVersionUploadViewTestMixin:
-    def _request_document_version_upload_view(self, source_file):
+class DocumentUploadIssueTestMixin:
+    def _request_test_source_create_view(self):
         return self.post(
-            viewname='sources:document_version_upload', kwargs={
-                'document_id': self.test_document.pk,
-                'source_id': self.test_source.pk,
-            }, data={'source-file': source_file}
+            viewname='sources:setup_source_create', kwargs={
+                'source_type_name': SOURCE_CHOICE_WEB_FORM
+            }, data={
+                'enabled': True, 'label': 'test', 'uncompress': 'n'
+            }
         )
 
-    def _request_document_version_upload_no_source_view(self, source_file):
+    def _request_test_source_edit_view(self):
         return self.post(
-            viewname='sources:document_version_upload', kwargs={
-                'document_id': self.test_document.pk,
-            }, data={'source-file': source_file}
+            viewname='documents:document_edit', kwargs={
+                'document_id': self.test_document.pk
+            },
+            data={
+                'description': TEST_DOCUMENT_DESCRIPTION,
+                'label': self.test_document.label,
+                'language': self.test_document.language
+            }
         )
 
 
@@ -48,6 +56,23 @@ class DocumentUploadWizardViewTestMixin:
             viewname='sources:document_upload_interactive', data={
                 'document_type_id': self.test_document_type.pk,
             }
+        )
+
+
+class DocumentVersionUploadViewTestMixin:
+    def _request_document_version_upload_view(self, source_file):
+        return self.post(
+            viewname='sources:document_version_upload', kwargs={
+                'document_id': self.test_document.pk,
+                'source_id': self.test_source.pk,
+            }, data={'source-file': source_file}
+        )
+
+    def _request_document_version_upload_no_source_view(self, source_file):
+        return self.post(
+            viewname='sources:document_version_upload', kwargs={
+                'document_id': self.test_document.pk,
+            }, data={'source-file': source_file}
         )
 
 

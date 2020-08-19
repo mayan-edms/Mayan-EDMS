@@ -245,7 +245,7 @@ STATICFILES_FINDERS = (
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-TEST_RUNNER = 'mayan.apps.tests.runner.MayanTestRunner'
+TEST_RUNNER = 'mayan.apps.testing.runner.MayanTestRunner'
 
 # ---------- Django REST framework -----------
 

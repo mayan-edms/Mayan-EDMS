@@ -10,12 +10,14 @@ from ..permissions import (
 
 from .literals import TEST_WORKFLOW_LABEL, TEST_WORKFLOW_LABEL_EDITED
 from .mixins import (
-    WorkflowTestMixin, WorkflowToolViewTestMixin, WorkflowViewTestMixin
+    DocumentWorkflowTemplateViewTestMixin, WorkflowTestMixin,
+    WorkflowToolViewTestMixin, WorkflowViewTestMixin
 )
 
 
 class DocumentWorkflowTemplateViewTestCase(
-    WorkflowTestMixin, GenericDocumentViewTestCase
+    DocumentWorkflowTemplateViewTestMixin, WorkflowTestMixin,
+    GenericDocumentViewTestCase
 ):
     auto_upload_document = False
 
@@ -27,13 +29,6 @@ class DocumentWorkflowTemplateViewTestCase(
         self.test_workflow.document_types.add(self.test_document_type)
         self.test_workflow.auto_launch = False
         self.test_workflow.save()
-
-    def _request_test_document_single_workflow_launch_view(self):
-        return self.post(
-            data={'workflows': self.test_workflow.pk},
-            kwargs={'document_id': self.test_document.pk},
-            viewname='document_states:document_single_workflow_templates_launch'
-        )
 
     def test_document_single_workflow_launch_view_no_permission(self):
         workflow_instance_count = self.test_document.workflows.count()

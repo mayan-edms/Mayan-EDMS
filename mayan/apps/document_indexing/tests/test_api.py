@@ -9,32 +9,8 @@ from ..permissions import (
     permission_document_indexing_view
 )
 
-from .literals import TEST_INDEX_LABEL, TEST_INDEX_SLUG
-from .mixins import IndexTestMixin
-
-
-class DocumentIndexingAPIViewTestMixin:
-    def _request_test_index_create_api_view(self):
-        return self.post(
-            viewname='rest_api:index-list', data={
-                'label': TEST_INDEX_LABEL, 'slug': TEST_INDEX_SLUG,
-                'document_types': self.test_document_type.pk
-            }
-        )
-
-    def _request_test_index_delete_api_view(self):
-        return self.delete(
-            viewname='rest_api:index-detail', kwargs={
-                'pk': self.test_index.pk
-            }
-        )
-
-    def _request_test_index_detail_api_view(self):
-        return self.get(
-            viewname='rest_api:index-detail', kwargs={
-                'pk': self.test_index.pk
-            }
-        )
+from .literals import TEST_INDEX_LABEL
+from .mixins import DocumentIndexingAPIViewTestMixin, IndexTestMixin
 
 
 class DocumentIndexingAPITestCase(

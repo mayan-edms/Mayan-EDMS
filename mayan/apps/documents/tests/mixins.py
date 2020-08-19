@@ -1,4 +1,5 @@
 import os
+import time
 
 from django.conf import settings
 
@@ -9,15 +10,64 @@ from ..literals import PAGE_RANGE_ALL
 from ..models import Document, DocumentType, FavoriteDocument
 
 from .literals import (
+    TEST_DOCUMENT_DESCRIPTION_EDITED, TEST_DOCUMENT_PATH,
     TEST_DOCUMENT_TYPE_DELETE_PERIOD, TEST_DOCUMENT_TYPE_DELETE_TIME_UNIT,
     TEST_DOCUMENT_TYPE_LABEL, TEST_DOCUMENT_TYPE_LABEL_EDITED,
     TEST_DOCUMENT_TYPE_QUICK_LABEL, TEST_DOCUMENT_TYPE_QUICK_LABEL_EDITED,
-    TEST_SMALL_DOCUMENT_FILENAME, TEST_SMALL_DOCUMENT_PATH,
-    TEST_TRANSFORMATION_ARGUMENT, TEST_TRANSFORMATION_CLASS,
-    TEST_VERSION_COMMENT
+    TEST_DOCUMENT_VERSION_COMMENT_EDITED, TEST_SMALL_DOCUMENT_FILENAME,
+    TEST_SMALL_DOCUMENT_PATH, TEST_TRANSFORMATION_ARGUMENT,
+    TEST_TRANSFORMATION_CLASS, TEST_VERSION_COMMENT
 )
 
-__all__ = ('DocumentTestMixin',)
+
+class DocumentAPIViewTestMixin:
+    def _request_test_document_api_download_view(self):
+        return self.get(
+            viewname='rest_api:document-download', kwargs={
+                'pk': self.test_document.pk
+            }
+        )
+
+    def _request_test_document_api_upload_view(self):
+        with open(file=TEST_DOCUMENT_PATH, mode='rb') as file_object:
+            return self.post(
+                viewname='rest_api:document-list', data={
+                    'document_type': self.test_document_type.pk,
+                    'file': file_object
+                }
+            )
+
+    def _request_test_document_description_api_edit_via_patch_view(self):
+        return self.patch(
+            viewname='rest_api:document-detail', kwargs={
+                'pk': self.test_document.pk
+            }, data={'description': TEST_DOCUMENT_DESCRIPTION_EDITED}
+        )
+
+    def _request_test_document_description_api_edit_via_put_view(self):
+        return self.put(
+            viewname='rest_api:document-detail', kwargs={
+                'pk': self.test_document.pk
+            }, data={'description': TEST_DOCUMENT_DESCRIPTION_EDITED}
+        )
+
+    def _request_test_document_document_type_change_api_view(self):
+        return self.post(
+            viewname='rest_api:document-type-change', kwargs={
+                'pk': self.test_document.pk
+            }, data={'new_document_type': self.test_document_type_2.pk}
+        )
+
+
+class DocumentPageAPIViewTestMixin:
+    def _request_document_page_image(self):
+        page = self.test_document.pages.first()
+        return self.get(
+            viewname='rest_api:documentpage-image', kwargs={
+                'pk': page.document_version.document_id, 'version_pk': page.document_version_id,
+                'page_pk': page.pk
+            }
+        )
 
 
 class DocumentPageDisableViewTestMixin:
@@ -98,6 +148,23 @@ class DocumentPageViewTestMixin:
         )
 
 
+class DocumentQuickLabelViewTestMixin:
+    def _request_document_quick_label_edit_view(self, extra_data=None):
+        data = {
+            'document_type_available_filenames': self.test_document_type_filename.pk,
+            'label': ''
+            # View needs at least an empty label for quick
+            # label to work. Cause is unknown.
+        }
+        data.update(extra_data or {})
+
+        return self.post(
+            viewname='documents:document_edit', kwargs={
+                'document_id': self.test_document.pk
+            }, data=data
+        )
+
+
 class DocumentTestMixin:
     auto_create_test_document_type = True
     auto_upload_test_document = True
@@ -153,6 +220,36 @@ class DocumentTestMixin:
         self.test_documents.append(document)
         self.test_document_page = document.latest_version.pages.first()
         self.test_document_version = document.latest_version
+
+
+class DocumentTypeAPIViewTestMixin:
+    def _request_test_document_type_api_create_view(self):
+        return self.post(
+            viewname='rest_api:documenttype-list', data={
+                'label': TEST_DOCUMENT_TYPE_LABEL
+            }
+        )
+
+    def _request_test_document_type_api_delete_view(self):
+        return self.delete(
+            viewname='rest_api:documenttype-detail', kwargs={
+                'pk': self.test_document_type.pk,
+            }
+        )
+
+    def _request_test_document_type_api_patch_view(self):
+        return self.patch(
+            viewname='rest_api:documenttype-detail', kwargs={
+                'pk': self.test_document_type.pk,
+            }, data={'label': TEST_DOCUMENT_TYPE_LABEL_EDITED}
+        )
+
+    def _request_test_document_type_api_put_view(self):
+        return self.put(
+            viewname='rest_api:documenttype-detail', kwargs={
+                'pk': self.test_document_type.pk,
+            }, data={'label': TEST_DOCUMENT_TYPE_LABEL_EDITED}
+        )
 
 
 class DocumentTypeViewTestMixin:
@@ -225,6 +322,62 @@ class DocumentTypeQuickLabelTestMixin:
         self.test_document_type_filename = self.test_document_type.filenames.create(
             filename=TEST_DOCUMENT_TYPE_QUICK_LABEL
         )
+
+
+class DocumentVersionAPIViewTestMixin:
+    def _request_test_document_version_api_download_view(self):
+        return self.get(
+            viewname='rest_api:documentversion-download', kwargs={
+                'pk': self.test_document.pk,
+                'version_pk': self.test_document.latest_version.pk,
+            }
+        )
+
+    def _request_test_document_version_api_edit_via_patch_view(self):
+        return self.patch(
+            viewname='rest_api:documentversion-detail', kwargs={
+                'pk': self.test_document.pk,
+                'version_pk': self.test_document.latest_version.pk
+            }, data={'comment': TEST_DOCUMENT_VERSION_COMMENT_EDITED}
+        )
+
+    def _request_test_document_version_api_edit_via_put_view(self):
+        return self.put(
+            viewname='rest_api:documentversion-detail', kwargs={
+                'pk': self.test_document.pk,
+                'version_pk': self.test_document.latest_version.pk
+            }, data={'comment': TEST_DOCUMENT_VERSION_COMMENT_EDITED}
+        )
+
+    def _request_test_document_version_api_list_view(self):
+        return self.get(
+            viewname='rest_api:document-version-list', kwargs={
+                'pk': self.test_document.pk
+            }
+        )
+
+    def _request_test_document_version_api_revert_view(self):
+        return self.delete(
+            viewname='rest_api:documentversion-detail', kwargs={
+                'pk': self.test_document.pk,
+                'version_pk': self.test_document.latest_version.pk
+            }
+        )
+
+    def _request_test_document_version_api_upload_view(self):
+        # Artificial delay since MySQL doesn't store microsecond data in
+        # timestamps. Version timestamp is used to determine which version
+        # is the latest.
+        time.sleep(1)
+
+        with open(file=TEST_DOCUMENT_PATH, mode='rb') as file_descriptor:
+            return self.post(
+                viewname='rest_api:document-version-list', kwargs={
+                    'pk': self.test_document.pk,
+                }, data={
+                    'comment': '', 'file': file_descriptor,
+                }
+            )
 
 
 class DocumentVersionTestMixin:
@@ -378,6 +531,21 @@ class DocumentViewTestMixin:
         return self.post(viewname='documents:trash_can_empty')
 
 
+class DuplicatedDocumentsViewsTestMixin:
+    def _request_document_duplicates_list_view(self):
+        return self.get(
+            viewname='documents:document_duplicates_list', kwargs={
+                'document_id': self.test_documents[0].pk
+            }
+        )
+
+    def _request_duplicated_document_list_view(self):
+        return self.get(viewname='documents:duplicated_document_list')
+
+    def _upload_duplicate_document(self):
+        self._upload_test_document()
+
+
 class FavoriteDocumentsTestMixin:
     def _request_document_add_to_favorites_view(self):
         return self.post(
@@ -399,6 +567,52 @@ class FavoriteDocumentsTestMixin:
         return self.post(
             viewname='documents:document_remove_from_favorites',
             kwargs={'document_id': self.test_document.pk}
+        )
+
+
+class TrashedDocumentAPIViewTestMixin:
+    def _request_test_document_api_trash_view(self):
+        return self.delete(
+            viewname='rest_api:document-detail', kwargs={
+                'pk': self.test_document.pk
+            }
+        )
+
+    def _request_test_trashed_document_api_delete_view(self):
+        return self.delete(
+            viewname='rest_api:trasheddocument-detail', kwargs={
+                'pk': self.test_document.pk
+            }
+        )
+
+    def _request_test_trashed_document_api_detail_view(self):
+        return self.get(
+            viewname='rest_api:trasheddocument-detail', kwargs={
+                'pk': self.test_document.pk
+            }
+        )
+
+    def _request_test_trashed_document_api_image_view(self):
+        latest_version = self.test_document.latest_version
+
+        return self.get(
+            viewname='rest_api:documentpage-image', kwargs={
+                'pk': latest_version.document_id,
+                'version_pk': latest_version.pk,
+                'page_pk': latest_version.pages.first().pk
+            }
+        )
+
+    def _request_test_trashed_document_api_list_view(self):
+        return self.get(
+            viewname='rest_api:trasheddocument-list'
+        )
+
+    def _request_test_trashed_document_api_restore_view(self):
+        return self.post(
+            viewname='rest_api:trasheddocument-restore', kwargs={
+                'pk': self.test_document.pk
+            }
         )
 
 

@@ -13,8 +13,8 @@ from .literals import (
     TEST_DOCUMENT_TYPE_QUICK_LABEL, TEST_DOCUMENT_TYPE_QUICK_LABEL_EDITED
 )
 from .mixins import (
-    DocumentTypeQuickLabelTestMixin, DocumentTypeQuickLabelViewTestMixin,
-    DocumentTypeViewTestMixin
+    DocumentQuickLabelViewTestMixin, DocumentTypeQuickLabelTestMixin,
+    DocumentTypeQuickLabelViewTestMixin, DocumentTypeViewTestMixin
 )
 
 
@@ -201,25 +201,8 @@ class DocumentTypeQuickLabelViewsTestCase(
         )
 
 
-class DocumentsQuickLabelViewTestMixin:
-    def _request_document_quick_label_edit_view(self, extra_data=None):
-        data = {
-            'document_type_available_filenames': self.test_document_type_filename.pk,
-            'label': ''
-            # View needs at least an empty label for quick
-            # label to work. Cause is unknown.
-        }
-        data.update(extra_data or {})
-
-        return self.post(
-            viewname='documents:document_edit', kwargs={
-                'document_id': self.test_document.pk
-            }, data=data
-        )
-
-
 class DocumentsQuickLabelViewTestCase(
-    DocumentsQuickLabelViewTestMixin, DocumentTypeQuickLabelTestMixin,
+    DocumentQuickLabelViewTestMixin, DocumentTypeQuickLabelTestMixin,
     GenericDocumentViewTestCase
 ):
     def test_document_quick_label_no_permission(self):

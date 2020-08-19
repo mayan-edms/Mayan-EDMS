@@ -8,6 +8,30 @@ from .literals import (
 )
 
 
+class DocumentIndexingAPIViewTestMixin:
+    def _request_test_index_create_api_view(self):
+        return self.post(
+            viewname='rest_api:index-list', data={
+                'label': TEST_INDEX_LABEL, 'slug': TEST_INDEX_SLUG,
+                'document_types': self.test_document_type.pk
+            }
+        )
+
+    def _request_test_index_delete_api_view(self):
+        return self.delete(
+            viewname='rest_api:index-detail', kwargs={
+                'pk': self.test_index.pk
+            }
+        )
+
+    def _request_test_index_detail_api_view(self):
+        return self.get(
+            viewname='rest_api:index-detail', kwargs={
+                'pk': self.test_index.pk
+            }
+        )
+
+
 class DocumentIndexViewTestMixin:
     def _request_test_document_index_list_view(self):
         return self.get(

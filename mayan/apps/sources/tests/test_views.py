@@ -11,7 +11,7 @@ from mayan.apps.documents.tests.literals import (
 )
 from mayan.apps.testing.tests.base import GenericViewTestCase
 
-from ..literals import SOURCE_CHOICE_WEB_FORM, SOURCE_UNCOMPRESS_CHOICE_Y
+from ..literals import SOURCE_UNCOMPRESS_CHOICE_Y
 from ..models import WebFormSource
 from ..permissions import (
     permission_sources_setup_create, permission_sources_setup_delete,
@@ -21,9 +21,9 @@ from ..permissions import (
 
 from .literals import TEST_SOURCE_LABEL, TEST_SOURCE_UNCOMPRESS_N
 from .mixins import (
-    DocumentUploadWizardViewTestMixin, DocumentVersionUploadViewTestMixin,
-    StagingFolderTestMixin, StagingFolderViewTestMixin, SourceTestMixin,
-    SourceViewTestMixin
+    DocumentUploadIssueTestMixin, DocumentUploadWizardViewTestMixin,
+    DocumentVersionUploadViewTestMixin, StagingFolderTestMixin,
+    StagingFolderViewTestMixin, SourceTestMixin, SourceViewTestMixin
 )
 
 
@@ -125,33 +125,14 @@ class DocumentUploadWizardViewTestCase(
         )
 
 
-class DocumentUploadIssueTestCase(GenericDocumentViewTestCase):
+class DocumentUploadIssueTestCase(
+    DocumentUploadIssueTestMixin, GenericDocumentViewTestCase
+):
     auto_upload_test_document = False
     auto_login_superuser = True
     auto_login_user = False
     create_test_case_superuser = True
     create_test_case_user = False
-
-    def _request_test_source_create_view(self):
-        return self.post(
-            viewname='sources:setup_source_create', kwargs={
-                'source_type_name': SOURCE_CHOICE_WEB_FORM
-            }, data={
-                'enabled': True, 'label': 'test', 'uncompress': 'n'
-            }
-        )
-
-    def _request_test_source_edit_view(self):
-        return self.post(
-            viewname='documents:document_edit', kwargs={
-                'document_id': self.test_document.pk
-            },
-            data={
-                'description': TEST_DOCUMENT_DESCRIPTION,
-                'label': self.test_document.label,
-                'language': self.test_document.language
-            }
-        )
 
     def test_issue_25(self):
         # Create new webform source

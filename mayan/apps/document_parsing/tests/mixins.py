@@ -47,6 +47,17 @@ class DocumentContentViewTestMixin:
         )
 
 
+class DocumentParsingAPITestMixin:
+    def _request_document_page_content_view(self):
+        return self.get(
+            viewname='rest_api:document-page-content-view', kwargs={
+                'document_pk': self.test_document.pk,
+                'version_pk': self.test_document.latest_version.pk,
+                'page_pk': self.test_document.latest_version.pages.first().pk
+            }
+        )
+
+
 class DocumentTypeContentViewsTestMixin:
     def _request_test_document_type_parsing_settings(self):
         return self.get(

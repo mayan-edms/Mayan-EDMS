@@ -11,21 +11,16 @@ from ..permissions import (
 )
 
 from .literals import TEST_DOCUMENT_CONTENT
-from .mixins import DocumentTypeParsingSettingsAPIViewTestMixin
+from .mixins import (
+    DocumentParsingAPITestMixin, DocumentTypeParsingSettingsAPIViewTestMixin
+)
 
 
 @override_settings(DOCUMENT_PARSING_AUTO_PARSING=True)
-class DocumentParsingAPITestCase(DocumentTestMixin, BaseAPITestCase):
+class DocumentParsingAPITestCase(
+    DocumentParsingAPITestMixin, DocumentTestMixin, BaseAPITestCase
+):
     test_document_filename = TEST_HYBRID_DOCUMENT
-
-    def _request_document_page_content_view(self):
-        return self.get(
-            viewname='rest_api:document-page-content-view', kwargs={
-                'document_pk': self.test_document.pk,
-                'version_pk': self.test_document.latest_version.pk,
-                'page_pk': self.test_document.latest_version.pages.first().pk
-            }
-        )
 
     def test_get_document_version_page_content_no_access(self):
         response = self._request_document_page_content_view()

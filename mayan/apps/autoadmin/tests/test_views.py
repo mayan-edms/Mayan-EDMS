@@ -1,15 +1,10 @@
-from mayan.apps.common.settings import setting_home_view
 from mayan.apps.testing.tests.base import GenericViewTestCase
 from mayan.apps.testing.tests.utils import mute_stdout
 
 from ..models import AutoAdminSingleton
 
 from .literals import TEST_FIRST_TIME_LOGIN_TEXT, TEST_MOCK_VIEW_TEXT
-
-
-class AutoAdminViewMixing:
-    def _request_home_view(self):
-        return self.get(viewname=setting_home_view.value, follow=True)
+from .mixins import AutoAdminViewMixing
 
 
 class AutoAdminViewCase(AutoAdminViewMixing, GenericViewTestCase):

@@ -4,14 +4,12 @@ from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
 from ..classes import Template
 
-TEST_TEMPLATE_RESULT = '<div'
+from .literals import TEST_TEMPLATE_RESULT
+from .mixins import CommonAPITestMixin
 
 
-class CommonAPITestCase(BaseAPITestCase):
+class CommonAPITestCase(CommonAPITestMixin, BaseAPITestCase):
     auto_login_user = False
-
-    def _request_content_type_list_api_view(self):
-        return self.get(viewname='rest_api:content-type-list')
 
     def test_content_type_list_api_view(self):
         response = self._request_content_type_list_api_view()
