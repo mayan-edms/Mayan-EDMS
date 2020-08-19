@@ -51,6 +51,10 @@ class EXIFToolDriver(FileMetadataDriver):
                     else:
                         return json.loads(s=result.stdout)[0]
             except Exception as exception:
+                logger.error(
+                    'Error processing document version: %s; %s',
+                    document_version, exception
+                )
                 raise
             finally:
                 fs_cleanup(filename=str(path_temporary_file))

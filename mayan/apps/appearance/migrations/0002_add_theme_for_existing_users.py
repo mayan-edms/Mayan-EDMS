@@ -1,6 +1,5 @@
 from django.conf import settings
-from django.db import migrations, models
-import django.db.models.deletion
+from django.db import migrations
 
 
 def operation_add_user_theme_settings_to_existing_users(apps, schema_editor):

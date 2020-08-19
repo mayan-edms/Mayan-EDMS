@@ -93,7 +93,7 @@ class DocumentPage(models.Model):
                     self.pk, combined_cache_filename
                 )
             )
-        except:
+        except Exception:
             raise
         else:
             # Second try block to release the lock even on fatal errors inside

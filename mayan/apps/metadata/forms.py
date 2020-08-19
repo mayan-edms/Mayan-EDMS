@@ -169,7 +169,7 @@ class MetadataTypeForm(forms.ModelForm):
             initial_help_text=self.fields['default'].help_text, required=False
         )
         self.fields['lookup'] = TemplateField(
-                initial_help_text=format_lazy(
+            initial_help_text=format_lazy(
                 '{}{}{}',
                 self.fields['lookup'].help_text,
                 _(' Available template context variables: '),

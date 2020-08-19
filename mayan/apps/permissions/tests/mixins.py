@@ -110,7 +110,7 @@ class RoleAPIViewTestMixin:
             extra_data=extra_data, request_type='put'
         )
 
-    def  _request_test_role_list_api_view(self):
+    def _request_test_role_list_api_view(self):
         return self.get(viewname='rest_api:role-list')
 
 

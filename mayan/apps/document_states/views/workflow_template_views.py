@@ -12,8 +12,7 @@ from mayan.apps.documents.permissions import permission_document_type_edit
 from mayan.apps.views.generics import (
     AddRemoveView, ConfirmView, MultipleObjectFormActionView,
     MultipleObjectConfirmActionView, SingleObjectCreateView,
-    SingleObjectDeleteView, SingleObjectDetailView, SingleObjectEditView,
-    SingleObjectListView
+    SingleObjectDetailView, SingleObjectEditView, SingleObjectListView
 )
 from mayan.apps.views.mixins import ExternalObjectMixin
 

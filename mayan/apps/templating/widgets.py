@@ -5,7 +5,6 @@ from mayan.apps.common.classes import ModelAttribute
 from mayan.apps.views.widgets import NamedMultiWidget
 
 from .classes import Template
-from .literals import EMPTY_LABEL
 
 
 class TemplateWidget(NamedMultiWidget):

@@ -1,7 +1,6 @@
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.converter.classes import Layer
-from mayan.apps.converter.layers import layer_saved_transformations
 
 from .permissions import (
     permission_redaction_create, permission_redaction_delete,

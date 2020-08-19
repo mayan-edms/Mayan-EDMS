@@ -11,7 +11,7 @@ from mayan.apps.common.menus import (
     menu_setup
 )
 from mayan.apps.documents.links.document_type_links import (
-    link_document_type_create, link_document_type_list
+    link_document_type_list
 )
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.events.links import (
