@@ -209,6 +209,7 @@
 - Add "No results" text for empty file metadata driver lists.
 - Add file metadata submit link for "No results" file metadata driver
   template.
+- Remove converter.validators and replace it with common.validators.
 
 3.4.14 (2020-08-18)
 ===================

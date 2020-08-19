@@ -7,14 +7,15 @@ from django.db import models
 from django.db.models import Max
 from django.utils.translation import ugettext, ugettext_lazy as _
 
-from mayan.apps.common.validators import validate_internal_name
+from mayan.apps.common.validators import (
+    YAMLValidator, validate_internal_name
+)
 from mayan.apps.storage.classes import DefinedStorageLazy
 
 from .classes import Layer
 from .literals import STORAGE_NAME_ASSETS
 from .managers import LayerTransformationManager, ObjectLayerManager
 from .transformations import BaseTransformation
-from .validators import YAMLValidator
 
 logger = logging.getLogger(name=__name__)
 
