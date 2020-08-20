@@ -216,6 +216,8 @@
 - Sort search form fields.
 - Make web link label field unique. A data migration is included to
   de-duplicate the labels before altering the schema.
+- Enable the web link navigated event for subscription and as workflow
+  trigger.
 
 3.4.14 (2020-08-18)
 ===================
