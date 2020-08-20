@@ -83,9 +83,11 @@ class SmartLinkConditionViewTestCase(
     SmartLinkConditionViewTestMixin, SmartLinkTestMixin,
     SmartLinkViewTestMixin, GenericViewTestCase
 ):
-    def test_smart_link_condition_create_view_no_permission(self):
+    def setUp(self):
+        super().setUp()
         self._create_test_smart_link()
 
+    def test_smart_link_condition_create_view_no_permission(self):
         condition_count = self.test_smart_link.conditions.count()
 
         response = self._request_test_smart_link_condition_create_view()
@@ -96,7 +98,6 @@ class SmartLinkConditionViewTestCase(
         )
 
     def test_smart_link_condition_create_view_with_access(self):
-        self._create_test_smart_link()
         self.grant_access(
             obj=self.test_smart_link, permission=permission_smart_link_edit
         )
@@ -111,7 +112,6 @@ class SmartLinkConditionViewTestCase(
         )
 
     def test_smart_link_condition_list_view_no_permission(self):
-        self._create_test_smart_link()
         self._create_test_smart_link_condition()
 
         response = self._request_test_smart_link_condition_list_view()
@@ -121,7 +121,6 @@ class SmartLinkConditionViewTestCase(
         )
 
     def test_smart_link_condition_list_view_with_access(self):
-        self._create_test_smart_link()
         self._create_test_smart_link_condition()
         self.grant_access(
             obj=self.test_smart_link, permission=permission_smart_link_edit
@@ -134,7 +133,6 @@ class SmartLinkConditionViewTestCase(
         )
 
     def test_smart_link_condition_delete_view_no_permission(self):
-        self._create_test_smart_link()
         self._create_test_smart_link_condition()
         condition_count = self.test_smart_link.conditions.count()
 
@@ -146,7 +144,6 @@ class SmartLinkConditionViewTestCase(
         )
 
     def test_smart_link_condition_delete_view_with_access(self):
-        self._create_test_smart_link()
         self._create_test_smart_link_condition()
         self.grant_access(
             obj=self.test_smart_link, permission=permission_smart_link_edit
@@ -161,7 +158,6 @@ class SmartLinkConditionViewTestCase(
         )
 
     def test_smart_link_condition_edit_view_no_permission(self):
-        self._create_test_smart_link()
         self._create_test_smart_link_condition()
         instance_values = self._model_instance_to_dictionary(
             instance=self.test_smart_link_condition
@@ -178,7 +174,6 @@ class SmartLinkConditionViewTestCase(
         )
 
     def test_smart_link_condition_edit_view_with_access(self):
-        self._create_test_smart_link()
         self._create_test_smart_link_condition()
         self.grant_access(
             obj=self.test_smart_link, permission=permission_smart_link_edit

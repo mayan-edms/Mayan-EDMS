@@ -29,16 +29,13 @@ class ResolvedSmartLinkAPIViewTestCase(
     def setUp(self):
         super(ResolvedSmartLinkAPIViewTestCase, self).setUp()
         self._create_test_smart_link(add_test_document_type=True)
-
-    def test_resolved_smart_link_detail_view_no_permission(self):
         self._create_test_smart_link_condition()
 
+    def test_resolved_smart_link_detail_view_no_permission(self):
         response = self._request_resolved_smart_link_detail_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_resolved_smart_link_detail_view_with_document_access(self):
-        self._create_test_smart_link_condition()
-
         self.grant_access(
             obj=self.test_document, permission=permission_document_view
         )
@@ -47,8 +44,6 @@ class ResolvedSmartLinkAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_resolved_smart_link_detail_view_with_smart_link_access(self):
-        self._create_test_smart_link_condition()
-
         self.grant_access(
             obj=self.test_smart_link, permission=permission_smart_link_view
         )
@@ -57,8 +52,6 @@ class ResolvedSmartLinkAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_resolved_smart_link_detail_view_with_full_access(self):
-        self._create_test_smart_link_condition()
-
         self.grant_access(
             obj=self.test_smart_link, permission=permission_smart_link_view
         )
@@ -74,16 +67,12 @@ class ResolvedSmartLinkAPIViewTestCase(
         )
 
     def test_resolved_smart_link_list_view_no_permission(self):
-        self._create_test_smart_link_condition()
-
         response = self._request_resolved_smart_link_list_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
         self.assertFalse('results' in response.data)
 
     def test_resolved_smart_link_list_view_with_document_access(self):
-        self._create_test_smart_link_condition()
-
         self.grant_access(
             obj=self.test_document, permission=permission_document_view
         )
@@ -94,8 +83,6 @@ class ResolvedSmartLinkAPIViewTestCase(
         self.assertEqual(response.data['count'], 0)
 
     def test_resolved_smart_link_list_view_with_smart_link_access(self):
-        self._create_test_smart_link_condition()
-
         self.grant_access(
             obj=self.test_smart_link, permission=permission_smart_link_view
         )
@@ -105,8 +92,6 @@ class ResolvedSmartLinkAPIViewTestCase(
         self.assertFalse('results' in response.data)
 
     def test_resolved_smart_link_list_view_with_access(self):
-        self._create_test_smart_link_condition()
-
         self.grant_access(
             obj=self.test_smart_link, permission=permission_smart_link_view
         )
@@ -121,14 +106,10 @@ class ResolvedSmartLinkAPIViewTestCase(
         )
 
     def test_resolved_smart_link_document_list_view_no_permission(self):
-        self._create_test_smart_link_condition()
-
         response = self._request_resolved_smart_link_document_list_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_resolved_smart_link_document_list_view_with_smart_link_access(self):
-        self._create_test_smart_link_condition()
-
         self.grant_access(
             obj=self.test_smart_link, permission=permission_smart_link_view
         )
@@ -137,8 +118,6 @@ class ResolvedSmartLinkAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_resolved_smart_link_document_list_view_with_document_access(self):
-        self._create_test_smart_link_condition()
-
         self.grant_access(
             obj=self.test_document, permission=permission_document_view
         )
@@ -147,8 +126,6 @@ class ResolvedSmartLinkAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_resolved_smart_link_document_list_view_with_full_access(self):
-        self._create_test_smart_link_condition()
-
         self.grant_access(
             obj=self.test_document, permission=permission_document_view
         )
