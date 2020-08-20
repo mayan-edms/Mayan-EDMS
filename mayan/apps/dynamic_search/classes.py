@@ -69,10 +69,10 @@ class SearchField:
     """
     Search for terms in fields that directly belong to the parent SearchModel
     """
-    def __init__(self, search_model, field, label, transformation_function=None):
+    def __init__(self, search_model, field, label=None, transformation_function=None):
         self.search_model = search_model
         self.field = field
-        self.label = label
+        self._label = label
         self.transformation_function = transformation_function
 
     def get_full_name(self):
@@ -85,6 +85,10 @@ class SearchField:
         return get_related_field(
             model=self.get_model(), related_field_name=self.field
         )
+
+    @property
+    def label(self):
+        return self._label or self.get_model_field().verbose_name
 
 
 class SearchModel(AppsModuleLoaderMixin):

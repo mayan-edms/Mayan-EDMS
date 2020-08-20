@@ -15,11 +15,5 @@ tag_search = SearchModel(
     permission=permission_tag_view,
     serializer_path='mayan.apps.tags.serializers.TagSerializer'
 )
-
-tag_search.add_model_field(
-    field='label', label=_('Label')
-)
-
-tag_search.add_model_field(
-    field='color', label=_('Color')
-)
+tag_search.add_model_field(field='label')
+tag_search.add_model_field(field='color')

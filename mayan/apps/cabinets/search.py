@@ -19,9 +19,7 @@ cabinet_search = SearchModel(
     serializer_path='mayan.apps.cabinets.serializers.CabinetSerializer'
 )
 
-cabinet_search.add_model_field(
-    field='label', label=_('Label')
-)
+cabinet_search.add_model_field(field='label')
 
 cabinet_search.add_model_field(
     field='documents__document_type__label', label=_('Document type')
