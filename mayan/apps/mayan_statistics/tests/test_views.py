@@ -7,7 +7,7 @@ from .mixins import StatisticsViewTestMixin
 
 
 class StatisticsViewTestCase(StatisticsViewTestMixin, GenericViewTestCase):
-    def test_statistic_detail_view_no_permissions(self):
+    def test_statistic_detail_view_no_permission(self):
         self.statistic = Statistic.get_all()[0]
 
         response = self._request_test_statistic_detail_view()
@@ -21,7 +21,7 @@ class StatisticsViewTestCase(StatisticsViewTestMixin, GenericViewTestCase):
         response = self._request_test_statistic_detail_view()
         self.assertEqual(response.status_code, 200)
 
-    def test_statistic_namespace_list_view_no_permissions(self):
+    def test_statistic_namespace_list_view_no_permission(self):
         response = self._request_test_namespace_list_view()
         self.assertEqual(response.status_code, 403)
 

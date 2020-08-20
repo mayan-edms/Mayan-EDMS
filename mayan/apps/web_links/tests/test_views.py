@@ -18,7 +18,7 @@ from .mixins import WebLinkTestMixin, WebLinkViewTestMixin
 class WebLinkViewTestCase(
     WebLinkTestMixin, WebLinkViewTestMixin, GenericViewTestCase
 ):
-    def test_web_link_create_view_no_permissions(self):
+    def test_web_link_create_view_no_permission(self):
         web_link_count = WebLink.objects.count()
 
         response = self._request_test_web_link_create_view()
@@ -36,7 +36,7 @@ class WebLinkViewTestCase(
 
         self.assertEqual(WebLink.objects.count(), web_link_count + 1)
 
-    def test_web_link_delete_view_no_permissions(self):
+    def test_web_link_delete_view_no_permission(self):
         self._create_test_web_link()
 
         web_link_count = WebLink.objects.count()
@@ -60,7 +60,7 @@ class WebLinkViewTestCase(
 
         self.assertEqual(WebLink.objects.count(), web_link_count - 1)
 
-    def test_web_link_edit_view_no_permissions(self):
+    def test_web_link_edit_view_no_permission(self):
         self._create_test_web_link()
 
         web_link_label = self.test_web_link.label
@@ -112,7 +112,7 @@ class DocumentWebLinkViewTestCase(
         super(DocumentWebLinkViewTestCase, self).setUp()
         self._create_test_web_link(add_document_type=True)
 
-    def test_document_web_links_list_view_no_permissions(self):
+    def test_document_web_links_list_view_no_permission(self):
         response = self._request_test_document_web_link_list_view()
         self.assertNotContains(
             response=response, text=force_text(self.test_document),
@@ -187,7 +187,7 @@ class DocumentWebLinkViewTestCase(
             status_code=200
         )
 
-    def test_document_resolved_web_link_view_no_permissions(self):
+    def test_document_resolved_web_link_view_no_permission(self):
         response = self._request_test_document_web_link_instance_view()
         self.assertEqual(response.status_code, 404)
 

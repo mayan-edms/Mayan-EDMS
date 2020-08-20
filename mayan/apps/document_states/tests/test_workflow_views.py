@@ -104,7 +104,7 @@ class WorkflowViewTestCase(
         self.assertEqual(Workflow.objects.count(), 1)
         self.assertEqual(Workflow.objects.all()[0].label, TEST_WORKFLOW_LABEL)
 
-    def test_workflow_delete_view_no_access(self):
+    def test_workflow_delete_view_no_permission(self):
         self._create_test_workflow()
 
         response = self._request_test_workflow_delete_view()
@@ -124,7 +124,7 @@ class WorkflowViewTestCase(
 
         self.assertFalse(self.test_workflow in Workflow.objects.all())
 
-    def test_workflow_edit_view_no_access(self):
+    def test_workflow_edit_view_no_permission(self):
         self._create_test_workflow()
 
         response = self._request_test_workflow_edit_view()
@@ -146,7 +146,7 @@ class WorkflowViewTestCase(
         self.test_workflow.refresh_from_db()
         self.assertEqual(self.test_workflow.label, TEST_WORKFLOW_LABEL_EDITED)
 
-    def test_workflow_list_view_no_access(self):
+    def test_workflow_list_view_no_permission(self):
         self._create_test_workflow()
 
         response = self._request_test_workflow_list_view()
@@ -165,7 +165,7 @@ class WorkflowViewTestCase(
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, text=self.test_workflow.label)
 
-    def test_workflow_template_preview_view_no_access(self):
+    def test_workflow_template_preview_view_no_permission(self):
         self._create_test_workflow()
 
         response = self._request_test_workflow_template_preview_view()

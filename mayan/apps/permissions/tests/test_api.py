@@ -81,7 +81,7 @@ class RoleAPIViewTestCase(
             self.test_permission.stored_permission in new_role.permissions.all()
         )
 
-    def test_role_delete_view_no_access(self):
+    def test_role_delete_view_no_permission(self):
         self._create_test_role()
 
         role_count = Role.objects.count()
@@ -103,7 +103,7 @@ class RoleAPIViewTestCase(
 
         self.assertEqual(Role.objects.count(), role_count - 1)
 
-    def test_role_edit_via_patch_no_access(self):
+    def test_role_edit_via_patch_no_permission(self):
         self._create_test_role()
 
         role_label = self.test_role.label
@@ -126,7 +126,7 @@ class RoleAPIViewTestCase(
         self.test_role.refresh_from_db()
         self.assertNotEqual(self.test_role.label, role_label)
 
-    def test_role_edit_via_put_no_access(self):
+    def test_role_edit_via_put_no_permission(self):
         self._create_test_role()
 
         response = self._request_test_role_edit_api_view(request_type='put')
@@ -150,7 +150,7 @@ class RoleAPIViewTestCase(
         self.test_role.refresh_from_db()
         self.assertNotEqual(self.test_role.label, role_label)
 
-    def test_role_edit_api_patch_view_extra_data_no_access(self):
+    def test_role_edit_api_patch_view_extra_data_no_permission(self):
         self._create_test_group()
         self._create_test_permission()
         self._create_test_role()
@@ -190,7 +190,7 @@ class RoleAPIViewTestCase(
             self.test_permission.stored_permission in self.test_role.permissions.all()
         )
 
-    def test_role_edit_api_put_view_extra_data_no_access(self):
+    def test_role_edit_api_put_view_extra_data_no_permission(self):
         self._create_test_group()
         self._create_test_permission()
         self._create_test_role()
@@ -230,7 +230,7 @@ class RoleAPIViewTestCase(
             self.test_permission.stored_permission in self.test_role.permissions.all()
         )
 
-    def test_roles_list_view_no_access(self):
+    def test_roles_list_view_no_permission(self):
         self._create_test_role()
 
         response = self._request_test_role_list_api_view()

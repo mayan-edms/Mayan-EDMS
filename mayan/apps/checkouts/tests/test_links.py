@@ -25,7 +25,7 @@ class CheckoutLinksTestCase(
         context['user'] = self._test_case_user
         return link_check_out_info.resolve(context=context)
 
-    def test_document_check_out_link_no_access(self):
+    def test_document_check_out_link_no_permission(self):
         resolved_link = self._resolve_document_check_out_link()
         self.assertEqual(resolved_link, None)
 
@@ -36,7 +36,7 @@ class CheckoutLinksTestCase(
         resolved_link = self._resolve_document_check_out_link()
         self.assertNotEqual(resolved_link, None)
 
-    def test_document_check_out_info_link_no_access(self):
+    def test_document_check_out_info_link_no_permission(self):
         resolved_link = self._resolve_document_check_out_info_link()
         self.assertEqual(resolved_link, None)
 

@@ -50,7 +50,7 @@ class ThemeViewTestCase(
 ):
     _test_event_object_name = 'test_theme'
 
-    def test_theme_create_view_no_permissions(self):
+    def test_theme_create_view_no_permission(self):
         theme_count = Theme.objects.count()
 
         response = self._request_test_theme_create_view()
@@ -74,7 +74,7 @@ class ThemeViewTestCase(
         event = self._get_test_object_event()
         self.assertEqual(event.verb, event_theme_created.id)
 
-    def test_theme_delete_view_no_permissions(self):
+    def test_theme_delete_view_no_permission(self):
         self._create_test_theme()
 
         theme_count = Theme.objects.count()
@@ -104,7 +104,7 @@ class ThemeViewTestCase(
         event = self._get_test_object_event()
         self.assertEqual(event, None)
 
-    def test_theme_edit_view_no_permissions(self):
+    def test_theme_edit_view_no_permission(self):
         self._create_test_theme()
 
         theme_label = self.test_theme.label

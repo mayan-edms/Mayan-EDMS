@@ -363,7 +363,7 @@ class DocumentMetadataViewTestCase(
             set([self.test_documents[0].pk, self.test_documents[1].pk])
         )
 
-    def test_document_metadata_list_view_no_access(self):
+    def test_document_metadata_list_view_no_permission(self):
         self._create_test_document_metadata()
 
         response = self._request_test_document_metadata_list_view()

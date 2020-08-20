@@ -211,7 +211,7 @@ class UserViewTestCase(UserViewTestMixin, GenericViewTestCase):
 
         self.assertEqual(get_user_model().objects.count(), user_count + 1)
 
-    def test_user_delete_view_no_access(self):
+    def test_user_delete_view_no_permission(self):
         self._create_test_user()
 
         user_count = get_user_model().objects.count()
@@ -233,7 +233,7 @@ class UserViewTestCase(UserViewTestMixin, GenericViewTestCase):
 
         self.assertEqual(get_user_model().objects.count(), user_count - 1)
 
-    def test_user_multiple_delete_view_no_access(self):
+    def test_user_multiple_delete_view_no_permission(self):
         self._create_test_user()
 
         user_count = get_user_model().objects.count()

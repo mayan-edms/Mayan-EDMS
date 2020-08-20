@@ -9,7 +9,7 @@ from .mixins import RoleTestMixin, RoleViewTestMixin
 
 
 class RoleEventsTestCase(RoleTestMixin, RoleViewTestMixin, GenericViewTestCase):
-    def test_role_created_event_no_permissions(self):
+    def test_role_created_event_no_permission(self):
         Action.objects.all().delete()
 
         response = self._request_test_role_create_view()
@@ -29,7 +29,7 @@ class RoleEventsTestCase(RoleTestMixin, RoleViewTestMixin, GenericViewTestCase):
         self.assertEqual(event.target, self.test_role)
         self.assertEqual(event.actor, self._test_case_user)
 
-    def test_role_edited_event_no_permissions(self):
+    def test_role_edited_event_no_permission(self):
         self._create_test_role()
         Action.objects.all().delete()
 

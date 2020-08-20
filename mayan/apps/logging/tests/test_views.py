@@ -14,7 +14,7 @@ class LoggingViewTestCase(
         self._create_test_object()
         self._create_error_log_entry()
 
-    def test_object_error_list_view_no_permissions(self):
+    def test_object_error_list_view_no_permission(self):
         response = self._request_object_error_log_list_view()
         self.assertNotContains(
             response=response, text=TEST_ERROR_LOG_ENTRY_RESULT,

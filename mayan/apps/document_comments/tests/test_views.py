@@ -13,7 +13,7 @@ class DocumentCommentViewTestCase(
     DocumentCommentViewTestMixin, DocumentCommentTestMixin,
     GenericDocumentViewTestCase
 ):
-    def test_comment_create_view_no_permissions(self):
+    def test_comment_create_view_no_permission(self):
         comment_count = Comment.objects.count()
 
         response = self._request_test_comment_create_view()
@@ -33,7 +33,7 @@ class DocumentCommentViewTestCase(
 
         self.assertEqual(comment_count + 1, Comment.objects.count())
 
-    def test_comment_delete_view_no_permissions(self):
+    def test_comment_delete_view_no_permission(self):
         self._create_test_comment()
 
         comment_count = Comment.objects.count()
@@ -58,7 +58,7 @@ class DocumentCommentViewTestCase(
 
         self.assertEqual(Comment.objects.count(), comment_count - 1)
 
-    def test_comment_edit_view_no_permissions(self):
+    def test_comment_edit_view_no_permission(self):
         self._create_test_comment()
 
         comment_text = self.test_document_comment.comment

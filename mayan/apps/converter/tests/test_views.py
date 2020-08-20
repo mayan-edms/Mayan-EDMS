@@ -18,7 +18,7 @@ from ..permissions import (
 class AssetViewTestCase(
     AssetTestMixin, AssetViewTestMixin, GenericViewTestCase
 ):
-    def test_asset_create_view_no_permissions(self):
+    def test_asset_create_view_no_permission(self):
         asset_count = Asset.objects.count()
 
         response = self._request_test_asset_create_view()
@@ -36,7 +36,7 @@ class AssetViewTestCase(
 
         self.assertEqual(Asset.objects.count(), asset_count + 1)
 
-    def test_asset_delete_view_no_permissions(self):
+    def test_asset_delete_view_no_permission(self):
         self._create_test_asset()
 
         asset_count = Asset.objects.count()
@@ -60,7 +60,7 @@ class AssetViewTestCase(
 
         self.assertEqual(Asset.objects.count(), asset_count - 1)
 
-    def test_asset_edit_view_no_permissions(self):
+    def test_asset_edit_view_no_permission(self):
         self._create_test_asset()
 
         asset_label = self.test_asset.label

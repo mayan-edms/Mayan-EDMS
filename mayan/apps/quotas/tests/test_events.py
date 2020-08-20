@@ -9,7 +9,7 @@ from .mixins import QuotaTestMixin, QuotaViewTestMixin
 
 
 class QuotaEventsTestCase(QuotaTestMixin, QuotaViewTestMixin, GenericViewTestCase):
-    def test_quota_created_event_no_permissions(self):
+    def test_quota_created_event_no_permission(self):
         Action.objects.all().delete()
 
         response = self._request_test_quota_create_post_view()
@@ -29,7 +29,7 @@ class QuotaEventsTestCase(QuotaTestMixin, QuotaViewTestMixin, GenericViewTestCas
         self.assertEqual(event.target, self.test_quota)
         self.assertEqual(event.actor, self._test_case_user)
 
-    def test_quota_edited_event_no_permissions(self):
+    def test_quota_edited_event_no_permission(self):
         self._create_test_quota()
         Action.objects.all().delete()
 

@@ -25,7 +25,7 @@ class PermissionTestCase(
         self._create_test_role()
         self._create_test_permission()
 
-    def test_no_permissions(self):
+    def test_no_permission(self):
         with self.assertRaises(expected_exception=PermissionDenied):
             Permission.check_user_permissions(
                 permissions=(self.test_permission,), user=self.test_user

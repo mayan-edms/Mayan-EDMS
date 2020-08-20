@@ -21,7 +21,7 @@ from .mixins import MailerTestMixin, MailerViewTestMixin
 
 
 class MailerViewsTestCase(MailerTestMixin, MailerViewTestMixin, GenericViewTestCase):
-    def test_user_mailer_create_view_no_permissions(self):
+    def test_user_mailer_create_view_no_permission(self):
         self.grant_permission(permission=permission_user_mailer_view)
 
         response = self._request_test_user_mailer_create_view()
@@ -40,7 +40,7 @@ class MailerViewsTestCase(MailerTestMixin, MailerViewTestMixin, GenericViewTestC
 
         self.assertEqual(UserMailer.objects.count(), 1)
 
-    def test_user_mailer_delete_view_no_permissions(self):
+    def test_user_mailer_delete_view_no_permission(self):
         self._create_test_user_mailer()
 
         response = self._request_test_user_mailer_delete_view()
@@ -62,7 +62,7 @@ class MailerViewsTestCase(MailerTestMixin, MailerViewTestMixin, GenericViewTestC
 
         self.assertEqual(UserMailer.objects.count(), 0)
 
-    def test_user_mailer_list_view_no_permissions(self):
+    def test_user_mailer_list_view_no_permission(self):
         self._create_test_user_mailer()
 
         response = self._request_test_user_mailer_list_view()
@@ -97,7 +97,7 @@ class MailerViewsTestCase(MailerTestMixin, MailerViewTestMixin, GenericViewTestC
             response=response, text=self.test_user_mailer.label, status_code=200
         )
 
-    def test_user_mailer_test_view_no_permissions(self):
+    def test_user_mailer_test_view_no_permission(self):
         self._create_test_user_mailer()
 
         response = self._request_test_user_mailer_test_view()
@@ -173,7 +173,7 @@ class MailerViewsTestCase(MailerTestMixin, MailerViewTestMixin, GenericViewTestC
 
 
 class MailDocumentViewsTestCase(MailerTestMixin, MailerViewTestMixin, GenericDocumentViewTestCase):
-    def test_mail_link_view_no_permissions(self):
+    def test_mail_link_view_no_permission(self):
         self._create_test_user_mailer()
 
         response = self._request_test_document_link_send_view()
@@ -196,7 +196,7 @@ class MailDocumentViewsTestCase(MailerTestMixin, MailerViewTestMixin, GenericDoc
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
         self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
 
-    def test_mail_document_view_no_permissions(self):
+    def test_mail_document_view_no_permission(self):
         self._create_test_user_mailer()
 
         response = self._request_test_document_send_view()

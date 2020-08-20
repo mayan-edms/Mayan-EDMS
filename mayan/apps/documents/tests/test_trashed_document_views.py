@@ -11,7 +11,7 @@ from .mixins import TrashedDocumentViewTestMixin
 class TrashedDocumentViewTestCase(
     TrashedDocumentViewTestMixin, GenericDocumentViewTestCase
 ):
-    def test_document_trash_get_view_no_permissions(self):
+    def test_document_trash_get_view_no_permission(self):
         document_count = Document.valid.count()
 
         response = self._request_document_trash_get_view()
@@ -31,7 +31,7 @@ class TrashedDocumentViewTestCase(
 
         self.assertEqual(Document.valid.count(), document_count)
 
-    def test_document_trash_post_view_no_permissions(self):
+    def test_document_trash_post_view_no_permission(self):
         response = self._request_document_trash_post_view()
         self.assertEqual(response.status_code, 404)
 
@@ -99,7 +99,7 @@ class TrashedDocumentViewTestCase(
         self.assertEqual(DeletedDocument.objects.count(), 0)
         self.assertEqual(Document.valid.count(), 1)
 
-    def test_trashed_document_delete_get_view_no_permissions(self):
+    def test_trashed_document_delete_get_view_no_permission(self):
         self.test_document.delete()
         self.assertEqual(Document.valid.count(), 0)
         self.assertEqual(DeletedDocument.objects.count(), 1)
@@ -131,7 +131,7 @@ class TrashedDocumentViewTestCase(
             DeletedDocument.objects.count(), trashed_document_count
         )
 
-    def test_trashed_document_delete_post_view_no_permissions(self):
+    def test_trashed_document_delete_post_view_no_permission(self):
         self.test_document.delete()
         self.assertEqual(Document.valid.count(), 0)
         self.assertEqual(DeletedDocument.objects.count(), 1)
@@ -157,7 +157,7 @@ class TrashedDocumentViewTestCase(
         self.assertEqual(DeletedDocument.objects.count(), 0)
         self.assertEqual(Document.valid.count(), 0)
 
-    def test_trashed_document_list_view_no_permissions(self):
+    def test_trashed_document_list_view_no_permission(self):
         self.test_document.delete()
 
         response = self._request_trashed_document_list_view()

@@ -391,7 +391,7 @@ class UserLoginTestCase(UserLoginTestMixin, GenericViewTestCase):
 
 
 class UserViewTestCase(UserPasswordViewTestMixin, GenericViewTestCase):
-    def test_user_set_password_view_no_access(self):
+    def test_user_set_password_view_no_permission(self):
         self._create_test_user()
 
         password_hash = self.test_user.password
@@ -418,7 +418,7 @@ class UserViewTestCase(UserPasswordViewTestMixin, GenericViewTestCase):
         self.test_user.refresh_from_db()
         self.assertNotEqual(self.test_user.password, password_hash)
 
-    def test_user_multiple_set_password_view_no_access(self):
+    def test_user_multiple_set_password_view_no_permission(self):
         self._create_test_user()
         password_hash = self.test_user.password
 

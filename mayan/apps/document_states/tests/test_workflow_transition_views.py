@@ -24,7 +24,7 @@ class WorkflowTransitionViewTestCase(
     WorkflowTestMixin, WorkflowViewTestMixin, WorkflowTransitionViewTestMixin,
     GenericViewTestCase
 ):
-    def test_create_test_workflow_transition_no_access(self):
+    def test_create_test_workflow_transition_no_permission(self):
         self._create_test_workflow()
         self._create_test_workflow_states()
 
@@ -58,7 +58,7 @@ class WorkflowTransitionViewTestCase(
             self.test_workflow_state_2
         )
 
-    def test_delete_workflow_transition_no_permissions(self):
+    def test_delete_workflow_transition_no_permission(self):
         self._create_test_workflow()
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
@@ -84,7 +84,7 @@ class WorkflowTransitionViewTestCase(
             self.test_workflow_transition in WorkflowTransition.objects.all()
         )
 
-    def test_edit_workflow_transition_no_access(self):
+    def test_edit_workflow_transition_no_permission(self):
         self._create_test_workflow()
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
@@ -115,7 +115,7 @@ class WorkflowTransitionViewTestCase(
             TEST_WORKFLOW_TRANSITION_LABEL_EDITED
         )
 
-    def test_workflow_transition_list_no_access(self):
+    def test_workflow_transition_list_no_permission(self):
         self._create_test_workflow()
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
@@ -181,7 +181,7 @@ class WorkflowTransitionDocumentViewTestCase(
             self.test_workflow_state_1
         )
 
-    def test_workflow_transition_execute_view_no_access(self):
+    def test_workflow_transition_execute_view_no_permission(self):
         """
         Test transitioning a workflow without the transition workflow
         permission.
@@ -236,7 +236,7 @@ class WorkflowTransitionEventViewTestCase(
     GenericDocumentViewTestCase
 ):
 
-    def test_workflow_transition_event_list_no_access(self):
+    def test_workflow_transition_event_list_no_permission(self):
         self._create_test_workflow()
         self._create_test_workflow_states()
         self._create_test_workflow_transition()

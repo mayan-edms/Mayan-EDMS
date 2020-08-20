@@ -12,7 +12,7 @@ from .mixins import WorkflowStateViewTestMixin, WorkflowTestMixin
 class WorkflowStateViewTestCase(
     WorkflowTestMixin, WorkflowStateViewTestMixin, GenericViewTestCase
 ):
-    def test_create_workflow_state_no_access(self):
+    def test_create_workflow_state_no_permission(self):
         self._create_test_workflow()
 
         response = self._request_test_workflow_state_create_view()
@@ -59,7 +59,7 @@ class WorkflowStateViewTestCase(
             WorkflowState.objects.all()[0].completion, 0
         )
 
-    def test_delete_workflow_state_no_access(self):
+    def test_delete_workflow_state_no_permission(self):
         self._create_test_workflow()
         self._create_test_workflow_states()
 
@@ -80,7 +80,7 @@ class WorkflowStateViewTestCase(
         self.assertEqual(response.status_code, 302)
         self.assertEqual(WorkflowState.objects.count(), 1)
 
-    def test_edit_workflow_state_no_access(self):
+    def test_edit_workflow_state_no_permission(self):
         self._create_test_workflow()
         self._create_test_workflow_states()
 
@@ -112,7 +112,7 @@ class WorkflowStateViewTestCase(
             self.test_workflow_state_1.label, workflow_state_label
         )
 
-    def test_workflow_state_list_no_access(self):
+    def test_workflow_state_list_no_permission(self):
         self._create_test_workflow()
         self._create_test_workflow_states()
 

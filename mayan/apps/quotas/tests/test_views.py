@@ -12,7 +12,7 @@ from .mixins import QuotaTestMixin, QuotaViewTestMixin
 class QuotaViewTestCase(
     QuotaTestMixin, QuotaViewTestMixin, GenericViewTestCase
 ):
-    def test_quota_backend_selection_get_view_no_permissions(self):
+    def test_quota_backend_selection_get_view_no_permission(self):
         response = self._request_test_quota_backend_selection_get_view()
         self.assertEqual(response.status_code, 403)
 
@@ -22,7 +22,7 @@ class QuotaViewTestCase(
         response = self._request_test_quota_backend_selection_get_view()
         self.assertEqual(response.status_code, 200)
 
-    def test_quota_create_get_view_no_permissions(self):
+    def test_quota_create_get_view_no_permission(self):
         quota_count = Quota.objects.count()
 
         response = self._request_test_quota_create_get_view()
@@ -50,7 +50,7 @@ class QuotaViewTestCase(
 
         self.assertEqual(Quota.objects.count(), quota_count)
 
-    def test_quota_create_post_view_no_permissions(self):
+    def test_quota_create_post_view_no_permission(self):
         quota_count = Quota.objects.count()
 
         response = self._request_test_quota_create_post_view()
@@ -68,7 +68,7 @@ class QuotaViewTestCase(
 
         self.assertEqual(Quota.objects.count(), quota_count + 1)
 
-    def test_quota_delete_view_no_permissions(self):
+    def test_quota_delete_view_no_permission(self):
         self._create_test_quota()
 
         quota_count = Quota.objects.count()
@@ -92,7 +92,7 @@ class QuotaViewTestCase(
 
         self.assertEqual(Quota.objects.count(), quota_count - 1)
 
-    def test_quota_edit_view_no_permissions(self):
+    def test_quota_edit_view_no_permission(self):
         self._create_test_quota()
 
         quota_test_limit = self.test_quota.loads()['test_limit']

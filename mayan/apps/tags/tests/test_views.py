@@ -15,7 +15,7 @@ from .mixins import DocumentTagViewTestMixin, TagTestMixin, TagViewTestMixin
 class DocumentTagViewTestCase(
     DocumentTagViewTestMixin, TagTestMixin, GenericDocumentViewTestCase
 ):
-    def test_document_tags_list_no_permissions(self):
+    def test_document_tags_list_no_permission(self):
         self._create_test_tag()
 
         self.test_tag.documents.add(self.test_document)
@@ -154,7 +154,7 @@ class DocumentTagViewTestCase(
 
         self.assertTrue(self.test_tag in self.test_document.tags.all())
 
-    def test_document_tag_multiple_remove_view_no_permissions(self):
+    def test_document_tag_multiple_remove_view_no_permission(self):
         self._create_test_tag()
         self.test_document.tags.add(self.test_tag)
 
@@ -201,7 +201,7 @@ class DocumentTagViewTestCase(
 
         self.assertTrue(self.test_tag not in self.test_document.tags.all())
 
-    def test_document_multiple_tag_multiple_remove_view_no_permissions(self):
+    def test_document_multiple_tag_multiple_remove_view_no_permission(self):
         self._create_test_tag()
         self.test_document.tags.add(self.test_tag)
 
@@ -250,7 +250,7 @@ class DocumentTagViewTestCase(
 
 
 class TagViewTestCase(TagTestMixin, TagViewTestMixin, GenericViewTestCase):
-    def test_tag_create_view_no_permissions(self):
+    def test_tag_create_view_no_permission(self):
         tag_count = Tag.objects.count()
 
         response = self._request_test_tag_create_view()
@@ -268,7 +268,7 @@ class TagViewTestCase(TagTestMixin, TagViewTestMixin, GenericViewTestCase):
 
         self.assertEqual(Tag.objects.count(), tag_count + 1)
 
-    def test_tag_delete_view_no_permissions(self):
+    def test_tag_delete_view_no_permission(self):
         self._create_test_tag()
 
         tag_count = Tag.objects.count()
@@ -290,7 +290,7 @@ class TagViewTestCase(TagTestMixin, TagViewTestMixin, GenericViewTestCase):
 
         self.assertEqual(Tag.objects.count(), tag_count - 1)
 
-    def test_tag_multiple_delete_view_no_permissions(self):
+    def test_tag_multiple_delete_view_no_permission(self):
         self._create_test_tag()
 
         tag_count = Tag.objects.count()
@@ -312,7 +312,7 @@ class TagViewTestCase(TagTestMixin, TagViewTestMixin, GenericViewTestCase):
 
         self.assertEqual(Tag.objects.count(), tag_count - 1)
 
-    def test_tag_edit_view_no_permissions(self):
+    def test_tag_edit_view_no_permission(self):
         self._create_test_tag()
 
         tag_label = self.test_tag.label

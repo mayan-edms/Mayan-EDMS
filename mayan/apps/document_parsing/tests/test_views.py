@@ -26,7 +26,7 @@ class DocumentContentViewsTestCase(
     # Ensure we use a PDF file
     test_document_filename = TEST_HYBRID_DOCUMENT
 
-    def test_document_content_view_no_permissions(self):
+    def test_document_content_view_no_permission(self):
         response = self._request_test_document_content_view()
         self.assertEqual(response.status_code, 404)
 
@@ -40,7 +40,7 @@ class DocumentContentViewsTestCase(
             response=response, text=TEST_DOCUMENT_CONTENT, status_code=200
         )
 
-    def test_document_content_delete_view_no_permissions(self):
+    def test_document_content_delete_view_no_permission(self):
         response = self._request_test_document_content_delete_view()
         self.assertEqual(response.status_code, 404)
 
@@ -64,7 +64,7 @@ class DocumentContentViewsTestCase(
             ).exists()
         )
 
-    def test_document_page_content_view_no_permissions(self):
+    def test_document_page_content_view_no_permission(self):
         response = self._request_test_document_page_content_view()
         self.assertEqual(response.status_code, 404)
 

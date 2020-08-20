@@ -31,7 +31,7 @@ class KeyAPITestCase(KeyTestMixin, KeyAPIViewTestMixin, BaseAPITestCase):
         self.assertEqual(Key.objects.count(), 1)
         self.assertEqual(key.fingerprint, TEST_KEY_PRIVATE_FINGERPRINT)
 
-    def test_key_delete_view_no_access(self):
+    def test_key_delete_view_no_permission(self):
         self._create_test_key_private()
 
         response = self._request_test_key_delete_view()
@@ -50,7 +50,7 @@ class KeyAPITestCase(KeyTestMixin, KeyAPIViewTestMixin, BaseAPITestCase):
 
         self.assertEqual(Key.objects.count(), 0)
 
-    def test_key_detail_view_no_access(self):
+    def test_key_detail_view_no_permission(self):
         self._create_test_key_private()
 
         response = self._request_test_key_detail_view()

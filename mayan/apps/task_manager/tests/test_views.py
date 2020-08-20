@@ -12,7 +12,7 @@ class TaskManagerViewTestCase(
         super().setUp()
         self._create_test_queue()
 
-    def test_queue_list_view_no_permissions(self):
+    def test_queue_list_view_no_permission(self):
         response = self._request_queue_list()
 
         self.assertEqual(response.status_code, 403)

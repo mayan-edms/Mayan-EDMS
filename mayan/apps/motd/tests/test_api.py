@@ -36,7 +36,7 @@ class MOTDAPITestCase(MOTDAPITestMixin, MOTDTestMixin, BaseAPITestCase):
         self.assertEqual(message.label, TEST_LABEL)
         self.assertEqual(message.message, TEST_MESSAGE)
 
-    def test_message_delete_view_no_access(self):
+    def test_message_delete_view_no_permission(self):
         self._create_test_message()
 
         response = self._request_message_delete_view()
@@ -55,7 +55,7 @@ class MOTDAPITestCase(MOTDAPITestMixin, MOTDTestMixin, BaseAPITestCase):
 
         self.assertEqual(Message.objects.count(), 0)
 
-    def test_message_detail_view_no_access(self):
+    def test_message_detail_view_no_permission(self):
         self._create_test_message()
 
         response = self._request_message_detail_view()
@@ -72,7 +72,7 @@ class MOTDAPITestCase(MOTDAPITestMixin, MOTDTestMixin, BaseAPITestCase):
 
         self.assertEqual(response.data['label'], TEST_LABEL)
 
-    def test_message_edit_via_patch_view_no_access(self):
+    def test_message_edit_via_patch_view_no_permission(self):
         self._create_test_message()
 
         response = self._request_message_edit_via_patch_view()
@@ -96,7 +96,7 @@ class MOTDAPITestCase(MOTDAPITestMixin, MOTDTestMixin, BaseAPITestCase):
         self.assertEqual(self.test_message.label, TEST_LABEL_EDITED)
         self.assertEqual(self.test_message.message, TEST_MESSAGE_EDITED)
 
-    def test_message_edit_via_put_view_no_access(self):
+    def test_message_edit_via_put_view_no_permission(self):
         self._create_test_message()
 
         response = self._request_message_edit_via_put_view()

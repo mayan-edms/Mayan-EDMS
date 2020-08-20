@@ -12,7 +12,7 @@ from .mixins import TagTestMixin
 class DocumentTagHTMLWidgetTestCase(
     DocumentViewTestMixin, TagTestMixin, GenericDocumentViewTestCase
 ):
-    def test_document_tags_widget_no_permissions(self):
+    def test_document_tags_widget_no_permission(self):
         self._create_test_tag()
 
         self.test_tag.documents.add(self.test_document)

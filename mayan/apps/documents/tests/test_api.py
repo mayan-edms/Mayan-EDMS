@@ -436,7 +436,7 @@ class DocumentVersionAPIViewTestCase(
 class DocumentPageAPIViewTestCase(
     DocumentPageAPIViewTestMixin, DocumentTestMixin, BaseAPITestCase
 ):
-    def test_document_page_api_image_view_no_access(self):
+    def test_document_page_api_image_view_no_permission(self):
         response = self._request_document_page_image()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
@@ -472,7 +472,7 @@ class TrashedDocumentAPIViewTestCase(
         self.assertEqual(Document.valid.count(), 0)
         self.assertEqual(Document.trash.count(), 1)
 
-    def test_trashed_document_api_delete_view_no_access(self):
+    def test_trashed_document_api_delete_view_no_permission(self):
         self._upload_test_document()
         self.test_document.delete()
 
@@ -495,7 +495,7 @@ class TrashedDocumentAPIViewTestCase(
         self.assertEqual(Document.valid.count(), 0)
         self.assertEqual(Document.trash.count(), 0)
 
-    def test_trashed_document_api_detail_view_no_access(self):
+    def test_trashed_document_api_detail_view_no_permission(self):
         self._upload_test_document()
         self.test_document.delete()
 
@@ -533,7 +533,7 @@ class TrashedDocumentAPIViewTestCase(
         response = self._request_test_trashed_document_api_image_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-    def test_trashed_document_api_list_view_no_access(self):
+    def test_trashed_document_api_list_view_no_permission(self):
         self._upload_test_document()
         self.test_document.delete()
 
@@ -555,7 +555,7 @@ class TrashedDocumentAPIViewTestCase(
             force_text(self.test_document.uuid)
         )
 
-    def test_trashed_document_api_restore_view_no_access(self):
+    def test_trashed_document_api_restore_view_no_permission(self):
         self._upload_test_document()
         self.test_document.delete()
 

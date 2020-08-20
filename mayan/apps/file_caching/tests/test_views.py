@@ -30,7 +30,7 @@ class CacheViewTestCase(
             response=response, text=self.test_cache.label, status_code=200
         )
 
-    def test_cache_purge_view_no_permissions(self):
+    def test_cache_purge_view_no_permission(self):
         self._create_test_cache()
         self._create_test_cache_partition()
         self._create_test_cache_partition_file()
@@ -58,7 +58,7 @@ class CacheViewTestCase(
 
         self.assertNotEqual(cache_total_size, self.test_cache.get_total_size())
 
-    def test_cache_multiple_purge_view_no_permissions(self):
+    def test_cache_multiple_purge_view_no_permission(self):
         self._create_test_cache()
         self._create_test_cache_partition()
         self._create_test_cache_partition_file()

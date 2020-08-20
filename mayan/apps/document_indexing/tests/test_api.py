@@ -59,7 +59,7 @@ class DocumentIndexingAPITestCase(
 
         self.assertTrue(self.test_index not in Index.objects.all())
 
-    def test_index_detail_api_view_no_access(self):
+    def test_index_detail_api_view_no_permission(self):
         self._create_test_index()
 
         response = self._request_test_index_detail_api_view()
