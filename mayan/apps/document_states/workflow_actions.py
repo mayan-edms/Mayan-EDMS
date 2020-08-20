@@ -93,7 +93,7 @@ class DocumentWorkflowLaunchAction(WorkflowAction):
         result = super().get_form_schema(**kwargs)
 
         workflows_union = Workflow.objects.filter(
-            document_types__in=workflow_state.workflow.document_types.all()
+            document_types__in=kwargs['workflow_state'].workflow.document_types.all()
         ).distinct()
 
         result['fields']['workflows']['kwargs']['queryset'] = workflows_union

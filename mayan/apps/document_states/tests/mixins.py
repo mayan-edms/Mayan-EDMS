@@ -2,6 +2,7 @@ from ..classes import WorkflowAction
 from ..models import Workflow, WorkflowRuntimeProxy, WorkflowStateRuntimeProxy
 
 from .literals import (
+    DOCUMENT_WORKFLOW_LAUNCH_ACTION_CLASS_PATH,
     TEST_WORKFLOW_INITIAL_STATE_LABEL, TEST_WORKFLOW_INITIAL_STATE_COMPLETION,
     TEST_WORKFLOW_INSTANCE_LOG_ENTRY_COMMENT, TEST_WORKFLOW_INTERNAL_NAME,
     TEST_WORKFLOW_LABEL, TEST_WORKFLOW_LABEL_EDITED,
@@ -45,6 +46,21 @@ class DocumentWorkflowAPIViewTestMixin:
             viewname='rest_api:workflowinstancelogentry-list', kwargs={
                 'pk': self.test_document.pk,
                 'workflow_pk': self.test_document.workflows.first().pk
+            }
+        )
+
+
+class DocumentWorkflowLaunchActionViewTestMixin:
+    def _request_document_workflow_launch_action_create_view(self):
+        return self.post(
+            viewname='document_states:workflow_template_state_action_create',
+            kwargs={
+                'workflow_template_state_id': self.test_workflow_state.pk,
+                'class_path': DOCUMENT_WORKFLOW_LAUNCH_ACTION_CLASS_PATH
+            }, data={
+                'label': TEST_WORKFLOW_STATE_ACTION_LABEL,
+                'when': TEST_WORKFLOW_STATE_ACTION_WHEN,
+                'workflows': self.test_workflow.pk
             }
         )
 

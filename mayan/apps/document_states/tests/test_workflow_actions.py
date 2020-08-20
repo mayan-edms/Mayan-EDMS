@@ -25,7 +25,10 @@ from .literals import (
     TEST_PAYLOAD_TEMPLATE_DOCUMENT_LABEL, TEST_SERVER_USERNAME,
     TEST_SERVER_PASSWORD
 )
-from .mixins import WorkflowStateActionViewTestMixin, WorkflowTestMixin
+from .mixins import (
+    DocumentWorkflowLaunchActionViewTestMixin,
+    WorkflowStateActionViewTestMixin, WorkflowTestMixin
+)
 
 
 class HTTPWorkflowActionTestCase(
@@ -332,4 +335,28 @@ class DocumentWorkflowLaunchActionTestCase(
 
         self.assertTrue(
             workflow_count + 1, self.test_document.workflows.count()
+        )
+
+
+class DocumentWorkflowLaunchActionViewTestCase(
+    DocumentWorkflowLaunchActionViewTestMixin, WorkflowTestMixin,
+    GenericDocumentViewTestCase
+):
+    auto_upload_test_document = False
+
+    def test_document_workflow_launch_action_view_with_full_access(self):
+        self._create_test_workflow(add_document_type=True, auto_launch=False)
+        self._create_test_workflow_state()
+
+        self.grant_access(
+            obj=self.test_workflow, permission=permission_workflow_edit
+        )
+
+        action_count = self.test_workflow_state.actions.count()
+
+        response = self._request_document_workflow_launch_action_create_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(
+            self.test_workflow_state.actions.count(), action_count + 1
         )

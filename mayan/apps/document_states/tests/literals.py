@@ -1,5 +1,7 @@
 from ..literals import FIELD_TYPE_CHOICE_CHAR, WORKFLOW_ACTION_ON_ENTRY
 
+DOCUMENT_WORKFLOW_LAUNCH_ACTION_CLASS_PATH = 'mayan.apps.document_states.workflow_actions.DocumentWorkflowLaunchAction'
+
 TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_DOTTED_PATH = 'mayan.apps.document_states.workflow_actions.DocumentPropertiesEditAction'
 TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_TEXT_LABEL = 'new document label'
 TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_TEXT_DESCRIPTION = 'new document description'
