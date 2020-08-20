@@ -7,7 +7,6 @@ from mayan.apps.views.html_widgets import TwoStateWidget
 
 from .classes import CeleryQueue, Task
 from .links import link_task_manager
-from .settings import *  # NOQA
 
 
 class TaskManagerApp(MayanAppConfig):

@@ -7,9 +7,6 @@ from .literals import (
     DEFAULT_CELERY_BROKER_USE_SSL, DEFAULT_CELERY_RESULT_BACKEND
 )
 
-# Don't import anything on star import, we just want to make it easy
-# for apps.py to activate the settings in this module.
-__all__ = ()
 namespace = SettingNamespace(label=_('Celery'), name='celery')
 
 setting_celery_broker_login_method = namespace.add_setting(
