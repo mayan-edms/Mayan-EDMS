@@ -206,7 +206,7 @@ class SearchModel(AppsModuleLoaderMixin):
         for search_field in self.search_fields:
             result.append((search_field.get_full_name(), search_field.label))
 
-        return result
+        return sorted(result, key=lambda x: x[1])
 
     def get_full_name(self):
         return '%s.%s' % (self.app_label, self.model_name)
