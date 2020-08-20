@@ -162,7 +162,7 @@ class APIDocumentSignEmbeddedView(generics.GenericAPIView):
 class APIDocumentDetachedSignatureListView(generics.ListCreateAPIView):
     """
     get: Returns a list of all the detached signatures of a document version.
-    post: Create an detached signature for a document version.
+    post: Create a detached signature for a document version.
     """
     serializer_class = DetachedSignatureSerializer
 
