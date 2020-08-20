@@ -214,6 +214,8 @@
 - Make ``SearchField`` label optional. If not specified, the ``verbose_name``
   of the model field will be used instead.
 - Sort search form fields.
+- Make web link label field unique. A data migration is included to
+  de-duplicate the labels before altering the schema.
 
 3.4.14 (2020-08-18)
 ===================

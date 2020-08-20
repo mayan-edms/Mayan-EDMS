@@ -20,7 +20,7 @@ class WebLink(models.Model):
     """
     label = models.CharField(
         db_index=True, help_text=_('A short text describing the web link.'),
-        max_length=96, verbose_name=_('Label')
+        max_length=96, unique=True, verbose_name=_('Label')
     )
     template = models.TextField(
         help_text=_(

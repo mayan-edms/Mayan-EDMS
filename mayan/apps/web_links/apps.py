@@ -20,7 +20,7 @@ from mayan.apps.events.links import (
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.views.html_widgets import TwoStateWidget
 
-from .events import event_web_link_edited
+from .events import event_web_link_edited, event_web_link_navigated
 from .links import (
     link_document_type_web_links, link_document_web_link_list,
     link_web_link_create, link_web_link_delete, link_web_link_document_types,
@@ -67,7 +67,7 @@ class WebLinksApp(MayanAppConfig):
 
         ModelEventType.register(
             event_types=(
-                event_web_link_edited,
+                event_web_link_edited, event_web_link_navigated
             ), model=WebLink
         )
 
