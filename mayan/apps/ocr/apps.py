@@ -37,7 +37,6 @@ from .permissions import (
     permission_document_type_ocr_setup, permission_ocr_document,
     permission_ocr_content_view
 )
-from .search import *  # NOQA
 from .signals import signal_post_document_version_ocr
 from .utils import get_instance_ocr_content
 

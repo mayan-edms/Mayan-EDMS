@@ -25,7 +25,6 @@ from .permissions import (
     permission_document_comment_create, permission_document_comment_delete,
     permission_document_comment_edit, permission_document_comment_view
 )
-from .search import *  # NOQA
 
 
 class DocumentCommentsApp(MayanAppConfig):

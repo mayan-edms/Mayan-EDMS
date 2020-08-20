@@ -8,6 +8,7 @@ from django.utils.functional import cached_property
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext as _
 
+from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
 from mayan.apps.common.exceptions import ResolverPipelineError
 from mayan.apps.common.utils import (
     ResolverPipelineModelAttribute, get_related_field
@@ -86,7 +87,8 @@ class SearchField:
         )
 
 
-class SearchModel:
+class SearchModel(AppsModuleLoaderMixin):
+    _loader_module_name = 'search'
     _model_search_relationships = {}
     _registry = {}
 

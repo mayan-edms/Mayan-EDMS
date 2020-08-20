@@ -44,7 +44,6 @@ from .permissions import (
     permission_document_indexing_instance_view,
     permission_document_indexing_rebuild, permission_document_indexing_view
 )
-from .search import *  # NOQA
 
 
 class DocumentIndexingApp(MayanAppConfig):

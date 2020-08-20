@@ -210,6 +210,7 @@
 - Add file metadata submit link for "No results" file metadata driver
   template.
 - Remove converter.validators and replace it with common.validators.
+- Autoimport search.py modules from apps.
 
 3.4.14 (2020-08-18)
 ===================

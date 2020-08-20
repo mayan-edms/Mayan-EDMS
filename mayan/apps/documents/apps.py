@@ -110,8 +110,6 @@ from .permissions import (
     permission_document_type_view, permission_document_version_revert,
     permission_document_version_view, permission_document_view
 )
-# Just import to initialize the search models
-from .search import document_search, document_page_search  # NOQA
 from .signals import signal_post_version_upload
 from .statistics import *  # NOQA
 from .widgets import (
