@@ -153,8 +153,8 @@ class DocumentStatesApp(MayanAppConfig):
             model=Workflow, bind_link=True, register_permission=True
         ).add_fields(
             field_names=(
-                'internal_name', 'label', 'document_types', 'states',
-                'transitions'
+                'auto_launch', 'internal_name', 'label', 'document_types',
+                'states', 'transitions'
             ),
         )
 
