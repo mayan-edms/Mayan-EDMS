@@ -4,7 +4,7 @@ from .literals import TEST_COMMENT_TEXT, TEST_COMMENT_TEXT_EDITED
 class DocumentCommentTestMixin(object):
     def _create_test_comment(self):
         self.test_document_comment = self.test_document.comments.create(
-            comment=TEST_COMMENT_TEXT, user=self._test_case_user
+            comment=TEST_COMMENT_TEXT, user=self.test_user
         )
 
 

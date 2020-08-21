@@ -19,6 +19,10 @@ class CommentEventsTestCase(
     DocumentCommentTestMixin, DocumentCommentViewTestMixin,
     GenericDocumentViewTestCase
 ):
+    def setUp(self):
+        super().setUp()
+        self._create_test_user()
+
     def test_comment_create_event_no_permissions(self):
         action_count = Action.objects.count()
 

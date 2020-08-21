@@ -46,19 +46,11 @@ class DocumentCommentCreateView(ExternalObjectMixin, SingleObjectCreateView):
     def get_queryset(self):
         return self.external_object.comments.all()
 
-    def get_save_extra_data(self):
-        return {
-            '_user': self.request.user,
-        }
-
 
 class DocumentCommentDeleteView(SingleObjectDeleteView):
     model = Comment
     object_permission = permission_document_comment_delete
     pk_url_kwarg = 'comment_id'
-
-    def get_delete_extra_data(self):
-        return {'_user': self.request.user}
 
     def get_extra_context(self):
         return {
@@ -66,6 +58,11 @@ class DocumentCommentDeleteView(SingleObjectDeleteView):
             'document': self.object.document,
             'navigation_object_list': ('document', 'comment'),
             'title': _('Delete comment: %s?') % self.object,
+        }
+
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user,
         }
 
     def get_post_action_redirect(self):
@@ -97,15 +94,17 @@ class DocumentCommentEditView(SingleObjectEditView):
     pk_url_kwarg = 'comment_id'
     object_permission = permission_document_comment_edit
 
-    def get_save_extra_data(self):
-        return {'_user': self.request.user}
-
     def get_extra_context(self):
         return {
             'comment': self.object,
             'document': self.object.document,
             'navigation_object_list': ('document', 'comment'),
             'title': _('Edit comment: %s?') % self.object,
+        }
+
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user,
         }
 
     def get_post_action_redirect(self):

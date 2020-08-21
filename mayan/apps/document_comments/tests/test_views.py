@@ -13,6 +13,10 @@ class DocumentCommentViewTestCase(
     DocumentCommentViewTestMixin, DocumentCommentTestMixin,
     GenericDocumentViewTestCase
 ):
+    def setUp(self):
+        super().setUp()
+        self._create_test_user()
+
     def test_comment_create_view_no_permissions(self):
         comment_count = Comment.objects.count()
 
