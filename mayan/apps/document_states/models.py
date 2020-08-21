@@ -805,7 +805,7 @@ class WorkflowTransitionField(models.Model):
         return self.label
 
     def get_widget_kwargs(self):
-        return yaml_load(stream=self.widget_kwargs)
+        return yaml_load(stream=self.widget_kwargs or '{}')
 
 
 @python_2_unicode_compatible
