@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-18 03:11-0400\n"
-"PO-Revision-Date: 2020-08-08 09:38+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-08-20 23:40-0400\n"
+"PO-Revision-Date: 2020-08-20 17:33+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -398,7 +398,7 @@ msgid ""
 " not return any value, that return the Python logical None, or an empty "
 "string ('') are considered to be logical false, any other value is "
 "considered to be the logical true."
-msgstr ""
+msgstr "Условието, което ще определи дали това действие на състояние се изпълнява или не. Условието се оценява спрямо инстанцията на работния процес. Условия, които не връщат никаква стойност, които връщат логическото Python Не, или празен низ (&#39;&#39;) се считат за логически неверни, всяка друга стойност се счита за логически вярна."
 
 #: models.py:637 models.py:725
 msgid "Condition"
@@ -440,7 +440,7 @@ msgid ""
 " return any value, that return the Python logical None, or an empty string "
 "('') are considered to be logical false, any other value is considered to be"
 " the logical true."
-msgstr ""
+msgstr "Условието, което ще определи дали този преход е активиран или не. Условието се оценява спрямо инстанцията на работния процес. Условия, които не връщат никаква стойност, които връщат логическото Python Не, или празен низ (&#39;&#39;) се считат за логически неверни, всяка друга стойност се счита за логически вярна."
 
 #: models.py:733
 msgid "Workflow transition"
@@ -581,7 +581,7 @@ msgstr "Генериране на визуализации на работния
 
 #: search.py:9 search.py:14
 msgid "Workflow transition comment"
-msgstr ""
+msgstr "Коментар за преход на работния процес"
 
 #: serializers.py:20
 msgid "Primary key of the document type to be added."
@@ -624,7 +624,7 @@ msgstr "Основен ключ на прехода, който трябва д�
 #: settings.py:18
 msgid ""
 "File path to the graphviz dot program used to generate workflow previews."
-msgstr ""
+msgstr "Пътека на файла към програмата graviz dot, използвана за генериране на визуализации на работния процес."
 
 #: settings.py:26
 msgid ""
