@@ -6,6 +6,9 @@
 - Backport events method decorator.
 - Update comments app to use method event decorator. Solves forum issue in
   topic 2890. Thank to forum user @qra for the report.
+- Add information about settings loading order to the settings chapter.
+  Closes GitLab issue #813. Thanks to Martin (@efelon) for the report and
+  debug information.
 
 3.4.14 (2020-08-18)
 ===================

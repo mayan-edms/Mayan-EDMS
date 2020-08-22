@@ -2,7 +2,7 @@
 Settings
 ========
 
-Mayan EDMS can be configure via environment variables or by setting files.
+Mayan EDMS can be configure using various methods.
 
 
 .. _environment_variables:
@@ -68,16 +68,16 @@ Via Python settings files
 =========================
 
 Another way to configure Mayan EDMS and the one required when more extensive
-setup is required, such as when using external Python libraries, is via
-Python-style, settings files.
-If Mayan EDMS was installed using the Python package a ``mayan_settings``
-folder will created for this purpose. If you installed Mayan EDMS
-according to the :doc:`../chapters/deploying` instructions provided in this
-documentation your ``mayan_settings`` folder should be located in the directory:
-``|MAYAN_MEDIA_ROOT|/mayan_settings/``.
+setup is required (such as when using external Python libraries), is via
+Python-style, settings files. A folder named ``mayan_settings`` is created
+for the purpose of hosting these settings files.
+
+If you installed Mayan EDMS according to the :doc:`../chapters/deploying`
+instructions provided in this documentation, your ``mayan_settings`` folder
+should be located in the directory: ``|MAYAN_MEDIA_ROOT|/mayan_settings/``.
 
 If Mayan EDMS was installed using Docker, the ``mayan_settings`` folder
-will be found inside the install Docker volume. If you installed Mayan EDMS
+will be found inside the Docker volume. If you installed Mayan EDMS
 according to the :doc:`../chapters/docker/index` instructions provided in this
 documentation your ``mayan_settings`` folder should be located in the directory:
 ``/docker-volumes/mayan/mayan_settings``.
@@ -147,3 +147,27 @@ For the :doc:`../chapters/docker/index` installation method, the full import pat
 .. code-block:: console
 
     docker run <...> -e MAYAN_SETTINGS_MODULE=mayan_settings.mysettings
+
+
+.. note::
+
+   The settings files must be valid Python modules. Errors in the Python
+   settings files might prevent Mayan EDMS for starting properly. Error other
+   than syntax errors, might not prevent Mayan EDMS from starting up but
+   might not apply correctly or cause operation issues.
+
+
+Setting priority
+================
+
+The settings will be applied in the following order:
+
+#. YAML configuration file.
+#. Python settings file.
+#. Environment variables.
+
+Only settings overridden via environment variables will be identified as
+such in the settings view.
+
+Settings overridden or set via Python settings files will not be identified
+as such in the settings view.
