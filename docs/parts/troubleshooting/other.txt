@@ -1,0 +1,31 @@
+=====
+Other
+=====
+
+File system links not showing when serving content with ``Samba``
+=================================================================
+
+Disable unix extensions in the [global] section and enable wide links for
+the file serving share.
+
+Example:
+
+.. code-block:: ini
+
+    [global]
+        unix extensions = no
+
+        ...
+
+    [digitalization]
+        path = /var/local/mayan
+        guest ok = yes
+        read only = yes
+        wide links = yes
+        follow symlinks = yes
+
+
+
+Reference:
+
+- http://www.samba.org/samba/docs/man/manpages-3/smb.conf.5.html

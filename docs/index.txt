@@ -30,7 +30,7 @@ repository for electronic documents.
     chapters/docker/index
     parts/advanced
     parts/administration
-    parts/troubleshooting
+    parts/troubleshooting/index
     chapters/development/index
     parts/faq
     parts/license

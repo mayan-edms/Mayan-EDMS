@@ -1,0 +1,31 @@
+============
+Dependencies
+============
+
+Error: ``unable to execute 'x86_64-linux-gnu-gcc': No such file or directory``
+==============================================================================
+
+This happens when using the ``MAYAN_APT_INSTALLS`` feature. It means that the
+``GCC`` package is required to compile the packages specified with
+``MAYAN_APT_INSTALLS``.
+
+Solution: Include ``gcc`` in the list of packages specified with ``MAYAN_APT_INSTALLS``.
+
+
+The system fails to start or some features are not working
+==========================================================
+
+Execute the ``checkdependencies`` command to verify that all the dependencies
+needed for a production installation are present and accessible to the system.
+
+.. code-block:: console
+
+    MAYAN_MEDIA_ROOT=<your Mayan media root setting> /<installation directory>mayan-edms.py checkdependencies
+
+If installed using the :doc:`../../chapters/deploying` method, this would be:
+
+.. code-block:: console
+
+    MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| |MAYAN_BIN| checkdependencies
+
+The Docker image includes all dependencies and this process is not required.

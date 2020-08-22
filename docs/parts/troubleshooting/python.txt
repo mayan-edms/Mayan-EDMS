@@ -1,0 +1,26 @@
+======
+Python
+======
+
+How to upgrade an existing Python 2 virtualenv
+==============================================
+
+Use:
+
+.. code-block:: console
+
+    virtualenv <existing directory> -p <Python 3 binary path>
+
+If you followed the deployment instructions, the command line would be:
+
+.. code-block:: console
+
+    virtualenv /opt/mayan-edms -p /usr/bin/python3
+
+If using a dedicated user account for Mayan EDMS:
+
+.. code-block:: console
+
+    sudo -u mayan virtualenv --clear /opt/mayan-edms -p /usr/bin/python3
+
+
