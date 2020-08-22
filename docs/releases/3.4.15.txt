@@ -195,6 +195,6 @@ Issues closed
 -------------
 
 - :gitlab-issue:`862` Missing Widget Keyword Arguments on transition fields lead to MediaDefiningClass object argument after ** must be a mapping, not NoneType
-- :forum-topic:``
+- :forum-topic:`2890` Rest API: Bug in documents_comments_update
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

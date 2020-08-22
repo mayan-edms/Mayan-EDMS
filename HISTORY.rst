@@ -3,6 +3,9 @@
 - Ensure workflow template field widgets receive an empty mapping
   when the arguments field is empty. Closes GitLab issue #862.
   Thanks to Dennis Ploeger (@dploeger) for the report, debug, and diagnostics.
+- Backport events method decorator.
+- Update comments app to use method event decorator. Solves forum issue in
+  topic 2890. Thank to forum user @qra for the report.
 
 3.4.14 (2020-08-18)
 ===================
