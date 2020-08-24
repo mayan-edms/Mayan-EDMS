@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-20 23:39-0400\n"
+"POT-Creation-Date: 2020-08-23 23:17-0400\n"
 "PO-Revision-Date: 2019-05-26 21:45+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
@@ -27,7 +27,7 @@ msgstr ""
 msgid "Document comments"
 msgstr "Kommentare"
 
-#: apps.py:87 apps.py:91 links.py:31 models.py:43 permissions.py:5
+#: apps.py:87 apps.py:91 links.py:31 models.py:48 permissions.py:5
 msgid "Comments"
 msgstr "Kommentare"
 
@@ -55,20 +55,20 @@ msgstr "Löschen"
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: models.py:26
+#: models.py:31
 msgid "Document"
 msgstr "Dokument"
 
-#: models.py:30 models.py:68
+#: models.py:35 models.py:73
 msgid "User"
 msgstr "Benutzer"
 
 #. Translators: Comment here is a noun and refers to the actual text stored
-#: models.py:33 models.py:42
+#: models.py:38 models.py:47
 msgid "Comment"
 msgstr "Kommentar"
 
-#: models.py:36
+#: models.py:41
 msgid "Date time submitted"
 msgstr "Erstellunsgdatum und -zeit"
 
@@ -93,32 +93,32 @@ msgstr "Kommentare ansehen"
 msgid "Add comment to document: %s"
 msgstr "Kommentar zu Dokument %s hinzufügen"
 
-#: views.py:68
+#: views.py:60
 #, python-format
 msgid "Delete comment: %s?"
 msgstr "Kommentar %s löschen?"
 
-#: views.py:90
+#: views.py:87
 #, python-format
 msgid "Details for comment: %s?"
 msgstr "Details für Kommentar: %s"
 
-#: views.py:108
+#: views.py:102
 #, python-format
 msgid "Edit comment: %s?"
 msgstr "Kommentar bearbeiten: %s?"
 
-#: views.py:133
+#: views.py:132
 msgid ""
 "Document comments are timestamped text entries from users. They are great "
 "for collaboration."
 msgstr "Kommentare bei Dokumenten sind zeitgestempelte Texteinträge von Benutzers. Sie eignen sich hervorragend für die Zusammenarbeit. "
 
-#: views.py:136
+#: views.py:135
 msgid "There are no comments"
 msgstr "Keine Kommentare vorhanden"
 
-#: views.py:138
+#: views.py:137
 #, python-format
 msgid "Comments for document: %s"
 msgstr "Kommentare für Dokument %s"

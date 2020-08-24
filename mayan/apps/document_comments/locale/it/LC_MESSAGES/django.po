@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-20 23:39-0400\n"
+"POT-Creation-Date: 2020-08-23 23:17-0400\n"
 "PO-Revision-Date: 2019-08-28 11:56+0000\n"
 "Last-Translator: Daniele Bortoluzzi <daniele@elkos.it>\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 msgid "Document comments"
 msgstr "Commenti documento"
 
-#: apps.py:87 apps.py:91 links.py:31 models.py:43 permissions.py:5
+#: apps.py:87 apps.py:91 links.py:31 models.py:48 permissions.py:5
 msgid "Comments"
 msgstr "Commenti "
 
@@ -51,20 +51,20 @@ msgstr "Cancella"
 msgid "Edit"
 msgstr "Modifica"
 
-#: models.py:26
+#: models.py:31
 msgid "Document"
 msgstr "Documento"
 
-#: models.py:30 models.py:68
+#: models.py:35 models.py:73
 msgid "User"
 msgstr "Utente"
 
 #. Translators: Comment here is a noun and refers to the actual text stored
-#: models.py:33 models.py:42
+#: models.py:38 models.py:47
 msgid "Comment"
 msgstr "Commento"
 
-#: models.py:36
+#: models.py:41
 msgid "Date time submitted"
 msgstr "Data e ora di invio"
 
@@ -89,32 +89,32 @@ msgstr "Visualizza commenti"
 msgid "Add comment to document: %s"
 msgstr "Aggiungi un comento al documento: %s"
 
-#: views.py:68
+#: views.py:60
 #, python-format
 msgid "Delete comment: %s?"
 msgstr "Cancellare il commento: %s?"
 
-#: views.py:90
+#: views.py:87
 #, python-format
 msgid "Details for comment: %s?"
 msgstr "Dettagli del commento: %s?"
 
-#: views.py:108
+#: views.py:102
 #, python-format
 msgid "Edit comment: %s?"
 msgstr "Modifica commento: %s?"
 
-#: views.py:133
+#: views.py:132
 msgid ""
 "Document comments are timestamped text entries from users. They are great "
 "for collaboration."
 msgstr "I commenti al documento sono dei testi con data e ora da parte degli utenti. Sono ottimi per la collaborazione."
 
-#: views.py:136
+#: views.py:135
 msgid "There are no comments"
 msgstr "Non ci sono commenti"
 
-#: views.py:138
+#: views.py:137
 #, python-format
 msgid "Comments for document: %s"
 msgstr "Commenti al documento: %s"
