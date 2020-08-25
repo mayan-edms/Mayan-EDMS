@@ -3,6 +3,7 @@ from rest_framework import status
 from mayan.apps.permissions.tests.literals import TEST_ROLE_LABEL
 from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
+from ..classes import ModelPermission
 from ..models import AccessControlList
 from ..permissions import permission_acl_edit, permission_acl_view
 
@@ -172,3 +173,28 @@ class ACLAPIViewTestCase(ACLTestMixin, ACLAPIViewTestMixin, BaseAPITestCase):
         self.assertTrue(
             self.test_permission.stored_permission in self.test_acl.permissions.all()
         )
+
+
+class ClassPermissionAPIViewTestCase(ACLTestMixin, BaseAPITestCase):
+    auto_create_test_object = True
+
+    def test_class_permission_list_api_view(self):
+        class_permissions = [
+            permission.pk for permission in ModelPermission.get_for_class(
+                klass=self.test_object_content_type.model_class()
+            )
+        ]
+
+        response = self.get(
+            viewname='rest_api:class-permission-list', kwargs={
+                'app_label': self.test_object_content_type.app_label,
+                'model_name': self.test_object_content_type.model,
+            }
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        response_permissions = [
+            permission['pk'] for permission in response.data['results']
+        ]
+
+        self.assertEqual(class_permissions, response_permissions)

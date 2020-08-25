@@ -196,6 +196,7 @@ Issues closed
 
 - :gitlab-issue:`813` Redis password change is ignored
 - :gitlab-issue:`862` Missing Widget Keyword Arguments on transition fields lead to MediaDefiningClass object argument after ** must be a mapping, not NoneType
+- :forum-topic:`2858` Get allowable ACL permissions for an object
 - :forum-topic:`2890` Rest API: Bug in documents_comments_update
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

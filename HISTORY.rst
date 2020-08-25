@@ -9,6 +9,9 @@
 - Add information about settings loading order to the settings chapter.
   Closes GitLab issue #813. Thanks to Martin (@efelon) for the report and
   debug information.
+- Add API endpoint to show the valid permissions for a model.
+  The URL is ``/api/objects/{app}/{model}/permissions/``.
+  Forum topic 2858. Thanks to forum user @neuhs for the report.
 
 3.4.14 (2020-08-18)
 ===================
