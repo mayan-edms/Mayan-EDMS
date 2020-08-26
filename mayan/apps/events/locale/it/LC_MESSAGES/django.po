@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-18 03:11-0400\n"
+"POT-Creation-Date: 2020-08-23 23:18-0400\n"
 "PO-Revision-Date: 2020-08-08 10:11+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
@@ -55,7 +55,7 @@ msgstr "Etichetta"
 msgid "Seen"
 msgstr "Visto"
 
-#: classes.py:76
+#: classes.py:144
 #, python-format
 msgid "Unknown or obsolete event type: %s"
 msgstr "Tipo di evento sconosciuto o obsoleto: %s"

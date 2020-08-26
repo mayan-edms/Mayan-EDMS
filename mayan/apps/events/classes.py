@@ -8,9 +8,77 @@ from django.utils.translation import ugettext_lazy as _
 
 from actstream import action
 
+from .literals import (
+    EVENT_MANAGER_ORDER_AFTER, EVENT_MANAGER_ORDER_BEFORE
+)
 from .permissions import permission_events_view
 
 logger = logging.getLogger(name=__name__)
+
+
+class EventManager:
+    EVENT_ARGUMENTS = ('actor', 'action_object', 'target')
+
+    def __init__(self, instance, **kwargs):
+        self.instance = instance
+        self.kwargs = kwargs
+
+    def commit(self):
+        self.kwargs['event'].commit(
+            **self.get_event_arguments(argument_map=self.kwargs)
+        )
+
+    def get_event_arguments(self, argument_map):
+        result = {}
+
+        for argument in self.EVENT_ARGUMENTS:
+            # Grab the static argument value from the argument map.
+            # If the argument is not in the map, it is dynamic and must be
+            # obtained from the instance attributes.
+            value = argument_map.get(
+                argument, self.instance_event_attributes[argument]
+            )
+
+            if value == 'self':
+                result[argument] = self.instance
+            elif isinstance(value, str):
+                result[argument] = getattr(self.instance, value)
+            else:
+                result[argument] = value
+
+        return result
+
+    def pop_event_attributes(self):
+        self.instance_event_attributes = {}
+
+        for attribute in self.EVENT_ARGUMENTS:
+            full_name = '_event_{}'.format(attribute)
+            value = self.instance.__dict__.pop(full_name, None)
+            self.instance_event_attributes[attribute] = value
+
+    def prepare(self):
+        """Optional method to gather information before the actual commit"""
+
+
+class EventManagerMethodAfter(EventManager):
+    order = EVENT_MANAGER_ORDER_AFTER
+
+
+class EventManagerSave(EventManager):
+    order = EVENT_MANAGER_ORDER_AFTER
+
+    def commit(self):
+        if self.created:
+            self.kwargs['created']['event'].commit(
+                **self.get_event_arguments(argument_map=self.kwargs['created'])
+            )
+        else:
+            self.kwargs['edited']['event'].commit(
+                **self.get_event_arguments(argument_map=self.kwargs['edited'])
+            )
+
+    def prepare(self):
+        self.created = not self.instance.pk
 
 
 class EventModelRegistry:

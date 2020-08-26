@@ -1,8 +1,9 @@
 from django.conf.urls import url
 
 from .api_views import (
-    APIObjectACLListView, APIObjectACLPermissionListView,
-    APIObjectACLPermissionView, APIObjectACLView
+    APIClassPermissionList, APIObjectACLListView,
+    APIObjectACLPermissionListView, APIObjectACLPermissionView,
+    APIObjectACLView
 )
 from .views import (
     ACLCreateView, ACLDeleteView, ACLListView, ACLPermissionsView
@@ -28,6 +29,10 @@ urlpatterns = [
 ]
 
 api_urls = [
+    url(
+        regex=r'^objects/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/permissions/$',
+        name='class-permission-list', view=APIClassPermissionList.as_view()
+    ),
     url(
         regex=r'^objects/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/(?P<object_id>\d+)/acls/$',
         name='accesscontrollist-list', view=APIObjectACLListView.as_view()

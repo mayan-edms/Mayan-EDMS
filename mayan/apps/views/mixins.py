@@ -49,6 +49,11 @@ class DeleteExtraDataMixin:
     """
     def delete(self, request, *args, **kwargs):
         self.object = self.get_object()
+
+        if hasattr(self, 'get_instance_extra_data'):
+            for key, value in self.get_instance_extra_data().items():
+                setattr(self.object, key, value)
+
         success_url = self.get_success_url()
         if hasattr(self, 'get_delete_extra_data'):
             self.object.delete(**self.get_delete_extra_data())

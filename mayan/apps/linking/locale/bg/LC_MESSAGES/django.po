@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Lyudmil Antonov <lantonov.here@gmail.com>, 2019
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2019-2020
 # Pavlin Koldamov <pkoldamov@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-18 03:12-0400\n"
-"PO-Revision-Date: 2019-12-16 20:57+0000\n"
+"POT-Creation-Date: 2020-08-23 23:18-0400\n"
+"PO-Revision-Date: 2020-08-20 17:57+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -86,7 +86,7 @@ msgstr "е равно на"
 
 #: literals.py:13
 msgid "is equal to (case insensitive)"
-msgstr "е равно на (чувствително на малки/големи)"
+msgstr "е равно на (нечувствително към регистъра)"
 
 #: literals.py:14
 msgid "contains"
@@ -94,7 +94,7 @@ msgstr "съдържа"
 
 #: literals.py:15
 msgid "contains (case insensitive)"
-msgstr "съдържа (чувствително на малки/големи)"
+msgstr "съдържа (нечувствително към регистъра)"
 
 #: literals.py:16
 msgid "is in"
@@ -122,7 +122,7 @@ msgstr "започва с"
 
 #: literals.py:22
 msgid "starts with (case insensitive)"
-msgstr "започва с (чувствително на малки/големи)"
+msgstr "започва с (нечувствително към регистъра)"
 
 #: literals.py:23
 msgid "ends with"
@@ -130,7 +130,7 @@ msgstr "завършва с"
 
 #: literals.py:24
 msgid "ends with (case insensitive)"
-msgstr "завършва с (чувствително на малки/големи)"
+msgstr "завършва с (нечувствително към регистъра)"
 
 #: literals.py:25
 msgid "is in regular expression"
@@ -138,17 +138,17 @@ msgstr "е в редовен израз"
 
 #: literals.py:26
 msgid "is in regular expression (case insensitive)"
-msgstr "е в редовна експресия (нечувствителен към регистъра)"
+msgstr "е в редовен израз (нечувствително към регистъра)"
 
 #: models.py:25
 msgid "A short text describing the smart link."
-msgstr "Кратък текст, описващ интелигентната връзка."
+msgstr "Кратък текст, описващ умната връзка."
 
 #: models.py:30
 msgid ""
 "Use this field to show a unique label depending on the document from which "
 "the smart link is being accessed."
-msgstr "Използвайте това поле, за да покажете уникален етикет в зависимост от документа, от който се осъществява достъп до интелигентната връзка."
+msgstr "Използвайте това поле, за да покажете уникален етикет в зависимост от документа, от който се осъществява достъп до умната връзка."
 
 #: models.py:32
 msgid "Dynamic label"
@@ -278,7 +278,7 @@ msgstr "Налични типове документи"
 
 #: views.py:166
 msgid "Document types enabled"
-msgstr "Типовете документи са активирани"
+msgstr "Активирани типове документи"
 
 #: views.py:176
 #, python-format

@@ -19,8 +19,8 @@ class EventTestCaseMixin:
         super().setUp()
         Action.objects.all().delete()
 
-    def _get_test_object_event(self):
-        test_object = getattr(self, self._test_event_object_name)
+    def _get_test_object_event(self, object_name=None):
+        test_object = getattr(self, object_name or self._test_event_object_name)
 
         if test_object:
             return any_stream(obj=test_object).first()

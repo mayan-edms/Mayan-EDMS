@@ -219,6 +219,21 @@
 - Enable the web link navigated event for subscription and as workflow
   trigger.
 
+3.4.15 (2020-08-26)
+===================
+- Ensure workflow template field widgets receive an empty mapping
+  when the arguments field is empty. Closes GitLab issue #862.
+  Thanks to Dennis Ploeger (@dploeger) for the report, debug, and diagnostics.
+- Backport events method decorator.
+- Update comments app to use method event decorator. Solves forum issue in
+  topic 2890. Thank to forum user @qra for the report.
+- Add information about settings loading order to the settings chapter.
+  Closes GitLab issue #813. Thanks to Martin (@efelon) for the report and
+  debug information.
+- Add API endpoint to show the valid permissions for a model.
+  The URL is ``/api/objects/{app}/{model}/permissions/``.
+  Forum topic 2858. Thanks to forum user @neuhs for the report.
+
 3.4.14 (2020-08-18)
 ===================
 - Fix resolved web link bug introduced by the commit

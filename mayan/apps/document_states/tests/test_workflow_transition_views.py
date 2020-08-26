@@ -1,10 +1,11 @@
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 from mayan.apps.testing.tests.base import GenericViewTestCase
 
+from ..literals import WIDGET_CLASS_TEXTAREA
 from ..models import WorkflowTransition
 from ..permissions import (
-    permission_workflow_edit, permission_workflow_view,
-    permission_workflow_transition
+    permission_workflow_edit, permission_workflow_transition,
+    permission_workflow_view
 )
 
 from .literals import (
@@ -257,23 +258,31 @@ class WorkflowTransitionEventViewTestCase(
         self.assertEqual(response.status_code, 200)
 
 
+class WorkflowTransitionFieldTestMixin:
+    def _create_test_workflow_transition_field(self, extra_data=None):
+        kwargs = {
+            'field_type': TEST_WORKFLOW_TRANSITION_FIELD_TYPE,
+            'name': TEST_WORKFLOW_TRANSITION_FIELD_NAME,
+            'label': TEST_WORKFLOW_TRANSITION_FIELD_LABEL,
+            'help_text': TEST_WORKFLOW_TRANSITION_FIELD_HELP_TEXT
+        }
+        kwargs.update(extra_data or {})
+
+        self.test_workflow_transition_field = self.test_workflow_transition.fields.create(
+            **kwargs
+        )
+
+
 class WorkflowTransitionFieldViewTestCase(
-    WorkflowTestMixin, WorkflowTransitionFieldViewTestMixin,
-    WorkflowTransitionViewTestMixin, GenericViewTestCase
+    WorkflowTestMixin, WorkflowTransitionFieldTestMixin,
+    WorkflowTransitionFieldViewTestMixin, WorkflowTransitionViewTestMixin,
+    GenericViewTestCase
 ):
     def setUp(self):
         super(WorkflowTransitionFieldViewTestCase, self).setUp()
         self._create_test_workflow()
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
-
-    def _create_test_workflow_transition_field(self):
-        self.test_workflow_transition_field = self.test_workflow_transition.fields.create(
-            field_type=TEST_WORKFLOW_TRANSITION_FIELD_TYPE,
-            name=TEST_WORKFLOW_TRANSITION_FIELD_NAME,
-            label=TEST_WORKFLOW_TRANSITION_FIELD_LABEL,
-            help_text=TEST_WORKFLOW_TRANSITION_FIELD_HELP_TEXT
-        )
 
     def test_workflow_transition_field_list_view_no_permission(self):
         self._create_test_workflow_transition_field()
@@ -353,4 +362,37 @@ class WorkflowTransitionFieldViewTestCase(
         self.assertEqual(
             self.test_workflow_transition.fields.count(),
             workflow_transition_field_count - 1
+        )
+
+
+class WorkflowInstanceTransitionFieldViewTestCase(
+    WorkflowTestMixin, WorkflowTransitionFieldTestMixin,
+    WorkflowTransitionFieldViewTestMixin, WorkflowTransitionViewTestMixin,
+    GenericDocumentViewTestCase
+):
+    def setUp(self):
+        super().setUp()
+        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow_states()
+        self._create_test_workflow_transition()
+        self._create_test_workflow_transition_field(
+            extra_data={
+                'widget': WIDGET_CLASS_TEXTAREA
+            }
+        )
+        self._upload_test_document()
+        self.test_workflow_instance = self.test_document.workflows.first()
+
+    def test_workflow_transition_text_area_widget_execute_view_with_transition_access(self):
+        self.grant_access(
+            obj=self.test_workflow_transition,
+            permission=permission_workflow_transition
+        )
+
+        response = self._request_test_workflow_transition_execute_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(
+            self.test_workflow_instance.get_current_state(),
+            self.test_workflow_state_2
         )

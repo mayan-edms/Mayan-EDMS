@@ -5,15 +5,15 @@
 # 
 # Translators:
 # Roberto Rosario, 2017
-# Lyudmil Antonov <lantonov.here@gmail.com>, 2019
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-18 03:13-0400\n"
+"POT-Creation-Date: 2020-08-23 23:19-0400\n"
 "PO-Revision-Date: 2017-06-30 22:04+0000\n"
-"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2019\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2020\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -76,6 +76,8 @@ msgstr "Celery"
 #: settings.py:18
 msgid "Default: \"AMQPLAIN\". Set custom amqp login method."
 msgstr ""
+"По подразбиране: &quot;AMQPLAIN&quot;. Задайте потребителски метод за вход в"
+" amqp."
 
 #: settings.py:24
 msgid ""
@@ -95,6 +97,9 @@ msgid ""
 "Default: \"Disabled\". Toggles SSL usage on broker connection and SSL "
 "settings. The valid values for this option vary by transport."
 msgstr ""
+"По подразбиране: &quot;Неактивно&quot;. Превключва използването на SSL при "
+"връзка с брокера и настройките на SSL. Валидните стойности за тази опция "
+"варират в зависимост от транспорта."
 
 #: settings.py:41
 msgid ""

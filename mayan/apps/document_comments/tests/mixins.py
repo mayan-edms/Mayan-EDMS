@@ -1,15 +1,25 @@
+from ..models import Comment
+
 from .literals import TEST_COMMENT_TEXT, TEST_COMMENT_TEXT_EDITED
 
 
 class CommentAPIViewTestMixin:
     def _request_test_comment_create_api_view(self):
-        return self.post(
+        pk_list = list(Comment.objects.values_list('pk', flat=True))
+
+        response = self.post(
             viewname='rest_api:comment-list', kwargs={
                 'document_pk': self.test_document.pk
             }, data={
                 'comment': TEST_COMMENT_TEXT
             }
         )
+
+        self.test_document_comment = Comment.objects.exclude(
+            pk__in=pk_list
+        ).first()
+
+        return response
 
     def _request_test_comment_delete_api_view(self):
         return self.delete(
@@ -46,7 +56,7 @@ class CommentAPIViewTestMixin:
 class DocumentCommentTestMixin:
     def _create_test_comment(self):
         self.test_document_comment = self.test_document.comments.create(
-            comment=TEST_COMMENT_TEXT, user=self._test_case_user
+            comment=TEST_COMMENT_TEXT, user=self.test_user
         )
 
 
