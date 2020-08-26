@@ -31,6 +31,11 @@ class MessageCreateView(SingleObjectCreateView):
             'title': _('Create message'),
         }
 
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user
+        }
+
 
 class MessageDeleteView(MultipleObjectConfirmActionView):
     model = Message
@@ -89,6 +94,11 @@ class MessageEditView(SingleObjectEditView):
         return {
             'object': self.object,
             'title': _('Edit message: %s') % self.object,
+        }
+
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user
         }
 
 

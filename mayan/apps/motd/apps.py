@@ -10,9 +10,15 @@ from mayan.apps.common.classes import ModelCopy
 from mayan.apps.common.menus import (
     menu_list_facet, menu_multi_item, menu_object, menu_secondary, menu_setup
 )
+from mayan.apps.events.classes import EventModelRegistry, ModelEventType
+from mayan.apps.events.links import (
+    link_events_for_object, link_object_event_types_user_subcriptions_list,
+)
+from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.views.html_widgets import TwoStateWidget
 
+from .events import event_message_edited
 from .links import (
     link_message_create, link_message_multiple_delete,
     link_message_single_delete, link_message_edit, link_message_list
@@ -38,6 +44,8 @@ class MOTDApp(MayanAppConfig):
 
         Message = self.get_model(model_name='Message')
 
+        EventModelRegistry.register(model=Message)
+
         ModelCopy(
             model=Message, bind_link=True, register_permission=True
         ).add_fields(
@@ -46,11 +54,15 @@ class MOTDApp(MayanAppConfig):
             ),
         )
 
+        ModelEventType.register(
+            model=Message, event_types=(event_message_edited,)
+        )
+
         ModelPermission.register(
             model=Message, permissions=(
                 permission_acl_edit, permission_acl_view,
-                permission_message_delete, permission_message_edit,
-                permission_message_view
+                permission_events_view, permission_message_delete,
+                permission_message_edit, permission_message_view
             )
         )
         SourceColumn(
@@ -72,9 +84,11 @@ class MOTDApp(MayanAppConfig):
 
         menu_list_facet.bind_links(
             links=(
-                link_acl_list,
+                link_acl_list, link_events_for_object,
+                link_object_event_types_user_subcriptions_list,
             ), sources=(Message,)
         )
+
         menu_multi_item.bind_links(
             links=(link_message_multiple_delete,), sources=(Message,)
         )
