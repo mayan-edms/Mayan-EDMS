@@ -16,7 +16,7 @@ from mayan.apps.common.utils import (
 from mayan.apps.views.literals import LIST_MODE_CHOICE_LIST
 
 from .settings import (
-    setting_search_backend, setting_search_backend_arguments,
+    setting_backend, setting_backend_arguments,
     setting_results_limit
 )
 logger = logging.getLogger(name=__name__)
@@ -25,8 +25,8 @@ logger = logging.getLogger(name=__name__)
 class SearchBackend:
     @staticmethod
     def get_instance():
-        return import_string(dotted_path=setting_search_backend.value)(
-            **setting_search_backend_arguments.value
+        return import_string(dotted_path=setting_backend.value)(
+            **setting_backend_arguments.value
         )
 
     @staticmethod

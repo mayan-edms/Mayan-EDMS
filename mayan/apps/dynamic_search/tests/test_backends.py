@@ -8,7 +8,7 @@ from mayan.apps.documents.tests.mixins import DocumentTestMixin
 from mayan.apps.storage.utils import fs_cleanup, mkdtemp
 
 from ..classes import SearchBackend
-from ..settings import setting_search_backend_arguments
+from ..settings import setting_backend_arguments
 
 
 @override_settings(SEARCH_BACKEND='mayan.apps.dynamic_search.backends.django.DjangoSearchBackend')
@@ -219,18 +219,18 @@ class WhooshSearchBackendDocumentSearchTestCase(
     auto_upload_test_document = False
 
     def setUp(self):
-        self.old_value = setting_search_backend_arguments.value
+        self.old_value = setting_backend_arguments.value
         super().setUp()
-        setting_search_backend_arguments.set(
+        setting_backend_arguments.set(
             value={'index_path': mkdtemp()}
         )
         self.search_backend = SearchBackend.get_instance()
 
     def tearDown(self):
         fs_cleanup(
-            filename=setting_search_backend_arguments.value['index_path']
+            filename=setting_backend_arguments.value['index_path']
         )
-        setting_search_backend_arguments.set(value=self.old_value)
+        setting_backend_arguments.set(value=self.old_value)
         super().tearDown()
 
     def test_simple_search(self):

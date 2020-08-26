@@ -6,14 +6,14 @@ from .literals import DEFAULT_RESULTS_LIMIT
 
 namespace = SettingNamespace(label=_('Search'), name='search')
 
-setting_search_backend = namespace.add_setting(
+setting_backend = namespace.add_setting(
     global_name='SEARCH_BACKEND',
     default='mayan.apps.dynamic_search.backends.django.DjangoSearchBackend',
     help_text=_(
         'Full path to the backend to be used to handle the search.'
     )
 )
-setting_search_backend_arguments = namespace.add_setting(
+setting_backend_arguments = namespace.add_setting(
     global_name='SEARCH_BACKEND_ARGUMENTS',
     default={}
 )
