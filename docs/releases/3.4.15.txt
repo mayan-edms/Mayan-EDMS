@@ -1,10 +1,42 @@
 Version 3.4.15
 ==============
 
-Released: August XX, 2020
+Released: August 26, 2020
+
 
 Changes
 -------
+
+API
+^^^
+
+A new API endpoint was added to show the valid permissions for a model.
+This is useful when creating or editing ACLs via the API. The URL for the
+new endpoint is: ``/api/objects/{app}/{model}/permissions/``.
+
+
+Comments
+^^^^^^^^
+
+An issue was fixed where the incorrect user was shown in the logs for the
+comment edit event. A limitation in the API library used does not allow
+passing the correct user to the event system. Therefore a future feature was
+backported and applied only to the comments model to solve the issue.
+
+
+Settings
+^^^^^^^^
+
+The chapter description the settings system was expanded to show the loading
+order and the priority of the different setting methods.
+
+
+Workflows
+^^^^^^^^^
+
+An bug was fixed the caused an error when adding a text area widget for a
+workflow transition field.
+
 
 Removals
 --------

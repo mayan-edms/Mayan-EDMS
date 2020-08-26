@@ -1,4 +1,4 @@
-3.4.15 (2020-08-XX)
+3.4.15 (2020-08-26)
 ===================
 - Ensure workflow template field widgets receive an empty mapping
   when the arguments field is empty. Closes GitLab issue #862.
