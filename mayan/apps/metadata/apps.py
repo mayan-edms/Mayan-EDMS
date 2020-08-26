@@ -52,8 +52,6 @@ from .permissions import (
     permission_metadata_type_view
 )
 
-from .search import metadata_type_search  # NOQA
-
 logger = logging.getLogger(name=__name__)
 
 
