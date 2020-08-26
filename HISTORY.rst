@@ -221,6 +221,8 @@
 - Add the setting ``SEARCH_RESULTS_LIMIT`` which limits the number search
   results to fetch and display. Defaults to ``100``.
 - Add events to assets.
+- Re query search queryset after it has been sliced to workaround the ORM
+  "Cannot filter a query once a slice has been taken".
 
 3.4.15 (2020-08-26)
 ===================

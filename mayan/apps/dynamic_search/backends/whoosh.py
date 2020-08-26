@@ -82,9 +82,11 @@ class WhooshSearchBackend(SearchBackend):
             for result in results:
                 id_list.append(result['id'])
 
-        return search_model.get_queryset().filter(
+        queryset = search_model.get_queryset().filter(
             id__in=id_list
-        ).distinct()[:setting_results_limit.value]
+        ).distinct()
+
+        return SearchBackend.limit_queryset(queryset=queryset)
 
     def clear_search_model_index(self, search_model):
         index = self.get_index(search_model=search_model)

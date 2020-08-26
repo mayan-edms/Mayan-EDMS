@@ -24,9 +24,11 @@ class DjangoSearchBackend(SearchBackend):
             global_and_search=global_and_search
         )
 
-        return search_model.get_queryset().filter(
+        queryset = search_model.get_queryset().filter(
             search_query.query
-        ).distinct()[:setting_results_limit.value]
+        ).distinct()
+
+        return SearchBackend.limit_queryset(queryset=queryset)
 
     def deindex_instance(self, instance):
         """This backend doesn't remove instances."""

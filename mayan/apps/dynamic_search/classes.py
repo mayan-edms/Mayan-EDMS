@@ -16,7 +16,8 @@ from mayan.apps.common.utils import (
 from mayan.apps.views.literals import LIST_MODE_CHOICE_LIST
 
 from .settings import (
-    setting_search_backend, setting_search_backend_arguments
+    setting_search_backend, setting_search_backend_arguments,
+    setting_results_limit
 )
 logger = logging.getLogger(name=__name__)
 
@@ -27,6 +28,11 @@ class SearchBackend:
         return import_string(dotted_path=setting_search_backend.value)(
             **setting_search_backend_arguments.value
         )
+
+    @staticmethod
+    def limit_queryset(queryset):
+        pk_list = queryset.values('pk')[:setting_results_limit.value]
+        return queryset.filter(pk__in=pk_list)
 
     def __init__(self, **kwargs):
         self.kwargs = kwargs
