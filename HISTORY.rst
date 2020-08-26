@@ -224,6 +224,8 @@
 - Re query search queryset after it has been sliced to workaround the ORM
   "Cannot filter a query once a slice has been taken".
 - Add events to the message of the day app.
+- Add search template tag to pass the search model URL and query string
+  variable to the search template and avoid hardcoding it.
 
 3.4.15 (2020-08-26)
 ===================

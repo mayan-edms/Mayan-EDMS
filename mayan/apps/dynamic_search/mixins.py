@@ -2,11 +2,7 @@ from django.http import Http404
 from django.utils.encoding import force_text
 
 from .classes import SearchModel
-
-# Duplicated to keep API compatible until version 4.0
-# Merge these two literals and mixins on version 4.0
-SEARCH_MODEL_NAME_KWARG = 'search_model_name'
-SEARCH_MODEL_NAME_API_KWARG = 'search_model'
+from .literals import SEARCH_MODEL_NAME_API_KWARG, SEARCH_MODEL_NAME_KWARG
 
 
 class SearchModelMixin:
