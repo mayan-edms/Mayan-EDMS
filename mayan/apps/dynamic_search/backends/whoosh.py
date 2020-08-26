@@ -15,8 +15,8 @@ from mayan.apps.lock_manager.backends.base import LockingBackend
 from mayan.apps.lock_manager.exceptions import LockError
 
 from ..classes import SearchBackend, SearchField, SearchModel
+from ..settings import setting_results_limit
 
-DEFAULT_SEARCH_LIMIT = 100
 DJANGO_TO_WHOOSH_FIELD_MAP = {
     models.AutoField: {
         'field': fields.ID(stored=True), 'transformation': str
@@ -41,10 +41,6 @@ class WhooshSearchBackend(SearchBackend):
             )
         )
         self.index_path.mkdir(exist_ok=True)
-
-        self.search_limit = self.kwargs.get(
-            'search_limit', DEFAULT_SEARCH_LIMIT
-        )
 
     def _search(self, query_string, search_model, user, global_and_search=False):
         index = self.get_index(search_model=search_model)
@@ -77,14 +73,18 @@ class WhooshSearchBackend(SearchBackend):
             parser.remove_plugin_class(cls=qparser.WildcardPlugin)
             parser.add_plugin(pin=qparser.PrefixPlugin())
             query = parser.parse(text=search_string)
-            results = searcher.search(q=query, limit=self.search_limit)
+            results = searcher.search(
+                q=query, limit=setting_results_limit.value
+            )
 
             logger.debug('results: %s', results)
 
             for result in results:
                 id_list.append(result['id'])
 
-        return search_model.model.objects.filter(id__in=id_list).distinct()
+        return search_model.get_queryset().filter(
+            id__in=id_list
+        ).distinct()[:setting_results_limit.value]
 
     def clear_search_model_index(self, search_model):
         index = self.get_index(search_model=search_model)

@@ -4,6 +4,7 @@ from django.db.models import Q
 from django.utils.encoding import force_text
 
 from ..classes import SearchBackend
+from ..settings import setting_results_limit
 
 QUERY_OPERATION_AND = 1
 QUERY_OPERATION_OR = 2
@@ -23,7 +24,9 @@ class DjangoSearchBackend(SearchBackend):
             global_and_search=global_and_search
         )
 
-        return search_model.get_queryset().filter(search_query.query).distinct()
+        return search_model.get_queryset().filter(
+            search_query.query
+        ).distinct()[:setting_results_limit.value]
 
     def deindex_instance(self, instance):
         """This backend doesn't remove instances."""

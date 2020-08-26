@@ -218,6 +218,8 @@
   de-duplicate the labels before altering the schema.
 - Enable the web link navigated event for subscription and as workflow
   trigger.
+- Add the setting ``SEARCH_RESULTS_LIMIT`` which limits the number search
+  results to fetch and display. Defaults to ``100``.
 
 3.4.15 (2020-08-26)
 ===================
