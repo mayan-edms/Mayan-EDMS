@@ -84,4 +84,8 @@ class APISearchModelList(generics.ListAPIView):
     get: Returns a list of all the available search models.
     """
     serializer_class = SearchModelSerializer
-    queryset = SearchModel.all()
+
+    def get_queryset(self):
+        # This changes after the initial startup as search models are
+        # automatically loaded.
+        return SearchModel.all()
