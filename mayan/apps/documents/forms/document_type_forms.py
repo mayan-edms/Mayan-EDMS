@@ -7,12 +7,12 @@ from ..classes import BaseDocumentFilenameGenerator
 from ..models import DocumentType, DocumentTypeFilename
 
 __all__ = (
-    'DocumentTypeFileGeneratorForm', 'DocumentTypeFilteredSelectForm',
+    'DocumentTypeFilenameGeneratorForm', 'DocumentTypeFilteredSelectForm',
     'DocumentTypeFilenameForm_create'
 )
 
 
-class DocumentTypeFileGeneratorForm(forms.ModelForm):
+class DocumentTypeFilenameGeneratorForm(forms.ModelForm):
     class Meta:
         fields = (
             'filename_generator_backend',

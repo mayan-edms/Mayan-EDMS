@@ -11,7 +11,7 @@ from mayan.apps.views.generics import (
 from mayan.apps.views.mixins import ExternalObjectMixin
 
 from ..forms.document_type_forms import (
-    DocumentTypeFileGeneratorForm, DocumentTypeFilenameForm_create
+    DocumentTypeFilenameGeneratorForm, DocumentTypeFilenameForm_create
 )
 from ..icons import (
     icon_document_type_filename, icon_document_type_setup
@@ -267,7 +267,7 @@ class DocumentTypeFilenameListView(ExternalObjectMixin, SingleObjectListView):
 
 
 class DocumentTypeFileGeneratorEditView(SingleObjectEditView):
-    form_class = DocumentTypeFileGeneratorForm
+    form_class = DocumentTypeFilenameGeneratorForm
     model = DocumentType
     object_permission = permission_document_type_edit
     pk_url_kwarg = 'document_type_id'
