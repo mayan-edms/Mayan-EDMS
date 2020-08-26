@@ -11,10 +11,12 @@ from ..permissions import (
 from .literals import (
     TEST_LABEL, TEST_LABEL_EDITED, TEST_MESSAGE, TEST_MESSAGE_EDITED
 )
-from .mixins import MOTDAPITestMixin, MOTDTestMixin
+from .mixins import MessageAPIViewTestMixin, MessageTestMixin
 
 
-class MOTDAPITestCase(MOTDAPITestMixin, MOTDTestMixin, BaseAPITestCase):
+class MessageAPIViewTestCase(
+    MessageAPIViewTestMixin, MessageTestMixin, BaseAPITestCase
+):
     def test_message_create_view_no_permission(self):
         response = self._request_message_create_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)

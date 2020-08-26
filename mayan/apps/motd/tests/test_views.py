@@ -1,7 +1,7 @@
 from mayan.apps.events.tests.mixins import EventTestCaseMixin
 from mayan.apps.testing.tests.base import GenericViewTestCase
 
-from .mixins import MOTDTestMixin, MessageViewTestMixin
+from .mixins import MessageTestMixin, MessageViewTestMixin
 
 from ..events import event_message_created, event_message_edited
 from ..models import Message
@@ -12,7 +12,7 @@ from ..permissions import (
 
 
 class MessageViewTestCase(
-    MOTDTestMixin, MessageViewTestMixin, EventTestCaseMixin,
+    MessageTestMixin, MessageViewTestMixin, EventTestCaseMixin,
     GenericViewTestCase
 ):
     _test_event_object_name = 'test_message'

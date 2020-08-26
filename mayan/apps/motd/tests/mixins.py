@@ -5,7 +5,7 @@ from .literals import (
 )
 
 
-class MOTDAPITestMixin:
+class MessageAPIViewTestMixin:
     def _request_message_create_view(self):
         return self.post(
             viewname='rest_api:message-list', data={
@@ -48,7 +48,7 @@ class MOTDAPITestMixin:
         )
 
 
-class MOTDTestMixin:
+class MessageTestMixin:
     def _create_test_message(self):
         self.test_message = Message.objects.create(
             label=TEST_LABEL, message=TEST_MESSAGE

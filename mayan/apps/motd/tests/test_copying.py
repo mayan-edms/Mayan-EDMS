@@ -1,10 +1,10 @@
 from mayan.apps.common.tests.mixins import ObjectCopyTestMixin
 from mayan.apps.testing.tests.base import BaseTestCase
 
-from .mixins import MOTDTestMixin
+from .mixins import MessageTestMixin
 
 
-class MOTDCopyTestCase(MOTDTestMixin, ObjectCopyTestMixin, BaseTestCase):
+class MessageCopyTestCase(MessageTestMixin, ObjectCopyTestMixin, BaseTestCase):
     def setUp(self):
         super().setUp()
         self._create_test_message()
