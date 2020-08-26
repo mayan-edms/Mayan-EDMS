@@ -16,9 +16,7 @@ class DocumentTagViewTestCase(
     DocumentTagViewTestMixin, TagTestMixin, GenericDocumentViewTestCase
 ):
     def test_document_tags_list_no_permission(self):
-        self._create_test_tag()
-
-        self.test_tag.documents.add(self.test_document)
+        self._create_test_tag(add_test_document=True)
 
         response = self._request_test_document_tag_list_view()
         self.assertNotContains(
@@ -26,9 +24,7 @@ class DocumentTagViewTestCase(
         )
 
     def test_document_tags_list_with_document_access(self):
-        self._create_test_tag()
-
-        self.test_tag.documents.add(self.test_document)
+        self._create_test_tag(add_test_document=True)
 
         self.grant_access(
             obj=self.test_document, permission=permission_tag_view
@@ -40,9 +36,7 @@ class DocumentTagViewTestCase(
         )
 
     def test_document_tags_list_with_tag_access(self):
-        self._create_test_tag()
-
-        self.test_tag.documents.add(self.test_document)
+        self._create_test_tag(add_test_document=True)
 
         self.grant_access(obj=self.test_tag, permission=permission_tag_view)
 
@@ -52,9 +46,7 @@ class DocumentTagViewTestCase(
         )
 
     def test_document_tags_list_with_full_access(self):
-        self._create_test_tag()
-
-        self.test_tag.documents.add(self.test_document)
+        self._create_test_tag(add_test_document=True)
 
         self.grant_access(
             obj=self.test_document, permission=permission_tag_view

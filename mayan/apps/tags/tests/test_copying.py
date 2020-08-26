@@ -10,6 +10,5 @@ class TagCopyTestCase(
 ):
     def setUp(self):
         super().setUp()
-        self._create_test_tag()
-        self.test_tag.documents.add(self.test_document)
+        self._create_test_tag(add_test_document=True)
         self.test_object = self.test_tag
