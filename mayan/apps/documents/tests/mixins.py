@@ -252,35 +252,13 @@ class DocumentTypeAPIViewTestMixin:
         )
 
 
-class DocumentTypeViewTestMixin:
-    def _request_test_document_type_create_view(self):
-        return self.post(
-            viewname='documents:document_type_create',
-            data={
-                'label': TEST_DOCUMENT_TYPE_LABEL,
-                'delete_time_period': TEST_DOCUMENT_TYPE_DELETE_PERIOD,
-                'delete_time_unit': TEST_DOCUMENT_TYPE_DELETE_TIME_UNIT
-            }
-        )
-
-    def _request_test_document_type_delete_view(self):
-        return self.post(
-            viewname='documents:document_type_delete', kwargs={
+class DocumentTypeFilenameGeneratorViewTestMixin:
+    def _request_document_type_filename_generator_get_view(self):
+        return self.get(
+            viewname='documents:document_type_filename_generator', kwargs={
                 'document_type_id': self.test_document_type.pk
             }
         )
-
-    def _request_test_document_type_edit_view(self):
-        return self.post(
-            viewname='documents:document_type_edit', kwargs={
-                'document_type_id': self.test_document_type.pk
-            }, data={
-                'label': TEST_DOCUMENT_TYPE_LABEL_EDITED,
-            }
-        )
-
-    def _request_test_document_type_list_view(self):
-        return self.get(viewname='documents:document_type_list')
 
 
 class DocumentTypeQuickLabelViewTestMixin:
@@ -529,6 +507,37 @@ class DocumentViewTestMixin:
 
     def _request_empty_trash_view(self):
         return self.post(viewname='documents:trash_can_empty')
+
+
+class DocumentTypeViewTestMixin:
+    def _request_test_document_type_create_view(self):
+        return self.post(
+            viewname='documents:document_type_create',
+            data={
+                'label': TEST_DOCUMENT_TYPE_LABEL,
+                'delete_time_period': TEST_DOCUMENT_TYPE_DELETE_PERIOD,
+                'delete_time_unit': TEST_DOCUMENT_TYPE_DELETE_TIME_UNIT
+            }
+        )
+
+    def _request_test_document_type_delete_view(self):
+        return self.post(
+            viewname='documents:document_type_delete', kwargs={
+                'document_type_id': self.test_document_type.pk
+            }
+        )
+
+    def _request_test_document_type_edit_view(self):
+        return self.post(
+            viewname='documents:document_type_edit', kwargs={
+                'document_type_id': self.test_document_type.pk
+            }, data={
+                'label': TEST_DOCUMENT_TYPE_LABEL_EDITED,
+            }
+        )
+
+    def _request_test_document_type_list_view(self):
+        return self.get(viewname='documents:document_type_list')
 
 
 class DuplicatedDocumentsViewsTestMixin:
