@@ -10,9 +10,12 @@ from django.utils.translation import ugettext, ugettext_lazy as _
 from mayan.apps.common.validators import (
     YAMLValidator, validate_internal_name
 )
+from mayan.apps.events.classes import EventManagerSave
+from mayan.apps.events.decorators import method_event
 from mayan.apps.storage.classes import DefinedStorageLazy
 
 from .classes import Layer
+from .events import event_asset_created, event_asset_edited
 from .literals import STORAGE_NAME_ASSETS
 from .managers import LayerTransformationManager, ObjectLayerManager
 from .transformations import BaseTransformation
@@ -58,6 +61,20 @@ class Asset(models.Model):
 
     def open(self):
         return self.file.storage.open(name=self.file.name)
+
+    @method_event(
+        event_manager_class=EventManagerSave,
+        created={
+            'event': event_asset_created,
+            'target': 'self',
+        },
+        edited={
+            'event': event_asset_edited,
+            'target': 'self',
+        }
+    )
+    def save(self, *args, **kwargs):
+        return super().save(*args, **kwargs)
 
 
 class StoredLayer(models.Model):

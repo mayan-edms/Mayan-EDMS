@@ -36,6 +36,11 @@ class AssetCreateView(SingleObjectCreateView):
             'title': _('Create asset'),
         }
 
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user
+        }
+
 
 class AssetDeleteView(MultipleObjectConfirmActionView):
     model = Asset
@@ -94,6 +99,11 @@ class AssetEditView(SingleObjectEditView):
         return {
             'object': self.object,
             'title': _('Edit asset: %s') % self.object,
+        }
+
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user
         }
 
 

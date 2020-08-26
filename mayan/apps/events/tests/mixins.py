@@ -19,6 +19,9 @@ class EventTestCaseMixin:
         super().setUp()
         Action.objects.all().delete()
 
+    def _clear_events(self):
+        Action.objects.all().delete()
+
     def _get_test_object_event(self, object_name=None):
         test_object = getattr(self, object_name or self._test_event_object_name)
 
