@@ -1,3 +1,9 @@
+3.4.16 (2020-08-XX)
+===================
+- Merge request !36 "Properly close storage file when CachePartion.create_file
+  contextmanager ends". Thanks to Biel Massot (@biel.massot) for the report,
+  solution, and merge request. Closes GitLab issue #870.
+
 3.4.15 (2020-08-26)
 ===================
 - Ensure workflow template field widgets receive an empty mapping
