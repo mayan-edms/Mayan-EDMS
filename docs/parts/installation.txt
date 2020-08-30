@@ -18,7 +18,7 @@ Minimum
   installations. Other distributions or operating systems can be used if
   they serve as host for a virtual machine or for the official Docker image.
 - Python version 3.5.
-
+- PostgreSQL 9.6.
 
 .. note::
 
@@ -41,6 +41,7 @@ Recommended
 - Debian 10.
 - Python version 3.8.
 - Storage: solid state storage.
+- PostgreSQL 12 or later.
 
 
 Installation methods
