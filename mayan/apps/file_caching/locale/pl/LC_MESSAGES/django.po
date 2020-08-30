@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-23 23:18-0400\n"
+"POT-Creation-Date: 2020-08-30 04:17-0400\n"
 "PO-Revision-Date: 2019-12-03 05:23+0000\n"
 "Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>, 2020\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
@@ -88,7 +88,7 @@ msgstr "Aktualny rozmiar pamięci podręcznej."
 msgid "Name"
 msgstr "Nazwa"
 
-#: models.py:131 models.py:201
+#: models.py:131 models.py:204
 msgid "Cache partition"
 msgstr "Partycja pamięci podręcznej"
 
@@ -96,23 +96,23 @@ msgstr "Partycja pamięci podręcznej"
 msgid "Cache partitions"
 msgstr "Partycje pamięci podręcznej"
 
-#: models.py:204
+#: models.py:207
 msgid "Date time"
 msgstr "Data i godzina"
 
-#: models.py:206
+#: models.py:209
 msgid "Filename"
 msgstr "Nazwa"
 
-#: models.py:208
+#: models.py:211
 msgid "File size"
 msgstr "Rozmiar pliku"
 
-#: models.py:214
+#: models.py:219
 msgid "Cache partition file"
 msgstr "Plik partycji pamięci podręcznej"
 
-#: models.py:215
+#: models.py:220
 msgid "Cache partition files"
 msgstr "Pliki partycji pamięci podręcznej"
 

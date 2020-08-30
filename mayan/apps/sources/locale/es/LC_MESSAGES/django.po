@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-23 23:19-0400\n"
+"POT-Creation-Date: 2020-08-30 04:19-0400\n"
 "PO-Revision-Date: 2020-05-26 08:20+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
@@ -624,7 +624,7 @@ msgstr "No se puede inicializar el almacenamiento de imágenes del archivo de la
 msgid "Staging folder files"
 msgstr "Archivos de carpetas de ensayo"
 
-#: tasks.py:46
+#: tasks.py:48
 #, python-format
 msgid "Error processing source: %s"
 msgstr "Error procesando fuente: %s"

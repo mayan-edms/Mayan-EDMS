@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-23 23:19-0400\n"
+"POT-Creation-Date: 2020-08-30 04:19-0400\n"
 "PO-Revision-Date: 2020-08-17 15:30+0000\n"
 "Last-Translator: Marvin Haschker <marvin@haschker.me>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
@@ -631,7 +631,7 @@ msgstr "Der Image-Speicher für die Stagingordner-Dateien konnte nicht initialis
 msgid "Staging folder files"
 msgstr "Stagingordner-Dateien"
 
-#: tasks.py:46
+#: tasks.py:48
 #, python-format
 msgid "Error processing source: %s"
 msgstr "Fehler bei der Verarbeitung der Quelle %s"

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-23 23:18-0400\n"
+"POT-Creation-Date: 2020-08-30 04:17-0400\n"
 "PO-Revision-Date: 2019-12-03 05:23+0000\n"
 "Last-Translator: 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2019\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
@@ -85,7 +85,7 @@ msgstr ""
 msgid "Name"
 msgstr "Nome"
 
-#: models.py:131 models.py:201
+#: models.py:131 models.py:204
 msgid "Cache partition"
 msgstr ""
 
@@ -93,23 +93,23 @@ msgstr ""
 msgid "Cache partitions"
 msgstr ""
 
-#: models.py:204
+#: models.py:207
 msgid "Date time"
 msgstr ""
 
-#: models.py:206
+#: models.py:209
 msgid "Filename"
 msgstr "Nome do ficheiro"
 
-#: models.py:208
+#: models.py:211
 msgid "File size"
 msgstr "Tamanho do ficheiro"
 
-#: models.py:214
+#: models.py:219
 msgid "Cache partition file"
 msgstr ""
 
-#: models.py:215
+#: models.py:220
 msgid "Cache partition files"
 msgstr ""
 

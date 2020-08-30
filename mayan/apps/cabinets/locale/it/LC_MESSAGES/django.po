@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-23 23:17-0400\n"
+"POT-Creation-Date: 2020-08-30 04:16-0400\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Roberto Rosario, 2020\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
@@ -32,15 +32,15 @@ msgstr "Contenitori"
 
 #: events.py:9
 msgid "Cabinet created"
-msgstr ""
+msgstr "Gabinetto creato"
 
 #: events.py:12
 msgid "Cabinet edited"
-msgstr ""
+msgstr "Gabinetto modificato"
 
 #: events.py:15
 msgid "Document added to cabinet"
-msgstr ""
+msgstr "Documento aggiunto al gabinetto"
 
 #: events.py:18
 msgid "Document removed from cabinet"
@@ -84,11 +84,11 @@ msgstr ""
 
 #: methods.py:22
 msgid "get_cabinets()"
-msgstr ""
+msgstr "get_cabinets()"
 
 #: models.py:34
 msgid "A short text used to identify the cabinet."
-msgstr ""
+msgstr "Un breve testo utilizzato per identificare il gabinetto."
 
 #: models.py:35 search.py:22
 msgid "Label"
@@ -105,7 +105,7 @@ msgstr "Contenitore"
 
 #: models.py:110
 msgid "The path to the cabinet including all ancestors."
-msgstr ""
+msgstr "Il percorso per il gabinetto inclusi tutti gli antenati."
 
 #: models.py:112
 msgid "Full path"
@@ -113,12 +113,12 @@ msgstr "Percorso completo"
 
 #: models.py:145 serializers.py:137
 msgid "Parent and Label"
-msgstr ""
+msgstr "Genitore ed etichetta"
 
 #: models.py:152 serializers.py:143
 #, python-format
 msgid "%(model_name)s with this %(field_labels)s already exists."
-msgstr ""
+msgstr "%(model_name)s con questo %(field_labels)s esiste già."
 
 #: models.py:181
 msgid "Document cabinet"
@@ -205,7 +205,7 @@ msgstr ""
 
 #: templates/cabinets/cabinet_details.html:17
 msgid "Navigation:"
-msgstr ""
+msgstr "Navigazione:"
 
 #: views.py:58
 #, python-format
