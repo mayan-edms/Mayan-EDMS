@@ -1,10 +1,10 @@
-3.4.16 (2020-08-XX)
+3.4.16 (2020-08-30)
 ===================
 - Merge request !36 "Properly close storage file when CachePartion.create_file
   contextmanager ends". Thanks to Biel Massot (@biel.massot) for the report,
   solution, and merge request. Closes GitLab issue #870.
 - Update hardware and operating system requirements.
-- Expand the documentaion chapter on languages. GitLab issue #831.
+- Expand the documentation chapter on languages. GitLab issue #831.
 
 3.4.15 (2020-08-26)
 ===================

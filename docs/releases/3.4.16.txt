@@ -1,11 +1,39 @@
 Version 3.4.16
 ==============
 
-Released: August XX, 2020
+Released: August 30, 2020
 
 
 Changes
 -------
+
+
+Documentation
+^^^^^^^^^^^^^
+
+Language chapter of the documentation was expanded to better explain how
+to add more languages for documents.
+
+
+File caching
+^^^^^^^^^^^^
+
+An issue with a missing file closing statement in the file caching app was
+fixed. This fix makes it now possible to use object storage for the document
+image cache.
+
+
+Requirements
+^^^^^^^^^^^^
+
+The minimum and recommended requirements were update to include GNU Linux
+distribution, language, and database versions.
+
+
+Others
+^^^^^^
+
+- Fix logging entry for source errors.
 
 
 Removals
@@ -196,8 +224,10 @@ Backward incompatible changes
 Issues closed
 -------------
 
+- :gitlab-issue:`536` pip install --no-cache-dir requires more updated pip & setuptools
 - :gitlab-issue:`807` Duplicate Key - Preview image not generated
 - :gitlab-issue:`816` Unexpected exception while trying to save new cache file; UNIQUE constraint failed: file_caching_cachepartitionfile.partition_id, file_caching_cachepartitionfile.filename
+- :gitlab-issue:`831` Finnish, whose endonym is suomi, not in the list of languages while tesseract-ocr-fin installed
 - :gitlab-issue:`870` CachePartion.create_file contextmanager doesn't close storage file properly
 
 
