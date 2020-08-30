@@ -196,6 +196,9 @@ Backward incompatible changes
 Issues closed
 -------------
 
+- :gitlab-issue:`807` Duplicate Key - Preview image not generated
+- :gitlab-issue:`816` Unexpected exception while trying to save new cache file; UNIQUE constraint failed: file_caching_cachepartitionfile.partition_id, file_caching_cachepartitionfile.filename
 - :gitlab-issue:`870` CachePartion.create_file contextmanager doesn't close storage file properly
+
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
