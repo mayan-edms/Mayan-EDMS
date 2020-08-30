@@ -159,7 +159,7 @@ class CachePartition(models.Model):
                     with transaction.atomic():
                         partition_file = self.files.create(filename=filename)
                         yield partition_file.open(mode='wb')
-                        partition_file.update_size()
+
                 except Exception as exception:
                     logger.error(
                         'Unexpected exception while trying to save new '
@@ -169,6 +169,9 @@ class CachePartition(models.Model):
                         name=self.get_full_filename(filename=filename)
                     )
                     raise
+                finally:
+                    partition_file.close()
+                    partition_file.update_size()
             finally:
                 lock.release()
         except LockError:
@@ -208,6 +211,8 @@ class CachePartitionFile(models.Model):
         default=0, verbose_name=_('File size')
     )
 
+    _storage_object = None
+
     class Meta:
         get_latest_by = 'datetime'
         unique_together = ('partition', 'filename')
@@ -231,14 +236,20 @@ class CachePartitionFile(models.Model):
         # Open the file for reading. If the file is written to, the
         # .update_size() must be called.
         try:
-            return self.partition.cache.storage.open(
+            self._storage_object = self.partition.cache.storage.open(
                 name=self.full_filename, mode=mode
             )
+            return self._storage_object
         except Exception as exception:
             logger.error(
                 'Unexpected exception opening the cache file; %s', exception
             )
             raise
+
+    def close(self):
+        if self._storage_object is not None:
+            self._storage_object.close()
+        self._storage_object = None
 
     def update_size(self):
         self.file_size = self.partition.cache.storage.size(
