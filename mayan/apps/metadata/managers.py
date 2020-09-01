@@ -20,6 +20,11 @@ class MetadataTypeManager(models.Manager):
             )
         )
 
+    def get_for_document_types(self, queryset):
+        return self.filter(
+            document_types__document_type__in=queryset.values('pk')
+        ).distinct()
+
 
 class DocumentTypeMetadataTypeManager(models.Manager):
     def get_by_natural_key(self, document_natural_key, metadata_type_natural_key):

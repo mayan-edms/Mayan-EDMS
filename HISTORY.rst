@@ -226,6 +226,7 @@
 - Add events to the message of the day app.
 - Add search template tag to pass the search model URL and query string
   variable to the search template and avoid hardcoding it.
+- Add workflow actions to add, edit, and remove metadata from documents.
 
 3.4.16 (2020-08-30)
 ===================

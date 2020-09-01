@@ -25,25 +25,20 @@ from .literals import (
     TEST_METADATA_TYPE_NAME_2, TEST_METADATA_VALUE_EDITED
 )
 from .mixins import (
-    DocumentMetadataViewTestMixin, MetadataTypeTestMixin,
-    MetadataTypeViewTestMixin
+    DocumentMetadataMixin, DocumentMetadataViewTestMixin,
+    MetadataTypeTestMixin, MetadataTypeViewTestMixin
 )
 
 
 class DocumentMetadataViewTestCase(
-    DocumentMetadataViewTestMixin, MetadataTypeTestMixin,
-    GenericDocumentViewTestCase
+    DocumentMetadataMixin, DocumentMetadataViewTestMixin,
+    MetadataTypeTestMixin, GenericDocumentViewTestCase
 ):
     def setUp(self):
         super(DocumentMetadataViewTestCase, self).setUp()
         self._create_test_metadata_type()
         self.test_document_type.metadata.create(
             metadata_type=self.test_metadata_type
-        )
-
-    def _create_test_document_metadata(self):
-        self.test_document_metadata = self.test_document.metadata.create(
-            metadata_type=self.test_metadata_type, value=''
         )
 
     def test_document_metadata_add_get_view_no_permission(self):

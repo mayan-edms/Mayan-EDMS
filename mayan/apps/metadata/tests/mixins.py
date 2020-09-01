@@ -67,6 +67,13 @@ class DocumentMetadataAPIViewTestMixin:
         )
 
 
+class DocumentMetadataMixin:
+    def _create_test_document_metadata(self):
+        self.test_document_metadata = self.test_document.metadata.create(
+            metadata_type=self.test_metadata_type, value=''
+        )
+
+
 class DocumentMetadataViewTestMixin:
     def _request_test_document_metadata_add_get_view(self):
         return self.get(
