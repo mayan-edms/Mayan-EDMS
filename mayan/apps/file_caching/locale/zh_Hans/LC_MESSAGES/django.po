@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-23 23:18-0400\n"
+"POT-Creation-Date: 2020-08-30 04:17-0400\n"
 "PO-Revision-Date: 2019-12-03 05:23+0000\n"
 "Last-Translator: yan songwei <yansw@vip.163.com>, 2020\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
@@ -85,7 +85,7 @@ msgstr "当前缓存的大小。"
 msgid "Name"
 msgstr "名称"
 
-#: models.py:131 models.py:201
+#: models.py:131 models.py:204
 msgid "Cache partition"
 msgstr "缓存分区"
 
@@ -93,23 +93,23 @@ msgstr "缓存分区"
 msgid "Cache partitions"
 msgstr "缓存分区"
 
-#: models.py:204
+#: models.py:207
 msgid "Date time"
 msgstr "日期时间"
 
-#: models.py:206
+#: models.py:209
 msgid "Filename"
 msgstr "文件名"
 
-#: models.py:208
+#: models.py:211
 msgid "File size"
 msgstr "文件大小"
 
-#: models.py:214
+#: models.py:219
 msgid "Cache partition file"
 msgstr "缓存分区文件"
 
-#: models.py:215
+#: models.py:220
 msgid "Cache partition files"
 msgstr "缓存分区文件"
 

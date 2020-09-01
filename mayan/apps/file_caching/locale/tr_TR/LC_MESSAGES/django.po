@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-23 23:18-0400\n"
+"POT-Creation-Date: 2020-08-30 04:17-0400\n"
 "PO-Revision-Date: 2019-12-03 05:23+0000\n"
 "Last-Translator: serhatcan77 <serhat_can@yahoo.com>, 2019\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/rosarior/teams/13584/tr_TR/)\n"
@@ -84,7 +84,7 @@ msgstr ""
 msgid "Name"
 msgstr "İsim"
 
-#: models.py:131 models.py:201
+#: models.py:131 models.py:204
 msgid "Cache partition"
 msgstr ""
 
@@ -92,23 +92,23 @@ msgstr ""
 msgid "Cache partitions"
 msgstr ""
 
-#: models.py:204
+#: models.py:207
 msgid "Date time"
 msgstr "Tarih saat"
 
-#: models.py:206
+#: models.py:209
 msgid "Filename"
 msgstr "Dosya adı"
 
-#: models.py:208
+#: models.py:211
 msgid "File size"
 msgstr "Dosya büyüklüğü"
 
-#: models.py:214
+#: models.py:219
 msgid "Cache partition file"
 msgstr ""
 
-#: models.py:215
+#: models.py:220
 msgid "Cache partition files"
 msgstr ""
 

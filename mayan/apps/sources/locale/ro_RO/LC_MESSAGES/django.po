@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-23 23:19-0400\n"
+"POT-Creation-Date: 2020-08-30 04:19-0400\n"
 "PO-Revision-Date: 2020-05-25 06:18+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -623,7 +623,7 @@ msgstr "Imposibil de inițializat stocarea folderului de aşteptare pentru fiși
 msgid "Staging folder files"
 msgstr "Stabilirea  dosarului de așteptare a fișierelor. "
 
-#: tasks.py:46
+#: tasks.py:48
 #, python-format
 msgid "Error processing source: %s"
 msgstr "Eroare la procesarea sursei: %s"

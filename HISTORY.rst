@@ -227,6 +227,14 @@
 - Add search template tag to pass the search model URL and query string
   variable to the search template and avoid hardcoding it.
 
+3.4.16 (2020-08-30)
+===================
+- Merge request !36 "Properly close storage file when CachePartion.create_file
+  contextmanager ends". Thanks to Biel Massot (@biel.massot) for the report,
+  solution, and merge request. Closes GitLab issue #870.
+- Update hardware and operating system requirements.
+- Expand the documentation chapter on languages. GitLab issue #831.
+
 3.4.15 (2020-08-26)
 ===================
 - Ensure workflow template field widgets receive an empty mapping

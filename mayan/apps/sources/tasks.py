@@ -41,9 +41,16 @@ def task_check_interval_source(source_id, test=False):
             if source.enabled or test:
                 source.check_source(test=test)
         except Exception as exception:
-            logger.error('Error processing source: %s; %s', source, exception)
+            logger.error(
+                'Error processing source id: %s; %s', source_id, exception
+            )
+            source.logs.create(
+                message=_('Error processing source: %s') % exception
+            )
             if settings.DEBUG:
                 raise
+        else:
+            source.logs.all().delete()
         finally:
             lock.release()
 
