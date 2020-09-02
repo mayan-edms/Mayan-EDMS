@@ -227,6 +227,7 @@
 - Add search template tag to pass the search model URL and query string
   variable to the search template and avoid hardcoding it.
 - Add workflow actions to add, edit, and remove metadata from documents.
+- Update Docker image version from Debian 10.3 to 10.5.
 
 3.4.16 (2020-08-30)
 ===================
