@@ -1,6 +1,8 @@
 3.4.17 (2020-09-XX)
 ===================
 - Improve and optimize the process_messages script.
+- Add helper script that checks all apps have a corresponding 
+  Transifex resource entry.
 
 3.4.16 (2020-08-30)
 ===================
