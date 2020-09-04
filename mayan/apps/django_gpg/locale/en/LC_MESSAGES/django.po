@@ -1,289 +1,290 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-30 04:17-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2020-09-04 09:16+0000\n"
+"PO-Revision-Date: 2020-04-14 08:31+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/language/en/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:30
 msgid "Django GPG"
-msgstr ""
+msgstr "Django GPG"
 
 #: apps.py:46 apps.py:52 forms.py:15
 msgid "Key ID"
-msgstr ""
+msgstr "Key ID"
 
 #: apps.py:56 forms.py:32 models.py:54
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 #: apps.py:60 forms.py:21 models.py:35
 msgid "Creation date"
-msgstr ""
+msgstr "Creation date"
 
 #: apps.py:64
 msgid "No expiration"
-msgstr ""
+msgstr "No expiration"
 
 #: apps.py:65 forms.py:25 models.py:39
 msgid "Expiration date"
-msgstr ""
+msgstr "Expiration date"
 
 #: apps.py:68 forms.py:30 models.py:46
 msgid "Length"
-msgstr ""
+msgstr "Length"
 
 #: apps.py:73 forms.py:17 models.py:51
 msgid "User ID"
-msgstr ""
+msgstr "User ID"
 
 #: dependencies.py:10
 msgid "GNU privacy guard - a PGP implementation."
-msgstr ""
+msgstr "GNU privacy guard - a PGP implementation."
 
 #: forms.py:26
 msgid "None"
-msgstr ""
+msgstr "None"
 
 #: forms.py:29 models.py:43
 msgid "Fingerprint"
-msgstr ""
+msgstr "Fingerprint"
 
 #: forms.py:31 models.py:49
 msgid "Algorithm"
-msgstr ""
+msgstr "Algorithm"
 
 #: forms.py:45
 msgid "Term"
-msgstr ""
+msgstr "Term"
 
 #: forms.py:46
 msgid "Name, e-mail, key ID or key fingerprint to look for."
-msgstr ""
+msgstr "Name, e-mail, key ID or key fingerprint to look for."
 
 #: links.py:17
 msgid "Delete"
-msgstr ""
+msgstr "Delete"
 
 #: links.py:22
 msgid "Details"
-msgstr ""
+msgstr "Details"
 
 #: links.py:27
 msgid "Download"
-msgstr ""
+msgstr "Download"
 
 #: links.py:32 permissions.py:26
 msgid "Query keyservers"
-msgstr ""
+msgstr "Query keyservers"
 
 #: links.py:37
 msgid "Import"
-msgstr ""
+msgstr "Import"
 
 #: links.py:42 permissions.py:5
 msgid "Key management"
-msgstr ""
+msgstr "Key management"
 
 #: links.py:46
 msgid "Upload key"
-msgstr ""
+msgstr "Upload key"
 
 #: links.py:50 views.py:180
 msgid "Private keys"
-msgstr ""
+msgstr "Private keys"
 
 #: links.py:54 views.py:204
 msgid "Public keys"
-msgstr ""
+msgstr "Public keys"
 
 #: literals.py:14 literals.py:22
 msgid "Public"
-msgstr ""
+msgstr "Public"
 
 #: literals.py:15 literals.py:23
 msgid "Secret"
-msgstr ""
+msgstr "Secret"
 
 #: literals.py:31 literals.py:36
 msgid "RSA"
-msgstr ""
+msgstr "RSA"
 
 #: literals.py:32
 msgid "DSA"
-msgstr ""
+msgstr "DSA"
 
 #: literals.py:37
 msgid "Elgamal"
-msgstr ""
+msgstr "Elgamal"
 
 #: literals.py:51
 msgid "Bad signature."
-msgstr ""
+msgstr "Bad signature."
 
 #: literals.py:54
 msgid "Document not signed or invalid signature."
-msgstr ""
+msgstr "Document not signed or invalid signature."
 
 #: literals.py:57
 msgid "Signature error."
-msgstr ""
+msgstr "Signature error."
 
 #: literals.py:61
 msgid "Document is signed but no public key is available for verification."
-msgstr ""
+msgstr "Document is signed but no public key is available for verification."
 
 #: literals.py:66
 msgid "Document is signed, and signature is good."
-msgstr ""
+msgstr "Document is signed, and signature is good."
 
 #: literals.py:69
 msgid "Document is signed with a valid signature."
-msgstr ""
+msgstr "Document is signed with a valid signature."
 
 #: models.py:31
 msgid "ASCII armored version of the key."
-msgstr ""
+msgstr "ASCII armored version of the key."
 
 #: models.py:32
 msgid "Key data"
-msgstr ""
+msgstr "Key data"
 
 #: models.py:60
 msgid "Key"
-msgstr ""
+msgstr "Key"
 
 #: models.py:61
 msgid "Keys"
-msgstr ""
+msgstr "Keys"
 
 #: models.py:73
 msgid "Invalid key data"
-msgstr ""
+msgstr "Invalid key data"
 
 #: models.py:76
 msgid "Key already exists."
-msgstr ""
+msgstr "Key already exists."
 
 #: permissions.py:8
 msgid "Delete keys"
-msgstr ""
+msgstr "Delete keys"
 
 #: permissions.py:11
 msgid "Download keys"
-msgstr ""
+msgstr "Download keys"
 
 #: permissions.py:14
 msgid "Import keys from keyservers"
-msgstr ""
+msgstr "Import keys from keyservers"
 
 #: permissions.py:17
 msgid "Use keys to sign content"
-msgstr ""
+msgstr "Use keys to sign content"
 
 #: permissions.py:20
 msgid "Upload keys"
-msgstr ""
+msgstr "Upload keys"
 
 #: permissions.py:23
 msgid "View keys"
-msgstr ""
+msgstr "View keys"
 
 #: settings.py:7
 msgid "Signatures"
-msgstr ""
+msgstr "Signatures"
 
 #: settings.py:14
 msgid "Full path to the backend to be used to handle keys and signatures."
-msgstr ""
+msgstr "Full path to the backend to be used to handle keys and signatures."
 
 #: settings.py:25
 msgid "Keyserver used to query for keys."
-msgstr ""
+msgstr "Keyserver used to query for keys."
 
 #: views.py:36
 #, python-format
 msgid "Delete key: %s"
-msgstr ""
+msgstr "Delete key: %s"
 
 #: views.py:53
 #, python-format
 msgid "Details for key: %s"
-msgstr ""
+msgstr "Details for key: %s"
 
 #: views.py:75
 #, python-format
 msgid "Import key ID: %s?"
-msgstr ""
+msgstr "Import key ID: %s?"
 
 #: views.py:76
 msgid "Import key"
-msgstr ""
+msgstr "Import key"
 
 #: views.py:85
 #, python-format
 msgid "Unable to import key: %(key_id)s; %(error)s"
-msgstr ""
+msgstr "Unable to import key: %(key_id)s; %(error)s"
 
 #: views.py:93
 #, python-format
 msgid "Successfully received key: %(key_id)s"
-msgstr ""
+msgstr "Successfully received key: %(key_id)s"
 
 #: views.py:110
 msgid ""
 "Use names, last names, key ids or emails to search public keys to import "
 "from the keyserver."
-msgstr ""
+msgstr "Use names, last names, key ids or emails to search public keys to import from the keyserver."
 
 #: views.py:114
 msgid "No results returned"
-msgstr ""
+msgstr "No results returned"
 
 #: views.py:116
 msgid "Key query results"
-msgstr ""
+msgstr "Key query results"
 
 #: views.py:136
 msgid "Search"
-msgstr ""
+msgstr "Search"
 
 #: views.py:138
 msgid "Query key server"
-msgstr ""
+msgstr "Query key server"
 
 #: views.py:157
 msgid "Upload new key"
-msgstr ""
+msgstr "Upload new key"
 
 #: views.py:173
 msgid ""
-"Private keys are used to signed documents. Private keys can only be uploaded "
-"by the user. The view to upload private and public keys is the same."
-msgstr ""
+"Private keys are used to signed documents. Private keys can only be uploaded"
+" by the user. The view to upload private and public keys is the same."
+msgstr "Private keys are used to signed documents. Private keys can only be uploaded by the user. The view to upload private and public keys is the same."
 
 #: views.py:178
 msgid "There no private keys"
-msgstr ""
+msgstr "There no private keys"
 
 #: views.py:196
 msgid ""
-"Public keys are used to verify signed documents. Public keys can be uploaded "
-"by the user or downloaded from keyservers. The view to upload private and "
+"Public keys are used to verify signed documents. Public keys can be uploaded"
+" by the user or downloaded from keyservers. The view to upload private and "
 "public keys is the same."
-msgstr ""
+msgstr "Public keys are used to verify signed documents. Public keys can be uploaded by the user or downloaded from keyservers. The view to upload private and public keys is the same."
 
 #: views.py:202
 msgid "There no public keys"
-msgstr ""
+msgstr "There no public keys"

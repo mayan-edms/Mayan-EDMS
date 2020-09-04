@@ -1,228 +1,229 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-30 04:16-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2020-09-04 09:16+0000\n"
+"PO-Revision-Date: 2020-04-28 03:38+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/language/en/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:44 events.py:5 links.py:32
 msgid "Checkouts"
-msgstr ""
+msgstr "Checkouts"
 
 #: dashboard_widgets.py:14 views.py:181
 msgid "Checked out documents"
-msgstr ""
+msgstr "Checked out documents"
 
 #: events.py:8
 msgid "Document automatically checked in"
-msgstr ""
+msgstr "Document automatically checked in"
 
 #: events.py:12
 msgid "Document checked in"
-msgstr ""
+msgstr "Document checked in"
 
 #: events.py:15
 msgid "Document checked out"
-msgstr ""
+msgstr "Document checked out"
 
 #: events.py:18
 msgid "Document forcefully checked in"
-msgstr ""
+msgstr "Document forcefully checked in"
 
 #: exceptions.py:16
 msgid "Document not checked out."
-msgstr ""
+msgstr "Document not checked out."
 
 #: exceptions.py:25
 msgid "Document already checked out."
-msgstr ""
+msgstr "Document already checked out."
 
 #: forms.py:26
 msgid "Document status"
-msgstr ""
+msgstr "Document status"
 
 #: forms.py:37 models.py:42 models.py:134
 msgid "User"
-msgstr ""
+msgstr "User"
 
 #: forms.py:41
 msgid "Check out time"
-msgstr ""
+msgstr "Check out time"
 
 #: forms.py:46
 msgid "Check out expiration"
-msgstr ""
+msgstr "Check out expiration"
 
 #: forms.py:51
 msgid "New versions allowed?"
-msgstr ""
+msgstr "New versions allowed?"
 
 #: forms.py:52
 msgid "Yes"
-msgstr ""
+msgstr "Yes"
 
 #: forms.py:52
 msgid "No"
-msgstr ""
+msgstr "No"
 
 #: links.py:39
 msgid "Check out document"
-msgstr ""
+msgstr "Check out document"
 
 #: links.py:43
 msgid "Check out"
-msgstr ""
+msgstr "Check out"
 
 #: links.py:50
 msgid "Check in document"
-msgstr ""
+msgstr "Check in document"
 
 #: links.py:54
 msgid "Check in"
-msgstr ""
+msgstr "Check in"
 
 #: links.py:60
 msgid "Check in/out"
-msgstr ""
+msgstr "Check in/out"
 
 #: literals.py:10
 msgid "Checked out"
-msgstr ""
+msgstr "Checked out"
 
 #: literals.py:11
 msgid "Checked in/available"
-msgstr ""
+msgstr "Checked in/available"
 
 #: models.py:29 models.py:112
 msgid "Document"
-msgstr ""
+msgstr "Document"
 
 #: models.py:32
 msgid "Check out date and time"
-msgstr ""
+msgstr "Check out date and time"
 
 #: models.py:36
 msgid "Amount of time to hold the document checked out in minutes."
-msgstr ""
+msgstr "Amount of time to hold the document checked out in minutes."
 
 #: models.py:38
 msgid "Check out expiration date and time"
-msgstr ""
+msgstr "Check out expiration date and time"
 
 #: models.py:47
 msgid "Do not allow new version of this document to be uploaded."
-msgstr ""
+msgstr "Do not allow new version of this document to be uploaded."
 
 #: models.py:49
 msgid "Block new version upload"
-msgstr ""
+msgstr "Block new version upload"
 
 #: models.py:57 permissions.py:5
 msgid "Document checkout"
-msgstr ""
+msgstr "Document checkout"
 
 #: models.py:58
 msgid "Document checkouts"
-msgstr ""
+msgstr "Document checkouts"
 
 #: models.py:66
 msgid "Check out expiration date and time must be in the future."
-msgstr ""
+msgstr "Check out expiration date and time must be in the future."
 
 #: models.py:118
 msgid "New version block"
-msgstr ""
+msgstr "New version block"
 
 #: models.py:119
 msgid "New version blocks"
-msgstr ""
+msgstr "New version blocks"
 
 #: models.py:139
 msgid "Checkout time and date"
-msgstr ""
+msgstr "Checkout time and date"
 
 #: models.py:144
 msgid "Checkout expiration"
-msgstr ""
+msgstr "Checkout expiration"
 
 #: permissions.py:8
 msgid "Check in documents"
-msgstr ""
+msgstr "Check in documents"
 
 #: permissions.py:11
 msgid "Forcefully check in documents"
-msgstr ""
+msgstr "Forcefully check in documents"
 
 #: permissions.py:14
 msgid "Check out documents"
-msgstr ""
+msgstr "Check out documents"
 
 #: permissions.py:17
 msgid "Check out details view"
-msgstr ""
+msgstr "Check out details view"
 
 #: queues.py:11
 msgid "Checkouts periodic"
-msgstr ""
+msgstr "Checkouts periodic"
 
 #: queues.py:15
 msgid "Check expired checkouts"
-msgstr ""
+msgstr "Check expired checkouts"
 
 #: serializers.py:29
 msgid "Primary key of the document to be checked out."
-msgstr ""
+msgstr "Primary key of the document to be checked out."
 
 #: views.py:35
 #, python-format
 msgid "Check in %(count)d document"
 msgid_plural "Check in %(count)d documents"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Check in %(count)d document"
+msgstr[1] "Check in %(count)d documents"
 
 #: views.py:48
 #, python-format
 msgid "Check in document: %s"
-msgstr ""
+msgstr "Check in document: %s"
 
 #: views.py:106
 #, python-format
 msgid "Checkout %(count)d document"
 msgid_plural "Checkout %(count)d documents"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Checkout %(count)d document"
+msgstr[1] "Checkout %(count)d documents"
 
 #: views.py:119
 #, python-format
 msgid "Check out document: %s"
-msgstr ""
+msgstr "Check out document: %s"
 
 #: views.py:158
 #, python-format
 msgid "Check out details for document: %s"
-msgstr ""
+msgstr "Check out details for document: %s"
 
 #: views.py:177
 msgid ""
 "Checking out a document, blocks certain operations for a predetermined "
 "amount of time."
-msgstr ""
+msgstr "Checking out a document, blocks certain operations for a predetermined amount of time."
 
 #: views.py:180
 msgid "No documents have been checked out"
-msgstr ""
+msgstr "No documents have been checked out"
 
 #: widgets.py:25
 msgid "Amount"
-msgstr ""
+msgstr "Amount"

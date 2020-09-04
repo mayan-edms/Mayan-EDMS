@@ -2,108 +2,110 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-30 04:18-0400\n"
+"POT-Creation-Date: 2020-09-04 09:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:36 events.py:6 links.py:33 models.py:32 permissions.py:5
 #: views.py:134
 msgid "Quotas"
-msgstr ""
+msgstr "Quotas"
 
 #: classes.py:63
 msgid "none"
-msgstr ""
+msgstr "none"
 
 #: classes.py:163
 msgid "Does not apply"
-msgstr ""
+msgstr "Does not apply"
 
 #: classes.py:167 classes.py:174
 msgid "Null backend"
-msgstr ""
+msgstr "Null backend"
 
 #: events.py:10
 msgid "Quota created"
-msgstr ""
+msgstr "Quota created"
 
 #: events.py:13
 msgid "Quota edited"
-msgstr ""
+msgstr "Quota edited"
 
 #: forms.py:15 models.py:55
 msgid "Backend"
-msgstr ""
+msgstr "Backend"
 
 #: forms.py:16
 msgid "The quota driver for this entry."
-msgstr ""
+msgstr "The quota driver for this entry."
 
 #: links.py:13
 msgid "Create quota"
-msgstr ""
+msgstr "Create quota"
 
 #: links.py:18
 msgid "Delete"
-msgstr ""
+msgstr "Delete"
 
 #: links.py:22
 msgid "Edit"
-msgstr ""
+msgstr "Edit"
 
 #: links.py:28
 msgid "Quotas list"
-msgstr ""
+msgstr "Quotas list"
 
 #: mixins.py:17
 msgid "All document types"
-msgstr ""
+msgstr "All document types"
 
 #: mixins.py:20
 msgid ""
 "Apply to all document types. Enabling this, the quota will ignore the "
 "indiviual document type selection."
 msgstr ""
+"Apply to all document types. Enabling this, the quota will ignore the "
+"indiviual document type selection."
 
 #: mixins.py:26
 msgid "Document types"
-msgstr ""
+msgstr "Document types"
 
 #: mixins.py:33
 msgid "Document types to which the quota will be applied."
-msgstr ""
+msgstr "Document types to which the quota will be applied."
 
 #: mixins.py:67
 msgid "all document types"
-msgstr ""
+msgstr "all document types"
 
 #: mixins.py:70
 #, python-format
 msgid "document types: %(document_types)s"
-msgstr ""
+msgstr "document types: %(document_types)s"
 
 #: mixins.py:94
 msgid "Groups"
-msgstr ""
+msgstr "Groups"
 
 #: mixins.py:101
 msgid "Groups to which the quota will be applied."
-msgstr ""
+msgstr "Groups to which the quota will be applied."
 
 #: mixins.py:105
 msgid "All users"
-msgstr ""
+msgstr "All users"
 
 #: mixins.py:108
 msgid ""
@@ -111,137 +113,140 @@ msgid ""
 "Enabling this option, the quota will ignore the indiviual user and group "
 "selection."
 msgstr ""
+"Apply the quota to all users in the system, excluding admins and staff. "
+"Enabling this option, the quota will ignore the indiviual user and group "
+"selection."
 
 #: mixins.py:115
 msgid "Users"
-msgstr ""
+msgstr "Users"
 
 #: mixins.py:122
 msgid "Users to which the quota will be applied."
-msgstr ""
+msgstr "Users to which the quota will be applied."
 
 #: mixins.py:160
 msgid "all users"
-msgstr ""
+msgstr "all users"
 
 #: mixins.py:162
 #, python-format
 msgid "groups: %(groups)s, users: %(users)s"
-msgstr ""
+msgstr "groups: %(groups)s, users: %(users)s"
 
 #: models.py:18
 msgid "The dotted Python path to the backend class."
-msgstr ""
+msgstr "The dotted Python path to the backend class."
 
 #: models.py:19
 msgid "Backend path"
-msgstr ""
+msgstr "Backend path"
 
 #: models.py:22
 msgid "Backend data"
-msgstr ""
+msgstr "Backend data"
 
 #: models.py:26
 msgid "Allow quick disable or enable of the quota."
-msgstr ""
+msgstr "Allow quick disable or enable of the quota."
 
 #: models.py:27
 msgid "Enabled"
-msgstr ""
+msgstr "Enabled"
 
 #: models.py:31
 msgid "Quota"
-msgstr ""
+msgstr "Quota"
 
 #: models.py:54
 msgid "Driver used for this quota entry."
-msgstr ""
+msgstr "Driver used for this quota entry."
 
 #: models.py:59
 msgid "Arguments"
-msgstr ""
+msgstr "Arguments"
 
 #: models.py:63
 msgid "Usage"
-msgstr ""
+msgstr "Usage"
 
 #: permissions.py:8
 msgid "Create a quota"
-msgstr ""
+msgstr "Create a quota"
 
 #: permissions.py:11
 msgid "Delete a quota"
-msgstr ""
+msgstr "Delete a quota"
 
 #: permissions.py:14
 msgid "Edit a quota"
-msgstr ""
+msgstr "Edit a quota"
 
 #: permissions.py:17
 msgid "View a quota"
-msgstr ""
+msgstr "View a quota"
 
 #: quota_backends.py:68 quota_backends.py:168
 msgid "Document count quota exceeded."
-msgstr ""
+msgstr "Document count quota exceeded."
 
 #: quota_backends.py:72
 msgid "Documents limit"
-msgstr ""
+msgstr "Documents limit"
 
 #: quota_backends.py:75
 msgid "Maximum number of documents."
-msgstr ""
+msgstr "Maximum number of documents."
 
 #: quota_backends.py:79
 msgid "Document count limit"
-msgstr ""
+msgstr "Document count limit"
 
 #: quota_backends.py:104
 #, python-format
 msgid "document count: %(document_count)s"
-msgstr ""
+msgstr "document count: %(document_count)s"
 
 #: quota_backends.py:178 quota_backends.py:183
 msgid "Document size limit"
-msgstr ""
+msgstr "Document size limit"
 
 #: quota_backends.py:180
 msgid "Maximum document size in megabytes (MB)."
-msgstr ""
+msgstr "Maximum document size in megabytes (MB)."
 
 #: quota_backends.py:208
 #, python-format
 msgid "document size: %(formatted_file_size)s"
-msgstr ""
+msgstr "document size: %(formatted_file_size)s"
 
 #: quota_backends.py:228
 msgid "Document size quota exceeded."
-msgstr ""
+msgstr "Document size quota exceeded."
 
 #: views.py:24
 msgid "New quota backend selection"
-msgstr ""
+msgstr "New quota backend selection"
 
 #: views.py:52
 #, python-format
 msgid "Create a \"%s\" quota"
-msgstr ""
+msgstr "Create a \"%s\" quota"
 
 #: views.py:84
 #, python-format
 msgid "Delete quota: %s"
-msgstr ""
+msgstr "Delete quota: %s"
 
 #: views.py:99
 #, python-format
 msgid "Edit quota: %s"
-msgstr ""
+msgstr "Edit quota: %s"
 
 #: views.py:131
 msgid "Quotas restrict usage of system resources. "
-msgstr ""
+msgstr "Quotas restrict usage of system resources. "
 
 #: views.py:133
 msgid "No quotas available"
-msgstr ""
+msgstr "No quotas available"

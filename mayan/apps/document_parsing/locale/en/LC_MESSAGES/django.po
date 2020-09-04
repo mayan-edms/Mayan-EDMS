@@ -2,227 +2,231 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-30 04:17-0400\n"
+"POT-Creation-Date: 2020-09-04 09:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:54 events.py:6 permissions.py:6 settings.py:7
 msgid "Document parsing"
-msgstr ""
+msgstr "Document parsing"
 
 #: apps.py:106
 msgid "A generator returning the document's pages parsed content."
-msgstr ""
+msgstr "A generator returning the document's pages parsed content."
 
 #: apps.py:107 apps.py:140 apps.py:144 links.py:19 links.py:36 models.py:25
 msgid "Content"
-msgstr ""
+msgstr "Content"
 
 #: apps.py:135 models.py:76
 msgid "Result"
-msgstr ""
+msgstr "Result"
 
 #: dependencies.py:9
 msgid ""
 "Utility from the poppler-utils package used to text content from PDF files."
 msgstr ""
+"Utility from the poppler-utils package used to text content from PDF files."
 
 #: events.py:10
 msgid "Document parsed content deleted"
-msgstr ""
+msgstr "Document parsed content deleted"
 
 #: events.py:14
 msgid "Document version submitted for parsing"
-msgstr ""
+msgstr "Document version submitted for parsing"
 
 #: events.py:17
 msgid "Document version parsing finished"
-msgstr ""
+msgstr "Document version parsing finished"
 
 #: forms.py:37
 #, python-format
 msgid "Page %(page_number)d"
-msgstr ""
+msgstr "Page %(page_number)d"
 
 #: forms.py:45 forms.py:57
 msgid "Contents"
-msgstr ""
+msgstr "Contents"
 
 #: links.py:25 links.py:30
 msgid "Delete parsed content"
-msgstr ""
+msgstr "Delete parsed content"
 
 #: links.py:42 links.py:80 views.py:228
 msgid "Parsing errors"
-msgstr ""
+msgstr "Parsing errors"
 
 #: links.py:48
 msgid "Download content"
-msgstr ""
+msgstr "Download content"
 
 #: links.py:53 links.py:60
 msgid "Submit for parsing"
-msgstr ""
+msgstr "Submit for parsing"
 
 #: links.py:66
 msgid "Setup parsing"
-msgstr ""
+msgstr "Setup parsing"
 
 #: links.py:75
 msgid "Parse documents per type"
-msgstr ""
+msgstr "Parse documents per type"
 
 #: models.py:19
 msgid "Document page"
-msgstr ""
+msgstr "Document page"
 
 #: models.py:23
 msgid "The actual text content as extracted by the document parsing backend."
-msgstr ""
+msgstr "The actual text content as extracted by the document parsing backend."
 
 #: models.py:31
 msgid "Document page content"
-msgstr ""
+msgstr "Document page content"
 
 #: models.py:32
 msgid "Document pages contents"
-msgstr ""
+msgstr "Document pages contents"
 
 #: models.py:44
 msgid "Document type"
-msgstr ""
+msgstr "Document type"
 
 #: models.py:48
 msgid "Automatically queue newly created documents for parsing."
-msgstr ""
+msgstr "Automatically queue newly created documents for parsing."
 
 #: models.py:59
 msgid "Document type settings"
-msgstr ""
+msgstr "Document type settings"
 
 #: models.py:60
 msgid "Document types settings"
-msgstr ""
+msgstr "Document types settings"
 
 #: models.py:71
 msgid "Document version"
-msgstr ""
+msgstr "Document version"
 
 #: models.py:74
 msgid "Date time submitted"
-msgstr ""
+msgstr "Date time submitted"
 
 #: models.py:80
 msgid "Document version parse error"
-msgstr ""
+msgstr "Document version parse error"
 
 #: models.py:81
 msgid "Document version parse errors"
-msgstr ""
+msgstr "Document version parse errors"
 
 #: parsers.py:90
 #, python-format
 msgid "Exception parsing page; %s"
-msgstr ""
+msgstr "Exception parsing page; %s"
 
 #: parsers.py:116
 #, python-format
 msgid "Cannot find pdftotext executable at: %s"
-msgstr ""
+msgstr "Cannot find pdftotext executable at: %s"
 
 #: permissions.py:10
 msgid "View the content of a document"
-msgstr ""
+msgstr "View the content of a document"
 
 #: permissions.py:13
 msgid "Change document type parsing settings"
-msgstr ""
+msgstr "Change document type parsing settings"
 
 #: permissions.py:17
 msgid "Parse the content of a document"
-msgstr ""
+msgstr "Parse the content of a document"
 
 #: queues.py:6
 msgid "Parsing"
-msgstr ""
+msgstr "Parsing"
 
 #: queues.py:9
 msgid "Document version parsing"
-msgstr ""
+msgstr "Document version parsing"
 
 #: settings.py:12
 msgid "Set new document types to perform parsing automatically by default."
-msgstr ""
+msgstr "Set new document types to perform parsing automatically by default."
 
 #: settings.py:19
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF files."
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
 msgstr ""
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
 
 #: views.py:35
 msgid "Delete the parsed content of the selected document?"
 msgid_plural "Delete the parsed content of the selected documents?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Delete the parsed content of the selected document?"
+msgstr[1] "Delete the parsed content of the selected documents?"
 
 #: views.py:70
 #, python-format
 msgid "Content for document: %s"
-msgstr ""
+msgstr "Content for document: %s"
 
 #: views.py:105
 #, python-format
 msgid "Content for document page: %s"
-msgstr ""
+msgstr "Content for document page: %s"
 
 #: views.py:121
 #, python-format
 msgid "Parsing errors for document: %s"
-msgstr ""
+msgstr "Parsing errors for document: %s"
 
 #: views.py:134
 #, python-format
 msgid "%(count)d document added to the parsing queue"
-msgstr ""
+msgstr "%(count)d document added to the parsing queue"
 
 #: views.py:137
 #, python-format
 msgid "%(count)d documents added to the parsing queue"
-msgstr ""
+msgstr "%(count)d documents added to the parsing queue"
 
 #: views.py:145
 #, python-format
 msgid "Submit %(count)d document to the parsing queue?"
 msgid_plural "Submit %(count)d documents to the parsing queue?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Submit %(count)d document to the parsing queue?"
+msgstr[1] "Submit %(count)d documents to the parsing queue?"
 
 #: views.py:158
 #, python-format
 msgid "Submit document \"%s\" to the parsing queue"
-msgstr ""
+msgstr "Submit document \"%s\" to the parsing queue"
 
 #: views.py:185
 #, python-format
 msgid "Edit parsing settings for document type: %s."
-msgstr ""
+msgstr "Edit parsing settings for document type: %s."
 
 #: views.py:195
 msgid "Submit all documents of a type for parsing"
-msgstr ""
+msgstr "Submit all documents of a type for parsing"
 
 #: views.py:216
 #, python-format
 msgid "%(count)d documents added to the parsing queue."
-msgstr ""
+msgstr "%(count)d documents added to the parsing queue."

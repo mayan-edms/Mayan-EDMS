@@ -1,121 +1,122 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-30 04:16-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2020-09-04 09:16+0000\n"
+"PO-Revision-Date: 2020-03-28 07:22+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/language/en/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:25 events.py:6 permissions.py:6 settings.py:7
 msgid "Authentication"
-msgstr ""
+msgstr "Authentication"
 
 #: events.py:10
 msgid "User impersonation ended"
-msgstr ""
+msgstr "User impersonation ended"
 
 #: events.py:13
 msgid "User impersonation started"
-msgstr ""
+msgstr "User impersonation started"
 
 #: forms.py:17
 msgid "Email"
-msgstr ""
+msgstr "Email"
 
 #: forms.py:20
 msgid "Password"
-msgstr ""
+msgstr "Password"
 
 #: forms.py:22 forms.py:89
 msgid "Remember me"
-msgstr ""
+msgstr "Remember me"
 
 #: forms.py:25
 msgid ""
 "Please enter a correct email and password. Note that the password field is "
 "case-sensitive."
-msgstr ""
+msgstr "Please enter a correct email and password. Note that the password field is case-sensitive."
 
 #: forms.py:27
 msgid "This account is inactive."
-msgstr ""
+msgstr "This account is inactive."
 
 #: forms.py:78
 msgid "User"
-msgstr ""
+msgstr "User"
 
 #: forms.py:78
 msgid "User to be impersonated."
-msgstr ""
+msgstr "User to be impersonated."
 
 #: forms.py:82
 msgid "Permanent"
-msgstr ""
+msgstr "Permanent"
 
 #: forms.py:83
 msgid "If selected, disables ending impersonation."
-msgstr ""
+msgstr "If selected, disables ending impersonation."
 
 #: links.py:22
 msgid "Logout"
-msgstr ""
+msgstr "Logout"
 
 #: links.py:27
 msgid "Change password"
-msgstr ""
+msgstr "Change password"
 
 #: links.py:32 views.py:68
 msgid "Impersonate user"
-msgstr ""
+msgstr "Impersonate user"
 
 #: links.py:37 links.py:44
 msgid "Set password"
-msgstr ""
+msgstr "Set password"
 
 #: permissions.py:10
 msgid "Impersonate users"
-msgstr ""
+msgstr "Impersonate users"
 
 #: settings.py:11
 msgid ""
 "Controls the mechanism used to authenticated user. Options are: username, "
 "email"
-msgstr ""
+msgstr "Controls the mechanism used to authenticated user. Options are: username, email"
 
 #: settings.py:18
 msgid ""
-"Maximum time a user clicking the \"Remember me\" checkbox will remain logged "
-"in. Value is time in seconds."
-msgstr ""
+"Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
+" in. Value is time in seconds."
+msgstr "Maximum time a user clicking the \"Remember me\" checkbox will remain logged in. Value is time in seconds."
 
 #: settings.py:25
 msgid ""
 "Remove the \"Forgot your password?\" link on the login form used to trigger "
 "the password reset."
-msgstr ""
+msgstr "Remove the \"Forgot your password?\" link on the login form used to trigger the password reset."
 
 #: templates/authentication/login.html:11
 msgid "Login"
-msgstr ""
+msgstr "Login"
 
 #: templates/authentication/login.html:23
 #: templates/authentication/login.html:32
 msgid "Sign in"
-msgstr ""
+msgstr "Sign in"
 
 #: templates/authentication/login.html:39
 msgid "Forgot your password?"
-msgstr ""
+msgstr "Forgot your password?"
 
 #: templates/authentication/password_reset_complete.html:8
 #: templates/authentication/password_reset_confirm.html:8
@@ -124,70 +125,70 @@ msgstr ""
 #: templates/authentication/password_reset_form.html:8
 #: templates/authentication/password_reset_form.html:20
 msgid "Password reset"
-msgstr ""
+msgstr "Password reset"
 
 #: templates/authentication/password_reset_complete.html:15
 msgid "Password reset complete! Click the link below to login."
-msgstr ""
+msgstr "Password reset complete! Click the link below to login."
 
 #: templates/authentication/password_reset_complete.html:17
 msgid "Login page"
-msgstr ""
+msgstr "Login page"
 
 #: templates/authentication/password_reset_confirm.html:29
 #: templates/authentication/password_reset_form.html:29 views.py:212
 msgid "Submit"
-msgstr ""
+msgstr "Submit"
 
 #: templates/authentication/password_reset_done.html:15
 msgid "Password reset email sent!"
-msgstr ""
+msgstr "Password reset email sent!"
 
 #: views.py:121
 msgid "Your password has been successfully changed."
-msgstr ""
+msgstr "Your password has been successfully changed."
 
 #: views.py:128
 msgid "Current user password change"
-msgstr ""
+msgstr "Current user password change"
 
 #: views.py:136
 msgid "Changing the password is not allowed for this account."
-msgstr ""
+msgstr "Changing the password is not allowed for this account."
 
 #: views.py:203
 #, python-format
 msgid "Password change request performed on %(count)d user"
-msgstr ""
+msgstr "Password change request performed on %(count)d user"
 
 #: views.py:205
 #, python-format
 msgid "Password change request performed on %(count)d users"
-msgstr ""
+msgstr "Password change request performed on %(count)d users"
 
 #: views.py:214
 msgid "Change user password"
 msgid_plural "Change users passwords"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Change user password"
+msgstr[1] "Change users passwords"
 
 #: views.py:224
 #, python-format
 msgid "Change password for user: %s"
-msgstr ""
+msgstr "Change password for user: %s"
 
 #: views.py:244
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr ""
+msgstr "Super user and staff user password reseting is not allowed, use the admin interface for these cases."
 
 #: views.py:254
 #, python-format
 msgid "Successful password reset for user: %s."
-msgstr ""
+msgstr "Successful password reset for user: %s."
 
 #: views.py:260
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
-msgstr ""
+msgstr "Error reseting password for user \"%(user)s\": %(error)s"

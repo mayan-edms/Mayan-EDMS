@@ -1,474 +1,476 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-30 04:16-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2020-09-04 09:16+0000\n"
+"PO-Revision-Date: 2020-07-09 04:05+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/language/en/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:132 permissions_runtime.py:5 settings.py:13
 msgid "Common"
-msgstr ""
+msgstr "Common"
 
 #: classes.py:187
 msgid "Model properties"
-msgstr ""
+msgstr "Model properties"
 
 #: classes.py:192
 msgid "Model fields"
-msgstr ""
+msgstr "Model fields"
 
 #: classes.py:235
 msgid "Model related fields"
-msgstr ""
+msgstr "Model related fields"
 
 #: classes.py:240
 msgid "Model reverse fields"
-msgstr ""
+msgstr "Model reverse fields"
 
 #: dependencies.py:281
 msgid "Used to allow offline translation of the code text strings."
-msgstr ""
+msgstr "Used to allow offline translation of the code text strings."
 
 #: dependencies.py:286
 msgid "Provides style checking."
-msgstr ""
+msgstr "Provides style checking."
 
 #: dependencies.py:291
 msgid "Command line environment with autocompletion."
-msgstr ""
+msgstr "Command line environment with autocompletion."
 
 #: dependencies.py:296
 msgid "Checks proper formatting of the README file."
-msgstr ""
+msgstr "Checks proper formatting of the README file."
 
 #: forms.py:25
 msgid "Selection"
-msgstr ""
+msgstr "Selection"
 
 #: forms.py:101
 msgid "None"
-msgstr ""
+msgstr "None"
 
 #: generics.py:146
 msgid ""
 "Select entries to be removed. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
-msgstr ""
+msgstr "Select entries to be removed. Hold Control to select multiple entries. Once the selection is complete, click the button below or double click the list to activate the action."
 
 #: generics.py:151
 msgid ""
 "Select entries to be added. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
-msgstr ""
+msgstr "Select entries to be added. Hold Control to select multiple entries. Once the selection is complete, click the button below or double click the list to activate the action."
 
 #: generics.py:284
 msgid "Add all"
-msgstr ""
+msgstr "Add all"
 
 #: generics.py:293
 msgid "Add"
-msgstr ""
+msgstr "Add"
 
 #: generics.py:303
 msgid "Remove all"
-msgstr ""
+msgstr "Remove all"
 
 #: generics.py:312
 msgid "Remove"
-msgstr ""
+msgstr "Remove"
 
 #: generics.py:522
 #, python-format
 msgid "Duplicate data error: %(error)s"
-msgstr ""
+msgstr "Duplicate data error: %(error)s"
 
 #: generics.py:543
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
-msgstr ""
+msgstr "%(object)s not created, error: %(error)s"
 
 #: generics.py:556
 #, python-format
 msgid "%(object)s created successfully."
-msgstr ""
+msgstr "%(object)s created successfully."
 
 #: generics.py:595
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
-msgstr ""
+msgstr "%(object)s not deleted, error: %(error)s."
 
 #: generics.py:604
 #, python-format
 msgid "%(object)s deleted successfully."
-msgstr ""
+msgstr "%(object)s deleted successfully."
 
 #: generics.py:740
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
-msgstr ""
+msgstr "%(object)s not updated, error: %(error)s."
 
 #: generics.py:751
 #, python-format
 msgid "%(object)s updated successfully."
-msgstr ""
+msgstr "%(object)s updated successfully."
 
 #: links.py:34
 msgid "About this"
-msgstr ""
+msgstr "About this"
 
 #: links.py:37
 msgid "Get the book"
-msgstr ""
+msgstr "Get the book"
 
 #: links.py:42
 msgid "Locale profile"
-msgstr ""
+msgstr "Locale profile"
 
 #: links.py:47
 msgid "Edit locale profile"
-msgstr ""
+msgstr "Edit locale profile"
 
 #: links.py:52
 msgid "Documentation"
-msgstr ""
+msgstr "Documentation"
 
 #: links.py:57
 msgid "Errors"
-msgstr ""
+msgstr "Errors"
 
 #: links.py:63
 msgid "Clear all"
-msgstr ""
+msgstr "Clear all"
 
 #: links.py:67
 msgid "Forum"
-msgstr ""
+msgstr "Forum"
 
 #: links.py:71 views.py:103
 msgid "License"
-msgstr ""
+msgstr "License"
 
 #: links.py:74
 msgid "Setup"
-msgstr ""
+msgstr "Setup"
 
 #: links.py:77
 msgid "Source code"
-msgstr ""
+msgstr "Source code"
 
 #: links.py:81
 msgid "Online store"
-msgstr ""
+msgstr "Online store"
 
 #: links.py:85
 msgid "Get support"
-msgstr ""
+msgstr "Get support"
 
 #: links.py:89 queues.py:13 views.py:212
 msgid "Tools"
-msgstr ""
+msgstr "Tools"
 
 #: literals.py:16
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
-msgstr ""
+msgstr "This feature has been deprecated and will be removed in a future version."
 
 #: literals.py:19
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
-msgstr ""
+msgstr "Your database backend is set to use SQLite. SQLite should only be used for development and testing, not for production."
 
 #: literals.py:44
 msgid "Days"
-msgstr ""
+msgstr "Days"
 
 #: literals.py:45
 msgid "Hours"
-msgstr ""
+msgstr "Hours"
 
 #: literals.py:46
 msgid "Minutes"
-msgstr ""
+msgstr "Minutes"
 
 #: menus.py:8
 msgid "System"
-msgstr ""
+msgstr "System"
 
 #: menus.py:10 menus.py:11
 msgid "Facet"
-msgstr ""
+msgstr "Facet"
 
 #: menus.py:14
 msgid "Actions"
-msgstr ""
+msgstr "Actions"
 
 #: menus.py:15
 msgid "Secondary"
-msgstr ""
+msgstr "Secondary"
 
 #: menus.py:20 models.py:94
 msgid "User"
-msgstr ""
+msgstr "User"
 
 #: mixins.py:319
 #, python-format
 msgid "No %(verbose_name)s found matching the query"
-msgstr ""
+msgstr "No %(verbose_name)s found matching the query"
 
 #: mixins.py:432
 msgid "Object"
-msgstr ""
+msgstr "Object"
 
 #: models.py:28
 msgid "Namespace"
-msgstr ""
+msgstr "Namespace"
 
 #: models.py:39 models.py:64
 msgid "Date time"
-msgstr ""
+msgstr "Date time"
 
 #: models.py:41 views.py:149
 msgid "Result"
-msgstr ""
+msgstr "Result"
 
 #: models.py:47
 msgid "Error log entry"
-msgstr ""
+msgstr "Error log entry"
 
 #: models.py:48
 msgid "Error log entries"
-msgstr ""
+msgstr "Error log entries"
 
 #: models.py:60
 msgid "File"
-msgstr ""
+msgstr "File"
 
 #: models.py:62
 msgid "Filename"
-msgstr ""
+msgstr "Filename"
 
 #: models.py:68
 msgid "Shared uploaded file"
-msgstr ""
+msgstr "Shared uploaded file"
 
 #: models.py:69 storages.py:20
 msgid "Shared uploaded files"
-msgstr ""
+msgstr "Shared uploaded files"
 
 #: models.py:98
 msgid "Timezone"
-msgstr ""
+msgstr "Timezone"
 
 #: models.py:101
 msgid "Language"
-msgstr ""
+msgstr "Language"
 
 #: models.py:107
 msgid "User locale profile"
-msgstr ""
+msgstr "User locale profile"
 
 #: models.py:108
 msgid "User locale profiles"
-msgstr ""
+msgstr "User locale profiles"
 
 #: permissions_runtime.py:8
 msgid "View error log"
-msgstr ""
+msgstr "View error log"
 
 #: queues.py:11
 msgid "Default"
-msgstr ""
+msgstr "Default"
 
 #: queues.py:15
 msgid "Common periodic"
-msgstr ""
+msgstr "Common periodic"
 
 #: queues.py:20
 msgid "Delete stale uploads"
-msgstr ""
+msgstr "Delete stale uploads"
 
 #: settings.py:20
 msgid "Automatically enable logging to all apps."
-msgstr ""
+msgstr "Automatically enable logging to all apps."
 
 #: settings.py:26
 msgid ""
-"Time to delay background tasks that depend on a database commit to propagate."
-msgstr ""
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
+msgstr "Time to delay background tasks that depend on a database commit to propagate."
 
 #: settings.py:34
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application."
-msgstr ""
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application."
+msgstr "A list of strings designating all applications that are to be removed from the list normally installed by Mayan EDMS. Each string should be a dotted Python path to: an application configuration class (preferred), or a package containing an application."
 
 #: settings.py:44
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application."
-msgstr ""
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application."
+msgstr "A list of strings designating all applications that are installed beyond those normally installed by Mayan EDMS. Each string should be a dotted Python path to: an application configuration class (preferred), or a package containing an application."
 
 #: settings.py:53
 msgid ""
-"Name of the view attached to the brand anchor in the main menu. This is also "
-"the view to which users will be redirected after log in."
-msgstr ""
+"Name of the view attached to the brand anchor in the main menu. This is also"
+" the view to which users will be redirected after log in."
+msgstr "Name of the view attached to the brand anchor in the main menu. This is also the view to which users will be redirected after log in."
 
 #: settings.py:62
 msgid "The number objects that will be displayed per page."
-msgstr ""
+msgstr "The number objects that will be displayed per page."
 
 #: settings.py:69
 msgid "Enable error logging outside of the system error logging capabilities."
-msgstr ""
+msgstr "Enable error logging outside of the system error logging capabilities."
 
 #: settings.py:76
 msgid "Path to the logfile that will track errors during production."
-msgstr ""
+msgstr "Path to the logfile that will track errors during production."
 
 #: settings.py:83
 msgid "Name to be displayed in the main menu."
-msgstr ""
+msgstr "Name to be displayed in the main menu."
 
 #: settings.py:89
 msgid "URL of the installation or homepage of the project."
-msgstr ""
+msgstr "URL of the installation or homepage of the project."
 
 #: settings.py:95
 msgid "A storage backend that all workers can use to share files."
-msgstr ""
+msgstr "A storage backend that all workers can use to share files."
 
 #: settings.py:103
 msgid "Base URL path to use for all views."
-msgstr ""
+msgstr "Base URL path to use for all views."
 
 #: storages.py:13
 msgid ""
-"Unable to initialize the shared uploaded file storage. Check the settings {} "
-"and {} for formatting errors."
-msgstr ""
+"Unable to initialize the shared uploaded file storage. Check the settings {}"
+" and {} for formatting errors."
+msgstr "Unable to initialize the shared uploaded file storage. Check the settings {} and {} for formatting errors."
 
 #: templatetags/common_tags.py:34
 msgid "Confirm delete"
-msgstr ""
+msgstr "Confirm delete"
 
 #: templatetags/common_tags.py:39
 #, python-format
 msgid "Edit %s"
-msgstr ""
+msgstr "Edit %s"
 
 #: templatetags/common_tags.py:42
 msgid "Confirm"
-msgstr ""
+msgstr "Confirm"
 
 #: templatetags/common_tags.py:46
 #, python-format
 msgid "Details for: %s"
-msgstr ""
+msgstr "Details for: %s"
 
 #: templatetags/common_tags.py:50
 #, python-format
 msgid "Edit: %s"
-msgstr ""
+msgstr "Edit: %s"
 
 #: templatetags/common_tags.py:54
 msgid "Create"
-msgstr ""
+msgstr "Create"
 
 #: validators.py:44
 msgid "Enter a valid JSON value."
-msgstr ""
+msgstr "Enter a valid JSON value."
 
 #: validators.py:68
 msgid "Enter a valid YAML value."
-msgstr ""
+msgstr "Enter a valid YAML value."
 
 #: validators.py:84
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
-msgstr ""
+msgstr "Enter a valid 'internal name' consisting of letters, numbers, and underscores."
 
 #: views.py:26
 msgid "About"
-msgstr ""
+msgstr "About"
 
 #: views.py:39
 msgid "Current user locale profile details"
-msgstr ""
+msgstr "Current user locale profile details"
 
 #: views.py:45
 msgid "Edit current user locale profile details"
-msgstr ""
+msgstr "Edit current user locale profile details"
 
 #: views.py:94
 msgid "Dashboard"
-msgstr ""
+msgstr "Dashboard"
 
 #: views.py:112
 #, python-format
 msgid "Clear error log entries for: %s"
-msgstr ""
+msgstr "Clear error log entries for: %s"
 
 #: views.py:129
 msgid "Object error log cleared successfully"
-msgstr ""
+msgstr "Object error log cleared successfully"
 
 #: views.py:148
 msgid "Date and time"
-msgstr ""
+msgstr "Date and time"
 
 #: views.py:154
 msgid ""
 "This view displays the error log of different object. An empty list is a "
 "good thing."
-msgstr ""
+msgstr "This view displays the error log of different object. An empty list is a good thing."
 
 #: views.py:158
 msgid "There are no error log entries"
-msgstr ""
+msgstr "There are no error log entries"
 
 #: views.py:161
 #, python-format
 msgid "Error log entries for: %s"
-msgstr ""
+msgstr "Error log entries for: %s"
 
 #: views.py:189
 msgid "No setup options available."
-msgstr ""
+msgstr "No setup options available."
 
 #: views.py:191
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
-msgstr ""
+msgstr "No results here means that don't have the required permissions to perform administrative task."
 
 #: views.py:197
 msgid "Setup items"
-msgstr ""
+msgstr "Setup items"
 
 #: views.py:199
 msgid "Here you can configure all aspects of the system."
-msgstr ""
+msgstr "Here you can configure all aspects of the system."
 
 #: views.py:214
 msgid "These modules are used to do system maintenance."
-msgstr ""
+msgstr "These modules are used to do system maintenance."
