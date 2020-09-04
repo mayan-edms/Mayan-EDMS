@@ -10,11 +10,6 @@ import django
 from django.apps import apps
 from django.conf import settings
 
-sys.path.insert(1, os.path.abspath('.'))
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mayan.settings')
-
-from mayan.apps.common.apps import MayanAppConfig
-
 LANGUAGE_MAPPING = {
     'de': 'de_DE',
     'ro': 'ro_RO',
@@ -27,6 +22,8 @@ VERSION = '1.0'
 class MessageProcessor:
     @staticmethod
     def get_app_list():
+        from mayan.apps.common.apps import MayanAppConfig
+
         return sorted(
             [
                 name for name, app_config in apps.app_configs.items() if issubclass(type(app_config), MayanAppConfig)
@@ -48,6 +45,9 @@ class MessageProcessor:
         return result
 
     def __init__(self):
+        sys.path.insert(1, os.path.abspath('.'))
+        os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mayan.settings')
+
         self.parser = optparse.OptionParser(
             usage='%prog command [options]', version='%prog {}'.format(VERSION)
         )
@@ -67,7 +67,7 @@ class MessageProcessor:
         django.setup()
 
         if options.app:
-            self.selected_apps = options.apps.split(',')
+            self.selected_apps = options.app.split(',')
         else:
             self.selected_apps = MessageProcessor.get_app_list()
 
@@ -76,7 +76,7 @@ class MessageProcessor:
         else:
             self.selected_languages = MessageProcessor.get_language_list()
 
-        command_manage = sh.Command('./manage.py')
+        command_manage = sh.Command('django-admin.py')
         self.command_makemessages = command_manage.bake('makemessages')
         self.command_compilemessages = command_manage.bake('compilemessages')
 
@@ -122,7 +122,13 @@ class MessageProcessor:
                     ', '.join(self.selected_languages)
                 )
             )
-            self.command_compilemessages(*self.get_django_language_argument())
+
+            environment = os.environ.copy()
+            environment.pop('DJANGO_SETTINGS_MODULE')
+
+            self.command_compilemessages(
+                _env=environment, *self.get_django_language_argument()
+            )
 
     def do_makemessages(self):
         print('Making messages')
@@ -137,7 +143,13 @@ class MessageProcessor:
                     ', '.join(self.selected_languages)
                 )
             )
-            self.command_makemessages(*self.get_django_language_argument())
+
+            environment = os.environ.copy()
+            environment.pop('DJANGO_SETTINGS_MODULE')
+
+            self.command_makemessages(
+                _env=environment, *self.get_django_language_argument()
+            )
 
     def do_pull_translations(self):
         print('Pulling translations')
@@ -154,7 +166,7 @@ class MessageProcessor:
             )
 
     def do_push_translations(self):
-        print('Pus translations')
+        print('Push translations')
 
         for app in self.selected_apps:
             print('Processing app: %s...' % app)

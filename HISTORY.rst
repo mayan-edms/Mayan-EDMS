@@ -3,6 +3,11 @@
 - Improve and optimize the process_messages script.
 - Add helper script that checks all apps have a corresponding 
   Transifex resource entry.
+- Update Transifex configuration file. Add missing apps, rename
+  statistics to mayan_statistics to match app name, fix typo
+  in web link app resource name. Thanks to forum user @qra
+  (https://forum.mayan-edms.com/viewtopic.php?t=3009) for the
+  report.
 
 3.4.16 (2020-08-30)
 ===================
