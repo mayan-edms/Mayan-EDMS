@@ -187,10 +187,10 @@ translations-compile: ## Compile all translation files.
 	contrib/scripts/process_messages.py compile
 
 translations-push: ## Upload all translation files to Transifex.
-	contrib/scripts/process_messages.py push
+	tx push -s 
 
 translations-pull: ## Download all translation files from Transifex.
-	contrib/scripts/process_messages.py pull
+	tx pull -f
 
 translations-all: ## Execute all translations targets.
 translations-all: translations-source-clear translations-fuzzy-remove translations-check translations-make translations-push translations-pull translations-compile
