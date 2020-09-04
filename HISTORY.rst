@@ -1,3 +1,7 @@
+3.4.17 (2020-09-XX)
+===================
+- Improve and optimize the process_messages script.
+
 3.4.16 (2020-08-30)
 ===================
 - Merge request !36 "Properly close storage file when CachePartion.create_file

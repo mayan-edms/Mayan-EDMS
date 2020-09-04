@@ -178,16 +178,16 @@ translations-fuzzy-remove: ## Remove fuzzy makers
 	sed -i  '/#, fuzzy/d' mayan/apps/*/locale/*/LC_MESSAGES/django.po
 
 translations-make: ## Refresh all translation files.
-	contrib/scripts/process_messages.py -m
+	contrib/scripts/process_messages.py make
 
 translations-compile: ## Compile all translation files.
-	contrib/scripts/process_messages.py -c
+	contrib/scripts/process_messages.py compile
 
 translations-push: ## Upload all translation files to Transifex.
-	tx push -s
+	contrib/scripts/process_messages.py push
 
 translations-pull: ## Download all translation files from Transifex.
-	tx pull -f
+	contrib/scripts/process_messages.py pull
 
 translations-all: ## Execute all translations targets.
 translations-all: translations-source-clear translations-fuzzy-remove translations-make translations-push translations-pull translations-compile
