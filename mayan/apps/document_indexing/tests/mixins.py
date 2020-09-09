@@ -50,7 +50,7 @@ class IndexInstanceNodeAPIViewTestMixin:
         return self.get(
             viewname='rest_api:indexinstancenode-detail', kwargs={
                 'index_instance_id': self.test_index.pk,
-                'index_instance_node_id': self.test_index_instance_node
+                'index_instance_node_id': self.test_index_instance_node.pk
             }
         )
 
@@ -58,7 +58,7 @@ class IndexInstanceNodeAPIViewTestMixin:
         return self.get(
             viewname='rest_api:indexinstancenode-document-list', kwargs={
                 'index_instance_id': self.test_index.pk,
-                'index_instance_node_id': self.test_index_instance_node
+                'index_instance_node_id': self.test_index_instance_node.pk
             }
         )
 
