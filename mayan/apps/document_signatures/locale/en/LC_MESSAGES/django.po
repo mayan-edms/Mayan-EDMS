@@ -1,345 +1,355 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-04 09:16+0000\n"
+"POT-Creation-Date: 2020-09-09 09:02+0000\n"
 "PO-Revision-Date: 2020-08-18 04:38+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/language/en/)\n"
+"Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
+"language/en/)\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: en\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:49 permissions.py:6 settings.py:11
 msgid "Document signatures"
-msgstr "Document signatures"
+msgstr ""
 
 #: apps.py:95
 msgid "Date"
-msgstr "Date"
+msgstr ""
 
 #: apps.py:98 models.py:47
 msgid "Key ID"
-msgstr "Key ID"
+msgstr ""
 
 #: apps.py:102 forms.py:62 models.py:52
 msgid "Signature ID"
-msgstr "Signature ID"
+msgstr ""
 
 #: apps.py:103 forms.py:74
 msgid "None"
-msgstr "None"
+msgstr ""
 
 #: apps.py:106
 msgid "Type"
-msgstr "Type"
+msgstr ""
 
 #: forms.py:17 forms.py:31 workflow_actions.py:19
 msgid "Key"
-msgstr "Key"
+msgstr ""
 
 #: forms.py:22 serializers.py:33 workflow_actions.py:30
 msgid ""
 "The passphrase to unlock the key and allow it to be used to sign the "
 "document version."
-msgstr "The passphrase to unlock the key and allow it to be used to sign the document version."
+msgstr ""
+"The passphrase to unlock the key and allow it to be used to sign the "
+"document version."
 
 #: forms.py:24 workflow_actions.py:27
 msgid "Passphrase"
-msgstr "Passphrase"
+msgstr ""
 
 #: forms.py:33
 msgid "Private key that will be used to sign this document version."
-msgstr "Private key that will be used to sign this document version."
+msgstr ""
 
 #: forms.py:44
 msgid "Signature is embedded?"
-msgstr "Signature is embedded?"
+msgstr ""
 
 #: forms.py:46
 msgid "Signature date"
-msgstr "Signature date"
+msgstr ""
 
 #: forms.py:49
 msgid "Signature key ID"
-msgstr "Signature key ID"
+msgstr ""
 
 #: forms.py:51
 msgid "Signature key present?"
-msgstr "Signature key present?"
+msgstr ""
 
 #: forms.py:64
 msgid "Key fingerprint"
-msgstr "Key fingerprint"
+msgstr ""
 
 #: forms.py:68
 msgid "Key creation date"
-msgstr "Key creation date"
+msgstr ""
 
 #: forms.py:73
 msgid "Key expiration date"
-msgstr "Key expiration date"
+msgstr ""
 
 #: forms.py:78
 msgid "Key length"
-msgstr "Key length"
+msgstr ""
 
 #: forms.py:82
 msgid "Key algorithm"
-msgstr "Key algorithm"
+msgstr ""
 
 #: forms.py:86
 msgid "Key user ID"
-msgstr "Key user ID"
+msgstr ""
 
 #: forms.py:90
 msgid "Key type"
-msgstr "Key type"
+msgstr ""
 
 #: links.py:30
 msgid "Verify all documents"
-msgstr "Verify all documents"
+msgstr ""
 
 #: links.py:37 links.py:77 queues.py:8
 msgid "Signatures"
-msgstr "Signatures"
+msgstr ""
 
 #: links.py:43
 msgid "Delete"
-msgstr "Delete"
+msgstr ""
 
 #: links.py:50
 msgid "Sign detached"
-msgstr "Sign detached"
+msgstr ""
 
 #: links.py:57
 msgid "Details"
-msgstr "Details"
+msgstr ""
 
 #: links.py:64
 msgid "Download"
-msgstr "Download"
+msgstr ""
 
 #: links.py:70
 msgid "Sign embedded"
-msgstr "Sign embedded"
+msgstr ""
 
 #: links.py:83
 msgid "Upload signature"
-msgstr "Upload signature"
+msgstr ""
 
 #: models.py:39
 msgid "Document version"
-msgstr "Document version"
+msgstr ""
 
 #: models.py:43
 msgid "Date signed"
-msgstr "Date signed"
+msgstr ""
 
 #: models.py:46
 msgid "ID of the key that will be used to sign the document."
-msgstr "ID of the key that will be used to sign the document."
+msgstr ""
 
 #: models.py:56
 msgid "Public key fingerprint"
-msgstr "Public key fingerprint"
+msgstr ""
 
 #: models.py:63
 msgid "Document version signature"
-msgstr "Document version signature"
+msgstr ""
 
 #: models.py:64
 msgid "Document version signatures"
-msgstr "Document version signatures"
+msgstr ""
 
 #: models.py:83
 msgid "Detached"
-msgstr "Detached"
+msgstr ""
 
 #: models.py:85
 msgid "Embedded"
-msgstr "Embedded"
+msgstr ""
 
 #: models.py:100
 msgid "Document version embedded signature"
-msgstr "Document version embedded signature"
+msgstr ""
 
 #: models.py:101
 msgid "Document version embedded signatures"
-msgstr "Document version embedded signatures"
+msgstr ""
 
 #: models.py:134
 msgid "Signature file previously generated."
-msgstr "Signature file previously generated."
+msgstr ""
 
 #: models.py:137
 msgid "Signature file"
-msgstr "Signature file"
+msgstr ""
 
 #: models.py:143
 msgid "Document version detached signature"
-msgstr "Document version detached signature"
+msgstr ""
 
 #: models.py:144
 msgid "Document version detached signatures"
-msgstr "Document version detached signatures"
+msgstr ""
 
 #: models.py:147
 msgid "signature"
-msgstr "signature"
+msgstr ""
 
 #: permissions.py:10
 msgid "Sign documents with detached signatures"
-msgstr "Sign documents with detached signatures"
+msgstr ""
 
 #: permissions.py:14
 msgid "Sign documents with embedded signatures"
-msgstr "Sign documents with embedded signatures"
+msgstr ""
 
 #: permissions.py:18
 msgid "Delete detached signatures"
-msgstr "Delete detached signatures"
+msgstr ""
 
 #: permissions.py:22
 msgid "Download detached document signatures"
-msgstr "Download detached document signatures"
+msgstr ""
 
 #: permissions.py:26
 msgid "Upload detached document signatures"
-msgstr "Upload detached document signatures"
+msgstr ""
 
 #: permissions.py:30
 msgid "Verify document signatures"
-msgstr "Verify document signatures"
+msgstr ""
 
 #: permissions.py:34
 msgid "View details of document signatures"
-msgstr "View details of document signatures"
+msgstr ""
 
 #: queues.py:13
 msgid "Verify key signatures"
-msgstr "Verify key signatures"
+msgstr ""
 
 #: queues.py:17
 msgid "Unverify key signatures"
-msgstr "Unverify key signatures"
+msgstr ""
 
 #: queues.py:21
 msgid "Verify document version"
-msgstr "Verify document version"
+msgstr ""
 
 #: queues.py:26
 msgid "Verify missing embedded signature"
-msgstr "Verify missing embedded signature"
+msgstr ""
 
 #: settings.py:19
 msgid "Path to the Storage subclass to use when storing detached signatures."
-msgstr "Path to the Storage subclass to use when storing detached signatures."
+msgstr ""
 
 #: settings.py:28
 msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND."
-msgstr "Arguments to pass to the SIGNATURE_STORAGE_BACKEND."
+msgstr ""
 
 #: storages.py:13
 msgid ""
 "Unable to initialize the detached signatures storage. Check the settings {} "
 "and {} for formatting errors."
-msgstr "Unable to initialize the detached signatures storage. Check the settings {} and {} for formatting errors."
+msgstr ""
+"Unable to initialize the detached signatures storage. Check the settings {} "
+"and {} for formatting errors."
 
 #: storages.py:20
 msgid "Detached signatures"
-msgstr "Detached signatures"
+msgstr ""
 
 #: views.py:68 views.py:156
 msgid "Passphrase is needed to unlock this key."
-msgstr "Passphrase is needed to unlock this key."
+msgstr ""
 
 #: views.py:81 views.py:169
 msgid "Passphrase is incorrect."
-msgstr "Passphrase is incorrect."
+msgstr ""
 
 #: views.py:94 views.py:182
 msgid "Document version signed successfully."
-msgstr "Document version signed successfully."
+msgstr ""
 
 #: views.py:122 views.py:217
 msgid "Sign"
-msgstr "Sign"
+msgstr ""
 
 #: views.py:124
 #, python-format
 msgid "Sign document version \"%s\" with a detached signature"
-msgstr "Sign document version \"%s\" with a detached signature"
+msgstr ""
 
 #: views.py:219
 #, python-format
 msgid "Sign document version \"%s\" with a embedded signature"
-msgstr "Sign document version \"%s\" with a embedded signature"
+msgstr ""
 
 #: views.py:236
 #, python-format
 msgid "Delete detached signature: %s"
-msgstr "Delete detached signature: %s"
+msgstr ""
 
 #: views.py:259
 #, python-format
 msgid "Details for signature: %s"
-msgstr "Details for signature: %s"
+msgstr ""
 
 #: views.py:291
 msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
 "document itself or uploaded as a separate file."
-msgstr "Signatures help provide authorship evidence and tamper detection. They are very secure and hard to forge. A signature can be embedded as part of the document itself or uploaded as a separate file."
+msgstr ""
+"Signatures help provide authorship evidence and tamper detection. They are "
+"very secure and hard to forge. A signature can be embedded as part of the "
+"document itself or uploaded as a separate file."
 
 #: views.py:320
 msgid "There are no signatures for this document."
-msgstr "There are no signatures for this document."
+msgstr ""
 
 #: views.py:324
 #, python-format
 msgid "Signatures for document version: %s"
-msgstr "Signatures for document version: %s"
+msgstr ""
 
 #: views.py:356
 #, python-format
 msgid "Upload detached signature for document version: %s"
-msgstr "Upload detached signature for document version: %s"
+msgstr ""
 
 #: views.py:374
 msgid "On large databases this operation may take some time to execute."
-msgstr "On large databases this operation may take some time to execute."
+msgstr ""
 
 #: views.py:375
 msgid "Verify all document for signatures?"
-msgstr "Verify all document for signatures?"
+msgstr ""
 
 #: views.py:385
 msgid "Signature verification queued successfully."
-msgstr "Signature verification queued successfully."
+msgstr ""
 
 #: workflow_actions.py:22
 msgid "Private key that will be used to sign the document version."
-msgstr "Private key that will be used to sign the document version."
+msgstr ""
 
 #: workflow_actions.py:37
 msgid "Sign document (detached)"
-msgstr "Sign document (detached)"
+msgstr ""
 
 #: workflow_actions.py:49
 msgid ""
 "Document has no version to sign. You might be trying to use this action in "
 "an initial state before the created document is yet to be processed."
-msgstr "Document has no version to sign. You might be trying to use this action in an initial state before the created document is yet to be processed."
+msgstr ""
+"Document has no version to sign. You might be trying to use this action in "
+"an initial state before the created document is yet to be processed."
 
 #: workflow_actions.py:82
 msgid "Sign document (embedded)"
-msgstr "Sign document (embedded)"
+msgstr ""

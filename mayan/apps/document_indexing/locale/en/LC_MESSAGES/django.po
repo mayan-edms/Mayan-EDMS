@@ -1,438 +1,446 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-04 09:16+0000\n"
+"POT-Creation-Date: 2020-09-09 09:02+0000\n"
 "PO-Revision-Date: 2020-04-02 07:08+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/language/en/)\n"
+"Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
+"language/en/)\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: en\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin.py:22
 msgid "None"
-msgstr "None"
+msgstr ""
 
 #: admin.py:24 links.py:93 models.py:52
 msgid "Document types"
-msgstr "Document types"
+msgstr ""
 
 #: apps.py:54 events.py:6
 msgid "Document indexing"
-msgstr "Document indexing"
+msgstr ""
 
 #: apps.py:129
 msgid "Total levels"
-msgstr "Total levels"
+msgstr ""
 
 #: apps.py:136
 msgid "Total documents"
-msgstr "Total documents"
+msgstr ""
 
 #: apps.py:142 apps.py:156 apps.py:176 apps.py:186
 msgid "Level"
-msgstr "Level"
+msgstr ""
 
 #: apps.py:164
 msgid "Levels"
-msgstr "Levels"
+msgstr ""
 
-#: apps.py:171 models.py:381
+#: apps.py:171 models.py:395
 msgid "Documents"
-msgstr "Documents"
+msgstr ""
 
 #: events.py:10
 msgid "Index created"
-msgstr "Index created"
+msgstr ""
 
 #: events.py:13
 msgid "Index edited"
-msgstr "Index edited"
+msgstr ""
 
 #: forms.py:16
 msgid "Index templates to be queued for rebuilding."
-msgstr "Index templates to be queued for rebuilding."
+msgstr ""
 
 #: forms.py:17 links.py:27
 msgid "Index templates"
-msgstr "Index templates"
+msgstr ""
 
 #: forms.py:32
 msgid "Template"
-msgstr "Template"
+msgstr ""
 
 #: handlers.py:18
 msgid "Creation date"
-msgstr "Creation date"
+msgstr ""
 
 #: links.py:21 links.py:36 links.py:73 links.py:77 models.py:60 views.py:150
 #: views.py:333
 msgid "Indexes"
-msgstr "Indexes"
+msgstr ""
 
 #: links.py:42 queues.py:22
 msgid "Rebuild index"
-msgstr "Rebuild index"
+msgstr ""
 
 #: links.py:51 links.py:62
 msgid "Deletes and creates from scratch all the document indexes."
-msgstr "Deletes and creates from scratch all the document indexes."
+msgstr ""
 
 #: links.py:53 views.py:446
 msgid "Rebuild indexes"
-msgstr "Rebuild indexes"
+msgstr ""
 
 #: links.py:64 views.py:481
 msgid "Reset indexes"
-msgstr "Reset indexes"
+msgstr ""
 
 #: links.py:81 views.py:86
 msgid "Create index"
-msgstr "Create index"
+msgstr ""
 
 #: links.py:88 links.py:118
 msgid "Delete"
-msgstr "Delete"
+msgstr ""
 
 #: links.py:99 links.py:123
 msgid "Edit"
-msgstr "Edit"
+msgstr ""
 
 #: links.py:106
 msgid "Tree template"
-msgstr "Tree template"
+msgstr ""
 
 #: links.py:112
 msgid "New child node"
-msgstr "New child node"
+msgstr ""
 
 #: models.py:34
 msgid "Short description of this index."
-msgstr "Short description of this index."
+msgstr ""
 
 #: models.py:35
 msgid "Label"
-msgstr "Label"
+msgstr ""
 
 #: models.py:39
 msgid "This value will be used by other apps to reference this index."
-msgstr "This value will be used by other apps to reference this index."
+msgstr ""
 
 #: models.py:40
 msgid "Slug"
-msgstr "Slug"
+msgstr ""
 
 #: models.py:45
-msgid ""
-"Causes this index to be visible and updated when document data changes."
-msgstr "Causes this index to be visible and updated when document data changes."
+msgid "Causes this index to be visible and updated when document data changes."
+msgstr ""
 
-#: models.py:48 models.py:253
+#: models.py:48 models.py:230
 msgid "Enabled"
-msgstr "Enabled"
+msgstr ""
 
-#: models.py:59 models.py:237
+#: models.py:59 models.py:214
 msgid "Index"
-msgstr "Index"
+msgstr ""
 
-#: models.py:209
-msgid "Index instance"
-msgstr "Index instance"
-
-#: models.py:210
-msgid "Index instances"
-msgstr "Index instances"
-
-#: models.py:241
+#: models.py:218
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
-msgstr "Enter a template to render. Use Django's default templating language (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
+msgstr ""
 
-#: models.py:245
+#: models.py:222
 msgid "Indexing expression"
-msgstr "Indexing expression"
+msgstr ""
 
-#: models.py:250
+#: models.py:227
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr "Causes this node to be visible and updated when document data changes."
+msgstr ""
 
-#: models.py:258
+#: models.py:235
 msgid ""
-"Check this option to have this node act as a container for documents and not"
-" as a parent for further nodes."
-msgstr "Check this option to have this node act as a container for documents and not as a parent for further nodes."
+"Check this option to have this node act as a container for documents and not "
+"as a parent for further nodes."
+msgstr ""
 
-#: models.py:261
+#: models.py:238
 msgid "Link documents"
-msgstr "Link documents"
+msgstr ""
 
-#: models.py:265
+#: models.py:242
 msgid "Index node template"
-msgstr "Index node template"
+msgstr ""
 
-#: models.py:266
+#: models.py:243
 msgid "Indexes node template"
-msgstr "Indexes node template"
+msgstr ""
 
-#: models.py:270
+#: models.py:247
 msgid "Root"
-msgstr "Root"
+msgstr ""
 
-#: models.py:328
+#: models.py:305
 #, python-format
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
-msgstr "Error indexing document: %(document)s; expression: %(expression)s; %(exception)s"
+msgstr ""
 
-#: models.py:374
-msgid "Index template node"
-msgstr "Index template node"
+#: models.py:346
+msgid "Index instance"
+msgstr ""
 
-#: models.py:377 search.py:23
-msgid "Value"
-msgstr "Value"
-
-#: models.py:387 models.py:513
-msgid "Index instance node"
-msgstr "Index instance node"
+#: models.py:347
+msgid "Index instances"
+msgstr ""
 
 #: models.py:388
+msgid "Index template node"
+msgstr ""
+
+#: models.py:391 search.py:23
+msgid "Value"
+msgstr ""
+
+#: models.py:401 models.py:527
+msgid "Index instance node"
+msgstr ""
+
+#: models.py:402
 msgid "Indexes instances node"
-msgstr "Indexes instances node"
+msgstr ""
 
-#: models.py:450
+#: models.py:464
 msgid "The path to the index including all ancestors."
-msgstr "The path to the index including all ancestors."
+msgstr ""
 
-#: models.py:452
+#: models.py:466
 msgid "Full path"
-msgstr "Full path"
+msgstr ""
 
-#: models.py:506
+#: models.py:520
 msgid "Document index node instance"
-msgstr "Document index node instance"
+msgstr ""
 
-#: models.py:507
+#: models.py:521
 msgid "Document indexes node instances"
-msgstr "Document indexes node instances"
+msgstr ""
 
-#: models.py:514
+#: models.py:528
 msgid "Index instance nodes"
-msgstr "Index instance nodes"
+msgstr ""
 
 #: permissions.py:5 queues.py:7
 msgid "Indexing"
-msgstr "Indexing"
+msgstr ""
 
 #: permissions.py:8
 msgid "Create new document indexes"
-msgstr "Create new document indexes"
+msgstr ""
 
 #: permissions.py:11
 msgid "Edit document indexes"
-msgstr "Edit document indexes"
+msgstr ""
 
 #: permissions.py:14
 msgid "Delete document indexes"
-msgstr "Delete document indexes"
+msgstr ""
 
 #: permissions.py:17
 msgid "View document index instances"
-msgstr "View document index instances"
+msgstr ""
 
 #: permissions.py:21
 msgid "View document indexes"
-msgstr "View document indexes"
+msgstr ""
 
 #: permissions.py:24
 msgid "Rebuild document indexes"
-msgstr "Rebuild document indexes"
+msgstr ""
 
 #: queues.py:10
 msgid "Delete empty index nodes"
-msgstr "Delete empty index nodes"
+msgstr ""
 
 #: queues.py:14
 msgid "Remove document"
-msgstr "Remove document"
+msgstr ""
 
 #: queues.py:18
 msgid "Index document"
-msgstr "Index document"
+msgstr ""
 
 #: search.py:27
 msgid "Document type"
-msgstr "Document type"
+msgstr ""
 
 #: search.py:30
 msgid "Document MIME type"
-msgstr "Document MIME type"
+msgstr ""
 
 #: search.py:33
 msgid "Document label"
-msgstr "Document label"
+msgstr ""
 
 #: search.py:36
 msgid "Document description"
-msgstr "Document description"
+msgstr ""
 
 #: search.py:39
 msgid "Document UUID"
-msgstr "Document UUID"
+msgstr ""
 
 #: search.py:43
 msgid "Document checksum"
-msgstr "Document checksum"
+msgstr ""
+
+#: serializers.py:191
+msgid "Parent cannot be empty."
+msgstr ""
+
+#: serializers.py:198
+msgid "Parent must be from the same index template."
+msgstr ""
 
 #: views.py:45
 msgid "Available indexes"
-msgstr "Available indexes"
+msgstr ""
 
 #: views.py:46
 msgid "Indexes linked"
-msgstr "Indexes linked"
+msgstr ""
 
 #: views.py:76
 msgid ""
 "Documents of this type will appear in the indexes linked when these are "
 "updated. Events of the documents of this type will trigger updates in the "
 "linked indexes."
-msgstr "Documents of this type will appear in the indexes linked when these are updated. Events of the documents of this type will trigger updates in the linked indexes."
+msgstr ""
 
 #: views.py:80
 #, python-format
 msgid "Indexes linked to document type: %s"
-msgstr "Indexes linked to document type: %s"
+msgstr ""
 
 #: views.py:109
 #, python-format
 msgid "Delete the index: %s?"
-msgstr "Delete the index: %s?"
+msgstr ""
 
 #: views.py:125
 #, python-format
 msgid "Edit index: %s"
-msgstr "Edit index: %s"
+msgstr ""
 
 #: views.py:144
 msgid ""
 "Indexes group document automatically into levels. Indexe are defined using "
-"template whose markers are replaced with direct properties of documents like"
-" label or description, or that of extended properties like metadata."
-msgstr "Indexes group document automatically into levels. Indexe are defined using template whose markers are replaced with direct properties of documents like label or description, or that of extended properties like metadata."
+"template whose markers are replaced with direct properties of documents like "
+"label or description, or that of extended properties like metadata."
+msgstr ""
 
 #: views.py:149
 msgid "There are no indexes."
-msgstr "There are no indexes."
+msgstr ""
 
 #: views.py:162
 #, python-format
 msgid "Rebuild index: %s"
-msgstr "Rebuild index: %s"
+msgstr ""
 
 #: views.py:182
 msgid "Index queued for rebuild."
-msgstr "Index queued for rebuild."
+msgstr ""
 
 #: views.py:194
 msgid "Available document types"
-msgstr "Available document types"
+msgstr ""
 
 #: views.py:195
 msgid "Document types linked"
-msgstr "Document types linked"
+msgstr ""
 
 #: views.py:205
 msgid ""
 "Only the documents of the types selected will be shown in the index when "
 "built. Only the events of the documents of the types select will trigger "
 "updates in the index."
-msgstr "Only the documents of the types selected will be shown in the index when built. Only the events of the documents of the types select will trigger updates in the index."
+msgstr ""
 
 #: views.py:209
 #, python-format
 msgid "Document types linked to index: %s"
-msgstr "Document types linked to index: %s"
+msgstr ""
 
 #: views.py:226
 #, python-format
 msgid "Tree template nodes for index: %s"
-msgstr "Tree template nodes for index: %s"
+msgstr ""
 
 #: views.py:254
 #, python-format
 msgid "Create child node of: %s"
-msgstr "Create child node of: %s"
+msgstr ""
 
 #: views.py:280
 #, python-format
 msgid "Delete the index template node: %s?"
-msgstr "Delete the index template node: %s?"
+msgstr ""
 
 #: views.py:304
 #, python-format
 msgid "Edit the index template node: %s?"
-msgstr "Edit the index template node: %s?"
+msgstr ""
 
 #: views.py:328
 msgid ""
 "This could mean that no index templates have been created or that there "
 "index templates but they are no properly defined."
-msgstr "This could mean that no index templates have been created or that there index templates but they are no properly defined."
+msgstr ""
 
 #: views.py:332
 msgid "There are no index instances available."
-msgstr "There are no index instances available."
+msgstr ""
 
 #: views.py:377
 #, python-format
 msgid "Navigation: %s"
-msgstr "Navigation: %s"
+msgstr ""
 
 #: views.py:382
 #, python-format
 msgid "Contents for index: %s"
-msgstr "Contents for index: %s"
+msgstr ""
 
 #: views.py:425
 msgid ""
 "Assign the document type of this document to an index to have it appear in "
 "instances of those indexes organization units. "
-msgstr "Assign the document type of this document to an index to have it appear in instances of those indexes organization units. "
+msgstr ""
 
 #: views.py:430
 msgid "This document is not in any index"
-msgstr "This document is not in any index"
+msgstr ""
 
 #: views.py:434
 #, python-format
 msgid "Indexes nodes containing document: %s"
-msgstr "Indexes nodes containing document: %s"
+msgstr ""
 
 #: views.py:460
 #, python-format
 msgid "%(count)d index queued for rebuild."
 msgid_plural "%(count)d indexes queued for rebuild."
-msgstr[0] "%(count)d index queued for rebuild."
-msgstr[1] "%(count)d indexes queued for rebuild."
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:493
 #, python-format
 msgid "%(count)d index reset."
 msgid_plural "%(count)d indexes reset."
-msgstr[0] "%(count)d index reset."
-msgstr[1] "%(count)d indexes reset."
+msgstr[0] "."
+msgstr[1] ""
 
 #: views.py:506
 msgid "Index templates for which their instances will be deleted."
-msgstr "Index templates for which their instances will be deleted."
+msgstr ""

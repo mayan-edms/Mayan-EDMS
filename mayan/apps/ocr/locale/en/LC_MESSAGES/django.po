@@ -1,215 +1,216 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-04 09:17+0000\n"
+"POT-Creation-Date: 2020-09-09 09:02+0000\n"
 "PO-Revision-Date: 2020-01-28 07:59+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/language/en/)\n"
+"Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
+"language/en/)\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: en\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:53 apps.py:138 apps.py:142 events.py:5 links.py:18 links.py:24
 #: permissions.py:5 queues.py:6 settings.py:8
 msgid "OCR"
-msgstr "OCR"
+msgstr ""
 
 #: apps.py:105
 msgid "A generator returning the document's pages OCR content."
-msgstr "A generator returning the document's pages OCR content."
+msgstr ""
 
 #: apps.py:106
 msgid "OCR content"
-msgstr "OCR content"
+msgstr ""
 
 #: apps.py:130
 msgid "Date and time"
-msgstr "Date and time"
+msgstr ""
 
 #: apps.py:133 models.py:74
 msgid "Result"
-msgstr "Result"
+msgstr ""
 
 #: backends/tesseract.py:93
 msgid "Tesseract OCR not found."
-msgstr "Tesseract OCR not found."
+msgstr ""
 
 #: dependencies.py:23
 msgid "Free Open Source OCR Engine"
-msgstr "Free Open Source OCR Engine"
+msgstr ""
 
 #: dependencies.py:34
 msgid ""
-"PyOCR is a Python library simplifying the use of OCR tools like Tesseract or"
-" Cuneiform."
-msgstr "PyOCR is a Python library simplifying the use of OCR tools like Tesseract or Cuneiform."
+"PyOCR is a Python library simplifying the use of OCR tools like Tesseract or "
+"Cuneiform."
+msgstr ""
 
 #: events.py:8
 msgid "Document OCR content deleted"
-msgstr "Document OCR content deleted"
+msgstr ""
 
 #: events.py:12
 msgid "Document version submitted for OCR"
-msgstr "Document version submitted for OCR"
+msgstr ""
 
 #: events.py:16
 msgid "Document version OCR finished"
-msgstr "Document version OCR finished"
+msgstr ""
 
 #: forms.py:14 forms.py:45
 msgid "Contents"
-msgstr "Contents"
+msgstr ""
 
 #: forms.py:74
 #, python-format
 msgid "Page %(page_number)d"
-msgstr "Page %(page_number)d"
+msgstr ""
 
 #: links.py:30 links.py:35
 msgid "Delete OCR content"
-msgstr "Delete OCR content"
+msgstr ""
 
 #: links.py:41 links.py:46
 msgid "Submit for OCR"
-msgstr "Submit for OCR"
+msgstr ""
 
 #: links.py:51
 msgid "Setup OCR"
-msgstr "Setup OCR"
+msgstr ""
 
 #: links.py:56
 msgid "OCR documents per type"
-msgstr "OCR documents per type"
+msgstr ""
 
 #: links.py:61 links.py:67 views.py:214
 msgid "OCR errors"
-msgstr "OCR errors"
+msgstr ""
 
 #: links.py:73
 msgid "Download OCR text"
-msgstr "Download OCR text"
+msgstr ""
 
 #: models.py:18
 msgid "Document type"
-msgstr "Document type"
+msgstr ""
 
 #: models.py:22
 msgid "Automatically queue newly created documents for OCR."
-msgstr "Automatically queue newly created documents for OCR."
+msgstr ""
 
 #: models.py:28
 msgid "Document type settings"
-msgstr "Document type settings"
+msgstr ""
 
 #: models.py:29
 msgid "Document types settings"
-msgstr "Document types settings"
+msgstr ""
 
 #: models.py:43
 msgid "Document page"
-msgstr "Document page"
+msgstr ""
 
 #: models.py:47
 msgid "The actual text content extracted by the OCR backend."
-msgstr "The actual text content extracted by the OCR backend."
+msgstr ""
 
 #: models.py:48
 msgid "Content"
-msgstr "Content"
+msgstr ""
 
 #: models.py:54
 msgid "Document page OCR content"
-msgstr "Document page OCR content"
+msgstr ""
 
 #: models.py:55
 msgid "Document pages OCR contents"
-msgstr "Document pages OCR contents"
+msgstr ""
 
 #: models.py:69
 msgid "Document version"
-msgstr "Document version"
+msgstr ""
 
 #: models.py:72
 msgid "Date time submitted"
-msgstr "Date time submitted"
+msgstr ""
 
 #: models.py:78
 msgid "Document version OCR error"
-msgstr "Document version OCR error"
+msgstr ""
 
 #: models.py:79
 msgid "Document version OCR errors"
-msgstr "Document version OCR errors"
+msgstr ""
 
 #: permissions.py:8
 msgid "Submit documents for OCR"
-msgstr "Submit documents for OCR"
+msgstr ""
 
 #: permissions.py:11
 msgid "View the transcribed text from document"
-msgstr "View the transcribed text from document"
+msgstr ""
 
 #: permissions.py:15
 msgid "Change document type OCR settings"
-msgstr "Change document type OCR settings"
+msgstr ""
 
 #: queues.py:9
 msgid "Document version OCR"
-msgstr "Document version OCR"
+msgstr ""
 
 #: settings.py:15
 msgid "Full path to the backend to be used to do OCR."
-msgstr "Full path to the backend to be used to do OCR."
+msgstr ""
 
 #: settings.py:24
 msgid "Set new document types to perform OCR automatically by default."
-msgstr "Set new document types to perform OCR automatically by default."
+msgstr ""
 
 #: views.py:35
 msgid "Delete the OCR content of the selected document?"
 msgid_plural "Delete the OCR content of the selected documents?"
-msgstr[0] "Delete the OCR content of the selected document?"
-msgstr[1] "Delete the OCR content of the selected documents?"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:70
 #, python-format
 msgid "OCR result for document: %s"
-msgstr "OCR result for document: %s"
+msgstr ""
 
 #: views.py:95
 #, python-format
 msgid "OCR errors for document: %s"
-msgstr "OCR errors for document: %s"
+msgstr ""
 
 #: views.py:121
 #, python-format
 msgid "OCR result for document page: %s"
-msgstr "OCR result for document page: %s"
+msgstr ""
 
 #: views.py:137
 msgid "Submit the selected document to the OCR queue?"
 msgid_plural "Submit the selected documents to the OCR queue?"
-msgstr[0] "Submit the selected document to the OCR queue?"
-msgstr[1] "Submit the selected documents to the OCR queue?"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:154
 msgid "Submit all documents of a type for OCR"
-msgstr "Submit all documents of a type for OCR"
+msgstr ""
 
 #: views.py:168
 #, python-format
 msgid "%(count)d documents added to the OCR queue."
-msgstr "%(count)d documents added to the OCR queue."
+msgstr ""
 
 #: views.py:203
 #, python-format
 msgid "Edit OCR settings for document type: %s."
-msgstr "Edit OCR settings for document type: %s."
+msgstr ""

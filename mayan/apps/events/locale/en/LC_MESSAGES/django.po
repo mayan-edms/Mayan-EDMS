@@ -1,198 +1,199 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-04 09:16+0000\n"
+"POT-Creation-Date: 2020-09-09 09:02+0000\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/language/en/)\n"
+"Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
+"language/en/)\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: en\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:27 links.py:47 links.py:52 links.py:57 permissions.py:5 views.py:34
 msgid "Events"
-msgstr "Events"
+msgstr ""
 
 #: apps.py:39 apps.py:67
 msgid "Date and time"
-msgstr "Date and time"
+msgstr ""
 
 #: apps.py:42 apps.py:70
 msgid "Actor"
-msgstr "Actor"
+msgstr ""
 
 #: apps.py:46 apps.py:75
 msgid "Event"
-msgstr "Event"
+msgstr ""
 
 #: apps.py:50 apps.py:80
 msgid "Target"
-msgstr "Target"
+msgstr ""
 
 #: apps.py:54
 msgid "Action object"
-msgstr "Action object"
+msgstr ""
 
 #: apps.py:59 forms.py:10 forms.py:67
 msgid "Namespace"
-msgstr "Namespace"
+msgstr ""
 
 #: apps.py:62 forms.py:14 forms.py:71
 msgid "Label"
-msgstr "Label"
+msgstr ""
 
 #: apps.py:86
 msgid "Seen"
-msgstr "Seen"
+msgstr ""
 
 #: classes.py:144
 #, python-format
 msgid "Unknown or obsolete event type: %s"
-msgstr "Unknown or obsolete event type: %s"
+msgstr ""
 
 #: forms.py:18 forms.py:75
 msgid "Subscription"
-msgstr "Subscription"
+msgstr ""
 
 #: forms.py:20 forms.py:77
 msgid "No"
-msgstr "No"
+msgstr ""
 
 #: forms.py:21 forms.py:78
 msgid "Subscribed"
-msgstr "Subscribed"
+msgstr ""
 
 #: html_widgets.py:57
 msgid "System"
-msgstr "System"
+msgstr ""
 
 #: links.py:43
 msgid "My events"
-msgstr "My events"
+msgstr ""
 
 #: links.py:61 models.py:65 views.py:78
 msgid "Event subscriptions"
-msgstr "Event subscriptions"
+msgstr ""
 
 #: links.py:65
 msgid "Mark as seen"
-msgstr "Mark as seen"
+msgstr ""
 
 #: links.py:69
 msgid "Mark all as seen"
-msgstr "Mark all as seen"
+msgstr ""
 
 #: links.py:74
 msgid "Subscriptions"
-msgstr "Subscriptions"
+msgstr ""
 
 #: models.py:23
 msgid "Name"
-msgstr "Name"
+msgstr ""
 
 #: models.py:27
 msgid "Stored event type"
-msgstr "Stored event type"
+msgstr ""
 
 #: models.py:28
 msgid "Stored event types"
-msgstr "Stored event types"
+msgstr ""
 
 #: models.py:54 models.py:81 models.py:113
 msgid "User"
-msgstr "User"
+msgstr ""
 
 #: models.py:58 models.py:117
 msgid "Event type"
-msgstr "Event type"
+msgstr ""
 
 #: models.py:64
 msgid "Event subscription"
-msgstr "Event subscription"
+msgstr ""
 
 #: models.py:85
 msgid "Action"
-msgstr "Action"
+msgstr ""
 
 #: models.py:87
 msgid "Read"
-msgstr "Read"
+msgstr ""
 
 #: models.py:93
 msgid "Notification"
-msgstr "Notification"
+msgstr ""
 
 #: models.py:94 views.py:117
 msgid "Notifications"
-msgstr "Notifications"
+msgstr ""
 
 #: models.py:123
 msgid "Object event subscription"
-msgstr "Object event subscription"
+msgstr ""
 
 #: models.py:124
 msgid "Object event subscriptions"
-msgstr "Object event subscriptions"
+msgstr ""
 
 #: permissions.py:8
 msgid "Access the events of an object"
-msgstr "Access the events of an object"
+msgstr ""
 
 #: views.py:57
 #, python-format
 msgid "Error updating event subscription; %s"
-msgstr "Error updating event subscription; %s"
+msgstr ""
 
 #: views.py:62
 msgid "Event subscriptions updated successfully"
-msgstr "Event subscriptions updated successfully"
+msgstr ""
 
 #: views.py:112
 msgid "Subscribe to global or object events to receive notifications."
-msgstr "Subscribe to global or object events to receive notifications."
+msgstr ""
 
 #: views.py:115
 msgid "There are no notifications"
-msgstr "There are no notifications"
+msgstr ""
 
 #: views.py:164
 msgid ""
 "Events are actions that have been performed to this object or using this "
 "object."
-msgstr "Events are actions that have been performed to this object or using this object."
+msgstr ""
 
 #: views.py:167
 msgid "There are no events for this object"
-msgstr "There are no events for this object"
+msgstr ""
 
 #: views.py:169
 #, python-format
 msgid "Events for: %s"
-msgstr "Events for: %s"
+msgstr ""
 
 #: views.py:209
 #, python-format
 msgid "Error updating object event subscription; %s"
-msgstr "Error updating object event subscription; %s"
+msgstr ""
 
 #: views.py:215
 msgid "Object event subscriptions updated successfully"
-msgstr "Object event subscriptions updated successfully"
+msgstr ""
 
 #: views.py:248
 #, python-format
 msgid "Event subscriptions for: %s"
-msgstr "Event subscriptions for: %s"
+msgstr ""
 
 #: views.py:280
 #, python-format
 msgid "Events of type: %s"
-msgstr "Events of type: %s"
+msgstr ""
