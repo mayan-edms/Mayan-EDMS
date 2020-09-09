@@ -8,6 +8,7 @@
   in web link app resource name. Thanks to forum user @qra
   (https://forum.mayan-edms.com/viewtopic.php?t=3009) for the
   report.
+- Feature complete document indexing API.
 
 3.4.16 (2020-08-30)
 ===================
