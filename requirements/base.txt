@@ -40,4 +40,5 @@ pytz==2019.1
 requests==2.23.0
 sh==1.12.14
 swagger-spec-validator==2.4.3
+vine==1.3.0
 whitenoise==5.0.1

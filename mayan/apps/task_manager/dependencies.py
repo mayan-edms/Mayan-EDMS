@@ -111,3 +111,7 @@ PythonDependency(
 PythonDependency(
     module=__name__, name='kombu', version_string='==4.6.7'
 )
+PythonDependency(
+    module=__name__, name='vine', version_string='==1.3.0'
+)
+

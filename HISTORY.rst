@@ -12,6 +12,10 @@
   Thanks to forum user @qra for the reports and requests.
 - Add documentation note about breaking changes in django-storages version
   1.10 regarding ``default_acl``.
+- Pin vine to version 1.3.0 to workaround upstream Celery dependency breakage.
+  https://github.com/celery/py-amqp/issues/340
+  https://stackoverflow.com/questions/32757259/celery-no-module-named-five
+  https://github.com/celery/celery/blob/v4.3.0/requirements/default.txt#L4
 
 3.4.16 (2020-08-30)
 ===================
