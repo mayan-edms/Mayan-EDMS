@@ -148,7 +148,7 @@ job_push_python:
 
 # Test upgrade from the latest public version to the local version
 .test_upgrade_base: &test_upgrade_base
-  stage: test
+  stage: test_upgrade
   image: ubuntu:19.10
   cache:
     paths:
