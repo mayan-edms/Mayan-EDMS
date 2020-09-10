@@ -75,6 +75,15 @@ the container if not using docker-compose.
        blocked by default on some providers such as AWS resulting
        in permission denied errors when trying to upload a document
 
+   .. note::
+
+       The ``default_acl`` option has been removed from django-storages
+       in version 1.10 (2020-08-30). Instead use ``object_parameters``
+       with the options mentioned in
+       https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html#S3.Client.put_object
+       and update your ``MAYAN_DOCUMENTS_STORAGE_BACKEND_ARGUMENTS`` setting
+       accordingly.
+
 
 Direct Deployments
 ==================

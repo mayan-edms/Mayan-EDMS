@@ -30,6 +30,13 @@ The translation files and resources entries were added or fixed for the
 indexing, navigation, statistics, web links, and redactions apps.
 
 
+Other
+^^^^^
+
+Add documentation note about breaking changes in django-storages version
+1.10 regarding ``default_acl``.
+
+
 Removals
 --------
 
