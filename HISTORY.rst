@@ -1,4 +1,4 @@
-3.4.17 (2020-09-XX)
+3.4.17 (2020-09-10)
 ===================
 - Improve and optimize the process_messages script.
 - Add helper script that checks all apps have a corresponding 
