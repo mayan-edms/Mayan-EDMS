@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-09 09:02+0000\n"
-"PO-Revision-Date: 2020-09-09 09:25+0000\n"
+"POT-Creation-Date: 2020-09-10 08:31+0000\n"
+"PO-Revision-Date: 2020-09-09 11:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -300,11 +300,11 @@ msgstr "Suma de comprobación del documento"
 
 #: serializers.py:191
 msgid "Parent cannot be empty."
-msgstr ""
+msgstr "El padre no puede estar vacío."
 
 #: serializers.py:198
 msgid "Parent must be from the same index template."
-msgstr ""
+msgstr "El padre debe ser de la misma plantilla de índice."
 
 #: views.py:45
 msgid "Available indexes"
@@ -442,8 +442,8 @@ msgstr[1] "%(count)d índices en cola para la reconstrucción."
 #, python-format
 msgid "%(count)d index reset."
 msgid_plural "%(count)d indexes reset."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "."
+msgstr[1] "%(count)d índices restablecidos."
 
 #: views.py:506
 msgid "Index templates for which their instances will be deleted."
