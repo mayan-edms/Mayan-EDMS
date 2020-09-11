@@ -1,6 +1,6 @@
 import mock
 
-from mayan.apps.common.tests.base import BaseTestCase
+from mayan.apps.testing.tests.base import BaseTestCase
 
 from .mixins import CacheTestMixin
 
