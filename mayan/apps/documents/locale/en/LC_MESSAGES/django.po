@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+# Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-30 04:17-0400\n"
-"PO-Revision-Date: 2017-08-15 01:59-0400\n"
+"POT-Creation-Date: 2020-09-10 08:31+0000\n"
+"PO-Revision-Date: 2020-04-02 06:56+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
 "language/en/)\n"
@@ -854,6 +854,7 @@ msgstr ""
 msgid ""
 "Time after which a document stub will be considered invalid and deleted."
 msgstr ""
+"Time after which a document stub will be considered invalid and deleted."
 
 #: settings.py:156
 msgid "Height in pixels of the document thumbnail image."

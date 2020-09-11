@@ -1,25 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
 # Translators:
-# Translators:
+# Sergey Glita <gsv70@mail.ru>, 2020
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Mayan EDMS\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-30 04:18-0400\n"
-"PO-Revision-Date: 2015-09-24 05:15+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"POT-Creation-Date: 2020-09-10 08:31+0000\n"
+"PO-Revision-Date: 2020-09-04 09:18+0000\n"
+"Last-Translator: Sergey Glita <gsv70@mail.ru>, 2020\n"
+"Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:9
 msgid "Navigation"
@@ -31,13 +30,4 @@ msgstr ""
 
 #: templates/navigation/generic_navigation.html:6
 msgid "Actions"
-msgstr ""
-
-#~ msgid "Multi item action"
-#~ msgstr "Multi item action"
-
-#~ msgid "Selected item actions:"
-#~ msgstr "Selected item actions:"
-
-#~ msgid "icon"
-#~ msgstr "icon"
+msgstr "Действия"

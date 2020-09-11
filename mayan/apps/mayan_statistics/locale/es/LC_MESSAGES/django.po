@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Lory977 <helga.carrero@gmail.com>, 2015
 # Roberto Rosario, 2014
 # Roberto Rosario, 2015-2019
@@ -10,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-30 04:18-0400\n"
+"POT-Creation-Date: 2020-09-10 08:31+0000\n"
 "PO-Revision-Date: 2019-05-17 06:32+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"

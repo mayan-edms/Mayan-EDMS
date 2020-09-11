@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # mic <winterfall24@gmail.com>, 2012,2015
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016,2020
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2017-2018
@@ -10,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-30 04:16-0400\n"
+"POT-Creation-Date: 2020-09-10 08:30+0000\n"
 "PO-Revision-Date: 2020-02-02 11:29+0000\n"
 "Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"

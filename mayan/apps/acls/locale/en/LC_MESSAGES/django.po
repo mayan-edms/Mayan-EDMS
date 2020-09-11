@@ -1,20 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-30 04:16-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2020-09-10 08:30+0000\n"
+"PO-Revision-Date: 2020-03-28 07:22+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
+"language/en/)\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:22 links.py:42
 msgid "ACLs"
@@ -83,12 +85,15 @@ msgstr ""
 msgid ""
 "API URL pointing to the list of permissions for this access control list."
 msgstr ""
+"API URL pointing to the list of permissions for this access control list."
 
 #: serializers.py:57
 msgid ""
 "API URL pointing to a permission in relation to the access control list to "
 "which it is attached. This URL is different than the canonical workflow URL."
 msgstr ""
+"API URL pointing to a permission in relation to the access control list to "
+"which it is attached. This URL is different than the canonical workflow URL."
 
 #: serializers.py:89
 msgid "Primary key of the new permission to grant to the access control list."
@@ -104,6 +109,8 @@ msgid ""
 "Comma separated list of permission primary keys to grant to this access "
 "control list."
 msgstr ""
+"Comma separated list of permission primary keys to grant to this access "
+"control list."
 
 #: serializers.py:140
 msgid "Primary keys of the role to which this access control list binds to."
@@ -115,6 +122,8 @@ msgid ""
 "An ACL for \"%(object)s\" using role \"%(role)s\" already exists. Edit that "
 "ACL entry instead."
 msgstr ""
+"An ACL for \"%(object)s\" using role \"%(role)s\" already exists. Edit that "
+"ACL entry instead."
 
 #: views.py:53
 #, python-format
@@ -136,6 +145,9 @@ msgid ""
 "access to objects in the system. ACLs allow granting a permission to a role "
 "but only for a specific object or set of objects."
 msgstr ""
+"ACL stands for Access Control List and is a precise method to control user "
+"access to objects in the system. ACLs allow granting a permission to a role "
+"but only for a specific object or set of objects."
 
 #: views.py:143
 #, python-format
@@ -162,6 +174,10 @@ msgid ""
 "to be removed from the parent object's ACL or from them role via the Setup "
 "menu."
 msgstr ""
+"Disabled permissions are inherited from a parent object or directly granted "
+"to the role and can't be removed from this view. Inherited permissions need "
+"to be removed from the parent object's ACL or from them role via the Setup "
+"menu."
 
 #: workflow_actions.py:23
 msgid "Object type"
@@ -178,6 +194,7 @@ msgstr ""
 #: workflow_actions.py:35
 msgid "Numeric identifier of the object for which the access will be modified."
 msgstr ""
+"Numeric identifier of the object for which the access will be modified."
 
 #: workflow_actions.py:40 workflow_actions.py:155
 msgid "Roles"
@@ -191,6 +208,7 @@ msgstr ""
 msgid ""
 "Permissions to grant/revoke to/from the role for the object selected above."
 msgstr ""
+"Permissions to grant/revoke to/from the role for the object selected above."
 
 #: workflow_actions.py:57
 msgid "Grant object access"

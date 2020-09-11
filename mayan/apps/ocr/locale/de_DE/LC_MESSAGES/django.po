@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Berny <berny@bernhard-marx.de>, 2015-2016,2019
 # Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2018
 # Felix <felix.com@gmx.com>, 2018
@@ -15,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-30 04:18-0400\n"
+"POT-Creation-Date: 2020-09-10 08:31+0000\n"
 "PO-Revision-Date: 2020-03-21 20:05+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"

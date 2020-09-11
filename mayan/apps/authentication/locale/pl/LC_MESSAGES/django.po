@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # kicior kicior <kiciorek+github@gmail.com>, 2020
 # Marcin Lozynski <mlozynski@wp.pl>, 2019
 # Tomasz Szymanowicz <alakdae@gmail.com>, 2019-2020
@@ -12,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-30 04:16-0400\n"
+"POT-Creation-Date: 2020-09-10 08:30+0000\n"
 "PO-Revision-Date: 2020-05-13 14:17+0000\n"
 "Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"

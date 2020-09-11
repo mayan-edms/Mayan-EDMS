@@ -3,6 +3,8 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
+# bwakkie <bwakkie@gmail.com>, 2020
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
 # j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
 # Johan Braeken, 2017
@@ -11,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-30 04:17-0400\n"
-"PO-Revision-Date: 2020-07-10 21:22+0000\n"
-"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
+"POT-Creation-Date: 2020-09-10 08:31+0000\n"
+"PO-Revision-Date: 2020-09-09 09:25+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -49,7 +51,7 @@ msgstr "Niveau"
 msgid "Levels"
 msgstr "Niveaus"
 
-#: apps.py:171 models.py:381
+#: apps.py:171 models.py:395
 msgid "Documents"
 msgstr "Documenten"
 
@@ -139,98 +141,98 @@ msgid ""
 "Causes this index to be visible and updated when document data changes."
 msgstr "Maakt deze index zichtbaar en 'up-to-date' wanneer documentgegevens wijzigen."
 
-#: models.py:48 models.py:253
+#: models.py:48 models.py:230
 msgid "Enabled"
 msgstr "Ingeschakeld"
 
-#: models.py:59 models.py:237
+#: models.py:59 models.py:214
 msgid "Index"
 msgstr "Index"
 
-#: models.py:209
-msgid "Index instance"
-msgstr "index instance"
-
-#: models.py:210
-msgid "Index instances"
-msgstr "Index instanties"
-
-#: models.py:241
+#: models.py:218
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 msgstr "Een sjabloon invoeren om op te maken. Gebruik Django's standaard sjabloon taal (https://docs.djangoproject.com/en/1.11.ref/templates/builtins/)"
 
-#: models.py:245
+#: models.py:222
 msgid "Indexing expression"
 msgstr "Indexeringsexpressie"
 
-#: models.py:250
+#: models.py:227
 msgid "Causes this node to be visible and updated when document data changes."
 msgstr "Maakt deze node zichtbaar en 'up-to-date' wanneer document gegevens wijzigen"
 
-#: models.py:258
+#: models.py:235
 msgid ""
 "Check this option to have this node act as a container for documents and not"
 " as a parent for further nodes."
 msgstr "Selecteer deze optie, wanneer deze node alleen documenten dient te bevatten. "
 
-#: models.py:261
+#: models.py:238
 msgid "Link documents"
 msgstr "Koppel documenten"
 
-#: models.py:265
+#: models.py:242
 msgid "Index node template"
 msgstr "Index node sjabloon"
 
-#: models.py:266
+#: models.py:243
 msgid "Indexes node template"
 msgstr "Index node sjablonen"
 
-#: models.py:270
+#: models.py:247
 msgid "Root"
 msgstr "Root"
 
-#: models.py:328
+#: models.py:305
 #, python-format
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
 msgstr "Fout bij het indexeren van document: %(document)s; uitdrukking: %(expression)s; %(exception)s"
 
-#: models.py:374
+#: models.py:346
+msgid "Index instance"
+msgstr "index instance"
+
+#: models.py:347
+msgid "Index instances"
+msgstr "Index instanties"
+
+#: models.py:388
 msgid "Index template node"
 msgstr "Indexsjabloon node"
 
-#: models.py:377 search.py:23
+#: models.py:391 search.py:23
 msgid "Value"
 msgstr "Waarde"
 
-#: models.py:387 models.py:513
+#: models.py:401 models.py:527
 msgid "Index instance node"
 msgstr "Index instantie node"
 
-#: models.py:388
+#: models.py:402
 msgid "Indexes instances node"
 msgstr "Indexeert instantie nodes"
 
-#: models.py:450
+#: models.py:464
 msgid "The path to the index including all ancestors."
 msgstr "Het pad naar de index inclusief alle subfolders."
 
-#: models.py:452
+#: models.py:466
 msgid "Full path"
 msgstr "Volledig pad"
 
-#: models.py:506
+#: models.py:520
 msgid "Document index node instance"
 msgstr "Documentindex node instantie"
 
-#: models.py:507
+#: models.py:521
 msgid "Document indexes node instances"
 msgstr "Documentindex node instanties"
 
-#: models.py:514
+#: models.py:528
 msgid "Index instance nodes"
 msgstr "Index instantie nodes"
 
@@ -297,6 +299,14 @@ msgstr "Document UUID"
 #: search.py:43
 msgid "Document checksum"
 msgstr "Document checksum"
+
+#: serializers.py:191
+msgid "Parent cannot be empty."
+msgstr ""
+
+#: serializers.py:198
+msgid "Parent must be from the same index template."
+msgstr ""
 
 #: views.py:45
 msgid "Available indexes"
@@ -371,7 +381,7 @@ msgstr "Documenttypen gekoppeld aan index: %s"
 #: views.py:226
 #, python-format
 msgid "Tree template nodes for index: %s"
-msgstr ""
+msgstr "Boomsjabloonknooppunten voor index: %s"
 
 #: views.py:254
 #, python-format
@@ -434,8 +444,8 @@ msgstr[1] "%(count)d indexeringen in wachtrij voor opnieuw opbouwen."
 #, python-format
 msgid "%(count)d index reset."
 msgid_plural "%(count)d indexes reset."
-msgstr[0] "%(count)d index opnieuw ingesteld."
-msgstr[1] "%(count)d indexeringen opnieuw ingesteld."
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:506
 msgid "Index templates for which their instances will be deleted."

@@ -13,7 +13,7 @@ from ..permissions import (
 
 from .literals import TEST_INDEX_LABEL, TEST_INDEX_LABEL_EDITED
 from .mixins import (
-    DocumentIndexViewTestMixin, IndexInstaceViewTestMixin,
+    DocumentIndexViewTestMixin, IndexInstanceViewTestMixin,
     IndexTemplateNodeViewTestMixin, IndexTestMixin, IndexToolsViewTestMixin,
     IndexViewTestMixin
 )
@@ -156,7 +156,7 @@ class IndexViewTestCase(
 
 
 class IndexInstaceViewTestCase(
-    IndexTestMixin, IndexViewTestMixin, IndexInstaceViewTestMixin,
+    IndexTestMixin, IndexViewTestMixin, IndexInstanceViewTestMixin,
     GenericDocumentViewTestCase
 ):
     def test_index_rebuild_view_no_permission(self):

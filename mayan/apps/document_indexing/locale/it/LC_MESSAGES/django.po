@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Carlo Zanatto <>, 2012
 # Daniele Bortoluzzi <daniele@elkos.it>, 2019
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2014
@@ -13,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-30 04:17-0400\n"
-"PO-Revision-Date: 2020-08-08 10:04+0000\n"
+"POT-Creation-Date: 2020-09-10 08:31+0000\n"
+"PO-Revision-Date: 2020-09-09 09:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -51,7 +52,7 @@ msgstr "Livello"
 msgid "Levels"
 msgstr "Livelli"
 
-#: apps.py:171 models.py:381
+#: apps.py:171 models.py:395
 msgid "Documents"
 msgstr "Documenti"
 
@@ -141,98 +142,98 @@ msgid ""
 "Causes this index to be visible and updated when document data changes."
 msgstr "Fa sì che questo indice possa essere visibile e aggiornato quando i dati del documento cambiano."
 
-#: models.py:48 models.py:253
+#: models.py:48 models.py:230
 msgid "Enabled"
 msgstr "Abilitato"
 
-#: models.py:59 models.py:237
+#: models.py:59 models.py:214
 msgid "Index"
 msgstr "Indice"
 
-#: models.py:209
-msgid "Index instance"
-msgstr "index instance"
-
-#: models.py:210
-msgid "Index instances"
-msgstr "Instanze indice"
-
-#: models.py:241
+#: models.py:218
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 msgstr "Inserisci un template da renderizzare. Usa il linguaggio standard dei template di Django (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 
-#: models.py:245
+#: models.py:222
 msgid "Indexing expression"
 msgstr "Espressione di indicizzazione"
 
-#: models.py:250
+#: models.py:227
 msgid "Causes this node to be visible and updated when document data changes."
 msgstr "Fa sì che questo nodo possa essere visibili e aggiornato quando i dati del documento cambiano."
 
-#: models.py:258
+#: models.py:235
 msgid ""
 "Check this option to have this node act as a container for documents and not"
 " as a parent for further nodes."
 msgstr "Selezionare questa opzione per questo specifico nodo quale contenitore per i documenti e non come un genitore per ulteriori nodi."
 
-#: models.py:261
+#: models.py:238
 msgid "Link documents"
 msgstr "Documenti di collegamento"
 
-#: models.py:265
+#: models.py:242
 msgid "Index node template"
 msgstr "Indice del nodo Template "
 
-#: models.py:266
+#: models.py:243
 msgid "Indexes node template"
 msgstr "Indici dei nodi Template"
 
-#: models.py:270
+#: models.py:247
 msgid "Root"
 msgstr "Principale"
 
-#: models.py:328
+#: models.py:305
 #, python-format
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
 msgstr "Errore nell'ndicizzazione del documento: %(document)s; espressione: %(expression)s; %(exception)s"
 
-#: models.py:374
+#: models.py:346
+msgid "Index instance"
+msgstr "index instance"
+
+#: models.py:347
+msgid "Index instances"
+msgstr "Instanze indice"
+
+#: models.py:388
 msgid "Index template node"
 msgstr "Indice del nodo Template"
 
-#: models.py:377 search.py:23
+#: models.py:391 search.py:23
 msgid "Value"
 msgstr "Valore"
 
-#: models.py:387 models.py:513
+#: models.py:401 models.py:527
 msgid "Index instance node"
 msgstr "Nodo della'istanza indice"
 
-#: models.py:388
+#: models.py:402
 msgid "Indexes instances node"
 msgstr "Nodi degli istanze indici"
 
-#: models.py:450
+#: models.py:464
 msgid "The path to the index including all ancestors."
 msgstr "Il percorso all'indice che include tutti gli antenati."
 
-#: models.py:452
+#: models.py:466
 msgid "Full path"
 msgstr "Percorso completo"
 
-#: models.py:506
+#: models.py:520
 msgid "Document index node instance"
 msgstr "Istanza del nodo indice del documento"
 
-#: models.py:507
+#: models.py:521
 msgid "Document indexes node instances"
 msgstr "Istanze dei nodi indice del documento"
 
-#: models.py:514
+#: models.py:528
 msgid "Index instance nodes"
 msgstr "Nodi dei istanza indice"
 
@@ -299,6 +300,14 @@ msgstr "UUID del documento"
 #: search.py:43
 msgid "Document checksum"
 msgstr "Checksum del documento"
+
+#: serializers.py:191
+msgid "Parent cannot be empty."
+msgstr ""
+
+#: serializers.py:198
+msgid "Parent must be from the same index template."
+msgstr ""
 
 #: views.py:45
 msgid "Available indexes"
@@ -436,8 +445,8 @@ msgstr[1] "%(count)d indici in attesa di ricostruzione."
 #, python-format
 msgid "%(count)d index reset."
 msgid_plural "%(count)d indexes reset."
-msgstr[0] "%(count)d indice di ripristino."
-msgstr[1] "%(count)d indici reimpostati."
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:506
 msgid "Index templates for which their instances will be deleted."

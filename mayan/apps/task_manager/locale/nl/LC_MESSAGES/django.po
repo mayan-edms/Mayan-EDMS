@@ -6,14 +6,15 @@
 # Translators:
 # Roberto Rosario, 2020
 # j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
+# bwakkie <bwakkie@gmail.com>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-30 04:19-0400\n"
+"POT-Creation-Date: 2020-09-10 08:31+0000\n"
 "PO-Revision-Date: 2017-06-30 22:04+0000\n"
-"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020\n"
+"Last-Translator: bwakkie <bwakkie@gmail.com>, 2020\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -75,7 +76,7 @@ msgstr "Celery"
 
 #: settings.py:18
 msgid "Default: \"AMQPLAIN\". Set custom amqp login method."
-msgstr ""
+msgstr "Standaard: \"AMQPLAIN\". Stel een aangepaste amqp-inlogmethode in."
 
 #: settings.py:24
 msgid ""
@@ -94,6 +95,9 @@ msgid ""
 "Default: \"Disabled\". Toggles SSL usage on broker connection and SSL "
 "settings. The valid values for this option vary by transport."
 msgstr ""
+"Standaard: \"Uitgeschakeld\". Schakelt SSL-gebruik op broker-verbinding en "
+"SSL-instellingen in. De geldige waarden voor deze optie verschillen per "
+"transport."
 
 #: settings.py:41
 msgid ""

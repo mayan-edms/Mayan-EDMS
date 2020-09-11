@@ -1,20 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-30 04:16-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2020-09-10 08:30+0000\n"
+"PO-Revision-Date: 2020-04-08 04:06+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
+"language/en/)\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:11 settings.py:7
 msgid "Appearance"
@@ -77,6 +79,8 @@ msgid ""
 "Position where the system message will be displayed. Options are: top-left, "
 "top-center, top-right, bottom-left, bottom-center, bottom-right."
 msgstr ""
+"Position where the system message will be displayed. Options are: top-left, "
+"top-center, top-right, bottom-left, bottom-center, bottom-right."
 
 #: templates/403.html:5 templates/403.html:30
 msgid "Insufficient permission"
@@ -111,6 +115,8 @@ msgid ""
 "The location is be correct, but your account does not have the required "
 "permission to access it."
 msgstr ""
+"The location is be correct, but your account does not have the required "
+"permission to access it."
 
 #: templates/500.html:5 templates/500.html:30 templates/appearance/root.html:58
 msgid "Server error"
@@ -141,6 +147,8 @@ msgid ""
 "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL"
 "\"."
 msgstr ""
+"Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL"
+"\"."
 
 #: templates/500.html:48
 #, python-format
@@ -158,6 +166,9 @@ msgid ""
 "                    %(setting_project_title)s is based on %(project_title)s\n"
 "                "
 msgstr ""
+"\n"
+"                    %(setting_project_title)s is based on %(project_title)s\n"
+"                "
 
 #: templates/appearance/about.html:78
 msgid "Version"
@@ -181,6 +192,11 @@ msgid ""
 "rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
 "            "
 msgstr ""
+"\n"
+"                %(project_title)s is a free and open-source software brought "
+"to you with <i class=\"fa fa-heart text-danger\" style=\"transform: "
+"rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
+"            "
 
 #: templates/appearance/about.html:105
 #, python-format
@@ -190,6 +206,10 @@ msgid ""
 "rich as it is.\n"
 "            "
 msgstr ""
+"\n"
+"                It takes great effort to make %(project_title)s as feature-"
+"rich as it is.\n"
+"            "
 
 #: templates/appearance/about.html:111
 #, python-format
@@ -201,6 +221,12 @@ msgid ""
 "%(icon_social_paypal)s</a>\n"
 "            "
 msgstr ""
+"\n"
+"                If you use %(project_title)s please <a class=\"new_window\" "
+"href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-"
+"xclick&hosted_button_id=3PXN336XFXQNN\">make a donation "
+"%(icon_social_paypal)s</a>\n"
+"            "
 
 #: templates/appearance/about.html:117
 #, python-format
@@ -213,6 +239,13 @@ msgid ""
 "HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
 "            "
 msgstr ""
+"\n"
+"                The complete list of changes is available via the <a class="
+"\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html"
+"\">Release notes %(icon_documentation)s</a> or the short version <a class="
+"\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/"
+"HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
+"            "
 
 #: templates/appearance/about.html:123
 #, python-format
@@ -222,6 +255,10 @@ msgid ""
 "\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
 "            "
 msgstr ""
+"\n"
+"                For questions check the <a class=\"new_window\" href="
+"\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
+"            "
 
 #: templates/appearance/about.html:129
 #, python-format
@@ -234,6 +271,13 @@ msgid ""
 "%(icon_source_code)s</a>.\n"
 "            "
 msgstr ""
+"\n"
+"                If you found a bug or have a feature idea, visit the <a "
+"class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum "
+"%(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href="
+"\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository "
+"%(icon_source_code)s</a>.\n"
+"            "
 
 #: templates/appearance/about.html:134
 #, python-format
@@ -243,6 +287,10 @@ msgid ""
 "how awesome %(project_title)s is!\n"
 "            "
 msgstr ""
+"\n"
+"                Spread the word. Talk to your friends and colleagues about "
+"how awesome %(project_title)s is!\n"
+"            "
 
 #: templates/appearance/base.html:38 templates/appearance/base.html:62
 msgid "Warning"
@@ -257,6 +305,8 @@ msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."
 msgstr ""
+"Settings updated, restart your installation and refresh your browser for "
+"changes to take effect."
 
 #: templates/appearance/base.html:70
 #, python-format
@@ -265,6 +315,9 @@ msgid ""
 "                                        Impersonating user \"%(user)s\".\n"
 "                                    "
 msgstr ""
+"\n"
+"                                        Impersonating user \"%(user)s\".\n"
+"                                    "
 
 #: templates/appearance/base.html:73
 msgid "Click here when finished"
@@ -343,6 +396,8 @@ msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
 msgstr ""
+"Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
+"%(total_pages)s)"
 
 #: templates/appearance/list_header.html:14
 #: templates/appearance/list_header.html:17
@@ -362,6 +417,7 @@ msgstr ""
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
 msgstr ""
+"Select items to activate bulk actions. Use Shift + click to select many."
 
 #: templates/appearance/list_toolbar.html:65
 msgid "Bulk actions"

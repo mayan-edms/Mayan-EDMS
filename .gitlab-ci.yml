@@ -213,6 +213,7 @@ test_upgrade_postgres:
   tags:
     - postgres
 
+
 # Run the test suit
 .test_base: &test_base
   stage: test

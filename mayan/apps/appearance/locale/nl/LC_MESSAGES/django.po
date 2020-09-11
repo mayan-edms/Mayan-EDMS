@@ -3,6 +3,8 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
+# bwakkie <bwakkie@gmail.com>, 2020
 # Comprax <info@comprax.nl>, 2020
 # j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
 # Johan Braeken, 2017
@@ -12,9 +14,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-30 04:16-0400\n"
-"PO-Revision-Date: 2020-05-01 11:50+0000\n"
-"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
+"POT-Creation-Date: 2020-09-10 08:30+0000\n"
+"PO-Revision-Date: 2020-09-06 08:32+0000\n"
+"Last-Translator: bwakkie <bwakkie@gmail.com>\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -76,7 +78,7 @@ msgstr "URI.js"
 
 #: settings.py:12
 msgid "Maximum number of characters that will be displayed as the view title."
-msgstr "Mamximum aantal tekens dat in de titel wordt weergegeven,"
+msgstr "Mamximum aantal tekens dat in de titel wordt weergegeven."
 
 #: settings.py:19
 msgid ""
@@ -199,7 +201,7 @@ msgid ""
 "\n"
 "                If you use %(project_title)s please <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">make a donation %(icon_social_paypal)s</a>\n"
 "            "
-msgstr "\nIf you use %(project_title)s overweeg <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">dan een donatie %(icon_social_paypal)s</a>"
+msgstr "\nAls je %(project_title)s gebruikt overweeg <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">dan een donatie %(icon_social_paypal)s</a>"
 
 #: templates/appearance/about.html:117
 #, python-format
@@ -223,7 +225,7 @@ msgid ""
 "\n"
 "                If you found a bug or have a feature idea, visit the <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository %(icon_source_code)s</a>.\n"
 "            "
-msgstr "\nZiet u een bug of heeft u ideeën? Bezoek het <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> of open een melding via het <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository %(icon_source_code)s</a>."
+msgstr "\nZiet u een fout of heeft u ideeën? Bezoek het <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> of open een melding via het <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Broncode opslagplaats %(icon_source_code)s</a>."
 
 #: templates/appearance/about.html:134
 #, python-format
@@ -231,7 +233,7 @@ msgid ""
 "\n"
 "                Spread the word. Talk to your friends and colleagues about how awesome %(project_title)s is!\n"
 "            "
-msgstr "\nMaak ons bekend. Vertel je vrienden en collega's hoe fantastisch %(project_title)s is!"
+msgstr "\nVertel het verder. Laat je vrienden en collega's weten hoe fantastisch %(project_title)s is!"
 
 #: templates/appearance/base.html:38 templates/appearance/base.html:62
 msgid "Warning"

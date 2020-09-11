@@ -1,9 +1,11 @@
 from django.conf.urls import url
 
 from .api_views import (
-    APIDocumentIndexListView, APIIndexListView,
-    APIIndexNodeInstanceDocumentListView, APIIndexTemplateListView,
-    APIIndexTemplateView, APIIndexView
+    APIDocumentIndexInstanceNodeListView, APIIndexInstanceDetailView,
+    APIIndexInstanceListView, APIIndexInstanceNodeDetailView,
+    APIIndexInstanceNodeListView, APIIndexInstanceNodeDocumentListView,
+    APIIndexTemplateDetailView, APIIndexTemplateListView,
+    APIIndexTemplateNodeListView, APIIndexTemplateNodeDetailView
 )
 from .views import (
     DocumentIndexNodeListView, DocumentTypeIndexesView, IndexInstanceNodeView,
@@ -96,28 +98,47 @@ urlpatterns.extend(urlpatterns_tools)
 
 api_urls = [
     url(
-        regex=r'^indexes/node/(?P<pk>[0-9]+)/documents/$',
-        name='index-node-documents',
-        view=APIIndexNodeInstanceDocumentListView.as_view()
+        regex=r'^documents/(?P<document_id>[0-9]+)/indexes/$',
+        name='document-index-list',
+        view=APIDocumentIndexInstanceNodeListView.as_view()
     ),
     url(
-        regex=r'^indexes/template/(?P<pk>[0-9]+)/$',
-        name='index-template-detail', view=APIIndexTemplateView.as_view()
+        regex=r'^index_instances/$', name='indexinstance-list',
+        view=APIIndexInstanceListView.as_view()
     ),
     url(
-        regex=r'^indexes/(?P<pk>[0-9]+)/$', name='index-detail',
-        view=APIIndexView.as_view()
+        regex=r'^index_instances/(?P<index_instance_id>[0-9]+)/$',
+        name='indexinstance-detail', view=APIIndexInstanceDetailView.as_view()
     ),
     url(
-        regex=r'^indexes/(?P<pk>[0-9]+)/template/$',
-        name='index-template-detail', view=APIIndexTemplateListView.as_view()
+        regex=r'^index_instances/(?P<index_instance_id>[0-9]+)/nodes/$',
+        name='indexinstancenode-list', view=APIIndexInstanceNodeListView.as_view()
+    ),
+
+    url(
+        regex=r'^index_instances/(?P<index_instance_id>[0-9]+)/nodes/(?P<index_instance_node_id>[0-9]+)/$',
+        name='indexinstancenode-detail',
+        view=APIIndexInstanceNodeDetailView.as_view()
     ),
     url(
-        regex=r'^indexes/$', name='index-list',
-        view=APIIndexListView.as_view()
+        regex=r'^index_instances/(?P<index_instance_id>[0-9]+)/nodes/(?P<index_instance_node_id>[0-9]+)/documents/$',
+        name='indexinstancenode-document-list',
+        view=APIIndexInstanceNodeDocumentListView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<pk>[0-9]+)/indexes/$',
-        name='document-index-list', view=APIDocumentIndexListView.as_view()
-    )
+        regex=r'^index_templates/$', name='indextemplate-list',
+        view=APIIndexTemplateListView.as_view()
+    ),
+    url(
+        regex=r'^index_templates/(?P<index_template_id>[0-9]+)/$',
+        name='indextemplate-detail', view=APIIndexTemplateDetailView.as_view()
+    ),
+    url(
+        regex=r'^index_templates/(?P<index_template_id>[0-9]+)/nodes/$',
+        name='indextemplatenode-list', view=APIIndexTemplateNodeListView.as_view()
+    ),
+    url(
+        regex=r'^index_templates/(?P<index_template_id>[0-9]+)/nodes/(?P<index_template_node_id>[0-9]+)/$',
+        name='indextemplatenode-detail', view=APIIndexTemplateNodeDetailView.as_view()
+    ),
 ]

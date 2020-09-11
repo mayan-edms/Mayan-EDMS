@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-30 04:17-0400\n"
-"PO-Revision-Date: 2020-04-02 07:08+0000\n"
+"POT-Creation-Date: 2020-09-10 08:31+0000\n"
+"PO-Revision-Date: 2020-09-09 09:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -45,7 +46,7 @@ msgstr ""
 msgid "Levels"
 msgstr ""
 
-#: apps.py:171 models.py:381
+#: apps.py:171 models.py:395
 msgid "Documents"
 msgstr "Dokumenter"
 
@@ -135,98 +136,98 @@ msgid ""
 "Causes this index to be visible and updated when document data changes."
 msgstr ""
 
-#: models.py:48 models.py:253
+#: models.py:48 models.py:230
 msgid "Enabled"
 msgstr ""
 
-#: models.py:59 models.py:237
+#: models.py:59 models.py:214
 msgid "Index"
 msgstr ""
 
-#: models.py:209
-msgid "Index instance"
-msgstr "index instance"
-
-#: models.py:210
-msgid "Index instances"
-msgstr ""
-
-#: models.py:241
+#: models.py:218
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 msgstr ""
 
-#: models.py:245
+#: models.py:222
 msgid "Indexing expression"
 msgstr ""
 
-#: models.py:250
+#: models.py:227
 msgid "Causes this node to be visible and updated when document data changes."
 msgstr ""
 
-#: models.py:258
+#: models.py:235
 msgid ""
 "Check this option to have this node act as a container for documents and not"
 " as a parent for further nodes."
 msgstr ""
 
-#: models.py:261
+#: models.py:238
 msgid "Link documents"
 msgstr ""
 
-#: models.py:265
+#: models.py:242
 msgid "Index node template"
 msgstr ""
 
-#: models.py:266
+#: models.py:243
 msgid "Indexes node template"
 msgstr ""
 
-#: models.py:270
+#: models.py:247
 msgid "Root"
 msgstr ""
 
-#: models.py:328
+#: models.py:305
 #, python-format
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
 msgstr ""
 
-#: models.py:374
-msgid "Index template node"
-msgstr ""
+#: models.py:346
+msgid "Index instance"
+msgstr "index instance"
 
-#: models.py:377 search.py:23
-msgid "Value"
-msgstr ""
-
-#: models.py:387 models.py:513
-msgid "Index instance node"
+#: models.py:347
+msgid "Index instances"
 msgstr ""
 
 #: models.py:388
+msgid "Index template node"
+msgstr ""
+
+#: models.py:391 search.py:23
+msgid "Value"
+msgstr ""
+
+#: models.py:401 models.py:527
+msgid "Index instance node"
+msgstr ""
+
+#: models.py:402
 msgid "Indexes instances node"
 msgstr ""
 
-#: models.py:450
+#: models.py:464
 msgid "The path to the index including all ancestors."
 msgstr ""
 
-#: models.py:452
+#: models.py:466
 msgid "Full path"
 msgstr ""
 
-#: models.py:506
+#: models.py:520
 msgid "Document index node instance"
 msgstr ""
 
-#: models.py:507
+#: models.py:521
 msgid "Document indexes node instances"
 msgstr ""
 
-#: models.py:514
+#: models.py:528
 msgid "Index instance nodes"
 msgstr ""
 
@@ -292,6 +293,14 @@ msgstr ""
 
 #: search.py:43
 msgid "Document checksum"
+msgstr ""
+
+#: serializers.py:191
+msgid "Parent cannot be empty."
+msgstr ""
+
+#: serializers.py:198
+msgid "Parent must be from the same index template."
 msgstr ""
 
 #: views.py:45
