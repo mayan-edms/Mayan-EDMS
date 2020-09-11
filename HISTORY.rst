@@ -229,6 +229,10 @@
 - Add workflow actions to add, edit, and remove metadata from documents.
 - Update Docker image version from Debian 10.3 to 10.5.
 - Add column to show the list of fields of a workflow transition.
+- Unify the spacing of the list columns for all variations of sort columns
+  and columns with help text.
+- Move the column help text mark up into its own partial template.
+
 
 3.4.17 (2020-09-10)
 ===================
