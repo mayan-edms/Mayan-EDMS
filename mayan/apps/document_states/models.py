@@ -756,6 +756,13 @@ class WorkflowTransition(models.Model):
         else:
             return True
 
+    def get_field_display(self):
+        field_list = sorted([str(field) for field in self.fields.all()])
+
+        return ', '.join(field_list)
+
+    get_field_display.short_description = _('Fields')
+
     def has_condition(self):
         return self.condition.strip()
     has_condition.help_text = _(

@@ -228,6 +228,7 @@
   variable to the search template and avoid hardcoding it.
 - Add workflow actions to add, edit, and remove metadata from documents.
 - Update Docker image version from Debian 10.3 to 10.5.
+- Add column to show the list of fields of a workflow transition.
 
 3.4.17 (2020-09-10)
 ===================

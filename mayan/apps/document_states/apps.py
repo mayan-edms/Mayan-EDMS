@@ -367,6 +367,10 @@ class DocumentStatesApp(MayanAppConfig):
             source=WorkflowTransition, widget=TwoStateWidget
         )
         SourceColumn(
+            attribute='get_field_display', include_label=True,
+            source=WorkflowTransition
+        )
+        SourceColumn(
             func=lambda context: widget_transition_events(
                 transition=context['object']
             ), help_text=_(
