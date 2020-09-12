@@ -20,7 +20,10 @@
                 {% else %}
                     <div class="col-sm-8">
                 {% endif %}
-                    <select class="form-control" id="selectSearchModel" name="_search_model_name">
+                    <label>
+                        Select search model
+                        <select class="form-control" id="selectSearchModel" name="_search_model_name">
+                    </label>
                         {% for search_model in search_models %}
                         {{ search_model.self.get_full_name }}
                             <option {% if search_model.get_full_name == 'documents.Document' %}selected{% endif %} value="{{ search_model.get_full_name }}">{{ search_model }}</option>
@@ -36,7 +39,10 @@
 
                     <div class="input-group">
                         {% if setting_disable_simple_search == False %}
-                            <input class="form-control" name="q" placeholder="{% trans 'Search terms' %}" type="text" value="{{ search_terms|default:'' }}">
+                            <label>
+                                Enter search terms
+                                <input class="form-control" name="q" placeholder="{% trans 'Search terms' %}" type="text" value="{{ search_terms|default:'' }}">
+                            </label>
                         {% endif %}
                         <span class="input-group-btn">
                             {% if setting_disable_simple_search == False %}

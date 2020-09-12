@@ -21,7 +21,7 @@
                     {% with ' ' as link_classes %}
                         {% if link|common_get_type == "<class 'mayan.apps.navigation.classes.Menu'>" %}
                             <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="headingOne">
+                                <div class="panel-heading" role="tab" id="panelHeading">
                                     <h4 class="panel-title">
                                         <a class="non-ajax collapsed" role="button" data-toggle="collapse" data-parent="#accordion-sidebar" href="#accordion-body-{{ forloop.counter }}" aria-expanded="false" aria-controls="collapseOne">
                                             <div class="pull-left">
@@ -59,7 +59,7 @@
                             </div>
                         {% else %}
                             <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="headingOne">
+                                <div class="panel-heading" role="tab" id="panelHeading">
                                     <h4 class="panel-title">
                                         {% include 'navigation/generic_link_instance.html' %}
                                     </h4>
