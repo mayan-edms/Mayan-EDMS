@@ -1,7 +1,7 @@
 import logging
 from pathlib import Path
 
-from whoosh import fields
+import whoosh
 from whoosh import qparser
 from whoosh.filedb.filestore import FileStorage
 from whoosh.index import EmptyIndexError
@@ -19,12 +19,12 @@ from ..settings import setting_results_limit
 
 DJANGO_TO_WHOOSH_FIELD_MAP = {
     models.AutoField: {
-        'field': fields.ID(stored=True), 'transformation': str
+        'field': whoosh.fields.ID(stored=True), 'transformation': str
     },
-    models.CharField: {'field': fields.TEXT},
-    models.TextField: {'field': fields.TEXT},
-    models.UUIDField: {'field': fields.TEXT, 'transformation': str},
-    RGBColorField: {'field': fields.TEXT},
+    models.CharField: {'field': whoosh.fields.TEXT},
+    models.TextField: {'field': whoosh.fields.TEXT},
+    models.UUIDField: {'field': whoosh.fields.TEXT, 'transformation': str},
+    RGBColorField: {'field': whoosh.fields.TEXT},
 }
 INDEX_DIRECTORY_NAME = 'whoosh'
 logger = logging.getLogger(name=__name__)
@@ -121,11 +121,11 @@ class WhooshSearchBackend(SearchBackend):
 
         try:
             index = storage.open_index(
-                indexname=search_model.get_full_name()
+                indexname=search_model.get_full_name(), schema=schema
             )
         except EmptyIndexError:
             index = storage.create_index(
-                schema, indexname=search_model.get_full_name()
+                indexname=search_model.get_full_name(), schema=schema
             )
 
         return index
@@ -161,7 +161,7 @@ class WhooshSearchBackend(SearchBackend):
     def get_search_model_schema(self, search_model):
         field_map = self.get_resolved_field_map(search_model=search_model)
         schema_kwargs = {key: value['field'] for key, value in field_map.items()}
-        return fields.Schema(**schema_kwargs)
+        return whoosh.fields.Schema(**schema_kwargs)
 
     def get_storage(self):
         return FileStorage(path=self.index_path)
