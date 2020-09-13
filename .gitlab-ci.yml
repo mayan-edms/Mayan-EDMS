@@ -67,6 +67,7 @@ job_docker_nightly:
     - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" -f docker/Dockerfile .
     - docker run --rm "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" run_tests
     - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
+    - docker logout
   only:
     - nightly
     - staging
