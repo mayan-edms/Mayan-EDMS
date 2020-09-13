@@ -1,0 +1,195 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2019-2020
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-30 04:16-0400\n"
+"PO-Revision-Date: 2020-03-31 10:53+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
+"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:25 events.py:6 permissions.py:6 settings.py:7
+msgid "Authentication"
+msgstr "Удостоверяване"
+
+#: events.py:10
+msgid "User impersonation ended"
+msgstr "Представянето на потребителя приключи"
+
+#: events.py:13
+msgid "User impersonation started"
+msgstr "Представянето на потребителя започна"
+
+#: forms.py:17
+msgid "Email"
+msgstr "Електронна поща"
+
+#: forms.py:20
+msgid "Password"
+msgstr "Парола"
+
+#: forms.py:22 forms.py:89
+msgid "Remember me"
+msgstr "Запомни ме"
+
+#: forms.py:25
+msgid ""
+"Please enter a correct email and password. Note that the password field is "
+"case-sensitive."
+msgstr "Моля въведете правилна електронна поща и парола. Забележете, че полето за паролата е чувствително за главни/малки букви."
+
+#: forms.py:27
+msgid "This account is inactive."
+msgstr "Този акаунт е неактивен."
+
+#: forms.py:78
+msgid "User"
+msgstr "Потребител"
+
+#: forms.py:78
+msgid "User to be impersonated."
+msgstr "Потребител, който трябва да бъде представен."
+
+#: forms.py:82
+msgid "Permanent"
+msgstr "Постоянно"
+
+#: forms.py:83
+msgid "If selected, disables ending impersonation."
+msgstr "Ако е избрано, деактивира прекратяване на представянето."
+
+#: links.py:22
+msgid "Logout"
+msgstr "Изход"
+
+#: links.py:27
+msgid "Change password"
+msgstr "Промяна на парола"
+
+#: links.py:32 views.py:68
+msgid "Impersonate user"
+msgstr "Представяне на потребител"
+
+#: links.py:37 links.py:44
+msgid "Set password"
+msgstr "Задаване на парола"
+
+#: permissions.py:10
+msgid "Impersonate users"
+msgstr "Представяне на потребители"
+
+#: settings.py:11
+msgid ""
+"Controls the mechanism used to authenticated user. Options are: username, "
+"email"
+msgstr "Управлява механизма, използван за удостоверяване на потребителя. Опциите са: потребителско име, имейл"
+
+#: settings.py:18
+msgid ""
+"Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
+" in. Value is time in seconds."
+msgstr "Максимално време, за което потребителят натискащ квадратчето „Запомни ме“ ще остане включен. Стойността е време в секунди."
+
+#: settings.py:25
+msgid ""
+"Remove the \"Forgot your password?\" link on the login form used to trigger "
+"the password reset."
+msgstr "Премахнете връзката „Забравена парола?“ използвана за нулиране на паролата от входящия формуляр."
+
+#: templates/authentication/login.html:11
+msgid "Login"
+msgstr "Влизане"
+
+#: templates/authentication/login.html:23
+#: templates/authentication/login.html:32
+msgid "Sign in"
+msgstr "Вписване"
+
+#: templates/authentication/login.html:39
+msgid "Forgot your password?"
+msgstr "Забравена парола?"
+
+#: templates/authentication/password_reset_complete.html:8
+#: templates/authentication/password_reset_confirm.html:8
+#: templates/authentication/password_reset_confirm.html:20
+#: templates/authentication/password_reset_done.html:8
+#: templates/authentication/password_reset_form.html:8
+#: templates/authentication/password_reset_form.html:20
+msgid "Password reset"
+msgstr "Нулиране на парола"
+
+#: templates/authentication/password_reset_complete.html:15
+msgid "Password reset complete! Click the link below to login."
+msgstr "Нулирането на паролата завърши! Кликнете върху връзката по-долу, за да влезете."
+
+#: templates/authentication/password_reset_complete.html:17
+msgid "Login page"
+msgstr "Страница за вход"
+
+#: templates/authentication/password_reset_confirm.html:29
+#: templates/authentication/password_reset_form.html:29 views.py:212
+msgid "Submit"
+msgstr "Подаване"
+
+#: templates/authentication/password_reset_done.html:15
+msgid "Password reset email sent!"
+msgstr "Изпратен имейл за нулиране на парола!"
+
+#: views.py:121
+msgid "Your password has been successfully changed."
+msgstr "Вашата парола е сменена успешно."
+
+#: views.py:128
+msgid "Current user password change"
+msgstr "Промяна паролата на текущия потребител"
+
+#: views.py:136
+msgid "Changing the password is not allowed for this account."
+msgstr "Промяната на паролата не е разрешена за този акаунт."
+
+#: views.py:203
+#, python-format
+msgid "Password change request performed on %(count)d user"
+msgstr "Заявка за промяна на парола, изпълнена за%(count)d потребител"
+
+#: views.py:205
+#, python-format
+msgid "Password change request performed on %(count)d users"
+msgstr "Заявка за промяна на парола, изпълнена за %(count)d потребител"
+
+#: views.py:214
+msgid "Change user password"
+msgid_plural "Change users passwords"
+msgstr[0] "Промяна на паролата на потребителя"
+msgstr[1] "Промяна на паролите на потребителите"
+
+#: views.py:224
+#, python-format
+msgid "Change password for user: %s"
+msgstr "Промяна на паролата за потребителя: %s"
+
+#: views.py:244
+msgid ""
+"Super user and staff user password reseting is not allowed, use the admin "
+"interface for these cases."
+msgstr "Промяна на парола на потребители от супер потребител и служител не е разрешено. Използвайте администраторския модул за тези случаи."
+
+#: views.py:254
+#, python-format
+msgid "Successful password reset for user: %s."
+msgstr "Успешно нулиране на паролата за потребителя: %s."
+
+#: views.py:260
+#, python-format
+msgid "Error reseting password for user \"%(user)s\": %(error)s"
+msgstr "Грешка при промяна на парола на потребител \"%(user)s\": %(error)s"

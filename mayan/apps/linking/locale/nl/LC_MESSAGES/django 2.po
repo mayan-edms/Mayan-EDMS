@@ -1,0 +1,352 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
+# Lucas Weel <ljj.weel@gmail.com>, 2013
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-30 04:17-0400\n"
+"PO-Revision-Date: 2020-05-16 09:52+0000\n"
+"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
+"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:40
+msgid "Linking"
+msgstr "Koppeling"
+
+#: apps.py:76 models.py:26
+msgid "Label"
+msgstr "Label"
+
+#: events.py:6 links.py:18 links.py:77 links.py:82 links.py:87 models.py:45
+#: permissions.py:5 views.py:203
+msgid "Smart links"
+msgstr "'Smartlinks'"
+
+#: events.py:10
+msgid "Smart link created"
+msgstr "'Smartlink' aangemaakt"
+
+#: events.py:13
+msgid "Smart link edited"
+msgstr "'Smartlink' bewerkt"
+
+#: forms.py:45
+msgid "Foreign document field"
+msgstr "Veld van het vreemde document"
+
+#: links.py:24
+msgid "Create condition"
+msgstr "Voorwaarde aanmaken"
+
+#: links.py:31 links.py:55
+msgid "Delete"
+msgstr "Verwijderen"
+
+#: links.py:38 links.py:67
+msgid "Edit"
+msgstr "Bewerken"
+
+#: links.py:44
+msgid "Conditions"
+msgstr "Voorwaarde"
+
+#: links.py:49 views.py:239
+msgid "Create new smart link"
+msgstr "Nieuwe 'smartlink' aanmaken"
+
+#: links.py:61 models.py:37
+msgid "Document types"
+msgstr "Documentsoorten"
+
+#: links.py:71
+msgid "Documents"
+msgstr "Documenten"
+
+#: literals.py:7
+msgid "and"
+msgstr "en"
+
+#: literals.py:8
+msgid "or"
+msgstr "of"
+
+#: literals.py:12
+msgid "is equal to"
+msgstr "is gelijk aan"
+
+#: literals.py:13
+msgid "is equal to (case insensitive)"
+msgstr "is gelijk aan (hoofdletter ongevoelig)"
+
+#: literals.py:14
+msgid "contains"
+msgstr "bevat"
+
+#: literals.py:15
+msgid "contains (case insensitive)"
+msgstr "bevat (hoofdletter ongevoelig)"
+
+#: literals.py:16
+msgid "is in"
+msgstr "is in"
+
+#: literals.py:17
+msgid "is greater than"
+msgstr "is groter dan"
+
+#: literals.py:18
+msgid "is greater than or equal to"
+msgstr "is groter dan of is gelijk aan"
+
+#: literals.py:19
+msgid "is less than"
+msgstr "is kleiner dan"
+
+#: literals.py:20
+msgid "is less than or equal to"
+msgstr "is kleiner dan of is gelijk aan"
+
+#: literals.py:21
+msgid "starts with"
+msgstr "begint met"
+
+#: literals.py:22
+msgid "starts with (case insensitive)"
+msgstr "begint met (hoofdletter ongevoelig)"
+
+#: literals.py:23
+msgid "ends with"
+msgstr "eindigt met"
+
+#: literals.py:24
+msgid "ends with (case insensitive)"
+msgstr "eindigt met (hoofdletter ongevoelig)"
+
+#: literals.py:25
+msgid "is in regular expression"
+msgstr "komt overeen met 'reguliere expressie'"
+
+#: literals.py:26
+msgid "is in regular expression (case insensitive)"
+msgstr "komt overeen met 'reguliere expressie (hoofdletter ongevoelig)"
+
+#: models.py:25
+msgid "A short text describing the smart link."
+msgstr "Een korte tekst die de smartlink beschrijft."
+
+#: models.py:30
+msgid ""
+"Use this field to show a unique label depending on the document from which "
+"the smart link is being accessed."
+msgstr "Gebruik dit veld om een uniek label te tonen dat afhankelijk is van het document waar de smartlink toegang toe biedt."
+
+#: models.py:32
+msgid "Dynamic label"
+msgstr "Dynamisch label"
+
+#: models.py:34 models.py:191
+msgid "Enabled"
+msgstr "Ingeschakeld"
+
+#: models.py:44 models.py:169
+msgid "Smart link"
+msgstr "Smartlink"
+
+#: models.py:83
+#, python-format
+msgid "Error generating dynamic label; %s"
+msgstr "Fout bij genereren dynamisch label; %s"
+
+#: models.py:98
+msgid "This smart link is not allowed for the selected document's type."
+msgstr "Deze smartlink is niet toegestaan voor het geselecteerde documenttype."
+
+#: models.py:173
+msgid "The inclusion is ignored for the first item."
+msgstr "De berekening is genegeerd voor het eerste item"
+
+#: models.py:177
+msgid "This represents the metadata of all other documents."
+msgstr "Dit geeft de metadata van alle andere documenten weer."
+
+#: models.py:178
+msgid "Foreign document attribute"
+msgstr "Eigenschap van het vreemde document"
+
+#: models.py:183
+msgid ""
+"The expression using document properties to be evaluated against the foreign"
+" document field."
+msgstr "De uitdrukking die m.b.v. documenteigenschappen vergeleken wordt met het veld van het vreemde document."
+
+#: models.py:185
+msgid "Expression"
+msgstr "Uitdrukking"
+
+#: models.py:188
+msgid "Inverts the logic of the operator."
+msgstr "Inverteert de operatorlogica"
+
+#: models.py:189
+msgid "Negated"
+msgstr "Omgekeerd"
+
+#: models.py:194
+msgid "Link condition"
+msgstr "Linkvoorwaarde"
+
+#: models.py:195
+msgid "Link conditions"
+msgstr "Linkvoorwaarden"
+
+#: models.py:203
+msgid "not"
+msgstr "niet"
+
+#: models.py:207
+msgid "Full label"
+msgstr "Volledig label"
+
+#: permissions.py:8
+msgid "Create new smart links"
+msgstr "Nieuwe 'smartlinks' aanmaken"
+
+#: permissions.py:11
+msgid "Delete smart links"
+msgstr "'Smartlinks' verwijderen"
+
+#: permissions.py:14
+msgid "Edit smart links"
+msgstr "'Smartlinks' bewerken"
+
+#: permissions.py:17
+msgid "View existing smart links"
+msgstr "Bestaande 'smartlinks' bekijken"
+
+#: serializers.py:115
+msgid ""
+"Comma separated list of document type primary keys to which this smart link "
+"will be attached."
+msgstr "Kommagescheiden lijst van primaire sleutels voor documenttype waaraan deze smartlink wordt toegevoegd."
+
+#: serializers.py:139
+#, python-format
+msgid "No such document type: %s"
+msgstr "Er is geen documenttype: %s"
+
+#: views.py:45
+msgid "Available smart links"
+msgstr "Beschikbare smartlinks"
+
+#: views.py:46
+msgid "Smart links enabled"
+msgstr "Smartlinks ingeschakeld"
+
+#: views.py:78
+#, python-format
+msgid "Smart links to enable for document type: %s"
+msgstr "Smartlinks om in te schakelen voor documenttype: %s"
+
+#: views.py:115
+#, python-format
+msgid "Smart link query error: %s"
+msgstr "'smartlink' zoek fout: %s"
+
+#: views.py:126
+#, python-format
+msgid "Documents in smart link: %s"
+msgstr "Documenten in smartlink: %s"
+
+#: views.py:129
+#, python-format
+msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgstr "Documenten in smartlink \"%(smart_link)s\" in relatie tot \"%(document)s\""
+
+#: views.py:165
+msgid "Available document types"
+msgstr "Beschikbare documenttypen"
+
+#: views.py:166
+msgid "Document types enabled"
+msgstr "Documenttypes ingeschakeld"
+
+#: views.py:176
+#, python-format
+msgid "Document type for which to enable smart link: %s"
+msgstr "Documenttype waarvoor smartlink wordt ingeschakeld: %s"
+
+#: views.py:194
+msgid ""
+"Indexes group documents into units, usually with similar properties and of "
+"equal or similar types. Smart links allow defining relationships between "
+"documents even if they are in different indexes and are of different types."
+msgstr "Indexeringen groeperen documenten in eenheden, gewoonlijk met gelijke eigenschappen en of gelijke of vergelijkbare types. Smart links maken het leggen van verbanden tussen documenten zelfs als ze in verschillende indexeringen zitten en van verschillend type zijn."
+
+#: views.py:201
+msgid "There are no smart links"
+msgstr "Er zijn geen smartlinks"
+
+#: views.py:219
+msgid ""
+"Smart links allow defining relationships between documents even if they are "
+"in different indexes and are of different types."
+msgstr "Smartlinks maken het mogelijk verbanden tussen documenten vats te leggen zelfs als deze zich in verschillende indexen bevinden of van een verschillende type zijn."
+
+#: views.py:224
+msgid "There are no smart links for this document"
+msgstr "Er zijn geen smartlinks voor dit document"
+
+#: views.py:227
+#, python-format
+msgid "Smart links for document: %s"
+msgstr "Smartlinks voor document: %s"
+
+#: views.py:261
+#, python-format
+msgid "Delete smart link: %s"
+msgstr "Verwijder smartlink: %s"
+
+#: views.py:277
+#, python-format
+msgid "Edit smart link: %s"
+msgstr "Bewerk smartlink: %s"
+
+#: views.py:302
+msgid ""
+"Conditions are small logic units that when combined define how the smart "
+"link will behave."
+msgstr "Voorwaarden zijn kleine logische eenheden die gecombineerd bepalen hoe de smart link zich gedraagt."
+
+#: views.py:306
+msgid "There are no conditions for this smart link"
+msgstr "Er zijn geen voorwaarden voor deze smartlink"
+
+#: views.py:310
+#, python-format
+msgid "Conditions for smart link: %s"
+msgstr "Voorwaarden voor smartlink: %s"
+
+#: views.py:329
+#, python-format
+msgid "Add new conditions to smart link: \"%s\""
+msgstr "Nieuwe voorwaarden toevoegen aan smartlink: \"%s\""
+
+#: views.py:359
+#, python-format
+msgid "Delete smart link condition: \"%s\"?"
+msgstr "Verwijder smartlink voorwaarde: \"%s\"?"
+
+#: views.py:382
+msgid "Edit smart link condition"
+msgstr "Smartlink voorwaarde bewerken"

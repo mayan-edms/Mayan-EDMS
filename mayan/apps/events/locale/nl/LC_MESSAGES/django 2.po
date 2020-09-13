@@ -1,0 +1,200 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-30 04:17-0400\n"
+"PO-Revision-Date: 2020-05-10 20:30+0000\n"
+"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
+"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:27 links.py:47 links.py:52 links.py:57 permissions.py:5 views.py:34
+msgid "Events"
+msgstr "Evenementen"
+
+#: apps.py:39 apps.py:67
+msgid "Date and time"
+msgstr "Datum en tijd"
+
+#: apps.py:42 apps.py:70
+msgid "Actor"
+msgstr "Acteur"
+
+#: apps.py:46 apps.py:75
+msgid "Event"
+msgstr "Gebeurtenis"
+
+#: apps.py:50 apps.py:80
+msgid "Target"
+msgstr "Doel"
+
+#: apps.py:54
+msgid "Action object"
+msgstr "Actie object"
+
+#: apps.py:59 forms.py:10 forms.py:67
+msgid "Namespace"
+msgstr "Namespace"
+
+#: apps.py:62 forms.py:14 forms.py:71
+msgid "Label"
+msgstr "Label"
+
+#: apps.py:86
+msgid "Seen"
+msgstr "Gezien"
+
+#: classes.py:144
+#, python-format
+msgid "Unknown or obsolete event type: %s"
+msgstr "Onbekend of overbodig gebeurtenistype: %s"
+
+#: forms.py:18 forms.py:75
+msgid "Subscription"
+msgstr "Abonnement"
+
+#: forms.py:20 forms.py:77
+msgid "No"
+msgstr "Nee"
+
+#: forms.py:21 forms.py:78
+msgid "Subscribed"
+msgstr "Geabonneerd"
+
+#: html_widgets.py:57
+msgid "System"
+msgstr "Systeem"
+
+#: links.py:43
+msgid "My events"
+msgstr "Mijn gebeurtenissen"
+
+#: links.py:61 models.py:65 views.py:78
+msgid "Event subscriptions"
+msgstr "Gebeurtenis abonnement"
+
+#: links.py:65
+msgid "Mark as seen"
+msgstr "Markeren als gezien"
+
+#: links.py:69
+msgid "Mark all as seen"
+msgstr "Alle markeren als gezien"
+
+#: links.py:74
+msgid "Subscriptions"
+msgstr "Abonnementen"
+
+#: models.py:23
+msgid "Name"
+msgstr "Naam"
+
+#: models.py:27
+msgid "Stored event type"
+msgstr "Opgeslagen gebeurtenistype"
+
+#: models.py:28
+msgid "Stored event types"
+msgstr "Opgeslagen gebeurtenistypes"
+
+#: models.py:54 models.py:81 models.py:113
+msgid "User"
+msgstr "Gebruiker"
+
+#: models.py:58 models.py:117
+msgid "Event type"
+msgstr "Evenementsoort"
+
+#: models.py:64
+msgid "Event subscription"
+msgstr "Gebeurtenis abonnement"
+
+#: models.py:85
+msgid "Action"
+msgstr "Actie"
+
+#: models.py:87
+msgid "Read"
+msgstr "Lezen"
+
+#: models.py:93
+msgid "Notification"
+msgstr "Melding"
+
+#: models.py:94 views.py:117
+msgid "Notifications"
+msgstr "Meldingen"
+
+#: models.py:123
+msgid "Object event subscription"
+msgstr "Object gebeurtenis abonnement"
+
+#: models.py:124
+msgid "Object event subscriptions"
+msgstr "Object gebeurtenis abonnementen"
+
+#: permissions.py:8
+msgid "Access the events of an object"
+msgstr "Benader de evenementen van een object"
+
+#: views.py:57
+#, python-format
+msgid "Error updating event subscription; %s"
+msgstr "Fout bij bijwerken gebeurtenis abonnement; %s"
+
+#: views.py:62
+msgid "Event subscriptions updated successfully"
+msgstr "Gebeurtenis abonnementen met succes bijgewerkt"
+
+#: views.py:112
+msgid "Subscribe to global or object events to receive notifications."
+msgstr "Abonneren op algemene of objectgebeurtenissen om notificaties te ontvangen."
+
+#: views.py:115
+msgid "There are no notifications"
+msgstr "Er zijn geen meldingen"
+
+#: views.py:164
+msgid ""
+"Events are actions that have been performed to this object or using this "
+"object."
+msgstr "Gebeurtenissen zijn acties die zijn uitgevoerd op dit object of door gebruik van dit object."
+
+#: views.py:167
+msgid "There are no events for this object"
+msgstr "Er zijn geen gebeurtenissen voor dit object"
+
+#: views.py:169
+#, python-format
+msgid "Events for: %s"
+msgstr "Evenementen voor: %s"
+
+#: views.py:209
+#, python-format
+msgid "Error updating object event subscription; %s"
+msgstr "Fout bij bijwerken objectgebeurtenis abonnement; %s"
+
+#: views.py:215
+msgid "Object event subscriptions updated successfully"
+msgstr "Object gebeurtenis abonnementen met succes bijgewerkt"
+
+#: views.py:248
+#, python-format
+msgid "Event subscriptions for: %s"
+msgstr "Gebeurtenis abonnementen voor: %s"
+
+#: views.py:280
+#, python-format
+msgid "Events of type: %s"
+msgstr "Evenementen van soort: %s"

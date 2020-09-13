@@ -1,0 +1,317 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Badea Gabriel <gcbadea@gmail.com>, 2013
+# Harald Ersch, 2019
+# Stefaniu Criste <gupi@hangar.ro>, 2016
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-30 04:19-0400\n"
+"PO-Revision-Date: 2019-09-03 08:37+0000\n"
+"Last-Translator: Harald Ersch\n"
+"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ro_RO\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
+
+#: apps.py:80 events.py:6 permissions.py:6
+msgid "User management"
+msgstr "Management utilizatori"
+
+#: apps.py:100 search.py:10
+msgid "Group"
+msgstr "Grup"
+
+#: apps.py:101 links.py:39 links.py:50 links.py:73 search.py:34 views.py:120
+msgid "Groups"
+msgstr "Grupuri"
+
+#: apps.py:102 search.py:16
+msgid "Name"
+msgstr "Nume"
+
+#: apps.py:108 models.py:16 search.py:22
+msgid "User"
+msgstr "utilizator"
+
+#: apps.py:109 apps.py:174 links.py:45 links.py:78 links.py:94 views.py:305
+msgid "Users"
+msgstr "Utilizatorii"
+
+#: apps.py:112
+msgid "Username"
+msgstr "Nume de utilizator"
+
+#: apps.py:113 search.py:28
+msgid "First name"
+msgstr "Prenume"
+
+#: apps.py:114 search.py:37
+msgid "Last name"
+msgstr "Numele de familie"
+
+#: apps.py:115 search.py:31
+msgid "Email"
+msgstr "email"
+
+#: apps.py:116
+msgid "Is active?"
+msgstr "Este activ?"
+
+#: apps.py:119 apps.py:123
+msgid "Has usable password?"
+msgstr "Are parola utilizabilă?"
+
+#: apps.py:138
+msgid "All the groups."
+msgstr "Toate grupurile."
+
+#: apps.py:142
+msgid "All the users."
+msgstr "Toți utilizatorii."
+
+#: dashboard_widgets.py:14
+msgid "Total users"
+msgstr "Total utilizatori"
+
+#: dashboard_widgets.py:30
+msgid "Total groups"
+msgstr "Total grupuri"
+
+#: events.py:10
+msgid "Group created"
+msgstr "Grupul a fost creat"
+
+#: events.py:13
+msgid "Group edited"
+msgstr "Grupul a fost editat"
+
+#: events.py:17
+msgid "User created"
+msgstr "Utilizatorul a fost creat"
+
+#: events.py:20
+msgid "User edited"
+msgstr "Utilizatorul a fost editat"
+
+#: events.py:23
+msgid "User logged in"
+msgstr "Utilizatorul s-a logat"
+
+#: events.py:26
+msgid "User logged out"
+msgstr "Utilizatorul s-a deconectat"
+
+#: links.py:14
+msgid "User details"
+msgstr "Detalii utilizator"
+
+#: links.py:18
+msgid "Edit details"
+msgstr "Editează detaliile"
+
+#: links.py:22 views.py:54
+msgid "Create new group"
+msgstr "Creați un grup nou"
+
+#: links.py:29 links.py:62 links.py:83
+msgid "Delete"
+msgstr "Șterge"
+
+#: links.py:34 links.py:67
+msgid "Edit"
+msgstr "Editează"
+
+#: links.py:55 views.py:152
+msgid "Create new user"
+msgstr "Creați un utilizator nou"
+
+#: links.py:90
+msgid "User options"
+msgstr "Opțiuni utilizator"
+
+#: models.py:20
+msgid "Forbid this user from changing their password."
+msgstr "Interziceți acestui utilizator să-și schimbe parola."
+
+#: models.py:26
+msgid "User settings"
+msgstr "Setarile utilizatorului"
+
+#: models.py:27
+msgid "Users settings"
+msgstr "Setările utilizatorilor"
+
+#: permissions.py:10
+msgid "Create new groups"
+msgstr "Creați grupuri noi"
+
+#: permissions.py:13
+msgid "Delete existing groups"
+msgstr "Ștergeți grupuri existente"
+
+#: permissions.py:16
+msgid "Edit existing groups"
+msgstr "Editați grupuri existente,"
+
+#: permissions.py:19
+msgid "View existing groups"
+msgstr "Vezi grupurile existente"
+
+#: permissions.py:22
+msgid "Create new users"
+msgstr "Creați noi utilizatori"
+
+#: permissions.py:25
+msgid "Delete existing users"
+msgstr "Șterge utilizatori existenți"
+
+#: permissions.py:28
+msgid "Edit existing users"
+msgstr "Editați utilizatorii existenți"
+
+#: permissions.py:31
+msgid "View existing users"
+msgstr "Vizualizați utilizatorii existenți"
+
+#: search.py:40
+msgid "username"
+msgstr "nume de utilizator"
+
+#: serializers.py:32
+msgid "Comma separated list of group primary keys to assign this user to."
+msgstr "Liste separate prin virgulă de chei primare de grup pentru a le atribui acestui utilizator."
+
+#: serializers.py:62
+msgid "List of group primary keys to which to add the user."
+msgstr "Listă de chei primare de grup la care se adaugă utilizatorul."
+
+#: utils.py:6
+msgid "Anonymous"
+msgstr "Anonim"
+
+#: views.py:35
+msgid "Current user details"
+msgstr "Detaliile utilizatorului actual"
+
+#: views.py:43
+msgid "Edit current user details"
+msgstr "Editați detaliile utilizatorului curent"
+
+#: views.py:77
+#, python-format
+msgid "Delete the group: %s?"
+msgstr "Ștergeți grupul: %s?"
+
+#: views.py:93
+#, python-format
+msgid "Edit group: %s"
+msgstr "Modificați grupul: %s"
+
+#: views.py:113
+msgid ""
+"User groups are organizational units. They should mirror the organizational "
+"units of your organization. Groups can't be used for access control. Use "
+"roles for permissions and access control, add groups to them."
+msgstr "Grupurile de utilizatori sunt unități organizaționale. Ele ar trebui să reflecte unitățile organizaționale ale organizației dvs. Grupurile nu pot fi utilizate pentru controlul accesului. Utilizați roluri pentru permisiuni și control acces, adăugați grupuri la ele."
+
+#: views.py:119
+msgid "There are no user groups"
+msgstr "Nu există grupuri de utilizatori"
+
+#: views.py:132
+msgid "Available users"
+msgstr "Utilizatori disponibili"
+
+#: views.py:133
+msgid "Group users"
+msgstr "Utilizatori din grup"
+
+#: views.py:141
+#, python-format
+msgid "Users of group: %s"
+msgstr "Utilizatorii din grupul: %s"
+
+#: views.py:175
+#, python-format
+msgid "User delete request performed on %(count)d user"
+msgstr "Solicitarea de ștergere a utilizatorilor efectuată pe %(count)dutilizator "
+
+#: views.py:177
+#, python-format
+msgid "User delete request performed on %(count)d users"
+msgstr "Solicitarea de ștergere a utilizatorilor efectuată pe %(count)d utilizatori"
+
+#: views.py:185
+msgid "Delete user"
+msgid_plural "Delete users"
+msgstr[0] "Ștergeți utilizatorul"
+msgstr[1] "Ștergeți utilizatorii"
+msgstr[2] "Ștergeți utilizatori"
+
+#: views.py:195
+#, python-format
+msgid "Delete user: %s"
+msgstr "Ștergeți utilizatorul: %s"
+
+#: views.py:206
+msgid ""
+"Super user and staff user deleting is not allowed, use the admin interface "
+"for these cases."
+msgstr "Super-utilizator și personalul ștergerea utilizator nu este permisă, utilizați interfata de administrare pentru aceste cazuri."
+
+#: views.py:214
+#, python-format
+msgid "User \"%s\" deleted successfully."
+msgstr "Utilizatorul  \"%s\" a fost șters cu succes."
+
+#: views.py:220
+#, python-format
+msgid "Error deleting user \"%(user)s\": %(error)s"
+msgstr "Eroare la ștergerea utilizator  \"%(user)s\": %(error)s"
+
+#: views.py:238
+#, python-format
+msgid "Details of user: %s"
+msgstr "Detalii despre utilizatorul: %s"
+
+#: views.py:254
+#, python-format
+msgid "Edit user: %s"
+msgstr "Modificați utilizatorul: %s"
+
+#: views.py:269
+msgid "Available groups"
+msgstr "Grupuri disponibile"
+
+#. Translators: "User groups" here refer to the group list of a specific
+#. user.
+#: views.py:272
+msgid "User groups"
+msgstr "Apartenența la grupuri"
+
+#: views.py:280
+#, python-format
+msgid "Groups of user: %s"
+msgstr "Grupurile utilizatorului: %s"
+
+#: views.py:301
+msgid ""
+"User accounts can be create from this view. After creating a user account "
+"you will prompted to set a password for it. "
+msgstr "Conturile de utilizator pot fi create din această vizualizare. După crearea unui cont de utilizator, vi se va solicita să setați o parolă pentru acesta."
+
+#: views.py:304
+msgid "There are no user accounts"
+msgstr "Nu există conturi de utilizator"
+
+#: views.py:323
+#, python-format
+msgid "Edit options for user: %s"
+msgstr "Modificați opțiunile pentru utilizatorul: %s"

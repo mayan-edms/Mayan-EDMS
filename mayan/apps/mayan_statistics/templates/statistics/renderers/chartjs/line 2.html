@@ -1,0 +1,54 @@
+{% extends 'appearance/base.html' %}
+
+{% load i18n %}
+{% load static %}
+
+{% load navigation_tags %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-xs-12">
+            {% if no_data %}
+                {% trans 'No data available.' %}
+            {% else %}
+                {% blocktrans with object.get_results.datetime as datetime %}Last update: {{ datetime }}{% endblocktrans %}
+            {% endif %}
+            <canvas id="canvas-chart"></canvas>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript" src="{% static 'statistics/node_modules/chart.js/dist/Chart.min.js' %}"></script>
+    <script>
+        jQuery(document).ready(function() {
+            var data = {{ chart_data|safe }};
+            var ctx = document.getElementById('canvas-chart');
+            var chart = new Chart(ctx, {
+                type: 'line',
+                data: data,
+                options: {
+                    animation: {
+                        duration: 0,
+                    },
+                    aspectRatio: 2.5,
+                    hover: {
+                        animationDuration: 0,
+                    },
+                    layout: {
+                        padding: {
+                            left: 0,
+                            right: 0,
+                            top: 2,
+                            bottom: 0
+                        },
+                    },
+                    responsive: true,
+                    responsiveAnimationDuration: 0,
+               }
+            });
+        });
+    </script>
+{% endblock javascript %}

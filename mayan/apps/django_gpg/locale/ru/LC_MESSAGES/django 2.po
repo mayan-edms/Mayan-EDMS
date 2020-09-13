@@ -1,0 +1,291 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# lilo.panic, 2016
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-30 04:17-0400\n"
+"PO-Revision-Date: 2020-04-14 08:31+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: apps.py:30
+msgid "Django GPG"
+msgstr "Django GPG"
+
+#: apps.py:46 apps.py:52 forms.py:15
+msgid "Key ID"
+msgstr "ID ключа"
+
+#: apps.py:56 forms.py:32 models.py:54
+msgid "Type"
+msgstr "Тип"
+
+#: apps.py:60 forms.py:21 models.py:35
+msgid "Creation date"
+msgstr "Дата создания"
+
+#: apps.py:64
+msgid "No expiration"
+msgstr "Не устаревает"
+
+#: apps.py:65 forms.py:25 models.py:39
+msgid "Expiration date"
+msgstr "Дата окончания"
+
+#: apps.py:68 forms.py:30 models.py:46
+msgid "Length"
+msgstr "Длина"
+
+#: apps.py:73 forms.py:17 models.py:51
+msgid "User ID"
+msgstr "Идентификатор пользователя"
+
+#: dependencies.py:10
+msgid "GNU privacy guard - a PGP implementation."
+msgstr ""
+
+#: forms.py:26
+msgid "None"
+msgstr "Ни один"
+
+#: forms.py:29 models.py:43
+msgid "Fingerprint"
+msgstr "Отпечаток"
+
+#: forms.py:31 models.py:49
+msgid "Algorithm"
+msgstr "Алгоритм"
+
+#: forms.py:45
+msgid "Term"
+msgstr "Term"
+
+#: forms.py:46
+msgid "Name, e-mail, key ID or key fingerprint to look for."
+msgstr "Имя, e-mail, ID ключа или отпечаток для поиска."
+
+#: links.py:17
+msgid "Delete"
+msgstr "Удалить"
+
+#: links.py:22
+msgid "Details"
+msgstr "Детали"
+
+#: links.py:27
+msgid "Download"
+msgstr "Скачать"
+
+#: links.py:32 permissions.py:26
+msgid "Query keyservers"
+msgstr "Запрос к серверам ключей"
+
+#: links.py:37
+msgid "Import"
+msgstr "Импорт"
+
+#: links.py:42 permissions.py:5
+msgid "Key management"
+msgstr "Управление ключами"
+
+#: links.py:46
+msgid "Upload key"
+msgstr "Загрузить ключ"
+
+#: links.py:50 views.py:180
+msgid "Private keys"
+msgstr "Секретные ключи"
+
+#: links.py:54 views.py:204
+msgid "Public keys"
+msgstr "Открытые ключи"
+
+#: literals.py:14 literals.py:22
+msgid "Public"
+msgstr "Открытый"
+
+#: literals.py:15 literals.py:23
+msgid "Secret"
+msgstr "секретный"
+
+#: literals.py:31 literals.py:36
+msgid "RSA"
+msgstr "RSA"
+
+#: literals.py:32
+msgid "DSA"
+msgstr "DSA"
+
+#: literals.py:37
+msgid "Elgamal"
+msgstr "Elgamal"
+
+#: literals.py:51
+msgid "Bad signature."
+msgstr "Неверная подпись"
+
+#: literals.py:54
+msgid "Document not signed or invalid signature."
+msgstr "Документ не подписан, либо подпись неверна."
+
+#: literals.py:57
+msgid "Signature error."
+msgstr "Ошибка подписи."
+
+#: literals.py:61
+msgid "Document is signed but no public key is available for verification."
+msgstr "Документ подписан, но нет открытого ключа для проверки."
+
+#: literals.py:66
+msgid "Document is signed, and signature is good."
+msgstr "Документ подписан и подпись верна."
+
+#: literals.py:69
+msgid "Document is signed with a valid signature."
+msgstr "Документ подписан допустимой подписью."
+
+#: models.py:31
+msgid "ASCII armored version of the key."
+msgstr ""
+
+#: models.py:32
+msgid "Key data"
+msgstr "Содержимое ключа"
+
+#: models.py:60
+msgid "Key"
+msgstr "Ключ"
+
+#: models.py:61
+msgid "Keys"
+msgstr "Ключи"
+
+#: models.py:73
+msgid "Invalid key data"
+msgstr "Неверные данные ключа"
+
+#: models.py:76
+msgid "Key already exists."
+msgstr "Ключ уже существует."
+
+#: permissions.py:8
+msgid "Delete keys"
+msgstr "Удалить ключи"
+
+#: permissions.py:11
+msgid "Download keys"
+msgstr "Скачать ключи"
+
+#: permissions.py:14
+msgid "Import keys from keyservers"
+msgstr "Импортировать ключи с серверов ключей "
+
+#: permissions.py:17
+msgid "Use keys to sign content"
+msgstr "Использовать ключи для подписи контента"
+
+#: permissions.py:20
+msgid "Upload keys"
+msgstr "Загрузить ключи"
+
+#: permissions.py:23
+msgid "View keys"
+msgstr "Просмотр ключей"
+
+#: settings.py:7
+msgid "Signatures"
+msgstr "Подписи"
+
+#: settings.py:14
+msgid "Full path to the backend to be used to handle keys and signatures."
+msgstr ""
+
+#: settings.py:25
+msgid "Keyserver used to query for keys."
+msgstr "Сервер ключей используемый для запроса ключей."
+
+#: views.py:36
+#, python-format
+msgid "Delete key: %s"
+msgstr "Удалить ключ: %s"
+
+#: views.py:53
+#, python-format
+msgid "Details for key: %s"
+msgstr "Подробности для ключа: %s"
+
+#: views.py:75
+#, python-format
+msgid "Import key ID: %s?"
+msgstr "Получить ключ ID: %s?"
+
+#: views.py:76
+msgid "Import key"
+msgstr "Получить ключ"
+
+#: views.py:85
+#, python-format
+msgid "Unable to import key: %(key_id)s; %(error)s"
+msgstr "Невозможно импортировать ключ %(key_id)s; %(error)s"
+
+#: views.py:93
+#, python-format
+msgid "Successfully received key: %(key_id)s"
+msgstr "Успешно получен ключ: %(key_id)s"
+
+#: views.py:110
+msgid ""
+"Use names, last names, key ids or emails to search public keys to import "
+"from the keyserver."
+msgstr ""
+
+#: views.py:114
+msgid "No results returned"
+msgstr ""
+
+#: views.py:116
+msgid "Key query results"
+msgstr "Результаты запроса ключа"
+
+#: views.py:136
+msgid "Search"
+msgstr "Поиск"
+
+#: views.py:138
+msgid "Query key server"
+msgstr "Запросить сервер ключей"
+
+#: views.py:157
+msgid "Upload new key"
+msgstr "Загрузить новый ключ"
+
+#: views.py:173
+msgid ""
+"Private keys are used to signed documents. Private keys can only be uploaded"
+" by the user. The view to upload private and public keys is the same."
+msgstr ""
+
+#: views.py:178
+msgid "There no private keys"
+msgstr ""
+
+#: views.py:196
+msgid ""
+"Public keys are used to verify signed documents. Public keys can be uploaded"
+" by the user or downloaded from keyservers. The view to upload private and "
+"public keys is the same."
+msgstr ""
+
+#: views.py:202
+msgid "There no public keys"
+msgstr ""

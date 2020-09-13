@@ -397,6 +397,10 @@ a i {
     color: #d9534f;
 }
 
+.btn-default {
+    background-color: #000000;
+}
+
 .btn-default.btn-outline:hover,
 .btn-primary.btn-outline:hover,
 .btn-success.btn-outline:hover,
@@ -432,7 +436,7 @@ a i {
 
 #menu-main {
     display: block;
-    background-color: #2c3e50;
+    background-color: #1bd83b;
     border-right: 1px solid #18bc9c;
     bottom: 0;
     left: -210px;

@@ -1,0 +1,449 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Ben Zweekhorst <bzweekhorst@gmail.com>, 2019
+# Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-30 04:18-0400\n"
+"PO-Revision-Date: 2020-07-10 21:50+0000\n"
+"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
+"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:40
+msgid "Mailer"
+msgstr "Mailer"
+
+#: apps.py:62 apps.py:83
+msgid "Date and time"
+msgstr "Datum en tijd"
+
+#: apps.py:65 apps.py:87 models.py:28 models.py:230
+msgid "Message"
+msgstr "Bericht"
+
+#: classes.py:79
+msgid "Null backend"
+msgstr "Null backend"
+
+#: events.py:5 permissions.py:5 queues.py:6 settings.py:10
+msgid "Mailing"
+msgstr "Mailing"
+
+#: events.py:8
+msgid "Email sent"
+msgstr "E-mail verzonden"
+
+#: forms.py:58 forms.py:122
+msgid ""
+"Email address of the recipient. Can be multiple addresses separated by comma"
+" or semicolon."
+msgstr "E-mailadres van de ontvanger. Kunnen meerdere adressen zijn gescheiden door een komma of puntkomma."
+
+#: forms.py:60 forms.py:124
+msgid "Email address"
+msgstr "E-mailadres"
+
+#: forms.py:62 workflow_actions.py:36
+msgid "Subject"
+msgstr "Onderwerp"
+
+#: forms.py:64 workflow_actions.py:45
+msgid "Body"
+msgstr "Inhoud"
+
+#: forms.py:68
+msgid "The email profile that will be used to send this email."
+msgstr "Het mailprofiel dat wordt gebruikt om deze e-mail te versturen."
+
+#: forms.py:69 models.py:69 views.py:237 workflow_actions.py:18
+msgid "Mailing profile"
+msgstr "Mailprofiel"
+
+#: forms.py:75
+msgid "The driver to use when sending emails."
+msgstr "Het stuurprogramma dat moet worden gebruikt bij het verzenden van e-mails."
+
+#: forms.py:76 models.py:83
+msgid "Backend"
+msgstr "Backend"
+
+#: links.py:16 links.py:26
+msgid "Email document"
+msgstr "E-mail document"
+
+#: links.py:22 links.py:30
+msgid "Email link"
+msgstr "E-mail link"
+
+#: links.py:35
+msgid "System mailer error log"
+msgstr "Systeemmailer foutenlog"
+
+#: links.py:40
+msgid "Create mailing profile "
+msgstr "Mailprofiel aanmaken"
+
+#: links.py:46
+msgid "Delete"
+msgstr "Verwijderen"
+
+#: links.py:52
+msgid "Edit"
+msgstr "Bewerken"
+
+#: links.py:56
+msgid "Log"
+msgstr "Log"
+
+#: links.py:61
+msgid "Mailing profiles list"
+msgstr "Lijst met mailprofielen"
+
+#: links.py:66 models.py:70
+msgid "Mailing profiles"
+msgstr "Mailprofielen"
+
+#: links.py:72 views.py:261
+msgid "Test"
+msgstr "Testen"
+
+#: literals.py:5
+#, python-format
+msgid ""
+"Attached to this email is the document: {{ document }}\n"
+"\n"
+" --------\n"
+" This email has been sent from %(project_title)s (%(project_website)s)"
+msgstr "Bijgevoegd aan deze e-mail is het document: {{ document }}\n\n--------\nDeze e-mail is verzonden van %(project_title)s (%(project_website)s)"
+
+#: literals.py:9
+msgid "Document: {{ document }}"
+msgstr "Document: {{ document }}"
+
+#: literals.py:11
+#, python-format
+msgid ""
+"To access this document click on the following link: {{ link }}\n"
+"\n"
+"--------\n"
+" This email has been sent from %(project_title)s (%(project_website)s)"
+msgstr "Voor toegang tot dit document klik op de volgende link: {{link}}\n\n--------\nDeze e-mail is verzonden van %(project_title)s (%(project_website)s)"
+
+#: literals.py:15
+msgid "Link for document: {{ document }}"
+msgstr "Link voor document: {{ document }}"
+
+#: mailers.py:19 mailers.py:108
+msgid "From"
+msgstr "Van"
+
+#: mailers.py:22 mailers.py:111
+msgid ""
+"The sender's address. Some system will refuse to send messages if this value"
+" is not set."
+msgstr "Het adres van de verzender. Sommige systemen weigeren berichten te verzenden als deze waarde niet is ingevuld."
+
+#: mailers.py:28
+msgid "Host"
+msgstr "Host"
+
+#: mailers.py:30
+msgid "The host to use for sending email."
+msgstr "De host die gebruikt wordt om mail te versturen."
+
+#: mailers.py:35
+msgid "Port"
+msgstr "Poort"
+
+#: mailers.py:37
+msgid "Port to use for the SMTP server."
+msgstr "Poort om te gebruiken voor de SMTP server."
+
+#: mailers.py:40
+msgid "Use TLS"
+msgstr "Gebruik TLS"
+
+#: mailers.py:43
+msgid ""
+"Whether to use a TLS (secure) connection when talking to the SMTP server. "
+"This is used for explicit TLS connections, generally on port 587."
+msgstr "Of een TLS (veilige) verbinding gebruikt wordt om te communiceren met de SMTP server. Dit wordt gebruikt voor expliciete TLS verbindingen, meestal op poort 587."
+
+#: mailers.py:48
+msgid "Use SSL"
+msgstr "Gebruik SSL"
+
+#: mailers.py:51
+msgid ""
+"Whether to use an implicit TLS (secure) connection when talking to the SMTP "
+"server. In most email documentation this type of TLS connection is referred "
+"to as SSL. It is generally used on port 465. If you are experiencing "
+"problems, see the explicit TLS setting \"Use TLS\". Note that \"Use TLS\" "
+"and \"Use SSL\" are mutually exclusive, so only set one of those settings to"
+" True."
+msgstr "Of een impliciete TLS (veilige) verbinding gebruikt wordt om te communiceren met de SMTP server. In de meeste e-mailconfiguratie staat dit type TLS bekend als SSL. Deze wordt meestal gebruikt op poort 465. Als u problemen ondervindt, bekijk dan de expliciete TLS-instelling \"TLS gebruiken\". Merk op dat \"TLS gebruiken\" en \"SSL gebruiken\" elkaar uitsluiten, dus u hoeft maar één van deze instellingen aan te zetten."
+
+#: mailers.py:60
+msgid "Username"
+msgstr "Gebruikersnaam"
+
+#: mailers.py:63
+msgid ""
+"Username to use for the SMTP server. If empty, authentication won't "
+"attempted."
+msgstr "Gebruikersnaam voor de SMTP server. Indien leeg wordt authenticatie niet geprobeerd."
+
+#: mailers.py:69
+msgid "Password"
+msgstr "Wachtwoord"
+
+#: mailers.py:72
+msgid ""
+"Password to use for the SMTP server. This setting is used in conjunction "
+"with the username when authenticating to the SMTP server. If either of these"
+" settings is empty, authentication won't be attempted."
+msgstr "Wachtwoord voor de SMTP server. Deze instelling wordt gebruikt samen met de gebruikersnaam voor authenticatie op de SMTP server. Als een van deze instellingen leeg is, zal authenticatie niet worden geprobeerd."
+
+#: mailers.py:81
+msgid "Django SMTP backend"
+msgstr "Django SMTP backend"
+
+#: mailers.py:103
+msgid "File path"
+msgstr "Bestandspad"
+
+#: mailers.py:118
+msgid "Django file based backend"
+msgstr "Django bestandsgebaseerde backend"
+
+#: models.py:25 models.py:227
+msgid "Date time"
+msgstr "Datum en tijd"
+
+#: models.py:34
+msgid "Log entry"
+msgstr "Loginvoer"
+
+#: models.py:35
+msgid "Log entries"
+msgstr "Loginvoer"
+
+#: models.py:46
+msgid "A short text describing the mailing profile."
+msgstr "Een korte tekst die het mailprofiel beschrijft."
+
+#: models.py:47
+msgid "Label"
+msgstr "Label"
+
+#: models.py:51
+msgid ""
+"If default, this mailing profile will be pre-selected on the document "
+"mailing form."
+msgstr "Indien standaard ingesteld wordt dit mailprofiel voorgeselecteerd op het \"Document mailen\" formulier."
+
+#: models.py:53
+msgid "Default"
+msgstr "Standaardwaarde"
+
+#: models.py:55
+msgid "Enabled"
+msgstr "Ingeschakeld"
+
+#: models.py:58
+msgid "The dotted Python path to the backend class."
+msgstr "Het Python-pad naar de backend class."
+
+#: models.py:59
+msgid "Backend path"
+msgstr "Backend pad"
+
+#: models.py:62
+msgid "Backend data"
+msgstr "Backend gegevens"
+
+#: models.py:84
+msgid "The backend class for this entry."
+msgstr "De backend class voor deze invoer."
+
+#: models.py:218
+msgid "Test email from Mayan EDMS"
+msgstr "Test e-mail van Mayan EDMS"
+
+#: models.py:224
+msgid "User mailer"
+msgstr ""
+
+#: models.py:236
+msgid "User mailer log entry"
+msgstr ""
+
+#: models.py:237
+msgid "User mailer log entries"
+msgstr ""
+
+#: permissions.py:8
+msgid "Send document link via email"
+msgstr "Verzend documentlink via e-mail"
+
+#: permissions.py:11
+msgid "Send document via email"
+msgstr "Verzend document via e-mail"
+
+#: permissions.py:14
+msgid "View system mailing error log"
+msgstr "Systeem mailing foutenlog bekijken"
+
+#: permissions.py:17
+msgid "Create a mailing profile"
+msgstr "Een mailprofiel aanmaken"
+
+#: permissions.py:20
+msgid "Delete a mailing profile"
+msgstr "Een mailprofiel verwijderen"
+
+#: permissions.py:23
+msgid "Edit a mailing profile"
+msgstr "Een mailprofiel bewerken"
+
+#: permissions.py:26
+msgid "View a mailing profile"
+msgstr "Een mailprofiel bekijken"
+
+#: permissions.py:29
+msgid "Use a mailing profile"
+msgstr "Een mailprofiel gebruiken"
+
+#: queues.py:8
+msgid "Send document"
+msgstr "Document verzenden"
+
+#: settings.py:14
+msgid "Template for the document email form subject line."
+msgstr "Sjabloon voor de onderwerpregel van het \"Document mailen\" formulier."
+
+#: settings.py:19
+msgid "Template for the document email form body text. Can include HTML."
+msgstr "Sjabloon voor de inhoudstekst van het \"Document mailen\" formulier. Kan HTML bevatten."
+
+#: settings.py:24
+msgid "Template for the document link email form subject line."
+msgstr "Sjabloon voor de onderwerpregel van het \"Documentlink mailen\" formulier."
+
+#: settings.py:29
+msgid "Template for the document link email form body text. Can include HTML."
+msgstr "Sjabloon voor de inhoudstekst van het \"Documentlink mailen\" formulier. Kan HTML bevatten."
+
+#: validators.py:12
+#, python-format
+msgid "%(email)s is not a valid email address."
+msgstr "%(email)s is geen geldig e-mailadres."
+
+#: views.py:36
+msgid "Document mailing error log"
+msgstr "Document mailing foutenlog"
+
+#: views.py:48
+#, python-format
+msgid "%(count)d document queued for email delivery"
+msgstr "%(count)d document in wachtrij voor e-mailbezorging"
+
+#: views.py:50
+#, python-format
+msgid "%(count)d documents queued for email delivery"
+msgstr "%(count)d documenten in wachtrij voor e-mailbezorging"
+
+#: views.py:61
+msgid "Send"
+msgstr "Verzenden"
+
+#: views.py:107
+#, python-format
+msgid "%(count)d document link queued for email delivery"
+msgstr "%(count)d documentlink in wachtrij voor e-mailbezorging"
+
+#: views.py:109
+#, python-format
+msgid "%(count)d document links queued for email delivery"
+msgstr "%(count)d documentlinks in wachtrij voor e-mailbezorging"
+
+#: views.py:118
+msgid "New mailing profile backend selection"
+msgstr "Nieuw mailprofiel backend selectie"
+
+#: views.py:150
+#, python-format
+msgid "Create a \"%s\" mailing profile"
+msgstr "Een \"%s\" mailprofiel aanmaken"
+
+#: views.py:177
+#, python-format
+msgid "Delete mailing profile: %s"
+msgstr "Verwijder mailprofiel: %s"
+
+#: views.py:189
+#, python-format
+msgid "Edit mailing profile: %s"
+msgstr "Bewerk mailprofiel: %s"
+
+#: views.py:213
+#, python-format
+msgid "Error log for: %s"
+msgstr "Foutenlog voor: %s"
+
+#: views.py:232
+msgid ""
+"Mailing profiles are email configurations. Mailing profiles allow sending "
+"documents as attachments or as links via email."
+msgstr "Mailprofielen zijn e-mailconfiguraties. Mailprofielen staan het verzenden toe van documenten als bijlage of als links via e-mail."
+
+#: views.py:236
+msgid "No mailing profiles available"
+msgstr "Geen mailprofielen beschikbaar"
+
+#: views.py:253
+msgid "Test email sent."
+msgstr "Test e-mail verzonden."
+
+#: views.py:262
+#, python-format
+msgid "Test mailing profile: %s"
+msgstr "Test mailprofiel: %s"
+
+#: workflow_actions.py:20
+msgid "Mailing profile to use when sending the email."
+msgstr "Mailprofiel om te gebruiken bij versturen van de e-mail."
+
+#: workflow_actions.py:25
+msgid "Recipient"
+msgstr "Ontvanger"
+
+#: workflow_actions.py:28
+msgid ""
+"Email address of the recipient. Can be multiple addresses separated by comma"
+" or semicolon. A template can be used to reference properties of the "
+"document."
+msgstr "E-mailadres van de ontvanger. Kunnen meerdere adressen zijn gescheiden door komma of puntkomma. Een sjabloon kan worden gebruikt om naar document-eigenschappen te verwijzen."
+
+#: workflow_actions.py:39
+msgid "Subject of the email. Can be a string or a template."
+msgstr "Onderwerp van de e-mail. Kan een tekenreeks of een sjabloon zijn."
+
+#: workflow_actions.py:48
+msgid "Body of the email to send. Can be a string or a template."
+msgstr "Inhoud van de e-mail om te versturen. Kan een tekenreeks of een sjabloon zijn."
+
+#: workflow_actions.py:55
+msgid "Send email"
+msgstr "E-mail versturen"

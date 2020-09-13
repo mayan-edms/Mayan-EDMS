@@ -1,0 +1,243 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2017
+# Berny <berny@bernhard-marx.de>, 2018
+# Robin Schubert <robin.schubert@gmx.de>, 2019
+# Mathias Behrle <mathiasb@m9s.biz>, 2020
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-30 04:17-0400\n"
+"PO-Revision-Date: 2017-08-25 00:49+0000\n"
+"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>, 2020\n"
+"Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:54 events.py:6 permissions.py:6 settings.py:7
+msgid "Document parsing"
+msgstr "Dokument parsen"
+
+#: apps.py:106
+msgid "A generator returning the document's pages parsed content."
+msgstr ""
+"Ein Generatorobjekt, das den geparsten Inhalt der Dokumentenseiten "
+"zurückgibt."
+
+#: apps.py:107 apps.py:140 apps.py:144 links.py:19 links.py:36 models.py:25
+msgid "Content"
+msgstr "Inhalt"
+
+#: apps.py:135 models.py:76
+msgid "Result"
+msgstr "Ergebnis"
+
+#: dependencies.py:9
+msgid ""
+"Utility from the poppler-utils package used to text content from PDF files."
+msgstr ""
+"Programm aus dem poppler-utils Paket für die Extraktion von Text aus PDF-"
+"Dateien."
+
+#: events.py:10
+msgid "Document parsed content deleted"
+msgstr "Geparster Inhalt des Dokumentes gelöscht"
+
+#: events.py:14
+msgid "Document version submitted for parsing"
+msgstr "Dokumentenversion zum Parsen eingereicht"
+
+#: events.py:17
+msgid "Document version parsing finished"
+msgstr "Parsen der Dokumentenversion beendet"
+
+#: forms.py:37
+#, python-format
+msgid "Page %(page_number)d"
+msgstr "Seite %(page_number)d"
+
+#: forms.py:45 forms.py:57
+msgid "Contents"
+msgstr "Inhalte"
+
+#: links.py:25 links.py:30
+msgid "Delete parsed content"
+msgstr "Geparsten Inhalt löschen"
+
+#: links.py:42 links.py:80 views.py:228
+msgid "Parsing errors"
+msgstr "Fehler beim Parsen"
+
+#: links.py:48
+msgid "Download content"
+msgstr "Inhalt herunterladen"
+
+#: links.py:53 links.py:60
+msgid "Submit for parsing"
+msgstr "Zum Parsen einreichen"
+
+#: links.py:66
+msgid "Setup parsing"
+msgstr "Parsing einrichten"
+
+#: links.py:75
+msgid "Parse documents per type"
+msgstr "Dokumente nach Typ parsen"
+
+#: models.py:19
+msgid "Document page"
+msgstr "Dokumentenseite"
+
+#: models.py:23
+msgid "The actual text content as extracted by the document parsing backend."
+msgstr "Vom Parser-Backend extrahierter Inhalt."
+
+#: models.py:31
+msgid "Document page content"
+msgstr "Seiteninhalt"
+
+#: models.py:32
+msgid "Document pages contents"
+msgstr "Seiteninhalt"
+
+#: models.py:44
+msgid "Document type"
+msgstr "Dokumententyp"
+
+#: models.py:48
+msgid "Automatically queue newly created documents for parsing."
+msgstr "Neu erstellte Dokumente automatisch zum Parsen einreihen."
+
+#: models.py:59
+msgid "Document type settings"
+msgstr "Einstellungen für Dokumententyp"
+
+#: models.py:60
+msgid "Document types settings"
+msgstr "Einstellungen für Dokumententypen"
+
+#: models.py:71
+msgid "Document version"
+msgstr "Dokumentenversion"
+
+#: models.py:74
+msgid "Date time submitted"
+msgstr "Einstellunsgzeit"
+
+#: models.py:80
+msgid "Document version parse error"
+msgstr "Fehler beim Parsen der Dokumentenversion"
+
+#: models.py:81
+msgid "Document version parse errors"
+msgstr "Fehler beim Parsen der Dokumentenversion"
+
+#: parsers.py:90
+#, python-format
+msgid "Exception parsing page; %s"
+msgstr "Ausnahmefehler bei der Verarbeitung einer Seite: %s"
+
+#: parsers.py:116
+#, python-format
+msgid "Cannot find pdftotext executable at: %s"
+msgstr "Programm pdftotext nicht gefunden in %s"
+
+#: permissions.py:10
+msgid "View the content of a document"
+msgstr "Den Inhalt eines Dokuments anzeigen"
+
+#: permissions.py:13
+msgid "Change document type parsing settings"
+msgstr "Parser-Einstellungen des Dokumententyps ändern"
+
+#: permissions.py:17
+msgid "Parse the content of a document"
+msgstr "Inhalt eines Dokuments parsen"
+
+#: queues.py:6
+msgid "Parsing"
+msgstr "Parsing"
+
+#: queues.py:9
+msgid "Document version parsing"
+msgstr "Parsen der Dokumentenversion"
+
+#: settings.py:12
+msgid "Set new document types to perform parsing automatically by default."
+msgstr ""
+"Erstellen Sie neue Dokumententypen um standardmäßig automatisiertes Parsen "
+"auszuführen."
+
+#: settings.py:19
+msgid ""
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
+msgstr ""
+"Pfad zum \"pdftotext\"-Programm (bereitgestellt von poppler), das benutzt "
+"wird, um Text aus PDF-Dateien zu extrahieren."
+
+#: views.py:35
+msgid "Delete the parsed content of the selected document?"
+msgid_plural "Delete the parsed content of the selected documents?"
+msgstr[0] "Den OCR-Inhalt des auswählten Dokumentes löschen?"
+msgstr[1] "Den geparsten Inhalt der ausgewählten Dokumente löschen?"
+
+#: views.py:70
+#, python-format
+msgid "Content for document: %s"
+msgstr "Inhalt von Dokument: %s"
+
+#: views.py:105
+#, python-format
+msgid "Content for document page: %s"
+msgstr "Inhalt von Dokument Seite: %s"
+
+#: views.py:121
+#, python-format
+msgid "Parsing errors for document: %s"
+msgstr "Parsing Fehler für Dokument: %s"
+
+#: views.py:134
+#, python-format
+msgid "%(count)d document added to the parsing queue"
+msgstr "%(count)d Dokument zur Parsing-Warteschlange hinzugefügt"
+
+#: views.py:137
+#, python-format
+msgid "%(count)d documents added to the parsing queue"
+msgstr "%(count)d Dokumente zur Parsing-Warteschlange hinzugefügt"
+
+#: views.py:145
+#, python-format
+msgid "Submit %(count)d document to the parsing queue?"
+msgid_plural "Submit %(count)d documents to the parsing queue?"
+msgstr[0] "%(count)d Dokument in die Parsing-Warteschlange einstellen?"
+msgstr[1] "%(count)d Dokumente in die Parsing-Warteschlange einstellen?"
+
+#: views.py:158
+#, python-format
+msgid "Submit document \"%s\" to the parsing queue"
+msgstr "Dokument \"%s\" in die Parsing-Warteschlange einreihen"
+
+#: views.py:185
+#, python-format
+msgid "Edit parsing settings for document type: %s."
+msgstr "Parsereinstellungen für Dokumententyp %s bearbeiten."
+
+#: views.py:195
+msgid "Submit all documents of a type for parsing"
+msgstr "Alle Dokumente eines Typs zum Parsen einreichen"
+
+#: views.py:216
+#, python-format
+msgid "%(count)d documents added to the parsing queue."
+msgstr "%(count)d Dokumente zur Parsing-Warteschlange hinzugefügt."

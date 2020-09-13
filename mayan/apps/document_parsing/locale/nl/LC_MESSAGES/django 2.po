@@ -1,0 +1,238 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Roberto Rosario, 2020
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-30 04:17-0400\n"
+"PO-Revision-Date: 2017-08-25 00:49+0000\n"
+"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020\n"
+"Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:54 events.py:6 permissions.py:6 settings.py:7
+msgid "Document parsing"
+msgstr "Document aan het opmaken"
+
+#: apps.py:106
+msgid "A generator returning the document's pages parsed content."
+msgstr "Een verwerker die de ontleden inhoud van de documentpagina's levert."
+
+#: apps.py:107 apps.py:140 apps.py:144 links.py:19 links.py:36 models.py:25
+msgid "Content"
+msgstr "Inhoud"
+
+#: apps.py:135 models.py:76
+msgid "Result"
+msgstr "Resultaat"
+
+#: dependencies.py:9
+msgid ""
+"Utility from the poppler-utils package used to text content from PDF files."
+msgstr ""
+"Hulpmiddel uit het poppler-utils pakket dat gebruikt wordt om tekstinhoud "
+"uit PDF-bestanden te extraheren."
+
+#: events.py:10
+msgid "Document parsed content deleted"
+msgstr "Ontlede inhoud document verwijderd"
+
+#: events.py:14
+msgid "Document version submitted for parsing"
+msgstr "Documentversie ingediend voor opmaak"
+
+#: events.py:17
+msgid "Document version parsing finished"
+msgstr "Documentversie opmaken voltooid"
+
+#: forms.py:37
+#, python-format
+msgid "Page %(page_number)d"
+msgstr "Pagina %(page_number)d"
+
+#: forms.py:45 forms.py:57
+msgid "Contents"
+msgstr "Inhoud"
+
+#: links.py:25 links.py:30
+msgid "Delete parsed content"
+msgstr "Ontlede inhoud verwijderen"
+
+#: links.py:42 links.py:80 views.py:228
+msgid "Parsing errors"
+msgstr "Opmaakfouten"
+
+#: links.py:48
+msgid "Download content"
+msgstr "Inhoud downloaden"
+
+#: links.py:53 links.py:60
+msgid "Submit for parsing"
+msgstr "Indienen voor opmaak"
+
+#: links.py:66
+msgid "Setup parsing"
+msgstr "Opmaak instellen"
+
+#: links.py:75
+msgid "Parse documents per type"
+msgstr "Documenten per type opmaken"
+
+#: models.py:19
+msgid "Document page"
+msgstr "Documentpagina"
+
+#: models.py:23
+msgid "The actual text content as extracted by the document parsing backend."
+msgstr "De tekstinhoud die door de ontledingsbackend is opgesteld."
+
+#: models.py:31
+msgid "Document page content"
+msgstr "Inhoud documentpagina"
+
+#: models.py:32
+msgid "Document pages contents"
+msgstr "Inhoud documentpagina's"
+
+#: models.py:44
+msgid "Document type"
+msgstr "Documenttype"
+
+#: models.py:48
+msgid "Automatically queue newly created documents for parsing."
+msgstr ""
+"Nieuw aangemaakte documenten automatisch in wachtrij voor opmaak plaatsen."
+
+#: models.py:59
+msgid "Document type settings"
+msgstr "Documenttype instellingen"
+
+#: models.py:60
+msgid "Document types settings"
+msgstr "Documenttypes instellingen"
+
+#: models.py:71
+msgid "Document version"
+msgstr "Documentversie"
+
+#: models.py:74
+msgid "Date time submitted"
+msgstr "Indientijdstip"
+
+#: models.py:80
+msgid "Document version parse error"
+msgstr "Documentversie opmaakfout"
+
+#: models.py:81
+msgid "Document version parse errors"
+msgstr "Documentversie opmaakfouten"
+
+#: parsers.py:90
+#, python-format
+msgid "Exception parsing page; %s"
+msgstr "Uitzondering bij opmaak pagina; %s"
+
+#: parsers.py:116
+#, python-format
+msgid "Cannot find pdftotext executable at: %s"
+msgstr "Kan uitvoerbaar bestand pdftotext niet vinden op: %s"
+
+#: permissions.py:10
+msgid "View the content of a document"
+msgstr "De inhoud van een document bekijken"
+
+#: permissions.py:13
+msgid "Change document type parsing settings"
+msgstr "Opmaakinstellingen van documenttype wijzigen"
+
+#: permissions.py:17
+msgid "Parse the content of a document"
+msgstr "De inhoud van een document opmaken"
+
+#: queues.py:6
+msgid "Parsing"
+msgstr "Opmaken"
+
+#: queues.py:9
+msgid "Document version parsing"
+msgstr "Documentversie aan het opmaken"
+
+#: settings.py:12
+msgid "Set new document types to perform parsing automatically by default."
+msgstr "Instellen dat documenttypes standaard automatische opmaak uitvoeren. "
+
+#: settings.py:19
+msgid ""
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
+msgstr ""
+"Bestandspad naar 'poppler's' pdftotext programma voor het extraheren van PDF"
+" files."
+
+#: views.py:35
+msgid "Delete the parsed content of the selected document?"
+msgid_plural "Delete the parsed content of the selected documents?"
+msgstr[0] "De ontlede inhoud van het geselecteerde document verwijderen?"
+msgstr[1] "De ontlede inhoud van de geselecteerde documenten verwijderen?"
+
+#: views.py:70
+#, python-format
+msgid "Content for document: %s"
+msgstr "Inhoud voor document: %s"
+
+#: views.py:105
+#, python-format
+msgid "Content for document page: %s"
+msgstr "Inhoud voor documentpagina: %s "
+
+#: views.py:121
+#, python-format
+msgid "Parsing errors for document: %s"
+msgstr "Opmaakfouten voor document: %s"
+
+#: views.py:134
+#, python-format
+msgid "%(count)d document added to the parsing queue"
+msgstr "%(count)d document toegevoegd aan de opmaak wachtrij"
+
+#: views.py:137
+#, python-format
+msgid "%(count)d documents added to the parsing queue"
+msgstr "%(count)d documenten toegevoegd aan de opmaak wachtrij"
+
+#: views.py:145
+#, python-format
+msgid "Submit %(count)d document to the parsing queue?"
+msgid_plural "Submit %(count)d documents to the parsing queue?"
+msgstr[0] "%(count)d document indienen voor de wachtrij voor ontleding?"
+msgstr[1] "%(count)ddocumenten indienen voor de wachtrij voor ontleding?"
+
+#: views.py:158
+#, python-format
+msgid "Submit document \"%s\" to the parsing queue"
+msgstr "Document \"%s\" indienen voor de opmaak wachtrij"
+
+#: views.py:185
+#, python-format
+msgid "Edit parsing settings for document type: %s."
+msgstr "Ontledingsinstellingen bewerken voor documenttype: %s."
+
+#: views.py:195
+msgid "Submit all documents of a type for parsing"
+msgstr "Alle documenten van een type indienen voor ontleding"
+
+#: views.py:216
+#, python-format
+msgid "%(count)d documents added to the parsing queue."
+msgstr "%(count)d documenten toegevoegd aan de wachtrij voor ontleding."

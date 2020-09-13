@@ -1,0 +1,276 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Badea Gabriel <gcbadea@gmail.com>, 2013
+# Harald Ersch, 2019-2020
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-30 04:16-0400\n"
+"PO-Revision-Date: 2020-02-29 06:08+0000\n"
+"Last-Translator: Harald Ersch\n"
+"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ro_RO\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
+
+#: apps.py:20 permissions.py:5 settings.py:13
+msgid "Converter"
+msgstr "Convertizor"
+
+#: apps.py:37 forms.py:23
+msgid "Transformation"
+msgstr "Transformare"
+
+#: backends/python.py:156 backends/python.py:169
+#, python-format
+msgid "Exception determining PDF page count; %s"
+msgstr "Excepție determinând numărul de pagini PDF; %s"
+
+#: backends/python.py:183
+#, python-format
+msgid "Exception determining page count using Pillow; %s"
+msgstr "Excepție de determinare a numărului de pagini PDF; %s"
+
+#: classes.py:125
+msgid "LibreOffice not installed or not found."
+msgstr "LibreOffice nu este instalat sau nu a fost găsit."
+
+#: classes.py:226
+msgid "Not an office file format."
+msgstr "Nu este un format de fișier Office."
+
+#: classes.py:350
+msgid ""
+"Transformations allow changing the visual appearance of documents without "
+"making permanent changes to the document file themselves."
+msgstr "Transformările permit modificarea aspectului vizual al documentelor, fără a face modificări permanente ale fișierului documentului în sine."
+
+#: classes.py:398
+msgid "transformation"
+msgstr "transformare"
+
+#: dependencies.py:14
+msgid "Utility from the poppler-utils package used to inspect PDF files."
+msgstr "Utilitar din pachetul poppler-utils folosit pentru inspectarea fișierelor PDF."
+
+#: dependencies.py:19
+msgid ""
+"Utility from the popper-utils package used to extract pages from PDF files "
+"into PPM format images."
+msgstr "Utilitar din pachetul popper-utils folosit pentru extragerea paginilor din fișiere PDF în imagini în format PPM."
+
+#: forms.py:22
+msgid "Available transformations for this layer."
+msgstr "Transformări disponibile pentru acest strat."
+
+#: forms.py:59
+#, python-format
+msgid "\"%s\" not a valid entry."
+msgstr "\"%s\" nu este o intrare validă."
+
+#: layers.py:10
+msgid "Saved transformations"
+msgstr "Transformări salvate"
+
+#: links.py:17
+msgid "Delete"
+msgstr "Șterge"
+
+#: links.py:24
+msgid "Edit"
+msgstr "Editează"
+
+#: links.py:28
+msgid "Transformations"
+msgstr "Transformări"
+
+#: links.py:34
+msgid "Select new transformation"
+msgstr "Selectați o nouă transformare"
+
+#: models.py:21 models.py:83
+msgid "Name"
+msgstr "Nume"
+
+#: models.py:24 models.py:79
+msgid "Order"
+msgstr "Ordine"
+
+#: models.py:32 models.py:48
+msgid "Stored layer"
+msgstr "Stratul depozitat"
+
+#: models.py:33
+msgid "Stored layers"
+msgstr "Straturi stocate"
+
+#: models.py:45 models.py:91
+msgid "Enabled"
+msgstr "Activat"
+
+#: models.py:54 models.py:73
+msgid "Object layer"
+msgstr "Strat obiect"
+
+#: models.py:55
+msgid "Object layers"
+msgstr "Straturi de obiecte"
+
+#: models.py:77
+msgid ""
+"Order in which the transformations will be executed. If left unchanged, an "
+"automatic order value will be assigned."
+msgstr "Ordinea în care vor fi executate transformările. Dacă este lăsat neschimbat, va fi alocată o ordine automată."
+
+#: models.py:87
+msgid ""
+"Enter the arguments for the transformation as a YAML dictionary. ie: "
+"{\"degrees\": 180}"
+msgstr "Introduceți argumentele pentru transformare ca dicționar YAML. adică: {\"grade\": 180}"
+
+#: models.py:89
+msgid "Arguments"
+msgstr "Argumente"
+
+#: models.py:98
+msgid "Layer transformation"
+msgstr "Transformarea stratului"
+
+#: models.py:99
+msgid "Layer transformations"
+msgstr "Transformările stratului"
+
+#: permissions.py:8
+msgid "Create new transformations"
+msgstr "Creați noi transformări"
+
+#: permissions.py:11
+msgid "Delete transformations"
+msgstr "Ștergeți transformări"
+
+#: permissions.py:14
+msgid "Edit transformations"
+msgstr "Editați transformări"
+
+#: permissions.py:17
+msgid "View existing transformations"
+msgstr "Vizualizați transformările existente"
+
+#: settings.py:19
+msgid "Graphics conversion backend to use."
+msgstr "Back-end de conversie grafică."
+
+#: settings.py:32
+msgid "Configuration options for the graphics conversion backend."
+msgstr "Opțiuni de configurare pentru backend-ul de conversie grafică."
+
+#: transformations.py:98
+msgid "Crop"
+msgstr "Decupare"
+
+#: transformations.py:176
+msgid "Draw rectangle"
+msgstr "Desenați dreptunghiul"
+
+#: transformations.py:278
+msgid "Draw rectangle (percents coordinates)"
+msgstr "Desenați un dreptunghi (coordonate procente)"
+
+#: transformations.py:375
+msgid "Flip"
+msgstr "Basculare"
+
+#: transformations.py:386
+msgid "Gaussian blur"
+msgstr "Încețoșare Gaussiană"
+
+#: transformations.py:396
+msgid "Line art"
+msgstr "Linie de arta"
+
+#: transformations.py:407
+msgid "Mirror"
+msgstr "Oglindire"
+
+#: transformations.py:418
+msgid "Resize"
+msgstr "Redimensionare"
+
+#: transformations.py:445
+msgid "Rotate"
+msgstr "Rotire"
+
+#: transformations.py:471
+msgid "Rotate 90 degrees"
+msgstr "Rotiți 90 de grade"
+
+#: transformations.py:482
+msgid "Rotate 180 degrees"
+msgstr "Rotiți 180 de grade"
+
+#: transformations.py:493
+msgid "Rotate 270 degrees"
+msgstr "Rotiți 270 de grade"
+
+#: transformations.py:503
+msgid "Unsharp masking"
+msgstr "Unsharp masking"
+
+#: transformations.py:519
+msgid "Zoom"
+msgstr "Zoom"
+
+#: validators.py:21
+msgid "Enter a valid YAML value."
+msgstr "Introduceți o valoare validă YAML."
+
+#: views.py:51
+#, python-format
+msgid "Error creating transformation: %s."
+msgstr "Eroare la crearea transformării: %s."
+
+#: views.py:68
+#, python-format
+msgid ""
+"Create layer \"%(layer)s\" transformation \"%(transformation)s\" for: "
+"%(object)s"
+msgstr "Creați stratul \"%(layer)s\" transformare \"%(transformation)s\" pentru: %(object)s"
+
+#: views.py:123
+#, python-format
+msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
+msgstr "Ștergeți transformarea \"%(transformation)s\" pentru: %(content_object)s?"
+
+#: views.py:172
+#, python-format
+msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
+msgstr "Editați transformarea \"%(transformation)s\" pentru: %(content_object)s"
+
+#: views.py:231
+#, python-format
+msgid "There are no entries for layer \"%(layer_name)s\""
+msgstr "Nu există înregistrări pentru stratul \"%(layer_name)s\""
+
+#: views.py:234
+#, python-format
+msgid "Layer \"%(layer)s\" transformations for: %(object)s"
+msgstr "Transformări la stratul \"%(layer)s\" pentru: %(object)s"
+
+#: views.py:286
+msgid "Transformation created successfully."
+msgstr "Transformare creată cu succes."
+
+#: views.py:310
+msgid "Select"
+msgstr "Selecta"
+
+#: views.py:312
+#, python-format
+msgid "Select new layer \"%(layer)s\" transformation for: %(object)s"
+msgstr "Selectați noul strat de transformare \"%(layer)s\" pentru: %(object)s"

@@ -1,0 +1,347 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# lilo.panic, 2016
+# Sergey Glita <gsv70@mail.ru>, 2012
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-30 04:17-0400\n"
+"PO-Revision-Date: 2020-08-18 04:38+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: apps.py:49 permissions.py:6 settings.py:11
+msgid "Document signatures"
+msgstr "Подписи документа"
+
+#: apps.py:95
+msgid "Date"
+msgstr "Дата"
+
+#: apps.py:98 models.py:47
+msgid "Key ID"
+msgstr "ID ключа"
+
+#: apps.py:102 forms.py:62 models.py:52
+msgid "Signature ID"
+msgstr "ID подписи"
+
+#: apps.py:103 forms.py:74
+msgid "None"
+msgstr "Ни один"
+
+#: apps.py:106
+msgid "Type"
+msgstr "Тип"
+
+#: forms.py:17 forms.py:31 workflow_actions.py:19
+msgid "Key"
+msgstr "Ключ"
+
+#: forms.py:22 serializers.py:33 workflow_actions.py:30
+msgid ""
+"The passphrase to unlock the key and allow it to be used to sign the "
+"document version."
+msgstr ""
+
+#: forms.py:24 workflow_actions.py:27
+msgid "Passphrase"
+msgstr "Кодовая фраза"
+
+#: forms.py:33
+msgid "Private key that will be used to sign this document version."
+msgstr ""
+
+#: forms.py:44
+msgid "Signature is embedded?"
+msgstr "Подпись встроена?"
+
+#: forms.py:46
+msgid "Signature date"
+msgstr "Дата подписи"
+
+#: forms.py:49
+msgid "Signature key ID"
+msgstr "ID ключа подписи"
+
+#: forms.py:51
+msgid "Signature key present?"
+msgstr "Ключ подписи предоставлен?"
+
+#: forms.py:64
+msgid "Key fingerprint"
+msgstr "Отпечаток ключа"
+
+#: forms.py:68
+msgid "Key creation date"
+msgstr "Дата создания ключа"
+
+#: forms.py:73
+msgid "Key expiration date"
+msgstr "Дата устаревания ключа"
+
+#: forms.py:78
+msgid "Key length"
+msgstr "Длина ключа"
+
+#: forms.py:82
+msgid "Key algorithm"
+msgstr "Алгоритм ключа"
+
+#: forms.py:86
+msgid "Key user ID"
+msgstr "ID пользователя ключа"
+
+#: forms.py:90
+msgid "Key type"
+msgstr "Тип ключа"
+
+#: links.py:30
+msgid "Verify all documents"
+msgstr "Проверить все документы"
+
+#: links.py:37 links.py:77 queues.py:8
+msgid "Signatures"
+msgstr "Подписи"
+
+#: links.py:43
+msgid "Delete"
+msgstr "Удалить"
+
+#: links.py:50
+msgid "Sign detached"
+msgstr "Подпись отеделена"
+
+#: links.py:57
+msgid "Details"
+msgstr "Детали"
+
+#: links.py:64
+msgid "Download"
+msgstr "Скачать"
+
+#: links.py:70
+msgid "Sign embedded"
+msgstr "Подпись встроена"
+
+#: links.py:83
+msgid "Upload signature"
+msgstr "Вгрузить подпись"
+
+#: models.py:39
+msgid "Document version"
+msgstr "Версия документа"
+
+#: models.py:43
+msgid "Date signed"
+msgstr "Дата подписи"
+
+#: models.py:46
+msgid "ID of the key that will be used to sign the document."
+msgstr ""
+
+#: models.py:56
+msgid "Public key fingerprint"
+msgstr "Отпечаток публичного ключа"
+
+#: models.py:63
+msgid "Document version signature"
+msgstr "Подпись версии документа"
+
+#: models.py:64
+msgid "Document version signatures"
+msgstr "Подписи версий документов"
+
+#: models.py:83
+msgid "Detached"
+msgstr "Отделена"
+
+#: models.py:85
+msgid "Embedded"
+msgstr "Встроена"
+
+#: models.py:100
+msgid "Document version embedded signature"
+msgstr "Встроенная подпись версии документа"
+
+#: models.py:101
+msgid "Document version embedded signatures"
+msgstr "Встроенные подписи версий документов"
+
+#: models.py:134
+msgid "Signature file previously generated."
+msgstr ""
+
+#: models.py:137
+msgid "Signature file"
+msgstr "Файл подписи"
+
+#: models.py:143
+msgid "Document version detached signature"
+msgstr "Отделённая подпись версии документа"
+
+#: models.py:144
+msgid "Document version detached signatures"
+msgstr "Отделённые подписи версий документов"
+
+#: models.py:147
+msgid "signature"
+msgstr "подпись"
+
+#: permissions.py:10
+msgid "Sign documents with detached signatures"
+msgstr "Подписать документы отделёнными подписями"
+
+#: permissions.py:14
+msgid "Sign documents with embedded signatures"
+msgstr "Подписать документы встроенными подписями"
+
+#: permissions.py:18
+msgid "Delete detached signatures"
+msgstr "Удаление отделенных подписей"
+
+#: permissions.py:22
+msgid "Download detached document signatures"
+msgstr "Скачать отделенные подписи документов"
+
+#: permissions.py:26
+msgid "Upload detached document signatures"
+msgstr "Вгрузить отделенные подписи документов"
+
+#: permissions.py:30
+msgid "Verify document signatures"
+msgstr "Проверить подпись документа"
+
+#: permissions.py:34
+msgid "View details of document signatures"
+msgstr "Посмотреть подробности подписей документов"
+
+#: queues.py:13
+msgid "Verify key signatures"
+msgstr ""
+
+#: queues.py:17
+msgid "Unverify key signatures"
+msgstr ""
+
+#: queues.py:21
+msgid "Verify document version"
+msgstr ""
+
+#: queues.py:26
+msgid "Verify missing embedded signature"
+msgstr ""
+
+#: settings.py:19
+msgid "Path to the Storage subclass to use when storing detached signatures."
+msgstr ""
+
+#: settings.py:28
+msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND."
+msgstr ""
+
+#: storages.py:13
+msgid ""
+"Unable to initialize the detached signatures storage. Check the settings {} "
+"and {} for formatting errors."
+msgstr ""
+
+#: storages.py:20
+msgid "Detached signatures"
+msgstr ""
+
+#: views.py:68 views.py:156
+msgid "Passphrase is needed to unlock this key."
+msgstr "Для разблокироваки этого ключа необходима кодовая фраза"
+
+#: views.py:81 views.py:169
+msgid "Passphrase is incorrect."
+msgstr "Кодовая фраза неверна."
+
+#: views.py:94 views.py:182
+msgid "Document version signed successfully."
+msgstr "Версия документа успешно подписана."
+
+#: views.py:122 views.py:217
+msgid "Sign"
+msgstr ""
+
+#: views.py:124
+#, python-format
+msgid "Sign document version \"%s\" with a detached signature"
+msgstr "Подписать версию документа \"%s\" отделённой подписью"
+
+#: views.py:219
+#, python-format
+msgid "Sign document version \"%s\" with a embedded signature"
+msgstr "Подписать версию документа \"%s\" встроенной подписью"
+
+#: views.py:236
+#, python-format
+msgid "Delete detached signature: %s"
+msgstr "Удалить отделённую подпись: %s"
+
+#: views.py:259
+#, python-format
+msgid "Details for signature: %s"
+msgstr "Подробности для подписи: %s"
+
+#: views.py:291
+msgid ""
+"Signatures help provide authorship evidence and tamper detection. They are "
+"very secure and hard to forge. A signature can be embedded as part of the "
+"document itself or uploaded as a separate file."
+msgstr ""
+
+#: views.py:320
+msgid "There are no signatures for this document."
+msgstr ""
+
+#: views.py:324
+#, python-format
+msgid "Signatures for document version: %s"
+msgstr "Подписи для документа версии: %s"
+
+#: views.py:356
+#, python-format
+msgid "Upload detached signature for document version: %s"
+msgstr "Выгрузить отделённую подпись для версии документа: %s"
+
+#: views.py:374
+msgid "On large databases this operation may take some time to execute."
+msgstr "В больших базах данных эта операция может занять некоторое время для выполнения."
+
+#: views.py:375
+msgid "Verify all document for signatures?"
+msgstr "Проверить подписи во всех документах?"
+
+#: views.py:385
+msgid "Signature verification queued successfully."
+msgstr "Верификация сигнатуры добавлена в очередь."
+
+#: workflow_actions.py:22
+msgid "Private key that will be used to sign the document version."
+msgstr ""
+
+#: workflow_actions.py:37
+msgid "Sign document (detached)"
+msgstr ""
+
+#: workflow_actions.py:49
+msgid ""
+"Document has no version to sign. You might be trying to use this action in "
+"an initial state before the created document is yet to be processed."
+msgstr ""
+
+#: workflow_actions.py:82
+msgid "Sign document (embedded)"
+msgstr ""

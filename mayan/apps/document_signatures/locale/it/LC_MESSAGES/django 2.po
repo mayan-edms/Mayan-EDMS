@@ -1,0 +1,350 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Carlo Zanatto <>, 2012
+# Daniele Bortoluzzi <daniele@elkos.it>, 2019
+# Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
+# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2012,2015
+# Roberto Rosario, 2020
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-30 04:17-0400\n"
+"PO-Revision-Date: 2020-08-18 06:57+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:49 permissions.py:6 settings.py:11
+msgid "Document signatures"
+msgstr "Firme documento"
+
+#: apps.py:95
+msgid "Date"
+msgstr "Data"
+
+#: apps.py:98 models.py:47
+msgid "Key ID"
+msgstr "ID Chiave"
+
+#: apps.py:102 forms.py:62 models.py:52
+msgid "Signature ID"
+msgstr "ID Firma"
+
+#: apps.py:103 forms.py:74
+msgid "None"
+msgstr "Nessuno"
+
+#: apps.py:106
+msgid "Type"
+msgstr "Tipo"
+
+#: forms.py:17 forms.py:31 workflow_actions.py:19
+msgid "Key"
+msgstr "Chiave"
+
+#: forms.py:22 serializers.py:33 workflow_actions.py:30
+msgid ""
+"The passphrase to unlock the key and allow it to be used to sign the "
+"document version."
+msgstr "La password per sbloccare la chiave e consentirne l'uso per la firma della versione del documento."
+
+#: forms.py:24 workflow_actions.py:27
+msgid "Passphrase"
+msgstr "Passphrase"
+
+#: forms.py:33
+msgid "Private key that will be used to sign this document version."
+msgstr "La chiave privata che verrà usata per firmare questa versione del documento."
+
+#: forms.py:44
+msgid "Signature is embedded?"
+msgstr "La firma è integrata?"
+
+#: forms.py:46
+msgid "Signature date"
+msgstr "Data firma"
+
+#: forms.py:49
+msgid "Signature key ID"
+msgstr "ID chiave di firma"
+
+#: forms.py:51
+msgid "Signature key present?"
+msgstr "La chiave di firma è presente?"
+
+#: forms.py:64
+msgid "Key fingerprint"
+msgstr "Impronta della chiave"
+
+#: forms.py:68
+msgid "Key creation date"
+msgstr "Data di creazione chiave"
+
+#: forms.py:73
+msgid "Key expiration date"
+msgstr "Data scadenza chiave"
+
+#: forms.py:78
+msgid "Key length"
+msgstr "Lunghezza chiave"
+
+#: forms.py:82
+msgid "Key algorithm"
+msgstr "Algoritmo chiave"
+
+#: forms.py:86
+msgid "Key user ID"
+msgstr "ID chiave utente"
+
+#: forms.py:90
+msgid "Key type"
+msgstr "Tipo chiave"
+
+#: links.py:30
+msgid "Verify all documents"
+msgstr "Verifica tutti i documenti"
+
+#: links.py:37 links.py:77 queues.py:8
+msgid "Signatures"
+msgstr "Firme"
+
+#: links.py:43
+msgid "Delete"
+msgstr "Cancella"
+
+#: links.py:50
+msgid "Sign detached"
+msgstr "Firma scollegata"
+
+#: links.py:57
+msgid "Details"
+msgstr "Dettagli"
+
+#: links.py:64
+msgid "Download"
+msgstr "Scarica"
+
+#: links.py:70
+msgid "Sign embedded"
+msgstr "Firma incorporata"
+
+#: links.py:83
+msgid "Upload signature"
+msgstr "Carica firma"
+
+#: models.py:39
+msgid "Document version"
+msgstr "Versione documento"
+
+#: models.py:43
+msgid "Date signed"
+msgstr "Data firma"
+
+#: models.py:46
+msgid "ID of the key that will be used to sign the document."
+msgstr "ID della chiave che verrà utilizzata per firmare il documento."
+
+#: models.py:56
+msgid "Public key fingerprint"
+msgstr "Chiave pubblica impronta"
+
+#: models.py:63
+msgid "Document version signature"
+msgstr "Versione della firma del documento"
+
+#: models.py:64
+msgid "Document version signatures"
+msgstr "Versioni delle firma del documento"
+
+#: models.py:83
+msgid "Detached"
+msgstr "Distaccato"
+
+#: models.py:85
+msgid "Embedded"
+msgstr "Incorporata"
+
+#: models.py:100
+msgid "Document version embedded signature"
+msgstr "Firma incorporata versione documento"
+
+#: models.py:101
+msgid "Document version embedded signatures"
+msgstr "Firme incorporate versione documento"
+
+#: models.py:134
+msgid "Signature file previously generated."
+msgstr "File della firma generato in precedenza."
+
+#: models.py:137
+msgid "Signature file"
+msgstr "File della firma"
+
+#: models.py:143
+msgid "Document version detached signature"
+msgstr "Firma versione del documento distaccata"
+
+#: models.py:144
+msgid "Document version detached signatures"
+msgstr "Firma distaccata versione dei documenti"
+
+#: models.py:147
+msgid "signature"
+msgstr "firma"
+
+#: permissions.py:10
+msgid "Sign documents with detached signatures"
+msgstr "Firma documenti con firme distaccate"
+
+#: permissions.py:14
+msgid "Sign documents with embedded signatures"
+msgstr "Firma documenti con firma integrata"
+
+#: permissions.py:18
+msgid "Delete detached signatures"
+msgstr "Elimina firme allegate"
+
+#: permissions.py:22
+msgid "Download detached document signatures"
+msgstr "Scarica firme scollegate documenti"
+
+#: permissions.py:26
+msgid "Upload detached document signatures"
+msgstr "Carica firme scollegate documenti"
+
+#: permissions.py:30
+msgid "Verify document signatures"
+msgstr "Verifica la firma del documento"
+
+#: permissions.py:34
+msgid "View details of document signatures"
+msgstr "Vedi dettagli delle firme documento"
+
+#: queues.py:13
+msgid "Verify key signatures"
+msgstr "Verifica chiavi firma "
+
+#: queues.py:17
+msgid "Unverify key signatures"
+msgstr "Annulla verifica chiavi firma"
+
+#: queues.py:21
+msgid "Verify document version"
+msgstr "Verifica versione documento"
+
+#: queues.py:26
+msgid "Verify missing embedded signature"
+msgstr "Verifica firma incorporata mancante"
+
+#: settings.py:19
+msgid "Path to the Storage subclass to use when storing detached signatures."
+msgstr "Percorso alla sottoclasse Storage da usare per l'archiviazione delle firme separate."
+
+#: settings.py:28
+msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND."
+msgstr "Argomenti da passare a SIGNATURE_STORAGE_BACKEND."
+
+#: storages.py:13
+msgid ""
+"Unable to initialize the detached signatures storage. Check the settings {} "
+"and {} for formatting errors."
+msgstr "Impossibile inizializzare l'archiviazione delle firme scollegate. Controlla le impostazioni {} e {} per errori di formattazione."
+
+#: storages.py:20
+msgid "Detached signatures"
+msgstr "Firme separate"
+
+#: views.py:68 views.py:156
+msgid "Passphrase is needed to unlock this key."
+msgstr "è richiesta la passphrase per sbloccare questa chiave."
+
+#: views.py:81 views.py:169
+msgid "Passphrase is incorrect."
+msgstr "La passphrase non è corretta."
+
+#: views.py:94 views.py:182
+msgid "Document version signed successfully."
+msgstr "La versione del documento è stata firmata con successo."
+
+#: views.py:122 views.py:217
+msgid "Sign"
+msgstr "Firmare"
+
+#: views.py:124
+#, python-format
+msgid "Sign document version \"%s\" with a detached signature"
+msgstr "Firma la versione del documento \"%s\" con firma allegata"
+
+#: views.py:219
+#, python-format
+msgid "Sign document version \"%s\" with a embedded signature"
+msgstr "Firma la versione del documento \"%s\" con la firma integrata"
+
+#: views.py:236
+#, python-format
+msgid "Delete detached signature: %s"
+msgstr "Cancella la firma allegata: %s"
+
+#: views.py:259
+#, python-format
+msgid "Details for signature: %s"
+msgstr "Dettagli per la firma: %s"
+
+#: views.py:291
+msgid ""
+"Signatures help provide authorship evidence and tamper detection. They are "
+"very secure and hard to forge. A signature can be embedded as part of the "
+"document itself or uploaded as a separate file."
+msgstr "Le firme servono a provare la paternità del documento e a impedirne la contraffazione. Sono molto sicure e molto difficili da falsificare. Una firma può essere incorporata nel documento stesso oppure caricata come file separato."
+
+#: views.py:320
+msgid "There are no signatures for this document."
+msgstr "Non ci sono firme per questo documento."
+
+#: views.py:324
+#, python-format
+msgid "Signatures for document version: %s"
+msgstr "Firme per la versione del documento: %s"
+
+#: views.py:356
+#, python-format
+msgid "Upload detached signature for document version: %s"
+msgstr "Carica la firma scollegata per la versione documento: %s"
+
+#: views.py:374
+msgid "On large databases this operation may take some time to execute."
+msgstr "Per un database di grosse dimensioni l'operazione protrebbe aver bisogno di tempo."
+
+#: views.py:375
+msgid "Verify all document for signatures?"
+msgstr "Verificare le firme per tutti i documenti?"
+
+#: views.py:385
+msgid "Signature verification queued successfully."
+msgstr "Verifica firme messo in coda con successo."
+
+#: workflow_actions.py:22
+msgid "Private key that will be used to sign the document version."
+msgstr "Chiave privata che verrà utilizzata per firmare la versione del documento."
+
+#: workflow_actions.py:37
+msgid "Sign document (detached)"
+msgstr "Firma documento (staccato)"
+
+#: workflow_actions.py:49
+msgid ""
+"Document has no version to sign. You might be trying to use this action in "
+"an initial state before the created document is yet to be processed."
+msgstr "Il documento non ha una versione da firmare. Potresti provare a utilizzare questa azione in uno stato iniziale prima che il documento creato debba ancora essere elaborato."
+
+#: workflow_actions.py:82
+msgid "Sign document (embedded)"
+msgstr "Firma documento (incorporato)"

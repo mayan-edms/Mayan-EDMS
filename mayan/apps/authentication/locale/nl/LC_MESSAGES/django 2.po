@@ -1,0 +1,198 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Comprax <info@comprax.nl>, 2020
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
+# Justin Albstbstmeijer <justin@albstmeijer.nl>, 2016
+# Martin Horseling <martin.horseling@gmail.com>, 2018
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-30 04:16-0400\n"
+"PO-Revision-Date: 2020-04-29 15:45+0000\n"
+"Last-Translator: Comprax <info@comprax.nl>\n"
+"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:25 events.py:6 permissions.py:6 settings.py:7
+msgid "Authentication"
+msgstr "Authenticatie"
+
+#: events.py:10
+msgid "User impersonation ended"
+msgstr "Nabootsing van gebruikers is beëindigd"
+
+#: events.py:13
+msgid "User impersonation started"
+msgstr "Nabootsing van gebruikers is begonnen"
+
+#: forms.py:17
+msgid "Email"
+msgstr "Email"
+
+#: forms.py:20
+msgid "Password"
+msgstr "Wachtwoord"
+
+#: forms.py:22 forms.py:89
+msgid "Remember me"
+msgstr "Onthoud mij"
+
+#: forms.py:25
+msgid ""
+"Please enter a correct email and password. Note that the password field is "
+"case-sensitive."
+msgstr "Vul het juiste email adres en wachtwoord in. Houd er rekening mee dat het wachtwoord-invulveld hoofdlettergevoelig is."
+
+#: forms.py:27
+msgid "This account is inactive."
+msgstr "Deze gebruiker is in-actief."
+
+#: forms.py:78
+msgid "User"
+msgstr "Gebruiker"
+
+#: forms.py:78
+msgid "User to be impersonated."
+msgstr "Gebruiker welke moet worden nagebootst."
+
+#: forms.py:82
+msgid "Permanent"
+msgstr "Permanent"
+
+#: forms.py:83
+msgid "If selected, disables ending impersonation."
+msgstr "Indien geselecteerd, wordt het beëindigen van identiteit nabootsing uitgeschakeld."
+
+#: links.py:22
+msgid "Logout"
+msgstr "Afmelden"
+
+#: links.py:27
+msgid "Change password"
+msgstr "Pas wachtwoord aan"
+
+#: links.py:32 views.py:68
+msgid "Impersonate user"
+msgstr "Nabootsen gebruiker"
+
+#: links.py:37 links.py:44
+msgid "Set password"
+msgstr "Stel wachtwoord in"
+
+#: permissions.py:10
+msgid "Impersonate users"
+msgstr "Nabootsen gebruikers"
+
+#: settings.py:11
+msgid ""
+"Controls the mechanism used to authenticated user. Options are: username, "
+"email"
+msgstr "Beinvloed de manier waarop gebruikers worden geauthenticeerd. Opties zijn: gebruikersnaam, email"
+
+#: settings.py:18
+msgid ""
+"Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
+" in. Value is time in seconds."
+msgstr "De maximale tijd dat een gebruiker \"Onthoud mij\" gebruikt, aangemeld blijft. Waarde is in seconden."
+
+#: settings.py:25
+msgid ""
+"Remove the \"Forgot your password?\" link on the login form used to trigger "
+"the password reset."
+msgstr "Verwijder de \"Wachtwoord vergeten\" optie op het aanmeldingsformulier. "
+
+#: templates/authentication/login.html:11
+msgid "Login"
+msgstr "Inloggen"
+
+#: templates/authentication/login.html:23
+#: templates/authentication/login.html:32
+msgid "Sign in"
+msgstr "Meld u aan"
+
+#: templates/authentication/login.html:39
+msgid "Forgot your password?"
+msgstr "Paswoord vergeten?"
+
+#: templates/authentication/password_reset_complete.html:8
+#: templates/authentication/password_reset_confirm.html:8
+#: templates/authentication/password_reset_confirm.html:20
+#: templates/authentication/password_reset_done.html:8
+#: templates/authentication/password_reset_form.html:8
+#: templates/authentication/password_reset_form.html:20
+msgid "Password reset"
+msgstr "Paswoord opnieuw instellen"
+
+#: templates/authentication/password_reset_complete.html:15
+msgid "Password reset complete! Click the link below to login."
+msgstr "Paswoord opnieuw ingesteld! Klik op de link hieronder om in te loggen."
+
+#: templates/authentication/password_reset_complete.html:17
+msgid "Login page"
+msgstr "Login pagina"
+
+#: templates/authentication/password_reset_confirm.html:29
+#: templates/authentication/password_reset_form.html:29 views.py:212
+msgid "Submit"
+msgstr "Verstuur"
+
+#: templates/authentication/password_reset_done.html:15
+msgid "Password reset email sent!"
+msgstr "Wachtwoordherstel e-mail verstuurd!"
+
+#: views.py:121
+msgid "Your password has been successfully changed."
+msgstr "Uw wachtwoord is succesvol aangepast,"
+
+#: views.py:128
+msgid "Current user password change"
+msgstr "Pas wachtwoord aan van huidige gebruiker"
+
+#: views.py:136
+msgid "Changing the password is not allowed for this account."
+msgstr "Wachtwoord wijziging niet toegestaan voor dit account."
+
+#: views.py:203
+#, python-format
+msgid "Password change request performed on %(count)d user"
+msgstr "Wachtwoord wijziging uitgevoerd op %(count)d gebruiker"
+
+#: views.py:205
+#, python-format
+msgid "Password change request performed on %(count)d users"
+msgstr "Wachtwoord wijziging uitgevoerd op %(count)d gebruikers"
+
+#: views.py:214
+msgid "Change user password"
+msgid_plural "Change users passwords"
+msgstr[0] "Gebruikerswachtwoord wijzigen"
+msgstr[1] "Gebruikerswachtwoorden wijzigen"
+
+#: views.py:224
+#, python-format
+msgid "Change password for user: %s"
+msgstr "Wijzig wachtwoord voor gebruiker: %s"
+
+#: views.py:244
+msgid ""
+"Super user and staff user password reseting is not allowed, use the admin "
+"interface for these cases."
+msgstr "Super gebruiker en medewerker wachtwoord aanpassen is niet toegestaan, gebruik de admin gebruiker voor deze zaken."
+
+#: views.py:254
+#, python-format
+msgid "Successful password reset for user: %s."
+msgstr "Wachtwoord opnieuw ingesteld voor gebruiker: %s."
+
+#: views.py:260
+#, python-format
+msgid "Error reseting password for user \"%(user)s\": %(error)s"
+msgstr "Fout tijdens het veranderen van het wachtwoord voor gebruiker \"%(user)s\": %(error)s"

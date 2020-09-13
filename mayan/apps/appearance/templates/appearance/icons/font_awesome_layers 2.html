@@ -1,0 +1,8 @@
+<span class="fa-layers fa-fw" style="margin-right: 7px;">
+    {% if enable_shadow %}
+        <i class="{{ shadow_class }}" data-fa-transform="right-1 down-2" style="color:rgba(0, 0, 0, 0.3); stroke: rgba(255, 255, 255, 0.3); stroke-width: 20;"></i>
+    {% endif %}
+    {% for entry in data %}
+        <i class="{{ entry.class }}" data-fa-transform="{{ entry.transform }}" data-fa-mask="{{ entry.mask }}"></i>
+    {% endfor %}
+</span>

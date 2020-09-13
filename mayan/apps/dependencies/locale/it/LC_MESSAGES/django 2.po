@@ -1,0 +1,346 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2019
+# Giovanni Tricarico <gtricarico92@gmail.com>, 2019
+# Marco Camplese <marco.camplese.mc@gmail.com>, 2019
+# Roberto Rosario, 2020
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-30 04:17-0400\n"
+"PO-Revision-Date: 2019-04-27 22:53+0000\n"
+"Last-Translator: Roberto Rosario, 2020\n"
+"Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:24 links.py:41 permissions.py:5
+msgid "Dependencies"
+msgstr "Dipendenze"
+
+#: apps.py:32 apps.py:69 apps.py:78
+msgid "Label"
+msgstr "Etichetta"
+
+#: apps.py:36
+msgid "Internal name"
+msgstr "Nome interno"
+
+#: apps.py:41 apps.py:74 apps.py:83
+msgid "Description"
+msgstr "Descrizione "
+
+#: apps.py:45 classes.py:155
+msgid "Type"
+msgstr "Tipo"
+
+#: apps.py:49 classes.py:157
+msgid "Other data"
+msgstr "Altri dati"
+
+#: apps.py:53
+msgid "Declared by"
+msgstr "Dichiarato da"
+
+#: apps.py:57 classes.py:155
+msgid "Version"
+msgstr "Versione"
+
+#: apps.py:61 classes.py:156 classes.py:810
+msgid "Environment"
+msgstr "Ambiente"
+
+#: apps.py:64 classes.py:157
+msgid "Check"
+msgstr ""
+
+#: classes.py:155
+msgid "Name"
+msgstr "Nome "
+
+#: classes.py:156
+msgid "App"
+msgstr "App"
+
+#: classes.py:271
+msgid "Need to specify at least one: app_label or module."
+msgstr "È necessario specificarne almeno uno: app_label o module."
+
+#: classes.py:276
+#, python-format
+msgid "Dependency \"%s\" already registered."
+msgstr "Dipendenza \"%s\" già registrata."
+
+#: classes.py:302
+#, python-format
+msgid "Installing package: %s... "
+msgstr "Pacchetto di installazione: %s ..."
+
+#: classes.py:307
+msgid "Already installed."
+msgstr "Già installato."
+
+#: classes.py:310 classes.py:315 classes.py:319
+msgid "Complete."
+msgstr "Completare."
+
+#: classes.py:345
+msgid "Installed and correct version"
+msgstr "Versione installata e corretta"
+
+#: classes.py:347
+msgid "Missing or incorrect version"
+msgstr "Versione mancante o errata"
+
+#: classes.py:376
+msgid "None"
+msgstr "Nessuno"
+
+#: classes.py:385
+msgid "Not specified"
+msgstr "Non specificato"
+
+#: classes.py:388
+msgid "Patching files... "
+msgstr "Applicazione di patch ai file ..."
+
+#: classes.py:416
+msgid "Executables that are called directly by the code."
+msgstr "File eseguibili chiamati direttamente dal codice."
+
+#: classes.py:418
+msgid "Binary"
+msgstr "Binario"
+
+#: classes.py:435
+msgid ""
+"JavaScript libraries downloaded the from NPM registry and used for front-end"
+" functionality."
+msgstr ""
+"Le librerie JavaScript scaricate dal registro NPM e utilizzate per la "
+"funzionalità front-end."
+
+#: classes.py:438
+msgid "JavaScript"
+msgstr "JavaScript"
+
+#: classes.py:472 classes.py:723
+msgid "Downloading... "
+msgstr "Download in corso..."
+
+#: classes.py:475
+msgid "Verifying... "
+msgstr "Verifica..."
+
+#: classes.py:478 classes.py:726
+msgid "Extracting... "
+msgstr "Estrazione..."
+
+#: classes.py:665
+msgid "Python packages downloaded from PyPI."
+msgstr "Pacchetti Python scaricati da PyPI."
+
+#: classes.py:667
+msgid "Python"
+msgstr "Python"
+
+#: classes.py:704
+msgid "Fonts downloaded from fonts.googleapis.com."
+msgstr "Caratteri scaricati da fonts.googleapis.com."
+
+#: classes.py:706
+msgid "Google font"
+msgstr "Carattere di Google"
+
+#: classes.py:792
+msgid "Declared in app"
+msgstr "Dichiarato in app"
+
+#: classes.py:793
+msgid "Show dependencies by the app that declared them."
+msgstr "Mostra le dipendenze dall'app che le ha dichiarate."
+
+#: classes.py:797
+msgid "Class"
+msgstr "Classe"
+
+#: classes.py:798
+msgid ""
+"Show the different classes of dependencies. Classes are usually divided by "
+"language or the file types of the dependency."
+msgstr ""
+"Mostra le diverse classi di dipendenze. Le classi sono generalmente divise "
+"per lingua o tipi di file della dipendenza."
+
+#: classes.py:803
+msgid "State"
+msgstr "Stato"
+
+#: classes.py:804
+msgid ""
+"Show the different states of the dependencies. True means that the "
+"dependencies is installed and is of a correct version. False means the "
+"dependencies is missing or an incorrect version is present."
+msgstr ""
+"Mostra i diversi stati delle dipendenze. True significa che le dipendenze "
+"sono installate e hanno una versione corretta. Falso significa che mancano "
+"le dipendenze o è presente una versione errata."
+
+#: classes.py:811
+msgid ""
+"Dependencies required for an environment might not be required for another. "
+"Example environments: Production, Development."
+msgstr ""
+"Le dipendenze richieste per un ambiente potrebbero non essere richieste per "
+"un altro. Ambienti di esempio: produzione, sviluppo."
+
+#: environments.py:19
+msgid ""
+"Environment used for building distributable packages of the software. End "
+"users can ignore missing dependencies under this environment."
+msgstr ""
+"Ambiente utilizzato per creare pacchetti distribuibili del software. Gli "
+"utenti finali possono ignorare le dipendenze mancanti in questo ambiente."
+
+#: environments.py:22
+msgid "Build"
+msgstr ""
+
+#: environments.py:26
+msgid ""
+"Environment used for developers to make code changes. End users can ignore "
+"missing dependencies under this environment."
+msgstr ""
+"Ambiente utilizzato dagli sviluppatori per apportare modifiche al codice. "
+"Gli utenti finali possono ignorare le dipendenze mancanti in questo "
+"ambiente."
+
+#: environments.py:28
+msgid "Development"
+msgstr ""
+
+#: environments.py:32
+msgid ""
+"Environment used for building the documentation. End users can ignore "
+"missing dependencies under this environment."
+msgstr ""
+"Ambiente utilizzato per la costruzione della documentazione. Gli utenti "
+"finali possono ignorare le dipendenze mancanti in questo ambiente."
+
+#: environments.py:34
+msgid "Documentation"
+msgstr "Documentazione"
+
+#: environments.py:38
+msgid ""
+"Normal environment for end users. A missing dependency under this "
+"environment will result in issues and errors during normal use."
+msgstr ""
+"Ambiente normale per gli utenti finali. Una dipendenza mancante in questo "
+"ambiente comporterà problemi ed errori durante il normale utilizzo."
+
+#: environments.py:40
+msgid "Production"
+msgstr "Produzione"
+
+#: environments.py:44
+msgid ""
+"Environment used running the test suit to verify the functionality of the "
+"code. Dependencies in this environment are not needed for normal production "
+"usage."
+msgstr ""
+"Ambiente utilizzato per eseguire la tuta di prova per verificare la "
+"funzionalità del codice. Le dipendenze in questo ambiente non sono "
+"necessarie per il normale utilizzo di produzione."
+
+#: environments.py:47
+msgid "Testing"
+msgstr ""
+
+#: links.py:9 views.py:17
+msgid "Check for updates"
+msgstr "Controlla aggiornamenti"
+
+#: links.py:15
+msgid "Groups"
+msgstr "Gruppi"
+
+#: links.py:23
+msgid "Entries"
+msgstr ""
+
+#: links.py:31
+msgid "Details"
+msgstr "Dettagli"
+
+#: links.py:36
+msgid "Dependencies licenses"
+msgstr "Licenze per dipendenze"
+
+#: management/commands/checkdependencies.py:13
+msgid "Outputs the dependencies as a comma delimited values list."
+msgstr ""
+"Restituisce le dipendenze come un elenco di valori delimitati da virgole."
+
+#: management/commands/generaterequirements.py:14
+msgid ""
+"Comma separated names of dependencies to exclude from the list generated."
+msgstr ""
+"Nomi separati da virgole delle dipendenze da escludere dall'elenco generato."
+
+#: management/commands/generaterequirements.py:20
+msgid ""
+"Comma separated names of dependencies to show in the list while excluding "
+"every other one."
+msgstr ""
+"Nomi separati da virgole delle dipendenze da mostrare nell'elenco escludendo"
+" ogni altro."
+
+#: management/commands/installdependencies.py:13
+msgid "Process a specific app."
+msgstr "Elabora un'app specifica."
+
+#: management/commands/installdependencies.py:17
+msgid "Force installation even if already installed."
+msgstr "Forza l'installazione anche se già installata."
+
+#: permissions.py:8
+msgid "View dependencies"
+msgstr "Visualizza le dipendenze"
+
+#: views.py:31
+#, python-format
+msgid "Entries for dependency group: %s"
+msgstr "Voci per gruppo di dipendenza: %s"
+
+#: views.py:44 views.py:89
+#, python-format
+msgid "Group %s not found."
+msgstr "Gruppo %s non trovato."
+
+#: views.py:57
+msgid "Dependency groups"
+msgstr "Gruppi di dipendenza"
+
+#: views.py:77
+#, python-format
+msgid "Dependency group and entry: %(group)s, %(entry)s"
+msgstr "Gruppo di dipendenze e voce: %(group)s, %(entry)s"
+
+#: views.py:101
+#, python-format
+msgid "Entry %s not found."
+msgstr "Voce %s non trovata."
+
+#: views.py:119
+msgid "Other packages licenses"
+msgstr "Licenze altri pacchetti"

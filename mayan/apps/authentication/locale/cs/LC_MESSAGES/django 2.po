@@ -1,0 +1,197 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Michal Švábík <snadno@lehce.cz>, 2019-2020
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-30 04:16-0400\n"
+"PO-Revision-Date: 2020-06-22 15:03+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
+"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+
+#: apps.py:25 events.py:6 permissions.py:6 settings.py:7
+msgid "Authentication"
+msgstr "Ověřování"
+
+#: events.py:10
+msgid "User impersonation ended"
+msgstr "Předstírání identity uživatele skončilo"
+
+#: events.py:13
+msgid "User impersonation started"
+msgstr "Předstírání identity uživatele začalo"
+
+#: forms.py:17
+msgid "Email"
+msgstr "E-mail"
+
+#: forms.py:20
+msgid "Password"
+msgstr "Heslo"
+
+#: forms.py:22 forms.py:89
+msgid "Remember me"
+msgstr "Zapamatuj si mě"
+
+#: forms.py:25
+msgid ""
+"Please enter a correct email and password. Note that the password field is "
+"case-sensitive."
+msgstr "Zadejte správný e-mail a heslo. Upozorňujeme, že v poli hesla se rozlišují malá a velká písmena."
+
+#: forms.py:27
+msgid "This account is inactive."
+msgstr "Tento účet je neaktivní."
+
+#: forms.py:78
+msgid "User"
+msgstr "Uživatel"
+
+#: forms.py:78
+msgid "User to be impersonated."
+msgstr "Uživatel, který má být zosobněn."
+
+#: forms.py:82
+msgid "Permanent"
+msgstr "Trvale"
+
+#: forms.py:83
+msgid "If selected, disables ending impersonation."
+msgstr "Pokud je vybrána, zakáže ukončení předstírání identity."
+
+#: links.py:22
+msgid "Logout"
+msgstr "Odhlásit se"
+
+#: links.py:27
+msgid "Change password"
+msgstr "Změnit heslo"
+
+#: links.py:32 views.py:68
+msgid "Impersonate user"
+msgstr "Zosobnit uživatele"
+
+#: links.py:37 links.py:44
+msgid "Set password"
+msgstr "Nastavit heslo"
+
+#: permissions.py:10
+msgid "Impersonate users"
+msgstr "Předstírání identity uživatelů"
+
+#: settings.py:11
+msgid ""
+"Controls the mechanism used to authenticated user. Options are: username, "
+"email"
+msgstr "Řídí mechanismus používaný k ověření uživatele. Možnosti jsou: uživatelské jméno, e-mail"
+
+#: settings.py:18
+msgid ""
+"Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
+" in. Value is time in seconds."
+msgstr "Maximální doba, po kterou uživatel klepnutím na políčko „Zapamatovat si mě“ zůstane přihlášený. Hodnota je čas v sekundách."
+
+#: settings.py:25
+msgid ""
+"Remove the \"Forgot your password?\" link on the login form used to trigger "
+"the password reset."
+msgstr "Odebrat &quot;Zapomněli jste heslo?&quot; odkaz na přihlašovacím formuláři pro spuštění resetování hesla."
+
+#: templates/authentication/login.html:11
+msgid "Login"
+msgstr "Přihlásit se"
+
+#: templates/authentication/login.html:23
+#: templates/authentication/login.html:32
+msgid "Sign in"
+msgstr "Přihlásit se"
+
+#: templates/authentication/login.html:39
+msgid "Forgot your password?"
+msgstr "Zapomněli jste heslo?"
+
+#: templates/authentication/password_reset_complete.html:8
+#: templates/authentication/password_reset_confirm.html:8
+#: templates/authentication/password_reset_confirm.html:20
+#: templates/authentication/password_reset_done.html:8
+#: templates/authentication/password_reset_form.html:8
+#: templates/authentication/password_reset_form.html:20
+msgid "Password reset"
+msgstr "Resetovat heslo"
+
+#: templates/authentication/password_reset_complete.html:15
+msgid "Password reset complete! Click the link below to login."
+msgstr "Obnovení hesla bylo dokončeno! Klepnutím na odkaz níže se přihlásíte."
+
+#: templates/authentication/password_reset_complete.html:17
+msgid "Login page"
+msgstr "Přihlašovací stránka"
+
+#: templates/authentication/password_reset_confirm.html:29
+#: templates/authentication/password_reset_form.html:29 views.py:212
+msgid "Submit"
+msgstr "Odeslat"
+
+#: templates/authentication/password_reset_done.html:15
+msgid "Password reset email sent!"
+msgstr "E-mail pro resetování hesla byl odeslán!"
+
+#: views.py:121
+msgid "Your password has been successfully changed."
+msgstr "Vaše heslo bylo úspěšně změněno."
+
+#: views.py:128
+msgid "Current user password change"
+msgstr "Změna hesla aktuálního uživatele"
+
+#: views.py:136
+msgid "Changing the password is not allowed for this account."
+msgstr "Změna hesla není pro tento účet povolena."
+
+#: views.py:203
+#, python-format
+msgid "Password change request performed on %(count)d user"
+msgstr "Žádost o změnu hesla byla provedena uživatelem %(count)d"
+
+#: views.py:205
+#, python-format
+msgid "Password change request performed on %(count)d users"
+msgstr "Žádost o změnu hesla byla provedena u uživatelů %(count)d"
+
+#: views.py:214
+msgid "Change user password"
+msgid_plural "Change users passwords"
+msgstr[0] "Změnit heslo uživatele"
+msgstr[1] "Změnit hesla uživatelů"
+msgstr[2] "Změnit hesla uživatelů"
+msgstr[3] "Změnit hesla uživatelů"
+
+#: views.py:224
+#, python-format
+msgid "Change password for user: %s"
+msgstr "Změnit heslo pro uživatele: %s"
+
+#: views.py:244
+msgid ""
+"Super user and staff user password reseting is not allowed, use the admin "
+"interface for these cases."
+msgstr "Vynulování uživatelského hesla super uživatele  není povoleno, pro tyto případy použijte rozhraní správce."
+
+#: views.py:254
+#, python-format
+msgid "Successful password reset for user: %s."
+msgstr "Úspěšné obnovení hesla pro uživatele: %s."
+
+#: views.py:260
+#, python-format
+msgid "Error reseting password for user \"%(user)s\": %(error)s"
+msgstr "Chyba při resetování hesla pro uživatele „%(user)s“: %(error)s"

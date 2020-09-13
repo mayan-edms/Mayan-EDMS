@@ -1,0 +1,346 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2018
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-30 04:17-0400\n"
+"PO-Revision-Date: 2020-08-18 04:38+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: apps.py:49 permissions.py:6 settings.py:11
+msgid "Document signatures"
+msgstr "امضا سند"
+
+#: apps.py:95
+msgid "Date"
+msgstr "تاریخ"
+
+#: apps.py:98 models.py:47
+msgid "Key ID"
+msgstr "شناسه کلیدی"
+
+#: apps.py:102 forms.py:62 models.py:52
+msgid "Signature ID"
+msgstr "شناسه امضا"
+
+#: apps.py:103 forms.py:74
+msgid "None"
+msgstr "هیچ یک"
+
+#: apps.py:106
+msgid "Type"
+msgstr "تایپ کنید"
+
+#: forms.py:17 forms.py:31 workflow_actions.py:19
+msgid "Key"
+msgstr "کلید"
+
+#: forms.py:22 serializers.py:33 workflow_actions.py:30
+msgid ""
+"The passphrase to unlock the key and allow it to be used to sign the "
+"document version."
+msgstr ""
+
+#: forms.py:24 workflow_actions.py:27
+msgid "Passphrase"
+msgstr "عبارت عبور"
+
+#: forms.py:33
+msgid "Private key that will be used to sign this document version."
+msgstr ""
+
+#: forms.py:44
+msgid "Signature is embedded?"
+msgstr "امضا جاسازی شده است؟"
+
+#: forms.py:46
+msgid "Signature date"
+msgstr "تاریخ امضاء"
+
+#: forms.py:49
+msgid "Signature key ID"
+msgstr "شناسه کلید امضا"
+
+#: forms.py:51
+msgid "Signature key present?"
+msgstr "امضای کلیدی در حال حاضر"
+
+#: forms.py:64
+msgid "Key fingerprint"
+msgstr "اثر انگشت اصلی"
+
+#: forms.py:68
+msgid "Key creation date"
+msgstr "تاریخ ایجاد کلید"
+
+#: forms.py:73
+msgid "Key expiration date"
+msgstr "تاریخ انقضاء کلیدی"
+
+#: forms.py:78
+msgid "Key length"
+msgstr "طول کلید"
+
+#: forms.py:82
+msgid "Key algorithm"
+msgstr "الگوریتم کلیدی"
+
+#: forms.py:86
+msgid "Key user ID"
+msgstr "شناسه کلیدی"
+
+#: forms.py:90
+msgid "Key type"
+msgstr "نوع کلید"
+
+#: links.py:30
+msgid "Verify all documents"
+msgstr "همه اسناد را تأیید کنید"
+
+#: links.py:37 links.py:77 queues.py:8
+msgid "Signatures"
+msgstr "امضا"
+
+#: links.py:43
+msgid "Delete"
+msgstr "حذف"
+
+#: links.py:50
+msgid "Sign detached"
+msgstr "مستقل نشوید"
+
+#: links.py:57
+msgid "Details"
+msgstr "جزئیات"
+
+#: links.py:64
+msgid "Download"
+msgstr "دانلود"
+
+#: links.py:70
+msgid "Sign embedded"
+msgstr "ورودی جاسازی شده"
+
+#: links.py:83
+msgid "Upload signature"
+msgstr "امضا آپلود"
+
+#: models.py:39
+msgid "Document version"
+msgstr "نسخه سند"
+
+#: models.py:43
+msgid "Date signed"
+msgstr "تاریخ امضا شده"
+
+#: models.py:46
+msgid "ID of the key that will be used to sign the document."
+msgstr ""
+
+#: models.py:56
+msgid "Public key fingerprint"
+msgstr "اثر انگشت کلید عمومی"
+
+#: models.py:63
+msgid "Document version signature"
+msgstr "امضای نسخه اسناد"
+
+#: models.py:64
+msgid "Document version signatures"
+msgstr "امضای سند نسخه"
+
+#: models.py:83
+msgid "Detached"
+msgstr "جدا"
+
+#: models.py:85
+msgid "Embedded"
+msgstr "جاسازی شده"
+
+#: models.py:100
+msgid "Document version embedded signature"
+msgstr "نسخه سند embedded امضا"
+
+#: models.py:101
+msgid "Document version embedded signatures"
+msgstr "نسخه سند embedded امضا"
+
+#: models.py:134
+msgid "Signature file previously generated."
+msgstr ""
+
+#: models.py:137
+msgid "Signature file"
+msgstr "فایل امضا"
+
+#: models.py:143
+msgid "Document version detached signature"
+msgstr "نسخه سند امضای جداگانه"
+
+#: models.py:144
+msgid "Document version detached signatures"
+msgstr "نسخه سند امضاهای جداگانه"
+
+#: models.py:147
+msgid "signature"
+msgstr "امضا"
+
+#: permissions.py:10
+msgid "Sign documents with detached signatures"
+msgstr "اسناد را با امضاهای جداگانه امضا کنید"
+
+#: permissions.py:14
+msgid "Sign documents with embedded signatures"
+msgstr "امضای اسناد با امضا های جاسازی شده"
+
+#: permissions.py:18
+msgid "Delete detached signatures"
+msgstr "امضاهای جداگانه را حذف کنید"
+
+#: permissions.py:22
+msgid "Download detached document signatures"
+msgstr "امضای سند جداگانه را دانلود کنید"
+
+#: permissions.py:26
+msgid "Upload detached document signatures"
+msgstr "امضای سند جداگانه را بارگیری کنید"
+
+#: permissions.py:30
+msgid "Verify document signatures"
+msgstr "امضای سند را تأیید کنید"
+
+#: permissions.py:34
+msgid "View details of document signatures"
+msgstr "مشاهده جزئیات امضاء اسناد"
+
+#: queues.py:13
+msgid "Verify key signatures"
+msgstr "تأیید امضاهای کلیدی"
+
+#: queues.py:17
+msgid "Unverify key signatures"
+msgstr "امضاهای کلیدی را تأیید نکنید"
+
+#: queues.py:21
+msgid "Verify document version"
+msgstr "نسخه سند را تایید کنید"
+
+#: queues.py:26
+msgid "Verify missing embedded signature"
+msgstr "امضای جاسازی نشده را تأیید کنید"
+
+#: settings.py:19
+msgid "Path to the Storage subclass to use when storing detached signatures."
+msgstr ""
+
+#: settings.py:28
+msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND."
+msgstr ""
+
+#: storages.py:13
+msgid ""
+"Unable to initialize the detached signatures storage. Check the settings {} "
+"and {} for formatting errors."
+msgstr ""
+
+#: storages.py:20
+msgid "Detached signatures"
+msgstr ""
+
+#: views.py:68 views.py:156
+msgid "Passphrase is needed to unlock this key."
+msgstr "رمز عبور برای باز کردن قفل این کلید ضروری است."
+
+#: views.py:81 views.py:169
+msgid "Passphrase is incorrect."
+msgstr "عبارت عبور اشتباه است"
+
+#: views.py:94 views.py:182
+msgid "Document version signed successfully."
+msgstr "نسخه سند با موفقیت امضا شد"
+
+#: views.py:122 views.py:217
+msgid "Sign"
+msgstr ""
+
+#: views.py:124
+#, python-format
+msgid "Sign document version \"%s\" with a detached signature"
+msgstr "نسخه سند \"%s\" را با امضای جداگانه وارد کنید"
+
+#: views.py:219
+#, python-format
+msgid "Sign document version \"%s\" with a embedded signature"
+msgstr "نسخه سند \"%s\" را با امضای جاسازی شده وارد کنید"
+
+#: views.py:236
+#, python-format
+msgid "Delete detached signature: %s"
+msgstr "امضای جداگانه را حذف کنید: %s"
+
+#: views.py:259
+#, python-format
+msgid "Details for signature: %s"
+msgstr "جزئیات برای امضا: %s"
+
+#: views.py:291
+msgid ""
+"Signatures help provide authorship evidence and tamper detection. They are "
+"very secure and hard to forge. A signature can be embedded as part of the "
+"document itself or uploaded as a separate file."
+msgstr ""
+
+#: views.py:320
+msgid "There are no signatures for this document."
+msgstr ""
+
+#: views.py:324
+#, python-format
+msgid "Signatures for document version: %s"
+msgstr "امضا برای نسخه سند: %s"
+
+#: views.py:356
+#, python-format
+msgid "Upload detached signature for document version: %s"
+msgstr "امضای جداگانه برای نسخه سند آپلود: %s"
+
+#: views.py:374
+msgid "On large databases this operation may take some time to execute."
+msgstr "در پایگاه داده های بزرگ این عملیات ممکن است برای اجرای برخی از زمان ها طول بکشد."
+
+#: views.py:375
+msgid "Verify all document for signatures?"
+msgstr "همه سند را برای امضاء تأیید کنید؟"
+
+#: views.py:385
+msgid "Signature verification queued successfully."
+msgstr "تأیید امضا با موفقیت انجام شد."
+
+#: workflow_actions.py:22
+msgid "Private key that will be used to sign the document version."
+msgstr ""
+
+#: workflow_actions.py:37
+msgid "Sign document (detached)"
+msgstr ""
+
+#: workflow_actions.py:49
+msgid ""
+"Document has no version to sign. You might be trying to use this action in "
+"an initial state before the created document is yet to be processed."
+msgstr ""
+
+#: workflow_actions.py:82
+msgid "Sign document (embedded)"
+msgstr ""

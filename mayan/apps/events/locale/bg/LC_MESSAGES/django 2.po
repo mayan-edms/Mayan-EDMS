@@ -1,0 +1,199 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2019-2020
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-08-30 04:17-0400\n"
+"PO-Revision-Date: 2020-04-25 15:39+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
+"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:27 links.py:47 links.py:52 links.py:57 permissions.py:5 views.py:34
+msgid "Events"
+msgstr "Събития"
+
+#: apps.py:39 apps.py:67
+msgid "Date and time"
+msgstr "Дата и час"
+
+#: apps.py:42 apps.py:70
+msgid "Actor"
+msgstr "Деец"
+
+#: apps.py:46 apps.py:75
+msgid "Event"
+msgstr "Събитие"
+
+#: apps.py:50 apps.py:80
+msgid "Target"
+msgstr "Цел"
+
+#: apps.py:54
+msgid "Action object"
+msgstr "Обект на действие"
+
+#: apps.py:59 forms.py:10 forms.py:67
+msgid "Namespace"
+msgstr "Именно пространство"
+
+#: apps.py:62 forms.py:14 forms.py:71
+msgid "Label"
+msgstr "Етикет"
+
+#: apps.py:86
+msgid "Seen"
+msgstr "Видяно"
+
+#: classes.py:144
+#, python-format
+msgid "Unknown or obsolete event type: %s"
+msgstr "Неизвестен или остарял тип събитие: %s"
+
+#: forms.py:18 forms.py:75
+msgid "Subscription"
+msgstr "Абонамент"
+
+#: forms.py:20 forms.py:77
+msgid "No"
+msgstr "Не"
+
+#: forms.py:21 forms.py:78
+msgid "Subscribed"
+msgstr "Абониран"
+
+#: html_widgets.py:57
+msgid "System"
+msgstr "Система"
+
+#: links.py:43
+msgid "My events"
+msgstr "Моите събития"
+
+#: links.py:61 models.py:65 views.py:78
+msgid "Event subscriptions"
+msgstr "Абонаменти за събитие"
+
+#: links.py:65
+msgid "Mark as seen"
+msgstr "Маркирайте като видяно"
+
+#: links.py:69
+msgid "Mark all as seen"
+msgstr "Маркирайте всички като видяни"
+
+#: links.py:74
+msgid "Subscriptions"
+msgstr "Абонаменти"
+
+#: models.py:23
+msgid "Name"
+msgstr "Име"
+
+#: models.py:27
+msgid "Stored event type"
+msgstr "Тип на съхранено събитие"
+
+#: models.py:28
+msgid "Stored event types"
+msgstr "Съхранени типове събития"
+
+#: models.py:54 models.py:81 models.py:113
+msgid "User"
+msgstr "Потребител"
+
+#: models.py:58 models.py:117
+msgid "Event type"
+msgstr "Тип на събитието"
+
+#: models.py:64
+msgid "Event subscription"
+msgstr "Абонамент за събития"
+
+#: models.py:85
+msgid "Action"
+msgstr "Действие"
+
+#: models.py:87
+msgid "Read"
+msgstr "Прочети"
+
+#: models.py:93
+msgid "Notification"
+msgstr "Уведомление"
+
+#: models.py:94 views.py:117
+msgid "Notifications"
+msgstr "Уведомления"
+
+#: models.py:123
+msgid "Object event subscription"
+msgstr "Абонамент за обектно събитие"
+
+#: models.py:124
+msgid "Object event subscriptions"
+msgstr "Абонаменти за обектни събития"
+
+#: permissions.py:8
+msgid "Access the events of an object"
+msgstr "Достъп до събитията на обект"
+
+#: views.py:57
+#, python-format
+msgid "Error updating event subscription; %s"
+msgstr "Грешка при актуализиране на абонамента за събития; %s"
+
+#: views.py:62
+msgid "Event subscriptions updated successfully"
+msgstr "Абонаментите за събития са актуализирани успешно"
+
+#: views.py:112
+msgid "Subscribe to global or object events to receive notifications."
+msgstr "Абонирайте се за глобални или обектни събития, за да получавате уведомления."
+
+#: views.py:115
+msgid "There are no notifications"
+msgstr "Няма уведомления"
+
+#: views.py:164
+msgid ""
+"Events are actions that have been performed to this object or using this "
+"object."
+msgstr "Събитията са действия, които са били извършени на този обект или са използвали този обект."
+
+#: views.py:167
+msgid "There are no events for this object"
+msgstr "Няма събития за този обект"
+
+#: views.py:169
+#, python-format
+msgid "Events for: %s"
+msgstr "Събития за: %s"
+
+#: views.py:209
+#, python-format
+msgid "Error updating object event subscription; %s"
+msgstr "Грешка при актуализиране на абонамента за обектно събитие; %s"
+
+#: views.py:215
+msgid "Object event subscriptions updated successfully"
+msgstr "Абонаментите за обектни събития са актуализирани успешно"
+
+#: views.py:248
+#, python-format
+msgid "Event subscriptions for: %s"
+msgstr "Абонаменти за събития за: %s"
+
+#: views.py:280
+#, python-format
+msgid "Events of type: %s"
+msgstr "Събития от тип: %s"
