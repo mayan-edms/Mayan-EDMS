@@ -309,7 +309,7 @@ class WorkflowInstance(models.Model):
     def __str__(self):
         return force_text(getattr(self, 'workflow', 'WI'))
 
-    def do_transition(self, transition, extra_data=None, user=None, comment=None):
+    def do_transition(self, transition, comment=None, extra_data=None, user=None):
         with transaction.atomic():
             try:
                 if transition in self.get_current_state().origin_transitions.all():
@@ -479,7 +479,15 @@ class WorkflowInstanceLogEntry(models.Model):
     def get_extra_data(self):
         result = {}
         for key, value in self.loads().items():
-            result[self.transition.fields.get(name=key).label] = value
+            try:
+                field = self.transition.fields.get(name=key)
+            except WorkflowTransitionField.DoesNotExist:
+                """
+                There is a reference for a field that does not exist or
+                has been deleted.
+                """
+            else:
+                result[field.label] = value
 
         return result
 

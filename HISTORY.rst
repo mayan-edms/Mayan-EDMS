@@ -232,7 +232,8 @@
 - Unify the spacing of the list columns for all variations of sort columns
   and columns with help text.
 - Move the column help text mark up into its own partial template.
-
+- Only instance valid workflow transition transition fields from an
+  existing workflow instance context.
 
 3.4.17 (2020-09-10)
 ===================

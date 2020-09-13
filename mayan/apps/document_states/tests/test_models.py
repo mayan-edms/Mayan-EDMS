@@ -12,7 +12,10 @@ from .literals import (
     TEST_WORKFLOW_STATE_ACTION_LABEL,
     TEST_WORKFLOW_STATE_ACTION_LABEL_2
 )
-from .mixins import WorkflowStateActionTestMixin, WorkflowTestMixin
+from .mixins import (
+    WorkflowStateActionTestMixin, WorkflowTestMixin,
+    WorkflowTransitionFieldTestMixin
+)
 
 
 class WorkflowInstanceModelTestCase(
@@ -193,3 +196,34 @@ class WorkflowStateActionModelTestCase(
             self.test_document.description,
             TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_TEXT_DESCRIPTION
         )
+
+
+class WorkflowTransitionFieldModelTestCase(
+    WorkflowTestMixin,
+    WorkflowTransitionFieldTestMixin,
+    GenericDocumentTestCase
+):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow_states()
+        self._create_test_workflow_transition()
+        self._create_test_workflow_transition_field()
+        self._upload_test_document()
+
+    def test_deleted_field_context_references(self):
+        """
+        Transition a workflow with a transition field, and the delete the
+        transition field. The retrieving the context should work even with an
+        obsolete field reference.
+        """
+        self._transition_test_workflow_instance(
+            extra_data={
+                self.test_workflow_transition_field.name: 'test'
+            }
+        )
+        self.test_document.workflows.first().log_entries.first().get_extra_data()
+        self.test_workflow_transition_field.delete()
+        self.test_document.workflows.first().log_entries.first().get_extra_data()

@@ -16,8 +16,8 @@ from .literals import (
 )
 from .mixins import (
     WorkflowTestMixin, WorkflowTransitionEventViewTestMixin,
-    WorkflowTransitionFieldViewTestMixin, WorkflowViewTestMixin,
-    WorkflowTransitionViewTestMixin
+    WorkflowTransitionFieldTestMixin, WorkflowTransitionFieldViewTestMixin,
+    WorkflowViewTestMixin, WorkflowTransitionViewTestMixin
 )
 
 
@@ -256,21 +256,6 @@ class WorkflowTransitionEventViewTestCase(
 
         response = self._request_test_workflow_transition_event_list_view()
         self.assertEqual(response.status_code, 200)
-
-
-class WorkflowTransitionFieldTestMixin:
-    def _create_test_workflow_transition_field(self, extra_data=None):
-        kwargs = {
-            'field_type': TEST_WORKFLOW_TRANSITION_FIELD_TYPE,
-            'name': TEST_WORKFLOW_TRANSITION_FIELD_NAME,
-            'label': TEST_WORKFLOW_TRANSITION_FIELD_LABEL,
-            'help_text': TEST_WORKFLOW_TRANSITION_FIELD_HELP_TEXT
-        }
-        kwargs.update(extra_data or {})
-
-        self.test_workflow_transition_field = self.test_workflow_transition.fields.create(
-            **kwargs
-        )
 
 
 class WorkflowTransitionFieldViewTestCase(

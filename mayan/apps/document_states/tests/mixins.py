@@ -440,6 +440,13 @@ class WorkflowTestMixin:
             user=self._test_case_user
         )
 
+    def _transition_test_workflow_instance(self, extra_data=None):
+        self.test_document.workflows.first().do_transition(
+            comment=TEST_WORKFLOW_INSTANCE_LOG_ENTRY_COMMENT,
+            extra_data=extra_data, transition=self.test_workflow_transition,
+            user=self._test_case_user
+        )
+
 
 class WorkflowToolViewTestMixin:
     def _request_workflow_launch_view(self):
@@ -548,6 +555,21 @@ class WorkflowTransitionAPIViewTestMixin:
                 'origin_state_pk': self.test_workflow_state_2.pk,
                 'destination_state_pk': self.test_workflow_state_1.pk,
             }
+        )
+
+
+class WorkflowTransitionFieldTestMixin:
+    def _create_test_workflow_transition_field(self, extra_data=None):
+        kwargs = {
+            'field_type': TEST_WORKFLOW_TRANSITION_FIELD_TYPE,
+            'name': TEST_WORKFLOW_TRANSITION_FIELD_NAME,
+            'label': TEST_WORKFLOW_TRANSITION_FIELD_LABEL,
+            'help_text': TEST_WORKFLOW_TRANSITION_FIELD_HELP_TEXT
+        }
+        kwargs.update(extra_data or {})
+
+        self.test_workflow_transition_field = self.test_workflow_transition.fields.create(
+            **kwargs
         )
 
 
