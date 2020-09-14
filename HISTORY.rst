@@ -234,6 +234,7 @@
 - Move the column help text mark up into its own partial template.
 - Only instance valid workflow transition transition fields from an
   existing workflow instance context.
+- Add helper script to find missing __init__.py files.
 
 3.4.17 (2020-09-10)
 ===================

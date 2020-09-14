@@ -187,7 +187,7 @@ translations-compile: ## Compile all translation files.
 	contrib/scripts/process_messages.py compile
 
 translations-push: ## Upload all translation files to Transifex.
-	tx push -s 
+	tx push -s
 
 translations-pull: ## Download all translation files from Transifex.
 	tx pull -f
@@ -279,6 +279,7 @@ test-wheel-via-docker-ubuntu: ## Make a wheel package and test it using an Ubunt
 	make wheel-test-suit \
 	"
 
+python-sdist-test-suit: ## Run the test suit from a built sdist package
 python-sdist-test-suit: python-sdist
 	rm -f -R _virtualenv
 	virtualenv _virtualenv
@@ -290,6 +291,7 @@ python-sdist-test-suit: python-sdist
 	_virtualenv/bin/mayan-edms.py test --mayan-apps \
 	'
 
+python-wheel-test-suit: ## Run the test suit from a built wheel package
 python-wheel-test-suit: wheel
 	rm -f -R _virtualenv
 	virtualenv _virtualenv
@@ -407,7 +409,7 @@ safety-check: ## Run a package safety check.
 # Other
 find-gitignores: ## Find stray .gitignore files.
 	@export FIND_GITIGNORES=`find -name '.gitignore'| wc -l`; \
-	if [ $${FIND_GITIGNORES} -gt 1 ] ;then echo "More than one .gitignore found."; fi
+	if [ $${FIND_GITIGNORES} -gt 1 ] ;then echo "More than one .gitignore found: $$FIND_GITIGNORES"; fi
 
 python-build:
 	docker rm -f mayan-edms-build || true && \
@@ -427,6 +429,11 @@ check-readme: ## Checks validity of the README.rst file for PyPI publication.
 
 check-missing-migrations: ## Make sure all models have proper migrations.
 	./manage.py makemigrations --dry-run --noinput --check
+
+check-missing-inits: ## Find missing __init__.py files from modules.
+check-missing-inits:
+	@contrib/scripts/find_missing_inits.py
+
 
 setup-dev-environment: ## Bootstrap a virtualenv by install all dependencies to start developing.
 	sudo apt-get install -y firefox-geckodriver gcc gettext gitlab-runner gnupg1 poppler-utils python3-dev tesseract-ocr-deu
