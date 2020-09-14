@@ -102,9 +102,8 @@ class ThemeListView(SingleObjectListView):
                 context=RequestContext(request=self.request)
             ),
             'no_results_text': _(
-                'Web links allow generating HTTP links from documents to '
-                'external resources. The link URL\'s can contain document '
-                'properties values.'
+                'Themes allow changing the visual appearance without '
+                'requiring code changes.'
             ),
             'no_results_title': _(
                 'There are no themes'
