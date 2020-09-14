@@ -55,9 +55,10 @@
 - Add new search backend based on Whoosh.
   To use it, change ``SEARCH_BACKEND`` to
   ``mayan.apps.dynamic_search.backends.whoosh.WhooshSearchBackend``.
-  This backend defaults to search result limit of 100 items. To increase
-  the limit set ``search_limit`` in ``SEARCH_BACKEND_ARGUMENTS``.
   This backend will be the default one in a future release.
+- New setting to limit the number of search results returned. This setting
+  avoid runaway CPU usage on ambiguous search terms. The setting name is
+  ``SEARCH_RESULTS_LIMIT`` and defaults to 100.
 - Improve and unify the way icon shadows is produced. Removed the
   ``shadow_class`` and ``shadow_class_transformation_list`` arguments.
 - Improve and simplify the logging system. It is now possible to change
@@ -218,8 +219,6 @@
   de-duplicate the labels before altering the schema.
 - Enable the web link navigated event for subscription and as workflow
   trigger.
-- Add the setting ``SEARCH_RESULTS_LIMIT`` which limits the number search
-  results to fetch and display. Defaults to ``100``.
 - Add events to assets.
 - Re query search queryset after it has been sliced to workaround the ORM
   "Cannot filter a query once a slice has been taken".
