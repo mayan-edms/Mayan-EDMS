@@ -8,6 +8,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from actstream import action
 
+from mayan.apps.common.utils import return_attrib
+
 from .literals import (
     EVENT_MANAGER_ORDER_AFTER, EVENT_MANAGER_ORDER_BEFORE
 )
@@ -42,7 +44,7 @@ class EventManager:
             if value == 'self':
                 result[argument] = self.instance
             elif isinstance(value, str):
-                result[argument] = getattr(self.instance, value)
+                result[argument] = return_attrib(obj=self.instance, attrib=value)
             else:
                 result[argument] = value
 
