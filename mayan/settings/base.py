@@ -239,7 +239,7 @@ STATICFILES_FINDERS = (
     'mayan.apps.common.finders.MayanAppDirectoriesFinder',
 )
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.StaticFilesStorage'
 
 TEST_RUNNER = 'mayan.apps.common.tests.runner.MayanTestRunner'
 
