@@ -12,6 +12,7 @@ from .literals import (
     TEST_WORKFLOW_STATE_LABEL_EDITED,
     TEST_WORKFLOW_TRANSITION_FIELD_HELP_TEXT,
     TEST_WORKFLOW_TRANSITION_FIELD_LABEL,
+    TEST_WORKFLOW_TRANSITION_FIELD_LABEL_EDITED,
     TEST_WORKFLOW_TRANSITION_FIELD_NAME, TEST_WORKFLOW_TRANSITION_FIELD_TYPE,
     TEST_WORKFLOW_TRANSITION_LABEL, TEST_WORKFLOW_TRANSITION_LABEL_EDITED,
     TEST_WORKFLOW_TRANSITION_LABEL_2
@@ -466,14 +467,6 @@ class WorkflowTransitionEventViewTestMixin:
 
 
 class WorkflowTransitionFieldViewTestMixin:
-    def _request_test_workflow_transition_field_list_view(self):
-        return self.get(
-            viewname='document_states:workflow_template_transition_field_list',
-            kwargs={
-                'workflow_template_transition_id': self.test_workflow_transition.pk
-            }
-        )
-
     def _request_workflow_transition_field_create_view(self):
         return self.post(
             viewname='document_states:workflow_template_transition_field_create',
@@ -493,6 +486,27 @@ class WorkflowTransitionFieldViewTestMixin:
             kwargs={
                 'workflow_template_transition_field_id': self.test_workflow_transition_field.pk
             },
+        )
+
+    def _request_workflow_transition_field_edit_view(self):
+        return self.post(
+            viewname='document_states:workflow_template_transition_field_edit',
+            kwargs={
+                'workflow_template_transition_field_id': self.test_workflow_transition_field.pk
+            }, data={
+                'field_type': TEST_WORKFLOW_TRANSITION_FIELD_TYPE,
+                'name': TEST_WORKFLOW_TRANSITION_FIELD_NAME,
+                'label': TEST_WORKFLOW_TRANSITION_FIELD_LABEL_EDITED,
+                'help_text': TEST_WORKFLOW_TRANSITION_FIELD_HELP_TEXT
+            }
+        )
+
+    def _request_test_workflow_transition_field_list_view(self):
+        return self.get(
+            viewname='document_states:workflow_template_transition_field_list',
+            kwargs={
+                'workflow_template_transition_id': self.test_workflow_transition.pk
+            }
         )
 
 

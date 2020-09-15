@@ -50,6 +50,7 @@ TEST_WORKFLOW_STATE_LABEL_EDITED = 'test state label edited'
 TEST_WORKFLOW_STATE_COMPLETION = 66
 TEST_WORKFLOW_TRANSITION_FIELD_HELP_TEXT = 'test workflow transition field help test'
 TEST_WORKFLOW_TRANSITION_FIELD_LABEL = 'test workflow transition field'
+TEST_WORKFLOW_TRANSITION_FIELD_LABEL_EDITED = 'test workflow transition field edited'
 TEST_WORKFLOW_TRANSITION_FIELD_NAME = 'test_workflow_transition_field'
 TEST_WORKFLOW_TRANSITION_FIELD_TYPE = FIELD_TYPE_CHOICE_CHAR
 TEST_WORKFLOW_TRANSITION_LABEL = 'test transition label'

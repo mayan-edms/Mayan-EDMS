@@ -105,6 +105,10 @@ class DocumentStatesApp(MayanAppConfig):
         error_log.register_model(model=WorkflowStateAction)
 
         EventModelRegistry.register(model=Workflow)
+        EventModelRegistry.register(model=WorkflowState)
+        EventModelRegistry.register(model=WorkflowStateAction)
+        EventModelRegistry.register(model=WorkflowTransition)
+        EventModelRegistry.register(model=WorkflowTransitionField)
 
         WorkflowAction.load_modules()
 

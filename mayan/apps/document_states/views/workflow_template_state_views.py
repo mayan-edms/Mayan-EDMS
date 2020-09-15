@@ -63,6 +63,7 @@ class WorkflowTemplateStateActionCreateView(
 
     def get_instance_extra_data(self):
         return {
+            '_event_actor': self.request.user,
             'action_path': self.kwargs['class_path'],
             'state': self.external_object
         }
@@ -90,6 +91,11 @@ class WorkflowTemplateStateActionDeleteView(SingleObjectDeleteView):
             'title': _('Delete workflow state action: %s') % self.object,
             'workflow': self.object.state.workflow,
             'workflow_state': self.object.state,
+        }
+
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user
         }
 
     def get_post_action_redirect(self):
@@ -128,6 +134,11 @@ class WorkflowTemplateStateActionEditView(SingleObjectDynamicFormEditView):
         return self.object.get_class_instance().get_form_schema(
             request=self.request, workflow_state=self.object.state
         )
+
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user
+        }
 
     def get_post_action_redirect(self):
         return reverse(
@@ -223,7 +234,10 @@ class WorkflowTemplateStateCreateView(ExternalObjectMixin, SingleObjectCreateVie
         }
 
     def get_instance_extra_data(self):
-        return {'workflow': self.external_object}
+        return {
+            '_event_actor': self.request.user,
+            'workflow': self.external_object
+        }
 
     def get_source_queryset(self):
         return self.external_object.states.all()
@@ -252,6 +266,11 @@ class WorkflowTemplateStateDeleteView(SingleObjectDeleteView):
             'workflow': self.object.workflow,
         }
 
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user
+        }
+
     def get_success_url(self):
         return reverse(
             viewname='document_states:workflow_template_state_list',
@@ -275,6 +294,11 @@ class WorkflowTemplateStateEditView(SingleObjectEditView):
                 'Edit workflow state: %s'
             ) % self.object,
             'workflow': self.object.workflow,
+        }
+
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user
         }
 
     def get_success_url(self):

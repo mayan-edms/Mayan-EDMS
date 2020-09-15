@@ -234,6 +234,8 @@
 - Only instance valid workflow transition transition fields from an
   existing workflow instance context.
 - Add helper script to find missing __init__.py files.
+- Trigger the workflow edited event when making changes to the workflow
+  states, state actions, transitions, or transition fields.
 
 3.4.17 (2020-09-10)
 ===================

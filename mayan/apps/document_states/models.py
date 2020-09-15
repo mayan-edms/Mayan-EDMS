@@ -24,7 +24,12 @@ from mayan.apps.common.serialization import yaml_load
 from mayan.apps.common.validators import YAMLValidator, validate_internal_name
 from mayan.apps.documents.models import Document, DocumentType
 from mayan.apps.documents.permissions import permission_document_view
+from mayan.apps.events.classes import (
+    EventManagerMethodAfter, EventManagerSave
+)
+from mayan.apps.events.decorators import method_event
 from mayan.apps.events.models import StoredEventType
+
 from mayan.apps.templating.classes import Template
 
 from .events import event_workflow_created, event_workflow_edited
@@ -572,6 +577,15 @@ class WorkflowState(models.Model):
     def __str__(self):
         return self.label
 
+    @method_event(
+        action_object='self',
+        event_manager_class=EventManagerMethodAfter,
+        event=event_workflow_edited,
+        target='workflow',
+    )
+    def delete(self, *args, **kwargs):
+        return super().delete(*args, **kwargs)
+
     @property
     def entry_actions(self):
         return self.actions.filter(when=WORKFLOW_ACTION_ON_ENTRY)
@@ -605,6 +619,19 @@ class WorkflowState(models.Model):
             )
         ).distinct()
 
+    @method_event(
+        event_manager_class=EventManagerSave,
+        created={
+            'action_object': 'self',
+            'event': event_workflow_edited,
+            'target': 'workflow',
+        },
+        edited={
+            'action_object': 'self',
+            'event': event_workflow_edited,
+            'target': 'workflow',
+        }
+    )
     def save(self, *args, **kwargs):
         # Solve issue #557 "Break workflows with invalid input"
         # without using a migration.
@@ -665,6 +692,15 @@ class WorkflowStateAction(models.Model):
     def __str__(self):
         return self.label
 
+    @method_event(
+        action_object='self',
+        event_manager_class=EventManagerMethodAfter,
+        event=event_workflow_edited,
+        target='state.workflow',
+    )
+    def delete(self, *args, **kwargs):
+        return super().delete(*args, **kwargs)
+
     def dumps(self, data):
         self.action_data = json.dumps(obj=data)
         self.save()
@@ -716,6 +752,22 @@ class WorkflowStateAction(models.Model):
     def loads(self):
         return json.loads(s=self.action_data or '{}')
 
+    @method_event(
+        event_manager_class=EventManagerSave,
+        created={
+            'action_object': 'self',
+            'event': event_workflow_edited,
+            'target': 'state.workflow',
+        },
+        edited={
+            'action_object': 'self',
+            'event': event_workflow_edited,
+            'target': 'state.workflow',
+        }
+    )
+    def save(self, *args, **kwargs):
+        return super().save(*args, **kwargs)
+
 
 class WorkflowTransition(models.Model):
     workflow = models.ForeignKey(
@@ -756,6 +808,15 @@ class WorkflowTransition(models.Model):
     def __str__(self):
         return self.label
 
+    @method_event(
+        action_object='self',
+        event_manager_class=EventManagerMethodAfter,
+        event=event_workflow_edited,
+        target='workflow',
+    )
+    def delete(self, *args, **kwargs):
+        return super().delete(*args, **kwargs)
+
     def evaluate_condition(self, workflow_instance):
         if self.has_condition():
             return Template(template_string=self.condition).render(
@@ -778,6 +839,22 @@ class WorkflowTransition(models.Model):
         'return value.'
     )
     has_condition.short_description = _('Has a condition?')
+
+    @method_event(
+        event_manager_class=EventManagerSave,
+        created={
+            'action_object': 'self',
+            'event': event_workflow_edited,
+            'target': 'workflow',
+        },
+        edited={
+            'action_object': 'self',
+            'event': event_workflow_edited,
+            'target': 'workflow',
+        }
+    )
+    def save(self, *args, **kwargs):
+        return super().save(*args, **kwargs)
 
 
 class WorkflowTransitionField(models.Model):
@@ -830,8 +907,33 @@ class WorkflowTransitionField(models.Model):
     def __str__(self):
         return self.label
 
+    @method_event(
+        action_object='self',
+        event_manager_class=EventManagerMethodAfter,
+        event=event_workflow_edited,
+        target='transition.workflow',
+    )
+    def delete(self, *args, **kwargs):
+        return super().delete(*args, **kwargs)
+
     def get_widget_kwargs(self):
         return yaml_load(stream=self.widget_kwargs or '{}')
+
+    @method_event(
+        event_manager_class=EventManagerSave,
+        created={
+            'action_object': 'self',
+            'event': event_workflow_edited,
+            'target': 'transition.workflow',
+        },
+        edited={
+            'action_object': 'self',
+            'event': event_workflow_edited,
+            'target': 'transition.workflow',
+        }
+    )
+    def save(self, *args, **kwargs):
+        return super().save(*args, **kwargs)
 
 
 class WorkflowTransitionTriggerEvent(models.Model):
