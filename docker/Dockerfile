@@ -103,6 +103,7 @@ apt-get install -y --no-install-recommends \
     gcc \
     python3-dev \
     python3-venv \
+    procps \
 && mkdir -p "${PROJECT_INSTALL_DIR}" \
 && chown -R mayan:mayan "${PROJECT_INSTALL_DIR}" \
 && chown -R mayan:mayan /src
