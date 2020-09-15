@@ -1,17 +1,18 @@
 [supervisord]
 environment=
     PYTHONPATH="{{ MEDIA_ROOT }}/mayan_settings",
-    DJANGO_SETTINGS_MODULE=mayan.settings.production,
+    DJANGO_SETTINGS_MODULE=mayan.settings.development,
     MAYAN_MEDIA_ROOT="{{ MEDIA_ROOT }}",
     MAYAN_ALLOWED_HOSTS="{{ ALLOWED_HOSTS }}",
     MAYAN_CELERY_RESULT_BACKEND="{{ CELERY_RESULT_BACKEND }}",
     MAYAN_CELERY_BROKER_URL="{{ CELERY_BROKER_URL }}",
     MAYAN_DATABASES="{{ DATABASES }}"
+    PYTHONDONTWRITEBYTECODE=1
 
 [program:mayan-gunicorn]
 autorestart = true
 autostart = true
-command = {{ INSTALLATION_PATH }}/bin/gunicorn -w {{ GUNICORN_WORKERS }} mayan.wsgi --max-requests 500 --max-requests-jitter 50 --worker-class sync --bind 0.0.0.0:8000 --timeout {{ GUNICORN_TIMEOUT }}
+command = {{ INSTALLATION_PATH }}/bin/gunicorn -w {{ GUNICORN_WORKERS }} mayan.wsgi --max-requests 500 --max-requests-jitter 50 --worker-class sync --bind 0.0.0.0:8000 --timeout {{ GUNICORN_TIMEOUT }} --reload
 user = mayan
 
 {% for worker in workers %}
