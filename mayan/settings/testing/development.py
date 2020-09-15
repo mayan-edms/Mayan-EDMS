@@ -1,4 +1,4 @@
 from .base import *  # NOQA
 
-DEBUG = False
+DEBUG = True
 SIGNATURES_GPG_PATH = '/usr/bin/gpg1'
