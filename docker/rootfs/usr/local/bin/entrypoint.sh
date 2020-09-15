@@ -19,7 +19,9 @@ export MAYAN_BIN=/opt/mayan-edms/bin/mayan-edms.py
 export MAYAN_INSTALL_DIR=/opt/mayan-edms
 export MAYAN_PYTHON_BIN_DIR=/opt/mayan-edms/bin/
 export MAYAN_MEDIA_ROOT=/var/lib/mayan
-export MAYAN_SETTINGS_MODULE=${MAYAN_SETTINGS_MODULE:-mayan.settings.production}
+export MAYAN_SETTINGS_MODULE=${MAYAN_SETTINGS_MODULE:-mayan.settings.development}
+
+export PYTHONDONTWRITEBYTECODE=1
 
 # Set DJANGO_SETTINGS_MODULE to MAYAN_SETTINGS_MODULE to avoid two
 # different environments for the setting file.
