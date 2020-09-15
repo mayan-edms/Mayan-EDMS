@@ -39,6 +39,7 @@ apt-get update \
     libmariadb3 \
     libpq5 \
     libreoffice \
+    procps \
     poppler-utils \
     python3-distutils \
     sane-utils \
