@@ -236,6 +236,8 @@
 - Add helper script to find missing __init__.py files.
 - Trigger the workflow edited event when making changes to the workflow
   states, state actions, transitions, or transition fields.
+- Update Python client for PostgreSQL from version 2.8.4 to 2.8.6, and Redis
+  client version from 3.4.1 to 3.5.3.
 
 3.4.17 (2020-09-10)
 ===================
