@@ -1,3 +1,8 @@
+3.6 (202X-XX-XX)
+================
+- Allow setting the default state of the "Match All" advanced
+  search form checkbox.
+
 3.5 (2020-XX-XX)
 ================
 - Update dependencies versions:
