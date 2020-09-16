@@ -9,46 +9,46 @@ from mayan.apps.views.generics import (
 from mayan.apps.views.mixins import ExternalObjectMixin
 
 from ..events import event_document_view
-from ..forms import DocumentVersionDownloadForm, DocumentVersionPreviewForm
-from ..models import Document, DocumentVersion
+from ..forms import DocumentFileDownloadForm, DocumentFilePreviewForm
+from ..models import Document, DocumentFile
 from ..permissions import (
-    permission_document_version_revert, permission_document_version_view
+    permission_document_file_revert, permission_document_file_view
 )
 
 from .document_views import DocumentDownloadFormView, DocumentDownloadView
 
 __all__ = (
-    'DocumentVersionDownloadFormView', 'DocumentVersionDownloadView',
-    'DocumentVersionListView', 'DocumentVersionRevertView',
-    'DocumentVersionView'
+    'DocumentFileDownloadFormView', 'DocumentFileDownloadView',
+    'DocumentFileListView', 'DocumentFileRevertView',
+    'DocumentFileView'
 )
 logger = logging.getLogger(name=__name__)
 
 
-class DocumentVersionDownloadFormView(DocumentDownloadFormView):
-    form_class = DocumentVersionDownloadForm
-    model = DocumentVersion
-    pk_url_kwarg = 'document_version_id'
+class DocumentFileDownloadFormView(DocumentDownloadFormView):
+    form_class = DocumentFileDownloadForm
+    model = DocumentFile
+    pk_url_kwarg = 'document_file_id'
     querystring_form_fields = (
         'compressed', 'zip_filename', 'preserve_extension'
     )
-    viewname = 'documents:document_multiple_version_download'
+    viewname = 'documents:document_multiple_file_download'
 
     def get_extra_context(self):
         result = super(
-            DocumentVersionDownloadFormView, self
+            DocumentFileDownloadFormView, self
         ).get_extra_context()
 
         result.update({
-            'title': _('Download document version'),
+            'title': _('Download document file'),
         })
 
         return result
 
 
-class DocumentVersionDownloadView(DocumentDownloadView):
-    model = DocumentVersion
-    pk_url_kwarg = 'document_version_id'
+class DocumentFileDownloadView(DocumentDownloadView):
+    model = DocumentFile
+    pk_url_kwarg = 'document_file_id'
 
     def get_item_filename(self, item):
         preserve_extension = self.request.GET.get(
@@ -62,9 +62,9 @@ class DocumentVersionDownloadView(DocumentDownloadView):
         return item.get_rendered_string(preserve_extension=preserve_extension)
 
 
-class DocumentVersionListView(ExternalObjectMixin, SingleObjectListView):
+class DocumentFileListView(ExternalObjectMixin, SingleObjectListView):
     external_object_class = Document
-    external_object_permission = permission_document_version_view
+    external_object_permission = permission_document_file_view
     external_object_pk_url_kwarg = 'document_id'
 
     def get_document(self):
@@ -78,25 +78,25 @@ class DocumentVersionListView(ExternalObjectMixin, SingleObjectListView):
             'list_as_items': True,
             'object': self.get_document(),
             'table_cell_container_classes': 'td-container-thumbnail',
-            'title': _('Versions of document: %s') % self.get_document(),
+            'title': _('Files of document: %s') % self.get_document(),
         }
 
     def get_source_queryset(self):
-        return self.get_document().versions.order_by('-timestamp')
+        return self.get_document().files.order_by('-timestamp')
 
 
-class DocumentVersionRevertView(ExternalObjectMixin, ConfirmView):
-    external_object_class = DocumentVersion
-    external_object_permission = permission_document_version_revert
-    external_object_pk_url_kwarg = 'document_version_id'
+class DocumentFileRevertView(ExternalObjectMixin, ConfirmView):
+    external_object_class = DocumentFile
+    external_object_permission = permission_document_file_revert
+    external_object_pk_url_kwarg = 'document_file_id'
 
     def get_extra_context(self):
         return {
             'message': _(
-                'All later version after this one will be deleted too.'
+                'All later file after this one will be deleted too.'
             ),
             'object': self.external_object.document,
-            'title': _('Revert to this version?'),
+            'title': _('Revert to this file?'),
         }
 
     def view_action(self):
@@ -104,25 +104,25 @@ class DocumentVersionRevertView(ExternalObjectMixin, ConfirmView):
             self.external_object.revert(_user=self.request.user)
             messages.success(
                 message=_(
-                    'Document version reverted successfully'
+                    'Document file reverted successfully'
                 ), request=self.request
             )
         except Exception as exception:
             messages.error(
-                message=_('Error reverting document version; %s') % exception,
+                message=_('Error reverting document file; %s') % exception,
                 request=self.request
             )
 
 
-class DocumentVersionView(SingleObjectDetailView):
-    form_class = DocumentVersionPreviewForm
-    model = DocumentVersion
-    object_permission = permission_document_version_view
-    pk_url_kwarg = 'document_version_id'
+class DocumentFileView(SingleObjectDetailView):
+    form_class = DocumentFilePreviewForm
+    model = DocumentFile
+    object_permission = permission_document_file_view
+    pk_url_kwarg = 'document_file_id'
 
     def dispatch(self, request, *args, **kwargs):
         result = super(
-            DocumentVersionView, self
+            DocumentFileView, self
         ).dispatch(request, *args, **kwargs)
         self.object.document.add_as_recent_document_for_user(
             request.user
@@ -137,5 +137,5 @@ class DocumentVersionView(SingleObjectDetailView):
         return {
             'hide_labels': True,
             'object': self.object,
-            'title': _('Preview of document version: %s') % self.object,
+            'title': _('Preview of document file: %s') % self.object,
         }

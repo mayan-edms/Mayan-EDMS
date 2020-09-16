@@ -17,5 +17,5 @@ class DocumentTypeSettingsAdmin(admin.ModelAdmin):
 
 @admin.register(DocumentVersionOCRError)
 class DocumentVersionOCRErrorAdmin(admin.ModelAdmin):
-    list_display = ('document_version', 'datetime_submitted')
-    readonly_fields = ('document_version', 'datetime_submitted', 'result')
+    list_display = ('document_file', 'datetime_submitted')
+    readonly_fields = ('document_file', 'datetime_submitted', 'result')

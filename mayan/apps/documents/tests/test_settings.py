@@ -77,7 +77,7 @@ class DocumentStorageSettingsTestCase(SmartSettingTestMixin, BaseTestCase):
                 name=STORAGE_NAME_DOCUMENT_VERSION
             ).get_storage_instance()
         self.assertTrue('Unable to initialize' in str(assertion.exception))
-        self.assertTrue('document version' in str(assertion.exception))
+        self.assertTrue('document file' in str(assertion.exception))
 
     def test_setting_document_cache_maximum_size(self):
         old_value = setting_document_cache_maximum_size.value

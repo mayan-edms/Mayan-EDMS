@@ -9,6 +9,6 @@ signal_post_document_type_change = Signal(
 signal_post_initial_document_type = Signal(
     providing_args=('instance',), use_caching=True
 )
-signal_post_version_upload = Signal(
+signal_post_file_upload = Signal(
     providing_args=('instance',), use_caching=True
 )

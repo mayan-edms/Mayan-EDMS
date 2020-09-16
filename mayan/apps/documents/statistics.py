@@ -46,7 +46,7 @@ def new_document_pages_per_month():
     )
 
     qss = qsstats.QuerySetStats(
-        DocumentPage.objects.all(), 'document_version__document__date_added'
+        DocumentPage.objects.all(), 'document_file__document__date_added'
     )
 
     now = timezone.now().date()
@@ -80,13 +80,13 @@ def new_documents_this_month(user=None):
     return qss.this_month() or '0'
 
 
-def new_document_versions_per_month():
-    DocumentVersion = apps.get_model(
-        app_label='documents', model_name='DocumentVersion'
+def new_document_files_per_month():
+    DocumentFile = apps.get_model(
+        app_label='documents', model_name='DocumentFile'
     )
 
     qss = qsstats.QuerySetStats(
-        DocumentVersion.objects.all(), 'document__date_added'
+        DocumentFile.objects.all(), 'document__date_added'
     )
 
     now = timezone.now().date()
@@ -119,7 +119,7 @@ def new_document_pages_this_month(user=None):
         )
 
     qss = qsstats.QuerySetStats(
-        queryset, 'document_version__document__date_added'
+        queryset, 'document_file__document__date_added'
     )
     return qss.this_month() or '0'
 
@@ -157,13 +157,13 @@ def total_document_per_month():
     }
 
 
-def total_document_version_per_month():
-    DocumentVersion = apps.get_model(
-        app_label='documents', model_name='DocumentVersion'
+def total_document_file_per_month():
+    DocumentFile = apps.get_model(
+        app_label='documents', model_name='DocumentFile'
     )
 
     qss = qsstats.QuerySetStats(
-        DocumentVersion.objects.all(), 'document__date_added'
+        DocumentFile.objects.all(), 'document__date_added'
     )
     now = timezone.now()
 
@@ -200,7 +200,7 @@ def total_document_page_per_month():
     )
 
     qss = qsstats.QuerySetStats(
-        DocumentPage.objects.all(), 'document_version__document__date_added'
+        DocumentPage.objects.all(), 'document_file__document__date_added'
     )
     now = timezone.now()
 
@@ -241,9 +241,9 @@ namespace.add_statistic(
 )
 namespace.add_statistic(
     klass=StatisticLineChart,
-    slug='new-document-versions-per-month',
-    label=_('New document versions per month'),
-    func=new_document_versions_per_month,
+    slug='new-document-files-per-month',
+    label=_('New document files per month'),
+    func=new_document_files_per_month,
     minute='0'
 )
 namespace.add_statistic(
@@ -262,9 +262,9 @@ namespace.add_statistic(
 )
 namespace.add_statistic(
     klass=StatisticLineChart,
-    slug='total-document-versions-at-each-month',
-    label=_('Total document versions at each month'),
-    func=total_document_version_per_month,
+    slug='total-document-files-at-each-month',
+    label=_('Total document files at each month'),
+    func=total_document_file_per_month,
     minute='0'
 )
 namespace.add_statistic(

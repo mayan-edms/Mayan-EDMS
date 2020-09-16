@@ -42,16 +42,16 @@ class DocumentTestCase(GenericDocumentTestCase):
         )
         self.assertEqual(self.test_document.page_count, 1)
 
-    def test_version_creation(self):
+    def test_file_creation(self):
         with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-            self.test_document.new_version(file_object=file_object)
+            self.test_document.new_file(file_object=file_object)
 
         with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-            self.test_document.new_version(
+            self.test_document.new_file(
                 file_object=file_object, comment='test comment 1'
             )
 
-        self.assertEqual(self.test_document.versions.count(), 3)
+        self.assertEqual(self.test_document.files.count(), 3)
 
     def test_restoring_documents(self):
         self.assertEqual(Document.valid.count(), 1)
@@ -144,7 +144,7 @@ class PDFAlternateRotationTestCase(GenericDocumentTestCase):
         )
         self.assertEqual(
             layer_saved_transformations.get_transformations_for(
-                obj=self.test_document.latest_version.pages.first()
+                obj=self.test_document.latest_file.pages.first()
             ).count(), 1
         )
 
@@ -189,44 +189,44 @@ class MultiPageTiffTestCase(GenericDocumentTestCase):
         self.assertEqual(self.test_document.page_count, 2)
 
 
-class DocumentVersionTestCase(GenericDocumentTestCase):
-    def test_add_new_version(self):
-        self.assertEqual(self.test_document.versions.count(), 1)
+class DocumentFileTestCase(GenericDocumentTestCase):
+    def test_add_new_file(self):
+        self.assertEqual(self.test_document.files.count(), 1)
 
         with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-            self.test_document.new_version(
+            self.test_document.new_file(
                 file_object=file_object
             )
 
-        self.assertEqual(self.test_document.versions.count(), 2)
+        self.assertEqual(self.test_document.files.count(), 2)
 
         self.assertEqual(
             self.test_document.checksum,
             TEST_SMALL_DOCUMENT_CHECKSUM
         )
 
-    def test_revert_version(self):
-        self.assertEqual(self.test_document.versions.count(), 1)
+    def test_revert_file(self):
+        self.assertEqual(self.test_document.files.count(), 1)
 
         # Needed by MySQL as milliseconds value is not store in timestamp
         # field
         time.sleep(1.01)
 
         with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-            self.test_document.new_version(
+            self.test_document.new_file(
                 file_object=file_object
             )
 
-        self.assertEqual(self.test_document.versions.count(), 2)
+        self.assertEqual(self.test_document.files.count(), 2)
 
-        self.test_document.versions.first().revert()
+        self.test_document.files.first().revert()
 
-        self.assertEqual(self.test_document.versions.count(), 1)
+        self.assertEqual(self.test_document.files.count(), 1)
 
     def test_method_get_absolute_url(self):
         self._upload_test_document()
 
-        self.assertTrue(self.test_document.latest_version.get_absolute_url())
+        self.assertTrue(self.test_document.latest_file.get_absolute_url())
 
 
 class DocumentManagerTestCase(BaseTestCase):
@@ -271,7 +271,7 @@ class DocumentTypeModelTestCase(GenericDocumentTestCase):
         self._upload_test_document()
         self.assertEqual(
             self.test_document_filename,
-            self.test_document.latest_version.file
+            self.test_document.latest_file.file
         )
 
 

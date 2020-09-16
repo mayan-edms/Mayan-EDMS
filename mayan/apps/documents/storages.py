@@ -25,16 +25,16 @@ storage_document_image_cache = DefinedStorage(
     kwargs=setting_documentimagecache_storage_arguments.value
 )
 
-storage_document_versions = DefinedStorage(
+storage_document_files = DefinedStorage(
     dotted_path=setting_storage_backend.value,
     error_message=_(
-        'Unable to initialize the document version storage. Check '
+        'Unable to initialize the document file storage. Check '
         'the settings {} and {} for formatting errors.'.format(
             setting_storage_backend.global_name,
             setting_storage_backend_arguments.global_name
         )
     ),
-    label=_('Document version files'),
+    label=_('Document files'),
     name=STORAGE_NAME_DOCUMENT_VERSION,
     kwargs=setting_storage_backend_arguments.value
 )

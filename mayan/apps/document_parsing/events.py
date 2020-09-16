@@ -10,9 +10,9 @@ event_parsing_document_content_deleted = namespace.add_event_type(
     label=_('Document parsed content deleted'),
     name='document_content_deleted'
 )
-event_parsing_document_version_submit = namespace.add_event_type(
-    label=_('Document version submitted for parsing'), name='version_submit'
+event_parsing_document_file_submit = namespace.add_event_type(
+    label=_('Document file submitted for parsing'), name='version_submit'
 )
-event_parsing_document_version_finish = namespace.add_event_type(
-    label=_('Document version parsing finished'), name='version_finish'
+event_parsing_document_file_finish = namespace.add_event_type(
+    label=_('Document file parsing finished'), name='version_finish'
 )

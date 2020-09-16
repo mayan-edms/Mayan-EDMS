@@ -10,7 +10,7 @@ from model_utils.managers import InheritanceManager
 
 from mayan.apps.django_gpg.exceptions import VerificationError
 from mayan.apps.django_gpg.models import Key
-from mayan.apps.documents.models import DocumentVersion
+from mayan.apps.documents.models import DocumentFile
 from mayan.apps.storage.classes import DefinedStorageLazy
 
 from .literals import STORAGE_NAME_DOCUMENT_SIGNATURES_DETACHED_SIGNATURE
@@ -33,9 +33,9 @@ class SignatureBaseModel(models.Model):
     it will generate a unique signature ID. No two signature IDs are the same,
     even when using the same key.
     """
-    document_version = models.ForeignKey(
+    document_file = models.ForeignKey(
         editable=False, on_delete=models.CASCADE, related_name='signatures',
-        to=DocumentVersion, verbose_name=_('Document version')
+        to=DocumentFile, verbose_name=_('Document file')
     )
     # Basic fields
     date = models.DateField(
@@ -59,15 +59,15 @@ class SignatureBaseModel(models.Model):
 
     class Meta:
         ordering = ('pk',)
-        verbose_name = _('Document version signature')
-        verbose_name_plural = _('Document version signatures')
+        verbose_name = _('Document file signature')
+        verbose_name_plural = _('Document file signatures')
 
     def __str__(self):
         return self.signature_id or '{} - {}'.format(self.date, self.key_id)
 
     def get_absolute_url(self):
         return reverse(
-            viewname='signatures:document_version_signature_details',
+            viewname='signatures:document_file_signature_details',
             kwargs={'signature_id': self.pk}
         )
 
@@ -96,8 +96,8 @@ class EmbeddedSignature(SignatureBaseModel):
     objects = EmbeddedSignatureManager()
 
     class Meta:
-        verbose_name = _('Document version embedded signature')
-        verbose_name_plural = _('Document version embedded signatures')
+        verbose_name = _('Document file embedded signature')
+        verbose_name_plural = _('Document file embedded signatures')
 
     def save(self, *args, **kwargs):
         logger.debug(msg='checking for embedded signature')
@@ -107,7 +107,7 @@ class EmbeddedSignature(SignatureBaseModel):
         else:
             raw = False
 
-        with self.document_version.open(raw=raw) as file_object:
+        with self.document_file.open(raw=raw) as file_object:
             try:
                 verify_result = Key.objects.verify_file(
                     file_object=file_object
@@ -138,11 +138,11 @@ class DetachedSignature(SignatureBaseModel):
     objects = DetachedSignatureManager()
 
     class Meta:
-        verbose_name = _('Document version detached signature')
-        verbose_name_plural = _('Document version detached signatures')
+        verbose_name = _('Document file detached signature')
+        verbose_name_plural = _('Document file detached signatures')
 
     def __str__(self):
-        return '{}-{}'.format(self.document_version, _('signature'))
+        return '{}-{}'.format(self.document_file, _('signature'))
 
     def delete(self, *args, **kwargs):
         if self.signature_file.name:
@@ -150,7 +150,7 @@ class DetachedSignature(SignatureBaseModel):
         super(DetachedSignature, self).delete(*args, **kwargs)
 
     def save(self, *args, **kwargs):
-        with self.document_version.open() as file_object:
+        with self.document_file.open() as file_object:
             try:
                 verify_result = Key.objects.verify_file(
                     file_object=file_object, signature_file=self.signature_file

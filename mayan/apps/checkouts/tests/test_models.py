@@ -47,7 +47,7 @@ class DocumentCheckoutTestCase(
                 document=self.test_document,
                 expiration_datetime=self._check_out_expiration_datetime,
                 user=self._test_case_superuser,
-                block_new_version=True
+                block_new_file=True
             )
 
     def test_document_check_in_without_check_out(self):
@@ -81,7 +81,7 @@ class NewVersionBlockTestCase(
             NewVersionBlock.objects.first().document, self.test_document
         )
 
-    def test_blocking_new_versions(self):
+    def test_blocking_new_files(self):
         # Silence unrelated logging
         self._silence_logger(name='mayan.apps.documents.models')
 
@@ -89,7 +89,7 @@ class NewVersionBlockTestCase(
 
         with self.assertRaises(expected_exception=NewDocumentVersionNotAllowed):
             with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-                self.test_document.new_version(file_object=file_object)
+                self.test_document.new_file(file_object=file_object)
 
     def test_unblocking(self):
         NewVersionBlock.objects.create(document=self.test_document)
@@ -111,7 +111,7 @@ class NewVersionBlockTestCase(
             NewVersionBlock.objects.is_blocked(document=self.test_document)
         )
 
-    def test_version_creation_blocking(self):
+    def test_file_creation_blocking(self):
         # Silence unrelated logging
         self._silence_logger(name='mayan.apps.documents.models')
 
@@ -121,4 +121,4 @@ class NewVersionBlockTestCase(
 
         with self.assertRaises(expected_exception=NewDocumentVersionNotAllowed):
             with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-                self.test_document.new_version(file_object=file_object)
+                self.test_document.new_file(file_object=file_object)

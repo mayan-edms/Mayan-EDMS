@@ -12,5 +12,5 @@ class DocumentPageContentAdmin(admin.ModelAdmin):
 
 @admin.register(DocumentVersionParseError)
 class DocumentVersionParseErrorAdmin(admin.ModelAdmin):
-    list_display = ('document_version', 'datetime_submitted')
-    readonly_fields = ('document_version', 'datetime_submitted', 'result')
+    list_display = ('document_file', 'datetime_submitted')
+    readonly_fields = ('document_file', 'datetime_submitted', 'result')

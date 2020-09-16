@@ -11,12 +11,12 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.common.menus import menu_facet
 from mayan.apps.documents.models import (
-    DocumentType, Document, DocumentVersion
+    DocumentType, Document, DocumentFile
 )
 from mayan.apps.documents.permissions import (
-    permission_document_create, permission_document_new_version
+    permission_document_create, permission_document_new_file
 )
-from mayan.apps.documents.tasks import task_upload_new_version
+from mayan.apps.documents.tasks import task_upload_new_file
 from mayan.apps.navigation.classes import Link
 from mayan.apps.storage.models import SharedUploadedFile
 from mayan.apps.views.generics import (
@@ -225,7 +225,7 @@ class UploadBaseView(MultiFormView):
     @staticmethod
     def get_tab_link_for_source(source, document=None):
         if document:
-            view = 'sources:document_version_upload'
+            view = 'sources:document_file_upload'
             args = ('"{}"'.format(document.pk), '"{}"'.format(source.pk),)
         else:
             view = 'sources:document_upload_interactive'
@@ -326,7 +326,7 @@ class UploadBaseView(MultiFormView):
             })
 
         menu_facet.bound_links['sources:document_upload_interactive'] = self.tab_links
-        menu_facet.bound_links['sources:document_version_upload'] = self.tab_links
+        menu_facet.bound_links['sources:document_file_upload'] = self.tab_links
 
         context.update(
             {
@@ -434,7 +434,7 @@ class UploadInteractiveView(UploadBaseView):
                     }
                 )
 
-                DocumentVersion.execute_pre_create_hooks(
+                DocumentFile.execute_pre_create_hooks(
                     kwargs={
                         'document_type': self.document_type,
                         'shared_uploaded_file': shared_uploaded_file,
@@ -539,23 +539,23 @@ class DocumentVersionUploadInteractiveView(UploadBaseView):
         )
 
         AccessControlList.objects.check_access(
-            obj=self.document, permissions=(permission_document_new_version,),
+            obj=self.document, permissions=(permission_document_new_file,),
             user=self.request.user
         )
 
         try:
-            self.document.latest_version.execute_pre_save_hooks()
+            self.document.latest_file.execute_pre_save_hooks()
         except Exception as exception:
             messages.error(
                 message=_(
-                    'Unable to upload new versions for document '
+                    'Unable to upload new files for document '
                     '"%(document)s". %(exception)s'
                 ) % {'document': self.document, 'exception': exception},
                 request=self.request
             )
             return HttpResponseRedirect(
                 redirect_to=reverse(
-                    viewname='documents:document_version_list',
+                    viewname='documents:document_file_list',
                     kwargs={'document_id': self.document.pk}
                 )
             )
@@ -593,7 +593,7 @@ class DocumentVersionUploadInteractiveView(UploadBaseView):
                 user_id = None
 
             try:
-                DocumentVersion.execute_pre_create_hooks(
+                DocumentFile.execute_pre_create_hooks(
                     kwargs={
                         'document': self.document,
                         'shared_uploaded_file': shared_uploaded_file,
@@ -601,7 +601,7 @@ class DocumentVersionUploadInteractiveView(UploadBaseView):
                     }
                 )
 
-                task_upload_new_version.apply_async(kwargs=dict(
+                task_upload_new_file.apply_async(kwargs=dict(
                     shared_uploaded_file_id=shared_uploaded_file.pk,
                     document_id=self.document.pk,
                     user_id=user_id,
@@ -609,7 +609,7 @@ class DocumentVersionUploadInteractiveView(UploadBaseView):
                 ))
             except Exception as exception:
                 message = _(
-                    'Error executing document version upload task; '
+                    'Error executing document file upload task; '
                     '%(exception)s'
                 ) % {
                     'exception': exception,
@@ -624,14 +624,14 @@ class DocumentVersionUploadInteractiveView(UploadBaseView):
             else:
                 messages.success(
                     message=_(
-                        'New document version queued for upload and will be '
+                        'New document file queued for upload and will be '
                         'available shortly.'
                     ), request=self.request
                 )
 
         return HttpResponseRedirect(
             redirect_to=reverse(
-                viewname='documents:document_version_list', kwargs={
+                viewname='documents:document_file_list', kwargs={
                     'document_id': self.document.pk
                 }
             )
@@ -643,7 +643,7 @@ class DocumentVersionUploadInteractiveView(UploadBaseView):
         ).get_context_data(**kwargs)
         context['object'] = self.document
         context['title'] = _(
-            'Upload a new version for document "%(document)s" '
+            'Upload a new file for document "%(document)s" '
             'from source: %(source)s'
         ) % {'document': self.document, 'source': self.source.label}
         context['submit_label'] = _('Submit')

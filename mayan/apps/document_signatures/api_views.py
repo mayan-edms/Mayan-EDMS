@@ -9,11 +9,11 @@ from mayan.apps.rest_api import generics
 
 from .models import DetachedSignature, EmbeddedSignature
 from .permissions import (
-    permission_document_version_sign_detached,
-    permission_document_version_sign_embedded,
-    permission_document_version_signature_delete,
-    permission_document_version_signature_upload,
-    permission_document_version_signature_view
+    permission_document_file_sign_detached,
+    permission_document_file_sign_embedded,
+    permission_document_file_signature_delete,
+    permission_document_file_signature_upload,
+    permission_document_file_signature_view
 )
 from .serializers import (
     DetachedSignatureSerializer, EmbeddedSignatureSerializer,
@@ -23,7 +23,7 @@ from .serializers import (
 
 class APIDocumentSignDetachedView(generics.GenericAPIView):
     """
-    post: Sign a document version with a detached signature.
+    post: Sign a document file with a detached signature.
     """
     serializer_class = SignDetachedSerializer
 
@@ -34,25 +34,25 @@ class APIDocumentSignDetachedView(generics.GenericAPIView):
 
     def get_document_queryset(self):
         if self.request.method == 'POST':
-            permission = permission_document_version_sign_detached
+            permission = permission_document_file_sign_detached
 
         return AccessControlList.objects.restrict_queryset(
             permission=permission, queryset=Document.objects.all(),
             user=self.request.user
         )
 
-    def get_document_version(self):
+    def get_document_file(self):
         return get_object_or_404(
-            klass=self.get_document_version_queryset(),
-            pk=self.kwargs['document_version_id']
+            klass=self.get_document_file_queryset(),
+            pk=self.kwargs['document_file_id']
         )
 
-    def get_document_version_queryset(self):
-        return self.get_document().versions.all()
+    def get_document_file_queryset(self):
+        return self.get_document().files.all()
 
     def get_queryset(self):
         return DetachedSignature.objects.filter(
-            document_version=self.get_document_version()
+            document_file=self.get_document_file()
         )
 
     def get_serializer(self, *args, **kwargs):
@@ -74,7 +74,7 @@ class APIDocumentSignDetachedView(generics.GenericAPIView):
         if self.kwargs:
             context.update(
                 {
-                    'document_version': self.get_document_version(),
+                    'document_file': self.get_document_file(),
                 }
             )
 
@@ -92,7 +92,7 @@ class APIDocumentSignDetachedView(generics.GenericAPIView):
 
 class APIDocumentSignEmbeddedView(generics.GenericAPIView):
     """
-    post: Sign a document version with an embedded signature.
+    post: Sign a document file with an embedded signature.
     """
     serializer_class = SignEmbeddedSerializer
 
@@ -103,25 +103,25 @@ class APIDocumentSignEmbeddedView(generics.GenericAPIView):
 
     def get_document_queryset(self):
         if self.request.method == 'POST':
-            permission = permission_document_version_sign_embedded
+            permission = permission_document_file_sign_embedded
 
         return AccessControlList.objects.restrict_queryset(
             permission=permission, queryset=Document.objects.all(),
             user=self.request.user
         )
 
-    def get_document_version(self):
+    def get_document_file(self):
         return get_object_or_404(
-            klass=self.get_document_version_queryset(),
-            pk=self.kwargs['document_version_id']
+            klass=self.get_document_file_queryset(),
+            pk=self.kwargs['document_file_id']
         )
 
-    def get_document_version_queryset(self):
-        return self.get_document().versions.all()
+    def get_document_file_queryset(self):
+        return self.get_document().files.all()
 
     def get_queryset(self):
         return DetachedSignature.objects.filter(
-            document_version=self.get_document_version()
+            document_file=self.get_document_file()
         )
 
     def get_serializer(self, *args, **kwargs):
@@ -143,7 +143,7 @@ class APIDocumentSignEmbeddedView(generics.GenericAPIView):
         if self.kwargs:
             context.update(
                 {
-                    'document_version': self.get_document_version(),
+                    'document_file': self.get_document_file(),
                 }
             )
 
@@ -161,8 +161,8 @@ class APIDocumentSignEmbeddedView(generics.GenericAPIView):
 
 class APIDocumentDetachedSignatureListView(generics.ListCreateAPIView):
     """
-    get: Returns a list of all the detached signatures of a document version.
-    post: Create a detached signature for a document version.
+    get: Returns a list of all the detached signatures of a document file.
+    post: Create a detached signature for a document file.
     """
     serializer_class = DetachedSignatureSerializer
 
@@ -173,27 +173,27 @@ class APIDocumentDetachedSignatureListView(generics.ListCreateAPIView):
 
     def get_document_queryset(self):
         if self.request.method == 'GET':
-            permission = permission_document_version_signature_view
+            permission = permission_document_file_signature_view
         elif self.request.method == 'POST':
-            permission = permission_document_version_signature_upload
+            permission = permission_document_file_signature_upload
 
         return AccessControlList.objects.restrict_queryset(
             permission=permission, queryset=Document.objects.all(),
             user=self.request.user
         )
 
-    def get_document_version(self):
+    def get_document_file(self):
         return get_object_or_404(
-            klass=self.get_document_version_queryset(),
-            pk=self.kwargs['document_version_id']
+            klass=self.get_document_file_queryset(),
+            pk=self.kwargs['document_file_id']
         )
 
-    def get_document_version_queryset(self):
-        return self.get_document().versions.all()
+    def get_document_file_queryset(self):
+        return self.get_document().files.all()
 
     def get_queryset(self):
         return DetachedSignature.objects.filter(
-            document_version=self.get_document_version()
+            document_file=self.get_document_file()
         )
 
     def get_serializer(self, *args, **kwargs):
@@ -214,7 +214,7 @@ class APIDocumentDetachedSignatureListView(generics.ListCreateAPIView):
         if self.kwargs:
             context.update(
                 {
-                    'document_version': self.get_document_version(),
+                    'document_file': self.get_document_file(),
                 }
             )
 
@@ -236,29 +236,29 @@ class APIDocumentDetachedSignatureView(generics.RetrieveDestroyAPIView):
 
     def get_document_queryset(self):
         if self.request.method == 'GET':
-            permission = permission_document_version_signature_view
+            permission = permission_document_file_signature_view
         elif self.request.method == 'POST':
-            permission = permission_document_version_signature_view
+            permission = permission_document_file_signature_view
         elif self.request.method == 'DELETE':
-            permission = permission_document_version_signature_delete
+            permission = permission_document_file_signature_delete
 
         return AccessControlList.objects.restrict_queryset(
             permission=permission, queryset=Document.objects.all(),
             user=self.request.user
         )
 
-    def get_document_version(self):
+    def get_document_file(self):
         return get_object_or_404(
-            klass=self.get_document_version_queryset(),
-            pk=self.kwargs['document_version_id']
+            klass=self.get_document_file_queryset(),
+            pk=self.kwargs['document_file_id']
         )
 
-    def get_document_version_queryset(self):
-        return self.get_document().versions.all()
+    def get_document_file_queryset(self):
+        return self.get_document().files.all()
 
     def get_queryset(self):
         return DetachedSignature.objects.filter(
-            document_version=self.get_document_version()
+            document_file=self.get_document_file()
         )
 
     def get_serializer_context(self):
@@ -278,7 +278,7 @@ class APIDocumentDetachedSignatureView(generics.RetrieveDestroyAPIView):
 
 class APIDocumentEmbeddedSignatureListView(generics.ListAPIView):
     """
-    get: Returns a list of all the embedded signatures of a document version.
+    get: Returns a list of all the embedded signatures of a document file.
     """
     serializer_class = EmbeddedSignatureSerializer
 
@@ -289,25 +289,25 @@ class APIDocumentEmbeddedSignatureListView(generics.ListAPIView):
 
     def get_document_queryset(self):
         if self.request.method == 'GET':
-            permission = permission_document_version_signature_view
+            permission = permission_document_file_signature_view
 
         return AccessControlList.objects.restrict_queryset(
             permission=permission, queryset=Document.objects.all(),
             user=self.request.user
         )
 
-    def get_document_version(self):
+    def get_document_file(self):
         return get_object_or_404(
-            klass=self.get_document_version_queryset(),
-            pk=self.kwargs['document_version_id']
+            klass=self.get_document_file_queryset(),
+            pk=self.kwargs['document_file_id']
         )
 
-    def get_document_version_queryset(self):
-        return self.get_document().versions.all()
+    def get_document_file_queryset(self):
+        return self.get_document().files.all()
 
     def get_queryset(self):
         return EmbeddedSignature.objects.filter(
-            document_version=self.get_document_version()
+            document_file=self.get_document_file()
         )
 
     def get_serializer(self, *args, **kwargs):
@@ -328,7 +328,7 @@ class APIDocumentEmbeddedSignatureListView(generics.ListAPIView):
         if self.kwargs:
             context.update(
                 {
-                    'document_version': self.get_document_version(),
+                    'document_file': self.get_document_file(),
                 }
             )
 
@@ -349,27 +349,27 @@ class APIDocumentEmbeddedSignatureView(generics.RetrieveAPIView):
 
     def get_document_queryset(self):
         if self.request.method == 'GET':
-            permission = permission_document_version_signature_view
+            permission = permission_document_file_signature_view
         elif self.request.method == 'POST':
-            permission = permission_document_version_signature_view
+            permission = permission_document_file_signature_view
 
         return AccessControlList.objects.restrict_queryset(
             permission=permission, queryset=Document.objects.all(),
             user=self.request.user
         )
 
-    def get_document_version(self):
+    def get_document_file(self):
         return get_object_or_404(
-            klass=self.get_document_version_queryset(),
-            pk=self.kwargs['document_version_id']
+            klass=self.get_document_file_queryset(),
+            pk=self.kwargs['document_file_id']
         )
 
-    def get_document_version_queryset(self):
-        return self.get_document().versions.all()
+    def get_document_file_queryset(self):
+        return self.get_document().files.all()
 
     def get_queryset(self):
         return EmbeddedSignature.objects.filter(
-            document_version=self.get_document_version()
+            document_file=self.get_document_file()
         )
 
     def get_serializer_context(self):

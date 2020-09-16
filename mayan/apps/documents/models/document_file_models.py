@@ -20,17 +20,17 @@ from mayan.apps.mimetype.api import get_mimetype
 from mayan.apps.storage.classes import DefinedStorageLazy
 from mayan.apps.templating.classes import Template
 
-from ..events import event_document_version_new, event_document_version_revert
+from ..events import event_document_file_new, event_document_file_revert
 from ..literals import (
     STORAGE_NAME_DOCUMENT_IMAGE, STORAGE_NAME_DOCUMENT_VERSION
 )
-from ..managers import DocumentVersionManager
+from ..managers import DocumentFileManager
 from ..settings import setting_fix_orientation, setting_hash_block_size
-from ..signals import signal_post_document_created, signal_post_version_upload
+from ..signals import signal_post_document_created, signal_post_file_upload
 
 from .document_models import Document
 
-__all__ = ('DocumentVersion',)
+__all__ = ('DocumentFile',)
 logger = logging.getLogger(name=__name__)
 
 
@@ -45,9 +45,9 @@ def upload_to(instance, filename):
     )
 
 
-class DocumentVersion(models.Model):
+class DocumentFile(models.Model):
     """
-    Model that describes a document version and its properties
+    Model that describes a document file and its properties
     Fields:
     * mimetype - File mimetype. MIME types are a standard way to describe the
     format of a file, in this case the file format of the document.
@@ -67,17 +67,17 @@ class DocumentVersion(models.Model):
     _post_save_hooks = []
 
     document = models.ForeignKey(
-        on_delete=models.CASCADE, related_name='versions', to=Document,
+        on_delete=models.CASCADE, related_name='files', to=Document,
         verbose_name=_('Document')
     )
     timestamp = models.DateTimeField(
         auto_now_add=True, db_index=True, help_text=_(
-            'The server date and time when the document version was processed.'
+            'The server date and time when the document file was processed.'
         ), verbose_name=_('Timestamp')
     )
     comment = models.TextField(
         blank=True, default='', help_text=_(
-            'An optional short text describing the document version.'
+            'An optional short text describing the document file.'
         ), verbose_name=_('Comment')
     )
     # File related fields
@@ -87,7 +87,7 @@ class DocumentVersion(models.Model):
     )
     mimetype = models.CharField(
         blank=True, editable=False, help_text=_(
-            'The document version\'s file mimetype. MIME types are a '
+            'The document file\'s file mimetype. MIME types are a '
             'standard way to describe the format of a file, in this case '
             'the file format of the document. Some examples: "text/plain" '
             'or "image/jpeg". '
@@ -95,7 +95,7 @@ class DocumentVersion(models.Model):
     )
     encoding = models.CharField(
         blank=True, editable=False, help_text=_(
-            'The document version file encoding. binary 7-bit, binary 8-bit, '
+            'The document file file encoding. binary 7-bit, binary 8-bit, '
             'text, base64, etc.'
         ), max_length=64, null=True, verbose_name=_('Encoding')
     )
@@ -109,17 +109,17 @@ class DocumentVersion(models.Model):
 
     class Meta:
         ordering = ('timestamp',)
-        verbose_name = _('Document version')
-        verbose_name_plural = _('Document version')
+        verbose_name = _('Document file')
+        verbose_name_plural = _('Document files')
 
-    objects = DocumentVersionManager()
+    objects = DocumentFileManager()
 
     @classmethod
     def _execute_hooks(cls, hook_list, instance, **kwargs):
         result = None
 
         for hook in hook_list:
-            result = hook(document_version=instance, **kwargs)
+            result = hook(document_file=instance, **kwargs)
             if result:
                 kwargs.update(result)
 
@@ -134,7 +134,7 @@ class DocumentVersion(models.Model):
     def execute_pre_create_hooks(cls, kwargs=None):
         """
         Helper method to allow checking if it is possible to create
-        a new document version.
+        a new document file.
         """
         cls._execute_hooks(
             hook_list=cls._hooks_pre_create, instance=None, kwargs=kwargs
@@ -177,7 +177,7 @@ class DocumentVersion(models.Model):
     @cached_property
     def cache_partition(self):
         partition, created = self.cache.partitions.get_or_create(
-            name='version-{}'.format(self.uuid)
+            name='file-{}'.format(self.uuid)
         )
         return partition
 
@@ -188,16 +188,16 @@ class DocumentVersion(models.Model):
         self.file.storage.delete(name=self.file.name)
         self.cache_partition.delete()
 
-        return super(DocumentVersion, self).delete(*args, **kwargs)
+        return super().delete(*args, **kwargs)
 
     def execute_pre_save_hooks(self):
         """
-        Helper method to allow checking if new versions are possible from
-        outside the model. Currently used by the document version upload link
+        Helper method to allow checking if new files are possible from
+        outside the model. Currently used by the document file upload link
         condition.
         """
-        DocumentVersion._execute_hooks(
-            hook_list=DocumentVersion._pre_save_hooks, instance=self
+        DocumentFile._execute_hooks(
+            hook_list=DocumentFile._pre_save_hooks, instance=self
         )
 
     def exists(self):
@@ -220,8 +220,8 @@ class DocumentVersion(models.Model):
 
     def get_absolute_url(self):
         return reverse(
-            viewname='documents:document_version_view', kwargs={
-                'document_version_id': self.pk
+            viewname='documents:document_file_view', kwargs={
+                'document_file_id': self.pk
             }
         )
 
@@ -240,9 +240,9 @@ class DocumentVersion(models.Model):
             logger.debug('Intermidiate file not found.')
 
             try:
-                with self.open() as version_file_object:
+                with self.open() as file_object:
                     converter = ConverterBase.get_converter_class()(
-                        file_object=version_file_object
+                        file_object=file_object
                     )
                     with converter.to_pdf() as pdf_file_object:
                         with self.cache_partition.create_file(filename=cache_filename) as file_object:
@@ -291,7 +291,7 @@ class DocumentVersion(models.Model):
 
     def open(self, raw=False):
         """
-        Return a file descriptor to a document version's file irrespective of
+        Return a file descriptor to a document file's file irrespective of
         the storage backend
         """
         if raw:
@@ -299,8 +299,8 @@ class DocumentVersion(models.Model):
         else:
             file_object = self.file.storage.open(name=self.file.name)
 
-            result = DocumentVersion._execute_hooks(
-                hook_list=DocumentVersion._pre_open_hooks,
+            result = DocumentFile._execute_hooks(
+                hook_list=DocumentFile._pre_open_hooks,
                 instance=self, file_object=file_object
             )
 
@@ -319,58 +319,58 @@ class DocumentVersion(models.Model):
             app_label='documents', model_name='DocumentPage'
         )
         queryset = ModelQueryFields.get(model=DocumentPage).get_queryset()
-        return queryset.filter(pk__in=self.version_pages.all())
+        return queryset.filter(pk__in=self.file_pages.all())
 
     @property
     def pages_valid(self):
         DocumentPage = apps.get_model(
             app_label='documents', model_name='DocumentPage'
         )
-        return self.pages.filter(pk__in=DocumentPage.valid.filter(document_version=self))
+        return self.pages.filter(pk__in=DocumentPage.valid.filter(document_file=self))
 
     def revert(self, _user=None):
         """
-        Delete the subsequent versions after this one
+        Delete the subsequent files after this one
         """
         logger.info(
-            'Reverting to document document: %s to version: %s',
+            'Reverting to document document: %s to file: %s',
             self.document, self
         )
 
         with transaction.atomic():
-            event_document_version_revert.commit(
+            event_document_file_revert.commit(
                 actor=_user, target=self.document
             )
-            for version in self.document.versions.filter(timestamp__gt=self.timestamp):
-                version.delete()
+            for document_file in self.document.files.filter(timestamp__gt=self.timestamp):
+                document_file.delete()
 
     def save(self, *args, **kwargs):
         """
-        Overloaded save method that updates the document version's checksum,
+        Overloaded save method that updates the document file's checksum,
         mimetype, and page count when created
         """
         user = kwargs.pop('_user', None)
-        new_document_version = not self.pk
+        new_document_file = not self.pk
 
-        if new_document_version:
-            logger.info('Creating new version for document: %s', self.document)
+        if new_document_file:
+            logger.info('Creating new file for document: %s', self.document)
 
         try:
             with transaction.atomic():
                 self.execute_pre_save_hooks()
 
                 signal_mayan_pre_save.send(
-                    instance=self, sender=DocumentVersion, user=user
+                    instance=self, sender=DocumentFile, user=user
                 )
 
-                super(DocumentVersion, self).save(*args, **kwargs)
+                super().save(*args, **kwargs)
 
-                DocumentVersion._execute_hooks(
-                    hook_list=DocumentVersion._post_save_hooks,
+                DocumentFile._execute_hooks(
+                    hook_list=DocumentFile._post_save_hooks,
                     instance=self
                 )
 
-                if new_document_version:
+                if new_document_file:
                     # Only do this for new documents
                     self.update_checksum(save=False)
                     self.update_mimetype(save=False)
@@ -380,7 +380,7 @@ class DocumentVersion(models.Model):
                         self.fix_orientation()
 
                     logger.info(
-                        'New document version "%s" created for document: %s',
+                        'New document file "%s" created for document: %s',
                         self, self.document
                     )
 
@@ -391,20 +391,20 @@ class DocumentVersion(models.Model):
                     self.document.save(_commit_events=False)
         except Exception as exception:
             logger.error(
-                'Error creating new document version for document "%s"; %s',
+                'Error creating new document file for document "%s"; %s',
                 self.document, exception
             )
             raise
         else:
-            if new_document_version:
-                event_document_version_new.commit(
+            if new_document_file:
+                event_document_file_new.commit(
                     actor=user, target=self, action_object=self.document
                 )
-                signal_post_version_upload.send(
-                    sender=DocumentVersion, instance=self
+                signal_post_file_upload.send(
+                    sender=DocumentFile, instance=self
                 )
 
-                if tuple(self.document.versions.all()) == (self,):
+                if tuple(self.document.files.all()) == (self,):
                     signal_post_document_created.send(
                         instance=self.document, sender=Document
                     )
@@ -426,7 +426,7 @@ class DocumentVersion(models.Model):
 
     def update_checksum(self, save=True):
         """
-        Open a document version's file and update the checksum field using
+        Open a document file's file and update the checksum field using
         the user provided checksum function
         """
         block_size = setting_hash_block_size.value
@@ -492,7 +492,7 @@ class DocumentVersion(models.Model):
 
                 for page_number in range(detected_pages):
                     DocumentPage.objects.create(
-                        document_version=self, page_number=page_number + 1
+                        document_file=self, page_number=page_number + 1
                     )
 
             if save:
@@ -502,5 +502,5 @@ class DocumentVersion(models.Model):
 
     @property
     def uuid(self):
-        # Make cache UUID a mix of document UUID, version ID
+        # Make cache UUID a mix of document UUID, file ID
         return '{}-{}'.format(self.document.uuid, self.pk)

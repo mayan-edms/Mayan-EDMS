@@ -1,8 +1,8 @@
 from django.contrib import admin
 
 from .models import (
-    DeletedDocument, Document, DocumentPage, DocumentType,
-    DocumentTypeFilename, DocumentVersion, DuplicatedDocument, RecentDocument
+    DeletedDocument, Document, DocumentFile, DocumentPage, DocumentType,
+    DocumentTypeFilename, DuplicatedDocument, RecentDocument
 )
 
 
@@ -21,7 +21,7 @@ class DocumentTypeFilenameInline(admin.StackedInline):
 
 
 class DocumentVersionInline(admin.StackedInline):
-    model = DocumentVersion
+    model = DocumentFile
     extra = 1
     classes = ('collapse-open',)
     allow_add = True

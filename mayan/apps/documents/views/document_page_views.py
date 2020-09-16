@@ -19,7 +19,7 @@ from mayan.apps.views.utils import resolve
 
 from ..forms import DocumentPageForm
 from ..icons import icon_document_pages
-from ..links.document_version_page_links import link_document_update_page_count
+from ..links.document_file_page_links import link_document_update_page_count
 from ..models import Document, DocumentPage
 from ..permissions import permission_document_edit, permission_document_view
 from ..settings import (

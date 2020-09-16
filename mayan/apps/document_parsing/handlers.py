@@ -26,6 +26,6 @@ def handler_initialize_new_parsing_settings(sender, instance, **kwargs):
         )
 
 
-def handler_parse_document_version(sender, instance, **kwargs):
+def handler_parse_document_file(sender, instance, **kwargs):
     if instance.document.document_type.parsing_settings.auto_parsing:
         instance.submit_for_parsing()

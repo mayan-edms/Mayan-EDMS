@@ -24,7 +24,7 @@ from ..settings import (
     setting_zoom_min_level
 )
 
-from .document_version_models import DocumentVersion
+from .document_file_models import DocumentFile
 
 __all__ = ('DocumentPage', 'DocumentPageResult')
 logger = logging.getLogger(name=__name__)
@@ -32,11 +32,11 @@ logger = logging.getLogger(name=__name__)
 
 class DocumentPage(models.Model):
     """
-    Model that describes a document version page
+    Model that describes a document file page
     """
-    document_version = models.ForeignKey(
-        on_delete=models.CASCADE, related_name='version_pages', to=DocumentVersion,
-        verbose_name=_('Document version')
+    document_file = models.ForeignKey(
+        on_delete=models.CASCADE, related_name='file_pages', to=DocumentFile,
+        verbose_name=_('Document file')
     )
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
     page_number = models.PositiveIntegerField(
@@ -57,7 +57,7 @@ class DocumentPage(models.Model):
 
     @cached_property
     def cache_partition(self):
-        partition, created = self.document_version.cache.partitions.get_or_create(
+        partition, created = self.document_file.cache.partitions.get_or_create(
             name=self.uuid
         )
         return partition
@@ -67,10 +67,10 @@ class DocumentPage(models.Model):
         super(DocumentPage, self).delete(*args, **kwargs)
 
     def detect_orientation(self):
-        with self.document_version.open() as file_object:
+        with self.document_file.open() as file_object:
             converter = ConverterBase.get_converter_class()(
                 file_object=file_object,
-                mime_type=self.document_version.mimetype
+                mime_type=self.document_file.mimetype
             )
             return converter.detect_orientation(
                 page_number=self.page_number
@@ -78,7 +78,7 @@ class DocumentPage(models.Model):
 
     @property
     def document(self):
-        return self.document_version.document
+        return self.document_file.document
 
     def generate_image(self, user=None, **kwargs):
         transformation_list = self.get_combined_transformation_list(user=user, **kwargs)
@@ -140,7 +140,7 @@ class DocumentPage(models.Model):
         final_url.args = kwargs
         final_url.path = reverse(
             viewname='rest_api:documentpage-image', kwargs={
-                'pk': self.document_version.document_id, 'version_pk': self.document_version_id,
+                'pk': self.document_file.document_id, 'file_pk': self.document_file_id,
                 'page_pk': self.pk
             }
         )
@@ -228,7 +228,7 @@ class DocumentPage(models.Model):
             logger.debug('Page cache file "%s" not found', cache_filename)
 
             try:
-                with self.document_version.get_intermediate_file() as file_object:
+                with self.document_file.get_intermediate_file() as file_object:
                     converter = ConverterBase.get_converter_class()(
                         file_object=file_object
                     )
@@ -258,40 +258,40 @@ class DocumentPage(models.Model):
         return self.document.is_in_trash
 
     def get_label(self):
-        if getattr(self, 'document_version', None):
+        if getattr(self, 'document_file', None):
             return _(
                 'Page %(page_num)d out of %(total_pages)d of %(document)s'
             ) % {
                 'document': force_text(self.document),
                 'page_num': self.page_number,
-                'total_pages': self.document_version.pages.all().count()
+                'total_pages': self.document_file.pages.all().count()
             }
         else:
             return None
     get_label.short_description = _('Label')
 
     def natural_key(self):
-        return (self.page_number, self.document_version.natural_key())
-    natural_key.dependencies = ['documents.DocumentVersion']
+        return (self.page_number, self.document_file.natural_key())
+    natural_key.dependencies = ['documents.DocumentFile']
 
     @property
     def siblings(self):
         return DocumentPage.valid.filter(
-            document_version=self.document_version
+            document_file=self.document_file
         )
 
     @property
     def uuid(self):
         """
-        Make cache UUID a mix of version ID and page ID to avoid using stale
+        Make cache UUID a mix of file ID and page ID to avoid using stale
         images
         """
-        return '{}-{}'.format(self.document_version.uuid, self.pk)
+        return '{}-{}'.format(self.document_file.uuid, self.pk)
 
 
 class DocumentPageResult(DocumentPage):
     class Meta:
-        ordering = ('document_version__document', 'page_number')
+        ordering = ('document_file__document', 'page_number')
         proxy = True
         verbose_name = _('Document page')
         verbose_name_plural = _('Document pages')

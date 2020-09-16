@@ -69,7 +69,7 @@ api_urls = [
         view=APIDocumentTypeParsingSettingsView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<document_pk>\d+)/versions/(?P<version_pk>\d+)/pages/(?P<page_pk>\d+)/content/$',
+        regex=r'^documents/(?P<document_pk>\d+)/files/(?P<file_pk>\d+)/pages/(?P<page_pk>\d+)/content/$',
         name='document-page-content-view',
         view=APIDocumentPageContentView.as_view()
     )

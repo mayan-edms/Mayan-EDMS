@@ -19,20 +19,20 @@ from .models import (
 from .permissions import (
     permission_document_create, permission_document_delete,
     permission_document_download, permission_document_edit,
-    permission_document_new_version, permission_document_properties_edit,
+    permission_document_file_revert, permission_document_file_view,
+    permission_document_new_file, permission_document_properties_edit,
     permission_document_restore, permission_document_trash,
     permission_document_view, permission_document_type_create,
     permission_document_type_delete, permission_document_type_edit,
-    permission_document_type_view, permission_document_version_revert,
-    permission_document_version_view
+    permission_document_type_view
 )
 from .serializers import (
     DeletedDocumentSerializer, DocumentPageSerializer, DocumentSerializer,
-    DocumentTypeSerializer, DocumentVersionSerializer,
+    DocumentTypeSerializer, DocumentFileSerializer,
     NewDocumentDocumentTypeSerializer, NewDocumentSerializer,
-    NewDocumentVersionSerializer, RecentDocumentSerializer,
+    NewDocumentFileSerializer, RecentDocumentSerializer,
     WritableDocumentSerializer, WritableDocumentTypeSerializer,
-    WritableDocumentVersionSerializer
+    WritableDocumentFileSerializer
 )
 from .settings import settings_document_page_image_cache_time
 from .tasks import task_generate_document_page_image
@@ -105,7 +105,7 @@ class APIDocumentDocumentTypeChangeView(generics.GenericAPIView):
 
 class APIDocumentDownloadView(DownloadMixin, generics.RetrieveAPIView):
     """
-    get: Download the latest version of a document.
+    get: Download the latest file of a document.
     """
     mayan_object_permissions = {
         'GET': (permission_document_download,)
@@ -176,13 +176,13 @@ class APIDocumentPageImageView(generics.RetrieveAPIView):
         )
         return document
 
-    def get_document_version(self):
+    def get_document_file(self):
         return get_object_or_404(
-            self.get_document().versions.all(), pk=self.kwargs['version_pk']
+            self.get_document().files.all(), pk=self.kwargs['file_pk']
         )
 
     def get_queryset(self):
-        return self.get_document_version().pages.all()
+        return self.get_document_file().pages.all()
 
     def get_serializer(self, *args, **kwargs):
         return None
@@ -259,13 +259,13 @@ class APIDocumentPageView(generics.RetrieveUpdateAPIView):
         )
         return document
 
-    def get_document_version(self):
+    def get_document_file(self):
         return get_object_or_404(
-            self.get_document().versions.all(), pk=self.kwargs['version_pk']
+            self.get_document().files.all(), pk=self.kwargs['file_pk']
         )
 
     def get_queryset(self):
-        return self.get_document_version().pages.all()
+        return self.get_document_file().pages.all()
 
 
 class APIDocumentTypeListView(generics.ListCreateAPIView):
@@ -336,11 +336,11 @@ class APIDocumentTypeDocumentListView(generics.ListAPIView):
         return document_type.documents.all()
 
 
-class APIDocumentVersionDownloadView(DownloadMixin, generics.RetrieveAPIView):
+class APIDocumentFileDownloadView(DownloadMixin, generics.RetrieveAPIView):
     """
-    get: Download a document version.
+    get: Download a document file.
     """
-    lookup_url_kwarg = 'version_pk'
+    lookup_url_kwarg = 'file_pk'
 
     def get_document(self):
         document = get_object_or_404(Document, pk=self.kwargs['pk'])
@@ -376,7 +376,7 @@ class APIDocumentVersionDownloadView(DownloadMixin, generics.RetrieveAPIView):
         return None
 
     def get_queryset(self):
-        return self.get_document().versions.all()
+        return self.get_document().files.all()
 
     def retrieve(self, request, *args, **kwargs):
         return self.render_to_response()
@@ -428,7 +428,7 @@ class APIRecentDocumentListView(generics.ListAPIView):
         return RecentDocument.objects.filter(user=self.request.user)
 
 
-class APIDocumentVersionPageListView(generics.ListAPIView):
+class APIDocumentFilePageListView(generics.ListAPIView):
     serializer_class = DocumentPageSerializer
 
     def get_document(self):
@@ -440,22 +440,22 @@ class APIDocumentVersionPageListView(generics.ListAPIView):
         )
         return document
 
-    def get_document_version(self):
+    def get_document_file(self):
         return get_object_or_404(
-            self.get_document().versions.all(), pk=self.kwargs['version_pk']
+            self.get_document().files.all(), pk=self.kwargs['file_pk']
         )
 
     def get_queryset(self):
-        return self.get_document_version().pages.all()
+        return self.get_document_file().pages.all()
 
 
-class APIDocumentVersionsListView(generics.ListCreateAPIView):
+class APIDocumentFilesListView(generics.ListCreateAPIView):
     """
-    get: Return a list of the selected document's versions.
-    post: Create a new document version.
+    get: Return a list of the selected document's files.
+    post: Create a new document file.
     """
     mayan_object_permissions = {
-        'GET': (permission_document_version_view,),
+        'GET': (permission_document_file_view,),
     }
 
     def create(self, request, *args, **kwargs):
@@ -469,41 +469,41 @@ class APIDocumentVersionsListView(generics.ListCreateAPIView):
         if not self.request:
             return None
 
-        return super(APIDocumentVersionsListView, self).get_serializer(*args, **kwargs)
+        return super(APIDocumentFilesListView, self).get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
-            return DocumentVersionSerializer
+            return DocumentFileSerializer
         elif self.request.method == 'POST':
-            return NewDocumentVersionSerializer
+            return NewDocumentFileSerializer
 
     def get_queryset(self):
-        return get_object_or_404(Document, pk=self.kwargs['pk']).versions.all()
+        return get_object_or_404(Document, pk=self.kwargs['pk']).files.all()
 
     def perform_create(self, serializer):
         document = get_object_or_404(Document, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            obj=document, permissions=(permission_document_new_version,),
+            obj=document, permissions=(permission_document_new_file,),
             user=self.request.user,
         )
         serializer.save(document=document, _user=self.request.user)
 
 
-class APIDocumentVersionView(generics.RetrieveUpdateDestroyAPIView):
+class APIDocumentFileView(generics.RetrieveUpdateDestroyAPIView):
     """
-    delete: Delete the selected document version.
-    get: Returns the selected document version details.
-    patch: Edit the selected document version.
-    put: Edit the selected document version.
+    delete: Delete the selected document file.
+    get: Returns the selected document file details.
+    patch: Edit the selected document file.
+    put: Edit the selected document file.
     """
-    lookup_url_kwarg = 'version_pk'
+    lookup_url_kwarg = 'file_pk'
 
     def get_document(self):
         if self.request.method == 'GET':
             permission_required = permission_document_view
         elif self.request.method == 'DELETE':
-            permission_required = permission_document_version_revert
+            permission_required = permission_document_file_revert
         else:
             permission_required = permission_document_edit
 
@@ -516,16 +516,16 @@ class APIDocumentVersionView(generics.RetrieveUpdateDestroyAPIView):
         return document
 
     def get_queryset(self):
-        return self.get_document().versions.all()
+        return self.get_document().files.all()
 
     def get_serializer(self, *args, **kwargs):
         if not self.request:
             return None
 
-        return super(APIDocumentVersionView, self).get_serializer(*args, **kwargs)
+        return super(APIDocumentFileView, self).get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
-            return DocumentVersionSerializer
+            return DocumentFileSerializer
         else:
-            return WritableDocumentVersionSerializer
+            return WritableDocumentFileSerializer

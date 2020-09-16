@@ -59,12 +59,100 @@ class DocumentAPIViewTestMixin:
         )
 
 
+class DocumentFileAPIViewTestMixin:
+    def _request_test_document_file_api_download_view(self):
+        return self.get(
+            viewname='rest_api:documentfile-download', kwargs={
+                'pk': self.test_document.pk,
+                'file_pk': self.test_document.latest_file.pk,
+            }
+        )
+
+    def _request_test_document_file_api_edit_via_patch_view(self):
+        return self.patch(
+            viewname='rest_api:documentfile-detail', kwargs={
+                'pk': self.test_document.pk,
+                'file_pk': self.test_document.latest_file.pk
+            }, data={'comment': TEST_DOCUMENT_VERSION_COMMENT_EDITED}
+        )
+
+    def _request_test_document_file_api_edit_via_put_view(self):
+        return self.put(
+            viewname='rest_api:documentfile-detail', kwargs={
+                'pk': self.test_document.pk,
+                'file_pk': self.test_document.latest_file.pk
+            }, data={'comment': TEST_DOCUMENT_VERSION_COMMENT_EDITED}
+        )
+
+    def _request_test_document_file_api_list_view(self):
+        return self.get(
+            viewname='rest_api:document-file-list', kwargs={
+                'pk': self.test_document.pk
+            }
+        )
+
+    def _request_test_document_file_api_revert_view(self):
+        return self.delete(
+            viewname='rest_api:documentfile-detail', kwargs={
+                'pk': self.test_document.pk,
+                'file_pk': self.test_document.latest_file.pk
+            }
+        )
+
+    def _request_test_document_file_api_upload_view(self):
+        # Artificial delay since MySQL doesn't store microsecond data in
+        # timestamps. Version timestamp is used to determine which file
+        # is the latest.
+        time.sleep(1)
+
+        with open(file=TEST_DOCUMENT_PATH, mode='rb') as file_descriptor:
+            return self.post(
+                viewname='rest_api:document-file-list', kwargs={
+                    'pk': self.test_document.pk,
+                }, data={
+                    'comment': '', 'file': file_descriptor,
+                }
+            )
+
+
+class DocumentFileTestMixin:
+    def _upload_new_file(self):
+        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+            self.test_document.new_file(
+                comment=TEST_VERSION_COMMENT, file_object=file_object
+            )
+
+
+class DocumentFileViewTestMixin:
+    def _request_document_file_download(self, data=None):
+        data = data or {}
+        return self.get(
+            viewname='documents:document_file_download', kwargs={
+                'document_file_id': self.test_document.latest_file.pk
+            }, data=data
+        )
+
+    def _request_document_file_list_view(self):
+        return self.get(
+            viewname='documents:document_file_list', kwargs={
+                'document_id': self.test_document.pk
+            }
+        )
+
+    def _request_document_file_revert_view(self, document_file):
+        return self.post(
+            viewname='documents:document_file_revert', kwargs={
+                'document_file_id': document_file.pk
+            }
+        )
+
+
 class DocumentPageAPIViewTestMixin:
     def _request_document_page_image(self):
         page = self.test_document.pages.first()
         return self.get(
             viewname='rest_api:documentpage-image', kwargs={
-                'pk': page.document_version.document_id, 'version_pk': page.document_version_id,
+                'pk': page.document_file.document_id, 'file_pk': page.document_file_id,
                 'page_pk': page.pk
             }
         )
@@ -218,8 +306,8 @@ class DocumentTestMixin:
 
         self.test_document = document
         self.test_documents.append(document)
-        self.test_document_page = document.latest_version.pages.first()
-        self.test_document_version = document.latest_version
+        self.test_document_page = document.latest_file.pages.first()
+        self.test_document_file = document.latest_file
 
 
 class DocumentTypeAPIViewTestMixin:
@@ -308,94 +396,6 @@ class DocumentTypeQuickLabelTestMixin:
     def _create_test_quick_label(self):
         self.test_document_type_filename = self.test_document_type.filenames.create(
             filename=TEST_DOCUMENT_TYPE_QUICK_LABEL
-        )
-
-
-class DocumentVersionAPIViewTestMixin:
-    def _request_test_document_version_api_download_view(self):
-        return self.get(
-            viewname='rest_api:documentversion-download', kwargs={
-                'pk': self.test_document.pk,
-                'version_pk': self.test_document.latest_version.pk,
-            }
-        )
-
-    def _request_test_document_version_api_edit_via_patch_view(self):
-        return self.patch(
-            viewname='rest_api:documentversion-detail', kwargs={
-                'pk': self.test_document.pk,
-                'version_pk': self.test_document.latest_version.pk
-            }, data={'comment': TEST_DOCUMENT_VERSION_COMMENT_EDITED}
-        )
-
-    def _request_test_document_version_api_edit_via_put_view(self):
-        return self.put(
-            viewname='rest_api:documentversion-detail', kwargs={
-                'pk': self.test_document.pk,
-                'version_pk': self.test_document.latest_version.pk
-            }, data={'comment': TEST_DOCUMENT_VERSION_COMMENT_EDITED}
-        )
-
-    def _request_test_document_version_api_list_view(self):
-        return self.get(
-            viewname='rest_api:document-version-list', kwargs={
-                'pk': self.test_document.pk
-            }
-        )
-
-    def _request_test_document_version_api_revert_view(self):
-        return self.delete(
-            viewname='rest_api:documentversion-detail', kwargs={
-                'pk': self.test_document.pk,
-                'version_pk': self.test_document.latest_version.pk
-            }
-        )
-
-    def _request_test_document_version_api_upload_view(self):
-        # Artificial delay since MySQL doesn't store microsecond data in
-        # timestamps. Version timestamp is used to determine which version
-        # is the latest.
-        time.sleep(1)
-
-        with open(file=TEST_DOCUMENT_PATH, mode='rb') as file_descriptor:
-            return self.post(
-                viewname='rest_api:document-version-list', kwargs={
-                    'pk': self.test_document.pk,
-                }, data={
-                    'comment': '', 'file': file_descriptor,
-                }
-            )
-
-
-class DocumentVersionTestMixin:
-    def _upload_new_version(self):
-        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-            self.test_document.new_version(
-                comment=TEST_VERSION_COMMENT, file_object=file_object
-            )
-
-
-class DocumentVersionViewTestMixin:
-    def _request_document_version_download(self, data=None):
-        data = data or {}
-        return self.get(
-            viewname='documents:document_version_download', kwargs={
-                'document_version_id': self.test_document.latest_version.pk
-            }, data=data
-        )
-
-    def _request_document_version_list_view(self):
-        return self.get(
-            viewname='documents:document_version_list', kwargs={
-                'document_id': self.test_document.pk
-            }
-        )
-
-    def _request_document_version_revert_view(self, document_version):
-        return self.post(
-            viewname='documents:document_version_revert', kwargs={
-                'document_version_id': document_version.pk
-            }
         )
 
 
@@ -611,13 +611,13 @@ class TrashedDocumentAPIViewTestMixin:
         )
 
     def _request_test_trashed_document_api_image_view(self):
-        latest_version = self.test_document.latest_version
+        latest_file = self.test_document.latest_file
 
         return self.get(
             viewname='rest_api:documentpage-image', kwargs={
-                'pk': latest_version.document_id,
-                'version_pk': latest_version.pk,
-                'page_pk': latest_version.pages.first().pk
+                'pk': latest_file.document_id,
+                'file_pk': latest_file.pk,
+                'page_pk': latest_file.pages.first().pk
             }
         )
 

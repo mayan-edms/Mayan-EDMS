@@ -156,7 +156,7 @@ class DocumentPropertiesForm(DetailForm):
             },
         ]
 
-        if document.latest_version:
+        if document.latest_file:
             extra_fields += (
                 {
                     'label': _('File mimetype'),
@@ -177,7 +177,7 @@ class DocumentPropertiesForm(DetailForm):
                 {'label': _('Exists in storage'), 'field': 'exists'},
                 {
                     'label': _('File path in storage'),
-                    'field': 'latest_version.file'
+                    'field': 'latest_file.file'
                 },
                 {'label': _('Checksum'), 'field': 'checksum'},
                 {'label': _('Pages'), 'field': 'page_count'},

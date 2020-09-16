@@ -5,9 +5,9 @@ from django.db import transaction
 
 from mayan.apps.common.classes import PropertyHelper
 
-from .events import event_file_metadata_document_version_finish
+from .events import event_file_metadata_document_file_finish
 from .exceptions import FileMetadataDriverError
-from .signals import signal_post_document_version_file_metadata_processing
+from .signals import signal_post_document_file_file_metadata_processing
 
 logger = logging.getLogger(name=__name__)
 
@@ -28,9 +28,9 @@ class FileMetadataDriver:
     _registry = {}
 
     @classmethod
-    def process_document_version(cls, document_version):
+    def process_document_file(cls, document_file):
         # Get list of drivers for the document's MIME type
-        driver_classes = cls._registry.get(document_version.mimetype, ())
+        driver_classes = cls._registry.get(document_file.mimetype, ())
         # Add wilcard drivers, drivers meant to be executed for all MIME types.
         driver_classes = driver_classes + tuple(cls._registry.get('*', ()))
 
@@ -41,16 +41,16 @@ class FileMetadataDriver:
                 driver.initialize()
 
                 with transaction.atomic():
-                    driver.process(document_version=document_version)
-                    event_file_metadata_document_version_finish.commit(
-                        action_object=document_version.document,
-                        target=document_version
+                    driver.process(document_file=document_file)
+                    event_file_metadata_document_file_finish.commit(
+                        action_object=document_file.document,
+                        target=document_file
                     )
 
                     transaction.on_commit(
-                        lambda: signal_post_document_version_file_metadata_processing.send(
-                            sender=document_version.__class__,
-                            instance=document_version
+                        lambda: signal_post_document_file_file_metadata_processing.send(
+                            sender=document_file.__class__,
+                            instance=document_file
                         )
                     )
             except FileMetadataDriverError:
@@ -82,27 +82,27 @@ class FileMetadataDriver:
             }
         )
 
-    def process(self, document_version):
+    def process(self, document_file):
         logger.info(
-            'Starting processing document version: %s', document_version
+            'Starting processing document file: %s', document_file
         )
 
         self.driver_model.driver_entries.filter(
-            document_version=document_version
+            document_file=document_file
         ).delete()
 
-        document_version_driver_entry = self.driver_model.driver_entries.create(
-            document_version=document_version
+        document_file_driver_entry = self.driver_model.driver_entries.create(
+            document_file=document_file
         )
 
-        results = self._process(document_version=document_version) or {}
+        results = self._process(document_file=document_file) or {}
 
         for key, value in results.items():
-            document_version_driver_entry.entries.create(
+            document_file_driver_entry.entries.create(
                 key=key, value=value
             )
 
-    def _process(self, document_version):
+    def _process(self, document_file):
         raise NotImplementedError(
             'Your %s class has not defined the required '
             '_process() method.' % self.__class__.__name__

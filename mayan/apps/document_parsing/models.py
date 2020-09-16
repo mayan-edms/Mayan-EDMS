@@ -3,7 +3,7 @@ from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.documents.models import (
-    DocumentPage, DocumentType, DocumentVersion
+    DocumentFile, DocumentPage, DocumentType
 )
 
 from .managers import DocumentPageContentManager, DocumentTypeSettingsManager
@@ -62,11 +62,11 @@ class DocumentTypeSettings(models.Model):
 class DocumentVersionParseError(models.Model):
     """
     This module stores the errors captures when attempting to parse a
-    document version.
+    document file.
     """
-    document_version = models.ForeignKey(
+    document_file = models.ForeignKey(
         on_delete=models.CASCADE, related_name='parsing_errors',
-        to=DocumentVersion, verbose_name=_('Document version')
+        to=DocumentFile, verbose_name=_('Document file')
     )
     datetime_submitted = models.DateTimeField(
         auto_now_add=True, db_index=True, verbose_name=_('Date time submitted')
@@ -75,8 +75,8 @@ class DocumentVersionParseError(models.Model):
 
     class Meta:
         ordering = ('datetime_submitted',)
-        verbose_name = _('Document version parse error')
-        verbose_name_plural = _('Document version parse errors')
+        verbose_name = _('Document file parse error')
+        verbose_name_plural = _('Document file parse errors')
 
     def __str__(self):
-        return force_text(self.document_version)
+        return force_text(self.document_file)

@@ -41,7 +41,7 @@ from .events import (
     event_document_create, event_document_download,
     event_document_properties_edit, event_document_type_changed,
     event_document_type_created, event_document_type_edited,
-    event_document_version_new, event_document_version_revert,
+    event_document_file_new, event_document_file_revert,
     event_document_view
 )
 from .handlers import (
@@ -59,10 +59,10 @@ from .links.document_links import (
     link_document_print, link_document_properties,
     link_document_quick_download
 )
-from .links.document_version_links import (
-    link_document_version_download, link_document_version_list,
-    link_document_version_return_document, link_document_version_return_list,
-    link_document_version_revert, link_document_version_view
+from .links.document_file_links import (
+    link_document_file_download, link_document_file_list,
+    link_document_file_return_document, link_document_file_return_list,
+    link_document_file_revert, link_document_file_view
 )
 from .links.document_type_links import (
     link_document_type_create, link_document_type_delete,
@@ -72,7 +72,7 @@ from .links.document_type_links import (
     link_document_type_list, link_document_type_policies,
     link_document_type_setup
 )
-from .links.document_version_page_links import (
+from .links.document_file_page_links import (
     link_document_multiple_update_page_count, link_document_page_disable,
     link_document_page_enable, link_document_page_multiple_enable,
     link_document_page_multiple_disable, link_document_page_navigation_first,
@@ -103,18 +103,18 @@ from .menus import menu_documents
 from .permissions import (
     permission_document_create, permission_document_delete,
     permission_document_download, permission_document_edit,
-    permission_document_new_version, permission_document_print,
+    permission_document_new_file, permission_document_print,
     permission_document_properties_edit, permission_document_restore,
     permission_document_tools, permission_document_trash,
     permission_document_type_delete, permission_document_type_edit,
-    permission_document_type_view, permission_document_version_revert,
-    permission_document_version_view, permission_document_view
+    permission_document_type_view, permission_document_file_revert,
+    permission_document_file_view, permission_document_view
 )
-from .signals import signal_post_version_upload
+from .signals import signal_post_file_upload
 from .statistics import *  # NOQA
 from .widgets import (
     DocumentPageThumbnailWidget, widget_document_page_number,
-    widget_document_version_page_number
+    widget_document_file_page_number
 )
 
 
@@ -135,11 +135,11 @@ class DocumentsApp(MayanAppConfig):
 
         DeletedDocument = self.get_model(model_name='DeletedDocument')
         Document = self.get_model(model_name='Document')
+        DocumentFile = self.get_model(model_name='DocumentFile')
         DocumentPage = self.get_model(model_name='DocumentPage')
         DocumentPageResult = self.get_model(model_name='DocumentPageResult')
         DocumentType = self.get_model(model_name='DocumentType')
         DocumentTypeFilename = self.get_model(model_name='DocumentTypeFilename')
-        DocumentVersion = self.get_model(model_name='DocumentVersion')
         DuplicatedDocument = self.get_model(model_name='DuplicatedDocument')
 
         link_decorations_list = link_transformation_list.copy(
@@ -154,8 +154,8 @@ class DocumentsApp(MayanAppConfig):
 
         EventModelRegistry.register(model=DeletedDocument)
         EventModelRegistry.register(model=Document)
+        EventModelRegistry.register(model=DocumentFile)
         EventModelRegistry.register(model=DocumentType)
-        EventModelRegistry.register(model=DocumentVersion)
 
         MissingItem(
             label=_('Create a document type'),
@@ -190,8 +190,8 @@ class DocumentsApp(MayanAppConfig):
         ModelEventType.register(
             model=Document, event_types=(
                 event_document_download, event_document_properties_edit,
-                event_document_type_changed, event_document_version_new,
-                event_document_version_revert, event_document_view
+                event_document_type_changed, event_document_file_new,
+                event_document_file_revert, event_document_view
             )
         )
 
@@ -210,36 +210,36 @@ class DocumentsApp(MayanAppConfig):
         ModelFieldRelated(model=Document, name='document_type__label')
         ModelFieldRelated(
             model=Document,
-            name='versions__checksum'
+            name='files__checksum'
         )
         ModelFieldRelated(
-            model=Document, label=_('Versions comment'),
-            name='versions__comment'
+            model=Document, label=_('Files comment'),
+            name='files__comment'
         )
         ModelFieldRelated(
-            model=Document, label=_('Versions encoding'),
-            name='versions__encoding'
+            model=Document, label=_('Files encoding'),
+            name='files__encoding'
         )
         ModelFieldRelated(
-            model=Document, label=_('Versions mime type'),
-            name='versions__mimetype'
+            model=Document, label=_('Files mime type'),
+            name='files__mimetype'
         )
         ModelFieldRelated(
-            model=Document, label=_('Versions timestamp'),
-            name='versions__timestamp'
+            model=Document, label=_('Files timestamp'),
+            name='files__timestamp'
         )
 
         ModelField(
-            model=DocumentPage, label=_('Document version'),
-            name='document_version'
+            model=DocumentPage, label=_('Document file'),
+            name='document_file'
         )
         ModelField(
             model=DocumentPage, label=_('Page number'), name='page_number'
         )
 
         ModelProperty(
-            description=_('Return the lastest version of the document.'),
-            model=Document, label=_('Latest version'), name='latest_version'
+            description=_('Return the lastest file of the document.'),
+            model=Document, label=_('Latest file'), name='latest_file'
         )
         ModelProperty(
             description=_('Return the document instance.'),
@@ -250,11 +250,11 @@ class DocumentsApp(MayanAppConfig):
             model=Document, permissions=(
                 permission_acl_edit, permission_acl_view,
                 permission_document_delete, permission_document_download,
-                permission_document_edit, permission_document_new_version,
+                permission_document_edit, permission_document_new_file,
                 permission_document_print, permission_document_properties_edit,
                 permission_document_restore, permission_document_tools,
-                permission_document_trash, permission_document_version_revert,
-                permission_document_version_view, permission_document_view,
+                permission_document_trash, permission_document_file_revert,
+                permission_document_file_view, permission_document_view,
                 permission_events_view, permission_transformation_create,
                 permission_transformation_delete,
                 permission_transformation_edit, permission_transformation_view,
@@ -274,29 +274,29 @@ class DocumentsApp(MayanAppConfig):
             model=Document, related='document_type',
         )
         ModelPermission.register_inheritance(
-            model=DocumentPage, related='document_version__document',
+            model=DocumentPage, related='document_file__document',
         )
         ModelPermission.register_inheritance(
-            model=DocumentPageResult, related='document_version__document',
+            model=DocumentPageResult, related='document_file__document',
         )
         ModelPermission.register_inheritance(
             model=DocumentTypeFilename, related='document_type',
         )
         ModelPermission.register_inheritance(
-            model=DocumentVersion, related='document',
+            model=DocumentFile, related='document',
         )
 
         model_query_fields_document = ModelQueryFields(model=Document)
-        model_query_fields_document.add_prefetch_related_field(field_name='versions')
-        model_query_fields_document.add_prefetch_related_field(field_name='versions__version_pages')
+        model_query_fields_document.add_prefetch_related_field(field_name='files')
+        model_query_fields_document.add_prefetch_related_field(field_name='files__file_pages')
         model_query_fields_document.add_select_related_field(field_name='document_type')
 
-        model_query_fields_document_version = ModelQueryFields(model=DocumentVersion)
-        model_query_fields_document_version.add_prefetch_related_field(field_name='version_pages')
-        model_query_fields_document_version.add_select_related_field(field_name='document')
+        model_query_fields_document_file = ModelQueryFields(model=DocumentFile)
+        model_query_fields_document_file.add_prefetch_related_field(field_name='file_pages')
+        model_query_fields_document_file.add_select_related_field(field_name='document')
 
         model_query_fields_document_page = ModelQueryFields(model=DocumentPage)
-        model_query_fields_document_page.add_select_related_field(field_name='document_version')
+        model_query_fields_document_page.add_select_related_field(field_name='document_file')
 
         # Document and document page thumbnail widget
         document_page_thumbnail_widget = DocumentPageThumbnailWidget()
@@ -362,7 +362,7 @@ class DocumentsApp(MayanAppConfig):
             label=_('Thumbnail'), source=DocumentPageResult
         )
         SourceColumn(
-            attribute='document_version.document.document_type',
+            attribute='document_file.document.document_type',
             label=_('Type'), source=DocumentPageResult
         )
 
@@ -397,30 +397,30 @@ class DocumentsApp(MayanAppConfig):
             source=DeletedDocument
         )
 
-        # DocumentVersion
+        # DocumentFile
         SourceColumn(
-            source=DocumentVersion, attribute='timestamp', is_identifier=True,
+            source=DocumentFile, attribute='timestamp', is_identifier=True,
             is_object_absolute_url=True
         )
         SourceColumn(
             func=lambda context: document_page_thumbnail_widget.render(
                 instance=context['object']
             ), html_extra_classes='text-center document-thumbnail-list',
-            label=_('Thumbnail'), source=DocumentVersion
+            label=_('Thumbnail'), source=DocumentFile
         )
         SourceColumn(
-            func=lambda context: widget_document_version_page_number(
-                document_version=context['object']
-            ), label=_('Pages'), source=DocumentVersion
+            func=lambda context: widget_document_file_page_number(
+                document_file=context['object']
+            ), label=_('Pages'), source=DocumentFile
         )
         SourceColumn(
-            attribute='mimetype', is_sortable=True, source=DocumentVersion
+            attribute='mimetype', is_sortable=True, source=DocumentFile
         )
         SourceColumn(
-            attribute='encoding', is_sortable=True, source=DocumentVersion
+            attribute='encoding', is_sortable=True, source=DocumentFile
         )
         SourceColumn(
-            attribute='comment', is_sortable=True, source=DocumentVersion
+            attribute='comment', is_sortable=True, source=DocumentFile
         )
 
         Template(
@@ -538,7 +538,7 @@ class DocumentsApp(MayanAppConfig):
             links=(
                 link_events_for_object,
                 link_object_event_types_user_subcriptions_list,
-                link_document_version_list,
+                link_document_file_list,
             ), sources=(Document,), position=2
         )
         menu_facet.bind_links(links=(link_document_pages,), sources=(Document,))
@@ -546,9 +546,9 @@ class DocumentsApp(MayanAppConfig):
         # Document actions
         menu_object.bind_links(
             links=(
-                link_document_version_revert, link_document_version_download
+                link_document_file_revert, link_document_file_download
             ),
-            sources=(DocumentVersion,)
+            sources=(DocumentFile,)
         )
         menu_multi_item.bind_links(
             links=(
@@ -603,19 +603,19 @@ class DocumentsApp(MayanAppConfig):
             sources=(DocumentPage,)
         )
 
-        # Document versions
+        # Document files
         menu_list_facet.bind_links(
-            links=(link_document_version_view,), sources=(DocumentVersion,)
+            links=(link_document_file_view,), sources=(DocumentFile,)
         )
         menu_related.bind_links(
             links=(
-                link_document_version_return_document,
-            ), sources=(DocumentVersion,)
+                link_document_file_return_document,
+            ), sources=(DocumentFile,)
         )
         menu_secondary.bind_links(
             links=(
-                link_document_version_return_list,
-            ), sources=(DocumentVersion,)
+                link_document_file_return_list,
+            ), sources=(DocumentFile,)
         )
 
         # Trashed documents
@@ -639,7 +639,7 @@ class DocumentsApp(MayanAppConfig):
             dispatch_uid='documents_handler_create_default_document_type',
             receiver=handler_create_default_document_type
         )
-        signal_post_version_upload.connect(
+        signal_post_file_upload.connect(
             dispatch_uid='documents_handler_scan_duplicates_for',
             receiver=handler_scan_duplicates_for
         )

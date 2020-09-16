@@ -4,10 +4,12 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import MissingItem
-from mayan.apps.common.signals import signal_post_initial_setup, signal_post_upgrade
+from mayan.apps.common.signals import (
+    signal_post_initial_setup, signal_post_upgrade
+)
 from mayan.apps.converter.links import link_transformation_list
 from mayan.apps.documents.menus import menu_documents
-from mayan.apps.documents.signals import signal_post_version_upload
+from mayan.apps.documents.signals import signal_post_file_upload
 from mayan.apps.logging.classes import ErrorLog
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.views.html_widgets import TwoStateWidget
@@ -17,7 +19,7 @@ from mayan.apps.common.menus import (
 
 from .classes import StagingFile
 from .handlers import (
-    handler_copy_transformations_to_version,
+    handler_copy_transformations_to_file,
     handler_create_default_document_source,
     handler_delete_interval_source_periodic_task,
     handler_initialize_periodic_tasks
@@ -29,7 +31,7 @@ from .links import (
     link_setup_source_create_watch_folder, link_setup_source_create_webform,
     link_setup_source_create_staging_folder, link_setup_source_delete,
     link_setup_source_edit, link_staging_file_delete,
-    link_document_version_upload
+    link_document_file_upload
 )
 from .widgets import StagingFileThumbnailWidget
 
@@ -148,11 +150,11 @@ class SourcesApp(MayanAppConfig):
         )
         menu_setup.bind_links(links=(link_setup_sources,))
         menu_secondary.bind_links(
-            links=(link_document_version_upload,),
+            links=(link_document_file_upload,),
             sources=(
-                'documents:document_version_list',
-                'documents:document_version_revert',
-                'sources:document_version_upload'
+                'documents:document_file_list',
+                'documents:document_file_revert',
+                'sources:document_file_upload'
             )
         )
 
@@ -169,7 +171,7 @@ class SourcesApp(MayanAppConfig):
             receiver=handler_initialize_periodic_tasks,
             dispatch_uid='sources_handler_initialize_periodic_tasks'
         )
-        signal_post_version_upload.connect(
-            receiver=handler_copy_transformations_to_version,
-            dispatch_uid='sources_handler_copy_transformations_to_version'
+        signal_post_file_upload.connect(
+            receiver=handler_copy_transformations_to_file,
+            dispatch_uid='sources_handler_copy_transformations_to_file'
         )

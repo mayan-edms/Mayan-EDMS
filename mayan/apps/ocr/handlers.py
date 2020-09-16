@@ -9,7 +9,7 @@ from .settings import setting_auto_ocr
 logger = logging.getLogger(name=__name__)
 
 
-def handler_index_document_version(sender, **kwargs):
+def handler_index_document_file(sender, **kwargs):
     task_index_document.apply_async(
         kwargs=dict(document_id=kwargs['instance'].document.pk)
     )
@@ -26,8 +26,8 @@ def handler_initialize_new_ocr_settings(sender, instance, **kwargs):
         )
 
 
-def handler_ocr_document_version(sender, instance, **kwargs):
-    logger.debug('received signal_post_version_upload')
+def handler_ocr_document_file(sender, instance, **kwargs):
+    logger.debug('received signal_post_file_upload')
     logger.debug('instance pk: %s', instance.pk)
     if instance.document.document_type.ocr_settings.auto_ocr:
         instance.submit_for_ocr()

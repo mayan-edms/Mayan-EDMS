@@ -24,7 +24,7 @@ class DocumentCheckoutSerializer(serializers.ModelSerializer):
 
 
 class NewDocumentCheckoutSerializer(serializers.ModelSerializer):
-    block_new_version = serializers.BooleanField()
+    block_new_file = serializers.BooleanField()
     document_pk = serializers.IntegerField(
         help_text=_('Primary key of the document to be checked out.'),
         write_only=True
@@ -34,7 +34,7 @@ class NewDocumentCheckoutSerializer(serializers.ModelSerializer):
 
     class Meta:
         fields = (
-            'block_new_version', 'document', 'document_pk',
+            'block_new_file', 'document', 'document_pk',
             'expiration_datetime', 'id',
         )
         model = DocumentCheckout

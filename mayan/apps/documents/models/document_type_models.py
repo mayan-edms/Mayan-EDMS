@@ -142,7 +142,7 @@ class DocumentType(models.Model):
                 )
                 document.save(_user=_user)
 
-                document.new_version(file_object=file_object, _user=_user)
+                document.new_file(file_object=file_object, _user=_user)
                 return document
         except Exception as exception:
             logger.critical(

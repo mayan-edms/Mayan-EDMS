@@ -3,7 +3,7 @@ from mayan.apps.appearance.classes import Icon
 icon_document_create_multiple = Icon(
     driver_name='fontawesome', symbol='upload'
 )
-icon_document_version_upload = Icon(
+icon_document_file_upload = Icon(
     driver_name='fontawesome', symbol='upload'
 )
 icon_setup_sources = Icon(driver_name='fontawesome', symbol='upload')

@@ -129,31 +129,31 @@ def task_trash_can_empty():
 
 
 @app.task(bind=True, default_retry_delay=UPDATE_PAGE_COUNT_RETRY_DELAY, ignore_result=True)
-def task_update_page_count(self, version_id):
-    DocumentVersion = apps.get_model(
-        app_label='documents', model_name='DocumentVersion'
+def task_update_page_count(self, file_id):
+    DocumentFile = apps.get_model(
+        app_label='documents', model_name='DocumentFile'
     )
 
-    document_version = DocumentVersion.objects.get(pk=version_id)
+    document_file = DocumentFile.objects.get(pk=file_id)
     try:
-        document_version.update_page_count()
+        document_file.update_page_count()
     except OperationalError as exception:
         logger.warning(
             'Operational error during attempt to update page count for '
-            'document version: %s; %s. Retrying.', document_version,
+            'document file: %s; %s. Retrying.', document_file,
             exception
         )
         raise self.retry(exc=exception)
 
 
 @app.task(bind=True, default_retry_delay=UPLOAD_NEW_VERSION_RETRY_DELAY, ignore_result=True)
-def task_upload_new_version(self, document_id, shared_uploaded_file_id, user_id, comment=None):
+def task_upload_new_file(self, document_id, shared_uploaded_file_id, user_id, comment=None):
     Document = apps.get_model(
         app_label='documents', model_name='Document'
     )
 
-    DocumentVersion = apps.get_model(
-        app_label='documents', model_name='DocumentVersion'
+    DocumentFile = apps.get_model(
+        app_label='documents', model_name='DocumentFile'
     )
 
     SharedUploadedFile = apps.get_model(
@@ -173,34 +173,34 @@ def task_upload_new_version(self, document_id, shared_uploaded_file_id, user_id,
     except OperationalError as exception:
         logger.warning(
             'Operational error during attempt to retrieve shared data for '
-            'new document version for:%s; %s. Retrying.', document, exception
+            'new document file for:%s; %s. Retrying.', document, exception
         )
         raise self.retry(exc=exception)
 
     with shared_file.open() as file_object:
-        document_version = DocumentVersion(
+        document_file = DocumentFile(
             document=document, comment=comment or '', file=file_object
         )
         try:
-            document_version.save(_user=user)
+            document_file.save(_user=user)
         except Warning as warning:
-            # New document version are blocked
+            # New document file are blocked
             logger.info(
-                'Warning during attempt to create new document version for '
+                'Warning during attempt to create new document file for '
                 'document: %s; %s', document, warning
             )
             shared_file.delete()
         except OperationalError as exception:
             logger.warning(
                 'Operational error during attempt to create new document '
-                'version for document: %s; %s. Retrying.', document, exception
+                'file for document: %s; %s. Retrying.', document, exception
             )
             raise self.retry(exc=exception)
         except Exception as exception:
             # This except and else block emulate a finally:
             logger.error(
                 'Unexpected error during attempt to create new document '
-                'version for document: %s; %s', document, exception
+                'file for document: %s; %s', document, exception
             )
             try:
                 shared_file.delete()

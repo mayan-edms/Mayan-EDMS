@@ -6,7 +6,7 @@ from django.utils.functional import cached_property
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.documents.models import DocumentType, DocumentVersion
+from mayan.apps.documents.models import DocumentFile, DocumentType
 
 from .managers import DocumentTypeSettingsManager
 
@@ -69,16 +69,16 @@ class DocumentVersionDriverEntry(models.Model):
         on_delete=models.CASCADE, related_name='driver_entries',
         to=StoredDriver, verbose_name=_('Driver')
     )
-    document_version = models.ForeignKey(
+    document_file = models.ForeignKey(
         on_delete=models.CASCADE, related_name='file_metadata_drivers',
-        to=DocumentVersion, verbose_name=_('Document version')
+        to=DocumentFile, verbose_name=_('Document file')
     )
 
     class Meta:
-        ordering = ('document_version', 'driver')
-        unique_together = ('driver', 'document_version')
-        verbose_name = _('Document version driver entry')
-        verbose_name_plural = _('Document version driver entries')
+        ordering = ('document_file', 'driver')
+        unique_together = ('driver', 'document_file')
+        verbose_name = _('Document file driver entry')
+        verbose_name_plural = _('Document file driver entries')
 
     def __str__(self):
         return force_text(self.driver)
@@ -89,10 +89,10 @@ class DocumentVersionDriverEntry(models.Model):
 
 
 class FileMetadataEntry(models.Model):
-    document_version_driver_entry = models.ForeignKey(
+    document_file_driver_entry = models.ForeignKey(
         on_delete=models.CASCADE, related_name='entries',
         to=DocumentVersionDriverEntry,
-        verbose_name=_('Document version driver entry')
+        verbose_name=_('Document file driver entry')
     )
 
     key = models.CharField(
@@ -111,5 +111,5 @@ class FileMetadataEntry(models.Model):
 
     def __str__(self):
         return '{}: {}: {}'.format(
-            self.document_version_driver_entry, self.key, self.value
+            self.document_file_driver_entry, self.key, self.value
         )

@@ -66,21 +66,21 @@ class DocumentCheckoutBusinessLogicManager(models.Manager):
 
 
 class DocumentCheckoutManager(models.Manager):
-    def are_document_new_versions_allowed(self, document, user=None):
+    def are_document_new_files_allowed(self, document, user=None):
         try:
             check_out_info = self.document_check_out_info(document=document)
         except DocumentNotCheckedOut:
             return True
         else:
-            return not check_out_info.block_new_version
+            return not check_out_info.block_new_file
 
     def check_in_expired_check_outs(self):
         for document in self.expired_check_outs():
             document.check_in()
 
-    def check_out_document(self, document, expiration_datetime, user, block_new_version=True):
+    def check_out_document(self, document, expiration_datetime, user, block_new_file=True):
         return self.create(
-            block_new_version=block_new_version, document=document,
+            block_new_file=block_new_file, document=document,
             expiration_datetime=expiration_datetime, user=user
         )
 
@@ -148,7 +148,7 @@ class NewVersionBlockManager(models.Manager):
     def is_blocked(self, document):
         return self.filter(document=document).exists()
 
-    def new_versions_allowed(self, document):
+    def new_files_allowed(self, document):
         if self.filter(document=document).exists():
             raise NewDocumentVersionNotAllowed
 

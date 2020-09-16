@@ -12,7 +12,7 @@ from mayan.apps.views.generics import (
 from mayan.apps.views.mixins import ExternalObjectMixin
 
 from .forms import DocumentContentForm, DocumentPageContentForm
-from .models import DocumentPageContent, DocumentVersionParseError
+from .models import DocumentPageContent#, DocumentVersionParseError
 from .permissions import (
     permission_content_view, permission_document_type_parsing_setup,
     permission_parse_document

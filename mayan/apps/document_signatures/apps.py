@@ -15,26 +15,26 @@ from .handlers import (
     handler_unverify_key_signatures, handler_verify_key_signatures
 )
 from .hooks import (
-    hook_create_embedded_signature, hook_decrypt_document_version
+    hook_create_embedded_signature, hook_decrypt_document_file
 )
 from .links import (
-    link_document_version_all_signature_verify,
+    link_document_file_all_signature_verify,
     link_document_signature_list,
-    link_document_version_signature_delete,
-    link_document_version_signature_detached_create,
-    link_document_version_signature_embedded_create,
-    link_document_version_signature_details,
-    link_document_version_signature_download,
-    link_document_version_signature_list,
-    link_document_version_signature_upload,
+    link_document_file_signature_delete,
+    link_document_file_signature_detached_create,
+    link_document_file_signature_embedded_create,
+    link_document_file_signature_details,
+    link_document_file_signature_download,
+    link_document_file_signature_list,
+    link_document_file_signature_upload,
 )
 from .permissions import (
-    permission_document_version_sign_detached,
-    permission_document_version_sign_embedded,
-    permission_document_version_signature_delete,
-    permission_document_version_signature_download,
-    permission_document_version_signature_upload,
-    permission_document_version_signature_view,
+    permission_document_file_sign_detached,
+    permission_document_file_sign_embedded,
+    permission_document_file_signature_delete,
+    permission_document_file_signature_download,
+    permission_document_file_signature_upload,
+    permission_document_file_signature_view,
 )
 
 logger = logging.getLogger(name=__name__)
@@ -55,8 +55,8 @@ class DocumentSignaturesApp(MayanAppConfig):
             app_label='documents', model_name='Document'
         )
 
-        DocumentVersion = apps.get_model(
-            app_label='documents', model_name='DocumentVersion'
+        DocumentFile = apps.get_model(
+            app_label='documents', model_name='DocumentFile'
         )
 
         Key = apps.get_model(
@@ -67,28 +67,28 @@ class DocumentSignaturesApp(MayanAppConfig):
 
         SignatureBaseModel = self.get_model(model_name='SignatureBaseModel')
 
-        DocumentVersion.register_post_save_hook(
+        DocumentFile.register_post_save_hook(
             func=hook_create_embedded_signature, order=1
         )
-        DocumentVersion.register_pre_open_hook(
-            func=hook_decrypt_document_version, order=1
+        DocumentFile.register_pre_open_hook(
+            func=hook_decrypt_document_file, order=1
         )
 
         ModelPermission.register(
             model=Document, permissions=(
-                permission_document_version_sign_detached,
-                permission_document_version_sign_embedded,
-                permission_document_version_signature_delete,
-                permission_document_version_signature_download,
-                permission_document_version_signature_view,
-                permission_document_version_signature_upload,
+                permission_document_file_sign_detached,
+                permission_document_file_sign_embedded,
+                permission_document_file_signature_delete,
+                permission_document_file_signature_download,
+                permission_document_file_signature_view,
+                permission_document_file_signature_upload,
             )
         )
         ModelPermission.register_inheritance(
-            model=SignatureBaseModel, related='document_version'
+            model=SignatureBaseModel, related='document_file'
         )
         ModelPermission.register_inheritance(
-            model=DetachedSignature, related='document_version'
+            model=DetachedSignature, related='document_file'
         )
 
         SourceColumn(
@@ -114,30 +114,30 @@ class DocumentSignaturesApp(MayanAppConfig):
         )
         menu_facet.bind_links(
             links=(
-                link_document_version_signature_list,
-            ), position=9, sources=(DocumentVersion,)
+                link_document_file_signature_list,
+            ), position=9, sources=(DocumentFile,)
         )
 
         menu_object.bind_links(
             links=(
-                link_document_version_signature_detached_create,
-                link_document_version_signature_embedded_create
-            ), sources=(DocumentVersion,)
+                link_document_file_signature_detached_create,
+                link_document_file_signature_embedded_create
+            ), sources=(DocumentFile,)
         )
         menu_object.bind_links(
             links=(
-                link_document_version_signature_details,
-                link_document_version_signature_download,
-                link_document_version_signature_delete,
+                link_document_file_signature_details,
+                link_document_file_signature_download,
+                link_document_file_signature_delete,
             ), sources=(SignatureBaseModel,)
         )
         menu_secondary.bind_links(
             links=(
-                link_document_version_signature_upload,
-            ), sources=(DocumentVersion,)
+                link_document_file_signature_upload,
+            ), sources=(DocumentFile,)
         )
         menu_tools.bind_links(
-            links=(link_document_version_all_signature_verify,)
+            links=(link_document_file_all_signature_verify,)
         )
 
         post_delete.connect(

@@ -10,18 +10,18 @@ from mayan.apps.common.classes import ModelFieldRelated, ModelProperty
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_multi_item, menu_secondary, menu_tools
 )
-from mayan.apps.documents.signals import signal_post_version_upload
+from mayan.apps.documents.signals import signal_post_file_upload
 from mayan.apps.events.classes import ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
 
 from .events import (
     event_parsing_document_content_deleted,
-    event_parsing_document_version_submit,
-    event_parsing_document_version_finish
+    event_parsing_document_file_submit,
+    event_parsing_document_file_finish
 )
 from .handlers import (
     handler_index_document, handler_initialize_new_parsing_settings,
-    handler_parse_document_version
+    handler_parse_document_file
 )
 from .links import (
     link_document_content, link_document_content_delete,
@@ -32,13 +32,13 @@ from .links import (
     link_error_list
 )
 from .methods import (
-    method_document_parsing_submit, method_document_version_parsing_submit
+    method_document_parsing_submit, method_document_file_parsing_submit
 )
 from .permissions import (
     permission_content_view, permission_document_type_parsing_setup,
     permission_parse_document
 )
-from .signals import signal_post_document_version_parsing
+from .signals import signal_post_document_file_parsing
 from .utils import get_instance_content
 
 logger = logging.getLogger(name=__name__)
@@ -58,6 +58,9 @@ class DocumentParsingApp(MayanAppConfig):
         Document = apps.get_model(
             app_label='documents', model_name='Document'
         )
+        DocumentFile = apps.get_model(
+            app_label='documents', model_name='DocumentFile'
+        )
         DocumentPage = apps.get_model(
             app_label='documents', model_name='DocumentPage'
         )
@@ -66,9 +69,6 @@ class DocumentParsingApp(MayanAppConfig):
         )
         DocumentTypeSettings = self.get_model(
             model_name='DocumentTypeSettings'
-        )
-        DocumentVersion = apps.get_model(
-            app_label='documents', model_name='DocumentVersion'
         )
         DocumentVersionParseError = self.get_model(
             model_name='DocumentVersionParseError'
@@ -80,24 +80,24 @@ class DocumentParsingApp(MayanAppConfig):
         Document.add_to_class(
             name='submit_for_parsing', value=method_document_parsing_submit
         )
-        DocumentVersion.add_to_class(
+        DocumentFile.add_to_class(
             name='content', value=get_instance_content
         )
-        DocumentVersion.add_to_class(
+        DocumentFile.add_to_class(
             name='submit_for_parsing',
-            value=method_document_version_parsing_submit
+            value=method_document_file_parsing_submit
         )
 
         ModelEventType.register(
             model=Document, event_types=(
                 event_parsing_document_content_deleted,
-                event_parsing_document_version_submit,
-                event_parsing_document_version_finish
+                event_parsing_document_file_submit,
+                event_parsing_document_file_finish
             )
         )
 
         ModelFieldRelated(
-            model=Document, name='versions__version_pages__content__content'
+            model=Document, name='files__file_pages__content__content'
         )
 
         ModelProperty(
@@ -122,7 +122,7 @@ class DocumentParsingApp(MayanAppConfig):
         )
 
         SourceColumn(
-            attribute='document_version__document',
+            attribute='document_file__document',
             is_attribute_absolute_url=True, is_identifier=True,
             is_sortable=True, source=DocumentVersionParseError
         )
@@ -177,13 +177,13 @@ class DocumentParsingApp(MayanAppConfig):
             receiver=handler_initialize_new_parsing_settings,
             sender=DocumentType
         )
-        signal_post_document_version_parsing.connect(
+        signal_post_document_file_parsing.connect(
             dispatch_uid='document_parsing_handler_index_document',
             receiver=handler_index_document,
-            sender=DocumentVersion
+            sender=DocumentFile
         )
-        signal_post_version_upload.connect(
-            dispatch_uid='document_parsing_handler_parse_document_version',
-            receiver=handler_parse_document_version,
-            sender=DocumentVersion
+        signal_post_file_upload.connect(
+            dispatch_uid='document_parsing_handler_parse_document_file',
+            receiver=handler_parse_document_file,
+            sender=DocumentFile
         )

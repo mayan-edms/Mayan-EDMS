@@ -1,6 +1,6 @@
-from mayan.apps.documents.permissions import permission_document_new_version
+from mayan.apps.documents.permissions import permission_document_new_file
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
-from mayan.apps.sources.links import link_document_version_upload
+from mayan.apps.sources.links import link_document_file_upload
 
 from ..links import link_check_out_document, link_check_out_info
 from ..permissions import (
@@ -52,22 +52,22 @@ class CheckoutLinksTestCase(
 class DocumentVersionListViewTestCase(
     DocumentCheckoutTestMixin, GenericDocumentViewTestCase
 ):
-    def _get_document_new_version_link(self):
+    def _get_document_new_file_link(self):
         self.grant_access(
             obj=self.test_document,
-            permission=permission_document_new_version
+            permission=permission_document_new_file
         )
 
         self.add_test_view(test_object=self.test_document)
         context = self.get_test_view()
-        return link_document_version_upload.resolve(context=context)
+        return link_document_file_upload.resolve(context=context)
 
-    def test_document_version_new_not_blocked(self):
-        resolved_link = self._get_document_new_version_link()
+    def test_document_file_new_not_blocked(self):
+        resolved_link = self._get_document_new_file_link()
         self.assertNotEqual(resolved_link, None)
 
-    def test_document_version_new_blocked(self):
+    def test_document_file_new_blocked(self):
         self._check_out_test_document()
 
-        resolved_link = self._get_document_new_version_link()
+        resolved_link = self._get_document_new_file_link()
         self.assertEqual(resolved_link, None)

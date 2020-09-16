@@ -2,7 +2,7 @@ from django.utils.encoding import force_text
 
 from mayan.apps.documents.models import DocumentVersion
 from mayan.apps.documents.permissions import (
-    permission_document_new_version, permission_document_version_view,
+    permission_document_new_file, permission_document_file_view,
     permission_document_view
 )
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
@@ -401,27 +401,27 @@ class NewVersionBlockViewTestCase(
     DocumentCheckoutTestMixin, DocumentCheckoutViewTestMixin,
     GenericDocumentViewTestCase
 ):
-    def test_document_check_out_block_new_version(self):
+    def test_document_check_out_block_new_file(self):
         self._check_out_test_document()
-        version_count = DocumentVersion.objects.count()
+        file_count = DocumentVersion.objects.count()
 
         self.grant_access(
             obj=self.test_document,
-            permission=permission_document_new_version
+            permission=permission_document_new_file
         )
         self.grant_access(
             obj=self.test_document,
-            permission=permission_document_version_view
+            permission=permission_document_file_view
         )
 
         response = self.post(
-            viewname='sources:document_version_upload', kwargs={
+            viewname='sources:document_file_upload', kwargs={
                 'document_id': self.test_document.pk
             }, follow=True
         )
         self.assertContains(
             response=response, status_code=200,
-            text='Unable to upload new versions'
+            text='Unable to upload new files'
         )
 
-        self.assertEqual(DocumentVersion.objects.count(), version_count)
+        self.assertEqual(DocumentVersion.objects.count(), file_count)

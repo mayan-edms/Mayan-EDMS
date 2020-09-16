@@ -40,12 +40,12 @@ class DocumentCheckout(models.Model):
         on_delete=models.CASCADE, to=settings.AUTH_USER_MODEL,
         verbose_name=_('User')
     )
-    block_new_version = models.BooleanField(
+    block_new_file = models.BooleanField(
         default=True,
         help_text=_(
-            'Do not allow new version of this document to be uploaded.'
+            'Do not allow new file of this document to be uploaded.'
         ),
-        verbose_name=_('Block new version upload')
+        verbose_name=_('Block new file upload')
     )
 
     objects = DocumentCheckoutManager()
@@ -92,7 +92,7 @@ class DocumentCheckout(models.Model):
                 event_document_check_out.commit(
                     actor=self.user, target=self.document
                 )
-                if self.block_new_version:
+                if self.block_new_file:
                     NewVersionBlock.objects.block(self.document)
 
                 logger.info(
@@ -105,7 +105,7 @@ class DocumentCheckout(models.Model):
 
 class NewVersionBlock(models.Model):
     """
-    Model to keep track of which documents have new version upload restricted.
+    Model to keep track of which documents have new file upload restricted.
     """
     document = models.ForeignKey(
         on_delete=models.CASCADE, to=Document, verbose_name=_('Document')
@@ -114,8 +114,8 @@ class NewVersionBlock(models.Model):
     objects = NewVersionBlockManager()
 
     class Meta:
-        verbose_name = _('New version block')
-        verbose_name_plural = _('New version blocks')
+        verbose_name = _('New file block')
+        verbose_name_plural = _('New file blocks')
 
     def natural_key(self):
         return self.document.natural_key()

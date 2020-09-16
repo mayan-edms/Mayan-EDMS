@@ -25,17 +25,30 @@ class DocumentManager(models.Manager):
         return self.get(uuid=force_text(uuid))
 
 
-class DocumentPageManager(models.Manager):
-    def get_by_natural_key(self, page_number, document_version_natural_key):
-        DocumentVersion = apps.get_model(
-            app_label='documents', model_name='DocumentVersion'
+class DocumentFileManager(models.Manager):
+    def get_by_natural_key(self, checksum, document_natural_key):
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
         )
         try:
-            document_version = DocumentVersion.objects.get_by_natural_key(*document_version_natural_key)
-        except DocumentVersion.DoesNotExist:
+            document = Document.objects.get_by_natural_key(*document_natural_key)
+        except Document.DoesNotExist:
             raise self.model.DoesNotExist
 
-        return self.get(document_version__pk=document_version.pk, page_number=page_number)
+        return self.get(document__pk=document.pk, checksum=checksum)
+
+
+class DocumentPageManager(models.Manager):
+    def get_by_natural_key(self, page_number, document_file_natural_key):
+        DocumentFile = apps.get_model(
+            app_label='documents', model_name='DocumentFile'
+        )
+        try:
+            document_file = DocumentFile.objects.get_by_natural_key(*document_file_natural_key)
+        except DocumentFile.DoesNotExist:
+            raise self.model.DoesNotExist
+
+        return self.get(document_file__pk=document_file.pk, page_number=page_number)
 
 
 class DocumentTypeManager(models.Manager):
@@ -105,19 +118,6 @@ class DocumentTypeManager(models.Manager):
         return self.get(label=label)
 
 
-class DocumentVersionManager(models.Manager):
-    def get_by_natural_key(self, checksum, document_natural_key):
-        Document = apps.get_model(
-            app_label='documents', model_name='Document'
-        )
-        try:
-            document = Document.objects.get_by_natural_key(*document_natural_key)
-        except Document.DoesNotExist:
-            raise self.model.DoesNotExist
-
-        return self.get(document__pk=document.pk, checksum=checksum)
-
-
 class DuplicatedDocumentManager(models.Manager):
     def clean_empty_duplicate_lists(self):
         self.filter(documents=None).delete()
@@ -151,7 +151,7 @@ class DuplicatedDocumentManager(models.Manager):
     def scan(self):
         """
         Find duplicates by iterating over all documents and then
-        find matching latest version checksums
+        find matching latest files checksums
         """
         Document = apps.get_model(
             app_label='documents', model_name='Document'
@@ -162,22 +162,22 @@ class DuplicatedDocumentManager(models.Manager):
 
     def scan_for(self, document, scan_children=True):
         """
-        Find duplicates by matching latest version checksums
+        Find duplicates by matching latest file checksums
         """
-        if not document.latest_version:
+        if not document.latest_file:
             return None
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'
         )
 
-        # Get the documents whose latest version matches the checksum
+        # Get the documents whose latest file matches the checksum
         # of the current document and exclude the current document
         duplicates = Document.objects.annotate(
-            max_timestamp=Max('versions__timestamp')
+            max_timestamp=Max('files__timestamp')
         ).filter(
-            versions__timestamp=F('max_timestamp'),
-            versions__checksum=document.checksum
+            files__timestamp=F('max_timestamp'),
+            files__checksum=document.checksum
         ).exclude(pk=document.pk)
 
         if duplicates.exists():

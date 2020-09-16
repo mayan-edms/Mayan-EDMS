@@ -17,8 +17,8 @@ from .events import (
     event_document_auto_check_in, event_document_check_in,
     event_document_check_out, event_document_forceful_check_in
 )
-from .handlers import handler_check_new_version_creation
-from .hooks import hook_is_new_version_allowed
+from .handlers import handler_check_new_file_creation
+from .hooks import hook_is_new_file_allowed
 from .links import (
     link_check_in_document, link_check_in_document_multiple,
     link_check_out_document, link_check_out_document_multiple,
@@ -50,8 +50,8 @@ class CheckoutsApp(MayanAppConfig):
         Document = apps.get_model(
             app_label='documents', model_name='Document'
         )
-        DocumentVersion = apps.get_model(
-            app_label='documents', model_name='DocumentVersion'
+        DocumentFile = apps.get_model(
+            app_label='documents', model_name='DocumentFile'
         )
 
         Document.add_to_class(name='check_in', value=method_check_in)
@@ -65,8 +65,8 @@ class CheckoutsApp(MayanAppConfig):
             name='is_checked_out', value=method_is_checked_out
         )
 
-        DocumentVersion.register_pre_save_hook(
-            func=hook_is_new_version_allowed
+        DocumentFile.register_pre_save_hook(
+            func=hook_is_new_file_allowed
         )
 
         ModelEventType.register(
@@ -137,7 +137,7 @@ class CheckoutsApp(MayanAppConfig):
         )
 
         pre_save.connect(
-            dispatch_uid='checkouts_handler_check_new_version_creation',
-            receiver=handler_check_new_version_creation,
-            sender=DocumentVersion
+            dispatch_uid='checkouts_handler_check_new_file_creation',
+            receiver=handler_check_new_file_creation,
+            sender=DocumentFile
         )

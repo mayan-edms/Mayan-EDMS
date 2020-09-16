@@ -3,7 +3,6 @@ import uuid
 from django.db import migrations, models
 from django.utils.encoding import force_text
 
-import mayan.apps.documents.models.document_version_models
 import mayan.apps.storage.classes
 
 

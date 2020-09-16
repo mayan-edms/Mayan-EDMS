@@ -21,8 +21,8 @@ class DocumentPageOCRContentManager(models.Manager):
 
     def process_document_page(self, cache_filename, document_page):
         logger.info(
-            'Processing page: %d of document version: %s',
-            document_page.page_number, document_page.document_version
+            'Processing page: %d of document file: %s',
+            document_page.page_number, document_page.document_file
         )
 
         DocumentPageOCRContent = apps.get_model(
@@ -48,8 +48,8 @@ class DocumentPageOCRContentManager(models.Manager):
             raise
         else:
             logger.info(
-                'Finished processing page: %d of document version: %s',
-                document_page.page_number, document_page.document_version
+                'Finished processing page: %d of document file: %s',
+                document_page.page_number, document_page.document_file
             )
 
 

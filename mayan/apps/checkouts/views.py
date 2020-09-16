@@ -136,7 +136,7 @@ class DocumentCheckOutView(MultipleObjectFormActionView):
     def object_action(self, form, instance):
         try:
             DocumentCheckout.objects.check_out_document(
-                block_new_version=form.cleaned_data['block_new_version'],
+                block_new_file=form.cleaned_data['block_new_file'],
                 document=instance,
                 expiration_datetime=form.cleaned_data['expiration_datetime'],
                 user=self.request.user,

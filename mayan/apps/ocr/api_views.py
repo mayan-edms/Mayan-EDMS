@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework import status
 from rest_framework.response import Response
 
-from mayan.apps.documents.models import Document, DocumentVersion
+from mayan.apps.documents.models import Document, DocumentFile
 from mayan.apps.rest_api import generics
 
 from .models import DocumentPageOCRContent, DocumentTypeSettings
@@ -49,14 +49,14 @@ class APIDocumentPageOCRContentView(generics.RetrieveAPIView):
     def get_document(self):
         return get_object_or_404(klass=Document, pk=self.kwargs['document_pk'])
 
-    def get_document_version(self):
+    def get_document_file(self):
         return get_object_or_404(
-            klass=self.get_document().versions.all(),
-            pk=self.kwargs['version_pk']
+            klass=self.get_document().files.all(),
+            pk=self.kwargs['file_pk']
         )
 
     def get_queryset(self):
-        return self.get_document_version().pages.all()
+        return self.get_document_file().pages.all()
 
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
@@ -89,19 +89,19 @@ class APIDocumentTypeOCRSettingsView(generics.RetrieveUpdateAPIView):
 
 class APIDocumentVersionOCRView(generics.GenericAPIView):
     """
-    post: Submit a document version for OCR.
+    post: Submit a document file for OCR.
     """
-    lookup_url_kwarg = 'version_pk'
+    lookup_url_kwarg = 'file_pk'
     mayan_object_permissions = {
         'POST': (permission_ocr_document,)
     }
-    queryset = DocumentVersion.objects.all()
+    queryset = DocumentFile.objects.all()
 
     def get_document(self):
         return get_object_or_404(klass=Document, pk=self.kwargs['document_pk'])
 
     def get_queryset(self):
-        return self.get_document().versions.all()
+        return self.get_document().files.all()
 
     def get_serializer(self, *args, **kwargs):
         return None

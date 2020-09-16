@@ -48,7 +48,7 @@ class DocumentCheckoutTestMixin:
         )
 
         self.test_check_out = DocumentCheckout.objects.check_out_document(
-            block_new_version=True, document=document,
+            block_new_file=True, document=document,
             expiration_datetime=self._check_out_expiration_datetime,
             user=user
         )
@@ -90,14 +90,14 @@ class DocumentCheckoutViewTestMixin:
             }, data={
                 'expiration_datetime_unit': TIME_DELTA_UNIT_DAYS,
                 'expiration_datetime_amount': 99,
-                'block_new_version': True
+                'block_new_file': True
             }, follow=follow
         )
 
     def _request_test_document_multiple_check_out_post_view(self):
         return self.post(
             viewname='checkouts:check_out_document_multiple', data={
-                'block_new_version': True,
+                'block_new_file': True,
                 'expiration_datetime_unit': TIME_DELTA_UNIT_DAYS,
                 'expiration_datetime_amount': 99,
                 'id_list': as_id_list(items=self.test_documents)

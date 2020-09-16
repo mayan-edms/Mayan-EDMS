@@ -10,17 +10,17 @@ from mayan.apps.common.classes import ModelFieldRelated, ModelProperty
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_multi_item, menu_secondary, menu_tools
 )
-from mayan.apps.documents.signals import signal_post_version_upload
+from mayan.apps.documents.signals import signal_post_file_upload
 from mayan.apps.events.classes import ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
 
 from .events import (
-    event_ocr_document_content_deleted, event_ocr_document_version_finish,
-    event_ocr_document_version_submit
+    event_ocr_document_content_deleted, event_ocr_document_file_finish,
+    event_ocr_document_file_submit
 )
 from .handlers import (
-    handler_index_document_version, handler_initialize_new_ocr_settings,
-    handler_ocr_document_version,
+    handler_index_document_file, handler_initialize_new_ocr_settings,
+    handler_ocr_document_file,
 )
 from .links import (
     link_document_page_ocr_content, link_document_ocr_content,
@@ -31,13 +31,13 @@ from .links import (
     link_document_type_submit, link_entry_list
 )
 from .methods import (
-    method_document_ocr_submit, method_document_version_ocr_submit
+    method_document_ocr_submit, method_document_file_ocr_submit
 )
 from .permissions import (
     permission_document_type_ocr_setup, permission_ocr_document,
     permission_ocr_content_view
 )
-from .signals import signal_post_document_version_ocr
+from .signals import signal_post_document_file_ocr
 from .utils import get_instance_ocr_content
 
 logger = logging.getLogger(name=__name__)
@@ -57,6 +57,9 @@ class OCRApp(MayanAppConfig):
         Document = apps.get_model(
             app_label='documents', model_name='Document'
         )
+        DocumentFile = apps.get_model(
+            app_label='documents', model_name='DocumentFile'
+        )
         DocumentPage = apps.get_model(
             app_label='documents', model_name='DocumentPage'
         )
@@ -65,9 +68,6 @@ class OCRApp(MayanAppConfig):
         )
         DocumentTypeSettings = self.get_model(
             model_name='DocumentTypeSettings'
-        )
-        DocumentVersion = apps.get_model(
-            app_label='documents', model_name='DocumentVersion'
         )
 
         DocumentVersionOCRError = self.get_model(
@@ -80,24 +80,24 @@ class OCRApp(MayanAppConfig):
         Document.add_to_class(
             name='submit_for_ocr', value=method_document_ocr_submit
         )
-        DocumentVersion.add_to_class(
+        DocumentFile.add_to_class(
             name='ocr_content', value=get_instance_ocr_content
         )
-        DocumentVersion.add_to_class(
-            name='submit_for_ocr', value=method_document_version_ocr_submit
+        DocumentFile.add_to_class(
+            name='submit_for_ocr', value=method_document_file_ocr_submit
         )
 
         ModelEventType.register(
             model=Document, event_types=(
                 event_ocr_document_content_deleted,
-                event_ocr_document_version_finish,
-                event_ocr_document_version_submit
+                event_ocr_document_file_finish,
+                event_ocr_document_file_submit
             )
         )
 
         ModelFieldRelated(
             model=Document,
-            name='versions__version_pages__ocr_content__content'
+            name='files__file_pages__ocr_content__content'
         )
         ModelProperty(
             description=_('The OCR content.'), label='OCR content',
@@ -125,7 +125,7 @@ class OCRApp(MayanAppConfig):
         )
 
         SourceColumn(
-            attribute='document_version__document', is_attribute_absolute_url=True,
+            attribute='document_file__document', is_attribute_absolute_url=True,
             is_identifier=True, is_sortable=True, source=DocumentVersionOCRError
         )
         SourceColumn(
@@ -182,13 +182,13 @@ class OCRApp(MayanAppConfig):
             receiver=handler_initialize_new_ocr_settings,
             sender=DocumentType
         )
-        signal_post_document_version_ocr.connect(
+        signal_post_document_file_ocr.connect(
             dispatch_uid='ocr_handler_index_document',
-            receiver=handler_index_document_version,
-            sender=DocumentVersion
+            receiver=handler_index_document_file,
+            sender=DocumentFile
         )
-        signal_post_version_upload.connect(
-            dispatch_uid='ocr_handler_ocr_document_version',
-            receiver=handler_ocr_document_version,
-            sender=DocumentVersion
+        signal_post_file_upload.connect(
+            dispatch_uid='ocr_handler_ocr_document_file',
+            receiver=handler_ocr_document_file,
+            sender=DocumentFile
         )

@@ -19,8 +19,16 @@ permission_document_download = namespace.add_permission(
 permission_document_edit = namespace.add_permission(
     label=_('Edit documents'), name='document_edit'
 )
-permission_document_new_version = namespace.add_permission(
-    label=_('Create new document versions'), name='document_new_version'
+permission_document_file_revert = namespace.add_permission(
+    label=_('Revert documents to a previous file'),
+    name='document_version_revert'
+)
+permission_document_file_view = namespace.add_permission(
+    label=_('View documents\' file list'),
+    name='document_version_view'
+)
+permission_document_new_file = namespace.add_permission(
+    label=_('Create new document files'), name='document_new_version'
 )
 permission_document_properties_edit = namespace.add_permission(
     label=_('Edit document properties'), name='document_properties_edit'
@@ -33,14 +41,6 @@ permission_document_restore = namespace.add_permission(
 )
 permission_document_tools = namespace.add_permission(
     label=_('Execute document modifying tools'), name='document_tools'
-)
-permission_document_version_revert = namespace.add_permission(
-    label=_('Revert documents to a previous version'),
-    name='document_version_revert'
-)
-permission_document_version_view = namespace.add_permission(
-    label=_('View documents\' versions list'),
-    name='document_version_view'
 )
 permission_document_view = namespace.add_permission(
     label=_('View documents'), name='document_view'

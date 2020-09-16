@@ -80,11 +80,11 @@ class OCRAPIViewTestMixin:
             kwargs={'pk': self.test_document.pk}
         )
 
-    def _request_document_version_ocr_submit_view(self):
+    def _request_document_file_ocr_submit_view(self):
         return self.post(
-            viewname='rest_api:document-version-ocr-submit-view', kwargs={
+            viewname='rest_api:document-file-ocr-submit-view', kwargs={
                 'document_pk': self.test_document.pk,
-                'version_pk': self.test_document.latest_version.pk
+                'file_pk': self.test_document.latest_file.pk
             }
         )
 
@@ -92,7 +92,7 @@ class OCRAPIViewTestMixin:
         return self.get(
             viewname='rest_api:document-page-ocr-content-view', kwargs={
                 'document_pk': self.test_document.pk,
-                'version_pk': self.test_document.latest_version.pk,
-                'page_pk': self.test_document.latest_version.pages.first().pk,
+                'file_pk': self.test_document.latest_file.pk,
+                'page_pk': self.test_document.latest_file.pages.first().pk,
             }
         )

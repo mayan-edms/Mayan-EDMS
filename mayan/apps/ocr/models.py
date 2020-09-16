@@ -2,7 +2,9 @@ from django.db import models
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.documents.models import DocumentPage, DocumentType, DocumentVersion
+from mayan.apps.documents.models import (
+    DocumentFile, DocumentPage, DocumentType
+)
 
 from .managers import (
     DocumentPageOCRContentManager, DocumentTypeSettingsManager
@@ -60,11 +62,11 @@ class DocumentPageOCRContent(models.Model):
 class DocumentVersionOCRError(models.Model):
     """
     This models keeps track of the errors captured during the OCR of a
-    document version.
+    document file.
     """
-    document_version = models.ForeignKey(
+    document_file = models.ForeignKey(
         on_delete=models.CASCADE, related_name='ocr_errors',
-        to=DocumentVersion, verbose_name=_('Document version')
+        to=DocumentFile, verbose_name=_('Document file')
     )
     datetime_submitted = models.DateTimeField(
         auto_now_add=True, db_index=True, verbose_name=_('Date time submitted')
@@ -73,8 +75,8 @@ class DocumentVersionOCRError(models.Model):
 
     class Meta:
         ordering = ('datetime_submitted',)
-        verbose_name = _('Document version OCR error')
-        verbose_name_plural = _('Document version OCR errors')
+        verbose_name = _('Document file OCR error')
+        verbose_name_plural = _('Document file OCR errors')
 
     def __str__(self):
-        return force_text(self.document_version)
+        return force_text(self.document_file)

@@ -4,7 +4,7 @@ from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.documents.permissions import (
-    permission_document_create, permission_document_new_version
+    permission_document_create, permission_document_new_file
 )
 from mayan.apps.navigation.classes import Link
 
@@ -34,9 +34,9 @@ def condition_document_creation_access(context):
     ).exists()
 
 
-def condition_document_new_versions_allowed(context):
+def condition_document_new_files_allowed(context):
     try:
-        context['object'].latest_version.execute_pre_save_hooks()
+        context['object'].latest_file.execute_pre_save_hooks()
     except Exception as exception:
         logger.debug(
             'execute_pre_save_hooks raised and exception: %s', exception
@@ -112,15 +112,15 @@ link_source_list = Link(
 link_staging_file_delete = Link(
     args=('source.pk', 'object.encoded_filename',), keep_query=True,
     icon_class_path='mayan.apps.sources.icons.icon_staging_file_delete',
-    permissions=(permission_document_new_version, permission_document_create),
+    permissions=(permission_document_new_file, permission_document_create),
     tags='dangerous', text=_('Delete'), view='sources:staging_file_delete',
 )
-link_document_version_upload = Link(
-    condition=condition_document_new_versions_allowed,
+link_document_file_upload = Link(
+    condition=condition_document_new_files_allowed,
     kwargs={'document_id': 'resolved_object.pk'},
-    icon_class_path='mayan.apps.sources.icons.icon_document_version_upload',
-    permissions=(permission_document_new_version,),
-    text=_('Upload new version'), view='sources:document_version_upload',
+    icon_class_path='mayan.apps.sources.icons.icon_document_file_upload',
+    permissions=(permission_document_new_file,),
+    text=_('Upload new file'), view='sources:document_file_upload',
 )
 link_setup_source_check_now = Link(
     args=('resolved_object.pk',),

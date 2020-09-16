@@ -86,6 +86,25 @@ icon_favorite_document_remove = Icon(
     secondary_symbol='minus'
 )
 
+# Document files
+
+icon_document_file_download = Icon(
+    driver_name='fontawesome', symbol='download'
+)
+icon_document_file_list = Icon(
+    driver_name='fontawesome', symbol='code-branch'
+)
+icon_document_file_return_document = icon_document_return
+icon_document_file_return_list = Icon(
+    driver_name='fontawesome', symbol='code-branch'
+)
+icon_document_file_view = Icon(
+    driver_name='fontawesome', symbol='eye'
+)
+icon_document_file_revert = Icon(
+    driver_name='fontawesome', symbol='undo'
+)
+
 # Document pages
 
 icon_document_page_disable = Icon(
@@ -166,25 +185,6 @@ icon_document_type_filename_generator = Icon(
 
 icon_document_type_policies = Icon(driver_name='fontawesome', symbol='times')
 icon_document_type_setup = icon_document_type
-
-# Document versions
-
-icon_document_version_download = Icon(
-    driver_name='fontawesome', symbol='download'
-)
-icon_document_version_list = Icon(
-    driver_name='fontawesome', symbol='code-branch'
-)
-icon_document_version_return_document = icon_document_return
-icon_document_version_return_list = Icon(
-    driver_name='fontawesome', symbol='code-branch'
-)
-icon_document_version_view = Icon(
-    driver_name='fontawesome', symbol='eye'
-)
-icon_document_version_revert = Icon(
-    driver_name='fontawesome', symbol='undo'
-)
 
 icon_duplicated_document_list = Icon(
     driver_name='fontawesome', symbol='clone'

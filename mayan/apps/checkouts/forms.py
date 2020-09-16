@@ -10,7 +10,7 @@ from .widgets import SplitTimeDeltaWidget
 
 class DocumentCheckOutForm(forms.ModelForm):
     class Meta:
-        fields = ('expiration_datetime', 'block_new_version')
+        fields = ('expiration_datetime', 'block_new_file')
         model = DocumentCheckout
         widgets = {
             'expiration_datetime': SplitTimeDeltaWidget()
@@ -48,8 +48,8 @@ class DocumentCheckOutDetailForm(DetailForm):
                     'widget': forms.widgets.DateTimeInput
                 },
                 {
-                    'label': _('New versions allowed?'),
-                    'field': lambda instance: _('Yes') if not checkout_info.block_new_version else _('No')
+                    'label': _('New files allowed?'),
+                    'field': lambda instance: _('Yes') if not checkout_info.block_new_file else _('No')
                 },
             )
 

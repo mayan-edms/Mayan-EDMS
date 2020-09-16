@@ -8,20 +8,20 @@ logger = logging.getLogger(name=__name__)
 
 
 @app.task(ignore_result=True)
-def task_parse_document_version(document_version_pk):
-    DocumentVersion = apps.get_model(
-        app_label='documents', model_name='DocumentVersion'
+def task_parse_document_file(document_file_pk):
+    DocumentFile = apps.get_model(
+        app_label='documents', model_name='DocumentFile'
     )
     DocumentPageContent = apps.get_model(
         app_label='document_parsing', model_name='DocumentPageContent'
     )
 
-    document_version = DocumentVersion.objects.get(
-        pk=document_version_pk
+    document_file = DocumentFile.objects.get(
+        pk=document_file_pk
     )
     logger.info(
-        'Starting parsing for document version: %s', document_version
+        'Starting parsing for document file: %s', document_file
     )
-    DocumentPageContent.objects.process_document_version(
-        document_version=document_version
+    DocumentPageContent.objects.process_document_file(
+        document_file=document_file
     )

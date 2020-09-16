@@ -84,7 +84,7 @@ class DocumentOCRViewsTestCase(
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
-            ''.join(self.test_document.latest_version.ocr_content()), ''
+            ''.join(self.test_document.latest_file.ocr_content()), ''
         )
 
     def test_document_submit_view_with_access(self):
@@ -96,7 +96,7 @@ class DocumentOCRViewsTestCase(
 
         self.assertTrue(
             TEST_DOCUMENT_CONTENT in ''.join(
-                self.test_document.latest_version.ocr_content()
+                self.test_document.latest_file.ocr_content()
             )
         )
 
@@ -105,7 +105,7 @@ class DocumentOCRViewsTestCase(
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
-            ''.join(self.test_document.latest_version.ocr_content()), ''
+            ''.join(self.test_document.latest_file.ocr_content()), ''
         )
 
     def test_multiple_document_submit_view_with_access(self):
@@ -117,7 +117,7 @@ class DocumentOCRViewsTestCase(
 
         self.assertTrue(
             TEST_DOCUMENT_CONTENT in ''.join(
-                self.test_document.latest_version.ocr_content()
+                self.test_document.latest_file.ocr_content()
             )
         )
 

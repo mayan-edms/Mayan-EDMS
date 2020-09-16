@@ -387,16 +387,16 @@ class DocumentUpdatePageCountView(MultipleObjectConfirmActionView):
         return result
 
     def object_action(self, form, instance):
-        latest_version = instance.latest_version
-        if latest_version:
+        latest_file = instance.latest_file
+        if latest_file:
             task_update_page_count.apply_async(
-                kwargs={'version_id': latest_version.pk}
+                kwargs={'file_id': latest_file.pk}
             )
         else:
             messages.error(
                 self.request, _(
                     'Document "%(document)s" is empty. Upload at least one '
-                    'document version before attempting to detect the '
+                    'document file before attempting to detect the '
                     'page count.'
                 ) % {
                     'document': instance,

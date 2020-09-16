@@ -138,11 +138,11 @@ class Document(HooksMixin, models.Model):
 
     @property
     def checksum(self):
-        return self.latest_version.checksum
+        return self.latest_file.checksum
 
     @property
     def date_updated(self):
-        return self.latest_version.timestamp
+        return self.latest_file.timestamp
 
     def delete(self, *args, **kwargs):
         to_trash = kwargs.pop('to_trash', True)
@@ -156,29 +156,29 @@ class Document(HooksMixin, models.Model):
                 event_document_trashed.commit(actor=_user, target=self)
         else:
             with transaction.atomic():
-                for version in self.versions.all():
-                    version.delete()
+                for document_file in self.files.all():
+                    document_file.delete()
 
                 return super(Document, self).delete(*args, **kwargs)
 
     def exists(self):
         """
         Returns a boolean value that indicates if the document's
-        latest version file exists in storage
+        latest file file exists in storage
         """
-        latest_version = self.latest_version
-        if latest_version:
-            return latest_version.exists()
+        latest_file = self.latest_file
+        if latest_file:
+            return latest_file.exists()
         else:
             return False
 
     @property
     def file_mime_encoding(self):
-        return self.latest_version.encoding
+        return self.latest_file.encoding
 
     @property
     def file_mimetype(self):
-        return self.latest_version.mimetype
+        return self.latest_file.mimetype
 
     def get_absolute_url(self):
         return reverse(
@@ -188,42 +188,42 @@ class Document(HooksMixin, models.Model):
         )
 
     def get_api_image_url(self, *args, **kwargs):
-        latest_version = self.latest_version
-        if latest_version:
-            return latest_version.get_api_image_url(*args, **kwargs)
+        latest_file = self.latest_file
+        if latest_file:
+            return latest_file.get_api_image_url(*args, **kwargs)
 
     @property
     def is_in_trash(self):
         return self.in_trash
 
     @property
-    def latest_version(self):
-        return self.versions.order_by('timestamp').last()
+    def latest_file(self):
+        return self.files.order_by('timestamp').last()
 
     def natural_key(self):
         return (self.uuid,)
     natural_key.dependencies = ['documents.DocumentType']
 
-    def new_version(self, file_object, comment=None, _user=None):
-        logger.info('Creating new document version for document: %s', self)
-        DocumentVersion = apps.get_model(
-            app_label='documents', model_name='DocumentVersion'
+    def new_file(self, file_object, comment=None, _user=None):
+        logger.info('Creating new document file for document: %s', self)
+        DocumentFile = apps.get_model(
+            app_label='documents', model_name='DocumentFile'
         )
 
-        document_version = DocumentVersion(
+        document_file = DocumentFile(
             document=self, comment=comment or '', file=File(file_object)
         )
-        document_version.save(_user=_user)
+        document_file.save(_user=_user)
 
-        logger.info('New document version queued for document: %s', self)
-        return document_version
+        logger.info('New document file queued for document: %s', self)
+        return document_file
 
     def open(self, *args, **kwargs):
         """
         Return a file descriptor to a document's file irrespective of
         the storage backend
         """
-        return self.latest_version.open(*args, **kwargs)
+        return self.latest_file.open(*args, **kwargs)
 
     @property
     def page_count(self):
@@ -232,9 +232,9 @@ class Document(HooksMixin, models.Model):
     @property
     def pages(self):
         try:
-            return self.latest_version.pages
+            return self.latest_file.pages
         except AttributeError:
-            # Document has no version yet
+            # Document has no file yet
             DocumentPage = apps.get_model(
                 app_label='documents', model_name='DocumentPage'
             )
@@ -244,9 +244,9 @@ class Document(HooksMixin, models.Model):
     @property
     def pages_valid(self):
         try:
-            return self.latest_version.pages_valid
+            return self.latest_file.pages_valid
         except AttributeError:
-            # Document has no version yet
+            # Document has no file yet
             DocumentPage = apps.get_model(
                 app_label='documents', model_name='DocumentPage'
             )
@@ -283,7 +283,7 @@ class Document(HooksMixin, models.Model):
                     event_document_properties_edit.commit(actor=user, target=self)
 
     def save_to_file(self, *args, **kwargs):
-        return self.latest_version.save_to_file(*args, **kwargs)
+        return self.latest_file.save_to_file(*args, **kwargs)
 
     def set_document_type(self, document_type, force=False, _user=None):
         has_changed = self.document_type != document_type
@@ -302,7 +302,7 @@ class Document(HooksMixin, models.Model):
 
     @property
     def size(self):
-        return self.latest_version.size
+        return self.latest_file.size
 
 
 class TrashedDocument(Document):

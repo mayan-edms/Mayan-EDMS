@@ -1,6 +1,8 @@
 from django.db import connection
 from django.utils.translation import ugettext_lazy as _
-from mayan.apps.documents.search import document_page_search, document_search
+from mayan.apps.documents.search import (
+    document_file_page_search, document_search
+)
 from mayan.apps.dynamic_search.classes import SearchModel
 
 from .permissions import permission_cabinet_view
@@ -25,7 +27,7 @@ cabinet_search.add_model_field(
     field='documents__document_type__label', label=_('Document type')
 )
 cabinet_search.add_model_field(
-    field='documents__versions__mimetype', label=_('Document MIME type')
+    field='documents__files__mimetype', label=_('Document MIME type')
 )
 cabinet_search.add_model_field(
     field='documents__label', label=_('Document label')
@@ -38,13 +40,14 @@ cabinet_search.add_model_field(
     transformation_function=transformation_format_uuid
 )
 cabinet_search.add_model_field(
-    field='documents__versions__checksum', label=_('Document checksum')
+    field='documents__files__checksum', label=_('Document checksum')
 )
 
-document_page_search.add_model_field(
-    field='document_version__document__cabinets__label',
+document_file_page_search.add_model_field(
+    field='document_file__document__cabinets__label',
     label=_('Cabinets')
 )
+
 document_search.add_model_field(
     field='cabinets__label', label=_('Cabinets')
 )

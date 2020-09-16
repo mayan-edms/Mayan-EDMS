@@ -8,10 +8,10 @@ from django.db import models, transaction
 
 from .events import (
     event_parsing_document_content_deleted,
-    event_parsing_document_version_finish
+    event_parsing_document_file_finish
 )
 from .parsers import Parser
-from .signals import signal_post_document_version_parsing
+from .signals import signal_post_document_file_parsing
 
 logger = logging.getLogger(name=__name__)
 
@@ -26,36 +26,36 @@ class DocumentPageContentManager(models.Manager):
                 actor=user, target=document
             )
 
-    def process_document_version(self, document_version):
+    def process_document_file(self, document_file):
         logger.info(
-            'Starting parsing for document version: %s', document_version
+            'Starting parsing for document file: %s', document_file
         )
-        logger.debug('document version: %d', document_version.pk)
+        logger.debug('document file: %d', document_file.pk)
 
         try:
             with transaction.atomic():
-                Parser.parse_document_version(document_version=document_version)
+                Parser.parse_document_file(document_file=document_file)
 
                 logger.info(
-                    'Parsing complete for document version: %s', document_version
+                    'Parsing complete for document file: %s', document_file
                 )
-                document_version.parsing_errors.all().delete()
+                document_file.parsing_errors.all().delete()
 
-                event_parsing_document_version_finish.commit(
-                    action_object=document_version.document,
-                    target=document_version
+                event_parsing_document_file_finish.commit(
+                    action_object=document_file.document,
+                    target=document_file
                 )
 
                 transaction.on_commit(
-                    lambda: signal_post_document_version_parsing.send(
-                        sender=document_version.__class__,
-                        instance=document_version
+                    lambda: signal_post_document_file_parsing.send(
+                        sender=document_file.__class__,
+                        instance=document_file
                     )
                 )
         except Exception as exception:
             logger.error(
-                'Parsing error for document version: %d; %s',
-                document_version.pk, exception,
+                'Parsing error for document file: %d; %s',
+                document_file.pk, exception,
             )
 
             if settings.DEBUG:
@@ -63,11 +63,11 @@ class DocumentPageContentManager(models.Manager):
                 type, value, tb = sys.exc_info()
                 result.append('%s: %s' % (type.__name__, value))
                 result.extend(traceback.format_tb(tb))
-                document_version.parsing_errors.create(
+                document_file.parsing_errors.create(
                     result='\n'.join(result)
                 )
             else:
-                document_version.parsing_errors.create(result=exception)
+                document_file.parsing_errors.create(result=exception)
 
 
 class DocumentTypeSettingsManager(models.Manager):

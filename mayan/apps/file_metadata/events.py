@@ -6,11 +6,11 @@ namespace = EventTypeNamespace(
     label=_('File metadata'), name='file_metadata'
 )
 
-event_file_metadata_document_version_submit = namespace.add_event_type(
-    label=_('Document version submitted for file metadata processing'),
+event_file_metadata_document_file_submit = namespace.add_event_type(
+    label=_('Document file submitted for file metadata processing'),
     name='document_version_submit'
 )
-event_file_metadata_document_version_finish = namespace.add_event_type(
-    label=_('Document version file metadata processing finished'),
+event_file_metadata_document_file_finish = namespace.add_event_type(
+    label=_('Document file file metadata processing finished'),
     name='document_version_finish'
 )

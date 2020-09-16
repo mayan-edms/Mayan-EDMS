@@ -74,8 +74,8 @@ queue_uploads.add_task_type(
     label=_('Update document page count')
 )
 queue_uploads.add_task_type(
-    dotted_path='mayan.apps.documents.tasks.task_upload_new_version',
-    label=_('Upload new document version')
+    dotted_path='mayan.apps.documents.tasks.task_upload_new_file',
+    label=_('Upload new document file')
 )
 queue_uploads.add_task_type(
     dotted_path='mayan.apps.documents.tasks.task_scan_duplicates_for',
