@@ -1,4 +1,4 @@
-from django.db import migrations, models
+from django.db import migrations
 
 
 def operation_make_labels_unique(apps, schema_editor):

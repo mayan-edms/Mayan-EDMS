@@ -10,9 +10,7 @@ from actstream import action
 
 from mayan.apps.common.utils import return_attrib
 
-from .literals import (
-    EVENT_MANAGER_ORDER_AFTER, EVENT_MANAGER_ORDER_BEFORE
-)
+from .literals import EVENT_MANAGER_ORDER_AFTER
 from .permissions import permission_events_view
 
 logger = logging.getLogger(name=__name__)

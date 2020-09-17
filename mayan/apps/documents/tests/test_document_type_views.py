@@ -20,6 +20,7 @@ from .mixins import (
     DocumentTypeViewTestMixin
 )
 
+
 class DocumentTypeDeletionPoliciesViewTestCase(
     DocumentTypeDeletionPoliciesViewTestMixin, GenericDocumentViewTestCase
 ):
