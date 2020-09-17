@@ -1,4 +1,4 @@
-3.5 (2020-XX-XX)
+3.5 (2020-09-XX)
 ================
 - Update dependencies versions:
 
