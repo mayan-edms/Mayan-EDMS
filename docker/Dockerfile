@@ -135,7 +135,7 @@ RUN set -a \
 && pip install --no-cache-dir dist/mayan* \
 # Install the static content
 && mayan-edms.py installdependencies \
-&& MAYAN_STATIC_ROOT=${PROJECT_INSTALL_DIR}/static mayan-edms.py preparestatic --link --noinput
+&& MAYAN_STATIC_ROOT=${PROJECT_INSTALL_DIR}/static mayan-edms.py preparestatic --noinput
 
 COPY --chown=mayan:mayan requirements/testing-base.txt "${PROJECT_INSTALL_DIR}"
 
