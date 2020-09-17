@@ -11,7 +11,7 @@ from .events import (
     event_document_auto_check_in, event_document_check_in,
     event_document_forceful_check_in
 )
-from .exceptions import DocumentNotCheckedOut, NewDocumentVersionNotAllowed
+from .exceptions import DocumentNotCheckedOut, NewDocumentFileNotAllowed
 from .literals import STATE_CHECKED_OUT, STATE_CHECKED_IN
 from .permissions import (
     permission_document_check_in, permission_document_check_in_override
@@ -130,7 +130,7 @@ class DocumentCheckoutManager(models.Manager):
         return self.filter(document=document).exists()
 
 
-class NewVersionBlockManager(models.Manager):
+class NewFileBlockManager(models.Manager):
     def block(self, document):
         self.get_or_create(document=document)
 
@@ -150,7 +150,7 @@ class NewVersionBlockManager(models.Manager):
 
     def new_files_allowed(self, document):
         if self.filter(document=document).exists():
-            raise NewDocumentVersionNotAllowed
+            raise NewDocumentFileNotAllowed
 
     def unblock(self, document):
         self.filter(document=document).delete()

@@ -20,7 +20,7 @@ class DocumentTypeFilenameInline(admin.StackedInline):
     allow_add = True
 
 
-class DocumentVersionInline(admin.StackedInline):
+class DocumentFileInline(admin.StackedInline):
     model = DocumentFile
     extra = 1
     classes = ('collapse-open',)
@@ -38,7 +38,7 @@ class DeletedDocumentAdmin(admin.ModelAdmin):
 @admin.register(Document)
 class DocumentAdmin(admin.ModelAdmin):
     date_hierarchy = 'date_added'
-    inlines = (DocumentVersionInline,)
+    inlines = (DocumentFileInline,)
     list_filter = ('document_type', 'is_stub')
     list_display = ('uuid', 'label', 'document_type', 'date_added', 'is_stub')
     readonly_fields = ('uuid', 'document_type', 'date_added')

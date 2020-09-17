@@ -14,7 +14,7 @@ from .events import event_document_check_out
 from .exceptions import DocumentAlreadyCheckedOut
 from .managers import (
     DocumentCheckoutBusinessLogicManager, DocumentCheckoutManager,
-    NewVersionBlockManager
+    NewFileBlockManager
 )
 
 logger = logging.getLogger(name=__name__)
@@ -67,7 +67,7 @@ class DocumentCheckout(models.Model):
 
     def delete(self, *args, **kwargs):
         with transaction.atomic():
-            NewVersionBlock.objects.unblock(document=self.document)
+            NewFileBlock.objects.unblock(document=self.document)
             super(DocumentCheckout, self).delete(*args, **kwargs)
 
     def get_absolute_url(self):
@@ -93,7 +93,7 @@ class DocumentCheckout(models.Model):
                     actor=self.user, target=self.document
                 )
                 if self.block_new_file:
-                    NewVersionBlock.objects.block(self.document)
+                    NewFileBlock.objects.block(self.document)
 
                 logger.info(
                     'Document "%s" checked out by user "%s"',
@@ -103,7 +103,7 @@ class DocumentCheckout(models.Model):
             return result
 
 
-class NewVersionBlock(models.Model):
+class NewFileBlock(models.Model):
     """
     Model to keep track of which documents have new file upload restricted.
     """
@@ -111,7 +111,7 @@ class NewVersionBlock(models.Model):
         on_delete=models.CASCADE, to=Document, verbose_name=_('Document')
     )
 
-    objects = NewVersionBlockManager()
+    objects = NewFileBlockManager()
 
     class Meta:
         verbose_name = _('New file block')

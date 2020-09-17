@@ -15,7 +15,7 @@ from mayan.apps.views.mixins import ExternalObjectMixin
 
 from .icons import icon_file_metadata
 from .links import link_document_submit
-from .models import DocumentVersionDriverEntry
+from .models import DocumentFileDriverEntry
 from .permissions import (
     permission_document_type_file_metadata_setup,
     permission_file_metadata_submit, permission_file_metadata_view
@@ -55,15 +55,15 @@ class DocumentDriverListView(ExternalObjectMixin, SingleObjectListView):
         }
 
     def get_source_queryset(self):
-        return self.external_object.latest_version.file_metadata_drivers.all()
+        return self.external_object.latest_file.file_metadata_drivers.all()
 
 
-class DocumentVersionDriverEntryFileMetadataListView(
+class DocumentFileDriverEntryFileMetadataListView(
     ExternalObjectMixin, SingleObjectListView
 ):
-    external_object_class = DocumentVersionDriverEntry
+    external_object_class = DocumentFileDriverEntry
     external_object_permission = permission_file_metadata_view
-    external_object_pk_url_kwarg = 'document_version_driver_id'
+    external_object_pk_url_kwarg = 'document_file_driver_id'
 
     def get_extra_context(self):
         return {
@@ -72,7 +72,7 @@ class DocumentVersionDriverEntryFileMetadataListView(
             'no_results_main_link': link_document_submit.resolve(
                 context=RequestContext(
                     dict_={
-                        'resolved_object': self.external_object.document_version.document
+                        'resolved_object': self.external_object.document_file.document
                     }, request=self.request
                 )
             ),
@@ -84,11 +84,11 @@ class DocumentVersionDriverEntryFileMetadataListView(
             'no_results_title': _(
                 'No file metadata available for this driver'
             ),
-            'object': self.external_object.document_version.document,
+            'object': self.external_object.document_file.document,
             'title': _(
                 'File metadata attribures for: %(document)s, for driver: %(driver)s'
             ) % {
-                'document': self.external_object.document_version.document,
+                'document': self.external_object.document_file.document,
                 'driver': self.external_object.driver
             },
         }

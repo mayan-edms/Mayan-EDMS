@@ -5,7 +5,7 @@ from mayan.apps.django_gpg.tests.literals import (
     TEST_KEY_PRIVATE_PASSPHRASE, TEST_KEY_PUBLIC_ID
 )
 from mayan.apps.django_gpg.tests.mixins import KeyTestMixin
-from mayan.apps.documents.models import DocumentVersion
+from mayan.apps.documents.models import DocumentFile
 from mayan.apps.documents.tests.base import GenericDocumentTestCase
 from mayan.apps.documents.tests.literals import (
     TEST_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_PATH
@@ -32,8 +32,8 @@ class DetachedSignaturesTestCase(
         self.assertEqual(DetachedSignature.objects.count(), 1)
 
         self.assertEqual(
-            self.test_signature.document_version,
-            self.test_document.latest_version
+            self.test_signature.document_file,
+            self.test_document.latest_file
         )
         self.assertEqual(self.test_signature.key_id, TEST_KEY_PUBLIC_ID)
         self.assertEqual(self.test_signature.public_key_fingerprint, None)
@@ -48,8 +48,8 @@ class DetachedSignaturesTestCase(
         self.assertEqual(DetachedSignature.objects.count(), 1)
 
         self.assertEqual(
-            self.test_signature.document_version,
-            self.test_document.latest_version
+            self.test_signature.document_file,
+            self.test_document.latest_file
         )
         self.assertEqual(self.test_signature.key_id, TEST_KEY_PUBLIC_ID)
         self.assertEqual(
@@ -66,8 +66,8 @@ class DetachedSignaturesTestCase(
         self.assertEqual(DetachedSignature.objects.count(), 1)
 
         self.assertEqual(
-            self.test_signature.document_version,
-            self.test_document.latest_version
+            self.test_signature.document_file,
+            self.test_document.latest_file
         )
         self.assertEqual(self.test_signature.key_id, TEST_KEY_PUBLIC_ID)
         self.assertEqual(self.test_signature.public_key_fingerprint, None)
@@ -90,8 +90,8 @@ class DetachedSignaturesTestCase(
         self.assertEqual(DetachedSignature.objects.count(), 1)
 
         self.assertEqual(
-            self.test_signature.document_version,
-            self.test_document.latest_version
+            self.test_signature.document_file,
+            self.test_document.latest_file
         )
         self.assertEqual(self.test_signature.key_id, TEST_KEY_PUBLIC_ID)
         self.assertEqual(
@@ -110,8 +110,8 @@ class DetachedSignaturesTestCase(
 
         self._upload_test_document()
 
-        test_detached_signature = DetachedSignature.objects.sign_document_version(
-            document_version=self.test_document.latest_version,
+        test_detached_signature = DetachedSignature.objects.sign_document_file(
+            document_file=self.test_document.latest_file,
             key=self.test_key_private,
             passphrase=TEST_KEY_PRIVATE_PASSPHRASE
         )
@@ -123,7 +123,7 @@ class DetachedSignaturesTestCase(
 class DocumentSignaturesTestCase(SignatureTestMixin, GenericDocumentTestCase):
     auto_upload_test_document = False
 
-    def test_unsigned_document_version_method(self):
+    def test_unsigned_document_file_method(self):
         TEST_UNSIGNED_DOCUMENT_COUNT = 2
         TEST_SIGNED_DOCUMENT_COUNT = 2
 
@@ -136,7 +136,7 @@ class DocumentSignaturesTestCase(SignatureTestMixin, GenericDocumentTestCase):
             self._upload_test_document()
 
         self.assertEqual(
-            EmbeddedSignature.objects.unsigned_document_versions().count(),
+            EmbeddedSignature.objects.unsigned_document_files().count(),
             TEST_UNSIGNED_DOCUMENT_COUNT
         )
 
@@ -160,7 +160,7 @@ class EmbeddedSignaturesTestCase(
 
         signature = EmbeddedSignature.objects.first()
         self.assertEqual(
-            signature.document_version, self.test_document.latest_version
+            signature.document_file, self.test_document.latest_file
         )
         self.assertEqual(signature.key_id, TEST_KEY_PUBLIC_ID)
         self.assertEqual(signature.signature_id, None)
@@ -173,7 +173,7 @@ class EmbeddedSignaturesTestCase(
 
         signature = EmbeddedSignature.objects.first()
         self.assertEqual(
-            signature.document_version, self.test_document.latest_version
+            signature.document_file, self.test_document.latest_file
         )
         self.assertEqual(signature.key_id, TEST_KEY_PUBLIC_ID)
         self.assertEqual(signature.signature_id, None)
@@ -194,7 +194,7 @@ class EmbeddedSignaturesTestCase(
         signature = EmbeddedSignature.objects.first()
 
         self.assertEqual(
-            signature.document_version, self.test_document.latest_version
+            signature.document_file, self.test_document.latest_file
         )
         self.assertEqual(signature.key_id, TEST_KEY_PUBLIC_ID)
         self.assertEqual(signature.signature_id, TEST_SIGNATURE_ID)
@@ -215,8 +215,8 @@ class EmbeddedSignaturesTestCase(
         signature = EmbeddedSignature.objects.first()
 
         self.assertEqual(
-            signature.document_version,
-            self.test_document.latest_version
+            signature.document_file,
+            self.test_document.latest_file
         )
         self.assertEqual(signature.key_id, TEST_KEY_PUBLIC_ID)
         self.assertEqual(
@@ -228,9 +228,9 @@ class EmbeddedSignaturesTestCase(
         # Silence converter logging
         self._silence_logger(name='mayan.apps.converter.backends')
 
-        old_hooks = DocumentVersion._post_save_hooks
+        old_hooks = DocumentFile._post_save_hooks
 
-        DocumentVersion._post_save_hooks = {}
+        DocumentFile._post_save_hooks = {}
 
         TEST_UNSIGNED_DOCUMENT_COUNT = 2
         TEST_SIGNED_DOCUMENT_COUNT = 2
@@ -244,16 +244,16 @@ class EmbeddedSignaturesTestCase(
             self._upload_test_document()
 
         self.assertEqual(
-            EmbeddedSignature.objects.unsigned_document_versions().count(),
+            EmbeddedSignature.objects.unsigned_document_files().count(),
             TEST_UNSIGNED_DOCUMENT_COUNT + TEST_SIGNED_DOCUMENT_COUNT
         )
 
-        DocumentVersion._post_save_hooks = old_hooks
+        DocumentFile._post_save_hooks = old_hooks
 
         task_verify_missing_embedded_signature.delay()
 
         self.assertEqual(
-            EmbeddedSignature.objects.unsigned_document_versions().count(),
+            EmbeddedSignature.objects.unsigned_document_files().count(),
             TEST_UNSIGNED_DOCUMENT_COUNT
         )
 
@@ -263,21 +263,21 @@ class EmbeddedSignaturesTestCase(
         self.test_document_path = TEST_DOCUMENT_PATH
         self._upload_test_document()
 
-        with self.test_document.latest_version.open() as file_object:
+        with self.test_document.latest_file.open() as file_object:
             file_object.seek(0, 2)
             original_size = file_object.tell()
             file_object.seek(0)
             original_hash = hashlib.sha256(file_object.read()).hexdigest()
 
-        signature = EmbeddedSignature.objects.sign_document_version(
-            document_version=self.test_document.latest_version,
+        signature = EmbeddedSignature.objects.sign_document_file(
+            document_file=self.test_document.latest_file,
             key=self.test_key_private,
             passphrase=TEST_KEY_PRIVATE_PASSPHRASE
         )
 
         self.assertEqual(EmbeddedSignature.objects.count(), 1)
 
-        with signature.document_version.open() as file_object:
+        with signature.document_file.open() as file_object:
             file_object.seek(0, 2)
             new_size = file_object.tell()
             file_object.seek(0)
@@ -292,17 +292,17 @@ class EmbeddedSignaturesTestCase(
 
         self.assertEqual(EmbeddedSignature.objects.count(), 0)
 
-    def test_new_signed_version(self):
+    def test_new_signed_file(self):
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         self._upload_test_document()
 
         with open(file=TEST_SIGNED_DOCUMENT_PATH, mode='rb') as file_object:
-            signed_version = self.test_document.new_version(
+            signed_file = self.test_document.new_file(
                 file_object=file_object, comment=''
             )
 
         # Artifical delay since MySQL doesn't store microsecond data in
-        # timestamps. Version timestamp is used to determine which version
+        # timestamps. File timestamp is used to determine which file
         # is the latest.
         time.sleep(1)
 
@@ -310,5 +310,5 @@ class EmbeddedSignaturesTestCase(
 
         signature = EmbeddedSignature.objects.first()
 
-        self.assertEqual(signature.document_version, signed_version)
+        self.assertEqual(signature.document_file, signed_file)
         self.assertEqual(signature.key_id, TEST_KEY_PUBLIC_ID)

@@ -52,8 +52,8 @@ class DocumentParsingAPITestMixin:
         return self.get(
             viewname='rest_api:document-page-content-view', kwargs={
                 'document_pk': self.test_document.pk,
-                'version_pk': self.test_document.latest_version.pk,
-                'page_pk': self.test_document.latest_version.pages.first().pk
+                'file_pk': self.test_document.latest_file.pk,
+                'page_pk': self.test_document.latest_file.pages.first().pk
             }
         )
 

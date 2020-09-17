@@ -94,7 +94,7 @@ def new_document_files_per_month():
 
     return {
         'series': {
-            'Versions': map(
+            'Files': map(
                 lambda x: {get_month_name(month_number=x[0].month): x[1]},
                 qss.time_series(start=start, end=now, interval='months')
             )
@@ -189,7 +189,7 @@ def total_document_file_per_month():
 
     return {
         'series': {
-            'Versions': result
+            'Files': result
         }
     }
 

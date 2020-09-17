@@ -12,7 +12,7 @@ from mayan.apps.views.generics import (
 from mayan.apps.views.mixins import ExternalObjectMixin
 
 from .forms import DocumentContentForm, DocumentPageContentForm
-from .models import DocumentPageContent#, DocumentVersionParseError
+from .models import DocumentFileParseError, DocumentPageContent
 from .permissions import (
     permission_content_view, permission_document_type_parsing_setup,
     permission_parse_document
@@ -123,7 +123,7 @@ class DocumentParsingErrorsListView(
         }
 
     def get_source_queryset(self):
-        return self.external_object.latest_version.parsing_errors.all()
+        return self.external_object.latest_file.parsing_errors.all()
 
 
 class DocumentSubmitView(MultipleObjectConfirmActionView):
@@ -230,4 +230,4 @@ class ParseErrorListView(SingleObjectListView):
     view_permission = permission_parse_document
 
     def get_source_queryset(self):
-        return DocumentVersionParseError.objects.all()
+        return DocumentFileParseError.objects.all()

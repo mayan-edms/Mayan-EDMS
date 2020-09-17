@@ -123,7 +123,7 @@ class Source(models.Model):
             raise
         else:
             try:
-                document_version = document.new_version(
+                document_file = document.new_file(
                     file_object=file_object, _user=user,
                 )
 
@@ -131,12 +131,12 @@ class Source(models.Model):
                     document.add_as_recent_document_for_user(user=user)
 
                 layer_saved_transformations.copy_transformations(
-                    source=self, targets=document_version.pages.all()
+                    source=self, targets=document_file.pages.all()
                 )
 
             except Exception as exception:
                 logger.critical(
-                    'Unexpected exception while trying to create version for '
+                    'Unexpected exception while trying to create file for '
                     'new document "%s" from source "%s"; %s',
                     label or file_object.name, self, exception, exc_info=True
                 )

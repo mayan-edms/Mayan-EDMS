@@ -59,18 +59,18 @@ class DocumentUploadWizardViewTestMixin:
         )
 
 
-class DocumentVersionUploadViewTestMixin:
-    def _request_document_version_upload_view(self, source_file):
+class DocumentFileUploadViewTestMixin:
+    def _request_document_file_upload_view(self, source_file):
         return self.post(
-            viewname='sources:document_version_upload', kwargs={
+            viewname='sources:document_file_upload', kwargs={
                 'document_id': self.test_document.pk,
                 'source_id': self.test_source.pk,
             }, data={'source-file': source_file}
         )
 
-    def _request_document_version_upload_no_source_view(self, source_file):
+    def _request_document_file_upload_no_source_view(self, source_file):
         return self.post(
-            viewname='sources:document_version_upload', kwargs={
+            viewname='sources:document_file_upload', kwargs={
                 'document_id': self.test_document.pk,
             }, data={'source-file': source_file}
         )

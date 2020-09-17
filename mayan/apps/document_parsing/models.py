@@ -59,7 +59,7 @@ class DocumentTypeSettings(models.Model):
         verbose_name_plural = _('Document types settings')
 
 
-class DocumentVersionParseError(models.Model):
+class DocumentFileParseError(models.Model):
     """
     This module stores the errors captures when attempting to parse a
     document file.

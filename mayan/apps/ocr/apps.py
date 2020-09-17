@@ -70,8 +70,8 @@ class OCRApp(MayanAppConfig):
             model_name='DocumentTypeSettings'
         )
 
-        DocumentVersionOCRError = self.get_model(
-            model_name='DocumentVersionOCRError'
+        DocumentFileOCRError = self.get_model(
+            model_name='DocumentFileOCRError'
         )
 
         Document.add_to_class(
@@ -126,14 +126,14 @@ class OCRApp(MayanAppConfig):
 
         SourceColumn(
             attribute='document_file__document', is_attribute_absolute_url=True,
-            is_identifier=True, is_sortable=True, source=DocumentVersionOCRError
+            is_identifier=True, is_sortable=True, source=DocumentFileOCRError
         )
         SourceColumn(
             attribute='datetime_submitted', is_sortable=True,
-            label=_('Date and time'), source=DocumentVersionOCRError
+            label=_('Date and time'), source=DocumentFileOCRError
         )
         SourceColumn(
-            source=DocumentVersionOCRError, label=_('Result'),
+            source=DocumentFileOCRError, label=_('Result'),
             attribute='result'
         )
 
@@ -168,7 +168,7 @@ class OCRApp(MayanAppConfig):
             links=(link_entry_list,),
             sources=(
                 'ocr:entry_list', 'ocr:entry_delete_multiple',
-                'ocr:entry_re_queue_multiple', DocumentVersionOCRError
+                'ocr:entry_re_queue_multiple', DocumentFileOCRError
             )
         )
         menu_tools.bind_links(

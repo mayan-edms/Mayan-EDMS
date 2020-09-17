@@ -49,7 +49,7 @@ class CheckoutLinksTestCase(
         self.assertNotEqual(resolved_link, None)
 
 
-class DocumentVersionListViewTestCase(
+class DocumentFileListViewTestCase(
     DocumentCheckoutTestMixin, GenericDocumentViewTestCase
 ):
     def _get_document_new_file_link(self):

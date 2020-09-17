@@ -2,7 +2,7 @@ from django.test import override_settings
 
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.permissions import (
-    permission_document_create, permission_document_new_version
+    permission_document_create, permission_document_new_file
 )
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 from mayan.apps.documents.tests.literals import (
@@ -21,8 +21,8 @@ from ..permissions import (
 
 from .literals import TEST_SOURCE_LABEL, TEST_SOURCE_UNCOMPRESS_N
 from .mixins import (
-    DocumentUploadIssueTestMixin, DocumentUploadWizardViewTestMixin,
-    DocumentVersionUploadViewTestMixin, StagingFolderTestMixin,
+    DocumentFileUploadViewTestMixin, DocumentUploadIssueTestMixin,
+    DocumentUploadWizardViewTestMixin, StagingFolderTestMixin,
     StagingFolderViewTestMixin, SourceTestMixin, SourceViewTestMixin
 )
 
@@ -167,72 +167,72 @@ class DocumentUploadIssueTestCase(
         self.assertEqual(self.test_document.description, TEST_DOCUMENT_DESCRIPTION)
 
 
-class DocumentVersionUploadViewTestCase(
-    DocumentVersionUploadViewTestMixin, SourceTestMixin,
+class DocumentFileUploadViewTestCase(
+    DocumentFileUploadViewTestMixin, SourceTestMixin,
     GenericDocumentViewTestCase
 ):
-    def test_document_version_upload_view_no_permission(self):
-        version_count = self.test_document.versions.count()
+    def test_document_file_upload_view_no_permission(self):
+        file_count = self.test_document.files.count()
 
         with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-            response = self._request_document_version_upload_view(
+            response = self._request_document_file_upload_view(
                 source_file=file_object
             )
 
         self.assertEqual(response.status_code, 403)
         self.test_document.refresh_from_db()
         self.assertEqual(
-            self.test_document.versions.count(), version_count
+            self.test_document.files.count(), file_count
         )
 
-    def test_document_version_upload_view_with_access(self):
+    def test_document_file_upload_view_with_access(self):
         self.grant_access(
             obj=self.test_document,
-            permission=permission_document_new_version
+            permission=permission_document_new_file
         )
-        version_count = self.test_document.versions.count()
+        file_count = self.test_document.files.count()
 
         with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-            response = self._request_document_version_upload_view(
+            response = self._request_document_file_upload_view(
                 source_file=file_object
             )
 
         self.assertEqual(response.status_code, 302)
         self.test_document.refresh_from_db()
         self.assertEqual(
-            self.test_document.versions.count(), version_count + 1
+            self.test_document.files.count(), file_count + 1
         )
 
-    def test_document_version_upload_no_source_view_no_permission(self):
-        version_count = self.test_document.versions.count()
+    def test_document_file_upload_no_source_view_no_permission(self):
+        file_count = self.test_document.files.count()
 
         with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-            response = self._request_document_version_upload_no_source_view(
+            response = self._request_document_file_upload_no_source_view(
                 source_file=file_object
             )
 
         self.assertEqual(response.status_code, 403)
         self.test_document.refresh_from_db()
         self.assertEqual(
-            self.test_document.versions.count(), version_count
+            self.test_document.files.count(), file_count
         )
 
-    def test_document_version_upload_no_source_view_with_access(self):
+    def test_document_file_upload_no_source_view_with_access(self):
         self.grant_access(
             obj=self.test_document,
-            permission=permission_document_new_version
+            permission=permission_document_new_file
         )
-        version_count = self.test_document.versions.count()
+        file_count = self.test_document.files.count()
 
         with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-            response = self._request_document_version_upload_no_source_view(
+            response = self._request_document_file_upload_no_source_view(
                 source_file=file_object
             )
 
         self.assertEqual(response.status_code, 302)
         self.test_document.refresh_from_db()
         self.assertEqual(
-            self.test_document.versions.count(), version_count + 1
+            self.test_document.files.count(), file_count + 1
         )
 
 

@@ -27,14 +27,14 @@ class APIDocumentPageContentView(generics.RetrieveAPIView):
     def get_document(self):
         return get_object_or_404(klass=Document, pk=self.kwargs['document_pk'])
 
-    def get_document_version(self):
+    def get_document_file(self):
         return get_object_or_404(
-            klass=self.get_document().versions.all(),
-            pk=self.kwargs['version_pk']
+            klass=self.get_document().files.all(),
+            pk=self.kwargs['file_pk']
         )
 
     def get_queryset(self):
-        return self.get_document_version().pages.all()
+        return self.get_document_file().pages.all()
 
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()

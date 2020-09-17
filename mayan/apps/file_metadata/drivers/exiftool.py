@@ -32,14 +32,14 @@ class EXIFToolDriver(FileMetadataDriver):
             else:
                 self.command_exiftool = self.command_exiftool.bake('-j')
 
-    def _process(self, document_version):
+    def _process(self, document_file):
         if self.command_exiftool:
             temporary_folder = mkdtemp()
-            path_temporary_file = Path(temporary_folder, document_version.document.label)
+            path_temporary_file = Path(temporary_folder, document_file.document.label)
 
             try:
                 with path_temporary_file.open(mode='xb') as temporary_fileobject:
-                    document_version.save_to_file(file_object=temporary_fileobject)
+                    document_file.save_to_file(file_object=temporary_fileobject)
                     temporary_fileobject.seek(0)
                     try:
                         result = self.command_exiftool(temporary_fileobject.name)
@@ -52,8 +52,8 @@ class EXIFToolDriver(FileMetadataDriver):
                         return json.loads(s=result.stdout)[0]
             except Exception as exception:
                 logger.error(
-                    'Error processing document version: %s; %s',
-                    document_version, exception
+                    'Error processing document file: %s; %s',
+                    document_file, exception
                 )
                 raise
             finally:
@@ -61,7 +61,7 @@ class EXIFToolDriver(FileMetadataDriver):
         else:
             logger.warning(
                 'EXIFTool binary not found, not processing document '
-                'version: %s', document_version
+                'file: %s', document_file
             )
 
     def read_settings(self):

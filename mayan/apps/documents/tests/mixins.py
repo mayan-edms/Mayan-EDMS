@@ -101,7 +101,7 @@ class DocumentFileAPIViewTestMixin:
 
     def _request_test_document_file_api_upload_view(self):
         # Artificial delay since MySQL doesn't store microsecond data in
-        # timestamps. Version timestamp is used to determine which file
+        # timestamps. File timestamp is used to determine which file
         # is the latest.
         time.sleep(1)
 

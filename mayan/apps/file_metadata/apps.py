@@ -52,8 +52,8 @@ class FileMetadataApp(MayanAppConfig):
         super(FileMetadataApp, self).ready()
 
         FileMetadataEntry = self.get_model(model_name='FileMetadataEntry')
-        DocumentVersionDriverEntry = self.get_model(
-            model_name='DocumentVersionDriverEntry'
+        DocumentFileDriverEntry = self.get_model(
+            model_name='DocumentFileDriverEntry'
         )
         Document = apps.get_model(
             app_label='documents', model_name='Document'
@@ -120,7 +120,7 @@ class FileMetadataApp(MayanAppConfig):
             model=DocumentTypeSettings, related='document_type',
         )
         ModelPermission.register_inheritance(
-            model=DocumentVersionDriverEntry, related='document_file',
+            model=DocumentFileDriverEntry, related='document_file',
         )
 
         ModelProperty(
@@ -139,15 +139,15 @@ class FileMetadataApp(MayanAppConfig):
         )
         SourceColumn(
             attribute='driver', is_identifier=True,
-            source=DocumentVersionDriverEntry
+            source=DocumentFileDriverEntry
         )
         SourceColumn(
             attribute='driver__internal_name', include_label=True,
-            source=DocumentVersionDriverEntry
+            source=DocumentFileDriverEntry
         )
         SourceColumn(
             attribute='get_attribute_count', include_label=True,
-            source=DocumentVersionDriverEntry
+            source=DocumentFileDriverEntry
         )
 
         menu_facet.bind_links(
@@ -159,7 +159,7 @@ class FileMetadataApp(MayanAppConfig):
         )
         menu_object.bind_links(
             links=(link_document_file_metadata_list,),
-            sources=(DocumentVersionDriverEntry,)
+            sources=(DocumentFileDriverEntry,)
         )
         menu_multi_item.bind_links(
             links=(link_document_multiple_submit,), sources=(Document,)

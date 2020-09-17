@@ -20,7 +20,7 @@ class DocumentSignatureDetachedAction(WorkflowAction):
             'class': 'django.forms.ModelChoiceField', 'kwargs': {
                 'help_text': _(
                     'Private key that will be used to sign the document '
-                    'version.'
+                    'file.'
                 ), 'queryset': Key.objects.none(),
             },
         }, 'passphrase': {
@@ -28,7 +28,7 @@ class DocumentSignatureDetachedAction(WorkflowAction):
             'class': 'django.forms.CharField', 'kwargs': {
                 'help_text': _(
                     'The passphrase to unlock the key and allow it to be '
-                    'used to sign the document version.'
+                    'used to sign the document file.'
                 ), 'required': False
             },
         },
@@ -42,18 +42,18 @@ class DocumentSignatureDetachedAction(WorkflowAction):
     }
 
     def get_arguments(self, context):
-        latest_version = context['document'].latest_version
-        if not latest_version:
+        latest_file = context['document'].latest_file
+        if not latest_file:
             raise WorkflowStateActionError(
                 _(
-                    'Document has no version to sign. You might be trying to '
+                    'Document has no file to sign. You might be trying to '
                     'use this action in an initial state before the created '
                     'document is yet to be processed.'
                 )
             )
 
         return {
-            'document_version': latest_version,
+            'document_file': latest_file,
             'key': Key.objects.get(pk=self.form_data['key']),
             'passphrase': self.form_data.get('passphrase')
         }
@@ -71,7 +71,7 @@ class DocumentSignatureDetachedAction(WorkflowAction):
         return result
 
     def execute(self, context):
-        DetachedSignature.objects.sign_document_version(
+        DetachedSignature.objects.sign_document_file(
             **self.get_arguments(context=context)
         )
 
@@ -80,6 +80,6 @@ class DocumentSignatureEmbeddedAction(DocumentSignatureDetachedAction):
     label = _('Sign document (embedded)')
 
     def execute(self, context):
-        EmbeddedSignature.objects.sign_document_version(
+        EmbeddedSignature.objects.sign_document_file(
             **self.get_arguments(context=context)
         )

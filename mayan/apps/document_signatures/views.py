@@ -19,8 +19,8 @@ from mayan.apps.views.generics import (
 from mayan.apps.views.mixins import ExternalObjectMixin
 
 from .forms import (
-    DocumentVersionSignatureCreateForm,
-    DocumentVersionSignatureDetailForm
+    DocumentFileSignatureCreateForm,
+    DocumentFileSignatureDetailForm
 )
 from .icons import (
     icon_document_signature_list,
@@ -47,8 +47,8 @@ from .tasks import task_verify_missing_embedded_signature
 logger = logging.getLogger(name=__name__)
 
 
-class DocumentVersionDetachedSignatureCreateView(FormView):
-    form_class = DocumentVersionSignatureCreateForm
+class DocumentFileDetachedSignatureCreateView(FormView):
+    form_class = DocumentFileSignatureCreateForm
 
     def form_valid(self, form):
         key = form.cleaned_data['key']
@@ -96,7 +96,7 @@ class DocumentVersionDetachedSignatureCreateView(FormView):
             )
 
         return super(
-            DocumentVersionDetachedSignatureCreateView, self
+            DocumentFileDetachedSignatureCreateView, self
         ).form_valid(form)
 
     def dispatch(self, request, *args, **kwargs):
@@ -107,7 +107,7 @@ class DocumentVersionDetachedSignatureCreateView(FormView):
         )
 
         return super(
-            DocumentVersionDetachedSignatureCreateView, self
+            DocumentFileDetachedSignatureCreateView, self
         ).dispatch(request, *args, **kwargs)
 
     def get_document_file(self):
@@ -135,8 +135,8 @@ class DocumentVersionDetachedSignatureCreateView(FormView):
         )
 
 
-class DocumentVersionEmbeddedSignatureCreateView(FormView):
-    form_class = DocumentVersionSignatureCreateForm
+class DocumentFileEmbeddedSignatureCreateView(FormView):
+    form_class = DocumentFileSignatureCreateForm
 
     def form_valid(self, form):
         key = form.cleaned_data['key']
@@ -191,7 +191,7 @@ class DocumentVersionEmbeddedSignatureCreateView(FormView):
             )
 
         return super(
-            DocumentVersionEmbeddedSignatureCreateView, self
+            DocumentFileEmbeddedSignatureCreateView, self
         ).form_valid(form)
 
     def dispatch(self, request, *args, **kwargs):
@@ -202,7 +202,7 @@ class DocumentVersionEmbeddedSignatureCreateView(FormView):
         )
 
         return super(
-            DocumentVersionEmbeddedSignatureCreateView, self
+            DocumentFileEmbeddedSignatureCreateView, self
         ).dispatch(request, *args, **kwargs)
 
     def get_document_file(self):
@@ -224,7 +224,7 @@ class DocumentVersionEmbeddedSignatureCreateView(FormView):
         return {'user': self.request.user}
 
 
-class DocumentVersionSignatureDeleteView(SingleObjectDeleteView):
+class DocumentFileSignatureDeleteView(SingleObjectDeleteView):
     model = DetachedSignature
     object_permission = permission_document_file_signature_delete
     pk_url_kwarg = 'signature_id'
@@ -245,8 +245,8 @@ class DocumentVersionSignatureDeleteView(SingleObjectDeleteView):
         )
 
 
-class DocumentVersionSignatureDetailView(SingleObjectDetailView):
-    form_class = DocumentVersionSignatureDetailForm
+class DocumentFileSignatureDetailView(SingleObjectDetailView):
+    form_class = DocumentFileSignatureDetailForm
     object_permission = permission_document_file_signature_view
     pk_url_kwarg = 'signature_id'
 
@@ -264,7 +264,7 @@ class DocumentVersionSignatureDetailView(SingleObjectDetailView):
         return SignatureBaseModel.objects.select_subclasses()
 
 
-class DocumentVersionSignatureDownloadView(SingleObjectDownloadView):
+class DocumentFileSignatureDownloadView(SingleObjectDownloadView):
     model = DetachedSignature
     object_permission = permission_document_file_signature_download
     pk_url_kwarg = 'signature_id'
@@ -276,7 +276,7 @@ class DocumentVersionSignatureDownloadView(SingleObjectDownloadView):
         return force_text(self.object)
 
 
-class DocumentVersionSignatureListView(
+class DocumentFileSignatureListView(
     ExternalObjectMixin, SingleObjectListView
 ):
     external_object_class = DocumentFile
@@ -329,7 +329,7 @@ class DocumentVersionSignatureListView(
         return self.external_object.signatures.all()
 
 
-class DocumentVersionSignatureUploadView(SingleObjectCreateView):
+class DocumentFileSignatureUploadView(SingleObjectCreateView):
     fields = ('signature_file',)
     model = DetachedSignature
 
@@ -341,7 +341,7 @@ class DocumentVersionSignatureUploadView(SingleObjectCreateView):
         )
 
         return super(
-            DocumentVersionSignatureUploadView, self
+            DocumentFileSignatureUploadView, self
         ).dispatch(request, *args, **kwargs)
 
     def get_document_file(self):

@@ -27,7 +27,7 @@ from mayan.apps.views.mixins import ExternalObjectMixin
 
 from .exceptions import SourceException
 from .forms import (
-    NewDocumentForm, NewVersionForm, WebFormUploadForm, WebFormUploadFormHTML5
+    NewDocumentForm, NewFileForm, WebFormUploadForm, WebFormUploadFormHTML5
 )
 from .icons import (
     icon_setup_sources, icon_staging_folder_file, icon_upload_view_link
@@ -521,7 +521,7 @@ class UploadInteractiveView(UploadBaseView):
         }
 
 
-class DocumentVersionUploadInteractiveView(UploadBaseView):
+class DocumentFileUploadInteractiveView(UploadBaseView):
     def create_source_form_form(self, **kwargs):
         return self.get_form_classes()['source_form'](
             prefix=kwargs['prefix'],
@@ -564,9 +564,7 @@ class DocumentVersionUploadInteractiveView(UploadBaseView):
             document=self.document
         )
 
-        return super(
-            DocumentVersionUploadInteractiveView, self
-        ).dispatch(request, *args, **kwargs)
+        return super().dispatch(request, *args, **kwargs)
 
     def forms_valid(self, forms):
         try:
@@ -638,9 +636,7 @@ class DocumentVersionUploadInteractiveView(UploadBaseView):
         )
 
     def get_context_data(self, **kwargs):
-        context = super(
-            DocumentVersionUploadInteractiveView, self
-        ).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context['object'] = self.document
         context['title'] = _(
             'Upload a new file for document "%(document)s" '
@@ -668,6 +664,6 @@ class DocumentVersionUploadInteractiveView(UploadBaseView):
             source_form_class = WebFormUploadFormHTML5
 
         return {
-            'document_form': NewVersionForm,
+            'document_form': NewFileForm,
             'source_form': source_form_class
         }

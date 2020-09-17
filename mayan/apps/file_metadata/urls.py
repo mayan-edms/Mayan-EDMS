@@ -1,8 +1,8 @@
 from django.conf.urls import url
 
 from .views import (
-    DocumentDriverListView, DocumentSubmitView, DocumentTypeSettingsEditView,
-    DocumentTypeSubmitView, DocumentVersionDriverEntryFileMetadataListView
+    DocumentDriverListView, DocumentFileDriverEntryFileMetadataListView,
+    DocumentSubmitView, DocumentTypeSettingsEditView, DocumentTypeSubmitView
 )
 
 urlpatterns = [
@@ -29,8 +29,8 @@ urlpatterns = [
         view=DocumentTypeSubmitView.as_view()
     ),
     url(
-        regex=r'^document_version_driver/(?P<document_version_driver_id>\d+)/attributes/$',
-        name='document_version_driver_file_metadata_list',
-        view=DocumentVersionDriverEntryFileMetadataListView.as_view()
+        regex=r'^document_file_driver/(?P<document_file_driver_id>\d+)/attributes/$',
+        name='document_file_driver_file_metadata_list',
+        view=DocumentFileDriverEntryFileMetadataListView.as_view()
     ),
 ]

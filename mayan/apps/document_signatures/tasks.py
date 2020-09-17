@@ -53,28 +53,28 @@ def task_verify_missing_embedded_signature(self):
         app_label='document_signatures', model_name='EmbeddedSignature'
     )
 
-    for document_version in EmbeddedSignature.objects.unsigned_document_versions():
-        task_verify_document_version.apply_async(
-            kwargs=dict(document_version_pk=document_version.pk)
+    for document_file in EmbeddedSignature.objects.unsigned_document_files():
+        task_verify_document_file.apply_async(
+            kwargs=dict(document_file_pk=document_file.pk)
         )
 
 
 @app.task(bind=True, ignore_result=True)
-def task_verify_document_version(self, document_version_pk):
-    DocumentVersion = apps.get_model(
-        app_label='documents', model_name='DocumentVersion'
+def task_verify_document_file(self, document_file_pk):
+    DocumentFile = apps.get_model(
+        app_label='documents', model_name='DocumentFile'
     )
 
     EmbeddedSignature = apps.get_model(
         app_label='document_signatures', model_name='EmbeddedSignature'
     )
 
-    document_version = DocumentVersion.objects.get(pk=document_version_pk)
+    document_file = DocumentFile.objects.get(pk=document_file_pk)
     try:
-        EmbeddedSignature.objects.create(document_version=document_version)
+        EmbeddedSignature.objects.create(document_file=document_file)
     except IOError as exception:
-        error_message = 'File missing for document version ID {}; {}'.format(
-            document_version_pk, exception
+        error_message = 'File missing for document file ID {}; {}'.format(
+            document_file_pk, exception
         )
         logger.error(error_message)
         raise IOError(error_message)

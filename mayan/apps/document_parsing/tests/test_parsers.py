@@ -13,7 +13,7 @@ class ParserTestCase(DocumentTestMixin, BaseTestCase):
     def test_poppler_parser(self):
         parser = PopplerParser()
 
-        parser.process_document_version(self.test_document.latest_version)
+        parser.process_document_file(self.test_document.latest_file)
 
         self.assertTrue(
             TEST_DOCUMENT_CONTENT in self.test_document.pages.first().content.content

@@ -87,7 +87,7 @@ class APIDocumentTypeOCRSettingsView(generics.RetrieveUpdateAPIView):
     serializer_class = DocumentTypeOCRSettingsSerializer
 
 
-class APIDocumentVersionOCRView(generics.GenericAPIView):
+class APIDocumentFileOCRView(generics.GenericAPIView):
     """
     post: Submit a document file for OCR.
     """

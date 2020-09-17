@@ -1,6 +1,6 @@
 from django.utils.encoding import force_text
 
-from mayan.apps.documents.models import DocumentVersion
+from mayan.apps.documents.models import DocumentFile
 from mayan.apps.documents.permissions import (
     permission_document_new_file, permission_document_file_view,
     permission_document_view
@@ -397,13 +397,13 @@ class DocumentCheckoutViewTestCase(
         )
 
 
-class NewVersionBlockViewTestCase(
+class NewFileBlockViewTestCase(
     DocumentCheckoutTestMixin, DocumentCheckoutViewTestMixin,
     GenericDocumentViewTestCase
 ):
     def test_document_check_out_block_new_file(self):
         self._check_out_test_document()
-        file_count = DocumentVersion.objects.count()
+        file_count = DocumentFile.objects.count()
 
         self.grant_access(
             obj=self.test_document,
@@ -424,4 +424,4 @@ class NewVersionBlockViewTestCase(
             text='Unable to upload new files'
         )
 
-        self.assertEqual(DocumentVersion.objects.count(), file_count)
+        self.assertEqual(DocumentFile.objects.count(), file_count)

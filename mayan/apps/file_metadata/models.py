@@ -64,7 +64,7 @@ class DocumentTypeSettings(models.Model):
     natural_key.dependencies = ['documents.DocumentType']
 
 
-class DocumentVersionDriverEntry(models.Model):
+class DocumentFileDriverEntry(models.Model):
     driver = models.ForeignKey(
         on_delete=models.CASCADE, related_name='driver_entries',
         to=StoredDriver, verbose_name=_('Driver')
@@ -91,7 +91,7 @@ class DocumentVersionDriverEntry(models.Model):
 class FileMetadataEntry(models.Model):
     document_file_driver_entry = models.ForeignKey(
         on_delete=models.CASCADE, related_name='entries',
-        to=DocumentVersionDriverEntry,
+        to=DocumentFileDriverEntry,
         verbose_name=_('Document file driver entry')
     )
 

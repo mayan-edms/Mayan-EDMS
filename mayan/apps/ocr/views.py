@@ -12,7 +12,7 @@ from mayan.apps.views.generics import (
 from mayan.apps.views.mixins import ExternalObjectMixin
 
 from .forms import DocumentPageOCRContentForm, DocumentOCRContentForm
-from .models import DocumentPageOCRContent, DocumentVersionOCRError
+from .models import DocumentPageOCRContent, DocumentFileOCRError
 from .permissions import (
     permission_ocr_content_view, permission_ocr_document,
     permission_document_type_ocr_setup
@@ -96,7 +96,7 @@ class DocumentOCRErrorsListView(ExternalObjectMixin, SingleObjectListView):
         }
 
     def get_source_queryset(self):
-        return self.external_object.latest_version.ocr_errors.all()
+        return self.external_object.latest_file.ocr_errors.all()
 
 
 class DocumentPageOCRContentView(SingleObjectDetailView):
@@ -216,4 +216,4 @@ class EntryListView(SingleObjectListView):
     view_permission = permission_document_type_ocr_setup
 
     def get_source_queryset(self):
-        return DocumentVersionOCRError.objects.all()
+        return DocumentFileOCRError.objects.all()

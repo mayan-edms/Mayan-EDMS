@@ -61,6 +61,9 @@ class DocumentParsingApp(MayanAppConfig):
         DocumentFile = apps.get_model(
             app_label='documents', model_name='DocumentFile'
         )
+        DocumentFileParseError = self.get_model(
+            model_name='DocumentFileParseError'
+        )
         DocumentPage = apps.get_model(
             app_label='documents', model_name='DocumentPage'
         )
@@ -69,9 +72,6 @@ class DocumentParsingApp(MayanAppConfig):
         )
         DocumentTypeSettings = self.get_model(
             model_name='DocumentTypeSettings'
-        )
-        DocumentVersionParseError = self.get_model(
-            model_name='DocumentVersionParseError'
         )
 
         Document.add_to_class(
@@ -124,14 +124,14 @@ class DocumentParsingApp(MayanAppConfig):
         SourceColumn(
             attribute='document_file__document',
             is_attribute_absolute_url=True, is_identifier=True,
-            is_sortable=True, source=DocumentVersionParseError
+            is_sortable=True, source=DocumentFileParseError
         )
         SourceColumn(
             attribute='datetime_submitted', is_sortable=True,
-            source=DocumentVersionParseError
+            source=DocumentFileParseError
         )
         SourceColumn(
-            source=DocumentVersionParseError, label=_('Result'),
+            source=DocumentFileParseError, label=_('Result'),
             attribute='result'
         )
 

@@ -5,8 +5,8 @@ from mayan.apps.documents.tests.test_models import GenericDocumentTestCase
 
 from ..events import (
     event_parsing_document_content_deleted,
-    event_parsing_document_version_submit,
-    event_parsing_document_version_finish
+    event_parsing_document_file_submit,
+    event_parsing_document_file_finish
 )
 from ..models import DocumentPageContent
 
@@ -31,25 +31,25 @@ class DocumentParsingEventsTestCase(GenericDocumentTestCase):
             action.verb, event_parsing_document_content_deleted.id
         )
 
-    def test_document_version_submit_event(self):
+    def test_document_file_submit_event(self):
         Action.objects.all().delete()
         self.test_document.submit_for_parsing()
 
         self.assertEqual(
-            Action.objects.last().target, self.test_document.latest_version
+            Action.objects.last().target, self.test_document.latest_file
         )
         self.assertEqual(
             Action.objects.last().verb,
-            event_parsing_document_version_submit.id
+            event_parsing_document_file_submit.id
         )
 
-    def test_document_version_finish_event(self):
+    def test_document_file_finish_event(self):
         Action.objects.all().delete()
         self.test_document.submit_for_parsing()
         self.assertEqual(
-            Action.objects.first().target, self.test_document.latest_version
+            Action.objects.first().target, self.test_document.latest_file
         )
         self.assertEqual(
             Action.objects.first().verb,
-            event_parsing_document_version_finish.id
+            event_parsing_document_file_finish.id
         )

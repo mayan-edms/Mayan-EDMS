@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from .models import (
-    DocumentPageOCRContent, DocumentTypeSettings, DocumentVersionOCRError
+    DocumentFileOCRError, DocumentPageOCRContent, DocumentTypeSettings
 )
 
 
@@ -15,7 +15,7 @@ class DocumentTypeSettingsAdmin(admin.ModelAdmin):
     list_display = ('document_type', 'auto_ocr')
 
 
-@admin.register(DocumentVersionOCRError)
-class DocumentVersionOCRErrorAdmin(admin.ModelAdmin):
+@admin.register(DocumentFileOCRError)
+class DocumentFileOCRErrorAdmin(admin.ModelAdmin):
     list_display = ('document_file', 'datetime_submitted')
     readonly_fields = ('document_file', 'datetime_submitted', 'result')

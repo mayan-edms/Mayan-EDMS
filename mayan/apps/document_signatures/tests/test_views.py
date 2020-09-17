@@ -2,7 +2,7 @@ from unittest import skip
 
 from mayan.apps.django_gpg.permissions import permission_key_sign
 from mayan.apps.django_gpg.tests.mixins import KeyTestMixin
-from mayan.apps.documents.models import DocumentVersion
+from mayan.apps.documents.models import DocumentFile
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 from mayan.apps.documents.tests.literals import (
     TEST_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_PATH
@@ -10,13 +10,13 @@ from mayan.apps.documents.tests.literals import (
 
 from ..models import DetachedSignature, EmbeddedSignature
 from ..permissions import (
-    permission_document_version_sign_detached,
-    permission_document_version_sign_embedded,
-    permission_document_version_signature_delete,
-    permission_document_version_signature_download,
-    permission_document_version_signature_upload,
-    permission_document_version_signature_verify,
-    permission_document_version_signature_view
+    permission_document_file_sign_detached,
+    permission_document_file_sign_embedded,
+    permission_document_file_signature_delete,
+    permission_document_file_signature_download,
+    permission_document_file_signature_upload,
+    permission_document_file_signature_verify,
+    permission_document_file_signature_view
 )
 
 from .literals import TEST_SIGNED_DOCUMENT_PATH
@@ -43,10 +43,10 @@ class SignaturesViewTestCase(
 
         self.grant_access(
             obj=self.test_document,
-            permission=permission_document_version_signature_view
+            permission=permission_document_file_signature_view
         )
 
-        response = self._request_test_document_version_signature_delete_view()
+        response = self._request_test_document_file_signature_delete_view()
         self.assertEqual(response.status_code, 404)
         self.assertEqual(DetachedSignature.objects.count(), 1)
 
@@ -58,14 +58,14 @@ class SignaturesViewTestCase(
 
         self.grant_access(
             obj=self.test_document,
-            permission=permission_document_version_signature_delete
+            permission=permission_document_file_signature_delete
         )
         self.grant_access(
             obj=self.test_document,
-            permission=permission_document_version_signature_view
+            permission=permission_document_file_signature_view
         )
 
-        response = self._request_test_document_version_signature_delete_view()
+        response = self._request_test_document_file_signature_delete_view()
         self.assertEqual(response.status_code, 302)
         self.assertEqual(DetachedSignature.objects.count(), 0)
 
@@ -74,7 +74,7 @@ class SignaturesViewTestCase(
         self._upload_test_document()
         self._upload_test_detached_signature()
 
-        response = self._request_test_document_version_signature_details_view()
+        response = self._request_test_document_file_signature_details_view()
         self.assertEqual(response.status_code, 404)
 
     @skip('Skip until a new test key is produced.')
@@ -87,10 +87,10 @@ class SignaturesViewTestCase(
 
         self.grant_access(
             obj=self.test_document,
-            permission=permission_document_version_signature_view
+            permission=permission_document_file_signature_view
         )
 
-        response = self._request_test_document_version_signature_details_view()
+        response = self._request_test_document_file_signature_details_view()
         self.assertContains(
             response=response, text=self.test_signature.signature_id,
             status_code=200
@@ -102,7 +102,7 @@ class SignaturesViewTestCase(
 
         self._upload_test_detached_signature()
 
-        response = self._request_test_document_version_signature_list_view(
+        response = self._request_test_document_file_signature_list_view(
             document=self.test_document
         )
         self.assertEqual(response.status_code, 404)
@@ -115,10 +115,10 @@ class SignaturesViewTestCase(
 
         self.grant_access(
             obj=self.test_document,
-            permission=permission_document_version_signature_view
+            permission=permission_document_file_signature_view
         )
 
-        response = self._request_test_document_version_signature_list_view(
+        response = self._request_test_document_file_signature_list_view(
             document=self.test_document
         )
         self.assertEqual(response.status_code, 200)
@@ -131,8 +131,8 @@ class SignaturesViewTestCase(
         for document in self.test_document_type.documents.all():
             document.delete(to_trash=False)
 
-        old_hooks = DocumentVersion._post_save_hooks
-        DocumentVersion._post_save_hooks = {}
+        old_hooks = DocumentFile._post_save_hooks
+        DocumentFile._post_save_hooks = {}
 
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         for count in range(TEST_UNSIGNED_DOCUMENT_COUNT):
@@ -143,17 +143,17 @@ class SignaturesViewTestCase(
             self._upload_test_document()
 
         self.assertEqual(
-            EmbeddedSignature.objects.unsigned_document_versions().count(),
+            EmbeddedSignature.objects.unsigned_document_files().count(),
             TEST_UNSIGNED_DOCUMENT_COUNT + TEST_SIGNED_DOCUMENT_COUNT
         )
 
-        DocumentVersion._post_save_hooks = old_hooks
+        DocumentFile._post_save_hooks = old_hooks
 
-        response = self._request_all_test_document_version_signature_verify_view()
+        response = self._request_all_test_document_file_signature_verify_view()
         self.assertEqual(response.status_code, 403)
 
         self.assertEqual(
-            EmbeddedSignature.objects.unsigned_document_versions().count(),
+            EmbeddedSignature.objects.unsigned_document_files().count(),
             TEST_UNSIGNED_DOCUMENT_COUNT + TEST_SIGNED_DOCUMENT_COUNT
         )
 
@@ -164,8 +164,8 @@ class SignaturesViewTestCase(
         for document in self.test_document_type.documents.all():
             document.delete(to_trash=False)
 
-        old_hooks = DocumentVersion._post_save_hooks
-        DocumentVersion._post_save_hooks = {}
+        old_hooks = DocumentFile._post_save_hooks
+        DocumentFile._post_save_hooks = {}
 
         self.test_document_path = TEST_SMALL_DOCUMENT_PATH
         for count in range(TEST_UNSIGNED_DOCUMENT_COUNT):
@@ -176,21 +176,21 @@ class SignaturesViewTestCase(
             self._upload_test_document()
 
         self.assertEqual(
-            EmbeddedSignature.objects.unsigned_document_versions().count(),
+            EmbeddedSignature.objects.unsigned_document_files().count(),
             TEST_UNSIGNED_DOCUMENT_COUNT + TEST_SIGNED_DOCUMENT_COUNT
         )
 
-        DocumentVersion._post_save_hooks = old_hooks
+        DocumentFile._post_save_hooks = old_hooks
 
         self.grant_permission(
-            permission=permission_document_version_signature_verify
+            permission=permission_document_file_signature_verify
         )
 
-        response = self._request_all_test_document_version_signature_verify_view()
+        response = self._request_all_test_document_file_signature_verify_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
-            EmbeddedSignature.objects.unsigned_document_versions().count(),
+            EmbeddedSignature.objects.unsigned_document_files().count(),
             TEST_UNSIGNED_DOCUMENT_COUNT
         )
 
@@ -206,13 +206,13 @@ class DetachedSignaturesViewTestCase(
         self._upload_test_document()
         self._create_test_key_private()
 
-        signatures = self.test_document.latest_version.signatures.count()
+        signatures = self.test_document.latest_file.signatures.count()
 
-        response = self._request_test_document_version_signature_create_view()
+        response = self._request_test_document_file_signature_create_view()
         self.assertEqual(response.status_code, 403)
 
         self.assertEqual(
-            self.test_document.latest_version.signatures.count(),
+            self.test_document.latest_file.signatures.count(),
             signatures
         )
 
@@ -221,18 +221,18 @@ class DetachedSignaturesViewTestCase(
         self._upload_test_document()
         self._create_test_key_private()
 
-        signatures = self.test_document.latest_version.signatures.count()
+        signatures = self.test_document.latest_file.signatures.count()
 
         self.grant_access(
             obj=self.test_document,
-            permission=permission_document_version_sign_detached
+            permission=permission_document_file_sign_detached
         )
 
-        response = self._request_test_document_version_signature_create_view()
+        response = self._request_test_document_file_signature_create_view()
         self.assertEqual(response.status_code, 200)
 
         self.assertEqual(
-            self.test_document.latest_version.signatures.count(),
+            self.test_document.latest_file.signatures.count(),
             signatures
         )
 
@@ -241,18 +241,18 @@ class DetachedSignaturesViewTestCase(
         self._upload_test_document()
         self._create_test_key_private()
 
-        signatures = self.test_document.latest_version.signatures.count()
+        signatures = self.test_document.latest_file.signatures.count()
 
         self.grant_access(
             obj=self.test_key_private,
             permission=permission_key_sign
         )
 
-        response = self._request_test_document_version_signature_create_view()
+        response = self._request_test_document_file_signature_create_view()
         self.assertEqual(response.status_code, 403)
 
         self.assertEqual(
-            self.test_document.latest_version.signatures.count(),
+            self.test_document.latest_file.signatures.count(),
             signatures
         )
 
@@ -261,22 +261,22 @@ class DetachedSignaturesViewTestCase(
         self._upload_test_document()
         self._create_test_key_private()
 
-        signatures = self.test_document.latest_version.signatures.count()
+        signatures = self.test_document.latest_file.signatures.count()
 
         self.grant_access(
             obj=self.test_document,
-            permission=permission_document_version_sign_detached
+            permission=permission_document_file_sign_detached
         )
         self.grant_access(
             obj=self.test_key_private,
             permission=permission_key_sign
         )
 
-        response = self._request_test_document_version_signature_create_view()
+        response = self._request_test_document_file_signature_create_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
-            self.test_document.latest_version.signatures.count(),
+            self.test_document.latest_file.signatures.count(),
             signatures + 1
         )
 
@@ -286,7 +286,7 @@ class DetachedSignaturesViewTestCase(
 
         self._upload_test_detached_signature()
 
-        response = self._request_test_document_version_signature_download_view()
+        response = self._request_test_document_file_signature_download_view()
         self.assertEqual(response.status_code, 404)
 
     def test_signature_download_view_with_access(self):
@@ -297,12 +297,12 @@ class DetachedSignaturesViewTestCase(
 
         self.grant_access(
             obj=self.test_document,
-            permission=permission_document_version_signature_download
+            permission=permission_document_file_signature_download
         )
 
         self.expected_content_types = ('application/octet-stream',)
 
-        response = self._request_test_document_version_signature_download_view()
+        response = self._request_test_document_file_signature_download_view()
 
         with self.test_signature.signature_file as file_object:
             self.assert_download_response(
@@ -314,7 +314,7 @@ class DetachedSignaturesViewTestCase(
 
         self._upload_test_document()
 
-        response = self._request_test_document_version_signature_upload_view()
+        response = self._request_test_document_file_signature_upload_view()
         self.assertEqual(response.status_code, 403)
 
         self.assertEqual(DetachedSignature.objects.count(), 0)
@@ -325,10 +325,10 @@ class DetachedSignaturesViewTestCase(
 
         self.grant_access(
             obj=self.test_document,
-            permission=permission_document_version_signature_upload
+            permission=permission_document_file_signature_upload
         )
 
-        response = self._request_test_document_version_signature_upload_view()
+        response = self._request_test_document_file_signature_upload_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(DetachedSignature.objects.count(), 1)
@@ -344,13 +344,13 @@ class EmbeddedSignaturesViewTestCase(
         self._upload_test_document()
         self._create_test_key_private()
 
-        signatures = self.test_document.latest_version.signatures.count()
+        signatures = self.test_document.latest_file.signatures.count()
 
-        response = self._request_test_document_version_signature_create_view()
+        response = self._request_test_document_file_signature_create_view()
         self.assertEqual(response.status_code, 403)
 
         self.assertEqual(
-            self.test_document.latest_version.signatures.count(),
+            self.test_document.latest_file.signatures.count(),
             signatures
         )
 
@@ -359,18 +359,18 @@ class EmbeddedSignaturesViewTestCase(
         self._upload_test_document()
         self._create_test_key_private()
 
-        signatures = self.test_document.latest_version.signatures.count()
+        signatures = self.test_document.latest_file.signatures.count()
 
         self.grant_access(
             obj=self.test_document,
-            permission=permission_document_version_sign_embedded
+            permission=permission_document_file_sign_embedded
         )
 
-        response = self._request_test_document_version_signature_create_view()
+        response = self._request_test_document_file_signature_create_view()
         self.assertEqual(response.status_code, 200)
 
         self.assertEqual(
-            self.test_document.latest_version.signatures.count(),
+            self.test_document.latest_file.signatures.count(),
             signatures
         )
 
@@ -379,18 +379,18 @@ class EmbeddedSignaturesViewTestCase(
         self._upload_test_document()
         self._create_test_key_private()
 
-        signatures = self.test_document.latest_version.signatures.count()
+        signatures = self.test_document.latest_file.signatures.count()
 
         self.grant_access(
             obj=self.test_key_private,
             permission=permission_key_sign
         )
 
-        response = self._request_test_document_version_signature_create_view()
+        response = self._request_test_document_file_signature_create_view()
         self.assertEqual(response.status_code, 403)
 
         self.assertEqual(
-            self.test_document.latest_version.signatures.count(),
+            self.test_document.latest_file.signatures.count(),
             signatures
         )
 
@@ -399,24 +399,24 @@ class EmbeddedSignaturesViewTestCase(
         self._upload_test_document()
         self._create_test_key_private()
 
-        signatures = self.test_document.latest_version.signatures.count()
+        signatures = self.test_document.latest_file.signatures.count()
 
         self.grant_access(
             obj=self.test_document,
-            permission=permission_document_version_sign_embedded
+            permission=permission_document_file_sign_embedded
         )
         self.grant_access(
             obj=self.test_key_private,
             permission=permission_key_sign
         )
 
-        response = self._request_test_document_version_signature_create_view()
+        response = self._request_test_document_file_signature_create_view()
         self.assertEqual(response.status_code, 302)
         self.assertTrue(
-            str(self.test_document.latest_version.pk) in response.url
+            str(self.test_document.latest_file.pk) in response.url
         )
 
         self.assertEqual(
-            self.test_document.latest_version.signatures.count(),
+            self.test_document.latest_file.signatures.count(),
             signatures + 1
         )

@@ -35,7 +35,7 @@ def hook_factory_document_check_quota(klass):
     return hook_check_quota
 
 
-def hook_factory_document_version_check_quota(klass):
+def hook_factory_document_file_check_quota(klass):
     def hook_check_quota(**kwargs):
         # Pass the real parent document or create a fake one
         if 'document' in kwargs['kwargs']:
@@ -44,7 +44,7 @@ def hook_factory_document_version_check_quota(klass):
             document = types.SimpleNamespace(
                 document_type=kwargs['kwargs']['document_type']
             )
-        # Fake DocumentVersion to be able to reuse the
+        # Fake DocumentFile to be able to reuse the
         # .process() method for pre check.
         fake_document_instance = types.SimpleNamespace(
             file=kwargs['kwargs']['shared_uploaded_file'].file,
@@ -187,7 +187,7 @@ class DocumentSizeQuota(
     @classmethod
     def _initialize(cls):
         DocumentFile.register_pre_create_hook(
-            func=hook_factory_document_version_check_quota(klass=cls)
+            func=hook_factory_document_file_check_quota(klass=cls)
         )
 
     def __init__(

@@ -8,7 +8,7 @@ from .api_views import (
 from .views import (
     SourceCheckView, SourceCreateView, SourceDeleteView,
     SourceEditView, SourceListView, StagingFileDeleteView,
-    DocumentVersionUploadInteractiveView, UploadInteractiveView
+    DocumentFileUploadInteractiveView, UploadInteractiveView
 )
 from .wizards import DocumentCreateWizard
 
@@ -37,12 +37,12 @@ urlpatterns = [
     url(
         regex=r'^documents/(?P<document_id>\d+)/files/upload/interactive/(?P<source_id>\d+)/$',
         name='document_file_upload',
-        view=DocumentVersionUploadInteractiveView.as_view()
+        view=DocumentFileUploadInteractiveView.as_view()
     ),
     url(
         regex=r'^documents/(?P<document_id>\d+)/files/upload/interactive/$',
         name='document_file_upload',
-        view=DocumentVersionUploadInteractiveView.as_view()
+        view=DocumentFileUploadInteractiveView.as_view()
     ),
 
     # Setup views

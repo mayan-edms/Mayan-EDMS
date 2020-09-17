@@ -19,9 +19,9 @@ link_document_driver_list = Link(
 )
 link_document_file_metadata_list = Link(
     icon_class=icon_file_metadata,
-    kwargs={'document_version_driver_id': 'resolved_object.id'},
+    kwargs={'document_file_driver_id': 'resolved_object.id'},
     permissions=(permission_file_metadata_view,), text=_('Attributes'),
-    view='file_metadata:document_version_driver_file_metadata_list'
+    view='file_metadata:document_file_driver_file_metadata_list'
 )
 link_document_submit = Link(
     icon_class=icon_document_submit,

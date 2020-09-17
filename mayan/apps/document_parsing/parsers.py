@@ -23,7 +23,7 @@ class Parser:
 
     @classmethod
     def parse_document_page(cls, document_page):
-        for parser_class in cls._registry.get(document_page.document_version.mimetype, ()):
+        for parser_class in cls._registry.get(document_page.document_file.mimetype, ()):
             try:
                 parser = parser_class()
                 parser.process_document_page(document_page)
@@ -36,11 +36,11 @@ class Parser:
                 return
 
     @classmethod
-    def parse_document_version(cls, document_version):
-        for parser_class in cls._registry.get(document_version.mimetype, ()):
+    def parse_document_file(cls, document_file):
+        for parser_class in cls._registry.get(document_file.mimetype, ()):
             try:
                 parser = parser_class()
-                parser.process_document_version(document_version)
+                parser.process_document_file(document_file)
             except ParserError:
                 # If parser raises error, try next parser in the list
                 pass
@@ -57,13 +57,13 @@ class Parser:
                     mimetype, []
                 ).append(parser_class)
 
-    def process_document_version(self, document_version):
+    def process_document_file(self, document_file):
         logger.info(
-            'Starting parsing for document version: %s', document_version
+            'Starting parsing for document file: %s', document_file
         )
-        logger.debug('document version: %d', document_version.pk)
+        logger.debug('document file: %d', document_file.pk)
 
-        for document_page in document_version.pages.all():
+        for document_page in document_file.pages.all():
             self.process_document_page(document_page=document_page)
 
     def process_document_page(self, document_page):
@@ -72,11 +72,11 @@ class Parser:
         )
 
         logger.info(
-            'Processing page: %d of document version: %s',
-            document_page.page_number, document_page.document_version
+            'Processing page: %d of document file: %s',
+            document_page.page_number, document_page.document_file
         )
 
-        file_object = document_page.document_version.get_intermediate_file()
+        file_object = document_page.document_file.get_intermediate_file()
 
         try:
             document_page_content, created = DocumentPageContent.objects.get_or_create(
@@ -94,8 +94,8 @@ class Parser:
             file_object.close()
 
         logger.info(
-            'Finished processing page: %d of document version: %s',
-            document_page.page_number, document_page.document_version
+            'Finished processing page: %d of document file: %s',
+            document_page.page_number, document_page.document_file
         )
 
     def execute(self, file_object, page_number):

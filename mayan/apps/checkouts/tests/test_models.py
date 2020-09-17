@@ -7,9 +7,9 @@ from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..exceptions import (
     DocumentAlreadyCheckedOut, DocumentNotCheckedOut,
-    NewDocumentVersionNotAllowed
+    NewDocumentFileNotAllowed
 )
-from ..models import DocumentCheckout, NewVersionBlock
+from ..models import DocumentCheckout, NewFileBlock
 
 from .mixins import DocumentCheckoutTestMixin
 
@@ -70,45 +70,45 @@ class DocumentCheckoutTestCase(
         self.assertTrue(self.test_check_out.get_absolute_url())
 
 
-class NewVersionBlockTestCase(
+class NewFileBlockTestCase(
     DocumentCheckoutTestMixin, DocumentTestMixin, BaseTestCase
 ):
     def test_blocking(self):
-        NewVersionBlock.objects.block(document=self.test_document)
+        NewFileBlock.objects.block(document=self.test_document)
 
-        self.assertEqual(NewVersionBlock.objects.count(), 1)
+        self.assertEqual(NewFileBlock.objects.count(), 1)
         self.assertEqual(
-            NewVersionBlock.objects.first().document, self.test_document
+            NewFileBlock.objects.first().document, self.test_document
         )
 
     def test_blocking_new_files(self):
         # Silence unrelated logging
         self._silence_logger(name='mayan.apps.documents.models')
 
-        NewVersionBlock.objects.block(document=self.test_document)
+        NewFileBlock.objects.block(document=self.test_document)
 
-        with self.assertRaises(expected_exception=NewDocumentVersionNotAllowed):
+        with self.assertRaises(expected_exception=NewDocumentFileNotAllowed):
             with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
                 self.test_document.new_file(file_object=file_object)
 
     def test_unblocking(self):
-        NewVersionBlock.objects.create(document=self.test_document)
+        NewFileBlock.objects.create(document=self.test_document)
 
-        NewVersionBlock.objects.unblock(document=self.test_document)
+        NewFileBlock.objects.unblock(document=self.test_document)
 
-        self.assertEqual(NewVersionBlock.objects.count(), 0)
+        self.assertEqual(NewFileBlock.objects.count(), 0)
 
     def test_is_blocked(self):
-        NewVersionBlock.objects.create(document=self.test_document)
+        NewFileBlock.objects.create(document=self.test_document)
 
         self.assertTrue(
-            NewVersionBlock.objects.is_blocked(document=self.test_document)
+            NewFileBlock.objects.is_blocked(document=self.test_document)
         )
 
-        NewVersionBlock.objects.all().delete()
+        NewFileBlock.objects.all().delete()
 
         self.assertFalse(
-            NewVersionBlock.objects.is_blocked(document=self.test_document)
+            NewFileBlock.objects.is_blocked(document=self.test_document)
         )
 
     def test_file_creation_blocking(self):
@@ -119,6 +119,6 @@ class NewVersionBlockTestCase(
 
         self._check_out_test_document()
 
-        with self.assertRaises(expected_exception=NewDocumentVersionNotAllowed):
+        with self.assertRaises(expected_exception=NewDocumentFileNotAllowed):
             with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
                 self.test_document.new_file(file_object=file_object)

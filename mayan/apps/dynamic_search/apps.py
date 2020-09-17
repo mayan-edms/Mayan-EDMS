@@ -21,8 +21,8 @@ class DynamicSearchApp(MayanAppConfig):
     def ready(self):
         super(DynamicSearchApp, self).ready()
 
-        #SearchModel.load_modules()
-        #SearchModel.initialize()
+        SearchModel.load_modules()
+        SearchModel.initialize()
 
         menu_facet.bind_links(
             links=(link_search, link_search_advanced),

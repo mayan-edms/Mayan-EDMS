@@ -17,8 +17,8 @@ queue_signatures.add_task_type(
     label=_('Unverify key signatures')
 )
 queue_signatures.add_task_type(
-    dotted_path='mayan.apps.document_signatures.tasks.task_verify_document_version',
-    label=_('Verify document version')
+    dotted_path='mayan.apps.document_signatures.tasks.task_verify_document_file',
+    label=_('Verify document file')
 )
 
 queue_tools.add_task_type(

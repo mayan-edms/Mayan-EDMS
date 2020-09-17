@@ -23,7 +23,7 @@ class DocumentAlreadyCheckedOut(DocumentCheckoutError):
         return ugettext('Document already checked out.')
 
 
-class NewDocumentVersionNotAllowed(DocumentCheckoutError):
+class NewDocumentFileNotAllowed(DocumentCheckoutError):
     """
     Uploading new versions for this document is not allowed.
     """

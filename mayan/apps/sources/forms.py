@@ -20,7 +20,7 @@ class NewDocumentForm(DocumentForm):
         exclude = ('label', 'description')
 
 
-class NewVersionForm(forms.Form):
+class NewFileForm(forms.Form):
     comment = forms.CharField(
         help_text=_('An optional comment to explain the upload.'),
         label=_('Comment'), required=False,

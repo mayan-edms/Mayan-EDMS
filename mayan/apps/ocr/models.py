@@ -59,7 +59,7 @@ class DocumentPageOCRContent(models.Model):
         return force_text(self.document_page)
 
 
-class DocumentVersionOCRError(models.Model):
+class DocumentFileOCRError(models.Model):
     """
     This models keeps track of the errors captured during the OCR of a
     document file.
