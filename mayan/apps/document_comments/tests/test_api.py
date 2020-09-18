@@ -14,7 +14,6 @@ from ..permissions import (
     permission_document_comment_edit, permission_document_comment_view
 )
 
-from .literals import TEST_COMMENT_TEXT, TEST_COMMENT_TEXT_EDITED
 from .mixins import CommentAPIViewTestMixin, DocumentCommentTestMixin
 
 

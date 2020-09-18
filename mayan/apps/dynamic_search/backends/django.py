@@ -4,7 +4,6 @@ from django.db.models import Q
 from django.utils.encoding import force_text
 
 from ..classes import SearchBackend
-from ..settings import setting_results_limit
 
 QUERY_OPERATION_AND = 1
 QUERY_OPERATION_OR = 2

@@ -2,12 +2,14 @@ import os
 import time
 
 from django.conf import settings
+from django.utils.module_loading import import_string
 
 from mayan.apps.converter.classes import Layer
 from mayan.apps.converter.layers import layer_saved_transformations
 
 from ..literals import PAGE_RANGE_ALL
 from ..models import Document, DocumentType, FavoriteDocument
+from ..search import document_file_page_search, document_search
 
 from .literals import (
     TEST_DOCUMENT_DESCRIPTION_EDITED, TEST_DOCUMENT_PATH,
@@ -250,6 +252,24 @@ class DocumentQuickLabelViewTestMixin:
             viewname='documents:document_edit', kwargs={
                 'document_id': self.test_document.pk
             }, data=data
+        )
+
+
+class DocumentSearchTestMixin:
+    search_backend = import_string(
+        dotted_path='mayan.apps.dynamic_search.backends.django.DjangoSearchBackend'
+    )()
+
+    def _perform_document_file_page_search(self):
+        return self.search_backend.search(
+            search_model=document_file_page_search, query_string={'q': self.test_document.label},
+            user=self._test_case_user
+        )
+
+    def _perform_document_search(self):
+        return self.search_backend.search(
+            search_model=document_search, query_string={'q': self.test_document.label},
+            user=self._test_case_user
         )
 
 
