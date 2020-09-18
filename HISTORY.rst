@@ -240,6 +240,9 @@
   client version from 3.4.1 to 3.5.3.
 - Initialize document version _execute_hooks with a valid result.
   Allows disabling apps that modify the hook list like document signatures.
+- Do not error out when an app that defined a cached storage is
+  disabled, like the workflows app.
+- Disable purge method and purge links on invalid file caches.
 
 3.4.17 (2020-09-10)
 ===================

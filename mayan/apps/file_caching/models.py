@@ -53,7 +53,12 @@ class Cache(models.Model):
     get_maximum_size_display.short_description = _('Maximum size')
 
     def get_defined_storage(self):
-        return DefinedStorage.get(name=self.defined_storage_name)
+        try:
+            return DefinedStorage.get(name=self.defined_storage_name)
+        except KeyError:
+            return DefinedStorage(
+                dotted_path='', label=_('Unknown'), name='unknown'
+            )
 
     def get_total_size(self):
         """
@@ -89,10 +94,19 @@ class Cache(models.Model):
         """
         Deletes the entire cache.
         """
-        for partition in self.partitions.all():
-            partition.purge()
+        try:
+            DefinedStorage.get(name=self.defined_storage_name)
+        except KeyError:
+            """
+            Unknown or deleted storage. Must not be purged otherwise only
+            the database data will be erased but the actual storage files
+            will remain.
+            """
+        else:
+            for partition in self.partitions.all():
+                partition.purge()
 
-        event_cache_purged.commit(actor=_user, target=self)
+            event_cache_purged.commit(actor=_user, target=self)
 
     def save(self, *args, **kwargs):
         _user = kwargs.pop('_user', None)
