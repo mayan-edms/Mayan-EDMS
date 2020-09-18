@@ -69,10 +69,9 @@ class DocumentFilePageListView(ExternalObjectMixin, SingleObjectListView):
 
 
 class DocumentFilePageNavigationBase(ExternalObjectMixin, RedirectView):
-    external_object_class = DocumentFilePage
     external_object_permission = permission_document_view
     external_object_pk_url_kwarg = 'document_file_page_id'
-    #external_object_queryset = DocumentFilePage.valid
+    external_object_queryset = DocumentFilePage.valid
 
     def get_redirect_url(self, *args, **kwargs):
         """
@@ -154,10 +153,9 @@ class DocumentFilePageNavigationPrevious(DocumentFilePageNavigationBase):
 
 
 class DocumentFilePageView(ExternalObjectMixin, SimpleView):
-    external_object_class = DocumentFilePage
     external_object_permission = permission_document_view
     external_object_pk_url_kwarg = 'document_file_page_id'
-    #external_object_queryset = DocumentFilePage.valid
+    external_object_queryset = DocumentFilePage.valid
     template_name = 'appearance/generic_form.html'
 
     def get_extra_context(self):

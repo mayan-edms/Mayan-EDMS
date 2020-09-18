@@ -300,8 +300,8 @@ class ValidDocumentManager(models.Manager):
         )
 
 
-class ValidDocumentFilePageManager(models.Manager):
-    def get_queryset(self):
-        return models.QuerySet(
-            model=self.model, using=self._db
-        ).filter(enabled=True)
+#class ValidDocumentFilePageManager(models.Manager):
+#    def get_queryset(self):
+#        return models.QuerySet(
+#            model=self.model, using=self._db
+#        ).filter(enabled=True)

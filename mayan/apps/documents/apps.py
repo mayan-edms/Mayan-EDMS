@@ -64,14 +64,6 @@ from .links.document_file_links import (
     link_document_file_return_document, link_document_file_return_list,
     link_document_file_revert, link_document_file_view
 )
-from .links.document_type_links import (
-    link_document_type_create, link_document_type_delete,
-    link_document_type_edit, link_document_type_filename_create,
-    link_document_type_filename_delete, link_document_type_filename_edit,
-    link_document_type_filename_list, link_document_type_filename_generator,
-    link_document_type_list, link_document_type_policies,
-    link_document_type_setup
-)
 from .links.document_file_page_links import (
     link_document_multiple_update_page_count, link_document_file_page_disable,
     link_document_file_page_enable, link_document_file_page_multiple_enable,
@@ -83,6 +75,15 @@ from .links.document_file_page_links import (
     link_document_file_page_zoom_in, link_document_file_page_zoom_out,
     link_document_file_pages, link_document_update_page_count
 )
+from .links.document_type_links import (
+    link_document_type_create, link_document_type_delete,
+    link_document_type_edit, link_document_type_filename_create,
+    link_document_type_filename_delete, link_document_type_filename_edit,
+    link_document_type_filename_list, link_document_type_filename_generator,
+    link_document_type_list, link_document_type_policies,
+    link_document_type_setup
+)
+from .links.document_version_links import link_document_version_list
 from .links.duplicated_document_links import (
     link_document_duplicates_list, link_duplicated_document_list,
     link_duplicated_document_scan
@@ -538,7 +539,7 @@ class DocumentsApp(MayanAppConfig):
             links=(
                 link_events_for_object,
                 link_object_event_types_user_subcriptions_list,
-                link_document_file_list,
+                link_document_file_list, link_document_version_list
             ), sources=(Document,), position=2
         )
         menu_facet.bind_links(links=(link_document_file_pages,), sources=(Document,))

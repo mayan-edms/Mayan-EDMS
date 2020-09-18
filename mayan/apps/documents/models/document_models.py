@@ -245,20 +245,20 @@ class Document(HooksMixin, models.Model):
                 app_label='documents', model_name='DocumentFilePage'
             )
 
-            return File.objects.none()
+            return DocumentFilePage.objects.none()
 
     #TODO: Merge with `pages` property.
-    @property
-    def pages_valid(self):
-        try:
-            return self.latest_file.pages_valid
-        except AttributeError:
-            # Document has no file yet
-            DocumentFilePage = apps.get_model(
-                app_label='documents', model_name='DocumentFilePage'
-            )
+    #@property
+    #def pages_valid(self):
+    #    try:
+    #        return self.latest_file.pages_valid
+    #    except AttributeError:
+    #        # Document has no file yet
+    #        DocumentFilePage = apps.get_model(
+    #            app_label='documents', model_name='DocumentFilePage'
+    #        )
 
-            return DocumentFilePage.objects.none()
+    #        return DocumentFilePage.objects.none()
 
     def restore(self):
         self.in_trash = False

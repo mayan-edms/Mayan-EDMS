@@ -76,7 +76,8 @@ def document_link(document):
 
 
 def widget_document_file_page_number(document_file):
-    return mark_safe(s=_('Pages: %d') % document_file.pages_valid.count())
+    return mark_safe(s=_('Pages: %d') % document_file.pages.count())
+
 
 def widget_document_page_number(document):
-    return mark_safe(s=_('Pages: %d') % document.pages_valid.count())
+    return mark_safe(s=_('Pages: %d') % document.pages.count())

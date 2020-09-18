@@ -30,6 +30,7 @@ from .views.document_type_views import (
     DocumentTypeFilenameEditView, DocumentTypeFilenameListView,
     DocumentTypeListView
 )
+from .views.document_version_views import DocumentVersionListView
 from .views.document_views import (
     DocumentDocumentTypeEditView, DocumentDownloadFormView,
     DocumentDownloadView, DocumentListView, DocumentPreviewView,
@@ -207,6 +208,13 @@ urlpatterns_document_types = [
     ),
 ]
 
+urlpatterns_document_version = [
+    url(
+        regex=r'^documents/(?P<document_id>\d+)/versions/$',
+        name='document_version_list', view=DocumentVersionListView.as_view()
+    ),
+]
+
 urlpatterns_documents = [
     url(
         regex=r'^documents/$', name='document_list',
@@ -379,6 +387,7 @@ urlpatterns = []
 urlpatterns.extend(urlpatterns_document_files)
 urlpatterns.extend(urlpatterns_document_file_pages)
 urlpatterns.extend(urlpatterns_document_types)
+urlpatterns.extend(urlpatterns_document_version)
 urlpatterns.extend(urlpatterns_documents)
 urlpatterns.extend(urlpatterns_duplicated_documents)
 urlpatterns.extend(urlpatterns_favorite_documents)

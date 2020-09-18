@@ -229,7 +229,7 @@ class DocumentFile(models.Model):
         )
 
     def get_api_image_url(self, *args, **kwargs):
-        first_page = self.pages_valid.first()
+        first_page = self.pages.first()
         if first_page:
             return first_page.get_api_image_url(*args, **kwargs)
 
@@ -327,12 +327,12 @@ class DocumentFile(models.Model):
         queryset = ModelQueryFields.get(model=DocumentFilePage).get_queryset()
         return queryset.filter(pk__in=self.file_pages.all())
 
-    @property
-    def pages_valid(self):
-        DocumentFilePage = apps.get_model(
-            app_label='documents', model_name='DocumentFilePage'
-        )
-        return self.pages.filter(pk__in=DocumentFilePage.valid.filter(document_file=self))
+    #@property
+    #def pages_valid(self):
+    #    DocumentFilePage = apps.get_model(
+    #        app_label='documents', model_name='DocumentFilePage'
+    #    )
+    #    return self.pages.filter(pk__in=DocumentFilePage.valid.filter(document_file=self))
 
     def revert(self, _user=None):
         """

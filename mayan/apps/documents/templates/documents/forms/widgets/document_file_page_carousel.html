@@ -1,7 +1,7 @@
 {% load i18n %}
 
 <div class="full-height scrollable" data-height-difference=230 id="carousel-container">
-    {% for document_file_page in widget.value.pages_valid.all %}
+    {% for document_file_page in widget.value.pages.all %}
         <div class="carousel-item">
             <a href="{% url 'documents:document_file_page_view' document_file_page.pk %}">
                 {% with 'lazy-load-carousel' as image_classes %}
@@ -13,7 +13,7 @@
                 {% endwith %}
             </a>
             <div class="carousel-item-page-number">
-                {% blocktrans with document_file_page.page_number as page_number and widget.value.pages_valid.count as total_pages %}
+                {% blocktrans with document_file_page.page_number as page_number and widget.value.pages.count as total_pages %}
                     Page {{ page_number }} of {{ total_pages }}
                 {% endblocktrans %}
             </div>

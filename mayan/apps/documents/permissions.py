@@ -25,7 +25,7 @@ permission_document_file_revert = namespace.add_permission(
 )
 permission_document_file_view = namespace.add_permission(
     label=_('View documents\' file list'),
-    name='document_version_view'
+    name='document_file_view'
 )
 permission_document_new_file = namespace.add_permission(
     label=_('Create new document files'), name='document_new_version'
@@ -64,4 +64,9 @@ permission_document_type_edit = setup_namespace.add_permission(
 )
 permission_document_type_view = setup_namespace.add_permission(
     label=_('View document types'), name='document_type_view'
+)
+
+permission_document_version_view = namespace.add_permission(
+    label=_('View documents\' versions'),
+    name='document_version_view'
 )

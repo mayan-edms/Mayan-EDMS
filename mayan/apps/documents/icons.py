@@ -186,6 +186,25 @@ icon_document_type_filename_generator = Icon(
 icon_document_type_policies = Icon(driver_name='fontawesome', symbol='times')
 icon_document_type_setup = icon_document_type
 
+# Document version
+
+#icon_document_version_download = Icon(
+#    driver_name='fontawesome', symbol='download'
+#)
+icon_document_version_list = Icon(
+    driver_name='fontawesome', symbol='code-branch'
+)
+icon_document_version_return_document = icon_document_return
+icon_document_version_return_list = Icon(
+    driver_name='fontawesome', symbol='code-branch'
+)
+icon_document_version_view = Icon(
+    driver_name='fontawesome', symbol='eye'
+)
+#icon_document_version_revert = Icon(
+#    driver_name='fontawesome', symbol='undo'
+#)
+
 icon_duplicated_document_list = Icon(
     driver_name='fontawesome', symbol='clone'
 )
