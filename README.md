@@ -3,7 +3,7 @@ Instructions for running the CMU-313 Mayan.
 ```
 1. click "Use this template" and create a repository for your team
 2. git clone <your team repository>
-3. cd mayan-edms
+3. cd <name-of-your-team-repo>
 4. make docker-build
 5. MAYAN=`pwd` docker-compose -f docker/docker-compose.yml up
 ```
