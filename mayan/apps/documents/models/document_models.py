@@ -134,15 +134,17 @@ class Document(HooksMixin, models.Model):
         RecentDocument = apps.get_model(
             app_label='documents', model_name='RecentDocument'
         )
-        return RecentDocument.objects.add_document_for_user(user, self)
+        return RecentDocument.objects.add_document_for_user(
+            document=self, user=user
+        )
 
-    @property
-    def checksum(self):
-        return self.latest_file.checksum
+    #@property
+    #def checksum(self):
+    #    return self.latest_file.checksum
 
-    @property
-    def date_updated(self):
-        return self.latest_file.timestamp
+    #@property
+    #def date_updated(self):
+    #    return self.latest_file.timestamp
 
     def delete(self, *args, **kwargs):
         to_trash = kwargs.pop('to_trash', True)
@@ -159,26 +161,26 @@ class Document(HooksMixin, models.Model):
                 for document_file in self.files.all():
                     document_file.delete()
 
-                return super(Document, self).delete(*args, **kwargs)
+                return super().delete(*args, **kwargs)
 
-    def exists(self):
-        """
-        Returns a boolean value that indicates if the document's
-        latest file file exists in storage
-        """
-        latest_file = self.latest_file
-        if latest_file:
-            return latest_file.exists()
-        else:
-            return False
+    #def exists(self):
+    #    """
+    #    Returns a boolean value that indicates if the document's
+    #    latest file file exists in storage
+    #    """
+    #    latest_file = self.latest_file
+    #    if latest_file:
+    #        return latest_file.exists()
+    #    else:
+    #        return False
 
-    @property
-    def file_mime_encoding(self):
-        return self.latest_file.encoding
+    #@property
+    #def file_mime_encoding(self):
+    #    return self.latest_file.encoding
 
-    @property
-    def file_mimetype(self):
-        return self.latest_file.mimetype
+    #@property
+    #def file_mimetype(self):
+    #    return self.latest_file.mimetype
 
     def get_absolute_url(self):
         return reverse(
@@ -200,6 +202,10 @@ class Document(HooksMixin, models.Model):
     def latest_file(self):
         return self.files.order_by('timestamp').last()
 
+    @property
+    def latest_version(self):
+        return self.versions.order_by('timestamp').last()
+
     def natural_key(self):
         return (self.uuid,)
     natural_key.dependencies = ['documents.DocumentType']
@@ -211,19 +217,19 @@ class Document(HooksMixin, models.Model):
         )
 
         document_file = DocumentFile(
-            document=self, comment=comment or '', file=File(file_object)
+            document=self, comment=comment or '', file=File(file=file_object)
         )
         document_file.save(_user=_user)
 
         logger.info('New document file queued for document: %s', self)
         return document_file
 
-    def open(self, *args, **kwargs):
-        """
-        Return a file descriptor to a document's file irrespective of
-        the storage backend
-        """
-        return self.latest_file.open(*args, **kwargs)
+    #def open(self, *args, **kwargs):
+    #    """
+    #    Return a file descriptor to a document's file irrespective of
+    #    the storage backend
+    #    """
+    #    return self.latest_file.open(*args, **kwargs)
 
     @property
     def page_count(self):
@@ -235,23 +241,24 @@ class Document(HooksMixin, models.Model):
             return self.latest_file.pages
         except AttributeError:
             # Document has no file yet
-            DocumentPage = apps.get_model(
-                app_label='documents', model_name='DocumentPage'
+            DocumentFilePage = apps.get_model(
+                app_label='documents', model_name='DocumentFilePage'
             )
 
-            return DocumentPage.objects.none()
+            return File.objects.none()
 
+    #TODO: Merge with `pages` property.
     @property
     def pages_valid(self):
         try:
             return self.latest_file.pages_valid
         except AttributeError:
             # Document has no file yet
-            DocumentPage = apps.get_model(
-                app_label='documents', model_name='DocumentPage'
+            DocumentFilePage = apps.get_model(
+                app_label='documents', model_name='DocumentFilePage'
             )
 
-            return DocumentPage.objects.none()
+            return DocumentFilePage.objects.none()
 
     def restore(self):
         self.in_trash = False
@@ -282,8 +289,8 @@ class Document(HooksMixin, models.Model):
                 if _commit_events:
                     event_document_properties_edit.commit(actor=user, target=self)
 
-    def save_to_file(self, *args, **kwargs):
-        return self.latest_file.save_to_file(*args, **kwargs)
+    #def save_to_file(self, *args, **kwargs):
+    #    return self.latest_file.save_to_file(*args, **kwargs)
 
     def set_document_type(self, document_type, force=False, _user=None):
         has_changed = self.document_type != document_type
@@ -300,9 +307,9 @@ class Document(HooksMixin, models.Model):
                 if _user:
                     self.add_as_recent_document_for_user(user=_user)
 
-    @property
-    def size(self):
-        return self.latest_file.size
+    #@property
+    #def size(self):
+    #    return self.latest_file.size
 
 
 class TrashedDocument(Document):

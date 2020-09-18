@@ -63,7 +63,7 @@ class DefinedStorage(AppsModuleLoaderMixin):
     def get(cls, name):
         return cls._registry[name]
 
-    def __init__(self, dotted_path, label, name, kwargs, error_message=None):
+    def __init__(self, dotted_path, label, name, kwargs=None, error_message=None):
         self.dotted_path = dotted_path
         self.error_message = error_message
         self.label = label

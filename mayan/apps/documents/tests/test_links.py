@@ -6,7 +6,7 @@ from ..links.document_file_links import (
     link_document_file_download, link_document_file_revert
 )
 from ..links.document_file_page_links import (
-    link_document_page_disable, link_document_page_enable
+    link_document_file_page_disable, link_document_file_page_enable
 )
 from ..links.trashed_document_links import link_document_restore
 from ..models import DeletedDocument
@@ -87,42 +87,42 @@ class DocumentsLinksTestCase(GenericDocumentViewTestCase):
         )
 
 
-class DocumentPageLinkTestCase(GenericDocumentViewTestCase):
-    def test_document_page_disable_link_with_permission(self):
+class DocumentFilePageLinkTestCase(GenericDocumentViewTestCase):
+    def test_document_file_page_disable_link_with_permission(self):
         self.grant_access(
             obj=self.test_document, permission=permission_document_edit
         )
 
-        self.add_test_view(test_object=self.test_document_page)
+        self.add_test_view(test_object=self.test_document_file_page)
         context = self.get_test_view()
-        resolved_link = link_document_page_disable.resolve(context=context)
+        resolved_link = link_document_file_page_disable.resolve(context=context)
 
         self.assertNotEqual(resolved_link, None)
         self.assertEqual(
             resolved_link.url,
             reverse(
-                viewname=link_document_page_disable.view,
-                kwargs={'document_page_id': self.test_document_page.pk}
+                viewname=link_document_file_page_disable.view,
+                kwargs={'document_file_page_id': self.test_document_file_page.pk}
             )
         )
 
-    def test_document_page_enable_link_with_permission(self):
-        self.test_document_page.enabled = False
-        self.test_document_page.save()
+    def test_document_file_page_enable_link_with_permission(self):
+        self.test_document_file_page.enabled = False
+        self.test_document_file_page.save()
         self.grant_access(
             obj=self.test_document, permission=permission_document_edit
         )
 
-        self.add_test_view(test_object=self.test_document_page)
+        self.add_test_view(test_object=self.test_document_file_page)
         context = self.get_test_view()
-        resolved_link = link_document_page_enable.resolve(context=context)
+        resolved_link = link_document_file_page_enable.resolve(context=context)
 
         self.assertNotEqual(resolved_link, None)
         self.assertEqual(
             resolved_link.url,
             reverse(
-                viewname=link_document_page_enable.view,
-                kwargs={'document_page_id': self.test_document_page.pk}
+                viewname=link_document_file_page_enable.view,
+                kwargs={'document_file_page_id': self.test_document_file_page.pk}
             )
         )
 

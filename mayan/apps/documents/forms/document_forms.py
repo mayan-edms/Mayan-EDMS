@@ -158,28 +158,28 @@ class DocumentPropertiesForm(DetailForm):
 
         if document.latest_file:
             extra_fields += (
-                {
-                    'label': _('File mimetype'),
-                    'field': lambda x: document.file_mimetype or _('None')
-                },
-                {
-                    'label': _('File encoding'),
-                    'field': lambda x: document.file_mime_encoding or _(
-                        'None'
-                    )
-                },
-                {
-                    'label': _('File size'),
-                    'field': lambda document: filesizeformat(
-                        document.size
-                    ) if document.size else '-'
-                },
-                {'label': _('Exists in storage'), 'field': 'exists'},
-                {
-                    'label': _('File path in storage'),
-                    'field': 'latest_file.file'
-                },
-                {'label': _('Checksum'), 'field': 'checksum'},
+                #{
+                #    'label': _('File mimetype'),
+                #    'field': lambda x: document.file_mimetype or _('None')
+                #},
+                #{
+                #    'label': _('File encoding'),
+                #    'field': lambda x: document.file_mime_encoding or _(
+                #        'None'
+                #    )
+                #},
+                #{
+                #    'label': _('File size'),
+                #    'field': lambda document: filesizeformat(
+                #        document.size
+                #    ) if document.size else '-'
+                #},
+                #{'label': _('Exists in storage'), 'field': 'exists'},
+                #{
+                #    'label': _('File path in storage'),
+                #    'field': 'latest_file.file'
+                #},
+                #{'label': _('Checksum'), 'field': 'checksum'},
                 {'label': _('Pages'), 'field': 'page_count'},
             )
 

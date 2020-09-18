@@ -34,7 +34,7 @@ icon_document_edit = Icon(
 )
 icon_document = Icon(driver_name='fontawesome', symbol='book')
 icon_document_list = icon_document
-icon_document_page_count_update = Icon(
+icon_document_file_page_count_update = Icon(
     driver_name='fontawesome', symbol='copy'
 )
 icon_document_preview = Icon(driver_name='fontawesome', symbol='eye')
@@ -105,46 +105,46 @@ icon_document_file_revert = Icon(
     driver_name='fontawesome', symbol='undo'
 )
 
-# Document pages
+# Document file pages
 
-icon_document_page_disable = Icon(
+icon_document_file_page_disable = Icon(
     driver_name='fontawesomecss', css_classes='far fa-eye-slash'
 )
-icon_document_page_enable = Icon(
+icon_document_file_page_enable = Icon(
     driver_name='fontawesomecss', css_classes='far fa-eye'
 )
-icon_document_page_navigation_first = Icon(
+icon_document_file_page_navigation_first = Icon(
     driver_name='fontawesome', symbol='step-backward'
 )
-icon_document_page_navigation_last = Icon(
+icon_document_file_page_navigation_last = Icon(
     driver_name='fontawesome', symbol='step-forward'
 )
-icon_document_page_navigation_next = Icon(
+icon_document_file_page_navigation_next = Icon(
     driver_name='fontawesome', symbol='arrow-right'
 )
-icon_document_page_navigation_previous = Icon(
+icon_document_file_page_navigation_previous = Icon(
     driver_name='fontawesome', symbol='arrow-left'
 )
-icon_document_page_return = icon_document_return
-icon_document_page_rotate_left = Icon(
+icon_document_file_page_return = icon_document_return
+icon_document_file_page_rotate_left = Icon(
     driver_name='fontawesome', symbol='undo'
 )
-icon_document_page_rotate_right = Icon(
+icon_document_file_page_rotate_right = Icon(
     driver_name='fontawesome', symbol='redo'
 )
-icon_document_page_view = Icon(
+icon_document_file_page_view = Icon(
     driver_name='fontawesome', symbol='image'
 )
-icon_document_page_view_reset = Icon(
+icon_document_file_page_view_reset = Icon(
     driver_name='fontawesome', symbol='sync'
 )
-icon_document_page_zoom_in = Icon(
+icon_document_file_page_zoom_in = Icon(
     driver_name='fontawesome', symbol='search-plus'
 )
-icon_document_page_zoom_out = Icon(
+icon_document_file_page_zoom_out = Icon(
     driver_name='fontawesome', symbol='search-minus'
 )
-icon_document_pages = Icon(driver_name='fontawesome', symbol='copy')
+icon_document_file_pages = Icon(driver_name='fontawesome', symbol='copy')
 
 # Document types
 

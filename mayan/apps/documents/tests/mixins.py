@@ -88,7 +88,7 @@ class DocumentFileAPIViewTestMixin:
 
     def _request_test_document_file_api_list_view(self):
         return self.get(
-            viewname='rest_api:document-file-list', kwargs={
+            viewname='rest_api:documentfile-list', kwargs={
                 'pk': self.test_document.pk
             }
         )
@@ -109,7 +109,7 @@ class DocumentFileAPIViewTestMixin:
 
         with open(file=TEST_DOCUMENT_PATH, mode='rb') as file_descriptor:
             return self.post(
-                viewname='rest_api:document-file-list', kwargs={
+                viewname='rest_api:documentfile-list', kwargs={
                     'pk': self.test_document.pk,
                 }, data={
                     'comment': '', 'file': file_descriptor,
@@ -149,8 +149,8 @@ class DocumentFileViewTestMixin:
         )
 
 
-class DocumentPageAPIViewTestMixin:
-    def _request_document_page_image(self):
+class DocumentFilePageAPIViewTestMixin:
+    def _request_document_file_page_image(self):
         page = self.test_document.pages.first()
         return self.get(
             viewname='rest_api:documentpage-image', kwargs={
@@ -160,80 +160,80 @@ class DocumentPageAPIViewTestMixin:
         )
 
 
-class DocumentPageDisableViewTestMixin:
-    def _disable_test_document_page(self):
-        self.test_document_page.enabled = False
-        self.test_document_page.save()
+class DocumentFilePageDisableViewTestMixin:
+    def _disable_test_document_file_page(self):
+        self.test_document_file_page.enabled = False
+        self.test_document_file_page.save()
 
-    def _request_test_document_page_disable_view(self):
+    def _request_test_document_file_page_disable_view(self):
         return self.post(
-            viewname='documents:document_page_disable', kwargs={
-                'document_page_id': self.test_document_page.pk
+            viewname='documents:document_file_page_disable', kwargs={
+                'document_file_page_id': self.test_document_file_page.pk
             }
         )
 
-    def _request_test_document_page_enable_view(self):
+    def _request_test_document_file_page_enable_view(self):
         return self.post(
-            viewname='documents:document_page_enable', kwargs={
-                'document_page_id': self.test_document_page.pk
+            viewname='documents:document_file_page_enable', kwargs={
+                'document_file_page_id': self.test_document_file_page.pk
             }
         )
 
-    def _request_test_document_page_multiple_disable_view(self):
+    def _request_test_document_file_page_multiple_disable_view(self):
         return self.post(
-            viewname='documents:document_page_multiple_disable', data={
-                'id_list': self.test_document_page.pk
+            viewname='documents:document_file_page_multiple_disable', data={
+                'id_list': self.test_document_file_page.pk
             }
         )
 
-    def _request_test_document_page_multiple_enable_view(self):
+    def _request_test_document_file_page_multiple_enable_view(self):
         return self.post(
-            viewname='documents:document_page_multiple_enable', data={
-                'id_list': self.test_document_page.pk
+            viewname='documents:document_file_page_multiple_enable', data={
+                'id_list': self.test_document_file_page.pk
             }
         )
 
 
-class DocumentPageViewTestMixin:
-    def _request_test_document_page_list_view(self):
+class DocumentFilePageViewTestMixin:
+    def _request_test_document_file_page_list_view(self):
         return self.get(
-            viewname='documents:document_pages', kwargs={
+            viewname='documents:document_file_pages', kwargs={
                 'document_id': self.test_document.pk
             }
         )
 
-    def _request_test_document_page_rotate_left_view(self):
+    def _request_test_document_file_page_rotate_left_view(self):
         return self.post(
-            viewname='documents:document_page_rotate_left', kwargs={
-                'document_page_id': self.test_document_page.pk
+            viewname='documents:document_file_page_rotate_left', kwargs={
+                'document_file_page_id': self.test_document_file_page.pk
             }
         )
 
-    def _request_test_document_page_rotate_right_view(self):
+    def _request_test_document_file_page_rotate_right_view(self):
         return self.post(
-            viewname='documents:document_page_rotate_right', kwargs={
-                'document_page_id': self.test_document_page.pk
+            viewname='documents:document_file_page_rotate_right', kwargs={
+                'document_file_page_id': self.test_document_file_page.pk
             }
         )
 
-    def _request_test_document_page_view(self, document_page):
+    def _request_test_document_file_page_view(self, document_file_page):
         return self.get(
-            viewname='documents:document_page_view', kwargs={
-                'document_page_id': document_page.pk,
+            viewname='documents:document_file_page_view', kwargs={
+                'document_file_page_id': document_file_page.pk,
             }
         )
 
-    def _request_test_document_page_zoom_in_view(self):
+    def _request_test_document_file_page_zoom_in_view(self):
         return self.post(
-            viewname='documents:document_page_zoom_in', kwargs={
-                'document_page_id': self.test_document_page.pk
+            viewname='documents:document_file_page_zoom_in', kwargs={
+                'document_file_page_id': self.test_document_file_page.pk
             }
         )
 
-    def _request_test_document_page_zoom_out_view(self):
+    def _request_test_document_file_page_zoom_out_view(self):
         return self.post(
-            viewname='documents:document_page_zoom_out', kwargs={
-                'document_page_id': self.test_document_page.pk
+            viewname='documents:document_file_page_zoom_out', kwargs={
+                'document_file_page_id': self.test_document_file_page.pk
             }
         )
 
@@ -326,7 +326,7 @@ class DocumentTestMixin:
 
         self.test_document = document
         self.test_documents.append(document)
-        self.test_document_page = document.latest_file.pages.first()
+        self.test_document_file_page = document.latest_file.pages.first()
         self.test_document_file = document.latest_file
 
 

@@ -1,15 +1,17 @@
 from django import forms
 
-from .widgets import DocumentPagesCarouselWidget, DocumentPageImageWidget
+from .widgets import (
+    DocumentFilePagesCarouselWidget, DocumentFilePageImageWidget
+)
 
 
 class DocumentField(forms.fields.Field):
-    widget = DocumentPagesCarouselWidget
+    widget = DocumentFilePagesCarouselWidget
 
 
 class DocumentFileField(forms.fields.Field):
-    widget = DocumentPagesCarouselWidget
+    widget = DocumentFilePagesCarouselWidget
 
 
-class DocumentPageField(forms.fields.Field):
-    widget = DocumentPageImageWidget
+class DocumentFilePageField(forms.fields.Field):
+    widget = DocumentFilePageImageWidget

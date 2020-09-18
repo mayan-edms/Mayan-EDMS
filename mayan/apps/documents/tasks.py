@@ -68,11 +68,11 @@ def task_delete_stubs():
     bind=True,
     default_retry_delay=setting_task_generate_document_page_image_retry_delay.value
 )
-def task_generate_document_page_image(
-    self, document_page_id, user_id=None, **kwargs
+def task_generate_document_file_page_image(
+    self, document_file_page_id, user_id=None, **kwargs
 ):
-    DocumentPage = apps.get_model(
-        app_label='documents', model_name='DocumentPage'
+    DocumentFilePage = apps.get_model(
+        app_label='documents', model_name='DocumentFilePage'
     )
     User = get_user_model()
 
@@ -81,14 +81,14 @@ def task_generate_document_page_image(
     else:
         user = None
 
-    document_page = DocumentPage.objects.get(pk=document_page_id)
+    document_file_page = DocumentFilePage.objects.get(pk=document_file_page_id)
     try:
-        return document_page.generate_image(user=user, **kwargs)
+        return document_file_page.generate_image(user=user, **kwargs)
     except LockError as exception:
         logger.warning(
             'LockError during attempt to generate document page image for '
             'document id: %d, document page id: %d. Retrying.',
-            document_page.pk, document_page.document.pk
+            document_file_page.pk, document_file_page.document.pk
         )
         raise self.retry(exc=exception)
 

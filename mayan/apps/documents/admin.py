@@ -1,13 +1,13 @@
 from django.contrib import admin
 
 from .models import (
-    DeletedDocument, Document, DocumentFile, DocumentPage, DocumentType,
+    DeletedDocument, Document, DocumentFile, DocumentFilePage, DocumentType,
     DocumentTypeFilename, DuplicatedDocument, RecentDocument
 )
 
 
-class DocumentPageInline(admin.StackedInline):
-    model = DocumentPage
+class DocumentFilePageInline(admin.StackedInline):
+    model = DocumentFilePage
     extra = 1
     classes = ('collapse-open',)
     allow_add = True

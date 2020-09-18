@@ -22,7 +22,7 @@ from .literals import (
     TEST_SMALL_DOCUMENT_FILENAME
 )
 from .mixins import (
-    DocumentAPIViewTestMixin, DocumentPageAPIViewTestMixin, DocumentTestMixin,
+    DocumentAPIViewTestMixin, DocumentFilePageAPIViewTestMixin, DocumentTestMixin,
     DocumentTypeAPIViewTestMixin, DocumentFileAPIViewTestMixin,
     DocumentFileTestMixin, TrashedDocumentAPIViewTestMixin
 )
@@ -433,19 +433,19 @@ class DocumentTypeAPIViewTestCase(
         )
 
 
-class DocumentPageAPIViewTestCase(
-    DocumentPageAPIViewTestMixin, DocumentTestMixin, BaseAPITestCase
+class DocumentFilePageAPIViewTestCase(
+    DocumentFilePageAPIViewTestMixin, DocumentTestMixin, BaseAPITestCase
 ):
-    def test_document_page_api_image_view_no_permission(self):
-        response = self._request_document_page_image()
+    def test_document_file_page_api_image_view_no_permission(self):
+        response = self._request_document_file_page_image()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
-    def test_document_page_api_image_view_with_access(self):
+    def test_document_file_page_api_image_view_with_access(self):
         self.grant_access(
             obj=self.test_document, permission=permission_document_view
         )
 
-        response = self._request_document_page_image()
+        response = self._request_document_file_page_image()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
 

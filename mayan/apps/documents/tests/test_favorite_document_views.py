@@ -8,7 +8,6 @@ from .mixins import FavoriteDocumentsTestMixin
 class FavoriteDocumentsTestCase(
     FavoriteDocumentsTestMixin, GenericDocumentViewTestCase
 ):
-
     def test_document_add_to_favorites_view_no_permission(self):
         response = self._request_document_add_to_favorites_view()
         self.assertEqual(response.status_code, 404)

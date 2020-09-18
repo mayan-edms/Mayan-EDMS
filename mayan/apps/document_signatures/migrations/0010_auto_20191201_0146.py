@@ -8,7 +8,6 @@ class Migration(migrations.Migration):
     dependencies = [
         ('document_signatures', '0009_auto_20190711_0544'),
     ]
-
     operations = [
         migrations.AlterModelOptions(
             name='signaturebasemodel',
@@ -37,4 +36,7 @@ class Migration(migrations.Migration):
                 'document.', max_length=40, verbose_name='Key ID'
             ),
         ),
+    ]
+    run_before = [
+        ('documents', '0056_auto_20200916_0959'),
     ]

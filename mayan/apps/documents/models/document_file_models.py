@@ -33,7 +33,7 @@ from .document_models import Document
 __all__ = ('DocumentFile',)
 logger = logging.getLogger(name=__name__)
 
-
+#TODO: convert to static methods
 # document image cache name hash function
 def hash_function():
     return hashlib.sha256()
@@ -117,6 +117,9 @@ class DocumentFile(models.Model):
     @classmethod
     def _execute_hooks(cls, hook_list, instance, **kwargs):
         result = None
+        #{
+        #    'file_object': instance.open(raw=True)
+        #}
 
         for hook in hook_list:
             result = hook(document_file=instance, **kwargs)
@@ -304,7 +307,10 @@ class DocumentFile(models.Model):
                 instance=self, file_object=file_object
             )
 
-            return result['file_object']
+            if result:
+                return result['file_object']
+            else:
+                return file_object
 
     @property
     def page_count(self):
@@ -315,18 +321,18 @@ class DocumentFile(models.Model):
 
     @property
     def pages(self):
-        DocumentPage = apps.get_model(
-            app_label='documents', model_name='DocumentPage'
+        DocumentFilePage = apps.get_model(
+            app_label='documents', model_name='DocumentFilePage'
         )
-        queryset = ModelQueryFields.get(model=DocumentPage).get_queryset()
+        queryset = ModelQueryFields.get(model=DocumentFilePage).get_queryset()
         return queryset.filter(pk__in=self.file_pages.all())
 
     @property
     def pages_valid(self):
-        DocumentPage = apps.get_model(
-            app_label='documents', model_name='DocumentPage'
+        DocumentFilePage = apps.get_model(
+            app_label='documents', model_name='DocumentFilePage'
         )
-        return self.pages.filter(pk__in=DocumentPage.valid.filter(document_file=self))
+        return self.pages.filter(pk__in=DocumentFilePage.valid.filter(document_file=self))
 
     def revert(self, _user=None):
         """
@@ -483,15 +489,15 @@ class DocumentFile(models.Model):
             # use 1 as the total page count
             pass
         else:
-            DocumentPage = apps.get_model(
-                app_label='documents', model_name='DocumentPage'
+            DocumentFilePage = apps.get_model(
+                app_label='documents', model_name='DocumentFilePage'
             )
 
             with transaction.atomic():
                 self.pages.all().delete()
 
                 for page_number in range(detected_pages):
-                    DocumentPage.objects.create(
+                    DocumentFilePage.objects.create(
                         document_file=self, page_number=page_number + 1
                     )
 

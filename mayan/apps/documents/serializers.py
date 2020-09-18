@@ -6,21 +6,21 @@ from rest_framework.reverse import reverse
 from mayan.apps.storage.models import SharedUploadedFile
 
 from .models import (
-    Document, DocumentFile, DocumentPage, DocumentType,
+    Document, DocumentFile, DocumentFilePage, DocumentType,
     DocumentTypeFilename, RecentDocument
 )
 from .settings import setting_language
 from .tasks import task_upload_new_file
 
 
-class DocumentPageSerializer(serializers.HyperlinkedModelSerializer):
+class DocumentFilePageSerializer(serializers.HyperlinkedModelSerializer):
     document_file_url = serializers.SerializerMethodField()
     image_url = serializers.SerializerMethodField()
     url = serializers.SerializerMethodField()
 
     class Meta:
         fields = ('document_file_url', 'image_url', 'page_number', 'url')
-        model = DocumentPage
+        model = DocumentFilePage
 
     def get_document_file_url(self, instance):
         return reverse(
@@ -31,7 +31,7 @@ class DocumentPageSerializer(serializers.HyperlinkedModelSerializer):
 
     def get_image_url(self, instance):
         return reverse(
-            viewname='rest_api:documentpage-image', args=(
+            viewname='rest_api:documentfilepage-image', args=(
                 instance.document_file.document_id, instance.document_file_id,
                 instance.pk,
             ), request=self.context['request'], format=self.context['format']
@@ -39,7 +39,7 @@ class DocumentPageSerializer(serializers.HyperlinkedModelSerializer):
 
     def get_url(self, instance):
         return reverse(
-            viewname='rest_api:documentpage-detail', args=(
+            viewname='rest_api:documentfilepage-detail', args=(
                 instance.document_file.document_id, instance.document_file_id,
                 instance.pk,
             ), request=self.context['request'], format=self.context['format']
@@ -133,7 +133,7 @@ class DocumentFileSerializer(serializers.HyperlinkedModelSerializer):
 
     def get_pages_url(self, instance):
         return reverse(
-            viewname='rest_api:documentfile-page-list', args=(
+            viewname='rest_api:documentfilepage-list', args=(
                 instance.document_id, instance.pk,
             ), request=self.context['request'], format=self.context['format']
         )
@@ -179,7 +179,7 @@ class WritableDocumentFileSerializer(serializers.ModelSerializer):
 
     def get_pages_url(self, instance):
         return reverse(
-            viewname='rest_api:documentfile-page-list', args=(
+            viewname='rest_api:documentfilepage-list', args=(
                 instance.document_id, instance.pk,
             ), request=self.context['request'], format=self.context['format']
         )
@@ -241,7 +241,7 @@ class DocumentSerializer(serializers.HyperlinkedModelSerializer):
     )
     latest_file = DocumentFileSerializer(many=False, read_only=True)
     files_url = serializers.HyperlinkedIdentityField(
-        view_name='rest_api:document-file-list',
+        view_name='rest_api:documentfile-list',
     )
 
     class Meta:
@@ -272,7 +272,7 @@ class WritableDocumentSerializer(serializers.ModelSerializer):
     document_type = DocumentTypeSerializer(read_only=True)
     latest_file = DocumentFileSerializer(many=False, read_only=True)
     files = serializers.HyperlinkedIdentityField(
-        view_name='rest_api:document-file-list',
+        view_name='rest_api:documentfile-list',
     )
     url = serializers.HyperlinkedIdentityField(
         view_name='rest_api:document-detail',

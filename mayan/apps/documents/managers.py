@@ -38,7 +38,7 @@ class DocumentFileManager(models.Manager):
         return self.get(document__pk=document.pk, checksum=checksum)
 
 
-class DocumentPageManager(models.Manager):
+class DocumentFilePageManager(models.Manager):
     def get_by_natural_key(self, page_number, document_file_natural_key):
         DocumentFile = apps.get_model(
             app_label='documents', model_name='DocumentFile'
@@ -173,6 +173,10 @@ class DuplicatedDocumentManager(models.Manager):
 
         # Get the documents whose latest file matches the checksum
         # of the current document and exclude the current document
+
+        ###DISABLED
+        ##TODO: redefine what is a duplicate
+        """
         duplicates = Document.objects.annotate(
             max_timestamp=Max('files__timestamp')
         ).filter(
@@ -189,7 +193,7 @@ class DuplicatedDocumentManager(models.Manager):
         if scan_children:
             for document in duplicates:
                 self.scan_for(document=document, scan_children=False)
-
+        """
 
 class FavoriteDocumentManager(models.Manager):
     def add_for_user(self, user, document):
@@ -296,7 +300,7 @@ class ValidDocumentManager(models.Manager):
         )
 
 
-class ValidDocumentPageManager(models.Manager):
+class ValidDocumentFilePageManager(models.Manager):
     def get_queryset(self):
         return models.QuerySet(
             model=self.model, using=self._db

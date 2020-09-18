@@ -32,7 +32,7 @@ from mayan.apps.rest_api.fields import DynamicSerializerField
 from mayan.apps.views.html_widgets import TwoStateWidget
 
 from .dashboard_widgets import (
-    DashboardWidgetDocumentPagesTotal, DashboardWidgetDocumentsInTrash,
+    DashboardWidgetDocumentFilePagesTotal, DashboardWidgetDocumentsInTrash,
     DashboardWidgetDocumentsNewThisMonth,
     DashboardWidgetDocumentsPagesNewThisMonth, DashboardWidgetDocumentsTotal,
     DashboardWidgetDocumentsTypesTotal,
@@ -73,15 +73,15 @@ from .links.document_type_links import (
     link_document_type_setup
 )
 from .links.document_file_page_links import (
-    link_document_multiple_update_page_count, link_document_page_disable,
-    link_document_page_enable, link_document_page_multiple_enable,
-    link_document_page_multiple_disable, link_document_page_navigation_first,
-    link_document_page_navigation_last, link_document_page_navigation_next,
-    link_document_page_navigation_previous, link_document_page_return,
-    link_document_page_rotate_left, link_document_page_rotate_right,
-    link_document_page_view, link_document_page_view_reset,
-    link_document_page_zoom_in, link_document_page_zoom_out,
-    link_document_pages, link_document_update_page_count
+    link_document_multiple_update_page_count, link_document_file_page_disable,
+    link_document_file_page_enable, link_document_file_page_multiple_enable,
+    link_document_file_page_multiple_disable, link_document_file_page_navigation_first,
+    link_document_file_page_navigation_last, link_document_file_page_navigation_next,
+    link_document_file_page_navigation_previous, link_document_file_page_return,
+    link_document_file_page_rotate_left, link_document_file_page_rotate_right,
+    link_document_file_page_view, link_document_file_page_view_reset,
+    link_document_file_page_zoom_in, link_document_file_page_zoom_out,
+    link_document_file_pages, link_document_update_page_count
 )
 from .links.duplicated_document_links import (
     link_document_duplicates_list, link_duplicated_document_list,
@@ -113,12 +113,12 @@ from .permissions import (
 from .signals import signal_post_file_upload
 from .statistics import *  # NOQA
 from .widgets import (
-    DocumentPageThumbnailWidget, widget_document_page_number,
-    widget_document_file_page_number
+    DocumentFilePageThumbnailWidget, widget_document_file_page_number,
+    widget_document_page_number
 )
 
 
-def is_document_page_enabled(context):
+def is_document_file_page_enabled(context):
     return context['object'].enabled
 
 
@@ -136,8 +136,8 @@ class DocumentsApp(MayanAppConfig):
         DeletedDocument = self.get_model(model_name='DeletedDocument')
         Document = self.get_model(model_name='Document')
         DocumentFile = self.get_model(model_name='DocumentFile')
-        DocumentPage = self.get_model(model_name='DocumentPage')
-        DocumentPageResult = self.get_model(model_name='DocumentPageResult')
+        DocumentFilePage = self.get_model(model_name='DocumentFilePage')
+        DocumentFilePageResult = self.get_model(model_name='DocumentFilePageResult')
         DocumentType = self.get_model(model_name='DocumentType')
         DocumentTypeFilename = self.get_model(model_name='DocumentTypeFilename')
         DuplicatedDocument = self.get_model(model_name='DuplicatedDocument')
@@ -230,11 +230,11 @@ class DocumentsApp(MayanAppConfig):
         )
 
         ModelField(
-            model=DocumentPage, label=_('Document file'),
+            model=DocumentFilePage, label=_('Document file'),
             name='document_file'
         )
         ModelField(
-            model=DocumentPage, label=_('Page number'), name='page_number'
+            model=DocumentFilePage, label=_('Page number'), name='page_number'
         )
 
         ModelProperty(
@@ -243,7 +243,7 @@ class DocumentsApp(MayanAppConfig):
         )
         ModelProperty(
             description=_('Return the document instance.'),
-            model=DocumentPage, label=_('Document'), name='document'
+            model=DocumentFilePage, label=_('Document'), name='document'
         )
 
         ModelPermission.register(
@@ -274,10 +274,10 @@ class DocumentsApp(MayanAppConfig):
             model=Document, related='document_type',
         )
         ModelPermission.register_inheritance(
-            model=DocumentPage, related='document_file__document',
+            model=DocumentFilePage, related='document_file__document',
         )
         ModelPermission.register_inheritance(
-            model=DocumentPageResult, related='document_file__document',
+            model=DocumentFilePageResult, related='document_file__document',
         )
         ModelPermission.register_inheritance(
             model=DocumentTypeFilename, related='document_type',
@@ -295,11 +295,11 @@ class DocumentsApp(MayanAppConfig):
         model_query_fields_document_file.add_prefetch_related_field(field_name='file_pages')
         model_query_fields_document_file.add_select_related_field(field_name='document')
 
-        model_query_fields_document_page = ModelQueryFields(model=DocumentPage)
-        model_query_fields_document_page.add_select_related_field(field_name='document_file')
+        model_query_fields_document_file_page = ModelQueryFields(model=DocumentFilePage)
+        model_query_fields_document_file_page.add_select_related_field(field_name='document_file')
 
         # Document and document page thumbnail widget
-        document_page_thumbnail_widget = DocumentPageThumbnailWidget()
+        document_file_page_thumbnail_widget = DocumentFilePageThumbnailWidget()
 
         # Document
         SourceColumn(
@@ -307,7 +307,7 @@ class DocumentsApp(MayanAppConfig):
             is_sortable=True, source=Document
         )
         SourceColumn(
-            func=lambda context: document_page_thumbnail_widget.render(
+            func=lambda context: document_file_page_thumbnail_widget.render(
                 instance=context['object']
             ), html_extra_classes='text-center document-thumbnail-list',
             label=_('Thumbnail'), source=Document
@@ -331,39 +331,39 @@ class DocumentsApp(MayanAppConfig):
             source=Document, views=('documents:duplicated_document_list',)
         )
 
-        # DocumentPage
+        # DocumentFilePage
         SourceColumn(
             attribute='get_label', is_identifier=True,
-            is_object_absolute_url=True, source=DocumentPage,
-            widget_condition=is_document_page_enabled
+            is_object_absolute_url=True, source=DocumentFilePage,
+            widget_condition=is_document_file_page_enabled
         )
         SourceColumn(
-            func=lambda context: document_page_thumbnail_widget.render(
+            func=lambda context: document_file_page_thumbnail_widget.render(
                 instance=context['object']
             ), html_extra_classes='text-center document-thumbnail-list',
-            label=_('Thumbnail'), source=DocumentPage
+            label=_('Thumbnail'), source=DocumentFilePage
         )
         SourceColumn(
-            attribute='enabled', include_label=True, source=DocumentPage,
+            attribute='enabled', include_label=True, source=DocumentFilePage,
             widget=TwoStateWidget
         )
         SourceColumn(
-            attribute='page_number', include_label=True, source=DocumentPage
+            attribute='page_number', include_label=True, source=DocumentFilePage
         )
 
         SourceColumn(
             attribute='get_label', is_identifier=True,
-            is_object_absolute_url=True, source=DocumentPageResult
+            is_object_absolute_url=True, source=DocumentFilePageResult
         )
         SourceColumn(
-            func=lambda context: document_page_thumbnail_widget.render(
+            func=lambda context: document_file_page_thumbnail_widget.render(
                 instance=context['object']
             ), html_extra_classes='text-center document-thumbnail-list',
-            label=_('Thumbnail'), source=DocumentPageResult
+            label=_('Thumbnail'), source=DocumentFilePageResult
         )
         SourceColumn(
             attribute='document_file.document.document_type',
-            label=_('Type'), source=DocumentPageResult
+            label=_('Type'), source=DocumentFilePageResult
         )
 
         # DocumentType
@@ -403,7 +403,7 @@ class DocumentsApp(MayanAppConfig):
             is_object_absolute_url=True
         )
         SourceColumn(
-            func=lambda context: document_page_thumbnail_widget.render(
+            func=lambda context: document_file_page_thumbnail_widget.render(
                 instance=context['object']
             ), html_extra_classes='text-center document-thumbnail-list',
             label=_('Thumbnail'), source=DocumentFile
@@ -432,7 +432,7 @@ class DocumentsApp(MayanAppConfig):
             widget=DashboardWidgetDocumentsTotal, order=0
         )
         dashboard_main.add_widget(
-            widget=DashboardWidgetDocumentPagesTotal, order=1
+            widget=DashboardWidgetDocumentFilePagesTotal, order=1
         )
         dashboard_main.add_widget(
             widget=DashboardWidgetDocumentsInTrash, order=2
@@ -541,7 +541,7 @@ class DocumentsApp(MayanAppConfig):
                 link_document_file_list,
             ), sources=(Document,), position=2
         )
-        menu_facet.bind_links(links=(link_document_pages,), sources=(Document,))
+        menu_facet.bind_links(links=(link_document_file_pages,), sources=(Document,))
 
         # Document actions
         menu_object.bind_links(
@@ -562,45 +562,45 @@ class DocumentsApp(MayanAppConfig):
         )
 
         # Document pages
-        menu_facet.add_unsorted_source(source=DocumentPage)
+        menu_facet.add_unsorted_source(source=DocumentFilePage)
         menu_facet.bind_links(
             links=(
-                link_document_page_rotate_left,
-                link_document_page_rotate_right, link_document_page_zoom_in,
-                link_document_page_zoom_out, link_document_page_view_reset
-            ), sources=('documents:document_page_view',)
+                link_document_file_page_rotate_left,
+                link_document_file_page_rotate_right, link_document_file_page_zoom_in,
+                link_document_file_page_zoom_out, link_document_file_page_view_reset
+            ), sources=('documents:document_file_page_view',)
         )
         menu_facet.bind_links(
-            links=(link_document_page_view,),
-            sources=(DocumentPage,)
+            links=(link_document_file_page_view,),
+            sources=(DocumentFilePage,)
         )
         menu_facet.bind_links(
             links=(
-                link_document_page_navigation_first,
-                link_document_page_navigation_previous,
-                link_document_page_navigation_next,
-                link_document_page_navigation_last
-            ), sources=(DocumentPage,)
+                link_document_file_page_navigation_first,
+                link_document_file_page_navigation_previous,
+                link_document_file_page_navigation_next,
+                link_document_file_page_navigation_last
+            ), sources=(DocumentFilePage,)
         )
         menu_list_facet.bind_links(
-            links=(link_decorations_list,), sources=(DocumentPage,)
+            links=(link_decorations_list,), sources=(DocumentFilePage,)
         )
         menu_list_facet.bind_links(
-            links=(link_transformation_list,), sources=(DocumentPage,)
+            links=(link_transformation_list,), sources=(DocumentFilePage,)
         )
         menu_multi_item.bind_links(
             links=(
-                link_document_page_multiple_disable,
-                link_document_page_multiple_enable
-            ), sources=(DocumentPage,)
+                link_document_file_page_multiple_disable,
+                link_document_file_page_multiple_enable
+            ), sources=(DocumentFilePage,)
         )
         menu_object.bind_links(
-            links=(link_document_page_disable, link_document_page_enable),
-            sources=(DocumentPage,)
+            links=(link_document_file_page_disable, link_document_file_page_enable),
+            sources=(DocumentFilePage,)
         )
         menu_related.bind_links(
-            links=(link_document_page_return,),
-            sources=(DocumentPage,)
+            links=(link_document_file_page_return,),
+            sources=(DocumentFilePage,)
         )
 
         # Document files

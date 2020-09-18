@@ -9,8 +9,8 @@ from .settings import (
 )
 
 
-class DocumentPageImageWidget(forms.widgets.Widget):
-    template_name = 'documents/forms/widgets/document_page_image_interactive.html'
+class DocumentFilePageImageWidget(forms.widgets.Widget):
+    template_name = 'documents/forms/widgets/document_file_page_image_interactive.html'
 
     def __init__(self, attrs=None):
         default_attrs = {
@@ -21,7 +21,7 @@ class DocumentPageImageWidget(forms.widgets.Widget):
         }
         if attrs:
             default_attrs.update(attrs)
-        super(DocumentPageImageWidget, self).__init__(default_attrs)
+        super(DocumentFilePageImageWidget, self).__init__(default_attrs)
 
     def format_value(self, value):
         if value == '' or value is None:
@@ -29,11 +29,11 @@ class DocumentPageImageWidget(forms.widgets.Widget):
         return value
 
 
-class DocumentPagesCarouselWidget(forms.widgets.Widget):
+class DocumentFilePagesCarouselWidget(forms.widgets.Widget):
     """
     Display many small representations of a document's pages
     """
-    template_name = 'documents/forms/widgets/document_page_carousel.html'
+    template_name = 'documents/forms/widgets/document_file_page_carousel.html'
 
     def __init__(self, attrs=None):
         default_attrs = {
@@ -44,7 +44,7 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
         if attrs:
             default_attrs.update(attrs)
 
-        super(DocumentPagesCarouselWidget, self).__init__(default_attrs)
+        super(DocumentFilePagesCarouselWidget, self).__init__(default_attrs)
 
     def format_value(self, value):
         if value == '' or value is None:
@@ -52,7 +52,7 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
         return value
 
 
-class DocumentPageThumbnailWidget:
+class DocumentFilePageThumbnailWidget:
     def render(self, instance):
         return render_to_string(
             template_name='documents/widgets/document_thumbnail.html',
@@ -77,7 +77,6 @@ def document_link(document):
 
 def widget_document_file_page_number(document_file):
     return mark_safe(s=_('Pages: %d') % document_file.pages_valid.count())
-
 
 def widget_document_page_number(document):
     return mark_safe(s=_('Pages: %d') % document.pages_valid.count())

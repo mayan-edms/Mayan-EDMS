@@ -18,7 +18,7 @@ from mayan.apps.converter.transformations import (
 )
 from mayan.apps.lock_manager.backends.base import LockingBackend
 
-from ..managers import DocumentPageManager, ValidDocumentPageManager
+from ..managers import DocumentFilePageManager, ValidDocumentFilePageManager
 from ..settings import (
     setting_display_width, setting_display_height, setting_zoom_max_level,
     setting_zoom_min_level
@@ -26,11 +26,11 @@ from ..settings import (
 
 from .document_file_models import DocumentFile
 
-__all__ = ('DocumentPage', 'DocumentPageResult')
+__all__ = ('DocumentFilePage', 'DocumentFilePageResult')
 logger = logging.getLogger(name=__name__)
 
 
-class DocumentPage(models.Model):
+class DocumentFilePage(models.Model):
     """
     Model that describes a document file page
     """
@@ -44,13 +44,13 @@ class DocumentPage(models.Model):
         verbose_name=_('Page number')
     )
 
-    objects = DocumentPageManager()
-    valid = ValidDocumentPageManager()
+    objects = DocumentFilePageManager()
+    valid = ValidDocumentFilePageManager()
 
     class Meta:
         ordering = ('page_number',)
-        verbose_name = _('Document page')
-        verbose_name_plural = _('Document pages')
+        verbose_name = _('Document file page')
+        verbose_name_plural = _('Document file pages')
 
     def __str__(self):
         return self.get_label()
@@ -64,7 +64,7 @@ class DocumentPage(models.Model):
 
     def delete(self, *args, **kwargs):
         self.cache_partition.delete()
-        super(DocumentPage, self).delete(*args, **kwargs)
+        super().delete(*args, **kwargs)
 
     def detect_orientation(self):
         with self.document_file.open() as file_object:
@@ -89,7 +89,7 @@ class DocumentPage(models.Model):
 
         try:
             lock = LockingBackend.get_instance().acquire_lock(
-                name='document_page_generate_image_{}_{}'.format(
+                name='document_file_page_generate_image_{}_{}'.format(
                     self.pk, combined_cache_filename
                 )
             )
@@ -116,8 +116,8 @@ class DocumentPage(models.Model):
 
     def get_absolute_url(self):
         return reverse(
-            viewname='documents:document_page_view', kwargs={
-                'document_page_id': self.pk
+            viewname='documents:document_file_page_view', kwargs={
+                'document_file_page_id': self.pk
             }
         )
 
@@ -139,9 +139,9 @@ class DocumentPage(models.Model):
         final_url = furl()
         final_url.args = kwargs
         final_url.path = reverse(
-            viewname='rest_api:documentpage-image', kwargs={
-                'pk': self.document_file.document_id, 'file_pk': self.document_file_id,
-                'page_pk': self.pk
+            viewname='rest_api:documentfilepage-image', kwargs={
+                'pk': self.document_file.document_id,
+                'file_pk': self.document_file_id, 'page_pk': self.pk
             }
         )
         final_url.args['_hash'] = transformations_hash
@@ -260,9 +260,9 @@ class DocumentPage(models.Model):
     def get_label(self):
         if getattr(self, 'document_file', None):
             return _(
-                'Page %(page_num)d out of %(total_pages)d of %(document)s'
+                'File page %(page_num)d out of %(total_pages)d of %(document_file)s'
             ) % {
-                'document': force_text(self.document),
+                'document_file': force_text(self.document_file),
                 'page_num': self.page_number,
                 'total_pages': self.document_file.pages.all().count()
             }
@@ -276,7 +276,7 @@ class DocumentPage(models.Model):
 
     @property
     def siblings(self):
-        return DocumentPage.valid.filter(
+        return DocumentFilePage.valid.filter(
             document_file=self.document_file
         )
 
@@ -289,9 +289,9 @@ class DocumentPage(models.Model):
         return '{}-{}'.format(self.document_file.uuid, self.pk)
 
 
-class DocumentPageResult(DocumentPage):
+class DocumentFilePageResult(DocumentFilePage):
     class Meta:
         ordering = ('document_file__document', 'page_number')
         proxy = True
-        verbose_name = _('Document page')
-        verbose_name_plural = _('Document pages')
+        verbose_name = _('Document file page')
+        verbose_name_plural = _('Document file pages')

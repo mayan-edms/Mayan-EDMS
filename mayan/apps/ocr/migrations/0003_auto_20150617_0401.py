@@ -20,9 +20,11 @@ class Migration(migrations.Migration):
     dependencies = [
         ('ocr', '0002_documentpagecontent'),
     ]
-
     operations = [
         migrations.RunPython(
             code=operation_move_content_from_documents_to_ocr_app
         ),
+    ]
+    run_before = [
+        ('documents', '0006_remove_documentpage_content_old'),
     ]

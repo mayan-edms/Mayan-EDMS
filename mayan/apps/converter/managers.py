@@ -47,16 +47,23 @@ class LayerTransformationManager(models.Manager):
             )
 
         for stored_layer in access_layers:
-            access_permission = stored_layer.get_layer().permissions.get(
-                'access_permission', None
-            )
-            if access_permission:
-                try:
-                    AccessControlList.objects.check_access(
-                        obj=obj, permissions=(access_permission,), user=user
-                    )
-                except PermissionDenied:
-                    access_layers = access_layers.exclude(pk=stored_layer.pk)
+            try:
+                layer_class = stored_layer.get_layer()
+            except KeyError:
+                """
+                This was a class defined but later erased. Ignore it.
+                """
+            else:
+                access_permission = layer_class.permissions.get(
+                    'access_permission', None
+                )
+                if access_permission:
+                    try:
+                        AccessControlList.objects.check_access(
+                            obj=obj, permissions=(access_permission,), user=user
+                        )
+                    except PermissionDenied:
+                        access_layers = access_layers.exclude(pk=stored_layer.pk)
 
         for stored_layer in exclude_layers:
             exclude_permission = stored_layer.get_layer().permissions.get(

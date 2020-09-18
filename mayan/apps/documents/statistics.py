@@ -41,12 +41,12 @@ def new_documents_per_month():
 
 
 def new_document_pages_per_month():
-    DocumentPage = apps.get_model(
-        app_label='documents', model_name='DocumentPage'
+    DocumentFilePage = apps.get_model(
+        app_label='documents', model_name='DocumentFilePage'
     )
 
     qss = qsstats.QuerySetStats(
-        DocumentPage.objects.all(), 'document_file__document__date_added'
+        DocumentFilePage.objects.all(), 'document_file__document__date_added'
     )
 
     now = timezone.now().date()
@@ -106,11 +106,11 @@ def new_document_pages_this_month(user=None):
     AccessControlList = apps.get_model(
         app_label='acls', model_name='AccessControlList'
     )
-    DocumentPage = apps.get_model(
-        app_label='documents', model_name='DocumentPage'
+    DocumentFilePage = apps.get_model(
+        app_label='documents', model_name='DocumentFilePage'
     )
 
-    queryset = DocumentPage.objects.all()
+    queryset = DocumentFilePage.objects.all()
 
     if user:
         queryset = AccessControlList.objects.restrict_queryset(
@@ -195,12 +195,12 @@ def total_document_file_per_month():
 
 
 def total_document_page_per_month():
-    DocumentPage = apps.get_model(
-        app_label='documents', model_name='DocumentPage'
+    DocumentFilePage = apps.get_model(
+        app_label='documents', model_name='DocumentFilePage'
     )
 
     qss = qsstats.QuerySetStats(
-        DocumentPage.objects.all(), 'document_file__document__date_added'
+        DocumentFilePage.objects.all(), 'document_file__document__date_added'
     )
     now = timezone.now()
 

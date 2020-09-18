@@ -27,7 +27,7 @@ from .permissions import (
     permission_document_type_view
 )
 from .serializers import (
-    DeletedDocumentSerializer, DocumentPageSerializer, DocumentSerializer,
+    DeletedDocumentSerializer, DocumentFilePageSerializer, DocumentSerializer,
     DocumentTypeSerializer, DocumentFileSerializer,
     NewDocumentDocumentTypeSerializer, NewDocumentSerializer,
     NewDocumentFileSerializer, RecentDocumentSerializer,
@@ -35,7 +35,7 @@ from .serializers import (
     WritableDocumentFileSerializer
 )
 from .settings import settings_document_page_image_cache_time
-from .tasks import task_generate_document_page_image
+from .tasks import task_generate_document_file_page_image
 
 logger = logging.getLogger(name=__name__)
 
@@ -156,7 +156,7 @@ class APIDocumentListView(generics.ListCreateAPIView):
         serializer.save(_user=self.request.user)
 
 
-class APIDocumentPageImageView(generics.RetrieveAPIView):
+class APIDocumentFilePageImageView(generics.RetrieveAPIView):
     """
     get: Returns an image representation of the selected document.
     """
@@ -208,9 +208,9 @@ class APIDocumentPageImageView(generics.RetrieveAPIView):
         if maximum_layer_order:
             maximum_layer_order = int(maximum_layer_order)
 
-        task = task_generate_document_page_image.apply_async(
+        task = task_generate_document_file_page_image.apply_async(
             kwargs=dict(
-                document_page_id=self.get_object().pk, width=width,
+                document_file_page_id=self.get_object().pk, width=width,
                 height=height, zoom=zoom, rotation=rotation,
                 maximum_layer_order=maximum_layer_order,
                 user_id=request.user.pk
@@ -236,14 +236,14 @@ class APIDocumentPageImageView(generics.RetrieveAPIView):
             return response
 
 
-class APIDocumentPageView(generics.RetrieveUpdateAPIView):
+class APIDocumentFilePageView(generics.RetrieveUpdateAPIView):
     """
     get: Returns the selected document page details.
     patch: Edit the selected document page.
     put: Edit the selected document page.
     """
     lookup_url_kwarg = 'page_pk'
-    serializer_class = DocumentPageSerializer
+    serializer_class = DocumentFilePageSerializer
 
     def get_document(self):
         if self.request.method == 'GET':
@@ -429,7 +429,7 @@ class APIRecentDocumentListView(generics.ListAPIView):
 
 
 class APIDocumentFilePageListView(generics.ListAPIView):
-    serializer_class = DocumentPageSerializer
+    serializer_class = DocumentFilePageSerializer
 
     def get_document(self):
         document = get_object_or_404(Document, pk=self.kwargs['pk'])

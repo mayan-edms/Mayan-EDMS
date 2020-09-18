@@ -26,7 +26,7 @@ from mayan.apps.views.generics import (
 
 from ..events import event_document_download, event_document_view
 from ..forms import (
-    DocumentDownloadForm, DocumentForm, DocumentPageNumberForm,
+    DocumentDownloadForm, DocumentForm, DocumentFilePageNumberForm,
     DocumentPreviewForm, DocumentPrintForm, DocumentPropertiesForm,
     DocumentTypeFilteredSelectForm,
 )
@@ -455,7 +455,7 @@ class DocumentTransformationsClearView(MultipleObjectConfirmActionView):
 
 
 class DocumentTransformationsCloneView(FormView):
-    form_class = DocumentPageNumberForm
+    form_class = DocumentFilePageNumberForm
 
     def form_valid(self, form):
         instance = self.get_object()
