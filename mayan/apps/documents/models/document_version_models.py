@@ -116,9 +116,7 @@ class DocumentVersion(models.Model):
 
     @classmethod
     def _execute_hooks(cls, hook_list, instance, **kwargs):
-        result = {
-            'file_object': instance.open(raw=True)
-        }
+        result = None
 
         for hook in hook_list:
             result = hook(document_version=instance, **kwargs)
@@ -306,7 +304,10 @@ class DocumentVersion(models.Model):
                 instance=self, file_object=file_object
             )
 
-            return result['file_object']
+            if result:
+                return result['file_object']
+            else:
+                return file_object
 
     @property
     def page_count(self):
