@@ -116,7 +116,9 @@ class DocumentVersion(models.Model):
 
     @classmethod
     def _execute_hooks(cls, hook_list, instance, **kwargs):
-        result = None
+        result = {
+            'file_object': instance.open(raw=True)
+        }
 
         for hook in hook_list:
             result = hook(document_version=instance, **kwargs)

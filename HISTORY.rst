@@ -238,6 +238,8 @@
   states, state actions, transitions, or transition fields.
 - Update Python client for PostgreSQL from version 2.8.4 to 2.8.6, and Redis
   client version from 3.4.1 to 3.5.3.
+- Initialize document version _execute_hooks with a valid result.
+  Allows disabling apps that modify the hook list like document signatures.
 
 3.4.17 (2020-09-10)
 ===================
