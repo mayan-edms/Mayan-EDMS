@@ -243,6 +243,8 @@
 - Do not error out when an app that defined a cached storage is
   disabled, like the workflows app.
 - Disable purge method and purge links on invalid file caches.
+- Do not error out when an app that defined a transformation
+  layer is disabled.
 
 3.4.17 (2020-09-10)
 ===================
