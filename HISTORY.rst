@@ -245,6 +245,9 @@
 - Disable purge method and purge links on invalid file caches.
 - Do not error out when an app that defined a transformation
   layer is disabled.
+- Invert the document and OCR migrations 0006 to 0003 dependency.
+  Makes the OCR migration dependent on the documents app migration.
+  This allows disabling the OCR app.
 
 3.4.17 (2020-09-10)
 ===================
