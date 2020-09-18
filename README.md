@@ -1,10 +1,11 @@
 Instructions for running the CMU-313 Mayan.
 
 ```
-1. git clone git@github.com:cmu-313/mayan-edms.git
-2. cd mayan-edms
-3. make docker-build
-4. MAYAN=`pwd` docker-compose -f docker/docker-compose.yml up
+1. click "Use this template" and create a repository for your team
+2. git clone <your team repository>
+3. cd mayan-edms
+4. make docker-build
+5. MAYAN=`pwd` docker-compose -f docker/docker-compose.yml up
 ```
 
 [![pypi][pypi]][pypi-url]
