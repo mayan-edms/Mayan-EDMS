@@ -205,6 +205,10 @@ icon_document_version_view = Icon(
 #    driver_name='fontawesome', symbol='undo'
 #)
 
+# Document version pages
+
+icon_document_version_pages = Icon(driver_name='fontawesome', symbol='copy')
+
 icon_duplicated_document_list = Icon(
     driver_name='fontawesome', symbol='clone'
 )

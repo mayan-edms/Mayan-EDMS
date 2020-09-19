@@ -10,7 +10,10 @@ from mayan.celery import app
 from .literals import (
     UPDATE_PAGE_COUNT_RETRY_DELAY, UPLOAD_NEW_VERSION_RETRY_DELAY
 )
-from .settings import setting_task_generate_document_page_image_retry_delay
+from .settings import (
+    setting_task_generate_document_file_page_image_retry_delay,
+    setting_task_generate_document_version_page_image_retry_delay
+)
 
 logger = logging.getLogger(name=__name__)
 
@@ -66,7 +69,7 @@ def task_delete_stubs():
 
 @app.task(
     bind=True,
-    default_retry_delay=setting_task_generate_document_page_image_retry_delay.value
+    default_retry_delay=setting_task_generate_document_file_page_image_retry_delay.value
 )
 def task_generate_document_file_page_image(
     self, document_file_page_id, user_id=None, **kwargs
@@ -87,8 +90,43 @@ def task_generate_document_file_page_image(
     except LockError as exception:
         logger.warning(
             'LockError during attempt to generate document page image for '
-            'document id: %d, document page id: %d. Retrying.',
-            document_file_page.pk, document_file_page.document.pk
+            'document id: %d, document file id: %d, document file '
+            'page id: %d. Retrying.',
+            document_file_page.document_file.document_id,
+            document_file_page.document_file_id,
+            document_file_page.pk,
+        )
+        raise self.retry(exc=exception)
+
+
+@app.task(
+    bind=True,
+    default_retry_delay=setting_task_generate_document_version_page_image_retry_delay.value
+)
+def task_generate_document_version_page_image(
+    self, document_version_page_id, user_id=None, **kwargs
+):
+    DocumentVersionPage = apps.get_model(
+        app_label='documents', model_name='DocumentVersionPage'
+    )
+    User = get_user_model()
+
+    if user_id:
+        user = User.objects.get(pk=user_id)
+    else:
+        user = None
+
+    document_version_page = DocumentVersionPage.objects.get(pk=document_version_page_id)
+    try:
+        return document_version_page.generate_image(user=user, **kwargs)
+    except LockError as exception:
+        logger.warning(
+            'LockError during attempt to generate document page image for '
+            'document id: %d, document version id: %d, document version '
+            'page id: %d. Retrying.',
+            document_version_page.document_version.document_id,
+            document_version_page.document_version_id,
+            document_version_page.pk,
         )
         raise self.retry(exc=exception)
 

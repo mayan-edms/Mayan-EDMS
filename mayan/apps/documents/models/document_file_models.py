@@ -22,7 +22,7 @@ from mayan.apps.templating.classes import Template
 
 from ..events import event_document_file_new, event_document_file_revert
 from ..literals import (
-    STORAGE_NAME_DOCUMENT_IMAGE, STORAGE_NAME_DOCUMENT_VERSION
+    STORAGE_NAME_DOCUMENT_FILE_PAGE_IMAGE_CACHE, STORAGE_NAME_DOCUMENT_FILES
 )
 from ..managers import DocumentFileManager
 from ..settings import setting_fix_orientation, setting_hash_block_size
@@ -82,7 +82,7 @@ class DocumentFile(models.Model):
     )
     # File related fields
     file = models.FileField(
-        storage=DefinedStorageLazy(name=STORAGE_NAME_DOCUMENT_VERSION),
+        storage=DefinedStorageLazy(name=STORAGE_NAME_DOCUMENT_FILES),
         upload_to=upload_to, verbose_name=_('File')
     )
     mimetype = models.CharField(
@@ -174,7 +174,7 @@ class DocumentFile(models.Model):
     def cache(self):
         Cache = apps.get_model(app_label='file_caching', model_name='Cache')
         return Cache.objects.get(
-            defined_storage_name=STORAGE_NAME_DOCUMENT_IMAGE
+            defined_storage_name=STORAGE_NAME_DOCUMENT_FILE_PAGE_IMAGE_CACHE
         )
 
     @cached_property

@@ -45,7 +45,9 @@ from .events import (
     event_document_view
 )
 from .handlers import (
-    handler_create_default_document_type, handler_create_document_cache,
+    handler_create_default_document_type,
+    handler_create_document_file_page_image_cache,
+    handler_create_document_version_page_image_cache,
     handler_remove_empty_duplicates_lists, handler_scan_duplicates_for
 )
 from .links.document_links import (
@@ -114,8 +116,9 @@ from .permissions import (
 from .signals import signal_post_file_upload
 from .statistics import *  # NOQA
 from .widgets import (
-    DocumentFilePageThumbnailWidget, widget_document_file_page_number,
-    widget_document_page_number
+    DocumentFilePageThumbnailWidget, DocumentVersionPageThumbnailWidget,
+    widget_document_file_page_number, widget_document_page_number,
+    widget_document_version_page_number
 )
 
 
@@ -141,6 +144,7 @@ class DocumentsApp(MayanAppConfig):
         DocumentFilePageResult = self.get_model(model_name='DocumentFilePageResult')
         DocumentType = self.get_model(model_name='DocumentType')
         DocumentTypeFilename = self.get_model(model_name='DocumentTypeFilename')
+        DocumentVersion = self.get_model(model_name='DocumentVersion')
         DuplicatedDocument = self.get_model(model_name='DuplicatedDocument')
 
         link_decorations_list = link_transformation_list.copy(
@@ -157,6 +161,7 @@ class DocumentsApp(MayanAppConfig):
         EventModelRegistry.register(model=Document)
         EventModelRegistry.register(model=DocumentFile)
         EventModelRegistry.register(model=DocumentType)
+        EventModelRegistry.register(model=DocumentVersion)
 
         MissingItem(
             label=_('Create a document type'),
@@ -299,8 +304,11 @@ class DocumentsApp(MayanAppConfig):
         model_query_fields_document_file_page = ModelQueryFields(model=DocumentFilePage)
         model_query_fields_document_file_page.add_select_related_field(field_name='document_file')
 
-        # Document and document page thumbnail widget
+        # Document file and document file page thumbnail widget
         document_file_page_thumbnail_widget = DocumentFilePageThumbnailWidget()
+
+        # Document version and document version page thumbnail widget
+        document_version_page_thumbnail_widget = DocumentVersionPageThumbnailWidget()
 
         # Document
         SourceColumn(
@@ -422,6 +430,26 @@ class DocumentsApp(MayanAppConfig):
         )
         SourceColumn(
             attribute='comment', is_sortable=True, source=DocumentFile
+        )
+
+        # DocumentVersion
+        SourceColumn(
+            source=DocumentVersion, attribute='timestamp', is_identifier=True,
+            is_object_absolute_url=True
+        )
+        SourceColumn(
+            func=lambda context: document_version_page_thumbnail_widget.render(
+                instance=context['object']
+            ), html_extra_classes='text-center document-thumbnail-list',
+            label=_('Thumbnail'), source=DocumentVersion
+        )
+        SourceColumn(
+            func=lambda context: widget_document_version_page_number(
+                document_version=context['object']
+            ), label=_('Pages'), source=DocumentVersion
+        )
+        SourceColumn(
+            attribute='comment', is_sortable=True, source=DocumentVersion
         )
 
         Template(
@@ -633,8 +661,12 @@ class DocumentsApp(MayanAppConfig):
             sender=Document
         )
         post_migrate.connect(
-            dispatch_uid='documents_handler_create_document_cache',
-            receiver=handler_create_document_cache,
+            dispatch_uid='documents_handler_create_document_file_page_image_cache',
+            receiver=handler_create_document_file_page_image_cache,
+        )
+        post_migrate.connect(
+            dispatch_uid='documents_handler_create_document_version_page_image_cache',
+            receiver=handler_create_document_version_page_image_cache,
         )
         signal_post_initial_setup.connect(
             dispatch_uid='documents_handler_create_default_document_type',

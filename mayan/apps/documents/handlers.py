@@ -1,9 +1,13 @@
 from django.apps import apps
 
 from .literals import (
-    DEFAULT_DOCUMENT_TYPE_LABEL, STORAGE_NAME_DOCUMENT_IMAGE
+    DEFAULT_DOCUMENT_TYPE_LABEL, STORAGE_NAME_DOCUMENT_FILE_PAGE_IMAGE_CACHE,
+    STORAGE_NAME_DOCUMENT_VERSION_PAGE_IMAGE_CACHE
 )
-from .settings import setting_document_cache_maximum_size
+from .settings import (
+    setting_document_file_page_image_cache_maximum_size,
+    setting_document_version_page_image_cache_maximum_size
+)
 from .signals import signal_post_initial_document_type
 from .tasks import task_clean_empty_duplicate_lists, task_scan_duplicates_for
 
@@ -22,12 +26,21 @@ def handler_create_default_document_type(sender, **kwargs):
         )
 
 
-def handler_create_document_cache(sender, **kwargs):
+def handler_create_document_file_page_image_cache(sender, **kwargs):
     Cache = apps.get_model(app_label='file_caching', model_name='Cache')
     Cache.objects.update_or_create(
         defaults={
-            'maximum_size': setting_document_cache_maximum_size.value,
-        }, defined_storage_name=STORAGE_NAME_DOCUMENT_IMAGE,
+            'maximum_size': setting_document_file_page_image_cache_maximum_size.value,
+        }, defined_storage_name=STORAGE_NAME_DOCUMENT_FILE_PAGE_IMAGE_CACHE,
+    )
+
+
+def handler_create_document_version_page_image_cache(sender, **kwargs):
+    Cache = apps.get_model(app_label='file_caching', model_name='Cache')
+    Cache.objects.update_or_create(
+        defaults={
+            'maximum_size': setting_document_version_page_image_cache_maximum_size.value,
+        }, defined_storage_name=STORAGE_NAME_DOCUMENT_VERSION_PAGE_IMAGE_CACHE,
     )
 
 

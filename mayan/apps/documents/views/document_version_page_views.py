@@ -17,10 +17,12 @@ from mayan.apps.views.generics import (
 from mayan.apps.views.mixins import ExternalObjectMixin
 from mayan.apps.views.utils import resolve
 
-from ..forms.document_file_page_forms import DocumentFilePageForm
-from ..icons import icon_document_file_pages
-from ..links.document_file_page_links import link_document_update_page_count
-from ..models import Document, DocumentFilePage
+from ..forms.document_version_page_forms import DocumentVersionPageForm
+from ..icons import icon_document_version_pages
+#from ..links.document_version_page_links import link_document_update_page_count
+from ..models.document_models import Document
+from ..models.document_version_models import DocumentVersion
+from ..models.document_version_page_models import DocumentVersionPage
 from ..permissions import permission_document_edit, permission_document_view
 from ..settings import (
     setting_rotation_step, setting_zoom_percent_step, setting_zoom_max_level,
@@ -28,30 +30,30 @@ from ..settings import (
 )
 
 __all__ = (
-    'DocumentFilePageDisable', 'DocumentFilePageEnable', 'DocumentFilePageListView',
-    'DocumentFilePageNavigationFirst', 'DocumentFilePageNavigationLast',
-    'DocumentFilePageNavigationNext', 'DocumentFilePageNavigationPrevious',
-    'DocumentFilePageView', 'DocumentFilePageViewResetView',
-    'DocumentFilePageInteractiveTransformation', 'DocumentFilePageZoomInView',
-    'DocumentFilePageZoomOutView', 'DocumentFilePageRotateLeftView',
-    'DocumentFilePageRotateRightView'
+    'DocumentVersionPageListView',
+    'DocumentVersionPageNavigationFirst', 'DocumentVersionPageNavigationLast',
+    'DocumentVersionPageNavigationNext', 'DocumentVersionPageNavigationPrevious',
+    'DocumentVersionPageView', 'DocumentVersionPageViewResetView',
+    'DocumentVersionPageInteractiveTransformation', 'DocumentVersionPageZoomInView',
+    'DocumentVersionPageZoomOutView', 'DocumentVersionPageRotateLeftView',
+    'DocumentVersionPageRotateRightView'
 )
 logger = logging.getLogger(name=__name__)
 
 
-class DocumentFilePageListView(ExternalObjectMixin, SingleObjectListView):
-    external_object_class = Document
+class DocumentVersionPageListView(ExternalObjectMixin, SingleObjectListView):
+    external_object_class = DocumentVersion
     external_object_permission = permission_document_view
-    external_object_pk_url_kwarg = 'document_id'
+    external_object_pk_url_kwarg = 'document_version_id'
 
     def get_extra_context(self):
         return {
             'hide_object': True,
             'list_as_items': True,
-            'no_results_icon': icon_document_file_pages,
-            'no_results_main_link': link_document_update_page_count.resolve(
-                request=self.request, resolved_object=self.external_object
-            ),
+            #'no_results_icon': icon_document_version_pages,
+            #'no_results_main_link': link_document_update_page_count.resolve(
+            #    request=self.request, resolved_object=self.external_object
+            #),
             'no_results_text': _(
                 'This could mean that the document is of a format that is '
                 'not supported, that it is corrupted or that the upload '
@@ -60,18 +62,18 @@ class DocumentFilePageListView(ExternalObjectMixin, SingleObjectListView):
             ),
             'no_results_title': _('No document pages available'),
             'object': self.external_object,
-            'title': _('Pages for document: %s') % self.external_object,
+            'title': _('Pages for document version: %s') % self.external_object,
         }
 
     def get_source_queryset(self):
-        queryset = ModelQueryFields.get(model=DocumentFilePage).get_queryset()
+        queryset = ModelQueryFields.get(model=DocumentVersionPage).get_queryset()
         return queryset.filter(pk__in=self.external_object.pages.all())
 
-
-class DocumentFilePageNavigationBase(ExternalObjectMixin, RedirectView):
+'''
+class DocumentVersionPageNavigationBase(ExternalObjectMixin, RedirectView):
     external_object_permission = permission_document_view
-    external_object_pk_url_kwarg = 'document_file_page_id'
-    external_object_queryset = DocumentFilePage.valid
+    external_object_pk_url_kwarg = 'document_version_page_id'
+    external_object_queryset = DocumentVersionPage.valid
 
     def get_redirect_url(self, *args, **kwargs):
         """
@@ -110,59 +112,59 @@ class DocumentFilePageNavigationBase(ExternalObjectMixin, RedirectView):
         return parsed_url.tostr()
 
 
-class DocumentFilePageNavigationFirst(DocumentFilePageNavigationBase):
+class DocumentVersionPageNavigationFirst(DocumentVersionPageNavigationBase):
     def get_new_kwargs(self):
-        return {'document_file_page_id': self.external_object.siblings.first().pk}
+        return {'document_version_page_id': self.external_object.siblings.first().pk}
 
 
-class DocumentFilePageNavigationLast(DocumentFilePageNavigationBase):
+class DocumentVersionPageNavigationLast(DocumentVersionPageNavigationBase):
     def get_new_kwargs(self):
-        return {'document_file_page_id': self.external_object.siblings.last().pk}
+        return {'document_version_page_id': self.external_object.siblings.last().pk}
 
 
-class DocumentFilePageNavigationNext(DocumentFilePageNavigationBase):
+class DocumentVersionPageNavigationNext(DocumentVersionPageNavigationBase):
     def get_new_kwargs(self):
-        new_document_file_page = self.external_object.siblings.filter(
+        new_document_version_page = self.external_object.siblings.filter(
             page_number__gt=self.external_object.page_number
         ).first()
-        if new_document_file_page:
-            return {'document_file_page_id': new_document_file_page.pk}
+        if new_document_version_page:
+            return {'document_version_page_id': new_document_version_page.pk}
         else:
             messages.warning(
                 message=_(
                     'There are no more pages in this document'
                 ), request=self.request
             )
-            return {'document_file_page_id': self.external_object.pk}
+            return {'document_version_page_id': self.external_object.pk}
 
 
-class DocumentFilePageNavigationPrevious(DocumentFilePageNavigationBase):
+class DocumentVersionPageNavigationPrevious(DocumentVersionPageNavigationBase):
     def get_new_kwargs(self):
-        new_document_file_page = self.external_object.siblings.filter(
+        new_document_version_page = self.external_object.siblings.filter(
             page_number__lt=self.external_object.page_number
         ).last()
-        if new_document_file_page:
-            return {'document_file_page_id': new_document_file_page.pk}
+        if new_document_version_page:
+            return {'document_version_page_id': new_document_version_page.pk}
         else:
             messages.warning(
                 message=_(
                     'You are already at the first page of this document'
                 ), request=self.request
             )
-            return {'document_file_page_id': self.external_object.pk}
+            return {'document_version_page_id': self.external_object.pk}
 
 
-class DocumentFilePageView(ExternalObjectMixin, SimpleView):
+class DocumentVersionPageView(ExternalObjectMixin, SimpleView):
     external_object_permission = permission_document_view
-    external_object_pk_url_kwarg = 'document_file_page_id'
-    external_object_queryset = DocumentFilePage.valid
+    external_object_pk_url_kwarg = 'document_version_page_id'
+    external_object_queryset = DocumentVersionPage.valid
     template_name = 'appearance/generic_form.html'
 
     def get_extra_context(self):
         zoom = int(self.request.GET.get('zoom', DEFAULT_ZOOM_LEVEL))
         rotation = int(self.request.GET.get('rotation', DEFAULT_ROTATION))
 
-        document_file_page_form = DocumentFilePageForm(
+        document_version_page_form = DocumentVersionPageForm(
             instance=self.external_object, rotation=rotation, zoom=zoom
         )
 
@@ -174,7 +176,7 @@ class DocumentFilePageView(ExternalObjectMixin, SimpleView):
             zoom_text = ''
 
         return {
-            'form': document_file_page_form,
+            'form': document_version_page_form,
             'hide_labels': True,
             'object': self.external_object,
             'rotation': rotation,
@@ -184,14 +186,14 @@ class DocumentFilePageView(ExternalObjectMixin, SimpleView):
         }
 
 
-class DocumentFilePageViewResetView(RedirectView):
-    pattern_name = 'documents:document_file_page_view'
+class DocumentVersionPageViewResetView(RedirectView):
+    pattern_name = 'documents:document_version_page_view'
 
 
-class DocumentFilePageInteractiveTransformation(ExternalObjectMixin, RedirectView):
-    external_object_class = DocumentFilePage
+class DocumentVersionPageInteractiveTransformation(ExternalObjectMixin, RedirectView):
+    external_object_class = DocumentVersionPage
     external_object_permission = permission_document_view
-    external_object_pk_url_kwarg = 'document_file_page_id'
+    external_object_pk_url_kwarg = 'document_version_page_id'
 
     def get_object(self):
         return self.external_object
@@ -204,8 +206,8 @@ class DocumentFilePageInteractiveTransformation(ExternalObjectMixin, RedirectVie
 
         url = furl(
             args=query_dict, path=reverse(
-                viewname='documents:document_file_page_view', kwargs={
-                    'document_file_page_id': self.external_object.pk
+                viewname='documents:document_version_page_view', kwargs={
+                    'document_version_page_id': self.external_object.pk
                 }
             )
 
@@ -218,7 +220,7 @@ class DocumentFilePageInteractiveTransformation(ExternalObjectMixin, RedirectVie
         return url.tostr()
 
 
-class DocumentFilePageZoomInView(DocumentFilePageInteractiveTransformation):
+class DocumentVersionPageZoomInView(DocumentVersionPageInteractiveTransformation):
     def transformation_function(self, query_dict):
         zoom = int(query_dict['zoom']) + setting_zoom_percent_step.value
 
@@ -228,7 +230,7 @@ class DocumentFilePageZoomInView(DocumentFilePageInteractiveTransformation):
         query_dict['zoom'] = zoom
 
 
-class DocumentFilePageZoomOutView(DocumentFilePageInteractiveTransformation):
+class DocumentVersionPageZoomOutView(DocumentVersionPageInteractiveTransformation):
     def transformation_function(self, query_dict):
         zoom = int(query_dict['zoom']) - setting_zoom_percent_step.value
 
@@ -238,75 +240,16 @@ class DocumentFilePageZoomOutView(DocumentFilePageInteractiveTransformation):
         query_dict['zoom'] = zoom
 
 
-class DocumentFilePageRotateLeftView(DocumentFilePageInteractiveTransformation):
+class DocumentVersionPageRotateLeftView(DocumentVersionPageInteractiveTransformation):
     def transformation_function(self, query_dict):
         query_dict['rotation'] = (
             int(query_dict['rotation']) - setting_rotation_step.value
         ) % 360
 
 
-class DocumentFilePageRotateRightView(DocumentFilePageInteractiveTransformation):
+class DocumentVersionPageRotateRightView(DocumentVersionPageInteractiveTransformation):
     def transformation_function(self, query_dict):
         query_dict['rotation'] = (
             int(query_dict['rotation']) + setting_rotation_step.value
         ) % 360
-
-
-class DocumentFilePageDisable(MultipleObjectConfirmActionView):
-    object_permission = permission_document_edit
-    pk_url_kwarg = 'document_file_page_id'
-    success_message_singular = '%(count)d document page disabled.'
-    success_message_plural = '%(count)d document pages disabled.'
-
-    def get_extra_context(self):
-        queryset = self.object_list
-
-        result = {
-            'title': ungettext(
-                singular='Disable the selected document page?',
-                plural='Disable the selected document pages?',
-                number=queryset.count()
-            )
-        }
-
-        if queryset.count() == 1:
-            result['object'] = queryset.first()
-
-        return result
-
-    def get_source_queryset(self):
-        return DocumentFilePage.objects.all()
-
-    def object_action(self, form, instance):
-        instance.enabled = False
-        instance.save()
-
-
-class DocumentFilePageEnable(MultipleObjectConfirmActionView):
-    object_permission = permission_document_edit
-    pk_url_kwarg = 'document_file_page_id'
-    success_message_singular = '%(count)d document page enabled.'
-    success_message_plural = '%(count)d document pages enabled.'
-
-    def get_extra_context(self):
-        queryset = self.object_list
-
-        result = {
-            'title': ungettext(
-                singular='Enable the selected document page?',
-                plural='Enable the selected document pages?',
-                number=queryset.count()
-            )
-        }
-
-        if queryset.count() == 1:
-            result['object'] = queryset.first()
-
-        return result
-
-    def get_source_queryset(self):
-        return DocumentFilePage.objects.all()
-
-    def object_action(self, form, instance):
-        instance.enabled = True
-        instance.save()
+'''

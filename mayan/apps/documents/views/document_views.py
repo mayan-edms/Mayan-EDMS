@@ -283,10 +283,8 @@ class DocumentPreviewView(SingleObjectDetailView):
     pk_url_kwarg = 'document_id'
 
     def dispatch(self, request, *args, **kwargs):
-        result = super(
-            DocumentPreviewView, self
-        ).dispatch(request, *args, **kwargs)
-        self.object.add_as_recent_document_for_user(request.user)
+        result = super().dispatch(request=request, *args, **kwargs)
+        self.object.add_as_recent_document_for_user(user=request.user)
         event_document_view.commit(
             actor=request.user, target=self.object
         )

@@ -13,6 +13,7 @@ from django.utils.encoding import force_text
 from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.converter.classes import ConverterBase
 from mayan.apps.converter.literals import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION
 from mayan.apps.converter.models import LayerTransformation
 from mayan.apps.converter.transformations import (
@@ -29,14 +30,21 @@ from ..settings import (
 
 from .document_version_models import DocumentVersion
 
+__all__ = ('DocumentVersionPage',)
+logger = logging.getLogger(name=__name__)
+
 
 class DocumentVersionPage(models.Model):
     document_version = models.ForeignKey(
         on_delete=models.CASCADE, related_name='pages', to=DocumentVersion,
         verbose_name=_('Document version')
     )
+    #page_number = models.PositiveIntegerField(
+    #    db_index=True, blank=True, null=True, verbose_name=_('Page number')
+    #)
     page_number = models.PositiveIntegerField(
-        db_index=True, blank=True, null=True, verbose_name=_('Page number')
+        db_index=True, default=1, editable=False,
+        verbose_name=_('Page number')
     )
     content_type = models.ForeignKey(
         on_delete=models.CASCADE, to=ContentType
@@ -58,17 +66,17 @@ class DocumentVersionPage(models.Model):
     def __str__(self):
         return self.get_label()
 
-    #@cached_property
-    #def cache_partition(self):
-    #    partition, created = self.document.cache.partitions.get_or_create(
-    #        name=self.uuid
-    #    )
-    #    return partition
+    @cached_property
+    def cache_partition(self):
+        partition, created = self.document_version.cache.partitions.get_or_create(
+            name=self.uuid
+        )
+        return partition
 
-    #def delete(self, *args, **kwargs):
-    #    self.cache_partition.delete()
-    #    super(DocumentPage, self).delete(*args, **kwargs)
-    '''
+    def delete(self, *args, **kwargs):
+        self.cache_partition.delete()
+        super().delete(*args, **kwargs)
+
     def generate_image(self, user=None, **kwargs):
         transformation_list = self.get_combined_transformation_list(user=user, **kwargs)
         combined_cache_filename = BaseTransformation.combine(transformation_list)
@@ -89,14 +97,14 @@ class DocumentVersionPage(models.Model):
                 file_object.write(image.getvalue())
 
         return combined_cache_filename
-    '''
+
     def get_absolute_url(self):
         return reverse(
             viewname='documents:document_version_page_view', kwargs={
                 'document_version_page_pk': self.pk
             }
         )
-    '''
+
     def get_api_image_url(self, *args, **kwargs):
         """
         Create an unique URL combining:
@@ -116,7 +124,8 @@ class DocumentVersionPage(models.Model):
         final_url.args = kwargs
         final_url.path = reverse(
             viewname='rest_api:documentversionpage-image', kwargs={
-                'document_version_id': self.document.pk,
+                'document_id': self.document_version.document_id,
+                'document_version_id': self.document_version_id,
                 'document_version_page_id': self.pk
             }
         )
@@ -177,6 +186,8 @@ class DocumentVersionPage(models.Model):
 
         return transformation_list
 
+    '''
+    #Berkeley county
     def get_image(self, transformations=None):
         cache_filename = 'document_version_page'
         logger.debug('Document version page cache filename: %s', cache_filename)
@@ -240,6 +251,72 @@ class DocumentVersionPage(models.Model):
                 )
                 raise
     '''
+    def get_image(self, transformations=None):
+        cache_filename = 'base_image'
+        logger.debug('Page cache filename: %s', cache_filename)
+
+        cache_file = self.cache_partition.get_file(filename=cache_filename)
+
+        if cache_file:
+            logger.debug('Page cache version "%s" found', cache_filename)
+
+            with cache_file.open() as file_object:
+                converter = ConverterBase.get_converter_class()(
+                    file_object=file_object
+                )
+
+                converter.seek_page(page_number=0)
+
+                # This code is also repeated below to allow using a context
+                # manager with cache_version.open and close it automatically.
+                # Apply runtime transformations
+                for transformation in transformations:
+                    converter.transform(transformation=transformation)
+
+                return converter.get_page()
+        else:
+            logger.debug('Page cache version "%s" not found', cache_filename)
+
+            try:
+                content_object_cache_filename = self.content_object.generate_image()
+                content_object_cache_file = self.content_object.cache_partition.get_file(filename=content_object_cache_filename)
+
+                with content_object_cache_file.open() as file_object:
+                    converter = ConverterBase.get_converter_class()(
+                        file_object=file_object
+                    )
+                    converter.seek_page(page_number=0)
+                    #self.page_number - 1)
+
+                    page_image = converter.get_page()
+
+                #    cache_filename = 'document_page'
+                ###
+                #with self.document_version.get_intermediate_version() as file_object:
+                #    converter = ConverterBase.get_converter_class()(
+                #        file_object=file_object
+                #    )
+                #    converter.seek_page(page_number=self.page_number - 1)
+
+                #    page_image = converter.get_page()
+
+                    # Since open "wb+" doesn't create versions, create it explicitly
+                    with self.cache_partition.create_file(filename=cache_filename) as file_object:
+                        file_object.write(page_image.getvalue())
+
+                    # Apply runtime transformations
+                    for transformation in transformations:
+                        converter.transform(transformation=transformation)
+
+                    return converter.get_page()
+            except Exception as exception:
+                # Cleanup in case of error
+                logger.error(
+                    'Error creating page cache version "%s"; %s',
+                    cache_filename, exception
+                )
+                raise
+
     def get_label(self):
         return _(
             'Document version page %(page_number)d out of %(total_pages)d of %(document_version)s'
@@ -249,6 +326,10 @@ class DocumentVersionPage(models.Model):
             'total_pages': self.document_version.pages.count()
         }
     get_label.short_description = _('Label')
+
+    #@property
+    #def is_in_trash(self):
+    #    return self.document.is_in_trash
 
     #def natural_key(self):
     #    return (self.page_number, self.document.natural_key())

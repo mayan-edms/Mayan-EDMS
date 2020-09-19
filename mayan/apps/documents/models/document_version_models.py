@@ -21,9 +21,7 @@ from mayan.apps.storage.classes import DefinedStorageLazy
 from mayan.apps.templating.classes import Template
 
 from ..events import event_document_file_new, event_document_file_revert
-from ..literals import (
-    STORAGE_NAME_DOCUMENT_IMAGE, STORAGE_NAME_DOCUMENT_VERSION
-)
+from ..literals import STORAGE_NAME_DOCUMENT_VERSION_PAGE_IMAGE_CACHE
 #from ..managers import DocumentFileManager
 from ..signals import signal_post_document_created, signal_post_file_upload
 
@@ -61,7 +59,7 @@ class DocumentVersion(models.Model):
     def cache(self):
         Cache = apps.get_model(app_label='file_caching', model_name='Cache')
         return Cache.objects.get(
-            defined_storage_name=STORAGE_NAME_DOCUMENT_IMAGE
+            defined_storage_name=STORAGE_NAME_DOCUMENT_VERSION_PAGE_IMAGE_CACHE
         )
 
     @cached_property
@@ -92,12 +90,13 @@ class DocumentVersion(models.Model):
                 'document_version_id': self.pk
             }
         )
-    """
+
     def get_api_image_url(self, *args, **kwargs):
-        first_page = self.pages_valid.first()
+        first_page = self.pages.first()
         if first_page:
             return first_page.get_api_image_url(*args, **kwargs)
 
+    """
     def get_intermediate_file(self):
         cache_filename = 'intermediate_file'
         cache_file = self.cache_partition.get_file(filename=cache_filename)
@@ -153,9 +152,9 @@ class DocumentVersion(models.Model):
     #    return (self.checksum, self.document.natural_key())
     #natural_key.dependencies = ['documents.Document']
 
-    #@property
-    #def is_in_trash(self):
-    #    return self.document.is_in_trash
+    @property
+    def is_in_trash(self):
+        return self.document.is_in_trash
 
     '''
     def open(self, raw=False):

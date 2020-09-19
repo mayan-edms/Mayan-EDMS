@@ -34,8 +34,14 @@ from .serializers import (
     WritableDocumentSerializer, WritableDocumentTypeSerializer,
     WritableDocumentFileSerializer
 )
-from .settings import settings_document_page_image_cache_time
-from .tasks import task_generate_document_file_page_image
+from .settings import (
+    setting_document_file_page_image_cache_time,
+    setting_document_version_page_image_cache_time
+)
+from .tasks import (
+    task_generate_document_file_page_image,
+    task_generate_document_version_page_image
+)
 
 logger = logging.getLogger(name=__name__)
 
@@ -231,7 +237,7 @@ class APIDocumentFilePageImageView(generics.RetrieveAPIView):
             if '_hash' in request.GET:
                 patch_cache_control(
                     response=response,
-                    max_age=settings_document_page_image_cache_time.value
+                    max_age=setting_document_file_page_image_cache_time.value
                 )
             return response
 
@@ -529,3 +535,82 @@ class APIDocumentFileView(generics.RetrieveUpdateDestroyAPIView):
             return DocumentFileSerializer
         else:
             return WritableDocumentFileSerializer
+
+
+class APIDocumentVersionPageImageView(generics.RetrieveAPIView):
+    """
+    get: Returns an image representation of the selected document version page.
+    """
+    lookup_url_kwarg = 'document_version_page_id'
+
+    def get_document(self):
+        document = get_object_or_404(
+            Document, pk=self.kwargs['document_id']
+        )
+
+        AccessControlList.objects.check_access(
+            obj=document, permissions=(permission_document_view,),
+            user=self.request.user
+        )
+        return document
+
+    def get_document_version(self):
+        return get_object_or_404(
+            self.get_document().versions.all(), pk=self.kwargs[
+                'document_version_id'
+            ]
+        )
+
+    def get_queryset(self):
+        return self.get_document_version().pages.all()
+
+    def get_serializer(self, *args, **kwargs):
+        return None
+
+    def get_serializer_class(self):
+        return None
+
+    @cache_control(private=True)
+    def retrieve(self, request, *args, **kwargs):
+        width = request.GET.get('width')
+        height = request.GET.get('height')
+        zoom = request.GET.get('zoom')
+
+        if zoom:
+            zoom = int(zoom)
+
+        rotation = request.GET.get('rotation')
+
+        if rotation:
+            rotation = int(rotation)
+
+        maximum_layer_order = request.GET.get('maximum_layer_order')
+        if maximum_layer_order:
+            maximum_layer_order = int(maximum_layer_order)
+
+        task = task_generate_document_version_page_image.apply_async(
+            kwargs=dict(
+                document_version_page_id=self.get_object().pk, width=width,
+                height=height, zoom=zoom, rotation=rotation,
+                maximum_layer_order=maximum_layer_order,
+                user_id=request.user.pk
+            )
+        )
+
+        kwargs = {'timeout': DOCUMENT_IMAGE_TASK_TIMEOUT}
+        if settings.DEBUG:
+            # In debug more, task are run synchronously, causing this method
+            # to be called inside another task. Disable the check of nested
+            # tasks when using debug mode.
+            kwargs['disable_sync_subtasks'] = False
+
+        cache_filename = task.get(**kwargs)
+        cache_file = self.get_object().cache_partition.get_file(filename=cache_filename)
+        with cache_file.open() as file_object:
+            response = HttpResponse(file_object.read(), content_type='image')
+            if '_hash' in request.GET:
+                patch_cache_control(
+                    response=response,
+                    max_age=setting_document_version_page_image_cache_time.value
+                )
+            return response

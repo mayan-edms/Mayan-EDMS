@@ -1,7 +1,7 @@
 from pathlib import Path
 import shutil
 
-from mayan.apps.documents.literals import STORAGE_NAME_DOCUMENT_VERSION
+from mayan.apps.documents.literals import STORAGE_NAME_DOCUMENT_FILES
 
 from ..classes import DefinedStorage
 from ..utils import mkdtemp
@@ -12,7 +12,7 @@ class StorageProcessorTestMixin:
     def setUpClass(cls):
         super(StorageProcessorTestMixin, cls).setUpClass()
         cls.defined_storage = DefinedStorage.get(
-            name=STORAGE_NAME_DOCUMENT_VERSION
+            name=STORAGE_NAME_DOCUMENT_FILES
         )
         cls.document_storage_kwargs = cls.defined_storage.kwargs
 

@@ -7,11 +7,11 @@ from mayan.apps.storage.classes import DefinedStorage
 from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..literals import (
-    STORAGE_NAME_DOCUMENT_IMAGE, STORAGE_NAME_DOCUMENT_VERSION
+    STORAGE_NAME_DOCUMENT_IMAGE, STORAGE_NAME_DOCUMENT_FILES
 )
 from ..settings import (
     setting_documentimagecache_storage_arguments,
-    setting_document_cache_maximum_size, setting_language_codes,
+    setting_document_file_page_image_cache_maximum_size, setting_language_codes,
     setting_storage_backend_arguments
 )
 
@@ -74,14 +74,14 @@ class DocumentStorageSettingsTestCase(SmartSettingTestMixin, BaseTestCase):
         with self.assertRaises(expected_exception=TypeError) as assertion:
             importlib.reload(storages)
             DefinedStorage.get(
-                name=STORAGE_NAME_DOCUMENT_VERSION
+                name=STORAGE_NAME_DOCUMENT_FILES
             ).get_storage_instance()
         self.assertTrue('Unable to initialize' in str(assertion.exception))
         self.assertTrue('document file' in str(assertion.exception))
 
-    def test_setting_document_cache_maximum_size(self):
-        old_value = setting_document_cache_maximum_size.value
+    def test_setting_document_file_page_image_cache_maximum_size(self):
+        old_value = setting_document_file_page_image_cache_maximum_size.value
         new_value = old_value + 1
-        setting_document_cache_maximum_size.value = '{}'.format(new_value)
+        setting_document_file_page_image_cache_maximum_size.value = '{}'.format(new_value)
 
-        self.assertEqual(setting_document_cache_maximum_size.value, new_value)
+        self.assertEqual(setting_document_file_page_image_cache_maximum_size.value, new_value)

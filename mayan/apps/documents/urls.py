@@ -8,7 +8,8 @@ from .api_views import (
     APIDocumentFilePageView, APIDocumentTypeDocumentListView,
     APIDocumentTypeListView, APIDocumentTypeView,
     APIDocumentFilesListView, APIDocumentFilePageListView,
-    APIDocumentFileView, APIRecentDocumentListView
+    APIDocumentFileView, APIRecentDocumentListView,
+    APIDocumentVersionPageImageView
 )
 from .views.document_file_views import (
     DocumentFileDownloadFormView, DocumentFileDownloadView,
@@ -30,7 +31,10 @@ from .views.document_type_views import (
     DocumentTypeFilenameEditView, DocumentTypeFilenameListView,
     DocumentTypeListView
 )
-from .views.document_version_views import DocumentVersionListView
+from .views.document_version_page_views import DocumentVersionPageListView
+from .views.document_version_views import (
+    DocumentVersionListView, DocumentVersionView
+)
 from .views.document_views import (
     DocumentDocumentTypeEditView, DocumentDownloadFormView,
     DocumentDownloadView, DocumentListView, DocumentPreviewView,
@@ -208,10 +212,21 @@ urlpatterns_document_types = [
     ),
 ]
 
+urlpatterns_document_version_pages = [
+    url(
+        regex=r'^documents/version/(?P<document_version_id>\d+)/pages/$',
+        name='document_version_pages', view=DocumentVersionPageListView.as_view()
+    ),
+]
+
 urlpatterns_document_version = [
     url(
         regex=r'^documents/(?P<document_id>\d+)/versions/$',
         name='document_version_list', view=DocumentVersionListView.as_view()
+    ),
+    url(
+        regex=r'^documents/versions/(?P<document_version_id>\d+)/$',
+        name='document_version_view', view=DocumentVersionView.as_view()
     ),
 ]
 
@@ -387,6 +402,7 @@ urlpatterns = []
 urlpatterns.extend(urlpatterns_document_files)
 urlpatterns.extend(urlpatterns_document_file_pages)
 urlpatterns.extend(urlpatterns_document_types)
+urlpatterns.extend(urlpatterns_document_version_pages)
 urlpatterns.extend(urlpatterns_document_version)
 urlpatterns.extend(urlpatterns_documents)
 urlpatterns.extend(urlpatterns_duplicated_documents)
@@ -454,6 +470,10 @@ api_urls = [
     url(
         regex=r'^documents/(?P<pk>[0-9]+)/files/(?P<file_pk>[0-9]+)/pages/(?P<page_pk>[0-9]+)/image/$',
         view=APIDocumentFilePageImageView.as_view(), name='documentfilepage-image'
+    ),
+    url(
+        regex=r'^documents/(?P<document_id>[0-9]+)/versions/(?P<document_version_id>[0-9]+)/pages/(?P<document_version_page_id>[0-9]+)/image/$',
+        view=APIDocumentVersionPageImageView.as_view(), name='documentversionpage-image'
     ),
     url(
         regex=r'^trashed_documents/$',

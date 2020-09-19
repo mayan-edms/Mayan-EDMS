@@ -9,8 +9,11 @@ from mayan.apps.views.generics import (
 from mayan.apps.views.mixins import ExternalObjectMixin
 
 from ..events import event_document_view
-from ..forms import DocumentFileDownloadForm, DocumentFilePreviewForm
-from ..models import Document, DocumentFile
+from ..forms.document_file_forms import (
+    DocumentFileDownloadForm, DocumentFilePreviewForm
+)
+from ..models.document_models import Document
+from ..models.document_file_models import DocumentFile
 from ..permissions import (
     permission_document_file_revert, permission_document_file_view
 )

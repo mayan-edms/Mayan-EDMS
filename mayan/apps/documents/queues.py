@@ -27,7 +27,11 @@ queue_documents = CeleryQueue(
 
 queue_converter.add_task_type(
     dotted_path='mayan.apps.documents.tasks.task_generate_document_file_page_image',
-    label=_('Generate document page image')
+    label=_('Generate document file page image')
+)
+queue_converter.add_task_type(
+    dotted_path='mayan.apps.documents.tasks.task_generate_document_version_page_image',
+    label=_('Generate document version page image')
 )
 
 queue_documents.add_task_type(

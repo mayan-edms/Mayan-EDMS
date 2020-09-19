@@ -10,7 +10,9 @@ from mayan.apps.views.generics import (
 from mayan.apps.views.mixins import ExternalObjectMixin
 
 from ..events import event_document_view
-#from ..forms import DocumentVersionDownloadForm, DocumentVersionPreviewForm
+from ..forms.document_version_forms import (
+    DocumentVersionDownloadForm, DocumentVersionPreviewForm
+)
 from ..models import Document, DocumentVersion
 from ..permissions import (
     #permission_document_version_revert, permission_document_version_view
@@ -124,7 +126,7 @@ class DocumentVersionRevertView(ExternalObjectMixin, ConfirmView):
             )
 '''
 
-'''
+
 class DocumentVersionView(SingleObjectDetailView):
     form_class = DocumentVersionPreviewForm
     model = DocumentVersion
@@ -148,6 +150,6 @@ class DocumentVersionView(SingleObjectDetailView):
         return {
             'hide_labels': True,
             'object': self.object,
-            'title': _('Preview of document file: %s') % self.object,
+            'title': _('Preview of document version: %s') % self.object,
         }
-'''
+
