@@ -1,9 +1,14 @@
 from django import forms
+from django.template.defaultfilters import filesizeformat
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.common.forms import DetailForm
+
 from ..fields import DocumentFileField
+from ..models.document_file_models import DocumentFile
 
 from .document_forms import DocumentDownloadForm
+
 
 __all__ = ('DocumentFileDownloadForm', 'DocumentFilePreviewForm',)
 
@@ -26,3 +31,49 @@ class DocumentFilePreviewForm(forms.Form):
         self.fields['document_file'].initial = document_file
 
     document_file = DocumentFileField()
+
+
+class DocumentFilePropertiesForm(DetailForm):
+    """
+    Detail class form to display a document file properties
+    """
+    def __init__(self, *args, **kwargs):
+        document_file = kwargs['instance']
+
+        extra_fields = [
+            {
+                'label': _('Date added'),
+                'field': 'timestamp',
+                'widget': forms.widgets.DateTimeInput
+            },
+            {
+                'label': _('File mimetype'),
+                'field': lambda x: document_file.mimetype or _('None')
+            },
+            {
+                'label': _('File encoding'),
+                'field': lambda x: document_file.encoding or _(
+                    'None'
+                )
+            },
+            {
+                'label': _('File size'),
+                'field': lambda document_file: filesizeformat(
+                    document_file.size
+                ) if document_file.size else '-'
+            },
+            {'label': _('Exists in storage'), 'field': 'exists'},
+            {
+                'label': _('File path in storage'),
+                'field': 'file'
+            },
+            {'label': _('Checksum'), 'field': 'checksum'},
+            {'label': _('Pages'), 'field': 'page_count'},
+        ]
+
+        kwargs['extra_fields'] = extra_fields
+        super().__init__(*args, **kwargs)
+
+    class Meta:
+        fields = ()
+        model = DocumentFile

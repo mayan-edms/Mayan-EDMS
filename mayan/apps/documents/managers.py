@@ -18,7 +18,12 @@ logger = logging.getLogger(name=__name__)
 
 class DocumentManager(models.Manager):
     def delete_stubs(self):
-        for stale_stub_document in self.filter(is_stub=True, date_added__lt=now() - timedelta(seconds=setting_stub_expiration_interval.value)):
+        stable_stub_documents = self.filter(
+            is_stub=True, date_added__lt=now() - timedelta(
+                seconds=setting_stub_expiration_interval.value
+            )
+        )
+        for stale_stub_document in stable_stub_documents:
             stale_stub_document.delete(to_trash=False)
 
     def get_by_natural_key(self, uuid):
@@ -48,7 +53,9 @@ class DocumentFilePageManager(models.Manager):
         except DocumentFile.DoesNotExist:
             raise self.model.DoesNotExist
 
-        return self.get(document_file__pk=document_file.pk, page_number=page_number)
+        return self.get(
+            document_file__pk=document_file.pk, page_number=page_number
+        )
 
 
 class DocumentTypeManager(models.Manager):
@@ -298,10 +305,3 @@ class ValidDocumentManager(models.Manager):
         return super().get_queryset().filter(
             in_trash=False
         )
-
-
-#class ValidDocumentFilePageManager(models.Manager):
-#    def get_queryset(self):
-#        return models.QuerySet(
-#            model=self.model, using=self._db
-#        ).filter(enabled=True)

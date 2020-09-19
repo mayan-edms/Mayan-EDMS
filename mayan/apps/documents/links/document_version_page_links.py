@@ -32,39 +32,8 @@ def is_min_zoom(context):
     return context['zoom'] <= setting_zoom_min_level.value
 
 
-def is_document_version_page_enabled(context):
-    return context['resolved_object'].enabled
-
-
-def is_document_version_page_disabled(context):
-    return not context['resolved_object'].enabled
-
 
 '''
-link_document_version_page_disable = Link(
-    condition=is_document_version_page_enabled,
-    icon_class_path='mayan.apps.documents.icons.icon_document_version_page_disable',
-    kwargs={'document_version_page_id': 'resolved_object.id'},
-    permissions=(permission_document_edit,), text=_('Disable page'),
-    view='documents:document_version_page_disable'
-)
-link_document_version_page_multiple_disable = Link(
-    icon_class_path='mayan.apps.documents.icons.icon_document_version_page_disable',
-    text=_('Disable pages'),
-    view='documents:document_version_page_multiple_disable'
-)
-link_document_version_page_enable = Link(
-    condition=is_document_version_page_disabled,
-    icon_class_path='mayan.apps.documents.icons.icon_document_version_page_enable',
-    kwargs={'document_version_page_id': 'resolved_object.id'},
-    permissions=(permission_document_edit,), text=_('Enable page'),
-    view='documents:document_version_page_enable'
-)
-link_document_version_page_multiple_enable = Link(
-    icon_class_path='mayan.apps.documents.icons.icon_document_version_page_enable',
-    text=_('Enable pages'),
-    view='documents:document_version_page_multiple_enable'
-)
 link_document_version_page_navigation_first = Link(
     args='resolved_object.pk', conditional_disable=is_first_page,
     icon_class=icon_document_version_page_navigation_first,
@@ -143,7 +112,7 @@ link_document_multiple_update_page_count = Link(
     text=_('Recalculate page count'),
     view='documents:document_multiple_update_page_count'
 )
-link_document_update_page_count = Link(
+link_document_file_page_count_update = Link(
     args='resolved_object.pk',
     icon_class_path='mayan.apps.documents.icons.icon_document_version_page_count_update',
     permissions=(permission_document_tools,),

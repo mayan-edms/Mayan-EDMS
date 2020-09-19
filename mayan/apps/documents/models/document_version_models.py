@@ -1,4 +1,3 @@
-import hashlib
 import logging
 import os
 import shutil
@@ -13,16 +12,10 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.common.classes import ModelQueryFields
 from mayan.apps.common.signals import signal_mayan_pre_save
 from mayan.apps.converter.classes import ConverterBase
-from mayan.apps.converter.exceptions import InvalidOfficeFormat, PageCountError
-from mayan.apps.converter.layers import layer_saved_transformations
-from mayan.apps.converter.transformations import TransformationRotate
-from mayan.apps.mimetype.api import get_mimetype
-from mayan.apps.storage.classes import DefinedStorageLazy
 from mayan.apps.templating.classes import Template
 
-from ..events import event_document_file_new, event_document_file_revert
+#from ..events import event_document_version_deleted, event_document_version_new
 from ..literals import STORAGE_NAME_DOCUMENT_VERSION_PAGE_IMAGE_CACHE
-#from ..managers import DocumentFileManager
 from ..signals import signal_post_document_created, signal_post_file_upload
 
 from .document_models import Document
@@ -75,15 +68,6 @@ class DocumentVersion(models.Model):
 
         return super().delete(*args, **kwargs)
 
-    #def fix_orientation(self):
-    #    for page in self.pages.all():
-    #        degrees = page.detect_orientation()
-    #        if degrees:
-    #            layer_saved_transformations.add_transformation_to(
-    #                obj=page, transformation_class=TransformationRotate,
-    #                arguments='{{"degrees": {}}}'.format(360 - degrees)
-    #            )
-
     def get_absolute_url(self):
         return reverse(
             viewname='documents:document_version_view', kwargs={
@@ -96,40 +80,6 @@ class DocumentVersion(models.Model):
         if first_page:
             return first_page.get_api_image_url(*args, **kwargs)
 
-    """
-    def get_intermediate_file(self):
-        cache_filename = 'intermediate_file'
-        cache_file = self.cache_partition.get_file(filename=cache_filename)
-        if cache_file:
-            logger.debug('Intermidiate file found.')
-            return cache_file.open()
-        else:
-            logger.debug('Intermidiate file not found.')
-
-            try:
-                with self.open() as file_object:
-                    converter = ConverterBase.get_converter_class()(
-                        file_object=file_object
-                    )
-                    with converter.to_pdf() as pdf_file_object:
-                        with self.cache_partition.create_file(filename=cache_filename) as file_object:
-                            shutil.copyfileobj(
-                                fsrc=pdf_file_object, fdst=file_object
-                            )
-
-                        return self.cache_partition.get_file(filename=cache_filename).open()
-            except InvalidOfficeFormat:
-                return self.open()
-            except Exception as exception:
-                logger.error(
-                    'Error creating intermediate file "%s"; %s.',
-                    cache_filename, exception
-                )
-                cache_file = self.cache_partition.get_file(filename=cache_filename)
-                if cache_file:
-                    cache_file.delete()
-                raise
-    """
     def get_rendered_string(self, preserve_extension=False):
         if preserve_extension:
             filename, extension = os.path.splitext(self.document.label)
@@ -155,28 +105,6 @@ class DocumentVersion(models.Model):
     @property
     def is_in_trash(self):
         return self.document.is_in_trash
-
-    '''
-    def open(self, raw=False):
-        """
-        Return a file descriptor to a document file's file irrespective of
-        the storage backend
-        """
-        if raw:
-            return self.file.storage.open(name=self.file.name)
-        else:
-            file_object = self.file.storage.open(name=self.file.name)
-
-            result = DocumentFile._execute_hooks(
-                hook_list=DocumentFile._pre_open_hooks,
-                instance=self, file_object=file_object
-            )
-
-            if result:
-                return result['file_object']
-            else:
-                return file_object
-    '''
 
     @property
     def page_count(self):
@@ -206,13 +134,6 @@ class DocumentVersion(models.Model):
                 self.pages.create(
                     content_object=document_file_page
                 )
-
-    #@property
-    #def pages_valid(self):
-    #    DocumentVersionPage = apps.get_model(
-    #        app_label='documents', model_name='DocumentVersionPage'
-    #    )
-    #    return self.pages.filter(pk__in=DocumentVersionPage.valid.filter(document_file=self))
 
     '''
     def save(self, *args, **kwargs):
@@ -281,20 +202,6 @@ class DocumentVersion(models.Model):
                 #        instance=self.document, sender=Document
                 #    )
     '''
-    #def save_to_file(self, file_object):
-    #    """
-    #    Save a copy of the document from the document storage backend
-    #    to the local filesystem
-    #    """
-    #    with self.open() as input_file_object:
-    #        shutil.copyfileobj(fsrc=input_file_object, fdst=file_object)
-
-    #@property
-    #def size(self):
-    #    if self.exists():
-    #        return self.file.storage.size(self.file.name)
-    #    else:
-    #        return None
 
     @property
     def uuid(self):

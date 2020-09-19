@@ -3,8 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.navigation.classes import Link
 
 from ..permissions import (
-    #permission_document_download, permission_document_version_revert,
-    permission_document_version_view,
+    permission_document_version_delete, permission_document_version_view,
     permission_document_view,
 )
 
@@ -20,6 +19,12 @@ def is_not_current_version(context):
     return document_version.document.latest_version.timestamp != document_version.timestamp
 
 
+link_document_version_delete = Link(
+    args='resolved_object.pk',
+    icon_class_path='mayan.apps.documents.icons.icon_document_version_delete',
+    permissions=(permission_document_version_delete,), tags='dangerous',
+    text=_('Delete'), view='documents:document_version_delete',
+)
 link_document_version_list = Link(
     args='resolved_object.pk',
     icon_class_path='mayan.apps.documents.icons.icon_document_version_list',
@@ -50,9 +55,3 @@ link_document_version_view = Link(
     permissions=(permission_document_version_view,),
     text=_('Preview'), view='documents:document_version_view'
 )
-#link_document_version_revert = Link(
-#    args='object.pk', condition=is_not_current_version,
-#    icon_class_path='mayan.apps.documents.icons.icon_document_version_revert',
-#    permissions=(permission_document_version_revert,), tags='dangerous',
-#    text=_('Revert'), view='documents:document_version_revert',
-#)

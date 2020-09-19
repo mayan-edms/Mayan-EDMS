@@ -63,19 +63,19 @@ from .links.document_links import (
 )
 from .links.document_file_links import (
     link_document_file_download, link_document_file_list,
-    link_document_file_return_document, link_document_file_return_list,
-    link_document_file_revert, link_document_file_view
+    link_document_file_properties, link_document_file_return_document,
+    link_document_file_return_list, link_document_file_revert,
+    link_document_file_view
 )
 from .links.document_file_page_links import (
-    link_document_multiple_update_page_count, link_document_file_page_disable,
-    link_document_file_page_enable, link_document_file_page_multiple_enable,
-    link_document_file_page_multiple_disable, link_document_file_page_navigation_first,
+    link_document_multiple_update_page_count,
+    link_document_file_page_navigation_first,
     link_document_file_page_navigation_last, link_document_file_page_navigation_next,
     link_document_file_page_navigation_previous, link_document_file_page_return,
     link_document_file_page_rotate_left, link_document_file_page_rotate_right,
     link_document_file_page_view, link_document_file_page_view_reset,
     link_document_file_page_zoom_in, link_document_file_page_zoom_out,
-    link_document_file_pages, link_document_update_page_count
+    link_document_file_pages, link_document_file_page_count_update
 )
 from .links.document_type_links import (
     link_document_type_create, link_document_type_delete,
@@ -85,7 +85,11 @@ from .links.document_type_links import (
     link_document_type_list, link_document_type_policies,
     link_document_type_setup
 )
-from .links.document_version_links import link_document_version_list
+from .links.document_version_links import (
+    link_document_version_delete, link_document_version_list,
+    link_document_version_view
+)
+from .links.document_version_page_links import link_document_version_pages
 from .links.duplicated_document_links import (
     link_document_duplicates_list, link_duplicated_document_list,
     link_duplicated_document_scan
@@ -122,10 +126,6 @@ from .widgets import (
 )
 
 
-def is_document_file_page_enabled(context):
-    return context['object'].enabled
-
-
 class DocumentsApp(MayanAppConfig):
     app_namespace = 'documents'
     app_url = 'documents'
@@ -145,6 +145,7 @@ class DocumentsApp(MayanAppConfig):
         DocumentType = self.get_model(model_name='DocumentType')
         DocumentTypeFilename = self.get_model(model_name='DocumentTypeFilename')
         DocumentVersion = self.get_model(model_name='DocumentVersion')
+        DocumentVersionPage = self.get_model(model_name='DocumentVersionPage')
         DuplicatedDocument = self.get_model(model_name='DuplicatedDocument')
 
         link_decorations_list = link_transformation_list.copy(
@@ -340,11 +341,36 @@ class DocumentsApp(MayanAppConfig):
             source=Document, views=('documents:duplicated_document_list',)
         )
 
+        # DocumentFile
+        SourceColumn(
+            source=DocumentFile, attribute='file', is_identifier=True,
+            is_object_absolute_url=True
+        )
+        SourceColumn(
+            func=lambda context: document_file_page_thumbnail_widget.render(
+                instance=context['object']
+            ), html_extra_classes='text-center document-thumbnail-list',
+            label=_('Thumbnail'), source=DocumentFile
+        )
+        SourceColumn(
+            func=lambda context: widget_document_file_page_number(
+                document_file=context['object']
+            ), label=_('Pages'), source=DocumentFile
+        )
+        SourceColumn(
+            attribute='mimetype', is_sortable=True, source=DocumentFile
+        )
+        SourceColumn(
+            attribute='encoding', is_sortable=True, source=DocumentFile
+        )
+        SourceColumn(
+            attribute='comment', is_sortable=True, source=DocumentFile
+        )
+
         # DocumentFilePage
         SourceColumn(
-            attribute='get_label', is_identifier=True,
+            attribute='page_number', is_identifier=True,
             is_object_absolute_url=True, source=DocumentFilePage,
-            widget_condition=is_document_file_page_enabled
         )
         SourceColumn(
             func=lambda context: document_file_page_thumbnail_widget.render(
@@ -352,13 +378,9 @@ class DocumentsApp(MayanAppConfig):
             ), html_extra_classes='text-center document-thumbnail-list',
             label=_('Thumbnail'), source=DocumentFilePage
         )
-        SourceColumn(
-            attribute='enabled', include_label=True, source=DocumentFilePage,
-            widget=TwoStateWidget
-        )
-        SourceColumn(
-            attribute='page_number', include_label=True, source=DocumentFilePage
-        )
+        #SourceColumn(
+        #    attribute='page_number', include_label=True, source=DocumentFilePage
+        #)
 
         SourceColumn(
             attribute='get_label', is_identifier=True,
@@ -396,42 +418,6 @@ class DocumentsApp(MayanAppConfig):
             source=DocumentTypeFilename, widget=TwoStateWidget
         )
 
-        # DeletedDocument
-        SourceColumn(
-            attribute='label', is_identifier=True, is_sortable=True,
-            source=DeletedDocument
-        )
-        SourceColumn(
-            attribute='deleted_date_time', include_label=True, order=99,
-            source=DeletedDocument
-        )
-
-        # DocumentFile
-        SourceColumn(
-            source=DocumentFile, attribute='timestamp', is_identifier=True,
-            is_object_absolute_url=True
-        )
-        SourceColumn(
-            func=lambda context: document_file_page_thumbnail_widget.render(
-                instance=context['object']
-            ), html_extra_classes='text-center document-thumbnail-list',
-            label=_('Thumbnail'), source=DocumentFile
-        )
-        SourceColumn(
-            func=lambda context: widget_document_file_page_number(
-                document_file=context['object']
-            ), label=_('Pages'), source=DocumentFile
-        )
-        SourceColumn(
-            attribute='mimetype', is_sortable=True, source=DocumentFile
-        )
-        SourceColumn(
-            attribute='encoding', is_sortable=True, source=DocumentFile
-        )
-        SourceColumn(
-            attribute='comment', is_sortable=True, source=DocumentFile
-        )
-
         # DocumentVersion
         SourceColumn(
             source=DocumentVersion, attribute='timestamp', is_identifier=True,
@@ -450,6 +436,46 @@ class DocumentsApp(MayanAppConfig):
         )
         SourceColumn(
             attribute='comment', is_sortable=True, source=DocumentVersion
+        )
+
+        # DocumentVersionPage
+        SourceColumn(
+            attribute='page_number', is_identifier=True,
+            is_object_absolute_url=True, source=DocumentVersionPage,
+        )
+        SourceColumn(
+            func=lambda context: document_version_page_thumbnail_widget.render(
+                instance=context['object']
+            ), html_extra_classes='text-center document-thumbnail-list',
+            label=_('Thumbnail'), source=DocumentVersionPage
+        )
+        #SourceColumn(
+        #    attribute='page_number', include_label=True, source=DocumentVersionPage
+        #)
+
+        #SourceColumn(
+        #    attribute='get_label', is_identifier=True,
+        #    is_object_absolute_url=True, source=DocumentVersionPageResult
+        #)
+        #SourceColumn(
+        #    func=lambda context: document_version_page_thumbnail_widget.render(
+        #        instance=context['object']
+        #    ), html_extra_classes='text-center document-thumbnail-list',
+        #    label=_('Thumbnail'), source=DocumentVersionPageResult
+        #)
+        #SourceColumn(
+        #    attribute='document_version.document.document_type',
+        #    label=_('Type'), source=DocumentVersionPageResult
+        #)
+
+        # DeletedDocument
+        SourceColumn(
+            attribute='label', is_identifier=True, is_sortable=True,
+            source=DeletedDocument
+        )
+        SourceColumn(
+            attribute='deleted_date_time', include_label=True, order=99,
+            source=DeletedDocument
         )
 
         Template(
@@ -544,7 +570,7 @@ class DocumentsApp(MayanAppConfig):
                 link_document_quick_download, link_document_download,
                 link_document_clear_transformations,
                 link_document_clone_transformations,
-                link_document_update_page_count,
+                link_document_file_page_count_update,
             ), sources=(Document,)
         )
         menu_object.bind_links(
@@ -570,7 +596,9 @@ class DocumentsApp(MayanAppConfig):
                 link_document_file_list, link_document_version_list
             ), sources=(Document,), position=2
         )
-        menu_facet.bind_links(links=(link_document_file_pages,), sources=(Document,))
+        menu_facet.bind_links(
+            links=(link_document_file_pages,), sources=(DocumentFile,)
+        )
 
         # Document actions
         menu_object.bind_links(
@@ -617,16 +645,6 @@ class DocumentsApp(MayanAppConfig):
         menu_list_facet.bind_links(
             links=(link_transformation_list,), sources=(DocumentFilePage,)
         )
-        menu_multi_item.bind_links(
-            links=(
-                link_document_file_page_multiple_disable,
-                link_document_file_page_multiple_enable
-            ), sources=(DocumentFilePage,)
-        )
-        menu_object.bind_links(
-            links=(link_document_file_page_disable, link_document_file_page_enable),
-            sources=(DocumentFilePage,)
-        )
         menu_related.bind_links(
             links=(link_document_file_page_return,),
             sources=(DocumentFilePage,)
@@ -634,7 +652,9 @@ class DocumentsApp(MayanAppConfig):
 
         # Document files
         menu_list_facet.bind_links(
-            links=(link_document_file_view,), sources=(DocumentFile,)
+            links=(
+                link_document_file_properties, link_document_file_view,
+            ), sources=(DocumentFile,)
         )
         menu_related.bind_links(
             links=(
@@ -645,6 +665,18 @@ class DocumentsApp(MayanAppConfig):
             links=(
                 link_document_file_return_list,
             ), sources=(DocumentFile,)
+        )
+
+        # Document versions
+        menu_facet.bind_links(
+            links=(link_document_version_pages, link_document_version_view,),
+            sources=(DocumentVersion,)
+        )
+        menu_object.bind_links(
+            links=(
+                link_document_version_delete,
+            ),
+            sources=(DocumentVersion,)
         )
 
         # Trashed documents

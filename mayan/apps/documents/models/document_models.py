@@ -146,6 +146,21 @@ class Document(HooksMixin, models.Model):
     #def date_updated(self):
     #    return self.latest_file.timestamp
 
+    def create_initial_version(self):
+        if self.versions.all().count() == 0:
+            with transaction.atomic():
+                document_version = self.versions.create(
+                    comment=_('Initial document version.')
+                )
+
+                latest_file = self.latest_file
+                if latest_file:
+                    for document_file_page in self.latest_file.pages.all():
+                        document_version.pages.create(
+                            content_object=document_file_page,
+                            page_number=document_file_page.page_number
+                        )
+
     def delete(self, *args, **kwargs):
         to_trash = kwargs.pop('to_trash', True)
         _user = kwargs.pop('_user', None)
@@ -190,9 +205,9 @@ class Document(HooksMixin, models.Model):
         )
 
     def get_api_image_url(self, *args, **kwargs):
-        latest_file = self.latest_file
-        if latest_file:
-            return latest_file.get_api_image_url(*args, **kwargs)
+        latest_version = self.latest_version
+        if latest_version:
+            return latest_version.get_api_image_url(*args, **kwargs)
 
     @property
     def is_in_trash(self):
@@ -238,7 +253,7 @@ class Document(HooksMixin, models.Model):
     @property
     def pages(self):
         try:
-            return self.latest_file.pages
+            return self.latest_version.pages
         except AttributeError:
             # Document has no file yet
             DocumentFilePage = apps.get_model(
@@ -246,19 +261,6 @@ class Document(HooksMixin, models.Model):
             )
 
             return DocumentFilePage.objects.none()
-
-    #TODO: Merge with `pages` property.
-    #@property
-    #def pages_valid(self):
-    #    try:
-    #        return self.latest_file.pages_valid
-    #    except AttributeError:
-    #        # Document has no file yet
-    #        DocumentFilePage = apps.get_model(
-    #            app_label='documents', model_name='DocumentFilePage'
-    #        )
-
-    #        return DocumentFilePage.objects.none()
 
     def restore(self):
         self.in_trash = False

@@ -130,7 +130,7 @@ class DocumentForm(forms.ModelForm):
 class DocumentPreviewForm(forms.Form):
     def __init__(self, *args, **kwargs):
         document = kwargs.pop('instance', None)
-        super(DocumentPreviewForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.fields['document'].initial = document
 
     document = DocumentField()

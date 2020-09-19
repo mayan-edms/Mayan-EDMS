@@ -13,10 +13,11 @@ from .api_views import (
 )
 from .views.document_file_views import (
     DocumentFileDownloadFormView, DocumentFileDownloadView,
-    DocumentFileListView, DocumentFileRevertView, DocumentFileView,
+    DocumentFileListView, DocumentFilePropertiesView, DocumentFileRevertView,
+    DocumentFileView,
 )
 from .views.document_file_page_views import (
-    DocumentFilePageDisable, DocumentFilePageEnable, DocumentFilePageListView,
+    DocumentFilePageListView,
     DocumentFilePageNavigationFirst, DocumentFilePageNavigationLast,
     DocumentFilePageNavigationNext, DocumentFilePageNavigationPrevious,
     DocumentFilePageRotateLeftView, DocumentFilePageRotateRightView,
@@ -31,9 +32,11 @@ from .views.document_type_views import (
     DocumentTypeFilenameEditView, DocumentTypeFilenameListView,
     DocumentTypeListView
 )
-from .views.document_version_page_views import DocumentVersionPageListView
+from .views.document_version_page_views import (
+    DocumentVersionPageListView, DocumentVersionPageView
+)
 from .views.document_version_views import (
-    DocumentVersionListView, DocumentVersionView
+    DocumentVersionDeleteView, DocumentVersionListView, DocumentVersionView
 )
 from .views.document_views import (
     DocumentDocumentTypeEditView, DocumentDownloadFormView,
@@ -80,38 +83,26 @@ urlpatterns_document_files = [
         view=DocumentFileDownloadView.as_view()
     ),
     url(
+        regex=r'^documents/files/(?P<document_file_id>\d+)/properties/$',
+        name='document_file_properties',
+        view=DocumentFilePropertiesView.as_view()
+    ),
+    url(
         regex=r'^documents/files/(?P<document_file_id>\d+)/revert/$',
         name='document_file_revert',
         view=DocumentFileRevertView.as_view()
     ),
+
 ]
 
 urlpatterns_document_file_pages = [
     url(
-        regex=r'^documents/(?P<document_id>\d+)/pages/$',
+        regex=r'^documents/files/(?P<document_file_id>\d+)/pages/$',
         name='document_file_pages', view=DocumentFilePageListView.as_view()
     ),
     url(
         regex=r'^documents/pages/(?P<document_file_page_id>\d+)/$',
         name='document_file_page_view', view=DocumentFilePageView.as_view()
-    ),
-    url(
-        regex=r'^documents/pages/(?P<document_file_page_id>\d+)/disable/$',
-        name='document_file_page_disable', view=DocumentFilePageDisable.as_view()
-    ),
-    url(
-        regex=r'^documents/pages/multiple/disable/$',
-        name='document_file_page_multiple_disable',
-        view=DocumentFilePageDisable.as_view()
-    ),
-    url(
-        regex=r'^documents/pages/(?P<document_file_page_id>\d+)/enable/$',
-        name='document_file_page_enable', view=DocumentFilePageEnable.as_view()
-    ),
-    url(
-        regex=r'^documents/pages/multiple/enable/$',
-        name='document_file_page_multiple_enable',
-        view=DocumentFilePageEnable.as_view()
     ),
     url(
         regex=r'^documents/pages/(?P<document_file_page_id>\d+)/navigation/next/$',
@@ -214,9 +205,58 @@ urlpatterns_document_types = [
 
 urlpatterns_document_version_pages = [
     url(
-        regex=r'^documents/version/(?P<document_version_id>\d+)/pages/$',
-        name='document_version_pages', view=DocumentVersionPageListView.as_view()
+        regex=r'^documents/versions/(?P<document_version_id>\d+)/pages/$',
+        name='document_version_pages',
+        view=DocumentVersionPageListView.as_view()
     ),
+    url(
+        regex=r'^documents/versions/pages/(?P<document_version_page_id>\d+)/$',
+        name='document_version_page_view',
+        view=DocumentVersionPageView.as_view()
+    ),
+    #url(
+    #    regex=r'^documents/versions/(?P<document_file_version_id>\d+)/navigation/next/$',
+    #    name='document_file_version_navigation_next',
+    #    view=DocumentVersionPageNavigationNext.as_view()
+    #),
+    #url(
+    #    regex=r'^documents/versions/(?P<document_file_version_id>\d+)/navigation/previous/$',
+    #    name='document_file_version_navigation_previous',
+    #    view=DocumentVersionPageNavigationPrevious.as_view()
+    #),
+    #url(
+    #    regex=r'^documents/versions/(?P<document_file_version_id>\d+)/navigation/first/$',
+    #    name='document_file_version_navigation_first',
+    #    view=DocumentVersionPageNavigationFirst.as_view()
+    #),
+    #url(
+    #    regex=r'^documents/versions/(?P<document_file_version_id>\d+)/navigation/last/$',
+    #    name='document_file_version_navigation_last',
+    #    view=DocumentVersionPageNavigationLast.as_view()
+    #),
+    #url(
+    #    regex=r'^documents/versions/(?P<document_file_version_id>\d+)/zoom/in/$',
+    #    name='document_file_version_zoom_in', view=DocumentVersionPageZoomInView.as_view()
+    #),
+    #url(
+    #    regex=r'^documents/versions/(?P<document_file_version_id>\d+)/zoom/out/$',
+    #    name='document_file_version_zoom_out', view=DocumentVersionPageZoomOutView.as_view()
+    #),
+    #url(
+    #    regex=r'^documents/versions/(?P<document_file_version_id>\d+)/rotate/left/$',
+    #    name='document_file_version_rotate_left',
+    #    view=DocumentVersionPageRotateLeftView.as_view()
+    #),
+    #url(
+    #    regex=r'^documents/versions/(?P<document_file_version_id>\d+)/rotate/right/$',
+    #    name='document_file_version_rotate_right',
+    #    view=DocumentVersionPageRotateRightView.as_view()
+    #),
+    #url(
+    #    regex=r'^documents/versions/(?P<document_file_version_id>\d+)/reset/$',
+    #    name='document_file_version_view_reset',
+    #    view=DocumentVersionPageViewResetView.as_view()
+    #),
 ]
 
 urlpatterns_document_version = [
@@ -227,6 +267,11 @@ urlpatterns_document_version = [
     url(
         regex=r'^documents/versions/(?P<document_version_id>\d+)/$',
         name='document_version_view', view=DocumentVersionView.as_view()
+    ),
+    url(
+        regex=r'^documents/versions/(?P<document_version_id>\d+)/delete/$',
+        name='document_version_delete',
+        view=DocumentVersionDeleteView.as_view()
     ),
 ]
 

@@ -10,7 +10,8 @@ from mayan.apps.views.mixins import ExternalObjectMixin
 
 from ..events import event_document_view
 from ..forms.document_file_forms import (
-    DocumentFileDownloadForm, DocumentFilePreviewForm
+    DocumentFileDownloadForm, DocumentFilePreviewForm,
+    DocumentFilePropertiesForm
 )
 from ..models.document_models import Document
 from ..models.document_file_models import DocumentFile
@@ -88,6 +89,27 @@ class DocumentFileListView(ExternalObjectMixin, SingleObjectListView):
         return self.get_document().files.order_by('-timestamp')
 
 
+class DocumentFilePropertiesView(SingleObjectDetailView):
+    form_class = DocumentFilePropertiesForm
+    model = DocumentFile
+    object_permission = permission_document_file_view
+    pk_url_kwarg = 'document_file_id'
+
+    def dispatch(self, request, *args, **kwargs):
+        result = super().dispatch(request, *args, **kwargs)
+        self.object.document.add_as_recent_document_for_user(
+            user=request.user
+        )
+        return result
+
+    def get_extra_context(self):
+        return {
+            'document_file': self.object,
+            'object': self.object,
+            'title': _('Properties of document file: %s') % self.object,
+        }
+
+
 class DocumentFileRevertView(ExternalObjectMixin, ConfirmView):
     external_object_class = DocumentFile
     external_object_permission = permission_document_file_revert
@@ -124,11 +146,9 @@ class DocumentFileView(SingleObjectDetailView):
     pk_url_kwarg = 'document_file_id'
 
     def dispatch(self, request, *args, **kwargs):
-        result = super(
-            DocumentFileView, self
-        ).dispatch(request, *args, **kwargs)
+        result = super().dispatch(request, *args, **kwargs)
         self.object.document.add_as_recent_document_for_user(
-            request.user
+            user=request.user
         )
         event_document_view.commit(
             actor=request.user, target=self.object.document

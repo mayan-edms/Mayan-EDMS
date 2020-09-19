@@ -31,6 +31,12 @@ link_document_file_download = Link(
     permissions=(permission_document_download,), text=_('Download file'),
     view='documents:document_file_download_form'
 )
+link_document_file_properties = Link(
+    args='resolved_object.id',
+    icon_class_path='mayan.apps.documents.icons.icon_document_file_properties',
+    permissions=(permission_document_file_view,),
+    text=_('Properties'), view='documents:document_file_properties',
+)
 link_document_file_return_document = Link(
     args='resolved_object.document.pk',
     icon_class_path='mayan.apps.documents.icons.icon_document_file_return_document',

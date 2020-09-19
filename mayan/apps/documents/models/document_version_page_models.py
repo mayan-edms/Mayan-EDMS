@@ -20,7 +20,7 @@ from mayan.apps.converter.transformations import (
     BaseTransformation, TransformationResize, TransformationRotate,
     TransformationZoom
 )
-#from mayan.apps.converter.utils import get_converter_class
+from mayan.apps.lock_manager.backends.base import LockingBackend
 
 #from ..managers import DocumentPageManager
 from ..settings import (
@@ -77,9 +77,14 @@ class DocumentVersionPage(models.Model):
         self.cache_partition.delete()
         super().delete(*args, **kwargs)
 
+    '''
     def generate_image(self, user=None, **kwargs):
         transformation_list = self.get_combined_transformation_list(user=user, **kwargs)
-        combined_cache_filename = BaseTransformation.combine(transformation_list)
+
+        combined_cache_filename = '{}-{}'.format(
+            self.content_object.generate_image(),
+            BaseTransformation.combine(transformation_list)
+        )
 
         # Check is transformed image is available
         logger.debug('transformations cache filename: %s', combined_cache_filename)
@@ -97,11 +102,50 @@ class DocumentVersionPage(models.Model):
                 file_object.write(image.getvalue())
 
         return combined_cache_filename
+    '''
+
+    def generate_image(self, user=None, **kwargs):
+        transformation_list = self.get_combined_transformation_list(user=user, **kwargs)
+
+        combined_cache_filename = '{}-{}'.format(
+            self.content_object.generate_image(),
+            BaseTransformation.combine(transformations=transformation_list)
+        )
+
+        # Check is transformed image is available
+        logger.debug('transformations cache filename: %s', combined_cache_filename)
+
+        try:
+            lock = LockingBackend.get_instance().acquire_lock(
+                name='document_version_page_generate_image_{}_{}'.format(
+                    self.pk, combined_cache_filename
+                )
+            )
+        except Exception:
+            raise
+        else:
+            # Second try block to release the lock even on fatal errors inside
+            # the block.
+            try:
+                if self.cache_partition.get_file(filename=combined_cache_filename):
+                    logger.debug(
+                        'transformations cache file "%s" found', combined_cache_filename
+                    )
+                else:
+                    logger.debug(
+                        'transformations cache file "%s" not found', combined_cache_filename
+                    )
+                    image = self.get_image(transformations=transformation_list)
+                    with self.cache_partition.create_file(filename=combined_cache_filename) as file_object:
+                        file_object.write(image.getvalue())
+                return combined_cache_filename
+            finally:
+                lock.release()
 
     def get_absolute_url(self):
         return reverse(
             viewname='documents:document_version_page_view', kwargs={
-                'document_version_page_pk': self.pk
+                'document_version_page_id': self.pk
             }
         )
 
@@ -186,71 +230,6 @@ class DocumentVersionPage(models.Model):
 
         return transformation_list
 
-    '''
-    #Berkeley county
-    def get_image(self, transformations=None):
-        cache_filename = 'document_version_page'
-        logger.debug('Document version page cache filename: %s', cache_filename)
-
-        cache_file = self.cache_partition.get_file(filename=cache_filename)
-
-        if cache_file:
-            logger.debug('Document version page cache file "%s" found', cache_filename)
-
-            with cache_file.open() as file_object:
-                converter = get_converter_class()(
-                    file_object=file_object
-                )
-
-                converter.seek_page(page_number=0)
-
-                # This code is also repeated below to allow using a context
-                # manager with cache_file.open and close it automatically.
-                # Apply runtime transformations
-                for transformation in transformations:
-                    converter.transform(transformation=transformation)
-
-                return converter.get_page()
-        else:
-            logger.debug('Document version page cache file "%s" not found', cache_filename)
-
-            try:
-                #with self.document_version.get_intermediate_file() as file_object:
-                #Render or get cached document version page
-
-                #self.content_object.generate_image()
-                self.content_object.get_image()
-                cache_filename = 'base_image'
-                cache_file = self.content_object.cache_partition.get_file(filename=cache_filename)
-
-                with cache_file.open() as file_object:
-                    converter = get_converter_class()(
-                        file_object=file_object
-                    )
-                    converter.seek_page(page_number=0)
-                    #self.page_number - 1)
-
-                    page_image = converter.get_page()
-
-                    cache_filename = 'document_page'
-
-                    # Since open "wb+" doesn't create files, create it explicitly
-                    with self.cache_partition.create_file(filename=cache_filename) as file_object:
-                        file_object.write(page_image.getvalue())
-
-                    # Apply runtime transformations
-                    for transformation in transformations:
-                        converter.transform(transformation=transformation)
-
-                    return converter.get_page()
-            except Exception as exception:
-                # Cleanup in case of error
-                logger.error(
-                    'Error creating page cache file "%s"; %s',
-                    cache_filename, exception
-                )
-                raise
-    '''
     def get_image(self, transformations=None):
         cache_filename = 'base_image'
         logger.debug('Page cache filename: %s', cache_filename)
@@ -286,19 +265,8 @@ class DocumentVersionPage(models.Model):
                         file_object=file_object
                     )
                     converter.seek_page(page_number=0)
-                    #self.page_number - 1)
 
                     page_image = converter.get_page()
-
-                #    cache_filename = 'document_page'
-                ###
-                #with self.document_version.get_intermediate_version() as file_object:
-                #    converter = ConverterBase.get_converter_class()(
-                #        file_object=file_object
-                #    )
-                #    converter.seek_page(page_number=self.page_number - 1)
-
-                #    page_image = converter.get_page()
 
                     # Since open "wb+" doesn't create versions, create it explicitly
                     with self.cache_partition.create_file(filename=cache_filename) as file_object:
@@ -319,7 +287,7 @@ class DocumentVersionPage(models.Model):
 
     def get_label(self):
         return _(
-            'Document version page %(page_number)d out of %(total_pages)d of %(document_version)s'
+            'Document version page %(page_number)d of %(total_pages)d from %(document_version)s'
         ) % {
             'document_version': force_text(self.document_version),
             'page_number': self.page_number,
@@ -327,9 +295,9 @@ class DocumentVersionPage(models.Model):
         }
     get_label.short_description = _('Label')
 
-    #@property
-    #def is_in_trash(self):
-    #    return self.document.is_in_trash
+    @property
+    def is_in_trash(self):
+        return self.document_version.is_in_trash
 
     #def natural_key(self):
     #    return (self.page_number, self.document.natural_key())

@@ -37,14 +37,12 @@ class DocumentFilePage(models.Model):
         on_delete=models.CASCADE, related_name='file_pages', to=DocumentFile,
         verbose_name=_('Document file')
     )
-    enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
     page_number = models.PositiveIntegerField(
         db_index=True, default=1, editable=False,
         verbose_name=_('Page number')
     )
 
     objects = DocumentFilePageManager()
-    #valid = ValidDocumentFilePageManager()
 
     class Meta:
         ordering = ('page_number',)
@@ -81,7 +79,9 @@ class DocumentFilePage(models.Model):
 
     def generate_image(self, user=None, **kwargs):
         transformation_list = self.get_combined_transformation_list(user=user, **kwargs)
-        combined_cache_filename = BaseTransformation.combine(transformation_list)
+        combined_cache_filename = BaseTransformation.combine(
+            transformations=transformation_list
+        )
 
         # Check is transformed image is available
         logger.debug('transformations cache filename: %s', combined_cache_filename)
@@ -259,7 +259,7 @@ class DocumentFilePage(models.Model):
     def get_label(self):
         if getattr(self, 'document_file', None):
             return _(
-                'File page %(page_num)d out of %(total_pages)d of %(document_file)s'
+                'Document file page %(page_num)d of %(total_pages)d from %(document_file)s'
             ) % {
                 'document_file': force_text(self.document_file),
                 'page_num': self.page_number,

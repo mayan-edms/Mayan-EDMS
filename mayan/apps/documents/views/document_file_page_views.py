@@ -19,8 +19,9 @@ from mayan.apps.views.utils import resolve
 
 from ..forms.document_file_page_forms import DocumentFilePageForm
 from ..icons import icon_document_file_pages
-from ..links.document_file_page_links import link_document_update_page_count
-from ..models import Document, DocumentFilePage
+from ..links.document_file_page_links import link_document_file_page_count_update
+from ..models.document_file_models import DocumentFile
+from ..models.document_file_page_models import DocumentFilePage
 from ..permissions import permission_document_edit, permission_document_view
 from ..settings import (
     setting_rotation_step, setting_zoom_percent_step, setting_zoom_max_level,
@@ -28,7 +29,7 @@ from ..settings import (
 )
 
 __all__ = (
-    'DocumentFilePageDisable', 'DocumentFilePageEnable', 'DocumentFilePageListView',
+    'DocumentFilePageListView',
     'DocumentFilePageNavigationFirst', 'DocumentFilePageNavigationLast',
     'DocumentFilePageNavigationNext', 'DocumentFilePageNavigationPrevious',
     'DocumentFilePageView', 'DocumentFilePageViewResetView',
@@ -40,27 +41,28 @@ logger = logging.getLogger(name=__name__)
 
 
 class DocumentFilePageListView(ExternalObjectMixin, SingleObjectListView):
-    external_object_class = Document
+    external_object_class = DocumentFile
     external_object_permission = permission_document_view
-    external_object_pk_url_kwarg = 'document_id'
+    external_object_pk_url_kwarg = 'document_file_id'
 
     def get_extra_context(self):
         return {
             'hide_object': True,
             'list_as_items': True,
             'no_results_icon': icon_document_file_pages,
-            'no_results_main_link': link_document_update_page_count.resolve(
+            'no_results_main_link': link_document_file_page_count_update.resolve(
                 request=self.request, resolved_object=self.external_object
             ),
             'no_results_text': _(
-                'This could mean that the document is of a format that is '
-                'not supported, that it is corrupted or that the upload '
-                'process was interrupted. Use the document page recalculation '
-                'action to attempt to introspect the page count again.'
+                'This could mean that the document file is of a format that '
+                'is not supported, that it is corrupted or that the upload '
+                'process was interrupted. Use the document file page '
+                'recalculation action to attempt to introspect the page '
+                'count again.'
             ),
-            'no_results_title': _('No document pages available'),
+            'no_results_title': _('No document file pages available'),
             'object': self.external_object,
-            'title': _('Pages for document: %s') % self.external_object,
+            'title': _('Pages of document file: %s') % self.external_object,
         }
 
     def get_source_queryset(self):
@@ -72,7 +74,6 @@ class DocumentFilePageNavigationBase(ExternalObjectMixin, RedirectView):
     external_object_class = DocumentFilePage
     external_object_permission = permission_document_view
     external_object_pk_url_kwarg = 'document_file_page_id'
-    #external_object_queryset = DocumentFilePage.valid
 
     def get_redirect_url(self, *args, **kwargs):
         """
@@ -157,7 +158,6 @@ class DocumentFilePageView(ExternalObjectMixin, SimpleView):
     external_object_class = DocumentFilePage
     external_object_permission = permission_document_view
     external_object_pk_url_kwarg = 'document_file_page_id'
-    #external_object_queryset = DocumentFilePage.valid
     template_name = 'appearance/generic_form.html'
 
     def get_extra_context(self):
@@ -252,63 +252,3 @@ class DocumentFilePageRotateRightView(DocumentFilePageInteractiveTransformation)
         query_dict['rotation'] = (
             int(query_dict['rotation']) + setting_rotation_step.value
         ) % 360
-
-
-class DocumentFilePageDisable(MultipleObjectConfirmActionView):
-    object_permission = permission_document_edit
-    pk_url_kwarg = 'document_file_page_id'
-    success_message_singular = '%(count)d document page disabled.'
-    success_message_plural = '%(count)d document pages disabled.'
-
-    def get_extra_context(self):
-        queryset = self.object_list
-
-        result = {
-            'title': ungettext(
-                singular='Disable the selected document page?',
-                plural='Disable the selected document pages?',
-                number=queryset.count()
-            )
-        }
-
-        if queryset.count() == 1:
-            result['object'] = queryset.first()
-
-        return result
-
-    def get_source_queryset(self):
-        return DocumentFilePage.objects.all()
-
-    def object_action(self, form, instance):
-        instance.enabled = False
-        instance.save()
-
-
-class DocumentFilePageEnable(MultipleObjectConfirmActionView):
-    object_permission = permission_document_edit
-    pk_url_kwarg = 'document_file_page_id'
-    success_message_singular = '%(count)d document page enabled.'
-    success_message_plural = '%(count)d document pages enabled.'
-
-    def get_extra_context(self):
-        queryset = self.object_list
-
-        result = {
-            'title': ungettext(
-                singular='Enable the selected document page?',
-                plural='Enable the selected document pages?',
-                number=queryset.count()
-            )
-        }
-
-        if queryset.count() == 1:
-            result['object'] = queryset.first()
-
-        return result
-
-    def get_source_queryset(self):
-        return DocumentFilePage.objects.all()
-
-    def object_action(self, form, instance):
-        instance.enabled = True
-        instance.save()

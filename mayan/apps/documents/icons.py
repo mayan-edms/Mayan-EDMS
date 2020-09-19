@@ -92,11 +92,14 @@ icon_document_file_download = Icon(
     driver_name='fontawesome', symbol='download'
 )
 icon_document_file_list = Icon(
-    driver_name='fontawesome', symbol='code-branch'
+    driver_name='fontawesome', symbol='hdd'
+)
+icon_document_file_properties = Icon(
+    driver_name='fontawesome', symbol='info'
 )
 icon_document_file_return_document = icon_document_return
 icon_document_file_return_list = Icon(
-    driver_name='fontawesome', symbol='code-branch'
+    driver_name='fontawesome', symbol='hdd'
 )
 icon_document_file_view = Icon(
     driver_name='fontawesome', symbol='eye'
@@ -107,12 +110,6 @@ icon_document_file_revert = Icon(
 
 # Document file pages
 
-icon_document_file_page_disable = Icon(
-    driver_name='fontawesomecss', css_classes='far fa-eye-slash'
-)
-icon_document_file_page_enable = Icon(
-    driver_name='fontawesomecss', css_classes='far fa-eye'
-)
 icon_document_file_page_navigation_first = Icon(
     driver_name='fontawesome', symbol='step-backward'
 )
@@ -191,6 +188,9 @@ icon_document_type_setup = icon_document_type
 #icon_document_version_download = Icon(
 #    driver_name='fontawesome', symbol='download'
 #)
+icon_document_version_delete = Icon(
+    driver_name='fontawesome', symbol='times'
+)
 icon_document_version_list = Icon(
     driver_name='fontawesome', symbol='code-branch'
 )
@@ -201,9 +201,6 @@ icon_document_version_return_list = Icon(
 icon_document_version_view = Icon(
     driver_name='fontawesome', symbol='eye'
 )
-#icon_document_version_revert = Icon(
-#    driver_name='fontawesome', symbol='undo'
-#)
 
 # Document version pages
 

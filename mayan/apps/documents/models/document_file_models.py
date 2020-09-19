@@ -117,9 +117,6 @@ class DocumentFile(models.Model):
     @classmethod
     def _execute_hooks(cls, hook_list, instance, **kwargs):
         result = None
-        #{
-        #    'file_object': instance.open(raw=True)
-        #}
 
         for hook in hook_list:
             result = hook(document_file=instance, **kwargs)
@@ -270,11 +267,11 @@ class DocumentFile(models.Model):
         if preserve_extension:
             filename, extension = os.path.splitext(self.document.label)
             return '{} ({}){}'.format(
-                filename, self.get_rendered_timestamp(), extension
+                filename, self.file, extension
             )
         else:
             return Template(
-                template_string='{{ instance.document }} - {{ instance.timestamp }}'
+                template_string='{{ instance.document }} - {{ instance.file }}'
             ).render(context={'instance': self})
 
     def get_rendered_timestamp(self):
@@ -326,13 +323,6 @@ class DocumentFile(models.Model):
         )
         queryset = ModelQueryFields.get(model=DocumentFilePage).get_queryset()
         return queryset.filter(pk__in=self.file_pages.all())
-
-    #@property
-    #def pages_valid(self):
-    #    DocumentFilePage = apps.get_model(
-    #        app_label='documents', model_name='DocumentFilePage'
-    #    )
-    #    return self.pages.filter(pk__in=DocumentFilePage.valid.filter(document_file=self))
 
     def revert(self, _user=None):
         """

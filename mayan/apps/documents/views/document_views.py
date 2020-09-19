@@ -346,7 +346,7 @@ class DocumentView(SingleObjectDetailView):
         return {
             'document': self.object,
             'object': self.object,
-            'title': _('Properties for document: %s') % self.object,
+            'title': _('Properties of document: %s') % self.object,
         }
 
 

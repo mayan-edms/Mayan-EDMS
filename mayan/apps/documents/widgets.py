@@ -39,6 +39,7 @@ class DocumentFilePagesCarouselWidget(forms.widgets.Widget):
         default_attrs = {
             'height': setting_preview_height.value,
             'width': setting_preview_width.value,
+            'target_view': 'documents:document_file_page_view',
         }
 
         if attrs:
@@ -79,6 +80,7 @@ class DocumentVersionPagesCarouselWidget(forms.widgets.Widget):
         default_attrs = {
             'height': setting_preview_height.value,
             'width': setting_preview_width.value,
+            'target_view': 'documents:document_version_page_view',
         }
 
         if attrs:

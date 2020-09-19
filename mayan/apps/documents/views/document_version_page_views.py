@@ -19,11 +19,11 @@ from mayan.apps.views.utils import resolve
 
 from ..forms.document_version_page_forms import DocumentVersionPageForm
 from ..icons import icon_document_version_pages
-#from ..links.document_version_page_links import link_document_update_page_count
+#from ..links.document_version_page_links import link_document_file_page_count_update
 from ..models.document_models import Document
 from ..models.document_version_models import DocumentVersion
 from ..models.document_version_page_models import DocumentVersionPage
-from ..permissions import permission_document_edit, permission_document_view
+from ..permissions import permission_document_version_view
 from ..settings import (
     setting_rotation_step, setting_zoom_percent_step, setting_zoom_max_level,
     setting_zoom_min_level
@@ -43,7 +43,7 @@ logger = logging.getLogger(name=__name__)
 
 class DocumentVersionPageListView(ExternalObjectMixin, SingleObjectListView):
     external_object_class = DocumentVersion
-    external_object_permission = permission_document_view
+    external_object_permission = permission_document_version_view
     external_object_pk_url_kwarg = 'document_version_id'
 
     def get_extra_context(self):
@@ -51,7 +51,7 @@ class DocumentVersionPageListView(ExternalObjectMixin, SingleObjectListView):
             'hide_object': True,
             'list_as_items': True,
             #'no_results_icon': icon_document_version_pages,
-            #'no_results_main_link': link_document_update_page_count.resolve(
+            #'no_results_main_link': link_document_file_page_count_update.resolve(
             #    request=self.request, resolved_object=self.external_object
             #),
             'no_results_text': _(
@@ -62,7 +62,7 @@ class DocumentVersionPageListView(ExternalObjectMixin, SingleObjectListView):
             ),
             'no_results_title': _('No document pages available'),
             'object': self.external_object,
-            'title': _('Pages for document version: %s') % self.external_object,
+            'title': _('Pages of document version: %s') % self.external_object,
         }
 
     def get_source_queryset(self):
@@ -153,11 +153,11 @@ class DocumentVersionPageNavigationPrevious(DocumentVersionPageNavigationBase):
             )
             return {'document_version_page_id': self.external_object.pk}
 
-
+'''
 class DocumentVersionPageView(ExternalObjectMixin, SimpleView):
-    external_object_permission = permission_document_view
+    external_object_permission = permission_document_version_view
     external_object_pk_url_kwarg = 'document_version_page_id'
-    external_object_queryset = DocumentVersionPage.valid
+    external_object_queryset = DocumentVersionPage
     template_name = 'appearance/generic_form.html'
 
     def get_extra_context(self):
@@ -185,7 +185,7 @@ class DocumentVersionPageView(ExternalObjectMixin, SimpleView):
             'zoom': zoom,
         }
 
-
+'''
 class DocumentVersionPageViewResetView(RedirectView):
     pattern_name = 'documents:document_version_page_view'
 

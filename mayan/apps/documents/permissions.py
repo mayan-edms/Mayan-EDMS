@@ -66,7 +66,11 @@ permission_document_type_view = setup_namespace.add_permission(
     label=_('View document types'), name='document_type_view'
 )
 
+permission_document_version_delete = namespace.add_permission(
+    label=_('Delete document versions'),
+    name='document_version_delete'
+)
 permission_document_version_view = namespace.add_permission(
-    label=_('View documents\' versions'),
+    label=_('View document versions'),
     name='document_version_view'
 )

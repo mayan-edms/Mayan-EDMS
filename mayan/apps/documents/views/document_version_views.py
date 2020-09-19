@@ -2,10 +2,12 @@ import logging
 
 from django.contrib import messages
 from django.template import RequestContext
+from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.views.generics import (
-    ConfirmView, SingleObjectDetailView, SingleObjectListView
+    ConfirmView, SingleObjectDeleteView, SingleObjectDetailView,
+    SingleObjectListView
 )
 from mayan.apps.views.mixins import ExternalObjectMixin
 
@@ -13,58 +15,52 @@ from ..events import event_document_view
 from ..forms.document_version_forms import (
     DocumentVersionDownloadForm, DocumentVersionPreviewForm
 )
-from ..models import Document, DocumentVersion
+from ..icons import icon_document_version_list
+from ..models.document_models import Document
+from ..models.document_version_models import DocumentVersion
 from ..permissions import (
-    #permission_document_version_revert, permission_document_version_view
-    permission_document_version_view
+    permission_document_version_delete, permission_document_version_view
 )
 
-#from .document_views import DocumentDownloadFormView, DocumentDownloadView
-
 __all__ = (
-    'DocumentVersionDownloadFormView', 'DocumentVersionDownloadView',
     'DocumentVersionListView', 'DocumentVersionRevertView',
     'DocumentVersionView'
 )
 logger = logging.getLogger(name=__name__)
 
-'''
-class DocumentVersionDownloadFormView(DocumentDownloadFormView):
-    form_class = DocumentVersionDownloadForm
+
+class DocumentVersionDeleteView(SingleObjectDeleteView):
     model = DocumentVersion
+    object_permission = permission_document_version_delete
     pk_url_kwarg = 'document_version_id'
-    querystring_form_fields = (
-        'compressed', 'zip_filename', 'preserve_extension'
-    )
-    viewname = 'documents:document_multiple_file_download'
 
     def get_extra_context(self):
-        result = super(
-            DocumentVersionDownloadFormView, self
-        ).get_extra_context()
+        return {
+            'object': self.object,
+            'title': _('Delete document version %s ?') % self.object,
+        }
 
-        result.update({
-            'title': _('Download document file'),
-        })
-
-        return result
-
-
-class DocumentVersionDownloadView(DocumentDownloadView):
-    model = DocumentVersion
-    pk_url_kwarg = 'document_version_id'
-
-    def get_item_filename(self, item):
-        preserve_extension = self.request.GET.get(
-            'preserve_extension', self.request.POST.get(
-                'preserve_extension', False
-            )
+    def get_post_action_redirect(self):
+        return reverse(
+            viewname='documents:document_version_list', kwargs={
+                'document_id': self.object.document.pk
+            }
         )
 
-        preserve_extension = preserve_extension == 'true' or preserve_extension == 'True'
+    #def view_action(self):
+    #    try:
+    #        self.external_object.revert(_user=self.request.user)
+    #        messages.success(
+    #            message=_(
+    #                'Document file reverted successfully'
+    #            ), request=self.request
+    #        )
+    #    except Exception as exception:
+    #        messages.error(
+    #            message=_('Error reverting document file; %s') % exception,
+    #            request=self.request
+    #        )
 
-        return item.get_rendered_string(preserve_extension=preserve_extension)
-'''
 
 class DocumentVersionListView(ExternalObjectMixin, SingleObjectListView):
     external_object_class = Document
@@ -80,12 +76,13 @@ class DocumentVersionListView(ExternalObjectMixin, SingleObjectListView):
         return {
             'hide_object': True,
             'list_as_items': True,
-            #'no_results_icon': icon_menu_tags,
+            'no_results_icon': icon_document_version_list,
             #'no_results_main_link': link_tag_create.resolve(
             #    context=RequestContext(request=self.request)
             #),
             'no_results_text': _(
-                'Versions are different views.'
+                'Versions are views that can display document file pages as '
+                'they are, remap or merge them into different layouts.'
             ),
             'no_results_title': _('No versions available'),
             'object': self.get_document(),
@@ -95,36 +92,6 @@ class DocumentVersionListView(ExternalObjectMixin, SingleObjectListView):
 
     def get_source_queryset(self):
         return self.get_document().versions.order_by('-timestamp')
-
-'''
-class DocumentVersionRevertView(ExternalObjectMixin, ConfirmView):
-    external_object_class = DocumentVersion
-    external_object_permission = permission_document_version_revert
-    external_object_pk_url_kwarg = 'document_version_id'
-
-    def get_extra_context(self):
-        return {
-            'message': _(
-                'All later file after this one will be deleted too.'
-            ),
-            'object': self.external_object.document,
-            'title': _('Revert to this file?'),
-        }
-
-    def view_action(self):
-        try:
-            self.external_object.revert(_user=self.request.user)
-            messages.success(
-                message=_(
-                    'Document file reverted successfully'
-                ), request=self.request
-            )
-        except Exception as exception:
-            messages.error(
-                message=_('Error reverting document file; %s') % exception,
-                request=self.request
-            )
-'''
 
 
 class DocumentVersionView(SingleObjectDetailView):
