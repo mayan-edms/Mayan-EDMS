@@ -599,6 +599,9 @@ class DocumentPrint(FormView):
         else:
             return (self.template_name,)
 
+def get_new_form():
+    return ('documents/new_form.html')
+
 
 class RecentAccessDocumentListView(DocumentListView):
     def get_document_queryset(self):

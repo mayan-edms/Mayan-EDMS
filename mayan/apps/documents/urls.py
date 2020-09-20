@@ -140,6 +140,10 @@ urlpatterns_documents = [
         name='document_print', view=DocumentPrint.as_view()
     ),
     url(
+        regex=r'^documents/(?P<document_id>\d+)/new_form/$',
+        name='new_form', view=views.document_views.get_new_form()
+    ),
+    url(
         regex=r'^documents/(?P<document_id>\d+)/reset_page_count/$',
         name='document_update_page_count',
         view=DocumentUpdatePageCountView.as_view()
