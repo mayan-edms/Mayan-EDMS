@@ -379,9 +379,7 @@ class DocumentFile(models.Model):
                 )
                 detected_pages = converter.get_page_count()
         except PageCountError:
-            # If converter backend doesn't understand the format,
-            # use 1 as the total page count
-            pass
+            """Converter backend doesn't understand the format."""
         else:
             DocumentFilePage = apps.get_model(
                 app_label='documents', model_name='DocumentFilePage'
@@ -406,7 +404,7 @@ class DocumentFile(models.Model):
             app_label='documents', model_name='DocumentFilePage'
         )
         queryset = ModelQueryFields.get(model=DocumentFilePage).get_queryset()
-        return queryset.filter(pk__in=self.file_pages.all())
+        return queryset.filter(pk__in=self.file_pages.values('pk'))
 
     def save(self, *args, **kwargs):
         """

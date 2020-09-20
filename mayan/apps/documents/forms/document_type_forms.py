@@ -61,7 +61,7 @@ class DocumentTypeFilteredSelectForm(forms.Form):
         permission = kwargs.pop('permission', None)
         user = kwargs.pop('user', None)
 
-        super(DocumentTypeFilteredSelectForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
         queryset = DocumentType.objects.all()
         if permission:

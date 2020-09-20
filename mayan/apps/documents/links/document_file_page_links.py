@@ -102,7 +102,7 @@ link_document_file_page_list = Link(
     args='resolved_object.pk',
     icon_class_path='mayan.apps.documents.icons.icon_document_file_pages',
     permissions=(permission_document_view,), text=_('Pages'),
-    view='documents:document_file_pages',
+    view='documents:document_file_page_list',
 )
 link_document_file_multiple_page_count_update = Link(
     icon_class_path='mayan.apps.documents.icons.icon_document_file_page_count_update',

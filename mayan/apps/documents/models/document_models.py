@@ -255,12 +255,12 @@ class Document(HooksMixin, models.Model):
         try:
             return self.latest_version.pages
         except AttributeError:
-            # Document has no file yet
-            DocumentFilePage = apps.get_model(
-                app_label='documents', model_name='DocumentFilePage'
+            # Document has no version yet
+            DocumentVersionPage = apps.get_model(
+                app_label='documents', model_name='DocumentVersionPage'
             )
 
-            return DocumentFilePage.objects.none()
+            return DocumentVersionPage.objects.none()
 
     def restore(self):
         self.in_trash = False

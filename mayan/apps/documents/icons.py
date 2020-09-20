@@ -204,7 +204,43 @@ icon_document_version_view = Icon(
 
 # Document version pages
 
-icon_document_version_pages = Icon(driver_name='fontawesome', symbol='copy')
+icon_document_version_page_list = Icon(driver_name='fontawesome', symbol='copy')
+icon_document_version_page_navigation_first = Icon(
+    driver_name='fontawesome', symbol='step-backward'
+)
+icon_document_version_page_navigation_last = Icon(
+    driver_name='fontawesome', symbol='step-forward'
+)
+icon_document_version_page_navigation_next = Icon(
+    driver_name='fontawesome', symbol='arrow-right'
+)
+icon_document_version_page_navigation_previous = Icon(
+    driver_name='fontawesome', symbol='arrow-left'
+)
+icon_document_version_page_remap = Icon(
+    driver_name='fontawesome', symbol='project-diagram'
+)
+icon_document_version_page_return = icon_document_return
+icon_document_version_page_rotate_left = Icon(
+    driver_name='fontawesome', symbol='undo'
+)
+icon_document_version_page_rotate_right = Icon(
+    driver_name='fontawesome', symbol='redo'
+)
+icon_document_version_page_view = Icon(
+    driver_name='fontawesome', symbol='image'
+)
+icon_document_version_page_view_reset = Icon(
+    driver_name='fontawesome', symbol='sync'
+)
+icon_document_version_page_zoom_in = Icon(
+    driver_name='fontawesome', symbol='search-plus'
+)
+icon_document_version_page_zoom_out = Icon(
+    driver_name='fontawesome', symbol='search-minus'
+)
+
+# Duplicated document
 
 icon_duplicated_document_list = Icon(
     driver_name='fontawesome', symbol='clone'

@@ -51,6 +51,10 @@ permission_document_version_delete = namespace.add_permission(
     label=_('Delete document versions'),
     name='document_version_delete'
 )
+permission_document_version_edit = namespace.add_permission(
+    label=_('Edit document versions'),
+    name='document_version_edit'
+)
 permission_document_version_view = namespace.add_permission(
     label=_('View document versions'),
     name='document_version_view'

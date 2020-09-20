@@ -41,7 +41,7 @@ class DocumentDownloadForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         self.queryset = kwargs.pop('queryset', None)
-        super(DocumentDownloadForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         if self.queryset.count() > 1:
             self.fields['compressed'].initial = True
             self.fields['compressed'].widget.attrs.update(
@@ -60,7 +60,7 @@ class DocumentForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         document_type = kwargs.pop('document_type', None)
 
-        super(DocumentForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
         # Is a document (documents app edit) and has been saved (sources
         # app upload)?
@@ -156,35 +156,13 @@ class DocumentPropertiesForm(DetailForm):
             },
         ]
 
-        if document.latest_file:
+        if document.latest_version:
             extra_fields += (
-                #{
-                #    'label': _('File mimetype'),
-                #    'field': lambda x: document.file_mimetype or _('None')
-                #},
-                #{
-                #    'label': _('File encoding'),
-                #    'field': lambda x: document.file_mime_encoding or _(
-                #        'None'
-                #    )
-                #},
-                #{
-                #    'label': _('File size'),
-                #    'field': lambda document: filesizeformat(
-                #        document.size
-                #    ) if document.size else '-'
-                #},
-                #{'label': _('Exists in storage'), 'field': 'exists'},
-                #{
-                #    'label': _('File path in storage'),
-                #    'field': 'latest_file.file'
-                #},
-                #{'label': _('Checksum'), 'field': 'checksum'},
                 {'label': _('Pages'), 'field': 'page_count'},
             )
 
         kwargs['extra_fields'] = extra_fields
-        super(DocumentPropertiesForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     class Meta:
         fields = ('document_type', 'description')

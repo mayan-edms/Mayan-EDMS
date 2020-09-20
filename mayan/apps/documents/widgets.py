@@ -70,6 +70,28 @@ class DocumentFilePageThumbnailWidget:
         )
 
 
+class ThumbnailFormWidget(forms.widgets.Widget):
+    def render(self, *args, **kwargs):
+        instance = kwargs['value']
+        if instance:
+           context={
+                # Disable the clickable link if the document is in the trash
+                'disable_title_link': instance.is_in_trash,
+                'gallery_name': 'document_list',
+                'instance': instance,
+                'size_preview_width': setting_preview_width.value,
+                'size_preview_height': setting_preview_height.value,
+                'size_thumbnail_width': 150,#setting_thumbnail_width.value,
+                'size_thumbnail_height': setting_thumbnail_height.value,
+            }
+        else:
+            context = {}
+        return render_to_string(
+            template_name='documents/widgets/document_thumbnail.html',
+            context=context
+        )
+
+
 class DocumentVersionPagesCarouselWidget(forms.widgets.Widget):
     """
     Display many small representations of a document's pages

@@ -45,7 +45,7 @@ class EventTypeSubscriptionListView(FormView):
 
     def dispatch(self, *args, **kwargs):
         EventType.refresh()
-        return super(EventTypeSubscriptionListView, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
     def form_valid(self, form):
         try:
@@ -63,9 +63,7 @@ class EventTypeSubscriptionListView(FormView):
                 request=self.request
             )
 
-        return super(
-            EventTypeSubscriptionListView, self
-        ).form_valid(form=form)
+        return super().form_valid(form=form)
 
     def get_object(self):
         return self.request.user
@@ -150,12 +148,10 @@ class ObjectEventListView(EventListView):
 
     def dispatch(self, request, *args, **kwargs):
         self.object = self.get_object()
-        return super(
-            ObjectEventListView, self
-        ).dispatch(request, *args, **kwargs)
+        return super().dispatch(request, *args, **kwargs)
 
     def get_extra_context(self):
-        context = super(ObjectEventListView, self).get_extra_context()
+        context = super().get_extra_context()
         context.update(
             {
                 'hide_object': True,
@@ -195,9 +191,7 @@ class ObjectEventTypeSubscriptionListView(FormView):
 
     def dispatch(self, *args, **kwargs):
         EventType.refresh()
-        return super(ObjectEventTypeSubscriptionListView, self).dispatch(
-            *args, **kwargs
-        )
+        return super().dispatch(*args, **kwargs)
 
     def form_valid(self, form):
         try:
@@ -216,9 +210,7 @@ class ObjectEventTypeSubscriptionListView(FormView):
                 ), request=self.request
             )
 
-        return super(
-            ObjectEventTypeSubscriptionListView, self
-        ).form_valid(form=form)
+        return super().form_valid(form=form)
 
     def get_object(self):
         object_content_type = get_object_or_404(

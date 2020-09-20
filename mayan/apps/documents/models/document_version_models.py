@@ -12,9 +12,14 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.common.classes import ModelQueryFields
 from mayan.apps.common.signals import signal_mayan_pre_save
 from mayan.apps.converter.classes import ConverterBase
+from mayan.apps.events.classes import EventManagerMethodAfter, EventManagerSave
+from mayan.apps.events.decorators import method_event
 from mayan.apps.templating.classes import Template
 
-#from ..events import event_document_version_deleted, event_document_version_new
+from ..events import (
+    event_document_version_created, event_document_version_deleted,
+    event_document_version_edited
+)
 from ..literals import STORAGE_NAME_DOCUMENT_VERSION_PAGE_IMAGE_CACHE
 from ..signals import signal_post_document_created, signal_post_file_upload
 
@@ -62,9 +67,16 @@ class DocumentVersion(models.Model):
         )
         return partition
 
+    @method_event(
+        event_manager_class=EventManagerMethodAfter,
+        event=event_document_version_deleted,
+        target='document',
+    )
     def delete(self, *args, **kwargs):
         for page in self.pages.all():
             page.delete()
+
+        self.cache_partition.delete()
 
         return super().delete(*args, **kwargs)
 
@@ -135,6 +147,22 @@ class DocumentVersion(models.Model):
                     content_object=document_file_page
                 )
 
+    @method_event(
+        event_manager_class=EventManagerSave,
+        created={
+            'event': event_document_version_created,
+            'action_object': 'document',
+            'target': 'self',
+        },
+        edited={
+            'event': event_document_version_edited,
+            'action_object': 'document',
+            'target': 'self',
+        }
+    )
+    def save(self, *args, **kwargs):
+        return super().save(*args, **kwargs)
+
     '''
     def save(self, *args, **kwargs):
         """
@@ -164,12 +192,7 @@ class DocumentVersion(models.Model):
 
                 if new_document_file:
                     # Only do this for new documents
-                    #self.checksum_update(save=False)
-                    #self.mimetype_update(save=False)
                     self.save()
-                    #self.update_page_count(save=False)
-                    #if setting_fix_orientation.value:
-                    #    self.fix_orientation()
 
                     logger.info(
                         'New document version "%s" created for document: %s',

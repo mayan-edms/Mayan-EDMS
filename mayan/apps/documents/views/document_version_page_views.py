@@ -3,6 +3,7 @@ import logging
 from furl import furl
 
 from django.contrib import messages
+from django.contrib.contenttypes.models import ContentType
 from django.urls import reverse
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _, ungettext
@@ -12,18 +13,22 @@ from mayan.apps.common.classes import ModelQueryFields
 from mayan.apps.common.settings import setting_home_view
 from mayan.apps.converter.literals import DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
 from mayan.apps.views.generics import (
-    MultipleObjectConfirmActionView, SimpleView, SingleObjectListView
+    FormView, MultipleObjectConfirmActionView, SimpleView,
+    SingleObjectListView
 )
 from mayan.apps.views.mixins import ExternalObjectMixin
 from mayan.apps.views.utils import resolve
 
-from ..forms.document_version_page_forms import DocumentVersionPageForm
-from ..icons import icon_document_version_pages
-#from ..links.document_version_page_links import link_document_file_page_count_update
+from ..forms.document_version_page_forms import (
+    DocumentVersionPageForm, DocumentVersionPageMappingFormSet
+)
+from ..icons import icon_document_version_page_list
 from ..models.document_models import Document
 from ..models.document_version_models import DocumentVersion
 from ..models.document_version_page_models import DocumentVersionPage
-from ..permissions import permission_document_version_view
+from ..permissions import (
+    permission_document_version_edit, permission_document_version_view
+)
 from ..settings import (
     setting_rotation_step, setting_zoom_percent_step, setting_zoom_max_level,
     setting_zoom_min_level
@@ -50,15 +55,12 @@ class DocumentVersionPageListView(ExternalObjectMixin, SingleObjectListView):
         return {
             'hide_object': True,
             'list_as_items': True,
-            #'no_results_icon': icon_document_version_pages,
+            #'no_results_icon': icon_document_version_page_list,
             #'no_results_main_link': link_document_file_page_count_update.resolve(
             #    request=self.request, resolved_object=self.external_object
             #),
             'no_results_text': _(
-                'This could mean that the document is of a format that is '
-                'not supported, that it is corrupted or that the upload '
-                'process was interrupted. Use the document page recalculation '
-                'action to attempt to introspect the page count again.'
+                'TODO: write'
             ),
             'no_results_title': _('No document pages available'),
             'object': self.external_object,
@@ -69,11 +71,11 @@ class DocumentVersionPageListView(ExternalObjectMixin, SingleObjectListView):
         queryset = ModelQueryFields.get(model=DocumentVersionPage).get_queryset()
         return queryset.filter(pk__in=self.external_object.pages.all())
 
-'''
+
 class DocumentVersionPageNavigationBase(ExternalObjectMixin, RedirectView):
-    external_object_permission = permission_document_view
+    external_object_permission = permission_document_version_view
     external_object_pk_url_kwarg = 'document_version_page_id'
-    external_object_queryset = DocumentVersionPage.valid
+    external_object_queryset = DocumentVersionPage
 
     def get_redirect_url(self, *args, **kwargs):
         """
@@ -153,7 +155,157 @@ class DocumentVersionPageNavigationPrevious(DocumentVersionPageNavigationBase):
             )
             return {'document_version_page_id': self.external_object.pk}
 
-'''
+
+
+class DocumentVersionPageRemapView(ExternalObjectMixin, FormView):
+    external_object_class = DocumentVersion
+    external_object_permission = permission_document_version_edit
+    external_object_pk_url_kwarg = 'document_version_id'
+
+    form_class = DocumentVersionPageMappingFormSet
+    #success_message = _(
+    #    'Metadata edit request performed on %(count)d document'
+    #)
+    #success_message_plural = _(
+    #    'Metadata edit request performed on %(count)d documents'
+    #)
+
+    def form_valid(self, form):
+        for document_version_page in self.external_object.pages.all():
+            document_version_page.delete()
+
+        for row in form.forms:
+            page_number = int(row.cleaned_data['target_page_number'])
+            if page_number:
+                self.external_object.pages.create(
+                    content_type=ContentType.objects.get(
+                        pk=row.cleaned_data['source_content_type']
+                    ),
+                    object_id=row.cleaned_data['source_object_id'],
+                    page_number=page_number
+                )
+
+
+        '''
+        errors = []
+        for form in form.forms:
+            if form.cleaned_data['update']:
+                if document_metadata_queryset.filter(metadata_type=form.cleaned_data['id']).exists():
+                    try:
+                        save_metadata_list(
+                            metadata_list=[form.cleaned_data], document=instance,
+                            _user=self.request.user
+                        )
+                    except Exception as exception:
+                        errors.append(exception)
+
+        for error in errors:
+            if settings.DEBUG:
+                raise
+            else:
+                if isinstance(error, ValidationError):
+                    exception_message = ', '.join(error.messages)
+                else:
+                    exception_message = force_text(error)
+
+                messages.error(
+                    message=_(
+                        'Error editing metadata for document: '
+                        '%(document)s; %(exception)s.'
+                    ) % {
+                        'document': instance,
+                        'exception': exception_message
+                    }, request=self.request
+                )
+        else:
+            messages.success(
+                message=_(
+                    'Metadata for document %s edited successfully.'
+                ) % instance, request=self.request
+            )
+        '''
+        return super().form_valid(form=form)
+
+    def _get_source_item_list(self):
+        result = []
+        for document_file in self.external_object.document.files.all():
+            for document_file_page in document_file.pages.all():
+                result.append(document_file_page)
+
+        return result
+
+    def get_form_extra_kwargs(self):
+        choices = [(0, _('None'))]
+        choices.extend(
+            [
+                (item, item) for item in range(1, len(self._get_source_item_list()))
+            ]
+        )
+        return {
+            'form_extra_kwargs': {
+                'target_page_number_choices': choices
+            }
+        }
+
+    def get_extra_context(self):
+        return {
+            'form_display_mode_table': True,
+            'hide_object': True,
+            'list_as_items': True,
+            #'no_results_icon': icon_document_version_page_list,
+            #'no_results_main_link': link_document_file_page_count_update.resolve(
+            #    request=self.request, resolved_object=self.external_object
+            #),
+            'no_results_text': _(
+                'There are no sources available to remap for this document '
+                'version.'
+            ),
+            'no_results_title': _('No page sources available'),
+            'object': self.external_object,
+            'title': _(
+                'Remap pages of document version: %s'
+            ) % self.external_object,
+        }
+
+    def get_initial(self):
+        initial = []
+
+        for document_file in self.external_object.document.files.all():
+            for document_file_page in document_file.pages.all():
+                content_type = ContentType.objects.get_for_model(
+                    model=document_file_page
+                )
+                document_version_page = self.external_object.pages.filter(
+                    content_type=content_type, object_id=document_file_page.pk
+                )
+
+                if document_version_page:
+                    document_version_page_page_number = document_version_page.first().page_number
+                else:
+                    document_version_page_page_number = 0
+
+                row = {
+                    'source_content_type': content_type.pk,
+                    'source_object_id': document_file_page.pk,
+                    'source_thumbnail': document_file_page,
+                    'source_label': '{} - {}'.format(content_type.name, document_file.file),
+                    'source_page_number': document_file_page.page_number,
+                    'target_page_number': document_version_page_page_number
+                }
+
+                initial.append(row)
+
+        return initial
+
+    def get_post_action_redirect(self):
+        return reverse(
+            viewname='documents:document_version_page_list', kwargs={
+                'document_version_id': self.external_object.pk
+            }
+        )
+
+
+
 class DocumentVersionPageView(ExternalObjectMixin, SimpleView):
     external_object_permission = permission_document_version_view
     external_object_pk_url_kwarg = 'document_version_page_id'
@@ -185,14 +337,14 @@ class DocumentVersionPageView(ExternalObjectMixin, SimpleView):
             'zoom': zoom,
         }
 
-'''
+
 class DocumentVersionPageViewResetView(RedirectView):
     pattern_name = 'documents:document_version_page_view'
 
 
 class DocumentVersionPageInteractiveTransformation(ExternalObjectMixin, RedirectView):
     external_object_class = DocumentVersionPage
-    external_object_permission = permission_document_view
+    external_object_permission = permission_document_version_view
     external_object_pk_url_kwarg = 'document_version_page_id'
 
     def get_object(self):
@@ -252,4 +404,3 @@ class DocumentVersionPageRotateRightView(DocumentVersionPageInteractiveTransform
         query_dict['rotation'] = (
             int(query_dict['rotation']) + setting_rotation_step.value
         ) % 360
-'''

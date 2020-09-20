@@ -1,5 +1,3 @@
-#from __future__ import absolute_import, unicode_literals
-
 import logging
 
 from furl import furl
@@ -55,7 +53,6 @@ class DocumentVersionPage(models.Model):
     )
 
     #objects = DocumentPageManager()
-    #passthrough = models.Manager()
 
     class Meta:
         ordering = ('page_number',)
@@ -76,33 +73,6 @@ class DocumentVersionPage(models.Model):
     def delete(self, *args, **kwargs):
         self.cache_partition.delete()
         super().delete(*args, **kwargs)
-
-    '''
-    def generate_image(self, user=None, **kwargs):
-        transformation_list = self.get_combined_transformation_list(user=user, **kwargs)
-
-        combined_cache_filename = '{}-{}'.format(
-            self.content_object.generate_image(),
-            BaseTransformation.combine(transformation_list)
-        )
-
-        # Check is transformed image is available
-        logger.debug('transformations cache filename: %s', combined_cache_filename)
-
-        if self.cache_partition.get_file(filename=combined_cache_filename):
-            logger.debug(
-                'transformations cache file "%s" found', combined_cache_filename
-            )
-        else:
-            logger.debug(
-                'transformations cache file "%s" not found', combined_cache_filename
-            )
-            image = self.get_image(transformations=transformation_list)
-            with self.cache_partition.create_file(filename=combined_cache_filename) as file_object:
-                file_object.write(image.getvalue())
-
-        return combined_cache_filename
-    '''
 
     def generate_image(self, user=None, **kwargs):
         transformation_list = self.get_combined_transformation_list(user=user, **kwargs)

@@ -14,7 +14,7 @@ event_document_download = namespace.add_event_type(
 event_document_properties_edit = namespace.add_event_type(
     label=_('Document properties edited'), name='document_edit'
 )
-event_document_view = namespace.add_event_type(
+event_document_viewed = namespace.add_event_type(
     label=_('Document viewed'), name='document_view'
 )
 
@@ -46,3 +46,13 @@ event_document_type_changed = namespace.add_event_type(
     label=_('Document type changed'), name='document_type_change'
 )
 
+# Document Version
+event_document_version_created = namespace.add_event_type(
+    label=_('Document version created'), name='document_version_created'
+)
+event_document_version_deleted = namespace.add_event_type(
+    label=_('Document version deleted'), name='document_version_deleted'
+)
+event_document_version_edited = namespace.add_event_type(
+    label=_('Document version edited'), name='document_version_edited'
+)

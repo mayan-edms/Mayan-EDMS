@@ -11,7 +11,7 @@ from mayan.apps.views.generics import (
 )
 from mayan.apps.views.mixins import ExternalObjectMixin
 
-from ..events import event_document_view
+from ..events import event_document_viewed
 from ..forms.document_file_forms import (
     DocumentFileDownloadForm, DocumentFilePreviewForm,
     DocumentFilePropertiesForm
@@ -332,7 +332,7 @@ class DocumentFileView(SingleObjectDetailView):
         self.object.document.add_as_recent_document_for_user(
             user=request.user
         )
-        event_document_view.commit(
+        event_document_viewed.commit(
             actor=request.user, target=self.object.document
         )
 

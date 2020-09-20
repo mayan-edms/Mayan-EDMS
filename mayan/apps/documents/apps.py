@@ -42,7 +42,8 @@ from .events import (
     event_document_properties_edit, event_document_type_changed,
     event_document_type_created, event_document_type_edited,
     event_document_file_deleted, event_document_file_new,
-    event_document_view
+    event_document_version_created, event_document_version_deleted,
+    event_document_version_edited, event_document_viewed
 )
 from .handlers import (
     handler_create_default_document_type,
@@ -88,9 +89,21 @@ from .links.document_type_links import (
 )
 from .links.document_version_links import (
     link_document_version_delete, link_document_version_list,
+    link_document_version_return_list, link_document_version_return_document,
     link_document_version_view
 )
-from .links.document_version_page_links import link_document_version_pages
+from .links.document_version_page_links import (
+    link_document_version_page_list,
+    link_document_version_page_navigation_first,
+    link_document_version_page_navigation_last,
+    link_document_version_page_navigation_next,
+    link_document_version_page_navigation_previous,
+    link_document_version_page_return, link_document_version_page_remap,
+    link_document_version_page_rotate_left,
+    link_document_version_page_rotate_right, link_document_version_page_view,
+    link_document_version_page_view_reset, link_document_version_page_zoom_in,
+    link_document_version_page_zoom_out
+)
 from .links.duplicated_document_links import (
     link_document_duplicates_list, link_duplicated_document_list,
     link_duplicated_document_scan
@@ -112,12 +125,13 @@ from .permissions import (
     permission_document_create, permission_document_delete,
     permission_document_edit, permission_document_file_delete,
     permission_document_file_download, permission_document_file_new,
-    permission_document_file_tools, permission_document_file_view,
+    permission_document_file_tools,permission_document_file_view,
     permission_document_print, permission_document_properties_edit,
     permission_document_restore, permission_document_tools,
     permission_document_trash, permission_document_type_delete,
     permission_document_type_edit, permission_document_type_view,
-    permission_document_view
+    permission_document_version_delete, permission_document_version_edit,
+    permission_document_version_view, permission_document_view
 )
 from .signals import signal_post_file_upload
 from .statistics import *  # NOQA
@@ -188,7 +202,34 @@ class DocumentsApp(MayanAppConfig):
                 'delete_time_period', 'delete_time_unit', 'filenames'
             )
         )
+        ModelCopy(
+            model=DocumentVersion, bind_link=True, register_permission=True
+        ).add_fields(
+            field_names=(
+                'document', 'timestamp', 'comment', 'pages',
+            )
+        )
+        ModelCopy(
+            model=DocumentVersionPage, bind_link=True, register_permission=True
+        ).add_fields(
+            field_names=(
+                'document_version', 'page_number', 'content_type', 'object_id',
+            )
+        )
 
+        ModelEventType.register(
+            model=Document, event_types=(
+                event_document_download, event_document_properties_edit,
+                event_document_type_changed, event_document_file_deleted,
+                event_document_file_new, event_document_version_deleted,
+                event_document_version_created, event_document_viewed
+            )
+        )
+        ModelEventType.register(
+            model=DocumentFile, event_types=(
+                event_document_file_new,
+            )
+        )
         ModelEventType.register(
             model=DocumentType, event_types=(
                 event_document_create,
@@ -197,10 +238,8 @@ class DocumentsApp(MayanAppConfig):
             )
         )
         ModelEventType.register(
-            model=Document, event_types=(
-                event_document_download, event_document_properties_edit,
-                event_document_type_changed, event_document_file_deleted,
-                event_document_file_new, event_document_view
+            model=DocumentVersion, event_types=(
+                event_document_version_deleted, event_document_version_edited
             )
         )
 
@@ -268,7 +307,6 @@ class DocumentsApp(MayanAppConfig):
                 permission_transformation_edit, permission_transformation_view,
             )
         )
-
         ModelPermission.register(
             model=DocumentFile, permissions=(
                 permission_acl_edit, permission_acl_view,
@@ -281,7 +319,6 @@ class DocumentsApp(MayanAppConfig):
                 permission_transformation_edit, permission_transformation_view,
             )
         )
-
         ModelPermission.register(
             model=DocumentType, permissions=(
                 permission_document_create, permission_document_type_delete,
@@ -290,9 +327,21 @@ class DocumentsApp(MayanAppConfig):
                 permission_events_view,
             )
         )
+        ModelPermission.register(
+            model=DocumentVersion, permissions=(
+                permission_acl_edit, permission_acl_view,
+                permission_document_version_delete,
+                permission_document_version_edit,
+                permission_document_version_view,
+                permission_events_view
+            )
+        )
 
         ModelPermission.register_inheritance(
             model=Document, related='document_type',
+        )
+        ModelPermission.register_inheritance(
+            model=DocumentFile, related='document',
         )
         ModelPermission.register_inheritance(
             model=DocumentFilePage, related='document_file__document',
@@ -301,23 +350,50 @@ class DocumentsApp(MayanAppConfig):
             model=DocumentFilePageResult, related='document_file__document',
         )
         ModelPermission.register_inheritance(
-            model=DocumentTypeFilename, related='document_type',
+            model=DocumentVersion, related='document',
         )
         ModelPermission.register_inheritance(
-            model=DocumentFile, related='document',
+            model=DocumentVersionPage, related='document_version__document',
+        )
+        ModelPermission.register_inheritance(
+            model=DocumentTypeFilename, related='document_type',
         )
 
         model_query_fields_document = ModelQueryFields(model=Document)
-        model_query_fields_document.add_prefetch_related_field(field_name='files')
-        model_query_fields_document.add_prefetch_related_field(field_name='files__file_pages')
-        model_query_fields_document.add_select_related_field(field_name='document_type')
+        model_query_fields_document.add_prefetch_related_field(
+            field_name='files'
+        )
+        model_query_fields_document.add_prefetch_related_field(
+            field_name='files__file_pages'
+        )
+        model_query_fields_document.add_select_related_field(
+            field_name='document_type'
+        )
 
         model_query_fields_document_file = ModelQueryFields(model=DocumentFile)
-        model_query_fields_document_file.add_prefetch_related_field(field_name='file_pages')
-        model_query_fields_document_file.add_select_related_field(field_name='document')
+        model_query_fields_document_file.add_prefetch_related_field(
+            field_name='file_pages'
+        )
+        model_query_fields_document_file.add_select_related_field(
+            field_name='document'
+        )
 
-        model_query_fields_document_file_page = ModelQueryFields(model=DocumentFilePage)
-        model_query_fields_document_file_page.add_select_related_field(field_name='document_file')
+        model_query_fields_document_file_page = ModelQueryFields(
+            model=DocumentFilePage
+        )
+        model_query_fields_document_file_page.add_select_related_field(
+            field_name='document_file'
+        )
+
+        model_query_fields_document_version = ModelQueryFields(
+            model=DocumentVersion
+        )
+        model_query_fields_document_version.add_prefetch_related_field(
+            field_name='version_pages'
+        )
+        model_query_fields_document_version.add_select_related_field(
+            field_name='document'
+        )
 
         # Document file and document file page thumbnail widget
         document_file_page_thumbnail_widget = DocumentFilePageThumbnailWidget()
@@ -608,9 +684,6 @@ class DocumentsApp(MayanAppConfig):
                 link_document_file_list, link_document_version_list
             ), sources=(Document,), position=2
         )
-        menu_facet.bind_links(
-            links=(link_document_file_page_list,), sources=(DocumentFile,)
-        )
 
         # Document actions
         menu_object.bind_links(
@@ -664,7 +737,10 @@ class DocumentsApp(MayanAppConfig):
         # Document files
         menu_list_facet.bind_links(
             links=(
-                link_document_file_properties, link_document_file_view,
+                link_document_file_page_list, link_document_file_properties,
+                link_document_file_view,
+                link_acl_list, link_object_event_types_user_subcriptions_list,
+                link_events_for_object
             ), sources=(DocumentFile,)
         )
         menu_multi_item.bind_links(
@@ -691,15 +767,61 @@ class DocumentsApp(MayanAppConfig):
         )
 
         # Document versions
-        menu_facet.bind_links(
-            links=(link_document_version_pages, link_document_version_view,),
+        menu_list_facet.bind_links(
+            links=(
+                link_document_version_page_list, link_document_version_view,
+                link_acl_list, link_object_event_types_user_subcriptions_list,
+                link_events_for_object
+            ),
             sources=(DocumentVersion,)
         )
         menu_object.bind_links(
             links=(
-                link_document_version_delete,
+                link_document_version_delete, link_document_version_page_remap
             ),
             sources=(DocumentVersion,)
+        )
+        menu_related.bind_links(
+            links=(
+                link_document_version_return_document,
+            ), sources=(DocumentVersion,)
+        )
+        menu_secondary.bind_links(
+            links=(
+                link_document_version_return_list,
+            ), sources=(DocumentVersion,)
+        )
+
+        # Document version page
+        menu_facet.add_unsorted_source(source=DocumentVersionPage)
+        menu_facet.bind_links(
+            links=(
+                link_document_version_page_rotate_left,
+                link_document_version_page_rotate_right, link_document_version_page_zoom_in,
+                link_document_version_page_zoom_out, link_document_version_page_view_reset
+            ), sources=('documents:document_version_page_view',)
+        )
+        menu_facet.bind_links(
+            links=(link_document_version_page_view,),
+            sources=(DocumentVersionPage,)
+        )
+        menu_facet.bind_links(
+            links=(
+                link_document_version_page_navigation_first,
+                link_document_version_page_navigation_previous,
+                link_document_version_page_navigation_next,
+                link_document_version_page_navigation_last
+            ), sources=(DocumentVersionPage,)
+        )
+        menu_list_facet.bind_links(
+            links=(link_decorations_list,), sources=(DocumentVersionPage,)
+        )
+        menu_list_facet.bind_links(
+            links=(link_transformation_list,), sources=(DocumentVersionPage,)
+        )
+        menu_related.bind_links(
+            links=(link_document_version_page_return,),
+            sources=(DocumentVersionPage,)
         )
 
         # Trashed documents

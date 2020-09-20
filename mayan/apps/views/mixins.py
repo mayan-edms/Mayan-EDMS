@@ -204,7 +204,7 @@ class FormExtraKwargsMixin:
         return self.form_extra_kwargs
 
     def get_form_kwargs(self):
-        result = super(FormExtraKwargsMixin, self).get_form_kwargs()
+        result = super().get_form_kwargs()
         result.update(self.get_form_extra_kwargs())
         return result
 

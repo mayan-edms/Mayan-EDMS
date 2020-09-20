@@ -1,7 +1,7 @@
 from actstream.models import Action
 
 from ..events import (
-    event_document_download, event_document_trashed, event_document_view
+    event_document_download, event_document_trashed, event_document_viewed
 )
 from ..permissions import (
     permission_document_file_download, permission_document_trash,
@@ -70,7 +70,7 @@ class DocumentEventsTestCase(
         event = Action.objects.any(obj=self.test_document).first()
         self.assertEqual(event.actor, self._test_case_user)
         self.assertEqual(event.target, self.test_document)
-        self.assertEqual(event.verb, event_document_view.id)
+        self.assertEqual(event.verb, event_document_viewed.id)
 
     def test_document_trashed_view_event_no_permission(self):
         response = self._request_document_trash_post_view()

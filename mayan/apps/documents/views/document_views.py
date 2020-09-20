@@ -24,7 +24,7 @@ from mayan.apps.views.generics import (
     SingleObjectEditView, SingleObjectListView
 )
 
-from ..events import event_document_download, event_document_view
+from ..events import event_document_download, event_document_viewed
 from ..forms import (
     DocumentDownloadForm, DocumentForm, DocumentFilePageNumberForm,
     DocumentPreviewForm, DocumentPrintForm, DocumentPropertiesForm,
@@ -161,7 +161,7 @@ class DocumentPreviewView(SingleObjectDetailView):
     def dispatch(self, request, *args, **kwargs):
         result = super().dispatch(request=request, *args, **kwargs)
         self.object.add_as_recent_document_for_user(user=request.user)
-        event_document_view.commit(
+        event_document_viewed.commit(
             actor=request.user, target=self.object
         )
 

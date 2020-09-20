@@ -11,7 +11,7 @@ from mayan.apps.views.generics import (
 )
 from mayan.apps.views.mixins import ExternalObjectMixin
 
-from ..events import event_document_view
+from ..events import event_document_viewed
 from ..forms.document_version_forms import (
     DocumentVersionDownloadForm, DocumentVersionPreviewForm
 )
@@ -42,6 +42,12 @@ class DocumentVersionDeleteView(SingleObjectDeleteView):
             ),
             'object': self.object,
             'title': _('Delete document version %s ?') % self.object,
+        }
+
+
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user,
         }
 
     def get_post_action_redirect(self):
@@ -91,13 +97,11 @@ class DocumentVersionView(SingleObjectDetailView):
     pk_url_kwarg = 'document_version_id'
 
     def dispatch(self, request, *args, **kwargs):
-        result = super(
-            DocumentVersionView, self
-        ).dispatch(request, *args, **kwargs)
+        result = super().dispatch(request, *args, **kwargs)
         self.object.document.add_as_recent_document_for_user(
             request.user
         )
-        event_document_view.commit(
+        event_document_viewed.commit(
             actor=request.user, target=self.object.document
         )
 
