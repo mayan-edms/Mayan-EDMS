@@ -18,12 +18,12 @@ logger = logging.getLogger(name=__name__)
 
 class DocumentManager(models.Manager):
     def delete_stubs(self):
-        stable_stub_documents = self.filter(
+        stale_stub_documents = self.filter(
             is_stub=True, date_added__lt=now() - timedelta(
                 seconds=setting_stub_expiration_interval.value
             )
         )
-        for stale_stub_document in stable_stub_documents:
+        for stale_stub_document in stale_stub_documents:
             stale_stub_document.delete(to_trash=False)
 
     def get_by_natural_key(self, uuid):

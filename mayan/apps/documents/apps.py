@@ -41,7 +41,7 @@ from .events import (
     event_document_create, event_document_download,
     event_document_properties_edit, event_document_type_changed,
     event_document_type_created, event_document_type_edited,
-    event_document_file_new, event_document_file_revert,
+    event_document_file_deleted, event_document_file_new,
     event_document_view
 )
 from .handlers import (
@@ -52,30 +52,31 @@ from .handlers import (
 )
 from .links.document_links import (
     link_document_clear_transformations, link_document_clone_transformations,
-    link_document_document_type_edit, link_document_download,
+    link_document_document_type_edit,
     link_document_edit, link_document_list, link_document_list_recent_access,
     link_document_list_recent_added,
     link_document_multiple_clear_transformations,
     link_document_multiple_document_type_edit,
-    link_document_multiple_download, link_document_preview,
+    link_document_preview,
     link_document_print, link_document_properties,
-    link_document_quick_download
 )
 from .links.document_file_links import (
-    link_document_file_download, link_document_file_list,
-    link_document_file_properties, link_document_file_return_document,
-    link_document_file_return_list, link_document_file_revert,
+    link_document_file_delete, link_document_file_download,
+    link_document_file_list, link_document_file_properties,
+    link_document_file_return_document, link_document_file_return_list,
     link_document_file_view
 )
 from .links.document_file_page_links import (
-    link_document_multiple_update_page_count,
+    link_document_file_multiple_page_count_update,
+    link_document_file_page_count_update, link_document_file_page_list,
     link_document_file_page_navigation_first,
-    link_document_file_page_navigation_last, link_document_file_page_navigation_next,
-    link_document_file_page_navigation_previous, link_document_file_page_return,
+    link_document_file_page_navigation_last,
+    link_document_file_page_navigation_next,
+    link_document_file_page_navigation_previous,
+    link_document_file_page_return,
     link_document_file_page_rotate_left, link_document_file_page_rotate_right,
     link_document_file_page_view, link_document_file_page_view_reset,
-    link_document_file_page_zoom_in, link_document_file_page_zoom_out,
-    link_document_file_pages, link_document_file_page_count_update
+    link_document_file_page_zoom_in, link_document_file_page_zoom_out
 )
 from .links.document_type_links import (
     link_document_type_create, link_document_type_delete,
@@ -109,13 +110,14 @@ from .links.trashed_document_links import (
 from .menus import menu_documents
 from .permissions import (
     permission_document_create, permission_document_delete,
-    permission_document_download, permission_document_edit,
-    permission_document_new_file, permission_document_print,
-    permission_document_properties_edit, permission_document_restore,
-    permission_document_tools, permission_document_trash,
-    permission_document_type_delete, permission_document_type_edit,
-    permission_document_type_view, permission_document_file_revert,
-    permission_document_file_view, permission_document_view
+    permission_document_edit, permission_document_file_delete,
+    permission_document_file_download, permission_document_file_new,
+    permission_document_file_tools, permission_document_file_view,
+    permission_document_print, permission_document_properties_edit,
+    permission_document_restore, permission_document_tools,
+    permission_document_trash, permission_document_type_delete,
+    permission_document_type_edit, permission_document_type_view,
+    permission_document_view
 )
 from .signals import signal_post_file_upload
 from .statistics import *  # NOQA
@@ -197,8 +199,8 @@ class DocumentsApp(MayanAppConfig):
         ModelEventType.register(
             model=Document, event_types=(
                 event_document_download, event_document_properties_edit,
-                event_document_type_changed, event_document_file_new,
-                event_document_file_revert, event_document_view
+                event_document_type_changed, event_document_file_deleted,
+                event_document_file_new, event_document_view
             )
         )
 
@@ -256,12 +258,24 @@ class DocumentsApp(MayanAppConfig):
         ModelPermission.register(
             model=Document, permissions=(
                 permission_acl_edit, permission_acl_view,
-                permission_document_delete, permission_document_download,
-                permission_document_edit, permission_document_new_file,
-                permission_document_print, permission_document_properties_edit,
+                permission_document_delete, permission_document_edit,
+                permission_document_file_new, permission_document_print,
+                permission_document_properties_edit,
                 permission_document_restore, permission_document_tools,
-                permission_document_trash, permission_document_file_revert,
-                permission_document_file_view, permission_document_view,
+                permission_document_trash, permission_document_view,
+                permission_events_view, permission_transformation_create,
+                permission_transformation_delete,
+                permission_transformation_edit, permission_transformation_view,
+            )
+        )
+
+        ModelPermission.register(
+            model=DocumentFile, permissions=(
+                permission_acl_edit, permission_acl_view,
+                permission_document_file_delete,
+                permission_document_file_download,
+                permission_document_file_tools,
+                permission_document_file_view,
                 permission_events_view, permission_transformation_create,
                 permission_transformation_delete,
                 permission_transformation_edit, permission_transformation_view,
@@ -567,10 +581,8 @@ class DocumentsApp(MayanAppConfig):
                 link_document_favorites_add, link_document_favorites_remove,
                 link_document_edit, link_document_document_type_edit,
                 link_document_print, link_document_trash,
-                link_document_quick_download, link_document_download,
                 link_document_clear_transformations,
                 link_document_clone_transformations,
-                link_document_file_page_count_update,
             ), sources=(Document,)
         )
         menu_object.bind_links(
@@ -597,13 +609,13 @@ class DocumentsApp(MayanAppConfig):
             ), sources=(Document,), position=2
         )
         menu_facet.bind_links(
-            links=(link_document_file_pages,), sources=(DocumentFile,)
+            links=(link_document_file_page_list,), sources=(DocumentFile,)
         )
 
         # Document actions
         menu_object.bind_links(
             links=(
-                link_document_file_revert, link_document_file_download
+                link_document_file_delete, link_document_file_download
             ),
             sources=(DocumentFile,)
         )
@@ -612,8 +624,7 @@ class DocumentsApp(MayanAppConfig):
                 link_document_multiple_favorites_add,
                 link_document_multiple_favorites_remove,
                 link_document_multiple_clear_transformations,
-                link_document_multiple_trash, link_document_multiple_download,
-                link_document_multiple_update_page_count,
+                link_document_multiple_trash,
                 link_document_multiple_document_type_edit,
             ), sources=(Document,)
         )
@@ -655,6 +666,18 @@ class DocumentsApp(MayanAppConfig):
             links=(
                 link_document_file_properties, link_document_file_view,
             ), sources=(DocumentFile,)
+        )
+        menu_multi_item.bind_links(
+            links=(
+                link_document_file_multiple_page_count_update,
+            ), sources=(DocumentFile,)
+        )
+        menu_object.bind_links(
+            links=(
+                link_document_file_delete,
+                link_document_file_page_count_update
+            ),
+            sources=(DocumentFile,)
         )
         menu_related.bind_links(
             links=(

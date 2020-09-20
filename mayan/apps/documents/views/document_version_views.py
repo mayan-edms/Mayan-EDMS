@@ -36,6 +36,10 @@ class DocumentVersionDeleteView(SingleObjectDeleteView):
 
     def get_extra_context(self):
         return {
+            'message': _(
+                'All document version pages from this document version will '
+                'be deleted too.'
+            ),
             'object': self.object,
             'title': _('Delete document version %s ?') % self.object,
         }
@@ -46,20 +50,6 @@ class DocumentVersionDeleteView(SingleObjectDeleteView):
                 'document_id': self.object.document.pk
             }
         )
-
-    #def view_action(self):
-    #    try:
-    #        self.external_object.revert(_user=self.request.user)
-    #        messages.success(
-    #            message=_(
-    #                'Document file reverted successfully'
-    #            ), request=self.request
-    #        )
-    #    except Exception as exception:
-    #        messages.error(
-    #            message=_('Error reverting document file; %s') % exception,
-    #            request=self.request
-    #        )
 
 
 class DocumentVersionListView(ExternalObjectMixin, SingleObjectListView):

@@ -11,53 +11,16 @@ from .literals import (
     UPDATE_PAGE_COUNT_RETRY_DELAY, UPLOAD_NEW_VERSION_RETRY_DELAY
 )
 from .settings import (
-    setting_task_generate_document_file_page_image_retry_delay,
-    setting_task_generate_document_version_page_image_retry_delay
+    setting_task_document_file_page_image_generate_retry_delay,
+    setting_task_document_version_page_image_generate_retry_delay
 )
 
 logger = logging.getLogger(name=__name__)
 
 
+# Document
 @app.task(ignore_result=True)
-def task_clean_empty_duplicate_lists():
-    DuplicatedDocument = apps.get_model(
-        app_label='documents', model_name='DuplicatedDocument'
-    )
-    DuplicatedDocument.objects.clean_empty_duplicate_lists()
-
-
-@app.task(ignore_result=True)
-def task_check_delete_periods():
-    DocumentType = apps.get_model(
-        app_label='documents', model_name='DocumentType'
-    )
-
-    DocumentType.objects.check_delete_periods()
-
-
-@app.task(ignore_result=True)
-def task_check_trash_periods():
-    DocumentType = apps.get_model(
-        app_label='documents', model_name='DocumentType'
-    )
-
-    DocumentType.objects.check_trash_periods()
-
-
-@app.task(ignore_result=True)
-def task_delete_document(trashed_document_id):
-    DeletedDocument = apps.get_model(
-        app_label='documents', model_name='DeletedDocument'
-    )
-
-    logger.debug(msg='Executing')
-    deleted_document = DeletedDocument.objects.get(pk=trashed_document_id)
-    deleted_document.delete()
-    logger.debug(msg='Finshed')
-
-
-@app.task(ignore_result=True)
-def task_delete_stubs():
+def task_document_stubs_delete():
     Document = apps.get_model(
         app_label='documents', model_name='Document'
     )
@@ -67,11 +30,30 @@ def task_delete_stubs():
     logger.info(msg='Finshed')
 
 
+# Document file
+@app.task(bind=True, default_retry_delay=UPDATE_PAGE_COUNT_RETRY_DELAY, ignore_result=True)
+def task_document_file_page_count_update(self, document_file_id):
+    DocumentFile = apps.get_model(
+        app_label='documents', model_name='DocumentFile'
+    )
+
+    document_file = DocumentFile.objects.get(pk=document_file_id)
+    try:
+        document_file.page_count_update()
+    except OperationalError as exception:
+        logger.warning(
+            'Operational error during attempt to update page count for '
+            'document file: %s; %s. Retrying.', document_file,
+            exception
+        )
+        raise self.retry(exc=exception)
+
+
 @app.task(
     bind=True,
-    default_retry_delay=setting_task_generate_document_file_page_image_retry_delay.value
+    default_retry_delay=setting_task_document_file_page_image_generate_retry_delay.value
 )
-def task_generate_document_file_page_image(
+def task_document_file_page_image_generate(
     self, document_file_page_id, user_id=None, **kwargs
 ):
     DocumentFilePage = apps.get_model(
@@ -99,93 +81,8 @@ def task_generate_document_file_page_image(
         raise self.retry(exc=exception)
 
 
-@app.task(
-    bind=True,
-    default_retry_delay=setting_task_generate_document_version_page_image_retry_delay.value
-)
-def task_generate_document_version_page_image(
-    self, document_version_page_id, user_id=None, **kwargs
-):
-    DocumentVersionPage = apps.get_model(
-        app_label='documents', model_name='DocumentVersionPage'
-    )
-    User = get_user_model()
-
-    if user_id:
-        user = User.objects.get(pk=user_id)
-    else:
-        user = None
-
-    document_version_page = DocumentVersionPage.objects.get(pk=document_version_page_id)
-    try:
-        return document_version_page.generate_image(user=user, **kwargs)
-    except LockError as exception:
-        logger.warning(
-            'LockError during attempt to generate document page image for '
-            'document id: %d, document version id: %d, document version '
-            'page id: %d. Retrying.',
-            document_version_page.document_version.document_id,
-            document_version_page.document_version_id,
-            document_version_page.pk,
-        )
-        raise self.retry(exc=exception)
-
-
-@app.task(ignore_result=True)
-def task_scan_duplicates_all():
-    DuplicatedDocument = apps.get_model(
-        app_label='documents', model_name='DuplicatedDocument'
-    )
-
-    DuplicatedDocument.objects.scan()
-
-
-@app.task(ignore_result=True)
-def task_scan_duplicates_for(document_id):
-    Document = apps.get_model(
-        app_label='documents', model_name='Document'
-    )
-    DuplicatedDocument = apps.get_model(
-        app_label='documents', model_name='DuplicatedDocument'
-    )
-
-    document = Document.objects.get(pk=document_id)
-
-    DuplicatedDocument.objects.scan_for(document=document)
-
-
-@app.task(ignore_result=True)
-def task_trash_can_empty():
-    DeletedDocument = apps.get_model(
-        app_label='documents', model_name='DeletedDocument'
-    )
-
-    for deleted_document in DeletedDocument.objects.all():
-        task_delete_document.apply_async(
-            kwargs={'trashed_document_id': deleted_document.pk}
-        )
-
-
-@app.task(bind=True, default_retry_delay=UPDATE_PAGE_COUNT_RETRY_DELAY, ignore_result=True)
-def task_update_page_count(self, file_id):
-    DocumentFile = apps.get_model(
-        app_label='documents', model_name='DocumentFile'
-    )
-
-    document_file = DocumentFile.objects.get(pk=file_id)
-    try:
-        document_file.update_page_count()
-    except OperationalError as exception:
-        logger.warning(
-            'Operational error during attempt to update page count for '
-            'document file: %s; %s. Retrying.', document_file,
-            exception
-        )
-        raise self.retry(exc=exception)
-
-
 @app.task(bind=True, default_retry_delay=UPLOAD_NEW_VERSION_RETRY_DELAY, ignore_result=True)
-def task_upload_new_file(self, document_id, shared_uploaded_file_id, user_id, comment=None):
+def task_document_file_upload(self, document_id, shared_uploaded_file_id, user_id, comment=None):
     Document = apps.get_model(
         app_label='documents', model_name='Document'
     )
@@ -255,3 +152,112 @@ def task_upload_new_file(self, document_id, shared_uploaded_file_id, user_id, co
                     'Operational error during attempt to delete shared '
                     'file: %s; %s.', shared_file, exception
                 )
+
+
+# Document type
+@app.task(ignore_result=True)
+def task_document_type_trashed_document_delete_periods_check():
+    DocumentType = apps.get_model(
+        app_label='documents', model_name='DocumentType'
+    )
+
+    DocumentType.objects.check_delete_periods()
+
+
+@app.task(ignore_result=True)
+def task_document_type_document_trash_periods_check():
+    DocumentType = apps.get_model(
+        app_label='documents', model_name='DocumentType'
+    )
+
+    DocumentType.objects.check_trash_periods()
+
+
+# Document version
+@app.task(
+    bind=True,
+    default_retry_delay=setting_task_document_version_page_image_generate_retry_delay.value
+)
+def task_document_version_page_image_generate(
+    self, document_version_page_id, user_id=None, **kwargs
+):
+    DocumentVersionPage = apps.get_model(
+        app_label='documents', model_name='DocumentVersionPage'
+    )
+    User = get_user_model()
+
+    if user_id:
+        user = User.objects.get(pk=user_id)
+    else:
+        user = None
+
+    document_version_page = DocumentVersionPage.objects.get(pk=document_version_page_id)
+    try:
+        return document_version_page.generate_image(user=user, **kwargs)
+    except LockError as exception:
+        logger.warning(
+            'LockError during attempt to generate document page image for '
+            'document id: %d, document version id: %d, document version '
+            'page id: %d. Retrying.',
+            document_version_page.document_version.document_id,
+            document_version_page.document_version_id,
+            document_version_page.pk,
+        )
+        raise self.retry(exc=exception)
+
+
+# Duplicates
+@app.task(ignore_result=True)
+def task_duplicates_clean_empty_lists():
+    DuplicatedDocument = apps.get_model(
+        app_label='documents', model_name='DuplicatedDocument'
+    )
+    DuplicatedDocument.objects.clean_empty_duplicate_lists()
+
+@app.task(ignore_result=True)
+def task_duplicates_scan_all():
+    DuplicatedDocument = apps.get_model(
+        app_label='documents', model_name='DuplicatedDocument'
+    )
+
+    DuplicatedDocument.objects.scan()
+
+
+@app.task(ignore_result=True)
+def task_duplicates_scan_for(document_id):
+    Document = apps.get_model(
+        app_label='documents', model_name='Document'
+    )
+    DuplicatedDocument = apps.get_model(
+        app_label='documents', model_name='DuplicatedDocument'
+    )
+
+    document = Document.objects.get(pk=document_id)
+
+    DuplicatedDocument.objects.scan_for(document=document)
+
+
+# Trash can
+@app.task(ignore_result=True)
+def task_trash_can_empty():
+    DeletedDocument = apps.get_model(
+        app_label='documents', model_name='DeletedDocument'
+    )
+
+    for deleted_document in DeletedDocument.objects.all():
+        task_trashed_document_delete.apply_async(
+            kwargs={'trashed_document_id': deleted_document.pk}
+        )
+
+
+# Trashed document
+@app.task(ignore_result=True)
+def task_trashed_document_delete(trashed_document_id):
+    DeletedDocument = apps.get_model(
+        app_label='documents', model_name='DeletedDocument'
+    )
+
+    logger.debug(msg='Executing')
+    deleted_document = DeletedDocument.objects.get(pk=trashed_document_id)
+    deleted_document.delete()
+    logger.debug(msg='Finshed')

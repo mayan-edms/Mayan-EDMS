@@ -14,9 +14,9 @@ from mayan.apps.documents.models import (
     DocumentType, Document, DocumentFile
 )
 from mayan.apps.documents.permissions import (
-    permission_document_create, permission_document_new_file
+    permission_document_create, permission_document_file_new
 )
-from mayan.apps.documents.tasks import task_upload_new_file
+from mayan.apps.documents.tasks import task_document_file_upload
 from mayan.apps.navigation.classes import Link
 from mayan.apps.storage.models import SharedUploadedFile
 from mayan.apps.views.generics import (
@@ -539,7 +539,7 @@ class DocumentFileUploadInteractiveView(UploadBaseView):
         )
 
         AccessControlList.objects.check_access(
-            obj=self.document, permissions=(permission_document_new_file,),
+            obj=self.document, permissions=(permission_document_file_new,),
             user=self.request.user
         )
 
@@ -599,7 +599,7 @@ class DocumentFileUploadInteractiveView(UploadBaseView):
                     }
                 )
 
-                task_upload_new_file.apply_async(kwargs=dict(
+                task_document_file_upload.apply_async(kwargs=dict(
                     shared_uploaded_file_id=shared_uploaded_file.pk,
                     document_id=self.document.pk,
                     user_id=user_id,

@@ -175,7 +175,7 @@ setting_stub_expiration_interval = namespace.add_setting(
         'deleted.'
     )
 )
-setting_task_generate_document_file_page_image_retry_delay = namespace.add_setting(
+setting_task_document_file_page_image_generate_retry_delay = namespace.add_setting(
     global_name='DOCUMENT_TASK_GENERATE_DOCUMENT_FILE_PAGE_IMAGE_RETRY_DELAY',
     default=DEFAULT_TASK_GENERATE_DOCUMENT_FILE_PAGE_IMAGE_RETRY_DELAY,
     help_text=_(
@@ -183,7 +183,7 @@ setting_task_generate_document_file_page_image_retry_delay = namespace.add_setti
         'wait before retrying.'
     )
 )
-setting_task_generate_document_version_page_image_retry_delay = namespace.add_setting(
+setting_task_document_version_page_image_generate_retry_delay = namespace.add_setting(
     global_name='DOCUMENT_TASK_GENERATE_DOCUMENT_VERSION_PAGE_IMAGE_RETRY_DELAY',
     default=DEFAULT_TASK_GENERATE_DOCUMENT_VERSION_PAGE_IMAGE_RETRY_DELAY,
     help_text=_(

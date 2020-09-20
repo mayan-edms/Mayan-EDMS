@@ -164,8 +164,8 @@ class DocumentVersion(models.Model):
 
                 if new_document_file:
                     # Only do this for new documents
-                    #self.update_checksum(save=False)
-                    #self.update_mimetype(save=False)
+                    #self.checksum_update(save=False)
+                    #self.mimetype_update(save=False)
                     self.save()
                     #self.update_page_count(save=False)
                     #if setting_fix_orientation.value:

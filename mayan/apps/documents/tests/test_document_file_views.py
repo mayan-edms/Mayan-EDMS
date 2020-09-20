@@ -1,7 +1,7 @@
 from django.utils.encoding import force_text
 
 from ..permissions import (
-    permission_document_download, permission_document_file_revert,
+    permission_document_file_download, permission_document_file_revert,
     permission_document_file_view,
 )
 
@@ -26,7 +26,7 @@ class DocumentFileViewTestCase(
         )
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_download
+            obj=self.test_document, permission=permission_document_file_download
         )
 
         response = self._request_document_file_download()
@@ -47,7 +47,7 @@ class DocumentFileViewTestCase(
         )
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_download
+            obj=self.test_document, permission=permission_document_file_download
         )
 
         response = self._request_document_file_download(

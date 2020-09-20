@@ -4,7 +4,7 @@ from ..events import (
     event_document_download, event_document_trashed, event_document_view
 )
 from ..permissions import (
-    permission_document_download, permission_document_trash,
+    permission_document_file_download, permission_document_trash,
     permission_document_view
 )
 
@@ -35,7 +35,7 @@ class DocumentEventsTestCase(
         self.expected_content_types = ('image/png',)
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_download
+            obj=self.test_document, permission=permission_document_file_download
         )
 
         response = self._request_test_document_download_view()

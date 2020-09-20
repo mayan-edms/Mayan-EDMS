@@ -11,7 +11,7 @@ from ..links.document_file_page_links import (
 from ..links.trashed_document_links import link_document_restore
 from ..models import DeletedDocument
 from ..permissions import (
-    permission_document_download, permission_document_edit,
+    permission_document_file_download, permission_document_edit,
     permission_document_restore, permission_document_file_revert
 )
 
@@ -70,7 +70,7 @@ class DocumentsLinksTestCase(GenericDocumentViewTestCase):
     def test_document_file_download_link_with_permission(self):
         self.grant_access(
             obj=self.test_document,
-            permission=permission_document_download
+            permission=permission_document_file_download
         )
 
         self.add_test_view(test_object=self.test_document.latest_file)

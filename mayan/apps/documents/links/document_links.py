@@ -9,7 +9,7 @@ from ..icons import (
     icon_document_list_recent_access, icon_recent_added_document_list
 )
 from ..permissions import (
-    permission_document_download, permission_document_properties_edit,
+    permission_document_file_download, permission_document_properties_edit,
     permission_document_print, permission_document_view
 )
 
@@ -37,7 +37,7 @@ link_document_document_type_edit = Link(
 link_document_download = Link(
     args='resolved_object.id',
     icon_class_path='mayan.apps.documents.icons.icon_document_download',
-    permissions=(permission_document_download,), text=_('Advanced download'),
+    permissions=(permission_document_file_download,), text=_('Advanced download'),
     view='documents:document_download_form',
 )
 link_document_edit = Link(
@@ -96,6 +96,6 @@ link_document_print = Link(
 link_document_quick_download = Link(
     args='resolved_object.id',
     icon_class_path='mayan.apps.documents.icons.icon_document_quick_download',
-    permissions=(permission_document_download,), text=_('Quick download'),
+    permissions=(permission_document_file_download,), text=_('Quick download'),
     view='documents:document_download',
 )

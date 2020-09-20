@@ -6,7 +6,7 @@ from mayan.apps.converter.tests.mixins import LayerTestMixin
 
 from ..models import DeletedDocument, Document, DocumentType
 from ..permissions import (
-    permission_document_create, permission_document_download,
+    permission_document_create, permission_document_file_download,
     permission_document_print, permission_document_properties_edit,
     permission_document_tools, permission_document_view,
     permission_empty_trash
@@ -197,7 +197,7 @@ class DocumentViewTestCase(
 
     def test_document_download_form_get_view_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_download
+            obj=self.test_document, permission=permission_document_file_download
         )
 
         response = self._request_test_document_download_form_get_view()
@@ -211,7 +211,7 @@ class DocumentViewTestCase(
 
     def test_document_download_form_post_view_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_download
+            obj=self.test_document, permission=permission_document_file_download
         )
         response = self._request_test_document_download_form_post_view()
         self.assertEqual(response.status_code, 302)
@@ -228,7 +228,7 @@ class DocumentViewTestCase(
         )
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_download
+            obj=self.test_document, permission=permission_document_file_download
         )
 
         response = self._request_test_document_download_view()
@@ -252,7 +252,7 @@ class DocumentViewTestCase(
             self.test_document.file_mimetype,
         )
         self.grant_access(
-            obj=self.test_document, permission=permission_document_download
+            obj=self.test_document, permission=permission_document_file_download
         )
 
         response = self._request_test_document_multiple_download_view()

@@ -26,20 +26,20 @@ queue_documents = CeleryQueue(
 )
 
 queue_converter.add_task_type(
-    dotted_path='mayan.apps.documents.tasks.task_generate_document_file_page_image',
+    dotted_path='mayan.apps.documents.tasks.task_document_file_page_image_generate',
     label=_('Generate document file page image')
 )
 queue_converter.add_task_type(
-    dotted_path='mayan.apps.documents.tasks.task_generate_document_version_page_image',
+    dotted_path='mayan.apps.documents.tasks.task_document_version_page_image_generate',
     label=_('Generate document version page image')
 )
 
 queue_documents.add_task_type(
-    dotted_path='mayan.apps.documents.tasks.task_delete_document',
+    dotted_path='mayan.apps.documents.tasks.task_trashed_document_delete',
     label=_('Delete a document')
 )
 queue_documents.add_task_type(
-    dotted_path='mayan.apps.documents.tasks.task_clean_empty_duplicate_lists',
+    dotted_path='mayan.apps.documents.tasks.task_duplicates_clean_empty_lists',
     label=_('Clean empty duplicate lists')
 )
 queue_documents.add_task_type(
@@ -48,40 +48,40 @@ queue_documents.add_task_type(
 )
 
 queue_documents_periodic.add_task_type(
-    dotted_path='mayan.apps.documents.tasks.task_check_delete_periods',
+    dotted_path='mayan.apps.documents.tasks.task_document_type_trashed_document_delete_periods_check',
     label=_('Check document type delete periods'),
-    name='task_check_delete_periods',
+    name='task_document_type_trashed_document_delete_periods_check',
     schedule=timedelta(
         seconds=CHECK_DELETE_PERIOD_INTERVAL
     ),
 )
 queue_documents_periodic.add_task_type(
-    dotted_path='mayan.apps.documents.tasks.task_check_trash_periods',
+    dotted_path='mayan.apps.documents.tasks.task_document_type_document_trash_periods_check',
     label=_('Check document type trash periods'),
-    name='task_check_trash_periods',
+    name='task_document_type_document_trash_periods_check',
     schedule=timedelta(seconds=CHECK_TRASH_PERIOD_INTERVAL),
 )
 queue_documents_periodic.add_task_type(
-    dotted_path='mayan.apps.documents.tasks.task_delete_stubs',
+    dotted_path='mayan.apps.documents.tasks.task_document_stubs_delete',
     label=_('Delete document stubs'),
-    name='task_delete_stubs',
+    name='task_document_stubs_delete',
     schedule=timedelta(seconds=DELETE_STALE_STUBS_INTERVAL),
 )
 
 queue_tools.add_task_type(
-    dotted_path='mayan.apps.documents.tasks.task_scan_duplicates_all',
+    dotted_path='mayan.apps.documents.tasks.task_duplicates_scan_all',
     label=_('Duplicated document scan')
 )
 
 queue_uploads.add_task_type(
-    dotted_path='mayan.apps.documents.tasks.task_update_page_count',
+    dotted_path='mayan.apps.documents.tasks.task_document_file_page_count_update',
     label=_('Update document page count')
 )
 queue_uploads.add_task_type(
-    dotted_path='mayan.apps.documents.tasks.task_upload_new_file',
+    dotted_path='mayan.apps.documents.tasks.task_document_file_upload',
     label=_('Upload new document file')
 )
 queue_uploads.add_task_type(
-    dotted_path='mayan.apps.documents.tasks.task_scan_duplicates_for',
+    dotted_path='mayan.apps.documents.tasks.task_duplicates_scan_for',
     label=_('Scan document duplicates')
 )

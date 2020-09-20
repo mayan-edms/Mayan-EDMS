@@ -2,7 +2,7 @@ from django.conf.urls import url
 
 from .api_views import (
     APITrashedDocumentListView, APIDeletedDocumentRestoreView,
-    APIDeletedDocumentView, APIDocumentDocumentTypeChangeView,
+    APIDeletedDocumentView, APIdocument_file,
     APIDocumentDownloadView, APIDocumentView, APIDocumentListView,
     APIDocumentFileDownloadView, APIDocumentFilePageImageView,
     APIDocumentFilePageView, APIDocumentTypeDocumentListView,
@@ -12,9 +12,10 @@ from .api_views import (
     APIDocumentVersionPageImageView
 )
 from .views.document_file_views import (
-    DocumentFileDownloadFormView, DocumentFileDownloadView,
-    DocumentFileListView, DocumentFilePropertiesView, DocumentFileRevertView,
-    DocumentFileView,
+    DocumentFileDeleteView, DocumentFileDownloadFormView,
+    DocumentFileDownloadView, DocumentFileListView,
+    DocumentFilePageCountUpdateView, DocumentFilePropertiesView,
+    DocumentFileView
 )
 from .views.document_file_page_views import (
     DocumentFilePageListView,
@@ -39,12 +40,10 @@ from .views.document_version_views import (
     DocumentVersionDeleteView, DocumentVersionListView, DocumentVersionView
 )
 from .views.document_views import (
-    DocumentDocumentTypeEditView, DocumentDownloadFormView,
-    DocumentDownloadView, DocumentListView, DocumentPreviewView,
+    DocumentDocumentTypeChangeView, DocumentListView, DocumentPreviewView,
     DocumentPrint, DocumentPropertiesEditView,
     DocumentTransformationsClearView, DocumentTransformationsCloneView,
-    DocumentUpdatePageCountView, DocumentView, RecentAccessDocumentListView,
-    RecentAddedDocumentListView
+    DocumentView, RecentAccessDocumentListView, RecentAddedDocumentListView
 )
 from .views.duplicated_document_views import (
     DocumentDuplicatesListView, DuplicatedDocumentListView,
@@ -64,13 +63,13 @@ urlpatterns_document_files = [
         name='document_file_list', view=DocumentFileListView.as_view()
     ),
     url(
-        regex=r'^documents/files/(?P<document_file_id>\d+)/download/form/$',
-        name='document_file_download_form',
-        view=DocumentFileDownloadFormView.as_view()
-    ),
-    url(
         regex=r'^documents/files/(?P<document_file_id>\d+)/$',
         name='document_file_view', view=DocumentFileView.as_view()
+    ),
+    url(
+        regex=r'^documents/files/(?P<document_file_id>\d+)/delete/$',
+        name='document_file_delete',
+        view=DocumentFileDeleteView.as_view()
     ),
     url(
         regex=r'^documents/files/(?P<document_file_id>\d+)/download/$',
@@ -78,9 +77,9 @@ urlpatterns_document_files = [
         view=DocumentFileDownloadView.as_view()
     ),
     url(
-        regex=r'^documents/files/multiple/download/$',
-        name='document_multiple_file_download',
-        view=DocumentFileDownloadView.as_view()
+        regex=r'^documents/files/(?P<document_file_id>\d+)/download/form/$',
+        name='document_file_download_form',
+        view=DocumentFileDownloadFormView.as_view()
     ),
     url(
         regex=r'^documents/files/(?P<document_file_id>\d+)/properties/$',
@@ -88,11 +87,10 @@ urlpatterns_document_files = [
         view=DocumentFilePropertiesView.as_view()
     ),
     url(
-        regex=r'^documents/files/(?P<document_file_id>\d+)/revert/$',
-        name='document_file_revert',
-        view=DocumentFileRevertView.as_view()
+        regex=r'^documents/files/multiple/download/$',
+        name='document_multiple_file_download',
+        view=DocumentFileDownloadView.as_view()
     ),
-
 ]
 
 urlpatterns_document_file_pages = [
@@ -100,6 +98,17 @@ urlpatterns_document_file_pages = [
         regex=r'^documents/files/(?P<document_file_id>\d+)/pages/$',
         name='document_file_pages', view=DocumentFilePageListView.as_view()
     ),
+    url(
+        regex=r'^documents/files/(?P<document_file_id>\d+)/pages/reset/$',
+        name='document_file_page_count_update',
+        view=DocumentFilePageCountUpdateView.as_view()
+    ),
+    url(
+        regex=r'^documents/multiple/reset_page_count/$',
+        name='document_file_multiple_page_count_update',
+        view=DocumentFilePageCountUpdateView.as_view()
+    ),
+
     url(
         regex=r'^documents/pages/(?P<document_file_page_id>\d+)/$',
         name='document_file_page_view', view=DocumentFilePageView.as_view()
@@ -305,46 +314,36 @@ urlpatterns_documents = [
     url(
         regex=r'^documents/(?P<document_id>\d+)/type/$',
         name='document_document_type_edit',
-        view=DocumentDocumentTypeEditView.as_view()
+        view=DocumentDocumentTypeChangeView.as_view()
     ),
     url(
         regex=r'^documents/multiple/type/$',
         name='document_multiple_document_type_edit',
-        view=DocumentDocumentTypeEditView.as_view()
+        view=DocumentDocumentTypeChangeView.as_view()
     ),
     url(
         regex=r'^documents/(?P<document_id>\d+)/print/$',
         name='document_print', view=DocumentPrint.as_view()
     ),
-    url(
-        regex=r'^documents/(?P<document_id>\d+)/reset_page_count/$',
-        name='document_update_page_count',
-        view=DocumentUpdatePageCountView.as_view()
-    ),
-    url(
-        regex=r'^documents/multiple/reset_page_count/$',
-        name='document_multiple_update_page_count',
-        view=DocumentUpdatePageCountView.as_view()
-    ),
-    url(
-        regex=r'^documents/(?P<document_id>\d+)/download/form/$',
-        name='document_download_form',
-        view=DocumentDownloadFormView.as_view()
-    ),
-    url(
-        regex=r'^documents/(?P<document_id>\d+)/download/$',
-        name='document_download', view=DocumentDownloadView.as_view()
-    ),
-    url(
-        regex=r'^documents/multiple/download/form/$',
-        name='document_multiple_download_form',
-        view=DocumentDownloadFormView.as_view()
-    ),
-    url(
-        regex=r'^documents/multiple/download/$',
-        name='document_multiple_download',
-        view=DocumentDownloadView.as_view()
-    ),
+    #url(
+    #    regex=r'^documents/(?P<document_id>\d+)/download/form/$',
+    #    name='document_download_form',
+    #    view=DocumentDownloadFormView.as_view()
+    #),
+    #url(
+    #    regex=r'^documents/(?P<document_id>\d+)/download/$',
+    #    name='document_download', view=DocumentDownloadView.as_view()
+    #),
+    #url(
+    #    regex=r'^documents/multiple/download/form/$',
+    #    name='document_multiple_download_form',
+    #    view=DocumentDownloadFormView.as_view()
+    #),
+    #url(
+    #    regex=r'^documents/multiple/download/$',
+    #    name='document_multiple_download',
+    #    view=DocumentDownloadView.as_view()
+    #),
     url(
         regex=r'^documents/(?P<document_id>\d+)/transformations/clear/$',
         name='document_clear_transformations',
@@ -482,7 +481,7 @@ api_urls = [
     ),
     url(
         regex=r'^documents/(?P<pk>[0-9]+)/type/change/$',
-        view=APIDocumentDocumentTypeChangeView.as_view(),
+        view=APIdocument_file.as_view(),
         name='document-type-change'
     ),
     url(

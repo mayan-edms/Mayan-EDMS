@@ -18,13 +18,13 @@ from .models import (
 )
 from .permissions import (
     permission_document_create, permission_document_delete,
-    permission_document_download, permission_document_edit,
-    permission_document_file_revert, permission_document_file_view,
-    permission_document_new_file, permission_document_properties_edit,
+    permission_document_edit, permission_document_file_delete,
+    permission_document_file_download, permission_document_file_new,
+    permission_document_file_view, permission_document_properties_edit,
     permission_document_restore, permission_document_trash,
-    permission_document_view, permission_document_type_create,
-    permission_document_type_delete, permission_document_type_edit,
-    permission_document_type_view
+    permission_document_type_create, permission_document_type_delete,
+    permission_document_type_edit, permission_document_type_view,
+    permission_document_view,
 )
 from .serializers import (
     DeletedDocumentSerializer, DocumentFilePageSerializer, DocumentSerializer,
@@ -39,8 +39,8 @@ from .settings import (
     setting_document_version_page_image_cache_time
 )
 from .tasks import (
-    task_generate_document_file_page_image,
-    task_generate_document_version_page_image
+    task_document_file_page_image_generate,
+    task_document_version_page_image_generate
 )
 
 logger = logging.getLogger(name=__name__)
@@ -89,7 +89,7 @@ class APIDeletedDocumentRestoreView(generics.GenericAPIView):
         return Response(status=status.HTTP_200_OK)
 
 
-class APIDocumentDocumentTypeChangeView(generics.GenericAPIView):
+class APIdocument_file(generics.GenericAPIView):
     """
     post: Change the type of the selected document.
     """
@@ -114,7 +114,7 @@ class APIDocumentDownloadView(DownloadMixin, generics.RetrieveAPIView):
     get: Download the latest file of a document.
     """
     mayan_object_permissions = {
-        'GET': (permission_document_download,)
+        'GET': (permission_document_file_download,)
     }
     queryset = Document.objects.all()
 
@@ -214,7 +214,7 @@ class APIDocumentFilePageImageView(generics.RetrieveAPIView):
         if maximum_layer_order:
             maximum_layer_order = int(maximum_layer_order)
 
-        task = task_generate_document_file_page_image.apply_async(
+        task = task_document_file_page_image_generate.apply_async(
             kwargs=dict(
                 document_file_page_id=self.get_object().pk, width=width,
                 height=height, zoom=zoom, rotation=rotation,
@@ -352,7 +352,7 @@ class APIDocumentFileDownloadView(DownloadMixin, generics.RetrieveAPIView):
         document = get_object_or_404(Document, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            obj=document, permissions=(permission_document_download,),
+            obj=document, permissions=(permission_document_file_download,),
             user=self.request.user
         )
         return document
@@ -490,45 +490,46 @@ class APIDocumentFilesListView(generics.ListCreateAPIView):
         document = get_object_or_404(Document, pk=self.kwargs['pk'])
 
         AccessControlList.objects.check_access(
-            obj=document, permissions=(permission_document_new_file,),
+            obj=document, permissions=(permission_document_file_new,),
             user=self.request.user,
         )
         serializer.save(document=document, _user=self.request.user)
 
 
-class APIDocumentFileView(generics.RetrieveUpdateDestroyAPIView):
+class APIDocumentFileView(generics.RetrieveDestroyAPIView):
     """
     delete: Delete the selected document file.
     get: Returns the selected document file details.
-    patch: Edit the selected document file.
-    put: Edit the selected document file.
     """
     lookup_url_kwarg = 'file_pk'
 
-    def get_document(self):
-        if self.request.method == 'GET':
-            permission_required = permission_document_view
-        elif self.request.method == 'DELETE':
-            permission_required = permission_document_file_revert
-        else:
-            permission_required = permission_document_edit
+    #def get_document(self):
 
-        document = get_object_or_404(Document, pk=self.kwargs['pk'])
+    #document_file = get_object_or_404(DocumentFile, pk=self.kwargs['pk'])
 
-        AccessControlList.objects.check_access(
-            obj=document, permissions=(permission_required,),
-            user=self.request.user
-        )
-        return document
+    #AccessControlList.objects.check_access(
+    #    obj=document_file, permissions=(permission_required,),
+    #    user=self.request.user
+    #)
+    #return document_file
 
     def get_queryset(self):
+        if self.request.method == 'DELETE':
+            permission_required = permission_document_file_delete
+        else:
+            permission_required = permission_document_file_view
+
+        return AccessControlList.objects.restrict_queryset(
+            permission=permission_required,
+            querset=DocumentFile.objects.all(), user=self.request.user
+        )
         return self.get_document().files.all()
 
-    def get_serializer(self, *args, **kwargs):
-        if not self.request:
-            return None
+    #def get_serializer(self, *args, **kwargs):
+    #    if not self.request:
+    #        return None
 
-        return super(APIDocumentFileView, self).get_serializer(*args, **kwargs)
+    #    return super().get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -588,7 +589,7 @@ class APIDocumentVersionPageImageView(generics.RetrieveAPIView):
         if maximum_layer_order:
             maximum_layer_order = int(maximum_layer_order)
 
-        task = task_generate_document_version_page_image.apply_async(
+        task = task_document_version_page_image_generate.apply_async(
             kwargs=dict(
                 document_version_page_id=self.get_object().pk, width=width,
                 height=height, zoom=zoom, rotation=rotation,

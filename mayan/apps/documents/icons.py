@@ -88,6 +88,9 @@ icon_favorite_document_remove = Icon(
 
 # Document files
 
+icon_document_file_delete = Icon(
+    driver_name='fontawesome', symbol='times'
+)
 icon_document_file_download = Icon(
     driver_name='fontawesome', symbol='download'
 )
@@ -103,9 +106,6 @@ icon_document_file_return_list = Icon(
 )
 icon_document_file_view = Icon(
     driver_name='fontawesome', symbol='eye'
-)
-icon_document_file_revert = Icon(
-    driver_name='fontawesome', symbol='undo'
 )
 
 # Document file pages

@@ -2,7 +2,7 @@ from django.utils.encoding import force_text
 
 from mayan.apps.documents.models import DocumentFile
 from mayan.apps.documents.permissions import (
-    permission_document_new_file, permission_document_file_view,
+    permission_document_file_new, permission_document_file_view,
     permission_document_view
 )
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
@@ -407,7 +407,7 @@ class NewFileBlockViewTestCase(
 
         self.grant_access(
             obj=self.test_document,
-            permission=permission_document_new_file
+            permission=permission_document_file_new
         )
         self.grant_access(
             obj=self.test_document,

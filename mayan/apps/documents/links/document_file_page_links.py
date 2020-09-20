@@ -4,14 +4,16 @@ from mayan.apps.navigation.classes import Link
 
 from ..icons import (
     icon_document_file_page_navigation_first,
-    icon_document_file_page_navigation_last, icon_document_file_page_navigation_next,
-    icon_document_file_page_navigation_previous, icon_document_file_page_return,
+    icon_document_file_page_navigation_last,
+    icon_document_file_page_navigation_next,
+    icon_document_file_page_navigation_previous,
+    icon_document_file_page_return,
     icon_document_file_page_rotate_left, icon_document_file_page_rotate_right,
     icon_document_file_page_zoom_in, icon_document_file_page_zoom_out,
 )
 from ..permissions import (
-    permission_document_edit, permission_document_tools,
-    permission_document_view
+    permission_document_edit, permission_document_file_tools,
+    permission_document_tools, permission_document_view
 )
 from ..settings import setting_zoom_max_level, setting_zoom_min_level
 
@@ -96,21 +98,21 @@ link_document_file_page_zoom_out = Link(
     permissions=(permission_document_view,), text=_('Zoom out'),
     view='documents:document_file_page_zoom_out',
 )
-link_document_file_pages = Link(
+link_document_file_page_list = Link(
     args='resolved_object.pk',
     icon_class_path='mayan.apps.documents.icons.icon_document_file_pages',
     permissions=(permission_document_view,), text=_('Pages'),
     view='documents:document_file_pages',
 )
-link_document_multiple_update_page_count = Link(
+link_document_file_multiple_page_count_update = Link(
     icon_class_path='mayan.apps.documents.icons.icon_document_file_page_count_update',
     text=_('Recalculate page count'),
-    view='documents:document_multiple_update_page_count'
+    view='documents:document_file_multiple_page_count_update'
 )
 link_document_file_page_count_update = Link(
     args='resolved_object.pk',
     icon_class_path='mayan.apps.documents.icons.icon_document_file_page_count_update',
-    permissions=(permission_document_tools,),
+    permissions=(permission_document_file_tools,),
     text=_('Recalculate page count'),
-    view='documents:document_update_page_count'
+    view='documents:document_file_page_count_update'
 )

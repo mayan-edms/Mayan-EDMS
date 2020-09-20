@@ -16,11 +16,13 @@ from mayan.apps.converter.classes import ConverterBase
 from mayan.apps.converter.exceptions import InvalidOfficeFormat, PageCountError
 from mayan.apps.converter.layers import layer_saved_transformations
 from mayan.apps.converter.transformations import TransformationRotate
+from mayan.apps.events.classes import EventManagerMethodAfter, EventManagerSave
+from mayan.apps.events.decorators import method_event
 from mayan.apps.mimetype.api import get_mimetype
 from mayan.apps.storage.classes import DefinedStorageLazy
 from mayan.apps.templating.classes import Template
 
-from ..events import event_document_file_new, event_document_file_revert
+from ..events import event_document_file_deleted, event_document_file_new
 from ..literals import (
     STORAGE_NAME_DOCUMENT_FILE_PAGE_IMAGE_CACHE, STORAGE_NAME_DOCUMENT_FILES
 )
@@ -181,6 +183,40 @@ class DocumentFile(models.Model):
         )
         return partition
 
+    def checksum_update(self, save=True):
+        """
+        Open a document file's file and update the checksum field using
+        the user provided checksum function
+        """
+        block_size = setting_hash_block_size.value
+        if block_size == 0:
+            # If the setting value is 0 that means disable read limit. To disable
+            # the read limit passing None won't work, we pass -1 instead as per
+            # the Python documentation.
+            # https://docs.python.org/2/tutorial/inputoutput.html#methods-of-file-objects
+            block_size = -1
+
+        if self.exists():
+            hash_object = hash_function()
+            with self.open() as file_object:
+                while (True):
+                    data = file_object.read(block_size)
+                    if not data:
+                        break
+
+                    hash_object.update(data)
+
+            self.checksum = force_text(hash_object.hexdigest())
+            if save:
+                self.save()
+
+            return self.checksum
+
+    @method_event(
+        event_manager_class=EventManagerMethodAfter,
+        event=event_document_file_deleted,
+        target='document',
+    )
     def delete(self, *args, **kwargs):
         for page in self.pages.all():
             page.delete()
@@ -281,6 +317,25 @@ class DocumentFile(models.Model):
             context={'instance': self}
         )
 
+
+    def mimetype_update(self, save=True):
+        """
+        Read a document verions's file and determine the mimetype by calling
+        the get_mimetype wrapper
+        """
+        if self.exists():
+            try:
+                with self.open() as file_object:
+                    self.mimetype, self.encoding = get_mimetype(
+                        file_object=file_object
+                    )
+            except Exception:
+                self.mimetype = ''
+                self.encoding = ''
+            finally:
+                if save:
+                    self.save()
+
     def natural_key(self):
         return (self.checksum, self.document.natural_key())
     natural_key.dependencies = ['documents.Document']
@@ -316,6 +371,35 @@ class DocumentFile(models.Model):
         """
         return self.pages.count()
 
+    def page_count_update(self, save=True):
+        try:
+            with self.open() as file_object:
+                converter = ConverterBase.get_converter_class()(
+                    file_object=file_object, mime_type=self.mimetype
+                )
+                detected_pages = converter.get_page_count()
+        except PageCountError:
+            # If converter backend doesn't understand the format,
+            # use 1 as the total page count
+            pass
+        else:
+            DocumentFilePage = apps.get_model(
+                app_label='documents', model_name='DocumentFilePage'
+            )
+
+            with transaction.atomic():
+                self.pages.all().delete()
+
+                for page_number in range(detected_pages):
+                    DocumentFilePage.objects.create(
+                        document_file=self, page_number=page_number + 1
+                    )
+
+            if save:
+                self.save()
+
+            return detected_pages
+
     @property
     def pages(self):
         DocumentFilePage = apps.get_model(
@@ -323,22 +407,6 @@ class DocumentFile(models.Model):
         )
         queryset = ModelQueryFields.get(model=DocumentFilePage).get_queryset()
         return queryset.filter(pk__in=self.file_pages.all())
-
-    def revert(self, _user=None):
-        """
-        Delete the subsequent files after this one
-        """
-        logger.info(
-            'Reverting to document document: %s to file: %s',
-            self.document, self
-        )
-
-        with transaction.atomic():
-            event_document_file_revert.commit(
-                actor=_user, target=self.document
-            )
-            for document_file in self.document.files.filter(timestamp__gt=self.timestamp):
-                document_file.delete()
 
     def save(self, *args, **kwargs):
         """
@@ -368,10 +436,10 @@ class DocumentFile(models.Model):
 
                 if new_document_file:
                     # Only do this for new documents
-                    self.update_checksum(save=False)
-                    self.update_mimetype(save=False)
+                    self.checksum_update(save=False)
+                    self.mimetype_update(save=False)
                     self.save()
-                    self.update_page_count(save=False)
+                    self.page_count_update(save=False)
                     if setting_fix_orientation.value:
                         self.fix_orientation()
 
@@ -419,82 +487,6 @@ class DocumentFile(models.Model):
             return self.file.storage.size(self.file.name)
         else:
             return None
-
-    def update_checksum(self, save=True):
-        """
-        Open a document file's file and update the checksum field using
-        the user provided checksum function
-        """
-        block_size = setting_hash_block_size.value
-        if block_size == 0:
-            # If the setting value is 0 that means disable read limit. To disable
-            # the read limit passing None won't work, we pass -1 instead as per
-            # the Python documentation.
-            # https://docs.python.org/2/tutorial/inputoutput.html#methods-of-file-objects
-            block_size = -1
-
-        if self.exists():
-            hash_object = hash_function()
-            with self.open() as file_object:
-                while (True):
-                    data = file_object.read(block_size)
-                    if not data:
-                        break
-
-                    hash_object.update(data)
-
-            self.checksum = force_text(hash_object.hexdigest())
-            if save:
-                self.save()
-
-            return self.checksum
-
-    def update_mimetype(self, save=True):
-        """
-        Read a document verions's file and determine the mimetype by calling
-        the get_mimetype wrapper
-        """
-        if self.exists():
-            try:
-                with self.open() as file_object:
-                    self.mimetype, self.encoding = get_mimetype(
-                        file_object=file_object
-                    )
-            except Exception:
-                self.mimetype = ''
-                self.encoding = ''
-            finally:
-                if save:
-                    self.save()
-
-    def update_page_count(self, save=True):
-        try:
-            with self.open() as file_object:
-                converter = ConverterBase.get_converter_class()(
-                    file_object=file_object, mime_type=self.mimetype
-                )
-                detected_pages = converter.get_page_count()
-        except PageCountError:
-            # If converter backend doesn't understand the format,
-            # use 1 as the total page count
-            pass
-        else:
-            DocumentFilePage = apps.get_model(
-                app_label='documents', model_name='DocumentFilePage'
-            )
-
-            with transaction.atomic():
-                self.pages.all().delete()
-
-                for page_number in range(detected_pages):
-                    DocumentFilePage.objects.create(
-                        document_file=self, page_number=page_number + 1
-                    )
-
-            if save:
-                self.save()
-
-            return detected_pages
 
     @property
     def uuid(self):

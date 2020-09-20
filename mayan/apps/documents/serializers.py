@@ -10,7 +10,7 @@ from .models import (
     DocumentTypeFilename, RecentDocument
 )
 from .settings import setting_language
-from .tasks import task_upload_new_file
+from .tasks import task_document_file_upload
 
 
 class DocumentFilePageSerializer(serializers.HyperlinkedModelSerializer):
@@ -201,7 +201,7 @@ class NewDocumentFileSerializer(serializers.Serializer):
             file=self.validated_data['file']
         )
 
-        task_upload_new_file.delay(
+        task_document_file_upload.delay(
             comment=self.validated_data.get('comment', ''),
             document_id=document.pk,
             shared_uploaded_file_id=shared_uploaded_file.pk, user_id=_user.pk
@@ -307,7 +307,7 @@ class NewDocumentSerializer(serializers.ModelSerializer):
             file=self.validated_data['file']
         )
 
-        task_upload_new_file.delay(
+        task_document_file_upload.delay(
             document_id=document.pk,
             shared_uploaded_file_id=shared_uploaded_file.pk, user_id=_user.pk
         )

@@ -125,7 +125,7 @@ class StorageProcessorTestCase(
 
         self.assertEqual(
             self.test_document.latest_file.checksum,
-            self.test_document.latest_file.update_checksum(save=False)
+            self.test_document.latest_file.checksum_update(save=False)
         )
 
     def test_processor_forwards_and_reverse(self):
@@ -146,5 +146,5 @@ class StorageProcessorTestCase(
 
         self.assertEqual(
             self.test_document.latest_file.checksum,
-            self.test_document.latest_file.update_checksum(save=False)
+            self.test_document.latest_file.checksum_update(save=False)
         )

@@ -6,10 +6,10 @@ from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
 from ..models import Document, DocumentType
 from ..permissions import (
-    permission_document_create, permission_document_download,
+    permission_document_create, permission_document_file_download,
     permission_document_delete, permission_document_edit,
     permission_document_file_revert, permission_document_file_view,
-    permission_document_new_file, permission_document_properties_edit,
+    permission_document_file_new, permission_document_properties_edit,
     permission_document_restore, permission_document_trash,
     permission_document_view, permission_document_type_create,
     permission_document_type_delete, permission_document_type_edit,
@@ -42,7 +42,7 @@ class DocumentAPIViewTestCase(
     def test_document_api_download_view_with_access(self):
         self._upload_test_document()
         self.grant_access(
-            obj=self.test_document, permission=permission_document_download
+            obj=self.test_document, permission=permission_document_file_download
         )
 
         response = self._request_test_document_api_download_view()
@@ -189,7 +189,7 @@ class DocumentFileAPIViewTestCase(
     def test_document_file_api_download_view_with_access(self):
         self._upload_test_document()
         self.grant_access(
-            obj=self.test_document, permission=permission_document_download
+            obj=self.test_document, permission=permission_document_file_download
         )
 
         response = self._request_test_document_file_api_download_view()
@@ -205,7 +205,7 @@ class DocumentFileAPIViewTestCase(
     def test_document_file_api_download_preserve_extension_view(self):
         self._upload_test_document()
         self.grant_access(
-            obj=self.test_document, permission=permission_document_download
+            obj=self.test_document, permission=permission_document_file_download
         )
 
         response = self.get(
@@ -321,7 +321,7 @@ class DocumentFileAPIViewTestCase(
     def test_document_file_api_upload_view_with_access(self):
         self._upload_test_document()
         self.grant_access(
-            obj=self.test_document, permission=permission_document_new_file
+            obj=self.test_document, permission=permission_document_file_new
         )
 
         response = self._request_test_document_file_api_upload_view()

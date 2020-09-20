@@ -34,7 +34,7 @@ link_document_version_list = Link(
 #link_document_version_download = Link(
 #    args='resolved_object.pk',
 #    icon_class_path='mayan.apps.documents.icons.icon_document_version_download',
-#    permissions=(permission_document_download,), text=_('Download version'),
+#    permissions=(permission_document_file_download,), text=_('Download version'),
 #    view='documents:document_version_download_form'
 #)
 link_document_version_return_document = Link(

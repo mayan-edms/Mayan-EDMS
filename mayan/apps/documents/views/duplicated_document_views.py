@@ -9,7 +9,7 @@ from mayan.apps.views.mixins import ExternalObjectMixin
 from ..icons import icon_duplicated_document_list
 from ..models import Document, DuplicatedDocument
 from ..permissions import permission_document_tools, permission_document_view
-from ..tasks import task_scan_duplicates_all
+from ..tasks import task_duplicates_scan_all
 
 from .document_views import DocumentListView
 
@@ -83,7 +83,7 @@ class ScanDuplicatedDocuments(ConfirmView):
     view_permission = permission_document_tools
 
     def view_action(self):
-        task_scan_duplicates_all.apply_async()
+        task_duplicates_scan_all.apply_async()
         messages.success(
             message=_('Duplicated document scan queued successfully.'),
             request=self.request

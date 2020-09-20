@@ -2,7 +2,7 @@ from django.test import override_settings
 
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.permissions import (
-    permission_document_create, permission_document_new_file
+    permission_document_create, permission_document_file_new
 )
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 from mayan.apps.documents.tests.literals import (
@@ -188,7 +188,7 @@ class DocumentFileUploadViewTestCase(
     def test_document_file_upload_view_with_access(self):
         self.grant_access(
             obj=self.test_document,
-            permission=permission_document_new_file
+            permission=permission_document_file_new
         )
         file_count = self.test_document.files.count()
 
@@ -220,7 +220,7 @@ class DocumentFileUploadViewTestCase(
     def test_document_file_upload_no_source_view_with_access(self):
         self.grant_access(
             obj=self.test_document,
-            permission=permission_document_new_file
+            permission=permission_document_file_new
         )
         file_count = self.test_document.files.count()
 

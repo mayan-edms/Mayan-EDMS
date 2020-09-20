@@ -49,7 +49,7 @@ class StorageProcessManagementCommandTestCase(
 
         self.assertEqual(
             self.test_document.latest_version.checksum,
-            self.test_document.latest_version.update_checksum(save=False)
+            self.test_document.latest_version.checksum_update(save=False)
         )
 
     def test_processor_forwards_and_reverse(self):
@@ -70,5 +70,5 @@ class StorageProcessManagementCommandTestCase(
 
         self.assertEqual(
             self.test_document.latest_version.checksum,
-            self.test_document.latest_version.update_checksum(save=False)
+            self.test_document.latest_version.checksum_update(save=False)
         )
