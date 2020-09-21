@@ -55,11 +55,7 @@ class DocumentFileDeleteView(SingleObjectDeleteView):
         )
 
 ####MERGE
-from ..forms import (
-    DocumentDownloadForm, DocumentForm, DocumentFilePageNumberForm,
-    DocumentPreviewForm, DocumentPrintForm, DocumentPropertiesForm,
-    DocumentTypeFilteredSelectForm,
-)
+from ..forms import DocumentDownloadForm
 
 class DocumentDownloadFormView(MultipleObjectFormActionView):
     form_class = DocumentDownloadForm
@@ -245,59 +241,6 @@ class DocumentFileListView(ExternalObjectMixin, SingleObjectListView):
 
     def get_source_queryset(self):
         return self.get_document().files.order_by('-timestamp')
-
-
-class DocumentFilePageCountUpdateView(MultipleObjectConfirmActionView):
-    model = DocumentFile
-    object_permission = permission_document_file_tools
-    pk_url_kwarg = 'document_file_id'
-    success_message = _(
-        '%(count)d document file queued for page count recalculation.'
-    )
-    success_message_plural = _(
-        '%(count)d document files queued for page count recalculation.'
-    )
-
-    def get_extra_context(self):
-        queryset = self.object_list
-
-        result = {
-            'title': ungettext(
-                singular='Recalculate the page count of the selected document file?',
-                plural='Recalculate the page count of the selected document files?',
-                number=queryset.count()
-            )
-        }
-
-        if queryset.count() == 1:
-            result.update(
-                {
-                    'object': queryset.first(),
-                    'title': _(
-                        'Recalculate the page count of the document file: %s?'
-                    ) % queryset.first()
-                }
-            )
-
-        return result
-
-    def object_action(self, form, instance):
-        #latest_file = instance.latest_file
-        #if latest_file:
-        task_document_file_page_count_update.apply_async(
-            kwargs={'document_file_id': instance.pk}
-        )
-        #else:
-        #    messages.error(
-        #        self.request, _(
-        #            'Document file "%(document_file)s" is empty. Upload at least one '
-        #            'document_file file before attempting to detect the '
-        #            'page count.'
-        #        ) % {
-        #            'document_file': instance,
-        #        }
-        #    )
-
 
 
 class DocumentFilePropertiesView(SingleObjectDetailView):

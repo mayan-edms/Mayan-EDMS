@@ -3,6 +3,7 @@ import logging
 from furl import furl
 
 from django.db import models
+from django.db.models import Max
 from django.urls import reverse
 from django.utils.encoding import force_text
 from django.utils.functional import cached_property
@@ -176,7 +177,7 @@ class DocumentFilePage(models.Model):
 
         # Stored transformations first
         for stored_transformation in LayerTransformation.objects.get_for_object(
-            self, maximum_layer_order=maximum_layer_order, as_classes=True,
+            obj=self, maximum_layer_order=maximum_layer_order, as_classes=True,
             user=user
         ):
             transformation_list.append(stored_transformation)
@@ -257,17 +258,21 @@ class DocumentFilePage(models.Model):
         return self.document.is_in_trash
 
     def get_label(self):
-        if getattr(self, 'document_file', None):
-            return _(
-                'Document file page %(page_num)d of %(total_pages)d from %(document_file)s'
-            ) % {
-                'document_file': force_text(self.document_file),
-                'page_num': self.page_number,
-                'total_pages': self.document_file.pages.all().count()
-            }
-        else:
-            return None
+        return _(
+            'Document file page %(page_num)d of %(total_pages)d from %(document_file)s'
+        ) % {
+            'document_file': force_text(self.document_file),
+            'page_num': self.page_number,
+            'total_pages': self.get_pages_last_number() or 1
+        }
     get_label.short_description = _('Label')
+
+    def get_pages_last_number(self):
+        last_page_number = self.siblings.aggregate(
+            page_number_maximum=Max('page_number')
+        )['page_number_maximum']
+
+        return last_page_number
 
     def natural_key(self):
         return (self.page_number, self.document_file.natural_key())

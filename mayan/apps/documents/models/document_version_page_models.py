@@ -18,8 +18,11 @@ from mayan.apps.converter.transformations import (
     BaseTransformation, TransformationResize, TransformationRotate,
     TransformationZoom
 )
+from mayan.apps.events.classes import EventManagerMethodAfter, EventManagerSave
+from mayan.apps.events.decorators import method_event
 from mayan.apps.lock_manager.backends.base import LockingBackend
 
+from ..events import event_document_version_edited
 #from ..managers import DocumentPageManager
 from ..settings import (
     setting_display_width, setting_display_height, setting_zoom_max_level,
@@ -70,6 +73,12 @@ class DocumentVersionPage(models.Model):
         )
         return partition
 
+
+    @method_event(
+        event_manager_class=EventManagerMethodAfter,
+        event=event_document_version_edited,
+        target='document_version',
+    )
     def delete(self, *args, **kwargs):
         self.cache_partition.delete()
         super().delete(*args, **kwargs)
@@ -174,9 +183,16 @@ class DocumentVersionPage(models.Model):
 
         maximum_layer_order = kwargs.get('maximum_layer_order', None)
 
+        # Content object transformations first
+        for content_object_stored_transformation in LayerTransformation.objects.get_for_object(
+            obj=self.content_object, maximum_layer_order=maximum_layer_order,
+            as_classes=True, user=user
+        ):
+            transformation_list.append(content_object_stored_transformation)
+
         # Stored transformations first
         for stored_transformation in LayerTransformation.objects.get_for_object(
-            self, maximum_layer_order=maximum_layer_order, as_classes=True,
+            obj=self, maximum_layer_order=maximum_layer_order, as_classes=True,
             user=user
         ):
             transformation_list.append(stored_transformation)
@@ -261,9 +277,16 @@ class DocumentVersionPage(models.Model):
         ) % {
             'document_version': force_text(self.document_version),
             'page_number': self.page_number,
-            'total_pages': self.document_version.pages.count()
+            'total_pages': self.get_pages_last_number() or 1
         }
     get_label.short_description = _('Label')
+
+    def get_pages_last_number(self):
+        last_page_number = self.siblings.aggregate(
+            page_number_maximum=Max('page_number')
+        )['page_number_maximum']
+
+        return last_page_number
 
     @property
     def is_in_trash(self):
@@ -273,16 +296,25 @@ class DocumentVersionPage(models.Model):
     #    return (self.page_number, self.document.natural_key())
     #natural_key.dependencies = ['documents.Document']
 
+    @method_event(
+        event_manager_class=EventManagerSave,
+        created={
+            'event': event_document_version_edited,
+            'action_object': 'self',
+            'target': 'document_version',
+        },
+        edited={
+            'event': event_document_version_edited,
+            'action_object': 'self',
+            'target': 'document_version',
+        }
+    )
+    def save(self, *args, **kwargs):
+        return super().save(*args, **kwargs)
+
     """
     def save(self, *args, **kwargs):
         if not self.page_number:
-            last_page_number = DocumentVersionPage.objects.filter(
-                document=self.document
-            ).aggregate(Max('page_number'))['page_number__max']
-            if last_page_number is not None:
-                self.page_number = last_page_number + 1
-            else:
-                self.page_number = 1
         super().save(*args, **kwargs)
     """
 

@@ -2,19 +2,18 @@ import logging
 import os
 
 from django import forms
-from django.template.defaultfilters import filesizeformat
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.forms import DetailForm
 
-from ..fields import DocumentField
+#from ..fields import DocumentField
 from ..models import Document
 from ..literals import DEFAULT_ZIP_FILENAME, PAGE_RANGE_ALL, PAGE_RANGE_CHOICES
 from ..settings import setting_language
 from ..utils import get_language, get_language_choices
 
 __all__ = (
-    'DocumentDownloadForm', 'DocumentForm', 'DocumentPreviewForm',
+    'DocumentDownloadForm', 'DocumentForm',
     'DocumentPropertiesForm', 'DocumentPrintForm'
 )
 logger = logging.getLogger(name=__name__)
@@ -125,15 +124,6 @@ class DocumentForm(forms.ModelForm):
                     ].filename
 
         return filename
-
-
-class DocumentPreviewForm(forms.Form):
-    def __init__(self, *args, **kwargs):
-        document = kwargs.pop('instance', None)
-        super().__init__(*args, **kwargs)
-        self.fields['document'].initial = document
-
-    document = DocumentField()
 
 
 class DocumentPropertiesForm(DetailForm):

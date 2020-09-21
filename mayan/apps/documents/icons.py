@@ -204,7 +204,16 @@ icon_document_version_view = Icon(
 
 # Document version pages
 
+icon_document_version_page_delete = Icon(
+    driver_name='fontawesome', symbol='times'
+)
 icon_document_version_page_list = Icon(driver_name='fontawesome', symbol='copy')
+icon_document_version_page_list_remap = Icon(
+    driver_name='fontawesome', symbol='project-diagram'
+)
+icon_document_version_page_list_reset = Icon(
+    driver_name='fontawesome', symbol='copy'
+)
 icon_document_version_page_navigation_first = Icon(
     driver_name='fontawesome', symbol='step-backward'
 )
@@ -216,9 +225,6 @@ icon_document_version_page_navigation_next = Icon(
 )
 icon_document_version_page_navigation_previous = Icon(
     driver_name='fontawesome', symbol='arrow-left'
-)
-icon_document_version_page_remap = Icon(
-    driver_name='fontawesome', symbol='project-diagram'
 )
 icon_document_version_page_return = icon_document_return
 icon_document_version_page_rotate_left = Icon(

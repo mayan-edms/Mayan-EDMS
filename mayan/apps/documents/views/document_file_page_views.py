@@ -22,7 +22,9 @@ from ..icons import icon_document_file_pages
 from ..links.document_file_page_links import link_document_file_page_count_update
 from ..models.document_file_models import DocumentFile
 from ..models.document_file_page_models import DocumentFilePage
-from ..permissions import permission_document_edit, permission_document_view
+from ..permissions import (
+    permission_document_file_tools, permission_document_file_view
+)
 from ..settings import (
     setting_rotation_step, setting_zoom_percent_step, setting_zoom_max_level,
     setting_zoom_min_level
@@ -40,9 +42,61 @@ __all__ = (
 logger = logging.getLogger(name=__name__)
 
 
+class DocumentFilePageCountUpdateView(MultipleObjectConfirmActionView):
+    model = DocumentFile
+    object_permission = permission_document_file_tools
+    pk_url_kwarg = 'document_file_id'
+    success_message = _(
+        '%(count)d document file queued for page count recalculation.'
+    )
+    success_message_plural = _(
+        '%(count)d document files queued for page count recalculation.'
+    )
+
+    def get_extra_context(self):
+        queryset = self.object_list
+
+        result = {
+            'title': ungettext(
+                singular='Recalculate the page count of the selected document file?',
+                plural='Recalculate the page count of the selected document files?',
+                number=queryset.count()
+            )
+        }
+
+        if queryset.count() == 1:
+            result.update(
+                {
+                    'object': queryset.first(),
+                    'title': _(
+                        'Recalculate the page count of the document file: %s?'
+                    ) % queryset.first()
+                }
+            )
+
+        return result
+
+    def object_action(self, form, instance):
+        #latest_file = instance.latest_file
+        #if latest_file:
+        task_document_file_page_count_update.apply_async(
+            kwargs={'document_file_id': instance.pk}
+        )
+        #else:
+        #    messages.error(
+        #        self.request, _(
+        #            'Document file "%(document_file)s" is empty. Upload at least one '
+        #            'document_file file before attempting to detect the '
+        #            'page count.'
+        #        ) % {
+        #            'document_file': instance,
+        #        }
+        #    )
+
+
 class DocumentFilePageListView(ExternalObjectMixin, SingleObjectListView):
     external_object_class = DocumentFile
-    external_object_permission = permission_document_view
+    external_object_permission = permission_document_file_view
     external_object_pk_url_kwarg = 'document_file_id'
 
     def get_extra_context(self):
@@ -72,7 +126,7 @@ class DocumentFilePageListView(ExternalObjectMixin, SingleObjectListView):
 
 class DocumentFilePageNavigationBase(ExternalObjectMixin, RedirectView):
     external_object_class = DocumentFilePage
-    external_object_permission = permission_document_view
+    external_object_permission = permission_document_file_view
     external_object_pk_url_kwarg = 'document_file_page_id'
 
     def get_redirect_url(self, *args, **kwargs):
@@ -156,7 +210,7 @@ class DocumentFilePageNavigationPrevious(DocumentFilePageNavigationBase):
 
 class DocumentFilePageView(ExternalObjectMixin, SimpleView):
     external_object_class = DocumentFilePage
-    external_object_permission = permission_document_view
+    external_object_permission = permission_document_file_view
     external_object_pk_url_kwarg = 'document_file_page_id'
     template_name = 'appearance/generic_form.html'
 
@@ -192,7 +246,7 @@ class DocumentFilePageViewResetView(RedirectView):
 
 class DocumentFilePageInteractiveTransformation(ExternalObjectMixin, RedirectView):
     external_object_class = DocumentFilePage
-    external_object_permission = permission_document_view
+    external_object_permission = permission_document_file_view
     external_object_pk_url_kwarg = 'document_file_page_id'
 
     def get_object(self):

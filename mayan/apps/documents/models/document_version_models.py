@@ -142,10 +142,13 @@ class DocumentVersion(models.Model):
             for page in self.pages.all():
                 page.delete()
 
-            for document_file_page in self.latest_file.pages.all():
-                self.pages.create(
-                    content_object=document_file_page
-                )
+            latest_file = self.document.latest_file
+            if latest_file:
+                for document_file_page in latest_file.pages.all():
+                    self.pages.create(
+                        content_object=document_file_page,
+                        page_number=document_file_page.page_number
+                    )
 
     @method_event(
         event_manager_class=EventManagerSave,

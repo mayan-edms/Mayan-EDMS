@@ -19,6 +19,7 @@ logger = logging.getLogger(name=__name__)
 
 
 # Document
+
 @app.task(ignore_result=True)
 def task_document_stubs_delete():
     Document = apps.get_model(
@@ -31,6 +32,7 @@ def task_document_stubs_delete():
 
 
 # Document file
+
 @app.task(bind=True, default_retry_delay=UPDATE_PAGE_COUNT_RETRY_DELAY, ignore_result=True)
 def task_document_file_page_count_update(self, document_file_id):
     DocumentFile = apps.get_model(
@@ -155,6 +157,7 @@ def task_document_file_upload(self, document_id, shared_uploaded_file_id, user_i
 
 
 # Document type
+
 @app.task(ignore_result=True)
 def task_document_type_trashed_document_delete_periods_check():
     DocumentType = apps.get_model(
@@ -174,6 +177,21 @@ def task_document_type_document_trash_periods_check():
 
 
 # Document version
+
+@app.task(ignore_result=True)
+def task_document_version_page_list_reset(document_version_id):
+    DocumentVersion = apps.get_model(
+        app_label='documents', model_name='DocumentVersion'
+    )
+
+    document_version = DocumentVersion.objects.get(
+        pk=document_version_id
+    )
+    document_version.pages_reset()
+
+
+# Document version page
+
 @app.task(
     bind=True,
     default_retry_delay=setting_task_document_version_page_image_generate_retry_delay.value
@@ -191,7 +209,9 @@ def task_document_version_page_image_generate(
     else:
         user = None
 
-    document_version_page = DocumentVersionPage.objects.get(pk=document_version_page_id)
+    document_version_page = DocumentVersionPage.objects.get(
+        pk=document_version_page_id
+    )
     try:
         return document_version_page.generate_image(user=user, **kwargs)
     except LockError as exception:
@@ -207,6 +227,7 @@ def task_document_version_page_image_generate(
 
 
 # Duplicates
+
 @app.task(ignore_result=True)
 def task_duplicates_clean_empty_lists():
     DuplicatedDocument = apps.get_model(
@@ -238,6 +259,7 @@ def task_duplicates_scan_for(document_id):
 
 
 # Trash can
+
 @app.task(ignore_result=True)
 def task_trash_can_empty():
     DeletedDocument = apps.get_model(
@@ -251,6 +273,7 @@ def task_trash_can_empty():
 
 
 # Trashed document
+
 @app.task(ignore_result=True)
 def task_trashed_document_delete(trashed_document_id):
     DeletedDocument = apps.get_model(

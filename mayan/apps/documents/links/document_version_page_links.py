@@ -3,6 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.navigation.classes import Link
 
 from ..icons import (
+    icon_document_version_page_delete,
     icon_document_version_page_navigation_first,
     icon_document_version_page_navigation_last,
     icon_document_version_page_navigation_next,
@@ -13,8 +14,7 @@ from ..icons import (
     icon_document_version_page_zoom_in, icon_document_version_page_zoom_out,
 )
 from ..permissions import (
-    permission_document_version_edit, permission_document_tools,
-    permission_document_version_view, permission_document_view
+    permission_document_version_edit, permission_document_version_view
 )
 from ..settings import setting_zoom_max_level, setting_zoom_min_level
 
@@ -36,6 +36,30 @@ def is_min_zoom(context):
 
 
 
+link_document_version_page_delete = Link(
+    args='resolved_object.pk',
+    icon_class=icon_document_version_page_delete,
+    permissions=(permission_document_version_edit,), tags='dangerous',
+    text=_('Delete'), view='documents:document_version_page_delete',
+)
+link_document_version_page_list = Link(
+    args='resolved_object.pk',
+    icon_class_path='mayan.apps.documents.icons.icon_document_version_page_list',
+    permissions=(permission_document_version_view,), text=_('Pages'),
+    view='documents:document_version_page_list',
+)
+link_document_version_page_list_remap = Link(
+    args='resolved_object.pk',
+    icon_class_path='mayan.apps.documents.icons.icon_document_version_page_list_remap',
+    permissions=(permission_document_version_edit,), text=_('Remap pages'),
+    view='documents:document_version_page_list_remap',
+)
+link_document_version_page_list_reset = Link(
+    args='resolved_object.pk',
+    icon_class_path='mayan.apps.documents.icons.icon_document_version_page_list_reset',
+    permissions=(permission_document_version_edit,), text=_('Reset pages'),
+    view='documents:document_version_page_list_reset',
+)
 link_document_version_page_navigation_first = Link(
     args='resolved_object.pk', conditional_disable=is_first_page,
     icon_class=icon_document_version_page_navigation_first,
@@ -101,16 +125,4 @@ link_document_version_page_zoom_out = Link(
     icon_class=icon_document_version_page_zoom_out, keep_query=True,
     permissions=(permission_document_version_view,), text=_('Zoom out'),
     view='documents:document_version_page_zoom_out',
-)
-link_document_version_page_list = Link(
-    args='resolved_object.pk',
-    icon_class_path='mayan.apps.documents.icons.icon_document_version_page_list',
-    permissions=(permission_document_version_view,), text=_('Pages'),
-    view='documents:document_version_page_list',
-)
-link_document_version_page_remap = Link(
-    args='resolved_object.pk',
-    icon_class_path='mayan.apps.documents.icons.icon_document_version_page_remap',
-    permissions=(permission_document_version_edit,), text=_('Remap pages'),
-    view='documents:document_version_page_remap',
 )

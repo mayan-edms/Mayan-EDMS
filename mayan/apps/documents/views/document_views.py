@@ -27,8 +27,8 @@ from mayan.apps.views.generics import (
 from ..events import event_document_download, event_document_viewed
 from ..forms import (
     DocumentDownloadForm, DocumentForm, DocumentFilePageNumberForm,
-    DocumentPreviewForm, DocumentPrintForm, DocumentPropertiesForm,
-    DocumentTypeFilteredSelectForm,
+    DocumentPrintForm, DocumentPropertiesForm,
+    DocumentTypeFilteredSelectForm
 )
 from ..icons import (
     icon_document_download, icon_document_list,
@@ -46,6 +46,8 @@ from ..settings import (
 )
 from ..tasks import task_document_file_page_count_update
 from ..utils import parse_range
+
+from .document_version_views import DocumentVersionView
 
 __all__ = (
     'DocumentListView', 'DocumentDocumentTypeChangeView', 'DocumentPropertiesEditView',
@@ -141,7 +143,7 @@ class DocumentDocumentTypeChangeView(MultipleObjectFormActionView):
         return result
 
     def object_action(self, form, instance):
-        instance.set_document_type(
+        instance.document_type_change(
             form.cleaned_data['document_type'], _user=self.request.user
         )
 
@@ -152,14 +154,13 @@ class DocumentDocumentTypeChangeView(MultipleObjectFormActionView):
         )
 
 
-class DocumentPreviewView(SingleObjectDetailView):
-    form_class = DocumentPreviewForm
+class DocumentPreviewView(DocumentVersionView):
     model = Document
     object_permission = permission_document_view
     pk_url_kwarg = 'document_id'
 
     def dispatch(self, request, *args, **kwargs):
-        result = super().dispatch(request=request, *args, **kwargs)
+        result = super(SingleObjectDetailView, self).dispatch(request=request, *args, **kwargs)
         self.object.add_as_recent_document_for_user(user=request.user)
         event_document_viewed.commit(
             actor=request.user, target=self.object

@@ -93,12 +93,15 @@ from .links.document_version_links import (
     link_document_version_view
 )
 from .links.document_version_page_links import (
+    link_document_version_page_delete,
     link_document_version_page_list,
+    link_document_version_page_list_remap,
+    link_document_version_page_list_reset,
     link_document_version_page_navigation_first,
     link_document_version_page_navigation_last,
     link_document_version_page_navigation_next,
     link_document_version_page_navigation_previous,
-    link_document_version_page_return, link_document_version_page_remap,
+    link_document_version_page_return,
     link_document_version_page_rotate_left,
     link_document_version_page_rotate_right, link_document_version_page_view,
     link_document_version_page_view_reset, link_document_version_page_zoom_in,
@@ -125,7 +128,7 @@ from .permissions import (
     permission_document_create, permission_document_delete,
     permission_document_edit, permission_document_file_delete,
     permission_document_file_download, permission_document_file_new,
-    permission_document_file_tools,permission_document_file_view,
+    permission_document_file_tools, permission_document_file_view,
     permission_document_print, permission_document_properties_edit,
     permission_document_restore, permission_document_tools,
     permission_document_trash, permission_document_type_delete,
@@ -179,6 +182,7 @@ class DocumentsApp(MayanAppConfig):
         EventModelRegistry.register(model=DocumentFile)
         EventModelRegistry.register(model=DocumentType)
         EventModelRegistry.register(model=DocumentVersion)
+        EventModelRegistry.register(model=DocumentVersionPage)
 
         MissingItem(
             label=_('Create a document type'),
@@ -240,6 +244,11 @@ class DocumentsApp(MayanAppConfig):
         ModelEventType.register(
             model=DocumentVersion, event_types=(
                 event_document_version_deleted, event_document_version_edited
+            )
+        )
+        ModelEventType.register(
+            model=DocumentVersionPage, event_types=(
+                event_document_version_edited,
             )
         )
 
@@ -468,9 +477,6 @@ class DocumentsApp(MayanAppConfig):
             ), html_extra_classes='text-center document-thumbnail-list',
             label=_('Thumbnail'), source=DocumentFilePage
         )
-        #SourceColumn(
-        #    attribute='page_number', include_label=True, source=DocumentFilePage
-        #)
 
         SourceColumn(
             attribute='get_label', is_identifier=True,
@@ -539,9 +545,6 @@ class DocumentsApp(MayanAppConfig):
             ), html_extra_classes='text-center document-thumbnail-list',
             label=_('Thumbnail'), source=DocumentVersionPage
         )
-        #SourceColumn(
-        #    attribute='page_number', include_label=True, source=DocumentVersionPage
-        #)
 
         #SourceColumn(
         #    attribute='get_label', is_identifier=True,
@@ -724,10 +727,8 @@ class DocumentsApp(MayanAppConfig):
             ), sources=(DocumentFilePage,)
         )
         menu_list_facet.bind_links(
-            links=(link_decorations_list,), sources=(DocumentFilePage,)
-        )
-        menu_list_facet.bind_links(
-            links=(link_transformation_list,), sources=(DocumentFilePage,)
+            links=(link_decorations_list, link_transformation_list),
+            sources=(DocumentFilePage,)
         )
         menu_related.bind_links(
             links=(link_document_file_page_return,),
@@ -777,7 +778,9 @@ class DocumentsApp(MayanAppConfig):
         )
         menu_object.bind_links(
             links=(
-                link_document_version_delete, link_document_version_page_remap
+                link_document_version_delete,
+                link_document_version_page_list_remap,
+                link_document_version_page_list_reset
             ),
             sources=(DocumentVersion,)
         )
@@ -814,10 +817,14 @@ class DocumentsApp(MayanAppConfig):
             ), sources=(DocumentVersionPage,)
         )
         menu_list_facet.bind_links(
-            links=(link_decorations_list,), sources=(DocumentVersionPage,)
+            links=(
+                link_decorations_list, link_transformation_list,
+            ), sources=(DocumentVersionPage,)
         )
-        menu_list_facet.bind_links(
-            links=(link_transformation_list,), sources=(DocumentVersionPage,)
+        menu_object.bind_links(
+            links=(
+                link_document_version_page_delete,
+            ), sources=(DocumentVersionPage,)
         )
         menu_related.bind_links(
             links=(link_document_version_page_return,),

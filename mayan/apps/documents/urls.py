@@ -14,16 +14,15 @@ from .api_views import (
 from .views.document_file_views import (
     DocumentFileDeleteView, DocumentFileDownloadFormView,
     DocumentFileDownloadView, DocumentFileListView,
-    DocumentFilePageCountUpdateView, DocumentFilePropertiesView,
-    DocumentFileView
+    DocumentFilePropertiesView, DocumentFileView
 )
 from .views.document_file_page_views import (
-    DocumentFilePageListView,
+    DocumentFilePageCountUpdateView, DocumentFilePageListView,
     DocumentFilePageNavigationFirst, DocumentFilePageNavigationLast,
     DocumentFilePageNavigationNext, DocumentFilePageNavigationPrevious,
     DocumentFilePageRotateLeftView, DocumentFilePageRotateRightView,
-    DocumentFilePageView, DocumentFilePageViewResetView, DocumentFilePageZoomInView,
-    DocumentFilePageZoomOutView
+    DocumentFilePageView, DocumentFilePageViewResetView,
+    DocumentFilePageZoomInView, DocumentFilePageZoomOutView
 )
 from .views.document_type_views import (
     DocumentTypeCreateView, DocumentTypeDeleteView,
@@ -34,13 +33,14 @@ from .views.document_type_views import (
     DocumentTypeListView
 )
 from .views.document_version_page_views import (
-    DocumentVersionPageListView,
+    DocumentVersionPageDeleteView, DocumentVersionPageListView,
+    DocumentVersionPageListRemapView, DocumentVersionPageListResetView,
     DocumentVersionPageNavigationFirst, DocumentVersionPageNavigationLast,
     DocumentVersionPageNavigationNext, DocumentVersionPageNavigationPrevious,
     DocumentVersionPageRotateLeftView, DocumentVersionPageRotateRightView,
     DocumentVersionPageView, DocumentVersionPageViewResetView,
-    DocumentVersionPageRemapView, DocumentVersionPageView,
-    DocumentVersionPageZoomInView, DocumentVersionPageZoomOutView
+    DocumentVersionPageView, DocumentVersionPageZoomInView,
+    DocumentVersionPageZoomOutView
 )
 from .views.document_version_views import (
     DocumentVersionDeleteView, DocumentVersionListView, DocumentVersionView
@@ -224,9 +224,19 @@ urlpatterns_document_version_pages = [
         view=DocumentVersionPageListView.as_view()
     ),
     url(
+        regex=r'^documents/versions/pages/(?P<document_version_page_id>\d+)/delete/$',
+        name='document_version_page_delete',
+        view=DocumentVersionPageDeleteView.as_view()
+    ),
+    url(
         regex=r'^documents/versions/(?P<document_version_id>\d+)/pages/remap/$',
-        name='document_version_page_remap',
-        view=DocumentVersionPageRemapView.as_view()
+        name='document_version_page_list_remap',
+        view=DocumentVersionPageListRemapView.as_view()
+    ),
+    url(
+        regex=r'^documents/versions/(?P<document_version_id>\d+)/pages/reset/$',
+        name='document_version_page_list_reset',
+        view=DocumentVersionPageListResetView.as_view()
     ),
     url(
         regex=r'^documents/versions/pages/(?P<document_version_page_id>\d+)/$',

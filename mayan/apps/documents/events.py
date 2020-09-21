@@ -23,10 +23,10 @@ event_document_file_deleted = namespace.add_event_type(
     label=_('Document file deleted'), name='document_version_revert'
 )
 event_document_file_new = namespace.add_event_type(
-    label=_('New file uploaded'), name='document_new_version'
+    label=_('Document file uploaded'), name='document_new_version'
 )
 event_document_file_pre_save = namespace.add_event_type(
-    label=_('New file created'), name='document_version_pre_save'
+    label=_('Document file created'), name='document_version_pre_save'
 )
 
 # Trashed document

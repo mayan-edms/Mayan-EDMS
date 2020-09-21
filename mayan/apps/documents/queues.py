@@ -35,10 +35,6 @@ queue_converter.add_task_type(
 )
 
 queue_documents.add_task_type(
-    dotted_path='mayan.apps.documents.tasks.task_trashed_document_delete',
-    label=_('Delete a document')
-)
-queue_documents.add_task_type(
     dotted_path='mayan.apps.documents.tasks.task_duplicates_clean_empty_lists',
     label=_('Clean empty duplicate lists')
 )
@@ -46,15 +42,15 @@ queue_documents.add_task_type(
     dotted_path='mayan.apps.documents.tasks.task_trash_can_empty',
     label=_('Empty the trash can')
 )
-
-queue_documents_periodic.add_task_type(
-    dotted_path='mayan.apps.documents.tasks.task_document_type_trashed_document_delete_periods_check',
-    label=_('Check document type delete periods'),
-    name='task_document_type_trashed_document_delete_periods_check',
-    schedule=timedelta(
-        seconds=CHECK_DELETE_PERIOD_INTERVAL
-    ),
+queue_documents.add_task_type(
+    dotted_path='mayan.apps.documents.tasks.task_trashed_document_delete',
+    label=_('Delete a document')
 )
+queue_documents.add_task_type(
+    dotted_path='mayan.apps.documents.tasks.task_document_version_page_list_reset',
+    label=_('Reset the page list of a document version')
+)
+
 queue_documents_periodic.add_task_type(
     dotted_path='mayan.apps.documents.tasks.task_document_type_document_trash_periods_check',
     label=_('Check document type trash periods'),
@@ -66,6 +62,14 @@ queue_documents_periodic.add_task_type(
     label=_('Delete document stubs'),
     name='task_document_stubs_delete',
     schedule=timedelta(seconds=DELETE_STALE_STUBS_INTERVAL),
+)
+queue_documents_periodic.add_task_type(
+    dotted_path='mayan.apps.documents.tasks.task_document_type_trashed_document_delete_periods_check',
+    label=_('Check document type delete periods'),
+    name='task_document_type_trashed_document_delete_periods_check',
+    schedule=timedelta(
+        seconds=CHECK_DELETE_PERIOD_INTERVAL
+    ),
 )
 
 queue_tools.add_task_type(

@@ -4,21 +4,8 @@ from mayan.apps.navigation.classes import Link
 
 from ..permissions import (
     permission_document_file_delete, permission_document_file_download,
-    permission_document_file_delete, permission_document_file_view,
-    permission_document_view,
+    permission_document_file_view, permission_document_view,
 )
-
-
-#def is_not_current_file(context):
-#    # Use the 'object' key when the document file is an object in a list,
-#    # such as when showing the file list view and use the 'resolved_object'
-#    # when the document file is the context object, such as when showing the
-#    # signatures list of a documern file. This can be fixed by updating
-#    # the navigations app object resolution logic to use 'resolved_object' even
-#    # for objects in a list.
-#    document_file = context.get('object', context['resolved_object'])
-#    return document_file.document.latest_file.timestamp != document_file.timestamp
-
 
 
 link_document_file_delete = Link(

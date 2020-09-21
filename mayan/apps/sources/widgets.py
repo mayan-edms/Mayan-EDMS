@@ -9,7 +9,7 @@ from mayan.apps.documents.settings import (
 class StagingFileThumbnailWidget:
     def render(self, instance):
         return render_to_string(
-            template_name='documents/widgets/document_thumbnail.html',
+            template_name='documents/widgets/thumbnail.html',
             context={
                 'container_class': 'staging-file-thumbnail-container',
                 'disable_title_link': True,

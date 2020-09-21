@@ -146,21 +146,6 @@ class Document(HooksMixin, models.Model):
     #def date_updated(self):
     #    return self.latest_file.timestamp
 
-    def create_initial_version(self):
-        if self.versions.all().count() == 0:
-            with transaction.atomic():
-                document_version = self.versions.create(
-                    comment=_('Initial document version.')
-                )
-
-                latest_file = self.latest_file
-                if latest_file:
-                    for document_file_page in self.latest_file.pages.all():
-                        document_version.pages.create(
-                            content_object=document_file_page,
-                            page_number=document_file_page.page_number
-                        )
-
     def delete(self, *args, **kwargs):
         to_trash = kwargs.pop('to_trash', True)
         _user = kwargs.pop('_user', None)
@@ -177,6 +162,21 @@ class Document(HooksMixin, models.Model):
                     document_file.delete()
 
                 return super().delete(*args, **kwargs)
+
+    def document_type_change(self, document_type, force=False, _user=None):
+        has_changed = self.document_type != document_type
+
+        self.document_type = document_type
+        with transaction.atomic():
+            self.save()
+            if has_changed or force:
+                signal_post_document_type_change.send(
+                    sender=self.__class__, instance=self
+                )
+
+                event_document_type_changed.commit(actor=_user, target=self)
+                if _user:
+                    self.add_as_recent_document_for_user(user=_user)
 
     #def exists(self):
     #    """
@@ -294,24 +294,13 @@ class Document(HooksMixin, models.Model):
     #def save_to_file(self, *args, **kwargs):
     #    return self.latest_file.save_to_file(*args, **kwargs)
 
-    def set_document_type(self, document_type, force=False, _user=None):
-        has_changed = self.document_type != document_type
-
-        self.document_type = document_type
-        with transaction.atomic():
-            self.save()
-            if has_changed or force:
-                signal_post_document_type_change.send(
-                    sender=self.__class__, instance=self
-                )
-
-                event_document_type_changed.commit(actor=_user, target=self)
-                if _user:
-                    self.add_as_recent_document_for_user(user=_user)
-
     #@property
     #def size(self):
     #    return self.latest_file.size
+    def versions_create(self):
+        with transaction.atomic():
+            document_version = self.versions.create()
+            document_version.pages_reset()
 
 
 class TrashedDocument(Document):

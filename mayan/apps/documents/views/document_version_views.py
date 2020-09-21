@@ -53,7 +53,7 @@ class DocumentVersionDeleteView(SingleObjectDeleteView):
     def get_post_action_redirect(self):
         return reverse(
             viewname='documents:document_version_list', kwargs={
-                'document_id': self.object.document.pk
+                'document_id': self.object.document_id
             }
         )
 
@@ -99,7 +99,7 @@ class DocumentVersionView(SingleObjectDetailView):
     def dispatch(self, request, *args, **kwargs):
         result = super().dispatch(request, *args, **kwargs)
         self.object.document.add_as_recent_document_for_user(
-            request.user
+            user=request.user
         )
         event_document_viewed.commit(
             actor=request.user, target=self.object.document
@@ -113,4 +113,3 @@ class DocumentVersionView(SingleObjectDetailView):
             'object': self.object,
             'title': _('Preview of document version: %s') % self.object,
         }
-

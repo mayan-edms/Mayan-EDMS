@@ -28,10 +28,13 @@ class RedactionsApp(MayanAppConfig):
     verbose_name = _('Redactions')
 
     def ready(self):
-        super(RedactionsApp, self).ready()
+        super().ready()
 
-        DocumentPage = apps.get_model(
-            app_label='documents', model_name='DocumentPage'
+        DocumentFilePage = apps.get_model(
+            app_label='documents', model_name='DocumentFilePage'
+        )
+        DocumentVersionPage = apps.get_model(
+            app_label='documents', model_name='DocumentVersionPage'
         )
 
         link_redaction_list = link_transformation_list.copy(
@@ -40,5 +43,7 @@ class RedactionsApp(MayanAppConfig):
         link_redaction_list.text = _('Redactions')
 
         menu_list_facet.bind_links(
-            links=(link_redaction_list,), sources=(DocumentPage,)
+            links=(link_redaction_list,), sources=(
+                DocumentFilePage, DocumentVersionPage,
+            )
         )

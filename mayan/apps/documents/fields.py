@@ -1,14 +1,9 @@
 from django import forms
 
 from .widgets import (
-    DocumentFilePagesCarouselWidget, DocumentFilePageImageWidget,
-    DocumentVersionPagesCarouselWidget, DocumentVersionPageImageWidget,
-    ThumbnailFormWidget
+    DocumentFilePagesCarouselWidget, DocumentVersionPagesCarouselWidget,
+    PageImageWidget, ThumbnailFormWidget
 )
-
-
-class DocumentField(forms.fields.Field):
-    widget = DocumentVersionPagesCarouselWidget
 
 
 class DocumentFileField(forms.fields.Field):
@@ -16,7 +11,7 @@ class DocumentFileField(forms.fields.Field):
 
 
 class DocumentFilePageField(forms.fields.Field):
-    widget = DocumentFilePageImageWidget
+    widget = PageImageWidget
 
 
 class DocumentVersionField(forms.fields.Field):
@@ -24,7 +19,7 @@ class DocumentVersionField(forms.fields.Field):
 
 
 class DocumentVersionPageField(forms.fields.Field):
-    widget = DocumentVersionPageImageWidget
+    widget = PageImageWidget
 
 
 class ThumbnailFormField(forms.fields.Field):

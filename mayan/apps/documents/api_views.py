@@ -103,7 +103,7 @@ class APIdocument_file(generics.GenericAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         document_type = DocumentType.objects.get(pk=request.data['new_document_type'])
-        self.get_object().set_document_type(
+        self.get_object().document_type_change(
             document_type=document_type, _user=self.request.user
         )
         return Response(status=status.HTTP_200_OK)
@@ -160,6 +160,52 @@ class APIDocumentListView(generics.ListCreateAPIView):
             permissions=(permission_document_create,), user=self.request.user
         )
         serializer.save(_user=self.request.user)
+
+
+class APIDocumentFileDownloadView(DownloadMixin, generics.RetrieveAPIView):
+    """
+    get: Download a document file.
+    """
+    lookup_url_kwarg = 'file_pk'
+
+    def get_document(self):
+        document = get_object_or_404(Document, pk=self.kwargs['pk'])
+
+        AccessControlList.objects.check_access(
+            obj=document, permissions=(permission_document_file_download,),
+            user=self.request.user
+        )
+        return document
+
+    def get_download_file_object(self):
+        instance = self.get_object()
+        return instance.open()
+
+    def get_download_filename(self):
+        preserve_extension = self.request.GET.get(
+            'preserve_extension', self.request.POST.get(
+                'preserve_extension', False
+            )
+        )
+
+        preserve_extension = preserve_extension == 'true' or preserve_extension == 'True'
+
+        instance = self.get_object()
+        return instance.get_rendered_string(
+            preserve_extension=preserve_extension
+        )
+
+    def get_serializer(self, *args, **kwargs):
+        return None
+
+    def get_serializer_class(self):
+        return None
+
+    def get_queryset(self):
+        return self.get_document().files.all()
+
+    def retrieve(self, request, *args, **kwargs):
+        return self.render_to_response()
 
 
 class APIDocumentFilePageImageView(generics.RetrieveAPIView):
@@ -340,52 +386,6 @@ class APIDocumentTypeDocumentListView(generics.ListAPIView):
         )
 
         return document_type.documents.all()
-
-
-class APIDocumentFileDownloadView(DownloadMixin, generics.RetrieveAPIView):
-    """
-    get: Download a document file.
-    """
-    lookup_url_kwarg = 'file_pk'
-
-    def get_document(self):
-        document = get_object_or_404(Document, pk=self.kwargs['pk'])
-
-        AccessControlList.objects.check_access(
-            obj=document, permissions=(permission_document_file_download,),
-            user=self.request.user
-        )
-        return document
-
-    def get_download_file_object(self):
-        instance = self.get_object()
-        return instance.open()
-
-    def get_download_filename(self):
-        preserve_extension = self.request.GET.get(
-            'preserve_extension', self.request.POST.get(
-                'preserve_extension', False
-            )
-        )
-
-        preserve_extension = preserve_extension == 'true' or preserve_extension == 'True'
-
-        instance = self.get_object()
-        return instance.get_rendered_string(
-            preserve_extension=preserve_extension
-        )
-
-    def get_serializer(self, *args, **kwargs):
-        return None
-
-    def get_serializer_class(self):
-        return None
-
-    def get_queryset(self):
-        return self.get_document().files.all()
-
-    def retrieve(self, request, *args, **kwargs):
-        return self.render_to_response()
 
 
 class APIDocumentView(generics.RetrieveUpdateDestroyAPIView):

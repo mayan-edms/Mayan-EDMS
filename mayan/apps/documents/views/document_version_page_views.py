@@ -13,8 +13,8 @@ from mayan.apps.common.classes import ModelQueryFields
 from mayan.apps.common.settings import setting_home_view
 from mayan.apps.converter.literals import DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
 from mayan.apps.views.generics import (
-    FormView, MultipleObjectConfirmActionView, SimpleView,
-    SingleObjectListView
+    FormView, MultipleObjectConfirmActionView, SingleObjectDeleteView,
+    SingleObjectListView, SimpleView
 )
 from mayan.apps.views.mixins import ExternalObjectMixin
 from mayan.apps.views.utils import resolve
@@ -23,6 +23,10 @@ from ..forms.document_version_page_forms import (
     DocumentVersionPageForm, DocumentVersionPageMappingFormSet
 )
 from ..icons import icon_document_version_page_list
+from ..links.document_version_page_links import (
+    link_document_version_page_list_remap,
+    link_document_version_page_list_reset
+)
 from ..models.document_models import Document
 from ..models.document_version_models import DocumentVersion
 from ..models.document_version_page_models import DocumentVersionPage
@@ -33,6 +37,7 @@ from ..settings import (
     setting_rotation_step, setting_zoom_percent_step, setting_zoom_max_level,
     setting_zoom_min_level
 )
+from ..tasks import task_document_version_page_list_reset
 
 __all__ = (
     'DocumentVersionPageListView',
@@ -46,6 +51,37 @@ __all__ = (
 logger = logging.getLogger(name=__name__)
 
 
+
+class DocumentVersionPageDeleteView(SingleObjectDeleteView):
+    model = DocumentVersionPage
+    object_permission = permission_document_version_edit
+    pk_url_kwarg = 'document_version_page_id'
+
+    def get_extra_context(self):
+        return {
+            'message': _(
+                'The page number of this page will be skipped. If you '
+                'want to achieve sequential page numbering, use the '
+                'page remap action instead.'
+            ),
+            'object': self.object,
+            'title': _('Delete document version page %s ?') % self.object,
+        }
+
+
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user,
+        }
+
+    def get_post_action_redirect(self):
+        return reverse(
+            viewname='documents:document_version_page_list', kwargs={
+                'document_version_id': self.object.document_version_id
+            }
+        )
+
+
 class DocumentVersionPageListView(ExternalObjectMixin, SingleObjectListView):
     external_object_class = DocumentVersion
     external_object_permission = permission_document_version_view
@@ -55,14 +91,21 @@ class DocumentVersionPageListView(ExternalObjectMixin, SingleObjectListView):
         return {
             'hide_object': True,
             'list_as_items': True,
-            #'no_results_icon': icon_document_version_page_list,
-            #'no_results_main_link': link_document_file_page_count_update.resolve(
-            #    request=self.request, resolved_object=self.external_object
-            #),
-            'no_results_text': _(
-                'TODO: write'
+            'no_results_icon': icon_document_version_page_list,
+            'no_results_main_link': link_document_version_page_list_reset.resolve(
+                request=self.request, resolved_object=self.external_object
             ),
-            'no_results_title': _('No document pages available'),
+            'no_results_secondary_links': [
+                link_document_version_page_list_remap.resolve(
+                    request=self.request, resolved_object=self.external_object
+                ),
+            ],
+            'no_results_text': _(
+                'Document version pages are links to actual content pages. '
+                'Create them using the page remap actions or the page '
+                'reset action.'
+            ),
+            'no_results_title': _('No document version pages available'),
             'object': self.external_object,
             'title': _('Pages of document version: %s') % self.external_object,
         }
@@ -72,92 +115,7 @@ class DocumentVersionPageListView(ExternalObjectMixin, SingleObjectListView):
         return queryset.filter(pk__in=self.external_object.pages.all())
 
 
-class DocumentVersionPageNavigationBase(ExternalObjectMixin, RedirectView):
-    external_object_permission = permission_document_version_view
-    external_object_pk_url_kwarg = 'document_version_page_id'
-    external_object_queryset = DocumentVersionPage
-
-    def get_redirect_url(self, *args, **kwargs):
-        """
-        Attempt to jump to the same kind of view but resolved to a new
-        object of the same kind.
-        """
-        previous_url = self.request.META.get('HTTP_REFERER', None)
-
-        if not previous_url:
-            try:
-                previous_url = self.external_object.get_absolute_url()
-            except AttributeError:
-                previous_url = reverse(viewname=setting_home_view.value)
-
-        parsed_url = furl(url=previous_url)
-
-        # Obtain the view name to be able to resolve it back with new keyword
-        # arguments.
-        resolver_match = resolve(path=force_text(parsed_url.path))
-
-        new_kwargs = self.get_new_kwargs()
-
-        if set(new_kwargs) == set(resolver_match.kwargs):
-            # It is the same type of object, reuse the URL to stay in the
-            # same kind of view but pointing to a new object
-            url = reverse(
-                viewname=resolver_match.view_name, kwargs=new_kwargs
-            )
-        else:
-            url = parsed_url.path
-
-        # Update just the path to retain the querystring in case there is
-        # transformation data.
-        parsed_url.path = url
-
-        return parsed_url.tostr()
-
-
-class DocumentVersionPageNavigationFirst(DocumentVersionPageNavigationBase):
-    def get_new_kwargs(self):
-        return {'document_version_page_id': self.external_object.siblings.first().pk}
-
-
-class DocumentVersionPageNavigationLast(DocumentVersionPageNavigationBase):
-    def get_new_kwargs(self):
-        return {'document_version_page_id': self.external_object.siblings.last().pk}
-
-
-class DocumentVersionPageNavigationNext(DocumentVersionPageNavigationBase):
-    def get_new_kwargs(self):
-        new_document_version_page = self.external_object.siblings.filter(
-            page_number__gt=self.external_object.page_number
-        ).first()
-        if new_document_version_page:
-            return {'document_version_page_id': new_document_version_page.pk}
-        else:
-            messages.warning(
-                message=_(
-                    'There are no more pages in this document'
-                ), request=self.request
-            )
-            return {'document_version_page_id': self.external_object.pk}
-
-
-class DocumentVersionPageNavigationPrevious(DocumentVersionPageNavigationBase):
-    def get_new_kwargs(self):
-        new_document_version_page = self.external_object.siblings.filter(
-            page_number__lt=self.external_object.page_number
-        ).last()
-        if new_document_version_page:
-            return {'document_version_page_id': new_document_version_page.pk}
-        else:
-            messages.warning(
-                message=_(
-                    'You are already at the first page of this document'
-                ), request=self.request
-            )
-            return {'document_version_page_id': self.external_object.pk}
-
-
-
-class DocumentVersionPageRemapView(ExternalObjectMixin, FormView):
+class DocumentVersionPageListRemapView(ExternalObjectMixin, FormView):
     external_object_class = DocumentVersion
     external_object_permission = permission_document_version_edit
     external_object_pk_url_kwarg = 'document_version_id'
@@ -304,6 +262,132 @@ class DocumentVersionPageRemapView(ExternalObjectMixin, FormView):
             }
         )
 
+
+class DocumentVersionPageListResetView(MultipleObjectConfirmActionView):
+    model = DocumentVersion
+    object_permission = permission_document_version_edit
+    pk_url_kwarg = 'document_version_id'
+    success_message = _(
+        '%(count)d document version queued for page list reset.'
+    )
+    success_message_plural = _(
+        '%(count)d document versions queued for page list reset.'
+    )
+
+    def get_extra_context(self):
+        queryset = self.object_list
+
+        result = {
+            'message': _(
+                'The page list will match that of the latest document file.'
+            ),
+            'title': ungettext(
+                singular='Reset the page list of the selected document version?',
+                plural='Reset the page list of the selected document versions?',
+                number=queryset.count()
+            )
+        }
+
+        if queryset.count() == 1:
+            result.update(
+                {
+                    'object': queryset.first(),
+                    'title': _(
+                        'Reset the page list of document version: %s?'
+                    ) % queryset.first()
+                }
+            )
+
+        return result
+
+    def object_action(self, form, instance):
+        task_document_version_page_list_reset.apply_async(
+            kwargs={'document_version_id': instance.pk}
+        )
+
+
+class DocumentVersionPageNavigationBase(ExternalObjectMixin, RedirectView):
+    external_object_permission = permission_document_version_view
+    external_object_pk_url_kwarg = 'document_version_page_id'
+    external_object_queryset = DocumentVersionPage
+
+    def get_redirect_url(self, *args, **kwargs):
+        """
+        Attempt to jump to the same kind of view but resolved to a new
+        object of the same kind.
+        """
+        previous_url = self.request.META.get('HTTP_REFERER', None)
+
+        if not previous_url:
+            try:
+                previous_url = self.external_object.get_absolute_url()
+            except AttributeError:
+                previous_url = reverse(viewname=setting_home_view.value)
+
+        parsed_url = furl(url=previous_url)
+
+        # Obtain the view name to be able to resolve it back with new keyword
+        # arguments.
+        resolver_match = resolve(path=force_text(parsed_url.path))
+
+        new_kwargs = self.get_new_kwargs()
+
+        if set(new_kwargs) == set(resolver_match.kwargs):
+            # It is the same type of object, reuse the URL to stay in the
+            # same kind of view but pointing to a new object
+            url = reverse(
+                viewname=resolver_match.view_name, kwargs=new_kwargs
+            )
+        else:
+            url = parsed_url.path
+
+        # Update just the path to retain the querystring in case there is
+        # transformation data.
+        parsed_url.path = url
+
+        return parsed_url.tostr()
+
+
+class DocumentVersionPageNavigationFirst(DocumentVersionPageNavigationBase):
+    def get_new_kwargs(self):
+        return {'document_version_page_id': self.external_object.siblings.first().pk}
+
+
+class DocumentVersionPageNavigationLast(DocumentVersionPageNavigationBase):
+    def get_new_kwargs(self):
+        return {'document_version_page_id': self.external_object.siblings.last().pk}
+
+
+class DocumentVersionPageNavigationNext(DocumentVersionPageNavigationBase):
+    def get_new_kwargs(self):
+        new_document_version_page = self.external_object.siblings.filter(
+            page_number__gt=self.external_object.page_number
+        ).first()
+        if new_document_version_page:
+            return {'document_version_page_id': new_document_version_page.pk}
+        else:
+            messages.warning(
+                message=_(
+                    'There are no more pages in this document'
+                ), request=self.request
+            )
+            return {'document_version_page_id': self.external_object.pk}
+
+
+class DocumentVersionPageNavigationPrevious(DocumentVersionPageNavigationBase):
+    def get_new_kwargs(self):
+        new_document_version_page = self.external_object.siblings.filter(
+            page_number__lt=self.external_object.page_number
+        ).last()
+        if new_document_version_page:
+            return {'document_version_page_id': new_document_version_page.pk}
+        else:
+            messages.warning(
+                message=_(
+                    'You are already at the first page of this document'
+                ), request=self.request
+            )
+            return {'document_version_page_id': self.external_object.pk}
 
 
 class DocumentVersionPageView(ExternalObjectMixin, SimpleView):

@@ -8,17 +8,6 @@ from ..permissions import (
 )
 
 
-def is_not_current_version(context):
-    # Use the 'object' key when the document version is an object in a list,
-    # such as when showing the version list view and use the 'resolved_object'
-    # when the document version is the context object, such as when showing the
-    # signatures list of a documern version. This can be fixed by updating
-    # the navigations app object resolution logic to use 'resolved_object' even
-    # for objects in a list.
-    document_version = context.get('object', context['resolved_object'])
-    return document_version.document.latest_version.timestamp != document_version.timestamp
-
-
 link_document_version_delete = Link(
     args='resolved_object.pk',
     icon_class_path='mayan.apps.documents.icons.icon_document_version_delete',
