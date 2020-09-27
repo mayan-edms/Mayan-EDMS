@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
@@ -11,15 +11,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
 "PO-Revision-Date: 2020-05-02 12:56+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
-"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/"
-"nl/)\n"
-"Language: nl\n"
+"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:30
@@ -148,9 +147,7 @@ msgstr "Handtekeningfout."
 
 #: literals.py:61
 msgid "Document is signed but no public key is available for verification."
-msgstr ""
-"Document is ondertekend, maar er is geen publieke sleutel beschikbaar voor "
-"verificatie."
+msgstr "Document is ondertekend, maar er is geen publieke sleutel beschikbaar voor verificatie."
 
 #: literals.py:66
 msgid "Document is signed, and signature is good."
@@ -214,9 +211,7 @@ msgstr "Handtekeningen"
 
 #: settings.py:14
 msgid "Full path to the backend to be used to handle keys and signatures."
-msgstr ""
-"Volledige pad naar backend die gebruikt wordt om sleutels en handtekeningen "
-"af te handelen."
+msgstr "Volledige pad naar backend die gebruikt wordt om sleutels en handtekeningen af te handelen."
 
 #: settings.py:25
 msgid "Keyserver used to query for keys."
@@ -255,9 +250,7 @@ msgstr "Sleutel met succes ontvangen: %(key_id)s"
 msgid ""
 "Use names, last names, key ids or emails to search public keys to import "
 "from the keyserver."
-msgstr ""
-"Gebruik namen, achternamen, sleutel-ids of e-mail om op openbare sleutels te "
-"zoeken om te importeren van de sleutelserver."
+msgstr "Gebruik namen, achternamen, sleutel-ids of e-mail om op openbare sleutels te zoeken om te importeren van de sleutelserver."
 
 #: views.py:114
 msgid "No results returned"
@@ -281,12 +274,9 @@ msgstr "Nieuwe sleutel uploaden"
 
 #: views.py:173
 msgid ""
-"Private keys are used to signed documents. Private keys can only be uploaded "
-"by the user. The view to upload private and public keys is the same."
-msgstr ""
-"Privésleutels worden gebruikt om documenten te tekenen. Privésleutels kunnen "
-"alleen door de gebruiker worden geüpload. Het overzicht om privé en openbare "
-"sleutels te uploaden is hetzelfde."
+"Private keys are used to signed documents. Private keys can only be uploaded"
+" by the user. The view to upload private and public keys is the same."
+msgstr "Privésleutels worden gebruikt om documenten te tekenen. Privésleutels kunnen alleen door de gebruiker worden geüpload. Het overzicht om privé en openbare sleutels te uploaden is hetzelfde."
 
 #: views.py:178
 msgid "There no private keys"
@@ -294,14 +284,10 @@ msgstr "Er zijn geen privésleutels"
 
 #: views.py:196
 msgid ""
-"Public keys are used to verify signed documents. Public keys can be uploaded "
-"by the user or downloaded from keyservers. The view to upload private and "
+"Public keys are used to verify signed documents. Public keys can be uploaded"
+" by the user or downloaded from keyservers. The view to upload private and "
 "public keys is the same."
-msgstr ""
-"Openbare sleutels worden gebruikt om getekende documenten te verifiëren. "
-"Openbare sleutels kunnen zowel geüpload worden door de gebruiken als "
-"gedownload van sleutelservers. Het overzicht om privé en openbare sleutels "
-"te uploaden is hetzelfde."
+msgstr "Openbare sleutels worden gebruikt om getekende documenten te verifiëren. Openbare sleutels kunnen zowel geüpload worden door de gebruiken als gedownload van sleutelservers. Het overzicht om privé en openbare sleutels te uploaden is hetzelfde."
 
 #: views.py:202
 msgid "There no public keys"

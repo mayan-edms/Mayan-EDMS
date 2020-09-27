@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Michal Švábík <snadno@lehce.cz>, 2019-2020
@@ -9,17 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: 2020-02-06 10:24+0000\n"
-"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
-"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/"
-"cs/)\n"
-"Language: cs\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 08:06+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
-"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: apps.py:39 events.py:5 permissions.py:5 settings.py:16
 msgid "Converter"
@@ -51,9 +49,7 @@ msgstr "Nemá formát kancelářského souboru."
 msgid ""
 "Transformations allow changing the visual appearance of documents without "
 "making permanent changes to the document file themselves."
-msgstr ""
-"Transformace umožňují změnu vizuálního vzhledu dokumentů bez provedení "
-"trvalých změn v samotném souboru dokumentu."
+msgstr "Transformace umožňují změnu vizuálního vzhledu dokumentů bez provedení trvalých změn v samotném souboru dokumentu."
 
 #: classes.py:407
 msgid "transformation"
@@ -61,16 +57,13 @@ msgstr "Transformace"
 
 #: dependencies.py:14
 msgid "Utility from the poppler-utils package used to inspect PDF files."
-msgstr ""
-"Obslužný program z balíčku poppler-utils používaný k prohlížení souborů PDF."
+msgstr "Obslužný program z balíčku poppler-utils používaný k prohlížení souborů PDF."
 
 #: dependencies.py:19
 msgid ""
 "Utility from the popper-utils package used to extract pages from PDF files "
 "into PPM format images."
-msgstr ""
-"Obslužný program z balíčku popper-utils používaný k extrahování stránek ze "
-"souborů PDF do obrázků ve formátu PPM."
+msgstr "Obslužný program z balíčku popper-utils používaný k extrahování stránek ze souborů PDF do obrázků ve formátu PPM."
 
 #: events.py:8
 msgid "Asset created"
@@ -95,9 +88,8 @@ msgid ""
 msgstr ""
 
 #: layers.py:13
-#| msgid "Transformations"
 msgid "Decorations"
-msgstr "Transformace"
+msgstr ""
 
 #: layers.py:24
 msgid "Saved transformations"
@@ -129,7 +121,7 @@ msgstr "Vyberte novou transformaci"
 
 #: models.py:36
 msgid "Label"
-msgstr ""
+msgstr "Jmenovka"
 
 #: models.py:40
 msgid ""
@@ -139,11 +131,11 @@ msgstr ""
 
 #: models.py:43
 msgid "Internal name"
-msgstr ""
+msgstr "Vnitřní název"
 
 #: models.py:47
 msgid "File"
-msgstr ""
+msgstr "Soubor"
 
 #: models.py:52
 msgid "Asset"
@@ -181,17 +173,13 @@ msgstr "Vrstvy objektů"
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
-msgstr ""
-"Pořadí, ve kterém budou provedeny transformace. Pokud zůstane nezměněna, "
-"bude přiřazena hodnota automatického třídění."
+msgstr "Pořadí, ve kterém budou provedeny transformace. Pokud zůstane nezměněna, bude přiřazena hodnota automatického třídění."
 
 #: models.py:156 workflow_actions.py:45
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
-msgstr ""
-"Zadejte argumenty pro transformaci jako slovník YAML. tj .: {&quot;"
-"stupně&quot;: 180}"
+msgstr "Zadejte argumenty pro transformaci jako slovník YAML. tj .: {&quot;stupně&quot;: 180}"
 
 #: models.py:158
 msgid "Arguments"
@@ -206,28 +194,24 @@ msgid "Layer transformations"
 msgstr "Transformace vrstev"
 
 #: models.py:174
-#| msgid "Create new transformations"
 msgid "Unknown transformation class"
-msgstr "Vytvořit nové transformace"
+msgstr ""
 
 #: permissions.py:8
-#| msgid "Create new transformations"
 msgid "Create new assets"
-msgstr "Vytvořit nové transformace"
+msgstr ""
 
 #: permissions.py:11
-#| msgid "Delete"
 msgid "Delete assets"
-msgstr "Odstranit"
+msgstr ""
 
 #: permissions.py:14
 msgid "Edit assets"
 msgstr ""
 
 #: permissions.py:17
-#| msgid "View existing transformations"
 msgid "View existing assets"
-msgstr "Zobrazit existující transformace"
+msgstr ""
 
 #: permissions.py:21
 msgid "Create new transformations"
@@ -272,9 +256,8 @@ msgid "Paste an asset"
 msgstr ""
 
 #: transformations.py:248
-#| msgid "Draw rectangle (percents coordinates)"
 msgid "Paste an asset (percents coordinates)"
-msgstr "Nakreslit obdélník (procentuální souřadnice)"
+msgstr ""
 
 #: transformations.py:291
 msgid "Paste an asset as watermark"
@@ -360,9 +343,9 @@ msgid "Delete asset: %s?"
 msgstr ""
 
 #: views.py:80
-#| msgid "Transformation created successfully."
+#, python-format
 msgid "Asset \"%s\" deleted successfully."
-msgstr "Transformace byla úspěšně vytvořena."
+msgstr ""
 
 #: views.py:85
 #, python-format
@@ -376,7 +359,8 @@ msgstr ""
 
 #: views.py:123
 msgid ""
-"Assets are files that can be used in conjuction with certain transformations."
+"Assets are files that can be used in conjuction with certain "
+"transformations."
 msgstr ""
 
 #: views.py:126
@@ -393,21 +377,17 @@ msgstr "Chyba při vytváření transformace: %s."
 msgid ""
 "Create layer \"%(layer)s\" transformation \"%(transformation)s\" for: "
 "%(object)s"
-msgstr ""
-"Vytvořte vrstvu &quot;%(layer)s&quot; transformace &quot;"
-"%(transformation)s&quot; pro: %(object)s"
+msgstr "Vytvořte vrstvu &quot;%(layer)s&quot; transformace &quot;%(transformation)s&quot; pro: %(object)s"
 
 #: views.py:224
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
-msgstr ""
-"Smazat transformaci &quot;%(transformation)s&quot; pro: %(content_object)s?"
+msgstr "Smazat transformaci &quot;%(transformation)s&quot; pro: %(content_object)s?"
 
 #: views.py:273
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
-msgstr ""
-"Upravit transformaci &quot;%(transformation)s&quot; pro: %(content_object)s"
+msgstr "Upravit transformaci &quot;%(transformation)s&quot; pro: %(content_object)s"
 
 #: views.py:327
 #, python-format
@@ -434,33 +414,26 @@ msgstr "Vyberte novou vrstvu %(layer)s transformace pro: %(object)s"
 
 #: workflow_actions.py:22
 msgid "Pages"
-msgstr ""
+msgstr "Strany"
 
 #: workflow_actions.py:25
 msgid ""
-"Pages to which the new transformations will be added. Separate by commas and/"
-"or use a dashes for a ranges. Leave blank to select all pages."
+"Pages to which the new transformations will be added. Separate by commas "
+"and/or use a dashes for a ranges. Leave blank to select all pages."
 msgstr ""
 
 #: workflow_actions.py:32
-#| msgid "Transformations"
 msgid "Transformation class"
-msgstr "Transformace"
+msgstr ""
 
 #: workflow_actions.py:37
-#| msgid "Layer transformation"
 msgid "Type of transformation to add."
-msgstr "Transformace vrstvy"
+msgstr ""
 
 #: workflow_actions.py:42
-#| msgid "Transformations"
 msgid "Transformation arguments"
-msgstr "Transformace"
+msgstr ""
 
 #: workflow_actions.py:51
-#| msgid "transformation"
 msgid "Add transformation"
-msgstr "Transformace"
-
-#~ msgid "Enter a valid YAML value."
-#~ msgstr "Zadejte platnou hodnotu YAML."
+msgstr ""

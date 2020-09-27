@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # yulin Gong <540538248@qq.com>, 2019
@@ -9,15 +9,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: 2020-02-10 08:23+0000\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 06:47+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-"
-"edms/language/zh-Hans/)\n"
-"Language: zh-Hans\n"
+"Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-edms/language/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:40 links.py:38 permissions.py:5
@@ -33,14 +32,12 @@ msgid "Messages"
 msgstr "消息"
 
 #: events.py:8
-#| msgid "Message of the day"
 msgid "Message created"
-msgstr "当天的消息"
+msgstr ""
 
 #: events.py:11
-#| msgid "Message of the day"
 msgid "Message edited"
-msgstr "当天的消息"
+msgstr ""
 
 #: links.py:14 views.py:31
 msgid "Create message"
@@ -121,15 +118,14 @@ msgid "Delete request performed on %(count)d messages"
 msgstr ""
 
 #: views.py:54
-#| msgid "Delete the message: %s?"
 msgid "Delete the selected message?"
 msgid_plural "Delete the selected messages?"
-msgstr[0] "删除消息：%s？"
+msgstr[0] ""
 
 #: views.py:64
-#| msgid "Delete the message: %s?"
+#, python-format
 msgid "Delete message: %s?"
-msgstr "删除消息：%s？"
+msgstr ""
 
 #: views.py:75
 #, python-format
@@ -151,9 +147,7 @@ msgid ""
 "Messages are displayed in the login view. You can use messages to convery "
 "information about your organzation, announcements or usage guidelines for "
 "your users."
-msgstr ""
-"消息显示在登录视图中。您可以使用消息向您的用户传达有关您组织，公告或使用指南"
-"的信息。"
+msgstr "消息显示在登录视图中。您可以使用消息向您的用户传达有关您组织，公告或使用指南的信息。"
 
 #: views.py:122
 msgid "No messages available"

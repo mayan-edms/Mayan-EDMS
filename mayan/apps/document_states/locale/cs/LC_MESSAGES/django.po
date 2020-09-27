@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Michal Švábík <snadno@lehce.cz>, 2019-2020
@@ -9,17 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: 2020-08-08 09:38+0000\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/"
-"cs/)\n"
-"Language: cs\n"
+"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
-"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: apps.py:72 events.py:6 forms.py:42 links.py:18 links.py:59 links.py:212
 #: links.py:236 models.py:80 settings.py:13 views/workflow_proxy_views.py:66
@@ -44,9 +42,7 @@ msgstr "Vrátí hodnotu dokončení aktuálního stavu vybraného workflow."
 msgid ""
 "Return the last workflow instance log entry. The log entry itself has the "
 "following fields: datetime, transition, user, and comment."
-msgstr ""
-"Vraťte poslední položku protokolu instance workflow. Samotná položka "
-"protokolu má následující pole: datetime, transition, user a comment."
+msgstr "Vraťte poslední položku protokolu instance workflow. Samotná položka protokolu má následující pole: datetime, transition, user a comment."
 
 #: apps.py:234
 msgid "Get last log entry"
@@ -56,9 +52,7 @@ msgstr "Získejte poslední položku protokolu"
 msgid ""
 "Return the current context dictionary which includes runtime data from the "
 "workflow transition fields."
-msgstr ""
-"Vraťte aktuální kontextový slovník, který obsahuje runtime data z polí "
-"postupu workflou."
+msgstr "Vraťte aktuální kontextový slovník, který obsahuje runtime data z polí postupu workflou."
 
 #: apps.py:242
 msgid "Get the context"
@@ -237,9 +231,8 @@ msgid "Transitions"
 msgstr "Kroky"
 
 #: links.py:165 links.py:171 workflow_actions.py:83
-#| msgid "Launch workflow"
 msgid "Launch workflows"
-msgstr "Spusťte workflow"
+msgstr ""
 
 #: links.py:177
 msgid "Create field"
@@ -297,9 +290,7 @@ msgstr ""
 msgid ""
 "This value will be used by other apps to reference this workflow. Can only "
 "contain letters, numbers, and underscores."
-msgstr ""
-"Tuto hodnotu použijí jiné aplikace k odkazu na toto workflow. Může obsahovat "
-"pouze písmena, čísla a podtržítka."
+msgstr "Tuto hodnotu použijí jiné aplikace k odkazu na toto workflow. Může obsahovat pouze písmena, čísla a podtržítka."
 
 #: models.py:63 models.py:872
 msgid "Internal name"
@@ -365,8 +356,7 @@ msgstr "Krátký text popisující stav workflow."
 msgid ""
 "The state at which the workflow will start in. Only one state can be the "
 "initial state."
-msgstr ""
-"Stav, ve kterém se workflow spustí. Počáteční stav může být pouze jeden."
+msgstr "Stav, ve kterém se workflow spustí. Počáteční stav může být pouze jeden."
 
 #: models.py:562
 msgid "Initial"
@@ -376,9 +366,7 @@ msgstr "Počáteční"
 msgid ""
 "The percent of completion that this state represents in relation to the "
 "workflow. Use numbers without the percent sign."
-msgstr ""
-"Procento dokončení, které tento stav představuje ve vztahu k workflow. "
-"Používejte čísla bez znaku procenta."
+msgstr "Procento dokončení, které tento stav představuje ve vztahu k workflow. Používejte čísla bez znaku procenta."
 
 #: models.py:574 models.py:654
 msgid "Workflow state"
@@ -402,9 +390,7 @@ msgstr "Když"
 
 #: models.py:669
 msgid "The dotted Python path to the workflow action class to execute."
-msgstr ""
-"Tečkovaná cesta Python ke třídě akcí pracovního postupu, kterou chcete "
-"provést."
+msgstr "Tečkovaná cesta Python ke třídě akcí pracovního postupu, kterou chcete provést."
 
 #: models.py:670
 msgid "Entry action path"
@@ -417,8 +403,8 @@ msgstr "Vstupní data akce "
 #: models.py:677
 msgid ""
 "The condition that will determine if this state action is executed or not. "
-"The condition is evaluated against the workflow instance. Conditions that do "
-"not return any value, that return the Python logical None, or an empty "
+"The condition is evaluated against the workflow instance. Conditions that do"
+" not return any value, that return the Python logical None, or an empty "
 "string ('') are considered to be logical false, any other value is "
 "considered to be the logical true."
 msgstr ""
@@ -463,10 +449,10 @@ msgstr "Cílový stav"
 #: models.py:791
 msgid ""
 "The condition that will determine if this transition is enabled or not. The "
-"condition is evaluated against the workflow instance. Conditions that do not "
-"return any value, that return the Python logical None, or an empty string "
-"('') are considered to be logical false, any other value is considered to be "
-"the logical true."
+"condition is evaluated against the workflow instance. Conditions that do not"
+" return any value, that return the Python logical None, or an empty string "
+"('') are considered to be logical false, any other value is considered to be"
+" the logical true."
 msgstr ""
 
 #: models.py:805
@@ -486,9 +472,7 @@ msgstr "Průchod bude k dispozici v závislosti na návratové hodnotě podmínk
 msgid ""
 "The name that will be used to identify this field in other parts of the "
 "workflow system."
-msgstr ""
-"Název, který bude použit k identifikaci tohoto pole v jiných částech systému "
-"workflow."
+msgstr "Název, který bude použit k identifikaci tohoto pole v jiných částech systému workflow."
 
 #: models.py:876
 msgid "The field name that will be shown on the user interface."
@@ -498,9 +482,7 @@ msgstr "Název pole, které se zobrazí na uživatelském rozhraní."
 msgid ""
 "An optional message that will help users better understand the purpose of "
 "the field and data to provide."
-msgstr ""
-"Volitelná zpráva, která pomůže uživatelům lépe porozumět účelu pole a "
-"údajům, které mají poskytovat."
+msgstr "Volitelná zpráva, která pomůže uživatelům lépe porozumět účelu pole a údajům, které mají poskytovat."
 
 #: models.py:882
 msgid "Help text"
@@ -524,9 +506,7 @@ msgstr "Třída widgetů"
 
 #: models.py:896
 msgid "A group of keyword arguments to customize the widget. Use YAML format."
-msgstr ""
-"Skupina argumentů klíčových slov k přizpůsobení widgetu. Použijte formát "
-"YAML."
+msgstr "Skupina argumentů klíčových slov k přizpůsobení widgetu. Použijte formát YAML."
 
 #: models.py:899
 msgid "Widget keyword arguments"
@@ -605,23 +585,20 @@ msgid "Document states fast"
 msgstr "Stavy dokumentu rychle"
 
 #: queues.py:15
-#| msgid "Launch all workflows"
 msgid "Launch all workflows for all documents"
-msgstr "Spusťte všechny workflow"
+msgstr ""
 
 #: queues.py:19
 msgid "Launch a workflow"
 msgstr "Spusťte workflow"
 
 #: queues.py:23
-#| msgid "There are no workflow for this document"
 msgid "Launch a workflow for a document"
-msgstr "Pro tento dokument neexistují žádná workflow"
+msgstr ""
 
 #: queues.py:27
-#| msgid "Launch all workflows"
 msgid "Launch all workflows for a document"
-msgstr "Spusťte všechny workflow"
+msgstr ""
 
 #: queues.py:31
 msgid "Generate workflow previews"
@@ -639,9 +616,7 @@ msgstr "Primární klíč typu dokumentu, který se má přidat."
 msgid ""
 "API URL pointing to a document type in relation to the workflow to which it "
 "is attached. This URL is different than the canonical document type URL."
-msgstr ""
-"URL API směřující na typ dokumentu ve vztahu k workflow, ke kterému je "
-"připojen. Tato adresa URL je jiná než adresa URL kanonického typu dokumentu."
+msgstr "URL API směřující na typ dokumentu ve vztahu k workflow, ke kterému je připojen. Tato adresa URL je jiná než adresa URL kanonického typu dokumentu."
 
 #: serializers.py:114
 msgid "Primary key of the destination state to be added."
@@ -655,9 +630,7 @@ msgstr "Primární klíč stavu původu, který se má přidat."
 msgid ""
 "API URL pointing to a workflow in relation to the document to which it is "
 "attached. This URL is different than the canonical workflow URL."
-msgstr ""
-"URL API ukazující na workflow ve vztahu k dokumentu, ke kterému je připojen. "
-"Tato adresa URL se liší od kanonické adresy URL pracovního postupu."
+msgstr "URL API ukazující na workflow ve vztahu k dokumentu, ke kterému je připojen. Tato adresa URL se liší od kanonické adresy URL pracovního postupu."
 
 #: serializers.py:225
 msgid "A link to the entire history of this workflow."
@@ -667,9 +640,7 @@ msgstr "Odkaz na celou historii tohoto workflow."
 msgid ""
 "Comma separated list of document type primary keys to which this workflow "
 "will be attached."
-msgstr ""
-"Čárkami oddělený seznam primárních klíčů typu dokumentu, ke kterým bude toto "
-"workflow připojeno."
+msgstr "Čárkami oddělený seznam primárních klíčů typu dokumentu, ke kterým bude toto workflow připojeno."
 
 #: serializers.py:317
 msgid "Primary key of the transition to be added."
@@ -684,38 +655,29 @@ msgstr ""
 msgid ""
 "The threshold at which the WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest workflow image cache files. Specify the size in bytes."
-msgstr ""
-"Prahová hodnota, při které WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND začne mazat "
-"nejstarší soubory mezipaměti obrázků workflow. Zadejte velikost v bajtech."
+msgstr "Prahová hodnota, při které WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND začne mazat nejstarší soubory mezipaměti obrázků workflow. Zadejte velikost v bajtech."
 
 #: settings.py:34
 msgid ""
 "Time in seconds that the browser should cache the supplied workflow images. "
 "The default of 31559626 seconds corresponde to 1 year."
-msgstr ""
-"Čas v sekundách, po který má prohlížeč ukládat do mezipaměti "
-"obrázkyworkflow. Výchozí hodnota 31559626 sekund odpovídá 1 roku."
+msgstr "Čas v sekundách, po který má prohlížeč ukládat do mezipaměti obrázkyworkflow. Výchozí hodnota 31559626 sekund odpovídá 1 roku."
 
 #: settings.py:41
 msgid ""
 "Path to the Storage subclass to use when storing the cached workflow image "
 "files."
-msgstr ""
-"Cesta k podtřídě Úložiště, která se použije při ukládání obrazových souborů "
-"workflow v mezipaměti."
+msgstr "Cesta k podtřídě Úložiště, která se použije při ukládání obrazových souborů workflow v mezipaměti."
 
 #: settings.py:49
 msgid "Arguments to pass to the WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND."
-msgstr ""
-"Argumenty, které mají být předány na WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND."
+msgstr "Argumenty, které mají být předány na WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND."
 
 #: storages.py:14
 msgid ""
-"Unable to initialize the workflow preview storage. Check the settings {} and "
-"{} for formatting errors."
-msgstr ""
-"Nelze inicializovat úložiště náhledu workflow. Zkontrolujte v nastavení {} a "
-"{} chyby formátování."
+"Unable to initialize the workflow preview storage. Check the settings {} and"
+" {} for formatting errors."
+msgstr "Nelze inicializovat úložiště náhledu workflow. Zkontrolujte v nastavení {} a {} chyby formátování."
 
 #: storages.py:21
 msgid "Workflow preview images"
@@ -727,16 +689,13 @@ msgstr "Náhled workflow"
 
 #: views/workflow_instance_views.py:31
 msgid ""
-"Assign workflows to the document type of this document to have this document "
-"execute those workflows. "
-msgstr ""
-"Přiřaďte workflow typu dokumentu tohoto dokumentu, aby tento dokument "
-"provedl tato workflow."
+"Assign workflows to the document type of this document to have this document"
+" execute those workflows. "
+msgstr "Přiřaďte workflow typu dokumentu tohoto dokumentu, aby tento dokument provedl tato workflow."
 
 #: views/workflow_instance_views.py:35
-#| msgid "There are no workflow for this document"
 msgid "There are no workflows for this document"
-msgstr "Pro tento dokument neexistují žádná workflow"
+msgstr ""
 
 #: views/workflow_instance_views.py:39
 #, python-format
@@ -745,7 +704,8 @@ msgstr "Workflows pro dokument: %s"
 
 #: views/workflow_instance_views.py:64
 msgid ""
-"This view will show the state changes as a workflow instance is transitioned."
+"This view will show the state changes as a workflow instance is "
+"transitioned."
 msgstr "Toto zobrazení zobrazí změny stavu při kroku instance workflow."
 
 #: views/workflow_instance_views.py:68
@@ -788,9 +748,7 @@ msgstr "Vyberte přechod pro workflow: %s"
 msgid ""
 "Associate a workflow with some document types and documents of those types "
 "will be listed in this view."
-msgstr ""
-"Přiřadit workflow k některým typům dokumentů a dokumenty těchto typů budou "
-"uvedeny v tomto zobrazení."
+msgstr "Přiřadit workflow k některým typům dokumentů a dokumenty těchto typů budou uvedeny v tomto zobrazení."
 
 #: views/workflow_proxy_views.py:38
 msgid "There are no documents executing this workflow"
@@ -805,9 +763,7 @@ msgstr "Dokumenty s workflow: %s"
 msgid ""
 "Create some workflows and associated them with a document type. Active "
 "workflows will be shown here and the documents for which they are executing."
-msgstr ""
-"Vytvořte workflow a přiřaďte je k typu dokumentu. Zde budou zobrazeny "
-"aktivní workflow a dokumenty."
+msgstr "Vytvořte workflow a přiřaďte je k typu dokumentu. Zde budou zobrazeny aktivní workflow a dokumenty."
 
 #: views/workflow_proxy_views.py:65
 msgid "There are no workflows"
@@ -822,7 +778,8 @@ msgstr "V tomto stavu workflow nejsou žádné dokumenty"
 msgid "Documents in the workflow \"%s\", state \"%s\""
 msgstr "Dokumenty ve workflow \"%s\", stav \"%s\""
 
-#: views/workflow_proxy_views.py:121 views/workflow_template_state_views.py:327
+#: views/workflow_proxy_views.py:121
+#: views/workflow_template_state_views.py:327
 msgid "Create states and link them using transitions."
 msgstr "Vytvářejte stavy a propojujte je pomocí kroků."
 
@@ -830,7 +787,8 @@ msgstr "Vytvářejte stavy a propojujte je pomocí kroků."
 msgid "This workflow doesn't have any state"
 msgstr "Toto workflow nemá žádný stav"
 
-#: views/workflow_proxy_views.py:127 views/workflow_template_state_views.py:333
+#: views/workflow_proxy_views.py:127
+#: views/workflow_template_state_views.py:333
 #, python-format
 msgid "States of workflow: %s"
 msgstr "Stavy workflow: %s"
@@ -852,11 +810,9 @@ msgstr "Upravit akci stavu workflow: %s"
 
 #: views/workflow_template_state_views.py:172
 msgid ""
-"Workflow state actions are macros that get executed when documents enters or "
-"leaves the state in which they reside."
-msgstr ""
-"Akce stavu workflow  jsou makra, která se provedou, když dokumenty vstoupí "
-"nebo opustí stav, ve kterém se nacházejí."
+"Workflow state actions are macros that get executed when documents enters or"
+" leaves the state in which they reside."
+msgstr "Akce stavu workflow  jsou makra, která se provedou, když dokumenty vstoupí nebo opustí stav, ve kterém se nacházejí."
 
 #: views/workflow_template_state_views.py:176
 msgid "There are no actions for this workflow state"
@@ -907,9 +863,9 @@ msgstr "Upravit krok workflow: %s"
 
 #: views/workflow_template_transition_views.py:146
 msgid ""
-"Create a transition and use it to move a workflow from  one state to another."
-msgstr ""
-"Vytvořte krok a použijte jej k přesunutí workflow z jednoho stavu do druhého."
+"Create a transition and use it to move a workflow from  one state to "
+"another."
+msgstr "Vytvořte krok a použijte jej k přesunutí workflow z jednoho stavu do druhého."
 
 #: views/workflow_template_transition_views.py:150
 msgid "This workflow doesn't have any transitions"
@@ -932,8 +888,7 @@ msgstr "Události spouštění kroku workflow byly úspěšně aktualizovány"
 #: views/workflow_template_transition_views.py:203
 msgid ""
 "Triggers are events that cause this transition to execute automatically."
-msgstr ""
-"Spouštěče jsou události, které způsobí automatické spuštění tohoto kroku."
+msgstr "Spouštěče jsou události, které způsobí automatické spuštění tohoto kroku."
 
 #: views/workflow_template_transition_views.py:207
 #, python-format
@@ -957,13 +912,10 @@ msgstr "Upravit pole přechodu workflow: %s"
 
 #: views/workflow_template_transition_views.py:362
 msgid ""
-"Workflow transition fields allow adding data to the workflow's context. This "
-"additional context data can then be used by other elements of the workflow "
+"Workflow transition fields allow adding data to the workflow's context. This"
+" additional context data can then be used by other elements of the workflow "
 "system like the workflow state actions."
-msgstr ""
-"Pole přechodu workflow umožňují přidávat data do kontextu workflow. Tato "
-"další kontextová data pak mohou být použita jinými prvky systému workflow, "
-"jako jsou akce stavu workflow."
+msgstr "Pole přechodu workflow umožňují přidávat data do kontextu workflow. Tato další kontextová data pak mohou být použita jinými prvky systému workflow, jako jsou akce stavu workflow."
 
 #: views/workflow_template_transition_views.py:368
 msgid "There are no fields for this workflow transition"
@@ -986,9 +938,7 @@ msgstr "Workflow přiřazené k tomuto typu dokumentu"
 msgid ""
 "Removing a workflow from a document type will also remove all running "
 "instances of that workflow."
-msgstr ""
-"Odstranění workflow z typu dokumentu odstraní také všechny spuštěné instance "
-"tohoto workflow."
+msgstr "Odstranění workflow z typu dokumentu odstraní také všechny spuštěné instance tohoto workflow."
 
 #: views/workflow_template_views.py:57
 #, python-format
@@ -996,14 +946,14 @@ msgid "Workflows assigned the document type: %s"
 msgstr "Workflow přiřazené typu dokumentu: %s"
 
 #: views/workflow_template_views.py:95
-#| msgid "Workflows for document: %s"
+#, python-format
 msgid "Workflows launched for %(count)d document"
-msgstr "Workflows pro dokument: %s"
+msgstr ""
 
 #: views/workflow_template_views.py:96
-#| msgid "Workflows for document: %s"
+#, python-format
 msgid "Workflows launched for %(count)d documents"
-msgstr "Workflows pro dokument: %s"
+msgstr ""
 
 #: views/workflow_template_views.py:100
 msgid "Launch"
@@ -1016,23 +966,22 @@ msgid ""
 msgstr ""
 
 #: views/workflow_template_views.py:107
-#| msgid "There are no workflow for this document"
+#, python-format
 msgid "Launch selected workflows for %(count)d document"
 msgid_plural "Launch selected workflows for %(count)d documents"
-msgstr[0] "Pro tento dokument neexistují žádná workflow"
-msgstr[1] "Pro tento dokument neexistují žádná workflow"
-msgstr[2] "Pro tento dokument neexistují žádná workflow"
-msgstr[3] "Pro tento dokument neexistují žádná workflow"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: views/workflow_template_views.py:120
-#| msgid "Workflows for document: %s"
+#, python-format
 msgid "Launch selected workflows for document: %s"
-msgstr "Workflows pro dokument: %s"
+msgstr ""
 
 #: views/workflow_template_views.py:133
-#| msgid "Workflow instance"
 msgid "Workflows to be launched."
-msgstr "Instance workflow"
+msgstr ""
 
 #: views/workflow_template_views.py:175
 #, python-format
@@ -1045,18 +994,16 @@ msgid "Delete request performed on %(count)d workflows"
 msgstr ""
 
 #: views/workflow_template_views.py:183
-#| msgid "Workflow instance log entries"
 msgid "All workflow instances will also be deleted."
-msgstr "Položky protokolu instance workflow"
+msgstr ""
 
 #: views/workflow_template_views.py:185
-#| msgid "Delete workflows"
 msgid "Delete the selected workflow?"
 msgid_plural "Delete the selected workflows?"
-msgstr[0] "Odstranit workflow"
-msgstr[1] "Odstranit workflow"
-msgstr[2] "Odstranit workflow"
-msgstr[3] "Odstranit workflow"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: views/workflow_template_views.py:195
 #, python-format
@@ -1064,14 +1011,14 @@ msgid "Delete workflow: %s?"
 msgstr "Odstranit workflow : %s?"
 
 #: views/workflow_template_views.py:206
-#| msgid "Workflow launch queued successfully."
+#, python-format
 msgid "Workflow \"%s\" deleted successfully."
-msgstr "Spuštění workflow bylo úspěšně zařazeno do fronty."
+msgstr ""
 
 #: views/workflow_template_views.py:211
-#| msgid "Detail of workflow: %(workflow)s"
+#, python-format
 msgid "Error deleting workflow \"%(workflow)s\": %(error)s"
-msgstr "Detail workflow%(workflow)su: "
+msgstr ""
 
 #: views/workflow_template_views.py:229
 #, python-format
@@ -1090,9 +1037,7 @@ msgstr "Tomuto workflow  byly přiřazeny typy dokumentů"
 msgid ""
 "Removing a document type from a workflow will also remove all running "
 "instances of that workflow for documents of the document type just removed."
-msgstr ""
-"Odstranění typu dokumentu zworkflow  odstraní také všechny spuštěné instance "
-"tohoto workflow  u dokumentů právě odebraného typu dokumentu."
+msgstr "Odstranění typu dokumentu zworkflow  odstraní také všechny spuštěné instance tohoto workflow  u dokumentů právě odebraného typu dokumentu."
 
 #: views/workflow_template_views.py:259
 #, python-format
@@ -1116,9 +1061,7 @@ msgstr "Spuštění workflow bylo úspěšně zařazeno do fronty."
 msgid ""
 "Workflows store a series of states and keep track of the current state of a "
 "document. Transitions are used to change the current state to a new one."
-msgstr ""
-"Workflow ukládají řadu stavů a sledují aktuální stav dokumentu. Kroky se "
-"používají ke změně současného stavu na nový."
+msgstr "Workflow ukládají řadu stavů a sledují aktuální stav dokumentu. Kroky se používají ke změně současného stavu na nový."
 
 #: views/workflow_template_views.py:335
 msgid "No workflows have been defined"
@@ -1146,9 +1089,7 @@ msgstr "Štítek dokumentu"
 #: workflow_actions.py:23
 msgid ""
 "The new label to be assigned to the document. Can be a string or a template."
-msgstr ""
-"Nový štítek, který má být dokumentu přiřazen. Může to být řetězec nebo "
-"šablona."
+msgstr "Nový štítek, který má být dokumentu přiřazen. Může to být řetězec nebo šablona."
 
 #: workflow_actions.py:28
 msgid "Document description"
@@ -1158,9 +1099,7 @@ msgstr "Popis dokumentu"
 msgid ""
 "The new description to be assigned to the document. Can be a string or a "
 "template."
-msgstr ""
-"Nový popis, který má být dokumentu přiřazen. Může to být řetězec nebo "
-"šablona."
+msgstr "Nový popis, který má být dokumentu přiřazen. Může to být řetězec nebo šablona."
 
 #: workflow_actions.py:38
 msgid "Modify document properties"
@@ -1176,15 +1115,11 @@ msgstr "URL"
 
 #: workflow_actions.py:119
 msgid ""
-"Can be an IP address, a domain or a template. Templates receive the workflow "
-"log entry instance as part of their context via the variable \"entry_log\". "
-"The \"entry_log\" in turn provides the \"workflow_instance\", \"datetime\", "
-"\"transition\", \"user\", and \"comment\" attributes."
-msgstr ""
-"Může to být adresa IP, doména nebo šablona. Šablony přijímají instanci "
-"záznamu workflow jako součást svého kontextu prostřednictvím proměnné "
-"\"entry_log\".\"Entry_log\" zase poskytuje atributy \"workflow_instance\", "
-"\"datetime\", \"transition\", \"user\" a \"comment\"."
+"Can be an IP address, a domain or a template. Templates receive the workflow"
+" log entry instance as part of their context via the variable \"entry_log\"."
+" The \"entry_log\" in turn provides the \"workflow_instance\", \"datetime\","
+" \"transition\", \"user\", and \"comment\" attributes."
+msgstr "Může to být adresa IP, doména nebo šablona. Šablony přijímají instanci záznamu workflow jako součást svého kontextu prostřednictvím proměnné \"entry_log\".\"Entry_log\" zase poskytuje atributy \"workflow_instance\", \"datetime\", \"transition\", \"user\" a \"comment\"."
 
 #: workflow_actions.py:129
 msgid "Timeout"
@@ -1192,9 +1127,9 @@ msgstr "Časový limit"
 
 #: workflow_actions.py:132
 msgid ""
-"Time in seconds to wait for a response. Can be a static value or a template. "
-msgstr ""
-"Čas čekání v sekundách na odpověď. Může to být statická hodnota nebo šablona."
+"Time in seconds to wait for a response. Can be a static value or a template."
+" "
+msgstr "Čas čekání v sekundách na odpověď. Může to být statická hodnota nebo šablona."
 
 #: workflow_actions.py:138
 msgid "Payload"
@@ -1203,16 +1138,11 @@ msgstr "Payload"
 #: workflow_actions.py:141
 msgid ""
 "A JSON document to include in the request. Can also be a template that "
-"return a JSON document. Templates receive the workflow log entry instance as "
-"part of their context via the variable \"entry_log\". The \"entry_log\" in "
-"turn provides the \"workflow_instance\", \"datetime\", \"transition\", \"user"
-"\", and \"comment\" attributes."
-msgstr ""
-"Dokument JSON, který má být součástí žádosti. Může to být také šablona, "
-"která vrací dokument JSON. Šablony přijímají instanci záznamu workflow jako "
-"součást svého kontextu prostřednictvím proměnné \"entry_log\".\"Entry_log\" "
-"zase poskytuje atributy \"workflow_instance\", \"datetime\", \"transition\", "
-"\"user\" a \"comment\"."
+"return a JSON document. Templates receive the workflow log entry instance as"
+" part of their context via the variable \"entry_log\". The \"entry_log\" in "
+"turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
+"\"user\", and \"comment\" attributes."
+msgstr "Dokument JSON, který má být součástí žádosti. Může to být také šablona, která vrací dokument JSON. Šablony přijímají instanci záznamu workflow jako součást svého kontextu prostřednictvím proměnné \"entry_log\".\"Entry_log\" zase poskytuje atributy \"workflow_instance\", \"datetime\", \"transition\", \"user\" a \"comment\"."
 
 #: workflow_actions.py:151
 msgid "Username"
@@ -1220,18 +1150,12 @@ msgstr "Uživatelské jméno"
 
 #: workflow_actions.py:154
 msgid ""
-"Username to use for making the request with HTTP Basic Auth. Can be a static "
-"value or a template. Templates receive the workflow log entry instance as "
+"Username to use for making the request with HTTP Basic Auth. Can be a static"
+" value or a template. Templates receive the workflow log entry instance as "
 "part of their context via the variable \"entry_log\". The \"entry_log\" in "
-"turn provides the \"workflow_instance\", \"datetime\", \"transition\", \"user"
-"\", and \"comment\" attributes."
-msgstr ""
-"Uživatelské jméno, které se má použít k provedení požadavku pomocí HTTP "
-"Basic Auth. Může to být statická hodnota nebo šablona. Šablony přijímají "
-"instanci záznamu workflowvjako součást svého kontextu prostřednictvím "
-"proměnné &quot;entry_log&quot;. &quot;Entry_log&quot; zase poskytuje "
-"atributy &quot;workflow_instance&quot;, &quot;datetime&quot;, &quot;"
-"transition&quot;, &quot;user&quot; a &quot;comment&quot;."
+"turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
+"\"user\", and \"comment\" attributes."
+msgstr "Uživatelské jméno, které se má použít k provedení požadavku pomocí HTTP Basic Auth. Může to být statická hodnota nebo šablona. Šablony přijímají instanci záznamu workflowvjako součást svého kontextu prostřednictvím proměnné &quot;entry_log&quot;. &quot;Entry_log&quot; zase poskytuje atributy &quot;workflow_instance&quot;, &quot;datetime&quot;, &quot;transition&quot;, &quot;user&quot; a &quot;comment&quot;."
 
 #: workflow_actions.py:164
 msgid "Password"
@@ -1239,18 +1163,12 @@ msgstr "Heslo"
 
 #: workflow_actions.py:167
 msgid ""
-"Password to use for making the request with HTTP Basic Auth. Can be a static "
-"value or a template. Templates receive the workflow log entry instance as "
+"Password to use for making the request with HTTP Basic Auth. Can be a static"
+" value or a template. Templates receive the workflow log entry instance as "
 "part of their context via the variable \"entry_log\". The \"entry_log\" in "
-"turn provides the \"workflow_instance\", \"datetime\", \"transition\", \"user"
-"\", and \"comment\" attributes."
-msgstr ""
-"Heslo, které se použije pro provedení požadavku s HTTP Basic Auth. Může to "
-"být statická hodnota nebo šablona. Šablony přijímají instanci záznamu "
-"workflow jako součást svého kontextu prostřednictvím proměnné &quot;"
-"entry_log&quot;. &quot;Entry_log&quot; zase poskytuje atributy &quot;"
-"workflow_instance&quot;, &quot;datetime&quot;, &quot;transition&quot;, &quot;"
-"user&quot; a &quot;comment&quot;."
+"turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
+"\"user\", and \"comment\" attributes."
+msgstr "Heslo, které se použije pro provedení požadavku s HTTP Basic Auth. Může to být statická hodnota nebo šablona. Šablony přijímají instanci záznamu workflow jako součást svého kontextu prostřednictvím proměnné &quot;entry_log&quot;. &quot;Entry_log&quot; zase poskytuje atributy &quot;workflow_instance&quot;, &quot;datetime&quot;, &quot;transition&quot;, &quot;user&quot; a &quot;comment&quot;."
 
 #: workflow_actions.py:177
 msgid "Method"
@@ -1264,14 +1182,7 @@ msgid ""
 "as part of their context via the variable \"entry_log\". The \"entry_log\" "
 "in turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
 "\"user\", and \"comment\" attributes."
-msgstr ""
-"Metoda HTTP, která se má použít pro požadavek. Typické volby jsou OPTIONS, "
-"HEAD, POST, GET, PUT, PATCH, DELETE. Může to být statická hodnota nebo "
-"šablona, která vrací text metody. Šablony obdrží instanci záznamu workflow "
-"jako součást svého kontextu prostřednictvím proměnné &quot;entry_log&quot;. "
-"&quot;Entry_log&quot; zase poskytuje atributy &quot;workflow_instance&quot;, "
-"&quot;datetime&quot;, &quot;transition&quot;, &quot;user&quot; a &quot;"
-"comment&quot;."
+msgstr "Metoda HTTP, která se má použít pro požadavek. Typické volby jsou OPTIONS, HEAD, POST, GET, PUT, PATCH, DELETE. Může to být statická hodnota nebo šablona, která vrací text metody. Šablony obdrží instanci záznamu workflow jako součást svého kontextu prostřednictvím proměnné &quot;entry_log&quot;. &quot;Entry_log&quot; zase poskytuje atributy &quot;workflow_instance&quot;, &quot;datetime&quot;, &quot;transition&quot;, &quot;user&quot; a &quot;comment&quot;."
 
 #: workflow_actions.py:191
 msgid "Headers"
@@ -1284,13 +1195,7 @@ msgid ""
 "instance as part of their context via the variable \"entry_log\". The "
 "\"entry_log\" in turn provides the \"workflow_instance\", \"datetime\", "
 "\"transition\", \"user\", and \"comment\" attributes."
-msgstr ""
-"Záhlaví k odeslání s požadavkem HTTP. Musí být ve formátu JSON. Může to být "
-"statická hodnota nebo šablona. Šablony přijímají instanci záznamu workflow "
-"jako součást svého kontextu prostřednictvím proměnné &quot;entry_log&quot;. "
-"&quot;Entry_log&quot; zase poskytuje atributy &quot;workflow_instance&quot;, "
-"&quot;datetime&quot;, &quot;transition&quot;, &quot;user&quot; a &quot;"
-"comment&quot;."
+msgstr "Záhlaví k odeslání s požadavkem HTTP. Musí být ve formátu JSON. Může to být statická hodnota nebo šablona. Šablony přijímají instanci záznamu workflow jako součást svého kontextu prostřednictvím proměnné &quot;entry_log&quot;. &quot;Entry_log&quot; zase poskytuje atributy &quot;workflow_instance&quot;, &quot;datetime&quot;, &quot;transition&quot;, &quot;user&quot; a &quot;comment&quot;."
 
 #: workflow_actions.py:208
 msgid "Perform an HTTP request"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
@@ -11,15 +11,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: 2020-05-09 19:32+0000\n"
-"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
-"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/"
-"nl/)\n"
-"Language: nl\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 06:47+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:46 events.py:6 models.py:35 models.py:104 permissions.py:5
@@ -27,9 +26,8 @@ msgid "Permissions"
 msgstr "Permissies"
 
 #: apps.py:99 models.py:142
-#| msgid "Group name"
 msgid "Group count"
-msgstr "Groepsnaam"
+msgstr ""
 
 #: classes.py:85
 msgid "Insufficient permissions."
@@ -96,9 +94,8 @@ msgid "Role"
 msgstr "Gebruikersrol"
 
 #: models.py:150
-#| msgid "Permission"
 msgid "Permission count"
-msgstr "Permissies"
+msgstr ""
 
 #: permissions.py:8
 msgid "Create roles"
@@ -124,15 +121,11 @@ msgstr "Groepsnaam"
 msgid ""
 "Comma separated list of groups primary keys to add to, or replace in this "
 "role."
-msgstr ""
-"Kommagescheiden lijst met groepen van primaire sleutelsom toe te voegen, of "
-"te vervangen in deze rol. "
+msgstr "Kommagescheiden lijst met groepen van primaire sleutelsom toe te voegen, of te vervangen in deze rol. "
 
 #: serializers.py:51
 msgid "Comma separated list of permission primary keys to grant to this role."
-msgstr ""
-"Kommagescheiden lijst met permissie primaire sleutels om aan deze rol toe te "
-"kennen."
+msgstr "Kommagescheiden lijst met permissie primaire sleutels om aan deze rol toe te kennen."
 
 #: serializers.py:88
 #, python-format
@@ -169,9 +162,7 @@ msgstr "Groepen van gebruikersrollen: %s"
 msgid ""
 "Add groups to be part of a role. They will inherit the role's permissions "
 "and access controls."
-msgstr ""
-"Groepen toevoegen aan de rol. Ze verkrijgen de toegangsrechten die horen bij "
-"de rol."
+msgstr "Groepen toevoegen aan de rol. Ze verkrijgen de toegangsrechten die horen bij de rol."
 
 #: views.py:107
 msgid "Available permissions"
@@ -184,9 +175,7 @@ msgstr "Toegekende permissies"
 #: views.py:143
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
-msgstr ""
-"Toegekende permissies zullen worden toegepast in het gehele systeem en alle "
-"objecten. "
+msgstr "Toegekende permissies zullen worden toegepast in het gehele systeem en alle objecten. "
 
 #: views.py:146
 #, python-format
@@ -199,11 +188,7 @@ msgid ""
 "role permissions for the entire system. Roles can also part of access "
 "controls lists. Access controls list are permissions granted to a role for "
 "specific objects which its group members inherit."
-msgstr ""
-"Rollen zijn eenheden van authorisatie. Ze bevatten gebruikersgroepen die "
-"permissies verkrijgen voor het gehele systeem. Rollen kunnen ook onderdeel "
-"zijn van toegangsrechten. Toegangsrechten zijn permissies toegekend aan een "
-"rol voor bepaalde objecten."
+msgstr "Rollen zijn eenheden van authorisatie. Ze bevatten gebruikersgroepen die permissies verkrijgen voor het gehele systeem. Rollen kunnen ook onderdeel zijn van toegangsrechten. Toegangsrechten zijn permissies toegekend aan een rol voor bepaalde objecten."
 
 #: views.py:170
 msgid "There are no roles"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # bwakkie <bwakkie@gmail.com>, 2020
@@ -13,15 +13,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
 "PO-Revision-Date: 2020-09-06 08:41+0000\n"
 "Last-Translator: bwakkie <bwakkie@gmail.com>\n"
-"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/"
-"nl/)\n"
-"Language: nl\n"
+"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:25 events.py:6 permissions.py:6 settings.py:7
@@ -52,9 +51,7 @@ msgstr "Onthoud mij"
 msgid ""
 "Please enter a correct email and password. Note that the password field is "
 "case-sensitive."
-msgstr ""
-"Vul het juiste email adres en wachtwoord in. Houd er rekening mee dat het "
-"wachtwoordveld hoofdlettergevoelig is."
+msgstr "Vul het juiste email adres en wachtwoord in. Houd er rekening mee dat het wachtwoordveld hoofdlettergevoelig is."
 
 #: forms.py:27
 msgid "This account is inactive."
@@ -74,9 +71,7 @@ msgstr "Permanent"
 
 #: forms.py:83
 msgid "If selected, disables ending impersonation."
-msgstr ""
-"Indien geselecteerd, wordt het beëindigen van identiteit nabootsing "
-"uitgeschakeld."
+msgstr "Indien geselecteerd, wordt het beëindigen van identiteit nabootsing uitgeschakeld."
 
 #: links.py:22
 msgid "Logout"
@@ -102,24 +97,19 @@ msgstr "Nabootsen gebruikers"
 msgid ""
 "Controls the mechanism used to authenticated user. Options are: username, "
 "email"
-msgstr ""
-"Beinvloed de manier waarop gebruikers worden geauthenticeerd. Opties zijn: "
-"gebruikersnaam, email"
+msgstr "Beinvloed de manier waarop gebruikers worden geauthenticeerd. Opties zijn: gebruikersnaam, email"
 
 #: settings.py:18
 msgid ""
-"Maximum time a user clicking the \"Remember me\" checkbox will remain logged "
-"in. Value is time in seconds."
-msgstr ""
-"De maximale tijd dat een gebruiker \"Onthoud mij\" gebruikt, aangemeld "
-"blijft. Waarde is in seconden."
+"Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
+" in. Value is time in seconds."
+msgstr "De maximale tijd dat een gebruiker \"Onthoud mij\" gebruikt, aangemeld blijft. Waarde is in seconden."
 
 #: settings.py:25
 msgid ""
 "Remove the \"Forgot your password?\" link on the login form used to trigger "
 "the password reset."
-msgstr ""
-"Verwijder de \"Wachtwoord vergeten\" optie op het aanmeldingsformulier. "
+msgstr "Verwijder de \"Wachtwoord vergeten\" optie op het aanmeldingsformulier. "
 
 #: templates/authentication/login.html:11
 msgid "Login"
@@ -197,9 +187,7 @@ msgstr "Wijzig wachtwoord voor gebruiker: %s"
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr ""
-"Super gebruiker en medewerker wachtwoord aanpassen is niet toegestaan, "
-"gebruik de admin gebruiker voor deze zaken."
+msgstr "Super gebruiker en medewerker wachtwoord aanpassen is niet toegestaan, gebruik de admin gebruiker voor deze zaken."
 
 #: views.py:254
 #, python-format
@@ -209,6 +197,4 @@ msgstr "Wachtwoord opnieuw ingesteld voor gebruiker: %s."
 #: views.py:260
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
-msgstr ""
-"Fout tijdens het veranderen van het wachtwoord voor gebruiker \"%(user)s\": "
-"%(error)s"
+msgstr "Fout tijdens het veranderen van het wachtwoord voor gebruiker \"%(user)s\": %(error)s"

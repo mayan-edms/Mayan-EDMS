@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Emerson Soares <on.emersonsoares@gmail.com>, 2011
@@ -11,15 +11,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: 2020-01-28 07:59+0000\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 06:47+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/"
-"language/pt/)\n"
-"Language: pt\n"
+"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:52 events.py:5 links.py:18 links.py:24 permissions.py:5 queues.py:6
@@ -28,9 +27,8 @@ msgid "OCR"
 msgstr "OCR"
 
 #: apps.py:103
-#| msgid "Content"
 msgid "The OCR content."
-msgstr "Conteúdo"
+msgstr ""
 
 #: apps.py:108
 msgid "A generator returning the document's pages OCR content."
@@ -166,9 +164,8 @@ msgid "Change document type OCR settings"
 msgstr ""
 
 #: queues.py:10
-#| msgid "Submit documents for OCR"
 msgid "Finish document version OCR"
-msgstr "Submeter documentos para OCR"
+msgstr ""
 
 #: queues.py:14
 msgid "Document version page OCR"
@@ -241,9 +238,8 @@ msgid ""
 msgstr ""
 
 #: workflow_actions.py:31
-#| msgid "Content"
 msgid "Page content"
-msgstr "Conteúdo"
+msgstr ""
 
 #: workflow_actions.py:35
 msgid "A template that will generate the OCR content to be saved."

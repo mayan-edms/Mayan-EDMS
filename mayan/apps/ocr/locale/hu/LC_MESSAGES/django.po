@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # molnars <szabolcs.molnar@gmail.com>, 2017
@@ -9,15 +9,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: 2020-01-28 07:59+0000\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 06:47+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/hu/)\n"
-"Language: hu\n"
+"Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/language/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:52 events.py:5 links.py:18 links.py:24 permissions.py:5 queues.py:6
@@ -26,9 +25,8 @@ msgid "OCR"
 msgstr "Karakterfelismerés"
 
 #: apps.py:103
-#| msgid "Content"
 msgid "The OCR content."
-msgstr "Tartalom"
+msgstr ""
 
 #: apps.py:108
 msgid "A generator returning the document's pages OCR content."
@@ -164,14 +162,12 @@ msgid "Change document type OCR settings"
 msgstr "A dokumentum típus karakterfelismerő beállításának megváltoztatása"
 
 #: queues.py:10
-#| msgid "Document version OCR"
 msgid "Finish document version OCR"
-msgstr "Dokumentum verzió karakterfelismerés"
+msgstr ""
 
 #: queues.py:14
-#| msgid "Document version OCR"
 msgid "Document version page OCR"
-msgstr "Dokumentum verzió karakterfelismerés"
+msgstr ""
 
 #: queues.py:18
 msgid "Document version OCR"
@@ -240,15 +236,13 @@ msgid ""
 msgstr ""
 
 #: workflow_actions.py:31
-#| msgid "Content"
 msgid "Page content"
-msgstr "Tartalom"
+msgstr ""
 
 #: workflow_actions.py:35
 msgid "A template that will generate the OCR content to be saved."
 msgstr ""
 
 #: workflow_actions.py:43
-#| msgid "Change document type OCR settings"
 msgid "Update document page OCR content"
-msgstr "A dokumentum típus karakterfelismerő beállításának megváltoztatása"
+msgstr ""

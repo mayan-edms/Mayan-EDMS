@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2018
@@ -10,15 +10,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
 "PO-Revision-Date: 2019-12-13 05:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:43
@@ -187,8 +186,8 @@ msgstr "مختصات سند خارجی"
 
 #: models.py:181
 msgid ""
-"The expression using document properties to be evaluated against the foreign "
-"document field."
+"The expression using document properties to be evaluated against the foreign"
+" document field."
 msgstr ""
 
 #: models.py:183
@@ -239,9 +238,7 @@ msgstr "دیدن پیوندهای هوشمند موجود"
 msgid ""
 "Comma separated list of document type primary keys to which this smart link "
 "will be attached."
-msgstr ""
-"لیست کاملی از نوع اسناد کلید های اصلی که این پیوند هوشمند متصل است جدا شده "
-"است."
+msgstr "لیست کاملی از نوع اسناد کلید های اصلی که این پیوند هوشمند متصل است جدا شده است."
 
 #: serializers.py:139
 #, python-format
@@ -273,10 +270,8 @@ msgstr "اسناد در لینک هوشمند: %s"
 
 #: views.py:129
 #, python-format
-msgid ""
-"Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
-msgstr ""
-"اسناد پیوند هوشمند \"%(smart_link)s\" به عنوان \"%(document)s\" مربوط به"
+msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgstr "اسناد پیوند هوشمند \"%(smart_link)s\" به عنوان \"%(document)s\" مربوط به"
 
 #: views.py:165
 msgid "Available document types"

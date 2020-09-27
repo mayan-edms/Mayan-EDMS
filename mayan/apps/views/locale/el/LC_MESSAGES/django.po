@@ -1,21 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
 # Translators:
+# Hmayag Antonian <hmayag@freemail.gr>, 2020
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Mayan EDMS\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: 2020-04-19 04:46+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/"
-"el/)\n"
-"Language: el\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 06:47+0000\n"
+"Last-Translator: Hmayag Antonian <hmayag@freemail.gr>, 2020\n"
+"Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:15 settings.py:5
@@ -134,135 +136,3 @@ msgstr ""
 #: templatetags/views_tags.py:48
 msgid "Create"
 msgstr "Δημηουργία"
-
-#~ msgid "Common"
-#~ msgstr "Κοινό"
-
-#~ msgid "About this"
-#~ msgstr "Σχετικά με αυτό"
-
-#~ msgid "Locale profile"
-#~ msgstr "Προφίλ τοποθεσίας"
-
-#~ msgid "Edit locale profile"
-#~ msgstr "Τοποποίηση του προφίλ τοποθεσίας"
-
-#~ msgid "Documentation"
-#~ msgstr "Τεκμηρίωση"
-
-#~ msgid "Errors"
-#~ msgstr "Σφάλματα"
-
-#~ msgid "Forum"
-#~ msgstr "Φόρουμ"
-
-#~ msgid "License"
-#~ msgstr "Άδεια χρήσης"
-
-#~ msgid "Setup"
-#~ msgstr "Ρυθμίσεις"
-
-#~ msgid "Source code"
-#~ msgstr "Πηγαιος κώδικας"
-
-#~ msgid "Tools"
-#~ msgstr "Εργαλεία"
-
-#~ msgid "Days"
-#~ msgstr "Ημέρες"
-
-#~ msgid "Hours"
-#~ msgstr "Ώρες"
-
-#~ msgid "Minutes"
-#~ msgstr "Λεπτά"
-
-#~ msgid "System"
-#~ msgstr "Σύστημα"
-
-#~ msgid "Actions"
-#~ msgstr "Ενέργειες"
-
-#~ msgid "User"
-#~ msgstr "Χρήστης"
-
-#~ msgid "Date time"
-#~ msgstr "Ηερομηνία ώρα"
-
-#~ msgid "Result"
-#~ msgstr "Αποτέλεσμα"
-
-#~ msgid "Error log entry"
-#~ msgstr "Καταχωρημένο σφάλμα στο ημερολόγιο"
-
-#~ msgid "Error log entries"
-#~ msgstr "Κταχωρήσεις σφαλμάτων στο ημερολόγιο"
-
-#~ msgid "File"
-#~ msgstr "Αρχείο"
-
-#~ msgid "Filename"
-#~ msgstr "Όνομα αρχείου"
-
-#~ msgid "Shared uploaded file"
-#~ msgstr "Διαμοιραζόμενο ανεβασμένο αρχείο"
-
-#~ msgid "Shared uploaded files"
-#~ msgstr "Διαμοιραζόμενα ανεβασμένα αρχεία"
-
-#~ msgid "Timezone"
-#~ msgstr "Ζώνη ώρας"
-
-#~ msgid "Language"
-#~ msgstr "Γλώσσα"
-
-#~ msgid "User locale profile"
-#~ msgstr "Προφίλ τοποθεσίας χρήστη"
-
-#~ msgid "User locale profiles"
-#~ msgstr "Προφίλ τοποθεσίας χρήστη"
-
-#~ msgid "View error log"
-#~ msgstr "Εμφάνηση ημερολογίου σφαλμάτων"
-
-#~ msgid "Default"
-#~ msgstr "Προκαθορισμένο"
-
-#~ msgid "Delete stale uploads"
-#~ msgstr "Διαγραφή μεταφορτώσεων που δεν ολοκληρώθηκαν"
-
-#~ msgid "Automatically enable logging to all apps."
-#~ msgstr "Αυτόματη ενεργοποίηση καταγραφής για όλες τις εφαρμογές."
-
-#~ msgid ""
-#~ "Time to delay background tasks that depend on a database commit to "
-#~ "propagate."
-#~ msgstr ""
-#~ "Χρόνος αναμονής για ενέργειες παρασκηνίου που εξαρτώνται από την "
-#~ "καταχώρηση στην βάση δεδομένων για να ολοκληρωθούν."
-
-#~ msgid "Path to the logfile that will track errors during production."
-#~ msgstr ""
-#~ "Διαδρομή όπου θα αποθηκευτεί το ημερολόγιο καταγραφής σφαλμάτων κατά την "
-#~ "λειτουργεία του συστήματος."
-
-#~ msgid "About"
-#~ msgstr "Σχετικά"
-
-#~ msgid "Current user locale profile details"
-#~ msgstr "Λεπτομέρειες προφίλ τοποθεσίας του τρέχοντος χρήστη"
-
-#~ msgid "Edit current user locale profile details"
-#~ msgstr "Τροποποίηση προφίλ τοποθεσίας του τρέχοντος χρήστη"
-
-#~ msgid "Dashboard"
-#~ msgstr "Πίνακας ελέγχου"
-
-#~ msgid "Date and time"
-#~ msgstr "Ημερομηνία και ώρα"
-
-#~ msgid "Error log entries for: %s"
-#~ msgstr "Καταχωρήσεις σφαλμάτων για: %s"
-
-#~ msgid "Setup items"
-#~ msgstr "Ρυθμίσεις"

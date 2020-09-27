@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Badea Gabriel <gcbadea@gmail.com>, 2013
@@ -10,17 +10,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: 2020-02-29 06:12+0000\n"
-"Last-Translator: Harald Ersch\n"
-"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/ro_RO/)\n"
-"Language: ro_RO\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 06:47+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
-"2:1));\n"
+"Language: ro_RO\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
 #: apps.py:52 events.py:5 links.py:18 links.py:24 permissions.py:5 queues.py:6
 #: search.py:6 search.py:10 settings.py:8
@@ -28,9 +26,8 @@ msgid "OCR"
 msgstr "OCR"
 
 #: apps.py:103
-#| msgid "OCR content"
 msgid "The OCR content."
-msgstr "Conținut OCR"
+msgstr ""
 
 #: apps.py:108
 msgid "A generator returning the document's pages OCR content."
@@ -166,14 +163,12 @@ msgid "Change document type OCR settings"
 msgstr "Modificați setările OCR de tip document"
 
 #: queues.py:10
-#| msgid "Document version OCR"
 msgid "Finish document version OCR"
-msgstr "OCR pe versiunea documentului "
+msgstr ""
 
 #: queues.py:14
-#| msgid "Document version OCR"
 msgid "Document version page OCR"
-msgstr "OCR pe versiunea documentului "
+msgstr ""
 
 #: queues.py:18
 msgid "Document version OCR"
@@ -181,14 +176,11 @@ msgstr "OCR pe versiunea documentului "
 
 #: settings.py:15
 msgid "Full path to the backend to be used to do OCR."
-msgstr ""
-"Calea completă spre backend-ul care trebuie utilizat pentru a face OCR."
+msgstr "Calea completă spre backend-ul care trebuie utilizat pentru a face OCR."
 
 #: settings.py:24
 msgid "Set new document types to perform OCR automatically by default."
-msgstr ""
-"Setați tipuri noi de documente pentru a efectua automat funcția OCR în mod "
-"implicit."
+msgstr "Setați tipuri noi de documente pentru a efectua automat funcția OCR în mod implicit."
 
 #: views.py:35
 msgid "Delete the OCR content of the selected document?"
@@ -247,22 +239,13 @@ msgid ""
 msgstr ""
 
 #: workflow_actions.py:31
-#| msgid "OCR content"
 msgid "Page content"
-msgstr "Conținut OCR"
+msgstr ""
 
 #: workflow_actions.py:35
 msgid "A template that will generate the OCR content to be saved."
 msgstr ""
 
 #: workflow_actions.py:43
-#| msgid "Document page OCR content"
 msgid "Update document page OCR content"
-msgstr "Conținutul OCR al paginii de document"
-
-#~ msgid ""
-#~ "PyOCR is a Python library simplifying the use of OCR tools like Tesseract "
-#~ "or Cuneiform."
-#~ msgstr ""
-#~ "PyOCR este o bibliotecă Python care simplifică utilizarea instrumentelor "
-#~ "OCR cum ar fi Tesseract sau Cuneiform."
+msgstr ""

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2017
@@ -10,15 +10,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: 2020-07-09 04:05+0000\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:133 permissions.py:5 settings.py:10
@@ -182,31 +181,30 @@ msgstr "پیش فرض"
 
 #: settings.py:17
 msgid ""
-"Time to delay background tasks that depend on a database commit to propagate."
-msgstr ""
-"زمان برای به تاخیر انداختن وظایف پس زمینه که به پایگاه داده متعهد به انتشار "
-"است."
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
+msgstr "زمان برای به تاخیر انداختن وظایف پس زمینه که به پایگاه داده متعهد به انتشار است."
 
 #: settings.py:25
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application."
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application."
 msgstr ""
 
 #: settings.py:35
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application."
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application."
 msgstr ""
 
 #: settings.py:44
 msgid ""
-"Name of the view attached to the brand anchor in the main menu. This is also "
-"the view to which users will be redirected after log in."
+"Name of the view attached to the brand anchor in the main menu. This is also"
+" the view to which users will be redirected after log in."
 msgstr ""
 
 #: settings.py:52
@@ -262,9 +260,8 @@ msgid "Make a copy of %(object_name)s \"%(object)s\"?"
 msgstr ""
 
 #: views.py:134
-#| msgid "%(object)s created successfully."
 msgid "Object copied successfully."
-msgstr "%(object)s با موفقیت ایجاد شد"
+msgstr ""
 
 #: views.py:150
 msgid "No setup options available."
@@ -287,102 +284,3 @@ msgstr ""
 #: views.py:175
 msgid "These modules are used to do system maintenance."
 msgstr ""
-
-#~ msgid "Selection"
-#~ msgstr "انتخاب"
-
-#~ msgid "None"
-#~ msgstr "هیچ یک"
-
-#~ msgid "Add"
-#~ msgstr "افزودن"
-
-#~ msgid "Remove"
-#~ msgstr "حذف"
-
-#~ msgid "%(object)s not created, error: %(error)s"
-#~ msgstr "%(object)s ایجاد نشد، خطا: %(error)s"
-
-#~ msgid "%(object)s not deleted, error: %(error)s."
-#~ msgstr "%(object)s حذف نشده است، خطا: %(error)s."
-
-#~ msgid "%(object)s deleted successfully."
-#~ msgstr "%(object)s با موفقیت حذف شد"
-
-#~ msgid "%(object)s not updated, error: %(error)s."
-#~ msgstr "%(object)s به روز نشده، خطا: %(error)s."
-
-#~ msgid "%(object)s updated successfully."
-#~ msgstr "%(object)s با موفقیت به روز شد"
-
-#~ msgid "Errors"
-#~ msgstr "خطاها"
-
-#~ msgid "Object"
-#~ msgstr "شیئ"
-
-#~ msgid "Namespace"
-#~ msgstr "فضای نام"
-
-#~ msgid "Date time"
-#~ msgstr "تاریخ زمان"
-
-#~ msgid "Result"
-#~ msgstr "جواب"
-
-#~ msgid "Error log entry"
-#~ msgstr "ورود به سیستم خطا"
-
-#~ msgid "Error log entries"
-#~ msgstr "ورودی خطا ورودی"
-
-#~ msgid "File"
-#~ msgstr "فایل"
-
-#~ msgid "Filename"
-#~ msgstr "نام فایل"
-
-#~ msgid "Shared uploaded file"
-#~ msgstr "فایل آپلود شده اشتراکی"
-
-#~ msgid "Shared uploaded files"
-#~ msgstr "فایلهای آپلود شده اشتراکی"
-
-#~ msgid "View error log"
-#~ msgstr "مشاهده ورود به سیستم خطا"
-
-#~ msgid "Common periodic"
-#~ msgstr "دوره ای متداول"
-
-#~ msgid "Delete stale uploads"
-#~ msgstr "حذف آپلود های قدیمی"
-
-#~ msgid "Automatically enable logging to all apps."
-#~ msgstr "به طور خودکار ورود به سیستم را به تمام برنامه ها فعال کنید"
-
-#~ msgid "Path to the logfile that will track errors during production."
-#~ msgstr "مسیر فایل logfile که خطاهای تولید را دنبال می کند."
-
-#~ msgid "A storage backend that all workers can use to share files."
-#~ msgstr "محلی که کلیه کاربران جهت به اشتراک گذاری فایل میتوانند استفاه کنند."
-
-#~ msgid "Confirm delete"
-#~ msgstr "تائید حذف"
-
-#~ msgid "Confirm"
-#~ msgstr "تائید"
-
-#~ msgid "Details for: %s"
-#~ msgstr "جزئیات برای : %s"
-
-#~ msgid "Edit: %s"
-#~ msgstr "ویرایش : %s"
-
-#~ msgid "Create"
-#~ msgstr "ایجاد"
-
-#~ msgid "Date and time"
-#~ msgstr "تاریخ و زمان"
-
-#~ msgid "Error log entries for: %s"
-#~ msgstr "ورودی های ورود به سیستم خطا برای: %s"

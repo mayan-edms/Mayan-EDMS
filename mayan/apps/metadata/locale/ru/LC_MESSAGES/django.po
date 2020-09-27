@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # lilo.panic, 2016
@@ -9,18 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: 2020-01-28 07:59+0000\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 08:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:65 apps.py:180 apps.py:185 events.py:5 links.py:46 permissions.py:5
 #: queues.py:7 settings.py:8
@@ -210,10 +207,9 @@ msgstr "Валидатор"
 
 #: models.py:75
 msgid ""
-"The parser will reformat the value entered to conform to the expected format."
-msgstr ""
-"Введённое значение будет переформатировано парсером так, чтобы удовлетворять "
-"требованиям формата."
+"The parser will reformat the value entered to conform to the expected "
+"format."
+msgstr "Введённое значение будет переформатировано парсером так, чтобы удовлетворять требованиям формата."
 
 #: models.py:77 search.py:46
 msgid "Parser"
@@ -347,16 +343,14 @@ msgstr ""
 msgid ""
 "Error adding metadata type \"%(metadata_type)s\" to document: %(document)s; "
 "%(exception)s"
-msgstr ""
-"Ошибка добавления метаданных типа %(metadata_type)s к документу: "
-"%(document)s; %(exception)s"
+msgstr "Ошибка добавления метаданных типа %(metadata_type)s к документу: %(document)s; %(exception)s"
 
 #: views.py:171
 #, python-format
 msgid ""
-"Metadata type: %(metadata_type)s successfully added to document %(document)s."
-msgstr ""
-"Тип метаданных: %(metadata_type)s успешно добавлены к документу %(document)s."
+"Metadata type: %(metadata_type)s successfully added to document "
+"%(document)s."
+msgstr "Тип метаданных: %(metadata_type)s успешно добавлены к документу %(document)s."
 
 #: views.py:181
 #, python-format
@@ -400,8 +394,7 @@ msgstr "Редактировать метаданные документа:%s."
 #: views.py:335
 #, python-format
 msgid "Error editing metadata for document: %(document)s; %(exception)s."
-msgstr ""
-"Ошибка при редактировании метаданных документа: %(document)s; %(exception)s."
+msgstr "Ошибка при редактировании метаданных документа: %(document)s; %(exception)s."
 
 #: views.py:345
 #, python-format
@@ -410,8 +403,9 @@ msgstr "Метаданные для документов %s изменены."
 
 #: views.py:370
 msgid ""
-"Add metadata types this document's type to be able to add them to individual "
-"documents. Once added to individual document, you can then edit their values."
+"Add metadata types this document's type to be able to add them to individual"
+" documents. Once added to individual document, you can then edit their "
+"values."
 msgstr ""
 
 #: views.py:375
@@ -451,18 +445,14 @@ msgstr ""
 msgid ""
 "Successfully remove metadata type \"%(metadata_type)s\" from document: "
 "%(document)s."
-msgstr ""
-"Успешно удалён тип метаданных \"%(metadata_type)s\" из документа "
-"%(document)s."
+msgstr "Успешно удалён тип метаданных \"%(metadata_type)s\" из документа %(document)s."
 
 #: views.py:490
 #, python-format
 msgid ""
 "Error removing metadata type \"%(metadata_type)s\" from document: "
 "%(document)s; %(exception)s"
-msgstr ""
-"Ошибка удаления метаданных типа \"%(metadata_type)s\" от документа: "
-"%(document)s; %(exception)s"
+msgstr "Ошибка удаления метаданных типа \"%(metadata_type)s\" от документа: %(document)s; %(exception)s"
 
 #: views.py:501
 msgid "Create metadata type"
@@ -524,26 +514,19 @@ msgid "Enter document metadata"
 msgstr ""
 
 #: workflow_actions.py:24
-#| msgid "Add metadata types to document"
-#| msgid_plural "Add metadata types to documents"
 msgid "Metadata types to add to the document."
-msgstr "Добавить тип метаданных к документам"
+msgstr ""
 
 #: workflow_actions.py:48
-#| msgid ""
-#| "Error adding metadata type \"%(metadata_type)s\" to document: "
-#| "%(document)s; %(exception)s"
+#, python-format
 msgid ""
 "Unable to add metadata type \"%(metadata_type)s\" from document: "
 "%(document)s. Exception: %(exception)s"
 msgstr ""
-"Ошибка добавления метаданных типа %(metadata_type)s к документу: "
-"%(document)s; %(exception)s"
 
 #: workflow_actions.py:87
-#| msgid "Metadata types"
 msgid "Metadata types to edit."
-msgstr "Типы метаданных"
+msgstr ""
 
 #: workflow_actions.py:95
 msgid ""
@@ -551,30 +534,20 @@ msgid ""
 msgstr ""
 
 #: workflow_actions.py:127
-#| msgid ""
-#| "Error removing metadata type \"%(metadata_type)s\" from document: "
-#| "%(document)s; %(exception)s"
+#, python-format
 msgid ""
 "Unable to edit metadata type \"%(metadata_type)s\" from document: "
 "%(document)s. Document does not have the metadata type to be edit. "
 "Exception: %(exception)s"
 msgstr ""
-"Ошибка удаления метаданных типа \"%(metadata_type)s\" от документа: "
-"%(document)s; %(exception)s"
 
 #: workflow_actions.py:171
-#| msgid "Remove metadata types from the document"
-#| msgid_plural "Remove metadata types from the documents"
 msgid "Metadata types to remove from the document."
-msgstr "Удалить тип метаданных из документов"
+msgstr ""
 
 #: workflow_actions.py:191
-#| msgid ""
-#| "Error removing metadata type \"%(metadata_type)s\" from document: "
-#| "%(document)s; %(exception)s"
+#, python-format
 msgid ""
 "Unable to remove metadata type \"%(metadata_type)s\" from document: "
 "%(document)s. Exception: %(exception)s"
 msgstr ""
-"Ошибка удаления метаданных типа \"%(metadata_type)s\" от документа: "
-"%(document)s; %(exception)s"

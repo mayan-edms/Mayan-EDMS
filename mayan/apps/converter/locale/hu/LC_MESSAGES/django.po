@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # molnars <szabolcs.molnar@gmail.com>, 2017
@@ -9,15 +9,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: 2020-01-31 04:42+0000\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 08:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/hu/)\n"
-"Language: hu\n"
+"Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/language/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:39 events.py:5 permissions.py:5 settings.py:16
@@ -122,7 +121,7 @@ msgstr ""
 
 #: models.py:36
 msgid "Label"
-msgstr ""
+msgstr "Cimke"
 
 #: models.py:40
 msgid ""
@@ -136,7 +135,7 @@ msgstr ""
 
 #: models.py:47
 msgid "File"
-msgstr ""
+msgstr "Állomány"
 
 #: models.py:52
 msgid "Asset"
@@ -195,18 +194,16 @@ msgid "Layer transformations"
 msgstr ""
 
 #: models.py:174
-#| msgid "transformation"
 msgid "Unknown transformation class"
-msgstr "átalakítás"
+msgstr ""
 
 #: permissions.py:8
 msgid "Create new assets"
 msgstr ""
 
 #: permissions.py:11
-#| msgid "Delete"
 msgid "Delete assets"
-msgstr "Törlés"
+msgstr ""
 
 #: permissions.py:14
 msgid "Edit assets"
@@ -360,7 +357,8 @@ msgstr ""
 
 #: views.py:123
 msgid ""
-"Assets are files that can be used in conjuction with certain transformations."
+"Assets are files that can be used in conjuction with certain "
+"transformations."
 msgstr ""
 
 #: views.py:126
@@ -414,30 +412,26 @@ msgstr ""
 
 #: workflow_actions.py:22
 msgid "Pages"
-msgstr ""
+msgstr "Lapok"
 
 #: workflow_actions.py:25
 msgid ""
-"Pages to which the new transformations will be added. Separate by commas and/"
-"or use a dashes for a ranges. Leave blank to select all pages."
+"Pages to which the new transformations will be added. Separate by commas "
+"and/or use a dashes for a ranges. Leave blank to select all pages."
 msgstr ""
 
 #: workflow_actions.py:32
-#| msgid "Transformation"
 msgid "Transformation class"
-msgstr "Átalakítás"
+msgstr ""
 
 #: workflow_actions.py:37
-#| msgid "transformation"
 msgid "Type of transformation to add."
-msgstr "átalakítás"
+msgstr ""
 
 #: workflow_actions.py:42
-#| msgid "Transformation"
 msgid "Transformation arguments"
-msgstr "Átalakítás"
+msgstr ""
 
 #: workflow_actions.py:51
-#| msgid "transformation"
 msgid "Add transformation"
-msgstr "átalakítás"
+msgstr ""

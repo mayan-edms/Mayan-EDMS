@@ -2,19 +2,27 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
+# Translators:
+# Roberto Rosario, 2020
+# Mathias Behrle <mathiasb@m9s.biz>, 2020
+# Tobias Paepke <tobias.paepke@paepke.net>, 2020
+# Felix <felix.com@gmx.com>, 2020
+# Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2020
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 06:46+0000\n"
+"Last-Translator: Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2020\n"
+"Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:15 permissions.py:5 settings.py:10
 msgid "Logging"
@@ -22,7 +30,7 @@ msgstr ""
 
 #: links.py:12
 msgid "Errors"
-msgstr ""
+msgstr "Fehler"
 
 #: links.py:18
 msgid "Clear errors"
@@ -30,7 +38,7 @@ msgstr ""
 
 #: models.py:10 models.py:38
 msgid "Internal name"
-msgstr ""
+msgstr "Interner Name"
 
 #: models.py:15 models.py:35
 msgid "Error log"
@@ -54,11 +62,11 @@ msgstr ""
 
 #: models.py:63
 msgid "Date and time"
-msgstr ""
+msgstr "Datum und Uhrzeit"
 
 #: models.py:65
 msgid "Text"
-msgstr ""
+msgstr "Text"
 
 #: models.py:70
 msgid "Error log partition entry"
@@ -70,11 +78,11 @@ msgstr ""
 
 #: permissions.py:8
 msgid "View error log"
-msgstr ""
+msgstr "Fehlerprotokoll anzeigen"
 
 #: settings.py:14
 msgid "Automatically enable logging to all apps."
-msgstr ""
+msgstr "Protokollierung für alle Apps automatisch einschalten."
 
 #: settings.py:20
 msgid ""
@@ -88,27 +96,31 @@ msgstr ""
 #: settings.py:32
 msgid "Path to the logfile that will track errors during production."
 msgstr ""
+"Der Pfad zur Protokolldatei, in der Fehler im Produktivbetrieb aufgezeichnet"
+" werden."
 
 #: views.py:17
 #, python-format
 msgid "Clear error log entries for: %s"
-msgstr ""
+msgstr "Alle Fehlerlogeinträge für: %s löschen"
 
 #: views.py:23
 msgid "Object error log cleared successfully"
-msgstr ""
+msgstr "Objektfehlerlog erfolgreich gelöscht"
 
 #: views.py:36
 msgid ""
 "This view displays the error log of different object. An empty list is a "
 "good thing."
 msgstr ""
+"Diese Ansicht zeigt das Fehlerprotokoll verschiedener Objekte an. Eine leere"
+" Liste ist eine gute Sache."
 
 #: views.py:40
 msgid "There are no error log entries"
-msgstr ""
+msgstr "Keine Fehlerprotkolleinträge vorhanden"
 
 #: views.py:43
 #, python-format
 msgid "Error log entries for: %s"
-msgstr ""
+msgstr "Fehlerlogeinträge für: %s"

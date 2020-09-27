@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Mohammed ALDOUB <voulnet@gmail.com>, 2013
@@ -9,17 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: 2020-01-28 07:59+0000\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 08:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/"
-"ar/)\n"
-"Language: ar\n"
+"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: apps.py:65 apps.py:180 apps.py:185 events.py:5 links.py:46 permissions.py:5
 #: queues.py:7 settings.py:8
@@ -209,7 +207,8 @@ msgstr ""
 
 #: models.py:75
 msgid ""
-"The parser will reformat the value entered to conform to the expected format."
+"The parser will reformat the value entered to conform to the expected "
+"format."
 msgstr ""
 
 #: models.py:77 search.py:46
@@ -351,16 +350,15 @@ msgstr ""
 #: views.py:171
 #, python-format
 msgid ""
-"Metadata type: %(metadata_type)s successfully added to document %(document)s."
-msgstr ""
-"تم اضافة نوع البيانات الوصفية %(metadata_type)s بنجاح للوثيقة %(document)s ."
+"Metadata type: %(metadata_type)s successfully added to document "
+"%(document)s."
+msgstr "تم اضافة نوع البيانات الوصفية %(metadata_type)s بنجاح للوثيقة %(document)s ."
 
 #: views.py:181
 #, python-format
 msgid ""
 "Metadata type: %(metadata_type)s already present in document %(document)s."
-msgstr ""
-"نوع البيانات الوصفية %(metadata_type)s موجود مسبقا للوثيقة %(document)s ."
+msgstr "نوع البيانات الوصفية %(metadata_type)s موجود مسبقا للوثيقة %(document)s ."
 
 #: views.py:198
 #, python-format
@@ -409,8 +407,9 @@ msgstr "تم تعديل البيانات الوصفية للوثيقة %s بنج
 
 #: views.py:370
 msgid ""
-"Add metadata types this document's type to be able to add them to individual "
-"documents. Once added to individual document, you can then edit their values."
+"Add metadata types this document's type to be able to add them to individual"
+" documents. Once added to individual document, you can then edit their "
+"values."
 msgstr ""
 
 #: views.py:375
@@ -521,24 +520,19 @@ msgid "Enter document metadata"
 msgstr ""
 
 #: workflow_actions.py:24
-#| msgid "Add metadata to a document"
 msgid "Metadata types to add to the document."
-msgstr "إضافة بيانات وصفية إلى وثيقة"
+msgstr ""
 
 #: workflow_actions.py:48
-#| msgid ""
-#| "Metadata type: %(metadata_type)s successfully added to document "
-#| "%(document)s."
+#, python-format
 msgid ""
 "Unable to add metadata type \"%(metadata_type)s\" from document: "
 "%(document)s. Exception: %(exception)s"
 msgstr ""
-"تم اضافة نوع البيانات الوصفية %(metadata_type)s بنجاح للوثيقة %(document)s ."
 
 #: workflow_actions.py:87
-#| msgid "Metadata types"
 msgid "Metadata types to edit."
-msgstr "أنواع البيانات الوصفية"
+msgstr ""
 
 #: workflow_actions.py:95
 msgid ""
@@ -546,27 +540,20 @@ msgid ""
 msgstr ""
 
 #: workflow_actions.py:127
-#| msgid ""
-#| "Metadata type: %(metadata_type)s successfully added to document "
-#| "%(document)s."
+#, python-format
 msgid ""
 "Unable to edit metadata type \"%(metadata_type)s\" from document: "
 "%(document)s. Document does not have the metadata type to be edit. "
 "Exception: %(exception)s"
 msgstr ""
-"تم اضافة نوع البيانات الوصفية %(metadata_type)s بنجاح للوثيقة %(document)s ."
 
 #: workflow_actions.py:171
-#| msgid "View metadata from a document"
 msgid "Metadata types to remove from the document."
-msgstr "عرض البيانات الوصفية من وثيقة"
+msgstr ""
 
 #: workflow_actions.py:191
-#| msgid ""
-#| "Metadata type: %(metadata_type)s successfully added to document "
-#| "%(document)s."
+#, python-format
 msgid ""
 "Unable to remove metadata type \"%(metadata_type)s\" from document: "
 "%(document)s. Exception: %(exception)s"
 msgstr ""
-"تم اضافة نوع البيانات الوصفية %(metadata_type)s بنجاح للوثيقة %(document)s ."

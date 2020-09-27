@@ -2,22 +2,22 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
-# Roberto Rosario, 2019
-#
+# Roberto Rosario, 2020
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
-"Last-Translator: Roberto Rosario, 2019\n"
+"Last-Translator: Roberto Rosario, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
-"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin.py:13
@@ -59,7 +59,8 @@ msgstr "Herramienta EXIF"
 #: events.py:10
 msgid "Document version submitted for file metadata processing"
 msgstr ""
-"Versión del documento enviado para el procesamiento de metadatos del archivo."
+"Versión del documento enviado para el procesamiento de metadatos del "
+"archivo."
 
 #: events.py:14
 msgid "Document version file metadata processing finished"
@@ -175,7 +176,8 @@ msgstr "Entradas de metadato de archivos"
 
 #: permissions.py:8
 msgid "Change document type file metadata settings"
-msgstr "Cambiar la configuración de metadatos del archivo de tipo de documento"
+msgstr ""
+"Cambiar la configuración de metadatos del archivo de tipo de documento"
 
 #: permissions.py:13
 msgid "Submit document for file metadata processing"
@@ -203,8 +205,8 @@ msgstr "Argumentos para pasar a los controladores."
 
 #: views.py:42
 msgid ""
-"File metadata are the attributes of the document's file. They can range from "
-"camera information used to take a photo to the author that created a file. "
+"File metadata are the attributes of the document's file. They can range from"
+" camera information used to take a photo to the author that created a file. "
 "File metadata are set when the document's file was first created. File "
 "metadata attributes reside in the file itself. They are not the same as the "
 "document metadata, which are user defined and reside in the database."
@@ -218,9 +220,8 @@ msgstr ""
 "la base de datos."
 
 #: views.py:50
-#| msgid "No file metadata available."
 msgid "No file metadata available"
-msgstr "No hay metadatos de archivo disponibles."
+msgstr "No hay metadatos de archivo disponibles"
 
 #: views.py:53
 #, python-format
@@ -233,11 +234,13 @@ msgid ""
 "the driver does not support any metadata field for the file type of this "
 "document."
 msgstr ""
+"Esto podría significar que la detección de metadatos del archivo no se ha "
+"completado o que el controlador no admite ningún campo de metadatos para el "
+"tipo de archivo de este documento."
 
 #: views.py:85
-#| msgid "No file metadata available."
 msgid "No file metadata available for this driver"
-msgstr "No hay metadatos de archivo disponibles."
+msgstr "No hay metadatos de archivo disponibles para este controlador"
 
 #: views.py:89
 #, python-format
@@ -264,8 +267,8 @@ msgstr ""
 #: views.py:149
 msgid "Submit all documents of a type for file metadata processing."
 msgstr ""
-"Enviar todos los documentos de un tipo para el procesamiento de metadatos de "
-"archivos."
+"Enviar todos los documentos de un tipo para el procesamiento de metadatos de"
+" archivos."
 
 #: views.py:171
 #, python-format

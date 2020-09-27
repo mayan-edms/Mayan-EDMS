@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # lilo.panic, 2016
@@ -9,18 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: 2020-01-31 04:42+0000\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 08:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:39 events.py:5 permissions.py:5 settings.py:16
 msgid "Converter"
@@ -91,9 +88,8 @@ msgid ""
 msgstr ""
 
 #: layers.py:13
-#| msgid "Transformations"
 msgid "Decorations"
-msgstr "Преобразования"
+msgstr ""
 
 #: layers.py:24
 msgid "Saved transformations"
@@ -125,7 +121,7 @@ msgstr ""
 
 #: models.py:36
 msgid "Label"
-msgstr ""
+msgstr "Ярлык"
 
 #: models.py:40
 msgid ""
@@ -135,11 +131,11 @@ msgstr ""
 
 #: models.py:43
 msgid "Internal name"
-msgstr ""
+msgstr "Внутреннее имя"
 
 #: models.py:47
 msgid "File"
-msgstr ""
+msgstr "Файл"
 
 #: models.py:52
 msgid "Asset"
@@ -177,17 +173,13 @@ msgstr ""
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
-msgstr ""
-"Порядок выполнения преобразований. Если оставить неизменным, будет "
-"установлен флаг автоматического выставления порядка."
+msgstr "Порядок выполнения преобразований. Если оставить неизменным, будет установлен флаг автоматического выставления порядка."
 
 #: models.py:156 workflow_actions.py:45
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
-msgstr ""
-"Введите аргументы для преобразования в формате YAML-словаря, например: "
-"{\"degrees\": 180}"
+msgstr "Введите аргументы для преобразования в формате YAML-словаря, например: {\"degrees\": 180}"
 
 #: models.py:158
 msgid "Arguments"
@@ -202,28 +194,24 @@ msgid "Layer transformations"
 msgstr ""
 
 #: models.py:174
-#| msgid "Create new transformations"
 msgid "Unknown transformation class"
-msgstr "Создать новые преобразования"
+msgstr ""
 
 #: permissions.py:8
-#| msgid "Create new transformations"
 msgid "Create new assets"
-msgstr "Создать новые преобразования"
+msgstr ""
 
 #: permissions.py:11
-#| msgid "Delete"
 msgid "Delete assets"
-msgstr "Удалить"
+msgstr ""
 
 #: permissions.py:14
 msgid "Edit assets"
 msgstr ""
 
 #: permissions.py:17
-#| msgid "View existing transformations"
 msgid "View existing assets"
-msgstr "Просмотр существующих преобразований"
+msgstr ""
 
 #: permissions.py:21
 msgid "Create new transformations"
@@ -371,7 +359,8 @@ msgstr ""
 
 #: views.py:123
 msgid ""
-"Assets are files that can be used in conjuction with certain transformations."
+"Assets are files that can be used in conjuction with certain "
+"transformations."
 msgstr ""
 
 #: views.py:126
@@ -398,9 +387,7 @@ msgstr "Удалить преобразование \"%(transformation)s\" дл�
 #: views.py:273
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
-msgstr ""
-"Изменить преобразование \"%(transformation)s\" for: "
-"%(content_object)sjavascript:;"
+msgstr "Изменить преобразование \"%(transformation)s\" for: %(content_object)sjavascript:;"
 
 #: views.py:327
 #, python-format
@@ -427,33 +414,26 @@ msgstr ""
 
 #: workflow_actions.py:22
 msgid "Pages"
-msgstr ""
+msgstr "Страницы"
 
 #: workflow_actions.py:25
 msgid ""
-"Pages to which the new transformations will be added. Separate by commas and/"
-"or use a dashes for a ranges. Leave blank to select all pages."
+"Pages to which the new transformations will be added. Separate by commas "
+"and/or use a dashes for a ranges. Leave blank to select all pages."
 msgstr ""
 
 #: workflow_actions.py:32
-#| msgid "Transformations"
 msgid "Transformation class"
-msgstr "Преобразования"
+msgstr ""
 
 #: workflow_actions.py:37
-#| msgid "transformation"
 msgid "Type of transformation to add."
-msgstr "преобразование"
+msgstr ""
 
 #: workflow_actions.py:42
-#| msgid "Transformations"
 msgid "Transformation arguments"
-msgstr "Преобразования"
+msgstr ""
 
 #: workflow_actions.py:51
-#| msgid "transformation"
 msgid "Add transformation"
-msgstr "преобразование"
-
-#~ msgid "Enter a valid YAML value."
-#~ msgstr "Введите допустимое YAML-значение."
+msgstr ""

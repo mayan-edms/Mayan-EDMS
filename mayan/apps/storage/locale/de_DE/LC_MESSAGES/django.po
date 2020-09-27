@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015
@@ -10,15 +10,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: 2020-08-17 15:33+0000\n"
-"Last-Translator: Marvin Haschker <marvin@haschker.me>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 06:47+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:11 settings.py:9
@@ -30,9 +29,7 @@ msgstr "Dateispeicher"
 msgid ""
 "Unable to initialize storage: %(name)s. Check the storage backend dotted "
 "path and arguments."
-msgstr ""
-"Dateispeicher kann nicht initialisiert werden: %(name)s. Überprüfen Sie den "
-"Pfad und die Argumente für den Speicher-Backend."
+msgstr "Dateispeicher kann nicht initialisiert werden: %(name)s. Überprüfen Sie den Pfad und die Argumente für den Speicher-Backend."
 
 #: management/commands/storage_process.py:13
 msgid "Name of the app to process."
@@ -42,9 +39,7 @@ msgstr "Name der zu verarbeitenden App."
 msgid ""
 "Path of the database (.dbm) file that will be created/read to keep track of "
 "items processed."
-msgstr ""
-"Pfad der Datenbankdatei (.dbm), die erstellt / gelesen wird, um die "
-"verarbeiteten Elemente zu verfolgen."
+msgstr "Pfad der Datenbankdatei (.dbm), die erstellt / gelesen wird, um die verarbeiteten Elemente zu verfolgen."
 
 #: management/commands/storage_process.py:26
 msgid "Process a specific model."
@@ -53,9 +48,7 @@ msgstr "Ein bestimmtes Modell ausführen."
 #: management/commands/storage_process.py:32
 msgid ""
 "Process the files in reverse to undo the storage pipeline transformations."
-msgstr ""
-"Die Dateien in umgekehrter Reihenfolge um die Dateispeicher-Pipeline-"
-"Transformation rückgängig zu machen."
+msgstr "Die Dateien in umgekehrter Reihenfolge um die Dateispeicher-Pipeline-Transformation rückgängig zu machen."
 
 #: management/commands/storage_process.py:38
 msgid "Name of the storage to process."
@@ -63,47 +56,44 @@ msgstr "Name des zu verarbeitenden Dateispeichers."
 
 #: models.py:23
 msgid "File"
-msgstr ""
+msgstr "Datei"
 
 #: models.py:25
 msgid "Filename"
-msgstr ""
+msgstr "Dateiname"
 
 #: models.py:27
 msgid "Date time"
-msgstr ""
+msgstr "Datum & Zeit"
 
 #: models.py:31
 msgid "Shared uploaded file"
-msgstr ""
+msgstr "Geteilte hochgeladene Datei"
 
 #: models.py:32 storages.py:19
 msgid "Shared uploaded files"
-msgstr ""
+msgstr "Geteilte hochgeladene Dateien"
 
 #: queues.py:11
-#| msgid "Storage"
 msgid "Storage periodic"
-msgstr "Dateispeicher"
+msgstr ""
 
 #: queues.py:16
 msgid "Delete stale uploads"
-msgstr ""
+msgstr "Veraltete Uploads löschen"
 
 #: settings.py:14
 msgid "A storage backend that all workers can use to share files."
-msgstr ""
+msgstr "Datenbackend, das alle Worker benutzen können, um Dateien zu teilen."
 
 #: settings.py:23
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
-msgstr ""
-"Temporäres Verzeichnis zum systemweiten Speichern von Miniaturbildern, "
-"Vorschauen und temporären Dateien. "
+msgstr "Temporäres Verzeichnis zum systemweiten Speichern von Miniaturbildern, Vorschauen und temporären Dateien. "
 
 #: storages.py:12
 msgid ""
-"Unable to initialize the shared uploaded file storage. Check the settings {} "
-"and {} for formatting errors."
-msgstr ""
+"Unable to initialize the shared uploaded file storage. Check the settings {}"
+" and {} for formatting errors."
+msgstr "Der gemeinsam genutzte Dateispeicher für hochgeladene Dateien kann nicht initialisiert werden. Überprüfen Sie die Einstellungen {} und {} auf Formatierungsfehler."

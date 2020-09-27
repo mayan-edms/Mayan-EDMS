@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Māris Teivāns <maris.teivans@gmail.com>, 2019
@@ -9,17 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: 2020-09-09 09:25+0000\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/lv/)\n"
-"Language: lv\n"
+"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
-"2);\n"
+"Language: lv\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
 #: admin.py:22
 msgid "None"
@@ -135,7 +133,8 @@ msgid "Slug"
 msgstr "Lode"
 
 #: models.py:44
-msgid "Causes this index to be visible and updated when document data changes."
+msgid ""
+"Causes this index to be visible and updated when document data changes."
 msgstr "Indekss ir redzams un atjaunināts, kad mainās dokumentu dati."
 
 #: models.py:47 models.py:230
@@ -150,9 +149,7 @@ msgstr "Indekss"
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
-msgstr ""
-"Ievadiet veidni, kas jāpiešķir. Izmantojiet Django noklusējuma veidnes "
-"valodu (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
+msgstr "Ievadiet veidni, kas jāpiešķir. Izmantojiet Django noklusējuma veidnes valodu (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 
 #: models.py:222
 msgid "Indexing expression"
@@ -164,11 +161,9 @@ msgstr "Šāda mezgls ir redzams un atjaunināts, kad mainās dokumentu dati."
 
 #: models.py:235
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
-msgstr ""
-"Atzīmējiet šo opciju, lai šis mezgls darbotos kā konteiners dokumentiem un "
-"nevis kā vecāks turpmākajiem mezgliem."
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
+msgstr "Atzīmējiet šo opciju, lai šis mezgls darbotos kā konteiners dokumentiem un nevis kā vecāks turpmākajiem mezgliem."
 
 #: models.py:238
 msgid "Link documents"
@@ -191,9 +186,7 @@ msgstr "Sakne"
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
-msgstr ""
-"Kļūdas indeksēšanas dokuments: %(document)s; izteiksme: %(expression)s; "
-"%(exception)s"
+msgstr "Kļūdas indeksēšanas dokuments: %(document)s; izteiksme: %(expression)s; %(exception)s"
 
 #: models.py:346
 msgid "Index instance"
@@ -313,9 +306,9 @@ msgstr ""
 
 #: settings.py:14
 msgid ""
-"Amount of time in seconds, a failed indexing task will wait before retrying. "
-"Lower values will increase the speed at which documents are indexed but will "
-"cause a higher count of failed/retried tasks in the queue."
+"Amount of time in seconds, a failed indexing task will wait before retrying."
+" Lower values will increase the speed at which documents are indexed but "
+"will cause a higher count of failed/retried tasks in the queue."
 msgstr ""
 
 #: views.py:45
@@ -331,10 +324,7 @@ msgid ""
 "Documents of this type will appear in the indexes linked when these are "
 "updated. Events of the documents of this type will trigger updates in the "
 "linked indexes."
-msgstr ""
-"Šāda veida dokumenti parādīsies indeksos, kas saistīti, kad tie tiek "
-"atjaunināti. Šāda veida dokumentu notikumi izraisīs saistīto indeksu "
-"atjauninājumus."
+msgstr "Šāda veida dokumenti parādīsies indeksos, kas saistīti, kad tie tiek atjaunināti. Šāda veida dokumentu notikumi izraisīs saistīto indeksu atjauninājumus."
 
 #: views.py:80
 #, python-format
@@ -354,13 +344,9 @@ msgstr "Rediģēt indeksu: %s"
 #: views.py:144
 msgid ""
 "Indexes group document automatically into levels. Indexe are defined using "
-"template whose markers are replaced with direct properties of documents like "
-"label or description, or that of extended properties like metadata."
-msgstr ""
-"Indeksē grupas dokumentu automātiski līmeņos. Indexe tiek definēti, "
-"izmantojot veidni, kuras marķieri tiek aizstāti ar tiešām dokumentu "
-"īpašībām, piemēram, uzlīmi vai aprakstu, vai paplašinātām īpašībām, "
-"piemēram, metadatiem."
+"template whose markers are replaced with direct properties of documents like"
+" label or description, or that of extended properties like metadata."
+msgstr "Indeksē grupas dokumentu automātiski līmeņos. Indexe tiek definēti, izmantojot veidni, kuras marķieri tiek aizstāti ar tiešām dokumentu īpašībām, piemēram, uzlīmi vai aprakstu, vai paplašinātām īpašībām, piemēram, metadatiem."
 
 #: views.py:149
 msgid "There are no indexes."
@@ -388,9 +374,7 @@ msgid ""
 "Only the documents of the types selected will be shown in the index when "
 "built. Only the events of the documents of the types select will trigger "
 "updates in the index."
-msgstr ""
-"Kad būvēts, indeksā tiks parādīti tikai atlasīto tipu dokumenti. Indeksā "
-"tiks atjaunināti tikai atlasīto tipu dokumentu notikumi."
+msgstr "Kad būvēts, indeksā tiks parādīti tikai atlasīto tipu dokumenti. Indeksā tiks atjaunināti tikai atlasīto tipu dokumentu notikumi."
 
 #: views.py:209
 #, python-format
@@ -421,9 +405,7 @@ msgstr "Rediģējiet indeksa veidnes mezglu: %s?"
 msgid ""
 "This could mean that no index templates have been created or that there "
 "index templates but they are no properly defined."
-msgstr ""
-"Tas varētu nozīmēt, ka nav izveidotas nevienas indeksa veidnes vai ka "
-"indeksu veidnes, bet tās nav pareizi definētas."
+msgstr "Tas varētu nozīmēt, ka nav izveidotas nevienas indeksa veidnes vai ka indeksu veidnes, bet tās nav pareizi definētas."
 
 #: views.py:332
 msgid "There are no index instances available."
@@ -443,9 +425,7 @@ msgstr "Indeksa saturs: %s"
 msgid ""
 "Assign the document type of this document to an index to have it appear in "
 "instances of those indexes organization units. "
-msgstr ""
-"Piešķiriet šī dokumenta dokumenta tipu indeksam, lai tas parādītos šo "
-"indeksu organizācijas vienību gadījumos."
+msgstr "Piešķiriet šī dokumenta dokumenta tipu indeksam, lai tas parādītos šo indeksu organizācijas vienību gadījumos."
 
 #: views.py:430
 msgid "This document is not in any index"

@@ -2,19 +2,29 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
+# Translators:
+# Roberto Rosario, 2020
+# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2020
+# 0041b687dd284925c1885ba94464aacd_fde037b <fc746b00d74cefecce9698255909a24f_28512>, 2020
+# Olivier W, 2020
+# Thierry Schott <DarkDare@users.noreply.github.com>, 2020
+# Frédéric Escudero <frederic.escudero@gmail.com>, 2020
+# Yves Dubois <ydubois@gmail.com>, 2020
+# Frédéric Sheedy <sheedf@gmail.com>, 2020
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 06:46+0000\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2020\n"
+"Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:15 permissions.py:5 settings.py:10
@@ -23,7 +33,7 @@ msgstr ""
 
 #: links.py:12
 msgid "Errors"
-msgstr ""
+msgstr "Erreurs"
 
 #: links.py:18
 msgid "Clear errors"
@@ -31,7 +41,7 @@ msgstr ""
 
 #: models.py:10 models.py:38
 msgid "Internal name"
-msgstr ""
+msgstr "Nom interne"
 
 #: models.py:15 models.py:35
 msgid "Error log"
@@ -55,11 +65,11 @@ msgstr ""
 
 #: models.py:63
 msgid "Date and time"
-msgstr ""
+msgstr "Date et heure"
 
 #: models.py:65
 msgid "Text"
-msgstr ""
+msgstr "Texte"
 
 #: models.py:70
 msgid "Error log partition entry"
@@ -71,11 +81,11 @@ msgstr ""
 
 #: permissions.py:8
 msgid "View error log"
-msgstr ""
+msgstr "Afficher le journal des erreurs"
 
 #: settings.py:14
 msgid "Automatically enable logging to all apps."
-msgstr ""
+msgstr "Activation automatique de la trace pour toutes les applications."
 
 #: settings.py:20
 msgid ""
@@ -89,27 +99,32 @@ msgstr ""
 #: settings.py:32
 msgid "Path to the logfile that will track errors during production."
 msgstr ""
+"Chemin d'accès au fichier journal qui enregistrera les erreurs pendant la "
+"production."
 
 #: views.py:17
 #, python-format
 msgid "Clear error log entries for: %s"
-msgstr ""
+msgstr "Effacer les entrées du journal des erreurs pour : %s"
 
 #: views.py:23
 msgid "Object error log cleared successfully"
 msgstr ""
+"Les entrées concernées du journal des erreurs ont été effacées avec succès"
 
 #: views.py:36
 msgid ""
 "This view displays the error log of different object. An empty list is a "
 "good thing."
 msgstr ""
+"Cette page affiche le journal des erreurs de différents objets. Une liste "
+"vide est une bonne chose."
 
 #: views.py:40
 msgid "There are no error log entries"
-msgstr ""
+msgstr "Il n'y a pas d'entrées dans le journal des erreurs"
 
 #: views.py:43
 #, python-format
 msgid "Error log entries for: %s"
-msgstr ""
+msgstr "Entrées du journal des erreurs pour : %s"

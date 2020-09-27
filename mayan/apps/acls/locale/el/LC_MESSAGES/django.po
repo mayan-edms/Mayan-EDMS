@@ -1,22 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
 "PO-Revision-Date: 2020-03-28 07:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/"
-"el/)\n"
-"Language: el\n"
+"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:23 classes.py:142 links.py:26
@@ -179,10 +178,9 @@ msgid "Object ID"
 msgstr "Αναγνωριστικό αντικειμένου"
 
 #: workflow_actions.py:35
-msgid "Numeric identifier of the object for which the access will be modified."
-msgstr ""
-"Αριθμητικό αναγνωριστικό του αντικειμένου για το οποίο η πρόσβαση θα "
-"τροποποιηθεί."
+msgid ""
+"Numeric identifier of the object for which the access will be modified."
+msgstr "Αριθμητικό αναγνωριστικό του αντικειμένου για το οποίο η πρόσβαση θα τροποποιηθεί."
 
 #: workflow_actions.py:40 workflow_actions.py:155
 msgid "Roles"
@@ -195,9 +193,7 @@ msgstr "Ρόλοι των οποιων η πρόσβαση θα τροποποι
 #: workflow_actions.py:49 workflow_actions.py:164
 msgid ""
 "Permissions to grant/revoke to/from the role for the object selected above."
-msgstr ""
-"Δικαιώματα προς χορήγηση/ανάληση προς/από τον ρόλο για το ανωτέρω επιλεγμένο "
-"αντικείμενο."
+msgstr "Δικαιώματα προς χορήγηση/ανάληση προς/από τον ρόλο για το ανωτέρω επιλεγμένο αντικείμενο."
 
 #: workflow_actions.py:57
 msgid "Grant object access"

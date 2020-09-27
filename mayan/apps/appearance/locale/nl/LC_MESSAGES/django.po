@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # bwakkie <bwakkie@gmail.com>, 2020
@@ -14,18 +14,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: 2020-09-06 08:32+0000\n"
-"Last-Translator: bwakkie <bwakkie@gmail.com>\n"
-"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/"
-"nl/)\n"
-"Language: nl\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 08:36+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:59 events.py:5 settings.py:7
+#: apps.py:59 events.py:5 permissions.py:5 settings.py:7
 msgid "Appearance"
 msgstr "Uiterlijk"
 
@@ -99,11 +98,11 @@ msgstr ""
 
 #: links.py:33
 msgid "Delete"
-msgstr ""
+msgstr "Verwijderen"
 
 #: links.py:39
 msgid "Edit"
-msgstr ""
+msgstr "Bewerken"
 
 #: links.py:43 links.py:47 models.py:25 views.py:111
 msgid "Themes"
@@ -115,7 +114,7 @@ msgstr ""
 
 #: models.py:13
 msgid "Label"
-msgstr ""
+msgstr "Label"
 
 #: models.py:17
 msgid ""
@@ -133,7 +132,7 @@ msgstr ""
 
 #: models.py:56
 msgid "User"
-msgstr ""
+msgstr "Gebruiker"
 
 #: models.py:64
 msgid "User theme setting"
@@ -142,11 +141,6 @@ msgstr ""
 #: models.py:65
 msgid "User theme settings"
 msgstr ""
-
-#: permissions.py:5
-#| msgid "Appearance"
-msgid "Apparance"
-msgstr "Uiterlijk"
 
 #: permissions.py:8
 msgid "Create new themes"
@@ -172,10 +166,7 @@ msgstr "Mamximum aantal tekens dat in de titel wordt weergegeven."
 msgid ""
 "Position where the system message will be displayed. Options are: top-left, "
 "top-center, top-right, bottom-left, bottom-center, bottom-right."
-msgstr ""
-"Positie waar systeemberichten worden weergegeven.\n"
-"Opties zijn: links-boven, rechts-boven, links-onder, midden-onder, rechts-"
-"onder."
+msgstr "Positie waar systeemberichten worden weergegeven.\nOpties zijn: links-boven, rechts-boven, links-onder, midden-onder, rechts-onder."
 
 #: templates/403.html:5 templates/403.html:30
 msgid "Insufficient permission"
@@ -209,11 +200,10 @@ msgstr "De locatie is juist, maar het onderdeel bestaat niet meer."
 msgid ""
 "The location is be correct, but your account does not have the required "
 "permission to access it."
-msgstr ""
-"De locatie is juist, maar uw account mist de benodigde permissies om het te "
-"benaderen."
+msgstr "De locatie is juist, maar uw account mist de benodigde permissies om het te benaderen."
 
-#: templates/500.html:5 templates/500.html:30 templates/appearance/root.html:58
+#: templates/500.html:5 templates/500.html:30
+#: templates/appearance/root.html:58
 msgid "Server error"
 msgstr "Server fout"
 
@@ -238,12 +228,8 @@ msgid "Contact your system administrator."
 msgstr "Neem contact op met uw systeembeheerder."
 
 #: templates/500.html:47
-msgid ""
-"Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL"
-"\"."
-msgstr ""
-"Bekijk de logs voor berichten met de labels \"ERROR\", \"CRITICAL\" of "
-"\"FATAL\"."
+msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
+msgstr "Bekijk de logs voor berichten met de labels \"ERROR\", \"CRITICAL\" of \"FATAL\"."
 
 #: templates/500.html:48
 #, python-format
@@ -260,9 +246,7 @@ msgid ""
 "\n"
 "                    %(setting_project_title)s is based on %(project_title)s\n"
 "                "
-msgstr ""
-"\n"
-"%(setting_project_title)s is gebaseerd op %(project_title)s"
+msgstr "\n%(setting_project_title)s is gebaseerd op %(project_title)s"
 
 #: templates/appearance/about.html:78
 msgid "Version"
@@ -281,102 +265,57 @@ msgstr "Uitgegeven onder de licentie:"
 #, python-format
 msgid ""
 "\n"
-"                %(project_title)s is a free and open-source software brought "
-"to you with <i class=\"fa fa-heart text-danger\" style=\"transform: "
-"rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
+"                %(project_title)s is a free and open-source software brought to you with <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
 "            "
-msgstr ""
-"\n"
-"%(project_title)s is gratis en open-source software die u wordt aangeboden "
-"<i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></"
-"i> door Roberto Rosario en medewerkers."
+msgstr "\n%(project_title)s is gratis en open-source software die u wordt aangeboden <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> door Roberto Rosario en medewerkers."
 
 #: templates/appearance/about.html:105
 #, python-format
 msgid ""
 "\n"
-"                It takes great effort to make %(project_title)s as feature-"
-"rich as it is.\n"
+"                It takes great effort to make %(project_title)s as feature-rich as it is.\n"
 "            "
-msgstr ""
-"\n"
-"Het kost veel moeite om %(project_title)s zo rijk aan functies te maken als "
-"het is."
+msgstr "\nHet kost veel moeite om %(project_title)s zo rijk aan functies te maken als het is."
 
 #: templates/appearance/about.html:111
 #, python-format
 msgid ""
 "\n"
-"                If you use %(project_title)s please <a class=\"new_window\" "
-"href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-"
-"xclick&hosted_button_id=3PXN336XFXQNN\">make a donation "
-"%(icon_social_paypal)s</a>\n"
+"                If you use %(project_title)s please <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">make a donation %(icon_social_paypal)s</a>\n"
 "            "
-msgstr ""
-"\n"
-"Als je %(project_title)s gebruikt overweeg <a class=\"new_window\" href="
-"\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-"
-"xclick&hosted_button_id=3PXN336XFXQNN\">dan een donatie "
-"%(icon_social_paypal)s</a>"
+msgstr "\nAls je %(project_title)s gebruikt overweeg <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">dan een donatie %(icon_social_paypal)s</a>"
 
 #: templates/appearance/about.html:117
 #, python-format
 msgid ""
 "\n"
-"                The complete list of changes is available via the <a class="
-"\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html"
-"\">Release notes %(icon_documentation)s</a> or the short version <a class="
-"\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/"
-"HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
+"                The complete list of changes is available via the <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> or the short version <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
 "            "
-msgstr ""
-"\n"
-"De complete lijst met aanpassingen is beschikbaar via de <a class="
-"\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html"
-"\">Release notes %(icon_documentation)s</a> of de verkorte versie <a class="
-"\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/"
-"HISTORY.rst\">Changelog %(icon_documentation)s</a>."
+msgstr "\nDe complete lijst met aanpassingen is beschikbaar via de <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> of de verkorte versie <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a>."
 
 #: templates/appearance/about.html:123
 #, python-format
 msgid ""
 "\n"
-"                For questions check the <a class=\"new_window\" href="
-"\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
+"                For questions check the <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
 "            "
-msgstr ""
-"\n"
-"Voor vragen bekijk de  <a class=\"new_window\" href=\"https://docs.mayan-"
-"edms.com\">Documentatie %(icon_documentation)s</a>."
+msgstr "\nVoor vragen bekijk de  <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentatie %(icon_documentation)s</a>."
 
 #: templates/appearance/about.html:129
 #, python-format
 msgid ""
 "\n"
-"                If you found a bug or have a feature idea, visit the <a "
-"class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum "
-"%(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href="
-"\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository "
-"%(icon_source_code)s</a>.\n"
+"                If you found a bug or have a feature idea, visit the <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository %(icon_source_code)s</a>.\n"
 "            "
-msgstr ""
-"\n"
-"Ziet u een fout of heeft u ideeën? Bezoek het <a class=\"new_window\" href="
-"\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> of open een "
-"melding via het <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/"
-"mayan-edms\">Broncode opslagplaats %(icon_source_code)s</a>."
+msgstr "\nZiet u een fout of heeft u ideeën? Bezoek het <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> of open een melding via het <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Broncode opslagplaats %(icon_source_code)s</a>."
 
 #: templates/appearance/about.html:134
 #, python-format
 msgid ""
 "\n"
-"                Spread the word. Talk to your friends and colleagues about "
-"how awesome %(project_title)s is!\n"
+"                Spread the word. Talk to your friends and colleagues about how awesome %(project_title)s is!\n"
 "            "
-msgstr ""
-"\n"
-"Vertel het verder. Laat je vrienden en collega's weten hoe fantastisch "
-"%(project_title)s is!"
+msgstr "\nVertel het verder. Laat je vrienden en collega's weten hoe fantastisch %(project_title)s is!"
 
 #: templates/appearance/base.html:43 templates/appearance/base.html:67
 msgid "Warning"
@@ -390,9 +329,7 @@ msgstr "Klik hier om dit te herstellen."
 msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."
-msgstr ""
-"Instellingen bijgewerkt. Herstart uw installatie en ververs de browser om te "
-"activeren."
+msgstr "Instellingen bijgewerkt. Herstart uw installatie en ververs de browser om te activeren."
 
 #: templates/appearance/base.html:75
 #, python-format
@@ -400,9 +337,7 @@ msgid ""
 "\n"
 "                                        Impersonating user \"%(user)s\".\n"
 "                                    "
-msgstr ""
-"\n"
-"Functioneer als gebruiker \"%(user)s\"."
+msgstr "\nFunctioneer als gebruiker \"%(user)s\"."
 
 #: templates/appearance/base.html:78
 msgid "Click here when finished"
@@ -473,18 +408,14 @@ msgstr "Beginnen"
 
 #: templates/appearance/home.html:29
 msgid "Before you can fully use Mayan EDMS you need the following:"
-msgstr ""
-"Voordat u volledig gebruik kunt maken van Mayan EDMS heeft u het volgende "
-"nodig:"
+msgstr "Voordat u volledig gebruik kunt maken van Mayan EDMS heeft u het volgende nodig:"
 
 #: templates/appearance/list_header.html:12
 #, python-format
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
-msgstr ""
-"Totaal (%(start)s - %(end)s van %(total)s) (Pagina %(page_number)s van "
-"%(total_pages)s)"
+msgstr "Totaal (%(start)s - %(end)s van %(total)s) (Pagina %(page_number)s van %(total_pages)s)"
 
 #: templates/appearance/list_header.html:14
 #: templates/appearance/list_header.html:17
@@ -503,9 +434,7 @@ msgstr "Wissel lijst modus"
 #: templates/appearance/list_toolbar.html:60
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
-msgstr ""
-"Selecteer onderdelen voor bulk acties. Gebruik Shift + Klik om meerdere te "
-"selecteren."
+msgstr "Selecteer onderdelen voor bulk acties. Gebruik Shift + Klik om meerdere te selecteren."
 
 #: templates/appearance/list_toolbar.html:65
 msgid "Bulk actions"

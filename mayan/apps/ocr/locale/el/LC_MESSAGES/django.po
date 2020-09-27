@@ -1,22 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: 2020-01-28 07:59+0000\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 06:47+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/"
-"el/)\n"
-"Language: el\n"
+"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:52 events.py:5 links.py:18 links.py:24 permissions.py:5 queues.py:6
@@ -25,9 +24,8 @@ msgid "OCR"
 msgstr "Οπτική Αναγνώριση Χαρακτήρων"
 
 #: apps.py:103
-#| msgid "Document page OCR content"
 msgid "The OCR content."
-msgstr "Περιεχόμενα αναγνωρισμένης σελίδας εγγράφου"
+msgstr ""
 
 #: apps.py:108
 msgid "A generator returning the document's pages OCR content."
@@ -104,8 +102,7 @@ msgstr "Τύπος εγγράφου"
 
 #: models.py:22
 msgid "Automatically queue newly created documents for OCR."
-msgstr ""
-"Αυτόματη προσθήκη προσφάτως δημιουργημένων εγγράφων προς οπτική αναγνώριση."
+msgstr "Αυτόματη προσθήκη προσφάτως δημιουργημένων εγγράφων προς οπτική αναγνώριση."
 
 #: models.py:28
 msgid "Document type settings"
@@ -164,14 +161,12 @@ msgid "Change document type OCR settings"
 msgstr "Τροποποίηση ρυθμίσεων τύπου εγγράφου OCR"
 
 #: queues.py:10
-#| msgid "Document version OCR"
 msgid "Finish document version OCR"
-msgstr "Οπτική αναγνώριση έκδοσης εγγράφου"
+msgstr ""
 
 #: queues.py:14
-#| msgid "Document version OCR"
 msgid "Document version page OCR"
-msgstr "Οπτική αναγνώριση έκδοσης εγγράφου"
+msgstr ""
 
 #: queues.py:18
 msgid "Document version OCR"
@@ -179,14 +174,11 @@ msgstr "Οπτική αναγνώριση έκδοσης εγγράφου"
 
 #: settings.py:15
 msgid "Full path to the backend to be used to do OCR."
-msgstr ""
-"Πλήρης διαδρομή του προγράμματος που θα χρησιμοποιηθεί για οπτική αναγνώριση."
+msgstr "Πλήρης διαδρομή του προγράμματος που θα χρησιμοποιηθεί για οπτική αναγνώριση."
 
 #: settings.py:24
 msgid "Set new document types to perform OCR automatically by default."
-msgstr ""
-"Ορισμός νέων τύπων εγγράφου στους οποίους θα πραγματοποιείται αυτόματα "
-"οπτική αναγνώριση."
+msgstr "Ορισμός νέων τύπων εγγράφου στους οποίους θα πραγματοποιείται αυτόματα οπτική αναγνώριση."
 
 #: views.py:35
 msgid "Delete the OCR content of the selected document?"
@@ -243,15 +235,13 @@ msgid ""
 msgstr ""
 
 #: workflow_actions.py:31
-#| msgid "Content"
 msgid "Page content"
-msgstr "Περιεχόμενο"
+msgstr ""
 
 #: workflow_actions.py:35
 msgid "A template that will generate the OCR content to be saved."
 msgstr ""
 
 #: workflow_actions.py:43
-#| msgid "Document page OCR content"
 msgid "Update document page OCR content"
-msgstr "Περιεχόμενα αναγνωρισμένης σελίδας εγγράφου"
+msgstr ""

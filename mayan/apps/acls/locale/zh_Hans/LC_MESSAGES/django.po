@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Haiyuan Zhang <zhanghaiyuan@gmail.com>, 2019
@@ -11,15 +11,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
 "PO-Revision-Date: 2020-07-18 06:14+0000\n"
 "Last-Translator: yan songwei <yansw@vip.163.com>\n"
-"Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-"
-"edms/language/zh-Hans/)\n"
-"Language: zh-Hans\n"
+"Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-edms/language/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:23 classes.py:142 links.py:26
@@ -94,8 +93,7 @@ msgstr "API URL指向此访问控制列表的权限列表。"
 msgid ""
 "API URL pointing to a permission in relation to the access control list to "
 "which it is attached. This URL is different than the canonical workflow URL."
-msgstr ""
-"API URL指向与其附加的访问控制列表相关的权限。此URL与规范工作流URL不同。"
+msgstr "API URL指向与其附加的访问控制列表相关的权限。此URL与规范工作流URL不同。"
 
 #: serializers.py:89
 msgid "Primary key of the new permission to grant to the access control list."
@@ -142,9 +140,7 @@ msgid ""
 "ACL stands for Access Control List and is a precise method to control user "
 "access to objects in the system. ACLs allow granting a permission to a role "
 "but only for a specific object or set of objects."
-msgstr ""
-"ACL代表访问控制列表，是控制用户对系统中对象的访问的精确方法。 ACL允许授予角色"
-"权限，但只能授予特定对象或一组对象的权限。"
+msgstr "ACL代表访问控制列表，是控制用户对系统中对象的访问的精确方法。 ACL允许授予角色权限，但只能授予特定对象或一组对象的权限。"
 
 #: views.py:143
 #, python-format
@@ -170,9 +166,7 @@ msgid ""
 "to the role and can't be removed from this view. Inherited permissions need "
 "to be removed from the parent object's ACL or from them role via the Setup "
 "menu."
-msgstr ""
-"禁用的权限是从父对象继承或直接授予角色的，不能从此视图中删除。需要通过“设"
-"置”菜单从父对象的ACL或角色中删除继承的权限。"
+msgstr "禁用的权限是从父对象继承或直接授予角色的，不能从此视图中删除。需要通过“设置”菜单从父对象的ACL或角色中删除继承的权限。"
 
 #: workflow_actions.py:23
 msgid "Object type"
@@ -187,7 +181,8 @@ msgid "Object ID"
 msgstr "对象ID"
 
 #: workflow_actions.py:35
-msgid "Numeric identifier of the object for which the access will be modified."
+msgid ""
+"Numeric identifier of the object for which the access will be modified."
 msgstr "要为其修改访问权限的对象的数字标识符。"
 
 #: workflow_actions.py:40 workflow_actions.py:155

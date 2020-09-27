@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Lyudmil Antonov <lantonov.here@gmail.com>, 2019-2020
@@ -10,15 +10,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: 2020-02-11 14:43+0000\n"
-"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
-"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/bg/)\n"
-"Language: bg\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 06:47+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:52 events.py:5 links.py:18 links.py:24 permissions.py:5 queues.py:6
@@ -27,9 +26,8 @@ msgid "OCR"
 msgstr "OCR"
 
 #: apps.py:103
-#| msgid "OCR content"
 msgid "The OCR content."
-msgstr "OCR съдържание"
+msgstr ""
 
 #: apps.py:108
 msgid "A generator returning the document's pages OCR content."
@@ -165,14 +163,12 @@ msgid "Change document type OCR settings"
 msgstr "Промяна на настройките на OCR за типа документ"
 
 #: queues.py:10
-#| msgid "Document version OCR"
 msgid "Finish document version OCR"
-msgstr "OCR за версия на документа"
+msgstr ""
 
 #: queues.py:14
-#| msgid "Document version OCR"
 msgid "Document version page OCR"
-msgstr "OCR за версия на документа"
+msgstr ""
 
 #: queues.py:18
 msgid "Document version OCR"
@@ -184,9 +180,7 @@ msgstr "Пълен път към бекенда, за да се използва
 
 #: settings.py:24
 msgid "Set new document types to perform OCR automatically by default."
-msgstr ""
-"Задайте нови типове документи за автоматично изпълнение на OCR по "
-"подразбиране."
+msgstr "Задайте нови типове документи за автоматично изпълнение на OCR по подразбиране."
 
 #: views.py:35
 msgid "Delete the OCR content of the selected document?"
@@ -243,22 +237,13 @@ msgid ""
 msgstr ""
 
 #: workflow_actions.py:31
-#| msgid "OCR content"
 msgid "Page content"
-msgstr "OCR съдържание"
+msgstr ""
 
 #: workflow_actions.py:35
 msgid "A template that will generate the OCR content to be saved."
 msgstr ""
 
 #: workflow_actions.py:43
-#| msgid "Document page OCR content"
 msgid "Update document page OCR content"
-msgstr "OCR съдържание на страница от документа"
-
-#~ msgid ""
-#~ "PyOCR is a Python library simplifying the use of OCR tools like Tesseract "
-#~ "or Cuneiform."
-#~ msgstr ""
-#~ "PyOCR е библиотека на Python, опростяваща използването на OCR инструменти "
-#~ "като Tesseract или Cuneiform."
+msgstr ""

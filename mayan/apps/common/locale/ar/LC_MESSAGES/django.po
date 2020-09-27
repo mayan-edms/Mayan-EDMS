@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Mohammed ALDOUB <voulnet@gmail.com>, 2013
@@ -9,17 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: 2020-07-09 04:05+0000\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/"
-"ar/)\n"
-"Language: ar\n"
+"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: apps.py:133 permissions.py:5 settings.py:10
 msgid "Common"
@@ -182,29 +180,30 @@ msgstr "Default"
 
 #: settings.py:17
 msgid ""
-"Time to delay background tasks that depend on a database commit to propagate."
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
 msgstr ""
 
 #: settings.py:25
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application."
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application."
 msgstr ""
 
 #: settings.py:35
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application."
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application."
 msgstr ""
 
 #: settings.py:44
 msgid ""
-"Name of the view attached to the brand anchor in the main menu. This is also "
-"the view to which users will be redirected after log in."
+"Name of the view attached to the brand anchor in the main menu. This is also"
+" the view to which users will be redirected after log in."
 msgstr ""
 
 #: settings.py:52
@@ -284,33 +283,3 @@ msgstr ""
 #: views.py:175
 msgid "These modules are used to do system maintenance."
 msgstr ""
-
-#~ msgid "Selection"
-#~ msgstr "الاختيار"
-
-#~ msgid "None"
-#~ msgstr "لا شيء"
-
-#~ msgid "Add"
-#~ msgstr "إضافة"
-
-#~ msgid "Remove"
-#~ msgstr "إزالة"
-
-#~ msgid "Object"
-#~ msgstr "Object"
-
-#~ msgid "File"
-#~ msgstr "ملف"
-
-#~ msgid "Filename"
-#~ msgstr "اسم الملف"
-
-#~ msgid "Confirm delete"
-#~ msgstr "تأكيد حذف"
-
-#~ msgid "Confirm"
-#~ msgstr "تأكيد"
-
-#~ msgid "Create"
-#~ msgstr "انشاء"

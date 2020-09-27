@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015
@@ -18,15 +18,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
 "PO-Revision-Date: 2020-08-18 07:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:49 permissions.py:6 settings.py:11
@@ -61,9 +60,7 @@ msgstr "Schlüssel"
 msgid ""
 "The passphrase to unlock the key and allow it to be used to sign the "
 "document version."
-msgstr ""
-"Das Passwort zum Entsperren des Schlüssels um die Dokumentenversion zu "
-"unterschreiben."
+msgstr "Das Passwort zum Entsperren des Schlüssels um die Dokumentenversion zu unterschreiben."
 
 #: forms.py:24 workflow_actions.py:27
 msgid "Passphrase"
@@ -71,9 +68,7 @@ msgstr "Passwort"
 
 #: forms.py:33
 msgid "Private key that will be used to sign this document version."
-msgstr ""
-"Der private Schlüssel, der für die Unterschrift dieser Dokumentenversion "
-"benutzt wird."
+msgstr "Der private Schlüssel, der für die Unterschrift dieser Dokumentenversion benutzt wird."
 
 #: forms.py:44
 msgid "Signature is embedded?"
@@ -257,22 +252,17 @@ msgstr "Fehlende eingebettete Unterschrift überprüfen"
 
 #: settings.py:19
 msgid "Path to the Storage subclass to use when storing detached signatures."
-msgstr ""
-"Pfad zu der Speicherklasse (Storage subclass) für die Speicherung separater "
-"Unterschriften."
+msgstr "Pfad zu der Speicherklasse (Storage subclass) für die Speicherung separater Unterschriften."
 
 #: settings.py:28
 msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND."
-msgstr ""
-"Argumente, die an das SIGNATURE_STORAGE_BACKEND übergeben werden sollen."
+msgstr "Argumente, die an das SIGNATURE_STORAGE_BACKEND übergeben werden sollen."
 
 #: storages.py:13
 msgid ""
 "Unable to initialize the detached signatures storage. Check the settings {} "
 "and {} for formatting errors."
-msgstr ""
-"Der Dateispeicher für separate Unterschriften kann nicht initialisiert "
-"werden. Überprüfen Sie die Einstellungen {} und {} auf Formatierungsfehler."
+msgstr "Der Dateispeicher für separate Unterschriften kann nicht initialisiert werden. Überprüfen Sie die Einstellungen {} und {} auf Formatierungsfehler."
 
 #: storages.py:20
 msgid "Detached signatures"
@@ -319,11 +309,7 @@ msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
 "document itself or uploaded as a separate file."
-msgstr ""
-"Unterschriften dienen der Ermittlung der Autorenschaft und der Entdeckung "
-"von Fälschungen. Sie sind sehr sicher und schwer zu fälschen. Eine "
-"Unterschrift kann als Teil des Dokuments in dieses eingebettet sein oder "
-"separat erstellt und hochgeladen werden."
+msgstr "Unterschriften dienen der Ermittlung der Autorenschaft und der Entdeckung von Fälschungen. Sie sind sehr sicher und schwer zu fälschen. Eine Unterschrift kann als Teil des Dokuments in dieses eingebettet sein oder separat erstellt und hochgeladen werden."
 
 #: views.py:320
 msgid "There are no signatures for this document."
@@ -341,8 +327,7 @@ msgstr "Seperate Unterschrift für Dokumentenversion %s hochladen"
 
 #: views.py:374
 msgid "On large databases this operation may take some time to execute."
-msgstr ""
-"Bei großen Datenbanken kann dieser Vorgang einige Zeit in Anspruch nehmen."
+msgstr "Bei großen Datenbanken kann dieser Vorgang einige Zeit in Anspruch nehmen."
 
 #: views.py:375
 msgid "Verify all document for signatures?"
@@ -354,8 +339,7 @@ msgstr "Überprüfung der Unterschriften erfolgreich eingereiht."
 
 #: workflow_actions.py:22
 msgid "Private key that will be used to sign the document version."
-msgstr ""
-"Privater Schlüssel, der zum Signieren der Dokumentenversion verwendet wird."
+msgstr "Privater Schlüssel, der zum Signieren der Dokumentenversion verwendet wird."
 
 #: workflow_actions.py:37
 msgid "Sign document (detached)"
@@ -365,10 +349,7 @@ msgstr "Dokument signieren (abgetrennt)"
 msgid ""
 "Document has no version to sign. You might be trying to use this action in "
 "an initial state before the created document is yet to be processed."
-msgstr ""
-"Dokument hat keine Version zum Signieren. Möglicherweise versuchen Sie, "
-"diese Aktion in einem Anfangszustand zu verwenden, in dem das erstellte "
-"Dokument noch verarbeitet werden muss."
+msgstr "Dokument hat keine Version zum Signieren. Möglicherweise versuchen Sie, diese Aktion in einem Anfangszustand zu verwenden, in dem das erstellte Dokument noch verarbeitet werden muss."
 
 #: workflow_actions.py:80
 msgid "Sign document (embedded)"

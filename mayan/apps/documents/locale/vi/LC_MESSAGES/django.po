@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Thanh Long Hoàng <hoangthanhlong@gmail.com>, 2020
@@ -9,26 +9,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: 2020-06-16 09:50+0000\n"
-"Last-Translator: Thanh Long Hoàng <hoangthanhlong@gmail.com>\n"
-"Language-Team: Vietnamese (http://www.transifex.com/rosarior/mayan-edms/"
-"language/vi/)\n"
-"Language: vi\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 06:46+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Vietnamese (http://www.transifex.com/rosarior/mayan-edms/language/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: vi\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:131 apps.py:378 events.py:5 menus.py:8 models/document_models.py:128
-#: permissions.py:5 queues.py:25 settings.py:18 statistics.py:234
+#: apps.py:131 apps.py:378 events.py:5 menus.py:8
+#: models/document_models.py:128 permissions.py:5 queues.py:25 settings.py:18
+#: statistics.py:234
 msgid "Documents"
 msgstr "Tài liệu"
 
 #: apps.py:148
-#| msgid "Description"
 msgid "Decorations"
-msgstr "Mô tả"
+msgstr ""
 
 #: apps.py:161
 msgid "Create a document type"
@@ -38,9 +37,7 @@ msgstr "Tạo một kiểu Tài liệu"
 msgid ""
 "Every uploaded document must be assigned a document type, it is the basic "
 "way Mayan EDMS categorizes documents."
-msgstr ""
-"Mỗi tài liệu tải lên phải được gán vào một kiểu tài liệu, đây là cách cơ bản "
-"Mayan EDMS phân loại tài liệu"
+msgstr "Mỗi tài liệu tải lên phải được gán vào một kiểu tài liệu, đây là cách cơ bản Mayan EDMS phân loại tài liệu"
 
 #: apps.py:216
 msgid "Versions comment"
@@ -76,9 +73,8 @@ msgid "Latest version"
 msgstr "Phiên bản mới nhất"
 
 #: apps.py:245
-#| msgid "The name of the document type."
 msgid "Return the document instance."
-msgstr "Tên của kiểu tài liệu."
+msgstr ""
 
 #: apps.py:246 links/document_version_links.py:37
 #: links/document_version_page_links.py:96 models/document_models.py:127
@@ -196,13 +192,10 @@ msgstr "Nén"
 
 #: forms/document_forms.py:27
 msgid ""
-"Download the document in the original format or in a compressed manner. This "
-"option is selectable only when downloading one document, for multiple "
+"Download the document in the original format or in a compressed manner. This"
+" option is selectable only when downloading one document, for multiple "
 "documents, the bundle will always be downloads as a compressed file."
-msgstr ""
-"Tải xuống tài liệu ở dạng nguyên gốc hoặc dạng nén. Tùy chọn này chỉ chọn "
-"được khi tải xuống một tài liệu, đối với nhiều tài liệu, dạng tệp nén sẽ "
-"luôn được tải xuống."
+msgstr "Tải xuống tài liệu ở dạng nguyên gốc hoặc dạng nén. Tùy chọn này chỉ chọn được khi tải xuống một tài liệu, đối với nhiều tài liệu, dạng tệp nén sẽ luôn được tải xuống."
 
 #: forms/document_forms.py:34
 msgid "Compressed filename"
@@ -226,9 +219,7 @@ msgstr "Giữ phần mở rộng"
 msgid ""
 "Takes the file extension and moves it to the end of the filename allowing "
 "operating systems that rely on file extensions to open document correctly."
-msgstr ""
-"Lấy phần mở rộng của tệp tin và đưa nó vào cuối tên tệp cho phép một số hệ "
-"điều hành mở tài liệu đúng cách."
+msgstr "Lấy phần mở rộng của tệp tin và đưa nó vào cuối tên tệp cho phép một số hệ điều hành mở tài liệu đúng cách."
 
 #: forms/document_forms.py:148
 msgid "Date added"
@@ -274,8 +265,7 @@ msgstr "Khoảng trang"
 msgid ""
 "Page number from which all the transformations will be cloned. Existing "
 "transformations will be lost."
-msgstr ""
-"Số trang mà thao tác biến đổi sẽ sao chép. Những biến đổi hiện tại sẽ bị mất."
+msgstr "Số trang mà thao tác biến đổi sẽ sao chép. Những biến đổi hiện tại sẽ bị mất."
 
 #: forms/document_type_forms.py:73 models/document_models.py:64
 #: models/document_type_models.py:73 models/document_type_models.py:180
@@ -287,9 +277,7 @@ msgid ""
 "Takes the file extension and moves it to the end of the filename allowing "
 "operating systems that rely on file extensions to open the downloaded "
 "document version correctly."
-msgstr ""
-"Lấy phần mở rộng của tệp tin và đưa nó vào cuối tên tệp cho phép một số hệ "
-"điều hành mở tài liệu đúng cách."
+msgstr "Lấy phần mở rộng của tệp tin và đưa nó vào cuối tên tệp cho phép một số hệ điều hành mở tài liệu đúng cách."
 
 #: links/document_links.py:21 links/document_links.py:65
 msgid "Clear transformations"
@@ -490,9 +478,7 @@ msgstr "Tất cả các trang"
 msgid ""
 "UUID of a document, universally Unique ID. An unique identifier generated "
 "for each document."
-msgstr ""
-"UUID (universally Unique ID) của một tài liệu. Là định danh duy nhất được "
-"tạo ra cho mỗi tài liệu."
+msgstr "UUID (universally Unique ID) của một tài liệu. Là định danh duy nhất được tạo ra cho mỗi tài liệu."
 
 #: models/document_models.py:62
 msgid "The document type of the document."
@@ -550,10 +536,7 @@ msgid ""
 "A document stub is a document with an entry on the database but no file "
 "uploaded. This could be an interrupted upload or a deferred upload via the "
 "API."
-msgstr ""
-"Tài liệu rỗng là tài liệu có bản ghi trong cơ sở dữ liệu nhưng không có tệp "
-"tin được tải lên. Có thể do việc tải lên bị gián đoạn hoặc bị trì hoãn thông "
-"qua API."
+msgstr "Tài liệu rỗng là tài liệu có bản ghi trong cơ sở dữ liệu nhưng không có tệp tin được tải lên. Có thể do việc tải lên bị gián đoạn hoặc bị trì hoãn thông qua API."
 
 #: models/document_models.py:102
 msgid "Is stub?"
@@ -587,9 +570,9 @@ msgstr "Tên của kiểu tài liệu."
 
 #: models/document_type_models.py:35
 msgid ""
-"Amount of time after which documents of this type will be moved to the trash."
-msgstr ""
-"Thời lượng mà sau đó các tài liệu của kiểu này sẽ được đưa vào thùng rác."
+"Amount of time after which documents of this type will be moved to the "
+"trash."
+msgstr "Thời lượng mà sau đó các tài liệu của kiểu này sẽ được đưa vào thùng rác."
 
 #: models/document_type_models.py:37
 msgid "Trash time period"
@@ -662,12 +645,9 @@ msgstr "Tệp tin"
 #: models/document_version_models.py:90
 msgid ""
 "The document version's file mimetype. MIME types are a standard way to "
-"describe the format of a file, in this case the file format of the document. "
-"Some examples: \"text/plain\" or \"image/jpeg\". "
-msgstr ""
-"Mimetype của tệp tin phiên bản tài liệu. MIME type là cách tiêu chuẩn để mô "
-"tả định dạng của tệp tin, trong trường hợp này là định dạng của tài liệu. Ví "
-"dụ: \"text/plain\" hoặc \"image/jpeg\"."
+"describe the format of a file, in this case the file format of the document."
+" Some examples: \"text/plain\" or \"image/jpeg\". "
+msgstr "Mimetype của tệp tin phiên bản tài liệu. MIME type là cách tiêu chuẩn để mô tả định dạng của tệp tin, trong trường hợp này là định dạng của tài liệu. Ví dụ: \"text/plain\" hoặc \"image/jpeg\"."
 
 #: models/document_version_models.py:94
 msgid "MIME type"
@@ -677,9 +657,7 @@ msgstr "MIME type"
 msgid ""
 "The document version file encoding. binary 7-bit, binary 8-bit, text, "
 "base64, etc."
-msgstr ""
-"Mã hóa của phiên bản của tài liệu. nhị phân 7-bit, nhị phân 8-bit, ký tự, "
-"base64,..."
+msgstr "Mã hóa của phiên bản của tài liệu. nhị phân 7-bit, nhị phân 8-bit, ký tự, base64,..."
 
 #: models/document_version_models.py:100
 msgid "Encoding"
@@ -806,9 +784,8 @@ msgid "Clean empty duplicate lists"
 msgstr "Dọn danh sách trùng lặp rỗng"
 
 #: queues.py:43
-#| msgid "Empty trash"
 msgid "Empty the trash can"
-msgstr "Xóa toàn bộ thùng rác"
+msgstr ""
 
 #: queues.py:48
 msgid "Check document type delete periods"
@@ -835,24 +812,20 @@ msgid "Scan document duplicates"
 msgstr "Tìm tài liệu trùng lặp"
 
 #: search.py:35 search.py:54
-#| msgid "Document type"
 msgid "Document type label"
-msgstr "Kiểu tài liệu"
+msgstr ""
 
 #: settings.py:26
 msgid ""
 "The threshold at which the DOCUMENT_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest document image cache files. Specify the size in bytes."
-msgstr ""
-"Giới hạn mà DOCUMENT_CACHE_STORAGE_BACKEND sẽ bắt đầu xóa hình ảnh tạm thời "
-"cũ nhất của tài liệu. Chỉ định kích thước ở đơn vị bytes."
+msgstr "Giới hạn mà DOCUMENT_CACHE_STORAGE_BACKEND sẽ bắt đầu xóa hình ảnh tạm thời cũ nhất của tài liệu. Chỉ định kích thước ở đơn vị bytes."
 
 #: settings.py:34
 msgid ""
 "Path to the Storage subclass to use when storing the cached document image "
 "files."
-msgstr ""
-"Đường dẫn tới class Storage để dùng khi lưu hình ảnh tạm thời của tài liệu."
+msgstr "Đường dẫn tới class Storage để dùng khi lưu hình ảnh tạm thời của tài liệu."
 
 #: settings.py:42
 msgid "Arguments to pass to the DOCUMENT_CACHE_STORAGE_BACKEND."
@@ -865,20 +838,16 @@ msgstr "Số tài liệu yêu thích tối đa cho mỗi người dùng."
 #: settings.py:60
 msgid ""
 "Detect the orientation of each of the document's pages and create a "
-"corresponding rotation transformation to display it rightside up. This is an "
-"experimental feature and it is disabled by default."
-msgstr ""
-"Phát hiện hướng của mỗi trang của tài liệu và biến đổi tương ứng để thể hiện "
-"đúng chiều. Đây là tính năng thử nghiệm và mặc định được vô hiệu hóa."
+"corresponding rotation transformation to display it rightside up. This is an"
+" experimental feature and it is disabled by default."
+msgstr "Phát hiện hướng của mỗi trang của tài liệu và biến đổi tương ứng để thể hiện đúng chiều. Đây là tính năng thử nghiệm và mặc định được vô hiệu hóa."
 
 #: settings.py:69
 msgid ""
-"Size of blocks to use when calculating the document file's checksum. A value "
-"of 0 disables the block calculation and the entire file will be loaded into "
-"memory."
-msgstr ""
-"Kích cỡ block dùng để tính toán checksum của tệp tin tài liệu. Giá trị 0 vô "
-"hiệu hóa tính toán theo block và toàn bộ tệp tin sẽ được tải vào bộ nhớ."
+"Size of blocks to use when calculating the document file's checksum. A value"
+" of 0 disables the block calculation and the entire file will be loaded into"
+" memory."
+msgstr "Kích cỡ block dùng để tính toán checksum của tệp tin tài liệu. Giá trị 0 vô hiệu hóa tính toán theo block và toàn bộ tệp tin sẽ được tải vào bộ nhớ."
 
 #: settings.py:76
 msgid "Default documents language (in ISO639-3 format)."
@@ -892,9 +861,7 @@ msgstr "Danh sách ngôn ngữ của tài liệu được hỗ trợ. Ở địn
 msgid ""
 "Time in seconds that the browser should cache the supplied document images. "
 "The default of 31559626 seconds corresponde to 1 year."
-msgstr ""
-"Thời gian tính theo giây mà trình duyệt lưu tạm hình ảnh của tài liệu. Giá "
-"trị mặc định 31559626 giây tương ứng với 1 năm."
+msgstr "Thời gian tính theo giây mà trình duyệt lưu tạm hình ảnh của tài liệu. Giá trị mặc định 31559626 giây tương ứng với 1 năm."
 
 #: settings.py:104
 msgid ""
@@ -937,22 +904,17 @@ msgstr "Chiều cao tính bằng pixel của hình xem trước của tài liệ
 msgid ""
 "Maximum amount in percent (%) to allow user to zoom in a document page "
 "interactively."
-msgstr ""
-"Số phần trăm (%) tối đa cho phép người dùng phóng to trang tài liệu khi xem."
+msgstr "Số phần trăm (%) tối đa cho phép người dùng phóng to trang tài liệu khi xem."
 
 #: settings.py:174
 msgid ""
 "Minimum amount in percent (%) to allow user to zoom out a document page "
 "interactively."
-msgstr ""
-"Số phần trăm (%) tối thiểu cho phép người dùng thu nhỏ trang tài liệu khi "
-"xem."
+msgstr "Số phần trăm (%) tối thiểu cho phép người dùng thu nhỏ trang tài liệu khi xem."
 
 #: settings.py:181
 msgid "Amount in percent zoom in or out a document page per user interaction."
-msgstr ""
-"Số phần trăm phóng to hoặc thu nhỏ trang tài liệu với mỗi thao tác của người "
-"dùng."
+msgstr "Số phần trăm phóng to hoặc thu nhỏ trang tài liệu với mỗi thao tác của người dùng."
 
 #: statistics.py:15
 msgid "January"
@@ -1030,9 +992,7 @@ msgstr "Tổng số trang tài liệu mỗi tháng"
 msgid ""
 "Unable to initialize the document image storage. Check the settings {} and "
 "{} for formatting errors."
-msgstr ""
-"Không thể kích hoạt nơi lưu trữ hình ảnh của tài liệu. Kiểm tra cài đặt {} "
-"và {} để tìm lỗi định dạng."
+msgstr "Không thể kích hoạt nơi lưu trữ hình ảnh của tài liệu. Kiểm tra cài đặt {} và {} để tìm lỗi định dạng."
 
 #: storages.py:23
 msgid "Document images"
@@ -1040,12 +1000,9 @@ msgstr "Hình ảnh của tài liệu"
 
 #: storages.py:31
 msgid ""
-"Unable to initialize the document version storage. Check the settings {} and "
-"{} for formatting errors."
-msgstr ""
-"Không thể kích hoạt nơi lưu trữ phiên bản của tài liệu. Kiểm tra cài đặt {} "
-"và {} để tìm lỗi định dạng.\n"
-" "
+"Unable to initialize the document version storage. Check the settings {} and"
+" {} for formatting errors."
+msgstr "Không thể kích hoạt nơi lưu trữ phiên bản của tài liệu. Kiểm tra cài đặt {} và {} để tìm lỗi định dạng.\n "
 
 #: storages.py:37
 msgid "Document version files"
@@ -1061,9 +1018,7 @@ msgid ""
 "\n"
 "                    Page %(page_number)s of %(total_pages)s\n"
 "                "
-msgstr ""
-"\n"
-"                    Trang %(page_number)s của %(total_pages)s"
+msgstr "\n                    Trang %(page_number)s của %(total_pages)s"
 
 #: templates/documents/forms/widgets/document_page_carousel.html:22
 msgid "No pages to display"
@@ -1080,13 +1035,11 @@ msgstr "Ngôn ngữ không xác định \"%s\""
 
 #: views/document_page_views.py:56
 msgid ""
-"This could mean that the document is of a format that is not supported, that "
-"it is corrupted or that the upload process was interrupted. Use the document "
-"page recalculation action to attempt to introspect the page count again."
-msgstr ""
-"Điều này có thể do định dạng tài liệu không được hỗ trợ, hoặc bị hỏng hoặc "
-"quá trình tải lên bị gián đoạn. Hãy thử dùng hành động tính toán lại số "
-"trang."
+"This could mean that the document is of a format that is not supported, that"
+" it is corrupted or that the upload process was interrupted. Use the "
+"document page recalculation action to attempt to introspect the page count "
+"again."
+msgstr "Điều này có thể do định dạng tài liệu không được hỗ trợ, hoặc bị hỏng hoặc quá trình tải lên bị gián đoạn. Hãy thử dùng hành động tính toán lại số trang."
 
 #: views/document_page_views.py:61
 msgid "No document pages available"
@@ -1128,14 +1081,10 @@ msgstr "Tài liệu kiểu: %s"
 #: views/document_type_views.py:71
 msgid ""
 "Document types are the most basic units of configuration. Everything in the "
-"system will depend on them. Define a document type for each type of physical "
-"document you intend to upload. Example document types: invoice, receipt, "
+"system will depend on them. Define a document type for each type of physical"
+" document you intend to upload. Example document types: invoice, receipt, "
 "manual, prescription, balance sheet."
-msgstr ""
-"Kiểu tài liệu là đơn vị cài đặt cơ bản nhất. Mọi thứ trong hệ thống đều phụ "
-"thuộc vào nó. Định nghĩa một kiểu tài liệu điện tử cho mỗi kiểu tài liệu "
-"thực tế bạn định tải lên. Ví dụ các kiểu tài liệu: hóa đơn, biên lai, hướng "
-"dẫn sử dụng, đơn thuốc, bảng cân đối kế toán."
+msgstr "Kiểu tài liệu là đơn vị cài đặt cơ bản nhất. Mọi thứ trong hệ thống đều phụ thuộc vào nó. Định nghĩa một kiểu tài liệu điện tử cho mỗi kiểu tài liệu thực tế bạn định tải lên. Ví dụ các kiểu tài liệu: hóa đơn, biên lai, hướng dẫn sử dụng, đơn thuốc, bảng cân đối kế toán."
 
 #: views/document_type_views.py:77
 msgid "No document types available"
@@ -1173,8 +1122,7 @@ msgstr "Xóa nhãn nhanh: %(label)s, từ kiểu tài liệu \"%(document_type)s
 
 #: views/document_type_views.py:216
 #, python-format
-msgid ""
-"Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
+msgid "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
 msgstr "Sửa nhãn nhanh: %(filename)s, từ kiểu tài liệu \"%(document_type)s\"?"
 
 #: views/document_type_views.py:252
@@ -1182,10 +1130,7 @@ msgid ""
 "Quick labels are predetermined filenames that allow the quick renaming of "
 "documents as they are uploaded by selecting them from a list. Quick labels "
 "can also be used after the documents have been uploaded."
-msgstr ""
-"Nhãn nhanh là những tên tệp tin định nghĩa sẵn, cho phép đổi tên nhanh tài "
-"liệu khi chúng được tải lên, bằng cách chọn từ một danh sách. Nhãn nhanh "
-"cũng có thể được dùng sau khi tài liệu được tải lên."
+msgstr "Nhãn nhanh là những tên tệp tin định nghĩa sẵn, cho phép đổi tên nhanh tài liệu khi chúng được tải lên, bằng cách chọn từ một danh sách. Nhãn nhanh cũng có thể được dùng sau khi tài liệu được tải lên."
 
 #: views/document_type_views.py:258
 msgid "There are no quick labels for this document type"
@@ -1197,9 +1142,9 @@ msgid "Quick labels for document type: %s"
 msgstr "Nhãn nhanh cho kiểu tài liệu: %s"
 
 #: views/document_type_views.py:280
-#| msgid "Deletion policies for document type: %s"
+#, python-format
 msgid "Filename generation setup for document type: %s"
-msgstr "Quy định xóa cho kiểu tài liệu: %s"
+msgstr ""
 
 #: views/document_version_views.py:43
 msgid "Download document version"
@@ -1242,9 +1187,7 @@ msgid ""
 "This could mean that no documents have been uploaded or that your user "
 "account has not been granted the view permission for any document or "
 "document type."
-msgstr ""
-"Điều này có thể do chưa có tài liệu nào được tải lên hoặc tài khoản của bạn "
-"không có quyền xem bất kỳ tài liệu hoặc kiểu tài liệu nào."
+msgstr "Điều này có thể do chưa có tài liệu nào được tải lên hoặc tài khoản của bạn không có quyền xem bất kỳ tài liệu hoặc kiểu tài liệu nào."
 
 #: views/document_views.py:92
 msgid "No documents available"
@@ -1323,21 +1266,17 @@ msgstr "Tính toán lại số trang của tài liệu: %s?"
 msgid ""
 "Document \"%(document)s\" is empty. Upload at least one document version "
 "before attempting to detect the page count."
-msgstr ""
-"Tài liệu \"%(document)s\" rỗng. Tải lên ít nhất một phiên bản trước khi thử "
-"phát hiện số trang."
+msgstr "Tài liệu \"%(document)s\" rỗng. Tải lên ít nhất một phiên bản trước khi thử phát hiện số trang."
 
 #: views/document_views.py:412
 #, python-format
 msgid "Transformation clear request processed for %(count)d document"
-msgstr ""
-"Đã xử lý yêu cầu đặt lại biến đổi (xoay, thu phóng) cho %(count)d tài liệu"
+msgstr "Đã xử lý yêu cầu đặt lại biến đổi (xoay, thu phóng) cho %(count)d tài liệu"
 
 #: views/document_views.py:415
 #, python-format
 msgid "Transformation clear request processed for %(count)d documents"
-msgstr ""
-"Đã xử lý yêu cầu đặt lại biến đổi (xoay, thu phóng) cho %(count)d tài liệu"
+msgstr "Đã xử lý yêu cầu đặt lại biến đổi (xoay, thu phóng) cho %(count)d tài liệu"
 
 #: views/document_views.py:423
 msgid "Clear all the page transformations for the selected document?"
@@ -1359,7 +1298,8 @@ msgstr "Lỗi xóa biến đổi trang của tài liệu: %(document)s; %(error)
 #: views/document_views.py:481
 #, python-format
 msgid ""
-"Error cloning the page transformations for document: %(document)s; %(error)s."
+"Error cloning the page transformations for document: %(document)s; "
+"%(error)s."
 msgstr "Lỗi nhân bản biến đổi trang của tài liệu: %(document)s; %(error)s."
 
 #: views/document_views.py:489
@@ -1382,11 +1322,9 @@ msgstr "In: %s"
 
 #: views/document_views.py:612
 msgid ""
-"This view will list the latest documents viewed or manipulated in any way by "
-"this user account."
-msgstr ""
-"Trang này liệt kê các tài liệu mới xem hoặc thao tác gần đây bởi người dùng "
-"này."
+"This view will list the latest documents viewed or manipulated in any way by"
+" this user account."
+msgstr "Trang này liệt kê các tài liệu mới xem hoặc thao tác gần đây bởi người dùng này."
 
 #: views/document_views.py:616
 msgid "There are no recently accessed document"
@@ -1416,12 +1354,9 @@ msgstr "Các tài liệu trùng lặp với: %s"
 #: views/duplicated_document_views.py:64
 msgid ""
 "Duplicates are documents that are composed of the exact same file, down to "
-"the last byte. Files that have the same text or OCR but are not identical or "
-"were saved using a different file format will not appear as duplicates."
-msgstr ""
-"Tài liệu trùng lặp bao gồm tệp tin giống hệt, tính theo từng byte. Các tệp "
-"tin có cùng nội dung chữ hoặc OCR nhưng không giống hệt hoặc được lưu ở định "
-"dạng khác sẽ không được coi là trùng lặp."
+"the last byte. Files that have the same text or OCR but are not identical or"
+" were saved using a different file format will not appear as duplicates."
+msgstr "Tài liệu trùng lặp bao gồm tệp tin giống hệt, tính theo từng byte. Các tệp tin có cùng nội dung chữ hoặc OCR nhưng không giống hệt hoặc được lưu ở định dạng khác sẽ không được coi là trùng lặp."
 
 #: views/duplicated_document_views.py:71
 msgid "There are no duplicated documents"
@@ -1440,9 +1375,7 @@ msgstr "Hoàn thành tìm tài liệu trùng lặp."
 msgid ""
 "Favorited documents will be listed in this view. Up to %(count)d documents "
 "can be favorited per user. "
-msgstr ""
-"Tài liệu yêu thích được liệt kê ở trang này. Tối đa %(count)d tài liệu yêu "
-"thích với mỗi người dùng."
+msgstr "Tài liệu yêu thích được liệt kê ở trang này. Tối đa %(count)d tài liệu yêu thích với mỗi người dùng."
 
 #: views/favorite_document_views.py:34
 msgid "There are no favorited documents."
@@ -1534,9 +1467,7 @@ msgid ""
 "To avoid loss of data, documents are not deleted instantly. First, they are "
 "placed in the trash can. From here they can be then finally deleted or "
 "restored."
-msgstr ""
-"Để tránh mất dữ liệu, tài liệu không được xóa ngay lập tức. Đầu tiên, chúng "
-"được đưa vào thùng rác. Từ đó chúng có thể được khôi phục hoặc xóa vĩnh viễn."
+msgstr "Để tránh mất dữ liệu, tài liệu không được xóa ngay lập tức. Đầu tiên, chúng được đưa vào thùng rác. Từ đó chúng có thể được khôi phục hoặc xóa vĩnh viễn."
 
 #: views/trashed_document_views.py:130
 msgid "There are no documents in the trash can"
@@ -1565,23 +1496,3 @@ msgstr "Số trang: %d"
 #: workflow_actions.py:7
 msgid "Send document to trash"
 msgstr "Đưa tài liệu vào thùng rác"
-
-#~ msgid "Details"
-#~ msgstr "Chi tiết"
-
-#~ msgid ""
-#~ "Disables the first cache tier which stores high resolution, non "
-#~ "transformed versions of documents's pages."
-#~ msgstr ""
-#~ "Vô hiệu hóa lớp nhớ tạm đầu tiên dùng để lưu phiên bản gốc, độ phân giải "
-#~ "cao của các trang của tài liệu."
-
-#~ msgid ""
-#~ "Disables the second cache tier which stores medium to low resolution, "
-#~ "transformed (rotated, zoomed, etc) versions of documents' pages."
-#~ msgstr ""
-#~ "Vô hiệu hóa lớp nhớ tạm thứ hai dùng để lưu phiên bản đã biến đổi (xoay, "
-#~ "thu phóng,...), độ phân giải thấp của các trang của tài liệu."
-
-#~ msgid "Trash emptied successfully"
-#~ msgstr "Thùng rác đã được xóa sạch"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
@@ -10,15 +10,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: 2020-04-27 18:54+0000\n"
-"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
-"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/"
-"nl/)\n"
-"Language: nl\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 06:47+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:40 links.py:38 permissions.py:5
@@ -34,14 +33,12 @@ msgid "Messages"
 msgstr "Berichten"
 
 #: events.py:8
-#| msgid "Message of the day"
 msgid "Message created"
-msgstr "Bericht van de dag"
+msgstr ""
 
 #: events.py:11
-#| msgid "Message of the day"
 msgid "Message edited"
-msgstr "Bericht van de dag"
+msgstr ""
 
 #: links.py:14 views.py:31
 msgid "Create message"
@@ -122,16 +119,15 @@ msgid "Delete request performed on %(count)d messages"
 msgstr ""
 
 #: views.py:54
-#| msgid "Delete the message: %s?"
 msgid "Delete the selected message?"
 msgid_plural "Delete the selected messages?"
-msgstr[0] "Verwijder het bericht: %s?"
-msgstr[1] "Verwijder het bericht: %s?"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:64
-#| msgid "Delete the message: %s?"
+#, python-format
 msgid "Delete message: %s?"
-msgstr "Verwijder het bericht: %s?"
+msgstr ""
 
 #: views.py:75
 #, python-format
@@ -153,10 +149,7 @@ msgid ""
 "Messages are displayed in the login view. You can use messages to convery "
 "information about your organzation, announcements or usage guidelines for "
 "your users."
-msgstr ""
-"Berichten worden weergegeven in het login overzicht. Je kunt berichten "
-"gebruiken om informatie over uw organisatie, aankondigingen of "
-"gebruiksrichtlijnen te verspreiden onder je gebruikers. "
+msgstr "Berichten worden weergegeven in het login overzicht. Je kunt berichten gebruiken om informatie over uw organisatie, aankondigingen of gebruiksrichtlijnen te verspreiden onder je gebruikers. "
 
 #: views.py:122
 msgid "No messages available"

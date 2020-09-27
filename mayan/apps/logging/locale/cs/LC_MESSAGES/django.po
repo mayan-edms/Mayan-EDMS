@@ -2,21 +2,23 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
+# Translators:
+# Michal Švábík <snadno@lehce.cz>, 2020
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 06:46+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>, 2020\n"
+"Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
-"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: apps.py:15 permissions.py:5 settings.py:10
 msgid "Logging"
@@ -24,7 +26,7 @@ msgstr ""
 
 #: links.py:12
 msgid "Errors"
-msgstr ""
+msgstr "Chyby"
 
 #: links.py:18
 msgid "Clear errors"
@@ -32,7 +34,7 @@ msgstr ""
 
 #: models.py:10 models.py:38
 msgid "Internal name"
-msgstr ""
+msgstr "Vnitřní název"
 
 #: models.py:15 models.py:35
 msgid "Error log"
@@ -56,7 +58,7 @@ msgstr ""
 
 #: models.py:63
 msgid "Date and time"
-msgstr ""
+msgstr "Datum a čas"
 
 #: models.py:65
 msgid "Text"
@@ -72,11 +74,11 @@ msgstr ""
 
 #: permissions.py:8
 msgid "View error log"
-msgstr ""
+msgstr "Zobrazit protokol chyb"
 
 #: settings.py:14
 msgid "Automatically enable logging to all apps."
-msgstr ""
+msgstr "Automaticky povolit protokolování pro všechny aplikace."
 
 #: settings.py:20
 msgid ""
@@ -89,28 +91,30 @@ msgstr ""
 
 #: settings.py:32
 msgid "Path to the logfile that will track errors during production."
-msgstr ""
+msgstr "Cesta k souboru protokolu, který bude sledovat chyby produkce."
 
 #: views.py:17
 #, python-format
 msgid "Clear error log entries for: %s"
-msgstr ""
+msgstr "Vymažte položky protokolu chyb pro: %s"
 
 #: views.py:23
 msgid "Object error log cleared successfully"
-msgstr ""
+msgstr "Protokol chyb objektu byl úspěšně vymazán"
 
 #: views.py:36
 msgid ""
 "This view displays the error log of different object. An empty list is a "
 "good thing."
 msgstr ""
+"Toto zobrazení zobrazuje protokol chyb různých objektů. Prázdný seznam je "
+"dobré znamení."
 
 #: views.py:40
 msgid "There are no error log entries"
-msgstr ""
+msgstr "V protokolu chyb nejsou žádné záznamy"
 
 #: views.py:43
 #, python-format
 msgid "Error log entries for: %s"
-msgstr ""
+msgstr "Položky protokolu chyb pro: %s"

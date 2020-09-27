@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015-2016
@@ -18,15 +18,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: 2020-03-21 16:39+0000\n"
-"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 06:47+0000\n"
+"Last-Translator: Berny <berny@bernhard-marx.de>\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:79 events.py:6 permissions.py:6
@@ -72,7 +71,7 @@ msgstr "Nachname"
 
 #: apps.py:117
 msgid "Password"
-msgstr ""
+msgstr "Passwort"
 
 #: apps.py:118
 msgid "Username"
@@ -200,15 +199,11 @@ msgstr "Benutzername"
 
 #: serializers.py:32
 msgid "Comma separated list of group primary keys to assign this user to."
-msgstr ""
-"Kommagetrennte Liste von Gruppen-Primärschlüsseln, denen der Benutzer "
-"zugeordnet werden soll."
+msgstr "Kommagetrennte Liste von Gruppen-Primärschlüsseln, denen der Benutzer zugeordnet werden soll."
 
 #: serializers.py:62
 msgid "List of group primary keys to which to add the user."
-msgstr ""
-"Liste von Gruppen-Primärschlüsseln, denen der Benutzer zugeordnet werden "
-"soll."
+msgstr "Liste von Gruppen-Primärschlüsseln, denen der Benutzer zugeordnet werden soll."
 
 #: utils.py:6
 msgid "Anonymous"
@@ -237,11 +232,7 @@ msgid ""
 "User groups are organizational units. They should mirror the organizational "
 "units of your organization. Groups can't be used for access control. Use "
 "roles for permissions and access control, add groups to them."
-msgstr ""
-"Benutzergruppen sind Organisationseinheiten. Sie sollten die "
-"Organisationseinheiten Ihrer Organisation wiederspiegeln. Gruppen können "
-"nicht für die Zugriffskontrolle verwendet werden. Benutzen Sie Rollen für "
-"Berechtigungen und Zugriffskontrollen und fügen Sie ihnen Gruppen hinzu."
+msgstr "Benutzergruppen sind Organisationseinheiten. Sie sollten die Organisationseinheiten Ihrer Organisation wiederspiegeln. Gruppen können nicht für die Zugriffskontrolle verwendet werden. Benutzen Sie Rollen für Berechtigungen und Zugriffskontrollen und fügen Sie ihnen Gruppen hinzu."
 
 #: views.py:119
 msgid "There are no user groups"
@@ -285,9 +276,7 @@ msgstr "Benutzer löschen: %s"
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"Super User und Staff Benutzer löschen ist nicht erlaubt, benutzen Sie die "
-"Administratoren-Oberfläche dafür."
+msgstr "Super User und Staff Benutzer löschen ist nicht erlaubt, benutzen Sie die Administratoren-Oberfläche dafür."
 
 #: views.py:214
 #, python-format
@@ -328,9 +317,7 @@ msgstr "Gruppen von Benutzer %s"
 msgid ""
 "User accounts can be create from this view. After creating a user account "
 "you will prompted to set a password for it. "
-msgstr ""
-"Auf dieser Seite können Benutzerkonten erstellt werden. Nach der Erstellung "
-"werden Sie nach dem Passwort gefragt."
+msgstr "Auf dieser Seite können Benutzerkonten erstellt werden. Nach der Erstellung werden Sie nach dem Passwort gefragt."
 
 #: views.py:304
 msgid "There are no user accounts"

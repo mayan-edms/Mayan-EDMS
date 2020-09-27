@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Atdhe Tabaku <Atdhe617@gmail.com>, 2018
@@ -10,17 +10,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: 2020-07-09 04:05+0000\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Bosnian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/bs/)\n"
-"Language: bs\n"
+"Language-Team: Bosnian (http://www.transifex.com/rosarior/mayan-edms/language/bs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: bs\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: apps.py:133 permissions.py:5 settings.py:10
 msgid "Common"
@@ -119,9 +117,7 @@ msgstr ""
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
-msgstr ""
-"Backend baze podataka je podešeno da koristi SKLite. SKLite treba koristiti "
-"samo za razvoj i testiranje, a ne za proizvodnju."
+msgstr "Backend baze podataka je podešeno da koristi SKLite. SKLite treba koristiti samo za razvoj i testiranje, a ne za proizvodnju."
 
 #: literals.py:19
 msgid "Days"
@@ -185,31 +181,30 @@ msgstr "default"
 
 #: settings.py:17
 msgid ""
-"Time to delay background tasks that depend on a database commit to propagate."
-msgstr ""
-"Vreme za odlaganje pozadinskih zadataka koji zavise od baze podataka "
-"obavezuju se da se propagiraju."
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
+msgstr "Vreme za odlaganje pozadinskih zadataka koji zavise od baze podataka obavezuju se da se propagiraju."
 
 #: settings.py:25
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application."
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application."
 msgstr ""
 
 #: settings.py:35
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application."
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application."
 msgstr ""
 
 #: settings.py:44
 msgid ""
-"Name of the view attached to the brand anchor in the main menu. This is also "
-"the view to which users will be redirected after log in."
+"Name of the view attached to the brand anchor in the main menu. This is also"
+" the view to which users will be redirected after log in."
 msgstr ""
 
 #: settings.py:52
@@ -236,8 +231,7 @@ msgstr "Unesite važeći IAML"
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
-msgstr ""
-"Unesite važeći 'interni naziv' koji se sastoji od slova, brojeva i podčrtava."
+msgstr "Unesite važeći 'interni naziv' koji se sastoji od slova, brojeva i podčrtava."
 
 #: views.py:27
 msgid "About"
@@ -266,9 +260,8 @@ msgid "Make a copy of %(object_name)s \"%(object)s\"?"
 msgstr ""
 
 #: views.py:134
-#| msgid "%(object)s created successfully."
 msgid "Object copied successfully."
-msgstr "%(object)s kreiran uspešno."
+msgstr ""
 
 #: views.py:150
 msgid "No setup options available."
@@ -291,112 +284,3 @@ msgstr ""
 #: views.py:175
 msgid "These modules are used to do system maintenance."
 msgstr ""
-
-#~ msgid "Selection"
-#~ msgstr "Odabir"
-
-#~ msgid "None"
-#~ msgstr "Nijedno"
-
-#~ msgid "Add"
-#~ msgstr "Dodati"
-
-#~ msgid "Remove"
-#~ msgstr "Ukloniti"
-
-#~ msgid "%(object)s not created, error: %(error)s"
-#~ msgstr "%(object)s nije kreiran, greška:%(error)s"
-
-#~ msgid "%(object)s not deleted, error: %(error)s."
-#~ msgstr "%(object)s nije izbrisan, greška:%(error)s."
-
-#~ msgid "%(object)s deleted successfully."
-#~ msgstr "%(object)s izbrisan uspešno."
-
-#~ msgid "%(object)s not updated, error: %(error)s."
-#~ msgstr "%(object)s nije ažuriran, greška:%(error)s."
-
-#~ msgid "%(object)s updated successfully."
-#~ msgstr "%(object)s ažuriran uspešno."
-
-#~ msgid "Errors"
-#~ msgstr "Greške"
-
-#~ msgid "Clear all"
-#~ msgstr "Izbriši sve"
-
-#~ msgid "Object"
-#~ msgstr "Objekat"
-
-#~ msgid "Namespace"
-#~ msgstr "Imenovani prostor"
-
-#~ msgid "Date time"
-#~ msgstr "Datum vreme"
-
-#~ msgid "Result"
-#~ msgstr "Rezultat"
-
-#~ msgid "Error log entry"
-#~ msgstr "Greška u unosu dnevnika"
-
-#~ msgid "Error log entries"
-#~ msgstr "Greška u unosima dnevnika"
-
-#~ msgid "File"
-#~ msgstr "Datoteka"
-
-#~ msgid "Filename"
-#~ msgstr "Naziv datoteke"
-
-#~ msgid "Shared uploaded file"
-#~ msgstr "Deljeni otpremljeni fajl"
-
-#~ msgid "Shared uploaded files"
-#~ msgstr "Deljeni otpremljeni fajlovi"
-
-#~ msgid "View error log"
-#~ msgstr "Pogledajte dnevnik grešaka"
-
-#~ msgid "Common periodic"
-#~ msgstr "Vremenski zajednički"
-
-#~ msgid "Delete stale uploads"
-#~ msgstr "Obriši stare otpreme"
-
-#~ msgid "Automatically enable logging to all apps."
-#~ msgstr "Automatski omogućite evidenciju za sve aplikacije."
-
-#~ msgid ""
-#~ "Enable error logging outside of the system error logging capabilities."
-#~ msgstr ""
-#~ "Omogućite prijavljivanje grešaka izvan sistemskih mogućnosti "
-#~ "evidentiranja grešaka."
-
-#~ msgid "Path to the logfile that will track errors during production."
-#~ msgstr "Put do log datoteke koja će pratiti greške tokom proizvodnje"
-
-#~ msgid "A storage backend that all workers can use to share files."
-#~ msgstr ""
-#~ " Backend skladišta koju svi radnici mogu koristiti za dijeljenje datoteka."
-
-#~ msgid "Confirm delete"
-#~ msgstr "Potvrditi brisanje"
-
-#~ msgid "Confirm"
-#~ msgstr "Potvrditi"
-
-#~ msgid "Create"
-#~ msgstr "Kreirati"
-
-#~ msgid "Clear error log entries for: %s"
-#~ msgstr "Obrišite unose evidencije grešaka za:%s"
-
-#~ msgid "Object error log cleared successfully"
-#~ msgstr "Dnevnik grešaka objekata je uspešno obrisan"
-
-#~ msgid "Date and time"
-#~ msgstr "Datum i vreme"
-
-#~ msgid "Error log entries for: %s"
-#~ msgstr "Unos log grešaka za:%s"

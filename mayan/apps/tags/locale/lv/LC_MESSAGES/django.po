@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Māris Teivāns <maris.teivans@gmail.com>, 2019
@@ -9,17 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: 2020-08-18 07:14+0000\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 06:47+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/lv/)\n"
-"Language: lv\n"
+"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
-"2);\n"
+"Language: lv\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
 #: apps.py:50 apps.py:118 apps.py:125 events.py:5 forms.py:15 links.py:23
 #: menus.py:14 models.py:38 permissions.py:5 search.py:9 search.py:11
@@ -143,17 +141,13 @@ msgstr "Noņemiet tagus no dokumentiem"
 msgid ""
 "Comma separated list of document primary keys to which this tag will be "
 "attached."
-msgstr ""
-"Komatu atdalītu dokumentu primāro atslēgu saraksts, kurām šis tags tiks "
-"pievienots."
+msgstr "Komatu atdalītu dokumentu primāro atslēgu saraksts, kurām šis tags tiks pievienots."
 
 #: serializers.py:85
 msgid ""
 "API URL pointing to a tag in relation to the document attached to it. This "
 "URL is different than the canonical tag URL."
-msgstr ""
-"API URL, kas norāda uz tagu saistībā ar tam pievienoto dokumentu. Šis URL "
-"atšķiras no kanoniskā taga URL."
+msgstr "API URL, kas norāda uz tagu saistībā ar tam pievienoto dokumentu. Šis URL atšķiras no kanoniskā taga URL."
 
 #: serializers.py:105
 msgid "Primary key of the tag to be added."
@@ -226,9 +220,9 @@ msgstr[1] "Vai izdzēst izvēlēto tagu?"
 msgstr[2] "Vai dzēst atlasītos tagus?"
 
 #: views.py:166
-#| msgid "Delete tag: %s"
+#, python-format
 msgid "Delete tag: %s?"
-msgstr "Dzēst tagu: %s"
+msgstr ""
 
 #: views.py:177
 #, python-format
@@ -249,9 +243,7 @@ msgstr "Rediģēt tagu: %s"
 msgid ""
 "Tags are color coded properties that can be attached or removed from "
 "documents."
-msgstr ""
-"Tags ir krāsu kodētas īpašības, kuras var pievienot vai noņemt no "
-"dokumentiem."
+msgstr "Tags ir krāsu kodētas īpašības, kuras var pievienot vai noņemt no dokumentiem."
 
 #: views.py:220
 msgid "No tags available"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Michal Švábík <snadno@lehce.cz>, 2019-2020
@@ -9,27 +9,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: 2020-06-22 15:15+0000\n"
-"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
-"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/"
-"cs/)\n"
-"Language: cs\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 06:46+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
-"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:131 apps.py:378 events.py:5 menus.py:8 models/document_models.py:128
-#: permissions.py:5 queues.py:25 settings.py:18 statistics.py:234
+#: apps.py:131 apps.py:378 events.py:5 menus.py:8
+#: models/document_models.py:128 permissions.py:5 queues.py:25 settings.py:18
+#: statistics.py:234
 msgid "Documents"
 msgstr "Dokumenty"
 
 #: apps.py:148
-#| msgid "Description"
 msgid "Decorations"
-msgstr "Popis"
+msgstr ""
 
 #: apps.py:161
 msgid "Create a document type"
@@ -39,9 +37,7 @@ msgstr "Vytvořit typ dokumentu"
 msgid ""
 "Every uploaded document must be assigned a document type, it is the basic "
 "way Mayan EDMS categorizes documents."
-msgstr ""
-"Každému nahranému dokumentu musí být přiřazen typ dokumentu, jedná se o "
-"základní způsob, jakým Mayan EDMS kategorizuje dokumenty."
+msgstr "Každému nahranému dokumentu musí být přiřazen typ dokumentu, jedná se o základní způsob, jakým Mayan EDMS kategorizuje dokumenty."
 
 #: apps.py:216
 msgid "Versions comment"
@@ -77,9 +73,8 @@ msgid "Latest version"
 msgstr "Poslední verze"
 
 #: apps.py:245
-#| msgid "The name of the document type."
 msgid "Return the document instance."
-msgstr "Název typu dokumentu."
+msgstr ""
 
 #: apps.py:246 links/document_version_links.py:37
 #: links/document_version_page_links.py:96 models/document_models.py:127
@@ -197,13 +192,10 @@ msgstr "Komprimovat"
 
 #: forms/document_forms.py:27
 msgid ""
-"Download the document in the original format or in a compressed manner. This "
-"option is selectable only when downloading one document, for multiple "
+"Download the document in the original format or in a compressed manner. This"
+" option is selectable only when downloading one document, for multiple "
 "documents, the bundle will always be downloads as a compressed file."
-msgstr ""
-"Stáhněte dokument v původním formátu nebo komprimovaným způsobem. Tuto "
-"možnost lze vybrat pouze při stahování jednoho dokumentu, u více dokumentů "
-"bude svazek vždy stahován jako komprimovaný soubor."
+msgstr "Stáhněte dokument v původním formátu nebo komprimovaným způsobem. Tuto možnost lze vybrat pouze při stahování jednoho dokumentu, u více dokumentů bude svazek vždy stahován jako komprimovaný soubor."
 
 #: forms/document_forms.py:34
 msgid "Compressed filename"
@@ -213,9 +205,7 @@ msgstr "Komprimovaný název souboru"
 msgid ""
 "The filename of the compressed file that will contain the documents to be "
 "downloaded, if the previous option is selected."
-msgstr ""
-"Název komprimovaného souboru, který bude obsahovat dokumenty ke stažení, "
-"pokud je vybrána předchozí možnost."
+msgstr "Název komprimovaného souboru, který bude obsahovat dokumenty ke stažení, pokud je vybrána předchozí možnost."
 
 #: forms/document_forms.py:80
 msgid "Quick document rename"
@@ -229,10 +219,7 @@ msgstr "Zachovat rozšíření"
 msgid ""
 "Takes the file extension and moves it to the end of the filename allowing "
 "operating systems that rely on file extensions to open document correctly."
-msgstr ""
-"Vezme příponu souboru a přesune ji na konec názvu souboru, což umožní "
-"operačním systémům, které spoléhají na přípony souborů, aby dokument "
-"otevřely správně."
+msgstr "Vezme příponu souboru a přesune ji na konec názvu souboru, což umožní operačním systémům, které spoléhají na přípony souborů, aby dokument otevřely správně."
 
 #: forms/document_forms.py:148
 msgid "Date added"
@@ -278,9 +265,7 @@ msgstr "Rozsah stran"
 msgid ""
 "Page number from which all the transformations will be cloned. Existing "
 "transformations will be lost."
-msgstr ""
-"Číslo stránky, ze kterého budou klonovány všechny transformace. Stávající "
-"transformace budou ztraceny."
+msgstr "Číslo stránky, ze kterého budou klonovány všechny transformace. Stávající transformace budou ztraceny."
 
 #: forms/document_type_forms.py:73 models/document_models.py:64
 #: models/document_type_models.py:73 models/document_type_models.py:180
@@ -292,10 +277,7 @@ msgid ""
 "Takes the file extension and moves it to the end of the filename allowing "
 "operating systems that rely on file extensions to open the downloaded "
 "document version correctly."
-msgstr ""
-"Vezme příponu souboru a přesune ji na konec názvu souboru, což umožní "
-"operačním systémům, které spoléhají na přípony souborů, aby správně stáhly "
-"verzi dokumentu."
+msgstr "Vezme příponu souboru a přesune ji na konec názvu souboru, což umožní operačním systémům, které spoléhají na přípony souborů, aby správně stáhly verzi dokumentu."
 
 #: links/document_links.py:21 links/document_links.py:65
 msgid "Clear transformations"
@@ -496,9 +478,7 @@ msgstr "Všechny strany"
 msgid ""
 "UUID of a document, universally Unique ID. An unique identifier generated "
 "for each document."
-msgstr ""
-"UUID dokumentu, univerzálně jedinečné ID. Jedinečný identifikátor "
-"vygenerovaný pro každý dokument."
+msgstr "UUID dokumentu, univerzálně jedinečné ID. Jedinečný identifikátor vygenerovaný pro každý dokument."
 
 #: models/document_models.py:62
 msgid "The document type of the document."
@@ -525,8 +505,7 @@ msgstr "Popis"
 msgid ""
 "The server date and time when the document was finally processed and added "
 "to the system."
-msgstr ""
-"Datum a čas serveru, kdy byl dokument nakonec zpracován a přidán do systému."
+msgstr "Datum a čas serveru, kdy byl dokument nakonec zpracován a přidán do systému."
 
 #: models/document_models.py:79 models/misc_models.py:38
 msgid "Added"
@@ -557,10 +536,7 @@ msgid ""
 "A document stub is a document with an entry on the database but no file "
 "uploaded. This could be an interrupted upload or a deferred upload via the "
 "API."
-msgstr ""
-"Útržek dokumentu je dokument s položkou v databázi, ale není nahrán žádný "
-"soubor. Může to být přerušené nahrávání nebo odložené nahrávání "
-"prostřednictvím rozhraní API."
+msgstr "Útržek dokumentu je dokument s položkou v databázi, ale není nahrán žádný soubor. Může to být přerušené nahrávání nebo odložené nahrávání prostřednictvím rozhraní API."
 
 #: models/document_models.py:102
 msgid "Is stub?"
@@ -594,7 +570,8 @@ msgstr "Název typu dokumentu."
 
 #: models/document_type_models.py:35
 msgid ""
-"Amount of time after which documents of this type will be moved to the trash."
+"Amount of time after which documents of this type will be moved to the "
+"trash."
 msgstr "Doba, po které budou dokumenty tohoto typu přesunuty do koše."
 
 #: models/document_type_models.py:37
@@ -668,12 +645,9 @@ msgstr "Soubor"
 #: models/document_version_models.py:90
 msgid ""
 "The document version's file mimetype. MIME types are a standard way to "
-"describe the format of a file, in this case the file format of the document. "
-"Some examples: \"text/plain\" or \"image/jpeg\". "
-msgstr ""
-"Mimetype souboru verze dokumentu. Typy MIME jsou standardním způsobem, jak "
-"popsat formát souboru, v tomto případě formát souboru dokumentu. Několik "
-"příkladů: „text / plain“ nebo „image / jpeg“."
+"describe the format of a file, in this case the file format of the document."
+" Some examples: \"text/plain\" or \"image/jpeg\". "
+msgstr "Mimetype souboru verze dokumentu. Typy MIME jsou standardním způsobem, jak popsat formát souboru, v tomto případě formát souboru dokumentu. Několik příkladů: „text / plain“ nebo „image / jpeg“."
 
 #: models/document_version_models.py:94
 msgid "MIME type"
@@ -683,9 +657,7 @@ msgstr "Typ MIME"
 msgid ""
 "The document version file encoding. binary 7-bit, binary 8-bit, text, "
 "base64, etc."
-msgstr ""
-"Kódování souboru verze dokumentu. binární 7bitové, binární 8bitové, textové, "
-"base64 atd."
+msgstr "Kódování souboru verze dokumentu. binární 7bitové, binární 8bitové, textové, base64 atd."
 
 #: models/document_version_models.py:100
 msgid "Encoding"
@@ -812,9 +784,8 @@ msgid "Clean empty duplicate lists"
 msgstr "Vyčistěte prázdné duplicitní seznamy"
 
 #: queues.py:43
-#| msgid "Empty trash"
 msgid "Empty the trash can"
-msgstr "Prázdný koš"
+msgstr ""
 
 #: queues.py:48
 msgid "Check document type delete periods"
@@ -841,25 +812,20 @@ msgid "Scan document duplicates"
 msgstr "Sken dplicitních dokumentů"
 
 #: search.py:35 search.py:54
-#| msgid "Document type"
 msgid "Document type label"
-msgstr "Typ dokumentu"
+msgstr ""
 
 #: settings.py:26
 msgid ""
 "The threshold at which the DOCUMENT_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest document image cache files. Specify the size in bytes."
-msgstr ""
-"Prahová hodnota, při které DOCUMENT_CACHE_STORAGE_BACKEND začne mazat "
-"nejstarší soubory mezipaměti obrázků dokumentu. Zadejte velikost v bajtech."
+msgstr "Prahová hodnota, při které DOCUMENT_CACHE_STORAGE_BACKEND začne mazat nejstarší soubory mezipaměti obrázků dokumentu. Zadejte velikost v bajtech."
 
 #: settings.py:34
 msgid ""
 "Path to the Storage subclass to use when storing the cached document image "
 "files."
-msgstr ""
-"Cesta k podtřídě Úložiště, která se použije při ukládání obrazových souborů "
-"dokumentů v mezipaměti."
+msgstr "Cesta k podtřídě Úložiště, která se použije při ukládání obrazových souborů dokumentů v mezipaměti."
 
 #: settings.py:42
 msgid "Arguments to pass to the DOCUMENT_CACHE_STORAGE_BACKEND."
@@ -872,22 +838,16 @@ msgstr "Maximální počet oblíbených dokumentů, na uživatele"
 #: settings.py:60
 msgid ""
 "Detect the orientation of each of the document's pages and create a "
-"corresponding rotation transformation to display it rightside up. This is an "
-"experimental feature and it is disabled by default."
-msgstr ""
-"Zjistěte orientaci každé ze stránek dokumentu a vytvořte odpovídající "
-"rotační transformaci, aby se zobrazila napravo. Toto je experimentální "
-"funkce a ve výchozím nastavení je deaktivována."
+"corresponding rotation transformation to display it rightside up. This is an"
+" experimental feature and it is disabled by default."
+msgstr "Zjistěte orientaci každé ze stránek dokumentu a vytvořte odpovídající rotační transformaci, aby se zobrazila napravo. Toto je experimentální funkce a ve výchozím nastavení je deaktivována."
 
 #: settings.py:69
 msgid ""
-"Size of blocks to use when calculating the document file's checksum. A value "
-"of 0 disables the block calculation and the entire file will be loaded into "
-"memory."
-msgstr ""
-"Velikost bloků, které se mají použít při výpočtu kontrolního součtu souboru "
-"dokumentu. Hodnota 0 zakáže výpočet bloku a celý soubor bude načten do "
-"paměti."
+"Size of blocks to use when calculating the document file's checksum. A value"
+" of 0 disables the block calculation and the entire file will be loaded into"
+" memory."
+msgstr "Velikost bloků, které se mají použít při výpočtu kontrolního součtu souboru dokumentu. Hodnota 0 zakáže výpočet bloku a celý soubor bude načten do paměti."
 
 #: settings.py:76
 msgid "Default documents language (in ISO639-3 format)."
@@ -901,17 +861,13 @@ msgstr "Seznam podporovaných jazyků dokumentů. Ve formátu ISO639-3."
 msgid ""
 "Time in seconds that the browser should cache the supplied document images. "
 "The default of 31559626 seconds corresponde to 1 year."
-msgstr ""
-"Čas v sekundách, který má prohlížeč ukládat do mezipaměti dodané obrázky "
-"dokumentů. Výchozí hodnota 31559626 sekund odpovídá 1 roku."
+msgstr "Čas v sekundách, který má prohlížeč ukládat do mezipaměti dodané obrázky dokumentů. Výchozí hodnota 31559626 sekund odpovídá 1 roku."
 
 #: settings.py:104
 msgid ""
 "Maximum number of recently accessed (created, edited, viewed) documents to "
 "remember per user."
-msgstr ""
-"Maximální počet nedávno zpřístupněných (vytvořených, upravených, "
-"zobrazených) dokumentů, na uživatele."
+msgstr "Maximální počet nedávno zpřístupněných (vytvořených, upravených, zobrazených) dokumentů, na uživatele."
 
 #: settings.py:111
 msgid "Maximum number of recently created documents to show."
@@ -919,13 +875,11 @@ msgstr "Maximální počet nedávno vytvořených dokumentů k zobrazení."
 
 #: settings.py:117
 msgid "Amount in degrees to rotate a document page per user interaction."
-msgstr ""
-"Částka ve stupních pro otočení stránky dokumentu na interakci uživatele."
+msgstr "Částka ve stupních pro otočení stránky dokumentu na interakci uživatele."
 
 #: settings.py:123
 msgid "Path to the Storage subclass to use when storing document files."
-msgstr ""
-"Cesta k podtřídě Úložiště, která se použije při ukládání souborů dokumentů."
+msgstr "Cesta k podtřídě Úložiště, která se použije při ukládání souborů dokumentů."
 
 #: settings.py:130
 msgid "Arguments to pass to the DOCUMENT_STORAGE_BACKEND."
@@ -934,8 +888,7 @@ msgstr "Argumenty k předání do DOCUMENT_STORAGE_BACKEND."
 #: settings.py:136
 msgid ""
 "Time after which a document stub will be considered invalid and deleted."
-msgstr ""
-"Čas, po kterém bude útržek dokumentu považován za neplatný a odstraněný."
+msgstr "Čas, po kterém bude útržek dokumentu považován za neplatný a odstraněný."
 
 #: settings.py:144
 msgid ""
@@ -951,23 +904,17 @@ msgstr "Výška obrázku v náhledech obrázku v pixelech."
 msgid ""
 "Maximum amount in percent (%) to allow user to zoom in a document page "
 "interactively."
-msgstr ""
-"Maximální částka v procentech (%), která uživateli umožňuje interaktivně "
-"přibližovat stránku dokumentu."
+msgstr "Maximální částka v procentech (%), která uživateli umožňuje interaktivně přibližovat stránku dokumentu."
 
 #: settings.py:174
 msgid ""
 "Minimum amount in percent (%) to allow user to zoom out a document page "
 "interactively."
-msgstr ""
-"Minimální částka v procentech (%) umožňující uživateli interaktivně oddálit "
-"stránku dokumentu."
+msgstr "Minimální částka v procentech (%) umožňující uživateli interaktivně oddálit stránku dokumentu."
 
 #: settings.py:181
 msgid "Amount in percent zoom in or out a document page per user interaction."
-msgstr ""
-"Částka v procentech přiblížení nebo oddálení stránky dokumentu na interakci "
-"uživatele."
+msgstr "Částka v procentech přiblížení nebo oddálení stránky dokumentu na interakci uživatele."
 
 #: statistics.py:15
 msgid "January"
@@ -1045,9 +992,7 @@ msgstr "Celkový počet stránek dokumentu v každém měsíci"
 msgid ""
 "Unable to initialize the document image storage. Check the settings {} and "
 "{} for formatting errors."
-msgstr ""
-"Nelze inicializovat úložiště obrázků dokumentu. Zkontrolujte v nastavení {} "
-"a {} chyby formátování."
+msgstr "Nelze inicializovat úložiště obrázků dokumentu. Zkontrolujte v nastavení {} a {} chyby formátování."
 
 #: storages.py:23
 msgid "Document images"
@@ -1055,11 +1000,9 @@ msgstr "Obrázky dokumentů"
 
 #: storages.py:31
 msgid ""
-"Unable to initialize the document version storage. Check the settings {} and "
-"{} for formatting errors."
-msgstr ""
-"Nelze inicializovat úložiště verze dokumentu. Zkontrolujte v nastavení {} a "
-"{} chyby formátování."
+"Unable to initialize the document version storage. Check the settings {} and"
+" {} for formatting errors."
+msgstr "Nelze inicializovat úložiště verze dokumentu. Zkontrolujte v nastavení {} a {} chyby formátování."
 
 #: storages.py:37
 msgid "Document version files"
@@ -1075,9 +1018,7 @@ msgid ""
 "\n"
 "                    Page %(page_number)s of %(total_pages)s\n"
 "                "
-msgstr ""
-"\n"
-"Strana %(page_number)s z %(total_pages)s"
+msgstr "\nStrana %(page_number)s z %(total_pages)s"
 
 #: templates/documents/forms/widgets/document_page_carousel.html:22
 msgid "No pages to display"
@@ -1094,13 +1035,11 @@ msgstr "Neznámý jazyk &quot;%s&quot;"
 
 #: views/document_page_views.py:56
 msgid ""
-"This could mean that the document is of a format that is not supported, that "
-"it is corrupted or that the upload process was interrupted. Use the document "
-"page recalculation action to attempt to introspect the page count again."
-msgstr ""
-"To by mohlo znamenat, že dokument je ve formátu, který není podporován, že "
-"je poškozen, nebo že byl proces nahrávání přerušen. Pokuste se znovu zjistit "
-"počet stránek pomocí akce přepočítání stránky dokumentu."
+"This could mean that the document is of a format that is not supported, that"
+" it is corrupted or that the upload process was interrupted. Use the "
+"document page recalculation action to attempt to introspect the page count "
+"again."
+msgstr "To by mohlo znamenat, že dokument je ve formátu, který není podporován, že je poškozen, nebo že byl proces nahrávání přerušen. Pokuste se znovu zjistit počet stránek pomocí akce přepočítání stránky dokumentu."
 
 #: views/document_page_views.py:61
 msgid "No document pages available"
@@ -1148,14 +1087,10 @@ msgstr "Dokumenty typu: %s"
 #: views/document_type_views.py:71
 msgid ""
 "Document types are the most basic units of configuration. Everything in the "
-"system will depend on them. Define a document type for each type of physical "
-"document you intend to upload. Example document types: invoice, receipt, "
+"system will depend on them. Define a document type for each type of physical"
+" document you intend to upload. Example document types: invoice, receipt, "
 "manual, prescription, balance sheet."
-msgstr ""
-"Typy dokumentů jsou nejzákladnější konfigurační jednotky. Vše v systému bude "
-"záviset na nich. Definujte typ dokumentu pro každý typ fyzického dokumentu, "
-"který chcete odeslat. Příklady typů dokumentů: faktura, účtenka, příručka, "
-"předpis, rozvaha."
+msgstr "Typy dokumentů jsou nejzákladnější konfigurační jednotky. Vše v systému bude záviset na nich. Definujte typ dokumentu pro každý typ fyzického dokumentu, který chcete odeslat. Příklady typů dokumentů: faktura, účtenka, příručka, předpis, rozvaha."
 
 #: views/document_type_views.py:77
 msgid "No document types available"
@@ -1189,25 +1124,19 @@ msgstr "Vytvořte rychlou jmenovku pro typ dokumentu: %s"
 #, python-format
 msgid ""
 "Delete the quick label: %(label)s, from document type \"%(document_type)s\"?"
-msgstr ""
-"Odstranit rychlou jmenovku: %(label)s, z typu dokumentu „%(document_type)s“?"
+msgstr "Odstranit rychlou jmenovku: %(label)s, z typu dokumentu „%(document_type)s“?"
 
 #: views/document_type_views.py:216
 #, python-format
-msgid ""
-"Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
-msgstr ""
-"Upravit rychlou jmenovku „%(filename)s“ z typu dokumentu „%(document_type)s“"
+msgid "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
+msgstr "Upravit rychlou jmenovku „%(filename)s“ z typu dokumentu „%(document_type)s“"
 
 #: views/document_type_views.py:252
 msgid ""
 "Quick labels are predetermined filenames that allow the quick renaming of "
 "documents as they are uploaded by selecting them from a list. Quick labels "
 "can also be used after the documents have been uploaded."
-msgstr ""
-"Rychlé jmenovky jsou předdefinované názvy souborů, které umožňují rychlé "
-"přejmenování dokumentů při jejich odesílání výběrem ze seznamu. Rychlé "
-"jmenovky lze použít také po nahrání dokumentů."
+msgstr "Rychlé jmenovky jsou předdefinované názvy souborů, které umožňují rychlé přejmenování dokumentů při jejich odesílání výběrem ze seznamu. Rychlé jmenovky lze použít také po nahrání dokumentů."
 
 #: views/document_type_views.py:258
 msgid "There are no quick labels for this document type"
@@ -1219,9 +1148,9 @@ msgid "Quick labels for document type: %s"
 msgstr "Rychlé jmenovky pro typ dokumentu: %s"
 
 #: views/document_type_views.py:280
-#| msgid "Deletion policies for document type: %s"
+#, python-format
 msgid "Filename generation setup for document type: %s"
-msgstr "Zásady mazání pro typ dokumentu: %s"
+msgstr ""
 
 #: views/document_version_views.py:43
 msgid "Download document version"
@@ -1264,10 +1193,7 @@ msgid ""
 "This could mean that no documents have been uploaded or that your user "
 "account has not been granted the view permission for any document or "
 "document type."
-msgstr ""
-"To by mohlo znamenat, že nebyly nahrány žádné dokumenty nebo že váš "
-"uživatelský účet nezískal oprávnění k zobrazení pro jakýkoli dokument nebo "
-"typ dokumentu."
+msgstr "To by mohlo znamenat, že nebyly nahrány žádné dokumenty nebo že váš uživatelský účet nezískal oprávnění k zobrazení pro jakýkoli dokument nebo typ dokumentu."
 
 #: views/document_views.py:92
 msgid "No documents available"
@@ -1352,9 +1278,7 @@ msgstr "Přepočítat počet stránek dokumentu: %s?"
 msgid ""
 "Document \"%(document)s\" is empty. Upload at least one document version "
 "before attempting to detect the page count."
-msgstr ""
-"Dokument „%(document)s“ je prázdný. Před pokusem zjistit počet stránek "
-"nahrajte alespoň jednu verzi dokumentu."
+msgstr "Dokument „%(document)s“ je prázdný. Před pokusem zjistit počet stránek nahrajte alespoň jednu verzi dokumentu."
 
 #: views/document_views.py:412
 #, python-format
@@ -1384,17 +1308,14 @@ msgstr "Vymazat všechny transformace stránky pro dokument: %s?"
 msgid ""
 "Error deleting the page transformations for document: %(document)s; "
 "%(error)s."
-msgstr ""
-"Chyba při odstraňování transformací stránky pro dokument: %(document)s; "
-"%(error)s."
+msgstr "Chyba při odstraňování transformací stránky pro dokument: %(document)s; %(error)s."
 
 #: views/document_views.py:481
 #, python-format
 msgid ""
-"Error cloning the page transformations for document: %(document)s; %(error)s."
-msgstr ""
-"Chyba při klonování transformací stránky pro dokument: %(document)s; "
+"Error cloning the page transformations for document: %(document)s; "
 "%(error)s."
+msgstr "Chyba při klonování transformací stránky pro dokument: %(document)s; %(error)s."
 
 #: views/document_views.py:489
 msgid "Transformations cloned successfully."
@@ -1416,12 +1337,9 @@ msgstr "Tisk: %s"
 
 #: views/document_views.py:612
 msgid ""
-"This view will list the latest documents viewed or manipulated in any way by "
-"this user account."
-msgstr ""
-"V tomto zobrazení budou uvedeny nejnovější dokumenty, které byly tímto "
-"uživatelským účtem jakýmkoli způsobem prohlíženy nebo jakýmkoli jiným "
-"způsobem manipulovány."
+"This view will list the latest documents viewed or manipulated in any way by"
+" this user account."
+msgstr "V tomto zobrazení budou uvedeny nejnovější dokumenty, které byly tímto uživatelským účtem jakýmkoli způsobem prohlíženy nebo jakýmkoli jiným způsobem manipulovány."
 
 #: views/document_views.py:616
 msgid "There are no recently accessed document"
@@ -1451,13 +1369,9 @@ msgstr "Duplikáty dokumentu: %s"
 #: views/duplicated_document_views.py:64
 msgid ""
 "Duplicates are documents that are composed of the exact same file, down to "
-"the last byte. Files that have the same text or OCR but are not identical or "
-"were saved using a different file format will not appear as duplicates."
-msgstr ""
-"Duplikáty jsou dokumenty, které se skládají ze stejného souboru, až po "
-"poslední bajt. Soubory, které mají stejný text nebo OCR, ale nejsou totožné "
-"nebo byly uloženy pomocí jiného formátu souboru, se nebudou zobrazovat jako "
-"duplikáty."
+"the last byte. Files that have the same text or OCR but are not identical or"
+" were saved using a different file format will not appear as duplicates."
+msgstr "Duplikáty jsou dokumenty, které se skládají ze stejného souboru, až po poslední bajt. Soubory, které mají stejný text nebo OCR, ale nejsou totožné nebo byly uloženy pomocí jiného formátu souboru, se nebudou zobrazovat jako duplikáty."
 
 #: views/duplicated_document_views.py:71
 msgid "There are no duplicated documents"
@@ -1476,9 +1390,7 @@ msgstr "Skenování duplicitních dokumentů bylo úspěšně zařazeno do front
 msgid ""
 "Favorited documents will be listed in this view. Up to %(count)d documents "
 "can be favorited per user. "
-msgstr ""
-"V tomto zobrazení budou uvedeny oblíbené dokumenty. Na uživatele může být "
-"upřednostněno až %(count)d."
+msgstr "V tomto zobrazení budou uvedeny oblíbené dokumenty. Na uživatele může být upřednostněno až %(count)d."
 
 #: views/favorite_document_views.py:34
 msgid "There are no favorited documents."
@@ -1582,9 +1494,7 @@ msgid ""
 "To avoid loss of data, documents are not deleted instantly. First, they are "
 "placed in the trash can. From here they can be then finally deleted or "
 "restored."
-msgstr ""
-"Aby nedocházelo ke ztrátě dat, dokumenty se neodstraní okamžitě. Nejprve "
-"jsou umístěny do koše. Odtud mohou být nakonec odstraněny nebo obnoveny."
+msgstr "Aby nedocházelo ke ztrátě dat, dokumenty se neodstraní okamžitě. Nejprve jsou umístěny do koše. Odtud mohou být nakonec odstraněny nebo obnoveny."
 
 #: views/trashed_document_views.py:130
 msgid "There are no documents in the trash can"
@@ -1616,23 +1526,3 @@ msgstr "Strany: %d"
 #: workflow_actions.py:7
 msgid "Send document to trash"
 msgstr "Odeslat dokument do koše"
-
-#~ msgid "Details"
-#~ msgstr "Detail"
-
-#~ msgid ""
-#~ "Disables the first cache tier which stores high resolution, non "
-#~ "transformed versions of documents's pages."
-#~ msgstr ""
-#~ "Zakáže první vrstvu mezipaměti, která ukládá netransformované verze "
-#~ "stránek dokumentů s vysokým rozlišením."
-
-#~ msgid ""
-#~ "Disables the second cache tier which stores medium to low resolution, "
-#~ "transformed (rotated, zoomed, etc) versions of documents' pages."
-#~ msgstr ""
-#~ "Zakáže druhou vrstvu mezipaměti, která ukládá střední až nízké rozlišení, "
-#~ "transformované (otočené, zvětšené atd.) Verze stránek dokumentů."
-
-#~ msgid "Trash emptied successfully"
-#~ msgstr "Koš se úspěšně vyprázdnil"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2018
@@ -10,15 +10,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: 2020-05-25 06:18+0000\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 06:47+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:48 links.py:56 models/base.py:38 queues.py:7 settings.py:11
@@ -35,9 +34,7 @@ msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
-msgstr ""
-"منابع سندي روشي است که اسناد جديد به EDMS ميان تغيير مي کند و حداقل يک منبع "
-"فرم وب را قادر مي سازد تا اسناد را از يک مرورگر آپلود کند."
+msgstr "منابع سندي روشي است که اسناد جديد به EDMS ميان تغيير مي کند و حداقل يک منبع فرم وب را قادر مي سازد تا اسناد را از يک مرورگر آپلود کند."
 
 #: apps.py:86
 msgid "Type"
@@ -270,9 +267,7 @@ msgstr "SSL"
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
-msgstr ""
-"Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
-"for IMAP over SSL."
+msgstr "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 for IMAP over SSL."
 
 #: models/email_sources.py:44
 msgid "Port"
@@ -337,18 +332,14 @@ msgstr "ایمیل کردن سورسها"
 msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr ""
-"نوع Metadata موضوع \"%(metadata_type)s\" برای نوع سند معتبر نیست: "
-"%(document_type)s"
+msgstr "نوع Metadata موضوع \"%(metadata_type)s\" برای نوع سند معتبر نیست: %(document_type)s"
 
 #: models/email_sources.py:201
 #, python-format
 msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr ""
-"\"از\" نوع ابرداده \"%(metadata_type)s\" برای نوع سند معتبر نیست: "
-"%(document_type)s"
+msgstr "\"از\" نوع ابرداده \"%(metadata_type)s\" برای نوع سند معتبر نیست: %(document_type)s"
 
 #: models/email_sources.py:216
 msgid "IMAP Mailbox from which to check for messages."
@@ -371,8 +362,9 @@ msgstr ""
 #: models/email_sources.py:228
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
-"command per line. Use the commands specified in https://tools.ietf.org/html/"
-"rfc2060.html#section-6.4.6 or the custom commands for your IMAP server."
+"command per line. Use the commands specified in "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
+"commands for your IMAP server."
 msgstr ""
 
 #: models/email_sources.py:232
@@ -415,9 +407,7 @@ msgstr "نام دستگاه"
 msgid ""
 "Selects the scan mode (e.g., lineart, monochrome, or color). If this option "
 "is not supported by your scanner, leave it blank."
-msgstr ""
-"حالت اسکن را انتخاب می کند (به عنوان مثال، خط، سیاه و سفید یا رنگ). اگر این "
-"گزینه توسط اسکنر شما پشتیبانی نمی شود، آن را خالی بگذارید."
+msgstr "حالت اسکن را انتخاب می کند (به عنوان مثال، خط، سیاه و سفید یا رنگ). اگر این گزینه توسط اسکنر شما پشتیبانی نمی شود، آن را خالی بگذارید."
 
 #: models/scanner_sources.py:39
 msgid "Mode"
@@ -428,9 +418,7 @@ msgid ""
 "Sets the resolution of the scanned image in DPI (dots per inch). Typical "
 "value is 200. If this option is not supported by your scanner, leave it "
 "blank."
-msgstr ""
-"وضوح تصویر اسکن شده را در DPI (نقطه در اینچ) تنظیم می کند. مقدار معمول 200 "
-"است. اگر این گزینه توسط اسکنر شما پشتیبانی نمی شود، آن را خالی بگذارید."
+msgstr "وضوح تصویر اسکن شده را در DPI (نقطه در اینچ) تنظیم می کند. مقدار معمول 200 است. اگر این گزینه توسط اسکنر شما پشتیبانی نمی شود، آن را خالی بگذارید."
 
 #: models/scanner_sources.py:46
 msgid "Resolution"
@@ -440,9 +428,7 @@ msgstr "وضوح"
 msgid ""
 "Selects the scan source (such as a document-feeder). If this option is not "
 "supported by your scanner, leave it blank."
-msgstr ""
-"منبع اسکن (مانند فیدر سند) را انتخاب می کند. اگر این گزینه توسط اسکنر شما "
-"پشتیبانی نمی شود، آن را خالی بگذارید."
+msgstr "منبع اسکن (مانند فیدر سند) را انتخاب می کند. اگر این گزینه توسط اسکنر شما پشتیبانی نمی شود، آن را خالی بگذارید."
 
 #: models/scanner_sources.py:52
 msgid "Paper source"
@@ -452,9 +438,7 @@ msgstr "منبع کاغذ"
 msgid ""
 "Selects the document feeder mode (simplex/duplex). If this option is not "
 "supported by your scanner, leave it blank."
-msgstr ""
-"حالت فیدر سند (simplex / duplex) را انتخاب می کند. اگر این گزینه توسط اسکنر "
-"شما پشتیبانی نمی شود، آن را خالی بگذارید."
+msgstr "حالت فیدر سند (simplex / duplex) را انتخاب می کند. اگر این گزینه توسط اسکنر شما پشتیبانی نمی شود، آن را خالی بگذارید."
 
 #: models/scanner_sources.py:59
 msgid "ADF mode"
@@ -703,11 +687,9 @@ msgstr ""
 
 #: views.py:257 wizards.py:152
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
-msgstr ""
-"هیچ منبع محاوره ای سند تعریف و یا فعال نشده، قبل از ادامه دادن یک منبع "
-"بسازید."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
+msgstr "هیچ منبع محاوره ای سند تعریف و یا فعال نشده، قبل از ادامه دادن یک منبع بسازید."
 
 #: views.py:285 views.py:314 views.py:324
 msgid "Document properties"
@@ -716,8 +698,8 @@ msgstr "خواص سند"
 #: views.py:294
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the "
-"necessary file system permissions for the folder."
+"the operating system user account being used for Mayan EDMS doesn't have the"
+" necessary file system permissions for the folder."
 msgstr ""
 
 #: views.py:301
@@ -748,8 +730,7 @@ msgstr ""
 
 #: views.py:551
 #, python-format
-msgid ""
-"Unable to upload new versions for document \"%(document)s\". %(exception)s"
+msgid "Unable to upload new versions for document \"%(document)s\". %(exception)s"
 msgstr ""
 
 #: views.py:612
@@ -763,8 +744,7 @@ msgstr ""
 
 #: views.py:646
 #, python-format
-msgid ""
-"Upload a new version for document \"%(document)s\" from source: %(source)s"
+msgid "Upload a new version for document \"%(document)s\" from source: %(source)s"
 msgstr ""
 
 #: views.py:649
@@ -787,21 +767,3 @@ msgstr "مرحله بعدی"
 #: wizards.py:183
 msgid "Document upload wizard"
 msgstr "جادوگر بارگذاری سند"
-
-#~ msgid "Date time"
-#~ msgstr "زمان قرار"
-
-#~ msgid "Message"
-#~ msgstr "پیام"
-
-#~ msgid "Logs"
-#~ msgstr "سیاههها"
-
-#~ msgid "Log entry"
-#~ msgstr "ورودی لاگ"
-
-#~ msgid "Log entries"
-#~ msgstr "ورودیهای لاگ"
-
-#~ msgid "Log entries for source: %s"
-#~ msgstr "ورود به سیستم برای منبع: %s"

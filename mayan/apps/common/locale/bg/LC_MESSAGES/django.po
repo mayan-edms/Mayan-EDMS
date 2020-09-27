@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Lyudmil Antonov <lantonov.here@gmail.com>, 2019-2020
@@ -10,15 +10,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: 2020-08-20 17:23+0000\n"
-"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
-"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/bg/)\n"
-"Language: bg\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 06:46+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:133 permissions.py:5 settings.py:10
@@ -118,9 +117,7 @@ msgstr "Тази функция е оттеглена и ще бъде прем�
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
-msgstr ""
-"Вашата база данни е настроена да използва SQLite. SQLite трябва да се "
-"използва само за разработка и тестване, а не за производство."
+msgstr "Вашата база данни е настроена да използва SQLite. SQLite трябва да се използва само за разработка и тестване, а не за производство."
 
 #: literals.py:19
 msgid "Days"
@@ -184,42 +181,31 @@ msgstr "По подразбиране"
 
 #: settings.py:17
 msgid ""
-"Time to delay background tasks that depend on a database commit to propagate."
-msgstr ""
-"Време за забавяне на фоновите задачи, които зависят от запис в базата данни, "
-"за да се изпълнят."
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
+msgstr "Време за забавяне на фоновите задачи, които зависят от запис в базата данни, за да се изпълнят."
 
 #: settings.py:25
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application."
-msgstr ""
-"Списък с низове, обозначаващи всички приложения, които трябва да бъдат "
-"премахнати от списъка, обикновено инсталиран от Mayan EDMS. Всеки низ трябва "
-"да бъде подчертан Python път към: клас на конфигурация на приложението "
-"(предпочитан) или пакет, съдържащ приложение."
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application."
+msgstr "Списък с низове, обозначаващи всички приложения, които трябва да бъдат премахнати от списъка, обикновено инсталиран от Mayan EDMS. Всеки низ трябва да бъде подчертан Python път към: клас на конфигурация на приложението (предпочитан) или пакет, съдържащ приложение."
 
 #: settings.py:35
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application."
-msgstr ""
-"Списък на низове, обозначаващи всички приложения, които са инсталирани извън "
-"тези, които обикновено се инсталират от Mayan EDMS. Всеки низ трябва да бъде "
-"подчертан Python път към: клас на конфигурация на приложението (предпочитан) "
-"или пакет, съдържащ приложение."
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application."
+msgstr "Списък на низове, обозначаващи всички приложения, които са инсталирани извън тези, които обикновено се инсталират от Mayan EDMS. Всеки низ трябва да бъде подчертан Python път към: клас на конфигурация на приложението (предпочитан) или пакет, съдържащ приложение."
 
 #: settings.py:44
 msgid ""
-"Name of the view attached to the brand anchor in the main menu. This is also "
-"the view to which users will be redirected after log in."
-msgstr ""
-"Име на изгледа, прикрепен към котвата на марката в главното меню. Това е и "
-"изгледът, към който потребителите ще бъдат пренасочени след влизане."
+"Name of the view attached to the brand anchor in the main menu. This is also"
+" the view to which users will be redirected after log in."
+msgstr "Име на изгледа, прикрепен към котвата на марката в главното меню. Това е и изгледът, към който потребителите ще бъдат пренасочени след влизане."
 
 #: settings.py:52
 msgid "Name to be displayed in the main menu."
@@ -245,8 +231,7 @@ msgstr "Въведете валидна YAML стойност."
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
-msgstr ""
-"Въведете валидно „вътрешно име“, състоящо се от букви, цифри и подчертавания."
+msgstr "Въведете валидно „вътрешно име“, състоящо се от букви, цифри и подчертавания."
 
 #: views.py:27
 msgid "About"
@@ -275,9 +260,8 @@ msgid "Make a copy of %(object_name)s \"%(object)s\"?"
 msgstr ""
 
 #: views.py:134
-#| msgid "%(object)s created successfully."
 msgid "Object copied successfully."
-msgstr "%(object)s е създаден успешно."
+msgstr ""
 
 #: views.py:150
 msgid "No setup options available."
@@ -287,9 +271,7 @@ msgstr "Няма опции за настройка."
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
-msgstr ""
-"Липса на резултати тук означава, че нямате необходимите разрешения за "
-"изпълнение на административна задача."
+msgstr "Липса на резултати тук означава, че нямате необходимите разрешения за изпълнение на административна задача."
 
 #: views.py:158
 msgid "Setup items"
@@ -302,175 +284,3 @@ msgstr "Тук можете да конфигурирате всички асп�
 #: views.py:175
 msgid "These modules are used to do system maintenance."
 msgstr "Тези модули се използват за поддръжка на системата."
-
-#~ msgid "Selection"
-#~ msgstr "Избиране"
-
-#~ msgid "None"
-#~ msgstr "Няма"
-
-#~ msgid ""
-#~ "Select entries to be removed. Hold Control to select multiple entries. "
-#~ "Once the selection is complete, click the button below or double click "
-#~ "the list to activate the action."
-#~ msgstr ""
-#~ "Изберете записи, които ще бъдат премахнати. Задръжте Control, за да "
-#~ "изберете няколко записа. След като избирането приключи, щракнете върху "
-#~ "бутона по-долу или щракнете двукратно върху списъка, за да активирате "
-#~ "действието."
-
-#~ msgid ""
-#~ "Select entries to be added. Hold Control to select multiple entries. Once "
-#~ "the selection is complete, click the button below or double click the "
-#~ "list to activate the action."
-#~ msgstr ""
-#~ "Изберете записи за добавяне. Задръжте Control, за да изберете няколко "
-#~ "записа. След като избирането приключи, щракнете върху бутона по-долу или "
-#~ "щракнете двукратно върху списъка, за да активирате действието."
-
-#~ msgid "Add all"
-#~ msgstr "Добавете всички"
-
-#~ msgid "Add"
-#~ msgstr "Добавете"
-
-#~ msgid "Remove all"
-#~ msgstr "Премахнете всички"
-
-#~ msgid "Remove"
-#~ msgstr "Премахнете"
-
-#~ msgid "Duplicate data error: %(error)s"
-#~ msgstr "Грешка в дублиращи данни: %(error)s"
-
-#~ msgid "%(object)s not created, error: %(error)s"
-#~ msgstr "%(object)s не е създаден, грешка: %(error)s"
-
-#~ msgid "%(object)s not deleted, error: %(error)s."
-#~ msgstr "%(object)s не е изтрит, грешка: %(error)s."
-
-#~ msgid "%(object)s deleted successfully."
-#~ msgstr "%(object)s изтрит успешно."
-
-#~ msgid "%(object)s not updated, error: %(error)s."
-#~ msgstr "%(object)s не е актуализиран, грешка: %(error)s."
-
-#~ msgid "%(object)s updated successfully."
-#~ msgstr "%(object)s актуализиран успешно."
-
-#~ msgid "Errors"
-#~ msgstr "Грешки"
-
-#~ msgid "Clear all"
-#~ msgstr "Изчисти всичко"
-
-#~ msgid "No %(verbose_name)s found matching the query"
-#~ msgstr "Не е намерен %(verbose_name)s, отговарящ на заявката"
-
-#~ msgid "Object"
-#~ msgstr "Обект"
-
-#~ msgid "Namespace"
-#~ msgstr "Именно пространство"
-
-#~ msgid "Date time"
-#~ msgstr "Дата час"
-
-#~ msgid "Result"
-#~ msgstr "Резултат"
-
-#~ msgid "Error log entry"
-#~ msgstr "Запис в дневника за грешки"
-
-#~ msgid "Error log entries"
-#~ msgstr "Записи в дневника за грешки"
-
-#~ msgid "File"
-#~ msgstr "Файл"
-
-#~ msgid "Filename"
-#~ msgstr "Име на файл"
-
-#~ msgid "Shared uploaded file"
-#~ msgstr "Споделен качен файл"
-
-#~ msgid "Shared uploaded files"
-#~ msgstr "Споделени качени файлове"
-
-#~ msgid "View error log"
-#~ msgstr "Преглед на дневника за грешки"
-
-#~ msgid "Common periodic"
-#~ msgstr "Обща периодичност"
-
-#~ msgid "Delete stale uploads"
-#~ msgstr "Изтриване на застояли качвания"
-
-#~ msgid "Automatically enable logging to all apps."
-#~ msgstr "Автоматично активиране на регистрацията във всички приложения."
-
-#~ msgid "The number objects that will be displayed per page."
-#~ msgstr "Брой на обектите, които ще бъдат показани на страница."
-
-#~ msgid ""
-#~ "Enable error logging outside of the system error logging capabilities."
-#~ msgstr ""
-#~ "Активирайте регистрирането на грешки извън възможностите за регистриране "
-#~ "на грешки в системата."
-
-#~ msgid "Path to the logfile that will track errors during production."
-#~ msgstr ""
-#~ "Път към файла на дневника, който ще проследява грешките по време на "
-#~ "производството."
-
-#~ msgid "A storage backend that all workers can use to share files."
-#~ msgstr ""
-#~ "Бекенд за съхранение, който всички работници могат да използват за "
-#~ "споделяне на файлове."
-
-#~ msgid ""
-#~ "Unable to initialize the shared uploaded file storage. Check the settings "
-#~ "{} and {} for formatting errors."
-#~ msgstr ""
-#~ "Не може да се инициализира съхраняването на качени файлове. Проверете "
-#~ "настройките {} и {} за форматиране на грешки."
-
-#~ msgid "Confirm delete"
-#~ msgstr "Потвърдете изтриване"
-
-#~ msgid "Edit %s"
-#~ msgstr "Редактиране %s"
-
-#~ msgid "Confirm"
-#~ msgstr "Потвърждаване"
-
-#~ msgid "Details for: %s"
-#~ msgstr "Подробности за: %s"
-
-#~ msgid "Edit: %s"
-#~ msgstr "Редактиране: %s"
-
-#~ msgid "Create"
-#~ msgstr "Създаване"
-
-#~ msgid "Clear error log entries for: %s"
-#~ msgstr "Изчистване на записите в дневника за грешки за: %s"
-
-#~ msgid "Object error log cleared successfully"
-#~ msgstr "Дневникът за грешки в обекта е изчистен успешно"
-
-#~ msgid "Date and time"
-#~ msgstr "Дата и час"
-
-#~ msgid ""
-#~ "This view displays the error log of different object. An empty list is a "
-#~ "good thing."
-#~ msgstr ""
-#~ "Този изглед показва дневника на грешките на различен обект. Празен списък "
-#~ "е нещо добро."
-
-#~ msgid "There are no error log entries"
-#~ msgstr "Няма записи в дневника за грешки"
-
-#~ msgid "Error log entries for: %s"
-#~ msgstr "Записи в дневника за грешки за: %s"

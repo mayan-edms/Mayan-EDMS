@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Michal Švábík <snadno@lehce.cz>, 2019-2020
@@ -9,17 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: 2020-06-22 15:39+0000\n"
-"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
-"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/"
-"cs/)\n"
-"Language: cs\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 06:47+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
-"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: apps.py:48 links.py:56 models/base.py:38 queues.py:7 settings.py:11
 #: views.py:192
@@ -35,10 +33,7 @@ msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
-msgstr ""
-"Zdroje dokumentů jsou způsob, jakým jsou nové dokumenty podávány do Mayan "
-"EDMS, vytvořte alespoň zdroj webového formuláře, který umožňuje vkládat "
-"dokumenty z prohlížeče."
+msgstr "Zdroje dokumentů jsou způsob, jakým jsou nové dokumenty podávány do Mayan EDMS, vytvořte alespoň zdroj webového formuláře, který umožňuje vkládat dokumenty z prohlížeče."
 
 #: apps.py:86
 msgid "Type"
@@ -56,9 +51,7 @@ msgstr "Náhled"
 msgid ""
 "Utility provided by the SANE package. Used to control the scanner and "
 "obtained the scanned document image."
-msgstr ""
-"Obslužný program poskytovaný balíčkem SANE. Slouží k ovládání skeneru a "
-"získání naskenovaného obrázku dokumentu."
+msgstr "Obslužný program poskytovaný balíčkem SANE. Slouží k ovládání skeneru a získání naskenovaného obrázku dokumentu."
 
 #: forms.py:25
 msgid "An optional comment to explain the upload."
@@ -74,8 +67,7 @@ msgstr "Rozbal komprimované soubory"
 
 #: forms.py:42 serializers.py:22
 msgid "Upload a compressed file's contained files as individual documents."
-msgstr ""
-"Nahrajte komprimovaný soubor obsahující dokumenty jako jednotlivé dokumenty."
+msgstr "Nahrajte komprimovaný soubor obsahující dokumenty jako jednotlivé dokumenty."
 
 #: forms.py:63 views.py:204
 msgid "Staging file"
@@ -274,9 +266,7 @@ msgstr "SSL"
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
-msgstr ""
-"Typické volby jsou 110 pro POP3, 995 pro POP3 přes SSL, 143 pro IMAP, 993 "
-"pro IMAP přes SSL."
+msgstr "Typické volby jsou 110 pro POP3, 995 pro POP3 přes SSL, 143 pro IMAP, 993 pro IMAP přes SSL."
 
 #: models/email_sources.py:44
 msgid "Port"
@@ -294,9 +284,7 @@ msgstr "Heslo"
 msgid ""
 "Name of the attachment that will contains the metadata type names and value "
 "pairs to be assigned to the rest of the downloaded attachments."
-msgstr ""
-"Název přílohy, která bude obsahovat názvy typů metadat a páry hodnot, které "
-"mají být přiřazeny ke zbytku stažených příloh."
+msgstr "Název přílohy, která bude obsahovat názvy typů metadat a páry hodnot, které mají být přiřazeny ke zbytku stažených příloh."
 
 #: models/email_sources.py:54
 msgid "Metadata attachment name"
@@ -306,9 +294,7 @@ msgstr "Název přílohy metadat"
 msgid ""
 "Select a metadata type to store the email's subject value. Must be a valid "
 "metadata type for the document type selected previously."
-msgstr ""
-"Vyberte typ metadat pro uložení hodnoty předmětu e-mailu. Musí to být platný "
-"typ metadat pro dříve vybraný typ dokumentu."
+msgstr "Vyberte typ metadat pro uložení hodnoty předmětu e-mailu. Musí to být platný typ metadat pro dříve vybraný typ dokumentu."
 
 #: models/email_sources.py:62
 msgid "Subject metadata type"
@@ -318,9 +304,7 @@ msgstr "Typ metadat předmětu"
 msgid ""
 "Select a metadata type to store the email's \"from\" value. Must be a valid "
 "metadata type for the document type selected previously."
-msgstr ""
-"Vyberte typ metadat, do kterého chcete uložit e-mailovou hodnotu „from“. "
-"Musí to být platný typ metadat pro dříve vybraný typ dokumentu."
+msgstr "Vyberte typ metadat, do kterého chcete uložit e-mailovou hodnotu „from“. Musí to být platný typ metadat pro dříve vybraný typ dokumentu."
 
 #: models/email_sources.py:70
 msgid "From metadata type"
@@ -347,18 +331,14 @@ msgstr "Zdroje e-mailu"
 msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr ""
-"Typ metadat předmětu \"%(metadata_type)s\" není platný pro typ dokumentu: "
-"%(document_type)s"
+msgstr "Typ metadat předmětu \"%(metadata_type)s\" není platný pro typ dokumentu: %(document_type)s"
 
 #: models/email_sources.py:201
 #, python-format
 msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr ""
-"„Od“ typ metadat „%(metadata_type)s“ není platný pro typ dokumentu: "
-"%(document_type)s"
+msgstr "„Od“ typ metadat „%(metadata_type)s“ není platný pro typ dokumentu: %(document_type)s"
 
 #: models/email_sources.py:216
 msgid "IMAP Mailbox from which to check for messages."
@@ -372,10 +352,7 @@ msgstr "Poštovní schránka"
 msgid ""
 "Criteria to use when searching for messages to process. Use the format "
 "specified in https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
-msgstr ""
-"Kritéria, která se použijí při vyhledávání zpráv ke zpracování. Použijte "
-"formát uvedený na adrese https://tools.ietf.org/html/rfc2060."
-"html#section-6.4.4"
+msgstr "Kritéria, která se použijí při vyhledávání zpráv ke zpracování. Použijte formát uvedený na adrese https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
 
 #: models/email_sources.py:224
 msgid "Search criteria"
@@ -384,12 +361,10 @@ msgstr "Kritéria vyhledávání"
 #: models/email_sources.py:228
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
-"command per line. Use the commands specified in https://tools.ietf.org/html/"
-"rfc2060.html#section-6.4.6 or the custom commands for your IMAP server."
-msgstr ""
-"Příkaz IMAP STORE, který se má po zpracování zpracovat na zprávy. Jeden "
-"příkaz na řádek. Použijte příkazy uvedené v https://tools.ietf.org/html/"
-"rfc2060.html#section-6.4.6 nebo vlastní příkazy pro váš server IMAP."
+"command per line. Use the commands specified in "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
+"commands for your IMAP server."
+msgstr "Příkaz IMAP STORE, který se má po zpracování zpracovat na zprávy. Jeden příkaz na řádek. Použijte příkazy uvedené v https://tools.ietf.org/html/rfc2060.html#section-6.4.6 nebo vlastní příkazy pro váš server IMAP."
 
 #: models/email_sources.py:232
 msgid "Store commands"
@@ -431,9 +406,7 @@ msgstr "Název zařízení"
 msgid ""
 "Selects the scan mode (e.g., lineart, monochrome, or color). If this option "
 "is not supported by your scanner, leave it blank."
-msgstr ""
-"Vybere režim skenování (např. Lineart, monochromatický nebo barevný). Pokud "
-"skener tuto možnost nepodporuje, nechte ji prázdnou."
+msgstr "Vybere režim skenování (např. Lineart, monochromatický nebo barevný). Pokud skener tuto možnost nepodporuje, nechte ji prázdnou."
 
 #: models/scanner_sources.py:39
 msgid "Mode"
@@ -444,9 +417,7 @@ msgid ""
 "Sets the resolution of the scanned image in DPI (dots per inch). Typical "
 "value is 200. If this option is not supported by your scanner, leave it "
 "blank."
-msgstr ""
-"Nastavuje rozlišení skenovaného obrázku v DPI (tečky na palec). Typická "
-"hodnota je 200. Pokud skener tuto možnost nepodporuje, ponechte ji prázdnou."
+msgstr "Nastavuje rozlišení skenovaného obrázku v DPI (tečky na palec). Typická hodnota je 200. Pokud skener tuto možnost nepodporuje, ponechte ji prázdnou."
 
 #: models/scanner_sources.py:46
 msgid "Resolution"
@@ -456,9 +427,7 @@ msgstr "Rozlišení"
 msgid ""
 "Selects the scan source (such as a document-feeder). If this option is not "
 "supported by your scanner, leave it blank."
-msgstr ""
-"Vybere zdroj skenování (například podavač dokumentů). Pokud skener tuto "
-"možnost nepodporuje, nechte ji prázdnou."
+msgstr "Vybere zdroj skenování (například podavač dokumentů). Pokud skener tuto možnost nepodporuje, nechte ji prázdnou."
 
 #: models/scanner_sources.py:52
 msgid "Paper source"
@@ -468,9 +437,7 @@ msgstr "Zdroj papíru"
 msgid ""
 "Selects the document feeder mode (simplex/duplex). If this option is not "
 "supported by your scanner, leave it blank."
-msgstr ""
-"Vybere režim podavače dokumentů (simplex / duplex). Pokud skener tuto "
-"možnost nepodporuje, nechte ji prázdnou."
+msgstr "Vybere režim podavače dokumentů (simplex / duplex). Pokud skener tuto možnost nepodporuje, nechte ji prázdnou."
 
 #: models/scanner_sources.py:59
 msgid "ADF mode"
@@ -489,9 +456,7 @@ msgstr "Skenery SANE"
 msgid ""
 "Error while executing scanning command \"%(command_line)s\"; "
 "%(error_message)s"
-msgstr ""
-"Chyba při provádění příkazu pro skenování „%(command_line)s“; "
-"%(error_message)s"
+msgstr "Chyba při provádění příkazu pro skenování „%(command_line)s“; %(error_message)s"
 
 #: models/staging_folder_sources.py:39
 msgid "Server side filesystem path."
@@ -551,9 +516,7 @@ msgstr "Cesta souborového systému na straně serveru ke kontrole souborů."
 msgid ""
 "If checked, not only will the folder path be scanned for files but also its "
 "subdirectories."
-msgstr ""
-"Pokud je zaškrtnuto, bude prohledána nejen cesta ke složce, ale i její "
-"podadresáře."
+msgstr "Pokud je zaškrtnuto, bude prohledána nejen cesta ke složce, ale i její podadresáře."
 
 #: models/watch_folder_sources.py:40
 msgid "Include subdirectories?"
@@ -617,16 +580,13 @@ msgstr "Nahrajte dokument"
 
 #: settings.py:18
 msgid "File path to the scanimage program used to control image scanners."
-msgstr ""
-"Cesta k programu scanimage, který se používá k ovládání skenerů obrázků."
+msgstr "Cesta k programu scanimage, který se používá k ovládání skenerů obrázků."
 
 #: settings.py:25
 msgid ""
 "Path to the Storage subclass to use when storing the cached staging_file "
 "image files."
-msgstr ""
-"Cesta k podtřídě Úložiště, která se použije při ukládání obrazových souborů "
-"staging_file v mezipaměti."
+msgstr "Cesta k podtřídě Úložiště, která se použije při ukládání obrazových souborů staging_file v mezipaměti."
 
 #: settings.py:34
 msgid "Arguments to pass to the SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
@@ -636,9 +596,7 @@ msgstr "Argumenty k předání na SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
 msgid ""
 "Unable to initialize the staging folder file image storage. Check the "
 "settings {} and {} for formatting errors."
-msgstr ""
-"Nelze inicializovat úložiště obrazu souboru pracovní složky. Zkontrolujte v "
-"nastavení {} a {} chyby formátování."
+msgstr "Nelze inicializovat úložiště obrazu souboru pracovní složky. Zkontrolujte v nastavení {} a {} chyby formátování."
 
 #: storages.py:23
 msgid "Staging folder files"
@@ -683,10 +641,7 @@ msgid ""
 "Sources that delete content after downloading will not do so while being "
 "tested. Check the source's error log for information during testing. A "
 "successful test will clear the error log."
-msgstr ""
-"Tím se spustí kontrola kódu zdroje, i když zdroj není povolen. Zdroje, které "
-"odstraní obsah po stažení, tak během testování neučiní. Během testování "
-"zkontrolujte informace o chybách zdrojů. Úspěšný test vymaže protokol chyb."
+msgstr "Tím se spustí kontrola kódu zdroje, i když zdroj není povolen. Zdroje, které odstraní obsah po stažení, tak během testování neučiní. Během testování zkontrolujte informace o chybách zdrojů. Úspěšný test vymaže protokol chyb."
 
 #: views.py:75
 #, python-format
@@ -718,11 +673,7 @@ msgid ""
 "webform, are interactive and require user input to operate. Others like the "
 "email sources, are automatic and run on the background without user "
 "intervention."
-msgstr ""
-"Zdroje poskytují prostředky pro nahrávání dokumentů. Některé zdroje, jako je "
-"webový formulář, jsou interaktivní a vyžadují součinnost uživatele. Ostatní, "
-"jako jsou e-mailové zdroje, jsou automatické a běží na pozadí bez zásahu "
-"uživatele."
+msgstr "Zdroje poskytují prostředky pro nahrávání dokumentů. Některé zdroje, jako je webový formulář, jsou interaktivní a vyžadují součinnost uživatele. Ostatní, jako jsou e-mailové zdroje, jsou automatické a běží na pozadí bez zásahu uživatele."
 
 #: views.py:191
 msgid "No sources available"
@@ -735,11 +686,9 @@ msgstr "Odstranit pracovní soubor \"%s\"?"
 
 #: views.py:257 wizards.py:152
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
-msgstr ""
-"Nebyly definovány žádné interaktivní zdroje dokumentů nebo nebyly povoleny "
-"žádné, vytvořte je před pokračováním."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
+msgstr "Nebyly definovány žádné interaktivní zdroje dokumentů nebo nebyly povoleny žádné, vytvořte je před pokračováním."
 
 #: views.py:285 views.py:314 views.py:324
 msgid "Document properties"
@@ -748,12 +697,9 @@ msgstr "Vlastnosti dokumentu"
 #: views.py:294
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the "
-"necessary file system permissions for the folder."
-msgstr ""
-"To by mohlo znamenat, že pracovní složka je prázdná. Může to také znamenat, "
-"že uživatelský účet operačního systému používaný pro Mayský EDMS nemá "
-"potřebná oprávnění systému souborů pro složku."
+"the operating system user account being used for Mayan EDMS doesn't have the"
+" necessary file system permissions for the folder."
+msgstr "To by mohlo znamenat, že pracovní složka je prázdná. Může to také znamenat, že uživatelský účet operačního systému používaný pro Mayský EDMS nemá potřebná oprávnění systému souborů pro složku."
 
 #: views.py:301
 msgid "No staging files available"
@@ -783,25 +729,21 @@ msgstr "Nahrajte dokument typu \"%(document_type)s\" ze zdroje: %(source)s"
 
 #: views.py:551
 #, python-format
-msgid ""
-"Unable to upload new versions for document \"%(document)s\". %(exception)s"
+msgid "Unable to upload new versions for document \"%(document)s\". %(exception)s"
 msgstr "Nelze nahrát nové verze dokumentu „%(document)s“. %(exception)s"
 
 #: views.py:612
 #, python-format
 msgid "Error executing document version upload task; %(exception)s"
-msgstr ""
-"Při provádění úlohy nahrávání verze dokumentu došlo k chybě; %(exception)s"
+msgstr "Při provádění úlohy nahrávání verze dokumentu došlo k chybě; %(exception)s"
 
 #: views.py:627
 msgid "New document version queued for upload and will be available shortly."
-msgstr ""
-"Nová verze dokumentu zařazená do fronty k nahrání a brzy bude k dispozici."
+msgstr "Nová verze dokumentu zařazená do fronty k nahrání a brzy bude k dispozici."
 
 #: views.py:646
 #, python-format
-msgid ""
-"Upload a new version for document \"%(document)s\" from source: %(source)s"
+msgid "Upload a new version for document \"%(document)s\" from source: %(source)s"
 msgstr "Nahrajte novou verzi dokumentu „%(document)s“ ze zdroje: %(source)s"
 
 #: views.py:649
@@ -824,31 +766,3 @@ msgstr "Další krok"
 #: wizards.py:183
 msgid "Document upload wizard"
 msgstr "Průvodce nahráváním dokumentů"
-
-#~ msgid "Date time"
-#~ msgstr "Datum a čas"
-
-#~ msgid "Message"
-#~ msgstr "Zpráva"
-
-#~ msgid "Logs"
-#~ msgstr "Protokoly"
-
-#~ msgid "Log entry"
-#~ msgstr "Záznam protokolu"
-
-#~ msgid "Log entries"
-#~ msgstr "Záznamy protokolu"
-
-#~ msgid ""
-#~ "Any error produced during the usage of a source will be listed here to "
-#~ "assist in debugging."
-#~ msgstr ""
-#~ "Jakákoli chyba způsobená během používání zdroje bude uvedena zde, aby "
-#~ "pomohla při ladění."
-
-#~ msgid "No log entries available"
-#~ msgstr "K dispozici nejsou žádné záznamy"
-
-#~ msgid "Log entries for source: %s"
-#~ msgstr "Položky protokolu pro zdroj: %s"

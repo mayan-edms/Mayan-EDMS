@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Annunnaky <doublemiu@gmail.com>, 2015
@@ -17,18 +17,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: 2020-07-09 04:05+0000\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
-"pl/)\n"
-"Language: pl\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
-"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
-"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:133 permissions.py:5 settings.py:10
 msgid "Common"
@@ -52,8 +49,7 @@ msgstr "Modeluj pola odwrotne"
 
 #: dependencies.py:195
 msgid "Used to allow offline translation of the code text strings."
-msgstr ""
-"Służy do umożliwienia tłumaczenia ciągów tekstowych kodu w trybie offline."
+msgstr "Służy do umożliwienia tłumaczenia ciągów tekstowych kodu w trybie offline."
 
 #: dependencies.py:204
 msgid "Provides style checking."
@@ -122,16 +118,13 @@ msgstr "Narzędzia"
 #: literals.py:7
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
-msgstr ""
-"Ta funkcja jest przestarzała i zostanie usunięta w przyszłych wersjach."
+msgstr "Ta funkcja jest przestarzała i zostanie usunięta w przyszłych wersjach."
 
 #: literals.py:10
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
-msgstr ""
-"Twój backend bazy danych jest skonfigurowany do używania SQLite. SQLite "
-"powinien być używany tylko do programowania i testowania, a nie na produkcji."
+msgstr "Twój backend bazy danych jest skonfigurowany do używania SQLite. SQLite powinien być używany tylko do programowania i testowania, a nie na produkcji."
 
 #: literals.py:19
 msgid "Days"
@@ -195,40 +188,31 @@ msgstr "Domyślny"
 
 #: settings.py:17
 msgid ""
-"Time to delay background tasks that depend on a database commit to propagate."
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
 msgstr "Czas opóźnienia wykonania zadań zależnych od operacji na bazie danych."
 
 #: settings.py:25
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application."
-msgstr ""
-"Lista ciągów znaków wskazujących wszystkie aplikacje, które mają zostać "
-"usunięte z listy normalnie instalowanej przez Mayan EDMS. Każdy ciąg "
-"powinien być kropkowaną ścieżką Pythona do: klasy konfiguracji aplikacji "
-"(preferowane) lub pakietu zawierającego aplikację."
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application."
+msgstr "Lista ciągów znaków wskazujących wszystkie aplikacje, które mają zostać usunięte z listy normalnie instalowanej przez Mayan EDMS. Każdy ciąg powinien być kropkowaną ścieżką Pythona do: klasy konfiguracji aplikacji (preferowane) lub pakietu zawierającego aplikację."
 
 #: settings.py:35
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package "
-"containing an application."
-msgstr ""
-"Lista ciągów oznaczających wszystkie aplikacje, które są instalowane poza "
-"tymi, które normalnie instaluje Mayan EDMS. Każdy ciąg powinien być "
-"kropkowaną ścieżką Pythona do: klasy konfiguracji aplikacji (preferowane) "
-"lub pakietu zawierającego aplikację."
+"Python path to: an application configuration class (preferred), or a package"
+" containing an application."
+msgstr "Lista ciągów oznaczających wszystkie aplikacje, które są instalowane poza tymi, które normalnie instaluje Mayan EDMS. Każdy ciąg powinien być kropkowaną ścieżką Pythona do: klasy konfiguracji aplikacji (preferowane) lub pakietu zawierającego aplikację."
 
 #: settings.py:44
 msgid ""
-"Name of the view attached to the brand anchor in the main menu. This is also "
-"the view to which users will be redirected after log in."
-msgstr ""
-"Nazwa widoku dołączonego do marki w menu głównym. Jest to również widok, do "
-"którego użytkownicy będą przekierowywani po zalogowaniu."
+"Name of the view attached to the brand anchor in the main menu. This is also"
+" the view to which users will be redirected after log in."
+msgstr "Nazwa widoku dołączonego do marki w menu głównym. Jest to również widok, do którego użytkownicy będą przekierowywani po zalogowaniu."
 
 #: settings.py:52
 msgid "Name to be displayed in the main menu."
@@ -254,8 +238,7 @@ msgstr "Wprowadź poprawną wartość YAML."
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
-msgstr ""
-"Podaj prawidłową 'internal name' składającą się z liter, liczb i podkreśleń."
+msgstr "Podaj prawidłową 'internal name' składającą się z liter, liczb i podkreśleń."
 
 #: views.py:27
 msgid "About"
@@ -284,9 +267,8 @@ msgid "Make a copy of %(object_name)s \"%(object)s\"?"
 msgstr ""
 
 #: views.py:134
-#| msgid "%(object)s created successfully."
 msgid "Object copied successfully."
-msgstr "%(object)s utworzono pomyślnie."
+msgstr ""
 
 #: views.py:150
 msgid "No setup options available."
@@ -296,9 +278,7 @@ msgstr "Brak opcji konfiguracji."
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
-msgstr ""
-"Brak wyników oznacza, że nie masz wymaganych uprawnień administratora do "
-"wykonania zadania."
+msgstr "Brak wyników oznacza, że nie masz wymaganych uprawnień administratora do wykonania zadania."
 
 #: views.py:158
 msgid "Setup items"
@@ -311,171 +291,3 @@ msgstr "Tutaj możesz skonfigurować wszystkie ustawienia systemu."
 #: views.py:175
 msgid "These modules are used to do system maintenance."
 msgstr "Moduły związane z obsługą systemu."
-
-#~ msgid "Selection"
-#~ msgstr "Zaznaczenie"
-
-#~ msgid "None"
-#~ msgstr "Brak"
-
-#~ msgid ""
-#~ "Select entries to be removed. Hold Control to select multiple entries. "
-#~ "Once the selection is complete, click the button below or double click "
-#~ "the list to activate the action."
-#~ msgstr ""
-#~ "Wybierz wpisy do usunięcia. Przytrzymaj Control, aby wybrać wiele wpisów. "
-#~ "Po zakończeniu wyboru kliknij przycisk poniżej lub kliknij dwukrotnie "
-#~ "listę, aby aktywować akcję."
-
-#~ msgid ""
-#~ "Select entries to be added. Hold Control to select multiple entries. Once "
-#~ "the selection is complete, click the button below or double click the "
-#~ "list to activate the action."
-#~ msgstr ""
-#~ "Wybierz wpisy do dodania. Przytrzymaj Control, aby wybrać wiele wpisów. "
-#~ "Po zakończeniu wyboru kliknij przycisk poniżej lub kliknij dwukrotnie "
-#~ "listę, aby aktywować akcję."
-
-#~ msgid "Add all"
-#~ msgstr "Dodaj wszystko"
-
-#~ msgid "Add"
-#~ msgstr "Dodaj"
-
-#~ msgid "Remove all"
-#~ msgstr "Usuń wszystko"
-
-#~ msgid "Remove"
-#~ msgstr "Usuń"
-
-#~ msgid "Duplicate data error: %(error)s"
-#~ msgstr "Błąd powielenia danych: %(error)s"
-
-#~ msgid "%(object)s not created, error: %(error)s"
-#~ msgstr "%(object)s nie utworzono, błąd: %(error)s"
-
-#~ msgid "%(object)s not deleted, error: %(error)s."
-#~ msgstr "%(object)s nie usunięto, błąd: %(error)s."
-
-#~ msgid "%(object)s deleted successfully."
-#~ msgstr "%(object)s usunięto pomyślnie."
-
-#~ msgid "%(object)s not updated, error: %(error)s."
-#~ msgstr "%(object)s nie zaktualizowano, błąd: %(error)s."
-
-#~ msgid "%(object)s updated successfully."
-#~ msgstr "%(object)s zaktualizowano pomyślnie."
-
-#~ msgid "Errors"
-#~ msgstr "Błędy"
-
-#~ msgid "Clear all"
-#~ msgstr "Wyczyść wszystko"
-
-#~ msgid "No %(verbose_name)s found matching the query"
-#~ msgstr "Nie znaleziono %(verbose_name)s pasującego do zapytania"
-
-#~ msgid "Object"
-#~ msgstr "Obiekt"
-
-#~ msgid "Namespace"
-#~ msgstr "Przestrzeń nazw"
-
-#~ msgid "Date time"
-#~ msgstr "Data i godzina"
-
-#~ msgid "Result"
-#~ msgstr "Wynik"
-
-#~ msgid "Error log entry"
-#~ msgstr "Wpis dziennika błędów"
-
-#~ msgid "Error log entries"
-#~ msgstr "Wpisy dziennika błędów"
-
-#~ msgid "File"
-#~ msgstr "Plik"
-
-#~ msgid "Filename"
-#~ msgstr "Nazwa"
-
-#~ msgid "Shared uploaded file"
-#~ msgstr "Udostępniony plik"
-
-#~ msgid "Shared uploaded files"
-#~ msgstr "Pliki udostępnione"
-
-#~ msgid "View error log"
-#~ msgstr "Wyświetl dziennik błędów"
-
-#~ msgid "Common periodic"
-#~ msgstr "Wspólne okresy"
-
-#~ msgid "Delete stale uploads"
-#~ msgstr "Usuń nieaktualne pobrane pliki"
-
-#~ msgid "Automatically enable logging to all apps."
-#~ msgstr "Włącz dla wszystkich aplikacji automatyczny zapis zdarzeń."
-
-#~ msgid "The number objects that will be displayed per page."
-#~ msgstr "Liczba obiektów, które będą wyświetlane na stronie."
-
-#~ msgid ""
-#~ "Enable error logging outside of the system error logging capabilities."
-#~ msgstr "Włącz rejestrowanie błędów poza systemowym rejestrowaniem błędów."
-
-#~ msgid "Path to the logfile that will track errors during production."
-#~ msgstr ""
-#~ "Ścieżka do pliku dziennika śledzącego błędy w systemie produkcyjnym."
-
-#~ msgid "A storage backend that all workers can use to share files."
-#~ msgstr ""
-#~ "Backend przechowywania umożliwiający wszystkim użytkownikom udostępnianie "
-#~ "plików."
-
-#~ msgid ""
-#~ "Unable to initialize the shared uploaded file storage. Check the settings "
-#~ "{} and {} for formatting errors."
-#~ msgstr ""
-#~ "Nie można zainicjować udostępnionego miejsca na przesyłane pliki. Sprawdź "
-#~ "ustawienia {} i {} pod kątem błędów formatowania."
-
-#~ msgid "Confirm delete"
-#~ msgstr "Potwierdź usunięcie"
-
-#~ msgid "Edit %s"
-#~ msgstr "Edytuj %s"
-
-#~ msgid "Confirm"
-#~ msgstr "Potwierdź"
-
-#~ msgid "Details for: %s"
-#~ msgstr "Szczegóły dla: %s"
-
-#~ msgid "Edit: %s"
-#~ msgstr "Edytuj: %s"
-
-#~ msgid "Create"
-#~ msgstr "Utwórz"
-
-#~ msgid "Clear error log entries for: %s"
-#~ msgstr "Wyczyść wpisy w dzienniku błędów dla: %s"
-
-#~ msgid "Object error log cleared successfully"
-#~ msgstr "Wpisy w dzienniku błędów dla obiektu zostały wyczyszczone"
-
-#~ msgid "Date and time"
-#~ msgstr "Data i godzina"
-
-#~ msgid ""
-#~ "This view displays the error log of different object. An empty list is a "
-#~ "good thing."
-#~ msgstr ""
-#~ "Widok ten pokazuje dziennik błędów dla różnych obiektów. Czysta lista "
-#~ "wskazuje na brak błędów."
-
-#~ msgid "There are no error log entries"
-#~ msgstr "Brak wpisów w dzienniku błędów"
-
-#~ msgid "Error log entries for: %s"
-#~ msgstr "Wpisy dziennika błędów dla: %s"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Michal Švábík <snadno@lehce.cz>, 2019-2020
@@ -9,26 +9,23 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: 2020-02-06 09:49+0000\n"
-"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
-"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/"
-"cs/)\n"
-"Language: cs\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 06:47+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
-"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: apps.py:46 events.py:6 models.py:35 models.py:104 permissions.py:5
 msgid "Permissions"
 msgstr "Práva"
 
 #: apps.py:99 models.py:142
-#| msgid "Group name"
 msgid "Group count"
-msgstr "Název skupiny"
+msgstr ""
 
 #: classes.py:85
 msgid "Insufficient permissions."
@@ -95,9 +92,8 @@ msgid "Role"
 msgstr "Role"
 
 #: models.py:150
-#| msgid "Permission"
 msgid "Permission count"
-msgstr "Oprávnění"
+msgstr ""
 
 #: permissions.py:8
 msgid "Create roles"
@@ -123,14 +119,11 @@ msgstr "Název skupiny"
 msgid ""
 "Comma separated list of groups primary keys to add to, or replace in this "
 "role."
-msgstr ""
-"Čárkami oddělený seznam skupin primárních klíčů, které se mají přidat nebo "
-"nahradit v této roli."
+msgstr "Čárkami oddělený seznam skupin primárních klíčů, které se mají přidat nebo nahradit v této roli."
 
 #: serializers.py:51
 msgid "Comma separated list of permission primary keys to grant to this role."
-msgstr ""
-"Čárkami oddělený seznam oprávnění primárních klíčů pro udělení této roli."
+msgstr "Čárkami oddělený seznam oprávnění primárních klíčů pro udělení této roli."
 
 #: serializers.py:88
 #, python-format
@@ -167,9 +160,7 @@ msgstr "Skupiny rolí: %s"
 msgid ""
 "Add groups to be part of a role. They will inherit the role's permissions "
 "and access controls."
-msgstr ""
-"Přidejte skupiny, které se stanou součástí role. Zdědí oprávnění role a "
-"řízení přístupu."
+msgstr "Přidejte skupiny, které se stanou součástí role. Zdědí oprávnění role a řízení přístupu."
 
 #: views.py:107
 msgid "Available permissions"
@@ -182,8 +173,7 @@ msgstr "Udělení oprávnění"
 #: views.py:143
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
-msgstr ""
-"Oprávnění udělená zde se budou vztahovat na celý systém a všechny objekty."
+msgstr "Oprávnění udělená zde se budou vztahovat na celý systém a všechny objekty."
 
 #: views.py:146
 #, python-format
@@ -196,11 +186,7 @@ msgid ""
 "role permissions for the entire system. Roles can also part of access "
 "controls lists. Access controls list are permissions granted to a role for "
 "specific objects which its group members inherit."
-msgstr ""
-"Role jsou autorizační jednotky. Obsahují skupiny uživatelů, které zdědí "
-"oprávnění role pro celý systém. Role mohou být také součástí seznamů řízení "
-"přístupu. Seznam ovládacích prvků přístupu je oprávnění udělená roli "
-"konkrétním objektům, které dědí její členové skupiny."
+msgstr "Role jsou autorizační jednotky. Obsahují skupiny uživatelů, které zdědí oprávnění role pro celý systém. Role mohou být také součástí seznamů řízení přístupu. Seznam ovládacích prvků přístupu je oprávnění udělená roli konkrétním objektům, které dědí její členové skupiny."
 
 #: views.py:170
 msgid "There are no roles"

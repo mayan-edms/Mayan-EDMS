@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # mic <winterfall24@gmail.com>, 2012,2015
@@ -11,18 +11,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: 2020-02-02 11:29+0000\n"
-"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
-"pl/)\n"
-"Language: pl\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 08:06+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
-"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
-"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: apps.py:39 events.py:5 permissions.py:5 settings.py:16
 msgid "Converter"
@@ -54,9 +51,7 @@ msgstr "Format niezgodny z formatem plików LibreOffice."
 msgid ""
 "Transformations allow changing the visual appearance of documents without "
 "making permanent changes to the document file themselves."
-msgstr ""
-"Przekształcenia umożliwiają zmianę wyglądu dokumentów bez dokonywania "
-"trwałych zmian w samym pliku dokumentu."
+msgstr "Przekształcenia umożliwiają zmianę wyglądu dokumentów bez dokonywania trwałych zmian w samym pliku dokumentu."
 
 #: classes.py:407
 msgid "transformation"
@@ -70,9 +65,7 @@ msgstr "Narzędzie z pakietu poppler-utils służące do sprawdzania plików PDF
 msgid ""
 "Utility from the popper-utils package used to extract pages from PDF files "
 "into PPM format images."
-msgstr ""
-"Narzędzie z pakietu popper-utils używane do wyodrębniania stron z plików PDF "
-"do obrazów w formacie PPM."
+msgstr "Narzędzie z pakietu popper-utils używane do wyodrębniania stron z plików PDF do obrazów w formacie PPM."
 
 #: events.py:8
 msgid "Asset created"
@@ -97,9 +90,8 @@ msgid ""
 msgstr ""
 
 #: layers.py:13
-#| msgid "Transformations"
 msgid "Decorations"
-msgstr "Przekształcenia"
+msgstr ""
 
 #: layers.py:24
 msgid "Saved transformations"
@@ -131,7 +123,7 @@ msgstr "Wybierz nowe przekształcenie."
 
 #: models.py:36
 msgid "Label"
-msgstr ""
+msgstr "Etykieta"
 
 #: models.py:40
 msgid ""
@@ -141,11 +133,11 @@ msgstr ""
 
 #: models.py:43
 msgid "Internal name"
-msgstr ""
+msgstr "Nazwa wewnętrzna"
 
 #: models.py:47
 msgid "File"
-msgstr ""
+msgstr "Plik"
 
 #: models.py:52
 msgid "Asset"
@@ -183,17 +175,13 @@ msgstr "Warstwy obiektu"
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
-msgstr ""
-"Kolejność wykonywania przekształceń. Jeśli nie zostanie zmieniona, przyjmie "
-"wartość automatyczną."
+msgstr "Kolejność wykonywania przekształceń. Jeśli nie zostanie zmieniona, przyjmie wartość automatyczną."
 
 #: models.py:156 workflow_actions.py:45
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
-msgstr ""
-"Wprowadź argumenty dla przekształcenia w postaci słownika YAML np.: "
-"{\"degrees\": 180}"
+msgstr "Wprowadź argumenty dla przekształcenia w postaci słownika YAML np.: {\"degrees\": 180}"
 
 #: models.py:158
 msgid "Arguments"
@@ -208,28 +196,24 @@ msgid "Layer transformations"
 msgstr "Przekształcenia warstwy"
 
 #: models.py:174
-#| msgid "Create new transformations"
 msgid "Unknown transformation class"
-msgstr "Utwórz nowe przekształcenia"
+msgstr ""
 
 #: permissions.py:8
-#| msgid "Create new transformations"
 msgid "Create new assets"
-msgstr "Utwórz nowe przekształcenia"
+msgstr ""
 
 #: permissions.py:11
-#| msgid "Delete"
 msgid "Delete assets"
-msgstr "Usuń"
+msgstr ""
 
 #: permissions.py:14
 msgid "Edit assets"
 msgstr ""
 
 #: permissions.py:17
-#| msgid "View existing transformations"
 msgid "View existing assets"
-msgstr "Przeglądaj utworzone przekształcenia"
+msgstr ""
 
 #: permissions.py:21
 msgid "Create new transformations"
@@ -274,9 +258,8 @@ msgid "Paste an asset"
 msgstr ""
 
 #: transformations.py:248
-#| msgid "Draw rectangle (percents coordinates)"
 msgid "Paste an asset (percents coordinates)"
-msgstr "Narysuj prostokąt (współrzędne procentowe)"
+msgstr ""
 
 #: transformations.py:291
 msgid "Paste an asset as watermark"
@@ -362,9 +345,9 @@ msgid "Delete asset: %s?"
 msgstr ""
 
 #: views.py:80
-#| msgid "Transformation created successfully."
+#, python-format
 msgid "Asset \"%s\" deleted successfully."
-msgstr "Pomyślnie utworzono przekształcenie."
+msgstr ""
 
 #: views.py:85
 #, python-format
@@ -378,7 +361,8 @@ msgstr ""
 
 #: views.py:123
 msgid ""
-"Assets are files that can be used in conjuction with certain transformations."
+"Assets are files that can be used in conjuction with certain "
+"transformations."
 msgstr ""
 
 #: views.py:126
@@ -395,8 +379,7 @@ msgstr "Błąd podczas przekształcania: %s."
 msgid ""
 "Create layer \"%(layer)s\" transformation \"%(transformation)s\" for: "
 "%(object)s"
-msgstr ""
-"Utwórz warstwę %(layer)s przekształcenia „%(transformation)s” dla: %(object)s"
+msgstr "Utwórz warstwę %(layer)s przekształcenia „%(transformation)s” dla: %(object)s"
 
 #: views.py:224
 #, python-format
@@ -433,33 +416,26 @@ msgstr "Wybierz nową warstwę „%(layer)s” przekształcenia dla: %(object)s"
 
 #: workflow_actions.py:22
 msgid "Pages"
-msgstr ""
+msgstr "Strony"
 
 #: workflow_actions.py:25
 msgid ""
-"Pages to which the new transformations will be added. Separate by commas and/"
-"or use a dashes for a ranges. Leave blank to select all pages."
+"Pages to which the new transformations will be added. Separate by commas "
+"and/or use a dashes for a ranges. Leave blank to select all pages."
 msgstr ""
 
 #: workflow_actions.py:32
-#| msgid "Transformations"
 msgid "Transformation class"
-msgstr "Przekształcenia"
+msgstr ""
 
 #: workflow_actions.py:37
-#| msgid "Layer transformation"
 msgid "Type of transformation to add."
-msgstr "Przekształcenie warstwy"
+msgstr ""
 
 #: workflow_actions.py:42
-#| msgid "Transformations"
 msgid "Transformation arguments"
-msgstr "Przekształcenia"
+msgstr ""
 
 #: workflow_actions.py:51
-#| msgid "transformation"
 msgid "Add transformation"
-msgstr "transformacja"
-
-#~ msgid "Enter a valid YAML value."
-#~ msgstr "Wprowadź poprawną wartość YAML."
+msgstr ""

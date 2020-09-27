@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016
@@ -10,15 +10,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: 2020-08-08 10:16+0000\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 06:47+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:40 links.py:38 permissions.py:5
@@ -34,14 +33,12 @@ msgid "Messages"
 msgstr "Messaggi"
 
 #: events.py:8
-#| msgid "Message of the day"
 msgid "Message created"
-msgstr "Messaggio del giorno"
+msgstr ""
 
 #: events.py:11
-#| msgid "Message of the day"
 msgid "Message edited"
-msgstr "Messaggio del giorno"
+msgstr ""
 
 #: links.py:14 views.py:31
 msgid "Create message"
@@ -122,16 +119,15 @@ msgid "Delete request performed on %(count)d messages"
 msgstr ""
 
 #: views.py:54
-#| msgid "Delete the message: %s?"
 msgid "Delete the selected message?"
 msgid_plural "Delete the selected messages?"
-msgstr[0] "Cancellare il messaggio: %s?"
-msgstr[1] "Cancellare il messaggio: %s?"
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:64
-#| msgid "Delete the message: %s?"
+#, python-format
 msgid "Delete message: %s?"
-msgstr "Cancellare il messaggio: %s?"
+msgstr ""
 
 #: views.py:75
 #, python-format
@@ -153,10 +149,7 @@ msgid ""
 "Messages are displayed in the login view. You can use messages to convery "
 "information about your organzation, announcements or usage guidelines for "
 "your users."
-msgstr ""
-"I messaggi vengono visualizzati nella vista di accesso. È possibile "
-"utilizzare i messaggi per trasmettere informazioni sulla propria "
-"organizzazione, annunci o linee guida sull'utilizzo per gli utenti."
+msgstr "I messaggi vengono visualizzati nella vista di accesso. È possibile utilizzare i messaggi per trasmettere informazioni sulla propria organizzazione, annunci o linee guida sull'utilizzo per gli utenti."
 
 #: views.py:122
 msgid "No messages available"

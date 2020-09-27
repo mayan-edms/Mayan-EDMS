@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # mizhgan <i@mizhgan.ru>, 2018
@@ -10,18 +10,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: 2020-01-28 07:59+0000\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 06:47+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:52 events.py:5 links.py:18 links.py:24 permissions.py:5 queues.py:6
 #: search.py:6 search.py:10 settings.py:8
@@ -29,9 +26,8 @@ msgid "OCR"
 msgstr "Распознавание текста"
 
 #: apps.py:103
-#| msgid "Document page OCR content"
 msgid "The OCR content."
-msgstr "Распознанное содержимое страницы документа"
+msgstr ""
 
 #: apps.py:108
 msgid "A generator returning the document's pages OCR content."
@@ -167,14 +163,12 @@ msgid "Change document type OCR settings"
 msgstr "Изменить настройки распознавания документа"
 
 #: queues.py:10
-#| msgid "Document version OCR"
 msgid "Finish document version OCR"
-msgstr "Распознавание версии документа"
+msgstr ""
 
 #: queues.py:14
-#| msgid "Document version OCR"
 msgid "Document version page OCR"
-msgstr "Распознавание версии документа"
+msgstr ""
 
 #: queues.py:18
 msgid "Document version OCR"
@@ -186,9 +180,7 @@ msgstr "Полный путь до бекенда, выполняющего OCR.
 
 #: settings.py:24
 msgid "Set new document types to perform OCR automatically by default."
-msgstr ""
-"Задать новые типы документов для которых распознавание будет запускаться по "
-"умолчанию. "
+msgstr "Задать новые типы документов для которых распознавание будет запускаться по умолчанию. "
 
 #: views.py:35
 msgid "Delete the OCR content of the selected document?"
@@ -249,15 +241,13 @@ msgid ""
 msgstr ""
 
 #: workflow_actions.py:31
-#| msgid "Content"
 msgid "Page content"
-msgstr "Содержимое"
+msgstr ""
 
 #: workflow_actions.py:35
 msgid "A template that will generate the OCR content to be saved."
 msgstr ""
 
 #: workflow_actions.py:43
-#| msgid "Document page OCR content"
 msgid "Update document page OCR content"
-msgstr "Распознанное содержимое страницы документа"
+msgstr ""

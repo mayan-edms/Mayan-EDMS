@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Lyudmil Antonov <lantonov.here@gmail.com>, 2019-2020
@@ -10,18 +10,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: 2020-04-08 05:05+0000\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 08:36+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/bg/)\n"
-"Language: bg\n"
+"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:59 events.py:5 settings.py:7
+#: apps.py:59 events.py:5 permissions.py:5 settings.py:7
 msgid "Appearance"
 msgstr "Изглед"
 
@@ -95,11 +94,11 @@ msgstr ""
 
 #: links.py:33
 msgid "Delete"
-msgstr ""
+msgstr "Изтрийте"
 
 #: links.py:39
 msgid "Edit"
-msgstr ""
+msgstr "Редактиране"
 
 #: links.py:43 links.py:47 models.py:25 views.py:111
 msgid "Themes"
@@ -111,7 +110,7 @@ msgstr ""
 
 #: models.py:13
 msgid "Label"
-msgstr ""
+msgstr "Етикет"
 
 #: models.py:17
 msgid ""
@@ -129,7 +128,7 @@ msgstr ""
 
 #: models.py:56
 msgid "User"
-msgstr ""
+msgstr "Потребител"
 
 #: models.py:64
 msgid "User theme setting"
@@ -138,11 +137,6 @@ msgstr ""
 #: models.py:65
 msgid "User theme settings"
 msgstr ""
-
-#: permissions.py:5
-#| msgid "Appearance"
-msgid "Apparance"
-msgstr "Изглед"
 
 #: permissions.py:8
 msgid "Create new themes"
@@ -162,16 +156,13 @@ msgstr ""
 
 #: settings.py:12
 msgid "Maximum number of characters that will be displayed as the view title."
-msgstr ""
-"Максимален брой на знаците, които ще се изобразят в заглавката на изгледа."
+msgstr "Максимален брой на знаците, които ще се изобразят в заглавката на изгледа."
 
 #: settings.py:19
 msgid ""
 "Position where the system message will be displayed. Options are: top-left, "
 "top-center, top-right, bottom-left, bottom-center, bottom-right."
-msgstr ""
-"Позиция, където ще се показва системното съобщение. Опциите са: горе вляво, "
-"горе в центъра, горе вдясно, отдолу вляво, отдолу в центъра, отдолу вдясно."
+msgstr "Позиция, където ще се показва системното съобщение. Опциите са: горе вляво, горе в центъра, горе вдясно, отдолу вляво, отдолу в центъра, отдолу вдясно."
 
 #: templates/403.html:5 templates/403.html:30
 msgid "Insufficient permission"
@@ -205,11 +196,10 @@ msgstr "Местоположението е правилно, но обектъ�
 msgid ""
 "The location is be correct, but your account does not have the required "
 "permission to access it."
-msgstr ""
-"Местоположението е правилно, но акаунтът ви няма необходимото разрешение за "
-"достъп до него."
+msgstr "Местоположението е правилно, но акаунтът ви няма необходимото разрешение за достъп до него."
 
-#: templates/500.html:5 templates/500.html:30 templates/appearance/root.html:58
+#: templates/500.html:5 templates/500.html:30
+#: templates/appearance/root.html:58
 msgid "Server error"
 msgstr "Грешка в сървъра"
 
@@ -234,19 +224,13 @@ msgid "Contact your system administrator."
 msgstr "Свържете се с вашия системен администратор."
 
 #: templates/500.html:47
-msgid ""
-"Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL"
-"\"."
-msgstr ""
-"Проверете дневниците за съобщения с тагове \"ERROR\", \"CRITICAL\" или "
-"\"FATAL\"."
+msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
+msgstr "Проверете дневниците за съобщения с тагове \"ERROR\", \"CRITICAL\" или \"FATAL\"."
 
 #: templates/500.html:48
 #, python-format
 msgid "Open a ticket using the <a href=\"%(issue_url)s\">issue tracker</a>."
-msgstr ""
-"Отворете билет с помощта на <a href=\"%(issue_url)s\">проследяване на "
-"проблем</a> ."
+msgstr "Отворете билет с помощта на <a href=\"%(issue_url)s\">проследяване на проблем</a> ."
 
 #: templates/appearance/about.html:10
 msgid "About"
@@ -258,11 +242,7 @@ msgid ""
 "\n"
 "                    %(setting_project_title)s is based on %(project_title)s\n"
 "                "
-msgstr ""
-"\n"
-"                    %(setting_project_title)s се основава на"
-"%(project_title)s\n"
-"                "
+msgstr "\n                    %(setting_project_title)s се основава на%(project_title)s\n                "
 
 #: templates/appearance/about.html:78
 msgid "Version"
@@ -281,106 +261,57 @@ msgstr "Издаден под лиценз:"
 #, python-format
 msgid ""
 "\n"
-"                %(project_title)s is a free and open-source software brought "
-"to you with <i class=\"fa fa-heart text-danger\" style=\"transform: "
-"rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
+"                %(project_title)s is a free and open-source software brought to you with <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
 "            "
-msgstr ""
-"\n"
-"                %(project_title)s е безплатен софтуер с отворен код "
-"предоставен Ви <i class=\"fa fa-heart text-danger\" style=\"transform: "
-"rotate(10deg);\"></i> от Роберто Росарио и сътрудници.\n"
-"            "
+msgstr "\n                %(project_title)s е безплатен софтуер с отворен код предоставен Ви <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> от Роберто Росарио и сътрудници.\n            "
 
 #: templates/appearance/about.html:105
 #, python-format
 msgid ""
 "\n"
-"                It takes great effort to make %(project_title)s as feature-"
-"rich as it is.\n"
+"                It takes great effort to make %(project_title)s as feature-rich as it is.\n"
 "            "
-msgstr ""
-"\n"
-"Необходими са големи усилия, за да се направи %(project_title)s толкова "
-"богат на функции, колкото е сега."
+msgstr "\nНеобходими са големи усилия, за да се направи %(project_title)s толкова богат на функции, колкото е сега."
 
 #: templates/appearance/about.html:111
 #, python-format
 msgid ""
 "\n"
-"                If you use %(project_title)s please <a class=\"new_window\" "
-"href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-"
-"xclick&hosted_button_id=3PXN336XFXQNN\">make a donation "
-"%(icon_social_paypal)s</a>\n"
+"                If you use %(project_title)s please <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">make a donation %(icon_social_paypal)s</a>\n"
 "            "
-msgstr ""
-"\n"
-"Ако използвате %(project_title)s, моля, <a class=\"new_window\" href="
-"\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-"
-"xclick&hosted_button_id=3PXN336XFXQNN\">направете дарение "
-"%(icon_social_paypal)s</a>"
+msgstr "\nАко използвате %(project_title)s, моля, <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">направете дарение %(icon_social_paypal)s</a>"
 
 #: templates/appearance/about.html:117
 #, python-format
 msgid ""
 "\n"
-"                The complete list of changes is available via the <a class="
-"\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html"
-"\">Release notes %(icon_documentation)s</a> or the short version <a class="
-"\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/"
-"HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
+"                The complete list of changes is available via the <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> or the short version <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
 "            "
-msgstr ""
-"\n"
-"                Пълният списък на промените е наличен чрез <a class="
-"\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html"
-"\">Бележки към версията %(icon_documentation)s</a> или кратката версия <a "
-"class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/"
-"master/HISTORY.rst\">Дневник на промените%(icon_documentation)s</a>.\n"
-"            "
+msgstr "\n                Пълният списък на промените е наличен чрез <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Бележки към версията %(icon_documentation)s</a> или кратката версия <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Дневник на промените%(icon_documentation)s</a>.\n            "
 
 #: templates/appearance/about.html:123
 #, python-format
 msgid ""
 "\n"
-"                For questions check the <a class=\"new_window\" href="
-"\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
+"                For questions check the <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
 "            "
-msgstr ""
-"\n"
-"За въпроси проверете <a class=\"new_window\" href=\"https://docs.mayan-edms."
-"com\">Документация %(icon_documentation)s</a> ."
+msgstr "\nЗа въпроси проверете <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Документация %(icon_documentation)s</a> ."
 
 #: templates/appearance/about.html:129
 #, python-format
 msgid ""
 "\n"
-"                If you found a bug or have a feature idea, visit the <a "
-"class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum "
-"%(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href="
-"\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository "
-"%(icon_source_code)s</a>.\n"
+"                If you found a bug or have a feature idea, visit the <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository %(icon_source_code)s</a>.\n"
 "            "
-msgstr ""
-"\n"
-"                Ако намерите бъг или имате идея за прибавка, посетете <a "
-"class=\"new_window\" href=\"https://forum.mayan-edms.com\">Форум "
-"%(icon_forum)s</a> или направете заявка в <a class=\"new_window\" href="
-"\"https://gitlab.com/mayan-edms/mayan-edms\">Хранилище на изходен код "
-"%(icon_source_code)s</a>.\n"
-"            "
+msgstr "\n                Ако намерите бъг или имате идея за прибавка, посетете <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Форум %(icon_forum)s</a> или направете заявка в <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Хранилище на изходен код %(icon_source_code)s</a>.\n            "
 
 #: templates/appearance/about.html:134
 #, python-format
 msgid ""
 "\n"
-"                Spread the word. Talk to your friends and colleagues about "
-"how awesome %(project_title)s is!\n"
+"                Spread the word. Talk to your friends and colleagues about how awesome %(project_title)s is!\n"
 "            "
-msgstr ""
-"\n"
-"Разпространете информация за този проект. Говорете с вашите приятели и "
-"колеги за това колко страхотен е %(project_title)s!"
+msgstr "\nРазпространете информация за този проект. Говорете с вашите приятели и колеги за това колко страхотен е %(project_title)s!"
 
 #: templates/appearance/base.html:43 templates/appearance/base.html:67
 msgid "Warning"
@@ -394,9 +325,7 @@ msgstr "Кликнете тук, за да поправите това."
 msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."
-msgstr ""
-"Настройките са актуализирани, рестартирайте инсталацията и опреснете "
-"браузъра си, за да влязат в сила промените."
+msgstr "Настройките са актуализирани, рестартирайте инсталацията и опреснете браузъра си, за да влязат в сила промените."
 
 #: templates/appearance/base.html:75
 #, python-format
@@ -404,9 +333,7 @@ msgid ""
 "\n"
 "                                        Impersonating user \"%(user)s\".\n"
 "                                    "
-msgstr ""
-"\n"
-"Представляващ се потребител „%(user)s“."
+msgstr "\nПредставляващ се потребител „%(user)s“."
 
 #: templates/appearance/base.html:78
 msgid "Click here when finished"
@@ -484,9 +411,7 @@ msgstr "Преди да можете да ползвате напълно Mayan 
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
-msgstr ""
-"Общо (%(start)s - %(end)s от %(total)s) (Страница %(page_number)s от "
-"%(total_pages)s)"
+msgstr "Общо (%(start)s - %(end)s от %(total)s) (Страница %(page_number)s от %(total_pages)s)"
 
 #: templates/appearance/list_header.html:14
 #: templates/appearance/list_header.html:17
@@ -505,9 +430,7 @@ msgstr "Превключване на режима на показване на 
 #: templates/appearance/list_toolbar.html:60
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
-msgstr ""
-"Изберете елементи, за да активирате групови действия. Използвайте Shift + "
-"щракване, за да изберете няколко."
+msgstr "Изберете елементи, за да активирате групови действия. Използвайте Shift + щракване, за да изберете няколко."
 
 #: templates/appearance/list_toolbar.html:65
 msgid "Bulk actions"

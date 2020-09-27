@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # mizhgan <i@mizhgan.ru>, 2018
@@ -10,18 +10,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: 2020-05-25 06:18+0000\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 06:47+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:48 links.py:56 models/base.py:38 queues.py:7 settings.py:11
 #: views.py:192
@@ -37,10 +34,7 @@ msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
-msgstr ""
-"Источники документов - это способы получения Mayan EDMS новых документов. "
-"Как минимум, чтобы можно было загружать документы из браузера, создайте веб-"
-"форму."
+msgstr "Источники документов - это способы получения Mayan EDMS новых документов. Как минимум, чтобы можно было загружать документы из браузера, создайте веб-форму."
 
 #: apps.py:86
 msgid "Type"
@@ -238,8 +232,7 @@ msgstr "Интервал"
 
 #: models/base.py:178
 msgid "Assign a document type to documents uploaded from this source."
-msgstr ""
-"Назначить тип документов для документов, загружаемых из этого источника."
+msgstr "Назначить тип документов для документов, загружаемых из этого источника."
 
 #: models/base.py:180 serializers.py:17
 msgid "Document type"
@@ -274,9 +267,7 @@ msgstr "SSL"
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
-msgstr ""
-"Обычно выбирают 110 для POP3, 995 для POP3 с SSL, 143 для IMAP, 993 для IMAP "
-"с SSL"
+msgstr "Обычно выбирают 110 для POP3, 995 для POP3 с SSL, 143 для IMAP, 993 для IMAP с SSL"
 
 #: models/email_sources.py:44
 msgid "Port"
@@ -371,8 +362,9 @@ msgstr ""
 #: models/email_sources.py:228
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
-"command per line. Use the commands specified in https://tools.ietf.org/html/"
-"rfc2060.html#section-6.4.6 or the custom commands for your IMAP server."
+"command per line. Use the commands specified in "
+"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
+"commands for your IMAP server."
 msgstr ""
 
 #: models/email_sources.py:232
@@ -695,11 +687,9 @@ msgstr ""
 
 #: views.py:257 wizards.py:152
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
-msgstr ""
-"Интерактивные источники документов не были определены или включены, создайте "
-"один для продолжения."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
+msgstr "Интерактивные источники документов не были определены или включены, создайте один для продолжения."
 
 #: views.py:285 views.py:314 views.py:324
 msgid "Document properties"
@@ -708,8 +698,8 @@ msgstr "Свойства документа"
 #: views.py:294
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the "
-"necessary file system permissions for the folder."
+"the operating system user account being used for Mayan EDMS doesn't have the"
+" necessary file system permissions for the folder."
 msgstr ""
 
 #: views.py:301
@@ -740,8 +730,7 @@ msgstr ""
 
 #: views.py:551
 #, python-format
-msgid ""
-"Unable to upload new versions for document \"%(document)s\". %(exception)s"
+msgid "Unable to upload new versions for document \"%(document)s\". %(exception)s"
 msgstr ""
 
 #: views.py:612
@@ -755,8 +744,7 @@ msgstr ""
 
 #: views.py:646
 #, python-format
-msgid ""
-"Upload a new version for document \"%(document)s\" from source: %(source)s"
+msgid "Upload a new version for document \"%(document)s\" from source: %(source)s"
 msgstr ""
 
 #: views.py:649
@@ -779,21 +767,3 @@ msgstr "Далее"
 #: wizards.py:183
 msgid "Document upload wizard"
 msgstr "Мастер загрузки документов"
-
-#~ msgid "Date time"
-#~ msgstr "Дата и время"
-
-#~ msgid "Message"
-#~ msgstr "Сообщение"
-
-#~ msgid "Logs"
-#~ msgstr "Журналы"
-
-#~ msgid "Log entry"
-#~ msgstr "Запись журнала"
-
-#~ msgid "Log entries"
-#~ msgstr "Записи журнала"
-
-#~ msgid "Log entries for source: %s"
-#~ msgstr "Записи журнала для источника: %s"

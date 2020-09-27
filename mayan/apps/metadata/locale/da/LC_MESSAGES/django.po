@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Mads L. Nielsen <sirlundgaard@gmail.com>, 2013
@@ -9,15 +9,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: 2020-01-29 08:08+0000\n"
-"Last-Translator: Allan Møller <it@brandts.dk>\n"
-"Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/"
-"da/)\n"
-"Language: da\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 08:06+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: da\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:65 apps.py:180 apps.py:185 events.py:5 links.py:46 permissions.py:5
@@ -208,7 +207,8 @@ msgstr ""
 
 #: models.py:75
 msgid ""
-"The parser will reformat the value entered to conform to the expected format."
+"The parser will reformat the value entered to conform to the expected "
+"format."
 msgstr ""
 
 #: models.py:77 search.py:46
@@ -346,7 +346,8 @@ msgstr ""
 #: views.py:171
 #, python-format
 msgid ""
-"Metadata type: %(metadata_type)s successfully added to document %(document)s."
+"Metadata type: %(metadata_type)s successfully added to document "
+"%(document)s."
 msgstr ""
 
 #: views.py:181
@@ -398,8 +399,9 @@ msgstr ""
 
 #: views.py:370
 msgid ""
-"Add metadata types this document's type to be able to add them to individual "
-"documents. Once added to individual document, you can then edit their values."
+"Add metadata types this document's type to be able to add them to individual"
+" documents. Once added to individual document, you can then edit their "
+"values."
 msgstr ""
 
 #: views.py:375
@@ -506,9 +508,8 @@ msgid "Enter document metadata"
 msgstr ""
 
 #: workflow_actions.py:24
-#| msgid "Add metadata to a document"
 msgid "Metadata types to add to the document."
-msgstr "Tilføj metadata til et dokument"
+msgstr ""
 
 #: workflow_actions.py:48
 #, python-format
@@ -518,9 +519,8 @@ msgid ""
 msgstr ""
 
 #: workflow_actions.py:87
-#| msgid "Metadata type"
 msgid "Metadata types to edit."
-msgstr "Metadata type"
+msgstr ""
 
 #: workflow_actions.py:95
 msgid ""
@@ -536,9 +536,8 @@ msgid ""
 msgstr ""
 
 #: workflow_actions.py:171
-#| msgid "View metadata from a document"
 msgid "Metadata types to remove from the document."
-msgstr "Se metadata fra et dokument"
+msgstr ""
 
 #: workflow_actions.py:191
 #, python-format

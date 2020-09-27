@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
@@ -9,15 +9,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
 "PO-Revision-Date: 2020-04-26 09:54+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
-"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/"
-"nl/)\n"
-"Language: nl\n"
+"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:9 settings.py:7
@@ -46,9 +45,7 @@ msgstr "Vergrendelingen"
 
 #: settings.py:12
 msgid "Path to the class to use when to request and release resource locks."
-msgstr ""
-"Pad naar de class die gebruikt wordt om vergrendelingen van bronnen aan te "
-"vragen en op te heffen."
+msgstr "Pad naar de class die gebruikt wordt om vergrendelingen van bronnen aan te vragen en op te heffen."
 
 #: settings.py:18
 msgid "Arguments to pass to the LOCK_MANAGER_BACKEND."
@@ -58,6 +55,4 @@ msgstr "Argumenten om door te geven aan LOCK_MANAGER_BACKEND."
 msgid ""
 "Default amount of time in seconds after which a resource lock will be "
 "automatically released."
-msgstr ""
-"Standaard tijdsperiode in seconden waarna de vergrendeling van een bron "
-"automatisch wordt opgeheven."
+msgstr "Standaard tijdsperiode in seconden waarna de vergrendeling van een bron automatisch wordt opgeheven."

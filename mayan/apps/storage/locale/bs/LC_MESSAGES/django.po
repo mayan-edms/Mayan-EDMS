@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Ilvana Dollaroviq <ilvanadollaroviq@gmail.com>, 2018
@@ -9,17 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: 2020-03-28 07:24+0000\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 06:47+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Bosnian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/bs/)\n"
-"Language: bs\n"
+"Language-Team: Bosnian (http://www.transifex.com/rosarior/mayan-edms/language/bs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: bs\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: apps.py:11 settings.py:9
 msgid "Storage"
@@ -57,47 +55,44 @@ msgstr ""
 
 #: models.py:23
 msgid "File"
-msgstr ""
+msgstr "Datoteka"
 
 #: models.py:25
 msgid "Filename"
-msgstr ""
+msgstr "Naziv datoteke"
 
 #: models.py:27
 msgid "Date time"
-msgstr ""
+msgstr "Datum vreme"
 
 #: models.py:31
 msgid "Shared uploaded file"
-msgstr ""
+msgstr "Deljeni otpremljeni fajl"
 
 #: models.py:32 storages.py:19
 msgid "Shared uploaded files"
-msgstr ""
+msgstr "Deljeni otpremljeni fajlovi"
 
 #: queues.py:11
-#| msgid "Storage"
 msgid "Storage periodic"
-msgstr "Skladište"
+msgstr ""
 
 #: queues.py:16
 msgid "Delete stale uploads"
-msgstr ""
+msgstr "Obriši stare otpreme"
 
 #: settings.py:14
 msgid "A storage backend that all workers can use to share files."
-msgstr ""
+msgstr " Backend skladišta koju svi radnici mogu koristiti za dijeljenje datoteka."
 
 #: settings.py:23
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
-msgstr ""
-"Privremeni direktorijum korišćen širokim spektrom za čuvanje sličica, "
-"preglednika i privremenih datoteka."
+msgstr "Privremeni direktorijum korišćen širokim spektrom za čuvanje sličica, preglednika i privremenih datoteka."
 
 #: storages.py:12
 msgid ""
-"Unable to initialize the shared uploaded file storage. Check the settings {} "
-"and {} for formatting errors."
+"Unable to initialize the shared uploaded file storage. Check the settings {}"
+" and {} for formatting errors."
 msgstr ""

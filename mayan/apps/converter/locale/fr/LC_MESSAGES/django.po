@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2017
@@ -13,15 +13,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:05+0000\n"
-"PO-Revision-Date: 2020-01-31 18:35+0000\n"
-"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
-"fr/)\n"
-"Language: fr\n"
+"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"PO-Revision-Date: 2020-09-27 08:06+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:39 events.py:5 permissions.py:5 settings.py:16
@@ -40,8 +39,7 @@ msgstr "Exception lors de la détermination du nombre de pages du PDF ; %s"
 #: backends/python.py:183
 #, python-format
 msgid "Exception determining page count using Pillow; %s"
-msgstr ""
-"Exception lors de la détermination du nombre de pages à l'aide de Pillow ; %s"
+msgstr "Exception lors de la détermination du nombre de pages à l'aide de Pillow ; %s"
 
 #: classes.py:135
 msgid "LibreOffice not installed or not found."
@@ -55,9 +53,7 @@ msgstr "Format de fichier non reconnu."
 msgid ""
 "Transformations allow changing the visual appearance of documents without "
 "making permanent changes to the document file themselves."
-msgstr ""
-"Les transformations permettent de modifier l'apparence visuelle des "
-"documents sans apporter de modifications permanentes au fichier."
+msgstr "Les transformations permettent de modifier l'apparence visuelle des documents sans apporter de modifications permanentes au fichier."
 
 #: classes.py:407
 msgid "transformation"
@@ -65,16 +61,13 @@ msgstr "transformation"
 
 #: dependencies.py:14
 msgid "Utility from the poppler-utils package used to inspect PDF files."
-msgstr ""
-"Utilitaire du paquet poppler-utils utilisé pour inspecter les fichiers PDF."
+msgstr "Utilitaire du paquet poppler-utils utilisé pour inspecter les fichiers PDF."
 
 #: dependencies.py:19
 msgid ""
 "Utility from the popper-utils package used to extract pages from PDF files "
 "into PPM format images."
-msgstr ""
-"Utilitaire du paquet popper-utils utilisé pour extraire des pages de "
-"fichiers PDF en images au format PPM."
+msgstr "Utilitaire du paquet popper-utils utilisé pour extraire des pages de fichiers PDF en images au format PPM."
 
 #: events.py:8
 msgid "Asset created"
@@ -99,9 +92,8 @@ msgid ""
 msgstr ""
 
 #: layers.py:13
-#| msgid "Transformations"
 msgid "Decorations"
-msgstr "Transformations"
+msgstr ""
 
 #: layers.py:24
 msgid "Saved transformations"
@@ -133,7 +125,7 @@ msgstr "Sélectionnez une nouvelle transformation"
 
 #: models.py:36
 msgid "Label"
-msgstr ""
+msgstr "Étiquette"
 
 #: models.py:40
 msgid ""
@@ -143,11 +135,11 @@ msgstr ""
 
 #: models.py:43
 msgid "Internal name"
-msgstr ""
+msgstr "Nom interne"
 
 #: models.py:47
 msgid "File"
-msgstr ""
+msgstr "Fichier"
 
 #: models.py:52
 msgid "Asset"
@@ -185,17 +177,13 @@ msgstr "Calques d'objets"
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
-msgstr ""
-"Ordre dans lequel les transformations seront exécutées. En l'absence de "
-"modification, un ordre est automatiquement assigné."
+msgstr "Ordre dans lequel les transformations seront exécutées. En l'absence de modification, un ordre est automatiquement assigné."
 
 #: models.py:156 workflow_actions.py:45
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
-msgstr ""
-"Saisir les arguments pour la transformation sous la forme d'un dictionnaire "
-"YAML. Par exemple : {\"degrees\": 180}"
+msgstr "Saisir les arguments pour la transformation sous la forme d'un dictionnaire YAML. Par exemple : {\"degrees\": 180}"
 
 #: models.py:158
 msgid "Arguments"
@@ -210,28 +198,24 @@ msgid "Layer transformations"
 msgstr "Transformations de calque"
 
 #: models.py:174
-#| msgid "Create new transformations"
 msgid "Unknown transformation class"
-msgstr "Créer de nouvelles transformations"
+msgstr ""
 
 #: permissions.py:8
-#| msgid "Create new transformations"
 msgid "Create new assets"
-msgstr "Créer de nouvelles transformations"
+msgstr ""
 
 #: permissions.py:11
-#| msgid "Delete"
 msgid "Delete assets"
-msgstr "Supprimer"
+msgstr ""
 
 #: permissions.py:14
 msgid "Edit assets"
 msgstr ""
 
 #: permissions.py:17
-#| msgid "View existing transformations"
 msgid "View existing assets"
-msgstr "Afficher les transformations existantes"
+msgstr ""
 
 #: permissions.py:21
 msgid "Create new transformations"
@@ -276,9 +260,8 @@ msgid "Paste an asset"
 msgstr ""
 
 #: transformations.py:248
-#| msgid "Draw rectangle (percents coordinates)"
 msgid "Paste an asset (percents coordinates)"
-msgstr "Dessiner un rectangle (coordonnées en pourcentage)"
+msgstr ""
 
 #: transformations.py:291
 msgid "Paste an asset as watermark"
@@ -362,9 +345,9 @@ msgid "Delete asset: %s?"
 msgstr ""
 
 #: views.py:80
-#| msgid "Transformation created successfully."
+#, python-format
 msgid "Asset \"%s\" deleted successfully."
-msgstr "Transformation créée avec succès."
+msgstr ""
 
 #: views.py:85
 #, python-format
@@ -378,7 +361,8 @@ msgstr ""
 
 #: views.py:123
 msgid ""
-"Assets are files that can be used in conjuction with certain transformations."
+"Assets are files that can be used in conjuction with certain "
+"transformations."
 msgstr ""
 
 #: views.py:126
@@ -395,22 +379,17 @@ msgstr "Erreur lors de la création de la transformation: %s."
 msgid ""
 "Create layer \"%(layer)s\" transformation \"%(transformation)s\" for: "
 "%(object)s"
-msgstr ""
-"Créer le calque \"%(layer)s\" de transformation \"%(transformation)s\" pour: "
-"%(object)s"
+msgstr "Créer le calque \"%(layer)s\" de transformation \"%(transformation)s\" pour: %(object)s"
 
 #: views.py:224
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
-msgstr ""
-"Êtes vous certain de vouloir supprimer la transformation \"%(transformation)s"
-"\" pour : %(content_object)s ?"
+msgstr "Êtes vous certain de vouloir supprimer la transformation \"%(transformation)s\" pour : %(content_object)s ?"
 
 #: views.py:273
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
-msgstr ""
-"Modifier la transformation \"%(transformation)s\" pour : %(content_object)s"
+msgstr "Modifier la transformation \"%(transformation)s\" pour : %(content_object)s"
 
 #: views.py:327
 #, python-format
@@ -433,39 +412,30 @@ msgstr "Sélectionner"
 #: views.py:401
 #, python-format
 msgid "Select new layer \"%(layer)s\" transformation for: %(object)s"
-msgstr ""
-"Sélectionnez un nouveau calque \"%(layer)s\" pour la transformation de: "
-"%(object)s"
+msgstr "Sélectionnez un nouveau calque \"%(layer)s\" pour la transformation de: %(object)s"
 
 #: workflow_actions.py:22
 msgid "Pages"
-msgstr ""
+msgstr "Pages"
 
 #: workflow_actions.py:25
 msgid ""
-"Pages to which the new transformations will be added. Separate by commas and/"
-"or use a dashes for a ranges. Leave blank to select all pages."
+"Pages to which the new transformations will be added. Separate by commas "
+"and/or use a dashes for a ranges. Leave blank to select all pages."
 msgstr ""
 
 #: workflow_actions.py:32
-#| msgid "Transformations"
 msgid "Transformation class"
-msgstr "Transformations"
+msgstr ""
 
 #: workflow_actions.py:37
-#| msgid "Layer transformation"
 msgid "Type of transformation to add."
-msgstr "Transformation de calque"
+msgstr ""
 
 #: workflow_actions.py:42
-#| msgid "Transformations"
 msgid "Transformation arguments"
-msgstr "Transformations"
+msgstr ""
 
 #: workflow_actions.py:51
-#| msgid "transformation"
 msgid "Add transformation"
-msgstr "transformation"
-
-#~ msgid "Enter a valid YAML value."
-#~ msgstr "Saisissez une valeur YAML valide."
+msgstr "Ajouter une transformation"
