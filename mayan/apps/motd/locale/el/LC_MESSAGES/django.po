@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 06:45+0000\n"
+"POT-Creation-Date: 2020-09-27 08:05+0000\n"
 "PO-Revision-Date: 2018-09-12 07:48+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -32,13 +32,11 @@ msgid "Messages"
 msgstr "Μηύματα"
 
 #: events.py:8
-#, fuzzy
 #| msgid "Message of the day"
 msgid "Message created"
 msgstr "Το μήνυμα της ημέρας"
 
 #: events.py:11
-#, fuzzy
 #| msgid "Message of the day"
 msgid "Message edited"
 msgstr "Το μήνυμα της ημέρας"
@@ -122,7 +120,6 @@ msgid "Delete request performed on %(count)d messages"
 msgstr ""
 
 #: views.py:54
-#, fuzzy
 #| msgid "Delete the message: %s?"
 msgid "Delete the selected message?"
 msgid_plural "Delete the selected messages?"
@@ -130,7 +127,6 @@ msgstr[0] "Διαγραφή του μηνύματος: %s;"
 msgstr[1] "Διαγραφή του μηνύματος: %s;"
 
 #: views.py:64
-#, fuzzy, python-format
 #| msgid "Delete the message: %s?"
 msgid "Delete message: %s?"
 msgstr "Διαγραφή του μηνύματος: %s;"

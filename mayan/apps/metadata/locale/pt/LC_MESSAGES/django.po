@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 06:45+0000\n"
+"POT-Creation-Date: 2020-09-27 08:05+0000\n"
 "PO-Revision-Date: 2020-04-08 17:30+0000\n"
 "Last-Translator: Bruno Martins <bruno.martins@bewgpt.com.pt>\n"
 "Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/"
@@ -511,25 +511,22 @@ msgid "Enter document metadata"
 msgstr ""
 
 #: workflow_actions.py:24
-#, fuzzy
 #| msgid "Add metadata to a document"
 msgid "Metadata types to add to the document."
 msgstr "Adicionar metadados a um documento"
 
 #: workflow_actions.py:48
-#, fuzzy, python-format
 #| msgid ""
 #| "Metadata type: %(metadata_type)s successfully added to document "
 #| "%(document)s."
 msgid ""
-"Unable to add metadata type \"%(metadata_type)s from document: %(document)s. "
-"Exception: %(exception)s"
+"Unable to add metadata type \"%(metadata_type)s\" from document: "
+"%(document)s. Exception: %(exception)s"
 msgstr ""
 "Tipo de metadados: %(metadata_type)s  adicionado com sucesso ao documento "
 "%(document)s."
 
 #: workflow_actions.py:87
-#, fuzzy
 #| msgid "Metadata types"
 msgid "Metadata types to edit."
 msgstr "Tipos de metadados"
@@ -540,26 +537,28 @@ msgid ""
 msgstr ""
 
 #: workflow_actions.py:127
-#, python-format
+#| msgid ""
+#| "Metadata type: %(metadata_type)s successfully added to document "
+#| "%(document)s."
 msgid ""
-"Unable to edit metadata type \"%(metadata_type)s from document: "
+"Unable to edit metadata type \"%(metadata_type)s\" from document: "
 "%(document)s. Document does not have the metadata type to be edit. "
 "Exception: %(exception)s"
 msgstr ""
+"Tipo de metadados: %(metadata_type)s  adicionado com sucesso ao documento "
+"%(document)s."
 
 #: workflow_actions.py:171
-#, fuzzy
 #| msgid "View metadata from a document"
 msgid "Metadata types to remove from the document."
 msgstr "Ver os metadados de um documento"
 
 #: workflow_actions.py:191
-#, fuzzy, python-format
 #| msgid ""
 #| "Metadata type: %(metadata_type)s successfully added to document "
 #| "%(document)s."
 msgid ""
-"Unable to remove metadata type \"%(metadata_type)s from document: "
+"Unable to remove metadata type \"%(metadata_type)s\" from document: "
 "%(document)s. Exception: %(exception)s"
 msgstr ""
 "Tipo de metadados: %(metadata_type)s  adicionado com sucesso ao documento "

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 06:45+0000\n"
+"POT-Creation-Date: 2020-09-27 08:05+0000\n"
 "PO-Revision-Date: 2020-04-02 06:56+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -28,7 +28,6 @@ msgid "Documents"
 msgstr "Dokumenti"
 
 #: apps.py:148
-#, fuzzy
 #| msgid "Description"
 msgid "Decorations"
 msgstr "Opis"
@@ -79,7 +78,6 @@ msgid "Latest version"
 msgstr ""
 
 #: apps.py:245
-#, fuzzy
 #| msgid "Restore trashed document"
 msgid "Return the document instance."
 msgstr "Obnovite povučeni dokument"
@@ -804,7 +802,6 @@ msgid "Clean empty duplicate lists"
 msgstr "Očistite prazne duplirane liste"
 
 #: queues.py:43
-#, fuzzy
 #| msgid "Empty trash"
 msgid "Empty the trash can"
 msgstr "Prazni smeće"
@@ -834,7 +831,6 @@ msgid "Scan document duplicates"
 msgstr ""
 
 #: search.py:35 search.py:54
-#, fuzzy
 #| msgid "Document type"
 msgid "Document type label"
 msgstr "Tip dokumenta"
@@ -1182,7 +1178,6 @@ msgid "Quick labels for document type: %s"
 msgstr "Brze etikete za tip dokumenta: %s"
 
 #: views/document_type_views.py:280
-#, fuzzy, python-format
 #| msgid "Clone page transformations for document: %s"
 msgid "Filename generation setup for document type: %s"
 msgstr "Transformacije stranica klonova za dokument: %s"

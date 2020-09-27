@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 06:45+0000\n"
+"POT-Creation-Date: 2020-09-27 08:05+0000\n"
 "PO-Revision-Date: 2020-04-08 17:30+0000\n"
 "Last-Translator: Bruno Martins <bruno.martins@bewgpt.com.pt>\n"
 "Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/"
@@ -25,7 +25,6 @@ msgid "Documents"
 msgstr "Documentos"
 
 #: apps.py:148
-#, fuzzy
 #| msgid "Description"
 msgid "Decorations"
 msgstr "Descrição"
@@ -74,7 +73,6 @@ msgid "Latest version"
 msgstr ""
 
 #: apps.py:245
-#, fuzzy
 #| msgid "Create document types"
 msgid "Return the document instance."
 msgstr "Criar tipos de documentos"
@@ -814,7 +812,6 @@ msgid "Scan document duplicates"
 msgstr ""
 
 #: search.py:35 search.py:54
-#, fuzzy
 #| msgid "Document type"
 msgid "Document type label"
 msgstr "Tipo de documento"

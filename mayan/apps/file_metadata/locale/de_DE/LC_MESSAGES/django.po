@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 06:45+0000\n"
+"POT-Creation-Date: 2020-09-27 08:05+0000\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Ingo Buchholz <ingo.buchholz@takwa.de>, 2020\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/"
@@ -213,7 +213,6 @@ msgstr ""
 "festgelegt werden und in der Datenbank abgespeichert werden."
 
 #: views.py:50
-#, fuzzy
 #| msgid "No file metadata available."
 msgid "No file metadata available"
 msgstr "Keine Dateimetadaten verfügbar."
@@ -231,7 +230,6 @@ msgid ""
 msgstr ""
 
 #: views.py:85
-#, fuzzy
 #| msgid "No file metadata available."
 msgid "No file metadata available for this driver"
 msgstr "Keine Dateimetadaten verfügbar."

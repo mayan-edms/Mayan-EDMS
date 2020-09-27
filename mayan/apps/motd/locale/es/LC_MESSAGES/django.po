@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 06:45+0000\n"
+"POT-Creation-Date: 2020-09-27 08:05+0000\n"
 "PO-Revision-Date: 2019-04-14 03:39+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
@@ -33,13 +33,11 @@ msgid "Messages"
 msgstr "Mensajes"
 
 #: events.py:8
-#, fuzzy
 #| msgid "Message of the day"
 msgid "Message created"
 msgstr "Mensaje del día "
 
 #: events.py:11
-#, fuzzy
 #| msgid "Message of the day"
 msgid "Message edited"
 msgstr "Mensaje del día "
@@ -124,7 +122,6 @@ msgid "Delete request performed on %(count)d messages"
 msgstr ""
 
 #: views.py:54
-#, fuzzy
 #| msgid "Delete the message: %s?"
 msgid "Delete the selected message?"
 msgid_plural "Delete the selected messages?"
@@ -132,7 +129,6 @@ msgstr[0] "¿Borrar el mensaje: %s?"
 msgstr[1] "¿Borrar el mensaje: %s?"
 
 #: views.py:64
-#, fuzzy, python-format
 #| msgid "Delete the message: %s?"
 msgid "Delete message: %s?"
 msgstr "¿Borrar el mensaje: %s?"

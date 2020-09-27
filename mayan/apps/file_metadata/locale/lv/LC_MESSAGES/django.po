@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 06:45+0000\n"
+"POT-Creation-Date: 2020-09-27 08:05+0000\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2019\n"
 "Language-Team: Latvian (https://www.transifex.com/rosarior/teams/13584/lv/)\n"
@@ -208,7 +208,6 @@ msgstr ""
 "dokumenta metadati, kurus lietotājs definē un uzturas datu bāzē."
 
 #: views.py:50
-#, fuzzy
 #| msgid "No file metadata available."
 msgid "No file metadata available"
 msgstr "Failu metadati nav pieejami."
@@ -226,7 +225,6 @@ msgid ""
 msgstr ""
 
 #: views.py:85
-#, fuzzy
 #| msgid "No file metadata available."
 msgid "No file metadata available for this driver"
 msgstr "Failu metadati nav pieejami."

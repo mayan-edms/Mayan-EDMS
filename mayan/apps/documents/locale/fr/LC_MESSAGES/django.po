@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 06:45+0000\n"
+"POT-Creation-Date: 2020-09-27 08:05+0000\n"
 "PO-Revision-Date: 2020-07-09 19:53+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -31,7 +31,6 @@ msgid "Documents"
 msgstr "Documents"
 
 #: apps.py:148
-#, fuzzy
 #| msgid "Description"
 msgid "Decorations"
 msgstr "Description"
@@ -82,7 +81,6 @@ msgid "Latest version"
 msgstr "Dernière version"
 
 #: apps.py:245
-#, fuzzy
 #| msgid "The name of the document type."
 msgid "Return the document instance."
 msgstr "Le nom du type de document."
@@ -827,7 +825,6 @@ msgid "Clean empty duplicate lists"
 msgstr "Nettoyer les listes des doublons vides "
 
 #: queues.py:43
-#, fuzzy
 #| msgid "Empty trash"
 msgid "Empty the trash can"
 msgstr "Vider la corbeille"
@@ -857,7 +854,6 @@ msgid "Scan document duplicates"
 msgstr "Numériser des doublons de documents"
 
 #: search.py:35 search.py:54
-#, fuzzy
 #| msgid "Document type"
 msgid "Document type label"
 msgstr "Type de document"
@@ -1242,7 +1238,6 @@ msgid "Quick labels for document type: %s"
 msgstr "Libellés rapides pour le type de document : %s"
 
 #: views/document_type_views.py:280
-#, fuzzy, python-format
 #| msgid "Deletion policies for document type: %s"
 msgid "Filename generation setup for document type: %s"
 msgstr "Règles de suppression pour le type de document: %s"

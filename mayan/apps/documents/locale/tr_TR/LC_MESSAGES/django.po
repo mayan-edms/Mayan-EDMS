@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 06:45+0000\n"
+"POT-Creation-Date: 2020-09-27 08:05+0000\n"
 "PO-Revision-Date: 2020-04-02 06:56+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-"
@@ -28,7 +28,6 @@ msgid "Documents"
 msgstr "Belgeler"
 
 #: apps.py:148
-#, fuzzy
 #| msgid "Description"
 msgid "Decorations"
 msgstr "Açıklama"
@@ -79,7 +78,6 @@ msgid "Latest version"
 msgstr ""
 
 #: apps.py:245
-#, fuzzy
 #| msgid "Restore trashed document"
 msgid "Return the document instance."
 msgstr "Çöpe atılmış dokümanı geri yükle"
@@ -799,7 +797,6 @@ msgid "Clean empty duplicate lists"
 msgstr ""
 
 #: queues.py:43
-#, fuzzy
 #| msgid "Empty trash"
 msgid "Empty the trash can"
 msgstr "Çöp kutusunu boşalt"
@@ -829,7 +826,6 @@ msgid "Scan document duplicates"
 msgstr ""
 
 #: search.py:35 search.py:54
-#, fuzzy
 #| msgid "Document type"
 msgid "Document type label"
 msgstr "Belge Türü"
@@ -1174,7 +1170,6 @@ msgid "Quick labels for document type: %s"
 msgstr "Belge türü için hızlı etiketler: %s"
 
 #: views/document_type_views.py:280
-#, fuzzy, python-format
 #| msgid "Clone page transformations for document: %s"
 msgid "Filename generation setup for document type: %s"
 msgstr "Belge için sayfa dönüşümlerini kopyalayın: %s"

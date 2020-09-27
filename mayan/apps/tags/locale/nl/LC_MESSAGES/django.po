@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 06:45+0000\n"
+"POT-Creation-Date: 2020-09-27 08:05+0000\n"
 "PO-Revision-Date: 2020-09-04 12:58+0000\n"
 "Last-Translator: bwakkie <bwakkie@gmail.com>\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -225,7 +225,6 @@ msgstr[0] "Geselecteerd label verwijderen?"
 msgstr[1] "Geselecteerde labels verwijderen?"
 
 #: views.py:166
-#, fuzzy, python-format
 #| msgid "Delete tag: %s"
 msgid "Delete tag: %s?"
 msgstr "Label verwijderen: %s"

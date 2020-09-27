@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 06:45+0000\n"
+"POT-Creation-Date: 2020-09-27 08:05+0000\n"
 "PO-Revision-Date: 2020-01-31 18:35+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -95,11 +95,10 @@ msgstr "\"%s\" n'est pas une entrée valide."
 
 #: layers.py:11
 msgid ""
-"Decoration are visual elements that add contextual information to images."
+"Decorations are visual elements that add contextual information to images."
 msgstr ""
 
 #: layers.py:13
-#, fuzzy
 #| msgid "Transformations"
 msgid "Decorations"
 msgstr "Transformations"
@@ -211,19 +210,16 @@ msgid "Layer transformations"
 msgstr "Transformations de calque"
 
 #: models.py:174
-#, fuzzy
 #| msgid "Create new transformations"
 msgid "Unknown transformation class"
 msgstr "Créer de nouvelles transformations"
 
 #: permissions.py:8
-#, fuzzy
 #| msgid "Create new transformations"
 msgid "Create new assets"
 msgstr "Créer de nouvelles transformations"
 
 #: permissions.py:11
-#, fuzzy
 #| msgid "Delete"
 msgid "Delete assets"
 msgstr "Supprimer"
@@ -233,7 +229,6 @@ msgid "Edit assets"
 msgstr ""
 
 #: permissions.py:17
-#, fuzzy
 #| msgid "View existing transformations"
 msgid "View existing assets"
 msgstr "Afficher les transformations existantes"
@@ -263,10 +258,10 @@ msgid "Configuration options for the graphics conversion backend."
 msgstr "Options de configuration pour le backend de conversion graphique."
 
 #: settings.py:41
-msgid "Path to the Storage subclass to use when storing detached signatures."
+msgid "Path to the Storage subclass to use when storing assets."
 msgstr ""
 
-#: settings.py:50
+#: settings.py:49
 msgid "Arguments to pass to the CONVERTER_ASSET_STORAGE_BACKEND."
 msgstr ""
 
@@ -281,7 +276,6 @@ msgid "Paste an asset"
 msgstr ""
 
 #: transformations.py:248
-#, fuzzy
 #| msgid "Draw rectangle (percents coordinates)"
 msgid "Paste an asset (percents coordinates)"
 msgstr "Dessiner un rectangle (coordonnées en pourcentage)"
@@ -368,7 +362,6 @@ msgid "Delete asset: %s?"
 msgstr ""
 
 #: views.py:80
-#, fuzzy, python-format
 #| msgid "Transformation created successfully."
 msgid "Asset \"%s\" deleted successfully."
 msgstr "Transformation créée avec succès."
@@ -455,25 +448,21 @@ msgid ""
 msgstr ""
 
 #: workflow_actions.py:32
-#, fuzzy
 #| msgid "Transformations"
 msgid "Transformation class"
 msgstr "Transformations"
 
 #: workflow_actions.py:37
-#, fuzzy
 #| msgid "Layer transformation"
 msgid "Type of transformation to add."
 msgstr "Transformation de calque"
 
 #: workflow_actions.py:42
-#, fuzzy
 #| msgid "Transformations"
 msgid "Transformation arguments"
 msgstr "Transformations"
 
 #: workflow_actions.py:51
-#, fuzzy
 #| msgid "transformation"
 msgid "Add transformation"
 msgstr "transformation"

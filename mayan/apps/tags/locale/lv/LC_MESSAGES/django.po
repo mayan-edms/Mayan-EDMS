@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 06:45+0000\n"
+"POT-Creation-Date: 2020-09-27 08:05+0000\n"
 "PO-Revision-Date: 2020-08-18 07:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -226,7 +226,6 @@ msgstr[1] "Vai izdzēst izvēlēto tagu?"
 msgstr[2] "Vai dzēst atlasītos tagus?"
 
 #: views.py:166
-#, fuzzy, python-format
 #| msgid "Delete tag: %s"
 msgid "Delete tag: %s?"
 msgstr "Dzēst tagu: %s"

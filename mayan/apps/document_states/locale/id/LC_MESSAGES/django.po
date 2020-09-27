@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 06:45+0000\n"
+"POT-Creation-Date: 2020-09-27 08:05+0000\n"
 "PO-Revision-Date: 2020-08-08 09:38+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -232,7 +232,6 @@ msgid "Transitions"
 msgstr "Transisi"
 
 #: links.py:165 links.py:171 workflow_actions.py:83
-#, fuzzy
 #| msgid "Document workflows"
 msgid "Launch workflows"
 msgstr "Alur kerja dokumen"
@@ -588,7 +587,6 @@ msgid "Document states fast"
 msgstr ""
 
 #: queues.py:15
-#, fuzzy
 #| msgid "Workflows for document: %s"
 msgid "Launch all workflows for all documents"
 msgstr "Alur kerja untuk dokumen: %s"
@@ -598,13 +596,11 @@ msgid "Launch a workflow"
 msgstr ""
 
 #: queues.py:23
-#, fuzzy
 #| msgid "There are no workflow for this document"
 msgid "Launch a workflow for a document"
 msgstr "Tidak ada alur kerja untuk dokumen ini"
 
 #: queues.py:27
-#, fuzzy
 #| msgid "There are no workflow for this document"
 msgid "Launch all workflows for a document"
 msgstr "Tidak ada alur kerja untuk dokumen ini"
@@ -703,7 +699,6 @@ msgid ""
 msgstr ""
 
 #: views/workflow_instance_views.py:35
-#, fuzzy
 #| msgid "There are no workflow for this document"
 msgid "There are no workflows for this document"
 msgstr "Tidak ada alur kerja untuk dokumen ini"
@@ -953,13 +948,11 @@ msgid "Workflows assigned the document type: %s"
 msgstr ""
 
 #: views/workflow_template_views.py:95
-#, fuzzy, python-format
 #| msgid "Workflows for document: %s"
 msgid "Workflows launched for %(count)d document"
 msgstr "Alur kerja untuk dokumen: %s"
 
 #: views/workflow_template_views.py:96
-#, fuzzy, python-format
 #| msgid "Workflows for document: %s"
 msgid "Workflows launched for %(count)d documents"
 msgstr "Alur kerja untuk dokumen: %s"
@@ -975,20 +968,17 @@ msgid ""
 msgstr ""
 
 #: views/workflow_template_views.py:107
-#, fuzzy, python-format
 #| msgid "There are no workflow for this document"
 msgid "Launch selected workflows for %(count)d document"
 msgid_plural "Launch selected workflows for %(count)d documents"
 msgstr[0] "Tidak ada alur kerja untuk dokumen ini"
 
 #: views/workflow_template_views.py:120
-#, fuzzy, python-format
 #| msgid "Workflows for document: %s"
 msgid "Launch selected workflows for document: %s"
 msgstr "Alur kerja untuk dokumen: %s"
 
 #: views/workflow_template_views.py:133
-#, fuzzy
 #| msgid "Workflow created"
 msgid "Workflows to be launched."
 msgstr "Alur kerja dibuat"
@@ -1008,7 +998,6 @@ msgid "All workflow instances will also be deleted."
 msgstr ""
 
 #: views/workflow_template_views.py:185
-#, fuzzy
 #| msgid "Delete workflows"
 msgid "Delete the selected workflow?"
 msgid_plural "Delete the selected workflows?"
@@ -1020,13 +1009,11 @@ msgid "Delete workflow: %s?"
 msgstr ""
 
 #: views/workflow_template_views.py:206
-#, fuzzy, python-format
 #| msgid "Document \"%s\" transitioned successfully"
 msgid "Workflow \"%s\" deleted successfully."
 msgstr "Transisi dokumen \"%s\" berhasil"
 
 #: views/workflow_template_views.py:211
-#, fuzzy, python-format
 #| msgid "Detail of workflow: %(workflow)s"
 msgid "Error deleting workflow \"%(workflow)s\": %(error)s"
 msgstr "Rincian dari alur kerja: %(workflow)s"

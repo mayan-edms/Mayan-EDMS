@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 06:45+0000\n"
+"POT-Creation-Date: 2020-09-27 08:05+0000\n"
 "PO-Revision-Date: 2020-08-20 17:26+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -227,7 +227,6 @@ msgstr[0] "Да се изтрие ли избраният маркер?"
 msgstr[1] "Да се изтрият ли избраните маркери?"
 
 #: views.py:166
-#, fuzzy, python-format
 #| msgid "Delete tag: %s"
 msgid "Delete tag: %s?"
 msgstr "Изтриване на маркер: %s"

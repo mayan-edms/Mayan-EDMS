@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 06:45+0000\n"
+"POT-Creation-Date: 2020-09-27 08:05+0000\n"
 "PO-Revision-Date: 2020-06-16 09:55+0000\n"
 "Last-Translator: Thanh Long Hoàng <hoangthanhlong@gmail.com>\n"
 "Language-Team: Vietnamese (http://www.transifex.com/rosarior/mayan-edms/"
@@ -163,13 +163,11 @@ msgid "Change document type OCR settings"
 msgstr ""
 
 #: queues.py:10
-#, fuzzy
 #| msgid "Document version"
 msgid "Finish document version OCR"
 msgstr "Phiên bản của tài liệu"
 
 #: queues.py:14
-#, fuzzy
 #| msgid "Document version"
 msgid "Document version page OCR"
 msgstr "Phiên bản của tài liệu"

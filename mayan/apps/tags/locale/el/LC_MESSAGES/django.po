@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 06:45+0000\n"
+"POT-Creation-Date: 2020-09-27 08:05+0000\n"
 "PO-Revision-Date: 2020-08-18 07:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -221,7 +221,6 @@ msgstr[0] "Διαγραφή της επιλεγμένης ετικέτας;"
 msgstr[1] "Διαγραφή των επιλεγμένων ετικετών;"
 
 #: views.py:166
-#, fuzzy, python-format
 #| msgid "Delete tag: %s"
 msgid "Delete tag: %s?"
 msgstr "Διαγραφή ετικέτας: %s"

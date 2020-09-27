@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 06:45+0000\n"
+"POT-Creation-Date: 2020-09-27 08:05+0000\n"
 "PO-Revision-Date: 2020-02-14 02:21+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -27,7 +27,6 @@ msgid "Permissions"
 msgstr "Dozvole"
 
 #: apps.py:99 models.py:142
-#, fuzzy
 #| msgid "Group name"
 msgid "Group count"
 msgstr "Ime grupe"
@@ -97,7 +96,6 @@ msgid "Role"
 msgstr "Uloga"
 
 #: models.py:150
-#, fuzzy
 #| msgid "Permission"
 msgid "Permission count"
 msgstr "Permisija"

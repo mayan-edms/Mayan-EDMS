@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 06:45+0000\n"
+"POT-Creation-Date: 2020-09-27 08:05+0000\n"
 "PO-Revision-Date: 2020-07-18 06:24+0000\n"
 "Last-Translator: yan songwei <yansw@vip.163.com>\n"
 "Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-"
@@ -141,7 +141,6 @@ msgid "User theme settings"
 msgstr ""
 
 #: permissions.py:5
-#, fuzzy
 #| msgid "Appearance"
 msgid "Apparance"
 msgstr "外观"

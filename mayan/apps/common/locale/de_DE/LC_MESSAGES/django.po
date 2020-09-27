@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 06:45+0000\n"
+"POT-Creation-Date: 2020-09-27 08:05+0000\n"
 "PO-Revision-Date: 2020-08-17 15:06+0000\n"
 "Last-Translator: Marvin Haschker <marvin@haschker.me>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
@@ -289,7 +289,6 @@ msgid "Make a copy of %(object_name)s \"%(object)s\"?"
 msgstr ""
 
 #: views.py:134
-#, fuzzy
 #| msgid "%(object)s created successfully."
 msgid "Object copied successfully."
 msgstr "%(object)s erfolgreich erstellt."

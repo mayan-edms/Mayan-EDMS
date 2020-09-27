@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 06:45+0000\n"
+"POT-Creation-Date: 2020-09-27 08:05+0000\n"
 "PO-Revision-Date: 2020-08-08 09:38+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-"
@@ -242,7 +242,6 @@ msgid "Transitions"
 msgstr "Tranziţii"
 
 #: links.py:165 links.py:171 workflow_actions.py:83
-#, fuzzy
 #| msgid "Launch workflow"
 msgid "Launch workflows"
 msgstr "Lansați fluxul de lucru"
@@ -615,7 +614,6 @@ msgid "Document states fast"
 msgstr "Stările documentului rapid"
 
 #: queues.py:15
-#, fuzzy
 #| msgid "Launch all workflows"
 msgid "Launch all workflows for all documents"
 msgstr "Lansați toate fluxurile de lucru"
@@ -625,13 +623,11 @@ msgid "Launch a workflow"
 msgstr "Lansați un flux de lucru"
 
 #: queues.py:23
-#, fuzzy
 #| msgid "There are no workflow for this document"
 msgid "Launch a workflow for a document"
 msgstr "Nu există flux de lucru pentru acest document"
 
 #: queues.py:27
-#, fuzzy
 #| msgid "Launch all workflows"
 msgid "Launch all workflows for a document"
 msgstr "Lansați toate fluxurile de lucru"
@@ -749,7 +745,6 @@ msgstr ""
 "document să execute acele fluxuri de lucru."
 
 #: views/workflow_instance_views.py:35
-#, fuzzy
 #| msgid "There are no workflow for this document"
 msgid "There are no workflows for this document"
 msgstr "Nu există flux de lucru pentru acest document"
@@ -1021,13 +1016,11 @@ msgid "Workflows assigned the document type: %s"
 msgstr "Fluxurile de lucru atribuite tipului de document: %s"
 
 #: views/workflow_template_views.py:95
-#, fuzzy, python-format
 #| msgid "Workflows for document: %s"
 msgid "Workflows launched for %(count)d document"
 msgstr "Fluxuri de lucru pentru documentul: %s"
 
 #: views/workflow_template_views.py:96
-#, fuzzy, python-format
 #| msgid "Workflows for document: %s"
 msgid "Workflows launched for %(count)d documents"
 msgstr "Fluxuri de lucru pentru documentul: %s"
@@ -1043,7 +1036,6 @@ msgid ""
 msgstr ""
 
 #: views/workflow_template_views.py:107
-#, fuzzy, python-format
 #| msgid "There are no workflow for this document"
 msgid "Launch selected workflows for %(count)d document"
 msgid_plural "Launch selected workflows for %(count)d documents"
@@ -1052,13 +1044,11 @@ msgstr[1] "Nu există flux de lucru pentru acest document"
 msgstr[2] "Nu există flux de lucru pentru acest document"
 
 #: views/workflow_template_views.py:120
-#, fuzzy, python-format
 #| msgid "Workflows for document: %s"
 msgid "Launch selected workflows for document: %s"
 msgstr "Fluxuri de lucru pentru documentul: %s"
 
 #: views/workflow_template_views.py:133
-#, fuzzy
 #| msgid "Workflow instance"
 msgid "Workflows to be launched."
 msgstr "Instanță de flux de lucru"
@@ -1074,13 +1064,11 @@ msgid "Delete request performed on %(count)d workflows"
 msgstr ""
 
 #: views/workflow_template_views.py:183
-#, fuzzy
 #| msgid "Workflow instance log entries"
 msgid "All workflow instances will also be deleted."
 msgstr "Înregistrări din jurnalul instanțelor fluxului de lucru"
 
 #: views/workflow_template_views.py:185
-#, fuzzy
 #| msgid "Delete workflows"
 msgid "Delete the selected workflow?"
 msgid_plural "Delete the selected workflows?"
@@ -1094,13 +1082,11 @@ msgid "Delete workflow: %s?"
 msgstr "Ștergeți fluxul de lucru: %s?"
 
 #: views/workflow_template_views.py:206
-#, fuzzy, python-format
 #| msgid "Workflow launch queued successfully."
 msgid "Workflow \"%s\" deleted successfully."
 msgstr "Lansarea fluxului de lucru a intrat în coada de așteptare."
 
 #: views/workflow_template_views.py:211
-#, fuzzy, python-format
 #| msgid "Detail of workflow: %(workflow)s"
 msgid "Error deleting workflow \"%(workflow)s\": %(error)s"
 msgstr "Detalii despre fluxul de lucru: %(workflow)s"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 06:45+0000\n"
+"POT-Creation-Date: 2020-09-27 08:05+0000\n"
 "PO-Revision-Date: 2020-01-31 04:42+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
@@ -83,7 +83,7 @@ msgstr ""
 
 #: layers.py:11
 msgid ""
-"Decoration are visual elements that add contextual information to images."
+"Decorations are visual elements that add contextual information to images."
 msgstr ""
 
 #: layers.py:13
@@ -237,10 +237,10 @@ msgid "Configuration options for the graphics conversion backend."
 msgstr ""
 
 #: settings.py:41
-msgid "Path to the Storage subclass to use when storing detached signatures."
+msgid "Path to the Storage subclass to use when storing assets."
 msgstr ""
 
-#: settings.py:50
+#: settings.py:49
 msgid "Arguments to pass to the CONVERTER_ASSET_STORAGE_BACKEND."
 msgstr ""
 

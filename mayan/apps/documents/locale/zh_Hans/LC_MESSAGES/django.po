@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 06:45+0000\n"
+"POT-Creation-Date: 2020-09-27 08:05+0000\n"
 "PO-Revision-Date: 2020-04-02 06:56+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-"
@@ -26,7 +26,6 @@ msgid "Documents"
 msgstr "文档"
 
 #: apps.py:148
-#, fuzzy
 #| msgid "Description"
 msgid "Decorations"
 msgstr "描述"
@@ -76,7 +75,6 @@ msgid "Latest version"
 msgstr ""
 
 #: apps.py:245
-#, fuzzy
 #| msgid "The name of the document type."
 msgid "Return the document instance."
 msgstr "文档类型的名称。"
@@ -798,7 +796,6 @@ msgid "Clean empty duplicate lists"
 msgstr "清理空的重复列表"
 
 #: queues.py:43
-#, fuzzy
 #| msgid "Empty trash"
 msgid "Empty the trash can"
 msgstr "清空垃圾箱"
@@ -828,7 +825,6 @@ msgid "Scan document duplicates"
 msgstr ""
 
 #: search.py:35 search.py:54
-#, fuzzy
 #| msgid "Document type"
 msgid "Document type label"
 msgstr "文件类型"
@@ -1170,7 +1166,6 @@ msgid "Quick labels for document type: %s"
 msgstr "文档类型的快速标签：%s"
 
 #: views/document_type_views.py:280
-#, fuzzy, python-format
 #| msgid "Clone page transformations for document: %s"
 msgid "Filename generation setup for document type: %s"
 msgstr "克隆文档页面转换：%s"

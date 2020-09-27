@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 06:45+0000\n"
+"POT-Creation-Date: 2020-09-27 08:05+0000\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: yan songwei <yansw@vip.163.com>, 2020\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/"
@@ -203,7 +203,6 @@ msgstr ""
 "用户定义并驻留在数据库中的文档元数据不同。"
 
 #: views.py:50
-#, fuzzy
 #| msgid "No file metadata available."
 msgid "No file metadata available"
 msgstr "没有可用的文件元数据。"
@@ -221,7 +220,6 @@ msgid ""
 msgstr ""
 
 #: views.py:85
-#, fuzzy
 #| msgid "No file metadata available."
 msgid "No file metadata available for this driver"
 msgstr "没有可用的文件元数据。"

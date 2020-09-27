@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 06:45+0000\n"
+"POT-Creation-Date: 2020-09-27 08:05+0000\n"
 "PO-Revision-Date: 2020-06-16 09:57+0000\n"
 "Last-Translator: Thanh Long Hoàng <hoangthanhlong@gmail.com>\n"
 "Language-Team: Vietnamese (http://www.transifex.com/rosarior/mayan-edms/"
@@ -509,8 +509,8 @@ msgstr ""
 #: workflow_actions.py:48
 #, python-format
 msgid ""
-"Unable to add metadata type \"%(metadata_type)s from document: %(document)s. "
-"Exception: %(exception)s"
+"Unable to add metadata type \"%(metadata_type)s\" from document: "
+"%(document)s. Exception: %(exception)s"
 msgstr ""
 
 #: workflow_actions.py:87
@@ -525,7 +525,7 @@ msgstr ""
 #: workflow_actions.py:127
 #, python-format
 msgid ""
-"Unable to edit metadata type \"%(metadata_type)s from document: "
+"Unable to edit metadata type \"%(metadata_type)s\" from document: "
 "%(document)s. Document does not have the metadata type to be edit. "
 "Exception: %(exception)s"
 msgstr ""
@@ -537,6 +537,6 @@ msgstr ""
 #: workflow_actions.py:191
 #, python-format
 msgid ""
-"Unable to remove metadata type \"%(metadata_type)s from document: "
+"Unable to remove metadata type \"%(metadata_type)s\" from document: "
 "%(document)s. Exception: %(exception)s"
 msgstr ""

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 06:45+0000\n"
+"POT-Creation-Date: 2020-09-27 08:05+0000\n"
 "PO-Revision-Date: 2020-01-29 08:08+0000\n"
 "Last-Translator: Allan Møller <it@brandts.dk>\n"
 "Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -506,7 +506,6 @@ msgid "Enter document metadata"
 msgstr ""
 
 #: workflow_actions.py:24
-#, fuzzy
 #| msgid "Add metadata to a document"
 msgid "Metadata types to add to the document."
 msgstr "Tilføj metadata til et dokument"
@@ -514,12 +513,11 @@ msgstr "Tilføj metadata til et dokument"
 #: workflow_actions.py:48
 #, python-format
 msgid ""
-"Unable to add metadata type \"%(metadata_type)s from document: %(document)s. "
-"Exception: %(exception)s"
+"Unable to add metadata type \"%(metadata_type)s\" from document: "
+"%(document)s. Exception: %(exception)s"
 msgstr ""
 
 #: workflow_actions.py:87
-#, fuzzy
 #| msgid "Metadata type"
 msgid "Metadata types to edit."
 msgstr "Metadata type"
@@ -532,13 +530,12 @@ msgstr ""
 #: workflow_actions.py:127
 #, python-format
 msgid ""
-"Unable to edit metadata type \"%(metadata_type)s from document: "
+"Unable to edit metadata type \"%(metadata_type)s\" from document: "
 "%(document)s. Document does not have the metadata type to be edit. "
 "Exception: %(exception)s"
 msgstr ""
 
 #: workflow_actions.py:171
-#, fuzzy
 #| msgid "View metadata from a document"
 msgid "Metadata types to remove from the document."
 msgstr "Se metadata fra et dokument"
@@ -546,6 +543,6 @@ msgstr "Se metadata fra et dokument"
 #: workflow_actions.py:191
 #, python-format
 msgid ""
-"Unable to remove metadata type \"%(metadata_type)s from document: "
+"Unable to remove metadata type \"%(metadata_type)s\" from document: "
 "%(document)s. Exception: %(exception)s"
 msgstr ""

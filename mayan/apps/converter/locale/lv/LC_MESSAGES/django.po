@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 06:45+0000\n"
+"POT-Creation-Date: 2020-09-27 08:05+0000\n"
 "PO-Revision-Date: 2020-01-31 04:42+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -91,11 +91,10 @@ msgstr "\"%s\" nav derīgs ieraksts."
 
 #: layers.py:11
 msgid ""
-"Decoration are visual elements that add contextual information to images."
+"Decorations are visual elements that add contextual information to images."
 msgstr ""
 
 #: layers.py:13
-#, fuzzy
 #| msgid "Transformations"
 msgid "Decorations"
 msgstr "Transformācijas"
@@ -206,19 +205,16 @@ msgid "Layer transformations"
 msgstr ""
 
 #: models.py:174
-#, fuzzy
 #| msgid "Create new transformations"
 msgid "Unknown transformation class"
 msgstr "Izveidojiet jaunas transformācijas"
 
 #: permissions.py:8
-#, fuzzy
 #| msgid "Create new transformations"
 msgid "Create new assets"
 msgstr "Izveidojiet jaunas transformācijas"
 
 #: permissions.py:11
-#, fuzzy
 #| msgid "Delete"
 msgid "Delete assets"
 msgstr "Dzēst"
@@ -228,7 +224,6 @@ msgid "Edit assets"
 msgstr ""
 
 #: permissions.py:17
-#, fuzzy
 #| msgid "View existing transformations"
 msgid "View existing assets"
 msgstr "Skatiet esošās transformācijas"
@@ -258,10 +253,10 @@ msgid "Configuration options for the graphics conversion backend."
 msgstr "Grafikas reklāmguvumu backend konfigurācijas opcijas."
 
 #: settings.py:41
-msgid "Path to the Storage subclass to use when storing detached signatures."
+msgid "Path to the Storage subclass to use when storing assets."
 msgstr ""
 
-#: settings.py:50
+#: settings.py:49
 msgid "Arguments to pass to the CONVERTER_ASSET_STORAGE_BACKEND."
 msgstr ""
 
@@ -441,25 +436,21 @@ msgid ""
 msgstr ""
 
 #: workflow_actions.py:32
-#, fuzzy
 #| msgid "Transformations"
 msgid "Transformation class"
 msgstr "Transformācijas"
 
 #: workflow_actions.py:37
-#, fuzzy
 #| msgid "transformation"
 msgid "Type of transformation to add."
 msgstr "pārvērtība"
 
 #: workflow_actions.py:42
-#, fuzzy
 #| msgid "Transformations"
 msgid "Transformation arguments"
 msgstr "Transformācijas"
 
 #: workflow_actions.py:51
-#, fuzzy
 #| msgid "transformation"
 msgid "Add transformation"
 msgstr "pārvērtība"

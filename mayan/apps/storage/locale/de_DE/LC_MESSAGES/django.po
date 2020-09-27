@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 06:45+0000\n"
+"POT-Creation-Date: 2020-09-27 08:05+0000\n"
 "PO-Revision-Date: 2020-08-17 15:33+0000\n"
 "Last-Translator: Marvin Haschker <marvin@haschker.me>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
@@ -82,7 +82,6 @@ msgid "Shared uploaded files"
 msgstr ""
 
 #: queues.py:11
-#, fuzzy
 #| msgid "Storage"
 msgid "Storage periodic"
 msgstr "Dateispeicher"

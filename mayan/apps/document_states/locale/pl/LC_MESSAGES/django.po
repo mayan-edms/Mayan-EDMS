@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 06:45+0000\n"
+"POT-Creation-Date: 2020-09-27 08:05+0000\n"
 "PO-Revision-Date: 2020-08-08 09:38+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -241,7 +241,6 @@ msgid "Transitions"
 msgstr "Przejścia"
 
 #: links.py:165 links.py:171 workflow_actions.py:83
-#, fuzzy
 #| msgid "Launch workflow"
 msgid "Launch workflows"
 msgstr "Uruchom przepływ pracy"
@@ -609,7 +608,6 @@ msgid "Document states fast"
 msgstr "Szybkie stany dokumentów"
 
 #: queues.py:15
-#, fuzzy
 #| msgid "Launch all workflows"
 msgid "Launch all workflows for all documents"
 msgstr "Uruchom wszystkie przepływy pracy"
@@ -619,13 +617,11 @@ msgid "Launch a workflow"
 msgstr "Uruchom przepływ pracy"
 
 #: queues.py:23
-#, fuzzy
 #| msgid "There are no workflow for this document"
 msgid "Launch a workflow for a document"
 msgstr "Dla tego dokumentu nie ma przepływu pracy"
 
 #: queues.py:27
-#, fuzzy
 #| msgid "Launch all workflows"
 msgid "Launch all workflows for a document"
 msgstr "Uruchom wszystkie przepływy pracy"
@@ -743,7 +739,6 @@ msgstr ""
 "mógł wykonać przepływy pracy."
 
 #: views/workflow_instance_views.py:35
-#, fuzzy
 #| msgid "There are no workflow for this document"
 msgid "There are no workflows for this document"
 msgstr "Dla tego dokumentu nie ma przepływu pracy"
@@ -1013,13 +1008,11 @@ msgid "Workflows assigned the document type: %s"
 msgstr "Przepływy pracy przypisane do typu dokumentu: %s"
 
 #: views/workflow_template_views.py:95
-#, fuzzy, python-format
 #| msgid "Workflows for document: %s"
 msgid "Workflows launched for %(count)d document"
 msgstr "Obiegi dokumentu: %s"
 
 #: views/workflow_template_views.py:96
-#, fuzzy, python-format
 #| msgid "Workflows for document: %s"
 msgid "Workflows launched for %(count)d documents"
 msgstr "Obiegi dokumentu: %s"
@@ -1035,7 +1028,6 @@ msgid ""
 msgstr ""
 
 #: views/workflow_template_views.py:107
-#, fuzzy, python-format
 #| msgid "There are no workflow for this document"
 msgid "Launch selected workflows for %(count)d document"
 msgid_plural "Launch selected workflows for %(count)d documents"
@@ -1045,13 +1037,11 @@ msgstr[2] "Dla tego dokumentu nie ma przepływu pracy"
 msgstr[3] "Dla tego dokumentu nie ma przepływu pracy"
 
 #: views/workflow_template_views.py:120
-#, fuzzy, python-format
 #| msgid "Workflows for document: %s"
 msgid "Launch selected workflows for document: %s"
 msgstr "Obiegi dokumentu: %s"
 
 #: views/workflow_template_views.py:133
-#, fuzzy
 #| msgid "Workflow instance"
 msgid "Workflows to be launched."
 msgstr "Instancja przepływu pracy"
@@ -1067,13 +1057,11 @@ msgid "Delete request performed on %(count)d workflows"
 msgstr ""
 
 #: views/workflow_template_views.py:183
-#, fuzzy
 #| msgid "Workflow instance log entries"
 msgid "All workflow instances will also be deleted."
 msgstr "Wpisy do dziennika instancji przepływu pracy"
 
 #: views/workflow_template_views.py:185
-#, fuzzy
 #| msgid "Delete workflows"
 msgid "Delete the selected workflow?"
 msgid_plural "Delete the selected workflows?"
@@ -1088,13 +1076,11 @@ msgid "Delete workflow: %s?"
 msgstr "Usunąć przepływ pracy: %s?"
 
 #: views/workflow_template_views.py:206
-#, fuzzy, python-format
 #| msgid "Workflow launch queued successfully."
 msgid "Workflow \"%s\" deleted successfully."
 msgstr "Uruchomienie przepływu pracy w kolejce powiodło się."
 
 #: views/workflow_template_views.py:211
-#, fuzzy, python-format
 #| msgid "Detail of workflow: %(workflow)s"
 msgid "Error deleting workflow \"%(workflow)s\": %(error)s"
 msgstr "Szczegóły obiegu dokumentów: %(workflow)s"

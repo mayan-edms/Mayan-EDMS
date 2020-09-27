@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 06:45+0000\n"
+"POT-Creation-Date: 2020-09-27 08:05+0000\n"
 "PO-Revision-Date: 2020-06-23 07:18+0000\n"
 "Last-Translator: Faiqul Azmi <kasempurnaningurip@gmail.com>\n"
 "Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -92,7 +92,6 @@ msgid "Role"
 msgstr "Peranan"
 
 #: models.py:150
-#, fuzzy
 #| msgid "Permissions"
 msgid "Permission count"
 msgstr "Izin"

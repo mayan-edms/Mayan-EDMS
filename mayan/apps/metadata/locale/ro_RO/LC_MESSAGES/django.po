@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 06:45+0000\n"
+"POT-Creation-Date: 2020-09-27 08:05+0000\n"
 "PO-Revision-Date: 2020-02-29 06:12+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-"
@@ -541,26 +541,23 @@ msgid "Enter document metadata"
 msgstr "Introduceți metadatele documentului"
 
 #: workflow_actions.py:24
-#, fuzzy
 #| msgid "Metadata types to be added to the selected documents."
 msgid "Metadata types to add to the document."
 msgstr ""
 "Tipurile de metadate care urmează să fie adăugate la documentele selectate."
 
 #: workflow_actions.py:48
-#, fuzzy, python-format
 #| msgid ""
 #| "Error adding metadata type \"%(metadata_type)s\" to document: "
 #| "%(document)s; %(exception)s"
 msgid ""
-"Unable to add metadata type \"%(metadata_type)s from document: %(document)s. "
-"Exception: %(exception)s"
+"Unable to add metadata type \"%(metadata_type)s\" from document: "
+"%(document)s. Exception: %(exception)s"
 msgstr ""
 "Eroare la adăugarea tipului de metadate \"%(metadata_type)s\" în documentul: "
 "%(document)s; %(exception)s"
 
 #: workflow_actions.py:87
-#, fuzzy
 #| msgid "Metadata type edited"
 msgid "Metadata types to edit."
 msgstr "Tipul de metadate a fost editat"
@@ -571,12 +568,11 @@ msgid ""
 msgstr ""
 
 #: workflow_actions.py:127
-#, fuzzy, python-format
 #| msgid ""
 #| "Error removing metadata type \"%(metadata_type)s\" from document: "
 #| "%(document)s; %(exception)s"
 msgid ""
-"Unable to edit metadata type \"%(metadata_type)s from document: "
+"Unable to edit metadata type \"%(metadata_type)s\" from document: "
 "%(document)s. Document does not have the metadata type to be edit. "
 "Exception: %(exception)s"
 msgstr ""
@@ -584,19 +580,17 @@ msgstr ""
 "documentul: %(document)s; %(exception)s"
 
 #: workflow_actions.py:171
-#, fuzzy
 #| msgid "Remove metadata types from the document"
 #| msgid_plural "Remove metadata types from the documents"
 msgid "Metadata types to remove from the document."
 msgstr "Eliminați tipurile de metadate din document"
 
 #: workflow_actions.py:191
-#, fuzzy, python-format
 #| msgid ""
 #| "Error removing metadata type \"%(metadata_type)s\" from document: "
 #| "%(document)s; %(exception)s"
 msgid ""
-"Unable to remove metadata type \"%(metadata_type)s from document: "
+"Unable to remove metadata type \"%(metadata_type)s\" from document: "
 "%(document)s. Exception: %(exception)s"
 msgstr ""
 "Eroare la eliminarea tipului de metadate \"%(metadata_type)s\" din "

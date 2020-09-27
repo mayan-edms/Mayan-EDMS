@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 06:45+0000\n"
+"POT-Creation-Date: 2020-09-27 08:05+0000\n"
 "PO-Revision-Date: 2020-01-28 07:59+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -25,7 +25,6 @@ msgid "OCR"
 msgstr "Οπτική Αναγνώριση Χαρακτήρων"
 
 #: apps.py:103
-#, fuzzy
 #| msgid "Document page OCR content"
 msgid "The OCR content."
 msgstr "Περιεχόμενα αναγνωρισμένης σελίδας εγγράφου"
@@ -165,13 +164,11 @@ msgid "Change document type OCR settings"
 msgstr "Τροποποίηση ρυθμίσεων τύπου εγγράφου OCR"
 
 #: queues.py:10
-#, fuzzy
 #| msgid "Document version OCR"
 msgid "Finish document version OCR"
 msgstr "Οπτική αναγνώριση έκδοσης εγγράφου"
 
 #: queues.py:14
-#, fuzzy
 #| msgid "Document version OCR"
 msgid "Document version page OCR"
 msgstr "Οπτική αναγνώριση έκδοσης εγγράφου"
@@ -246,7 +243,6 @@ msgid ""
 msgstr ""
 
 #: workflow_actions.py:31
-#, fuzzy
 #| msgid "Content"
 msgid "Page content"
 msgstr "Περιεχόμενο"
@@ -256,7 +252,6 @@ msgid "A template that will generate the OCR content to be saved."
 msgstr ""
 
 #: workflow_actions.py:43
-#, fuzzy
 #| msgid "Document page OCR content"
 msgid "Update document page OCR content"
 msgstr "Περιεχόμενα αναγνωρισμένης σελίδας εγγράφου"

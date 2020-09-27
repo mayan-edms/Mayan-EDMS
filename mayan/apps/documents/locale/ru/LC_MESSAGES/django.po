@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 06:45+0000\n"
+"POT-Creation-Date: 2020-09-27 08:05+0000\n"
 "PO-Revision-Date: 2020-04-02 06:56+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -28,7 +28,6 @@ msgid "Documents"
 msgstr "Документы"
 
 #: apps.py:148
-#, fuzzy
 #| msgid "Description"
 msgid "Decorations"
 msgstr "Описание"
@@ -79,7 +78,6 @@ msgid "Latest version"
 msgstr ""
 
 #: apps.py:245
-#, fuzzy
 #| msgid "Recent documents"
 msgid "Return the document instance."
 msgstr "Последние документы"
@@ -803,7 +801,6 @@ msgid "Clean empty duplicate lists"
 msgstr ""
 
 #: queues.py:43
-#, fuzzy
 #| msgid "Empty trash"
 msgid "Empty the trash can"
 msgstr "Очистить корзину"
@@ -833,7 +830,6 @@ msgid "Scan document duplicates"
 msgstr ""
 
 #: search.py:35 search.py:54
-#, fuzzy
 #| msgid "Document type"
 msgid "Document type label"
 msgstr "Тип документа"
@@ -1173,7 +1169,6 @@ msgid "Quick labels for document type: %s"
 msgstr "Быстрые метки для типа документа: %s"
 
 #: views/document_type_views.py:280
-#, fuzzy, python-format
 #| msgid "Create quick label for document type: %s"
 msgid "Filename generation setup for document type: %s"
 msgstr "Создать быструю метку для типа документа: %s"

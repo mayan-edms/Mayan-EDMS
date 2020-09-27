@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 06:45+0000\n"
+"POT-Creation-Date: 2020-09-27 08:05+0000\n"
 "PO-Revision-Date: 2020-08-08 09:38+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -237,7 +237,6 @@ msgid "Transitions"
 msgstr "Kroky"
 
 #: links.py:165 links.py:171 workflow_actions.py:83
-#, fuzzy
 #| msgid "Launch workflow"
 msgid "Launch workflows"
 msgstr "Spusťte workflow"
@@ -606,7 +605,6 @@ msgid "Document states fast"
 msgstr "Stavy dokumentu rychle"
 
 #: queues.py:15
-#, fuzzy
 #| msgid "Launch all workflows"
 msgid "Launch all workflows for all documents"
 msgstr "Spusťte všechny workflow"
@@ -616,13 +614,11 @@ msgid "Launch a workflow"
 msgstr "Spusťte workflow"
 
 #: queues.py:23
-#, fuzzy
 #| msgid "There are no workflow for this document"
 msgid "Launch a workflow for a document"
 msgstr "Pro tento dokument neexistují žádná workflow"
 
 #: queues.py:27
-#, fuzzy
 #| msgid "Launch all workflows"
 msgid "Launch all workflows for a document"
 msgstr "Spusťte všechny workflow"
@@ -738,7 +734,6 @@ msgstr ""
 "provedl tato workflow."
 
 #: views/workflow_instance_views.py:35
-#, fuzzy
 #| msgid "There are no workflow for this document"
 msgid "There are no workflows for this document"
 msgstr "Pro tento dokument neexistují žádná workflow"
@@ -1001,13 +996,11 @@ msgid "Workflows assigned the document type: %s"
 msgstr "Workflow přiřazené typu dokumentu: %s"
 
 #: views/workflow_template_views.py:95
-#, fuzzy, python-format
 #| msgid "Workflows for document: %s"
 msgid "Workflows launched for %(count)d document"
 msgstr "Workflows pro dokument: %s"
 
 #: views/workflow_template_views.py:96
-#, fuzzy, python-format
 #| msgid "Workflows for document: %s"
 msgid "Workflows launched for %(count)d documents"
 msgstr "Workflows pro dokument: %s"
@@ -1023,7 +1016,6 @@ msgid ""
 msgstr ""
 
 #: views/workflow_template_views.py:107
-#, fuzzy, python-format
 #| msgid "There are no workflow for this document"
 msgid "Launch selected workflows for %(count)d document"
 msgid_plural "Launch selected workflows for %(count)d documents"
@@ -1033,13 +1025,11 @@ msgstr[2] "Pro tento dokument neexistují žádná workflow"
 msgstr[3] "Pro tento dokument neexistují žádná workflow"
 
 #: views/workflow_template_views.py:120
-#, fuzzy, python-format
 #| msgid "Workflows for document: %s"
 msgid "Launch selected workflows for document: %s"
 msgstr "Workflows pro dokument: %s"
 
 #: views/workflow_template_views.py:133
-#, fuzzy
 #| msgid "Workflow instance"
 msgid "Workflows to be launched."
 msgstr "Instance workflow"
@@ -1055,13 +1045,11 @@ msgid "Delete request performed on %(count)d workflows"
 msgstr ""
 
 #: views/workflow_template_views.py:183
-#, fuzzy
 #| msgid "Workflow instance log entries"
 msgid "All workflow instances will also be deleted."
 msgstr "Položky protokolu instance workflow"
 
 #: views/workflow_template_views.py:185
-#, fuzzy
 #| msgid "Delete workflows"
 msgid "Delete the selected workflow?"
 msgid_plural "Delete the selected workflows?"
@@ -1076,13 +1064,11 @@ msgid "Delete workflow: %s?"
 msgstr "Odstranit workflow : %s?"
 
 #: views/workflow_template_views.py:206
-#, fuzzy, python-format
 #| msgid "Workflow launch queued successfully."
 msgid "Workflow \"%s\" deleted successfully."
 msgstr "Spuštění workflow bylo úspěšně zařazeno do fronty."
 
 #: views/workflow_template_views.py:211
-#, fuzzy, python-format
 #| msgid "Detail of workflow: %(workflow)s"
 msgid "Error deleting workflow \"%(workflow)s\": %(error)s"
 msgstr "Detail workflow%(workflow)su: "

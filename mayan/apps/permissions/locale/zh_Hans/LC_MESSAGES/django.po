@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 06:45+0000\n"
+"POT-Creation-Date: 2020-09-27 08:05+0000\n"
 "PO-Revision-Date: 2020-04-02 07:16+0000\n"
 "Last-Translator: xisafe <root@xisafe.com>\n"
 "Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-"
@@ -26,7 +26,6 @@ msgid "Permissions"
 msgstr "权限"
 
 #: apps.py:99 models.py:142
-#, fuzzy
 #| msgid "Group name"
 msgid "Group count"
 msgstr "用户组名称"
@@ -96,7 +95,6 @@ msgid "Role"
 msgstr "角色"
 
 #: models.py:150
-#, fuzzy
 #| msgid "Permission"
 msgid "Permission count"
 msgstr "权限"

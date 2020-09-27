@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 06:45+0000\n"
+"POT-Creation-Date: 2020-09-27 08:05+0000\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Harald Ersch, 2019\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/"
@@ -217,7 +217,6 @@ msgstr ""
 "de date."
 
 #: views.py:50
-#, fuzzy
 #| msgid "No file metadata available."
 msgid "No file metadata available"
 msgstr "Nu sunt disponibile metadate în fișier."
@@ -235,7 +234,6 @@ msgid ""
 msgstr ""
 
 #: views.py:85
-#, fuzzy
 #| msgid "No file metadata available."
 msgid "No file metadata available for this driver"
 msgstr "Nu sunt disponibile metadate în fișier."

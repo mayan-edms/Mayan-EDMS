@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 06:45+0000\n"
+"POT-Creation-Date: 2020-09-27 08:05+0000\n"
 "PO-Revision-Date: 2020-07-18 07:16+0000\n"
 "Last-Translator: yan songwei <yansw@vip.163.com>\n"
 "Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-"
@@ -87,11 +87,10 @@ msgstr "“%s”不是有效的许可。"
 
 #: layers.py:11
 msgid ""
-"Decoration are visual elements that add contextual information to images."
+"Decorations are visual elements that add contextual information to images."
 msgstr ""
 
 #: layers.py:13
-#, fuzzy
 #| msgid "Transformations"
 msgid "Decorations"
 msgstr "转换"
@@ -199,19 +198,16 @@ msgid "Layer transformations"
 msgstr "图层转换"
 
 #: models.py:174
-#, fuzzy
 #| msgid "Create new transformations"
 msgid "Unknown transformation class"
 msgstr "创建新转换"
 
 #: permissions.py:8
-#, fuzzy
 #| msgid "Create new transformations"
 msgid "Create new assets"
 msgstr "创建新转换"
 
 #: permissions.py:11
-#, fuzzy
 #| msgid "Delete"
 msgid "Delete assets"
 msgstr "删除"
@@ -221,7 +217,6 @@ msgid "Edit assets"
 msgstr ""
 
 #: permissions.py:17
-#, fuzzy
 #| msgid "View existing transformations"
 msgid "View existing assets"
 msgstr "查看现有转换"
@@ -251,10 +246,10 @@ msgid "Configuration options for the graphics conversion backend."
 msgstr "图形转换后端的配置选项。"
 
 #: settings.py:41
-msgid "Path to the Storage subclass to use when storing detached signatures."
+msgid "Path to the Storage subclass to use when storing assets."
 msgstr ""
 
-#: settings.py:50
+#: settings.py:49
 msgid "Arguments to pass to the CONVERTER_ASSET_STORAGE_BACKEND."
 msgstr ""
 
@@ -353,7 +348,6 @@ msgid "Delete asset: %s?"
 msgstr ""
 
 #: views.py:80
-#, fuzzy, python-format
 #| msgid "Transformation created successfully."
 msgid "Asset \"%s\" deleted successfully."
 msgstr "转换创建成功。"
@@ -433,25 +427,21 @@ msgid ""
 msgstr ""
 
 #: workflow_actions.py:32
-#, fuzzy
 #| msgid "Transformations"
 msgid "Transformation class"
 msgstr "转换"
 
 #: workflow_actions.py:37
-#, fuzzy
 #| msgid "Layer transformation"
 msgid "Type of transformation to add."
 msgstr "图层转换"
 
 #: workflow_actions.py:42
-#, fuzzy
 #| msgid "Transformations"
 msgid "Transformation arguments"
 msgstr "转换"
 
 #: workflow_actions.py:51
-#, fuzzy
 #| msgid "transformation"
 msgid "Add transformation"
 msgstr "转换"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 06:45+0000\n"
+"POT-Creation-Date: 2020-09-27 08:05+0000\n"
 "PO-Revision-Date: 2020-08-18 07:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -224,7 +224,6 @@ msgstr[0] "Törli a kiválasztott címkét?"
 msgstr[1] "Törli a kiválasztott címkét?"
 
 #: views.py:166
-#, fuzzy, python-format
 #| msgid "Delete tag: %s"
 msgid "Delete tag: %s?"
 msgstr "Címke tölrése? %s"
