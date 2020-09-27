@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # abc Def <hdogan1974@gmail.com>, 2020
@@ -11,44 +11,37 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-17 05:23+0000\n"
+"POT-Creation-Date: 2020-09-27 06:45+0000\n"
 "PO-Revision-Date: 2020-04-15 13:52+0000\n"
 "Last-Translator: abc Def <hdogan1974@gmail.com>\n"
-"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
+"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/tr_TR/)\n"
+"Language: tr_TR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:65 apps.py:160 apps.py:165 events.py:5 links.py:46 permissions.py:5
+#: apps.py:65 apps.py:180 apps.py:185 events.py:5 links.py:46 permissions.py:5
 #: queues.py:7 settings.py:8
 msgid "Metadata"
 msgstr "Metadata"
 
-#: apps.py:99
+#: apps.py:116
 msgid "Return the value of a specific document metadata."
 msgstr ""
 
-#: apps.py:100
+#: apps.py:117
 msgid "Metadata value of"
 msgstr ""
 
-#: apps.py:105
+#: apps.py:122
 msgid "Metadata type name"
 msgstr "Meta veri türü adı"
 
-#: apps.py:109
+#: apps.py:126
 msgid "Metadata type value"
 msgstr "Metadata tipi"
-
-#: apps.py:193 apps.py:201 forms.py:122 models.py:94 models.py:305
-msgid "Metadata type"
-msgstr "Meta veri türü"
-
-#: apps.py:196 apps.py:205
-msgid "Metadata value"
-msgstr "Meta veri değeri"
 
 #: events.py:8
 msgid "Document metadata added"
@@ -74,82 +67,88 @@ msgstr ""
 msgid "Metadata type relationship updated"
 msgstr ""
 
-#: forms.py:12
+#: forms.py:14
 msgid "ID"
 msgstr "İD"
 
-#: forms.py:15 models.py:51 search.py:14
+#: forms.py:17 models.py:49 search.py:31
 msgid "Name"
 msgstr "Ad"
 
-#: forms.py:19 models.py:212
+#: forms.py:21 models.py:190 workflow_actions.py:92
 msgid "Value"
 msgstr "Değer"
 
-#: forms.py:24
+#: forms.py:26
 msgid "Update"
 msgstr "Güncelleştirme"
 
-#: forms.py:45 forms.py:185 models.py:307
+#: forms.py:47 forms.py:192 models.py:284
 msgid "Required"
 msgstr "Gereklidir"
 
-#: forms.py:74
+#: forms.py:76
 #, python-format
 msgid "Lookup value error: %s"
 msgstr "Arama değeri hatası: %s"
 
-#: forms.py:87
+#: forms.py:89
 #, python-format
 msgid "Default value error: %s"
 msgstr "Varsayılan değer hatası: %s"
 
-#: forms.py:103 models.py:173
+#: forms.py:105 models.py:152
 #, python-format
 msgid "\"%s\" is required for this document type."
 msgstr "Bu belge türü için \"%s\" gerekiyor."
 
-#: forms.py:121
+#: forms.py:123
 msgid "Metadata types to be added to the selected documents."
 msgstr "Seçilen belgelere eklenecek meta veri türleri."
 
-#: forms.py:147 views.py:403
+#: forms.py:124 models.py:84 models.py:282 search.py:9 search.py:17
+#: workflow_actions.py:85
+msgid "Metadata type"
+msgstr "Meta veri türü"
+
+#: forms.py:149 views.py:403
 msgid "Remove"
 msgstr "Kaldır"
 
-#: forms.py:169
+#: forms.py:175
 msgid " Available template context variables: "
 msgstr " Kullanılabilir şablon bağlam değişkenleri:"
 
-#: forms.py:183
+#: forms.py:190
 msgid "None"
 msgstr "Yok"
 
-#: forms.py:184
+#: forms.py:191
 msgid "Optional"
 msgstr "İsteğe bağlı"
 
-#: forms.py:189 models.py:55 search.py:17
+#: forms.py:196 models.py:53 search.py:34
 msgid "Label"
 msgstr "Etiket"
 
-#: forms.py:193
+#: forms.py:200
 msgid "Relationship"
 msgstr "İlişki"
 
-#: links.py:16 links.py:27
+#: links.py:16 links.py:27 workflow_actions.py:29
 msgid "Add metadata"
 msgstr "Meta veri ekle"
 
-#: links.py:23 links.py:31
+#: links.py:23 links.py:31 workflow_actions.py:103
 msgid "Edit metadata"
 msgstr "Meta verileri düzenle"
 
-#: links.py:35 links.py:41
+#: links.py:35 links.py:41 workflow_actions.py:176
 msgid "Remove metadata"
 msgstr "Meta verileri kaldır"
 
-#: links.py:53 links.py:81 models.py:95 views.py:573
+#: links.py:53 links.py:81 models.py:85 views.py:573 workflow_actions.py:22
+#: workflow_actions.py:169
 msgid "Metadata types"
 msgstr "Meta veri türleri"
 
@@ -173,94 +172,92 @@ msgstr "Düzenle"
 msgid "Selected documents must be of the same type."
 msgstr "Seçilen belgeler aynı türde olmalıdır."
 
-#: models.py:48
+#: models.py:46
 msgid ""
 "Name used by other apps to reference this metadata type. Do not use python "
 "reserved words, or spaces."
 msgstr ""
 
-#: models.py:54
+#: models.py:52
 msgid "Short description of this metadata type."
 msgstr ""
 
-#: models.py:60
-msgid ""
-"Enter a template to render. Use Django's default templating language "
-"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
+#: models.py:57
+msgid "Enter a template to render."
 msgstr ""
 
-#: models.py:64 search.py:20
+#: models.py:58 search.py:37
 msgid "Default"
 msgstr "Varsayılan"
 
-#: models.py:69
-msgid ""
-"Enter a template to render. Must result in a comma delimited string. Use "
-"Django's default templating language "
-"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)."
+#: models.py:62
+msgid "Enter a template to render. Must result in a comma delimited string."
 msgstr ""
 
-#: models.py:74 search.py:23
+#: models.py:64 search.py:40
 msgid "Lookup"
 msgstr "Yukarı Bak"
 
-#: models.py:79
+#: models.py:69
 msgid ""
 "The validator will reject data entry if the value entered does not conform "
 "to the expected format."
-msgstr "Girilen değer beklenen biçime uymuyorsa, doğrulayıcı veri girişi reddedecektir."
+msgstr ""
+"Girilen değer beklenen biçime uymuyorsa, doğrulayıcı veri girişi "
+"reddedecektir."
 
-#: models.py:81 search.py:26
+#: models.py:71 search.py:43
 msgid "Validator"
 msgstr "Doğrulayıcı"
 
-#: models.py:85
+#: models.py:75
 msgid ""
-"The parser will reformat the value entered to conform to the expected "
-"format."
-msgstr "Ayrıştırıcı, girilen değeri beklenen biçimde uyacak şekilde yeniden biçimlendirir."
+"The parser will reformat the value entered to conform to the expected format."
+msgstr ""
+"Ayrıştırıcı, girilen değeri beklenen biçimde uyacak şekilde yeniden "
+"biçimlendirir."
 
-#: models.py:87 search.py:29
+#: models.py:77 search.py:46
 msgid "Parser"
 msgstr "Ayrıştırıcı"
 
-#: models.py:181
+#: models.py:160
 msgid "Value is not one of the provided options."
 msgstr "Değer, sağlanan seçeneklerden biri değildir."
 
-#: models.py:203
+#: models.py:181
 msgid "Document"
 msgstr "belge"
 
-#: models.py:206
+#: models.py:184
 msgid "Type"
 msgstr "tip"
 
-#: models.py:210
+#: models.py:188
 msgid "The actual value stored in the metadata type field for the document."
 msgstr ""
 
-#: models.py:218 models.py:219
+#: models.py:196 models.py:197
 msgid "Document metadata"
 msgstr "Belge meta verileri"
 
-#: models.py:240
+#: models.py:218
 msgid "Metadata type is required for this document type."
 msgstr "Bu belge türü için meta veri türü gerekiyor."
 
-#: models.py:270
+#: models.py:248
 msgid "Metadata type is not valid for this document type."
 msgstr "Meta veri türü, bu doküman türü için geçerli değil."
 
-#: models.py:301
+#: models.py:278
 msgid "Document type"
 msgstr "Belge Türü"
 
-#: models.py:314
+#: models.py:291
 msgid "Document type metadata type options"
 msgstr "Belge türü meta veri türü seçenekleri"
 
-#: models.py:315
+#: models.py:292
 msgid "Document type metadata types options"
 msgstr "Belge türü meta veri türleri seçenekleri"
 
@@ -308,6 +305,10 @@ msgstr "Meta veri türünü kaldır"
 msgid "Add required metadata type"
 msgstr "Gerekli metadata türünü ekle"
 
+#: search.py:12 search.py:21
+msgid "Metadata value"
+msgstr "Meta veri değeri"
+
 #: serializers.py:52
 msgid "Primary key of the metadata type to be added."
 msgstr "Eklenecek meta veri türünün birincil anahtarı."
@@ -346,14 +347,16 @@ msgstr "Belgeye meta veri türleri ekleyin: %s"
 msgid ""
 "Error adding metadata type \"%(metadata_type)s\" to document: %(document)s; "
 "%(exception)s"
-msgstr "Belgeye \"%(metadata_type)s\" meta veri türü eklenirken hata oluştu: %(document)s; %(exception)s"
+msgstr ""
+"Belgeye \"%(metadata_type)s\" meta veri türü eklenirken hata oluştu: "
+"%(document)s; %(exception)s"
 
 #: views.py:171
 #, python-format
 msgid ""
-"Metadata type: %(metadata_type)s successfully added to document "
-"%(document)s."
-msgstr "Meta veri türü: %(metadata_type)s belgeye başarıyla eklendi %(document)s."
+"Metadata type: %(metadata_type)s successfully added to document %(document)s."
+msgstr ""
+"Meta veri türü: %(metadata_type)s belgeye başarıyla eklendi %(document)s."
 
 #: views.py:181
 #, python-format
@@ -395,7 +398,8 @@ msgstr "Dokümanın meta verilerini düzenleme: %s"
 #: views.py:335
 #, python-format
 msgid "Error editing metadata for document: %(document)s; %(exception)s."
-msgstr "Dokümanın meta verilerini düzenleme hatası: %(document)s; %(exception)s."
+msgstr ""
+"Dokümanın meta verilerini düzenleme hatası: %(document)s; %(exception)s."
 
 #: views.py:345
 #, python-format
@@ -404,9 +408,8 @@ msgstr "%s dokümanı için meta veri başarıyla düzenlendi."
 
 #: views.py:370
 msgid ""
-"Add metadata types this document's type to be able to add them to individual"
-" documents. Once added to individual document, you can then edit their "
-"values."
+"Add metadata types this document's type to be able to add them to individual "
+"documents. Once added to individual document, you can then edit their values."
 msgstr ""
 
 #: views.py:375
@@ -444,14 +447,18 @@ msgstr "Metadaki veri türlerini belgeden kaldırın: %s"
 msgid ""
 "Successfully remove metadata type \"%(metadata_type)s\" from document: "
 "%(document)s."
-msgstr "\"%(metadata_type)s\" meta veri türünü belgeden başarıyla kaldırın: %(document)s."
+msgstr ""
+"\"%(metadata_type)s\" meta veri türünü belgeden başarıyla kaldırın: "
+"%(document)s."
 
 #: views.py:490
 #, python-format
 msgid ""
 "Error removing metadata type \"%(metadata_type)s\" from document: "
 "%(document)s; %(exception)s"
-msgstr "\"%(metadata_type)s\" meta veri türünü belgeden kaldırma hatası: %(document)s; %(exception)s"
+msgstr ""
+"\"%(metadata_type)s\" meta veri türünü belgeden kaldırma hatası: "
+"%(document)s; %(exception)s"
 
 #: views.py:501
 msgid "Create metadata type"
@@ -511,3 +518,64 @@ msgstr "Meta veri türü için doküman türleri: %s"
 #: wizard_steps.py:13
 msgid "Enter document metadata"
 msgstr ""
+
+#: workflow_actions.py:24
+#, fuzzy
+#| msgid "Metadata types to be added to the selected documents."
+msgid "Metadata types to add to the document."
+msgstr "Seçilen belgelere eklenecek meta veri türleri."
+
+#: workflow_actions.py:48
+#, fuzzy, python-format
+#| msgid ""
+#| "Error adding metadata type \"%(metadata_type)s\" to document: "
+#| "%(document)s; %(exception)s"
+msgid ""
+"Unable to add metadata type \"%(metadata_type)s from document: %(document)s. "
+"Exception: %(exception)s"
+msgstr ""
+"Belgeye \"%(metadata_type)s\" meta veri türü eklenirken hata oluştu: "
+"%(document)s; %(exception)s"
+
+#: workflow_actions.py:87
+#, fuzzy
+#| msgid "Metadata types"
+msgid "Metadata types to edit."
+msgstr "Meta veri türleri"
+
+#: workflow_actions.py:95
+msgid ""
+"Value to assign to the metadata. Can be a literal value or template code."
+msgstr ""
+
+#: workflow_actions.py:127
+#, fuzzy, python-format
+#| msgid ""
+#| "Error removing metadata type \"%(metadata_type)s\" from document: "
+#| "%(document)s; %(exception)s"
+msgid ""
+"Unable to edit metadata type \"%(metadata_type)s from document: "
+"%(document)s. Document does not have the metadata type to be edit. "
+"Exception: %(exception)s"
+msgstr ""
+"\"%(metadata_type)s\" meta veri türünü belgeden kaldırma hatası: "
+"%(document)s; %(exception)s"
+
+#: workflow_actions.py:171
+#, fuzzy
+#| msgid "Remove metadata types from the document"
+#| msgid_plural "Remove metadata types from the documents"
+msgid "Metadata types to remove from the document."
+msgstr "Meta veri türlerini belgeden kaldır"
+
+#: workflow_actions.py:191
+#, fuzzy, python-format
+#| msgid ""
+#| "Error removing metadata type \"%(metadata_type)s\" from document: "
+#| "%(document)s; %(exception)s"
+msgid ""
+"Unable to remove metadata type \"%(metadata_type)s from document: "
+"%(document)s. Exception: %(exception)s"
+msgstr ""
+"\"%(metadata_type)s\" meta veri türünü belgeden kaldırma hatası: "
+"%(document)s; %(exception)s"

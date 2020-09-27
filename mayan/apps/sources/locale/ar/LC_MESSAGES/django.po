@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Mohammed ALDOUB <voulnet@gmail.com>, 2013
@@ -9,50 +9,44 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-17 05:23+0000\n"
+"POT-Creation-Date: 2020-09-27 06:45+0000\n"
 "PO-Revision-Date: 2020-08-18 07:10+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
+"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/"
+"ar/)\n"
+"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ar\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: apps.py:43 links.py:56 models/base.py:38 queues.py:7 settings.py:11
-#: views.py:193
+#: apps.py:48 links.py:56 models/base.py:38 queues.py:7 settings.py:11
+#: views.py:192
 msgid "Sources"
 msgstr ""
 
-#: apps.py:61
+#: apps.py:71
 msgid "Create a document source"
 msgstr ""
 
-#: apps.py:63
+#: apps.py:73
 msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
 msgstr ""
 
-#: apps.py:76
+#: apps.py:86
 msgid "Type"
 msgstr "النوع"
 
-#: apps.py:87
+#: apps.py:97
 msgid "Created"
 msgstr ""
 
-#: apps.py:93
+#: apps.py:103
 msgid "Thumbnail"
-msgstr ""
-
-#: apps.py:101 models/base.py:248
-msgid "Date time"
-msgstr ""
-
-#: apps.py:106 models/base.py:251
-msgid "Message"
 msgstr ""
 
 #: dependencies.py:11
@@ -77,7 +71,7 @@ msgstr "فك الملفات المضغوطة"
 msgid "Upload a compressed file's contained files as individual documents."
 msgstr ""
 
-#: forms.py:63 views.py:227
+#: forms.py:63 views.py:204
 msgid "Staging file"
 msgstr "ملف الاعداد"
 
@@ -133,11 +127,7 @@ msgstr "مصادر الوثائق"
 msgid "Upload new version"
 msgstr ""
 
-#: links.py:127
-msgid "Logs"
-msgstr "السجلات"
-
-#: links.py:133
+#: links.py:128
 msgid "Check now"
 msgstr "تأكد الان"
 
@@ -193,7 +183,7 @@ msgstr "Web form"
 msgid "Staging folder"
 msgstr "مجلد التدريج"
 
-#: literals.py:64 models/watch_folder_sources.py:45
+#: literals.py:64 models/watch_folder_sources.py:46
 msgid "Watch folder"
 msgstr "مشاهدة المجلد"
 
@@ -217,7 +207,7 @@ msgstr "العنوان"
 msgid "Enabled"
 msgstr "مفعل"
 
-#: models/base.py:37 models/base.py:245
+#: models/base.py:37
 msgid "Source"
 msgstr "مصدر"
 
@@ -264,14 +254,6 @@ msgstr ""
 
 #: models/base.py:192
 msgid "Interval sources"
-msgstr ""
-
-#: models/base.py:257
-msgid "Log entry"
-msgstr ""
-
-#: models/base.py:258
-msgid "Log entries"
 msgstr ""
 
 #: models/email_sources.py:40
@@ -381,9 +363,8 @@ msgstr ""
 #: models/email_sources.py:228
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
-"command per line. Use the commands specified in "
-"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
-"commands for your IMAP server."
+"command per line. Use the commands specified in https://tools.ietf.org/html/"
+"rfc2060.html#section-6.4.6 or the custom commands for your IMAP server."
 msgstr ""
 
 #: models/email_sources.py:232
@@ -406,11 +387,11 @@ msgstr ""
 msgid "Destination mailbox"
 msgstr ""
 
-#: models/email_sources.py:350
+#: models/email_sources.py:349
 msgid "Timeout"
 msgstr ""
 
-#: models/email_sources.py:356 models/email_sources.py:357
+#: models/email_sources.py:355 models/email_sources.py:356
 msgid "POP email"
 msgstr ""
 
@@ -482,7 +463,7 @@ msgstr ""
 msgid "Server side filesystem path."
 msgstr "مسار نظام الملفات على الخادم"
 
-#: models/staging_folder_sources.py:40 models/watch_folder_sources.py:32
+#: models/staging_folder_sources.py:40 models/watch_folder_sources.py:33
 msgid "Folder path"
 msgstr ""
 
@@ -528,21 +509,21 @@ msgstr ""
 msgid "Unable get list of staging files: %s"
 msgstr "غير قادر على ايجاد قائمة بملفات الاعداد: %s"
 
-#: models/watch_folder_sources.py:31
+#: models/watch_folder_sources.py:32
 msgid "Server side filesystem path to scan for files."
 msgstr "مسار ملف الخادم للصفحات الممسوحة ضوئيًا"
 
-#: models/watch_folder_sources.py:36
+#: models/watch_folder_sources.py:37
 msgid ""
 "If checked, not only will the folder path be scanned for files but also its "
 "subdirectories."
 msgstr ""
 
-#: models/watch_folder_sources.py:39
+#: models/watch_folder_sources.py:40
 msgid "Include subdirectories?"
 msgstr ""
 
-#: models/watch_folder_sources.py:46
+#: models/watch_folder_sources.py:47
 msgid "Watch folders"
 msgstr ""
 
@@ -622,7 +603,7 @@ msgstr ""
 msgid "Staging folder files"
 msgstr ""
 
-#: tasks.py:48
+#: tasks.py:49
 #, python-format
 msgid "Error processing source: %s"
 msgstr ""
@@ -655,7 +636,7 @@ msgstr "مسح / إزالة"
 msgid "Server responded with {{statusCode}} code."
 msgstr "استجاب الخادم برمز {{statusCode}}."
 
-#: views.py:70
+#: views.py:69
 msgid ""
 "This will execute the source check code even if the source is not enabled. "
 "Sources that delete content after downloading will not do so while being "
@@ -663,31 +644,31 @@ msgid ""
 "successful test will clear the error log."
 msgstr ""
 
-#: views.py:76
+#: views.py:75
 #, python-format
 msgid "Trigger check for source \"%s\"?"
 msgstr ""
 
-#: views.py:88
+#: views.py:87
 msgid "Source check queued."
 msgstr ""
 
-#: views.py:102
+#: views.py:101
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "انشاء مصدر جديد من النوع: %s"
 
-#: views.py:125
+#: views.py:124
 #, python-format
 msgid "Delete the source: %s?"
 msgstr ""
 
-#: views.py:147
+#: views.py:146
 #, python-format
 msgid "Edit source: %s"
 msgstr ""
 
-#: views.py:187
+#: views.py:186
 msgid ""
 "Sources provide the means to upload documents. Some sources like the "
 "webform, are interactive and require user input to operate. Others like the "
@@ -695,93 +676,80 @@ msgid ""
 "intervention."
 msgstr ""
 
-#: views.py:192
+#: views.py:191
 msgid "No sources available"
 msgstr ""
 
-#: views.py:207
-msgid ""
-"Any error produced during the usage of a source will be listed here to "
-"assist in debugging."
-msgstr ""
-
-#: views.py:210
-msgid "No log entries available"
-msgstr ""
-
-#: views.py:212
-#, python-format
-msgid "Log entries for source: %s"
-msgstr ""
-
-#: views.py:228
+#: views.py:205
 #, python-format
 msgid "Delete staging file \"%s\"?"
 msgstr ""
 
-#: views.py:280 wizards.py:152
+#: views.py:257 wizards.py:152
 msgid ""
-"No interactive document sources have been defined or none have been enabled,"
-" create one before proceeding."
+"No interactive document sources have been defined or none have been enabled, "
+"create one before proceeding."
 msgstr ""
 
-#: views.py:308 views.py:337 views.py:347
+#: views.py:285 views.py:314 views.py:324
 msgid "Document properties"
 msgstr ""
 
-#: views.py:317
+#: views.py:294
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the"
-" necessary file system permissions for the folder."
+"the operating system user account being used for Mayan EDMS doesn't have the "
+"necessary file system permissions for the folder."
 msgstr ""
 
-#: views.py:324
+#: views.py:301
 msgid "No staging files available"
 msgstr ""
 
-#: views.py:327
+#: views.py:304
 msgid "Files in staging path"
 msgstr "الملفات في مسار الإرسال"
 
-#: views.py:338
+#: views.py:315
 msgid "Scan"
 msgstr ""
 
-#: views.py:485
+#: views.py:462
 #, python-format
 msgid "Error executing document upload task; %(exception)s"
 msgstr ""
 
-#: views.py:495
+#: views.py:472
 msgid "New document queued for upload and will be available shortly."
 msgstr ""
 
-#: views.py:512
+#: views.py:489
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr ""
 
-#: views.py:574
+#: views.py:551
 #, python-format
-msgid "Unable to upload new versions for document \"%(document)s\". %(exception)s"
+msgid ""
+"Unable to upload new versions for document \"%(document)s\". %(exception)s"
 msgstr ""
 
-#: views.py:635
+#: views.py:612
 #, python-format
 msgid "Error executing document version upload task; %(exception)s"
 msgstr ""
 
-#: views.py:650
+#: views.py:627
 msgid "New document version queued for upload and will be available shortly."
 msgstr "إصدار جديد من المستند قيد التحميل وسيكون متاحًا قريبًا"
 
-#: views.py:669
+#: views.py:646
 #, python-format
-msgid "Upload a new version for document \"%(document)s\" from source: %(source)s"
+msgid ""
+"Upload a new version for document \"%(document)s\" from source: %(source)s"
 msgstr ""
 
-#: views.py:672
+#: views.py:649
 msgid "Submit"
 msgstr "ارسال"
 
@@ -801,3 +769,6 @@ msgstr "الخطوة التالية"
 #: wizards.py:183
 msgid "Document upload wizard"
 msgstr "مساعد تحميل المستند"
+
+#~ msgid "Logs"
+#~ msgstr "السجلات"

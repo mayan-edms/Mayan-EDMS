@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
@@ -10,75 +10,88 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-17 05:23+0000\n"
+"POT-Creation-Date: 2020-09-27 06:45+0000\n"
 "PO-Revision-Date: 2019-12-26 19:15+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:33 links.py:34 permissions.py:5
+#: apps.py:40 links.py:38 permissions.py:5
 msgid "Message of the day"
 msgstr "Mensagem do dia"
 
-#: apps.py:55 apps.py:59
+#: apps.py:77 apps.py:81
 msgid "None"
 msgstr "Nenhum"
 
-#: links.py:14 views.py:30
+#: events.py:5 models.py:40 views.py:123
+msgid "Messages"
+msgstr "Mensagens"
+
+#: events.py:8
+#, fuzzy
+#| msgid "Message of the day"
+msgid "Message created"
+msgstr "Mensagem do dia"
+
+#: events.py:11
+#, fuzzy
+#| msgid "Message of the day"
+msgid "Message edited"
+msgstr "Mensagem do dia"
+
+#: links.py:14 views.py:31
 msgid "Create message"
 msgstr "Criar mensagem"
 
-#: links.py:20
+#: links.py:18 links.py:24
 msgid "Delete"
 msgstr "Excluir"
 
-#: links.py:25
+#: links.py:29
 msgid "Edit"
 msgstr "Editar"
 
-#: models.py:15
+#: models.py:17
 msgid "Short description of this message."
 msgstr "Breve descrição da mensagem"
 
-#: models.py:16
+#: models.py:18
 msgid "Label"
 msgstr "Rótulo"
 
-#: models.py:19
+#: models.py:21
 msgid "The actual message to be displayed."
 msgstr "Mensagem a ser exibida"
 
-#: models.py:20 models.py:37
+#: models.py:22 models.py:39
 msgid "Message"
 msgstr "Mensagem"
 
-#: models.py:22
+#: models.py:24
 msgid "Enabled"
 msgstr "Habilitado"
 
-#: models.py:25
+#: models.py:27
 msgid "Date and time after which this message will be displayed."
 msgstr "Data e hora depois da qual esta mensagem começará a ser exibida."
 
-#: models.py:26
+#: models.py:28
 msgid "Start date time"
 msgstr "Data inicial"
 
-#: models.py:30
+#: models.py:32
 msgid "Date and time until when this message is to be displayed."
 msgstr "Data e hora até no qual esta mensagem será exibida."
 
-#: models.py:31
+#: models.py:33
 msgid "End date time"
 msgstr "Data final"
-
-#: models.py:38 views.py:78
-msgid "Messages"
-msgstr "Mensagens"
 
 #: permissions.py:8
 msgid "Create messages"
@@ -100,23 +113,55 @@ msgstr "Visualizar mensagens"
 msgid "Messages of the day"
 msgstr "Mensagem do dia"
 
-#: views.py:43
+#: views.py:45
 #, python-format
-msgid "Delete the message: %s?"
+msgid "Delete request performed on %(count)d message"
+msgstr ""
+
+#: views.py:47
+#, python-format
+msgid "Delete request performed on %(count)d messages"
+msgstr ""
+
+#: views.py:54
+#, fuzzy
+#| msgid "Delete the message: %s?"
+msgid "Delete the selected message?"
+msgid_plural "Delete the selected messages?"
+msgstr[0] "Apagar a mensagem: %s?"
+msgstr[1] "Apagar a mensagem: %s?"
+
+#: views.py:64
+#, fuzzy, python-format
+#| msgid "Delete the message: %s?"
+msgid "Delete message: %s?"
 msgstr "Apagar a mensagem: %s?"
 
-#: views.py:56
+#: views.py:75
+#, python-format
+msgid "Message \"%s\" deleted successfully."
+msgstr ""
+
+#: views.py:80
+#, python-format
+msgid "Error deleting message \"%(message)s\": %(error)s"
+msgstr ""
+
+#: views.py:96
 #, python-format
 msgid "Edit message: %s"
 msgstr "Editar mensagem: %s"
 
-#: views.py:73
+#: views.py:118
 msgid ""
 "Messages are displayed in the login view. You can use messages to convery "
 "information about your organzation, announcements or usage guidelines for "
 "your users."
-msgstr "Mensagens são exibidas na tela de login. Você pode usar mensagens para transmitir informações sobre sua organização, anúncios ou orientações para seus usuários."
+msgstr ""
+"Mensagens são exibidas na tela de login. Você pode usar mensagens para "
+"transmitir informações sobre sua organização, anúncios ou orientações para "
+"seus usuários."
 
-#: views.py:77
+#: views.py:122
 msgid "No messages available"
 msgstr "Nenhuma mensagem disponível"

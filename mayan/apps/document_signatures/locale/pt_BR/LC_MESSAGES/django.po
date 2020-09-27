@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
@@ -14,14 +14,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-17 05:22+0000\n"
+"POT-Creation-Date: 2020-09-27 06:45+0000\n"
 "PO-Revision-Date: 2020-08-18 13:36+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:49 permissions.py:6 settings.py:11
@@ -32,11 +33,11 @@ msgstr "Assinaturas de documentos"
 msgid "Date"
 msgstr "Data"
 
-#: apps.py:98 models.py:47
+#: apps.py:98 models.py:46
 msgid "Key ID"
 msgstr "ID da chave"
 
-#: apps.py:102 forms.py:62 models.py:52
+#: apps.py:102 forms.py:62 models.py:51
 msgid "Signature ID"
 msgstr "ID da assinatura"
 
@@ -56,7 +57,9 @@ msgstr "Chave"
 msgid ""
 "The passphrase to unlock the key and allow it to be used to sign the "
 "document version."
-msgstr "A senha para desbloquear a chave e permitir que ela seja usada para assinar a versão do documento."
+msgstr ""
+"A senha para desbloquear a chave e permitir que ela seja usada para assinar "
+"a versão do documento."
 
 #: forms.py:24 workflow_actions.py:27
 msgid "Passphrase"
@@ -142,63 +145,63 @@ msgstr "Assinatura integrada"
 msgid "Upload signature"
 msgstr "Upload da assinatura"
 
-#: models.py:39
+#: models.py:38
 msgid "Document version"
 msgstr "Versão do documento"
 
-#: models.py:43
+#: models.py:42
 msgid "Date signed"
 msgstr "Data da assinatura"
 
-#: models.py:46
+#: models.py:45
 msgid "ID of the key that will be used to sign the document."
 msgstr "ID da chave que será usada para assinar o documento."
 
-#: models.py:56
+#: models.py:55
 msgid "Public key fingerprint"
 msgstr "Public key fingerprint"
 
-#: models.py:63
+#: models.py:62
 msgid "Document version signature"
 msgstr "Versão do documento da assinatura "
 
-#: models.py:64
+#: models.py:63
 msgid "Document version signatures"
 msgstr "Versão do documento das  assinaturas"
 
-#: models.py:83
+#: models.py:82
 msgid "Detached"
 msgstr "Destacado"
 
-#: models.py:85
+#: models.py:84
 msgid "Embedded"
 msgstr "Embutido"
 
-#: models.py:100
+#: models.py:99
 msgid "Document version embedded signature"
 msgstr "Versão do documento da assinatura integrada"
 
-#: models.py:101
+#: models.py:100
 msgid "Document version embedded signatures"
 msgstr "Versão do documento das assinaturas integradas"
 
-#: models.py:134
+#: models.py:132
 msgid "Signature file previously generated."
 msgstr "Arquivo de chave previamente gerado."
 
-#: models.py:137
+#: models.py:135
 msgid "Signature file"
 msgstr "Arquivo de assinatura"
 
-#: models.py:143
+#: models.py:141
 msgid "Document version detached signature"
 msgstr "Versão do documento da assinatura destacada"
 
-#: models.py:144
+#: models.py:142
 msgid "Document version detached signatures"
 msgstr "Versão do documento das assinaturas destacadas"
 
-#: models.py:147
+#: models.py:145
 msgid "signature"
 msgstr "assinatura"
 
@@ -248,7 +251,9 @@ msgstr "Verificar assinatura integrada faltante"
 
 #: settings.py:19
 msgid "Path to the Storage subclass to use when storing detached signatures."
-msgstr "Caminho para a subclasse Storage que será usada para armazenar assinaturas destacadas."
+msgstr ""
+"Caminho para a subclasse Storage que será usada para armazenar assinaturas "
+"destacadas."
 
 #: settings.py:28
 msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND."
@@ -258,7 +263,9 @@ msgstr "Argumentos a serem passados para SIGNATURE_STORAGE_BACKEND."
 msgid ""
 "Unable to initialize the detached signatures storage. Check the settings {} "
 "and {} for formatting errors."
-msgstr "Não foi possível inicializar o armazenamento de assinaturas destacadas. Verifique as configurações {} e {} para erros de formatação."
+msgstr ""
+"Não foi possível inicializar o armazenamento de assinaturas destacadas. "
+"Verifique as configurações {} e {} para erros de formatação."
 
 #: storages.py:20
 msgid "Detached signatures"
@@ -305,7 +312,10 @@ msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
 "document itself or uploaded as a separate file."
-msgstr "Assinaturas ajudam a proporcionar evidência de autoria e detecção de manipulação. São muito seguras e difíceis de falsificar. Uma assinatura pode ser integrada ao próprio documento ou carregada como um arquivo destacado."
+msgstr ""
+"Assinaturas ajudam a proporcionar evidência de autoria e detecção de "
+"manipulação. São muito seguras e difíceis de falsificar. Uma assinatura pode "
+"ser integrada ao próprio documento ou carregada como um arquivo destacado."
 
 #: views.py:320
 msgid "There are no signatures for this document."
@@ -323,7 +333,8 @@ msgstr "Carregar a assinatura destacada para a versão do documento: %s"
 
 #: views.py:374
 msgid "On large databases this operation may take some time to execute."
-msgstr "Em grandes bases de dados esta operação pode levar algum tempo para executar."
+msgstr ""
+"Em grandes bases de dados esta operação pode levar algum tempo para executar."
 
 #: views.py:375
 msgid "Verify all document for signatures?"
@@ -345,8 +356,11 @@ msgstr "Assinar o documento (destacado)"
 msgid ""
 "Document has no version to sign. You might be trying to use this action in "
 "an initial state before the created document is yet to be processed."
-msgstr "O documento não possui versão a ser assinada. Possivelmente você está tentando usar esta ação em um estado inicial, no qual o documento criado ainda não foi processado."
+msgstr ""
+"O documento não possui versão a ser assinada. Possivelmente você está "
+"tentando usar esta ação em um estado inicial, no qual o documento criado "
+"ainda não foi processado."
 
-#: workflow_actions.py:82
+#: workflow_actions.py:80
 msgid "Sign document (embedded)"
 msgstr "Assinar o documento (embutido)"

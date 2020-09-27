@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Māris Teivāns <maris.teivans@gmail.com>, 2019
@@ -9,75 +9,89 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-17 05:23+0000\n"
+"POT-Creation-Date: 2020-09-27 06:45+0000\n"
 "PO-Revision-Date: 2019-05-31 12:38+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
-"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
+"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/lv/)\n"
+"Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: lv\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
+"2);\n"
 
-#: apps.py:33 links.py:34 permissions.py:5
+#: apps.py:40 links.py:38 permissions.py:5
 msgid "Message of the day"
 msgstr "Dienas ziņojums"
 
-#: apps.py:55 apps.py:59
+#: apps.py:77 apps.py:81
 msgid "None"
 msgstr "Nav neviens"
 
-#: links.py:14 views.py:30
+#: events.py:5 models.py:40 views.py:123
+msgid "Messages"
+msgstr "Ziņas"
+
+#: events.py:8
+#, fuzzy
+#| msgid "Message of the day"
+msgid "Message created"
+msgstr "Dienas ziņojums"
+
+#: events.py:11
+#, fuzzy
+#| msgid "Message of the day"
+msgid "Message edited"
+msgstr "Dienas ziņojums"
+
+#: links.py:14 views.py:31
 msgid "Create message"
 msgstr "Izveidot ziņu"
 
-#: links.py:20
+#: links.py:18 links.py:24
 msgid "Delete"
 msgstr "Dzēst"
 
-#: links.py:25
+#: links.py:29
 msgid "Edit"
 msgstr "Rediģēt"
 
-#: models.py:15
+#: models.py:17
 msgid "Short description of this message."
 msgstr "Īss šī ziņojuma apraksts."
 
-#: models.py:16
+#: models.py:18
 msgid "Label"
 msgstr "Etiķete"
 
-#: models.py:19
+#: models.py:21
 msgid "The actual message to be displayed."
 msgstr "Faktiskais ziņojums, kas tiks parādīts."
 
-#: models.py:20 models.py:37
+#: models.py:22 models.py:39
 msgid "Message"
 msgstr "Ziņojums"
 
-#: models.py:22
+#: models.py:24
 msgid "Enabled"
 msgstr "Iespējots"
 
-#: models.py:25
+#: models.py:27
 msgid "Date and time after which this message will be displayed."
 msgstr "Datums un laiks, pēc kura tiks parādīts šis ziņojums."
 
-#: models.py:26
+#: models.py:28
 msgid "Start date time"
 msgstr "Sākuma datums"
 
-#: models.py:30
+#: models.py:32
 msgid "Date and time until when this message is to be displayed."
 msgstr "Datums un laiks, līdz tiek parādīts šis ziņojums."
 
-#: models.py:31
+#: models.py:33
 msgid "End date time"
 msgstr "Beigu datuma laiks"
-
-#: models.py:38 views.py:78
-msgid "Messages"
-msgstr "Ziņas"
 
 #: permissions.py:8
 msgid "Create messages"
@@ -99,23 +113,56 @@ msgstr "Skatiet ziņas"
 msgid "Messages of the day"
 msgstr "Dienas ziņojumi"
 
-#: views.py:43
+#: views.py:45
 #, python-format
-msgid "Delete the message: %s?"
+msgid "Delete request performed on %(count)d message"
+msgstr ""
+
+#: views.py:47
+#, python-format
+msgid "Delete request performed on %(count)d messages"
+msgstr ""
+
+#: views.py:54
+#, fuzzy
+#| msgid "Delete the message: %s?"
+msgid "Delete the selected message?"
+msgid_plural "Delete the selected messages?"
+msgstr[0] "Dzēsiet ziņojumu: %s?"
+msgstr[1] "Dzēsiet ziņojumu: %s?"
+msgstr[2] "Dzēsiet ziņojumu: %s?"
+
+#: views.py:64
+#, fuzzy, python-format
+#| msgid "Delete the message: %s?"
+msgid "Delete message: %s?"
 msgstr "Dzēsiet ziņojumu: %s?"
 
-#: views.py:56
+#: views.py:75
+#, python-format
+msgid "Message \"%s\" deleted successfully."
+msgstr ""
+
+#: views.py:80
+#, python-format
+msgid "Error deleting message \"%(message)s\": %(error)s"
+msgstr ""
+
+#: views.py:96
 #, python-format
 msgid "Edit message: %s"
 msgstr "Ziņas rediģēšana: %s"
 
-#: views.py:73
+#: views.py:118
 msgid ""
 "Messages are displayed in the login view. You can use messages to convery "
 "information about your organzation, announcements or usage guidelines for "
 "your users."
-msgstr "Ziņojumi tiek parādīti pieteikšanās skatā. Jūs varat izmantot ziņojumus, lai pārliecinātu informāciju par jūsu organizāciju, paziņojumiem vai lietošanas vadlīnijām lietotājiem."
+msgstr ""
+"Ziņojumi tiek parādīti pieteikšanās skatā. Jūs varat izmantot ziņojumus, lai "
+"pārliecinātu informāciju par jūsu organizāciju, paziņojumiem vai lietošanas "
+"vadlīnijām lietotājiem."
 
-#: views.py:77
+#: views.py:122
 msgid "No messages available"
 msgstr "Nav pieejams neviens ziņojums"

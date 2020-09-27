@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # 847f3f05406324d125c568a4b098bddb, 2018
@@ -18,21 +18,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-17 05:23+0000\n"
+"POT-Creation-Date: 2020-09-27 06:45+0000\n"
 "PO-Revision-Date: 2020-08-17 15:23+0000\n"
 "Last-Translator: Marvin Haschker <marvin@haschker.me>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:15
+#: apps.py:19
 msgid "Dynamic search"
 msgstr "Dynamische Suche"
 
-#: classes.py:52
+#: classes.py:154
 msgid "No search model matching the query"
 msgstr "Kein passendes Suchmodell zur Abfrage gefunden"
 
@@ -44,52 +45,91 @@ msgstr "Alle Felder"
 msgid ""
 "When checked, only results that match all fields will be returned. When "
 "unchecked results that match at least one field will be returned."
-msgstr "Wenn aktiviert, werden nur Ergebnisse angezeigt bei denen alle Felder zutreffen. Ohne diese Option werden Ergebnisse mit mindestens einem Feld angezeigt."
+msgstr ""
+"Wenn aktiviert, werden nur Ergebnisse angezeigt bei denen alle Felder "
+"zutreffen. Ohne diese Option werden Ergebnisse mit mindestens einem Feld "
+"angezeigt."
 
 #: forms.py:27 templates/dynamic_search/search_box.html:39
 msgid "Search terms"
 msgstr "Suchbegriffe"
 
-#: links.py:11 settings.py:5 templates/dynamic_search/search_box.html:43
-#: views.py:59 views.py:72
+#: links.py:13 permissions.py:5 queues.py:7 settings.py:7
+#: templates/dynamic_search/search_box.html:43 views.py:117 views.py:130
 msgid "Search"
 msgstr "Suche"
 
-#: links.py:15 templates/dynamic_search/search_box.html:45 views.py:86
+#: links.py:17 templates/dynamic_search/search_box.html:45 views.py:144
 msgid "Advanced search"
 msgstr "Erweiterte Suche"
 
-#: links.py:19
+#: links.py:21
 msgid "Search again"
 msgstr "Suche wiederholen"
 
-#: settings.py:11
+#: links.py:25 views.py:90
+msgid "Reindex search backend"
+msgstr ""
+
+#: permissions.py:8
+msgid "Execute search tools"
+msgstr ""
+
+#: queues.py:11
+msgid "Remove a model instance from the search engine."
+msgstr ""
+
+#: queues.py:16
+msgid "Index a model instance to the search engine."
+msgstr ""
+
+#: settings.py:13
 msgid "Full path to the backend to be used to handle the search."
 msgstr "Vollständiger Pfad zum Backend, der für die Suche verantwortlich ist."
 
-#: settings.py:21
+#: settings.py:23
 msgid ""
 "Disables the single term bar search leaving only the advanced search button."
-msgstr "Deaktiviert die Suche in der Einzelbegriffsleiste, nur die Schaltfläche für die erweiterte Suche wird angezeigt."
+msgstr ""
+"Deaktiviert die Suche in der Einzelbegriffsleiste, nur die Schaltfläche für "
+"die erweiterte Suche wird angezeigt."
+
+#: settings.py:29
+msgid "Maximum number search results to fetch and display."
+msgstr ""
 
 #: templates/dynamic_search/search_box.html:45
 msgid "Advanced"
 msgstr "Erweitert"
 
-#: views.py:24
+#: views.py:38
 msgid "Try again using different terms. "
 msgstr "Bitte erneut mit anderen Suchbegriffen versuchen."
 
-#: views.py:26
+#: views.py:40
 msgid "No search results"
 msgstr "Keine Suchergebnisse"
 
-#: views.py:28
+#: views.py:42
 #, python-format
 msgid "Search results for: %s"
 msgstr "Suchergebnisse für: %s"
 
-#: views.py:74
+#: views.py:86
+msgid ""
+"This tool is required only for some search backends. Search results will be "
+"affected while the backend is being reindexed."
+msgstr ""
+
+#: views.py:92
+msgid "This tool erases and populates the search backend's internal index."
+msgstr ""
+
+#: views.py:110
+msgid "Search backend reindexing queued."
+msgstr ""
+
+#: views.py:132
 #, python-format
 msgid "Search for: %s"
 msgstr "Suche nach: %s"

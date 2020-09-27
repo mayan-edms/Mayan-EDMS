@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # mic <winterfall24@gmail.com>, 2012,2015
@@ -12,45 +12,48 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-17 05:22+0000\n"
+"POT-Creation-Date: 2020-09-27 06:45+0000\n"
 "PO-Revision-Date: 2020-09-09 09:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
+"pl/)\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
+"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
+"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: admin.py:22
 msgid "None"
 msgstr "Brak"
 
-#: admin.py:24 links.py:93 models.py:52
+#: admin.py:24 links.py:93 models.py:51
 msgid "Document types"
 msgstr "Typy dokumentów"
 
-#: apps.py:54 events.py:6
+#: apps.py:55 events.py:6 settings.py:8
 msgid "Document indexing"
 msgstr "Indeksowanie dokumentu"
 
-#: apps.py:129
+#: apps.py:146
 msgid "Total levels"
 msgstr "Razem poziomy"
 
-#: apps.py:136
+#: apps.py:153
 msgid "Total documents"
 msgstr "Razem dokumenty"
 
-#: apps.py:142 apps.py:156 apps.py:176 apps.py:186
+#: apps.py:159 apps.py:173 apps.py:193 apps.py:203
 msgid "Level"
 msgstr "Poziom"
 
-#: apps.py:164
+#: apps.py:181
 msgid "Levels"
 msgstr "Poziomy"
 
-#: apps.py:171 models.py:395
+#: apps.py:188 models.py:394
 msgid "Documents"
 msgstr "Dokumenty"
 
@@ -78,7 +81,7 @@ msgstr "Szablon"
 msgid "Creation date"
 msgstr "Data utworzenia"
 
-#: links.py:21 links.py:36 links.py:73 links.py:77 models.py:60 views.py:150
+#: links.py:21 links.py:36 links.py:73 links.py:77 models.py:59 views.py:150
 #: views.py:333
 msgid "Indexes"
 msgstr "Indeksy"
@@ -119,32 +122,35 @@ msgstr "Szablon drzewa"
 msgid "New child node"
 msgstr "Nowy węzeł potomny"
 
-#: models.py:34
+#: models.py:33
 msgid "Short description of this index."
 msgstr "Krótki opis indeksu."
 
-#: models.py:35
+#: models.py:34
 msgid "Label"
 msgstr "Etykieta"
 
-#: models.py:39
+#: models.py:38
 msgid "This value will be used by other apps to reference this index."
-msgstr "Wartość ta zostanie użyta przez inne aplikacje w celu odniesienia się do tego indeksu."
+msgstr ""
+"Wartość ta zostanie użyta przez inne aplikacje w celu odniesienia się do "
+"tego indeksu."
 
-#: models.py:40
+#: models.py:39
 msgid "Slug"
 msgstr "Slug"
 
-#: models.py:45
-msgid ""
-"Causes this index to be visible and updated when document data changes."
-msgstr "Powoduje że  ten wskaźnik będzie widoczny i zaktualizowany podczas zmiany danych dokumentów."
+#: models.py:44
+msgid "Causes this index to be visible and updated when document data changes."
+msgstr ""
+"Powoduje że  ten wskaźnik będzie widoczny i zaktualizowany podczas zmiany "
+"danych dokumentów."
 
-#: models.py:48 models.py:230
+#: models.py:47 models.py:230
 msgid "Enabled"
 msgstr "Włączony"
 
-#: models.py:59 models.py:214
+#: models.py:58 models.py:214
 msgid "Index"
 msgstr "Indeks"
 
@@ -152,7 +158,9 @@ msgstr "Indeks"
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
-msgstr "Wprowadź szablon do renderowania. Użyj domyślnego języka szablonów Django (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
+msgstr ""
+"Wprowadź szablon do renderowania. Użyj domyślnego języka szablonów Django "
+"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 
 #: models.py:222
 msgid "Indexing expression"
@@ -164,9 +172,11 @@ msgstr "Causes this node to be visible and updated when document data changes."
 
 #: models.py:235
 msgid ""
-"Check this option to have this node act as a container for documents and not"
-" as a parent for further nodes."
-msgstr "Check this option to have this node act as a container for documents and not as a parent for further nodes."
+"Check this option to have this node act as a container for documents and not "
+"as a parent for further nodes."
+msgstr ""
+"Check this option to have this node act as a container for documents and not "
+"as a parent for further nodes."
 
 #: models.py:238
 msgid "Link documents"
@@ -189,7 +199,9 @@ msgstr "Korzeń"
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
-msgstr "Błąd indeksowania dokumentu: %(document)s; wyrażenie: %(expression)s; %(exception)s"
+msgstr ""
+"Błąd indeksowania dokumentu: %(document)s; wyrażenie: %(expression)s; "
+"%(exception)s"
 
 #: models.py:346
 msgid "Index instance"
@@ -199,39 +211,39 @@ msgstr "index instance"
 msgid "Index instances"
 msgstr "Instancje indeksów"
 
-#: models.py:388
+#: models.py:387
 msgid "Index template node"
 msgstr "Węzeł szablonu indeksu"
 
-#: models.py:391 search.py:23
+#: models.py:390 search.py:23
 msgid "Value"
 msgstr "Wartość"
 
-#: models.py:401 models.py:527
+#: models.py:400 models.py:529
 msgid "Index instance node"
 msgstr "Węzeł instancji indeksu"
 
-#: models.py:402
+#: models.py:401
 msgid "Indexes instances node"
 msgstr "Węzły instancji indeksu"
 
-#: models.py:464
+#: models.py:466
 msgid "The path to the index including all ancestors."
 msgstr "Ścieżka do indeksu obejmująca wszystkich przodków."
 
-#: models.py:466
+#: models.py:468
 msgid "Full path"
 msgstr "Pełna ścieżka"
 
-#: models.py:520
+#: models.py:522
 msgid "Document index node instance"
 msgstr "Instancja węzła indeksu dokumentu"
 
-#: models.py:521
+#: models.py:523
 msgid "Document indexes node instances"
 msgstr "Instancje węzła indeksów dokumentu"
 
-#: models.py:528
+#: models.py:530
 msgid "Index instance nodes"
 msgstr "Indeksuj węzły instancji"
 
@@ -307,6 +319,13 @@ msgstr ""
 msgid "Parent must be from the same index template."
 msgstr ""
 
+#: settings.py:14
+msgid ""
+"Amount of time in seconds, a failed indexing task will wait before retrying. "
+"Lower values will increase the speed at which documents are indexed but will "
+"cause a higher count of failed/retried tasks in the queue."
+msgstr ""
+
 #: views.py:45
 msgid "Available indexes"
 msgstr "Dostępne indeksy"
@@ -320,7 +339,10 @@ msgid ""
 "Documents of this type will appear in the indexes linked when these are "
 "updated. Events of the documents of this type will trigger updates in the "
 "linked indexes."
-msgstr "Dokumenty tego typu pojawią się w połączonych indeksach, gdy zostaną zaktualizowane. Zdarzenia tego typu dokumentów spowodują aktualizacje w połączonych indeksach."
+msgstr ""
+"Dokumenty tego typu pojawią się w połączonych indeksach, gdy zostaną "
+"zaktualizowane. Zdarzenia tego typu dokumentów spowodują aktualizacje w "
+"połączonych indeksach."
 
 #: views.py:80
 #, python-format
@@ -340,9 +362,13 @@ msgstr "Edytuj indeks: %s"
 #: views.py:144
 msgid ""
 "Indexes group document automatically into levels. Indexe are defined using "
-"template whose markers are replaced with direct properties of documents like"
-" label or description, or that of extended properties like metadata."
-msgstr "Indeksuje dokumenty grupowe automatycznie według poziomów. Indexy są definiowane przy użyciu szablonu, którego znaczniki są zastępowane bezpośrednimi właściwościami dokumentów, takich jak etykieta lub opis, lub właściwości rozszerzonych, takich jak metadane."
+"template whose markers are replaced with direct properties of documents like "
+"label or description, or that of extended properties like metadata."
+msgstr ""
+"Indeksuje dokumenty grupowe automatycznie według poziomów. Indexy są "
+"definiowane przy użyciu szablonu, którego znaczniki są zastępowane "
+"bezpośrednimi właściwościami dokumentów, takich jak etykieta lub opis, lub "
+"właściwości rozszerzonych, takich jak metadane."
 
 #: views.py:149
 msgid "There are no indexes."
@@ -370,7 +396,9 @@ msgid ""
 "Only the documents of the types selected will be shown in the index when "
 "built. Only the events of the documents of the types select will trigger "
 "updates in the index."
-msgstr "Po utworzeniu w indeksie będą wyświetlane tylko dokumenty wybranych typów. Tylko zdarzenia dokumentów wybranych typów spowodują aktualizacje w indeksie."
+msgstr ""
+"Po utworzeniu w indeksie będą wyświetlane tylko dokumenty wybranych typów. "
+"Tylko zdarzenia dokumentów wybranych typów spowodują aktualizacje w indeksie."
 
 #: views.py:209
 #, python-format
@@ -401,7 +429,9 @@ msgstr "Edytować węzeł szablonu indeksu: %s?"
 msgid ""
 "This could mean that no index templates have been created or that there "
 "index templates but they are no properly defined."
-msgstr "Może to oznaczać, że nie utworzono żadnych szablonów indeksów lub że istnieją szablony indeksów, ale nie są one odpowiednio zdefiniowane."
+msgstr ""
+"Może to oznaczać, że nie utworzono żadnych szablonów indeksów lub że "
+"istnieją szablony indeksów, ale nie są one odpowiednio zdefiniowane."
 
 #: views.py:332
 msgid "There are no index instances available."
@@ -421,7 +451,9 @@ msgstr "Zawartość indeksu: %s"
 msgid ""
 "Assign the document type of this document to an index to have it appear in "
 "instances of those indexes organization units. "
-msgstr "Przypisz typ dokumentu do indeksu, aby pojawiał się w instancjach tych jednostek organizacyjnych indeksów."
+msgstr ""
+"Przypisz typ dokumentu do indeksu, aby pojawiał się w instancjach tych "
+"jednostek organizacyjnych indeksów."
 
 #: views.py:430
 msgid "This document is not in any index"

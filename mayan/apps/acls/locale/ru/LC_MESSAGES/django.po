@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Alex Chigrin <chalex84@mail.ru>, 2020
@@ -10,17 +10,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-17 05:22+0000\n"
+"POT-Creation-Date: 2020-09-27 06:45+0000\n"
 "PO-Revision-Date: 2020-08-06 16:34+0000\n"
 "Last-Translator: Alex Chigrin <chalex84@mail.ru>\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/ru/)\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:22 links.py:42
+#: apps.py:23 classes.py:142 links.py:26
 msgid "ACLs"
 msgstr "ACLs"
 
@@ -36,19 +39,19 @@ msgstr "ACL создан"
 msgid "ACL edited"
 msgstr "ACL отредактирован"
 
-#: forms.py:13 models.py:46 views.py:67
+#: forms.py:13 models.py:44 views.py:67
 msgid "Role"
 msgstr "Роль"
 
-#: links.py:32
+#: links.py:15
 msgid "New ACL"
 msgstr "Новый ACL"
 
-#: links.py:37
+#: links.py:20
 msgid "Delete"
 msgstr "Удалить"
 
-#: links.py:47 models.py:42 workflow_actions.py:46 workflow_actions.py:161
+#: links.py:31 models.py:40 workflow_actions.py:46 workflow_actions.py:161
 msgid "Permissions"
 msgstr "Разрешения"
 
@@ -62,15 +65,15 @@ msgstr ""
 msgid "Insufficient access for: %s"
 msgstr ""
 
-#: models.py:54
+#: models.py:52
 msgid "Access entry"
 msgstr "Элемент доступа"
 
-#: models.py:55
+#: models.py:53
 msgid "Access entries"
 msgstr "Элементы доступа"
 
-#: models.py:59
+#: models.py:57
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\""
 msgstr "Права роли \"%(role)s\" для \"%(object)s\""
@@ -118,7 +121,9 @@ msgstr ""
 msgid ""
 "An ACL for \"%(object)s\" using role \"%(role)s\" already exists. Edit that "
 "ACL entry instead."
-msgstr "ACL для «%(object)s» с использованием Роли «%(role)s» уже существует. Вместо этого измените эту запись ACL."
+msgstr ""
+"ACL для «%(object)s» с использованием Роли «%(role)s» уже существует. Вместо "
+"этого измените эту запись ACL."
 
 #: views.py:53
 #, python-format
@@ -139,7 +144,11 @@ msgid ""
 "ACL stands for Access Control List and is a precise method to control user "
 "access to objects in the system. ACLs allow granting a permission to a role "
 "but only for a specific object or set of objects."
-msgstr "ACL это аббревиатура от Access Control List  переводится как \"список управления доступом\"  является точным методом управления доступом пользователей к объектам в системе. Списки ACL позволяют предоставлять разрешение Роли, но только для определенного объекта или набора объектов."
+msgstr ""
+"ACL это аббревиатура от Access Control List  переводится как \"список "
+"управления доступом\"  является точным методом управления доступом "
+"пользователей к объектам в системе. Списки ACL позволяют предоставлять "
+"разрешение Роли, но только для определенного объекта или набора объектов."
 
 #: views.py:143
 #, python-format
@@ -165,7 +174,11 @@ msgid ""
 "to the role and can't be removed from this view. Inherited permissions need "
 "to be removed from the parent object's ACL or from them role via the Setup "
 "menu."
-msgstr "Отключенные разрешения наследуются от родительского объекта или напрямую предоставляются Роли и не могут быть удалены из этого представления. Унаследованные разрешения должны быть удалены из ACL родительского объекта или из Роли через меню Настройка."
+msgstr ""
+"Отключенные разрешения наследуются от родительского объекта или напрямую "
+"предоставляются Роли и не могут быть удалены из этого представления. "
+"Унаследованные разрешения должны быть удалены из ACL родительского объекта "
+"или из Роли через меню Настройка."
 
 #: workflow_actions.py:23
 msgid "Object type"
@@ -180,8 +193,7 @@ msgid "Object ID"
 msgstr "ID объекта"
 
 #: workflow_actions.py:35
-msgid ""
-"Numeric identifier of the object for which the access will be modified."
+msgid "Numeric identifier of the object for which the access will be modified."
 msgstr "Числовой идентификатор объекта, доступ к которому будет изменен."
 
 #: workflow_actions.py:40 workflow_actions.py:155

@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-17 05:23+0000\n"
+"POT-Creation-Date: 2020-09-27 06:45+0000\n"
 "PO-Revision-Date: 2020-05-25 06:18+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/da/)\n"
+"Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/"
+"da/)\n"
+"Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: da\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:21 permissions.py:6
@@ -26,19 +27,19 @@ msgstr ""
 msgid "Setting count"
 msgstr ""
 
-#: apps.py:34
+#: apps.py:35
 msgid "Name"
 msgstr "Navn"
 
-#: apps.py:38
+#: apps.py:39
 msgid "Value"
 msgstr ""
 
-#: classes.py:350
+#: classes.py:336
 msgid "Overridden"
 msgstr ""
 
-#: classes.py:352
+#: classes.py:338
 msgid "Is this settings being overridden by an environment variable?"
 msgstr ""
 
@@ -78,14 +79,14 @@ msgstr ""
 #: settings.py:14
 msgid ""
 "A list of strings representing the host/domain names that this site can "
-"serve. This is a security measure to prevent HTTP Host header attacks, which"
-" are possible even under many seemingly-safe web server configurations. "
+"serve. This is a security measure to prevent HTTP Host header attacks, which "
+"are possible even under many seemingly-safe web server configurations. "
 "Values in this list can be fully qualified names (e.g. 'www.example.com'), "
-"in which case they will be matched against the request's Host header exactly"
-" (case-insensitive, not including port). A value beginning with a period can"
-" be used as a subdomain wildcard: '.example.com' will match example.com, "
-"www.example.com, and any other subdomain of example.com. A value of '*' will"
-" match anything; in this case you are responsible to provide your own "
+"in which case they will be matched against the request's Host header exactly "
+"(case-insensitive, not including port). A value beginning with a period can "
+"be used as a subdomain wildcard: '.example.com' will match example.com, www."
+"example.com, and any other subdomain of example.com. A value of '*' will "
+"match anything; in this case you are responsible to provide your own "
 "validation of the Host header (perhaps in a middleware; if so this "
 "middleware must be listed first in MIDDLEWARE)."
 msgstr ""
@@ -93,11 +94,10 @@ msgstr ""
 #: settings.py:32
 msgid ""
 "When set to True, if the request URL does not match any of the patterns in "
-"the URLconf and it doesn't end in a slash, an HTTP redirect is issued to the"
-" same URL with a slash appended. Note that the redirect may cause any data "
+"the URLconf and it doesn't end in a slash, an HTTP redirect is issued to the "
+"same URL with a slash appended. Note that the redirect may cause any data "
 "submitted in a POST request to be lost. The APPEND_SLASH setting is only "
-"used if CommonMiddleware is installed (see Middleware). See also "
-"PREPEND_WWW."
+"used if CommonMiddleware is installed (see Middleware). See also PREPEND_WWW."
 msgstr ""
 
 #: settings.py:45
@@ -108,8 +108,8 @@ msgstr ""
 
 #: settings.py:53
 msgid ""
-"A list of authentication backend classes (as strings) to use when attempting"
-" to authenticate a user."
+"A list of authentication backend classes (as strings) to use when attempting "
+"to authenticate a user."
 msgstr ""
 
 #: settings.py:60
@@ -127,10 +127,10 @@ msgid ""
 "body may be before a SuspiciousOperation (RequestDataTooBig) is raised. The "
 "check is done when accessing request.body or request.POST and is calculated "
 "against the total request size excluding any file upload data. You can set "
-"this to None to disable the check. Applications that are expected to receive"
-" unusually large form posts should tune this setting. The amount of request "
-"data is correlated to the amount of memory needed to process the request and"
-" populate the GET and POST dictionaries. Large requests could be used as a "
+"this to None to disable the check. Applications that are expected to receive "
+"unusually large form posts should tune this setting. The amount of request "
+"data is correlated to the amount of memory needed to process the request and "
+"populate the GET and POST dictionaries. Large requests could be used as a "
 "denial-of-service attack vector if left unchecked. Since web servers don't "
 "typically perform deep request inspection, it's not possible to perform a "
 "similar check at that level. See also FILE_UPLOAD_MAX_MEMORY_SIZE."
@@ -187,8 +187,8 @@ msgstr ""
 
 #: settings.py:163
 msgid ""
-"Default: False. Whether to use a TLS (secure) connection when talking to the"
-" SMTP server. This is used for explicit TLS connections, generally on port "
+"Default: False. Whether to use a TLS (secure) connection when talking to the "
+"SMTP server. This is used for explicit TLS connections, generally on port "
 "587. If you are experiencing hanging connections, see the implicit TLS "
 "setting EMAIL_USE_SSL."
 msgstr ""
@@ -212,8 +212,8 @@ msgstr ""
 
 #: settings.py:195
 msgid ""
-"Default: '/accounts/login/' The URL where requests are redirected for login,"
-" especially when using the login_required() decorator. This setting also "
+"Default: '/accounts/login/' The URL where requests are redirected for login, "
+"especially when using the login_required() decorator. This setting also "
 "accepts named URL patterns which can be used to reduce configuration "
 "duplication since you don't have to define the URL in two places (settings "
 "and URLconf)."
@@ -231,8 +231,8 @@ msgstr ""
 #: settings.py:219
 msgid ""
 "Default: None. The URL where requests are redirected after a user logs out "
-"using LogoutView (if the view doesn't get a next_page argument). If None, no"
-" redirect will be performed and the logout view will be rendered. This "
+"using LogoutView (if the view doesn't get a next_page argument). If None, no "
+"redirect will be performed and the logout view will be rendered. This "
 "setting also accepts named URL patterns which can be used to reduce "
 "configuration duplication since you don't have to define the URL in two "
 "places (settings and URLconf)."
@@ -269,15 +269,15 @@ msgstr ""
 
 #: settings.py:271
 msgid ""
-"Default: 'sessionid'. The name of the cookie to use for sessions.This can be"
-" whatever you want (as long as it's different from the other cookie names in"
-" your application)."
+"Default: 'sessionid'. The name of the cookie to use for sessions.This can be "
+"whatever you want (as long as it's different from the other cookie names in "
+"your application)."
 msgstr ""
 
 #: settings.py:280
 msgid ""
-"Default: 'django.contrib.sessions.backends.db'. Controls where Django stores"
-" session data."
+"Default: 'django.contrib.sessions.backends.db'. Controls where Django stores "
+"session data."
 msgstr ""
 
 #: settings.py:288
@@ -300,8 +300,8 @@ msgstr ""
 msgid ""
 "The file storage engine to use when collecting static files with the "
 "collectstatic management command. A ready-to-use instance of the storage "
-"backend defined in this setting can be found at "
-"django.contrib.staticfiles.storage.staticfiles_storage."
+"backend defined in this setting can be found at django.contrib.staticfiles."
+"storage.staticfiles_storage."
 msgstr ""
 
 #: settings.py:320
@@ -335,30 +335,30 @@ msgid ""
 msgstr ""
 
 #: views.py:21
+msgid "Setting updated successfully."
+msgstr ""
+
+#: views.py:30
+#, python-format
+msgid "Edit setting: %s"
+msgstr ""
+
+#: views.py:55
 msgid ""
 "Settings inherited from an environment variable take precedence and cannot "
 "be changed in this view. "
 msgstr ""
 
-#: views.py:24
+#: views.py:58
 #, python-format
 msgid "Settings in namespace: %s"
 msgstr ""
 
-#: views.py:32
+#: views.py:66
 #, python-format
 msgid "Namespace: %s, not found"
 msgstr ""
 
-#: views.py:42
+#: views.py:76
 msgid "Setting namespaces"
-msgstr ""
-
-#: views.py:58
-msgid "Setting updated successfully."
-msgstr ""
-
-#: views.py:67
-#, python-format
-msgid "Edit setting: %s"
 msgstr ""

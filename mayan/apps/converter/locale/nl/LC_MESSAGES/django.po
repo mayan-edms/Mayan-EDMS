@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
@@ -13,21 +13,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-17 05:22+0000\n"
+"POT-Creation-Date: 2020-09-27 06:45+0000\n"
 "PO-Revision-Date: 2020-05-31 09:14+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
-"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
+"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/"
+"nl/)\n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:20 permissions.py:5 settings.py:13
+#: apps.py:39 events.py:5 permissions.py:5 settings.py:16
 msgid "Converter"
 msgstr "Converter"
 
-#: apps.py:37 forms.py:23
+#: apps.py:82 forms.py:23
 msgid "Transformation"
 msgstr "Transformatie"
 
@@ -41,240 +42,437 @@ msgstr "Exceptie bij het bepalen van aan aantal bladzijden van de PDF: %s"
 msgid "Exception determining page count using Pillow; %s"
 msgstr "Uitzondering bij paginatelling met Pillow; %s"
 
-#: classes.py:125
+#: classes.py:135
 msgid "LibreOffice not installed or not found."
 msgstr "LibreOffice niet geïnstalleerd of niet gevonden."
 
-#: classes.py:226
+#: classes.py:236
 msgid "Not an office file format."
 msgstr "Geen office bestandsformaat."
 
-#: classes.py:350
+#: classes.py:359
 msgid ""
 "Transformations allow changing the visual appearance of documents without "
 "making permanent changes to the document file themselves."
-msgstr "Transformaties staan het wijzigen van de visuele presentatie van documenten toe, zonder permanente wijzigingen te maken in het document zelf."
+msgstr ""
+"Transformaties staan het wijzigen van de visuele presentatie van documenten "
+"toe, zonder permanente wijzigingen te maken in het document zelf."
 
-#: classes.py:398
+#: classes.py:407
 msgid "transformation"
 msgstr "transformatie"
 
 #: dependencies.py:14
 msgid "Utility from the poppler-utils package used to inspect PDF files."
-msgstr "Hulpmiddel uit het poppler-utils pakket dat gebruikt wordt om PDF-bestanden te inspecteren."
+msgstr ""
+"Hulpmiddel uit het poppler-utils pakket dat gebruikt wordt om PDF-bestanden "
+"te inspecteren."
 
 #: dependencies.py:19
 msgid ""
 "Utility from the popper-utils package used to extract pages from PDF files "
 "into PPM format images."
-msgstr "Hulpmiddel uit het poppler-utils pakket dat gebruikt wordt om pagina's uit PDF-bestanden te halen in PPM-afbeeldingen."
+msgstr ""
+"Hulpmiddel uit het poppler-utils pakket dat gebruikt wordt om pagina's uit "
+"PDF-bestanden te halen in PPM-afbeeldingen."
+
+#: events.py:8
+msgid "Asset created"
+msgstr ""
+
+#: events.py:11
+msgid "Asset edited"
+msgstr ""
 
 #: forms.py:22
 msgid "Available transformations for this layer."
 msgstr "Beschikbare transformaties voor deze laag."
 
-#: forms.py:59
+#: forms.py:59 workflow_actions.py:74
 #, python-format
 msgid "\"%s\" not a valid entry."
 msgstr "\"%s\" is geen geldige invoer."
 
-#: layers.py:10
+#: layers.py:11
+msgid ""
+"Decoration are visual elements that add contextual information to images."
+msgstr ""
+
+#: layers.py:13
+#, fuzzy
+#| msgid "Transformations"
+msgid "Decorations"
+msgstr "Transformaties"
+
+#: layers.py:24
 msgid "Saved transformations"
 msgstr "Opgeslagen transformaties"
 
-#: links.py:17
+#: links.py:31 views.py:36
+msgid "Create asset"
+msgstr ""
+
+#: links.py:35 links.py:41 links.py:65
 msgid "Delete"
 msgstr "Verwijderen"
 
-#: links.py:24
+#: links.py:46 links.py:73
 msgid "Edit"
 msgstr "Bewerken"
 
-#: links.py:28
+#: links.py:55 models.py:53 storages.py:19 views.py:127
+msgid "Assets"
+msgstr ""
+
+#: links.py:77
 msgid "Transformations"
 msgstr "Transformaties"
 
-#: links.py:34
+#: links.py:83
 msgid "Select new transformation"
 msgstr "Nieuwe transformatie selecteren"
 
-#: models.py:21 models.py:83
+#: models.py:36
+msgid "Label"
+msgstr ""
+
+#: models.py:40
+msgid ""
+"This value will be used when referencing this asset. Can only contain "
+"letters, numbers, and underscores."
+msgstr ""
+
+#: models.py:43
+msgid "Internal name"
+msgstr ""
+
+#: models.py:47
+msgid "File"
+msgstr ""
+
+#: models.py:52
+msgid "Asset"
+msgstr ""
+
+#: models.py:82 models.py:153
 msgid "Name"
 msgstr "Naam"
 
-#: models.py:24 models.py:79
+#: models.py:85 models.py:151
 msgid "Order"
 msgstr "Volgorde"
 
-#: models.py:32 models.py:48
+#: models.py:90 models.py:109
 msgid "Stored layer"
 msgstr "Opgeslagen laag"
 
-#: models.py:33
+#: models.py:91
 msgid "Stored layers"
 msgstr "Opgeslagen lagen"
 
-#: models.py:45 models.py:91
+#: models.py:106 models.py:160
 msgid "Enabled"
 msgstr "Ingeschakeld"
 
-#: models.py:54 models.py:73
+#: models.py:117 models.py:145
 msgid "Object layer"
 msgstr "Object laag"
 
-#: models.py:55
+#: models.py:118
 msgid "Object layers"
 msgstr "Object lagen"
 
-#: models.py:77
+#: models.py:149
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
-msgstr "Volgorde waarin de transformaties worden uitgevoerd. Indien ongewijzigd zal automatisch een volgorde toegekend worden."
+msgstr ""
+"Volgorde waarin de transformaties worden uitgevoerd. Indien ongewijzigd zal "
+"automatisch een volgorde toegekend worden."
 
-#: models.py:87
+#: models.py:156 workflow_actions.py:45
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
-msgstr "Voer de argumenten voor de transformatie in als een YAML statement, bijvoorbeeld: {\"degrees\": 180}"
+msgstr ""
+"Voer de argumenten voor de transformatie in als een YAML statement, "
+"bijvoorbeeld: {\"degrees\": 180}"
 
-#: models.py:89
+#: models.py:158
 msgid "Arguments"
 msgstr "Argumenten"
 
-#: models.py:98
+#: models.py:167
 msgid "Layer transformation"
 msgstr "Laag transformatie"
 
-#: models.py:99
+#: models.py:168
 msgid "Layer transformations"
 msgstr "Laag transformaties"
 
+#: models.py:174
+#, fuzzy
+#| msgid "Create new transformations"
+msgid "Unknown transformation class"
+msgstr "Nieuwe transformaties aanmaken"
+
 #: permissions.py:8
-msgid "Create new transformations"
+#, fuzzy
+#| msgid "Create new transformations"
+msgid "Create new assets"
 msgstr "Nieuwe transformaties aanmaken"
 
 #: permissions.py:11
+#, fuzzy
+#| msgid "Delete"
+msgid "Delete assets"
+msgstr "Verwijderen"
+
+#: permissions.py:14
+msgid "Edit assets"
+msgstr ""
+
+#: permissions.py:17
+#, fuzzy
+#| msgid "View existing transformations"
+msgid "View existing assets"
+msgstr "Bestaande transformaties bekijken"
+
+#: permissions.py:21
+msgid "Create new transformations"
+msgstr "Nieuwe transformaties aanmaken"
+
+#: permissions.py:24
 msgid "Delete transformations"
 msgstr "Transformaties verwijderen"
 
-#: permissions.py:14
+#: permissions.py:27
 msgid "Edit transformations"
 msgstr "Transformaties bewerken"
 
-#: permissions.py:17
+#: permissions.py:30
 msgid "View existing transformations"
 msgstr "Bestaande transformaties bekijken"
 
-#: settings.py:19
+#: settings.py:22
 msgid "Graphics conversion backend to use."
 msgstr "Te gebruiken backend voor grafische conversie."
 
-#: settings.py:32
+#: settings.py:35
 msgid "Configuration options for the graphics conversion backend."
 msgstr "Configuratie-opties voor de afbeeldingsconversie backend."
 
-#: transformations.py:98
+#: settings.py:41
+msgid "Path to the Storage subclass to use when storing detached signatures."
+msgstr ""
+
+#: settings.py:50
+msgid "Arguments to pass to the CONVERTER_ASSET_STORAGE_BACKEND."
+msgstr ""
+
+#: storages.py:13
+msgid ""
+"Unable to initialize the converter asset storage. Check the settings {} and "
+"{} for formatting errors."
+msgstr ""
+
+#: transformations.py:197
+msgid "Paste an asset"
+msgstr ""
+
+#: transformations.py:248
+#, fuzzy
+#| msgid "Draw rectangle (percents coordinates)"
+msgid "Paste an asset (percents coordinates)"
+msgstr "Vierkant tekenen (procentuele coördinaten)"
+
+#: transformations.py:291
+msgid "Paste an asset as watermark"
+msgstr ""
+
+#: transformations.py:351
 msgid "Crop"
 msgstr "Bijsnijden"
 
-#: transformations.py:176
+#: transformations.py:429
 msgid "Draw rectangle"
 msgstr "Rechthoek tekenen"
 
-#: transformations.py:278
+#: transformations.py:531
 msgid "Draw rectangle (percents coordinates)"
 msgstr "Vierkant tekenen (procentuele coördinaten)"
 
-#: transformations.py:375
+#: transformations.py:628
 msgid "Flip"
 msgstr "Spiegelen"
 
-#: transformations.py:386
+#: transformations.py:639
 msgid "Gaussian blur"
 msgstr "Gaussiaanse vervaging"
 
-#: transformations.py:396
+#: transformations.py:649
 msgid "Line art"
 msgstr "Zwart-wit"
 
-#: transformations.py:407
+#: transformations.py:660
 msgid "Mirror"
 msgstr "Spiegelen"
 
-#: transformations.py:418
+#: transformations.py:671
 msgid "Resize"
 msgstr "Herschalen"
 
-#: transformations.py:445
+#: transformations.py:698
 msgid "Rotate"
 msgstr "Roteren"
 
-#: transformations.py:471
+#: transformations.py:724
 msgid "Rotate 90 degrees"
 msgstr "90 graden draaien"
 
-#: transformations.py:482
+#: transformations.py:735
 msgid "Rotate 180 degrees"
 msgstr "180 graden draaien"
 
-#: transformations.py:493
+#: transformations.py:746
 msgid "Rotate 270 degrees"
 msgstr "270 graden draaien"
 
-#: transformations.py:503
+#: transformations.py:756
 msgid "Unsharp masking"
 msgstr "Onscherpe maskering"
 
-#: transformations.py:519
+#: transformations.py:772
 msgid "Zoom"
 msgstr "Inzoomen"
 
-#: validators.py:21
-msgid "Enter a valid YAML value."
-msgstr "Voer een geldige YAML-waarde in."
+#: views.py:50
+#, python-format
+msgid "Delete request performed on %(count)d asset"
+msgstr ""
 
-#: views.py:51
+#: views.py:52
+#, python-format
+msgid "Delete request performed on %(count)d assets"
+msgstr ""
+
+#: views.py:59
+msgid "Delete the selected asset?"
+msgid_plural "Delete the selected assets?"
+msgstr[0] ""
+msgstr[1] ""
+
+#: views.py:69
+#, python-format
+msgid "Delete asset: %s?"
+msgstr ""
+
+#: views.py:80
+#, fuzzy, python-format
+#| msgid "Transformation created successfully."
+msgid "Asset \"%s\" deleted successfully."
+msgstr "Transformatie met succes aangemaakt."
+
+#: views.py:85
+#, python-format
+msgid "Error deleting asset \"%(asset)s\": %(error)s"
+msgstr ""
+
+#: views.py:101
+#, python-format
+msgid "Edit asset: %s"
+msgstr ""
+
+#: views.py:123
+msgid ""
+"Assets are files that can be used in conjuction with certain transformations."
+msgstr ""
+
+#: views.py:126
+msgid "No assets available"
+msgstr ""
+
+#: views.py:151
 #, python-format
 msgid "Error creating transformation: %s."
 msgstr "Fout bij het aanmaken van transformatie: %s."
 
-#: views.py:68
+#: views.py:168
 #, python-format
 msgid ""
 "Create layer \"%(layer)s\" transformation \"%(transformation)s\" for: "
 "%(object)s"
-msgstr "Aanmaken laag \"%(layer)s\" transformatie \"%(transformation)s\" voor: %(object)s"
+msgstr ""
+"Aanmaken laag \"%(layer)s\" transformatie \"%(transformation)s\" voor: "
+"%(object)s"
 
-#: views.py:123
+#: views.py:224
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
-msgstr "Transformatie verwijderen \"%(transformation)s\" voor: %(content_object)s?"
+msgstr ""
+"Transformatie verwijderen \"%(transformation)s\" voor: %(content_object)s?"
 
-#: views.py:172
+#: views.py:273
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
 msgstr "Wijzig transformatie \"%(transformation)s\" voor: %(content_object)s"
 
-#: views.py:231
+#: views.py:327
 #, python-format
 msgid "There are no entries for layer \"%(layer_name)s\""
 msgstr "Er is geen invoer voor laag \"%(layer_name)s\""
 
-#: views.py:234
+#: views.py:330
 #, python-format
 msgid "Layer \"%(layer)s\" transformations for: %(object)s"
 msgstr "Laag \"%(layer)s\" transformaties voor: %(object)s"
 
-#: views.py:286
+#: views.py:375
 msgid "Transformation created successfully."
 msgstr "Transformatie met succes aangemaakt."
 
-#: views.py:310
+#: views.py:399
 msgid "Select"
 msgstr "Selecteren"
 
-#: views.py:312
+#: views.py:401
 #, python-format
 msgid "Select new layer \"%(layer)s\" transformation for: %(object)s"
 msgstr "Kies nieuwe laag \"%(layer)s\" transformatie voor: %(object)s"
+
+#: workflow_actions.py:22
+msgid "Pages"
+msgstr ""
+
+#: workflow_actions.py:25
+msgid ""
+"Pages to which the new transformations will be added. Separate by commas and/"
+"or use a dashes for a ranges. Leave blank to select all pages."
+msgstr ""
+
+#: workflow_actions.py:32
+#, fuzzy
+#| msgid "Transformations"
+msgid "Transformation class"
+msgstr "Transformaties"
+
+#: workflow_actions.py:37
+#, fuzzy
+#| msgid "Layer transformation"
+msgid "Type of transformation to add."
+msgstr "Laag transformatie"
+
+#: workflow_actions.py:42
+#, fuzzy
+#| msgid "Transformations"
+msgid "Transformation arguments"
+msgstr "Transformaties"
+
+#: workflow_actions.py:51
+#, fuzzy
+#| msgid "transformation"
+msgid "Add transformation"
+msgstr "transformatie"
+
+#~ msgid "Enter a valid YAML value."
+#~ msgstr "Voer een geldige YAML-waarde in."

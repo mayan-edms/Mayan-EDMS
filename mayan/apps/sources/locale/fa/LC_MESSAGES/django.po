@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2018
@@ -10,51 +10,46 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-17 05:23+0000\n"
+"POT-Creation-Date: 2020-09-27 06:45+0000\n"
 "PO-Revision-Date: 2020-05-25 06:18+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/fa/)\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:43 links.py:56 models/base.py:38 queues.py:7 settings.py:11
-#: views.py:193
+#: apps.py:48 links.py:56 models/base.py:38 queues.py:7 settings.py:11
+#: views.py:192
 msgid "Sources"
 msgstr "منابع"
 
-#: apps.py:61
+#: apps.py:71
 msgid "Create a document source"
 msgstr "یک منبع مستند ایجاد کنید"
 
-#: apps.py:63
+#: apps.py:73
 msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
-msgstr "منابع سندي روشي است که اسناد جديد به EDMS ميان تغيير مي کند و حداقل يک منبع فرم وب را قادر مي سازد تا اسناد را از يک مرورگر آپلود کند."
+msgstr ""
+"منابع سندي روشي است که اسناد جديد به EDMS ميان تغيير مي کند و حداقل يک منبع "
+"فرم وب را قادر مي سازد تا اسناد را از يک مرورگر آپلود کند."
 
-#: apps.py:76
+#: apps.py:86
 msgid "Type"
 msgstr "نوع"
 
-#: apps.py:87
+#: apps.py:97
 msgid "Created"
 msgstr "ایجاد شده"
 
-#: apps.py:93
+#: apps.py:103
 msgid "Thumbnail"
 msgstr "بند انگشتی"
-
-#: apps.py:101 models/base.py:248
-msgid "Date time"
-msgstr "زمان قرار"
-
-#: apps.py:106 models/base.py:251
-msgid "Message"
-msgstr "پیام"
 
 #: dependencies.py:11
 msgid ""
@@ -78,7 +73,7 @@ msgstr "فایلهای فشرده را گسترش دهید"
 msgid "Upload a compressed file's contained files as individual documents."
 msgstr ""
 
-#: forms.py:63 views.py:227
+#: forms.py:63 views.py:204
 msgid "Staging file"
 msgstr "مرحله گذاری فایل"
 
@@ -134,11 +129,7 @@ msgstr "منابع سند"
 msgid "Upload new version"
 msgstr "آپلود نسخه جدید"
 
-#: links.py:127
-msgid "Logs"
-msgstr "سیاههها"
-
-#: links.py:133
+#: links.py:128
 msgid "Check now"
 msgstr "اکنون بررسی کنید"
 
@@ -194,7 +185,7 @@ msgstr "فرم وب"
 msgid "Staging folder"
 msgstr "پوشه Staging"
 
-#: literals.py:64 models/watch_folder_sources.py:45
+#: literals.py:64 models/watch_folder_sources.py:46
 msgid "Watch folder"
 msgstr "پوشه تماشا کنید"
 
@@ -218,7 +209,7 @@ msgstr "برچسب"
 msgid "Enabled"
 msgstr "فعال شده است"
 
-#: models/base.py:37 models/base.py:245
+#: models/base.py:37
 msgid "Source"
 msgstr "منبع"
 
@@ -267,14 +258,6 @@ msgstr "فاصله سورس"
 msgid "Interval sources"
 msgstr "فاصله سورسها"
 
-#: models/base.py:257
-msgid "Log entry"
-msgstr "ورودی لاگ"
-
-#: models/base.py:258
-msgid "Log entries"
-msgstr "ورودیهای لاگ"
-
 #: models/email_sources.py:40
 msgid "Host"
 msgstr "هاست"
@@ -287,7 +270,9 @@ msgstr "SSL"
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
-msgstr "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 for IMAP over SSL."
+msgstr ""
+"Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
+"for IMAP over SSL."
 
 #: models/email_sources.py:44
 msgid "Port"
@@ -352,14 +337,18 @@ msgstr "ایمیل کردن سورسها"
 msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr "نوع Metadata موضوع \"%(metadata_type)s\" برای نوع سند معتبر نیست: %(document_type)s"
+msgstr ""
+"نوع Metadata موضوع \"%(metadata_type)s\" برای نوع سند معتبر نیست: "
+"%(document_type)s"
 
 #: models/email_sources.py:201
 #, python-format
 msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr "\"از\" نوع ابرداده \"%(metadata_type)s\" برای نوع سند معتبر نیست: %(document_type)s"
+msgstr ""
+"\"از\" نوع ابرداده \"%(metadata_type)s\" برای نوع سند معتبر نیست: "
+"%(document_type)s"
 
 #: models/email_sources.py:216
 msgid "IMAP Mailbox from which to check for messages."
@@ -382,9 +371,8 @@ msgstr ""
 #: models/email_sources.py:228
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
-"command per line. Use the commands specified in "
-"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
-"commands for your IMAP server."
+"command per line. Use the commands specified in https://tools.ietf.org/html/"
+"rfc2060.html#section-6.4.6 or the custom commands for your IMAP server."
 msgstr ""
 
 #: models/email_sources.py:232
@@ -407,11 +395,11 @@ msgstr ""
 msgid "Destination mailbox"
 msgstr ""
 
-#: models/email_sources.py:350
+#: models/email_sources.py:349
 msgid "Timeout"
 msgstr "اتمام وقت"
 
-#: models/email_sources.py:356 models/email_sources.py:357
+#: models/email_sources.py:355 models/email_sources.py:356
 msgid "POP email"
 msgstr "POP ایمیل"
 
@@ -427,7 +415,9 @@ msgstr "نام دستگاه"
 msgid ""
 "Selects the scan mode (e.g., lineart, monochrome, or color). If this option "
 "is not supported by your scanner, leave it blank."
-msgstr "حالت اسکن را انتخاب می کند (به عنوان مثال، خط، سیاه و سفید یا رنگ). اگر این گزینه توسط اسکنر شما پشتیبانی نمی شود، آن را خالی بگذارید."
+msgstr ""
+"حالت اسکن را انتخاب می کند (به عنوان مثال، خط، سیاه و سفید یا رنگ). اگر این "
+"گزینه توسط اسکنر شما پشتیبانی نمی شود، آن را خالی بگذارید."
 
 #: models/scanner_sources.py:39
 msgid "Mode"
@@ -438,7 +428,9 @@ msgid ""
 "Sets the resolution of the scanned image in DPI (dots per inch). Typical "
 "value is 200. If this option is not supported by your scanner, leave it "
 "blank."
-msgstr "وضوح تصویر اسکن شده را در DPI (نقطه در اینچ) تنظیم می کند. مقدار معمول 200 است. اگر این گزینه توسط اسکنر شما پشتیبانی نمی شود، آن را خالی بگذارید."
+msgstr ""
+"وضوح تصویر اسکن شده را در DPI (نقطه در اینچ) تنظیم می کند. مقدار معمول 200 "
+"است. اگر این گزینه توسط اسکنر شما پشتیبانی نمی شود، آن را خالی بگذارید."
 
 #: models/scanner_sources.py:46
 msgid "Resolution"
@@ -448,7 +440,9 @@ msgstr "وضوح"
 msgid ""
 "Selects the scan source (such as a document-feeder). If this option is not "
 "supported by your scanner, leave it blank."
-msgstr "منبع اسکن (مانند فیدر سند) را انتخاب می کند. اگر این گزینه توسط اسکنر شما پشتیبانی نمی شود، آن را خالی بگذارید."
+msgstr ""
+"منبع اسکن (مانند فیدر سند) را انتخاب می کند. اگر این گزینه توسط اسکنر شما "
+"پشتیبانی نمی شود، آن را خالی بگذارید."
 
 #: models/scanner_sources.py:52
 msgid "Paper source"
@@ -458,7 +452,9 @@ msgstr "منبع کاغذ"
 msgid ""
 "Selects the document feeder mode (simplex/duplex). If this option is not "
 "supported by your scanner, leave it blank."
-msgstr "حالت فیدر سند (simplex / duplex) را انتخاب می کند. اگر این گزینه توسط اسکنر شما پشتیبانی نمی شود، آن را خالی بگذارید."
+msgstr ""
+"حالت فیدر سند (simplex / duplex) را انتخاب می کند. اگر این گزینه توسط اسکنر "
+"شما پشتیبانی نمی شود، آن را خالی بگذارید."
 
 #: models/scanner_sources.py:59
 msgid "ADF mode"
@@ -483,7 +479,7 @@ msgstr ""
 msgid "Server side filesystem path."
 msgstr "محل قرارگیری برروی سیستم فایل سمت سرور"
 
-#: models/staging_folder_sources.py:40 models/watch_folder_sources.py:32
+#: models/staging_folder_sources.py:40 models/watch_folder_sources.py:33
 msgid "Folder path"
 msgstr "محل پرونده"
 
@@ -529,21 +525,21 @@ msgstr "خطای حذف فایل مرحله ای : %s"
 msgid "Unable get list of staging files: %s"
 msgstr "قادر به گرفتن لیست فایلهای مرحله ای نیست. %s"
 
-#: models/watch_folder_sources.py:31
+#: models/watch_folder_sources.py:32
 msgid "Server side filesystem path to scan for files."
 msgstr ""
 
-#: models/watch_folder_sources.py:36
+#: models/watch_folder_sources.py:37
 msgid ""
 "If checked, not only will the folder path be scanned for files but also its "
 "subdirectories."
 msgstr ""
 
-#: models/watch_folder_sources.py:39
+#: models/watch_folder_sources.py:40
 msgid "Include subdirectories?"
 msgstr ""
 
-#: models/watch_folder_sources.py:46
+#: models/watch_folder_sources.py:47
 msgid "Watch folders"
 msgstr "پرونده تحت نظر"
 
@@ -623,7 +619,7 @@ msgstr ""
 msgid "Staging folder files"
 msgstr ""
 
-#: tasks.py:48
+#: tasks.py:49
 #, python-format
 msgid "Error processing source: %s"
 msgstr "خطای پردازش منبع: %s"
@@ -656,7 +652,7 @@ msgstr "پاک کردن"
 msgid "Server responded with {{statusCode}} code."
 msgstr ""
 
-#: views.py:70
+#: views.py:69
 msgid ""
 "This will execute the source check code even if the source is not enabled. "
 "Sources that delete content after downloading will not do so while being "
@@ -664,31 +660,31 @@ msgid ""
 "successful test will clear the error log."
 msgstr ""
 
-#: views.py:76
+#: views.py:75
 #, python-format
 msgid "Trigger check for source \"%s\"?"
 msgstr "برای اطمینان از منبع \"%s\" تکرار کنید؟"
 
-#: views.py:88
+#: views.py:87
 msgid "Source check queued."
 msgstr "بررسی منبع در صف."
 
-#: views.py:102
+#: views.py:101
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "ایجاد سورس جدید از نوع %s."
 
-#: views.py:125
+#: views.py:124
 #, python-format
 msgid "Delete the source: %s?"
 msgstr "منبع را حذف کنید: %s؟"
 
-#: views.py:147
+#: views.py:146
 #, python-format
 msgid "Edit source: %s"
 msgstr "ویرایش اصل : %s"
 
-#: views.py:187
+#: views.py:186
 msgid ""
 "Sources provide the means to upload documents. Some sources like the "
 "webform, are interactive and require user input to operate. Others like the "
@@ -696,93 +692,82 @@ msgid ""
 "intervention."
 msgstr ""
 
-#: views.py:192
+#: views.py:191
 msgid "No sources available"
 msgstr ""
 
-#: views.py:207
-msgid ""
-"Any error produced during the usage of a source will be listed here to "
-"assist in debugging."
-msgstr ""
-
-#: views.py:210
-msgid "No log entries available"
-msgstr ""
-
-#: views.py:212
-#, python-format
-msgid "Log entries for source: %s"
-msgstr "ورود به سیستم برای منبع: %s"
-
-#: views.py:228
+#: views.py:205
 #, python-format
 msgid "Delete staging file \"%s\"?"
 msgstr ""
 
-#: views.py:280 wizards.py:152
+#: views.py:257 wizards.py:152
 msgid ""
-"No interactive document sources have been defined or none have been enabled,"
-" create one before proceeding."
-msgstr "هیچ منبع محاوره ای سند تعریف و یا فعال نشده، قبل از ادامه دادن یک منبع بسازید."
+"No interactive document sources have been defined or none have been enabled, "
+"create one before proceeding."
+msgstr ""
+"هیچ منبع محاوره ای سند تعریف و یا فعال نشده، قبل از ادامه دادن یک منبع "
+"بسازید."
 
-#: views.py:308 views.py:337 views.py:347
+#: views.py:285 views.py:314 views.py:324
 msgid "Document properties"
 msgstr "خواص سند"
 
-#: views.py:317
+#: views.py:294
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the"
-" necessary file system permissions for the folder."
+"the operating system user account being used for Mayan EDMS doesn't have the "
+"necessary file system permissions for the folder."
 msgstr ""
 
-#: views.py:324
+#: views.py:301
 msgid "No staging files available"
 msgstr ""
 
-#: views.py:327
+#: views.py:304
 msgid "Files in staging path"
 msgstr "فایلهای درون راه مرحله ای"
 
-#: views.py:338
+#: views.py:315
 msgid "Scan"
 msgstr "اسکن کردن"
 
-#: views.py:485
+#: views.py:462
 #, python-format
 msgid "Error executing document upload task; %(exception)s"
 msgstr ""
 
-#: views.py:495
+#: views.py:472
 msgid "New document queued for upload and will be available shortly."
 msgstr ""
 
-#: views.py:512
+#: views.py:489
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr ""
 
-#: views.py:574
+#: views.py:551
 #, python-format
-msgid "Unable to upload new versions for document \"%(document)s\". %(exception)s"
+msgid ""
+"Unable to upload new versions for document \"%(document)s\". %(exception)s"
 msgstr ""
 
-#: views.py:635
+#: views.py:612
 #, python-format
 msgid "Error executing document version upload task; %(exception)s"
 msgstr ""
 
-#: views.py:650
+#: views.py:627
 msgid "New document version queued for upload and will be available shortly."
 msgstr ""
 
-#: views.py:669
+#: views.py:646
 #, python-format
-msgid "Upload a new version for document \"%(document)s\" from source: %(source)s"
+msgid ""
+"Upload a new version for document \"%(document)s\" from source: %(source)s"
 msgstr ""
 
-#: views.py:672
+#: views.py:649
 msgid "Submit"
 msgstr "ارسال"
 
@@ -802,3 +787,21 @@ msgstr "مرحله بعدی"
 #: wizards.py:183
 msgid "Document upload wizard"
 msgstr "جادوگر بارگذاری سند"
+
+#~ msgid "Date time"
+#~ msgstr "زمان قرار"
+
+#~ msgid "Message"
+#~ msgstr "پیام"
+
+#~ msgid "Logs"
+#~ msgstr "سیاههها"
+
+#~ msgid "Log entry"
+#~ msgstr "ورودی لاگ"
+
+#~ msgid "Log entries"
+#~ msgstr "ورودیهای لاگ"
+
+#~ msgid "Log entries for source: %s"
+#~ msgstr "ورود به سیستم برای منبع: %s"

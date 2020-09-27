@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Māris Teivāns <maris.teivans@gmail.com>, 2019
@@ -9,19 +9,27 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-17 05:23+0000\n"
+"POT-Creation-Date: 2020-09-27 06:45+0000\n"
 "PO-Revision-Date: 2019-12-13 05:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
+"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/lv/)\n"
+"Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: lv\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
+"2);\n"
 
-#: apps.py:45 events.py:6 models.py:34 models.py:104 permissions.py:5
+#: apps.py:46 events.py:6 models.py:35 models.py:104 permissions.py:5
 msgid "Permissions"
 msgstr "Atļaujas"
+
+#: apps.py:99 models.py:142
+#, fuzzy
+#| msgid "Group name"
+msgid "Group count"
+msgstr "Grupas nosaukums"
 
 #: classes.py:85
 msgid "Insufficient permissions."
@@ -63,15 +71,15 @@ msgstr "Grupas"
 msgid "Role permissions"
 msgstr "Lomu atļaujas"
 
-#: models.py:25
+#: models.py:26
 msgid "Namespace"
 msgstr "Vārda vieta"
 
-#: models.py:26
+#: models.py:27
 msgid "Name"
 msgstr "Nosaukums"
 
-#: models.py:33
+#: models.py:34
 msgid "Permission"
 msgstr "Atļauja"
 
@@ -86,6 +94,12 @@ msgstr "Etiķete"
 #: models.py:114
 msgid "Role"
 msgstr "Loma"
+
+#: models.py:150
+#, fuzzy
+#| msgid "Permission"
+msgid "Permission count"
+msgstr "Atļauja"
 
 #: permissions.py:8
 msgid "Create roles"
@@ -111,11 +125,14 @@ msgstr "Grupas nosaukums"
 msgid ""
 "Comma separated list of groups primary keys to add to, or replace in this "
 "role."
-msgstr "Komatu atdalīts grupu saraksts, kas ir primārās atslēgas, lai pievienotu vai aizstātu šo lomu."
+msgstr ""
+"Komatu atdalīts grupu saraksts, kas ir primārās atslēgas, lai pievienotu vai "
+"aizstātu šo lomu."
 
 #: serializers.py:51
 msgid "Comma separated list of permission primary keys to grant to this role."
-msgstr "Komatu atdalītu atļauju primāro atslēgu saraksts, lai piešķirtu šai lomai."
+msgstr ""
+"Komatu atdalītu atļauju primāro atslēgu saraksts, lai piešķirtu šai lomai."
 
 #: serializers.py:88
 #, python-format
@@ -152,7 +169,9 @@ msgstr "Lomu grupas: %s"
 msgid ""
 "Add groups to be part of a role. They will inherit the role's permissions "
 "and access controls."
-msgstr "Pievienojiet grupas, lai kļūtu par lomu. Viņi mantos lomu atļaujas un piekļuves kontroles."
+msgstr ""
+"Pievienojiet grupas, lai kļūtu par lomu. Viņi mantos lomu atļaujas un "
+"piekļuves kontroles."
 
 #: views.py:107
 msgid "Available permissions"
@@ -165,7 +184,8 @@ msgstr "Piešķirtās atļaujas"
 #: views.py:143
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
-msgstr "Šeit piešķirtās atļaujas attieksies uz visu sistēmu un visiem objektiem."
+msgstr ""
+"Šeit piešķirtās atļaujas attieksies uz visu sistēmu un visiem objektiem."
 
 #: views.py:146
 #, python-format
@@ -178,7 +198,11 @@ msgid ""
 "role permissions for the entire system. Roles can also part of access "
 "controls lists. Access controls list are permissions granted to a role for "
 "specific objects which its group members inherit."
-msgstr "Lomas ir autorizācijas vienības. Tajās ir lietotāju grupas, kas pārņem visas sistēmas lomu atļaujas. Lomas var iekļaut arī piekļuves kontroles sarakstos. Piekļuves kontroles saraksts ir atļaujas, kas piešķirtas konkrētu objektu lomai, ko tās grupas locekļi pārmanto."
+msgstr ""
+"Lomas ir autorizācijas vienības. Tajās ir lietotāju grupas, kas pārņem visas "
+"sistēmas lomu atļaujas. Lomas var iekļaut arī piekļuves kontroles sarakstos. "
+"Piekļuves kontroles saraksts ir atļaujas, kas piešķirtas konkrētu objektu "
+"lomai, ko tās grupas locekļi pārmanto."
 
 #: views.py:170
 msgid "There are no roles"

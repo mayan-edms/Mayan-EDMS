@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Lyudmil Antonov <lantonov.here@gmail.com>, 2019-2020
@@ -9,17 +9,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-17 05:22+0000\n"
+"POT-Creation-Date: 2020-09-27 06:45+0000\n"
 "PO-Revision-Date: 2020-03-28 14:44+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
-"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
+"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/bg/)\n"
+"Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:22 links.py:42
+#: apps.py:23 classes.py:142 links.py:26
 msgid "ACLs"
 msgstr "ACL"
 
@@ -35,19 +36,19 @@ msgstr "Новосъздадени ACL"
 msgid "ACL edited"
 msgstr "Редактирани ACL"
 
-#: forms.py:13 models.py:46 views.py:67
+#: forms.py:13 models.py:44 views.py:67
 msgid "Role"
 msgstr "Роля"
 
-#: links.py:32
+#: links.py:15
 msgid "New ACL"
 msgstr "Нов ACL"
 
-#: links.py:37
+#: links.py:20
 msgid "Delete"
 msgstr "Изтрийте"
 
-#: links.py:47 models.py:42 workflow_actions.py:46 workflow_actions.py:161
+#: links.py:31 models.py:40 workflow_actions.py:46 workflow_actions.py:161
 msgid "Permissions"
 msgstr "Разрешения"
 
@@ -61,15 +62,15 @@ msgstr "Обект \"%s\" не е модел и не може да бъде пр
 msgid "Insufficient access for: %s"
 msgstr "Недостатъчен достъп за: %s"
 
-#: models.py:54
+#: models.py:52
 msgid "Access entry"
 msgstr "Запис на достъп"
 
-#: models.py:55
+#: models.py:53
 msgid "Access entries"
 msgstr "Записи на достъп"
 
-#: models.py:59
+#: models.py:57
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\""
 msgstr "Роля \"%(role)s\" разрешение за \"%(object)s\""
@@ -91,11 +92,14 @@ msgstr "API URL посочва списък с разрешения за кон�
 msgid ""
 "API URL pointing to a permission in relation to the access control list to "
 "which it is attached. This URL is different than the canonical workflow URL."
-msgstr "API URL посочва разрешение във връзка с контролен списък на достъп, към който е прикачено. Този URL е различен от основния URL на работния поток."
+msgstr ""
+"API URL посочва разрешение във връзка с контролен списък на достъп, към "
+"който е прикачено. Този URL е различен от основния URL на работния поток."
 
 #: serializers.py:89
 msgid "Primary key of the new permission to grant to the access control list."
-msgstr "Основен ключ на новото разрешение за включване в контролния списък на достъп"
+msgstr ""
+"Основен ключ на новото разрешение за включване в контролния списък на достъп"
 
 #: serializers.py:113 serializers.py:189
 #, python-format
@@ -106,18 +110,24 @@ msgstr "Няма такова разрешение: %s"
 msgid ""
 "Comma separated list of permission primary keys to grant to this access "
 "control list."
-msgstr "Разделен със запетаи списък на основни ключове за разрешение в контролен списък на разрешения"
+msgstr ""
+"Разделен със запетаи списък на основни ключове за разрешение в контролен "
+"списък на разрешения"
 
 #: serializers.py:140
 msgid "Primary keys of the role to which this access control list binds to."
-msgstr "Основни ключове на ролята, към която е свързан този контролен списък на достъп"
+msgstr ""
+"Основни ключове на ролята, към която е свързан този контролен списък на "
+"достъп"
 
 #: views.py:40
 #, python-format
 msgid ""
 "An ACL for \"%(object)s\" using role \"%(role)s\" already exists. Edit that "
 "ACL entry instead."
-msgstr "ACL за „%(object)s“, използващ роля „%(role)s“, вече съществува. Редактирайте този ACL запис вместо това."
+msgstr ""
+"ACL за „%(object)s“, използващ роля „%(role)s“, вече съществува. "
+"Редактирайте този ACL запис вместо това."
 
 #: views.py:53
 #, python-format
@@ -138,7 +148,10 @@ msgid ""
 "ACL stands for Access Control List and is a precise method to control user "
 "access to objects in the system. ACLs allow granting a permission to a role "
 "but only for a specific object or set of objects."
-msgstr "ACL означава Списък за контрол на достъпа и е точен метод за контрол на достъпа на потребителите до обекти в системата. ACL позволява предоставяне на разрешение за роля, но само за конкретен обект или набор от обекти."
+msgstr ""
+"ACL означава Списък за контрол на достъпа и е точен метод за контрол на "
+"достъпа на потребителите до обекти в системата. ACL позволява предоставяне "
+"на разрешение за роля, но само за конкретен обект или набор от обекти."
 
 #: views.py:143
 #, python-format
@@ -164,7 +177,11 @@ msgid ""
 "to the role and can't be removed from this view. Inherited permissions need "
 "to be removed from the parent object's ACL or from them role via the Setup "
 "menu."
-msgstr "Отменени разрешения се наследяват от родителския обект или се дават направо на потребител с определена роля и не могат да бъдат премахнати от този изглед. Наследените разрешения трябва да бъдат премахнати от ACL на родителския обект или от определената роля чрез меню Настройки."
+msgstr ""
+"Отменени разрешения се наследяват от родителския обект или се дават направо "
+"на потребител с определена роля и не могат да бъдат премахнати от този "
+"изглед. Наследените разрешения трябва да бъдат премахнати от ACL на "
+"родителския обект или от определената роля чрез меню Настройки."
 
 #: workflow_actions.py:23
 msgid "Object type"
@@ -179,8 +196,7 @@ msgid "Object ID"
 msgstr "Идентификатор на обекта"
 
 #: workflow_actions.py:35
-msgid ""
-"Numeric identifier of the object for which the access will be modified."
+msgid "Numeric identifier of the object for which the access will be modified."
 msgstr "Числов показател на обекта, достъпа на който ще бъде променен."
 
 #: workflow_actions.py:40 workflow_actions.py:155

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # 295005be79b88987cac803400975dbae_87f6b64 <412e4e8df9c702a35ac89972be5f12ff_27148>, 2012
@@ -10,17 +10,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-17 05:23+0000\n"
+"POT-Creation-Date: 2020-09-27 06:46+0000\n"
 "PO-Revision-Date: 2019-10-17 12:55+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
-"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
+"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/bg/)\n"
+"Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:80 events.py:6 permissions.py:6
+#: apps.py:79 events.py:6 permissions.py:6
 msgid "User management"
 msgstr "Управление на потребители"
 
@@ -28,7 +29,8 @@ msgstr "Управление на потребители"
 msgid "Group"
 msgstr "Група"
 
-#: apps.py:101 links.py:39 links.py:50 links.py:73 search.py:34 views.py:120
+#: apps.py:101 apps.py:114 links.py:39 links.py:50 links.py:73 search.py:34
+#: views.py:120
 msgid "Groups"
 msgstr "Групи"
 
@@ -40,39 +42,43 @@ msgstr "Име"
 msgid "User"
 msgstr "Потребител"
 
-#: apps.py:109 apps.py:174 links.py:45 links.py:78 links.py:94 views.py:305
+#: apps.py:109 apps.py:194 links.py:45 links.py:78 links.py:94 views.py:305
 msgid "Users"
 msgstr "Потребители"
 
-#: apps.py:112
-msgid "Username"
-msgstr "Име на потребител"
+#: apps.py:112 search.py:31
+msgid "Email"
+msgstr "Електронна поща"
 
 #: apps.py:113 search.py:28
 msgid "First name"
 msgstr "Малко име"
 
-#: apps.py:114 search.py:37
-msgid "Last name"
-msgstr "Фамилия"
-
-#: apps.py:115 search.py:31
-msgid "Email"
-msgstr "Електронна поща"
-
-#: apps.py:116
+#: apps.py:115
 msgid "Is active?"
 msgstr "Активен ли е?"
 
-#: apps.py:119 apps.py:123
+#: apps.py:116 search.py:37
+msgid "Last name"
+msgstr "Фамилия"
+
+#: apps.py:117
+msgid "Password"
+msgstr ""
+
+#: apps.py:118
+msgid "Username"
+msgstr "Име на потребител"
+
+#: apps.py:121
 msgid "Has usable password?"
 msgstr "Има ли използваема парола?"
 
-#: apps.py:138
+#: apps.py:136
 msgid "All the groups."
 msgstr "Всички групи."
 
-#: apps.py:142
+#: apps.py:140
 msgid "All the users."
 msgstr "Всички потребители."
 
@@ -186,7 +192,9 @@ msgstr "потребителско име"
 
 #: serializers.py:32
 msgid "Comma separated list of group primary keys to assign this user to."
-msgstr "Разделен със запетаи списък на групови основни ключове за усвояване от този потребител."
+msgstr ""
+"Разделен със запетаи списък на групови основни ключове за усвояване от този "
+"потребител."
 
 #: serializers.py:62
 msgid "List of group primary keys to which to add the user."
@@ -219,7 +227,11 @@ msgid ""
 "User groups are organizational units. They should mirror the organizational "
 "units of your organization. Groups can't be used for access control. Use "
 "roles for permissions and access control, add groups to them."
-msgstr "Потребителските групи са организационни звена. Те трябва да отразяват организационните звена на вашата организация. Групите не могат да се използват за контрол на достъпа. Използвайте роли за разрешения и контрол на достъпа, добавете групи към тях."
+msgstr ""
+"Потребителските групи са организационни звена. Те трябва да отразяват "
+"организационните звена на вашата организация. Групите не могат да се "
+"използват за контрол на достъпа. Използвайте роли за разрешения и контрол на "
+"достъпа, добавете групи към тях."
 
 #: views.py:119
 msgid "There are no user groups"
@@ -263,7 +275,9 @@ msgstr "Изтриване на потребителя: %s"
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr "Изтриване на потребители от супер потребител и служител не е разрешено. Използвайте администраторския модул за тези случаи."
+msgstr ""
+"Изтриване на потребители от супер потребител и служител не е разрешено. "
+"Използвайте администраторския модул за тези случаи."
 
 #: views.py:214
 #, python-format
@@ -304,7 +318,10 @@ msgstr "Групи на потребителя: %s"
 msgid ""
 "User accounts can be create from this view. After creating a user account "
 "you will prompted to set a password for it. "
-msgstr "Потребителски акаунти могат да бъдат създадени от този изглед. След създаването на потребителски акаунт ще бъдете подканени да зададете парола за него."
+msgstr ""
+"Потребителски акаунти могат да бъдат създадени от този изглед. След "
+"създаването на потребителски акаунт ще бъдете подканени да зададете парола "
+"за него."
 
 #: views.py:304
 msgid "There are no user accounts"

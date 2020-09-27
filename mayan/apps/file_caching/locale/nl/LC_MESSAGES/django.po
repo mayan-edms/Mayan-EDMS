@@ -2,23 +2,23 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Roberto Rosario, 2020
 # j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-17 05:23+0000\n"
+"POT-Creation-Date: 2020-09-27 06:45+0000\n"
 "PO-Revision-Date: 2019-12-03 05:23+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:28 events.py:6 permissions.py:5
@@ -37,79 +37,83 @@ msgstr "Cache bewerkt"
 msgid "Cache purged"
 msgstr "Cache geleegd"
 
-#: links.py:10
+#: links.py:19
 msgid "File caches"
 msgstr "Bestandscaches"
 
-#: links.py:14 links.py:18
+#: links.py:24 links.py:28
 msgid "Purge cache"
 msgstr "Cache legen"
 
-#: models.py:29
+#: models.py:28
 msgid "Internal name of the defined storage for this cache."
 msgstr "Interne naam van de vastgestelde opslag voor deze cache."
 
-#: models.py:30
+#: models.py:29
 msgid "Defined storage name"
 msgstr "Vastgestelde naam opslag"
 
-#: models.py:33
+#: models.py:32
 msgid "Maximum size of the cache in bytes."
 msgstr "Maximale omvang van de cache in bytes."
 
-#: models.py:35 models.py:54
+#: models.py:34 models.py:53
 msgid "Maximum size"
 msgstr "Maximale omvang"
 
-#: models.py:39 models.py:123
+#: models.py:38 models.py:136
 msgid "Cache"
 msgstr "Cache"
 
-#: models.py:40
+#: models.py:39
 msgid "Caches"
 msgstr "Caches"
 
-#: models.py:52
+#: models.py:51
 msgid "Size at which the cache will start deleting old entries."
 msgstr "Omvang waarbij de cache begint met verwijderen van oude bestanddelen."
 
-#: models.py:74
+#: models.py:60
+msgid "Unknown"
+msgstr ""
+
+#: models.py:78
 msgid "Current size"
 msgstr "Huidige omvang"
 
-#: models.py:75
+#: models.py:79
 msgid "Current size of the cache."
 msgstr "Huidige omvang van de cache."
 
-#: models.py:126
+#: models.py:139
 msgid "Name"
 msgstr "Naam"
 
-#: models.py:131 models.py:204
+#: models.py:144 models.py:217
 msgid "Cache partition"
 msgstr "Partitie cachen"
 
-#: models.py:132
+#: models.py:145
 msgid "Cache partitions"
 msgstr "Partities cachen"
 
-#: models.py:207
+#: models.py:220
 msgid "Date time"
 msgstr "Datum en tijd"
 
-#: models.py:209
+#: models.py:222
 msgid "Filename"
 msgstr "Bestandsnaam"
 
-#: models.py:211
+#: models.py:224
 msgid "File size"
 msgstr "Bestandgrootte"
 
-#: models.py:219
+#: models.py:232
 msgid "Cache partition file"
 msgstr "Partitiebestand cachen"
 
-#: models.py:220
+#: models.py:233
 msgid "Cache partition files"
 msgstr "Partitiebestanden cachen"
 

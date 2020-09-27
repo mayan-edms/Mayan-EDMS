@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
@@ -10,17 +10,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-17 05:23+0000\n"
+"POT-Creation-Date: 2020-09-27 06:45+0000\n"
 "PO-Revision-Date: 2020-05-10 20:30+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
-"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
+"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/"
+"nl/)\n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:27 links.py:47 links.py:52 links.py:57 permissions.py:5 views.py:34
+#: apps.py:27 links.py:30 links.py:35 links.py:40 permissions.py:5 views.py:34
 msgid "Events"
 msgstr "Evenementen"
 
@@ -56,7 +57,7 @@ msgstr "Label"
 msgid "Seen"
 msgstr "Gezien"
 
-#: classes.py:144
+#: classes.py:142
 #, python-format
 msgid "Unknown or obsolete event type: %s"
 msgstr "Onbekend of overbodig gebeurtenistype: %s"
@@ -77,71 +78,71 @@ msgstr "Geabonneerd"
 msgid "System"
 msgstr "Systeem"
 
-#: links.py:43
+#: links.py:26
 msgid "My events"
 msgstr "Mijn gebeurtenissen"
 
-#: links.py:61 models.py:65 views.py:78
+#: links.py:44 models.py:63 views.py:78
 msgid "Event subscriptions"
 msgstr "Gebeurtenis abonnement"
 
-#: links.py:65
+#: links.py:48
 msgid "Mark as seen"
 msgstr "Markeren als gezien"
 
-#: links.py:69
+#: links.py:52
 msgid "Mark all as seen"
 msgstr "Alle markeren als gezien"
 
-#: links.py:74
+#: links.py:57
 msgid "Subscriptions"
 msgstr "Abonnementen"
 
-#: models.py:23
+#: models.py:22
 msgid "Name"
 msgstr "Naam"
 
-#: models.py:27
+#: models.py:26
 msgid "Stored event type"
 msgstr "Opgeslagen gebeurtenistype"
 
-#: models.py:28
+#: models.py:27
 msgid "Stored event types"
 msgstr "Opgeslagen gebeurtenistypes"
 
-#: models.py:54 models.py:81 models.py:113
+#: models.py:52 models.py:78 models.py:109
 msgid "User"
 msgstr "Gebruiker"
 
-#: models.py:58 models.py:117
+#: models.py:56 models.py:113
 msgid "Event type"
 msgstr "Evenementsoort"
 
-#: models.py:64
+#: models.py:62
 msgid "Event subscription"
 msgstr "Gebeurtenis abonnement"
 
-#: models.py:85
+#: models.py:82
 msgid "Action"
 msgstr "Actie"
 
-#: models.py:87
+#: models.py:84
 msgid "Read"
 msgstr "Lezen"
 
-#: models.py:93
+#: models.py:90
 msgid "Notification"
 msgstr "Melding"
 
-#: models.py:94 views.py:117
+#: models.py:91 views.py:117
 msgid "Notifications"
 msgstr "Meldingen"
 
-#: models.py:123
+#: models.py:119
 msgid "Object event subscription"
 msgstr "Object gebeurtenis abonnement"
 
-#: models.py:124
+#: models.py:120
 msgid "Object event subscriptions"
 msgstr "Object gebeurtenis abonnementen"
 
@@ -160,7 +161,8 @@ msgstr "Gebeurtenis abonnementen met succes bijgewerkt"
 
 #: views.py:112
 msgid "Subscribe to global or object events to receive notifications."
-msgstr "Abonneren op algemene of objectgebeurtenissen om notificaties te ontvangen."
+msgstr ""
+"Abonneren op algemene of objectgebeurtenissen om notificaties te ontvangen."
 
 #: views.py:115
 msgid "There are no notifications"
@@ -170,7 +172,9 @@ msgstr "Er zijn geen meldingen"
 msgid ""
 "Events are actions that have been performed to this object or using this "
 "object."
-msgstr "Gebeurtenissen zijn acties die zijn uitgevoerd op dit object of door gebruik van dit object."
+msgstr ""
+"Gebeurtenissen zijn acties die zijn uitgevoerd op dit object of door gebruik "
+"van dit object."
 
 #: views.py:167
 msgid "There are no events for this object"

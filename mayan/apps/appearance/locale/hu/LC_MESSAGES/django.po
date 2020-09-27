@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # molnars <szabolcs.molnar@gmail.com>, 2017
@@ -9,17 +9,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-17 05:22+0000\n"
+"POT-Creation-Date: 2020-09-27 06:45+0000\n"
 "PO-Revision-Date: 2020-04-08 04:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/language/hu/)\n"
+"Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/hu/)\n"
+"Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:11 settings.py:7
+#: apps.py:59 events.py:5 settings.py:7
 msgid "Appearance"
 msgstr "Kinézet"
 
@@ -71,6 +72,94 @@ msgstr ""
 msgid "URI.js"
 msgstr ""
 
+#: events.py:8
+msgid "Theme created"
+msgstr ""
+
+#: events.py:11
+msgid "Theme edited"
+msgstr ""
+
+#: links.py:15
+msgid "Theme settings"
+msgstr ""
+
+#: links.py:20
+msgid "Edit theme settings"
+msgstr ""
+
+#: links.py:27 views.py:47
+msgid "Create new theme"
+msgstr ""
+
+#: links.py:33
+msgid "Delete"
+msgstr ""
+
+#: links.py:39
+msgid "Edit"
+msgstr ""
+
+#: links.py:43 links.py:47 models.py:25 views.py:111
+msgid "Themes"
+msgstr ""
+
+#: models.py:12
+msgid "A short text describing the theme."
+msgstr ""
+
+#: models.py:13
+msgid "Label"
+msgstr ""
+
+#: models.py:17
+msgid ""
+"The CSS stylesheet to change the appearance of the different user interface "
+"elements."
+msgstr ""
+
+#: models.py:19
+msgid "Stylesheet"
+msgstr ""
+
+#: models.py:24 models.py:60
+msgid "Theme"
+msgstr ""
+
+#: models.py:56
+msgid "User"
+msgstr ""
+
+#: models.py:64
+msgid "User theme setting"
+msgstr ""
+
+#: models.py:65
+msgid "User theme settings"
+msgstr ""
+
+#: permissions.py:5
+#, fuzzy
+#| msgid "Appearance"
+msgid "Apparance"
+msgstr "Kinézet"
+
+#: permissions.py:8
+msgid "Create new themes"
+msgstr ""
+
+#: permissions.py:11
+msgid "Delete themes"
+msgstr ""
+
+#: permissions.py:14
+msgid "Edit themes"
+msgstr ""
+
+#: permissions.py:17
+msgid "View existing themes"
+msgstr ""
+
 #: settings.py:12
 msgid "Maximum number of characters that will be displayed as the view title."
 msgstr ""
@@ -115,8 +204,7 @@ msgid ""
 "permission to access it."
 msgstr ""
 
-#: templates/500.html:5 templates/500.html:30
-#: templates/appearance/root.html:58
+#: templates/500.html:5 templates/500.html:30 templates/appearance/root.html:58
 msgid "Server error"
 msgstr ""
 
@@ -141,7 +229,9 @@ msgid "Contact your system administrator."
 msgstr ""
 
 #: templates/500.html:47
-msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
+msgid ""
+"Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL"
+"\"."
 msgstr ""
 
 #: templates/500.html:48
@@ -178,7 +268,9 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                %(project_title)s is a free and open-source software brought to you with <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
+"                %(project_title)s is a free and open-source software brought "
+"to you with <i class=\"fa fa-heart text-danger\" style=\"transform: "
+"rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
 "            "
 msgstr ""
 
@@ -186,7 +278,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                It takes great effort to make %(project_title)s as feature-rich as it is.\n"
+"                It takes great effort to make %(project_title)s as feature-"
+"rich as it is.\n"
 "            "
 msgstr ""
 
@@ -194,7 +287,10 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                If you use %(project_title)s please <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">make a donation %(icon_social_paypal)s</a>\n"
+"                If you use %(project_title)s please <a class=\"new_window\" "
+"href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-"
+"xclick&hosted_button_id=3PXN336XFXQNN\">make a donation "
+"%(icon_social_paypal)s</a>\n"
 "            "
 msgstr ""
 
@@ -202,7 +298,11 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                The complete list of changes is available via the <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> or the short version <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
+"                The complete list of changes is available via the <a class="
+"\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html"
+"\">Release notes %(icon_documentation)s</a> or the short version <a class="
+"\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/"
+"HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
 "            "
 msgstr ""
 
@@ -210,7 +310,8 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                For questions check the <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
+"                For questions check the <a class=\"new_window\" href="
+"\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
 "            "
 msgstr ""
 
@@ -218,7 +319,11 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                If you found a bug or have a feature idea, visit the <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository %(icon_source_code)s</a>.\n"
+"                If you found a bug or have a feature idea, visit the <a "
+"class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum "
+"%(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href="
+"\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository "
+"%(icon_source_code)s</a>.\n"
 "            "
 msgstr ""
 
@@ -226,25 +331,26 @@ msgstr ""
 #, python-format
 msgid ""
 "\n"
-"                Spread the word. Talk to your friends and colleagues about how awesome %(project_title)s is!\n"
+"                Spread the word. Talk to your friends and colleagues about "
+"how awesome %(project_title)s is!\n"
 "            "
 msgstr ""
 
-#: templates/appearance/base.html:38 templates/appearance/base.html:62
+#: templates/appearance/base.html:43 templates/appearance/base.html:67
 msgid "Warning"
 msgstr ""
 
-#: templates/appearance/base.html:52
+#: templates/appearance/base.html:57
 msgid "Click here to fix this."
 msgstr ""
 
-#: templates/appearance/base.html:62
+#: templates/appearance/base.html:67
 msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."
 msgstr ""
 
-#: templates/appearance/base.html:70
+#: templates/appearance/base.html:75
 #, python-format
 msgid ""
 "\n"
@@ -252,16 +358,16 @@ msgid ""
 "                                    "
 msgstr ""
 
-#: templates/appearance/base.html:73
+#: templates/appearance/base.html:78
 msgid "Click here when finished"
 msgstr ""
 
-#: templates/appearance/base.html:87
+#: templates/appearance/base.html:92
 #: templates/appearance/generic_list_items_subtemplate.html:66
 msgid "Actions"
 msgstr "Műveletek"
 
-#: templates/appearance/base.html:89
+#: templates/appearance/base.html:94
 #: templates/appearance/generic_list_items_subtemplate.html:68
 #: templates/appearance/list_toolbar.html:67
 msgid "Toggle Dropdown"
@@ -373,6 +479,33 @@ msgstr ""
 msgid "Check you network connection and try again in a few moments."
 msgstr ""
 
-#: templatetags/appearance_tags.py:42
+#: templatetags/appearance_tags.py:44
 msgid "None"
 msgstr "Semmi"
+
+#: views.py:29
+msgid "Current user theme settings details"
+msgstr ""
+
+#: views.py:35
+msgid "Edit current user theme settings details"
+msgstr ""
+
+#: views.py:69
+#, python-format
+msgid "Delete theme: %s"
+msgstr ""
+
+#: views.py:85
+#, python-format
+msgid "Edit theme: %s"
+msgstr ""
+
+#: views.py:105
+msgid ""
+"Themes allow changing the visual appearance without requiring code changes."
+msgstr ""
+
+#: views.py:109
+msgid "There are no themes"
+msgstr ""

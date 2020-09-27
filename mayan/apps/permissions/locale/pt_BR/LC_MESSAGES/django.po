@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
@@ -14,19 +14,26 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-17 05:23+0000\n"
+"POT-Creation-Date: 2020-09-27 06:45+0000\n"
 "PO-Revision-Date: 2020-01-06 18:40+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:45 events.py:6 models.py:34 models.py:104 permissions.py:5
+#: apps.py:46 events.py:6 models.py:35 models.py:104 permissions.py:5
 msgid "Permissions"
 msgstr "Permissões"
+
+#: apps.py:99 models.py:142
+#, fuzzy
+#| msgid "Group name"
+msgid "Group count"
+msgstr "Nome do grupo"
 
 #: classes.py:85
 msgid "Insufficient permissions."
@@ -68,15 +75,15 @@ msgstr "Grupos"
 msgid "Role permissions"
 msgstr "Permissões do papel"
 
-#: models.py:25
+#: models.py:26
 msgid "Namespace"
 msgstr "Namespace"
 
-#: models.py:26
+#: models.py:27
 msgid "Name"
 msgstr "Nome"
 
-#: models.py:33
+#: models.py:34
 msgid "Permission"
 msgstr "Permissão"
 
@@ -91,6 +98,12 @@ msgstr "Rótulo"
 #: models.py:114
 msgid "Role"
 msgstr "Papel"
+
+#: models.py:150
+#, fuzzy
+#| msgid "Permission"
+msgid "Permission count"
+msgstr "Permissão"
 
 #: permissions.py:8
 msgid "Create roles"
@@ -116,11 +129,15 @@ msgstr "Nome do grupo"
 msgid ""
 "Comma separated list of groups primary keys to add to, or replace in this "
 "role."
-msgstr "Lista separada por vírgulas de chaves primárias de grupo para adicionar ou substituir neste papel."
+msgstr ""
+"Lista separada por vírgulas de chaves primárias de grupo para adicionar ou "
+"substituir neste papel."
 
 #: serializers.py:51
 msgid "Comma separated list of permission primary keys to grant to this role."
-msgstr "Lista separada por vírgulas de chaves primárias de permissão para conceder a este papel."
+msgstr ""
+"Lista separada por vírgulas de chaves primárias de permissão para conceder a "
+"este papel."
 
 #: serializers.py:88
 #, python-format
@@ -157,7 +174,9 @@ msgstr "Grupos do papel: %s"
 msgid ""
 "Add groups to be part of a role. They will inherit the role's permissions "
 "and access controls."
-msgstr "Adicione grupos para que façam parte de um papel. Eles irão herdar as permissões do papel e os controles de acesso."
+msgstr ""
+"Adicione grupos para que façam parte de um papel. Eles irão herdar as "
+"permissões do papel e os controles de acesso."
 
 #: views.py:107
 msgid "Available permissions"
@@ -170,7 +189,9 @@ msgstr "Permissões concedidas"
 #: views.py:143
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
-msgstr "Permissões concedidas aqui serão aplicadas em todo o sistema e em todos os objetos."
+msgstr ""
+"Permissões concedidas aqui serão aplicadas em todo o sistema e em todos os "
+"objetos."
 
 #: views.py:146
 #, python-format
@@ -183,7 +204,12 @@ msgid ""
 "role permissions for the entire system. Roles can also part of access "
 "controls lists. Access controls list are permissions granted to a role for "
 "specific objects which its group members inherit."
-msgstr "Papéis são unidades de autorização. Eles contém grupos de usuários que herdam suas permissões de papel para todo sistema. Papeis também podem ser parte de listas de controle de acesso (ACLs). Listas de controle de acesso são permissões concedidas a um papel para objetos específicos que seus membros de grupo herdam."
+msgstr ""
+"Papéis são unidades de autorização. Eles contém grupos de usuários que "
+"herdam suas permissões de papel para todo sistema. Papeis também podem ser "
+"parte de listas de controle de acesso (ACLs). Listas de controle de acesso "
+"são permissões concedidas a um papel para objetos específicos que seus "
+"membros de grupo herdam."
 
 #: views.py:170
 msgid "There are no roles"

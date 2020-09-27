@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-17 05:23+0000\n"
+"POT-Creation-Date: 2020-09-27 06:45+0000\n"
 "PO-Revision-Date: 2020-03-28 07:24+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:11 settings.py:7
+#: apps.py:11 settings.py:9
 msgid "Storage"
 msgstr ""
 
-#: classes.py:81 classes.py:102
+#: classes.py:82 classes.py:103
 #, python-format
 msgid ""
 "Unable to initialize storage: %(name)s. Check the storage backend dotted "
@@ -57,10 +57,48 @@ msgstr ""
 msgid "Name of the storage to process."
 msgstr ""
 
-#: settings.py:12
+#: models.py:23
+msgid "File"
+msgstr ""
+
+#: models.py:25
+msgid "Filename"
+msgstr ""
+
+#: models.py:27
+msgid "Date time"
+msgstr ""
+
+#: models.py:31
+msgid "Shared uploaded file"
+msgstr ""
+
+#: models.py:32 storages.py:19
+msgid "Shared uploaded files"
+msgstr ""
+
+#: queues.py:11
+msgid "Storage periodic"
+msgstr ""
+
+#: queues.py:16
+msgid "Delete stale uploads"
+msgstr ""
+
+#: settings.py:14
+msgid "A storage backend that all workers can use to share files."
+msgstr ""
+
+#: settings.py:23
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
 msgstr ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
+
+#: storages.py:12
+msgid ""
+"Unable to initialize the shared uploaded file storage. Check the settings {} "
+"and {} for formatting errors."
+msgstr ""

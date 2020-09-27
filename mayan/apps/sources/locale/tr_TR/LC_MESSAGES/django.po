@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Nurgül Özkan <nurgulozkan@hotmail.com>, 2017
@@ -10,51 +10,47 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-17 05:23+0000\n"
+"POT-Creation-Date: 2020-09-27 06:45+0000\n"
 "PO-Revision-Date: 2020-05-25 06:18+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
+"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/tr_TR/)\n"
+"Language: tr_TR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:43 links.py:56 models/base.py:38 queues.py:7 settings.py:11
-#: views.py:193
+#: apps.py:48 links.py:56 models/base.py:38 queues.py:7 settings.py:11
+#: views.py:192
 msgid "Sources"
 msgstr "Kaynaklar"
 
-#: apps.py:61
+#: apps.py:71
 msgid "Create a document source"
 msgstr "Belge kaynağı oluştur"
 
-#: apps.py:63
+#: apps.py:73
 msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
-msgstr "Belge kaynakları, yeni belgelerin JBM EDMS'e gönderilme şeklidir, bir tarayıcıdan belge yükleyebilmek için en az bir web formu kaynağı oluşturmalısınız."
+msgstr ""
+"Belge kaynakları, yeni belgelerin JBM EDMS'e gönderilme şeklidir, bir "
+"tarayıcıdan belge yükleyebilmek için en az bir web formu kaynağı "
+"oluşturmalısınız."
 
-#: apps.py:76
+#: apps.py:86
 msgid "Type"
 msgstr "Tür"
 
-#: apps.py:87
+#: apps.py:97
 msgid "Created"
 msgstr "Oluşturuldu"
 
-#: apps.py:93
+#: apps.py:103
 msgid "Thumbnail"
 msgstr "Küçük Resim"
-
-#: apps.py:101 models/base.py:248
-msgid "Date time"
-msgstr "Tarih saat"
-
-#: apps.py:106 models/base.py:251
-msgid "Message"
-msgstr "Mesaj"
 
 #: dependencies.py:11
 msgid ""
@@ -78,7 +74,7 @@ msgstr "Sıkıştırılmış dosyaları genişlet"
 msgid "Upload a compressed file's contained files as individual documents."
 msgstr ""
 
-#: forms.py:63 views.py:227
+#: forms.py:63 views.py:204
 msgid "Staging file"
 msgstr "Hazırlama dosyası"
 
@@ -134,11 +130,7 @@ msgstr "Belge kaynakları"
 msgid "Upload new version"
 msgstr "Yeni sürümü yükle"
 
-#: links.py:127
-msgid "Logs"
-msgstr "İzleme Kayıtları"
-
-#: links.py:133
+#: links.py:128
 msgid "Check now"
 msgstr "Şimdi kontrol et"
 
@@ -194,7 +186,7 @@ msgstr "Web formu"
 msgid "Staging folder"
 msgstr "Hazırlama klasörü"
 
-#: literals.py:64 models/watch_folder_sources.py:45
+#: literals.py:64 models/watch_folder_sources.py:46
 msgid "Watch folder"
 msgstr "İzleme Klasörü"
 
@@ -218,7 +210,7 @@ msgstr "Etiket"
 msgid "Enabled"
 msgstr "Etkin"
 
-#: models/base.py:37 models/base.py:245
+#: models/base.py:37
 msgid "Source"
 msgstr "Kaynak"
 
@@ -267,14 +259,6 @@ msgstr "Aralık kaynağı"
 msgid "Interval sources"
 msgstr "Aralık kaynakları"
 
-#: models/base.py:257
-msgid "Log entry"
-msgstr "Kayıt girişi"
-
-#: models/base.py:258
-msgid "Log entries"
-msgstr "Kayıt girdileri"
-
 #: models/email_sources.py:40
 msgid "Host"
 msgstr "Sunucu"
@@ -287,7 +271,9 @@ msgstr "SSL"
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
-msgstr "Tipik seçimler POP3 için 110, SSL üzerinden POP3 için 995, IMAP için 143, SSL üzerinden IMAP için 993'tür."
+msgstr ""
+"Tipik seçimler POP3 için 110, SSL üzerinden POP3 için 995, IMAP için 143, "
+"SSL üzerinden IMAP için 993'tür."
 
 #: models/email_sources.py:44
 msgid "Port"
@@ -352,14 +338,18 @@ msgstr "E-posta kaynakları"
 msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr "Konu meta verileri türü \"%(metadata_type)s\" belge türü için geçerli değil: %(document_type)s"
+msgstr ""
+"Konu meta verileri türü \"%(metadata_type)s\" belge türü için geçerli değil: "
+"%(document_type)s"
 
 #: models/email_sources.py:201
 #, python-format
 msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr "\"Kimden\" meta veri türü \"%(metadata_type)s\" belge türü için geçerli değil: %(document_type)s"
+msgstr ""
+"\"Kimden\" meta veri türü \"%(metadata_type)s\" belge türü için geçerli "
+"değil: %(document_type)s"
 
 #: models/email_sources.py:216
 msgid "IMAP Mailbox from which to check for messages."
@@ -382,9 +372,8 @@ msgstr ""
 #: models/email_sources.py:228
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
-"command per line. Use the commands specified in "
-"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
-"commands for your IMAP server."
+"command per line. Use the commands specified in https://tools.ietf.org/html/"
+"rfc2060.html#section-6.4.6 or the custom commands for your IMAP server."
 msgstr ""
 
 #: models/email_sources.py:232
@@ -407,11 +396,11 @@ msgstr ""
 msgid "Destination mailbox"
 msgstr ""
 
-#: models/email_sources.py:350
+#: models/email_sources.py:349
 msgid "Timeout"
 msgstr "Zaman aşımı"
 
-#: models/email_sources.py:356 models/email_sources.py:357
+#: models/email_sources.py:355 models/email_sources.py:356
 msgid "POP email"
 msgstr "POP e-postası"
 
@@ -427,7 +416,9 @@ msgstr "Cihaz adı"
 msgid ""
 "Selects the scan mode (e.g., lineart, monochrome, or color). If this option "
 "is not supported by your scanner, leave it blank."
-msgstr "Tarama modunu seçer (örn. Çizgi, tek renkli veya renk). Bu seçenek tarayıcınız tarafından desteklenmiyorsa boş bırakın."
+msgstr ""
+"Tarama modunu seçer (örn. Çizgi, tek renkli veya renk). Bu seçenek "
+"tarayıcınız tarafından desteklenmiyorsa boş bırakın."
 
 #: models/scanner_sources.py:39
 msgid "Mode"
@@ -438,7 +429,10 @@ msgid ""
 "Sets the resolution of the scanned image in DPI (dots per inch). Typical "
 "value is 200. If this option is not supported by your scanner, leave it "
 "blank."
-msgstr "Taranan görüntünün çözünürlüğünü DPI olarak (nokta / inç) ayarlar. Tipik değer 200'tür. Bu seçenek tarayıcınız tarafından desteklenmiyorsa boş bırakın."
+msgstr ""
+"Taranan görüntünün çözünürlüğünü DPI olarak (nokta / inç) ayarlar. Tipik "
+"değer 200'tür. Bu seçenek tarayıcınız tarafından desteklenmiyorsa boş "
+"bırakın."
 
 #: models/scanner_sources.py:46
 msgid "Resolution"
@@ -448,7 +442,9 @@ msgstr "Çözünürlük"
 msgid ""
 "Selects the scan source (such as a document-feeder). If this option is not "
 "supported by your scanner, leave it blank."
-msgstr "Tarama kaynağını seçer (bir belge besleyici gibi). Bu seçenek tarayıcınız tarafından desteklenmiyorsa boş bırakın."
+msgstr ""
+"Tarama kaynağını seçer (bir belge besleyici gibi). Bu seçenek tarayıcınız "
+"tarafından desteklenmiyorsa boş bırakın."
 
 #: models/scanner_sources.py:52
 msgid "Paper source"
@@ -458,7 +454,9 @@ msgstr "Kağıt kaynağı"
 msgid ""
 "Selects the document feeder mode (simplex/duplex). If this option is not "
 "supported by your scanner, leave it blank."
-msgstr "Doküman besleyici modunu (simplex / duplex) seçer. Bu seçenek tarayıcınız tarafından desteklenmiyorsa boş bırakın."
+msgstr ""
+"Doküman besleyici modunu (simplex / duplex) seçer. Bu seçenek tarayıcınız "
+"tarafından desteklenmiyorsa boş bırakın."
 
 #: models/scanner_sources.py:59
 msgid "ADF mode"
@@ -483,7 +481,7 @@ msgstr ""
 msgid "Server side filesystem path."
 msgstr "Sunucu tarafı dosya sistemi yolu."
 
-#: models/staging_folder_sources.py:40 models/watch_folder_sources.py:32
+#: models/staging_folder_sources.py:40 models/watch_folder_sources.py:33
 msgid "Folder path"
 msgstr "Klasör yolu"
 
@@ -529,21 +527,21 @@ msgstr "Hazırlama dosyasını silinirken hata oluştu; %s"
 msgid "Unable get list of staging files: %s"
 msgstr "Hazırlama dosyalarının listesi alınamadı: %s"
 
-#: models/watch_folder_sources.py:31
+#: models/watch_folder_sources.py:32
 msgid "Server side filesystem path to scan for files."
 msgstr ""
 
-#: models/watch_folder_sources.py:36
+#: models/watch_folder_sources.py:37
 msgid ""
 "If checked, not only will the folder path be scanned for files but also its "
 "subdirectories."
 msgstr ""
 
-#: models/watch_folder_sources.py:39
+#: models/watch_folder_sources.py:40
 msgid "Include subdirectories?"
 msgstr ""
 
-#: models/watch_folder_sources.py:46
+#: models/watch_folder_sources.py:47
 msgid "Watch folders"
 msgstr "İzleme klasörleri"
 
@@ -601,7 +599,9 @@ msgstr "Belge yükle"
 
 #: settings.py:18
 msgid "File path to the scanimage program used to control image scanners."
-msgstr "Görüntü tarayıcılarını kontrol etmek için kullanılan scanimage programının dosya yolu."
+msgstr ""
+"Görüntü tarayıcılarını kontrol etmek için kullanılan scanimage programının "
+"dosya yolu."
 
 #: settings.py:25
 msgid ""
@@ -623,7 +623,7 @@ msgstr ""
 msgid "Staging folder files"
 msgstr ""
 
-#: tasks.py:48
+#: tasks.py:49
 #, python-format
 msgid "Error processing source: %s"
 msgstr "Kaynak işleme sırasında hata oluştu: %s"
@@ -656,7 +656,7 @@ msgstr ""
 msgid "Server responded with {{statusCode}} code."
 msgstr ""
 
-#: views.py:70
+#: views.py:69
 msgid ""
 "This will execute the source check code even if the source is not enabled. "
 "Sources that delete content after downloading will not do so while being "
@@ -664,31 +664,31 @@ msgid ""
 "successful test will clear the error log."
 msgstr ""
 
-#: views.py:76
+#: views.py:75
 #, python-format
 msgid "Trigger check for source \"%s\"?"
 msgstr "Kaynak \"%s\" için tetikleyici kontrolü yapıyor musunuz?"
 
-#: views.py:88
+#: views.py:87
 msgid "Source check queued."
 msgstr "Kaynak denetimi sıraya girdi."
 
-#: views.py:102
+#: views.py:101
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "Yeni kaynak türü oluştur: %s"
 
-#: views.py:125
+#: views.py:124
 #, python-format
 msgid "Delete the source: %s?"
 msgstr "Kaynağı sil: %s?"
 
-#: views.py:147
+#: views.py:146
 #, python-format
 msgid "Edit source: %s"
 msgstr "Kaynağı düzenle: %s"
 
-#: views.py:187
+#: views.py:186
 msgid ""
 "Sources provide the means to upload documents. Some sources like the "
 "webform, are interactive and require user input to operate. Others like the "
@@ -696,93 +696,82 @@ msgid ""
 "intervention."
 msgstr ""
 
-#: views.py:192
+#: views.py:191
 msgid "No sources available"
 msgstr ""
 
-#: views.py:207
-msgid ""
-"Any error produced during the usage of a source will be listed here to "
-"assist in debugging."
-msgstr ""
-
-#: views.py:210
-msgid "No log entries available"
-msgstr ""
-
-#: views.py:212
-#, python-format
-msgid "Log entries for source: %s"
-msgstr "Kaynak için günlük girdileri: %s"
-
-#: views.py:228
+#: views.py:205
 #, python-format
 msgid "Delete staging file \"%s\"?"
 msgstr ""
 
-#: views.py:280 wizards.py:152
+#: views.py:257 wizards.py:152
 msgid ""
-"No interactive document sources have been defined or none have been enabled,"
-" create one before proceeding."
-msgstr "Etkileşimli belge kaynakları tanımlanmamış veya hiçbiri etkinleştirilmemiş, devam etmeden önce bir tane oluşturun."
+"No interactive document sources have been defined or none have been enabled, "
+"create one before proceeding."
+msgstr ""
+"Etkileşimli belge kaynakları tanımlanmamış veya hiçbiri etkinleştirilmemiş, "
+"devam etmeden önce bir tane oluşturun."
 
-#: views.py:308 views.py:337 views.py:347
+#: views.py:285 views.py:314 views.py:324
 msgid "Document properties"
 msgstr "Döküman özellikleri"
 
-#: views.py:317
+#: views.py:294
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the"
-" necessary file system permissions for the folder."
+"the operating system user account being used for Mayan EDMS doesn't have the "
+"necessary file system permissions for the folder."
 msgstr ""
 
-#: views.py:324
+#: views.py:301
 msgid "No staging files available"
 msgstr ""
 
-#: views.py:327
+#: views.py:304
 msgid "Files in staging path"
 msgstr "Hazırlama yolundaki dosyalar"
 
-#: views.py:338
+#: views.py:315
 msgid "Scan"
 msgstr "Tara"
 
-#: views.py:485
+#: views.py:462
 #, python-format
 msgid "Error executing document upload task; %(exception)s"
 msgstr ""
 
-#: views.py:495
+#: views.py:472
 msgid "New document queued for upload and will be available shortly."
 msgstr ""
 
-#: views.py:512
+#: views.py:489
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr ""
 
-#: views.py:574
+#: views.py:551
 #, python-format
-msgid "Unable to upload new versions for document \"%(document)s\". %(exception)s"
+msgid ""
+"Unable to upload new versions for document \"%(document)s\". %(exception)s"
 msgstr ""
 
-#: views.py:635
+#: views.py:612
 #, python-format
 msgid "Error executing document version upload task; %(exception)s"
 msgstr ""
 
-#: views.py:650
+#: views.py:627
 msgid "New document version queued for upload and will be available shortly."
 msgstr ""
 
-#: views.py:669
+#: views.py:646
 #, python-format
-msgid "Upload a new version for document \"%(document)s\" from source: %(source)s"
+msgid ""
+"Upload a new version for document \"%(document)s\" from source: %(source)s"
 msgstr ""
 
-#: views.py:672
+#: views.py:649
 msgid "Submit"
 msgstr "Gönder"
 
@@ -802,3 +791,21 @@ msgstr "Sonraki adım"
 #: wizards.py:183
 msgid "Document upload wizard"
 msgstr "Belge yükleme sihirbazı"
+
+#~ msgid "Date time"
+#~ msgstr "Tarih saat"
+
+#~ msgid "Message"
+#~ msgstr "Mesaj"
+
+#~ msgid "Logs"
+#~ msgstr "İzleme Kayıtları"
+
+#~ msgid "Log entry"
+#~ msgstr "Kayıt girişi"
+
+#~ msgid "Log entries"
+#~ msgstr "Kayıt girdileri"
+
+#~ msgid "Log entries for source: %s"
+#~ msgstr "Kaynak için günlük girdileri: %s"

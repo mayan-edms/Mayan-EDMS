@@ -2,31 +2,32 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Ingo Buchholz <ingo.buchholz@takwa.de>, 2020
 # Mathias Behrle <mathiasb@m9s.biz>, 2020
 # Roberto Rosario, 2020
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-17 05:23+0000\n"
+"POT-Creation-Date: 2020-09-27 06:46+0000\n"
 "PO-Revision-Date: 2019-12-03 05:24+0000\n"
 "Last-Translator: Roberto Rosario, 2020\n"
-"Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
+"Language-Team: German (Germany) (https://www.transifex.com/rosarior/"
+"teams/13584/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:37
+#: apps.py:42
 msgid "Links"
 msgstr "Links"
 
-#: events.py:6 links.py:14 links.py:20 links.py:54 links.py:58 models.py:42
+#: events.py:6 links.py:14 links.py:20 links.py:54 links.py:58 models.py:40
 #: permissions.py:5 views.py:148
 msgid "Web links"
 msgstr "Weblink"
@@ -51,7 +52,7 @@ msgstr "Neuen Weblink erzeugen"
 msgid "Delete"
 msgstr "Löschen"
 
-#: links.py:38 models.py:36
+#: links.py:38 models.py:34
 msgid "Document types"
 msgstr "Dokumententypen"
 
@@ -63,29 +64,29 @@ msgstr "Bearbeiten"
 msgid "Navigate"
 msgstr "Navigieren"
 
-#: models.py:24
+#: models.py:22
 msgid "A short text describing the web link."
 msgstr "Ein kurzer Text, der den Weblink beschreibt."
 
-#: models.py:25
+#: models.py:23
 msgid "Label"
 msgstr "Bezeichner"
 
-#: models.py:29
+#: models.py:27
 msgid "Template that will be used to craft the final URL of the web link."
 msgstr ""
 "Vorlage, die für die Erstellung der endgültigen URL des Weblinks verwendet "
 "wird."
 
-#: models.py:31
+#: models.py:29
 msgid "Template"
 msgstr "Vorlage"
 
-#: models.py:33
+#: models.py:31
 msgid "Enabled"
 msgstr "Aktiviert"
 
-#: models.py:41
+#: models.py:39
 msgid "Web link"
 msgstr "Weblink"
 
@@ -148,8 +149,8 @@ msgid ""
 "Web links allow generating HTTP links from documents to external resources. "
 "The link URL's can contain document properties values."
 msgstr ""
-"Weblinks ermöglichen die Erzeugung von HTTP-Links von Dokumenten zu externen"
-" Ressourcen. Die Link-URLs können Werte für Dokumenteigenschaften enthalten."
+"Weblinks ermöglichen die Erzeugung von HTTP-Links von Dokumenten zu externen "
+"Ressourcen. Die Link-URLs können Werte für Dokumenteigenschaften enthalten."
 
 #: views.py:146
 msgid "There are no web links"

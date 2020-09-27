@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015-2016
@@ -19,57 +19,55 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-17 05:23+0000\n"
+"POT-Creation-Date: 2020-09-27 06:45+0000\n"
 "PO-Revision-Date: 2020-08-17 15:30+0000\n"
 "Last-Translator: Marvin Haschker <marvin@haschker.me>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:43 links.py:56 models/base.py:38 queues.py:7 settings.py:11
-#: views.py:193
+#: apps.py:48 links.py:56 models/base.py:38 queues.py:7 settings.py:11
+#: views.py:192
 msgid "Sources"
 msgstr "Quellen"
 
-#: apps.py:61
+#: apps.py:71
 msgid "Create a document source"
 msgstr "Quelle definieren"
 
-#: apps.py:63
+#: apps.py:73
 msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
-msgstr "Dokumentenquellen definieren verschiedene Möglichkeiten für die Einspeisung in Mayan EDMS. Minimal ein Webformular für das Hochladen mittels Browser ist erforderlich."
+msgstr ""
+"Dokumentenquellen definieren verschiedene Möglichkeiten für die Einspeisung "
+"in Mayan EDMS. Minimal ein Webformular für das Hochladen mittels Browser ist "
+"erforderlich."
 
-#: apps.py:76
+#: apps.py:86
 msgid "Type"
 msgstr "Typ"
 
-#: apps.py:87
+#: apps.py:97
 msgid "Created"
 msgstr "Erstellt"
 
-#: apps.py:93
+#: apps.py:103
 msgid "Thumbnail"
 msgstr "Bild"
-
-#: apps.py:101 models/base.py:248
-msgid "Date time"
-msgstr "Zeit"
-
-#: apps.py:106 models/base.py:251
-msgid "Message"
-msgstr "Nachricht"
 
 #: dependencies.py:11
 msgid ""
 "Utility provided by the SANE package. Used to control the scanner and "
 "obtained the scanned document image."
-msgstr "Programm aus dem SANE Paket. Wird verwendet um den Scanner zu kontrollieren und das gescannte Dokumentenbild abzurufen."
+msgstr ""
+"Programm aus dem SANE Paket. Wird verwendet um den Scanner zu kontrollieren "
+"und das gescannte Dokumentenbild abzurufen."
 
 #: forms.py:25
 msgid "An optional comment to explain the upload."
@@ -87,7 +85,7 @@ msgstr "Komprimierte Dateien entpacken"
 msgid "Upload a compressed file's contained files as individual documents."
 msgstr "Ein komprimiertes Archiv hochladen, das einzelne Dokumente enthält."
 
-#: forms.py:63 views.py:227
+#: forms.py:63 views.py:204
 msgid "Staging file"
 msgstr "Staging-Datei"
 
@@ -143,11 +141,7 @@ msgstr "Dokumentenquelle"
 msgid "Upload new version"
 msgstr "Neue Version hochladen"
 
-#: links.py:127
-msgid "Logs"
-msgstr "Protokolle"
-
-#: links.py:133
+#: links.py:128
 msgid "Check now"
 msgstr "Jetzt prüfen"
 
@@ -203,7 +197,7 @@ msgstr "Webformular"
 msgid "Staging folder"
 msgstr "Staging-Ordner"
 
-#: literals.py:64 models/watch_folder_sources.py:45
+#: literals.py:64 models/watch_folder_sources.py:46
 msgid "Watch folder"
 msgstr "Beobachtungs-Ordner"
 
@@ -227,7 +221,7 @@ msgstr "Bezeichner"
 msgid "Enabled"
 msgstr "Aktiviert"
 
-#: models/base.py:37 models/base.py:245
+#: models/base.py:37
 msgid "Source"
 msgstr "Quelle"
 
@@ -276,14 +270,6 @@ msgstr "Intarvall Quelle"
 msgid "Interval sources"
 msgstr "Intarvall Quellen"
 
-#: models/base.py:257
-msgid "Log entry"
-msgstr "Protokolleintrag"
-
-#: models/base.py:258
-msgid "Log entries"
-msgstr "Logeinträge"
-
 #: models/email_sources.py:40
 msgid "Host"
 msgstr "Host"
@@ -296,7 +282,9 @@ msgstr "SSL"
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
-msgstr "Typische Werte sind 110 für POP3, 995 für POP3 über SSL, 143 für IMAP, 993 für IMAP über SSL."
+msgstr ""
+"Typische Werte sind 110 für POP3, 995 für POP3 über SSL, 143 für IMAP, 993 "
+"für IMAP über SSL."
 
 #: models/email_sources.py:44
 msgid "Port"
@@ -314,7 +302,9 @@ msgstr "Passwort"
 msgid ""
 "Name of the attachment that will contains the metadata type names and value "
 "pairs to be assigned to the rest of the downloaded attachments."
-msgstr "Name des Anhangs, der die Namen und Wertepaare des Metadatentyps enthält, die den übrigen heruntergeladenen Anhängen zugewiesen werden sollen."
+msgstr ""
+"Name des Anhangs, der die Namen und Wertepaare des Metadatentyps enthält, "
+"die den übrigen heruntergeladenen Anhängen zugewiesen werden sollen."
 
 #: models/email_sources.py:54
 msgid "Metadata attachment name"
@@ -324,7 +314,10 @@ msgstr "Name Metadatenattachment"
 msgid ""
 "Select a metadata type to store the email's subject value. Must be a valid "
 "metadata type for the document type selected previously."
-msgstr "Wählen Sie einen Metadatentyp aus, um den Betreff der E-Mail zu speichern. Es muss ein gültiger Metadatentyp für den zuvor ausgewählten Dokumenttyp sein."
+msgstr ""
+"Wählen Sie einen Metadatentyp aus, um den Betreff der E-Mail zu speichern. "
+"Es muss ein gültiger Metadatentyp für den zuvor ausgewählten Dokumenttyp "
+"sein."
 
 #: models/email_sources.py:62
 msgid "Subject metadata type"
@@ -334,7 +327,10 @@ msgstr "Metadatentyp des Betreffs"
 msgid ""
 "Select a metadata type to store the email's \"from\" value. Must be a valid "
 "metadata type for the document type selected previously."
-msgstr "Wählen Sie einen Metadatentyp aus, um den \"von\"-Wert der E-Mail zu speichern. Es muss ein gültiger Metadatentyp für den zuvor ausgewählten Dokumenttyp sein."
+msgstr ""
+"Wählen Sie einen Metadatentyp aus, um den \"von\"-Wert der E-Mail zu "
+"speichern. Es muss ein gültiger Metadatentyp für den zuvor ausgewählten "
+"Dokumenttyp sein."
 
 #: models/email_sources.py:70
 msgid "From metadata type"
@@ -361,14 +357,18 @@ msgstr "E-Mail Quellen"
 msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr "Metadatentyp  \"%(metadata_type)s\" des Betreffs ist für den Dokumententyp \"%(document_type)s\" nicht zulässig"
+msgstr ""
+"Metadatentyp  \"%(metadata_type)s\" des Betreffs ist für den Dokumententyp "
+"\"%(document_type)s\" nicht zulässig"
 
 #: models/email_sources.py:201
 #, python-format
 msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr "Metadatentyp  \"%(metadata_type)s\" des Absenders ist für den Dokumententyp \"%(document_type)s\" nicht zulässig"
+msgstr ""
+"Metadatentyp  \"%(metadata_type)s\" des Absenders ist für den Dokumententyp "
+"\"%(document_type)s\" nicht zulässig"
 
 #: models/email_sources.py:216
 msgid "IMAP Mailbox from which to check for messages."
@@ -382,7 +382,10 @@ msgstr "Mailbox"
 msgid ""
 "Criteria to use when searching for messages to process. Use the format "
 "specified in https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
-msgstr "Kriterien für die Suche nach zu verarbeitenden Nachrichten. Verwenden Sie das in https://tools.ietf.org/html/rfc2060.html#section-6.4.4 angegebene Format"
+msgstr ""
+"Kriterien für die Suche nach zu verarbeitenden Nachrichten. Verwenden Sie "
+"das in https://tools.ietf.org/html/rfc2060.html#section-6.4.4 angegebene "
+"Format"
 
 #: models/email_sources.py:224
 msgid "Search criteria"
@@ -391,10 +394,13 @@ msgstr "Suchkriterien"
 #: models/email_sources.py:228
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
-"command per line. Use the commands specified in "
-"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
-"commands for your IMAP server."
-msgstr "IMAP STORE-Befehl, der für Nachrichten ausgeführt wird, nachdem diese verarbeitet wurden. Ein Befehl pro Zeile. Verwenden Sie die in https://tools.ietf.org/html/rfc2060.html#section-6.4.6 angegebenen Befehle oder die benutzerdefinierten Befehle für Ihren IMAP-Server."
+"command per line. Use the commands specified in https://tools.ietf.org/html/"
+"rfc2060.html#section-6.4.6 or the custom commands for your IMAP server."
+msgstr ""
+"IMAP STORE-Befehl, der für Nachrichten ausgeführt wird, nachdem diese "
+"verarbeitet wurden. Ein Befehl pro Zeile. Verwenden Sie die in https://tools."
+"ietf.org/html/rfc2060.html#section-6.4.6 angegebenen Befehle oder die "
+"benutzerdefinierten Befehle für Ihren IMAP-Server."
 
 #: models/email_sources.py:232
 msgid "Store commands"
@@ -402,7 +408,9 @@ msgstr "Speicherbefehle"
 
 #: models/email_sources.py:236
 msgid "Execute the IMAP expunge command after processing each email message."
-msgstr "Den Befehl IMAP expunge nach der Verarbeitung aller E-Mail-Nachrichten ausführen."
+msgstr ""
+"Den Befehl IMAP expunge nach der Verarbeitung aller E-Mail-Nachrichten "
+"ausführen."
 
 #: models/email_sources.py:238
 msgid "Execute expunge"
@@ -416,11 +424,11 @@ msgstr "IMAP-Postfach, in das verarbeitete Nachrichten kopiert werden. "
 msgid "Destination mailbox"
 msgstr "Ziel-Postfach "
 
-#: models/email_sources.py:350
+#: models/email_sources.py:349
 msgid "Timeout"
 msgstr "Timeout"
 
-#: models/email_sources.py:356 models/email_sources.py:357
+#: models/email_sources.py:355 models/email_sources.py:356
 msgid "POP email"
 msgstr "POP email"
 
@@ -436,7 +444,9 @@ msgstr "Gerätename"
 msgid ""
 "Selects the scan mode (e.g., lineart, monochrome, or color). If this option "
 "is not supported by your scanner, leave it blank."
-msgstr "Scanmodus auswählen (z.B. lineart, monochrom, oder farbig). Leer lassen, wenn diese Option von Ihrem Scanner nicht unterstützt wird."
+msgstr ""
+"Scanmodus auswählen (z.B. lineart, monochrom, oder farbig). Leer lassen, "
+"wenn diese Option von Ihrem Scanner nicht unterstützt wird."
 
 #: models/scanner_sources.py:39
 msgid "Mode"
@@ -447,7 +457,10 @@ msgid ""
 "Sets the resolution of the scanned image in DPI (dots per inch). Typical "
 "value is 200. If this option is not supported by your scanner, leave it "
 "blank."
-msgstr "Setzt die Auflösung des gescannten Bildes in DPI (dots per inch). Ein typischer Wert ist 200. Leer lassen, wenn diese Option von Ihrem Scanner nicht unterstützt wird."
+msgstr ""
+"Setzt die Auflösung des gescannten Bildes in DPI (dots per inch). Ein "
+"typischer Wert ist 200. Leer lassen, wenn diese Option von Ihrem Scanner "
+"nicht unterstützt wird."
 
 #: models/scanner_sources.py:46
 msgid "Resolution"
@@ -457,7 +470,9 @@ msgstr "Auflösung"
 msgid ""
 "Selects the scan source (such as a document-feeder). If this option is not "
 "supported by your scanner, leave it blank."
-msgstr "Setzt die Scanquelle (etwa wie Dokuemteneinzug). Leer lassen, wenn diese Option von Ihrem Scanner nicht unterstützt wird."
+msgstr ""
+"Setzt die Scanquelle (etwa wie Dokuemteneinzug). Leer lassen, wenn diese "
+"Option von Ihrem Scanner nicht unterstützt wird."
 
 #: models/scanner_sources.py:52
 msgid "Paper source"
@@ -467,7 +482,10 @@ msgstr "Papierquelle"
 msgid ""
 "Selects the document feeder mode (simplex/duplex). If this option is not "
 "supported by your scanner, leave it blank."
-msgstr "Setzt die Auflösung des gescannten Bildes in DPI (dots per inch). Ein typischer Wert ist 200. Leer lassen, wenn diese Option von Ihrem Scanner nicht unterstützt wird."
+msgstr ""
+"Setzt die Auflösung des gescannten Bildes in DPI (dots per inch). Ein "
+"typischer Wert ist 200. Leer lassen, wenn diese Option von Ihrem Scanner "
+"nicht unterstützt wird."
 
 #: models/scanner_sources.py:59
 msgid "ADF mode"
@@ -486,13 +504,15 @@ msgstr "SANE Scanner"
 msgid ""
 "Error while executing scanning command \"%(command_line)s\"; "
 "%(error_message)s"
-msgstr "Fehler bei der Ausführung des Scannerbefehls \"%(command_line)s\": %(error_message)s"
+msgstr ""
+"Fehler bei der Ausführung des Scannerbefehls \"%(command_line)s\": "
+"%(error_message)s"
 
 #: models/staging_folder_sources.py:39
 msgid "Server side filesystem path."
 msgstr "Pfad auf dem Server."
 
-#: models/staging_folder_sources.py:40 models/watch_folder_sources.py:32
+#: models/staging_folder_sources.py:40 models/watch_folder_sources.py:33
 msgid "Folder path"
 msgstr "Ordnerpfad"
 
@@ -538,21 +558,22 @@ msgstr "Fehler beim Löschen von Staging-Datei: %s"
 msgid "Unable get list of staging files: %s"
 msgstr "Die Liste der Arbeitsdateien kann nicht ermittelt werden: %s"
 
-#: models/watch_folder_sources.py:31
+#: models/watch_folder_sources.py:32
 msgid "Server side filesystem path to scan for files."
 msgstr "Serverseitiger Pfad, der auf Dateien untersucht wird."
 
-#: models/watch_folder_sources.py:36
+#: models/watch_folder_sources.py:37
 msgid ""
 "If checked, not only will the folder path be scanned for files but also its "
 "subdirectories."
-msgstr "Bei Aktivierung werden auch die Unterverzeichnisse des Pfads durchsucht."
+msgstr ""
+"Bei Aktivierung werden auch die Unterverzeichnisse des Pfads durchsucht."
 
-#: models/watch_folder_sources.py:39
+#: models/watch_folder_sources.py:40
 msgid "Include subdirectories?"
 msgstr "Unterverzeichnisse einschließen"
 
-#: models/watch_folder_sources.py:46
+#: models/watch_folder_sources.py:47
 msgid "Watch folders"
 msgstr "Beobachtungs-Ordner"
 
@@ -610,29 +631,37 @@ msgstr "Dokument hochladen"
 
 #: settings.py:18
 msgid "File path to the scanimage program used to control image scanners."
-msgstr "Dateipfad zum Programm scanimage, das für die Kontrolle von Scannern verwendet wird."
+msgstr ""
+"Dateipfad zum Programm scanimage, das für die Kontrolle von Scannern "
+"verwendet wird."
 
 #: settings.py:25
 msgid ""
 "Path to the Storage subclass to use when storing the cached staging_file "
 "image files."
-msgstr "Pfad zu Speicher-Unterklasse für den Cache von Bildern für bereitgestellte Dateien."
+msgstr ""
+"Pfad zu Speicher-Unterklasse für den Cache von Bildern für bereitgestellte "
+"Dateien."
 
 #: settings.py:34
 msgid "Arguments to pass to the SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
-msgstr "Argumente die an das SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND weitergeleitet werden."
+msgstr ""
+"Argumente die an das SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND "
+"weitergeleitet werden."
 
 #: storages.py:16
 msgid ""
 "Unable to initialize the staging folder file image storage. Check the "
 "settings {} and {} for formatting errors."
-msgstr "Der Image-Speicher für die Stagingordner-Dateien konnte nicht initialisiert werden. Überprüfen Sie die Einstellungen {} und {} auf Formatierungsfehler."
+msgstr ""
+"Der Image-Speicher für die Stagingordner-Dateien konnte nicht initialisiert "
+"werden. Überprüfen Sie die Einstellungen {} und {} auf Formatierungsfehler."
 
 #: storages.py:23
 msgid "Staging folder files"
 msgstr "Stagingordner-Dateien"
 
-#: tasks.py:48
+#: tasks.py:49
 #, python-format
 msgid "Error processing source: %s"
 msgstr "Fehler bei der Verarbeitung der Quelle %s"
@@ -647,7 +676,9 @@ msgstr "Hochladen wirklich abbrechen?"
 
 #: templates/sources/dropzone.html:84
 msgid "Drop files or click here to upload files"
-msgstr "Dateien auf diese Fläche ziehen oder darauf klicken, um Dateien zum Hochladen auszuwählen"
+msgstr ""
+"Dateien auf diese Fläche ziehen oder darauf klicken, um Dateien zum "
+"Hochladen auszuwählen"
 
 #: templates/sources/dropzone.html:85
 msgid "Your browser does not support drag and drop file uploads."
@@ -665,133 +696,143 @@ msgstr "Löschen"
 msgid "Server responded with {{statusCode}} code."
 msgstr "Der Server antwortete mit Code {{statusCode}}."
 
-#: views.py:70
+#: views.py:69
 msgid ""
 "This will execute the source check code even if the source is not enabled. "
 "Sources that delete content after downloading will not do so while being "
 "tested. Check the source's error log for information during testing. A "
 "successful test will clear the error log."
-msgstr "Führt den Quellenüberprüfungscode aus, selbst wenn die Quelle nicht aktiviert ist. Quellen, die Dokumente nach dem Herunterladen löschen werden, werden das im Testmodus nicht tun. Überprüfen Sie das Fehlerprotokoll währen der Testperiode. Ein erfolgreicher Test leert das Fehlerprotokoll."
+msgstr ""
+"Führt den Quellenüberprüfungscode aus, selbst wenn die Quelle nicht "
+"aktiviert ist. Quellen, die Dokumente nach dem Herunterladen löschen werden, "
+"werden das im Testmodus nicht tun. Überprüfen Sie das Fehlerprotokoll währen "
+"der Testperiode. Ein erfolgreicher Test leert das Fehlerprotokoll."
 
-#: views.py:76
+#: views.py:75
 #, python-format
 msgid "Trigger check for source \"%s\"?"
 msgstr "Überprüfung anstoßen für Quelle \"%s\"?"
 
-#: views.py:88
+#: views.py:87
 msgid "Source check queued."
 msgstr "Quellenüberprüfung vorgemerkt."
 
-#: views.py:102
+#: views.py:101
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "Quelle des Typs %s erstellen"
 
-#: views.py:125
+#: views.py:124
 #, python-format
 msgid "Delete the source: %s?"
 msgstr "Quelle %s wirklich löschen?"
 
-#: views.py:147
+#: views.py:146
 #, python-format
 msgid "Edit source: %s"
 msgstr "Quelle %s bearbeiten"
 
-#: views.py:187
+#: views.py:186
 msgid ""
 "Sources provide the means to upload documents. Some sources like the "
 "webform, are interactive and require user input to operate. Others like the "
 "email sources, are automatic and run on the background without user "
 "intervention."
-msgstr "Quellen stellen die Mittel für das Hochladen von Dokumenten bereit. Einige Quellen wie z.B. das Webformular sind interaktiv und erfordern Benutzereingaben. Andere wie z.B. E-Mail-Quellen arbeiten automatisch und laufen ohne Benutzereingriff im Hintergrund."
+msgstr ""
+"Quellen stellen die Mittel für das Hochladen von Dokumenten bereit. Einige "
+"Quellen wie z.B. das Webformular sind interaktiv und erfordern "
+"Benutzereingaben. Andere wie z.B. E-Mail-Quellen arbeiten automatisch und "
+"laufen ohne Benutzereingriff im Hintergrund."
 
-#: views.py:192
+#: views.py:191
 msgid "No sources available"
 msgstr "Keine Quellen verfügbar"
 
-#: views.py:207
-msgid ""
-"Any error produced during the usage of a source will be listed here to "
-"assist in debugging."
-msgstr "Jeder Fehler, der bei der Benutzung von Dokumentenquellen auftritt, wird hier gelistet, um bei der Fehlerbehebung zu helfen."
-
-#: views.py:210
-msgid "No log entries available"
-msgstr "Keine Protokolleinträge vorhanden"
-
-#: views.py:212
-#, python-format
-msgid "Log entries for source: %s"
-msgstr "Logeinträge für Quelle %s"
-
-#: views.py:228
+#: views.py:205
 #, python-format
 msgid "Delete staging file \"%s\"?"
 msgstr "Staging-Datei \"%s\" löschen?"
 
-#: views.py:280 wizards.py:152
+#: views.py:257 wizards.py:152
 msgid ""
-"No interactive document sources have been defined or none have been enabled,"
-" create one before proceeding."
-msgstr "Es wurden keine interaktiven Dokumentenquellen konfiguriert. Bitte erstellen oder aktivieren Sie eine bevor Sie fortsetzen."
+"No interactive document sources have been defined or none have been enabled, "
+"create one before proceeding."
+msgstr ""
+"Es wurden keine interaktiven Dokumentenquellen konfiguriert. Bitte erstellen "
+"oder aktivieren Sie eine bevor Sie fortsetzen."
 
-#: views.py:308 views.py:337 views.py:347
+#: views.py:285 views.py:314 views.py:324
 msgid "Document properties"
 msgstr "Dokumenteneigenschaften"
 
-#: views.py:317
+#: views.py:294
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the"
-" necessary file system permissions for the folder."
-msgstr "Dies könnte bedeuten, dass der Staging-Ordner leer ist. Es könnte auch bedeuten, dass das Betriebssystem-Benutzerkonto, das für Mayan EDMS verwendet wird, nicht über die erforderlichen Dateisystemberechtigungen für den Ordner verfügt. "
+"the operating system user account being used for Mayan EDMS doesn't have the "
+"necessary file system permissions for the folder."
+msgstr ""
+"Dies könnte bedeuten, dass der Staging-Ordner leer ist. Es könnte auch "
+"bedeuten, dass das Betriebssystem-Benutzerkonto, das für Mayan EDMS "
+"verwendet wird, nicht über die erforderlichen Dateisystemberechtigungen für "
+"den Ordner verfügt. "
 
-#: views.py:324
+#: views.py:301
 msgid "No staging files available"
 msgstr "Keine Staging-Dateien vorhanden"
 
-#: views.py:327
+#: views.py:304
 msgid "Files in staging path"
 msgstr "Dateien im Staging Pfad"
 
-#: views.py:338
+#: views.py:315
 msgid "Scan"
 msgstr "Scannen"
 
-#: views.py:485
+#: views.py:462
 #, python-format
 msgid "Error executing document upload task; %(exception)s"
 msgstr "Fehler beim Hochladen von Dokumenten; %(exception)s"
 
-#: views.py:495
+#: views.py:472
 msgid "New document queued for upload and will be available shortly."
-msgstr "Das neue Dokument wurde in die Warteschlange eingestellt und wird in Kürze verfügbar sein."
+msgstr ""
+"Das neue Dokument wurde in die Warteschlange eingestellt und wird in Kürze "
+"verfügbar sein."
 
-#: views.py:512
+#: views.py:489
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
-msgstr "Ein Dokument vom Typ \"%(document_type)s\" aus Quelle %(source)s hochladen"
+msgstr ""
+"Ein Dokument vom Typ \"%(document_type)s\" aus Quelle %(source)s hochladen"
 
-#: views.py:574
+#: views.py:551
 #, python-format
-msgid "Unable to upload new versions for document \"%(document)s\". %(exception)s"
-msgstr "Neue Versionen für das Dokument \"%(document)s\" können nicht hochgeladen werden. %(exception)s"
+msgid ""
+"Unable to upload new versions for document \"%(document)s\". %(exception)s"
+msgstr ""
+"Neue Versionen für das Dokument \"%(document)s\" können nicht hochgeladen "
+"werden. %(exception)s"
 
-#: views.py:635
+#: views.py:612
 #, python-format
 msgid "Error executing document version upload task; %(exception)s"
 msgstr "Fehler beim Hochladen der neuen Dokumentversion; %(exception)s"
 
-#: views.py:650
+#: views.py:627
 msgid "New document version queued for upload and will be available shortly."
-msgstr "Das neue Dokument wurde in die Warteschlange eingestellt und wird in Kürze verfügbar sein."
+msgstr ""
+"Das neue Dokument wurde in die Warteschlange eingestellt und wird in Kürze "
+"verfügbar sein."
 
-#: views.py:669
+#: views.py:646
 #, python-format
-msgid "Upload a new version for document \"%(document)s\" from source: %(source)s"
-msgstr "Hochladen einer neuen Version für das Dokument \"%(document)s\" aus Quelle %(source)s"
+msgid ""
+"Upload a new version for document \"%(document)s\" from source: %(source)s"
+msgstr ""
+"Hochladen einer neuen Version für das Dokument \"%(document)s\" aus Quelle "
+"%(source)s"
 
-#: views.py:672
+#: views.py:649
 msgid "Submit"
 msgstr "Absenden"
 
@@ -811,3 +852,31 @@ msgstr "Nächster Schritt"
 #: wizards.py:183
 msgid "Document upload wizard"
 msgstr "Uploadassistent"
+
+#~ msgid "Date time"
+#~ msgstr "Zeit"
+
+#~ msgid "Message"
+#~ msgstr "Nachricht"
+
+#~ msgid "Logs"
+#~ msgstr "Protokolle"
+
+#~ msgid "Log entry"
+#~ msgstr "Protokolleintrag"
+
+#~ msgid "Log entries"
+#~ msgstr "Logeinträge"
+
+#~ msgid ""
+#~ "Any error produced during the usage of a source will be listed here to "
+#~ "assist in debugging."
+#~ msgstr ""
+#~ "Jeder Fehler, der bei der Benutzung von Dokumentenquellen auftritt, wird "
+#~ "hier gelistet, um bei der Fehlerbehebung zu helfen."
+
+#~ msgid "No log entries available"
+#~ msgstr "Keine Protokolleinträge vorhanden"
+
+#~ msgid "Log entries for source: %s"
+#~ msgstr "Logeinträge für Quelle %s"

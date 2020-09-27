@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Lyudmil Antonov <lantonov.here@gmail.com>, 2019-2020
@@ -10,21 +10,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-17 05:22+0000\n"
+"POT-Creation-Date: 2020-09-27 06:45+0000\n"
 "PO-Revision-Date: 2020-04-06 16:30+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
-"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
+"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/bg/)\n"
+"Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:20 permissions.py:5 settings.py:13
+#: apps.py:39 events.py:5 permissions.py:5 settings.py:16
 msgid "Converter"
 msgstr "Конвертор"
 
-#: apps.py:37 forms.py:23
+#: apps.py:82 forms.py:23
 msgid "Transformation"
 msgstr "Трансформация"
 
@@ -36,242 +37,442 @@ msgstr "Изключение, определящо броя на PDF стран�
 #: backends/python.py:183
 #, python-format
 msgid "Exception determining page count using Pillow; %s"
-msgstr "Изключение, определящо броя на страниците с използване на Възглавница; %s"
+msgstr ""
+"Изключение, определящо броя на страниците с използване на Възглавница; %s"
 
-#: classes.py:125
+#: classes.py:135
 msgid "LibreOffice not installed or not found."
 msgstr "LibreOffice не е инсталиран или не е намерен."
 
-#: classes.py:226
+#: classes.py:236
 msgid "Not an office file format."
 msgstr "Не е във формат на офис файл"
 
-#: classes.py:350
+#: classes.py:359
 msgid ""
 "Transformations allow changing the visual appearance of documents without "
 "making permanent changes to the document file themselves."
-msgstr "Трансформациите позволяват промяна на външния вид на документите, без да се правят постоянни промени в самия файл на документа."
+msgstr ""
+"Трансформациите позволяват промяна на външния вид на документите, без да се "
+"правят постоянни промени в самия файл на документа."
 
-#: classes.py:398
+#: classes.py:407
 msgid "transformation"
 msgstr "трансформация"
 
 #: dependencies.py:14
 msgid "Utility from the poppler-utils package used to inspect PDF files."
-msgstr "Помощна програма от пакета poppler-utils, използвана за проверка на PDF файлове."
+msgstr ""
+"Помощна програма от пакета poppler-utils, използвана за проверка на PDF "
+"файлове."
 
 #: dependencies.py:19
 msgid ""
 "Utility from the popper-utils package used to extract pages from PDF files "
 "into PPM format images."
-msgstr "Помощна програма от пакета popper-utils, използвана за извличане на страници от PDF файлове в изображения във формат PPM."
+msgstr ""
+"Помощна програма от пакета popper-utils, използвана за извличане на страници "
+"от PDF файлове в изображения във формат PPM."
+
+#: events.py:8
+msgid "Asset created"
+msgstr ""
+
+#: events.py:11
+msgid "Asset edited"
+msgstr ""
 
 #: forms.py:22
 msgid "Available transformations for this layer."
 msgstr "Налични трансформации за този слой."
 
-#: forms.py:59
+#: forms.py:59 workflow_actions.py:74
 #, python-format
 msgid "\"%s\" not a valid entry."
 msgstr "&quot;%s&quot; не е валиден запис."
 
-#: layers.py:10
+#: layers.py:11
+msgid ""
+"Decoration are visual elements that add contextual information to images."
+msgstr ""
+
+#: layers.py:13
+#, fuzzy
+#| msgid "Transformations"
+msgid "Decorations"
+msgstr "Трансформации"
+
+#: layers.py:24
 msgid "Saved transformations"
 msgstr "Запазени трансформации"
 
-#: links.py:17
+#: links.py:31 views.py:36
+msgid "Create asset"
+msgstr ""
+
+#: links.py:35 links.py:41 links.py:65
 msgid "Delete"
 msgstr "Изтрийте"
 
-#: links.py:24
+#: links.py:46 links.py:73
 msgid "Edit"
 msgstr "Редактиране"
 
-#: links.py:28
+#: links.py:55 models.py:53 storages.py:19 views.py:127
+msgid "Assets"
+msgstr ""
+
+#: links.py:77
 msgid "Transformations"
 msgstr "Трансформации"
 
-#: links.py:34
+#: links.py:83
 msgid "Select new transformation"
 msgstr "Изберете нова трансформация"
 
-#: models.py:21 models.py:83
+#: models.py:36
+msgid "Label"
+msgstr ""
+
+#: models.py:40
+msgid ""
+"This value will be used when referencing this asset. Can only contain "
+"letters, numbers, and underscores."
+msgstr ""
+
+#: models.py:43
+msgid "Internal name"
+msgstr ""
+
+#: models.py:47
+msgid "File"
+msgstr ""
+
+#: models.py:52
+msgid "Asset"
+msgstr ""
+
+#: models.py:82 models.py:153
 msgid "Name"
 msgstr "Име"
 
-#: models.py:24 models.py:79
+#: models.py:85 models.py:151
 msgid "Order"
 msgstr "Поръчка"
 
-#: models.py:32 models.py:48
+#: models.py:90 models.py:109
 msgid "Stored layer"
 msgstr "Съхранен слой"
 
-#: models.py:33
+#: models.py:91
 msgid "Stored layers"
 msgstr "Съхранени слоеве"
 
-#: models.py:45 models.py:91
+#: models.py:106 models.py:160
 msgid "Enabled"
 msgstr "Активиран"
 
-#: models.py:54 models.py:73
+#: models.py:117 models.py:145
 msgid "Object layer"
 msgstr "Обектен слой"
 
-#: models.py:55
+#: models.py:118
 msgid "Object layers"
 msgstr "Обектни слоеве"
 
-#: models.py:77
+#: models.py:149
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
-msgstr "Ред, в който ще бъдат извършени трансформациите. Ако остане непроменено, ще бъде назначена автоматична стойност на поръчката."
+msgstr ""
+"Ред, в който ще бъдат извършени трансформациите. Ако остане непроменено, ще "
+"бъде назначена автоматична стойност на поръчката."
 
-#: models.py:87
+#: models.py:156 workflow_actions.py:45
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
-msgstr "Въведете аргументите за преобразуването като YAML речник. т.е.: {&quot;градуси&quot;: 180}"
+msgstr ""
+"Въведете аргументите за преобразуването като YAML речник. т.е.: {&quot;"
+"градуси&quot;: 180}"
 
-#: models.py:89
+#: models.py:158
 msgid "Arguments"
 msgstr "Аргументи"
 
-#: models.py:98
+#: models.py:167
 msgid "Layer transformation"
 msgstr "Трансформация на слоеве"
 
-#: models.py:99
+#: models.py:168
 msgid "Layer transformations"
 msgstr "Трансформации на слоеве"
 
+#: models.py:174
+#, fuzzy
+#| msgid "Create new transformations"
+msgid "Unknown transformation class"
+msgstr "Създайте нови трансформации"
+
 #: permissions.py:8
-msgid "Create new transformations"
+#, fuzzy
+#| msgid "Create new transformations"
+msgid "Create new assets"
 msgstr "Създайте нови трансформации"
 
 #: permissions.py:11
+#, fuzzy
+#| msgid "Delete"
+msgid "Delete assets"
+msgstr "Изтрийте"
+
+#: permissions.py:14
+msgid "Edit assets"
+msgstr ""
+
+#: permissions.py:17
+#, fuzzy
+#| msgid "View existing transformations"
+msgid "View existing assets"
+msgstr "Преглед на съществуващите трансформации"
+
+#: permissions.py:21
+msgid "Create new transformations"
+msgstr "Създайте нови трансформации"
+
+#: permissions.py:24
 msgid "Delete transformations"
 msgstr "Изтрийте трансформациите"
 
-#: permissions.py:14
+#: permissions.py:27
 msgid "Edit transformations"
 msgstr "Редактиране на трансформации"
 
-#: permissions.py:17
+#: permissions.py:30
 msgid "View existing transformations"
 msgstr "Преглед на съществуващите трансформации"
 
-#: settings.py:19
+#: settings.py:22
 msgid "Graphics conversion backend to use."
 msgstr "Използван бекенд за преобразуване на графики."
 
-#: settings.py:32
+#: settings.py:35
 msgid "Configuration options for the graphics conversion backend."
 msgstr "Опции за конфигуриране на бекенда за графично преобразуване"
 
-#: transformations.py:98
+#: settings.py:41
+msgid "Path to the Storage subclass to use when storing detached signatures."
+msgstr ""
+
+#: settings.py:50
+msgid "Arguments to pass to the CONVERTER_ASSET_STORAGE_BACKEND."
+msgstr ""
+
+#: storages.py:13
+msgid ""
+"Unable to initialize the converter asset storage. Check the settings {} and "
+"{} for formatting errors."
+msgstr ""
+
+#: transformations.py:197
+msgid "Paste an asset"
+msgstr ""
+
+#: transformations.py:248
+#, fuzzy
+#| msgid "Draw rectangle (percents coordinates)"
+msgid "Paste an asset (percents coordinates)"
+msgstr "Начертайте правоъгълник (процентни координати)"
+
+#: transformations.py:291
+msgid "Paste an asset as watermark"
+msgstr ""
+
+#: transformations.py:351
 msgid "Crop"
 msgstr "Изрязване"
 
-#: transformations.py:176
+#: transformations.py:429
 msgid "Draw rectangle"
 msgstr "Начертайте правоъгълник"
 
-#: transformations.py:278
+#: transformations.py:531
 msgid "Draw rectangle (percents coordinates)"
 msgstr "Начертайте правоъгълник (процентни координати)"
 
-#: transformations.py:375
+#: transformations.py:628
 msgid "Flip"
 msgstr "Преобръщане"
 
-#: transformations.py:386
+#: transformations.py:639
 msgid "Gaussian blur"
 msgstr "Гаусово замъгляване"
 
-#: transformations.py:396
+#: transformations.py:649
 msgid "Line art"
 msgstr "Графично изкуство"
 
-#: transformations.py:407
+#: transformations.py:660
 msgid "Mirror"
 msgstr "Огледало"
 
-#: transformations.py:418
+#: transformations.py:671
 msgid "Resize"
 msgstr "Преоразмеряване"
 
-#: transformations.py:445
+#: transformations.py:698
 msgid "Rotate"
 msgstr "Завъртане"
 
-#: transformations.py:471
+#: transformations.py:724
 msgid "Rotate 90 degrees"
 msgstr "Завъртане на 90 градуса"
 
-#: transformations.py:482
+#: transformations.py:735
 msgid "Rotate 180 degrees"
 msgstr "Въртене на 180 градуса"
 
-#: transformations.py:493
+#: transformations.py:746
 msgid "Rotate 270 degrees"
 msgstr "Въртене на 270 градуса"
 
-#: transformations.py:503
+#: transformations.py:756
 msgid "Unsharp masking"
 msgstr "Размазващо маскиране"
 
-#: transformations.py:519
+#: transformations.py:772
 msgid "Zoom"
 msgstr "Увеличаване"
 
-#: validators.py:21
-msgid "Enter a valid YAML value."
-msgstr "Въведете валидна YAML стойност."
+#: views.py:50
+#, python-format
+msgid "Delete request performed on %(count)d asset"
+msgstr ""
 
-#: views.py:51
+#: views.py:52
+#, python-format
+msgid "Delete request performed on %(count)d assets"
+msgstr ""
+
+#: views.py:59
+msgid "Delete the selected asset?"
+msgid_plural "Delete the selected assets?"
+msgstr[0] ""
+msgstr[1] ""
+
+#: views.py:69
+#, python-format
+msgid "Delete asset: %s?"
+msgstr ""
+
+#: views.py:80
+#, fuzzy, python-format
+#| msgid "Transformation created successfully."
+msgid "Asset \"%s\" deleted successfully."
+msgstr "Трансформацията е създадена успешно."
+
+#: views.py:85
+#, python-format
+msgid "Error deleting asset \"%(asset)s\": %(error)s"
+msgstr ""
+
+#: views.py:101
+#, python-format
+msgid "Edit asset: %s"
+msgstr ""
+
+#: views.py:123
+msgid ""
+"Assets are files that can be used in conjuction with certain transformations."
+msgstr ""
+
+#: views.py:126
+msgid "No assets available"
+msgstr ""
+
+#: views.py:151
 #, python-format
 msgid "Error creating transformation: %s."
 msgstr "Грешка при създаването на трансформация: %s."
 
-#: views.py:68
+#: views.py:168
 #, python-format
 msgid ""
 "Create layer \"%(layer)s\" transformation \"%(transformation)s\" for: "
 "%(object)s"
-msgstr "Създайте слой &quot;%(layer)s&quot; трансформация &quot;%(transformation)s&quot; за: %(object)s"
+msgstr ""
+"Създайте слой &quot;%(layer)s&quot; трансформация &quot;"
+"%(transformation)s&quot; за: %(object)s"
 
-#: views.py:123
+#: views.py:224
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
-msgstr "Да се изтрие трансформацията „%(transformation)s“ за: %(content_object)s?"
+msgstr ""
+"Да се изтрие трансформацията „%(transformation)s“ за: %(content_object)s?"
 
-#: views.py:172
+#: views.py:273
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
-msgstr "Редактиране на трансформацията „%(transformation)s“ за: %(content_object)s"
+msgstr ""
+"Редактиране на трансформацията „%(transformation)s“ за: %(content_object)s"
 
-#: views.py:231
+#: views.py:327
 #, python-format
 msgid "There are no entries for layer \"%(layer_name)s\""
 msgstr "Няма записи за слой &quot;%(layer_name)s&quot;"
 
-#: views.py:234
+#: views.py:330
 #, python-format
 msgid "Layer \"%(layer)s\" transformations for: %(object)s"
 msgstr "Трансформации на слой &quot;%(layer)s&quot; за: %(object)s"
 
-#: views.py:286
+#: views.py:375
 msgid "Transformation created successfully."
 msgstr "Трансформацията е създадена успешно."
 
-#: views.py:310
+#: views.py:399
 msgid "Select"
 msgstr "Изберете"
 
-#: views.py:312
+#: views.py:401
 #, python-format
 msgid "Select new layer \"%(layer)s\" transformation for: %(object)s"
-msgstr "Изберете нова трансформация на слой &quot;%(layer)s&quot; за: %(object)s"
+msgstr ""
+"Изберете нова трансформация на слой &quot;%(layer)s&quot; за: %(object)s"
+
+#: workflow_actions.py:22
+msgid "Pages"
+msgstr ""
+
+#: workflow_actions.py:25
+msgid ""
+"Pages to which the new transformations will be added. Separate by commas and/"
+"or use a dashes for a ranges. Leave blank to select all pages."
+msgstr ""
+
+#: workflow_actions.py:32
+#, fuzzy
+#| msgid "Transformations"
+msgid "Transformation class"
+msgstr "Трансформации"
+
+#: workflow_actions.py:37
+#, fuzzy
+#| msgid "Layer transformation"
+msgid "Type of transformation to add."
+msgstr "Трансформация на слоеве"
+
+#: workflow_actions.py:42
+#, fuzzy
+#| msgid "Transformations"
+msgid "Transformation arguments"
+msgstr "Трансформации"
+
+#: workflow_actions.py:51
+#, fuzzy
+#| msgid "transformation"
+msgid "Add transformation"
+msgstr "трансформация"
+
+#~ msgid "Enter a valid YAML value."
+#~ msgstr "Въведете валидна YAML стойност."

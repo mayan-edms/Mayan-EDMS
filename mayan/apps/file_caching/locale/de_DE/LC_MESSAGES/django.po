@@ -2,26 +2,27 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Roberto Rosario, 2019
 # Berny <berny@bernhard-marx.de>, 2019
 # Ingo Buchholz <ingo.buchholz@takwa.de>, 2020
 # Mathias Behrle <mathiasb@m9s.biz>, 2020
 # Marvin Haschker <marvin@haschker.me>, 2020
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-17 05:23+0000\n"
+"POT-Creation-Date: 2020-09-27 06:45+0000\n"
 "PO-Revision-Date: 2019-12-03 05:23+0000\n"
 "Last-Translator: Marvin Haschker <marvin@haschker.me>, 2020\n"
-"Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
+"Language-Team: German (Germany) (https://www.transifex.com/rosarior/"
+"teams/13584/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:28 events.py:6 permissions.py:5
@@ -40,79 +41,83 @@ msgstr "Cache bearbeitet"
 msgid "Cache purged"
 msgstr "Cache geleert"
 
-#: links.py:10
+#: links.py:19
 msgid "File caches"
 msgstr "Datei-Caches"
 
-#: links.py:14 links.py:18
+#: links.py:24 links.py:28
 msgid "Purge cache"
 msgstr "Cache leeren"
 
-#: models.py:29
+#: models.py:28
 msgid "Internal name of the defined storage for this cache."
 msgstr "Interner Name des Dateispeichers für diesen Cache."
 
-#: models.py:30
+#: models.py:29
 msgid "Defined storage name"
 msgstr "Definierter Speichername"
 
-#: models.py:33
+#: models.py:32
 msgid "Maximum size of the cache in bytes."
 msgstr "Maximale Größe des Cache in Bytes."
 
-#: models.py:35 models.py:54
+#: models.py:34 models.py:53
 msgid "Maximum size"
 msgstr "Maximale Größe"
 
-#: models.py:39 models.py:123
+#: models.py:38 models.py:136
 msgid "Cache"
 msgstr "Cache"
 
-#: models.py:40
+#: models.py:39
 msgid "Caches"
 msgstr "Caches"
 
-#: models.py:52
+#: models.py:51
 msgid "Size at which the cache will start deleting old entries."
 msgstr "Größe, bei der der Cache beginnt, alte Einträge zu löschen."
 
-#: models.py:74
+#: models.py:60
+msgid "Unknown"
+msgstr ""
+
+#: models.py:78
 msgid "Current size"
 msgstr "Momentane Größe"
 
-#: models.py:75
+#: models.py:79
 msgid "Current size of the cache."
 msgstr "Aktuelle Größe des Caches."
 
-#: models.py:126
+#: models.py:139
 msgid "Name"
 msgstr "Name"
 
-#: models.py:131 models.py:204
+#: models.py:144 models.py:217
 msgid "Cache partition"
 msgstr "Cache-Partition"
 
-#: models.py:132
+#: models.py:145
 msgid "Cache partitions"
 msgstr "Cache-Partitionen"
 
-#: models.py:207
+#: models.py:220
 msgid "Date time"
 msgstr "Datum & Zeit"
 
-#: models.py:209
+#: models.py:222
 msgid "Filename"
 msgstr "Dateiname"
 
-#: models.py:211
+#: models.py:224
 msgid "File size"
 msgstr "Dateigröße"
 
-#: models.py:219
+#: models.py:232
 msgid "Cache partition file"
 msgstr "Cache-Partitionsdatei"
 
-#: models.py:220
+#: models.py:233
 msgid "Cache partition files"
 msgstr "Cache-Partitionsdateien"
 

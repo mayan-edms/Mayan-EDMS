@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
@@ -11,45 +11,46 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-17 05:22+0000\n"
+"POT-Creation-Date: 2020-09-27 06:45+0000\n"
 "PO-Revision-Date: 2020-09-09 11:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
+"language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin.py:22
 msgid "None"
 msgstr "Ninguno"
 
-#: admin.py:24 links.py:93 models.py:52
+#: admin.py:24 links.py:93 models.py:51
 msgid "Document types"
 msgstr "Tipos de documento"
 
-#: apps.py:54 events.py:6
+#: apps.py:55 events.py:6 settings.py:8
 msgid "Document indexing"
 msgstr "Indexación de documentos"
 
-#: apps.py:129
+#: apps.py:146
 msgid "Total levels"
 msgstr "Niveles totales"
 
-#: apps.py:136
+#: apps.py:153
 msgid "Total documents"
 msgstr "Total de documentos"
 
-#: apps.py:142 apps.py:156 apps.py:176 apps.py:186
+#: apps.py:159 apps.py:173 apps.py:193 apps.py:203
 msgid "Level"
 msgstr "Nível"
 
-#: apps.py:164
+#: apps.py:181
 msgid "Levels"
 msgstr "Niveles"
 
-#: apps.py:171 models.py:395
+#: apps.py:188 models.py:394
 msgid "Documents"
 msgstr "Documentos"
 
@@ -77,7 +78,7 @@ msgstr "Plantilla"
 msgid "Creation date"
 msgstr "Fecha de creación"
 
-#: links.py:21 links.py:36 links.py:73 links.py:77 models.py:60 views.py:150
+#: links.py:21 links.py:36 links.py:73 links.py:77 models.py:59 views.py:150
 #: views.py:333
 msgid "Indexes"
 msgstr "Índices"
@@ -118,32 +119,35 @@ msgstr "Plantilla"
 msgid "New child node"
 msgstr "Nuevo nodo hijo"
 
-#: models.py:34
+#: models.py:33
 msgid "Short description of this index."
 msgstr "Breve descripción de este índice."
 
-#: models.py:35
+#: models.py:34
 msgid "Label"
 msgstr "Etiqueta"
 
-#: models.py:39
+#: models.py:38
 msgid "This value will be used by other apps to reference this index."
-msgstr "Este valor será utilizado por otras aplicaciones para hacer referencia a este índice."
+msgstr ""
+"Este valor será utilizado por otras aplicaciones para hacer referencia a "
+"este índice."
 
-#: models.py:40
+#: models.py:39
 msgid "Slug"
 msgstr "Identificador"
 
-#: models.py:45
-msgid ""
-"Causes this index to be visible and updated when document data changes."
-msgstr "Hace que este índice sea visible y actualizado cuando los datos de documentos cambien."
+#: models.py:44
+msgid "Causes this index to be visible and updated when document data changes."
+msgstr ""
+"Hace que este índice sea visible y actualizado cuando los datos de "
+"documentos cambien."
 
-#: models.py:48 models.py:230
+#: models.py:47 models.py:230
 msgid "Enabled"
 msgstr "Habilitado"
 
-#: models.py:59 models.py:214
+#: models.py:58 models.py:214
 msgid "Index"
 msgstr "Índice"
 
@@ -151,7 +155,10 @@ msgstr "Índice"
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
-msgstr "Ingrese una plantilla para renderizar. Utilice el lenguaje de plantillas predeterminado de Django (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
+msgstr ""
+"Ingrese una plantilla para renderizar. Utilice el lenguaje de plantillas "
+"predeterminado de Django (https://docs.djangoproject.com/en/1.11/ref/"
+"templates/builtins/)"
 
 #: models.py:222
 msgid "Indexing expression"
@@ -159,13 +166,17 @@ msgstr "Expresión de indexación"
 
 #: models.py:227
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr "Hace que este nodo sea visible y actualizado cuando los datos de los documentos son cambiados."
+msgstr ""
+"Hace que este nodo sea visible y actualizado cuando los datos de los "
+"documentos son cambiados."
 
 #: models.py:235
 msgid ""
-"Check this option to have this node act as a container for documents and not"
-" as a parent for further nodes."
-msgstr "Marque esta opción para que el nodo actúe como un contenedor de documentos y no como un padre para otros nodos secundarios."
+"Check this option to have this node act as a container for documents and not "
+"as a parent for further nodes."
+msgstr ""
+"Marque esta opción para que el nodo actúe como un contenedor de documentos y "
+"no como un padre para otros nodos secundarios."
 
 #: models.py:238
 msgid "Link documents"
@@ -188,7 +199,9 @@ msgstr "Nodo principal"
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
-msgstr "Error indexando documento: %(document)s; expresión: %(expression)s; %(exception)s"
+msgstr ""
+"Error indexando documento: %(document)s; expresión: %(expression)s; "
+"%(exception)s"
 
 #: models.py:346
 msgid "Index instance"
@@ -198,39 +211,39 @@ msgstr "Instancia de índice"
 msgid "Index instances"
 msgstr "Instancias de índices"
 
-#: models.py:388
+#: models.py:387
 msgid "Index template node"
 msgstr "Nodo de plantilla de indice"
 
-#: models.py:391 search.py:23
+#: models.py:390 search.py:23
 msgid "Value"
 msgstr "Valor"
 
-#: models.py:401 models.py:527
+#: models.py:400 models.py:529
 msgid "Index instance node"
 msgstr "Nodo de instancia de índice"
 
-#: models.py:402
+#: models.py:401
 msgid "Indexes instances node"
 msgstr "Nodo de instancias de índices"
 
-#: models.py:464
+#: models.py:466
 msgid "The path to the index including all ancestors."
 msgstr "La ruta al nodo del índice, incluidos todos los que lo contienen."
 
-#: models.py:466
+#: models.py:468
 msgid "Full path"
 msgstr "Ruta completa"
 
-#: models.py:520
+#: models.py:522
 msgid "Document index node instance"
 msgstr "Instancia del nodo del índice de documentos"
 
-#: models.py:521
+#: models.py:523
 msgid "Document indexes node instances"
 msgstr "Instancias de nodos de índices de documentos"
 
-#: models.py:528
+#: models.py:530
 msgid "Index instance nodes"
 msgstr "Nodos de instancia de índice"
 
@@ -306,6 +319,13 @@ msgstr "El padre no puede estar vacío."
 msgid "Parent must be from the same index template."
 msgstr "El padre debe ser de la misma plantilla de índice."
 
+#: settings.py:14
+msgid ""
+"Amount of time in seconds, a failed indexing task will wait before retrying. "
+"Lower values will increase the speed at which documents are indexed but will "
+"cause a higher count of failed/retried tasks in the queue."
+msgstr ""
+
 #: views.py:45
 msgid "Available indexes"
 msgstr "Índices disponibles"
@@ -319,7 +339,10 @@ msgid ""
 "Documents of this type will appear in the indexes linked when these are "
 "updated. Events of the documents of this type will trigger updates in the "
 "linked indexes."
-msgstr "Los documentos de este tipo aparecerán en los índices vinculados cuando se actualicen. Los eventos de los documentos de este tipo activarán actualizaciones en los índices vinculados."
+msgstr ""
+"Los documentos de este tipo aparecerán en los índices vinculados cuando se "
+"actualicen. Los eventos de los documentos de este tipo activarán "
+"actualizaciones en los índices vinculados."
 
 #: views.py:80
 #, python-format
@@ -339,9 +362,13 @@ msgstr "Editar índice: %s"
 #: views.py:144
 msgid ""
 "Indexes group document automatically into levels. Indexe are defined using "
-"template whose markers are replaced with direct properties of documents like"
-" label or description, or that of extended properties like metadata."
-msgstr "Los índices agrupan el documento automáticamente en niveles. Los índices se definen mediante una plantilla cuyos marcadores se reemplazan con propiedades directas de documentos como etiqueta o descripción, o el de propiedades extendidas como metadatos."
+"template whose markers are replaced with direct properties of documents like "
+"label or description, or that of extended properties like metadata."
+msgstr ""
+"Los índices agrupan el documento automáticamente en niveles. Los índices se "
+"definen mediante una plantilla cuyos marcadores se reemplazan con "
+"propiedades directas de documentos como etiqueta o descripción, o el de "
+"propiedades extendidas como metadatos."
 
 #: views.py:149
 msgid "There are no indexes."
@@ -369,7 +396,10 @@ msgid ""
 "Only the documents of the types selected will be shown in the index when "
 "built. Only the events of the documents of the types select will trigger "
 "updates in the index."
-msgstr "Solo los documentos de los tipos seleccionados se mostrarán en el índice cuando se construyan. Solo los eventos de los documentos de los tipos seleccionados activarán actualizaciones en el índice."
+msgstr ""
+"Solo los documentos de los tipos seleccionados se mostrarán en el índice "
+"cuando se construyan. Solo los eventos de los documentos de los tipos "
+"seleccionados activarán actualizaciones en el índice."
 
 #: views.py:209
 #, python-format
@@ -400,7 +430,9 @@ msgstr "¿Editar el nodo de plantilla de indice: %s?"
 msgid ""
 "This could mean that no index templates have been created or that there "
 "index templates but they are no properly defined."
-msgstr "Esto podría significar que no se han creado plantillas de índice o que existen plantillas de índice, pero no están definidas correctamente."
+msgstr ""
+"Esto podría significar que no se han creado plantillas de índice o que "
+"existen plantillas de índice, pero no están definidas correctamente."
 
 #: views.py:332
 msgid "There are no index instances available."
@@ -420,7 +452,9 @@ msgstr "Contenido del indice: %s"
 msgid ""
 "Assign the document type of this document to an index to have it appear in "
 "instances of those indexes organization units. "
-msgstr "Asigne el tipo de documento de este documento a un índice para que aparezca en unidades de organización de instancias de índices."
+msgstr ""
+"Asigne el tipo de documento de este documento a un índice para que aparezca "
+"en unidades de organización de instancias de índices."
 
 #: views.py:430
 msgid "This document is not in any index"

@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-17 05:22+0000\n"
+"POT-Creation-Date: 2020-09-27 06:45+0000\n"
 "PO-Revision-Date: 2020-04-14 08:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
+"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/"
+"el/)\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:30
@@ -26,11 +27,11 @@ msgstr ""
 msgid "Key ID"
 msgstr "Αναγνωριστικό κλειδιού"
 
-#: apps.py:56 forms.py:32 models.py:54
+#: apps.py:56 forms.py:32 models.py:53
 msgid "Type"
 msgstr "Τύπος"
 
-#: apps.py:60 forms.py:21 models.py:35
+#: apps.py:60 forms.py:21 models.py:34
 msgid "Creation date"
 msgstr "Ημερομηνία δημιουργίας"
 
@@ -38,15 +39,15 @@ msgstr "Ημερομηνία δημιουργίας"
 msgid "No expiration"
 msgstr "Χωρίς λήξη"
 
-#: apps.py:65 forms.py:25 models.py:39
+#: apps.py:65 forms.py:25 models.py:38
 msgid "Expiration date"
 msgstr "Ημερομηνία λήξης"
 
-#: apps.py:68 forms.py:30 models.py:46
+#: apps.py:68 forms.py:30 models.py:45
 msgid "Length"
 msgstr "Μήκος"
 
-#: apps.py:73 forms.py:17 models.py:51
+#: apps.py:73 forms.py:17 models.py:50
 msgid "User ID"
 msgstr "Αναγνωριστικό χρήστη"
 
@@ -58,11 +59,11 @@ msgstr ""
 msgid "None"
 msgstr "Κανένα"
 
-#: forms.py:29 models.py:43
+#: forms.py:29 models.py:42
 msgid "Fingerprint"
 msgstr "Δακτυλικό αποτύπωμα"
 
-#: forms.py:31 models.py:49
+#: forms.py:31 models.py:48
 msgid "Algorithm"
 msgstr "Αλγόρυθμος"
 
@@ -72,7 +73,8 @@ msgstr "Όρος"
 
 #: forms.py:46
 msgid "Name, e-mail, key ID or key fingerprint to look for."
-msgstr "Όνομα, e-mail, αναγνωριστικό κλειδιού ή δακτυλικό αποτύπωμα προς αναζήτηση."
+msgstr ""
+"Όνομα, e-mail, αναγνωριστικό κλειδιού ή δακτυλικό αποτύπωμα προς αναζήτηση."
 
 #: links.py:17
 msgid "Delete"
@@ -144,7 +146,9 @@ msgstr "Σφάλμα υπογραφής."
 
 #: literals.py:61
 msgid "Document is signed but no public key is available for verification."
-msgstr "Το έγγραφο είναι ψηφιακά υπογεγραμμένο αλλά δεν υπάρχει διαθέσιμο δημόσιο κλειδί για επαλήθευση."
+msgstr ""
+"Το έγγραφο είναι ψηφιακά υπογεγραμμένο αλλά δεν υπάρχει διαθέσιμο δημόσιο "
+"κλειδί για επαλήθευση."
 
 #: literals.py:66
 msgid "Document is signed, and signature is good."
@@ -154,27 +158,27 @@ msgstr "Το έγγρφο είναι υπογεγραμμένο ψηφιακά �
 msgid "Document is signed with a valid signature."
 msgstr "Το έγγραφο είναι υπογεγραμμένο με έγκυρη ψηφιακή υπογραφή."
 
-#: models.py:31
+#: models.py:30
 msgid "ASCII armored version of the key."
 msgstr "Το κλειδί σε μορφή ASCII armored,"
 
-#: models.py:32
+#: models.py:31
 msgid "Key data"
 msgstr "Δεδομένα κλειδιού"
 
-#: models.py:60
+#: models.py:59
 msgid "Key"
 msgstr "Κλειδί"
 
-#: models.py:61
+#: models.py:60
 msgid "Keys"
 msgstr "Κλειδιά"
 
-#: models.py:73
+#: models.py:72
 msgid "Invalid key data"
 msgstr "Άκυρα δεδομένα κλειδιού"
 
-#: models.py:76
+#: models.py:75
 msgid "Key already exists."
 msgstr "Το κλειδί υπάρχει ήδη."
 
@@ -271,8 +275,8 @@ msgstr "Ανέβασμανέου κλειδιού"
 
 #: views.py:173
 msgid ""
-"Private keys are used to signed documents. Private keys can only be uploaded"
-" by the user. The view to upload private and public keys is the same."
+"Private keys are used to signed documents. Private keys can only be uploaded "
+"by the user. The view to upload private and public keys is the same."
 msgstr ""
 
 #: views.py:178
@@ -281,8 +285,8 @@ msgstr ""
 
 #: views.py:196
 msgid ""
-"Public keys are used to verify signed documents. Public keys can be uploaded"
-" by the user or downloaded from keyservers. The view to upload private and "
+"Public keys are used to verify signed documents. Public keys can be uploaded "
+"by the user or downloaded from keyservers. The view to upload private and "
 "public keys is the same."
 msgstr ""
 

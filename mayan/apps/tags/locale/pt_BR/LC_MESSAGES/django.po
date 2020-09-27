@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
@@ -13,23 +13,24 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-17 05:23+0000\n"
+"POT-Creation-Date: 2020-09-27 06:45+0000\n"
 "PO-Revision-Date: 2020-08-18 13:34+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:50 apps.py:104 apps.py:111 apps.py:128 apps.py:130 events.py:5
-#: forms.py:15 links.py:23 menus.py:14 models.py:40 permissions.py:5
-#: views.py:220 workflow_actions.py:18 workflow_actions.py:66
+#: apps.py:50 apps.py:118 apps.py:125 events.py:5 forms.py:15 links.py:23
+#: menus.py:14 models.py:38 permissions.py:5 search.py:9 search.py:11
+#: views.py:221 workflow_actions.py:18 workflow_actions.py:61
 msgid "Tags"
 msgstr "Etiquetas"
 
-#: apps.py:124 models.py:34
+#: apps.py:138 models.py:32
 msgid "Documents"
 msgstr "Documentos"
 
@@ -49,7 +50,7 @@ msgstr "Etiqueta editada"
 msgid "Tag removed from document"
 msgstr "Etiqueta removida do documento"
 
-#: links.py:14 workflow_actions.py:73
+#: links.py:14 workflow_actions.py:68
 msgid "Remove tag"
 msgstr "Remover etiqueta"
 
@@ -85,35 +86,35 @@ msgstr "Retorna as etiquetas anexadas ao documento."
 msgid "get_tags()"
 msgstr "get_tags()"
 
-#: models.py:26
+#: models.py:24
 msgid "A short text used as the tag name."
 msgstr "Um texto curto usado como nome da etiqueta"
 
-#: models.py:27 search.py:14
+#: models.py:25
 msgid "Label"
 msgstr "Rótulo"
 
-#: models.py:30
+#: models.py:28
 msgid "The RGB color values for the tag."
 msgstr "O valor RGB da etiqueta."
 
-#: models.py:31 search.py:18
+#: models.py:29
 msgid "Color"
 msgstr "Cor"
 
-#: models.py:39
+#: models.py:37
 msgid "Tag"
 msgstr "Etiqueta"
 
-#: models.py:82
+#: models.py:80
 msgid "Preview"
 msgstr "Pré-visualizar"
 
-#: models.py:111
+#: models.py:109
 msgid "Document tag"
 msgstr "Etiqueta do documento"
 
-#: models.py:112
+#: models.py:110
 msgid "Document tags"
 msgstr "Etiquetas do documento"
 
@@ -145,165 +146,174 @@ msgstr "Remover etiquetas de documentos"
 msgid ""
 "Comma separated list of document primary keys to which this tag will be "
 "attached."
-msgstr "Lista separada por vírgulas das chaves primárias do documento para as quais essa etiqueta será anexada."
+msgstr ""
+"Lista separada por vírgulas das chaves primárias do documento para as quais "
+"essa etiqueta será anexada."
 
 #: serializers.py:85
 msgid ""
 "API URL pointing to a tag in relation to the document attached to it. This "
 "URL is different than the canonical tag URL."
-msgstr "URL da API que aponta para uma etiqueta em relação ao documento anexado a ela. Essa URL é diferente da etiqueta canônica da URL."
+msgstr ""
+"URL da API que aponta para uma etiqueta em relação ao documento anexado a "
+"ela. Essa URL é diferente da etiqueta canônica da URL."
 
 #: serializers.py:105
 msgid "Primary key of the tag to be added."
 msgstr "Chave primária da etiqueta a ser adicionada."
 
-#: views.py:35
+#: views.py:36
 #, python-format
 msgid "Tag attach request performed on %(count)d document"
 msgstr "Solicitação de anexo de etiqueta realizada no documento %(count)d"
 
-#: views.py:37
+#: views.py:38
 #, python-format
 msgid "Tag attach request performed on %(count)d documents"
 msgstr "Solicitação de anexo de etiqueta realizada em %(count)d documentos"
 
-#: views.py:44
+#: views.py:45
 msgid "Attach"
 msgstr "Anexar"
 
-#: views.py:46
+#: views.py:47
 #, python-format
 msgid "Attach tags to %(count)d document"
 msgid_plural "Attach tags to %(count)d documents"
 msgstr[0] "Anexar etiquetas para %(count)d documento"
 msgstr[1] "Anexar etiquetas para %(count)d documentos"
 
-#: views.py:58
+#: views.py:59
 #, python-format
 msgid "Attach tags to document: %s"
 msgstr "Anexar etiquetas ao documento: %s"
 
-#: views.py:67 wizard_steps.py:27
+#: views.py:68 wizard_steps.py:27
 msgid "Tags to be attached."
 msgstr "Etiquetas a serem anexadas."
 
-#: views.py:109
+#: views.py:110
 #, python-format
 msgid "Document \"%(document)s\" is already tagged as \"%(tag)s\""
 msgstr "Documento \"%(document)s\" já está marcado como  \"%(tag)s\""
 
-#: views.py:119
+#: views.py:120
 #, python-format
 msgid "Tag \"%(tag)s\" attached successfully to document \"%(document)s\"."
-msgstr "Etiqueta \"%(tag)s\" anexada com sucesso para o documento \"%(document)s\"."
+msgstr ""
+"Etiqueta \"%(tag)s\" anexada com sucesso para o documento \"%(document)s\"."
 
-#: views.py:128
+#: views.py:129
 msgid "Create tag"
 msgstr "Criar etiqueta"
 
-#: views.py:143
+#: views.py:144
 #, python-format
 msgid "Tag delete request performed on %(count)d tag"
 msgstr "Solicitação de exclusão de etiqueta executada na etiqueta %(count)d"
 
-#: views.py:145
+#: views.py:146
 #, python-format
 msgid "Tag delete request performed on %(count)d tags"
 msgstr "Solicitação de exclusão de etiquetas executada em %(count)d etiquetas"
 
-#: views.py:153
+#: views.py:154
 msgid "Will be removed from all documents."
 msgstr "Será removida de todos os documentos."
 
-#: views.py:155
+#: views.py:156
 msgid "Delete the selected tag?"
 msgid_plural "Delete the selected tags?"
 msgstr[0] "Apagar a etiqueta selecionada?"
 msgstr[1] "Apagar as etiquetas selecionadas?"
 
-#: views.py:165
-#, python-format
-msgid "Delete tag: %s"
+#: views.py:166
+#, fuzzy, python-format
+#| msgid "Delete tag: %s"
+msgid "Delete tag: %s?"
 msgstr "Excluir etiqueta: %s"
 
-#: views.py:176
+#: views.py:177
 #, python-format
 msgid "Tag \"%s\" deleted successfully."
 msgstr "Etiqueta \"%s\" removida com sucesso."
 
-#: views.py:181
+#: views.py:182
 #, python-format
 msgid "Error deleting tag \"%(tag)s\": %(error)s"
 msgstr "Erro ao excluir etiqueta \" %(tag)s \": %(error)s "
 
-#: views.py:197
+#: views.py:198
 #, python-format
 msgid "Edit tag: %s"
 msgstr "Editar etiqueta:%s"
 
-#: views.py:216
+#: views.py:217
 msgid ""
 "Tags are color coded properties that can be attached or removed from "
 "documents."
-msgstr "Etiquetas são propriedades com códigos de cor que podem ser anexadas ou removidas de documentos"
+msgstr ""
+"Etiquetas são propriedades com códigos de cor que podem ser anexadas ou "
+"removidas de documentos"
 
-#: views.py:219
+#: views.py:220
 msgid "No tags available"
 msgstr "Não há etiquetas disponíveis"
 
-#: views.py:243
+#: views.py:245
 #, python-format
 msgid "Documents with the tag: %s"
 msgstr "Os documentos com a etiqueta: %s"
 
-#: views.py:267
+#: views.py:269
 msgid "Document has no tags attached"
 msgstr "O documento não possui etiquetas anexadas"
 
-#: views.py:270
+#: views.py:272
 #, python-format
 msgid "Tags for document: %s"
 msgstr "Etiqueta para documento: %s"
 
-#: views.py:287
+#: views.py:289
 #, python-format
 msgid "Tag remove request performed on %(count)d document"
 msgstr "Solicitação de remoção de etiqueta realizado em %(count)d documento"
 
-#: views.py:289
+#: views.py:291
 #, python-format
 msgid "Tag remove request performed on %(count)d documents"
 msgstr "Solicitação de remoção de etiqueta executada em  %(count)d documentos"
 
-#: views.py:297
+#: views.py:299
 msgid "Remove"
 msgstr "Remover"
 
-#: views.py:299
+#: views.py:301
 #, python-format
 msgid "Remove tags from %(count)d document"
 msgid_plural "Remove tags from %(count)d documents"
 msgstr[0] "Remover etiqueta de %(count)d documento"
 msgstr[1] "Remover etiquetas de %(count)d documentos"
 
-#: views.py:311
+#: views.py:313
 #, python-format
 msgid "Remove tags from document: %s"
 msgstr "Remover etiquetas de documentos: %s"
 
-#: views.py:320
+#: views.py:322
 msgid "Tags to be removed."
 msgstr "Etiquetas a serem removidas."
 
-#: views.py:360
+#: views.py:362
 #, python-format
 msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s"
 msgstr "Documento \"%(document)s\" não estava etiquetado como \"%(tag)s"
 
-#: views.py:369
+#: views.py:371
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
-msgstr "Etiqueta \"%(tag)s\" removida com sucesso do documento \"%(document)s\"."
+msgstr ""
+"Etiqueta \"%(tag)s\" removida com sucesso do documento \"%(document)s\"."
 
 #: wizard_steps.py:15
 msgid "Select tags"
@@ -317,6 +327,6 @@ msgstr "Etiquetas a anexar no documento"
 msgid "Attach tag"
 msgstr "Anexar etiqueta"
 
-#: workflow_actions.py:68
+#: workflow_actions.py:63
 msgid "Tags to remove from the document"
 msgstr "Etiquetas a remover do documento"

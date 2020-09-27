@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2018
@@ -15,14 +15,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-17 05:22+0000\n"
+"POT-Creation-Date: 2020-09-27 06:45+0000\n"
 "PO-Revision-Date: 2020-08-17 15:08+0000\n"
 "Last-Translator: Marvin Haschker <marvin@haschker.me>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:30
@@ -33,11 +34,11 @@ msgstr "Django GPG"
 msgid "Key ID"
 msgstr "Schlüssel-ID"
 
-#: apps.py:56 forms.py:32 models.py:54
+#: apps.py:56 forms.py:32 models.py:53
 msgid "Type"
 msgstr "Typ"
 
-#: apps.py:60 forms.py:21 models.py:35
+#: apps.py:60 forms.py:21 models.py:34
 msgid "Creation date"
 msgstr "Erstellungsdatum"
 
@@ -45,15 +46,15 @@ msgstr "Erstellungsdatum"
 msgid "No expiration"
 msgstr "Ohne Ablaufdatum"
 
-#: apps.py:65 forms.py:25 models.py:39
+#: apps.py:65 forms.py:25 models.py:38
 msgid "Expiration date"
 msgstr "Ablaufdatum"
 
-#: apps.py:68 forms.py:30 models.py:46
+#: apps.py:68 forms.py:30 models.py:45
 msgid "Length"
 msgstr "Länge"
 
-#: apps.py:73 forms.py:17 models.py:51
+#: apps.py:73 forms.py:17 models.py:50
 msgid "User ID"
 msgstr "Benutzer-ID"
 
@@ -65,11 +66,11 @@ msgstr "GNU Privacy Guard - eine PGP-Implementierung."
 msgid "None"
 msgstr "Keine"
 
-#: forms.py:29 models.py:43
+#: forms.py:29 models.py:42
 msgid "Fingerprint"
 msgstr "Fingerabdruck"
 
-#: forms.py:31 models.py:49
+#: forms.py:31 models.py:48
 msgid "Algorithm"
 msgstr "Verfahren"
 
@@ -79,7 +80,9 @@ msgstr "Begriff"
 
 #: forms.py:46
 msgid "Name, e-mail, key ID or key fingerprint to look for."
-msgstr "Name, E-Mail, Schlüssel-ID oder Fingerabdruck des Schlüssels, der gesucht wird."
+msgstr ""
+"Name, E-Mail, Schlüssel-ID oder Fingerabdruck des Schlüssels, der gesucht "
+"wird."
 
 #: links.py:17
 msgid "Delete"
@@ -151,7 +154,9 @@ msgstr "Signaturfehler."
 
 #: literals.py:61
 msgid "Document is signed but no public key is available for verification."
-msgstr "Das Dokument ist signiert, aber kein öffentlicher Schlüssel zur Überprüfung verfügbar."
+msgstr ""
+"Das Dokument ist signiert, aber kein öffentlicher Schlüssel zur Überprüfung "
+"verfügbar."
 
 #: literals.py:66
 msgid "Document is signed, and signature is good."
@@ -161,27 +166,27 @@ msgstr "Dokument ist signiert mit gültiger Unterschrift."
 msgid "Document is signed with a valid signature."
 msgstr "Das Dokument ist mit einer gültigen Signatur signiert."
 
-#: models.py:31
+#: models.py:30
 msgid "ASCII armored version of the key."
 msgstr "ASCII Version des Schlüssels."
 
-#: models.py:32
+#: models.py:31
 msgid "Key data"
 msgstr "Schlüssel-Daten"
 
-#: models.py:60
+#: models.py:59
 msgid "Key"
 msgstr "Schlüssel"
 
-#: models.py:61
+#: models.py:60
 msgid "Keys"
 msgstr "Schlüssel"
 
-#: models.py:73
+#: models.py:72
 msgid "Invalid key data"
 msgstr "Ungültige Schlüssel-Daten"
 
-#: models.py:76
+#: models.py:75
 msgid "Key already exists."
 msgstr "Schlüssel existiert bereits."
 
@@ -215,7 +220,9 @@ msgstr "Unterschriften"
 
 #: settings.py:14
 msgid "Full path to the backend to be used to handle keys and signatures."
-msgstr "Vollständiger Pfad zum Backend, welcher für die Behandlung von Schlüsseln und Signaturen verwendet werden soll."
+msgstr ""
+"Vollständiger Pfad zum Backend, welcher für die Behandlung von Schlüsseln "
+"und Signaturen verwendet werden soll."
 
 #: settings.py:25
 msgid "Keyserver used to query for keys."
@@ -254,7 +261,10 @@ msgstr "Schlüssel %(key_id)s erfolgreich heruntergeladen"
 msgid ""
 "Use names, last names, key ids or emails to search public keys to import "
 "from the keyserver."
-msgstr "Namen, Nachnamen, Schlüssel-IDs oder E-Mail-Adressen bei der Suche nach öffentlichen Schlüsseln verwenden, um diese vom Schlüsselserver zu importieren."
+msgstr ""
+"Namen, Nachnamen, Schlüssel-IDs oder E-Mail-Adressen bei der Suche nach "
+"öffentlichen Schlüsseln verwenden, um diese vom Schlüsselserver zu "
+"importieren."
 
 #: views.py:114
 msgid "No results returned"
@@ -278,9 +288,12 @@ msgstr "Neuen Schlüssel hochladen"
 
 #: views.py:173
 msgid ""
-"Private keys are used to signed documents. Private keys can only be uploaded"
-" by the user. The view to upload private and public keys is the same."
-msgstr "Private Schlüssel werden für die Signatur von Dokumenten verwendet. Private Schlüssel können nur vom Benutzer selbst hochgeladen werden. Das Formular für das Hochladen von privaten und öffentlichen Schlüsseln ist dasselbe."
+"Private keys are used to signed documents. Private keys can only be uploaded "
+"by the user. The view to upload private and public keys is the same."
+msgstr ""
+"Private Schlüssel werden für die Signatur von Dokumenten verwendet. Private "
+"Schlüssel können nur vom Benutzer selbst hochgeladen werden. Das Formular "
+"für das Hochladen von privaten und öffentlichen Schlüsseln ist dasselbe."
 
 #: views.py:178
 msgid "There no private keys"
@@ -288,10 +301,14 @@ msgstr "Keine privaten Schlüssel vorhanden"
 
 #: views.py:196
 msgid ""
-"Public keys are used to verify signed documents. Public keys can be uploaded"
-" by the user or downloaded from keyservers. The view to upload private and "
+"Public keys are used to verify signed documents. Public keys can be uploaded "
+"by the user or downloaded from keyservers. The view to upload private and "
 "public keys is the same."
-msgstr "Öffentliche Schlüssel werden zur Verifzierung von signierten Dokumenten benutzt. Sie können von Benutzern hochgeladen oder von Schlüsselservern heruntergeladen werden. Die Ansicht zum Hochladen von privaten und öffentlichen Schlüssel ist identisch."
+msgstr ""
+"Öffentliche Schlüssel werden zur Verifzierung von signierten Dokumenten "
+"benutzt. Sie können von Benutzern hochgeladen oder von Schlüsselservern "
+"heruntergeladen werden. Die Ansicht zum Hochladen von privaten und "
+"öffentlichen Schlüssel ist identisch."
 
 #: views.py:202
 msgid "There no public keys"

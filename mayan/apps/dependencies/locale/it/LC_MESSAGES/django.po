@@ -2,25 +2,25 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2019
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2019
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2019
 # Roberto Rosario, 2020
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-17 05:22+0000\n"
+"POT-Creation-Date: 2020-09-27 06:45+0000\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: Roberto Rosario, 2020\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:24 links.py:41 permissions.py:5
@@ -39,11 +39,11 @@ msgstr "Nome interno"
 msgid "Description"
 msgstr "Descrizione "
 
-#: apps.py:45 classes.py:155
+#: apps.py:45 classes.py:138
 msgid "Type"
 msgstr "Tipo"
 
-#: apps.py:49 classes.py:157
+#: apps.py:49 classes.py:140
 msgid "Other data"
 msgstr "Altri dati"
 
@@ -51,129 +51,129 @@ msgstr "Altri dati"
 msgid "Declared by"
 msgstr "Dichiarato da"
 
-#: apps.py:57 classes.py:155
+#: apps.py:57 classes.py:138
 msgid "Version"
 msgstr "Versione"
 
-#: apps.py:61 classes.py:156 classes.py:810
+#: apps.py:61 classes.py:139 classes.py:780
 msgid "Environment"
 msgstr "Ambiente"
 
-#: apps.py:64 classes.py:157
+#: apps.py:64 classes.py:140
 msgid "Check"
 msgstr ""
 
-#: classes.py:155
+#: classes.py:138
 msgid "Name"
 msgstr "Nome "
 
-#: classes.py:156
+#: classes.py:139
 msgid "App"
 msgstr "App"
 
-#: classes.py:271
+#: classes.py:254
 msgid "Need to specify at least one: app_label or module."
 msgstr "È necessario specificarne almeno uno: app_label o module."
 
-#: classes.py:276
+#: classes.py:259
 #, python-format
 msgid "Dependency \"%s\" already registered."
 msgstr "Dipendenza \"%s\" già registrata."
 
-#: classes.py:302
+#: classes.py:285
 #, python-format
 msgid "Installing package: %s... "
 msgstr "Pacchetto di installazione: %s ..."
 
-#: classes.py:307
+#: classes.py:290
 msgid "Already installed."
 msgstr "Già installato."
 
-#: classes.py:310 classes.py:315 classes.py:319
+#: classes.py:293 classes.py:298 classes.py:302
 msgid "Complete."
 msgstr "Completare."
 
-#: classes.py:345
+#: classes.py:328
 msgid "Installed and correct version"
 msgstr "Versione installata e corretta"
 
-#: classes.py:347
+#: classes.py:330
 msgid "Missing or incorrect version"
 msgstr "Versione mancante o errata"
 
-#: classes.py:376
+#: classes.py:359
 msgid "None"
 msgstr "Nessuno"
 
-#: classes.py:385
+#: classes.py:368
 msgid "Not specified"
 msgstr "Non specificato"
 
-#: classes.py:388
+#: classes.py:371
 msgid "Patching files... "
 msgstr "Applicazione di patch ai file ..."
 
-#: classes.py:416
+#: classes.py:399
 msgid "Executables that are called directly by the code."
 msgstr "File eseguibili chiamati direttamente dal codice."
 
-#: classes.py:418
+#: classes.py:401
 msgid "Binary"
 msgstr "Binario"
 
-#: classes.py:435
+#: classes.py:418
 msgid ""
-"JavaScript libraries downloaded the from NPM registry and used for front-end"
-" functionality."
+"JavaScript libraries downloaded the from NPM registry and used for front-end "
+"functionality."
 msgstr ""
 "Le librerie JavaScript scaricate dal registro NPM e utilizzate per la "
 "funzionalità front-end."
 
-#: classes.py:438
+#: classes.py:421
 msgid "JavaScript"
 msgstr "JavaScript"
 
-#: classes.py:472 classes.py:723
+#: classes.py:451 classes.py:693
 msgid "Downloading... "
 msgstr "Download in corso..."
 
-#: classes.py:475
+#: classes.py:454
 msgid "Verifying... "
 msgstr "Verifica..."
 
-#: classes.py:478 classes.py:726
+#: classes.py:457 classes.py:696
 msgid "Extracting... "
 msgstr "Estrazione..."
 
-#: classes.py:665
+#: classes.py:635
 msgid "Python packages downloaded from PyPI."
 msgstr "Pacchetti Python scaricati da PyPI."
 
-#: classes.py:667
+#: classes.py:637
 msgid "Python"
 msgstr "Python"
 
-#: classes.py:704
+#: classes.py:674
 msgid "Fonts downloaded from fonts.googleapis.com."
 msgstr "Caratteri scaricati da fonts.googleapis.com."
 
-#: classes.py:706
+#: classes.py:676
 msgid "Google font"
 msgstr "Carattere di Google"
 
-#: classes.py:792
+#: classes.py:762
 msgid "Declared in app"
 msgstr "Dichiarato in app"
 
-#: classes.py:793
+#: classes.py:763
 msgid "Show dependencies by the app that declared them."
 msgstr "Mostra le dipendenze dall'app che le ha dichiarate."
 
-#: classes.py:797
+#: classes.py:767
 msgid "Class"
 msgstr "Classe"
 
-#: classes.py:798
+#: classes.py:768
 msgid ""
 "Show the different classes of dependencies. Classes are usually divided by "
 "language or the file types of the dependency."
@@ -181,11 +181,11 @@ msgstr ""
 "Mostra le diverse classi di dipendenze. Le classi sono generalmente divise "
 "per lingua o tipi di file della dipendenza."
 
-#: classes.py:803
+#: classes.py:773
 msgid "State"
 msgstr "Stato"
 
-#: classes.py:804
+#: classes.py:774
 msgid ""
 "Show the different states of the dependencies. True means that the "
 "dependencies is installed and is of a correct version. False means the "
@@ -195,7 +195,7 @@ msgstr ""
 "sono installate e hanno una versione corretta. Falso significa che mancano "
 "le dipendenze o è presente una versione errata."
 
-#: classes.py:811
+#: classes.py:781
 msgid ""
 "Dependencies required for an environment might not be required for another. "
 "Example environments: Production, Development."
@@ -203,7 +203,7 @@ msgstr ""
 "Le dipendenze richieste per un ambiente potrebbero non essere richieste per "
 "un altro. Ambienti di esempio: produzione, sviluppo."
 
-#: environments.py:19
+#: environments.py:18
 msgid ""
 "Environment used for building distributable packages of the software. End "
 "users can ignore missing dependencies under this environment."
@@ -211,24 +211,23 @@ msgstr ""
 "Ambiente utilizzato per creare pacchetti distribuibili del software. Gli "
 "utenti finali possono ignorare le dipendenze mancanti in questo ambiente."
 
-#: environments.py:22
+#: environments.py:21
 msgid "Build"
 msgstr ""
 
-#: environments.py:26
+#: environments.py:25
 msgid ""
 "Environment used for developers to make code changes. End users can ignore "
 "missing dependencies under this environment."
 msgstr ""
 "Ambiente utilizzato dagli sviluppatori per apportare modifiche al codice. "
-"Gli utenti finali possono ignorare le dipendenze mancanti in questo "
-"ambiente."
+"Gli utenti finali possono ignorare le dipendenze mancanti in questo ambiente."
 
-#: environments.py:28
+#: environments.py:27
 msgid "Development"
 msgstr ""
 
-#: environments.py:32
+#: environments.py:31
 msgid ""
 "Environment used for building the documentation. End users can ignore "
 "missing dependencies under this environment."
@@ -236,11 +235,11 @@ msgstr ""
 "Ambiente utilizzato per la costruzione della documentazione. Gli utenti "
 "finali possono ignorare le dipendenze mancanti in questo ambiente."
 
-#: environments.py:34
+#: environments.py:33
 msgid "Documentation"
 msgstr "Documentazione"
 
-#: environments.py:38
+#: environments.py:37
 msgid ""
 "Normal environment for end users. A missing dependency under this "
 "environment will result in issues and errors during normal use."
@@ -248,11 +247,11 @@ msgstr ""
 "Ambiente normale per gli utenti finali. Una dipendenza mancante in questo "
 "ambiente comporterà problemi ed errori durante il normale utilizzo."
 
-#: environments.py:40
+#: environments.py:39
 msgid "Production"
 msgstr "Produzione"
 
-#: environments.py:44
+#: environments.py:43
 msgid ""
 "Environment used running the test suit to verify the functionality of the "
 "code. Dependencies in this environment are not needed for normal production "
@@ -262,7 +261,7 @@ msgstr ""
 "funzionalità del codice. Le dipendenze in questo ambiente non sono "
 "necessarie per il normale utilizzo di produzione."
 
-#: environments.py:47
+#: environments.py:46
 msgid "Testing"
 msgstr ""
 
@@ -302,8 +301,8 @@ msgid ""
 "Comma separated names of dependencies to show in the list while excluding "
 "every other one."
 msgstr ""
-"Nomi separati da virgole delle dipendenze da mostrare nell'elenco escludendo"
-" ogni altro."
+"Nomi separati da virgole delle dipendenze da mostrare nell'elenco escludendo "
+"ogni altro."
 
 #: management/commands/installdependencies.py:13
 msgid "Process a specific app."
