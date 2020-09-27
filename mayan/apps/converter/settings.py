@@ -38,8 +38,7 @@ setting_graphics_backend_arguments = namespace.add_setting(
 setting_storage_backend = namespace.add_setting(
     default='django.core.files.storage.FileSystemStorage',
     global_name='CONVERTER_ASSET_STORAGE_BACKEND', help_text=_(
-        'Path to the Storage subclass to use when storing detached '
-        'signatures.'
+        'Path to the Storage subclass to use when storing assets.'
     )
 )
 setting_storage_backend_arguments = namespace.add_setting(

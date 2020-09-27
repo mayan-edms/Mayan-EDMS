@@ -8,7 +8,7 @@ from .permissions import (
 
 layer_decorations = Layer(
     empty_results_text=_(
-        'Decoration are visual elements that add contextual information to '
+        'Decorations are visual elements that add contextual information to '
         'images.'
     ), label=_('Decorations'), name='decorations',
     order=10, permissions={
