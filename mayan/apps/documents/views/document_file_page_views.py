@@ -29,6 +29,7 @@ from ..settings import (
     setting_rotation_step, setting_zoom_percent_step, setting_zoom_max_level,
     setting_zoom_min_level
 )
+from ..tasks import task_document_file_page_count_update
 
 __all__ = (
     'DocumentFilePageListView',

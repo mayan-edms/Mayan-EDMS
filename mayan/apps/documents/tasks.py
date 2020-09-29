@@ -84,7 +84,7 @@ def task_document_file_page_image_generate(
 
 
 @app.task(bind=True, default_retry_delay=UPLOAD_NEW_VERSION_RETRY_DELAY, ignore_result=True)
-def task_document_file_upload(self, document_id, shared_uploaded_file_id, user_id, comment=None):
+def task_document_file_upload(self, action, document_id, shared_uploaded_file_id, user_id, comment=None):
     Document = apps.get_model(
         app_label='documents', model_name='Document'
     )
@@ -115,11 +115,18 @@ def task_document_file_upload(self, document_id, shared_uploaded_file_id, user_i
         raise self.retry(exc=exception)
 
     with shared_file.open() as file_object:
-        document_file = DocumentFile(
-            document=document, comment=comment or '', file=file_object
-        )
+        #document_file = DocumentFile(
+        #    document=document, comment=comment or '', file=file_object
+        #)
         try:
-            document_file.save(_user=user)
+            #document_file.save(_user=user)
+            #document_file = DocumentFile(
+            #    document=document, comment=comment or '', file=file_object
+            #)
+            document_file = document.new_file(
+                action=action, comment=comment, file_object=file_object,
+                _user=user
+            )
         except Warning as warning:
             # New document file are blocked
             logger.info(
@@ -154,7 +161,6 @@ def task_document_file_upload(self, document_id, shared_uploaded_file_id, user_i
                     'Operational error during attempt to delete shared '
                     'file: %s; %s.', shared_file, exception
                 )
-
 
 # Document type
 

@@ -72,8 +72,11 @@ class MetadataApp(MayanAppConfig):
         Document = apps.get_model(
             app_label='documents', model_name='Document'
         )
-        DocumentPageResult = apps.get_model(
-            app_label='documents', model_name='DocumentPageResult'
+        DocumentFilePageResult = apps.get_model(
+            app_label='documents', model_name='DocumentFilePageResult'
+        )
+        DocumentVersionPageResult = apps.get_model(
+            app_label='documents', model_name='DocumentVersionPageResult'
         )
 
         DocumentType = apps.get_model(
@@ -182,7 +185,11 @@ class MetadataApp(MayanAppConfig):
         )
 
         SourceColumn(
-            source=DocumentPageResult, label=_('Metadata'),
+            source=DocumentFilePageResult, label=_('Metadata'),
+            func=widget_document_metadata
+        )
+        SourceColumn(
+            source=DocumentVersionPageResult, label=_('Metadata'),
             func=widget_document_metadata
         )
 

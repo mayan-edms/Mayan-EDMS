@@ -31,7 +31,7 @@ from ..settings import (
 
 from .document_version_models import DocumentVersion
 
-__all__ = ('DocumentVersionPage',)
+__all__ = ('DocumentVersionPage', 'DocumentVersionPageResult')
 logger = logging.getLogger(name=__name__)
 
 
@@ -331,3 +331,11 @@ class DocumentVersionPage(models.Model):
         images.
         """
         return '{}-{}'.format(self.document_version.uuid, self.pk)
+
+
+class DocumentVersionPageResult(DocumentVersionPage):
+    class Meta:
+        ordering = ('document_version__document', 'page_number')
+        proxy = True
+        verbose_name = _('Document version page')
+        verbose_name_plural = _('Document version pages')

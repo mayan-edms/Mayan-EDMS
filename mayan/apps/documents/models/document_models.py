@@ -14,7 +14,10 @@ from ..events import (
     event_document_create, event_document_properties_edit,
     event_document_trashed, event_document_type_changed,
 )
-from ..literals import DEFAULT_LANGUAGE
+from ..literals import (
+    DEFAULT_LANGUAGE, DOCUMENT_FILE_ACTION_PAGES_APPEND,
+    DOCUMENT_FILE_ACTION_PAGES_KEEP, DOCUMENT_FILE_ACTION_PAGES_NEW
+)
 from ..managers import DocumentManager, TrashCanManager, ValidDocumentManager
 from ..signals import signal_post_document_type_change
 
@@ -225,19 +228,44 @@ class Document(HooksMixin, models.Model):
         return (self.uuid,)
     natural_key.dependencies = ['documents.DocumentType']
 
-    def new_file(self, file_object, comment=None, _user=None):
+    def new_file(self, action, file_object, comment=None, _user=None):
         logger.info('Creating new document file for document: %s', self)
         DocumentFile = apps.get_model(
             app_label='documents', model_name='DocumentFile'
         )
+        try:
+            document_file = DocumentFile(
+                document=self, comment=comment or '', file=File(file=file_object)
+            )
+            #document_file = self.files(
+            #    comment=comment or '', file=File(file=file_object)
+            #)
+            document_file.save(_user=_user)
+        except Exception as exception:
+            logger.error('Error creating new file for document: %s', self)
+            raise
+        else:
+            logger.info('New document file queued for document: %s', self)
 
-        document_file = DocumentFile(
-            document=self, comment=comment or '', file=File(file=file_object)
-        )
-        document_file.save(_user=_user)
+            if action == DOCUMENT_FILE_ACTION_PAGES_NEW:
+                document_version = self.versions.create(comment=comment)
+                document_version.pages_remap(
+                    document_file_page_list=list(document_file.pages.all())
+                )
+            elif action == DOCUMENT_FILE_ACTION_PAGES_APPEND:
+                document_file_page_list = [
+                    document_version_page.content_object for document_version_page in self.latest_version.pages.all()
 
-        logger.info('New document file queued for document: %s', self)
-        return document_file
+                ]
+                document_file_page_list.append(document_file.pages.all())
+                document_version = self.versions.create(comment=comment)
+                document_version.pages_remap(
+                    document_file_page_list=document_file_page_list
+                )
+            elif action == DOCUMENT_FILE_ACTION_PAGES_KEEP:
+                return document_file
+
+            return document_file
 
     #def open(self, *args, **kwargs):
     #    """

@@ -153,7 +153,7 @@ class SourcesApp(MayanAppConfig):
             links=(link_document_file_upload,),
             sources=(
                 'documents:document_file_list',
-                'documents:document_file_revert',
+                'documents:document_file_delete',
                 'sources:document_file_upload'
             )
         )

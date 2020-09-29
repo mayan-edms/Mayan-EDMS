@@ -133,22 +133,38 @@ class DocumentVersion(models.Model):
         queryset = ModelQueryFields.get(model=DocumentVersionPage).get_queryset()
         return queryset.filter(pk__in=self.version_pages.all())
 
-    def pages_reset(self):
+    def pages_remap(self, document_file_page_list=None):
+        #with transaction.atomic():
+        for page in self.pages.all():
+            page.delete()
+
+        for document_file_page in document_file_page_list or ():
+            self.pages.create(
+                content_object=document_file_page,
+                page_number=document_file_page.page_number
+            )
+
+    def pages_reset(self, document_file=None):
         """
         Remove all page mappings and recreate them to be a 1 to 1 match
-        to the latest document file.
+        to the latest document file or the document file supplied.
         """
-        with transaction.atomic():
-            for page in self.pages.all():
-                page.delete()
+        latest_file = document_file or self.document.latest_file
+        if latest_file:
+            document_file_page_list = self.pages_remap
+        return self.pages_remap(document_file_page_list=document_file_page_list)
 
-            latest_file = self.document.latest_file
-            if latest_file:
-                for document_file_page in latest_file.pages.all():
-                    self.pages.create(
-                        content_object=document_file_page,
-                        page_number=document_file_page.page_number
-                    )
+        #with transaction.atomic():
+        #    for page in self.pages.all():
+        #        page.delete()
+
+        #    latest_file = document_file or self.document.latest_file
+        #    if latest_file:
+        #        for document_file_page in latest_file.pages.all():
+        #            self.pages.create(
+        #                content_object=document_file_page,
+        #                page_number=document_file_page.page_number
+        #            )
 
     @method_event(
         event_manager_class=EventManagerSave,

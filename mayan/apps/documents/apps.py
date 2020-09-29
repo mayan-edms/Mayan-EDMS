@@ -30,6 +30,7 @@ from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.rest_api.fields import DynamicSerializerField
 from mayan.apps.views.html_widgets import TwoStateWidget
+from .classes import *
 
 from .dashboard_widgets import (
     DashboardWidgetDocumentFilePagesTotal, DashboardWidgetDocumentsInTrash,
@@ -154,7 +155,7 @@ class DocumentsApp(MayanAppConfig):
     verbose_name = _('Documents')
 
     def ready(self):
-        super(DocumentsApp, self).ready()
+        super().ready()
 
         DeletedDocument = self.get_model(model_name='DeletedDocument')
         Document = self.get_model(model_name='Document')
@@ -420,6 +421,10 @@ class DocumentsApp(MayanAppConfig):
                 instance=context['object']
             ), html_extra_classes='text-center document-thumbnail-list',
             label=_('Thumbnail'), source=Document
+        )
+        SourceColumn(
+            func=lambda context: 'Files: {}'.format(context['object'].files.count()),
+            label=_('Files'), source=Document
         )
         SourceColumn(
             attribute='document_type', is_sortable=True, source=Document,

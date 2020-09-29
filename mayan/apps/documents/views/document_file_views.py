@@ -22,7 +22,6 @@ from ..permissions import (
     permission_document_file_delete, permission_document_file_download,
     permission_document_file_tools, permission_document_file_view
 )
-from ..tasks import task_document_file_page_count_update
 
 __all__ = (
     'DocumentFileDeleteView', 'DocumentFileDownloadFormView',

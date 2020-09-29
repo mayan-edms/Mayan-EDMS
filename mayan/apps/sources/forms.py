@@ -6,6 +6,7 @@ from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.documents.forms import DocumentForm
+from mayan.apps.documents.literals import DOCUMENT_FILE_ACTION_PAGE_CHOICES
 
 from .models import (
     IMAPEmail, POP3Email, SaneScanner, StagingFolderSource, WebFormSource,
@@ -26,7 +27,13 @@ class NewFileForm(forms.Form):
         label=_('Comment'), required=False,
         widget=forms.widgets.Textarea(attrs={'rows': 4}),
     )
-
+    action = forms.ChoiceField(
+        choices=DOCUMENT_FILE_ACTION_PAGE_CHOICES, label=_('Action'),
+        help_text=_(
+            'The action to take regarding the pages of the new file '
+            'being uploaded'
+        )
+    )
 
 class UploadBaseForm(forms.Form):
     def __init__(self, *args, **kwargs):

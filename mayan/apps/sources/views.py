@@ -10,6 +10,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.common.menus import menu_facet
+from mayan.apps.documents.literals import DOCUMENT_FILE_ACTION_PAGES_NEW
 from mayan.apps.documents.models import (
     DocumentType, Document, DocumentFile
 )
@@ -443,19 +444,19 @@ class UploadInteractiveView(UploadBaseView):
                 )
 
                 task_source_handle_upload.apply_async(
-                    kwargs=dict(
-                        description=forms['document_form'].cleaned_data.get('description'),
-                        document_type_id=self.document_type.pk,
-                        expand=expand,
-                        label=forms['document_form'].get_final_label(
+                    kwargs={
+                        'description': forms['document_form'].cleaned_data.get('description'),
+                        'document_type_id': self.document_type.pk,
+                        'expand': expand,
+                        'label': forms['document_form'].get_final_label(
                             filename=force_text(shared_uploaded_file)
                         ),
-                        language=forms['document_form'].cleaned_data.get('language'),
-                        querystring=querystring.urlencode(),
-                        shared_uploaded_file_id=shared_uploaded_file.pk,
-                        source_id=self.source.pk,
-                        user_id=user_id,
-                    )
+                        'language': forms['document_form'].cleaned_data.get('language'),
+                        'querystring': querystring.urlencode(),
+                        'shared_uploaded_file_id': shared_uploaded_file.pk,
+                        'source_id': self.source.pk,
+                        'user_id': user_id,
+                    }
                 )
             except Exception as exception:
                 message = _(
@@ -599,12 +600,17 @@ class DocumentFileUploadInteractiveView(UploadBaseView):
                     }
                 )
 
-                task_document_file_upload.apply_async(kwargs=dict(
-                    shared_uploaded_file_id=shared_uploaded_file.pk,
-                    document_id=self.document.pk,
-                    user_id=user_id,
-                    comment=forms['document_form'].cleaned_data.get('comment')
-                ))
+                task_document_file_upload.apply_async(
+                    kwargs={
+                        'action': int(
+                            forms['document_form'].cleaned_data.get('action')
+                        ),
+                        'comment': forms['document_form'].cleaned_data.get('comment'),
+                        'document_id': self.document.pk,
+                        'shared_uploaded_file_id': shared_uploaded_file.pk,
+                        'user_id': user_id
+                    }
+                )
             except Exception as exception:
                 message = _(
                     'Error executing document file upload task; '
@@ -653,6 +659,9 @@ class DocumentFileUploadInteractiveView(UploadBaseView):
         )
 
         return context
+
+    def get_document_form_initial(self):
+        return {'action': DOCUMENT_FILE_ACTION_PAGES_NEW}
 
     def get_form_classes(self):
         source_form_class = get_upload_form_class(
