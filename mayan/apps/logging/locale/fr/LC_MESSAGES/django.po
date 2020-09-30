@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"POT-Creation-Date: 2020-09-30 04:22+0000\n"
 "PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2020\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -37,7 +37,7 @@ msgstr "Erreurs"
 
 #: links.py:18
 msgid "Clear errors"
-msgstr ""
+msgstr "Effacer les erreurs"
 
 #: models.py:10 models.py:38
 msgid "Internal name"
@@ -45,15 +45,15 @@ msgstr "Nom interne"
 
 #: models.py:15 models.py:35
 msgid "Error log"
-msgstr ""
+msgstr "Journal d'erreur"
 
 #: models.py:16
 msgid "Error logs"
-msgstr ""
+msgstr "Journal des erreurs"
 
 #: models.py:25
 msgid "App label"
-msgstr ""
+msgstr "Étiquette de l'application"
 
 #: models.py:43 models.py:60
 msgid "Error log partition"

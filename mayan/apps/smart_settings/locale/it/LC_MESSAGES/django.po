@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:34+0000\n"
-"PO-Revision-Date: 2020-08-18 07:08+0000\n"
+"POT-Creation-Date: 2020-09-30 04:23+0000\n"
+"PO-Revision-Date: 2020-09-30 04:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -46,7 +46,7 @@ msgstr "Queste impostazioni vengono sovrascritte da una variabile di ambiente?"
 
 #: forms.py:12
 msgid "Enter the new setting value."
-msgstr ""
+msgstr "Immettere il nuovo valore di impostazione."
 
 #: forms.py:28
 #, python-format
@@ -67,7 +67,7 @@ msgstr "Modifica"
 
 #: permissions.py:10
 msgid "Edit settings"
-msgstr ""
+msgstr "Modificare le impostazioni"
 
 #: permissions.py:13
 msgid "View settings"
@@ -338,18 +338,18 @@ msgstr ""
 
 #: views.py:21
 msgid "Setting updated successfully."
-msgstr ""
+msgstr "Impostazione aggiornata con successo."
 
 #: views.py:30
 #, python-format
 msgid "Edit setting: %s"
-msgstr ""
+msgstr "Modifica impostazione: %s"
 
 #: views.py:55
 msgid ""
 "Settings inherited from an environment variable take precedence and cannot "
 "be changed in this view. "
-msgstr ""
+msgstr "Le impostazioni ereditate da una variabile di ambiente hanno la precedenza e non possono essere modificate in questa vista."
 
 #: views.py:58
 #, python-format

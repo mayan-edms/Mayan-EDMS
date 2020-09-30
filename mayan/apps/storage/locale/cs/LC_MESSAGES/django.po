@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:34+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
+"POT-Creation-Date: 2020-09-30 04:23+0000\n"
+"PO-Revision-Date: 2020-09-29 08:55+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
@@ -76,7 +76,7 @@ msgstr "Sdílené nahrané soubory"
 
 #: queues.py:11
 msgid "Storage periodic"
-msgstr ""
+msgstr "Pravidelné ukládání"
 
 #: queues.py:16
 msgid "Delete stale uploads"

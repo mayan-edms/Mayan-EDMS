@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:34+0000\n"
-"PO-Revision-Date: 2020-08-18 04:38+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-09-30 04:22+0000\n"
+"PO-Revision-Date: 2020-09-29 12:57+0000\n"
+"Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -248,7 +248,7 @@ msgstr "Calea către subclasa de stocare care trebuie utilizată la stocarea sem
 
 #: settings.py:28
 msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND."
-msgstr ""
+msgstr "Parametri de transmis la SIGNATURE_STORAGE_BACKEND."
 
 #: storages.py:13
 msgid ""

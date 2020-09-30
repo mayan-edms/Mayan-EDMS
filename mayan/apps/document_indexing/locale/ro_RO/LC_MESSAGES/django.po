@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:34+0000\n"
-"PO-Revision-Date: 2020-09-27 06:46+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-09-30 04:22+0000\n"
+"PO-Revision-Date: 2020-09-29 12:55+0000\n"
+"Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -299,18 +299,18 @@ msgstr "Suma de control a documentului"
 
 #: serializers.py:191
 msgid "Parent cannot be empty."
-msgstr ""
+msgstr "Părintele nu poate fi vid."
 
 #: serializers.py:198
 msgid "Parent must be from the same index template."
-msgstr ""
+msgstr "Părintele trebuie să provină din același șablon de index."
 
 #: settings.py:14
 msgid ""
 "Amount of time in seconds, a failed indexing task will wait before retrying."
 " Lower values will increase the speed at which documents are indexed but "
 "will cause a higher count of failed/retried tasks in the queue."
-msgstr ""
+msgstr "Cantitatea de timp în secunde pe care o sarcină de indexare eșuată o va aștepta înainte de a reîncerca. Valorile mai mici vor crește viteza cu care sunt indexate documentele, dar vor determina un număr mai mare de sarcini eșuate / reîncercate în coadă."
 
 #: views.py:45
 msgid "Available indexes"
@@ -449,9 +449,9 @@ msgstr[2] "%(count)d indexări în coada pentru reconstrucție."
 #, python-format
 msgid "%(count)d index reset."
 msgid_plural "%(count)d indexes reset."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "."
+msgstr[1] "%(count)d resetarea indexurilor."
+msgstr[2] "%(count)d  indexuri resetate."
 
 #: views.py:506
 msgid "Index templates for which their instances will be deleted."

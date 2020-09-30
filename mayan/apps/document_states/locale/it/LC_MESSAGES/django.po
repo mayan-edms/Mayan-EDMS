@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:34+0000\n"
-"PO-Revision-Date: 2020-09-27 06:46+0000\n"
+"POT-Creation-Date: 2020-09-30 04:22+0000\n"
+"PO-Revision-Date: 2020-09-30 04:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -44,17 +44,17 @@ msgstr "Restituisce il valore di completamento dello stato corrente del flusso d
 msgid ""
 "Return the last workflow instance log entry. The log entry itself has the "
 "following fields: datetime, transition, user, and comment."
-msgstr ""
+msgstr "Restituisce l'ultima voce di log dell'istanza del flusso di lavoro. La stessa voce di registro ha i seguenti campi: datetime, transizione, utente e commento."
 
 #: apps.py:234
 msgid "Get last log entry"
-msgstr ""
+msgstr "Ottieni l'ultima voce di registro"
 
 #: apps.py:240
 msgid ""
 "Return the current context dictionary which includes runtime data from the "
 "workflow transition fields."
-msgstr ""
+msgstr "Restituisce il dizionario di contesto corrente che include i dati di runtime dai campi di transizione del flusso di lavoro."
 
 #: apps.py:242
 msgid "Get the context"
@@ -107,7 +107,7 @@ msgstr "Tipo di azione"
 #: apps.py:381
 msgid ""
 "Triggers are system events that will cause the transition to be applied."
-msgstr ""
+msgstr "I trigger sono eventi di sistema che causeranno l'applicazione della transizione."
 
 #: apps.py:383
 msgid "Triggers"
@@ -128,7 +128,7 @@ msgstr "Documenti"
 #: classes.py:138
 #, python-format
 msgid "%(field_name)s template error: %(exception)s"
-msgstr ""
+msgstr "%(field_name)s errore modello: %(exception)s"
 
 #: events.py:10
 msgid "Workflow created"
@@ -198,7 +198,7 @@ msgstr "Modifica"
 
 #: links.py:54
 msgid "Launch workflow"
-msgstr ""
+msgstr "Avvia flusso di lavoro"
 
 #: links.py:66
 msgid "Preview"
@@ -234,7 +234,7 @@ msgstr "Transizioni"
 
 #: links.py:165 links.py:171 workflow_actions.py:83
 msgid "Launch workflows"
-msgstr ""
+msgstr "Avvia flussi di lavoro"
 
 #: links.py:177
 msgid "Create field"
@@ -262,7 +262,7 @@ msgstr "Avvia tutti i workflow"
 
 #: literals.py:9
 msgid "Character"
-msgstr ""
+msgstr "Carattere"
 
 #: literals.py:10
 msgid "Number (Integer)"
@@ -282,11 +282,11 @@ msgstr "All'uscita"
 
 #: models.py:55
 msgid "Launch workflow when document is created."
-msgstr ""
+msgstr "Avvia il flusso di lavoro quando viene creato il documento."
 
 #: models.py:56
 msgid "Auto launch"
-msgstr ""
+msgstr "Avvio automatico"
 
 #: models.py:60
 msgid ""
@@ -504,7 +504,7 @@ msgstr "Una classe opzionale per modificare la presentazione predefinita del cam
 
 #: models.py:892
 msgid "Widget class"
-msgstr ""
+msgstr "Classe di widget"
 
 #: models.py:896
 msgid "A group of keyword arguments to customize the widget. Use YAML format."
@@ -536,19 +536,19 @@ msgstr "Eventi scatenati dalla transizione del workflow"
 
 #: models.py:960
 msgid "Workflow runtime proxy"
-msgstr ""
+msgstr "Proxy di runtime del flusso di lavoro"
 
 #: models.py:961
 msgid "Workflow runtime proxies"
-msgstr ""
+msgstr "Proxy di runtime del flusso di lavoro"
 
 #: models.py:978
 msgid "Workflow state runtime proxy"
-msgstr ""
+msgstr "Proxy di runtime dello stato del flusso di lavoro"
 
 #: models.py:979
 msgid "Workflow state runtime proxies"
-msgstr ""
+msgstr "Proxy di runtime dello stato del flusso di lavoro"
 
 #: permissions.py:6
 msgid "Document workflows"
@@ -584,11 +584,11 @@ msgstr "Stati documento"
 
 #: queues.py:10
 msgid "Document states fast"
-msgstr ""
+msgstr "Stati di documenti velocemente"
 
 #: queues.py:15
 msgid "Launch all workflows for all documents"
-msgstr ""
+msgstr "Avvia tutti i flussi di lavoro per tutti i documenti"
 
 #: queues.py:19
 msgid "Launch a workflow"
@@ -596,11 +596,11 @@ msgstr "Avvia un flusso di lavoro"
 
 #: queues.py:23
 msgid "Launch a workflow for a document"
-msgstr ""
+msgstr "Avvia un flusso di lavoro per un documento"
 
 #: queues.py:27
 msgid "Launch all workflows for a document"
-msgstr ""
+msgstr "Avvia tutti i flussi di lavoro per un documento"
 
 #: queues.py:31
 msgid "Generate workflow previews"
@@ -612,46 +612,46 @@ msgstr "Commento sulla transizione del flusso di lavoro"
 
 #: serializers.py:20
 msgid "Primary key of the document type to be added."
-msgstr ""
+msgstr "Chiave primaria del tipo di documento da aggiungere."
 
 #: serializers.py:35
 msgid ""
 "API URL pointing to a document type in relation to the workflow to which it "
 "is attached. This URL is different than the canonical document type URL."
-msgstr ""
+msgstr "URL API che punta a un tipo di documento in relazione al flusso di lavoro a cui è allegato. Questo URL è diverso dall'URL del tipo di documento canonico."
 
 #: serializers.py:114
 msgid "Primary key of the destination state to be added."
-msgstr ""
+msgstr "Chiave primaria dello stato di destinazione da aggiungere."
 
 #: serializers.py:118
 msgid "Primary key of the origin state to be added."
-msgstr ""
+msgstr "Chiave primaria dello stato di origine da aggiungere."
 
 #: serializers.py:216
 msgid ""
 "API URL pointing to a workflow in relation to the document to which it is "
 "attached. This URL is different than the canonical workflow URL."
-msgstr ""
+msgstr "URL API che punta a un flusso di lavoro in relazione al documento a cui è allegato. Questo URL è diverso dall'URL canonico del flusso di lavoro."
 
 #: serializers.py:225
 msgid "A link to the entire history of this workflow."
-msgstr ""
+msgstr "Un collegamento all'intera storia di questo flusso di lavoro."
 
 #: serializers.py:257
 msgid ""
 "Comma separated list of document type primary keys to which this workflow "
 "will be attached."
-msgstr ""
+msgstr "Elenco separato da virgole delle chiavi primarie del tipo di documento a cui verrà allegato questo flusso di lavoro."
 
 #: serializers.py:317
 msgid "Primary key of the transition to be added."
-msgstr ""
+msgstr "Chiave primaria della transizione da aggiungere."
 
 #: settings.py:18
 msgid ""
 "File path to the graphviz dot program used to generate workflow previews."
-msgstr ""
+msgstr "Percorso del file al programma graphviz dot utilizzato per generare anteprime del flusso di lavoro."
 
 #: settings.py:26
 msgid ""
@@ -697,7 +697,7 @@ msgstr "Assegna i flussi di lavoro al tipo di documento di questo documento affi
 
 #: views/workflow_instance_views.py:35
 msgid "There are no workflows for this document"
-msgstr ""
+msgstr "Non ci sono flussi di lavoro per questo documento"
 
 #: views/workflow_instance_views.py:39
 #, python-format
@@ -881,11 +881,11 @@ msgstr "Trasizioni per il workflow: %s"
 #: views/workflow_template_transition_views.py:182
 #, python-format
 msgid "Error updating workflow transition trigger events; %s"
-msgstr ""
+msgstr "Errore durante l'aggiornamento degli eventi di attivazione della transizione del flusso di lavoro; %s"
 
 #: views/workflow_template_transition_views.py:189
 msgid "Workflow transition trigger events updated successfully"
-msgstr ""
+msgstr "Eventi di attivazione della transizione del flusso di lavoro aggiornati correttamente"
 
 #: views/workflow_template_transition_views.py:203
 msgid ""
@@ -895,7 +895,7 @@ msgstr "I trigger sono eventi che provocano l'esecuzione automatica di questa tr
 #: views/workflow_template_transition_views.py:207
 #, python-format
 msgid "Workflow transition trigger events for: %s"
-msgstr ""
+msgstr "Eventi di attivazione della transizione del flusso di lavoro per: %s"
 
 #: views/workflow_template_transition_views.py:257
 #, python-format
@@ -950,7 +950,7 @@ msgstr "Flussi di lavoro assegnati al tipo di documento: %s"
 #: views/workflow_template_views.py:95
 #, python-format
 msgid "Workflows launched for %(count)d document"
-msgstr ""
+msgstr "Flussi di lavoro avviati per il documento %(count)d"
 
 #: views/workflow_template_views.py:96
 #, python-format

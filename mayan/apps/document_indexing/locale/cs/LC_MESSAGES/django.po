@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:34+0000\n"
-"PO-Revision-Date: 2020-09-27 06:46+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-09-30 04:22+0000\n"
+"PO-Revision-Date: 2020-09-29 08:49+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -298,18 +298,18 @@ msgstr "Kontrolní součet dokumentů"
 
 #: serializers.py:191
 msgid "Parent cannot be empty."
-msgstr ""
+msgstr "Rodič nemůže být prázdný."
 
 #: serializers.py:198
 msgid "Parent must be from the same index template."
-msgstr ""
+msgstr "Nadřazený prvek musí být ze stejné šablony indexu."
 
 #: settings.py:14
 msgid ""
 "Amount of time in seconds, a failed indexing task will wait before retrying."
 " Lower values will increase the speed at which documents are indexed but "
 "will cause a higher count of failed/retried tasks in the queue."
-msgstr ""
+msgstr "Doba v sekundách po kterou neúspěšná úloha indexování počká před opakováním. Nižší hodnoty zvýší rychlost indexování dokumentů, ale způsobí vyšší počet neúspěšných / opakovaných úkolů ve frontě."
 
 #: views.py:45
 msgid "Available indexes"
@@ -449,10 +449,10 @@ msgstr[3] "%(count)d Rejstříky ve frontě k novému sestavení."
 #, python-format
 msgid "%(count)d index reset."
 msgid_plural "%(count)d indexes reset."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "."
+msgstr[1] "%(count)d indexy reset."
+msgstr[2] "%(count)d indexy reset."
+msgstr[3] "%(count)d indexy znovusestaveny."
 
 #: views.py:506
 msgid "Index templates for which their instances will be deleted."

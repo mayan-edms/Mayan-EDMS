@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:34+0000\n"
-"PO-Revision-Date: 2020-09-27 08:06+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-09-30 04:22+0000\n"
+"PO-Revision-Date: 2020-09-29 12:46+0000\n"
+"Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -182,7 +182,7 @@ msgstr "Scurtă descriere a acestui tip de metadate."
 
 #: models.py:57
 msgid "Enter a template to render."
-msgstr ""
+msgstr "Introduceți un șablon de redat."
 
 #: models.py:58 search.py:37
 msgid "Default"
@@ -190,7 +190,7 @@ msgstr "Iniţial"
 
 #: models.py:62
 msgid "Enter a template to render. Must result in a comma delimited string."
-msgstr ""
+msgstr "Introduceți un șablon de redat. Trebuie să aibă ca rezultat un șir delimitat de virgule."
 
 #: models.py:64 search.py:40
 msgid "Lookup"
@@ -513,23 +513,23 @@ msgstr "Introduceți metadatele documentului"
 
 #: workflow_actions.py:24
 msgid "Metadata types to add to the document."
-msgstr ""
+msgstr "Tipuri de metadate de adăugat la document."
 
 #: workflow_actions.py:48
 #, python-format
 msgid ""
 "Unable to add metadata type \"%(metadata_type)s\" from document: "
 "%(document)s. Exception: %(exception)s"
-msgstr ""
+msgstr "Imposibil de adăugat metadatele de tip „%(metadata_type)s” din documentul: %(document)s. Excepție: %(exception)s"
 
 #: workflow_actions.py:87
 msgid "Metadata types to edit."
-msgstr ""
+msgstr "Tipuri de metadate de editat."
 
 #: workflow_actions.py:95
 msgid ""
 "Value to assign to the metadata. Can be a literal value or template code."
-msgstr ""
+msgstr "Valoare de atribuit metadatelor. Poate fi o valoare literală sau un cod șablon."
 
 #: workflow_actions.py:127
 #, python-format
@@ -537,15 +537,15 @@ msgid ""
 "Unable to edit metadata type \"%(metadata_type)s\" from document: "
 "%(document)s. Document does not have the metadata type to be edit. "
 "Exception: %(exception)s"
-msgstr ""
+msgstr "Imposibil de editat metadatele de tip „%(metadata_type)s” din documentul: %(document)s. Documentul nu are tipul de metadate pentru editare. Excepție: %(exception)s"
 
 #: workflow_actions.py:171
 msgid "Metadata types to remove from the document."
-msgstr ""
+msgstr "Tipuri de metadate de eliminat din document."
 
 #: workflow_actions.py:191
 #, python-format
 msgid ""
 "Unable to remove metadata type \"%(metadata_type)s\" from document: "
 "%(document)s. Exception: %(exception)s"
-msgstr ""
+msgstr "Imposibil de eliminat metadatele de tip „%(metadata_type)s” din documentul: %(document)s. Excepție: %(exception)s"

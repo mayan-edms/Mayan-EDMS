@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:34+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-09-30 04:23+0000\n"
+"PO-Revision-Date: 2020-09-29 12:57+0000\n"
+"Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -737,7 +737,7 @@ msgstr "Nu se pot încărca versiuni noi pentru documentul \"%(document)s\". %(e
 #: views.py:612
 #, python-format
 msgid "Error executing document version upload task; %(exception)s"
-msgstr ""
+msgstr "Eroare la executarea sarcinii de încărcare a versiunii documentului; %(exception)s"
 
 #: views.py:627
 msgid "New document version queued for upload and will be available shortly."

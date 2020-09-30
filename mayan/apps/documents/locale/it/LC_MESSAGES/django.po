@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:34+0000\n"
-"PO-Revision-Date: 2020-09-27 06:46+0000\n"
+"POT-Creation-Date: 2020-09-30 04:22+0000\n"
+"PO-Revision-Date: 2020-09-30 04:16+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +29,7 @@ msgstr "Documenti"
 
 #: apps.py:148
 msgid "Decorations"
-msgstr ""
+msgstr "Decorazioni"
 
 #: apps.py:161
 msgid "Create a document type"
@@ -76,7 +76,7 @@ msgstr "Ultima versione"
 
 #: apps.py:245
 msgid "Return the document instance."
-msgstr ""
+msgstr "Restituisce l'istanza del documento."
 
 #: apps.py:246 links/document_version_links.py:37
 #: links/document_version_page_links.py:96 models/document_models.py:127
@@ -104,11 +104,11 @@ msgstr "Tipo"
 
 #: classes.py:47
 msgid "Original"
-msgstr ""
+msgstr "Originale"
 
 #: classes.py:49
 msgid "Keeps the original filename of the uploaded file."
-msgstr ""
+msgstr "Mantiene il nome file originale del file caricato."
 
 #: classes.py:59 forms/document_forms.py:152 models/document_models.py:59
 msgid "UUID"
@@ -116,7 +116,7 @@ msgstr "UUID"
 
 #: classes.py:61
 msgid "Generate an immutable, random UUID (RFC 4122) for each file."
-msgstr ""
+msgstr "Genera un UUID casuale e immutabile (RFC 4122) per ogni file."
 
 #: dashboard_widgets.py:23
 msgid "Total pages"
@@ -356,7 +356,7 @@ msgstr "Etichette rapide"
 
 #: links/document_type_links.py:66
 msgid "Filename generation"
-msgstr ""
+msgstr "Generazione del nome del file"
 
 #: links/document_version_links.py:26 links/document_version_links.py:43
 msgid "Versions"
@@ -602,19 +602,19 @@ msgstr "Unità di tempo per cancellare"
 msgid ""
 "The class responsible for producing the actual filename used to store the "
 "uploaded documents."
-msgstr ""
+msgstr "La classe responsabile della produzione del nome file effettivo utilizzato per memorizzare i documenti caricati."
 
 #: models/document_type_models.py:58
 msgid "Filename generator backend"
-msgstr ""
+msgstr "Backend del generatore di nomi di file"
 
 #: models/document_type_models.py:62
 msgid "The arguments for the filename generator backend as a YAML dictionary."
-msgstr ""
+msgstr "Gli argomenti per il backend del generatore di nomi di file come dizionario YAML."
 
 #: models/document_type_models.py:65
 msgid "Filename generator backend arguments"
-msgstr ""
+msgstr "Argomenti del backend del generatore di nomi di file"
 
 #: models/document_type_models.py:74
 msgid "Documents types"
@@ -815,7 +815,7 @@ msgstr "Cerca duplicati del documento"
 
 #: search.py:35 search.py:54
 msgid "Document type label"
-msgstr ""
+msgstr "Etichetta del tipo di documento"
 
 #: settings.py:26
 msgid ""
@@ -896,7 +896,7 @@ msgstr "Tempo trascorso il quale uno stub di documento verrà considerato non va
 msgid ""
 "Amount of time in seconds, a failed document page image task will wait "
 "before retrying."
-msgstr ""
+msgstr "Intervallo di tempo in secondi durante il quale un'attività dell'immagine della pagina del documento non riuscita attenderà prima di riprovare."
 
 #: settings.py:150
 msgid "Height in pixels of the document thumbnail image."
@@ -1148,7 +1148,7 @@ msgstr "Etichette rapide per il tipo documento: %s"
 #: views/document_type_views.py:280
 #, python-format
 msgid "Filename generation setup for document type: %s"
-msgstr ""
+msgstr "Impostazione della generazione del nome file per il tipo di documento: %s"
 
 #: views/document_version_views.py:43
 msgid "Download document version"

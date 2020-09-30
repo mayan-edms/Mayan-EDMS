@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:34+0000\n"
-"PO-Revision-Date: 2020-09-27 08:36+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-09-30 04:22+0000\n"
+"PO-Revision-Date: 2020-09-29 12:40+0000\n"
+"Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -74,23 +74,23 @@ msgstr "URI.js"
 
 #: events.py:8
 msgid "Theme created"
-msgstr ""
+msgstr "Temă creată"
 
 #: events.py:11
 msgid "Theme edited"
-msgstr ""
+msgstr "Temă editată"
 
 #: links.py:15
 msgid "Theme settings"
-msgstr ""
+msgstr "Setari temă"
 
 #: links.py:20
 msgid "Edit theme settings"
-msgstr ""
+msgstr "Editați setările temei"
 
 #: links.py:27 views.py:47
 msgid "Create new theme"
-msgstr ""
+msgstr "Creați o temă nouă"
 
 #: links.py:33
 msgid "Delete"
@@ -102,11 +102,11 @@ msgstr "Editați"
 
 #: links.py:43 links.py:47 models.py:25 views.py:111
 msgid "Themes"
-msgstr ""
+msgstr "Teme"
 
 #: models.py:12
 msgid "A short text describing the theme."
-msgstr ""
+msgstr "Un scurt text care descrie tema."
 
 #: models.py:13
 msgid "Label"
@@ -116,15 +116,15 @@ msgstr "Conținut etichetă"
 msgid ""
 "The CSS stylesheet to change the appearance of the different user interface "
 "elements."
-msgstr ""
+msgstr "Foaia de stil CSS pentru a schimba aspectul diferitelor elemente ale interfeței utilizatorului."
 
 #: models.py:19
 msgid "Stylesheet"
-msgstr ""
+msgstr "Foaie de stil"
 
 #: models.py:24 models.py:60
 msgid "Theme"
-msgstr ""
+msgstr "Temă"
 
 #: models.py:56
 msgid "User"
@@ -132,27 +132,27 @@ msgstr "Utilizator"
 
 #: models.py:64
 msgid "User theme setting"
-msgstr ""
+msgstr "Setări ale temei utilizatorului"
 
 #: models.py:65
 msgid "User theme settings"
-msgstr ""
+msgstr "Setări ale temei utilizatorului"
 
 #: permissions.py:8
 msgid "Create new themes"
-msgstr ""
+msgstr "Creați teme noi"
 
 #: permissions.py:11
 msgid "Delete themes"
-msgstr ""
+msgstr "Ștergeți teme"
 
 #: permissions.py:14
 msgid "Edit themes"
-msgstr ""
+msgstr "Editați teme"
 
 #: permissions.py:17
 msgid "View existing themes"
-msgstr ""
+msgstr "Vizualizați temele existente"
 
 #: settings.py:12
 msgid "Maximum number of characters that will be displayed as the view title."
@@ -462,27 +462,27 @@ msgstr "Nici unul"
 
 #: views.py:29
 msgid "Current user theme settings details"
-msgstr ""
+msgstr "Detalii despre setările temei utilizatorului curent"
 
 #: views.py:35
 msgid "Edit current user theme settings details"
-msgstr ""
+msgstr "Editați detaliile setărilor temei utilizatorului curent"
 
 #: views.py:69
 #, python-format
 msgid "Delete theme: %s"
-msgstr ""
+msgstr "Ștergeți tema: %s "
 
 #: views.py:85
 #, python-format
 msgid "Edit theme: %s"
-msgstr ""
+msgstr "Editați tema: %s"
 
 #: views.py:105
 msgid ""
 "Themes allow changing the visual appearance without requiring code changes."
-msgstr ""
+msgstr "Temele permit schimbarea aspectului vizual fără a necesita modificări de cod."
 
 #: views.py:109
 msgid "There are no themes"
-msgstr ""
+msgstr "Nu există teme"

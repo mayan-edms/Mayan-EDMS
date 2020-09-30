@@ -5,7 +5,7 @@
 # Translators:
 # Translators:
 # bwakkie <bwakkie@gmail.com>, 2020
-# Comprax <info@comprax.nl>, 2020
+# e6bc1d20d3f0031709c3c11db1061ebc_be0a371 <8b4e580508477646e97982ebad39e3af_312311>, 2020
 # j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
 # Johan Braeken, 2017
 # Justin Albstbstmeijer <justin@albstmeijer.nl>, 2016
@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"POT-Creation-Date: 2020-09-30 04:22+0000\n"
 "PO-Revision-Date: 2020-09-27 08:36+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"

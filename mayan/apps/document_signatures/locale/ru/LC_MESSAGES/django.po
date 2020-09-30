@@ -4,15 +4,16 @@
 # 
 # Translators:
 # Translators:
+# Alex Chigrin <chalex84@mail.ru>, 2020
 # lilo.panic, 2016
 # Sergey Glita <gsv70@mail.ru>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:34+0000\n"
-"PO-Revision-Date: 2020-08-18 04:38+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-09-30 04:22+0000\n"
+"PO-Revision-Date: 2020-09-29 21:52+0000\n"
+"Last-Translator: Alex Chigrin <chalex84@mail.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -52,7 +53,7 @@ msgstr "Ключ"
 msgid ""
 "The passphrase to unlock the key and allow it to be used to sign the "
 "document version."
-msgstr ""
+msgstr "Кодовая фраза для разблокировки ключа и разрешения его использования для подписи версии документа."
 
 #: forms.py:24 workflow_actions.py:27
 msgid "Passphrase"
@@ -60,7 +61,7 @@ msgstr "Кодовая фраза"
 
 #: forms.py:33
 msgid "Private key that will be used to sign this document version."
-msgstr ""
+msgstr "Закрытый ключ, который будет использоваться для подписи этой версии документа."
 
 #: forms.py:44
 msgid "Signature is embedded?"
@@ -148,7 +149,7 @@ msgstr "Дата подписи"
 
 #: models.py:45
 msgid "ID of the key that will be used to sign the document."
-msgstr ""
+msgstr "ID ключа, которым будет подписан документ."
 
 #: models.py:55
 msgid "Public key fingerprint"
@@ -180,7 +181,7 @@ msgstr "Встроенные подписи версий документов"
 
 #: models.py:132
 msgid "Signature file previously generated."
-msgstr ""
+msgstr "Файл подписи создан ранее."
 
 #: models.py:135
 msgid "Signature file"
@@ -248,17 +249,17 @@ msgstr ""
 
 #: settings.py:28
 msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND."
-msgstr ""
+msgstr "Аргументы, передаваемые в SIGNATURE_STORAGE_BACKEND."
 
 #: storages.py:13
 msgid ""
 "Unable to initialize the detached signatures storage. Check the settings {} "
 "and {} for formatting errors."
-msgstr ""
+msgstr "Невозможно инициализировать отсоединенное хранилище подписей. Проверьте настройки {} и {} на наличие ошибок форматирования."
 
 #: storages.py:20
 msgid "Detached signatures"
-msgstr ""
+msgstr "Отдельные подписи"
 
 #: views.py:68 views.py:156
 msgid "Passphrase is needed to unlock this key."
@@ -274,7 +275,7 @@ msgstr "Версия документа успешно подписана."
 
 #: views.py:122 views.py:217
 msgid "Sign"
-msgstr ""
+msgstr "Подписать"
 
 #: views.py:124
 #, python-format
@@ -305,7 +306,7 @@ msgstr ""
 
 #: views.py:320
 msgid "There are no signatures for this document."
-msgstr ""
+msgstr "Под этим документом нет подписей."
 
 #: views.py:324
 #, python-format
@@ -331,7 +332,7 @@ msgstr "Верификация сигнатуры добавлена в очер
 
 #: workflow_actions.py:22
 msgid "Private key that will be used to sign the document version."
-msgstr ""
+msgstr "Закрытый ключ, который будет использоваться для подписи версии документа."
 
 #: workflow_actions.py:37
 msgid "Sign document (detached)"

@@ -4,14 +4,14 @@
 # 
 # Translators:
 # Translators:
-# Harald Ersch, 2019
+# Harald Ersch, 2019-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:34+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-09-30 04:22+0000\n"
+"PO-Revision-Date: 2020-09-29 12:51+0000\n"
+"Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -33,11 +33,11 @@ msgstr "Mesaje"
 
 #: events.py:8
 msgid "Message created"
-msgstr ""
+msgstr "Mesaj creat"
 
 #: events.py:11
 msgid "Message edited"
-msgstr ""
+msgstr "Mesaj editat"
 
 #: links.py:14 views.py:31
 msgid "Create message"
@@ -110,34 +110,34 @@ msgstr "Mesajele zilei"
 #: views.py:45
 #, python-format
 msgid "Delete request performed on %(count)d message"
-msgstr ""
+msgstr "Solicitare de ștergere efectuată pe %(count)d mesaj"
 
 #: views.py:47
 #, python-format
 msgid "Delete request performed on %(count)d messages"
-msgstr ""
+msgstr "Solicitare de ștergere efectuată pe %(count)d mesaje"
 
 #: views.py:54
 msgid "Delete the selected message?"
 msgid_plural "Delete the selected messages?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Ștergeți mesajul selectat?"
+msgstr[1] "Ștergeți mesajele selectate?"
+msgstr[2] "Ștergeți mesajele selectate?"
 
 #: views.py:64
 #, python-format
 msgid "Delete message: %s?"
-msgstr ""
+msgstr "Ștergeți mesajul: %s?"
 
 #: views.py:75
 #, python-format
 msgid "Message \"%s\" deleted successfully."
-msgstr ""
+msgstr "Mesajul „%s” a fost șters."
 
 #: views.py:80
 #, python-format
 msgid "Error deleting message \"%(message)s\": %(error)s"
-msgstr ""
+msgstr "Eroare la ștergerea mesajului „%(message)s”: %(error)s"
 
 #: views.py:96
 #, python-format

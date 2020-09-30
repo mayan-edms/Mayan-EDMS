@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:34+0000\n"
-"PO-Revision-Date: 2020-09-27 06:46+0000\n"
+"POT-Creation-Date: 2020-09-30 04:22+0000\n"
+"PO-Revision-Date: 2020-09-30 04:19+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -91,7 +91,7 @@ msgstr "Licenza"
 
 #: links.py:61
 msgid "Copy"
-msgstr ""
+msgstr "Copia"
 
 #: links.py:64
 msgid "Setup"
@@ -150,7 +150,7 @@ msgstr "Azioni "
 
 #: menus.py:15
 msgid "Related"
-msgstr ""
+msgstr "Relazionato"
 
 #: menus.py:16
 msgid "Secondary"
@@ -178,7 +178,7 @@ msgstr "Profili dell'utente locale"
 
 #: permissions.py:8
 msgid "Copy object"
-msgstr ""
+msgstr "Copia oggetto"
 
 #: queues.py:7
 msgid "Default"
@@ -257,16 +257,16 @@ msgstr "Dashboard"
 #: views.py:116
 #, python-format
 msgid "Fields to be copied: %s"
-msgstr ""
+msgstr "Campi da copiare: %s"
 
 #: views.py:125
 #, python-format
 msgid "Make a copy of %(object_name)s \"%(object)s\"?"
-msgstr ""
+msgstr "Creare una copia di %(object_name)s \"%(object)s\"?"
 
 #: views.py:134
 msgid "Object copied successfully."
-msgstr ""
+msgstr "Oggetto copiato con successo."
 
 #: views.py:150
 msgid "No setup options available."

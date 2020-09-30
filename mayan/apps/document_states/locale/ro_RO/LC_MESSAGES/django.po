@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:34+0000\n"
-"PO-Revision-Date: 2020-09-27 06:46+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-09-30 04:22+0000\n"
+"PO-Revision-Date: 2020-09-29 12:37+0000\n"
+"Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -232,7 +232,7 @@ msgstr "Tranziţii"
 
 #: links.py:165 links.py:171 workflow_actions.py:83
 msgid "Launch workflows"
-msgstr ""
+msgstr "Lansați fluxuri de lucru"
 
 #: links.py:177
 msgid "Create field"
@@ -280,11 +280,11 @@ msgstr "La ieșire"
 
 #: models.py:55
 msgid "Launch workflow when document is created."
-msgstr ""
+msgstr "Lansați fluxul de lucru când este creat documentul."
 
 #: models.py:56
 msgid "Auto launch"
-msgstr ""
+msgstr "Lansare automată"
 
 #: models.py:60
 msgid ""
@@ -407,7 +407,7 @@ msgid ""
 " not return any value, that return the Python logical None, or an empty "
 "string ('') are considered to be logical false, any other value is "
 "considered to be the logical true."
-msgstr ""
+msgstr "Condiția care va determina dacă această acțiune de stare este executată sau nu. Condiția este evaluată în raport cu instanța fluxului de lucru. Condițiile care nu returnează nicio valoare, care returnează Python logic None sau un șir gol ('') sunt considerate logice false, orice altă valoare este considerată a fi logica adevărată."
 
 #: models.py:683 models.py:797
 msgid "Condition"
@@ -453,7 +453,7 @@ msgid ""
 " return any value, that return the Python logical None, or an empty string "
 "('') are considered to be logical false, any other value is considered to be"
 " the logical true."
-msgstr ""
+msgstr "Condiția care va determina dacă această tranziție este activată sau nu. Condiția este evaluată în raport cu instanța fluxului de lucru. Condițiile care nu returnează nicio valoare, care returnează Python logic None sau un șir gol ('') sunt considerate logice false, orice altă valoare este considerată a fi logica adevărată."
 
 #: models.py:805
 msgid "Workflow transition"
@@ -586,7 +586,7 @@ msgstr "Stările documentului rapid"
 
 #: queues.py:15
 msgid "Launch all workflows for all documents"
-msgstr ""
+msgstr "Lansați toate fluxurile de lucru pentru toate documentele"
 
 #: queues.py:19
 msgid "Launch a workflow"
@@ -594,11 +594,11 @@ msgstr "Lansați un flux de lucru"
 
 #: queues.py:23
 msgid "Launch a workflow for a document"
-msgstr ""
+msgstr "Lansați un flux de lucru pentru un document"
 
 #: queues.py:27
 msgid "Launch all workflows for a document"
-msgstr ""
+msgstr "Lansați toate fluxurile de lucru pentru un document"
 
 #: queues.py:31
 msgid "Generate workflow previews"
@@ -606,7 +606,7 @@ msgstr "Generați previzualizări ale fluxului de lucru"
 
 #: search.py:9 search.py:14
 msgid "Workflow transition comment"
-msgstr ""
+msgstr "Comentariu pentru tranziția fluxului de lucru"
 
 #: serializers.py:20
 msgid "Primary key of the document type to be added."
@@ -649,7 +649,7 @@ msgstr "Cheia primară a tranziției care urmează să fie adăugată."
 #: settings.py:18
 msgid ""
 "File path to the graphviz dot program used to generate workflow previews."
-msgstr ""
+msgstr "Calea fișierului către programul graphviz dot utilizat pentru a genera previzualizări ale fluxului de lucru."
 
 #: settings.py:26
 msgid ""
@@ -695,7 +695,7 @@ msgstr "Atribuiți fluxurile de lucru la acest tip de document pentru ca acest d
 
 #: views/workflow_instance_views.py:35
 msgid "There are no workflows for this document"
-msgstr ""
+msgstr "Nu există fluxuri de lucru pentru acest document"
 
 #: views/workflow_instance_views.py:39
 #, python-format
@@ -948,60 +948,60 @@ msgstr "Fluxurile de lucru atribuite tipului de document: %s"
 #: views/workflow_template_views.py:95
 #, python-format
 msgid "Workflows launched for %(count)d document"
-msgstr ""
+msgstr "Fluxuri de lucru lansate pentru %(count)d document"
 
 #: views/workflow_template_views.py:96
 #, python-format
 msgid "Workflows launched for %(count)d documents"
-msgstr ""
+msgstr "Fluxuri de lucru lansate pentru %(count)d documente "
 
 #: views/workflow_template_views.py:100
 msgid "Launch"
-msgstr ""
+msgstr "Lansare"
 
 #: views/workflow_template_views.py:102
 msgid ""
 "Workflows already launched or workflows not applicable to some documents "
 "when multiple documents are selected, will be silently ignored."
-msgstr ""
+msgstr "Fluxurile de lucru deja lansate sau fluxurile de lucru care nu se aplică unor documente atunci când sunt selectate mai multe documente, vor fi ignorate în mod silențios."
 
 #: views/workflow_template_views.py:107
 #, python-format
 msgid "Launch selected workflows for %(count)d document"
 msgid_plural "Launch selected workflows for %(count)d documents"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Lansați fluxurile de lucru selectate pentru documentul %(count)d"
+msgstr[1] "Lansați fluxurile de lucru selectate pentru documentele %(count)d"
+msgstr[2] "Lansați fluxurile de lucru selectate pentru %(count)d documentele "
 
 #: views/workflow_template_views.py:120
 #, python-format
 msgid "Launch selected workflows for document: %s"
-msgstr ""
+msgstr "Lansați fluxurile de lucru selectate pentru: %s document"
 
 #: views/workflow_template_views.py:133
 msgid "Workflows to be launched."
-msgstr ""
+msgstr "Fluxurile de lucru ce vor fi lansate."
 
 #: views/workflow_template_views.py:175
 #, python-format
 msgid "Delete request performed on %(count)d workflow"
-msgstr ""
+msgstr "Solicitare de ștergere efectuată pe %(count)d  flux de lucru"
 
 #: views/workflow_template_views.py:177
 #, python-format
 msgid "Delete request performed on %(count)d workflows"
-msgstr ""
+msgstr "Solicitare de ștergere efectuată pe %(count)d  fluxuri de lucru"
 
 #: views/workflow_template_views.py:183
 msgid "All workflow instances will also be deleted."
-msgstr ""
+msgstr "Toate instanțele fluxului de lucru vor fi, de asemenea, șterse."
 
 #: views/workflow_template_views.py:185
 msgid "Delete the selected workflow?"
 msgid_plural "Delete the selected workflows?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Ștergeți fluxul de lucru selectat?"
+msgstr[1] "Ștergeți fluxurile de lucru selectate?"
+msgstr[2] "Ștergeți fluxurile de lucru selectate?"
 
 #: views/workflow_template_views.py:195
 #, python-format
@@ -1011,12 +1011,12 @@ msgstr "Ștergeți fluxul de lucru: %s?"
 #: views/workflow_template_views.py:206
 #, python-format
 msgid "Workflow \"%s\" deleted successfully."
-msgstr ""
+msgstr "Fluxul de lucru „%s” a fost șters."
 
 #: views/workflow_template_views.py:211
 #, python-format
 msgid "Error deleting workflow \"%(workflow)s\": %(error)s"
-msgstr ""
+msgstr "Eroare la ștergerea fluxului de lucru „%(workflow)s”: %(error)s"
 
 #: views/workflow_template_views.py:229
 #, python-format
@@ -1105,7 +1105,7 @@ msgstr "Modificați proprietățile documentului"
 
 #: workflow_actions.py:77
 msgid "Additional workflows to launch for the document."
-msgstr ""
+msgstr "Fluxuri de lucru suplimentare de lansat pentru document."
 
 #: workflow_actions.py:116
 msgid "URL"

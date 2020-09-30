@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"POT-Creation-Date: 2020-09-30 04:23+0000\n"
 "PO-Revision-Date: 2019-12-03 05:24+0000\n"
 "Last-Translator: Roberto Rosario, 2020\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
@@ -63,7 +63,7 @@ msgstr "Modifica"
 
 #: links.py:50
 msgid "Navigate"
-msgstr ""
+msgstr "Navigare"
 
 #: models.py:22
 msgid "A short text describing the web link."

@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:34+0000\n"
-"PO-Revision-Date: 2020-09-27 06:46+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-09-30 04:22+0000\n"
+"PO-Revision-Date: 2020-09-29 12:43+0000\n"
+"Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,7 +28,7 @@ msgstr "Documente"
 
 #: apps.py:148
 msgid "Decorations"
-msgstr ""
+msgstr "Decorațiuni"
 
 #: apps.py:161
 msgid "Create a document type"
@@ -75,7 +75,7 @@ msgstr "Ultima versiune"
 
 #: apps.py:245
 msgid "Return the document instance."
-msgstr ""
+msgstr "Întoarce instanța documentului."
 
 #: apps.py:246 links/document_version_links.py:37
 #: links/document_version_page_links.py:96 models/document_models.py:127
@@ -103,11 +103,11 @@ msgstr "Tip"
 
 #: classes.py:47
 msgid "Original"
-msgstr ""
+msgstr "Original"
 
 #: classes.py:49
 msgid "Keeps the original filename of the uploaded file."
-msgstr ""
+msgstr "Păstrează numele original al fișierului încărcat."
 
 #: classes.py:59 forms/document_forms.py:152 models/document_models.py:59
 msgid "UUID"
@@ -115,7 +115,7 @@ msgstr "UUID"
 
 #: classes.py:61
 msgid "Generate an immutable, random UUID (RFC 4122) for each file."
-msgstr ""
+msgstr "Generați un UUID imuabil, aleatoriu (RFC 4122) pentru fiecare fișier."
 
 #: dashboard_widgets.py:23
 msgid "Total pages"
@@ -355,7 +355,7 @@ msgstr "Etichete rapide"
 
 #: links/document_type_links.py:66
 msgid "Filename generation"
-msgstr ""
+msgstr "Generarea numelui de fișier"
 
 #: links/document_version_links.py:26 links/document_version_links.py:43
 msgid "Versions"
@@ -601,19 +601,19 @@ msgstr "Unitate de timp pt. ștergere"
 msgid ""
 "The class responsible for producing the actual filename used to store the "
 "uploaded documents."
-msgstr ""
+msgstr "Clasa responsabilă de producerea numelui de fișier real utilizat pentru a stoca documentele încărcate."
 
 #: models/document_type_models.py:58
 msgid "Filename generator backend"
-msgstr ""
+msgstr "Generator de nume de fișiere backend"
 
 #: models/document_type_models.py:62
 msgid "The arguments for the filename generator backend as a YAML dictionary."
-msgstr ""
+msgstr "Argumentele pentru generatorul de nume de fișiere sub formă de dicționar YAML."
 
 #: models/document_type_models.py:65
 msgid "Filename generator backend arguments"
-msgstr ""
+msgstr "Parametri backend pentru generatorul de nume de fișiere"
 
 #: models/document_type_models.py:74
 msgid "Documents types"
@@ -786,7 +786,7 @@ msgstr "Curățați listele de duplicate goale"
 
 #: queues.py:43
 msgid "Empty the trash can"
-msgstr ""
+msgstr "Goliți coșul de gunoi"
 
 #: queues.py:48
 msgid "Check document type delete periods"
@@ -814,7 +814,7 @@ msgstr "Scanați după documente duplicate"
 
 #: search.py:35 search.py:54
 msgid "Document type label"
-msgstr ""
+msgstr "Etichetă tip document"
 
 #: settings.py:26
 msgid ""
@@ -895,7 +895,7 @@ msgstr "Perioada după care un eşantion de  document va fi considerat nevalid �
 msgid ""
 "Amount of time in seconds, a failed document page image task will wait "
 "before retrying."
-msgstr ""
+msgstr "Cantitatea de timp în secunde, o sarcină de imagine a paginii de document eșuată va aștepta înainte de a reîncerca."
 
 #: settings.py:150
 msgid "Height in pixels of the document thumbnail image."
@@ -1149,7 +1149,7 @@ msgstr "Etichete rapide pentru tipul de document: %s"
 #: views/document_type_views.py:280
 #, python-format
 msgid "Filename generation setup for document type: %s"
-msgstr ""
+msgstr "Configurarea generării de nume de fișier pentru tipul documentului: %s"
 
 #: views/document_version_views.py:43
 msgid "Download document version"
@@ -1462,7 +1462,7 @@ msgstr "Goliți Coșul de gunoi?"
 
 #: views/trashed_document_views.py:73
 msgid "The trash emptying task has been queued."
-msgstr ""
+msgstr "Sarcina de golire a coșului de gunoi a fost pusă la coadă."
 
 #: views/trashed_document_views.py:83
 #, python-format

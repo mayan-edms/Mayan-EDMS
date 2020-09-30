@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:34+0000\n"
-"PO-Revision-Date: 2020-09-27 06:46+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-09-30 04:22+0000\n"
+"PO-Revision-Date: 2020-09-29 09:00+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -232,7 +232,7 @@ msgstr "Kroky"
 
 #: links.py:165 links.py:171 workflow_actions.py:83
 msgid "Launch workflows"
-msgstr ""
+msgstr "Zahájit workflow"
 
 #: links.py:177
 msgid "Create field"
@@ -280,11 +280,11 @@ msgstr "Na výstupu"
 
 #: models.py:55
 msgid "Launch workflow when document is created."
-msgstr ""
+msgstr "Spustit workflow při vytváření dokumentu."
 
 #: models.py:56
 msgid "Auto launch"
-msgstr ""
+msgstr "Automatické spuštění"
 
 #: models.py:60
 msgid ""
@@ -586,7 +586,7 @@ msgstr "Stavy dokumentu rychle"
 
 #: queues.py:15
 msgid "Launch all workflows for all documents"
-msgstr ""
+msgstr "Spusťte všechny workflow pro všechny dokumenty"
 
 #: queues.py:19
 msgid "Launch a workflow"
@@ -594,11 +594,11 @@ msgstr "Spusťte workflow"
 
 #: queues.py:23
 msgid "Launch a workflow for a document"
-msgstr ""
+msgstr "Spusťte workflow pro dokument"
 
 #: queues.py:27
 msgid "Launch all workflows for a document"
-msgstr ""
+msgstr "Spusťte všechny workflow pro dokument"
 
 #: queues.py:31
 msgid "Generate workflow previews"
@@ -606,7 +606,7 @@ msgstr "Generujte náhledy workflow"
 
 #: search.py:9 search.py:14
 msgid "Workflow transition comment"
-msgstr ""
+msgstr "Komentář přechodu workflow"
 
 #: serializers.py:20
 msgid "Primary key of the document type to be added."
@@ -981,12 +981,12 @@ msgstr ""
 
 #: views/workflow_template_views.py:133
 msgid "Workflows to be launched."
-msgstr ""
+msgstr "Workflow ke spuštění."
 
 #: views/workflow_template_views.py:175
 #, python-format
 msgid "Delete request performed on %(count)d workflow"
-msgstr ""
+msgstr "Smazat požadavek provedený ve workflow %(count)d"
 
 #: views/workflow_template_views.py:177
 #, python-format

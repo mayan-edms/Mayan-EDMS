@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"POT-Creation-Date: 2020-09-30 04:22+0000\n"
 "PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>, 2020\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: apps.py:15 permissions.py:5 settings.py:10
 msgid "Logging"
-msgstr ""
+msgstr "Protokolování"
 
 #: links.py:12
 msgid "Errors"
@@ -30,7 +30,7 @@ msgstr "Chyby"
 
 #: links.py:18
 msgid "Clear errors"
-msgstr ""
+msgstr "Vymazat chyby"
 
 #: models.py:10 models.py:38
 msgid "Internal name"
@@ -38,23 +38,23 @@ msgstr "Vnitřní název"
 
 #: models.py:15 models.py:35
 msgid "Error log"
-msgstr ""
+msgstr "Protokol chyb"
 
 #: models.py:16
 msgid "Error logs"
-msgstr ""
+msgstr "Protokoly chyb"
 
 #: models.py:25
 msgid "App label"
-msgstr ""
+msgstr "Štítek aplikace"
 
 #: models.py:43 models.py:60
 msgid "Error log partition"
-msgstr ""
+msgstr "Oddíl protokolu chyb"
 
 #: models.py:44
 msgid "Error log partitions"
-msgstr ""
+msgstr "Chybové logické oddíly"
 
 #: models.py:63
 msgid "Date and time"
@@ -62,15 +62,15 @@ msgstr "Datum a čas"
 
 #: models.py:65
 msgid "Text"
-msgstr ""
+msgstr "Text"
 
 #: models.py:70
 msgid "Error log partition entry"
-msgstr ""
+msgstr "Chyba záznamu logického oddílu"
 
 #: models.py:71
 msgid "Error log partition entries"
-msgstr ""
+msgstr "Chyba záznamu oddílu oddílu"
 
 #: permissions.py:8
 msgid "View error log"
@@ -84,10 +84,12 @@ msgstr "Automaticky povolit protokolování pro všechny aplikace."
 msgid ""
 "List of handlers to which logging messages will be sent. Options are: {}"
 msgstr ""
+"Seznam obslužných programů, kterým budou zasílány zaznamenané zprávy. "
+"Možnosti jsou: {}"
 
 #: settings.py:26
 msgid "Level for the logging system."
-msgstr ""
+msgstr "Úroveň systému protokolování."
 
 #: settings.py:32
 msgid "Path to the logfile that will track errors during production."

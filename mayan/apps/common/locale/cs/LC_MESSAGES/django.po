@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:34+0000\n"
-"PO-Revision-Date: 2020-09-27 06:46+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-09-30 04:22+0000\n"
+"PO-Revision-Date: 2020-09-29 08:48+0000\n"
+"Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -85,7 +85,7 @@ msgstr "Licence"
 
 #: links.py:61
 msgid "Copy"
-msgstr ""
+msgstr "kopírovat"
 
 #: links.py:64
 msgid "Setup"
@@ -97,7 +97,7 @@ msgstr "Zdrojový kód"
 
 #: links.py:71
 msgid "Online store"
-msgstr ""
+msgstr "Internetový obchod"
 
 #: links.py:75
 msgid "Get support"
@@ -144,7 +144,7 @@ msgstr "Akce"
 
 #: menus.py:15
 msgid "Related"
-msgstr ""
+msgstr "Příbuzný"
 
 #: menus.py:16
 msgid "Secondary"
@@ -172,7 +172,7 @@ msgstr "Profily národního prostředí uživatele"
 
 #: permissions.py:8
 msgid "Copy object"
-msgstr ""
+msgstr "Zkopírujte objekt"
 
 #: queues.py:7
 msgid "Default"
@@ -251,16 +251,16 @@ msgstr "Řídící panel"
 #: views.py:116
 #, python-format
 msgid "Fields to be copied: %s"
-msgstr ""
+msgstr "Pole ke kopírování: %s"
 
 #: views.py:125
 #, python-format
 msgid "Make a copy of %(object_name)s \"%(object)s\"?"
-msgstr ""
+msgstr "Vytvořit kopii %(object_name)s &quot;%(object)s&quot;?"
 
 #: views.py:134
 msgid "Object copied successfully."
-msgstr ""
+msgstr "Objekt byl úspěšně zkopírován."
 
 #: views.py:150
 msgid "No setup options available."

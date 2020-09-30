@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:34+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-09-30 04:23+0000\n"
+"PO-Revision-Date: 2020-09-29 12:56+0000\n"
+"Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -78,7 +78,7 @@ msgstr "Toate"
 
 #: methods.py:18
 msgid "Return the tags attached to the document."
-msgstr ""
+msgstr "Returnează etichetele atașate documentului."
 
 #: methods.py:20
 msgid "get_tags()"
@@ -225,7 +225,7 @@ msgstr[2] "Ștergeți etichetele selectate?"
 #: views.py:166
 #, python-format
 msgid "Delete tag: %s?"
-msgstr ""
+msgstr "Ștergeți eticheta: %s?"
 
 #: views.py:177
 #, python-format

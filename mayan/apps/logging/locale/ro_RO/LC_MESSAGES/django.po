@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:34+0000\n"
+"POT-Creation-Date: 2020-09-30 04:22+0000\n"
 "PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Harald Ersch, 2020\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: apps.py:15 permissions.py:5 settings.py:10
 msgid "Logging"
-msgstr ""
+msgstr "Jurnalizare"
 
 #: links.py:12
 msgid "Errors"
@@ -31,7 +31,7 @@ msgstr "Erori"
 
 #: links.py:18
 msgid "Clear errors"
-msgstr ""
+msgstr "Ștergeți erorile"
 
 #: models.py:10 models.py:38
 msgid "Internal name"
@@ -39,23 +39,23 @@ msgstr "Nume intern"
 
 #: models.py:15 models.py:35
 msgid "Error log"
-msgstr ""
+msgstr "Jurnal de erori"
 
 #: models.py:16
 msgid "Error logs"
-msgstr ""
+msgstr "Jurnalele de erori"
 
 #: models.py:25
 msgid "App label"
-msgstr ""
+msgstr "Eticheta aplicației"
 
 #: models.py:43 models.py:60
 msgid "Error log partition"
-msgstr ""
+msgstr "Partiție jurnal erori"
 
 #: models.py:44
 msgid "Error log partitions"
-msgstr ""
+msgstr "Partiții jurnal de erori"
 
 #: models.py:63
 msgid "Date and time"
@@ -67,11 +67,11 @@ msgstr "Text"
 
 #: models.py:70
 msgid "Error log partition entry"
-msgstr ""
+msgstr "Intrarea partiției jurnal de erori"
 
 #: models.py:71
 msgid "Error log partition entries"
-msgstr ""
+msgstr "Intrări de partiție jurnal de erori"
 
 #: permissions.py:8
 msgid "View error log"
@@ -85,10 +85,12 @@ msgstr "Activați juranlizarea automată la toate aplicațiile."
 msgid ""
 "List of handlers to which logging messages will be sent. Options are: {}"
 msgstr ""
+"Lista gestionarilor către care vor fi trimise mesaje de înregistrare. "
+"Opțiunile sunt: {}"
 
 #: settings.py:26
 msgid "Level for the logging system."
-msgstr ""
+msgstr "Nivel pentru sistemul de jurnalizare."
 
 #: settings.py:32
 msgid "Path to the logfile that will track errors during production."

@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:34+0000\n"
-"PO-Revision-Date: 2020-09-27 06:46+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-09-30 04:22+0000\n"
+"PO-Revision-Date: 2020-09-29 12:50+0000\n"
+"Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -57,19 +57,19 @@ msgstr "Caută din nou"
 
 #: links.py:25 views.py:90
 msgid "Reindex search backend"
-msgstr ""
+msgstr "Reindexare backend de căutare"
 
 #: permissions.py:8
 msgid "Execute search tools"
-msgstr ""
+msgstr "Executați instrumente de căutare"
 
 #: queues.py:11
 msgid "Remove a model instance from the search engine."
-msgstr ""
+msgstr "Eliminați o instanță de model din motorul de căutare."
 
 #: queues.py:16
 msgid "Index a model instance to the search engine."
-msgstr ""
+msgstr "Indexați o instanță model la motorul de căutare."
 
 #: settings.py:13
 msgid "Full path to the backend to be used to handle the search."
@@ -82,7 +82,7 @@ msgstr "Dezactivează căutarea în bară cu un singur termen lăsând doar buto
 
 #: settings.py:29
 msgid "Maximum number search results to fetch and display."
-msgstr ""
+msgstr "Numărul maxim de rezultate de căutare de preluat și afișat."
 
 #: templates/dynamic_search/search_box.html:45
 msgid "Advanced"
@@ -105,15 +105,15 @@ msgstr "Rezultatele căutării pentru: %s"
 msgid ""
 "This tool is required only for some search backends. Search results will be "
 "affected while the backend is being reindexed."
-msgstr ""
+msgstr "Acest instrument este necesar numai pentru unele backend-uri de căutare. Rezultatele căutării vor fi afectate în timp ce backend-ul este reindexat."
 
 #: views.py:92
 msgid "This tool erases and populates the search backend's internal index."
-msgstr ""
+msgstr "Acest instrument șterge și completează indexul intern al backend-ului de căutare."
 
 #: views.py:110
 msgid "Search backend reindexing queued."
-msgstr ""
+msgstr "Reindexarea backend-ului de căutare a fost pusă la coadă."
 
 #: views.py:132
 #, python-format

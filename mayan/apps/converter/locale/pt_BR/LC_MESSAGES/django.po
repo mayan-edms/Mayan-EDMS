@@ -14,9 +14,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 08:34+0000\n"
-"PO-Revision-Date: 2020-09-27 08:06+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-09-30 04:22+0000\n"
+"PO-Revision-Date: 2020-09-28 20:30+0000\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -72,11 +72,11 @@ msgstr "Utilidade do pacote poppler-utils usada para extrair páginas dos arquiv
 
 #: events.py:8
 msgid "Asset created"
-msgstr ""
+msgstr "Recurso criado"
 
 #: events.py:11
 msgid "Asset edited"
-msgstr ""
+msgstr "Recurso editado"
 
 #: forms.py:22
 msgid "Available transformations for this layer."
@@ -90,11 +90,11 @@ msgstr "\"%s\" não é uma entrada válida."
 #: layers.py:11
 msgid ""
 "Decorations are visual elements that add contextual information to images."
-msgstr ""
+msgstr "Decorações são elementos visuais que adicionam informações contextuais às imagens."
 
 #: layers.py:13
 msgid "Decorations"
-msgstr ""
+msgstr "Decorações"
 
 #: layers.py:24
 msgid "Saved transformations"
@@ -102,7 +102,7 @@ msgstr "Transformações salvas"
 
 #: links.py:31 views.py:36
 msgid "Create asset"
-msgstr ""
+msgstr "Criar ativo"
 
 #: links.py:35 links.py:41 links.py:65
 msgid "Delete"
@@ -114,7 +114,7 @@ msgstr "Editar"
 
 #: links.py:55 models.py:53 storages.py:19 views.py:127
 msgid "Assets"
-msgstr ""
+msgstr "Recursos"
 
 #: links.py:77
 msgid "Transformations"
@@ -132,7 +132,7 @@ msgstr "Rótulo"
 msgid ""
 "This value will be used when referencing this asset. Can only contain "
 "letters, numbers, and underscores."
-msgstr ""
+msgstr "Este valor será usado ao fazer referência a este recurso. Só pode conter letras, números e sublinhados."
 
 #: models.py:43
 msgid "Internal name"
@@ -144,7 +144,7 @@ msgstr "Arquivo"
 
 #: models.py:52
 msgid "Asset"
-msgstr ""
+msgstr "Recurso"
 
 #: models.py:82 models.py:153
 msgid "Name"
@@ -200,23 +200,23 @@ msgstr "Camadas de transformação"
 
 #: models.py:174
 msgid "Unknown transformation class"
-msgstr ""
+msgstr "Classe de transformação desconhecida"
 
 #: permissions.py:8
 msgid "Create new assets"
-msgstr ""
+msgstr "Crie novos recursos"
 
 #: permissions.py:11
 msgid "Delete assets"
-msgstr ""
+msgstr "Excluir ativos"
 
 #: permissions.py:14
 msgid "Edit assets"
-msgstr ""
+msgstr "Editar recursos"
 
 #: permissions.py:17
 msgid "View existing assets"
-msgstr ""
+msgstr "Ver recursos existentes"
 
 #: permissions.py:21
 msgid "Create new transformations"
@@ -244,29 +244,29 @@ msgstr "Opções de configuração para o back-end de conversão de gráficos."
 
 #: settings.py:41
 msgid "Path to the Storage subclass to use when storing assets."
-msgstr ""
+msgstr "Caminho para a subclasse de armazenamento a ser usado ao armazenar recursos."
 
 #: settings.py:49
 msgid "Arguments to pass to the CONVERTER_ASSET_STORAGE_BACKEND."
-msgstr ""
+msgstr "Argumentos para passar para CONVERTER_ASSET_STORAGE_BACKEND."
 
 #: storages.py:13
 msgid ""
 "Unable to initialize the converter asset storage. Check the settings {} and "
 "{} for formatting errors."
-msgstr ""
+msgstr "Não foi possível inicializar o armazenamento de recursos do conversor. Verifique as configurações {} e {} para erros de formatação."
 
 #: transformations.py:197
 msgid "Paste an asset"
-msgstr ""
+msgstr "Colar um recurso"
 
 #: transformations.py:248
 msgid "Paste an asset (percents coordinates)"
-msgstr ""
+msgstr "Colar um recurso (coordenadas de porcentagem)"
 
 #: transformations.py:291
 msgid "Paste an asset as watermark"
-msgstr ""
+msgstr "Colar um recurso como marca d'água"
 
 #: transformations.py:351
 msgid "Crop"
@@ -327,48 +327,48 @@ msgstr "Ampliar"
 #: views.py:50
 #, python-format
 msgid "Delete request performed on %(count)d asset"
-msgstr ""
+msgstr "Excluir requisição realizada em %(count)d recurso"
 
 #: views.py:52
 #, python-format
 msgid "Delete request performed on %(count)d assets"
-msgstr ""
+msgstr "Solicitação de exclusão realizada em  %(count)d recursos"
 
 #: views.py:59
 msgid "Delete the selected asset?"
 msgid_plural "Delete the selected assets?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Excluir o ativo selecionado?"
+msgstr[1] "Excluir os recursos selecionados?"
 
 #: views.py:69
 #, python-format
 msgid "Delete asset: %s?"
-msgstr ""
+msgstr "Excluir recurso: %s?"
 
 #: views.py:80
 #, python-format
 msgid "Asset \"%s\" deleted successfully."
-msgstr ""
+msgstr "Recurso \"%s\" excluído com sucesso."
 
 #: views.py:85
 #, python-format
 msgid "Error deleting asset \"%(asset)s\": %(error)s"
-msgstr ""
+msgstr "Erro ao excluir o recurso \"%(asset)s\": %(error)s"
 
 #: views.py:101
 #, python-format
 msgid "Edit asset: %s"
-msgstr ""
+msgstr "Editar recurso: %s"
 
 #: views.py:123
 msgid ""
 "Assets are files that can be used in conjuction with certain "
 "transformations."
-msgstr ""
+msgstr "Recursos são arquivos que podem ser usados em conjunto com certas transformações."
 
 #: views.py:126
 msgid "No assets available"
-msgstr ""
+msgstr "Nenhum recurso disponível"
 
 #: views.py:151
 #, python-format
@@ -423,20 +423,20 @@ msgstr "Páginas"
 msgid ""
 "Pages to which the new transformations will be added. Separate by commas "
 "and/or use a dashes for a ranges. Leave blank to select all pages."
-msgstr ""
+msgstr "Páginas às quais as novas transformações serão adicionadas. Separe por vírgulas e / ou use travessões para os intervalos. Deixe em branco para selecionar todas as páginas."
 
 #: workflow_actions.py:32
 msgid "Transformation class"
-msgstr ""
+msgstr "Classe de transformação"
 
 #: workflow_actions.py:37
 msgid "Type of transformation to add."
-msgstr ""
+msgstr "Tipo de transformação a ser adicionada."
 
 #: workflow_actions.py:42
 msgid "Transformation arguments"
-msgstr ""
+msgstr "Argumentos da transformação"
 
 #: workflow_actions.py:51
 msgid "Add transformation"
-msgstr "adicionar uma transformação"
+msgstr "Adicionar transformação"
