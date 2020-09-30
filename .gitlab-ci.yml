@@ -163,6 +163,7 @@ job_push_python:
     - DOCKER_VERSION=`cat docker/rootfs/version`
     - pip install "mayan-edms<$DOCKER_VERSION"
     - pip install -r requirements/build.txt -r requirements/testing-base.txt
+    - pip install django-test-without-migrations==0.6
     - make python-wheel
   only:
     - releases/all
@@ -174,9 +175,9 @@ test_upgrade_sqlite:
   <<: *test_upgrade_base
   script:
     - . venv/bin/activate
-    - mayan-edms.py initialsetup
+    - mayan-edms.py initialsetup --settings=mayan.settings.testing.gitlab-ci
     - pip install dist/mayan_edms-*.whl
-    - mayan-edms.py performupgrade
+    - mayan-edms.py performupgrade --settings=mayan.settings.testing.gitlab-ci
 
 test_upgrade_mysql:
   <<: *test_upgrade_base
