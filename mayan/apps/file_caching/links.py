@@ -1,6 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.navigation.classes import Link
+from mayan.apps.storage.classes import DefinedStorage
 
 from .icons import icon_cache_purge, icon_file_caching
 from .permissions import permission_cache_purge, permission_cache_view
