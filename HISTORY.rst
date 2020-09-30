@@ -1,4 +1,4 @@
-3.5 (2020-09-XX)
+3.5 (2020-09-30)
 ================
 - Update dependencies versions:
 
@@ -248,10 +248,6 @@
 - Invert the document and OCR migrations 0006 to 0003 dependency.
   Makes the OCR migration dependent on the documents app migration.
   This allows disabling the OCR app.
-
-3.4.18 (2020-XX-XX)
-===================
-- Update Django from version 2.2.15 to 2.2.16.
 
 3.4.17 (2020-09-10)
 ===================
