@@ -272,7 +272,7 @@ test-sqlite:
   <<: *test_base
   script:
     - . venv/bin/activate
-    - python manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci --nomigrations
+    - python manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci --skip-migrations
     - make test-all
     - make test-all-migrations
 
