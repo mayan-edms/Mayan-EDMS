@@ -31,7 +31,7 @@
   Use Python 3's FileNotFoundError.
 - Remove casting of dict_type and dictionary_type.
 - Add group and permission count column to the role object.
-- Prefix all signals with 'signal_'.
+- Prefix all signals with ``signal_``.
 - Move the apps search setup to their own module.
 - Move the SharedUpload model to the storage app.
   The setting ``COMMON_SHARED_STORAGE`` is now ``STORAGE_SHARED_STORAGE``
