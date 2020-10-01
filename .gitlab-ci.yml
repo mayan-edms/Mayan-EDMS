@@ -23,7 +23,7 @@ job_docker_build:
     - docker build --pull -t "$CI_REGISTRY_IMAGE" -f docker/Dockerfile .
     - DOCKER_VERSION=`cat docker/rootfs/version`
     - docker tag "$CI_REGISTRY_IMAGE" "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
-    - docker run --rm -e MAYAN_CELERY_BROKER_URL="redis://redis:6379/0" -e MAYAN_CELERY_RESULT_BACKEND="redis://redis:6379/1" -e MAYAN_DATABASES="{'default': {'ENGINE': 'django.db.backends.postgresql_psycopg2','NAME': 'mayan_edms','USER': 'postgres','PASSWORD': 'postgres','HOST': 'postgres'}}" "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" run_tests
+    - docker run --rm -e MAYAN_CELERY_BROKER_URL="redis://redis:6379/0" -e MAYAN_CELERY_RESULT_BACKEND="redis://redis:6379/1" -e MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql_psycopg2','NAME':'mayan_edms','USER':'postgres','PASSWORD':'postgres','HOST':'postgres'}}" "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" run_tests
     - docker push "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
     - docker logout
   only:
