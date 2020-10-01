@@ -251,6 +251,8 @@
 - Remove the transaction block when creating documents.
   This allows document stubs to be accessible from within 
   signal handlers.
+- Update GitLab CI Docker build and test stage to run using
+  a PostgreSQL database and a Redis container.
 
 3.4.17 (2020-09-10)
 ===================

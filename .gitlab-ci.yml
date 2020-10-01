@@ -9,23 +9,29 @@ stages:
   - deploy
 
 # Docker
+
 job_docker_build:
   stage: build_docker
   image: docker:latest
   services:
     - docker:dind
+    - postgres:9.6-alpine
+    - redis:5.0-alpine
   before_script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
     - docker build --pull -t "$CI_REGISTRY_IMAGE" -f docker/Dockerfile .
     - DOCKER_VERSION=`cat docker/rootfs/version`
     - docker tag "$CI_REGISTRY_IMAGE" "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
-    - docker run --rm "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" run_tests
+    - docker run --rm -e MAYAN_CELERY_BROKER_URL="redis://redis:6379/0" -e MAYAN_CELERY_RESULT_BACKEND="redis://redis:6379/1" -e MAYAN_DATABASES="{'default': {'ENGINE': 'django.db.backends.postgresql_psycopg2','NAME': 'mayan_edms','USER': 'postgres','PASSWORD': 'postgres','HOST': 'postgres'}}" "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" run_tests
     - docker push "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
     - docker logout
   only:
     - releases/all
     - releases/docker
+  variables:
+    POSTGRES_DB: "mayan_edms"
+    POSTGRES_PASSWORD: "postgres"
 
 job_docker_push:
   stage: push_docker
