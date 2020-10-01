@@ -107,7 +107,7 @@ class Source(models.Model):
         """
         try:
             document = document_type.new_document(
-                description=description, label=label or file_object.name,
+                description=description, file_object=file_object, label=label,
                 language=language, _user=user
             )
         except Exception as exception:
