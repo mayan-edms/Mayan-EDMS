@@ -29,6 +29,9 @@ job_docker_build:
   only:
     - releases/all
     - releases/docker
+  tags:
+    - postgres
+    - redis
   variables:
     POSTGRES_DB: "mayan_edms"
     POSTGRES_PASSWORD: "postgres"
