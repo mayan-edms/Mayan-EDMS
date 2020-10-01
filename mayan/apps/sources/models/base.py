@@ -11,7 +11,6 @@ from model_utils.managers import InheritanceManager
 
 from mayan.apps.converter.layers import layer_saved_transformations
 from mayan.apps.documents.models import Document, DocumentType
-from mayan.apps.documents.settings import setting_language
 from mayan.apps.storage.compressed_files import Archive
 from mayan.apps.storage.exceptions import NoMIMETypeMatch
 
@@ -107,13 +106,10 @@ class Source(models.Model):
         Upload an individual document
         """
         try:
-            with transaction.atomic():
-                document = Document(
-                    description=description or '', document_type=document_type,
-                    label=label or file_object.name,
-                    language=language or setting_language.value
-                )
-                document.save(_user=user)
+            document = document_type.new_document(
+                description=description, label=label or file_object.name,
+                language=language, _user=user
+            )
         except Exception as exception:
             logger.critical(
                 'Unexpected exception while trying to create new document '
