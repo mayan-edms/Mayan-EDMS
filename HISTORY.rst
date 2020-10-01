@@ -248,6 +248,9 @@
 - Invert the document and OCR migrations 0006 to 0003 dependency.
   Makes the OCR migration dependent on the documents app migration.
   This allows disabling the OCR app.
+- Remove the transaction block when creating documents.
+  This allows document stubs to be accessible from within 
+  signal handlers.
 
 3.4.17 (2020-09-10)
 ===================
