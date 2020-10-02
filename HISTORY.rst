@@ -255,6 +255,8 @@
   a PostgreSQL database and a Redis container.
 - Remove deprecated ``BROKER_BACKEND`` setting and replace it
   with ``CELERY_BROKER_URL``.
+- Default ``DEFAULT_CELERY_BROKER_URL`` to ``'memory://'``.
+  This ensures operation even when there is no broker available.
 
 3.4.17 (2020-09-10)
 ===================
