@@ -253,6 +253,8 @@
   signal handlers.
 - Update GitLab CI Docker build and test stage to run using
   a PostgreSQL database and a Redis container.
+- Remove deprecated ``BROKER_BACKEND`` setting and replace it
+  with ``CELERY_BROKER_URL``.
 
 3.4.17 (2020-09-10)
 ===================
