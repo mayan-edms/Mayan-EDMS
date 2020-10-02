@@ -22,7 +22,8 @@ job_docker_build:
     - docker build --pull -t "$CI_REGISTRY_IMAGE" -f docker/Dockerfile .
     - DOCKER_VERSION=`cat docker/rootfs/version`
     - docker tag "$CI_REGISTRY_IMAGE" "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
-    - docker run --rm -e MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql_psycopg2','NAME':'mayan_edms','USER':'postgres','PASSWORD':'postgres','HOST':'postgres'}}" "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" run_tests
+    - SERVICE_POSTGRES_IP=$(cat /etc/hosts | awk '{if ($2 == "postgres") print $1;}')
+    - docker run --rm --add-host="postgres:$SERVICE_POSTGRES_IP" -e MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql_psycopg2','NAME':'mayan_edms','USER':'postgres','PASSWORD':'postgres','HOST':'postgres'}}" "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" run_tests
     - docker push "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
     - docker logout
   only:
