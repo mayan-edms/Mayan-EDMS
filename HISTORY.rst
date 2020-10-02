@@ -1,3 +1,7 @@
+3.5.1 (2020-10-XX)
+==================
+- Update xmlrpc to latest interface to fix version check view.
+
 3.5 (2020-09-30)
 ================
 - Update dependencies versions:
