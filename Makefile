@@ -149,7 +149,7 @@ gitlab-ci-run:
 	exit 1; \
 	fi; \
 	if [ -z $(GITLAB_CI_JOB) ]; then echo "Specify the job to execute using GITLAB_CI_JOB."; exit 1; fi; \
-	gitlab-runner exec docker --docker-volumes $$PWD/gitlab-ci-volume:/builds $(GITLAB_CI_JOB)
+	gitlab-runner exec docker --docker-privileged --docker-volumes /var/run/docker.sock:/var/run/docker.sock --docker-volumes $$PWD/gitlab-ci-volume:/builds $(GITLAB_CI_JOB)
 
 # Coverage
 
