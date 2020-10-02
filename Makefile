@@ -143,7 +143,7 @@ test-with-oracle-all: test-launch-oracle
 
 gitlab-ci-run: ## Execute a GitLab CI job locally
 gitlab-ci-run:
-	@if [ -z "$$(docker images gitlab-runner-helper:11.2.0)" ]; then \
+	@if [ -z "$$(docker images -q gitlab-runner-helper:11.2.0)" ]; then \
 	echo "1) Make sure to download the corresponding helper image from https://hub.docker.com/r/gitlab/gitlab-runner-helper/tags"; \
 	echo "2) Tag the download image as gitlab-runner-helper:11.2.0"; \
 	exit 1; \
@@ -438,6 +438,7 @@ check-missing-inits:
 setup-dev-environment: ## Bootstrap a virtualenv by install all dependencies to start developing.
 	sudo apt-get install -y firefox-geckodriver gcc gettext gitlab-runner gnupg1 poppler-utils python3-dev tesseract-ocr-deu
 	pip install -r requirements.txt -r requirements/development.txt -r requirements/testing-base.txt -r requirements/documentation.txt -r requirements/build.txt
-	docker pull gitlab/gitlab-runner-helper:x86_64-974e52f1
+	docker pull gitlab/gitlab-runner-helper:x86_64-281644e9
+	docker tag gitlab/gitlab-runner-helper:x86_64-281644e9 gitlab-runner-helper:11.2.0
 
 -include docker/Makefile
