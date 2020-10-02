@@ -14,9 +14,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-30 04:22+0000\n"
-"PO-Revision-Date: 2020-09-27 13:42+0000\n"
-"Last-Translator: Daniel Flores (PhD.) <dfloresbr@gmail.com>\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
+"PO-Revision-Date: 2020-10-01 22:15+0000\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -120,11 +120,11 @@ msgstr "Rótulo"
 msgid ""
 "The CSS stylesheet to change the appearance of the different user interface "
 "elements."
-msgstr ""
+msgstr "A folha de estilo CSS para alterar a aparência dos diferentes elementos da interface do usuário."
 
 #: models.py:19
 msgid "Stylesheet"
-msgstr ""
+msgstr "Folha de estilo"
 
 #: models.py:24 models.py:60
 msgid "Theme"
@@ -136,27 +136,27 @@ msgstr "Usuário"
 
 #: models.py:64
 msgid "User theme setting"
-msgstr ""
+msgstr "Configuração do tema do usuário"
 
 #: models.py:65
 msgid "User theme settings"
-msgstr ""
+msgstr "Configurações de tema do usuário"
 
 #: permissions.py:8
 msgid "Create new themes"
-msgstr ""
+msgstr "Criar novos temas"
 
 #: permissions.py:11
 msgid "Delete themes"
-msgstr ""
+msgstr "Excluir temas"
 
 #: permissions.py:14
 msgid "Edit themes"
-msgstr ""
+msgstr "Editar temas"
 
 #: permissions.py:17
 msgid "View existing themes"
-msgstr ""
+msgstr "Ver temas existentes"
 
 #: settings.py:12
 msgid "Maximum number of characters that will be displayed as the view title."
@@ -466,27 +466,27 @@ msgstr "Nenhum"
 
 #: views.py:29
 msgid "Current user theme settings details"
-msgstr ""
+msgstr "Detalhes de configurações do tema do usuário atual"
 
 #: views.py:35
 msgid "Edit current user theme settings details"
-msgstr ""
+msgstr "Editar os detalhes das configurações do tema do usuário atual"
 
 #: views.py:69
 #, python-format
 msgid "Delete theme: %s"
-msgstr ""
+msgstr "Excluir tema: %s"
 
 #: views.py:85
 #, python-format
 msgid "Edit theme: %s"
-msgstr ""
+msgstr "Editar tema: %s"
 
 #: views.py:105
 msgid ""
 "Themes allow changing the visual appearance without requiring code changes."
-msgstr ""
+msgstr "Os temas permitem alterar a aparência visual sem exigir alterações de código."
 
 #: views.py:109
 msgid "There are no themes"
-msgstr ""
+msgstr "Não há temas"

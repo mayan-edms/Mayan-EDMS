@@ -4,14 +4,15 @@
 # 
 # Translators:
 # Translators:
+# Alex Chigrin <chalex84@mail.ru>, 2020
 # lilo.panic, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-30 04:22+0000\n"
-"PO-Revision-Date: 2020-09-27 06:46+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
+"PO-Revision-Date: 2020-09-30 06:19+0000\n"
+"Last-Translator: Alex Chigrin <chalex84@mail.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -41,7 +42,7 @@ msgstr "Каждому загруженому документу должен б
 
 #: apps.py:216
 msgid "Versions comment"
-msgstr ""
+msgstr "Комментарий к версиям"
 
 #: apps.py:220
 msgid "Versions encoding"
@@ -53,7 +54,7 @@ msgstr ""
 
 #: apps.py:228
 msgid "Versions timestamp"
-msgstr ""
+msgstr "Отметка времени версий"
 
 #: apps.py:233 models/document_page_models.py:39
 #: models/document_version_models.py:112 models/document_version_models.py:113
@@ -66,15 +67,15 @@ msgstr "Номер страницы"
 
 #: apps.py:241
 msgid "Return the lastest version of the document."
-msgstr ""
+msgstr "Вернуть последнюю версию документа."
 
 #: apps.py:242
 msgid "Latest version"
-msgstr ""
+msgstr "Последняя версия"
 
 #: apps.py:245
 msgid "Return the document instance."
-msgstr ""
+msgstr "Вернуть экземпляр документа."
 
 #: apps.py:246 links/document_version_links.py:37
 #: links/document_version_page_links.py:96 models/document_models.py:127
@@ -94,7 +95,7 @@ msgstr "Страницы"
 
 #: apps.py:330 links/duplicated_document_links.py:12
 msgid "Duplicates"
-msgstr ""
+msgstr "Дубликаты"
 
 #: apps.py:366
 msgid "Type"
@@ -102,11 +103,11 @@ msgstr "Тип"
 
 #: classes.py:47
 msgid "Original"
-msgstr ""
+msgstr "Оригинал"
 
 #: classes.py:49
 msgid "Keeps the original filename of the uploaded file."
-msgstr ""
+msgstr "Сохранить исходное имя загруженного файла."
 
 #: classes.py:59 forms/document_forms.py:152 models/document_models.py:59
 msgid "UUID"
@@ -114,15 +115,15 @@ msgstr "UUID"
 
 #: classes.py:61
 msgid "Generate an immutable, random UUID (RFC 4122) for each file."
-msgstr ""
+msgstr "Создавать неизменяемый, случайный UUID (RFC 4122) для каждого файла."
 
 #: dashboard_widgets.py:23
 msgid "Total pages"
-msgstr ""
+msgstr "Всего страниц"
 
 #: dashboard_widgets.py:47
 msgid "Total documents"
-msgstr ""
+msgstr "Всего документов"
 
 #: dashboard_widgets.py:66 views/trashed_document_views.py:132
 msgid "Documents in trash"
@@ -136,11 +137,11 @@ msgstr "Типы документов"
 
 #: dashboard_widgets.py:104
 msgid "New documents this month"
-msgstr ""
+msgstr "Новые документы в этом месяце"
 
 #: dashboard_widgets.py:119
 msgid "New pages this month"
-msgstr ""
+msgstr "Новые страницы в этом месяце"
 
 #: events.py:8
 msgid "Document created"
@@ -156,7 +157,7 @@ msgstr "Новая версия была загружена"
 
 #: events.py:17
 msgid "New version created"
-msgstr ""
+msgstr "Создана новая версия"
 
 #: events.py:20
 msgid "Document properties edited"
@@ -164,7 +165,7 @@ msgstr "Свойства документа были изменены"
 
 #: events.py:23
 msgid "Document trashed"
-msgstr ""
+msgstr "Документ удален"
 
 #: events.py:27
 msgid "Document type changed"
@@ -172,11 +173,11 @@ msgstr "Тип документа был изменен"
 
 #: events.py:31
 msgid "Document type created"
-msgstr ""
+msgstr "Тип документа создан"
 
 #: events.py:35
 msgid "Document type edited"
-msgstr ""
+msgstr "Тип документа изменен"
 
 #: events.py:38
 msgid "Document version reverted"
@@ -213,7 +214,7 @@ msgstr "Быстро переименовать документ"
 
 #: forms/document_forms.py:88 forms/document_version_forms.py:13
 msgid "Preserve extension"
-msgstr ""
+msgstr "Сохранить расширение"
 
 #: forms/document_forms.py:90
 msgid ""
@@ -268,7 +269,7 @@ msgid ""
 msgstr ""
 
 #: forms/document_type_forms.py:73 models/document_models.py:64
-#: models/document_type_models.py:73 models/document_type_models.py:180
+#: models/document_type_models.py:73 models/document_type_models.py:188
 msgid "Document type"
 msgstr "Тип документа"
 
@@ -348,7 +349,7 @@ msgstr "Редактировать"
 msgid "Add quick label to document type"
 msgstr "Добавить быструю метку к документу"
 
-#: links/document_type_links.py:60 models/document_type_models.py:191
+#: links/document_type_links.py:60 models/document_type_models.py:199
 msgid "Quick labels"
 msgstr "Быстрые метки"
 
@@ -489,7 +490,7 @@ msgid "The name of the document."
 msgstr ""
 
 #: models/document_models.py:68 models/document_page_models.py:271
-#: models/document_type_models.py:31 models/document_type_models.py:183
+#: models/document_type_models.py:31 models/document_type_models.py:191
 msgid "Label"
 msgstr "Надпись"
 
@@ -547,7 +548,7 @@ msgstr "Является заглушкой?"
 msgid "Document stub, id: %d"
 msgstr "Заглушка документа, ид: %d"
 
-#: models/document_page_models.py:41 models/document_type_models.py:185
+#: models/document_page_models.py:41 models/document_type_models.py:193
 msgid "Enabled"
 msgstr "Доступно"
 
@@ -618,7 +619,7 @@ msgstr ""
 msgid "Documents types"
 msgstr "Типы документов"
 
-#: models/document_type_models.py:190
+#: models/document_type_models.py:198
 msgid "Quick label"
 msgstr "Быстрая метка"
 
@@ -1484,45 +1485,45 @@ msgstr ""
 #: views/trashed_document_views.py:94
 msgid "Delete the selected trashed document?"
 msgid_plural "Delete the selected trashed documents?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Удалить выбранный удаленный документ?"
+msgstr[1] "Удалить выбранные документы из корзины?"
+msgstr[2] "Удалить выбранные документы из корзины?"
+msgstr[3] "Удалить выбранные документы из корзины?"
 
 #: views/trashed_document_views.py:125
 msgid ""
 "To avoid loss of data, documents are not deleted instantly. First, they are "
 "placed in the trash can. From here they can be then finally deleted or "
 "restored."
-msgstr ""
+msgstr "Чтобы избежать потери данных, документы не удаляются мгновенно. Сначала их помещают в корзину. Отсюда их можно окончательно удалить или восстановить."
 
 #: views/trashed_document_views.py:130
 msgid "There are no documents in the trash can"
-msgstr ""
+msgstr "В корзине нет документов"
 
 #: views/trashed_document_views.py:143
 #, python-format
 msgid "%(count)d trashed document restored."
-msgstr ""
+msgstr "%(count)d удаленный документ восстановлен."
 
 #: views/trashed_document_views.py:146
 #, python-format
 msgid "%(count)d trashed documents restored."
-msgstr ""
+msgstr "%(count)d удаленных документов восстановлено."
 
 #: views/trashed_document_views.py:154
 msgid "Restore the selected trashed document?"
 msgid_plural "Restore the selected trashed documents?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Восстановить выбранный удаленный документ?"
+msgstr[1] "Восстановить выбранные документы из корзины?"
+msgstr[2] "Восстановить выбранные документы из корзины?"
+msgstr[3] "Восстановить выбранные документы из корзины?"
 
 #: widgets.py:79 widgets.py:83
 #, python-format
 msgid "Pages: %d"
-msgstr ""
+msgstr "Страницы: %d"
 
 #: workflow_actions.py:7
 msgid "Send document to trash"
-msgstr ""
+msgstr "Отправить документ в корзину"

@@ -7,15 +7,15 @@
 # Roberto Rosario, 2019
 # Aline Freitas <aline@alinefreitas.com.br>, 2019
 # José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2019
-# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-30 04:22+0000\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
-"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2020\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -215,7 +215,7 @@ msgstr ""
 
 #: views.py:50
 msgid "No file metadata available"
-msgstr ""
+msgstr "Nenhum metadado de arquivo disponível"
 
 #: views.py:53
 #, python-format
@@ -228,10 +228,13 @@ msgid ""
 "the driver does not support any metadata field for the file type of this "
 "document."
 msgstr ""
+"Isso pode significar que a detecção de metadados do arquivo não foi "
+"concluída ou que o driver não oferece suporte a nenhum campo de metadados "
+"para o tipo de arquivo deste documento."
 
 #: views.py:85
 msgid "No file metadata available for this driver"
-msgstr ""
+msgstr "Nenhum metadado de arquivo disponível para este driver"
 
 #: views.py:89
 #, python-format

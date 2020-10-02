@@ -14,9 +14,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-30 04:23+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
+"PO-Revision-Date: 2020-10-01 22:14+0000\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,7 +30,7 @@ msgstr "Permissões"
 
 #: apps.py:99 models.py:142
 msgid "Group count"
-msgstr ""
+msgstr "Contagem de grupos"
 
 #: classes.py:85
 msgid "Insufficient permissions."
@@ -98,7 +98,7 @@ msgstr "Papel"
 
 #: models.py:150
 msgid "Permission count"
-msgstr ""
+msgstr "Contagem de permissões"
 
 #: permissions.py:8
 msgid "Create roles"

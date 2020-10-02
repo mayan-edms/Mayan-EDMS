@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-30 04:22+0000\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
 "PO-Revision-Date: 2019-12-03 05:23+0000\n"
 "Last-Translator: José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2020\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
@@ -39,11 +39,11 @@ msgstr "Cache editado"
 msgid "Cache purged"
 msgstr "Cache limpo (purged)"
 
-#: links.py:19
+#: links.py:21
 msgid "File caches"
 msgstr "Caches de arquivo"
 
-#: links.py:24 links.py:28
+#: links.py:26 links.py:30
 msgid "Purge cache"
 msgstr "Limpar (purge) o cache"
 

@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-30 04:22+0000\n"
-"PO-Revision-Date: 2020-09-28 20:23+0000\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
+"PO-Revision-Date: 2020-10-01 22:16+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -77,7 +77,7 @@ msgstr "Última versão"
 
 #: apps.py:245
 msgid "Return the document instance."
-msgstr ""
+msgstr "Retornar a instância do documento."
 
 #: apps.py:246 links/document_version_links.py:37
 #: links/document_version_page_links.py:96 models/document_models.py:127
@@ -105,11 +105,11 @@ msgstr "Tipo"
 
 #: classes.py:47
 msgid "Original"
-msgstr ""
+msgstr "Original"
 
 #: classes.py:49
 msgid "Keeps the original filename of the uploaded file."
-msgstr ""
+msgstr "Mantém o nome do arquivo original do arquivo carregado."
 
 #: classes.py:59 forms/document_forms.py:152 models/document_models.py:59
 msgid "UUID"
@@ -117,7 +117,7 @@ msgstr "UUID"
 
 #: classes.py:61
 msgid "Generate an immutable, random UUID (RFC 4122) for each file."
-msgstr ""
+msgstr "Gere um UUID imutável e aleatório (RFC 4122) para cada arquivo."
 
 #: dashboard_widgets.py:23
 msgid "Total pages"
@@ -271,7 +271,7 @@ msgid ""
 msgstr "Número de página a partir do qual todas as transformações serão clonadas. Transformações existentes serão perdidas."
 
 #: forms/document_type_forms.py:73 models/document_models.py:64
-#: models/document_type_models.py:73 models/document_type_models.py:180
+#: models/document_type_models.py:73 models/document_type_models.py:188
 msgid "Document type"
 msgstr "Tipo de Documento"
 
@@ -351,13 +351,13 @@ msgstr "Editar"
 msgid "Add quick label to document type"
 msgstr "Adicionar etiqueta rápida ao tipo de documento"
 
-#: links/document_type_links.py:60 models/document_type_models.py:191
+#: links/document_type_links.py:60 models/document_type_models.py:199
 msgid "Quick labels"
 msgstr "Etiquetas rápidas"
 
 #: links/document_type_links.py:66
 msgid "Filename generation"
-msgstr ""
+msgstr "Geração de nome de arquivo"
 
 #: links/document_version_links.py:26 links/document_version_links.py:43
 msgid "Versions"
@@ -492,7 +492,7 @@ msgid "The name of the document."
 msgstr "O nome do documento."
 
 #: models/document_models.py:68 models/document_page_models.py:271
-#: models/document_type_models.py:31 models/document_type_models.py:183
+#: models/document_type_models.py:31 models/document_type_models.py:191
 msgid "Label"
 msgstr "Rótulo"
 
@@ -550,7 +550,7 @@ msgstr "É um rascunho?"
 msgid "Document stub, id: %d"
 msgstr "Rascunho de documento, id: %d"
 
-#: models/document_page_models.py:41 models/document_type_models.py:185
+#: models/document_page_models.py:41 models/document_type_models.py:193
 msgid "Enabled"
 msgstr "Habilitado"
 
@@ -603,25 +603,25 @@ msgstr "Unidade de tempo de exclusão"
 msgid ""
 "The class responsible for producing the actual filename used to store the "
 "uploaded documents."
-msgstr ""
+msgstr "A classe responsável por produzir o nome do arquivo real usado para armazenar os documentos carregados."
 
 #: models/document_type_models.py:58
 msgid "Filename generator backend"
-msgstr ""
+msgstr "Backend do gerador de nome de arquivo"
 
 #: models/document_type_models.py:62
 msgid "The arguments for the filename generator backend as a YAML dictionary."
-msgstr ""
+msgstr "Os argumentos para o backend do gerador de nome de arquivo como um dicionário YAML."
 
 #: models/document_type_models.py:65
 msgid "Filename generator backend arguments"
-msgstr ""
+msgstr "Argumentos de backend do gerador de nome de arquivo"
 
 #: models/document_type_models.py:74
 msgid "Documents types"
 msgstr "Tipos de Documentos"
 
-#: models/document_type_models.py:190
+#: models/document_type_models.py:198
 msgid "Quick label"
 msgstr "Rótulo rápido"
 
@@ -788,7 +788,7 @@ msgstr "Limpar listas duplicadas vazias"
 
 #: queues.py:43
 msgid "Empty the trash can"
-msgstr ""
+msgstr "Esvazia a lixeira"
 
 #: queues.py:48
 msgid "Check document type delete periods"
@@ -816,7 +816,7 @@ msgstr "Varrer duplicados do documento"
 
 #: search.py:35 search.py:54
 msgid "Document type label"
-msgstr ""
+msgstr "Etiqueta de tipo de documento"
 
 #: settings.py:26
 msgid ""
@@ -897,7 +897,7 @@ msgstr "Tempo até que um rascunho de um documento seja considerado inválido e 
 msgid ""
 "Amount of time in seconds, a failed document page image task will wait "
 "before retrying."
-msgstr ""
+msgstr "Quantidade de tempo em segundos, que uma tarefa de imagem de página de documento com falha aguardará antes de se tentada novamente."
 
 #: settings.py:150
 msgid "Height in pixels of the document thumbnail image."
@@ -1149,7 +1149,7 @@ msgstr "Etiquetas rápidas para documento do tipo: %s"
 #: views/document_type_views.py:280
 #, python-format
 msgid "Filename generation setup for document type: %s"
-msgstr ""
+msgstr "Configuração de geração de nome de arquivo para tipo de documento: %s"
 
 #: views/document_version_views.py:43
 msgid "Download document version"
@@ -1456,7 +1456,7 @@ msgstr "Esvaziar a lixeira?"
 
 #: views/trashed_document_views.py:73
 msgid "The trash emptying task has been queued."
-msgstr ""
+msgstr "A tarefa de esvaziamento da lixeira foi colocada na fila."
 
 #: views/trashed_document_views.py:83
 #, python-format

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-30 04:22+0000\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
 "PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
@@ -267,7 +267,7 @@ msgid ""
 msgstr ""
 
 #: forms/document_type_forms.py:73 models/document_models.py:64
-#: models/document_type_models.py:73 models/document_type_models.py:180
+#: models/document_type_models.py:73 models/document_type_models.py:188
 msgid "Document type"
 msgstr "Tipo de documento"
 
@@ -347,7 +347,7 @@ msgstr "Editar"
 msgid "Add quick label to document type"
 msgstr ""
 
-#: links/document_type_links.py:60 models/document_type_models.py:191
+#: links/document_type_links.py:60 models/document_type_models.py:199
 msgid "Quick labels"
 msgstr ""
 
@@ -488,7 +488,7 @@ msgid "The name of the document."
 msgstr ""
 
 #: models/document_models.py:68 models/document_page_models.py:271
-#: models/document_type_models.py:31 models/document_type_models.py:183
+#: models/document_type_models.py:31 models/document_type_models.py:191
 msgid "Label"
 msgstr "Nome"
 
@@ -546,7 +546,7 @@ msgstr ""
 msgid "Document stub, id: %d"
 msgstr ""
 
-#: models/document_page_models.py:41 models/document_type_models.py:185
+#: models/document_page_models.py:41 models/document_type_models.py:193
 msgid "Enabled"
 msgstr ""
 
@@ -617,7 +617,7 @@ msgstr ""
 msgid "Documents types"
 msgstr ""
 
-#: models/document_type_models.py:190
+#: models/document_type_models.py:198
 msgid "Quick label"
 msgstr ""
 

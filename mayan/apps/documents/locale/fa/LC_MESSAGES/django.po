@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-30 04:22+0000\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
 "PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
@@ -268,7 +268,7 @@ msgid ""
 msgstr ""
 
 #: forms/document_type_forms.py:73 models/document_models.py:64
-#: models/document_type_models.py:73 models/document_type_models.py:180
+#: models/document_type_models.py:73 models/document_type_models.py:188
 msgid "Document type"
 msgstr "نوع سند"
 
@@ -348,7 +348,7 @@ msgstr "ویرایش"
 msgid "Add quick label to document type"
 msgstr "برچسب سریع را به نوع سند اضافه کنید"
 
-#: links/document_type_links.py:60 models/document_type_models.py:191
+#: links/document_type_links.py:60 models/document_type_models.py:199
 msgid "Quick labels"
 msgstr "برچسب های سریع"
 
@@ -489,7 +489,7 @@ msgid "The name of the document."
 msgstr ""
 
 #: models/document_models.py:68 models/document_page_models.py:271
-#: models/document_type_models.py:31 models/document_type_models.py:183
+#: models/document_type_models.py:31 models/document_type_models.py:191
 msgid "Label"
 msgstr "برچسب"
 
@@ -547,7 +547,7 @@ msgstr "آیا خرد است؟"
 msgid "Document stub, id: %d"
 msgstr "مستند مستند، شناسه: %d"
 
-#: models/document_page_models.py:41 models/document_type_models.py:185
+#: models/document_page_models.py:41 models/document_type_models.py:193
 msgid "Enabled"
 msgstr "فعال شده"
 
@@ -618,7 +618,7 @@ msgstr ""
 msgid "Documents types"
 msgstr "انواع اسناد"
 
-#: models/document_type_models.py:190
+#: models/document_type_models.py:198
 msgid "Quick label"
 msgstr "برچسب سریع"
 

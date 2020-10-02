@@ -14,9 +14,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-30 04:22+0000\n"
-"PO-Revision-Date: 2020-09-27 08:06+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
+"PO-Revision-Date: 2020-10-01 20:54+0000\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -186,7 +186,7 @@ msgstr "Descrição curta deste tipo de metadado."
 
 #: models.py:57
 msgid "Enter a template to render."
-msgstr ""
+msgstr "Insira um template para renderizar."
 
 #: models.py:58 search.py:37
 msgid "Default"
@@ -194,7 +194,7 @@ msgstr "Padrão"
 
 #: models.py:62
 msgid "Enter a template to render. Must result in a comma delimited string."
-msgstr ""
+msgstr "Insira um template para renderizar. Deve resultar em uma string delimitada por vírgulas."
 
 #: models.py:64 search.py:40
 msgid "Lookup"
@@ -514,23 +514,23 @@ msgstr "Entre os metadados do documento"
 
 #: workflow_actions.py:24
 msgid "Metadata types to add to the document."
-msgstr ""
+msgstr "Tipos de metadados a serem adicionados ao documento."
 
 #: workflow_actions.py:48
 #, python-format
 msgid ""
 "Unable to add metadata type \"%(metadata_type)s\" from document: "
 "%(document)s. Exception: %(exception)s"
-msgstr ""
+msgstr "Não foi possível adicionar o tipo de metadados \"%(metadata_type)s\" do documento: %(document)s. Exceção: %(exception)s"
 
 #: workflow_actions.py:87
 msgid "Metadata types to edit."
-msgstr ""
+msgstr "Tipos de metadados para editar."
 
 #: workflow_actions.py:95
 msgid ""
 "Value to assign to the metadata. Can be a literal value or template code."
-msgstr ""
+msgstr "Valor a ser atribuído aos metadados. Pode ser um valor literal ou código de modelo."
 
 #: workflow_actions.py:127
 #, python-format
@@ -538,15 +538,15 @@ msgid ""
 "Unable to edit metadata type \"%(metadata_type)s\" from document: "
 "%(document)s. Document does not have the metadata type to be edit. "
 "Exception: %(exception)s"
-msgstr ""
+msgstr "Não foi possível editar o tipo de metadados \"%(metadata_type)s\" do documento: %(document)s. O documento não possui o tipo de metadados a ser editado. Exceção: %(exception)s"
 
 #: workflow_actions.py:171
 msgid "Metadata types to remove from the document."
-msgstr ""
+msgstr "Tipos de metadados a serem removidos do documento."
 
 #: workflow_actions.py:191
 #, python-format
 msgid ""
 "Unable to remove metadata type \"%(metadata_type)s\" from document: "
 "%(document)s. Exception: %(exception)s"
-msgstr ""
+msgstr "Não foi possível remover o tipo de metadados \"%(metadata_type)s\" do documento: %(document)s. Exceção: %(exception)s"

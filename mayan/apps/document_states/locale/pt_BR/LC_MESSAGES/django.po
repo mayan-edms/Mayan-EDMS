@@ -13,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-30 04:22+0000\n"
-"PO-Revision-Date: 2020-09-27 06:46+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
+"PO-Revision-Date: 2020-10-01 22:07+0000\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -236,7 +236,7 @@ msgstr "Transições"
 
 #: links.py:165 links.py:171 workflow_actions.py:83
 msgid "Launch workflows"
-msgstr ""
+msgstr "Disparar workflows"
 
 #: links.py:177
 msgid "Create field"
@@ -284,11 +284,11 @@ msgstr "Na saída"
 
 #: models.py:55
 msgid "Launch workflow when document is created."
-msgstr ""
+msgstr "Disparar o workflow quando o documento for criado."
 
 #: models.py:56
 msgid "Auto launch"
-msgstr ""
+msgstr "Inicialização automática"
 
 #: models.py:60
 msgid ""
@@ -590,7 +590,7 @@ msgstr "Estados rápidos do documento"
 
 #: queues.py:15
 msgid "Launch all workflows for all documents"
-msgstr ""
+msgstr "Lance todos os workflows para todos os documentos"
 
 #: queues.py:19
 msgid "Launch a workflow"
@@ -598,11 +598,11 @@ msgstr "Implantar um workflow"
 
 #: queues.py:23
 msgid "Launch a workflow for a document"
-msgstr ""
+msgstr "Inicie um workflows para um documento"
 
 #: queues.py:27
 msgid "Launch all workflows for a document"
-msgstr ""
+msgstr "Lançar todos os workflows para um documento"
 
 #: queues.py:31
 msgid "Generate workflow previews"
@@ -699,7 +699,7 @@ msgstr "Atribua workflows ao tipo deste documento para que ele execute tais flux
 
 #: views/workflow_instance_views.py:35
 msgid "There are no workflows for this document"
-msgstr ""
+msgstr "Não há workflows para este documento"
 
 #: views/workflow_instance_views.py:39
 #, python-format
@@ -952,58 +952,58 @@ msgstr "Workflows atribuídos ao tipo de documento %s"
 #: views/workflow_template_views.py:95
 #, python-format
 msgid "Workflows launched for %(count)d document"
-msgstr ""
+msgstr "Workflows lançados para documento %(count)d"
 
 #: views/workflow_template_views.py:96
 #, python-format
 msgid "Workflows launched for %(count)d documents"
-msgstr ""
+msgstr "Workflows lançados para documentos %(count)d"
 
 #: views/workflow_template_views.py:100
 msgid "Launch"
-msgstr ""
+msgstr "Disparar"
 
 #: views/workflow_template_views.py:102
 msgid ""
 "Workflows already launched or workflows not applicable to some documents "
 "when multiple documents are selected, will be silently ignored."
-msgstr ""
+msgstr "Os workflows já iniciados ou fluxos de trabalho não aplicáveis a alguns documentos quando vários documentos são selecionados, serão ignorados silenciosamente."
 
 #: views/workflow_template_views.py:107
 #, python-format
 msgid "Launch selected workflows for %(count)d document"
 msgid_plural "Launch selected workflows for %(count)d documents"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Lançar fluxos de trabalho selecionados para documento %(count)d"
+msgstr[1] "Lançar workflows selecionados para documentos %(count)d"
 
 #: views/workflow_template_views.py:120
 #, python-format
 msgid "Launch selected workflows for document: %s"
-msgstr ""
+msgstr "Lançar workflows selecionados para o documento: %s"
 
 #: views/workflow_template_views.py:133
 msgid "Workflows to be launched."
-msgstr ""
+msgstr "Workflows a serem disparados."
 
 #: views/workflow_template_views.py:175
 #, python-format
 msgid "Delete request performed on %(count)d workflow"
-msgstr ""
+msgstr "Solicitação de exclusão realizada no fluxo de trabalho %(count)d"
 
 #: views/workflow_template_views.py:177
 #, python-format
 msgid "Delete request performed on %(count)d workflows"
-msgstr ""
+msgstr "Solicitação de exclusão realizada em%(count)d workflows"
 
 #: views/workflow_template_views.py:183
 msgid "All workflow instances will also be deleted."
-msgstr ""
+msgstr "Todas as instâncias de workflow também serão excluídas."
 
 #: views/workflow_template_views.py:185
 msgid "Delete the selected workflow?"
 msgid_plural "Delete the selected workflows?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Excluir o workflow selecionado?"
+msgstr[1] "Excluir os workflows selecionados?"
 
 #: views/workflow_template_views.py:195
 #, python-format
@@ -1013,12 +1013,12 @@ msgstr "Excluir o workflow %s?"
 #: views/workflow_template_views.py:206
 #, python-format
 msgid "Workflow \"%s\" deleted successfully."
-msgstr ""
+msgstr "Workflow \"%s\" excluído com sucesso."
 
 #: views/workflow_template_views.py:211
 #, python-format
 msgid "Error deleting workflow \"%(workflow)s\": %(error)s"
-msgstr ""
+msgstr "Erro ao excluir o workflow \"%(workflow)s\" %(error)s"
 
 #: views/workflow_template_views.py:229
 #, python-format
@@ -1107,7 +1107,7 @@ msgstr "Modificar as propriedades do documento"
 
 #: workflow_actions.py:77
 msgid "Additional workflows to launch for the document."
-msgstr ""
+msgstr "Workflows adicionais a serem iniciados para o documento."
 
 #: workflow_actions.py:116
 msgid "URL"

@@ -6,16 +6,16 @@
 # Translators:
 # Roberto Rosario, 2020
 # Rogerio Falcone <rogerio@falconeit.com.br>, 2020
-# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2020
 # Aline Freitas <aline@alinefreitas.com.br>, 2020
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-30 04:23+0000\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
 "PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Aline Freitas <aline@alinefreitas.com.br>, 2020\n"
+"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2020\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,7 +25,7 @@ msgstr ""
 
 #: apps.py:15 settings.py:5
 msgid "Views"
-msgstr ""
+msgstr "VIsões"
 
 #: forms.py:24
 msgid "Selection"
@@ -84,17 +84,17 @@ msgstr "%(object)s não criado, erro: %(error)s"
 #: generics.py:556
 #, python-format
 msgid "%(object)s created successfully."
-msgstr "%(object)s criado com sucesso."
+msgstr "%(object)s criados com sucesso."
 
 #: generics.py:595
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
-msgstr "%(object)s não removido, erro: %(error)s."
+msgstr "%(object)s não removidos, erro: %(error)s."
 
 #: generics.py:604
 #, python-format
 msgid "%(object)s deleted successfully."
-msgstr "%(object)s removido com sucesso."
+msgstr "%(object)s excluídos com sucesso."
 
 #: generics.py:740
 #, python-format
@@ -104,7 +104,7 @@ msgstr "%(object)s não atualizado, erro: %(error)s."
 #: generics.py:751
 #, python-format
 msgid "%(object)s updated successfully."
-msgstr "%(object)s atualizado com sucesso."
+msgstr "%(object)s atualizados com sucesso."
 
 #: mixins.py:319
 #, python-format
