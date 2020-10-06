@@ -6,8 +6,8 @@ from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.views.generics import (
-    ConfirmView, SingleObjectDeleteView, SingleObjectDetailView,
-    SingleObjectListView
+    ConfirmView, MultipleObjectDeleteView, SingleObjectDeleteView,
+    SingleObjectDetailView, SingleObjectListView
 )
 from mayan.apps.views.mixins import ExternalObjectMixin
 
@@ -29,10 +29,38 @@ __all__ = (
 logger = logging.getLogger(name=__name__)
 
 
-class DocumentVersionDeleteView(SingleObjectDeleteView):
+class DocumentVersionDeleteView(MultipleObjectDeleteView):
     model = DocumentVersion
     object_permission = permission_document_version_delete
     pk_url_kwarg = 'document_version_id'
+
+    #def get_extra_context(self):
+    #    return {
+    #        #'message': _(
+    #        #    'All document version pages from this document version will '
+    #        #    'be deleted too.'
+    #        #),
+    #        'object': self.object,
+    #        'title': _('Delete document version %s ?') % self.object,
+    #    }
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user,
+        }
+
+    def get_post_action_redirect(self):
+        # Use [0] instead of first(). First returns None and it is not usable.
+        return reverse(
+            viewname='documents:document_version_list', kwargs={
+                'document_id': self.object_list[0].document_id
+            }
+        )
+
+'''
+#class DocumentVersionDeleteView(SingleObjectDeleteView):
+#    model = DocumentVersion
+#    object_permission = permission_document_version_delete
+#    pk_url_kwarg = 'document_version_id'
 
     def get_extra_context(self):
         return {
@@ -56,7 +84,7 @@ class DocumentVersionDeleteView(SingleObjectDeleteView):
                 'document_id': self.object.document_id
             }
         )
-
+'''
 
 class DocumentVersionListView(ExternalObjectMixin, SingleObjectListView):
     external_object_class = Document

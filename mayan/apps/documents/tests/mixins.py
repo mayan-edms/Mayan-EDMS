@@ -276,6 +276,8 @@ class DocumentSearchTestMixin:
 class DocumentTestMixin:
     auto_create_test_document_type = True
     auto_upload_test_document = True
+    test_document_file_filename = TEST_SMALL_DOCUMENT_FILENAME
+    test_document_file_path = None
     test_document_filename = TEST_SMALL_DOCUMENT_FILENAME
     test_document_path = None
 
@@ -313,6 +315,13 @@ class DocumentTestMixin:
                 'sample_documents', self.test_document_filename
             )
 
+    def _calculate_test_document_file_path(self):
+        if not self.test_document_file_path:
+            self.test_document_file_path = os.path.join(
+                settings.BASE_DIR, 'apps', 'documents', 'tests', 'contrib',
+                'sample_documents', self.test_document_file_filename
+            )
+
     def _upload_test_document(self, label=None, _user=None):
         self._calculate_test_document_path()
 
@@ -326,9 +335,24 @@ class DocumentTestMixin:
 
         self.test_document = document
         self.test_documents.append(document)
+
         self.test_document_file_page = document.latest_file.pages.first()
         self.test_document_file = document.latest_file
+        self.test_document_version = self.test_document.latest_version
 
+    def _upload_test_document_file(self, action=None, _user=None):
+        self._calculate_test_document_file_path()
+
+        if not action:
+            action = DOCUMENT_FILE_ACTION_PAGES_NEW
+
+        with open(file=self.test_document_path, mode='rb') as file_object:
+            self.test_document_file = self.test_document.new_file(
+                action=action, file_object=file_object, _user=_user
+            )
+
+        self.test_document_file_page = self.test_document_file.pages.first()
+        self.test_document_version = self.test_document.latest_version
 
 class DocumentTypeAPIViewTestMixin:
     def _request_test_document_type_api_create_view(self):

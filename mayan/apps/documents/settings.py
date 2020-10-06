@@ -80,15 +80,6 @@ setting_favorite_count = namespace.add_setting(
         'Maximum number of favorite documents to remember per user.'
     )
 )
-setting_fix_orientation = namespace.add_setting(
-    global_name='DOCUMENTS_FIX_ORIENTATION', default=False,
-    help_text=_(
-        'Detect the orientation of each of the document\'s pages '
-        'and create a corresponding rotation transformation to '
-        'display it rightside up. This is an experimental '
-        'feature and it is disabled by default.'
-    )
-)
 setting_hash_block_size = namespace.add_setting(
     global_name='DOCUMENTS_HASH_BLOCK_SIZE',
     default=DEFAULT_DOCUMENTS_HASH_BLOCK_SIZE, help_text=_(

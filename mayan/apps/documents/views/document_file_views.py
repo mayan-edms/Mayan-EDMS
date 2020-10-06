@@ -1,9 +1,11 @@
 import logging
 
 from django.contrib import messages
+from django.template import RequestContext
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _, ungettext
 
+from mayan.apps.sources.links import link_document_file_upload
 from mayan.apps.views.generics import (
     ConfirmView, MultipleObjectDownloadView, MultipleObjectConfirmActionView,
     MultipleObjectFormActionView, SingleObjectDeleteView,
@@ -16,6 +18,7 @@ from ..forms.document_file_forms import (
     DocumentFileDownloadForm, DocumentFilePreviewForm,
     DocumentFilePropertiesForm
 )
+from ..icons import icon_document_file_list
 from ..models.document_models import Document
 from ..models.document_file_models import DocumentFile
 from ..permissions import (
@@ -230,12 +233,26 @@ class DocumentFileListView(ExternalObjectMixin, SingleObjectListView):
         return document
 
     def get_extra_context(self):
+        document = self.get_document()
         return {
             'hide_object': True,
             'list_as_items': True,
-            'object': self.get_document(),
+            'no_results_icon': icon_document_file_list,
+            'no_results_main_link': link_document_file_upload.resolve(
+                context=RequestContext(
+                    dict_={'object': document,},
+                    request=self.request
+                )
+            ),
+            'no_results_text': _(
+                'File are the actual files that were uploaded for each '
+                'document. Their contents needs to be mapped to a version '
+                'before it can be used.'
+            ),
+            'no_results_title': _('No files available'),
+            'object': document,
             'table_cell_container_classes': 'td-container-thumbnail',
-            'title': _('Files of document: %s') % self.get_document(),
+            'title': _('Files of document: %s') % document,
         }
 
     def get_source_queryset(self):

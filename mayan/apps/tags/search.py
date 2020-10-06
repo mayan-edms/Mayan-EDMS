@@ -1,7 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.documents.search import (
-    document_file_page_search, document_search
+    document_file_page_search, document_version_page_search, document_search
 )
 from mayan.apps.dynamic_search.classes import SearchModel
 
@@ -11,6 +11,10 @@ document_file_page_search.add_model_field(
     field='document_file__document__tags__label', label=_('Tags')
 )
 document_search.add_model_field(field='tags__label', label=_('Tags'))
+
+document_version_page_search.add_model_field(
+    field='document_version__document__tags__label', label=_('Tags')
+)
 
 tag_search = SearchModel(
     app_label='tags', model_name='Tag',

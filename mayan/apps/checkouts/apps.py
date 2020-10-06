@@ -43,7 +43,7 @@ class CheckoutsApp(MayanAppConfig):
     verbose_name = _('Checkouts')
 
     def ready(self):
-        super(CheckoutsApp, self).ready()
+        super().ready()
 
         CheckedOutDocument = self.get_model(model_name='CheckedOutDocument')
         DocumentCheckout = self.get_model(model_name='DocumentCheckout')

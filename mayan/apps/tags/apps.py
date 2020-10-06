@@ -57,8 +57,11 @@ class TagsApp(MayanAppConfig):
             app_label='documents', model_name='Document'
         )
 
-        DocumentPageResult = apps.get_model(
-            app_label='documents', model_name='DocumentPageResult'
+        DocumentFilePageResult = apps.get_model(
+            app_label='documents', model_name='DocumentFilePageResult'
+        )
+        DocumentVersionPageResult = apps.get_model(
+            app_label='documents', model_name='DocumentVersionPageResult'
         )
 
         DocumentTag = self.get_model(model_name='DocumentTag')
@@ -122,7 +125,14 @@ class TagsApp(MayanAppConfig):
             func=lambda context: widget_document_tags(
                 document=context['object'].document,
                 user=context['request'].user
-            ), label=_('Tags'), source=DocumentPageResult
+            ), label=_('Tags'), source=DocumentVersionPageResult
+        )
+
+        SourceColumn(
+            func=lambda context: widget_document_tags(
+                document=context['object'].document,
+                user=context['request'].user
+            ), label=_('Tags'), source=DocumentFilePageResult
         )
 
         SourceColumn(

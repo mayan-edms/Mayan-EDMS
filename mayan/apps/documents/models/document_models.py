@@ -9,6 +9,8 @@ from django.utils.timezone import now
 from django.utils.translation import ugettext, ugettext_lazy as _
 
 from mayan.apps.common.signals import signal_mayan_pre_save
+from mayan.apps.events.classes import EventManagerSave
+from mayan.apps.events.decorators import method_event
 
 from ..events import (
     event_document_create, event_document_properties_edit,
@@ -157,7 +159,9 @@ class Document(HooksMixin, models.Model):
             self.in_trash = True
             self.deleted_date_time = now()
             with transaction.atomic():
-                self.save(_commit_events=False)
+                #self.save(_commit_events=False)
+                self._event_ignore = True
+                self.save()
                 event_document_trashed.commit(actor=_user, target=self)
         else:
             with transaction.atomic():
@@ -228,14 +232,22 @@ class Document(HooksMixin, models.Model):
         return (self.uuid,)
     natural_key.dependencies = ['documents.DocumentType']
 
-    def new_file(self, action, file_object, comment=None, _user=None):
+    def new_file(self, file_object, action=None, comment=None, _user=None):
         logger.info('Creating new document file for document: %s', self)
+
+        if not action:
+            action = DOCUMENT_FILE_ACTION_PAGES_NEW
+
+        if not comment:
+            comment = ''
+
         DocumentFile = apps.get_model(
             app_label='documents', model_name='DocumentFile'
         )
+        #transaction.atomic
         try:
             document_file = DocumentFile(
-                document=self, comment=comment or '', file=File(file=file_object)
+                document=self, comment=comment, file=File(file=file_object)
             )
             #document_file = self.files(
             #    comment=comment or '', file=File(file=file_object)
@@ -250,17 +262,18 @@ class Document(HooksMixin, models.Model):
             if action == DOCUMENT_FILE_ACTION_PAGES_NEW:
                 document_version = self.versions.create(comment=comment)
                 document_version.pages_remap(
-                    document_file_page_list=list(document_file.pages.all())
+                    content_object_list=list(document_file.pages.all())
                 )
             elif action == DOCUMENT_FILE_ACTION_PAGES_APPEND:
-                document_file_page_list = [
-                    document_version_page.content_object for document_version_page in self.latest_version.pages.all()
+                content_object_list = []
+                content_object_list.extend(
+                    self.latest_version.page_content_objects
+                )
+                content_object_list.extend(list(document_file.pages.all()))
 
-                ]
-                document_file_page_list.append(document_file.pages.all())
                 document_version = self.versions.create(comment=comment)
                 document_version.pages_remap(
-                    document_file_page_list=document_file_page_list
+                    content_object_list=content_object_list
                 )
             elif action == DOCUMENT_FILE_ACTION_PAGES_KEEP:
                 return document_file
@@ -294,30 +307,42 @@ class Document(HooksMixin, models.Model):
         self.in_trash = False
         self.save()
 
+    @method_event(
+        event_manager_class=EventManagerSave,
+        created={
+            'event': event_document_create,
+            'action_object': 'document_type',
+            'keep_attributes': '_event_actor',
+            'target': 'self'
+        },
+        edited={
+            'event': event_document_properties_edit,
+            'action_object': 'document_type',
+            'target': 'self'
+        }
+    )
     def save(self, *args, **kwargs):
-        user = kwargs.pop('_user', None)
-        _commit_events = kwargs.pop('_commit_events', True)
+        user = kwargs.pop('_event_actor', None)
+        #_commit_events = kwargs.pop('_commit_events', True)
         new_document = not self.pk
         with transaction.atomic():
             signal_mayan_pre_save.send(
                 sender=Document, instance=self, user=user
             )
 
-            super(Document, self).save(*args, **kwargs)
+            super().save(*args, **kwargs)
 
             if new_document:
                 if user:
                     self.add_as_recent_document_for_user(user=user)
-                    event_document_create.commit(
-                        actor=user, target=self, action_object=self.document_type
-                    )
-                else:
-                    event_document_create.commit(
-                        target=self, action_object=self.document_type
-                    )
-            else:
-                if _commit_events:
-                    event_document_properties_edit.commit(actor=user, target=self)
+
+                #event_document_create.commit(
+                #    actor=user, action_object=self.document_type,
+                #    target=self
+                #)
+            #else:
+            #    if _commit_events:
+            #        event_document_properties_edit.commit(actor=user, target=self)
 
     #def save_to_file(self, *args, **kwargs):
     #    return self.latest_file.save_to_file(*args, **kwargs)
@@ -325,10 +350,13 @@ class Document(HooksMixin, models.Model):
     #@property
     #def size(self):
     #    return self.latest_file.size
-    def versions_create(self):
-        with transaction.atomic():
-            document_version = self.versions.create()
-            document_version.pages_reset()
+
+
+    #test method for development
+    #def versions_create(self):
+    #    with transaction.atomic():
+    #        document_version = self.versions.create()
+    #        document_version.pages_reset()
 
 
 class TrashedDocument(Document):

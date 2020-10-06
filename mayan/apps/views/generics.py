@@ -5,7 +5,7 @@ from django.db import transaction
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.utils.encoding import force_text
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _, ungettext
 from django.views.generic import (
     FormView as DjangoFormView, DetailView, TemplateView
 )
@@ -62,7 +62,7 @@ class MultiFormView(DjangoFormView):
     def dispatch(self, request, *args, **kwargs):
         form_classes = self.get_form_classes()
         self.forms = self.get_forms(form_classes=form_classes)
-        return super(MultiFormView, self).dispatch(request, *args, **kwargs)
+        return super().dispatch(request, *args, **kwargs)
 
     def forms_invalid(self, forms):
         return self.render_to_response(self.get_context_data(forms=forms))
@@ -187,7 +187,7 @@ class AddRemoveView(
         self.external_object_pk_url_kwargs = self.main_object_pk_url_kwargs
         self.external_object_queryset = self.main_object_source_queryset
 
-        super(AddRemoveView, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def _action_add(self, queryset):
         kwargs = {'queryset': queryset}
@@ -229,7 +229,7 @@ class AddRemoveView(
 
     def dispatch(self, request, *args, **kwargs):
         self.main_object = self.get_external_object()
-        result = super(AddRemoveView, self).dispatch(request=request, *args, **kwargs)
+        result = super().dispatch(request=request, *args, **kwargs)
         return result
 
     def forms_valid(self, forms):
@@ -251,7 +251,7 @@ class AddRemoveView(
 
         self._action_remove(queryset=selection_remove)
 
-        return super(AddRemoveView, self).forms_valid(forms=forms)
+        return super().forms_valid(forms=forms)
 
     def generate_choices(self, queryset):
         for obj in queryset:
@@ -271,7 +271,7 @@ class AddRemoveView(
 
     def get_context_data(self, **kwargs):
         # Use get_context_data to leave the get_extra_context for subclasses
-        context = super(AddRemoveView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context.update(
             {
                 'subtemplates_list': [
@@ -399,7 +399,7 @@ class ConfirmView(
             'submit_icon_class': icon_confirm_form_submit,
             'cancel_icon_class': icon_confirm_form_cancel
         }
-        context.update(super(ConfirmView, self).get_context_data(**kwargs))
+        context.update(super().get_context_data(**kwargs))
         return context
 
     def post(self, request, *args, **kwargs):
@@ -430,7 +430,7 @@ class MultipleObjectFormActionView(
     template_name = 'appearance/generic_form.html'
 
     def __init__(self, *args, **kwargs):
-        result = super(MultipleObjectFormActionView, self).__init__(*args, **kwargs)
+        result = super().__init__(*args, **kwargs)
 
         if self.__class__.mro()[0].get_queryset != MultipleObjectFormActionView.get_queryset:
             raise ImproperlyConfigured(
@@ -444,14 +444,14 @@ class MultipleObjectFormActionView(
 
     def form_valid(self, form):
         self.view_action(form=form)
-        return super(MultipleObjectFormActionView, self).form_valid(form=form)
+        return super().form_valid(form=form)
 
     def get_queryset(self):
         try:
-            return super(MultipleObjectFormActionView, self).get_queryset()
+            return super().get_queryset()
         except ImproperlyConfigured:
             self.queryset = self.get_source_queryset()
-            return super(MultipleObjectFormActionView, self).get_queryset()
+            return super().get_queryset()
 
 
 class MultipleObjectConfirmActionView(
@@ -461,7 +461,7 @@ class MultipleObjectConfirmActionView(
     template_name = 'appearance/generic_confirm.html'
 
     def __init__(self, *args, **kwargs):
-        result = super(MultipleObjectConfirmActionView, self).__init__(*args, **kwargs)
+        result = super().__init__(*args, **kwargs)
 
         if self.__class__.mro()[0].get_queryset != MultipleObjectConfirmActionView.get_queryset:
             raise ImproperlyConfigured(
@@ -475,10 +475,10 @@ class MultipleObjectConfirmActionView(
 
     def get_queryset(self):
         try:
-            return super(MultipleObjectConfirmActionView, self).get_queryset()
+            return super().get_queryset()
         except ImproperlyConfigured:
             self.queryset = self.get_source_queryset()
-            return super(MultipleObjectConfirmActionView, self).get_queryset()
+            return super().get_queryset()
 
     def post(self, request, *args, **kwargs):
         self.view_action()
@@ -527,9 +527,7 @@ class SingleObjectCreateView(
             messages.error(
                 message=error_message, request=self.request
             )
-            return super(
-                SingleObjectCreateView, self
-            ).form_invalid(form=form)
+            return super().form_invalid(form=form)
 
         try:
             self.object.save(**save_extra_data)
@@ -545,9 +543,7 @@ class SingleObjectCreateView(
                         'error': exception
                     }, request=self.request
                 )
-                return super(
-                    SingleObjectCreateView, self
-                ).form_invalid(form=form)
+                return super().form_invalid(form=form)
         else:
             context = self.get_context_data()
 
@@ -571,7 +567,7 @@ class SingleObjectDeleteView(
     template_name = 'appearance/generic_confirm.html'
 
     def __init__(self, *args, **kwargs):
-        result = super(SingleObjectDeleteView, self).__init__(*args, **kwargs)
+        result = super().__init__(*args, **kwargs)
 
         if self.__class__.mro()[0].get_queryset != SingleObjectDeleteView.get_queryset:
             raise ImproperlyConfigured(
@@ -589,7 +585,7 @@ class SingleObjectDeleteView(
         object_name = self.get_object_name(context=context)
 
         try:
-            result = super(SingleObjectDeleteView, self).delete(request, *args, **kwargs)
+            result = super().delete(request, *args, **kwargs)
         except Exception as exception:
             messages.error(
                 message=_('%(object)s not deleted, error: %(error)s.') % {
@@ -609,16 +605,16 @@ class SingleObjectDeleteView(
             return result
 
     def get_context_data(self, **kwargs):
-        context = super(SingleObjectDeleteView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context.update({'delete_view': True})
         return context
 
     def get_queryset(self):
         try:
-            return super(SingleObjectDeleteView, self).get_queryset()
+            return super().get_queryset()
         except ImproperlyConfigured:
             self.queryset = self.get_source_queryset()
-            return super(SingleObjectDeleteView, self).get_queryset()
+            return super().get_queryset()
 
 
 class SingleObjectDetailView(
@@ -628,7 +624,7 @@ class SingleObjectDetailView(
     template_name = 'appearance/generic_form.html'
 
     def __init__(self, *args, **kwargs):
-        result = super(SingleObjectDetailView, self).__init__(*args, **kwargs)
+        result = super().__init__(*args, **kwargs)
 
         if self.__class__.mro()[0].get_queryset != SingleObjectDetailView.get_queryset:
             raise ImproperlyConfigured(
@@ -641,16 +637,16 @@ class SingleObjectDetailView(
         return result
 
     def get_context_data(self, **kwargs):
-        context = super(SingleObjectDetailView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context.update({'read_only': True, 'form': self.get_form()})
         return context
 
     def get_queryset(self):
         try:
-            return super(SingleObjectDetailView, self).get_queryset()
+            return super().get_queryset()
         except ImproperlyConfigured:
             self.queryset = self.get_source_queryset()
-            return super(SingleObjectDetailView, self).get_queryset()
+            return super().get_queryset()
 
 
 class BaseDownloadView(DownloadMixin, ViewPermissionCheckMixin, View):
@@ -663,7 +659,7 @@ class SingleObjectDownloadView(
 ):
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()
-        return super(SingleObjectDownloadView, self).get(
+        return super().get(
             request, *args, **kwargs
         )
 
@@ -681,7 +677,7 @@ class MultipleObjectDownloadView(
     View that support receiving multiple objects via a pk_list query.
     """
     def __init__(self, *args, **kwargs):
-        result = super(MultipleObjectDownloadView, self).__init__(*args, **kwargs)
+        result = super().__init__(*args, **kwargs)
 
         if self.__class__.mro()[0].get_queryset != MultipleObjectDownloadView.get_queryset:
             raise ImproperlyConfigured(
@@ -695,10 +691,10 @@ class MultipleObjectDownloadView(
 
     def get_queryset(self):
         try:
-            return super(MultipleObjectDownloadView, self).get_queryset()
+            return super().get_queryset()
         except ImproperlyConfigured:
             self.queryset = self.get_source_queryset()
-            return super(MultipleObjectDownloadView, self).get_queryset()
+            return super().get_queryset()
 
 
 class SingleObjectDynamicFormCreateView(
@@ -742,9 +738,7 @@ class SingleObjectEditView(
                         'error': exception
                     }, request=self.request
                 )
-                return super(
-                    SingleObjectEditView, self
-                ).form_invalid(form=form)
+                return super().form_invalid(form=form)
         else:
             messages.success(
                 message=_(
@@ -755,7 +749,7 @@ class SingleObjectEditView(
         return HttpResponseRedirect(redirect_to=self.get_success_url())
 
     def get_object(self, queryset=None):
-        obj = super(SingleObjectEditView, self).get_object(queryset=queryset)
+        obj = super().get_object(queryset=queryset)
 
         if hasattr(self, 'get_instance_extra_data'):
             for key, value in self.get_instance_extra_data().items():
@@ -777,7 +771,7 @@ class SingleObjectListView(
     template_name = 'appearance/generic_list.html'
 
     def __init__(self, *args, **kwargs):
-        result = super(SingleObjectListView, self).__init__(*args, **kwargs)
+        result = super().__init__(*args, **kwargs)
 
         if self.__class__.mro()[0].get_queryset != SingleObjectListView.get_queryset:
             raise ImproperlyConfigured(
@@ -790,7 +784,7 @@ class SingleObjectListView(
         return result
 
     def get_context_data(self, **kwargs):
-        context = super(SingleObjectListView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
 
         context.update(
             {
@@ -806,10 +800,10 @@ class SingleObjectListView(
 
     def get_queryset(self):
         try:
-            queryset = super(SingleObjectListView, self).get_queryset()
+            queryset = super().get_queryset()
         except ImproperlyConfigured:
             self.queryset = self.get_source_queryset()
-            queryset = super(SingleObjectListView, self).get_queryset()
+            queryset = super().get_queryset()
 
         self.field_name = self.get_sort_field()
         if self.get_sort_order() == TEXT_SORT_ORDER_CHOICE_ASCENDING:
@@ -838,3 +832,38 @@ class SingleObjectListView(
 
     def get_sort_order(self):
         return self.request.GET.get(TEXT_SORT_ORDER_PARAMETER)
+
+
+class MultipleObjectDeleteView(MultipleObjectConfirmActionView):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context.update(
+            {
+                'delete_view': True,
+                'title': ungettext(
+                    singular='Delete the selected object?',
+                    plural='Delete the selected objects?',
+                    number=self.object_list.count()
+                )
+            }
+        )
+
+        if self.object_list.count() == 1:
+            context.update(
+                {
+                    'object': self.object_list.first(),
+                    'title': _('Delete: %s?') % self.object_list.first()
+                }
+            )
+
+        return context
+
+    def object_action(self, instance, form=None):
+        if hasattr(self, 'get_instance_extra_data'):
+            for key, value in self.get_instance_extra_data().items():
+                setattr(instance, key, value)
+
+        if hasattr(self, 'get_delete_extra_data'):
+            instance.delete(**self.get_delete_extra_data())
+        else:
+            instance.delete()

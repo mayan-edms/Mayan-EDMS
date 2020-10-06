@@ -84,38 +84,6 @@ class Python(ConverterBase):
             finally:
                 new_file_object.close()
 
-    def detect_orientation(self, page_number):
-        # Default rotation: 0 degrees
-        result = 0
-
-        # Use different ways depending on the file type
-        if self.mime_type == 'application/pdf':
-            pdf = PyPDF2.PdfFileReader(self.file_object)
-            try:
-                result = pdf.getPage(page_number - 1).get('/Rotate', 0)
-                if isinstance(result, PyPDF2.generic.IndirectObject):
-                    result = result.getObject()
-            except Exception as exception:
-                self.file_object.seek(0)
-                pdf = PyPDF2.PdfFileReader(self.file_object)
-                if force_text(exception) == 'File has not been decrypted':
-                    # File is encrypted, try to decrypt using a blank
-                    # password.
-                    try:
-                        pdf.decrypt(password=b'')
-                    except Exception as exception:
-                        logger.error(
-                            'Unable to detect PDF orientation; %s', exception
-                        )
-                else:
-                    logger.error(
-                        'Unable to detect PDF orientation; %s', exception
-                    )
-            finally:
-                self.file_object.seek(0)
-
-        return result
-
     def get_page_count(self):
         super(Python, self).get_page_count()
 

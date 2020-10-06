@@ -35,11 +35,21 @@ def condition_document_creation_access(context):
 
 
 def condition_document_new_files_allowed(context):
+    DocumentFile = apps.get_model(
+        app_label='documents', model_name='DocumentFile'
+    )
+
     try:
-        context['object'].latest_file.execute_pre_save_hooks()
+        DocumentFile.execute_pre_create_hooks(
+            kwargs={
+                'document': context['object'],
+                'shared_uploaded_file': None,
+                'user': context.request.user
+            }
+        )
     except Exception as exception:
-        logger.debug(
-            'execute_pre_save_hooks raised and exception: %s', exception
+        logger.warning(
+            'execute_pre_create_hooks raised and exception: %s', exception
         )
     else:
         return True

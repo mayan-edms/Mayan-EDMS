@@ -46,19 +46,21 @@ def hook_factory_document_file_check_quota(klass):
             )
         # Fake DocumentFile to be able to reuse the
         # .process() method for pre check.
-        fake_document_instance = types.SimpleNamespace(
-            file=kwargs['kwargs']['shared_uploaded_file'].file,
-            document=document,
-            pk=None
-        )
+        shared_uploaded_file = kwargs['kwargs']['shared_uploaded_file']
+        if shared_uploaded_file:
+            fake_document_instance = types.SimpleNamespace(
+                file=kwargs['kwargs']['shared_uploaded_file'].file,
+                document=document,
+                pk=None
+            )
 
-        final_kwargs = kwargs['kwargs'].copy()
-        final_kwargs['instance'] = fake_document_instance
+            final_kwargs = kwargs['kwargs'].copy()
+            final_kwargs['instance'] = fake_document_instance
 
-        for quota in klass.get_instances().filter(enabled=True):
-            backend_instance = quota.get_backend_instance()
+            for quota in klass.get_instances().filter(enabled=True):
+                backend_instance = quota.get_backend_instance()
 
-            backend_instance.process(**final_kwargs)
+                backend_instance.process(**final_kwargs)
     return hook_check_quota
 
 

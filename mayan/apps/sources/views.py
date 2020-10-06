@@ -545,7 +545,19 @@ class DocumentFileUploadInteractiveView(UploadBaseView):
         )
 
         try:
-            self.document.latest_file.execute_pre_save_hooks()
+            #DocumentFile.execute_pre_save_hooks(
+            #    kwargs={
+            #        'document': self.document,
+            #    }
+            #)
+            #self.document.latest_file.execute_pre_save_hooks()
+            DocumentFile.execute_pre_create_hooks(
+                kwargs={
+                    'document': self.document,
+                    'shared_uploaded_file': None,
+                    'user': self.request.user
+                }
+            )
         except Exception as exception:
             messages.error(
                 message=_(

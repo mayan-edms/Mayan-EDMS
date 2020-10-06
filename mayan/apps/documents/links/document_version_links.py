@@ -14,6 +14,11 @@ link_document_version_delete = Link(
     permissions=(permission_document_version_delete,), tags='dangerous',
     text=_('Delete'), view='documents:document_version_delete',
 )
+link_document_version_multiple_delete = Link(
+    icon_class_path='mayan.apps.documents.icons.icon_document_version_delete',
+    tags='dangerous', text=_('Delete'),
+    view='documents:document_version_multiple_delete',
+)
 link_document_version_list = Link(
     args='resolved_object.pk',
     icon_class_path='mayan.apps.documents.icons.icon_document_version_list',

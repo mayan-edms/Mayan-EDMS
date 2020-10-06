@@ -17,6 +17,7 @@ logger = logging.getLogger(name=__name__)
 
 
 class EventManager:
+    EVENT_ATTRIBUTES = ('ignore', 'keep_attributes',)
     EVENT_ARGUMENTS = ('actor', 'action_object', 'target')
 
     def __init__(self, instance, **kwargs):
@@ -24,9 +25,8 @@ class EventManager:
         self.kwargs = kwargs
 
     def commit(self):
-        self.kwargs['event'].commit(
-            **self.get_event_arguments(argument_map=self.kwargs)
-        )
+        if not self.instance_event_attributes['ignore']:
+            self._commit()
 
     def get_event_arguments(self, argument_map):
         result = {}
@@ -51,10 +51,21 @@ class EventManager:
     def pop_event_attributes(self):
         self.instance_event_attributes = {}
 
-        for attribute in self.EVENT_ARGUMENTS:
+        for attribute in self.EVENT_ATTRIBUTES:
             full_name = '_event_{}'.format(attribute)
             value = self.instance.__dict__.pop(full_name, None)
             self.instance_event_attributes[attribute] = value
+
+        keep_attributes = self.instance_event_attributes['keep_attributes'] or ()
+
+        for attribute in self.EVENT_ARGUMENTS:
+            full_name = '_event_{}'.format(attribute)
+            if full_name in keep_attributes:
+                value = self.instance.__dict__.get(full_name, None)
+            else:
+                value = self.instance.__dict__.pop(full_name, None)
+            self.instance_event_attributes[attribute] = value
+
 
     def prepare(self):
         """Optional method to gather information before the actual commit"""
@@ -63,11 +74,16 @@ class EventManager:
 class EventManagerMethodAfter(EventManager):
     order = EVENT_MANAGER_ORDER_AFTER
 
+    def _commit(self):
+        self.kwargs['event'].commit(
+            **self.get_event_arguments(argument_map=self.kwargs)
+        )
+
 
 class EventManagerSave(EventManager):
     order = EVENT_MANAGER_ORDER_AFTER
 
-    def commit(self):
+    def _commit(self):
         if self.created:
             self.kwargs['created']['event'].commit(
                 **self.get_event_arguments(argument_map=self.kwargs['created'])

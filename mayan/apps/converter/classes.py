@@ -68,10 +68,6 @@ class ConverterBase:
     def convert(self, page_number=DEFAULT_PAGE_NUMBER):
         self.page_number = page_number
 
-    def detect_orientation(self, page_number):
-        # Must be overridden by subclass
-        pass
-
     def get_page(self, output_format=None):
         output_format = output_format or setting_graphics_backend_arguments.value.get(
             'pillow_format', DEFAULT_PILLOW_FORMAT

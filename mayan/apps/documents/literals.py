@@ -36,9 +36,9 @@ DOCUMENT_FILE_ACTION_PAGES_NEW = 1
 DOCUMENT_FILE_ACTION_PAGES_APPEND = 2
 DOCUMENT_FILE_ACTION_PAGES_KEEP = 3
 DOCUMENT_FILE_ACTION_PAGE_CHOICES = (
-    (DOCUMENT_FILE_ACTION_PAGES_NEW, _('Use new file pages')),
-    (DOCUMENT_FILE_ACTION_PAGES_APPEND, _('Append pages')),
-    (DOCUMENT_FILE_ACTION_PAGES_KEEP, _('Keep current pages')),
+    (DOCUMENT_FILE_ACTION_PAGES_NEW, _('Replace. Create a new version and use the new file pages.')),
+    (DOCUMENT_FILE_ACTION_PAGES_APPEND, _('Append. Create a new version and append the new file pages.')),
+    (DOCUMENT_FILE_ACTION_PAGES_KEEP, _('Keep. Do not create a new version and keep the current version pages.')),
 )
 DOCUMENT_IMAGE_TASK_TIMEOUT = 120
 UPDATE_PAGE_COUNT_RETRY_DELAY = 10

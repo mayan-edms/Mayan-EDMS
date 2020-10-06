@@ -91,7 +91,7 @@ class TagAttachActionView(MultipleObjectFormActionView):
                 }
             )
         else:
-            return super(TagAttachActionView, self).get_post_action_redirect()
+            return super().get_post_action_redirect()
 
     def object_action(self, form, instance):
         attached_tags = instance.get_tags(
@@ -238,7 +238,7 @@ class TagDocumentListView(ExternalObjectMixin, DocumentListView):
         return self.get_tag().get_documents(user=self.request.user).all()
 
     def get_extra_context(self):
-        context = super(TagDocumentListView, self).get_extra_context()
+        context = super().get_extra_context()
         context.update(
             {
                 'object': self.get_tag(),
@@ -257,7 +257,7 @@ class DocumentTagListView(ExternalObjectMixin, TagListView):
     external_object_pk_url_kwarg = 'document_id'
 
     def get_extra_context(self):
-        context = super(DocumentTagListView, self).get_extra_context()
+        context = super().get_extra_context()
         context.update(
             {
                 'hide_link': True,
@@ -343,7 +343,7 @@ class TagRemoveActionView(MultipleObjectFormActionView):
                 }
             )
         else:
-            return super(TagRemoveActionView, self).get_post_action_redirect()
+            return super().get_post_action_redirect()
 
     def object_action(self, form, instance):
         attached_tags = instance.get_tags(

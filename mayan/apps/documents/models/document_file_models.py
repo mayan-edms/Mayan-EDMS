@@ -27,7 +27,7 @@ from ..literals import (
     STORAGE_NAME_DOCUMENT_FILE_PAGE_IMAGE_CACHE, STORAGE_NAME_DOCUMENT_FILES
 )
 from ..managers import DocumentFileManager
-from ..settings import setting_fix_orientation, setting_hash_block_size
+from ..settings import setting_hash_block_size
 from ..signals import signal_post_document_created, signal_post_file_upload
 
 from .document_models import Document
@@ -224,7 +224,15 @@ class DocumentFile(models.Model):
         self.file.storage.delete(name=self.file.name)
         self.cache_partition.delete()
 
-        return super().delete(*args, **kwargs)
+        result = super().delete(*args, **kwargs)
+
+        if self.document.files.count() == 0:
+            self.document.is_stub = False
+            #self.document._commit_events = True
+            self.document._event_ignore = True
+            self.document.save()
+
+        return result
 
     def execute_pre_save_hooks(self):
         """
@@ -244,15 +252,6 @@ class DocumentFile(models.Model):
         detect if the storage has desynchronized (ie: Amazon's S3).
         """
         return self.file.storage.exists(self.file.name)
-
-    def fix_orientation(self):
-        for page in self.pages.all():
-            degrees = page.detect_orientation()
-            if degrees:
-                layer_saved_transformations.add_transformation_to(
-                    obj=page, transformation_class=TransformationRotate,
-                    arguments='{{"degrees": {}}}'.format(360 - degrees)
-                )
 
     def get_absolute_url(self):
         return reverse(
@@ -385,13 +384,12 @@ class DocumentFile(models.Model):
                 app_label='documents', model_name='DocumentFilePage'
             )
 
-            with transaction.atomic():
-                self.pages.all().delete()
+            self.pages.all().delete()
 
-                for page_number in range(detected_pages):
-                    DocumentFilePage.objects.create(
-                        document_file=self, page_number=page_number + 1
-                    )
+            for page_number in range(detected_pages):
+                DocumentFilePage.objects.create(
+                    document_file=self, page_number=page_number + 1
+                )
 
             if save:
                 self.save()
@@ -438,8 +436,6 @@ class DocumentFile(models.Model):
                     self.mimetype_update(save=False)
                     self.save()
                     self.page_count_update(save=False)
-                    if setting_fix_orientation.value:
-                        self.fix_orientation()
 
                     logger.info(
                         'New document file "%s" created for document: %s',
@@ -450,7 +446,9 @@ class DocumentFile(models.Model):
                     if not self.document.label:
                         self.document.label = force_text(self.file)
 
-                    self.document.save(_commit_events=False)
+                    #self.document.save(_commit_events=False)
+                    self.document._event_ignore = True
+                    self.document.save()
         except Exception as exception:
             logger.error(
                 'Error creating new document file for document "%s"; %s',

@@ -217,6 +217,27 @@ urlpatterns_document_types = [
     ),
 ]
 
+urlpatterns_document_version = [
+    url(
+        regex=r'^documents/(?P<document_id>\d+)/versions/$',
+        name='document_version_list', view=DocumentVersionListView.as_view()
+    ),
+    url(
+        regex=r'^documents/versions/(?P<document_version_id>\d+)/$',
+        name='document_version_view', view=DocumentVersionView.as_view()
+    ),
+    url(
+        regex=r'^documents/versions/(?P<document_version_id>\d+)/delete/$',
+        name='document_version_delete',
+        view=DocumentVersionDeleteView.as_view()
+    ),
+    url(
+        regex=r'^documents/versions/multiple/delete/$',
+        name='document_version_multiple_delete',
+        view=DocumentVersionDeleteView.as_view()
+    ),
+]
+
 urlpatterns_document_version_pages = [
     url(
         regex=r'^documents/versions/(?P<document_version_id>\d+)/pages/$',
@@ -285,22 +306,6 @@ urlpatterns_document_version_pages = [
         regex=r'^documents/versions/(?P<document_version_page_id>\d+)/reset/$',
         name='document_version_page_view_reset',
         view=DocumentVersionPageViewResetView.as_view()
-    ),
-]
-
-urlpatterns_document_version = [
-    url(
-        regex=r'^documents/(?P<document_id>\d+)/versions/$',
-        name='document_version_list', view=DocumentVersionListView.as_view()
-    ),
-    url(
-        regex=r'^documents/versions/(?P<document_version_id>\d+)/$',
-        name='document_version_view', view=DocumentVersionView.as_view()
-    ),
-    url(
-        regex=r'^documents/versions/(?P<document_version_id>\d+)/delete/$',
-        name='document_version_delete',
-        view=DocumentVersionDeleteView.as_view()
     ),
 ]
 

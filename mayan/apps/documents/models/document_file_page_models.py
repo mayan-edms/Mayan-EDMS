@@ -64,16 +64,6 @@ class DocumentFilePage(models.Model):
         self.cache_partition.delete()
         super().delete(*args, **kwargs)
 
-    def detect_orientation(self):
-        with self.document_file.open() as file_object:
-            converter = ConverterBase.get_converter_class()(
-                file_object=file_object,
-                mime_type=self.document_file.mimetype
-            )
-            return converter.detect_orientation(
-                page_number=self.page_number
-            )
-
     @property
     def document(self):
         return self.document_file.document

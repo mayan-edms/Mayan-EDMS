@@ -30,8 +30,8 @@ class NewFileForm(forms.Form):
     action = forms.ChoiceField(
         choices=DOCUMENT_FILE_ACTION_PAGE_CHOICES, label=_('Action'),
         help_text=_(
-            'The action to take regarding the pages of the new file '
-            'being uploaded'
+            'The action to take in regards to the pages of the new file '
+            'being uploaded.'
         )
     )
 

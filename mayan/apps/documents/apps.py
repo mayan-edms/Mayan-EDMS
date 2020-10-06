@@ -90,8 +90,8 @@ from .links.document_type_links import (
 )
 from .links.document_version_links import (
     link_document_version_delete, link_document_version_list,
-    link_document_version_return_list, link_document_version_return_document,
-    link_document_version_view
+    link_document_version_multiple_delete, link_document_version_return_list,
+    link_document_version_return_document, link_document_version_view
 )
 from .links.document_version_page_links import (
     link_document_version_page_delete,
@@ -422,10 +422,16 @@ class DocumentsApp(MayanAppConfig):
             ), html_extra_classes='text-center document-thumbnail-list',
             label=_('Thumbnail'), source=Document
         )
+        ##TEMP
         SourceColumn(
             func=lambda context: 'Files: {}'.format(context['object'].files.count()),
             label=_('Files'), source=Document
         )
+        SourceColumn(
+            func=lambda context: context['object'].is_stub,
+            label=_('Is stub'), source=Document
+        )
+        ##TEMP
         SourceColumn(
             attribute='document_type', is_sortable=True, source=Document,
         )
@@ -780,6 +786,11 @@ class DocumentsApp(MayanAppConfig):
                 link_events_for_object
             ),
             sources=(DocumentVersion,)
+        )
+        menu_multi_item.bind_links(
+            links=(
+                link_document_version_multiple_delete,
+            ), sources=(DocumentVersion,)
         )
         menu_object.bind_links(
             links=(
