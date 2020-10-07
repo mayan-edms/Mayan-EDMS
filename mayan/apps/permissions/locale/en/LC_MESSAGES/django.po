@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 08:31+0000\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
 "PO-Revision-Date: 2019-12-13 05:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
@@ -18,8 +18,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:45 events.py:6 models.py:34 models.py:104 permissions.py:5
+#: apps.py:46 events.py:6 models.py:35 models.py:104 permissions.py:5
 msgid "Permissions"
+msgstr ""
+
+#: apps.py:99 models.py:142
+msgid "Group count"
 msgstr ""
 
 #: classes.py:85
@@ -62,15 +66,15 @@ msgstr ""
 msgid "Role permissions"
 msgstr ""
 
-#: models.py:25
+#: models.py:26
 msgid "Namespace"
 msgstr ""
 
-#: models.py:26
+#: models.py:27
 msgid "Name"
 msgstr ""
 
-#: models.py:33
+#: models.py:34
 msgid "Permission"
 msgstr ""
 
@@ -84,6 +88,10 @@ msgstr ""
 
 #: models.py:114
 msgid "Role"
+msgstr ""
+
+#: models.py:150
+msgid "Permission count"
 msgstr ""
 
 #: permissions.py:8

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 08:31+0000\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
 "PO-Revision-Date: 2020-08-18 13:36+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
@@ -32,11 +32,11 @@ msgstr "Assinaturas de documentos"
 msgid "Date"
 msgstr "Data"
 
-#: apps.py:98 models.py:47
+#: apps.py:98 models.py:46
 msgid "Key ID"
 msgstr "ID da chave"
 
-#: apps.py:102 forms.py:62 models.py:52
+#: apps.py:102 forms.py:62 models.py:51
 msgid "Signature ID"
 msgstr "ID da assinatura"
 
@@ -142,63 +142,63 @@ msgstr "Assinatura integrada"
 msgid "Upload signature"
 msgstr "Upload da assinatura"
 
-#: models.py:39
+#: models.py:38
 msgid "Document version"
 msgstr "Versão do documento"
 
-#: models.py:43
+#: models.py:42
 msgid "Date signed"
 msgstr "Data da assinatura"
 
-#: models.py:46
+#: models.py:45
 msgid "ID of the key that will be used to sign the document."
 msgstr "ID da chave que será usada para assinar o documento."
 
-#: models.py:56
+#: models.py:55
 msgid "Public key fingerprint"
 msgstr "Public key fingerprint"
 
-#: models.py:63
+#: models.py:62
 msgid "Document version signature"
 msgstr "Versão do documento da assinatura "
 
-#: models.py:64
+#: models.py:63
 msgid "Document version signatures"
 msgstr "Versão do documento das  assinaturas"
 
-#: models.py:83
+#: models.py:82
 msgid "Detached"
 msgstr "Destacado"
 
-#: models.py:85
+#: models.py:84
 msgid "Embedded"
 msgstr "Embutido"
 
-#: models.py:100
+#: models.py:99
 msgid "Document version embedded signature"
 msgstr "Versão do documento da assinatura integrada"
 
-#: models.py:101
+#: models.py:100
 msgid "Document version embedded signatures"
 msgstr "Versão do documento das assinaturas integradas"
 
-#: models.py:134
+#: models.py:132
 msgid "Signature file previously generated."
 msgstr "Arquivo de chave previamente gerado."
 
-#: models.py:137
+#: models.py:135
 msgid "Signature file"
 msgstr "Arquivo de assinatura"
 
-#: models.py:143
+#: models.py:141
 msgid "Document version detached signature"
 msgstr "Versão do documento da assinatura destacada"
 
-#: models.py:144
+#: models.py:142
 msgid "Document version detached signatures"
 msgstr "Versão do documento das assinaturas destacadas"
 
-#: models.py:147
+#: models.py:145
 msgid "signature"
 msgstr "assinatura"
 
@@ -347,6 +347,6 @@ msgid ""
 "an initial state before the created document is yet to be processed."
 msgstr "O documento não possui versão a ser assinada. Possivelmente você está tentando usar esta ação em um estado inicial, no qual o documento criado ainda não foi processado."
 
-#: workflow_actions.py:82
+#: workflow_actions.py:80
 msgid "Sign document (embedded)"
 msgstr "Assinar o documento (embutido)"

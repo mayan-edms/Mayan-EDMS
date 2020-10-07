@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 08:31+0000\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
 "PO-Revision-Date: 2017-06-30 22:04+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>, 2020\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -21,47 +21,47 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:17 links.py:10 permissions.py:5
+#: apps.py:16 links.py:10 permissions.py:5
 msgid "Task manager"
 msgstr "Správce úloh"
 
-#: apps.py:25
+#: apps.py:24
 msgid "Label"
 msgstr "Označení"
 
-#: apps.py:29
+#: apps.py:28
 msgid "Name"
 msgstr "název"
 
-#: apps.py:34
+#: apps.py:33
 msgid "Default queue?"
 msgstr "Výchozí fronta?"
 
-#: apps.py:39
+#: apps.py:38
 msgid "Is transient?"
 msgstr "Je přechodný?"
 
-#: apps.py:43
+#: apps.py:42
 msgid "Type"
 msgstr "Typ"
 
-#: apps.py:48
+#: apps.py:47
 msgid "Start time"
 msgstr "Doba spuštění"
 
-#: apps.py:52
+#: apps.py:51
 msgid "Host"
 msgstr "Hostitel"
 
-#: apps.py:56
+#: apps.py:55
 msgid "Arguments"
 msgstr "Argumenty"
 
-#: apps.py:60
+#: apps.py:59
 msgid "Keyword arguments"
 msgstr "Argumenty klíčových slov"
 
-#: apps.py:64
+#: apps.py:63
 msgid "Worker process ID"
 msgstr "ID pracovního procesu"
 
@@ -69,15 +69,15 @@ msgstr "ID pracovního procesu"
 msgid "View tasks"
 msgstr "Zobrazit úkoly"
 
-#: settings.py:13
+#: settings.py:10
 msgid "Celery"
 msgstr "Celery"
 
-#: settings.py:18
+#: settings.py:15
 msgid "Default: \"AMQPLAIN\". Set custom amqp login method."
 msgstr ""
 
-#: settings.py:24
+#: settings.py:21
 msgid ""
 "Default: \"amqp://\". Default broker URL. This must be a URL in the form of:"
 " transport://userid:password@hostname:port/virtual_host Only the scheme part"
@@ -89,13 +89,13 @@ msgstr ""
 "pouze část schématu (transport://), zbytek je volitelný a výchozí hodnoty "
 "jsou specifické pro přenos."
 
-#: settings.py:33
+#: settings.py:30
 msgid ""
 "Default: \"Disabled\". Toggles SSL usage on broker connection and SSL "
 "settings. The valid values for this option vary by transport."
 msgstr ""
 
-#: settings.py:41
+#: settings.py:38
 msgid ""
 "Default: No result backend enabled by default. The backend used to store "
 "task results (tombstones). Refer to "

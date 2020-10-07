@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 08:31+0000\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
 "PO-Revision-Date: 2020-04-26 09:54+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
@@ -23,23 +23,23 @@ msgstr ""
 msgid "Lock manager"
 msgstr "Vergrendelingsbeheer"
 
-#: models.py:16
+#: models.py:14
 msgid "Creation datetime"
 msgstr "Aanmaakdatum en tijd\t"
 
-#: models.py:19
+#: models.py:17
 msgid "Timeout"
 msgstr "Timeout"
 
-#: models.py:22
+#: models.py:20
 msgid "Name"
 msgstr "Naam"
 
-#: models.py:28
+#: models.py:26
 msgid "Lock"
 msgstr "Vergrendeling"
 
-#: models.py:29
+#: models.py:27
 msgid "Locks"
 msgstr "Vergrendelingen"
 

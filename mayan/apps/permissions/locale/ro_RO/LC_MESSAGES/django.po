@@ -5,13 +5,13 @@
 # Translators:
 # Translators:
 # Badea Gabriel <gcbadea@gmail.com>, 2013
-# Harald Ersch, 2019
+# Harald Ersch, 2019-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 08:31+0000\n"
-"PO-Revision-Date: 2019-12-20 12:47+0000\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
+"PO-Revision-Date: 2020-09-29 12:56+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
@@ -20,9 +20,13 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:45 events.py:6 models.py:34 models.py:104 permissions.py:5
+#: apps.py:46 events.py:6 models.py:35 models.py:104 permissions.py:5
 msgid "Permissions"
 msgstr "Permisiuni"
+
+#: apps.py:99 models.py:142
+msgid "Group count"
+msgstr "Număr de grupuri"
 
 #: classes.py:85
 msgid "Insufficient permissions."
@@ -64,15 +68,15 @@ msgstr "Grupuri"
 msgid "Role permissions"
 msgstr "Permisiuni pentru rol"
 
-#: models.py:25
+#: models.py:26
 msgid "Namespace"
 msgstr "Spațiu de nume"
 
-#: models.py:26
+#: models.py:27
 msgid "Name"
 msgstr "Nume"
 
-#: models.py:33
+#: models.py:34
 msgid "Permission"
 msgstr "Permisiune"
 
@@ -87,6 +91,10 @@ msgstr "Etichetă"
 #: models.py:114
 msgid "Role"
 msgstr "Rol"
+
+#: models.py:150
+msgid "Permission count"
+msgstr "Număr de permisiuni"
 
 #: permissions.py:8
 msgid "Create roles"

@@ -16,9 +16,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 08:30+0000\n"
-"PO-Revision-Date: 2020-07-08 02:02+0000\n"
-"Last-Translator: Guillaume Trottier <gui.trottier@gmail.com>\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
+"PO-Revision-Date: 2020-09-27 08:36+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,7 +26,7 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:11 settings.py:7
+#: apps.py:59 events.py:5 permissions.py:5 settings.py:7
 msgid "Appearance"
 msgstr "Apparence"
 
@@ -77,6 +77,88 @@ msgstr "Toastr"
 #: dependencies.py:60
 msgid "URI.js"
 msgstr "URI.js"
+
+#: events.py:8
+msgid "Theme created"
+msgstr ""
+
+#: events.py:11
+msgid "Theme edited"
+msgstr ""
+
+#: links.py:15
+msgid "Theme settings"
+msgstr ""
+
+#: links.py:20
+msgid "Edit theme settings"
+msgstr ""
+
+#: links.py:27 views.py:47
+msgid "Create new theme"
+msgstr ""
+
+#: links.py:33
+msgid "Delete"
+msgstr "Supprimer"
+
+#: links.py:39
+msgid "Edit"
+msgstr "Modifier"
+
+#: links.py:43 links.py:47 models.py:25 views.py:111
+msgid "Themes"
+msgstr ""
+
+#: models.py:12
+msgid "A short text describing the theme."
+msgstr ""
+
+#: models.py:13
+msgid "Label"
+msgstr "Étiquette"
+
+#: models.py:17
+msgid ""
+"The CSS stylesheet to change the appearance of the different user interface "
+"elements."
+msgstr ""
+
+#: models.py:19
+msgid "Stylesheet"
+msgstr ""
+
+#: models.py:24 models.py:60
+msgid "Theme"
+msgstr ""
+
+#: models.py:56
+msgid "User"
+msgstr "Utilisateur"
+
+#: models.py:64
+msgid "User theme setting"
+msgstr ""
+
+#: models.py:65
+msgid "User theme settings"
+msgstr ""
+
+#: permissions.py:8
+msgid "Create new themes"
+msgstr ""
+
+#: permissions.py:11
+msgid "Delete themes"
+msgstr ""
+
+#: permissions.py:14
+msgid "Edit themes"
+msgstr ""
+
+#: permissions.py:17
+msgid "View existing themes"
+msgstr ""
 
 #: settings.py:12
 msgid "Maximum number of characters that will be displayed as the view title."
@@ -237,21 +319,21 @@ msgid ""
 "            "
 msgstr "\n                Faites connaitre notre logiciel. Dites à vos amis et collègues à quel point %(project_title)s est génial!\n            "
 
-#: templates/appearance/base.html:38 templates/appearance/base.html:62
+#: templates/appearance/base.html:43 templates/appearance/base.html:67
 msgid "Warning"
 msgstr "Avertissement"
 
-#: templates/appearance/base.html:52
+#: templates/appearance/base.html:57
 msgid "Click here to fix this."
 msgstr "Cliquez ici pour résoudre ce problème."
 
-#: templates/appearance/base.html:62
+#: templates/appearance/base.html:67
 msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."
 msgstr "Paramètres mis à jour, redémarrez votre installation et actualisez votre navigateur pour que les modifications prennent effet."
 
-#: templates/appearance/base.html:70
+#: templates/appearance/base.html:75
 #, python-format
 msgid ""
 "\n"
@@ -259,16 +341,16 @@ msgid ""
 "                                    "
 msgstr "\nPrendre temporairement l'identité de l'utilisateur «%(user)s»."
 
-#: templates/appearance/base.html:73
+#: templates/appearance/base.html:78
 msgid "Click here when finished"
 msgstr "Cliquez ici lorsque vous avez terminé"
 
-#: templates/appearance/base.html:87
+#: templates/appearance/base.html:92
 #: templates/appearance/generic_list_items_subtemplate.html:66
 msgid "Actions"
 msgstr "Actions"
 
-#: templates/appearance/base.html:89
+#: templates/appearance/base.html:94
 #: templates/appearance/generic_list_items_subtemplate.html:68
 #: templates/appearance/list_toolbar.html:67
 msgid "Toggle Dropdown"
@@ -380,6 +462,33 @@ msgstr "Erreur de communication serveur"
 msgid "Check you network connection and try again in a few moments."
 msgstr "Vérifiez votre connexion réseau et réessayez dans quelques instants."
 
-#: templatetags/appearance_tags.py:42
+#: templatetags/appearance_tags.py:44
 msgid "None"
 msgstr "Aucun"
+
+#: views.py:29
+msgid "Current user theme settings details"
+msgstr ""
+
+#: views.py:35
+msgid "Edit current user theme settings details"
+msgstr ""
+
+#: views.py:69
+#, python-format
+msgid "Delete theme: %s"
+msgstr ""
+
+#: views.py:85
+#, python-format
+msgid "Edit theme: %s"
+msgstr ""
+
+#: views.py:105
+msgid ""
+"Themes allow changing the visual appearance without requiring code changes."
+msgstr ""
+
+#: views.py:109
+msgid "There are no themes"
+msgstr ""

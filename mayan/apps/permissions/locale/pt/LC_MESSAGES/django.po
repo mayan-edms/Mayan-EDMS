@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 08:31+0000\n"
-"PO-Revision-Date: 2020-04-08 16:36+0000\n"
-"Last-Translator: Bruno Martins <bruno.martins@bewgpt.com.pt>\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
+"PO-Revision-Date: 2020-09-27 06:47+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,9 +21,13 @@ msgstr ""
 "Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:45 events.py:6 models.py:34 models.py:104 permissions.py:5
+#: apps.py:46 events.py:6 models.py:35 models.py:104 permissions.py:5
 msgid "Permissions"
 msgstr "Permissões"
+
+#: apps.py:99 models.py:142
+msgid "Group count"
+msgstr ""
 
 #: classes.py:85
 msgid "Insufficient permissions."
@@ -65,15 +69,15 @@ msgstr "Grupos"
 msgid "Role permissions"
 msgstr ""
 
-#: models.py:25
+#: models.py:26
 msgid "Namespace"
 msgstr ""
 
-#: models.py:26
+#: models.py:27
 msgid "Name"
 msgstr "Nome"
 
-#: models.py:33
+#: models.py:34
 msgid "Permission"
 msgstr ""
 
@@ -88,6 +92,10 @@ msgstr "Nome"
 #: models.py:114
 msgid "Role"
 msgstr "Função"
+
+#: models.py:150
+msgid "Permission count"
+msgstr ""
 
 #: permissions.py:8
 msgid "Create roles"

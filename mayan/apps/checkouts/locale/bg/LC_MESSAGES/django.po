@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 08:30+0000\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
 "PO-Revision-Date: 2020-08-20 17:22+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:44 events.py:5 links.py:32
+#: apps.py:43 events.py:5 links.py:32
 msgid "Checkouts"
 msgstr "Изписване"
 
@@ -43,11 +43,11 @@ msgstr "Документът е изписан"
 msgid "Document forcefully checked in"
 msgstr "Документът е принудително регистриран"
 
-#: exceptions.py:16
+#: exceptions.py:15
 msgid "Document not checked out."
 msgstr "Документът не е проверен."
 
-#: exceptions.py:25
+#: exceptions.py:23
 msgid "Document already checked out."
 msgstr "Документът вече е изписан."
 
@@ -55,7 +55,7 @@ msgstr "Документът вече е изписан."
 msgid "Document status"
 msgstr "Състояние на документа"
 
-#: forms.py:37 models.py:42 models.py:134
+#: forms.py:37 models.py:41 models.py:133
 msgid "User"
 msgstr "Потребител"
 
@@ -107,55 +107,55 @@ msgstr "Изписан"
 msgid "Checked in/available"
 msgstr "Регистрирани / налични"
 
-#: models.py:29 models.py:112
+#: models.py:28 models.py:111
 msgid "Document"
 msgstr "Документ"
 
-#: models.py:32
+#: models.py:31
 msgid "Check out date and time"
 msgstr "Дата и час на изписване"
 
-#: models.py:36
+#: models.py:35
 msgid "Amount of time to hold the document checked out in minutes."
 msgstr "Време за задържане на изписания документ в минути."
 
-#: models.py:38
+#: models.py:37
 msgid "Check out expiration date and time"
 msgstr "Срок на изписване - дата и час"
 
-#: models.py:47
+#: models.py:46
 msgid "Do not allow new version of this document to be uploaded."
 msgstr "Забранете качването на нова версия на този документ."
 
-#: models.py:49
+#: models.py:48
 msgid "Block new version upload"
 msgstr "Блокиране на качване на нова версия"
 
-#: models.py:57 permissions.py:5
+#: models.py:56 permissions.py:5
 msgid "Document checkout"
 msgstr "Изписване на документ"
 
-#: models.py:58
+#: models.py:57
 msgid "Document checkouts"
 msgstr "Изписвания на документи"
 
-#: models.py:66
+#: models.py:65
 msgid "Check out expiration date and time must be in the future."
 msgstr "Датата и часът за срока на изписване трябва да бъдат в бъдещето."
 
-#: models.py:118
+#: models.py:117
 msgid "New version block"
 msgstr "Ново блокиране на версията"
 
-#: models.py:119
+#: models.py:118
 msgid "New version blocks"
 msgstr "Нови блокирания на версията"
 
-#: models.py:139
+#: models.py:138
 msgid "Checkout time and date"
 msgstr "Час и дата на изписване"
 
-#: models.py:144
+#: models.py:143
 msgid "Checkout expiration"
 msgstr "Срок на изписване"
 
@@ -226,6 +226,6 @@ msgstr "Изписването на документ блокира някои �
 msgid "No documents have been checked out"
 msgstr "Не са изписани документи"
 
-#: widgets.py:25
+#: widgets.py:23
 msgid "Amount"
 msgstr "Брой"

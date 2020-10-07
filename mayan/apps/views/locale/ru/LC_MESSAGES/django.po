@@ -1,28 +1,28 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
 # Translators:
-# mizhgan <i@mizhgan.ru>, 2018
-# lilo.panic, 2016
+# Roberto Rosario, 2020
+# Sergey Glita <gsv70@mail.ru>, 2020
+# lilo.panic, 2020
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Mayan EDMS\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-11 02:28-0400\n"
-"PO-Revision-Date: 2020-04-19 04:46+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
+"PO-Revision-Date: 2020-09-27 06:47+0000\n"
+"Last-Translator: lilo.panic, 2020\n"
+"Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:27 settings.py:9
+#: apps.py:15 settings.py:5
 msgid "Views"
 msgstr ""
 
@@ -99,173 +99,42 @@ msgstr "%(object)s не обновлён, ошибка: %(error)s."
 msgid "%(object)s updated successfully."
 msgstr "%(object)s успешно обновлён."
 
-#: mixins.py:314
+#: mixins.py:319
 #, python-format
 msgid "No %(verbose_name)s found matching the query"
 msgstr ""
 
-#: mixins.py:427
+#: mixins.py:433
 msgid "Object"
 msgstr "Объект"
 
-#: settings.py:15
+#: settings.py:11
 msgid "The number objects that will be displayed per page."
 msgstr ""
 
-#: templatetags/views_tags.py:31
+#: templatetags/views_tags.py:28
 msgid "Confirm delete"
 msgstr "Подтвердить удаление"
 
-#: templatetags/views_tags.py:36
+#: templatetags/views_tags.py:33
 #, python-format
 msgid "Edit %s"
 msgstr ""
 
-#: templatetags/views_tags.py:39
+#: templatetags/views_tags.py:36
 msgid "Confirm"
 msgstr "Подтверждать"
 
-#: templatetags/views_tags.py:43
+#: templatetags/views_tags.py:40
 #, python-format
 msgid "Details for: %s"
 msgstr ""
 
-#: templatetags/views_tags.py:47
+#: templatetags/views_tags.py:44
 #, python-format
 msgid "Edit: %s"
 msgstr ""
 
-#: templatetags/views_tags.py:51
+#: templatetags/views_tags.py:48
 msgid "Create"
 msgstr "Создать"
-
-#~ msgid "Common"
-#~ msgstr "Общий"
-
-#~ msgid "About this"
-#~ msgstr "Информация"
-
-#~ msgid "Locale profile"
-#~ msgstr "Профиль локали"
-
-#~ msgid "Edit locale profile"
-#~ msgstr "Редактировать локаль"
-
-#~ msgid "Documentation"
-#~ msgstr "Документация"
-
-#~ msgid "Errors"
-#~ msgstr "Ошибки"
-
-#~ msgid "Clear all"
-#~ msgstr "Очистить все"
-
-#~ msgid "Forum"
-#~ msgstr "Форум"
-
-#~ msgid "License"
-#~ msgstr "Лицензия"
-
-#~ msgid "Setup"
-#~ msgstr "Настройки"
-
-#~ msgid "Source code"
-#~ msgstr "Исходные коды"
-
-#~ msgid "Tools"
-#~ msgstr "Инструменты"
-
-#~ msgid ""
-#~ "Your database backend is set to use SQLite. SQLite should only be used "
-#~ "for development and testing, not for production."
-#~ msgstr ""
-#~ "В качестве базы данных задан SQLite. SQLite не должен использоваться в "
-#~ "рабочем окружении, только для разработки и тестирования!"
-
-#~ msgid "Days"
-#~ msgstr "Дней"
-
-#~ msgid "Hours"
-#~ msgstr "Часов"
-
-#~ msgid "Minutes"
-#~ msgstr "Минут"
-
-#~ msgid "Actions"
-#~ msgstr "Действия"
-
-#~ msgid "User"
-#~ msgstr "Пользователь"
-
-#~ msgid "Namespace"
-#~ msgstr "Пространство имен"
-
-#~ msgid "Date time"
-#~ msgstr "Дата и время"
-
-#~ msgid "Result"
-#~ msgstr "Результат"
-
-#~ msgid "File"
-#~ msgstr "Файл"
-
-#~ msgid "Filename"
-#~ msgstr "Имя файла"
-
-#~ msgid "Shared uploaded file"
-#~ msgstr "Загруженный файл совместного пользования"
-
-#~ msgid "Shared uploaded files"
-#~ msgstr "Загруженные файлы совместного пользования"
-
-#~ msgid "Timezone"
-#~ msgstr "Часовой пояс"
-
-#~ msgid "Language"
-#~ msgstr "Язык"
-
-#~ msgid "User locale profile"
-#~ msgstr "Профиль локали пользователя"
-
-#~ msgid "User locale profiles"
-#~ msgstr "Профили локали пользователей"
-
-#~ msgid "Default"
-#~ msgstr "Умолчание"
-
-#~ msgid "Automatically enable logging to all apps."
-#~ msgstr ""
-#~ "Автоматически разрешать всем установленным приложениям делать записи в "
-#~ "журнале."
-
-#~ msgid ""
-#~ "Time to delay background tasks that depend on a database commit to "
-#~ "propagate."
-#~ msgstr ""
-#~ "Время задержки фоновых задач зависящих от процесса распространения "
-#~ "записанных в БД данных."
-
-#~ msgid "A storage backend that all workers can use to share files."
-#~ msgstr ""
-#~ "Бекенд хранения, который каждый может использовать для хранения файлов."
-
-#~ msgid "Enter a valid YAML value."
-#~ msgstr "Введите допустимое YAML-значение."
-
-#~ msgid "About"
-#~ msgstr "Инфо"
-
-#~ msgid "Current user locale profile details"
-#~ msgstr "Настройки локали текущего пользователя"
-
-#~ msgid "Edit current user locale profile details"
-#~ msgstr "Редактировать настройки локали текущего пользователя"
-
-#~ msgid "Dashboard"
-#~ msgstr "Панель управления"
-
-#~ msgid "Date and time"
-#~ msgstr "Дата и время"
-
-#~ msgid "Setup items"
-#~ msgstr "Элементы настроек"

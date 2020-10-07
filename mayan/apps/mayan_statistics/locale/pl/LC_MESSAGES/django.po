@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 08:31+0000\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
 "PO-Revision-Date: 2020-05-18 09:58+0000\n"
 "Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
@@ -22,21 +22,21 @@ msgstr ""
 "Language: pl\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: apps.py:21 links.py:31 permissions.py:5 queues.py:7
+#: apps.py:27 links.py:31 permissions.py:5 queues.py:7
 msgid "Statistics"
 msgstr "Statystyki"
 
 #. Translators: Schedule here is a noun, the 'schedule' at
 #. which the statistic will be updated
-#: apps.py:30
+#: apps.py:36
 msgid "Schedule"
 msgstr "Harmonogram"
 
-#: apps.py:36
+#: apps.py:42
 msgid "Last update"
 msgstr "Ostatnia aktualizacja"
 
-#: classes.py:148
+#: classes.py:146
 msgid "Never"
 msgstr "Nigdy"
 
@@ -58,23 +58,23 @@ msgstr "Lista przestrzeni nazw"
 
 #. Translators: 'Slug' refers to the URL valid ID of the statistic
 #. More info: https://docs.djangoproject.com/en/1.7/glossary/#term-slug
-#: models.py:12
+#: models.py:10
 msgid "Slug"
 msgstr "Slug"
 
-#: models.py:14
+#: models.py:12
 msgid "Date time"
 msgstr "Data godzina"
 
-#: models.py:16
+#: models.py:14
 msgid "Data"
 msgstr "Dane"
 
-#: models.py:19
+#: models.py:17
 msgid "Statistics result"
 msgstr "Wynik statystyk"
 
-#: models.py:20
+#: models.py:18
 msgid "Statistics results"
 msgstr "Wyniki statystyk"
 
@@ -82,7 +82,7 @@ msgstr "Wyniki statystyk"
 msgid "View statistics"
 msgstr "Przegląd statystyk"
 
-#: queues.py:11
+#: queues.py:12
 msgid "Execute statistic"
 msgstr "Wykonaj statystykę"
 
@@ -95,31 +95,31 @@ msgstr "Brak danych"
 msgid "Last update: %(datetime)s"
 msgstr "Ostatnia aktualizacja: %(datetime)s"
 
-#: views.py:15
+#: views.py:17
 msgid "Statistics namespaces"
 msgstr "Przestrzenie nazw statystyk"
 
-#: views.py:31
+#: views.py:33
 #, python-format
 msgid "Namespace details for: %s"
 msgstr "Szczegóły przestrzeni nazw: %s"
 
-#: views.py:53
+#: views.py:55
 #, python-format
 msgid "Results for: %s"
 msgstr "Wyniki dla: %s"
 
-#: views.py:60 views.py:86
+#: views.py:62 views.py:88
 #, python-format
 msgid "Statistic \"%s\" not found."
 msgstr "Nie znaleziono statystyki \"%s\"."
 
-#: views.py:78
+#: views.py:80
 #, python-format
 msgid "Queue statistic \"%s\" to be updated?"
 msgstr "Dodać statystykę \"%s\" do kolejki w celu aktualizacji?"
 
-#: views.py:92
+#: views.py:94
 #, python-format
 msgid "Statistic \"%s\" queued successfully for update."
 msgstr "Statystyka „%s” została pomyślnie umieszczona w kolejce do aktualizacji."

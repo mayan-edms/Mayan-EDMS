@@ -9,23 +9,31 @@ stages:
   - deploy
 
 # Docker
+
 job_docker_build:
   stage: build_docker
   image: docker:latest
   services:
     - docker:dind
+    - postgres:9.6-alpine
   before_script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   script:
     - docker build --pull -t "$CI_REGISTRY_IMAGE" -f docker/Dockerfile .
     - DOCKER_VERSION=`cat docker/rootfs/version`
     - docker tag "$CI_REGISTRY_IMAGE" "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
-    - docker run --rm "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" run_tests
+    - SERVICE_POSTGRES_IP=$(cat /etc/hosts | awk '{if ($2 == "postgres") print $1;}')
+    - docker run --rm --add-host="postgres:$SERVICE_POSTGRES_IP" -e MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql_psycopg2','NAME':'mayan_edms','USER':'postgres','PASSWORD':'postgres','HOST':'postgres'}}" "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" run_tests
     - docker push "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
     - docker logout
   only:
     - releases/all
     - releases/docker
+  tags:
+    - postgres
+  variables:
+    POSTGRES_DB: "mayan_edms"
+    POSTGRES_PASSWORD: "postgres"
 
 job_docker_push:
   stage: push_docker
@@ -163,6 +171,7 @@ job_push_python:
     - DOCKER_VERSION=`cat docker/rootfs/version`
     - pip install "mayan-edms<$DOCKER_VERSION"
     - pip install -r requirements/build.txt -r requirements/testing-base.txt
+    - pip install django-test-without-migrations==0.6
     - make python-wheel
   only:
     - releases/all
@@ -174,9 +183,9 @@ test_upgrade_sqlite:
   <<: *test_upgrade_base
   script:
     - . venv/bin/activate
-    - mayan-edms.py initialsetup
+    - mayan-edms.py initialsetup --settings=mayan.settings.testing.gitlab-ci
     - pip install dist/mayan_edms-*.whl
-    - mayan-edms.py performupgrade
+    - mayan-edms.py performupgrade --settings=mayan.settings.testing.gitlab-ci
 
 test_upgrade_mysql:
   <<: *test_upgrade_base
@@ -235,23 +244,6 @@ test_upgrade_postgres:
     - releases/python
     - staging
 
-test-mysql:
-  <<: *test_base
-  variables:
-    MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-    MYSQL_DATABASE: "mayan_edms"
-  services:
-    - mysql:5.7
-  script:
-    - apt-get install -qq libmysqlclient-dev libssl-dev mysql-client
-    - . venv/bin/activate
-    - pip install mysqlclient==$PYTHON_MYSQL_VERSION
-    - mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD" -e "set global character_set_server=utf8mb4;"
-    - make test-all SETTINGS=mayan.settings.testing.gitlab-ci.db_mysql
-    - make test-all-migrations SETTINGS=mayan.settings.testing.gitlab-ci.db_mysql
-  tags:
-    - mysql
-
 test-postgres:
   <<: *test_base
   variables:
@@ -272,7 +264,7 @@ test-sqlite:
   <<: *test_base
   script:
     - . venv/bin/activate
-    - python manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci --nomigrations
+    - python manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci --skip-migrations
     - make test-all
     - make test-all-migrations
 

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 08:31+0000\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
 "PO-Revision-Date: 2020-08-20 17:20+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
@@ -27,19 +27,19 @@ msgstr "Умни настройки"
 msgid "Setting count"
 msgstr "Брой на настройките"
 
-#: apps.py:34
+#: apps.py:35
 msgid "Name"
 msgstr "Име"
 
-#: apps.py:38
+#: apps.py:39
 msgid "Value"
 msgstr "Стойност"
 
-#: classes.py:350
+#: classes.py:336
 msgid "Overridden"
 msgstr "Заменена"
 
-#: classes.py:352
+#: classes.py:338
 msgid "Is this settings being overridden by an environment variable?"
 msgstr "Отменя ли се тази настройка от променлива на средата?"
 
@@ -336,30 +336,30 @@ msgid ""
 msgstr "Пълният Python път на обекта на приложението WSGI, който ще използва вградените сървъри на Django (например runserver). Командата за управление django-admin startproject ще създаде прост файл wsgi.py с приложение, което може да се извиква в него и ще насочи тази настройка към това приложение."
 
 #: views.py:21
+msgid "Setting updated successfully."
+msgstr "Настройката е актуализирана успешно."
+
+#: views.py:30
+#, python-format
+msgid "Edit setting: %s"
+msgstr "Редактиране на настройката: %s"
+
+#: views.py:55
 msgid ""
 "Settings inherited from an environment variable take precedence and cannot "
 "be changed in this view. "
 msgstr "Настройките, наследени от системна променлива имат предимство и не могат да бъдат променени в този изглед."
 
-#: views.py:24
+#: views.py:58
 #, python-format
 msgid "Settings in namespace: %s"
 msgstr "Настройки в именното пространството: %s"
 
-#: views.py:32
+#: views.py:66
 #, python-format
 msgid "Namespace: %s, not found"
 msgstr "Именно пространство: %s, не е намерено"
 
-#: views.py:42
+#: views.py:76
 msgid "Setting namespaces"
 msgstr "Задаване на именни пространства"
-
-#: views.py:58
-msgid "Setting updated successfully."
-msgstr "Настройката е актуализирана успешно."
-
-#: views.py:67
-#, python-format
-msgid "Edit setting: %s"
-msgstr "Редактиране на настройката: %s"

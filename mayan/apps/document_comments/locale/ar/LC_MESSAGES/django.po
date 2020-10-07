@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 08:31+0000\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
 "PO-Revision-Date: 2019-05-17 05:50+0000\n"
 "Last-Translator: Mohammed ALDOUB <voulnet@gmail.com>\n"
 "Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
@@ -18,13 +18,9 @@ msgstr ""
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: apps.py:37 events.py:6
+#: apps.py:36 events.py:6
 msgid "Document comments"
 msgstr ""
-
-#: apps.py:87 apps.py:91 links.py:31 models.py:48 permissions.py:5
-msgid "Comments"
-msgstr "التعليقات"
 
 #: events.py:10
 msgid "Document comment created"
@@ -50,20 +46,24 @@ msgstr "حذف"
 msgid "Edit"
 msgstr "تحرير"
 
-#: models.py:31
+#: links.py:31 models.py:46 permissions.py:5 search.py:7 search.py:11
+msgid "Comments"
+msgstr "التعليقات"
+
+#: models.py:29
 msgid "Document"
 msgstr ""
 
-#: models.py:35 models.py:73
+#: models.py:33 models.py:71
 msgid "User"
 msgstr "مستخدم"
 
 #. Translators: Comment here is a noun and refers to the actual text stored
-#: models.py:38 models.py:47
+#: models.py:36 models.py:45
 msgid "Comment"
 msgstr "تعليق"
 
-#: models.py:41
+#: models.py:39
 msgid "Date time submitted"
 msgstr ""
 

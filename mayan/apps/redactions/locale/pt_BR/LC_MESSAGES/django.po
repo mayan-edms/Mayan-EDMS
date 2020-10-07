@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 08:31+0000\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
 "PO-Revision-Date: 2020-09-04 09:18+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2020\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:23 apps.py:35 layers.py:16 permissions.py:5
+#: apps.py:28 apps.py:40 layers.py:15 permissions.py:5
 msgid "Redactions"
 msgstr "Supressões"
 
@@ -28,7 +28,7 @@ msgstr "Supressões"
 msgid "JavaScript image cropper"
 msgstr "Recortador de imagens JavaScript"
 
-#: layers.py:14
+#: layers.py:13
 msgid ""
 "Redactions allow removing access to confidential and sensitive information "
 "without having to modify the document."

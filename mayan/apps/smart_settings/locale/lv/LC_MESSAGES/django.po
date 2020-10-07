@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 08:31+0000\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
 "PO-Revision-Date: 2020-05-25 06:18+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
@@ -27,19 +27,19 @@ msgstr "Viedie iestatījumi"
 msgid "Setting count"
 msgstr "Iestatījumu skaits"
 
-#: apps.py:34
+#: apps.py:35
 msgid "Name"
 msgstr "Nosaukums"
 
-#: apps.py:38
+#: apps.py:39
 msgid "Value"
 msgstr "Vērtība"
 
-#: classes.py:350
+#: classes.py:336
 msgid "Overridden"
 msgstr ""
 
-#: classes.py:352
+#: classes.py:338
 msgid "Is this settings being overridden by an environment variable?"
 msgstr ""
 
@@ -336,30 +336,30 @@ msgid ""
 msgstr ""
 
 #: views.py:21
+msgid "Setting updated successfully."
+msgstr "Iestatījums ir veiksmīgi atjaunināts."
+
+#: views.py:30
+#, python-format
+msgid "Edit setting: %s"
+msgstr "Rediģēšanas iestatījums: %s"
+
+#: views.py:55
 msgid ""
 "Settings inherited from an environment variable take precedence and cannot "
 "be changed in this view. "
 msgstr "No vides mainīgā pārņemtie iestatījumi ir prioritāri un šajā skatījumā tos nevar mainīt."
 
-#: views.py:24
+#: views.py:58
 #, python-format
 msgid "Settings in namespace: %s"
 msgstr "Iestatījumi nosaukumvietā: %s"
 
-#: views.py:32
+#: views.py:66
 #, python-format
 msgid "Namespace: %s, not found"
 msgstr "Vārda vieta: %s, nav atrasts"
 
-#: views.py:42
+#: views.py:76
 msgid "Setting namespaces"
 msgstr "Vārdu vietu iestatīšana"
-
-#: views.py:58
-msgid "Setting updated successfully."
-msgstr "Iestatījums ir veiksmīgi atjaunināts."
-
-#: views.py:67
-#, python-format
-msgid "Edit setting: %s"
-msgstr "Rediģēšanas iestatījums: %s"

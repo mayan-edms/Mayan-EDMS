@@ -1,4 +1,4 @@
-import xmlrpc
+from xmlrpc import client
 
 from django.utils.translation import ugettext_lazy as _
 
@@ -55,7 +55,7 @@ class PyPIClient:
         return message
 
     def get_server_proxy(self):
-        return xmlrpc.client.ServerProxy(PYPI_URL)
+        return client.ServerProxy(uri=PYPI_URL)
 
     def get_versions(self):
         server_proxy = self.get_server_proxy()

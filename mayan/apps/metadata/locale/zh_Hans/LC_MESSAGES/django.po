@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 08:31+0000\n"
-"PO-Revision-Date: 2020-04-02 10:29+0000\n"
-"Last-Translator: xisafe <root@xisafe.com>\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
+"PO-Revision-Date: 2020-09-27 08:06+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-edms/language/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,34 +20,26 @@ msgstr ""
 "Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:65 apps.py:160 apps.py:165 events.py:5 links.py:46 permissions.py:5
+#: apps.py:65 apps.py:180 apps.py:185 events.py:5 links.py:46 permissions.py:5
 #: queues.py:7 settings.py:8
 msgid "Metadata"
 msgstr "元数据"
 
-#: apps.py:99
+#: apps.py:116
 msgid "Return the value of a specific document metadata."
 msgstr "返回特定文档元数据值 "
 
-#: apps.py:100
+#: apps.py:117
 msgid "Metadata value of"
 msgstr "元数据值"
 
-#: apps.py:105
+#: apps.py:122
 msgid "Metadata type name"
 msgstr "元数据类型名称"
 
-#: apps.py:109
+#: apps.py:126
 msgid "Metadata type value"
 msgstr "元数据类型值"
-
-#: apps.py:193 apps.py:201 forms.py:122 models.py:94 models.py:305
-msgid "Metadata type"
-msgstr "元数据类型"
-
-#: apps.py:196 apps.py:205
-msgid "Metadata value"
-msgstr "元数据值"
 
 #: events.py:8
 msgid "Document metadata added"
@@ -73,82 +65,88 @@ msgstr "元数据类型已编辑"
 msgid "Metadata type relationship updated"
 msgstr "元数据类型关系已更新"
 
-#: forms.py:12
+#: forms.py:14
 msgid "ID"
 msgstr "ID"
 
-#: forms.py:15 models.py:51 search.py:14
+#: forms.py:17 models.py:49 search.py:31
 msgid "Name"
 msgstr "名称"
 
-#: forms.py:19 models.py:212
+#: forms.py:21 models.py:190 workflow_actions.py:92
 msgid "Value"
 msgstr "值"
 
-#: forms.py:24
+#: forms.py:26
 msgid "Update"
 msgstr "更新"
 
-#: forms.py:45 forms.py:185 models.py:307
+#: forms.py:47 forms.py:192 models.py:284
 msgid "Required"
 msgstr "需要的"
 
-#: forms.py:74
+#: forms.py:76
 #, python-format
 msgid "Lookup value error: %s"
 msgstr "查找值错误：%s"
 
-#: forms.py:87
+#: forms.py:89
 #, python-format
 msgid "Default value error: %s"
 msgstr "默认值错误：%s"
 
-#: forms.py:103 models.py:173
+#: forms.py:105 models.py:152
 #, python-format
 msgid "\"%s\" is required for this document type."
 msgstr "此文档类型需要“%s”。"
 
-#: forms.py:121
+#: forms.py:123
 msgid "Metadata types to be added to the selected documents."
 msgstr "要添加到所选文档的元数据类型。"
 
-#: forms.py:147 views.py:403
+#: forms.py:124 models.py:84 models.py:282 search.py:9 search.py:17
+#: workflow_actions.py:85
+msgid "Metadata type"
+msgstr "元数据类型"
+
+#: forms.py:149 views.py:403
 msgid "Remove"
 msgstr "移除"
 
-#: forms.py:169
+#: forms.py:175
 msgid " Available template context variables: "
 msgstr " 可用模板情景变量："
 
-#: forms.py:183
+#: forms.py:190
 msgid "None"
 msgstr "没有"
 
-#: forms.py:184
+#: forms.py:191
 msgid "Optional"
 msgstr "可选的"
 
-#: forms.py:189 models.py:55 search.py:17
+#: forms.py:196 models.py:53 search.py:34
 msgid "Label"
 msgstr "标签"
 
-#: forms.py:193
+#: forms.py:200
 msgid "Relationship"
 msgstr "关系"
 
-#: links.py:16 links.py:27
+#: links.py:16 links.py:27 workflow_actions.py:29
 msgid "Add metadata"
 msgstr "添加元数据"
 
-#: links.py:23 links.py:31
+#: links.py:23 links.py:31 workflow_actions.py:103
 msgid "Edit metadata"
 msgstr "编辑元数据"
 
-#: links.py:35 links.py:41
+#: links.py:35 links.py:41 workflow_actions.py:176
 msgid "Remove metadata"
 msgstr "删除元数据"
 
-#: links.py:53 links.py:81 models.py:95 views.py:573
+#: links.py:53 links.py:81 models.py:85 views.py:573 workflow_actions.py:22
+#: workflow_actions.py:169
 msgid "Metadata types"
 msgstr "元数据类型"
 
@@ -172,94 +170,89 @@ msgstr "编辑"
 msgid "Selected documents must be of the same type."
 msgstr "选定的文件必须属于同一类型。"
 
-#: models.py:48
+#: models.py:46
 msgid ""
 "Name used by other apps to reference this metadata type. Do not use python "
 "reserved words, or spaces."
 msgstr "其他应用程序用于引用此元数据类型的名称。不要使用python保留字或空格。"
 
-#: models.py:54
+#: models.py:52
 msgid "Short description of this metadata type."
 msgstr "元数据类型描述"
 
-#: models.py:60
-msgid ""
-"Enter a template to render. Use Django's default templating language "
-"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
-msgstr "输入要渲染的模板。使用Django的默认模板语言（https://docs.djangoproject.com/en/1.11/ref/templates/builtins/）"
+#: models.py:57
+msgid "Enter a template to render."
+msgstr ""
 
-#: models.py:64 search.py:20
+#: models.py:58 search.py:37
 msgid "Default"
 msgstr "默认"
 
-#: models.py:69
-msgid ""
-"Enter a template to render. Must result in a comma delimited string. Use "
-"Django's default templating language "
-"(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)."
-msgstr "输入要渲染的模板。必须是以逗号分隔的字符串。使用Django的默认模板语言(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)。"
+#: models.py:62
+msgid "Enter a template to render. Must result in a comma delimited string."
+msgstr ""
 
-#: models.py:74 search.py:23
+#: models.py:64 search.py:40
 msgid "Lookup"
 msgstr "查找"
 
-#: models.py:79
+#: models.py:69
 msgid ""
 "The validator will reject data entry if the value entered does not conform "
 "to the expected format."
 msgstr "如果输入的值不符合预期格式，验证器将拒绝数据输入。"
 
-#: models.py:81 search.py:26
+#: models.py:71 search.py:43
 msgid "Validator"
 msgstr "验证器"
 
-#: models.py:85
+#: models.py:75
 msgid ""
 "The parser will reformat the value entered to conform to the expected "
 "format."
 msgstr "解析器将重新格式化输入的值以符合预期的格式。"
 
-#: models.py:87 search.py:29
+#: models.py:77 search.py:46
 msgid "Parser"
 msgstr "解析器"
 
-#: models.py:181
+#: models.py:160
 msgid "Value is not one of the provided options."
 msgstr "值不是提供的选项之一。"
 
-#: models.py:203
+#: models.py:181
 msgid "Document"
 msgstr "文档"
 
-#: models.py:206
+#: models.py:184
 msgid "Type"
 msgstr "类型"
 
-#: models.py:210
+#: models.py:188
 msgid "The actual value stored in the metadata type field for the document."
 msgstr "存储在文档的元数据类型字段中的实际值。"
 
-#: models.py:218 models.py:219
+#: models.py:196 models.py:197
 msgid "Document metadata"
 msgstr "文档元数据"
 
-#: models.py:240
+#: models.py:218
 msgid "Metadata type is required for this document type."
 msgstr "此文档类型需要元数据类型。"
 
-#: models.py:270
+#: models.py:248
 msgid "Metadata type is not valid for this document type."
 msgstr "元数据类型对此文档类型无效。"
 
-#: models.py:301
+#: models.py:278
 msgid "Document type"
 msgstr "文件类型"
 
-#: models.py:314
+#: models.py:291
 msgid "Document type metadata type options"
 msgstr "文档类型元数据类型选项"
 
-#: models.py:315
+#: models.py:292
 msgid "Document type metadata types options"
 msgstr "文档类型元数据类型选项"
 
@@ -306,6 +299,10 @@ msgstr "删除元数据类型"
 #: queues.py:14
 msgid "Add required metadata type"
 msgstr "添加所需的元数据类型"
+
+#: search.py:12 search.py:21
+msgid "Metadata value"
+msgstr "元数据值"
 
 #: serializers.py:52
 msgid "Primary key of the metadata type to be added."
@@ -507,3 +504,42 @@ msgstr "元数据类型%s的文档类型"
 #: wizard_steps.py:13
 msgid "Enter document metadata"
 msgstr "输入文档元数据"
+
+#: workflow_actions.py:24
+msgid "Metadata types to add to the document."
+msgstr ""
+
+#: workflow_actions.py:48
+#, python-format
+msgid ""
+"Unable to add metadata type \"%(metadata_type)s\" from document: "
+"%(document)s. Exception: %(exception)s"
+msgstr ""
+
+#: workflow_actions.py:87
+msgid "Metadata types to edit."
+msgstr ""
+
+#: workflow_actions.py:95
+msgid ""
+"Value to assign to the metadata. Can be a literal value or template code."
+msgstr ""
+
+#: workflow_actions.py:127
+#, python-format
+msgid ""
+"Unable to edit metadata type \"%(metadata_type)s\" from document: "
+"%(document)s. Document does not have the metadata type to be edit. "
+"Exception: %(exception)s"
+msgstr ""
+
+#: workflow_actions.py:171
+msgid "Metadata types to remove from the document."
+msgstr ""
+
+#: workflow_actions.py:191
+#, python-format
+msgid ""
+"Unable to remove metadata type \"%(metadata_type)s\" from document: "
+"%(document)s. Exception: %(exception)s"
+msgstr ""

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 08:31+0000\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
 "PO-Revision-Date: 2020-01-31 04:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
@@ -20,11 +20,11 @@ msgstr ""
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:20 links.py:17 settings.py:6
+#: apps.py:24 links.py:17 settings.py:6
 msgid "REST API"
 msgstr "REST API"
 
-#: fields.py:31
+#: fields.py:30
 #, python-format
 msgid "Unable to find serializer class for: %s"
 msgstr "Impossibile trovare il serializzatore per la classe: %s"

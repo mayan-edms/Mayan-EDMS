@@ -1,8 +1,8 @@
 from .. import *  # NOQA
 
+CELERY_BROKER_URL = 'memory://'
 CELERY_TASK_ALWAYS_EAGER = True
 CELERY_TASK_EAGER_PROPAGATES = True
-BROKER_BACKEND = 'memory'
 
 COMMON_PRODUCTION_ERROR_LOG_PATH = '/tmp/mayan-errors.log'
 

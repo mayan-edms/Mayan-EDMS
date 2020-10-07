@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 08:31+0000\n"
-"PO-Revision-Date: 2020-05-25 06:18+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
+"PO-Revision-Date: 2020-09-29 12:57+0000\n"
+"Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,19 +27,19 @@ msgstr "Setări inteligente"
 msgid "Setting count"
 msgstr "Numărul setării"
 
-#: apps.py:34
+#: apps.py:35
 msgid "Name"
 msgstr "Nume"
 
-#: apps.py:38
+#: apps.py:39
 msgid "Value"
 msgstr "Valoare"
 
-#: classes.py:350
+#: classes.py:336
 msgid "Overridden"
 msgstr "Suprascris"
 
-#: classes.py:352
+#: classes.py:338
 msgid "Is this settings being overridden by an environment variable?"
 msgstr "Această setare este suprascrisă de o variabilă de mediu?"
 
@@ -111,7 +111,7 @@ msgstr "Lista de validatori folosită pentru a verifica puterea parolelor utiliz
 msgid ""
 "A list of authentication backend classes (as strings) to use when attempting"
 " to authenticate a user."
-msgstr ""
+msgstr "O listă de clase de backend de autentificare (ca șiruri) de utilizat atunci când se încearcă autentificarea unui utilizator."
 
 #: settings.py:60
 msgid ""
@@ -336,30 +336,30 @@ msgid ""
 msgstr "Calea completă Python a obiectului aplicației WSGI pe care o vor utiliza serverele încorporate Django (de exemplu, runserver). Comanda django-admin startproject de administrare va crea un simplu fișier wsgi.py cu o aplicație care poate fi apelată în ea și va indica această setare acelei aplicații."
 
 #: views.py:21
+msgid "Setting updated successfully."
+msgstr "Setarea a fost actualizată cu succes."
+
+#: views.py:30
+#, python-format
+msgid "Edit setting: %s"
+msgstr "Editați setarea: %s"
+
+#: views.py:55
 msgid ""
 "Settings inherited from an environment variable take precedence and cannot "
 "be changed in this view. "
 msgstr "Setările moștenite de la o variabilă de mediu au prioritate și nu pot fi modificate în această vizualizare."
 
-#: views.py:24
+#: views.py:58
 #, python-format
 msgid "Settings in namespace: %s"
 msgstr "Setările din spațiul de nume: %s"
 
-#: views.py:32
+#: views.py:66
 #, python-format
 msgid "Namespace: %s, not found"
 msgstr "Spațiul de nume: %s, nu a fost găsit"
 
-#: views.py:42
+#: views.py:76
 msgid "Setting namespaces"
 msgstr "Setarea spațiilor de nume"
-
-#: views.py:58
-msgid "Setting updated successfully."
-msgstr "Setarea a fost actualizată cu succes."
-
-#: views.py:67
-#, python-format
-msgid "Edit setting: %s"
-msgstr "Editați setarea: %s"

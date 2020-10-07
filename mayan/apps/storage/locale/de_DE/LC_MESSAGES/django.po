@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 08:31+0000\n"
-"PO-Revision-Date: 2020-08-17 15:33+0000\n"
-"Last-Translator: Marvin Haschker <marvin@haschker.me>\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
+"PO-Revision-Date: 2020-09-27 06:47+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,11 +20,11 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:11 settings.py:7
+#: apps.py:11 settings.py:9
 msgid "Storage"
 msgstr "Dateispeicher"
 
-#: classes.py:81 classes.py:102
+#: classes.py:82 classes.py:103
 #, python-format
 msgid ""
 "Unable to initialize storage: %(name)s. Check the storage backend dotted "
@@ -54,8 +54,46 @@ msgstr "Die Dateien in umgekehrter Reihenfolge um die Dateispeicher-Pipeline-Tra
 msgid "Name of the storage to process."
 msgstr "Name des zu verarbeitenden Dateispeichers."
 
-#: settings.py:12
+#: models.py:23
+msgid "File"
+msgstr "Datei"
+
+#: models.py:25
+msgid "Filename"
+msgstr "Dateiname"
+
+#: models.py:27
+msgid "Date time"
+msgstr "Datum & Zeit"
+
+#: models.py:31
+msgid "Shared uploaded file"
+msgstr "Geteilte hochgeladene Datei"
+
+#: models.py:32 storages.py:19
+msgid "Shared uploaded files"
+msgstr "Geteilte hochgeladene Dateien"
+
+#: queues.py:11
+msgid "Storage periodic"
+msgstr ""
+
+#: queues.py:16
+msgid "Delete stale uploads"
+msgstr "Veraltete Uploads löschen"
+
+#: settings.py:14
+msgid "A storage backend that all workers can use to share files."
+msgstr "Datenbackend, das alle Worker benutzen können, um Dateien zu teilen."
+
+#: settings.py:23
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
 msgstr "Temporäres Verzeichnis zum systemweiten Speichern von Miniaturbildern, Vorschauen und temporären Dateien. "
+
+#: storages.py:12
+msgid ""
+"Unable to initialize the shared uploaded file storage. Check the settings {}"
+" and {} for formatting errors."
+msgstr "Der gemeinsam genutzte Dateispeicher für hochgeladene Dateien kann nicht initialisiert werden. Überprüfen Sie die Einstellungen {} und {} auf Formatierungsfehler."

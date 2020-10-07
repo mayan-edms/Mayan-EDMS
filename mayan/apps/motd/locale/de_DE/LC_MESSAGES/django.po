@@ -14,9 +14,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 08:31+0000\n"
-"PO-Revision-Date: 2018-11-16 15:26+0000\n"
-"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
+"PO-Revision-Date: 2020-09-27 06:47+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,65 +24,73 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:33 links.py:34 permissions.py:5
+#: apps.py:40 links.py:38 permissions.py:5
 msgid "Message of the day"
 msgstr "Nachricht des Tages"
 
-#: apps.py:55 apps.py:59
+#: apps.py:77 apps.py:81
 msgid "None"
 msgstr "Keine"
 
-#: links.py:14 views.py:30
+#: events.py:5 models.py:40 views.py:123
+msgid "Messages"
+msgstr "Nachrichten"
+
+#: events.py:8
+msgid "Message created"
+msgstr ""
+
+#: events.py:11
+msgid "Message edited"
+msgstr ""
+
+#: links.py:14 views.py:31
 msgid "Create message"
 msgstr "Nachricht erstellen"
 
-#: links.py:20
+#: links.py:18 links.py:24
 msgid "Delete"
 msgstr "Löschen"
 
-#: links.py:25
+#: links.py:29
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: models.py:15
+#: models.py:17
 msgid "Short description of this message."
 msgstr "Kurze Beschreibung dieser Nachricht."
 
-#: models.py:16
+#: models.py:18
 msgid "Label"
 msgstr "Bezeichner"
 
-#: models.py:19
+#: models.py:21
 msgid "The actual message to be displayed."
 msgstr "Die anzuzeigende Nachricht."
 
-#: models.py:20 models.py:37
+#: models.py:22 models.py:39
 msgid "Message"
 msgstr "Nachricht"
 
-#: models.py:22
+#: models.py:24
 msgid "Enabled"
 msgstr "Aktiviert"
 
-#: models.py:25
+#: models.py:27
 msgid "Date and time after which this message will be displayed."
 msgstr "Datum und Uhrzeit ab der die Nachricht angezeigt wird."
 
-#: models.py:26
+#: models.py:28
 msgid "Start date time"
 msgstr "Startdatum und Uhrzeit"
 
-#: models.py:30
+#: models.py:32
 msgid "Date and time until when this message is to be displayed."
 msgstr "Datum und Uhrzeit bis zu der die Nachricht angezeigt wird."
 
-#: models.py:31
+#: models.py:33
 msgid "End date time"
 msgstr "Enddatum und Uhrzeit"
-
-#: models.py:38 views.py:78
-msgid "Messages"
-msgstr "Nachrichten"
 
 #: permissions.py:8
 msgid "Create messages"
@@ -104,23 +112,49 @@ msgstr "Nachrichten anzeigen"
 msgid "Messages of the day"
 msgstr "Nachrichten des Tages"
 
-#: views.py:43
+#: views.py:45
 #, python-format
-msgid "Delete the message: %s?"
-msgstr "Nachricht %s löschen?"
+msgid "Delete request performed on %(count)d message"
+msgstr ""
 
-#: views.py:56
+#: views.py:47
+#, python-format
+msgid "Delete request performed on %(count)d messages"
+msgstr ""
+
+#: views.py:54
+msgid "Delete the selected message?"
+msgid_plural "Delete the selected messages?"
+msgstr[0] ""
+msgstr[1] ""
+
+#: views.py:64
+#, python-format
+msgid "Delete message: %s?"
+msgstr ""
+
+#: views.py:75
+#, python-format
+msgid "Message \"%s\" deleted successfully."
+msgstr ""
+
+#: views.py:80
+#, python-format
+msgid "Error deleting message \"%(message)s\": %(error)s"
+msgstr ""
+
+#: views.py:96
 #, python-format
 msgid "Edit message: %s"
 msgstr "Nachricht %s bearbeiten"
 
-#: views.py:73
+#: views.py:118
 msgid ""
 "Messages are displayed in the login view. You can use messages to convery "
 "information about your organzation, announcements or usage guidelines for "
 "your users."
 msgstr "Nachrichten werden bei der Anmeldung angezeigt. Sie können dies nutzen, um Informationen zu Ihrem Unternehmen, Ankündigungen oder Nutzungsrichtlinien anzuzeigen. "
 
-#: views.py:77
+#: views.py:122
 msgid "No messages available"
 msgstr "Keine Nachrichten vorhanden"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 08:31+0000\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
 "PO-Revision-Date: 2020-02-06 10:07+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
@@ -23,23 +23,23 @@ msgstr ""
 msgid "Lock manager"
 msgstr "Správce zámku"
 
-#: models.py:16
+#: models.py:14
 msgid "Creation datetime"
 msgstr "Vytvoření datetime"
 
-#: models.py:19
+#: models.py:17
 msgid "Timeout"
 msgstr "Časový limit"
 
-#: models.py:22
+#: models.py:20
 msgid "Name"
 msgstr "název"
 
-#: models.py:28
+#: models.py:26
 msgid "Lock"
 msgstr "Zámek"
 
-#: models.py:29
+#: models.py:27
 msgid "Locks"
 msgstr "Zámky"
 

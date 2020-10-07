@@ -140,7 +140,8 @@ class DocumentType(models.Model):
                     label=label or file_object.name,
                     language=language or setting_language.value
                 )
-                document.save(_user=_user)
+                _event_actor = _user
+                document.save()
 
                 document.new_file(file_object=file_object, _user=_user)
                 return document
@@ -151,6 +152,18 @@ class DocumentType(models.Model):
                 label or file_object.name, self, exception
             )
             raise
+        else:
+            try:
+                document.new_version(file_object=file_object, _user=_user)
+            except Exception as exception:
+                logger.critical(
+                    'Unexpected exception while trying to create initial '
+                    'version for document %s; %s',
+                    label or file_object.name, exception
+                )
+                raise
+            else:
+                return document
 
     def save(self, *args, **kwargs):
         user = kwargs.pop('_user', None)

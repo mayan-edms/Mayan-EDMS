@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 08:31+0000\n"
-"PO-Revision-Date: 2020-02-11 14:43+0000\n"
-"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
+"PO-Revision-Date: 2020-09-27 06:47+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,40 +20,38 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:53 apps.py:138 apps.py:142 events.py:5 links.py:18 links.py:24
-#: permissions.py:5 queues.py:6 settings.py:8
+#: apps.py:52 events.py:5 links.py:18 links.py:24 permissions.py:5 queues.py:6
+#: search.py:6 search.py:10 settings.py:8
 msgid "OCR"
 msgstr "OCR"
 
-#: apps.py:105
+#: apps.py:103
+msgid "The OCR content."
+msgstr ""
+
+#: apps.py:108
 msgid "A generator returning the document's pages OCR content."
 msgstr "Генератор, връщащ OCR съдържанието на страниците на документа."
 
-#: apps.py:106
+#: apps.py:109
 msgid "OCR content"
 msgstr "OCR съдържание"
 
-#: apps.py:130
+#: apps.py:133
 msgid "Date and time"
 msgstr "Дата и час"
 
-#: apps.py:133 models.py:74
+#: apps.py:136 models.py:72
 msgid "Result"
 msgstr "Резултат"
 
-#: backends/tesseract.py:93
+#: backends/tesseract.py:89
 msgid "Tesseract OCR not found."
 msgstr "Tesseract OCR не е намерен."
 
 #: dependencies.py:23
 msgid "Free Open Source OCR Engine"
 msgstr "Безплатен двигател OCR с отворен код"
-
-#: dependencies.py:34
-msgid ""
-"PyOCR is a Python library simplifying the use of OCR tools like Tesseract or"
-" Cuneiform."
-msgstr "PyOCR е библиотека на Python, опростяваща използването на OCR инструменти като Tesseract или Cuneiform."
 
 #: events.py:8
 msgid "Document OCR content deleted"
@@ -116,39 +114,39 @@ msgstr "Настройки за тип на документ"
 msgid "Document types settings"
 msgstr "Настройки за типове документи"
 
-#: models.py:43
+#: models.py:42
 msgid "Document page"
 msgstr "Страница на документа"
 
-#: models.py:47
+#: models.py:46
 msgid "The actual text content extracted by the OCR backend."
 msgstr "Действителното текстово съдържание, извлечено от OCR бекенда."
 
-#: models.py:48
+#: models.py:47
 msgid "Content"
 msgstr "Съдържание"
 
-#: models.py:54
+#: models.py:53
 msgid "Document page OCR content"
 msgstr "OCR съдържание на страница от документа"
 
-#: models.py:55
+#: models.py:54
 msgid "Document pages OCR contents"
 msgstr "OCR съдържание на страници от документа"
 
-#: models.py:69
+#: models.py:67
 msgid "Document version"
 msgstr "Версия на документа"
 
-#: models.py:72
+#: models.py:70
 msgid "Date time submitted"
 msgstr "Дата и час на подаване"
 
-#: models.py:78
+#: models.py:76
 msgid "Document version OCR error"
 msgstr "OCR грешка за версия на документа"
 
-#: models.py:79
+#: models.py:77
 msgid "Document version OCR errors"
 msgstr "OCR грешки за версия на документа"
 
@@ -164,7 +162,15 @@ msgstr "Преглед на транскрибирания текст от до�
 msgid "Change document type OCR settings"
 msgstr "Промяна на настройките на OCR за типа документ"
 
-#: queues.py:9
+#: queues.py:10
+msgid "Finish document version OCR"
+msgstr ""
+
+#: queues.py:14
+msgid "Document version page OCR"
+msgstr ""
+
+#: queues.py:18
 msgid "Document version OCR"
 msgstr "OCR за версия на документа"
 
@@ -216,3 +222,28 @@ msgstr "%(count)d документи, добавени към OCR опашкат
 #, python-format
 msgid "Edit OCR settings for document type: %s."
 msgstr "Редактиране на настройките на OCR за типа документ: %s."
+
+#: workflow_actions.py:15
+msgid "Page condition"
+msgstr ""
+
+#: workflow_actions.py:19
+msgid ""
+"The condition that will determine if a document page's OCR content will be "
+"modified or not. The condition is evaluated against the iterated document "
+"page. Conditions that do not return any value, that return the Python "
+"logical None, or an empty string ('') are considered to be logical false, "
+"any other value is considered to be the logical true."
+msgstr ""
+
+#: workflow_actions.py:31
+msgid "Page content"
+msgstr ""
+
+#: workflow_actions.py:35
+msgid "A template that will generate the OCR content to be saved."
+msgstr ""
+
+#: workflow_actions.py:43
+msgid "Update document page OCR content"
+msgstr ""

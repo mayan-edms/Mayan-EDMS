@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 08:30+0000\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Roberto Rosario, 2020\n"
 "Language-Team: Bosnian (https://www.transifex.com/rosarior/teams/13584/bs/)\n"
@@ -20,9 +20,9 @@ msgstr ""
 "Language: bs\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:48 apps.py:123 apps.py:130 apps.py:135 apps.py:138 events.py:5
-#: forms.py:14 links.py:22 menus.py:14 models.py:48 models.py:170
-#: permissions.py:5 views.py:164 workflow_actions.py:20
+#: apps.py:53 apps.py:149 apps.py:156 events.py:5 forms.py:14 links.py:22
+#: menus.py:14 models.py:45 models.py:167 permissions.py:5 search.py:46
+#: search.py:49 views.py:164 workflow_actions.py:20
 msgid "Cabinets"
 msgstr "Ormarić"
 
@@ -42,7 +42,7 @@ msgstr ""
 msgid "Document removed from cabinet"
 msgstr ""
 
-#: links.py:28 links.py:42 workflow_actions.py:74
+#: links.py:28 links.py:42 workflow_actions.py:72
 msgid "Remove from cabinets"
 msgstr "Izbrišite iz ormarića"
 
@@ -82,45 +82,45 @@ msgstr ""
 msgid "get_cabinets()"
 msgstr ""
 
-#: models.py:34
+#: models.py:31
 msgid "A short text used to identify the cabinet."
 msgstr ""
 
-#: models.py:35 search.py:22
+#: models.py:32
 msgid "Label"
 msgstr "Labela"
 
-#: models.py:39
+#: models.py:36
 msgid "Documents"
 msgstr "Dokumenti"
 
-#: models.py:47 models.py:144 models.py:169 serializers.py:136
-#: workflow_actions.py:66
+#: models.py:44 models.py:141 models.py:166 serializers.py:136
+#: workflow_actions.py:64
 msgid "Cabinet"
 msgstr "Ormarić"
 
-#: models.py:110
+#: models.py:107
 msgid "The path to the cabinet including all ancestors."
 msgstr ""
 
-#: models.py:112
+#: models.py:109
 msgid "Full path"
 msgstr ""
 
-#: models.py:145 serializers.py:137
+#: models.py:142 serializers.py:137
 msgid "Parent and Label"
 msgstr "Roditelj i etiketa"
 
-#: models.py:152 serializers.py:143
+#: models.py:149 serializers.py:143
 #, python-format
 msgid "%(model_name)s with this %(field_labels)s already exists."
 msgstr "%(model_name)s sa ovim%(field_labels)s već postoji"
 
-#: models.py:181
+#: models.py:178
 msgid "Document cabinet"
 msgstr "Kabinet za dokumente"
 
-#: models.py:182
+#: models.py:179
 msgid "Document cabinets"
 msgstr "Kabineti za dokumente"
 
@@ -148,27 +148,27 @@ msgstr "Ukloni dokumente is kabineta"
 msgid "View cabinets"
 msgstr "Pogledajte kabinete"
 
-#: search.py:26
+#: search.py:25
 msgid "Document type"
 msgstr "Tip dokumenta"
 
-#: search.py:29
+#: search.py:28
 msgid "Document MIME type"
 msgstr ""
 
-#: search.py:32
+#: search.py:31
 msgid "Document label"
 msgstr ""
 
-#: search.py:35
+#: search.py:34
 msgid "Document description"
 msgstr ""
 
-#: search.py:38
+#: search.py:37
 msgid "Document UUID"
 msgstr ""
 
-#: search.py:42
+#: search.py:41
 msgid "Document checksum"
 msgstr ""
 
@@ -351,6 +351,6 @@ msgstr ""
 msgid "Cabinets to which the document will be added."
 msgstr ""
 
-#: workflow_actions.py:69
+#: workflow_actions.py:67
 msgid "Cabinets from which the document will be removed."
 msgstr ""

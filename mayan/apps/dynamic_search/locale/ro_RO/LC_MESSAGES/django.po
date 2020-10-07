@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 08:31+0000\n"
-"PO-Revision-Date: 2020-04-21 07:43+0000\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
+"PO-Revision-Date: 2020-09-29 12:50+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
@@ -20,11 +20,11 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:15
+#: apps.py:19
 msgid "Dynamic search"
 msgstr "Căutarea dinamică"
 
-#: classes.py:52
+#: classes.py:154
 msgid "No search model matching the query"
 msgstr "Niciun model de căutare nu corespunde interogării"
 
@@ -42,46 +42,80 @@ msgstr "Atunci când este bifată, vor fi returnate numai rezultatele care cores
 msgid "Search terms"
 msgstr "Caută termeni"
 
-#: links.py:11 settings.py:5 templates/dynamic_search/search_box.html:43
-#: views.py:59 views.py:72
+#: links.py:13 permissions.py:5 queues.py:7 settings.py:7
+#: templates/dynamic_search/search_box.html:43 views.py:117 views.py:130
 msgid "Search"
 msgstr "Căută"
 
-#: links.py:15 templates/dynamic_search/search_box.html:45 views.py:86
+#: links.py:17 templates/dynamic_search/search_box.html:45 views.py:144
 msgid "Advanced search"
 msgstr "Cautare avansată"
 
-#: links.py:19
+#: links.py:21
 msgid "Search again"
 msgstr "Caută din nou"
 
-#: settings.py:11
+#: links.py:25 views.py:90
+msgid "Reindex search backend"
+msgstr "Reindexare backend de căutare"
+
+#: permissions.py:8
+msgid "Execute search tools"
+msgstr "Executați instrumente de căutare"
+
+#: queues.py:11
+msgid "Remove a model instance from the search engine."
+msgstr "Eliminați o instanță de model din motorul de căutare."
+
+#: queues.py:16
+msgid "Index a model instance to the search engine."
+msgstr "Indexați o instanță model la motorul de căutare."
+
+#: settings.py:13
 msgid "Full path to the backend to be used to handle the search."
 msgstr "Calea completă către backend pentru a fi utilizată pentru a gestiona căutarea."
 
-#: settings.py:21
+#: settings.py:23
 msgid ""
 "Disables the single term bar search leaving only the advanced search button."
 msgstr "Dezactivează căutarea în bară cu un singur termen lăsând doar butonul de căutare avansată."
+
+#: settings.py:29
+msgid "Maximum number search results to fetch and display."
+msgstr "Numărul maxim de rezultate de căutare de preluat și afișat."
 
 #: templates/dynamic_search/search_box.html:45
 msgid "Advanced"
 msgstr "Avansate"
 
-#: views.py:24
+#: views.py:38
 msgid "Try again using different terms. "
 msgstr "Încercați din nou folosind termeni diferiți."
 
-#: views.py:26
+#: views.py:40
 msgid "No search results"
 msgstr "Nu există rezultate"
 
-#: views.py:28
+#: views.py:42
 #, python-format
 msgid "Search results for: %s"
 msgstr "Rezultatele căutării pentru: %s"
 
-#: views.py:74
+#: views.py:86
+msgid ""
+"This tool is required only for some search backends. Search results will be "
+"affected while the backend is being reindexed."
+msgstr "Acest instrument este necesar numai pentru unele backend-uri de căutare. Rezultatele căutării vor fi afectate în timp ce backend-ul este reindexat."
+
+#: views.py:92
+msgid "This tool erases and populates the search backend's internal index."
+msgstr "Acest instrument șterge și completează indexul intern al backend-ului de căutare."
+
+#: views.py:110
+msgid "Search backend reindexing queued."
+msgstr "Reindexarea backend-ului de căutare a fost pusă la coadă."
+
+#: views.py:132
 #, python-format
 msgid "Search for: %s"
 msgstr "Caută după: %s"

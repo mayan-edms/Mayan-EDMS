@@ -325,16 +325,16 @@ class Document(HooksMixin, models.Model):
         user = kwargs.pop('_event_actor', None)
         #_commit_events = kwargs.pop('_commit_events', True)
         new_document = not self.pk
-        with transaction.atomic():
-            signal_mayan_pre_save.send(
-                sender=Document, instance=self, user=user
-            )
 
-            super().save(*args, **kwargs)
+        signal_mayan_pre_save.send(
+            sender=Document, instance=self, user=user
+        )
 
-            if new_document:
-                if user:
-                    self.add_as_recent_document_for_user(user=user)
+        super().save(*args, **kwargs)
+
+        if new_document:
+            if user:
+                self.add_as_recent_document_for_user(user=user)
 
                 #event_document_create.commit(
                 #    actor=user, action_object=self.document_type,

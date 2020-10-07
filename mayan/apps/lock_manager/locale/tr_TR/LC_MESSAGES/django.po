@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 08:31+0000\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
 "PO-Revision-Date: 2019-12-03 05:23+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
@@ -24,23 +24,23 @@ msgstr ""
 msgid "Lock manager"
 msgstr "Kilit yöneticisi"
 
-#: models.py:16
+#: models.py:14
 msgid "Creation datetime"
 msgstr "Oluşturulma tarihi"
 
-#: models.py:19
+#: models.py:17
 msgid "Timeout"
 msgstr "Zaman aşımı"
 
-#: models.py:22
+#: models.py:20
 msgid "Name"
 msgstr "Ad"
 
-#: models.py:28
+#: models.py:26
 msgid "Lock"
 msgstr "Kilitle"
 
-#: models.py:29
+#: models.py:27
 msgid "Locks"
 msgstr "Kilitler"
 

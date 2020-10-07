@@ -11,7 +11,6 @@ from model_utils.managers import InheritanceManager
 
 from mayan.apps.converter.layers import layer_saved_transformations
 from mayan.apps.documents.models import Document, DocumentType
-from mayan.apps.documents.settings import setting_language
 from mayan.apps.storage.compressed_files import Archive
 from mayan.apps.storage.exceptions import NoMIMETypeMatch
 

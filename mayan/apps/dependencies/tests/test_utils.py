@@ -8,6 +8,9 @@ from ..utils import PyPIClient
 
 
 class PyPIClientTestCase(BaseTestCase):
+    def test_method_get_server_proxy(self):
+        PyPIClient().get_server_proxy()
+
     @mock.patch('mayan.apps.dependencies.utils.PyPIClient.get_versions', autospec=True)
     def test_check_version_not_latest_version(self, mock_package_releases):
         mock_package_releases.return_value = ('0.0.0',)

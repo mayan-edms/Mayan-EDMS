@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 08:30+0000\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
 "PO-Revision-Date: 2020-06-23 07:37+0000\n"
 "Last-Translator: Faiqul Azmi <kasempurnaningurip@gmail.com>\n"
 "Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/language/id/)\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:22 links.py:42
+#: apps.py:23 classes.py:142 links.py:26
 msgid "ACLs"
 msgstr "Daftar akses kontrol"
 
@@ -35,19 +35,19 @@ msgstr "Daftar akses kontrol dibuat"
 msgid "ACL edited"
 msgstr "Daftar akses kontrol diubah"
 
-#: forms.py:13 models.py:46 views.py:67
+#: forms.py:13 models.py:44 views.py:67
 msgid "Role"
 msgstr "Peranan"
 
-#: links.py:32
+#: links.py:15
 msgid "New ACL"
 msgstr "Daftar akses kontrol baru"
 
-#: links.py:37
+#: links.py:20
 msgid "Delete"
 msgstr "Hapus"
 
-#: links.py:47 models.py:42 workflow_actions.py:46 workflow_actions.py:161
+#: links.py:31 models.py:40 workflow_actions.py:46 workflow_actions.py:161
 msgid "Permissions"
 msgstr "Izin"
 
@@ -61,15 +61,15 @@ msgstr "Objek \"%s\" bukan sebuah model dan tidak dapat dicek akses."
 msgid "Insufficient access for: %s"
 msgstr "Akses tidak memenuhi untuk: %s"
 
-#: models.py:54
+#: models.py:52
 msgid "Access entry"
 msgstr "Akses masuk"
 
-#: models.py:55
+#: models.py:53
 msgid "Access entries"
 msgstr "Akses masuk"
 
-#: models.py:59
+#: models.py:57
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\""
 msgstr "Peran \"%(role)s\" diizinkan untuk \"%(object)s\""

@@ -1,27 +1,28 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
 # Translators:
-# Emerson Soares <on.emersonsoares@gmail.com>, 2011
-# Roberto Rosario, 2012
-# Vítor Figueiró <vfigueiro@gmail.com>, 2012
+# Roberto Rosario, 2020
+# Emerson Soares <on.emersonsoares@gmail.com>, 2020
+# 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2020
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Mayan EDMS\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-11 02:28-0400\n"
-"PO-Revision-Date: 2020-04-19 04:46+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/"
-"language/pt/)\n"
-"Language: pt\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
+"PO-Revision-Date: 2020-09-27 06:47+0000\n"
+"Last-Translator: 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2020\n"
+"Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:27 settings.py:9
+#: apps.py:15 settings.py:5
 msgid "Views"
 msgstr ""
 
@@ -98,78 +99,42 @@ msgstr ""
 msgid "%(object)s updated successfully."
 msgstr ""
 
-#: mixins.py:314
+#: mixins.py:319
 #, python-format
 msgid "No %(verbose_name)s found matching the query"
 msgstr ""
 
-#: mixins.py:427
+#: mixins.py:433
 msgid "Object"
 msgstr "Objeto"
 
-#: settings.py:15
+#: settings.py:11
 msgid "The number objects that will be displayed per page."
 msgstr ""
 
-#: templatetags/views_tags.py:31
+#: templatetags/views_tags.py:28
 msgid "Confirm delete"
 msgstr "Confirmar eliminação"
 
-#: templatetags/views_tags.py:36
+#: templatetags/views_tags.py:33
 #, python-format
 msgid "Edit %s"
 msgstr ""
 
-#: templatetags/views_tags.py:39
+#: templatetags/views_tags.py:36
 msgid "Confirm"
 msgstr "Confirmar"
 
-#: templatetags/views_tags.py:43
+#: templatetags/views_tags.py:40
 #, python-format
 msgid "Details for: %s"
 msgstr ""
 
-#: templatetags/views_tags.py:47
+#: templatetags/views_tags.py:44
 #, python-format
 msgid "Edit: %s"
 msgstr ""
 
-#: templatetags/views_tags.py:51
+#: templatetags/views_tags.py:48
 msgid "Create"
 msgstr "Criar"
-
-#~ msgid "Documentation"
-#~ msgstr "Documentação"
-
-#~ msgid "License"
-#~ msgstr "Licença"
-
-#~ msgid "Setup"
-#~ msgstr "Configuração"
-
-#~ msgid "Tools"
-#~ msgstr "Ferramentas"
-
-#~ msgid "Actions"
-#~ msgstr "Ações"
-
-#~ msgid "User"
-#~ msgstr "Utilizador"
-
-#~ msgid "File"
-#~ msgstr "Ficheiro"
-
-#~ msgid "Filename"
-#~ msgstr "Nome do ficheiro"
-
-#~ msgid "Default"
-#~ msgstr "Padrão"
-
-#~ msgid "About"
-#~ msgstr "Sobre"
-
-#~ msgid "Dashboard"
-#~ msgstr "Painel de Instrumentos"
-
-#~ msgid "Setup items"
-#~ msgstr "Itens de configuração"

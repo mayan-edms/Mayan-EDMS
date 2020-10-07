@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 08:31+0000\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
 "PO-Revision-Date: 2020-08-17 15:27+0000\n"
 "Last-Translator: Marvin Haschker <marvin@haschker.me>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
@@ -32,19 +32,19 @@ msgstr "Einstellungen"
 msgid "Setting count"
 msgstr "Seitenzahl setzen"
 
-#: apps.py:34
+#: apps.py:35
 msgid "Name"
 msgstr "Name"
 
-#: apps.py:38
+#: apps.py:39
 msgid "Value"
 msgstr "Wert"
 
-#: classes.py:350
+#: classes.py:336
 msgid "Overridden"
 msgstr "Überschrieben"
 
-#: classes.py:352
+#: classes.py:338
 msgid "Is this settings being overridden by an environment variable?"
 msgstr "Wird diese Einstellung von einer Umgebungsvariablen überschrieben?"
 
@@ -341,30 +341,30 @@ msgid ""
 msgstr "Der volle Pythonpfad für die WSGI application, das Django's built-in servers (e.g. runserver) benutzen wird. Das django-admin startproject Management-Kommando erstellt eine einfache wsgi.py Datei mit einem application callable, auf das diese Einstellung zeigt."
 
 #: views.py:21
+msgid "Setting updated successfully."
+msgstr "Einstellung erfolgreich aktualisiert."
+
+#: views.py:30
+#, python-format
+msgid "Edit setting: %s"
+msgstr "Einstellung %s bearbeiten"
+
+#: views.py:55
 msgid ""
 "Settings inherited from an environment variable take precedence and cannot "
 "be changed in this view. "
 msgstr "Einstellungen die durch Umgebungsvariablen vorgenommen wurden sind vorrangig und können auf dieser Seite nicht geändert werden."
 
-#: views.py:24
+#: views.py:58
 #, python-format
 msgid "Settings in namespace: %s"
 msgstr "Einstellungen für Bereich %s"
 
-#: views.py:32
+#: views.py:66
 #, python-format
 msgid "Namespace: %s, not found"
 msgstr "Bereich %s nicht gefunden"
 
-#: views.py:42
+#: views.py:76
 msgid "Setting namespaces"
 msgstr "Einstellungsbereiche"
-
-#: views.py:58
-msgid "Setting updated successfully."
-msgstr "Einstellung erfolgreich aktualisiert."
-
-#: views.py:67
-#, python-format
-msgid "Edit setting: %s"
-msgstr "Einstellung %s bearbeiten"

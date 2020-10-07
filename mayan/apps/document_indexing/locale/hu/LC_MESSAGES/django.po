@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 08:31+0000\n"
-"PO-Revision-Date: 2020-09-09 09:25+0000\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
+"PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/language/hu/)\n"
 "MIME-Version: 1.0\n"
@@ -23,31 +23,31 @@ msgstr ""
 msgid "None"
 msgstr "Semmi"
 
-#: admin.py:24 links.py:93 models.py:52
+#: admin.py:24 links.py:93 models.py:51
 msgid "Document types"
 msgstr "Dokumentum típusok"
 
-#: apps.py:54 events.py:6
+#: apps.py:55 events.py:6 settings.py:8
 msgid "Document indexing"
 msgstr "Dokumentum indexelés"
 
-#: apps.py:129
+#: apps.py:146
 msgid "Total levels"
 msgstr ""
 
-#: apps.py:136
+#: apps.py:153
 msgid "Total documents"
 msgstr "Dokumentumok száma"
 
-#: apps.py:142 apps.py:156 apps.py:176 apps.py:186
+#: apps.py:159 apps.py:173 apps.py:193 apps.py:203
 msgid "Level"
 msgstr ""
 
-#: apps.py:164
+#: apps.py:181
 msgid "Levels"
 msgstr ""
 
-#: apps.py:171 models.py:395
+#: apps.py:188 models.py:394
 msgid "Documents"
 msgstr "dokumentumok"
 
@@ -75,7 +75,7 @@ msgstr ""
 msgid "Creation date"
 msgstr ""
 
-#: links.py:21 links.py:36 links.py:73 links.py:77 models.py:60 views.py:150
+#: links.py:21 links.py:36 links.py:73 links.py:77 models.py:59 views.py:150
 #: views.py:333
 msgid "Indexes"
 msgstr "Indexek"
@@ -116,32 +116,32 @@ msgstr ""
 msgid "New child node"
 msgstr ""
 
-#: models.py:34
+#: models.py:33
 msgid "Short description of this index."
 msgstr ""
 
-#: models.py:35
+#: models.py:34
 msgid "Label"
 msgstr "Cimke"
 
-#: models.py:39
+#: models.py:38
 msgid "This value will be used by other apps to reference this index."
 msgstr ""
 
-#: models.py:40
+#: models.py:39
 msgid "Slug"
 msgstr "Hivatkozás"
 
-#: models.py:45
+#: models.py:44
 msgid ""
 "Causes this index to be visible and updated when document data changes."
 msgstr ""
 
-#: models.py:48 models.py:230
+#: models.py:47 models.py:230
 msgid "Enabled"
 msgstr "Bekapcsolt"
 
-#: models.py:59 models.py:214
+#: models.py:58 models.py:214
 msgid "Index"
 msgstr ""
 
@@ -196,39 +196,39 @@ msgstr "index instance"
 msgid "Index instances"
 msgstr ""
 
-#: models.py:388
+#: models.py:387
 msgid "Index template node"
 msgstr ""
 
-#: models.py:391 search.py:23
+#: models.py:390 search.py:23
 msgid "Value"
 msgstr "Érték"
 
-#: models.py:401 models.py:527
+#: models.py:400 models.py:529
 msgid "Index instance node"
 msgstr ""
 
-#: models.py:402
+#: models.py:401
 msgid "Indexes instances node"
 msgstr ""
 
-#: models.py:464
+#: models.py:466
 msgid "The path to the index including all ancestors."
 msgstr ""
 
-#: models.py:466
+#: models.py:468
 msgid "Full path"
 msgstr ""
 
-#: models.py:520
+#: models.py:522
 msgid "Document index node instance"
 msgstr ""
 
-#: models.py:521
+#: models.py:523
 msgid "Document indexes node instances"
 msgstr ""
 
-#: models.py:528
+#: models.py:530
 msgid "Index instance nodes"
 msgstr ""
 
@@ -302,6 +302,13 @@ msgstr ""
 
 #: serializers.py:198
 msgid "Parent must be from the same index template."
+msgstr ""
+
+#: settings.py:14
+msgid ""
+"Amount of time in seconds, a failed indexing task will wait before retrying."
+" Lower values will increase the speed at which documents are indexed but "
+"will cause a higher count of failed/retried tasks in the queue."
 msgstr ""
 
 #: views.py:45

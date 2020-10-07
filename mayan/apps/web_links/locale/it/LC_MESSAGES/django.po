@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 08:31+0000\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
 "PO-Revision-Date: 2019-12-03 05:24+0000\n"
 "Last-Translator: Roberto Rosario, 2020\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
@@ -24,11 +24,11 @@ msgstr ""
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:37
+#: apps.py:42
 msgid "Links"
 msgstr ""
 
-#: events.py:6 links.py:14 links.py:20 links.py:54 links.py:58 models.py:42
+#: events.py:6 links.py:14 links.py:20 links.py:54 links.py:58 models.py:40
 #: permissions.py:5 views.py:148
 msgid "Web links"
 msgstr ""
@@ -53,7 +53,7 @@ msgstr "Crea nuovo collegamento web"
 msgid "Delete"
 msgstr "Cancella"
 
-#: links.py:38 models.py:36
+#: links.py:38 models.py:34
 msgid "Document types"
 msgstr "Tipi documento"
 
@@ -63,30 +63,30 @@ msgstr "Modifica"
 
 #: links.py:50
 msgid "Navigate"
-msgstr ""
+msgstr "Navigare"
 
-#: models.py:24
+#: models.py:22
 msgid "A short text describing the web link."
 msgstr " Un breve testo che descrive il collegamento Web."
 
-#: models.py:25
+#: models.py:23
 msgid "Label"
 msgstr "Etichetta"
 
-#: models.py:29
+#: models.py:27
 msgid "Template that will be used to craft the final URL of the web link."
 msgstr ""
 "Modello che verrà utilizzato per creare l'URL finale del collegamento Web."
 
-#: models.py:31
+#: models.py:29
 msgid "Template"
 msgstr "Modello"
 
-#: models.py:33
+#: models.py:31
 msgid "Enabled"
 msgstr "Abilitato"
 
-#: models.py:41
+#: models.py:39
 msgid "Web link"
 msgstr ""
 

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 08:31+0000\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
 "PO-Revision-Date: 2020-06-03 21:24+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
@@ -28,19 +28,19 @@ msgstr "Slimme instellingen"
 msgid "Setting count"
 msgstr "Aantal instellingen"
 
-#: apps.py:34
+#: apps.py:35
 msgid "Name"
 msgstr "Naam"
 
-#: apps.py:38
+#: apps.py:39
 msgid "Value"
 msgstr "Waarde"
 
-#: classes.py:350
+#: classes.py:336
 msgid "Overridden"
 msgstr "Overschreven"
 
-#: classes.py:352
+#: classes.py:338
 msgid "Is this settings being overridden by an environment variable?"
 msgstr "Wordt deze instelling overschreven door een omgevingsvariabele?"
 
@@ -337,30 +337,30 @@ msgid ""
 msgstr "Het volledige Python-pad van het WSGI-toepassingsobject dat Django's ingebouwde servers (bijv. Runserver) zullen gebruiken. De opdracht django-admin startproject management maakt een eenvoudig wsgi.py-bestand met een programma dat kan worden aangeroepen en wijst deze instelling naar die applicatie."
 
 #: views.py:21
+msgid "Setting updated successfully."
+msgstr "Instelling met succes bijgewerkt. "
+
+#: views.py:30
+#, python-format
+msgid "Edit setting: %s"
+msgstr "Bewerk instelling: %s"
+
+#: views.py:55
 msgid ""
 "Settings inherited from an environment variable take precedence and cannot "
 "be changed in this view. "
 msgstr "Overgenomen instellingen van een omgevingsvariabele krijgen voorrang en kunnen niet gewijzigd worden in dit overzicht."
 
-#: views.py:24
+#: views.py:58
 #, python-format
 msgid "Settings in namespace: %s"
 msgstr "Instellingen in namespace: %s"
 
-#: views.py:32
+#: views.py:66
 #, python-format
 msgid "Namespace: %s, not found"
 msgstr "Namespace: %s, niet gevonden"
 
-#: views.py:42
+#: views.py:76
 msgid "Setting namespaces"
 msgstr "Instelling namespaces"
-
-#: views.py:58
-msgid "Setting updated successfully."
-msgstr "Instelling met succes bijgewerkt. "
-
-#: views.py:67
-#, python-format
-msgid "Edit setting: %s"
-msgstr "Bewerk instelling: %s"

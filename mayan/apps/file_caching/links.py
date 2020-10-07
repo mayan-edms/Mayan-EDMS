@@ -6,6 +6,7 @@ from mayan.apps.storage.classes import DefinedStorage
 from .icons import icon_cache_purge, icon_file_caching
 from .permissions import permission_cache_purge, permission_cache_view
 
+
 def condition_valid_storage(context):
     try:
         storage = DefinedStorage.get(name=context['object'].defined_storage_name)

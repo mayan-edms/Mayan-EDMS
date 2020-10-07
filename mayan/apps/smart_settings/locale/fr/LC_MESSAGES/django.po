@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 08:31+0000\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
 "PO-Revision-Date: 2020-05-25 06:18+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
@@ -30,19 +30,19 @@ msgstr "Paramètres intelligents"
 msgid "Setting count"
 msgstr "Nombre de paramètres"
 
-#: apps.py:34
+#: apps.py:35
 msgid "Name"
 msgstr "Nom"
 
-#: apps.py:38
+#: apps.py:39
 msgid "Value"
 msgstr "Valeur"
 
-#: classes.py:350
+#: classes.py:336
 msgid "Overridden"
 msgstr "Remplacé"
 
-#: classes.py:352
+#: classes.py:338
 msgid "Is this settings being overridden by an environment variable?"
 msgstr "Est-ce que ces paramètres sont remplacés par une variable d'environnement?"
 
@@ -339,30 +339,30 @@ msgid ""
 msgstr "Le chemin Python complet de l'objet d'application WSGI que les serveurs intégrés de Django (par exemple runserver) utiliseront. La commande de gestion django-admin startproject créera un simple fichier wsgi.py contenant une application appelable et pointera ce paramètre vers cette application."
 
 #: views.py:21
+msgid "Setting updated successfully."
+msgstr "Paramètres mit à jour."
+
+#: views.py:30
+#, python-format
+msgid "Edit setting: %s"
+msgstr "Modifier le paramètre: %s"
+
+#: views.py:55
 msgid ""
 "Settings inherited from an environment variable take precedence and cannot "
 "be changed in this view. "
 msgstr "Les paramètres hérités d'une variable d'environnement ont préséance et ne peuvent pas être modifiés dans cette vue."
 
-#: views.py:24
+#: views.py:58
 #, python-format
 msgid "Settings in namespace: %s"
 msgstr "Paramètres dans l'espace de noms : %s"
 
-#: views.py:32
+#: views.py:66
 #, python-format
 msgid "Namespace: %s, not found"
 msgstr "Espace de nom : %s non trouvé"
 
-#: views.py:42
+#: views.py:76
 msgid "Setting namespaces"
 msgstr "Espaces de noms des paramètres"
-
-#: views.py:58
-msgid "Setting updated successfully."
-msgstr "Paramètres mit à jour."
-
-#: views.py:67
-#, python-format
-msgid "Edit setting: %s"
-msgstr "Modifier le paramètre: %s"

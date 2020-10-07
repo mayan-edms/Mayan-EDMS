@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 08:31+0000\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>, 2020\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -20,19 +20,19 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:54 events.py:6 permissions.py:6 settings.py:7
+#: apps.py:53 events.py:6 permissions.py:6 settings.py:7
 msgid "Document parsing"
 msgstr "Analýza dokumentů"
 
-#: apps.py:106
+#: apps.py:105
 msgid "A generator returning the document's pages parsed content."
 msgstr "Generátor vrátil analyzovaný obsah stránek dokumnetu."
 
-#: apps.py:107 apps.py:140 apps.py:144 links.py:19 links.py:36 models.py:25
+#: apps.py:106 links.py:19 links.py:36 models.py:24 search.py:6 search.py:10
 msgid "Content"
 msgstr "Obsah"
 
-#: apps.py:135 models.py:76
+#: apps.py:134 models.py:74
 msgid "Result"
 msgstr "Výsledek"
 
@@ -88,51 +88,51 @@ msgstr "Nastavení analýzy"
 msgid "Parse documents per type"
 msgstr "Analyzujte dokumenty podle typu"
 
-#: models.py:19
+#: models.py:18
 msgid "Document page"
 msgstr "Strana dokumentu"
 
-#: models.py:23
+#: models.py:22
 msgid "The actual text content as extracted by the document parsing backend."
 msgstr "Skutečný textový obsah extrahovaný backendem analýzy dokumentu."
 
-#: models.py:31
+#: models.py:30
 msgid "Document page content"
 msgstr "Obsah stránky dokumentu"
 
-#: models.py:32
+#: models.py:31
 msgid "Document pages contents"
 msgstr "Obsah stránek dokumentu"
 
-#: models.py:44
+#: models.py:43
 msgid "Document type"
 msgstr "Typ dokumentu"
 
-#: models.py:48
+#: models.py:47
 msgid "Automatically queue newly created documents for parsing."
 msgstr "Automaticky zařazuje nově vytvořené dokumenty do fronty pro analýzu."
 
-#: models.py:59
+#: models.py:58
 msgid "Document type settings"
 msgstr "Nastavení typu dokumentu"
 
-#: models.py:60
+#: models.py:59
 msgid "Document types settings"
 msgstr "Nastavení typů dokumentů"
 
-#: models.py:71
+#: models.py:69
 msgid "Document version"
 msgstr "Verze dokumentu"
 
-#: models.py:74
+#: models.py:72
 msgid "Date time submitted"
 msgstr "Datuma čas odeslání"
 
-#: models.py:80
+#: models.py:78
 msgid "Document version parse error"
 msgstr "Chyba analýzy verze dokumentu"
 
-#: models.py:81
+#: models.py:79
 msgid "Document version parse errors"
 msgstr "Chyby analýzy verze dokumentu"
 

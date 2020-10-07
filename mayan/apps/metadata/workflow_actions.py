@@ -45,7 +45,7 @@ class DocumentMetadataAddAction(WorkflowAction):
                 """This document already has the metadata type added"""
                 raise WorkflowStateActionError(
                     _(
-                        'Unable to add metadata type "%(metadata_type)s '
+                        'Unable to add metadata type "%(metadata_type)s" '
                         'from document: %(document)s. Exception: '
                         '%(exception)s'
                     ) % {
@@ -124,7 +124,7 @@ class DocumentMetadataEditAction(WorkflowAction):
             """Non fatal, we just ignore the action to edit the metadata value"""
             raise WorkflowStateActionError(
                 _(
-                    'Unable to edit metadata type "%(metadata_type)s '
+                    'Unable to edit metadata type "%(metadata_type)s" '
                     'from document: %(document)s. Document does not have '
                     'the metadata type to be edit. Exception: '
                     '%(exception)s'
@@ -188,7 +188,7 @@ class DocumentMetadataRemoveAction(DocumentMetadataAddAction):
             except ValidationError as exception:
                 raise WorkflowStateActionError(
                     _(
-                        'Unable to remove metadata type "%(metadata_type)s '
+                        'Unable to remove metadata type "%(metadata_type)s" '
                         'from document: %(document)s. Exception: '
                         '%(exception)s'
                     ) % {

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 08:30+0000\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
 "PO-Revision-Date: 2020-03-28 08:54+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:22 links.py:42
+#: apps.py:23 classes.py:142 links.py:26
 msgid "ACLs"
 msgstr "LCAs"
 
@@ -37,19 +37,19 @@ msgstr "LCA creada"
 msgid "ACL edited"
 msgstr "LCA editada"
 
-#: forms.py:13 models.py:46 views.py:67
+#: forms.py:13 models.py:44 views.py:67
 msgid "Role"
 msgstr "Rol"
 
-#: links.py:32
+#: links.py:15
 msgid "New ACL"
 msgstr "Nueva LCA"
 
-#: links.py:37
+#: links.py:20
 msgid "Delete"
 msgstr "Borrar"
 
-#: links.py:47 models.py:42 workflow_actions.py:46 workflow_actions.py:161
+#: links.py:31 models.py:40 workflow_actions.py:46 workflow_actions.py:161
 msgid "Permissions"
 msgstr "Permisos"
 
@@ -63,15 +63,15 @@ msgstr "El objeto \"%s\"; no es un modelo y no se puede verificar el acceso."
 msgid "Insufficient access for: %s"
 msgstr "Acceso insuficiente para: %s"
 
-#: models.py:54
+#: models.py:52
 msgid "Access entry"
 msgstr "Entrada de acceso"
 
-#: models.py:55
+#: models.py:53
 msgid "Access entries"
 msgstr "Entradas de acceso"
 
-#: models.py:59
+#: models.py:57
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\""
 msgstr "Permisos del rol \"%(role)s\" para \"%(object)s\""

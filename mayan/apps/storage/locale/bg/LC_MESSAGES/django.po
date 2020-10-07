@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 08:31+0000\n"
-"PO-Revision-Date: 2020-03-28 14:17+0000\n"
+"POT-Creation-Date: 2020-10-02 04:26+0000\n"
+"PO-Revision-Date: 2020-09-27 06:47+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -19,11 +19,11 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:11 settings.py:7
+#: apps.py:11 settings.py:9
 msgid "Storage"
 msgstr "Съхранение"
 
-#: classes.py:81 classes.py:102
+#: classes.py:82 classes.py:103
 #, python-format
 msgid ""
 "Unable to initialize storage: %(name)s. Check the storage backend dotted "
@@ -53,8 +53,46 @@ msgstr "Обработете файловете обратно, за да отм
 msgid "Name of the storage to process."
 msgstr "Име на съхранението, което ще се обработва."
 
-#: settings.py:12
+#: models.py:23
+msgid "File"
+msgstr "Файл"
+
+#: models.py:25
+msgid "Filename"
+msgstr "Име на файл"
+
+#: models.py:27
+msgid "Date time"
+msgstr "Дата час"
+
+#: models.py:31
+msgid "Shared uploaded file"
+msgstr "Споделен качен файл"
+
+#: models.py:32 storages.py:19
+msgid "Shared uploaded files"
+msgstr "Споделени качени файлове"
+
+#: queues.py:11
+msgid "Storage periodic"
+msgstr ""
+
+#: queues.py:16
+msgid "Delete stale uploads"
+msgstr "Изтриване на застояли качвания"
+
+#: settings.py:14
+msgid "A storage backend that all workers can use to share files."
+msgstr "Бекенд за съхранение, който всички работници могат да използват за споделяне на файлове."
+
+#: settings.py:23
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
 msgstr "Временна директория, използвана в целия сайт за съхранение на миниатюри, визуализации и временни файлове."
+
+#: storages.py:12
+msgid ""
+"Unable to initialize the shared uploaded file storage. Check the settings {}"
+" and {} for formatting errors."
+msgstr "Не може да се инициализира съхраняването на качени файлове. Проверете настройките {} и {} за форматиране на грешки."
