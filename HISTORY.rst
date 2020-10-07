@@ -38,3 +38,5 @@
 - Add file upload mixin method.
 - Unify the action dropdown instances into a new partial called
   ``appearance/partials/actions_dropdown.html``.
+- Move the ``related`` menu from the "Actions" to the ``facet`` area.
+- Add sources to their own menu.

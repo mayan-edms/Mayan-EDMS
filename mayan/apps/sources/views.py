@@ -40,6 +40,7 @@ from .links import (
     link_setup_source_create_watch_folder, link_setup_source_create_webform,
     link_setup_source_create_sane_scanner
 )
+from .menus import menu_sources
 from .models import (
     InteractiveSource, Source, SaneScanner, StagingFolderSource
 )
@@ -326,8 +327,8 @@ class UploadBaseView(MultiFormView):
                 },
             })
 
-        menu_facet.bound_links['sources:document_upload_interactive'] = self.tab_links
-        menu_facet.bound_links['sources:document_file_upload'] = self.tab_links
+        menu_sources.bound_links['sources:document_upload_interactive'] = self.tab_links
+        menu_sources.bound_links['sources:document_file_upload'] = self.tab_links
 
         context.update(
             {

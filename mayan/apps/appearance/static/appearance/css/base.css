@@ -361,12 +361,12 @@ a i {
         position: fixed;
         right: 0;
         top: 100px;
-        width: 150px;
+        width: 160px;
         z-index: 1000;
     }
 
     .has-sidebar {
-        padding-right: 150px;
+        padding-right: 160px;
     }
 }
 
@@ -641,4 +641,11 @@ a i {
 
 .dropdown-menu > li > a {
     color: #585e5e;
+}
+
+.dropdown-header {
+    text-align:center;
+    padding-top: 10px;
+    padding-left: 0px;
+    padding-right: 0px;
 }

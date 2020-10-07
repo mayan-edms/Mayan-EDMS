@@ -228,7 +228,6 @@ class DocumentFile(models.Model):
 
         if self.document.files.count() == 0:
             self.document.is_stub = False
-            #self.document._commit_events = True
             self.document._event_ignore = True
             self.document.save()
 
@@ -446,7 +445,6 @@ class DocumentFile(models.Model):
                     if not self.document.label:
                         self.document.label = force_text(self.file)
 
-                    #self.document.save(_commit_events=False)
                     self.document._event_ignore = True
                     self.document.save()
         except Exception as exception:
