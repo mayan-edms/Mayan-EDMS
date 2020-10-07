@@ -40,3 +40,4 @@
   ``appearance/partials/actions_dropdown.html``.
 - Move the ``related`` menu from the "Actions" to the ``facet`` area.
 - Add sources to their own menu.
+- Add ``mode`` argument to SharedUploadedFile.

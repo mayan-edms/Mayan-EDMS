@@ -38,8 +38,10 @@ class SharedUploadedFile(models.Model):
         self.file.storage.delete(name=self.file.name)
         return super(SharedUploadedFile, self).delete(*args, **kwargs)
 
-    def open(self):
-        return self.file.storage.open(name=self.file.name)
+    def open(self, mode=None):
+        return self.file.storage.open(
+            mode=mode or self.file.file.mode, name=self.file.name
+        )
 
     def save(self, *args, **kwargs):
         self.filename = force_text(self.file)
