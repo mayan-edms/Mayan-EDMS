@@ -5,15 +5,13 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.common.forms import DetailForm
 
 from ..fields import DocumentFileField
+from ..literals import DEFAULT_DOCUMENT_FILE_ZIP_FILENAME
 from ..models.document_file_models import DocumentFile
-
-from .document_forms import DocumentDownloadForm
-
 
 __all__ = ('DocumentFileDownloadForm', 'DocumentFilePreviewForm',)
 
 
-class DocumentFileDownloadForm(DocumentDownloadForm):
+class DocumentFileDownloadForm(forms.Form):
     preserve_extension = forms.BooleanField(
         label=_('Preserve extension'), required=False,
         help_text=_(
@@ -22,6 +20,32 @@ class DocumentFileDownloadForm(DocumentDownloadForm):
             'extensions to open the downloaded document file correctly.'
         )
     )
+    compressed = forms.BooleanField(
+        label=_('Compress'), required=False,
+        help_text=_(
+            'Download the document in the original format or in a compressed '
+            'manner. This option is selectable only when downloading one '
+            'document, for multiple documents, the bundle will always be '
+            'downloads as a compressed file.'
+        )
+    )
+    zip_filename = forms.CharField(
+        initial=DEFAULT_DOCUMENT_FILE_ZIP_FILENAME,
+        label=_('Compressed filename'), required=False,
+        help_text=_(
+            'The filename of the compressed file that will contain the '
+            'documents to be downloaded, if the previous option is selected.'
+        )
+    )
+
+    def __init__(self, *args, **kwargs):
+        self.queryset = kwargs.pop('queryset', None)
+        super().__init__(*args, **kwargs)
+        if self.queryset.count() > 1:
+            self.fields['compressed'].initial = True
+            self.fields['compressed'].widget.attrs.update(
+                {'disabled': 'disabled'}
+            )
 
 
 class DocumentFilePreviewForm(forms.Form):

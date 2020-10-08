@@ -23,12 +23,6 @@ icon_dashboard_new_documents_this_month = Icon(
 icon_dashboard_total_document = Icon(
     driver_name='fontawesome', symbol='book'
 )
-icon_document_quick_download = Icon(
-    driver_name='fontawesome', symbol='download'
-)
-icon_document_download = Icon(
-    driver_name='fontawesome', symbol='download'
-)
 icon_document_edit = Icon(
     driver_name='fontawesome', symbol='pencil-alt'
 )
@@ -92,6 +86,9 @@ icon_document_file_delete = Icon(
     driver_name='fontawesome', symbol='times'
 )
 icon_document_file_download = Icon(
+    driver_name='fontawesome', symbol='download'
+)
+icon_document_file_download_quick = Icon(
     driver_name='fontawesome', symbol='download'
 )
 icon_document_file_list = Icon(

@@ -12,8 +12,7 @@ from .api_views import (
     APIDocumentVersionPageImageView
 )
 from .views.document_file_views import (
-    DocumentFileDeleteView, DocumentFileDownloadFormView,
-    DocumentFileDownloadView, DocumentFileListView,
+    DocumentFileDeleteView, DocumentFileDownloadView, DocumentFileListView,
     DocumentFilePropertiesView, DocumentFilePreviewView
 )
 from .views.document_file_page_views import (
@@ -83,20 +82,25 @@ urlpatterns_document_files = [
         name='document_file_download',
         view=DocumentFileDownloadView.as_view()
     ),
-    url(
-        regex=r'^documents/files/(?P<document_file_id>\d+)/download/form/$',
-        name='document_file_download_form',
-        view=DocumentFileDownloadFormView.as_view()
-    ),
+    #url(
+    #    regex=r'^documents/files/(?P<document_file_id>\d+)/download/form/$',
+    #    name='document_file_download_form',
+    #    view=DocumentFileDownloadFormView.as_view()
+    #),
+    #url(
+    #    regex=r'^documents/files/multiple/download/$',
+    #    name='document_file_multiple_download',
+    #    view=DocumentFileDownloadView.as_view()
+    #),
+    #url(
+    #    regex=r'^documents/files/multiple/download/form/$',
+    #    name='document_file_multiple_download_form',
+    #    view=DocumentFileDownloadFormView.as_view()
+    #),
     url(
         regex=r'^documents/files/(?P<document_file_id>\d+)/properties/$',
         name='document_file_properties',
         view=DocumentFilePropertiesView.as_view()
-    ),
-    url(
-        regex=r'^documents/files/multiple/download/$',
-        name='document_multiple_file_download',
-        view=DocumentFileDownloadView.as_view()
     ),
 ]
 
@@ -357,25 +361,6 @@ urlpatterns_documents = [
         regex=r'^documents/(?P<document_id>\d+)/print/$',
         name='document_print', view=DocumentPrint.as_view()
     ),
-    #url(
-    #    regex=r'^documents/(?P<document_id>\d+)/download/form/$',
-    #    name='document_download_form',
-    #    view=DocumentDownloadFormView.as_view()
-    #),
-    #url(
-    #    regex=r'^documents/(?P<document_id>\d+)/download/$',
-    #    name='document_download', view=DocumentDownloadView.as_view()
-    #),
-    #url(
-    #    regex=r'^documents/multiple/download/form/$',
-    #    name='document_multiple_download_form',
-    #    view=DocumentDownloadFormView.as_view()
-    #),
-    #url(
-    #    regex=r'^documents/multiple/download/$',
-    #    name='document_multiple_download',
-    #    view=DocumentDownloadView.as_view()
-    #),
     url(
         regex=r'^documents/(?P<document_id>\d+)/transformations/clear/$',
         name='document_clear_transformations',

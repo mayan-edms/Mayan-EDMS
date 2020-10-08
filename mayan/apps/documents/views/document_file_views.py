@@ -6,19 +6,21 @@ from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _, ungettext
 
 from mayan.apps.sources.links import link_document_file_upload
+from mayan.apps.storage.compressed_files import ZipArchive
 from mayan.apps.views.generics import (
     ConfirmView, MultipleObjectDownloadView, MultipleObjectConfirmActionView,
     MultipleObjectFormActionView, SingleObjectDeleteView,
-    SingleObjectDetailView, SingleObjectListView
+    SingleObjectDetailView, SingleObjectDownloadView, SingleObjectListView
 )
 from mayan.apps.views.mixins import ExternalObjectMixin
 
-from ..events import event_document_viewed
+from ..events import event_document_download, event_document_viewed
 from ..forms.document_file_forms import (
     DocumentFileDownloadForm, DocumentFilePreviewForm,
     DocumentFilePropertiesForm
 )
-from ..icons import icon_document_file_list
+from ..icons import icon_document_file_download, icon_document_file_list
+from ..literals import DEFAULT_DOCUMENT_FILE_ZIP_FILENAME
 from ..models.document_models import Document
 from ..models.document_file_models import DocumentFile
 from ..permissions import (
@@ -56,22 +58,21 @@ class DocumentFileDeleteView(SingleObjectDeleteView):
             }
         )
 
-####MERGE
-from ..forms import DocumentDownloadForm
-
-class DocumentDownloadFormView(MultipleObjectFormActionView):
-    form_class = DocumentDownloadForm
-    model = Document
-    object_permission = permission_document_file_download
-    pk_url_kwarg = 'document_id'
-    querystring_form_fields = ('compressed', 'zip_filename')
-    viewname = 'documents:document_multiple_download'
+'''
+class DocumentFileDownloadFormView(MultipleObjectFormActionView):
+    form_class = DocumentFileDownloadForm
+    model = DocumentFile
+    pk_url_kwarg = 'document_file_id'
+    querystring_form_fields = (
+        'compressed', 'zip_filename', 'preserve_extension'
+    )
+    viewname = 'documents:document_file_multiple_download'
 
     def form_valid(self, form):
         # Turn a queryset into a comma separated list of primary keys
         id_list = ','.join(
             [
-                force_text(pk) for pk in self.get_object_list().values_list('pk', flat=True)
+                force_text(pk) for pk in self.object_list.values_list('pk', flat=True)
             ]
         )
 
@@ -91,125 +92,89 @@ class DocumentDownloadFormView(MultipleObjectFormActionView):
         return HttpResponseRedirect(redirect_to=url.tostr())
 
     def get_extra_context(self):
-        subtemplates_list = [
-            {
-                'name': 'appearance/generic_list_items_subtemplate.html',
-                'context': {
-                    'object_list': self.queryset,
-                    'hide_links': True,
-                    'hide_multi_item_actions': True
-                }
-            }
-        ]
 
         context = {
-            'submit_icon_class': icon_document_download,
+            'submit_icon_class': icon_document_file_download,
             'submit_label': _('Download'),
             'subtemplates_list': subtemplates_list,
-            'title': _('Download documents')
+            'title': _('Download document files')
         }
 
-        if self.queryset.count() == 1:
-            context['object'] = self.queryset.first()
+        if self.object_list.count() == 1:
+            context['object'] = self.object_list.first()
 
         return context
 
     def get_form_kwargs(self):
-        kwargs = super(DocumentDownloadFormView, self).get_form_kwargs()
-        self.queryset = self.get_object_list()
-        kwargs.update({'queryset': self.queryset})
-        return kwargs
+        return {
+            'queryset': self.object_list
+        }
+'''
 
-
-class DocumentDownloadView(MultipleObjectDownloadView):
-    model = Document
+class DocumentFileDownloadView(SingleObjectDownloadView):
+    model = DocumentFile
     object_permission = permission_document_file_download
-    pk_url_kwarg = 'document_id'
+    pk_url_kwarg = 'document_file_id'
 
-    @staticmethod
-    def commit_event(item, request):
-        if isinstance(item, Document):
-            event_document_download.commit(
-                actor=request.user,
-                target=item
-            )
-        else:
-            event_document_download.commit(
-                actor=request.user,
-                target=item.document
-            )
+    #@staticmethod
+    #def commit_event(item, request):
+    #    if isinstance(item, Document):
+    #        event_document_download.commit(
+    #            actor=request.user,
+    #            target=item
+    #        )
+    #    else:
+    #        event_document_download.commit(
+    #            actor=request.user,
+    #            target=item.document
+    #        )
 
-    def get_archive_filename(self):
-        return self.request.GET.get(
-            'zip_filename', DEFAULT_ZIP_FILENAME
-        )
+    #def get_archive_filename(self):
+    #    return self.request.GET.get(
+    #        'zip_filename', DEFAULT_DOCUMENT_FILE_ZIP_FILENAME
+    #    )
 
     def get_download_file_object(self):
-        queryset = self.get_object_list()
-        zip_filename = self.get_archive_filename()
+        #queryset = self.get_object_list()
+        #zip_filename = self.get_archive_filename()
 
-        if self.request.GET.get('compressed') == 'True' or queryset.count() > 1:
-            compressed_file = ZipArchive()
-            compressed_file.create()
-            for item in queryset:
-                with item.open() as file_object:
-                    compressed_file.add_file(
-                        file_object=file_object,
-                        filename=self.get_item_filename(item=item)
-                    )
-                    DocumentDownloadView.commit_event(
-                        item=item, request=self.request
-                    )
+        #if self.request.GET.get('compressed') == 'True' or queryset.count() > 1:
+        #    compressed_file = ZipArchive()
+        #    compressed_file.create()
+        #    for item in queryset:
+        #        with item.open() as file_object:
+        #            compressed_file.add_file(
+        #                file_object=file_object,
+        #                filename=self.get_item_filename(item=item)
+        #            )
+        #            DocumentFileDownloadView.commit_event(
+        #                item=item, request=self.request
+        #            )
 
-            compressed_file.close()
+        #    compressed_file.close()
 
-            return compressed_file.as_file(zip_filename)
-        else:
-            item = queryset.first()
-            DocumentDownloadView.commit_event(
-                item=item, request=self.request
-            )
-            return item.open()
+        #    return compressed_file.as_file(zip_filename)
+        #else:
+        #item = queryset.first()
+        #DocumentFileDownloadView.commit_event(
+        #    item=item, request=self.request
+        #)
+        event_document_download.commit(
+            actor=self.request.user,
+            action_object=self.object,
+            target=self.object.document
+        )
+
+        return self.object.open()
 
     def get_download_filename(self):
-        queryset = self.get_object_list()
-        if self.request.GET.get('compressed') == 'True' or queryset.count() > 1:
-            return self.get_archive_filename()
-        else:
-            return self.get_item_filename(item=queryset.first())
-
-    def get_item_filename(self, item):
-        return item.label
-
-
-###MERGE END
-
-
-class DocumentFileDownloadFormView(DocumentDownloadFormView):
-    form_class = DocumentFileDownloadForm
-    model = DocumentFile
-    pk_url_kwarg = 'document_file_id'
-    querystring_form_fields = (
-        'compressed', 'zip_filename', 'preserve_extension'
-    )
-    viewname = 'documents:document_multiple_file_download'
-
-    def get_extra_context(self):
-        result = super(
-            DocumentFileDownloadFormView, self
-        ).get_extra_context()
-
-        result.update({
-            'title': _('Download document file'),
-        })
-
-        return result
-
-
-class DocumentFileDownloadView(DocumentDownloadView):
-    model = DocumentFile
-    pk_url_kwarg = 'document_file_id'
-
+        #queryset = self.get_object_list()
+        #if self.request.GET.get('compressed') == 'True' or queryset.count() > 1:
+        #    return self.get_archive_filename()
+        #else:
+        #return self.get_item_filename(item=queryset.first())
+        return self.object.get_rendered_string()
+    """
     def get_item_filename(self, item):
         preserve_extension = self.request.GET.get(
             'preserve_extension', self.request.POST.get(
@@ -220,7 +185,7 @@ class DocumentFileDownloadView(DocumentDownloadView):
         preserve_extension = preserve_extension == 'true' or preserve_extension == 'True'
 
         return item.get_rendered_string(preserve_extension=preserve_extension)
-
+    """
 
 class DocumentFileListView(ExternalObjectMixin, SingleObjectListView):
     external_object_class = Document

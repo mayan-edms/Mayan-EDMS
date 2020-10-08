@@ -63,6 +63,7 @@ from .links.document_links import (
 )
 from .links.document_file_links import (
     link_document_file_delete, link_document_file_download,
+    link_document_file_multiple_download, link_document_file_download_quick,
     link_document_file_list, link_document_file_preview,
     link_document_file_properties, link_document_file_return_to_document,
     link_document_file_return_list
@@ -685,13 +686,15 @@ class DocumentsApp(MayanAppConfig):
         )
         menu_multi_item.bind_links(
             links=(
+                #link_document_file_multiple_download,
                 link_document_file_multiple_page_count_update,
             ), sources=(DocumentFile,)
         )
         menu_object.bind_links(
             links=(
                 link_document_file_delete,
-                link_document_file_download,
+                #link_document_file_download,
+                link_document_file_download_quick,
                 link_document_file_page_count_update
             ),
             sources=(DocumentFile,)

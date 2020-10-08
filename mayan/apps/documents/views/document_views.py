@@ -17,29 +17,26 @@ from mayan.apps.converter.layers import layer_saved_transformations
 from mayan.apps.converter.permissions import (
     permission_transformation_delete, permission_transformation_edit
 )
-from mayan.apps.storage.compressed_files import ZipArchive
 from mayan.apps.views.generics import (
     FormView, MultipleObjectConfirmActionView, MultipleObjectDownloadView,
     MultipleObjectFormActionView, SingleObjectDetailView,
     SingleObjectEditView, SingleObjectListView
 )
 
-from ..events import event_document_download, event_document_viewed
+from ..events import event_document_viewed
 from ..forms import (
-    DocumentDownloadForm, DocumentForm, DocumentFilePageNumberForm,
-    DocumentPrintForm, DocumentPropertiesForm,
-    DocumentTypeFilteredSelectForm
+    DocumentForm, DocumentFilePageNumberForm, DocumentPrintForm,
+    DocumentPropertiesForm, DocumentTypeFilteredSelectForm
 )
 from ..icons import (
-    icon_document_download, icon_document_list,
-    icon_document_list_recent_access, icon_recent_added_document_list
+    icon_document_list, icon_document_list_recent_access,
+    icon_recent_added_document_list
 )
-from ..literals import PAGE_RANGE_RANGE, DEFAULT_ZIP_FILENAME
+from ..literals import PAGE_RANGE_RANGE
 from ..models import Document, RecentDocument
 from ..permissions import (
-    permission_document_file_download, permission_document_print,
-    permission_document_properties_edit, permission_document_tools,
-    permission_document_view
+    permission_document_print, permission_document_properties_edit,
+    permission_document_tools, permission_document_view
 )
 from ..settings import (
     setting_print_width, setting_print_height, setting_recent_added_count
@@ -67,11 +64,11 @@ class DocumentListView(SingleObjectListView):
             return super(DocumentListView, self).get_context_data(**kwargs)
         except Exception as exception:
             messages.error(
-                self.request, _(
+                message=_(
                     'Error retrieving document list: %(exception)s.'
                 ) % {
                     'exception': exception
-                }
+                }, request=self.request
             )
             self.object_list = Document.objects.none()
             return super(DocumentListView, self).get_context_data(**kwargs)
@@ -148,9 +145,9 @@ class DocumentDocumentTypeChangeView(MultipleObjectFormActionView):
         )
 
         messages.success(
-            self.request, _(
+            message=_(
                 'Document type for "%s" changed successfully.'
-            ) % instance
+            ) % instance, request=self.request
         )
 
 
@@ -270,12 +267,12 @@ class DocumentTransformationsClearView(MultipleObjectConfirmActionView):
                 layer_saved_transformations.get_transformations_for(obj=page).delete()
         except Exception as exception:
             messages.error(
-                self.request, _(
+                message=_(
                     'Error deleting the page transformations for '
                     'document: %(document)s; %(error)s.'
                 ) % {
                     'document': instance, 'error': exception
-                }
+                }, request=self.request
             )
 
 

@@ -6,9 +6,9 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.smart_settings.classes import SettingNamespace
 
 from .literals import (
-    DEFAULT_DOCUMENTS_FILE_PAGE_IMAGE_CACHE_MAXIMUM_SIZE,
-    DEFAULT_DOCUMENTS_VERSION_PAGE_IMAGE_CACHE_MAXIMUM_SIZE,
-    DEFAULT_DOCUMENTS_HASH_BLOCK_SIZE,
+    DEFAULT_DOCUMENT_FILE_PAGE_IMAGE_CACHE_MAXIMUM_SIZE,
+    DEFAULT_DOCUMENT_VERSION_PAGE_IMAGE_CACHE_MAXIMUM_SIZE,
+    DEFAULT_DOCUMENT_HASH_BLOCK_SIZE,
     DEFAULT_LANGUAGE, DEFAULT_LANGUAGE_CODES,
     DEFAULT_STUB_EXPIRATION_INTERVAL,
     DEFAULT_TASK_GENERATE_DOCUMENT_FILE_PAGE_IMAGE_RETRY_DELAY,
@@ -33,7 +33,7 @@ setting_display_width = namespace.add_setting(
 )
 setting_document_file_page_image_cache_maximum_size = namespace.add_setting(
     global_name='DOCUMENTS_FILE_PAGE_IMAGE_CACHE_MAXIMUM_SIZE',
-    default=DEFAULT_DOCUMENTS_FILE_PAGE_IMAGE_CACHE_MAXIMUM_SIZE,
+    default=DEFAULT_DOCUMENT_FILE_PAGE_IMAGE_CACHE_MAXIMUM_SIZE,
     help_text=_(
         'The threshold at which the DOCUMENT_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND will start '
         'deleting the oldest document file page image cache files. Specify '
@@ -82,7 +82,7 @@ setting_favorite_count = namespace.add_setting(
 )
 setting_hash_block_size = namespace.add_setting(
     global_name='DOCUMENTS_HASH_BLOCK_SIZE',
-    default=DEFAULT_DOCUMENTS_HASH_BLOCK_SIZE, help_text=_(
+    default=DEFAULT_DOCUMENT_HASH_BLOCK_SIZE, help_text=_(
         'Size of blocks to use when calculating the document file\'s '
         'checksum. A value of 0 disables the block calculation and the entire '
         'file will be loaded into memory.'
@@ -98,7 +98,7 @@ setting_language_codes = namespace.add_setting(
 )
 setting_document_version_page_image_cache_maximum_size = namespace.add_setting(
     global_name='DOCUMENTS_VERSION_PAGE_IMAGE_CACHE_MAXIMUM_SIZE',
-    default=DEFAULT_DOCUMENTS_VERSION_PAGE_IMAGE_CACHE_MAXIMUM_SIZE,
+    default=DEFAULT_DOCUMENT_VERSION_PAGE_IMAGE_CACHE_MAXIMUM_SIZE,
     help_text=_(
         'The threshold at which the DOCUMENT_VERSION_PAGE_IMAGE_CACHE_STORAGE_BACKEND will start '
         'deleting the oldest document version page image cache versions. Specify '
