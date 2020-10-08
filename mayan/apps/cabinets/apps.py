@@ -62,8 +62,11 @@ class CabinetsApp(MayanAppConfig):
             app_label='documents', model_name='Document'
         )
         DocumentCabinet = self.get_model(model_name='DocumentCabinet')
-        DocumentPageResult = apps.get_model(
-            app_label='documents', model_name='DocumentPageResult'
+        DocumentFilePageResult = apps.get_model(
+            app_label='documents', model_name='DocumentFilePageResult'
+        )
+        DocumentVersionPageResult = apps.get_model(
+            app_label='documents', model_name='DocumentVersionPageResult'
         )
 
         # Add explicit order_by as DocumentCabinet ordering Meta option has no
@@ -153,7 +156,13 @@ class CabinetsApp(MayanAppConfig):
             func=lambda context: widget_document_cabinets(
                 document=context['object'].document,
                 user=context['request'].user
-            ), label=_('Cabinets'), order=1, source=DocumentPageResult
+            ), label=_('Cabinets'), order=1, source=DocumentFilePageResult
+        )
+        SourceColumn(
+            func=lambda context: widget_document_cabinets(
+                document=context['object'].document,
+                user=context['request'].user
+            ), label=_('Cabinets'), order=1, source=DocumentVersionPageResult
         )
 
         menu_facet.bind_links(
