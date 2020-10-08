@@ -43,3 +43,4 @@
 - Split document app model tests into separate modules.
 - Split document app test mixins into separate modules.
 - Fix the appearance of the automatically generated view titles.
+- Add a new "Return" menu for secondany object views.

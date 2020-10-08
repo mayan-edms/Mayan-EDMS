@@ -32,7 +32,7 @@
     {% block content_plain %}{% endblock %}
 {% else %}
     <div class="">
-        {% navigation_resolve_menus names='facet,list facet,related,sources' sort_results=True as facet_menus_link_results %}
+        {% navigation_resolve_menus names='facet,list facet,related,return,sources' sort_results=True as facet_menus_link_results %}
         <div class="row zero-margin">
             <div class="col-xs-12 {% if facet_menus_link_results %}has-sidebar{% endif %}" id="viewport">
                 <div class="row zero-margin">

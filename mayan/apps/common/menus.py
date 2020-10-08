@@ -15,6 +15,7 @@ menu_object = Menu(label=_('Actions'), name='object')
 menu_related = Menu(label=_('Related'), name='related')
 menu_secondary = Menu(label=_('Secondary'), name='secondary')
 menu_setup = Menu(name='setup')
+menu_return = Menu(label=_('Return'), name='return')
 menu_tools = Menu(name='tools')
 menu_topbar = Menu(name='topbar')
 menu_user = Menu(
