@@ -4,17 +4,20 @@ from mayan.apps.navigation.classes import Link
 
 from ..icons import (
     icon_document_version_page_delete,
+    icon_document_version_page_return_to_document,
+    icon_document_version_page_return_to_document_version,
     icon_document_version_page_navigation_first,
     icon_document_version_page_navigation_last,
     icon_document_version_page_navigation_next,
     icon_document_version_page_navigation_previous,
-    icon_document_version_page_return,
     icon_document_version_page_rotate_left,
     icon_document_version_page_rotate_right,
-    icon_document_version_page_zoom_in, icon_document_version_page_zoom_out,
+    icon_document_version_page_zoom_in,
+    icon_document_version_page_zoom_out,
 )
 from ..permissions import (
-    permission_document_version_edit, permission_document_version_view
+    permission_document_version_edit, permission_document_version_view,
+    permission_document_view
 )
 from ..settings import setting_zoom_max_level, setting_zoom_min_level
 
@@ -87,12 +90,19 @@ link_document_version_page_navigation_next = Link(
     permissions=(permission_document_version_view,),
     view='documents:document_version_page_navigation_next',
 )
-link_document_version_page_return = Link(
+link_document_version_page_return_to_document = Link(
+    args='resolved_object.document_version.document.pk',
+    icon_class=icon_document_version_page_return_to_document,
+    permissions=(permission_document_view,),
+    text=_('Document'),
+    view='documents:document_preview',
+)
+link_document_version_page_return_to_document_version = Link(
     args='resolved_object.document_version.pk',
-    icon_class=icon_document_version_page_return,
+    icon_class=icon_document_version_page_return_to_document_version,
     permissions=(permission_document_version_view,),
     text=_('Document version'),
-    view='documents:document_version_view',
+    view='documents:document_version_preview',
 )
 link_document_version_page_rotate_left = Link(
     args='resolved_object.pk', icon_class=icon_document_version_page_rotate_left,

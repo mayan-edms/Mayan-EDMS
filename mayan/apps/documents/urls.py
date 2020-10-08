@@ -14,7 +14,7 @@ from .api_views import (
 from .views.document_file_views import (
     DocumentFileDeleteView, DocumentFileDownloadFormView,
     DocumentFileDownloadView, DocumentFileListView,
-    DocumentFilePropertiesView, DocumentFileView
+    DocumentFilePropertiesView, DocumentFilePreviewView
 )
 from .views.document_file_page_views import (
     DocumentFilePageCountUpdateView, DocumentFilePageListView,
@@ -43,7 +43,8 @@ from .views.document_version_page_views import (
     DocumentVersionPageZoomOutView
 )
 from .views.document_version_views import (
-    DocumentVersionDeleteView, DocumentVersionListView, DocumentVersionView
+    DocumentVersionDeleteView, DocumentVersionEditView,
+    DocumentVersionListView, DocumentVersionPreviewView
 )
 from .views.document_views import (
     DocumentDocumentTypeChangeView, DocumentListView, DocumentPreviewView,
@@ -69,8 +70,8 @@ urlpatterns_document_files = [
         name='document_file_list', view=DocumentFileListView.as_view()
     ),
     url(
-        regex=r'^documents/files/(?P<document_file_id>\d+)/$',
-        name='document_file_view', view=DocumentFileView.as_view()
+        regex=r'^documents/files/(?P<document_file_id>\d+)/preview/$',
+        name='document_file_preview', view=DocumentFilePreviewView.as_view()
     ),
     url(
         regex=r'^documents/files/(?P<document_file_id>\d+)/delete/$',
@@ -223,18 +224,24 @@ urlpatterns_document_version = [
         name='document_version_list', view=DocumentVersionListView.as_view()
     ),
     url(
-        regex=r'^documents/versions/(?P<document_version_id>\d+)/$',
-        name='document_version_view', view=DocumentVersionView.as_view()
-    ),
-    url(
         regex=r'^documents/versions/(?P<document_version_id>\d+)/delete/$',
         name='document_version_delete',
         view=DocumentVersionDeleteView.as_view()
     ),
     url(
+        regex=r'^documents/versions/(?P<document_version_id>\d+)/edit/$',
+        name='document_version_edit',
+        view=DocumentVersionEditView.as_view()
+    ),
+    url(
         regex=r'^documents/versions/multiple/delete/$',
         name='document_version_multiple_delete',
         view=DocumentVersionDeleteView.as_view()
+    ),
+    url(
+        regex=r'^documents/versions/(?P<document_version_id>\d+)/preview/$',
+        name='document_version_preview',
+        view=DocumentVersionPreviewView.as_view()
     ),
 ]
 

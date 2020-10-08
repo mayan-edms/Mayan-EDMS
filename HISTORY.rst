@@ -44,3 +44,16 @@
 - Split document app test mixins into separate modules.
 - Fix the appearance of the automatically generated view titles.
 - Add a new "Return" menu for secondany object views.
+- Use the "Return" menu for the document version, document version page,
+  document file, and document file page views.
+- Remove the "File..." reference to the document file form fields as these
+  are now obvious.
+- Add more return links. From document version to version list, from document file
+  to document file list, from document version page to document, from document file page
+  to document.
+- Add document version edit view. Allows editing the document version comment.
+- Improve the return links with the chevron as the uniform secondary icon.
+- Rename the document view, document version view and document file views to
+  document preview, document file preview and document version preview.
+- Enable more cabinets, checkouts, document comments, metadata, linking, mailer,
+  mirroring, web links apps.

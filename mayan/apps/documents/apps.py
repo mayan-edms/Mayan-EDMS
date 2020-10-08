@@ -11,7 +11,7 @@ from mayan.apps.common.classes import (
 )
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_main, menu_object, menu_related,
-    menu_secondary, menu_setup, menu_multi_item, menu_tools
+    menu_return, menu_secondary, menu_setup, menu_multi_item, menu_tools
 )
 from mayan.apps.common.signals import signal_post_initial_setup
 from mayan.apps.converter.layers import layer_decorations
@@ -58,15 +58,14 @@ from .links.document_links import (
     link_document_edit, link_document_list, link_document_list_recent_access,
     link_document_list_recent_added,
     link_document_multiple_clear_transformations,
-    link_document_multiple_document_type_edit,
-    link_document_preview,
-    link_document_print, link_document_properties,
+    link_document_multiple_document_type_edit, link_document_preview,
+    link_document_print, link_document_properties
 )
 from .links.document_file_links import (
     link_document_file_delete, link_document_file_download,
-    link_document_file_list, link_document_file_properties,
-    link_document_file_return_document, link_document_file_return_list,
-    link_document_file_view
+    link_document_file_list, link_document_file_preview,
+    link_document_file_properties, link_document_file_return_to_document,
+    link_document_file_return_list
 )
 from .links.document_file_page_links import (
     link_document_file_multiple_page_count_update,
@@ -75,7 +74,8 @@ from .links.document_file_page_links import (
     link_document_file_page_navigation_last,
     link_document_file_page_navigation_next,
     link_document_file_page_navigation_previous,
-    link_document_file_page_return,
+    link_document_file_page_return_to_document,
+    link_document_file_page_return_to_document_file,
     link_document_file_page_rotate_left, link_document_file_page_rotate_right,
     link_document_file_page_view, link_document_file_page_view_reset,
     link_document_file_page_zoom_in, link_document_file_page_zoom_out
@@ -89,9 +89,11 @@ from .links.document_type_links import (
     link_document_type_setup
 )
 from .links.document_version_links import (
-    link_document_version_delete, link_document_version_list,
-    link_document_version_multiple_delete, link_document_version_return_list,
-    link_document_version_return_document, link_document_version_view
+    link_document_version_delete, link_document_version_edit,
+    link_document_version_list, link_document_version_multiple_delete,
+    link_document_version_return_list,
+    link_document_version_return_to_document,
+    link_document_version_preview
 )
 from .links.document_version_page_links import (
     link_document_version_page_delete,
@@ -102,7 +104,8 @@ from .links.document_version_page_links import (
     link_document_version_page_navigation_last,
     link_document_version_page_navigation_next,
     link_document_version_page_navigation_previous,
-    link_document_version_page_return,
+    link_document_version_page_return_to_document,
+    link_document_version_page_return_to_document_version,
     link_document_version_page_rotate_left,
     link_document_version_page_rotate_right, link_document_version_page_view,
     link_document_version_page_view_reset, link_document_version_page_zoom_in,
@@ -406,12 +409,15 @@ class DocumentsApp(MayanAppConfig):
         )
 
         # Document file and document file page thumbnail widget
+
         document_file_page_thumbnail_widget = DocumentFilePageThumbnailWidget()
 
         # Document version and document version page thumbnail widget
+
         document_version_page_thumbnail_widget = DocumentVersionPageThumbnailWidget()
 
         # Document
+
         SourceColumn(
             attribute='label', is_object_absolute_url=True, is_identifier=True,
             is_sortable=True, source=Document
@@ -452,6 +458,7 @@ class DocumentsApp(MayanAppConfig):
         )
 
         # DocumentFile
+
         SourceColumn(
             source=DocumentFile, attribute='file', is_identifier=True,
             is_object_absolute_url=True
@@ -478,6 +485,7 @@ class DocumentsApp(MayanAppConfig):
         )
 
         # DocumentFilePage
+
         SourceColumn(
             attribute='page_number', is_identifier=True,
             is_object_absolute_url=True, source=DocumentFilePage,
@@ -505,6 +513,7 @@ class DocumentsApp(MayanAppConfig):
         )
 
         # DocumentType
+
         SourceColumn(
             attribute='label', is_identifier=True, is_sortable=True,
             source=DocumentType
@@ -526,6 +535,7 @@ class DocumentsApp(MayanAppConfig):
         )
 
         # DocumentVersion
+
         SourceColumn(
             source=DocumentVersion, attribute='timestamp', is_identifier=True,
             is_object_absolute_url=True
@@ -546,6 +556,7 @@ class DocumentsApp(MayanAppConfig):
         )
 
         # DocumentVersionPage
+
         SourceColumn(
             attribute='page_number', is_identifier=True,
             is_object_absolute_url=True, source=DocumentVersionPage,
@@ -622,7 +633,109 @@ class DocumentsApp(MayanAppConfig):
             links=(link_duplicated_document_scan,)
         )
 
-        # Document type links
+        # Document
+
+        menu_facet.bind_links(
+            links=(link_document_duplicates_list, link_acl_list,),
+            sources=(Document,)
+        )
+        menu_facet.bind_links(
+            links=(link_document_preview,), sources=(Document,), position=0
+        )
+        menu_facet.bind_links(
+            links=(link_document_properties,), sources=(Document,), position=2
+        )
+        menu_facet.bind_links(
+            links=(
+                link_events_for_object,
+                link_object_event_types_user_subcriptions_list,
+                link_document_file_list, link_document_version_list
+            ), sources=(Document,), position=2
+        )
+
+        menu_object.bind_links(
+            links=(
+                link_document_favorites_add, link_document_favorites_remove,
+                link_document_edit, link_document_document_type_edit,
+                link_document_print, link_document_trash,
+                link_document_clear_transformations,
+                link_document_clone_transformations,
+            ), sources=(Document,)
+        )
+
+        menu_multi_item.bind_links(
+            links=(
+                link_document_multiple_favorites_add,
+                link_document_multiple_favorites_remove,
+                link_document_multiple_clear_transformations,
+                link_document_multiple_trash,
+                link_document_multiple_document_type_edit,
+            ), sources=(Document,)
+        )
+
+        # DocumentFile
+
+        menu_list_facet.bind_links(
+            links=(
+                link_document_file_page_list, link_document_file_properties,
+                link_document_file_preview,
+                link_acl_list, link_object_event_types_user_subcriptions_list,
+                link_events_for_object
+            ), sources=(DocumentFile,)
+        )
+        menu_multi_item.bind_links(
+            links=(
+                link_document_file_multiple_page_count_update,
+            ), sources=(DocumentFile,)
+        )
+        menu_object.bind_links(
+            links=(
+                link_document_file_delete,
+                link_document_file_download,
+                link_document_file_page_count_update
+            ),
+            sources=(DocumentFile,)
+        )
+        menu_return.bind_links(
+            links=(
+                link_document_file_return_list,
+                link_document_file_return_to_document,
+            ), sources=(DocumentFile,)
+        )
+
+        # DocumentFilePages
+
+        menu_facet.add_unsorted_source(source=DocumentFilePage)
+        menu_facet.bind_links(
+            links=(
+                link_document_file_page_rotate_left,
+                link_document_file_page_rotate_right, link_document_file_page_zoom_in,
+                link_document_file_page_zoom_out, link_document_file_page_view_reset
+            ), sources=('documents:document_file_page_view',)
+        )
+        menu_facet.bind_links(
+            links=(
+                link_document_file_page_view,
+                link_document_file_page_navigation_first,
+                link_document_file_page_navigation_previous,
+                link_document_file_page_navigation_next,
+                link_document_file_page_navigation_last
+            ), sources=(DocumentFilePage,)
+        )
+        menu_list_facet.bind_links(
+            links=(link_decorations_list, link_transformation_list),
+            sources=(DocumentFilePage,)
+        )
+        menu_return.bind_links(
+            links=(
+                link_document_file_page_return_to_document,
+                link_document_file_page_return_to_document_file,
+            ),
+            sources=(DocumentFilePage,)
+        )
+
+        # DocumentType
+
         menu_list_facet.bind_links(
             links=(
                 link_document_type_filename_list,
@@ -665,123 +778,11 @@ class DocumentsApp(MayanAppConfig):
             )
         )
 
-        # Document object links
-        menu_object.bind_links(
-            links=(
-                link_document_favorites_add, link_document_favorites_remove,
-                link_document_edit, link_document_document_type_edit,
-                link_document_print, link_document_trash,
-                link_document_clear_transformations,
-                link_document_clone_transformations,
-            ), sources=(Document,)
-        )
-        menu_object.bind_links(
-            links=(link_document_restore, link_document_delete),
-            sources=(DeletedDocument,)
-        )
+        # DocumentVersion
 
-        # Document facet links
-        menu_facet.bind_links(
-            links=(link_document_duplicates_list, link_acl_list,),
-            sources=(Document,)
-        )
-        menu_facet.bind_links(
-            links=(link_document_preview,), sources=(Document,), position=0
-        )
-        menu_facet.bind_links(
-            links=(link_document_properties,), sources=(Document,), position=2
-        )
-        menu_facet.bind_links(
-            links=(
-                link_events_for_object,
-                link_object_event_types_user_subcriptions_list,
-                link_document_file_list, link_document_version_list
-            ), sources=(Document,), position=2
-        )
-
-        # Document actions
-        menu_object.bind_links(
-            links=(
-                link_document_file_delete, link_document_file_download
-            ),
-            sources=(DocumentFile,)
-        )
-        menu_multi_item.bind_links(
-            links=(
-                link_document_multiple_favorites_add,
-                link_document_multiple_favorites_remove,
-                link_document_multiple_clear_transformations,
-                link_document_multiple_trash,
-                link_document_multiple_document_type_edit,
-            ), sources=(Document,)
-        )
-
-        # Document pages
-        menu_facet.add_unsorted_source(source=DocumentFilePage)
-        menu_facet.bind_links(
-            links=(
-                link_document_file_page_rotate_left,
-                link_document_file_page_rotate_right, link_document_file_page_zoom_in,
-                link_document_file_page_zoom_out, link_document_file_page_view_reset
-            ), sources=('documents:document_file_page_view',)
-        )
-        menu_facet.bind_links(
-            links=(link_document_file_page_view,),
-            sources=(DocumentFilePage,)
-        )
-        menu_facet.bind_links(
-            links=(
-                link_document_file_page_navigation_first,
-                link_document_file_page_navigation_previous,
-                link_document_file_page_navigation_next,
-                link_document_file_page_navigation_last
-            ), sources=(DocumentFilePage,)
-        )
-        menu_list_facet.bind_links(
-            links=(link_decorations_list, link_transformation_list),
-            sources=(DocumentFilePage,)
-        )
-        menu_related.bind_links(
-            links=(link_document_file_page_return,),
-            sources=(DocumentFilePage,)
-        )
-
-        # Document files
         menu_list_facet.bind_links(
             links=(
-                link_document_file_page_list, link_document_file_properties,
-                link_document_file_view,
-                link_acl_list, link_object_event_types_user_subcriptions_list,
-                link_events_for_object
-            ), sources=(DocumentFile,)
-        )
-        menu_multi_item.bind_links(
-            links=(
-                link_document_file_multiple_page_count_update,
-            ), sources=(DocumentFile,)
-        )
-        menu_object.bind_links(
-            links=(
-                link_document_file_delete,
-                link_document_file_page_count_update
-            ),
-            sources=(DocumentFile,)
-        )
-        menu_related.bind_links(
-            links=(
-                link_document_file_return_document,
-            ), sources=(DocumentFile,)
-        )
-        menu_secondary.bind_links(
-            links=(
-                link_document_file_return_list,
-            ), sources=(DocumentFile,)
-        )
-
-        # Document versions
-        menu_list_facet.bind_links(
-            links=(
-                link_document_version_page_list, link_document_version_view,
+                link_document_version_page_list, link_document_version_preview,
                 link_acl_list, link_object_event_types_user_subcriptions_list,
                 link_events_for_object
             ),
@@ -794,24 +795,21 @@ class DocumentsApp(MayanAppConfig):
         )
         menu_object.bind_links(
             links=(
-                link_document_version_delete,
+                link_document_version_delete, link_document_version_edit,
                 link_document_version_page_list_remap,
                 link_document_version_page_list_reset
             ),
             sources=(DocumentVersion,)
         )
-        menu_related.bind_links(
-            links=(
-                link_document_version_return_document,
-            ), sources=(DocumentVersion,)
-        )
-        menu_secondary.bind_links(
+        menu_return.bind_links(
             links=(
                 link_document_version_return_list,
+                link_document_version_return_to_document,
             ), sources=(DocumentVersion,)
         )
 
-        # Document version page
+        # DocumentVersionPage
+
         menu_facet.add_unsorted_source(source=DocumentVersionPage)
         menu_facet.bind_links(
             links=(
@@ -842,12 +840,19 @@ class DocumentsApp(MayanAppConfig):
                 link_document_version_page_delete,
             ), sources=(DocumentVersionPage,)
         )
-        menu_related.bind_links(
-            links=(link_document_version_page_return,),
-            sources=(DocumentVersionPage,)
+        menu_return.bind_links(
+            links=(
+                link_document_version_page_return_to_document,
+                link_document_version_page_return_to_document_version,
+            ), sources=(DocumentVersionPage,)
         )
 
         # Trashed documents
+
+        menu_object.bind_links(
+            links=(link_document_restore, link_document_delete),
+            sources=(DeletedDocument,)
+        )
         menu_multi_item.add_proxy_exclusion(source=DeletedDocument)
         menu_multi_item.bind_links(
             links=(

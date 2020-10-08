@@ -254,7 +254,7 @@ class DocumentFile(models.Model):
 
     def get_absolute_url(self):
         return reverse(
-            viewname='documents:document_file_view', kwargs={
+            viewname='documents:document_file_preview', kwargs={
                 'document_file_id': self.pk
             }
         )

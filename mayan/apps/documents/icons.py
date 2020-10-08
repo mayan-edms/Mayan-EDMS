@@ -97,15 +97,16 @@ icon_document_file_download = Icon(
 icon_document_file_list = Icon(
     driver_name='fontawesome', symbol='hdd'
 )
+icon_document_file_preview = Icon(
+    driver_name='fontawesome', symbol='eye'
+)
 icon_document_file_properties = Icon(
     driver_name='fontawesome', symbol='info'
 )
-icon_document_file_return_document = icon_document_return
+icon_document_file_return_to_document = icon_document_return
 icon_document_file_return_list = Icon(
-    driver_name='fontawesome', symbol='hdd'
-)
-icon_document_file_view = Icon(
-    driver_name='fontawesome', symbol='eye'
+    driver_name='fontawesome-dual', primary_symbol='hdd',
+    secondary_symbol='chevron-left'
 )
 
 # Document file pages
@@ -122,7 +123,11 @@ icon_document_file_page_navigation_next = Icon(
 icon_document_file_page_navigation_previous = Icon(
     driver_name='fontawesome', symbol='arrow-left'
 )
-icon_document_file_page_return = icon_document_return
+icon_document_file_page_return_to_document = icon_document_return
+icon_document_file_page_return_to_document_file = Icon(
+    driver_name='fontawesome-dual', primary_symbol='hdd',
+    secondary_symbol='chevron-left'
+)
 icon_document_file_page_rotate_left = Icon(
     driver_name='fontawesome', symbol='undo'
 )
@@ -185,20 +190,21 @@ icon_document_type_setup = icon_document_type
 
 # Document version
 
-#icon_document_version_download = Icon(
-#    driver_name='fontawesome', symbol='download'
-#)
 icon_document_version_delete = Icon(
     driver_name='fontawesome', symbol='times'
+)
+icon_document_version_edit = Icon(
+    driver_name='fontawesome', symbol='pencil-alt'
 )
 icon_document_version_list = Icon(
     driver_name='fontawesome', symbol='code-branch'
 )
 icon_document_version_return_document = icon_document_return
 icon_document_version_return_list = Icon(
-    driver_name='fontawesome', symbol='code-branch'
+    driver_name='fontawesome-dual', primary_symbol='code-branch',
+    secondary_symbol='chevron-left'
 )
-icon_document_version_view = Icon(
+icon_document_version_preview = Icon(
     driver_name='fontawesome', symbol='eye'
 )
 
@@ -206,6 +212,11 @@ icon_document_version_view = Icon(
 
 icon_document_version_page_delete = Icon(
     driver_name='fontawesome', symbol='times'
+)
+icon_document_version_page_return_to_document = icon_document_return
+icon_document_version_page_return_to_document_version = Icon(
+    driver_name='fontawesome-dual', primary_symbol='code-branch',
+    secondary_symbol='chevron-left'
 )
 icon_document_version_page_list = Icon(driver_name='fontawesome', symbol='copy')
 icon_document_version_page_list_remap = Icon(
@@ -226,7 +237,6 @@ icon_document_version_page_navigation_next = Icon(
 icon_document_version_page_navigation_previous = Icon(
     driver_name='fontawesome', symbol='arrow-left'
 )
-icon_document_version_page_return = icon_document_return
 icon_document_version_page_rotate_left = Icon(
     driver_name='fontawesome', symbol='undo'
 )

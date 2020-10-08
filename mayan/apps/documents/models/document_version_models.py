@@ -82,7 +82,7 @@ class DocumentVersion(models.Model):
 
     def get_absolute_url(self):
         return reverse(
-            viewname='documents:document_version_view', kwargs={
+            viewname='documents:document_version_preview', kwargs={
                 'document_version_id': self.pk
             }
         )

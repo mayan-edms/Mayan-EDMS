@@ -47,7 +47,7 @@ from ..settings import (
 from ..tasks import task_document_file_page_count_update
 from ..utils import parse_range
 
-from .document_version_views import DocumentVersionView
+from .document_version_views import DocumentVersionPreviewView
 
 __all__ = (
     'DocumentListView', 'DocumentDocumentTypeChangeView', 'DocumentPropertiesEditView',
@@ -154,13 +154,15 @@ class DocumentDocumentTypeChangeView(MultipleObjectFormActionView):
         )
 
 
-class DocumentPreviewView(DocumentVersionView):
+class DocumentPreviewView(DocumentVersionPreviewView):
     model = Document
     object_permission = permission_document_view
     pk_url_kwarg = 'document_id'
 
     def dispatch(self, request, *args, **kwargs):
-        result = super(SingleObjectDetailView, self).dispatch(request=request, *args, **kwargs)
+        result = super(
+            DocumentVersionPreviewView, self
+        ).dispatch(request=request, *args, **kwargs)
         self.object.add_as_recent_document_for_user(user=request.user)
         event_document_viewed.commit(
             actor=request.user, target=self.object

@@ -2,21 +2,15 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _
 
 from ..fields import DocumentVersionField
+from ..models.document_version_models import DocumentVersion
 
-from .document_forms import DocumentDownloadForm
-
-__all__ = ('DocumentVersionDownloadForm', 'DocumentVersionPreviewForm',)
+__all__ = ('DocumentVersionForm', 'DocumentVersionPreviewForm',)
 
 
-class DocumentVersionDownloadForm(DocumentDownloadForm):
-    preserve_extension = forms.BooleanField(
-        label=_('Preserve extension'), required=False,
-        help_text=_(
-            'Takes the file extension and moves it to the end of the '
-            'filename allowing operating systems that rely on file '
-            'extensions to open the downloaded document file correctly.'
-        )
-    )
+class DocumentVersionForm(forms.ModelForm):
+    class Meta:
+        fields = ('comment',)
+        model = DocumentVersion
 
 
 class DocumentVersionPreviewForm(forms.Form):

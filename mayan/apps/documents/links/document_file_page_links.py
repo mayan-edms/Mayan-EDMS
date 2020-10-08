@@ -7,9 +7,11 @@ from ..icons import (
     icon_document_file_page_navigation_last,
     icon_document_file_page_navigation_next,
     icon_document_file_page_navigation_previous,
-    icon_document_file_page_return,
-    icon_document_file_page_rotate_left, icon_document_file_page_rotate_right,
-    icon_document_file_page_zoom_in, icon_document_file_page_zoom_out,
+    icon_document_file_page_return_to_document,
+    icon_document_file_page_return_to_document_file,
+    icon_document_file_page_rotate_left,
+    icon_document_file_page_rotate_right, icon_document_file_page_zoom_in,
+    icon_document_file_page_zoom_out
 )
 from ..permissions import (
     permission_document_file_tools, permission_document_file_view,
@@ -61,10 +63,17 @@ link_document_file_page_navigation_next = Link(
     permissions=(permission_document_file_view,),
     view='documents:document_file_page_navigation_next',
 )
-link_document_file_page_return = Link(
-    args='resolved_object.document.pk', icon_class=icon_document_file_page_return,
+link_document_file_page_return_to_document = Link(
+    args='resolved_object.document_file.document.pk',
+    icon_class=icon_document_file_page_return_to_document,
     permissions=(permission_document_view,), text=_('Document'),
     view='documents:document_preview',
+)
+link_document_file_page_return_to_document_file = Link(
+    args='resolved_object.document_file.pk',
+    icon_class=icon_document_file_page_return_to_document_file,
+    permissions=(permission_document_file_view,), text=_('Document file'),
+    view='documents:document_file_preview',
 )
 link_document_file_page_rotate_left = Link(
     args='resolved_object.pk', icon_class=icon_document_file_page_rotate_left,

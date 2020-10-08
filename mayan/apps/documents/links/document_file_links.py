@@ -32,9 +32,9 @@ link_document_file_properties = Link(
     permissions=(permission_document_file_view,),
     text=_('Properties'), view='documents:document_file_properties',
 )
-link_document_file_return_document = Link(
+link_document_file_return_to_document = Link(
     args='resolved_object.document.pk',
-    icon_class_path='mayan.apps.documents.icons.icon_document_file_return_document',
+    icon_class_path='mayan.apps.documents.icons.icon_document_file_return_to_document',
     permissions=(permission_document_view,), text=_('Document'),
     view='documents:document_preview',
 )
@@ -44,9 +44,9 @@ link_document_file_return_list = Link(
     permissions=(permission_document_file_view,), text=_('Files'),
     view='documents:document_file_list',
 )
-link_document_file_view = Link(
+link_document_file_preview = Link(
     args='resolved_object.pk',
-    icon_class_path='mayan.apps.documents.icons.icon_document_file_view',
+    icon_class_path='mayan.apps.documents.icons.icon_document_file_preview',
     permissions=(permission_document_file_view,),
-    text=_('Preview'), view='documents:document_file_view'
+    text=_('Preview'), view='documents:document_file_preview'
 )

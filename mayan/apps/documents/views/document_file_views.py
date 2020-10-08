@@ -29,7 +29,7 @@ from ..permissions import (
 __all__ = (
     'DocumentFileDeleteView', 'DocumentFileDownloadFormView',
     'DocumentFileDownloadView', 'DocumentFileListView',
-    'DocumentFileView'
+    'DocumentFilePreviewView'
 )
 logger = logging.getLogger(name=__name__)
 
@@ -280,7 +280,7 @@ class DocumentFilePropertiesView(SingleObjectDetailView):
         }
 
 
-class DocumentFileView(SingleObjectDetailView):
+class DocumentFilePreviewView(SingleObjectDetailView):
     form_class = DocumentFilePreviewForm
     model = DocumentFile
     object_permission = permission_document_file_view

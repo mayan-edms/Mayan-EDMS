@@ -7,19 +7,20 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.views.generics import (
     ConfirmView, MultipleObjectDeleteView, SingleObjectDeleteView,
-    SingleObjectDetailView, SingleObjectListView
+    SingleObjectDetailView, SingleObjectEditView, SingleObjectListView
 )
 from mayan.apps.views.mixins import ExternalObjectMixin
 
 from ..events import event_document_viewed
 from ..forms.document_version_forms import (
-    DocumentVersionDownloadForm, DocumentVersionPreviewForm
+    DocumentVersionForm, DocumentVersionPreviewForm
 )
 from ..icons import icon_document_version_list
 from ..models.document_models import Document
 from ..models.document_version_models import DocumentVersion
 from ..permissions import (
-    permission_document_version_delete, permission_document_version_view
+    permission_document_version_delete, permission_document_version_edit,
+    permission_document_version_view
 )
 
 __all__ = (
@@ -34,15 +35,6 @@ class DocumentVersionDeleteView(MultipleObjectDeleteView):
     object_permission = permission_document_version_delete
     pk_url_kwarg = 'document_version_id'
 
-    #def get_extra_context(self):
-    #    return {
-    #        #'message': _(
-    #        #    'All document version pages from this document version will '
-    #        #    'be deleted too.'
-    #        #),
-    #        'object': self.object,
-    #        'title': _('Delete document version %s ?') % self.object,
-    #    }
     def get_instance_extra_data(self):
         return {
             '_event_actor': self.request.user,
@@ -56,22 +48,17 @@ class DocumentVersionDeleteView(MultipleObjectDeleteView):
             }
         )
 
-'''
-#class DocumentVersionDeleteView(SingleObjectDeleteView):
-#    model = DocumentVersion
-#    object_permission = permission_document_version_delete
-#    pk_url_kwarg = 'document_version_id'
+
+class DocumentVersionEditView(SingleObjectEditView):
+    form_class = DocumentVersionForm
+    model = DocumentVersion
+    object_permission = permission_document_version_edit
+    pk_url_kwarg = 'document_version_id'
 
     def get_extra_context(self):
         return {
-            'message': _(
-                'All document version pages from this document version will '
-                'be deleted too.'
-            ),
-            'object': self.object,
-            'title': _('Delete document version %s ?') % self.object,
+            'title': _('Edit document version: %s') % self.object,
         }
-
 
     def get_instance_extra_data(self):
         return {
@@ -80,11 +67,11 @@ class DocumentVersionDeleteView(MultipleObjectDeleteView):
 
     def get_post_action_redirect(self):
         return reverse(
-            viewname='documents:document_version_list', kwargs={
-                'document_id': self.object.document_id
+            viewname='documents:document_version_preview', kwargs={
+                'document_version_id': self.object.pk
             }
         )
-'''
+
 
 class DocumentVersionListView(ExternalObjectMixin, SingleObjectListView):
     external_object_class = Document
@@ -118,7 +105,7 @@ class DocumentVersionListView(ExternalObjectMixin, SingleObjectListView):
         return self.get_document().versions.order_by('-timestamp')
 
 
-class DocumentVersionView(SingleObjectDetailView):
+class DocumentVersionPreviewView(SingleObjectDetailView):
     form_class = DocumentVersionPreviewForm
     model = DocumentVersion
     object_permission = permission_document_version_view
@@ -130,7 +117,8 @@ class DocumentVersionView(SingleObjectDetailView):
             user=request.user
         )
         event_document_viewed.commit(
-            actor=request.user, target=self.object.document
+            actor=request.user, action_object=self.object,
+            target=self.object.document
         )
 
         return result

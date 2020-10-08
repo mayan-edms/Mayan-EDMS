@@ -47,24 +47,24 @@ class DocumentFilePropertiesForm(DetailForm):
                 'widget': forms.widgets.DateTimeInput
             },
             {
-                'label': _('File mimetype'),
+                'label': _('Mimetype'),
                 'field': lambda x: document_file.mimetype or _('None')
             },
             {
-                'label': _('File encoding'),
+                'label': _('Encoding'),
                 'field': lambda x: document_file.encoding or _(
                     'None'
                 )
             },
             {
-                'label': _('File size'),
+                'label': _('Size'),
                 'field': lambda document_file: filesizeformat(
                     document_file.size
                 ) if document_file.size else '-'
             },
             {'label': _('Exists in storage'), 'field': 'exists'},
             {
-                'label': _('File path in storage'),
+                'label': _('Path in storage'),
                 'field': 'file'
             },
             {'label': _('Checksum'), 'field': 'checksum'},
