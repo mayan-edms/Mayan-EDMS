@@ -4,7 +4,7 @@ from mayan.apps.converter.layers import layer_saved_transformations
 from mayan.apps.converter.permissions import permission_transformation_delete
 from mayan.apps.converter.tests.mixins import LayerTestMixin
 
-from ..models import DeletedDocument, Document, DocumentType
+from ..models import Document, DocumentType
 from ..permissions import (
     permission_document_create, permission_document_file_download,
     permission_document_print, permission_document_properties_edit,
@@ -16,7 +16,7 @@ from .base import GenericDocumentViewTestCase
 from .literals import (
     TEST_DOCUMENT_TYPE_2_LABEL, TEST_SMALL_DOCUMENT_FILENAME
 )
-from .mixins import DocumentViewTestMixin
+from .mixins.document_mixins import DocumentViewTestMixin
 
 
 class DocumentViewTestCase(
@@ -191,126 +191,6 @@ class DocumentViewTestCase(
             Document.objects.first().document_type, document_type_2
         )
 
-    def test_document_download_form_get_view_no_permission(self):
-        response = self._request_test_document_download_form_get_view()
-        self.assertEqual(response.status_code, 404)
-
-    def test_document_download_form_get_view_with_access(self):
-        self.grant_access(
-            obj=self.test_document, permission=permission_document_file_download
-        )
-
-        response = self._request_test_document_download_form_get_view()
-        self.assertContains(
-            response=response, status_code=200, text=self.test_document.label
-        )
-
-    def test_document_download_form_post_view_no_permission(self):
-        response = self._request_test_document_download_form_post_view()
-        self.assertEqual(response.status_code, 404)
-
-    def test_document_download_form_post_view_with_access(self):
-        self.grant_access(
-            obj=self.test_document, permission=permission_document_file_download
-        )
-        response = self._request_test_document_download_form_post_view()
-        self.assertEqual(response.status_code, 302)
-
-    def test_document_download_view_no_permission(self):
-        response = self._request_test_document_download_view()
-        self.assertEqual(response.status_code, 404)
-
-    def test_document_download_view_with_permission(self):
-        # Set the expected_content_types for
-        # common.tests.mixins.ContentTypeCheckMixin
-        self.expected_content_types = (
-            self.test_document.file_mimetype,
-        )
-
-        self.grant_access(
-            obj=self.test_document, permission=permission_document_file_download
-        )
-
-        response = self._request_test_document_download_view()
-        self.assertEqual(response.status_code, 200)
-
-        with self.test_document.open() as file_object:
-            self.assert_download_response(
-                response=response, content=file_object.read(),
-                filename=TEST_SMALL_DOCUMENT_FILENAME,
-                mime_type=self.test_document.file_mimetype
-            )
-
-    def test_document_multiple_download_view_no_permission(self):
-        response = self._request_test_document_multiple_download_view()
-        self.assertEqual(response.status_code, 404)
-
-    def test_document_multiple_download_view_with_permission(self):
-        # Set the expected_content_types for
-        # common.tests.mixins.ContentTypeCheckMixin
-        self.expected_content_types = (
-            self.test_document.file_mimetype,
-        )
-        self.grant_access(
-            obj=self.test_document, permission=permission_document_file_download
-        )
-
-        response = self._request_test_document_multiple_download_view()
-        self.assertEqual(response.status_code, 200)
-
-        with self.test_document.open() as file_object:
-            self.assert_download_response(
-                response=response, content=file_object.read(),
-                filename=TEST_SMALL_DOCUMENT_FILENAME,
-                mime_type=self.test_document.file_mimetype
-            )
-
-    def test_document_update_page_count_view_no_permission(self):
-        self.test_document.pages.all().delete()
-        self.assertEqual(self.test_document.pages.count(), 0)
-
-        response = self._request_test_document_update_page_count_view()
-        self.assertEqual(response.status_code, 404)
-
-        self.assertEqual(self.test_document.pages.count(), 0)
-
-    def test_document_update_page_count_view_with_permission(self):
-        page_count = self.test_document.pages.count()
-        self.test_document.pages.all().delete()
-        self.assertEqual(self.test_document.pages.count(), 0)
-
-        self.grant_access(
-            obj=self.test_document, permission=permission_document_tools
-        )
-
-        response = self._request_test_document_update_page_count_view()
-        self.assertEqual(response.status_code, 302)
-
-        self.assertEqual(self.test_document.pages.count(), page_count)
-
-    def test_document_multiple_update_page_count_view_no_permission(self):
-        self.test_document.pages.all().delete()
-        self.assertEqual(self.test_document.pages.count(), 0)
-
-        response = self._request_test_document_multiple_update_page_count_view()
-        self.assertEqual(response.status_code, 404)
-
-        self.assertEqual(self.test_document.pages.count(), 0)
-
-    def test_document_multiple_update_page_count_view_with_permission(self):
-        page_count = self.test_document.pages.count()
-        self.test_document.pages.all().delete()
-        self.assertEqual(self.test_document.pages.count(), 0)
-
-        self.grant_access(
-            obj=self.test_document, permission=permission_document_tools
-        )
-
-        response = self._request_test_document_multiple_update_page_count_view()
-        self.assertEqual(response.status_code, 302)
-
-        self.assertEqual(self.test_document.pages.count(), page_count)
-
     def test_document_clear_transformations_view_no_permission(self):
         self._create_document_transformation()
 
@@ -401,25 +281,6 @@ class DocumentViewTestCase(
                 obj=self.test_document.pages.first()
             ).count()
         )
-
-    def test_trash_can_empty_view_no_permission(self):
-        self.test_document.delete()
-        self.assertEqual(DeletedDocument.objects.count(), 1)
-
-        response = self._request_empty_trash_view()
-        self.assertEqual(response.status_code, 403)
-        self.assertEqual(DeletedDocument.objects.count(), 1)
-
-    def test_trash_can_empty_view_with_permission(self):
-        self.test_document.delete()
-        self.assertEqual(DeletedDocument.objects.count(), 1)
-
-        self.grant_permission(permission=permission_empty_trash)
-
-        response = self._request_empty_trash_view()
-        self.assertEqual(response.status_code, 302)
-        self.assertEqual(DeletedDocument.objects.count(), 0)
-        self.assertEqual(Document.objects.count(), 0)
 
     def test_document_print_view_no_permission(self):
         response = self._request_test_document_print_view()

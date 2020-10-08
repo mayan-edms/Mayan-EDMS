@@ -12,7 +12,7 @@ from .literals import (
     TEST_DOCUMENT_TYPE_LABEL, TEST_DOCUMENT_TYPE_LABEL_EDITED,
     TEST_DOCUMENT_TYPE_QUICK_LABEL, TEST_DOCUMENT_TYPE_QUICK_LABEL_EDITED
 )
-from .mixins import (
+from .mixins.document_type_mixins import (
     DocumentQuickLabelViewTestMixin,
     DocumentTypeDeletionPoliciesViewTestMixin,
     DocumentTypeFilenameGeneratorViewTestMixin,

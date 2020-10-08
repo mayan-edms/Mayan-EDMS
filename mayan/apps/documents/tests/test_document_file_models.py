@@ -9,10 +9,6 @@ class DocumentFileTestCase(GenericDocumentTestCase):
         self.assertEqual(self.test_document.files.count(), 1)
 
         self._upload_test_document_file()
-        #with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-        #    self.test_document.new_file(
-        #        file_object=file_object
-        #    )
 
         self.assertEqual(self.test_document.files.count(), 2)
 
@@ -26,13 +22,9 @@ class DocumentFileTestCase(GenericDocumentTestCase):
 
         ## Needed by MySQL as milliseconds value is not store in timestamp
         ## field
-        ##time.sleep(1.01)
+        time.sleep(1.01)
 
         self._upload_test_document_file()
-        #with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-        #    self.test_document.new_file(
-        #        file_object=file_object
-        #    )
 
         self.assertEqual(self.test_document.files.count(), 2)
 

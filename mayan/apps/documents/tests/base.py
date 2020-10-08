@@ -1,6 +1,6 @@
 from mayan.apps.testing.tests.base import BaseTestCase, GenericViewTestCase
 
-from .mixins import DocumentTestMixin
+from .mixins.document_mixins import DocumentTestMixin
 
 
 class GenericDocumentTestCase(DocumentTestMixin, BaseTestCase):

@@ -17,20 +17,27 @@ class DocumentTestCase(GenericDocumentTestCase):
             self.test_document_type.label, TEST_DOCUMENT_TYPE_LABEL
         )
 
-        self.assertEqual(self.test_document.exists(), True)
-        self.assertEqual(self.test_document.size, TEST_SMALL_DOCUMENT_SIZE)
+        self.assertEqual(self.test_document.latest_file.exists(), True)
+        self.assertEqual(
+            self.test_document.latest_file.size,
+            TEST_SMALL_DOCUMENT_SIZE
+        )
 
         self.assertEqual(
-            self.test_document.file_mimetype, TEST_SMALL_DOCUMENT_MIMETYPE
+            self.test_document.latest_file.mimetype,
+            TEST_SMALL_DOCUMENT_MIMETYPE
         )
-        self.assertEqual(self.test_document.file_mime_encoding, 'binary')
+        self.assertEqual(
+            self.test_document.latest_file.encoding, 'binary'
+        )
+        self.assertEqual(
+            self.test_document.latest_file.checksum,
+            TEST_SMALL_DOCUMENT_CHECKSUM
+        )
+        self.assertEqual(self.test_document.latest_file.page_count, 1)
         self.assertEqual(
             self.test_document.label, TEST_SMALL_DOCUMENT_FILENAME
         )
-        self.assertEqual(
-            self.test_document.checksum, TEST_SMALL_DOCUMENT_CHECKSUM
-        )
-        self.assertEqual(self.test_document.page_count, 1)
 
     def test_method_get_absolute_url(self):
         self._upload_test_document()

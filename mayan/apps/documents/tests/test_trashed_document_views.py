@@ -176,3 +176,26 @@ class TrashedDocumentViewTestCase(
         self.assertContains(
             response=response, text=self.test_document.label, status_code=200
         )
+
+
+class TrashCanViewTestCase(
+    TrashedDocumentViewTestMixin, GenericDocumentViewTestCase
+):
+    def test_trash_can_empty_view_no_permission(self):
+        self.test_document.delete()
+        self.assertEqual(DeletedDocument.objects.count(), 1)
+
+        response = self._request_empty_trash_view()
+        self.assertEqual(response.status_code, 403)
+        self.assertEqual(DeletedDocument.objects.count(), 1)
+
+    def test_trash_can_empty_view_with_permission(self):
+        self.test_document.delete()
+        self.assertEqual(DeletedDocument.objects.count(), 1)
+
+        self.grant_permission(permission=permission_empty_trash)
+
+        response = self._request_empty_trash_view()
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(DeletedDocument.objects.count(), 0)
+        self.assertEqual(Document.objects.count(), 0)

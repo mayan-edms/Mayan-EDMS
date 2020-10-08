@@ -1,6 +1,5 @@
 4.0 (202X-XX-XX)
 ================
-
 - Add document version page list reset.
 - Add document version page delete.
 - Add document version hash from content object.
@@ -41,3 +40,6 @@
 - Move the ``related`` menu from the "Actions" to the ``facet`` area.
 - Add sources to their own menu.
 - Add ``mode`` argument to SharedUploadedFile.
+- Split document app model tests into separate modules.
+- Split document app test mixins into separate modules.
+
