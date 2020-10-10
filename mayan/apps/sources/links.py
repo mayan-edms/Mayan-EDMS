@@ -20,6 +20,13 @@ from .permissions import (
 logger = logging.getLogger(name=__name__)
 
 
+def factory_conditional_active_by_source(source):
+    def conditional_active_by_source(context, resolved_link):
+        return context['source'] == source
+
+    return conditional_active_by_source
+
+
 def condition_document_creation_access(context):
     AccessControlList = apps.get_model(
         app_label='acls', model_name='AccessControlList'
