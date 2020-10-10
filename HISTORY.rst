@@ -57,3 +57,5 @@
   document preview, document file preview and document version preview.
 - Enable more cabinets, checkouts, document comments, metadata, linking, mailer,
   mirroring, web links apps.
+- Allow using staging folders for new document file uploads.
+- Add conditional source link highlighting.
