@@ -36,6 +36,10 @@ logger = logging.getLogger(name=__name__)
 class Link:
     _registry = {}
 
+    staticmethod
+    def conditional_active_by_view_name(context, resolved_link):
+        return resolved_link.link.view == resolved_link.current_view_name
+
     @classmethod
     def get(cls, name):
         return cls._registry[name]
@@ -54,7 +58,7 @@ class Link:
         self.args = args or []
         self.badge_text = badge_text
         self.condition = condition
-        self.conditional_active = conditional_active
+        self.conditional_active = conditional_active or Link.conditional_active_by_view_name
         self.conditional_disable = conditional_disable
         self.description = description
         self.html_data = html_data
@@ -538,8 +542,6 @@ class ResolvedLink:
             return conditional_active(
                 context=self.context, resolved_link=self
             )
-        else:
-            return self.link.view == self.current_view_name
 
     @property
     def badge_text(self):
