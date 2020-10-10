@@ -67,3 +67,12 @@ class DocumentVersionViewTestMixin:
                 'document_version_id': self.test_document_version.pk
             }
         )
+
+
+class DocumentVersionPageRemapViewTestMixin:
+    def _request_test_document_version_page_list_remap_view(self, data):
+        return self.post(
+            viewname='documents:document_version_page_list_remap', kwargs={
+                'document_version_id': self.test_document_version.pk
+            }, data=data
+        )

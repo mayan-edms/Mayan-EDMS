@@ -187,6 +187,10 @@ icon_document_type_setup = icon_document_type
 
 # Document version
 
+icon_document_version_create = Icon(
+    driver_name='fontawesome-dual', primary_symbol='code-branch',
+    secondary_symbol='plus'
+)
 icon_document_version_delete = Icon(
     driver_name='fontawesome', symbol='times'
 )

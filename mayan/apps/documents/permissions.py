@@ -5,6 +5,7 @@ from mayan.apps.permissions import PermissionNamespace
 namespace = PermissionNamespace(label=_('Documents'), name='documents')
 
 # Document
+
 permission_document_create = namespace.add_permission(
     label=_('Create documents'), name='document_create'
 )
@@ -28,6 +29,7 @@ permission_document_view = namespace.add_permission(
 )
 
 # Document file
+
 permission_document_file_delete = namespace.add_permission(
     label=_('Delete document files'), name='document_file_delete'
 )
@@ -47,6 +49,11 @@ permission_document_file_tools = namespace.add_permission(
 )
 
 # Document version
+
+permission_document_version_create = namespace.add_permission(
+    label=_('Create document versions'),
+    name='document_version_create'
+)
 permission_document_version_delete = namespace.add_permission(
     label=_('Delete document versions'),
     name='document_version_delete'
@@ -61,6 +68,7 @@ permission_document_version_view = namespace.add_permission(
 )
 
 # Trashed document
+
 permission_document_restore = namespace.add_permission(
     label=_('Restore trashed document'), name='document_restore'
 )
@@ -75,6 +83,8 @@ permission_empty_trash = namespace.add_permission(
 setup_namespace = PermissionNamespace(
     label=_('Document types'), name='documents_types'
 )
+
+# Document type
 
 permission_document_type_create = setup_namespace.add_permission(
     label=_('Create document types'), name='document_type_create'

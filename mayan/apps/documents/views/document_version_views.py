@@ -6,8 +6,9 @@ from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.views.generics import (
-    ConfirmView, MultipleObjectDeleteView, SingleObjectDeleteView,
-    SingleObjectDetailView, SingleObjectEditView, SingleObjectListView
+    ConfirmView, MultipleObjectDeleteView, SingleObjectCreateView,
+    SingleObjectDeleteView, SingleObjectDetailView, SingleObjectEditView,
+    SingleObjectListView
 )
 from mayan.apps.views.mixins import ExternalObjectMixin
 
@@ -19,15 +20,39 @@ from ..icons import icon_document_version_list
 from ..models.document_models import Document
 from ..models.document_version_models import DocumentVersion
 from ..permissions import (
-    permission_document_version_delete, permission_document_version_edit,
-    permission_document_version_view
+    permission_document_version_create, permission_document_version_delete,
+    permission_document_version_edit, permission_document_version_view
 )
 
 __all__ = (
-    'DocumentVersionListView', 'DocumentVersionRevertView',
-    'DocumentVersionView'
+    'DocumentVersionCreateView', 'DocumentVersionListView',
+    'DocumentVersionRevertView', 'DocumentVersionView'
 )
 logger = logging.getLogger(name=__name__)
+
+
+class DocumentVersionCreateView(ExternalObjectMixin, SingleObjectCreateView):
+    external_object_class = Document
+    external_object_permission = permission_document_version_create
+    external_object_pk_url_kwarg = 'document_id'
+    form_class = DocumentVersionForm
+
+    def get_extra_context(self):
+        return {
+            'object': self.external_object,
+            'title': _(
+                'Create a document version for document: %s'
+            ) % self.external_object,
+        }
+
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user,
+            'document': self.external_object
+        }
+
+    def get_queryset(self):
+        return self.external_object.versions.all()
 
 
 class DocumentVersionDeleteView(MultipleObjectDeleteView):

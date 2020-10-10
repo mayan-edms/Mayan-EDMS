@@ -259,21 +259,35 @@ class Document(HooksMixin, models.Model):
         else:
             logger.info('New document file queued for document: %s', self)
 
+            DocumentVersion = apps.get_model(
+                app_label='documents', model_name='DocumentVersion'
+            )
+
             if action == DOCUMENT_FILE_ACTION_PAGES_NEW:
                 document_version = self.versions.create(comment=comment)
                 document_version.pages_remap(
-                    content_object_list=list(document_file.pages.all())
+                    annotated_content_object_list=DocumentVersion.annotate_content_object_list(
+                        content_object_list=document_file.pages.all()
+                    )
                 )
             elif action == DOCUMENT_FILE_ACTION_PAGES_APPEND:
-                content_object_list = []
-                content_object_list.extend(
-                    self.latest_version.page_content_objects
+                annotated_content_object_list = []
+                annotated_content_object_list.extend(
+                    DocumentVersion.annotate_content_object_list(
+                        content_object_list=self.latest_version.page_content_objects
+                    )
                 )
-                content_object_list.extend(list(document_file.pages.all()))
+
+                annotated_content_object_list.extend(
+                    DocumentVersion.annotate_content_object_list(
+                        content_object_list=document_file.pages.all(),
+                        start_page_number=self.latest_version.pages.count() + 1
+                    )
+                )
 
                 document_version = self.versions.create(comment=comment)
                 document_version.pages_remap(
-                    content_object_list=content_object_list
+                    annotated_content_object_list=annotated_content_object_list
                 )
             elif action == DOCUMENT_FILE_ACTION_PAGES_KEEP:
                 return document_file

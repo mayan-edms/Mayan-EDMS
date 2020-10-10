@@ -129,79 +129,46 @@ class DocumentVersionPageListRemapView(ExternalObjectMixin, FormView):
     #)
 
     def form_valid(self, form):
-        for document_version_page in self.external_object.pages.all():
-            document_version_page.delete()
+        annotated_content_object_list = []
 
         for row in form.forms:
             page_number = int(row.cleaned_data['target_page_number'])
             if page_number:
-                self.external_object.pages.create(
-                    content_type=ContentType.objects.get(
-                        pk=row.cleaned_data['source_content_type']
-                    ),
-                    object_id=row.cleaned_data['source_object_id'],
-                    page_number=page_number
+                content_type = ContentType.objects.get(
+                    pk=row.cleaned_data['source_content_type']
+                )
+                content_object = content_type.get_object_for_this_type(
+                    pk = row.cleaned_data['source_object_id']
                 )
 
-
-        '''
-        errors = []
-        for form in form.forms:
-            if form.cleaned_data['update']:
-                if document_metadata_queryset.filter(metadata_type=form.cleaned_data['id']).exists():
-                    try:
-                        save_metadata_list(
-                            metadata_list=[form.cleaned_data], document=instance,
-                            _user=self.request.user
-                        )
-                    except Exception as exception:
-                        errors.append(exception)
-
-        for error in errors:
-            if settings.DEBUG:
-                raise
-            else:
-                if isinstance(error, ValidationError):
-                    exception_message = ', '.join(error.messages)
-                else:
-                    exception_message = force_text(error)
-
-                messages.error(
-                    message=_(
-                        'Error editing metadata for document: '
-                        '%(document)s; %(exception)s.'
-                    ) % {
-                        'document': instance,
-                        'exception': exception_message
-                    }, request=self.request
+                annotated_content_object_list.append(
+                    {
+                        'page_number': page_number,
+                        'content_object': content_object
+                    }
                 )
-        else:
-            messages.success(
-                message=_(
-                    'Metadata for document %s edited successfully.'
-                ) % instance, request=self.request
-            )
-        '''
+
+        self.external_object.pages_remap(
+            annotated_content_object_list=annotated_content_object_list
+        )
         return super().form_valid(form=form)
 
-    def _get_source_item_list(self):
-        result = []
+    def get_form_extra_kwargs(self):
+        target_page_number_choices = [(0, _('None'))]
+
+        page_index = 1
+
         for document_file in self.external_object.document.files.all():
             for document_file_page in document_file.pages.all():
-                result.append(document_file_page)
+                target_page_number_choices.append(
+                    (page_index, page_index)
+                )
 
-        return result
+                page_index = page_index + 1
 
-    def get_form_extra_kwargs(self):
-        choices = [(0, _('None'))]
-        choices.extend(
-            [
-                (item, item) for item in range(1, len(self._get_source_item_list()))
-            ]
-        )
         return {
             'form_extra_kwargs': {
-                'target_page_number_choices': choices
+                'target_page_number_choices': target_page_number_choices
             }
         }
 

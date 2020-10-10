@@ -7,7 +7,7 @@ from django.utils.module_loading import import_string
 from mayan.apps.converter.classes import Layer
 from mayan.apps.converter.layers import layer_saved_transformations
 
-from ...literals import PAGE_RANGE_ALL
+from ...literals import DOCUMENT_FILE_ACTION_PAGES_NEW, PAGE_RANGE_ALL
 from ...models import Document, DocumentType, FavoriteDocument
 from ...search import document_file_page_search, document_search
 

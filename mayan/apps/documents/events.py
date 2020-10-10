@@ -5,6 +5,7 @@ from mayan.apps.events.classes import EventTypeNamespace
 namespace = EventTypeNamespace(label=_('Documents'), name='documents')
 
 # Document
+
 event_document_create = namespace.add_event_type(
     label=_('Document created'), name='document_create'
 )
@@ -19,6 +20,7 @@ event_document_viewed = namespace.add_event_type(
 )
 
 # Document File
+
 event_document_file_deleted = namespace.add_event_type(
     label=_('Document file deleted'), name='document_version_revert'
 )
@@ -29,12 +31,8 @@ event_document_file_pre_save = namespace.add_event_type(
     label=_('Document file created'), name='document_version_pre_save'
 )
 
-# Trashed document
-event_document_trashed = namespace.add_event_type(
-    label=_('Document trashed'), name='document_trashed'
-)
-
 # Document type
+
 event_document_type_created = namespace.add_event_type(
     label=_('Document type created'), name='document_type_created'
 )
@@ -47,6 +45,7 @@ event_document_type_changed = namespace.add_event_type(
 )
 
 # Document Version
+
 event_document_version_created = namespace.add_event_type(
     label=_('Document version created'), name='document_version_created'
 )
@@ -55,4 +54,10 @@ event_document_version_deleted = namespace.add_event_type(
 )
 event_document_version_edited = namespace.add_event_type(
     label=_('Document version edited'), name='document_version_edited'
+)
+
+# Trashed document
+
+event_document_trashed = namespace.add_event_type(
+    label=_('Document trashed'), name='document_trashed'
 )

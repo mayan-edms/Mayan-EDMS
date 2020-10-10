@@ -50,6 +50,21 @@ class DocumentVersion(models.Model):
         verbose_name = _('Document version')
         verbose_name_plural = _('Document versions')
 
+    @staticmethod
+    def annotate_content_object_list(content_object_list, start_page_number=None):
+        def content_object_to_dictionary(entry):#page_number, content_object):
+            # Argument order based on the return value of enumerate
+            return {
+                'content_object': entry[1],
+                'page_number': entry[0]
+            }
+
+        return map(
+            content_object_to_dictionary, enumerate(
+                iterable=content_object_list, start=start_page_number or 1
+            )
+        )
+
     def __str__(self):
         return self.get_rendered_string()
 
@@ -141,17 +156,17 @@ class DocumentVersion(models.Model):
         queryset = ModelQueryFields.get(model=DocumentVersionPage).get_queryset()
         return queryset.filter(pk__in=self.version_pages.all())
 
-    def pages_remap(self, content_object_list=None):
+    def pages_remap(self, annotated_content_object_list=None):
         for page in self.pages.all():
             page.delete()
 
-        if not content_object_list:
-            content_object_list = ()
+        if not annotated_content_object_list:
+            annotated_content_object_list = ()
 
-        for page_number, content_object in enumerate(iterable=content_object_list, start=1):
+        for content_object_entry in annotated_content_object_list:
             self.pages.create(
-                content_object=content_object,
-                page_number=page_number
+                content_object=content_object_entry['content_object'],
+                page_number=content_object_entry['page_number']
             )
 
     def pages_reset(self, document_file=None):

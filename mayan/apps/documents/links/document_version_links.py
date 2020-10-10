@@ -3,19 +3,27 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.navigation.classes import Link
 
 from ..icons import (
-    icon_document_version_delete, icon_document_version_edit,
-    icon_document_version_list, icon_document_version_return_document,
-    icon_document_version_return_list, icon_document_version_preview
+    icon_document_version_create, icon_document_version_delete,
+    icon_document_version_edit, icon_document_version_list,
+    icon_document_version_return_document, icon_document_version_return_list,
+    icon_document_version_preview
 )
 from ..permissions import (
-    permission_document_version_delete, permission_document_version_edit,
-    permission_document_version_view, permission_document_view,
+    permission_document_version_create, permission_document_version_delete,
+    permission_document_version_edit, permission_document_version_view,
+    permission_document_view
 )
 
+link_document_version_create = Link(
+    args='resolved_object.pk', icon_class=icon_document_version_create,
+    permissions=(permission_document_version_create,),
+    text=_('Create document version'),
+    view='documents:document_version_create'
+)
 link_document_version_delete = Link(
     args='resolved_object.pk',
     icon_class=icon_document_version_delete,
-     permissions=(permission_document_version_delete,), tags='dangerous',
+    permissions=(permission_document_version_delete,), tags='dangerous',
     text=_('Delete'), view='documents:document_version_delete'
 )
 link_document_version_edit = Link(

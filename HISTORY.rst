@@ -59,3 +59,6 @@
   mirroring, web links apps.
 - Allow using staging folders for new document file uploads.
 - Add conditional source link highlighting.
+- Add document version create view and permission.
+- Add validation and test for repeated document version page numbers.
+- Improve page remap code and add annotated content object list support.

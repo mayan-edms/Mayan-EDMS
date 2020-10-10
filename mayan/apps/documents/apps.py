@@ -90,11 +90,10 @@ from .links.document_type_links import (
     link_document_type_setup
 )
 from .links.document_version_links import (
-    link_document_version_delete, link_document_version_edit,
-    link_document_version_list, link_document_version_multiple_delete,
-    link_document_version_return_list,
-    link_document_version_return_to_document,
-    link_document_version_preview
+    link_document_version_create, link_document_version_delete,
+    link_document_version_edit, link_document_version_list,
+    link_document_version_multiple_delete, link_document_version_return_list,
+    link_document_version_return_to_document, link_document_version_preview
 )
 from .links.document_version_page_links import (
     link_document_version_page_delete,
@@ -138,8 +137,9 @@ from .permissions import (
     permission_document_restore, permission_document_tools,
     permission_document_trash, permission_document_type_delete,
     permission_document_type_edit, permission_document_type_view,
-    permission_document_version_delete, permission_document_version_edit,
-    permission_document_version_view, permission_document_view
+    permission_document_version_create, permission_document_version_delete,
+    permission_document_version_edit, permission_document_version_view,
+    permission_document_view
 )
 from .signals import signal_post_file_upload
 from .statistics import *  # NOQA
@@ -316,9 +316,11 @@ class DocumentsApp(MayanAppConfig):
                 permission_document_properties_edit,
                 permission_document_restore, permission_document_tools,
                 permission_document_trash, permission_document_view,
-                permission_events_view, permission_transformation_create,
+                permission_document_version_create, permission_events_view,
+                permission_transformation_create,
                 permission_transformation_delete,
-                permission_transformation_edit, permission_transformation_view,
+                permission_transformation_edit,
+                permission_transformation_view
             )
         )
         ModelPermission.register(
@@ -330,7 +332,8 @@ class DocumentsApp(MayanAppConfig):
                 permission_document_file_view,
                 permission_events_view, permission_transformation_create,
                 permission_transformation_delete,
-                permission_transformation_edit, permission_transformation_view,
+                permission_transformation_edit,
+                permission_transformation_view
             )
         )
         ModelPermission.register(
@@ -347,7 +350,10 @@ class DocumentsApp(MayanAppConfig):
                 permission_document_version_delete,
                 permission_document_version_edit,
                 permission_document_version_view,
-                permission_events_view
+                permission_events_view, permission_transformation_create,
+                permission_transformation_delete,
+                permission_transformation_edit,
+                permission_transformation_view
             )
         )
 
@@ -672,6 +678,14 @@ class DocumentsApp(MayanAppConfig):
                 link_document_multiple_trash,
                 link_document_multiple_document_type_edit,
             ), sources=(Document,)
+        )
+
+        menu_secondary.bind_links(
+            links=(link_document_version_create,),
+            sources=(
+                'documents:document_version_create',
+                'documents:document_version_list'
+            )
         )
 
         # DocumentFile
