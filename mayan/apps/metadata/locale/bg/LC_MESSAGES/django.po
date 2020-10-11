@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-02 04:26+0000\n"
-"PO-Revision-Date: 2020-09-27 08:06+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-10-11 07:13+0000\n"
+"PO-Revision-Date: 2020-10-02 20:09+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -73,7 +73,7 @@ msgstr "ID"
 msgid "Name"
 msgstr "Име"
 
-#: forms.py:21 models.py:190 workflow_actions.py:92
+#: forms.py:21 models.py:190 workflow_actions.py:93
 msgid "Value"
 msgstr "Стойност"
 
@@ -105,7 +105,7 @@ msgid "Metadata types to be added to the selected documents."
 msgstr "Типове метаданни, които трябва да се добавят към избраните документи."
 
 #: forms.py:124 models.py:84 models.py:282 search.py:9 search.py:17
-#: workflow_actions.py:85
+#: workflow_actions.py:86
 msgid "Metadata type"
 msgstr "Тип метаданни"
 
@@ -133,20 +133,20 @@ msgstr "Етикет"
 msgid "Relationship"
 msgstr "Връзка"
 
-#: links.py:16 links.py:27 workflow_actions.py:29
+#: links.py:16 links.py:27 workflow_actions.py:30
 msgid "Add metadata"
 msgstr "Добавете метаданни"
 
-#: links.py:23 links.py:31 workflow_actions.py:103
+#: links.py:23 links.py:31 workflow_actions.py:104
 msgid "Edit metadata"
 msgstr "Редактиране на метаданни"
 
-#: links.py:35 links.py:41 workflow_actions.py:176
+#: links.py:35 links.py:41 workflow_actions.py:177
 msgid "Remove metadata"
 msgstr "Премахване на метаданните"
 
-#: links.py:53 links.py:81 models.py:85 views.py:573 workflow_actions.py:22
-#: workflow_actions.py:169
+#: links.py:53 links.py:81 models.py:85 views.py:573 workflow_actions.py:23
+#: workflow_actions.py:170
 msgid "Metadata types"
 msgstr "Типове метаданни"
 
@@ -182,7 +182,7 @@ msgstr "Кратко описание на този тип метаданни."
 
 #: models.py:57
 msgid "Enter a template to render."
-msgstr ""
+msgstr "Въведете шаблон за изобразяване."
 
 #: models.py:58 search.py:37
 msgid "Default"
@@ -190,7 +190,7 @@ msgstr "По подразбиране"
 
 #: models.py:62
 msgid "Enter a template to render. Must result in a comma delimited string."
-msgstr ""
+msgstr "Въведете шаблон за изобразяване. Трябва да доведе до низ, разделен със запетаи."
 
 #: models.py:64 search.py:40
 msgid "Lookup"
@@ -508,41 +508,41 @@ msgstr "Типове документи за тип метаданни: %s"
 msgid "Enter document metadata"
 msgstr "Въведете метаданни на документа"
 
-#: workflow_actions.py:24
+#: workflow_actions.py:25
 msgid "Metadata types to add to the document."
-msgstr ""
+msgstr "Типове метаданни, които да добавите към документа."
 
-#: workflow_actions.py:48
+#: workflow_actions.py:49
 #, python-format
 msgid ""
 "Unable to add metadata type \"%(metadata_type)s\" from document: "
 "%(document)s. Exception: %(exception)s"
-msgstr ""
+msgstr "Не може да се добави тип метаданни &quot;%(metadata_type)s&quot; от документ: %(document)s. Изключение: %(exception)s"
 
-#: workflow_actions.py:87
+#: workflow_actions.py:88
 msgid "Metadata types to edit."
-msgstr ""
+msgstr "Типове метаданни за редактиране."
 
-#: workflow_actions.py:95
+#: workflow_actions.py:96
 msgid ""
 "Value to assign to the metadata. Can be a literal value or template code."
-msgstr ""
+msgstr "Стойност, която да се присвои на метаданните. Може да бъде буквална стойност или код на шаблон."
 
-#: workflow_actions.py:127
+#: workflow_actions.py:128
 #, python-format
 msgid ""
 "Unable to edit metadata type \"%(metadata_type)s\" from document: "
 "%(document)s. Document does not have the metadata type to be edit. "
 "Exception: %(exception)s"
-msgstr ""
+msgstr "Не можете да редактирате тип метаданни &quot;%(metadata_type)s&quot; от документ: %(document)s. Документът няма типа метаданни за редактиране. Изключение: %(exception)s"
 
-#: workflow_actions.py:171
+#: workflow_actions.py:172
 msgid "Metadata types to remove from the document."
-msgstr ""
+msgstr "Типове метаданни за премахване от документа."
 
-#: workflow_actions.py:191
+#: workflow_actions.py:192
 #, python-format
 msgid ""
 "Unable to remove metadata type \"%(metadata_type)s\" from document: "
 "%(document)s. Exception: %(exception)s"
-msgstr ""
+msgstr "Невъзможно е да се премахнат метаданни тип &quot;%(metadata_type)s&quot; от документ: %(document)s. Изключение: %(exception)s"

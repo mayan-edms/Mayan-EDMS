@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-02 04:26+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-10-11 07:13+0000\n"
+"PO-Revision-Date: 2020-10-02 20:14+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,7 +27,7 @@ msgstr "OCR"
 
 #: apps.py:103
 msgid "The OCR content."
-msgstr ""
+msgstr "Съдържанието на OCR."
 
 #: apps.py:108
 msgid "A generator returning the document's pages OCR content."
@@ -164,11 +164,11 @@ msgstr "Промяна на настройките на OCR за типа док
 
 #: queues.py:10
 msgid "Finish document version OCR"
-msgstr ""
+msgstr "Завършете OCR на версията на документа"
 
 #: queues.py:14
 msgid "Document version page OCR"
-msgstr ""
+msgstr "OCR на страница с версия на документа"
 
 #: queues.py:18
 msgid "Document version OCR"
@@ -225,7 +225,7 @@ msgstr "Редактиране на настройките на OCR за тип�
 
 #: workflow_actions.py:15
 msgid "Page condition"
-msgstr ""
+msgstr "Състояние на страницата"
 
 #: workflow_actions.py:19
 msgid ""
@@ -234,16 +234,16 @@ msgid ""
 "page. Conditions that do not return any value, that return the Python "
 "logical None, or an empty string ('') are considered to be logical false, "
 "any other value is considered to be the logical true."
-msgstr ""
+msgstr "Състоянието, което ще определи дали съдържанието на OCR на страница на документ ще бъде променено или не. Условието се оценява спрямо итерираната страница на документа. Условия, които не връщат никаква стойност, които връщат Python логически None, или празен низ (&#39;&#39;) се считат за логически false, всяка друга стойност се счита за логически true."
 
 #: workflow_actions.py:31
 msgid "Page content"
-msgstr ""
+msgstr "Съдържание на страницата"
 
 #: workflow_actions.py:35
 msgid "A template that will generate the OCR content to be saved."
-msgstr ""
+msgstr "Шаблон, който ще генерира OCR съдържание, което ще бъде запазено."
 
 #: workflow_actions.py:43
 msgid "Update document page OCR content"
-msgstr ""
+msgstr "Актуализиране на съдържанието на OCR на страницата на документа"

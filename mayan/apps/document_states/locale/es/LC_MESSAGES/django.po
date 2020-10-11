@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-02 04:26+0000\n"
+"POT-Creation-Date: 2020-10-11 07:13+0000\n"
 "PO-Revision-Date: 2020-09-27 07:04+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
@@ -145,32 +145,32 @@ msgstr "El tipo de acción para esta entrada de acción."
 msgid "Action"
 msgstr "Acción"
 
-#: forms.py:134
+#: forms.py:133
 msgid "Namespace"
 msgstr "Categoría"
 
-#: forms.py:138 models.py:67 models.py:555 models.py:658 models.py:779
+#: forms.py:137 models.py:67 models.py:555 models.py:658 models.py:779
 #: models.py:877
 msgid "Label"
 msgstr "Etiqueta"
 
-#: forms.py:142 models.py:660
+#: forms.py:141 models.py:660
 msgid "Enabled"
 msgstr "Habilitado"
 
-#: forms.py:144
+#: forms.py:143
 msgid "No"
 msgstr "No"
 
-#: forms.py:145
+#: forms.py:144
 msgid "Yes"
 msgstr "Si"
 
-#: forms.py:195
+#: forms.py:194
 msgid "Select a transition to execute in the next step."
 msgstr "Seleccione una transición para ejecutar en el siguiente paso."
 
-#: forms.py:196 links.py:218 models.py:463 models.py:863 models.py:942
+#: forms.py:195 links.py:218 models.py:463 models.py:863 models.py:942
 msgid "Transition"
 msgstr "Transición"
 
@@ -780,7 +780,7 @@ msgid "Documents in the workflow \"%s\", state \"%s\""
 msgstr "Documentos en el flujo de trabajo \"%s\", estado \"%s\""
 
 #: views/workflow_proxy_views.py:121
-#: views/workflow_template_state_views.py:327
+#: views/workflow_template_state_views.py:324
 msgid "Create states and link them using transitions."
 msgstr "Crea estados y vincúlalos usando transiciones."
 
@@ -789,7 +789,7 @@ msgid "This workflow doesn't have any state"
 msgstr "Este flujo de trabajo no tiene ningún estado"
 
 #: views/workflow_proxy_views.py:127
-#: views/workflow_template_state_views.py:333
+#: views/workflow_template_state_views.py:330
 #, python-format
 msgid "States of workflow: %s"
 msgstr "Estados del flujo de trabajo: %s"
@@ -824,26 +824,26 @@ msgstr "No hay acciones para este estado de flujo de trabajo"
 msgid "Actions for workflow state: %s"
 msgstr "Acciones para el estado de flujo de trabajo: %s"
 
-#: views/workflow_template_state_views.py:204
+#: views/workflow_template_state_views.py:201
 msgid "New workflow state action selection"
 msgstr "Nueva selección de acción de estado de flujo de trabajo"
 
-#: views/workflow_template_state_views.py:231
+#: views/workflow_template_state_views.py:228
 #, python-format
 msgid "Create states for workflow: %s"
 msgstr "Crear estados para el flujo de trabajo: %s"
 
-#: views/workflow_template_state_views.py:264
+#: views/workflow_template_state_views.py:261
 #, python-format
 msgid "Delete workflow state: %s?"
 msgstr "Eliminar el estado del flujo de trabajo: %s?"
 
-#: views/workflow_template_state_views.py:294
+#: views/workflow_template_state_views.py:291
 #, python-format
 msgid "Edit workflow state: %s"
 msgstr "Editar el estado del flujo de trabajo: %s"
 
-#: views/workflow_template_state_views.py:330
+#: views/workflow_template_state_views.py:327
 msgid "This workflow doesn't have any states"
 msgstr "Este flujo de trabajo no tiene ningún estado"
 

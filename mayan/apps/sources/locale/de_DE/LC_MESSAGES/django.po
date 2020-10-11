@@ -19,8 +19,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-02 04:26+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
+"POT-Creation-Date: 2020-10-11 07:13+0000\n"
+"PO-Revision-Date: 2020-10-11 07:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
@@ -29,8 +29,8 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:48 links.py:56 models/base.py:37 queues.py:7 settings.py:11
-#: views.py:192
+#: apps.py:48 links.py:63 models/base.py:36 queues.py:7 settings.py:11
+#: views.py:193
 msgid "Sources"
 msgstr "Quellen"
 
@@ -79,7 +79,7 @@ msgstr "Komprimierte Dateien entpacken"
 msgid "Upload a compressed file's contained files as individual documents."
 msgstr "Ein komprimiertes Archiv hochladen, das einzelne Dokumente enthält."
 
-#: forms.py:63 views.py:204
+#: forms.py:63 views.py:205
 msgid "Staging file"
 msgstr "Staging-Datei"
 
@@ -91,51 +91,51 @@ msgstr "Datei"
 msgid "Default"
 msgstr "Standard"
 
-#: links.py:51
+#: links.py:58
 msgid "New document"
 msgstr "Neues Dokument"
 
-#: links.py:63
+#: links.py:70
 msgid "Add new IMAP email"
 msgstr "Neue IMAP Quelle hinzufügen"
 
-#: links.py:69
+#: links.py:76
 msgid "Add new POP3 email"
 msgstr "Neue POP3 Quelle hinzufügen"
 
-#: links.py:75
+#: links.py:82
 msgid "Add new staging folder"
 msgstr "Neuen Staging-Ordner hinzufügen"
 
-#: links.py:81
+#: links.py:88
 msgid "Add new watch folder"
 msgstr "Neuen Beobachtungs-Ordner hinzufügen"
 
-#: links.py:87
+#: links.py:94
 msgid "Add new webform source"
 msgstr "Neue Quelle für Webformular hinzufügen"
 
-#: links.py:93
+#: links.py:100
 msgid "Add new SANE scanner"
 msgstr "Neuen SANE Scanner hinzufügen"
 
-#: links.py:99 links.py:116
+#: links.py:106 links.py:123
 msgid "Delete"
 msgstr "Löschen"
 
-#: links.py:104
+#: links.py:111
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: links.py:109
+#: links.py:116
 msgid "Document sources"
 msgstr "Dokumentenquelle"
 
-#: links.py:123
+#: links.py:130
 msgid "Upload new version"
 msgstr "Neue Version hochladen"
 
-#: links.py:128
+#: links.py:135
 msgid "Check now"
 msgstr "Jetzt prüfen"
 
@@ -203,64 +203,64 @@ msgstr "POP3"
 msgid "IMAP email"
 msgstr "IMAP"
 
-#: models/base.py:27
+#: models/base.py:26
 msgid "A short text to describe this source."
 msgstr "Ein kurzer Text zur Beschreibung dieser Quelle."
 
-#: models/base.py:28
+#: models/base.py:27
 msgid "Label"
 msgstr "Bezeichner"
 
-#: models/base.py:30
+#: models/base.py:29
 msgid "Enabled"
 msgstr "Aktiviert"
 
-#: models/base.py:36
+#: models/base.py:35
 msgid "Source"
 msgstr "Quelle"
 
-#: models/base.py:152
+#: models/base.py:151
 msgid "Interactive source"
 msgstr "Interaktive Quelle"
 
-#: models/base.py:153
+#: models/base.py:152
 msgid "Interactive sources"
 msgstr "Interaktive Quellen"
 
-#: models/base.py:162 models/base.py:163
+#: models/base.py:161 models/base.py:162
 msgid "Out of process"
 msgstr "Außer Kontrolle"
 
-#: models/base.py:169
+#: models/base.py:168
 msgid "Interval in seconds between checks for new documents."
 msgstr "Intervall in Sekunden zwischen den Überprüfungen auf neue Dokumente."
 
-#: models/base.py:170
+#: models/base.py:169
 msgid "Interval"
 msgstr "Intervall"
 
-#: models/base.py:174
+#: models/base.py:173
 msgid "Assign a document type to documents uploaded from this source."
 msgstr "Ordnen Sie einen Dokumententyp für Dokumente aus dieser Quelle zu."
 
-#: models/base.py:176 serializers.py:17
+#: models/base.py:175 serializers.py:17
 msgid "Document type"
 msgstr "Dokumententyp"
 
-#: models/base.py:180
+#: models/base.py:179
 msgid "Whether to expand or not, compressed archives."
 msgstr "Ob komprimierte Archive entpackt werden sollen."
 
-#: models/base.py:181 models/staging_folder_sources.py:54
+#: models/base.py:180 models/staging_folder_sources.py:54
 #: models/webform_sources.py:34
 msgid "Uncompress"
 msgstr "Entpacken"
 
-#: models/base.py:187
+#: models/base.py:186
 msgid "Interval source"
 msgstr "Intarvall Quelle"
 
-#: models/base.py:188
+#: models/base.py:187
 msgid "Interval sources"
 msgstr "Intarvall Quellen"
 
@@ -612,11 +612,6 @@ msgstr "Der Image-Speicher für die Stagingordner-Dateien konnte nicht initialis
 msgid "Staging folder files"
 msgstr "Stagingordner-Dateien"
 
-#: tasks.py:49
-#, python-format
-msgid "Error processing source: %s"
-msgstr "Fehler bei der Verarbeitung der Quelle %s"
-
 #: templates/sources/dropzone.html:82
 msgid "Cancel upload"
 msgstr "Hochladen abbrechen"
@@ -645,7 +640,7 @@ msgstr "Löschen"
 msgid "Server responded with {{statusCode}} code."
 msgstr "Der Server antwortete mit Code {{statusCode}}."
 
-#: views.py:69
+#: views.py:70
 msgid ""
 "This will execute the source check code even if the source is not enabled. "
 "Sources that delete content after downloading will not do so while being "
@@ -653,31 +648,31 @@ msgid ""
 "successful test will clear the error log."
 msgstr "Führt den Quellenüberprüfungscode aus, selbst wenn die Quelle nicht aktiviert ist. Quellen, die Dokumente nach dem Herunterladen löschen werden, werden das im Testmodus nicht tun. Überprüfen Sie das Fehlerprotokoll währen der Testperiode. Ein erfolgreicher Test leert das Fehlerprotokoll."
 
-#: views.py:75
+#: views.py:76
 #, python-format
 msgid "Trigger check for source \"%s\"?"
 msgstr "Überprüfung anstoßen für Quelle \"%s\"?"
 
-#: views.py:87
+#: views.py:88
 msgid "Source check queued."
 msgstr "Quellenüberprüfung vorgemerkt."
 
-#: views.py:101
+#: views.py:102
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "Quelle des Typs %s erstellen"
 
-#: views.py:124
+#: views.py:125
 #, python-format
 msgid "Delete the source: %s?"
 msgstr "Quelle %s wirklich löschen?"
 
-#: views.py:146
+#: views.py:147
 #, python-format
 msgid "Edit source: %s"
 msgstr "Quelle %s bearbeiten"
 
-#: views.py:186
+#: views.py:187
 msgid ""
 "Sources provide the means to upload documents. Some sources like the "
 "webform, are interactive and require user input to operate. Others like the "
@@ -685,11 +680,11 @@ msgid ""
 "intervention."
 msgstr "Quellen stellen die Mittel für das Hochladen von Dokumenten bereit. Einige Quellen wie z.B. das Webformular sind interaktiv und erfordern Benutzereingaben. Andere wie z.B. E-Mail-Quellen arbeiten automatisch und laufen ohne Benutzereingriff im Hintergrund."
 
-#: views.py:191
+#: views.py:192
 msgid "No sources available"
 msgstr "Keine Quellen verfügbar"
 
-#: views.py:205
+#: views.py:206
 #, python-format
 msgid "Delete staging file \"%s\"?"
 msgstr "Staging-Datei \"%s\" löschen?"
@@ -751,12 +746,12 @@ msgstr "Fehler beim Hochladen der neuen Dokumentversion; %(exception)s"
 msgid "New document version queued for upload and will be available shortly."
 msgstr "Das neue Dokument wurde in die Warteschlange eingestellt und wird in Kürze verfügbar sein."
 
-#: views.py:646
+#: views.py:654
 #, python-format
 msgid "Upload a new version for document \"%(document)s\" from source: %(source)s"
 msgstr "Hochladen einer neuen Version für das Dokument \"%(document)s\" aus Quelle %(source)s"
 
-#: views.py:649
+#: views.py:657
 msgid "Submit"
 msgstr "Absenden"
 

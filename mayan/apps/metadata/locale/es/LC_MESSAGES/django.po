@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-02 04:26+0000\n"
+"POT-Creation-Date: 2020-10-11 07:13+0000\n"
 "PO-Revision-Date: 2020-09-27 08:09+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
@@ -75,7 +75,7 @@ msgstr "ID"
 msgid "Name"
 msgstr "Nombre"
 
-#: forms.py:21 models.py:190 workflow_actions.py:92
+#: forms.py:21 models.py:190 workflow_actions.py:93
 msgid "Value"
 msgstr "Valor"
 
@@ -107,7 +107,7 @@ msgid "Metadata types to be added to the selected documents."
 msgstr "Tipos de metadatos que se añadirán a los documentos seleccionados."
 
 #: forms.py:124 models.py:84 models.py:282 search.py:9 search.py:17
-#: workflow_actions.py:85
+#: workflow_actions.py:86
 msgid "Metadata type"
 msgstr "Tipo de metadato"
 
@@ -135,20 +135,20 @@ msgstr "Etiqueta"
 msgid "Relationship"
 msgstr "Relación"
 
-#: links.py:16 links.py:27 workflow_actions.py:29
+#: links.py:16 links.py:27 workflow_actions.py:30
 msgid "Add metadata"
 msgstr "Añadir metadatos"
 
-#: links.py:23 links.py:31 workflow_actions.py:103
+#: links.py:23 links.py:31 workflow_actions.py:104
 msgid "Edit metadata"
 msgstr "Editar metadatos"
 
-#: links.py:35 links.py:41 workflow_actions.py:176
+#: links.py:35 links.py:41 workflow_actions.py:177
 msgid "Remove metadata"
 msgstr "Remover metadatos"
 
-#: links.py:53 links.py:81 models.py:85 views.py:573 workflow_actions.py:22
-#: workflow_actions.py:169
+#: links.py:53 links.py:81 models.py:85 views.py:573 workflow_actions.py:23
+#: workflow_actions.py:170
 msgid "Metadata types"
 msgstr "Tipos de metadatos"
 
@@ -510,27 +510,27 @@ msgstr "Tipos de documentos para el tipo de metadatos: %s"
 msgid "Enter document metadata"
 msgstr "Ingrese los metadatos del documento"
 
-#: workflow_actions.py:24
+#: workflow_actions.py:25
 msgid "Metadata types to add to the document."
 msgstr "Tipos de metadatos para agregar al documento."
 
-#: workflow_actions.py:48
+#: workflow_actions.py:49
 #, python-format
 msgid ""
 "Unable to add metadata type \"%(metadata_type)s\" from document: "
 "%(document)s. Exception: %(exception)s"
 msgstr "No se puede agregar el tipo de metadatos \"%(metadata_type)s\" del documento: %(document)s. Excepción: %(exception)s"
 
-#: workflow_actions.py:87
+#: workflow_actions.py:88
 msgid "Metadata types to edit."
 msgstr "Tipos de metadatos para editar."
 
-#: workflow_actions.py:95
+#: workflow_actions.py:96
 msgid ""
 "Value to assign to the metadata. Can be a literal value or template code."
 msgstr "Valor a asignar a los metadatos. Puede ser un valor literal o un código de plantilla."
 
-#: workflow_actions.py:127
+#: workflow_actions.py:128
 #, python-format
 msgid ""
 "Unable to edit metadata type \"%(metadata_type)s\" from document: "
@@ -538,11 +538,11 @@ msgid ""
 "Exception: %(exception)s"
 msgstr "No se puede editar el tipo de metadatos \"%(metadata_type)s\" del documento: %(document)s. El documento no tiene el tipo de metadatos para editar. Excepción: %(exception)s"
 
-#: workflow_actions.py:171
+#: workflow_actions.py:172
 msgid "Metadata types to remove from the document."
 msgstr "Tipos de metadatos para eliminar del documento."
 
-#: workflow_actions.py:191
+#: workflow_actions.py:192
 #, python-format
 msgid ""
 "Unable to remove metadata type \"%(metadata_type)s\" from document: "

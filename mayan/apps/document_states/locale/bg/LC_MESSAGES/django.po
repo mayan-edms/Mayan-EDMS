@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-02 04:26+0000\n"
-"PO-Revision-Date: 2020-09-27 06:46+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-10-11 07:13+0000\n"
+"PO-Revision-Date: 2020-10-02 19:49+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -144,32 +144,32 @@ msgstr "Тип действие за този запис."
 msgid "Action"
 msgstr "Действие"
 
-#: forms.py:134
+#: forms.py:133
 msgid "Namespace"
 msgstr "Именно пространство"
 
-#: forms.py:138 models.py:67 models.py:555 models.py:658 models.py:779
+#: forms.py:137 models.py:67 models.py:555 models.py:658 models.py:779
 #: models.py:877
 msgid "Label"
 msgstr "Етикет"
 
-#: forms.py:142 models.py:660
+#: forms.py:141 models.py:660
 msgid "Enabled"
 msgstr "Активиран"
 
-#: forms.py:144
+#: forms.py:143
 msgid "No"
 msgstr "Не"
 
-#: forms.py:145
+#: forms.py:144
 msgid "Yes"
 msgstr "Да"
 
-#: forms.py:195
+#: forms.py:194
 msgid "Select a transition to execute in the next step."
 msgstr "Изберете преход за изпълнение на следващ етап."
 
-#: forms.py:196 links.py:218 models.py:463 models.py:863 models.py:942
+#: forms.py:195 links.py:218 models.py:463 models.py:863 models.py:942
 msgid "Transition"
 msgstr "Преход"
 
@@ -232,7 +232,7 @@ msgstr "Преходи"
 
 #: links.py:165 links.py:171 workflow_actions.py:83
 msgid "Launch workflows"
-msgstr ""
+msgstr "Стартиране на работни потоци"
 
 #: links.py:177
 msgid "Create field"
@@ -280,11 +280,11 @@ msgstr "На излизане"
 
 #: models.py:55
 msgid "Launch workflow when document is created."
-msgstr ""
+msgstr "Стартирайте работния поток, когато е създаден документ."
 
 #: models.py:56
 msgid "Auto launch"
-msgstr ""
+msgstr "Автоматично стартиране"
 
 #: models.py:60
 msgid ""
@@ -586,7 +586,7 @@ msgstr "Бързо избиране състояния на документа"
 
 #: queues.py:15
 msgid "Launch all workflows for all documents"
-msgstr ""
+msgstr "Стартирайте всички работни потоци за всички документи"
 
 #: queues.py:19
 msgid "Launch a workflow"
@@ -594,11 +594,11 @@ msgstr "Стартира работен поток"
 
 #: queues.py:23
 msgid "Launch a workflow for a document"
-msgstr ""
+msgstr "Стартирайте работен поток за документ"
 
 #: queues.py:27
 msgid "Launch all workflows for a document"
-msgstr ""
+msgstr "Стартирайте всички работни потоци за документ"
 
 #: queues.py:31
 msgid "Generate workflow previews"
@@ -695,7 +695,7 @@ msgstr "Задайте работни потоци към типа на доку
 
 #: views/workflow_instance_views.py:35
 msgid "There are no workflows for this document"
-msgstr ""
+msgstr "За този документ няма работни потоци"
 
 #: views/workflow_instance_views.py:39
 #, python-format
@@ -779,7 +779,7 @@ msgid "Documents in the workflow \"%s\", state \"%s\""
 msgstr "Документи в работния поток &quot;%s&quot;, състояние &quot;%s&quot;"
 
 #: views/workflow_proxy_views.py:121
-#: views/workflow_template_state_views.py:327
+#: views/workflow_template_state_views.py:324
 msgid "Create states and link them using transitions."
 msgstr "Създайте състояния и ги свържете с помощта на преходи."
 
@@ -788,7 +788,7 @@ msgid "This workflow doesn't have any state"
 msgstr "Този работен поток няма състояние"
 
 #: views/workflow_proxy_views.py:127
-#: views/workflow_template_state_views.py:333
+#: views/workflow_template_state_views.py:330
 #, python-format
 msgid "States of workflow: %s"
 msgstr "Състояния на работния поток: %s"
@@ -823,26 +823,26 @@ msgstr "За това състояние на работния поток ням
 msgid "Actions for workflow state: %s"
 msgstr "Действия за състояние на работния поток: %s"
 
-#: views/workflow_template_state_views.py:204
+#: views/workflow_template_state_views.py:201
 msgid "New workflow state action selection"
 msgstr "Избор на ново действие за състояние на работен поток"
 
-#: views/workflow_template_state_views.py:231
+#: views/workflow_template_state_views.py:228
 #, python-format
 msgid "Create states for workflow: %s"
 msgstr "Създайте състояния за работен поток: %s"
 
-#: views/workflow_template_state_views.py:264
+#: views/workflow_template_state_views.py:261
 #, python-format
 msgid "Delete workflow state: %s?"
 msgstr "Изтриване на състояние на работен поток: %s?"
 
-#: views/workflow_template_state_views.py:294
+#: views/workflow_template_state_views.py:291
 #, python-format
 msgid "Edit workflow state: %s"
 msgstr "Редактиране на състояние на работен поток: %s"
 
-#: views/workflow_template_state_views.py:330
+#: views/workflow_template_state_views.py:327
 msgid "This workflow doesn't have any states"
 msgstr "Този работен поток няма състояния"
 
@@ -948,58 +948,58 @@ msgstr "Работни потоци прикачени към този тип д
 #: views/workflow_template_views.py:95
 #, python-format
 msgid "Workflows launched for %(count)d document"
-msgstr ""
+msgstr "Стартирани работни потоци за %(count)dдокумент"
 
 #: views/workflow_template_views.py:96
 #, python-format
 msgid "Workflows launched for %(count)d documents"
-msgstr ""
+msgstr "Стартирани работни потоци за %(count)dдокументи"
 
 #: views/workflow_template_views.py:100
 msgid "Launch"
-msgstr ""
+msgstr "Стартиране"
 
 #: views/workflow_template_views.py:102
 msgid ""
 "Workflows already launched or workflows not applicable to some documents "
 "when multiple documents are selected, will be silently ignored."
-msgstr ""
+msgstr "Вече стартираните работни потоци или работните потоци, които не са приложими за някои документи, когато са избрани множество документи, ще бъдат тихо игнорирани."
 
 #: views/workflow_template_views.py:107
 #, python-format
 msgid "Launch selected workflows for %(count)d document"
 msgid_plural "Launch selected workflows for %(count)d documents"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Стартирайте избрани работни потоци за документ %(count)d"
+msgstr[1] "Стартирайте избрани работни потоци за%(count)dдокументи"
 
 #: views/workflow_template_views.py:120
 #, python-format
 msgid "Launch selected workflows for document: %s"
-msgstr ""
+msgstr "Стартиране на избрани работни потоци за документ: %s"
 
 #: views/workflow_template_views.py:133
 msgid "Workflows to be launched."
-msgstr ""
+msgstr "Работни потоци, които ще бъдат стартирани."
 
 #: views/workflow_template_views.py:175
 #, python-format
 msgid "Delete request performed on %(count)d workflow"
-msgstr ""
+msgstr "Изтриване на заявка, изпълнена в %(count)dработен поток"
 
 #: views/workflow_template_views.py:177
 #, python-format
 msgid "Delete request performed on %(count)d workflows"
-msgstr ""
+msgstr "Изтриване на заявка, извършена за%(count)dработни потока"
 
 #: views/workflow_template_views.py:183
 msgid "All workflow instances will also be deleted."
-msgstr ""
+msgstr "Всички екземпляри на работния поток също ще бъдат изтрити."
 
 #: views/workflow_template_views.py:185
 msgid "Delete the selected workflow?"
 msgid_plural "Delete the selected workflows?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Да се изтрие ли избраният работен процес?"
+msgstr[1] "Да се изтрият ли избраните работни потоци?"
 
 #: views/workflow_template_views.py:195
 #, python-format
@@ -1009,12 +1009,12 @@ msgstr "Изтриване на работния поток: %s?"
 #: views/workflow_template_views.py:206
 #, python-format
 msgid "Workflow \"%s\" deleted successfully."
-msgstr ""
+msgstr "Работен поток &quot;%s&quot; беше изтрит успешно."
 
 #: views/workflow_template_views.py:211
 #, python-format
 msgid "Error deleting workflow \"%(workflow)s\": %(error)s"
-msgstr ""
+msgstr "Грешка при изтриването на работния поток„%(workflow)s“: %(error)s"
 
 #: views/workflow_template_views.py:229
 #, python-format
@@ -1103,7 +1103,7 @@ msgstr "Промяна на свойствата на документа"
 
 #: workflow_actions.py:77
 msgid "Additional workflows to launch for the document."
-msgstr ""
+msgstr "Допълнителни работни потоци за стартиране на документа."
 
 #: workflow_actions.py:116
 msgid "URL"

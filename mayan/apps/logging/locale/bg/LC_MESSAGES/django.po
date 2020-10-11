@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-02 04:26+0000\n"
+"POT-Creation-Date: 2020-10-11 07:13+0000\n"
 "PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2020\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: apps.py:15 permissions.py:5 settings.py:10
 msgid "Logging"
-msgstr ""
+msgstr "Регистрация"
 
 #: links.py:12
 msgid "Errors"
@@ -30,7 +30,7 @@ msgstr "Грешки"
 
 #: links.py:18
 msgid "Clear errors"
-msgstr ""
+msgstr "Изчистване на грешки"
 
 #: models.py:10 models.py:38
 msgid "Internal name"
@@ -38,23 +38,23 @@ msgstr "Вътрешно име"
 
 #: models.py:15 models.py:35
 msgid "Error log"
-msgstr ""
+msgstr "Дневник на грешките"
 
 #: models.py:16
 msgid "Error logs"
-msgstr ""
+msgstr "Дневници за грешки"
 
 #: models.py:25
 msgid "App label"
-msgstr ""
+msgstr "Етикет на приложението"
 
 #: models.py:43 models.py:60
 msgid "Error log partition"
-msgstr ""
+msgstr "Дял на дневника за грешки"
 
 #: models.py:44
 msgid "Error log partitions"
-msgstr ""
+msgstr "Дялове в дневника за грешки"
 
 #: models.py:63
 msgid "Date and time"
@@ -62,15 +62,15 @@ msgstr "Дата и час"
 
 #: models.py:65
 msgid "Text"
-msgstr ""
+msgstr "Текст"
 
 #: models.py:70
 msgid "Error log partition entry"
-msgstr ""
+msgstr "Запис на дял в дневника за грешки"
 
 #: models.py:71
 msgid "Error log partition entries"
-msgstr ""
+msgstr "Записи в дял на дневника за грешки"
 
 #: permissions.py:8
 msgid "View error log"
@@ -84,10 +84,12 @@ msgstr "Автоматично активиране на регистрация�
 msgid ""
 "List of handlers to which logging messages will be sent. Options are: {}"
 msgstr ""
+"Списък на манипулаторите, на които ще бъдат изпратени съобщения за "
+"регистриране. Опциите са: {}"
 
 #: settings.py:26
 msgid "Level for the logging system."
-msgstr ""
+msgstr "Ниво за регистрационната система."
 
 #: settings.py:32
 msgid "Path to the logfile that will track errors during production."
