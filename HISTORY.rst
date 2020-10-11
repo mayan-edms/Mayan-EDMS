@@ -2,6 +2,10 @@
 ==================
 - Update xmlrpc to latest interface to fix version check view.
 - Fix sources error logging interface and double logging.
+- Add locking to ErrorLog to ensure only one is created per app.
+- Add self healing to ErrorLog .model property to remove repeated entries.
+  GitLab issue #894. Thanks to forum user @Lffy for the report.
+  https://forum.mayan-edms.com/viewtopic.php?t=4027
 
 3.5 (2020-09-30)
 ================
@@ -254,7 +258,7 @@
   Makes the OCR migration dependent on the documents app migration.
   This allows disabling the OCR app.
 - Remove the transaction block when creating documents.
-  This allows document stubs to be accessible from within 
+  This allows document stubs to be accessible from within
   signal handlers.
 - Update GitLab CI Docker build and test stage to run using
   a PostgreSQL database and a Redis container.
