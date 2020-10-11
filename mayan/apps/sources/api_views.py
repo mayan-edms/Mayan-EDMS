@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 
@@ -102,8 +103,14 @@ class APIStagingSourceFileImageView(generics.RetrieveAPIView):
             )
         )
 
-        cache_filename = task.get(timeout=STAGING_FILE_IMAGE_TASK_TIMEOUT)
+        kwargs = {'timeout': STAGING_FILE_IMAGE_TASK_TIMEOUT}
+        if settings.DEBUG:
+            # In debug more, task are run synchronously, causing this method
+            # to be called inside another task. Disable the check of nested
+            # tasks when using debug mode.
+            kwargs['disable_sync_subtasks'] = False
 
+        cache_filename = task.get(**kwargs)
         storage_staging_file_image_cache = DefinedStorage.get(
             name=STORAGE_NAME_SOURCE_STAGING_FOLDER_FILE
         ).get_storage_instance()
