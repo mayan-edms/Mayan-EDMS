@@ -1,4 +1,4 @@
-3.5.1 (2020-10-XX)
+3.5.1 (2020-10-11)
 ==================
 - Update xmlrpc to latest interface to fix version check view.
 - Fix sources error logging interface and double logging.
