@@ -641,20 +641,30 @@ class DocumentVersionUploadInteractiveView(UploadBaseView):
         context = super(
             DocumentVersionUploadInteractiveView, self
         ).get_context_data(**kwargs)
-        context['object'] = self.document
-        context['title'] = _(
-            'Upload a new version for document "%(document)s" '
-            'from source: %(source)s'
-        ) % {'document': self.document, 'source': self.source.label}
-        context['submit_label'] = _('Submit')
-        context['form_css_classes'] = 'dropzone'
-        context['form_disable_submit'] = True
-        context['form_action'] = '{}?{}'.format(
-            reverse(
-                viewname=self.request.resolver_match.view_name,
-                kwargs=self.request.resolver_match.kwargs
-            ), self.request.META['QUERY_STRING']
+        context.update(
+            {
+                'form_action': '{}?{}'.format(
+                    reverse(
+                        viewname=self.request.resolver_match.view_name,
+                        kwargs=self.request.resolver_match.kwargs
+                    ), self.request.META['QUERY_STRING']
+                ),
+                'object': self.document,
+                'title': _(
+                    'Upload a new version for document "%(document)s" '
+                    'from source: %(source)s'
+                ) % {'document': self.document, 'source': self.source.label},
+                'submit_label': _('Submit')
+            }
         )
+
+        if not isinstance(self.source, StagingFolderSource) and not isinstance(self.source, SaneScanner):
+            context.update(
+                {
+                    'form_css_classes': 'dropzone',
+                    'form_disable_submit': True
+                }
+            )
 
         return context
 

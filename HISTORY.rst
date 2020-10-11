@@ -9,6 +9,8 @@
 - Fix staging folder file get_image method.
 - Suppress staging folder file image tasks dependency errors on debug mode.
 - Backport source link highlighting improvements from version 4.0.
+- Backport support for using staging folders as sources for new document
+  versions.
 
 3.5 (2020-09-30)
 ================
