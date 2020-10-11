@@ -1,7 +1,6 @@
 import json
 import logging
 
-from django.conf import settings
 from django.db import models, transaction
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
@@ -10,7 +9,7 @@ from django_celery_beat.models import PeriodicTask, IntervalSchedule
 from model_utils.managers import InheritanceManager
 
 from mayan.apps.converter.layers import layer_saved_transformations
-from mayan.apps.documents.models import Document, DocumentType
+from mayan.apps.documents.models import DocumentType
 from mayan.apps.storage.compressed_files import Archive
 from mayan.apps.storage.exceptions import NoMIMETypeMatch
 
