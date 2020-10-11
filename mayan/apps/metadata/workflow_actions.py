@@ -7,8 +7,9 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.document_states.classes import WorkflowAction
 from mayan.apps.document_states.exceptions import WorkflowStateActionError
-from mayan.apps.metadata.models import DocumentMetadata, MetadataType
-from mayan.apps.metadata.permissions import (
+
+from .models import DocumentMetadata, MetadataType
+from .permissions import (
     permission_document_metadata_add, permission_document_metadata_remove,
     permission_document_metadata_edit
 )
