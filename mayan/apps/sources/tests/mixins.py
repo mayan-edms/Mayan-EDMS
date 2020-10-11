@@ -219,6 +219,13 @@ class SourceViewTestMixin:
             }
         )
 
+    def _request_setup_source_check_post_view(self):
+        return self.post(
+            viewname='sources:setup_source_check', kwargs={
+                'source_id': self.test_source.pk
+            }
+        )
+
     def _request_setup_source_create_view(self):
         return self.post(
             kwargs={
@@ -248,6 +255,14 @@ class SourceViewTestMixin:
 
 
 class WatchFolderTestMixin:
+    def setUp(self):
+        super().setUp()
+        self.temporary_directory = mkdtemp()
+
+    def tearDown(self):
+        shutil.rmtree(self.temporary_directory)
+        super().tearDown()
+
     def _create_test_watchfolder(self):
         self.test_watch_folder = WatchFolderSource.objects.create(
             document_type=self.test_document_type,

@@ -218,8 +218,7 @@ class IntervalBaseModel(OutOfProcessSource):
                     exception.__class__.__name__, exception
                 )
             )
-            if settings.DEBUG:
-                raise
+            raise
         else:
             self.error_log.all().delete()
 

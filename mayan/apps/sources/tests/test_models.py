@@ -281,14 +281,6 @@ class IMAPSourceTestCase(GenericDocumentTestCase):
 class IntervalSourceTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
     auto_upload_test_document = False
 
-    def setUp(self):
-        super(IntervalSourceTestCase, self).setUp()
-        self.temporary_directory = mkdtemp()
-
-    def tearDown(self):
-        shutil.rmtree(self.temporary_directory)
-        super(IntervalSourceTestCase, self).tearDown()
-
     def test_periodic_task_create(self):
         periodic_task_count = PeriodicTask.objects.count()
 
