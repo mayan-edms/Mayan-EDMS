@@ -337,14 +337,6 @@ class SANESourceTestCase(GenericDocumentTestCase):
 class WatchFolderTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
     auto_upload_test_document = False
 
-    def setUp(self):
-        super(WatchFolderTestCase, self).setUp()
-        self.temporary_directory = mkdtemp()
-
-    def tearDown(self):
-        shutil.rmtree(self.temporary_directory)
-        super(WatchFolderTestCase, self).tearDown()
-
     def test_subfolder_support_disabled(self):
         self._create_test_watchfolder()
 
