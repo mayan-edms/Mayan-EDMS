@@ -6,6 +6,7 @@
 - Add self healing to ErrorLog .model property to remove repeated entries.
   GitLab issue #894. Thanks to forum user @Lffy for the report.
   https://forum.mayan-edms.com/viewtopic.php?t=4027
+- Fix staging folder file get_image method.
 
 3.5 (2020-09-30)
 ================

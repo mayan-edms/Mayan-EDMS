@@ -295,6 +295,23 @@ class IntervalSourceTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
         self.assertTrue(PeriodicTask.objects.count() < periodic_task_count)
 
 
+class POP3SourceTestCase(GenericDocumentTestCase):
+    auto_upload_test_document = False
+
+    @mock.patch('poplib.POP3_SSL', autospec=True)
+    def test_download_document(self, mock_poplib):
+        mock_poplib.return_value = MockPOP3Mailbox()
+        self.source = POP3Email.objects.create(
+            document_type=self.test_document_type, label='', host='',
+            password='', username=''
+        )
+
+        self.source.check_source()
+        self.assertEqual(
+            Document.objects.first().label, 'Ampelm\xe4nnchen.txt'
+        )
+
+
 class SANESourceTestCase(GenericDocumentTestCase):
     auto_upload_test_document = False
 
@@ -315,23 +332,6 @@ class SANESourceTestCase(GenericDocumentTestCase):
             form_data={'document_type': self.test_document_type.pk}
         )
         self.assertTrue(file_object.size > 0)
-
-
-class POP3SourceTestCase(GenericDocumentTestCase):
-    auto_upload_test_document = False
-
-    @mock.patch('poplib.POP3_SSL', autospec=True)
-    def test_download_document(self, mock_poplib):
-        mock_poplib.return_value = MockPOP3Mailbox()
-        self.source = POP3Email.objects.create(
-            document_type=self.test_document_type, label='', host='',
-            password='', username=''
-        )
-
-        self.source.check_source()
-        self.assertEqual(
-            Document.objects.first().label, 'Ampelm\xe4nnchen.txt'
-        )
 
 
 class WatchFolderTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
