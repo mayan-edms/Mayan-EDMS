@@ -76,7 +76,7 @@ job_documentation_build:
   stage: build_documentation
   image: ubuntu:19.10
   artifacts:
-    expire_in: 1 hr
+    expire_in: 2 hr
     paths:
     - docs
   before_script:
@@ -115,7 +115,7 @@ job_build_python:
   stage: build_python
   image: ubuntu:19.10
   artifacts:
-    expire_in: 1 hr
+    expire_in: 2 hr
     paths:
     - dist
   before_script:
