@@ -182,9 +182,6 @@ class WorkflowTemplateStateActionListView(
             'workflow': self.external_object.workflow,
         }
 
-    def get_form_schema(self):
-        return {'fields': self.get_class().fields}
-
     def get_source_queryset(self):
         return self.external_object.actions.all()
 
