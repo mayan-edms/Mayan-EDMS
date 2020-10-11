@@ -8,6 +8,7 @@
   https://forum.mayan-edms.com/viewtopic.php?t=4027
 - Fix staging folder file get_image method.
 - Suppress staging folder file image tasks dependency errors on debug mode.
+- Backport source link highlighting improvements from version 4.0.
 
 3.5 (2020-09-30)
 ================

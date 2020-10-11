@@ -34,6 +34,7 @@ from .icons import (
 )
 from .literals import SOURCE_UNCOMPRESS_CHOICE_ASK, SOURCE_UNCOMPRESS_CHOICE_Y
 from .links import (
+    factory_conditional_active_by_source,
     link_setup_source_create_imap_email, link_setup_source_create_pop3_email,
     link_setup_source_create_staging_folder,
     link_setup_source_create_watch_folder, link_setup_source_create_webform,
@@ -233,11 +234,10 @@ class UploadBaseView(MultiFormView):
 
         return Link(
             args=args,
-            icon_class=icon_upload_view_link,
-            keep_query=True,
-            remove_from_query=['page'],
-            text=source.label,
-            view=view,
+            conditional_active=factory_conditional_active_by_source(
+                source=source
+            ), icon_class=icon_upload_view_link, keep_query=True,
+            remove_from_query=['page'], text=source.label, view=view
         )
 
     def dispatch(self, request, *args, **kwargs):
