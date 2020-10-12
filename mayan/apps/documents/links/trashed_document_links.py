@@ -3,15 +3,15 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.navigation.classes import Link
 
 from ..permissions import (
-    permission_document_delete, permission_document_restore,
-    permission_document_trash, permission_empty_trash
+    permission_trashed_document_delete, permission_trashed_document_restore,
+    permission_document_trash, permission_trash_empty
 )
 
 
 link_document_delete = Link(
     args='resolved_object.id',
     icon_class_path='mayan.apps.documents.icons.icon_trashed_document_delete',
-    permissions=(permission_document_delete,),
+    permissions=(permission_trashed_document_delete,),
     tags='dangerous', text=_('Delete'), view='documents:document_delete',
 
 )
@@ -26,7 +26,7 @@ link_document_list_deleted = Link(
     text=_('Trash can'), view='documents:document_list_deleted'
 )
 link_document_restore = Link(
-    permissions=(permission_document_restore,),
+    permissions=(permission_trashed_document_restore,),
     icon_class_path='mayan.apps.documents.icons.icon_trashed_document_restore',
     text=_('Restore'),
     view='documents:document_restore', args='object.pk'
@@ -47,6 +47,6 @@ link_document_multiple_restore = Link(
 )
 link_trash_can_empty = Link(
     icon_class_path='mayan.apps.documents.icons.icon_trash_can_empty',
-    permissions=(permission_empty_trash,), text=_('Empty trash'),
+    permissions=(permission_trash_empty,), text=_('Empty trash'),
     view='documents:trash_can_empty'
 )

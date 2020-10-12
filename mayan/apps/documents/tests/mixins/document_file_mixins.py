@@ -1,24 +1,8 @@
-import os
 import time
 
-from django.conf import settings
-from django.utils.module_loading import import_string
-
-from mayan.apps.converter.classes import Layer
-from mayan.apps.converter.layers import layer_saved_transformations
-
-from ..literals import PAGE_RANGE_ALL
-from ..models import Document, DocumentType, FavoriteDocument
-from ..search import document_file_page_search, document_search
-
 from .literals import (
-    TEST_DOCUMENT_DESCRIPTION_EDITED, TEST_DOCUMENT_PATH,
-    TEST_DOCUMENT_TYPE_DELETE_PERIOD, TEST_DOCUMENT_TYPE_DELETE_TIME_UNIT,
-    TEST_DOCUMENT_TYPE_LABEL, TEST_DOCUMENT_TYPE_LABEL_EDITED,
-    TEST_DOCUMENT_TYPE_QUICK_LABEL, TEST_DOCUMENT_TYPE_QUICK_LABEL_EDITED,
-    TEST_DOCUMENT_VERSION_COMMENT_EDITED, TEST_SMALL_DOCUMENT_FILENAME,
-    TEST_SMALL_DOCUMENT_PATH, TEST_TRANSFORMATION_ARGUMENT,
-    TEST_TRANSFORMATION_CLASS, TEST_VERSION_COMMENT
+    TEST_DOCUMENT_PATH, TEST_DOCUMENT_FILE_COMMENT_EDITED,
+    TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_FILE_COMMENT
 )
 
 
@@ -36,7 +20,7 @@ class DocumentFileAPIViewTestMixin:
             viewname='rest_api:documentfile-detail', kwargs={
                 'pk': self.test_document.pk,
                 'file_pk': self.test_document.latest_file.pk
-            }, data={'comment': TEST_DOCUMENT_VERSION_COMMENT_EDITED}
+            }, data={'comment': TEST_DOCUMENT_FILE_COMMENT_EDITED}
         )
 
     def _request_test_document_file_api_edit_via_put_view(self):
@@ -44,7 +28,7 @@ class DocumentFileAPIViewTestMixin:
             viewname='rest_api:documentfile-detail', kwargs={
                 'pk': self.test_document.pk,
                 'file_pk': self.test_document.latest_file.pk
-            }, data={'comment': TEST_DOCUMENT_VERSION_COMMENT_EDITED}
+            }, data={'comment': TEST_DOCUMENT_FILE_COMMENT_EDITED}
         )
 
     def _request_test_document_file_api_list_view(self):
@@ -82,7 +66,7 @@ class DocumentFileTestMixin:
     def _upload_new_file(self):
         with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             self.test_document.new_file(
-                comment=TEST_VERSION_COMMENT, file_object=file_object
+                comment=TEST_DOCUMENT_FILE_COMMENT, file_object=file_object
             )
 
 
@@ -115,23 +99,6 @@ class DocumentFilePreviewViewTestMixin:
                 'document_file_id': self.test_document_file.pk
             }
         )
-
-
-class DocumentFilePageViewTestMixin:
-    def _request_test_document_file_page_count_update_view(self):
-        return self.post(
-            viewname='documents:document_file_page_count_update',
-            kwargs={'document_file_id': self.test_document_file.pk}
-        )
-
-
-    def _request_test_document_multiple_page_count_update_view(self):
-        return self.post(
-            viewname='documents:document_file_multiple_page_count_update',
-            data={'id_list': self.test_document_file.pk}
-        )
-
-
 
 
 class DocumentFilePageAPIViewTestMixin:
@@ -180,6 +147,18 @@ class DocumentFilePageDisableViewTestMixin:
 
 
 class DocumentFilePageViewTestMixin:
+    def _request_test_document_file_page_count_update_view(self):
+        return self.post(
+            viewname='documents:document_file_page_count_update',
+            kwargs={'document_file_id': self.test_document_file.pk}
+        )
+
+    def _request_test_document_multiple_page_count_update_view(self):
+        return self.post(
+            viewname='documents:document_file_multiple_page_count_update',
+            data={'id_list': self.test_document_file.pk}
+        )
+
     def _request_test_document_file_page_list_view(self):
         return self.get(
             viewname='documents:document_file_pages', kwargs={

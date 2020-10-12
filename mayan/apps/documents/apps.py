@@ -129,12 +129,12 @@ from .links.trashed_document_links import (
 
 from .menus import menu_documents
 from .permissions import (
-    permission_document_create, permission_document_delete,
+    permission_document_create, permission_trashed_document_delete,
     permission_document_edit, permission_document_file_delete,
     permission_document_file_download, permission_document_file_new,
     permission_document_file_tools, permission_document_file_view,
     permission_document_print, permission_document_properties_edit,
-    permission_document_restore, permission_document_tools,
+    permission_trashed_document_restore, permission_document_tools,
     permission_document_trash, permission_document_type_delete,
     permission_document_type_edit, permission_document_type_view,
     permission_document_version_create, permission_document_version_delete,
@@ -311,10 +311,10 @@ class DocumentsApp(MayanAppConfig):
         ModelPermission.register(
             model=Document, permissions=(
                 permission_acl_edit, permission_acl_view,
-                permission_document_delete, permission_document_edit,
+                permission_trashed_document_delete, permission_document_edit,
                 permission_document_file_new, permission_document_print,
                 permission_document_properties_edit,
-                permission_document_restore, permission_document_tools,
+                permission_trashed_document_restore, permission_document_tools,
                 permission_document_trash, permission_document_view,
                 permission_document_version_create, permission_events_view,
                 permission_transformation_create,

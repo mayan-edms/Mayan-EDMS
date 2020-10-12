@@ -13,9 +13,9 @@ from mayan.apps.views.generics import (
 from ..icons import icon_document_list_deleted
 from ..models import DeletedDocument, Document
 from ..permissions import (
-    permission_document_delete, permission_document_restore,
+    permission_trashed_document_delete, permission_trashed_document_restore,
     permission_document_trash, permission_document_view,
-    permission_empty_trash
+    permission_trash_empty
 )
 from ..tasks import task_trashed_document_delete, task_trash_can_empty
 
@@ -64,7 +64,7 @@ class EmptyTrashCanView(ConfirmView):
     extra_context = {
         'title': _('Empty trash?')
     }
-    view_permission = permission_empty_trash
+    view_permission = permission_trash_empty
 
     def view_action(self):
         task_trash_can_empty.apply_async()
@@ -77,7 +77,7 @@ class EmptyTrashCanView(ConfirmView):
 
 class TrashedDocumentDeleteView(MultipleObjectConfirmActionView):
     model = DeletedDocument
-    object_permission = permission_document_delete
+    object_permission = permission_trashed_document_delete
     pk_url_kwarg = 'document_id'
     success_message_singular = _(
         '%(count)d trashed document submitted for deletion.'
@@ -137,7 +137,7 @@ class TrashedDocumentListView(DocumentListView):
 
 class TrashedDocumentRestoreView(MultipleObjectConfirmActionView):
     model = DeletedDocument
-    object_permission = permission_document_restore
+    object_permission = permission_trashed_document_restore
     pk_url_kwarg = 'document_id'
     success_message_singular = _(
         '%(count)d trashed document restored.'

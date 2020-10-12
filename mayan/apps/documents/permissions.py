@@ -9,9 +9,6 @@ namespace = PermissionNamespace(label=_('Documents'), name='documents')
 permission_document_create = namespace.add_permission(
     label=_('Create documents'), name='document_create'
 )
-permission_document_delete = namespace.add_permission(
-    label=_('Delete documents'), name='document_delete'
-)
 permission_document_edit = namespace.add_permission(
     label=_('Edit documents'), name='document_edit'
 )
@@ -69,14 +66,16 @@ permission_document_version_view = namespace.add_permission(
 
 # Trashed document
 
-permission_document_restore = namespace.add_permission(
+permission_trashed_document_restore = namespace.add_permission(
     label=_('Restore trashed document'), name='document_restore'
+)
+permission_trashed_document_delete = namespace.add_permission(
+    label=_('Delete trashed documents'), name='document_delete'
 )
 permission_document_trash = namespace.add_permission(
     label=_('Trash documents'), name='document_trash'
 )
-
-permission_empty_trash = namespace.add_permission(
+permission_trash_empty = namespace.add_permission(
     label=_('Empty trash'), name='document_empty_trash'
 )
 

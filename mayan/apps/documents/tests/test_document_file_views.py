@@ -1,12 +1,16 @@
 from django.utils.encoding import force_text
 
+from mayan.apps.converter.layers import layer_saved_transformations
+from mayan.apps.converter.permissions import permission_transformation_delete
+from mayan.apps.converter.tests.mixins import LayerTestMixin
+
 from ..permissions import (
-    permission_document_file_download, permission_document_file_revert,
-    permission_document_file_view,
+    permission_document_file_download, permission_document_file_delete,
+    permission_document_file_view, permission_document_tools,
 )
 
 from .base import GenericDocumentViewTestCase
-from .literals import TEST_VERSION_COMMENT
+from .literals import TEST_SMALL_DOCUMENT_FILENAME, TEST_VERSION_COMMENT
 from .mixins import DocumentFileTestMixin, DocumentFilePreviewViewTestMixin
 
 

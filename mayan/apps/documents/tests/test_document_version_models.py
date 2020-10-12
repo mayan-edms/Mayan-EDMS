@@ -1,12 +1,9 @@
-import time
-
 from ..literals import (
     DOCUMENT_FILE_ACTION_PAGES_NEW, DOCUMENT_FILE_ACTION_PAGES_APPEND,
     DOCUMENT_FILE_ACTION_PAGES_KEEP
 )
 
 from .base import GenericDocumentTestCase
-from .literals import TEST_SMALL_DOCUMENT_CHECKSUM, TEST_SMALL_DOCUMENT_PATH
 
 
 class DocumentVersionTestCase(GenericDocumentTestCase):
@@ -74,7 +71,6 @@ class DocumentVersionTestCase(GenericDocumentTestCase):
             self.test_document_version.page_content_objects,
             test_document_version_expected_page_content_objects
         )
-
 
     ##RESET
 

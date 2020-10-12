@@ -1,24 +1,7 @@
-import os
-import time
-
-from django.conf import settings
-from django.utils.module_loading import import_string
-
-from mayan.apps.converter.classes import Layer
-from mayan.apps.converter.layers import layer_saved_transformations
-
-from ...literals import PAGE_RANGE_ALL
-from ...models import Document, DocumentType, FavoriteDocument
-from ...search import document_file_page_search, document_search
-
 from ..literals import (
-    TEST_DOCUMENT_DESCRIPTION_EDITED, TEST_DOCUMENT_PATH,
     TEST_DOCUMENT_TYPE_DELETE_PERIOD, TEST_DOCUMENT_TYPE_DELETE_TIME_UNIT,
     TEST_DOCUMENT_TYPE_LABEL, TEST_DOCUMENT_TYPE_LABEL_EDITED,
-    TEST_DOCUMENT_TYPE_QUICK_LABEL, TEST_DOCUMENT_TYPE_QUICK_LABEL_EDITED,
-    TEST_DOCUMENT_VERSION_COMMENT_EDITED, TEST_SMALL_DOCUMENT_FILENAME,
-    TEST_SMALL_DOCUMENT_PATH, TEST_TRANSFORMATION_ARGUMENT,
-    TEST_TRANSFORMATION_CLASS, TEST_VERSION_COMMENT
+    TEST_DOCUMENT_TYPE_QUICK_LABEL, TEST_DOCUMENT_TYPE_QUICK_LABEL_EDITED
 )
 
 

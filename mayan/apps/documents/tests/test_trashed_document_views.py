@@ -1,7 +1,8 @@
 from ..models import DeletedDocument, Document
 from ..permissions import (
-    permission_document_delete, permission_document_restore,
-    permission_document_trash, permission_document_view
+    permission_trashed_document_delete, permission_trashed_document_restore,
+    permission_document_trash, permission_document_view,
+    permission_trash_empty
 )
 
 from .base import GenericDocumentViewTestCase
@@ -65,7 +66,7 @@ class TrashedDocumentViewTestCase(
         self.assertEqual(Document.valid.count(), 0)
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_restore
+            obj=self.test_document, permission=permission_trashed_document_restore
         )
 
         document_count = Document.valid.count()
@@ -90,7 +91,7 @@ class TrashedDocumentViewTestCase(
         self.assertEqual(Document.valid.count(), 0)
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_restore
+            obj=self.test_document, permission=permission_trashed_document_restore
         )
 
         response = self._request_trashed_document_restore_post_view()
@@ -119,7 +120,7 @@ class TrashedDocumentViewTestCase(
         self.assertEqual(DeletedDocument.objects.count(), 1)
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_delete
+            obj=self.test_document, permission=permission_trashed_document_delete
         )
 
         trashed_document_count = DeletedDocument.objects.count()
@@ -148,7 +149,7 @@ class TrashedDocumentViewTestCase(
         self.assertEqual(DeletedDocument.objects.count(), 1)
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_delete
+            obj=self.test_document, permission=permission_trashed_document_delete
         )
 
         response = self._request_trashed_document_delete_post_view()
@@ -193,7 +194,7 @@ class TrashCanViewTestCase(
         self.test_document.delete()
         self.assertEqual(DeletedDocument.objects.count(), 1)
 
-        self.grant_permission(permission=permission_empty_trash)
+        self.grant_permission(permission=permission_trash_empty)
 
         response = self._request_empty_trash_view()
         self.assertEqual(response.status_code, 302)

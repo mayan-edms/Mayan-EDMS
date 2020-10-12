@@ -6,16 +6,12 @@ from mayan.apps.converter.tests.mixins import LayerTestMixin
 
 from ..models import Document, DocumentType
 from ..permissions import (
-    permission_document_create, permission_document_file_download,
-    permission_document_print, permission_document_properties_edit,
-    permission_document_tools, permission_document_view,
-    permission_empty_trash
+    permission_document_create, permission_document_print,
+    permission_document_properties_edit, permission_document_view
 )
 
 from .base import GenericDocumentViewTestCase
-from .literals import (
-    TEST_DOCUMENT_TYPE_2_LABEL, TEST_SMALL_DOCUMENT_FILENAME
-)
+from .literals import TEST_DOCUMENT_TYPE_2_LABEL
 from .mixins.document_mixins import DocumentViewTestMixin
 
 

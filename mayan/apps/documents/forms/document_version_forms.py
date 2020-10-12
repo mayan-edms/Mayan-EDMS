@@ -1,5 +1,4 @@
 from django import forms
-from django.utils.translation import ugettext_lazy as _
 
 from ..fields import DocumentVersionField
 from ..models.document_version_models import DocumentVersion

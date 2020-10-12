@@ -1,3 +1,6 @@
+from ..models import FavoriteDocument
+
+
 class FavoriteDocumentsTestMixin:
     def _request_document_add_to_favorites_view(self):
         return self.post(

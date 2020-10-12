@@ -1,7 +1,7 @@
 import time
 
 from .base import GenericDocumentTestCase
-from .literals import TEST_SMALL_DOCUMENT_CHECKSUM, TEST_SMALL_DOCUMENT_PATH
+from .literals import TEST_SMALL_DOCUMENT_CHECKSUM
 
 
 class DocumentFileTestCase(GenericDocumentTestCase):

@@ -1,7 +1,6 @@
 from django.contrib.contenttypes.models import ContentType
 
 from ..literals import DOCUMENT_FILE_ACTION_PAGES_KEEP
-from ..models import DocumentVersion
 from ..permissions import (
     permission_document_version_edit, permission_document_version_view,
 )

@@ -7,10 +7,10 @@ from mayan.apps.rest_api.tests.base import BaseAPITestCase
 from ..models import Document, DocumentType
 from ..permissions import (
     permission_document_create, permission_document_file_download,
-    permission_document_delete, permission_document_edit,
+    permission_trashed_document_delete, permission_document_edit,
     permission_document_file_revert, permission_document_file_view,
     permission_document_file_new, permission_document_properties_edit,
-    permission_document_restore, permission_document_trash,
+    permission_trashed_document_restore, permission_document_trash,
     permission_document_view, permission_document_type_create,
     permission_document_type_delete, permission_document_type_edit,
 )
@@ -486,7 +486,7 @@ class TrashedDocumentAPIViewTestCase(
         self._upload_test_document()
         self.test_document.delete()
         self.grant_access(
-            obj=self.test_document, permission=permission_document_delete
+            obj=self.test_document, permission=permission_trashed_document_delete
         )
 
         response = self._request_test_trashed_document_api_delete_view()
@@ -570,7 +570,7 @@ class TrashedDocumentAPIViewTestCase(
         self.test_document.delete()
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_restore
+            obj=self.test_document, permission=permission_trashed_document_restore
         )
         response = self._request_test_trashed_document_api_restore_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
