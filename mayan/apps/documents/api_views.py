@@ -17,14 +17,14 @@ from .models import (
     DeletedDocument, Document, DocumentType, RecentDocument
 )
 from .permissions import (
-    permission_document_create, permission_document_delete,
-    permission_document_edit, permission_document_file_delete,
-    permission_document_file_download, permission_document_file_new,
-    permission_document_file_view, permission_document_properties_edit,
-    permission_document_restore, permission_document_trash,
+    permission_document_create, permission_document_edit,
+    permission_document_file_delete, permission_document_file_download,
+    permission_document_file_new,  permission_document_file_view,
+    permission_document_properties_edit, permission_document_trash,
     permission_document_type_create, permission_document_type_delete,
     permission_document_type_edit, permission_document_type_view,
-    permission_document_view,
+    permission_document_view, permission_trashed_document_delete,
+    permission_trashed_document_restore
 )
 from .serializers import (
     DeletedDocumentSerializer, DocumentFilePageSerializer, DocumentSerializer,
@@ -62,7 +62,7 @@ class APIDeletedDocumentView(generics.RetrieveDestroyAPIView):
     get: Retreive the details of the trashed document.
     """
     mayan_object_permissions = {
-        'DELETE': (permission_document_delete,),
+        'DELETE': (permission_trashed_document_delete,),
         'GET': (permission_document_view,)
     }
     queryset = DeletedDocument.objects.all()
@@ -74,7 +74,7 @@ class APIDeletedDocumentRestoreView(generics.GenericAPIView):
     post: Restore a trashed document.
     """
     mayan_object_permissions = {
-        'POST': (permission_document_restore,)
+        'POST': (permission_trashed_document_restore,)
     }
     queryset = DeletedDocument.objects.all()
 
