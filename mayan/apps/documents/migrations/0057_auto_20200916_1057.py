@@ -7,6 +7,10 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+        migrations.RenameModel(
+            old_name='DocumentVersion',
+            new_name='DocumentFile',
+        ),
         migrations.AlterModelOptions(
             name='documentpageresult',
             options={'ordering': ('document_file__document', 'page_number'), 'verbose_name': 'Document page', 'verbose_name_plural': 'Document pages'},

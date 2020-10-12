@@ -17,5 +17,5 @@ class Migration(migrations.Migration):
         ),
     ]
     run_before = [
-        ('documents', '0056_auto_20200916_0959'),
+        ('documents', '0057_auto_20200916_1057'),
     ]

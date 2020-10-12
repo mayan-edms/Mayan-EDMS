@@ -9,8 +9,7 @@ class Migration(migrations.Migration):
     operations = [
         migrations.CreateModel(
             name='TrashedDocument',
-            fields=[
-            ],
+            fields=[],
             options={
                 'proxy': True,
                 'indexes': [],
