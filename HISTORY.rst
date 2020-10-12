@@ -63,3 +63,4 @@
 - Add validation and test for repeated document version page numbers.
 - Improve page remap code and add annotated content object list support.
 - Don't display the file upload link on the document file delete view.
+- Seed the random number generator when the test case class is initialized.
