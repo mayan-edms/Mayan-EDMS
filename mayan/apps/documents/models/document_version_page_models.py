@@ -5,7 +5,6 @@ from furl import furl
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
-from django.db.models import Max
 from django.urls import reverse
 from django.utils.encoding import force_text
 from django.utils.functional import cached_property
@@ -23,22 +22,24 @@ from mayan.apps.events.decorators import method_event
 from mayan.apps.lock_manager.backends.base import LockingBackend
 
 from ..events import event_document_version_edited
-#from ..managers import DocumentPageManager
 from ..settings import (
     setting_display_width, setting_display_height, setting_zoom_max_level,
     setting_zoom_min_level
 )
 
 from .document_version_models import DocumentVersion
+from .mixins import ModelMixinPagedModel
 
 __all__ = ('DocumentVersionPage', 'DocumentVersionPageResult')
 logger = logging.getLogger(name=__name__)
 
 
-class DocumentVersionPage(models.Model):
+class DocumentVersionPage(ModelMixinPagedModel, models.Model):
+    _paged_model_parent_field = 'document_version'
+
     document_version = models.ForeignKey(
-        on_delete=models.CASCADE, related_name='pages', to=DocumentVersion,
-        verbose_name=_('Document version')
+        on_delete=models.CASCADE, related_name='version_pages',
+        to=DocumentVersion, verbose_name=_('Document version')
     )
     #page_number = models.PositiveIntegerField(
     #    db_index=True, blank=True, null=True, verbose_name=_('Page number')
@@ -55,8 +56,6 @@ class DocumentVersionPage(models.Model):
         ct_field='content_type', fk_field='object_id'
     )
 
-    #objects = DocumentPageManager()
-
     class Meta:
         ordering = ('page_number',)
         unique_together = ('document_version', 'page_number')
@@ -72,7 +71,6 @@ class DocumentVersionPage(models.Model):
             name=self.uuid
         )
         return partition
-
 
     @method_event(
         event_manager_class=EventManagerMethodAfter,
@@ -281,13 +279,6 @@ class DocumentVersionPage(models.Model):
         }
     get_label.short_description = _('Label')
 
-    def get_pages_last_number(self):
-        last_page_number = self.siblings.aggregate(
-            page_number_maximum=Max('page_number')
-        )['page_number_maximum']
-
-        return last_page_number
-
     @property
     def is_in_trash(self):
         return self.document_version.is_in_trash
@@ -311,18 +302,6 @@ class DocumentVersionPage(models.Model):
     )
     def save(self, *args, **kwargs):
         return super().save(*args, **kwargs)
-
-    """
-    def save(self, *args, **kwargs):
-        if not self.page_number:
-        super().save(*args, **kwargs)
-    """
-
-    @property
-    def siblings(self):
-        return DocumentVersionPage.objects.filter(
-            document_version=self.document_version
-        )
 
     @property
     def uuid(self):

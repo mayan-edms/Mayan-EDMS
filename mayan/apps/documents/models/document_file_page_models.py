@@ -25,15 +25,18 @@ from ..settings import (
 )
 
 from .document_file_models import DocumentFile
+from .mixins import ModelMixinPagedModel
 
 __all__ = ('DocumentFilePage', 'DocumentFilePageResult')
 logger = logging.getLogger(name=__name__)
 
 
-class DocumentFilePage(models.Model):
+class DocumentFilePage(ModelMixinPagedModel, models.Model):
     """
     Model that describes a document file page
     """
+    _paged_model_parent_field = 'document_file'
+
     document_file = models.ForeignKey(
         on_delete=models.CASCADE, related_name='file_pages', to=DocumentFile,
         verbose_name=_('Document file')
@@ -257,22 +260,9 @@ class DocumentFilePage(models.Model):
         }
     get_label.short_description = _('Label')
 
-    def get_pages_last_number(self):
-        last_page_number = self.siblings.aggregate(
-            page_number_maximum=Max('page_number')
-        )['page_number_maximum']
-
-        return last_page_number
-
     def natural_key(self):
         return (self.page_number, self.document_file.natural_key())
     natural_key.dependencies = ['documents.DocumentFile']
-
-    @property
-    def siblings(self):
-        return DocumentFilePage.objects.filter(
-            document_file=self.document_file
-        )
 
     @property
     def uuid(self):

@@ -24,30 +24,13 @@ from ..managers import DocumentManager, TrashCanManager, ValidDocumentManager
 from ..signals import signal_post_document_type_change
 
 from .document_type_models import DocumentType
+from .mixins import ModelMixinHooks
 
 __all__ = ('Document',)
 logger = logging.getLogger(name=__name__)
 
 
-class HooksMixin:
-    @classmethod
-    def _execute_hooks(cls, hook_list, **kwargs):
-        result = None
-
-        for hook in hook_list:
-            result = hook(**kwargs)
-            if result:
-                kwargs.update(result)
-
-        return result
-
-    @classmethod
-    def _insert_hook_entry(cls, hook_list, func, order=None):
-        order = order or len(hook_list)
-        hook_list.insert(order, func)
-
-
-class Document(HooksMixin, models.Model):
+class Document(ModelMixinHooks, models.Model):
     """
     Defines a single document with it's fields and properties
     Fields:

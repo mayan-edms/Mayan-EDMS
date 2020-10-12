@@ -215,7 +215,7 @@ class DocumentsApp(MayanAppConfig):
             model=DocumentVersion, bind_link=True, register_permission=True
         ).add_fields(
             field_names=(
-                'document', 'timestamp', 'comment', 'pages',
+                'document', 'timestamp', 'comment', 'version_pages',
             )
         )
         ModelCopy(

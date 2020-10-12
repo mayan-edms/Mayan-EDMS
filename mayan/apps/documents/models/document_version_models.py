@@ -164,7 +164,7 @@ class DocumentVersion(models.Model):
             annotated_content_object_list = ()
 
         for content_object_entry in annotated_content_object_list:
-            self.pages.create(
+            self.version_pages.create(
                 content_object=content_object_entry['content_object'],
                 page_number=content_object_entry['page_number']
             )
@@ -181,7 +181,12 @@ class DocumentVersion(models.Model):
         else:
             content_object_list = None
 
-        return self.pages_remap(content_object_list=content_object_list)
+        annotated_content_object_list = DocumentVersion.annotate_content_object_list(
+            content_object_list=content_object_list
+        )
+        return self.pages_remap(
+            annotated_content_object_list=annotated_content_object_list
+        )
 
     @method_event(
         event_manager_class=EventManagerSave,
