@@ -1,10 +1,10 @@
 from mayan.apps.appearance.classes import Icon
 
-icon_document_submit = Icon(
+icon_document_file_submit = Icon(
     driver_name='fontawesome-dual', primary_symbol='chess-board',
     secondary_symbol='arrow-right'
 )
-icon_document_multiple_submit = Icon(
+icon_document_file_multiple_submit = Icon(
     driver_name='fontawesome-dual', primary_symbol='chess-board',
     secondary_symbol='arrow-right'
 )

@@ -89,7 +89,7 @@ class FileMetadataViewsTestCase(
     def test_document_submit_view_no_permission(self):
         self.test_document.latest_file.file_metadata_drivers.all().delete()
 
-        response = self._request_document_submit_view()
+        response = self._request_document_file_submit_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
@@ -102,7 +102,7 @@ class FileMetadataViewsTestCase(
             permission=permission_file_metadata_submit, obj=self.test_document
         )
 
-        response = self._request_document_submit_view()
+        response = self._request_document_file_submit_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
@@ -112,7 +112,7 @@ class FileMetadataViewsTestCase(
     def test_multiple_document_submit_view_no_permission(self):
         self.test_document.latest_file.file_metadata_drivers.all().delete()
 
-        response = self._request_multiple_document_submit_view()
+        response = self._request_document_file_multiple_submit_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
@@ -125,7 +125,7 @@ class FileMetadataViewsTestCase(
             permission=permission_file_metadata_submit, obj=self.test_document
         )
 
-        response = self._request_multiple_document_submit_view()
+        response = self._request_document_file_multiple_submit_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(

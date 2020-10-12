@@ -25,8 +25,8 @@ from .handlers import (
     handler_process_document_file
 )
 from .links import (
-    link_document_driver_list, link_document_file_metadata_list,
-    link_document_submit, link_document_multiple_submit,
+    link_document_file_driver_list, link_document_file_metadata_list,
+    link_document_file_submit, link_document_file_multiple_submit,
     link_document_type_file_metadata_settings, link_document_type_submit
 )
 from .methods import (
@@ -150,8 +150,8 @@ class FileMetadataApp(MayanAppConfig):
             source=DocumentFileDriverEntry
         )
 
-        menu_facet.bind_links(
-            links=(link_document_driver_list,), sources=(Document,)
+        menu_list_facet.bind_links(
+            links=(link_document_file_driver_list,), sources=(DocumentFile,)
         )
         menu_list_facet.bind_links(
             links=(link_document_type_file_metadata_settings,),
@@ -162,11 +162,12 @@ class FileMetadataApp(MayanAppConfig):
             sources=(DocumentFileDriverEntry,)
         )
         menu_multi_item.bind_links(
-            links=(link_document_multiple_submit,), sources=(Document,)
+            links=(link_document_file_multiple_submit,),
+            sources=(DocumentFile,)
         )
         menu_secondary.bind_links(
-            links=(link_document_submit,), sources=(
-                'file_metadata:document_driver_list',
+            links=(link_document_file_submit,), sources=(
+                'file_metadata:document_file_driver_list',
                 'file_metadata:document_file_driver_file_metadata_list'
             )
         )
