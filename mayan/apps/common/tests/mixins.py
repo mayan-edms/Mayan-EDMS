@@ -259,6 +259,11 @@ class RandomPrimaryKeyModelMonkeyPatchMixin(object):
 
         return primary_key
 
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        random.seed()
+
     def setUp(self):
         if self.random_primary_key_enable:
             self.method_save_original = models.Model.save
