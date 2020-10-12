@@ -1,12 +1,12 @@
 from rest_framework import serializers
 
-from .models import DocumentPageContent, DocumentTypeSettings
+from .models import DocumentFilePageContent, DocumentTypeSettings
 
 
-class DocumentPageContentSerializer(serializers.ModelSerializer):
+class DocumentFilePageContentSerializer(serializers.ModelSerializer):
     class Meta:
         fields = ('content',)
-        model = DocumentPageContent
+        model = DocumentFilePageContent
 
 
 class DocumentTypeParsingSettingsSerializer(serializers.ModelSerializer):

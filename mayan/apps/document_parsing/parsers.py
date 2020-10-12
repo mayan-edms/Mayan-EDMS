@@ -22,11 +22,11 @@ class Parser:
     _registry = {}
 
     @classmethod
-    def parse_document_page(cls, document_page):
-        for parser_class in cls._registry.get(document_page.document_file.mimetype, ()):
+    def parse_document_file_page(cls, document_file_page):
+        for parser_class in cls._registry.get(document_file_page.document_file.mimetype, ()):
             try:
                 parser = parser_class()
-                parser.process_document_page(document_page)
+                parser.process_document_file_page(document_file_page)
             except ParserError:
                 # If parser raises error, try next parser in the list
                 pass
@@ -63,29 +63,29 @@ class Parser:
         )
         logger.debug('document file: %d', document_file.pk)
 
-        for document_page in document_file.pages.all():
-            self.process_document_page(document_page=document_page)
+        for document_file_page in document_file.pages.all():
+            self.process_document_file_page(document_file_page=document_file_page)
 
-    def process_document_page(self, document_page):
-        DocumentPageContent = apps.get_model(
-            app_label='document_parsing', model_name='DocumentPageContent'
+    def process_document_file_page(self, document_file_page):
+        DocumentFilePageContent = apps.get_model(
+            app_label='document_parsing', model_name='DocumentFilePageContent'
         )
 
         logger.info(
             'Processing page: %d of document file: %s',
-            document_page.page_number, document_page.document_file
+            document_file_page.page_number, document_file_page.document_file
         )
 
-        file_object = document_page.document_file.get_intermediate_file()
+        file_object = document_file_page.document_file.get_intermediate_file()
 
         try:
-            document_page_content, created = DocumentPageContent.objects.get_or_create(
-                document_page=document_page
+            document_file_page_content, created = DocumentFilePageContent.objects.get_or_create(
+                document_file_page=document_file_page
             )
-            document_page_content.content = self.execute(
-                file_object=file_object, page_number=document_page.page_number
+            document_file_page_content.content = self.execute(
+                file_object=file_object, page_number=document_file_page.page_number
             )
-            document_page_content.save()
+            document_file_page_content.save()
         except Exception as exception:
             error_message = _('Exception parsing page; %s') % exception
             logger.error(error_message)
@@ -95,7 +95,7 @@ class Parser:
 
         logger.info(
             'Finished processing page: %d of document file: %s',
-            document_page.page_number, document_page.document_file
+            document_file_page.page_number, document_file_page.document_file
         )
 
     def execute(self, file_object, page_number):

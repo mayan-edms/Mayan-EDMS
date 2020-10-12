@@ -1,5 +1,5 @@
 from mayan.apps.documents.tests.literals import TEST_HYBRID_DOCUMENT
-from mayan.apps.documents.tests.mixins import DocumentTestMixin
+from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.document_indexing.models import Index, IndexInstanceNode
 from mayan.apps.document_indexing.tests.literals import TEST_INDEX_LABEL
 from mayan.apps.testing.tests.base import BaseTransactionTestCase
@@ -7,7 +7,9 @@ from mayan.apps.testing.tests.base import BaseTransactionTestCase
 from .literals import TEST_PARSING_INDEX_NODE_TEMPLATE
 
 
-class ParsingIndexingTestCase(DocumentTestMixin, BaseTransactionTestCase):
+class DocumentFileParsingIndexingTestCase(
+    DocumentTestMixin, BaseTransactionTestCase
+):
     auto_upload_test_document = False
     test_document_filename = TEST_HYBRID_DOCUMENT
 
@@ -23,7 +25,7 @@ class ParsingIndexingTestCase(DocumentTestMixin, BaseTransactionTestCase):
         )
 
         self._upload_test_document()
-        self.test_document.submit_for_parsing()
+        self.test_document_file.submit_for_parsing()
 
         self.assertTrue(
             self.test_document in IndexInstanceNode.objects.get(

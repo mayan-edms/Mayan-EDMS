@@ -1,13 +1,13 @@
 from django.contrib import admin
 
 from .models import (
-    DocumentPageContent, DocumentFileParseError
+    DocumentFilePageContent, DocumentFileParseError
 )
 
 
-@admin.register(DocumentPageContent)
-class DocumentPageContentAdmin(admin.ModelAdmin):
-    list_display = ('document_page',)
+@admin.register(DocumentFilePageContent)
+class DocumentFilePageContentAdmin(admin.ModelAdmin):
+    list_display = ('document_file_page',)
 
 
 @admin.register(DocumentFileParseError)

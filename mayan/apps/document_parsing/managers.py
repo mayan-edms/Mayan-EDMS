@@ -7,7 +7,7 @@ from django.conf import settings
 from django.db import models, transaction
 
 from .events import (
-    event_parsing_document_content_deleted,
+    event_parsing_document_file_content_deleted,
     event_parsing_document_file_finish
 )
 from .parsers import Parser
@@ -16,14 +16,15 @@ from .signals import signal_post_document_file_parsing
 logger = logging.getLogger(name=__name__)
 
 
-class DocumentPageContentManager(models.Manager):
-    def delete_content_for(self, document, user=None):
+class DocumentFilePageContentManager(models.Manager):
+    def delete_content_for(self, document_file, user=None):
         with transaction.atomic():
-            for document_page in document.pages.all():
-                self.filter(document_page=document_page).delete()
+            for document_file_page in document_file.pages.all():
+                self.filter(document_file_page=document_file_page).delete()
 
-            event_parsing_document_content_deleted.commit(
-                actor=user, target=document
+            event_parsing_document_file_content_deleted.commit(
+                actor=user, action_object=document_file.document,
+                target=document_file
             )
 
     def process_document_file(self, document_file):
@@ -31,7 +32,6 @@ class DocumentPageContentManager(models.Manager):
             'Starting parsing for document file: %s', document_file
         )
         logger.debug('document file: %d', document_file.pk)
-
         try:
             with transaction.atomic():
                 Parser.parse_document_file(document_file=document_file)

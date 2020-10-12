@@ -12,8 +12,8 @@ def task_parse_document_file(document_file_pk):
     DocumentFile = apps.get_model(
         app_label='documents', model_name='DocumentFile'
     )
-    DocumentPageContent = apps.get_model(
-        app_label='document_parsing', model_name='DocumentPageContent'
+    DocumentFilePageContent = apps.get_model(
+        app_label='document_parsing', model_name='DocumentFilePageContent'
     )
 
     document_file = DocumentFile.objects.get(
@@ -22,6 +22,6 @@ def task_parse_document_file(document_file_pk):
     logger.info(
         'Starting parsing for document file: %s', document_file
     )
-    DocumentPageContent.objects.process_document_file(
+    DocumentFilePageContent.objects.process_document_file(
         document_file=document_file
     )

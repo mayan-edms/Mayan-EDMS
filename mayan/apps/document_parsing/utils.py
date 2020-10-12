@@ -3,15 +3,15 @@ from django.utils.encoding import force_text
 from django.utils.html import conditional_escape
 
 
-def get_instance_content(document):
-    DocumentPageContent = apps.get_model(
-        app_label='document_parsing', model_name='DocumentPageContent'
+def get_document_file_content(document_file):
+    DocumentFilePageContent = apps.get_model(
+        app_label='document_parsing', model_name='DocumentFilePageContent'
     )
 
-    for page in document.pages.all():
+    for page in document_file.pages.all():
         try:
             page_content = page.content.content
-        except DocumentPageContent.DoesNotExist:
+        except DocumentFilePageContent.DoesNotExist:
             pass
         else:
-            yield conditional_escape(force_text(page_content))
+            yield conditional_escape(text=force_text(s=page_content))

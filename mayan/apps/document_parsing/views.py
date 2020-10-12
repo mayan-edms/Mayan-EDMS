@@ -4,36 +4,38 @@ from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _, ungettext
 
 from mayan.apps.documents.forms import DocumentTypeFilteredSelectForm
-from mayan.apps.documents.models import Document, DocumentPage, DocumentType
+from mayan.apps.documents.models.document_file_models import DocumentFile
+from mayan.apps.documents.models.document_file_page_models import DocumentFilePage
+from mayan.apps.documents.models.document_type_models import DocumentType
 from mayan.apps.views.generics import (
     FormView, MultipleObjectConfirmActionView, SingleObjectDetailView,
     SingleObjectDownloadView, SingleObjectEditView, SingleObjectListView
 )
 from mayan.apps.views.mixins import ExternalObjectMixin
 
-from .forms import DocumentContentForm, DocumentPageContentForm
-from .models import DocumentFileParseError, DocumentPageContent
+from .forms import DocumentFileContentForm, DocumentFilePageContentForm
+from .models import DocumentFileParseError, DocumentFilePageContent
 from .permissions import (
-    permission_content_view, permission_document_type_parsing_setup,
-    permission_parse_document
+    permission_document_file_content_view, permission_document_type_parsing_setup,
+    permission_document_file_parse
 )
-from .utils import get_instance_content
+from .utils import get_document_file_content
 
 
-class DocumentContentDeleteView(MultipleObjectConfirmActionView):
-    model = Document
-    object_permission = permission_parse_document
-    pk_url_kwarg = 'document_id'
-    success_message = 'Deleted parsed content of %(count)d document.'
-    success_message_plural = 'Deleted parsed content of %(count)d documents.'
+class DocumentFileContentDeleteView(MultipleObjectConfirmActionView):
+    model = DocumentFile
+    object_permission = permission_document_file_parse
+    pk_url_kwarg = 'document_file_id'
+    success_message = 'Deleted parsed content of %(count)d document file.'
+    success_message_plural = 'Deleted parsed content of %(count)d document files.'
 
     def get_extra_context(self):
         queryset = self.object_list
 
         result = {
             'title': ungettext(
-                singular='Delete the parsed content of the selected document?',
-                plural='Delete the parsed content of the selected documents?',
+                singular='Delete the parsed content of the selected document file?',
+                plural='Delete the parsed content of the selected document files?',
                 number=queryset.count()
             )
         }
@@ -44,56 +46,53 @@ class DocumentContentDeleteView(MultipleObjectConfirmActionView):
         return result
 
     def object_action(self, form, instance):
-        DocumentPageContent.objects.delete_content_for(
-            document=instance, user=self.request.user
+        DocumentFilePageContent.objects.delete_content_for(
+            document_file=instance, user=self.request.user
         )
 
 
-class DocumentContentView(SingleObjectDetailView):
-    form_class = DocumentContentForm
-    model = Document
-    object_permission = permission_content_view
-    pk_url_kwarg = 'document_id'
-
-    def dispatch(self, request, *args, **kwargs):
-        result = super(DocumentContentView, self).dispatch(
-            request, *args, **kwargs
-        )
-        self.object.add_as_recent_document_for_user(request.user)
-        return result
-
-    def get_extra_context(self):
-        return {
-            'document': self.object,
-            'hide_labels': True,
-            'object': self.object,
-            'title': _('Content for document: %s') % self.object,
-        }
-
-
-class DocumentContentDownloadView(SingleObjectDownloadView):
-    model = Document
-    object_permission = permission_content_view
-    pk_url_kwarg = 'document_id'
+class DocumentFileContentDownloadView(SingleObjectDownloadView):
+    model = DocumentFile
+    object_permission = permission_document_file_content_view
+    pk_url_kwarg = 'document_file_id'
 
     def get_download_file_object(self):
-        return get_instance_content(document=self.object)
+        return get_document_file_content(document_file=self.object)
 
     def get_download_filename(self):
         return '{}-content'.format(self.object)
 
 
-class DocumentPageContentView(SingleObjectDetailView):
-    form_class = DocumentPageContentForm
-    model = DocumentPage
-    object_permission = permission_content_view
-    pk_url_kwarg = 'document_page_id'
+class DocumentFileContentView(SingleObjectDetailView):
+    form_class = DocumentFileContentForm
+    model = DocumentFile
+    object_permission = permission_document_file_content_view
+    pk_url_kwarg = 'document_file_id'
 
     def dispatch(self, request, *args, **kwargs):
-        result = super(DocumentPageContentView, self).dispatch(
-            request, *args, **kwargs
-        )
+        result = super().dispatch(request=request, *args, **kwargs)
         self.object.document.add_as_recent_document_for_user(
+            user=request.user
+        )
+        return result
+
+    def get_extra_context(self):
+        return {
+            'hide_labels': True,
+            'object': self.object,
+            'title': _('Content for document file: %s') % self.object,
+        }
+
+
+class DocumentFilePageContentView(SingleObjectDetailView):
+    form_class = DocumentFilePageContentForm
+    model = DocumentFilePage
+    object_permission = permission_document_file_content_view
+    pk_url_kwarg = 'document_file_page_id'
+
+    def dispatch(self, request, *args, **kwargs):
+        result = super().dispatch(request=request, *args, **kwargs)
+        self.object.document_file.document.add_as_recent_document_for_user(
             request.user
         )
         return result
@@ -102,39 +101,39 @@ class DocumentPageContentView(SingleObjectDetailView):
         return {
             'hide_labels': True,
             'object': self.object,
-            'title': _('Content for document page: %s') % self.object,
+            'title': _('Content for document file page: %s') % self.object,
         }
 
 
-class DocumentParsingErrorsListView(
+class DocumentFileParsingErrorsListView(
     ExternalObjectMixin, SingleObjectListView
 ):
-    external_object_class = Document
-    external_object_permission = permission_parse_document
-    external_object_pk_url_kwarg = 'document_id'
+    external_object_class = DocumentFile
+    external_object_permission = permission_document_file_parse
+    external_object_pk_url_kwarg = 'document_file_id'
 
     def get_extra_context(self):
         return {
             'hide_object': True,
             'object': self.external_object,
             'title': _(
-                'Parsing errors for document: %s'
+                'Parsing errors for document file: %s'
             ) % self.external_object,
         }
 
     def get_source_queryset(self):
-        return self.external_object.latest_file.parsing_errors.all()
+        return self.external_object.parsing_errors.all()
 
 
-class DocumentSubmitView(MultipleObjectConfirmActionView):
-    model = Document
-    object_permission = permission_parse_document
-    pk_url_kwarg = 'document_id'
+class DocumentFileSubmitView(MultipleObjectConfirmActionView):
+    model = DocumentFile
+    object_permission = permission_document_file_parse
+    pk_url_kwarg = 'document_file_id'
     success_message = _(
-        '%(count)d document added to the parsing queue'
+        '%(count)d document file added to the parsing queue'
     )
     success_message_plural = _(
-        '%(count)d documents added to the parsing queue'
+        '%(count)d documents files added to the parsing queue'
     )
 
     def get_extra_context(self):
@@ -142,8 +141,8 @@ class DocumentSubmitView(MultipleObjectConfirmActionView):
 
         result = {
             'title': ungettext(
-                singular='Submit %(count)d document to the parsing queue?',
-                plural='Submit %(count)d documents to the parsing queue?',
+                singular='Submit %(count)d document file to the parsing queue?',
+                plural='Submit %(count)d documents files to the parsing queue?',
                 number=queryset.count()
             ) % {
                 'count': queryset.count(),
@@ -155,7 +154,7 @@ class DocumentSubmitView(MultipleObjectConfirmActionView):
                 {
                     'object': queryset.first(),
                     'title': _(
-                        'Submit document "%s" to the parsing queue'
+                        'Submit document file "%s" to the parsing queue'
                     ) % queryset.first()
                 }
             )
@@ -200,7 +199,7 @@ class DocumentTypeSubmitView(FormView):
     def get_form_extra_kwargs(self):
         return {
             'allow_multiple': True,
-            'permission': permission_parse_document,
+            'permission': permission_document_file_parse,
             'user': self.request.user
         }
 
@@ -227,7 +226,7 @@ class ParseErrorListView(SingleObjectListView):
         'hide_object': True,
         'title': _('Parsing errors'),
     }
-    view_permission = permission_parse_document
+    view_permission = permission_document_file_parse
 
     def get_source_queryset(self):
         return DocumentFileParseError.objects.all()
