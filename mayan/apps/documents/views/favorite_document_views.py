@@ -56,8 +56,8 @@ class FavoriteAddView(MultipleObjectConfirmActionView):
             'submit_label': _('Add'),
             'submit_icon_class': icon_favorite_document_list,
             'title': ungettext(
-                singular='Add the selected document to favorites',
-                plural='Add the selected documents to favorites',
+                singular='Add the selected document to favorites?',
+                plural='Add the selected documents to favorites?',
                 number=queryset.count()
             )
         }
@@ -87,8 +87,8 @@ class FavoriteRemoveView(MultipleObjectConfirmActionView):
             'submit_label': _('Remove'),
             'submit_icon_class': icon_favorite_document_list,
             'title': ungettext(
-                singular='Remove the selected document from favorites',
-                plural='Remove the selected documents from favorites',
+                singular='Remove the selected document from favorites?',
+                plural='Remove the selected documents from favorites?',
                 number=queryset.count()
             )
         }
