@@ -82,13 +82,14 @@ class DocumentVersionPageMappingFormSet(
         for form in self.forms:
             cleaned_data_entry = form.cleaned_data
             target_page_number = cleaned_data_entry['target_page_number']
-            if target_page_number in set_of_target_page_numbers:
-                form.add_error(
-                    field='target_page_number',
-                    error=_('Target page number can\'t be repeated.')
-                )
-            else:
-                set_of_target_page_numbers.add(target_page_number)
+            if target_page_number != '0':
+                if target_page_number in set_of_target_page_numbers:
+                    form.add_error(
+                        field='target_page_number',
+                        error=_('Target page number can\'t be repeated.')
+                    )
+                else:
+                    set_of_target_page_numbers.add(target_page_number)
 
 
 class DocumentVersionPageNumberForm(forms.Form):
