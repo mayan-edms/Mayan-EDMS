@@ -1,6 +1,7 @@
 3.4.18 (2020-XX-XX)
 ===================
 - Update Django from version 2.2.15 to 2.2.16.
+- Increase GitLab CI artifact expiration to 2 hours.
 
 3.4.17 (2020-09-10)
 ===================
