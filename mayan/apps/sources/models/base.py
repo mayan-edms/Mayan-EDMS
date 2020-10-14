@@ -106,47 +106,31 @@ class Source(models.Model):
         Upload an individual document
         """
         try:
-            with transaction.atomic():
-                document = Document(
-                    description=description or '', document_type=document_type,
-                    label=label or file_object.name,
-                    language=language or setting_language.value
-                )
-                document._event_actor = user
-                document.save()
+
+            document, document_file = document_type.new_document(
+                file_object=file_object, label=label,
+                description=description, language=language,
+                _user=user
+            )
         except Exception as exception:
             logger.critical(
                 'Unexpected exception while trying to create new document '
                 '"%s" from source "%s"; %s',
                 label or file_object.name, self, exception
             )
+            document.delete(to_trash=False)
             raise
         else:
-            try:
-                document_file = document.new_file(
-                    file_object=file_object, _user=user,
-                )
+            if user:
+                document.add_as_recent_document_for_user(user=user)
 
-                if user:
-                    document.add_as_recent_document_for_user(user=user)
-
-                layer_saved_transformations.copy_transformations(
-                    source=self, targets=document_file.pages.all()
-                )
-
-            except Exception as exception:
-                logger.critical(
-                    'Unexpected exception while trying to create file for '
-                    'new document "%s" from source "%s"; %s',
-                    label or file_object.name, self, exception, exc_info=True
-                )
-                document.delete(to_trash=False)
-                raise
-            else:
-                WizardStep.post_upload_process(
-                    document=document, querystring=querystring
-                )
-                return document
+            layer_saved_transformations.copy_transformations(
+                source=self, targets=document_file.pages.all()
+            )
+            WizardStep.post_upload_process(
+                document=document, querystring=querystring
+            )
+            return document
 
 
 class InteractiveSource(Source):

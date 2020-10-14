@@ -134,17 +134,13 @@ class DocumentType(models.Model):
         )
 
         try:
-            with transaction.atomic():
-                document = Document(
-                    description=description or '', document_type=self,
-                    label=label or file_object.name,
-                    language=language or setting_language.value
-                )
-                _event_actor = _user
-                document.save()
-
-                document.new_file(file_object=file_object, _user=_user)
-                return document
+            document = Document(
+                description=description or '', document_type=self,
+                label=label or file_object.name,
+                language=language or setting_language.value
+            )
+            _event_actor = _user
+            document.save()
         except Exception as exception:
             logger.critical(
                 'Unexpected exception while trying to create new document '
@@ -154,16 +150,18 @@ class DocumentType(models.Model):
             raise
         else:
             try:
-                document.new_version(file_object=file_object, _user=_user)
+                document_file = document.new_file(
+                    file_object=file_object, _user=_user
+                )
             except Exception as exception:
                 logger.critical(
                     'Unexpected exception while trying to create initial '
-                    'version for document %s; %s',
+                    'file for document %s; %s',
                     label or file_object.name, exception
                 )
                 raise
             else:
-                return document
+                return document, document_file
 
     def save(self, *args, **kwargs):
         user = kwargs.pop('_user', None)
