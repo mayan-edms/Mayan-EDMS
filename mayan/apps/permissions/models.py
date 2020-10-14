@@ -5,6 +5,7 @@ from django.contrib.auth.models import Group
 from django.db import models, transaction
 from django.urls import reverse
 from django.utils.encoding import force_text
+from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.user_management.events import event_group_edited
@@ -40,7 +41,7 @@ class StoredPermission(models.Model):
         except KeyError:
             return self.name
 
-    @property
+    @cached_property
     def volatile_permission_id(self):
         """
         Return the identifier of the real permission class represented by
@@ -48,7 +49,7 @@ class StoredPermission(models.Model):
         """
         return '{}.{}'.format(self.namespace, self.name)
 
-    @property
+    @cached_property
     def volatile_permission(self):
         """
         Returns the real class of the permission represented by this model
