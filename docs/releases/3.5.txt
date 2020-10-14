@@ -650,6 +650,7 @@ Issues closed
 -------------
 
 - :gitlab-issue:`209` Increase atomicity of the OCR task
+- :gitlab-issue:`477` Add document image overlay support. Such as watermarks.
 - :gitlab-issue:`741` Search is slow on large pagesets - Limited by Postgres' single core limitations
 - :gitlab-issue:`745` Feature request: file metadata
 - :gitlab-issue:`570` Allow user-generated stylesheets
