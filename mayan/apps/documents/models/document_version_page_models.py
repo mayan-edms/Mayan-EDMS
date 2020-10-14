@@ -1,6 +1,7 @@
 import logging
 
 from furl import furl
+from PIL import Image
 
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
@@ -39,7 +40,7 @@ class DocumentVersionPage(ModelMixinPagedModel, models.Model):
 
     document_version = models.ForeignKey(
         on_delete=models.CASCADE, related_name='version_pages',
-        to=DocumentVersion, verbose_name=_('Document version')
+        to=DocumentVersion, verbose_name=_('Document version'),
     )
     #page_number = models.PositiveIntegerField(
     #    db_index=True, blank=True, null=True, verbose_name=_('Page number')
@@ -80,6 +81,18 @@ class DocumentVersionPage(ModelMixinPagedModel, models.Model):
     def delete(self, *args, **kwargs):
         self.cache_partition.delete()
         super().delete(*args, **kwargs)
+
+    def export(self, file_object, append=False, resolution=None):
+        if not resolution:
+            resolution = 300.0
+
+        cache_filename = self.generate_image()
+        Image.open(
+            self.cache_partition.get_file(filename=cache_filename).open()
+        ).save(
+            append=append, format='PDF', fp=file_object,
+            resolution=resolution
+        )
 
     def generate_image(self, user=None, **kwargs):
         transformation_list = self.get_combined_transformation_list(user=user, **kwargs)

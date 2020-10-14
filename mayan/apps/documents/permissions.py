@@ -59,9 +59,31 @@ permission_document_version_edit = namespace.add_permission(
     label=_('Edit document versions'),
     name='document_version_edit'
 )
+permission_document_version_export = namespace.add_permission(
+    label=_('Export document versions'),
+    name='document_version_export'
+)
 permission_document_version_view = namespace.add_permission(
     label=_('View document versions'),
     name='document_version_view'
+)
+
+# Document type
+
+setup_namespace = PermissionNamespace(
+    label=_('Document types'), name='documents_types'
+)
+permission_document_type_create = setup_namespace.add_permission(
+    label=_('Create document types'), name='document_type_create'
+)
+permission_document_type_delete = setup_namespace.add_permission(
+    label=_('Delete document types'), name='document_type_delete'
+)
+permission_document_type_edit = setup_namespace.add_permission(
+    label=_('Edit document types'), name='document_type_edit'
+)
+permission_document_type_view = setup_namespace.add_permission(
+    label=_('View document types'), name='document_type_view'
 )
 
 # Trashed document
@@ -78,24 +100,3 @@ permission_document_trash = namespace.add_permission(
 permission_trash_empty = namespace.add_permission(
     label=_('Empty trash'), name='document_empty_trash'
 )
-
-setup_namespace = PermissionNamespace(
-    label=_('Document types'), name='documents_types'
-)
-
-# Document type
-
-permission_document_type_create = setup_namespace.add_permission(
-    label=_('Create document types'), name='document_type_create'
-)
-permission_document_type_delete = setup_namespace.add_permission(
-    label=_('Delete document types'), name='document_type_delete'
-)
-permission_document_type_edit = setup_namespace.add_permission(
-    label=_('Edit document types'), name='document_type_edit'
-)
-permission_document_type_view = setup_namespace.add_permission(
-    label=_('View document types'), name='document_type_view'
-)
-
-

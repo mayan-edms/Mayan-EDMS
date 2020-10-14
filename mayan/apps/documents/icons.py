@@ -197,6 +197,9 @@ icon_document_version_delete = Icon(
 icon_document_version_edit = Icon(
     driver_name='fontawesome', symbol='pencil-alt'
 )
+icon_document_version_export = Icon(
+    driver_name='fontawesome', symbol='file-export'
+)
 icon_document_version_list = Icon(
     driver_name='fontawesome', symbol='code-branch'
 )

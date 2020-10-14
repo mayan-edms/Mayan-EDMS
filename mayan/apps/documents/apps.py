@@ -91,8 +91,9 @@ from .links.document_type_links import (
 )
 from .links.document_version_links import (
     link_document_version_create, link_document_version_delete,
-    link_document_version_edit, link_document_version_list,
-    link_document_version_multiple_delete, link_document_version_return_list,
+    link_document_version_edit, link_document_version_export,
+    link_document_version_list, link_document_version_multiple_delete,
+    link_document_version_return_list,
     link_document_version_return_to_document, link_document_version_preview
 )
 from .links.document_version_page_links import (
@@ -138,8 +139,8 @@ from .permissions import (
     permission_document_trash, permission_document_type_delete,
     permission_document_type_edit, permission_document_type_view,
     permission_document_version_create, permission_document_version_delete,
-    permission_document_version_edit, permission_document_version_view,
-    permission_document_view
+    permission_document_version_edit, permission_document_version_export,
+    permission_document_version_view, permission_document_view
 )
 from .signals import signal_post_file_upload
 from .statistics import *  # NOQA
@@ -349,6 +350,7 @@ class DocumentsApp(MayanAppConfig):
                 permission_acl_edit, permission_acl_view,
                 permission_document_version_delete,
                 permission_document_version_edit,
+                permission_document_version_export,
                 permission_document_version_view,
                 permission_events_view, permission_transformation_create,
                 permission_transformation_delete,
@@ -813,6 +815,7 @@ class DocumentsApp(MayanAppConfig):
         menu_object.bind_links(
             links=(
                 link_document_version_delete, link_document_version_edit,
+                link_document_version_export,
                 link_document_version_page_list_remap,
                 link_document_version_page_list_reset
             ),

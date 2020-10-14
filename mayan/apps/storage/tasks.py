@@ -1,29 +1,43 @@
-from datetime import timedelta
 import logging
 
 from django.apps import apps
-from django.utils.timezone import now
 
 from mayan.celery import app
-
-from .literals import UPLOAD_EXPIRATION_INTERVAL
 
 logger = logging.getLogger(name=__name__)
 
 
 @app.task(ignore_result=True)
-def task_delete_stale_uploads():
-    logger.info('Executing')
+def task_download_files_stale_delete():
+    logger.debug('Executing')
+
+    DownloadFile = apps.get_model(
+        app_label='storage', model_name='DownloadFile'
+    )
+
+    queryset = DownloadFile.objects.stale()
+
+    logger.debug('Queryset count: %d', queryset.count())
+
+    for expired_download in queryset.all():
+        expired_download.delete()
+
+    logger.debug('Finished')
+
+
+@app.task(ignore_result=True)
+def task_shared_upload_stale_delete():
+    logger.debug('Executing')
 
     SharedUploadedFile = apps.get_model(
         app_label='storage', model_name='SharedUploadedFile'
     )
 
-    queryset = SharedUploadedFile.objects.filter(
-        datetime__lt=now() - timedelta(seconds=UPLOAD_EXPIRATION_INTERVAL)
-    )
+    queryset = SharedUploadedFile.objects.stale()
 
-    for expired_upload in queryset:
+    logger.debug('Queryset count: %d', queryset.count())
+
+    for expired_upload in queryset.all():
         expired_upload.delete()
 
-    logger.info('Finshed')
+    logger.debug('Finished')

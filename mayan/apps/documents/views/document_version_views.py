@@ -3,12 +3,12 @@ import logging
 from django.contrib import messages
 from django.template import RequestContext
 from django.urls import reverse
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _, ungettext
 
 from mayan.apps.views.generics import (
-    ConfirmView, MultipleObjectDeleteView, SingleObjectCreateView,
-    SingleObjectDeleteView, SingleObjectDetailView, SingleObjectEditView,
-    SingleObjectListView
+    ConfirmView, MultipleObjectConfirmActionView, MultipleObjectDeleteView,
+    SingleObjectCreateView, SingleObjectDeleteView, SingleObjectDetailView,
+    SingleObjectEditView, SingleObjectListView
 )
 from mayan.apps.views.mixins import ExternalObjectMixin
 
@@ -21,8 +21,10 @@ from ..models.document_models import Document
 from ..models.document_version_models import DocumentVersion
 from ..permissions import (
     permission_document_version_create, permission_document_version_delete,
-    permission_document_version_edit, permission_document_version_view
+    permission_document_version_edit, permission_document_version_export,
+    permission_document_version_view
 )
+from ..tasks import task_document_version_export
 
 __all__ = (
     'DocumentVersionCreateView', 'DocumentVersionListView',
@@ -95,6 +97,41 @@ class DocumentVersionEditView(SingleObjectEditView):
             viewname='documents:document_version_preview', kwargs={
                 'document_version_id': self.object.pk
             }
+        )
+
+
+class DocumentVersionExportView(MultipleObjectConfirmActionView):
+    model = DocumentVersion
+    object_permission = permission_document_version_export
+    pk_url_kwarg = 'document_version_id'
+    success_message = _(
+        '%(count)d document version queued for export.'
+    )
+    success_message_plural = _(
+        '%(count)d document versions queued for export.'
+    )
+
+    def get_extra_context(self):
+        context = {
+            'message': _(
+                'The process will be performed in the background. '
+                'The exported file will be available in the downloads area.'
+            ),
+            'title': ungettext(
+                singular='Export the selected document version?',
+                plural='Export the selected document versions?',
+                number=self.object_list.count()
+            )
+        }
+
+        if self.object_list.count() == 1:
+            context['object'] = self.object_list.first()
+
+        return context
+
+    def object_action(self, form, instance):
+        task_document_version_export.apply_async(
+            kwargs={'document_version_id': instance.pk}
         )
 
 

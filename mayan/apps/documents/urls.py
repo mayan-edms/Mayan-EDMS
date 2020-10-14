@@ -43,8 +43,8 @@ from .views.document_version_page_views import (
 )
 from .views.document_version_views import (
     DocumentVersionCreateView, DocumentVersionDeleteView,
-    DocumentVersionEditView, DocumentVersionListView,
-    DocumentVersionPreviewView
+    DocumentVersionEditView, DocumentVersionExportView,
+    DocumentVersionListView, DocumentVersionPreviewView
 )
 from .views.document_views import (
     DocumentDocumentTypeChangeView, DocumentListView, DocumentPreviewView,
@@ -237,6 +237,11 @@ urlpatterns_document_version = [
         regex=r'^documents/versions/(?P<document_version_id>\d+)/delete/$',
         name='document_version_delete',
         view=DocumentVersionDeleteView.as_view()
+    ),
+    url(
+        regex=r'^documents/versions/(?P<document_version_id>\d+)/export/$',
+        name='document_version_export',
+        view=DocumentVersionExportView.as_view()
     ),
     url(
         regex=r'^documents/versions/(?P<document_version_id>\d+)/edit/$',

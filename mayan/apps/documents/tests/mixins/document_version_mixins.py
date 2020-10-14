@@ -39,6 +39,13 @@ class DocumentVersionViewTestMixin:
             }
         )
 
+    def _request_test_document_version_export_view(self):
+        return self.post(
+            viewname='documents:document_version_export', kwargs={
+                'document_version_id': self.test_document_version.pk
+            }
+        )
+
     def _request_test_document_version_list_view(self):
         return self.get(
             viewname='documents:document_version_list', kwargs={

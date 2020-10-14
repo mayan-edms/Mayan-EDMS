@@ -50,6 +50,10 @@ queue_documents.add_task_type(
     dotted_path='mayan.apps.documents.tasks.task_document_version_page_list_reset',
     label=_('Reset the page list of a document version')
 )
+queue_documents.add_task_type(
+    dotted_path='mayan.apps.documents.tasks.task_document_version_export',
+    label=_('Export a document version')
+)
 
 queue_documents_periodic.add_task_type(
     dotted_path='mayan.apps.documents.tasks.task_document_type_document_trash_periods_check',

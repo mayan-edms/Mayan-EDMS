@@ -1,8 +1,11 @@
 from django.contrib.contenttypes.models import ContentType
 
+from mayan.apps.storage.models import DownloadFile
+
 from ..literals import DOCUMENT_FILE_ACTION_PAGES_KEEP
 from ..permissions import (
-    permission_document_version_edit, permission_document_version_view,
+    permission_document_version_edit, permission_document_version_export,
+    permission_document_version_view,
 )
 
 from .base import GenericDocumentViewTestCase
@@ -42,6 +45,31 @@ class DocumentVersionViewTestCase(
         self.assertNotEqual(
             self.test_document_version.comment,
             document_version_comment
+        )
+
+    def test_document_version_export_view_no_permission(self):
+        download_file_count = DownloadFile.objects.count()
+
+        response = self._request_test_document_version_export_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertEqual(
+            DownloadFile.objects.count(), download_file_count
+        )
+
+    def test_document_version_export_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document_version,
+            permission=permission_document_version_export
+        )
+
+        download_file_count = DownloadFile.objects.count()
+
+        response = self._request_test_document_version_export_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(
+            DownloadFile.objects.count(), download_file_count + 1
         )
 
     def test_document_version_list_view_no_permission(self):

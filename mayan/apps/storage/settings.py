@@ -8,6 +8,18 @@ from mayan.apps.smart_settings.classes import SettingNamespace
 
 namespace = SettingNamespace(label=_('Storage'), name='storage')
 
+setting_download_file_storage = namespace.add_setting(
+    global_name='STORAGE_DOWNLOAD_FILE_STORAGE',
+    default='django.core.files.storage.FileSystemStorage',
+    help_text=_(
+        'A storage backend that all workers can use to generate and hold '
+        'files for download.'
+    )
+)
+setting_download_file_storage_arguments = namespace.add_setting(
+    global_name='STORAGE_DOWNLOAD_FILE_STORAGE_ARGUMENTS',
+    default={'location': os.path.join(settings.MEDIA_ROOT, 'download_files')}
+)
 setting_shared_storage = namespace.add_setting(
     global_name='STORAGE_SHARED_STORAGE',
     default='django.core.files.storage.FileSystemStorage',

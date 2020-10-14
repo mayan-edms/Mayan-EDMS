@@ -3,6 +3,7 @@ import logging
 from django.apps import apps
 from django.contrib.auth import get_user_model
 from django.db import OperationalError
+from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.lock_manager.exceptions import LockError
 from mayan.celery import app
@@ -10,6 +11,7 @@ from mayan.celery import app
 from .literals import (
     UPDATE_PAGE_COUNT_RETRY_DELAY, UPLOAD_NEW_VERSION_RETRY_DELAY
 )
+from .permissions import permission_document_version_export
 from .settings import (
     setting_task_document_file_page_image_generate_retry_delay,
     setting_task_document_version_page_image_generate_retry_delay
@@ -115,14 +117,7 @@ def task_document_file_upload(self, action, document_id, shared_uploaded_file_id
         raise self.retry(exc=exception)
 
     with shared_file.open() as file_object:
-        #document_file = DocumentFile(
-        #    document=document, comment=comment or '', file=file_object
-        #)
         try:
-            #document_file.save(_user=user)
-            #document_file = DocumentFile(
-            #    document=document, comment=comment or '', file=file_object
-            #)
             document_file = document.new_file(
                 action=action, comment=comment, file_object=file_object,
                 _user=user
@@ -194,6 +189,30 @@ def task_document_version_page_list_reset(document_version_id):
         pk=document_version_id
     )
     document_version.pages_reset()
+
+
+@app.task(ignore_result=True)
+def task_document_version_export(document_version_id):
+    DownloadFile = apps.get_model(
+        app_label='storage', model_name='DownloadFile'
+    )
+    DocumentVersion = apps.get_model(
+        app_label='documents', model_name='DocumentVersion'
+    )
+
+    document_version = DocumentVersion.objects.get(
+        pk=document_version_id
+    )
+
+    download_file = DownloadFile.objects.create(
+        content_object=document_version,
+        filename='{}.pdf'.format(document_version),
+        label=_('Document version export to PDF'),
+        permission=permission_document_version_export.stored_permission
+    )
+
+    with download_file.open(mode='wb+') as file_object:
+        document_version.export(file_object=file_object)
 
 
 # Document version page
