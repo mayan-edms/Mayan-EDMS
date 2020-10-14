@@ -2,74 +2,89 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.navigation.classes import Link
 
+from .icons import (
+    icon_entry_list, icon_document_type_ocr_settings,
+    icon_document_type_submit, icon_document_version_multiple_ocr_submit,
+    icon_document_version_page_ocr_content_view,
+    icon_document_version_ocr_content_delete,
+    icon_document_version_ocr_content_view,
+    icon_document_version_ocr_download,
+    icon_document_version_ocr_errors_list, icon_document_version_ocr_submit
+)
 from .permissions import (
-    permission_ocr_content_view, permission_ocr_document,
+    permission_document_version_ocr_content_view, permission_document_version_ocr,
     permission_document_type_ocr_setup
 )
 
+# Document type
 
-def is_document_page_disabled(context):
-    return not context['resolved_object'].enabled
-
-
-link_document_page_ocr_content = Link(
-    args='resolved_object.id', conditional_disable=is_document_page_disabled,
-    icon_class_path='mayan.apps.ocr.icons.icon_document_page_ocr_content',
-    permissions=(permission_ocr_content_view,), text=_('OCR'),
-    view='ocr:document_page_ocr_content',
-)
-link_document_ocr_content = Link(
-    args='resolved_object.id',
-    icon_class_path='mayan.apps.ocr.icons.icon_document_ocr_content',
-    permissions=(permission_ocr_content_view,), text=_('OCR'),
-    view='ocr:document_ocr_content',
-)
-link_document_ocr_content_delete = Link(
-    args='resolved_object.id',
-    icon_class_path='mayan.apps.ocr.icons.icon_document_ocr_content_delete',
-    permissions=(permission_ocr_content_view,), text=_('Delete OCR content'),
-    view='ocr:document_ocr_content_delete',
-)
-link_document_ocr_content_delete_multiple = Link(
-    icon_class_path='mayan.apps.ocr.icons.icon_document_ocr_content_delete',
-    text=_('Delete OCR content'),
-    view='ocr:document_ocr_content_delete_multiple',
-)
-link_document_submit = Link(
-    args='resolved_object.id',
-    icon_class_path='mayan.apps.ocr.icons.icon_document_submit',
-    permissions=(permission_ocr_document,), text=_('Submit for OCR'),
-    view='ocr:document_submit'
-)
-link_document_submit_multiple = Link(
-    icon_class_path='mayan.apps.ocr.icons.icon_document_submit',
-    text=_('Submit for OCR'), view='ocr:document_submit_multiple'
-)
 link_document_type_ocr_settings = Link(
     args='resolved_object.id',
-    icon_class_path='mayan.apps.ocr.icons.icon_document_type_ocr_settings',
+    icon_class=icon_document_type_ocr_settings,
     permissions=(permission_document_type_ocr_setup,), text=_('Setup OCR'),
-    view='ocr:document_type_ocr_settings',
+    view='ocr:document_type_ocr_settings'
 )
 link_document_type_submit = Link(
-    icon_class_path='mayan.apps.ocr.icons.icon_document_type_submit',
-    permissions=(permission_ocr_document,), text=_('OCR documents per type'),
-    view='ocr:document_type_submit'
+    icon_class=icon_document_type_submit,
+    permissions=(permission_document_version_ocr,),
+    text=_('OCR documents per type'), view='ocr:document_type_submit'
 )
+
+# Document version page
+
+link_document_version_ocr_content_view = Link(
+    args='resolved_object.id',
+    icon_class=icon_document_version_ocr_content_view,
+    permissions=(permission_document_version_ocr_content_view,),
+    text=_('OCR'), view='ocr:document_version_ocr_content_view'
+)
+link_document_version_ocr_content_view_delete = Link(
+    args='resolved_object.id',
+    icon_class=icon_document_version_ocr_content_delete,
+    permissions=(permission_document_version_ocr_content_view,),
+    text=_('Delete OCR content'),
+    view='ocr:document_version_ocr_content_delete'
+)
+link_document_version_ocr_content_view_delete_multiple = Link(
+    icon_class=icon_document_version_ocr_content_delete,
+    text=_('Delete OCR content'),
+    view='ocr:document_version_ocr_content_delete_multiple'
+)
+link_document_version_ocr_submit = Link(
+    args='resolved_object.id',
+    icon_class=icon_document_version_ocr_submit,
+    permissions=(permission_document_version_ocr,), text=_('Submit for OCR'),
+    view='ocr:document_version_ocr_submit'
+)
+link_document_version_multiple_ocr_submit = Link(
+    icon_class=icon_document_version_multiple_ocr_submit,
+    text=_('Submit for OCR'), view='ocr:document_version_multiple_ocr_submit'
+)
+link_document_version_ocr_errors_list = Link(
+    args='resolved_object.id',
+    icon_class=icon_document_version_ocr_errors_list,
+    permissions=(permission_document_version_ocr_content_view,),
+    text=_('OCR errors'), view='ocr:document_version_ocr_error_list'
+)
+link_document_version_ocr_download = Link(
+    args='resolved_object.id', icon_class=icon_document_version_ocr_download,
+    permissions=(permission_document_version_ocr_content_view,),
+    text=_('Download OCR text'), view='ocr:document_version_ocr_download'
+)
+
+# Document version page
+
+link_document_version_page_ocr_content_view = Link(
+    args='resolved_object.id',
+    icon_class=icon_document_version_page_ocr_content_view,
+    permissions=(permission_document_version_ocr_content_view,),
+    text=_('OCR'), view='ocr:document_version_page_ocr_content_view'
+)
+
+# Other
+
 link_entry_list = Link(
-    icon_class_path='mayan.apps.ocr.icons.icon_entry_list',
-    permissions=(permission_ocr_document,), text=_('OCR errors'),
+    icon_class=icon_entry_list,
+    permissions=(permission_document_version_ocr,), text=_('OCR errors'),
     view='ocr:entry_list'
-)
-link_document_ocr_errors_list = Link(
-    args='resolved_object.id',
-    icon_class_path='mayan.apps.ocr.icons.icon_document_ocr_errors_list',
-    permissions=(permission_ocr_content_view,), text=_('OCR errors'),
-    view='ocr:document_ocr_error_list'
-)
-link_document_ocr_download = Link(
-    args='resolved_object.id',
-    icon_class_path='mayan.apps.ocr.icons.icon_document_ocr_download',
-    permissions=(permission_ocr_content_view,), text=_('Download OCR text'),
-    view='ocr:document_ocr_download'
 )

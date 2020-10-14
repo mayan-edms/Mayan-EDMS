@@ -6,14 +6,14 @@ from mayan.apps.task_manager.workers import worker_slow
 queue_ocr = CeleryQueue(name='ocr', label=_('OCR'), worker=worker_slow)
 
 queue_ocr.add_task_type(
-    dotted_path='mayan.apps.ocr.tasks.task_document_file_finished',
+    dotted_path='mayan.apps.ocr.tasks.task_document_version_ocr_finished',
     label=_('Finish document file OCR')
 )
 queue_ocr.add_task_type(
-    dotted_path='mayan.apps.ocr.tasks.task_document_file_page_process_ocr',
+    dotted_path='mayan.apps.ocr.tasks.task_document_version_page_ocr_process',
     label=_('Document file page OCR')
 )
 queue_ocr.add_task_type(
-    dotted_path='mayan.apps.ocr.tasks.task_document_file_process',
+    dotted_path='mayan.apps.ocr.tasks.task_document_version_ocr_process',
     label=_('Document file OCR')
 )

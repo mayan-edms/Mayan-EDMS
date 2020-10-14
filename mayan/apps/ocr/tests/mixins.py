@@ -1,71 +1,71 @@
 class DocumentOCRViewTestMixin:
-    def _request_document_content_view(self):
+    def _request_test_document_version_ocr_content_view(self):
         return self.get(
-            viewname='ocr:document_ocr_content', kwargs={
-                'document_id': self.test_document.pk
+            viewname='ocr:document_version_ocr_content_view', kwargs={
+                'document_version_id': self.test_document_version.pk
             }
         )
 
-    def _request_document_content_delete_view(self):
+    def _request_test_document_version_ocr_content_delete_view(self):
         return self.post(
-            viewname='ocr:document_ocr_content_delete', kwargs={
-                'document_id': self.test_document.pk
+            viewname='ocr:document_version_ocr_content_delete', kwargs={
+                'document_version_id': self.test_document_version.pk
             }
         )
 
-    def _request_document_page_content_view(self):
+    def _request_test_document_version_page_ocr_content_view(self):
         return self.get(
-            viewname='ocr:document_page_ocr_content', kwargs={
-                'document_page_id': self.test_document.pages.first().pk
+            viewname='ocr:document_version_page_ocr_content_view', kwargs={
+                'document_version_page_id': self.test_document_version.pages.first().pk
             }
         )
 
-    def _request_document_submit_view(self):
+    def _request_test_document_version_ocr_submit_view(self):
         return self.post(
-            viewname='ocr:document_submit', kwargs={
-                'document_id': self.test_document.pk
+            viewname='ocr:document_version_ocr_submit', kwargs={
+                'document_version_id': self.test_document_version.pk
             }
         )
 
-    def _request_multiple_document_submit_view(self):
+    def _request_test_document_version_multiple_ocr_submit_view(self):
         return self.post(
-            viewname='ocr:document_submit_multiple', data={
-                'id_list': self.test_document.pk,
+            viewname='ocr:document_version_multiple_ocr_submit', data={
+                'id_list': self.test_document_version.pk,
             }
         )
 
-    def _request_document_ocr_download_view(self):
+    def _request_test_document_version_ocr_download_view(self):
         return self.get(
-            viewname='ocr:document_ocr_download', kwargs={
-                'document_id': self.test_document.pk
+            viewname='ocr:document_version_ocr_download', kwargs={
+                'document_version_id': self.test_document_version.pk
             }
         )
 
 
 class DocumentTypeOCRSettingsAPIViewTestMixin:
-    def _request_document_type_ocr_settings_details_api_view(self):
+    def _request_test_document_type_ocr_settings_details_api_view(self):
         return self.get(
             viewname='rest_api:document-type-ocr-settings-view',
-            kwargs={'pk': self.test_document_type.pk}
+            kwargs={'document_type_id': self.test_document_type.pk}
         )
 
-    def _request_document_type_ocr_settings_patch_api_view(self):
+    def _request_test_document_type_ocr_settings_patch_api_view(self):
         return self.patch(
             viewname='rest_api:document-type-ocr-settings-view',
-            kwargs={'pk': self.test_document_type.pk},
+            kwargs={'document_type_id': self.test_document_type.pk},
             data={'auto_ocr': True}
         )
 
-    def _request_document_type_ocr_settings_put_api_view(self):
+    def _request_test_document_type_ocr_settings_put_api_view(self):
         return self.put(
             viewname='rest_api:document-type-ocr-settings-view',
-            kwargs={'pk': self.test_document_type.pk},
+            kwargs={'document_type_id': self.test_document_type.pk},
             data={'auto_ocr': True}
         )
 
 
 class DocumentTypeOCRViewTestMixin:
-    def _request_document_type_ocr_settings_view(self):
+    def _request_test_document_type_ocr_settings_view(self):
         return self.get(
             viewname='ocr:document_type_ocr_settings', kwargs={
                 'document_type_id': self.test_document_type.pk
@@ -74,25 +74,25 @@ class DocumentTypeOCRViewTestMixin:
 
 
 class OCRAPIViewTestMixin:
-    def _request_document_ocr_submit_view(self):
+    def _request_test_document_ocr_submit_api_view(self):
         return self.post(
             viewname='rest_api:document-ocr-submit-view',
-            kwargs={'pk': self.test_document.pk}
+            kwargs={'document_id': self.test_document.pk}
         )
 
-    def _request_document_file_ocr_submit_view(self):
+    def _request_test_document_version_ocr_submit_api_view(self):
         return self.post(
-            viewname='rest_api:document-file-ocr-submit-view', kwargs={
-                'document_pk': self.test_document.pk,
-                'file_pk': self.test_document.latest_file.pk
+            viewname='rest_api:document-version-ocr-submit-view', kwargs={
+                'document_id': self.test_document.pk,
+                'document_version_id': self.test_document.latest_version.pk
             }
         )
 
-    def _request_document_page_content_view(self):
+    def _request_test_document_version_page_ocr_content_api_view(self):
         return self.get(
-            viewname='rest_api:document-page-ocr-content-view', kwargs={
-                'document_pk': self.test_document.pk,
-                'file_pk': self.test_document.latest_file.pk,
-                'page_pk': self.test_document.latest_file.pages.first().pk,
+            viewname='rest_api:document-version-page-ocr-content-view', kwargs={
+                'document_id': self.test_document.pk,
+                'document_version_id': self.test_document.latest_version.pk,
+                'document_version_page_id': self.test_document.latest_version.pages.first().pk,
             }
         )

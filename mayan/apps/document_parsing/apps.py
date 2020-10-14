@@ -10,7 +10,7 @@ from mayan.apps.common.classes import ModelFieldRelated, ModelProperty
 from mayan.apps.common.menus import (
     menu_list_facet, menu_multi_item, menu_secondary, menu_tools
 )
-from mayan.apps.documents.signals import signal_post_file_upload
+from mayan.apps.documents.signals import signal_post_document_file_upload
 from mayan.apps.events.classes import ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
 
@@ -184,7 +184,7 @@ class DocumentParsingApp(MayanAppConfig):
             receiver=handler_index_document,
             sender=DocumentFile
         )
-        signal_post_file_upload.connect(
+        signal_post_document_file_upload.connect(
             dispatch_uid='document_parsing_handler_parse_document_file',
             receiver=handler_parse_document_file,
             sender=DocumentFile

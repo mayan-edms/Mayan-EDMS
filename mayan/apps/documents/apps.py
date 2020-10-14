@@ -142,7 +142,7 @@ from .permissions import (
     permission_document_version_edit, permission_document_version_export,
     permission_document_version_view, permission_document_view
 )
-from .signals import signal_post_file_upload
+from .signals import signal_post_document_file_upload
 from .statistics import *  # NOQA
 from .widgets import (
     DocumentFilePageThumbnailWidget, DocumentVersionPageThumbnailWidget,
@@ -897,7 +897,7 @@ class DocumentsApp(MayanAppConfig):
             dispatch_uid='documents_handler_create_default_document_type',
             receiver=handler_create_default_document_type
         )
-        signal_post_file_upload.connect(
+        signal_post_document_file_upload.connect(
             dispatch_uid='documents_handler_scan_duplicates_for',
             receiver=handler_scan_duplicates_for
         )

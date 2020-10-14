@@ -9,7 +9,7 @@ from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_multi_item, menu_object, menu_secondary,
     menu_tools
 )
-from mayan.apps.documents.signals import signal_post_file_upload
+from mayan.apps.documents.signals import signal_post_document_file_upload
 from mayan.apps.events.classes import ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
 
@@ -185,7 +185,7 @@ class FileMetadataApp(MayanAppConfig):
             receiver=handler_index_document_file,
             sender=DocumentFile
         )
-        signal_post_file_upload.connect(
+        signal_post_document_file_upload.connect(
             dispatch_uid='file_metadata_handler_process_document_file',
             receiver=handler_process_document_file,
             sender=DocumentFile

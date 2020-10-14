@@ -1,15 +1,15 @@
 from rest_framework import serializers
 
-from .models import DocumentPageOCRContent, DocumentTypeSettings
+from .models import DocumentVersionPageOCRContent, DocumentTypeOCRSettings
 
 
-class DocumentPageOCRContentSerializer(serializers.ModelSerializer):
+class DocumentVersionPageOCRContentSerializer(serializers.ModelSerializer):
     class Meta:
         fields = ('content',)
-        model = DocumentPageOCRContent
+        model = DocumentVersionPageOCRContent
 
 
 class DocumentTypeOCRSettingsSerializer(serializers.ModelSerializer):
     class Meta:
         fields = ('auto_ocr',)
-        model = DocumentTypeSettings
+        model = DocumentTypeOCRSettings

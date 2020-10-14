@@ -28,7 +28,7 @@ from ..literals import (
 )
 from ..managers import DocumentFileManager
 from ..settings import setting_hash_block_size
-from ..signals import signal_post_document_created, signal_post_file_upload
+from ..signals import signal_post_document_created, signal_post_document_file_upload
 
 from .document_models import Document
 
@@ -458,7 +458,7 @@ class DocumentFile(models.Model):
                 event_document_file_new.commit(
                     actor=user, target=self, action_object=self.document
                 )
-                signal_post_file_upload.send(
+                signal_post_document_file_upload.send(
                     sender=DocumentFile, instance=self
                 )
 

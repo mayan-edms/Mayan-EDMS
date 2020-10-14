@@ -21,7 +21,10 @@ from ..events import (
     event_document_version_edited
 )
 from ..literals import STORAGE_NAME_DOCUMENT_VERSION_PAGE_IMAGE_CACHE
-from ..signals import signal_post_document_created, signal_post_file_upload
+from ..signals import (
+    signal_post_document_created, signal_post_document_file_upload,
+    signal_post_document_version_remap
+)
 
 from .document_models import Document
 
@@ -176,6 +179,10 @@ class DocumentVersion(models.Model):
                 page_number=content_object_entry['page_number']
             )
 
+        signal_post_document_version_remap.send(
+            sender=DocumentVersion, instance=self
+        )
+
     def pages_reset(self, document_file=None):
         """
         Remove all page mappings and recreate them to be a 1 to 1 match
@@ -264,7 +271,7 @@ class DocumentVersion(models.Model):
                 #event_document_version_new.commit(
                 #    actor=user, target=self, action_object=self.document
                 #)
-                #signal_post_file_upload.send(
+                #signal_post_document_file_upload.send(
                 #    sender=DocumentFile, instance=self
                 #)
 

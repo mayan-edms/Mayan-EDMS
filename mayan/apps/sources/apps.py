@@ -9,7 +9,7 @@ from mayan.apps.common.signals import (
 )
 from mayan.apps.converter.links import link_transformation_list
 from mayan.apps.documents.menus import menu_documents
-from mayan.apps.documents.signals import signal_post_file_upload
+from mayan.apps.documents.signals import signal_post_document_file_upload
 from mayan.apps.logging.classes import ErrorLog
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.views.html_widgets import TwoStateWidget
@@ -170,7 +170,7 @@ class SourcesApp(MayanAppConfig):
             receiver=handler_initialize_periodic_tasks,
             dispatch_uid='sources_handler_initialize_periodic_tasks'
         )
-        signal_post_file_upload.connect(
+        signal_post_document_file_upload.connect(
             receiver=handler_copy_transformations_to_file,
             dispatch_uid='sources_handler_copy_transformations_to_file'
         )

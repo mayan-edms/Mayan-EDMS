@@ -1,13 +1,13 @@
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.documents.search import (
-    document_file_page_search, document_search
+    document_version_page_search, document_search
 )
 
-document_file_page_search.add_model_field(
+document_version_page_search.add_model_field(
     field='ocr_content__content', label=_('OCR')
 )
 
 document_search.add_model_field(
-    field='files__file_pages__ocr_content__content', label=_('OCR')
+    field='versions__version_pages__ocr_content__content', label=_('OCR')
 )
