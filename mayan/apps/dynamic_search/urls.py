@@ -47,11 +47,11 @@ urlpatterns.extend(urlpatterns_tools)
 
 api_urls = [
     url(
-        regex=r'^search/(?P<search_model>[\.\w]+)/$', name='search-view',
+        regex=r'^search/(?P<search_model_name>[\.\w]+)/$', name='search-view',
         view=APISearchView.as_view()
     ),
     url(
-        regex=r'^search/advanced/(?P<search_model>[\.\w]+)/$',
+        regex=r'^search/advanced/(?P<search_model_name>[\.\w]+)/$',
         name='advanced-search-view', view=APIAdvancedSearchView.as_view()
     ),
     url(

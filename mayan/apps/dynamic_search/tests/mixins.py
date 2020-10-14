@@ -6,7 +6,7 @@ class SearchAPIViewTestMixin:
         query = {'q': self.test_document.label}
         return self.get(
             viewname='rest_api:search-view', kwargs={
-                'search_model': document_search.get_full_name()
+                'search_model_name': document_search.get_full_name()
             }, query=query
         )
 
@@ -15,7 +15,7 @@ class SearchAPIViewTestMixin:
 
         return self.get(
             viewname='rest_api:advanced-search-view', kwargs={
-                'search_model': document_search.get_full_name()
+                'search_model_name': document_search.get_full_name()
             }, query=query
         )
 
