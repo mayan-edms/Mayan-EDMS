@@ -11,7 +11,9 @@ from ..permissions import (
 
 from .base import GenericDocumentViewTestCase
 from .literals import TEST_SMALL_DOCUMENT_FILENAME, TEST_VERSION_COMMENT
-from .mixins import DocumentFileTestMixin, DocumentFilePreviewViewTestMixin
+from .mixins.document_file_mixins import (
+    DocumentFileTestMixin, DocumentFileViewTestMixin
+)
 
 
 class DocumentFilePreviewViewTestCase(

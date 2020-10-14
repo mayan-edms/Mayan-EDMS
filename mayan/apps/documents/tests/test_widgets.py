@@ -2,7 +2,7 @@ from ..permissions import permission_document_view
 from ..widgets import DocumentFilePageThumbnailWidget
 
 from .base import GenericDocumentTestCase, GenericDocumentViewTestCase
-from .mixins import DocumentViewTestMixin
+from .mixins.document_mixins import DocumentViewTestMixin
 
 
 class DocumentFilePageWidgetTestCase(GenericDocumentTestCase):

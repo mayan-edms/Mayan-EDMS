@@ -1,7 +1,7 @@
 from mayan.apps.common.tests.mixins import ObjectCopyTestMixin
 from mayan.apps.testing.tests.base import BaseTestCase
 
-from .mixins import DocumentTestMixin
+from .mixins.document_mixins import DocumentTestMixin
 
 
 class DocumentTypeCopyTestCase(

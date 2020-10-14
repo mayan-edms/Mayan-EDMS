@@ -3,6 +3,7 @@ import shutil
 
 from django.utils.encoding import force_text
 
+from mayan.apps.documents.literals import STORAGE_NAME_DOCUMENT_FILES
 from mayan.apps.documents.tests.base import GenericDocumentTestCase
 from mayan.apps.mimetype.api import get_mimetype
 from mayan.apps.testing.tests.base import BaseTestCase
@@ -16,7 +17,7 @@ class PatchFilesTestCase(BaseTestCase):
     test_replace_text = 'replaced_text'
 
     def setUp(self):
-        super(PatchFilesTestCase, self).setUp()
+        super().setUp()
         self.temporary_directory = mkdtemp()
         self.path_temporary_directory = Path(self.temporary_directory)
         self.path_test_file = self.path_temporary_directory / 'test_file.txt'
@@ -31,7 +32,7 @@ class PatchFilesTestCase(BaseTestCase):
             )
 
     def tearDown(self):
-        super(PatchFilesTestCase, self).tearDown()
+        super().tearDown()
         shutil.rmtree(self.temporary_directory, ignore_errors=True)
 
     def _patch_test_file(self):
@@ -90,7 +91,7 @@ class StorageProcessorTestCase(
     def _execute_storage_procesor(self, reverse=None):
         storage_processor = PassthroughStorageProcessor(
             app_label='documents',
-            defined_storage_name='documents__documentfile',
+            defined_storage_name=STORAGE_NAME_DOCUMENT_FILES,#'documents__documentfile',
             log_file=force_text(self.path_test_file),
             model_name='DocumentFile'
         )

@@ -2,11 +2,14 @@ from ..models import FavoriteDocument
 from ..permissions import permission_document_view
 
 from .base import GenericDocumentViewTestCase
-from .mixins import FavoriteDocumentsTestMixin
+from .mixins.favorite_document_mixins import (
+    FavoriteDocumentsTestMixin, FavoriteDocumentsViewTestMixin
+)
 
 
 class FavoriteDocumentsTestCase(
-    FavoriteDocumentsTestMixin, GenericDocumentViewTestCase
+    FavoriteDocumentsTestMixin, FavoriteDocumentsViewTestMixin,
+    GenericDocumentViewTestCase
 ):
     def test_document_add_to_favorites_view_no_permission(self):
         response = self._request_document_add_to_favorites_view()

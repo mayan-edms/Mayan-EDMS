@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 
+DOCUMENT_METADATA_ADD_ACTION_CLASS_PATH = 'mayan.apps.metadata.workflow_actions.DocumentMetadataAddAction'
+DOCUMENT_METADATA_EDIT_ACTION_CLASS_PATH = 'mayan.apps.metadata.workflow_actions.DocumentMetadataEditAction'
+DOCUMENT_METADATA_REMOVE_ACTION_CLASS_PATH = 'mayan.apps.metadata.workflow_actions.DocumentMetadataRemoveAction'
 TEST_CORRECT_LOOKUP_VALUE = '1'
 TEST_DATE_PARSER = 'mayan.apps.metadata.parsers.DateParser'
 TEST_DATE_VALIDATOR = 'mayan.apps.metadata.validators.DateValidator'

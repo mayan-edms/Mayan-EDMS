@@ -84,7 +84,7 @@ class DocumentViewTestCase(
             label=TEST_DOCUMENT_TYPE_2_LABEL
         )
 
-        response = self._request_test_document_type_edit_post_view(
+        response = self._request_test_document_type_change_post_view(
             document_type=document_type_2
         )
         self.assertEqual(response.status_code, 404)
@@ -110,7 +110,7 @@ class DocumentViewTestCase(
             obj=document_type_2, permission=permission_document_create
         )
 
-        response = self._request_test_document_type_edit_post_view(
+        response = self._request_test_document_type_change_post_view(
             document_type=document_type_2
         )
         self.assertEqual(response.status_code, 302)
@@ -121,7 +121,7 @@ class DocumentViewTestCase(
         )
 
     def test_document_document_type_change_view_get_no_permission(self):
-        response = self._request_test_document_type_edit_get_view(
+        response = self._request_test_document_type_change_get_view(
         )
         self.assertEqual(response.status_code, 404)
 
@@ -134,7 +134,7 @@ class DocumentViewTestCase(
         self.grant_access(
             obj=self.test_document, permission=permission_document_properties_edit
         )
-        response = self._request_test_document_type_edit_get_view(
+        response = self._request_test_document_type_change_get_view(
         )
         self.assertEqual(response.status_code, 200)
 
@@ -152,7 +152,7 @@ class DocumentViewTestCase(
             label=TEST_DOCUMENT_TYPE_2_LABEL
         )
 
-        response = self._request_test_document_multiple_type_edit(
+        response = self._request_test_document_multiple_type_change(
             document_type=document_type_2
         )
         self.assertEqual(response.status_code, 404)
@@ -178,7 +178,7 @@ class DocumentViewTestCase(
             obj=document_type_2, permission=permission_document_create
         )
 
-        response = self._request_test_document_multiple_type_edit(
+        response = self._request_test_document_multiple_type_change(
             document_type=document_type_2
         )
         self.assertEqual(response.status_code, 302)

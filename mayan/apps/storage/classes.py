@@ -139,7 +139,7 @@ def defined_storage_proxy_method(method_name):
 class DefinedStorageLazy:
     def __init__(self, name):
         self.name = name
-        super(DefinedStorageLazy, self).__init__()
+        super().__init__()
 
     delete = defined_storage_proxy_method(method_name='delete')
     exists = defined_storage_proxy_method(method_name='exists')

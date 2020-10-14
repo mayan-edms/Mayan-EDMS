@@ -1,6 +1,6 @@
 import time
 
-from .literals import (
+from ..literals import (
     TEST_DOCUMENT_PATH, TEST_DOCUMENT_FILE_COMMENT_EDITED,
     TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_FILE_COMMENT
 )
@@ -70,7 +70,7 @@ class DocumentFileTestMixin:
             )
 
 
-class DocumentFilePreviewViewTestMixin:
+class DocumentFileViewTestMixin:
     def _request_test_document_file_delete_view(self, document_file):
         return self.post(
             viewname='documents:document_file_delete', kwargs={

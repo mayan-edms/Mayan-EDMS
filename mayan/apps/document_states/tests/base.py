@@ -1,4 +1,4 @@
-from mayan.apps.documents.tests.test_models import GenericDocumentTestCase
+from mayan.apps.documents.tests.base import GenericDocumentTestCase
 
 
 class ActionTestCase(GenericDocumentTestCase):

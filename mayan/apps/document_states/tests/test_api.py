@@ -1,7 +1,7 @@
 from rest_framework import status
 
 from mayan.apps.documents.permissions import permission_document_type_view
-from mayan.apps.documents.tests.mixins import DocumentTestMixin
+from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
 from ..models import Workflow

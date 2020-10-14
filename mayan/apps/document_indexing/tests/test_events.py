@@ -1,6 +1,6 @@
 from actstream.models import Action
 
-from mayan.apps.documents.tests.mixins import DocumentTestMixin
+from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..permissions import (

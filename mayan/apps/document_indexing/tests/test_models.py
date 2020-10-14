@@ -106,7 +106,7 @@ class IndexTestCase(IndexTestMixin, DocumentTestMixin, BaseTestCase):
         children of each of the first levels. GitLab issue #391
         """
         with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-            self.test_document_2 = self.test_document_type.new_document(
+            self.test_document_2, document_file = self.test_document_type.new_document(
                 file_object=file_object
             )
 

@@ -1,7 +1,7 @@
 from ..permissions import permission_document_view
 
 from .base import GenericDocumentViewTestCase
-from .mixins import DocumentSearchTestMixin
+from .mixins.document_mixins import DocumentSearchTestMixin
 
 
 class DocumentSearchTestCase(

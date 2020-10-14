@@ -93,7 +93,7 @@ class EmailBaseTestCase(GenericDocumentTestCase):
             source=self.source, message_text=TEST_EMAIL_NO_CONTENT_TYPE
         )
         self.assertTrue(
-            TEST_EMAIL_NO_CONTENT_TYPE_STRING in Document.objects.first().open().read()
+            TEST_EMAIL_NO_CONTENT_TYPE_STRING in Document.objects.first().latest_file.open().read()
         )
 
     def test_decode_email_zero_length_attachment(self):
@@ -379,13 +379,13 @@ class WatchFolderTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
 
         document = Document.objects.first()
 
-        self.assertEqual(document.exists(), True)
-        self.assertEqual(document.size, 17436)
+        self.assertEqual(document.latest_file.exists(), True)
+        self.assertEqual(document.latest_file.size, 17436)
 
-        self.assertEqual(document.file_mimetype, 'image/png')
-        self.assertEqual(document.file_mime_encoding, 'binary')
+        self.assertEqual(document.latest_file.mimetype, 'image/png')
+        self.assertEqual(document.latest_file.encoding, 'binary')
         self.assertEqual(document.label, TEST_SMALL_DOCUMENT_FILENAME)
-        self.assertEqual(document.page_count, 1)
+        self.assertEqual(document.latest_file.page_count, 1)
 
     def test_issue_gh_163(self):
         """
@@ -400,13 +400,13 @@ class WatchFolderTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
 
         document = Document.objects.first()
 
-        self.assertEqual(document.exists(), True)
-        self.assertEqual(document.size, 17436)
+        self.assertEqual(document.latest_file.exists(), True)
+        self.assertEqual(document.latest_file.size, 17436)
 
-        self.assertEqual(document.file_mimetype, 'image/png')
-        self.assertEqual(document.file_mime_encoding, 'binary')
+        self.assertEqual(document.latest_file.mimetype, 'image/png')
+        self.assertEqual(document.latest_file.encoding, 'binary')
         self.assertEqual(document.label, TEST_NON_ASCII_DOCUMENT_FILENAME)
-        self.assertEqual(document.page_count, 1)
+        self.assertEqual(document.latest_file.page_count, 1)
 
     def test_issue_gh_163_expanded(self):
         """
@@ -422,13 +422,12 @@ class WatchFolderTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
 
         document = Document.objects.first()
 
-        self.assertEqual(document.exists(), True)
-        self.assertEqual(document.size, 17436)
-
-        self.assertEqual(document.file_mimetype, 'image/png')
-        self.assertEqual(document.file_mime_encoding, 'binary')
+        self.assertEqual(document.latest_file.exists(), True)
+        self.assertEqual(document.latest_file.size, 17436)
+        self.assertEqual(document.latest_file.mimetype, 'image/png')
+        self.assertEqual(document.latest_file.encoding, 'binary')
         self.assertEqual(document.label, TEST_NON_ASCII_DOCUMENT_FILENAME)
-        self.assertEqual(document.page_count, 1)
+        self.assertEqual(document.latest_file.page_count, 1)
 
     def test_locking_support(self):
         self._create_test_watchfolder()

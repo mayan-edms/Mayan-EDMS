@@ -4,7 +4,7 @@ from django.utils.encoding import force_text
 from mayan.apps.testing.tests.base import BaseTestCase
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.search import document_search
-from mayan.apps.documents.tests.mixins import DocumentTestMixin
+from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.storage.utils import fs_cleanup, mkdtemp
 
 from ..classes import SearchBackend
@@ -56,7 +56,7 @@ class DjangoSearchBackendDocumentSearchTestCase(
         queryset = self.search_backend.search(
             search_model=document_search,
             query_string={
-                'versions__mimetype': self.test_document.file_mimetype
+                'versions__mimetype': self.test_document.latest_file.mimetype
             }, user=self._test_case_user
         )
 
@@ -257,7 +257,7 @@ class WhooshSearchBackendDocumentSearchTestCase(
         queryset = self.search_backend.search(
             search_model=document_search,
             query_string={
-                'versions__mimetype': self.test_document.file_mimetype
+                'versions__mimetype': self.test_document.latest_file.mimetype
             }, user=self._test_case_user
         )
 

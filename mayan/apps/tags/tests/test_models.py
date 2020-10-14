@@ -1,4 +1,4 @@
-from mayan.apps.documents.tests.mixins import DocumentTestMixin
+from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.testing.tests.base import BaseTestCase
 
 from .mixins import TagTestMixin

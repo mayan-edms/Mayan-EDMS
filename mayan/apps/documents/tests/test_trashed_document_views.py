@@ -6,7 +6,7 @@ from ..permissions import (
 )
 
 from .base import GenericDocumentViewTestCase
-from .mixins import TrashedDocumentViewTestMixin
+from .mixins.trashed_document_mixins import TrashedDocumentViewTestMixin
 
 
 class TrashedDocumentViewTestCase(

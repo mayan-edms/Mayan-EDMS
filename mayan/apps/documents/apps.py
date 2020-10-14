@@ -54,11 +54,11 @@ from .handlers import (
 )
 from .links.document_links import (
     link_document_clear_transformations, link_document_clone_transformations,
-    link_document_document_type_edit,
+    link_document_type_change,
     link_document_edit, link_document_list, link_document_list_recent_access,
     link_document_list_recent_added,
     link_document_multiple_clear_transformations,
-    link_document_multiple_document_type_edit, link_document_preview,
+    link_document_multiple_type_change, link_document_preview,
     link_document_print, link_document_properties
 )
 from .links.document_file_links import (
@@ -665,7 +665,7 @@ class DocumentsApp(MayanAppConfig):
         menu_object.bind_links(
             links=(
                 link_document_favorites_add, link_document_favorites_remove,
-                link_document_edit, link_document_document_type_edit,
+                link_document_edit, link_document_type_change,
                 link_document_print, link_document_trash,
                 link_document_clear_transformations,
                 link_document_clone_transformations,
@@ -678,7 +678,7 @@ class DocumentsApp(MayanAppConfig):
                 link_document_multiple_favorites_remove,
                 link_document_multiple_clear_transformations,
                 link_document_multiple_trash,
-                link_document_multiple_document_type_edit,
+                link_document_multiple_type_change,
             ), sources=(Document,)
         )
 

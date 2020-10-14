@@ -22,7 +22,7 @@ logger = logging.getLogger(name=__name__)
 
 def factory_conditional_active_by_source(source):
     def conditional_active_by_source(context, resolved_link):
-        return context['source'] == source
+        return context.get('source', None) == source
 
     return conditional_active_by_source
 

@@ -1,7 +1,7 @@
 from django.utils.encoding import force_text
 
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
-from mayan.apps.documents.tests.mixins import DocumentViewTestMixin
+from mayan.apps.documents.tests.mixins.document_mixins import DocumentViewTestMixin
 from mayan.apps.documents.permissions import permission_document_view
 
 from ..permissions import permission_tag_view

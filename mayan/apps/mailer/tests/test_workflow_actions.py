@@ -2,7 +2,7 @@ import json
 
 from django.core import mail
 
-from mayan.apps.documents.tests.mixins import DocumentTestMixin
+from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.document_states.literals import WORKFLOW_ACTION_ON_ENTRY
 from mayan.apps.document_states.permissions import permission_workflow_edit
 from mayan.apps.document_states.tests.base import ActionTestCase

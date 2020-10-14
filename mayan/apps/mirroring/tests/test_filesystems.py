@@ -6,7 +6,7 @@ from fuse import FuseOSError
 from django.db import connection
 from django.test import tag
 
-from mayan.apps.documents.tests.mixins import DocumentTestMixin
+from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.document_indexing.tests.mixins import IndexTestMixin
 from mayan.apps.testing.tests.base import BaseTestCase
 

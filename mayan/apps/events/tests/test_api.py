@@ -2,7 +2,7 @@ from django.contrib.contenttypes.models import ContentType
 
 from rest_framework import status
 
-from mayan.apps.documents.tests.mixins import DocumentTestMixin
+from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
 from ..permissions import permission_events_view

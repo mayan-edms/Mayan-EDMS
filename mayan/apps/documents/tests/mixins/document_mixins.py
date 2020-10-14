@@ -78,6 +78,7 @@ class DocumentTestMixin:
     test_document_file_filename = TEST_SMALL_DOCUMENT_FILENAME
     test_document_file_path = None
     test_document_filename = TEST_SMALL_DOCUMENT_FILENAME
+    test_document_language = None
     test_document_path = None
 
     def setUp(self):
@@ -128,15 +129,16 @@ class DocumentTestMixin:
             label = self.test_document_filename
 
         with open(file=self.test_document_path, mode='rb') as file_object:
-            document = self.test_document_type.new_document(
-                file_object=file_object, label=label, _user=_user
+            document, document_file = self.test_document_type.new_document(
+                file_object=file_object, label=label,
+                language=self.test_document_language, _user=_user
             )
 
         self.test_document = document
         self.test_documents.append(document)
 
-        self.test_document_file_page = document.latest_file.pages.first()
-        self.test_document_file = document.latest_file
+        self.test_document_file_page = document_file.pages.first()
+        self.test_document_file = document_file
         self.test_document_version = self.test_document.latest_version
 
     def _upload_test_document_file(self, action=None, _user=None):
@@ -155,23 +157,42 @@ class DocumentTestMixin:
 
 
 class DocumentViewTestMixin:
-    def _request_test_document_type_edit_get_view(self):
+    def _request_test_document_list_view(self):
+        return self.get(viewname='documents:document_list')
+
+    def _request_test_document_preview_view(self):
         return self.get(
-            viewname='documents:document_document_type_edit', kwargs={
+            viewname='documents:document_preview', kwargs={
                 'document_id': self.test_document.pk
             }
         )
 
-    def _request_test_document_type_edit_post_view(self, document_type):
+    def _request_test_document_print_view(self):
+        return self.get(
+            viewname='documents:document_print', kwargs={
+                'document_id': self.test_document.pk,
+            }, data={
+                'page_group': PAGE_RANGE_ALL
+            }
+        )
+
+    def _request_test_document_type_change_get_view(self):
+        return self.get(
+            viewname='documents:document_type_change', kwargs={
+                'document_id': self.test_document.pk
+            }
+        )
+
+    def _request_test_document_type_change_post_view(self, document_type):
         return self.post(
-            viewname='documents:document_document_type_edit', kwargs={
+            viewname='documents:document_type_change', kwargs={
                 'document_id': self.test_document.pk
             }, data={'document_type': document_type.pk}
         )
 
-    def _request_test_document_multiple_type_edit(self, document_type):
+    def _request_test_document_multiple_type_change(self, document_type):
         return self.post(
-            viewname='documents:document_multiple_document_type_edit',
+            viewname='documents:document_multiple_type_change',
             data={
                 'id_list': self.test_document.pk,
                 'document_type': document_type.pk

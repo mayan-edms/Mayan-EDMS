@@ -7,7 +7,7 @@ from mayan.apps.storage.classes import DefinedStorage
 from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..literals import (
-    STORAGE_NAME_DOCUMENT_IMAGE, STORAGE_NAME_DOCUMENT_FILES
+    STORAGE_NAME_DOCUMENT_VERSION_PAGE_IMAGE_CACHE, STORAGE_NAME_DOCUMENT_FILES
 )
 from ..settings import (
     setting_documentimagecache_storage_arguments,
@@ -57,7 +57,7 @@ class DocumentStorageSettingsTestCase(SmartSettingTestMixin, BaseTestCase):
         with self.assertRaises(expected_exception=TypeError) as assertion:
             importlib.reload(storages)
             DefinedStorage.get(
-                name=STORAGE_NAME_DOCUMENT_IMAGE
+                name=STORAGE_NAME_DOCUMENT_VERSION_PAGE_IMAGE_CACHE
             ).get_storage_instance()
         self.assertTrue('Unable to initialize' in str(assertion.exception))
         self.assertTrue('document image' in str(assertion.exception))

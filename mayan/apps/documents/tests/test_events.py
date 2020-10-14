@@ -9,12 +9,12 @@ from ..permissions import (
 )
 
 from .base import GenericDocumentViewTestCase
-from .mixins import DocumentViewTestMixin, TrashedDocumentViewTestMixin
-
-TEST_DOCUMENT_TYPE_EDITED_LABEL = 'test document type edited label'
-TEST_DOCUMENT_TYPE_2_LABEL = 'test document type 2 label'
-TEST_TRANSFORMATION_NAME = 'rotate'
-TEST_TRANSFORMATION_ARGUMENT = 'degrees: 180'
+from .literals import (
+    TEST_DOCUMENT_TYPE_2_LABEL, TEST_DOCUMENT_TYPE_LABEL_EDITED,
+    TEST_TRANSFORMATION_NAME, TEST_TRANSFORMATION_ARGUMENT
+)
+from .mixins.document_mixins import DocumentViewTestMixin
+from .mixins.trashed_document_mixins import TrashedDocumentViewTestMixin
 
 
 class DocumentEventsTestCase(

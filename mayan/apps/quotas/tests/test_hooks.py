@@ -2,7 +2,7 @@ import logging
 
 from mayan.apps.documents.models.document_models import Document
 from mayan.apps.documents.permissions import (
-    permission_document_create, permission_document_new_version
+    permission_document_create, permission_document_file_new
 )
 from mayan.apps.documents.tests.base import DocumentTestMixin
 from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH
@@ -107,7 +107,7 @@ class QuotaHooksTestCase(
 
         self.grant_access(
             obj=self.test_document,
-            permission=permission_document_new_version
+            permission=permission_document_file_new
         )
         version_count = self.test_document.versions.count()
 

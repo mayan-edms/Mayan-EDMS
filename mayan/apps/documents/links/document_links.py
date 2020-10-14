@@ -30,10 +30,10 @@ link_document_clone_transformations = Link(
     text=_('Clone transformations'),
     view='documents:document_clone_transformations'
 )
-link_document_document_type_edit = Link(
+link_document_type_change = Link(
     args='resolved_object.id', icon_class=icon_document_type_change,
     permissions=(permission_document_properties_edit,), text=_('Change type'),
-    view='documents:document_document_type_edit'
+    view='documents:document_type_change'
 )
 link_document_edit = Link(
     args='resolved_object.id',
@@ -59,9 +59,9 @@ link_document_multiple_clear_transformations = Link(
     text=_('Clear transformations'),
     view='documents:document_multiple_clear_transformations'
 )
-link_document_multiple_document_type_edit = Link(
+link_document_multiple_type_change = Link(
     text=_('Change type'), icon_class=icon_document_type_change,
-    view='documents:document_multiple_document_type_edit'
+    view='documents:document_multiple_type_change'
 )
 link_document_preview = Link(
     args='resolved_object.id', icon_class=icon_document_preview,

@@ -105,6 +105,7 @@ class Source(models.Model):
         """
         Upload an individual document
         """
+        document = None
         try:
 
             document, document_file = document_type.new_document(
@@ -118,7 +119,8 @@ class Source(models.Model):
                 '"%s" from source "%s"; %s',
                 label or file_object.name, self, exception
             )
-            document.delete(to_trash=False)
+            if document:
+                document.delete(to_trash=False)
             raise
         else:
             if user:

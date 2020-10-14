@@ -1,6 +1,6 @@
 from actstream.models import Action
 
-from mayan.apps.documents.tests.test_models import GenericDocumentTestCase
+from mayan.apps.documents.tests.base import GenericDocumentTestCase
 from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..events import (

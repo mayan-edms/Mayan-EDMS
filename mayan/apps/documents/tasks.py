@@ -86,7 +86,7 @@ def task_document_file_page_image_generate(
 
 
 @app.task(bind=True, default_retry_delay=UPLOAD_NEW_VERSION_RETRY_DELAY, ignore_result=True)
-def task_document_file_upload(self, action, document_id, shared_uploaded_file_id, user_id, comment=None):
+def task_document_file_upload(self, document_id, shared_uploaded_file_id, user_id, action=None, comment=None):
     Document = apps.get_model(
         app_label='documents', model_name='Document'
     )

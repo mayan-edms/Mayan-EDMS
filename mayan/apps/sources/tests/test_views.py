@@ -72,7 +72,8 @@ class DocumentUploadWizardViewTestCase(
 
         self.assertEqual(Document.objects.count(), 1)
         self.assertEqual(
-            Document.objects.first().checksum, TEST_SMALL_DOCUMENT_CHECKSUM
+            Document.objects.first().latest_file.checksum,
+            TEST_SMALL_DOCUMENT_CHECKSUM
         )
 
     def test_upload_wizard_with_document_type_access(self):

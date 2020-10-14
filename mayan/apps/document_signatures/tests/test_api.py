@@ -3,7 +3,7 @@ from rest_framework import status
 from mayan.apps.django_gpg.permissions import permission_key_sign
 from mayan.apps.django_gpg.tests.literals import TEST_KEY_PUBLIC_ID
 from mayan.apps.django_gpg.tests.mixins import KeyTestMixin
-from mayan.apps.documents.tests.mixins import DocumentTestMixin
+from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
 from ..permissions import (

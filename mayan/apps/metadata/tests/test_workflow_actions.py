@@ -15,12 +15,12 @@ from ..permissions import (
     permission_document_metadata_remove
 )
 
-from .literals import TEST_METADATA_VALUE
+from .literals import (
+    DOCUMENT_METADATA_ADD_ACTION_CLASS_PATH,
+    DOCUMENT_METADATA_EDIT_ACTION_CLASS_PATH,
+    DOCUMENT_METADATA_REMOVE_ACTION_CLASS_PATH, TEST_METADATA_VALUE
+)
 from .mixins import DocumentMetadataMixin, MetadataTypeTestMixin
-
-DOCUMENT_METADATA_ADD_ACTION_CLASS_PATH = 'mayan.apps.metadata.workflow_actions.DocumentMetadataAddAction'
-DOCUMENT_METADATA_EDIT_ACTION_CLASS_PATH = 'mayan.apps.metadata.workflow_actions.DocumentMetadataEditAction'
-DOCUMENT_METADATA_REMOVE_ACTION_CLASS_PATH = 'mayan.apps.metadata.workflow_actions.DocumentMetadataRemoveAction'
 
 
 class DocumentMetadataActionTestCase(
