@@ -14,8 +14,8 @@ from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.logging.mixins import AppConfigLoggingMixin
+from mayan.apps.templating.classes import AJAXTemplate
 
-from .classes import Template
 from .handlers import (
     handler_pre_initial_setup, handler_pre_upgrade,
     handler_user_locale_profile_session_config, handler_user_locale_profile_create
@@ -144,10 +144,10 @@ class CommonApp(AppConfigLoggingMixin, MayanAppConfig):
                 message=force_text(MESSAGE_SQLITE_WARNING)
             )
 
-        Template(
+        AJAXTemplate(
             name='menu_main', template_name='appearance/menu_main.html'
         )
-        Template(
+        AJAXTemplate(
             name='menu_topbar', template_name='appearance/menu_topbar.html'
         )
 

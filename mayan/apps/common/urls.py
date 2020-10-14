@@ -3,9 +3,7 @@ from django.contrib import admin
 
 from django.views.i18n import JavaScriptCatalog
 
-from .api_views import (
-    APIContentTypeList, APITemplateDetailView, APITemplateListView
-)
+from .api_views import APIContentTypeList
 from .views import (
     AboutView, CurrentUserLocaleProfileDetailsView,
     CurrentUserLocaleProfileEditView, FaviconRedirectView, HomeView,
@@ -57,13 +55,5 @@ api_urls = [
     url(
         regex=r'^content_types/$', view=APIContentTypeList.as_view(),
         name='content-type-list'
-    ),
-    url(
-        regex=r'^templates/$', view=APITemplateListView.as_view(),
-        name='template-list'
-    ),
-    url(
-        regex=r'^templates/(?P<name>[-\w]+)/$',
-        view=APITemplateDetailView.as_view(), name='template-detail'
     )
 ]

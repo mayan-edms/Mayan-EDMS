@@ -11,7 +11,7 @@ from mayan.apps.testing.tests.base import BaseTestCase
 
 class CommonStorageSettingsTestCase(SmartSettingTestMixin, BaseTestCase):
     def tearDown(self):
-        super(CommonStorageSettingsTestCase, self).tearDown()
+        super().tearDown()
         importlib.reload(storages)
 
     def test_setting_documentimagecache_storage_arguments_invalid_value(self):

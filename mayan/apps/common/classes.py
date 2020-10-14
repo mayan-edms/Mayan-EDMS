@@ -1,10 +1,6 @@
-import hashlib
-
 from django.contrib import contenttypes
 from django.core.exceptions import ImproperlyConfigured
 from django.db import models
-from django.template.response import TemplateResponse
-from django.urls import reverse
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
@@ -15,7 +11,6 @@ from mayan.apps.acls.classes import ModelPermission
 from .links import link_object_copy
 from .menus import menu_object
 from .permissions import permission_object_copy
-from .settings import setting_home_view
 
 
 class ModelCopy:
@@ -342,50 +337,6 @@ class PropertyHelper:
         by each subclass.
         """
         raise NotImplementedError
-
-
-class Template:
-    _registry = {}
-
-    @classmethod
-    def all(cls, rendered=False, request=None):
-        if not rendered:
-            return cls._registry.values()
-        else:
-            result = []
-            for template in cls._registry.values():
-                result.append(template.render(request=request))
-            return result
-
-    @classmethod
-    def get(cls, name):
-        return cls._registry[name]
-
-    def __init__(self, name, template_name):
-        self.name = name
-        self.template_name = template_name
-        self.__class__._registry[name] = self
-
-    def get_absolute_url(self):
-        return reverse(
-            kwargs={'name': self.name}, viewname='rest_api:template-detail'
-        )
-
-    def render(self, request):
-        context = {
-            'home_view': setting_home_view.value,
-        }
-        result = TemplateResponse(
-            request=request,
-            template=self.template_name,
-            context=context,
-        ).render()
-
-        # Calculate the hash of the bytes version but return the unicode
-        # version
-        self.html = result.rendered_content.replace('\n', '')
-        self.hex_hash = hashlib.sha256(result.content).hexdigest()
-        return self
 
 
 class ModelAttribute:

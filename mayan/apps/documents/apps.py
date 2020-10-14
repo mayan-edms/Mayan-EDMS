@@ -7,7 +7,7 @@ from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import (
     MissingItem, ModelCopy, ModelField, ModelFieldRelated, ModelProperty,
-    ModelQueryFields, Template
+    ModelQueryFields
 )
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_main, menu_object, menu_related,
@@ -15,13 +15,13 @@ from mayan.apps.common.menus import (
 )
 from mayan.apps.common.signals import signal_post_initial_setup
 from mayan.apps.converter.layers import layer_decorations
-from mayan.apps.dashboards.dashboards import dashboard_main
 from mayan.apps.converter.links import link_transformation_list
 from mayan.apps.converter.permissions import (
     permission_transformation_create,
     permission_transformation_delete, permission_transformation_edit,
     permission_transformation_view,
 )
+from mayan.apps.dashboards.dashboards import dashboard_main
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list,
@@ -29,9 +29,10 @@ from mayan.apps.events.links import (
 from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.rest_api.fields import DynamicSerializerField
+from mayan.apps.templating.classes import AJAXTemplate
 from mayan.apps.views.html_widgets import TwoStateWidget
-from .classes import *
 
+from .classes import *
 from .dashboard_widgets import (
     DashboardWidgetDocumentFilePagesTotal, DashboardWidgetDocumentsInTrash,
     DashboardWidgetDocumentsNewThisMonth,
@@ -427,6 +428,11 @@ class DocumentsApp(MayanAppConfig):
 
         # Document
 
+        AJAXTemplate(
+            name='invalid_document',
+            template_name='documents/invalid_document.html'
+        )
+
         SourceColumn(
             attribute='label', is_object_absolute_url=True, is_identifier=True,
             is_sortable=True, source=Document
@@ -600,11 +606,6 @@ class DocumentsApp(MayanAppConfig):
         SourceColumn(
             attribute='deleted_date_time', include_label=True, order=99,
             source=DeletedDocument
-        )
-
-        Template(
-            name='invalid_document',
-            template_name='documents/invalid_document.html'
         )
 
         dashboard_main.add_widget(
