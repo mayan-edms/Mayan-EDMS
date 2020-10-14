@@ -818,7 +818,8 @@ class SourceColumn:
                 attribute=self.attribute, kwargs=self.kwargs,
                 obj=obj
             )
-            return result.get_absolute_url()
+            if result:
+                return result.get_absolute_url()
 
     def get_sort_field(self):
         if self.sort_field:
