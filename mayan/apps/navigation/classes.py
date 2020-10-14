@@ -744,7 +744,7 @@ class SourceColumn(object):
                 )
             except FieldDoesNotExist as exception:
                 raise ImproperlyConfigured(
-                    '"{}" is not a field or "{}", cannot be used as a '
+                    '"{}" is not a field of "{}", cannot be used as a '
                     'sortable column.'.format(field_name, self.source)
                 ) from exception
 
