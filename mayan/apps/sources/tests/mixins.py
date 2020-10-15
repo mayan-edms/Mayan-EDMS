@@ -1,5 +1,6 @@
 import shutil
 
+from mayan.apps.documents.literals import DOCUMENT_FILE_ACTION_PAGES_NEW
 from mayan.apps.documents.tests.literals import (
     TEST_DOCUMENT_DESCRIPTION, TEST_SMALL_DOCUMENT_PATH
 )
@@ -60,20 +61,28 @@ class DocumentUploadWizardViewTestMixin:
 
 
 class DocumentFileUploadViewTestMixin:
-    def _request_document_file_upload_view(self, source_file):
-        return self.post(
-            viewname='sources:document_file_upload', kwargs={
-                'document_id': self.test_document.pk,
-                'source_id': self.test_source.pk,
-            }, data={'source-file': source_file}
-        )
+    def _request_document_file_upload_view(self):
+        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+            return self.post(
+                viewname='sources:document_file_upload', kwargs={
+                    'document_id': self.test_document.pk,
+                    'source_id': self.test_source.pk,
+                }, data={
+                    'document-action': DOCUMENT_FILE_ACTION_PAGES_NEW,
+                    'source-file': file_object
+                }
+            )
 
-    def _request_document_file_upload_no_source_view(self, source_file):
-        return self.post(
-            viewname='sources:document_file_upload', kwargs={
-                'document_id': self.test_document.pk,
-            }, data={'source-file': source_file}
-        )
+    def _request_document_file_upload_no_source_view(self):
+        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+            return self.post(
+                viewname='sources:document_file_upload', kwargs={
+                    'document_id': self.test_document.pk,
+                }, data={
+                    'document-action': DOCUMENT_FILE_ACTION_PAGES_NEW,
+                    'source-file': file_object
+                }
+            )
 
 
 class StagingFolderAPIViewTestMixin:

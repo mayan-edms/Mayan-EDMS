@@ -13,9 +13,10 @@ from mayan.apps.rest_api import generics
 from mayan.apps.views.generics import DownloadMixin
 
 from .literals import DOCUMENT_IMAGE_TASK_TIMEOUT
-from .models import (
-    DeletedDocument, Document, DocumentType, RecentDocument
-)
+from .models.document_file_models import DocumentFile
+from .models.document_models import Document
+from .models.document_type_models import DocumentType
+from .models.misc_models import DeletedDocument, RecentDocument
 from .permissions import (
     permission_document_create, permission_document_edit,
     permission_document_file_delete, permission_document_file_download,
@@ -27,12 +28,26 @@ from .permissions import (
     permission_trashed_document_restore
 )
 from .serializers import (
-    DeletedDocumentSerializer, DocumentFilePageSerializer, DocumentSerializer,
-    DocumentTypeSerializer, DocumentFileSerializer,
-    NewDocumentDocumentTypeSerializer, NewDocumentSerializer,
-    NewDocumentFileSerializer, RecentDocumentSerializer,
-    WritableDocumentSerializer, WritableDocumentTypeSerializer,
-    WritableDocumentFileSerializer
+    DocumentSerializer,
+
+    DocumentCreateSerializer,
+    DocumentTypeChangeSerializer,
+    DocumentWritableSerializer,
+
+    DocumentFileSerializer,
+    DocumentFileCreateSerializer,
+    DocumentFileWritableSerializer,
+
+    DocumentFilePageSerializer,
+
+    DocumentTypeSerializer,
+    DocumentTypeWritableSerializer,
+
+    DocumentVersionPageSerializer,
+
+    RecentDocumentSerializer,
+
+    TrashedDocumentSerializer,
 )
 from .settings import (
     setting_document_file_page_image_cache_time,
@@ -52,10 +67,10 @@ class APITrashedDocumentListView(generics.ListAPIView):
     """
     mayan_object_permissions = {'GET': (permission_document_view,)}
     queryset = DeletedDocument.objects.all()
-    serializer_class = DeletedDocumentSerializer
+    serializer_class = TrashedDocumentSerializer
 
 
-class APIDeletedDocumentView(generics.RetrieveDestroyAPIView):
+class APITrashedDocumentView(generics.RetrieveDestroyAPIView):
     """
     Returns the selected trashed document details.
     delete: Delete the trashed document.
@@ -66,10 +81,10 @@ class APIDeletedDocumentView(generics.RetrieveDestroyAPIView):
         'GET': (permission_document_view,)
     }
     queryset = DeletedDocument.objects.all()
-    serializer_class = DeletedDocumentSerializer
+    serializer_class = TrashedDocumentSerializer
 
 
-class APIDeletedDocumentRestoreView(generics.GenericAPIView):
+class APITrashedDocumentRestoreView(generics.GenericAPIView):
     """
     post: Restore a trashed document.
     """
@@ -89,7 +104,7 @@ class APIDeletedDocumentRestoreView(generics.GenericAPIView):
         return Response(status=status.HTTP_200_OK)
 
 
-class APIdocument_file(generics.GenericAPIView):
+class APIDocumentTypeChangeView(generics.GenericAPIView):
     """
     post: Change the type of the selected document.
     """
@@ -97,7 +112,7 @@ class APIdocument_file(generics.GenericAPIView):
         'POST': (permission_document_properties_edit,),
     }
     queryset = Document.objects.all()
-    serializer_class = NewDocumentDocumentTypeSerializer
+    serializer_class = DocumentTypeChangeSerializer
 
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -107,31 +122,6 @@ class APIdocument_file(generics.GenericAPIView):
             document_type=document_type, _user=self.request.user
         )
         return Response(status=status.HTTP_200_OK)
-
-
-class APIDocumentDownloadView(DownloadMixin, generics.RetrieveAPIView):
-    """
-    get: Download the latest file of a document.
-    """
-    mayan_object_permissions = {
-        'GET': (permission_document_file_download,)
-    }
-    queryset = Document.objects.all()
-
-    def get_download_file_object(self):
-        return self.get_object().open()
-
-    def get_download_filename(self):
-        return self.get_object().label
-
-    def get_serializer(self, *args, **kwargs):
-        return None
-
-    def get_serializer_class(self):
-        return None
-
-    def retrieve(self, request, *args, **kwargs):
-        return self.render_to_response()
 
 
 class APIDocumentListView(generics.ListCreateAPIView):
@@ -152,7 +142,7 @@ class APIDocumentListView(generics.ListCreateAPIView):
         if self.request.method == 'GET':
             return DocumentSerializer
         elif self.request.method == 'POST':
-            return NewDocumentSerializer
+            return DocumentCreateSerializer
 
     def perform_create(self, serializer):
         AccessControlList.objects.check_access(
@@ -161,6 +151,31 @@ class APIDocumentListView(generics.ListCreateAPIView):
         )
         serializer.save(_user=self.request.user)
 
+'''
+class APIDocumentFileDownloadView(DownloadMixin, generics.RetrieveAPIView):
+    """
+    get: Download the specified document file.
+    """
+    mayan_object_permissions = {
+        'GET': (permission_document_file_download,)
+    }
+    queryset = DocumentFile.objects.all()
+
+    def get_download_file_object(self):
+        return self.get_object().open()
+
+    def get_download_filename(self):
+        return self.get_object().label
+
+    def get_serializer(self, *args, **kwargs):
+        return None
+
+    def get_serializer_class(self):
+        return None
+
+    def retrieve(self, request, *args, **kwargs):
+        return self.render_to_response()
+'''
 
 class APIDocumentFileDownloadView(DownloadMixin, generics.RetrieveAPIView):
     """
@@ -169,13 +184,22 @@ class APIDocumentFileDownloadView(DownloadMixin, generics.RetrieveAPIView):
     lookup_url_kwarg = 'file_pk'
 
     def get_document(self):
-        document = get_object_or_404(Document, pk=self.kwargs['pk'])
-
-        AccessControlList.objects.check_access(
-            obj=document, permissions=(permission_document_file_download,),
-            user=self.request.user
+        queryset = AccessControlList.objects.restrict_queryset(
+            permssion=permission_document_file_download,
+            queryset=Document.objects.all(), user=self.request.user
         )
-        return document
+
+        #    obj=document, permissions=(permission_document_file_download,),
+        #    user=self.request.user
+        #)
+
+        return get_object_or_404(klass=queryset, pk=self.kwargs['pk'])
+
+        #AccessControlList.objects.check_access(
+        #    obj=document, permissions=(permission_document_file_download,),
+        #    user=self.request.user
+        #)
+        #return document
 
     def get_download_file_object(self):
         instance = self.get_object()
@@ -320,120 +344,6 @@ class APIDocumentFilePageView(generics.RetrieveUpdateAPIView):
         return self.get_document_file().pages.all()
 
 
-class APIDocumentTypeListView(generics.ListCreateAPIView):
-    """
-    get: Returns a list of all the document types.
-    post: Create a new document type.
-    """
-    mayan_object_permissions = {'GET': (permission_document_type_view,)}
-    mayan_view_permissions = {'POST': (permission_document_type_create,)}
-    queryset = DocumentType.objects.all()
-    serializer_class = DocumentTypeSerializer
-
-    def get_serializer(self, *args, **kwargs):
-        if not self.request:
-            return None
-
-        return super(APIDocumentTypeListView, self).get_serializer(*args, **kwargs)
-
-    def get_serializer_class(self):
-        if self.request.method == 'GET':
-            return DocumentTypeSerializer
-        else:
-            return WritableDocumentTypeSerializer
-
-
-class APIDocumentTypeView(generics.RetrieveUpdateDestroyAPIView):
-    """
-    delete: Delete the selected document type.
-    get: Return the details of the selected document type.
-    patch: Edit the properties of the selected document type.
-    put: Edit the properties of the selected document type.
-    """
-    mayan_object_permissions = {
-        'GET': (permission_document_type_view,),
-        'PUT': (permission_document_type_edit,),
-        'PATCH': (permission_document_type_edit,),
-        'DELETE': (permission_document_type_delete,)
-    }
-    queryset = DocumentType.objects.all()
-
-    def get_serializer(self, *args, **kwargs):
-        if not self.request:
-            return None
-
-        return super(APIDocumentTypeView, self).get_serializer(*args, **kwargs)
-
-    def get_serializer_class(self):
-        if self.request.method == 'GET':
-            return DocumentTypeSerializer
-        else:
-            return WritableDocumentTypeSerializer
-
-
-class APIDocumentTypeDocumentListView(generics.ListAPIView):
-    """
-    Returns a list of all the documents of a particular document type.
-    """
-    mayan_object_permissions = {'GET': (permission_document_view,)}
-    serializer_class = DocumentSerializer
-
-    def get_queryset(self):
-        document_type = get_object_or_404(DocumentType, pk=self.kwargs['pk'])
-        AccessControlList.objects.check_access(
-            obj=document_type, permissions=(permission_document_type_view,),
-            user=self.request.user
-        )
-
-        return document_type.documents.all()
-
-
-class APIDocumentView(generics.RetrieveUpdateDestroyAPIView):
-    """
-    Returns the selected document details.
-    delete: Move the selected document to the thrash.
-    get: Return the details of the selected document.
-    patch: Edit the properties of the selected document.
-    put: Edit the properties of the selected document.
-    """
-    mayan_object_permissions = {
-        'GET': (permission_document_view,),
-        'PUT': (permission_document_properties_edit,),
-        'PATCH': (permission_document_properties_edit,),
-        'DELETE': (permission_document_trash,)
-    }
-    queryset = Document.objects.all()
-
-    def get_serializer(self, *args, **kwargs):
-        if not self.request:
-            return None
-
-        return super(APIDocumentView, self).get_serializer(*args, **kwargs)
-
-    def get_serializer_context(self):
-        return {
-            'format': self.format_kwarg,
-            'request': self.request,
-            'view': self
-        }
-
-    def get_serializer_class(self):
-        if self.request.method == 'GET':
-            return DocumentSerializer
-        else:
-            return WritableDocumentSerializer
-
-
-class APIRecentDocumentListView(generics.ListAPIView):
-    """
-    get: Return a list of the recent documents for the current user.
-    """
-    serializer_class = RecentDocumentSerializer
-
-    def get_queryset(self):
-        return RecentDocument.objects.filter(user=self.request.user)
-
-
 class APIDocumentFilePageListView(generics.ListAPIView):
     serializer_class = DocumentFilePageSerializer
 
@@ -481,7 +391,7 @@ class APIDocumentFilesListView(generics.ListCreateAPIView):
         if self.request.method == 'GET':
             return DocumentFileSerializer
         elif self.request.method == 'POST':
-            return NewDocumentFileSerializer
+            return DocumentFileCreateSerializer
 
     def get_queryset(self):
         return get_object_or_404(Document, pk=self.kwargs['pk']).files.all()
@@ -521,7 +431,7 @@ class APIDocumentFileView(generics.RetrieveDestroyAPIView):
 
         return AccessControlList.objects.restrict_queryset(
             permission=permission_required,
-            querset=DocumentFile.objects.all(), user=self.request.user
+            queryset=DocumentFile.objects.all(), user=self.request.user
         )
         return self.get_document().files.all()
 
@@ -535,7 +445,142 @@ class APIDocumentFileView(generics.RetrieveDestroyAPIView):
         if self.request.method == 'GET':
             return DocumentFileSerializer
         else:
-            return WritableDocumentFileSerializer
+            return DocumentFileWritableSerializer
+
+
+class APIDocumentTypeListView(generics.ListCreateAPIView):
+    """
+    get: Returns a list of all the document types.
+    post: Create a new document type.
+    """
+    mayan_object_permissions = {'GET': (permission_document_type_view,)}
+    mayan_view_permissions = {'POST': (permission_document_type_create,)}
+    queryset = DocumentType.objects.all()
+    serializer_class = DocumentTypeSerializer
+
+    def get_serializer(self, *args, **kwargs):
+        if not self.request:
+            return None
+
+        return super(APIDocumentTypeListView, self).get_serializer(*args, **kwargs)
+
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return DocumentTypeSerializer
+        else:
+            return DocumentTypeWritableSerializer
+
+
+class APIDocumentTypeView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    delete: Delete the selected document type.
+    get: Return the details of the selected document type.
+    patch: Edit the properties of the selected document type.
+    put: Edit the properties of the selected document type.
+    """
+    mayan_object_permissions = {
+        'GET': (permission_document_type_view,),
+        'PUT': (permission_document_type_edit,),
+        'PATCH': (permission_document_type_edit,),
+        'DELETE': (permission_document_type_delete,)
+    }
+    queryset = DocumentType.objects.all()
+
+    def get_serializer(self, *args, **kwargs):
+        if not self.request:
+            return None
+
+        return super(APIDocumentTypeView, self).get_serializer(*args, **kwargs)
+
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return DocumentTypeSerializer
+        else:
+            return DocumentTypeWritableSerializer
+
+
+class APIDocumentTypeDocumentListView(generics.ListAPIView):
+    """
+    Returns a list of all the documents of a particular document type.
+    """
+    mayan_object_permissions = {'GET': (permission_document_view,)}
+    serializer_class = DocumentSerializer
+
+    def get_queryset(self):
+        document_type = get_object_or_404(DocumentType, pk=self.kwargs['pk'])
+        AccessControlList.objects.check_access(
+            obj=document_type, permissions=(permission_document_type_view,),
+            user=self.request.user
+        )
+
+        return document_type.documents.all()
+
+
+class APIDocumentVersionPageListView(generics.ListAPIView):
+    serializer_class = DocumentVersionPageSerializer
+
+    def get_document(self):
+        document = get_object_or_404(Document, pk=self.kwargs['pk'])
+
+        AccessControlList.objects.check_access(
+            obj=document, permissions=(permission_document_version_view,),
+            user=self.request.user
+        )
+        return document
+
+    def get_document_version(self):
+        return get_object_or_404(
+            self.get_document().versions.all(), pk=self.kwargs['version_pk']
+        )
+
+    def get_queryset(self):
+        return self.get_document_version().pages.all()
+
+
+class APIDocumentView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Returns the selected document details.
+    delete: Move the selected document to the thrash.
+    get: Return the details of the selected document.
+    patch: Edit the properties of the selected document.
+    put: Edit the properties of the selected document.
+    """
+    mayan_object_permissions = {
+        'GET': (permission_document_view,),
+        'PUT': (permission_document_properties_edit,),
+        'PATCH': (permission_document_properties_edit,),
+        'DELETE': (permission_document_trash,)
+    }
+    queryset = Document.objects.all()
+
+    def get_serializer(self, *args, **kwargs):
+        if not self.request:
+            return None
+
+        return super(APIDocumentView, self).get_serializer(*args, **kwargs)
+
+    def get_serializer_context(self):
+        return {
+            'format': self.format_kwarg,
+            'request': self.request,
+            'view': self
+        }
+
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return DocumentSerializer
+        else:
+            return DocumentWritableSerializer
+
+
+class APIRecentDocumentListView(generics.ListAPIView):
+    """
+    get: Return a list of the recent documents for the current user.
+    """
+    serializer_class = RecentDocumentSerializer
+
+    def get_queryset(self):
+        return RecentDocument.objects.filter(user=self.request.user)
 
 
 class APIDocumentVersionPageImageView(generics.RetrieveAPIView):

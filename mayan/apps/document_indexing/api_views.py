@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.permissions import permission_document_view
-from mayan.apps.documents.serializers import DocumentSerializer
+from mayan.apps.documents.serializers.document_serializers import DocumentSerializer
 from mayan.apps.rest_api import generics
 from mayan.apps.rest_api.mixins import AsymmetricSerializerViewMixin
 

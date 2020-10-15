@@ -174,6 +174,11 @@ class DocumentsApp(MayanAppConfig):
         DocumentVersionPage = self.get_model(model_name='DocumentVersionPage')
         DuplicatedDocument = self.get_model(model_name='DuplicatedDocument')
 
+        AJAXTemplate(
+            name='invalid_document',
+            template_name='documents/invalid_document.html'
+        )
+
         link_decorations_list = link_transformation_list.copy(
             layer=layer_decorations
         )
@@ -181,7 +186,7 @@ class DocumentsApp(MayanAppConfig):
 
         DynamicSerializerField.add_serializer(
             klass=Document,
-            serializer_class='mayan.apps.documents.serializers.DocumentSerializer'
+            serializer_class='mayan.apps.documents.serializers.document_serializers.DocumentSerializer'
         )
 
         EventModelRegistry.register(model=DeletedDocument)
@@ -427,11 +432,6 @@ class DocumentsApp(MayanAppConfig):
         document_version_page_thumbnail_widget = DocumentVersionPageThumbnailWidget()
 
         # Document
-
-        AJAXTemplate(
-            name='invalid_document',
-            template_name='documents/invalid_document.html'
-        )
 
         SourceColumn(
             attribute='label', is_object_absolute_url=True, is_identifier=True,

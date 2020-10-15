@@ -141,7 +141,8 @@ class DocumentDocumentTypeChangeView(MultipleObjectFormActionView):
 
     def object_action(self, form, instance):
         instance.document_type_change(
-            form.cleaned_data['document_type'], _user=self.request.user
+            document_type=form.cleaned_data['document_type'],
+            _user=self.request.user
         )
 
         messages.success(
@@ -182,10 +183,8 @@ class DocumentPropertiesEditView(SingleObjectEditView):
     pk_url_kwarg = 'document_id'
 
     def dispatch(self, request, *args, **kwargs):
-        result = super(
-            DocumentPropertiesEditView, self
-        ).dispatch(request, *args, **kwargs)
-        self.object.add_as_recent_document_for_user(request.user)
+        result = super().dispatch(request, *args, **kwargs)
+        self.object.add_as_recent_document_for_user(user=request.user)
         return result
 
     def get_extra_context(self):
@@ -194,9 +193,9 @@ class DocumentPropertiesEditView(SingleObjectEditView):
             'title': _('Edit properties of document: %s') % self.object,
         }
 
-    def get_save_extra_data(self):
+    def get_instance_extra_data(self):
         return {
-            '_user': self.request.user
+            '_event_actor': self.request.user
         }
 
     def get_post_action_redirect(self):

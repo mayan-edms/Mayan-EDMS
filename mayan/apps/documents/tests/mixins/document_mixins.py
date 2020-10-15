@@ -19,7 +19,7 @@ class DocumentAPIViewTestMixin:
     def _request_test_document_api_download_view(self):
         return self.get(
             viewname='rest_api:document-download', kwargs={
-                'pk': self.test_document.pk
+                'document_id': self.test_document.pk
             }
         )
 
@@ -35,21 +35,21 @@ class DocumentAPIViewTestMixin:
     def _request_test_document_description_api_edit_via_patch_view(self):
         return self.patch(
             viewname='rest_api:document-detail', kwargs={
-                'pk': self.test_document.pk
+                'document_id': self.test_document.pk
             }, data={'description': TEST_DOCUMENT_DESCRIPTION_EDITED}
         )
 
     def _request_test_document_description_api_edit_via_put_view(self):
         return self.put(
             viewname='rest_api:document-detail', kwargs={
-                'pk': self.test_document.pk
+                'document_id': self.test_document.pk
             }, data={'description': TEST_DOCUMENT_DESCRIPTION_EDITED}
         )
 
     def _request_test_document_document_type_change_api_view(self):
         return self.post(
             viewname='rest_api:document-type-change', kwargs={
-                'pk': self.test_document.pk
+                'document_id': self.test_document.pk
             }, data={'new_document_type': self.test_document_type_2.pk}
         )
 

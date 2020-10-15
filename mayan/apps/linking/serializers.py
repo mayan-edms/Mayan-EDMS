@@ -5,8 +5,11 @@ from rest_framework.exceptions import ValidationError
 from rest_framework.reverse import reverse
 
 from mayan.apps.documents.models import DocumentType
-from mayan.apps.documents.serializers import (
-    DocumentSerializer, DocumentTypeSerializer
+from mayan.apps.documents.serializers.document_serializers import (
+    DocumentSerializer
+)
+from mayan.apps.documents.serializers.document_type_serializers import (
+    DocumentTypeSerializer
 )
 
 from .models import SmartLink, SmartLinkCondition

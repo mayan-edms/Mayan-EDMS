@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from rest_framework.reverse import reverse
 
-from mayan.apps.documents.serializers import DocumentSerializer
+from mayan.apps.documents.serializers.document_serializers import DocumentSerializer
 from mayan.apps.user_management.serializers import UserSerializer
 
 from .models import Comment

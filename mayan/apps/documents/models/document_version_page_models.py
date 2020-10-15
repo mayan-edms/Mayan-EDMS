@@ -148,6 +148,9 @@ class DocumentVersionPage(ModelMixinPagedModel, models.Model):
         The purpose of this unique URL is to allow client side caching
         if document page images.
         """
+        if not self.content_object:
+            return '#'
+
         transformations_hash = BaseTransformation.combine(
             self.get_combined_transformation_list(*args, **kwargs)
         )

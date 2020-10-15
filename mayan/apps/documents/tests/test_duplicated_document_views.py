@@ -1,11 +1,14 @@
 from ..permissions import permission_document_view
 
 from .base import GenericDocumentViewTestCase
-from .mixins.duplicated_document_mixins import DuplicatedDocumentsViewsTestMixin
+from .mixins.duplicated_document_mixins import (
+    DuplicatedDocumentsTestMixin, DuplicatedDocumentsViewsTestMixin
+)
 
 
 class DuplicatedDocumentsViewsTestCase(
-    DuplicatedDocumentsViewsTestMixin, GenericDocumentViewTestCase
+    DuplicatedDocumentsTestMixin, DuplicatedDocumentsViewsTestMixin,
+    GenericDocumentViewTestCase
 ):
     def test_document_duplicates_list_no_permission(self):
         self._upload_duplicate_document()

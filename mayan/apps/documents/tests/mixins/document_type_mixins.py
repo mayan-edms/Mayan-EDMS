@@ -33,21 +33,21 @@ class DocumentTypeAPIViewTestMixin:
     def _request_test_document_type_api_delete_view(self):
         return self.delete(
             viewname='rest_api:documenttype-detail', kwargs={
-                'pk': self.test_document_type.pk,
+                'document_type_id': self.test_document_type.pk,
             }
         )
 
     def _request_test_document_type_api_patch_view(self):
         return self.patch(
             viewname='rest_api:documenttype-detail', kwargs={
-                'pk': self.test_document_type.pk,
+                'document_type_id': self.test_document_type.pk,
             }, data={'label': TEST_DOCUMENT_TYPE_LABEL_EDITED}
         )
 
     def _request_test_document_type_api_put_view(self):
         return self.put(
             viewname='rest_api:documenttype-detail', kwargs={
-                'pk': self.test_document_type.pk,
+                'document_type_id': self.test_document_type.pk,
             }, data={'label': TEST_DOCUMENT_TYPE_LABEL_EDITED}
         )
 

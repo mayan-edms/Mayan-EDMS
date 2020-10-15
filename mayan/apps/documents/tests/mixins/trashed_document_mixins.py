@@ -1,45 +1,45 @@
 class TrashedDocumentAPIViewTestMixin:
-    def _request_test_document_api_trash_view(self):
+    def _request_test_document_trash_api_view(self):
         return self.delete(
             viewname='rest_api:document-detail', kwargs={
-                'pk': self.test_document.pk
+                'document_id': self.test_document.pk
             }
         )
 
-    def _request_test_trashed_document_api_delete_view(self):
+    def _request_test_trashed_document_delete_api_view(self):
         return self.delete(
             viewname='rest_api:trasheddocument-detail', kwargs={
-                'pk': self.test_document.pk
+                'document_id': self.test_document.pk
             }
         )
 
-    def _request_test_trashed_document_api_detail_view(self):
+    def _request_test_trashed_document_detail_api_view(self):
         return self.get(
             viewname='rest_api:trasheddocument-detail', kwargs={
-                'pk': self.test_document.pk
+                'document_id': self.test_document.pk
             }
         )
 
-    def _request_test_trashed_document_api_image_view(self):
-        latest_file = self.test_document.latest_file
+    def _request_test_trashed_document_image_api_view(self):
+        latest_version = self.test_document.latest_version
 
         return self.get(
-            viewname='rest_api:documentpage-image', kwargs={
-                'pk': latest_file.document_id,
-                'file_pk': latest_file.pk,
-                'page_pk': latest_file.pages.first().pk
+            viewname='rest_api:documentversionpage-image', kwargs={
+                'document_id': self.test_document.pk,
+                'document_version_id': latest_version.pk,
+                'document_version_page_id': latest_version.pages.first().pk
             }
         )
 
-    def _request_test_trashed_document_api_list_view(self):
+    def _request_test_trashed_document_list_api_view(self):
         return self.get(
             viewname='rest_api:trasheddocument-list'
         )
 
-    def _request_test_trashed_document_api_restore_view(self):
+    def _request_test_trashed_document_restore_api_view(self):
         return self.post(
             viewname='rest_api:trasheddocument-restore', kwargs={
-                'pk': self.test_document.pk
+                'document_id': self.test_document.pk
             }
         )
 

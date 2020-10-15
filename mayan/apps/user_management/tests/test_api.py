@@ -38,7 +38,7 @@ class GroupAPITestCase(
 
         self.assertEqual(Group.objects.count(), group_count + 1)
 
-    def test_group_delete_no_permssion(self):
+    def test_group_delete_no_permission(self):
         self._create_test_group()
         group_count = Group.objects.count()
 

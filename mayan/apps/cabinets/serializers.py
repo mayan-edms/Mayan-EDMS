@@ -7,7 +7,7 @@ from rest_framework.settings import api_settings
 from rest_framework_recursive.fields import RecursiveField
 
 from mayan.apps.documents.models import Document
-from mayan.apps.documents.serializers import DocumentSerializer
+from mayan.apps.documents.serializers.document_serializers import DocumentSerializer
 
 from .models import Cabinet
 

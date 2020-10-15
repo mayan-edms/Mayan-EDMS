@@ -133,8 +133,9 @@ class DocumentFilePage(ModelMixinPagedModel, models.Model):
         final_url.args = kwargs
         final_url.path = reverse(
             viewname='rest_api:documentfilepage-image', kwargs={
-                'pk': self.document_file.document_id,
-                'file_pk': self.document_file_id, 'page_pk': self.pk
+                'document_id': self.document_file.document_id,
+                'document_file_id': self.document_file_id,
+                'document_file_page_id': self.pk
             }
         )
         final_url.args['_hash'] = transformations_hash

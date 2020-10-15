@@ -41,7 +41,7 @@ class CabinetAPITestCase(
 
         self.assertEqual(Cabinet.objects.count(), 1)
 
-    def test_cabinet_delete_api_view_no_permssions(self):
+    def test_cabinet_delete_api_view_no_permissions(self):
         self._create_test_cabinet()
 
         cabinet_count = Cabinet.objects.count()

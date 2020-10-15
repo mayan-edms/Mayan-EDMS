@@ -6,6 +6,59 @@ from ..literals import (
 )
 
 
+class DocumentVersionAPIViewTestMixin:
+    def _request_test_document_version_api_delete_view(self):
+        return self.delete(
+            viewname='rest_api:documentversion-detail', kwargs={
+                'document_id': self.test_document.pk,
+                'document_version_id': self.test_document.latest_version.pk
+            }
+        )
+
+    def _request_test_document_version_api_edit_via_patch_view(self):
+        return self.patch(
+            viewname='rest_api:documentversion-detail', kwargs={
+                'document_id': self.test_document.pk,
+                'document_version_id': self.test_document.latest_version.pk
+            }, data={'comment': TEST_DOCUMENT_VERSION_COMMENT_EDITED}
+        )
+
+    def _request_test_document_version_api_edit_via_put_view(self):
+        return self.put(
+            viewname='rest_api:documentversion-detail', kwargs={
+                'document_id': self.test_document.pk,
+                'document_version_id': self.test_document.latest_version.pk
+            }, data={'comment': TEST_DOCUMENT_VERSION_COMMENT_EDITED}
+        )
+
+    def _request_test_document_version_api_export_view(self):
+        return self.get(
+            viewname='rest_api:documentversion-export', kwargs={
+                'document_id': self.test_document.pk,
+                'document_version_id': self.test_document.latest_version.pk,
+            }
+        )
+
+    def _request_test_document_version_api_list_view(self):
+        return self.get(
+            viewname='rest_api:documentversion-list', kwargs={
+                'document_version_id': self.test_document.pk
+            }
+        )
+
+
+class DocumentVersionPageAPIViewTestMixin:
+    def _request_document_version_page_image(self):
+        page = self.test_document.pages.first()
+        return self.get(
+            viewname='rest_api:documentversionpage-image', kwargs={
+                'document_id': page.document_version.document_id,
+                'document_version_id': page.document_version_id,
+                'document_version_page_id': page.pk
+            }
+        )
+
+
 class DocumentVersionTestMixin:
     def _create_document_transformation(self):
         layer_saved_transformations.add_transformation_to(

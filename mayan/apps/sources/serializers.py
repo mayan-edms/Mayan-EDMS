@@ -88,7 +88,7 @@ class WebFormSourceSerializer(serializers.Serializer):
         model = WebFormSource
 
 
-class NewDocumentSerializer(serializers.Serializer):
+class DocumentCreateSerializer(serializers.Serializer):
     source = serializers.IntegerField()
     document_type = serializers.IntegerField(required=False)
     description = serializers.CharField(required=False)

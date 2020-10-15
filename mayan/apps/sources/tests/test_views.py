@@ -79,7 +79,7 @@ class DocumentUploadWizardViewTestCase(
     def test_upload_wizard_with_document_type_access(self):
         """
         Test uploading of documents by granting the document create
-        permssion for the document type to the user
+        permission for the document type to the user
         """
         # Create an access control entry giving the role the document
         # create permission for the selected document type.
@@ -175,10 +175,7 @@ class DocumentFileUploadViewTestCase(
     def test_document_file_upload_view_no_permission(self):
         file_count = self.test_document.files.count()
 
-        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-            response = self._request_document_file_upload_view(
-                source_file=file_object
-            )
+        response = self._request_document_file_upload_view()
 
         self.assertEqual(response.status_code, 403)
         self.test_document.refresh_from_db()
@@ -193,12 +190,9 @@ class DocumentFileUploadViewTestCase(
         )
         file_count = self.test_document.files.count()
 
-        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-            response = self._request_document_file_upload_view(
-                source_file=file_object
-            )
-
+        response = self._request_document_file_upload_view()
         self.assertEqual(response.status_code, 302)
+
         self.test_document.refresh_from_db()
         self.assertEqual(
             self.test_document.files.count(), file_count + 1
@@ -207,12 +201,9 @@ class DocumentFileUploadViewTestCase(
     def test_document_file_upload_no_source_view_no_permission(self):
         file_count = self.test_document.files.count()
 
-        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-            response = self._request_document_file_upload_no_source_view(
-                source_file=file_object
-            )
-
+        response = self._request_document_file_upload_no_source_view()
         self.assertEqual(response.status_code, 403)
+
         self.test_document.refresh_from_db()
         self.assertEqual(
             self.test_document.files.count(), file_count
@@ -225,10 +216,7 @@ class DocumentFileUploadViewTestCase(
         )
         file_count = self.test_document.files.count()
 
-        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-            response = self._request_document_file_upload_no_source_view(
-                source_file=file_object
-            )
+        response = self._request_document_file_upload_no_source_view()
 
         self.assertEqual(response.status_code, 302)
         self.test_document.refresh_from_db()

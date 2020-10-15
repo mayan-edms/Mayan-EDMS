@@ -1,15 +1,21 @@
 from django.conf.urls import url
 
-from .api_views import (
-    APITrashedDocumentListView, APIDeletedDocumentRestoreView,
-    APIDeletedDocumentView, APIdocument_file,
-    APIDocumentDownloadView, APIDocumentView, APIDocumentListView,
-    APIDocumentFileDownloadView, APIDocumentFilePageImageView,
-    APIDocumentFilePageView, APIDocumentTypeDocumentListView,
-    APIDocumentTypeListView, APIDocumentTypeView,
-    APIDocumentFilesListView, APIDocumentFilePageListView,
-    APIDocumentFileView, APIRecentDocumentListView,
-    APIDocumentVersionPageImageView
+from .api_views.document_api_views import (
+    APIDocumentDetailView, APIDocumentListView, APIDocumentTypeChangeView,
+    APIRecentDocumentListView, APITrashedDocumentListView,
+    APITrashedDocumentRestoreView, APITrashedDocumentDetailView
+)
+from .api_views.document_file_api_views import (
+    APIDocumentFileDetailView,  APIDocumentFileDownloadView,
+    APIDocumentFilesListView, APIDocumentFilePageImageView,
+    APIDocumentFilePageDetailView, APIDocumentFilePageListView
+)
+from .api_views.document_type_api_views import (
+    APIDocumentTypeDetailView, APIDocumentTypeDocumentListView,
+    APIDocumentTypeListView
+)
+from .api_views.document_version_api_views import (
+    APIDocumentVersionPageImageView, APIDocumentVersionPageListView
 )
 from .views.document_file_views import (
     DocumentFileDeleteView, DocumentFileDownloadView, DocumentFileListView,
@@ -483,94 +489,110 @@ urlpatterns.extend(urlpatterns_trashed_documents)
 
 api_urls_documents = [
     url(
-        regex=r'^documents/$', view=APIDocumentListView.as_view(),
-        name='document-list'
+        regex=r'^documents/$', name='document-list',
+        view=APIDocumentListView.as_view()
+
     ),
     url(
-        regex=r'^documents/(?P<pk>[0-9]+)/$', view=APIDocumentView.as_view(),
-        name='document-detail'
+        regex=r'^documents/(?P<document_id>[0-9]+)/$',
+        name='document-detail',
+        view=APIDocumentDetailView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<pk>[0-9]+)/download/$',
-        view=APIDocumentDownloadView.as_view(), name='document-download'
+        regex=r'^documents/(?P<document_id>[0-9]+)/type/change/$',
+        name='document-type-change', view=APIDocumentTypeChangeView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<pk>[0-9]+)/type/change/$',
-        view=APIdocument_file.as_view(),
-        name='document-type-change'
-    ),
-    url(
-        regex=r'^documents/(?P<pk>[0-9]+)/files/$',
-        view=APIDocumentFilesListView.as_view(),
-        name='documentfile-list'
-    ),
-    url(
-        regex=r'^documents/(?P<pk>[0-9]+)/files/(?P<file_pk>[0-9]+)/$',
-        view=APIDocumentFileView.as_view(), name='documentfile-detail'
-    ),
-    url(
-        regex=r'^documents/(?P<pk>[0-9]+)/files/(?P<file_pk>[0-9]+)/download/$',
-        view=APIDocumentFileDownloadView.as_view(),
-        name='documentfile-download'
-    ),
-    url(
-        regex=r'^documents/recent/$', view=APIRecentDocumentListView.as_view(),
-        name='document-recent-list'
+        regex=r'^documents/recent/$', name='document-recent-list',
+        view=APIRecentDocumentListView.as_view()
     )
 ]
 
 api_urls_document_files = [
     url(
-        regex=r'^documents/(?P<pk>[0-9]+)/files/(?P<file_pk>[0-9]+)/pages/$',
-        view=APIDocumentFilePageListView.as_view(),
-        name='documentfilepage-list'
+        regex=r'^documents/(?P<document_id>[0-9]+)/files/$',
+        name='documentfile-list',
+        view=APIDocumentFilesListView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<pk>[0-9]+)/files/(?P<file_pk>[0-9]+)/pages/(?P<page_pk>[0-9]+)$',
-        view=APIDocumentFilePageView.as_view(), name='documentfilepage-detail'
+        regex=r'^documents/(?P<document_id>[0-9]+)/files/(?P<document_file_id>[0-9]+)/$',
+        name='documentfile-detail', view=APIDocumentFileDetailView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<pk>[0-9]+)/files/(?P<file_pk>[0-9]+)/pages/(?P<page_pk>[0-9]+)/image/$',
-        view=APIDocumentFilePageImageView.as_view(), name='documentfilepage-image'
+        regex=r'^documents/(?P<document_id>[0-9]+)/files/(?P<document_file_id>[0-9]+)/download/$',
+        name='documentfile-download',
+        view=APIDocumentFileDownloadView.as_view()
+    ),
+    url(
+        regex=r'^documents/(?P<document_id>[0-9]+)/files/(?P<document_file_id>[0-9]+)/pages/$',
+        name='documentfilepage-list',
+        view=APIDocumentFilePageListView.as_view()
+    ),
+    url(
+        regex=r'^documents/(?P<document_id>[0-9]+)/files/(?P<document_file_id>[0-9]+)/pages/(?P<document_file_page_id>[0-9]+)/$',
+        name='documentfilepage-detail',
+        view=APIDocumentFilePageDetailView.as_view()
+    ),
+    url(
+        regex=r'^documents/(?P<document_id>[0-9]+)/files/(?P<document_file_id>[0-9]+)/pages/(?P<document_file_page_id>[0-9]+)/image/$',
+        name='documentfilepage-image',
+        view=APIDocumentFilePageImageView.as_view()
     )
 ]
 
 api_urls_document_types = [
     url(
-        regex=r'^document_types/$', view=APIDocumentTypeListView.as_view(),
-        name='documenttype-list'
+        regex=r'^document_types/$', name='documenttype-list',
+        view=APIDocumentTypeListView.as_view()
     ),
     url(
-        regex=r'^document_types/(?P<pk>[0-9]+)/documents/$',
-        view=APIDocumentTypeDocumentListView.as_view(),
-        name='documenttype-document-list'
+        regex=r'^document_types/(?P<document_type_id>[0-9]+)/$',
+        name='documenttype-detail', view=APIDocumentTypeDetailView.as_view()
+    ),
+    url(
+        regex=r'^document_types/(?P<document_type_id>[0-9]+)/documents/$',
+        name='documenttype-document-list',
+        view=APIDocumentTypeDocumentListView.as_view()
     )
 ]
 
 api_urls_document_versions = [
+    #TODO: Add export, remap, reset views
+    #url(
+    #    regex=r'^documents/(?P<pk>[0-9]+)/versions/(?P<version_pk>[0-9]+)/export/$',
+    #    view=APIDocumentVersionExportView.as_view(),
+    #    name='documentversion-export'
+    #),
+    url(
+        regex=r'^documents/(?P<document_id>[0-9]+)/versions/(?P<document_version_pk>[0-9]+)/pages/$',
+        name='documentversionpage-list',
+        view=APIDocumentVersionPageListView.as_view()
+    ),
+    #url(
+    #    regex=r'^documents/(?P<pk>[0-9]+)/versions/(?P<version_pk>[0-9]+)/pages/(?P<page_pk>[0-9]+)$',
+    #    view=APIDocumentVersionPageView.as_view(), name='documentversionpage-detail'
+    #),
     url(
         regex=r'^documents/(?P<document_id>[0-9]+)/versions/(?P<document_version_id>[0-9]+)/pages/(?P<document_version_page_id>[0-9]+)/image/$',
-        view=APIDocumentVersionPageImageView.as_view(), name='documentversionpage-image'
+        name='documentversionpage-image',
+        view=APIDocumentVersionPageImageView.as_view()
     )
 ]
 
 api_urls_trashed_documents = [
     url(
-        regex=r'^trashed_documents/$',
-        view=APITrashedDocumentListView.as_view(), name='trasheddocument-list'
+        regex=r'^trashed_documents/$', name='trasheddocument-list',
+        view=APITrashedDocumentListView.as_view()
     ),
     url(
-        regex=r'^trashed_documents/(?P<pk>[0-9]+)/$',
-        view=APIDeletedDocumentView.as_view(), name='trasheddocument-detail'
+        regex=r'^trashed_documents/(?P<document_id>[0-9]+)/$',
+        name='trasheddocument-detail', view=APITrashedDocumentDetailView.as_view()
     ),
     url(
-        regex=r'^trashed_documents/(?P<pk>[0-9]+)/restore/$',
-        view=APIDeletedDocumentRestoreView.as_view(), name='trasheddocument-restore'
+        regex=r'^trashed_documents/(?P<document_id>[0-9]+)/restore/$',
+        name='trasheddocument-restore',
+        view=APITrashedDocumentRestoreView.as_view()
     ),
-    url(
-        regex=r'^document_types/(?P<pk>[0-9]+)/$',
-        view=APIDocumentTypeView.as_view(), name='documenttype-detail'
-    )
 ]
 
 api_urls = []

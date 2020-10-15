@@ -4,7 +4,7 @@ from rest_framework import serializers
 
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.documents.models import Document
-from mayan.apps.documents.serializers import DocumentSerializer
+from mayan.apps.documents.serializers.document_serializers import DocumentSerializer
 
 from .models import DocumentCheckout
 from .permissions import permission_document_check_out

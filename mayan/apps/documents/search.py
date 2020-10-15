@@ -37,7 +37,7 @@ def get_queryset_document_version_page_search_queryset():
 document_search = SearchModel(
     app_label='documents', list_mode=LIST_MODE_CHOICE_ITEM,
     model_name='Document', permission=permission_document_view,
-    serializer_path='mayan.apps.documents.serializers.DocumentSerializer'
+    serializer_path='mayan.apps.documents.serializers.document_serializers.DocumentSerializer'
 )
 
 document_search.add_model_field(
@@ -57,7 +57,7 @@ document_file_search = SearchModel(
     app_label='documents', list_mode=LIST_MODE_CHOICE_ITEM,
     model_name='DocumentFile', permission=permission_document_file_view,
     #queryset=get_queryset_document_file__search_queryset,
-    serializer_path='mayan.apps.documents.serializers.DocumentFileSerializer'
+    serializer_path='mayan.apps.documents.serializers.document_file_serializers.DocumentFileSerializer'
 )
 document_file_search.add_model_field(
     field='document__document_type__label',
@@ -80,7 +80,7 @@ document_file_page_search = SearchModel(
     app_label='documents', list_mode=LIST_MODE_CHOICE_ITEM,
     model_name='DocumentFilePage', permission=permission_document_file_view,
     queryset=get_queryset_document_file_page_search_queryset,
-    serializer_path='mayan.apps.documents.serializers.DocumentFilePageSerializer'
+    serializer_path='mayan.apps.documents.serializers.document_file_page.serializers.DocumentFilePageSerializer'
 )
 
 document_file_page_search.add_model_field(
@@ -103,7 +103,7 @@ document_file_page_search.add_model_field(field='document_file__checksum')
 document_type_search = SearchModel(
     app_label='documents', list_mode=LIST_MODE_CHOICE_ITEM,
     model_name='DocumentType', permission=permission_document_type_view,
-    serializer_path='mayan.apps.documents.serializers.DocumentTypeSerializer'
+    serializer_path='mayan.apps.documents.serializers.document_type_serializers.DocumentTypeSerializer'
 )
 document_type_search.add_model_field(field='label')
 
@@ -113,7 +113,7 @@ document_version_search = SearchModel(
     app_label='documents', list_mode=LIST_MODE_CHOICE_ITEM,
     model_name='DocumentVersion', permission=permission_document_version_view,
     #queryset=get_queryset_document_version__search_queryset,
-    serializer_path='mayan.apps.documents.serializers.DocumentVersionSerializer'
+    serializer_path='mayan.apps.documents.serializers.document_version_serializers.DocumentVersionSerializer'
 )
 document_version_search.add_model_field(
     field='comment',
@@ -126,7 +126,7 @@ document_version_page_search = SearchModel(
     app_label='documents', list_mode=LIST_MODE_CHOICE_ITEM,
     model_name='DocumentVersionPage', permission=permission_document_version_view,
     queryset=get_queryset_document_version_page_search_queryset,
-    serializer_path='mayan.apps.documents.serializers.DocumentVersionPageSerializer'
+    serializer_path='mayan.apps.documents.serializers.document_version_page_serializers.DocumentVersionPageSerializer'
 )
 
 document_version_page_search.add_model_field(

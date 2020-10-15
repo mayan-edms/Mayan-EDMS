@@ -111,7 +111,7 @@ class AccessControlListManager(models.Manager):
                     result.append(Q(**{field_lookup: acl_filter}))
 
                 # Case 5: Related field, has an inherited related field itself
-                # Bubble up permssion check
+                # Bubble up permission check
                 # Recurse and reduce
                 # TODO: Add relationship support: OR or AND
                 # TODO: OR for document pages, version, doc, and types
