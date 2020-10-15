@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-11 07:13+0000\n"
-"PO-Revision-Date: 2020-09-27 06:46+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"PO-Revision-Date: 2020-10-13 19:31+0000\n"
+"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -301,11 +301,11 @@ msgstr "Suma kontrolna dokumentu"
 
 #: serializers.py:191
 msgid "Parent cannot be empty."
-msgstr ""
+msgstr "Element nadrzędny nie może być pusty."
 
 #: serializers.py:198
 msgid "Parent must be from the same index template."
-msgstr ""
+msgstr "Element nadrzędny musi pochodzić z tego samego szablonu indeksu."
 
 #: settings.py:14
 msgid ""

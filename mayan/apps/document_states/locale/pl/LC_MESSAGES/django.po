@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-11 07:13+0000\n"
-"PO-Revision-Date: 2020-09-27 06:46+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"PO-Revision-Date: 2020-10-13 19:08+0000\n"
+"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -234,7 +234,7 @@ msgstr "Przejścia"
 
 #: links.py:165 links.py:171 workflow_actions.py:83
 msgid "Launch workflows"
-msgstr ""
+msgstr "Uruchom przepływy pracy"
 
 #: links.py:177
 msgid "Create field"
@@ -282,11 +282,11 @@ msgstr "Przy wyjściu"
 
 #: models.py:55
 msgid "Launch workflow when document is created."
-msgstr ""
+msgstr "Uruchom przepływ pracy podczas tworzenia dokumentu."
 
 #: models.py:56
 msgid "Auto launch"
-msgstr ""
+msgstr "Autouruchomienie"
 
 #: models.py:60
 msgid ""
@@ -409,7 +409,7 @@ msgid ""
 " not return any value, that return the Python logical None, or an empty "
 "string ('') are considered to be logical false, any other value is "
 "considered to be the logical true."
-msgstr ""
+msgstr "Warunek określający czy akcja dotycząca stanu zostanie wykonana. Warunek jest wyliczany względem wystąpienia przepływu pracy. Warunki nie zwracające żadnych wartości, zwracające None lub pusty łańcuch (\") traktowane są jako false, pozostałe wartości traktowane są jako true."
 
 #: models.py:683 models.py:797
 msgid "Condition"
@@ -455,7 +455,7 @@ msgid ""
 " return any value, that return the Python logical None, or an empty string "
 "('') are considered to be logical false, any other value is considered to be"
 " the logical true."
-msgstr ""
+msgstr "Warunek określający czy przejście przepływu pracy jest aktywowane. Warunek jest wyliczany względem wystąpienia przepływu pracy. Warunki nie zwracające żadnych wartości, zwracające None lub pusty łańcuch (\") traktowane są jako false, pozostałe wartości traktowane są jako true."
 
 #: models.py:805
 msgid "Workflow transition"
@@ -588,7 +588,7 @@ msgstr "Szybkie stany dokumentów"
 
 #: queues.py:15
 msgid "Launch all workflows for all documents"
-msgstr ""
+msgstr "Uruchom wszystkie przepływy pracy dla wszystkich dokumentów"
 
 #: queues.py:19
 msgid "Launch a workflow"
@@ -596,11 +596,11 @@ msgstr "Uruchom przepływ pracy"
 
 #: queues.py:23
 msgid "Launch a workflow for a document"
-msgstr ""
+msgstr "Uruchom przepływ pracy dla dokumentu"
 
 #: queues.py:27
 msgid "Launch all workflows for a document"
-msgstr ""
+msgstr "Uruchom wszystkie przepływy pracy dla dokumentu"
 
 #: queues.py:31
 msgid "Generate workflow previews"
@@ -608,7 +608,7 @@ msgstr "Generuj podgląd przepływu pracy"
 
 #: search.py:9 search.py:14
 msgid "Workflow transition comment"
-msgstr ""
+msgstr "Komentarz przejścia przepływu pracy"
 
 #: serializers.py:20
 msgid "Primary key of the document type to be added."
@@ -651,7 +651,7 @@ msgstr "Klucz podstawowy przejścia, które należy dodać."
 #: settings.py:18
 msgid ""
 "File path to the graphviz dot program used to generate workflow previews."
-msgstr ""
+msgstr "Ścieżka pliku do programu dot z zestawu graphviz służącego do tworzenia grafów przepływu pracy."
 
 #: settings.py:26
 msgid ""
@@ -697,7 +697,7 @@ msgstr "Przypisz przepływy pracy do typu dokumentu tego dokumentu, aby ten doku
 
 #: views/workflow_instance_views.py:35
 msgid "There are no workflows for this document"
-msgstr ""
+msgstr "Brak przepływów pracy dla tego dokumentu."
 
 #: views/workflow_instance_views.py:39
 #, python-format
@@ -950,62 +950,62 @@ msgstr "Przepływy pracy przypisane do typu dokumentu: %s"
 #: views/workflow_template_views.py:95
 #, python-format
 msgid "Workflows launched for %(count)d document"
-msgstr ""
+msgstr "Przepływy pracy uruchomione dla %(count)ddokumentu"
 
 #: views/workflow_template_views.py:96
 #, python-format
 msgid "Workflows launched for %(count)d documents"
-msgstr ""
+msgstr "Przepływy pracy uruchomione dla %(count)ddokumentów"
 
 #: views/workflow_template_views.py:100
 msgid "Launch"
-msgstr ""
+msgstr "Uruchom"
 
 #: views/workflow_template_views.py:102
 msgid ""
 "Workflows already launched or workflows not applicable to some documents "
 "when multiple documents are selected, will be silently ignored."
-msgstr ""
+msgstr "Przepływy pracy uruchomione lub przepływy pracy niemożliwe do zastosowania do niektórych dokumentów, zostaną zignorowane w przypadku zaznaczenia wielu dokumentów."
 
 #: views/workflow_template_views.py:107
 #, python-format
 msgid "Launch selected workflows for %(count)d document"
 msgid_plural "Launch selected workflows for %(count)d documents"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Uruchom wybrane przepływy gotówkowe dla %(count)d dokumentu"
+msgstr[1] "Uruchom wybrane przepływy gotówkowe dla %(count)d dokumentów"
+msgstr[2] "Uruchom wybrane przepływy gotówkowe dla %(count)d dokumentów"
+msgstr[3] "Uruchom wybrane przepływy pracy dla %(count)d dokumentów"
 
 #: views/workflow_template_views.py:120
 #, python-format
 msgid "Launch selected workflows for document: %s"
-msgstr ""
+msgstr "Uruchom wybrane przepływy pracy dla dokumentu: %s"
 
 #: views/workflow_template_views.py:133
 msgid "Workflows to be launched."
-msgstr ""
+msgstr "Przepływy pracy przeznaczone do uruchomienia."
 
 #: views/workflow_template_views.py:175
 #, python-format
 msgid "Delete request performed on %(count)d workflow"
-msgstr ""
+msgstr "Usuń żądanie wykonane na %(count)d przepływie pracy"
 
 #: views/workflow_template_views.py:177
 #, python-format
 msgid "Delete request performed on %(count)d workflows"
-msgstr ""
+msgstr "Usuń żądanie wykonane na %(count)d przepływach pracy"
 
 #: views/workflow_template_views.py:183
 msgid "All workflow instances will also be deleted."
-msgstr ""
+msgstr "Wszystkie wystąpienia przepływu pracy również zostaną usunięte."
 
 #: views/workflow_template_views.py:185
 msgid "Delete the selected workflow?"
 msgid_plural "Delete the selected workflows?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Czy usunąć wybrany przepływ pracy?"
+msgstr[1] "Czy usunąć wybrane przepływy pracy?"
+msgstr[2] "Czy usunąć wybrane przepływy pracy?"
+msgstr[3] "Czy usunąć wybrane przepływy pracy?"
 
 #: views/workflow_template_views.py:195
 #, python-format
@@ -1015,12 +1015,12 @@ msgstr "Usunąć przepływ pracy: %s?"
 #: views/workflow_template_views.py:206
 #, python-format
 msgid "Workflow \"%s\" deleted successfully."
-msgstr ""
+msgstr "Przepływ pracy \"%s\" usunięto pomyślnie."
 
 #: views/workflow_template_views.py:211
 #, python-format
 msgid "Error deleting workflow \"%(workflow)s\": %(error)s"
-msgstr ""
+msgstr "Błąd podczas usuwania przepływu pracy \"%(workflow)s\": %(error)s"
 
 #: views/workflow_template_views.py:229
 #, python-format
@@ -1109,7 +1109,7 @@ msgstr "Zmodyfikuj właściwości dokumentu"
 
 #: workflow_actions.py:77
 msgid "Additional workflows to launch for the document."
-msgstr ""
+msgstr "Dodatkowe przepływy pracy przeznaczone do uruchomienia na dokumencie."
 
 #: workflow_actions.py:116
 msgid "URL"

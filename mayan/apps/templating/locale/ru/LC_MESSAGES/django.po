@@ -7,14 +7,15 @@
 # lilo.panic, 2019
 # Roberto Rosario, 2020
 # Alex Chigrin <chalex84@mail.ru>, 2020
+# OLeg Si <olegsm35@gmail.com>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-11 07:13+0000\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2019-12-03 05:24+0000\n"
-"Last-Translator: Alex Chigrin <chalex84@mail.ru>, 2020\n"
+"Last-Translator: OLeg Si <olegsm35@gmail.com>, 2020\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -74,11 +75,11 @@ msgstr ""
 #: views.py:59
 #, python-format
 msgid "Template error; %(exception)s"
-msgstr ""
+msgstr "Ошибка в шаблоне; %(exception)s"
 
 #: widgets.py:63
 msgid "Filters"
-msgstr ""
+msgstr "Фильтры"
 
 #: widgets.py:70
 msgid "Tags"

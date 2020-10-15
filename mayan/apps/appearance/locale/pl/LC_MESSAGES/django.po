@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-11 07:13+0000\n"
-"PO-Revision-Date: 2020-10-09 19:47+0000\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"PO-Revision-Date: 2020-10-12 18:44+0000\n"
 "Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -433,11 +433,11 @@ msgstr "Przełącz tryb wyświetlania listy"
 #: templates/appearance/list_toolbar.html:60
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
-msgstr "Zaznacz elementy, aby uaktywnić akcję masową. Użyj Shift + click, aby zaznaczyć wiele elementów."
+msgstr "Zaznacz elementy, aby uaktywnić akcję zbiorczą. Użyj Shift + click, aby zaznaczyć wiele elementów."
 
 #: templates/appearance/list_toolbar.html:65
 msgid "Bulk actions"
-msgstr "Akcje masowe"
+msgstr "Akcje zbiorcze"
 
 #: templates/appearance/menu_topbar.html:11
 msgid "Toggle navigation"
