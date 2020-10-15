@@ -209,7 +209,10 @@ class IndexTemplateSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         extra_kwargs = {
-            'document_types': {'view_name': 'rest_api:documenttype-detail'},
+            'document_types': {
+                'lookup_url_kwarg': 'document_type_id',
+                'view_name': 'rest_api:documenttype-detail'
+            },
         }
         fields = (
             'document_types', 'enabled', 'id', 'label', 'nodes_url', 'slug',

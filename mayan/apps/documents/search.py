@@ -80,7 +80,7 @@ document_file_page_search = SearchModel(
     app_label='documents', list_mode=LIST_MODE_CHOICE_ITEM,
     model_name='DocumentFilePage', permission=permission_document_file_view,
     queryset=get_queryset_document_file_page_search_queryset,
-    serializer_path='mayan.apps.documents.serializers.document_file_page.serializers.DocumentFilePageSerializer'
+    serializer_path='mayan.apps.documents.serializers.document_file_serializers.DocumentFilePageSerializer'
 )
 
 document_file_page_search.add_model_field(
@@ -126,7 +126,7 @@ document_version_page_search = SearchModel(
     app_label='documents', list_mode=LIST_MODE_CHOICE_ITEM,
     model_name='DocumentVersionPage', permission=permission_document_version_view,
     queryset=get_queryset_document_version_page_search_queryset,
-    serializer_path='mayan.apps.documents.serializers.document_version_page_serializers.DocumentVersionPageSerializer'
+    serializer_path='mayan.apps.documents.serializers.document_version_serializers.DocumentVersionPageSerializer'
 )
 
 document_version_page_search.add_model_field(

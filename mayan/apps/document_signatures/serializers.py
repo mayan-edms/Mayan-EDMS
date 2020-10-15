@@ -16,11 +16,11 @@ class BaseSignatureSerializer(serializers.HyperlinkedModelSerializer):
         view_kwargs=(
             {
                 'lookup_field': 'document_file_id',
-                'lookup_url_kwarg': 'file_pk',
+                'lookup_url_kwarg': 'document_file_id',
             },
             {
-                'lookup_field': 'document_file.document.pk',
-                'lookup_url_kwarg': 'pk',
+                'lookup_field': 'document_file.document_id',
+                'lookup_url_kwarg': 'document_id',
             }
         ),
         view_name='rest_api:documentfile-detail'
@@ -41,7 +41,7 @@ class DetachedSignatureSerializer(BaseSignatureSerializer):
     url = MultiKwargHyperlinkedIdentityField(
         view_kwargs=(
             {
-                'lookup_field': 'document_file.document.pk',
+                'lookup_field': 'document_file.document_id',
                 'lookup_url_kwarg': 'document_id',
             },
             {
@@ -69,7 +69,7 @@ class DetachedSignatureSerializer(BaseSignatureSerializer):
 
     def create(self, validated_data):
         validated_data['document_file'] = self.context['document_file']
-        return super(DetachedSignatureSerializer, self).create(
+        return super().create(
             validated_data=validated_data
         )
 
@@ -79,11 +79,11 @@ class EmbeddedSignatureSerializer(serializers.HyperlinkedModelSerializer):
         view_kwargs=(
             {
                 'lookup_field': 'document_file_id',
-                'lookup_url_kwarg': 'file_pk',
+                'lookup_url_kwarg': 'document_file_id',
             },
             {
                 'lookup_field': 'document_file.document.pk',
-                'lookup_url_kwarg': 'pk',
+                'lookup_url_kwarg': 'document_id',
             }
         ),
         view_name='rest_api:documentfile-detail'

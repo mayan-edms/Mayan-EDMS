@@ -209,7 +209,7 @@ class MetadataTypeTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCas
             metadata_type=self.test_metadata_type, required=True
         )
 
-        self.test_document.set_document_type(document_type=self.test_document_type_2)
+        self.test_document.document_type_change(document_type=self.test_document_type_2)
 
         self.assertEqual(self.test_document.metadata.count(), 1)
         self.assertEqual(
@@ -235,7 +235,7 @@ class MetadataTypeTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCas
 
         self.test_document_type_2.metadata.create(metadata_type=self.test_metadata_type)
 
-        self.test_document.set_document_type(document_type=self.test_document_type_2)
+        self.test_document.document_type_change(document_type=self.test_document_type_2)
 
         self.assertEqual(self.test_document.metadata.count(), 1)
         self.assertEqual(
@@ -262,7 +262,7 @@ class MetadataTypeTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCas
             label=TEST_DOCUMENT_TYPE_2_LABEL
         )
 
-        self.test_document.set_document_type(document_type=self.test_document_type_2)
+        self.test_document.document_type_change(document_type=self.test_document_type_2)
 
         self.assertEqual(self.test_document.metadata.count(), 0)
 
@@ -287,7 +287,7 @@ class MetadataTypeTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCas
             metadata_type=self.test_metadata_type, required=True
         )
 
-        self.test_document.set_document_type(document_type=self.test_document_type_2)
+        self.test_document.document_type_change(document_type=self.test_document_type_2)
 
         self.assertEqual(self.test_document.metadata.count(), 1)
         self.assertEqual(

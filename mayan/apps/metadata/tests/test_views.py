@@ -279,7 +279,7 @@ class DocumentMetadataViewTestCase(
             metadata_type=metadata_type_2, required=True
         )
 
-        self.test_document.set_document_type(document_type=document_type_2)
+        self.test_document.document_type_change(document_type=document_type_2)
 
         response = self.get(
             viewname='metadata:metadata_edit', kwargs={

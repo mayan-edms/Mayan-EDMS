@@ -185,12 +185,12 @@ class UserMailer(models.Model):
 
         attachments = []
         if as_attachment:
-            with document.open() as file_object:
+            with document.latest_file.open() as file_object:
                 attachments.append(
                     {
                         'content': file_object.read(),
                         'filename': document.label,
-                        'mimetype': document.file_mimetype
+                        'mimetype': document.latest_file.mimetype
                     }
                 )
 

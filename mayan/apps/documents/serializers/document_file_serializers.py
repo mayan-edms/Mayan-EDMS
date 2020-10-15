@@ -44,25 +44,28 @@ class DocumentFilePageSerializer(serializers.HyperlinkedModelSerializer):
 
     def get_document_file_url(self, instance):
         return reverse(
-            viewname='rest_api:documentfile-detail', args=(
-                instance.document_file.document_id, instance.document_file_id,
-            ), request=self.context['request'], format=self.context['format']
+            viewname='rest_api:documentfile-detail', kwargs={
+                'document_id': instance.document_file.document_id,
+                'document_file_id': instance.document_file_id,
+            }, request=self.context['request'], format=self.context['format']
         )
 
     def get_image_url(self, instance):
         return reverse(
-            viewname='rest_api:documentfilepage-image', args=(
-                instance.document_file.document_id, instance.document_file_id,
-                instance.pk,
-            ), request=self.context['request'], format=self.context['format']
+            viewname='rest_api:documentfilepage-image', kwargs={
+                'document_id': instance.document_file.document_id,
+                'document_file_id': instance.document_file_id,
+                'document_file_page_id': instance.pk,
+            }, request=self.context['request'], format=self.context['format']
         )
 
     def get_url(self, instance):
         return reverse(
-            viewname='rest_api:documentfilepage-detail', args=(
-                instance.document_file.document_id, instance.document_file_id,
-                instance.pk,
-            ), request=self.context['request'], format=self.context['format']
+            viewname='rest_api:documentfilepage-detail', kwargs={
+                'document_id': instance.document_file.document_id,
+                'document_file_id': instance.document_file_id,
+                'document_file_page_id': instance.pk,
+            }, request=self.context['request'], format=self.context['format']
         )
 
 
@@ -75,7 +78,10 @@ class DocumentFileSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         extra_kwargs = {
-            'document': {'view_name': 'rest_api:document-detail'},
+            'document': {
+                'lookup_url_kwarg': 'document_id',
+                'view_name': 'rest_api:document-detail'
+            },
             'file': {'use_url': False},
         }
         fields = (
@@ -90,30 +96,33 @@ class DocumentFileSerializer(serializers.HyperlinkedModelSerializer):
 
     def get_document_url(self, instance):
         return reverse(
-            viewname='rest_api:document-detail', args=(
-                instance.document_id,
-            ), request=self.context['request'], format=self.context['format']
+            viewname='rest_api:document-detail', kwargs={
+                'document_id': instance.document_id,
+            }, request=self.context['request'], format=self.context['format']
         )
 
     def get_download_url(self, instance):
         return reverse(
-            viewname='rest_api:documentfile-download', args=(
-                instance.document_id, instance.pk,
-            ), request=self.context['request'], format=self.context['format']
+            viewname='rest_api:documentfile-download', kwargs={
+                'document_id': instance.document_id,
+                'document_file_id': instance.pk,
+            }, request=self.context['request'], format=self.context['format']
         )
 
     def get_pages_url(self, instance):
         return reverse(
-            viewname='rest_api:documentfilepage-list', args=(
-                instance.document_id, instance.pk,
-            ), request=self.context['request'], format=self.context['format']
+            viewname='rest_api:documentfilepage-list', kwargs={
+                'document_id': instance.document_id,
+                'document_file_id': instance.pk,
+            }, request=self.context['request'], format=self.context['format']
         )
 
     def get_url(self, instance):
         return reverse(
-            viewname='rest_api:documentfile-detail', args=(
-                instance.document_id, instance.pk,
-            ), request=self.context['request'], format=self.context['format']
+            viewname='rest_api:documentfile-detail', kwargs={
+                'document_id': instance.document_id,
+                'document_file_id': instance.pk,
+            }, request=self.context['request'], format=self.context['format']
         )
 
 
@@ -136,28 +145,31 @@ class DocumentFileWritableSerializer(serializers.ModelSerializer):
 
     def get_document_url(self, instance):
         return reverse(
-            viewname='rest_api:document-detail', args=(
-                instance.document_id,
-            ), request=self.context['request'], format=self.context['format']
+            viewname='rest_api:document-detail', kwargs={
+                'document_id': instance.document_id,
+            }, request=self.context['request'], format=self.context['format']
         )
 
     def get_download_url(self, instance):
         return reverse(
-            viewname='rest_api:documentfile-download', args=(
-                instance.document_id, instance.pk,
-            ), request=self.context['request'], format=self.context['format']
+            viewname='rest_api:documentfile-download', kwargs={
+                'document_id': instance.document_id,
+                'document_file_id': instance.pk,
+            }, request=self.context['request'], format=self.context['format']
         )
 
     def get_pages_url(self, instance):
         return reverse(
-            viewname='rest_api:documentfilepage-list', args=(
-                instance.document_id, instance.pk,
-            ), request=self.context['request'], format=self.context['format']
+            viewname='rest_api:documentfilepage-list', kwargs={
+                'document_id': instance.document_id,
+                'document_file_id': instance.pk,
+            }, request=self.context['request'], format=self.context['format']
         )
 
     def get_url(self, instance):
         return reverse(
-            viewname='rest_api:documentfile-detail', args=(
-                instance.document_id, instance.pk,
-            ), request=self.context['request'], format=self.context['format']
+            viewname='rest_api:documentfile-detail', kwargs={
+                'document_id': instance.document_id,
+                'document_file_id': instance.pk,
+            }, request=self.context['request'], format=self.context['format']
         )

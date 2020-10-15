@@ -247,7 +247,7 @@ class IndexFilesystemTestCase(
         self.assertEqual(
             index_filesystem.read(
                 path=None, size=-1, offset=0, fh=file_handle
-            ), self.test_documents[0].open().read()
+            ), self.test_documents[0].latest_file.open().read()
         )
 
         index_filesystem.release(path=None, fh=file_handle)
@@ -259,7 +259,7 @@ class IndexFilesystemTestCase(
         self.assertEqual(
             index_filesystem.read(
                 path=None, size=-1, offset=0, fh=file_handle
-            ), self.test_documents[1].open().read()
+            ), self.test_documents[1].latest_file.open().read()
         )
 
         index_filesystem.release(path=None, fh=file_handle)
@@ -290,7 +290,7 @@ class IndexFilesystemTestCase(
         self.assertEqual(
             index_filesystem.read(
                 path=None, size=-1, offset=0, fh=file_handle
-            ), self.test_document.open().read()
+            ), self.test_document.latest_file.open().read()
         )
 
         index_filesystem.release(path=None, fh=file_handle)
@@ -341,7 +341,7 @@ class IndexFilesystemTestCase(
         self.assertEqual(
             index_filesystem.read(
                 path=None, size=-1, offset=0, fh=file_handle
-            ), self.test_document.open().read()
+            ), self.test_document.latest_file.open().read()
         )
 
         index_filesystem.release(path=None, fh=file_handle)
