@@ -9,18 +9,18 @@ class FavoriteDocumentsTestMixin:
 
 
 class FavoriteDocumentsViewTestMixin:
-    def _request_document_favorites_add_view(self):
+    def _request_test_document_favorites_add_view(self):
         return self.post(
             viewname='documents:document_add_to_favorites',
             kwargs={'document_id': self.test_document.pk}
         )
 
-    def _request_document_favorites_list_view(self):
+    def _request_test_document_favorites_list_view(self):
         return self.get(
             viewname='documents:document_list_favorites',
         )
 
-    def _request_document_favorites_remove_view(self):
+    def _request_test_document_favorites_remove_view(self):
         return self.post(
             viewname='documents:document_remove_from_favorites',
             kwargs={'document_id': self.test_document.pk}

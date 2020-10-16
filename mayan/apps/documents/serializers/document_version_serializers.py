@@ -19,20 +19,20 @@ from ..tasks import task_document_file_upload
 
 class DocumentVersionSerializer(serializers.HyperlinkedModelSerializer):
     document_url = serializers.SerializerMethodField()
-    export_url = serializers.SerializerMethodField()
+    #export_url = serializers.SerializerMethodField()
     pages_url = serializers.SerializerMethodField()
     url = serializers.SerializerMethodField()
 
     class Meta:
         extra_kwargs = {
             'document': {
-                'lookup_url_kwarg': 'document_type_id',
+                'lookup_url_kwarg': 'document_id',
                 'view_name': 'rest_api:document-detail'
             },
         }
         fields = (
-            'checksum', 'comment', 'document_url', 'export_url',
-            'pages_url', 'timestamp', 'url'
+            'comment', 'document_url', 'id', 'pages_url',
+            'timestamp', 'url'
         )
         model = DocumentVersion
         read_only_fields = ('document',)

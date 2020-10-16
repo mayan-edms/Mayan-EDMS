@@ -18,37 +18,30 @@ from ..tasks import task_document_file_upload
 
 from .document_file_serializers import DocumentFileSerializer
 from .document_type_serializers import DocumentTypeSerializer
+from .document_version_serializers import DocumentVersionSerializer
 
 
 class DocumentCreateSerializer(serializers.ModelSerializer):
     file = serializers.FileField(write_only=True)
 
-    def save(self, _user):
-        document = Document(
-            description=self.validated_data.get('description', ''),
-            document_type=self.validated_data['document_type'],
-            label=self.validated_data.get(
-                'label', force_text(self.validated_data['file'])
-            ),
-            language=self.validated_data.get(
-                'language', setting_language.value
-            )
-        )
-        _event_actor = _user
-        document.save()
+    def create(self, validated_data):
+        file = validated_data.pop('file')
+        validated_data['label'] = validated_data.get('label', str(file))
+        user = validated_data['_instance_extra_data']['_event_actor']
 
-        shared_uploaded_file = SharedUploadedFile.objects.create(
-            file=self.validated_data['file']
-        )
+        instance = super().create(validated_data=validated_data)
 
-        task_document_file_upload.delay(
-            document_id=document.pk,
-            shared_uploaded_file_id=shared_uploaded_file.pk,
-            user_id=_user.pk
+        shared_uploaded_file = SharedUploadedFile.objects.create(file=file)
+
+        task_document_file_upload.apply_async(
+            kwargs={
+                'document_id': instance.pk,
+                'shared_uploaded_file_id': shared_uploaded_file.pk,
+                'user_id': user.pk
+            }
         )
 
-        self.instance = document
-        return document
+        return instance
 
     class Meta:
         fields = (
@@ -64,9 +57,14 @@ class DocumentSerializer(serializers.HyperlinkedModelSerializer):
         view_name='rest_api:document-type-change'
     )
     latest_file = DocumentFileSerializer(many=False, read_only=True)
-    files_url = serializers.HyperlinkedIdentityField(
+    file_list_url = serializers.HyperlinkedIdentityField(
         lookup_url_kwarg='document_id',
         view_name='rest_api:documentfile-list'
+    )
+    latest_version = DocumentVersionSerializer(many=False, read_only=True)
+    version_list_url = serializers.HyperlinkedIdentityField(
+        lookup_url_kwarg='document_id',
+        view_name='rest_api:documentversion-list'
     )
 
     class Meta:
@@ -82,8 +80,9 @@ class DocumentSerializer(serializers.HyperlinkedModelSerializer):
         }
         fields = (
             'date_added', 'description', 'document_type',
-            'document_type_change_url', 'id', 'label', 'language',
-            'latest_file', 'url', 'uuid', 'pk', 'files_url',
+            'document_type_change_url', 'file_list_url', 'id', 'label',
+            'language', 'latest_file', 'latest_version', 'pk', 'url', 'uuid',
+            'version_list_url'
         )
         model = Document
         read_only_fields = ('document_type',)

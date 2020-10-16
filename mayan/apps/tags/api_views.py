@@ -31,11 +31,11 @@ class APITagListView(generics.ListCreateAPIView):
     mayan_view_permissions = {'POST': (permission_tag_create,)}
     queryset = Tag.objects.all()
 
-    def get_serializer(self, *args, **kwargs):
-        if not self.request:
-            return None
+    #def get_serializer(self, *args, **kwargs):
+    #    if not self.request:
+    #        return None
 
-        return super(APITagListView, self).get_serializer(*args, **kwargs)
+    #    return super(APITagListView, self).get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -59,11 +59,11 @@ class APITagView(generics.RetrieveUpdateDestroyAPIView):
     }
     queryset = Tag.objects.all()
 
-    def get_serializer(self, *args, **kwargs):
-        if not self.request:
-            return None
+    #def get_serializer(self, *args, **kwargs):
+    #    if not self.request:
+    #        return None
 
-        return super(APITagView, self).get_serializer(*args, **kwargs)
+    #    return super(APITagView, self).get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -117,11 +117,11 @@ class APIDocumentTagListView(generics.ListCreateAPIView):
     def get_queryset(self):
         return self.get_document().tags.all()
 
-    def get_serializer(self, *args, **kwargs):
-        if not self.request:
-            return None
+    #def get_serializer(self, *args, **kwargs):
+    #    if not self.request:
+    #        return None
 
-        return super(APIDocumentTagListView, self).get_serializer(*args, **kwargs)
+    #    return super(APIDocumentTagListView, self).get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -175,11 +175,11 @@ class APIDocumentTagView(generics.RetrieveDestroyAPIView):
     def get_queryset(self):
         return self.get_document().tags.all()
 
-    def get_serializer(self, *args, **kwargs):
-        if not self.request:
-            return None
+    #def get_serializer(self, *args, **kwargs):
+    #    if not self.request:
+    #        return None
 
-        return super(APIDocumentTagView, self).get_serializer(*args, **kwargs)
+    #    return super(APIDocumentTagView, self).get_serializer(*args, **kwargs)
 
     def get_serializer_context(self):
         """

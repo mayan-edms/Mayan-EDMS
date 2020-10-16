@@ -8,6 +8,7 @@ from django.urls import reverse
 from django.utils.timezone import now
 from django.utils.translation import ugettext, ugettext_lazy as _
 
+from mayan.apps.common.mixins import ModelInstanceExtraDataAPIViewMixin
 from mayan.apps.common.signals import signal_mayan_pre_save
 from mayan.apps.events.classes import EventManagerSave
 from mayan.apps.events.decorators import method_event
@@ -30,7 +31,7 @@ __all__ = ('Document',)
 logger = logging.getLogger(name=__name__)
 
 
-class Document(ModelMixinHooks, models.Model):
+class Document(ModelInstanceExtraDataAPIViewMixin, ModelMixinHooks, models.Model):
     """
     Defines a single document with it's fields and properties
     Fields:
@@ -319,8 +320,7 @@ class Document(ModelMixinHooks, models.Model):
         }
     )
     def save(self, *args, **kwargs):
-        user = kwargs.pop('_event_actor', None)
-        #_commit_events = kwargs.pop('_commit_events', True)
+        user = kwargs.pop('_user', self.__dict__.pop('_event_actor', None))
         new_document = not self.pk
 
         signal_mayan_pre_save.send(
@@ -332,28 +332,6 @@ class Document(ModelMixinHooks, models.Model):
         if new_document:
             if user:
                 self.add_as_recent_document_for_user(user=user)
-
-                #event_document_create.commit(
-                #    actor=user, action_object=self.document_type,
-                #    target=self
-                #)
-            #else:
-            #    if _commit_events:
-            #        event_document_properties_edit.commit(actor=user, target=self)
-
-    #def save_to_file(self, *args, **kwargs):
-    #    return self.latest_file.save_to_file(*args, **kwargs)
-
-    #@property
-    #def size(self):
-    #    return self.latest_file.size
-
-
-    #test method for development
-    #def versions_create(self):
-    #    with transaction.atomic():
-    #        document_version = self.versions.create()
-    #        document_version.pages_reset()
 
 
 class TrashedDocument(Document):

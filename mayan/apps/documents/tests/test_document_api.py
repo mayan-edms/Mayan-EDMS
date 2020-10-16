@@ -43,7 +43,7 @@ class DocumentAPIViewTestCase(
     auto_upload_test_document = False
 
     def test_document_api_upload_view_no_permission(self):
-        response = self._request_test_document_api_upload_view()
+        response = self._request_test_document_upload_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_document_api_upload_view_with_access(self):
@@ -51,7 +51,7 @@ class DocumentAPIViewTestCase(
             obj=self.test_document_type, permission=permission_document_create
         )
 
-        response = self._request_test_document_api_upload_view()
+        response = self._request_test_document_upload_api_view()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
         self.assertEqual(Document.objects.count(), 1)
@@ -88,7 +88,7 @@ class DocumentAPIViewTestCase(
             label=TEST_DOCUMENT_TYPE_2_LABEL
         )
 
-        response = self._request_test_document_document_type_change_api_view()
+        response = self._request_test_document_type_change_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.test_document.refresh_from_db()
@@ -107,7 +107,7 @@ class DocumentAPIViewTestCase(
             label=TEST_DOCUMENT_TYPE_2_LABEL
         )
 
-        response = self._request_test_document_document_type_change_api_view()
+        response = self._request_test_document_type_change_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.test_document.refresh_from_db()
@@ -119,7 +119,7 @@ class DocumentAPIViewTestCase(
     def test_document_description_api_edit_via_patch_view_no_permission(self):
         self._upload_test_document()
 
-        response = self._request_test_document_description_api_edit_via_patch_view()
+        response = self._request_test_document_description_edit_via_patch_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_document_description_api_edit_via_patch_view_with_access(self):
@@ -129,7 +129,7 @@ class DocumentAPIViewTestCase(
             permission=permission_document_properties_edit
         )
 
-        response = self._request_test_document_description_api_edit_via_patch_view()
+        response = self._request_test_document_description_edit_via_patch_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.test_document.refresh_from_db()
@@ -141,7 +141,7 @@ class DocumentAPIViewTestCase(
     def test_document_description_api_edit_via_put_view_no_permission(self):
         self._upload_test_document()
 
-        response = self._request_test_document_description_api_edit_via_put_view()
+        response = self._request_test_document_description_edit_via_put_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_document_description_api_edit_via_put_view_with_access(self):
@@ -151,7 +151,7 @@ class DocumentAPIViewTestCase(
             permission=permission_document_properties_edit
         )
 
-        response = self._request_test_document_description_api_edit_via_put_view()
+        response = self._request_test_document_description_edit_via_put_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.test_document.refresh_from_db()

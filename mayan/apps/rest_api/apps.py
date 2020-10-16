@@ -24,7 +24,7 @@ class RESTAPIApp(MayanAppConfig):
     verbose_name = _('REST API')
 
     def ready(self):
-        super(RESTAPIApp, self).ready()
+        super().ready()
         from .urls import api_urls
 
         installation_base_url = setting_url_base_path.value

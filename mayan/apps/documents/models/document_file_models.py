@@ -11,6 +11,7 @@ from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.classes import ModelQueryFields
+from mayan.apps.common.mixins import ModelInstanceExtraDataAPIViewMixin
 from mayan.apps.common.signals import signal_mayan_pre_save
 from mayan.apps.converter.classes import ConverterBase
 from mayan.apps.converter.exceptions import InvalidOfficeFormat, PageCountError
@@ -47,7 +48,7 @@ def upload_to(instance, filename):
     )
 
 
-class DocumentFile(models.Model):
+class DocumentFile(ModelInstanceExtraDataAPIViewMixin, models.Model):
     """
     Model that describes a document file and its properties
     Fields:
@@ -408,7 +409,7 @@ class DocumentFile(models.Model):
         Overloaded save method that updates the document file's checksum,
         mimetype, and page count when created
         """
-        user = kwargs.pop('_user', None)
+        user = kwargs.pop('_user', self.__dict__.pop('_event_actor', None))
         new_document_file = not self.pk
 
         if new_document_file:

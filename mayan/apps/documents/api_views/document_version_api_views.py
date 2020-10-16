@@ -24,14 +24,13 @@ from ..permissions import (
     permission_document_properties_edit, permission_document_trash,
     permission_document_type_create, permission_document_type_delete,
     permission_document_type_edit, permission_document_type_view,
+    permission_document_version_create, permission_document_version_delete,
+    permission_document_version_edit, permission_document_version_view,
     permission_document_view, permission_trashed_document_delete,
     permission_trashed_document_restore
 )
 from ..serializers.document_version_serializers import (
-    #DocumentVersionCreateSerializer,
-    #DocumentVersionSerializer,
-    #DocumentVersionWritableSerializer,
-    DocumentVersionPageSerializer,
+    DocumentVersionSerializer, DocumentVersionPageSerializer
 )
 from ..settings import (
     setting_document_file_page_image_cache_time,
@@ -42,53 +41,88 @@ from ..tasks import (
     task_document_version_page_image_generate
 )
 
+from .mixins import (
+    ParentObjectDocumentAPIViewMixin, ParentObjectDocumentVersionAPIViewMixin
+)
+
 logger = logging.getLogger(name=__name__)
 
 
-class APIDocumentVersionPageListView(generics.ListAPIView):
+class APIDocumentVersionDetailView(
+    ParentObjectDocumentAPIViewMixin, generics.RetrieveUpdateDestroyAPIView
+):
+    """
+    delete: Delete the selected document version.
+    get: Returns the selected document version details.
+    patch: Edit the properties of the selected document version.
+    put: Edit the properties of the selected document version.
+    """
+    lookup_url_kwarg = 'document_version_id'
+    mayan_object_permissions = {
+        'DELETE': (permission_document_version_delete,),
+        'GET': (permission_document_version_view,),
+        'PATCH': (permission_document_version_edit,),
+        'PUT': (permission_document_version_edit,)
+    }
+    serializer_class = DocumentVersionSerializer
+
+    def get_queryset(self):
+        return self.get_document().versions.all()
+
+
+class APIDocumentVersionListView(
+    ParentObjectDocumentAPIViewMixin, generics.ListCreateAPIView
+):
+    """
+    get: Return a list of the selected document's versions.
+    post: Create a new document version.
+    """
+    #mayan_object_permissions = {
+    #    'GET': (permission_document_version_view,),
+    #    'POST': (permission_document_version_create,),
+    #}
+    serializer_class = DocumentVersionSerializer
+
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user,
+            'document': self.get_document()
+        }
+
+    def get_queryset(self):
+        if self.request.method == 'GET':
+            permission = permission_document_version_view
+        else:
+            permission = permission_document_version_create
+
+        return self.get_document(permission=permission).versions.all()
+
+
+class APIDocumentVersionPageListView(
+    ParentObjectDocumentVersionAPIViewMixin, generics.ListAPIView
+):
+    """
+    get: Returns an list of the pages for the selected document version.
+    """
+    mayan_object_permissions = {
+        'GET': (permission_document_version_view,),
+    }
     serializer_class = DocumentVersionPageSerializer
-
-    def get_document(self):
-        document = get_object_or_404(Document, pk=self.kwargs['pk'])
-
-        AccessControlList.objects.check_access(
-            obj=document, permissions=(permission_document_version_view,),
-            user=self.request.user
-        )
-        return document
-
-    def get_document_version(self):
-        return get_object_or_404(
-            self.get_document().versions.all(), pk=self.kwargs['version_pk']
-        )
 
     def get_queryset(self):
         return self.get_document_version().pages.all()
 
 
-class APIDocumentVersionPageImageView(generics.RetrieveAPIView):
+class APIDocumentVersionPageImageView(
+    ParentObjectDocumentVersionAPIViewMixin, generics.RetrieveAPIView
+):
     """
     get: Returns an image representation of the selected document version page.
     """
     lookup_url_kwarg = 'document_version_page_id'
-
-    def get_document(self):
-        document = get_object_or_404(
-            Document, pk=self.kwargs['document_id']
-        )
-
-        AccessControlList.objects.check_access(
-            obj=document, permissions=(permission_document_view,),
-            user=self.request.user
-        )
-        return document
-
-    def get_document_version(self):
-        return get_object_or_404(
-            self.get_document().versions.all(), pk=self.kwargs[
-                'document_version_id'
-            ]
-        )
+    mayan_object_permissions = {
+        'GET': (permission_document_version_view,),
+    }
 
     def get_queryset(self):
         return self.get_document_version().pages.all()

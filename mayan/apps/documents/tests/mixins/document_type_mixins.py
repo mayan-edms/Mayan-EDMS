@@ -6,7 +6,7 @@ from ..literals import (
 
 
 class DocumentQuickLabelViewTestMixin:
-    def _request_document_quick_label_edit_view(self, extra_data=None):
+    def _request_test_document_quick_label_edit_view(self, extra_data=None):
         data = {
             'document_type_available_filenames': self.test_document_type_filename.pk,
             'label': ''
@@ -23,28 +23,28 @@ class DocumentQuickLabelViewTestMixin:
 
 
 class DocumentTypeAPIViewTestMixin:
-    def _request_test_document_type_api_create_view(self):
+    def _request_test_document_type_create_api_view(self):
         return self.post(
             viewname='rest_api:documenttype-list', data={
                 'label': TEST_DOCUMENT_TYPE_LABEL
             }
         )
 
-    def _request_test_document_type_api_delete_view(self):
+    def _request_test_document_type_delete_api_view(self):
         return self.delete(
             viewname='rest_api:documenttype-detail', kwargs={
                 'document_type_id': self.test_document_type.pk,
             }
         )
 
-    def _request_test_document_type_api_patch_view(self):
+    def _request_test_document_type_patch_api_view(self):
         return self.patch(
             viewname='rest_api:documenttype-detail', kwargs={
                 'document_type_id': self.test_document_type.pk,
             }, data={'label': TEST_DOCUMENT_TYPE_LABEL_EDITED}
         )
 
-    def _request_test_document_type_api_put_view(self):
+    def _request_test_document_type_put_api_view(self):
         return self.put(
             viewname='rest_api:documenttype-detail', kwargs={
                 'document_type_id': self.test_document_type.pk,
@@ -53,7 +53,7 @@ class DocumentTypeAPIViewTestMixin:
 
 
 class DocumentTypeDeletionPoliciesViewTestMixin:
-    def _request_document_type_filename_generator_get_view(self):
+    def _request_test_document_type_policies_get_view(self):
         return self.get(
             viewname='documents:document_type_policies', kwargs={
                 'document_type_id': self.test_document_type.pk
@@ -62,7 +62,7 @@ class DocumentTypeDeletionPoliciesViewTestMixin:
 
 
 class DocumentTypeFilenameGeneratorViewTestMixin:
-    def _request_document_type_filename_generator_get_view(self):
+    def _request_test_document_type_filename_generator_get_view(self):
         return self.get(
             viewname='documents:document_type_filename_generator', kwargs={
                 'document_type_id': self.test_document_type.pk
@@ -71,7 +71,7 @@ class DocumentTypeFilenameGeneratorViewTestMixin:
 
 
 class DocumentTypeQuickLabelViewTestMixin:
-    def _request_quick_label_create(self):
+    def _request_test_quick_label_create_view(self):
         return self.post(
             viewname='documents:document_type_filename_create', kwargs={
                 'document_type_id': self.test_document_type.pk
@@ -80,14 +80,14 @@ class DocumentTypeQuickLabelViewTestMixin:
             }
         )
 
-    def _request_quick_label_delete(self):
+    def _request_test_quick_label_delete_view(self):
         return self.post(
             viewname='documents:document_type_filename_delete', kwargs={
                 'document_type_filename_id': self.test_document_type_filename.pk
             }
         )
 
-    def _request_quick_label_edit(self):
+    def _request_test_quick_label_edit_view(self):
         return self.post(
             viewname='documents:document_type_filename_edit', kwargs={
                 'document_type_filename_id': self.test_document_type_filename.pk
@@ -96,7 +96,7 @@ class DocumentTypeQuickLabelViewTestMixin:
             }
         )
 
-    def _request_quick_label_list_view(self):
+    def _request_test_quick_label_list_view(self):
         return self.get(
             viewname='documents:document_type_filename_list', kwargs={
                 'document_type_id': self.test_document_type.pk

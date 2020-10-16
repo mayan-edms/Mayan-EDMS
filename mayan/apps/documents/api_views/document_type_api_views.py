@@ -40,6 +40,8 @@ from ..tasks import (
     task_document_version_page_image_generate
 )
 
+from .mixins import ParentObjectDocumentTypeAPIViewMixin
+
 logger = logging.getLogger(name=__name__)
 
 
@@ -52,12 +54,6 @@ class APIDocumentTypeListView(generics.ListCreateAPIView):
     mayan_view_permissions = {'POST': (permission_document_type_create,)}
     queryset = DocumentType.objects.all()
     serializer_class = DocumentTypeSerializer
-
-    def get_serializer(self, *args, **kwargs):
-        if not self.request:
-            return None
-
-        return super().get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -82,12 +78,6 @@ class APIDocumentTypeDetailView(generics.RetrieveUpdateDestroyAPIView):
     }
     queryset = DocumentType.objects.all()
 
-    def get_serializer(self, *args, **kwargs):
-        if not self.request:
-            return None
-
-        return super().get_serializer(*args, **kwargs)
-
     def get_serializer_class(self):
         if self.request.method == 'GET':
             return DocumentTypeSerializer
@@ -95,22 +85,16 @@ class APIDocumentTypeDetailView(generics.RetrieveUpdateDestroyAPIView):
             return DocumentTypeWritableSerializer
 
 
-class APIDocumentTypeDocumentListView(generics.ListAPIView):
+class APIDocumentTypeDocumentListView(
+    ParentObjectDocumentTypeAPIViewMixin, generics.ListAPIView
+):
     """
     Returns a list of all the documents of a particular document type.
     """
     mayan_object_permissions = {'GET': (permission_document_view,)}
     serializer_class = DocumentSerializer
 
-    def get_document_type(self):
-        queryset = AccessControlList.objects.restrict_queryset(
-            permission=permission_document_type_view,
-            queryset=DocumentType.objects.all(), user=self.request.user
-        )
-
-        return get_object_or_404(
-            klass=queryset, pk=self.kwargs['document_type_id']
-        )
-
     def get_queryset(self):
-        return self.get_document_type().documents.all()
+        return self.get_document_type(
+            permission=permission_document_type_view
+        ).documents.all()

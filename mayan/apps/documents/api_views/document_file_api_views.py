@@ -2,14 +2,15 @@ import logging
 
 from django.conf import settings
 from django.http import HttpResponse
-from django.shortcuts import get_object_or_404
 from django.views.decorators.cache import cache_control, patch_cache_control
 
 from rest_framework import status
+from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.rest_api import generics
+from mayan.apps.storage.models import SharedUploadedFile
 from mayan.apps.views.generics import DownloadMixin
 
 from ..literals import DOCUMENT_IMAGE_TASK_TIMEOUT
@@ -29,27 +30,84 @@ from ..permissions import (
 )
 from ..serializers.document_file_serializers import (
     DocumentFileSerializer, DocumentFileCreateSerializer,
-    DocumentFileWritableSerializer, DocumentFilePageSerializer
+    DocumentFilePageSerializer
 )
 from ..settings import setting_document_file_page_image_cache_time
-from ..tasks import task_document_file_page_image_generate
+from ..tasks import (
+    task_document_file_page_image_generate, task_document_file_upload
+)
+
+from .mixins import (
+    ParentObjectDocumentAPIViewMixin, ParentObjectDocumentFileAPIViewMixin
+)
 
 logger = logging.getLogger(name=__name__)
 
 
-class APIDocumentFileDownloadView(DownloadMixin, generics.RetrieveAPIView):
+class APIDocumentFileListView(
+    ParentObjectDocumentAPIViewMixin, generics.ListCreateAPIView
+):
+    """
+    get: Return a list of the selected document's files.
+    post: Create a new document file.
+    """
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        shared_uploaded_file = SharedUploadedFile.objects.create(
+            file=serializer.validated_data['file']
+        )
+
+        task_document_file_upload.delay(
+            comment=serializer.validated_data.get('comment', ''),
+            document_id=self.get_document(
+                permission=permission_document_file_new
+            ).pk,
+            shared_uploaded_file_id=shared_uploaded_file.pk,
+            user_id=self.request.user.pk
+        )
+
+        headers = self.get_success_headers(serializer.data)
+        return Response(status=status.HTTP_202_ACCEPTED, headers=headers)
+
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return DocumentFileSerializer
+        elif self.request.method == 'POST':
+            return DocumentFileCreateSerializer
+
+    def get_queryset(self):
+        return self.get_document(permission=permission_document_file_view).files.all()
+
+
+class APIDocumentFileDetailView(
+    ParentObjectDocumentAPIViewMixin, generics.RetrieveDestroyAPIView
+):
+    """
+    delete: Delete the selected document file.
+    get: Returns the selected document file details.
+    """
+    lookup_url_kwarg = 'document_file_id'
+    mayan_object_permissions = {
+        'DELETE': (permission_document_file_delete,),
+        'GET': (permission_document_file_view,),
+    }
+    serializer_class = DocumentFileSerializer
+
+    def get_queryset(self):
+        return self.get_document().files.all()
+
+
+class APIDocumentFileDownloadView(
+    DownloadMixin, ParentObjectDocumentAPIViewMixin, generics.RetrieveAPIView
+):
     """
     get: Download a document file.
     """
     lookup_url_kwarg = 'document_file_id'
-
-    def get_document(self):
-        queryset = AccessControlList.objects.restrict_queryset(
-            permission=permission_document_file_download,
-            queryset=Document.objects.all(), user=self.request.user
-        )
-
-        return get_object_or_404(klass=queryset, pk=self.kwargs['document_id'])
+    mayan_object_permissions = {
+        'GET': (permission_document_file_download,),
+    }
 
     def get_download_file_object(self):
         instance = self.get_object()
@@ -82,29 +140,32 @@ class APIDocumentFileDownloadView(DownloadMixin, generics.RetrieveAPIView):
         return self.render_to_response()
 
 
-class APIDocumentFilePageImageView(generics.RetrieveAPIView):
+class APIDocumentFilePageDetailView(
+    ParentObjectDocumentFileAPIViewMixin, generics.RetrieveAPIView
+):
+    """
+    get: Returns the selected document page details.
+    """
+    lookup_url_kwarg = 'document_file_page_id'
+    serializer_class = DocumentFilePageSerializer
+    mayan_object_permissions = {
+        'GET': (permission_document_file_view,),
+    }
+
+    def get_queryset(self):
+        return self.get_document_file().pages.all()
+
+
+class APIDocumentFilePageImageView(
+    ParentObjectDocumentFileAPIViewMixin, generics.RetrieveAPIView
+):
     """
     get: Returns an image representation of the selected document.
     """
     lookup_url_kwarg = 'document_file_page_id'
-
-    def get_document(self):
-        queryset = AccessControlList.objects.restrict_queryset(
-            permission=permission_document_file_view, queryset=Document.objects.all(),
-            user=self.request.user
-        )
-
-        return get_object_or_404(klass=queryset, pk=self.kwargs['document_id'])
-
-    def get_document_file(self):
-        queryset = AccessControlList.objects.restrict_queryset(
-            permission=permission_document_file_view,
-            queryset=self.get_document().files.all(), user=self.request.user
-        )
-
-        return get_object_or_404(
-            klass=queryset, pk=self.kwargs['document_file_id']
-        )
+    mayan_object_permissions = {
+        'GET': (permission_document_file_view,),
+    }
 
     def get_queryset(self):
         return self.get_document_file().pages.all()
@@ -161,119 +222,11 @@ class APIDocumentFilePageImageView(generics.RetrieveAPIView):
             return response
 
 
-class APIDocumentFilePageDetailView(generics.RetrieveAPIView):
-    """
-    get: Returns the selected document page details.
-    """
-    lookup_url_kwarg = 'document_file_page_id'
-    serializer_class = DocumentFilePageSerializer
-
-    def get_document(self):
-        queryset = AccessControlList.objects.restrict_queryset(
-            permission=permission_document_file_view,
-            queryset=Document.objects.all(), user=self.request.user
-        )
-
-        return get_object_or_404(klass=queryset, pk=self.kwargs['document_id'])
-
-    def get_document_file(self):
-        queryset = AccessControlList.objects.restrict_queryset(
-            permission=permission_document_file_view,
-            queryset=Document.objects.all(), user=self.request.user
-        )
-
-        return get_object_or_404(
-            klass=queryset, pk=self.kwargs['document_file_id']
-        )
-
-    def get_queryset(self):
-        return self.get_document_file().pages.all()
-
-
 class APIDocumentFilePageListView(generics.ListAPIView):
-    serializer_class = DocumentFilePageSerializer
-
-    def get_document(self):
-        document = get_object_or_404(Document, pk=self.kwargs['pk'])
-
-        AccessControlList.objects.check_access(
-            obj=document, permissions=(permission_document_view,),
-            user=self.request.user
-        )
-        return document
-
-    def get_document_file(self):
-        return get_object_or_404(
-            self.get_document().files.all(), pk=self.kwargs['file_pk']
-        )
-
-    def get_queryset(self):
-        return self.get_document_file().pages.all()
-
-
-class APIDocumentFilesListView(generics.ListCreateAPIView):
-    """
-    get: Return a list of the selected document's files.
-    post: Create a new document file.
-    """
     mayan_object_permissions = {
         'GET': (permission_document_file_view,),
     }
-
-    def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        self.perform_create(serializer)
-        headers = self.get_success_headers(serializer.data)
-        return Response(status=status.HTTP_202_ACCEPTED, headers=headers)
-
-    def get_serializer(self, *args, **kwargs):
-        if not self.request:
-            return None
-
-        return super(APIDocumentFilesListView, self).get_serializer(*args, **kwargs)
-
-    def get_serializer_class(self):
-        if self.request.method == 'GET':
-            return DocumentFileSerializer
-        elif self.request.method == 'POST':
-            return DocumentFileCreateSerializer
+    serializer_class = DocumentFilePageSerializer
 
     def get_queryset(self):
-        return get_object_or_404(Document, pk=self.kwargs['document_id']).files.all()
-
-    def perform_create(self, serializer):
-        document = get_object_or_404(Document, pk=self.kwargs['document_id'])
-
-        AccessControlList.objects.check_access(
-            obj=document, permissions=(permission_document_file_new,),
-            user=self.request.user,
-        )
-        serializer.save(document=document, _user=self.request.user)
-
-
-class APIDocumentFileDetailView(generics.RetrieveDestroyAPIView):
-    """
-    delete: Delete the selected document file.
-    get: Returns the selected document file details.
-    """
-    lookup_url_kwarg = 'document_file_id'
-
-    def get_queryset(self):
-        if self.request.method == 'DELETE':
-            permission_required = permission_document_file_delete
-        else:
-            permission_required = permission_document_file_view
-
-        return AccessControlList.objects.restrict_queryset(
-            permission=permission_required,
-            queryset=DocumentFile.objects.all(), user=self.request.user
-        )
-        return self.get_document().files.all()
-
-
-    def get_serializer_class(self):
-        if self.request.method == 'GET':
-            return DocumentFileSerializer
-        else:
-            return DocumentFileWritableSerializer
+        return self.get_document_file().pages.all()

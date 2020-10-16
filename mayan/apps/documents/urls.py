@@ -7,7 +7,7 @@ from .api_views.document_api_views import (
 )
 from .api_views.document_file_api_views import (
     APIDocumentFileDetailView,  APIDocumentFileDownloadView,
-    APIDocumentFilesListView, APIDocumentFilePageImageView,
+    APIDocumentFileListView, APIDocumentFilePageImageView,
     APIDocumentFilePageDetailView, APIDocumentFilePageListView
 )
 from .api_views.document_type_api_views import (
@@ -15,6 +15,7 @@ from .api_views.document_type_api_views import (
     APIDocumentTypeListView
 )
 from .api_views.document_version_api_views import (
+    APIDocumentVersionDetailView, APIDocumentVersionListView,
     APIDocumentVersionPageImageView, APIDocumentVersionPageListView
 )
 from .views.document_file_views import (
@@ -512,7 +513,7 @@ api_urls_document_files = [
     url(
         regex=r'^documents/(?P<document_id>[0-9]+)/files/$',
         name='documentfile-list',
-        view=APIDocumentFilesListView.as_view()
+        view=APIDocumentFileListView.as_view()
     ),
     url(
         regex=r'^documents/(?P<document_id>[0-9]+)/files/(?P<document_file_id>[0-9]+)/$',
@@ -557,19 +558,38 @@ api_urls_document_types = [
 ]
 
 api_urls_document_versions = [
-    #TODO: Add export, remap, reset views
+    url(
+        regex=r'^documents/(?P<document_id>[0-9]+)/versions/$',
+        name='documentversion-list',
+        view=APIDocumentVersionListView.as_view()
+    ),
+    url(
+        regex=r'^documents/(?P<document_id>[0-9]+)/versions/(?P<document_version_id>[0-9]+)/$',
+        name='documentversion-detail',
+        view=APIDocumentVersionDetailView.as_view()
+    ),
     #url(
-    #    regex=r'^documents/(?P<pk>[0-9]+)/versions/(?P<version_pk>[0-9]+)/export/$',
+    #    regex=r'^documents/(?P<document_id>[0-9]+)/versions/(?P<document_version_id>[0-9]+)/export/$',
     #    view=APIDocumentVersionExportView.as_view(),
     #    name='documentversion-export'
     #),
+    #url(
+    #    regex=r'^documents/(?P<document_id>[0-9]+)/versions/(?P<document_version_id>[0-9]+)/pages/remap/$',
+    #    view=APIDocumentVersionPagesRemapView.as_view(),
+    #    name='documentversion-pages-remap'
+    #),
+    #url(
+    #    regex=r'^documents/(?P<document_id>[0-9]+)/versions/(?P<document_version_id>[0-9]+)/pages/reset/$',
+    #    view=APIDocumentVersionPagesResetView.as_view(),
+    #    name='documentversion-pages-reset'
+    #),
     url(
-        regex=r'^documents/(?P<document_id>[0-9]+)/versions/(?P<document_version_pk>[0-9]+)/pages/$',
+        regex=r'^documents/(?P<document_id>[0-9]+)/versions/(?P<document_version_id>[0-9]+)/pages/$',
         name='documentversionpage-list',
         view=APIDocumentVersionPageListView.as_view()
     ),
     #url(
-    #    regex=r'^documents/(?P<pk>[0-9]+)/versions/(?P<version_pk>[0-9]+)/pages/(?P<page_pk>[0-9]+)$',
+    #    regex=r'^documents/(?P<pk>[0-9]+)/versions/(?P<document_version_id>[0-9]+)/pages/(?P<page_pk>[0-9]+)$',
     #    view=APIDocumentVersionPageView.as_view(), name='documentversionpage-detail'
     #),
     url(

@@ -2,11 +2,12 @@ import importlib
 import logging
 
 from mayan.apps.smart_settings.tests.mixins import SmartSettingTestMixin
-from mayan.apps.storage import storages
-from mayan.apps.storage.classes import DefinedStorage
-from mayan.apps.storage.literals import STORAGE_NAME_SHARED_UPLOADED_FILE
-from mayan.apps.storage.settings import setting_shared_storage_arguments
 from mayan.apps.testing.tests.base import BaseTestCase
+
+from mayan.apps.storage import storages
+from ..classes import DefinedStorage
+from ..literals import STORAGE_NAME_SHARED_UPLOADED_FILE
+from ..settings import setting_shared_storage_arguments
 
 
 class CommonStorageSettingsTestCase(SmartSettingTestMixin, BaseTestCase):
@@ -14,11 +15,11 @@ class CommonStorageSettingsTestCase(SmartSettingTestMixin, BaseTestCase):
         super().tearDown()
         importlib.reload(storages)
 
-    def test_setting_documentimagecache_storage_arguments_invalid_value(self):
+    def test_setting_shared_storage_arguments_invalid_value(self):
         self._set_environment_variable(
             name='MAYAN_{}'.format(
                 setting_shared_storage_arguments.global_name
-            ), value="invalid_value"
+            ), value='invalid_value'
         )
         self.test_case_silenced_logger_new_level = logging.FATAL + 10
         self._silence_logger(name='mayan.apps.storage.classes')

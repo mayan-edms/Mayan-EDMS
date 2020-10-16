@@ -10,9 +10,10 @@ from ..literals import (
     STORAGE_NAME_DOCUMENT_VERSION_PAGE_IMAGE_CACHE, STORAGE_NAME_DOCUMENT_FILES
 )
 from ..settings import (
-    setting_documentimagecache_storage_arguments,
-    setting_document_file_page_image_cache_maximum_size, setting_language_codes,
-    setting_storage_backend_arguments
+    setting_document_file_page_image_cache_maximum_size,
+    setting_document_file_storage_backend_arguments,
+    setting_documentfilepageimagecache_storage_arguments,
+    setting_language_codes
 )
 
 
@@ -42,14 +43,14 @@ class DocumentSettingsTestCase(SmartSettingTestMixin, BaseTestCase):
 
 class DocumentStorageSettingsTestCase(SmartSettingTestMixin, BaseTestCase):
     def tearDown(self):
-        super(DocumentStorageSettingsTestCase, self).tearDown()
+        super().tearDown()
         importlib.reload(storages)
 
-    def test_setting_documentimagecache_storage_arguments_invalid_value(self):
+    def test_setting_document_file_image_cache_storage_arguments_invalid_value(self):
         self._set_environment_variable(
             name='MAYAN_{}'.format(
-                setting_documentimagecache_storage_arguments.global_name
-            ), value="invalid_value"
+                setting_document_file_page_image_cache_maximum_size.global_name
+            ), value='invalid_value'
         )
         self.test_case_silenced_logger_new_level = logging.FATAL + 10
         self._silence_logger(name='mayan.apps.storage.classes')
@@ -62,11 +63,11 @@ class DocumentStorageSettingsTestCase(SmartSettingTestMixin, BaseTestCase):
         self.assertTrue('Unable to initialize' in str(assertion.exception))
         self.assertTrue('document image' in str(assertion.exception))
 
-    def test_setting_storage_backend_arguments_invalid_value(self):
+    def test_setting_document_file_storage_backend_arguments_invalid_value(self):
         self._set_environment_variable(
             name='MAYAN_{}'.format(
-                setting_storage_backend_arguments.global_name
-            ), value="invalid_value"
+                setting_document_file_storage_backend_arguments.global_name
+            ), value='invalid_value'
         )
         self.test_case_silenced_logger_new_level = logging.FATAL + 10
         self._silence_logger(name='mayan.apps.storage.classes')

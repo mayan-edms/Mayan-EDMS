@@ -15,7 +15,7 @@ class TrashedDocumentViewTestCase(
     def test_document_trash_get_view_no_permission(self):
         document_count = Document.valid.count()
 
-        response = self._request_document_trash_get_view()
+        response = self._request_test_document_trash_get_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(Document.valid.count(), document_count)
@@ -27,13 +27,13 @@ class TrashedDocumentViewTestCase(
 
         document_count = Document.valid.count()
 
-        response = self._request_document_trash_get_view()
+        response = self._request_test_document_trash_get_view()
         self.assertEqual(response.status_code, 200)
 
         self.assertEqual(Document.valid.count(), document_count)
 
     def test_document_trash_post_view_no_permission(self):
-        response = self._request_document_trash_post_view()
+        response = self._request_test_document_trash_post_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(DeletedDocument.objects.count(), 0)
@@ -44,7 +44,7 @@ class TrashedDocumentViewTestCase(
             obj=self.test_document, permission=permission_document_trash
         )
 
-        response = self._request_document_trash_post_view()
+        response = self._request_test_document_trash_post_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(DeletedDocument.objects.count(), 1)
@@ -56,7 +56,7 @@ class TrashedDocumentViewTestCase(
 
         document_count = Document.valid.count()
 
-        response = self._request_trashed_document_restore_get_view()
+        response = self._request_test_trashed_document_restore_get_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(Document.valid.count(), document_count)
@@ -71,7 +71,7 @@ class TrashedDocumentViewTestCase(
 
         document_count = Document.valid.count()
 
-        response = self._request_trashed_document_restore_get_view()
+        response = self._request_test_trashed_document_restore_get_view()
         self.assertEqual(response.status_code, 200)
 
         self.assertEqual(Document.valid.count(), document_count)
@@ -80,7 +80,7 @@ class TrashedDocumentViewTestCase(
         self.test_document.delete()
         self.assertEqual(Document.valid.count(), 0)
 
-        response = self._request_trashed_document_restore_post_view()
+        response = self._request_test_trashed_document_restore_post_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(DeletedDocument.objects.count(), 1)
@@ -94,7 +94,7 @@ class TrashedDocumentViewTestCase(
             obj=self.test_document, permission=permission_trashed_document_restore
         )
 
-        response = self._request_trashed_document_restore_post_view()
+        response = self._request_test_trashed_document_restore_post_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(DeletedDocument.objects.count(), 0)
@@ -107,7 +107,7 @@ class TrashedDocumentViewTestCase(
 
         trashed_document_count = DeletedDocument.objects.count()
 
-        response = self._request_trashed_document_delete_get_view()
+        response = self._request_test_trashed_document_delete_get_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
@@ -125,7 +125,7 @@ class TrashedDocumentViewTestCase(
 
         trashed_document_count = DeletedDocument.objects.count()
 
-        response = self._request_trashed_document_delete_get_view()
+        response = self._request_test_trashed_document_delete_get_view()
         self.assertEqual(response.status_code, 200)
 
         self.assertEqual(
@@ -137,7 +137,7 @@ class TrashedDocumentViewTestCase(
         self.assertEqual(Document.valid.count(), 0)
         self.assertEqual(DeletedDocument.objects.count(), 1)
 
-        response = self._request_trashed_document_delete_post_view()
+        response = self._request_test_trashed_document_delete_post_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(Document.valid.count(), 0)
@@ -152,7 +152,7 @@ class TrashedDocumentViewTestCase(
             obj=self.test_document, permission=permission_trashed_document_delete
         )
 
-        response = self._request_trashed_document_delete_post_view()
+        response = self._request_test_trashed_document_delete_post_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(DeletedDocument.objects.count(), 0)
@@ -161,7 +161,7 @@ class TrashedDocumentViewTestCase(
     def test_trashed_document_list_view_no_permission(self):
         self.test_document.delete()
 
-        response = self._request_trashed_document_list_view()
+        response = self._request_test_trashed_document_list_view()
         self.assertNotContains(
             response=response, text=self.test_document.label, status_code=200
         )
@@ -173,7 +173,7 @@ class TrashedDocumentViewTestCase(
             obj=self.test_document, permission=permission_document_view
         )
 
-        response = self._request_trashed_document_list_view()
+        response = self._request_test_trashed_document_list_view()
         self.assertContains(
             response=response, text=self.test_document.label, status_code=200
         )

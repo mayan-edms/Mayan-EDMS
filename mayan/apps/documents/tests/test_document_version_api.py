@@ -13,7 +13,9 @@ from ..permissions import (
     permission_trashed_document_restore, permission_document_trash,
     permission_document_view, permission_document_type_create,
     permission_document_type_delete, permission_document_type_edit,
-    permission_document_version_view,
+    permission_document_version_create, permission_document_version_delete,
+    permission_document_version_edit, permission_document_version_view,
+    permission_document_version_export
 )
 
 from .literals import (
@@ -41,21 +43,89 @@ class DocumentVersionAPIViewTestCase(
     DocumentVersionAPIViewTestMixin, DocumentTestMixin,
     DocumentVersionTestMixin, BaseAPITestCase
 ):
-    auto_upload_test_document = False
+    def test_document_version_create_api_view_no_permission(self):
+        response = self._request_test_document_version_create_api_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-    def test_document_version_api_export_view_no_permission(self):
-        self._upload_test_document()
+        self.assertEqual(self.test_document.versions.count(), 1)
+        self.assertEqual(self.test_document.page_count, 1)
 
-        response = self._request_test_document_version_api_export_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+    def test_document_version_create_api_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_version_create
+        )
 
-    def test_document_version_api_export_view_with_access(self):
-        self._upload_test_document()
+        response = self._request_test_document_version_create_api_view()
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+        self.assertEqual(self.test_document.versions.count(), 2)
+        self.assertEqual(self.test_document.page_count, 0)
+
+    def test_document_version_delete_api_view_no_permission(self):
+        response = self._request_test_document_version_delete_api_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        self.assertEqual(self.test_document.versions.count(), 1)
+
+    def test_document_version_delete_api_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_version_delete
+        )
+
+        response = self._request_test_document_version_delete_api_view()
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
+        self.assertEqual(self.test_document.versions.count(), 0)
+
+    def test_document_version_edit_via_patch_api_view_no_permission(self):
+        response = self._request_test_document_version_edit_via_patch_api_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+    def test_document_version_edit_via_patch_api_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_version_edit
+        )
+        response = self._request_test_document_version_edit_via_patch_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.test_document.latest_version.refresh_from_db()
+        self.assertEqual(self.test_document.versions.count(), 1)
+        self.assertEqual(
+            self.test_document.latest_version.comment,
+            TEST_DOCUMENT_VERSION_COMMENT_EDITED
+        )
+    def test_document_version_edit_via_put_api_view_no_permission(self):
+        response = self._request_test_document_version_edit_via_put_api_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+    def test_document_version_edit_via_put_api_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_version_edit
+        )
+
+        response = self._request_test_document_version_edit_via_put_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.test_document.latest_version.refresh_from_db()
+        self.assertEqual(self.test_document.versions.count(), 1)
+        self.assertEqual(
+            self.test_document.latest_version.comment,
+            TEST_DOCUMENT_VERSION_COMMENT_EDITED
+        )
+
+    def test_document_version_export_api_view_no_permission(self):
+        response = self._request_test_document_version_export_api_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+    def test_document_version_export_api_view_with_access(self):
         self.grant_access(
             obj=self.test_document, permission=permission_document_version_export
         )
 
-        response = self._request_test_document_version_api_export_view()
+        response = self._request_test_document_version_export_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         with self.test_document.latest_version.open() as version_object:
@@ -65,107 +135,36 @@ class DocumentVersionAPIViewTestCase(
                 mime_type=self.test_document.latest_version.mimetype
             )
 
-    def test_document_version_api_edit_via_patch_view_no_permission(self):
-        self._upload_test_document()
-
-        response = self._request_test_document_version_api_edit_via_patch_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-
-    def test_document_version_api_edit_via_patch_view_with_access(self):
-        self._upload_test_document()
-        self.grant_access(
-            obj=self.test_document, permission=permission_document_edit
-        )
-        response = self._request_test_document_version_api_edit_via_patch_view()
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.test_document.latest_version.refresh_from_db()
-        self.assertEqual(self.test_document.versions.count(), 1)
-        self.assertEqual(
-            self.test_document.latest_version.comment,
-            TEST_DOCUMENT_VERSION_COMMENT_EDITED
-        )
-    def test_document_version_api_edit_via_put_view_no_permission(self):
-        self._upload_test_document()
-
-        response = self._request_test_document_version_api_edit_via_put_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-
-    def test_document_version_api_edit_via_put_view_with_access(self):
-        self._upload_test_document()
-        self.grant_access(
-            obj=self.test_document, permission=permission_document_edit
-        )
-
-        response = self._request_test_document_version_api_edit_via_put_view()
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-
-        self.test_document.latest_version.refresh_from_db()
-        self.assertEqual(self.test_document.versions.count(), 1)
-        self.assertEqual(
-            self.test_document.latest_version.comment,
-            TEST_DOCUMENT_VERSION_COMMENT_EDITED
-        )
-
-    def test_document_version_api_list_view_no_permission(self):
-        self._upload_test_document()
-        self._upload_new_version()
-
-        response = self._request_test_document_version_api_list_view()
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-
-        self.assertEqual(response.data['count'], 0)
-
-    def test_document_version_api_list_view_with_access(self):
-        self._upload_test_document()
-        self._upload_new_version()
-
-        self.grant_access(
-            obj=self.test_document, permission=permission_document_version_view
-        )
-        response = self._request_test_document_version_api_list_view()
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-
-        self.assertEqual(
-            response.data['results'][1]['checksum'],
-            self.test_document.latest_version.checksum
-        )
-
-    def test_document_version_api_delete_view_no_permission(self):
-        self._upload_test_document()
-        self._upload_new_version()
-
-        response = self._request_test_document_version_api_delete_view()
+    def test_document_version_list_api_view_no_permission(self):
+        response = self._request_test_document_version_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-    def test_document_version_api_delete_view_with_access(self):
-        self._upload_test_document()
-        self._upload_new_version()
+    def test_document_version_list_api_view_with_access(self):
         self.grant_access(
             obj=self.test_document,
-            permission=permission_document_version_delete
+            permission=permission_document_version_view
         )
+        response = self._request_test_document_version_list_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        response = self._request_test_document_version_api_delete_view()
-        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
-
-        self.assertEqual(self.test_document.versions.count(), 1)
         self.assertEqual(
-            self.test_document.versions.first(), self.test_document.latest_version
+            response.data['results'][0]['id'],
+            self.test_document.latest_version.id
         )
 
 
 class DocumentVersionPageAPIViewTestCase(
     DocumentVersionPageAPIViewTestMixin, DocumentTestMixin, BaseAPITestCase
 ):
-    def test_document_version_page_api_image_view_no_permission(self):
-        response = self._request_document_version_page_image()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+    def test_document_version_page_image_api_view_no_permission(self):
+        response = self._request_test_document_version_page_image_api_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-    def test_document_version_page_api_image_view_with_access(self):
+    def test_document_version_page_image_api_view_with_access(self):
         self.grant_access(
             obj=self.test_document,
             permission=permission_document_version_view
         )
 
-        response = self._request_document_version_page_image()
+        response = self._request_test_document_version_page_image_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)

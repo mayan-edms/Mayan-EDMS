@@ -16,14 +16,14 @@ from ..literals import (
 
 
 class DocumentAPIViewTestMixin:
-    def _request_test_document_api_download_view(self):
+    def _request_test_document_download_api_view(self):
         return self.get(
             viewname='rest_api:document-download', kwargs={
                 'document_id': self.test_document.pk
             }
         )
 
-    def _request_test_document_api_upload_view(self):
+    def _request_test_document_upload_api_view(self):
         with open(file=TEST_DOCUMENT_PATH, mode='rb') as file_object:
             return self.post(
                 viewname='rest_api:document-list', data={
@@ -32,21 +32,21 @@ class DocumentAPIViewTestMixin:
                 }
             )
 
-    def _request_test_document_description_api_edit_via_patch_view(self):
+    def _request_test_document_description_edit_via_patch_api_view(self):
         return self.patch(
             viewname='rest_api:document-detail', kwargs={
                 'document_id': self.test_document.pk
             }, data={'description': TEST_DOCUMENT_DESCRIPTION_EDITED}
         )
 
-    def _request_test_document_description_api_edit_via_put_view(self):
+    def _request_test_document_description_edit_via_put_api_view(self):
         return self.put(
             viewname='rest_api:document-detail', kwargs={
                 'document_id': self.test_document.pk
             }, data={'description': TEST_DOCUMENT_DESCRIPTION_EDITED}
         )
 
-    def _request_test_document_document_type_change_api_view(self):
+    def _request_test_document_type_change_api_view(self):
         return self.post(
             viewname='rest_api:document-type-change', kwargs={
                 'document_id': self.test_document.pk
@@ -96,7 +96,7 @@ class DocumentTestMixin:
     def tearDown(self):
         for document_type in DocumentType.objects.all():
             document_type.delete()
-        super(DocumentTestMixin, self).tearDown()
+        super().tearDown()
 
     def _create_test_document_stub(self):
         self.test_document_stub = Document.objects.create(

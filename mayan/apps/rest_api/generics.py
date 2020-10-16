@@ -1,6 +1,7 @@
 from rest_framework import generics
 
 from .filters import MayanObjectPermissionsFilter
+from .mixins import InstanceExtraDataAPIViewMixin, SerializerExtraContextAPIViewMixin
 from .permissions import MayanPermission
 
 
@@ -9,7 +10,7 @@ class GenericAPIView(generics.GenericAPIView):
     permission_classes = (MayanPermission,)
 
 
-class ListAPIView(generics.ListAPIView):
+class ListAPIView(SerializerExtraContextAPIViewMixin, generics.ListAPIView):
     """
     requires:
         object_permission = {'GET': ...}
@@ -21,7 +22,10 @@ class ListAPIView(generics.ListAPIView):
     permission_classes = (MayanPermission,)
 
 
-class ListCreateAPIView(generics.ListCreateAPIView):
+class ListCreateAPIView(
+    InstanceExtraDataAPIViewMixin, SerializerExtraContextAPIViewMixin,
+    generics.ListCreateAPIView
+):
     """
     requires:
         object_permission = {'GET': ...}
@@ -31,7 +35,10 @@ class ListCreateAPIView(generics.ListCreateAPIView):
     permission_classes = (MayanPermission,)
 
 
-class RetrieveAPIView(generics.RetrieveAPIView):
+class RetrieveAPIView(
+    InstanceExtraDataAPIViewMixin, SerializerExtraContextAPIViewMixin,
+    generics.RetrieveAPIView
+):
     """
     requires:
         object_permission = {
@@ -41,7 +48,10 @@ class RetrieveAPIView(generics.RetrieveAPIView):
     filter_backends = (MayanObjectPermissionsFilter,)
 
 
-class RetrieveDestroyAPIView(generics.RetrieveDestroyAPIView):
+class RetrieveDestroyAPIView(
+    InstanceExtraDataAPIViewMixin, SerializerExtraContextAPIViewMixin,
+    generics.RetrieveDestroyAPIView
+):
     """
     requires:
         object_permission = {
@@ -52,7 +62,10 @@ class RetrieveDestroyAPIView(generics.RetrieveDestroyAPIView):
     filter_backends = (MayanObjectPermissionsFilter,)
 
 
-class RetrieveUpdateAPIView(generics.RetrieveUpdateAPIView):
+class RetrieveUpdateAPIView(
+    InstanceExtraDataAPIViewMixin, SerializerExtraContextAPIViewMixin,
+    generics.RetrieveUpdateAPIView
+):
     """
     requires:
         object_permission = {
@@ -64,7 +77,10 @@ class RetrieveUpdateAPIView(generics.RetrieveUpdateAPIView):
     filter_backends = (MayanObjectPermissionsFilter,)
 
 
-class RetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+class RetrieveUpdateDestroyAPIView(
+    InstanceExtraDataAPIViewMixin, SerializerExtraContextAPIViewMixin,
+    generics.RetrieveUpdateDestroyAPIView
+):
     """
     requires:
         object_permission = {

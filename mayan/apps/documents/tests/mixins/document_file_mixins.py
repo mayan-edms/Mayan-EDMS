@@ -7,7 +7,7 @@ from ..literals import (
 
 
 class DocumentFileAPIViewTestMixin:
-    def _request_test_document_file_api_delete_view(self):
+    def _request_test_document_file_delete_api_view(self):
         return self.delete(
             viewname='rest_api:documentfile-detail', kwargs={
                 'document_id': self.test_document.pk,
@@ -15,7 +15,7 @@ class DocumentFileAPIViewTestMixin:
             }
         )
 
-    def _request_test_document_file_api_download_view(self):
+    def _request_test_document_file_download_api_view(self):
         return self.get(
             viewname='rest_api:documentfile-download', kwargs={
                 'document_id': self.test_document.pk,
@@ -23,14 +23,14 @@ class DocumentFileAPIViewTestMixin:
             }
         )
 
-    def _request_test_document_file_api_list_view(self):
+    def _request_test_document_file_list_api_view(self):
         return self.get(
             viewname='rest_api:documentfile-list', kwargs={
                 'document_id': self.test_document.pk
             }
         )
 
-    def _request_test_document_file_api_upload_view(self):
+    def _request_test_document_file_upload_api_view(self):
         # Artificial delay since MySQL doesn't store microsecond data in
         # timestamps. File timestamp is used to determine which file
         # is the latest.
@@ -86,7 +86,7 @@ class DocumentFileViewTestMixin:
 
 
 class DocumentFilePageAPIViewTestMixin:
-    def _request_document_file_page_image(self):
+    def _request_test_document_file_page_image_api_view(self):
         page = self.test_document_file.pages.first()
         return self.get(
             viewname='rest_api:documentfilepage-image', kwargs={

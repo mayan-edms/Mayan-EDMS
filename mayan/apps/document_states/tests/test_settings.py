@@ -15,7 +15,7 @@ class WorkflowPreviewStorageSettingsTestCase(SmartSettingTestMixin, BaseTestCase
         super(WorkflowPreviewStorageSettingsTestCase, self).tearDown()
         importlib.reload(storages)
 
-    def test_setting_storage_backend_arguments_invalid_value(self):
+    def test_setting_document_file_storage_backend_arguments_invalid_value(self):
         self._set_environment_variable(
             name='MAYAN_{}'.format(
                 setting_workflowimagecache_storage_arguments.global_name

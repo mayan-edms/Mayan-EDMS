@@ -15,7 +15,7 @@ class FilteredPrimaryKeyRelatedField(serializers.PrimaryKeyRelatedField):
         self.source_permission = kwargs.pop('source_permission', None)
         self.source_queryset = kwargs.pop('source_queryset', None)
         self.source_queryset_method = kwargs.pop('source_queryset_method', None)
-        super(FilteredPrimaryKeyRelatedField, self).__init__(**kwargs)
+        super().__init__(**kwargs)
 
     def get_queryset(self):
         AccessControlList = apps.get_model(
@@ -62,7 +62,7 @@ class FilteredPrimaryKeyRelatedField(serializers.PrimaryKeyRelatedField):
 class MultiKwargHyperlinkedIdentityField(HyperlinkedIdentityField):
     def __init__(self, *args, **kwargs):
         self.view_kwargs = kwargs.pop('view_kwargs', [])
-        super(MultiKwargHyperlinkedIdentityField, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def get_url(self, obj, view_name, request, format):
         """

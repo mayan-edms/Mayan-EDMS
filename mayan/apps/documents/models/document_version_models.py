@@ -10,6 +10,7 @@ from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.classes import ModelQueryFields
+from mayan.apps.common.mixins import ModelInstanceExtraDataAPIViewMixin
 from mayan.apps.common.signals import signal_mayan_pre_save
 from mayan.apps.converter.classes import ConverterBase
 from mayan.apps.events.classes import EventManagerMethodAfter, EventManagerSave
@@ -32,7 +33,7 @@ __all__ = ('DocumentVersion',)
 logger = logging.getLogger(name=__name__)
 
 
-class DocumentVersion(models.Model):
+class DocumentVersion(ModelInstanceExtraDataAPIViewMixin, models.Model):
     document = models.ForeignKey(
         on_delete=models.CASCADE, related_name='versions', to=Document,
         verbose_name=_('Document')

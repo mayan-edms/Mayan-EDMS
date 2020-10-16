@@ -27,7 +27,7 @@ class DocumentTypeDeletionPoliciesViewTestCase(
     auto_upload_test_document = False
 
     def test_document_type_filename_generator_get_view_no_permission(self):
-        response = self._request_document_type_filename_generator_get_view()
+        response = self._request_test_document_type_filename_generator_get_view()
         self.assertEqual(response.status_code, 404)
 
     def test_document_type_filename_generator_get_view_access(self):
@@ -36,7 +36,7 @@ class DocumentTypeDeletionPoliciesViewTestCase(
             permission=permission_document_type_edit
         )
 
-        response = self._request_document_type_filename_generator_get_view()
+        response = self._request_test_document_type_filename_generator_get_view()
         self.assertEqual(response.status_code, 200)
 
 
@@ -46,7 +46,7 @@ class DocumentTypeFilenameGeneratorViewTestCase(
     auto_upload_test_document = False
 
     def test_document_type_filename_generator_get_view_no_permission(self):
-        response = self._request_document_type_filename_generator_get_view()
+        response = self._request_test_document_type_filename_generator_get_view()
         self.assertEqual(response.status_code, 404)
 
     def test_document_type_filename_generator_get_view_access(self):
@@ -55,7 +55,7 @@ class DocumentTypeFilenameGeneratorViewTestCase(
             permission=permission_document_type_edit
         )
 
-        response = self._request_document_type_filename_generator_get_view()
+        response = self._request_test_document_type_filename_generator_get_view()
         self.assertEqual(response.status_code, 200)
 
 
@@ -155,7 +155,7 @@ class DocumentTypeQuickLabelViewsTestCase(
             permission=permission_document_type_view
         )
 
-        response = self._request_quick_label_create()
+        response = self._request_test_quick_label_create_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(self.test_document_type.filenames.count(), 0)
@@ -166,14 +166,14 @@ class DocumentTypeQuickLabelViewsTestCase(
             permission=permission_document_type_edit
         )
 
-        response = self._request_quick_label_create()
+        response = self._request_test_quick_label_create_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(self.test_document_type.filenames.count(), 1)
 
     def test_document_type_quick_label_delete_no_permission(self):
         self._create_test_quick_label()
-        response = self._request_quick_label_delete()
+        response = self._request_test_quick_label_delete_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
@@ -187,7 +187,7 @@ class DocumentTypeQuickLabelViewsTestCase(
         )
         self._create_test_quick_label()
 
-        response = self._request_quick_label_delete()
+        response = self._request_test_quick_label_delete_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
@@ -197,7 +197,7 @@ class DocumentTypeQuickLabelViewsTestCase(
     def test_document_type_quick_label_edit_no_permission(self):
         self._create_test_quick_label()
 
-        response = self._request_quick_label_edit()
+        response = self._request_test_quick_label_edit_view()
         self.assertEqual(response.status_code, 404)
 
         self.test_document_type_filename.refresh_from_db()
@@ -213,7 +213,7 @@ class DocumentTypeQuickLabelViewsTestCase(
         )
         self._create_test_quick_label()
 
-        response = self._request_quick_label_edit()
+        response = self._request_test_quick_label_edit_view()
         self.assertEqual(response.status_code, 302)
 
         self.test_document_type_filename.refresh_from_db()
@@ -225,7 +225,7 @@ class DocumentTypeQuickLabelViewsTestCase(
     def test_document_type_quick_label_list_no_permission(self):
         self._create_test_quick_label()
 
-        response = self._request_quick_label_list_view()
+        response = self._request_test_quick_label_list_view()
         self.assertEqual(response.status_code, 404)
 
     def test_document_type_quick_label_list_with_access(self):
@@ -236,7 +236,7 @@ class DocumentTypeQuickLabelViewsTestCase(
             permission=permission_document_type_view
         )
 
-        response = self._request_quick_label_list_view()
+        response = self._request_test_quick_label_list_view()
         self.assertContains(
             response, status_code=200, text=self.test_document_type_filename
         )
@@ -249,7 +249,7 @@ class DocumentsQuickLabelViewTestCase(
     def test_document_quick_label_no_permission(self):
         self._create_test_quick_label()
 
-        response = self._request_document_quick_label_edit_view()
+        response = self._request_test_document_quick_label_edit_view()
         self.assertEqual(response.status_code, 404)
 
     def test_document_quick_label_with_access(self):
@@ -259,7 +259,7 @@ class DocumentsQuickLabelViewTestCase(
             permission=permission_document_properties_edit
         )
 
-        response = self._request_document_quick_label_edit_view()
+        response = self._request_test_document_quick_label_edit_view()
         self.assertEqual(response.status_code, 302)
 
         self.test_document.refresh_from_db()
@@ -274,7 +274,7 @@ class DocumentsQuickLabelViewTestCase(
         )
         filename, extension = os.path.splitext(self.test_document.label)
 
-        response = self._request_document_quick_label_edit_view(
+        response = self._request_test_document_quick_label_edit_view(
             extra_data={'preserve_extension': True}
         )
         self.assertEqual(response.status_code, 302)
@@ -294,7 +294,7 @@ class DocumentsQuickLabelViewTestCase(
         )
         filename, extension = os.path.splitext(self.test_document.label)
 
-        response = self._request_document_quick_label_edit_view(
+        response = self._request_test_document_quick_label_edit_view(
             extra_data={'preserve_extension': False}
         )
         self.assertEqual(response.status_code, 302)

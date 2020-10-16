@@ -43,16 +43,16 @@ class DocumentTypeAPIViewTestCase(
     auto_upload_test_document = False
     auto_create_test_document_type = False
 
-    def test_document_type_api_create_view_no_permission(self):
-        response = self._request_test_document_type_api_create_view()
+    def test_document_type_create_api_view_no_permission(self):
+        response = self._request_test_document_type_create_api_view()
 
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertEqual(DocumentType.objects.all().count(), 0)
 
-    def test_document_type_api_create_view_with_permission(self):
+    def test_document_type_create_api_view_with_permission(self):
         self.grant_permission(permission=permission_document_type_create)
 
-        response = self._request_test_document_type_api_create_view()
+        response = self._request_test_document_type_create_api_view()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
         self.assertEqual(DocumentType.objects.all().count(), 1)
@@ -61,15 +61,15 @@ class DocumentTypeAPIViewTestCase(
             TEST_DOCUMENT_TYPE_LABEL
         )
 
-    def test_document_type_api_delete_view_no_permission(self):
+    def test_document_type_delete_api_view_no_permission(self):
         self.test_document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE_LABEL
         )
 
-        response = self._request_test_document_type_api_delete_view()
+        response = self._request_test_document_type_delete_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-    def test_document_type_api_delete_view_with_access(self):
+    def test_document_type_delete_api_view_with_access(self):
         self.test_document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE_LABEL
         )
@@ -78,20 +78,20 @@ class DocumentTypeAPIViewTestCase(
             permission=permission_document_type_delete
         )
 
-        response = self._request_test_document_type_api_delete_view()
+        response = self._request_test_document_type_delete_api_view()
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
         self.assertEqual(DocumentType.objects.all().count(), 0)
 
-    def test_document_type_api_edit_via_patch_view_no_permission(self):
+    def test_document_type_edit_via_patch_api_view_no_permission(self):
         self.test_document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE_LABEL
         )
 
-        response = self._request_test_document_type_api_patch_view()
+        response = self._request_test_document_type_patch_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-    def test_document_type_api_edit_via_patch_view_with_access(self):
+    def test_document_type_edit_via_patch_api_view_with_access(self):
         self.test_document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE_LABEL
         )
@@ -100,7 +100,7 @@ class DocumentTypeAPIViewTestCase(
             permission=permission_document_type_edit
         )
 
-        response = self._request_test_document_type_api_put_view()
+        response = self._request_test_document_type_put_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.test_document_type.refresh_from_db()
@@ -108,13 +108,13 @@ class DocumentTypeAPIViewTestCase(
             self.test_document_type.label, TEST_DOCUMENT_TYPE_LABEL_EDITED
         )
 
-    def test_document_type_api_edit_via_put_view_no_permission(self):
+    def test_document_type_edit_via_put_api_view_no_permission(self):
         self._create_test_document_type()
 
-        response = self._request_test_document_type_api_put_view()
+        response = self._request_test_document_type_put_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-    def test_document_type_api_edit_via_put_view_with_access(self):
+    def test_document_type_edit_via_put_api_view_with_access(self):
         self.test_document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE_LABEL
         )
@@ -123,7 +123,7 @@ class DocumentTypeAPIViewTestCase(
             permission=permission_document_type_edit
         )
 
-        response = self._request_test_document_type_api_put_view()
+        response = self._request_test_document_type_put_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.test_document_type.refresh_from_db()

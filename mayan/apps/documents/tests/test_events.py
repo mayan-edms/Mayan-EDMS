@@ -73,7 +73,7 @@ class DocumentEventsTestCase(
         self.assertEqual(event.verb, event_document_viewed.id)
 
     def test_document_trashed_view_event_no_permission(self):
-        response = self._request_document_trash_post_view()
+        response = self._request_test_document_trash_post_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(list(Action.objects.any(obj=self.test_document)), [])
@@ -83,7 +83,7 @@ class DocumentEventsTestCase(
             obj=self.test_document, permission=permission_document_trash
         )
 
-        response = self._request_document_trash_post_view()
+        response = self._request_test_document_trash_post_view()
         self.assertEqual(response.status_code, 302)
 
         event = Action.objects.any(obj=self.test_document).first()

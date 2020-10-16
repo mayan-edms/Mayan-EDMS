@@ -2,10 +2,10 @@ import logging
 
 from django.conf import settings
 from django.http import HttpResponse
-from django.shortcuts import get_object_or_404
 from django.views.decorators.cache import cache_control, patch_cache_control
 
 from rest_framework import status
+from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 
 from mayan.apps.acls.models import AccessControlList
@@ -44,40 +44,15 @@ from ..tasks import (
 logger = logging.getLogger(name=__name__)
 
 
-class APIDocumentTypeChangeView(generics.GenericAPIView):
-    """
-    post: Change the type of the selected document.
-    """
-    lookup_url_kwarg = 'document_id'
-    mayan_object_permissions = {
-        'POST': (permission_document_properties_edit,),
-    }
-    queryset = Document.objects.all()
-    serializer_class = DocumentTypeChangeSerializer
-
-    def post(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        document_type = DocumentType.objects.get(pk=request.data['new_document_type'])
-        self.get_object().document_type_change(
-            document_type=document_type, _user=self.request.user
-        )
-        return Response(status=status.HTTP_200_OK)
-
-
 class APIDocumentListView(generics.ListCreateAPIView):
     """
     get: Returns a list of all the documents.
     post: Create a new document.
     """
-    mayan_object_permissions = {'GET': (permission_document_view,)}
+    mayan_object_permissions = {
+        'GET': (permission_document_view,),
+    }
     queryset = Document.objects.all()
-
-    def get_serializer(self, *args, **kwargs):
-        if not self.request:
-            return None
-
-        return super(APIDocumentListView, self).get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -90,7 +65,12 @@ class APIDocumentListView(generics.ListCreateAPIView):
             obj=serializer.validated_data['document_type'],
             permissions=(permission_document_create,), user=self.request.user
         )
-        serializer.save(_user=self.request.user)
+        super().perform_create(serializer=serializer)
+
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user,
+        }
 
 
 class APIDocumentDetailView(generics.RetrieveUpdateDestroyAPIView):
@@ -110,24 +90,32 @@ class APIDocumentDetailView(generics.RetrieveUpdateDestroyAPIView):
     }
     queryset = Document.objects.all()
 
-    def get_serializer(self, *args, **kwargs):
-        if not self.request:
-            return None
-
-        return super(APIDocumentDetailView, self).get_serializer(*args, **kwargs)
-
-    def get_serializer_context(self):
-        return {
-            'format': self.format_kwarg,
-            'request': self.request,
-            'view': self
-        }
-
     def get_serializer_class(self):
         if self.request.method == 'GET':
             return DocumentSerializer
         else:
             return DocumentWritableSerializer
+
+
+class APIDocumentTypeChangeView(generics.GenericAPIView):
+    """
+    post: Change the type of the selected document.
+    """
+    lookup_url_kwarg = 'document_id'
+    mayan_object_permissions = {
+        'POST': (permission_document_properties_edit,),
+    }
+    queryset = Document.objects.all()
+    serializer_class = DocumentTypeChangeSerializer
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        document_type = DocumentType.objects.get(pk=request.data['new_document_type'])
+        self.get_object().document_type_change(
+            document_type=document_type, _user=self.request.user
+        )
+        return Response(status=status.HTTP_200_OK)
 
 
 class APIRecentDocumentListView(generics.ListAPIView):

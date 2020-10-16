@@ -7,7 +7,14 @@ from ..literals import (
 
 
 class DocumentVersionAPIViewTestMixin:
-    def _request_test_document_version_api_delete_view(self):
+    def _request_test_document_version_create_api_view(self):
+        return self.post(
+            viewname='rest_api:documentversion-list', kwargs={
+                'document_id': self.test_document.pk
+            }
+        )
+
+    def _request_test_document_version_delete_api_view(self):
         return self.delete(
             viewname='rest_api:documentversion-detail', kwargs={
                 'document_id': self.test_document.pk,
@@ -15,7 +22,7 @@ class DocumentVersionAPIViewTestMixin:
             }
         )
 
-    def _request_test_document_version_api_edit_via_patch_view(self):
+    def _request_test_document_version_edit_via_patch_api_view(self):
         return self.patch(
             viewname='rest_api:documentversion-detail', kwargs={
                 'document_id': self.test_document.pk,
@@ -23,7 +30,7 @@ class DocumentVersionAPIViewTestMixin:
             }, data={'comment': TEST_DOCUMENT_VERSION_COMMENT_EDITED}
         )
 
-    def _request_test_document_version_api_edit_via_put_view(self):
+    def _request_test_document_version_edit_via_put_api_view(self):
         return self.put(
             viewname='rest_api:documentversion-detail', kwargs={
                 'document_id': self.test_document.pk,
@@ -31,7 +38,7 @@ class DocumentVersionAPIViewTestMixin:
             }, data={'comment': TEST_DOCUMENT_VERSION_COMMENT_EDITED}
         )
 
-    def _request_test_document_version_api_export_view(self):
+    def _request_test_document_version_export_api_view(self):
         return self.get(
             viewname='rest_api:documentversion-export', kwargs={
                 'document_id': self.test_document.pk,
@@ -39,16 +46,16 @@ class DocumentVersionAPIViewTestMixin:
             }
         )
 
-    def _request_test_document_version_api_list_view(self):
+    def _request_test_document_version_list_api_view(self):
         return self.get(
             viewname='rest_api:documentversion-list', kwargs={
-                'document_version_id': self.test_document.pk
+                'document_id': self.test_document.pk
             }
         )
 
 
 class DocumentVersionPageAPIViewTestMixin:
-    def _request_document_version_page_image(self):
+    def _request_test_document_version_page_image_api_view(self):
         page = self.test_document.pages.first()
         return self.get(
             viewname='rest_api:documentversionpage-image', kwargs={
