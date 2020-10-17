@@ -166,13 +166,13 @@ class TrashedDocumentAPIViewTestCase(
 ):
     auto_upload_test_document = False
 
-    def test_document_api_trash_view_no_permission(self):
+    def test_document_trash_api_view_no_permission(self):
         self._upload_test_document()
 
         response = self._request_test_document_trash_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-    def test_document_api_trash_view_with_access(self):
+    def test_document_trash_api_view_with_access(self):
         self._upload_test_document()
         self.grant_access(
             obj=self.test_document, permission=permission_document_trash
@@ -184,7 +184,7 @@ class TrashedDocumentAPIViewTestCase(
         self.assertEqual(Document.valid.count(), 0)
         self.assertEqual(Document.trash.count(), 1)
 
-    def test_trashed_document_api_delete_view_no_permission(self):
+    def test_trashed_document_delete_api_view_no_permission(self):
         self._upload_test_document()
         self.test_document.delete()
 
@@ -194,7 +194,7 @@ class TrashedDocumentAPIViewTestCase(
         self.assertEqual(Document.valid.count(), 0)
         self.assertEqual(Document.trash.count(), 1)
 
-    def test_trashed_document_api_delete_view_with_access(self):
+    def test_trashed_document_delete_api_view_with_access(self):
         self._upload_test_document()
         self.test_document.delete()
         self.grant_access(
@@ -208,7 +208,7 @@ class TrashedDocumentAPIViewTestCase(
         self.assertEqual(Document.valid.count(), 0)
         self.assertEqual(Document.trash.count(), 0)
 
-    def test_trashed_document_api_detail_view_no_permission(self):
+    def test_trashed_document_detail_api_view_no_permission(self):
         self._upload_test_document()
         self.test_document.delete()
 
@@ -216,7 +216,7 @@ class TrashedDocumentAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
         self.assertFalse('uuid' in response.data)
 
-    def test_trashed_document_api_detail_view_with_access(self):
+    def test_trashed_document_detail_api_view_with_access(self):
         self._upload_test_document()
         self.test_document.delete()
         self.grant_access(
@@ -229,14 +229,14 @@ class TrashedDocumentAPIViewTestCase(
             response.data['uuid'], force_text(self.test_document.uuid)
         )
 
-    def test_trashed_document_api_image_view_no_permission(self):
+    def test_trashed_document_image_api_view_no_permission(self):
         self._upload_test_document()
         self.test_document.delete()
 
         response = self._request_test_trashed_document_image_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
-    def test_trashed_document_api_image_view_with_access(self):
+    def test_trashed_document_image_api_view_with_access(self):
         self._upload_test_document()
         self.test_document.delete()
         self.grant_access(
@@ -246,7 +246,7 @@ class TrashedDocumentAPIViewTestCase(
         response = self._request_test_trashed_document_image_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-    def test_trashed_document_api_list_view_no_permission(self):
+    def test_trashed_document_list_api_view_no_permission(self):
         self._upload_test_document()
         self.test_document.delete()
 
@@ -254,7 +254,7 @@ class TrashedDocumentAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['count'], 0)
 
-    def test_trashed_document_api_list_view_with_access(self):
+    def test_trashed_document_list_api_view_with_access(self):
         self._upload_test_document()
         self.test_document.delete()
         self.grant_access(
@@ -268,7 +268,7 @@ class TrashedDocumentAPIViewTestCase(
             force_text(self.test_document.uuid)
         )
 
-    def test_trashed_document_api_restore_view_no_permission(self):
+    def test_trashed_document_restore_api_view_no_permission(self):
         self._upload_test_document()
         self.test_document.delete()
 
@@ -278,7 +278,7 @@ class TrashedDocumentAPIViewTestCase(
         self.assertEqual(Document.trash.count(), 1)
         self.assertEqual(Document.valid.count(), 0)
 
-    def test_trashed_document_api_restore_view_with_access(self):
+    def test_trashed_document_restore_api_view_with_access(self):
         self._upload_test_document()
         self.test_document.delete()
 

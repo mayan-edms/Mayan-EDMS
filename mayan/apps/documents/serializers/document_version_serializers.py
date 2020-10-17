@@ -19,7 +19,7 @@ from ..tasks import task_document_file_upload
 
 class DocumentVersionSerializer(serializers.HyperlinkedModelSerializer):
     document_url = serializers.SerializerMethodField()
-    #export_url = serializers.SerializerMethodField()
+    export_url = serializers.SerializerMethodField()
     pages_url = serializers.SerializerMethodField()
     url = serializers.SerializerMethodField()
 
@@ -31,7 +31,7 @@ class DocumentVersionSerializer(serializers.HyperlinkedModelSerializer):
             },
         }
         fields = (
-            'comment', 'document_url', 'id', 'pages_url',
+            'comment', 'document_url', 'export_url', 'id', 'pages_url',
             'timestamp', 'url'
         )
         model = DocumentVersion

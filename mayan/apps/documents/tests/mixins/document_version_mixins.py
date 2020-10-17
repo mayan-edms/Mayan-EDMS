@@ -39,7 +39,7 @@ class DocumentVersionAPIViewTestMixin:
         )
 
     def _request_test_document_version_export_api_view(self):
-        return self.get(
+        return self.post(
             viewname='rest_api:documentversion-export', kwargs={
                 'document_id': self.test_document.pk,
                 'document_version_id': self.test_document.latest_version.pk,

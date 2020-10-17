@@ -3,6 +3,7 @@ from django.utils.encoding import force_text
 from rest_framework import status
 
 from mayan.apps.rest_api.tests.base import BaseAPITestCase
+from mayan.apps.storage.models import DownloadFile
 
 from ..models import Document, DocumentType
 from ..permissions import (
@@ -117,23 +118,28 @@ class DocumentVersionAPIViewTestCase(
         )
 
     def test_document_version_export_api_view_no_permission(self):
+        download_file_count = DownloadFile.objects.count()
+
         response = self._request_test_document_version_export_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-    def test_document_version_export_api_view_with_access(self):
-        self.grant_access(
-            obj=self.test_document, permission=permission_document_version_export
+        self.assertEqual(
+            DownloadFile.objects.count(), download_file_count
         )
 
-        response = self._request_test_document_version_export_api_view()
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
+    def test_document_version_export_api_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_version_export
+        )
+        download_file_count = DownloadFile.objects.count()
 
-        with self.test_document.latest_version.open() as version_object:
-            self.assert_export_response(
-                response=response, content=version_object.read(),
-                versionname=force_text(self.test_document.latest_version),
-                mime_type=self.test_document.latest_version.mimetype
-            )
+        response = self._request_test_document_version_export_api_view()
+        self.assertEqual(response.status_code, status.HTTP_202_ACCEPTED)
+
+        self.assertEqual(
+            DownloadFile.objects.count(), download_file_count + 1
+        )
 
     def test_document_version_list_api_view_no_permission(self):
         response = self._request_test_document_version_list_api_view()

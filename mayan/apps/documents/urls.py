@@ -15,8 +15,9 @@ from .api_views.document_type_api_views import (
     APIDocumentTypeListView
 )
 from .api_views.document_version_api_views import (
-    APIDocumentVersionDetailView, APIDocumentVersionListView,
-    APIDocumentVersionPageImageView, APIDocumentVersionPageListView
+    APIDocumentVersionDetailView, APIDocumentVersionExportView,
+    APIDocumentVersionListView, APIDocumentVersionPageImageView,
+    APIDocumentVersionPageListView
 )
 from .views.document_file_views import (
     DocumentFileDeleteView, DocumentFileDownloadView, DocumentFileListView,
@@ -568,11 +569,11 @@ api_urls_document_versions = [
         name='documentversion-detail',
         view=APIDocumentVersionDetailView.as_view()
     ),
-    #url(
-    #    regex=r'^documents/(?P<document_id>[0-9]+)/versions/(?P<document_version_id>[0-9]+)/export/$',
-    #    view=APIDocumentVersionExportView.as_view(),
-    #    name='documentversion-export'
-    #),
+    url(
+        regex=r'^documents/(?P<document_id>[0-9]+)/versions/(?P<document_version_id>[0-9]+)/export/$',
+        view=APIDocumentVersionExportView.as_view(),
+        name='documentversion-export'
+    ),
     #url(
     #    regex=r'^documents/(?P<document_id>[0-9]+)/versions/(?P<document_version_id>[0-9]+)/pages/remap/$',
     #    view=APIDocumentVersionPagesRemapView.as_view(),

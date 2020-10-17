@@ -18,16 +18,19 @@ from ..models.document_models import Document
 from ..models.document_type_models import DocumentType
 from ..models.misc_models import DeletedDocument, RecentDocument
 from ..permissions import (
-    permission_document_create, permission_document_edit,
-    permission_document_file_delete, permission_document_file_download,
-    permission_document_file_new,  permission_document_file_view,
-    permission_document_properties_edit, permission_document_trash,
-    permission_document_type_create, permission_document_type_delete,
-    permission_document_type_edit, permission_document_type_view,
-    permission_document_version_create, permission_document_version_delete,
-    permission_document_version_edit, permission_document_version_view,
-    permission_document_view, permission_trashed_document_delete,
-    permission_trashed_document_restore
+    #permission_document_create, permission_document_edit,
+    #permission_document_file_delete, permission_document_file_download,
+    #permission_document_file_new,  permission_document_file_view,
+    #permission_document_properties_edit, permission_document_trash,
+    #permission_document_type_create, permission_document_type_delete,
+    #permission_document_type_edit, permission_document_type_view,
+    permission_document_version_create,
+    permission_document_version_delete,
+    permission_document_version_edit,
+    permission_document_version_export,
+    permission_document_version_view,
+    #permission_document_view, permission_trashed_document_delete,
+    #permission_trashed_document_restore
 )
 from ..serializers.document_version_serializers import (
     DocumentVersionSerializer, DocumentVersionPageSerializer
@@ -37,7 +40,7 @@ from ..settings import (
     setting_document_version_page_image_cache_time
 )
 from ..tasks import (
-    task_document_file_page_image_generate,
+    task_document_file_page_image_generate, task_document_version_export,
     task_document_version_page_image_generate
 )
 
@@ -70,6 +73,78 @@ class APIDocumentVersionDetailView(
         return self.get_document().versions.all()
 
 
+###
+class SerializerActionAPIViewMixin:
+    serializer_action_name = None
+
+    def serializer_action(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_serializer_action(serializer=serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response(
+            serializer.data, status=status.HTTP_200_OK, headers=headers
+        )
+
+    def get_success_headers(self, data):
+        try:
+            return {'Location': str(data[api_settings.URL_FIELD_NAME])}
+        except (TypeError, KeyError):
+            return {}
+
+    def perform_serializer_action(self, serializer):
+        getattr(serializer, self.serializer_action_name)()
+
+    def post(self, request, *args, **kwargs):
+        return self.serializer_action(request=request, *args, **kwargs)
+
+
+class ActionAPIViewMixin:
+    action_response_status = None
+
+    def get_success_headers(self, data):
+        try:
+            return {'Location': str(data[api_settings.URL_FIELD_NAME])}
+        except (TypeError, KeyError):
+            return {}
+
+    def perform_view_action(self):
+        raise ImproperlyConfigured(
+            'Need to specify the `.perform_action()` method.'
+        )
+
+    def post(self, request, *args, **kwargs):
+        return self.view_action(request=request, *args, **kwargs)
+
+    def view_action(self, request, *args, **kwargs):
+        self.perform_view_action()
+        return Response(
+            status=self.action_response_status or status.HTTP_200_OK
+        )
+
+
+class APIDocumentVersionExportView(
+    ActionAPIViewMixin, ParentObjectDocumentAPIViewMixin,
+    generics.GenericAPIView
+):
+    """
+    post: Exports the specified document version.
+    """
+    action_response_status = status.HTTP_202_ACCEPTED
+    lookup_url_kwarg = 'document_version_id'
+    mayan_object_permissions = {
+        'POST': (permission_document_version_export,),
+    }
+
+    def get_queryset(self):
+        return self.get_document().versions.all()
+
+    def perform_view_action(self):
+        task_document_version_export.apply_async(
+            kwargs={'document_version_id': self.get_object().pk}
+        )
+
+
 class APIDocumentVersionListView(
     ParentObjectDocumentAPIViewMixin, generics.ListCreateAPIView
 ):
@@ -84,12 +159,15 @@ class APIDocumentVersionListView(
     serializer_class = DocumentVersionSerializer
 
     def get_instance_extra_data(self):
+        print("@@@@@ get_instance_extra_data")
+
         return {
             '_event_actor': self.request.user,
             'document': self.get_document()
         }
 
     def get_queryset(self):
+        print("@@@@@", self.request.method)
         if self.request.method == 'GET':
             permission = permission_document_version_view
         else:
