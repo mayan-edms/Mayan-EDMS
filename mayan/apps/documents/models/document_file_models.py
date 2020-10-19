@@ -269,10 +269,10 @@ class DocumentFile(ModelInstanceExtraDataAPIViewMixin, models.Model):
         cache_filename = 'intermediate_file'
         cache_file = self.cache_partition.get_file(filename=cache_filename)
         if cache_file:
-            logger.debug('Intermidiate file found.')
+            logger.debug('Intermediate file found.')
             return cache_file.open()
         else:
-            logger.debug('Intermidiate file not found.')
+            logger.debug('Intermediate file not found.')
 
             try:
                 with self.open() as file_object:

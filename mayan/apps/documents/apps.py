@@ -63,11 +63,12 @@ from .links.document_links import (
     link_document_properties
 )
 from .links.document_file_links import (
-    link_document_file_delete, link_document_file_download,
-    link_document_file_multiple_download, link_document_file_download_quick,
-    link_document_file_list, link_document_file_preview,
-    link_document_file_print_form, link_document_file_properties,
-    link_document_file_return_to_document, link_document_file_return_list
+    link_document_file_cache_purge, link_document_file_delete,
+    link_document_file_download, link_document_file_multiple_download,
+    link_document_file_download_quick, link_document_file_list,
+    link_document_file_preview, link_document_file_print_form,
+    link_document_file_properties, link_document_file_return_to_document,
+    link_document_file_return_list
 )
 from .links.document_file_page_links import (
     link_document_file_multiple_page_count_update,
@@ -91,10 +92,10 @@ from .links.document_type_links import (
     link_document_type_setup
 )
 from .links.document_version_links import (
-    link_document_version_create, link_document_version_delete,
-    link_document_version_edit, link_document_version_export,
-    link_document_version_list, link_document_version_multiple_delete,
-    link_document_version_return_list,
+    link_document_version_cache_purge, link_document_version_create,
+    link_document_version_delete, link_document_version_edit,
+    link_document_version_export, link_document_version_list,
+    link_document_version_multiple_delete, link_document_version_return_list,
     link_document_version_return_to_document, link_document_version_preview,
     link_document_version_print_form
 )
@@ -476,6 +477,10 @@ class DocumentsApp(MayanAppConfig):
             label=_('Files'), source=Document
         )
         SourceColumn(
+            func=lambda context: 'Versions: {}'.format(context['object'].versions.count()),
+            label=_('Versions'), source=Document
+        )
+        SourceColumn(
             func=lambda context: context['object'].is_stub,
             label=_('Is stub'), source=Document
         )
@@ -626,6 +631,7 @@ class DocumentsApp(MayanAppConfig):
         #)
 
         # DeletedDocument
+
         SourceColumn(
             attribute='label', is_identifier=True, is_sortable=True,
             source=DeletedDocument
@@ -735,11 +741,12 @@ class DocumentsApp(MayanAppConfig):
         )
         menu_object.bind_links(
             links=(
+                link_document_file_cache_purge,
                 link_document_file_delete,
                 #link_document_file_download,
                 link_document_file_download_quick,
                 link_document_file_page_count_update,
-                link_document_file_print_form
+                link_document_file_print_form,
             ),
             sources=(DocumentFile,)
         )
@@ -842,6 +849,7 @@ class DocumentsApp(MayanAppConfig):
         )
         menu_object.bind_links(
             links=(
+                link_document_version_cache_purge,
                 link_document_version_delete, link_document_version_edit,
                 link_document_version_export,
                 link_document_version_page_list_remap,

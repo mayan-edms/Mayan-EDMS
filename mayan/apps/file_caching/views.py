@@ -5,10 +5,10 @@ from mayan.apps.views.generics import (
     MultipleObjectConfirmActionView, SingleObjectListView
 )
 
-from .models import Cache
+from .models import Cache, CachePartition
 from .permissions import permission_cache_purge, permission_cache_view
 
-from .tasks import task_cache_purge
+from .tasks import task_cache_partition_purge, task_cache_purge
 
 
 class CacheListView(SingleObjectListView):

@@ -3,11 +3,11 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.navigation.classes import Link
 
 from ..icons import (
-    icon_document_version_create, icon_document_version_delete,
-    icon_document_version_edit, icon_document_version_export,
-    icon_document_version_list, icon_document_version_print,
-    icon_document_version_return_document, icon_document_version_return_list,
-    icon_document_version_preview
+    icon_document_version_cache_purge, icon_document_version_create,
+    icon_document_version_delete, icon_document_version_edit,
+    icon_document_version_export, icon_document_version_list,
+    icon_document_version_print, icon_document_version_return_document,
+    icon_document_version_return_list, icon_document_version_preview
 )
 from ..permissions import (
     permission_document_version_create, permission_document_version_delete,
@@ -16,6 +16,12 @@ from ..permissions import (
     permission_document_view
 )
 
+link_document_version_cache_purge = Link(
+    args='resolved_object.pk',
+    icon_class=icon_document_version_cache_purge,
+    #permissions=(permission_document_version_delete,), tags='dangerous',
+    text=_('Purge cache'), view='documents:document_version_cache_purge'
+)
 link_document_version_create = Link(
     args='resolved_object.pk', icon_class=icon_document_version_create,
     permissions=(permission_document_version_create,),

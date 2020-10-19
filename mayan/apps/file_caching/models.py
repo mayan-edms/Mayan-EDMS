@@ -70,8 +70,7 @@ class Cache(models.Model):
 
     def get_total_size_display(self):
         return format_lazy(
-            '{} ({:0.1f}%)',
-            filesizeformat(bytes_=self.get_total_size()),
+            '{} ({:0.1f}%)', filesizeformat(bytes_=self.get_total_size()),
             self.get_total_size() / self.maximum_size * 100
         )
 

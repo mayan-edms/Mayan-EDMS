@@ -20,7 +20,8 @@ from .api_views.document_version_api_views import (
     APIDocumentVersionPageListView
 )
 from .views.document_file_views import (
-    DocumentFileDeleteView, DocumentFileDownloadView, DocumentFileListView,
+    DocumentFileCachePartitionPurgeView, DocumentFileDeleteView,
+    DocumentFileDownloadView, DocumentFileListView,
     DocumentFilePrintFormView, DocumentFilePrintView,
     DocumentFilePropertiesView, DocumentFilePreviewView
 )
@@ -51,6 +52,7 @@ from .views.document_version_page_views import (
     DocumentVersionPageZoomOutView
 )
 from .views.document_version_views import (
+    DocumentVersionCachePartitionPurgeView,
     DocumentVersionCreateView, DocumentVersionDeleteView,
     DocumentVersionEditView, DocumentVersionExportView,
     DocumentVersionListView, DocumentVersionPreviewView,
@@ -80,6 +82,11 @@ urlpatterns_document_files = [
     url(
         regex=r'^documents/(?P<document_id>\d+)/files/$',
         name='document_file_list', view=DocumentFileListView.as_view()
+    ),
+    url(
+        regex=r'^documents/files/(?P<document_file_id>\d+)/caches/purge/$',
+        name='document_file_cache_purge',
+        view=DocumentFileCachePartitionPurgeView.as_view()
     ),
     url(
         regex=r'^documents/files/(?P<document_file_id>\d+)/preview/$',
@@ -253,6 +260,11 @@ urlpatterns_document_version = [
         regex=r'^documents/(?P<document_id>\d+)/versions/create/$',
         name='document_version_create',
         view=DocumentVersionCreateView.as_view()
+    ),
+    url(
+        regex=r'^documents/versions/(?P<document_version_id>\d+)/caches/purge/$',
+        name='document_version_cache_purge',
+        view=DocumentVersionCachePartitionPurgeView.as_view()
     ),
     url(
         regex=r'^documents/versions/(?P<document_version_id>\d+)/delete/$',

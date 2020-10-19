@@ -79,6 +79,10 @@ icon_favorite_document_remove = Icon(
 
 # Document files
 
+icon_document_file_cache_purge = Icon(
+    driver_name='fontawesome-dual', primary_symbol='warehouse',
+    secondary_symbol='check'
+)
 icon_document_file_delete = Icon(
     driver_name='fontawesome', symbol='times'
 )
@@ -187,6 +191,10 @@ icon_document_type_setup = icon_document_type
 
 # Document version
 
+icon_document_version_cache_purge = Icon(
+    driver_name='fontawesome-dual', primary_symbol='warehouse',
+    secondary_symbol='check'
+)
 icon_document_version_create = Icon(
     driver_name='fontawesome-dual', primary_symbol='code-branch',
     secondary_symbol='plus'
