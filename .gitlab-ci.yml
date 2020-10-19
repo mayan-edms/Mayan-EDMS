@@ -79,6 +79,22 @@ job_docker_nightly:
     - nightly
     - staging
 
+job_docker_testing:
+  stage: build_docker
+  image: docker:latest
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - PYTHON_BIN=/usr/bin/python3
+    - DOCKER_VERSION=`cat docker/rootfs/version`
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" -f docker/Dockerfile .
+    - docker push "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
+    - docker logout
+  only:
+    - testing
+
 # Documentation
 job_documentation_build:
   stage: build_documentation
