@@ -89,7 +89,7 @@ job_docker_testing:
   script:
     - PYTHON_BIN=/usr/bin/python3
     - DOCKER_VERSION=`cat docker/rootfs/version`
-    - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" -f docker/Dockerfile .
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" -f docker/Dockerfile .
     - docker push "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
     - docker logout
   only:
