@@ -23,7 +23,7 @@ urlpatterns = [
     ),
     url(
         regex=r'^documents/files/multiple/content/delete/$',
-        name='document_file_content_delete_multiple',
+        name='document_file_multiple_content_delete',
         view=DocumentFileContentDeleteView.as_view()
     ),
     url(
@@ -36,8 +36,8 @@ urlpatterns = [
         name='document_file_submit', view=DocumentFileSubmitView.as_view()
     ),
     url(
-        regex=r'^documents/multiple/submit/$',
-        name='document_submit_multiple',
+        regex=r'^documents/files/multiple/submit/$',
+        name='document_file_multiple_submit',
         view=DocumentFileSubmitView.as_view()
     ),
     url(

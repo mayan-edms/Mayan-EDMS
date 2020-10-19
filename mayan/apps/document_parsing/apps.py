@@ -25,9 +25,9 @@ from .handlers import (
 )
 from .links import (
     link_document_file_content, link_document_file_content_delete,
-    link_document_file_content_delete_multiple, link_document_file_page_content,
+    link_document_file_multiple_content_delete, link_document_file_page_content,
     link_document_file_content_download, link_document_file_parsing_errors_list,
-    link_document_file_submit_multiple, link_document_file_submit,
+    link_document_file_multiple_submit, link_document_file_submit,
     link_document_type_parsing_settings, link_document_type_submit,
     link_error_list
 )
@@ -149,8 +149,8 @@ class DocumentParsingApp(MayanAppConfig):
         )
         menu_multi_item.bind_links(
             links=(
-                link_document_file_content_delete_multiple,
-                link_document_file_submit_multiple,
+                link_document_file_multiple_content_delete,
+                link_document_file_multiple_submit,
             ), sources=(DocumentFile,)
         )
         menu_secondary.bind_links(

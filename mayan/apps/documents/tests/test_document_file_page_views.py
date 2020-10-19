@@ -8,7 +8,55 @@ from .base import GenericDocumentViewTestCase
 from .mixins.document_file_mixins import DocumentFilePageViewTestMixin
 
 
-class DocumentFilePageViewTestCase(GenericDocumentViewTestCase):
+class DocumentFilePageViewTestCase(
+    DocumentFilePageViewTestMixin, GenericDocumentViewTestCase
+):
+    def test_document_file_page_count_update_view_no_permission(self):
+        self.test_document.pages.all().delete()
+        self.assertEqual(self.test_document.pages.count(), 0)
+
+        response = self._request_test_document_file_page_count_update_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertEqual(self.test_document.pages.count(), 0)
+
+    def test_document_file_page_count_update_view_with_permission(self):
+        page_count = self.test_document.pages.count()
+        self.test_document.pages.all().delete()
+        self.assertEqual(self.test_document.pages.count(), 0)
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_tools
+        )
+
+        response = self._request_test_document_file_page_count_update_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(self.test_document.pages.count(), page_count)
+
+    def test_document_multiple_update_page_count_view_no_permission(self):
+        self.test_document.pages.all().delete()
+        self.assertEqual(self.test_document.pages.count(), 0)
+
+        response = self._request_test_document_file_multiple_page_count_update_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertEqual(self.test_document.pages.count(), 0)
+
+    def test_document_multiple_update_page_count_view_with_permission(self):
+        page_count = self.test_document.pages.count()
+        self.test_document.pages.all().delete()
+        self.assertEqual(self.test_document.pages.count(), 0)
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_tools
+        )
+
+        response = self._request_test_document_file_multiple_page_count_update_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(self.test_document.pages.count(), page_count)
+
     def test_document_file_page_list_view_no_permission(self):
         response = self._request_test_document_file_page_list_view()
         self.assertEqual(response.status_code, 404)

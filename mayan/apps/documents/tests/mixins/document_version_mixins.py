@@ -1,5 +1,7 @@
 from mayan.apps.converter.layers import layer_saved_transformations
 
+from ...literals import PAGE_RANGE_ALL
+
 from ..literals import (
     TEST_DOCUMENT_VERSION_COMMENT_EDITED, TEST_TRANSFORMATION_ARGUMENT,
     TEST_TRANSFORMATION_CLASS
@@ -117,6 +119,25 @@ class DocumentVersionViewTestMixin:
         return self.get(
             viewname='documents:document_version_preview', kwargs={
                 'document_version_id': self.test_document_version.pk
+            }
+        )
+
+
+    def _request_test_document_version_print_form_view(self):
+        return self.get(
+            viewname='documents:document_version_print_form', kwargs={
+                'document_version_id': self.test_document_version.pk,
+            }, data={
+                'page_group': PAGE_RANGE_ALL
+            }
+        )
+
+    def _request_test_document_version_print_view(self):
+        return self.get(
+            viewname='documents:document_version_print_view', kwargs={
+                'document_version_id': self.test_document_version.pk,
+            }, query={
+                'page_group': PAGE_RANGE_ALL
             }
         )
 

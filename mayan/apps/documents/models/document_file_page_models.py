@@ -3,7 +3,6 @@ import logging
 from furl import furl
 
 from django.db import models
-from django.db.models import Max
 from django.urls import reverse
 from django.utils.encoding import force_text
 from django.utils.functional import cached_property
@@ -18,7 +17,7 @@ from mayan.apps.converter.transformations import (
 )
 from mayan.apps.lock_manager.backends.base import LockingBackend
 
-from ..managers import DocumentFilePageManager#, ValidDocumentFilePageManager
+from ..managers import DocumentFilePageManager
 from ..settings import (
     setting_display_width, setting_display_height, setting_zoom_max_level,
     setting_zoom_min_level

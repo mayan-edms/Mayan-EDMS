@@ -27,9 +27,9 @@ link_document_file_content_delete = Link(
     text=_('Delete parsed content'),
     view='document_parsing:document_file_content_delete',
 )
-link_document_file_content_delete_multiple = Link(
+link_document_file_multiple_content_delete = Link(
     icon_class=icon_document_file_content_delete, text=_('Delete parsed content'),
-    view='document_parsing:document_file_content_delete_multiple',
+    view='document_parsing:document_file_multiple_content_delete',
 )
 link_document_file_page_content = Link(
     args='resolved_object.id',
@@ -49,10 +49,10 @@ link_document_file_content_download = Link(
     permissions=(permission_document_file_content_view,), text=_('Download content'),
     view='document_parsing:document_file_content_download'
 )
-link_document_file_submit_multiple = Link(
+link_document_file_multiple_submit = Link(
     icon_class=icon_document_file_submit,
     text=_('Submit for parsing'),
-    view='document_parsing:document_file_submit_multiple'
+    view='document_parsing:document_file_multiple_submit'
 )
 link_document_file_submit = Link(
     args='resolved_object.id',

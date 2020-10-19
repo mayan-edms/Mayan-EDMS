@@ -13,7 +13,7 @@ class DocumentFileTestCase(GenericDocumentTestCase):
         self.assertEqual(self.test_document.files.count(), 2)
 
         self.assertEqual(
-            self.test_document.checksum,
+            self.test_document.latest_file.checksum,
             TEST_SMALL_DOCUMENT_CHECKSUM
         )
 

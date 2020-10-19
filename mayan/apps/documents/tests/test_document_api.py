@@ -234,7 +234,7 @@ class TrashedDocumentAPIViewTestCase(
         self.test_document.delete()
 
         response = self._request_test_trashed_document_image_api_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
     def test_trashed_document_image_api_view_with_access(self):
         self._upload_test_document()

@@ -5,28 +5,16 @@ from django.http import HttpResponse
 from django.views.decorators.cache import cache_control, patch_cache_control
 
 from rest_framework import status
-from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 
-from mayan.apps.acls.models import AccessControlList
 from mayan.apps.rest_api import generics
 from mayan.apps.storage.models import SharedUploadedFile
 from mayan.apps.views.generics import DownloadMixin
 
 from ..literals import DOCUMENT_IMAGE_TASK_TIMEOUT
-from ..models.document_file_models import DocumentFile
-from ..models.document_models import Document
-from ..models.document_type_models import DocumentType
-from ..models.misc_models import DeletedDocument, RecentDocument
 from ..permissions import (
-    permission_document_create, permission_document_edit,
     permission_document_file_delete, permission_document_file_download,
-    permission_document_file_new,  permission_document_file_view,
-    permission_document_properties_edit, permission_document_trash,
-    permission_document_type_create, permission_document_type_delete,
-    permission_document_type_edit, permission_document_type_view,
-    permission_document_view, permission_trashed_document_delete,
-    permission_trashed_document_restore
+    permission_document_file_new, permission_document_file_view
 )
 from ..serializers.document_file_serializers import (
     DocumentFileSerializer, DocumentFileCreateSerializer,

@@ -56,18 +56,18 @@ from .handlers import (
 from .links.document_links import (
     link_document_clear_transformations, link_document_clone_transformations,
     link_document_type_change,
-    link_document_edit, link_document_list, link_document_list_recent_access,
+    link_document_properties_edit, link_document_list, link_document_list_recent_access,
     link_document_list_recent_added,
     link_document_multiple_clear_transformations,
     link_document_multiple_type_change, link_document_preview,
-    link_document_print, link_document_properties
+    link_document_properties
 )
 from .links.document_file_links import (
     link_document_file_delete, link_document_file_download,
     link_document_file_multiple_download, link_document_file_download_quick,
     link_document_file_list, link_document_file_preview,
-    link_document_file_properties, link_document_file_return_to_document,
-    link_document_file_return_list
+    link_document_file_print_form, link_document_file_properties,
+    link_document_file_return_to_document, link_document_file_return_list
 )
 from .links.document_file_page_links import (
     link_document_file_multiple_page_count_update,
@@ -95,11 +95,11 @@ from .links.document_version_links import (
     link_document_version_edit, link_document_version_export,
     link_document_version_list, link_document_version_multiple_delete,
     link_document_version_return_list,
-    link_document_version_return_to_document, link_document_version_preview
+    link_document_version_return_to_document, link_document_version_preview,
+    link_document_version_print_form
 )
 from .links.document_version_page_links import (
-    link_document_version_page_delete,
-    link_document_version_page_list,
+    link_document_version_page_delete, link_document_version_page_list,
     link_document_version_page_list_remap,
     link_document_version_page_list_reset,
     link_document_version_page_navigation_first,
@@ -110,8 +110,8 @@ from .links.document_version_page_links import (
     link_document_version_page_return_to_document_version,
     link_document_version_page_rotate_left,
     link_document_version_page_rotate_right, link_document_version_page_view,
-    link_document_version_page_view_reset, link_document_version_page_zoom_in,
-    link_document_version_page_zoom_out
+    link_document_version_page_view_reset,
+    link_document_version_page_zoom_in, link_document_version_page_zoom_out
 )
 from .links.duplicated_document_links import (
     link_document_duplicates_list, link_duplicated_document_list,
@@ -130,19 +130,44 @@ from .links.trashed_document_links import (
 )
 
 from .menus import menu_documents
+
+# Documents
+
 from .permissions import (
-    permission_document_create, permission_trashed_document_delete,
-    permission_document_edit, permission_document_file_delete,
-    permission_document_file_download, permission_document_file_new,
-    permission_document_file_tools, permission_document_file_view,
-    permission_document_print, permission_document_properties_edit,
-    permission_trashed_document_restore, permission_document_tools,
-    permission_document_trash, permission_document_type_delete,
-    permission_document_type_edit, permission_document_type_view,
+    permission_document_create, permission_document_edit,
+    permission_document_properties_edit, permission_document_tools,
+    permission_document_trash, permission_document_view
+)
+
+# DocumentFile
+
+from .permissions import (
+    permission_document_file_delete, permission_document_file_download,
+    permission_document_file_new, permission_document_file_print,
+    permission_document_file_tools, permission_document_file_view
+)
+
+# DocumentType
+
+from .permissions import (
+    permission_document_type_delete, permission_document_type_edit,
+    permission_document_type_view
+)
+
+# DocumentVersion
+
+from .permissions import (
     permission_document_version_create, permission_document_version_delete,
     permission_document_version_edit, permission_document_version_export,
-    permission_document_version_view, permission_document_view
+    permission_document_version_print, permission_document_version_view
 )
+
+# TrashedDocument
+
+from .permissions import (
+    permission_trashed_document_delete, permission_trashed_document_restore
+)
+
 from .signals import signal_post_document_file_upload
 from .statistics import *  # NOQA
 from .widgets import (
@@ -319,7 +344,7 @@ class DocumentsApp(MayanAppConfig):
             model=Document, permissions=(
                 permission_acl_edit, permission_acl_view,
                 permission_trashed_document_delete, permission_document_edit,
-                permission_document_file_new, permission_document_print,
+                permission_document_file_new,
                 permission_document_properties_edit,
                 permission_trashed_document_restore, permission_document_tools,
                 permission_document_trash, permission_document_view,
@@ -335,6 +360,7 @@ class DocumentsApp(MayanAppConfig):
                 permission_acl_edit, permission_acl_view,
                 permission_document_file_delete,
                 permission_document_file_download,
+                permission_document_file_print,
                 permission_document_file_tools,
                 permission_document_file_view,
                 permission_events_view, permission_transformation_create,
@@ -357,6 +383,7 @@ class DocumentsApp(MayanAppConfig):
                 permission_document_version_delete,
                 permission_document_version_edit,
                 permission_document_version_export,
+                permission_document_version_print,
                 permission_document_version_view,
                 permission_events_view, permission_transformation_create,
                 permission_transformation_delete,
@@ -666,10 +693,9 @@ class DocumentsApp(MayanAppConfig):
         menu_object.bind_links(
             links=(
                 link_document_favorites_add, link_document_favorites_remove,
-                link_document_edit, link_document_type_change,
-                link_document_print, link_document_trash,
-                link_document_clear_transformations,
-                link_document_clone_transformations,
+                link_document_properties_edit, link_document_type_change,
+                link_document_trash, link_document_clear_transformations,
+                link_document_clone_transformations
             ), sources=(Document,)
         )
 
@@ -679,7 +705,7 @@ class DocumentsApp(MayanAppConfig):
                 link_document_multiple_favorites_remove,
                 link_document_multiple_clear_transformations,
                 link_document_multiple_trash,
-                link_document_multiple_type_change,
+                link_document_multiple_type_change
             ), sources=(Document,)
         )
 
@@ -712,7 +738,8 @@ class DocumentsApp(MayanAppConfig):
                 link_document_file_delete,
                 #link_document_file_download,
                 link_document_file_download_quick,
-                link_document_file_page_count_update
+                link_document_file_page_count_update,
+                link_document_file_print_form
             ),
             sources=(DocumentFile,)
         )
@@ -818,7 +845,8 @@ class DocumentsApp(MayanAppConfig):
                 link_document_version_delete, link_document_version_edit,
                 link_document_version_export,
                 link_document_version_page_list_remap,
-                link_document_version_page_list_reset
+                link_document_version_page_list_reset,
+                link_document_version_print_form
             ),
             sources=(DocumentVersion,)
         )

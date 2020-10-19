@@ -15,9 +15,6 @@ permission_document_edit = namespace.add_permission(
 permission_document_properties_edit = namespace.add_permission(
     label=_('Edit document properties'), name='document_properties_edit'
 )
-permission_document_print = namespace.add_permission(
-    label=_('Print documents'), name='document_print'
-)
 permission_document_tools = namespace.add_permission(
     label=_('Execute document modifying tools'), name='document_tools'
 )
@@ -36,13 +33,16 @@ permission_document_file_download = namespace.add_permission(
 permission_document_file_new = namespace.add_permission(
     label=_('Create new document files'), name='document_file_new'
 )
-permission_document_file_view = namespace.add_permission(
-    label=_('View document files'),
-    name='document_file_view'
+permission_document_file_print = namespace.add_permission(
+    label=_('Print document files'), name='document_file_print'
 )
 permission_document_file_tools = namespace.add_permission(
     label=_('Execute document file modifying tools'),
     name='document_file_tools'
+)
+permission_document_file_view = namespace.add_permission(
+    label=_('View document files'),
+    name='document_file_view'
 )
 
 # Document version
@@ -62,6 +62,9 @@ permission_document_version_edit = namespace.add_permission(
 permission_document_version_export = namespace.add_permission(
     label=_('Export document versions'),
     name='document_version_export'
+)
+permission_document_version_print = namespace.add_permission(
+    label=_('Print document versions'), name='document_version_print'
 )
 permission_document_version_view = namespace.add_permission(
     label=_('View document versions'),

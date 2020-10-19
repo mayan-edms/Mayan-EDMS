@@ -3,8 +3,7 @@ from rest_framework.generics import get_object_or_404
 from mayan.apps.acls.models import AccessControlList
 
 from ..models.document_models import Document
-from ..models.document_file_models import DocumentFile
-from ..models.document_version_models import DocumentVersion
+from ..models.document_type_models import DocumentType
 
 
 class ParentObjectDocumentAPIViewMixin:

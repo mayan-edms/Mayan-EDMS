@@ -1,5 +1,7 @@
 import time
 
+from ...literals import PAGE_RANGE_ALL
+
 from ..literals import (
     TEST_DOCUMENT_PATH, TEST_DOCUMENT_FILE_COMMENT_EDITED,
     TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_FILE_COMMENT
@@ -84,6 +86,23 @@ class DocumentFileViewTestMixin:
             }
         )
 
+    def _request_test_document_file_print_form_view(self):
+        return self.get(
+            viewname='documents:document_file_print_form', kwargs={
+                'document_file_id': self.test_document_file.pk,
+            }, data={
+                'page_group': PAGE_RANGE_ALL
+            }
+        )
+
+    def _request_test_document_file_print_view(self):
+        return self.get(
+            viewname='documents:document_file_print_view', kwargs={
+                'document_file_id': self.test_document_file.pk,
+            }, query={
+                'page_group': PAGE_RANGE_ALL
+            }
+        )
 
 class DocumentFilePageAPIViewTestMixin:
     def _request_test_document_file_page_image_api_view(self):
@@ -104,7 +123,7 @@ class DocumentFilePageViewTestMixin:
             kwargs={'document_file_id': self.test_document_file.pk}
         )
 
-    def _request_test_document_multiple_page_count_update_view(self):
+    def _request_test_document_file_multiple_page_count_update_view(self):
         return self.post(
             viewname='documents:document_file_multiple_page_count_update',
             data={'id_list': self.test_document_file.pk}

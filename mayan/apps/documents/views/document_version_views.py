@@ -1,13 +1,12 @@
 import logging
 
-from django.contrib import messages
 from django.template import RequestContext
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _, ungettext
 
 from mayan.apps.views.generics import (
-    ConfirmView, MultipleObjectConfirmActionView, MultipleObjectDeleteView,
-    SingleObjectCreateView, SingleObjectDeleteView, SingleObjectDetailView,
+    MultipleObjectConfirmActionView, MultipleObjectDeleteView,
+    SingleObjectCreateView, SingleObjectDetailView,
     SingleObjectEditView, SingleObjectListView
 )
 from mayan.apps.views.mixins import ExternalObjectMixin
@@ -17,18 +16,21 @@ from ..forms.document_version_forms import (
     DocumentVersionForm, DocumentVersionPreviewForm
 )
 from ..icons import icon_document_version_list
+from ..links.document_version_links import link_document_version_create
 from ..models.document_models import Document
 from ..models.document_version_models import DocumentVersion
 from ..permissions import (
     permission_document_version_create, permission_document_version_delete,
     permission_document_version_edit, permission_document_version_export,
-    permission_document_version_view
+    permission_document_version_print, permission_document_version_view
 )
 from ..tasks import task_document_version_export
 
+from .misc_views import DocumentPrintFormView, DocumentPrintView
+
 __all__ = (
     'DocumentVersionCreateView', 'DocumentVersionListView',
-    'DocumentVersionRevertView', 'DocumentVersionView'
+    'DocumentVersionPreviewView'
 )
 logger = logging.getLogger(name=__name__)
 
@@ -150,9 +152,9 @@ class DocumentVersionListView(ExternalObjectMixin, SingleObjectListView):
             'hide_object': True,
             'list_as_items': True,
             'no_results_icon': icon_document_version_list,
-            #'no_results_main_link': link_tag_create.resolve(
-            #    context=RequestContext(request=self.request)
-            #),
+            'no_results_main_link': link_document_version_create.resolve(
+                context=RequestContext(request=self.request)
+            ),
             'no_results_text': _(
                 'Versions are views that can display document file pages as '
                 'they are, remap or merge them into different layouts.'
@@ -191,3 +193,27 @@ class DocumentVersionPreviewView(SingleObjectDetailView):
             'object': self.object,
             'title': _('Preview of document version: %s') % self.object,
         }
+
+
+class DocumentVersionPrintFormView(DocumentPrintFormView):
+    external_object_class = DocumentVersion
+    external_object_permission = permission_document_version_print
+    external_object_pk_url_kwarg = 'document_version_id'
+    print_view_name = 'documents:document_version_print_view'
+    print_view_kwarg = 'document_version_id'
+
+    def _add_recent_document(self):
+        self.external_object.document.add_as_recent_document_for_user(
+            user=self.request.user
+        )
+
+
+class DocumentVersionPrintView(DocumentPrintView):
+    external_object_class = DocumentVersion
+    external_object_permission = permission_document_version_print
+    external_object_pk_url_kwarg = 'document_version_id'
+
+    def _add_recent_document(self):
+        self.external_object.document.add_as_recent_document_for_user(
+            user=self.request.user
+        )

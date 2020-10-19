@@ -5,7 +5,7 @@ from mayan.apps.storage.models import DownloadFile
 from ..literals import DOCUMENT_FILE_ACTION_PAGES_KEEP
 from ..permissions import (
     permission_document_version_edit, permission_document_version_export,
-    permission_document_version_view,
+    permission_document_version_print, permission_document_version_view
 )
 
 from .base import GenericDocumentViewTestCase
@@ -103,6 +103,32 @@ class DocumentVersionViewTestCase(
             response=response, status_code=200,
             text=str(self.test_document_version)
         )
+
+    def test_document_version_print_form_view_no_permission(self):
+        response = self._request_test_document_version_print_form_view()
+        self.assertEqual(response.status_code, 404)
+
+    def test_document_version_print_form_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document_version,
+            permission=permission_document_version_print
+        )
+
+        response = self._request_test_document_version_print_form_view()
+        self.assertEqual(response.status_code, 200)
+
+    def test_document_version_print_view_no_permission(self):
+        response = self._request_test_document_version_print_view()
+        self.assertEqual(response.status_code, 404)
+
+    def test_document_version_print_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document_version,
+            permission=permission_document_version_print
+        )
+
+        response = self._request_test_document_version_print_view()
+        self.assertEqual(response.status_code, 200)
 
 
 class DocumentVersionPageRemapViewTestCase(

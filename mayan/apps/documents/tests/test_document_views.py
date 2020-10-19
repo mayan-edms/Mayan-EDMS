@@ -6,7 +6,7 @@ from mayan.apps.converter.tests.mixins import LayerTestMixin
 
 from ..models import Document, DocumentType
 from ..permissions import (
-    permission_document_create, permission_document_print,
+    permission_document_create, permission_document_version_print,
     permission_document_properties_edit, permission_document_view
 )
 
@@ -186,7 +186,7 @@ class DocumentViewTestCase(
         self.assertEqual(
             Document.objects.first().document_type, document_type_2
         )
-
+    '''
     def test_document_clear_transformations_view_no_permission(self):
         self._create_document_transformation()
 
@@ -277,19 +277,32 @@ class DocumentViewTestCase(
                 obj=self.test_document.pages.first()
             ).count()
         )
+    '''
+    '''
+    def test_document_print_form_view_no_permission(self):
+        response = self._request_test_document_print_form_view()
+        self.assertEqual(response.status_code, 404)
+
+    def test_document_print_form_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_version_print
+        )
+
+        response = self._request_test_document_print_form_view()
+        self.assertEqual(response.status_code, 200)
 
     def test_document_print_view_no_permission(self):
         response = self._request_test_document_print_view()
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 404)
 
     def test_document_print_view_with_access(self):
         self.grant_access(
-            obj=self.test_document, permission=permission_document_print
+            obj=self.test_document, permission=permission_document_version_print
         )
 
         response = self._request_test_document_print_view()
         self.assertEqual(response.status_code, 200)
-
+    '''
     def test_document_preview_view_no_permission(self):
         response = self._request_test_document_preview_view()
         self.assertEqual(response.status_code, 404)

@@ -38,17 +38,17 @@ link_document_version_ocr_content_view = Link(
     permissions=(permission_document_version_ocr_content_view,),
     text=_('OCR'), view='ocr:document_version_ocr_content_view'
 )
-link_document_version_ocr_content_view_delete = Link(
+link_document_version_ocr_content_delete = Link(
     args='resolved_object.id',
     icon_class=icon_document_version_ocr_content_delete,
     permissions=(permission_document_version_ocr_content_view,),
     text=_('Delete OCR content'),
     view='ocr:document_version_ocr_content_delete'
 )
-link_document_version_ocr_content_view_delete_multiple = Link(
+link_document_version_multiple_ocr_content_delete = Link(
     icon_class=icon_document_version_ocr_content_delete,
     text=_('Delete OCR content'),
-    view='ocr:document_version_ocr_content_delete_multiple'
+    view='ocr:document_version_multiple_ocr_content_delete'
 )
 link_document_version_ocr_submit = Link(
     args='resolved_object.id',

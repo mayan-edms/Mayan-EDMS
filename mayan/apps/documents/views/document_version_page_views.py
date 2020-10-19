@@ -27,7 +27,6 @@ from ..links.document_version_page_links import (
     link_document_version_page_list_remap,
     link_document_version_page_list_reset
 )
-from ..models.document_models import Document
 from ..models.document_version_models import DocumentVersion
 from ..models.document_version_page_models import DocumentVersionPage
 from ..permissions import (
@@ -51,7 +50,6 @@ __all__ = (
 logger = logging.getLogger(name=__name__)
 
 
-
 class DocumentVersionPageDeleteView(SingleObjectDeleteView):
     model = DocumentVersionPage
     object_permission = permission_document_version_edit
@@ -67,7 +65,6 @@ class DocumentVersionPageDeleteView(SingleObjectDeleteView):
             'object': self.object,
             'title': _('Delete document version page %s ?') % self.object,
         }
-
 
     def get_instance_extra_data(self):
         return {
@@ -138,7 +135,7 @@ class DocumentVersionPageListRemapView(ExternalObjectMixin, FormView):
                     pk=row.cleaned_data['source_content_type']
                 )
                 content_object = content_type.get_object_for_this_type(
-                    pk = row.cleaned_data['source_object_id']
+                    pk=row.cleaned_data['source_object_id']
                 )
 
                 annotated_content_object_list.append(

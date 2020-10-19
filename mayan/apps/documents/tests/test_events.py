@@ -22,36 +22,36 @@ class DocumentEventsTestCase(
     GenericDocumentViewTestCase
 ):
     def setUp(self):
-        super(DocumentEventsTestCase, self).setUp()
+        super().setUp()
         Action.objects.all().delete()
 
-    def test_document_download_event_no_permission(self):
-        response = self._request_test_document_download_view()
+    #def test_document_download_event_no_permission(self):
+    #    response = self._request_test_document_download_view()
 
-        self.assertEqual(response.status_code, 404)
-        self.assertEqual(list(Action.objects.any(obj=self.test_document)), [])
+    #    self.assertEqual(response.status_code, 404)
+    #    self.assertEqual(list(Action.objects.any(obj=self.test_document)), [])
 
-    def test_document_download_event_with_access(self):
-        self.expected_content_types = ('image/png',)
+    #def test_document_download_event_with_access(self):
+    #    self.expected_content_types = ('image/png',)
 
-        self.grant_access(
-            obj=self.test_document, permission=permission_document_file_download
-        )
+    #    self.grant_access(
+    #        obj=self.test_document, permission=permission_document_file_download
+    #    )
 
-        response = self._request_test_document_download_view()
+    #    response = self._request_test_document_download_view()
 
-        # Download the file to close the file descriptor
-        with self.test_document.open() as file_object:
-            self.assert_download_response(
-                response=response, content=file_object.read(),
-                mime_type=self.test_document.file_mimetype
-            )
+    #    # Download the file to close the file descriptor
+    #    with self.test_document.open() as file_object:
+    #        self.assert_download_response(
+    #            response=response, content=file_object.read(),
+    #            mime_type=self.test_document.file_mimetype
+    #        )
 
-        event = Action.objects.any(obj=self.test_document).first()
+    #    event = Action.objects.any(obj=self.test_document).first()
 
-        self.assertEqual(event.actor, self._test_case_user)
-        self.assertEqual(event.target, self.test_document)
-        self.assertEqual(event.verb, event_document_download.id)
+    #    self.assertEqual(event.actor, self._test_case_user)
+    #    self.assertEqual(event.target, self.test_document)
+    #    self.assertEqual(event.verb, event_document_download.id)
 
     def test_document_view_event_no_permission(self):
         response = self._request_test_document_preview_view()

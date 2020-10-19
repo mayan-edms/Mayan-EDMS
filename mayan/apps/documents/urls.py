@@ -21,6 +21,7 @@ from .api_views.document_version_api_views import (
 )
 from .views.document_file_views import (
     DocumentFileDeleteView, DocumentFileDownloadView, DocumentFileListView,
+    DocumentFilePrintFormView, DocumentFilePrintView,
     DocumentFilePropertiesView, DocumentFilePreviewView
 )
 from .views.document_file_page_views import (
@@ -52,13 +53,16 @@ from .views.document_version_page_views import (
 from .views.document_version_views import (
     DocumentVersionCreateView, DocumentVersionDeleteView,
     DocumentVersionEditView, DocumentVersionExportView,
-    DocumentVersionListView, DocumentVersionPreviewView
+    DocumentVersionListView, DocumentVersionPreviewView,
+    DocumentVersionPrintFormView, DocumentVersionPrintView
 )
 from .views.document_views import (
-    DocumentDocumentTypeChangeView, DocumentListView, DocumentPreviewView,
-    DocumentPrint, DocumentPropertiesEditView,
-    DocumentTransformationsClearView, DocumentTransformationsCloneView,
-    DocumentView, RecentAccessDocumentListView, RecentAddedDocumentListView
+    DocumentTypeChangeView, DocumentListView, DocumentPreviewView,
+    #DocumentPrintFormView, DocumentPrintView,
+    DocumentPropertiesEditView,
+    DocumentPropertiesView, DocumentTransformationsClearView,
+    DocumentTransformationsCloneView, RecentAccessDocumentListView,
+    RecentAddedDocumentListView
 )
 from .views.duplicated_document_views import (
     DocumentDuplicatesListView, DuplicatedDocumentListView,
@@ -107,6 +111,15 @@ urlpatterns_document_files = [
     #    view=DocumentFileDownloadFormView.as_view()
     #),
     url(
+        regex=r'^documents/files/(?P<document_file_id>\d+)/print/form/$',
+        name='document_file_print_form',
+        view=DocumentFilePrintFormView.as_view()
+    ),
+    url(
+        regex=r'^documents/files/(?P<document_file_id>\d+)/print/$',
+        name='document_file_print_view', view=DocumentFilePrintView.as_view()
+    ),
+    url(
         regex=r'^documents/files/(?P<document_file_id>\d+)/properties/$',
         name='document_file_properties',
         view=DocumentFilePropertiesView.as_view()
@@ -124,54 +137,54 @@ urlpatterns_document_file_pages = [
         view=DocumentFilePageCountUpdateView.as_view()
     ),
     url(
-        regex=r'^documents/multiple/page/update/$',
+        regex=r'^documents/files/multiple/page/update/$',
         name='document_file_multiple_page_count_update',
         view=DocumentFilePageCountUpdateView.as_view()
     ),
     url(
-        regex=r'^documents/pages/(?P<document_file_page_id>\d+)/$',
+        regex=r'^documents/files/pages/(?P<document_file_page_id>\d+)/$',
         name='document_file_page_view', view=DocumentFilePageView.as_view()
     ),
     url(
-        regex=r'^documents/pages/(?P<document_file_page_id>\d+)/navigation/next/$',
+        regex=r'^documents/files/pages/(?P<document_file_page_id>\d+)/navigation/next/$',
         name='document_file_page_navigation_next',
         view=DocumentFilePageNavigationNext.as_view()
     ),
     url(
-        regex=r'^documents/pages/(?P<document_file_page_id>\d+)/navigation/previous/$',
+        regex=r'^documents/files/pages/(?P<document_file_page_id>\d+)/navigation/previous/$',
         name='document_file_page_navigation_previous',
         view=DocumentFilePageNavigationPrevious.as_view()
     ),
     url(
-        regex=r'^documents/pages/(?P<document_file_page_id>\d+)/navigation/first/$',
+        regex=r'^documents/files/pages/(?P<document_file_page_id>\d+)/navigation/first/$',
         name='document_file_page_navigation_first',
         view=DocumentFilePageNavigationFirst.as_view()
     ),
     url(
-        regex=r'^documents/pages/(?P<document_file_page_id>\d+)/navigation/last/$',
+        regex=r'^documents/files/pages/(?P<document_file_page_id>\d+)/navigation/last/$',
         name='document_file_page_navigation_last',
         view=DocumentFilePageNavigationLast.as_view()
     ),
     url(
-        regex=r'^documents/pages/(?P<document_file_page_id>\d+)/zoom/in/$',
+        regex=r'^documents/files/pages/(?P<document_file_page_id>\d+)/zoom/in/$',
         name='document_file_page_zoom_in', view=DocumentFilePageZoomInView.as_view()
     ),
     url(
-        regex=r'^documents/pages/(?P<document_file_page_id>\d+)/zoom/out/$',
+        regex=r'^documents/files/pages/(?P<document_file_page_id>\d+)/zoom/out/$',
         name='document_file_page_zoom_out', view=DocumentFilePageZoomOutView.as_view()
     ),
     url(
-        regex=r'^documents/pages/(?P<document_file_page_id>\d+)/rotate/left/$',
+        regex=r'^documents/files/pages/(?P<document_file_page_id>\d+)/rotate/left/$',
         name='document_file_page_rotate_left',
         view=DocumentFilePageRotateLeftView.as_view()
     ),
     url(
-        regex=r'^documents/pages/(?P<document_file_page_id>\d+)/rotate/right/$',
+        regex=r'^documents/files/pages/(?P<document_file_page_id>\d+)/rotate/right/$',
         name='document_file_page_rotate_right',
         view=DocumentFilePageRotateRightView.as_view()
     ),
     url(
-        regex=r'^documents/pages/(?P<document_file_page_id>\d+)/reset/$',
+        regex=r'^documents/files/pages/(?P<document_file_page_id>\d+)/reset/$',
         name='document_file_page_view_reset',
         view=DocumentFilePageViewResetView.as_view()
     ),
@@ -266,6 +279,16 @@ urlpatterns_document_version = [
         name='document_version_preview',
         view=DocumentVersionPreviewView.as_view()
     ),
+    url(
+        regex=r'^documents/versions/(?P<document_version_id>\d+)/print/form/$',
+        name='document_version_print_form',
+        view=DocumentVersionPrintFormView.as_view()
+    ),
+    url(
+        regex=r'^documents/versions/(?P<document_version_id>\d+)/print/$',
+        name='document_version_print_view',
+        view=DocumentVersionPrintView.as_view()
+    ),
 ]
 
 urlpatterns_document_version_pages = [
@@ -358,27 +381,32 @@ urlpatterns_documents = [
         regex=r'^documents/(?P<document_id>\d+)/preview/$',
         name='document_preview', view=DocumentPreviewView.as_view()
     ),
+    #url(
+    #    regex=r'^documents/(?P<document_id>\d+)/print/$',
+    #    name='document_print_view', view=DocumentPrintView.as_view()
+    #),
+    #url(
+    #    regex=r'^documents/(?P<document_id>\d+)/print/form/$',
+    #    name='document_print_form', view=DocumentPrintFormView.as_view()
+    #),
     url(
         regex=r'^documents/(?P<document_id>\d+)/properties/$',
-        name='document_properties', view=DocumentView.as_view()
+        name='document_properties', view=DocumentPropertiesView.as_view()
     ),
     url(
         regex=r'^documents/(?P<document_id>\d+)/properties/edit/$',
-        name='document_edit', view=DocumentPropertiesEditView.as_view()
+        name='document_properties_edit',
+        view=DocumentPropertiesEditView.as_view()
     ),
     url(
         regex=r'^documents/(?P<document_id>\d+)/type/$',
         name='document_type_change',
-        view=DocumentDocumentTypeChangeView.as_view()
+        view=DocumentTypeChangeView.as_view()
     ),
     url(
         regex=r'^documents/multiple/type/$',
         name='document_multiple_type_change',
-        view=DocumentDocumentTypeChangeView.as_view()
-    ),
-    url(
-        regex=r'^documents/(?P<document_id>\d+)/print/$',
-        name='document_print', view=DocumentPrint.as_view()
+        view=DocumentTypeChangeView.as_view()
     ),
     url(
         regex=r'^documents/(?P<document_id>\d+)/transformations/clear/$',

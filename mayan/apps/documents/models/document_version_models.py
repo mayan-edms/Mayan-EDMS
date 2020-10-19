@@ -1,17 +1,14 @@
 import logging
 import os
-import shutil
 
 from django.apps import apps
-from django.db import models, transaction
+from django.db import models
 from django.urls import reverse
-from django.utils.encoding import force_text
 from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.classes import ModelQueryFields
 from mayan.apps.common.mixins import ModelInstanceExtraDataAPIViewMixin
-from mayan.apps.common.signals import signal_mayan_pre_save
 from mayan.apps.converter.classes import ConverterBase
 from mayan.apps.events.classes import EventManagerMethodAfter, EventManagerSave
 from mayan.apps.events.decorators import method_event
@@ -22,10 +19,7 @@ from ..events import (
     event_document_version_edited
 )
 from ..literals import STORAGE_NAME_DOCUMENT_VERSION_PAGE_IMAGE_CACHE
-from ..signals import (
-    signal_post_document_created, signal_post_document_file_upload,
-    signal_post_document_version_remap
-)
+from ..signals import signal_post_document_version_remap
 
 from .document_models import Document
 
@@ -56,7 +50,7 @@ class DocumentVersion(ModelInstanceExtraDataAPIViewMixin, models.Model):
 
     @staticmethod
     def annotate_content_object_list(content_object_list, start_page_number=None):
-        def content_object_to_dictionary(entry):#page_number, content_object):
+        def content_object_to_dictionary(entry):
             # Argument order based on the return value of enumerate
             return {
                 'content_object': entry[1],

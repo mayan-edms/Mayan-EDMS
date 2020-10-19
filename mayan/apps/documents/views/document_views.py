@@ -1,14 +1,10 @@
 import logging
 
-from furl import furl
-
 from django.conf import settings
 from django.contrib import messages
 from django.db import transaction
-from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
-from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _, ungettext
 
 from mayan.apps.acls.models import AccessControlList
@@ -18,40 +14,33 @@ from mayan.apps.converter.permissions import (
     permission_transformation_delete, permission_transformation_edit
 )
 from mayan.apps.views.generics import (
-    FormView, MultipleObjectConfirmActionView, MultipleObjectDownloadView,
-    MultipleObjectFormActionView, SingleObjectDetailView,
-    SingleObjectEditView, SingleObjectListView
+    FormView, MultipleObjectConfirmActionView, MultipleObjectFormActionView,
+    SingleObjectDetailView, SingleObjectEditView, SingleObjectListView
 )
 
 from ..events import event_document_viewed
 from ..forms import (
-    DocumentForm, DocumentFilePageNumberForm, DocumentPrintForm,
-    DocumentPropertiesForm, DocumentTypeFilteredSelectForm
+    DocumentForm, DocumentFilePageNumberForm, DocumentPropertiesForm,
+    DocumentTypeFilteredSelectForm
 )
 from ..icons import (
     icon_document_list, icon_document_list_recent_access,
     icon_recent_added_document_list
 )
-from ..literals import PAGE_RANGE_RANGE
 from ..models import Document, RecentDocument
 from ..permissions import (
-    permission_document_print, permission_document_properties_edit,
-    permission_document_tools, permission_document_view
+    permission_document_properties_edit, permission_document_tools,
+    permission_document_version_print, permission_document_view
 )
-from ..settings import (
-    setting_print_width, setting_print_height, setting_recent_added_count
-)
-from ..tasks import task_document_file_page_count_update
-from ..utils import parse_range
+from ..settings import setting_recent_added_count
 
 from .document_version_views import DocumentVersionPreviewView
 
 __all__ = (
-    'DocumentListView', 'DocumentDocumentTypeChangeView', 'DocumentPropertiesEditView',
-    'DocumentPreviewView', 'DocumentView', 'DocumentUpdatePageCountView',
-    'DocumentTransformationsClearView', 'DocumentTransformationsCloneView',
-    'DocumentPrint', 'RecentAccessDocumentListView',
-    'RecentAddedDocumentListView'
+    'DocumentListView', 'DocumentTypeChangeView', 'DocumentPropertiesEditView',
+    'DocumentPreviewView', 'DocumentTransformationsClearView',
+    'DocumentTransformationsCloneView', 'DocumentPrint',
+    'RecentAccessDocumentListView', 'RecentAddedDocumentListView'
 )
 logger = logging.getLogger(name=__name__)
 
@@ -61,7 +50,7 @@ class DocumentListView(SingleObjectListView):
 
     def get_context_data(self, **kwargs):
         try:
-            return super(DocumentListView, self).get_context_data(**kwargs)
+            return super().get_context_data(**kwargs)
         except Exception as exception:
             messages.error(
                 message=_(
@@ -71,7 +60,7 @@ class DocumentListView(SingleObjectListView):
                 }, request=self.request
             )
             self.object_list = Document.objects.none()
-            return super(DocumentListView, self).get_context_data(**kwargs)
+            return super().get_context_data(**kwargs)
 
     def get_document_queryset(self):
         return Document.objects.all()
@@ -96,7 +85,7 @@ class DocumentListView(SingleObjectListView):
         return self.get_document_queryset().filter(pk__in=queryset)
 
 
-class DocumentDocumentTypeChangeView(MultipleObjectFormActionView):
+class DocumentTypeChangeView(MultipleObjectFormActionView):
     form_class = DocumentTypeFilteredSelectForm
     model = Document
     object_permission = permission_document_properties_edit
@@ -206,14 +195,14 @@ class DocumentPropertiesEditView(SingleObjectEditView):
         )
 
 
-class DocumentView(SingleObjectDetailView):
+class DocumentPropertiesView(SingleObjectDetailView):
     form_class = DocumentPropertiesForm
     model = Document
     object_permission = permission_document_view
     pk_url_kwarg = 'document_id'
 
     def dispatch(self, request, *args, **kwargs):
-        result = super(DocumentView, self).dispatch(request, *args, **kwargs)
+        result = super().dispatch(request, *args, **kwargs)
         self.object.add_as_recent_document_for_user(request.user)
         return result
 
@@ -311,7 +300,7 @@ class DocumentTransformationsCloneView(FormView):
                 request=self.request
             )
 
-        return super(DocumentTransformationsCloneView, self).form_valid(form=form)
+        return super().form_valid(form=form)
 
     def get_form_extra_kwargs(self):
         return {
@@ -346,86 +335,12 @@ class DocumentTransformationsCloneView(FormView):
         return instance
 
 
-class DocumentPrint(FormView):
-    form_class = DocumentPrintForm
-
-    def dispatch(self, request, *args, **kwargs):
-        instance = self.get_object()
-        AccessControlList.objects.check_access(
-            obj=instance, permissions=(permission_document_print,),
-            user=self.request.user
-        )
-
-        instance.add_as_recent_document_for_user(self.request.user)
-
-        self.page_group = self.request.GET.get('page_group')
-        self.page_range = self.request.GET.get('page_range')
-        return super(DocumentPrint, self).dispatch(request, *args, **kwargs)
-
-    def get(self, request, *args, **kwargs):
-        if not self.page_group and not self.page_range:
-            return super(DocumentPrint, self).get(request, *args, **kwargs)
-        else:
-            instance = self.get_object()
-
-            if self.page_group == PAGE_RANGE_RANGE:
-                if self.page_range:
-                    page_range = parse_range(astr=self.page_range)
-                    pages = instance.pages.filter(page_number__in=page_range)
-                else:
-                    pages = instance.pages.all()
-            else:
-                pages = instance.pages.all()
-
-            context = self.get_context_data()
-
-            context.update(
-                {
-                    'appearance_type': 'plain',
-                    'pages': pages,
-                    'width': setting_print_width.value,
-                    'height': setting_print_height.value,
-                }
-            )
-
-            return self.render_to_response(context=context)
-
-    def get_extra_context(self):
-        instance = self.get_object()
-
-        context = {
-            'form_action': reverse(
-                viewname='documents:document_print', kwargs={
-                    'document_id': instance.pk
-                }
-            ),
-            'object': instance,
-            'submit_label': _('Submit'),
-            'submit_method': 'GET',
-            'submit_target': '_blank',
-            'title': _('Print: %s') % instance,
-        }
-
-        return context
-
-    def get_object(self):
-        return get_object_or_404(
-            klass=Document, pk=self.kwargs['document_id']
-        )
-
-    def get_template_names(self):
-        if self.page_group or self.page_range:
-            return ('documents/document_print.html',)
-        else:
-            return (self.template_name,)
-
-
 class RecentAccessDocumentListView(DocumentListView):
     def get_document_queryset(self):
         return RecentDocument.objects.get_for_user(user=self.request.user)
 
     def get_extra_context(self):
-        context = super(RecentAccessDocumentListView, self).get_extra_context()
+        context = super().get_extra_context()
         context.update(
             {
                 'no_results_icon': icon_document_list_recent_access,
@@ -453,7 +368,7 @@ class RecentAddedDocumentListView(DocumentListView):
         ).order_by('-date_added')
 
     def get_extra_context(self):
-        context = super(RecentAddedDocumentListView, self).get_extra_context()
+        context = super().get_extra_context()
         context.update(
             {
                 'no_results_icon': icon_recent_added_document_list,

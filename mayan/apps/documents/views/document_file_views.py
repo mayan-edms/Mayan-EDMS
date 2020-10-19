@@ -25,8 +25,11 @@ from ..models.document_models import Document
 from ..models.document_file_models import DocumentFile
 from ..permissions import (
     permission_document_file_delete, permission_document_file_download,
-    permission_document_file_tools, permission_document_file_view
+    permission_document_file_print, permission_document_file_tools,
+    permission_document_file_view
 )
+
+from .misc_views import DocumentPrintFormView, DocumentPrintView
 
 __all__ = (
     'DocumentFileDeleteView', 'DocumentFileDownloadFormView',
@@ -57,6 +60,7 @@ class DocumentFileDeleteView(SingleObjectDeleteView):
                 'document_id': self.object.document.pk
             }
         )
+
 
 '''
 class DocumentFileDownloadFormView(MultipleObjectFormActionView):
@@ -187,6 +191,7 @@ class DocumentFileDownloadView(SingleObjectDownloadView):
         return item.get_rendered_string(preserve_extension=preserve_extension)
     """
 
+
 class DocumentFileListView(ExternalObjectMixin, SingleObjectListView):
     external_object_class = Document
     external_object_permission = permission_document_file_view
@@ -205,7 +210,7 @@ class DocumentFileListView(ExternalObjectMixin, SingleObjectListView):
             'no_results_icon': icon_document_file_list,
             'no_results_main_link': link_document_file_upload.resolve(
                 context=RequestContext(
-                    dict_={'object': document,},
+                    dict_={'object': document},
                     request=self.request
                 )
             ),
@@ -222,27 +227,6 @@ class DocumentFileListView(ExternalObjectMixin, SingleObjectListView):
 
     def get_source_queryset(self):
         return self.get_document().files.order_by('-timestamp')
-
-
-class DocumentFilePropertiesView(SingleObjectDetailView):
-    form_class = DocumentFilePropertiesForm
-    model = DocumentFile
-    object_permission = permission_document_file_view
-    pk_url_kwarg = 'document_file_id'
-
-    def dispatch(self, request, *args, **kwargs):
-        result = super().dispatch(request, *args, **kwargs)
-        self.object.document.add_as_recent_document_for_user(
-            user=request.user
-        )
-        return result
-
-    def get_extra_context(self):
-        return {
-            'document_file': self.object,
-            'object': self.object,
-            'title': _('Properties of document file: %s') % self.object,
-        }
 
 
 class DocumentFilePreviewView(SingleObjectDetailView):
@@ -267,4 +251,49 @@ class DocumentFilePreviewView(SingleObjectDetailView):
             'hide_labels': True,
             'object': self.object,
             'title': _('Preview of document file: %s') % self.object,
+        }
+
+
+class DocumentFilePrintFormView(DocumentPrintFormView):
+    external_object_class = DocumentFile
+    external_object_permission = permission_document_file_print
+    external_object_pk_url_kwarg = 'document_file_id'
+    print_view_name = 'documents:document_file_print_view'
+    print_view_kwarg = 'document_file_id'
+
+    def _add_recent_document(self):
+        self.external_object.document.add_as_recent_document_for_user(
+            user=self.request.user
+        )
+
+
+class DocumentFilePrintView(DocumentPrintView):
+    external_object_class = DocumentFile
+    external_object_permission = permission_document_file_print
+    external_object_pk_url_kwarg = 'document_file_id'
+
+    def _add_recent_document(self):
+        self.external_object.document.add_as_recent_document_for_user(
+            user=self.request.user
+        )
+
+
+class DocumentFilePropertiesView(SingleObjectDetailView):
+    form_class = DocumentFilePropertiesForm
+    model = DocumentFile
+    object_permission = permission_document_file_view
+    pk_url_kwarg = 'document_file_id'
+
+    def dispatch(self, request, *args, **kwargs):
+        result = super().dispatch(request, *args, **kwargs)
+        self.object.document.add_as_recent_document_for_user(
+            user=request.user
+        )
+        return result
+
+    def get_extra_context(self):
+        return {
+            'document_file': self.object,
+            'object': self.object,
+            'title': _('Properties of document file: %s') % self.object,
         }

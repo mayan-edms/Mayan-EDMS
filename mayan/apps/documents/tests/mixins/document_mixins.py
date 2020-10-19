@@ -5,7 +5,7 @@ from django.utils.module_loading import import_string
 
 from mayan.apps.converter.classes import Layer
 
-from ...literals import DOCUMENT_FILE_ACTION_PAGES_NEW
+from ...literals import DOCUMENT_FILE_ACTION_PAGES_NEW, PAGE_RANGE_ALL
 from ...models import Document, DocumentType
 from ...search import document_file_page_search, document_search
 
@@ -167,12 +167,35 @@ class DocumentViewTestMixin:
             }
         )
 
-    def _request_test_document_print_view(self):
+    def _request_test_document_print_form_view(self):
         return self.get(
-            viewname='documents:document_print', kwargs={
+            viewname='documents:document_print_form', kwargs={
                 'document_id': self.test_document.pk,
             }, data={
                 'page_group': PAGE_RANGE_ALL
+            }
+        )
+
+    def _request_test_document_print_view(self):
+        return self.get(
+            viewname='documents:document_print_view', kwargs={
+                'document_id': self.test_document.pk,
+            }, query={
+                'page_group': PAGE_RANGE_ALL
+            }
+        )
+
+    def _request_test_document_properties_edit_get_view(self):
+        return self.get(
+            viewname='documents:document_properties_edit', kwargs={
+                'document_id': self.test_document.pk
+            }
+        )
+
+    def _request_test_document_properties_view(self):
+        return self.get(
+            viewname='documents:document_properties', kwargs={
+                'document_id': self.test_document.pk
             }
         )
 
