@@ -259,11 +259,13 @@ class DocumentStatesApp(MayanAppConfig):
             source=Workflow
         )
         column_workflow_internal_name.add_exclude(source=WorkflowRuntimeProxy)
-        SourceColumn(
+        column_workflow_get_initial_state = SourceColumn(
             attribute='get_initial_state', empty_value=_('None'),
             include_label=True, source=Workflow
         )
-
+        column_workflow_get_initial_state.add_exclude(
+            source=WorkflowRuntimeProxy
+        )
         SourceColumn(
             attribute='get_current_state', include_label=True,
             label=_('Current state'), source=WorkflowInstance,
