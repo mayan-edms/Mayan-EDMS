@@ -76,7 +76,7 @@ class IndexFilesystemTestCase(
 
         # Delete the physical document file without deleting the document
         # database entry.
-        document_file = self.test_document.latest_version.file
+        document_file = self.test_document.latest_file.file
         document_file.storage.delete(document_file.name)
 
         self.assertEqual(

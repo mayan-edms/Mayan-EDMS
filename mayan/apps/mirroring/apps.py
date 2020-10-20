@@ -13,7 +13,7 @@ class MirroringApp(MayanAppConfig):
     verbose_name = _('Mirroring')
 
     def ready(self):
-        super(MirroringApp, self).ready()
+        super().ready()
 
         Document = apps.get_model(app_label='documents', model_name='Document')
         IndexInstanceNode = apps.get_model(

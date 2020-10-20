@@ -263,7 +263,7 @@ class IndexFilesystem(LoggingMixIn, Operations):
 
         if isinstance(result, Document):
             next_file_descriptor = self._get_next_file_descriptor()
-            self.file_descriptors[next_file_descriptor] = result.open()
+            self.file_descriptors[next_file_descriptor] = result.latest_file.open()
             return next_file_descriptor
         else:
             raise FuseOSError(ENOENT)
