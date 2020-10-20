@@ -70,3 +70,5 @@
 - Rename common.classes.Template to AJAXTemplate.
 - Move AJAXTemplate to the templating app.
 - Remove icon_class_path support.
+- Add support for the CC and BCC field of mailers. Also added to the workflow
+  emailing action.

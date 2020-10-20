@@ -119,22 +119,36 @@ class UserMailer(models.Model):
                 default=False
             )
 
-        return super(UserMailer, self).save(*args, **kwargs)
+        return super().save(*args, **kwargs)
 
-    def send(self, to, subject='', body='', attachments=None, _event_action_object=None, _user=None):
+    def send(
+        self, to, subject='', body='', cc=None, bcc=None, attachments=None,
+        _event_action_object=None, _user=None
+    ):
         """
         Send a simple email. There is no document or template knowledge.
         attachments is a list of dictionaries with the keys:
         filename, content, and  mimetype.
         """
         recipient_list = split_recipient_list(recipients=[to])
+
+        if cc:
+            cc_list = split_recipient_list(recipients=[cc])
+        else:
+            cc_list = None
+
+        if bcc:
+            bcc_list = split_recipient_list(recipients=[bcc])
+        else:
+            bcc_list = bcc
+
         backend_data = self.loads()
 
         with self.get_connection() as connection:
             email_message = mail.EmailMultiAlternatives(
                 body=strip_tags(body), connection=connection,
                 from_email=backend_data.get('from'), subject=subject,
-                to=recipient_list,
+                to=recipient_list, cc=cc_list, bcc=bcc_list
             )
 
             for attachment in attachments or []:
@@ -162,7 +176,10 @@ class UserMailer(models.Model):
                     target=self
                 )
 
-    def send_document(self, document, to, subject='', body='', as_attachment=False, _user=None):
+    def send_document(
+        self, document, to, subject='', body='', cc=None, bcc=None,
+        as_attachment=False, _user=None
+    ):
         """
         Send a document using this user mailing profile.
         """
@@ -196,8 +213,8 @@ class UserMailer(models.Model):
 
         return self.send(
             attachments=attachments, body=body_html_content,
-            subject=subject_text, to=to, _event_action_object=document,
-            _user=_user
+            subject=subject_text, to=to, cc=cc, bcc=bcc,
+            _event_action_object=document, _user=_user
         )
 
     def test(self, to):

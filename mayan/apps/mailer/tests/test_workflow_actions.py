@@ -39,6 +39,42 @@ class EmailActionTestCase(MailerTestMixin, WorkflowTestMixin, ActionTestCase):
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
         self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
 
+    def test_email_action_literal_text_cc_field(self):
+        self._create_test_user_mailer()
+
+        action = EmailAction(
+            form_data={
+                'mailing_profile': self.test_user_mailer.pk,
+                'recipient': TEST_EMAIL_ADDRESS,
+                'cc': TEST_EMAIL_ADDRESS,
+                'subject': TEST_EMAIL_SUBJECT,
+                'body': TEST_EMAIL_BODY,
+            }
+        )
+        action.execute(context={'document': self.test_document})
+        self.assertEqual(len(mail.outbox), 1)
+        self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
+        self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
+        self.assertEqual(mail.outbox[0].cc, [TEST_EMAIL_ADDRESS])
+
+    def test_email_action_literal_text_bcc_field(self):
+        self._create_test_user_mailer()
+
+        action = EmailAction(
+            form_data={
+                'mailing_profile': self.test_user_mailer.pk,
+                'recipient': TEST_EMAIL_ADDRESS,
+                'bcc': TEST_EMAIL_ADDRESS,
+                'subject': TEST_EMAIL_SUBJECT,
+                'body': TEST_EMAIL_BODY,
+            }
+        )
+        action.execute(context={'document': self.test_document})
+        self.assertEqual(len(mail.outbox), 1)
+        self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
+        self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
+        self.assertEqual(mail.outbox[0].bcc, [TEST_EMAIL_ADDRESS])
+
     def test_email_action_workflow_execute(self):
         self._create_test_workflow()
         self._create_test_workflow_state()

@@ -32,6 +32,30 @@ class EmailAction(WorkflowAction):
                 'required': True
             }
         },
+        'cc': {
+            'label': _('CC'),
+            'class': 'django.forms.CharField', 'kwargs': {
+                'help_text': _(
+                    'Address used in the "Bcc" header when sending the '
+                    'email. Can be multiple addresses '
+                    'separated by comma or semicolon. A template can be used '
+                    'to reference properties of the document.'
+                ),
+                'required': True
+            }
+        },
+        'bcc': {
+            'label': _('BCC'),
+            'class': 'django.forms.CharField', 'kwargs': {
+                'help_text': _(
+                    'Address used in the "Bcc" header when sending the '
+                    'email. Can be multiple addresses '
+                    'separated by comma or semicolon. A template can be used '
+                    'to reference properties of the document.'
+                ),
+                'required': True
+            }
+        },
         'subject': {
             'label': _('Subject'),
             'class': 'django.forms.CharField', 'kwargs': {
@@ -51,7 +75,9 @@ class EmailAction(WorkflowAction):
             }
         },
     }
-    field_order = ('mailing_profile', 'recipient', 'subject', 'body')
+    field_order = (
+        'mailing_profile', 'recipient', 'cc', 'bcc', 'subject', 'body'
+    )
     label = _('Send email')
     widgets = {
         'body': {
@@ -65,6 +91,14 @@ class EmailAction(WorkflowAction):
             field_name='recipient', context=context
         )
 
+        cc = self.render_field(
+            field_name='cc', context=context
+        )
+
+        bcc = self.render_field(
+            field_name='bcc', context=context
+        )
+
         subject = self.render_field(
             field_name='subject', context=context
         )
@@ -75,7 +109,7 @@ class EmailAction(WorkflowAction):
 
         user_mailer = self.get_user_mailer()
         user_mailer.send(
-            to=recipient, subject=subject, body=body,
+            to=recipient, cc=cc, bcc=bcc, subject=subject, body=body
         )
 
     def get_form_schema(self, **kwargs):
