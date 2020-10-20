@@ -5,15 +5,15 @@
 # 
 # Translators:
 # Roberto Rosario, 2019
-# Lyudmil Antonov <lantonov.here@gmail.com>, 2019
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-02 04:26+0000\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
-"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2019\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2020\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -214,7 +214,7 @@ msgstr ""
 
 #: views.py:50
 msgid "No file metadata available"
-msgstr ""
+msgstr "Няма налични метаданни за файлове"
 
 #: views.py:53
 #, python-format
@@ -227,10 +227,13 @@ msgid ""
 "the driver does not support any metadata field for the file type of this "
 "document."
 msgstr ""
+"Това може да означава, че откриването на метаданни на файла не е завършено "
+"или че драйверът не поддържа никакво поле с метаданни за типа файл на този "
+"документ."
 
 #: views.py:85
 msgid "No file metadata available for this driver"
-msgstr ""
+msgstr "Няма налични файлови метаданни за този драйвер"
 
 #: views.py:89
 #, python-format

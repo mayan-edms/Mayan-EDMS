@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-02 04:26+0000\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2020-09-29 09:00+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
@@ -144,32 +144,32 @@ msgstr "Typ akce pro tuto položku akce."
 msgid "Action"
 msgstr "Akce"
 
-#: forms.py:134
+#: forms.py:133
 msgid "Namespace"
 msgstr "Jmenný prostor"
 
-#: forms.py:138 models.py:67 models.py:555 models.py:658 models.py:779
+#: forms.py:137 models.py:67 models.py:555 models.py:658 models.py:779
 #: models.py:877
 msgid "Label"
 msgstr "Označení"
 
-#: forms.py:142 models.py:660
+#: forms.py:141 models.py:660
 msgid "Enabled"
 msgstr "Povoleno"
 
-#: forms.py:144
+#: forms.py:143
 msgid "No"
 msgstr "Ne"
 
-#: forms.py:145
+#: forms.py:144
 msgid "Yes"
 msgstr "Ano"
 
-#: forms.py:195
+#: forms.py:194
 msgid "Select a transition to execute in the next step."
 msgstr "Vyberte přechod, který chcete provést v dalším kroku."
 
-#: forms.py:196 links.py:218 models.py:463 models.py:863 models.py:942
+#: forms.py:195 links.py:218 models.py:463 models.py:863 models.py:942
 msgid "Transition"
 msgstr "Krok"
 
@@ -779,7 +779,7 @@ msgid "Documents in the workflow \"%s\", state \"%s\""
 msgstr "Dokumenty ve workflow \"%s\", stav \"%s\""
 
 #: views/workflow_proxy_views.py:121
-#: views/workflow_template_state_views.py:327
+#: views/workflow_template_state_views.py:324
 msgid "Create states and link them using transitions."
 msgstr "Vytvářejte stavy a propojujte je pomocí kroků."
 
@@ -788,7 +788,7 @@ msgid "This workflow doesn't have any state"
 msgstr "Toto workflow nemá žádný stav"
 
 #: views/workflow_proxy_views.py:127
-#: views/workflow_template_state_views.py:333
+#: views/workflow_template_state_views.py:330
 #, python-format
 msgid "States of workflow: %s"
 msgstr "Stavy workflow: %s"
@@ -823,26 +823,26 @@ msgstr "Pro tento stav workflow neexistují žádné akce"
 msgid "Actions for workflow state: %s"
 msgstr "Akce pro stav pracovního postupu: %s"
 
-#: views/workflow_template_state_views.py:204
+#: views/workflow_template_state_views.py:201
 msgid "New workflow state action selection"
 msgstr "Výběr akce stavu nového workflow"
 
-#: views/workflow_template_state_views.py:231
+#: views/workflow_template_state_views.py:228
 #, python-format
 msgid "Create states for workflow: %s"
 msgstr "Vytvořit stavy pro workflow: %s"
 
-#: views/workflow_template_state_views.py:264
+#: views/workflow_template_state_views.py:261
 #, python-format
 msgid "Delete workflow state: %s?"
 msgstr "Odstranit stav workflow: %s?"
 
-#: views/workflow_template_state_views.py:294
+#: views/workflow_template_state_views.py:291
 #, python-format
 msgid "Edit workflow state: %s"
 msgstr "Upravit stav workflow: %s"
 
-#: views/workflow_template_state_views.py:330
+#: views/workflow_template_state_views.py:327
 msgid "This workflow doesn't have any states"
 msgstr "Toto workflow nemá žádné stavy"
 

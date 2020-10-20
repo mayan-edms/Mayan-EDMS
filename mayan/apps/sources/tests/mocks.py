@@ -1,6 +1,6 @@
 from django.utils.encoding import force_bytes, force_text
 
-from .literals import TEST_EMAIL_BASE64_FILENAME
+from .literals import TEST_EMAIL_BASE64_FILENAME, TEST_STAGING_PREVIEW_WIDTH
 
 
 class MockIMAPMessage:
@@ -285,3 +285,6 @@ class MockPOP3Mailbox:
 
 class MockStagingFolder:
     """Mock of a StagingFolder model"""
+    pk = 1
+    preview_height = None
+    preview_width = TEST_STAGING_PREVIEW_WIDTH

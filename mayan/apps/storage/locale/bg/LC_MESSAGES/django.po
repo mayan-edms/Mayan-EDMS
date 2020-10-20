@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-02 04:26+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"PO-Revision-Date: 2020-10-02 20:15+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -75,7 +75,7 @@ msgstr "Споделени качени файлове"
 
 #: queues.py:11
 msgid "Storage periodic"
-msgstr ""
+msgstr "Периоди на съхранение"
 
 #: queues.py:16
 msgid "Delete stale uploads"

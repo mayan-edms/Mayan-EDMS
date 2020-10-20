@@ -1,12 +1,18 @@
+import logging
+
 from django.apps import apps
 from django.db.models.signals import pre_delete
 
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.menus import menu_list_facet
+from mayan.apps.lock_manager.backends.base import LockingBackend
+from mayan.apps.lock_manager.exceptions import LockError
 
 from .links import link_object_error_list
 from .literals import DEFAULT_ERROR_LOG_PARTITION_ENTRY_LIMIT
 from .permissions import permission_error_log_view
+
+logger = logging.getLogger(name=__name__)
 
 
 class ErrorLog:
@@ -31,8 +37,30 @@ class ErrorLog:
             app_label='logging', model_name='ErrorLog'
         )
 
-        model, created = ErrorLogModel.objects.get_or_create(name=self.app_config.name)
-        return model
+        lock_id = 'logging-get-or-create-errorlogmodel-{}'.format(self.app_config.name)
+
+        try:
+            logger.debug('trying to acquire lock: %s', lock_id)
+            lock = LockingBackend.get_instance().acquire_lock(lock_id)
+            logger.debug('acquired lock: %s', lock_id)
+        except LockError:
+            logger.debug('unable to obtain lock: %s' % lock_id)
+            raise
+        else:
+            try:
+                model, created = ErrorLogModel.objects.get_or_create(
+                    name=self.app_config.name
+                )
+            except ErrorLogModel.MultipleObjectsReturned:
+                # Self heal previously repeated entries
+                ErrorLogModel.objects.filter(name=self.app_config.name).delete()
+                model, created = ErrorLogModel.objects.get_or_create(
+                    name=self.app_config.name
+                )
+            else:
+                return model
+            finally:
+                lock.release()
 
     def register_model(self, model, register_permission=False):
         error_log_instance = self

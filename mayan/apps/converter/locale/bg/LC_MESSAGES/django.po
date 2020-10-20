@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-02 04:26+0000\n"
-"PO-Revision-Date: 2020-09-27 08:06+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"PO-Revision-Date: 2020-10-02 19:35+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -68,11 +68,11 @@ msgstr "Помощна програма от пакета popper-utils, изпо
 
 #: events.py:8
 msgid "Asset created"
-msgstr ""
+msgstr "Активът е създаден"
 
 #: events.py:11
 msgid "Asset edited"
-msgstr ""
+msgstr "Активът е редактиран"
 
 #: forms.py:22
 msgid "Available transformations for this layer."
@@ -86,11 +86,11 @@ msgstr "&quot;%s&quot; не е валиден запис."
 #: layers.py:11
 msgid ""
 "Decorations are visual elements that add contextual information to images."
-msgstr ""
+msgstr "Декорациите са визуални елементи, които добавят контекстна информация към изображенията."
 
 #: layers.py:13
 msgid "Decorations"
-msgstr ""
+msgstr "Декорации"
 
 #: layers.py:24
 msgid "Saved transformations"
@@ -98,7 +98,7 @@ msgstr "Запазени трансформации"
 
 #: links.py:31 views.py:36
 msgid "Create asset"
-msgstr ""
+msgstr "Създайте актив"
 
 #: links.py:35 links.py:41 links.py:65
 msgid "Delete"
@@ -110,7 +110,7 @@ msgstr "Редактиране"
 
 #: links.py:55 models.py:53 storages.py:19 views.py:127
 msgid "Assets"
-msgstr ""
+msgstr "Активи"
 
 #: links.py:77
 msgid "Transformations"
@@ -128,7 +128,7 @@ msgstr "Етикет"
 msgid ""
 "This value will be used when referencing this asset. Can only contain "
 "letters, numbers, and underscores."
-msgstr ""
+msgstr "Тази стойност ще се използва при препратка към този актив. Може да съдържа само букви, цифри и долни черти."
 
 #: models.py:43
 msgid "Internal name"
@@ -140,7 +140,7 @@ msgstr "Файл"
 
 #: models.py:52
 msgid "Asset"
-msgstr ""
+msgstr "Актив"
 
 #: models.py:82 models.py:153
 msgid "Name"
@@ -196,23 +196,23 @@ msgstr "Трансформации на слоеве"
 
 #: models.py:174
 msgid "Unknown transformation class"
-msgstr ""
+msgstr "Неизвестен клас на трансформация"
 
 #: permissions.py:8
 msgid "Create new assets"
-msgstr ""
+msgstr "Създайте нови активи"
 
 #: permissions.py:11
 msgid "Delete assets"
-msgstr ""
+msgstr "Изтриване на активи"
 
 #: permissions.py:14
 msgid "Edit assets"
-msgstr ""
+msgstr "Редактиране на активи"
 
 #: permissions.py:17
 msgid "View existing assets"
-msgstr ""
+msgstr "Преглед на съществуващите активи"
 
 #: permissions.py:21
 msgid "Create new transformations"
@@ -240,29 +240,29 @@ msgstr "Опции за конфигуриране на бекенда за гр
 
 #: settings.py:41
 msgid "Path to the Storage subclass to use when storing assets."
-msgstr ""
+msgstr "Път към подкласа Storage, който да се използва при съхранение на активи."
 
 #: settings.py:49
 msgid "Arguments to pass to the CONVERTER_ASSET_STORAGE_BACKEND."
-msgstr ""
+msgstr "Аргументи за предаване на CONVERTER_ASSET_STORAGE_BACKEND."
 
 #: storages.py:13
 msgid ""
 "Unable to initialize the converter asset storage. Check the settings {} and "
 "{} for formatting errors."
-msgstr ""
+msgstr "Не може да се инициализира съхранението на активи на конвертора. Проверете настройките {} и {} за грешки при форматирането."
 
 #: transformations.py:197
 msgid "Paste an asset"
-msgstr ""
+msgstr "Поставете актив"
 
 #: transformations.py:248
 msgid "Paste an asset (percents coordinates)"
-msgstr ""
+msgstr "Поставяне на актив (проценти координати)"
 
 #: transformations.py:291
 msgid "Paste an asset as watermark"
-msgstr ""
+msgstr "Поставете актив като воден знак"
 
 #: transformations.py:351
 msgid "Crop"
@@ -323,48 +323,48 @@ msgstr "Увеличаване"
 #: views.py:50
 #, python-format
 msgid "Delete request performed on %(count)d asset"
-msgstr ""
+msgstr "Изтриване на заявка, извършена за %(count)d актив"
 
 #: views.py:52
 #, python-format
 msgid "Delete request performed on %(count)d assets"
-msgstr ""
+msgstr "Изтриване на заявка, извършена за %(count)dактиви"
 
 #: views.py:59
 msgid "Delete the selected asset?"
 msgid_plural "Delete the selected assets?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Да се изтрие ли избраният актив?"
+msgstr[1] "Да се изтрият ли избраните активи?"
 
 #: views.py:69
 #, python-format
 msgid "Delete asset: %s?"
-msgstr ""
+msgstr "Изтриване на актив: %s?"
 
 #: views.py:80
 #, python-format
 msgid "Asset \"%s\" deleted successfully."
-msgstr ""
+msgstr "Активът &quot;%s&quot; беше изтрит успешно."
 
 #: views.py:85
 #, python-format
 msgid "Error deleting asset \"%(asset)s\": %(error)s"
-msgstr ""
+msgstr "Грешка при изтриването на актив &quot;%(asset)s&quot;: %(error)s"
 
 #: views.py:101
 #, python-format
 msgid "Edit asset: %s"
-msgstr ""
+msgstr "Редактиране на актив: %s"
 
 #: views.py:123
 msgid ""
 "Assets are files that can be used in conjuction with certain "
 "transformations."
-msgstr ""
+msgstr "Активите са файлове, които могат да се използват заедно с определени трансформации."
 
 #: views.py:126
 msgid "No assets available"
-msgstr ""
+msgstr "Няма налични активи"
 
 #: views.py:151
 #, python-format
@@ -419,20 +419,20 @@ msgstr "Страници"
 msgid ""
 "Pages to which the new transformations will be added. Separate by commas "
 "and/or use a dashes for a ranges. Leave blank to select all pages."
-msgstr ""
+msgstr "Страници, към които ще бъдат добавени новите трансформации. Разделете със запетаи и / или използвайте тирета за диапазони. Оставете празно, за да изберете всички страници."
 
 #: workflow_actions.py:32
 msgid "Transformation class"
-msgstr ""
+msgstr "Клас на трансформация"
 
 #: workflow_actions.py:37
 msgid "Type of transformation to add."
-msgstr ""
+msgstr "Тип трансформация за добавяне."
 
 #: workflow_actions.py:42
 msgid "Transformation arguments"
-msgstr ""
+msgstr "Аргументи за трансформация"
 
 #: workflow_actions.py:51
 msgid "Add transformation"
-msgstr ""
+msgstr "Добавете трансформация"

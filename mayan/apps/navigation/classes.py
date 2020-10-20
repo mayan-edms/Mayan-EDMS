@@ -36,7 +36,7 @@ logger = logging.getLogger(name=__name__)
 class Link:
     _registry = {}
 
-    staticmethod
+    @staticmethod
     def conditional_active_by_view_name(context, resolved_link):
         return resolved_link.link.view == resolved_link.current_view_name
 

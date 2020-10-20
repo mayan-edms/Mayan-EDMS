@@ -9,14 +9,15 @@
 # panasoft <cc072aa3@opayq.com>, 2017
 # Daler Abdulloev <abdulloevdaler@gmail.com>, 2019
 # Sergey Glita <gsv70@mail.ru>, 2020
+# OLeg Si <olegsm35@gmail.com>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-02 04:26+0000\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
-"Last-Translator: Sergey Glita <gsv70@mail.ru>, 2020\n"
+"Last-Translator: OLeg Si <olegsm35@gmail.com>, 2020\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,19 +33,19 @@ msgstr "Кабинеты"
 
 #: events.py:9
 msgid "Cabinet created"
-msgstr ""
+msgstr "Кабинет создан"
 
 #: events.py:12
 msgid "Cabinet edited"
-msgstr ""
+msgstr "Кабинет изменен"
 
 #: events.py:15
 msgid "Document added to cabinet"
-msgstr ""
+msgstr "Документ добавлен в кабинет"
 
 #: events.py:18
 msgid "Document removed from cabinet"
-msgstr ""
+msgstr "Документ удален из кабинета"
 
 #: links.py:28 links.py:42 workflow_actions.py:72
 msgid "Remove from cabinets"
@@ -80,7 +81,7 @@ msgstr "Детали"
 
 #: methods.py:20
 msgid "Return a list of cabinets containing the document."
-msgstr ""
+msgstr "Вернуть список кабинетов содержащих документ."
 
 #: methods.py:22
 msgid "get_cabinets()"
@@ -88,7 +89,7 @@ msgstr ""
 
 #: models.py:31
 msgid "A short text used to identify the cabinet."
-msgstr ""
+msgstr "Краткий текст для идентификации кабинета."
 
 #: models.py:32
 msgid "Label"

@@ -236,12 +236,10 @@ class UploadBaseView(MultiFormView):
 
         return Link(
             args=args,
-            conditional_active=factory_conditional_active_by_source(source=source),
-            icon_class=icon_upload_view_link,
-            keep_query=True,
-            remove_from_query=['page'],
-            text=source.label,
-            view=view,
+            conditional_active=factory_conditional_active_by_source(
+                source=source
+            ), icon_class=icon_upload_view_link, keep_query=True,
+            remove_from_query=['page'], text=source.label, view=view
         )
 
     def dispatch(self, request, *args, **kwargs):
@@ -658,24 +656,28 @@ class DocumentFileUploadInteractiveView(UploadBaseView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['object'] = self.document
-        context['title'] = _(
-            'Upload a new file for document "%(document)s" '
-            'from source: %(source)s'
-        ) % {'document': self.document, 'source': self.source.label}
-        context['submit_label'] = _('Submit')
-        context['form_action'] = '{}?{}'.format(
-            reverse(
-                viewname=self.request.resolver_match.view_name,
-                kwargs=self.request.resolver_match.kwargs
-            ), self.request.META['QUERY_STRING']
+        context.update(
+            {
+                'form_action': '{}?{}'.format(
+                    reverse(
+                        viewname=self.request.resolver_match.view_name,
+                        kwargs=self.request.resolver_match.kwargs
+                    ), self.request.META['QUERY_STRING']
+                ),
+                'object': self.document,
+                'title': _(
+                    'Upload a new file for document "%(document)s" '
+                    'from source: %(source)s'
+                ) % {'document': self.document, 'source': self.source.label},
+                'submit_label': _('Submit')
+            }
         )
 
         if not isinstance(self.source, StagingFolderSource) and not isinstance(self.source, SaneScanner):
             context.update(
                 {
                     'form_css_classes': 'dropzone',
-                    'form_disable_submit': True,
+                    'form_disable_submit': True
                 }
             )
 

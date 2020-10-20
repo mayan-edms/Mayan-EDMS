@@ -23,7 +23,8 @@ from .literals import TEST_SOURCE_LABEL, TEST_SOURCE_UNCOMPRESS_N
 from .mixins import (
     DocumentFileUploadViewTestMixin, DocumentUploadIssueTestMixin,
     DocumentUploadWizardViewTestMixin, StagingFolderTestMixin,
-    StagingFolderViewTestMixin, SourceTestMixin, SourceViewTestMixin
+    StagingFolderViewTestMixin, SourceTestMixin, SourceViewTestMixin,
+    WatchFolderTestMixin
 )
 
 
@@ -365,3 +366,32 @@ class StagingFolderViewTestCase(
             staging_file_count,
             len(list(self.test_staging_folder.get_files()))
         )
+
+
+class WatchFolderErrorLoggingViewTestCase(
+    WatchFolderTestMixin, SourceViewTestMixin, GenericDocumentViewTestCase
+):
+    auto_upload_test_document = False
+
+    def test_error_logging(self):
+        self._create_test_watchfolder()
+        self.test_source = self.test_watch_folder
+        self.test_watch_folder.folder_path = 'invalid_path'
+        self.test_watch_folder.save()
+
+        self.grant_permission(permission=permission_sources_setup_create)
+
+        self._silence_logger(name='mayan.apps.sources.tasks')
+
+        response = self._request_setup_source_check_post_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(self.test_watch_folder.error_log.count(), 1)
+
+        self.test_watch_folder.folder_path = self.temporary_directory
+        self.test_watch_folder.save()
+
+        response = self._request_setup_source_check_post_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(self.test_watch_folder.error_log.count(), 0)

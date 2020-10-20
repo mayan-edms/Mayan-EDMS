@@ -6,7 +6,6 @@ from django.contrib.auth import get_user_model
 from django.core.files import File
 from django.db import OperationalError
 from django.utils.encoding import force_text
-from django.utils.translation import ugettext_lazy as _
 
 from mayan.celery import app
 
@@ -45,13 +44,8 @@ def task_check_interval_source(source_id, test=False):
             logger.error(
                 'Error processing source id: %s; %s', source_id, exception
             )
-            source.logs.create(
-                message=_('Error processing source: %s') % exception
-            )
             if settings.DEBUG:
                 raise
-        else:
-            source.logs.all().delete()
         finally:
             lock.release()
 

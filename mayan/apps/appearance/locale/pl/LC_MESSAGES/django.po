@@ -13,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-02 04:26+0000\n"
-"PO-Revision-Date: 2020-09-27 08:36+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"PO-Revision-Date: 2020-10-12 18:44+0000\n"
+"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -57,11 +57,11 @@ msgstr "Formularz JQuery"
 
 #: dependencies.py:45
 msgid "jQuery Lazy Load"
-msgstr "jQuery Opóźnione Ładowanie"
+msgstr "Opóźnione ładowanie jQuery"
 
 #: dependencies.py:49
 msgid "JQuery Match Height"
-msgstr "JQuery Wyrównaj Wysokość"
+msgstr "Wyrównaj wysokość jQuery"
 
 #: dependencies.py:53
 msgid "Select 2"
@@ -77,23 +77,23 @@ msgstr "URI.js"
 
 #: events.py:8
 msgid "Theme created"
-msgstr ""
+msgstr "Motyw utworzony"
 
 #: events.py:11
 msgid "Theme edited"
-msgstr ""
+msgstr "Motyw zmodyfikowany"
 
 #: links.py:15
 msgid "Theme settings"
-msgstr ""
+msgstr "Ustawienia motywu"
 
 #: links.py:20
 msgid "Edit theme settings"
-msgstr ""
+msgstr "Modyfikuj ustawienia motywu"
 
 #: links.py:27 views.py:47
 msgid "Create new theme"
-msgstr ""
+msgstr "Utwórz nowy motyw"
 
 #: links.py:33
 msgid "Delete"
@@ -105,11 +105,11 @@ msgstr "Edytuj"
 
 #: links.py:43 links.py:47 models.py:25 views.py:111
 msgid "Themes"
-msgstr ""
+msgstr "Motywy"
 
 #: models.py:12
 msgid "A short text describing the theme."
-msgstr ""
+msgstr "Krótki opis motywu."
 
 #: models.py:13
 msgid "Label"
@@ -119,15 +119,15 @@ msgstr "Etykieta"
 msgid ""
 "The CSS stylesheet to change the appearance of the different user interface "
 "elements."
-msgstr ""
+msgstr "Arkusz stylów CSS zmieniający wygląd różnych elementów interfejsu użytkownika"
 
 #: models.py:19
 msgid "Stylesheet"
-msgstr ""
+msgstr "Arkusz stylów"
 
 #: models.py:24 models.py:60
 msgid "Theme"
-msgstr ""
+msgstr "Motyw"
 
 #: models.py:56
 msgid "User"
@@ -135,27 +135,27 @@ msgstr "Użytkownik"
 
 #: models.py:64
 msgid "User theme setting"
-msgstr ""
+msgstr "Ustawienie użytkownika dla motywu"
 
 #: models.py:65
 msgid "User theme settings"
-msgstr ""
+msgstr "Ustawienia użytkownika dla motywu"
 
 #: permissions.py:8
 msgid "Create new themes"
-msgstr ""
+msgstr "Utwórz nowe motywy"
 
 #: permissions.py:11
 msgid "Delete themes"
-msgstr ""
+msgstr "Usuń motywy"
 
 #: permissions.py:14
 msgid "Edit themes"
-msgstr ""
+msgstr "Modyfikuj motywy"
 
 #: permissions.py:17
 msgid "View existing themes"
-msgstr ""
+msgstr "Przeglądaj motywy"
 
 #: settings.py:12
 msgid "Maximum number of characters that will be displayed as the view title."
@@ -433,11 +433,11 @@ msgstr "Przełącz tryb wyświetlania listy"
 #: templates/appearance/list_toolbar.html:60
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
-msgstr "Zaznacz elementy, aby uaktywnić akcję masową. Użyj Shift + click, aby zaznaczyć wiele elementów."
+msgstr "Zaznacz elementy, aby uaktywnić akcję zbiorczą. Użyj Shift + click, aby zaznaczyć wiele elementów."
 
 #: templates/appearance/list_toolbar.html:65
 msgid "Bulk actions"
-msgstr "Akcje masowe"
+msgstr "Akcje zbiorcze"
 
 #: templates/appearance/menu_topbar.html:11
 msgid "Toggle navigation"
@@ -465,27 +465,27 @@ msgstr "Brak"
 
 #: views.py:29
 msgid "Current user theme settings details"
-msgstr ""
+msgstr "Szczegóły ustawień motywu bieżącego użytkownika"
 
 #: views.py:35
 msgid "Edit current user theme settings details"
-msgstr ""
+msgstr "Modyfikuj szczegóły ustawień motywu bieżącego użytkownika"
 
 #: views.py:69
 #, python-format
 msgid "Delete theme: %s"
-msgstr ""
+msgstr "Usuń motyw: %s"
 
 #: views.py:85
 #, python-format
 msgid "Edit theme: %s"
-msgstr ""
+msgstr "Modyfikuj motyw: %s"
 
 #: views.py:105
 msgid ""
 "Themes allow changing the visual appearance without requiring code changes."
-msgstr ""
+msgstr "Motywy umożliwiają zmianę wyglądu bez dokonywania zmian w kodzie aplikacji."
 
 #: views.py:109
 msgid "There are no themes"
-msgstr ""
+msgstr "Brak motywów"

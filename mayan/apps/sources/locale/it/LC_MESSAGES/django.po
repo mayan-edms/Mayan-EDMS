@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-02 04:26+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"PO-Revision-Date: 2020-10-11 07:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -22,8 +22,8 @@ msgstr ""
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:48 links.py:56 models/base.py:37 queues.py:7 settings.py:11
-#: views.py:192
+#: apps.py:48 links.py:63 models/base.py:36 queues.py:7 settings.py:11
+#: views.py:193
 msgid "Sources"
 msgstr "Sorgenti"
 
@@ -72,7 +72,7 @@ msgstr "Espandi"
 msgid "Upload a compressed file's contained files as individual documents."
 msgstr "Carica i file contenuti di un file compresso come singoli documenti."
 
-#: forms.py:63 views.py:204
+#: forms.py:63 views.py:205
 msgid "Staging file"
 msgstr "Mostra file"
 
@@ -84,51 +84,51 @@ msgstr "File"
 msgid "Default"
 msgstr "Default"
 
-#: links.py:51
+#: links.py:58
 msgid "New document"
 msgstr "Nuovo documento"
 
-#: links.py:63
+#: links.py:70
 msgid "Add new IMAP email"
 msgstr "Aggiungi nuova email IMAP"
 
-#: links.py:69
+#: links.py:76
 msgid "Add new POP3 email"
 msgstr "Aggiungi nuova Email POP3"
 
-#: links.py:75
+#: links.py:82
 msgid "Add new staging folder"
 msgstr "Aggiungi una nuova cartella di stage"
 
-#: links.py:81
+#: links.py:88
 msgid "Add new watch folder"
 msgstr "Aggiungi una nuova cartella monitorata"
 
-#: links.py:87
+#: links.py:94
 msgid "Add new webform source"
 msgstr "Aggiungi nuova sorgente webform"
 
-#: links.py:93
+#: links.py:100
 msgid "Add new SANE scanner"
 msgstr "Aggiungi nuovo scanner SANE"
 
-#: links.py:99 links.py:116
+#: links.py:106 links.py:123
 msgid "Delete"
 msgstr "Cancella"
 
-#: links.py:104
+#: links.py:111
 msgid "Edit"
 msgstr "Modifica"
 
-#: links.py:109
+#: links.py:116
 msgid "Document sources"
 msgstr "Sorgente del documento"
 
-#: links.py:123
+#: links.py:130
 msgid "Upload new version"
 msgstr "Carica nuova versione"
 
-#: links.py:128
+#: links.py:135
 msgid "Check now"
 msgstr "Controlla adesso"
 
@@ -196,64 +196,64 @@ msgstr "Email POP3"
 msgid "IMAP email"
 msgstr "Email IMAP"
 
-#: models/base.py:27
+#: models/base.py:26
 msgid "A short text to describe this source."
 msgstr "Un breve testo per descrivere questa fonte."
 
-#: models/base.py:28
+#: models/base.py:27
 msgid "Label"
 msgstr "Etichetta"
 
-#: models/base.py:30
+#: models/base.py:29
 msgid "Enabled"
 msgstr "Abilitato"
 
-#: models/base.py:36
+#: models/base.py:35
 msgid "Source"
 msgstr "Sorgente"
 
-#: models/base.py:152
+#: models/base.py:151
 msgid "Interactive source"
 msgstr "Sorgente interattiva"
 
-#: models/base.py:153
+#: models/base.py:152
 msgid "Interactive sources"
 msgstr "Sorgenti interattive"
 
-#: models/base.py:162 models/base.py:163
+#: models/base.py:161 models/base.py:162
 msgid "Out of process"
 msgstr "Fuori dal processo"
 
-#: models/base.py:169
+#: models/base.py:168
 msgid "Interval in seconds between checks for new documents."
 msgstr "Intervallo in secondi tra le ricerche dei nuovi documenti."
 
-#: models/base.py:170
+#: models/base.py:169
 msgid "Interval"
 msgstr "Intervallo"
 
-#: models/base.py:174
+#: models/base.py:173
 msgid "Assign a document type to documents uploaded from this source."
 msgstr "Assegna un tipo documento ai documenti caricati da questa sorgente."
 
-#: models/base.py:176 serializers.py:17
+#: models/base.py:175 serializers.py:17
 msgid "Document type"
 msgstr "Tipo documento "
 
-#: models/base.py:180
+#: models/base.py:179
 msgid "Whether to expand or not, compressed archives."
 msgstr "Determina se espandere o no gli archivi compressi."
 
-#: models/base.py:181 models/staging_folder_sources.py:54
+#: models/base.py:180 models/staging_folder_sources.py:54
 #: models/webform_sources.py:34
 msgid "Uncompress"
 msgstr "Decomprimi"
 
-#: models/base.py:187
+#: models/base.py:186
 msgid "Interval source"
 msgstr "Intervallo sorgente"
 
-#: models/base.py:188
+#: models/base.py:187
 msgid "Interval sources"
 msgstr "Intervallo sorgenti"
 
@@ -605,11 +605,6 @@ msgstr "Impossibile inizializzare la memorizzazione dell'immagine del file della
 msgid "Staging folder files"
 msgstr "File delle cartelle di gestione temporanea"
 
-#: tasks.py:49
-#, python-format
-msgid "Error processing source: %s"
-msgstr "Errore processando la sorgente: %s"
-
 #: templates/sources/dropzone.html:82
 msgid "Cancel upload"
 msgstr "Annulla caricamento"
@@ -638,7 +633,7 @@ msgstr "Pulisci"
 msgid "Server responded with {{statusCode}} code."
 msgstr "Il server ha risposto con il codice {{statusCode}}."
 
-#: views.py:69
+#: views.py:70
 msgid ""
 "This will execute the source check code even if the source is not enabled. "
 "Sources that delete content after downloading will not do so while being "
@@ -646,31 +641,31 @@ msgid ""
 "successful test will clear the error log."
 msgstr "Questo eseguirà il codice di controllo della sorgente anche se la sorgente non è abilitata. Le fonti che eliminano il contenuto dopo il download non lo faranno durante il test. Controllare il registro degli errori dell'origine per informazioni durante il test. Un test riuscito cancellerà il registro degli errori."
 
-#: views.py:75
+#: views.py:76
 #, python-format
 msgid "Trigger check for source \"%s\"?"
 msgstr "Controllo trigger per il sorgente \"%s\"?"
 
-#: views.py:87
+#: views.py:88
 msgid "Source check queued."
 msgstr "Controllo del sorgente in coda."
 
-#: views.py:101
+#: views.py:102
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "Crea nuovo tipo di sorgente:%s"
 
-#: views.py:124
+#: views.py:125
 #, python-format
 msgid "Delete the source: %s?"
 msgstr "Cancellare la sorgente: %s?"
 
-#: views.py:146
+#: views.py:147
 #, python-format
 msgid "Edit source: %s"
 msgstr "Modifica sorgente: %s"
 
-#: views.py:186
+#: views.py:187
 msgid ""
 "Sources provide the means to upload documents. Some sources like the "
 "webform, are interactive and require user input to operate. Others like the "
@@ -678,11 +673,11 @@ msgid ""
 "intervention."
 msgstr "Le fonti forniscono i mezzi per caricare i documenti. Alcune fonti, come il modulo web, sono interattive e richiedono l'input dell'utente per funzionare. Altri, come le sorgenti di posta elettronica, sono automatici e vengono eseguiti in background senza l'intervento dell'utente."
 
-#: views.py:191
+#: views.py:192
 msgid "No sources available"
 msgstr "Nessuna fonte disponibile"
 
-#: views.py:205
+#: views.py:206
 #, python-format
 msgid "Delete staging file \"%s\"?"
 msgstr "Eliminare il file di gestione temporanea \"%s\"?"
@@ -744,12 +739,12 @@ msgstr "Errore durante l'esecuzione dell'attività di caricamento della versione
 msgid "New document version queued for upload and will be available shortly."
 msgstr "La nuova versione del documento è in coda per il caricamento e sarà disponibile a breve."
 
-#: views.py:646
+#: views.py:654
 #, python-format
 msgid "Upload a new version for document \"%(document)s\" from source: %(source)s"
 msgstr "Carica una nuova versione per il documento \"%(document)s\" dalla fonte: %(source)s"
 
-#: views.py:649
+#: views.py:657
 msgid "Submit"
 msgstr "Invia"
 

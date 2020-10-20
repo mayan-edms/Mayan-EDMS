@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-02 04:26+0000\n"
-"PO-Revision-Date: 2020-09-27 08:06+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"PO-Revision-Date: 2020-10-14 18:19+0000\n"
+"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -69,11 +69,11 @@ msgstr "Narzędzie z pakietu popper-utils używane do wyodrębniania stron z pli
 
 #: events.py:8
 msgid "Asset created"
-msgstr ""
+msgstr "Utworzono zasób"
 
 #: events.py:11
 msgid "Asset edited"
-msgstr ""
+msgstr "Zmodyfikowano zasób"
 
 #: forms.py:22
 msgid "Available transformations for this layer."
@@ -87,11 +87,11 @@ msgstr "„%s” nie jest prawidłowym wpisem."
 #: layers.py:11
 msgid ""
 "Decorations are visual elements that add contextual information to images."
-msgstr ""
+msgstr "Dekoracje są wizualnymi elementami, który dostarczają kontekstową informację do obrazów."
 
 #: layers.py:13
 msgid "Decorations"
-msgstr ""
+msgstr "Dekoracje"
 
 #: layers.py:24
 msgid "Saved transformations"
@@ -99,7 +99,7 @@ msgstr "Zapisane przekształcenia."
 
 #: links.py:31 views.py:36
 msgid "Create asset"
-msgstr ""
+msgstr "Utwórz zasób"
 
 #: links.py:35 links.py:41 links.py:65
 msgid "Delete"
@@ -111,7 +111,7 @@ msgstr "Edytuj"
 
 #: links.py:55 models.py:53 storages.py:19 views.py:127
 msgid "Assets"
-msgstr ""
+msgstr "Zasoby"
 
 #: links.py:77
 msgid "Transformations"
@@ -141,7 +141,7 @@ msgstr "Plik"
 
 #: models.py:52
 msgid "Asset"
-msgstr ""
+msgstr "Zasób"
 
 #: models.py:82 models.py:153
 msgid "Name"
@@ -201,19 +201,19 @@ msgstr ""
 
 #: permissions.py:8
 msgid "Create new assets"
-msgstr ""
+msgstr "Utwórz nowe zasoby"
 
 #: permissions.py:11
 msgid "Delete assets"
-msgstr ""
+msgstr "Usuń zasoby"
 
 #: permissions.py:14
 msgid "Edit assets"
-msgstr ""
+msgstr "Modyfikuj zasoby"
 
 #: permissions.py:17
 msgid "View existing assets"
-msgstr ""
+msgstr "Przeglądaj zasoby"
 
 #: permissions.py:21
 msgid "Create new transformations"
@@ -245,7 +245,7 @@ msgstr ""
 
 #: settings.py:49
 msgid "Arguments to pass to the CONVERTER_ASSET_STORAGE_BACKEND."
-msgstr ""
+msgstr "Argumenty dla CONVERTER_ASSET_STORAGE_BACKEND."
 
 #: storages.py:13
 msgid ""
@@ -255,7 +255,7 @@ msgstr ""
 
 #: transformations.py:197
 msgid "Paste an asset"
-msgstr ""
+msgstr "Wklej zasób"
 
 #: transformations.py:248
 msgid "Paste an asset (percents coordinates)"
@@ -263,7 +263,7 @@ msgstr ""
 
 #: transformations.py:291
 msgid "Paste an asset as watermark"
-msgstr ""
+msgstr "Wklej zasób jako znak wodny"
 
 #: transformations.py:351
 msgid "Crop"
@@ -334,40 +334,40 @@ msgstr ""
 #: views.py:59
 msgid "Delete the selected asset?"
 msgid_plural "Delete the selected assets?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Usunąć wybrany zasób?"
+msgstr[1] "Usunąć wybrane zasoby?"
+msgstr[2] "Usunąć wybrane zasoby?"
+msgstr[3] "Usunąć wybrane zasoby?"
 
 #: views.py:69
 #, python-format
 msgid "Delete asset: %s?"
-msgstr ""
+msgstr "Usunąć zasób: %s?"
 
 #: views.py:80
 #, python-format
 msgid "Asset \"%s\" deleted successfully."
-msgstr ""
+msgstr "Zasób \"%s\" usunięto pomyślnie."
 
 #: views.py:85
 #, python-format
 msgid "Error deleting asset \"%(asset)s\": %(error)s"
-msgstr ""
+msgstr "Błąd podczas usuwania zasobu \"%(asset)s\": %(error)s"
 
 #: views.py:101
 #, python-format
 msgid "Edit asset: %s"
-msgstr ""
+msgstr "Modyfikuj zasób: %s"
 
 #: views.py:123
 msgid ""
 "Assets are files that can be used in conjuction with certain "
 "transformations."
-msgstr ""
+msgstr "Zasoby to pliki, które mogą być wykorzystane w połączeniu z właściwymi przekształceniami."
 
 #: views.py:126
 msgid "No assets available"
-msgstr ""
+msgstr "Brak zasobów"
 
 #: views.py:151
 #, python-format
@@ -426,16 +426,16 @@ msgstr ""
 
 #: workflow_actions.py:32
 msgid "Transformation class"
-msgstr ""
+msgstr "Klasa przekształcenia"
 
 #: workflow_actions.py:37
 msgid "Type of transformation to add."
-msgstr ""
+msgstr "Typ przekształcenia przeznaczony do dodania."
 
 #: workflow_actions.py:42
 msgid "Transformation arguments"
-msgstr ""
+msgstr "Argumenty przekształcenia"
 
 #: workflow_actions.py:51
 msgid "Add transformation"
-msgstr ""
+msgstr "Dodaj przekształcenie"

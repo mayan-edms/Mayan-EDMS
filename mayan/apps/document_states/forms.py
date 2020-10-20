@@ -90,7 +90,6 @@ class WorkflowStateActionDynamicForm(DynamicModelForm):
         data = import_string(dotted_path=self.action_path).clean(
             form_data=data, request=self.request
         )
-        self.action_path
         data['action_data'] = json.dumps(obj=action_data)
 
         return data

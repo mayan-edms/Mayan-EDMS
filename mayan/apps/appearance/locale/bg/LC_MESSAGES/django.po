@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-02 04:26+0000\n"
-"PO-Revision-Date: 2020-09-27 08:36+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"PO-Revision-Date: 2020-10-02 19:21+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -74,23 +74,23 @@ msgstr "URI.js"
 
 #: events.py:8
 msgid "Theme created"
-msgstr ""
+msgstr "Темата е създадена"
 
 #: events.py:11
 msgid "Theme edited"
-msgstr ""
+msgstr "Темата е редактирана"
 
 #: links.py:15
 msgid "Theme settings"
-msgstr ""
+msgstr "Настройки на темата"
 
 #: links.py:20
 msgid "Edit theme settings"
-msgstr ""
+msgstr "Редактирайте настройките на темата"
 
 #: links.py:27 views.py:47
 msgid "Create new theme"
-msgstr ""
+msgstr "Създайте нова тема"
 
 #: links.py:33
 msgid "Delete"
@@ -102,11 +102,11 @@ msgstr "Редактиране"
 
 #: links.py:43 links.py:47 models.py:25 views.py:111
 msgid "Themes"
-msgstr ""
+msgstr "Теми"
 
 #: models.py:12
 msgid "A short text describing the theme."
-msgstr ""
+msgstr "Кратък текст, описващ темата."
 
 #: models.py:13
 msgid "Label"
@@ -116,15 +116,15 @@ msgstr "Етикет"
 msgid ""
 "The CSS stylesheet to change the appearance of the different user interface "
 "elements."
-msgstr ""
+msgstr "CSS таблицата със стилове за промяна на външния вид на различните елементи на потребителския интерфейс."
 
 #: models.py:19
 msgid "Stylesheet"
-msgstr ""
+msgstr "Таблица със стилове"
 
 #: models.py:24 models.py:60
 msgid "Theme"
-msgstr ""
+msgstr "Тема"
 
 #: models.py:56
 msgid "User"
@@ -132,27 +132,27 @@ msgstr "Потребител"
 
 #: models.py:64
 msgid "User theme setting"
-msgstr ""
+msgstr "Настройка на потребителска тема"
 
 #: models.py:65
 msgid "User theme settings"
-msgstr ""
+msgstr "Настройки на потребителска тема"
 
 #: permissions.py:8
 msgid "Create new themes"
-msgstr ""
+msgstr "Създайте нови теми"
 
 #: permissions.py:11
 msgid "Delete themes"
-msgstr ""
+msgstr "Изтрийте теми"
 
 #: permissions.py:14
 msgid "Edit themes"
-msgstr ""
+msgstr "Редактирайте теми"
 
 #: permissions.py:17
 msgid "View existing themes"
-msgstr ""
+msgstr "Вижте съществуващите теми"
 
 #: settings.py:12
 msgid "Maximum number of characters that will be displayed as the view title."
@@ -462,27 +462,27 @@ msgstr "Няма"
 
 #: views.py:29
 msgid "Current user theme settings details"
-msgstr ""
+msgstr "Подробности за текущите настройки на потребителската тема"
 
 #: views.py:35
 msgid "Edit current user theme settings details"
-msgstr ""
+msgstr "Редактирайте подробности за текущите настройки на потребителската тема"
 
 #: views.py:69
 #, python-format
 msgid "Delete theme: %s"
-msgstr ""
+msgstr "Изтриване на тема: %s"
 
 #: views.py:85
 #, python-format
 msgid "Edit theme: %s"
-msgstr ""
+msgstr "Редактиране на тема: %s"
 
 #: views.py:105
 msgid ""
 "Themes allow changing the visual appearance without requiring code changes."
-msgstr ""
+msgstr "Темите позволяват промяна на визуалния облик, без да се изискват промени в кода."
 
 #: views.py:109
 msgid "There are no themes"
-msgstr ""
+msgstr "Няма теми"

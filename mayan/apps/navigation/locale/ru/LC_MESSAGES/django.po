@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-02 04:26+0000\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2020-09-04 09:18+0000\n"
 "Last-Translator: Alex Chigrin <chalex84@mail.ru>, 2020\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "Navigation"
 msgstr ""
 
-#: classes.py:797
+#: classes.py:799
 msgid "Unnamed function"
 msgstr "Безымянная функция"
 
