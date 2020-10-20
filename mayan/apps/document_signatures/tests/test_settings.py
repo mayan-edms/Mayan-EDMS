@@ -7,18 +7,18 @@ from mayan.apps.storage.classes import DefinedStorage
 from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..literals import STORAGE_NAME_DOCUMENT_SIGNATURES_DETACHED_SIGNATURE
-from ..settings import setting_document_file_storage_backend_arguments
+from ..settings import setting_storage_backend_arguments
 
 
 class SignatureStorageSettingsTestCase(SmartSettingTestMixin, BaseTestCase):
     def tearDown(self):
-        super(SignatureStorageSettingsTestCase, self).tearDown()
+        super().tearDown()
         importlib.reload(storages)
 
-    def test_setting_document_file_storage_backend_arguments_invalid_value(self):
+    def test_setting_storage_backend_arguments_invalid_value(self):
         self._set_environment_variable(
             name='MAYAN_{}'.format(
-                setting_document_file_storage_backend_arguments.global_name
+                setting_storage_backend_arguments.global_name
             ), value="invalid_value"
         )
 

@@ -95,9 +95,7 @@ class DocumentFileDetachedSignatureCreateView(FormView):
                 request=self.request
             )
 
-        return super(
-            DocumentFileDetachedSignatureCreateView, self
-        ).form_valid(form)
+        return super().form_valid(form)
 
     def dispatch(self, request, *args, **kwargs):
         AccessControlList.objects.check_access(
@@ -106,9 +104,7 @@ class DocumentFileDetachedSignatureCreateView(FormView):
             user=request.user
         )
 
-        return super(
-            DocumentFileDetachedSignatureCreateView, self
-        ).dispatch(request, *args, **kwargs)
+        return super().dispatch(request, *args, **kwargs)
 
     def get_document_file(self):
         return get_object_or_404(
@@ -190,9 +186,7 @@ class DocumentFileEmbeddedSignatureCreateView(FormView):
                 )
             )
 
-        return super(
-            DocumentFileEmbeddedSignatureCreateView, self
-        ).form_valid(form)
+        return super().form_valid(form)
 
     def dispatch(self, request, *args, **kwargs):
         AccessControlList.objects.check_access(
@@ -201,9 +195,7 @@ class DocumentFileEmbeddedSignatureCreateView(FormView):
             user=request.user
         )
 
-        return super(
-            DocumentFileEmbeddedSignatureCreateView, self
-        ).dispatch(request, *args, **kwargs)
+        return super().dispatch(request, *args, **kwargs)
 
     def get_document_file(self):
         return get_object_or_404(
@@ -340,9 +332,7 @@ class DocumentFileSignatureUploadView(SingleObjectCreateView):
             user=request.user
         )
 
-        return super(
-            DocumentFileSignatureUploadView, self
-        ).dispatch(request, *args, **kwargs)
+        return super().dispatch(request, *args, **kwargs)
 
     def get_document_file(self):
         return get_object_or_404(
