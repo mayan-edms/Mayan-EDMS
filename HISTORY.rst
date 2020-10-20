@@ -3,6 +3,8 @@
 - Update Django from version 2.2.15 to 2.2.16.
 - Increase GitLab CI artifact expiration to 2 hours.
 - Seed the random number generator when the test case class is initialized.
+- Update test PostgreSQL makefile target to allow continuing launching
+  the PostgreSQL container without password.
 
 3.4.17 (2020-09-10)
 ===================

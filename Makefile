@@ -63,7 +63,7 @@ test-all-migrations: clean-pyc _test-command
 test-launch-postgres:
 	@docker rm -f test-postgres || true
 	@docker volume rm test-postgres || true
-	@docker run -d --name test-postgres -p 5432:5432 -v test-postgres:/var/lib/postgresql/data $(DOCKER_POSTGRES_IMAGE_VERSION)
+	@docker run -d --name test-postgres -p 5432:5432 -e POSTGRES_HOST_AUTH_METHOD=trust -v test-postgres:/var/lib/postgresql/data $(DOCKER_POSTGRES_IMAGE_VERSION)
 	@echo "* Installing libpq-dev client"
 	@sudo apt-get install -qq libpq-dev
 	@echo "* Installing Python client"
