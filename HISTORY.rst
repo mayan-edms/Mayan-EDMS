@@ -69,3 +69,4 @@
 - Remove Werkzeug from the dependencies.
 - Rename common.classes.Template to AJAXTemplate.
 - Move AJAXTemplate to the templating app.
+- Remove icon_class_path support.

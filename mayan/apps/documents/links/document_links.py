@@ -78,4 +78,3 @@ link_document_properties_edit = Link(
     permissions=(permission_document_properties_edit,),
     text=_('Edit properties'), view='documents:document_properties_edit'
 )
-

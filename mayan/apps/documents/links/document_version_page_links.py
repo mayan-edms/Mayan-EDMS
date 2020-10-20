@@ -3,17 +3,19 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.navigation.classes import Link
 
 from ..icons import (
-    icon_document_version_page_delete,
-    icon_document_version_page_return_to_document,
-    icon_document_version_page_return_to_document_version,
+    icon_document_version_page_delete, icon_document_version_page_list,
+    icon_document_version_page_list_remap,
+    icon_document_version_page_list_reset,
     icon_document_version_page_navigation_first,
     icon_document_version_page_navigation_last,
     icon_document_version_page_navigation_next,
     icon_document_version_page_navigation_previous,
+    icon_document_version_page_return_to_document,
+    icon_document_version_page_return_to_document_version,
     icon_document_version_page_rotate_left,
     icon_document_version_page_rotate_right,
-    icon_document_version_page_zoom_in,
-    icon_document_version_page_zoom_out,
+    icon_document_version_page_view, icon_document_version_page_view_reset,
+    icon_document_version_page_zoom_in, icon_document_version_page_zoom_out
 )
 from ..permissions import (
     permission_document_version_edit, permission_document_version_view,
@@ -47,19 +49,19 @@ link_document_version_page_delete = Link(
 )
 link_document_version_page_list = Link(
     args='resolved_object.pk',
-    icon_class_path='mayan.apps.documents.icons.icon_document_version_page_list',
+    icon_class=icon_document_version_page_list,
     permissions=(permission_document_version_view,), text=_('Pages'),
     view='documents:document_version_page_list',
 )
 link_document_version_page_list_remap = Link(
     args='resolved_object.pk',
-    icon_class_path='mayan.apps.documents.icons.icon_document_version_page_list_remap',
+    icon_class=icon_document_version_page_list_remap,
     permissions=(permission_document_version_edit,), text=_('Remap pages'),
     view='documents:document_version_page_list_remap',
 )
 link_document_version_page_list_reset = Link(
     args='resolved_object.pk',
-    icon_class_path='mayan.apps.documents.icons.icon_document_version_page_list_reset',
+    icon_class=icon_document_version_page_list_reset,
     permissions=(permission_document_version_edit,), text=_('Reset pages'),
     view='documents:document_version_page_list_reset',
 )
@@ -115,12 +117,12 @@ link_document_version_page_rotate_right = Link(
     text=_('Rotate right'), view='documents:document_version_page_rotate_right',
 )
 link_document_version_page_view = Link(
-    icon_class_path='mayan.apps.documents.icons.icon_document_version_page_view',
+    icon_class=icon_document_version_page_view,
     permissions=(permission_document_version_view,), text=_('Page image'),
     view='documents:document_version_page_view', args='resolved_object.pk'
 )
 link_document_version_page_view_reset = Link(
-    icon_class_path='mayan.apps.documents.icons.icon_document_version_page_view_reset',
+    icon_class=icon_document_version_page_view_reset,
     permissions=(permission_document_version_view,), text=_('Reset view'),
     view='documents:document_version_page_view_reset', args='resolved_object.pk'
 )

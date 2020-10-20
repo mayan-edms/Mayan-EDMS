@@ -7,9 +7,9 @@ icon_document_file_upload = Icon(
     driver_name='fontawesome', symbol='upload'
 )
 icon_setup_sources = Icon(driver_name='fontawesome', symbol='upload')
-icon_setup_source_check_now = Icon(driver_name='fontawesome', symbol='check')
-icon_setup_source_delete = Icon(driver_name='fontawesome', symbol='times')
-icon_setup_source_edit = Icon(driver_name='fontawesome', symbol='pencil-alt')
+icon_source_check_now = Icon(driver_name='fontawesome', symbol='check')
+icon_source_delete = Icon(driver_name='fontawesome', symbol='times')
+icon_source_edit = Icon(driver_name='fontawesome', symbol='pencil-alt')
 icon_source_create = Icon(
     driver_name='fontawesome-dual', primary_symbol='upload',
     secondary_symbol='plus'

@@ -26,7 +26,7 @@ from .events import (
 from .handlers import handler_index_document, handler_tag_pre_delete
 from .html_widgets import widget_document_tags
 from .links import (
-    link_document_tag_list, link_document_multiple_attach_multiple_tag,
+    link_document_tag_list, link_document_multiple_tag_multiple_attach,
     link_document_multiple_tag_multiple_remove,
     link_document_tag_multiple_remove, link_document_tag_multiple_attach, link_tag_create,
     link_tag_delete, link_tag_edit, link_tag_list,
@@ -170,7 +170,7 @@ class TagsApp(MayanAppConfig):
 
         menu_multi_item.bind_links(
             links=(
-                link_document_multiple_attach_multiple_tag,
+                link_document_multiple_tag_multiple_attach,
                 link_document_multiple_tag_multiple_remove
             ),
             sources=(Document,)

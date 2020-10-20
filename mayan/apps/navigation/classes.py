@@ -52,8 +52,8 @@ class Link:
         self, text=None, view=None, args=None, badge_text=None, condition=None,
         conditional_active=None, conditional_disable=None, description=None,
         html_data=None, html_extra_classes=None, icon_class=None,
-        icon_class_path=None, keep_query=False, kwargs=None, name=None,
-        permissions=None, remove_from_query=None, tags=None, url=None
+        keep_query=False, kwargs=None, name=None, permissions=None,
+        remove_from_query=None, tags=None, url=None
     ):
         self.args = args or []
         self.badge_text = badge_text
@@ -64,7 +64,6 @@ class Link:
         self.html_data = html_data
         self.html_extra_classes = html_extra_classes
         self.icon_class = icon_class
-        self.icon_class_path = icon_class_path
         self.keep_query = keep_query
         self.kwargs = kwargs or {}
         self.name = name
@@ -75,27 +74,8 @@ class Link:
         self.view = view
         self.url = url
 
-        self.process_icon()
-
         if name:
             self.__class__._registry[name] = self
-
-    def process_icon(self):
-        if self.icon_class_path:
-            if self.icon_class:
-                raise ImproperlyConfigured(
-                    'Specify the icon_class or the icon_class_path but not '
-                    'both.'
-                )
-            else:
-                try:
-                    self.icon_class = import_string(dotted_path=self.icon_class_path)
-                except ImportError as exception:
-                    logger.error(
-                        'Exception importing icon: %s; %s', self.icon_class_path,
-                        exception
-                    )
-                    raise
 
     def resolve(self, context=None, request=None, resolved_object=None):
         if not context and not request:
