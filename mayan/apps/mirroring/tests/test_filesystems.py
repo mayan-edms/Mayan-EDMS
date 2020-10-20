@@ -107,7 +107,7 @@ class IndexFilesystemTestCase(
             hashlib.sha256(
                 index_filesystem.read(
                     fh=file_handle, offset=0, path=None,
-                    size=self.test_document.size
+                    size=self.test_document.latest_file.size
                 )
             ).hexdigest(),
             self.test_document.checksum
