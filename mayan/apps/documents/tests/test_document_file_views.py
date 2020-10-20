@@ -22,13 +22,10 @@ class DocumentFileViewTestCase(
     GenericDocumentViewTestCase
 ):
     def test_document_file_list_no_permission(self):
-        self._upload_new_file()
-
         response = self._request_test_document_file_list_view()
         self.assertEqual(response.status_code, 404)
 
     def test_document_file_list_with_access(self):
-        self._upload_new_file()
         self.grant_access(
             obj=self.test_document,
             permission=permission_document_file_view
@@ -36,7 +33,8 @@ class DocumentFileViewTestCase(
 
         response = self._request_test_document_file_list_view()
         self.assertContains(
-            response=response, status_code=200, text=TEST_VERSION_COMMENT
+            response=response, status_code=200,
+            text=str(self.test_document_file)
         )
 
     def test_document_file_delete_no_permission(self):
