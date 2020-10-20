@@ -9,8 +9,8 @@ from .literals import (
 from .settings import (
     setting_document_file_storage_backend,
     setting_document_file_storage_backend_arguments,
-    setting_documentfilepageimagecache_storage,
-    setting_documentfilepageimagecache_storage_arguments,
+    setting_document_file_page_image_cache_storage,
+    setting_document_file_page_image_cache_storage_arguments,
     setting_documentversionpageimagecache_storage,
     setting_documentversionpageimagecache_storage_arguments
 )
@@ -30,17 +30,17 @@ storage_document_files = DefinedStorage(
 )
 
 storage_document_file_image_cache = DefinedStorage(
-    dotted_path=setting_documentfilepageimagecache_storage.value,
+    dotted_path=setting_document_file_page_image_cache_storage.value,
     error_message=_(
         'Unable to initialize the document file image storage. Check '
         'the settings {} and {} for formatting errors.'.format(
-            setting_documentfilepageimagecache_storage.global_name,
-            setting_documentfilepageimagecache_storage_arguments.global_name
+            setting_document_file_page_image_cache_storage.global_name,
+            setting_document_file_page_image_cache_storage_arguments.global_name
         )
     ),
     label=_('Document file page images'),
     name=STORAGE_NAME_DOCUMENT_FILE_PAGE_IMAGE_CACHE,
-    kwargs=setting_documentfilepageimagecache_storage_arguments.value
+    kwargs=setting_document_file_page_image_cache_storage_arguments.value
 )
 
 storage_document_version_image_cache = DefinedStorage(

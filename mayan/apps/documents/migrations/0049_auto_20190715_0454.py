@@ -5,8 +5,8 @@ from django.db import migrations
 from mayan.apps.storage.utils import get_storage_subclass
 
 from ..settings import (
-    setting_documentfilepageimagecache_storage,
-    setting_documentfilepageimagecache_storage_arguments,
+    setting_document_file_page_image_cache_storage,
+    setting_document_file_page_image_cache_storage_arguments,
 )
 
 logger = logging.getLogger(name=__name__)
@@ -15,14 +15,14 @@ logger = logging.getLogger(name=__name__)
 def operation_clear_old_cache(apps, schema_editor):
     try:
         storage_documentimagecache = get_storage_subclass(
-            dotted_path=setting_documentfilepageimagecache_storage.value
-        )(**setting_documentfilepageimagecache_storage_arguments.value)
+            dotted_path=setting_document_file_page_image_cache_storage.value
+        )(**setting_document_file_page_image_cache_storage_arguments.value)
     except Exception as exception:
         message = (
             'Unable to initialize the document image cache storage. '
             'Check the settings {} and {} for formatting errors.'.format(
-                setting_documentfilepageimagecache_storage.global_name,
-                setting_documentfilepageimagecache_storage_arguments.global_name
+                setting_document_file_page_image_cache_storage.global_name,
+                setting_document_file_page_image_cache_storage_arguments.global_name
             )
         )
 

@@ -12,7 +12,7 @@ from ..literals import (
 from ..settings import (
     setting_document_file_page_image_cache_maximum_size,
     setting_document_file_storage_backend_arguments,
-    setting_documentfilepageimagecache_storage_arguments,
+    setting_document_file_page_image_cache_storage_arguments,
     setting_language_codes
 )
 

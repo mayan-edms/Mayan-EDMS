@@ -60,14 +60,14 @@ setting_document_file_storage_backend_arguments = namespace.add_setting(
     default={'location': os.path.join(settings.MEDIA_ROOT, 'document_file_storage')},
     help_text=_('Arguments to pass to the DOCUMENT_FILE_STORAGE_BACKEND.')
 )
-setting_documentfilepageimagecache_storage = namespace.add_setting(
+setting_document_file_page_image_cache_storage = namespace.add_setting(
     global_name='DOCUMENTS_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND',
     default='django.core.files.storage.FileSystemStorage', help_text=_(
         'Path to the Storage subclass to use when storing the cached '
         'document file page image files.'
     )
 )
-setting_documentfilepageimagecache_storage_arguments = namespace.add_setting(
+setting_document_file_page_image_cache_storage_arguments = namespace.add_setting(
     global_name='DOCUMENTS_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND_ARGUMENTS',
     default={'location': os.path.join(settings.MEDIA_ROOT, 'document_file_page_image_cache')},
     help_text=_(
