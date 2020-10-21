@@ -251,7 +251,7 @@ class IndexFilesystem(LoggingMixIn, Operations):
                     result.latest_file.timestamp.replace(tzinfo=None) - result.latest_file.timestamp.utcoffset() - datetime.datetime(1970, 1, 1)
                 ).total_seconds(),
                 'st_atime': now,
-                'st_size': result.lates_file.size or 0,
+                'st_size': result.latest_file.size or 0,
                 'st_nlink': 1
             }
 

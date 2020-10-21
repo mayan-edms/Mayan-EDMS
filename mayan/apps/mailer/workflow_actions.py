@@ -41,7 +41,7 @@ class EmailAction(WorkflowAction):
                     'separated by comma or semicolon. A template can be used '
                     'to reference properties of the document.'
                 ),
-                'required': True
+                'required': False
             }
         },
         'bcc': {
@@ -53,7 +53,7 @@ class EmailAction(WorkflowAction):
                     'separated by comma or semicolon. A template can be used '
                     'to reference properties of the document.'
                 ),
-                'required': True
+                'required': False
             }
         },
         'subject': {

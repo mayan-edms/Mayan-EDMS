@@ -1,4 +1,4 @@
-from django.db import migrations
+from django.db import migrations, transaction
 
 
 def pages_reset(content_type, document_version):
@@ -13,12 +13,13 @@ def pages_reset(content_type, document_version):
     else:
         content_object_list = ()
 
-    for page_number, content_object in enumerate(iterable=content_object_list, start=1):
-        document_version.pages.create(
-            content_type=content_type,
-            object_id=content_object.pk,
-            page_number=page_number
-        )
+    with transaction.atomic():
+        for page_number, content_object in enumerate(iterable=content_object_list, start=1):
+            document_version.pages.create(
+                content_type=content_type,
+                object_id=content_object.pk,
+                page_number=page_number
+            )
 
 
 def operation_document_version_page_create(apps, schema_editor):

@@ -1,7 +1,7 @@
 from django.utils.encoding import force_text
 
 from ..permissions import (
-    permission_document_edit, permission_document_file_view
+    permission_document_file_tools, permission_document_file_view
 )
 
 from .base import GenericDocumentViewTestCase
@@ -12,50 +12,50 @@ class DocumentFilePageViewTestCase(
     DocumentFilePageViewTestMixin, GenericDocumentViewTestCase
 ):
     def test_document_file_page_count_update_view_no_permission(self):
-        self.test_document.pages.all().delete()
-        self.assertEqual(self.test_document.pages.count(), 0)
+        self.test_document_file.pages.all().delete()
+        self.assertEqual(self.test_document_file.pages.count(), 0)
 
         response = self._request_test_document_file_page_count_update_view()
         self.assertEqual(response.status_code, 404)
 
-        self.assertEqual(self.test_document.pages.count(), 0)
+        self.assertEqual(self.test_document_file.pages.count(), 0)
 
-    def test_document_file_page_count_update_view_with_permission(self):
-        page_count = self.test_document.pages.count()
-        self.test_document.pages.all().delete()
-        self.assertEqual(self.test_document.pages.count(), 0)
+    def test_document_file_page_count_update_view_with_access(self):
+        page_count = self.test_document_file.pages.count()
+        self.test_document_file.pages.all().delete()
+        self.assertEqual(self.test_document_file.pages.count(), 0)
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_tools
+            obj=self.test_document, permission=permission_document_file_tools
         )
 
         response = self._request_test_document_file_page_count_update_view()
         self.assertEqual(response.status_code, 302)
 
-        self.assertEqual(self.test_document.pages.count(), page_count)
+        self.assertEqual(self.test_document_file.pages.count(), page_count)
 
-    def test_document_multiple_update_page_count_view_no_permission(self):
-        self.test_document.pages.all().delete()
-        self.assertEqual(self.test_document.pages.count(), 0)
+    def test_document_file_multiple_page_count_update_view_no_permission(self):
+        self.test_document_file.pages.all().delete()
+        self.assertEqual(self.test_document_file.pages.count(), 0)
 
         response = self._request_test_document_file_multiple_page_count_update_view()
         self.assertEqual(response.status_code, 404)
 
-        self.assertEqual(self.test_document.pages.count(), 0)
+        self.assertEqual(self.test_document_file.pages.count(), 0)
 
-    def test_document_multiple_update_page_count_view_with_permission(self):
-        page_count = self.test_document.pages.count()
-        self.test_document.pages.all().delete()
-        self.assertEqual(self.test_document.pages.count(), 0)
+    def test_document_file_multiple_page_count_update_view_with_access(self):
+        page_count = self.test_document_file.pages.count()
+        self.test_document_file.pages.all().delete()
+        self.assertEqual(self.test_document_file.pages.count(), 0)
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_tools
+            obj=self.test_document_file, permission=permission_document_file_tools
         )
 
         response = self._request_test_document_file_multiple_page_count_update_view()
         self.assertEqual(response.status_code, 302)
 
-        self.assertEqual(self.test_document.pages.count(), page_count)
+        self.assertEqual(self.test_document_file.pages.count(), page_count)
 
     def test_document_file_page_list_view_no_permission(self):
         response = self._request_test_document_file_page_list_view()
@@ -68,7 +68,8 @@ class DocumentFilePageViewTestCase(
 
         response = self._request_test_document_file_page_list_view()
         self.assertContains(
-            response=response, status_code=200, text=self.test_document.label
+            response=response, status_code=200,
+            text=str(self.test_document_file)
         )
 
     def test_document_file_page_rotate_left_view_no_permission(self):

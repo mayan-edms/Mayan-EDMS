@@ -100,7 +100,6 @@ from .links.document_version_links import (
     link_document_version_transformations_clear,
     link_document_version_multiple_transformations_clear,
     link_document_version_transformations_clone
-
 )
 from .links.document_version_page_links import (
     link_document_version_page_delete, link_document_version_page_list,

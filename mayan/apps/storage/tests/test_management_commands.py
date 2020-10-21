@@ -2,6 +2,7 @@ from django.core import management
 from django.utils.encoding import force_text
 
 from mayan.apps.documents.tests.base import GenericDocumentTestCase
+from mayan.apps.documents.storages import storage_document_files
 from mayan.apps.mimetype.api import get_mimetype
 
 from .mixins import StorageProcessorTestMixin
@@ -13,9 +14,9 @@ class StorageProcessManagementCommandTestCase(
     def _call_command(self, reverse=None):
         options = {
             'app_label': 'documents',
-            'defined_storage_name': 'documents__documentversion',
+            'defined_storage_name': storage_document_files.name,
             'log_file': force_text(self.path_test_file),
-            'model_name': 'DocumentVersion',
+            'model_name': 'DocumentFile',
             'reverse': reverse
         }
         management.call_command(command_name='storage_process', **options)
@@ -41,15 +42,15 @@ class StorageProcessManagementCommandTestCase(
     def test_storage_processor_command_forwards(self):
         self._upload_and_call()
 
-        with open(file=self.test_document.latest_version.file.path, mode='rb') as file_object:
+        with open(file=self.test_document.latest_file.file.path, mode='rb') as file_object:
             self.assertEqual(
                 get_mimetype(file_object=file_object),
                 ('application/zip', 'binary')
             )
 
         self.assertEqual(
-            self.test_document.latest_version.checksum,
-            self.test_document.latest_version.checksum_update(save=False)
+            self.test_document.latest_file.checksum,
+            self.test_document.latest_file.checksum_update(save=False)
         )
 
     def test_processor_forwards_and_reverse(self):
@@ -62,13 +63,13 @@ class StorageProcessManagementCommandTestCase(
             'location': self.document_storage_kwargs['location']
         }
 
-        with open(file=self.test_document.latest_version.file.path, mode='rb') as file_object:
+        with open(file=self.test_document.latest_file.file.path, mode='rb') as file_object:
             self.assertNotEqual(
                 get_mimetype(file_object=file_object),
                 ('application/zip', 'binary')
             )
 
         self.assertEqual(
-            self.test_document.latest_version.checksum,
-            self.test_document.latest_version.checksum_update(save=False)
+            self.test_document.latest_file.checksum,
+            self.test_document.latest_file.checksum_update(save=False)
         )

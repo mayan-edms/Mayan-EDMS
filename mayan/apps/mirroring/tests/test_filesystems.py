@@ -110,7 +110,7 @@ class IndexFilesystemTestCase(
                     size=self.test_document.latest_file.size
                 )
             ).hexdigest(),
-            self.test_document.checksum
+            self.test_document.latest_file.checksum
         )
 
     def test_multiline_indexes(self):

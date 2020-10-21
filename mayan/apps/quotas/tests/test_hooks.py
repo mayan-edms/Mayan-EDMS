@@ -24,7 +24,7 @@ class QuotaHooksTestCase(
     auto_upload_test_document = False
 
     def setUp(self):
-        super(QuotaHooksTestCase, self).setUp()
+        super().setUp()
         # Increase the initial usage count to 1 by uploading a document
         # as the test case user.
         self._upload_test_document(_user=self._test_case_user)
@@ -34,7 +34,7 @@ class QuotaHooksTestCase(
 
     def tearDown(self):
         QuotaBackend.connect_signals()
-        super(QuotaHooksTestCase, self).tearDown()
+        super().tearDown()
 
     def test_document_quantity_quota_and_source_upload_wizard_view_with_permission(self):
         self.test_quota_backend = DocumentCountQuota
@@ -112,10 +112,7 @@ class QuotaHooksTestCase(
         version_count = self.test_document.versions.count()
 
         with self.assertRaises(expected_exception=QuotaExceeded):
-            with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-                self._request_document_version_upload_view(
-                    source_file=file_object
-                )
+            self._request_document_file_upload_view()
 
         self.test_document.refresh_from_db()
         self.assertEqual(

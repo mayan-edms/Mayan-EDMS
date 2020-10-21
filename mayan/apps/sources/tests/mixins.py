@@ -29,7 +29,7 @@ class DocumentUploadIssueTestMixin:
 
     def _request_test_source_edit_view(self):
         return self.post(
-            viewname='documents:document_edit', kwargs={
+            viewname='documents:document_properties_edit', kwargs={
                 'document_id': self.test_document.pk
             },
             data={
