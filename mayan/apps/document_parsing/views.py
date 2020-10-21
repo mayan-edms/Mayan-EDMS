@@ -3,7 +3,9 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _, ungettext
 
-from mayan.apps.documents.forms import DocumentTypeFilteredSelectForm
+from mayan.apps.documents.forms.document_type_forms import (
+    DocumentTypeFilteredSelectForm
+)
 from mayan.apps.documents.models.document_file_models import DocumentFile
 from mayan.apps.documents.models.document_file_page_models import DocumentFilePage
 from mayan.apps.documents.models.document_type_models import DocumentType

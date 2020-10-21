@@ -5,7 +5,7 @@ from django.utils.encoding import force_text
 from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.documents.forms import DocumentForm
+from mayan.apps.documents.forms.document_forms import DocumentForm
 from mayan.apps.documents.literals import DOCUMENT_FILE_ACTION_PAGE_CHOICES
 
 from .models import (

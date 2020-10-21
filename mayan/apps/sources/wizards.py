@@ -9,7 +9,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from formtools.wizard.views import SessionWizardView
 
-from mayan.apps.documents.forms import DocumentTypeFilteredSelectForm
+from mayan.apps.documents.forms.document_type_forms import DocumentTypeFilteredSelectForm
 from mayan.apps.documents.permissions import permission_document_create
 
 from .icons import icon_wizard_submit
