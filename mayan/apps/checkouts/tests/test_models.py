@@ -9,7 +9,7 @@ from ..exceptions import (
     DocumentAlreadyCheckedOut, DocumentNotCheckedOut,
     NewDocumentFileNotAllowed
 )
-from ..models import DocumentCheckout, NewFileBlock
+from ..models import DocumentCheckout
 
 from .mixins import DocumentCheckoutTestMixin
 
@@ -69,47 +69,14 @@ class DocumentCheckoutTestCase(
 
         self.assertTrue(self.test_check_out.get_absolute_url())
 
-
-class NewFileBlockTestCase(
-    DocumentCheckoutTestMixin, DocumentTestMixin, BaseTestCase
-):
-    def test_blocking(self):
-        NewFileBlock.objects.block(document=self.test_document)
-
-        self.assertEqual(NewFileBlock.objects.count(), 1)
-        self.assertEqual(
-            NewFileBlock.objects.first().document, self.test_document
-        )
-
     def test_blocking_new_files(self):
         # Silence unrelated logging
         self._silence_logger(name='mayan.apps.documents.models')
-
-        NewFileBlock.objects.block(document=self.test_document)
+        self._check_out_test_document()
 
         with self.assertRaises(expected_exception=NewDocumentFileNotAllowed):
             with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
                 self.test_document.new_file(file_object=file_object)
-
-    def test_unblocking(self):
-        NewFileBlock.objects.create(document=self.test_document)
-
-        NewFileBlock.objects.unblock(document=self.test_document)
-
-        self.assertEqual(NewFileBlock.objects.count(), 0)
-
-    def test_is_blocked(self):
-        NewFileBlock.objects.create(document=self.test_document)
-
-        self.assertTrue(
-            NewFileBlock.objects.is_blocked(document=self.test_document)
-        )
-
-        NewFileBlock.objects.all().delete()
-
-        self.assertFalse(
-            NewFileBlock.objects.is_blocked(document=self.test_document)
-        )
 
     def test_file_creation_blocking(self):
         # Silence unrelated logging

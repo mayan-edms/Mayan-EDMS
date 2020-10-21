@@ -1,15 +1,22 @@
 from django.apps import apps
 
-from .exceptions import NewDocumentFileNotAllowed
+from .exceptions import DocumentNotCheckedOut, NewDocumentFileNotAllowed
 
 
 def handler_check_new_file_creation(sender, instance, **kwargs):
     """
     Make sure that new file creation is allowed for this document
     """
-    NewFileBlock = apps.get_model(
-        app_label='checkouts', model_name='NewFileBlock'
+    DocumentCheckout = apps.get_model(
+        app_label='checkouts', model_name='DocumentCheckout'
     )
-    if NewFileBlock.objects.is_blocked(document=instance.document) and not instance.pk:
-        # Block only new files (no pk), not existing file being updated.
-        raise NewDocumentFileNotAllowed
+
+    try:
+        checkout_information = DocumentCheckout.objects.get_check_out_info(
+            document=instance.document
+        )
+    except DocumentNotCheckedOut:
+        """No nothing"""
+    else:
+        if checkout_information.block_new_file:
+            raise NewDocumentFileNotAllowed

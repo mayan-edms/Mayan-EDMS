@@ -66,14 +66,6 @@ class DocumentCheckoutBusinessLogicManager(models.Manager):
 
 
 class DocumentCheckoutManager(models.Manager):
-    def are_document_new_files_allowed(self, document, user=None):
-        try:
-            check_out_info = self.document_check_out_info(document=document)
-        except DocumentNotCheckedOut:
-            return True
-        else:
-            return not check_out_info.block_new_file
-
     def check_in_expired_check_outs(self):
         for document in self.expired_check_outs():
             document.check_in()
@@ -128,29 +120,3 @@ class DocumentCheckoutManager(models.Manager):
 
     def is_checked_out(self, document):
         return self.filter(document=document).exists()
-
-
-class NewFileBlockManager(models.Manager):
-    def block(self, document):
-        self.get_or_create(document=document)
-
-    def get_by_natural_key(self, document_natural_key):
-        Document = apps.get_model(
-            app_label='documents', model_name='Document'
-        )
-        try:
-            document = Document.objects.get_by_natural_key(document_natural_key)
-        except Document.DoesNotExist:
-            raise self.model.DoesNotExist
-
-        return self.get(document__pk=document.pk)
-
-    def is_blocked(self, document):
-        return self.filter(document=document).exists()
-
-    def new_files_allowed(self, document):
-        if self.filter(document=document).exists():
-            raise NewDocumentFileNotAllowed
-
-    def unblock(self, document):
-        self.filter(document=document).delete()

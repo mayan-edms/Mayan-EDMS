@@ -13,8 +13,7 @@ from mayan.apps.documents.models import Document
 from .events import event_document_check_out
 from .exceptions import DocumentAlreadyCheckedOut
 from .managers import (
-    DocumentCheckoutBusinessLogicManager, DocumentCheckoutManager,
-    NewFileBlockManager
+    DocumentCheckoutBusinessLogicManager, DocumentCheckoutManager
 )
 
 logger = logging.getLogger(name=__name__)
@@ -65,11 +64,6 @@ class DocumentCheckout(models.Model):
                 _('Check out expiration date and time must be in the future.')
             )
 
-    def delete(self, *args, **kwargs):
-        with transaction.atomic():
-            NewFileBlock.objects.unblock(document=self.document)
-            super(DocumentCheckout, self).delete(*args, **kwargs)
-
     def get_absolute_url(self):
         return reverse(
             viewname='checkouts:check_out_info', kwargs={
@@ -87,13 +81,11 @@ class DocumentCheckout(models.Model):
             raise DocumentAlreadyCheckedOut
 
         with transaction.atomic():
-            result = super(DocumentCheckout, self).save(*args, **kwargs)
+            result = super().save(*args, **kwargs)
             if is_new:
                 event_document_check_out.commit(
                     actor=self.user, target=self.document
                 )
-                if self.block_new_file:
-                    NewFileBlock.objects.block(self.document)
 
                 logger.info(
                     'Document "%s" checked out by user "%s"',
@@ -101,25 +93,6 @@ class DocumentCheckout(models.Model):
                 )
 
             return result
-
-
-class NewFileBlock(models.Model):
-    """
-    Model to keep track of which documents have new file upload restricted.
-    """
-    document = models.ForeignKey(
-        on_delete=models.CASCADE, to=Document, verbose_name=_('Document')
-    )
-
-    objects = NewFileBlockManager()
-
-    class Meta:
-        verbose_name = _('New file block')
-        verbose_name_plural = _('New file blocks')
-
-    def natural_key(self):
-        return self.document.natural_key()
-    natural_key.dependencies = ['documents.Document']
 
 
 class CheckedOutDocument(Document):

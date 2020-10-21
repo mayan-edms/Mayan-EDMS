@@ -31,4 +31,4 @@ class DashboardWidgetTotalCheckouts(DashboardWidgetNumeric):
             user=request.user
         )
         self.count = queryset.count()
-        return super(DashboardWidgetTotalCheckouts, self).render(request)
+        return super().render(request)

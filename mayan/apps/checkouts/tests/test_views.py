@@ -396,11 +396,6 @@ class DocumentCheckoutViewTestCase(
             text=force_text(DocumentAlreadyCheckedOut())
         )
 
-
-class NewFileBlockViewTestCase(
-    DocumentCheckoutTestMixin, DocumentCheckoutViewTestMixin,
-    GenericDocumentViewTestCase
-):
     def test_document_check_out_block_new_file(self):
         self._check_out_test_document()
         file_count = DocumentFile.objects.count()
@@ -408,10 +403,6 @@ class NewFileBlockViewTestCase(
         self.grant_access(
             obj=self.test_document,
             permission=permission_document_file_new
-        )
-        self.grant_access(
-            obj=self.test_document,
-            permission=permission_document_file_view
         )
 
         response = self.post(

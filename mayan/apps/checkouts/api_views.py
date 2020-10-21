@@ -21,7 +21,7 @@ class APICheckedoutDocumentListView(generics.ListCreateAPIView):
         if not self.request:
             return None
 
-        return super(APICheckedoutDocumentListView, self).get_serializer(*args, **kwargs)
+        return super().get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'POST':
@@ -86,6 +86,4 @@ class APICheckedoutDocumentView(generics.RetrieveDestroyAPIView):
                 user=request.user
             )
 
-        return super(
-            APICheckedoutDocumentView, self
-        ).delete(request, *args, **kwargs)
+        return super().delete(request, *args, **kwargs)
