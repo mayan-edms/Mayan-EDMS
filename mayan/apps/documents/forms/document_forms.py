@@ -115,11 +115,6 @@ class DocumentPropertiesForm(DetailForm):
             },
         ]
 
-        if document.latest_version:
-            extra_fields += (
-                {'label': _('Pages'), 'field': 'page_count'},
-            )
-
         kwargs['extra_fields'] = extra_fields
         super().__init__(*args, **kwargs)
 
