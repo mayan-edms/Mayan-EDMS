@@ -12,7 +12,7 @@ from .mixins import SearchAPIViewTestMixin
 class SearchModelAPIViewTestCase(BaseAPITestCase):
     def test_search_models_view(self):
         response = self.get(
-            viewname='rest_api:searchmodel-list'
+            viewname='rest_api:searchmodel-list', query={'page_size': 50}
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
