@@ -317,7 +317,7 @@ class DocumentFileSignatureListView(
                 ),
             ],
             'no_results_title': _(
-                'There are no signatures for this document.'
+                'There are no signatures for this document file.'
             ),
             'object': self.external_object,
             'title': _(

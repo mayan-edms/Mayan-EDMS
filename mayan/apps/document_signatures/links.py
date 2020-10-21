@@ -40,12 +40,6 @@ link_document_file_all_signature_verify = Link(
     text=_('Verify all documents'),
     view='signatures:all_document_file_signature_verify',
 )
-link_document_signature_list = Link(
-    args='resolved_object.latest_file.pk',
-    icon_class=icon_document_signature_list,
-    permissions=(permission_document_file_signature_view,),
-    text=_('Signatures'), view='signatures:document_file_signature_list',
-)
 link_document_file_signature_delete = Link(
     args='resolved_object.pk', condition=is_detached_signature,
     icon_class=icon_document_file_signature_delete,

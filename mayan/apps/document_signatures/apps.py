@@ -7,7 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import (
-    menu_facet, menu_object, menu_secondary, menu_tools
+    menu_facet, menu_list_facet, menu_object, menu_secondary, menu_tools
 )
 from mayan.apps.navigation.classes import SourceColumn
 
@@ -19,7 +19,6 @@ from .hooks import (
 )
 from .links import (
     link_document_file_all_signature_verify,
-    link_document_signature_list,
     link_document_file_signature_delete,
     link_document_file_signature_detached_create,
     link_document_file_signature_embedded_create,
@@ -49,7 +48,7 @@ class DocumentSignaturesApp(MayanAppConfig):
     verbose_name = _('Document signatures')
 
     def ready(self):
-        super(DocumentSignaturesApp, self).ready()
+        super().ready()
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'
@@ -109,15 +108,10 @@ class DocumentSignaturesApp(MayanAppConfig):
             ).get_signature_type_display()
         )
 
-        menu_facet.bind_links(
-            links=(link_document_signature_list,), sources=(Document,)
+        menu_list_facet.bind_links(
+            links=(link_document_file_signature_list,),
+            sources=(DocumentFile,)
         )
-        menu_facet.bind_links(
-            links=(
-                link_document_file_signature_list,
-            ), position=9, sources=(DocumentFile,)
-        )
-
         menu_object.bind_links(
             links=(
                 link_document_file_signature_detached_create,
