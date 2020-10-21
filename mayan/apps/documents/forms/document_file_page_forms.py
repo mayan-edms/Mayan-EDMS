@@ -3,7 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from ..fields import DocumentFilePageField
 
-__all__ = ('DocumentFilePageForm', 'DocumentFilePageNumberForm')
+__all__ = ('DocumentFilePageForm', 'PageNumberForm')
 
 
 class DocumentFilePageForm(forms.Form):
@@ -19,17 +19,3 @@ class DocumentFilePageForm(forms.Form):
             'zoom': zoom,
             'rotation': rotation,
         })
-
-
-class DocumentFilePageNumberForm(forms.Form):
-    page = forms.ModelChoiceField(
-        help_text=_(
-            'Page number from which all the transformations will be cloned. '
-            'Existing transformations will be lost.'
-        ), queryset=None
-    )
-
-    def __init__(self, *args, **kwargs):
-        self.document = kwargs.pop('document')
-        super().__init__(*args, **kwargs)
-        self.fields['page'].queryset = self.document.pages.all()

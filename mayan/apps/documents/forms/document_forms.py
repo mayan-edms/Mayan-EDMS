@@ -12,7 +12,7 @@ from ..settings import setting_language
 from ..utils import get_language, get_language_choices
 
 __all__ = (
-    'DocumentForm', 'DocumentPropertiesForm', 'DocumentPrintForm'
+    'DocumentForm', 'DocumentPropertiesForm', 'PrintForm'
 )
 logger = logging.getLogger(name=__name__)
 
@@ -121,11 +121,3 @@ class DocumentPropertiesForm(DetailForm):
     class Meta:
         fields = ('document_type', 'description')
         model = Document
-
-
-class DocumentPrintForm(forms.Form):
-    page_group = forms.ChoiceField(
-        choices=PAGE_RANGE_CHOICES, initial=PAGE_RANGE_ALL,
-        widget=forms.RadioSelect
-    )
-    page_range = forms.CharField(label=_('Page range'), required=False)

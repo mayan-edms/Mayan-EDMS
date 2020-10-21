@@ -23,7 +23,9 @@ from .views.document_file_views import (
     DocumentFileCachePartitionPurgeView, DocumentFileDeleteView,
     DocumentFileDownloadView, DocumentFileListView,
     DocumentFilePrintFormView, DocumentFilePrintView,
-    DocumentFilePropertiesView, DocumentFilePreviewView
+    DocumentFilePropertiesView, DocumentFilePreviewView,
+    DocumentFileTransformationsClearView,
+    DocumentFileTransformationsCloneView
 )
 from .views.document_file_page_views import (
     DocumentFilePageCountUpdateView, DocumentFilePageListView,
@@ -56,15 +58,14 @@ from .views.document_version_views import (
     DocumentVersionCreateView, DocumentVersionDeleteView,
     DocumentVersionEditView, DocumentVersionExportView,
     DocumentVersionListView, DocumentVersionPreviewView,
-    DocumentVersionPrintFormView, DocumentVersionPrintView
+    DocumentVersionPrintFormView, DocumentVersionPrintView,
+    DocumentVersionTransformationsClearView,
+    DocumentVersionTransformationsCloneView
 )
 from .views.document_views import (
     DocumentTypeChangeView, DocumentListView, DocumentPreviewView,
-    #DocumentPrintFormView, DocumentPrintView,
-    DocumentPropertiesEditView,
-    DocumentPropertiesView, DocumentTransformationsClearView,
-    DocumentTransformationsCloneView, RecentAccessDocumentListView,
-    RecentAddedDocumentListView
+    DocumentPropertiesEditView, DocumentPropertiesView,
+    RecentAccessDocumentListView, RecentAddedDocumentListView
 )
 from .views.duplicated_document_views import (
     DocumentDuplicatesListView, DuplicatedDocumentListView,
@@ -130,6 +131,21 @@ urlpatterns_document_files = [
         regex=r'^documents/files/(?P<document_file_id>\d+)/properties/$',
         name='document_file_properties',
         view=DocumentFilePropertiesView.as_view()
+    ),
+    url(
+        regex=r'^documents/files/(?P<document_file_id>\d+)/transformations/clear/$',
+        name='document_file_transformations_clear',
+        view=DocumentFileTransformationsClearView.as_view()
+    ),
+    url(
+        regex=r'^documents/files/multiple/transformations/clear/$',
+        name='document_file_multiple_transformations_clear',
+        view=DocumentFileTransformationsClearView.as_view()
+    ),
+    url(
+        regex=r'^documents/files/(?P<document_file_id>\d+)/transformations/clone/$',
+        name='document_file_transformations_clone',
+        view=DocumentFileTransformationsCloneView.as_view()
     ),
 ]
 
@@ -301,6 +317,21 @@ urlpatterns_document_version = [
         name='document_version_print_view',
         view=DocumentVersionPrintView.as_view()
     ),
+    url(
+        regex=r'^documents/versions/(?P<document_version_id>\d+)/transformations/clear/$',
+        name='document_version_transformations_clear',
+        view=DocumentVersionTransformationsClearView.as_view()
+    ),
+    url(
+        regex=r'^documents/versions/multiple/transformations/clear/$',
+        name='document_version_multiple_transformations_clear',
+        view=DocumentVersionTransformationsClearView.as_view()
+    ),
+    url(
+        regex=r'^documents/versions/(?P<document_version_id>\d+)/transformations/clone/$',
+        name='document_version_transformations_clone',
+        view=DocumentVersionTransformationsCloneView.as_view()
+    ),
 ]
 
 urlpatterns_document_version_pages = [
@@ -393,14 +424,6 @@ urlpatterns_documents = [
         regex=r'^documents/(?P<document_id>\d+)/preview/$',
         name='document_preview', view=DocumentPreviewView.as_view()
     ),
-    #url(
-    #    regex=r'^documents/(?P<document_id>\d+)/print/$',
-    #    name='document_print_view', view=DocumentPrintView.as_view()
-    #),
-    #url(
-    #    regex=r'^documents/(?P<document_id>\d+)/print/form/$',
-    #    name='document_print_form', view=DocumentPrintFormView.as_view()
-    #),
     url(
         regex=r'^documents/(?P<document_id>\d+)/properties/$',
         name='document_properties', view=DocumentPropertiesView.as_view()
@@ -419,21 +442,6 @@ urlpatterns_documents = [
         regex=r'^documents/multiple/type/$',
         name='document_multiple_type_change',
         view=DocumentTypeChangeView.as_view()
-    ),
-    url(
-        regex=r'^documents/(?P<document_id>\d+)/transformations/clear/$',
-        name='document_clear_transformations',
-        view=DocumentTransformationsClearView.as_view()
-    ),
-    url(
-        regex=r'^documents/multiple/clear_transformations/$',
-        name='document_multiple_clear_transformations',
-        view=DocumentTransformationsClearView.as_view()
-    ),
-    url(
-        regex=r'^documents/(?P<document_id>\d+)/transformations/clone/$',
-        name='document_clone_transformations',
-        view=DocumentTransformationsCloneView.as_view()
     ),
 ]
 

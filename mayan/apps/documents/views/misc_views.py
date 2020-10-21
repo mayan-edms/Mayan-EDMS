@@ -4,16 +4,16 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.views.generics import FormView, SimpleView
 from mayan.apps.views.mixins import ExternalObjectMixin
 
-from ..forms import DocumentPrintForm
+from ..forms.misc_forms import PrintForm
 from ..literals import PAGE_RANGE_RANGE
 from ..settings import setting_print_width, setting_print_height
 
 
-class DocumentPrintFormView(ExternalObjectMixin, FormView):
+class PrintFormView(ExternalObjectMixin, FormView):
     external_object_class = None
     external_object_permission = None
     external_object_pk_url_kwarg = None
-    form_class = DocumentPrintForm
+    form_class = PrintForm
     print_view_name = None
     print_view_kwarg = None
 

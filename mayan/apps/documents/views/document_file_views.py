@@ -1,17 +1,24 @@
 import logging
 
+from django.conf import settings
 from django.contrib import messages
+from django.db import transaction
 from django.template import RequestContext
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _, ungettext
 
+from mayan.apps.converter.layers import layer_saved_transformations
+from mayan.apps.converter.permissions import (
+    permission_transformation_delete, permission_transformation_edit
+)
 from mayan.apps.file_caching.tasks import task_cache_partition_purge
 from mayan.apps.sources.links import link_document_file_upload
 from mayan.apps.storage.compressed_files import ZipArchive
 from mayan.apps.views.generics import (
-    ConfirmView, MultipleObjectDownloadView, MultipleObjectConfirmActionView,
-    MultipleObjectFormActionView, SingleObjectDeleteView,
-    SingleObjectDetailView, SingleObjectDownloadView, SingleObjectListView
+    ConfirmView, FormView, MultipleObjectDownloadView,
+    MultipleObjectConfirmActionView, MultipleObjectFormActionView,
+    SingleObjectDeleteView, SingleObjectDetailView, SingleObjectDownloadView,
+    SingleObjectListView
 )
 from mayan.apps.views.mixins import ExternalObjectMixin
 
@@ -20,6 +27,7 @@ from ..forms.document_file_forms import (
     DocumentFileDownloadForm, DocumentFilePreviewForm,
     DocumentFilePropertiesForm
 )
+from ..forms.misc_forms import PageNumberForm
 from ..icons import icon_document_file_download, icon_document_file_list
 from ..literals import DEFAULT_DOCUMENT_FILE_ZIP_FILENAME
 from ..models.document_models import Document
@@ -30,7 +38,7 @@ from ..permissions import (
     permission_document_file_view
 )
 
-from .misc_views import DocumentPrintFormView, DocumentPrintView
+from .misc_views import PrintFormView, DocumentPrintView
 
 __all__ = (
     'DocumentFileDeleteView', 'DocumentFileDownloadFormView',
@@ -292,7 +300,7 @@ class DocumentFilePreviewView(SingleObjectDetailView):
         }
 
 
-class DocumentFilePrintFormView(DocumentPrintFormView):
+class DocumentFilePrintFormView(PrintFormView):
     external_object_class = DocumentFile
     external_object_permission = permission_document_file_print
     external_object_pk_url_kwarg = 'document_file_id'
@@ -335,3 +343,113 @@ class DocumentFilePropertiesView(SingleObjectDetailView):
             'object': self.object,
             'title': _('Properties of document file: %s') % self.object,
         }
+
+
+class DocumentFileTransformationsClearView(MultipleObjectConfirmActionView):
+    model = DocumentFile
+    object_permission = permission_transformation_delete
+    pk_url_kwarg = 'document_file_id'
+    success_message = _(
+        'Transformation clear request processed for %(count)d document file.'
+    )
+    success_message_plural = _(
+        'Transformation clear request processed for %(count)d document files.'
+    )
+
+    def get_extra_context(self):
+        result = {
+            'title': ungettext(
+                singular='Clear all the page transformations for the selected document file?',
+                plural='Clear all the page transformations for the selected document file?',
+                number=self.object_list.count()
+            )
+        }
+
+        if self.object_list.count() == 1:
+            result.update(
+                {
+                    'object': self.object_list.first(),
+                    'title': _(
+                        'Clear all the page transformations for the '
+                        'document file: %s?'
+                    ) % self.object_list.first()
+                }
+            )
+
+        return result
+
+    def object_action(self, form, instance):
+        try:
+            for page in instance.pages.all():
+                layer_saved_transformations.get_transformations_for(
+                    obj=page
+                ).delete()
+        except Exception as exception:
+            messages.error(
+                message=_(
+                    'Error deleting the page transformations for '
+                    'document_file: %(document_file)s; %(error)s.'
+                ) % {
+                    'document_file': instance, 'error': exception
+                }, request=self.request
+            )
+
+
+class DocumentFileTransformationsCloneView(ExternalObjectMixin, FormView):
+    external_object_class = DocumentFile
+    external_object_permission = permission_transformation_edit
+    external_object_pk_url_kwarg = 'document_file_id'
+    form_class = PageNumberForm
+
+    def dispatch(self, request, *args, **kwargs):
+        results = super().dispatch(request=request, *args, **kwargs)
+        self.external_object.document.add_as_recent_document_for_user(
+            user=request.user
+        )
+
+        return results
+
+    def form_valid(self, form):
+        try:
+            layer_saved_transformations.copy_transformations(
+                delete_existing=True, source=form.cleaned_data['page'],
+                targets=form.cleaned_data['page'].siblings.exclude(
+                    pk=form.cleaned_data['page'].pk
+                )
+            )
+        except Exception as exception:
+            if settings.DEBUG:
+                raise
+            else:
+                messages.error(
+                    message=_(
+                        'Error cloning the page transformations for '
+                        'document file: %(document_file)s; %(error)s.'
+                    ) % {
+                        'document_file': self.external_object,
+                        'error': exception
+                    }, request=self.request
+                )
+        else:
+            messages.success(
+                message=_('Transformations cloned successfully.'),
+                request=self.request
+            )
+
+        return super().form_valid(form=form)
+
+    def get_form_extra_kwargs(self):
+        return {
+            'instance': self.external_object
+        }
+
+    def get_extra_context(self):
+        context = {
+            'object': self.external_object,
+            'submit_label': _('Submit'),
+            'title': _(
+                'Clone page transformations of document file: %s'
+            ) % self.external_object,
+        }
+
+        return context

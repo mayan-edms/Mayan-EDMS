@@ -324,7 +324,7 @@ class Layer:
             name=transformation_class.name, arguments=arguments
         )
 
-    def copy_transformations(self, source, targets):
+    def copy_transformations(self, source, targets, delete_existing=False):
         """
         Copy transformation from source to all targets
         """
@@ -340,6 +340,9 @@ class Layer:
                 object_layer, created = self.stored_layer.object_layers.get_or_create(
                     content_type=content_type, object_id=target.pk
                 )
+                if delete_existing:
+                    object_layer.transformations.all().delete()
+
                 for transformation in transformations:
                     object_layer.transformations.create(
                         order=transformation.order,

@@ -1,10 +1,13 @@
 import time
 
+from mayan.apps.converter.layers import layer_saved_transformations
+
 from ...literals import PAGE_RANGE_ALL
 
 from ..literals import (
-    TEST_DOCUMENT_PATH, TEST_DOCUMENT_FILE_COMMENT_EDITED,
-    TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_FILE_COMMENT
+    TEST_DOCUMENT_FILE_COMMENT, TEST_DOCUMENT_FILE_COMMENT_EDITED,
+    TEST_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_PATH,
+    TEST_TRANSFORMATION_ARGUMENT, TEST_TRANSFORMATION_CLASS
 )
 
 
@@ -168,5 +171,36 @@ class DocumentFilePageViewTestMixin:
         return self.post(
             viewname='documents:document_file_page_zoom_out', kwargs={
                 'document_file_page_id': self.test_document_file_page.pk
+            }
+        )
+
+
+class DocumentFileTransformationTestMixin:
+    def _create_document_file_transformation(self):
+        layer_saved_transformations.add_transformation_to(
+            obj=self.test_document_file.pages.first(),
+            transformation_class=TEST_TRANSFORMATION_CLASS,
+            arguments=TEST_TRANSFORMATION_ARGUMENT
+        )
+
+
+class DocumentFileTransformationViewTestMixin:
+    def _request_test_document_file_transformations_clear_view(self):
+        return self.post(
+            viewname='documents:document_file_transformations_clear',
+            kwargs={'document_file_id': self.test_document_file.pk}
+        )
+
+    def _request_test_document_file_multiple_transformations_clear_view(self):
+        return self.post(
+            viewname='documents:document_file_multiple_transformations_clear',
+            data={'id_list': self.test_document_file.pk}
+        )
+
+    def _request_test_document_file_transformations_clone_view(self):
+        return self.post(
+            viewname='documents:document_file_transformations_clone',
+            kwargs={'document_file_id': self.test_document_file.pk}, data={
+                'page': self.test_document_file.pages.first().pk
             }
         )

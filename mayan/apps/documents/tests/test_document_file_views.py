@@ -1,8 +1,11 @@
 from django.utils.encoding import force_text
 
 from mayan.apps.converter.layers import layer_saved_transformations
-from mayan.apps.converter.permissions import permission_transformation_delete
+from mayan.apps.converter.permissions import (
+    permission_transformation_delete, permission_transformation_edit
+)
 from mayan.apps.converter.tests.mixins import LayerTestMixin
+from mayan.apps.documents.tests.literals import TEST_MULTI_PAGE_TIFF
 
 from ..permissions import (
     permission_document_file_download, permission_document_file_delete,
@@ -13,7 +16,8 @@ from ..permissions import (
 from .base import GenericDocumentViewTestCase
 from .literals import TEST_SMALL_DOCUMENT_FILENAME, TEST_VERSION_COMMENT
 from .mixins.document_file_mixins import (
-    DocumentFileTestMixin, DocumentFileViewTestMixin
+    DocumentFileTestMixin, DocumentFileTransformationTestMixin,
+    DocumentFileTransformationViewTestMixin, DocumentFileViewTestMixin
 )
 
 
@@ -92,7 +96,8 @@ class DocumentFileViewTestCase(
 
 
 class DocumentFileDownloadViewTestCase(
-    DocumentFileTestMixin, DocumentFileViewTestMixin,
+    #DocumentFileTestMixin,
+    DocumentFileViewTestMixin,
     GenericDocumentViewTestCase
 ):
     def test_document_file_download_view_no_permission(self):
@@ -225,33 +230,29 @@ class DocumentFileDownloadViewTestCase(
             )
 
 
-
 class DocumentFileTransformationViewTestCase(
-    LayerTestMixin, DocumentFileTestMixin, DocumentFileViewTestMixin,
-    GenericDocumentViewTestCase
+    LayerTestMixin, DocumentFileTransformationTestMixin,
+    DocumentFileTransformationViewTestMixin, GenericDocumentViewTestCase
 ):
-    def test_document_file_clear_transformations_view_no_permission(self):
+    test_document_filename = TEST_MULTI_PAGE_TIFF
+
+    def test_document_file_transformations_clear_view_no_permission(self):
         self._create_document_file_transformation()
 
         transformation_count = layer_saved_transformations.get_transformations_for(
             obj=self.test_document_file.pages.first()
         ).count()
 
-        self.grant_access(
-            obj=self.test_document_file, permission=permission_document_file_view
-        )
-
-        response = self._request_test_document_file_clear_transformations_view()
+        response = self._request_test_document_file_transformations_clear_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
-            transformation_count,
             layer_saved_transformations.get_transformations_for(
                 obj=self.test_document_file.pages.first()
-            ).count()
+            ).count(), transformation_count
         )
 
-    def test_document_file_clear_transformations_view_with_access(self):
+    def test_document_file_transformations_clear_view_with_access(self):
         self._create_document_file_transformation()
 
         transformation_count = layer_saved_transformations.get_transformations_for(
@@ -262,44 +263,33 @@ class DocumentFileTransformationViewTestCase(
             obj=self.test_document_file,
             permission=permission_transformation_delete
         )
-        self.grant_access(
-            obj=self.test_document_file,
-            permission=permission_document_file_view
-        )
 
-        response = self._request_test_document_file_clear_transformations_view()
+        response = self._request_test_document_file_transformations_clear_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
-            transformation_count - 1,
             layer_saved_transformations.get_transformations_for(
                 obj=self.test_document_file.pages.first()
-            ).count()
+            ).count(), transformation_count - 1
         )
 
-    def test_document_file_multiple_clear_transformations_view_no_permission(self):
+    def test_document_file_multiple_transformations_clear_view_no_permission(self):
         self._create_document_file_transformation()
 
         transformation_count = layer_saved_transformations.get_transformations_for(
             obj=self.test_document_file.pages.first()
         ).count()
 
-        self.grant_access(
-            obj=self.test_document_file,
-            permission=permission_document_file_view
-        )
-
-        response = self._request_test_document_file_multiple_clear_transformations_view()
+        response = self._request_test_document_file_multiple_transformations_clear_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
-            transformation_count,
             layer_saved_transformations.get_transformations_for(
                 obj=self.test_document_file.pages.first()
-            ).count()
+            ).count(), transformation_count
         )
 
-    def test_document_file_multiple_clear_transformations_view_with_access(self):
+    def test_document_file_multiple_transformations_clear_view_with_access(self):
         self._create_document_file_transformation()
 
         transformation_count = layer_saved_transformations.get_transformations_for(
@@ -313,12 +303,64 @@ class DocumentFileTransformationViewTestCase(
             obj=self.test_document_file, permission=permission_transformation_delete
         )
 
-        response = self._request_test_document_file_multiple_clear_transformations_view()
+        response = self._request_test_document_file_multiple_transformations_clear_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
-            transformation_count - 1,
             layer_saved_transformations.get_transformations_for(
                 obj=self.test_document_file.pages.first()
-            ).count()
+            ).count(), transformation_count - 1,
+        )
+
+    def test_document_file_transformations_clone_view_no_permission(self):
+        self._create_document_file_transformation()
+
+        page_first_transformation_count = layer_saved_transformations.get_transformations_for(
+            obj=self.test_document_file.pages.first()
+        ).count()
+        page_last_transformation_count = layer_saved_transformations.get_transformations_for(
+            obj=self.test_document_file.pages.last()
+        ).count()
+
+        response = self._request_test_document_file_transformations_clone_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertEqual(
+            layer_saved_transformations.get_transformations_for(
+                obj=self.test_document_file.pages.first()
+            ).count(), page_first_transformation_count
+        )
+        self.assertEqual(
+            layer_saved_transformations.get_transformations_for(
+                obj=self.test_document_file.pages.last()
+            ).count(), page_last_transformation_count
+        )
+
+    def test_document_file_transformations_clone_view_with_access(self):
+        self._create_document_file_transformation()
+
+        page_first_transformation_count = layer_saved_transformations.get_transformations_for(
+            obj=self.test_document_file.pages.first()
+        ).count()
+        page_last_transformation_count = layer_saved_transformations.get_transformations_for(
+            obj=self.test_document_file.pages.last()
+        ).count()
+
+        self.grant_access(
+            obj=self.test_document_file,
+            permission=permission_transformation_edit
+        )
+
+        response = self._request_test_document_file_transformations_clone_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(
+            layer_saved_transformations.get_transformations_for(
+                obj=self.test_document_file.pages.first()
+            ).count(), page_first_transformation_count
+        )
+        self.assertEqual(
+            layer_saved_transformations.get_transformations_for(
+                obj=self.test_document_file.pages.last()
+            ).count(), page_last_transformation_count + 1
         )

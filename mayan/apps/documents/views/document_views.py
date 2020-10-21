@@ -9,20 +9,14 @@ from django.utils.translation import ugettext_lazy as _, ungettext
 
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.common.classes import ModelQueryFields
-from mayan.apps.converter.layers import layer_saved_transformations
-from mayan.apps.converter.permissions import (
-    permission_transformation_delete, permission_transformation_edit
-)
 from mayan.apps.views.generics import (
     FormView, MultipleObjectConfirmActionView, MultipleObjectFormActionView,
     SingleObjectDetailView, SingleObjectEditView, SingleObjectListView
 )
 
 from ..events import event_document_viewed
-from ..forms import (
-    DocumentForm, DocumentFilePageNumberForm, DocumentPropertiesForm,
-    DocumentTypeFilteredSelectForm
-)
+from ..forms.document_forms import DocumentForm, DocumentPropertiesForm
+from ..forms.document_type_forms import DocumentTypeFilteredSelectForm
 from ..icons import (
     icon_document_list, icon_document_list_recent_access,
     icon_recent_added_document_list
@@ -39,8 +33,8 @@ from .document_version_views import DocumentVersionPreviewView
 __all__ = (
     'DocumentListView', 'DocumentTypeChangeView', 'DocumentPropertiesEditView',
     'DocumentPreviewView', 'DocumentTransformationsClearView',
-    'DocumentTransformationsCloneView', 'DocumentPrint',
-    'RecentAccessDocumentListView', 'RecentAddedDocumentListView'
+    'DocumentTransformationsCloneView', 'RecentAccessDocumentListView',
+    'RecentAddedDocumentListView'
 )
 logger = logging.getLogger(name=__name__)
 
@@ -212,127 +206,6 @@ class DocumentPropertiesView(SingleObjectDetailView):
             'object': self.object,
             'title': _('Properties of document: %s') % self.object,
         }
-
-
-class DocumentTransformationsClearView(MultipleObjectConfirmActionView):
-    model = Document
-    object_permission = permission_transformation_delete
-    pk_url_kwarg = 'document_id'
-    success_message = _(
-        'Transformation clear request processed for %(count)d document'
-    )
-    success_message_plural = _(
-        'Transformation clear request processed for %(count)d documents'
-    )
-
-    def get_extra_context(self):
-        queryset = self.object_list
-
-        result = {
-            'title': ungettext(
-                singular='Clear all the page transformations for the selected document?',
-                plural='Clear all the page transformations for the selected document?',
-                number=queryset.count()
-            )
-        }
-
-        if queryset.count() == 1:
-            result.update(
-                {
-                    'object': queryset.first(),
-                    'title': _(
-                        'Clear all the page transformations for the '
-                        'document: %s?'
-                    ) % queryset.first()
-                }
-            )
-
-        return result
-
-    def object_action(self, form, instance):
-        try:
-            for page in instance.pages.all():
-                layer_saved_transformations.get_transformations_for(obj=page).delete()
-        except Exception as exception:
-            messages.error(
-                message=_(
-                    'Error deleting the page transformations for '
-                    'document: %(document)s; %(error)s.'
-                ) % {
-                    'document': instance, 'error': exception
-                }, request=self.request
-            )
-
-
-class DocumentTransformationsCloneView(FormView):
-    form_class = DocumentFilePageNumberForm
-
-    def form_valid(self, form):
-        instance = self.get_object()
-
-        try:
-            target_pages = instance.pages.exclude(
-                pk=form.cleaned_data['page'].pk
-            )
-
-            with transaction.atomic():
-                for page in target_pages:
-                    layer_saved_transformations.get_transformations_for(obj=page).delete()
-
-                layer_saved_transformations.copy_transformations(
-                    source=form.cleaned_data['page'], targets=target_pages
-                )
-        except Exception as exception:
-            if settings.DEBUG:
-                raise
-            else:
-                messages.error(
-                    message=_(
-                        'Error cloning the page transformations for '
-                        'document: %(document)s; %(error)s.'
-                    ) % {
-                        'document': instance, 'error': exception
-                    }, request=self.request
-                )
-        else:
-            messages.success(
-                message=_('Transformations cloned successfully.'),
-                request=self.request
-            )
-
-        return super().form_valid(form=form)
-
-    def get_form_extra_kwargs(self):
-        return {
-            'document': self.get_object()
-        }
-
-    def get_extra_context(self):
-        instance = self.get_object()
-
-        context = {
-            'object': instance,
-            'submit_label': _('Submit'),
-            'title': _(
-                'Clone page transformations for document: %s'
-            ) % instance,
-        }
-
-        return context
-
-    def get_object(self):
-        instance = get_object_or_404(
-            klass=Document, pk=self.kwargs['document_id']
-        )
-
-        AccessControlList.objects.check_access(
-            obj=instance, permissions=(permission_transformation_edit,),
-            user=self.request.user
-        )
-
-        instance.add_as_recent_document_for_user(self.request.user)
-
-        return instance
 
 
 class RecentAccessDocumentListView(DocumentListView):

@@ -90,17 +90,3 @@ class DocumentVersionPageMappingFormSet(
                     )
                 else:
                     set_of_target_page_numbers.add(target_page_number)
-
-
-class DocumentVersionPageNumberForm(forms.Form):
-    page = forms.ModelChoiceField(
-        help_text=_(
-            'Page number from which all the transformations will be cloned. '
-            'Existing transformations will be lost.'
-        ), queryset=None
-    )
-
-    def __init__(self, *args, **kwargs):
-        self.document = kwargs.pop('document')
-        super().__init__(*args, **kwargs)
-        self.fields['page'].queryset = self.document.pages.all()

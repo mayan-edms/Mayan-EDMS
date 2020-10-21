@@ -78,15 +78,15 @@ class DocumentVersionTestMixin:
 
 
 class DocumentVersionTransformationViewTestMixin:
-    def _request_test_document_clear_transformations_view(self):
+    def _request_test_document_transformations_clear_view(self):
         return self.post(
-            viewname='documents:document_version_clear_transformations',
+            viewname='documents:document_version_transformations_clear',
             kwargs={'document_id': self.test_document_version.pk}
         )
 
-    def _request_test_document_multiple_clear_transformations(self):
+    def _request_test_document_multiple_transformations_clear(self):
         return self.post(
-            viewname='documents:document_version_multiple_clear_transformations',
+            viewname='documents:document_version_multiple_transformations_clear',
             data={'id_list': self.test_document_version.pk}
         )
 
@@ -156,5 +156,36 @@ class DocumentVersionPageResetViewTestMixin:
         return self.post(
             viewname='documents:document_version_page_list_reset', kwargs={
                 'document_version_id': self.test_document_version.pk
+            }
+        )
+
+
+class DocumentVersionTransformationTestMixin:
+    def _create_document_version_transformation(self):
+        layer_saved_transformations.add_transformation_to(
+            obj=self.test_document_version.pages.first(),
+            transformation_class=TEST_TRANSFORMATION_CLASS,
+            arguments=TEST_TRANSFORMATION_ARGUMENT
+        )
+
+
+class DocumentVersionTransformationViewTestMixin:
+    def _request_test_document_version_transformations_clear_view(self):
+        return self.post(
+            viewname='documents:document_version_transformations_clear',
+            kwargs={'document_version_id': self.test_document_version.pk}
+        )
+
+    def _request_test_document_version_multiple_transformations_clear_view(self):
+        return self.post(
+            viewname='documents:document_version_multiple_transformations_clear',
+            data={'id_list': self.test_document_version.pk}
+        )
+
+    def _request_test_document_version_transformations_clone_view(self):
+        return self.post(
+            viewname='documents:document_version_transformations_clone',
+            kwargs={'document_version_id': self.test_document_version.pk}, data={
+                'page': self.test_document_version.pages.first().pk
             }
         )

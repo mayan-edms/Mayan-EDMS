@@ -54,13 +54,10 @@ from .handlers import (
     handler_remove_empty_duplicates_lists, handler_scan_duplicates_for
 )
 from .links.document_links import (
-    link_document_clear_transformations, link_document_clone_transformations,
-    link_document_type_change,
-    link_document_properties_edit, link_document_list, link_document_list_recent_access,
-    link_document_list_recent_added,
-    link_document_multiple_clear_transformations,
-    link_document_multiple_type_change, link_document_preview,
-    link_document_properties
+    link_document_type_change, link_document_properties_edit,
+    link_document_list, link_document_list_recent_access,
+    link_document_list_recent_added, link_document_multiple_type_change,
+    link_document_preview, link_document_properties
 )
 from .links.document_file_links import (
     link_document_file_cache_purge, link_document_file_delete,
@@ -68,7 +65,9 @@ from .links.document_file_links import (
     link_document_file_download_quick, link_document_file_list,
     link_document_file_preview, link_document_file_print_form,
     link_document_file_properties, link_document_file_return_to_document,
-    link_document_file_return_list
+    link_document_file_return_list, link_document_file_transformations_clear,
+    link_document_file_multiple_transformations_clear,
+    link_document_file_transformations_clone
 )
 from .links.document_file_page_links import (
     link_document_file_multiple_page_count_update,
@@ -97,7 +96,11 @@ from .links.document_version_links import (
     link_document_version_export, link_document_version_list,
     link_document_version_multiple_delete, link_document_version_return_list,
     link_document_version_return_to_document, link_document_version_preview,
-    link_document_version_print_form
+    link_document_version_print_form,
+    link_document_version_transformations_clear,
+    link_document_version_multiple_transformations_clear,
+    link_document_version_transformations_clone
+
 )
 from .links.document_version_page_links import (
     link_document_version_page_delete, link_document_version_page_list,
@@ -350,10 +353,6 @@ class DocumentsApp(MayanAppConfig):
                 permission_trashed_document_restore, permission_document_tools,
                 permission_document_trash, permission_document_view,
                 permission_document_version_create, permission_events_view,
-                permission_transformation_create,
-                permission_transformation_delete,
-                permission_transformation_edit,
-                permission_transformation_view
             )
         )
         ModelPermission.register(
@@ -700,8 +699,7 @@ class DocumentsApp(MayanAppConfig):
             links=(
                 link_document_favorites_add, link_document_favorites_remove,
                 link_document_properties_edit, link_document_type_change,
-                link_document_trash, link_document_clear_transformations,
-                link_document_clone_transformations
+                link_document_trash
             ), sources=(Document,)
         )
 
@@ -709,7 +707,6 @@ class DocumentsApp(MayanAppConfig):
             links=(
                 link_document_multiple_favorites_add,
                 link_document_multiple_favorites_remove,
-                link_document_multiple_clear_transformations,
                 link_document_multiple_trash,
                 link_document_multiple_type_change
             ), sources=(Document,)
@@ -737,6 +734,7 @@ class DocumentsApp(MayanAppConfig):
             links=(
                 #link_document_file_multiple_download,
                 link_document_file_multiple_page_count_update,
+                link_document_file_multiple_transformations_clear,
             ), sources=(DocumentFile,)
         )
         menu_object.bind_links(
@@ -747,6 +745,8 @@ class DocumentsApp(MayanAppConfig):
                 link_document_file_download_quick,
                 link_document_file_page_count_update,
                 link_document_file_print_form,
+                link_document_file_transformations_clear,
+                link_document_file_transformations_clone
             ),
             sources=(DocumentFile,)
         )
@@ -845,6 +845,7 @@ class DocumentsApp(MayanAppConfig):
         menu_multi_item.bind_links(
             links=(
                 link_document_version_multiple_delete,
+                link_document_version_multiple_transformations_clear,
             ), sources=(DocumentVersion,)
         )
         menu_object.bind_links(
@@ -854,7 +855,9 @@ class DocumentsApp(MayanAppConfig):
                 link_document_version_export,
                 link_document_version_page_list_remap,
                 link_document_version_page_list_reset,
-                link_document_version_print_form
+                link_document_version_print_form,
+                link_document_version_transformations_clear,
+                link_document_version_transformations_clone
             ),
             sources=(DocumentVersion,)
         )

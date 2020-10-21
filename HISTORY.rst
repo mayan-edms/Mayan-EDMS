@@ -72,3 +72,5 @@
 - Remove icon_class_path support.
 - Add support for the CC and BCC field of mailers. Also added to the workflow
   emailing action.
+- Add document file transformations clear and clone views.
+- Add document version transformations clear and clone views.

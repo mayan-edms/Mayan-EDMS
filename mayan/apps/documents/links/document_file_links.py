@@ -1,5 +1,8 @@
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.converter.permissions import (
+    permission_transformation_delete, permission_transformation_edit
+)
 from mayan.apps.navigation.classes import Link
 
 from ..icons import (
@@ -7,7 +10,9 @@ from ..icons import (
     icon_document_file_download, icon_document_file_download_quick,
     icon_document_file_list, icon_document_file_print,
     icon_document_file_properties, icon_document_file_return_to_document,
-    icon_document_file_return_list, icon_document_file_preview
+    icon_document_file_return_list, icon_document_file_preview,
+    icon_document_file_transformations_clear,
+    icon_document_file_transformations_clone
 )
 from ..permissions import (
     permission_document_file_delete, permission_document_file_download,
@@ -76,4 +81,24 @@ link_document_file_preview = Link(
     icon_class=icon_document_file_preview,
     permissions=(permission_document_file_view,),
     text=_('Preview'), view='documents:document_file_preview'
+)
+link_document_file_transformations_clear = Link(
+    args='resolved_object.id',
+    icon_class=icon_document_file_transformations_clear,
+    permissions=(permission_transformation_delete,),
+    text=_('Clear transformations'),
+    view='documents:document_file_transformations_clear'
+)
+link_document_file_multiple_transformations_clear = Link(
+    icon_class=icon_document_file_transformations_clear,
+    permissions=(permission_transformation_delete,),
+    text=_('Clear transformations'),
+    view='documents:document_file_multiple_transformations_clear'
+)
+link_document_file_transformations_clone = Link(
+    args='resolved_object.id',
+    icon_class=icon_document_file_transformations_clone,
+    permissions=(permission_transformation_edit,),
+    text=_('Clone transformations'),
+    view='documents:document_file_transformations_clone'
 )

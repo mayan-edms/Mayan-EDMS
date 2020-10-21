@@ -37,16 +37,6 @@ icon_document_trash_send = Icon(
     driver_name='fontawesome', symbol='trash-alt'
 )
 
-icon_document_transformations_clear = Icon(
-    driver_name='fontawesome-dual',
-    primary_symbol=icon_transformations.kwargs['symbol'],
-    secondary_symbol='times'
-)
-icon_document_transformations_clone = Icon(
-    driver_name='fontawesome-dual',
-    primary_symbol=icon_transformations.kwargs['symbol'],
-    secondary_symbol='arrow-right'
-)
 
 icon_document_type_change = icon_document_type
 
@@ -108,6 +98,16 @@ icon_document_file_return_to_document = icon_document_return
 icon_document_file_return_list = Icon(
     driver_name='fontawesome-dual', primary_symbol='hdd',
     secondary_symbol='chevron-left'
+)
+icon_document_file_transformations_clear = Icon(
+    driver_name='fontawesome-dual',
+    primary_symbol=icon_transformations.kwargs['symbol'],
+    secondary_symbol='times'
+)
+icon_document_file_transformations_clone = Icon(
+    driver_name='fontawesome-dual',
+    primary_symbol=icon_transformations.kwargs['symbol'],
+    secondary_symbol='arrow-right'
 )
 
 # Document file pages
@@ -221,6 +221,16 @@ icon_document_version_preview = Icon(
 )
 icon_document_version_print = Icon(
     driver_name='fontawesome', symbol='print'
+)
+icon_document_version_transformations_clear = Icon(
+    driver_name='fontawesome-dual',
+    primary_symbol=icon_transformations.kwargs['symbol'],
+    secondary_symbol='times'
+)
+icon_document_version_transformations_clone = Icon(
+    driver_name='fontawesome-dual',
+    primary_symbol=icon_transformations.kwargs['symbol'],
+    secondary_symbol='arrow-right'
 )
 
 # Document version pages
