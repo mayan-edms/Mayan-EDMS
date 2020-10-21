@@ -1,7 +1,9 @@
 from rest_framework import generics
 
 from .filters import MayanObjectPermissionsFilter
-from .mixins import InstanceExtraDataAPIViewMixin, SerializerExtraContextAPIViewMixin
+from .mixins import (
+    InstanceExtraDataAPIViewMixin, SerializerExtraContextAPIViewMixin
+)
 from .permissions import MayanPermission
 
 
