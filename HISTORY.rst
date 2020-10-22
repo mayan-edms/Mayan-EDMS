@@ -279,6 +279,23 @@
 - Seed the random number generator when the test case class is initialized.
 - Update test PostgreSQL makefile target to allow continuing launching
   the PostgreSQL container without password.
+- Simplify and optimize file caching migration 0005_auto_20200322_0607.
+- Fix the "no result" title entry of the setup item list view.
+  Closes GitLab issue #900. Thanks to Matthias Löblich (@startmat) for the
+  report.
+- Passthrough storage improvements. Zip file is opened with the modes
+  corresponding to the calling storage. New file object methods added:
+  tell, write, flush, seek. Empty files when using the `.save()` method
+  are now only created if they don't already exists. Add support to the
+  encryption storage to accept unicode content. GitLab issue #876.
+- Redirect to the previous view when moving document to the trash. Closes
+  GitLab issue #873. Thanks to Bw (@bwakkie) for the report.
+- Add the current document to the context to improve navigation in the views:
+  add to favorites, remove from favorites, move to trash, delete trashed,
+  and restore trashed.
+- Add note for hardcoded vine dependency.
+- Style fixes and missing keyword arguments.
+- Add formset_factory keyword arguments.
 
 3.4.17 (2020-09-10)
 ===================

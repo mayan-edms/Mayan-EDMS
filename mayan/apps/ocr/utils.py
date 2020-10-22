@@ -13,4 +13,4 @@ def get_instance_ocr_content(instance):
         except DocumentPageOCRContent.DoesNotExist:
             pass
         else:
-            yield force_text(page_content)
+            yield force_text(s=page_content)

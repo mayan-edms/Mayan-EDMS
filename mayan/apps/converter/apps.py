@@ -78,7 +78,7 @@ class ConverterApp(MayanAppConfig):
             source=LayerTransformation
         )
         SourceColumn(
-            func=lambda context: force_text(context['object']),
+            func=lambda context: force_text(s=context['object']),
             include_label=True, label=_('Transformation'),
             source=LayerTransformation
         )

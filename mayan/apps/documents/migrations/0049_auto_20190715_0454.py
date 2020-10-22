@@ -33,7 +33,7 @@ def operation_clear_old_cache(apps, schema_editor):
         app_label='documents', model_name='DocumentPageCachedImage'
     )
 
-    for cached_image in DocumentPageCachedImage.objects.using(schema_editor.connection.alias).all():
+    for cached_image in DocumentPageCachedImage.objects.using(alias=schema_editor.connection.alias).all():
         # Delete each cached image directly since the model doesn't exists and
         # will not trigger the physical deletion of the stored file
         storage_documentimagecache.delete(cached_image.filename)

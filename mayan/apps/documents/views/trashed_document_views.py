@@ -1,7 +1,7 @@
 import logging
 
 from django.contrib import messages
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
 from django.utils.translation import ugettext_lazy as _, ungettext
 
 from mayan.apps.acls.models import AccessControlList
@@ -32,7 +32,6 @@ class DocumentTrashView(MultipleObjectConfirmActionView):
     model = Document
     object_permission = permission_document_trash
     pk_url_kwarg = 'document_id'
-    post_action_redirect = reverse_lazy(viewname=setting_home_view.value)
     success_message_singular = _(
         '%(count)d document moved to the trash.'
     )
@@ -41,17 +40,28 @@ class DocumentTrashView(MultipleObjectConfirmActionView):
     )
 
     def get_extra_context(self):
-        queryset = self.object_list
-
-        result = {
+        context = {
             'title': ungettext(
                 singular='Move the selected document to the trash?',
                 plural='Move the selected documents to the trash?',
-                number=queryset.count()
+                number=self.object_list.count()
             )
         }
 
-        return result
+        if self.object_list.count() == 1:
+            context['object'] = self.object_list.first()
+
+        return context
+
+    def get_post_action_redirect(self):
+        # Return to the previous view after moving the document to trash
+        # unless the move happened from the document view, in which case
+        # redirecting back to the document is not possible because it is
+        # now a trashed document and not accessible.
+        if 'document_id' in self.kwargs:
+            return reverse(viewname=setting_home_view.value)
+        else:
+            return None
 
     def object_action(self, form, instance):
         instance.delete(_user=self.request.user)
@@ -87,17 +97,18 @@ class TrashedDocumentDeleteView(MultipleObjectConfirmActionView):
     )
 
     def get_extra_context(self):
-        queryset = self.object_list
-
-        result = {
+        context = {
             'title': ungettext(
                 singular='Delete the selected trashed document?',
                 plural='Delete the selected trashed documents?',
-                number=queryset.count()
+                number=self.object_list.count()
             )
         }
 
-        return result
+        if self.object_list.count() == 1:
+            context['object'] = self.object_list.first()
+
+        return context
 
     def object_action(self, form, instance):
         task_delete_document.apply_async(
@@ -147,17 +158,18 @@ class TrashedDocumentRestoreView(MultipleObjectConfirmActionView):
     )
 
     def get_extra_context(self):
-        queryset = self.object_list
-
-        result = {
+        context = {
             'title': ungettext(
                 singular='Restore the selected trashed document?',
                 plural='Restore the selected trashed documents?',
-                number=queryset.count()
+                number=self.object_list.count()
             )
         }
 
-        return result
+        if self.object_list.count() == 1:
+            context['object'] = self.object_list.first()
+
+        return context
 
     def object_action(self, form, instance):
         instance.restore()

@@ -182,7 +182,7 @@ class SearchModel(AppsModuleLoaderMixin):
         )
 
     def __str__(self):
-        return force_text(self.label)
+        return force_text(s=self.label)
 
     def _initialize(self):
         for search_field in self.search_fields:

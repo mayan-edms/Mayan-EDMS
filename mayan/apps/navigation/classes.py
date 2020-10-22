@@ -321,7 +321,7 @@ class Menu:
 
         logger.debug(
             'resolved_navigation_object_list: %s',
-            force_text(resolved_navigation_object_list)
+            force_text(s=resolved_navigation_object_list)
         )
         return resolved_navigation_object_list
 

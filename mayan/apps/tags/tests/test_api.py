@@ -224,7 +224,7 @@ class TagDocumentAPIViewTestCase(
 
         self.assertEqual(
             response.data['results'][0]['uuid'],
-            force_text(self.test_document.uuid)
+            force_text(s=self.test_document.uuid)
         )
 
     def test_document_attach_tag_view_no_permission(self):

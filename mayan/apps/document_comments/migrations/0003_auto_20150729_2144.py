@@ -22,10 +22,10 @@ def operation_migrate_old_comments(apps, schema_editor):
         )
         User = apps.get_model(*settings.AUTH_USER_MODEL.split('.'))
 
-        for old_comment in OldComment.objects.using(schema_editor.connection.alias).all():
+        for old_comment in OldComment.objects.using(alias=schema_editor.connection.alias).all():
             comment = Comment(
                 document=Document.objects.using(
-                    schema_editor.connection.alias
+                    alias=schema_editor.connection.alias
                 ).get(pk=old_comment.object_pk),
                 user=User(old_comment.user.pk),
                 comment=old_comment.comment,

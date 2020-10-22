@@ -255,7 +255,7 @@ class AddRemoveView(
 
     def generate_choices(self, queryset):
         for obj in queryset:
-            yield (obj.pk, force_text(obj))
+            yield (obj.pk, force_text(s=obj))
 
     def get_action_add_extra_kwargs(self):
         # Keyword arguments to apply to the add method
@@ -671,7 +671,7 @@ class SingleObjectDownloadView(
         return self.object.open()
 
     def get_download_label(self):
-        return force_text(self.object)
+        return force_text(s=self.object)
 
 
 class MultipleObjectDownloadView(

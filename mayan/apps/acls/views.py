@@ -176,7 +176,7 @@ class ACLPermissionsView(AddRemoveView):
             namespaces_dictionary[
                 permission.volatile_permission.namespace.label
             ].append(
-                (permission.pk, force_text(permission))
+                (permission.pk, force_text(s=permission))
             )
 
         # Sort permissions by their translatable namespace label

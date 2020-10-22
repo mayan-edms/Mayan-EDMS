@@ -6,7 +6,7 @@ from django.db import migrations
 def operation_convert_uuid_to_hex(apps, schema_editor):
     Document = apps.get_model(app_label='documents', model_name='Document')
 
-    for document in Document.objects.using(schema_editor.connection.alias).all():
+    for document in Document.objects.using(alias=schema_editor.connection.alias).all():
         document.uuid = uuid.UUID(document.uuid).hex
         document.save()
 

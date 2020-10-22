@@ -176,7 +176,7 @@ class WritableAccessControlListSerializer(serializers.ModelSerializer):
         try:
             attrs['role'] = Role.objects.get(pk=attrs.pop('role_pk'))
         except Role.DoesNotExist as exception:
-            raise ValidationError(force_text(exception))
+            raise ValidationError(force_text(s=exception))
 
         permissions_pk_list = attrs.pop('permissions_pk_list', None)
         permissions_result = []

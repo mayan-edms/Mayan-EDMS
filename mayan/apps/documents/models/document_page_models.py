@@ -268,6 +268,7 @@ class DocumentPage(models.Model):
             }
         else:
             return None
+
     get_label.short_description = _('Label')
 
     def natural_key(self):

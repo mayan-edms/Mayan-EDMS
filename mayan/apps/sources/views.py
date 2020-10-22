@@ -383,7 +383,7 @@ class UploadInteractiveView(UploadBaseView):
         except Exception as exception:
             if request.is_ajax():
                 return JsonResponse(
-                    data={'error': force_text(exception)}, status=500
+                    data={'error': force_text(s=exception)}, status=500
                 )
             else:
                 raise
@@ -448,7 +448,7 @@ class UploadInteractiveView(UploadBaseView):
                         document_type_id=self.document_type.pk,
                         expand=expand,
                         label=forms['document_form'].get_final_label(
-                            filename=force_text(shared_uploaded_file)
+                            filename=force_text(s=shared_uploaded_file)
                         ),
                         language=forms['document_form'].cleaned_data.get('language'),
                         querystring=querystring.urlencode(),
@@ -617,7 +617,7 @@ class DocumentVersionUploadInteractiveView(UploadBaseView):
                 logger.critical(msg=message, exc_info=True)
                 if self.request.is_ajax():
                     return JsonResponse(
-                        data={'error': force_text(message)}, status=500
+                        data={'error': force_text(s=message)}, status=500
                     )
                 else:
                     raise type(exception)(message)

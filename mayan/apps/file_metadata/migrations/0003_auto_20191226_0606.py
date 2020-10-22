@@ -12,7 +12,7 @@ def operation_remove_duplicates(apps, schema_editor):
     driver = StoredDriver.objects.first()
     if driver:
         with transaction.atomic():
-            for driver_entry in DocumentVersionDriverEntry.objects.using(schema_editor.connection.alias).all():
+            for driver_entry in DocumentVersionDriverEntry.objects.using(alias=schema_editor.connection.alias).all():
                 driver_entry.driver = driver
                 driver_entry.save()
 

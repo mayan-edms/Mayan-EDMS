@@ -19,12 +19,12 @@ def operation_purge_and_delete_caches(apps, schema_editor):
     )
 
     cache_storages = {}
-    for cache in Cache.objects.using(schema_editor.connection.alias).all():
+    for cache in Cache.objects.using(alias=schema_editor.connection.alias).all():
         cache_storages[cache.pk] = import_string(
             dotted_path=cache.storage_instance_path
         ).get_storage_instance()
 
-    for cache_partition_file in CachePartitionFile.objects.using(schema_editor.connection.alias).all():
+    for cache_partition_file in CachePartitionFile.objects.using(alias=schema_editor.connection.alias).all():
         cache_storages[
             cache_partition_file.partition.cache.pk
         ].delete(
@@ -35,11 +35,8 @@ def operation_purge_and_delete_caches(apps, schema_editor):
         )
         cache_partition_file.delete()
 
-    for cache_partition in CachePartition.objects.using(schema_editor.connection.alias).all():
-        cache_partition.delete()
-
-    for cache in Cache.objects.using(schema_editor.connection.alias).all():
-        cache.delete()
+    CachePartition.objects.using(alias=schema_editor.connection.alias).all().delete()
+    Cache.objects.using(alias=schema_editor.connection.alias).all().delete()
 
 
 def operation_update_storage_paths(apps, schema_editor):
@@ -47,7 +44,7 @@ def operation_update_storage_paths(apps, schema_editor):
         app_label='file_caching', model_name='Cache'
     )
 
-    for cache in Cache.objects.using(schema_editor.connection.alias).all():
+    for cache in Cache.objects.using(alias=schema_editor.connection.alias).all():
         cache.storage_instance_path = STORAGE_PATH_UPDATE_MAP.get(
             cache.storage_instance_path, cache.storage_instance_path
         )
@@ -63,7 +60,7 @@ def operation_update_storage_paths_reverse(apps, schema_editor):
         app_label='file_caching', model_name='Cache'
     )
 
-    for cache in Cache.objects.using(schema_editor.connection.alias).all():
+    for cache in Cache.objects.using(alias=schema_editor.connection.alias).all():
         cache.storage_instance_path = storage_path_update_map_inverted.get(
             cache.storage_instance_path, cache.storage_instance_path
         )

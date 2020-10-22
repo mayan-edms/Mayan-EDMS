@@ -50,14 +50,14 @@ class ClassesTestCase(SmartSettingTestMixin, BaseTestCase):
 
     def test_config_backup_creation(self):
         path_config_backup = Path(settings.CONFIGURATION_LAST_GOOD_FILEPATH)
-        fs_cleanup(filename=force_text(path_config_backup))
+        fs_cleanup(filename=force_text(s=path_config_backup))
 
         Setting.save_last_known_good()
         self.assertTrue(path_config_backup.exists())
 
     def test_config_backup_creation_no_tags(self):
         path_config_backup = Path(settings.CONFIGURATION_LAST_GOOD_FILEPATH)
-        fs_cleanup(filename=force_text(path_config_backup))
+        fs_cleanup(filename=force_text(s=path_config_backup))
 
         Setting.save_last_known_good()
         self.assertTrue(path_config_backup.exists())

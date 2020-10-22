@@ -344,7 +344,7 @@ class WatchFolderTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
         test_subfolder = test_path.joinpath(TEST_WATCHFOLDER_SUBFOLDER)
         test_subfolder.mkdir()
 
-        shutil.copy(TEST_SMALL_DOCUMENT_PATH, force_text(test_subfolder))
+        shutil.copy(TEST_SMALL_DOCUMENT_PATH, force_text(s=test_subfolder))
         self.test_watch_folder.check_source()
         self.assertEqual(Document.objects.count(), 0)
 
@@ -357,7 +357,7 @@ class WatchFolderTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
         test_subfolder = test_path.joinpath(TEST_WATCHFOLDER_SUBFOLDER)
         test_subfolder.mkdir()
 
-        shutil.copy(TEST_SMALL_DOCUMENT_PATH, force_text(test_subfolder))
+        shutil.copy(TEST_SMALL_DOCUMENT_PATH, force_text(s=test_subfolder))
         self.test_watch_folder.check_source()
         self.assertEqual(Document.objects.count(), 1)
 

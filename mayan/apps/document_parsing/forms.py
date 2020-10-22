@@ -30,7 +30,7 @@ class DocumentContentForm(forms.Form):
             except DocumentPageContent.DoesNotExist:
                 pass
             else:
-                content.append(conditional_escape(force_text(page_content)))
+                content.append(conditional_escape(force_text(s=page_content)))
                 content.append(
                     '\n\n\n<hr/><div class="document-page-content-divider">- %s -</div><hr/>\n\n\n' % (
                         ugettext(
@@ -74,6 +74,6 @@ class DocumentPageContentForm(forms.Form):
         except DocumentPageContent.DoesNotExist:
             pass
         else:
-            content = conditional_escape(force_text(page_content))
+            content = conditional_escape(force_text(s=page_content))
 
         self.fields['contents'].initial = mark_safe(content)

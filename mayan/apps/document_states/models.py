@@ -312,7 +312,7 @@ class WorkflowInstance(models.Model):
         verbose_name_plural = _('Workflow instances')
 
     def __str__(self):
-        return force_text(getattr(self, 'workflow', 'WI'))
+        return force_text(s=getattr(self, 'workflow', 'WI'))
 
     def do_transition(self, transition, comment=None, extra_data=None, user=None):
         with transaction.atomic():
@@ -475,7 +475,7 @@ class WorkflowInstanceLogEntry(models.Model):
         verbose_name_plural = _('Workflow instance log entries')
 
     def __str__(self):
-        return force_text(self.transition)
+        return force_text(s=self.transition)
 
     def clean(self):
         if self.transition not in self.workflow_instance.get_transition_choices(_user=self.user):
@@ -951,7 +951,7 @@ class WorkflowTransitionTriggerEvent(models.Model):
         verbose_name_plural = _('Workflow transitions trigger events')
 
     def __str__(self):
-        return force_text(self.transition)
+        return force_text(s=self.transition)
 
 
 class WorkflowRuntimeProxy(Workflow):
