@@ -656,5 +656,6 @@ Issues closed
 - :gitlab-issue:`570` Allow user-generated stylesheets
 - :gitlab-issue:`638` Server communication error when using default search
 - :gitlab-issue:`804` Feature Request: Action to Copy anything (Documenttypes, Roles, Groups, Workflows, ...)
+- :gitlab-issue:`858` Update CI Docker run_tests to test against PostgreSQL
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
