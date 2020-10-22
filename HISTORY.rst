@@ -19,6 +19,9 @@
 - Add the current document to the context to improve navigation in the views:
   add to favorites, remove from favorites, move to trash, delete trashed,
   and restore trashed.
+- Add note for hardcoded vine dependency.
+- Style fixes and missing keyword arguments.
+- Add formset_factory keyword arguments.
 
 3.4.17 (2020-09-10)
 ===================
