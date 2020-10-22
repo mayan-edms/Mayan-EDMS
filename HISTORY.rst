@@ -6,6 +6,9 @@
 - Update test PostgreSQL makefile target to allow continuing launching
   the PostgreSQL container without password.
 - Simplify and optimize file caching migration 0005_auto_20200322_0607.
+- Fix the "no result" title entry of the setup item list view.
+  Closes GitLab issue #900. Thanks to Matthias Löblich (@startmat) for the
+  report.
 
 3.4.17 (2020-09-10)
 ===================
