@@ -148,7 +148,7 @@ class UserLoginTestCase(UserLoginTestMixin, GenericViewTestCase):
     create_test_case_superuser = True
 
     def setUp(self):
-        super(UserLoginTestCase, self).setUp()
+        super().setUp()
         SettingNamespace.invalidate_cache_all()
 
     @override_settings(AUTHENTICATION_LOGIN_METHOD='username')

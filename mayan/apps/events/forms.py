@@ -23,7 +23,7 @@ class EventTypeUserRelationshipForm(forms.Form):
     )
 
     def __init__(self, *args, **kwargs):
-        super(EventTypeUserRelationshipForm, self).__init__(
+        super().__init__(
             *args, **kwargs
         )
 
@@ -80,7 +80,7 @@ class ObjectEventTypeUserRelationshipForm(forms.Form):
     )
 
     def __init__(self, *args, **kwargs):
-        super(ObjectEventTypeUserRelationshipForm, self).__init__(
+        super().__init__(
             *args, **kwargs
         )
 

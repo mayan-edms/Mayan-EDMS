@@ -19,7 +19,7 @@ class BufferedEncryptedFile(BufferedFile):
     def __init__(self, *args, **kwargs):
         self.key = kwargs.pop('key')
 
-        super(BufferedEncryptedFile, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
         self.initial_vector = self.file_object.read(16)
         self.cipher = AES.new(
@@ -44,7 +44,7 @@ class BufferedEncryptedFile(BufferedFile):
 class EncryptedPassthroughStorage(PassthroughStorage):
     def __init__(self, *args, **kwargs):
         password = kwargs.pop('password')
-        super(EncryptedPassthroughStorage, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.key = PBKDF2(
             count=ENCRYPTION_KEY_DERIVATION_ITERATIONS,
             dkLen=ENCRYPTION_KEY_SIZE,

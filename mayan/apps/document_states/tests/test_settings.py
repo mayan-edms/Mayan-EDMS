@@ -12,7 +12,7 @@ from ..settings import setting_workflowimagecache_storage_arguments
 
 class WorkflowPreviewStorageSettingsTestCase(SmartSettingTestMixin, BaseTestCase):
     def tearDown(self):
-        super(WorkflowPreviewStorageSettingsTestCase, self).tearDown()
+        super().tearDown()
         importlib.reload(storages)
 
     def test_setting_document_file_storage_backend_arguments_invalid_value(self):

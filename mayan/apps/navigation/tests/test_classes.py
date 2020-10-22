@@ -20,7 +20,7 @@ from .literals import (
 
 class LinkClassTestCase(GenericViewTestCase):
     def setUp(self):
-        super(LinkClassTestCase, self).setUp()
+        super().setUp()
 
         self.test_object = self._test_case_group
 
@@ -152,7 +152,7 @@ class LinkClassTestCase(GenericViewTestCase):
 
 class MenuClassTestCase(GenericViewTestCase):
     def setUp(self):
-        super(MenuClassTestCase, self).setUp()
+        super().setUp()
 
         self.test_object = self._test_case_group
 
@@ -174,7 +174,7 @@ class MenuClassTestCase(GenericViewTestCase):
     def tearDown(self):
         Menu.remove(name=TEST_MENU_NAME)
         Menu.remove(name=TEST_SUBMENU_NAME)
-        super(MenuClassTestCase, self).tearDown()
+        super().tearDown()
 
     def test_null_source_link_unbinding(self):
         self.menu.bind_links(links=(self.link,))

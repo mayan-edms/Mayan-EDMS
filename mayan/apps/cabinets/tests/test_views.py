@@ -112,7 +112,7 @@ class CabinetChildViewTestCase(
     CabinetTestMixin, CabinetViewTestMixin, GenericViewTestCase
 ):
     def setUp(self):
-        super(CabinetChildViewTestCase, self).setUp()
+        super().setUp()
         self._create_test_cabinet()
 
     def test_cabinet_child_create_view_no_permission(self):

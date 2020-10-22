@@ -27,7 +27,7 @@ class EventsApp(MayanAppConfig):
     verbose_name = _('Events')
 
     def ready(self):
-        super(EventsApp, self).ready()
+        super().ready()
         Action = apps.get_model(app_label='actstream', model_name='Action')
         Notification = self.get_model(model_name='Notification')
         StoredEventType = self.get_model(model_name='StoredEventType')

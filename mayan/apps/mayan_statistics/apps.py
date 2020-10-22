@@ -27,7 +27,7 @@ class StatisticsApp(MayanAppConfig):
     verbose_name = _('Statistics')
 
     def ready(self):
-        super(StatisticsApp, self).ready()
+        super().ready()
 
         SourceColumn(
             attribute='schedule',

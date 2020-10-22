@@ -227,7 +227,7 @@ class UserMailerTestView(ExternalObjectMixin, FormView):
         messages.success(
             message=_('Test email sent.'), request=self.request
         )
-        return super(UserMailerTestView, self).form_valid(form=form)
+        return super().form_valid(form=form)
 
     def get_extra_context(self):
         return {

@@ -84,7 +84,7 @@ class DocumentType(models.Model):
         for document in Document.objects.filter(document_type=self):
             document.delete(to_trash=False)
 
-        return super(DocumentType, self).delete(*args, **kwargs)
+        return super().delete(*args, **kwargs)
 
     @property
     def deleted_documents(self):
@@ -167,7 +167,7 @@ class DocumentType(models.Model):
         user = kwargs.pop('_user', None)
         created = not self.pk
 
-        result = super(DocumentType, self).save(*args, **kwargs)
+        result = super().save(*args, **kwargs)
 
         if created:
             event_document_type_created.commit(

@@ -35,7 +35,7 @@ class DocumentMetadataViewTestCase(
     MetadataTypeTestMixin, GenericDocumentViewTestCase
 ):
     def setUp(self):
-        super(DocumentMetadataViewTestCase, self).setUp()
+        super().setUp()
         self._create_test_metadata_type()
         self.test_document_type.metadata.create(
             metadata_type=self.test_metadata_type
@@ -671,7 +671,7 @@ class DocumentMetadataRequiredTestCase(
     DocumentMetadataViewTestMixin, MetadataTypeTestMixin, GenericDocumentViewTestCase
 ):
     def setUp(self):
-        super(DocumentMetadataRequiredTestCase, self).setUp()
+        super().setUp()
         self._create_test_metadata_type()
         self._create_test_metadata_type()
         self.test_document_type.metadata.create(

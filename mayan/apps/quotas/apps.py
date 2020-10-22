@@ -39,7 +39,7 @@ class QuotasApp(MayanAppConfig):
     verbose_name = _('Quotas')
 
     def ready(self, *args, **kwargs):
-        super(QuotasApp, self).ready(*args, **kwargs)
+        super().ready(*args, **kwargs)
 
         Group = apps.get_model(app_label='auth', model_name='Group')
         DocumentType = apps.get_model(

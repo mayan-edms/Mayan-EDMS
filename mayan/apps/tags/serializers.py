@@ -54,7 +54,7 @@ class WritableTagSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         documents_pk_list = validated_data.pop('documents_pk_list', '')
 
-        instance = super(WritableTagSerializer, self).create(validated_data)
+        instance = super().create(validated_data)
 
         if documents_pk_list:
             self._add_documents(
@@ -66,7 +66,7 @@ class WritableTagSerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         documents_pk_list = validated_data.pop('documents_pk_list', '')
 
-        instance = super(WritableTagSerializer, self).update(
+        instance = super().update(
             instance, validated_data
         )
 

@@ -18,7 +18,7 @@ from .mixins import (
 
 class PermissionAPIViewTestCase(PermissionAPIViewTestMixin, BaseAPITestCase):
     def setUp(self):
-        super(PermissionAPIViewTestCase, self).setUp()
+        super().setUp()
         Permission.invalidate_cache()
 
     def test_permissions_list_api_view(self):

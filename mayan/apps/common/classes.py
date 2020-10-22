@@ -410,7 +410,7 @@ class ModelField(ModelAttribute):
     class_name = 'field'
 
     def __init__(self, *args, **kwargs):
-        super(ModelField, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self._final_model_verbose_name = None
 
         if not self.label:
@@ -458,7 +458,7 @@ class ModelReverseField(ModelField):
     class_name = 'reverse_field'
 
     def __init__(self, *args, **kwargs):
-        super(ModelField, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self._final_model_verbose_name = None
 
         if not self.label:

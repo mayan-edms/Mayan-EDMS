@@ -201,7 +201,7 @@ class HTTPWorkflowActionViewTestCase(
     WorkflowTestMixin, WorkflowStateActionViewTestMixin, GenericViewTestCase
 ):
     def setUp(self):
-        super(HTTPWorkflowActionViewTestCase, self).setUp()
+        super().setUp()
         self._create_test_workflow()
         self._create_test_workflow_state()
 

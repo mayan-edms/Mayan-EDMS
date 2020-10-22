@@ -214,7 +214,7 @@ class ACLPermissionsView(AddRemoveView):
                 'parent object\'s ACL or from them role via the Setup menu.'
             )
         else:
-            return super(ACLPermissionsView, self).get_list_added_help_text()
+            return super().get_list_added_help_text()
 
     def get_list_added_queryset(self):
         """
@@ -226,7 +226,7 @@ class ACLPermissionsView(AddRemoveView):
         remove from the parent first to enable the choice in the form,
         remove it from the ACL and then re-add it to the parent ACL.
         """
-        queryset_acl = super(ACLPermissionsView, self).get_list_added_queryset()
+        queryset_acl = super().get_list_added_queryset()
 
         return (
             queryset_acl | self.main_object.get_inherited_permissions()

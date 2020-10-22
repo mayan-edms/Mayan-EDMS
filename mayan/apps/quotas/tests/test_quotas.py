@@ -11,7 +11,7 @@ class DocumentCountQuotaTestCase(GroupTestMixin, GenericDocumentTestCase):
     auto_upload_test_document = False
 
     def setUp(self):
-        super(DocumentCountQuotaTestCase, self).setUp()
+        super().setUp()
         # Increase the initial usage count to 1 by uploading a document
         # as the test case user.
         self._upload_test_document(_user=self._test_case_user)
@@ -118,7 +118,7 @@ class DocumentSizeQuotaTestCase(GroupTestMixin, GenericDocumentTestCase):
     auto_upload_test_document = False
 
     def setUp(self):
-        super(DocumentSizeQuotaTestCase, self).setUp()
+        super().setUp()
         self.test_case_silenced_logger_new_level = logging.FATAL + 10
         self._silence_logger(name='mayan.apps.documents.models')
 

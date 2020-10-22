@@ -116,7 +116,7 @@ class TrashedDocumentListView(DocumentListView):
         )
 
     def get_extra_context(self):
-        context = super(TrashedDocumentListView, self).get_extra_context()
+        context = super().get_extra_context()
         context.update(
             {
                 'hide_link': True,

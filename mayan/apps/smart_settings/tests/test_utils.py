@@ -11,7 +11,7 @@ class BoostrapSettingTestCase(
     BoostrapSettingTestMixin, SmartSettingTestMixin, BaseTestCase
 ):
     def setUp(self):
-        super(BoostrapSettingTestCase, self).setUp()
+        super().setUp()
         self._register_test_boostrap_setting()
         self._create_test_bootstrap_singleton()
 

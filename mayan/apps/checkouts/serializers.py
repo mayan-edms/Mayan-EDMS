@@ -51,6 +51,4 @@ class NewDocumentCheckoutSerializer(serializers.ModelSerializer):
 
         validated_data['document'] = document
         validated_data['user'] = self.context['request'].user
-        return super(NewDocumentCheckoutSerializer, self).create(
-            validated_data
-        )
+        return super().create(validated_data=validated_data)

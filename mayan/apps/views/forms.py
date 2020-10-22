@@ -24,7 +24,7 @@ class ChoiceForm(forms.Form):
         label = kwargs.pop('label', _('Selection'))
         help_text = kwargs.pop('help_text', None)
         disabled_choices = kwargs.pop('disabled_choices', ())
-        super(ChoiceForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.fields['selection'].choices = choices
         self.fields['selection'].label = label
         self.fields['selection'].help_text = help_text
@@ -78,7 +78,7 @@ class DetailForm(forms.ModelForm):
         self.opts = DetailFormOption(
             form=self, kwargs=kwargs, options=getattr(self, 'Meta', None)
         )
-        super(DetailForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
         for extra_field in self.opts.extra_fields:
             obj = extra_field.get('object', self.instance)
@@ -143,7 +143,7 @@ class DetailForm(forms.ModelForm):
 class DynamicFormMixin:
     def __init__(self, *args, **kwargs):
         self.schema = kwargs.pop('schema')
-        super(DynamicFormMixin, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
         widgets = self.schema.get('widgets', {})
         field_order = self.schema.get(
@@ -173,7 +173,7 @@ class DynamicFormMixin:
         """
         Append the media of the dynamic fields to the normal fields' media.
         """
-        media = super(DynamicFormMixin, self).media
+        media = super().media
         media = media + forms.Media(**self.schema.get('media', {}))
         return media
 
@@ -198,7 +198,7 @@ class FileDisplayForm(forms.Form):
     )
 
     def __init__(self, *args, **kwargs):
-        super(FileDisplayForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         if self.DIRECTORY or self.FILENAME:
             file_path = os.path.join(
                 settings.BASE_DIR, os.sep.join(self.DIRECTORY), self.FILENAME
@@ -265,7 +265,7 @@ class FilteredSelectionForm(forms.Form):
                 user=opts.user
             )
 
-        super(FilteredSelectionForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
         self.fields[opts.field_name] = field_class(
             help_text=opts.help_text, label=opts.label,

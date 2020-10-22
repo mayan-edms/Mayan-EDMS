@@ -6,7 +6,7 @@ from django.contrib.staticfiles.finders import AppDirectoriesFinder
 
 class MayanAppDirectoriesFinder(AppDirectoriesFinder):
     def __init__(self, *args, **kwargs):
-        super(MayanAppDirectoriesFinder, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         for app_config in apps.get_app_configs():
             if getattr(app_config, 'has_static_media', False):
                 if app_config.name not in self.apps:

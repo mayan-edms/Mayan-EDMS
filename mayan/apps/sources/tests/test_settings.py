@@ -12,7 +12,7 @@ from ..settings import setting_staging_file_image_cache_storage_arguments
 
 class SourcesStorageSettingsTestCase(SmartSettingTestMixin, BaseTestCase):
     def tearDown(self):
-        super(SourcesStorageSettingsTestCase, self).tearDown()
+        super().tearDown()
         importlib.reload(storages)
 
     def test_setting_staging_file_image_cache_storage_arguments_invalid_value(self):

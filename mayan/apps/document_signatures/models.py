@@ -123,7 +123,7 @@ class EmbeddedSignature(SignatureBaseModel):
                 self.signature_id = verify_result.signature_id
                 self.public_key_fingerprint = verify_result.pubkey_fingerprint
 
-                super(EmbeddedSignature, self).save(*args, **kwargs)
+                super().save(*args, **kwargs)
 
 
 class DetachedSignature(SignatureBaseModel):
@@ -147,7 +147,7 @@ class DetachedSignature(SignatureBaseModel):
     def delete(self, *args, **kwargs):
         if self.signature_file.name:
             self.signature_file.storage.delete(name=self.signature_file.name)
-        super(DetachedSignature, self).delete(*args, **kwargs)
+        super().delete(*args, **kwargs)
 
     def save(self, *args, **kwargs):
         with self.document_file.open() as file_object:
@@ -168,4 +168,4 @@ class DetachedSignature(SignatureBaseModel):
                 self.signature_id = verify_result.signature_id
                 self.public_key_fingerprint = verify_result.pubkey_fingerprint
 
-        return super(DetachedSignature, self).save(*args, **kwargs)
+        return super().save(*args, **kwargs)

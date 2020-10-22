@@ -46,7 +46,7 @@ class PermissionsApp(MayanAppConfig):
     verbose_name = _('Permissions')
 
     def ready(self):
-        super(PermissionsApp, self).ready()
+        super().ready()
 
         Role = self.get_model('Role')
         Group = apps.get_model(app_label='auth', model_name='Group')

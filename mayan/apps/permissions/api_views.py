@@ -32,7 +32,7 @@ class APIRoleListView(generics.ListCreateAPIView):
         if not self.request:
             return None
 
-        return super(APIRoleListView, self).get_serializer(*args, **kwargs)
+        return super().get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -60,7 +60,7 @@ class APIRoleView(generics.RetrieveUpdateDestroyAPIView):
         if not self.request:
             return None
 
-        return super(APIRoleView, self).get_serializer(*args, **kwargs)
+        return super().get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':

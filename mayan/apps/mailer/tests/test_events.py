@@ -14,11 +14,14 @@ from ..events import event_email_sent
 from .mixins import MailerTestMixin, MailerViewTestMixin
 
 
-class MailerEventsTestCase(DocumentTestMixin, MailerTestMixin, MailerViewTestMixin, GenericViewTestCase):
+class MailerEventsTestCase(
+    DocumentTestMixin, MailerTestMixin, MailerViewTestMixin,
+    GenericViewTestCase
+):
     auto_upload_test_document = False
 
     def setUp(self):
-        super(MailerEventsTestCase, self).setUp()
+        super().setUp()
         self._create_test_user_mailer()
 
     def test_email_send_event(self):
@@ -46,7 +49,8 @@ class MailerEventsTestCase(DocumentTestMixin, MailerTestMixin, MailerViewTestMix
             obj=self.test_user_mailer, permission=permission_user_mailer_use
         )
         self.grant_access(
-            obj=self.test_document, permission=permission_mailing_send_document
+            obj=self.test_document,
+            permission=permission_mailing_send_document
         )
         Action.objects.all().delete()
 

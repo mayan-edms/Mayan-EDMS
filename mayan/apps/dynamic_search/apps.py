@@ -19,7 +19,7 @@ class DynamicSearchApp(MayanAppConfig):
     verbose_name = _('Dynamic search')
 
     def ready(self):
-        super(DynamicSearchApp, self).ready()
+        super().ready()
 
         SearchModel.load_modules()
         SearchModel.initialize()

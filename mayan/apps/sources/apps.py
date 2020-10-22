@@ -50,7 +50,7 @@ class SourcesApp(MayanAppConfig):
     verbose_name = _('Sources')
 
     def ready(self):
-        super(SourcesApp, self).ready()
+        super().ready()
         DocumentType = apps.get_model(
             app_label='documents', model_name='DocumentType'
         )

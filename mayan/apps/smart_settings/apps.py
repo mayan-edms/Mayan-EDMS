@@ -21,7 +21,7 @@ class SmartSettingsApp(MayanAppConfig):
     verbose_name = _('Smart settings')
 
     def ready(self):
-        super(SmartSettingsApp, self).ready()
+        super().ready()
 
         SettingNamespace.load_modules()
 

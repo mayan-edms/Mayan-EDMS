@@ -19,14 +19,14 @@ class CabinetDocumentUploadTestCase(
     auto_upload_test_document = False
 
     def setUp(self):
-        super(CabinetDocumentUploadTestCase, self).setUp()
+        super().setUp()
         self.test_source = WebFormSource.objects.create(
             enabled=True, label=TEST_SOURCE_LABEL,
             uncompress=TEST_SOURCE_UNCOMPRESS_N
         )
 
     def tearDown(self):
-        super(CabinetDocumentUploadTestCase, self).tearDown()
+        super().tearDown()
         WizardStep.reregister_all()
 
     def test_upload_interactive_view_with_access(self):

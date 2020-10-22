@@ -39,7 +39,7 @@ class ConverterApp(MayanAppConfig):
     verbose_name = _('Converter')
 
     def ready(self):
-        super(ConverterApp, self).ready()
+        super().ready()
 
         Asset = self.get_model(model_name='Asset')
         LayerTransformation = self.get_model(model_name='LayerTransformation')

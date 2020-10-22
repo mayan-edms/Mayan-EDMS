@@ -9,7 +9,7 @@ from .models import WebLink
 
 class WebLinkForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
-        super(WebLinkForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.fields['template'] = ModelTemplateField(
             initial_help_text=format_lazy(
                 '{} ', self.fields['template'].help_text

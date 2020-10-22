@@ -53,7 +53,7 @@ class DocumentParsingApp(MayanAppConfig):
     verbose_name = _('Document parsing')
 
     def ready(self):
-        super(DocumentParsingApp, self).ready()
+        super().ready()
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'

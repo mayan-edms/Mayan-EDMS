@@ -28,7 +28,7 @@ class FileCachingConfig(MayanAppConfig):
     verbose_name = _('File caching')
 
     def ready(self):
-        super(FileCachingConfig, self).ready()
+        super().ready()
 
         Cache = self.get_model(model_name='Cache')
 

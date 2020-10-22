@@ -86,7 +86,7 @@ class DocumentsLinksTestCase(GenericDocumentViewTestCase):
 
 class DeletedDocumentsLinksTestCase(GenericDocumentViewTestCase):
     def setUp(self):
-        super(DeletedDocumentsLinksTestCase, self).setUp()
+        super().setUp()
         self.test_document.delete()
         self.test_deleted_document = DeletedDocument.objects.get(
             pk=self.test_document.pk

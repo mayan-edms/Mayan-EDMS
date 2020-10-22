@@ -178,7 +178,7 @@ class WorkflowTransitionDocumentViewTestCase(
     auto_upload_test_document = False
 
     def setUp(self):
-        super(WorkflowTransitionDocumentViewTestCase, self).setUp()
+        super().setUp()
         self._create_test_workflow()
         self.test_workflow.document_types.add(self.test_document_type)
         self._create_test_workflow_states()
@@ -293,7 +293,7 @@ class WorkflowTransitionFieldViewTestCase(
     _test_event_object_name = 'test_workflow'
 
     def setUp(self):
-        super(WorkflowTransitionFieldViewTestCase, self).setUp()
+        super().setUp()
         self._create_test_workflow()
         self._create_test_workflow_states()
         self._create_test_workflow_transition()

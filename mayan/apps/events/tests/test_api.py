@@ -34,7 +34,7 @@ class EventTypeNamespaceAPITestCase(
     EventTypeTestMixin, EventTypeNamespaceAPITestMixin, BaseAPITestCase
 ):
     def setUp(self):
-        super(EventTypeNamespaceAPITestCase, self).setUp()
+        super().setUp()
         self._create_test_event_type()
 
     def test_event_type_list_view(self):
@@ -57,7 +57,7 @@ class ObjectEventAPITestCase(
     auto_upload_test_document = False
 
     def setUp(self):
-        super(ObjectEventAPITestCase, self).setUp()
+        super().setUp()
         self.test_object = self.test_document_type
 
         content_type = ContentType.objects.get_for_model(

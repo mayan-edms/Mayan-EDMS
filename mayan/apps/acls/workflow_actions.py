@@ -106,7 +106,7 @@ class GrantAccessAction(WorkflowAction):
         self.fields['permissions']['kwargs']['choices'] = Permission.all(
             as_choices=True
         )
-        return super(GrantAccessAction, self).get_form_schema(*args, **kwargs)
+        return super().get_form_schema(*args, **kwargs)
 
     def get_execute_data(self):
         ContentType = apps.get_model(
@@ -187,7 +187,7 @@ class GrantDocumentAccessAction(WorkflowAction):
         self.fields['permissions']['kwargs']['choices'] = ModelPermission.get_for_class(
             klass=Document, as_choices=True
         )
-        return super(GrantDocumentAccessAction, self).get_form_schema(*args, **kwargs)
+        return super().get_form_schema(*args, **kwargs)
 
     def get_execute_data(self):
         self.roles = Role.objects.filter(pk__in=self.form_data['roles'])

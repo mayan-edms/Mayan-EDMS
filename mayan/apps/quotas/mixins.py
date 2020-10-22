@@ -40,7 +40,7 @@ class DocumentTypesQuotaMixin:
         cls.field_order.insert(0, 'document_type_ids')
         cls.field_order.insert(0, 'document_type_all')
 
-        return super(DocumentTypesQuotaMixin, cls).get_fields()
+        return super().get_fields()
 
     @classmethod
     def get_widgets(cls):
@@ -55,13 +55,13 @@ class DocumentTypesQuotaMixin:
             }
         )
 
-        return super(DocumentTypesQuotaMixin, cls).get_widgets()
+        return super().get_widgets()
 
     def _get_document_types(self):
         return DocumentType.objects.filter(pk__in=self.document_type_ids)
 
     def get_filter_text(self):
-        result = super(DocumentTypesQuotaMixin, self).get_filter_text()
+        result = super().get_filter_text()
 
         if self.document_type_all:
             document_type_filter_text = _('all document types')
@@ -130,7 +130,7 @@ class GroupsUsersQuotaMixin:
         cls.field_order.insert(0, 'group_ids')
         cls.field_order.insert(0, 'user_all')
 
-        return super(GroupsUsersQuotaMixin, cls).get_fields()
+        return super().get_fields()
 
     @classmethod
     def get_widgets(cls):
@@ -151,10 +151,10 @@ class GroupsUsersQuotaMixin:
             }
         )
 
-        return super(GroupsUsersQuotaMixin, cls).get_widgets()
+        return super().get_widgets()
 
     def get_filter_text(self):
-        result = super(GroupsUsersQuotaMixin, self).get_filter_text()
+        result = super().get_filter_text()
 
         if self.user_all:
             user_filter_text = _('all users')

@@ -50,7 +50,7 @@ class TagsApp(MayanAppConfig):
     verbose_name = _('Tags')
 
     def ready(self):
-        super(TagsApp, self).ready()
+        super().ready()
         from .wizard_steps import WizardStepTags  # NOQA
 
         Document = apps.get_model(

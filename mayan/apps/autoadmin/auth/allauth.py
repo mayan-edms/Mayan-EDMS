@@ -40,9 +40,7 @@ class AutoadminAccountAdapter(DefaultAccountAdapter):
         Give superuser privileges automagically if the email address of a
         user confirming their email is listed in ``settings.ADMINS``.
         """
-        super(AutoadminAccountAdapter, self).confirm_email(
-            request=request, email_address=email_address
-        )
+        super().confirm_email(request=request, email_address=email_address)
 
         if email_address.email in ADMIN_EMAIL_ADDRESSES:
             user = email_address.user

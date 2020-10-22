@@ -20,7 +20,7 @@ class MockNode:
 
 class IndexFilesystemCacheTestCase(BaseTestCase):
     def setUp(self):
-        super(IndexFilesystemCacheTestCase, self).setUp()
+        super().setUp()
         self.cache = IndexFilesystemCache()
         self.test_document = MockDocument()
         self.node = MockNode()

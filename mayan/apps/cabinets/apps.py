@@ -53,7 +53,7 @@ class CabinetsApp(MayanAppConfig):
     verbose_name = _('Cabinets')
 
     def ready(self):
-        super(CabinetsApp, self).ready()
+        super().ready()
         from .wizard_steps import WizardStepCabinets  # NOQA
 
         Cabinet = self.get_model(model_name='Cabinet')

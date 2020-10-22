@@ -43,16 +43,12 @@ class EventTypeSerializer(serializers.Serializer):
 
     def to_representation(self, instance):
         if isinstance(instance, EventType):
-            return super(EventTypeSerializer, self).to_representation(
-                instance
-            )
+            return super().to_representation(instance=instance)
         elif isinstance(instance, StoredEventType):
-            return super(EventTypeSerializer, self).to_representation(
-                instance.get_class()
-            )
+            return super().to_representation(instance=instance.get_class())
         elif isinstance(instance, str):
-            return super(EventTypeSerializer, self).to_representation(
-                EventType.get(name=instance)
+            return super().to_representation(
+                instance=EventType.get(name=instance)
             )
 
 

@@ -88,9 +88,7 @@ class ResolvedSmartLinkView(ExternalObjectMixin, DocumentListView):
     def dispatch(self, request, *args, **kwargs):
         self.smart_link = self.get_smart_link()
 
-        return super(
-            ResolvedSmartLinkView, self
-        ).dispatch(request, *args, **kwargs)
+        return super().dispatch(request, *args, **kwargs)
 
     def get_document_queryset(self):
         try:
@@ -133,7 +131,7 @@ class ResolvedSmartLinkView(ExternalObjectMixin, DocumentListView):
                 'smart_link': self.smart_link.label,
             }
 
-        context = super(ResolvedSmartLinkView, self).get_extra_context()
+        context = super().get_extra_context()
         context.update(
             {
                 'object': self.external_object,

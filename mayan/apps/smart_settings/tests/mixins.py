@@ -35,7 +35,7 @@ class BoostrapSettingTestMixin:
 
 class SmartSettingsTestCaseMixin:
     def setUp(self):
-        super(SmartSettingsTestCaseMixin, self).setUp()
+        super().setUp()
         SettingNamespace.invalidate_cache_all()
 
         with NamedTemporaryFile(delete=False) as self.test_setting_config_file_object:
@@ -46,7 +46,7 @@ class SmartSettingsTestCaseMixin:
     def tearDown(self):
         fs_cleanup(filename=self.test_setting_config_file_object.name)
         SettingNamespace.invalidate_cache_all()
-        super(SmartSettingsTestCaseMixin, self).tearDown()
+        super().tearDown()
 
     @contextmanager
     def override_setting(self, global_name, method=None, value=None):
@@ -71,7 +71,7 @@ class SmartSettingTestMixin(EnvironmentTestCaseMixin):
     def tearDown(self):
         if self.test_config_file_object:
             fs_cleanup(filename=self.test_config_file_object.name)
-        super(SmartSettingTestMixin, self).tearDown()
+        super().tearDown()
 
     def _create_test_config_file(self, callback=None):
         if not self.test_setting_global_name:

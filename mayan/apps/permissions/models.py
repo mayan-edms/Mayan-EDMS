@@ -201,7 +201,7 @@ class Role(models.Model):
 
         with transaction.atomic():
             is_new = not self.pk
-            super(Role, self).save(*args, **kwargs)
+            super().save(*args, **kwargs)
             if is_new:
                 event_role_created.commit(
                     actor=_user, target=self

@@ -16,7 +16,7 @@ class TaskManagerApp(MayanAppConfig):
     verbose_name = _('Task manager')
 
     def ready(self):
-        super(TaskManagerApp, self).ready()
+        super().ready()
 
         CeleryQueue.load_modules()
 

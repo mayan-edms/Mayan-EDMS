@@ -49,7 +49,7 @@ class FileMetadataApp(MayanAppConfig):
     verbose_name = _('File metadata')
 
     def ready(self):
-        super(FileMetadataApp, self).ready()
+        super().ready()
 
         FileMetadataEntry = self.get_model(model_name='FileMetadataEntry')
         DocumentFileDriverEntry = self.get_model(

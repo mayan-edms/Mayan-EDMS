@@ -97,7 +97,7 @@ class ACLAPIViewTestMixin:
 
 class ACLTestCaseMixin(RoleTestCaseMixin, UserTestCaseMixin):
     def setUp(self):
-        super(ACLTestCaseMixin, self).setUp()
+        super().setUp()
         if hasattr(self, '_test_case_user'):
             self._test_case_role.groups.add(self._test_case_group)
 
@@ -118,7 +118,7 @@ class ACLTestMixin(RoleTestMixin, TestModelTestMixin):
     auto_create_acl_test_object = False
 
     def setUp(self):
-        super(ACLTestMixin, self).setUp()
+        super().setUp()
         if self.auto_create_test_role:
             self._create_test_role()
 

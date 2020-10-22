@@ -54,7 +54,7 @@ class CabinetDocumentTestCase(
     CabinetTestMixin, DocumentTestMixin, BaseTestCase
 ):
     def setUp(self):
-        super(CabinetDocumentTestCase, self).setUp()
+        super().setUp()
         self._create_test_cabinet()
 
     def test_addition_of_documents(self):

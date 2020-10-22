@@ -194,7 +194,7 @@ class UserTestCaseMixin:
     create_test_case_user = True
 
     def setUp(self):
-        super(UserTestCaseMixin, self).setUp()
+        super().setUp()
         if self.create_test_case_user:
             self._create_test_case_user()
             self._create_test_case_group()
@@ -211,7 +211,7 @@ class UserTestCaseMixin:
 
     def tearDown(self):
         self.client.logout()
-        super(UserTestCaseMixin, self).tearDown()
+        super().tearDown()
 
     def _create_test_case_group(self):
         self._test_case_group = Group.objects.create(
@@ -272,7 +272,7 @@ class UserTestMixin:
         self.test_users.append(self.test_user)
 
     def setUp(self):
-        super(UserTestMixin, self).setUp()
+        super().setUp()
         self.test_users = []
 
 

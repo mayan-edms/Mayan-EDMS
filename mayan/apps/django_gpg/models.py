@@ -108,7 +108,7 @@ class Key(models.Model):
         else:
             self.key_type = key_info['type']
 
-        super(Key, self).save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
     def sign_file(
         self, file_object, passphrase=None, clearsign=False, detached=False,

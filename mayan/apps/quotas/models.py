@@ -39,7 +39,7 @@ class Quota(models.Model):
 
         with transaction.atomic():
             is_new = not self.pk
-            super(Quota, self).save(*args, **kwargs)
+            super().save(*args, **kwargs)
             if is_new:
                 event_quota_created.commit(
                     actor=_user, target=self

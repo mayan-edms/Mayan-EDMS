@@ -79,7 +79,7 @@ class UserManagementApp(MayanAppConfig):
     verbose_name = _('User management')
 
     def ready(self):
-        super(UserManagementApp, self).ready()
+        super().ready()
 
         Group = apps.get_model(app_label='auth', model_name='Group')
         User = get_user_model()

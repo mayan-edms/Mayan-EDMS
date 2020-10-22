@@ -403,7 +403,7 @@ class BinaryDependency(Dependency):
 
     def __init__(self, *args, **kwargs):
         self.path = kwargs.pop('path')
-        super(BinaryDependency, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def _check(self):
         return Path(self.path).exists()
@@ -423,7 +423,7 @@ class JavaScriptDependency(Dependency):
 
     def __init__(self, *args, **kwargs):
         self.static_folder = kwargs.pop('static_folder', None)
-        return super(JavaScriptDependency, self).__init__(*args, **kwargs)
+        return super().__init__(*args, **kwargs)
 
     def _check(self):
         try:
@@ -526,7 +526,7 @@ class JavaScriptDependency(Dependency):
         try:
             package_info = self._read_package_file()
         except FileNotFoundError:
-            return super(JavaScriptDependency, self).get_copyright()
+            return super().get_copyright()
         else:
             copyright_text.append(
                 package_info.get('license') or package_info.get(
@@ -549,7 +549,7 @@ class JavaScriptDependency(Dependency):
         try:
             description = self._read_package_file().get('description')
         except FileNotFoundError:
-            return super(JavaScriptDependency, self).get_help_text()
+            return super().get_help_text()
         else:
             return description
 
@@ -639,7 +639,7 @@ class PythonDependency(Dependency):
 
     def __init__(self, *args, **kwargs):
         self.copyright_attribute = kwargs.pop('copyright_attribute', None)
-        super(PythonDependency, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def _check(self):
         try:
@@ -655,7 +655,7 @@ class PythonDependency(Dependency):
         if self.copyright_attribute:
             return import_string(dotted_path=self.copyright_attribute)
         else:
-            return super(PythonDependency, self).get_copyright()
+            return super().get_copyright()
 
     def get_latest_version(self):
         url = 'https://pypi.python.org/pypi/{}/json'.format(self.name)
@@ -684,7 +684,7 @@ class GoogleFontDependency(Dependency):
     def __init__(self, *args, **kwargs):
         self.url = kwargs.pop('url')
         self.static_folder = kwargs.pop('static_folder', None)
-        super(GoogleFontDependency, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def _check(self):
         return self.get_install_path().exists()

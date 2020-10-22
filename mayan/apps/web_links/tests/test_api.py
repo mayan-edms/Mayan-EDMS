@@ -194,7 +194,7 @@ class ResolvedWebLinkAPIViewTestCase(
     BaseAPITestCase
 ):
     def setUp(self):
-        super(ResolvedWebLinkAPIViewTestCase, self).setUp()
+        super().setUp()
         self._create_test_web_link(add_document_type=True)
 
     def test_resolved_web_link_detail_view_no_permission(self):

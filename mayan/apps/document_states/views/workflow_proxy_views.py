@@ -25,9 +25,7 @@ class WorkflowRuntimeProxyDocumentListView(
         )
 
     def get_extra_context(self):
-        context = super(
-            WorkflowRuntimeProxyDocumentListView, self
-        ).get_extra_context()
+        context = super().get_extra_context()
         context.update(
             {
                 'no_results_text': _(
@@ -78,9 +76,7 @@ class WorkflowRuntimeProxyStateDocumentListView(
         return self.external_object.get_documents()
 
     def get_extra_context(self):
-        context = super(
-            WorkflowRuntimeProxyStateDocumentListView, self
-        ).get_extra_context()
+        context = super().get_extra_context()
         context.update(
             {
                 'object': self.external_object,

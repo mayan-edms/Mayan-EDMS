@@ -198,7 +198,7 @@ class SmartLinkDocumentViewTestCase(
     GenericDocumentViewTestCase
 ):
     def setUp(self):
-        super(SmartLinkDocumentViewTestCase, self).setUp()
+        super().setUp()
         self._create_test_smart_links(add_test_document_type=True)
 
     def test_document_smart_link_list_view_no_permission(self):

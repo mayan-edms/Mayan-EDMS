@@ -113,7 +113,7 @@ class Cabinet(MPTTModel):
 
         with transaction.atomic():
             is_new = not self.pk
-            super(Cabinet, self).save(*args, **kwargs)
+            super().save(*args, **kwargs)
             if is_new:
                 event_cabinet_created.commit(
                     actor=_user, target=self

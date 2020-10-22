@@ -289,9 +289,7 @@ class RecentDocumentManager(models.Manager):
 
 class TrashCanManager(models.Manager):
     def get_queryset(self):
-        return super(
-            TrashCanManager, self
-        ).get_queryset().filter(in_trash=True)
+        return super().get_queryset().filter(in_trash=True)
 
 
 class TrashCanQuerySet(models.QuerySet):

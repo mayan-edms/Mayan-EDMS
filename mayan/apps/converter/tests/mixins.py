@@ -68,7 +68,7 @@ class AssetViewTestMixin:
 
 class LayerTestCaseMixin:
     def setUp(self):
-        super(LayerTestCaseMixin, self).setUp()
+        super().setUp()
         Layer.invalidate_cache()
 
 
@@ -79,7 +79,7 @@ class LayerTestMixin(PermissionTestMixin):
     )
 
     def setUp(self):
-        super(LayerTestMixin, self).setUp()
+        super().setUp()
         self._create_test_permission()
 
         self.test_layer_permission = self.test_permission
@@ -120,7 +120,7 @@ class TransformationTestMixin(LayerTestMixin):
             name = TEST_TRANSFORMATION_CLASS_NAME
 
             def execute_on(self, *args, **kwargs):
-                super(TestTransformation, self).execute_on(*args, **kwargs)
+                super().execute_on(*args, **kwargs)
 
                 return self.image
 

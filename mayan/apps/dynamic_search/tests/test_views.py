@@ -20,7 +20,7 @@ class AdvancedSearchViewTestCase(
     auto_upload_test_document = False
 
     def setUp(self):
-        super(AdvancedSearchViewTestCase, self).setUp()
+        super().setUp()
         self.test_document_count = 4
 
         # Upload many instances of the same test document

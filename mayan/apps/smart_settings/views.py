@@ -21,7 +21,7 @@ class SettingEditView(FormView):
             message=_('Setting updated successfully.'),
             request=self.request
         )
-        return super(SettingEditView, self).form_valid(form=form)
+        return super().form_valid(form=form)
 
     def get_extra_context(self):
         return {

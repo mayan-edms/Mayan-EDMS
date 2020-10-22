@@ -10,7 +10,7 @@ from .models import SmartLink, SmartLinkCondition
 
 class SmartLinkForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
-        super(SmartLinkForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.fields['dynamic_label'] = ModelTemplateField(
             initial_help_text=self.fields['dynamic_label'].help_text,
             label=self.fields['dynamic_label'].label, model=Document,
@@ -24,7 +24,7 @@ class SmartLinkForm(forms.ModelForm):
 
 class SmartLinkConditionForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
-        super(SmartLinkConditionForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         choices = []
         choices.append(
             (

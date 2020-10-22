@@ -25,7 +25,7 @@ class WorkflowActionSelectionForm(forms.Form):
     )
 
     def __init__(self, *args, **kwargs):
-        super(WorkflowActionSelectionForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.fields['klass'].choices = WorkflowAction.get_choices()
 
 
@@ -53,9 +53,7 @@ class WorkflowStateActionDynamicForm(DynamicModelForm):
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop('request')
         self.action_path = kwargs.pop('action_path')
-        super(
-            WorkflowStateActionDynamicForm, self
-        ).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         if self.instance.action_data:
             for key, value in json.loads(s=self.instance.action_data).items():
                 self.fields[key].initial = value
@@ -67,7 +65,7 @@ class WorkflowStateActionDynamicForm(DynamicModelForm):
         )
 
     def clean(self):
-        data = super(WorkflowStateActionDynamicForm, self).clean()
+        data = super().clean()
 
         # Consolidate the dynamic fields into a single JSON field called
         # 'action_data'.
@@ -104,7 +102,7 @@ class WorkflowStateForm(forms.ModelForm):
 class WorkflowTransitionForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         workflow = kwargs.pop('workflow')
-        super(WorkflowTransitionForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.fields[
             'origin_state'
         ].queryset = self.fields[
@@ -146,9 +144,7 @@ class WorkflowTransitionTriggerEventRelationshipForm(forms.Form):
     )
 
     def __init__(self, *args, **kwargs):
-        super(WorkflowTransitionTriggerEventRelationshipForm, self).__init__(
-            *args, **kwargs
-        )
+        super().__init__(*args, **kwargs)
 
         self.fields['namespace'].initial = self.initial['event_type'].namespace
         self.fields['label'].initial = self.initial['event_type'].label
@@ -185,7 +181,7 @@ class WorkflowInstanceTransitionSelectForm(forms.Form):
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user')
         workflow_instance = kwargs.pop('workflow_instance')
-        super(WorkflowInstanceTransitionSelectForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.fields[
             'transition'
         ].queryset = workflow_instance.get_transition_choices(_user=user)
@@ -201,5 +197,5 @@ class WorkflowPreviewForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         instance = kwargs.pop('instance', None)
-        super(WorkflowPreviewForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.fields['workflow'].initial = instance

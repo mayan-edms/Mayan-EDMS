@@ -18,7 +18,7 @@ class EventsViewTestCase(
     auto_upload_test_document = False
 
     def setUp(self):
-        super(EventsViewTestCase, self).setUp()
+        super().setUp()
         self._create_test_event_type()
         self._create_test_user()
         self.test_object = self.test_document_type

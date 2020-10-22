@@ -13,7 +13,7 @@ from .mixins import CabinetTestMixin
 
 class CabinetWorkflowActionTestCase(CabinetTestMixin, ActionTestCase):
     def setUp(self):
-        super(CabinetWorkflowActionTestCase, self).setUp()
+        super().setUp()
         self._create_test_cabinet()
 
     def test_cabinet_add_action(self):

@@ -39,7 +39,7 @@ class DashboardWidgetDocumentFilePagesTotal(DashboardWidgetNumeric):
             permission=permission_document_view, user=request.user,
             queryset=DocumentFilePage.objects.all()
         ).count()
-        return super(DashboardWidgetDocumentFilePagesTotal, self).render(request)
+        return super().render(request)
 
 
 class DashboardWidgetDocumentsTotal(DashboardWidgetNumeric):
@@ -58,7 +58,7 @@ class DashboardWidgetDocumentsTotal(DashboardWidgetNumeric):
             permission=permission_document_view, user=request.user,
             queryset=Document.objects.all()
         ).count()
-        return super(DashboardWidgetDocumentsTotal, self).render(request)
+        return super().render(request)
 
 
 class DashboardWidgetDocumentsInTrash(DashboardWidgetNumeric):
@@ -77,7 +77,7 @@ class DashboardWidgetDocumentsInTrash(DashboardWidgetNumeric):
             permission=permission_document_view, user=request.user,
             queryset=DeletedDocument.objects.all()
         ).count()
-        return super(DashboardWidgetDocumentsInTrash, self).render(request)
+        return super().render(request)
 
 
 class DashboardWidgetDocumentsTypesTotal(DashboardWidgetNumeric):
@@ -96,7 +96,7 @@ class DashboardWidgetDocumentsTypesTotal(DashboardWidgetNumeric):
             permission=permission_document_type_view, user=request.user,
             queryset=DocumentType.objects.all()
         ).count()
-        return super(DashboardWidgetDocumentsTypesTotal, self).render(request)
+        return super().render(request)
 
 
 class DashboardWidgetDocumentsNewThisMonth(DashboardWidgetNumeric):
@@ -111,7 +111,7 @@ class DashboardWidgetDocumentsNewThisMonth(DashboardWidgetNumeric):
 
     def render(self, request):
         self.count = new_documents_this_month(user=request.user)
-        return super(DashboardWidgetDocumentsNewThisMonth, self).render(request)
+        return super().render(request)
 
 
 class DashboardWidgetDocumentsPagesNewThisMonth(DashboardWidgetNumeric):
@@ -126,4 +126,4 @@ class DashboardWidgetDocumentsPagesNewThisMonth(DashboardWidgetNumeric):
 
     def render(self, request):
         self.count = new_document_pages_this_month(user=request.user)
-        return super(DashboardWidgetDocumentsPagesNewThisMonth, self).render(request)
+        return super().render(request)

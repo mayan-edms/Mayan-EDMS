@@ -87,7 +87,7 @@ class DocumentFileUploadViewTestMixin:
 
 class StagingFolderAPIViewTestMixin:
     def setUp(self):
-        super(StagingFolderTestMixin, self).setUp()
+        super().setUp()
         self.test_staging_folders = []
 
     def tearDown(self):
@@ -95,7 +95,7 @@ class StagingFolderAPIViewTestMixin:
             fs_cleanup(filename=test_staging_folder.folder_path)
             self.test_staging_folders.remove(test_staging_folder)
 
-        super(StagingFolderAPIViewTestMixin, self).tearDown()
+        super().tearDown()
 
     def _request_test_staging_folder_create_api_view(self):
         return self.post(
@@ -163,7 +163,7 @@ class StagingFolderFileAPIViewTestMixin:
 
 class StagingFolderTestMixin:
     def setUp(self):
-        super(StagingFolderTestMixin, self).setUp()
+        super().setUp()
         self.test_staging_folders = []
 
     def tearDown(self):
@@ -171,7 +171,7 @@ class StagingFolderTestMixin:
             fs_cleanup(filename=test_staging_folder.folder_path)
             self.test_staging_folders.remove(test_staging_folder)
 
-        super(StagingFolderTestMixin, self).tearDown()
+        super().tearDown()
 
     def _create_test_staging_folder(self):
         self.test_staging_folder = StagingFolderSource.objects.create(
@@ -206,7 +206,7 @@ class SourceTestMixin:
     auto_create_test_source = True
 
     def setUp(self):
-        super(SourceTestMixin, self).setUp()
+        super().setUp()
         if self.auto_create_test_source:
             self._create_test_source()
 

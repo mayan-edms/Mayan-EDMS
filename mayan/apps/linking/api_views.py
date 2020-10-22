@@ -51,9 +51,7 @@ class APIResolvedSmartLinkDocumentListView(generics.ListAPIView):
         """
         Extra context provided to the serializer class.
         """
-        context = super(
-            APIResolvedSmartLinkDocumentListView, self
-        ).get_serializer_context()
+        context = super().get_serializer_context()
         if self.kwargs:
             context.update(
                 {
@@ -92,7 +90,7 @@ class APIResolvedSmartLinkView(generics.RetrieveAPIView):
         """
         Extra context provided to the serializer class.
         """
-        context = super(APIResolvedSmartLinkView, self).get_serializer_context()
+        context = super().get_serializer_context()
         if self.kwargs:
             context.update(
                 {
@@ -127,7 +125,7 @@ class APIResolvedSmartLinkListView(generics.ListAPIView):
         """
         Extra context provided to the serializer class.
         """
-        context = super(APIResolvedSmartLinkListView, self).get_serializer_context()
+        context = super().get_serializer_context()
         if self.kwargs:
             context.update(
                 {
@@ -157,7 +155,7 @@ class APISmartLinkConditionListView(generics.ListCreateAPIView):
         """
         Extra context provided to the serializer class.
         """
-        context = super(APISmartLinkConditionListView, self).get_serializer_context()
+        context = super().get_serializer_context()
         if self.kwargs:
             context.update(
                 {
@@ -200,7 +198,7 @@ class APISmartLinkConditionView(generics.RetrieveUpdateDestroyAPIView):
         """
         Extra context provided to the serializer class.
         """
-        context = super(APISmartLinkConditionView, self).get_serializer_context()
+        context = super().get_serializer_context()
         if self.kwargs:
             context.update(
                 {
@@ -239,7 +237,7 @@ class APISmartLinkListView(generics.ListCreateAPIView):
         if not self.request:
             return None
 
-        return super(APISmartLinkListView, self).get_serializer(*args, **kwargs)
+        return super().get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -267,7 +265,7 @@ class APISmartLinkView(generics.RetrieveUpdateDestroyAPIView):
         if not self.request:
             return None
 
-        return super(APISmartLinkView, self).get_serializer(*args, **kwargs)
+        return super().get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':

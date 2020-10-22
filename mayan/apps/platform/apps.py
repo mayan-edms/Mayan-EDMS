@@ -12,4 +12,4 @@ class PlatformApp(MayanAppConfig):
     verbose_name = _('Platform')
 
     def ready(self):
-        super(PlatformApp, self).ready()
+        super().ready()

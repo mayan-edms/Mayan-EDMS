@@ -23,7 +23,7 @@ class FilteredModelFieldMixin:
 
         kwargs['queryset'] = self.source_queryset.none()
 
-        super(FilteredModelFieldMixin, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def reload(self):
         if self.permission and self.user:

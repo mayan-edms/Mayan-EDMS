@@ -93,7 +93,7 @@ class Tag(models.Model):
         created = not self.pk
 
         with transaction.atomic():
-            result = super(Tag, self).save(*args, **kwargs)
+            result = super().save(*args, **kwargs)
 
             if created:
                 event_tag_created.commit(actor=_user, target=self)

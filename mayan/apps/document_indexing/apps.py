@@ -55,7 +55,7 @@ class DocumentIndexingApp(MayanAppConfig):
     verbose_name = _('Document indexing')
 
     def ready(self):
-        super(DocumentIndexingApp, self).ready()
+        super().ready()
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'

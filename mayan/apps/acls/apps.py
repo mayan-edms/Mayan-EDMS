@@ -23,7 +23,7 @@ class ACLsApp(MayanAppConfig):
     verbose_name = _('ACLs')
 
     def ready(self):
-        super(ACLsApp, self).ready()
+        super().ready()
 
         AccessControlList = self.get_model(model_name='AccessControlList')
 

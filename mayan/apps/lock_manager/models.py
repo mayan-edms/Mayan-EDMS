@@ -47,4 +47,4 @@ class Lock(models.Model):
         if not self.timeout and not kwargs.get('timeout'):
             self.timeout = setting_default_lock_timeout.value
 
-        super(Lock, self).save(*args, **kwargs)
+        super().save(*args, **kwargs)

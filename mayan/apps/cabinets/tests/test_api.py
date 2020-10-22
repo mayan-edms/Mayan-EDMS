@@ -304,7 +304,7 @@ class DocumentCabinetAPITestCase(
     auto_upload_test_document = False
 
     def setUp(self):
-        super(DocumentCabinetAPITestCase, self).setUp()
+        super().setUp()
         self._upload_test_document()
         self._create_test_cabinet()
         self.test_cabinet.documents.add(self.test_document)

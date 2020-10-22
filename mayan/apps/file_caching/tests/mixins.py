@@ -15,7 +15,7 @@ STORAGE_NAME_FILE_CACHING_TEST_STORAGE = 'file_caching__test_storage'
 
 class CacheTestMixin:
     def setUp(self):
-        super(CacheTestMixin, self).setUp()
+        super().setUp()
         self.temporary_directory = mkdtemp()
         DefinedStorage(
             dotted_path='django.core.files.storage.FileSystemStorage',
@@ -26,7 +26,7 @@ class CacheTestMixin:
 
     def tearDown(self):
         fs_cleanup(filename=self.temporary_directory)
-        super(CacheTestMixin, self).tearDown()
+        super().tearDown()
 
     def _create_test_cache(self):
         self.test_cache = Cache.objects.create(

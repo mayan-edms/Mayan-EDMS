@@ -12,6 +12,6 @@ class BaseAPITestCase(APITestCase, GenericViewTestCase):
     expected_content_types = None
 
     def setUp(self):
-        super(BaseAPITestCase, self).setUp()
+        super().setUp()
         SettingNamespace.invalidate_cache_all()
         Permission.invalidate_cache()

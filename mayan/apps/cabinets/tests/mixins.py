@@ -74,7 +74,7 @@ class CabinetDocumentUploadTestMixin:
 
 class CabinetTestMixin:
     def setUp(self):
-        super(CabinetTestMixin, self).setUp()
+        super().setUp()
         if not hasattr(self, 'test_cabinets'):
             self.test_cabinets = []
 
@@ -90,7 +90,7 @@ class CabinetTestMixin:
 
 class CabinetViewTestMixin:
     def setUp(self):
-        super(CabinetViewTestMixin, self).setUp()
+        super().setUp()
         if not hasattr(self, 'test_cabinets'):
             self.test_cabinets = []
 

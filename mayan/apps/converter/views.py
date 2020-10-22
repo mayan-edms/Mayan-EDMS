@@ -151,9 +151,9 @@ class TransformationCreateView(
                 message=_('Error creating transformation: %s.') % exception,
                 request=self.request
             )
-            return super(TransformationCreateView, self).form_invalid(form)
+            return super().form_invalid(form=form)
         else:
-            return super(TransformationCreateView, self).form_valid(form)
+            return super().form_valid(form=form)
 
     def get_extra_context(self):
         return {
@@ -256,9 +256,9 @@ class TransformationEditView(LayerViewMixin, SingleObjectEditView):
             instance.save()
         except Exception as exception:
             logger.debug('Invalid form, exception: %s', exception)
-            return super(TransformationEditView, self).form_invalid(form=form)
+            return super().form_invalid(form=form)
         else:
-            return super(TransformationEditView, self).form_valid(form=form)
+            return super().form_valid(form=form)
 
     def get_extra_context(self):
         return {

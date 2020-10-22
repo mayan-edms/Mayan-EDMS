@@ -18,7 +18,7 @@ class QuotaBackendSelectionForm(forms.Form):
     )
 
     def __init__(self, *args, **kwargs):
-        super(QuotaBackendSelectionForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.fields['backend'].choices = QuotaBackend.as_choices()
 
 
@@ -30,7 +30,7 @@ class QuotaDynamicForm(DynamicModelForm):
 
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop('user', {})
-        result = super(QuotaDynamicForm, self).__init__(*args, **kwargs)
+        result = super().__init__(*args, **kwargs)
 
         # Handle filtered queryset fields
         for field in self.fields:
@@ -45,7 +45,7 @@ class QuotaDynamicForm(DynamicModelForm):
         return result
 
     def clean(self):
-        data = super(QuotaDynamicForm, self).clean()
+        data = super().clean()
         # Consolidate the dynamic fields into a single JSON field called
         # 'backend_data'.
         backend_data = {}

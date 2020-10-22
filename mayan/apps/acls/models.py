@@ -89,7 +89,7 @@ class AccessControlList(models.Model):
 
         with transaction.atomic():
             is_new = not self.pk
-            super(AccessControlList, self).save(*args, **kwargs)
+            super().save(*args, **kwargs)
             if is_new:
                 event_acl_created.commit(
                     actor=_user, target=self

@@ -65,7 +65,7 @@ class MetadataApp(MayanAppConfig):
     verbose_name = _('Metadata')
 
     def ready(self):
-        super(MetadataApp, self).ready()
+        super().ready()
 
         from .wizard_steps import WizardStepMetadata  # NOQA
 

@@ -64,7 +64,7 @@ class WorkflowStateSerializer(serializers.HyperlinkedModelSerializer):
 
     def create(self, validated_data):
         validated_data['workflow'] = self.context['workflow']
-        return super(WorkflowStateSerializer, self).create(validated_data)
+        return super().create(validated_data)
 
     def get_url(self, instance):
         return reverse(
@@ -137,9 +137,7 @@ class WritableWorkflowTransitionSerializer(serializers.ModelSerializer):
         )
 
         validated_data['workflow'] = self.context['workflow']
-        return super(WritableWorkflowTransitionSerializer, self).create(
-            validated_data
-        )
+        return super().create(validated_data=validated_data)
 
     def get_url(self, instance):
         return reverse(
@@ -163,8 +161,8 @@ class WritableWorkflowTransitionSerializer(serializers.ModelSerializer):
             pk=validated_data.pop('origin_state_pk')
         )
 
-        return super(WritableWorkflowTransitionSerializer, self).update(
-            instance, validated_data
+        return super().update(
+            instance=instance, validated_data=validated_data
         )
 
 
@@ -280,9 +278,7 @@ class WritableWorkflowSerializer(serializers.ModelSerializer):
             'document_types_pk_list', ''
         )
 
-        instance = super(WritableWorkflowSerializer, self).create(
-            validated_data
-        )
+        instance = super().create(validated_data=validated_data)
 
         if document_types_pk_list:
             self._add_document_types(
@@ -297,8 +293,8 @@ class WritableWorkflowSerializer(serializers.ModelSerializer):
             'document_types_pk_list', ''
         )
 
-        instance = super(WritableWorkflowSerializer, self).update(
-            instance, validated_data
+        instance = super().update(
+            instance=instance, validated_data=validated_data
         )
 
         if document_types_pk_list:

@@ -53,7 +53,7 @@ class APIDocumentMetadataListView(generics.ListCreateAPIView):
         if not self.request:
             return None
 
-        return super(APIDocumentMetadataListView, self).get_serializer(*args, **kwargs)
+        return super().get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -65,7 +65,7 @@ class APIDocumentMetadataListView(generics.ListCreateAPIView):
         """
         Extra context provided to the serializer class.
         """
-        context = super(APIDocumentMetadataListView, self).get_serializer_context()
+        context = super().get_serializer_context()
         if self.kwargs:
             context.update(
                 {
@@ -120,7 +120,7 @@ class APIDocumentMetadataView(generics.RetrieveUpdateDestroyAPIView):
         if not self.request:
             return None
 
-        return super(APIDocumentMetadataView, self).get_serializer(*args, **kwargs)
+        return super().get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -189,9 +189,7 @@ class APIDocumentTypeMetadataTypeListView(generics.ListCreateAPIView):
         if not self.request:
             return None
 
-        return super(
-            APIDocumentTypeMetadataTypeListView, self
-        ).get_serializer(*args, **kwargs)
+        return super().get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -203,7 +201,7 @@ class APIDocumentTypeMetadataTypeListView(generics.ListCreateAPIView):
         """
         Extra context provided to the serializer class.
         """
-        context = super(APIDocumentTypeMetadataTypeListView, self).get_serializer_context()
+        context = super().get_serializer_context()
         if self.kwargs:
             context.update(
                 {
@@ -248,7 +246,7 @@ class APIDocumentTypeMetadataTypeView(generics.RetrieveUpdateDestroyAPIView):
         if not self.request:
             return None
 
-        return super(APIDocumentTypeMetadataTypeView, self).get_serializer(*args, **kwargs)
+        return super().get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':

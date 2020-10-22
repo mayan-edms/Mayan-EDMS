@@ -23,7 +23,7 @@ class MIMETypeTestCase(DocumentTestMixin, BaseTestCase):
     test_document_filename = TEST_PDF_DOCUMENT_FILENAME
 
     def setUp(self):
-        super(MIMETypeTestCase, self).setUp()
+        super().setUp()
         resource.setrlimit(resource.RLIMIT_DATA, (MAXIMUM_HEAP_MEMORY, -1))
 
     def test_little_memory_full_file(self):

@@ -155,7 +155,7 @@ class UserCreateView(SingleObjectCreateView):
     view_permission = permission_user_create
 
     def form_valid(self, form):
-        super(UserCreateView, self).form_valid(form=form)
+        super().form_valid(form=form)
         return HttpResponseRedirect(
             reverse(
                 viewname='authentication:user_set_password', kwargs={

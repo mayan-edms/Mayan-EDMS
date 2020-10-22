@@ -129,7 +129,7 @@ class MetadataType(models.Model):
         created = not self.pk
 
         with transaction.atomic():
-            result = super(MetadataType, self).save(*args, **kwargs)
+            result = super().save(*args, **kwargs)
 
             if created:
                 event_metadata_type_created.commit(
@@ -200,7 +200,7 @@ class DocumentMetadata(models.Model):
         return force_text(self.metadata_type)
 
     def clean_fields(self, *args, **kwargs):
-        super(DocumentMetadata, self).clean_fields(*args, **kwargs)
+        super().clean_fields(*args, **kwargs)
 
         self.value = self.metadata_type.validate_value(
             document_type=self.document.document_type, value=self.value
@@ -220,7 +220,7 @@ class DocumentMetadata(models.Model):
 
         _user = kwargs.pop('_user', None)
         with transaction.atomic():
-            result = super(DocumentMetadata, self).delete(*args, **kwargs)
+            result = super().delete(*args, **kwargs)
 
             event_document_metadata_removed.commit(
                 action_object=self.metadata_type, actor=_user,
@@ -252,7 +252,7 @@ class DocumentMetadata(models.Model):
         created = not self.pk
 
         with transaction.atomic():
-            result = super(DocumentMetadata, self).save(*args, **kwargs)
+            result = super().save(*args, **kwargs)
 
             if created:
                 event_document_metadata_added.commit(
@@ -298,7 +298,7 @@ class DocumentTypeMetadataType(models.Model):
         _user = kwargs.pop('_user', None)
 
         with transaction.atomic():
-            result = super(DocumentTypeMetadataType, self).delete(*args, **kwargs)
+            result = super().delete(*args, **kwargs)
 
             event_metadata_type_relationship.commit(
                 action_object=self.document_type, actor=_user,
@@ -311,7 +311,7 @@ class DocumentTypeMetadataType(models.Model):
         _user = kwargs.pop('_user', None)
 
         with transaction.atomic():
-            result = super(DocumentTypeMetadataType, self).save(*args, **kwargs)
+            result = super().save(*args, **kwargs)
 
             event_metadata_type_relationship.commit(
                 action_object=self.document_type, actor=_user,

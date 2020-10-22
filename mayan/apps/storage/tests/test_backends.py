@@ -15,12 +15,12 @@ from .literals import TEST_CONTENT, TEST_FILE_NAME
 
 class EncryptedPassthroughStorageTestCase(BaseTestCase):
     def setUp(self):
-        super(EncryptedPassthroughStorageTestCase, self).setUp()
+        super().setUp()
         self.temporary_directory = mkdtemp()
 
     def tearDown(self):
         fs_cleanup(filename=self.temporary_directory)
-        super(EncryptedPassthroughStorageTestCase, self).tearDown()
+        super().tearDown()
 
     def test_file_save_and_load(self):
         storage = EncryptedPassthroughStorage(
@@ -56,12 +56,12 @@ class EncryptedPassthroughStorageTestCase(BaseTestCase):
 
 class ZipCompressedPassthroughStorageTestCase(BaseTestCase):
     def setUp(self):
-        super(ZipCompressedPassthroughStorageTestCase, self).setUp()
+        super().setUp()
         self.temporary_directory = mkdtemp()
 
     def tearDown(self):
         fs_cleanup(filename=self.temporary_directory)
-        super(ZipCompressedPassthroughStorageTestCase, self).tearDown()
+        super().tearDown()
 
     def test_file_save_and_load(self):
         storage = ZipCompressedPassthroughStorage(

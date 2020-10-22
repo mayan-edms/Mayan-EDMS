@@ -19,7 +19,7 @@ class TemplatingApp(MayanAppConfig):
     verbose_name = _('Templating')
 
     def ready(self):
-        super(TemplatingApp, self).ready()
+        super().ready()
         Document = apps.get_model(
             app_label='documents', model_name='Document'
         )

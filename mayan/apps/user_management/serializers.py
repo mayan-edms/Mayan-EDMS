@@ -87,7 +87,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     def create(self, validated_data):
         self.groups_pk_list = validated_data.pop('groups_pk_list', '')
         password = validated_data.pop('password', None)
-        instance = super(UserSerializer, self).create(validated_data)
+        instance = super().create(validated_data)
 
         if password:
             instance.set_password(password)
@@ -105,7 +105,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
             instance.set_password(validated_data['password'])
             validated_data.pop('password')
 
-        instance = super(UserSerializer, self).update(instance, validated_data)
+        instance = super().update(instance, validated_data)
 
         if self.groups_pk_list:
             instance.groups.clear()

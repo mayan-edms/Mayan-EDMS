@@ -60,13 +60,13 @@ class DocumentCheckInView(MultipleObjectConfirmActionView):
                 }
             )
         else:
-            super(DocumentCheckInView, self).get_post_action_redirect()
+            super().get_post_action_redirect()
 
     def get_source_queryset(self):
         # object_permission is None to disable restricting queryset mixin
         # and restrict the queryset ourselves from two permissions
 
-        source_queryset = super(DocumentCheckInView, self).get_source_queryset()
+        source_queryset = super().get_source_queryset()
 
         check_in_queryset = AccessControlList.objects.restrict_queryset(
             permission=permission_document_check_in, queryset=source_queryset,
@@ -131,7 +131,7 @@ class DocumentCheckOutView(MultipleObjectFormActionView):
                 }
             )
         else:
-            super(DocumentCheckOutView, self).get_post_action_redirect()
+            super().get_post_action_redirect()
 
     def object_action(self, form, instance):
         try:
@@ -169,7 +169,7 @@ class DocumentCheckOutListView(DocumentListView):
         )
 
     def get_extra_context(self):
-        context = super(DocumentCheckOutListView, self).get_extra_context()
+        context = super().get_extra_context()
         context.update(
             {
                 'no_results_icon': icon_check_out_info,

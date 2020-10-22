@@ -45,7 +45,7 @@ class DocumentTypeDocumentListView(ExternalObjectMixin, DocumentListView):
         return self.external_object.documents.all()
 
     def get_extra_context(self):
-        context = super(DocumentTypeDocumentListView, self).get_extra_context()
+        context = super().get_extra_context()
         context.update(
             {
                 'object': self.external_object,

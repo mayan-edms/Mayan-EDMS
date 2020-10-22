@@ -30,7 +30,7 @@ class DjangoGPGApp(MayanAppConfig):
     verbose_name = _('Django GPG')
 
     def ready(self):
-        super(DjangoGPGApp, self).ready()
+        super().ready()
 
         Key = self.get_model(model_name='Key')
 

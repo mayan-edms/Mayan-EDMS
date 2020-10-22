@@ -43,7 +43,7 @@ class LinkingApp(MayanAppConfig):
     verbose_name = _('Linking')
 
     def ready(self):
-        super(LinkingApp, self).ready()
+        super().ready()
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'

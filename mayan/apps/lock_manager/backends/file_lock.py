@@ -34,7 +34,7 @@ class FileLock(LockingBackend):
 
     @classmethod
     def acquire_lock(cls, name, timeout=None):
-        super(FileLock, cls).acquire_lock(name=name, timeout=timeout)
+        super().acquire_lock(name=name, timeout=timeout)
         instance = FileLock(
             name=name, timeout=timeout or setting_default_lock_timeout.value
         )
@@ -42,7 +42,7 @@ class FileLock(LockingBackend):
 
     @classmethod
     def purge_locks(cls):
-        super(FileLock, cls).purge_locks()
+        super().purge_locks()
         lock.acquire()
         with open(file=cls.lock_file, mode='r+') as file_object:
             locks.lock(f=file_object, flags=locks.LOCK_EX)
@@ -97,7 +97,7 @@ class FileLock(LockingBackend):
             lock.release()
 
     def release(self):
-        super(FileLock, self).release()
+        super().release()
 
         lock.acquire()
         with open(file=self.__class__.lock_file, mode='r+') as file_object:

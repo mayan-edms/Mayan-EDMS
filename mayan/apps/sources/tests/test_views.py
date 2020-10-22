@@ -333,7 +333,7 @@ class StagingFolderViewTestCase(
     StagingFolderTestMixin, StagingFolderViewTestMixin, GenericViewTestCase
 ):
     def setUp(self):
-        super(StagingFolderViewTestCase, self).setUp()
+        super().setUp()
         self._create_test_staging_folder()
         self._copy_test_document()
 

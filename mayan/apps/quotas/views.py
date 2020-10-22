@@ -92,7 +92,7 @@ class QuotaEditView(SingleObjectDynamicFormEditView):
     pk_url_kwarg = 'quota_id'
 
     def form_valid(self, form):
-        return super(QuotaEditView, self).form_valid(form)
+        return super().form_valid(form)
 
     def get_extra_context(self):
         return {

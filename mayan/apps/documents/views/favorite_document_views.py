@@ -23,7 +23,7 @@ class FavoriteDocumentListView(DocumentListView):
         return FavoriteDocument.objects.get_for_user(user=self.request.user)
 
     def get_extra_context(self):
-        context = super(FavoriteDocumentListView, self).get_extra_context()
+        context = super().get_extra_context()
         context.update(
             {
                 'no_results_icon': icon_favorite_document_list,

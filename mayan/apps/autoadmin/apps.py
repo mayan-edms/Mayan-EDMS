@@ -13,7 +13,7 @@ class AutoAdminAppConfig(MayanAppConfig):
     verbose_name = _('Auto administrator')
 
     def ready(self):
-        super(AutoAdminAppConfig, self).ready()
+        super().ready()
 
         post_save.connect(
             dispatch_uid='autoadmin_handler_account_password_change',

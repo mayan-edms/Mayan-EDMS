@@ -15,7 +15,7 @@ class MailerBackendMetaclass(type):
     _registry = {}
 
     def __new__(mcs, name, bases, attrs):
-        new_class = super(MailerBackendMetaclass, mcs).__new__(
+        new_class = super().__new__(
             mcs, name, bases, attrs
         )
         if not new_class.__module__ == 'mayan.apps.mailer.classes':

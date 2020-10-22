@@ -40,7 +40,7 @@ class MailerApp(MayanAppConfig):
     verbose_name = _('Mailer')
 
     def ready(self):
-        super(MailerApp, self).ready()
+        super().ready()
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'

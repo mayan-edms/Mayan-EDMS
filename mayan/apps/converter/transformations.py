@@ -249,7 +249,7 @@ class TransformationAssetPastePercent(TransformationAssetPaste):
     name = 'paste_asset_percent'
 
     def execute_on(self, *args, **kwargs):
-        super(TransformationAssetPaste, self).execute_on(*args, **kwargs)
+        super().execute_on(*args, **kwargs)
 
         try:
             left = float(self.left or '0')
@@ -352,7 +352,7 @@ class TransformationCrop(BaseTransformation):
     name = 'crop'
 
     def execute_on(self, *args, **kwargs):
-        super(TransformationCrop, self).execute_on(*args, **kwargs)
+        super().execute_on(*args, **kwargs)
 
         try:
             left = int(self.left or '0')
@@ -430,7 +430,7 @@ class TransformationDrawRectangle(BaseTransformation):
     name = 'draw_rectangle'
 
     def execute_on(self, *args, **kwargs):
-        super(TransformationDrawRectangle, self).execute_on(*args, **kwargs)
+        super().execute_on(*args, **kwargs)
 
         try:
             left = int(self.left or '0')
@@ -532,7 +532,7 @@ class TransformationDrawRectanglePercent(BaseTransformation):
     name = 'draw_rectangle_percent'
 
     def execute_on(self, *args, **kwargs):
-        super(TransformationDrawRectanglePercent, self).execute_on(*args, **kwargs)
+        super().execute_on(*args, **kwargs)
 
         try:
             left = float(self.left or '0')
@@ -629,7 +629,7 @@ class TransformationFlip(BaseTransformation):
     name = 'flip'
 
     def execute_on(self, *args, **kwargs):
-        super(TransformationFlip, self).execute_on(*args, **kwargs)
+        super().execute_on(*args, **kwargs)
 
         return self.image.transpose(Image.FLIP_TOP_BOTTOM)
 
@@ -640,7 +640,7 @@ class TransformationGaussianBlur(BaseTransformation):
     name = 'gaussianblur'
 
     def execute_on(self, *args, **kwargs):
-        super(TransformationGaussianBlur, self).execute_on(*args, **kwargs)
+        super().execute_on(*args, **kwargs)
 
         return self.image.filter(ImageFilter.GaussianBlur(radius=self.radius))
 
@@ -650,7 +650,7 @@ class TransformationLineArt(BaseTransformation):
     name = 'lineart'
 
     def execute_on(self, *args, **kwargs):
-        super(TransformationLineArt, self).execute_on(*args, **kwargs)
+        super().execute_on(*args, **kwargs)
 
         return self.image.convert('L').point(lambda x: 0 if x < 128 else 255, '1')
 
@@ -661,7 +661,7 @@ class TransformationMirror(BaseTransformation):
     name = 'mirror'
 
     def execute_on(self, *args, **kwargs):
-        super(TransformationMirror, self).execute_on(*args, **kwargs)
+        super().execute_on(*args, **kwargs)
 
         return self.image.transpose(Image.FLIP_LEFT_RIGHT)
 
@@ -672,7 +672,7 @@ class TransformationResize(BaseTransformation):
     name = 'resize'
 
     def execute_on(self, *args, **kwargs):
-        super(TransformationResize, self).execute_on(*args, **kwargs)
+        super().execute_on(*args, **kwargs)
 
         width = int(self.width)
         height = int(self.height or 1.0 * width / self.aspect)
@@ -699,7 +699,7 @@ class TransformationRotate(BaseTransformation):
     name = 'rotate'
 
     def execute_on(self, *args, **kwargs):
-        super(TransformationRotate, self).execute_on(*args, **kwargs)
+        super().execute_on(*args, **kwargs)
 
         self.degrees %= 360
 
@@ -725,7 +725,7 @@ class TransformationRotate90(TransformationRotate):
     name = 'rotate90'
 
     def __init__(self, **kwargs):
-        super(TransformationRotate90, self).__init__()
+        super().__init__()
         self.kwargs['degrees'] = 90
 
 
@@ -736,7 +736,7 @@ class TransformationRotate180(TransformationRotate):
     name = 'rotate180'
 
     def __init__(self, **kwargs):
-        super(TransformationRotate180, self).__init__()
+        super().__init__()
         self.kwargs['degrees'] = 180
 
 
@@ -747,7 +747,7 @@ class TransformationRotate270(TransformationRotate):
     name = 'rotate270'
 
     def __init__(self, **kwargs):
-        super(TransformationRotate270, self).__init__()
+        super().__init__()
         self.kwargs['degrees'] = 270
 
 
@@ -757,7 +757,7 @@ class TransformationUnsharpMask(BaseTransformation):
     name = 'unsharpmask'
 
     def execute_on(self, *args, **kwargs):
-        super(TransformationUnsharpMask, self).execute_on(*args, **kwargs)
+        super().execute_on(*args, **kwargs)
 
         return self.image.filter(
             ImageFilter.UnsharpMask(
@@ -773,7 +773,7 @@ class TransformationZoom(BaseTransformation):
     name = 'zoom'
 
     def execute_on(self, *args, **kwargs):
-        super(TransformationZoom, self).execute_on(*args, **kwargs)
+        super().execute_on(*args, **kwargs)
 
         if self.percent == 100:
             return self.image

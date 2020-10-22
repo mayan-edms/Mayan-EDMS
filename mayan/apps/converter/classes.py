@@ -400,7 +400,7 @@ class LayerLink(Link):
                 instance.icon_class = layer.get_icon()
 
     def __init__(self, action, layer, object_name=None, **kwargs):
-        super(LayerLink, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.action = action
         self.layer = layer
         self.object_name = object_name or _('transformation')

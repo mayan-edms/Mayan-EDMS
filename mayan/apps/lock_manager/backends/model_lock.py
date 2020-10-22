@@ -6,7 +6,7 @@ from .base import LockingBackend
 class ModelLock(LockingBackend):
     @classmethod
     def acquire_lock(cls, name, timeout=None):
-        super(ModelLock, cls).acquire_lock(name=name, timeout=timeout)
+        super().acquire_lock(name=name, timeout=timeout)
         Lock = apps.get_model(app_label='lock_manager', model_name='Lock')
         return ModelLock(
             model_instance=Lock.objects.acquire_lock(
@@ -16,7 +16,7 @@ class ModelLock(LockingBackend):
 
     @classmethod
     def purge_locks(cls):
-        super(ModelLock, cls).purge_locks()
+        super().purge_locks()
         Lock = apps.get_model(app_label='lock_manager', model_name='Lock')
         Lock.objects.select_for_update().delete()
 
@@ -25,5 +25,5 @@ class ModelLock(LockingBackend):
         self.name = model_instance.name
 
     def release(self):
-        super(ModelLock, self).release()
+        super().release()
         self.model_instance.release()

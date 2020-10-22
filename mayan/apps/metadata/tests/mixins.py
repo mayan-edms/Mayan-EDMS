@@ -230,7 +230,7 @@ class DocumentTypeMetadataTypeAPIViewTestMixin:
 
 class MetadataTypeAPIViewTestMixin:
     def setUp(self):
-        super(MetadataTypeAPIViewTestMixin, self).setUp()
+        super().setUp()
         self.test_metadata_types_fixtures_api_views = copy.copy(
             TEST_METADATA_TYPES_FIXTURES
         )
@@ -277,7 +277,7 @@ class MetadataTypeAPIViewTestMixin:
 
 class MetadataTypeTestMixin:
     def setUp(self):
-        super(MetadataTypeTestMixin, self).setUp()
+        super().setUp()
         self.test_metadata_types_fixtures_models = copy.copy(
             TEST_METADATA_TYPES_FIXTURES
         )
@@ -299,7 +299,7 @@ class MetadataTypeTestMixin:
 
 class MetadataTypeViewTestMixin:
     def setUp(self):
-        super(MetadataTypeViewTestMixin, self).setUp()
+        super().setUp()
         self.test_metadata_types_fixtures_views = copy.copy(
             TEST_METADATA_TYPES_FIXTURES
         )

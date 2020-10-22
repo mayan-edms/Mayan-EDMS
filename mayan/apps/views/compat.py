@@ -27,7 +27,7 @@ class FileResponse(DjangoFileResponse):
     def _set_streaming_content(self, value):
         if not hasattr(value, 'read'):
             self.file_to_stream = None
-            result = super(FileResponse, self)._set_streaming_content(value)
+            result = super()._set_streaming_content(value)
             self._set_as_attachment(filename=self.filename)
 
             return result
@@ -37,7 +37,7 @@ class FileResponse(DjangoFileResponse):
             self._closable_objects.append(filelike)
         value = iter(lambda: filelike.read(self.block_size), b'')
         self.set_headers(filelike)
-        super(FileResponse, self)._set_streaming_content(value)
+        super()._set_streaming_content(value)
 
     def set_headers(self, filelike):
         """

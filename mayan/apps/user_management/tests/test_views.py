@@ -158,7 +158,7 @@ class GroupViewsTestCase(
 
 class SuperUserViewTestCase(UserViewTestMixin, GenericViewTestCase):
     def setUp(self):
-        super(SuperUserViewTestCase, self).setUp()
+        super().setUp()
         self._create_test_superuser()
 
     def test_superuser_delete_view_with_access(self):
@@ -342,7 +342,7 @@ class MetadataLookupIntegrationTestCase(
     MetadataTypeTestMixin, GenericDocumentViewTestCase
 ):
     def setUp(self):
-        super(MetadataLookupIntegrationTestCase, self).setUp()
+        super().setUp()
         self._create_test_metadata_type()
         self.test_document_type.metadata.create(
             metadata_type=self.test_metadata_type

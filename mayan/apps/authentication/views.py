@@ -86,7 +86,7 @@ class MayanLoginView(StrongholdPublicMixin, LoginView):
     redirect_authenticated_user = True
 
     def form_valid(self, form):
-        result = super(MayanLoginView, self).form_valid(form=form)
+        result = super().form_valid(form=form)
         remember_me = form.cleaned_data.get('remember_me')
 
         # remember_me values:
@@ -140,7 +140,7 @@ class MayanPasswordChangeView(PasswordChangeView):
                 redirect_to=reverse(viewname=setting_home_view.view)
             )
 
-        return super(MayanPasswordChangeView, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class MayanPasswordResetCompleteView(StrongholdPublicMixin, PasswordResetCompleteView):
@@ -187,12 +187,12 @@ class MayanPasswordResetView(StrongholdPublicMixin, PasswordResetView):
     def get(self, *args, **kwargs):
         if setting_disable_password_reset.value:
             return redirect(to=setting_home_view.value)
-        return super(MayanPasswordResetView, self).get(*args, **kwargs)
+        return super().get(*args, **kwargs)
 
     def post(self, *args, **kwargs):
         if setting_disable_password_reset.value:
             return redirect(to=setting_home_view.value)
-        return super(MayanPasswordResetView, self).post(*args, **kwargs)
+        return super().post(*args, **kwargs)
 
 
 class UserSetPasswordView(MultipleObjectFormActionView):

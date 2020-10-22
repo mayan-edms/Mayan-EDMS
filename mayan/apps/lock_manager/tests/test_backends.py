@@ -15,7 +15,7 @@ class FileLockTestCase(BaseTestCase):
     backend_string = 'mayan.apps.lock_manager.backends.file_lock.FileLock'
 
     def setUp(self):
-        super(FileLockTestCase, self).setUp()
+        super().setUp()
         self.locking_backend = import_string(dotted_path=self.backend_string)
 
     def test_exclusive(self):

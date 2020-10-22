@@ -11,13 +11,13 @@ class AutoAdminManagementCommandTestCase(BaseTestCase):
     create_test_case_user = False
 
     def setUp(self):
-        super(AutoAdminManagementCommandTestCase, self).setUp()
+        super().setUp()
         with mute_stdout():
             management.call_command('createautoadmin')
 
     def tearDown(self):
         AutoAdminSingleton.objects.all().delete()
-        super(AutoAdminManagementCommandTestCase, self).tearDown()
+        super().tearDown()
 
     def test_autoadmin_creation(self):
         autoadmin = AutoAdminSingleton.objects.get()

@@ -11,9 +11,9 @@ from ..workflow_actions import AttachTagAction, RemoveTagAction
 from .mixins import TagTestMixin
 
 
-class TagActionTestCase(TagTestMixin, ActionTestCase):
+class TagWorkflowActionTestCase(TagTestMixin, ActionTestCase):
     def setUp(self):
-        super(TagActionTestCase, self).setUp()
+        super().setUp()
         self._create_test_tag()
 
     def test_tag_attach_action(self):
@@ -32,7 +32,7 @@ class TagActionTestCase(TagTestMixin, ActionTestCase):
         self.assertEqual(self.test_tag.documents.count(), 0)
 
 
-class TagActionViewTestCase(
+class TagWorkflowActionViewTestCase(
     WorkflowStateActionViewTestMixin, WorkflowTestMixin, GenericViewTestCase
 ):
     def test_tag_attach_action_create_view(self):

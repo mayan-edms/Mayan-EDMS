@@ -113,7 +113,7 @@ def get_storage_subclass(dotted_path):
 
     class StorageSubclass(imported_storage_class):
         def __init__(self, *args, **kwargs):
-            return super(StorageSubclass, self).__init__(*args, **kwargs)
+            return super().__init__(*args, **kwargs)
 
         def __eq__(self, other):
             return True

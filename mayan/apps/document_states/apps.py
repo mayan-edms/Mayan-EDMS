@@ -72,7 +72,7 @@ class DocumentStatesApp(MayanAppConfig):
     verbose_name = _('Workflows')
 
     def ready(self):
-        super(DocumentStatesApp, self).ready()
+        super().ready()
 
         Action = apps.get_model(
             app_label='actstream', model_name='Action'

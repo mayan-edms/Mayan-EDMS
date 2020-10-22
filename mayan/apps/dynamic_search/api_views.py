@@ -35,7 +35,7 @@ class APISearchView(SearchModelAPIMixin, generics.ListAPIView):
 
     def get_serializer(self, *args, **kwargs):
         if self.get_search_model_name():
-            return super(APISearchView, self).get_serializer(*args, **kwargs)
+            return super().get_serializer(*args, **kwargs)
         else:
             return None
 
@@ -74,7 +74,7 @@ class APIAdvancedSearchView(SearchModelAPIMixin, generics.ListAPIView):
 
     def get_serializer(self, *args, **kwargs):
         if self.get_search_model_name():
-            return super(APIAdvancedSearchView, self).get_serializer(*args, **kwargs)
+            return super().get_serializer(*args, **kwargs)
         else:
             return None
 

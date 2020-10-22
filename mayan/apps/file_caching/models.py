@@ -111,7 +111,7 @@ class Cache(models.Model):
         _user = kwargs.pop('_user', None)
         with transaction.atomic():
             is_new = not self.pk
-            result = super(Cache, self).save(*args, **kwargs)
+            result = super().save(*args, **kwargs)
             if is_new:
                 event_cache_created.commit(
                     actor=_user, target=self
@@ -192,7 +192,7 @@ class CachePartition(models.Model):
 
     def delete(self, *args, **kwargs):
         self.purge()
-        return super(CachePartition, self).delete(*args, **kwargs)
+        return super().delete(*args, **kwargs)
 
     def get_file(self, filename):
         try:
@@ -233,7 +233,7 @@ class CachePartitionFile(models.Model):
 
     def delete(self, *args, **kwargs):
         self.partition.cache.storage.delete(name=self.full_filename)
-        return super(CachePartitionFile, self).delete(*args, **kwargs)
+        return super().delete(*args, **kwargs)
 
     def exists(self):
         return self.partition.cache.storage.exists(name=self.full_filename)

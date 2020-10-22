@@ -29,7 +29,7 @@ class Tesseract(OCRBackendBase):
         """
         Execute the command line binary of tesseract
         """
-        super(Tesseract, self).execute(*args, **kwargs)
+        super().execute(*args, **kwargs)
 
         if self.command_tesseract:
             image = self.converter.get_page()

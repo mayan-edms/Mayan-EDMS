@@ -35,7 +35,7 @@ class APITagListView(generics.ListCreateAPIView):
     #    if not self.request:
     #        return None
 
-    #    return super(APITagListView, self).get_serializer(*args, **kwargs)
+    #    return super().get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -63,7 +63,7 @@ class APITagView(generics.RetrieveUpdateDestroyAPIView):
     #    if not self.request:
     #        return None
 
-    #    return super(APITagView, self).get_serializer(*args, **kwargs)
+    #    return super().get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -121,7 +121,7 @@ class APIDocumentTagListView(generics.ListCreateAPIView):
     #    if not self.request:
     #        return None
 
-    #    return super(APIDocumentTagListView, self).get_serializer(*args, **kwargs)
+    #    return super().get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -179,13 +179,13 @@ class APIDocumentTagView(generics.RetrieveDestroyAPIView):
     #    if not self.request:
     #        return None
 
-    #    return super(APIDocumentTagView, self).get_serializer(*args, **kwargs)
+    #    return super().get_serializer(*args, **kwargs)
 
     def get_serializer_context(self):
         """
         Extra context provided to the serializer class.
         """
-        context = super(APIDocumentTagView, self).get_serializer_context()
+        context = super().get_serializer_context()
         if self.kwargs:
             context.update(
                 {

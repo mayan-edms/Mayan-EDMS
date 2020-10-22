@@ -83,7 +83,7 @@ class WorkflowStateActionModelTestCase(
     WorkflowStateActionTestMixin, WorkflowTestMixin, GenericDocumentTestCase
 ):
     def setUp(self):
-        super(WorkflowStateActionModelTestCase, self).setUp()
+        super().setUp()
         self._create_test_workflow()
         self._create_test_workflow_states()
         self._create_test_workflow_transition()

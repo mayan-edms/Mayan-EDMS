@@ -17,7 +17,7 @@ class DependenciesLicensesForm(forms.Form):
     )
 
     def __init__(self, *args, **kwargs):
-        super(DependenciesLicensesForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         copyright_texts = []
 
         for dependency in Dependency.get_all():

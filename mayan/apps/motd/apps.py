@@ -40,7 +40,7 @@ class MOTDApp(MayanAppConfig):
     verbose_name = _('Message of the day')
 
     def ready(self):
-        super(MOTDApp, self).ready()
+        super().ready()
 
         Message = self.get_model(model_name='Message')
 

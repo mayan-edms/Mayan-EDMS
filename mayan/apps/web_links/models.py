@@ -76,7 +76,7 @@ class WebLink(models.Model):
 
         with transaction.atomic():
             is_new = not self.pk
-            super(WebLink, self).save(*args, **kwargs)
+            super().save(*args, **kwargs)
             if is_new:
                 event_web_link_created.commit(
                     actor=_user, target=self

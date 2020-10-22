@@ -214,13 +214,13 @@ class IntervalBaseModel(OutOfProcessSource):
     def delete(self, *args, **kwargs):
         pk = self.pk
         with transaction.atomic():
-            super(IntervalBaseModel, self).delete(*args, **kwargs)
+            super().delete(*args, **kwargs)
             self._delete_periodic_task(pk=pk)
 
     def save(self, *args, **kwargs):
         new_source = not self.pk
         with transaction.atomic():
-            super(IntervalBaseModel, self).save(*args, **kwargs)
+            super().save(*args, **kwargs)
 
             if not new_source:
                 self._delete_periodic_task()

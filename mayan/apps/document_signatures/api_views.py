@@ -59,17 +59,13 @@ class APIDocumentSignDetachedView(generics.GenericAPIView):
         if not self.request:
             return None
 
-        return super(
-            APIDocumentSignDetachedView, self
-        ).get_serializer(*args, **kwargs)
+        return super().get_serializer(*args, **kwargs)
 
     def get_serializer_context(self):
         """
         Extra context provided to the serializer class.
         """
-        context = super(
-            APIDocumentSignDetachedView, self
-        ).get_serializer_context()
+        context = super().get_serializer_context()
 
         if self.kwargs:
             context.update(
@@ -128,17 +124,13 @@ class APIDocumentSignEmbeddedView(generics.GenericAPIView):
         if not self.request:
             return None
 
-        return super(
-            APIDocumentSignEmbeddedView, self
-        ).get_serializer(*args, **kwargs)
+        return super().get_serializer(*args, **kwargs)
 
     def get_serializer_context(self):
         """
         Extra context provided to the serializer class.
         """
-        context = super(
-            APIDocumentSignEmbeddedView, self
-        ).get_serializer_context()
+        context = super().get_serializer_context()
 
         if self.kwargs:
             context.update(
@@ -200,17 +192,13 @@ class APIDocumentDetachedSignatureListView(generics.ListCreateAPIView):
         if not self.request:
             return None
 
-        return super(
-            APIDocumentDetachedSignatureListView, self
-        ).get_serializer(*args, **kwargs)
+        return super().get_serializer(*args, **kwargs)
 
     def get_serializer_context(self):
         """
         Extra context provided to the serializer class.
         """
-        context = super(
-            APIDocumentDetachedSignatureListView, self
-        ).get_serializer_context()
+        context = super().get_serializer_context()
         if self.kwargs:
             context.update(
                 {
@@ -265,7 +253,7 @@ class APIDocumentDetachedSignatureView(generics.RetrieveDestroyAPIView):
         """
         Extra context provided to the serializer class.
         """
-        context = super(APIDocumentDetachedSignatureView, self).get_serializer_context()
+        context = super().get_serializer_context()
         if self.kwargs:
             context.update(
                 {
@@ -314,17 +302,13 @@ class APIDocumentEmbeddedSignatureListView(generics.ListAPIView):
         if not self.request:
             return None
 
-        return super(
-            APIDocumentEmbeddedSignatureListView, self
-        ).get_serializer(*args, **kwargs)
+        return super().get_serializer(*args, **kwargs)
 
     def get_serializer_context(self):
         """
         Extra context provided to the serializer class.
         """
-        context = super(
-            APIDocumentEmbeddedSignatureListView, self
-        ).get_serializer_context()
+        context = super().get_serializer_context()
         if self.kwargs:
             context.update(
                 {
@@ -376,7 +360,7 @@ class APIDocumentEmbeddedSignatureView(generics.RetrieveAPIView):
         """
         Extra context provided to the serializer class.
         """
-        context = super(APIDocumentEmbeddedSignatureView, self).get_serializer_context()
+        context = super().get_serializer_context()
         if self.kwargs:
             context.update(
                 {

@@ -52,7 +52,7 @@ class WritableCommentSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         validated_data['document'] = self.context['document']
         validated_data['user'] = self.context['request'].user
-        return super(WritableCommentSerializer, self).create(validated_data)
+        return super().create(validated_data)
 
     def get_document_comments_url(self, instance):
         return reverse(

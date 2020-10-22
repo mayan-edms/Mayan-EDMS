@@ -28,7 +28,7 @@ class SmartLinkConditionSerializer(serializers.HyperlinkedModelSerializer):
 
     def create(self, validated_data):
         validated_data['smart_link'] = self.context['smart_link']
-        return super(SmartLinkConditionSerializer, self).create(validated_data)
+        return super().create(validated_data)
 
     def get_smart_link_url(self, instance):
         return reverse(

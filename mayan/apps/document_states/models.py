@@ -98,7 +98,7 @@ class Workflow(models.Model):
 
     def delete(self, *args, **kwargs):
         self.cache_partition.delete()
-        return super(Workflow, self).delete(*args, **kwargs)
+        return super().delete(*args, **kwargs)
 
     def generate_image(self):
         cache_filename = '{}'.format(self.get_hash())
@@ -282,7 +282,7 @@ class Workflow(models.Model):
         created = not self.pk
 
         with transaction.atomic():
-            result = super(Workflow, self).save(*args, **kwargs)
+            result = super().save(*args, **kwargs)
 
             if created:
                 event_workflow_created.commit(actor=_user, target=self)
@@ -504,7 +504,7 @@ class WorkflowInstanceLogEntry(models.Model):
 
     def save(self, *args, **kwargs):
         with transaction.atomic():
-            result = super(WorkflowInstanceLogEntry, self).save(*args, **kwargs)
+            result = super().save(*args, **kwargs)
             context = self.workflow_instance.get_context()
             context.update(
                 {
@@ -645,7 +645,7 @@ class WorkflowState(models.Model):
 
         if self.initial:
             self.workflow.states.all().update(initial=False)
-        return super(WorkflowState, self).save(*args, **kwargs)
+        return super().save(*args, **kwargs)
 
 
 class WorkflowStateAction(models.Model):

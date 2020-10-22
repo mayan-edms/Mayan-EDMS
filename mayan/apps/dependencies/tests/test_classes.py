@@ -11,7 +11,7 @@ from .mocks import TestDependency
 
 class DependencyClassTestCase(BaseTestCase):
     def setUp(self):
-        super(DependencyClassTestCase, self).setUp()
+        super().setUp()
 
         self.test_replace_text = 'replaced_text'
 
@@ -28,7 +28,7 @@ class DependencyClassTestCase(BaseTestCase):
         )
 
     def tearDown(self):
-        super(DependencyClassTestCase, self).tearDown()
+        super().tearDown()
         shutil.rmtree(self.temporary_directory, ignore_errors=True)
 
     def _patch_test_file(self):

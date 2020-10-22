@@ -134,7 +134,7 @@ class SmartLink(models.Model):
 
         with transaction.atomic():
             is_new = not self.pk
-            super(SmartLink, self).save(*args, **kwargs)
+            super().save(*args, **kwargs)
             if is_new:
                 event_smart_link_created.commit(
                     actor=_user, target=self

@@ -39,9 +39,7 @@ class WorkflowTemplateTransitionCreateView(ExternalObjectMixin, SingleObjectCrea
         }
 
     def get_form_kwargs(self):
-        kwargs = super(
-            WorkflowTemplateTransitionCreateView, self
-        ).get_form_kwargs()
+        kwargs = super().get_form_kwargs()
         kwargs['workflow'] = self.external_object
         return kwargs
 
@@ -109,9 +107,7 @@ class WorkflowTemplateTransitionEditView(SingleObjectEditView):
         }
 
     def get_form_kwargs(self):
-        kwargs = super(
-            WorkflowTemplateTransitionEditView, self
-        ).get_form_kwargs()
+        kwargs = super().get_form_kwargs()
         kwargs['workflow'] = self.object.workflow
         return kwargs
 
@@ -168,9 +164,7 @@ class WorkflowTemplateTransitionTriggerEventListView(ExternalObjectMixin, FormVi
 
     def dispatch(self, *args, **kwargs):
         EventType.refresh()
-        return super(
-            WorkflowTemplateTransitionTriggerEventListView, self
-        ).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
     def form_valid(self, form):
         try:
@@ -190,9 +184,7 @@ class WorkflowTemplateTransitionTriggerEventListView(ExternalObjectMixin, FormVi
                 ), request=self.request
             )
 
-        return super(
-            WorkflowTemplateTransitionTriggerEventListView, self
-        ).form_valid(form=form)
+        return super().form_valid(form=form)
 
     def get_extra_context(self):
         return {

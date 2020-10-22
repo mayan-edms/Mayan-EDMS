@@ -176,7 +176,7 @@ class Index(models.Model):
 
         with transaction.atomic():
             is_new = not self.pk
-            super(Index, self).save(*args, **kwargs)
+            super().save(*args, **kwargs)
             if is_new:
                 # Automatically create the root index template node
                 IndexTemplateNode.objects.get_or_create(parent=None, index=self)

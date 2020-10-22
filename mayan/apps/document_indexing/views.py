@@ -243,9 +243,7 @@ class TemplateNodeCreateView(SingleObjectCreateView):
             permissions=(permission_document_indexing_edit,), user=request.user
         )
 
-        return super(
-            TemplateNodeCreateView, self
-        ).dispatch(request, *args, **kwargs)
+        return super().dispatch(request, *args, **kwargs)
 
     def get_extra_context(self):
         return {
@@ -356,7 +354,7 @@ class IndexInstanceNodeView(DocumentListView):
 
         if self.index_instance_node:
             if self.index_instance_node.index_template_node.link_documents:
-                return super(IndexInstanceNodeView, self).dispatch(
+                return super().dispatch(
                     request, *args, **kwargs
                 )
 
@@ -368,7 +366,7 @@ class IndexInstanceNodeView(DocumentListView):
                 return self.index_instance_node.documents.all()
 
     def get_extra_context(self):
-        context = super(IndexInstanceNodeView, self).get_extra_context()
+        context = super().get_extra_context()
         context.update(
             {
                 'column_class': 'col-xs-12 col-sm-6 col-md-4 col-lg-3',
@@ -397,7 +395,7 @@ class IndexInstanceNodeView(DocumentListView):
     def get_source_queryset(self):
         if self.index_instance_node:
             if self.index_instance_node.index_template_node.link_documents:
-                return super(IndexInstanceNodeView, self).get_source_queryset()
+                return super().get_source_queryset()
             else:
                 self.object_permission = None
                 return self.index_instance_node.get_children().order_by(
@@ -465,7 +463,7 @@ class IndexesRebuildView(FormView):
             }, request=self.request
         )
 
-        return super(IndexesRebuildView, self).form_valid(form=form)
+        return super().form_valid(form=form)
 
     def get_form_extra_kwargs(self):
         return {
@@ -498,7 +496,7 @@ class IndexesResetView(FormView):
             }, request=self.request
         )
 
-        return super(IndexesResetView, self).form_valid(form=form)
+        return super().form_valid(form=form)
 
     def get_form_extra_kwargs(self):
         return {

@@ -86,7 +86,7 @@ class WritableCabinetSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         documents_pk_list = validated_data.pop('documents_pk_list', '')
 
-        instance = super(WritableCabinetSerializer, self).create(validated_data)
+        instance = super().create(validated_data=validated_data)
 
         if documents_pk_list:
             self._add_documents(
@@ -98,8 +98,8 @@ class WritableCabinetSerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         documents_pk_list = validated_data.pop('documents_pk_list', '')
 
-        instance = super(WritableCabinetSerializer, self).update(
-            instance, validated_data
+        instance = super().update(
+            instance=instance, validated_data=validated_data
         )
 
         if documents_pk_list:
@@ -119,7 +119,7 @@ class WritableCabinetSerializer(serializers.ModelSerializer):
         # sets it as required.
         result.setdefault('parent')
 
-        data = super(WritableCabinetSerializer, self).run_validation(result)
+        data = super().run_validation(data=result)
 
         # Explicit validation of uniqueness of parent+label as the provided
         # unique_together check in Meta is not working for all 100% cases

@@ -17,7 +17,7 @@ from .literals import ZIP_CHUNK_SIZE, ZIP_MEMBER_FILENAME
 class BufferedZipFile(BufferedFile):
     def __init__(self, *args, **kwargs):
         self.member_name = kwargs.pop('member_name')
-        super(BufferedZipFile, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.binary_mode = 'b' in self.mode
         self.zip_container_file_object = zipfile.ZipFile(
             file=self.file_object

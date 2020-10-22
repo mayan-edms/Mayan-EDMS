@@ -63,7 +63,7 @@ Image.MAX_IMAGE_PIXELS = pillow_maximum_image_pixels
 
 class Python(ConverterBase):
     def convert(self, *args, **kwargs):
-        super(Python, self).convert(*args, **kwargs)
+        super().convert(*args, **kwargs)
 
         if self.mime_type == 'application/pdf' and pdftoppm:
             new_file_object = NamedTemporaryFile()
@@ -85,7 +85,7 @@ class Python(ConverterBase):
                 new_file_object.close()
 
     def get_page_count(self):
-        super(Python, self).get_page_count()
+        super().get_page_count()
 
         page_count = 1
 

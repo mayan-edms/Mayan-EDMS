@@ -6,9 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 
 class DocumentMetadataSameTypeMixin:
     def dispatch(self, request, *args, **kwargs):
-        result = super(DocumentMetadataSameTypeMixin, self).dispatch(
-            request, *args, **kwargs
-        )
+        result = super().dispatch(request=request, *args, **kwargs)
 
         queryset = self.get_object_list()
 

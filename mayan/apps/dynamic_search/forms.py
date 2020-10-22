@@ -17,7 +17,7 @@ class AdvancedSearchForm(forms.Form):
         kwargs['data'] = kwargs['data'].copy()
         kwargs['data']['_match_all'] = setting_match_all_default_value.value
         self.search_model = kwargs.pop('search_model')
-        super(AdvancedSearchForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
         for name, label in self.search_model.get_fields_simple_list():
             self.fields[name] = forms.CharField(

@@ -26,7 +26,7 @@ class DocumentDuplicatesListView(ExternalObjectMixin, DocumentListView):
     external_object_pk_url_kwarg = 'document_id'
 
     def get_extra_context(self):
-        context = super(DocumentDuplicatesListView, self).get_extra_context()
+        context = super().get_extra_context()
         context.update(
             {
                 'no_results_icon': icon_duplicated_document_list,
@@ -56,7 +56,7 @@ class DuplicatedDocumentListView(DocumentListView):
         return DuplicatedDocument.objects.get_duplicated_documents()
 
     def get_extra_context(self):
-        context = super(DuplicatedDocumentListView, self).get_extra_context()
+        context = super().get_extra_context()
         context.update(
             {
                 'no_results_icon': icon_duplicated_document_list,

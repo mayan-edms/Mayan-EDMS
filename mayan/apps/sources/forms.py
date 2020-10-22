@@ -40,7 +40,7 @@ class UploadBaseForm(forms.Form):
         show_expand = kwargs.pop('show_expand', False)
         self.source = kwargs.pop('source')
 
-        super(UploadBaseForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
         if show_expand:
             self.fields['expand'] = forms.BooleanField(
@@ -58,7 +58,7 @@ class StagingUploadForm(UploadBaseForm):
     StagingFile class passed as 'cls' argument
     """
     def __init__(self, *args, **kwargs):
-        super(StagingUploadForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
         try:
             self.fields['staging_file_id'].choices = [

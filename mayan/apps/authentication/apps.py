@@ -25,7 +25,7 @@ class AuthenticationApp(MayanAppConfig):
     verbose_name = _('Authentication')
 
     def ready(self):
-        super(AuthenticationApp, self).ready()
+        super().ready()
 
         User = get_user_model()
 

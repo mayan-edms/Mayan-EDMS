@@ -93,9 +93,7 @@ class DocumentFileSignatureDetailForm(DetailForm):
             )
 
         kwargs['extra_fields'] = extra_fields
-        super(
-            DocumentFileSignatureDetailForm, self
-        ).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     class Meta:
         fields = ()

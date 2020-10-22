@@ -128,7 +128,7 @@ class DocumentCreateWizard(SessionWizardView):
         cls.condition_dict = dict(
             WizardStep.get_choices(attribute_name='condition')
         )
-        return super(DocumentCreateWizard, cls).as_view(*args, **kwargs)
+        return super().as_view(*args, **kwargs)
 
     def dispatch(self, request, *args, **kwargs):
         InteractiveSource = apps.get_model(
@@ -158,14 +158,10 @@ class DocumentCreateWizard(SessionWizardView):
                 redirect_to=reverse(viewname='sources:setup_source_list')
             )
 
-        return super(
-            DocumentCreateWizard, self
-        ).dispatch(request, *args, **kwargs)
+        return super().dispatch(request, *args, **kwargs)
 
     def get_context_data(self, form, **kwargs):
-        context = super(
-            DocumentCreateWizard, self
-        ).get_context_data(form=form, **kwargs)
+        context = super().get_context_data(form=form, **kwargs)
 
         wizard_step = WizardStep.get(name=self.steps.current)
 

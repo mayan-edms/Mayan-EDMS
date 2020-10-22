@@ -12,7 +12,7 @@ class WorkflowRuntimeProxyViewTestCase(
     WorkflowRuntimeProxyViewTestMixin, WorkflowTestMixin, GenericViewTestCase
 ):
     def setUp(self):
-        super(WorkflowRuntimeProxyViewTestCase, self).setUp()
+        super().setUp()
         self._create_test_workflow()
 
     def test_workflow_runtime_proxy_document_list_view_no_permission(self):
@@ -53,7 +53,7 @@ class WorkflowRuntimeProxyStateViewTestCase(
     GenericViewTestCase
 ):
     def setUp(self):
-        super(WorkflowRuntimeProxyStateViewTestCase, self).setUp()
+        super().setUp()
         self._create_test_workflow()
         self._create_test_workflow_states()
 

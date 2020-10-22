@@ -33,7 +33,7 @@ class KeyDetailForm(DetailForm):
         )
 
         kwargs['extra_fields'] = extra_fields
-        super(KeyDetailForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     class Meta:
         fields = ()

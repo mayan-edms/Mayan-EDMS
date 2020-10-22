@@ -53,7 +53,7 @@ class FileMetadataViewsTestCase(
     FileMetadataViewsTestMixin, GenericDocumentViewTestCase
 ):
     def setUp(self):
-        super(FileMetadataViewsTestCase, self).setUp()
+        super().setUp()
         self.test_driver = self.test_document.latest_file.file_metadata_drivers.first()
 
     def test_document_file_driver_list_view_no_permission(self):

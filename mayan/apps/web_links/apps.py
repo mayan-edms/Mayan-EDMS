@@ -42,7 +42,7 @@ class WebLinksApp(MayanAppConfig):
     verbose_name = _('Links')
 
     def ready(self):
-        super(WebLinksApp, self).ready()
+        super().ready()
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'

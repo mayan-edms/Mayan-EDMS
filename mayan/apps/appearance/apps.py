@@ -59,7 +59,7 @@ class AppearanceApp(MayanAppConfig):
     verbose_name = _('Appearance')
 
     def ready(self):
-        super(AppearanceApp, self).ready()
+        super().ready()
 
         Theme = self.get_model(model_name='Theme')
 

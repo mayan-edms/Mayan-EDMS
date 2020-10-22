@@ -21,7 +21,7 @@ class QuotaBackendMetaclass(type):
     _registry = {}
 
     def __new__(mcs, name, bases, attrs):
-        new_class = super(QuotaBackendMetaclass, mcs).__new__(
+        new_class = super().__new__(
             mcs, name, bases, attrs
         )
         if not new_class.__module__ == 'mayan.apps.quotas.classes':
@@ -160,9 +160,6 @@ class QuotaBackend(
 class NullBackend(QuotaBackend):
     label = _('Null backend')
     signal = None
-
-    def __init__(self, *args, **kwargs):
-        super(NullBackend, self).__init__()
 
     def display(self):
         return _('Null backend')

@@ -5,7 +5,7 @@ from .mixins import SmartLinkTestMixin
 
 class SmartLinkTestCase(SmartLinkTestMixin, GenericDocumentTestCase):
     def setUp(self):
-        super(SmartLinkTestCase, self).setUp()
+        super().setUp()
         self._create_test_smart_link(add_test_document_type=True)
 
     def test_smart_link_dynamic_label(self):

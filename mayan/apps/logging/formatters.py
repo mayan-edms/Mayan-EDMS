@@ -17,4 +17,4 @@ class ColorFormatter(logging.Formatter):
         record.msg = colorize(
             text=record.msg, **PALETTE.get(record.levelname, {})
         )
-        return super(ColorFormatter, self).format(record)
+        return super().format(record)

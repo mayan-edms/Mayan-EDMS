@@ -71,9 +71,7 @@ class CurrentUserLocaleProfileEditView(SingleObjectEditView):
                 settings.TIMEZONE_COOKIE_NAME, form.cleaned_data['timezone']
             )
 
-        return super(CurrentUserLocaleProfileEditView, self).form_valid(
-            form=form
-        )
+        return super().form_valid(form=form)
 
     def get_object(self):
         return self.request.user.locale_profile

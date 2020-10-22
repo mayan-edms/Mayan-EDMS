@@ -27,7 +27,7 @@ class ResolvedSmartLinkAPIViewTestCase(
     ResolvedSmartLinkAPIViewTestMixin, BaseAPITestCase
 ):
     def setUp(self):
-        super(ResolvedSmartLinkAPIViewTestCase, self).setUp()
+        super().setUp()
         self._create_test_smart_link(add_test_document_type=True)
         self._create_test_smart_link_condition()
 
@@ -289,7 +289,7 @@ class SmartLinkConditionAPIViewTestCase(
     auto_upload_test_document = False
 
     def setUp(self):
-        super(SmartLinkConditionAPIViewTestCase, self).setUp()
+        super().setUp()
         self._create_test_smart_link(add_test_document_type=True)
 
     def test_smart_link_condition_create_view_no_permission(self):

@@ -47,7 +47,7 @@ class PermissionTestMixin:
 
 class PermissionTestCaseMixin:
     def setUp(self):
-        super(PermissionTestCaseMixin, self).setUp()
+        super().setUp()
         Permission.invalidate_cache()
 
 
@@ -116,7 +116,7 @@ class RoleAPIViewTestMixin:
 
 class RoleTestCaseMixin:
     def setUp(self):
-        super(RoleTestCaseMixin, self).setUp()
+        super().setUp()
         if hasattr(self, '_test_case_group'):
             self.create_role()
 

@@ -36,7 +36,7 @@ class DocumentCommentsApp(MayanAppConfig):
     verbose_name = _('Document comments')
 
     def ready(self):
-        super(DocumentCommentsApp, self).ready()
+        super().ready()
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'

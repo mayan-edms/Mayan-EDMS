@@ -179,4 +179,4 @@ class LayerTransformation(models.Model):
     def save(self, *args, **kwargs):
         if not self.order:
             self.order = self.object_layer.get_next_order()
-        super(LayerTransformation, self).save(*args, **kwargs)
+        super().save(*args, **kwargs)

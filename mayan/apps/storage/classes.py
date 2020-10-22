@@ -111,9 +111,7 @@ class DefinedStorage(AppsModuleLoaderMixin):
 
         class DynamicStorageSubclass(imported_storage_class):
             def __init__(self, *args, **kwargs):
-                return super(DynamicStorageSubclass, self).__init__(
-                    *args, **kwargs
-                )
+                return super().__init__(*args, **kwargs)
 
             def __eq__(self, other):
                 return True
@@ -180,7 +178,7 @@ class PassthroughStorage(Storage):
         self.next_storage_backend = self.next_storage_class(
             **next_storage_backend_arguments
         )
-        super(PassthroughStorage, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def _call_backend_method(self, method_name, kwargs):
         return getattr(self.next_storage_backend, method_name)(**kwargs)

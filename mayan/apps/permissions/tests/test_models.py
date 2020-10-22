@@ -19,7 +19,7 @@ class PermissionTestCase(
     GroupTestMixin, PermissionTestMixin, RoleTestMixin, BaseTestCase
 ):
     def setUp(self):
-        super(PermissionTestCase, self).setUp()
+        super().setUp()
         self._create_test_user()
         self._create_test_group()
         self._create_test_role()

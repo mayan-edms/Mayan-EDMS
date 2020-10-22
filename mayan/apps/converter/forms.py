@@ -13,7 +13,7 @@ from .transformations import BaseTransformation
 class LayerTransformationSelectForm(forms.Form):
     def __init__(self, *args, **kwargs):
         layer = kwargs.pop('layer')
-        super(LayerTransformationSelectForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.fields[
             'transformation'
         ].choices = BaseTransformation.get_transformation_choices(layer=layer)
@@ -31,7 +31,7 @@ class LayerTransformationForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         transformation_name = kwargs.pop('transformation_name', None)
-        super(LayerTransformationForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
         if not transformation_name:
             # Get the template name when the transformation is being edited.

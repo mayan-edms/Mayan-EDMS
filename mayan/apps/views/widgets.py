@@ -6,7 +6,7 @@ from django.utils.safestring import mark_safe
 
 class DisableableSelectWidget(forms.widgets.SelectMultiple):
     def create_option(self, *args, **kwargs):
-        result = super(DisableableSelectWidget, self).create_option(*args, **kwargs)
+        result = super().create_option(*args, **kwargs)
 
         # Get a keyword argument named value or the second positional argument
         # Current interface as of Django 1.11
@@ -33,7 +33,7 @@ class NamedMultiWidget(forms.widgets.Widget):
         if not self.subwidgets_order:
             self.subwidgets_order = list(self.widgets.keys())
 
-        super(NamedMultiWidget, self).__init__(attrs)
+        super().__init__(attrs)
 
     def _get_media(self):
         "Media for a multiwidget is the combination of all media of the subwidgets"
@@ -48,7 +48,7 @@ class NamedMultiWidget(forms.widgets.Widget):
         return all(widget.is_hidden for name, widget in self.widgets.items())
 
     def get_context(self, name, value, attrs):
-        context = super(NamedMultiWidget, self).get_context(name, value, attrs)
+        context = super().get_context(name, value, attrs)
         if self.is_localized:
             for widget in self.widgets:
                 widget.is_localized = self.is_localized
@@ -135,4 +135,4 @@ class TextAreaDiv(forms.widgets.Widget):
         default_attrs = {'class': 'text_area_div'}
         if attrs:
             default_attrs.update(attrs)
-        super(TextAreaDiv, self).__init__(default_attrs)
+        super().__init__(default_attrs)

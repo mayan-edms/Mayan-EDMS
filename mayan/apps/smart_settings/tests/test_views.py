@@ -9,7 +9,7 @@ class SmartSettingViewTestCase(
     SmartSettingTestMixin, SmartSettingViewTestMixin, GenericViewTestCase
 ):
     def setUp(self):
-        super(SmartSettingViewTestCase, self).setUp()
+        super().setUp()
         self._create_test_settings_namespace()
 
     def test_namespace_list_view_no_permission(self):

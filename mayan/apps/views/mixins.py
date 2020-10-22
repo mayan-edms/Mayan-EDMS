@@ -90,7 +90,7 @@ class DynamicFormViewMixin:
     form_class = DynamicForm
 
     def get_form_kwargs(self):
-        data = super(DynamicFormViewMixin, self).get_form_kwargs()
+        data = super().get_form_kwargs()
         data.update({'schema': self.get_form_schema()})
         return data
 
@@ -125,7 +125,7 @@ class ExternalObjectMixin:
 
     def dispatch(self, *args, **kwargs):
         self.external_object = self.get_external_object()
-        return super(ExternalObjectMixin, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
     def get_pk_url_kwargs(self):
         pk_url_kwargs = {}
@@ -189,9 +189,7 @@ class ExternalContentTypeObjectMixin(ContentTypeViewMixin, ExternalObjectMixin):
     def get_external_object_queryset(self):
         content_type = self.get_content_type()
         self.external_object_class = content_type.model_class()
-        return super(
-            ExternalContentTypeObjectMixin, self
-        ).get_external_object_queryset()
+        return super().get_external_object_queryset()
 
 
 class FormExtraKwargsMixin:
@@ -211,7 +209,7 @@ class FormExtraKwargsMixin:
 
 class ListModeMixin:
     def get_context_data(self, **kwargs):
-        context = super(ListModeMixin, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
 
         if context.get(TEXT_LIST_AS_ITEMS_VARIABLE_NAME):
             default_mode = TEXT_CHOICE_ITEMS
@@ -245,7 +243,7 @@ class MultipleObjectMixin(SingleObjectMixin):
         if self.view_mode_single:
             self.object = self.object_list.first()
 
-        return super(MultipleObjectMixin, self).dispatch(request=request, *args, **kwargs)
+        return super().dispatch(request=request, *args, **kwargs)
 
     def get(self, request, *args, **kwargs):
         """
@@ -351,7 +349,7 @@ class ObjectActionMixin:
     title_plural = 'Perform operation on %(count)d objects.'
 
     def get_context_data(self, **kwargs):
-        context = super(ObjectActionMixin, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         title = None
 
         if self.view_mode_single:
@@ -446,7 +444,7 @@ class RedirectionMixin:
         return self.action_cancel_redirect
 
     def get_context_data(self, **kwargs):
-        context = super(RedirectionMixin, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context.update(
             {
                 'next': self.get_next_url(),
@@ -549,9 +547,7 @@ class ViewPermissionCheckMixin:
                 user=self.request.user
             )
 
-        return super(
-            ViewPermissionCheckMixin, self
-        ).dispatch(request, *args, **kwargs)
+        return super().dispatch(request, *args, **kwargs)
 
     def get_view_permission(self):
         return self.view_permission

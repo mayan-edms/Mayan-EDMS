@@ -103,7 +103,7 @@ class ConnectionsCheckTestCaseMixin:
         return len(connections.all())
 
     def setUp(self):
-        super(ConnectionsCheckTestCaseMixin, self).setUp()
+        super().setUp()
         self._connections_count = self._get_open_connections_count()
 
     def tearDown(self):
@@ -116,19 +116,19 @@ class ConnectionsCheckTestCaseMixin:
                 'the same.'
             )
 
-        super(ConnectionsCheckTestCaseMixin, self).tearDown()
+        super().tearDown()
 
 
 class ContentTypeCheckTestCaseMixin:
     expected_content_types = ('text/html', 'text/html; charset=utf-8')
 
     def _pre_setup(self):
-        super(ContentTypeCheckTestCaseMixin, self)._pre_setup()
+        super()._pre_setup()
         test_instance = self
 
         class CustomClient(self.client_class):
             def request(self, *args, **kwargs):
-                response = super(CustomClient, self).request(*args, **kwargs)
+                response = super().request(*args, **kwargs)
 
                 content_type = response._headers.get('content-type', [None, ''])[1]
                 if test_instance.expected_content_types:
@@ -177,14 +177,14 @@ class DownloadTestCaseMixin:
 
 class EnvironmentTestCaseMixin:
     def setUp(self):
-        super(EnvironmentTestCaseMixin, self).setUp()
+        super().setUp()
         self._test_environment_variables = []
 
     def tearDown(self):
         for name in self._test_environment_variables:
             os.environ.pop(name)
 
-        super(EnvironmentTestCaseMixin, self).tearDown()
+        super().tearDown()
 
     def _set_environment_variable(self, name, value):
         self._test_environment_variables.append(name)
@@ -208,7 +208,7 @@ class OpenFileCheckTestCaseMixin:
         return process.open_files()
 
     def setUp(self):
-        super(OpenFileCheckTestCaseMixin, self).setUp()
+        super().setUp()
         if getattr(settings, 'COMMON_TEST_FILE_HANDLES', False):
             self._open_files = self._get_open_files()
 
@@ -223,7 +223,7 @@ class OpenFileCheckTestCaseMixin:
 
             self._skip_file_descriptor_test = False
 
-        super(OpenFileCheckTestCaseMixin, self).tearDown()
+        super().tearDown()
 
 
 class RandomPrimaryKeyModelMonkeyPatchMixin:
@@ -300,12 +300,12 @@ class RandomPrimaryKeyModelMonkeyPatchMixin:
                     return result
 
             setattr(models.Model, 'save', method_save_new)
-        super(RandomPrimaryKeyModelMonkeyPatchMixin, self).setUp()
+        super().setUp()
 
     def tearDown(self):
         if self.random_primary_key_enable:
             models.Model.save = self.method_save_original
-        super(RandomPrimaryKeyModelMonkeyPatchMixin, self).tearDown()
+        super().tearDown()
 
 
 class SeleniumTestMixin:
@@ -324,7 +324,7 @@ class SeleniumTestMixin:
 
     @classmethod
     def setUpClass(cls):
-        super(SeleniumTestMixin, cls).setUpClass()
+        super().setUpClass()
         cls.webdriver = None
         if not SeleniumTestMixin._get_skip_variable_value():
             options = Options()
@@ -337,12 +337,12 @@ class SeleniumTestMixin:
     def tearDownClass(cls):
         if cls.webdriver:
             cls.webdriver.quit()
-        super(SeleniumTestMixin, cls).tearDownClass()
+        super().tearDownClass()
 
     def setUp(self):
         if SeleniumTestMixin._get_skip_variable_value():
             self.skipTest(reason='Skipping selenium test')
-        super(SeleniumTestMixin, self).setUp()
+        super().setUp()
 
     def _open_url(self, fragment=None, path=None, viewname=None):
         url = '{}{}{}'.format(
@@ -368,7 +368,7 @@ class SilenceLoggerTestCaseMixin:
                 level=self.test_case_silenced_logger_level
             )
 
-        super(SilenceLoggerTestCaseMixin, self).tearDown()
+        super().tearDown()
 
     def _silence_logger(self, name):
         self.test_case_silenced_logger = logging.getLogger(name=name)
@@ -403,7 +403,7 @@ class TempfileCheckTestCasekMixin:
         ) - set(ignored_result)
 
     def setUp(self):
-        super(TempfileCheckTestCasekMixin, self).setUp()
+        super().setUp()
         if getattr(settings, 'COMMON_TEST_TEMP_FILES', False):
             self._temporary_items = self._get_temporary_entries()
 
@@ -418,7 +418,7 @@ class TempfileCheckTestCasekMixin:
                     ','.join(final_temporary_items - self._temporary_items)
                 )
             )
-        super(TempfileCheckTestCasekMixin, self).tearDown()
+        super().tearDown()
 
 
 class TestModelTestMixin(PermissionTestMixin):
@@ -456,7 +456,7 @@ class TestModelTestMixin(PermissionTestMixin):
                 content_type.delete()
             ModelPermission.deregister(model=model)
 
-        super(TestModelTestMixin, self).tearDown()
+        super().tearDown()
 
     def _create_test_model(
         self, base_class=models.Model, fields=None, model_name=None,
@@ -565,7 +565,7 @@ class TestModelTestMixin(PermissionTestMixin):
 
 class TestServerTestCaseMixin:
     def setUp(self):
-        super(TestServerTestCaseMixin, self).setUp()
+        super().setUp()
         self.testserver_prefix = self.get_testserver_prefix()
         self.testserver_url = self.get_testserver_url()
         self.test_view_request = None
@@ -599,7 +599,7 @@ class TestViewTestCaseMixin:
     test_view_url = TEST_VIEW_URL
 
     def setUp(self):
-        super(TestViewTestCaseMixin, self).setUp()
+        super().setUp()
         if self.auto_add_test_view:
             self.add_test_view(test_object=self.test_view_object)
 
@@ -609,7 +609,7 @@ class TestViewTestCaseMixin:
         self.client.logout()
         if self.has_test_view:
             urlconf.urlpatterns.pop(0)
-        super(TestViewTestCaseMixin, self).tearDown()
+        super().tearDown()
 
     def _get_context_from_test_response(self, response):
         if isinstance(response.context, ContextList):

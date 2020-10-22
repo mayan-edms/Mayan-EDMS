@@ -264,10 +264,10 @@ class UploadBaseView(MultiFormView):
                 redirect_to=reverse(viewname='sources:setup_source_list')
             )
 
-        return super(UploadBaseView, self).dispatch(request, *args, **kwargs)
+        return super().dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
-        context = super(UploadBaseView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         subtemplates_list = []
 
         context['source'] = self.source
@@ -379,9 +379,7 @@ class UploadInteractiveView(UploadBaseView):
         self.tab_links = UploadBaseView.get_active_tab_links()
 
         try:
-            return super(
-                UploadInteractiveView, self
-            ).dispatch(request, *args, **kwargs)
+            return super().dispatch(request, *args, **kwargs)
         except Exception as exception:
             if request.is_ajax():
                 return JsonResponse(
@@ -486,7 +484,7 @@ class UploadInteractiveView(UploadBaseView):
         )
 
     def get_context_data(self, **kwargs):
-        context = super(UploadInteractiveView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
         context['title'] = _(
             'Upload a document of type "%(document_type)s" from '
             'source: %(source)s'

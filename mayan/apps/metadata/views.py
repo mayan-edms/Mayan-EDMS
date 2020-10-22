@@ -599,9 +599,7 @@ class SetupDocumentTypeMetadataTypes(FormView):
                 request=self.request
             )
 
-        return super(
-            SetupDocumentTypeMetadataTypes, self
-        ).form_valid(form=form)
+        return super().form_valid(form=form)
 
     def get_extra_context(self):
         return {

@@ -24,7 +24,7 @@ class DependenciesApp(MayanAppConfig):
     verbose_name = _('Dependencies')
 
     def ready(self):
-        super(DependenciesApp, self).ready()
+        super().ready()
 
         Dependency.load_modules()
 

@@ -25,4 +25,4 @@ class DashboardWidgetRoleTotal(DashboardWidgetNumeric):
             permission=permission_role_view, user=request.user,
             queryset=Role.objects.all()
         ).count()
-        return super(DashboardWidgetRoleTotal, self).render(request)
+        return super().render(request)

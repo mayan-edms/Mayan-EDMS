@@ -13,7 +13,7 @@ class AutoAdminViewCase(AutoAdminViewMixing, GenericViewTestCase):
     auto_login_user = False
 
     def setUp(self):
-        super(AutoAdminViewCase, self).setUp()
+        super().setUp()
         with mute_stdout():
             AutoAdminSingleton.objects.create_autoadmin()
 

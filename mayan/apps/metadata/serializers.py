@@ -155,9 +155,7 @@ class NewDocumentMetadataSerializer(serializers.ModelSerializer):
             klass=queryset, pk=validated_data['metadata_type'].pk
         )
 
-        return super(NewDocumentMetadataSerializer, self).create(
-            validated_data=validated_data
-        )
+        return super().create(validated_data=validated_data)
 
     def get_url(self, instance):
         return reverse(

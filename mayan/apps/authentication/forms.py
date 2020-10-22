@@ -34,7 +34,7 @@ class EmailAuthenticationForm(forms.Form):
         """
         self.request = request
         self.user_cache = None
-        super(EmailAuthenticationForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def clean(self):
         email = self.cleaned_data.get('email')
@@ -72,7 +72,7 @@ class EmailAuthenticationForm(forms.Form):
 class UserListForm(forms.Form):
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user')
-        super(UserListForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         queryset = get_user_queryset().exclude(pk=user.pk)
         self.fields['user'] = forms.ModelChoiceField(
             label=_('User'), help_text=_('User to be impersonated.'),
