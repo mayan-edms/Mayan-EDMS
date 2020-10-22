@@ -1,25 +1,36 @@
 from django.db import migrations, transaction
 
 
-def pages_reset(content_type, document_version):
+def pages_reset(
+    document_id, DocumentFile, DocumentFilePage, DocumentVersion,
+    DocumentVersionPage, content_type_id
+):
     """
     Remove all page mappings and recreate them to be a 1 to 1 match
     to the latest document file or the document file supplied.
     """
-    latest_file = document_version.document.files.order_by('timestamp').last()
-
-    if latest_file:
-        content_object_list = list(latest_file.file_pages.all())
-    else:
-        content_object_list = ()
-
     with transaction.atomic():
-        for page_number, content_object in enumerate(iterable=content_object_list, start=1):
-            document_version.pages.create(
-                content_type=content_type,
-                object_id=content_object.pk,
-                page_number=page_number
-            )
+        document_version = DocumentVersion.objects.create(document_id=document_id)
+
+        latest_file_id = DocumentFile.objects.filter(document_id=document_id).only('id').order_by('timestamp').last().id
+
+        if latest_file_id:
+            content_object_id_list = DocumentFilePage.objects.filter(
+                document_file_id=latest_file_id
+            ).only('id').values_list('id', flat=True).iterator()
+
+            document_version_pages = [
+                DocumentVersionPage(
+                    document_version_id=document_version.id,
+                    content_type_id=content_type_id,
+                    object_id=content_object_id,
+                    page_number=page_number
+                ) for page_number, content_object_id in enumerate(
+                    iterable=content_object_id_list, start=1
+                )
+            ]
+
+            document_version.pages.bulk_create(document_version_pages)
 
 
 def operation_document_version_page_create(apps, schema_editor):
@@ -29,21 +40,40 @@ def operation_document_version_page_create(apps, schema_editor):
     Document = apps.get_model(
         app_label='documents', model_name='Document'
     )
-
-    content_type = ContentType.objects.get(model='documentfilepage')
-
-    for document in Document.objects.using(schema_editor.connection.alias).all():
-        document_version = document.versions.create()
-        pages_reset(content_type=content_type, document_version=document_version)
-
-
-def operation_document_version_page_create_reverse(apps, schema_editor):
+    DocumentFile = apps.get_model(
+        app_label='documents', model_name='DocumentFile'
+    )
+    DocumentFilePage = apps.get_model(
+        app_label='documents', model_name='DocumentFilePage'
+    )
     DocumentVersion = apps.get_model(
         app_label='documents', model_name='DocumentVersion'
     )
+    DocumentVersionPage = apps.get_model(
+        app_label='documents', model_name='DocumentVersionPage'
+    )
 
-    for document_version in DocumentVersion.objects.using(schema_editor.connection.alias).all():
-        document_version.delete()
+    content_type = ContentType.objects.get(model='documentfilepage')
+
+    document_id_iterator = Document.objects.all().only('id').values_list('id', flat=True).iterator()
+
+    for document_id in document_id_iterator:
+        pages_reset(
+            document_id=document_id,
+            DocumentFile=DocumentFile,
+            DocumentFilePage=DocumentFilePage,
+            DocumentVersion=DocumentVersion,
+            DocumentVersionPage=DocumentVersionPage,
+            content_type_id=content_type.id,
+        )
+
+
+def operation_document_version_page_create_reverse(apps, schema_editor):
+    DocumentVersionPage = apps.get_model(
+        app_label='documents', model_name='DocumentVersionPage'
+    )
+
+    DocumentVersionPage.objects.using(schema_editor.connection.alias).all().delete()
 
 
 class Migration(migrations.Migration):
