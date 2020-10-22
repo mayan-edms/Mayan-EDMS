@@ -1,7 +1,7 @@
 import logging
 
 from django.contrib import messages
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
 from django.utils.translation import ugettext_lazy as _, ungettext
 
 from mayan.apps.acls.models import AccessControlList
@@ -32,7 +32,7 @@ class DocumentTrashView(MultipleObjectConfirmActionView):
     model = Document
     object_permission = permission_document_trash
     pk_url_kwarg = 'document_id'
-    post_action_redirect = reverse_lazy(viewname=setting_home_view.value)
+    #post_action_redirect = reverse_lazy(viewname=setting_home_view.value)
     success_message_singular = _(
         '%(count)d document moved to the trash.'
     )
@@ -52,6 +52,16 @@ class DocumentTrashView(MultipleObjectConfirmActionView):
         }
 
         return result
+
+    def get_post_action_redirect(self):
+        # Return to the previous view after moving the document to trash
+        # unless the move happened from the document view, in which case
+        # redirecting back to the document is not possible because it is
+        # now a trashed document and not accessible.
+        if 'document_id' in self.kwargs:
+            return reverse(viewname=setting_home_view.value)
+        else:
+            return None
 
     def object_action(self, form, instance):
         instance.delete(_user=self.request.user)

@@ -14,6 +14,8 @@
   tell, write, flush, seek. Empty files when using the `.save()` method
   are now only created if they don't already exists. Add support to the
   encryption storage to accept unicode content. GitLab issue #876.
+- Redirect to the previous view when moving document to the trash. Closes
+  GitLab issue #873. Thanks to Bw (@bwakkie) for the report.
 
 3.4.17 (2020-09-10)
 ===================

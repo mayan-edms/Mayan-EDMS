@@ -196,6 +196,7 @@ Backward incompatible changes
 Issues closed
 -------------
 
-- :gitlab-issue:`9000` common.views.SetupListView.get_extra_context rename 'no_results_label' to 'no_results_title'
+- :gitlab-issue:`873` After duplicate delete return to duplicate window
+- :gitlab-issue:`900` common.views.SetupListView.get_extra_context rename 'no_results_label' to 'no_results_title'
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
