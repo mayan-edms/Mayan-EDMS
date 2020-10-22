@@ -111,7 +111,8 @@ PythonDependency(
 PythonDependency(
     module=__name__, name='kombu', version_string='==4.6.7'
 )
+# Workaround PIP bug
+# https://github.com/celery/py-amqp/issues/340
 PythonDependency(
     module=__name__, name='vine', version_string='==1.3.0'
 )
-

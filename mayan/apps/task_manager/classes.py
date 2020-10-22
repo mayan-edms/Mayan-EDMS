@@ -33,7 +33,7 @@ class TaskType(object):
         self.validate()
 
     def __str__(self):
-        return force_text(self.label)
+        return force_text(s=self.label)
 
     def validate(self):
         try:
@@ -53,7 +53,7 @@ class Task(object):
         self.kwargs = kwargs
 
     def __str__(self):
-        return force_text(self.task_type)
+        return force_text(s=self.task_type)
 
 
 @python_2_unicode_compatible
@@ -66,7 +66,7 @@ class CeleryQueue(object):
             try:
                 import_module('{}.queues'.format(app.name))
             except ImportError as exception:
-                if force_text(exception) not in ('No module named queues', 'No module named \'{}.queues\''.format(app.name)):
+                if force_text(s=exception) not in ('No module named queues', 'No module named \'{}.queues\''.format(app.name)):
                     logger.error(
                         'Error importing %s queues.py file; %s', app.name,
                         exception
@@ -100,7 +100,7 @@ class CeleryQueue(object):
         worker.queues.append(self)
 
     def __str__(self):
-        return force_text(self.label)
+        return force_text(s=self.label)
 
     def _process_task_dictionary(self, task_dictionary):
         result = []

@@ -65,11 +65,11 @@ class DocumentListView(SingleObjectListView):
             return super(DocumentListView, self).get_context_data(**kwargs)
         except Exception as exception:
             messages.error(
-                self.request, _(
+                message=_(
                     'Error retrieving document list: %(exception)s.'
                 ) % {
                     'exception': exception
-                }
+                }, request=self.request
             )
             self.object_list = Document.objects.none()
             return super(DocumentListView, self).get_context_data(**kwargs)
@@ -144,13 +144,14 @@ class DocumentDocumentTypeEditView(MultipleObjectFormActionView):
 
     def object_action(self, form, instance):
         instance.set_document_type(
-            form.cleaned_data['document_type'], _user=self.request.user
+            document_type=form.cleaned_data['document_type'],
+            _user=self.request.user
         )
 
         messages.success(
-            self.request, _(
+            message=_(
                 'Document type for "%s" changed successfully.'
-            ) % instance
+            ) % instance, request=self.request
         )
 
 
@@ -395,13 +396,13 @@ class DocumentUpdatePageCountView(MultipleObjectConfirmActionView):
             )
         else:
             messages.error(
-                self.request, _(
+                message=_(
                     'Document "%(document)s" is empty. Upload at least one '
                     'document version before attempting to detect the '
                     'page count.'
                 ) % {
                     'document': instance,
-                }
+                }, request=self.request
             )
 
 
@@ -446,12 +447,12 @@ class DocumentTransformationsClearView(MultipleObjectConfirmActionView):
                 layer_saved_transformations.get_transformations_for(obj=page).delete()
         except Exception as exception:
             messages.error(
-                self.request, _(
+                message=_(
                     'Error deleting the page transformations for '
                     'document: %(document)s; %(error)s.'
                 ) % {
                     'document': instance, 'error': exception
-                }
+                }, request=self.request
             )
 
 

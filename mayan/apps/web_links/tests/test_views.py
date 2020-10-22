@@ -115,11 +115,11 @@ class DocumentWebLinkViewTestCase(
     def test_document_web_links_list_view_no_permissions(self):
         response = self._request_test_document_web_link_list_view()
         self.assertNotContains(
-            response=response, text=force_text(self.test_document),
+            response=response, text=force_text(s=self.test_document),
             status_code=404
         )
         self.assertNotContains(
-            response=response, text=force_text(self.test_web_link),
+            response=response, text=force_text(s=self.test_web_link),
             status_code=404
         )
 
@@ -131,11 +131,11 @@ class DocumentWebLinkViewTestCase(
 
         response = self._request_test_document_web_link_list_view()
         self.assertContains(
-            response=response, text=force_text(self.test_document),
+            response=response, text=force_text(s=self.test_document),
             status_code=200
         )
         self.assertNotContains(
-            response=response, text=force_text(self.test_web_link),
+            response=response, text=force_text(s=self.test_web_link),
             status_code=200
         )
 
@@ -147,11 +147,11 @@ class DocumentWebLinkViewTestCase(
 
         response = self._request_test_document_web_link_list_view()
         self.assertNotContains(
-            response=response, text=force_text(self.test_document),
+            response=response, text=force_text(s=self.test_document),
             status_code=404
         )
         self.assertNotContains(
-            response=response, text=force_text(self.test_web_link),
+            response=response, text=force_text(s=self.test_web_link),
             status_code=404
         )
 
@@ -167,11 +167,11 @@ class DocumentWebLinkViewTestCase(
 
         response = self._request_test_document_web_link_list_view()
         self.assertContains(
-            response=response, text=force_text(self.test_document),
+            response=response, text=force_text(s=self.test_document),
             status_code=200
         )
         self.assertContains(
-            response=response, text=force_text(self.test_web_link),
+            response=response, text=force_text(s=self.test_web_link),
             status_code=200
         )
         # Test if a valid resolved link navigate link is present.
@@ -223,6 +223,6 @@ class DocumentWebLinkViewTestCase(
         self.assertEqual(response.status_code, 302)
         self.assertEqual(
             response.url, TEST_WEB_LINK_TEMPLATE.replace(
-                '{{ document.uuid }}', force_text(self.test_document.uuid)
+                '{{ document.uuid }}', force_text(s=self.test_document.uuid)
             )
         )
