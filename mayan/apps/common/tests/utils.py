@@ -11,7 +11,7 @@ class NullFile(object):
 
 def as_id_list(items):
     return ','.join(
-        [force_text(item.pk) for item in items]
+        [force_text(s=item.pk) for item in items]
     )
 
 

@@ -11,7 +11,7 @@ class DependencyEnvironment(object):
         self.mark_missing = mark_missing
 
     def __str__(self):
-        return force_text(self.label)
+        return force_text(s=self.label)
 
 
 environment_build = DependencyEnvironment(

@@ -6,7 +6,7 @@ def operation_add_full_path(apps, schema_editor):
         app_label='document_states', model_name='WorkflowStateAction'
     )
 
-    for workflow_state_action in WorkflowStateAction.objects.using(schema_editor.connection.alias).all():
+    for workflow_state_action in WorkflowStateAction.objects.using(alias=schema_editor.connection.alias).all():
         workflow_state_action.action_path = 'mayan.apps.{}'.format(
             workflow_state_action.action_path
         )
@@ -18,7 +18,7 @@ def operation_remove_full_path(apps, schema_editor):
         app_label='document_states', model_name='WorkflowStateAction'
     )
 
-    for workflow_state_action in WorkflowStateAction.objects.using(schema_editor.connection.alias).all():
+    for workflow_state_action in WorkflowStateAction.objects.using(alias=schema_editor.connection.alias).all():
         workflow_state_action.action_path = workflow_state_action.action_path.replace(
             'mayan.apps.', ''
         )

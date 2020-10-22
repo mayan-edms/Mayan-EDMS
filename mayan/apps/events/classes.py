@@ -8,9 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from actstream import action
 
-from .literals import (
-    EVENT_MANAGER_ORDER_AFTER, EVENT_MANAGER_ORDER_BEFORE
-)
+from .literals import EVENT_MANAGER_ORDER_AFTER
 from .permissions import permission_events_view
 
 logger = logging.getLogger(name=__name__)

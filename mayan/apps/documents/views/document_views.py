@@ -167,7 +167,7 @@ class DocumentDownloadFormView(MultipleObjectFormActionView):
         # Turn a queryset into a comma separated list of primary keys
         id_list = ','.join(
             [
-                force_text(pk) for pk in self.get_object_list().values_list('pk', flat=True)
+                force_text(s=pk) for pk in self.get_object_list().values_list('pk', flat=True)
             ]
         )
 

@@ -72,7 +72,7 @@ class SharedUploadedFile(models.Model):
         return self.filename
 
     def save(self, *args, **kwargs):
-        self.filename = force_text(self.file)
+        self.filename = force_text(s=self.file)
         super(SharedUploadedFile, self).save(*args, **kwargs)
 
     def delete(self, *args, **kwargs):
@@ -108,7 +108,7 @@ class UserLocaleProfile(models.Model):
         verbose_name_plural = _('User locale profiles')
 
     def __str__(self):
-        return force_text(self.user)
+        return force_text(s=self.user)
 
     def natural_key(self):
         return self.user.natural_key()

@@ -17,7 +17,7 @@ class ErrorLogNamespace(object):
         self.label = label or name
 
     def __str__(self):
-        return force_text(self.label)
+        return force_text(s=self.label)
 
     def all(self):
         ErrorLogEntry = apps.get_model(
@@ -180,7 +180,7 @@ class ModelAttribute(object):
                 self.name if show_name else self.label, self.description
             )
         else:
-            return force_text(self.name if show_name else self.label)
+            return force_text(s=self.name if show_name else self.label)
 
 
 class ModelProperty(ModelAttribute):

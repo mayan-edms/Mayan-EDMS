@@ -386,7 +386,7 @@ class POP3Email(EmailBaseModel):
             logger.debug('message_size: %s', message_size)
 
             message_lines = server.retr(which=message_number)[1]
-            message_complete = force_text(b'\n'.join(message_lines))
+            message_complete = force_text(s=b'\n'.join(message_lines))
 
             EmailBaseModel.process_message(
                 source=self, message_text=message_complete

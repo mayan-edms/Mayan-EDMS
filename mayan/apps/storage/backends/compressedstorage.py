@@ -39,7 +39,7 @@ class BufferedZipFile(BufferedFile):
             if self.binary_mode:
                 return chunk
             else:
-                return force_text(chunk)
+                return force_text(s=chunk)
 
     def close(self):
         self.zip_file_object.close()

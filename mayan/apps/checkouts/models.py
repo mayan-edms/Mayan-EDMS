@@ -58,7 +58,7 @@ class DocumentCheckout(models.Model):
         verbose_name_plural = _('Document checkouts')
 
     def __str__(self):
-        return force_text(self.document)
+        return force_text(s=self.document)
 
     def clean(self):
         if self.expiration_datetime < now():

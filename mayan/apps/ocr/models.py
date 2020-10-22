@@ -55,7 +55,7 @@ class DocumentPageOCRContent(models.Model):
         verbose_name_plural = _('Document pages OCR contents')
 
     def __str__(self):
-        return force_text(self.document_page)
+        return force_text(s=self.document_page)
 
 
 @python_2_unicode_compatible
@@ -79,4 +79,4 @@ class DocumentVersionOCRError(models.Model):
         verbose_name_plural = _('Document version OCR errors')
 
     def __str__(self):
-        return force_text(self.document_version)
+        return force_text(s=self.document_version)

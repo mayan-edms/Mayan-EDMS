@@ -32,7 +32,7 @@ class Quota(models.Model):
         verbose_name_plural = _('Quotas')
 
     def __str__(self):
-        return force_text(self.backend_label())
+        return force_text(s=self.backend_label())
 
     def save(self, *args, **kwargs):
         _user = kwargs.pop('_user', None)

@@ -249,7 +249,7 @@ class DocumentPage(models.Model):
         return _(
             'Page %(page_num)d out of %(total_pages)d of %(document)s'
         ) % {
-            'document': force_text(self.document),
+            'document': force_text(s=self.document),
             'page_num': self.page_number,
             'total_pages': self.document_version.pages_all.count()
         }

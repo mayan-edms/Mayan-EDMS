@@ -57,7 +57,7 @@ class WorkflowAction(
             try:
                 import_module('{}.workflow_actions'.format(app.name))
             except ImportError as exception:
-                if force_text(exception) not in ('No module named workflow_actions', 'No module named \'{}.workflow_actions\''.format(app.name)):
+                if force_text(s=exception) not in ('No module named workflow_actions', 'No module named \'{}.workflow_actions\''.format(app.name)):
                     logger.error(
                         'Error importing %s workflow_actions.py file; %s',
                         app.name, exception

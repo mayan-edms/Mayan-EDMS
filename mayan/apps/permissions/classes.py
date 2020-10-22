@@ -39,7 +39,7 @@ class PermissionNamespace(object):
         self.__class__._registry[name] = self
 
     def __str__(self):
-        return force_text(self.label)
+        return force_text(s=self.label)
 
     def add_permission(self, name, label):
         permission = Permission(namespace=self, name=name, label=label)
@@ -60,7 +60,7 @@ class Permission(object):
 
             for namespace, permissions in itertools.groupby(cls.all(), lambda entry: entry.namespace):
                 permission_options = [
-                    (force_text(permission.pk), permission) for permission in permissions
+                    (force_text(s=permission.pk), permission) for permission in permissions
                 ]
                 results.append(
                     (namespace, permission_options)
@@ -108,7 +108,7 @@ class Permission(object):
                         'No module named \'{}.{}\''.format(app.name, module_name)
                     )
 
-                    if force_text(exception) not in non_fatal_messages:
+                    if force_text(s=exception) not in non_fatal_messages:
                         logger.error(
                             'Error importing %s %s.py file; %s', app.name,
                             module_name, exception
@@ -140,7 +140,7 @@ class Permission(object):
         return self.pk
 
     def __str__(self):
-        return force_text(self.label)
+        return force_text(s=self.label)
 
     def get_pk(self):
         return '%s.%s' % (self.namespace.name, self.name)

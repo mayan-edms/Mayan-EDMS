@@ -81,7 +81,7 @@ class SmartLink(models.Model):
             except Exception as exception:
                 return _(
                     'Error generating dynamic label; %s' % force_text(
-                        exception
+                        s=exception
                     )
                 )
         else:

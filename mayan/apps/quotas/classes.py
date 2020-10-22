@@ -68,7 +68,7 @@ class QuotaBackend(
             try:
                 import_module('{}.quota_backends'.format(app.name))
             except ImportError as exception:
-                if force_text(exception) not in ('No module named quota_backends', 'No module named \'{}.quota_backends\''.format(app.name)):
+                if force_text(s=exception) not in ('No module named quota_backends', 'No module named \'{}.quota_backends\''.format(app.name)):
                     logger.error(
                         'Error importing %s quota_backends.py file; %s',
                         app.name, exception

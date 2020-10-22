@@ -32,7 +32,6 @@ class DocumentTrashView(MultipleObjectConfirmActionView):
     model = Document
     object_permission = permission_document_trash
     pk_url_kwarg = 'document_id'
-    #post_action_redirect = reverse_lazy(viewname=setting_home_view.value)
     success_message_singular = _(
         '%(count)d document moved to the trash.'
     )

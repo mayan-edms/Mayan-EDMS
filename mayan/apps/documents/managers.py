@@ -18,7 +18,7 @@ logger = logging.getLogger(name=__name__)
 
 class DocumentManager(models.Manager):
     def get_by_natural_key(self, uuid):
-        return self.model.passthrough.get(uuid=force_text(uuid))
+        return self.model.passthrough.get(uuid=force_text(s=uuid))
 
     def get_queryset(self):
         return TrashCanQuerySet(

@@ -65,7 +65,7 @@ class PlatformTemplate(object):
         cls._registry[klass.name] = klass
 
     def __str__(self):
-        return force_text(self.get_label())
+        return force_text(s=self.get_label())
 
     def get_context(self):
         return self.context

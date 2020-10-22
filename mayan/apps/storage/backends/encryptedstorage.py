@@ -38,7 +38,7 @@ class BufferedEncryptedFile(BufferedFile):
             if self.binary_mode:
                 return data
             else:
-                return force_text(data)
+                return force_text(s=data)
 
     def seek(self, pos, whence=0):
         if whence == 0:

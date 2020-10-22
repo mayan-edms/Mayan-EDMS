@@ -41,7 +41,7 @@ def generate_build_number():
 
 
 def generate_commit_timestamp():
-    datetime = parser.parse(force_text(DATE()))
+    datetime = parser.parse(force_text(s=DATE()))
     return datetime.strftime('%y%m%d%H%M')
 
 

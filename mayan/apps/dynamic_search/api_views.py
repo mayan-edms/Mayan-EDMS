@@ -30,7 +30,7 @@ class APISearchView(SearchModelAPIMixin, generics.ListAPIView):
                 query_string=self.request.GET, user=self.request.user
             )
         except Exception as exception:
-            raise ParseError(force_text(exception))
+            raise ParseError(force_text(s=exception))
 
         return queryset
 
@@ -69,7 +69,7 @@ class APIAdvancedSearchView(SearchModelAPIMixin, generics.ListAPIView):
                 search_model=self.search_model, user=self.request.user
             )
         except Exception as exception:
-            raise ParseError(force_text(exception))
+            raise ParseError(force_text(s=exception))
 
         return queryset
 

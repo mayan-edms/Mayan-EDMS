@@ -89,7 +89,7 @@ class Key(models.Model):
 
     def save(self, *args, **kwargs):
         # Fix the encoding of the key data stream.
-        self.key_data = force_text(self.key_data)
+        self.key_data = force_text(s=self.key_data)
         import_results, key_info = gpg_backend.import_and_list_keys(
             key_data=self.key_data
         )

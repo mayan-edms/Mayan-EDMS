@@ -28,7 +28,7 @@ class StoredEventType(models.Model):
         verbose_name_plural = _('Stored event types')
 
     def __str__(self):
-        return force_text(self.get_class())
+        return force_text(s=self.get_class())
 
     def get_class(self):
         return EventType.get(name=self.name)
@@ -65,7 +65,7 @@ class EventSubscription(models.Model):
         verbose_name_plural = _('Event subscriptions')
 
     def __str__(self):
-        return force_text(self.stored_event_type)
+        return force_text(s=self.stored_event_type)
 
 
 @python_2_unicode_compatible
@@ -94,7 +94,7 @@ class Notification(models.Model):
         verbose_name_plural = _('Notifications')
 
     def __str__(self):
-        return force_text(self.action)
+        return force_text(s=self.action)
 
 
 @python_2_unicode_compatible
@@ -124,4 +124,4 @@ class ObjectEventSubscription(models.Model):
         verbose_name_plural = _('Object event subscriptions')
 
     def __str__(self):
-        return force_text(self.stored_event_type)
+        return force_text(s=self.stored_event_type)

@@ -38,7 +38,7 @@ class WizardStepCabinets(WizardStep):
         cleaned_data = wizard.get_cleaned_data_for_step(cls.name)
         if cleaned_data:
             result['cabinets'] = [
-                force_text(cabinet.pk) for cabinet in cleaned_data['cabinets']
+                force_text(s=cabinet.pk) for cabinet in cleaned_data['cabinets']
             ]
 
         return result

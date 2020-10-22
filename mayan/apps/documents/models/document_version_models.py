@@ -40,7 +40,7 @@ def hash_function():
 
 
 def UUID_FUNCTION(*args, **kwargs):
-    return force_text(uuid.uuid4())
+    return force_text(s=uuid.uuid4())
 
 
 @python_2_unicode_compatible
@@ -381,7 +381,7 @@ class DocumentVersion(models.Model):
 
                     self.document.is_stub = False
                     if not self.document.label:
-                        self.document.label = force_text(self.file)
+                        self.document.label = force_text(s=self.file)
 
                     self.document.save(_commit_events=False)
         except Exception as exception:
@@ -440,7 +440,7 @@ class DocumentVersion(models.Model):
 
                     hash_object.update(data)
 
-            self.checksum = force_text(hash_object.hexdigest())
+            self.checksum = force_text(s=hash_object.hexdigest())
             if save:
                 self.save()
 

@@ -328,7 +328,7 @@ class DocumentMetadataEditView(
                 if isinstance(error, ValidationError):
                     exception_message = ', '.join(error.messages)
                 else:
-                    exception_message = force_text(error)
+                    exception_message = force_text(s=error)
 
                 messages.error(
                     message=_(

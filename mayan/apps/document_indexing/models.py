@@ -97,7 +97,7 @@ class Index(models.Model):
     def get_document_types_names(self):
         return ', '.join(
             [
-                force_text(document_type) for document_type in self.document_types.all()
+                force_text(s=document_type) for document_type in self.document_types.all()
             ] or ['None']
         )
 
@@ -455,9 +455,9 @@ class IndexInstanceNode(MPTTModel):
         result = []
         for node in self.get_ancestors(include_self=True):
             if node.is_root_node():
-                result.append(force_text(self.index()))
+                result.append(force_text(s=self.index()))
             else:
-                result.append(force_text(node))
+                result.append(force_text(s=node))
 
         return ' / '.join(result)
     get_full_path.help_text = _(

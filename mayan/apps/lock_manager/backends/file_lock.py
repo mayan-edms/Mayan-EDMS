@@ -67,7 +67,7 @@ class FileLock(LockingBackend):
     def __init__(self, name, timeout=None):
         self.name = name
         self.timeout = timeout or setting_default_lock_timeout.value
-        self.uuid = force_text(uuid.uuid4())
+        self.uuid = force_text(s=uuid.uuid4())
 
         lock.acquire()
         with open(self.__class__.lock_file, 'r+') as file_object:

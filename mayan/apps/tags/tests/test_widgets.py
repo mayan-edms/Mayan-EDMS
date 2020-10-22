@@ -39,7 +39,7 @@ class DocumentTagHTMLWidgetTestCase(
             response=response, text=self.test_document.label, status_code=200
         )
         self.assertNotContains(
-            response=response, text=force_text(self.test_tag), status_code=200
+            response=response, text=force_text(s=self.test_tag), status_code=200
         )
 
     def test_document_tags_widget_with_tag_access(self):

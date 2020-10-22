@@ -59,7 +59,7 @@ class Tesseract(OCRBackendBase):
                     result = self.command_tesseract(
                         *arguments, **keyword_arguments
                     )
-                    return force_text(result.stdout)
+                    return force_text(s=result.stdout)
                 except Exception as exception:
                     error_message = (
                         'Exception calling Tesseract with language option: {}; {}'
@@ -108,7 +108,7 @@ class Tesseract(OCRBackendBase):
 
             # Extaction: strip last line, split by newline, discard the first
             # line
-            self.languages = force_text(result.stdout).strip().split('\n')[1:]
+            self.languages = force_text(s=result.stdout).strip().split('\n')[1:]
 
             logger.debug('Available languages: %s', ', '.join(self.languages))
 

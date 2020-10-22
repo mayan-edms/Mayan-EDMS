@@ -15,7 +15,7 @@ logger = logging.getLogger(name=__name__)
 
 class BaseTransformationType(type):
     def __str__(self):
-        return force_text(self.label)
+        return force_text(s=self.label)
 
 
 class BaseTransformation(with_metaclass(meta=BaseTransformationType)):

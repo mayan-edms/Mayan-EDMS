@@ -295,7 +295,7 @@ class NewDocumentSerializer(serializers.ModelSerializer):
             description=self.validated_data.get('description', ''),
             document_type=self.validated_data['document_type'],
             label=self.validated_data.get(
-                'label', force_text(self.validated_data['file'])
+                'label', force_text(s=self.validated_data['file'])
             ),
             language=self.validated_data.get(
                 'language', setting_language.value

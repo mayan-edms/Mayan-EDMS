@@ -40,7 +40,7 @@ class Cache(models.Model):
         verbose_name_plural = _('Caches')
 
     def __str__(self):
-        return force_text(self.label)
+        return force_text(s=self.label)
 
     def get_files(self):
         return CachePartitionFile.objects.filter(partition__cache__id=self.pk)

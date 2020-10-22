@@ -122,7 +122,7 @@ class CheckoutsAPITestCase(
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             response.data['document']['uuid'],
-            force_text(self.test_document.uuid)
+            force_text(s=self.test_document.uuid)
         )
 
     def test_document_check_out_list_api_view_no_permission(self):

@@ -71,7 +71,7 @@ class SearchModel(object):
         self.__class__._registry[self.get_full_name()] = self
 
     def __str__(self):
-        return force_text(self.label)
+        return force_text(s=self.label)
 
     def add_model_field(self, *args, **kwargs):
         """

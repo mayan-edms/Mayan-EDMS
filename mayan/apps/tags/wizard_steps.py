@@ -36,7 +36,7 @@ class WizardStepTags(WizardStep):
         cleaned_data = wizard.get_cleaned_data_for_step(cls.name)
         if cleaned_data:
             result['tags'] = [
-                force_text(tag.pk) for tag in cleaned_data['tags']
+                force_text(s=tag.pk) for tag in cleaned_data['tags']
             ]
 
         return result

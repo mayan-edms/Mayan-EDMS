@@ -112,7 +112,7 @@ class MetadataType(models.Model):
             splitter.whitespace = ','.encode('utf-8')
             splitter.whitespace_split = True
             splitter.commenters = ''.encode('utf-8')
-            return [force_text(e) for e in splitter]
+            return [force_text(s=e) for e in splitter]
     else:
         # Python 3 unicode version
         @staticmethod
@@ -121,7 +121,7 @@ class MetadataType(models.Model):
             splitter.whitespace = ','
             splitter.whitespace_split = True
             splitter.commenters = ''
-            return [force_text(e) for e in splitter]
+            return [force_text(s=e) for e in splitter]
 
     def get_default_value(self):
         template = Template(template_string=self.default)
@@ -219,7 +219,7 @@ class DocumentMetadata(models.Model):
         verbose_name_plural = _('Document metadata')
 
     def __str__(self):
-        return force_text(self.metadata_type)
+        return force_text(s=self.metadata_type)
 
     def clean_fields(self, *args, **kwargs):
         super(DocumentMetadata, self).clean_fields(*args, **kwargs)
@@ -315,7 +315,7 @@ class DocumentTypeMetadataType(models.Model):
         verbose_name_plural = _('Document type metadata types options')
 
     def __str__(self):
-        return force_text(self.metadata_type)
+        return force_text(s=self.metadata_type)
 
     def delete(self, *args, **kwargs):
         _user = kwargs.pop('_user', None)

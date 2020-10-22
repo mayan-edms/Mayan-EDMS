@@ -50,7 +50,7 @@ def node_level(node):
             [
                 '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' * node.get_level(),
                 '' if node.is_root_node() else icon_index_level_up.render(),
-                force_text(node)
+                force_text(s=node)
             ]
         )
     )

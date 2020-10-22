@@ -78,8 +78,8 @@ class FieldQuery(object):
                         self.query = self.query | q_object
 
             if not term.is_meta:
-                self.parts.append(force_text(search_field.label))
-                self.parts.append(force_text(term))
+                self.parts.append(force_text(s=search_field.label))
+                self.parts.append(force_text(s=term))
             else:
                 self.parts.append(term.string)
 
@@ -106,7 +106,7 @@ class SearchQuery(object):
             )
 
             if field_query.query:
-                self.text.append('({})'.format(force_text(field_query)))
+                self.text.append('({})'.format(force_text(s=field_query)))
 
                 if global_and_search:
                     self.text.append('AND')
@@ -236,6 +236,6 @@ class SearchTermCollection(object):
             if term.is_meta:
                 result.append(term.string)
             else:
-                result.append(force_text(term))
+                result.append(force_text(s=term))
 
         return ' '.join(result)

@@ -46,7 +46,7 @@ class DuplicatedDocument(models.Model):
         verbose_name_plural = _('Duplicated documents')
 
     def __str__(self):
-        return force_text(self.document)
+        return force_text(s=self.document)
 
 
 @python_2_unicode_compatible
@@ -70,7 +70,7 @@ class FavoriteDocument(models.Model):
         verbose_name_plural = _('Favorite documents')
 
     def __str__(self):
-        return force_text(self.document)
+        return force_text(s=self.document)
 
     def natural_key(self):
         return (self.document.natural_key(), self.user.natural_key())
@@ -103,7 +103,7 @@ class RecentDocument(models.Model):
         verbose_name_plural = _('Recent documents')
 
     def __str__(self):
-        return force_text(self.document)
+        return force_text(s=self.document)
 
     def natural_key(self):
         return (self.datetime_accessed, self.document.natural_key(), self.user.natural_key())
