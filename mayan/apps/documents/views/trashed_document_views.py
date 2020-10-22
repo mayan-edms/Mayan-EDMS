@@ -40,17 +40,18 @@ class DocumentTrashView(MultipleObjectConfirmActionView):
     )
 
     def get_extra_context(self):
-        queryset = self.object_list
-
-        result = {
+        context = {
             'title': ungettext(
                 singular='Move the selected document to the trash?',
                 plural='Move the selected documents to the trash?',
-                number=queryset.count()
+                number=self.object_list.count()
             )
         }
 
-        return result
+        if self.object_list.count() == 1:
+            context['object'] = self.object_list.first()
+
+        return context
 
     def get_post_action_redirect(self):
         # Return to the previous view after moving the document to trash
@@ -98,17 +99,18 @@ class TrashedDocumentDeleteView(MultipleObjectConfirmActionView):
     )
 
     def get_extra_context(self):
-        queryset = self.object_list
-
-        result = {
+        context = {
             'title': ungettext(
                 singular='Delete the selected trashed document?',
                 plural='Delete the selected trashed documents?',
-                number=queryset.count()
+                number=self.object_list.count()
             )
         }
 
-        return result
+        if self.object_list.count() == 1:
+            context['object'] = self.object_list.first()
+
+        return context
 
     def object_action(self, form, instance):
         task_delete_document.apply_async(
@@ -158,17 +160,18 @@ class TrashedDocumentRestoreView(MultipleObjectConfirmActionView):
     )
 
     def get_extra_context(self):
-        queryset = self.object_list
-
-        result = {
+        context = {
             'title': ungettext(
                 singular='Restore the selected trashed document?',
                 plural='Restore the selected trashed documents?',
-                number=queryset.count()
+                number=self.object_list.count()
             )
         }
 
-        return result
+        if self.object_list.count() == 1:
+            context['object'] = self.object_list.first()
+
+        return context
 
     def object_action(self, form, instance):
         instance.restore()

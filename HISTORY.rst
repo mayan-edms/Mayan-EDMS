@@ -16,6 +16,9 @@
   encryption storage to accept unicode content. GitLab issue #876.
 - Redirect to the previous view when moving document to the trash. Closes
   GitLab issue #873. Thanks to Bw (@bwakkie) for the report.
+- Add the current document to the context to improve navigation in the views:
+  add to favorites, remove from favorites, move to trash, delete trashed,
+  and restore trashed.
 
 3.4.17 (2020-09-10)
 ===================
