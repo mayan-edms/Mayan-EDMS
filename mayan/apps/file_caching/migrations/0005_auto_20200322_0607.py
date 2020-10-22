@@ -35,11 +35,8 @@ def operation_purge_and_delete_caches(apps, schema_editor):
         )
         cache_partition_file.delete()
 
-    for cache_partition in CachePartition.objects.using(schema_editor.connection.alias).all():
-        cache_partition.delete()
-
-    for cache in Cache.objects.using(schema_editor.connection.alias).all():
-        cache.delete()
+    CachePartition.objects.using(schema_editor.connection.alias).all().delete()
+    Cache.objects.using(schema_editor.connection.alias).all().delete()
 
 
 def operation_update_storage_paths(apps, schema_editor):

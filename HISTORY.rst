@@ -5,6 +5,7 @@
 - Seed the random number generator when the test case class is initialized.
 - Update test PostgreSQL makefile target to allow continuing launching
   the PostgreSQL container without password.
+- Simplify and optimize file caching migration 0005_auto_20200322_0607.
 
 3.4.17 (2020-09-10)
 ===================
