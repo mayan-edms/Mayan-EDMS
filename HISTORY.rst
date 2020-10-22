@@ -272,7 +272,7 @@
 - Default ``DEFAULT_CELERY_BROKER_URL`` to ``'memory://'``.
   This ensures operation even when there is no broker available.
 
-3.4.18 (2020-XX-XX)
+3.4.18 (2020-10-22)
 ===================
 - Update Django from version 2.2.15 to 2.2.16.
 - Increase GitLab CI artifact expiration to 2 hours.
@@ -285,7 +285,7 @@
   report.
 - Passthrough storage improvements. Zip file is opened with the modes
   corresponding to the calling storage. New file object methods added:
-  tell, write, flush, seek. Empty files when using the `.save()` method
+  tell, write, flush, seek. Empty files when using the ``.save()`` method
   are now only created if they don't already exists. Add support to the
   encryption storage to accept unicode content. GitLab issue #876.
 - Redirect to the previous view when moving document to the trash. Closes
@@ -295,7 +295,7 @@
   and restore trashed.
 - Add note for hardcoded vine dependency.
 - Style fixes and missing keyword arguments.
-- Add formset_factory keyword arguments.
+- Add ``formset_factory`` keyword arguments.
 
 3.4.17 (2020-09-10)
 ===================
