@@ -22,11 +22,15 @@ class BufferedFile(File):
         else:
             self.stream = StringIO()
 
+        self.name = name
         self.stream_size = 0
 
     def close(self):
         self.file_object.close()
         self.stream.close()
+
+    def flush(self):
+        return self.file_object.flush()
 
     def read(self, size=None):
         if size is None:
