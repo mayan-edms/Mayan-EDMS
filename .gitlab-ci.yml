@@ -11,13 +11,12 @@ stages:
 # Docker
 
 job_docker_build:
-  stage: build_docker
-  image: docker:latest
-  services:
-    - docker:dind
-    - postgres:9.6-alpine
   before_script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  image: docker:latest
+  only:
+    - releases/all
+    - releases/docker
   script:
     - docker build --pull -t "$CI_REGISTRY_IMAGE" -f docker/Dockerfile .
     - DOCKER_VERSION=`cat docker/rootfs/version`
@@ -26,9 +25,10 @@ job_docker_build:
     - docker run --rm --add-host="postgres:$SERVICE_POSTGRES_IP" -e MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql_psycopg2','NAME':'mayan_edms','USER':'postgres','PASSWORD':'postgres','HOST':'postgres'}}" "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" run_tests
     - docker push "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
     - docker logout
-  only:
-    - releases/all
-    - releases/docker
+  services:
+    - docker:dind
+    - postgres:9.6-alpine
+  stage: build_docker
   tags:
     - postgres
   variables:
@@ -36,13 +36,13 @@ job_docker_build:
     POSTGRES_PASSWORD: "postgres"
 
 job_docker_push:
-  stage: push_docker
-  image: docker:latest
-  services:
-    - docker:dind
   before_script:
     - apk add --no-cache python3
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  image: docker:latest
+  only:
+    - releases/all
+    - releases/docker
   script:
     - PYTHON_BIN=/usr/bin/python3
     - DOCKER_VERSION=`cat docker/rootfs/version`
@@ -60,45 +60,44 @@ job_docker_push:
     - docker push registry-1.docker.io/mayanedms/mayanedms:latest
     - docker push registry-1.docker.io/mayanedms/mayanedms:"$MAJOR_VERSION"
     - if [ -z MINOR_VERSION ]; then docker push registry-1.docker.io/mayanedms/mayanedms:"$MINOR_VERSION";fi
-  only:
-    - releases/all
-    - releases/docker
-
-job_docker_nightly:
-  stage: build_docker
-  image: docker:latest
+  stage: push_docker
   services:
     - docker:dind
+
+job_docker_nightly:
   before_script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  image: docker:latest
+  only:
+    - releases/nightly
+    - releases/staging
+  services:
+    - docker:dind
   script:
     - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" -f docker/Dockerfile .
     - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
     - docker logout
-  only:
-    - nightly
-    - staging
+  stage: build_docker
 
 job_docker_testing:
-  stage: build_docker
-  image: docker:latest
-  services:
-    - docker:dind
   before_script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  image: docker:latest
+  only:
+    - releases/testing
   script:
     - PYTHON_BIN=/usr/bin/python3
     - DOCKER_VERSION=`cat docker/rootfs/version`
     - docker build --pull -t "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" -f docker/Dockerfile .
     - docker push "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
     - docker logout
-  only:
-    - testing
+  services:
+    - docker:dind
+  stage: build_docker
 
 # Documentation
+
 job_documentation_build:
-  stage: build_documentation
-  image: ubuntu:19.10
   artifacts:
     expire_in: 2 hr
     paths:
@@ -108,17 +107,17 @@ job_documentation_build:
     - apt-get install -qq enchant make python-dev python-virtualenv python3-dev
     - virtualenv venv -p /usr/bin/python3
     - . venv/bin/activate
+  image: ubuntu:19.10
+  only:
+    - releases/all
+    - releases/documentation
   script:
     - pip install -r requirements/documentation.txt
     - cd docs
     - make html
-  only:
-    - releases/all
-    - releases/documentation
+  stage: build_documentation
 
 job_documentation_push:
-  stage: push_documentation
-  image: ubuntu:19.10
   before_script:
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
@@ -130,14 +129,15 @@ job_documentation_push:
   script:
     - ssh mayandocs@docs.mayan-edms.com "rm -Rf /home/rosarior/webapps/mayan_docs/*"
     - rsync -avzP --progress -e ssh docs/_build/html/* mayandocs@docs.mayan-edms.com:/home/rosarior/webapps/mayan_docs
+  image: ubuntu:19.10
   only:
     - releases/all
     - releases/documentation
+  stage: push_documentation
 
 # Python
+
 job_build_python:
-  stage: build_python
-  image: ubuntu:19.10
   artifacts:
     expire_in: 2 hr
     paths:
@@ -147,37 +147,34 @@ job_build_python:
     - apt-get install -qq make python-dev python-virtualenv python3-dev
     - virtualenv venv -p /usr/bin/python3
     - . venv/bin/activate
-  script:
-    - pip install -r requirements/build.txt
-    - make python-wheel
+  image: ubuntu:19.10
   only:
     - releases/all
     - releases/python
+  script:
+    - pip install -r requirements/build.txt
+    - make python-wheel
+  stage: build_python
 
 job_push_python:
-  stage: push_python
-  image: ubuntu:19.10
   before_script:
     - apt-get -qq update
     - apt-get install -qq make python-dev python-virtualenv python3-dev
     - virtualenv venv -p /usr/bin/python3
     - . venv/bin/activate
+  image: ubuntu:19.10
+  only:
+    - releases/all
+    - releases/python
   script:
     - pip install -r requirements/build.txt
     - echo "$PYPIRC" > ~/.pypirc
     - twine upload dist/* -r pypi
-  only:
-    - releases/all
-    - releases/python
+  stage: push_python
 
 # Test upgrade from the latest public version to the local version
+
 .test_upgrade_base: &test_upgrade_base
-  stage: test
-  image: ubuntu:19.10
-  cache:
-    paths:
-      - ~/.cache/pip/
-      - /var/cache/apt/archives/
   before_script:
     - set -a && . ./config.env && set +a
     - apt-get -qq update
@@ -189,11 +186,17 @@ job_push_python:
     - pip install -r requirements/build.txt -r requirements/testing-base.txt
     - pip install django-test-without-migrations==0.6
     - make python-wheel
+  cache:
+    paths:
+      - ~/.cache/pip/
+      - /var/cache/apt/archives/
+  image: ubuntu:19.10
   only:
     - releases/all
     - releases/docker
     - releases/python
-    - staging
+    - releases/staging
+  stage: test
 
 test_upgrade_sqlite:
   <<: *test_upgrade_base
@@ -205,9 +208,6 @@ test_upgrade_sqlite:
 
 test_upgrade_mysql:
   <<: *test_upgrade_base
-  variables:
-    MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-    MYSQL_DATABASE: "mayan_edms"
   services:
     - mysql:5.7
   script:
@@ -220,6 +220,9 @@ test_upgrade_mysql:
     - mayan-edms.py performupgrade --settings=mayan.settings.testing.gitlab-ci.db_mysql
   tags:
     - mysql
+  variables:
+    MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    MYSQL_DATABASE: "mayan_edms"
 
 test_upgrade_postgres:
   <<: *test_upgrade_base
@@ -238,15 +241,9 @@ test_upgrade_postgres:
   tags:
     - postgres
 
-
 # Run the test suit
+
 .test_base: &test_base
-  stage: test
-  image: ubuntu:19.10
-  cache:
-    paths:
-      - ~/.cache/pip/
-      - /var/cache/apt/archives/
   before_script:
     - set -a && . ./config.env && set +a
     - apt-get -qq update
@@ -254,27 +251,33 @@ test_upgrade_postgres:
     - virtualenv venv -p /usr/bin/python3
     - . venv/bin/activate
     - pip install -r requirements.txt -r requirements/testing-base.txt
+  cache:
+    paths:
+      - ~/.cache/pip/
+      - /var/cache/apt/archives/
+  image: ubuntu:19.10
   only:
     - releases/all
     - releases/docker
     - releases/python
-    - staging
+    - releases/staging
+  stage: test
 
 test-postgres:
   <<: *test_base
-  variables:
-    POSTGRES_DB: "mayan_edms"
-    POSTGRES_PASSWORD: "postgres"
-  services:
-    - postgres:9.6-alpine
   script:
     - apt-get install -qq libpq-dev
     - . venv/bin/activate
     - pip install psycopg2==$PYTHON_PSYCOPG2_VERSION
     - make test-all SETTINGS=mayan.settings.testing.gitlab-ci.db_postgres
     - make test-all-migrations SETTINGS=mayan.settings.testing.gitlab-ci.db_postgres
+  services:
+    - postgres:9.6-alpine
   tags:
     - postgres
+  variables:
+    POSTGRES_DB: "mayan_edms"
+    POSTGRES_PASSWORD: "postgres"
 
 test-sqlite:
   <<: *test_base
@@ -285,32 +288,33 @@ test-sqlite:
     - make test-all-migrations
 
 # Deploy
+
 deploy_demo:
-  environment:
-    name: demo
-  stage: deploy
   before_script:
     - mkdir -p ~/.ssh
     - echo "${DEMO_SSH_KNOWN_HOST}" > ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
     - echo "${DEMO_PRIVATE_KEY}" > ~/.ssh/id_rsa
     - chmod 600 ~/.ssh/id_rsa
+  environment:
+    name: demo
   script:
     - scp contrib/scripts/install/docker.sh root@$DEMO_IP_ADDRESS:~
     - ssh root@$DEMO_IP_ADDRESS "DELETE_VOLUMES=true ./docker.sh"
+  stage: deploy
   when: manual
 
 deploy_staging:
-  environment:
-    name: staging
-  stage: deploy
   before_script:
     - mkdir -p ~/.ssh
     - echo "${STAGING_SSH_KNOWN_HOST}" > ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
     - echo "${STAGING_PRIVATE_KEY}" > ~/.ssh/id_rsa
     - chmod 600 ~/.ssh/id_rsa
+  environment:
+    name: staging
   script:
     - scp contrib/scripts/install/docker.sh root@$STAGING_IP_ADDRESS:~
     - ssh root@$STAGING_IP_ADDRESS "DOCKER_MAYAN_IMAGE=registry.gitlab.com/mayan-edms/mayan-edms:staging ./docker.sh"
+  stage: deploy
   when: manual
