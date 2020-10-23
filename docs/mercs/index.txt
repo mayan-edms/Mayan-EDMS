@@ -23,14 +23,12 @@ Accepted
    ../mercs/0005-explicit-arguments
    ../mercs/0006-lower-information-disclose
    ../mercs/0007-git-branch-structure
+   ../mercs/0008-merging-roles-and-groups
 
 Draft
 -----
 
-.. toctree::
-   :maxdepth: 1
-
-   ../mercs/merging-roles-and-groups
+   - None
 
 
 Type
