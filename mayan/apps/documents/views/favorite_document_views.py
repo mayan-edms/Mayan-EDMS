@@ -56,7 +56,7 @@ class FavoriteAddView(MultipleObjectConfirmActionView):
             'title': ungettext(
                 singular='Add the selected document to favorites?',
                 plural='Add the selected documents to favorites?',
-                number=queryset.count()
+                number=self.object_list.count()
             )
         }
 
@@ -90,7 +90,7 @@ class FavoriteRemoveView(MultipleObjectConfirmActionView):
             'title': ungettext(
                 singular='Remove the selected document from favorites?',
                 plural='Remove the selected documents from favorites?',
-                number=queryset.count()
+                number=self.object_list.count()
             )
         }
 

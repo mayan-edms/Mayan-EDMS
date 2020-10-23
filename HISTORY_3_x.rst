@@ -1,3 +1,8 @@
+3.5.2 (2020-10-XX)
+==================
+- Allow JavaScript from Django REST framework to be served.
+  Needed for the browseable API UI.
+
 3.5.1 (2020-10-11)
 ==================
 - Update xmlrpc to latest interface to fix version check view.
