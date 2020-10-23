@@ -120,6 +120,27 @@ class InstanceExtraDataAPIViewMixin:
         return super().perform_update(serializer=serializer)
 
 
+class SchemaInspectionAPIViewMixin:
+    def get_queryset(self):
+        if getattr(self, 'swagger_fake_view', False):
+            return []
+
+        return super().get_queryset()
+
+    def get_serializer(self, *args, **kwargs):
+        if getattr(self, 'swagger_fake_view', False):
+
+            return None
+
+        return super().get_serializer(*args, **kwargs)
+
+    def get_serializer_context(self, *args, **kwargs):
+        if getattr(self, 'swagger_fake_view', False):
+            return {}
+
+        return super().get_serializer_context(*args, **kwargs)
+
+
 class SerializerActionAPIViewMixin:
     serializer_action_name = None
 
@@ -161,11 +182,3 @@ class SuccessHeadersAPIViewMixin:
             return {'Location': str(data[api_settings.URL_FIELD_NAME])}
         except (TypeError, KeyError):
             return {}
-
-
-class SerializerInspectionAPIViewMixin:
-    def get_serializer(self, *args, **kwargs):
-        if not self.request:
-            return None
-
-        return super().get_serializer(*args, **kwargs)

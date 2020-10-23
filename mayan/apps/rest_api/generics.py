@@ -2,20 +2,19 @@ from rest_framework import generics
 
 from .filters import MayanObjectPermissionsFilter
 from .mixins import (
-    InstanceExtraDataAPIViewMixin, SerializerExtraContextAPIViewMixin
+    InstanceExtraDataAPIViewMixin, SerializerExtraContextAPIViewMixin,
+    SchemaInspectionAPIViewMixin
 )
 from .permissions import MayanPermission
 
 
-
-
-class GenericAPIView(SerializerInspectionAPIViewMixin, generics.GenericAPIView):
+class GenericAPIView(SchemaInspectionAPIViewMixin, generics.GenericAPIView):
     filter_backends = (MayanObjectPermissionsFilter,)
     permission_classes = (MayanPermission,)
 
 
 class ListAPIView(
-    SerializerInspectionAPIViewMixin, SerializerExtraContextAPIViewMixin,
+    SchemaInspectionAPIViewMixin, SerializerExtraContextAPIViewMixin,
     generics.ListAPIView
 ):
     """
@@ -30,7 +29,7 @@ class ListAPIView(
 
 
 class ListCreateAPIView(
-    SerializerInspectionAPIViewMixin, InstanceExtraDataAPIViewMixin,
+    SchemaInspectionAPIViewMixin, InstanceExtraDataAPIViewMixin,
     SerializerExtraContextAPIViewMixin, generics.ListCreateAPIView
 ):
     """
@@ -43,7 +42,7 @@ class ListCreateAPIView(
 
 
 class RetrieveAPIView(
-    SerializerInspectionAPIViewMixin, InstanceExtraDataAPIViewMixin,
+    SchemaInspectionAPIViewMixin, InstanceExtraDataAPIViewMixin,
     SerializerExtraContextAPIViewMixin, generics.RetrieveAPIView
 ):
     """
@@ -56,7 +55,7 @@ class RetrieveAPIView(
 
 
 class RetrieveDestroyAPIView(
-    SerializerInspectionAPIViewMixin, InstanceExtraDataAPIViewMixin,
+    SchemaInspectionAPIViewMixin, InstanceExtraDataAPIViewMixin,
     SerializerExtraContextAPIViewMixin, generics.RetrieveDestroyAPIView
 ):
     """
@@ -70,7 +69,7 @@ class RetrieveDestroyAPIView(
 
 
 class RetrieveUpdateAPIView(
-    SerializerInspectionAPIViewMixin, InstanceExtraDataAPIViewMixin,
+    SchemaInspectionAPIViewMixin, InstanceExtraDataAPIViewMixin,
     SerializerExtraContextAPIViewMixin, generics.RetrieveUpdateAPIView
 ):
     """
@@ -85,7 +84,7 @@ class RetrieveUpdateAPIView(
 
 
 class RetrieveUpdateDestroyAPIView(
-    SerializerInspectionAPIViewMixin, InstanceExtraDataAPIViewMixin,
+    SchemaInspectionAPIViewMixin, InstanceExtraDataAPIViewMixin,
     SerializerExtraContextAPIViewMixin, generics.RetrieveUpdateDestroyAPIView
 ):
     """
