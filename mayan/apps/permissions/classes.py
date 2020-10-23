@@ -39,7 +39,7 @@ class PermissionNamespace:
         self.__class__._registry[name] = self
 
     def __str__(self):
-        return force_text(self.label)
+        return force_text(s=self.label)
 
     def add_permission(self, name, label):
         permission = Permission(namespace=self, name=name, label=label)
@@ -60,7 +60,7 @@ class Permission(AppsModuleLoaderMixin):
 
             for namespace, permissions in itertools.groupby(cls.all(), lambda entry: entry.namespace):
                 permission_options = [
-                    (force_text(permission.pk), permission) for permission in permissions
+                    (force_text(s=permission.pk), permission) for permission in permissions
                 ]
                 results.append(
                     (namespace, permission_options)
@@ -94,6 +94,7 @@ class Permission(AppsModuleLoaderMixin):
     @classmethod
     def load_modules(cls):
         super().load_modules()
+
         # Invalidate cache always. This is for tests that build a new memory
         # only database and cause all cache references built in the .ready()
         # method to be invalid.
@@ -117,7 +118,7 @@ class Permission(AppsModuleLoaderMixin):
         return self.pk
 
     def __str__(self):
-        return force_text(self.label)
+        return force_text(s=self.label)
 
     def get_pk(self):
         return '%s.%s' % (self.namespace.name, self.name)

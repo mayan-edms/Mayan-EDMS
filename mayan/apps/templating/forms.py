@@ -1,7 +1,7 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
-from .fields import TemplateField
+from .fields import ModelTemplateField
 
 
 class DocumentTemplateSandboxForm(forms.Form):
@@ -16,7 +16,7 @@ class DocumentTemplateSandboxForm(forms.Form):
         self.model = kwargs.pop('model')
         self.model_variable = kwargs.pop('model_variable')
         super(DocumentTemplateSandboxForm, self).__init__(*args, **kwargs)
-        self.fields['template'] = TemplateField(
+        self.fields['template'] = ModelTemplateField(
             initial_help_text=_('The template string to be evaluated.'),
             label=_('Template'), model=self.model,
             model_variable=self.model_variable, required=True

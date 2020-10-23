@@ -1,10 +1,10 @@
 import importlib
 import logging
 
-from mayan.apps.tests.tests.base import BaseTestCase
 from mayan.apps.document_states import storages
 from mayan.apps.smart_settings.tests.mixins import SmartSettingTestMixin
 from mayan.apps.storage.classes import DefinedStorage
+from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..literals import STORAGE_NAME_WORKFLOW_CACHE
 from ..settings import setting_workflowimagecache_storage_arguments

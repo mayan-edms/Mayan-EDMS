@@ -1,7 +1,6 @@
 import json
 import logging
 
-from django.conf import settings
 from django.db import models, transaction
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
@@ -10,8 +9,7 @@ from django_celery_beat.models import PeriodicTask, IntervalSchedule
 from model_utils.managers import InheritanceManager
 
 from mayan.apps.converter.layers import layer_saved_transformations
-from mayan.apps.documents.models import Document, DocumentType
-from mayan.apps.documents.settings import setting_language
+from mayan.apps.documents.models import DocumentType
 from mayan.apps.storage.compressed_files import Archive
 from mayan.apps.storage.exceptions import NoMIMETypeMatch
 
@@ -42,7 +40,7 @@ class Source(models.Model):
 
     @classmethod
     def class_fullname(cls):
-        return force_text(dict(SOURCE_CHOICES).get(cls.source_type))
+        return force_text(s=dict(SOURCE_CHOICES).get(cls.source_type))
 
     def clean_up_upload_file(self, upload_file_object):
         pass
@@ -74,7 +72,7 @@ class Source(models.Model):
                 for compressed_file_child in compressed_file.members():
                     with compressed_file.open_member(filename=compressed_file_child) as file_object:
                         kwargs.update(
-                            {'label': force_text(compressed_file_child)}
+                            {'label': force_text(s=compressed_file_child)}
                         )
                         documents.append(
                             self.upload_document(
@@ -107,13 +105,10 @@ class Source(models.Model):
         Upload an individual document
         """
         try:
-            with transaction.atomic():
-                document = Document(
-                    description=description or '', document_type=document_type,
-                    label=label or file_object.name,
-                    language=language or setting_language.value
-                )
-                document.save(_user=user)
+            document = document_type.new_document(
+                description=description, file_object=file_object, label=label,
+                language=language, _user=user
+            )
         except Exception as exception:
             logger.critical(
                 'Unexpected exception while trying to create new document '
@@ -222,8 +217,7 @@ class IntervalBaseModel(OutOfProcessSource):
                     exception.__class__.__name__, exception
                 )
             )
-            if settings.DEBUG:
-                raise
+            raise
         else:
             self.error_log.all().delete()
 

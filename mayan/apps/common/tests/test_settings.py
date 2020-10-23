@@ -1,12 +1,12 @@
 import importlib
 import logging
 
-from mayan.apps.tests.tests.base import BaseTestCase
 from mayan.apps.smart_settings.tests.mixins import SmartSettingTestMixin
 from mayan.apps.storage import storages
 from mayan.apps.storage.classes import DefinedStorage
 from mayan.apps.storage.literals import STORAGE_NAME_SHARED_UPLOADED_FILE
 from mayan.apps.storage.settings import setting_shared_storage_arguments
+from mayan.apps.testing.tests.base import BaseTestCase
 
 
 class CommonStorageSettingsTestCase(SmartSettingTestMixin, BaseTestCase):

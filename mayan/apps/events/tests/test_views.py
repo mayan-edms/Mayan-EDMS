@@ -1,7 +1,7 @@
 from django.contrib.contenttypes.models import ContentType
 
-from mayan.apps.tests.tests.base import GenericViewTestCase
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
+from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..models import Notification
 from ..permissions import permission_events_view

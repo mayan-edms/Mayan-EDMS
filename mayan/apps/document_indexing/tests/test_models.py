@@ -1,12 +1,12 @@
 from django.utils.encoding import force_text
 
-from mayan.apps.tests.tests.base import BaseTestCase
 from mayan.apps.documents.tests.base import DocumentTestMixin
 from mayan.apps.documents.tests.literals import (
     TEST_DOCUMENT_DESCRIPTION, TEST_DOCUMENT_DESCRIPTION_EDITED,
     TEST_DOCUMENT_LABEL_EDITED, TEST_SMALL_DOCUMENT_PATH
 )
 from mayan.apps.metadata.models import MetadataType, DocumentTypeMetadataType
+from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..models import Index, IndexInstanceNode, IndexTemplateNode
 
@@ -90,7 +90,7 @@ class IndexTestCase(IndexTestMixin, DocumentTestMixin, BaseTestCase):
         self.assertEqual(
             list(IndexInstanceNode.objects.values_list('value', flat=True)),
             [
-                '', force_text(self.test_document.date_added.year),
+                '', force_text(s=self.test_document.date_added.year),
                 '{:02}'.format(self.test_document.date_added.month)
             ]
         )
@@ -131,8 +131,8 @@ class IndexTestCase(IndexTestMixin, DocumentTestMixin, BaseTestCase):
             set(IndexInstanceNode.objects.values_list('value', flat=True)),
             set(
                 [
-                    '', force_text(self.test_document_2.uuid), self.test_document_2.label,
-                    force_text(self.test_document.uuid), self.test_document.label
+                    '', force_text(s=self.test_document_2.uuid), self.test_document_2.label,
+                    force_text(s=self.test_document.uuid), self.test_document.label
                 ]
             )
         )

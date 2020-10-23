@@ -29,13 +29,15 @@ class QuotaBackendSelectionView(FormView):
     def form_valid(self, form):
         backend = form.cleaned_data['backend']
         return HttpResponseRedirect(
-            reverse('quotas:quota_create', args=(backend,),)
+            reverse(
+                viewname='quotas:quota_create', kwargs={'class_path': backend}
+            )
         )
 
 
 class QuotaCreateView(SingleObjectDynamicFormCreateView):
     form_class = QuotaDynamicForm
-    post_action_redirect = reverse_lazy('quotas:quota_list')
+    post_action_redirect = reverse_lazy(viewname='quotas:quota_list')
     view_permission = permission_quota_create
 
     def get_backend(self):
@@ -77,7 +79,7 @@ class QuotaDeleteView(SingleObjectDeleteView):
     model = Quota
     object_permission = permission_quota_delete
     pk_url_kwarg = 'quota_id'
-    post_action_redirect = reverse_lazy('quotas:quota_list')
+    post_action_redirect = reverse_lazy(viewname='quotas:quota_list')
 
     def get_extra_context(self):
         return {

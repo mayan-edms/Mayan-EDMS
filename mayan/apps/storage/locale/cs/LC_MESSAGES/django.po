@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Jiri Fait <fait@orkasolutions.cz>, 2019
 # Michal Švábík <snadno@lehce.cz>, 2019-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-22 23:21-0400\n"
-"PO-Revision-Date: 2020-06-22 15:25+0000\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"PO-Revision-Date: 2020-09-29 08:55+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
@@ -19,11 +20,11 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:11 settings.py:7
+#: apps.py:11 settings.py:9
 msgid "Storage"
 msgstr "Úložiště"
 
-#: classes.py:81 classes.py:102
+#: classes.py:82 classes.py:103
 #, python-format
 msgid ""
 "Unable to initialize storage: %(name)s. Check the storage backend dotted "
@@ -53,8 +54,46 @@ msgstr "Reverzní zpracování souborů zruší transformace uložiště"
 msgid "Name of the storage to process."
 msgstr "Název úložiště ke zpracování."
 
-#: settings.py:12
+#: models.py:23
+msgid "File"
+msgstr "Soubor"
+
+#: models.py:25
+msgid "Filename"
+msgstr "Název souboru"
+
+#: models.py:27
+msgid "Date time"
+msgstr "Datum a čas"
+
+#: models.py:31
+msgid "Shared uploaded file"
+msgstr "Sdílený nahraný soubor"
+
+#: models.py:32 storages.py:19
+msgid "Shared uploaded files"
+msgstr "Sdílené nahrané soubory"
+
+#: queues.py:11
+msgid "Storage periodic"
+msgstr "Pravidelné ukládání"
+
+#: queues.py:16
+msgid "Delete stale uploads"
+msgstr "Odstraňte zastaralá nahrávání"
+
+#: settings.py:14
+msgid "A storage backend that all workers can use to share files."
+msgstr "Úložiště, které všichni pracovníci mohou použít ke sdílení souborů."
+
+#: settings.py:23
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
 msgstr "Dočasný adresář používaný na celém webu k ukládání miniatur, náhledů a dočasných souborů."
+
+#: storages.py:12
+msgid ""
+"Unable to initialize the shared uploaded file storage. Check the settings {}"
+" and {} for formatting errors."
+msgstr "Nelze inicializovat sdílené úložiště nahraných souborů. Zkontrolujte v nastavení {} a {} chyby formátování."

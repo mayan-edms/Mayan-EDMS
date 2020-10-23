@@ -124,6 +124,8 @@ class DocumentMetadataSerializer(serializers.HyperlinkedModelSerializer):
         except DjangoValidationError as exception:
             raise ValidationError(exception)
 
+        attrs['value'] = self.instance.value
+
         return attrs
 
 
@@ -172,5 +174,7 @@ class NewDocumentMetadataSerializer(serializers.ModelSerializer):
             instance.full_clean()
         except DjangoValidationError as exception:
             raise ValidationError(exception)
+
+        attrs['value'] = instance.value
 
         return attrs

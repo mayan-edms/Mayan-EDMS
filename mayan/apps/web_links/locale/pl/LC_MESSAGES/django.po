@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-22 23:21-0400\n"
+"POT-Creation-Date: 2020-10-15 06:14+0000\n"
 "PO-Revision-Date: 2019-12-03 05:24+0000\n"
 "Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>, 2020\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
@@ -21,12 +21,12 @@ msgstr ""
 "Language: pl\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: apps.py:37
+#: apps.py:42
 msgid "Links"
 msgstr "Linki"
 
-#: events.py:6 links.py:14 links.py:49 links.py:54 links.py:58 models.py:41
-#: permissions.py:5 views.py:153
+#: events.py:6 links.py:14 links.py:20 links.py:54 links.py:58 models.py:40
+#: permissions.py:5 views.py:148
 msgid "Web links"
 msgstr "Linki internetowe"
 
@@ -42,48 +42,48 @@ msgstr "Edytowano link"
 msgid "Web link navigated"
 msgstr "Otwarto link"
 
-#: links.py:20 views.py:188
+#: links.py:26 views.py:189
 msgid "Create new web link"
 msgstr "Stworzono link"
 
-#: links.py:26
+#: links.py:32
 msgid "Delete"
 msgstr "Usuń"
 
-#: links.py:32 models.py:33
+#: links.py:38 models.py:34
 msgid "Document types"
 msgstr "Typy dokumentów"
 
-#: links.py:38
+#: links.py:44
 msgid "Edit"
 msgstr "Edytuj"
 
-#: links.py:44
+#: links.py:50
 msgid "Navigate"
 msgstr "Nawiguj"
 
-#: models.py:21
+#: models.py:22
 msgid "A short text describing the web link."
 msgstr "Krótki teks opisujący link"
 
-#: models.py:22
+#: models.py:23
 msgid "Label"
 msgstr "Etykieta"
 
-#: models.py:26
+#: models.py:27
 msgid "Template that will be used to craft the final URL of the web link."
 msgstr ""
 "Szablon, który będzie używany do tworzenia końcowego adresu URL linku."
 
-#: models.py:28
+#: models.py:29
 msgid "Template"
 msgstr "Szablon"
 
-#: models.py:30
+#: models.py:31
 msgid "Enabled"
 msgstr "Włączone"
 
-#: models.py:40
+#: models.py:39
 msgid "Web link"
 msgstr "Link sieciowy"
 
@@ -107,6 +107,12 @@ msgstr "Zobacz istniejące linki"
 msgid "View web link instances"
 msgstr "Wyświetl instancje linków"
 
+#: serializers.py:62
+msgid ""
+"Comma separated list of document type primary keys to which this web link "
+"will be attached."
+msgstr ""
+
 #: views.py:42
 msgid "Available web links"
 msgstr "Dostępne linki"
@@ -120,20 +126,20 @@ msgstr "Linki włączone"
 msgid "Web links to enable for document type: %s"
 msgstr "Linki do włączenia dla typu dokumentu: %s"
 
-#: views.py:117
+#: views.py:113
 msgid "Available document types"
 msgstr "Dostępne typy dokumentów"
 
-#: views.py:118
+#: views.py:114
 msgid "Document types enabled"
 msgstr "Typy dokumentów z udostępnionym łączem"
 
-#: views.py:128
+#: views.py:124
 #, python-format
 msgid "Document type for which to enable web link: %s"
 msgstr "Typ dokumentu, dla którego należy włączyć linki: %s"
 
-#: views.py:146 views.py:170
+#: views.py:141 views.py:171
 msgid ""
 "Web links allow generating HTTP links from documents to external resources. "
 "The link URL's can contain document properties values."
@@ -142,25 +148,25 @@ msgstr ""
 "zewnętrznych. Adresy URL linków mogą zawierać wartości właściwości "
 "dokumentu."
 
-#: views.py:151
+#: views.py:146
 msgid "There are no web links"
 msgstr "Brak linków"
 
-#: views.py:175
+#: views.py:176
 msgid "There are no web links for this document"
 msgstr "Brak linków do tego dokumentu"
 
-#: views.py:178
+#: views.py:179
 #, python-format
 msgid "Web links for document: %s"
 msgstr "Linki do dokumentu: %s"
 
-#: views.py:210
+#: views.py:211
 #, python-format
 msgid "Delete web link: %s"
 msgstr "Usuń link: %s"
 
-#: views.py:226
+#: views.py:227
 #, python-format
 msgid "Edit web link: %s"
 msgstr "Edytuj link: %s"

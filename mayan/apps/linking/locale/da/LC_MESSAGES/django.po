@@ -3,11 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-22 23:19-0400\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2020-01-29 08:08+0000\n"
 "Last-Translator: Allan Møller <it@brandts.dk>\n"
 "Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/da/)\n"
@@ -17,15 +18,15 @@ msgstr ""
 "Language: da\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:40
+#: apps.py:43
 msgid "Linking"
 msgstr ""
 
-#: apps.py:76 models.py:26
+#: apps.py:96 models.py:25
 msgid "Label"
 msgstr "Etiket"
 
-#: events.py:6 links.py:18 links.py:77 links.py:82 links.py:87 models.py:45
+#: events.py:6 links.py:18 links.py:77 links.py:82 links.py:87 models.py:44
 #: permissions.py:5 views.py:203
 msgid "Smart links"
 msgstr ""
@@ -62,7 +63,7 @@ msgstr ""
 msgid "Create new smart link"
 msgstr ""
 
-#: links.py:61 models.py:37
+#: links.py:61 models.py:36
 msgid "Document types"
 msgstr "Dokumenttyper"
 
@@ -138,80 +139,80 @@ msgstr ""
 msgid "is in regular expression (case insensitive)"
 msgstr ""
 
-#: models.py:25
+#: models.py:24
 msgid "A short text describing the smart link."
 msgstr ""
 
-#: models.py:30
+#: models.py:29
 msgid ""
 "Use this field to show a unique label depending on the document from which "
 "the smart link is being accessed."
 msgstr ""
 
-#: models.py:32
+#: models.py:31
 msgid "Dynamic label"
 msgstr ""
 
-#: models.py:34 models.py:191
+#: models.py:33 models.py:189
 msgid "Enabled"
 msgstr ""
 
-#: models.py:44 models.py:169
+#: models.py:43 models.py:167
 msgid "Smart link"
 msgstr ""
 
-#: models.py:83
+#: models.py:82
 #, python-format
 msgid "Error generating dynamic label; %s"
 msgstr ""
 
-#: models.py:98
+#: models.py:97
 msgid "This smart link is not allowed for the selected document's type."
 msgstr ""
 
-#: models.py:173
+#: models.py:171
 msgid "The inclusion is ignored for the first item."
 msgstr ""
 
-#: models.py:177
+#: models.py:175
 msgid "This represents the metadata of all other documents."
 msgstr ""
 
-#: models.py:178
+#: models.py:176
 msgid "Foreign document attribute"
 msgstr ""
 
-#: models.py:183
+#: models.py:181
 msgid ""
 "The expression using document properties to be evaluated against the foreign"
 " document field."
 msgstr ""
 
-#: models.py:185
+#: models.py:183
 msgid "Expression"
 msgstr ""
 
-#: models.py:188
+#: models.py:186
 msgid "Inverts the logic of the operator."
 msgstr ""
 
-#: models.py:189
+#: models.py:187
 msgid "Negated"
 msgstr ""
 
-#: models.py:194
+#: models.py:192
 msgid "Link condition"
 msgstr ""
 
-#: models.py:195
+#: models.py:193
 msgid "Link conditions"
 msgstr ""
 
-#: models.py:203
+#: models.py:201
 msgid "not"
 msgstr ""
 
-#: models.py:207
+#: models.py:205
 msgid "Full label"
 msgstr ""
 

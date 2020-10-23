@@ -71,6 +71,28 @@ class WorkflowAction(
         return sorted(cls._registry.values(), key=lambda x: x.label)
 
     @classmethod
+    def get_choices(cls):
+        apps_name_map = {
+            app.name: app for app in apps.get_app_configs()
+        }
+
+        # Match each workflow action to an app
+        apps_workflow_action_map = {}
+
+        for klass in WorkflowAction.get_all():
+            for app_name, app in apps_name_map.items():
+                if klass.__module__.startswith(app_name):
+                    apps_workflow_action_map.setdefault(app, [])
+                    apps_workflow_action_map[app].append((klass.id(), klass.label))
+
+        result = [
+            (app.verbose_name, workflow_actions) for app, workflow_actions in apps_workflow_action_map.items()
+        ]
+
+        # Sort by app, then by workflow action
+        return sorted(result, key=lambda x: (x[0], x[1]))
+
+    @classmethod
     def id(cls):
         return '{}.{}'.format(cls.__module__, cls.__name__)
 
@@ -92,7 +114,7 @@ class WorkflowAction(
     def __init__(self, form_data=None):
         self.form_data = form_data
 
-    def get_form_schema(self, request=None):
+    def get_form_schema(self, workflow_state, request=None):
         result = {
             'fields': self.fields or {},
             'media': getattr(self, 'media', {}),

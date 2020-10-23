@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2018
 # Renata Oliveira <renatabels@gmail.com>, 2011
@@ -12,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-22 23:19-0400\n"
-"PO-Revision-Date: 2020-04-04 12:47+0000\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"PO-Revision-Date: 2020-10-01 22:14+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -26,31 +27,31 @@ msgstr ""
 msgid "None"
 msgstr "Nenhum"
 
-#: admin.py:24 links.py:93 models.py:52
+#: admin.py:24 links.py:93 models.py:51
 msgid "Document types"
 msgstr "Tipos de Documentos"
 
-#: apps.py:54 events.py:6
+#: apps.py:55 events.py:6 settings.py:8
 msgid "Document indexing"
 msgstr "Indexação de documentos"
 
-#: apps.py:129
+#: apps.py:146
 msgid "Total levels"
 msgstr "Total de níveis"
 
-#: apps.py:136
+#: apps.py:153
 msgid "Total documents"
 msgstr "Total de documentos"
 
-#: apps.py:142 apps.py:156 apps.py:181 apps.py:191
+#: apps.py:159 apps.py:173 apps.py:193 apps.py:203
 msgid "Level"
 msgstr "Nível"
 
-#: apps.py:161 apps.py:196
+#: apps.py:181
 msgid "Levels"
 msgstr "Níveis"
 
-#: apps.py:168 apps.py:176 apps.py:204 models.py:381
+#: apps.py:188 models.py:394
 msgid "Documents"
 msgstr "Documentos"
 
@@ -78,7 +79,7 @@ msgstr "Template"
 msgid "Creation date"
 msgstr "Data de criação"
 
-#: links.py:21 links.py:36 links.py:73 links.py:77 models.py:60 views.py:150
+#: links.py:21 links.py:36 links.py:73 links.py:77 models.py:59 views.py:150
 #: views.py:333
 msgid "Indexes"
 msgstr "Índices"
@@ -119,119 +120,119 @@ msgstr "Árvore de template"
 msgid "New child node"
 msgstr "Novo nó filho"
 
-#: models.py:34
+#: models.py:33
 msgid "Short description of this index."
 msgstr "Descrição curta deste índice."
 
-#: models.py:35
+#: models.py:34
 msgid "Label"
 msgstr "Rótulo"
 
-#: models.py:39
+#: models.py:38
 msgid "This value will be used by other apps to reference this index."
 msgstr "Este valor será usado por outros aplicativos para referenciar este índice."
 
-#: models.py:40
+#: models.py:39
 msgid "Slug"
 msgstr "Slug"
 
-#: models.py:45
+#: models.py:44
 msgid ""
 "Causes this index to be visible and updated when document data changes."
 msgstr "Faz com que este índice seja visível e atualizado quando dados de documentos forem alterados."
 
-#: models.py:48 models.py:253
+#: models.py:47 models.py:230
 msgid "Enabled"
 msgstr "Habilitado"
 
-#: models.py:59 models.py:237
+#: models.py:58 models.py:214
 msgid "Index"
 msgstr "Índice"
 
-#: models.py:209
-msgid "Index instance"
-msgstr "Instância de índice"
-
-#: models.py:210
-msgid "Index instances"
-msgstr "Instâncias de índice"
-
-#: models.py:241
+#: models.py:218
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 msgstr "Insira um template para renderizar. Use a linguagem padrão de template do Django (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)."
 
-#: models.py:245
+#: models.py:222
 msgid "Indexing expression"
 msgstr "Expressão de indexação"
 
-#: models.py:250
+#: models.py:227
 msgid "Causes this node to be visible and updated when document data changes."
 msgstr "Faz com que este nó seja visível e atualizado quando dados do documento forem alterados."
 
-#: models.py:258
+#: models.py:235
 msgid ""
 "Check this option to have this node act as a container for documents and not"
 " as a parent for further nodes."
 msgstr "Marque esta opção para que este nó atue como um recipiente para documentos e não como um pai para outros nós secundários."
 
-#: models.py:261
+#: models.py:238
 msgid "Link documents"
 msgstr "Link de documentos"
 
-#: models.py:265
+#: models.py:242
 msgid "Index node template"
 msgstr "Índice de template de nó"
 
-#: models.py:266
+#: models.py:243
 msgid "Indexes node template"
 msgstr "Indices de template de nó"
 
-#: models.py:270
+#: models.py:247
 msgid "Root"
 msgstr "Raiz"
 
-#: models.py:328
+#: models.py:305
 #, python-format
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
 msgstr "Erro indexando documento: %(document)s; expressão: %(expression)s; %(exception)s"
 
-#: models.py:374
+#: models.py:346
+msgid "Index instance"
+msgstr "Instância de índice"
+
+#: models.py:347
+msgid "Index instances"
+msgstr "Instâncias de índice"
+
+#: models.py:387
 msgid "Index template node"
 msgstr "Nó de template de índice"
 
-#: models.py:377 search.py:23
+#: models.py:390 search.py:23
 msgid "Value"
 msgstr "Valor"
 
-#: models.py:387 models.py:513
+#: models.py:400 models.py:529
 msgid "Index instance node"
 msgstr "Nó de instância de índice"
 
-#: models.py:388
+#: models.py:401
 msgid "Indexes instances node"
 msgstr "Nó de instâncias de índices"
 
-#: models.py:450
+#: models.py:466
 msgid "The path to the index including all ancestors."
 msgstr "O caminho para o índice incluindo todos os ancestrais."
 
-#: models.py:452
+#: models.py:468
 msgid "Full path"
 msgstr "Caminho completo"
 
-#: models.py:506
+#: models.py:522
 msgid "Document index node instance"
 msgstr "Instâncias do nó do índice de documentos"
 
-#: models.py:507
+#: models.py:523
 msgid "Document indexes node instances"
 msgstr "Instâncias de nós de lindice de instâncias"
 
-#: models.py:514
+#: models.py:530
 msgid "Index instance nodes"
 msgstr "Nós de instância de índice"
 
@@ -298,6 +299,21 @@ msgstr "UUID do documento"
 #: search.py:43
 msgid "Document checksum"
 msgstr "Checksum do documento"
+
+#: serializers.py:191
+msgid "Parent cannot be empty."
+msgstr "O pai não pode estar vazio."
+
+#: serializers.py:198
+msgid "Parent must be from the same index template."
+msgstr "O pai deve ser do mesmo modelo de índice."
+
+#: settings.py:14
+msgid ""
+"Amount of time in seconds, a failed indexing task will wait before retrying."
+" Lower values will increase the speed at which documents are indexed but "
+"will cause a higher count of failed/retried tasks in the queue."
+msgstr "Quantidade de tempo em segundos, uma tarefa de indexação com falha irá aguardar antes de tentar novamente. Valores mais baixos aumentarão a velocidade com que os documentos são indexados, mas causarão uma contagem maior de tarefas com falha / novas tentativas na fila."
 
 #: views.py:45
 msgid "Available indexes"
@@ -435,7 +451,7 @@ msgstr[1] "%(count)d índices enfileirados para reconstrução."
 #, python-format
 msgid "%(count)d index reset."
 msgid_plural "%(count)d indexes reset."
-msgstr[0] "%(count)d índice resetado."
+msgstr[0] "."
 msgstr[1] "%(count)d índices redefinidos."
 
 #: views.py:506

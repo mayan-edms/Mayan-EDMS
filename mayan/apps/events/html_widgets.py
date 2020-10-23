@@ -34,7 +34,7 @@ class ObjectLinkWidget:
         url = None
 
         if value:
-            label = force_text(value)
+            label = force_text(s=value)
             object_type = '{}: '.format(value._meta.verbose_name)
             try:
                 url = value.get_absolute_url()

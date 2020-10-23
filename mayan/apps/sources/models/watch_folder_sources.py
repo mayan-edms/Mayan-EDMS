@@ -50,7 +50,6 @@ class WatchFolderSource(IntervalBaseModel):
         path = Path(self.folder_path)
         # Force testing the path and raise errors for the log
         path.lstat()
-
         if not path.is_dir():
             raise SourceException('Path {} is not a directory.'.format(path))
 

@@ -37,7 +37,6 @@ from .permissions import (
     permission_document_type_ocr_setup, permission_ocr_document,
     permission_ocr_content_view
 )
-from .search import *  # NOQA
 from .signals import signal_post_document_version_ocr
 from .utils import get_instance_ocr_content
 
@@ -99,6 +98,10 @@ class OCRApp(MayanAppConfig):
         ModelFieldRelated(
             model=Document,
             name='versions__version_pages__ocr_content__content'
+        )
+        ModelProperty(
+            description=_('The OCR content.'), label='OCR content',
+            model=DocumentPage, name='ocr_content.content'
         )
         ModelProperty(
             description=_(

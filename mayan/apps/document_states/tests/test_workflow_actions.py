@@ -1,14 +1,17 @@
 import json
 import mock
 
-from mayan.apps.tests.tests.base import GenericViewTestCase
-from mayan.apps.tests.tests.mixins import TestServerTestCaseMixin
-from mayan.apps.tests.tests.mocks import request_method_factory
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
+from mayan.apps.testing.tests.base import GenericViewTestCase
+from mayan.apps.testing.tests.mixins import TestServerTestCaseMixin
+from mayan.apps.testing.tests.mocks import request_method_factory
 
 from ..literals import WORKFLOW_ACTION_ON_ENTRY
+from ..models import Workflow
 from ..permissions import permission_workflow_edit
-from ..workflow_actions import DocumentPropertiesEditAction, HTTPAction
+from ..workflow_actions import (
+    DocumentPropertiesEditAction, DocumentWorkflowLaunchAction, HTTPAction
+)
 
 from .literals import (
     TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_DOTTED_PATH,
@@ -22,7 +25,10 @@ from .literals import (
     TEST_PAYLOAD_TEMPLATE_DOCUMENT_LABEL, TEST_SERVER_USERNAME,
     TEST_SERVER_PASSWORD
 )
-from .mixins import WorkflowStateActionViewTestMixin, WorkflowTestMixin
+from .mixins import (
+    DocumentWorkflowLaunchActionViewTestMixin,
+    WorkflowStateActionViewTestMixin, WorkflowTestMixin
+)
 
 
 class HTTPWorkflowActionTestCase(
@@ -281,21 +287,22 @@ class DocumentPropertiesEditActionTestCase(
 
     def test_document_properties_edit_action_workflow_execute(self):
         self._create_test_workflow()
-        self._create_test_workflow_state()
+        self._create_test_workflow_states()
+        self._create_test_workflow_transitions()
 
-        self.test_workflow_state.actions.create(
+        self.test_workflow_states[1].actions.create(
             action_data=json.dumps(
                 obj=TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_TEXT_DATA
             ),
             action_path=TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_DOTTED_PATH,
             label='', when=WORKFLOW_ACTION_ON_ENTRY,
         )
-
-        self.test_workflow_state.initial = True
-        self.test_workflow_state.save()
         self.test_workflow.document_types.add(self.test_document_type)
 
         self._upload_test_document()
+
+        test_workflow_instance = self.test_document.workflows.first()
+        test_workflow_instance.do_transition(transition=self.test_workflow_transition)
 
         self.assertEqual(
             self.test_document.label,
@@ -304,4 +311,52 @@ class DocumentPropertiesEditActionTestCase(
         self.assertEqual(
             self.test_document.description,
             TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_TEXT_DESCRIPTION
+        )
+
+
+class DocumentWorkflowLaunchActionTestCase(
+    WorkflowTestMixin, GenericDocumentViewTestCase
+):
+    auto_upload_test_document = False
+
+    def test_document_workflow_launch_action(self):
+        self._create_test_workflow(add_document_type=True, auto_launch=False)
+        self._create_test_workflow_state()
+
+        self._upload_test_document()
+
+        action = DocumentWorkflowLaunchAction(
+            form_data={'workflows': Workflow.objects.all()}
+        )
+
+        workflow_count = self.test_document.workflows.count()
+
+        action.execute(context={'document': self.test_document})
+
+        self.assertTrue(
+            workflow_count + 1, self.test_document.workflows.count()
+        )
+
+
+class DocumentWorkflowLaunchActionViewTestCase(
+    DocumentWorkflowLaunchActionViewTestMixin, WorkflowTestMixin,
+    GenericDocumentViewTestCase
+):
+    auto_upload_test_document = False
+
+    def test_document_workflow_launch_action_view_with_full_access(self):
+        self._create_test_workflow(add_document_type=True, auto_launch=False)
+        self._create_test_workflow_state()
+
+        self.grant_access(
+            obj=self.test_workflow, permission=permission_workflow_edit
+        )
+
+        action_count = self.test_workflow_state.actions.count()
+
+        response = self._request_document_workflow_launch_action_create_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(
+            self.test_workflow_state.actions.count(), action_count + 1
         )

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-22 23:19-0400\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2019-12-03 05:23+0000\n"
 "Last-Translator: Roberto Rosario, 2020\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
@@ -36,79 +36,83 @@ msgstr ""
 msgid "Cache purged"
 msgstr ""
 
-#: links.py:10
+#: links.py:21
 msgid "File caches"
 msgstr ""
 
-#: links.py:14 links.py:18
+#: links.py:26 links.py:30
 msgid "Purge cache"
 msgstr ""
 
-#: models.py:29
+#: models.py:28
 msgid "Internal name of the defined storage for this cache."
 msgstr ""
 
-#: models.py:30
+#: models.py:29
 msgid "Defined storage name"
 msgstr ""
 
-#: models.py:33
+#: models.py:32
 msgid "Maximum size of the cache in bytes."
 msgstr ""
 
-#: models.py:35 models.py:54
+#: models.py:34 models.py:53
 msgid "Maximum size"
 msgstr ""
 
-#: models.py:39 models.py:123
+#: models.py:38 models.py:136
 msgid "Cache"
 msgstr ""
 
-#: models.py:40
+#: models.py:39
 msgid "Caches"
 msgstr ""
 
-#: models.py:52
+#: models.py:51
 msgid "Size at which the cache will start deleting old entries."
 msgstr ""
 
-#: models.py:74
+#: models.py:60
+msgid "Unknown"
+msgstr ""
+
+#: models.py:78
 msgid "Current size"
 msgstr ""
 
-#: models.py:75
+#: models.py:79
 msgid "Current size of the cache."
 msgstr ""
 
-#: models.py:126
+#: models.py:139
 msgid "Name"
 msgstr "Ime"
 
-#: models.py:131 models.py:201
+#: models.py:144 models.py:217
 msgid "Cache partition"
 msgstr ""
 
-#: models.py:132
+#: models.py:145
 msgid "Cache partitions"
 msgstr ""
 
-#: models.py:204
+#: models.py:220
 msgid "Date time"
 msgstr ""
 
-#: models.py:206
+#: models.py:222
 msgid "Filename"
 msgstr "Ime datoteke"
 
-#: models.py:208
+#: models.py:224
 msgid "File size"
 msgstr "Velikost datoteke"
 
-#: models.py:214
+#: models.py:232
 msgid "Cache partition file"
 msgstr ""
 
-#: models.py:215
+#: models.py:233
 msgid "Cache partition files"
 msgstr ""
 

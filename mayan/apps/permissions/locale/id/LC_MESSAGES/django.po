@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-22 23:20-0400\n"
-"PO-Revision-Date: 2019-12-13 05:15+0000\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"PO-Revision-Date: 2020-09-27 06:47+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/language/id/)\n"
 "MIME-Version: 1.0\n"
@@ -17,8 +18,12 @@ msgstr ""
 "Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:45 events.py:6 models.py:34 models.py:104 permissions.py:5
+#: apps.py:46 events.py:6 models.py:35 models.py:104 permissions.py:5
 msgid "Permissions"
+msgstr "Izin"
+
+#: apps.py:99 models.py:142
+msgid "Group count"
 msgstr ""
 
 #: classes.py:85
@@ -39,7 +44,7 @@ msgstr ""
 
 #: links.py:14 links.py:38 models.py:115 views.py:171
 msgid "Roles"
-msgstr ""
+msgstr "Peran"
 
 #: links.py:21 views.py:51
 msgid "Create new role"
@@ -61,15 +66,15 @@ msgstr ""
 msgid "Role permissions"
 msgstr ""
 
-#: models.py:25
+#: models.py:26
 msgid "Namespace"
 msgstr ""
 
-#: models.py:26
+#: models.py:27
 msgid "Name"
 msgstr ""
 
-#: models.py:33
+#: models.py:34
 msgid "Permission"
 msgstr ""
 
@@ -83,6 +88,10 @@ msgstr "Label"
 
 #: models.py:114
 msgid "Role"
+msgstr "Peranan"
+
+#: models.py:150
+msgid "Permission count"
 msgstr ""
 
 #: permissions.py:8
@@ -118,7 +127,7 @@ msgstr ""
 #: serializers.py:88
 #, python-format
 msgid "No such permission: %s"
-msgstr ""
+msgstr "Tidak ada izin: %s"
 
 #: views.py:30
 msgid "Available roles"
@@ -154,11 +163,11 @@ msgstr ""
 
 #: views.py:107
 msgid "Available permissions"
-msgstr ""
+msgstr "Izin yang tersedia"
 
 #: views.py:108
 msgid "Granted permissions"
-msgstr ""
+msgstr "Izin yang diberikan"
 
 #: views.py:143
 msgid ""

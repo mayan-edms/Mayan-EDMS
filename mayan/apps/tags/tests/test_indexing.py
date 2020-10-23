@@ -1,7 +1,7 @@
-from mayan.apps.tests.tests.base import BaseTestCase
 from mayan.apps.documents.tests.mixins import DocumentTestMixin
 from mayan.apps.document_indexing.models import Index, IndexInstanceNode
 from mayan.apps.document_indexing.tests.literals import TEST_INDEX_LABEL
+from mayan.apps.testing.tests.base import BaseTestCase
 
 from .literals import (
     TEST_TAG_INDEX_HAS_TAG, TEST_TAG_INDEX_NO_TAG, TEST_TAG_INDEX_NODE_TEMPLATE

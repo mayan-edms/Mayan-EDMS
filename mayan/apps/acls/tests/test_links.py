@@ -1,6 +1,6 @@
 from django.urls import reverse
 
-from mayan.apps.tests.tests.base import GenericViewTestCase
+from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..links import (
     link_acl_delete, link_acl_list, link_acl_create, link_acl_permissions

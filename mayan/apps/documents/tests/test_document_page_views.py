@@ -156,7 +156,7 @@ class DocumentPageViewTestCase(
         response = self._request_test_document_page_rotate_right_view()
         self.assertEqual(response.status_code, 302)
 
-    def test_document_page_view_no_permissions(self):
+    def test_document_page_view_no_permission(self):
         response = self._request_test_document_page_view(
             document_page=self.test_document.pages.first()
         )
@@ -172,7 +172,7 @@ class DocumentPageViewTestCase(
         )
         self.assertContains(
             response=response, status_code=200, text=force_text(
-                self.test_document.pages.first()
+                s=self.test_document.pages.first()
             )
         )
 

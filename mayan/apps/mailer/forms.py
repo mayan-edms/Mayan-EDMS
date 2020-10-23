@@ -80,11 +80,7 @@ class UserMailerBackendSelectionForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super(UserMailerBackendSelectionForm, self).__init__(*args, **kwargs)
-        self.fields['backend'].choices = [
-            (
-                key, backend.label
-            ) for key, backend in MailerBackend.get_all().items()
-        ]
+        self.fields['backend'].choices = MailerBackend.get_choices()
 
 
 class UserMailerDynamicForm(DynamicModelForm):

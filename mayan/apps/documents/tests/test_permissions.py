@@ -3,7 +3,7 @@ from mayan.apps.acls.permissions import permission_acl_edit
 from mayan.apps.acls.tests.mixins import (
     ACLTestMixin, AccessControlListViewTestMixin
 )
-from mayan.apps.tests.tests.base import BaseTestCase
+from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..models import DocumentType
 from ..permissions import permission_document_view

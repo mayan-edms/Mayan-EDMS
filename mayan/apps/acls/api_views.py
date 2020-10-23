@@ -1,8 +1,10 @@
 from django.contrib.contenttypes.models import ContentType
 from django.shortcuts import get_object_or_404
 
+from mayan.apps.permissions.serializers import PermissionSerializer
 from mayan.apps.rest_api import generics
 
+from .classes import ModelPermission
 from .models import AccessControlList
 from .permissions import permission_acl_edit, permission_acl_view
 from .serializers import (
@@ -10,6 +12,24 @@ from .serializers import (
     WritableAccessControlListPermissionSerializer,
     WritableAccessControlListSerializer
 )
+
+
+class APIClassPermissionList(generics.ListAPIView):
+    """
+    Returns a list of all the available permissions for a class.
+    """
+    serializer_class = PermissionSerializer
+
+    def get_content_type(self):
+        return get_object_or_404(
+            klass=ContentType, app_label=self.kwargs['app_label'],
+            model=self.kwargs['model_name']
+        )
+
+    def get_queryset(self):
+        return ModelPermission.get_for_class(
+            klass=self.get_content_type().model_class()
+        )
 
 
 class APIObjectACLListView(generics.ListCreateAPIView):

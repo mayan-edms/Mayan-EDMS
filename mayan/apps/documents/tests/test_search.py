@@ -27,7 +27,7 @@ class DocumentSearchTestMixin:
 class DocumentSearchTestCase(
     DocumentSearchTestMixin, GenericDocumentViewTestCase
 ):
-    def test_document_page_search_no_access(self):
+    def test_document_page_search_no_permission(self):
         queryset = self._perform_document_page_search()
         self.assertFalse(self.test_document.pages.first() in queryset)
 
@@ -38,7 +38,7 @@ class DocumentSearchTestCase(
         queryset = self._perform_document_page_search()
         self.assertTrue(self.test_document.pages.first() in queryset)
 
-    def test_document_search_no_access(self):
+    def test_document_search_no_permission(self):
         queryset = self._perform_document_search()
         self.assertFalse(self.test_document in queryset)
 

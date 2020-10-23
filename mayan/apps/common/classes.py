@@ -72,6 +72,9 @@ class ModelCopy:
             self.add_fields(**entry)
             self.__class__._lazy.get(model).pop()
 
+    def __str__(self):
+        return force_text(s=self.label)
+
     def _evaluate_field_get_for_field(self, field, instance, value, values):
         context = {'instance': instance}
         context.update(values)
@@ -446,7 +449,7 @@ class ModelAttribute:
                 self.name if show_name else self.label, self.description
             )
         else:
-            return force_text(self.name if show_name else self.label)
+            return force_text(s=self.name if show_name else self.label)
 
 
 class ModelProperty(ModelAttribute):

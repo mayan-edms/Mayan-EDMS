@@ -6,14 +6,15 @@
 # Translators:
 # Roberto Rosario, 2020
 # j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
+# bwakkie <bwakkie@gmail.com>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-22 23:21-0400\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2017-06-30 22:04+0000\n"
-"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020\n"
+"Last-Translator: bwakkie <bwakkie@gmail.com>, 2020\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,47 +22,47 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:17 links.py:10 permissions.py:5
+#: apps.py:16 links.py:10 permissions.py:5
 msgid "Task manager"
 msgstr "Taakbeheer"
 
-#: apps.py:25
+#: apps.py:24
 msgid "Label"
 msgstr "Label"
 
-#: apps.py:29
+#: apps.py:28
 msgid "Name"
 msgstr "Naam"
 
-#: apps.py:34
+#: apps.py:33
 msgid "Default queue?"
 msgstr "Standaard wachtrij?"
 
-#: apps.py:39
+#: apps.py:38
 msgid "Is transient?"
 msgstr "Is tijdelijk?"
 
-#: apps.py:43
+#: apps.py:42
 msgid "Type"
 msgstr "Soort"
 
-#: apps.py:48
+#: apps.py:47
 msgid "Start time"
 msgstr "Starttijd"
 
-#: apps.py:52
+#: apps.py:51
 msgid "Host"
 msgstr "Host"
 
-#: apps.py:56
+#: apps.py:55
 msgid "Arguments"
 msgstr "Argumenten"
 
-#: apps.py:60
+#: apps.py:59
 msgid "Keyword arguments"
 msgstr "Trefwoord argumenten"
 
-#: apps.py:64
+#: apps.py:63
 msgid "Worker process ID"
 msgstr "Werkproces ID"
 
@@ -69,11 +70,15 @@ msgstr "Werkproces ID"
 msgid "View tasks"
 msgstr "Taken bekijken"
 
-#: settings.py:8
+#: settings.py:10
 msgid "Celery"
 msgstr "Celery"
 
-#: settings.py:13
+#: settings.py:15
+msgid "Default: \"AMQPLAIN\". Set custom amqp login method."
+msgstr "Standaard: \"AMQPLAIN\". Stel een aangepaste amqp-inlogmethode in."
+
+#: settings.py:21
 msgid ""
 "Default: \"amqp://\". Default broker URL. This must be a URL in the form of:"
 " transport://userid:password@hostname:port/virtual_host Only the scheme part"
@@ -85,7 +90,16 @@ msgstr ""
 "protocol deel (transport://) is vereist, de rest is optioneel, en is "
 "standaard gelijk aan de standaardwaarden van het betreffende protocol."
 
-#: settings.py:22
+#: settings.py:30
+msgid ""
+"Default: \"Disabled\". Toggles SSL usage on broker connection and SSL "
+"settings. The valid values for this option vary by transport."
+msgstr ""
+"Standaard: \"Uitgeschakeld\". Schakelt SSL-gebruik op broker-verbinding en "
+"SSL-instellingen in. De geldige waarden voor deze optie verschillen per "
+"transport."
+
+#: settings.py:38
 msgid ""
 "Default: No result backend enabled by default. The backend used to store "
 "task results (tombstones). Refer to "

@@ -1,6 +1,5 @@
 import logging
 
-from mayan.apps.tests.tests.base import GenericViewTestCase
 from mayan.apps.documents.models.document_models import Document
 from mayan.apps.documents.permissions import (
     permission_document_create, permission_document_new_version
@@ -11,6 +10,7 @@ from mayan.apps.sources.tests.mixins import (
     DocumentUploadWizardViewTestMixin, DocumentVersionUploadViewTestMixin,
     SourceTestMixin
 )
+from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..classes import QuotaBackend
 from ..exceptions import QuotaExceeded

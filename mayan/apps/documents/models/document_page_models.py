@@ -16,6 +16,7 @@ from mayan.apps.converter.transformations import (
     BaseTransformation, TransformationResize, TransformationRotate,
     TransformationZoom
 )
+from mayan.apps.lock_manager.backends.base import LockingBackend
 
 from ..managers import DocumentPageManager, ValidDocumentPageManager
 from ..settings import (
@@ -86,19 +87,32 @@ class DocumentPage(models.Model):
         # Check is transformed image is available
         logger.debug('transformations cache filename: %s', combined_cache_filename)
 
-        if self.cache_partition.get_file(filename=combined_cache_filename):
-            logger.debug(
-                'transformations cache file "%s" found', combined_cache_filename
+        try:
+            lock = LockingBackend.get_instance().acquire_lock(
+                name='document_page_generate_image_{}_{}'.format(
+                    self.pk, combined_cache_filename
+                )
             )
+        except Exception:
+            raise
         else:
-            logger.debug(
-                'transformations cache file "%s" not found', combined_cache_filename
-            )
-            image = self.get_image(transformations=transformation_list)
-            with self.cache_partition.create_file(filename=combined_cache_filename) as file_object:
-                file_object.write(image.getvalue())
-
-        return combined_cache_filename
+            # Second try block to release the lock even on fatal errors inside
+            # the block.
+            try:
+                if self.cache_partition.get_file(filename=combined_cache_filename):
+                    logger.debug(
+                        'transformations cache file "%s" found', combined_cache_filename
+                    )
+                else:
+                    logger.debug(
+                        'transformations cache file "%s" not found', combined_cache_filename
+                    )
+                    image = self.get_image(transformations=transformation_list)
+                    with self.cache_partition.create_file(filename=combined_cache_filename) as file_object:
+                        file_object.write(image.getvalue())
+                return combined_cache_filename
+            finally:
+                lock.release()
 
     def get_absolute_url(self):
         return reverse(
@@ -244,13 +258,17 @@ class DocumentPage(models.Model):
         return self.document.is_in_trash
 
     def get_label(self):
-        return _(
-            'Page %(page_num)d out of %(total_pages)d of %(document)s'
-        ) % {
-            'document': force_text(self.document),
-            'page_num': self.page_number,
-            'total_pages': self.document_version.pages.all().count()
-        }
+        if getattr(self, 'document_version', None):
+            return _(
+                'Page %(page_num)d out of %(total_pages)d of %(document)s'
+            ) % {
+                'document': force_text(self.document),
+                'page_num': self.page_number,
+                'total_pages': self.document_version.pages.all().count()
+            }
+        else:
+            return None
+
     get_label.short_description = _('Label')
 
     def natural_key(self):

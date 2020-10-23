@@ -1,6 +1,6 @@
-from mayan.apps.tests.tests.base import BaseTestCase
 from mayan.apps.smart_settings.classes import Setting
 from mayan.apps.smart_settings.tests.mixins import SmartSettingTestMixin
+from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..settings import setting_staging_file_image_cache_storage_arguments
 

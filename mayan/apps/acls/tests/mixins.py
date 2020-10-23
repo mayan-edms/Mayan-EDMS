@@ -1,6 +1,6 @@
 from django.core.exceptions import ImproperlyConfigured
 
-from mayan.apps.tests.tests.mixins import TestModelTestMixin
+from mayan.apps.testing.tests.mixins import TestModelTestMixin
 from mayan.apps.permissions.tests.mixins import (
     RoleTestCaseMixin, RoleTestMixin
 )

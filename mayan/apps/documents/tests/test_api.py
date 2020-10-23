@@ -1,5 +1,3 @@
-import time
-
 from django.utils.encoding import force_text
 
 from rest_framework import status
@@ -19,41 +17,15 @@ from ..permissions import (
 
 from .literals import (
     TEST_DOCUMENT_DESCRIPTION_EDITED, TEST_PDF_DOCUMENT_FILENAME,
-    TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE_LABEL, TEST_DOCUMENT_TYPE_2_LABEL,
+    TEST_DOCUMENT_TYPE_LABEL, TEST_DOCUMENT_TYPE_2_LABEL,
     TEST_DOCUMENT_TYPE_LABEL_EDITED, TEST_DOCUMENT_VERSION_COMMENT_EDITED,
     TEST_SMALL_DOCUMENT_FILENAME
 )
-from .mixins import DocumentTestMixin, DocumentVersionTestMixin
-
-
-class DocumentTypeAPIViewTestMixin:
-    def _request_test_document_type_api_create_view(self):
-        return self.post(
-            viewname='rest_api:documenttype-list', data={
-                'label': TEST_DOCUMENT_TYPE_LABEL
-            }
-        )
-
-    def _request_test_document_type_api_delete_view(self):
-        return self.delete(
-            viewname='rest_api:documenttype-detail', kwargs={
-                'pk': self.test_document_type.pk,
-            }
-        )
-
-    def _request_test_document_type_api_patch_view(self):
-        return self.patch(
-            viewname='rest_api:documenttype-detail', kwargs={
-                'pk': self.test_document_type.pk,
-            }, data={'label': TEST_DOCUMENT_TYPE_LABEL_EDITED}
-        )
-
-    def _request_test_document_type_api_put_view(self):
-        return self.put(
-            viewname='rest_api:documenttype-detail', kwargs={
-                'pk': self.test_document_type.pk,
-            }, data={'label': TEST_DOCUMENT_TYPE_LABEL_EDITED}
-        )
+from .mixins import (
+    DocumentAPIViewTestMixin, DocumentPageAPIViewTestMixin, DocumentTestMixin,
+    DocumentTypeAPIViewTestMixin, DocumentVersionAPIViewTestMixin,
+    DocumentVersionTestMixin, TrashedDocumentAPIViewTestMixin
+)
 
 
 class DocumentTypeAPIViewTestCase(
@@ -147,45 +119,6 @@ class DocumentTypeAPIViewTestCase(
         self.test_document_type.refresh_from_db()
         self.assertEqual(
             self.test_document_type.label, TEST_DOCUMENT_TYPE_LABEL_EDITED
-        )
-
-
-class DocumentAPIViewTestMixin:
-    def _request_test_document_api_download_view(self):
-        return self.get(
-            viewname='rest_api:document-download', kwargs={
-                'pk': self.test_document.pk
-            }
-        )
-
-    def _request_test_document_api_upload_view(self):
-        with open(file=TEST_DOCUMENT_PATH, mode='rb') as file_object:
-            return self.post(
-                viewname='rest_api:document-list', data={
-                    'document_type': self.test_document_type.pk,
-                    'file': file_object
-                }
-            )
-
-    def _request_test_document_description_api_edit_via_patch_view(self):
-        return self.patch(
-            viewname='rest_api:document-detail', kwargs={
-                'pk': self.test_document.pk
-            }, data={'description': TEST_DOCUMENT_DESCRIPTION_EDITED}
-        )
-
-    def _request_test_document_description_api_edit_via_put_view(self):
-        return self.put(
-            viewname='rest_api:document-detail', kwargs={
-                'pk': self.test_document.pk
-            }, data={'description': TEST_DOCUMENT_DESCRIPTION_EDITED}
-        )
-
-    def _request_test_document_document_type_change_api_view(self):
-        return self.post(
-            viewname='rest_api:document-type-change', kwargs={
-                'pk': self.test_document.pk
-            }, data={'new_document_type': self.test_document_type_2.pk}
         )
 
 
@@ -335,62 +268,6 @@ class DocumentAPIViewTestCase(
         )
 
 
-class DocumentVersionAPIViewTestMixin:
-    def _request_test_document_version_api_download_view(self):
-        return self.get(
-            viewname='rest_api:documentversion-download', kwargs={
-                'pk': self.test_document.pk,
-                'version_pk': self.test_document.latest_version.pk,
-            }
-        )
-
-    def _request_test_document_version_api_edit_via_patch_view(self):
-        return self.patch(
-            viewname='rest_api:documentversion-detail', kwargs={
-                'pk': self.test_document.pk,
-                'version_pk': self.test_document.latest_version.pk
-            }, data={'comment': TEST_DOCUMENT_VERSION_COMMENT_EDITED}
-        )
-
-    def _request_test_document_version_api_edit_via_put_view(self):
-        return self.put(
-            viewname='rest_api:documentversion-detail', kwargs={
-                'pk': self.test_document.pk,
-                'version_pk': self.test_document.latest_version.pk
-            }, data={'comment': TEST_DOCUMENT_VERSION_COMMENT_EDITED}
-        )
-
-    def _request_test_document_version_api_list_view(self):
-        return self.get(
-            viewname='rest_api:document-version-list', kwargs={
-                'pk': self.test_document.pk
-            }
-        )
-
-    def _request_test_document_version_api_revert_view(self):
-        return self.delete(
-            viewname='rest_api:documentversion-detail', kwargs={
-                'pk': self.test_document.pk,
-                'version_pk': self.test_document.latest_version.pk
-            }
-        )
-
-    def _request_test_document_version_api_upload_view(self):
-        # Artificial delay since MySQL doesn't store microsecond data in
-        # timestamps. Version timestamp is used to determine which version
-        # is the latest.
-        time.sleep(1)
-
-        with open(file=TEST_DOCUMENT_PATH, mode='rb') as file_descriptor:
-            return self.post(
-                viewname='rest_api:document-version-list', kwargs={
-                    'pk': self.test_document.pk,
-                }, data={
-                    'comment': '', 'file': file_descriptor,
-                }
-            )
-
-
 class DocumentVersionAPIViewTestCase(
     DocumentVersionAPIViewTestMixin, DocumentTestMixin,
     DocumentVersionTestMixin, BaseAPITestCase
@@ -415,7 +292,7 @@ class DocumentVersionAPIViewTestCase(
         with self.test_document.latest_version.open() as file_object:
             self.assert_download_response(
                 response=response, content=file_object.read(),
-                filename=force_text(self.test_document.latest_version),
+                filename=force_text(s=self.test_document.latest_version),
                 mime_type=self.test_document.file_mimetype
             )
 
@@ -556,21 +433,10 @@ class DocumentVersionAPIViewTestCase(
         self.assertEqual(self.test_document.page_count, 47)
 
 
-class DocumentPageAPIViewTestMixin:
-    def _request_document_page_image(self):
-        page = self.test_document.pages.first()
-        return self.get(
-            viewname='rest_api:documentpage-image', kwargs={
-                'pk': page.document_version.document_id, 'version_pk': page.document_version_id,
-                'page_pk': page.pk
-            }
-        )
-
-
 class DocumentPageAPIViewTestCase(
     DocumentPageAPIViewTestMixin, DocumentTestMixin, BaseAPITestCase
 ):
-    def test_document_page_api_image_view_no_access(self):
+    def test_document_page_api_image_view_no_permission(self):
         response = self._request_document_page_image()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
@@ -581,52 +447,6 @@ class DocumentPageAPIViewTestCase(
 
         response = self._request_document_page_image()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-
-
-class TrashedDocumentAPIViewTestMixin:
-    def _request_test_document_api_trash_view(self):
-        return self.delete(
-            viewname='rest_api:document-detail', kwargs={
-                'pk': self.test_document.pk
-            }
-        )
-
-    def _request_test_trashed_document_api_delete_view(self):
-        return self.delete(
-            viewname='rest_api:trasheddocument-detail', kwargs={
-                'pk': self.test_document.pk
-            }
-        )
-
-    def _request_test_trashed_document_api_detail_view(self):
-        return self.get(
-            viewname='rest_api:trasheddocument-detail', kwargs={
-                'pk': self.test_document.pk
-            }
-        )
-
-    def _request_test_trashed_document_api_image_view(self):
-        latest_version = self.test_document.latest_version
-
-        return self.get(
-            viewname='rest_api:documentpage-image', kwargs={
-                'pk': latest_version.document_id,
-                'version_pk': latest_version.pk,
-                'page_pk': latest_version.pages.first().pk
-            }
-        )
-
-    def _request_test_trashed_document_api_list_view(self):
-        return self.get(
-            viewname='rest_api:trasheddocument-list'
-        )
-
-    def _request_test_trashed_document_api_restore_view(self):
-        return self.post(
-            viewname='rest_api:trasheddocument-restore', kwargs={
-                'pk': self.test_document.pk
-            }
-        )
 
 
 class TrashedDocumentAPIViewTestCase(
@@ -652,7 +472,7 @@ class TrashedDocumentAPIViewTestCase(
         self.assertEqual(Document.valid.count(), 0)
         self.assertEqual(Document.trash.count(), 1)
 
-    def test_trashed_document_api_delete_view_no_access(self):
+    def test_trashed_document_api_delete_view_no_permission(self):
         self._upload_test_document()
         self.test_document.delete()
 
@@ -675,7 +495,7 @@ class TrashedDocumentAPIViewTestCase(
         self.assertEqual(Document.valid.count(), 0)
         self.assertEqual(Document.trash.count(), 0)
 
-    def test_trashed_document_api_detail_view_no_access(self):
+    def test_trashed_document_api_detail_view_no_permission(self):
         self._upload_test_document()
         self.test_document.delete()
 
@@ -693,7 +513,7 @@ class TrashedDocumentAPIViewTestCase(
         response = self._request_test_trashed_document_api_detail_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
-            response.data['uuid'], force_text(self.test_document.uuid)
+            response.data['uuid'], force_text(s=self.test_document.uuid)
         )
 
     def test_trashed_document_api_image_view_no_permission(self):
@@ -713,7 +533,7 @@ class TrashedDocumentAPIViewTestCase(
         response = self._request_test_trashed_document_api_image_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-    def test_trashed_document_api_list_view_no_access(self):
+    def test_trashed_document_api_list_view_no_permission(self):
         self._upload_test_document()
         self.test_document.delete()
 
@@ -732,10 +552,10 @@ class TrashedDocumentAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             response.data['results'][0]['uuid'],
-            force_text(self.test_document.uuid)
+            force_text(s=self.test_document.uuid)
         )
 
-    def test_trashed_document_api_restore_view_no_access(self):
+    def test_trashed_document_api_restore_view_no_permission(self):
         self._upload_test_document()
         self.test_document.delete()
 

@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Annunnaky <doublemiu@gmail.com>, 2015
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-22 23:19-0400\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2020-02-13 19:04+0000\n"
 "Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
@@ -19,7 +20,7 @@ msgstr ""
 "Language: pl\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: apps.py:27 links.py:47 links.py:52 links.py:57 permissions.py:5 views.py:34
+#: apps.py:27 links.py:30 links.py:35 links.py:40 permissions.py:5 views.py:34
 msgid "Events"
 msgstr "Zdarzenia"
 
@@ -55,7 +56,7 @@ msgstr "Etykieta"
 msgid "Seen"
 msgstr "Widziane"
 
-#: classes.py:76
+#: classes.py:142
 #, python-format
 msgid "Unknown or obsolete event type: %s"
 msgstr "Nieznany lub nieaktualny typ zdarzenia: %s"
@@ -76,71 +77,71 @@ msgstr "Subskrybowany"
 msgid "System"
 msgstr "System"
 
-#: links.py:43
+#: links.py:26
 msgid "My events"
 msgstr "Moje zdarzenia"
 
-#: links.py:61 models.py:65 views.py:78
+#: links.py:44 models.py:63 views.py:78
 msgid "Event subscriptions"
 msgstr "Subskrypcje zdarzeń"
 
-#: links.py:65
+#: links.py:48
 msgid "Mark as seen"
 msgstr "Oznacz jako widziane"
 
-#: links.py:69
+#: links.py:52
 msgid "Mark all as seen"
 msgstr "Oznacz wszystkie jako widziane"
 
-#: links.py:74
+#: links.py:57
 msgid "Subscriptions"
 msgstr "Subskrypcje"
 
-#: models.py:23
+#: models.py:22
 msgid "Name"
 msgstr "Nazwa"
 
-#: models.py:27
+#: models.py:26
 msgid "Stored event type"
 msgstr "Przechowywany typ zdarzenia"
 
-#: models.py:28
+#: models.py:27
 msgid "Stored event types"
 msgstr "Przechowywane typy zdarzeń"
 
-#: models.py:54 models.py:81 models.py:113
+#: models.py:52 models.py:78 models.py:109
 msgid "User"
 msgstr "Użytkownik"
 
-#: models.py:58 models.py:117
+#: models.py:56 models.py:113
 msgid "Event type"
 msgstr "Typ zdarzenia"
 
-#: models.py:64
+#: models.py:62
 msgid "Event subscription"
 msgstr "Subskrypcja zdarzeń"
 
-#: models.py:85
+#: models.py:82
 msgid "Action"
 msgstr "Akcja"
 
-#: models.py:87
+#: models.py:84
 msgid "Read"
 msgstr "Przeczytane"
 
-#: models.py:93
+#: models.py:90
 msgid "Notification"
 msgstr "Powiadomienie"
 
-#: models.py:94 views.py:117
+#: models.py:91 views.py:117
 msgid "Notifications"
 msgstr "Powiadomienia"
 
-#: models.py:123
+#: models.py:119
 msgid "Object event subscription"
 msgstr "Subskrypcja zdarzeń obiektowych"
 
-#: models.py:124
+#: models.py:120
 msgid "Object event subscriptions"
 msgstr "Subskrypcje zdarzeń obiektowych"
 

@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015
 # Frédéric Sheedy <sheedf@gmail.com>, 2019
 # Olivier W, 2019
@@ -11,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-22 23:20-0400\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2019-12-08 19:22+0000\n"
 "Last-Translator: Olivier W\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
@@ -25,23 +26,23 @@ msgstr ""
 msgid "Lock manager"
 msgstr "Gestionnaire de verrou"
 
-#: models.py:16
+#: models.py:14
 msgid "Creation datetime"
 msgstr "Date et heure de création"
 
-#: models.py:19
+#: models.py:17
 msgid "Timeout"
 msgstr "Délai d'attente dépassé"
 
-#: models.py:22
+#: models.py:20
 msgid "Name"
 msgstr "Nom"
 
-#: models.py:28
+#: models.py:26
 msgid "Lock"
 msgstr "Verrou"
 
-#: models.py:29
+#: models.py:27
 msgid "Locks"
 msgstr "Verrous"
 

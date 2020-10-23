@@ -8,7 +8,6 @@ from django.urls import reverse
 from django.utils.timezone import now
 from django.utils.translation import ugettext, ugettext_lazy as _
 
-from mayan.apps.common.classes import ModelQueryFields
 from mayan.apps.common.signals import signal_mayan_pre_save
 
 from ..events import (
@@ -262,26 +261,26 @@ class Document(HooksMixin, models.Model):
         user = kwargs.pop('_user', None)
         _commit_events = kwargs.pop('_commit_events', True)
         new_document = not self.pk
-        with transaction.atomic():
-            signal_mayan_pre_save.send(
-                sender=Document, instance=self, user=user
-            )
 
-            super(Document, self).save(*args, **kwargs)
+        signal_mayan_pre_save.send(
+            sender=Document, instance=self, user=user
+        )
 
-            if new_document:
-                if user:
-                    self.add_as_recent_document_for_user(user=user)
-                    event_document_create.commit(
-                        actor=user, target=self, action_object=self.document_type
-                    )
-                else:
-                    event_document_create.commit(
-                        target=self, action_object=self.document_type
-                    )
+        super().save(*args, **kwargs)
+
+        if new_document:
+            if user:
+                self.add_as_recent_document_for_user(user=user)
+                event_document_create.commit(
+                    actor=user, target=self, action_object=self.document_type
+                )
             else:
-                if _commit_events:
-                    event_document_properties_edit.commit(actor=user, target=self)
+                event_document_create.commit(
+                    target=self, action_object=self.document_type
+                )
+        else:
+            if _commit_events:
+                event_document_properties_edit.commit(actor=user, target=self)
 
     def save_to_file(self, *args, **kwargs):
         return self.latest_version.save_to_file(*args, **kwargs)

@@ -22,7 +22,7 @@ from .mixins import DocumentViewTestMixin
 class DocumentViewTestCase(
     LayerTestMixin, DocumentViewTestMixin, GenericDocumentViewTestCase
 ):
-    def test_document_properties_view_no_permissions(self):
+    def test_document_properties_view_no_permission(self):
         response = self._request_test_document_properties_view()
         self.assertEqual(response.status_code, 404)
 
@@ -63,7 +63,7 @@ class DocumentViewTestCase(
             text='<option value="eng" selected>English</option>',
         )
 
-    def test_document_list_view_no_permissions(self):
+    def test_document_list_view_no_permission(self):
         response = self._request_test_document_list_view()
         self.assertEqual(response.status_code, 200)
 
@@ -79,7 +79,7 @@ class DocumentViewTestCase(
             response=response, status_code=200, text=self.test_document.label
         )
 
-    def test_document_document_type_change_post_view_no_permissions(self):
+    def test_document_document_type_change_post_view_no_permission(self):
         self.assertEqual(
             self.test_document.document_type, self.test_document_type
         )
@@ -124,7 +124,7 @@ class DocumentViewTestCase(
             document_type_2
         )
 
-    def test_document_document_type_change_view_get_no_permissions(self):
+    def test_document_document_type_change_view_get_no_permission(self):
         response = self._request_test_document_type_edit_get_view(
         )
         self.assertEqual(response.status_code, 404)
@@ -421,7 +421,7 @@ class DocumentViewTestCase(
         self.assertEqual(DeletedDocument.objects.count(), 0)
         self.assertEqual(Document.objects.count(), 0)
 
-    def test_document_print_view_no_access(self):
+    def test_document_print_view_no_permission(self):
         response = self._request_test_document_print_view()
         self.assertEqual(response.status_code, 403)
 

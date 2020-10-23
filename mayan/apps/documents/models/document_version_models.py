@@ -2,7 +2,6 @@ import hashlib
 import logging
 import os
 import shutil
-import uuid
 
 from django.apps import apps
 from django.db import models, transaction
@@ -40,8 +39,10 @@ def hash_function():
     return hashlib.sha256()
 
 
-def UUID_FUNCTION(*args, **kwargs):
-    return force_text(uuid.uuid4())
+def upload_to(instance, filename):
+    return instance.document.document_type.get_upload_filename(
+        instance=instance, filename=filename
+    )
 
 
 class DocumentVersion(models.Model):
@@ -82,7 +83,7 @@ class DocumentVersion(models.Model):
     # File related fields
     file = models.FileField(
         storage=DefinedStorageLazy(name=STORAGE_NAME_DOCUMENT_VERSION),
-        upload_to=UUID_FUNCTION, verbose_name=_('File')
+        upload_to=upload_to, verbose_name=_('File')
     )
     mimetype = models.CharField(
         blank=True, editable=False, help_text=_(
@@ -303,7 +304,10 @@ class DocumentVersion(models.Model):
                 instance=self, file_object=file_object
             )
 
-            return result['file_object']
+            if result:
+                return result['file_object']
+            else:
+                return file_object
 
     @property
     def page_count(self):
@@ -385,7 +389,7 @@ class DocumentVersion(models.Model):
 
                     self.document.is_stub = False
                     if not self.document.label:
-                        self.document.label = force_text(self.file)
+                        self.document.label = force_text(s=self.file)
 
                     self.document.save(_commit_events=False)
         except Exception as exception:
@@ -446,7 +450,7 @@ class DocumentVersion(models.Model):
 
                     hash_object.update(data)
 
-            self.checksum = force_text(hash_object.hexdigest())
+            self.checksum = force_text(s=hash_object.hexdigest())
             if save:
                 self.save()
 

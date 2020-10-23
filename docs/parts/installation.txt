@@ -12,33 +12,36 @@ Requirements
 Minimum
 -------
 
-- RAM: 1 GB with OCR turned off.
+- RAM: 2 GB.
 - CPU: dual core, 64 bit, 1 GHz, Intel Core 2 Duo or similar.
-- Debian GNU/Linux, or a derivative distribution for direct operating system
-  installations. Other operating system can serve as host if the Docker
-  image is used.
-
+- Debian 9 GNU/Linux, or a derivative distribution for direct operating system
+  installations. Other distributions or operating systems can be used if
+  they serve as host for a virtual machine or for the official Docker image.
+- Python version 3.5.
+- PostgreSQL 9.6.
 
 .. note::
 
-   Installation in hardware with even lower specifications, like single
-   board computer with ARM CPUs is possible with below minimal performance
+   Installation on devices with even lower specifications (like single
+   board computer with ARM CPUs) is possible with below minimal performance
    and user experience expectations.
 
 .. note::
 
    Due to the way container and virtualization technologies work, expected
-   a performance reduction if these are used, with the performance reduction
-   being greater with virtualization. Use hardware that includes hardware
-   level optimizations for virtualization for best results.
+   a performance penalty if these are used. For best results, use hardware
+   that includes optimizations for virtualization.
 
 
 Recommended
 -----------
 
-- RAM: 2 GB or more.
+- RAM: 4 GB or more.
 - CPU: more than 2 cores, 2 GHz or faster, Intel Core i3 or better.
+- Debian 10.
+- Python version 3.8.
 - Storage: solid state storage.
+- PostgreSQL 12 or later.
 
 
 Installation methods

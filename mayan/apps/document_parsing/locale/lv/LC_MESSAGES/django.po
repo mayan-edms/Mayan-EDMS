@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-22 23:19-0400\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2019\n"
 "Language-Team: Latvian (https://www.transifex.com/rosarior/teams/13584/lv/)\n"
@@ -20,19 +20,19 @@ msgstr ""
 "Language: lv\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
-#: apps.py:54 events.py:6 permissions.py:6 settings.py:7
+#: apps.py:53 events.py:6 permissions.py:6 settings.py:7
 msgid "Document parsing"
 msgstr "Dokumentu analīze"
 
-#: apps.py:106
+#: apps.py:105
 msgid "A generator returning the document's pages parsed content."
 msgstr ""
 
-#: apps.py:107 apps.py:140 apps.py:144 links.py:19 links.py:36 models.py:25
+#: apps.py:106 links.py:19 links.py:36 models.py:24 search.py:6 search.py:10
 msgid "Content"
 msgstr "Saturs"
 
-#: apps.py:135 models.py:76
+#: apps.py:134 models.py:74
 msgid "Result"
 msgstr "Rezultāts"
 
@@ -87,51 +87,51 @@ msgstr "Iestatīšanas analīze"
 msgid "Parse documents per type"
 msgstr "Parsēt dokumentus katram tipam"
 
-#: models.py:19
+#: models.py:18
 msgid "Document page"
 msgstr "Dokumenta lapa"
 
-#: models.py:23
+#: models.py:22
 msgid "The actual text content as extracted by the document parsing backend."
 msgstr "Faktiskais teksta saturs, ko iegūst no dokumenta parsēšanas."
 
-#: models.py:31
+#: models.py:30
 msgid "Document page content"
 msgstr "Dokumenta lapas saturs"
 
-#: models.py:32
+#: models.py:31
 msgid "Document pages contents"
 msgstr "Dokumentu lappušu saturs"
 
-#: models.py:44
+#: models.py:43
 msgid "Document type"
 msgstr "Dokumenta veids"
 
-#: models.py:48
+#: models.py:47
 msgid "Automatically queue newly created documents for parsing."
 msgstr "Automātiski sagrupējiet jaunizveidotos dokumentus parsēšanai."
 
-#: models.py:59
+#: models.py:58
 msgid "Document type settings"
 msgstr "Dokumenta tipa iestatījumi"
 
-#: models.py:60
+#: models.py:59
 msgid "Document types settings"
 msgstr "Dokumentu veidu iestatījumi"
 
-#: models.py:71
+#: models.py:69
 msgid "Document version"
 msgstr "Dokumenta versija"
 
-#: models.py:74
+#: models.py:72
 msgid "Date time submitted"
 msgstr "Iesniegtais datums"
 
-#: models.py:80
+#: models.py:78
 msgid "Document version parse error"
 msgstr "Dokumenta versijas parsēšanas kļūda"
 
-#: models.py:81
+#: models.py:79
 msgid "Document version parse errors"
 msgstr "Dokumenta versijas parsēšana kļūdas"
 

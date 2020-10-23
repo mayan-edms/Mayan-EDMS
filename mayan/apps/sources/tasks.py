@@ -41,7 +41,9 @@ def task_check_interval_source(source_id, test=False):
             if source.enabled or test:
                 source.check_source(test=test)
         except Exception as exception:
-            logger.error('Error processing source: %s; %s', source, exception)
+            logger.error(
+                'Error processing source id: %s; %s', source_id, exception
+            )
             if settings.DEBUG:
                 raise
         finally:
@@ -101,9 +103,9 @@ def task_source_handle_upload(self, document_type_id, shared_uploaded_file_id, s
                 for compressed_file_child in compressed_file.get_members():
                     # TODO: find way to uniquely identify child files
                     # Use filename in the meantime.
-                    if force_text(compressed_file_child) not in skip_list:
+                    if force_text(s=compressed_file_child) not in skip_list:
                         kwargs.update(
-                            {'label': force_text(compressed_file_child)}
+                            {'label': force_text(s=compressed_file_child)}
                         )
 
                         try:
@@ -129,7 +131,7 @@ def task_source_handle_upload(self, document_type_id, shared_uploaded_file_id, s
                             )
                             return
                         else:
-                            skip_list.append(force_text(compressed_file_child))
+                            skip_list.append(force_text(s=compressed_file_child))
                             task_upload_document.delay(
                                 shared_uploaded_file_id=child_shared_uploaded_file.pk,
                                 **kwargs

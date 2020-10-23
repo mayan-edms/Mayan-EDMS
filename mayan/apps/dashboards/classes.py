@@ -1,6 +1,8 @@
 from django.contrib.humanize.templatetags.humanize import intcomma
 from django.template import loader
 
+from .icons import icon_dashboard_link_icon
+
 
 class Dashboard:
     _registry = {}
@@ -80,6 +82,7 @@ class DashboardWidgetNumeric(BaseDashboardWidget):
     icon_class = None
     label = None
     link = None
+    link_icon_class = icon_dashboard_link_icon
     template_name = 'dashboards/numeric_widget.html'
 
     def get_context(self):
@@ -89,4 +92,5 @@ class DashboardWidgetNumeric(BaseDashboardWidget):
             'icon_class': self.icon_class,
             'label': self.label,
             'link': self.link,
+            'link_icon_class': self.link_icon_class
         }

@@ -7,25 +7,23 @@ from django.utils.translation.trans_real import DjangoTranslation
 
 def patchDjangoTranslation():
     """
-    Patch Django to prioritize the app translations over its own.
+    Patch Django to prioritize the Mayan app translations over its own.
     Fixes GitLab issue #734 for Django 1.11
     Needs to be updated for future Django version unless this is fixed
     upstream.
     """
-
     def _add_installed_apps_translations_new(self):
-        """Merges translations from each installed app."""
+        """Merge translations from each installed app."""
         try:
-            # Django apps
-            app_configs = [
-                app for app in apps.get_app_configs() if app.name.startswith('django.')
+            non_mayan_app_configs = [
+                app for app in apps.get_app_configs() if not app.name.startswith('mayan.')
             ]
 
-            # Non Django apps
-            app_configs = [
-                app for app in apps.get_app_configs() if not app.name.startswith('django.')
+            mayan_app_configs = [
+                app for app in apps.get_app_configs() if app.name.startswith('mayan.')
             ]
-            app_configs = reversed(app_configs)
+            mayan_app_configs.extend(non_mayan_app_configs)
+            app_configs = mayan_app_configs
         except AppRegistryNotReady:
             raise AppRegistryNotReady(
                 "The translation infrastructure cannot be initialized before the "

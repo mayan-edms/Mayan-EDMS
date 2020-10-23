@@ -1,0 +1,112 @@
+======
+Docker
+======
+
+RabbitMQ is not being persisting messages despite using Docker Volumes
+======================================================================
+
+Docker will create a randomly generated hostname for each container every
+time you deploy a new container instance.
+
+RabbitMQ stores persistent message/queue data using a folder structure
+based off a node's hostname.
+If you do not set a static container hostname, then RabbitMQ will loose
+any unprocessed messages if you launch a new RabbitMQ container or
+do a docker-compose down/up.
+
+This happens even if you use a persistent volume (``docker run -v``).
+
+This will result in tasks being lost and may be the reason a document has
+not been OCR'd or processed completely.
+
+Solution:
+Ensure you run the RabbitMQ container with the ``--hostname`` option when
+starting, ensuring RabbitMQ uses a static folder name every time it starts,
+such as:
+
+.. code-block:: console
+
+    docker run -d --name mayan-rabbitmq --hostname mayan-rabbitmq --restart=always...
+
+For Docker Compose:
+
+.. code-block:: yaml
+
+    rabbitmq:
+        container_name: mayan-edms-rabbitmq
+        image: rabbitmq:3-management
+        hostname: mayan-edms-rabbitmq
+        environment:
+        RABBITMQ_DEFAULT_USER: mayan
+        RABBITMQ_DEFAULT_PASS: mayanrabbitpass
+        RABBITMQ_DEFAULT_VHOST: mayan
+        networks:
+        - mayan-bridge
+        restart: unless-stopped
+        volumes:
+        - /docker-volumes/mayan-edms/rabbitmq:/var/lib/rabbitmq
+
+References:
+- https://stackoverflow.com/questions/41330514/docker-rabbitmq-persistency
+
+
+
+MAYAN_APT_INSTALLS does not work for Archlinux with kernels > 4.14
+==================================================================
+
+This is caused by a change from kernel 4.18 - 4.19. Metacopy on these kernels
+is set to yes in archlinux kernels (/sys/module/overlay/parameters/metacopy)
+and overlayfs should override this which it does not at the moment.
+
+The workaround is to disable metacopy:
+
+.. code-block:: console
+
+    echo N | sudo tee /sys/module/overlay/parameters/metacopy
+
+References:
+
+- https://bbs.archlinux.org/viewtopic.php?id=241866
+- https://www.spinics.net/lists/linux-unionfs/msg06316.html
+
+
+Error: ``IOError: [Errno 37] No locks available`` when using a NFS volume for ``MAYAN_MEDIA_ROOT``
+==================================================================================================
+
+This is caused by an upstream Django issue and occurrs when using a NFS
+volume for ``MAYAN_MEDIA_ROOT``. File lock issues can prevent Mayan from
+generating the static media inside ``MAYAN_MEDIA_ROOT``.
+
+If you're using NFSv3, ensure that ``rcp.statd`` is running on the NFS
+client (called ``nfs-lock`` on some distributions) and that ``no_auth_nlm``
+is set in ``/etc/exports`` on the NFS Server. NFSv4 has locking built in so
+does not require ``rcp.statd``, but may require ``no_auth_nlm`` set on
+the NFS Server.
+
+A workaround if the issue persists after applying the above is to deploy
+Mayan with a NFS ``MAYAN_MEDIA_ROOT`` with a local-only volume
+for ``MAYAN_MEDIA_ROOT/static``. An example volume section
+inside ``docker-compose``:
+
+.. code-block:: yaml
+
+    volumes:
+    # $MAYAN_MEDIA_ROOT can be mounted to nfs and shared between nodes. Change /mnt/mayan-shared
+    # to the path of the mounted NFS export
+    - /mnt/mayan-shared/media:/var/lib/mayan
+
+    # $MAYAN_MEDIA_ROOT/static must be local to avoid locking issues
+    - /docker-volume/static:/var/lib/mayan/static
+
+    # Other mounts (such as watch folder). Must be on a different NFS export to avoid lock issues
+    - /mnt/watch:/srv/watch_folder
+
+Alternatively, you can use non-NFS backed volumes for the whole
+``MAYAN_MEDIA_ROOT`` share where no local static directory is required.
+Samba and iSCSI are known to work.
+
+References:
+
+- https://gitlab.com/mayan-edms/mayan-edms/issues/493
+- https://gitlab.com/mayan-edms/mayan-edms/issues/551
+- https://code.djangoproject.com/ticket/9400

@@ -182,7 +182,7 @@ class ZipArchive(Archive):
                 filename = filename.decode('CP437')
                 is_unicode = False
             except AttributeError:
-                filename = force_text(filename)
+                filename = force_text(s=filename)
                 is_unicode = True
             except UnicodeEncodeError:
                 is_unicode = True

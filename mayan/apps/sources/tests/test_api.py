@@ -43,7 +43,7 @@ class StagingFolderAPIViewTestCase(
             StagingFolderSource.objects.count(), staging_folder_count + 1
         )
 
-    def test_staging_folder_delete_api_view_no_access(self):
+    def test_staging_folder_delete_api_view_no_permission(self):
         self._create_test_staging_folder()
 
         staging_folder_count = StagingFolderSource.objects.count()
@@ -69,7 +69,7 @@ class StagingFolderAPIViewTestCase(
             StagingFolderSource.objects.count(), staging_folder_count - 1
         )
 
-    def test_staging_folder_edit_api_view_via_patch_no_access(self):
+    def test_staging_folder_edit_api_view_via_patch_no_permission(self):
         self._create_test_staging_folder()
 
         staging_folder_label = self.test_staging_folder.label
@@ -95,7 +95,7 @@ class StagingFolderAPIViewTestCase(
             self.test_staging_folder.label, staging_folder_label
         )
 
-    def test_staging_folder_edit_api_view_via_put_no_access(self):
+    def test_staging_folder_edit_api_view_via_put_no_permission(self):
         self._create_test_staging_folder()
 
         staging_folder_label = self.test_staging_folder.label

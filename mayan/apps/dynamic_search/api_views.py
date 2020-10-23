@@ -29,7 +29,7 @@ class APISearchView(SearchModelAPIMixin, generics.ListAPIView):
                 query_string=self.request.GET, user=self.request.user
             )
         except Exception as exception:
-            raise ParseError(force_text(exception))
+            raise ParseError(force_text(s=exception))
 
         return queryset
 
@@ -68,7 +68,7 @@ class APIAdvancedSearchView(SearchModelAPIMixin, generics.ListAPIView):
                 search_model=self.search_model, user=self.request.user
             )
         except Exception as exception:
-            raise ParseError(force_text(exception))
+            raise ParseError(force_text(s=exception))
 
         return queryset
 
@@ -84,4 +84,8 @@ class APISearchModelList(generics.ListAPIView):
     get: Returns a list of all the available search models.
     """
     serializer_class = SearchModelSerializer
-    queryset = SearchModel.all()
+
+    def get_queryset(self):
+        # This changes after the initial startup as search models are
+        # automatically loaded.
+        return SearchModel.all()

@@ -1,5 +1,7 @@
 from ..literals import FIELD_TYPE_CHOICE_CHAR, WORKFLOW_ACTION_ON_ENTRY
 
+DOCUMENT_WORKFLOW_LAUNCH_ACTION_CLASS_PATH = 'mayan.apps.document_states.workflow_actions.DocumentWorkflowLaunchAction'
+
 TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_DOTTED_PATH = 'mayan.apps.document_states.workflow_actions.DocumentPropertiesEditAction'
 TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_TEXT_LABEL = 'new document label'
 TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_TEXT_DESCRIPTION = 'new document description'
@@ -48,6 +50,7 @@ TEST_WORKFLOW_STATE_LABEL_EDITED = 'test state label edited'
 TEST_WORKFLOW_STATE_COMPLETION = 66
 TEST_WORKFLOW_TRANSITION_FIELD_HELP_TEXT = 'test workflow transition field help test'
 TEST_WORKFLOW_TRANSITION_FIELD_LABEL = 'test workflow transition field'
+TEST_WORKFLOW_TRANSITION_FIELD_LABEL_EDITED = 'test workflow transition field edited'
 TEST_WORKFLOW_TRANSITION_FIELD_NAME = 'test_workflow_transition_field'
 TEST_WORKFLOW_TRANSITION_FIELD_TYPE = FIELD_TYPE_CHOICE_CHAR
 TEST_WORKFLOW_TRANSITION_LABEL = 'test transition label'
@@ -57,3 +60,5 @@ TEST_WORKFLOW_TRANSITION_LABEL_EDITED = 'test transition label edited'
 TEST_INDEX_TEMPLATE_METADATA_EXPRESSION = '{{{{ document.workflow.{}.get_current_state }}}}'.format(
     TEST_WORKFLOW_INTERNAL_NAME
 )
+
+TEST_WORKFLOW_STATE_ACTION_LABEL_2 = 'test state action label 2'

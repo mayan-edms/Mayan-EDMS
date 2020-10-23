@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Nurgül Özkan <nurgulozkan@hotmail.com>, 2017
 # serhatcan77 <serhat_can@yahoo.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-22 23:20-0400\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2019-12-03 05:23+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
@@ -23,23 +24,23 @@ msgstr ""
 msgid "Lock manager"
 msgstr "Kilit yöneticisi"
 
-#: models.py:16
+#: models.py:14
 msgid "Creation datetime"
 msgstr "Oluşturulma tarihi"
 
-#: models.py:19
+#: models.py:17
 msgid "Timeout"
 msgstr "Zaman aşımı"
 
-#: models.py:22
+#: models.py:20
 msgid "Name"
 msgstr "Ad"
 
-#: models.py:28
+#: models.py:26
 msgid "Lock"
 msgstr "Kilitle"
 
-#: models.py:29
+#: models.py:27
 msgid "Locks"
 msgstr "Kilitler"
 

@@ -39,22 +39,17 @@ class AttachTagAction(WorkflowAction):
         for tag in self.get_tags():
             tag.attach_to(document=context['document'])
 
-    def get_form_schema(self, request):
-        user = request.user
-        logger.debug('user: %s', user)
+    def get_form_schema(self, **kwargs):
+        result = super().get_form_schema(**kwargs)
 
         queryset = AccessControlList.objects.restrict_queryset(
             permission=self.permission, queryset=Tag.objects.all(),
-            user=user
+            user=kwargs['request'].user
         )
 
-        self.fields['tags']['kwargs']['queryset'] = queryset
+        result['fields']['tags']['kwargs']['queryset'] = queryset
 
-        return {
-            'fields': self.fields,
-            'media': self.media,
-            'widgets': self.widgets
-        }
+        return result
 
     def get_tags(self):
         return Tag.objects.filter(pk__in=self.form_data.get('tags', ()))

@@ -4,18 +4,18 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Roberto Rosario, 2020
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2020
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2020
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2020
+# Roberto Rosario, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-22 23:20-0400\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2020-03-28 07:24+0000\n"
-"Last-Translator: Giovanni Tricarico <gtricarico92@gmail.com>, 2020\n"
+"Last-Translator: Roberto Rosario, 2020\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,30 +23,30 @@ msgstr ""
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:36 events.py:6 links.py:33 models.py:32 permissions.py:5
+#: apps.py:39 events.py:6 links.py:33 models.py:32 permissions.py:5
 #: views.py:134
 msgid "Quotas"
-msgstr ""
+msgstr "Quote"
 
-#: classes.py:63
+#: classes.py:65
 msgid "none"
-msgstr ""
+msgstr "nessuna"
 
-#: classes.py:163
+#: classes.py:157
 msgid "Does not apply"
-msgstr ""
+msgstr "Non si applica"
 
-#: classes.py:167 classes.py:174
+#: classes.py:161 classes.py:168
 msgid "Null backend"
-msgstr ""
+msgstr "Backend nullo"
 
 #: events.py:10
 msgid "Quota created"
-msgstr ""
+msgstr "Quota creata"
 
 #: events.py:13
 msgid "Quota edited"
-msgstr ""
+msgstr "Quota modificata"
 
 #: forms.py:15 models.py:55
 msgid "Backend"
@@ -54,11 +54,11 @@ msgstr "backend"
 
 #: forms.py:16
 msgid "The quota driver for this entry."
-msgstr ""
+msgstr "Il driver di quota per questa voce."
 
 #: links.py:13
 msgid "Create quota"
-msgstr ""
+msgstr "Crea quota"
 
 #: links.py:18
 msgid "Delete"
@@ -70,17 +70,19 @@ msgstr "Modifica"
 
 #: links.py:28
 msgid "Quotas list"
-msgstr ""
+msgstr "Elenco delle quote"
 
 #: mixins.py:17
 msgid "All document types"
-msgstr ""
+msgstr "Tutti i tipi di documento"
 
 #: mixins.py:20
 msgid ""
 "Apply to all document types. Enabling this, the quota will ignore the "
 "indiviual document type selection."
 msgstr ""
+"Applica a tutti i tipi di documento. Abilitando questa opzione, la quota "
+"ignorerà la selezione del tipo di documento individuale."
 
 #: mixins.py:26
 msgid "Document types"
@@ -88,16 +90,16 @@ msgstr "Tipi documento"
 
 #: mixins.py:33
 msgid "Document types to which the quota will be applied."
-msgstr ""
+msgstr "Tipi di documento a cui verrà applicata la quota."
 
 #: mixins.py:67
 msgid "all document types"
-msgstr ""
+msgstr "tutti i tipi di documento"
 
 #: mixins.py:70
 #, python-format
 msgid "document types: %(document_types)s"
-msgstr ""
+msgstr "tipi di documento: %(document_types)s"
 
 #: mixins.py:94
 msgid "Groups"
@@ -105,11 +107,11 @@ msgstr "Gruppi"
 
 #: mixins.py:101
 msgid "Groups to which the quota will be applied."
-msgstr ""
+msgstr "Gruppi a cui verrà applicata la quota."
 
 #: mixins.py:105
 msgid "All users"
-msgstr ""
+msgstr "Tutti gli utenti"
 
 #: mixins.py:108
 msgid ""
@@ -117,6 +119,9 @@ msgid ""
 "Enabling this option, the quota will ignore the indiviual user and group "
 "selection."
 msgstr ""
+"Applica la quota a tutti gli utenti nel sistema, esclusi amministratori e "
+"personale. Abilitando questa opzione, la quota ignorerà il singolo utente e "
+"la selezione del gruppo."
 
 #: mixins.py:115
 msgid "Users"
@@ -124,32 +129,32 @@ msgstr "Utenti"
 
 #: mixins.py:122
 msgid "Users to which the quota will be applied."
-msgstr ""
+msgstr "Utenti a cui verrà applicata la quota."
 
 #: mixins.py:160
 msgid "all users"
-msgstr ""
+msgstr "tutti gli utenti"
 
 #: mixins.py:162
 #, python-format
 msgid "groups: %(groups)s, users: %(users)s"
-msgstr ""
+msgstr "gruppi: %(groups)s, utenti: %(users)s"
 
 #: models.py:18
 msgid "The dotted Python path to the backend class."
-msgstr ""
+msgstr "Il percorso punteggiato di Python alla classe back-end."
 
 #: models.py:19
 msgid "Backend path"
-msgstr ""
+msgstr "Percorso di backend"
 
 #: models.py:22
 msgid "Backend data"
-msgstr ""
+msgstr "Dati di backend"
 
 #: models.py:26
 msgid "Allow quick disable or enable of the quota."
-msgstr ""
+msgstr "Consenti disabilitazione o abilitazione rapida della quota."
 
 #: models.py:27
 msgid "Enabled"
@@ -157,11 +162,11 @@ msgstr "Abilitato"
 
 #: models.py:31
 msgid "Quota"
-msgstr ""
+msgstr "Quota"
 
 #: models.py:54
 msgid "Driver used for this quota entry."
-msgstr ""
+msgstr "Driver utilizzato per questa voce di quota."
 
 #: models.py:59
 msgid "Arguments"
@@ -169,85 +174,85 @@ msgstr "Argomenti"
 
 #: models.py:63
 msgid "Usage"
-msgstr ""
+msgstr "Utilizzo"
 
 #: permissions.py:8
 msgid "Create a quota"
-msgstr ""
+msgstr "Crea una quota"
 
 #: permissions.py:11
 msgid "Delete a quota"
-msgstr ""
+msgstr "Elimina una quota"
 
 #: permissions.py:14
 msgid "Edit a quota"
-msgstr ""
+msgstr "Modifica una quota"
 
 #: permissions.py:17
 msgid "View a quota"
-msgstr ""
+msgstr "Visualizza una quota"
 
 #: quota_backends.py:68 quota_backends.py:168
 msgid "Document count quota exceeded."
-msgstr ""
+msgstr "Quota di conteggio documenti superata."
 
 #: quota_backends.py:72
 msgid "Documents limit"
-msgstr ""
+msgstr "Limite di documenti"
 
 #: quota_backends.py:75
 msgid "Maximum number of documents."
-msgstr ""
+msgstr "Numero massimo di documenti."
 
 #: quota_backends.py:79
 msgid "Document count limit"
-msgstr ""
+msgstr "Limite di conteggio documenti"
 
 #: quota_backends.py:104
 #, python-format
 msgid "document count: %(document_count)s"
-msgstr ""
+msgstr "conteggio documenti: %(document_count)s"
 
 #: quota_backends.py:178 quota_backends.py:183
 msgid "Document size limit"
-msgstr ""
+msgstr "Limite di dimensione del documento"
 
 #: quota_backends.py:180
 msgid "Maximum document size in megabytes (MB)."
-msgstr ""
+msgstr "Dimensione massima del documento in megabyte (MB)."
 
 #: quota_backends.py:208
 #, python-format
 msgid "document size: %(formatted_file_size)s"
-msgstr ""
+msgstr "dimensione del documento: %(formatted_file_size)s"
 
 #: quota_backends.py:228
 msgid "Document size quota exceeded."
-msgstr ""
+msgstr "Quota di dimensione documento superata."
 
 #: views.py:24
 msgid "New quota backend selection"
-msgstr ""
+msgstr "Nuova selezione del backend di quota"
 
 #: views.py:52
 #, python-format
 msgid "Create a \"%s\" quota"
-msgstr ""
+msgstr "Crea una quota \"%s\""
 
 #: views.py:84
 #, python-format
 msgid "Delete quota: %s"
-msgstr ""
+msgstr "Elimina quota: %s"
 
 #: views.py:99
 #, python-format
 msgid "Edit quota: %s"
-msgstr ""
+msgstr "Modifica quota: %s"
 
 #: views.py:131
 msgid "Quotas restrict usage of system resources. "
-msgstr ""
+msgstr "Le quote limitano l'utilizzo delle risorse di sistema."
 
 #: views.py:133
 msgid "No quotas available"
-msgstr ""
+msgstr "Nessuna quota disponibile"

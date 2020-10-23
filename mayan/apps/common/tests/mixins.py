@@ -1,6 +1,16 @@
 from ..classes import ModelCopy
 
 
+class CommonAPITestMixin:
+    def _request_content_type_list_api_view(self):
+        return self.get(viewname='rest_api:content-type-list')
+
+
+class CommonViewTestMixin:
+    def _request_about_view(self):
+        return self.get(viewname='common:about_view')
+
+
 class ObjectCopyTestMixin:
     _test_copy_method = None
 

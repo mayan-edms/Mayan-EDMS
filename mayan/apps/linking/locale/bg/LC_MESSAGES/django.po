@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Lyudmil Antonov <lantonov.here@gmail.com>, 2019
+# Translators:
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2019-2020
 # Pavlin Koldamov <pkoldamov@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-22 23:19-0400\n"
-"PO-Revision-Date: 2019-12-16 20:57+0000\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"PO-Revision-Date: 2020-08-20 17:57+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -19,15 +20,15 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:40
+#: apps.py:43
 msgid "Linking"
 msgstr "Свързване"
 
-#: apps.py:76 models.py:26
+#: apps.py:96 models.py:25
 msgid "Label"
 msgstr "Етикет"
 
-#: events.py:6 links.py:18 links.py:77 links.py:82 links.py:87 models.py:45
+#: events.py:6 links.py:18 links.py:77 links.py:82 links.py:87 models.py:44
 #: permissions.py:5 views.py:203
 msgid "Smart links"
 msgstr "Умни връзки"
@@ -64,7 +65,7 @@ msgstr "Условия"
 msgid "Create new smart link"
 msgstr "Създайте нова умна връзка"
 
-#: links.py:61 models.py:37
+#: links.py:61 models.py:36
 msgid "Document types"
 msgstr "Типове документи"
 
@@ -86,7 +87,7 @@ msgstr "е равно на"
 
 #: literals.py:13
 msgid "is equal to (case insensitive)"
-msgstr "е равно на (чувствително на малки/големи)"
+msgstr "е равно на (нечувствително към регистъра)"
 
 #: literals.py:14
 msgid "contains"
@@ -94,7 +95,7 @@ msgstr "съдържа"
 
 #: literals.py:15
 msgid "contains (case insensitive)"
-msgstr "съдържа (чувствително на малки/големи)"
+msgstr "съдържа (нечувствително към регистъра)"
 
 #: literals.py:16
 msgid "is in"
@@ -122,7 +123,7 @@ msgstr "започва с"
 
 #: literals.py:22
 msgid "starts with (case insensitive)"
-msgstr "започва с (чувствително на малки/големи)"
+msgstr "започва с (нечувствително към регистъра)"
 
 #: literals.py:23
 msgid "ends with"
@@ -130,7 +131,7 @@ msgstr "завършва с"
 
 #: literals.py:24
 msgid "ends with (case insensitive)"
-msgstr "завършва с (чувствително на малки/големи)"
+msgstr "завършва с (нечувствително към регистъра)"
 
 #: literals.py:25
 msgid "is in regular expression"
@@ -138,82 +139,82 @@ msgstr "е в редовен израз"
 
 #: literals.py:26
 msgid "is in regular expression (case insensitive)"
-msgstr "е в редовна експресия (нечувствителен към регистъра)"
+msgstr "е в редовен израз (нечувствително към регистъра)"
 
-#: models.py:25
+#: models.py:24
 msgid "A short text describing the smart link."
-msgstr "Кратък текст, описващ интелигентната връзка."
+msgstr "Кратък текст, описващ умната връзка."
 
-#: models.py:30
+#: models.py:29
 msgid ""
 "Use this field to show a unique label depending on the document from which "
 "the smart link is being accessed."
-msgstr "Използвайте това поле, за да покажете уникален етикет в зависимост от документа, от който се осъществява достъп до интелигентната връзка."
+msgstr "Използвайте това поле, за да покажете уникален етикет в зависимост от документа, от който се осъществява достъп до умната връзка."
 
-#: models.py:32
+#: models.py:31
 msgid "Dynamic label"
 msgstr "Динамичен етикет"
 
-#: models.py:34 models.py:191
+#: models.py:33 models.py:189
 msgid "Enabled"
 msgstr "Активиран"
 
-#: models.py:44 models.py:169
+#: models.py:43 models.py:167
 msgid "Smart link"
 msgstr "Умна връзка"
 
-#: models.py:83
+#: models.py:82
 #, python-format
 msgid "Error generating dynamic label; %s"
 msgstr "Грешка при генериране на динамичен етикет; %s"
 
-#: models.py:98
+#: models.py:97
 msgid "This smart link is not allowed for the selected document's type."
 msgstr "Тази умна връзка не е разрешена за типа на избрания документ."
 
-#: models.py:173
+#: models.py:171
 msgid "The inclusion is ignored for the first item."
 msgstr "Включването се игнорира за първия елемент."
 
-#: models.py:177
+#: models.py:175
 msgid "This represents the metadata of all other documents."
 msgstr "Това представлява метаданните на всички останали документи."
 
-#: models.py:178
+#: models.py:176
 msgid "Foreign document attribute"
 msgstr "Характеристика на чужд документ"
 
-#: models.py:183
+#: models.py:181
 msgid ""
 "The expression using document properties to be evaluated against the foreign"
 " document field."
 msgstr "Изразът, използващ свойствата на документа, които трябва да бъдат оценени спрямо чуждото документно поле."
 
-#: models.py:185
+#: models.py:183
 msgid "Expression"
 msgstr "Израз"
 
-#: models.py:188
+#: models.py:186
 msgid "Inverts the logic of the operator."
 msgstr "Обръща логиката на оператора."
 
-#: models.py:189
+#: models.py:187
 msgid "Negated"
 msgstr "Отказано"
 
-#: models.py:194
+#: models.py:192
 msgid "Link condition"
 msgstr "Състояние на връзката"
 
-#: models.py:195
+#: models.py:193
 msgid "Link conditions"
 msgstr "Състояния на връзката"
 
-#: models.py:203
+#: models.py:201
 msgid "not"
 msgstr "не"
 
-#: models.py:207
+#: models.py:205
 msgid "Full label"
 msgstr "Пълен етикет"
 
@@ -278,7 +279,7 @@ msgstr "Налични типове документи"
 
 #: views.py:166
 msgid "Document types enabled"
-msgstr "Типовете документи са активирани"
+msgstr "Активирани типове документи"
 
 #: views.py:176
 #, python-format

@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Ilvana Dollaroviq <ilvanadollaroviq@gmail.com>, 2018
 # www.ping.ba <jomer@ping.ba>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-22 23:19-0400\n"
-"PO-Revision-Date: 2020-04-02 07:08+0000\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (http://www.transifex.com/rosarior/mayan-edms/language/bs/)\n"
 "MIME-Version: 1.0\n"
@@ -23,31 +24,31 @@ msgstr ""
 msgid "None"
 msgstr "Nijedno"
 
-#: admin.py:24 links.py:93 models.py:52
+#: admin.py:24 links.py:93 models.py:51
 msgid "Document types"
 msgstr "Tipovi dokumenta"
 
-#: apps.py:54 events.py:6
+#: apps.py:55 events.py:6 settings.py:8
 msgid "Document indexing"
 msgstr "Indeksiranje dokumenata"
 
-#: apps.py:129
+#: apps.py:146
 msgid "Total levels"
 msgstr "Ukupni nivoi"
 
-#: apps.py:136
+#: apps.py:153
 msgid "Total documents"
 msgstr "Ukupni dokumenti"
 
-#: apps.py:142 apps.py:156 apps.py:181 apps.py:191
+#: apps.py:159 apps.py:173 apps.py:193 apps.py:203
 msgid "Level"
 msgstr "Nivo"
 
-#: apps.py:161 apps.py:196
+#: apps.py:181
 msgid "Levels"
 msgstr "Nivoa"
 
-#: apps.py:168 apps.py:176 apps.py:204 models.py:381
+#: apps.py:188 models.py:394
 msgid "Documents"
 msgstr "Dokumenti"
 
@@ -75,7 +76,7 @@ msgstr ""
 msgid "Creation date"
 msgstr "Datum kreiranja"
 
-#: links.py:21 links.py:36 links.py:73 links.py:77 models.py:60 views.py:150
+#: links.py:21 links.py:36 links.py:73 links.py:77 models.py:59 views.py:150
 #: views.py:333
 msgid "Indexes"
 msgstr "Indeksi"
@@ -116,119 +117,119 @@ msgstr "Template drveta"
 msgid "New child node"
 msgstr "Novi child node"
 
-#: models.py:34
+#: models.py:33
 msgid "Short description of this index."
 msgstr ""
 
-#: models.py:35
+#: models.py:34
 msgid "Label"
 msgstr "Labela"
 
-#: models.py:39
+#: models.py:38
 msgid "This value will be used by other apps to reference this index."
 msgstr "Ova vrijednost će koristiti druge aplikacije za upućivanje na ovaj indeks."
 
-#: models.py:40
+#: models.py:39
 msgid "Slug"
 msgstr "Slug"
 
-#: models.py:45
+#: models.py:44
 msgid ""
 "Causes this index to be visible and updated when document data changes."
 msgstr "Uzrokuje da će ovaj indeks biti vidljiv i update-ovan kad se promjene podaci dokumenta."
 
-#: models.py:48 models.py:253
+#: models.py:47 models.py:230
 msgid "Enabled"
 msgstr "Omogućeno"
 
-#: models.py:59 models.py:237
+#: models.py:58 models.py:214
 msgid "Index"
 msgstr "Indeks"
 
-#: models.py:209
-msgid "Index instance"
-msgstr "index instance"
-
-#: models.py:210
-msgid "Index instances"
-msgstr "Indeks instanci"
-
-#: models.py:241
+#: models.py:218
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 msgstr ""
 
-#: models.py:245
+#: models.py:222
 msgid "Indexing expression"
 msgstr "Izraz indeksiranja"
 
-#: models.py:250
+#: models.py:227
 msgid "Causes this node to be visible and updated when document data changes."
 msgstr "Uzrokuje da će ovaj nod biti vidljiv i update-ovan kad se promjene podaci dokumenta."
 
-#: models.py:258
+#: models.py:235
 msgid ""
 "Check this option to have this node act as a container for documents and not"
 " as a parent for further nodes."
 msgstr "Označite ovu opciju da ovaj nod služi kao kontejner za dokumente a ne kao parent za buduće nodove."
 
-#: models.py:261
+#: models.py:238
 msgid "Link documents"
 msgstr "Povezite dokumente"
 
-#: models.py:265
+#: models.py:242
 msgid "Index node template"
 msgstr "Šablon indeksnog čvora"
 
-#: models.py:266
+#: models.py:243
 msgid "Indexes node template"
 msgstr "Šablon indeksnih čvora"
 
-#: models.py:270
+#: models.py:247
 msgid "Root"
 msgstr "Koren"
 
-#: models.py:328
+#: models.py:305
 #, python-format
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
 msgstr "Greška u indeksiranju dokumenta:%(document)s; izraz:%(expression)s;%(exception)s"
 
-#: models.py:374
+#: models.py:346
+msgid "Index instance"
+msgstr "index instance"
+
+#: models.py:347
+msgid "Index instances"
+msgstr "Indeks instanci"
+
+#: models.py:387
 msgid "Index template node"
 msgstr "Index template node"
 
-#: models.py:377 search.py:23
+#: models.py:390 search.py:23
 msgid "Value"
 msgstr "Vrijednost"
 
-#: models.py:387 models.py:513
+#: models.py:400 models.py:529
 msgid "Index instance node"
 msgstr ""
 
-#: models.py:388
+#: models.py:401
 msgid "Indexes instances node"
 msgstr ""
 
-#: models.py:450
+#: models.py:466
 msgid "The path to the index including all ancestors."
 msgstr ""
 
-#: models.py:452
+#: models.py:468
 msgid "Full path"
 msgstr ""
 
-#: models.py:506
+#: models.py:522
 msgid "Document index node instance"
 msgstr "Indeks čvora instance dokumenta"
 
-#: models.py:507
+#: models.py:523
 msgid "Document indexes node instances"
 msgstr "Indeks čvorova indeksa dokummenata"
 
-#: models.py:514
+#: models.py:530
 msgid "Index instance nodes"
 msgstr ""
 
@@ -294,6 +295,21 @@ msgstr ""
 
 #: search.py:43
 msgid "Document checksum"
+msgstr ""
+
+#: serializers.py:191
+msgid "Parent cannot be empty."
+msgstr ""
+
+#: serializers.py:198
+msgid "Parent must be from the same index template."
+msgstr ""
+
+#: settings.py:14
+msgid ""
+"Amount of time in seconds, a failed indexing task will wait before retrying."
+" Lower values will increase the speed at which documents are indexed but "
+"will cause a higher count of failed/retried tasks in the queue."
 msgstr ""
 
 #: views.py:45

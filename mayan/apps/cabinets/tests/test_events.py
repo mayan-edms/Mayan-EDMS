@@ -1,7 +1,7 @@
 from actstream.models import Action
 
-from mayan.apps.tests.tests.base import GenericViewTestCase
 from mayan.apps.documents.tests.test_models import GenericDocumentTestCase
+from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..events import (
     event_cabinet_created, event_cabinet_edited, event_cabinet_add_document,
@@ -16,7 +16,7 @@ from .mixins import CabinetTestMixin, CabinetViewTestMixin
 class CabinetsEventsTestCase(
     CabinetTestMixin, CabinetViewTestMixin, GenericViewTestCase
 ):
-    def test_cabinet_create_event_no_permissions(self):
+    def test_cabinet_create_event_no_permission(self):
         action_count = Action.objects.count()
 
         response = self._request_test_cabinet_create_view()
@@ -42,7 +42,7 @@ class CabinetsEventsTestCase(
         self.assertEqual(event.target, cabinet)
         self.assertEqual(event.actor, self._test_case_user)
 
-    def test_cabinet_edit_event_no_permissions(self):
+    def test_cabinet_edit_event_no_permission(self):
         self._create_test_cabinet()
 
         action_count = Action.objects.count()

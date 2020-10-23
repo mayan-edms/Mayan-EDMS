@@ -31,7 +31,7 @@ class TaskType:
         self.validate()
 
     def __str__(self):
-        return force_text(self.label)
+        return force_text(s=self.label)
 
     def validate(self):
         try:
@@ -50,7 +50,7 @@ class Task:
         self.kwargs = kwargs
 
     def __str__(self):
-        return force_text(self.task_type)
+        return force_text(s=self.task_type)
 
 
 class CeleryQueue(AppsModuleLoaderMixin):
@@ -87,7 +87,7 @@ class CeleryQueue(AppsModuleLoaderMixin):
         worker.queues.append(self)
 
     def __str__(self):
-        return force_text(self.label)
+        return force_text(s=self.label)
 
     def _process_task_dictionary(self, task_dictionary):
         result = []

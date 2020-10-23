@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Tomasz Szymanowicz <alakdae@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-22 23:20-0400\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2020-05-18 09:56+0000\n"
 "Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
@@ -22,23 +23,23 @@ msgstr ""
 msgid "Lock manager"
 msgstr "Menedżer blokad"
 
-#: models.py:16
+#: models.py:14
 msgid "Creation datetime"
 msgstr "Data utworzenia"
 
-#: models.py:19
+#: models.py:17
 msgid "Timeout"
 msgstr "Koniec czasu"
 
-#: models.py:22
+#: models.py:20
 msgid "Name"
 msgstr "Nazwa"
 
-#: models.py:28
+#: models.py:26
 msgid "Lock"
 msgstr "Blokada"
 
-#: models.py:29
+#: models.py:27
 msgid "Locks"
 msgstr "Blokady"
 

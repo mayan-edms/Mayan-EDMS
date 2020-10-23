@@ -7,8 +7,10 @@ from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import ModelCopy
 from mayan.apps.common.menus import (
-    menu_facet, menu_list_facet, menu_object, menu_secondary, menu_setup
+    menu_facet, menu_list_facet, menu_object, menu_related, menu_secondary,
+    menu_setup
 )
+from mayan.apps.documents.links.document_type_links import link_document_type_list
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list
@@ -99,17 +101,21 @@ class LinkingApp(MayanAppConfig):
             attribute='label', is_identifier=True, is_sortable=True,
             source=SmartLink
         )
-        source_column_smart_link_label.add_exclude(ResolvedSmartLink)
+        source_column_smart_link_label.add_exclude(source=ResolvedSmartLink)
         source_column_smart_link_dynamic_label = SourceColumn(
             attribute='dynamic_label', include_label=True, is_sortable=True,
             source=SmartLink
         )
-        source_column_smart_link_dynamic_label.add_exclude(ResolvedSmartLink)
+        source_column_smart_link_dynamic_label.add_exclude(
+            source=ResolvedSmartLink
+        )
         source_column_smart_link_enabled = SourceColumn(
             attribute='enabled', include_label=True, is_sortable=True,
             source=SmartLink, widget=TwoStateWidget
         )
-        source_column_smart_link_enabled.add_exclude(ResolvedSmartLink)
+        source_column_smart_link_enabled.add_exclude(
+            source=ResolvedSmartLink
+        )
         SourceColumn(
             attribute='get_full_label', is_identifier=True,
             source=SmartLinkCondition
@@ -152,6 +158,20 @@ class LinkingApp(MayanAppConfig):
         menu_object.unbind_links(
             links=(link_smart_link_delete, link_smart_link_edit,),
             sources=(ResolvedSmartLink,)
+        )
+        menu_related.bind_links(
+            links=(link_smart_link_list,),
+            sources=(
+                DocumentType, 'documents:document_type_list',
+                'documents:document_type_create'
+            )
+        )
+        menu_related.bind_links(
+            links=(link_document_type_list,),
+            sources=(
+                SmartLink, 'linking:smart_link_list',
+                'linking:smart_link_create'
+            )
         )
         menu_secondary.bind_links(
             links=(link_smart_link_list, link_smart_link_create),

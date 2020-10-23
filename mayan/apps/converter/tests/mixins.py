@@ -1,17 +1,69 @@
 from django.contrib.contenttypes.models import ContentType
+from django.core.files import File
 
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.permissions.tests.mixins import PermissionTestMixin
 
 from ..classes import Layer
-from ..models import ObjectLayer
+from ..models import Asset, ObjectLayer
 from ..transformations import BaseTransformation
 
 from .literals import (
-    TEST_TRANSFORMATION_CLASS_LABEL, TEST_TRANSFORMATION_CLASS_NAME,
-    TEST_TRANSFORMATION_NAME, TEST_TRANSFORMATION_ARGUMENT,
-    TEST_TRANSFORMATION_ARGUMENT_EDITED
+    TEST_ASSET_LABEL, TEST_ASSET_LABEL_EDITED, TEST_ASSET_INTERNAL_NAME,
+    TEST_ASSET_PATH, TEST_TRANSFORMATION_CLASS_LABEL,
+    TEST_TRANSFORMATION_CLASS_NAME, TEST_TRANSFORMATION_NAME,
+    TEST_TRANSFORMATION_ARGUMENT, TEST_TRANSFORMATION_ARGUMENT_EDITED
 )
+
+
+class AssetTestMixin:
+    def _create_test_asset(self):
+        with open(file=TEST_ASSET_PATH, mode='rb') as file_object:
+            self.test_asset = Asset.objects.create(
+                label=TEST_ASSET_LABEL,
+                internal_name=TEST_ASSET_INTERNAL_NAME,
+                file=File(file_object)
+            )
+
+
+class AssetViewTestMixin:
+    def _request_test_asset_create_view(self):
+        pk_list = list(Asset.objects.values_list('pk', flat=True))
+
+        with open(file=TEST_ASSET_PATH, mode='rb') as file_object:
+            response = self.post(
+                viewname='converter:asset_create', data={
+                    'label': TEST_ASSET_LABEL,
+                    'internal_name': TEST_ASSET_INTERNAL_NAME,
+                    'file': file_object
+                }
+            )
+
+        self.test_asset = Asset.objects.exclude(
+            pk__in=pk_list
+        ).first()
+
+        return response
+
+    def _request_test_asset_delete_view(self):
+        return self.post(
+            viewname='converter:asset_single_delete', kwargs={
+                'asset_id': self.test_asset.pk
+            }
+        )
+
+    def _request_test_asset_edit_view(self):
+        return self.post(
+            viewname='converter:asset_edit', kwargs={
+                'asset_id': self.test_asset.pk
+            }, data={
+                'label': TEST_ASSET_LABEL_EDITED,
+                'internal_name': TEST_ASSET_INTERNAL_NAME,
+            }
+        )
+
+    def _request_test_asset_list_view(self):
+        return self.get(viewname='converter:asset_list')
 
 
 class LayerTestCaseMixin:

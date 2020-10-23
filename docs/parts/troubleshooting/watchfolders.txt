@@ -1,0 +1,21 @@
+============
+Watchfolders
+============
+
+Incomplete files uploaded
+=========================
+
+To avoid uploading files are they are being copied to the watchfolder, copy the
+files to a temporary directory on the same partition as the watchfolder first.
+Then move the files to the watchfolder. The move will be executed as an atomic
+operation and will prevent the files to be uploaded in the middle of the
+copying process.
+
+
+The watched folder feature is not working
+=========================================
+
+Make sure that the Celery BEAT scheduler is running correctly as it is the
+element that triggers the periodic tasks. Check that the user running the Mayan
+EDMS services has read and write permissions for the watch folder.
+

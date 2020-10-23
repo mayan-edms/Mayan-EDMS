@@ -4,6 +4,8 @@ from django.forms.formsets import formset_factory
 from django.utils.text import format_lazy
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.templating.fields import TemplateField
+
 from .classes import MetadataLookup
 from .models import DocumentTypeMetadataType, MetadataType
 
@@ -113,7 +115,7 @@ class DocumentMetadataForm(forms.Form):
         return self.cleaned_data
 
 
-DocumentMetadataFormSet = formset_factory(DocumentMetadataForm, extra=0)
+DocumentMetadataFormSet = formset_factory(form=DocumentMetadataForm, extra=0)
 
 
 class DocumentMetadataAddForm(forms.Form):
@@ -156,18 +158,23 @@ class DocumentMetadataRemoveForm(DocumentMetadataForm):
 
 
 DocumentMetadataRemoveFormSet = formset_factory(
-    DocumentMetadataRemoveForm, extra=0
+    form=DocumentMetadataRemoveForm, extra=0
 )
 
 
 class MetadataTypeForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(MetadataTypeForm, self).__init__(*args, **kwargs)
-        self.fields['lookup'].help_text = format_lazy(
-            '{}{}{}',
-            self.fields['lookup'].help_text,
-            _(' Available template context variables: '),
-            MetadataLookup.get_as_help_text()
+        self.fields['default'] = TemplateField(
+            initial_help_text=self.fields['default'].help_text, required=False
+        )
+        self.fields['lookup'] = TemplateField(
+            initial_help_text=format_lazy(
+                '{}{}{}',
+                self.fields['lookup'].help_text,
+                _(' Available template context variables: '),
+                MetadataLookup.get_as_help_text()
+            ), required=False
         )
 
     class Meta:
@@ -270,7 +277,7 @@ class DocumentTypeMetadataTypeRelationshipForm(forms.Form):
 
 
 DocumentTypeMetadataTypeRelationshipFormSetBase = formset_factory(
-    DocumentTypeMetadataTypeRelationshipForm, extra=0
+    form=DocumentTypeMetadataTypeRelationshipForm, extra=0
 )
 
 

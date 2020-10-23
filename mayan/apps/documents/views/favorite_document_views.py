@@ -50,17 +50,20 @@ class FavoriteAddView(MultipleObjectConfirmActionView):
     )
 
     def get_extra_context(self):
-        queryset = self.object_list
-
-        return {
+        context = {
             'submit_label': _('Add'),
             'submit_icon_class': icon_favorite_document_list,
             'title': ungettext(
-                singular='Add the selected document to favorites',
-                plural='Add the selected documents to favorites',
-                number=queryset.count()
+                singular='Add the selected document to favorites?',
+                plural='Add the selected documents to favorites?',
+                number=self.object_list.count()
             )
         }
+
+        if self.object_list.count() == 1:
+            context['object'] = self.object_list.first()
+
+        return context
 
     def object_action(self, form, instance):
         FavoriteDocument.objects.add_for_user(
@@ -81,17 +84,20 @@ class FavoriteRemoveView(MultipleObjectConfirmActionView):
     )
 
     def get_extra_context(self):
-        queryset = self.object_list
-
-        return {
+        context = {
             'submit_label': _('Remove'),
             'submit_icon_class': icon_favorite_document_list,
             'title': ungettext(
-                singular='Remove the selected document from favorites',
-                plural='Remove the selected documents from favorites',
-                number=queryset.count()
+                singular='Remove the selected document from favorites?',
+                plural='Remove the selected documents from favorites?',
+                number=self.object_list.count()
             )
         }
+
+        if self.object_list.count() == 1:
+            context['object'] = self.object_list.first()
+
+        return context
 
     def object_action(self, form, instance):
         try:

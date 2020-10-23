@@ -3,13 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
+# Faiqul Azmi <kasempurnaningurip@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-22 23:18-0400\n"
-"PO-Revision-Date: 2020-03-28 07:22+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"PO-Revision-Date: 2020-06-23 07:37+0000\n"
+"Last-Translator: Faiqul Azmi <kasempurnaningurip@gmail.com>\n"
 "Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/language/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,144 +19,144 @@ msgstr ""
 "Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:22 links.py:42
+#: apps.py:23 classes.py:142 links.py:26
 msgid "ACLs"
-msgstr ""
+msgstr "Daftar akses kontrol"
 
 #: events.py:6 permissions.py:5
 msgid "Access control lists"
-msgstr ""
+msgstr "Daftar akses kontrol"
 
 #: events.py:10
 msgid "ACL created"
-msgstr ""
+msgstr "Daftar akses kontrol dibuat"
 
 #: events.py:13
 msgid "ACL edited"
-msgstr ""
+msgstr "Daftar akses kontrol diubah"
 
-#: forms.py:13 models.py:46 views.py:67
+#: forms.py:13 models.py:44 views.py:67
 msgid "Role"
-msgstr ""
+msgstr "Peranan"
 
-#: links.py:32
+#: links.py:15
 msgid "New ACL"
-msgstr ""
+msgstr "Daftar akses kontrol baru"
 
-#: links.py:37
+#: links.py:20
 msgid "Delete"
 msgstr "Hapus"
 
-#: links.py:47 models.py:42 workflow_actions.py:46 workflow_actions.py:161
+#: links.py:31 models.py:40 workflow_actions.py:46 workflow_actions.py:161
 msgid "Permissions"
-msgstr ""
+msgstr "Izin"
 
 #: managers.py:229
 #, python-format
 msgid "Object \"%s\" is not a model and cannot be checked for access."
-msgstr ""
+msgstr "Objek \"%s\" bukan sebuah model dan tidak dapat dicek akses."
 
 #: managers.py:250
 #, python-format
 msgid "Insufficient access for: %s"
-msgstr ""
+msgstr "Akses tidak memenuhi untuk: %s"
 
-#: models.py:54
+#: models.py:52
 msgid "Access entry"
-msgstr ""
+msgstr "Akses masuk"
 
-#: models.py:55
+#: models.py:53
 msgid "Access entries"
-msgstr ""
+msgstr "Akses masuk"
 
-#: models.py:59
+#: models.py:57
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\""
-msgstr ""
+msgstr "Peran \"%(role)s\" diizinkan untuk \"%(object)s\""
 
 #: permissions.py:8
 msgid "Edit ACLs"
-msgstr ""
+msgstr "Ubah daftar akses kontrol"
 
 #: permissions.py:11
 msgid "View ACLs"
-msgstr ""
+msgstr "Lihat daftar akses kontrol"
 
 #: serializers.py:24 serializers.py:134
 msgid ""
 "API URL pointing to the list of permissions for this access control list."
-msgstr ""
+msgstr "URL API merujuk pada daftar perizinan untuk daftar akses kontrol ini."
 
 #: serializers.py:57
 msgid ""
 "API URL pointing to a permission in relation to the access control list to "
 "which it is attached. This URL is different than the canonical workflow URL."
-msgstr ""
+msgstr "URL API merujuk pada izin yang berkaitan dengan daftar akses kontrol yang terlampir. URL ini berbeda dengan URL alur kerja kanonik."
 
 #: serializers.py:89
 msgid "Primary key of the new permission to grant to the access control list."
-msgstr ""
+msgstr "Kunci utama dari izin baru untuk diberikan ke daftar kontrol akses."
 
 #: serializers.py:113 serializers.py:189
 #, python-format
 msgid "No such permission: %s"
-msgstr ""
+msgstr "Tidak ada izin: %s"
 
 #: serializers.py:128
 msgid ""
 "Comma separated list of permission primary keys to grant to this access "
 "control list."
-msgstr ""
+msgstr "Daftar kunci utama izin yang dipisahkan dengan koma untuk diberikan ke daftar akses kontrol ini."
 
 #: serializers.py:140
 msgid "Primary keys of the role to which this access control list binds to."
-msgstr ""
+msgstr "Kunci utama dari peran yang mengikat daftar akses kontrol ini."
 
 #: views.py:40
 #, python-format
 msgid ""
 "An ACL for \"%(object)s\" using role \"%(role)s\" already exists. Edit that "
 "ACL entry instead."
-msgstr ""
+msgstr "Sebuah daftar akses kontrol untuk \"%(object)s\" menggunakan peran \"%(role)s\" sudah ada. Ubah daftar akses kontrol tersebut sebagai gantinya."
 
 #: views.py:53
 #, python-format
 msgid "New access control lists for: %s"
-msgstr ""
+msgstr "Daftar akses kontrol baru untuk: %s"
 
 #: views.py:95
 #, python-format
 msgid "Delete ACL: %s"
-msgstr ""
+msgstr "Hapus daftar akses kontrol: %s"
 
 #: views.py:133
 msgid "There are no ACLs for this object"
-msgstr ""
+msgstr "Tidak ada daftar akses kontrol untuk objek ini"
 
 #: views.py:136
 msgid ""
 "ACL stands for Access Control List and is a precise method to control user "
 "access to objects in the system. ACLs allow granting a permission to a role "
 "but only for a specific object or set of objects."
-msgstr ""
+msgstr "ACL singkatan dari Access Control List merupakas daftar akses kontrol dan metode yang tepat untuk mengontrol akses pengguna ke objek-objek dalam sistem. ACLs memperbolehkan memberikan izin ke peran namun hanya untuk objek yang spesifik atau kumpulan objek."
 
 #: views.py:143
 #, python-format
 msgid "Access control lists for: %s"
-msgstr ""
+msgstr "Daftar akses kontrol untuk: %s"
 
 #: views.py:157
 msgid "Granted permissions"
-msgstr ""
+msgstr "Izin yang diberikan"
 
 #: views.py:158
 msgid "Available permissions"
-msgstr ""
+msgstr "Izin yang tersedia"
 
 #: views.py:202
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\"."
-msgstr ""
+msgstr "Peran \"%(role)s\" memiliki izin untuk \"%(object)s\"."
 
 #: views.py:211
 msgid ""
@@ -162,50 +164,50 @@ msgid ""
 "to the role and can't be removed from this view. Inherited permissions need "
 "to be removed from the parent object's ACL or from them role via the Setup "
 "menu."
-msgstr ""
+msgstr "Izin yang dinonaktifkan diturunkan dari objek induk atau diberikan langsung ke peran dan tidak dapat dihapus dari tampilan ini. Izin yang diturunkan harus dihapus dari daftar akses kontrol objek induk atau dari peran mereka melalui menu Pengaturan."
 
 #: workflow_actions.py:23
 msgid "Object type"
-msgstr ""
+msgstr "Tipe objek"
 
 #: workflow_actions.py:26
 msgid "Type of the object for which the access will be modified."
-msgstr ""
+msgstr "Tipe objek yang aksesnya akan diubah."
 
 #: workflow_actions.py:32
 msgid "Object ID"
-msgstr ""
+msgstr "ID objek"
 
 #: workflow_actions.py:35
 msgid ""
 "Numeric identifier of the object for which the access will be modified."
-msgstr ""
+msgstr "Pengidentifikasi numerik objek yang aksesnya akan diubah."
 
 #: workflow_actions.py:40 workflow_actions.py:155
 msgid "Roles"
-msgstr ""
+msgstr "Peran"
 
 #: workflow_actions.py:42 workflow_actions.py:157
 msgid "Roles whose access will be modified."
-msgstr ""
+msgstr "Peran yang mengakses akan dimodifikasi"
 
 #: workflow_actions.py:49 workflow_actions.py:164
 msgid ""
 "Permissions to grant/revoke to/from the role for the object selected above."
-msgstr ""
+msgstr "Izin untuk memberikan/mencabut ke/dari peran untuk objek terpilih diatas."
 
 #: workflow_actions.py:57
 msgid "Grant object access"
-msgstr ""
+msgstr "Berikan akses objek"
 
 #: workflow_actions.py:140
 msgid "Revoke object access"
-msgstr ""
+msgstr "Cabut akses objek"
 
 #: workflow_actions.py:172
 msgid "Grant document access"
-msgstr ""
+msgstr "Berikan akses dokumen"
 
 #: workflow_actions.py:211
 msgid "Revoke document access"
-msgstr ""
+msgstr "Cabut akses dokumen"

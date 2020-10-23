@@ -9,9 +9,9 @@ from django.test import override_settings
 from django.urls import reverse
 from django.utils.http import urlunquote_plus
 
-from mayan.apps.tests.tests.base import GenericViewTestCase
 from mayan.apps.common.settings import setting_home_view
 from mayan.apps.smart_settings.classes import SettingNamespace
+from mayan.apps.testing.tests.base import GenericViewTestCase
 from mayan.apps.user_management.permissions import permission_user_edit
 from mayan.apps.user_management.tests.literals import (
     TEST_USER_PASSWORD_EDITED
@@ -21,7 +21,10 @@ from ..permissions import permission_users_impersonate
 from ..settings import setting_maximum_session_length
 
 from .literals import TEST_EMAIL_AUTHENTICATION_BACKEND
-from .mixins import UserPasswordViewTestMixin
+from .mixins import (
+    UserImpersonationViewTestMixin, UserLoginTestMixin,
+    UserPasswordViewTestMixin
+)
 
 
 class CurrentUserViewTestCase(GenericViewTestCase):
@@ -45,24 +48,9 @@ class CurrentUserViewTestCase(GenericViewTestCase):
         )
 
 
-class UserImpersonationViewTestCase(GenericViewTestCase):
-    def _impersonate_test_user(self):
-        session = self.client.session
-        session['_impersonate_id'] = self.test_user.pk
-        session.save()
-
-    def _request_impersonate_end_view(self):
-        return self.get(
-            follow=True, viewname='authentication:impersonate_end'
-        )
-
-    def _request_impersonate_start_view(self):
-        return self.post(
-            follow=True, viewname='authentication:impersonate_start', data={
-                'user': self.test_user.pk
-            }
-        )
-
+class UserImpersonationViewTestCase(
+    UserImpersonationViewTestMixin, GenericViewTestCase
+):
     def test_user_impersonate_start_view_no_permission(self):
         self._create_test_user()
         response = self._request_impersonate_start_view()
@@ -141,7 +129,7 @@ class UserImpersonationViewTestCase(GenericViewTestCase):
         self.assertEqual(response.data['id'], self._test_case_user.pk)
 
 
-class UserLoginTestCase(GenericViewTestCase):
+class UserLoginTestCase(UserLoginTestMixin, GenericViewTestCase):
     """
     Test that users can login via the supported authentication methods
     """
@@ -162,23 +150,6 @@ class UserLoginTestCase(GenericViewTestCase):
     def setUp(self):
         super(UserLoginTestCase, self).setUp()
         SettingNamespace.invalidate_cache_all()
-
-    def _request_authenticated_view(self):
-        return self.get(path=self.authenticated_url)
-
-    def _request_password_reset_get_view(self):
-        return self.get(
-            viewname='authentication:password_reset_view', data={
-                'email': self._test_case_superuser.email,
-            }
-        )
-
-    def _request_password_reset_post_view(self):
-        return self.post(
-            viewname='authentication:password_reset_view', data={
-                'email': self._test_case_superuser.email,
-            }
-        )
 
     @override_settings(AUTHENTICATION_LOGIN_METHOD='username')
     def test_non_authenticated_request(self):
@@ -420,7 +391,7 @@ class UserLoginTestCase(GenericViewTestCase):
 
 
 class UserViewTestCase(UserPasswordViewTestMixin, GenericViewTestCase):
-    def test_user_set_password_view_no_access(self):
+    def test_user_set_password_view_no_permission(self):
         self._create_test_user()
 
         password_hash = self.test_user.password
@@ -447,7 +418,7 @@ class UserViewTestCase(UserPasswordViewTestMixin, GenericViewTestCase):
         self.test_user.refresh_from_db()
         self.assertNotEqual(self.test_user.password, password_hash)
 
-    def test_user_multiple_set_password_view_no_access(self):
+    def test_user_multiple_set_password_view_no_permission(self):
         self._create_test_user()
         password_hash = self.test_user.password
 

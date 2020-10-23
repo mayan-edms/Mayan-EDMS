@@ -12,9 +12,10 @@ from mayan.apps.common.classes import (
     ModelCopy, ModelFieldRelated, ModelProperty, ModelQueryFields
 )
 from mayan.apps.common.menus import (
-    menu_facet, menu_list_facet, menu_multi_item, menu_object, menu_secondary,
-    menu_setup
+    menu_facet, menu_list_facet, menu_multi_item, menu_object, menu_related,
+    menu_secondary, menu_setup
 )
+from mayan.apps.documents.links.document_type_links import link_document_type_list
 from mayan.apps.documents.signals import signal_post_document_type_change
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.events.links import (
@@ -50,8 +51,6 @@ from .permissions import (
     permission_metadata_type_delete, permission_metadata_type_edit,
     permission_metadata_type_view
 )
-
-from .search import metadata_type_search  # NOQA
 
 logger = logging.getLogger(name=__name__)
 
@@ -233,6 +232,21 @@ class MetadataApp(MayanAppConfig):
             links=(
                 link_setup_metadata_type_delete, link_setup_metadata_type_edit
             ), sources=(MetadataType,)
+        )
+        menu_related.bind_links(
+            links=(link_setup_metadata_type_list,),
+            sources=(
+                DocumentType, 'documents:document_type_list',
+                'documents:document_type_create'
+            )
+        )
+        menu_related.bind_links(
+            links=(
+                link_document_type_list,
+            ), sources=(
+                MetadataType, 'metadata:setup_metadata_type_list',
+                'metadata:setup_metadata_type_create'
+            )
         )
         menu_secondary.bind_links(
             links=(

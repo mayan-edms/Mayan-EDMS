@@ -1,4 +1,4 @@
-from actstream.models import Action
+from actstream.models import Action, any_stream
 
 from ..classes import EventTypeNamespace
 from ..models import Notification
@@ -12,6 +12,23 @@ from .literals import (
 class EventListAPIViewTestMixin:
     def _request_test_event_list_api_view(self):
         return self.get(viewname='rest_api:event-list')
+
+
+class EventTestCaseMixin:
+    def setUp(self):
+        super().setUp()
+        Action.objects.all().delete()
+
+    def _clear_events(self):
+        Action.objects.all().delete()
+
+    def _get_test_object_event(self, object_name=None):
+        test_object = getattr(self, object_name or self._test_event_object_name)
+
+        if test_object:
+            return any_stream(obj=test_object).first()
+        else:
+            return Action.objects.first()
 
 
 class EventTypeNamespaceAPITestMixin:

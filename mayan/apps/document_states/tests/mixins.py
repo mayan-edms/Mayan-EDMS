@@ -2,6 +2,7 @@ from ..classes import WorkflowAction
 from ..models import Workflow, WorkflowRuntimeProxy, WorkflowStateRuntimeProxy
 
 from .literals import (
+    DOCUMENT_WORKFLOW_LAUNCH_ACTION_CLASS_PATH,
     TEST_WORKFLOW_INITIAL_STATE_LABEL, TEST_WORKFLOW_INITIAL_STATE_COMPLETION,
     TEST_WORKFLOW_INSTANCE_LOG_ENTRY_COMMENT, TEST_WORKFLOW_INTERNAL_NAME,
     TEST_WORKFLOW_LABEL, TEST_WORKFLOW_LABEL_EDITED,
@@ -11,10 +12,67 @@ from .literals import (
     TEST_WORKFLOW_STATE_LABEL_EDITED,
     TEST_WORKFLOW_TRANSITION_FIELD_HELP_TEXT,
     TEST_WORKFLOW_TRANSITION_FIELD_LABEL,
+    TEST_WORKFLOW_TRANSITION_FIELD_LABEL_EDITED,
     TEST_WORKFLOW_TRANSITION_FIELD_NAME, TEST_WORKFLOW_TRANSITION_FIELD_TYPE,
     TEST_WORKFLOW_TRANSITION_LABEL, TEST_WORKFLOW_TRANSITION_LABEL_EDITED,
     TEST_WORKFLOW_TRANSITION_LABEL_2
 )
+
+
+class DocumentWorkflowAPIViewTestMixin:
+    def _request_test_workflow_instance_detail_api_view(self):
+        return self.get(
+            viewname='rest_api:workflowinstance-detail', kwargs={
+                'pk': self.test_document.pk,
+                'workflow_pk': self.test_document.workflows.first().pk
+            }
+        )
+
+    def _request_test_workflow_instance_list_api_view(self):
+        return self.get(
+            viewname='rest_api:workflowinstance-list',
+            kwargs={'pk': self.test_document.pk}
+        )
+
+    def _request_test_workflow_instance_log_entry_create_api_view(self, workflow_instance):
+        return self.post(
+            viewname='rest_api:workflowinstancelogentry-list', kwargs={
+                'pk': self.test_document.pk,
+                'workflow_pk': workflow_instance.pk
+            }, data={'transition_pk': self.test_workflow_transition.pk}
+        )
+
+    def _request_test_workflow_instance_log_entry_list_api_view(self):
+        return self.get(
+            viewname='rest_api:workflowinstancelogentry-list', kwargs={
+                'pk': self.test_document.pk,
+                'workflow_pk': self.test_document.workflows.first().pk
+            }
+        )
+
+
+class DocumentWorkflowLaunchActionViewTestMixin:
+    def _request_document_workflow_launch_action_create_view(self):
+        return self.post(
+            viewname='document_states:workflow_template_state_action_create',
+            kwargs={
+                'workflow_template_state_id': self.test_workflow_state.pk,
+                'class_path': DOCUMENT_WORKFLOW_LAUNCH_ACTION_CLASS_PATH
+            }, data={
+                'label': TEST_WORKFLOW_STATE_ACTION_LABEL,
+                'when': TEST_WORKFLOW_STATE_ACTION_WHEN,
+                'workflows': self.test_workflow.pk
+            }
+        )
+
+
+class DocumentWorkflowTemplateViewTestMixin:
+    def _request_test_document_single_workflow_launch_view(self):
+        return self.post(
+            data={'workflows': self.test_workflow.pk},
+            kwargs={'document_id': self.test_document.pk},
+            viewname='document_states:document_single_workflow_templates_launch'
+        )
 
 
 class TestWorkflowAction(WorkflowAction):
@@ -38,6 +96,94 @@ class WorkflowRuntimeProxyStateViewTestMixin:
                 'workflow_runtime_proxy_state_id': self.test_workflow_state_1.pk
             }
         )
+
+
+class WorkflowAPIViewTestMixin:
+    def _request_test_document_type_workflow_list_api_view(self):
+        return self.get(
+            viewname='rest_api:documenttype-workflow-list',
+            kwargs={'pk': self.test_document_type.pk}
+        )
+
+    def _request_test_workflow_create_api_view(self, extra_data=None):
+        data = {
+            'internal_name': TEST_WORKFLOW_INTERNAL_NAME,
+            'label': TEST_WORKFLOW_LABEL,
+        }
+
+        if extra_data:
+            data.update(extra_data)
+
+        return self.post(
+            viewname='rest_api:workflow-list', data=data
+        )
+
+    def _request_test_workflow_delete_api_view(self):
+        return self.delete(
+            viewname='rest_api:workflow-detail', kwargs={
+                'pk': self.test_workflow.pk
+            }
+        )
+
+    def _request_test_workflow_detail_api_view(self):
+        return self.get(
+            viewname='rest_api:workflow-detail', kwargs={
+                'pk': self.test_workflow.pk
+            }
+        )
+
+    def _request_test_workflow_document_type_delete_api_view(self):
+        return self.delete(
+            viewname='rest_api:workflow-document-type-detail',
+            kwargs={
+                'pk': self.test_workflow.pk,
+                'document_type_pk': self.test_document_type.pk
+            }
+        )
+
+    def _request_test_workflow_document_type_detail_api_view(self):
+        return self.get(
+            viewname='rest_api:workflow-document-type-detail',
+            kwargs={
+                'pk': self.test_workflow.pk,
+                'document_type_pk': self.test_document_type.pk
+            }
+        )
+
+    def _request_test_workflow_document_type_list_create_api_view(self):
+        return self.post(
+            viewname='rest_api:workflow-document-type-list',
+            kwargs={'pk': self.test_workflow.pk}, data={
+                'document_type_pk': self.test_document_type.pk
+            }
+        )
+
+    def _request_test_workflow_document_type_list_api_view(self):
+        return self.get(
+            viewname='rest_api:workflow-document-type-list', kwargs={
+                'pk': self.test_workflow.pk
+            }
+        )
+
+    def _request_test_workflow_edit_patch_view(self):
+        return self.patch(
+            viewname='rest_api:workflow-detail', kwargs={
+                'pk': self.test_workflow.pk
+            }, data={'label': TEST_WORKFLOW_LABEL_EDITED}
+        )
+
+    def _request_test_workflow_edit_put_view(self):
+        return self.put(
+            viewname='rest_api:workflow-detail', kwargs={
+                'pk': self.test_workflow.pk
+            }, data={
+                'internal_name': TEST_WORKFLOW_INTERNAL_NAME,
+                'label': TEST_WORKFLOW_LABEL_EDITED
+            }
+        )
+
+    def _request_test_workflow_list_api_view(self):
+        return self.get(viewname='rest_api:workflow-list')
 
 
 class WorkflowRuntimeProxyViewTestMixin:
@@ -128,6 +274,64 @@ class WorkflowStateActionViewTestMixin:
         )
 
 
+class WorkflowStateAPIViewTestMixin:
+    def _request_test_workflow_state_create_api_view(self):
+        return self.post(
+            viewname='rest_api:workflowstate-list',
+            kwargs={'pk': self.test_workflow.pk}, data={
+                'completion': TEST_WORKFLOW_STATE_COMPLETION,
+                'label': TEST_WORKFLOW_STATE_LABEL
+            }
+        )
+
+    def _request_test_workflow_state_delete_api_view(self):
+        return self.delete(
+            viewname='rest_api:workflowstate-detail',
+            kwargs={
+                'pk': self.test_workflow.pk,
+                'state_pk': self.test_workflow_state.pk
+            }
+        )
+
+    def _request_test_workflow_state_detail_api_view(self):
+        return self.get(
+            viewname='rest_api:workflowstate-detail',
+            kwargs={
+                'pk': self.test_workflow.pk,
+                'state_pk': self.test_workflow_state.pk
+            }
+        )
+
+    def _request_test_workflow_state_list_api_view(self):
+        return self.get(
+            viewname='rest_api:workflowstate-list', kwargs={
+                'pk': self.test_workflow.pk
+            }
+        )
+
+    def _request_test_workflow_state_edit_patch_api_view(self):
+        return self.patch(
+            viewname='rest_api:workflowstate-detail',
+            kwargs={
+                'pk': self.test_workflow.pk,
+                'state_pk': self.test_workflow_state.pk
+            }, data={
+                'label': TEST_WORKFLOW_STATE_LABEL_EDITED
+            }
+        )
+
+    def _request_test_workflow_state_edit_put_api_view(self):
+        return self.put(
+            viewname='rest_api:workflowstate-detail',
+            kwargs={
+                'pk': self.test_workflow.pk,
+                'state_pk': self.test_workflow_state.pk
+            }, data={
+                'label': TEST_WORKFLOW_STATE_LABEL_EDITED
+            }
+        )
+
+
 class WorkflowStateViewTestMixin:
     def _request_test_workflow_state_create_view(self, extra_data=None):
         data = {
@@ -168,9 +372,9 @@ class WorkflowStateViewTestMixin:
 
 
 class WorkflowTestMixin:
-    def _create_test_workflow(self, add_document_type=False):
+    def _create_test_workflow(self, add_document_type=False, auto_launch=True):
         self.test_workflow = Workflow.objects.create(
-            label=TEST_WORKFLOW_LABEL,
+            auto_launch=auto_launch, label=TEST_WORKFLOW_LABEL,
             internal_name=TEST_WORKFLOW_INTERNAL_NAME
         )
         self.test_workflow_runtime_proxy = WorkflowRuntimeProxy.objects.get(
@@ -237,6 +441,13 @@ class WorkflowTestMixin:
             user=self._test_case_user
         )
 
+    def _transition_test_workflow_instance(self, extra_data=None):
+        self.test_document.workflows.first().do_transition(
+            comment=TEST_WORKFLOW_INSTANCE_LOG_ENTRY_COMMENT,
+            extra_data=extra_data, transition=self.test_workflow_transition,
+            user=self._test_case_user
+        )
+
 
 class WorkflowToolViewTestMixin:
     def _request_workflow_launch_view(self):
@@ -256,14 +467,6 @@ class WorkflowTransitionEventViewTestMixin:
 
 
 class WorkflowTransitionFieldViewTestMixin:
-    def _request_test_workflow_transition_field_list_view(self):
-        return self.get(
-            viewname='document_states:workflow_template_transition_field_list',
-            kwargs={
-                'workflow_template_transition_id': self.test_workflow_transition.pk
-            }
-        )
-
     def _request_workflow_transition_field_create_view(self):
         return self.post(
             viewname='document_states:workflow_template_transition_field_create',
@@ -283,6 +486,104 @@ class WorkflowTransitionFieldViewTestMixin:
             kwargs={
                 'workflow_template_transition_field_id': self.test_workflow_transition_field.pk
             },
+        )
+
+    def _request_workflow_transition_field_edit_view(self):
+        return self.post(
+            viewname='document_states:workflow_template_transition_field_edit',
+            kwargs={
+                'workflow_template_transition_field_id': self.test_workflow_transition_field.pk
+            }, data={
+                'field_type': TEST_WORKFLOW_TRANSITION_FIELD_TYPE,
+                'name': TEST_WORKFLOW_TRANSITION_FIELD_NAME,
+                'label': TEST_WORKFLOW_TRANSITION_FIELD_LABEL_EDITED,
+                'help_text': TEST_WORKFLOW_TRANSITION_FIELD_HELP_TEXT
+            }
+        )
+
+    def _request_test_workflow_transition_field_list_view(self):
+        return self.get(
+            viewname='document_states:workflow_template_transition_field_list',
+            kwargs={
+                'workflow_template_transition_id': self.test_workflow_transition.pk
+            }
+        )
+
+
+class WorkflowTransitionAPIViewTestMixin:
+    def _request_test_workflow_transition_create_api_view(self):
+        return self.post(
+            viewname='rest_api:workflowtransition-list',
+            kwargs={'pk': self.test_workflow.pk}, data={
+                'label': TEST_WORKFLOW_TRANSITION_LABEL,
+                'origin_state_pk': self.test_workflow_state_1.pk,
+                'destination_state_pk': self.test_workflow_state_2.pk,
+            }
+        )
+
+    def _request_test_workflow_transition_delete_api_view(self):
+        return self.delete(
+            viewname='rest_api:workflowtransition-detail',
+            kwargs={
+                'pk': self.test_workflow.pk,
+                'transition_pk': self.test_workflow_transition.pk
+            }
+        )
+
+    def _request_test_workflow_transition_detail_api_view(self):
+        return self.get(
+            viewname='rest_api:workflowtransition-detail',
+            kwargs={
+                'pk': self.test_workflow.pk,
+                'transition_pk': self.test_workflow_transition.pk
+            }
+        )
+
+    def _request_test_workflow_transition_list_api_view(self):
+        return self.get(
+            viewname='rest_api:workflowtransition-list',
+            kwargs={'pk': self.test_workflow.pk}
+        )
+
+    def _request_test_workflow_transition_edit_patch_api_view(self):
+        return self.patch(
+            viewname='rest_api:workflowtransition-detail',
+            kwargs={
+                'pk': self.test_workflow.pk,
+                'transition_pk': self.test_workflow_transition.pk
+            }, data={
+                'label': TEST_WORKFLOW_TRANSITION_LABEL_EDITED,
+                'origin_state_pk': self.test_workflow_state_2.pk,
+                'destination_state_pk': self.test_workflow_state_1.pk,
+            }
+        )
+
+    def _request_test_workflow_transition_edit_put_api_view_via(self):
+        return self.put(
+            viewname='rest_api:workflowtransition-detail',
+            kwargs={
+                'pk': self.test_workflow.pk,
+                'transition_pk': self.test_workflow_transition.pk
+            }, data={
+                'label': TEST_WORKFLOW_TRANSITION_LABEL_EDITED,
+                'origin_state_pk': self.test_workflow_state_2.pk,
+                'destination_state_pk': self.test_workflow_state_1.pk,
+            }
+        )
+
+
+class WorkflowTransitionFieldTestMixin:
+    def _create_test_workflow_transition_field(self, extra_data=None):
+        kwargs = {
+            'field_type': TEST_WORKFLOW_TRANSITION_FIELD_TYPE,
+            'name': TEST_WORKFLOW_TRANSITION_FIELD_NAME,
+            'label': TEST_WORKFLOW_TRANSITION_FIELD_LABEL,
+            'help_text': TEST_WORKFLOW_TRANSITION_FIELD_HELP_TEXT
+        }
+        kwargs.update(extra_data or {})
+
+        self.test_workflow_transition_field = self.test_workflow_transition.fields.create(
+            **kwargs
         )
 
 
@@ -362,7 +663,7 @@ class WorkflowViewTestMixin:
 
     def _request_test_workflow_delete_view(self):
         return self.post(
-            viewname='document_states:workflow_template_delete', kwargs={
+            viewname='document_states:workflow_template_single_delete', kwargs={
                 'workflow_template_id': self.test_workflow.pk
             }
         )

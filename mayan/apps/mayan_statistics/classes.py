@@ -27,7 +27,7 @@ class StatisticNamespace:
         self.__class__._registry[slug] = self
 
     def __str__(self):
-        return force_text(self.label)
+        return force_text(s=self.label)
 
     def add_statistic(self, klass, *args, **kwargs):
         statistic = klass(*args, **kwargs)
@@ -124,7 +124,7 @@ class Statistic:
         self.__class__._registry[slug] = self
 
     def __str__(self):
-        return force_text(self.label)
+        return force_text(s=self.label)
 
     def execute(self):
         results = self.func()

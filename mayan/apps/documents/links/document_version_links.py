@@ -47,7 +47,7 @@ link_document_version_view = Link(
     args='resolved_object.pk',
     icon_class_path='mayan.apps.documents.icons.icon_document_version_view',
     permissions=(permission_document_version_view,),
-    text=_('Details'), view='documents:document_version_view'
+    text=_('Preview'), view='documents:document_version_view'
 )
 link_document_version_revert = Link(
     args='object.pk', condition=is_not_current_version,

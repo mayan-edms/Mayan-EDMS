@@ -1,0 +1,7 @@
+{% load appearance_tags %}
+
+{% if source_column.help_text %}
+    <span class="appearance-list-columns-help-text" data-toggle="tooltip" data-placement="bottom" title="{{ source_column.help_text }}">
+    {% appearance_get_icon icon_path='mayan.apps.navigation.icons.icon_source_column_help_text' %}
+    </span>
+{% endif %}

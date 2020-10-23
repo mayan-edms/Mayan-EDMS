@@ -1,6 +1,6 @@
 from django.utils.encoding import force_text
 
-from mayan.apps.tests.tests.base import GenericViewTestCase
+from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..models import AccessControlList
 from ..permissions import permission_acl_edit, permission_acl_view
@@ -65,7 +65,7 @@ class AccessControlListViewTestCase(
 
         response = self._request_test_acl_delete_view()
         self.assertNotContains(
-            response=response, text=force_text(self.test_object),
+            response=response, text=force_text(s=self.test_object),
             status_code=404
         )
 
@@ -97,7 +97,7 @@ class AccessControlListViewTestCase(
         response = self._request_test_acl_list_view()
 
         self.assertNotContains(
-            response=response, text=force_text(self.test_object),
+            response=response, text=force_text(s=self.test_object),
             status_code=404
         )
 
@@ -113,7 +113,7 @@ class AccessControlListViewTestCase(
         response = self._request_test_acl_list_view()
 
         self.assertContains(
-            response=response, text=force_text(self.test_object),
+            response=response, text=force_text(s=self.test_object),
             status_code=200
         )
 
@@ -125,7 +125,7 @@ class AccessControlListViewTestCase(
         response = self._request_test_acl_permission_list_get_view()
 
         self.assertNotContains(
-            response=response, text=force_text(self.test_object),
+            response=response, text=force_text(s=self.test_object),
             status_code=404
         )
 
@@ -141,7 +141,7 @@ class AccessControlListViewTestCase(
         response = self._request_test_acl_permission_list_get_view()
 
         self.assertContains(
-            response=response, text=force_text(self.test_object),
+            response=response, text=force_text(s=self.test_object),
             status_code=200
         )
 

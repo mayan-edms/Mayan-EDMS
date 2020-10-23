@@ -65,6 +65,16 @@ class MailerBackend(
     def get_all(cls):
         return cls._registry
 
+    @classmethod
+    def get_choices(cls):
+        return sorted(
+            [
+                (
+                    key, backend.label
+                ) for key, backend in cls.get_all().items()
+            ], key=lambda x: x[1]
+        )
+
 
 class NullBackend(MailerBackend):
     label = _('Null backend')

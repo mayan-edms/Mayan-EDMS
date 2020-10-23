@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Bruno CAPELETO <bruno.capeleto@abcreseau.com>, 2016
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015,2017-2018
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015
@@ -14,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-22 23:20-0400\n"
-"PO-Revision-Date: 2020-05-25 06:18+0000\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"PO-Revision-Date: 2020-10-11 07:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -24,41 +25,33 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:43 links.py:56 models/base.py:38 queues.py:7 settings.py:11
+#: apps.py:48 links.py:63 models/base.py:36 queues.py:7 settings.py:11
 #: views.py:193
 msgid "Sources"
 msgstr "Sources"
 
-#: apps.py:61
+#: apps.py:71
 msgid "Create a document source"
 msgstr "Créer une source de documents"
 
-#: apps.py:63
+#: apps.py:73
 msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
 msgstr "Les sources de documents sont les manières par lesquelles les nouveaux documents seront intégrés dans Mayan EDMS ; créez au moins un formulaire web pour pouvoir télécharger des documents depuis le navigateur."
 
-#: apps.py:76
+#: apps.py:86
 msgid "Type"
 msgstr "Type"
 
-#: apps.py:87
+#: apps.py:97
 msgid "Created"
 msgstr "Créée"
 
-#: apps.py:93
+#: apps.py:103
 msgid "Thumbnail"
 msgstr "Vignette"
-
-#: apps.py:101 models/base.py:248
-msgid "Date time"
-msgstr "Date et heure"
-
-#: apps.py:106 models/base.py:251
-msgid "Message"
-msgstr "Message"
 
 #: dependencies.py:11
 msgid ""
@@ -82,7 +75,7 @@ msgstr "Décompresser les fichiers"
 msgid "Upload a compressed file's contained files as individual documents."
 msgstr "Téléversez les fichiers contenus dans un fichier compressé en tant que documents individuels."
 
-#: forms.py:63 views.py:227
+#: forms.py:63 views.py:205
 msgid "Staging file"
 msgstr "Fichier en pré-validation"
 
@@ -94,55 +87,51 @@ msgstr "Fichier"
 msgid "Default"
 msgstr "Défaut"
 
-#: links.py:51
+#: links.py:58
 msgid "New document"
 msgstr "Nouveau document"
 
-#: links.py:63
+#: links.py:70
 msgid "Add new IMAP email"
 msgstr "Ajouter un nouveau compte courriel IMAP"
 
-#: links.py:69
+#: links.py:76
 msgid "Add new POP3 email"
 msgstr "Ajouter un nouveau compte courriel POP3"
 
-#: links.py:75
+#: links.py:82
 msgid "Add new staging folder"
 msgstr "Ajouter un nouveau répertoire de pré-validation"
 
-#: links.py:81
+#: links.py:88
 msgid "Add new watch folder"
 msgstr "Ajouter un nouveau dossier surveillé"
 
-#: links.py:87
+#: links.py:94
 msgid "Add new webform source"
 msgstr "Ajouter un nouveau formulaire web de source"
 
-#: links.py:93
+#: links.py:100
 msgid "Add new SANE scanner"
 msgstr "Ajouter un nouveau scanner SANE"
 
-#: links.py:99 links.py:116
+#: links.py:106 links.py:123
 msgid "Delete"
 msgstr "Supprimer"
 
-#: links.py:104
+#: links.py:111
 msgid "Edit"
 msgstr "Modifier"
 
-#: links.py:109
+#: links.py:116
 msgid "Document sources"
 msgstr "Sources de documents"
 
-#: links.py:123
+#: links.py:130
 msgid "Upload new version"
 msgstr "Transférer une nouvelle version"
 
-#: links.py:127
-msgid "Logs"
-msgstr "Journaux évènement"
-
-#: links.py:133
+#: links.py:135
 msgid "Check now"
 msgstr "Vérifier maintenant"
 
@@ -198,7 +187,7 @@ msgstr "Formulaire web"
 msgid "Staging folder"
 msgstr "Répertoire de pré-validation"
 
-#: literals.py:64 models/watch_folder_sources.py:45
+#: literals.py:64 models/watch_folder_sources.py:46
 msgid "Watch folder"
 msgstr "Surveiller le répertoire"
 
@@ -210,74 +199,66 @@ msgstr "email POP3"
 msgid "IMAP email"
 msgstr "email IMAP"
 
-#: models/base.py:28
+#: models/base.py:26
 msgid "A short text to describe this source."
 msgstr "Un court texte pour décrire cette source."
 
-#: models/base.py:29
+#: models/base.py:27
 msgid "Label"
 msgstr "Libellé"
 
-#: models/base.py:31
+#: models/base.py:29
 msgid "Enabled"
 msgstr "Activé"
 
-#: models/base.py:37 models/base.py:245
+#: models/base.py:35
 msgid "Source"
 msgstr "Source"
 
-#: models/base.py:156
+#: models/base.py:151
 msgid "Interactive source"
 msgstr "Source interactive"
 
-#: models/base.py:157
+#: models/base.py:152
 msgid "Interactive sources"
 msgstr "Sources interactives "
 
-#: models/base.py:166 models/base.py:167
+#: models/base.py:161 models/base.py:162
 msgid "Out of process"
 msgstr "Process externe"
 
-#: models/base.py:173
+#: models/base.py:168
 msgid "Interval in seconds between checks for new documents."
 msgstr "Intervalle en secondes entre recherches de nouveaux documents."
 
-#: models/base.py:174
+#: models/base.py:169
 msgid "Interval"
 msgstr "Intervalle"
 
-#: models/base.py:178
+#: models/base.py:173
 msgid "Assign a document type to documents uploaded from this source."
 msgstr "Assigner un type de document aux documents transférés à partir de cette source."
 
-#: models/base.py:180 serializers.py:17
+#: models/base.py:175 serializers.py:17
 msgid "Document type"
 msgstr "Type de document"
 
-#: models/base.py:184
+#: models/base.py:179
 msgid "Whether to expand or not, compressed archives."
 msgstr "Choisir de décompresser ou pas les archives compressées."
 
-#: models/base.py:185 models/staging_folder_sources.py:54
+#: models/base.py:180 models/staging_folder_sources.py:54
 #: models/webform_sources.py:34
 msgid "Uncompress"
 msgstr "Décompresser"
 
-#: models/base.py:191
+#: models/base.py:186
 msgid "Interval source"
 msgstr "intervalle pour la source"
 
-#: models/base.py:192
+#: models/base.py:187
 msgid "Interval sources"
 msgstr "intervalle pour les sources"
-
-#: models/base.py:257
-msgid "Log entry"
-msgstr "Entrée du journal"
-
-#: models/base.py:258
-msgid "Log entries"
-msgstr "Entrées du journal"
 
 #: models/email_sources.py:40
 msgid "Host"
@@ -411,11 +392,11 @@ msgstr "Boîte de courriel IMAP dans laquelle les messages traités seront copi�
 msgid "Destination mailbox"
 msgstr "Boite aux lettres de destination"
 
-#: models/email_sources.py:350
+#: models/email_sources.py:349
 msgid "Timeout"
 msgstr "Délai d'attente dépassé"
 
-#: models/email_sources.py:356 models/email_sources.py:357
+#: models/email_sources.py:355 models/email_sources.py:356
 msgid "POP email"
 msgstr "Compte POP"
 
@@ -487,7 +468,7 @@ msgstr "Erreur lors de l'exécution de la commande de numérisation \"%(command_
 msgid "Server side filesystem path."
 msgstr "Chemin d'accès au fichier sur le serveur."
 
-#: models/staging_folder_sources.py:40 models/watch_folder_sources.py:32
+#: models/staging_folder_sources.py:40 models/watch_folder_sources.py:33
 msgid "Folder path"
 msgstr "Chemin d'accès au répertoire"
 
@@ -533,21 +514,21 @@ msgstr "Impossible de supprimer le fichier de pré-validation : %s"
 msgid "Unable get list of staging files: %s"
 msgstr "Impossible d'obtenir la liste des fichiers en pré-validation :%s"
 
-#: models/watch_folder_sources.py:31
+#: models/watch_folder_sources.py:32
 msgid "Server side filesystem path to scan for files."
 msgstr "Chemin du système de fichiers côté serveur pour rechercher des fichiers."
 
-#: models/watch_folder_sources.py:36
+#: models/watch_folder_sources.py:37
 msgid ""
 "If checked, not only will the folder path be scanned for files but also its "
 "subdirectories."
 msgstr "Si cette case est cochée, non seulement le chemin du dossier sera analysé pour les fichiers, mais aussi ses sous-répertoires."
 
-#: models/watch_folder_sources.py:39
+#: models/watch_folder_sources.py:40
 msgid "Include subdirectories?"
 msgstr "Inclure les sous-dossiers?"
 
-#: models/watch_folder_sources.py:46
+#: models/watch_folder_sources.py:47
 msgid "Watch folders"
 msgstr "Répertoires surveillés"
 
@@ -627,11 +608,6 @@ msgstr ""
 msgid "Staging folder files"
 msgstr ""
 
-#: tasks.py:46
-#, python-format
-msgid "Error processing source: %s"
-msgstr "Erreur lors du traitement de la source : %s"
-
 #: templates/sources/dropzone.html:82
 msgid "Cancel upload"
 msgstr "Annuler le téléversement"
@@ -704,89 +680,74 @@ msgstr ""
 msgid "No sources available"
 msgstr "Aucune source disponible"
 
-#: views.py:207
-msgid ""
-"Any error produced during the usage of a source will be listed here to "
-"assist in debugging."
-msgstr "Toute erreur produite lors de l'utilisation d'une source sera répertoriée ici pour faciliter le débogage."
-
-#: views.py:210
-msgid "No log entries available"
-msgstr "Aucune entrée de journal disponible"
-
-#: views.py:212
-#, python-format
-msgid "Log entries for source: %s"
-msgstr "Entrées du journal pour la source : %s"
-
-#: views.py:228
+#: views.py:206
 #, python-format
 msgid "Delete staging file \"%s\"?"
 msgstr ""
 
-#: views.py:280 wizards.py:152
+#: views.py:257 wizards.py:152
 msgid ""
 "No interactive document sources have been defined or none have been enabled,"
 " create one before proceeding."
 msgstr "Aucune source interactive d'import de documents n'a été définie ou activée, créez-en une avant de continuer."
 
-#: views.py:308 views.py:337 views.py:347
+#: views.py:285 views.py:314 views.py:324
 msgid "Document properties"
 msgstr "Propriétés du document"
 
-#: views.py:317
+#: views.py:294
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
 "the operating system user account being used for Mayan EDMS doesn't have the"
 " necessary file system permissions for the folder."
 msgstr ""
 
-#: views.py:324
+#: views.py:301
 msgid "No staging files available"
 msgstr ""
 
-#: views.py:327
+#: views.py:304
 msgid "Files in staging path"
 msgstr "Fichiers en cours de pré-validation"
 
-#: views.py:338
+#: views.py:315
 msgid "Scan"
 msgstr "Numériser"
 
-#: views.py:485
+#: views.py:462
 #, python-format
 msgid "Error executing document upload task; %(exception)s"
 msgstr "Erreur lors de l'exécution de la tâche de téléversement de documents; %(exception)s"
 
-#: views.py:495
+#: views.py:472
 msgid "New document queued for upload and will be available shortly."
 msgstr "Nouveau document en attente de téléversement, il sera disponible sous peu."
 
-#: views.py:512
+#: views.py:489
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr "Téléversez un document de type \"%(document_type)s\" à partir de la source: %(source)s"
 
-#: views.py:574
+#: views.py:551
 #, python-format
 msgid "Unable to upload new versions for document \"%(document)s\". %(exception)s"
 msgstr "Impossible de téléverser les nouvelles versions du document \"%(document)s\". %(exception)s"
 
-#: views.py:635
+#: views.py:612
 #, python-format
 msgid "Error executing document version upload task; %(exception)s"
 msgstr ""
 
-#: views.py:650
+#: views.py:627
 msgid "New document version queued for upload and will be available shortly."
 msgstr "La nouvelle version du document est en attente de téléversement et sera disponible sous peu."
 
-#: views.py:669
+#: views.py:654
 #, python-format
 msgid "Upload a new version for document \"%(document)s\" from source: %(source)s"
 msgstr "Téléversez une nouvelle version pour le document \"%(document)s\" à partir de la source: %(source)s"
 
-#: views.py:672
+#: views.py:657
 msgid "Submit"
 msgstr "Soumettre"
 
@@ -805,4 +766,4 @@ msgstr "Prochaine étape"
 
 #: wizards.py:183
 msgid "Document upload wizard"
-msgstr "Assistant de transfert de document"
+msgstr "Assistant de téléversement de document"

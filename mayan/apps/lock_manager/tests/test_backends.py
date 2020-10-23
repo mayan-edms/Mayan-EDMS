@@ -4,7 +4,7 @@ from unittest import skip
 from django.test import override_settings
 from django.utils.module_loading import import_string
 
-from mayan.apps.tests.tests.base import BaseTestCase
+from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..exceptions import LockError
 

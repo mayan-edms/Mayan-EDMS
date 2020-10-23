@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011-2012,2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-22 23:19-0400\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2020-04-14 08:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
@@ -27,11 +28,11 @@ msgstr "Django GPG"
 msgid "Key ID"
 msgstr "chiave ID"
 
-#: apps.py:56 forms.py:32 models.py:54
+#: apps.py:56 forms.py:32 models.py:53
 msgid "Type"
 msgstr "Tipo"
 
-#: apps.py:60 forms.py:21 models.py:35
+#: apps.py:60 forms.py:21 models.py:34
 msgid "Creation date"
 msgstr "Data di creazione"
 
@@ -39,15 +40,15 @@ msgstr "Data di creazione"
 msgid "No expiration"
 msgstr "Nessuna scadenza"
 
-#: apps.py:65 forms.py:25 models.py:39
+#: apps.py:65 forms.py:25 models.py:38
 msgid "Expiration date"
 msgstr "Data scadenza"
 
-#: apps.py:68 forms.py:30 models.py:46
+#: apps.py:68 forms.py:30 models.py:45
 msgid "Length"
 msgstr "Lunghezza"
 
-#: apps.py:73 forms.py:17 models.py:51
+#: apps.py:73 forms.py:17 models.py:50
 msgid "User ID"
 msgstr "User ID"
 
@@ -59,11 +60,11 @@ msgstr ""
 msgid "None"
 msgstr "Nessuna "
 
-#: forms.py:29 models.py:43
+#: forms.py:29 models.py:42
 msgid "Fingerprint"
 msgstr "Impronta"
 
-#: forms.py:31 models.py:49
+#: forms.py:31 models.py:48
 msgid "Algorithm"
 msgstr "Algoritmo"
 
@@ -155,27 +156,27 @@ msgstr "Documento firmato e firma è buona."
 msgid "Document is signed with a valid signature."
 msgstr "Il documento è firmato con una firma valida."
 
-#: models.py:31
+#: models.py:30
 msgid "ASCII armored version of the key."
 msgstr "Versione ASCII blindata della chiave"
 
-#: models.py:32
+#: models.py:31
 msgid "Key data"
 msgstr "Dati chiave"
 
-#: models.py:60
+#: models.py:59
 msgid "Key"
 msgstr "Chiave"
 
-#: models.py:61
+#: models.py:60
 msgid "Keys"
 msgstr "Chiavi"
 
-#: models.py:73
+#: models.py:72
 msgid "Invalid key data"
 msgstr "Dati chiave non valida"
 
-#: models.py:76
+#: models.py:75
 msgid "Key already exists."
 msgstr "La chiave esiste già."
 

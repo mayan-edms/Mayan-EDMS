@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-22 23:20-0400\n"
-"PO-Revision-Date: 2019-12-13 05:15+0000\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"PO-Revision-Date: 2020-09-27 06:47+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
@@ -17,9 +18,13 @@ msgstr ""
 "Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:45 events.py:6 models.py:34 models.py:104 permissions.py:5
+#: apps.py:46 events.py:6 models.py:35 models.py:104 permissions.py:5
 msgid "Permissions"
 msgstr "Δικαιώματα χρήσης"
+
+#: apps.py:99 models.py:142
+msgid "Group count"
+msgstr ""
 
 #: classes.py:85
 msgid "Insufficient permissions."
@@ -61,15 +66,15 @@ msgstr "Ομάδες"
 msgid "Role permissions"
 msgstr "Δικαιώματα ρόλου"
 
-#: models.py:25
+#: models.py:26
 msgid "Namespace"
 msgstr ""
 
-#: models.py:26
+#: models.py:27
 msgid "Name"
 msgstr "Όνομα"
 
-#: models.py:33
+#: models.py:34
 msgid "Permission"
 msgstr "Δικαιώματα"
 
@@ -84,6 +89,10 @@ msgstr "Ετικέτα"
 #: models.py:114
 msgid "Role"
 msgstr "Ρόλος"
+
+#: models.py:150
+msgid "Permission count"
+msgstr ""
 
 #: permissions.py:8
 msgid "Create roles"

@@ -92,3 +92,11 @@ class APICommentView(generics.RetrieveUpdateDestroyAPIView):
 
     def get_queryset(self):
         return self.get_document().comments.all()
+
+    def perform_destroy(self, instance):
+        instance._event_actor = self.request.user
+        return super().perform_destroy(instance=instance)
+
+    def perform_update(self, serializer):
+        serializer.validated_data['_event_actor'] = self.request.user
+        return super().perform_update(serializer=serializer)

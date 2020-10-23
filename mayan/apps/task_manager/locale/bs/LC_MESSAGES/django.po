@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-22 23:21-0400\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2017-06-30 22:04+0000\n"
 "Last-Translator: Roberto Rosario, 2020\n"
 "Language-Team: Bosnian (https://www.transifex.com/rosarior/teams/13584/bs/)\n"
@@ -20,47 +20,47 @@ msgstr ""
 "Language: bs\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:17 links.py:10 permissions.py:5
+#: apps.py:16 links.py:10 permissions.py:5
 msgid "Task manager"
 msgstr "Menadzer rada"
 
-#: apps.py:25
+#: apps.py:24
 msgid "Label"
 msgstr "Labela"
 
-#: apps.py:29
+#: apps.py:28
 msgid "Name"
 msgstr "Ime"
 
-#: apps.py:34
+#: apps.py:33
 msgid "Default queue?"
 msgstr "Default queue?"
 
-#: apps.py:39
+#: apps.py:38
 msgid "Is transient?"
 msgstr "Da li je prolazan?"
 
-#: apps.py:43
+#: apps.py:42
 msgid "Type"
 msgstr "Tip"
 
-#: apps.py:48
+#: apps.py:47
 msgid "Start time"
 msgstr "Početno vrijeme"
 
-#: apps.py:52
+#: apps.py:51
 msgid "Host"
 msgstr "Domaćin"
 
-#: apps.py:56
+#: apps.py:55
 msgid "Arguments"
 msgstr "Argumenti"
 
-#: apps.py:60
+#: apps.py:59
 msgid "Keyword arguments"
 msgstr "Argumenti ključnih riječi"
 
-#: apps.py:64
+#: apps.py:63
 msgid "Worker process ID"
 msgstr "Id procesa rada"
 
@@ -68,11 +68,15 @@ msgstr "Id procesa rada"
 msgid "View tasks"
 msgstr "Pogledati zadatke"
 
-#: settings.py:8
+#: settings.py:10
 msgid "Celery"
 msgstr ""
 
-#: settings.py:13
+#: settings.py:15
+msgid "Default: \"AMQPLAIN\". Set custom amqp login method."
+msgstr ""
+
+#: settings.py:21
 msgid ""
 "Default: \"amqp://\". Default broker URL. This must be a URL in the form of:"
 " transport://userid:password@hostname:port/virtual_host Only the scheme part"
@@ -80,7 +84,13 @@ msgid ""
 "specific transports default values."
 msgstr ""
 
-#: settings.py:22
+#: settings.py:30
+msgid ""
+"Default: \"Disabled\". Toggles SSL usage on broker connection and SSL "
+"settings. The valid values for this option vary by transport."
+msgstr ""
+
+#: settings.py:38
 msgid ""
 "Default: No result backend enabled by default. The backend used to store "
 "task results (tombstones). Refer to "

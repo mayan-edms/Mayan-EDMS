@@ -44,6 +44,11 @@ image specific environment variables are available.
   request to finish before raising a timeout error. The default is 120
   seconds.
 
+- ``MAYAN_GUNICORN_WORKER_CLASS``
+
+  Optional. Changes the type of worker used. Defaults to ``sync``.
+  Custom worker classes can be used by passing a Python path to the subclass.
+
 - ``MAYAN_GUNICORN_WORKERS``
 
   Optional. This environment variable controls the number of frontend workers

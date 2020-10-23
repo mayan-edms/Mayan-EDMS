@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # mic <winterfall24@gmail.com>, 2012
 # Tomasz Szymanowicz <alakdae@gmail.com>, 2020
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2020
@@ -10,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-22 23:19-0400\n"
-"PO-Revision-Date: 2020-05-14 13:00+0000\n"
-"Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"PO-Revision-Date: 2020-10-14 18:23+0000\n"
+"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,11 +29,11 @@ msgstr "Document signatures"
 msgid "Date"
 msgstr "Data"
 
-#: apps.py:98 models.py:47
+#: apps.py:98 models.py:46
 msgid "Key ID"
 msgstr "Key ID"
 
-#: apps.py:102 forms.py:62 models.py:52
+#: apps.py:102 forms.py:62 models.py:51
 msgid "Signature ID"
 msgstr "ID podpisu"
 
@@ -138,63 +139,63 @@ msgstr "Podpis osadzone"
 msgid "Upload signature"
 msgstr "Prześlij podpis"
 
-#: models.py:39
+#: models.py:38
 msgid "Document version"
 msgstr "Wersja dokumentu"
 
-#: models.py:43
+#: models.py:42
 msgid "Date signed"
 msgstr "Data podpisu"
 
-#: models.py:46
+#: models.py:45
 msgid "ID of the key that will be used to sign the document."
 msgstr "ID klucza, który będzie używany do podpisania dokumentu."
 
-#: models.py:56
+#: models.py:55
 msgid "Public key fingerprint"
 msgstr "Odcisk klucza publicznego"
 
-#: models.py:63
+#: models.py:62
 msgid "Document version signature"
 msgstr "Podpis wersji dokumentu"
 
-#: models.py:64
+#: models.py:63
 msgid "Document version signatures"
 msgstr "Podpisy wersji dokumentu"
 
-#: models.py:83
+#: models.py:82
 msgid "Detached"
 msgstr "Usunięty"
 
-#: models.py:85
+#: models.py:84
 msgid "Embedded"
 msgstr "Osadzony"
 
-#: models.py:100
+#: models.py:99
 msgid "Document version embedded signature"
 msgstr "Wersja dokumentu z podpisem osadzonym"
 
-#: models.py:101
+#: models.py:100
 msgid "Document version embedded signatures"
 msgstr "Wersja dokumentu z podpisami osadzonymi"
 
-#: models.py:134
+#: models.py:132
 msgid "Signature file previously generated."
 msgstr "Wcześniej wygenerowany plik podpisu."
 
-#: models.py:137
+#: models.py:135
 msgid "Signature file"
 msgstr "Signature file"
 
-#: models.py:143
+#: models.py:141
 msgid "Document version detached signature"
 msgstr "Wersja dokumentu z odłączonym podpisem"
 
-#: models.py:144
+#: models.py:142
 msgid "Document version detached signatures"
 msgstr "Wersja dokumentu z odłączonymi podpisami"
 
-#: models.py:147
+#: models.py:145
 msgid "signature"
 msgstr "podpis"
 
@@ -247,16 +248,16 @@ msgid "Path to the Storage subclass to use when storing detached signatures."
 msgstr "Ścieżka do podklasy Storage używana podczas przechowywania odłączonych podpisów."
 
 #: settings.py:28
-msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND. "
-msgstr "Argumenty do przekazania do SIGNATURE_STORAGE_BACKEND."
+msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND."
+msgstr "Argumenty dla SIGNATURE_STORAGE_BACKEND."
 
-#: storages.py:14
+#: storages.py:13
 msgid ""
 "Unable to initialize the detached signatures storage. Check the settings {} "
 "and {} for formatting errors."
 msgstr "Nie można zainicjować magazynu odłączonych podpisów. Sprawdź ustawienia {} i {} pod kątem błędów formatowania."
 
-#: storages.py:21
+#: storages.py:20
 msgid "Detached signatures"
 msgstr "Odłączone podpisy"
 
@@ -343,6 +344,6 @@ msgid ""
 "an initial state before the created document is yet to be processed."
 msgstr "Dokument nie ma wersji do podpisania. Być może próbujesz użyć tej akcji w stanie początkowym, zanim utworzony dokument nie został jeszcze przetworzony."
 
-#: workflow_actions.py:82
+#: workflow_actions.py:80
 msgid "Sign document (embedded)"
 msgstr "Podpisz dokument (osadzony)"

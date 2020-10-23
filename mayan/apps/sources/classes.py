@@ -56,7 +56,7 @@ class StagingFile:
             ))
 
     def __str__(self):
-        return force_text(self.filename)
+        return force_text(s=self.filename)
 
     def as_file(self):
         return File(
@@ -156,7 +156,7 @@ class StagingFile:
             if not self.storage.exists(cache_filename):
                 self.storage.save(name=cache_filename, content=ContentFile(content=''))
 
-            with self.storage.open(file=cache_filename, mode='wb+') as file_object:
+            with self.storage.open(name=cache_filename, mode='wb+') as file_object:
                 file_object.write(page_image.getvalue())
         except Exception as exception:
             # Cleanup in case of error

@@ -1,7 +1,7 @@
 from django.contrib.auth.models import AnonymousUser
 from django.core.exceptions import PermissionDenied
 
-from mayan.apps.tests.tests.base import BaseTestCase
+from mayan.apps.testing.tests.base import BaseTestCase
 from mayan.apps.user_management.tests.mixins import GroupTestMixin
 
 from ..classes import Permission, PermissionNamespace
@@ -25,7 +25,7 @@ class PermissionTestCase(
         self._create_test_role()
         self._create_test_permission()
 
-    def test_no_permissions(self):
+    def test_no_permission(self):
         with self.assertRaises(expected_exception=PermissionDenied):
             Permission.check_user_permissions(
                 permissions=(self.test_permission,), user=self.test_user

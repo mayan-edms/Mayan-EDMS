@@ -1,8 +1,8 @@
 TEST_INDEX_LABEL = 'test label'
 TEST_INDEX_LABEL_EDITED = 'test edited label'
 TEST_INDEX_SLUG = 'test_slug'
-TEST_INDEX_TEMPLATE_NODE_TEMPLATE = '{{ document.label }}'
-TEST_INDEX_TEMPLATE_NODE_TEMPLATE_EDITED = '{{ document.description }}'
+TEST_INDEX_TEMPLATE_NODE_EXPRESSION = '{{ document.label }}'
+TEST_INDEX_TEMPLATE_NODE_EXPRESSION_EDITED = '{{ document.description }}'
 TEST_METADATA_TYPE_LABEL = 'test metadata label'
 TEST_METADATA_TYPE_NAME = 'test_metadata_name'
 TEST_INDEX_TEMPLATE_METADATA_EXPRESSION = '{{ document.metadata_value_of.%s }}' % TEST_METADATA_TYPE_NAME

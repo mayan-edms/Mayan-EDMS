@@ -21,7 +21,7 @@ from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
 
 from .events import (
-    event_tag_attach, event_tag_edited, event_tag_remove
+    event_tag_attach, event_tag_edited, event_tag_removed
 )
 from .handlers import handler_index_document, handler_tag_pre_delete
 from .html_widgets import widget_document_tags
@@ -38,7 +38,6 @@ from .permissions import (
     permission_tag_attach, permission_tag_delete, permission_tag_edit,
     permission_tag_remove, permission_tag_view
 )
-from .search import tag_search  # NOQA
 
 
 class TagsApp(MayanAppConfig):
@@ -79,7 +78,7 @@ class TagsApp(MayanAppConfig):
 
         ModelEventType.register(
             model=Tag, event_types=(
-                event_tag_attach, event_tag_edited, event_tag_remove
+                event_tag_attach, event_tag_edited, event_tag_removed
             )
         )
 

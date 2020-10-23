@@ -1,7 +1,7 @@
 from django.utils.encoding import force_text
 
-from mayan.apps.tests.tests.base import GenericViewTestCase
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
+from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..models import Tag
 from ..permissions import (
@@ -15,20 +15,16 @@ from .mixins import DocumentTagViewTestMixin, TagTestMixin, TagViewTestMixin
 class DocumentTagViewTestCase(
     DocumentTagViewTestMixin, TagTestMixin, GenericDocumentViewTestCase
 ):
-    def test_document_tags_list_no_permissions(self):
-        self._create_test_tag()
-
-        self.test_tag.documents.add(self.test_document)
+    def test_document_tags_list_no_permission(self):
+        self._create_test_tag(add_test_document=True)
 
         response = self._request_test_document_tag_list_view()
         self.assertNotContains(
-            response=response, text=force_text(self.test_tag), status_code=404
+            response=response, text=force_text(s=self.test_tag), status_code=404
         )
 
     def test_document_tags_list_with_document_access(self):
-        self._create_test_tag()
-
-        self.test_tag.documents.add(self.test_document)
+        self._create_test_tag(add_test_document=True)
 
         self.grant_access(
             obj=self.test_document, permission=permission_tag_view
@@ -36,25 +32,21 @@ class DocumentTagViewTestCase(
 
         response = self._request_test_document_tag_list_view()
         self.assertNotContains(
-            response=response, text=force_text(self.test_tag), status_code=200
+            response=response, text=force_text(s=self.test_tag), status_code=200
         )
 
     def test_document_tags_list_with_tag_access(self):
-        self._create_test_tag()
-
-        self.test_tag.documents.add(self.test_document)
+        self._create_test_tag(add_test_document=True)
 
         self.grant_access(obj=self.test_tag, permission=permission_tag_view)
 
         response = self._request_test_document_tag_list_view()
         self.assertNotContains(
-            response=response, text=force_text(self.test_tag), status_code=404
+            response=response, text=force_text(s=self.test_tag), status_code=404
         )
 
     def test_document_tags_list_with_full_access(self):
-        self._create_test_tag()
-
-        self.test_tag.documents.add(self.test_document)
+        self._create_test_tag(add_test_document=True)
 
         self.grant_access(
             obj=self.test_document, permission=permission_tag_view
@@ -65,7 +57,7 @@ class DocumentTagViewTestCase(
 
         response = self._request_test_document_tag_list_view()
         self.assertContains(
-            response=response, text=force_text(self.test_tag), status_code=200
+            response=response, text=force_text(s=self.test_tag), status_code=200
         )
 
     def test_document_attach_tag_view_no_permission(self):
@@ -154,7 +146,7 @@ class DocumentTagViewTestCase(
 
         self.assertTrue(self.test_tag in self.test_document.tags.all())
 
-    def test_document_tag_multiple_remove_view_no_permissions(self):
+    def test_document_tag_multiple_remove_view_no_permission(self):
         self._create_test_tag()
         self.test_document.tags.add(self.test_tag)
 
@@ -201,7 +193,7 @@ class DocumentTagViewTestCase(
 
         self.assertTrue(self.test_tag not in self.test_document.tags.all())
 
-    def test_document_multiple_tag_multiple_remove_view_no_permissions(self):
+    def test_document_multiple_tag_multiple_remove_view_no_permission(self):
         self._create_test_tag()
         self.test_document.tags.add(self.test_tag)
 
@@ -250,7 +242,7 @@ class DocumentTagViewTestCase(
 
 
 class TagViewTestCase(TagTestMixin, TagViewTestMixin, GenericViewTestCase):
-    def test_tag_create_view_no_permissions(self):
+    def test_tag_create_view_no_permission(self):
         tag_count = Tag.objects.count()
 
         response = self._request_test_tag_create_view()
@@ -268,7 +260,7 @@ class TagViewTestCase(TagTestMixin, TagViewTestMixin, GenericViewTestCase):
 
         self.assertEqual(Tag.objects.count(), tag_count + 1)
 
-    def test_tag_delete_view_no_permissions(self):
+    def test_tag_delete_view_no_permission(self):
         self._create_test_tag()
 
         tag_count = Tag.objects.count()
@@ -290,7 +282,7 @@ class TagViewTestCase(TagTestMixin, TagViewTestMixin, GenericViewTestCase):
 
         self.assertEqual(Tag.objects.count(), tag_count - 1)
 
-    def test_tag_multiple_delete_view_no_permissions(self):
+    def test_tag_multiple_delete_view_no_permission(self):
         self._create_test_tag()
 
         tag_count = Tag.objects.count()
@@ -312,7 +304,7 @@ class TagViewTestCase(TagTestMixin, TagViewTestMixin, GenericViewTestCase):
 
         self.assertEqual(Tag.objects.count(), tag_count - 1)
 
-    def test_tag_edit_view_no_permissions(self):
+    def test_tag_edit_view_no_permission(self):
         self._create_test_tag()
 
         tag_label = self.test_tag.label

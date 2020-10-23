@@ -2,7 +2,7 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.documents.models import Document
-from mayan.apps.templating.fields import TemplateField
+from mayan.apps.templating.fields import ModelTemplateField
 from mayan.apps.views.forms import FilteredSelectionForm
 
 from .models import Index, IndexTemplateNode
@@ -28,7 +28,7 @@ class IndexTemplateNodeForm(forms.ModelForm):
         super(IndexTemplateNodeForm, self).__init__(*args, **kwargs)
         self.fields['index'].widget = forms.widgets.HiddenInput()
         self.fields['parent'].widget = forms.widgets.HiddenInput()
-        self.fields['expression'] = TemplateField(
+        self.fields['expression'] = ModelTemplateField(
             label=_('Template'), model=Document,
             model_variable='document', required=False
         )

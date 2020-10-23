@@ -5,14 +5,15 @@
 # 
 # Translators:
 # Roberto Rosario, 2020
+# yan songwei <yansw@vip.163.com>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-22 23:18-0400\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2019-04-14 04:06+0000\n"
-"Last-Translator: Roberto Rosario, 2020\n"
+"Last-Translator: yan songwei <yansw@vip.163.com>, 2020\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,17 +23,17 @@ msgstr ""
 
 #: apps.py:13 settings.py:7
 msgid "Auto administrator"
-msgstr ""
+msgstr "自动管理员"
 
 #: auth/allauth.py:54
 msgid ""
 "Welcome Admin! You have been given superuser privileges. Use them with "
 "caution."
-msgstr ""
+msgstr "欢迎管理员！您已获得超级用户权限。谨慎使用此账户。"
 
 #: models.py:13
 msgid "Account"
-msgstr ""
+msgstr "帐户"
 
 #: models.py:16
 msgid "Password"
@@ -40,29 +41,29 @@ msgstr "密码"
 
 #: models.py:19
 msgid "Password hash"
-msgstr ""
+msgstr "密码哈希值"
 
 #: models.py:25
 msgid "Autoadmin properties"
-msgstr ""
+msgstr "自动管理属性"
 
 #: settings.py:12
 msgid "Sets the email of the automatically created super user account."
-msgstr ""
+msgstr "设置自动创建的超级用户帐户的电子邮件。"
 
 #: settings.py:18
 msgid ""
 "The password of the automatically created super user account. If it is equal"
 " to None, the password is randomly generated."
-msgstr ""
+msgstr "自动创建的超级用户帐户的密码。如果是“空”，则随机生成密码。"
 
 #: settings.py:25
 msgid "The username of the automatically created super user account."
-msgstr ""
+msgstr "自动创建的超级用户帐户的用户名。"
 
 #: templates/autoadmin/credentials.html:11
 msgid "Automatic credentials"
-msgstr ""
+msgstr "自动凭证"
 
 #: templates/autoadmin/credentials.html:16
 #, python-format

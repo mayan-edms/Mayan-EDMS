@@ -1,6 +1,6 @@
 from actstream.models import Action
 
-from mayan.apps.tests.tests.base import GenericViewTestCase
+from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..events import (
     event_metadata_type_created, event_metadata_type_edited
@@ -16,7 +16,7 @@ from .mixins import MetadataTypeTestMixin, MetadataTypeViewTestMixin
 class MetadataTypeEventsTestCase(
     MetadataTypeTestMixin, MetadataTypeViewTestMixin, GenericViewTestCase
 ):
-    def test_metadata_type_create_event_no_permissions(self):
+    def test_metadata_type_create_event_no_permission(self):
         Action.objects.all().delete()
 
         response = self._request_test_metadata_type_create_view()
@@ -40,7 +40,7 @@ class MetadataTypeEventsTestCase(
         self.assertEqual(event.target, metadata_type)
         self.assertEqual(event.verb, event_metadata_type_created.id)
 
-    def test_metadata_type_edit_event_no_permissions(self):
+    def test_metadata_type_edit_event_no_permission(self):
         self._create_test_metadata_type()
 
         Action.objects.all().delete()

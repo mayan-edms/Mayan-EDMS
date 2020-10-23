@@ -1,3 +1,5 @@
+from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH
+
 from ..models import Cabinet
 
 from .literals import (
@@ -51,6 +53,23 @@ class CabinetAPIViewTestMixin:
 
     def _request_test_cabinet_list_api_view(self):
         return self.get(viewname='rest_api:cabinet-list')
+
+
+class CabinetDocumentUploadTestMixin:
+    def _request_upload_interactive_document_create_view(self):
+        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+            return self.post(
+                viewname='sources:document_upload_interactive', kwargs={
+                    'source_id': self.test_source.pk
+                }, data={
+                    'document_type_id': self.test_document_type.pk,
+                    'source-file': file_object,
+                    'cabinets': Cabinet.objects.values_list('pk', flat=True)
+                }
+            )
+
+    def _request_wizard_view(self):
+        return self.get(viewname='sources:document_create_multiple')
 
 
 class CabinetTestMixin:

@@ -8,6 +8,7 @@ from django.utils.functional import cached_property
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext as _
 
+from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
 from mayan.apps.common.exceptions import ResolverPipelineError
 from mayan.apps.common.utils import (
     ResolverPipelineModelAttribute, get_related_field
@@ -16,7 +17,8 @@ from mayan.apps.views.literals import LIST_MODE_CHOICE_LIST
 
 from .events import event_search_advanced, event_search_simple
 from .settings import (
-    setting_search_backend, setting_search_backend_arguments
+    setting_backend, setting_backend_arguments,
+    setting_results_limit
 )
 logger = logging.getLogger(name=__name__)
 
@@ -24,9 +26,14 @@ logger = logging.getLogger(name=__name__)
 class SearchBackend:
     @staticmethod
     def get_instance():
-        return import_string(dotted_path=setting_search_backend.value)(
-            **setting_search_backend_arguments.value
+        return import_string(dotted_path=setting_backend.value)(
+            **setting_backend_arguments.value
         )
+
+    @staticmethod
+    def limit_queryset(queryset):
+        pk_list = queryset.values('pk')[:setting_results_limit.value]
+        return queryset.filter(pk__in=pk_list)
 
     def __init__(self, **kwargs):
         self.kwargs = kwargs
@@ -78,10 +85,10 @@ class SearchField:
     """
     Search for terms in fields that directly belong to the parent SearchModel
     """
-    def __init__(self, search_model, field, label, transformation_function=None):
+    def __init__(self, search_model, field, label=None, transformation_function=None):
         self.search_model = search_model
         self.field = field
-        self.label = label
+        self._label = label
         self.transformation_function = transformation_function
 
     def get_full_name(self):
@@ -95,8 +102,13 @@ class SearchField:
             model=self.get_model(), related_field_name=self.field
         )
 
+    @property
+    def label(self):
+        return self._label or self.get_model_field().verbose_name
 
-class SearchModel:
+
+class SearchModel(AppsModuleLoaderMixin):
+    _loader_module_name = 'search'
     _model_search_relationships = {}
     _registry = {}
 
@@ -180,7 +192,7 @@ class SearchModel:
         )
 
     def __str__(self):
-        return force_text(self.label)
+        return force_text(s=self.label)
 
     def _initialize(self):
         for search_field in self.search_fields:
@@ -210,7 +222,7 @@ class SearchModel:
         for search_field in self.search_fields:
             result.append((search_field.get_full_name(), search_field.label))
 
-        return result
+        return sorted(result, key=lambda x: x[1])
 
     def get_full_name(self):
         return '%s.%s' % (self.app_label, self.model_name)

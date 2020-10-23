@@ -1,7 +1,7 @@
 import logging
 from pathlib import Path
 
-from whoosh import fields
+import whoosh
 from whoosh import qparser
 from whoosh.filedb.filestore import FileStorage
 from whoosh.index import EmptyIndexError
@@ -15,16 +15,16 @@ from mayan.apps.lock_manager.backends.base import LockingBackend
 from mayan.apps.lock_manager.exceptions import LockError
 
 from ..classes import SearchBackend, SearchField, SearchModel
+from ..settings import setting_results_limit
 
-DEFAULT_SEARCH_LIMIT = 100
 DJANGO_TO_WHOOSH_FIELD_MAP = {
     models.AutoField: {
-        'field': fields.ID(stored=True), 'transformation': str
+        'field': whoosh.fields.ID(stored=True), 'transformation': str
     },
-    models.CharField: {'field': fields.TEXT},
-    models.TextField: {'field': fields.TEXT},
-    models.UUIDField: {'field': fields.TEXT, 'transformation': str},
-    RGBColorField: {'field': fields.TEXT},
+    models.CharField: {'field': whoosh.fields.TEXT},
+    models.TextField: {'field': whoosh.fields.TEXT},
+    models.UUIDField: {'field': whoosh.fields.TEXT, 'transformation': str},
+    RGBColorField: {'field': whoosh.fields.TEXT},
 }
 INDEX_DIRECTORY_NAME = 'whoosh'
 logger = logging.getLogger(name=__name__)
@@ -41,10 +41,6 @@ class WhooshSearchBackend(SearchBackend):
             )
         )
         self.index_path.mkdir(exist_ok=True)
-
-        self.search_limit = self.kwargs.get(
-            'search_limit', DEFAULT_SEARCH_LIMIT
-        )
 
     def _search(self, query_string, search_model, user, global_and_search=False):
         index = self.get_index(search_model=search_model)
@@ -77,14 +73,20 @@ class WhooshSearchBackend(SearchBackend):
             parser.remove_plugin_class(cls=qparser.WildcardPlugin)
             parser.add_plugin(pin=qparser.PrefixPlugin())
             query = parser.parse(text=search_string)
-            results = searcher.search(q=query, limit=self.search_limit)
+            results = searcher.search(
+                q=query, limit=setting_results_limit.value
+            )
 
             logger.debug('results: %s', results)
 
             for result in results:
                 id_list.append(result['id'])
 
-        return search_model.model.objects.filter(id__in=id_list).distinct()
+        queryset = search_model.get_queryset().filter(
+            id__in=id_list
+        ).distinct()
+
+        return SearchBackend.limit_queryset(queryset=queryset)
 
     def clear_search_model_index(self, search_model):
         index = self.get_index(search_model=search_model)
@@ -119,11 +121,11 @@ class WhooshSearchBackend(SearchBackend):
 
         try:
             index = storage.open_index(
-                indexname=search_model.get_full_name()
+                indexname=search_model.get_full_name(), schema=schema
             )
         except EmptyIndexError:
             index = storage.create_index(
-                schema, indexname=search_model.get_full_name()
+                indexname=search_model.get_full_name(), schema=schema
             )
 
         return index
@@ -159,7 +161,7 @@ class WhooshSearchBackend(SearchBackend):
     def get_search_model_schema(self, search_model):
         field_map = self.get_resolved_field_map(search_model=search_model)
         schema_kwargs = {key: value['field'] for key, value in field_map.items()}
-        return fields.Schema(**schema_kwargs)
+        return whoosh.fields.Schema(**schema_kwargs)
 
     def get_storage(self):
         return FileStorage(path=self.index_path)

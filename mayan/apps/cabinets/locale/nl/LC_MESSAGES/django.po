@@ -6,15 +6,15 @@
 # Translators:
 # Roberto Rosario, 2020
 # j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
-# Comprax <info@comprax.nl>, 2020
+# e6bc1d20d3f0031709c3c11db1061ebc_be0a371 <8b4e580508477646e97982ebad39e3af_312311>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-22 23:18-0400\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
-"Last-Translator: Comprax <info@comprax.nl>, 2020\n"
+"Last-Translator: e6bc1d20d3f0031709c3c11db1061ebc_be0a371 <8b4e580508477646e97982ebad39e3af_312311>, 2020\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,9 +22,9 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:48 apps.py:123 apps.py:130 apps.py:135 apps.py:138 events.py:5
-#: forms.py:14 links.py:22 menus.py:14 models.py:48 models.py:170
-#: permissions.py:5 views.py:164 workflow_actions.py:20
+#: apps.py:53 apps.py:149 apps.py:156 events.py:5 forms.py:14 links.py:22
+#: menus.py:14 models.py:45 models.py:167 permissions.py:5 search.py:46
+#: search.py:49 views.py:164 workflow_actions.py:20
 msgid "Cabinets"
 msgstr "Folders"
 
@@ -44,7 +44,7 @@ msgstr "Document aan folder toegevoegd"
 msgid "Document removed from cabinet"
 msgstr "Document uit folder verwijderd"
 
-#: links.py:28 links.py:42 workflow_actions.py:74
+#: links.py:28 links.py:42 workflow_actions.py:72
 msgid "Remove from cabinets"
 msgstr "Uit folders verwijderen"
 
@@ -84,45 +84,45 @@ msgstr "Maak een lijst met folders waarin het document voorkomt."
 msgid "get_cabinets()"
 msgstr "get_cabinets()"
 
-#: models.py:34
+#: models.py:31
 msgid "A short text used to identify the cabinet."
 msgstr "Een korte tekst om de folder te herkennen."
 
-#: models.py:35 search.py:22
+#: models.py:32
 msgid "Label"
 msgstr "Label"
 
-#: models.py:39
+#: models.py:36
 msgid "Documents"
 msgstr "Documenten"
 
-#: models.py:47 models.py:144 models.py:169 serializers.py:136
-#: workflow_actions.py:66
+#: models.py:44 models.py:141 models.py:166 serializers.py:136
+#: workflow_actions.py:64
 msgid "Cabinet"
 msgstr "Folder"
 
-#: models.py:110
+#: models.py:107
 msgid "The path to the cabinet including all ancestors."
 msgstr "Het pad naar de folder inclusief alle subfolders"
 
-#: models.py:112
+#: models.py:109
 msgid "Full path"
 msgstr "Volledig pad"
 
-#: models.py:145 serializers.py:137
+#: models.py:142 serializers.py:137
 msgid "Parent and Label"
 msgstr "Bovenliggende folder en label"
 
-#: models.py:152 serializers.py:143
+#: models.py:149 serializers.py:143
 #, python-format
 msgid "%(model_name)s with this %(field_labels)s already exists."
 msgstr "%(model_name)s met deze %(field_labels)s bestaat al."
 
-#: models.py:181
+#: models.py:178
 msgid "Document cabinet"
 msgstr "Documentfolder"
 
-#: models.py:182
+#: models.py:179
 msgid "Document cabinets"
 msgstr "Documentfolders"
 
@@ -150,27 +150,27 @@ msgstr "Documenten verwijderen uit folders"
 msgid "View cabinets"
 msgstr "Folders bekijken"
 
-#: search.py:26
+#: search.py:25
 msgid "Document type"
 msgstr "Documenttype"
 
-#: search.py:29
+#: search.py:28
 msgid "Document MIME type"
 msgstr "Document MIME type"
 
-#: search.py:32
+#: search.py:31
 msgid "Document label"
 msgstr "Documentlabel"
 
-#: search.py:35
+#: search.py:34
 msgid "Document description"
 msgstr "Documentbeschrijving"
 
-#: search.py:38
+#: search.py:37
 msgid "Document UUID"
 msgstr "Document UUID"
 
-#: search.py:42
+#: search.py:41
 msgid "Document checksum"
 msgstr "Document controlesom"
 
@@ -357,6 +357,6 @@ msgstr "Folders selecteren"
 msgid "Cabinets to which the document will be added."
 msgstr "Folders waaraan het document wordt toegevoegd."
 
-#: workflow_actions.py:69
+#: workflow_actions.py:67
 msgid "Cabinets from which the document will be removed."
 msgstr "Folders waaruit het document wordt verwijderd."

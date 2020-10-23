@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-22 23:19-0400\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Roberto Rosario, 2020\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
@@ -24,24 +24,24 @@ msgstr ""
 msgid "Label"
 msgstr "Oznaka"
 
-#: apps.py:50 events.py:6 links.py:17 permissions.py:5 queues.py:7
+#: apps.py:49 events.py:6 links.py:17 permissions.py:5 queues.py:7
 #: settings.py:9
 msgid "File metadata"
 msgstr ""
 
-#: apps.py:100 apps.py:156 apps.py:165
+#: apps.py:99 search.py:7 search.py:16
 msgid "File metadata key"
 msgstr ""
 
-#: apps.py:104 apps.py:160 apps.py:169
+#: apps.py:103 search.py:11 search.py:20
 msgid "File metadata value"
 msgstr ""
 
-#: apps.py:131
+#: apps.py:130
 msgid "Return the value of a specific file metadata."
 msgstr ""
 
-#: apps.py:132
+#: apps.py:131
 msgid "File metadata value of"
 msgstr ""
 
@@ -50,7 +50,7 @@ msgid ""
 "Library and program to read and write meta information in multimedia files."
 msgstr ""
 
-#: drivers/exiftool.py:18
+#: drivers/exiftool.py:19
 msgid "EXIF Tool"
 msgstr ""
 
@@ -90,75 +90,75 @@ msgstr ""
 msgid "Return the specified document version file metadata entry."
 msgstr ""
 
-#: models.py:19
+#: models.py:18
 msgid "Driver path"
 msgstr ""
 
-#: models.py:23
+#: models.py:22
 msgid "Internal name"
 msgstr ""
 
-#: models.py:28 models.py:72
+#: models.py:27 models.py:70
 msgid "Driver"
 msgstr ""
 
-#: models.py:29
+#: models.py:28
 msgid "Drivers"
 msgstr ""
 
-#: models.py:49
+#: models.py:48
 msgid "Document type"
 msgstr "Tip dokumenta"
 
-#: models.py:53
+#: models.py:52
 msgid "Automatically queue newly created documents for processing."
 msgstr ""
 
-#: models.py:60
+#: models.py:59
 msgid "Document type settings"
 msgstr ""
 
-#: models.py:61
+#: models.py:60
 msgid "Document types settings"
 msgstr ""
 
-#: models.py:76
+#: models.py:74
 msgid "Document version"
 msgstr ""
 
-#: models.py:82 models.py:98
+#: models.py:80 models.py:95
 msgid "Document version driver entry"
 msgstr ""
 
-#: models.py:83
+#: models.py:81
 msgid "Document version driver entries"
 msgstr ""
 
-#: models.py:90
+#: models.py:88
 msgid "Attribute count"
 msgstr ""
 
-#: models.py:102
+#: models.py:99
 msgid "Name of the file metadata entry."
 msgstr ""
 
-#: models.py:103
+#: models.py:100
 msgid "Key"
 msgstr ""
 
-#: models.py:106
+#: models.py:103
 msgid "Value of the file metadata entry."
 msgstr ""
 
-#: models.py:107
+#: models.py:104
 msgid "Value"
 msgstr ""
 
-#: models.py:112
+#: models.py:109
 msgid "File metadata entry"
 msgstr ""
 
-#: models.py:113
+#: models.py:110
 msgid "File metadata entries"
 msgstr ""
 
@@ -188,7 +188,7 @@ msgstr ""
 msgid "Arguments to pass to the drivers."
 msgstr ""
 
-#: views.py:33
+#: views.py:42
 msgid ""
 "File metadata are the attributes of the document's file. They can range from"
 " camera information used to take a photo to the author that created a file. "
@@ -197,21 +197,32 @@ msgid ""
 "document metadata, which are user defined and reside in the database."
 msgstr ""
 
-#: views.py:41 views.py:60
-msgid "No file metadata available."
+#: views.py:50
+msgid "No file metadata available"
 msgstr ""
 
-#: views.py:44
+#: views.py:53
 #, python-format
 msgid "File metadata drivers for: %s"
 msgstr ""
 
-#: views.py:63
+#: views.py:80
+msgid ""
+"This could mean that the file metadata detection has not completed or that "
+"the driver does not support any metadata field for the file type of this "
+"document."
+msgstr ""
+
+#: views.py:85
+msgid "No file metadata available for this driver"
+msgstr ""
+
+#: views.py:89
 #, python-format
 msgid "File metadata attribures for: %(document)s, for driver: %(driver)s"
 msgstr ""
 
-#: views.py:86
+#: views.py:112
 msgid "Submit the selected document to the file metadata queue?"
 msgid_plural "Submit the selected documents to the file metadata queue?"
 msgstr[0] ""
@@ -219,16 +230,16 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: views.py:112
+#: views.py:138
 #, python-format
 msgid "Edit file metadata settings for document type: %s"
 msgstr ""
 
-#: views.py:123
+#: views.py:149
 msgid "Submit all documents of a type for file metadata processing."
 msgstr ""
 
-#: views.py:145
+#: views.py:171
 #, python-format
 msgid "%(count)d documents added to the file metadata processing queue."
 msgstr ""

@@ -8,14 +8,15 @@
 # Felix <felix.com@gmx.com>, 2018
 # Mathias Behrle <mathiasb@m9s.biz>, 2019
 # Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2019
+# Marvin Haschker <marvin@haschker.me>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-22 23:21-0400\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2017-06-30 22:04+0000\n"
-"Last-Translator: Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2019\n"
+"Last-Translator: Marvin Haschker <marvin@haschker.me>, 2020\n"
 "Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,47 +24,47 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:17 links.py:10 permissions.py:5
+#: apps.py:16 links.py:10 permissions.py:5
 msgid "Task manager"
 msgstr "Task-Manager"
 
-#: apps.py:25
+#: apps.py:24
 msgid "Label"
 msgstr "Bezeichner"
 
-#: apps.py:29
+#: apps.py:28
 msgid "Name"
 msgstr "Name"
 
-#: apps.py:34
+#: apps.py:33
 msgid "Default queue?"
 msgstr "Standardwarteschlange"
 
-#: apps.py:39
+#: apps.py:38
 msgid "Is transient?"
 msgstr "Vorübergehend"
 
-#: apps.py:43
+#: apps.py:42
 msgid "Type"
 msgstr "Typ"
 
-#: apps.py:48
+#: apps.py:47
 msgid "Start time"
 msgstr "Startzeit"
 
-#: apps.py:52
+#: apps.py:51
 msgid "Host"
 msgstr "Host"
 
-#: apps.py:56
+#: apps.py:55
 msgid "Arguments"
 msgstr "Argumente"
 
-#: apps.py:60
+#: apps.py:59
 msgid "Keyword arguments"
 msgstr "Schlüsselwortargumente"
 
-#: apps.py:64
+#: apps.py:63
 msgid "Worker process ID"
 msgstr "Worker Prozess-ID"
 
@@ -71,11 +72,17 @@ msgstr "Worker Prozess-ID"
 msgid "View tasks"
 msgstr "Tasks ansehen"
 
-#: settings.py:8
+#: settings.py:10
 msgid "Celery"
 msgstr "Celery"
 
-#: settings.py:13
+#: settings.py:15
+msgid "Default: \"AMQPLAIN\". Set custom amqp login method."
+msgstr ""
+"Standard: 'AMQPLAIN'. Legen Sie eine benutzerdefinierte amqp-Anmeldemethode "
+"fest."
+
+#: settings.py:21
 msgid ""
 "Default: \"amqp://\". Default broker URL. This must be a URL in the form of:"
 " transport://userid:password@hostname:port/virtual_host Only the scheme part"
@@ -85,7 +92,16 @@ msgstr ""
 "Standard: \"amqp://\". Die Standard Broker-URL. Muss in folgender Form angegeben werden: transport://userid:password@hostname:port/virtual_host\n"
 "Nur das Schema (transport://) muss angegeben werden, der Rest ist optional und verweist auf die Standardwerte."
 
-#: settings.py:22
+#: settings.py:30
+msgid ""
+"Default: \"Disabled\". Toggles SSL usage on broker connection and SSL "
+"settings. The valid values for this option vary by transport."
+msgstr ""
+"Standard: 'Deaktiviert'. Schaltet die SSL-Verwendung für die "
+"Brokerverbindung und die SSL-Einstellungen um. Die gültigen Werte für diese "
+"Option variieren je nach Transport."
+
+#: settings.py:38
 msgid ""
 "Default: No result backend enabled by default. The backend used to store "
 "task results (tombstones). Refer to "

@@ -3,19 +3,20 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Berny <berny@bernhard-marx.de>, 2015-2016
 # Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2018
 # Ingo Buchholz <ingo.buchholz@takwa.de>, 2020
 # Jesaja Everling <jeverling@gmail.com>, 2017
-# Marvin Haschker <marvin@haschker.me>, 2019
+# Marvin Haschker <marvin@haschker.me>, 2019-2020
 # Mathias Behrle <mathiasb@m9s.biz>, 2018-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-22 23:18-0400\n"
-"PO-Revision-Date: 2020-04-28 03:38+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"PO-Revision-Date: 2020-08-17 15:05+0000\n"
+"Last-Translator: Marvin Haschker <marvin@haschker.me>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +24,7 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:44 events.py:5 links.py:32
+#: apps.py:43 events.py:5 links.py:32
 msgid "Checkouts"
 msgstr "Ausbuchungen"
 
@@ -47,11 +48,11 @@ msgstr "Dokument ausgebucht"
 msgid "Document forcefully checked in"
 msgstr "Dokument zwingend eingebucht"
 
-#: exceptions.py:16
+#: exceptions.py:15
 msgid "Document not checked out."
-msgstr ""
+msgstr "Dokument nicht ausgebucht."
 
-#: exceptions.py:25
+#: exceptions.py:23
 msgid "Document already checked out."
 msgstr "Dokument bereits ausgebucht."
 
@@ -59,7 +60,7 @@ msgstr "Dokument bereits ausgebucht."
 msgid "Document status"
 msgstr "Dokumentenstatus"
 
-#: forms.py:37 models.py:42 models.py:134
+#: forms.py:37 models.py:41 models.py:133
 msgid "User"
 msgstr "Benutzer"
 
@@ -111,55 +112,55 @@ msgstr "Ausgebucht"
 msgid "Checked in/available"
 msgstr "Eingebucht/Verfügbar"
 
-#: models.py:29 models.py:112
+#: models.py:28 models.py:111
 msgid "Document"
 msgstr "Dokument"
 
-#: models.py:32
+#: models.py:31
 msgid "Check out date and time"
 msgstr "Ausbuchungszeit"
 
-#: models.py:36
+#: models.py:35
 msgid "Amount of time to hold the document checked out in minutes."
 msgstr "Zeitdauer, die das Dokument ausgebucht bleiben soll."
 
-#: models.py:38
+#: models.py:37
 msgid "Check out expiration date and time"
 msgstr "Ausbuchungsende"
 
-#: models.py:47
+#: models.py:46
 msgid "Do not allow new version of this document to be uploaded."
 msgstr "Hochladen neuer Versionen dieses Dokuments nicht erlauben."
 
-#: models.py:49
+#: models.py:48
 msgid "Block new version upload"
 msgstr "Hochladen neuer Versionen sperren"
 
-#: models.py:57 permissions.py:5
+#: models.py:56 permissions.py:5
 msgid "Document checkout"
 msgstr "Ausbuchung"
 
-#: models.py:58
+#: models.py:57
 msgid "Document checkouts"
 msgstr "Ausbuchungen"
 
-#: models.py:66
+#: models.py:65
 msgid "Check out expiration date and time must be in the future."
 msgstr "Ausbuchungsende muss in der Zukunft liegen."
 
-#: models.py:118
+#: models.py:117
 msgid "New version block"
 msgstr "Aktualisierungsschutz"
 
-#: models.py:119
+#: models.py:118
 msgid "New version blocks"
 msgstr "Aktualisierungsschutz"
 
-#: models.py:139
+#: models.py:138
 msgid "Checkout time and date"
 msgstr "Ausbuchungszeit"
 
-#: models.py:144
+#: models.py:143
 msgid "Checkout expiration"
 msgstr "Ausbuchungsende"
 
@@ -230,6 +231,6 @@ msgstr "Durch Ausbuchen eines Dokuments werden bestimmte Vorgänge für eine bes
 msgid "No documents have been checked out"
 msgstr "Keine Dokumente ausgebucht"
 
-#: widgets.py:25
+#: widgets.py:23
 msgid "Amount"
 msgstr "Anzahl"

@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-22 23:19-0400\n"
-"PO-Revision-Date: 2020-06-16 09:55+0000\n"
-"Last-Translator: Thanh Long Hoàng <hoangthanhlong@gmail.com>\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"PO-Revision-Date: 2020-08-18 04:38+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Vietnamese (http://www.transifex.com/rosarior/mayan-edms/language/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,11 +26,11 @@ msgstr ""
 msgid "Date"
 msgstr ""
 
-#: apps.py:98 models.py:47
+#: apps.py:98 models.py:46
 msgid "Key ID"
 msgstr ""
 
-#: apps.py:102 forms.py:62 models.py:52
+#: apps.py:102 forms.py:62 models.py:51
 msgid "Signature ID"
 msgstr ""
 
@@ -135,63 +136,63 @@ msgstr ""
 msgid "Upload signature"
 msgstr ""
 
-#: models.py:39
+#: models.py:38
 msgid "Document version"
 msgstr "Phiên bản của tài liệu"
 
-#: models.py:43
+#: models.py:42
 msgid "Date signed"
 msgstr ""
 
-#: models.py:46
+#: models.py:45
 msgid "ID of the key that will be used to sign the document."
 msgstr ""
 
-#: models.py:56
+#: models.py:55
 msgid "Public key fingerprint"
 msgstr ""
 
-#: models.py:63
+#: models.py:62
 msgid "Document version signature"
 msgstr ""
 
-#: models.py:64
+#: models.py:63
 msgid "Document version signatures"
 msgstr ""
 
-#: models.py:83
+#: models.py:82
 msgid "Detached"
 msgstr ""
 
-#: models.py:85
+#: models.py:84
 msgid "Embedded"
 msgstr ""
 
-#: models.py:100
+#: models.py:99
 msgid "Document version embedded signature"
 msgstr ""
 
-#: models.py:101
+#: models.py:100
 msgid "Document version embedded signatures"
 msgstr ""
 
-#: models.py:134
+#: models.py:132
 msgid "Signature file previously generated."
 msgstr ""
 
-#: models.py:137
+#: models.py:135
 msgid "Signature file"
 msgstr ""
 
-#: models.py:143
+#: models.py:141
 msgid "Document version detached signature"
 msgstr ""
 
-#: models.py:144
+#: models.py:142
 msgid "Document version detached signatures"
 msgstr ""
 
-#: models.py:147
+#: models.py:145
 msgid "signature"
 msgstr ""
 
@@ -244,16 +245,16 @@ msgid "Path to the Storage subclass to use when storing detached signatures."
 msgstr ""
 
 #: settings.py:28
-msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND. "
+msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND."
 msgstr ""
 
-#: storages.py:14
+#: storages.py:13
 msgid ""
 "Unable to initialize the detached signatures storage. Check the settings {} "
 "and {} for formatting errors."
 msgstr ""
 
-#: storages.py:21
+#: storages.py:20
 msgid "Detached signatures"
 msgstr ""
 
@@ -340,6 +341,6 @@ msgid ""
 "an initial state before the created document is yet to be processed."
 msgstr ""
 
-#: workflow_actions.py:82
+#: workflow_actions.py:80
 msgid "Sign document (embedded)"
 msgstr ""

@@ -3,11 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Berny <berny@bernhard-marx.de>, 2015-2016
 # Ingo, 2013
 # Ingo Buchholz <ingo.buchholz@takwa.de>, 2020
 # Jesaja Everling <jeverling@gmail.com>, 2017
-# Marvin Haschker <marvin@haschker.me>, 2019
+# Marvin Haschker <marvin@haschker.me>, 2019-2020
 # Mathias Behrle <mathiasb@m9s.biz>, 2019-2020
 # Mathias Behrle <mbehrle@m9s.biz>, 2014
 # Robin Schubert <robin.schubert@gmx.de>, 2019
@@ -18,8 +19,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-22 23:20-0400\n"
-"PO-Revision-Date: 2020-05-25 06:18+0000\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"PO-Revision-Date: 2020-10-11 07:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
@@ -28,41 +29,33 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:43 links.py:56 models/base.py:38 queues.py:7 settings.py:11
+#: apps.py:48 links.py:63 models/base.py:36 queues.py:7 settings.py:11
 #: views.py:193
 msgid "Sources"
 msgstr "Quellen"
 
-#: apps.py:61
+#: apps.py:71
 msgid "Create a document source"
 msgstr "Quelle definieren"
 
-#: apps.py:63
+#: apps.py:73
 msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
 msgstr "Dokumentenquellen definieren verschiedene Möglichkeiten für die Einspeisung in Mayan EDMS. Minimal ein Webformular für das Hochladen mittels Browser ist erforderlich."
 
-#: apps.py:76
+#: apps.py:86
 msgid "Type"
 msgstr "Typ"
 
-#: apps.py:87
+#: apps.py:97
 msgid "Created"
 msgstr "Erstellt"
 
-#: apps.py:93
+#: apps.py:103
 msgid "Thumbnail"
 msgstr "Bild"
-
-#: apps.py:101 models/base.py:248
-msgid "Date time"
-msgstr "Zeit"
-
-#: apps.py:106 models/base.py:251
-msgid "Message"
-msgstr "Nachricht"
 
 #: dependencies.py:11
 msgid ""
@@ -86,7 +79,7 @@ msgstr "Komprimierte Dateien entpacken"
 msgid "Upload a compressed file's contained files as individual documents."
 msgstr "Ein komprimiertes Archiv hochladen, das einzelne Dokumente enthält."
 
-#: forms.py:63 views.py:227
+#: forms.py:63 views.py:205
 msgid "Staging file"
 msgstr "Staging-Datei"
 
@@ -98,55 +91,51 @@ msgstr "Datei"
 msgid "Default"
 msgstr "Standard"
 
-#: links.py:51
+#: links.py:58
 msgid "New document"
 msgstr "Neues Dokument"
 
-#: links.py:63
+#: links.py:70
 msgid "Add new IMAP email"
 msgstr "Neue IMAP Quelle hinzufügen"
 
-#: links.py:69
+#: links.py:76
 msgid "Add new POP3 email"
 msgstr "Neue POP3 Quelle hinzufügen"
 
-#: links.py:75
+#: links.py:82
 msgid "Add new staging folder"
 msgstr "Neuen Staging-Ordner hinzufügen"
 
-#: links.py:81
+#: links.py:88
 msgid "Add new watch folder"
 msgstr "Neuen Beobachtungs-Ordner hinzufügen"
 
-#: links.py:87
+#: links.py:94
 msgid "Add new webform source"
 msgstr "Neue Quelle für Webformular hinzufügen"
 
-#: links.py:93
+#: links.py:100
 msgid "Add new SANE scanner"
 msgstr "Neuen SANE Scanner hinzufügen"
 
-#: links.py:99 links.py:116
+#: links.py:106 links.py:123
 msgid "Delete"
 msgstr "Löschen"
 
-#: links.py:104
+#: links.py:111
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: links.py:109
+#: links.py:116
 msgid "Document sources"
 msgstr "Dokumentenquelle"
 
-#: links.py:123
+#: links.py:130
 msgid "Upload new version"
 msgstr "Neue Version hochladen"
 
-#: links.py:127
-msgid "Logs"
-msgstr "Protokolle"
-
-#: links.py:133
+#: links.py:135
 msgid "Check now"
 msgstr "Jetzt prüfen"
 
@@ -202,7 +191,7 @@ msgstr "Webformular"
 msgid "Staging folder"
 msgstr "Staging-Ordner"
 
-#: literals.py:64 models/watch_folder_sources.py:45
+#: literals.py:64 models/watch_folder_sources.py:46
 msgid "Watch folder"
 msgstr "Beobachtungs-Ordner"
 
@@ -214,74 +203,66 @@ msgstr "POP3"
 msgid "IMAP email"
 msgstr "IMAP"
 
-#: models/base.py:28
+#: models/base.py:26
 msgid "A short text to describe this source."
 msgstr "Ein kurzer Text zur Beschreibung dieser Quelle."
 
-#: models/base.py:29
+#: models/base.py:27
 msgid "Label"
 msgstr "Bezeichner"
 
-#: models/base.py:31
+#: models/base.py:29
 msgid "Enabled"
 msgstr "Aktiviert"
 
-#: models/base.py:37 models/base.py:245
+#: models/base.py:35
 msgid "Source"
 msgstr "Quelle"
 
-#: models/base.py:156
+#: models/base.py:151
 msgid "Interactive source"
 msgstr "Interaktive Quelle"
 
-#: models/base.py:157
+#: models/base.py:152
 msgid "Interactive sources"
 msgstr "Interaktive Quellen"
 
-#: models/base.py:166 models/base.py:167
+#: models/base.py:161 models/base.py:162
 msgid "Out of process"
 msgstr "Außer Kontrolle"
 
-#: models/base.py:173
+#: models/base.py:168
 msgid "Interval in seconds between checks for new documents."
 msgstr "Intervall in Sekunden zwischen den Überprüfungen auf neue Dokumente."
 
-#: models/base.py:174
+#: models/base.py:169
 msgid "Interval"
 msgstr "Intervall"
 
-#: models/base.py:178
+#: models/base.py:173
 msgid "Assign a document type to documents uploaded from this source."
 msgstr "Ordnen Sie einen Dokumententyp für Dokumente aus dieser Quelle zu."
 
-#: models/base.py:180 serializers.py:17
+#: models/base.py:175 serializers.py:17
 msgid "Document type"
 msgstr "Dokumententyp"
 
-#: models/base.py:184
+#: models/base.py:179
 msgid "Whether to expand or not, compressed archives."
 msgstr "Ob komprimierte Archive entpackt werden sollen."
 
-#: models/base.py:185 models/staging_folder_sources.py:54
+#: models/base.py:180 models/staging_folder_sources.py:54
 #: models/webform_sources.py:34
 msgid "Uncompress"
 msgstr "Entpacken"
 
-#: models/base.py:191
+#: models/base.py:186
 msgid "Interval source"
 msgstr "Intarvall Quelle"
 
-#: models/base.py:192
+#: models/base.py:187
 msgid "Interval sources"
 msgstr "Intarvall Quellen"
-
-#: models/base.py:257
-msgid "Log entry"
-msgstr "Protokolleintrag"
-
-#: models/base.py:258
-msgid "Log entries"
-msgstr "Logeinträge"
 
 #: models/email_sources.py:40
 msgid "Host"
@@ -415,11 +396,11 @@ msgstr "IMAP-Postfach, in das verarbeitete Nachrichten kopiert werden. "
 msgid "Destination mailbox"
 msgstr "Ziel-Postfach "
 
-#: models/email_sources.py:350
+#: models/email_sources.py:349
 msgid "Timeout"
 msgstr "Timeout"
 
-#: models/email_sources.py:356 models/email_sources.py:357
+#: models/email_sources.py:355 models/email_sources.py:356
 msgid "POP email"
 msgstr "POP email"
 
@@ -491,7 +472,7 @@ msgstr "Fehler bei der Ausführung des Scannerbefehls \"%(command_line)s\": %(er
 msgid "Server side filesystem path."
 msgstr "Pfad auf dem Server."
 
-#: models/staging_folder_sources.py:40 models/watch_folder_sources.py:32
+#: models/staging_folder_sources.py:40 models/watch_folder_sources.py:33
 msgid "Folder path"
 msgstr "Ordnerpfad"
 
@@ -537,21 +518,21 @@ msgstr "Fehler beim Löschen von Staging-Datei: %s"
 msgid "Unable get list of staging files: %s"
 msgstr "Die Liste der Arbeitsdateien kann nicht ermittelt werden: %s"
 
-#: models/watch_folder_sources.py:31
+#: models/watch_folder_sources.py:32
 msgid "Server side filesystem path to scan for files."
 msgstr "Serverseitiger Pfad, der auf Dateien untersucht wird."
 
-#: models/watch_folder_sources.py:36
+#: models/watch_folder_sources.py:37
 msgid ""
 "If checked, not only will the folder path be scanned for files but also its "
 "subdirectories."
 msgstr "Bei Aktivierung werden auch die Unterverzeichnisse des Pfads durchsucht."
 
-#: models/watch_folder_sources.py:39
+#: models/watch_folder_sources.py:40
 msgid "Include subdirectories?"
 msgstr "Unterverzeichnisse einschließen"
 
-#: models/watch_folder_sources.py:46
+#: models/watch_folder_sources.py:47
 msgid "Watch folders"
 msgstr "Beobachtungs-Ordner"
 
@@ -625,16 +606,11 @@ msgstr "Argumente die an das SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND weiterge
 msgid ""
 "Unable to initialize the staging folder file image storage. Check the "
 "settings {} and {} for formatting errors."
-msgstr ""
+msgstr "Der Image-Speicher für die Stagingordner-Dateien konnte nicht initialisiert werden. Überprüfen Sie die Einstellungen {} und {} auf Formatierungsfehler."
 
 #: storages.py:23
 msgid "Staging folder files"
-msgstr ""
-
-#: tasks.py:46
-#, python-format
-msgid "Error processing source: %s"
-msgstr "Fehler bei der Verarbeitung der Quelle %s"
+msgstr "Stagingordner-Dateien"
 
 #: templates/sources/dropzone.html:82
 msgid "Cancel upload"
@@ -708,89 +684,74 @@ msgstr "Quellen stellen die Mittel für das Hochladen von Dokumenten bereit. Ein
 msgid "No sources available"
 msgstr "Keine Quellen verfügbar"
 
-#: views.py:207
-msgid ""
-"Any error produced during the usage of a source will be listed here to "
-"assist in debugging."
-msgstr "Jeder Fehler, der bei der Benutzung von Dokumentenquellen auftritt, wird hier gelistet, um bei der Fehlerbehebung zu helfen."
-
-#: views.py:210
-msgid "No log entries available"
-msgstr "Keine Protokolleinträge vorhanden"
-
-#: views.py:212
-#, python-format
-msgid "Log entries for source: %s"
-msgstr "Logeinträge für Quelle %s"
-
-#: views.py:228
+#: views.py:206
 #, python-format
 msgid "Delete staging file \"%s\"?"
 msgstr "Staging-Datei \"%s\" löschen?"
 
-#: views.py:280 wizards.py:152
+#: views.py:257 wizards.py:152
 msgid ""
 "No interactive document sources have been defined or none have been enabled,"
 " create one before proceeding."
 msgstr "Es wurden keine interaktiven Dokumentenquellen konfiguriert. Bitte erstellen oder aktivieren Sie eine bevor Sie fortsetzen."
 
-#: views.py:308 views.py:337 views.py:347
+#: views.py:285 views.py:314 views.py:324
 msgid "Document properties"
 msgstr "Dokumenteneigenschaften"
 
-#: views.py:317
+#: views.py:294
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
 "the operating system user account being used for Mayan EDMS doesn't have the"
 " necessary file system permissions for the folder."
 msgstr "Dies könnte bedeuten, dass der Staging-Ordner leer ist. Es könnte auch bedeuten, dass das Betriebssystem-Benutzerkonto, das für Mayan EDMS verwendet wird, nicht über die erforderlichen Dateisystemberechtigungen für den Ordner verfügt. "
 
-#: views.py:324
+#: views.py:301
 msgid "No staging files available"
 msgstr "Keine Staging-Dateien vorhanden"
 
-#: views.py:327
+#: views.py:304
 msgid "Files in staging path"
 msgstr "Dateien im Staging Pfad"
 
-#: views.py:338
+#: views.py:315
 msgid "Scan"
 msgstr "Scannen"
 
-#: views.py:485
+#: views.py:462
 #, python-format
 msgid "Error executing document upload task; %(exception)s"
-msgstr ""
+msgstr "Fehler beim Hochladen von Dokumenten; %(exception)s"
 
-#: views.py:495
+#: views.py:472
 msgid "New document queued for upload and will be available shortly."
 msgstr "Das neue Dokument wurde in die Warteschlange eingestellt und wird in Kürze verfügbar sein."
 
-#: views.py:512
+#: views.py:489
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
 msgstr "Ein Dokument vom Typ \"%(document_type)s\" aus Quelle %(source)s hochladen"
 
-#: views.py:574
+#: views.py:551
 #, python-format
 msgid "Unable to upload new versions for document \"%(document)s\". %(exception)s"
-msgstr ""
+msgstr "Neue Versionen für das Dokument \"%(document)s\" können nicht hochgeladen werden. %(exception)s"
 
-#: views.py:635
+#: views.py:612
 #, python-format
 msgid "Error executing document version upload task; %(exception)s"
-msgstr ""
+msgstr "Fehler beim Hochladen der neuen Dokumentversion; %(exception)s"
 
-#: views.py:650
+#: views.py:627
 msgid "New document version queued for upload and will be available shortly."
 msgstr "Das neue Dokument wurde in die Warteschlange eingestellt und wird in Kürze verfügbar sein."
 
-#: views.py:669
+#: views.py:654
 #, python-format
 msgid "Upload a new version for document \"%(document)s\" from source: %(source)s"
 msgstr "Hochladen einer neuen Version für das Dokument \"%(document)s\" aus Quelle %(source)s"
 
-#: views.py:672
+#: views.py:657
 msgid "Submit"
 msgstr "Absenden"
 
