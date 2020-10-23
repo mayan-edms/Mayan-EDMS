@@ -35,7 +35,7 @@ job_docker_build:
     POSTGRES_DB: "mayan_edms"
     POSTGRES_PASSWORD: "postgres"
 
-job_docker_push:
+job_docker_push_major:
   before_script:
     - apk add --no-cache python3
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
@@ -47,19 +47,45 @@ job_docker_push:
     - PYTHON_BIN=/usr/bin/python3
     - DOCKER_VERSION=`cat docker/rootfs/version`
     - docker pull "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
-    - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:"$DOCKER_VERSION"
+    - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:v"$DOCKER_VERSION"
     - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:latest
     - VERSION_SCRIPT_BIN=contrib/scripts/version.py
     - MAJOR_VERSION=$($PYTHON_BIN $VERSION_SCRIPT_BIN $DOCKER_VERSION major);
-    - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:"$MAJOR_VERSION"
+    - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:s"$MAJOR_VERSION"
     - MINOR_VERSION=$($PYTHON_BIN $VERSION_SCRIPT_BIN $DOCKER_VERSION minor);
-    - if [ -z MINOR_VERSION ]; then docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:"$MINOR_VERSION";fi
+    - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:s"$MINOR_VERSION"
     - docker logout
     - docker login -u "$DOCKER_HUB_USERNAME" -p "$DOCKER_HUB_PASSWORD" https://registry-1.docker.io
-    - docker push registry-1.docker.io/mayanedms/mayanedms:"$DOCKER_VERSION"
+    - docker push registry-1.docker.io/mayanedms/mayanedms:v"$DOCKER_VERSION"
     - docker push registry-1.docker.io/mayanedms/mayanedms:latest
-    - docker push registry-1.docker.io/mayanedms/mayanedms:"$MAJOR_VERSION"
-    - if [ -z MINOR_VERSION ]; then docker push registry-1.docker.io/mayanedms/mayanedms:"$MINOR_VERSION";fi
+    - docker push registry-1.docker.io/mayanedms/mayanedms:s"$MAJOR_VERSION"
+    - docker push registry-1.docker.io/mayanedms/mayanedms:s"$MINOR_VERSION"
+  stage: push_docker
+  services:
+    - docker:dind
+
+job_docker_push_minor:
+  before_script:
+    - apk add --no-cache python3
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  image: docker:latest
+  only:
+    - releases/all_minor
+    - releases/docker_minor
+  script:
+    - PYTHON_BIN=/usr/bin/python3
+    - DOCKER_VERSION=`cat docker/rootfs/version`
+    - docker pull "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
+    - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:v"$DOCKER_VERSION"
+    - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:latest
+    - VERSION_SCRIPT_BIN=contrib/scripts/version.py
+    - MINOR_VERSION=$($PYTHON_BIN $VERSION_SCRIPT_BIN $DOCKER_VERSION minor);
+    - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:s"$MINOR_VERSION"
+    - docker logout
+    - docker login -u "$DOCKER_HUB_USERNAME" -p "$DOCKER_HUB_PASSWORD" https://registry-1.docker.io
+    - docker push registry-1.docker.io/mayanedms/mayanedms:v"$DOCKER_VERSION"
+    - docker push registry-1.docker.io/mayanedms/mayanedms:latest
+    - docker push registry-1.docker.io/mayanedms/mayanedms:s"$MINOR_VERSION"
   stage: push_docker
   services:
     - docker:dind
@@ -150,6 +176,7 @@ job_build_python:
   image: ubuntu:19.10
   only:
     - releases/all
+    - releases/all_minor
     - releases/python
   script:
     - pip install -r requirements/build.txt
@@ -165,6 +192,7 @@ job_push_python:
   image: ubuntu:19.10
   only:
     - releases/all
+    - releases/all_minor
     - releases/python
   script:
     - pip install -r requirements/build.txt
@@ -193,8 +221,11 @@ job_push_python:
   image: ubuntu:19.10
   only:
     - releases/all
+    - releases/all_minor
     - releases/docker
+    - releases/docker_minor
     - releases/python
+    - releases/python_minor
     - releases/staging
   stage: test
 
@@ -258,8 +289,11 @@ test_upgrade_postgres:
   image: ubuntu:19.10
   only:
     - releases/all
+    - releases/all_minor
     - releases/docker
+    - releases/docker_minor
     - releases/python
+    - releases/python_minor
     - releases/staging
   stage: test
 

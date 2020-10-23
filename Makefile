@@ -344,6 +344,29 @@ gitlab-release-all:
 	git push origin :releases/all || true
 	git push origin HEAD:releases/all
 
+# Minor releases
+
+gitlab-release-docker-minor: ## Trigger the Docker image build and publication of a minor version using GitLab CI
+gitlab-release-docker-minor:
+	git push
+	git push --tags
+	git push origin :releases/docker_minor || true
+	git push origin HEAD:releases/docker_minor
+
+gitlab-release-python-minor: ## Trigger the Python package build and publication of a minor version using GitLab CI
+gitlab-release-python-minor:
+	git push
+	git push --tags
+	git push origin :releases/python_minor || true
+	git push origin HEAD:releases/python_minor
+
+gitlab-release-all-minor: ## Trigger the Python package, Docker image build and publication of a minor version using GitLab CI
+gitlab-release-all-minor:
+	git push
+	git push --tags
+	git push origin :releases/all_minor || true
+	git push origin HEAD:releases/all_minor
+
 # Dev server
 
 manage: ## Run a command with the development settings.

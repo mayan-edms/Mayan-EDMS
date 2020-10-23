@@ -80,3 +80,7 @@
 - Add document file edit view.
 - Add API versioning. The version will match the first part of the version.
   Mayan EDMS version 4.x will have an API version 4.
+- Update PostgreSQL to 10.14.
+- Update Docker image tagging. Version are prefixed with lower v and series
+  with lower s for the latest major and minor version. Version 1.2.3 will
+  result in tags :v1.2.3 :s1 :s1.2
