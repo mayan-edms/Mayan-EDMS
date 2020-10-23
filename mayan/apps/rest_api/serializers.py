@@ -10,6 +10,7 @@ class EndpointSerializer(serializers.Serializer):
     def get_url(self, instance):
         if instance.viewname:
             return reverse(
-                viewname=instance.viewname, request=self.context['request'],
+                kwargs=instance.kwargs, viewname=instance.viewname,
+                request=self.context['request'],
                 format=self.context['format']
             )

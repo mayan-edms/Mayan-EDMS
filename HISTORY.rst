@@ -78,3 +78,5 @@
   100 and provides the 'page_size' query parameter.
 - Remove NewFileBlockViewTestCase and simplify the checkout logic.
 - Add document file edit view.
+- Add API versioning. The version will match the first part of the version.
+  Mayan EDMS version 4.x will have an API version 4.

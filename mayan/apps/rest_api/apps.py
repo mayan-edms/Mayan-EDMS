@@ -25,7 +25,7 @@ class RESTAPIApp(MayanAppConfig):
 
     def ready(self):
         super().ready()
-        from .urls import api_urls
+        from .urls import api_version_urls
 
         installation_base_url = setting_url_base_path.value
         if installation_base_url:
@@ -33,10 +33,12 @@ class RESTAPIApp(MayanAppConfig):
         else:
             installation_base_url = ''
 
-        settings.STRONGHOLD_PUBLIC_URLS += (r'^%s/api/' % installation_base_url,)
+        settings.STRONGHOLD_PUBLIC_URLS += (
+            r'^{}/{}/'.format(installation_base_url, self.app_url),
+        )
 
         settings.STRONGHOLD_PUBLIC_URLS += (
-            r'^%s/%s/.+$' % (installation_base_url, self.app_url),
+            r'^{}/{}/.+$'.format(installation_base_url, self.app_url),
         )
         menu_tools.bind_links(
             links=(
@@ -47,4 +49,4 @@ class RESTAPIApp(MayanAppConfig):
         for app in apps.get_app_configs():
             if getattr(app, 'has_rest_api', False):
                 app_api_urls = import_string(dotted_path='{}.urls.api_urls'.format(app.name))
-                api_urls.extend(app_api_urls)
+                api_version_urls.extend(app_api_urls)

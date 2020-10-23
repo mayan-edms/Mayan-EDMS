@@ -18,23 +18,65 @@ class APIRoot(ListAPIView):
 
     def get_queryset(self):
         """
-        get: Return a list of all endpoints.
+        get: Return a list of all API root endpoints. This includes the
+        API version root and root services.
+        """
+        endpoint_version = Endpoint(
+            label='API version root', viewname='rest_api:api_version_root'
+        )
+        endpoint_swagger = Endpoint(
+            label='Swagger UI', viewname='rest_api:schema-swagger-ui'
+        )
+        endpoint_redoc = Endpoint(
+            label='ReDoc UI', viewname='rest_api:schema-redoc'
+        )
+        endpoint_swagger_schema_json = Endpoint(
+            label='API schema (JSON)', viewname='rest_api:schema-json',
+            kwargs={'format': '.json'}
+        )
+        endpoint_swagger_schema_yaml = Endpoint(
+            label='API schema (YAML)', viewname='rest_api:schema-json',
+            kwargs={'format': '.yaml'}
+        )
+        return [
+            endpoint_version,
+            endpoint_swagger,
+            endpoint_redoc,
+            endpoint_swagger_schema_json,
+            endpoint_swagger_schema_yaml
+        ]
+
+
+class APIVersionRoot(ListAPIView):
+    swagger_schema = None
+    serializer_class = EndpointSerializer
+
+    def get_queryset(self):
+        """
+        get: Return a list of the API version resources and endpoint.
         """
         endpoint_enumerator = EndpointEnumerator()
 
         if setting_url_base_path.value:
-            index = 3
+            index = 4
         else:
-            index = 2
+            index = 3
 
         # Extract the resource names from the API endpoint URLs
         parsed_urls = []
         for entry in endpoint_enumerator.get_api_endpoints():
-            parsed_urls.append(
-                entry[0].split('/')[index]
-            )
+            print('!@#', entry)
+
+            try:
+                parsed_urls.append(
+                    entry[0].split('/')[index]
+                )
+            except IndexError:
+                pass
 
         parsed_urls = sorted(set(parsed_urls))
+
+        print("@@@@@ parsed_urls", parsed_urls)
 
         endpoints = []
         for url in parsed_urls:
