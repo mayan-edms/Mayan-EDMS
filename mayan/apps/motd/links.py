@@ -4,8 +4,8 @@ from mayan.apps.navigation.classes import Link
 from mayan.apps.navigation.utils import get_cascade_condition
 
 from .icons import (
-    icon_message_create, icon_message_delete, icon_message_delete,
-    icon_message_edit, icon_message_list
+    icon_message_create, icon_message_delete, icon_message_edit,
+    icon_message_list
 )
 from .permissions import (
     permission_message_create, permission_message_delete,

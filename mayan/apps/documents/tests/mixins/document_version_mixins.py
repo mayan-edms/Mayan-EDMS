@@ -77,20 +77,6 @@ class DocumentVersionTestMixin:
         )
 
 
-class DocumentVersionTransformationViewTestMixin:
-    def _request_test_document_transformations_clear_view(self):
-        return self.post(
-            viewname='documents:document_version_transformations_clear',
-            kwargs={'document_id': self.test_document_version.pk}
-        )
-
-    def _request_test_document_multiple_transformations_clear(self):
-        return self.post(
-            viewname='documents:document_version_multiple_transformations_clear',
-            data={'id_list': self.test_document_version.pk}
-        )
-
-
 class DocumentVersionViewTestMixin:
     def _request_test_document_version_edit_view(self):
         return self.post(
@@ -170,10 +156,10 @@ class DocumentVersionTransformationTestMixin:
 
 
 class DocumentVersionTransformationViewTestMixin:
-    def _request_test_document_version_transformations_clear_view(self):
+    def _request_test_document_transformations_clear_view(self):
         return self.post(
             viewname='documents:document_version_transformations_clear',
-            kwargs={'document_version_id': self.test_document_version.pk}
+            kwargs={'document_id': self.test_document_version.pk}
         )
 
     def _request_test_document_version_multiple_transformations_clear_view(self):

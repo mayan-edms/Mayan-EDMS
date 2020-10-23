@@ -29,12 +29,6 @@ from .mixins.document_file_mixins import (
     DocumentFileAPIViewTestMixin, DocumentFileTestMixin,
     DocumentFilePageAPIViewTestMixin
 )
-from .mixins.document_type_mixins import DocumentTypeAPIViewTestMixin
-from .mixins.document_version_mixins import (
-    DocumentVersionAPIViewTestMixin, DocumentVersionTestMixin,
-    DocumentVersionPageAPIViewTestMixin
-)
-from .mixins.trashed_document_mixins import TrashedDocumentAPIViewTestMixin
 
 
 class DocumentFileAPIViewTestCase(

@@ -116,6 +116,7 @@ class DocumentFileViewTestMixin:
             }
         )
 
+
 class DocumentFilePageAPIViewTestMixin:
     def _request_test_document_file_page_image_api_view(self):
         page = self.test_document_file.pages.first()

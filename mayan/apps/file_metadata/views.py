@@ -6,7 +6,8 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext
 
 from mayan.apps.documents.forms.document_type_forms import DocumentTypeFilteredSelectForm
-from mayan.apps.documents.models import Document, DocumentFile, DocumentType
+from mayan.apps.documents.models.document_file_models import DocumentFile
+from mayan.apps.documents.models.document_type_models import DocumentType
 from mayan.apps.views.generics import (
     FormView, MultipleObjectConfirmActionView, SingleObjectEditView,
     SingleObjectListView
