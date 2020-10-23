@@ -20,7 +20,7 @@ logger = logging.getLogger(name=__name__)
 
 
 def upload_to(*args, **kwargs):
-    return force_text(uuid.uuid4())
+    return force_text(s=uuid.uuid4())
 
 
 class SignatureBaseModel(models.Model):

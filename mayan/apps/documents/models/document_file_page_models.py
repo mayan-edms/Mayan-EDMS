@@ -71,13 +71,17 @@ class DocumentFilePage(ModelMixinPagedModel, models.Model):
         return self.document_file.document
 
     def generate_image(self, user=None, **kwargs):
-        transformation_list = self.get_combined_transformation_list(user=user, **kwargs)
+        transformation_list = self.get_combined_transformation_list(
+            user=user, **kwargs
+        )
         combined_cache_filename = BaseTransformation.combine(
             transformations=transformation_list
         )
 
         # Check is transformed image is available
-        logger.debug('transformations cache filename: %s', combined_cache_filename)
+        logger.debug(
+            'transformations cache filename: %s', combined_cache_filename
+        )
 
         try:
             lock = LockingBackend.get_instance().acquire_lock(
@@ -254,7 +258,7 @@ class DocumentFilePage(ModelMixinPagedModel, models.Model):
         return _(
             'Document file page %(page_num)d of %(total_pages)d from %(document_file)s'
         ) % {
-            'document_file': force_text(self.document_file),
+            'document_file': force_text(s=self.document_file),
             'page_num': self.page_number,
             'total_pages': self.get_pages_last_number() or 1
         }

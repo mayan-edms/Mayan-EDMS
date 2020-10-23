@@ -28,7 +28,7 @@ class StoredDriver(models.Model):
         verbose_name_plural = _('Drivers')
 
     def __str__(self):
-        return force_text(self.driver_label)
+        return force_text(s=self.driver_label)
 
     @cached_property
     def driver_class(self):
@@ -81,7 +81,7 @@ class DocumentFileDriverEntry(models.Model):
         verbose_name_plural = _('Document file driver entries')
 
     def __str__(self):
-        return force_text(self.driver)
+        return force_text(s=self.driver)
 
     def get_attribute_count(self):
         return self.entries.count()

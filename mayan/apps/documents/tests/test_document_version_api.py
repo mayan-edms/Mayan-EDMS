@@ -1,5 +1,3 @@
-from django.utils.encoding import force_text
-
 from rest_framework import status
 
 from mayan.apps.rest_api.tests.base import BaseAPITestCase

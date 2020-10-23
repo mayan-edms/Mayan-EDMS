@@ -112,7 +112,7 @@ class DocumentFilePageViewTestCase(
         )
         self.assertContains(
             response=response, status_code=200, text=force_text(
-                self.test_document_file.pages.first()
+                s=self.test_document_file.pages.first()
             )
         )
 

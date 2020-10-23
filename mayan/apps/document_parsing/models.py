@@ -31,7 +31,7 @@ class DocumentFilePageContent(models.Model):
         verbose_name_plural = _('Document file page contents')
 
     def __str__(self):
-        return force_text(self.document_file_page)
+        return force_text(s=self.document_file_page)
 
 
 class DocumentTypeSettings(models.Model):
@@ -79,4 +79,4 @@ class DocumentFileParseError(models.Model):
         verbose_name_plural = _('Document file parse errors')
 
     def __str__(self):
-        return force_text(self.document_file)
+        return force_text(s=self.document_file)

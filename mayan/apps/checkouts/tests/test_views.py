@@ -376,7 +376,7 @@ class DocumentCheckoutViewTestCase(
         response = self._request_test_document_check_in_post_view(follow=True)
         self.assertContains(
             response=response, status_code=200,
-            text=force_text(DocumentNotCheckedOut())
+            text=force_text(s=DocumentNotCheckedOut())
         )
 
     def test_check_out_of_checked_out_document(self):
@@ -393,7 +393,7 @@ class DocumentCheckoutViewTestCase(
         response = self._request_test_document_check_out_post_view(follow=True)
         self.assertContains(
             response=response, status_code=200,
-            text=force_text(DocumentAlreadyCheckedOut())
+            text=force_text(s=DocumentAlreadyCheckedOut())
         )
 
     def test_document_check_out_block_new_file(self):

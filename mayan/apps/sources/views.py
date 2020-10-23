@@ -383,7 +383,7 @@ class UploadInteractiveView(UploadBaseView):
         except Exception as exception:
             if request.is_ajax():
                 return JsonResponse(
-                    data={'error': force_text(exception)}, status=500
+                    data={'error': force_text(s=exception)}, status=500
                 )
             else:
                 raise
@@ -632,7 +632,7 @@ class DocumentFileUploadInteractiveView(UploadBaseView):
                 logger.critical(msg=message, exc_info=True)
                 if self.request.is_ajax():
                     return JsonResponse(
-                        data={'error': force_text(message)}, status=500
+                        data={'error': force_text(s=message)}, status=500
                     )
                 else:
                     raise type(exception)(message)

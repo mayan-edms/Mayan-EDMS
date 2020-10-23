@@ -70,7 +70,7 @@ class DependencyGroup:
         self.__class__._registry[name] = self
 
     def __str__(self):
-        return force_text(self.label)
+        return force_text(s=self.label)
 
     def get_entries(self):
         results = Dependency.get_values_of_attribute(
@@ -104,7 +104,7 @@ class DependencyGroupEntry:
         self.name = name
 
     def __str__(self):
-        return force_text(self.label)
+        return force_text(s=self.label)
 
     def get_dependencies(self):
         dependencies = Dependency.get_for_attribute(
@@ -160,12 +160,12 @@ class Dependency(AppsModuleLoaderMixin):
             print(
                 template.format(
                     dependency.name,
-                    force_text(dependency.class_name_verbose_name),
-                    force_text(dependency.get_version_string()),
-                    force_text(dependency.app_label_verbose_name()),
-                    force_text(dependency.get_environment_verbose_name()),
-                    force_text(dependency.get_other_data()),
-                    force_text(check),
+                    force_text(s=dependency.class_name_verbose_name),
+                    force_text(s=dependency.get_version_string()),
+                    force_text(s=dependency.app_label_verbose_name()),
+                    force_text(s=dependency.get_environment_verbose_name()),
+                    force_text(s=dependency.get_other_data()),
+                    force_text(s=check),
                 )
             )
 
@@ -469,7 +469,7 @@ class JavaScriptDependency(Dependency):
         temporary_directory = mkdtemp()
         path_compressed_file = self.get_tar_file_path()
 
-        with tarfile.open(name=force_text(path_compressed_file), mode='r') as file_object:
+        with tarfile.open(name=force_text(s=path_compressed_file), mode='r') as file_object:
             file_object.extractall(path=temporary_directory)
 
         self.patch_files(path=temporary_directory, replace_list=replace_list)
@@ -477,7 +477,7 @@ class JavaScriptDependency(Dependency):
         path_install = self.get_install_path()
 
         # Clear the installation path of previous content
-        shutil.rmtree(path=force_text(path_install), ignore_errors=True)
+        shutil.rmtree(path=force_text(s=path_install), ignore_errors=True)
 
         # Scoped packages are nested under a parent directory
         # create it to avoid rename errors.
@@ -488,11 +488,11 @@ class JavaScriptDependency(Dependency):
         # We do a copy and delete instead of move because os.rename doesn't
         # support renames across filesystems.
         path_uncompressed_package = Path(temporary_directory, 'package')
-        shutil.rmtree(force_text(path_install))
+        shutil.rmtree(force_text(s=path_install))
         shutil.copytree(
-            force_text(path_uncompressed_package), force_text(path_install)
+            force_text(s=path_uncompressed_package), force_text(s=path_install)
         )
-        shutil.rmtree(force_text(path_uncompressed_package))
+        shutil.rmtree(force_text(s=path_uncompressed_package))
 
         # Clean up temporary directory used for download
         shutil.rmtree(path=temporary_directory, ignore_errors=True)
@@ -519,7 +519,7 @@ class JavaScriptDependency(Dependency):
 
         for entry in path_install_path.glob(pattern='LICENSE*'):
             with entry.open(mode='rb') as file_object:
-                return force_text(file_object.read())
+                return force_text(s=file_object.read())
 
         copyright_text = []
 
@@ -709,7 +709,7 @@ class GoogleFontDependency(Dependency):
         with self.path_import_file.open(mode='w') as file_object:
             for agent_name, agent_string in self.user_agents.items():
                 import_file = force_text(
-                    requests.get(
+                    s=requests.get(
                         self.url, headers={
                             'User-Agent': agent_string
                         }
@@ -719,7 +719,7 @@ class GoogleFontDependency(Dependency):
                 for line in import_file.split('\n'):
                     if 'url' in line:
                         font_url = line.split(' ')[-2][4:-1]
-                        url = furl(force_text(font_url))
+                        url = furl(force_text(s=font_url))
                         font_filename = url.path.segments[-1]
 
                         path_font_filename = self.path_cache / font_filename
@@ -742,12 +742,12 @@ class GoogleFontDependency(Dependency):
         path_install = self.get_install_path()
 
         # Clear the installation path of previous content
-        shutil.rmtree(path=force_text(path_install), ignore_errors=True)
+        shutil.rmtree(path=force_text(s=path_install), ignore_errors=True)
 
         shutil.copytree(
-            force_text(self.path_cache), force_text(path_install)
+            force_text(s=self.path_cache), force_text(s=path_install)
         )
-        shutil.rmtree(force_text(self.path_cache), ignore_errors=True)
+        shutil.rmtree(force_text(s=self.path_cache), ignore_errors=True)
 
     def get_install_path(self):
         app = apps.get_app_config(app_label=self.app_label)

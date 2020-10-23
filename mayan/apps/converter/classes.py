@@ -310,7 +310,7 @@ class Layer:
         return self.permissions.get(action, None)
 
     def __str__(self):
-        return force_text(self.label)
+        return force_text(s=self.label)
 
     def add_transformation_to(self, obj, transformation_class, arguments=None):
         ContentType = apps.get_model(

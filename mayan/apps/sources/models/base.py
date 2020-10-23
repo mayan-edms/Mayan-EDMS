@@ -40,7 +40,7 @@ class Source(models.Model):
 
     @classmethod
     def class_fullname(cls):
-        return force_text(dict(SOURCE_CHOICES).get(cls.source_type))
+        return force_text(s=dict(SOURCE_CHOICES).get(cls.source_type))
 
     def clean_up_upload_file(self, upload_file_object):
         pass
@@ -72,7 +72,7 @@ class Source(models.Model):
                 for compressed_file_child in compressed_file.members():
                     with compressed_file.open_member(filename=compressed_file_child) as file_object:
                         kwargs.update(
-                            {'label': force_text(compressed_file_child)}
+                            {'label': force_text(s=compressed_file_child)}
                         )
                         documents.append(
                             self.upload_document(

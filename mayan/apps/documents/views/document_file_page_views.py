@@ -135,7 +135,7 @@ class DocumentFilePageNavigationBase(ExternalObjectMixin, RedirectView):
 
         # Obtain the view name to be able to resolve it back with new keyword
         # arguments.
-        resolver_match = resolve(path=force_text(parsed_url.path))
+        resolver_match = resolve(path=force_text(s=parsed_url.path))
 
         new_kwargs = self.get_new_kwargs()
 

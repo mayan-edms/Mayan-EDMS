@@ -155,9 +155,9 @@ class PopplerParser(Parser):
             return ''
 
         if output[-3:] == b'\x0a\x0a\x0c':
-            return force_text(output[:-3])
+            return force_text(s=output[:-3])
 
-        return force_text(output)
+        return force_text(s=output)
 
 
 Parser.register(

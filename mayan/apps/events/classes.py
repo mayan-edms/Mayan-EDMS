@@ -125,7 +125,7 @@ class EventTypeNamespace:
         return self.label < other.label
 
     def __str__(self):
-        return force_text(self.label)
+        return force_text(s=self.label)
 
     def add_event_type(self, name, label):
         event_type = EventType(namespace=self, name=name, label=label)
@@ -173,7 +173,7 @@ class EventType:
         self.__class__._registry[self.id] = self
 
     def __str__(self):
-        return force_text('{}: {}'.format(self.namespace.label, self.label))
+        return '{}: {}'.format(self.namespace.label, self.label)
 
     def commit(self, actor=None, action_object=None, target=None):
         AccessControlList = apps.get_model(

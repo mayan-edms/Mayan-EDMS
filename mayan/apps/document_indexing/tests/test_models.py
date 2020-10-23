@@ -90,7 +90,7 @@ class IndexTestCase(IndexTestMixin, DocumentTestMixin, BaseTestCase):
         self.assertEqual(
             list(IndexInstanceNode.objects.values_list('value', flat=True)),
             [
-                '', force_text(self.test_document.date_added.year),
+                '', force_text(s=self.test_document.date_added.year),
                 '{:02}'.format(self.test_document.date_added.month)
             ]
         )
@@ -131,8 +131,8 @@ class IndexTestCase(IndexTestMixin, DocumentTestMixin, BaseTestCase):
             set(IndexInstanceNode.objects.values_list('value', flat=True)),
             set(
                 [
-                    '', force_text(self.test_document_2.uuid), self.test_document_2.label,
-                    force_text(self.test_document.uuid), self.test_document.label
+                    '', force_text(s=self.test_document_2.uuid), self.test_document_2.label,
+                    force_text(s=self.test_document.uuid), self.test_document.label
                 ]
             )
         )

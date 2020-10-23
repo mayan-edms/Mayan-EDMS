@@ -50,9 +50,7 @@ class FavoriteAddView(MultipleObjectConfirmActionView):
     )
 
     def get_extra_context(self):
-        queryset = self.object_list
-
-        return {
+        context = {
             'submit_label': _('Add'),
             'submit_icon_class': icon_favorite_document_list,
             'title': ungettext(
@@ -62,9 +60,14 @@ class FavoriteAddView(MultipleObjectConfirmActionView):
             )
         }
 
+        if self.object_list.count() == 1:
+            context['object'] = self.object_list.first()
+
+        return context
+
     def object_action(self, form, instance):
         FavoriteDocument.objects.add_for_user(
-            user=self.request.user, document=instance
+            document=instance, user=self.request.user
         )
 
 
@@ -81,9 +84,7 @@ class FavoriteRemoveView(MultipleObjectConfirmActionView):
     )
 
     def get_extra_context(self):
-        queryset = self.object_list
-
-        return {
+        context = {
             'submit_label': _('Remove'),
             'submit_icon_class': icon_favorite_document_list,
             'title': ungettext(
@@ -93,10 +94,15 @@ class FavoriteRemoveView(MultipleObjectConfirmActionView):
             )
         }
 
+        if self.object_list.count() == 1:
+            context['object'] = self.object_list.first()
+
+        return context
+
     def object_action(self, form, instance):
         try:
             FavoriteDocument.objects.remove_for_user(
-                user=self.request.user, document=instance
+                document=instance, user=self.request.user
             )
         except FavoriteDocument.DoesNotExist:
             raise ActionError

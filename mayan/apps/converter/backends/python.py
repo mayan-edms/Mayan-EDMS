@@ -102,7 +102,7 @@ class Python(ConverterBase):
                 )
                 page_count = pdf_reader.getNumPages()
             except Exception as exception:
-                if force_text(exception) == 'File has not been decrypted':
+                if force_text(s=exception) == 'File has not been decrypted':
                     # File is encrypted, try to decrypt using a blank
                     # password.
                     file_object.seek(0)
@@ -114,7 +114,7 @@ class Python(ConverterBase):
                         page_count = pdf_reader.getNumPages()
                     except Exception as exception:
                         file_object.seek(0)
-                        if force_text(exception) == 'only algorithm code 1 and 2 are supported':
+                        if force_text(s=exception) == 'only algorithm code 1 and 2 are supported':
                             # PDF uses an unsupported encryption
                             # Try poppler-util's pdfinfo
                             page_count = self.get_pdfinfo_page_count(file_object)
@@ -125,7 +125,7 @@ class Python(ConverterBase):
                             ) % exception
                             logger.error(error_message)
                             raise PageCountError(error_message)
-                elif force_text(exception) == 'EOF marker not found':
+                elif force_text(s=exception) == 'EOF marker not found':
                     # PyPDF2 issue: https://github.com/mstamy2/PyPDF2/issues/177
                     # Try poppler-util's pdfinfo
                     logger.debug('PyPDF2 GitHub issue #177 : EOF marker not found')
@@ -179,7 +179,7 @@ class Python(ConverterBase):
         page_count = int(
             list(filter(
                 lambda line: line.startswith('Pages:'),
-                force_text(process.stdout).split('\n')
+                force_text(s=process.stdout).split('\n')
             ))[0].replace('Pages:', '')
         )
         file_object.seek(0)

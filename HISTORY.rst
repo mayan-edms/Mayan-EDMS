@@ -43,7 +43,7 @@
 - Split document app model tests into separate modules.
 - Split document app test mixins into separate modules.
 - Fix the appearance of the automatically generated view titles.
-- Add a new "Return" menu for secondany object views.
+- Add a new "Return" menu for secondary object views.
 - Use the "Return" menu for the document version, document version page,
   document file, and document file page views.
 - Remove the "File..." reference to the document file form fields as these
@@ -77,3 +77,4 @@
 - Add custom API paginator. Defaults to page size of 10, maximum page size of
   100 and provides the 'page_size' query parameter.
 - Remove NewFileBlockViewTestCase and simplify the checkout logic.
+

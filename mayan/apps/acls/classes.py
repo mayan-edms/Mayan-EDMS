@@ -51,7 +51,7 @@ class ModelPermission:
 
             for namespace, permissions in itertools.groupby(cls.get_for_class(klass=klass, as_choices=False), lambda entry: entry.namespace):
                 permission_options = [
-                    (force_text(permission.pk), permission) for permission in permissions
+                    (force_text(s=permission.pk), permission) for permission in permissions
                 ]
                 results.append(
                     (namespace, permission_options)

@@ -15,7 +15,7 @@ class StorageProcessManagementCommandTestCase(
         options = {
             'app_label': 'documents',
             'defined_storage_name': storage_document_files.name,
-            'log_file': force_text(self.path_test_file),
+            'log_file': force_text(s=self.path_test_file),
             'model_name': 'DocumentFile',
             'reverse': reverse
         }

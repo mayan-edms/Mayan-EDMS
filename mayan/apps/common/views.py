@@ -145,11 +145,11 @@ class SetupListView(SimpleView):
     def get_extra_context(self, **kwargs):
         return {
             'no_results_icon': icon_setup,
-            'no_results_label': _('No setup options available.'),
             'no_results_text': _(
                 'No results here means that don\'t have the required '
                 'permissions to perform administrative task.'
             ),
+            'no_results_title': _('No setup options available.'),
             'resolved_links': menu_setup.resolve(
                 request=self.request, sort_results=True
             ),

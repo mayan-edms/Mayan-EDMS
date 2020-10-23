@@ -173,7 +173,7 @@ class WorkflowTransitionTriggerEventRelationshipForm(forms.Form):
 
 
 WorkflowTransitionTriggerEventRelationshipFormSet = formset_factory(
-    WorkflowTransitionTriggerEventRelationshipForm, extra=0
+    form=WorkflowTransitionTriggerEventRelationshipForm, extra=0
 )
 
 

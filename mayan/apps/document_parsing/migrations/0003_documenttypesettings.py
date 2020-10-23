@@ -10,10 +10,10 @@ def operation_create_parsing_setting_for_existing_document_types(apps, schema_ed
         app_label='document_parsing', model_name='DocumentTypeSettings'
     )
 
-    for document_type in DocumentType.objects.using(schema_editor.connection.alias).all():
+    for document_type in DocumentType.objects.using(alias=schema_editor.connection.alias).all():
         try:
             DocumentTypeSettings.objects.using(
-                schema_editor.connection.alias
+                alias=schema_editor.connection.alias
             ).create(document_type=document_type)
         except DocumentTypeSettings.DoesNotExist:
             pass
@@ -27,10 +27,10 @@ def operation_delete_parsing_setting_for_existing_document_types(apps, schema_ed
         app_label='document_parsing', model_name='DocumentTypeSettings'
     )
 
-    for document_type in DocumentType.objects.using(schema_editor.connection.alias).all():
+    for document_type in DocumentType.objects.using(alias=schema_editor.connection.alias).all():
         try:
             DocumentTypeSettings.objects.using(
-                schema_editor.connection.alias
+                alias=schema_editor.connection.alias
             ).get(document_type=document_type).delete()
         except DocumentTypeSettings.DoesNotExist:
             pass

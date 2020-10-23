@@ -20,7 +20,7 @@ class DocumentTagViewTestCase(
 
         response = self._request_test_document_tag_list_view()
         self.assertNotContains(
-            response=response, text=force_text(self.test_tag), status_code=404
+            response=response, text=force_text(s=self.test_tag), status_code=404
         )
 
     def test_document_tags_list_with_document_access(self):
@@ -32,7 +32,7 @@ class DocumentTagViewTestCase(
 
         response = self._request_test_document_tag_list_view()
         self.assertNotContains(
-            response=response, text=force_text(self.test_tag), status_code=200
+            response=response, text=force_text(s=self.test_tag), status_code=200
         )
 
     def test_document_tags_list_with_tag_access(self):
@@ -42,7 +42,7 @@ class DocumentTagViewTestCase(
 
         response = self._request_test_document_tag_list_view()
         self.assertNotContains(
-            response=response, text=force_text(self.test_tag), status_code=404
+            response=response, text=force_text(s=self.test_tag), status_code=404
         )
 
     def test_document_tags_list_with_full_access(self):
@@ -57,7 +57,7 @@ class DocumentTagViewTestCase(
 
         response = self._request_test_document_tag_list_view()
         self.assertContains(
-            response=response, text=force_text(self.test_tag), status_code=200
+            response=response, text=force_text(s=self.test_tag), status_code=200
         )
 
     def test_document_attach_tag_view_no_permission(self):

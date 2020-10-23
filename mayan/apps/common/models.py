@@ -39,7 +39,7 @@ class UserLocaleProfile(models.Model):
         verbose_name_plural = _('User locale profiles')
 
     def __str__(self):
-        return force_text(self.user)
+        return force_text(s=self.user)
 
     def natural_key(self):
         return self.user.natural_key()

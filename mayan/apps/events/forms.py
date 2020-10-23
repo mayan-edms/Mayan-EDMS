@@ -58,7 +58,7 @@ class EventTypeUserRelationshipForm(forms.Form):
 
 
 EventTypeUserRelationshipFormSet = formset_factory(
-    EventTypeUserRelationshipForm, extra=0
+    form=EventTypeUserRelationshipForm, extra=0
 )
 
 
@@ -117,5 +117,5 @@ class ObjectEventTypeUserRelationshipForm(forms.Form):
 
 
 ObjectEventTypeUserRelationshipFormSet = formset_factory(
-    ObjectEventTypeUserRelationshipForm, extra=0
+    form=ObjectEventTypeUserRelationshipForm, extra=0
 )

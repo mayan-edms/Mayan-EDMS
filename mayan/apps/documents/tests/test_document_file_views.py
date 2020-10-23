@@ -120,7 +120,7 @@ class DocumentFileDownloadViewTestCase(
         with self.test_document.latest_file.open() as file_object:
             self.assert_download_response(
                 response=response, content=file_object.read(),
-                filename=force_text(self.test_document.latest_file),
+                filename=force_text(s=self.test_document.latest_file),
                 mime_type=self.test_document.latest_file.mimetype
             )
     '''

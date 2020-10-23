@@ -226,7 +226,7 @@ class TrashedDocumentAPIViewTestCase(
         response = self._request_test_trashed_document_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
-            response.data['uuid'], force_text(self.test_document.uuid)
+            response.data['uuid'], force_text(s=self.test_document.uuid)
         )
 
     def test_trashed_document_image_api_view_no_permission(self):
@@ -265,7 +265,7 @@ class TrashedDocumentAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             response.data['results'][0]['uuid'],
-            force_text(self.test_document.uuid)
+            force_text(s=self.test_document.uuid)
         )
 
     def test_trashed_document_restore_api_view_no_permission(self):

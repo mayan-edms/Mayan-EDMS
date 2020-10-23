@@ -56,7 +56,7 @@ class StagingFile:
             ))
 
     def __str__(self):
-        return force_text(self.filename)
+        return force_text(s=self.filename)
 
     def as_file(self):
         return File(

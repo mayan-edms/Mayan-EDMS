@@ -19,7 +19,6 @@ from mayan.apps.documents.tests.literals import (
     TEST_SMALL_DOCUMENT_FILENAME, TEST_SMALL_DOCUMENT_PATH
 )
 from mayan.apps.metadata.models import MetadataType
-from mayan.apps.storage.utils import mkdtemp
 
 from ..literals import SOURCE_UNCOMPRESS_CHOICE_Y
 from ..models.email_sources import EmailBaseModel, IMAPEmail, POP3Email
@@ -344,7 +343,7 @@ class WatchFolderTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
         test_subfolder = test_path.joinpath(TEST_WATCHFOLDER_SUBFOLDER)
         test_subfolder.mkdir()
 
-        shutil.copy(TEST_SMALL_DOCUMENT_PATH, force_text(test_subfolder))
+        shutil.copy(TEST_SMALL_DOCUMENT_PATH, force_text(s=test_subfolder))
         self.test_watch_folder.check_source()
         self.assertEqual(Document.objects.count(), 0)
 
@@ -357,7 +356,7 @@ class WatchFolderTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
         test_subfolder = test_path.joinpath(TEST_WATCHFOLDER_SUBFOLDER)
         test_subfolder.mkdir()
 
-        shutil.copy(TEST_SMALL_DOCUMENT_PATH, force_text(test_subfolder))
+        shutil.copy(TEST_SMALL_DOCUMENT_PATH, force_text(s=test_subfolder))
         self.test_watch_folder.check_source()
         self.assertEqual(Document.objects.count(), 1)
 

@@ -3,7 +3,7 @@ import shutil
 
 from django.utils.encoding import force_text
 
-from mayan.apps.documents.literals import STORAGE_NAME_DOCUMENT_FILES
+from mayan.apps.documents.storages import storage_document_files
 from mayan.apps.documents.tests.base import GenericDocumentTestCase
 from mayan.apps.mimetype.api import get_mimetype
 from mayan.apps.testing.tests.base import BaseTestCase
@@ -91,7 +91,7 @@ class StorageProcessorTestCase(
     def _execute_storage_procesor(self, reverse=None):
         storage_processor = PassthroughStorageProcessor(
             app_label='documents',
-            defined_storage_name=STORAGE_NAME_DOCUMENT_FILES,#'documents__documentfile',
+            defined_storage_name=storage_document_files.name,
             log_file=force_text(self.path_test_file),
             model_name='DocumentFile'
         )

@@ -37,7 +37,7 @@ class StoredPermission(models.Model):
 
     def __str__(self):
         try:
-            return force_text(self.volatile_permission)
+            return force_text(s=self.volatile_permission)
         except KeyError:
             return self.name
 

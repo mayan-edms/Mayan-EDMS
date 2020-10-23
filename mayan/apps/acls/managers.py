@@ -228,7 +228,7 @@ class AccessControlListManager(models.Manager):
                 ugettext(
                     'Object "%s" is not a model and cannot be checked for '
                     'access.'
-                ) % force_text(obj)
+                ) % force_text(s=obj)
             )
             return True
         else:

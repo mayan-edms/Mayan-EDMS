@@ -265,7 +265,7 @@ class DocumentFileSignatureDownloadView(SingleObjectDownloadView):
         return self.object.signature_file
 
     def get_download_filename(self):
-        return force_text(self.object)
+        return force_text(s=self.object)
 
 
 class DocumentFileSignatureListView(

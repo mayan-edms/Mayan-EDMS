@@ -115,7 +115,7 @@ class DocumentMetadataForm(forms.Form):
         return self.cleaned_data
 
 
-DocumentMetadataFormSet = formset_factory(DocumentMetadataForm, extra=0)
+DocumentMetadataFormSet = formset_factory(form=DocumentMetadataForm, extra=0)
 
 
 class DocumentMetadataAddForm(forms.Form):
@@ -158,7 +158,7 @@ class DocumentMetadataRemoveForm(DocumentMetadataForm):
 
 
 DocumentMetadataRemoveFormSet = formset_factory(
-    DocumentMetadataRemoveForm, extra=0
+    form=DocumentMetadataRemoveForm, extra=0
 )
 
 
@@ -277,7 +277,7 @@ class DocumentTypeMetadataTypeRelationshipForm(forms.Form):
 
 
 DocumentTypeMetadataTypeRelationshipFormSetBase = formset_factory(
-    DocumentTypeMetadataTypeRelationshipForm, extra=0
+    form=DocumentTypeMetadataTypeRelationshipForm, extra=0
 )
 
 

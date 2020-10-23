@@ -197,7 +197,7 @@ class DocumentMetadata(models.Model):
         verbose_name_plural = _('Document metadata')
 
     def __str__(self):
-        return force_text(self.metadata_type)
+        return force_text(s=self.metadata_type)
 
     def clean_fields(self, *args, **kwargs):
         super().clean_fields(*args, **kwargs)
@@ -292,7 +292,7 @@ class DocumentTypeMetadataType(models.Model):
         verbose_name_plural = _('Document type metadata types options')
 
     def __str__(self):
-        return force_text(self.metadata_type)
+        return force_text(s=self.metadata_type)
 
     def delete(self, *args, **kwargs):
         _user = kwargs.pop('_user', None)

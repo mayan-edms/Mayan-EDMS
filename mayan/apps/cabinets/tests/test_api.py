@@ -170,7 +170,7 @@ class CabinetDocumentAPITestCase(
         self._upload_test_document()
 
         documents_pk_list = ','.join(
-            [force_text(document.pk) for document in self.test_documents]
+            [force_text(s=document.pk) for document in self.test_documents]
         )
 
         self.grant_permission(permission=permission_cabinet_create)
@@ -228,7 +228,7 @@ class CabinetDocumentAPITestCase(
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.assertEqual(
-            response.data['uuid'], force_text(self.test_document.uuid)
+            response.data['uuid'], force_text(s=self.test_document.uuid)
         )
 
     def test_cabinet_document_list_api_view(self):
@@ -250,7 +250,7 @@ class CabinetDocumentAPITestCase(
 
         self.assertEqual(
             response.data['results'][0]['uuid'],
-            force_text(self.test_document.uuid)
+            force_text(s=self.test_document.uuid)
         )
 
     def test_cabinet_add_document_api_view(self):
@@ -276,7 +276,7 @@ class CabinetDocumentAPITestCase(
         self._upload_test_document()
 
         documents_pk_list = ','.join(
-            [force_text(document.pk) for document in self.test_documents]
+            [force_text(s=document.pk) for document in self.test_documents]
         )
 
         self._create_test_cabinet()

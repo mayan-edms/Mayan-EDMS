@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
             field=models.FileField(
                 storage=django.core.files.storage.FileSystemStorage(
                     location=b'mayan/media/document_storage'
-                ), upload_to=force_text(uuid.uuid4()), verbose_name='File'
+                ), upload_to=force_text(s=uuid.uuid4()), verbose_name='File'
             ),
         ),
     ]
