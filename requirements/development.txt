@@ -1,4 +1,3 @@
-Werkzeug==1.0.1
 devpi-server==5.5.0
 django-debug-toolbar==2.2
 django-extensions==2.2.9
