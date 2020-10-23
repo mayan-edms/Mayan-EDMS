@@ -13,7 +13,7 @@ services:
       POSTGRES_DB: mayan
       POSTGRES_PASSWORD: mayandbpass
       POSTGRES_USER: mayan
-    image: postgres
+    image: postgres:10.14-alpine
     volumes:
       - db:/var/lib/postgresql/data
 
@@ -31,10 +31,12 @@ services:
   redis:
     command:
       - redis-server
+      - --appendonly
+      - "no"
       - --databases
       - "2"
       - --maxmemory-policy
       - allkeys-lru
       - --save
       - ""
-    image: redis:5.0
+    image: redis:5.0-alpine
