@@ -27,6 +27,10 @@ Simple Docker installation
 
        docker pull mayanedms/mayanedms:|DOCKER_MAYAN_IMAGE_VERSION|
 
+   .. note::
+
+       Do not use the ``latest`` tag, it does not point to the latest version.
+
 
 #. Download the PostgreSQL Docker image:
 

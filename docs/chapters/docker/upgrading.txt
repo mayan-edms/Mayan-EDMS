@@ -31,13 +31,11 @@ database structure to the newest version if necessary.
 
   .. code-block:: console
 
-      docker pull mayanedms/mayanedms:latest
+      docker pull mayanedms/mayanedms:|DOCKER_MAYAN_IMAGE_VERSION|
 
-  or a specific version:
+  .. note::
 
-  .. code-block:: console
-
-      docker pull mayanedms/mayanedms:<version>
+     Do not use the ``latest`` tag, it does not point to the latest version.
 
 
 #. Start the container again with the new image version:
