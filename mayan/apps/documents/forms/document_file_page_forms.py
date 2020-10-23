@@ -1,9 +1,8 @@
 from django import forms
-from django.utils.translation import ugettext_lazy as _
 
 from ..fields import DocumentFilePageField
 
-__all__ = ('DocumentFilePageForm', 'PageNumberForm')
+__all__ = ('DocumentFilePageForm',)
 
 
 class DocumentFilePageForm(forms.Form):

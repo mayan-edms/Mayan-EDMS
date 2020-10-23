@@ -1,13 +1,12 @@
 from django.test import override_settings
 
-from mayan.apps.converter.layers import layer_saved_transformations
-from mayan.apps.converter.permissions import permission_transformation_delete
 from mayan.apps.converter.tests.mixins import LayerTestMixin
 
-from ..models import Document, DocumentType
+from ..models.document_models import Document
+from ..models.document_type_models import DocumentType
 from ..permissions import (
-    permission_document_create, permission_document_version_print,
-    permission_document_properties_edit, permission_document_view
+    permission_document_create, permission_document_properties_edit,
+    permission_document_view
 )
 
 from .base import GenericDocumentViewTestCase

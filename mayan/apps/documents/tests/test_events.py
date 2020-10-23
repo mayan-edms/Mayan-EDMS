@@ -3,16 +3,9 @@ from actstream.models import Action
 from ..events import (
     event_document_download, event_document_trashed, event_document_viewed
 )
-from ..permissions import (
-    permission_document_file_download, permission_document_trash,
-    permission_document_view
-)
+from ..permissions import permission_document_trash, permission_document_view
 
 from .base import GenericDocumentViewTestCase
-from .literals import (
-    TEST_DOCUMENT_TYPE_2_LABEL, TEST_DOCUMENT_TYPE_LABEL_EDITED,
-    TEST_TRANSFORMATION_NAME, TEST_TRANSFORMATION_ARGUMENT
-)
 from .mixins.document_mixins import DocumentViewTestMixin
 from .mixins.trashed_document_mixins import TrashedDocumentViewTestMixin
 

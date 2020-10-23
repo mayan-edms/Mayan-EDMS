@@ -1,11 +1,10 @@
 from django import forms
-from django.core.exceptions import ValidationError
 from django.forms.formsets import formset_factory
 from django.utils.translation import ugettext_lazy as _
 
 from ..fields import DocumentVersionPageField, ThumbnailFormField
 
-__all__ = ('DocumentVersionPageForm', 'DocumentVersionPageNumberForm')
+__all__ = ('DocumentVersionPageForm',)
 
 
 class DocumentVersionPageForm(forms.Form):

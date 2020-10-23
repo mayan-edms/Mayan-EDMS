@@ -53,12 +53,6 @@ class APITagView(generics.RetrieveUpdateDestroyAPIView):
     }
     queryset = Tag.objects.all()
 
-    #def get_serializer(self, *args, **kwargs):
-    #    if not self.request:
-    #        return None
-
-    #    return super().get_serializer(*args, **kwargs)
-
     def get_serializer_class(self):
         if self.request.method == 'GET':
             return TagSerializer

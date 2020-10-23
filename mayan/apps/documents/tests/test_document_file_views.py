@@ -8,13 +8,12 @@ from mayan.apps.converter.tests.mixins import LayerTestMixin
 from mayan.apps.documents.tests.literals import TEST_MULTI_PAGE_TIFF
 
 from ..permissions import (
-    permission_document_file_download, permission_document_file_delete,
+    permission_document_file_delete, permission_document_file_download,
     permission_document_file_edit, permission_document_file_print,
-    permission_document_file_view, permission_document_tools
+    permission_document_file_view
 )
 
 from .base import GenericDocumentViewTestCase
-from .literals import TEST_SMALL_DOCUMENT_FILENAME, TEST_VERSION_COMMENT
 from .mixins.document_file_mixins import (
     DocumentFileTestMixin, DocumentFileTransformationTestMixin,
     DocumentFileTransformationViewTestMixin, DocumentFileViewTestMixin
@@ -152,6 +151,8 @@ class DocumentFileDownloadViewTestCase(
                 filename=force_text(s=self.test_document.latest_file),
                 mime_type=self.test_document.latest_file.mimetype
             )
+
+    ##DISABLED TESTS
     '''
     def test_document_file_download_preserve_extension_view_with_permission(self):
         # Set the expected_content_types for

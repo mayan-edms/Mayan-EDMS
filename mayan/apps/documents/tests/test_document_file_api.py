@@ -4,27 +4,12 @@ from rest_framework import status
 
 from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
-from ..models import Document, DocumentType
 from ..permissions import (
-    permission_document_create, permission_document_file_download,
-    permission_trashed_document_delete, permission_document_edit,
-    permission_document_file_delete, permission_document_file_view,
-    permission_document_file_new, permission_document_properties_edit,
-    permission_trashed_document_restore, permission_document_trash,
-    permission_document_view, permission_document_type_create,
-    permission_document_type_delete, permission_document_type_edit,
-    permission_document_version_view,
+    permission_document_file_delete, permission_document_file_download,
+    permission_document_file_new, permission_document_file_view
 )
 
-from .literals import (
-    TEST_DOCUMENT_DESCRIPTION_EDITED, TEST_PDF_DOCUMENT_FILENAME,
-    TEST_DOCUMENT_TYPE_LABEL, TEST_DOCUMENT_TYPE_2_LABEL,
-    TEST_DOCUMENT_TYPE_LABEL_EDITED, TEST_DOCUMENT_VERSION_COMMENT_EDITED,
-    TEST_SMALL_DOCUMENT_FILENAME
-)
-from .mixins.document_mixins import (
-    DocumentAPIViewTestMixin, DocumentTestMixin
-)
+from .mixins.document_mixins import DocumentTestMixin
 from .mixins.document_file_mixins import (
     DocumentFileAPIViewTestMixin, DocumentFileTestMixin,
     DocumentFilePageAPIViewTestMixin
@@ -101,6 +86,7 @@ class DocumentFileAPIViewTestCase(
             response.data['results'][1]['checksum'],
             self.test_document.latest_file.checksum
         )
+
     def test_document_file_delete_api_view_no_permission(self):
         self._upload_test_document()
         self._upload_new_file()

@@ -6,14 +6,11 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.forms import DetailForm
 
-from ..models import Document
-from ..literals import PAGE_RANGE_ALL, PAGE_RANGE_CHOICES
+from ..models.document_models import Document
 from ..settings import setting_language
 from ..utils import get_language, get_language_choices
 
-__all__ = (
-    'DocumentForm', 'DocumentPropertiesForm', 'PrintForm'
-)
+__all__ = ('DocumentForm', 'DocumentPropertiesForm',)
 logger = logging.getLogger(name=__name__)
 
 

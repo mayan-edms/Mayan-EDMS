@@ -1,17 +1,13 @@
 import logging
 
-from django.conf import settings
 from django.contrib import messages
-from django.db import transaction
-from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _, ungettext
 
-from mayan.apps.acls.models import AccessControlList
 from mayan.apps.common.classes import ModelQueryFields
 from mayan.apps.views.generics import (
-    FormView, MultipleObjectConfirmActionView, MultipleObjectFormActionView,
-    SingleObjectDetailView, SingleObjectEditView, SingleObjectListView
+    MultipleObjectFormActionView, SingleObjectDetailView,
+    SingleObjectEditView, SingleObjectListView
 )
 
 from ..events import event_document_viewed
@@ -21,10 +17,9 @@ from ..icons import (
     icon_document_list, icon_document_list_recent_access,
     icon_recent_added_document_list
 )
-from ..models import Document, RecentDocument
+from ..models.document_models import Document, RecentDocument
 from ..permissions import (
-    permission_document_properties_edit, permission_document_tools,
-    permission_document_version_print, permission_document_view
+    permission_document_properties_edit, permission_document_view
 )
 from ..settings import setting_recent_added_count
 
@@ -32,8 +27,7 @@ from .document_version_views import DocumentVersionPreviewView
 
 __all__ = (
     'DocumentListView', 'DocumentTypeChangeView', 'DocumentPropertiesEditView',
-    'DocumentPreviewView', 'DocumentTransformationsClearView',
-    'DocumentTransformationsCloneView', 'RecentAccessDocumentListView',
+    'DocumentPreviewView', 'RecentAccessDocumentListView',
     'RecentAddedDocumentListView'
 )
 logger = logging.getLogger(name=__name__)

@@ -2,7 +2,6 @@ import logging
 
 from django.conf import settings
 from django.contrib import messages
-from django.db import transaction
 from django.template import RequestContext
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _, ungettext
@@ -29,13 +28,12 @@ from ..forms.document_file_forms import (
 )
 from ..forms.misc_forms import PageNumberForm
 from ..icons import icon_document_file_download, icon_document_file_list
-from ..literals import DEFAULT_DOCUMENT_FILE_ZIP_FILENAME
 from ..models.document_models import Document
 from ..models.document_file_models import DocumentFile
 from ..permissions import (
     permission_document_file_delete, permission_document_file_download,
     permission_document_file_edit, permission_document_file_print,
-    permission_document_file_tools, permission_document_file_view
+    permission_document_file_view
 )
 
 from .misc_views import PrintFormView, DocumentPrintView

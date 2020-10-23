@@ -1,11 +1,6 @@
-import logging
-
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.forms import DetailForm
-
-from ..fields import DocumentFilePageField
 from ..literals import PAGE_RANGE_ALL, PAGE_RANGE_CHOICES
 
 
