@@ -169,17 +169,24 @@ class APIIndexTemplateNodeViewMixin(AsymmetricSerializerViewMixin):
     read_serializer_class = IndexTemplateNodeSerializer
     write_serializer_class = IndexTemplateNodeWriteSerializer
 
+    def get_serializer(self, *args, **kwargs):
+        if not self.request:
+            return None
+
+        return super().get_serializer(*args, **kwargs)
+
     def get_index_template(self):
-        permission = self.object_permissions[self.request.method]
+        if 'index_template_id' in self.kwargs:
+            permission = self.object_permissions[self.request.method]
 
-        queryset = AccessControlList.objects.restrict_queryset(
-            permission=permission, queryset=Index.objects.all(),
-            user=self.request.user
-        )
+            queryset = AccessControlList.objects.restrict_queryset(
+                permission=permission, queryset=Index.objects.all(),
+                user=self.request.user
+            )
 
-        return get_object_or_404(
-            klass=queryset, pk=self.kwargs['index_template_id']
-        )
+            return get_object_or_404(
+                klass=queryset, pk=self.kwargs['index_template_id']
+            )
 
     def get_serializer_context(self):
         context = super().get_serializer_context()
