@@ -34,18 +34,10 @@ class APIResolvedSmartLinkDocumentListView(generics.ListAPIView):
 
         return document
 
-    def get_smart_link(self):
-        smart_link = get_object_or_404(
-            klass=SmartLink.objects.get_for(document=self.get_document()),
-            pk=self.kwargs['smart_link_pk']
+    def get_queryset(self):
+        return self.get_smart_link().get_linked_document_for(
+            document=self.get_document()
         )
-
-        AccessControlList.objects.check_access(
-            obj=smart_link, permissions=(permission_smart_link_view,),
-            user=self.request.user
-        )
-
-        return smart_link
 
     def get_serializer_context(self):
         """
@@ -62,10 +54,18 @@ class APIResolvedSmartLinkDocumentListView(generics.ListAPIView):
 
         return context
 
-    def get_queryset(self):
-        return self.get_smart_link().get_linked_document_for(
-            document=self.get_document()
+    def get_smart_link(self):
+        smart_link = get_object_or_404(
+            klass=SmartLink.objects.get_for(document=self.get_document()),
+            pk=self.kwargs['smart_link_pk']
         )
+
+        AccessControlList.objects.check_access(
+            obj=smart_link, permissions=(permission_smart_link_view,),
+            user=self.request.user
+        )
+
+        return smart_link
 
 
 class APIResolvedSmartLinkView(generics.RetrieveAPIView):
