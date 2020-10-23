@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:22-0400\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2019-12-03 05:23+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>, 2020\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -36,79 +36,83 @@ msgstr "Mezipaměť byla upravena"
 msgid "Cache purged"
 msgstr "Vyrovnávací paměť byla vymazána"
 
-#: links.py:10
+#: links.py:21
 msgid "File caches"
 msgstr "Souborová mezipaměť"
 
-#: links.py:14 links.py:18
+#: links.py:26 links.py:30
 msgid "Purge cache"
 msgstr "Vyčistit mezipaměť"
 
-#: models.py:29
+#: models.py:28
 msgid "Internal name of the defined storage for this cache."
-msgstr ""
+msgstr "Interní název definovaného úložiště pro tuto mezipaměť."
 
-#: models.py:30
+#: models.py:29
 msgid "Defined storage name"
-msgstr ""
+msgstr "Definovaný název úložiště"
 
-#: models.py:33
+#: models.py:32
 msgid "Maximum size of the cache in bytes."
 msgstr "Maximální velikost mezipaměti v bajtech."
 
-#: models.py:35 models.py:54
+#: models.py:34 models.py:53
 msgid "Maximum size"
 msgstr "Maximální velikost"
 
-#: models.py:39 models.py:123
+#: models.py:38 models.py:136
 msgid "Cache"
 msgstr "Mezipaměti"
 
-#: models.py:40
+#: models.py:39
 msgid "Caches"
 msgstr "Mezipaměti"
 
-#: models.py:52
+#: models.py:51
 msgid "Size at which the cache will start deleting old entries."
 msgstr "Velikost, od které se v mezipaměti začnou mazat staré záznamy."
 
-#: models.py:74
-msgid "Current size"
+#: models.py:60
+msgid "Unknown"
 msgstr ""
 
-#: models.py:75
+#: models.py:78
+msgid "Current size"
+msgstr "Aktuální velikost"
+
+#: models.py:79
 msgid "Current size of the cache."
 msgstr "Aktuální velikost mezipaměti."
 
-#: models.py:126
+#: models.py:139
 msgid "Name"
 msgstr "název"
 
-#: models.py:131 models.py:201
+#: models.py:144 models.py:217
 msgid "Cache partition"
 msgstr "Oddíl mezipaměti"
 
-#: models.py:132
+#: models.py:145
 msgid "Cache partitions"
 msgstr "Oddíly mezipaměti"
 
-#: models.py:204
+#: models.py:220
 msgid "Date time"
 msgstr "Datum a čas"
 
-#: models.py:206
+#: models.py:222
 msgid "Filename"
 msgstr "Název souboru"
 
-#: models.py:208
+#: models.py:224
 msgid "File size"
 msgstr "Velikost souboru"
 
-#: models.py:214
+#: models.py:232
 msgid "Cache partition file"
 msgstr "Soubor mezipaměti"
 
-#: models.py:215
+#: models.py:233
 msgid "Cache partition files"
 msgstr "Soubory mezipaměti"
 

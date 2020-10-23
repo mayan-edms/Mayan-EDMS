@@ -23,12 +23,17 @@ link_workflow_template_create = Link(
     permissions=(permission_workflow_create,),
     text=_('Create workflow'), view='document_states:workflow_template_create'
 )
-link_workflow_template_delete = Link(
+link_workflow_template_multiple_delete = Link(
+    icon_class_path='mayan.apps.document_states.icons.icon_workflow_template_delete',
+    tags='dangerous', text=_('Delete'),
+    view='document_states:workflow_template_multiple_delete',
+)
+link_workflow_template_single_delete = Link(
     args='resolved_object.pk',
     icon_class_path='mayan.apps.document_states.icons.icon_workflow_template_delete',
     permissions=(permission_workflow_delete,),
     tags='dangerous', text=_('Delete'),
-    view='document_states:workflow_template_delete',
+    view='document_states:workflow_template_single_delete',
 )
 link_workflow_template_document_types = Link(
     args='resolved_object.pk',
@@ -155,6 +160,17 @@ link_workflow_template_transition_list = Link(
 
 # Workflow transition fields
 
+link_document_multiple_workflow_templates_launch = Link(
+    icon_class_path='mayan.apps.document_states.icons.icon_document_workflow_templates_launch',
+    text=_('Launch workflows'),
+    view='document_states:document_multiple_workflow_templates_launch',
+)
+link_document_single_workflow_templates_launch = Link(
+    args='resolved_object.pk',
+    icon_class_path='mayan.apps.document_states.icons.icon_document_workflow_templates_launch',
+    permissions=(permission_workflow_tools,), text=_('Launch workflows'),
+    view='document_states:document_single_workflow_templates_launch',
+)
 link_workflow_template_transition_field_create = Link(
     args='resolved_object.pk',
     icon_class_path='mayan.apps.document_states.icons.icon_workflow_transition_field',

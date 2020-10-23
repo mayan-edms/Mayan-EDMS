@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Badea Gabriel <gcbadea@gmail.com>, 2013
 # Harald Ersch, 2019-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:21-0400\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2020-04-21 07:43+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -27,11 +28,11 @@ msgstr "Django GPG"
 msgid "Key ID"
 msgstr "ID cheie"
 
-#: apps.py:56 forms.py:32 models.py:54
+#: apps.py:56 forms.py:32 models.py:53
 msgid "Type"
 msgstr "Tip"
 
-#: apps.py:60 forms.py:21 models.py:35
+#: apps.py:60 forms.py:21 models.py:34
 msgid "Creation date"
 msgstr "Data creării"
 
@@ -39,15 +40,15 @@ msgstr "Data creării"
 msgid "No expiration"
 msgstr "Fără dată de expirare"
 
-#: apps.py:65 forms.py:25 models.py:39
+#: apps.py:65 forms.py:25 models.py:38
 msgid "Expiration date"
 msgstr "Data expirării"
 
-#: apps.py:68 forms.py:30 models.py:46
+#: apps.py:68 forms.py:30 models.py:45
 msgid "Length"
 msgstr "Lungime"
 
-#: apps.py:73 forms.py:17 models.py:51
+#: apps.py:73 forms.py:17 models.py:50
 msgid "User ID"
 msgstr "Identificatorul utilizatorului"
 
@@ -59,11 +60,11 @@ msgstr "Protecția confidențialității GNU - o implementare PGP."
 msgid "None"
 msgstr "Nici unul"
 
-#: forms.py:29 models.py:43
+#: forms.py:29 models.py:42
 msgid "Fingerprint"
 msgstr "Amprentă digitală"
 
-#: forms.py:31 models.py:49
+#: forms.py:31 models.py:48
 msgid "Algorithm"
 msgstr "Algoritm"
 
@@ -155,27 +156,27 @@ msgstr "Documentul este semnat, iar semnătura este bună."
 msgid "Document is signed with a valid signature."
 msgstr "Documentul este semnat cu o semnătură validă."
 
-#: models.py:31
+#: models.py:30
 msgid "ASCII armored version of the key."
 msgstr "Versiunea blindată ASCII a cheii."
 
-#: models.py:32
+#: models.py:31
 msgid "Key data"
 msgstr "Datele cheii"
 
-#: models.py:60
+#: models.py:59
 msgid "Key"
 msgstr "Cheie"
 
-#: models.py:61
+#: models.py:60
 msgid "Keys"
 msgstr "Chei"
 
-#: models.py:73
+#: models.py:72
 msgid "Invalid key data"
 msgstr "Datele cheii sunt  incorecte"
 
-#: models.py:76
+#: models.py:75
 msgid "Key already exists."
 msgstr "Cheia există deja."
 

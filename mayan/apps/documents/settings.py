@@ -8,7 +8,8 @@ from mayan.apps.smart_settings.classes import SettingNamespace
 from .literals import (
     DEFAULT_DOCUMENTS_CACHE_MAXIMUM_SIZE, DEFAULT_DOCUMENTS_HASH_BLOCK_SIZE,
     DEFAULT_LANGUAGE, DEFAULT_LANGUAGE_CODES,
-    DEFAULT_STUB_EXPIRATION_INTERVAL
+    DEFAULT_STUB_EXPIRATION_INTERVAL,
+    DEFAULT_TASK_GENERATE_DOCUMENT_PAGE_IMAGE_RETRY_DELAY
 )
 from .setting_callbacks import callback_update_cache_size
 from .setting_migrations import DocumentsSettingMigration
@@ -134,6 +135,14 @@ setting_stub_expiration_interval = namespace.add_setting(
     help_text=_(
         'Time after which a document stub will be considered invalid and '
         'deleted.'
+    )
+)
+setting_task_generate_document_page_image_retry_delay = namespace.add_setting(
+    global_name='DOCUMENT_TASK_GENERATE_DOCUMENT_PAGE_IMAGE_RETRY_DELAY',
+    default=DEFAULT_TASK_GENERATE_DOCUMENT_PAGE_IMAGE_RETRY_DELAY,
+    help_text=_(
+        'Amount of time in seconds, a failed document page image task will '
+        'wait before retrying.'
     )
 )
 setting_thumbnail_height = namespace.add_setting(

@@ -5,14 +5,15 @@
 # 
 # Translators:
 # Roberto Rosario, 2020
+# yan songwei <yansw@vip.163.com>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:21-0400\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
-"Last-Translator: Roberto Rosario, 2020\n"
+"Last-Translator: yan songwei <yansw@vip.163.com>, 2020\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,29 +21,29 @@ msgstr ""
 "Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:48 apps.py:123 apps.py:130 apps.py:135 apps.py:138 events.py:5
-#: forms.py:14 links.py:22 menus.py:14 models.py:48 models.py:170
-#: permissions.py:5 views.py:164 workflow_actions.py:20
+#: apps.py:53 apps.py:149 apps.py:156 events.py:5 forms.py:14 links.py:22
+#: menus.py:14 models.py:45 models.py:167 permissions.py:5 search.py:46
+#: search.py:49 views.py:164 workflow_actions.py:20
 msgid "Cabinets"
 msgstr "文档柜"
 
 #: events.py:9
 msgid "Cabinet created"
-msgstr ""
+msgstr "文档柜创建"
 
 #: events.py:12
 msgid "Cabinet edited"
-msgstr ""
+msgstr "文档柜编辑"
 
 #: events.py:15
 msgid "Document added to cabinet"
-msgstr ""
+msgstr "文件已添加到文档柜"
 
 #: events.py:18
 msgid "Document removed from cabinet"
-msgstr ""
+msgstr "文档从文档柜中移除"
 
-#: links.py:28 links.py:42 workflow_actions.py:74
+#: links.py:28 links.py:42 workflow_actions.py:72
 msgid "Remove from cabinets"
 msgstr "从文档柜中删除"
 
@@ -76,51 +77,51 @@ msgstr "细节"
 
 #: methods.py:20
 msgid "Return a list of cabinets containing the document."
-msgstr ""
+msgstr "返回包含文档的文档柜列表。"
 
 #: methods.py:22
 msgid "get_cabinets()"
-msgstr ""
+msgstr "get_cabinets()"
 
-#: models.py:34
+#: models.py:31
 msgid "A short text used to identify the cabinet."
-msgstr ""
+msgstr "用于标识文档柜的简短文本。"
 
-#: models.py:35 search.py:22
+#: models.py:32
 msgid "Label"
 msgstr "标签"
 
-#: models.py:39
+#: models.py:36
 msgid "Documents"
 msgstr "文档"
 
-#: models.py:47 models.py:144 models.py:169 serializers.py:136
-#: workflow_actions.py:66
+#: models.py:44 models.py:141 models.py:166 serializers.py:136
+#: workflow_actions.py:64
 msgid "Cabinet"
 msgstr "文档柜"
 
-#: models.py:110
+#: models.py:107
 msgid "The path to the cabinet including all ancestors."
 msgstr ""
 
-#: models.py:112
+#: models.py:109
 msgid "Full path"
-msgstr ""
+msgstr "完整路径"
 
-#: models.py:145 serializers.py:137
+#: models.py:142 serializers.py:137
 msgid "Parent and Label"
 msgstr "父级与标签"
 
-#: models.py:152 serializers.py:143
+#: models.py:149 serializers.py:143
 #, python-format
 msgid "%(model_name)s with this %(field_labels)s already exists."
 msgstr "%(model_name)s与此%(field_labels)s已存在。"
 
-#: models.py:181
+#: models.py:178
 msgid "Document cabinet"
 msgstr "文档柜"
 
-#: models.py:182
+#: models.py:179
 msgid "Document cabinets"
 msgstr "文档柜"
 
@@ -148,29 +149,29 @@ msgstr "将文档从文档柜中删除"
 msgid "View cabinets"
 msgstr "查看文档柜"
 
-#: search.py:26
+#: search.py:25
 msgid "Document type"
 msgstr "文档类型"
 
-#: search.py:29
+#: search.py:28
 msgid "Document MIME type"
-msgstr ""
+msgstr "MIME类型文件"
 
-#: search.py:32
+#: search.py:31
 msgid "Document label"
-msgstr ""
+msgstr "文件标签"
 
-#: search.py:35
+#: search.py:34
 msgid "Document description"
-msgstr ""
+msgstr "文件说明"
 
-#: search.py:38
+#: search.py:37
 msgid "Document UUID"
-msgstr ""
+msgstr "文件UUID"
 
-#: search.py:42
+#: search.py:41
 msgid "Document checksum"
-msgstr ""
+msgstr "文件校验和"
 
 #: serializers.py:17
 msgid "List of children cabinets."
@@ -336,12 +337,12 @@ msgstr "文档：%(document)s从文档柜中删除：%(cabinet)s。"
 
 #: wizard_steps.py:15
 msgid "Select cabinets"
-msgstr ""
+msgstr "选择文件柜"
 
 #: wizard_steps.py:29 workflow_actions.py:23
 msgid "Cabinets to which the document will be added."
-msgstr ""
+msgstr "文件将添加到的文件柜。"
 
-#: workflow_actions.py:69
+#: workflow_actions.py:67
 msgid "Cabinets from which the document will be removed."
-msgstr ""
+msgstr "文档将会从文件柜中移除"

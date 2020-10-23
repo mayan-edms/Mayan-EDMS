@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:21-0400\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: Hmayag Antonian <hmayag@freemail.gr>, 2019\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
@@ -20,19 +20,19 @@ msgstr ""
 "Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:54 events.py:6 permissions.py:6 settings.py:7
+#: apps.py:53 events.py:6 permissions.py:6 settings.py:7
 msgid "Document parsing"
 msgstr "Ανάλυση εγγράφου"
 
-#: apps.py:106
+#: apps.py:105
 msgid "A generator returning the document's pages parsed content."
 msgstr ""
 
-#: apps.py:107 apps.py:140 apps.py:144 links.py:19 links.py:36 models.py:25
+#: apps.py:106 links.py:19 links.py:36 models.py:24 search.py:6 search.py:10
 msgid "Content"
 msgstr "Περιεχόμενο"
 
-#: apps.py:135 models.py:76
+#: apps.py:134 models.py:74
 msgid "Result"
 msgstr "Αποτέλεσμα"
 
@@ -86,51 +86,51 @@ msgstr ""
 msgid "Parse documents per type"
 msgstr "Ανάλυση εγγρων ανά τύπο"
 
-#: models.py:19
+#: models.py:18
 msgid "Document page"
 msgstr "Σελίδα εγγράφου"
 
-#: models.py:23
+#: models.py:22
 msgid "The actual text content as extracted by the document parsing backend."
 msgstr ""
 
-#: models.py:31
+#: models.py:30
 msgid "Document page content"
 msgstr "Περιεχόμενο σελίδας εγγράφου"
 
-#: models.py:32
+#: models.py:31
 msgid "Document pages contents"
 msgstr "Περιεχόμενα σελίδων εγγράφου"
 
-#: models.py:44
+#: models.py:43
 msgid "Document type"
 msgstr "Τύπος εγγράφου"
 
-#: models.py:48
+#: models.py:47
 msgid "Automatically queue newly created documents for parsing."
 msgstr ""
 
-#: models.py:59
+#: models.py:58
 msgid "Document type settings"
 msgstr "Ρυθμίσεις τύπου εγγράφου"
 
-#: models.py:60
+#: models.py:59
 msgid "Document types settings"
 msgstr "Ρυθμίσεις τύπων εγγράφου."
 
-#: models.py:71
+#: models.py:69
 msgid "Document version"
 msgstr "Έκδοση εγγράφου"
 
-#: models.py:74
+#: models.py:72
 msgid "Date time submitted"
 msgstr "Ημερομηνία και ώρα κατάθεσης"
 
-#: models.py:80
+#: models.py:78
 msgid "Document version parse error"
 msgstr "Σφάλμα ανάλυσης έκδοσης εγγρου"
 
-#: models.py:81
+#: models.py:79
 msgid "Document version parse errors"
 msgstr "Σφάλματα ανάλυσης έκδοσης εγγράφου"
 

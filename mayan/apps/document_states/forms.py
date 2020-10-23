@@ -7,8 +7,8 @@ from django.forms.formsets import formset_factory
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.templating.fields import TemplateField
-from mayan.apps.views.forms import DynamicModelForm
+from mayan.apps.templating.fields import ModelTemplateField
+from mayan.apps.views.forms import DynamicModelForm, FilteredSelectionForm
 
 from .classes import WorkflowAction
 from .fields import WorfklowImageField
@@ -21,23 +21,27 @@ from .models import (
 class WorkflowActionSelectionForm(forms.Form):
     klass = forms.ChoiceField(
         choices=(), help_text=_('The action type for this action entry.'),
-        label=_('Action')
+        label=_('Action'), widget=forms.Select(attrs={'class': 'select2'})
     )
 
     def __init__(self, *args, **kwargs):
         super(WorkflowActionSelectionForm, self).__init__(*args, **kwargs)
-
-        self.fields['klass'].choices = [
-            (
-                klass.id(), klass.label
-            ) for klass in WorkflowAction.get_all()
-        ]
+        self.fields['klass'].choices = WorkflowAction.get_choices()
 
 
 class WorkflowForm(forms.ModelForm):
     class Meta:
-        fields = ('label', 'internal_name')
+        fields = ('label', 'internal_name', 'auto_launch')
         model = Workflow
+
+
+class WorkflowMultipleSelectionForm(FilteredSelectionForm):
+    class Meta:
+        allow_multiple = True
+        field_name = 'workflows'
+        label = _('Workflows')
+        required = False
+        widget_attributes = {'class': 'select2'}
 
 
 class WorkflowStateActionDynamicForm(DynamicModelForm):
@@ -56,7 +60,7 @@ class WorkflowStateActionDynamicForm(DynamicModelForm):
             for key, value in json.loads(s=self.instance.action_data).items():
                 self.fields[key].initial = value
 
-        self.fields['condition'] = TemplateField(
+        self.fields['condition'] = ModelTemplateField(
             initial_help_text=self.fields['condition'].help_text,
             label=self.fields['condition'].label, model=WorkflowInstance,
             model_variable='workflow_instance', required=False
@@ -86,7 +90,6 @@ class WorkflowStateActionDynamicForm(DynamicModelForm):
         data = import_string(dotted_path=self.action_path).clean(
             form_data=data, request=self.request
         )
-        self.action_path
         data['action_data'] = json.dumps(obj=action_data)
 
         return data
@@ -114,7 +117,7 @@ class WorkflowTransitionForm(forms.ModelForm):
             'destination_state'
         ].queryset.filter(workflow=workflow)
 
-        self.fields['condition'] = TemplateField(
+        self.fields['condition'] = ModelTemplateField(
             initial_help_text=self.fields['condition'].help_text,
             label=self.fields['condition'].label, model=WorkflowInstance,
             model_variable='workflow_instance', required=False
@@ -174,7 +177,7 @@ class WorkflowTransitionTriggerEventRelationshipForm(forms.Form):
 
 
 WorkflowTransitionTriggerEventRelationshipFormSet = formset_factory(
-    WorkflowTransitionTriggerEventRelationshipForm, extra=0
+    form=WorkflowTransitionTriggerEventRelationshipForm, extra=0
 )
 
 

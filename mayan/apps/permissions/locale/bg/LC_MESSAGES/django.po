@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # 295005be79b88987cac803400975dbae_87f6b64 <412e4e8df9c702a35ac89972be5f12ff_27148>, 2012
-# Lyudmil Antonov <lantonov.here@gmail.com>, 2019
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2019-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:23-0400\n"
-"PO-Revision-Date: 2019-12-16 21:07+0000\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"PO-Revision-Date: 2020-10-02 20:14+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -19,9 +20,13 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:45 events.py:6 models.py:34 models.py:104 permissions.py:5
+#: apps.py:46 events.py:6 models.py:35 models.py:104 permissions.py:5
 msgid "Permissions"
 msgstr "Разрешения"
+
+#: apps.py:99 models.py:142
+msgid "Group count"
+msgstr "Брой групи"
 
 #: classes.py:85
 msgid "Insufficient permissions."
@@ -63,15 +68,15 @@ msgstr "Групи"
 msgid "Role permissions"
 msgstr "Разрешения за роли"
 
-#: models.py:25
+#: models.py:26
 msgid "Namespace"
 msgstr "Именно пространство"
 
-#: models.py:26
+#: models.py:27
 msgid "Name"
 msgstr "Име"
 
-#: models.py:33
+#: models.py:34
 msgid "Permission"
 msgstr "Разрешение"
 
@@ -86,6 +91,10 @@ msgstr "Етикет"
 #: models.py:114
 msgid "Role"
 msgstr "Роля"
+
+#: models.py:150
+msgid "Permission count"
+msgstr "Брой разрешения"
 
 #: permissions.py:8
 msgid "Create roles"

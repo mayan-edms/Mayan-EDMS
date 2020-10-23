@@ -13,9 +13,50 @@ from .literals import (
     TEST_DOCUMENT_TYPE_QUICK_LABEL, TEST_DOCUMENT_TYPE_QUICK_LABEL_EDITED
 )
 from .mixins import (
+    DocumentQuickLabelViewTestMixin,
+    DocumentTypeDeletionPoliciesViewTestMixin,
+    DocumentTypeFilenameGeneratorViewTestMixin,
     DocumentTypeQuickLabelTestMixin, DocumentTypeQuickLabelViewTestMixin,
     DocumentTypeViewTestMixin
 )
+
+
+class DocumentTypeDeletionPoliciesViewTestCase(
+    DocumentTypeDeletionPoliciesViewTestMixin, GenericDocumentViewTestCase
+):
+    auto_upload_test_document = False
+
+    def test_document_type_filename_generator_get_view_no_permission(self):
+        response = self._request_document_type_filename_generator_get_view()
+        self.assertEqual(response.status_code, 404)
+
+    def test_document_type_filename_generator_get_view_access(self):
+        self.grant_access(
+            obj=self.test_document_type,
+            permission=permission_document_type_edit
+        )
+
+        response = self._request_document_type_filename_generator_get_view()
+        self.assertEqual(response.status_code, 200)
+
+
+class DocumentTypeFilenameGeneratorViewTestCase(
+    DocumentTypeFilenameGeneratorViewTestMixin, GenericDocumentViewTestCase
+):
+    auto_upload_test_document = False
+
+    def test_document_type_filename_generator_get_view_no_permission(self):
+        response = self._request_document_type_filename_generator_get_view()
+        self.assertEqual(response.status_code, 404)
+
+    def test_document_type_filename_generator_get_view_access(self):
+        self.grant_access(
+            obj=self.test_document_type,
+            permission=permission_document_type_edit
+        )
+
+        response = self._request_document_type_filename_generator_get_view()
+        self.assertEqual(response.status_code, 200)
 
 
 class DocumentTypeViewsTestCase(
@@ -108,7 +149,7 @@ class DocumentTypeQuickLabelViewsTestCase(
 ):
     auto_upload_test_document = False
 
-    def test_document_type_quick_label_create_no_access(self):
+    def test_document_type_quick_label_create_no_permission(self):
         self.grant_access(
             obj=self.test_document_type,
             permission=permission_document_type_view
@@ -130,7 +171,7 @@ class DocumentTypeQuickLabelViewsTestCase(
 
         self.assertEqual(self.test_document_type.filenames.count(), 1)
 
-    def test_document_type_quick_label_delete_no_access(self):
+    def test_document_type_quick_label_delete_no_permission(self):
         self._create_test_quick_label()
         response = self._request_quick_label_delete()
         self.assertEqual(response.status_code, 404)
@@ -153,7 +194,7 @@ class DocumentTypeQuickLabelViewsTestCase(
             self.test_document_type.filenames.count(), 0
         )
 
-    def test_document_type_quick_label_edit_no_access(self):
+    def test_document_type_quick_label_edit_no_permission(self):
         self._create_test_quick_label()
 
         response = self._request_quick_label_edit()
@@ -181,7 +222,7 @@ class DocumentTypeQuickLabelViewsTestCase(
             TEST_DOCUMENT_TYPE_QUICK_LABEL_EDITED
         )
 
-    def test_document_type_quick_label_list_no_access(self):
+    def test_document_type_quick_label_list_no_permission(self):
         self._create_test_quick_label()
 
         response = self._request_quick_label_list_view()
@@ -201,25 +242,8 @@ class DocumentTypeQuickLabelViewsTestCase(
         )
 
 
-class DocumentsQuickLabelViewTestMixin:
-    def _request_document_quick_label_edit_view(self, extra_data=None):
-        data = {
-            'document_type_available_filenames': self.test_document_type_filename.pk,
-            'label': ''
-            # View needs at least an empty label for quick
-            # label to work. Cause is unknown.
-        }
-        data.update(extra_data or {})
-
-        return self.post(
-            viewname='documents:document_edit', kwargs={
-                'document_id': self.test_document.pk
-            }, data=data
-        )
-
-
 class DocumentsQuickLabelViewTestCase(
-    DocumentsQuickLabelViewTestMixin, DocumentTypeQuickLabelTestMixin,
+    DocumentQuickLabelViewTestMixin, DocumentTypeQuickLabelTestMixin,
     GenericDocumentViewTestCase
 ):
     def test_document_quick_label_no_permission(self):

@@ -3,6 +3,7 @@ from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.dashboards.classes import DashboardWidgetNumeric
+from mayan.apps.mayan_statistics.icons import icon_statistics
 
 from .icons import (
     icon_dashboard_documents_in_trash, icon_dashboard_document_types,
@@ -25,6 +26,7 @@ class DashboardWidgetDocumentPagesTotal(DashboardWidgetNumeric):
             'slug': 'total-document-pages-at-each-month'
         }
     )
+    link_icon_class = icon_statistics
 
     def render(self, request):
         AccessControlList = apps.get_model(
@@ -105,6 +107,7 @@ class DashboardWidgetDocumentsNewThisMonth(DashboardWidgetNumeric):
             'slug': 'new-documents-per-month'
         }
     )
+    link_icon_class = icon_statistics
 
     def render(self, request):
         self.count = new_documents_this_month(user=request.user)
@@ -119,6 +122,7 @@ class DashboardWidgetDocumentsPagesNewThisMonth(DashboardWidgetNumeric):
             'slug': 'new-document-pages-per-month'
         }
     )
+    link_icon_class = icon_statistics
 
     def render(self, request):
         self.count = new_document_pages_this_month(user=request.user)

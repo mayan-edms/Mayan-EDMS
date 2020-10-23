@@ -3,11 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:21-0400\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2019-05-17 05:50+0000\n"
 "Last-Translator: Hmayag Antonian <hmayag@freemail.gr>\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
@@ -17,13 +18,9 @@ msgstr ""
 "Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:37 events.py:6
+#: apps.py:36 events.py:6
 msgid "Document comments"
 msgstr "Σχόλια εγγράφου"
-
-#: apps.py:87 apps.py:91 links.py:31 models.py:43 permissions.py:5
-msgid "Comments"
-msgstr "Σχόλια"
 
 #: events.py:10
 msgid "Document comment created"
@@ -49,20 +46,24 @@ msgstr "Διαγραφή"
 msgid "Edit"
 msgstr "Τροποποίηση"
 
-#: models.py:26
+#: links.py:31 models.py:46 permissions.py:5 search.py:7 search.py:11
+msgid "Comments"
+msgstr "Σχόλια"
+
+#: models.py:29
 msgid "Document"
 msgstr "Έγγραφο"
 
-#: models.py:30 models.py:68
+#: models.py:33 models.py:71
 msgid "User"
 msgstr "Χρήστης"
 
 #. Translators: Comment here is a noun and refers to the actual text stored
-#: models.py:33 models.py:42
+#: models.py:36 models.py:45
 msgid "Comment"
 msgstr "Σχόλιο"
 
-#: models.py:36
+#: models.py:39
 msgid "Date time submitted"
 msgstr "Ημερομηνία και ώρα κατάθεσης"
 
@@ -87,32 +88,32 @@ msgstr "Εμφάνηση σχολίων"
 msgid "Add comment to document: %s"
 msgstr "Προσθήκη σχολίου στο έγγραφο: %s"
 
-#: views.py:68
+#: views.py:60
 #, python-format
 msgid "Delete comment: %s?"
 msgstr "Διαγραφή σχολίου: %s"
 
-#: views.py:90
+#: views.py:87
 #, python-format
 msgid "Details for comment: %s?"
 msgstr ""
 
-#: views.py:108
+#: views.py:102
 #, python-format
 msgid "Edit comment: %s?"
 msgstr ""
 
-#: views.py:133
+#: views.py:132
 msgid ""
 "Document comments are timestamped text entries from users. They are great "
 "for collaboration."
 msgstr ""
 
-#: views.py:136
+#: views.py:135
 msgid "There are no comments"
 msgstr ""
 
-#: views.py:138
+#: views.py:137
 #, python-format
 msgid "Comments for document: %s"
 msgstr "Σχόλια για το έγγραφο: %s"

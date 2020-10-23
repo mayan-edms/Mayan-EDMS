@@ -34,7 +34,7 @@ PythonDependency(
         ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
         (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
         SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-    ''', module=__name__, name='django', version_string='==2.2.13'
+    ''', module=__name__, name='django', version_string='==2.2.16'
 )
 PythonDependency(
     copyright_text='''
@@ -238,7 +238,7 @@ PythonDependency(
 
 PythonDependency(
     environment=environment_documentation, module=__name__, name='Sphinx',
-    version_string='==3.0.3'
+    version_string='==3.0.4'
 )
 PythonDependency(
     environment=environment_documentation, module=__name__,
@@ -265,8 +265,6 @@ PythonDependency(
     name='sphinxcontrib-spelling',
     version_string='==5.0.0'
 )
-# sphinx-autobuild has a dependency on Tornado,
-# but Tornado 6.0 dropped support for Python 2.7
 PythonDependency(
     environment=environment_documentation, module=__name__, name='tornado',
     version_string='==6.0.4'

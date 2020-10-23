@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Carlo Zanatto <>, 2012
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2014
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
@@ -12,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:22-0400\n"
-"PO-Revision-Date: 2020-04-15 02:40+0000\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -22,11 +23,11 @@ msgstr ""
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:15
+#: apps.py:19
 msgid "Dynamic search"
 msgstr "Ricerca dinamica"
 
-#: classes.py:52
+#: classes.py:154
 msgid "No search model matching the query"
 msgstr "Nessun modello di ricerca corrisponde alla query"
 
@@ -44,46 +45,80 @@ msgstr "Se selezionato, verranno restituiti solo i risultati che corrispondono a
 msgid "Search terms"
 msgstr "Cerca termini "
 
-#: links.py:6 settings.py:5 templates/dynamic_search/search_box.html:43
-#: views.py:59 views.py:72
+#: links.py:13 permissions.py:5 queues.py:7 settings.py:7
+#: templates/dynamic_search/search_box.html:43 views.py:117 views.py:130
 msgid "Search"
 msgstr "Cerca"
 
-#: links.py:9 templates/dynamic_search/search_box.html:45 views.py:86
+#: links.py:17 templates/dynamic_search/search_box.html:45 views.py:144
 msgid "Advanced search"
 msgstr "Ricerca avanzata"
 
-#: links.py:13
+#: links.py:21
 msgid "Search again"
 msgstr "Cerca ancora"
 
-#: settings.py:11
+#: links.py:25 views.py:90
+msgid "Reindex search backend"
+msgstr ""
+
+#: permissions.py:8
+msgid "Execute search tools"
+msgstr ""
+
+#: queues.py:11
+msgid "Remove a model instance from the search engine."
+msgstr ""
+
+#: queues.py:16
+msgid "Index a model instance to the search engine."
+msgstr ""
+
+#: settings.py:13
 msgid "Full path to the backend to be used to handle the search."
 msgstr "Percorso completo per il backend da utilizzare per gestire la ricerca."
 
-#: settings.py:21
+#: settings.py:23
 msgid ""
 "Disables the single term bar search leaving only the advanced search button."
 msgstr "Disabilita la ricerca della barra a termine singolo lasciando solo il pulsante di ricerca avanzata."
+
+#: settings.py:29
+msgid "Maximum number search results to fetch and display."
+msgstr ""
 
 #: templates/dynamic_search/search_box.html:45
 msgid "Advanced"
 msgstr "Avanzato"
 
-#: views.py:24
+#: views.py:38
 msgid "Try again using different terms. "
 msgstr "Riprova usando termini diversi."
 
-#: views.py:26
+#: views.py:40
 msgid "No search results"
 msgstr "Nessun risultato trovato"
 
-#: views.py:28
+#: views.py:42
 #, python-format
 msgid "Search results for: %s"
 msgstr "Risultati ricerca per: %s"
 
-#: views.py:74
+#: views.py:86
+msgid ""
+"This tool is required only for some search backends. Search results will be "
+"affected while the backend is being reindexed."
+msgstr ""
+
+#: views.py:92
+msgid "This tool erases and populates the search backend's internal index."
+msgstr ""
+
+#: views.py:110
+msgid "Search backend reindexing queued."
+msgstr ""
+
+#: views.py:132
 #, python-format
 msgid "Search for: %s"
 msgstr "Cerca: %s"

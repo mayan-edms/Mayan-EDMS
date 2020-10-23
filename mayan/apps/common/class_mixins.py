@@ -13,6 +13,7 @@ class AppsModuleLoaderMixin:
 
     @classmethod
     def load_modules(cls):
+        # This set keeps track of what apps have already been processed.
         cls._loader_module_sets.setdefault(cls._loader_module_name, set())
 
         for app in apps.get_app_configs():

@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Annunnaky <doublemiu@gmail.com>, 2015
 # Tomasz Szymanowicz <alakdae@gmail.com>, 2020
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016,2020
@@ -11,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:22-0400\n"
-"PO-Revision-Date: 2020-05-18 09:51+0000\n"
-"Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"PO-Revision-Date: 2020-09-27 06:46+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,15 +26,7 @@ msgstr ""
 msgid "Mailer"
 msgstr "Mailer"
 
-#: apps.py:62 apps.py:83
-msgid "Date and time"
-msgstr "Data i godzina"
-
-#: apps.py:65 apps.py:87 models.py:28 models.py:230
-msgid "Message"
-msgstr "Wiadomość"
-
-#: classes.py:79
+#: classes.py:80
 msgid "Null backend"
 msgstr "Zerowy backend"
 
@@ -45,37 +38,37 @@ msgstr "Wysyłanie"
 msgid "Email sent"
 msgstr "E-mail został wysłany"
 
-#: forms.py:58 forms.py:122
+#: forms.py:60 forms.py:120
 msgid ""
 "Email address of the recipient. Can be multiple addresses separated by comma"
 " or semicolon."
 msgstr "Adres e-mail odbiorcy. Możesz podać wiele adresów oddzielonych przecinkiem lub średnikiem."
 
-#: forms.py:60 forms.py:124
+#: forms.py:62 forms.py:122
 msgid "Email address"
 msgstr "Adres e-mail"
 
-#: forms.py:62 workflow_actions.py:36
+#: forms.py:64 workflow_actions.py:36
 msgid "Subject"
 msgstr "Temat"
 
-#: forms.py:64 workflow_actions.py:45
+#: forms.py:66 workflow_actions.py:45
 msgid "Body"
 msgstr "Treść"
 
-#: forms.py:68
+#: forms.py:70
 msgid "The email profile that will be used to send this email."
 msgstr "Profil e-mail, który zostanie użyty do wysłania tego e-maila."
 
-#: forms.py:69 models.py:69 views.py:237 workflow_actions.py:18
+#: forms.py:71 models.py:55 views.py:212 workflow_actions.py:18
 msgid "Mailing profile"
 msgstr "Profil pocztowy"
 
-#: forms.py:75
+#: forms.py:77
 msgid "The driver to use when sending emails."
 msgstr "Sterownik używany podczas wysyłania wiadomości e-mail."
 
-#: forms.py:76 models.py:83
+#: forms.py:78 models.py:69
 msgid "Backend"
 msgstr "Backend"
 
@@ -88,34 +81,26 @@ msgid "Email link"
 msgstr "Link e-mail"
 
 #: links.py:35
-msgid "System mailer error log"
-msgstr "Systemowy dziennik błędów mailera"
-
-#: links.py:40
 msgid "Create mailing profile "
 msgstr "Utwórz profil pocztowy"
 
-#: links.py:46
+#: links.py:41
 msgid "Delete"
 msgstr "Usuń"
 
-#: links.py:52
+#: links.py:47
 msgid "Edit"
 msgstr "Edytuj"
 
-#: links.py:56
-msgid "Log"
-msgstr "Dziennik zdarzeń"
-
-#: links.py:61
+#: links.py:52
 msgid "Mailing profiles list"
 msgstr "Lista profili mailingowych"
 
-#: links.py:66 models.py:70
+#: links.py:57 models.py:56
 msgid "Mailing profiles"
 msgstr "Profile mailingowe"
 
-#: links.py:72 views.py:261
+#: links.py:63 views.py:236
 msgid "Test"
 msgstr "Test"
 
@@ -228,71 +213,47 @@ msgstr "Ścieżka pliku"
 msgid "Django file based backend"
 msgstr "Backend oparty na pliku Django"
 
-#: models.py:25 models.py:227
-msgid "Date time"
-msgstr "Data godzina"
-
-#: models.py:34
-msgid "Log entry"
-msgstr "Wpis do dziennika"
-
-#: models.py:35
-msgid "Log entries"
-msgstr "Wpisy do dziennika"
-
-#: models.py:46
+#: models.py:32
 msgid "A short text describing the mailing profile."
 msgstr "Krótki tekst opisujący profil pocztowy."
 
-#: models.py:47
+#: models.py:33
 msgid "Label"
 msgstr "Etykieta"
 
-#: models.py:51
+#: models.py:37
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
 msgstr "Domyślnie ten profil pocztowy zostanie wstępnie wybrany w formularzu wysyłkowym dokumentu."
 
-#: models.py:53
+#: models.py:39
 msgid "Default"
 msgstr "Domyślny"
 
-#: models.py:55
+#: models.py:41
 msgid "Enabled"
 msgstr "Włączone"
 
-#: models.py:58
+#: models.py:44
 msgid "The dotted Python path to the backend class."
 msgstr "Kropkowana ścieżka Pythona do klasy backend."
 
-#: models.py:59
+#: models.py:45
 msgid "Backend path"
 msgstr "Ścieżka backend"
 
-#: models.py:62
+#: models.py:48
 msgid "Backend data"
 msgstr "Dane backend"
 
-#: models.py:84
+#: models.py:70
 msgid "The backend class for this entry."
 msgstr "Klasa backend dla tego wpisu."
 
-#: models.py:218
+#: models.py:209
 msgid "Test email from Mayan EDMS"
 msgstr "Test wiadomości e-mail z Mayan EDMS"
-
-#: models.py:224
-msgid "User mailer"
-msgstr "Mailer użytkownika"
-
-#: models.py:236
-msgid "User mailer log entry"
-msgstr "Wpis dziennika użytkownika"
-
-#: models.py:237
-msgid "User mailer log entries"
-msgstr "Wpisy dziennika użytkownika poczty"
 
 #: permissions.py:8
 msgid "Send document link via email"
@@ -303,26 +264,22 @@ msgid "Send document via email"
 msgstr "Wyślij dokument za pomocą e-mail"
 
 #: permissions.py:14
-msgid "View system mailing error log"
-msgstr "Wyświetl dziennik błędów wysyłania wiadomości systemowych"
-
-#: permissions.py:17
 msgid "Create a mailing profile"
 msgstr "Utwórz profil pocztowy"
 
-#: permissions.py:20
+#: permissions.py:17
 msgid "Delete a mailing profile"
 msgstr "Usuń profil pocztowy"
 
-#: permissions.py:23
+#: permissions.py:20
 msgid "Edit a mailing profile"
 msgstr "Edytuj profil pocztowy"
 
-#: permissions.py:26
+#: permissions.py:23
 msgid "View a mailing profile"
 msgstr "Wyświetl profil pocztowy"
 
-#: permissions.py:29
+#: permissions.py:26
 msgid "Use a mailing profile"
 msgstr "Użyj profilu pocztowego"
 
@@ -351,73 +308,64 @@ msgstr "Szablon tekstu wiadomości e-mail z linkiem do dokumentu. Może zawiera�
 msgid "%(email)s is not a valid email address."
 msgstr "%(email)s nie jest prawidłowym adresem e-mail."
 
-#: views.py:36
-msgid "Document mailing error log"
-msgstr "Błędy wysyłania dokumentów"
-
-#: views.py:48
+#: views.py:39
 #, python-format
 msgid "%(count)d document queued for email delivery"
 msgstr "Dokument %(count)d w kolejce do dostarczenia wiadomości e-mail"
 
-#: views.py:50
+#: views.py:41
 #, python-format
 msgid "%(count)d documents queued for email delivery"
 msgstr "Dokumenty %(count)d w kolejce do dostarczenia wiadomości e-mail"
 
-#: views.py:61
+#: views.py:52
 msgid "Send"
 msgstr "Wyślij"
 
-#: views.py:107
+#: views.py:98
 #, python-format
 msgid "%(count)d document link queued for email delivery"
 msgstr "%(count)d łącze dokumentu w kolejce do dostarczenia wiadomości e-mail"
 
-#: views.py:109
+#: views.py:100
 #, python-format
 msgid "%(count)d document links queued for email delivery"
 msgstr "%(count)d łącza dokumentów w kolejce do dostarczenia wiadomości e-mail"
 
-#: views.py:118
+#: views.py:109
 msgid "New mailing profile backend selection"
 msgstr "Nowy wybór backaend profilu mailingowego"
 
-#: views.py:150
+#: views.py:141
 #, python-format
 msgid "Create a \"%s\" mailing profile"
 msgstr "Utwórz profil pocztowy „%s”"
 
-#: views.py:177
+#: views.py:168
 #, python-format
 msgid "Delete mailing profile: %s"
 msgstr "Usuń profil pocztowy: %s"
 
-#: views.py:189
+#: views.py:180
 #, python-format
 msgid "Edit mailing profile: %s"
 msgstr "Edytuj profil pocztowy: %s"
 
-#: views.py:213
-#, python-format
-msgid "Error log for: %s"
-msgstr "Dziennik błędów dla: %s"
-
-#: views.py:232
+#: views.py:207
 msgid ""
 "Mailing profiles are email configurations. Mailing profiles allow sending "
 "documents as attachments or as links via email."
 msgstr "Profile mailowe to konfiguracje e-mail. Profile mailingowe umożliwiają wysyłanie dokumentów w postaci załączników lub linków za pośrednictwem poczty elektronicznej."
 
-#: views.py:236
+#: views.py:211
 msgid "No mailing profiles available"
 msgstr "Brak dostępnych profili mailingowych"
 
-#: views.py:253
+#: views.py:228
 msgid "Test email sent."
 msgstr "Wysłano testowy e-mail."
 
-#: views.py:262
+#: views.py:237
 #, python-format
 msgid "Test mailing profile: %s"
 msgstr "Testowy profil pocztowy: %s"

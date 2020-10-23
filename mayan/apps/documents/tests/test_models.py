@@ -3,8 +3,8 @@ import time
 
 from django.test import override_settings
 
-from mayan.apps.tests.tests.base import BaseTestCase
 from mayan.apps.converter.layers import layer_saved_transformations
+from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..models import (
     DeletedDocument, Document, DocumentType, DuplicatedDocument
@@ -264,6 +264,15 @@ class DocumentTypeModelTestCase(GenericDocumentTestCase):
 
     def test_method_get_absolute_url(self):
         self.assertTrue(self.test_document_type.get_absolute_url())
+
+    def test_original_filename_backend(self):
+        self.test_document_type.filename_generator_backend = 'original'
+        self.test_document_type.save()
+        self._upload_test_document()
+        self.assertEqual(
+            self.test_document_filename,
+            self.test_document.latest_version.file
+        )
 
 
 class DuplicatedDocumentsTestCase(GenericDocumentTestCase):

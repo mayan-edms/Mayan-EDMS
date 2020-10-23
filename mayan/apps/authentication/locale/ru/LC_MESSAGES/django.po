@@ -3,14 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
+# Alex Chigrin <chalex84@mail.ru>, 2020
 # lilo.panic, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:21-0400\n"
-"PO-Revision-Date: 2020-03-28 07:23+0000\n"
-"Last-Translator: Sergey Glita <gsv70@mail.ru>\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"PO-Revision-Date: 2020-09-29 21:43+0000\n"
+"Last-Translator: Alex Chigrin <chalex84@mail.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -40,7 +42,7 @@ msgstr "Пароль"
 
 #: forms.py:22 forms.py:89
 msgid "Remember me"
-msgstr ""
+msgstr "Запомнить меня"
 
 #: forms.py:25
 msgid ""
@@ -62,7 +64,7 @@ msgstr ""
 
 #: forms.py:82
 msgid "Permanent"
-msgstr ""
+msgstr "Постоянный"
 
 #: forms.py:83
 msgid "If selected, disables ending impersonation."
@@ -82,7 +84,7 @@ msgstr ""
 
 #: links.py:37 links.py:44
 msgid "Set password"
-msgstr ""
+msgstr "Установка пароля"
 
 #: permissions.py:10
 msgid "Impersonate users"
@@ -98,7 +100,7 @@ msgstr "Управление механизмом, используемым дл
 msgid ""
 "Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
 " in. Value is time in seconds."
-msgstr ""
+msgstr "Максимальное время, в течение которого пользователь, установивший флажок «Запомнить меня», будет оставаться в системе. Значение - время в секундах."
 
 #: settings.py:25
 msgid ""
@@ -155,30 +157,30 @@ msgstr "Изменить пароль пользователя"
 
 #: views.py:136
 msgid "Changing the password is not allowed for this account."
-msgstr ""
+msgstr "Изменение пароля для этой учетной записи запрещено."
 
 #: views.py:203
 #, python-format
 msgid "Password change request performed on %(count)d user"
-msgstr ""
+msgstr "Запрос на изменение пароля выполнен для пользователя %(count)d"
 
 #: views.py:205
 #, python-format
 msgid "Password change request performed on %(count)d users"
-msgstr ""
+msgstr "Запрос на смену пароля выполнен для пользователей %(count)d"
 
 #: views.py:214
 msgid "Change user password"
 msgid_plural "Change users passwords"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Изменить пароль пользователя"
+msgstr[1] "Смена паролей пользователей"
+msgstr[2] "Смена паролей пользователей"
+msgstr[3] "Смена паролей пользователей"
 
 #: views.py:224
 #, python-format
 msgid "Change password for user: %s"
-msgstr ""
+msgstr "Изменить пароль для пользователя: %s"
 
 #: views.py:244
 msgid ""
@@ -189,7 +191,7 @@ msgstr "Сброс паролей суперпользователя и перс
 #: views.py:254
 #, python-format
 msgid "Successful password reset for user: %s."
-msgstr ""
+msgstr "Успешный сброс пароля для пользователя: %s."
 
 #: views.py:260
 #, python-format

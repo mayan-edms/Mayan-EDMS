@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Roberto Rosario, 2015,2019-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:23-0400\n"
-"PO-Revision-Date: 2020-03-28 07:54+0000\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"PO-Revision-Date: 2020-09-27 08:10+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -18,11 +19,11 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:11 settings.py:7
+#: apps.py:11 settings.py:9
 msgid "Storage"
 msgstr "Almacenamiento"
 
-#: classes.py:81 classes.py:102
+#: classes.py:82 classes.py:103
 #, python-format
 msgid ""
 "Unable to initialize storage: %(name)s. Check the storage backend dotted "
@@ -52,8 +53,46 @@ msgstr "Procese los archivos a la inversa para deshacer las transformaciones de 
 msgid "Name of the storage to process."
 msgstr "Nombre del almacenamiento a procesar."
 
-#: settings.py:12
+#: models.py:23
+msgid "File"
+msgstr "Archivo"
+
+#: models.py:25
+msgid "Filename"
+msgstr "Nombre del archivo"
+
+#: models.py:27
+msgid "Date time"
+msgstr "Fecha y hora"
+
+#: models.py:31
+msgid "Shared uploaded file"
+msgstr "Archivo cargado compartido"
+
+#: models.py:32 storages.py:19
+msgid "Shared uploaded files"
+msgstr "Archivos cargados compartidos"
+
+#: queues.py:11
+msgid "Storage periodic"
+msgstr "Almacenamiento periódico"
+
+#: queues.py:16
+msgid "Delete stale uploads"
+msgstr "Eliminar subidas expiradas"
+
+#: settings.py:14
+msgid "A storage backend that all workers can use to share files."
+msgstr "Un backend de almacenamiento que todos los \"workers\" pueden utilizar para compartir archivos."
+
+#: settings.py:23
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
 msgstr "Directorio temporero utilizado en todo la instalación para almacenar imágenes en miniatura, visualizaciones y archivos temporeros."
+
+#: storages.py:12
+msgid ""
+"Unable to initialize the shared uploaded file storage. Check the settings {}"
+" and {} for formatting errors."
+msgstr "No se puede inicializar el almacenamiento compartido de archivos cargados. Verifique las configuraciones {} y {} para errores de formato."

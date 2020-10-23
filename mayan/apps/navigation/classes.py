@@ -36,6 +36,10 @@ logger = logging.getLogger(name=__name__)
 class Link:
     _registry = {}
 
+    @staticmethod
+    def conditional_active_by_view_name(context, resolved_link):
+        return resolved_link.link.view == resolved_link.current_view_name
+
     @classmethod
     def get(cls, name):
         return cls._registry[name]
@@ -54,7 +58,7 @@ class Link:
         self.args = args or []
         self.badge_text = badge_text
         self.condition = condition
-        self.conditional_active = conditional_active
+        self.conditional_active = conditional_active or Link.conditional_active_by_view_name
         self.conditional_disable = conditional_disable
         self.description = description
         self.html_data = html_data
@@ -242,17 +246,18 @@ class Menu:
         if name in self.__class__._registry:
             raise Exception('A menu with this name already exists')
 
+        self.bound_links = {}
         self.condition = condition
         self.icon_class = icon_class
         self.is_container = True
         self.is_new_level = True
-        self.name = name
         self.label = label
-        self.bound_links = {}
-        self.unbound_links = {}
         self.link_positions = {}
-        self.__class__._registry[name] = self
+        self.name = name
         self.non_sorted_sources = non_sorted_sources or []
+        self.proxy_exclusions = set()
+        self.unbound_links = {}
+        self.__class__._registry[name] = self
 
     def __repr__(self):
         return '<Menu: {}>'.format(self.name)
@@ -263,6 +268,9 @@ class Menu:
         for link in links:
             source_links.append(link)
             self.link_positions[link] = position or 0
+
+    def add_proxy_exclusion(self, source):
+        self.proxy_exclusions.add(source)
 
     def add_unsorted_source(self, source):
         self.non_sorted_sources.append(source)
@@ -315,7 +323,7 @@ class Menu:
 
         logger.debug(
             'resolved_navigation_object_list: %s',
-            force_text(resolved_navigation_object_list)
+            force_text(s=resolved_navigation_object_list)
         )
         return resolved_navigation_object_list
 
@@ -384,14 +392,15 @@ class Menu:
                             # Check to see if object is a proxy model. If it is, add its parent model
                             # menu links too.
                             if hasattr(resolved_navigation_object, '_meta'):
-                                parent_model = resolved_navigation_object._meta.proxy_for_model
-                                if parent_model:
-                                    parent_instance = parent_model.objects.filter(pk=resolved_navigation_object.pk)
-                                    if parent_instance:
-                                        for link_set in self.resolve(context=context, source=parent_instance.first()):
-                                            for link in link_set['links']:
-                                                if link.link not in self.unbound_links.get(bound_source, ()):
-                                                    resolved_links.append(link)
+                                if resolved_navigation_object._meta.model not in self.proxy_exclusions:
+                                    parent_model = resolved_navigation_object._meta.proxy_for_model
+                                    if parent_model:
+                                        parent_instance = parent_model.objects.filter(pk=resolved_navigation_object.pk)
+                                        if parent_instance:
+                                            for link_set in self.resolve(context=context, source=parent_instance.first()):
+                                                for link in link_set['links']:
+                                                    if link.link not in self.unbound_links.get(bound_source, ()):
+                                                        resolved_links.append(link)
 
                             for link in links:
                                 resolved_link = link.resolve(
@@ -564,8 +573,6 @@ class ResolvedLink:
             return conditional_active(
                 context=self.context, resolved_link=self
             )
-        else:
-            return self.link.view == self.current_view_name
 
     @property
     def badge_text(self):
@@ -775,7 +782,7 @@ class SourceColumn:
                 )
             except FieldDoesNotExist as exception:
                 raise ImproperlyConfigured(
-                    '"{}" is not a field or "{}", cannot be used as a '
+                    '"{}" is not a field of "{}", cannot be used as a '
                     'sortable column.'.format(field_name, self.source)
                 ) from exception
 

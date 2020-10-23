@@ -1,6 +1,6 @@
 from django.utils.encoding import force_bytes, force_text
 
-from .literals import TEST_EMAIL_BASE64_FILENAME
+from .literals import TEST_EMAIL_BASE64_FILENAME, TEST_STAGING_PREVIEW_WIDTH
 
 
 class MockIMAPMessage:
@@ -76,7 +76,7 @@ class MockIMAPServer:
                 flag_modified.append(message)
 
             message_number = message.get_number()
-            message_numbers.append(force_text(message_number))
+            message_numbers.append(force_text(s=message_number))
             uid = message.uid
             uids.append(uid)
             body = TEST_EMAIL_BASE64_FILENAME
@@ -107,9 +107,7 @@ class MockIMAPServer:
         for message in self.mailbox_selected.get_messages():
             if '\\Deleted' in message.flags:
                 result.append(
-                    force_text(
-                        message.get_number()
-                    )
+                    force_text(s=message.get_number())
                 )
                 message.delete()
 
@@ -151,7 +149,7 @@ class MockIMAPServer:
 
         message_sequences = []
         for message in results:
-            message_sequences.append(force_text(message.get_number()))
+            message_sequences.append(force_text(s=message.get_number()))
 
         return ('OK', ' '.join(message_sequences))
 
@@ -285,3 +283,6 @@ class MockPOP3Mailbox:
 
 class MockStagingFolder:
     """Mock of a StagingFolder model"""
+    pk = 1
+    preview_height = None
+    preview_width = TEST_STAGING_PREVIEW_WIDTH

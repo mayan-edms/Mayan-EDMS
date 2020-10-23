@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # emreunal <bywant@gmail.com>, 2019
 # Nurgül Özkan <nurgulozkan@hotmail.com>, 2017
 # serhatcan77 <serhat_can@yahoo.com>, 2017
@@ -10,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:22-0400\n"
-"PO-Revision-Date: 2020-04-04 05:54+0000\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
 "MIME-Version: 1.0\n"
@@ -20,11 +21,11 @@ msgstr ""
 "Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:15
+#: apps.py:19
 msgid "Dynamic search"
 msgstr "Dinamik arama"
 
-#: classes.py:52
+#: classes.py:154
 msgid "No search model matching the query"
 msgstr "Sorguyla eşleşen hiçbir arama modeli yok"
 
@@ -42,46 +43,80 @@ msgstr "İşaretlendiğinde, yalnızca tüm alanlarla eşleşen sonuçlar dönd�
 msgid "Search terms"
 msgstr "Arama terimleri"
 
-#: links.py:6 settings.py:5 templates/dynamic_search/search_box.html:43
-#: views.py:59 views.py:72
+#: links.py:13 permissions.py:5 queues.py:7 settings.py:7
+#: templates/dynamic_search/search_box.html:43 views.py:117 views.py:130
 msgid "Search"
 msgstr "Arama"
 
-#: links.py:9 templates/dynamic_search/search_box.html:45 views.py:86
+#: links.py:17 templates/dynamic_search/search_box.html:45 views.py:144
 msgid "Advanced search"
 msgstr "Gelişmiş Arama"
 
-#: links.py:13
+#: links.py:21
 msgid "Search again"
 msgstr "Tekrar arama"
 
-#: settings.py:11
+#: links.py:25 views.py:90
+msgid "Reindex search backend"
+msgstr ""
+
+#: permissions.py:8
+msgid "Execute search tools"
+msgstr ""
+
+#: queues.py:11
+msgid "Remove a model instance from the search engine."
+msgstr ""
+
+#: queues.py:16
+msgid "Index a model instance to the search engine."
+msgstr ""
+
+#: settings.py:13
 msgid "Full path to the backend to be used to handle the search."
 msgstr ""
 
-#: settings.py:21
+#: settings.py:23
 msgid ""
 "Disables the single term bar search leaving only the advanced search button."
 msgstr "Tek bir terim ile arama barını devre dışı bırakarak geriye sadece gelişmiş arama butonunu bırakır."
+
+#: settings.py:29
+msgid "Maximum number search results to fetch and display."
+msgstr ""
 
 #: templates/dynamic_search/search_box.html:45
 msgid "Advanced"
 msgstr "İleri düzey"
 
-#: views.py:24
+#: views.py:38
 msgid "Try again using different terms. "
 msgstr "Başka terimler kullanarak tekrar dene."
 
-#: views.py:26
+#: views.py:40
 msgid "No search results"
 msgstr "Arama sonucu bulunamadı"
 
-#: views.py:28
+#: views.py:42
 #, python-format
 msgid "Search results for: %s"
 msgstr "%s Için arama sonuçları: "
 
-#: views.py:74
+#: views.py:86
+msgid ""
+"This tool is required only for some search backends. Search results will be "
+"affected while the backend is being reindexed."
+msgstr ""
+
+#: views.py:92
+msgid "This tool erases and populates the search backend's internal index."
+msgstr ""
+
+#: views.py:110
+msgid "Search backend reindexing queued."
+msgstr ""
+
+#: views.py:132
 #, python-format
 msgid "Search for: %s"
 msgstr "Arama: %s"

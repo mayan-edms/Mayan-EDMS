@@ -6,10 +6,12 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
+from mayan.apps.common.classes import ModelCopy
 from mayan.apps.common.menus import (
-    menu_facet, menu_list_facet, menu_main, menu_object, menu_secondary,
-    menu_setup, menu_tools
+    menu_facet, menu_list_facet, menu_main, menu_object, menu_related,
+    menu_secondary, menu_setup, menu_tools
 )
+from mayan.apps.documents.links.document_type_links import link_document_type_list
 from mayan.apps.documents.signals import signal_post_document_created, signal_post_initial_document_type
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.events.links import (
@@ -42,7 +44,6 @@ from .permissions import (
     permission_document_indexing_instance_view,
     permission_document_indexing_rebuild, permission_document_indexing_view
 )
-from .search import *  # NOQA
 
 
 class DocumentIndexingApp(MayanAppConfig):
@@ -77,6 +78,22 @@ class DocumentIndexingApp(MayanAppConfig):
         IndexTemplateNode = self.get_model(model_name='IndexTemplateNode')
 
         EventModelRegistry.register(model=Index)
+
+        ModelCopy(
+            model=IndexTemplateNode, excludes={'parent__isnull': False},
+            extra_kwargs={'get_or_create': True}
+        ).add_fields(
+            field_names=(
+                'index', 'expression', 'enabled', 'link_documents'
+            ),
+        )
+        ModelCopy(
+            model=Index, bind_link=True, register_permission=True
+        ).add_fields(
+            field_names=(
+                'label', 'slug', 'enabled', 'document_types', 'node_templates'
+            ),
+        )
 
         ModelEventType.register(
             event_types=(
@@ -115,7 +132,7 @@ class DocumentIndexingApp(MayanAppConfig):
             attribute='slug', include_label=True, is_sortable=True,
             source=Index
         )
-        column_index_slug.add_exclude(IndexInstance)
+        column_index_slug.add_exclude(source=IndexInstance)
         column_index_enabled = SourceColumn(
             attribute='enabled', include_label=True, is_sortable=True,
             source=Index, widget=TwoStateWidget
@@ -151,22 +168,17 @@ class DocumentIndexingApp(MayanAppConfig):
             source=IndexTemplateNode, widget=TwoStateWidget
         )
 
-        SourceColumn(
+        column_index_instance_node_level = SourceColumn(
             func=lambda context: index_instance_item_link(context['object']),
             is_identifier=True, is_sortable=True, label=_('Level'),
             sort_field='value', source=IndexInstanceNode
         )
+        column_index_instance_node_level.add_exclude(
+            source=DocumentIndexInstanceNode
+        )
         SourceColumn(
             func=lambda context: context['object'].get_descendants_count(),
             include_label=True, label=_('Levels'), source=IndexInstanceNode
-        )
-        SourceColumn(
-            func=lambda context: context[
-                'object'
-            ].get_descendants_document_count(
-                user=context['request'].user
-            ), include_label=True, label=_('Documents'),
-            source=IndexInstanceNode
         )
         SourceColumn(
             func=lambda context: context[
@@ -190,19 +202,6 @@ class DocumentIndexingApp(MayanAppConfig):
                 index_instance_node=context['object'],
             ), include_label=True, is_sortable=True, label=_('Level'),
             sort_field='value', source=DocumentIndexInstanceNode
-        )
-        SourceColumn(
-            func=lambda context: context['object'].get_descendants_count(),
-            include_label=True, label=_('Levels'),
-            source=DocumentIndexInstanceNode
-        )
-        SourceColumn(
-            func=lambda context: context[
-                'object'
-            ].get_descendants_document_count(
-                user=context['request'].user
-            ), include_label=True, label=_('Documents'),
-            source=DocumentIndexInstanceNode
         )
 
         menu_facet.bind_links(
@@ -235,6 +234,20 @@ class DocumentIndexingApp(MayanAppConfig):
             ), sources=(IndexTemplateNode,)
         )
         menu_main.bind_links(links=(link_index_instance_menu,), position=98)
+        menu_related.bind_links(
+            links=(link_index_template_list,),
+            sources=(
+                DocumentType, 'documents:document_type_list',
+                'documents:document_type_create'
+            )
+        )
+        menu_related.bind_links(
+            links=(link_document_type_list,),
+            sources=(
+                Index, 'indexing:index_setup_list',
+                'indexing:index_setup_create'
+            )
+        )
         menu_secondary.bind_links(
             links=(link_index_template_list, link_index_template_create),
             sources=(

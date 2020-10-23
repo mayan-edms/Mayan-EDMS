@@ -59,23 +59,27 @@ icon_document_transformations_clone = Icon(
 
 icon_document_type_change = icon_document_type
 
-icon_favorite_document_add = Icon(
-    driver_name='fontawesome-dual', primary_symbol='star',
-    secondary_symbol='plus'
-)
 icon_document_image_loading = Icon(
     driver_name='fontawesomecss', css_classes='far fa-clock fa-2x'
 )
 icon_document_list = Icon(driver_name='fontawesome', symbol='book')
-icon_document_list_deleted = Icon(driver_name='fontawesome', symbol='trash')
+icon_document_list_deleted = Icon(
+    driver_name='fontawesome', symbol='trash-alt'
+)
 icon_document_list_recent_access = Icon(
     driver_name='fontawesome', symbol='clock'
 )
-icon_document_return = icon_favorite_document_add = Icon(
+icon_document_return = Icon(
     driver_name='fontawesome-dual', primary_symbol='book',
     secondary_symbol='chevron-left'
 )
 
+# Favorites
+
+icon_favorite_document_add = Icon(
+    driver_name='fontawesome-dual', primary_symbol='star',
+    secondary_symbol='plus'
+)
 icon_favorite_document_list = Icon(driver_name='fontawesome', symbol='star')
 icon_favorite_document_remove = Icon(
     driver_name='fontawesome-dual', primary_symbol='star',
@@ -153,6 +157,13 @@ icon_document_type_filename_list = Icon(
     driver_name='fontawesome', symbol='keyboard'
 )
 
+icon_document_type_filename_generator = Icon(
+    driver_name='fontawesome-layers', data=[
+        {'class': 'far fa-file'},
+        {'class': 'fas fa-cog', 'transform': 'shrink-8 down-2'}
+    ]
+)
+
 icon_document_type_policies = Icon(driver_name='fontawesome', symbol='times')
 icon_document_type_setup = icon_document_type
 
@@ -188,7 +199,8 @@ icon_recent_added_document_list = Icon(
 )
 
 icon_trash_can_empty = Icon(
-    driver_name='fontawesome', symbol='trash-alt'
+    driver_name='fontawesome-dual-classes', primary_class='fas fa-trash-alt',
+    secondary_class='fas fa-minus'
 )
 icon_trashed_document_delete = Icon(
     driver_name='fontawesome', symbol='times'

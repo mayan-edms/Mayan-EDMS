@@ -46,7 +46,10 @@ class WorkflowTemplateTransitionCreateView(ExternalObjectMixin, SingleObjectCrea
         return kwargs
 
     def get_instance_extra_data(self):
-        return {'workflow': self.external_object}
+        return {
+            '_event_actor': self.request.user,
+            'workflow': self.external_object
+        }
 
     def get_source_queryset(self):
         return self.external_object.transitions.all()
@@ -75,6 +78,11 @@ class WorkflowTemplateTransitionDeleteView(SingleObjectDeleteView):
                 'Delete workflow transition: %s?'
             ) % self.object,
             'workflow': self.object.workflow,
+        }
+
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user
         }
 
     def get_success_url(self):
@@ -106,6 +114,11 @@ class WorkflowTemplateTransitionEditView(SingleObjectEditView):
         ).get_form_kwargs()
         kwargs['workflow'] = self.object.workflow
         return kwargs
+
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user
+        }
 
     def get_success_url(self):
         return reverse(
@@ -248,6 +261,7 @@ class WorkflowTemplateTransitionFieldCreateView(
 
     def get_instance_extra_data(self):
         return {
+            '_event_actor': self.request.user,
             'transition': self.external_object,
         }
 
@@ -279,6 +293,11 @@ class WorkflowTemplateTransitionFieldDeleteView(SingleObjectDeleteView):
             'workflow_transition': self.object.transition,
         }
 
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user
+        }
+
     def get_post_action_redirect(self):
         return reverse(
             viewname='document_states:workflow_template_transition_field_list',
@@ -306,6 +325,11 @@ class WorkflowTemplateTransitionFieldEditView(SingleObjectEditView):
             'title': _('Edit workflow transition field: %s') % self.object,
             'workflow': self.object.transition.workflow,
             'workflow_transition': self.object.transition,
+        }
+
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user
         }
 
     def get_post_action_redirect(self):

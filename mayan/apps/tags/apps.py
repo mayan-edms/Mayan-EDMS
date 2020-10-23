@@ -6,7 +6,9 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.classes import ModelFieldRelated, ModelQueryFields
+from mayan.apps.common.classes import (
+    ModelCopy, ModelFieldRelated, ModelQueryFields
+)
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_main, menu_multi_item, menu_object,
     menu_secondary
@@ -19,7 +21,7 @@ from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import Collection, SourceColumn
 
 from .events import (
-    event_tag_attach, event_tag_edited, event_tag_remove
+    event_tag_attach, event_tag_edited, event_tag_removed
 )
 from .handlers import handler_index_document, handler_tag_pre_delete
 from .html_widgets import widget_document_tags, widget_single_tag
@@ -37,7 +39,6 @@ from .permissions import (
     permission_tag_attach, permission_tag_delete, permission_tag_edit,
     permission_tag_remove, permission_tag_view
 )
-from .search import tag_search  # NOQA
 
 
 class TagsApp(MayanAppConfig):
@@ -68,9 +69,17 @@ class TagsApp(MayanAppConfig):
 
         EventModelRegistry.register(model=Tag)
 
+        ModelCopy(
+            model=Tag, bind_link=True, register_permission=True
+        ).add_fields(
+            field_names=(
+                'label', 'color', 'documents',
+            ),
+        )
+
         ModelEventType.register(
             model=Tag, event_types=(
-                event_tag_attach, event_tag_edited, event_tag_remove
+                event_tag_attach, event_tag_edited, event_tag_removed
             )
         )
 

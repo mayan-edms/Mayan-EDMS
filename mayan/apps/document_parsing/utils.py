@@ -14,4 +14,4 @@ def get_instance_content(document):
         except DocumentPageContent.DoesNotExist:
             pass
         else:
-            yield conditional_escape(force_text(page_content))
+            yield conditional_escape(force_text(s=page_content))

@@ -40,24 +40,22 @@ class CabinetAddAction(WorkflowAction):
         for cabinet in self.get_cabinets():
             cabinet.document_add(document=context['document'])
 
-    def get_form_schema(self, request):
-        user = request.user
-        logger.debug('user: %s', user)
+    def get_cabinets(self):
+        return Cabinet.objects.filter(
+            pk__in=self.form_data.get('cabinets', ())
+        )
+
+    def get_form_schema(self, **kwargs):
+        result = super().get_form_schema(**kwargs)
 
         queryset = AccessControlList.objects.restrict_queryset(
             permission=self.permission, queryset=Cabinet.objects.all(),
-            user=user
+            user=kwargs['request'].user
         )
 
-        self.fields['cabinets']['kwargs']['queryset'] = queryset
+        result['fields']['cabinets']['kwargs']['queryset'] = queryset
 
-        return {
-            'fields': self.fields,
-            'widgets': self.widgets
-        }
-
-    def get_cabinets(self):
-        return Cabinet.objects.filter(pk__in=self.form_data.get('cabinets', ()))
+        return result
 
 
 class CabinetRemoveAction(CabinetAddAction):

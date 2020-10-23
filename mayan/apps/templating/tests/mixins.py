@@ -1,3 +1,5 @@
+from ..classes import Template
+
 from .literals import TEST_TEMPLATE
 
 
@@ -15,3 +17,9 @@ class DocumentTemplateSandboxViewTestMixin:
                 'document_id': self.test_document.pk
             }, data={'template_template': TEST_TEMPLATE}
         )
+
+
+class TemplateTagTestMixin:
+    def _render_test_template(self, template_string, context=None):
+        template = Template(template_string=template_string)
+        return template.render(context=context)

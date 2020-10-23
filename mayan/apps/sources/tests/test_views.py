@@ -1,6 +1,5 @@
 from django.test import override_settings
 
-from mayan.apps.tests.tests.base import GenericViewTestCase
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.permissions import (
     permission_document_create, permission_document_new_version
@@ -10,8 +9,9 @@ from mayan.apps.documents.tests.literals import (
     TEST_COMPRESSED_DOCUMENT_PATH, TEST_DOCUMENT_DESCRIPTION,
     TEST_SMALL_DOCUMENT_CHECKSUM, TEST_SMALL_DOCUMENT_PATH
 )
+from mayan.apps.testing.tests.base import GenericViewTestCase
 
-from ..literals import SOURCE_CHOICE_WEB_FORM, SOURCE_UNCOMPRESS_CHOICE_Y
+from ..literals import SOURCE_UNCOMPRESS_CHOICE_Y
 from ..models import WebFormSource
 from ..permissions import (
     permission_sources_setup_create, permission_sources_setup_delete,
@@ -21,9 +21,10 @@ from ..permissions import (
 
 from .literals import TEST_SOURCE_LABEL, TEST_SOURCE_UNCOMPRESS_N
 from .mixins import (
-    DocumentUploadWizardViewTestMixin, DocumentVersionUploadViewTestMixin,
-    StagingFolderTestMixin, StagingFolderViewTestMixin, SourceTestMixin,
-    SourceViewTestMixin
+    DocumentUploadIssueTestMixin, DocumentUploadWizardViewTestMixin,
+    DocumentVersionUploadViewTestMixin, StagingFolderTestMixin,
+    StagingFolderViewTestMixin, SourceTestMixin, SourceViewTestMixin,
+    WatchFolderTestMixin
 )
 
 
@@ -125,33 +126,14 @@ class DocumentUploadWizardViewTestCase(
         )
 
 
-class DocumentUploadIssueTestCase(GenericDocumentViewTestCase):
+class DocumentUploadIssueTestCase(
+    DocumentUploadIssueTestMixin, GenericDocumentViewTestCase
+):
     auto_upload_test_document = False
     auto_login_superuser = True
     auto_login_user = False
     create_test_case_superuser = True
     create_test_case_user = False
-
-    def _request_test_source_create_view(self):
-        return self.post(
-            viewname='sources:setup_source_create', kwargs={
-                'source_type_name': SOURCE_CHOICE_WEB_FORM
-            }, data={
-                'enabled': True, 'label': 'test', 'uncompress': 'n'
-            }
-        )
-
-    def _request_test_source_edit_view(self):
-        return self.post(
-            viewname='documents:document_edit', kwargs={
-                'document_id': self.test_document.pk
-            },
-            data={
-                'description': TEST_DOCUMENT_DESCRIPTION,
-                'label': self.test_document.label,
-                'language': self.test_document.language
-            }
-        )
 
     def test_issue_25(self):
         # Create new webform source
@@ -395,3 +377,32 @@ class StagingFolderViewTestCase(
             staging_file_count,
             len(list(self.test_staging_folder.get_files()))
         )
+
+
+class WatchFolderErrorLoggingViewTestCase(
+    WatchFolderTestMixin, SourceViewTestMixin, GenericDocumentViewTestCase
+):
+    auto_upload_test_document = False
+
+    def test_error_logging(self):
+        self._create_test_watchfolder()
+        self.test_source = self.test_watch_folder
+        self.test_watch_folder.folder_path = 'invalid_path'
+        self.test_watch_folder.save()
+
+        self.grant_permission(permission=permission_sources_setup_create)
+
+        self._silence_logger(name='mayan.apps.sources.tasks')
+
+        response = self._request_setup_source_check_post_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(self.test_watch_folder.error_log.count(), 1)
+
+        self.test_watch_folder.folder_path = self.temporary_directory
+        self.test_watch_folder.save()
+
+        response = self._request_setup_source_check_post_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(self.test_watch_folder.error_log.count(), 0)

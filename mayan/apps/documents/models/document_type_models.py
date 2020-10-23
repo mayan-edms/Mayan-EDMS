@@ -1,13 +1,16 @@
 import logging
 
 from django.apps import apps
-from django.db import models, transaction
+from django.db import models
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.common.literals import TIME_DELTA_UNIT_CHOICES
+from mayan.apps.common.serialization import yaml_load
+from mayan.apps.common.validators import YAMLValidator
 
+from ..classes import BaseDocumentFilenameGenerator
 from ..events import event_document_type_created, event_document_type_edited
 from ..literals import DEFAULT_DELETE_PERIOD, DEFAULT_DELETE_TIME_UNIT
 from ..managers import DocumentTypeManager
@@ -47,6 +50,20 @@ class DocumentType(models.Model):
         blank=True, choices=TIME_DELTA_UNIT_CHOICES,
         default=DEFAULT_DELETE_TIME_UNIT, max_length=8, null=True,
         verbose_name=_('Delete time unit')
+    )
+    filename_generator_backend = models.CharField(
+        default=BaseDocumentFilenameGenerator.get_default(), help_text=_(
+            'The class responsible for producing the actual filename used '
+            'to store the uploaded documents.'
+        ), max_length=224, verbose_name=_('Filename generator backend')
+    )
+    filename_generator_backend_arguments = models.TextField(
+        blank=True, help_text=_(
+            'The arguments for the filename generator backend as a '
+            'YAML dictionary.'
+        ), validators=[YAMLValidator()], verbose_name=_(
+            'Filename generator backend arguments'
+        )
     )
 
     objects = DocumentTypeManager()
@@ -92,6 +109,19 @@ class DocumentType(models.Model):
 
         return queryset.count()
 
+    def get_upload_filename(self, instance, filename):
+        generator_klass = BaseDocumentFilenameGenerator.get(
+            name=self.filename_generator_backend
+        )
+        generator_instance = generator_klass(
+            **yaml_load(
+                stream=self.filename_generator_backend_arguments or '{}'
+            )
+        )
+        return generator_instance.upload_to(
+            instance=instance, filename=filename
+        )
+
     def natural_key(self):
         return (self.label,)
 
@@ -104,16 +134,12 @@ class DocumentType(models.Model):
         )
 
         try:
-            with transaction.atomic():
-                document = Document(
-                    description=description or '', document_type=self,
-                    label=label or file_object.name,
-                    language=language or setting_language.value
-                )
-                document.save(_user=_user)
-
-                document.new_version(file_object=file_object, _user=_user)
-                return document
+            document = Document(
+                description=description or '', document_type=self,
+                label=label or file_object.name,
+                language=language or setting_language.value
+            )
+            document.save(_user=_user)
         except Exception as exception:
             logger.critical(
                 'Unexpected exception while trying to create new document '
@@ -121,6 +147,18 @@ class DocumentType(models.Model):
                 label or file_object.name, self, exception
             )
             raise
+        else:
+            try:
+                document.new_version(file_object=file_object, _user=_user)
+            except Exception as exception:
+                logger.critical(
+                    'Unexpected exception while trying to create initial '
+                    'version for document %s; %s',
+                    label or file_object.name, exception
+                )
+                raise
+            else:
+                return document
 
     def save(self, *args, **kwargs):
         user = kwargs.pop('_user', None)

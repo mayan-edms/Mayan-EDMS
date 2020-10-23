@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Emerson Soares <on.emersonsoares@gmail.com>, 2011
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017
@@ -13,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:23-0400\n"
-"PO-Revision-Date: 2020-01-06 18:40+0000\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"PO-Revision-Date: 2020-10-01 22:14+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -23,9 +24,13 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:45 events.py:6 models.py:34 models.py:104 permissions.py:5
+#: apps.py:46 events.py:6 models.py:35 models.py:104 permissions.py:5
 msgid "Permissions"
 msgstr "Permissões"
+
+#: apps.py:99 models.py:142
+msgid "Group count"
+msgstr "Contagem de grupos"
 
 #: classes.py:85
 msgid "Insufficient permissions."
@@ -67,15 +72,15 @@ msgstr "Grupos"
 msgid "Role permissions"
 msgstr "Permissões do papel"
 
-#: models.py:25
+#: models.py:26
 msgid "Namespace"
 msgstr "Namespace"
 
-#: models.py:26
+#: models.py:27
 msgid "Name"
 msgstr "Nome"
 
-#: models.py:33
+#: models.py:34
 msgid "Permission"
 msgstr "Permissão"
 
@@ -90,6 +95,10 @@ msgstr "Rótulo"
 #: models.py:114
 msgid "Role"
 msgstr "Papel"
+
+#: models.py:150
+msgid "Permission count"
+msgstr "Contagem de permissões"
 
 #: permissions.py:8
 msgid "Create roles"

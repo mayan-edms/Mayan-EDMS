@@ -63,7 +63,7 @@ test-all-migrations: clean-pyc _test-command
 test-launch-postgres:
 	@docker rm -f test-postgres || true
 	@docker volume rm test-postgres || true
-	@docker run -d --name test-postgres -p 5432:5432 -v test-postgres:/var/lib/postgresql/data $(DOCKER_POSTGRES_IMAGE_VERSION)
+	@docker run -d --name test-postgres -p 5432:5432 -e POSTGRES_HOST_AUTH_METHOD=trust -v test-postgres:/var/lib/postgresql/data $(DOCKER_POSTGRES_IMAGE_VERSION)
 	@echo "* Installing libpq-dev client"
 	@sudo apt-get install -qq libpq-dev
 	@echo "* Installing Python client"
@@ -143,13 +143,13 @@ test-with-oracle-all: test-launch-oracle
 
 gitlab-ci-run: ## Execute a GitLab CI job locally
 gitlab-ci-run:
-	@if [ -z "$$(docker images gitlab-runner-helper:11.2.0)" ]; then \
+	@if [ -z "$$(docker images -q gitlab-runner-helper:11.2.0)" ]; then \
 	echo "1) Make sure to download the corresponding helper image from https://hub.docker.com/r/gitlab/gitlab-runner-helper/tags"; \
 	echo "2) Tag the download image as gitlab-runner-helper:11.2.0"; \
 	exit 1; \
 	fi; \
 	if [ -z $(GITLAB_CI_JOB) ]; then echo "Specify the job to execute using GITLAB_CI_JOB."; exit 1; fi; \
-	gitlab-runner exec docker --docker-volumes $$PWD/gitlab-ci-volume:/builds $(GITLAB_CI_JOB)
+	gitlab-runner exec docker --docker-privileged --docker-volumes /var/run/docker.sock:/var/run/docker.sock --docker-volumes $$PWD/gitlab-ci-volume:/builds $(GITLAB_CI_JOB)
 
 # Coverage
 
@@ -177,11 +177,14 @@ translations-source-clear: ## Clear the msgstr of the source file
 translations-fuzzy-remove: ## Remove fuzzy makers
 	sed -i  '/#, fuzzy/d' mayan/apps/*/locale/*/LC_MESSAGES/django.po
 
+translations-check: ## Check that all app have a Transifex entry
+	contrib/scripts/transifex_helper.py
+
 translations-make: ## Refresh all translation files.
-	contrib/scripts/process_messages.py -m
+	contrib/scripts/process_messages.py make
 
 translations-compile: ## Compile all translation files.
-	contrib/scripts/process_messages.py -c
+	contrib/scripts/process_messages.py compile
 
 translations-push: ## Upload all translation files to Transifex.
 	tx push -s
@@ -190,7 +193,7 @@ translations-pull: ## Download all translation files from Transifex.
 	tx pull -f
 
 translations-all: ## Execute all translations targets.
-translations-all: translations-source-clear translations-fuzzy-remove translations-make translations-push translations-pull translations-compile
+translations-all: translations-source-clear translations-fuzzy-remove translations-check translations-make translations-push translations-pull translations-compile
 
 # Releases
 
@@ -276,6 +279,7 @@ test-wheel-via-docker-ubuntu: ## Make a wheel package and test it using an Ubunt
 	make wheel-test-suit \
 	"
 
+python-sdist-test-suit: ## Run the test suit from a built sdist package
 python-sdist-test-suit: python-sdist
 	rm -f -R _virtualenv
 	virtualenv _virtualenv
@@ -287,6 +291,7 @@ python-sdist-test-suit: python-sdist
 	_virtualenv/bin/mayan-edms.py test --mayan-apps \
 	'
 
+python-wheel-test-suit: ## Run the test suit from a built wheel package
 python-wheel-test-suit: wheel
 	rm -f -R _virtualenv
 	virtualenv _virtualenv
@@ -404,7 +409,7 @@ safety-check: ## Run a package safety check.
 # Other
 find-gitignores: ## Find stray .gitignore files.
 	@export FIND_GITIGNORES=`find -name '.gitignore'| wc -l`; \
-	if [ $${FIND_GITIGNORES} -gt 1 ] ;then echo "More than one .gitignore found."; fi
+	if [ $${FIND_GITIGNORES} -gt 1 ] ;then echo "More than one .gitignore found: $$FIND_GITIGNORES"; fi
 
 python-build:
 	docker rm -f mayan-edms-build || true && \
@@ -425,9 +430,15 @@ check-readme: ## Checks validity of the README.rst file for PyPI publication.
 check-missing-migrations: ## Make sure all models have proper migrations.
 	./manage.py makemigrations --dry-run --noinput --check
 
+check-missing-inits: ## Find missing __init__.py files from modules.
+check-missing-inits:
+	@contrib/scripts/find_missing_inits.py
+
+
 setup-dev-environment: ## Bootstrap a virtualenv by install all dependencies to start developing.
 	sudo apt-get install -y firefox-geckodriver gcc gettext gitlab-runner gnupg1 poppler-utils python3-dev tesseract-ocr-deu
 	pip install -r requirements.txt -r requirements/development.txt -r requirements/testing-base.txt -r requirements/documentation.txt -r requirements/build.txt
-	docker pull gitlab/gitlab-runner-helper:x86_64-974e52f1
+	docker pull gitlab/gitlab-runner-helper:x86_64-281644e9
+	docker tag gitlab/gitlab-runner-helper:x86_64-281644e9 gitlab-runner-helper:11.2.0
 
 -include docker/Makefile

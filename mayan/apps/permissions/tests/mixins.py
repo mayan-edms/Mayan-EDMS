@@ -64,6 +64,13 @@ class RoleAPIViewTestMixin:
             viewname='rest_api:role-list', data=data
         )
 
+    def _request_test_role_create_api_view_extra_data(self):
+        extra_data = {
+            'groups_pk_list': '{}'.format(self.test_group.pk),
+            'permissions_pk_list': '{}'.format(self.test_permission.pk)
+        }
+        return self._request_test_role_create_api_view(extra_data=extra_data)
+
     def _request_test_role_delete_api_view(self):
         return self.delete(
             viewname='rest_api:role-detail', kwargs={'pk': self.test_role.pk}
@@ -85,7 +92,25 @@ class RoleAPIViewTestMixin:
             }, data=data
         )
 
-    def _request_role_list_api_view(self):
+    def _request_test_role_edit_api_patch_view_extra_data(self):
+        extra_data = {
+            'groups_pk_list': '{}'.format(self.test_group.pk),
+            'permissions_pk_list': '{}'.format(self.test_permission.pk)
+        }
+        return self._request_test_role_edit_api_view(
+            extra_data=extra_data, request_type='patch'
+        )
+
+    def _request_test_role_edit_api_put_view_extra_data(self):
+        extra_data = {
+            'groups_pk_list': '{}'.format(self.test_group.pk),
+            'permissions_pk_list': '{}'.format(self.test_permission.pk)
+        }
+        return self._request_test_role_edit_api_view(
+            extra_data=extra_data, request_type='put'
+        )
+
+    def _request_test_role_list_api_view(self):
         return self.get(viewname='rest_api:role-list')
 
 

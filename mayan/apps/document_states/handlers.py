@@ -6,6 +6,7 @@ from mayan.apps.events.classes import EventType
 
 from .literals import STORAGE_NAME_WORKFLOW_CACHE
 from .settings import setting_workflow_image_cache_maximum_size
+from .tasks import task_launch_all_workflow_for
 
 
 def handler_create_workflow_image_cache(sender, **kwargs):
@@ -26,12 +27,10 @@ def handler_index_document(sender, **kwargs):
 
 
 def handler_launch_workflow(sender, instance, created, **kwargs):
-    Workflow = apps.get_model(
-        app_label='document_states', model_name='Workflow'
-    )
-
     if created:
-        Workflow.objects.launch_for(document=instance)
+        task_launch_all_workflow_for.apply_async(
+            kwargs={'document_id': instance.pk}
+        )
 
 
 def handler_trigger_transition(sender, **kwargs):

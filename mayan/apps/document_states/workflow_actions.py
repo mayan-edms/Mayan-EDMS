@@ -7,6 +7,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from .classes import WorkflowAction
 from .exceptions import WorkflowStateActionError
+from .models import Workflow
+from .tasks import task_launch_workflow_for
 
 logger = logging.getLogger(name=__name__)
 DEFAULT_TIMEOUT = 4  # 4 seconds
@@ -64,6 +66,48 @@ class DocumentPropertiesEditAction(WorkflowAction):
             document.description = new_description or document.description
 
             document.save()
+
+
+class DocumentWorkflowLaunchAction(WorkflowAction):
+    fields = {
+        'workflows': {
+            'label': _('Workflows'),
+            'class': 'django.forms.ModelMultipleChoiceField', 'kwargs': {
+                'help_text': _(
+                    'Additional workflows to launch for the document.'
+                ), 'queryset': Workflow.objects.none()
+            },
+        },
+    }
+    field_order = ('workflows',)
+    label = _('Launch workflows')
+    widgets = {
+        'workflows': {
+            'class': 'django.forms.widgets.SelectMultiple', 'kwargs': {
+                'attrs': {'class': 'select2'},
+            }
+        }
+    }
+
+    def get_form_schema(self, **kwargs):
+        result = super().get_form_schema(**kwargs)
+
+        workflows_union = Workflow.objects.filter(
+            document_types__in=kwargs['workflow_state'].workflow.document_types.all()
+        ).distinct()
+
+        result['fields']['workflows']['kwargs']['queryset'] = workflows_union
+
+        return result
+
+    def execute(self, context):
+        for workflow in self.form_data['workflows']:
+            task_launch_workflow_for.apply_async(
+                kwargs={
+                    'document_id': context['document'].pk,
+                    'workflow_id': workflow.pk
+                }
+            )
 
 
 class HTTPAction(WorkflowAction):

@@ -21,9 +21,10 @@ from .views.document_page_views import (
 from .views.document_type_views import (
     DocumentTypeCreateView, DocumentTypeDeleteView,
     DocumentTypeDeletionPoliciesEditView, DocumentTypeDocumentListView,
-    DocumentTypeEditView, DocumentTypeFilenameCreateView,
-    DocumentTypeFilenameDeleteView, DocumentTypeFilenameEditView,
-    DocumentTypeFilenameListView, DocumentTypeListView
+    DocumentTypeEditView, DocumentTypeFileGeneratorEditView,
+    DocumentTypeFilenameCreateView, DocumentTypeFilenameDeleteView,
+    DocumentTypeFilenameEditView, DocumentTypeFilenameListView,
+    DocumentTypeListView
 )
 from .views.document_version_views import (
     DocumentVersionDownloadFormView, DocumentVersionDownloadView,
@@ -75,6 +76,11 @@ urlpatterns_document_types = [
     url(
         regex=r'^document_types/(?P<document_type_id>\d+)/edit/$',
         name='document_type_edit', view=DocumentTypeEditView.as_view()
+    ),
+    url(
+        regex=r'^document_types/(?P<document_type_id>\d+)/filename_generator/$',
+        name='document_type_filename_generator',
+        view=DocumentTypeFileGeneratorEditView.as_view()
     ),
     url(
         regex=r'^document_types/(?P<document_type_id>\d+)/filenames/$',

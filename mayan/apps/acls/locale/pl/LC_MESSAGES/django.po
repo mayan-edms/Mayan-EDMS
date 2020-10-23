@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Daniel Winiarski <daniel.winiarski.dw@gmail.com>, 2017
 # Marcin Lozynski <mlozynski@wp.pl>, 2019
 # Tomasz Szymanowicz <alakdae@gmail.com>, 2019-2020
@@ -12,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:20-0400\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2020-05-18 09:57+0000\n"
 "Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
@@ -22,7 +23,7 @@ msgstr ""
 "Language: pl\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: apps.py:22 links.py:42
+#: apps.py:23 classes.py:142 links.py:26
 msgid "ACLs"
 msgstr "Listy ACL"
 
@@ -38,19 +39,19 @@ msgstr "Utworzono listę ACL"
 msgid "ACL edited"
 msgstr "Wyedytowano listę ACL"
 
-#: forms.py:13 models.py:46 views.py:67
+#: forms.py:13 models.py:44 views.py:67
 msgid "Role"
 msgstr "Rola"
 
-#: links.py:32
+#: links.py:15
 msgid "New ACL"
 msgstr "Nowa lista ACL"
 
-#: links.py:37
+#: links.py:20
 msgid "Delete"
 msgstr "Usuń"
 
-#: links.py:47 models.py:42 workflow_actions.py:46 workflow_actions.py:161
+#: links.py:31 models.py:40 workflow_actions.py:46 workflow_actions.py:161
 msgid "Permissions"
 msgstr "Uprawnienia"
 
@@ -64,15 +65,15 @@ msgstr "Obiekt \"%s\" nie jest modelem i nie może być sprawdzony pod kątem do
 msgid "Insufficient access for: %s"
 msgstr "Niewystarczający dostęp dla: %s"
 
-#: models.py:54
+#: models.py:52
 msgid "Access entry"
 msgstr "Zgłoszenie dostępu"
 
-#: models.py:55
+#: models.py:53
 msgid "Access entries"
 msgstr "Zgłoszenia dostępu"
 
-#: models.py:59
+#: models.py:57
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\""
 msgstr "Uprawnienia roli \"%(role)s\" dla obiektu \"%(object)s\""

@@ -38,7 +38,6 @@ from .permissions import (
     permission_document_type_file_metadata_setup,
     permission_file_metadata_submit, permission_file_metadata_view
 )
-from .search import *  # NOQA
 from .signals import signal_post_document_version_file_metadata_processing
 
 

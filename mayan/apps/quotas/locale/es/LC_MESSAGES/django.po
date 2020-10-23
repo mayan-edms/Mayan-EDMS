@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:23-0400\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2020-03-28 07:24+0000\n"
 "Last-Translator: Roberto Rosario, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -20,20 +20,20 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:36 events.py:6 links.py:33 models.py:32 permissions.py:5
+#: apps.py:39 events.py:6 links.py:33 models.py:32 permissions.py:5
 #: views.py:134
 msgid "Quotas"
 msgstr "Cuotas"
 
-#: classes.py:63
+#: classes.py:65
 msgid "none"
 msgstr "ninguna"
 
-#: classes.py:163
+#: classes.py:157
 msgid "Does not apply"
 msgstr "No aplica"
 
-#: classes.py:167 classes.py:174
+#: classes.py:161 classes.py:168
 msgid "Null backend"
 msgstr "Controlador nulo"
 

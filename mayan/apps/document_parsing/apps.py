@@ -38,7 +38,6 @@ from .permissions import (
     permission_content_view, permission_document_type_parsing_setup,
     permission_parse_document
 )
-from .search import *  # NOQA
 from .signals import signal_post_document_version_parsing
 from .utils import get_instance_content
 

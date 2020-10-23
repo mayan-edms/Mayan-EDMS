@@ -2,19 +2,24 @@ from django.contrib import messages
 from django.db import transaction
 from django.template import RequestContext
 from django.urls import reverse_lazy
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _, ungettext
 
+from mayan.apps.acls.models import AccessControlList
 from mayan.apps.documents.events import event_document_type_edited
-from mayan.apps.documents.models import DocumentType
+from mayan.apps.documents.models.document_models import Document
+from mayan.apps.documents.models.document_type_models import DocumentType
 from mayan.apps.documents.permissions import permission_document_type_edit
 from mayan.apps.views.generics import (
-    AddRemoveView, ConfirmView, SingleObjectCreateView, SingleObjectDeleteView,
+    AddRemoveView, ConfirmView, MultipleObjectFormActionView,
+    MultipleObjectConfirmActionView, SingleObjectCreateView,
     SingleObjectDetailView, SingleObjectEditView, SingleObjectListView
 )
 from mayan.apps.views.mixins import ExternalObjectMixin
 
 from ..events import event_workflow_edited
-from ..forms import WorkflowForm, WorkflowPreviewForm
+from ..forms import (
+    WorkflowForm, WorkflowMultipleSelectionForm, WorkflowPreviewForm
+)
 from ..icons import icon_workflow_template_list
 from ..links import link_workflow_template_create
 from ..models import Workflow
@@ -23,7 +28,9 @@ from ..permissions import (
     permission_workflow_edit, permission_workflow_tools,
     permission_workflow_view,
 )
-from ..tasks import task_launch_all_workflows, task_launch_workflow
+from ..tasks import (
+    task_launch_all_workflows, task_launch_workflow, task_launch_workflow_for
+)
 
 
 class DocumentTypeWorkflowTemplatesView(AddRemoveView):
@@ -80,6 +87,71 @@ class DocumentTypeWorkflowTemplatesView(AddRemoveView):
                 ).delete()
 
 
+class DocumentWorkflowTemplatesLaunchView(MultipleObjectFormActionView):
+    form_class = WorkflowMultipleSelectionForm
+    model = Document
+    object_permission = permission_workflow_tools
+    pk_url_kwarg = 'document_id'
+    success_message = _('Workflows launched for %(count)d document')
+    success_message_plural = _('Workflows launched for %(count)d documents')
+
+    def get_extra_context(self):
+        result = {
+            'submit_label': _('Launch'),
+            'subtitle': _(
+                'Workflows already launched or workflows not applicable to '
+                'some documents when multiple documents are selected, '
+                'will be silently ignored.'
+            ),
+            'title': ungettext(
+                singular='Launch selected workflows for %(count)d document',
+                plural='Launch selected workflows for %(count)d documents',
+                number=self.object_list.count()
+            ) % {
+                'count': self.object_list.count(),
+            }
+        }
+
+        if self.object_list.count() == 1:
+            result.update(
+                {
+                    'object': self.object_list.first(),
+                    'title': _(
+                        'Launch selected workflows for document: %s'
+                    ) % self.object_list.first()
+                }
+            )
+
+        return result
+
+    def get_form_extra_kwargs(self):
+        workflows_union = Workflow.objects.filter(
+            document_types__in=self.object_list.values('document_type')
+        ).distinct()
+
+        result = {
+            'help_text': _('Workflows to be launched.'),
+            'permission': permission_workflow_tools,
+            'queryset': workflows_union,
+            'user': self.request.user
+        }
+
+        return result
+
+    def object_action(self, form, instance):
+        workflow_queryset = AccessControlList.objects.restrict_queryset(
+            permission=permission_workflow_tools,
+            queryset=form.cleaned_data['workflows'], user=self.request.user
+        )
+
+        for workflow in workflow_queryset:
+            task_launch_workflow_for.apply_async(
+                kwargs={
+                    'document_id': instance.pk, 'workflow_id': workflow.pk
+                }
+            )
+
+
 class WorkflowTemplateCreateView(SingleObjectCreateView):
     extra_context = {'title': _('Create workflow')}
     form_class = WorkflowForm
@@ -93,20 +165,53 @@ class WorkflowTemplateCreateView(SingleObjectCreateView):
         return {'_user': self.request.user}
 
 
-class WorkflowTemplateDeleteView(SingleObjectDeleteView):
+class WorkflowTemplateDeleteView(MultipleObjectConfirmActionView):
     model = Workflow
     object_permission = permission_workflow_delete
     pk_url_kwarg = 'workflow_template_id'
     post_action_redirect = reverse_lazy(
         viewname='document_states:workflow_template_list'
     )
+    success_message = _('Delete request performed on %(count)d workflow')
+    success_message_plural = _(
+        'Delete request performed on %(count)d workflows'
+    )
 
     def get_extra_context(self):
-        return {
-            'title': _(
-                'Delete workflow: %s?'
-            ) % self.object,
+        result = {
+            'delete_view': True,
+            'message': _('All workflow instances will also be deleted.'),
+            'title': ungettext(
+                singular='Delete the selected workflow?',
+                plural='Delete the selected workflows?',
+                number=self.object_list.count()
+            )
         }
+
+        if self.object_list.count() == 1:
+            result.update(
+                {
+                    'object': self.object_list.first(),
+                    'title': _('Delete workflow: %s?') % self.object_list.first()
+                }
+            )
+
+        return result
+
+    def object_action(self, instance, form=None):
+        try:
+            instance.delete()
+            messages.success(
+                message=_(
+                    'Workflow "%s" deleted successfully.'
+                ) % instance, request=self.request
+            )
+        except Exception as exception:
+            messages.error(
+                message=_('Error deleting workflow "%(workflow)s": %(error)s') % {
+                    'workflow': instance, 'error': exception
+                }, request=self.request
+            )
 
 
 class WorkflowTemplateEditView(SingleObjectEditView):

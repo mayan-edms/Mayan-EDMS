@@ -6,14 +6,15 @@ from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import (
-    MissingItem, ModelField, ModelFieldRelated, ModelProperty,
+    MissingItem, ModelCopy, ModelField, ModelFieldRelated, ModelProperty,
     ModelQueryFields, Template
 )
 from mayan.apps.common.menus import (
-    menu_facet, menu_list_facet, menu_main, menu_object, menu_secondary,
-    menu_setup, menu_multi_item, menu_tools
+    menu_facet, menu_list_facet, menu_main, menu_object, menu_related,
+    menu_secondary, menu_setup, menu_multi_item, menu_tools
 )
 from mayan.apps.common.signals import signal_post_initial_setup
+from mayan.apps.converter.layers import layer_decorations
 from mayan.apps.dashboards.dashboards import dashboard_main
 from mayan.apps.converter.links import link_transformation_list
 from mayan.apps.converter.permissions import (
@@ -67,8 +68,9 @@ from .links.document_type_links import (
     link_document_type_create, link_document_type_delete,
     link_document_type_edit, link_document_type_filename_create,
     link_document_type_filename_delete, link_document_type_filename_edit,
-    link_document_type_filename_list, link_document_type_list,
-    link_document_type_policies, link_document_type_setup
+    link_document_type_filename_list, link_document_type_filename_generator,
+    link_document_type_list, link_document_type_policies,
+    link_document_type_setup
 )
 from .links.document_version_page_links import (
     link_document_multiple_update_page_count, link_document_page_disable,
@@ -108,8 +110,6 @@ from .permissions import (
     permission_document_type_view, permission_document_version_revert,
     permission_document_version_view, permission_document_view
 )
-# Just import to initialize the search models
-from .search import document_search, document_page_search  # NOQA
 from .signals import signal_post_version_upload
 from .statistics import *  # NOQA
 from .widgets import (
@@ -142,6 +142,11 @@ class DocumentsApp(MayanAppConfig):
         DocumentVersion = self.get_model(model_name='DocumentVersion')
         DuplicatedDocument = self.get_model(model_name='DuplicatedDocument')
 
+        link_decorations_list = link_transformation_list.copy(
+            layer=layer_decorations
+        )
+        link_decorations_list.text = _('Decorations')
+
         DynamicSerializerField.add_serializer(
             klass=Document,
             serializer_class='mayan.apps.documents.serializers.DocumentSerializer'
@@ -159,6 +164,20 @@ class DocumentsApp(MayanAppConfig):
                 'it is the basic way Mayan EDMS categorizes documents.'
             ), condition=lambda: not DocumentType.objects.exists(),
             view='documents:document_type_list'
+        )
+
+        ModelCopy(model=DocumentTypeFilename).add_fields(
+            field_names=(
+                'document_type', 'filename', 'enabled'
+            )
+        )
+        ModelCopy(
+            model=DocumentType, bind_link=True, register_permission=True
+        ).add_fields(
+            field_names=(
+                'label', 'trash_time_period', 'trash_time_unit',
+                'delete_time_period', 'delete_time_unit', 'filenames'
+            )
         )
 
         ModelEventType.register(
@@ -210,9 +229,21 @@ class DocumentsApp(MayanAppConfig):
             name='versions__timestamp'
         )
 
+        ModelField(
+            model=DocumentPage, label=_('Document version'),
+            name='document_version'
+        )
+        ModelField(
+            model=DocumentPage, label=_('Page number'), name='page_number'
+        )
+
         ModelProperty(
             description=_('Return the lastest version of the document.'),
             model=Document, label=_('Latest version'), name='latest_version'
+        )
+        ModelProperty(
+            description=_('Return the document instance.'),
+            model=DocumentPage, label=_('Document'), name='document'
         )
 
         ModelPermission.register(
@@ -437,6 +468,7 @@ class DocumentsApp(MayanAppConfig):
             links=(
                 link_document_type_filename_list,
                 link_document_type_policies,
+                link_document_type_filename_generator,
                 link_acl_list, link_object_event_types_user_subcriptions_list,
                 link_events_for_object,
             ), sources=(DocumentType,)
@@ -528,11 +560,6 @@ class DocumentsApp(MayanAppConfig):
                 link_document_multiple_document_type_edit,
             ), sources=(Document,)
         )
-        menu_multi_item.bind_links(
-            links=(
-                link_document_multiple_restore, link_document_multiple_delete
-            ), sources=(DeletedDocument,)
-        )
 
         # Document pages
         menu_facet.add_unsorted_source(source=DocumentPage)
@@ -556,6 +583,9 @@ class DocumentsApp(MayanAppConfig):
             ), sources=(DocumentPage,)
         )
         menu_list_facet.bind_links(
+            links=(link_decorations_list,), sources=(DocumentPage,)
+        )
+        menu_list_facet.bind_links(
             links=(link_transformation_list,), sources=(DocumentPage,)
         )
         menu_multi_item.bind_links(
@@ -568,7 +598,7 @@ class DocumentsApp(MayanAppConfig):
             links=(link_document_page_disable, link_document_page_enable),
             sources=(DocumentPage,)
         )
-        menu_secondary.bind_links(
+        menu_related.bind_links(
             links=(link_document_page_return,),
             sources=(DocumentPage,)
         )
@@ -577,11 +607,23 @@ class DocumentsApp(MayanAppConfig):
         menu_list_facet.bind_links(
             links=(link_document_version_view,), sources=(DocumentVersion,)
         )
-        menu_secondary.bind_links(
+        menu_related.bind_links(
             links=(
                 link_document_version_return_document,
-                link_document_version_return_list
             ), sources=(DocumentVersion,)
+        )
+        menu_secondary.bind_links(
+            links=(
+                link_document_version_return_list,
+            ), sources=(DocumentVersion,)
+        )
+
+        # Trashed documents
+        menu_multi_item.add_proxy_exclusion(source=DeletedDocument)
+        menu_multi_item.bind_links(
+            links=(
+                link_document_multiple_restore, link_document_multiple_delete
+            ), sources=(DeletedDocument,)
         )
 
         post_delete.connect(

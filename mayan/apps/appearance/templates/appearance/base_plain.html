@@ -1,6 +1,7 @@
 {% load i18n %}
 {% load static %}
 
+{% load appearance_tags %}
 {% load common_tags %}
 {% load navigation_tags %}
 {% load smart_settings_tags %}
@@ -22,6 +23,11 @@
         <link href="{% static 'appearance/node_modules/bootswatch/flatly/bootstrap.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
         <link href="{% static 'appearance/css/base.css' %}" media="screen" rel="stylesheet" type="text/css" />
         {% block stylesheets %}{% endblock %}
+
+        <style>
+            {% appearance_get_user_theme_stylesheet user=request.user %}
+        </style>
+
         <script>
             // Detect if we are inside of an AJAX content container
             // and break free as this is supposed to be a top level

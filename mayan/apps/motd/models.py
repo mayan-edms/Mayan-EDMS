@@ -1,6 +1,10 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.events.classes import EventManagerSave
+from mayan.apps.events.decorators import method_event
+
+from .events import event_message_created, event_message_edited
 from .managers import MessageManager
 
 
@@ -37,3 +41,17 @@ class Message(models.Model):
 
     def __str__(self):
         return self.label
+
+    @method_event(
+        event_manager_class=EventManagerSave,
+        created={
+            'event': event_message_created,
+            'target': 'self',
+        },
+        edited={
+            'event': event_message_edited,
+            'target': 'self',
+        }
+    )
+    def save(self, *args, **kwargs):
+        return super().save(*args, **kwargs)

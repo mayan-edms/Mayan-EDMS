@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
 # j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
 # Justin Albstbstmeijer <justin@albstmeijer.nl>, 2016
@@ -10,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:21-0400\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2020-05-02 12:46+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
@@ -20,7 +21,7 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:44 events.py:5 links.py:32
+#: apps.py:43 events.py:5 links.py:32
 msgid "Checkouts"
 msgstr "Checkouts"
 
@@ -44,11 +45,11 @@ msgstr "Document uitgecheckt"
 msgid "Document forcefully checked in"
 msgstr "Document geforceerd ingecheckt"
 
-#: exceptions.py:16
+#: exceptions.py:15
 msgid "Document not checked out."
 msgstr "Document niet uitgecheckt."
 
-#: exceptions.py:25
+#: exceptions.py:23
 msgid "Document already checked out."
 msgstr "Document reeds uitgecheckt."
 
@@ -56,7 +57,7 @@ msgstr "Document reeds uitgecheckt."
 msgid "Document status"
 msgstr "Documentstatus"
 
-#: forms.py:37 models.py:42 models.py:134
+#: forms.py:37 models.py:41 models.py:133
 msgid "User"
 msgstr "Gebruiker"
 
@@ -108,55 +109,55 @@ msgstr "Uitgecheckt"
 msgid "Checked in/available"
 msgstr "Ingecheckt/beschikbaar"
 
-#: models.py:29 models.py:112
+#: models.py:28 models.py:111
 msgid "Document"
 msgstr "Document"
 
-#: models.py:32
+#: models.py:31
 msgid "Check out date and time"
 msgstr "Uitcheckdatum en tijd"
 
-#: models.py:36
+#: models.py:35
 msgid "Amount of time to hold the document checked out in minutes."
 msgstr "Hoelang in minuten uitgedrukt het document uitgecheckt houden. "
 
-#: models.py:38
+#: models.py:37
 msgid "Check out expiration date and time"
 msgstr "Uitcheck verloopdatum en tijd"
 
-#: models.py:47
+#: models.py:46
 msgid "Do not allow new version of this document to be uploaded."
 msgstr "Sta niet toe dat een nieuwe versie van dit document wordt geüpload."
 
-#: models.py:49
+#: models.py:48
 msgid "Block new version upload"
 msgstr "Nieuwe versie uploaden blokkeren"
 
-#: models.py:57 permissions.py:5
+#: models.py:56 permissions.py:5
 msgid "Document checkout"
 msgstr "Document check-out"
 
-#: models.py:58
+#: models.py:57
 msgid "Document checkouts"
 msgstr "Document check-outs"
 
-#: models.py:66
+#: models.py:65
 msgid "Check out expiration date and time must be in the future."
 msgstr "Uitcheck verloopdatum en -tijd moet in de toekomst liggen."
 
-#: models.py:118
+#: models.py:117
 msgid "New version block"
 msgstr "Nieuwe versie blokkering"
 
-#: models.py:119
+#: models.py:118
 msgid "New version blocks"
 msgstr "Nieuwe versie blokkeringen"
 
-#: models.py:139
+#: models.py:138
 msgid "Checkout time and date"
 msgstr "Uitcheckdatum en tijd"
 
-#: models.py:144
+#: models.py:143
 msgid "Checkout expiration"
 msgstr "Uitchecken verloopt"
 
@@ -227,6 +228,6 @@ msgstr "Een document uitchecken blokkeert bepaalde bewerkingen voor een voorafin
 msgid "No documents have been checked out"
 msgstr "Er zijn geen documenten uitgecheckt"
 
-#: widgets.py:25
+#: widgets.py:23
 msgid "Amount"
 msgstr "Aantal"

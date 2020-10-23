@@ -22,7 +22,7 @@ from .handlers import (
 )
 from .links import (
     link_about, link_book, link_current_user_locale_profile_edit, link_license,
-    link_setup, link_support, link_tools
+    link_setup, link_store, link_support, link_tools
 )
 
 from .literals import MESSAGE_SQLITE_WARNING
@@ -76,7 +76,7 @@ class MayanAppConfig(apps.AppConfig):
                 'No module named \'{}.urls\''.format(self.name),
                 'Module "{}.urls" does not define a "urlpatterns" attribute/class'.format(self.name),
             )
-            if force_text(exception) not in non_critical_error_list:
+            if force_text(s=exception) not in non_critical_error_list:
                 logger.exception(
                     'Import time error when running AppConfig.ready() of app '
                     '"%s".', self.name
@@ -103,7 +103,7 @@ class MayanAppConfig(apps.AppConfig):
                 'No module named \'{}.urls\''.format(self.name),
                 'Module "{}.urls" does not define a "passthru_urlpatterns" attribute/class'.format(self.name),
             )
-            if force_text(exception) not in non_critical_error_list:
+            if force_text(s=exception) not in non_critical_error_list:
                 logger.exception(
                     'Import time error when running AppConfig.ready() of app '
                     '"%s".', self.name
@@ -127,6 +127,9 @@ class CommonApp(AppConfigLoggingMixin, MayanAppConfig):
     has_rest_api = True
     has_tests = True
     name = 'mayan.apps.common'
+    static_media_ignore_patterns = (
+        'mptt/*',
+    )
     verbose_name = _('Common')
 
     def ready(self):
@@ -138,7 +141,7 @@ class CommonApp(AppConfigLoggingMixin, MayanAppConfig):
         if check_for_sqlite():
             warnings.warn(
                 category=DatabaseWarning,
-                message=force_text(MESSAGE_SQLITE_WARNING)
+                message=force_text(s=MESSAGE_SQLITE_WARNING)
             )
 
         Template(
@@ -156,8 +159,8 @@ class CommonApp(AppConfigLoggingMixin, MayanAppConfig):
 
         menu_about.bind_links(
             links=(
-                link_tools, link_setup, link_about, link_book, link_support,
-                link_license,
+                link_tools, link_setup, link_about, link_book, link_store,
+                link_support, link_license,
             )
         )
 

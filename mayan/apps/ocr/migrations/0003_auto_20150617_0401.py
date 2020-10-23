@@ -9,8 +9,8 @@ def operation_move_content_from_documents_to_ocr_app(apps, schema_editor):
         app_label='ocr', model_name='DocumentPageContent'
     )
 
-    for document_page in DocumentPage.objects.using(schema_editor.connection.alias).all():
-        DocumentPageContent.objects.using(schema_editor.connection.alias).create(
+    for document_page in DocumentPage.objects.using(alias=schema_editor.connection.alias).all():
+        DocumentPageContent.objects.using(alias=schema_editor.connection.alias).create(
             document_page=document_page,
             content=document_page.content_old or ''
         )
@@ -20,9 +20,11 @@ class Migration(migrations.Migration):
     dependencies = [
         ('ocr', '0002_documentpagecontent'),
     ]
-
     operations = [
         migrations.RunPython(
             code=operation_move_content_from_documents_to_ocr_app
         ),
+    ]
+    run_before = [
+        ('documents', '0006_remove_documentpage_content_old'),
     ]

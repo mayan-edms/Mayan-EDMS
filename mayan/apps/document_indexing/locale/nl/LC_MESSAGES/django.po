@@ -3,6 +3,8 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
+# bwakkie <bwakkie@gmail.com>, 2020
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
 # j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
 # Johan Braeken, 2017
@@ -11,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:21-0400\n"
-"PO-Revision-Date: 2020-05-16 09:37+0000\n"
-"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"PO-Revision-Date: 2020-09-27 06:46+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,31 +27,31 @@ msgstr ""
 msgid "None"
 msgstr "Geen"
 
-#: admin.py:24 links.py:93 models.py:52
+#: admin.py:24 links.py:93 models.py:51
 msgid "Document types"
 msgstr "Documenttypen"
 
-#: apps.py:54 events.py:6
+#: apps.py:55 events.py:6 settings.py:8
 msgid "Document indexing"
 msgstr "Documentindexering"
 
-#: apps.py:129
+#: apps.py:146
 msgid "Total levels"
 msgstr "Totaal aantal niveaus"
 
-#: apps.py:136
+#: apps.py:153
 msgid "Total documents"
 msgstr "Totaal aantal documenten"
 
-#: apps.py:142 apps.py:156 apps.py:181 apps.py:191
+#: apps.py:159 apps.py:173 apps.py:193 apps.py:203
 msgid "Level"
 msgstr "Niveau"
 
-#: apps.py:161 apps.py:196
+#: apps.py:181
 msgid "Levels"
 msgstr "Niveaus"
 
-#: apps.py:168 apps.py:176 apps.py:204 models.py:381
+#: apps.py:188 models.py:394
 msgid "Documents"
 msgstr "Documenten"
 
@@ -63,11 +65,11 @@ msgstr "Index bewerkt"
 
 #: forms.py:16
 msgid "Index templates to be queued for rebuilding."
-msgstr ""
+msgstr "Indexsjablonen in wachtrij voor opnieuw opbouwen."
 
 #: forms.py:17 links.py:27
 msgid "Index templates"
-msgstr ""
+msgstr "Indexsjablonen"
 
 #: forms.py:32
 msgid "Template"
@@ -77,7 +79,7 @@ msgstr "Sjabloon"
 msgid "Creation date"
 msgstr "Aanmaakdatum"
 
-#: links.py:21 links.py:36 links.py:73 links.py:77 models.py:60 views.py:150
+#: links.py:21 links.py:36 links.py:73 links.py:77 models.py:59 views.py:150
 #: views.py:333
 msgid "Indexes"
 msgstr "Indexeringen"
@@ -118,121 +120,121 @@ msgstr "Sjabloon boomstructuur"
 msgid "New child node"
 msgstr "Nieuwe node"
 
-#: models.py:34
+#: models.py:33
 msgid "Short description of this index."
 msgstr "Korte beschrijving van deze index."
 
-#: models.py:35
+#: models.py:34
 msgid "Label"
 msgstr "Label"
 
-#: models.py:39
+#: models.py:38
 msgid "This value will be used by other apps to reference this index."
 msgstr "Deze waarde wordt gebruikt door andere apps om naar deze index te verwijzen."
 
-#: models.py:40
+#: models.py:39
 msgid "Slug"
 msgstr "Slug"
 
-#: models.py:45
+#: models.py:44
 msgid ""
 "Causes this index to be visible and updated when document data changes."
 msgstr "Maakt deze index zichtbaar en 'up-to-date' wanneer documentgegevens wijzigen."
 
-#: models.py:48 models.py:253
+#: models.py:47 models.py:230
 msgid "Enabled"
 msgstr "Ingeschakeld"
 
-#: models.py:59 models.py:237
+#: models.py:58 models.py:214
 msgid "Index"
 msgstr "Index"
 
-#: models.py:209
-msgid "Index instance"
-msgstr "index instance"
-
-#: models.py:210
-msgid "Index instances"
-msgstr "Index instanties"
-
-#: models.py:241
+#: models.py:218
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 msgstr "Een sjabloon invoeren om op te maken. Gebruik Django's standaard sjabloon taal (https://docs.djangoproject.com/en/1.11.ref/templates/builtins/)"
 
-#: models.py:245
+#: models.py:222
 msgid "Indexing expression"
 msgstr "Indexeringsexpressie"
 
-#: models.py:250
+#: models.py:227
 msgid "Causes this node to be visible and updated when document data changes."
 msgstr "Maakt deze node zichtbaar en 'up-to-date' wanneer document gegevens wijzigen"
 
-#: models.py:258
+#: models.py:235
 msgid ""
 "Check this option to have this node act as a container for documents and not"
 " as a parent for further nodes."
 msgstr "Selecteer deze optie, wanneer deze node alleen documenten dient te bevatten. "
 
-#: models.py:261
+#: models.py:238
 msgid "Link documents"
 msgstr "Koppel documenten"
 
-#: models.py:265
+#: models.py:242
 msgid "Index node template"
-msgstr ""
+msgstr "Index node sjabloon"
 
-#: models.py:266
+#: models.py:243
 msgid "Indexes node template"
-msgstr ""
+msgstr "Index node sjablonen"
 
-#: models.py:270
+#: models.py:247
 msgid "Root"
 msgstr "Root"
 
-#: models.py:328
+#: models.py:305
 #, python-format
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
 msgstr "Fout bij het indexeren van document: %(document)s; uitdrukking: %(expression)s; %(exception)s"
 
-#: models.py:374
-msgid "Index template node"
-msgstr ""
+#: models.py:346
+msgid "Index instance"
+msgstr "index instance"
 
-#: models.py:377 search.py:23
+#: models.py:347
+msgid "Index instances"
+msgstr "Index instanties"
+
+#: models.py:387
+msgid "Index template node"
+msgstr "Indexsjabloon node"
+
+#: models.py:390 search.py:23
 msgid "Value"
 msgstr "Waarde"
 
-#: models.py:387 models.py:513
+#: models.py:400 models.py:529
 msgid "Index instance node"
-msgstr ""
+msgstr "Index instantie node"
 
-#: models.py:388
+#: models.py:401
 msgid "Indexes instances node"
-msgstr ""
+msgstr "Indexeert instantie nodes"
 
-#: models.py:450
+#: models.py:466
 msgid "The path to the index including all ancestors."
-msgstr ""
+msgstr "Het pad naar de index inclusief alle subfolders."
 
-#: models.py:452
+#: models.py:468
 msgid "Full path"
 msgstr "Volledig pad"
 
-#: models.py:506
+#: models.py:522
 msgid "Document index node instance"
-msgstr ""
+msgstr "Documentindex node instantie"
 
-#: models.py:507
+#: models.py:523
 msgid "Document indexes node instances"
-msgstr ""
+msgstr "Documentindex node instanties"
 
-#: models.py:514
+#: models.py:530
 msgid "Index instance nodes"
-msgstr ""
+msgstr "Index instantie nodes"
 
 #: permissions.py:5 queues.py:7
 msgid "Indexing"
@@ -252,7 +254,7 @@ msgstr "Document-indexeringen verwijderen"
 
 #: permissions.py:17
 msgid "View document index instances"
-msgstr ""
+msgstr "Document-indexering instantie bekijken"
 
 #: permissions.py:21
 msgid "View document indexes"
@@ -264,7 +266,7 @@ msgstr "Document-indexeringen opnieuw opbouwen"
 
 #: queues.py:10
 msgid "Delete empty index nodes"
-msgstr ""
+msgstr "Lege indexnodes verwijderen"
 
 #: queues.py:14
 msgid "Remove document"
@@ -297,6 +299,21 @@ msgstr "Document UUID"
 #: search.py:43
 msgid "Document checksum"
 msgstr "Document checksum"
+
+#: serializers.py:191
+msgid "Parent cannot be empty."
+msgstr ""
+
+#: serializers.py:198
+msgid "Parent must be from the same index template."
+msgstr ""
+
+#: settings.py:14
+msgid ""
+"Amount of time in seconds, a failed indexing task will wait before retrying."
+" Lower values will increase the speed at which documents are indexed but "
+"will cause a higher count of failed/retried tasks in the queue."
+msgstr ""
 
 #: views.py:45
 msgid "Available indexes"
@@ -371,7 +388,7 @@ msgstr "Documenttypen gekoppeld aan index: %s"
 #: views.py:226
 #, python-format
 msgid "Tree template nodes for index: %s"
-msgstr ""
+msgstr "Boomsjabloonknooppunten voor index: %s"
 
 #: views.py:254
 #, python-format
@@ -381,18 +398,18 @@ msgstr "Onderliggende node aanmaken van: %s"
 #: views.py:280
 #, python-format
 msgid "Delete the index template node: %s?"
-msgstr ""
+msgstr "Verwijder de indexsjabloon node: %s?"
 
 #: views.py:304
 #, python-format
 msgid "Edit the index template node: %s?"
-msgstr ""
+msgstr "Bewerk de indexsjabloon node: %s?"
 
 #: views.py:328
 msgid ""
 "This could mean that no index templates have been created or that there "
 "index templates but they are no properly defined."
-msgstr ""
+msgstr "Dit kan betekenen dat er geen indexsjablonen zijn aangemaakt of dat er wel indexsjablonen zijn maar dat deze niet juist zijn gedefinieerd."
 
 #: views.py:332
 msgid "There are no index instances available."
@@ -412,7 +429,7 @@ msgstr "Inhoud voor index: %s"
 msgid ""
 "Assign the document type of this document to an index to have it appear in "
 "instances of those indexes organization units. "
-msgstr ""
+msgstr "Het documenttype van dit document toewijzen aan een index zodat het wordt weergegeven in instanties van die indexen organisatie-eenheden."
 
 #: views.py:430
 msgid "This document is not in any index"
@@ -421,7 +438,7 @@ msgstr "Dit document is in geen enkele index"
 #: views.py:434
 #, python-format
 msgid "Indexes nodes containing document: %s"
-msgstr ""
+msgstr "Indexnodes die document bevatten: %s"
 
 #: views.py:460
 #, python-format
@@ -434,9 +451,9 @@ msgstr[1] "%(count)d indexeringen in wachtrij voor opnieuw opbouwen."
 #, python-format
 msgid "%(count)d index reset."
 msgid_plural "%(count)d indexes reset."
-msgstr[0] "%(count)d index opnieuw ingesteld."
-msgstr[1] "%(count)d indexeringen opnieuw ingesteld."
+msgstr[0] ""
+msgstr[1] ""
 
 #: views.py:506
 msgid "Index templates for which their instances will be deleted."
-msgstr ""
+msgstr "Indexsjablonen waarvan de instanties worden verwijderd."

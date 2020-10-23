@@ -59,6 +59,12 @@ link_document_type_filename_list = Link(
     permissions=(permission_document_type_view,),
     text=_('Quick labels'), view='documents:document_type_filename_list',
 )
+link_document_type_filename_generator = Link(
+    args='resolved_object.id',
+    icon_class_path='mayan.apps.documents.icons.icon_document_type_filename_generator',
+    permissions=(permission_document_type_edit,),
+    text=_('Filename generation'), view='documents:document_type_filename_generator',
+)
 link_document_type_list = Link(
     icon_class_path='mayan.apps.documents.icons.icon_document_type_list',
     permissions=(permission_document_type_view,), text=_('Document types'),

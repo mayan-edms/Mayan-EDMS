@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Atdhe Tabaku <Atdhe617@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:21-0400\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2020-04-28 03:38+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (http://www.transifex.com/rosarior/mayan-edms/language/bs/)\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Language: bs\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:44 events.py:5 links.py:32
+#: apps.py:43 events.py:5 links.py:32
 msgid "Checkouts"
 msgstr "Odjave"
 
@@ -42,11 +43,11 @@ msgstr "Dokument odjavljen"
 msgid "Document forcefully checked in"
 msgstr "Dokument je prisilno prijavljen"
 
-#: exceptions.py:16
+#: exceptions.py:15
 msgid "Document not checked out."
 msgstr ""
 
-#: exceptions.py:25
+#: exceptions.py:23
 msgid "Document already checked out."
 msgstr "Dokument je već odjavljen."
 
@@ -54,7 +55,7 @@ msgstr "Dokument je već odjavljen."
 msgid "Document status"
 msgstr "Status dokumenta"
 
-#: forms.py:37 models.py:42 models.py:134
+#: forms.py:37 models.py:41 models.py:133
 msgid "User"
 msgstr "Korisnik"
 
@@ -106,55 +107,55 @@ msgstr "Odjavljen"
 msgid "Checked in/available"
 msgstr "Proveren/dostupan"
 
-#: models.py:29 models.py:112
+#: models.py:28 models.py:111
 msgid "Document"
 msgstr "Dokument"
 
-#: models.py:32
+#: models.py:31
 msgid "Check out date and time"
 msgstr "Datum i vrijeme odjave"
 
-#: models.py:36
+#: models.py:35
 msgid "Amount of time to hold the document checked out in minutes."
 msgstr "Vrijeme zadržavanja odjavljenog dokumenta u minutama "
 
-#: models.py:38
+#: models.py:37
 msgid "Check out expiration date and time"
 msgstr "Datum i vrijeme istjecanja odjave"
 
-#: models.py:47
+#: models.py:46
 msgid "Do not allow new version of this document to be uploaded."
 msgstr "Ne dozvoliti upload nove verzije ovog dokumenta."
 
-#: models.py:49
+#: models.py:48
 msgid "Block new version upload"
 msgstr "Blokiranje nove verzije prenosa"
 
-#: models.py:57 permissions.py:5
+#: models.py:56 permissions.py:5
 msgid "Document checkout"
 msgstr "Odjava dokumenta"
 
-#: models.py:58
+#: models.py:57
 msgid "Document checkouts"
 msgstr "Provera dokumenta"
 
-#: models.py:66
+#: models.py:65
 msgid "Check out expiration date and time must be in the future."
 msgstr "Provera datuma i vremena isteka."
 
-#: models.py:118
+#: models.py:117
 msgid "New version block"
 msgstr "Novi blok verzije"
 
-#: models.py:119
+#: models.py:118
 msgid "New version blocks"
 msgstr "Novi blok verzije"
 
-#: models.py:139
+#: models.py:138
 msgid "Checkout time and date"
 msgstr "Provjerite vrijeme i datum"
 
-#: models.py:144
+#: models.py:143
 msgid "Checkout expiration"
 msgstr "Potvrda istrage"
 
@@ -227,6 +228,6 @@ msgstr ""
 msgid "No documents have been checked out"
 msgstr ""
 
-#: widgets.py:25
+#: widgets.py:23
 msgid "Amount"
 msgstr ""

@@ -4,19 +4,19 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Roberto Rosario, 2017
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2017
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2017
 # Andrea Evangelisti <Andrea.Evangelisti@gmail.com>, 2018
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2020
+# Roberto Rosario, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:21-0400\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
-"Last-Translator: Giovanni Tricarico <gtricarico92@gmail.com>, 2020\n"
+"Last-Translator: Roberto Rosario, 2020\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,29 +24,29 @@ msgstr ""
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:48 apps.py:123 apps.py:130 apps.py:135 apps.py:138 events.py:5
-#: forms.py:14 links.py:22 menus.py:14 models.py:48 models.py:170
-#: permissions.py:5 views.py:164 workflow_actions.py:20
+#: apps.py:53 apps.py:149 apps.py:156 events.py:5 forms.py:14 links.py:22
+#: menus.py:14 models.py:45 models.py:167 permissions.py:5 search.py:46
+#: search.py:49 views.py:164 workflow_actions.py:20
 msgid "Cabinets"
 msgstr "Contenitori"
 
 #: events.py:9
 msgid "Cabinet created"
-msgstr ""
+msgstr "Gabinetto creato"
 
 #: events.py:12
 msgid "Cabinet edited"
-msgstr ""
+msgstr "Gabinetto modificato"
 
 #: events.py:15
 msgid "Document added to cabinet"
-msgstr ""
+msgstr "Documento aggiunto al gabinetto"
 
 #: events.py:18
 msgid "Document removed from cabinet"
 msgstr ""
 
-#: links.py:28 links.py:42 workflow_actions.py:74
+#: links.py:28 links.py:42 workflow_actions.py:72
 msgid "Remove from cabinets"
 msgstr "Rimuovi da contenitori"
 
@@ -84,47 +84,47 @@ msgstr ""
 
 #: methods.py:22
 msgid "get_cabinets()"
-msgstr ""
+msgstr "get_cabinets()"
 
-#: models.py:34
+#: models.py:31
 msgid "A short text used to identify the cabinet."
-msgstr ""
+msgstr "Un breve testo utilizzato per identificare il gabinetto."
 
-#: models.py:35 search.py:22
+#: models.py:32
 msgid "Label"
 msgstr "Etichetta"
 
-#: models.py:39
+#: models.py:36
 msgid "Documents"
 msgstr "Documenti"
 
-#: models.py:47 models.py:144 models.py:169 serializers.py:136
-#: workflow_actions.py:66
+#: models.py:44 models.py:141 models.py:166 serializers.py:136
+#: workflow_actions.py:64
 msgid "Cabinet"
 msgstr "Contenitore"
 
-#: models.py:110
+#: models.py:107
 msgid "The path to the cabinet including all ancestors."
-msgstr ""
+msgstr "Il percorso per il gabinetto inclusi tutti gli antenati."
 
-#: models.py:112
+#: models.py:109
 msgid "Full path"
-msgstr ""
+msgstr "Percorso completo"
 
-#: models.py:145 serializers.py:137
+#: models.py:142 serializers.py:137
 msgid "Parent and Label"
-msgstr ""
+msgstr "Genitore ed etichetta"
 
-#: models.py:152 serializers.py:143
+#: models.py:149 serializers.py:143
 #, python-format
 msgid "%(model_name)s with this %(field_labels)s already exists."
-msgstr ""
+msgstr "%(model_name)s con questo %(field_labels)s esiste già."
 
-#: models.py:181
+#: models.py:178
 msgid "Document cabinet"
 msgstr ""
 
-#: models.py:182
+#: models.py:179
 msgid "Document cabinets"
 msgstr ""
 
@@ -152,29 +152,29 @@ msgstr ""
 msgid "View cabinets"
 msgstr ""
 
-#: search.py:26
+#: search.py:25
 msgid "Document type"
 msgstr "Tipo documento "
 
-#: search.py:29
+#: search.py:28
 msgid "Document MIME type"
-msgstr ""
+msgstr "Tipo MIME del documento"
 
-#: search.py:32
+#: search.py:31
 msgid "Document label"
-msgstr ""
+msgstr "Etichetta del documento"
 
-#: search.py:35
+#: search.py:34
 msgid "Document description"
-msgstr ""
+msgstr "Descrizione del documento"
 
-#: search.py:38
+#: search.py:37
 msgid "Document UUID"
-msgstr ""
+msgstr "UUID del documento"
 
-#: search.py:42
+#: search.py:41
 msgid "Document checksum"
-msgstr ""
+msgstr "Checksum del documento"
 
 #: serializers.py:17
 msgid "List of children cabinets."
@@ -205,7 +205,7 @@ msgstr ""
 
 #: templates/cabinets/cabinet_details.html:17
 msgid "Navigation:"
-msgstr ""
+msgstr "Navigazione:"
 
 #: views.py:58
 #, python-format
@@ -348,6 +348,6 @@ msgstr ""
 msgid "Cabinets to which the document will be added."
 msgstr ""
 
-#: workflow_actions.py:69
+#: workflow_actions.py:67
 msgid "Cabinets from which the document will be removed."
 msgstr ""

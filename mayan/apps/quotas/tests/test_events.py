@@ -1,6 +1,6 @@
 from actstream.models import Action
 
-from mayan.apps.tests.tests.base import GenericViewTestCase
+from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..events import event_quota_created, event_quota_edited
 from ..permissions import permission_quota_create, permission_quota_edit
@@ -9,10 +9,10 @@ from .mixins import QuotaTestMixin, QuotaViewTestMixin
 
 
 class QuotaEventsTestCase(QuotaTestMixin, QuotaViewTestMixin, GenericViewTestCase):
-    def test_quota_created_event_no_permissions(self):
+    def test_quota_created_event_no_permission(self):
         Action.objects.all().delete()
 
-        response = self._request_test_quota_create_view()
+        response = self._request_test_quota_create_post_view()
         self.assertEqual(response.status_code, 403)
         self.assertEqual(Action.objects.count(), 0)
 
@@ -20,7 +20,7 @@ class QuotaEventsTestCase(QuotaTestMixin, QuotaViewTestMixin, GenericViewTestCas
         Action.objects.all().delete()
 
         self.grant_permission(permission=permission_quota_create)
-        response = self._request_test_quota_create_view()
+        response = self._request_test_quota_create_post_view()
         self.assertEqual(response.status_code, 302)
 
         event = Action.objects.first()
@@ -29,7 +29,7 @@ class QuotaEventsTestCase(QuotaTestMixin, QuotaViewTestMixin, GenericViewTestCas
         self.assertEqual(event.target, self.test_quota)
         self.assertEqual(event.actor, self._test_case_user)
 
-    def test_quota_edited_event_no_permissions(self):
+    def test_quota_edited_event_no_permission(self):
         self._create_test_quota()
         Action.objects.all().delete()
 

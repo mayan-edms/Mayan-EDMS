@@ -82,11 +82,17 @@ class TagAPIViewTestMixin:
         )
 
     def _request_test_tag_create_api_view(self):
-        return self.post(
+        pk_list = list(Tag.objects.values_list('pk', flat=True))
+
+        response = self.post(
             viewname='rest_api:tag-list', data={
                 'label': TEST_TAG_LABEL, 'color': TEST_TAG_COLOR
             }
         )
+
+        self.test_tag = Tag.objects.exclude(pk__in=pk_list).first()
+
+        return response
 
     def _request_test_tag_delete_api_view(self):
         return self.delete(
@@ -124,10 +130,12 @@ class TagAPIViewTestMixin:
 
 
 class TagTestMixin:
-    def _create_test_tag(self):
+    def _create_test_tag(self, add_test_document=False):
         self.test_tag = Tag.objects.create(
             color=TEST_TAG_COLOR, label=TEST_TAG_LABEL
         )
+        if add_test_document:
+            self.test_tag.documents.add(self.test_document)
 
     def _create_test_tag_2(self):
         self.test_tag_2 = Tag.objects.create(

@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Michal Švábík <snadno@lehce.cz>, 2019-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:20-0400\n"
-"PO-Revision-Date: 2020-04-08 04:06+0000\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"PO-Revision-Date: 2020-09-27 08:36+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:11 settings.py:7
+#: apps.py:59 events.py:5 permissions.py:5 settings.py:7
 msgid "Appearance"
 msgstr "Vzhled"
 
@@ -70,6 +71,88 @@ msgstr "Toastr"
 msgid "URI.js"
 msgstr "URI.js"
 
+#: events.py:8
+msgid "Theme created"
+msgstr ""
+
+#: events.py:11
+msgid "Theme edited"
+msgstr ""
+
+#: links.py:15
+msgid "Theme settings"
+msgstr ""
+
+#: links.py:20
+msgid "Edit theme settings"
+msgstr ""
+
+#: links.py:27 views.py:47
+msgid "Create new theme"
+msgstr ""
+
+#: links.py:33
+msgid "Delete"
+msgstr "Odstranit"
+
+#: links.py:39
+msgid "Edit"
+msgstr "Upravit"
+
+#: links.py:43 links.py:47 models.py:25 views.py:111
+msgid "Themes"
+msgstr ""
+
+#: models.py:12
+msgid "A short text describing the theme."
+msgstr ""
+
+#: models.py:13
+msgid "Label"
+msgstr "Jmenovka"
+
+#: models.py:17
+msgid ""
+"The CSS stylesheet to change the appearance of the different user interface "
+"elements."
+msgstr ""
+
+#: models.py:19
+msgid "Stylesheet"
+msgstr ""
+
+#: models.py:24 models.py:60
+msgid "Theme"
+msgstr ""
+
+#: models.py:56
+msgid "User"
+msgstr "Uživatel"
+
+#: models.py:64
+msgid "User theme setting"
+msgstr ""
+
+#: models.py:65
+msgid "User theme settings"
+msgstr ""
+
+#: permissions.py:8
+msgid "Create new themes"
+msgstr ""
+
+#: permissions.py:11
+msgid "Delete themes"
+msgstr ""
+
+#: permissions.py:14
+msgid "Edit themes"
+msgstr ""
+
+#: permissions.py:17
+msgid "View existing themes"
+msgstr ""
+
 #: settings.py:12
 msgid "Maximum number of characters that will be displayed as the view title."
 msgstr "Maximální počet znaků, které se zobrazí jako název pohledu."
@@ -82,7 +165,7 @@ msgstr "Pozice, kde se zobrazí systémová zpráva. Možnosti jsou: nahoře vle
 
 #: templates/403.html:5 templates/403.html:30
 msgid "Insufficient permission"
-msgstr ""
+msgstr "Nedostatečné povolení"
 
 #: templates/403.html:32
 msgid "You don't have enough permissions for this operation."
@@ -94,25 +177,25 @@ msgstr "Stránka nenalezena"
 
 #: templates/404.html:32
 msgid "The requested page could not be found."
-msgstr ""
+msgstr "Požadovaná stránka nenalezena."
 
 #: templates/404.html:40
 msgid "Possible reasons"
-msgstr ""
+msgstr "Možné důvody"
 
 #: templates/404.html:44
 msgid "The location of the item is incorrect."
-msgstr ""
+msgstr "Umístění položky je nesprávné."
 
 #: templates/404.html:45
 msgid "The location is correct, but the item no longer exists."
-msgstr ""
+msgstr "Umístění je správné, ale položka již neexistuje."
 
 #: templates/404.html:46
 msgid ""
 "The location is be correct, but your account does not have the required "
 "permission to access it."
-msgstr ""
+msgstr "Poloha je správná, ale váš účet nemá k přístupu potřebná oprávnění."
 
 #: templates/500.html:5 templates/500.html:30
 #: templates/appearance/root.html:58
@@ -121,32 +204,32 @@ msgstr "Chyba serveru"
 
 #: templates/500.html:32
 msgid "There's been an unexpected error."
-msgstr ""
+msgstr "Došlo k neočekávané chybě."
 
 #: templates/500.html:40
 msgid "What to do next?"
-msgstr ""
+msgstr "Co dělat dál?"
 
 #: templates/500.html:44
 msgid "Refresh the page."
-msgstr ""
+msgstr "Obnovte stránku."
 
 #: templates/500.html:45
 msgid "Wait a bit. The system might be overloaded."
-msgstr ""
+msgstr "Počkej chvíli. Systém může být přetížen."
 
 #: templates/500.html:46
 msgid "Contact your system administrator."
-msgstr ""
+msgstr "Obraťte se na správce systému."
 
 #: templates/500.html:47
 msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
-msgstr ""
+msgstr "V protokolech zkontrolujte zprávy se značkami „CHYBA“, „KRITICKÁ“ nebo „FATÁLNÍ“."
 
 #: templates/500.html:48
 #, python-format
 msgid "Open a ticket using the <a href=\"%(issue_url)s\">issue tracker</a>."
-msgstr ""
+msgstr "Otevřete problém pomocí nástroje pro <a href=\"%(issue_url)s\">sledování problémů</a> ."
 
 #: templates/appearance/about.html:10
 msgid "About"
@@ -187,7 +270,7 @@ msgid ""
 "\n"
 "                It takes great effort to make %(project_title)s as feature-rich as it is.\n"
 "            "
-msgstr ""
+msgstr "\nVynakládá velké úsilí, aby byl %(project_title)s stejně bohatý na funkce."
 
 #: templates/appearance/about.html:111
 #, python-format
@@ -195,7 +278,7 @@ msgid ""
 "\n"
 "                If you use %(project_title)s please <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">make a donation %(icon_social_paypal)s</a>\n"
 "            "
-msgstr ""
+msgstr "\nPokud používáte %(project_title)s,  <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">darujte prosím %(icon_social_paypal)s</a>"
 
 #: templates/appearance/about.html:117
 #, python-format
@@ -211,7 +294,7 @@ msgid ""
 "\n"
 "                For questions check the <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
 "            "
-msgstr ""
+msgstr "\nDotazy najdete v <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">dokumentaci %(icon_documentation)s</a> ."
 
 #: templates/appearance/about.html:129
 #, python-format
@@ -227,40 +310,40 @@ msgid ""
 "\n"
 "                Spread the word. Talk to your friends and colleagues about how awesome %(project_title)s is!\n"
 "            "
-msgstr ""
+msgstr "\nPopularizace. Promluvte si se svými přáteli a kolegy o tom, jak úžasný je %(project_title)s!"
 
-#: templates/appearance/base.html:38 templates/appearance/base.html:62
+#: templates/appearance/base.html:43 templates/appearance/base.html:67
 msgid "Warning"
 msgstr "Varování"
 
-#: templates/appearance/base.html:52
+#: templates/appearance/base.html:57
 msgid "Click here to fix this."
 msgstr "Klepnutím sem to vyřešíte."
 
-#: templates/appearance/base.html:62
+#: templates/appearance/base.html:67
 msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."
 msgstr "Nastavení byla aktualizována, restartujte instalaci a aktualizujte prohlížeč, aby se změny projevily."
 
-#: templates/appearance/base.html:70
+#: templates/appearance/base.html:75
 #, python-format
 msgid ""
 "\n"
 "                                        Impersonating user \"%(user)s\".\n"
 "                                    "
-msgstr ""
+msgstr "\nZosobnění uživatele „%(user)s“."
 
-#: templates/appearance/base.html:73
+#: templates/appearance/base.html:78
 msgid "Click here when finished"
-msgstr ""
+msgstr "Po dokončení klikněte sem"
 
-#: templates/appearance/base.html:87
+#: templates/appearance/base.html:92
 #: templates/appearance/generic_list_items_subtemplate.html:66
 msgid "Actions"
 msgstr "Akce"
 
-#: templates/appearance/base.html:89
+#: templates/appearance/base.html:94
 #: templates/appearance/generic_list_items_subtemplate.html:68
 #: templates/appearance/list_toolbar.html:67
 msgid "Toggle Dropdown"
@@ -341,7 +424,7 @@ msgstr "Vyberte / Zrušte výběr všech"
 
 #: templates/appearance/list_toolbar.html:17
 msgid "Toggle list display mode"
-msgstr ""
+msgstr "Přepnout režim zobrazení seznamu"
 
 #: templates/appearance/list_toolbar.html:60
 msgid ""
@@ -372,6 +455,33 @@ msgstr "Chyba komunikace se serverem"
 msgid "Check you network connection and try again in a few moments."
 msgstr "Zkontrolujte připojení k síti a zkuste to znovu za chvíli."
 
-#: templatetags/appearance_tags.py:42
+#: templatetags/appearance_tags.py:44
 msgid "None"
 msgstr "žádný"
+
+#: views.py:29
+msgid "Current user theme settings details"
+msgstr ""
+
+#: views.py:35
+msgid "Edit current user theme settings details"
+msgstr ""
+
+#: views.py:69
+#, python-format
+msgid "Delete theme: %s"
+msgstr ""
+
+#: views.py:85
+#, python-format
+msgid "Edit theme: %s"
+msgstr ""
+
+#: views.py:105
+msgid ""
+"Themes allow changing the visual appearance without requiring code changes."
+msgstr ""
+
+#: views.py:109
+msgid "There are no themes"
+msgstr ""

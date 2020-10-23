@@ -23,7 +23,11 @@ class DjangoSearchBackend(SearchBackend):
             global_and_search=global_and_search
         )
 
-        return search_model.get_queryset().filter(search_query.query).distinct()
+        queryset = search_model.get_queryset().filter(
+            search_query.query
+        ).distinct()
+
+        return SearchBackend.limit_queryset(queryset=queryset)
 
     def deindex_instance(self, instance):
         """This backend doesn't remove instances."""
@@ -76,8 +80,8 @@ class FieldQuery:
                         self.query = self.query | q_object
 
             if not term.is_meta:
-                self.parts.append(force_text(search_field.label))
-                self.parts.append(force_text(term))
+                self.parts.append(force_text(s=search_field.label))
+                self.parts.append(force_text(s=term))
             else:
                 self.parts.append(term.string)
 
@@ -103,7 +107,7 @@ class SearchQuery:
             )
 
             if field_query.query:
-                self.text.append('({})'.format(force_text(field_query)))
+                self.text.append('({})'.format(force_text(s=field_query)))
 
                 if global_and_search:
                     self.text.append('AND')
@@ -231,6 +235,6 @@ class SearchTermCollection:
             if term.is_meta:
                 result.append(term.string)
             else:
-                result.append(force_text(term))
+                result.append(force_text(s=term))
 
         return ' '.join(result)

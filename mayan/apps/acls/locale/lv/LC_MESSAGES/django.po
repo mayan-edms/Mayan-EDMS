@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Māris Teivāns <maris.teivans@gmail.com>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:20-0400\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2020-03-28 07:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Language: lv\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
-#: apps.py:22 links.py:42
+#: apps.py:23 classes.py:142 links.py:26
 msgid "ACLs"
 msgstr "PKS"
 
@@ -34,19 +35,19 @@ msgstr "PKS izveidots"
 msgid "ACL edited"
 msgstr "PKS rediģēts"
 
-#: forms.py:13 models.py:46 views.py:67
+#: forms.py:13 models.py:44 views.py:67
 msgid "Role"
 msgstr "Loma"
 
-#: links.py:32
+#: links.py:15
 msgid "New ACL"
 msgstr "Jauns PKS"
 
-#: links.py:37
+#: links.py:20
 msgid "Delete"
 msgstr "Dzēst"
 
-#: links.py:47 models.py:42 workflow_actions.py:46 workflow_actions.py:161
+#: links.py:31 models.py:40 workflow_actions.py:46 workflow_actions.py:161
 msgid "Permissions"
 msgstr "Atļaujas"
 
@@ -60,15 +61,15 @@ msgstr "Objekts \"%s\" nav modelis un tā pieeju nevar pārbaudīt."
 msgid "Insufficient access for: %s"
 msgstr "Nepietiekama piekļuve pie: %s"
 
-#: models.py:54
+#: models.py:52
 msgid "Access entry"
 msgstr "Piekļuves ieraksts"
 
-#: models.py:55
+#: models.py:53
 msgid "Access entries"
 msgstr "Piekļuves ieraksti"
 
-#: models.py:59
+#: models.py:57
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\""
 msgstr "Lomas \"%(role)s\" atļaujas priekš \"%(object)s\""

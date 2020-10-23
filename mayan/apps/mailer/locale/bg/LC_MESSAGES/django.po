@@ -3,15 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Lyudmil Antonov <lantonov.here@gmail.com>, 2019-2020
 # Pavlin Koldamov <pkoldamov@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:22-0400\n"
-"PO-Revision-Date: 2020-03-28 14:00+0000\n"
-"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"PO-Revision-Date: 2020-09-27 06:46+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,15 +24,7 @@ msgstr ""
 msgid "Mailer"
 msgstr "Пощенска програма"
 
-#: apps.py:62 apps.py:83
-msgid "Date and time"
-msgstr "Дата и час"
-
-#: apps.py:65 apps.py:87 models.py:28 models.py:230
-msgid "Message"
-msgstr "Съобщение"
-
-#: classes.py:79
+#: classes.py:80
 msgid "Null backend"
 msgstr "Нулев бекенд"
 
@@ -43,77 +36,69 @@ msgstr "Изпращане"
 msgid "Email sent"
 msgstr "Имейлът е изпратен"
 
-#: forms.py:58 forms.py:122
+#: forms.py:60 forms.py:120
 msgid ""
 "Email address of the recipient. Can be multiple addresses separated by comma"
 " or semicolon."
 msgstr "Имейл адрес на получателя. Могат да бъдат множество адреси, разделени със запетая или точка и запетая."
 
-#: forms.py:60 forms.py:124
+#: forms.py:62 forms.py:122
 msgid "Email address"
-msgstr "Ел. поща адрес"
+msgstr "Имейл адрес"
 
-#: forms.py:62 workflow_actions.py:36
+#: forms.py:64 workflow_actions.py:36
 msgid "Subject"
 msgstr "Относно"
 
-#: forms.py:64 workflow_actions.py:45
+#: forms.py:66 workflow_actions.py:45
 msgid "Body"
 msgstr "Съдържание"
 
-#: forms.py:68
+#: forms.py:70
 msgid "The email profile that will be used to send this email."
 msgstr "Профилът на имейла, който ще се използва за изпращане на този имейл."
 
-#: forms.py:69 models.py:69 views.py:237 workflow_actions.py:18
+#: forms.py:71 models.py:55 views.py:212 workflow_actions.py:18
 msgid "Mailing profile"
 msgstr "Профил за изпращане на имейл"
 
-#: forms.py:75
+#: forms.py:77
 msgid "The driver to use when sending emails."
 msgstr "Драйверът, който се използва при изпращане на имейл."
 
-#: forms.py:76 models.py:83
+#: forms.py:78 models.py:69
 msgid "Backend"
 msgstr "Бекенд"
 
 #: links.py:16 links.py:26
 msgid "Email document"
-msgstr "Пощ. документ"
+msgstr "Имейл документ"
 
 #: links.py:22 links.py:30
 msgid "Email link"
-msgstr "Пощ. връзка"
+msgstr "Имейл връзка"
 
 #: links.py:35
-msgid "System mailer error log"
-msgstr "Дневник на грешки в пощенската програма на системата"
-
-#: links.py:40
 msgid "Create mailing profile "
 msgstr "Създайте пощенски профил"
 
-#: links.py:46
+#: links.py:41
 msgid "Delete"
 msgstr "Изтрийте"
 
-#: links.py:52
+#: links.py:47
 msgid "Edit"
 msgstr "Редактиране"
 
-#: links.py:56
-msgid "Log"
-msgstr "Дневник"
-
-#: links.py:61
+#: links.py:52
 msgid "Mailing profiles list"
 msgstr "Списък с пощенски профили"
 
-#: links.py:66 models.py:70
+#: links.py:57 models.py:56
 msgid "Mailing profiles"
 msgstr "Пощенски профили"
 
-#: links.py:72 views.py:261
+#: links.py:63 views.py:236
 msgid "Test"
 msgstr "Тест"
 
@@ -226,71 +211,47 @@ msgstr "Файлов път"
 msgid "Django file based backend"
 msgstr "Файл базиран на Джанго бекенд"
 
-#: models.py:25 models.py:227
-msgid "Date time"
-msgstr "Дата час"
-
-#: models.py:34
-msgid "Log entry"
-msgstr "Запис в дневника"
-
-#: models.py:35
-msgid "Log entries"
-msgstr "Записи в дневника"
-
-#: models.py:46
+#: models.py:32
 msgid "A short text describing the mailing profile."
 msgstr "Кратък текст, описващ потребителския профил за изпращане."
 
-#: models.py:47
+#: models.py:33
 msgid "Label"
 msgstr "Етикет"
 
-#: models.py:51
+#: models.py:37
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
 msgstr "Ако е по подразбиране, този пощенски профил ще бъде предварително избран във формата за изпращане на документи."
 
-#: models.py:53
+#: models.py:39
 msgid "Default"
 msgstr "По подразбиране"
 
-#: models.py:55
+#: models.py:41
 msgid "Enabled"
 msgstr "Активиран"
 
-#: models.py:58
+#: models.py:44
 msgid "The dotted Python path to the backend class."
-msgstr "Пунктирания Python път към бекенда."
+msgstr "Пунктиран Python път към бекенд клас."
 
-#: models.py:59
+#: models.py:45
 msgid "Backend path"
 msgstr "Път към бекенда"
 
-#: models.py:62
+#: models.py:48
 msgid "Backend data"
 msgstr "Данни за бекенда"
 
-#: models.py:84
+#: models.py:70
 msgid "The backend class for this entry."
 msgstr "Бекенд клас за този запис."
 
-#: models.py:218
+#: models.py:209
 msgid "Test email from Mayan EDMS"
 msgstr "Тестов имейл от Mayan EDMS"
-
-#: models.py:224
-msgid "User mailer"
-msgstr "Потребителска пощенска програма"
-
-#: models.py:236
-msgid "User mailer log entry"
-msgstr "Запис в дневника на потребителската пощенска програма"
-
-#: models.py:237
-msgid "User mailer log entries"
-msgstr "Записи в дневника на потребителската пощенска програма"
 
 #: permissions.py:8
 msgid "Send document link via email"
@@ -301,26 +262,22 @@ msgid "Send document via email"
 msgstr "Изпрати документа по ел. поща"
 
 #: permissions.py:14
-msgid "View system mailing error log"
-msgstr "Преглед на дневника за грешки в пощенската програма"
-
-#: permissions.py:17
 msgid "Create a mailing profile"
 msgstr "Създайте пощенски профил"
 
-#: permissions.py:20
+#: permissions.py:17
 msgid "Delete a mailing profile"
 msgstr "Изтриване на пощенски профил"
 
-#: permissions.py:23
+#: permissions.py:20
 msgid "Edit a mailing profile"
 msgstr "Редактиране на пощенски профил"
 
-#: permissions.py:26
+#: permissions.py:23
 msgid "View a mailing profile"
 msgstr "Преглед на пощенски профил"
 
-#: permissions.py:29
+#: permissions.py:26
 msgid "Use a mailing profile"
 msgstr "Използване на пощенски профил"
 
@@ -349,73 +306,64 @@ msgstr "Шаблон за основния текст за формуляра н
 msgid "%(email)s is not a valid email address."
 msgstr "%(email)s не е валиден имейл адрес."
 
-#: views.py:36
-msgid "Document mailing error log"
-msgstr "Дневник на грешки при изпращане на документи"
-
-#: views.py:48
+#: views.py:39
 #, python-format
 msgid "%(count)d document queued for email delivery"
 msgstr "%(count)d документ на опашка за доставка по имейл"
 
-#: views.py:50
+#: views.py:41
 #, python-format
 msgid "%(count)d documents queued for email delivery"
 msgstr "%(count)d документи на опашка за доставка по имейл"
 
-#: views.py:61
+#: views.py:52
 msgid "Send"
 msgstr "Изпрати"
 
-#: views.py:107
+#: views.py:98
 #, python-format
 msgid "%(count)d document link queued for email delivery"
 msgstr "%(count)d връзка с документ на опашка за доставка по имейл"
 
-#: views.py:109
+#: views.py:100
 #, python-format
 msgid "%(count)d document links queued for email delivery"
 msgstr "%(count)d връзки с документ на опашка за доставка по имейл"
 
-#: views.py:118
+#: views.py:109
 msgid "New mailing profile backend selection"
 msgstr "Избор на бекенд за нов пощенски профил"
 
-#: views.py:150
+#: views.py:141
 #, python-format
 msgid "Create a \"%s\" mailing profile"
 msgstr "Създаване на пощенски профил &quot;%s&quot;"
 
-#: views.py:177
+#: views.py:168
 #, python-format
 msgid "Delete mailing profile: %s"
 msgstr "Изтриване на пощенски профил: %s"
 
-#: views.py:189
+#: views.py:180
 #, python-format
 msgid "Edit mailing profile: %s"
 msgstr "Редактиране на пощенски профил: %s"
 
-#: views.py:213
-#, python-format
-msgid "Error log for: %s"
-msgstr "Дневник на грешки за: %s"
-
-#: views.py:232
+#: views.py:207
 msgid ""
 "Mailing profiles are email configurations. Mailing profiles allow sending "
 "documents as attachments or as links via email."
 msgstr "Пощенските профили са конфигурации на имейл. Пощенските профили позволяват изпращане на документи като прикачени файлове или като връзки по имейл."
 
-#: views.py:236
+#: views.py:211
 msgid "No mailing profiles available"
 msgstr "Няма налични пощенски профили"
 
-#: views.py:253
+#: views.py:228
 msgid "Test email sent."
 msgstr "Изпратен тестов имейл."
 
-#: views.py:262
+#: views.py:237
 #, python-format
 msgid "Test mailing profile: %s"
 msgstr "Тест на пощенския профил: %s"

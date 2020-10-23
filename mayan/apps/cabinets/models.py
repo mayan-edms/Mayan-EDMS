@@ -14,7 +14,6 @@ from .events import (
     event_cabinet_created, event_cabinet_edited, event_cabinet_add_document,
     event_cabinet_remove_document
 )
-from .search import cabinet_search  # NOQA
 
 
 class Cabinet(MPTTModel):

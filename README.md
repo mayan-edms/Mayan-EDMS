@@ -1,4 +1,3 @@
-[![Donation](https://img.shields.io/badge/donation-PayPal-brightgreen)](https://paypal.me/MayanEDMS)
 [![pypi][pypi]][pypi-url]
 ![python][python]
 ![license][license]
@@ -6,6 +5,8 @@
 [![Docker Stars](https://img.shields.io/docker/stars/mayanedms/mayanedms.svg?maxAge=3600)](https://hub.docker.com/r/mayanedms/mayanedms/)
 [![Commits][commits]][commits-url]
 [![Support][support]][support-url]
+[![Store](https://img.shields.io/badge/Online_store-black)](https://teespring.com/stores/mayan-edms)
+[![Donation](https://img.shields.io/badge/donation-PayPal-brightgreen)](https://paypal.me/MayanEDMS)
 
 
 [pypi]: https://img.shields.io/pypi/v/mayan-edms.svg

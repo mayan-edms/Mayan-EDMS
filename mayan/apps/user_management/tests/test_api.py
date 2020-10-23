@@ -38,7 +38,7 @@ class GroupAPITestCase(
 
         self.assertEqual(Group.objects.count(), group_count + 1)
 
-    def test_group_delete_no_access(self):
+    def test_group_delete_no_permssion(self):
         self._create_test_group()
         group_count = Group.objects.count()
 
@@ -59,7 +59,7 @@ class GroupAPITestCase(
 
         self.assertEqual(Group.objects.count(), group_count - 1)
 
-    def test_group_edit_via_patch_no_access(self):
+    def test_group_edit_via_patch_no_permission(self):
         self._create_test_group()
 
         group_name = self.test_group.name
@@ -85,7 +85,7 @@ class GroupAPITestCase(
         self.test_group.refresh_from_db()
         self.assertNotEqual(self.test_group.name, group_name)
 
-    def test_group_edit_via_put_no_access(self):
+    def test_group_edit_via_put_no_permission(self):
         self._create_test_group()
 
         group_name = self.test_group.name
@@ -131,7 +131,7 @@ class UserAPIViewTestCase(UserAPIViewTestMixin, BaseAPITestCase):
 
         self.assertEqual(get_user_model().objects.count(), user_count + 1)
 
-    def test_user_delete_no_access(self):
+    def test_user_delete_no_permission(self):
         self._create_test_user()
 
         user_count = get_user_model().objects.count()
@@ -154,7 +154,7 @@ class UserAPIViewTestCase(UserAPIViewTestMixin, BaseAPITestCase):
 
         self.assertEqual(get_user_model().objects.count(), user_count - 1)
 
-    def test_user_edit_patch_api_view_no_access(self):
+    def test_user_edit_patch_api_view_no_permission(self):
         self._create_test_user()
 
         user_username = self.test_user.username
@@ -179,7 +179,7 @@ class UserAPIViewTestCase(UserAPIViewTestMixin, BaseAPITestCase):
         self.test_user.refresh_from_db()
         self.assertNotEqual(self.test_user.username, user_username)
 
-    def test_user_edit_put_api_view_no_access(self):
+    def test_user_edit_put_api_view_no_permission(self):
         self._create_test_user()
 
         user_username = self.test_user.username
@@ -214,7 +214,7 @@ class UserAPIViewTestCase(UserAPIViewTestMixin, BaseAPITestCase):
             )
         )
 
-    def test_user_password_change_api_view_no_access(self):
+    def test_user_password_change_api_view_no_permission(self):
         self._create_test_user()
 
         response = self._request_test_user_password_change_api_view()
@@ -344,7 +344,7 @@ class UserGroupAPIViewTestCase(
         self.test_user.refresh_from_db()
         self.assertEqual(self.test_user.groups.count(), user_group_count + 1)
 
-    def test_user_group_list_no_access(self):
+    def test_user_group_list_no_permission(self):
         self._create_test_user_with_test_group()
 
         response = self._request_test_user_group_list_api_view()

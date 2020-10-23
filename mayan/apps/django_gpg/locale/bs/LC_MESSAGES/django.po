@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Ilvana Dollaroviq <ilvanadollaroviq@gmail.com>, 2018
 # www.ping.ba <jomer@ping.ba>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:21-0400\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2020-04-14 08:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (http://www.transifex.com/rosarior/mayan-edms/language/bs/)\n"
@@ -27,11 +28,11 @@ msgstr "Django GPG"
 msgid "Key ID"
 msgstr "ID ključa"
 
-#: apps.py:56 forms.py:32 models.py:54
+#: apps.py:56 forms.py:32 models.py:53
 msgid "Type"
 msgstr "Tip"
 
-#: apps.py:60 forms.py:21 models.py:35
+#: apps.py:60 forms.py:21 models.py:34
 msgid "Creation date"
 msgstr "Datum kreiranja"
 
@@ -39,15 +40,15 @@ msgstr "Datum kreiranja"
 msgid "No expiration"
 msgstr "Ne ističe"
 
-#: apps.py:65 forms.py:25 models.py:39
+#: apps.py:65 forms.py:25 models.py:38
 msgid "Expiration date"
 msgstr "Rok upotrebe"
 
-#: apps.py:68 forms.py:30 models.py:46
+#: apps.py:68 forms.py:30 models.py:45
 msgid "Length"
 msgstr "Dužina"
 
-#: apps.py:73 forms.py:17 models.py:51
+#: apps.py:73 forms.py:17 models.py:50
 msgid "User ID"
 msgstr "ID kosrisnika"
 
@@ -59,11 +60,11 @@ msgstr ""
 msgid "None"
 msgstr "Nijedno"
 
-#: forms.py:29 models.py:43
+#: forms.py:29 models.py:42
 msgid "Fingerprint"
 msgstr "otisak prsta"
 
-#: forms.py:31 models.py:49
+#: forms.py:31 models.py:48
 msgid "Algorithm"
 msgstr "Algoritam"
 
@@ -155,27 +156,27 @@ msgstr "Dokument je potpisan, a potpis je dobar."
 msgid "Document is signed with a valid signature."
 msgstr "Dokument je potpisan sa važećim potpisom."
 
-#: models.py:31
+#: models.py:30
 msgid "ASCII armored version of the key."
 msgstr "ASCII oklopna verzija ključa."
 
-#: models.py:32
+#: models.py:31
 msgid "Key data"
 msgstr "Ključni podaci"
 
-#: models.py:60
+#: models.py:59
 msgid "Key"
 msgstr "Ključ"
 
-#: models.py:61
+#: models.py:60
 msgid "Keys"
 msgstr "Ključevi"
 
-#: models.py:73
+#: models.py:72
 msgid "Invalid key data"
 msgstr "Nevažeći ključni podaci"
 
-#: models.py:76
+#: models.py:75
 msgid "Key already exists."
 msgstr "Ključ već postoji"
 

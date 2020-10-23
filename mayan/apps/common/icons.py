@@ -21,6 +21,9 @@ icon_menu_about = Icon(
 icon_menu_user = Icon(
     driver_name='fontawesome', symbol='user-circle'
 )
+icon_object_copy = Icon(
+    driver_name='fontawesome', symbol='stamp'
+)
 icon_setup = Icon(
     driver_name='fontawesome', symbol='cog'
 )
@@ -28,6 +31,7 @@ icon_social_paypal = Icon(
     driver_name='fontawesomecss', css_classes='fab fa-paypal'
 )
 icon_source_code = Icon(driver_name='fontawesome', symbol='code-branch')
+icon_store = Icon(driver_name='fontawesome', symbol='tshirt')
 icon_support = Icon(
     driver_name='fontawesome', symbol='phone'
 )

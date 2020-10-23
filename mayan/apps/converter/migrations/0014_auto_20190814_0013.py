@@ -1,7 +1,7 @@
 from django.db import migrations, models
 import django.db.models.deletion
 
-import mayan.apps.converter.validators
+import mayan.apps.common.validators
 
 
 class Migration(migrations.Migration):
@@ -53,7 +53,7 @@ class Migration(migrations.Migration):
                         blank=True, help_text='Enter the arguments for '
                         'the transformation as a YAML dictionary. '
                         'ie: {"degrees": 180}', validators=[
-                            mayan.apps.converter.validators.YAMLValidator()
+                            mayan.apps.common.validators.YAMLValidator()
                         ], verbose_name='Arguments'
                     )
                 ),

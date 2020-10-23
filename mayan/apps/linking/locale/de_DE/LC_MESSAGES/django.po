@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Ingo Buchholz <ingo.buchholz@takwa.de>, 2020
 # Jesaja Everling <jeverling@gmail.com>, 2017
 # Mathias Behrle <mathiasb@m9s.biz>, 2018,2020
@@ -14,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:22-0400\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2020-03-18 22:34+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
@@ -24,15 +25,15 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:40
+#: apps.py:43
 msgid "Linking"
 msgstr "Verknüpfungen"
 
-#: apps.py:76 models.py:26
+#: apps.py:96 models.py:25
 msgid "Label"
 msgstr "Bezeichnung"
 
-#: events.py:6 links.py:18 links.py:77 links.py:82 links.py:87 models.py:45
+#: events.py:6 links.py:18 links.py:77 links.py:82 links.py:87 models.py:44
 #: permissions.py:5 views.py:203
 msgid "Smart links"
 msgstr "Smart Links"
@@ -69,7 +70,7 @@ msgstr "Bedingungen"
 msgid "Create new smart link"
 msgstr "Smart Link erstellen"
 
-#: links.py:61 models.py:37
+#: links.py:61 models.py:36
 msgid "Document types"
 msgstr "Dokumententypen"
 
@@ -145,80 +146,80 @@ msgstr "ist in regulärem Ausdruck"
 msgid "is in regular expression (case insensitive)"
 msgstr "ist in regulärem Ausdruck (ohne Groß/Kleinschreibung)"
 
-#: models.py:25
+#: models.py:24
 msgid "A short text describing the smart link."
 msgstr "Ein kurzer Text, der den Smart Link beschreibt."
 
-#: models.py:30
+#: models.py:29
 msgid ""
 "Use this field to show a unique label depending on the document from which "
 "the smart link is being accessed."
 msgstr "Verwenden Sie dieses Feld um abhängig vom Dokument, von dem aus auf den Smart Link zugegriffen wird, eine eindeutige Bezeichnung anzuzeigen."
 
-#: models.py:32
+#: models.py:31
 msgid "Dynamic label"
 msgstr "Dynamische Bezeichnung"
 
-#: models.py:34 models.py:191
+#: models.py:33 models.py:189
 msgid "Enabled"
 msgstr "Aktiviert"
 
-#: models.py:44 models.py:169
+#: models.py:43 models.py:167
 msgid "Smart link"
 msgstr "Smart Link"
 
-#: models.py:83
+#: models.py:82
 #, python-format
 msgid "Error generating dynamic label; %s"
 msgstr "Fehler bei der Generierung des dynamischen Titels: %s"
 
-#: models.py:98
+#: models.py:97
 msgid "This smart link is not allowed for the selected document's type."
 msgstr "Dieser Smart Link ist nicht erlaubt für diesen Dokumententyp."
 
-#: models.py:173
+#: models.py:171
 msgid "The inclusion is ignored for the first item."
 msgstr "Die Einbeziehung wird für das erste Element ignoriert."
 
-#: models.py:177
+#: models.py:175
 msgid "This represents the metadata of all other documents."
 msgstr "Repräsentiert die Metadaten aller anderen Dokumente."
 
-#: models.py:178
+#: models.py:176
 msgid "Foreign document attribute"
 msgstr "Fremddokumentattribut"
 
-#: models.py:183
+#: models.py:181
 msgid ""
 "The expression using document properties to be evaluated against the foreign"
 " document field."
 msgstr "Der Ausdruck, der Dokumenteigenschaften verwendet, die für das Fremddokumentfeld ausgewertet werden sollen."
 
-#: models.py:185
+#: models.py:183
 msgid "Expression"
 msgstr "Ausdruck"
 
-#: models.py:188
+#: models.py:186
 msgid "Inverts the logic of the operator."
 msgstr "Kehrt die Logik der Operation um."
 
-#: models.py:189
+#: models.py:187
 msgid "Negated"
 msgstr "Verneint"
 
-#: models.py:194
+#: models.py:192
 msgid "Link condition"
 msgstr "Bedingung"
 
-#: models.py:195
+#: models.py:193
 msgid "Link conditions"
 msgstr "Bedingungen"
 
-#: models.py:203
+#: models.py:201
 msgid "not"
 msgstr "Nicht"
 
-#: models.py:207
+#: models.py:205
 msgid "Full label"
 msgstr "Voller Bezeichner"
 

@@ -34,6 +34,7 @@ from .icons import (
 )
 from .literals import SOURCE_UNCOMPRESS_CHOICE_ASK, SOURCE_UNCOMPRESS_CHOICE_Y
 from .links import (
+    factory_conditional_active_by_source,
     link_setup_source_create_imap_email, link_setup_source_create_pop3_email,
     link_setup_source_create_staging_folder,
     link_setup_source_create_watch_folder, link_setup_source_create_webform,
@@ -58,9 +59,9 @@ class SourceCheckView(ExternalObjectMixin, ConfirmView):
     Trigger the task_check_interval_source task for a given source to
     test/debug their configuration irrespective of the schedule task setup.
     """
+    external_object_permission = permission_sources_setup_create
     external_object_pk_url_kwarg = 'source_id'
     external_object_queryset = Source.objects.select_subclasses()
-    external_object_permission = permission_sources_setup_create
 
     def get_extra_context(self):
         return {
@@ -111,9 +112,9 @@ class SourceCreateView(SingleObjectCreateView):
 
 
 class SourceDeleteView(ExternalObjectMixin, SingleObjectDeleteView):
-    external_object_queryset = Source.objects.select_subclasses()
     external_object_permission = permission_sources_setup_delete
     external_object_pk_url_kwarg = 'source_id'
+    external_object_queryset = Source.objects.select_subclasses()
     post_action_redirect = reverse_lazy(
         viewname='sources:setup_source_list'
     )
@@ -132,9 +133,9 @@ class SourceDeleteView(ExternalObjectMixin, SingleObjectDeleteView):
 
 
 class SourceEditView(ExternalObjectMixin, SingleObjectEditView):
-    external_object_queryset = Source.objects.select_subclasses()
     external_object_permission = permission_sources_setup_edit
     external_object_pk_url_kwarg = 'source_id'
+    external_object_queryset = Source.objects.select_subclasses()
     post_action_redirect = reverse_lazy(
         viewname='sources:setup_source_list'
     )
@@ -233,11 +234,10 @@ class UploadBaseView(MultiFormView):
 
         return Link(
             args=args,
-            icon_class=icon_upload_view_link,
-            keep_query=True,
-            remove_from_query=['page'],
-            text=source.label,
-            view=view,
+            conditional_active=factory_conditional_active_by_source(
+                source=source
+            ), icon_class=icon_upload_view_link, keep_query=True,
+            remove_from_query=['page'], text=source.label, view=view
         )
 
     def dispatch(self, request, *args, **kwargs):
@@ -383,7 +383,7 @@ class UploadInteractiveView(UploadBaseView):
         except Exception as exception:
             if request.is_ajax():
                 return JsonResponse(
-                    data={'error': force_text(exception)}, status=500
+                    data={'error': force_text(s=exception)}, status=500
                 )
             else:
                 raise
@@ -448,7 +448,7 @@ class UploadInteractiveView(UploadBaseView):
                         document_type_id=self.document_type.pk,
                         expand=expand,
                         label=forms['document_form'].get_final_label(
-                            filename=force_text(shared_uploaded_file)
+                            filename=force_text(s=shared_uploaded_file)
                         ),
                         language=forms['document_form'].cleaned_data.get('language'),
                         querystring=querystring.urlencode(),
@@ -617,7 +617,7 @@ class DocumentVersionUploadInteractiveView(UploadBaseView):
                 logger.critical(msg=message, exc_info=True)
                 if self.request.is_ajax():
                     return JsonResponse(
-                        data={'error': force_text(message)}, status=500
+                        data={'error': force_text(s=message)}, status=500
                     )
                 else:
                     raise type(exception)(message)
@@ -641,20 +641,30 @@ class DocumentVersionUploadInteractiveView(UploadBaseView):
         context = super(
             DocumentVersionUploadInteractiveView, self
         ).get_context_data(**kwargs)
-        context['object'] = self.document
-        context['title'] = _(
-            'Upload a new version for document "%(document)s" '
-            'from source: %(source)s'
-        ) % {'document': self.document, 'source': self.source.label}
-        context['submit_label'] = _('Submit')
-        context['form_css_classes'] = 'dropzone'
-        context['form_disable_submit'] = True
-        context['form_action'] = '{}?{}'.format(
-            reverse(
-                viewname=self.request.resolver_match.view_name,
-                kwargs=self.request.resolver_match.kwargs
-            ), self.request.META['QUERY_STRING']
+        context.update(
+            {
+                'form_action': '{}?{}'.format(
+                    reverse(
+                        viewname=self.request.resolver_match.view_name,
+                        kwargs=self.request.resolver_match.kwargs
+                    ), self.request.META['QUERY_STRING']
+                ),
+                'object': self.document,
+                'title': _(
+                    'Upload a new version for document "%(document)s" '
+                    'from source: %(source)s'
+                ) % {'document': self.document, 'source': self.source.label},
+                'submit_label': _('Submit')
+            }
         )
+
+        if not isinstance(self.source, StagingFolderSource) and not isinstance(self.source, SaneScanner):
+            context.update(
+                {
+                    'form_css_classes': 'dropzone',
+                    'form_disable_submit': True
+                }
+            )
 
         return context
 

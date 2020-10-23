@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:22-0400\n"
-"PO-Revision-Date: 2020-04-04 05:54+0000\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -17,11 +18,11 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:15
+#: apps.py:19
 msgid "Dynamic search"
 msgstr ""
 
-#: classes.py:52
+#: classes.py:154
 msgid "No search model matching the query"
 msgstr ""
 
@@ -39,46 +40,80 @@ msgstr ""
 msgid "Search terms"
 msgstr "Условия поиска"
 
-#: links.py:6 settings.py:5 templates/dynamic_search/search_box.html:43
-#: views.py:59 views.py:72
+#: links.py:13 permissions.py:5 queues.py:7 settings.py:7
+#: templates/dynamic_search/search_box.html:43 views.py:117 views.py:130
 msgid "Search"
 msgstr "Поиск"
 
-#: links.py:9 templates/dynamic_search/search_box.html:45 views.py:86
+#: links.py:17 templates/dynamic_search/search_box.html:45 views.py:144
 msgid "Advanced search"
 msgstr ""
 
-#: links.py:13
+#: links.py:21
 msgid "Search again"
 msgstr ""
 
-#: settings.py:11
+#: links.py:25 views.py:90
+msgid "Reindex search backend"
+msgstr ""
+
+#: permissions.py:8
+msgid "Execute search tools"
+msgstr ""
+
+#: queues.py:11
+msgid "Remove a model instance from the search engine."
+msgstr ""
+
+#: queues.py:16
+msgid "Index a model instance to the search engine."
+msgstr ""
+
+#: settings.py:13
 msgid "Full path to the backend to be used to handle the search."
 msgstr ""
 
-#: settings.py:21
+#: settings.py:23
 msgid ""
 "Disables the single term bar search leaving only the advanced search button."
+msgstr ""
+
+#: settings.py:29
+msgid "Maximum number search results to fetch and display."
 msgstr ""
 
 #: templates/dynamic_search/search_box.html:45
 msgid "Advanced"
 msgstr "Дополнительно"
 
-#: views.py:24
+#: views.py:38
 msgid "Try again using different terms. "
 msgstr ""
 
-#: views.py:26
+#: views.py:40
 msgid "No search results"
 msgstr ""
 
-#: views.py:28
+#: views.py:42
 #, python-format
 msgid "Search results for: %s"
 msgstr ""
 
-#: views.py:74
+#: views.py:86
+msgid ""
+"This tool is required only for some search backends. Search results will be "
+"affected while the backend is being reindexed."
+msgstr ""
+
+#: views.py:92
+msgid "This tool erases and populates the search backend's internal index."
+msgstr ""
+
+#: views.py:110
+msgid "Search backend reindexing queued."
+msgstr ""
+
+#: views.py:132
 #, python-format
 msgid "Search for: %s"
 msgstr ""

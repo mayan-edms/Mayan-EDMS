@@ -1,34 +1,15 @@
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.permissions import permission_document_create
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
-from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH
 from mayan.apps.sources.models import WebFormSource
 from mayan.apps.sources.tests.literals import (
     TEST_SOURCE_LABEL, TEST_SOURCE_UNCOMPRESS_N
 )
 from mayan.apps.sources.wizards import WizardStep
 
-from ..models import Cabinet
 from ..wizard_steps import WizardStepCabinets
 
-from .mixins import CabinetTestMixin
-
-
-class CabinetDocumentUploadTestMixin:
-    def _request_upload_interactive_document_create_view(self):
-        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-            return self.post(
-                viewname='sources:document_upload_interactive', kwargs={
-                    'source_id': self.test_source.pk
-                }, data={
-                    'document_type_id': self.test_document_type.pk,
-                    'source-file': file_object,
-                    'cabinets': Cabinet.objects.values_list('pk', flat=True)
-                }
-            )
-
-    def _request_wizard_view(self):
-        return self.get(viewname='sources:document_create_multiple')
+from .mixins import CabinetDocumentUploadTestMixin, CabinetTestMixin
 
 
 class CabinetDocumentUploadTestCase(

@@ -3,6 +3,8 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
+# bwakkie <bwakkie@gmail.com>, 2020
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
 # j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
 # Johan Braeken, 2017
@@ -11,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:21-0400\n"
-"PO-Revision-Date: 2020-05-17 19:15+0000\n"
-"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"PO-Revision-Date: 2020-09-27 06:46+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,187 +23,114 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:132 permissions_runtime.py:5 settings.py:13
+#: apps.py:133 permissions.py:5 settings.py:10
 msgid "Common"
 msgstr "Gemeenschappelijk"
 
-#: classes.py:187
+#: classes.py:453
 msgid "Model properties"
-msgstr ""
+msgstr "Model eigenschappen"
 
-#: classes.py:192
+#: classes.py:458
 msgid "Model fields"
-msgstr ""
+msgstr "Model velden"
 
-#: classes.py:235
+#: classes.py:501
 msgid "Model related fields"
-msgstr ""
+msgstr "Model gerelateerde velden"
 
-#: classes.py:240
+#: classes.py:506
 msgid "Model reverse fields"
-msgstr ""
+msgstr "Model omgekeerde velden"
 
-#: dependencies.py:281
+#: dependencies.py:195
 msgid "Used to allow offline translation of the code text strings."
-msgstr ""
+msgstr "Gebruikt om offline vertaling van de codetekststrings toe te staan."
 
-#: dependencies.py:286
+#: dependencies.py:204
 msgid "Provides style checking."
-msgstr ""
+msgstr "Biedt stijlcontrole."
 
-#: dependencies.py:291
+#: dependencies.py:209
 msgid "Command line environment with autocompletion."
-msgstr ""
+msgstr "Opdrachtregelomgeving met automatisch aanvullen."
 
-#: dependencies.py:296
+#: dependencies.py:214
 msgid "Checks proper formatting of the README file."
-msgstr ""
+msgstr "Controleert de juiste opmaak van het README-bestand."
 
-#: forms.py:25
-msgid "Selection"
-msgstr "Selectie"
-
-#: forms.py:101
-msgid "None"
-msgstr "Geen"
-
-#: generics.py:146
-msgid ""
-"Select entries to be removed. Hold Control to select multiple entries. Once "
-"the selection is complete, click the button below or double click the list "
-"to activate the action."
-msgstr ""
-
-#: generics.py:151
-msgid ""
-"Select entries to be added. Hold Control to select multiple entries. Once "
-"the selection is complete, click the button below or double click the list "
-"to activate the action."
-msgstr ""
-
-#: generics.py:284
-msgid "Add all"
-msgstr "Alle toevoegen"
-
-#: generics.py:293
-msgid "Add"
-msgstr "Toevoegen"
-
-#: generics.py:303
-msgid "Remove all"
-msgstr "Alle verwijderen"
-
-#: generics.py:312
-msgid "Remove"
-msgstr "Verwijderen"
-
-#: generics.py:522
-#, python-format
-msgid "Duplicate data error: %(error)s"
-msgstr ""
-
-#: generics.py:543
-#, python-format
-msgid "%(object)s not created, error: %(error)s"
-msgstr "%(object)s niet aangemaakt, foutmelding: %(error)s."
-
-#: generics.py:556
-#, python-format
-msgid "%(object)s created successfully."
-msgstr "%(object)s met succes aangemaakt."
-
-#: generics.py:595
-#, python-format
-msgid "%(object)s not deleted, error: %(error)s."
-msgstr "%(object)s niet verwijderd, foutmelding: %(error)s."
-
-#: generics.py:604
-#, python-format
-msgid "%(object)s deleted successfully."
-msgstr "%(object)s met succes verwijderd."
-
-#: generics.py:740
-#, python-format
-msgid "%(object)s not updated, error: %(error)s."
-msgstr "%(object)s niet bijgewerkt, foutmelding: %(error)s."
-
-#: generics.py:751
-#, python-format
-msgid "%(object)s updated successfully."
-msgstr "%(object)s werden met succes bijgewerkt."
-
-#: links.py:34
+#: links.py:31
 msgid "About this"
 msgstr "Over Mayan EDMS"
 
-#: links.py:37
+#: links.py:34
 msgid "Get the book"
 msgstr "Koop het boek"
 
-#: links.py:42
+#: links.py:39
 msgid "Locale profile"
 msgstr "Landsinstellingen"
 
-#: links.py:47
+#: links.py:44
 msgid "Edit locale profile"
 msgstr "Wijzig landsinstellingen"
 
-#: links.py:52
+#: links.py:49
 msgid "Documentation"
 msgstr "Documentatie"
 
-#: links.py:57
-msgid "Errors"
-msgstr "Fouten"
-
-#: links.py:63
-msgid "Clear all"
-msgstr "Alle wissen"
-
-#: links.py:67
+#: links.py:52
 msgid "Forum"
 msgstr "Forum"
 
-#: links.py:71 views.py:103
+#: links.py:56 views.py:104
 msgid "License"
 msgstr "Licentie"
 
-#: links.py:74
+#: links.py:61
+msgid "Copy"
+msgstr ""
+
+#: links.py:64
 msgid "Setup"
 msgstr "Setup"
 
-#: links.py:77
+#: links.py:67
 msgid "Source code"
 msgstr "Broncode"
 
-#: links.py:81
+#: links.py:71
+msgid "Online store"
+msgstr "Online opslag"
+
+#: links.py:75
 msgid "Get support"
 msgstr "Ondersteuning"
 
-#: links.py:85 queues.py:13 views.py:212
+#: links.py:79 queues.py:9 views.py:173
 msgid "Tools"
 msgstr "Gereedschappen"
 
-#: literals.py:16
+#: literals.py:7
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
 msgstr "Deze functie is achterhaald en zal worden verwijderd in een toekomstige versie."
 
-#: literals.py:19
+#: literals.py:10
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
 msgstr "Uw database backend is ingesteld op SQLite. SQLite dient alleen gebruikt te worden voor ontwikkeling en testen, niet voor productie-omgevingen. "
 
-#: literals.py:44
+#: literals.py:19
 msgid "Days"
 msgstr "Dagen"
 
-#: literals.py:45
+#: literals.py:20
 msgid "Hours"
 msgstr "Uren"
 
-#: literals.py:46
+#: literals.py:21
 msgid "Minutes"
 msgstr "Minuten"
 
@@ -211,189 +140,87 @@ msgstr "Systeem"
 
 #: menus.py:10 menus.py:11
 msgid "Facet"
-msgstr ""
+msgstr "Facet"
 
 #: menus.py:14
 msgid "Actions"
 msgstr "Acties"
 
 #: menus.py:15
-msgid "Secondary"
+msgid "Related"
 msgstr ""
 
-#: menus.py:20 models.py:94
+#: menus.py:16
+msgid "Secondary"
+msgstr "Secundair"
+
+#: menus.py:21 models.py:25
 msgid "User"
 msgstr "Gebruiker"
 
-#: mixins.py:314
-#, python-format
-msgid "No %(verbose_name)s found matching the query"
-msgstr "Geen %(verbose_name)s gevonden die aan zoekopdracht voldoet"
-
-#: mixins.py:427
-msgid "Object"
-msgstr "Object"
-
-#: models.py:28
-msgid "Namespace"
-msgstr "Namespace"
-
-#: models.py:39 models.py:64
-msgid "Date time"
-msgstr "Datum en tijd"
-
-#: models.py:41 views.py:149
-msgid "Result"
-msgstr "Resultaat"
-
-#: models.py:47
-msgid "Error log entry"
-msgstr "Foutenlog invoer"
-
-#: models.py:48
-msgid "Error log entries"
-msgstr "Foutenlog invoer"
-
-#: models.py:60
-msgid "File"
-msgstr "Bestand"
-
-#: models.py:62
-msgid "Filename"
-msgstr "Bestandsnaam"
-
-#: models.py:68
-msgid "Shared uploaded file"
-msgstr "Gedeeld geüpload document"
-
-#: models.py:69 storages.py:20
-msgid "Shared uploaded files"
-msgstr "Gedeelde geüploade bestanden"
-
-#: models.py:98
+#: models.py:29
 msgid "Timezone"
 msgstr "Tijdzone"
 
-#: models.py:101
+#: models.py:32
 msgid "Language"
 msgstr "Taal"
 
-#: models.py:107
+#: models.py:38
 msgid "User locale profile"
 msgstr "Gebruikerslandsinstelling"
 
-#: models.py:108
+#: models.py:39
 msgid "User locale profiles"
 msgstr "Gebruikerslandinstellingen"
 
-#: permissions_runtime.py:8
-msgid "View error log"
-msgstr "Foutenlog bekijken"
+#: permissions.py:8
+msgid "Copy object"
+msgstr ""
 
-#: queues.py:11
+#: queues.py:7
 msgid "Default"
 msgstr "Standaard"
 
-#: queues.py:15
-msgid "Common periodic"
-msgstr ""
-
-#: queues.py:20
-msgid "Delete stale uploads"
-msgstr ""
-
-#: settings.py:20
-msgid "Automatically enable logging to all apps."
-msgstr ""
-
-#: settings.py:26
+#: settings.py:17
 msgid ""
 "Time to delay background tasks that depend on a database commit to "
 "propagate."
 msgstr "Wachttijd voor achtergrondtaken die afhankelijk zijn van het verbreiden van een database commit."
 
-#: settings.py:34
+#: settings.py:25
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
 "Python path to: an application configuration class (preferred), or a package"
 " containing an application."
-msgstr ""
+msgstr "Een lijst met tekenreeksen die alle toepassingen aanduiden die moeten worden verwijderd uit de lijst die normaal door Mayan EDMS wordt geïnstalleerd. Elke string moet een Python-pad zijn naar: een toepassingsconfiguratieklasse (bij voorkeur) of een pakket met een toepassing."
 
-#: settings.py:44
+#: settings.py:35
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
 "Python path to: an application configuration class (preferred), or a package"
 " containing an application."
-msgstr ""
+msgstr "Een lijst met tekenreeksen die alle applicaties aanduiden die zijn geïnstalleerd buiten de applicaties die normaal door Mayan EDMS zijn geïnstalleerd. Elke tekenreeks moet een Python-pad zijn naar: een toepassingsconfiguratieklasse (bij voorkeur) of een pakket met een toepassing."
 
-#: settings.py:53
+#: settings.py:44
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
-msgstr ""
+msgstr "Naam van de overzicht gekoppeld aan het logo in het hoofdmenu. Dit is ook het overzicht waarnaar gebruikers worden doorgestuurd nadat ze zich hebben aangemeld."
 
-#: settings.py:62
-msgid "The number objects that will be displayed per page."
-msgstr "Het aantal objecten dat per pagina wordt weergegeven."
-
-#: settings.py:69
-msgid "Enable error logging outside of the system error logging capabilities."
-msgstr ""
-
-#: settings.py:76
-msgid "Path to the logfile that will track errors during production."
-msgstr ""
-
-#: settings.py:83
+#: settings.py:52
 msgid "Name to be displayed in the main menu."
 msgstr "Naam die wordt weergegeven in het hoofdmenu."
 
-#: settings.py:89
+#: settings.py:58
 msgid "URL of the installation or homepage of the project."
 msgstr "URL van de installatie of homepage van het project."
 
-#: settings.py:95
-msgid "A storage backend that all workers can use to share files."
-msgstr "Een opslagbackend die alle werkers kunnen gebruiken om bestanden te delen."
-
-#: settings.py:103
+#: settings.py:63
 msgid "Base URL path to use for all views."
 msgstr "Basis URL-pad voor alle overzichten."
-
-#: storages.py:13
-msgid ""
-"Unable to initialize the shared uploaded file storage. Check the settings {}"
-" and {} for formatting errors."
-msgstr "Niet mogelijk om de geüploade bestandsopslag te initialiseren. Controleer de instellingen {} en {} op opmaakfouten."
-
-#: templatetags/common_tags.py:34
-msgid "Confirm delete"
-msgstr "Verwijderen bevestigen"
-
-#: templatetags/common_tags.py:39
-#, python-format
-msgid "Edit %s"
-msgstr "Bewerken %s"
-
-#: templatetags/common_tags.py:42
-msgid "Confirm"
-msgstr "Bevestigen"
-
-#: templatetags/common_tags.py:46
-#, python-format
-msgid "Details for: %s"
-msgstr "Details voor: %s"
-
-#: templatetags/common_tags.py:50
-#, python-format
-msgid "Edit: %s"
-msgstr "Bewerken: %s"
-
-#: templatetags/common_tags.py:54
-msgid "Create"
-msgstr "Aanmaken"
 
 #: validators.py:44
 msgid "Enter a valid JSON value."
@@ -409,68 +236,54 @@ msgid ""
 "underscores."
 msgstr "Voer een geldige 'interne naam' in die bestaat uit letter, cijfers en underscores."
 
-#: views.py:26
+#: views.py:27
 msgid "About"
 msgstr "Over"
 
-#: views.py:39
+#: views.py:40
 msgid "Current user locale profile details"
 msgstr "Details landinstellingen huidige gebruiker"
 
-#: views.py:45
+#: views.py:46
 msgid "Edit current user locale profile details"
 msgstr "Details landinstellingen huidige gebruiker bewerken"
 
-#: views.py:94
+#: views.py:95
 msgid "Dashboard"
 msgstr "Dashboard"
 
-#: views.py:112
+#: views.py:116
 #, python-format
-msgid "Clear error log entries for: %s"
-msgstr "Foutenlog invoer wissen voor: %s"
-
-#: views.py:129
-msgid "Object error log cleared successfully"
+msgid "Fields to be copied: %s"
 msgstr ""
 
-#: views.py:148
-msgid "Date and time"
-msgstr "Datum en tijd"
-
-#: views.py:154
-msgid ""
-"This view displays the error log of different object. An empty list is a "
-"good thing."
-msgstr "Dit overzicht geeft de foutenlog van verschillende objecten weer. Een lege lijst is een goed teken."
-
-#: views.py:158
-msgid "There are no error log entries"
-msgstr "Er is geen foutenlog invoer."
-
-#: views.py:161
+#: views.py:125
 #, python-format
-msgid "Error log entries for: %s"
-msgstr "Foutenlog invoer voor: %s"
+msgid "Make a copy of %(object_name)s \"%(object)s\"?"
+msgstr ""
 
-#: views.py:189
+#: views.py:134
+msgid "Object copied successfully."
+msgstr ""
+
+#: views.py:150
 msgid "No setup options available."
 msgstr "Geen instellingsopties beschikbaar."
 
-#: views.py:191
+#: views.py:152
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
 msgstr "Geen resultaten betekent dat u onvoldoende verplichte toegangsrechten heeft om de beheertaak uit te voeren."
 
-#: views.py:197
+#: views.py:158
 msgid "Setup items"
 msgstr "Setup items"
 
-#: views.py:199
+#: views.py:160
 msgid "Here you can configure all aspects of the system."
 msgstr "Hier kunt u alle aspecten van het systeem instellen."
 
-#: views.py:214
+#: views.py:175
 msgid "These modules are used to do system maintenance."
 msgstr "Deze modules worden gebruikt voor systeemonderhoud."

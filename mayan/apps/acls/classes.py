@@ -4,6 +4,7 @@ import logging
 from django.apps import apps
 from django.core.exceptions import ImproperlyConfigured
 from django.utils.encoding import force_text
+from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.utils import get_related_field
 
@@ -50,7 +51,7 @@ class ModelPermission:
 
             for namespace, permissions in itertools.groupby(cls.get_for_class(klass=klass, as_choices=False), lambda entry: entry.namespace):
                 permission_options = [
-                    (force_text(permission.pk), permission) for permission in permissions
+                    (force_text(s=permission.pk), permission) for permission in permissions
                 ]
                 results.append(
                     (namespace, permission_options)
@@ -118,6 +119,7 @@ class ModelPermission:
         to the ACLs via a GenericRelation field.
         """
         from django.contrib.contenttypes.fields import GenericRelation
+        from mayan.apps.common.classes import ModelCopy
 
         cls._model_permissions.setdefault(model, [])
         try:
@@ -136,8 +138,12 @@ class ModelPermission:
         )
 
         model.add_to_class(
-            name='acls', value=GenericRelation(AccessControlList)
+            name='acls', value=GenericRelation(
+                to=AccessControlList, verbose_name=_('ACLs')
+            )
         )
+
+        ModelCopy.add_fields_lazy(model=model, field_names=('acls',))
 
     @classmethod
     def register_field_query_function(cls, model, function):

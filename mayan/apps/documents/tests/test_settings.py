@@ -1,16 +1,17 @@
 import importlib
 import logging
 
-from mayan.apps.tests.tests.base import BaseTestCase
 from mayan.apps.documents import storages
 from mayan.apps.smart_settings.tests.mixins import SmartSettingTestMixin
 from mayan.apps.storage.classes import DefinedStorage
+from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..literals import (
     STORAGE_NAME_DOCUMENT_IMAGE, STORAGE_NAME_DOCUMENT_VERSION
 )
 from ..settings import (
-    setting_documentimagecache_storage_arguments, setting_language_codes,
+    setting_documentimagecache_storage_arguments,
+    setting_document_cache_maximum_size, setting_language_codes,
     setting_storage_backend_arguments
 )
 
@@ -77,3 +78,10 @@ class DocumentStorageSettingsTestCase(SmartSettingTestMixin, BaseTestCase):
             ).get_storage_instance()
         self.assertTrue('Unable to initialize' in str(assertion.exception))
         self.assertTrue('document version' in str(assertion.exception))
+
+    def test_setting_document_cache_maximum_size(self):
+        old_value = setting_document_cache_maximum_size.value
+        new_value = old_value + 1
+        setting_document_cache_maximum_size.value = '{}'.format(new_value)
+
+        self.assertEqual(setting_document_cache_maximum_size.value, new_value)

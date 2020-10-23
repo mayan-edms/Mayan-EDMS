@@ -1,9 +1,9 @@
-from mayan.apps.tests.tests.base import GenericViewTestCase
 from mayan.apps.document_states.permissions import permission_workflow_edit
 from mayan.apps.document_states.tests.base import ActionTestCase
 from mayan.apps.document_states.tests.mixins import (
     WorkflowStateActionViewTestMixin, WorkflowTestMixin
 )
+from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..models import Tag
 from ..workflow_actions import AttachTagAction, RemoveTagAction

@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.classes import ModelQueryFields
+from mayan.apps.common.classes import ModelCopy, ModelQueryFields
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_main, menu_multi_item, menu_object,
     menu_secondary
@@ -45,6 +45,11 @@ class CabinetsApp(MayanAppConfig):
     has_static_media = True
     has_tests = True
     name = 'mayan.apps.cabinets'
+    static_media_ignore_patterns = (
+        'cabinets/node_modules/jstree/component.json',
+        'cabinets/node_modules/jstree/jstree.jquery.json',
+        'cabinets/node_modules/jstree/src/*',
+    )
     verbose_name = _('Cabinets')
 
     def ready(self):
@@ -68,6 +73,24 @@ class CabinetsApp(MayanAppConfig):
         )
 
         EventModelRegistry.register(model=Cabinet)
+
+        def cabinet_model_copy_condition(instance):
+            return instance.is_root_node()
+
+        def cabinet_unique_conditional(instance, new_instance_dictionary):
+            if instance.parent:
+                return instance.parent_id == new_instance_dictionary['parent_id'] and instance.label == new_instance_dictionary['label']
+            else:
+                return not new_instance_dictionary['parent_id'] and instance.label == new_instance_dictionary['label']
+
+        ModelCopy(
+            model=Cabinet, condition=cabinet_model_copy_condition,
+            bind_link=True, register_permission=True
+        ).add_fields(
+            field_names=('label', 'documents'), unique_conditional={
+                'label': cabinet_unique_conditional
+            }
+        )
 
         ModelEventType.register(
             model=Cabinet, event_types=(

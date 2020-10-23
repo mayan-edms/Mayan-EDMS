@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Badea Gabriel <gcbadea@gmail.com>, 2013
 # Harald Ersch, 2019-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:21-0400\n"
-"PO-Revision-Date: 2020-03-28 21:05+0000\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"PO-Revision-Date: 2020-09-29 12:57+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
@@ -27,11 +28,11 @@ msgstr "Document de semnături"
 msgid "Date"
 msgstr "Data"
 
-#: apps.py:98 models.py:47
+#: apps.py:98 models.py:46
 msgid "Key ID"
 msgstr "ID cheie"
 
-#: apps.py:102 forms.py:62 models.py:52
+#: apps.py:102 forms.py:62 models.py:51
 msgid "Signature ID"
 msgstr "ID-ul de semnătură"
 
@@ -137,63 +138,63 @@ msgstr "Semnează încorporat"
 msgid "Upload signature"
 msgstr "Încărcați semnătura"
 
-#: models.py:39
+#: models.py:38
 msgid "Document version"
 msgstr "Versiune document"
 
-#: models.py:43
+#: models.py:42
 msgid "Date signed"
 msgstr "Data semnăturii"
 
-#: models.py:46
+#: models.py:45
 msgid "ID of the key that will be used to sign the document."
 msgstr "ID-ul cheii care va fi folosit pentru semnarea documentului."
 
-#: models.py:56
+#: models.py:55
 msgid "Public key fingerprint"
 msgstr "Amprenta digitală a cheii publice"
 
-#: models.py:63
+#: models.py:62
 msgid "Document version signature"
 msgstr "Semnarea versiunii de document"
 
-#: models.py:64
+#: models.py:63
 msgid "Document version signatures"
 msgstr "Semnăturile versiunii de document"
 
-#: models.py:83
+#: models.py:82
 msgid "Detached"
 msgstr "Detașat"
 
-#: models.py:85
+#: models.py:84
 msgid "Embedded"
 msgstr "Încorporat"
 
-#: models.py:100
+#: models.py:99
 msgid "Document version embedded signature"
 msgstr "Semnătură încorporată a versiunii de document"
 
-#: models.py:101
+#: models.py:100
 msgid "Document version embedded signatures"
 msgstr "Semnături încorporate a versiunii de document"
 
-#: models.py:134
+#: models.py:132
 msgid "Signature file previously generated."
 msgstr "Fișier de semnătură generat anterior."
 
-#: models.py:137
+#: models.py:135
 msgid "Signature file"
 msgstr "Fisier semnătura"
 
-#: models.py:143
+#: models.py:141
 msgid "Document version detached signature"
 msgstr "Semnătură detașată a documentului"
 
-#: models.py:144
+#: models.py:142
 msgid "Document version detached signatures"
 msgstr "Semnături detașate a versiunii de document"
 
-#: models.py:147
+#: models.py:145
 msgid "signature"
 msgstr "semnătură"
 
@@ -246,16 +247,16 @@ msgid "Path to the Storage subclass to use when storing detached signatures."
 msgstr "Calea către subclasa de stocare care trebuie utilizată la stocarea semnăturilor detașate."
 
 #: settings.py:28
-msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND. "
-msgstr "Argumentele care trec la SIGNATURE_STORAGE_BACKEND."
+msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND."
+msgstr "Parametri de transmis la SIGNATURE_STORAGE_BACKEND."
 
-#: storages.py:14
+#: storages.py:13
 msgid ""
 "Unable to initialize the detached signatures storage. Check the settings {} "
 "and {} for formatting errors."
 msgstr "Imposibil de inițializat stocarea de semnături detașate. Verificați setările {} și {} pentru erori de formatare."
 
-#: storages.py:21
+#: storages.py:20
 msgid "Detached signatures"
 msgstr "Semnături detașate"
 
@@ -342,6 +343,6 @@ msgid ""
 "an initial state before the created document is yet to be processed."
 msgstr "Documentul nu are o versiune de semnat. Este posibil să încercați să utilizați această acțiune într-o stare inițială înainte ca documentul creat să fie încă procesat."
 
-#: workflow_actions.py:82
+#: workflow_actions.py:80
 msgid "Sign document (embedded)"
 msgstr "Semnare document (încorporat)"

@@ -1,7 +1,7 @@
 from actstream.models import Action
 
-from mayan.apps.tests.tests.base import GenericViewTestCase
 from mayan.apps.documents.tests.base import DocumentTestMixin
+from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..permissions import (
     permission_smart_link_create, permission_smart_link_edit,

@@ -87,7 +87,7 @@ class SettingNamespace(AppsModuleLoaderMixin):
         self._settings = []
 
     def __str__(self):
-        return force_text(self.label)
+        return force_text(s=self.label)
 
     def add_setting(self, **kwargs):
         return Setting(namespace=self, **kwargs)
@@ -182,7 +182,7 @@ class Setting:
         if isinstance(value, (list, tuple)):
             return [Setting.express_promises(item) for item in value]
         elif isinstance(value, Promise):
-            return force_text(value)
+            return force_text(s=value)
         else:
             return value
 
@@ -194,7 +194,7 @@ class Setting:
         )
         # safe_dump returns bytestrings
         # Disregard the last 3 dots that mark the end of the YAML document
-        if force_text(result).endswith('...\n'):
+        if force_text(s=result).endswith('...\n'):
             result = result[:-4]
 
         return result
@@ -250,7 +250,7 @@ class Setting:
     @classmethod
     def get_hash(cls):
         return force_text(
-            hashlib.sha256(force_bytes(cls.dump_data())).hexdigest()
+            s=hashlib.sha256(force_bytes(cls.dump_data())).hexdigest()
         )
 
     @classmethod
@@ -292,7 +292,7 @@ class Setting:
         self.__class__._registry[global_name] = self
 
     def __str__(self):
-        return force_text(self.global_name)
+        return force_text(s=self.global_name)
 
     def cache_value(self):
         environment_value = os.environ.get('MAYAN_{}'.format(self.global_name))

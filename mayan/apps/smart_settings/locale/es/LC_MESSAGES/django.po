@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Lory977 <helga.carrero@gmail.com>, 2015
 # Roberto Rosario, 2012
 # Roberto Rosario, 2015-2016,2018-2020
@@ -10,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:23-0400\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2020-05-26 08:20+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
@@ -28,19 +29,19 @@ msgstr "Ajustes inteligentes"
 msgid "Setting count"
 msgstr "Conteo de ajustes"
 
-#: apps.py:34
+#: apps.py:35
 msgid "Name"
 msgstr "Nombre"
 
-#: apps.py:38
+#: apps.py:39
 msgid "Value"
 msgstr "Valor"
 
-#: classes.py:350
+#: classes.py:336
 msgid "Overridden"
 msgstr "Anulado"
 
-#: classes.py:352
+#: classes.py:338
 msgid "Is this settings being overridden by an environment variable?"
 msgstr "¿Esta configuración está siendo anulada por una variable de entorno?"
 
@@ -337,30 +338,30 @@ msgid ""
 msgstr "La ruta completa de Python del objeto de aplicación WSGI que usarán los servidores incorporados de Django (por ejemplo, runserver). El comando django-admin startproject management creará un archivo wsgi.py simple con una aplicación invocable en él, y señalará esta configuración a esa aplicación."
 
 #: views.py:21
+msgid "Setting updated successfully."
+msgstr "Ajuste actualizado con éxito."
+
+#: views.py:30
+#, python-format
+msgid "Edit setting: %s"
+msgstr "Editar ajuste: %s"
+
+#: views.py:55
 msgid ""
 "Settings inherited from an environment variable take precedence and cannot "
 "be changed in this view. "
 msgstr "La configuración heredada de una variable de entorno tiene prioridad y no se puede cambiar en esta vista."
 
-#: views.py:24
+#: views.py:58
 #, python-format
 msgid "Settings in namespace: %s"
 msgstr "Ajustes en la categoría: %s"
 
-#: views.py:32
+#: views.py:66
 #, python-format
 msgid "Namespace: %s, not found"
 msgstr "Categoría: %s, no encontrada"
 
-#: views.py:42
+#: views.py:76
 msgid "Setting namespaces"
 msgstr "Categoría de ajustes"
-
-#: views.py:58
-msgid "Setting updated successfully."
-msgstr "Ajuste actualizado con éxito."
-
-#: views.py:67
-#, python-format
-msgid "Edit setting: %s"
-msgstr "Editar ajuste: %s"

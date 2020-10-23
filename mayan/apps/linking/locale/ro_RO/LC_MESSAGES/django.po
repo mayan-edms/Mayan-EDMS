@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Badea Gabriel <gcbadea@gmail.com>, 2013
 # Harald Ersch, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:22-0400\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2019-12-20 12:46+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -19,15 +20,15 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:40
+#: apps.py:43
 msgid "Linking"
 msgstr "Legare"
 
-#: apps.py:76 models.py:26
+#: apps.py:96 models.py:25
 msgid "Label"
 msgstr "Etichetă"
 
-#: events.py:6 links.py:18 links.py:77 links.py:82 links.py:87 models.py:45
+#: events.py:6 links.py:18 links.py:77 links.py:82 links.py:87 models.py:44
 #: permissions.py:5 views.py:203
 msgid "Smart links"
 msgstr "Link-uri inteligente"
@@ -64,7 +65,7 @@ msgstr "Condiții"
 msgid "Create new smart link"
 msgstr "Creați un nou link inteligent"
 
-#: links.py:61 models.py:37
+#: links.py:61 models.py:36
 msgid "Document types"
 msgstr "Tipuri de documente"
 
@@ -140,80 +141,80 @@ msgstr "este în expresie regulată"
 msgid "is in regular expression (case insensitive)"
 msgstr "este în expresie regulată (case insensitive)"
 
-#: models.py:25
+#: models.py:24
 msgid "A short text describing the smart link."
 msgstr "Un text scurt care descrie legătura inteligentă."
 
-#: models.py:30
+#: models.py:29
 msgid ""
 "Use this field to show a unique label depending on the document from which "
 "the smart link is being accessed."
 msgstr "Utilizați acest câmp pentru a afișa o etichetă unică, în funcție de documentul din care este accesat link-ul inteligent."
 
-#: models.py:32
+#: models.py:31
 msgid "Dynamic label"
 msgstr "Etichetă dinamică"
 
-#: models.py:34 models.py:191
+#: models.py:33 models.py:189
 msgid "Enabled"
 msgstr "Activat"
 
-#: models.py:44 models.py:169
+#: models.py:43 models.py:167
 msgid "Smart link"
 msgstr "Legătură inteligentă"
 
-#: models.py:83
+#: models.py:82
 #, python-format
 msgid "Error generating dynamic label; %s"
 msgstr "Eroare la generarea etichetei dinamice; %s"
 
-#: models.py:98
+#: models.py:97
 msgid "This smart link is not allowed for the selected document's type."
 msgstr "Această legătură inteligentă nu este permisă pentru tipul de document selectat."
 
-#: models.py:173
+#: models.py:171
 msgid "The inclusion is ignored for the first item."
 msgstr "Includerea este ignorată pentru primul element."
 
-#: models.py:177
+#: models.py:175
 msgid "This represents the metadata of all other documents."
 msgstr "Aceasta reprezintă metadatele tuturor celorlalte documente."
 
-#: models.py:178
+#: models.py:176
 msgid "Foreign document attribute"
 msgstr "Atribut document străin"
 
-#: models.py:183
+#: models.py:181
 msgid ""
 "The expression using document properties to be evaluated against the foreign"
 " document field."
 msgstr "Expresia care trebuie evaluată  folosind proprietățile documentului pe câmpul documentului străin."
 
-#: models.py:185
+#: models.py:183
 msgid "Expression"
 msgstr "Expresie"
 
-#: models.py:188
+#: models.py:186
 msgid "Inverts the logic of the operator."
 msgstr "Inversează logica operatorului."
 
-#: models.py:189
+#: models.py:187
 msgid "Negated"
 msgstr "Negat"
 
-#: models.py:194
+#: models.py:192
 msgid "Link condition"
 msgstr "Condiție de conectare"
 
-#: models.py:195
+#: models.py:193
 msgid "Link conditions"
 msgstr "Condiții de conectare"
 
-#: models.py:203
+#: models.py:201
 msgid "not"
 msgstr "nu"
 
-#: models.py:207
+#: models.py:205
 msgid "Full label"
 msgstr "Etichetă completă"
 

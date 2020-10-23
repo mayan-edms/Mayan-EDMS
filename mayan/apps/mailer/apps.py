@@ -5,6 +5,7 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
+from mayan.apps.common.classes import ModelCopy
 from mayan.apps.common.menus import (
     menu_list_facet, menu_multi_item, menu_object, menu_secondary, menu_setup,
 )
@@ -53,6 +54,16 @@ class MailerApp(MayanAppConfig):
         EventModelRegistry.register(model=UserMailer)
 
         MailerBackend.load_modules()
+
+        ModelCopy(
+            model=UserMailer, bind_link=True, register_permission=True
+        ).add_fields(
+            field_names=(
+                'label', 'enabled', 'backend_path', 'backend_data'
+            ), field_values={
+                'default': False
+            }
+        )
 
         ModelEventType.register(
             model=UserMailer, event_types=(event_email_sent,)

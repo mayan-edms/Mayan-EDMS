@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # serhatcan77 <serhat_can@yahoo.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:21-0400\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2020-04-28 03:38+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:44 events.py:5 links.py:32
+#: apps.py:43 events.py:5 links.py:32
 msgid "Checkouts"
 msgstr "Teslim alınmışlar"
 
@@ -42,11 +43,11 @@ msgstr "Belge teslim alındı"
 msgid "Document forcefully checked in"
 msgstr "Belge zorla teslim edildi"
 
-#: exceptions.py:16
+#: exceptions.py:15
 msgid "Document not checked out."
 msgstr ""
 
-#: exceptions.py:25
+#: exceptions.py:23
 msgid "Document already checked out."
 msgstr "Belge zaten teslim alınmış."
 
@@ -54,7 +55,7 @@ msgstr "Belge zaten teslim alınmış."
 msgid "Document status"
 msgstr "Belge durumu"
 
-#: forms.py:37 models.py:42 models.py:134
+#: forms.py:37 models.py:41 models.py:133
 msgid "User"
 msgstr "Kullanıcı"
 
@@ -106,55 +107,55 @@ msgstr "Teslim alındı"
 msgid "Checked in/available"
 msgstr "Teslim etme aktif"
 
-#: models.py:29 models.py:112
+#: models.py:28 models.py:111
 msgid "Document"
 msgstr "Belge"
 
-#: models.py:32
+#: models.py:31
 msgid "Check out date and time"
 msgstr "Teslim alma tarih ve saati"
 
-#: models.py:36
+#: models.py:35
 msgid "Amount of time to hold the document checked out in minutes."
 msgstr "Belgeyi elde tutma zamanı /dakika."
 
-#: models.py:38
+#: models.py:37
 msgid "Check out expiration date and time"
 msgstr "Teslim alma son kullanma tarihi ve saati"
 
-#: models.py:47
+#: models.py:46
 msgid "Do not allow new version of this document to be uploaded."
 msgstr "Bu belgenin yeni sürümünün yüklenmesine izin vermeyin."
 
-#: models.py:49
+#: models.py:48
 msgid "Block new version upload"
 msgstr "Yeni sürümü yüklemeyi engelle"
 
-#: models.py:57 permissions.py:5
+#: models.py:56 permissions.py:5
 msgid "Document checkout"
 msgstr "Belge teslim alma"
 
-#: models.py:58
+#: models.py:57
 msgid "Document checkouts"
 msgstr "Belge teslim alma kayıtları"
 
-#: models.py:66
+#: models.py:65
 msgid "Check out expiration date and time must be in the future."
 msgstr "Teslim alma son kullanma tarihini gelecekte olmalıdır."
 
-#: models.py:118
+#: models.py:117
 msgid "New version block"
 msgstr "Yeni sürüm engelleme"
 
-#: models.py:119
+#: models.py:118
 msgid "New version blocks"
 msgstr "Yeni sürüm engellemeleri"
 
-#: models.py:139
+#: models.py:138
 msgid "Checkout time and date"
 msgstr "Teslim alma zamanı ve tarihi"
 
-#: models.py:144
+#: models.py:143
 msgid "Checkout expiration"
 msgstr "Teslim alma kullanımının sona erme tarihi"
 
@@ -225,6 +226,6 @@ msgstr ""
 msgid "No documents have been checked out"
 msgstr ""
 
-#: widgets.py:25
+#: widgets.py:23
 msgid "Amount"
 msgstr ""

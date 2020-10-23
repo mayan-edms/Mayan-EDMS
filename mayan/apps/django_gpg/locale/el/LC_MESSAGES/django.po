@@ -3,11 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:21-0400\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2020-04-14 08:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
@@ -25,11 +26,11 @@ msgstr ""
 msgid "Key ID"
 msgstr "Αναγνωριστικό κλειδιού"
 
-#: apps.py:56 forms.py:32 models.py:54
+#: apps.py:56 forms.py:32 models.py:53
 msgid "Type"
 msgstr "Τύπος"
 
-#: apps.py:60 forms.py:21 models.py:35
+#: apps.py:60 forms.py:21 models.py:34
 msgid "Creation date"
 msgstr "Ημερομηνία δημιουργίας"
 
@@ -37,15 +38,15 @@ msgstr "Ημερομηνία δημιουργίας"
 msgid "No expiration"
 msgstr "Χωρίς λήξη"
 
-#: apps.py:65 forms.py:25 models.py:39
+#: apps.py:65 forms.py:25 models.py:38
 msgid "Expiration date"
 msgstr "Ημερομηνία λήξης"
 
-#: apps.py:68 forms.py:30 models.py:46
+#: apps.py:68 forms.py:30 models.py:45
 msgid "Length"
 msgstr "Μήκος"
 
-#: apps.py:73 forms.py:17 models.py:51
+#: apps.py:73 forms.py:17 models.py:50
 msgid "User ID"
 msgstr "Αναγνωριστικό χρήστη"
 
@@ -57,11 +58,11 @@ msgstr ""
 msgid "None"
 msgstr "Κανένα"
 
-#: forms.py:29 models.py:43
+#: forms.py:29 models.py:42
 msgid "Fingerprint"
 msgstr "Δακτυλικό αποτύπωμα"
 
-#: forms.py:31 models.py:49
+#: forms.py:31 models.py:48
 msgid "Algorithm"
 msgstr "Αλγόρυθμος"
 
@@ -153,27 +154,27 @@ msgstr "Το έγγρφο είναι υπογεγραμμένο ψηφιακά �
 msgid "Document is signed with a valid signature."
 msgstr "Το έγγραφο είναι υπογεγραμμένο με έγκυρη ψηφιακή υπογραφή."
 
-#: models.py:31
+#: models.py:30
 msgid "ASCII armored version of the key."
 msgstr "Το κλειδί σε μορφή ASCII armored,"
 
-#: models.py:32
+#: models.py:31
 msgid "Key data"
 msgstr "Δεδομένα κλειδιού"
 
-#: models.py:60
+#: models.py:59
 msgid "Key"
 msgstr "Κλειδί"
 
-#: models.py:61
+#: models.py:60
 msgid "Keys"
 msgstr "Κλειδιά"
 
-#: models.py:73
+#: models.py:72
 msgid "Invalid key data"
 msgstr "Άκυρα δεδομένα κλειδιού"
 
-#: models.py:76
+#: models.py:75
 msgid "Key already exists."
 msgstr "Το κλειδί υπάρχει ήδη."
 

@@ -1,4 +1,4 @@
-from mayan.apps.tests.tests.base import BaseTestCase, GenericViewTestCase
+from mayan.apps.testing.tests.base import BaseTestCase, GenericViewTestCase
 
 from .mixins import DocumentTestMixin
 

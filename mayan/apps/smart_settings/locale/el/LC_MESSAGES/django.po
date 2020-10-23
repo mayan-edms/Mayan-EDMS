@@ -3,11 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:23-0400\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2020-05-25 06:18+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
@@ -25,19 +26,19 @@ msgstr "Έξυπνες ρυθμίσεις"
 msgid "Setting count"
 msgstr ""
 
-#: apps.py:34
+#: apps.py:35
 msgid "Name"
 msgstr "Όνομα"
 
-#: apps.py:38
+#: apps.py:39
 msgid "Value"
 msgstr "Τιμή"
 
-#: classes.py:350
+#: classes.py:336
 msgid "Overridden"
 msgstr ""
 
-#: classes.py:352
+#: classes.py:338
 msgid "Is this settings being overridden by an environment variable?"
 msgstr ""
 
@@ -334,30 +335,30 @@ msgid ""
 msgstr ""
 
 #: views.py:21
+msgid "Setting updated successfully."
+msgstr ""
+
+#: views.py:30
+#, python-format
+msgid "Edit setting: %s"
+msgstr ""
+
+#: views.py:55
 msgid ""
 "Settings inherited from an environment variable take precedence and cannot "
 "be changed in this view. "
 msgstr ""
 
-#: views.py:24
+#: views.py:58
 #, python-format
 msgid "Settings in namespace: %s"
 msgstr ""
 
-#: views.py:32
+#: views.py:66
 #, python-format
 msgid "Namespace: %s, not found"
 msgstr ""
 
-#: views.py:42
+#: views.py:76
 msgid "Setting namespaces"
-msgstr ""
-
-#: views.py:58
-msgid "Setting updated successfully."
-msgstr ""
-
-#: views.py:67
-#, python-format
-msgid "Edit setting: %s"
 msgstr ""

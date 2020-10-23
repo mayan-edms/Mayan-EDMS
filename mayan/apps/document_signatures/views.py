@@ -147,7 +147,7 @@ class DocumentVersionEmbeddedSignatureCreateView(FormView):
         )
 
         try:
-            new_version = EmbeddedSignature.objects.sign_document_version(
+            signature = EmbeddedSignature.objects.sign_document_version(
                 document_version=self.get_document_version(),
                 key=key, passphrase=passphrase, user=self.request.user
             )
@@ -186,7 +186,7 @@ class DocumentVersionEmbeddedSignatureCreateView(FormView):
             return HttpResponseRedirect(
                 redirect_to=reverse(
                     viewname='signatures:document_version_signature_list',
-                    kwargs={'document_version_id': new_version.pk}
+                    kwargs={'document_version_id': signature.document_version.pk}
                 )
             )
 
@@ -273,7 +273,7 @@ class DocumentVersionSignatureDownloadView(SingleObjectDownloadView):
         return self.object.signature_file
 
     def get_download_filename(self):
-        return force_text(self.object)
+        return force_text(s=self.object)
 
 
 class DocumentVersionSignatureListView(

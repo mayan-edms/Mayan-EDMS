@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:21-0400\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Harald Ersch, 2020\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -23,9 +23,9 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:48 apps.py:123 apps.py:130 apps.py:135 apps.py:138 events.py:5
-#: forms.py:14 links.py:22 menus.py:14 models.py:48 models.py:170
-#: permissions.py:5 views.py:164 workflow_actions.py:20
+#: apps.py:53 apps.py:149 apps.py:156 events.py:5 forms.py:14 links.py:22
+#: menus.py:14 models.py:45 models.py:167 permissions.py:5 search.py:46
+#: search.py:49 views.py:164 workflow_actions.py:20
 msgid "Cabinets"
 msgstr "Fișete"
 
@@ -45,7 +45,7 @@ msgstr "Documentul a fost adăugat la fișet"
 msgid "Document removed from cabinet"
 msgstr "Document a fost scos din fișet"
 
-#: links.py:28 links.py:42 workflow_actions.py:74
+#: links.py:28 links.py:42 workflow_actions.py:72
 msgid "Remove from cabinets"
 msgstr "Scoateți din fișete"
 
@@ -85,45 +85,45 @@ msgstr "Returnează o listă de fişete ce conțin documentul."
 msgid "get_cabinets()"
 msgstr "get_cabinets ()"
 
-#: models.py:34
+#: models.py:31
 msgid "A short text used to identify the cabinet."
 msgstr "Un text scurt folosit pentru identificarea cabinetului."
 
-#: models.py:35 search.py:22
+#: models.py:32
 msgid "Label"
 msgstr "Etichetă"
 
-#: models.py:39
+#: models.py:36
 msgid "Documents"
 msgstr "Documente"
 
-#: models.py:47 models.py:144 models.py:169 serializers.py:136
-#: workflow_actions.py:66
+#: models.py:44 models.py:141 models.py:166 serializers.py:136
+#: workflow_actions.py:64
 msgid "Cabinet"
 msgstr "Fișet"
 
-#: models.py:110
+#: models.py:107
 msgid "The path to the cabinet including all ancestors."
 msgstr "Calea către fişet, inclusiv toți strămoșii."
 
-#: models.py:112
+#: models.py:109
 msgid "Full path"
 msgstr "Calea completă"
 
-#: models.py:145 serializers.py:137
+#: models.py:142 serializers.py:137
 msgid "Parent and Label"
 msgstr "Părinte și etichetă"
 
-#: models.py:152 serializers.py:143
+#: models.py:149 serializers.py:143
 #, python-format
 msgid "%(model_name)s with this %(field_labels)s already exists."
 msgstr " Există deja %(model_name)s cu acest %(field_labels)s."
 
-#: models.py:181
+#: models.py:178
 msgid "Document cabinet"
 msgstr "Fișet de documente"
 
-#: models.py:182
+#: models.py:179
 msgid "Document cabinets"
 msgstr "Fișete cu documentul"
 
@@ -151,27 +151,27 @@ msgstr "Scoateți documente din fișete"
 msgid "View cabinets"
 msgstr "Vezi fișete"
 
-#: search.py:26
+#: search.py:25
 msgid "Document type"
 msgstr "Tipul documentului"
 
-#: search.py:29
+#: search.py:28
 msgid "Document MIME type"
 msgstr "Tip MIME al documentului"
 
-#: search.py:32
+#: search.py:31
 msgid "Document label"
 msgstr "Etichetele documentului"
 
-#: search.py:35
+#: search.py:34
 msgid "Document description"
 msgstr "Descrierea documentului"
 
-#: search.py:38
+#: search.py:37
 msgid "Document UUID"
 msgstr "UUID al documentului"
 
-#: search.py:42
+#: search.py:41
 msgid "Document checksum"
 msgstr "Suma de control a documentului"
 
@@ -363,6 +363,6 @@ msgstr "Selectați fișete"
 msgid "Cabinets to which the document will be added."
 msgstr "Fișetele la care se va adăuga documentul."
 
-#: workflow_actions.py:69
+#: workflow_actions.py:67
 msgid "Cabinets from which the document will be removed."
 msgstr "Fișetele din care va fi eliminat documentul."

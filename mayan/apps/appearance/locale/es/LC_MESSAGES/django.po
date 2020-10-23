@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Roberto Rosario, 2015-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:20-0400\n"
-"PO-Revision-Date: 2020-04-08 05:03+0000\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"PO-Revision-Date: 2020-09-27 08:36+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:11 settings.py:7
+#: apps.py:59 events.py:5 permissions.py:5 settings.py:7
 msgid "Appearance"
 msgstr "Apariencia"
 
@@ -69,6 +70,88 @@ msgstr "Toastr"
 #: dependencies.py:60
 msgid "URI.js"
 msgstr "URI.js"
+
+#: events.py:8
+msgid "Theme created"
+msgstr "Tema creado"
+
+#: events.py:11
+msgid "Theme edited"
+msgstr "Tema editado"
+
+#: links.py:15
+msgid "Theme settings"
+msgstr "Ajustes de tema"
+
+#: links.py:20
+msgid "Edit theme settings"
+msgstr "Editar los ajustes de tema"
+
+#: links.py:27 views.py:47
+msgid "Create new theme"
+msgstr "Crear nuevo tema"
+
+#: links.py:33
+msgid "Delete"
+msgstr "Eliminar"
+
+#: links.py:39
+msgid "Edit"
+msgstr "Editar"
+
+#: links.py:43 links.py:47 models.py:25 views.py:111
+msgid "Themes"
+msgstr "Temas"
+
+#: models.py:12
+msgid "A short text describing the theme."
+msgstr "Un breve texto que describe el tema."
+
+#: models.py:13
+msgid "Label"
+msgstr "Etiqueta"
+
+#: models.py:17
+msgid ""
+"The CSS stylesheet to change the appearance of the different user interface "
+"elements."
+msgstr "La hoja de estilo CSS para cambiar la apariencia de los diferentes elementos de la interfaz de usuario."
+
+#: models.py:19
+msgid "Stylesheet"
+msgstr "Hoja de estilo"
+
+#: models.py:24 models.py:60
+msgid "Theme"
+msgstr "Tema"
+
+#: models.py:56
+msgid "User"
+msgstr "Usuario"
+
+#: models.py:64
+msgid "User theme setting"
+msgstr "Configuración de tema de usuario"
+
+#: models.py:65
+msgid "User theme settings"
+msgstr "Configuración de tema de usuario"
+
+#: permissions.py:8
+msgid "Create new themes"
+msgstr "Crea nuevos temas"
+
+#: permissions.py:11
+msgid "Delete themes"
+msgstr "Eliminar temas"
+
+#: permissions.py:14
+msgid "Edit themes"
+msgstr "Editar temas"
+
+#: permissions.py:17
+msgid "View existing themes"
+msgstr "Ver temas existentes"
 
 #: settings.py:12
 msgid "Maximum number of characters that will be displayed as the view title."
@@ -229,21 +312,21 @@ msgid ""
 "            "
 msgstr "\nDifundir la voz. ¡Habla con tus amigos y colegas sobre lo increíble que es %(project_title)s!"
 
-#: templates/appearance/base.html:38 templates/appearance/base.html:62
+#: templates/appearance/base.html:43 templates/appearance/base.html:67
 msgid "Warning"
 msgstr "Advertencia"
 
-#: templates/appearance/base.html:52
+#: templates/appearance/base.html:57
 msgid "Click here to fix this."
 msgstr "Haga clic aquí para arreglar esto."
 
-#: templates/appearance/base.html:62
+#: templates/appearance/base.html:67
 msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."
 msgstr "Configuración actualizada, reinicie su instalación y actualice su navegador para que los cambios surtan efecto."
 
-#: templates/appearance/base.html:70
+#: templates/appearance/base.html:75
 #, python-format
 msgid ""
 "\n"
@@ -251,16 +334,16 @@ msgid ""
 "                                    "
 msgstr "\n                                        Impersonando usuario \"%(user)s\"."
 
-#: templates/appearance/base.html:73
+#: templates/appearance/base.html:78
 msgid "Click here when finished"
 msgstr "Haga clic aquí cuando termine"
 
-#: templates/appearance/base.html:87
+#: templates/appearance/base.html:92
 #: templates/appearance/generic_list_items_subtemplate.html:66
 msgid "Actions"
 msgstr "Acciones"
 
-#: templates/appearance/base.html:89
+#: templates/appearance/base.html:94
 #: templates/appearance/generic_list_items_subtemplate.html:68
 #: templates/appearance/list_toolbar.html:67
 msgid "Toggle Dropdown"
@@ -372,6 +455,33 @@ msgstr "Error de comunicación del servidor"
 msgid "Check you network connection and try again in a few moments."
 msgstr "Verifique su conexión de red y vuelva a intentarlo en unos momentos."
 
-#: templatetags/appearance_tags.py:42
+#: templatetags/appearance_tags.py:44
 msgid "None"
 msgstr "Ninguno"
+
+#: views.py:29
+msgid "Current user theme settings details"
+msgstr "Detalles de configuración de tema del usuario actual"
+
+#: views.py:35
+msgid "Edit current user theme settings details"
+msgstr "Editar los detalles del tema del usuario actual "
+
+#: views.py:69
+#, python-format
+msgid "Delete theme: %s"
+msgstr "Eliminar tema: %s"
+
+#: views.py:85
+#, python-format
+msgid "Edit theme: %s"
+msgstr "Editar tema: %s"
+
+#: views.py:105
+msgid ""
+"Themes allow changing the visual appearance without requiring code changes."
+msgstr "Los temas permiten cambiar la apariencia visual sin requerir cambios de código."
+
+#: views.py:109
+msgid "There are no themes"
+msgstr "No hay temas"

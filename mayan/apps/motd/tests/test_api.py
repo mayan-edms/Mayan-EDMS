@@ -11,17 +11,12 @@ from ..permissions import (
 from .literals import (
     TEST_LABEL, TEST_LABEL_EDITED, TEST_MESSAGE, TEST_MESSAGE_EDITED
 )
-from .mixins import MOTDTestMixin
+from .mixins import MessageAPIViewTestMixin, MessageTestMixin
 
 
-class MOTDAPITestCase(MOTDTestMixin, BaseAPITestCase):
-    def _request_message_create_view(self):
-        return self.post(
-            viewname='rest_api:message-list', data={
-                'label': TEST_LABEL, 'message': TEST_MESSAGE
-            }
-        )
-
+class MessageAPIViewTestCase(
+    MessageAPIViewTestMixin, MessageTestMixin, BaseAPITestCase
+):
     def test_message_create_view_no_permission(self):
         response = self._request_message_create_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
@@ -43,14 +38,7 @@ class MOTDAPITestCase(MOTDTestMixin, BaseAPITestCase):
         self.assertEqual(message.label, TEST_LABEL)
         self.assertEqual(message.message, TEST_MESSAGE)
 
-    def _request_message_delete_view(self):
-        return self.delete(
-            viewname='rest_api:message-detail', kwargs={
-                'pk': self.test_message.pk
-            }
-        )
-
-    def test_message_delete_view_no_access(self):
+    def test_message_delete_view_no_permission(self):
         self._create_test_message()
 
         response = self._request_message_delete_view()
@@ -69,14 +57,7 @@ class MOTDAPITestCase(MOTDTestMixin, BaseAPITestCase):
 
         self.assertEqual(Message.objects.count(), 0)
 
-    def _request_message_detail_view(self):
-        return self.get(
-            viewname='rest_api:message-detail', kwargs={
-                'pk': self.test_message.pk
-            }
-        )
-
-    def test_message_detail_view_no_access(self):
+    def test_message_detail_view_no_permission(self):
         self._create_test_message()
 
         response = self._request_message_detail_view()
@@ -93,17 +74,7 @@ class MOTDAPITestCase(MOTDTestMixin, BaseAPITestCase):
 
         self.assertEqual(response.data['label'], TEST_LABEL)
 
-    def _request_message_edit_via_patch_view(self):
-        return self.patch(
-            viewname='rest_api:message-detail', kwargs={
-                'pk': self.test_message.pk
-            }, data={
-                'label': TEST_LABEL_EDITED,
-                'message': TEST_MESSAGE_EDITED
-            }
-        )
-
-    def test_message_edit_via_patch_view_no_access(self):
+    def test_message_edit_via_patch_view_no_permission(self):
         self._create_test_message()
 
         response = self._request_message_edit_via_patch_view()
@@ -127,17 +98,7 @@ class MOTDAPITestCase(MOTDTestMixin, BaseAPITestCase):
         self.assertEqual(self.test_message.label, TEST_LABEL_EDITED)
         self.assertEqual(self.test_message.message, TEST_MESSAGE_EDITED)
 
-    def _request_message_edit_via_put_view(self):
-        return self.put(
-            viewname='rest_api:message-detail', kwargs={
-                'pk': self.test_message.pk
-            }, data={
-                'label': TEST_LABEL_EDITED,
-                'message': TEST_MESSAGE_EDITED
-            }
-        )
-
-    def test_message_edit_via_put_view_no_access(self):
+    def test_message_edit_via_put_view_no_permission(self):
         self._create_test_message()
 
         response = self._request_message_edit_via_put_view()

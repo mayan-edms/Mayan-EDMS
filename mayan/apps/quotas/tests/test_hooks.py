@@ -1,6 +1,5 @@
 import logging
 
-from mayan.apps.tests.tests.base import GenericViewTestCase
 from mayan.apps.documents.models.document_models import Document
 from mayan.apps.documents.permissions import (
     permission_document_create, permission_document_new_version
@@ -11,6 +10,7 @@ from mayan.apps.sources.tests.mixins import (
     DocumentUploadWizardViewTestMixin, DocumentVersionUploadViewTestMixin,
     SourceTestMixin
 )
+from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..classes import QuotaBackend
 from ..exceptions import QuotaExceeded
@@ -30,7 +30,7 @@ class QuotaHooksTestCase(
         self._upload_test_document(_user=self._test_case_user)
         self.test_case_silenced_logger_new_level = logging.FATAL + 10
         self._silence_logger(name='mayan.apps.sources.views')
-        self._silence_logger(name='mayan.apps.common.middleware.error_logging')
+        self._silence_logger(name='mayan.apps.logging.middleware.error_logging')
 
     def tearDown(self):
         QuotaBackend.connect_signals()

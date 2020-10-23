@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Atdhe Tabaku <Atdhe617@gmail.com>, 2018
 # www.ping.ba <jomer@ping.ba>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:23-0400\n"
-"PO-Revision-Date: 2020-02-14 02:22+0000\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"PO-Revision-Date: 2020-09-27 06:47+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (http://www.transifex.com/rosarior/mayan-edms/language/bs/)\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +20,7 @@ msgstr ""
 "Language: bs\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:80 events.py:6 permissions.py:6
+#: apps.py:79 events.py:6 permissions.py:6
 msgid "User management"
 msgstr "Upravljanje korisnicima"
 
@@ -27,7 +28,8 @@ msgstr "Upravljanje korisnicima"
 msgid "Group"
 msgstr ""
 
-#: apps.py:101 links.py:39 links.py:50 links.py:73 search.py:34 views.py:120
+#: apps.py:101 apps.py:114 links.py:39 links.py:50 links.py:73 search.py:34
+#: views.py:120
 msgid "Groups"
 msgstr "Grupe"
 
@@ -39,39 +41,43 @@ msgstr "Ime"
 msgid "User"
 msgstr "Korisnik"
 
-#: apps.py:109 apps.py:174 links.py:45 links.py:78 links.py:94 views.py:305
+#: apps.py:109 apps.py:194 links.py:45 links.py:78 links.py:94 views.py:305
 msgid "Users"
 msgstr "Korisnici"
 
-#: apps.py:112
-msgid "Username"
-msgstr "Korisničko ime"
+#: apps.py:112 search.py:31
+msgid "Email"
+msgstr "Email"
 
 #: apps.py:113 search.py:28
 msgid "First name"
 msgstr "Ime"
 
-#: apps.py:114 search.py:37
-msgid "Last name"
-msgstr "Prezime"
-
-#: apps.py:115 search.py:31
-msgid "Email"
-msgstr "Email"
-
-#: apps.py:116
+#: apps.py:115
 msgid "Is active?"
 msgstr ""
 
-#: apps.py:119 apps.py:123
+#: apps.py:116 search.py:37
+msgid "Last name"
+msgstr "Prezime"
+
+#: apps.py:117
+msgid "Password"
+msgstr "Lozinka"
+
+#: apps.py:118
+msgid "Username"
+msgstr "Korisničko ime"
+
+#: apps.py:121
 msgid "Has usable password?"
 msgstr "Ima korisnu lozinku?"
 
-#: apps.py:138
+#: apps.py:136
 msgid "All the groups."
 msgstr "Sve grupe."
 
-#: apps.py:142
+#: apps.py:140
 msgid "All the users."
 msgstr "Svi korisnici."
 

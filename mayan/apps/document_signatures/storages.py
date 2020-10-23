@@ -7,7 +7,6 @@ from .settings import (
     setting_storage_backend, setting_storage_backend_arguments
 )
 
-
 storage_document_signatures_detached = DefinedStorage(
     dotted_path=setting_storage_backend.value,
     error_message=_(

@@ -28,7 +28,9 @@ class WorkflowAdmin(admin.ModelAdmin):
 
     filter_horizontal = ('document_types',)
     inlines = (WorkflowStateInline, WorkflowTransitionInline)
-    list_display = ('label', 'internal_name', 'document_types_list')
+    list_display = (
+        'label', 'internal_name', 'document_types_list', 'auto_launch'
+    )
 
 
 @admin.register(WorkflowInstance)

@@ -1,6 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.apps import MayanAppConfig
+from mayan.apps.common.classes import ModelCopy
 from mayan.apps.common.menus import menu_object, menu_secondary
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.events.links import (
@@ -27,6 +28,12 @@ class ACLsApp(MayanAppConfig):
         AccessControlList = self.get_model(model_name='AccessControlList')
 
         EventModelRegistry.register(model=AccessControlList)
+
+        ModelCopy(model=AccessControlList).add_fields(
+            field_names=(
+                'content_object', 'permissions', 'role'
+            ),
+        )
 
         ModelEventType.register(
             event_types=(event_acl_created, event_acl_edited),

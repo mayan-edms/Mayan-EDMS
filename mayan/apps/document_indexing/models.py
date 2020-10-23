@@ -96,7 +96,7 @@ class Index(models.Model):
     def get_document_types_names(self):
         return ', '.join(
             [
-                force_text(document_type) for document_type in self.document_types.all()
+                force_text(s=document_type) for document_type in self.document_types.all()
             ] or ['None']
         )
 
@@ -199,30 +199,6 @@ class Index(models.Model):
         return self.node_templates.get(parent=None)
 
 
-class IndexInstance(Index):
-    """
-    Model that represents an evaluated index. This is an index whose nodes
-    have been evaluated against a series of documents. If is a proxy model
-    at the moment.
-    """
-    class Meta:
-        proxy = True
-        verbose_name = _('Index instance')
-        verbose_name_plural = _('Index instances')
-
-    def get_instance_node_count(self):
-        try:
-            return self.instance_root.get_descendant_count()
-        except IndexInstanceNode.DoesNotExist:
-            return 0
-
-    def get_item_count(self, user):
-        try:
-            return self.instance_root.get_item_count(user=user)
-        except IndexInstanceNode.DoesNotExist:
-            return 0
-
-
 class IndexTemplateNode(MPTTModel):
     """
     The template to generate an index. Each entry represents a level in a
@@ -230,7 +206,8 @@ class IndexTemplateNode(MPTTModel):
     documents but not both.
     """
     parent = TreeForeignKey(
-        blank=True, null=True, on_delete=models.CASCADE, to='self',
+        blank=True, null=True, on_delete=models.CASCADE,
+        related_name='children', to='self',
     )
     index = models.ForeignKey(
         on_delete=models.CASCADE, related_name='node_templates', to=Index,
@@ -358,6 +335,42 @@ class IndexTemplateNode(MPTTModel):
         self.index_instance_nodes.get_or_create(parent=None)
 
 
+class IndexInstance(Index):
+    """
+    Model that represents an evaluated index. This is an index whose nodes
+    have been evaluated against a series of documents. If is a proxy model
+    at the moment.
+    """
+    class Meta:
+        proxy = True
+        verbose_name = _('Index instance')
+        verbose_name_plural = _('Index instances')
+
+    def get_children(self):
+        root_node_queryset = self.get_nodes().filter(parent=None)
+        if root_node_queryset.exists():
+            return root_node_queryset.first().get_children()
+        else:
+            return root_node_queryset
+
+    def get_nodes(self):
+        return IndexInstanceNode.objects.filter(
+            index_template_node__index=self
+        )
+
+    def get_instance_node_count(self):
+        try:
+            return self.instance_root.get_descendant_count()
+        except IndexInstanceNode.DoesNotExist:
+            return 0
+
+    def get_item_count(self, user):
+        try:
+            return self.instance_root.get_item_count(user=user)
+        except IndexInstanceNode.DoesNotExist:
+            return 0
+
+
 class IndexInstanceNode(MPTTModel):
     """
     This model represent one instance node from a index template node. That is
@@ -366,7 +379,8 @@ class IndexInstanceNode(MPTTModel):
     model also point to the original node template.
     """
     parent = TreeForeignKey(
-        blank=True, null=True, on_delete=models.CASCADE, to='self',
+        blank=True, null=True, on_delete=models.CASCADE,
+        related_name='children', to='self'
     )
     index_template_node = models.ForeignKey(
         on_delete=models.CASCADE, related_name='index_instance_nodes',
@@ -443,9 +457,9 @@ class IndexInstanceNode(MPTTModel):
         result = []
         for node in self.get_ancestors(include_self=True):
             if node.is_root_node():
-                result.append(force_text(self.index()))
+                result.append(force_text(s=self.index()))
             else:
-                result.append(force_text(node))
+                result.append(force_text(s=node))
 
         return ' / '.join(result)
     get_full_path.help_text = _(

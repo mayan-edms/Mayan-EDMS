@@ -13,11 +13,15 @@ link_message_create = Link(
     permissions=(permission_message_create,),
     text=_('Create message'), view='motd:message_create'
 )
-link_message_delete = Link(
+link_message_multiple_delete = Link(
+    icon_class_path='mayan.apps.motd.icons.icon_message_delete',
+    tags='dangerous', text=_('Delete'), view='motd:message_multiple_delete'
+)
+link_message_single_delete = Link(
     args='object.pk',
     icon_class_path='mayan.apps.motd.icons.icon_message_delete',
     permissions=(permission_message_delete,),
-    tags='dangerous', text=_('Delete'), view='motd:message_delete'
+    tags='dangerous', text=_('Delete'), view='motd:message_single_delete'
 )
 link_message_edit = Link(
     args='object.pk',

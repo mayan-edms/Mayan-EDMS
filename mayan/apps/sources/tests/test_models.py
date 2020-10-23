@@ -19,7 +19,6 @@ from mayan.apps.documents.tests.literals import (
     TEST_SMALL_DOCUMENT_FILENAME, TEST_SMALL_DOCUMENT_PATH
 )
 from mayan.apps.metadata.models import MetadataType
-from mayan.apps.storage.utils import mkdtemp
 
 from ..literals import SOURCE_UNCOMPRESS_CHOICE_Y
 from ..models.email_sources import EmailBaseModel, IMAPEmail, POP3Email
@@ -281,14 +280,6 @@ class IMAPSourceTestCase(GenericDocumentTestCase):
 class IntervalSourceTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
     auto_upload_test_document = False
 
-    def setUp(self):
-        super(IntervalSourceTestCase, self).setUp()
-        self.temporary_directory = mkdtemp()
-
-    def tearDown(self):
-        shutil.rmtree(self.temporary_directory)
-        super(IntervalSourceTestCase, self).tearDown()
-
     def test_periodic_task_create(self):
         periodic_task_count = PeriodicTask.objects.count()
 
@@ -301,6 +292,23 @@ class IntervalSourceTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
 
         self.test_document_type.delete()
         self.assertTrue(PeriodicTask.objects.count() < periodic_task_count)
+
+
+class POP3SourceTestCase(GenericDocumentTestCase):
+    auto_upload_test_document = False
+
+    @mock.patch('poplib.POP3_SSL', autospec=True)
+    def test_download_document(self, mock_poplib):
+        mock_poplib.return_value = MockPOP3Mailbox()
+        self.source = POP3Email.objects.create(
+            document_type=self.test_document_type, label='', host='',
+            password='', username=''
+        )
+
+        self.source.check_source()
+        self.assertEqual(
+            Document.objects.first().label, 'Ampelm\xe4nnchen.txt'
+        )
 
 
 class SANESourceTestCase(GenericDocumentTestCase):
@@ -325,33 +333,8 @@ class SANESourceTestCase(GenericDocumentTestCase):
         self.assertTrue(file_object.size > 0)
 
 
-class POP3SourceTestCase(GenericDocumentTestCase):
-    auto_upload_test_document = False
-
-    @mock.patch('poplib.POP3_SSL', autospec=True)
-    def test_download_document(self, mock_poplib):
-        mock_poplib.return_value = MockPOP3Mailbox()
-        self.source = POP3Email.objects.create(
-            document_type=self.test_document_type, label='', host='',
-            password='', username=''
-        )
-
-        self.source.check_source()
-        self.assertEqual(
-            Document.objects.first().label, 'Ampelm\xe4nnchen.txt'
-        )
-
-
 class WatchFolderTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
     auto_upload_test_document = False
-
-    def setUp(self):
-        super(WatchFolderTestCase, self).setUp()
-        self.temporary_directory = mkdtemp()
-
-    def tearDown(self):
-        shutil.rmtree(self.temporary_directory)
-        super(WatchFolderTestCase, self).tearDown()
 
     def test_subfolder_support_disabled(self):
         self._create_test_watchfolder()
@@ -360,7 +343,7 @@ class WatchFolderTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
         test_subfolder = test_path.joinpath(TEST_WATCHFOLDER_SUBFOLDER)
         test_subfolder.mkdir()
 
-        shutil.copy(TEST_SMALL_DOCUMENT_PATH, force_text(test_subfolder))
+        shutil.copy(TEST_SMALL_DOCUMENT_PATH, force_text(s=test_subfolder))
         self.test_watch_folder.check_source()
         self.assertEqual(Document.objects.count(), 0)
 
@@ -373,7 +356,7 @@ class WatchFolderTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
         test_subfolder = test_path.joinpath(TEST_WATCHFOLDER_SUBFOLDER)
         test_subfolder.mkdir()
 
-        shutil.copy(TEST_SMALL_DOCUMENT_PATH, force_text(test_subfolder))
+        shutil.copy(TEST_SMALL_DOCUMENT_PATH, force_text(s=test_subfolder))
         self.test_watch_folder.check_source()
         self.assertEqual(Document.objects.count(), 1)
 

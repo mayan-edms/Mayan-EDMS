@@ -1,4 +1,4 @@
-from mayan.apps.tests.tests.base import BaseTestCase
+from mayan.apps.testing.tests.base import BaseTestCase
 
 from .literals import (
     TEST_BOOTSTAP_SETTING_NAME, TEST_SETTING_VALUE,

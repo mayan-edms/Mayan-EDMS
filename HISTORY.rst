@@ -1,15 +1,32 @@
-3.5 (2020-XX-XX)
+3.5.2 (2020-10-XX)
+==================
+- Allow JavaScript from Django REST framework to be served.
+  Needed for the browseable API UI.
+
+3.5.1 (2020-10-11)
+==================
+- Update xmlrpc to latest interface to fix version check view.
+- Fix sources error logging interface and double logging.
+- Add locking to ErrorLog to ensure only one is created per app.
+- Add self healing to ErrorLog .model property to remove repeated entries.
+  GitLab issue #894. Thanks to forum user @Lffy for the report.
+  https://forum.mayan-edms.com/viewtopic.php?t=4027
+- Fix staging folder file get_image method.
+- Suppress staging folder file image tasks dependency errors on debug mode.
+- Backport source link highlighting improvements from version 4.0.
+- Backport support for using staging folders as sources for new document
+  versions.
+
+3.5 (2020-09-30)
 ================
 - Update dependencies versions:
 
-    - celery from 4.3.0 to 4.4.5
+    - celery from 4.3.0 to 4.4.7
     - chart.js from 2.7.2 to 2.7.3
     - coverage from 5.0.4 to 5.1
     - coveralls from 1.11.1 to 2.0.0
     - drf-yasg from 1.6.0 to 1.17.1
-    - django from 2.2.12 to 2.2.13
     - djangorestframework from 3.7.7 to 3.11.0
-    - django-cors-headers from 2.5.2 to 3.2.1
     - django-extensions from 2.2.8 to 2.2.9
     - django-rosetta from 0.9.3 to 0.9.4
     - flake8 from 3.7.9 to 3.8.3
@@ -17,11 +34,8 @@
     - gevent from 1.4.0 to 20.4.0
     - graphviz from 0.13.2 to 0.14
     - ipython from 7.13.0 to 7.15.0
-    - kombu from 4.6.7 to 4.6.8
-    - pyocr from 0.6 to 0.7.2
     - python_gnupg from 0.4.5 to 0.4.6
     - pytz from 2019.1 to 2020.1
-    - Sphinx from 2.4.4 to 3.0.3
     - safety from 1.8.7 to 1.9.0
     - select2 from 4.0.3 to 4.0.13
     - sh from 1.12.14 to 1.13.1
@@ -36,7 +50,7 @@
   Use Python 3's FileNotFoundError.
 - Remove casting of dict_type and dictionary_type.
 - Add group and permission count column to the role object.
-- Prefix all signals with 'signal_'.
+- Prefix all signals with ``signal_``.
 - Move the apps search setup to their own module.
 - Move the SharedUpload model to the storage app.
   The setting ``COMMON_SHARED_STORAGE`` is now ``STORAGE_SHARED_STORAGE``
@@ -60,12 +74,12 @@
 - Add new search backend based on Whoosh.
   To use it, change ``SEARCH_BACKEND`` to
   ``mayan.apps.dynamic_search.backends.whoosh.WhooshSearchBackend``.
-  This backend defaults to search result limit of 100 items. To increase
-  the limit set ``search_limit`` in ``SEARCH_BACKEND_ARGUMENTS``.
   This backend will be the default one in a future release.
+- New setting to limit the number of search results returned. This setting
+  avoid runaway CPU usage on ambiguous search terms. The setting name is
+  ``SEARCH_RESULTS_LIMIT`` and defaults to 100.
 - Improve and unify the way icon shadows is produced. Removed the
   ``shadow_class`` and ``shadow_class_transformation_list`` arguments.
-- Add support for selecting texts in cards.
 - Improve and simplify the logging system. It is now possible to change
   the level of the logging. The settings have been renamed for clarity
   and uniformity.
@@ -91,17 +105,12 @@
 - Allow access to document stubs.
 - Mirroring improvements. Allow running the mountindex in the background.
   Display a message when running on the foreground to avoid confusion.
-  Add internat FUSE logging and allow control of the log level.
+  Add internal FUSE logging and allow control of the log level.
 - Move dependencies to their respective app:
 
   - django-mathfilters from common to templating
   - extract-msg from common to storage
   - gevent, gunicorn, whitenoise from common to platform
-
-- Templating improvements:
-
-  - Enable mathfilters by default.
-  - Add a 'set' tag to allow setting template variables.
 
 - Add a tags and filters selection to the template widget.
 - Remove runtime.py modules and move instancing to base class.
@@ -122,7 +131,7 @@
 - Support setting a limit of error log entries.
 - Refactor the OCR process to use Celery canvas.
 - Increase atomicity of the OCR process. GitLab issue #209.
-- Disable Tesseract multithreading to speed up processing when running
+- Disable Tesseract multi threading to speed up processing when running
   multiple instances at the same time.
 - Search improvements:
 
@@ -138,6 +147,291 @@
 - Improve main menu styling and JavaScript code. Improve hover highlighting
   and maximize space.
 - Reimplement the Collection class (a94745ab9e92b6fd4c7ea79aa6c299c6ac3cebe2).
+- Add support for copying: document types, groups, mailing profiles,
+  metadata types, messages of the day, workflows, quotas, roles, smart links,
+  tags, web links.
+- Add document type searches.
+- Templating improvements:
+
+  - Enable mathfilters by default.
+  - Add a 'set' tag to allow setting template variables.
+  - Add dict_get filter that returns a given dictionary key.
+  - Add {% method %} tag to call an objects method with or without keyword
+    arguments.
+  - Add regular expression tags: regex_findall, regex_match, regex_search,
+    regex_sub. Each regex tag supports the flags: ascii, ignorecase, locale,
+    multiline, dotall, verbose.
+  - Add split filter to split a value by a delimiter.
+
+- Add workflow action to update document OCR content.
+- Split TemplateField into TemplateField and ModelTemplateField.
+- Split TemplateWidget into TemplateWidget and ModelTemplateWidget.
+- Use TemplateField for metadata type's default and lookup fields.
+- Convert the trash emptying action into a background task.
+- Add support for excluding model proxies from menu link resolving via the
+  .add_proxy_exclusion() menu method.
+- Use proxy exclusion to disable the normal multi item document
+  links from being displayed for trashed documents.
+- Add subwidgets_order to NamedMultiWidget class.
+- Update the statistics icon.
+- Add support to change the dashboard widget details link icon.
+- Fix icon for the add document to favorites link.
+- Add related actions menu.
+- Expose Celery's ``BROKER_LOGIN_METHOD`` and ``BROKER_USE_SSL`` via the
+  new ``CELERY_BROKER_LOGIN_METHOD`` and ``CELERY_BROKER_USE_SSL`` settings.
+  ``CELERY_BROKER_LOGIN_METHOD`` defaults to ``AMQPLAIN`` and
+  ``CELERY_BROKER_USE_SSL`` defaults to ``None``.
+- Add support for each app to specify their own static media ignore patterns
+  via the app config attribute ``static_media_ignore_patterns``.
+- Updated the ``static_media_ignore_patterns`` of apps to remove more unused
+  media files. Lowers the static media folder size from 83MB to 51MB.
+- Add boolean field to workflows to control whether or not they will launch
+  when a new document is created.
+- Add views to launch workflows for single or multiple documents.
+- Workflow to document type matching is now enforced when launching workflows.
+- Two background tasks were added to make launching workflows an asynchronous
+  event. This speeds up uploading documents in bulk.
+- Add the workflow action to the context of the initial state actions.
+- Add multiple workflow delete view.
+- Add multiple message delete view.
+- Moved the statistics queue from the slow worker to the medium worker.
+- Retry document page image generation tasks on lock error.
+- Add settings named ``DOCUMENT_TASK_GENERATE_DOCUMENT_PAGE_IMAGE_RETRY_DELAY``
+  to adjust the retry delay of the document page image generation task.
+- Add workflow action to launch other workflows.
+- Update the workflow action ``.get_form_schema()`` to accept the workflow state
+  for which the action is being created.
+- Add locking to the document page image generation to avoid a race condition
+  on high load.
+- Update the redactions layer to use an order of 0.
+- Add decorations layer.
+- Add converter assets.
+- Add asset paste transformation by coordinates and by percentage.
+- Add asset watermark transformation by coordinates.
+- Remove transformation choices from layer model.
+- Disable edit button on invalid transformations.
+- Disable edit button on transformations without arguments.
+- Remove transformation order field default. An empty value is more intuitive
+  to the purpose of the field.
+- Make transformation order column sortable.
+- Group workflow actions choices by app.
+- Use select2 widget for the workflow action selection field.
+- Add workflow action to add transformations to document pages.
+- Add support to change the Gunicorn worker class via the environment variable
+  ``MAYAN_GUNICORN_WORKER_CLASS``.
+- Add support for document type filename generators.
+- Add themes support via the appearance app.
+- Add new ``bleach`` dependency to sanitize the themes stylesheets.
+- Preserve the original document filename when executing the EXIFToolDriver by
+  using a temporary folder instead of a temporary file. Closes GitLab
+  issue #745. Thanks to the Jeroen Van den Keybus (@vdkeybus) for the report
+  and solution suggestion.
+- Move mailing profile choice generation from the form to the class.
+- Add "No results" text for empty file metadata driver lists.
+- Add file metadata submit link for "No results" file metadata driver
+  template.
+- Remove converter.validators and replace it with common.validators.
+- Autoimport search.py modules from apps.
+- Make ``SearchField`` label optional. If not specified, the ``verbose_name``
+  of the model field will be used instead.
+- Sort search form fields.
+- Make web link label field unique. A data migration is included to
+  de-duplicate the labels before altering the schema.
+- Enable the web link navigated event for subscription and as workflow
+  trigger.
+- Add events to assets.
+- Re query search queryset after it has been sliced to workaround the ORM
+  "Cannot filter a query once a slice has been taken".
+- Add events to the message of the day app.
+- Add search template tag to pass the search model URL and query string
+  variable to the search template and avoid hardcoding it.
+- Add workflow actions to add, edit, and remove metadata from documents.
+- Update Docker image version from Debian 10.3 to 10.5.
+- Add column to show the list of fields of a workflow transition.
+- Unify the spacing of the list columns for all variations of sort columns
+  and columns with help text.
+- Move the column help text mark up into its own partial template.
+- Only instance valid workflow transition transition fields from an
+  existing workflow instance context.
+- Add helper script to find missing __init__.py files.
+- Trigger the workflow edited event when making changes to the workflow
+  states, state actions, transitions, or transition fields.
+- Update Python client for PostgreSQL from version 2.8.4 to 2.8.6, and Redis
+  client version from 3.4.1 to 3.5.3.
+- Initialize document version _execute_hooks with a valid result.
+  Allows disabling apps that modify the hook list like document signatures.
+- Do not error out when an app that defined a cached storage is
+  disabled, like the workflows app.
+- Disable purge method and purge links on invalid file caches.
+- Do not error out when an app that defined a transformation
+  layer is disabled.
+- Invert the document and OCR migrations 0006 to 0003 dependency.
+  Makes the OCR migration dependent on the documents app migration.
+  This allows disabling the OCR app.
+- Remove the transaction block when creating documents.
+  This allows document stubs to be accessible from within
+  signal handlers.
+- Update GitLab CI Docker build and test stage to run using
+  a PostgreSQL database and a Redis container.
+- Remove deprecated ``BROKER_BACKEND`` setting and replace it
+  with ``CELERY_BROKER_URL``.
+- Default ``DEFAULT_CELERY_BROKER_URL`` to ``'memory://'``.
+  This ensures operation even when there is no broker available.
+
+3.4.19 (2020-10-XX)
+===================
+- Fix Document indexing API view. GitLab issue #885.
+- Added tests for all REST API views.
+
+3.4.18 (2020-10-22)
+===================
+- Update Django from version 2.2.15 to 2.2.16.
+- Increase GitLab CI artifact expiration to 2 hours.
+- Seed the random number generator when the test case class is initialized.
+- Update test PostgreSQL makefile target to allow continuing launching
+  the PostgreSQL container without password.
+- Simplify and optimize file caching migration 0005_auto_20200322_0607.
+- Fix the "no result" title entry of the setup item list view.
+  Closes GitLab issue #900. Thanks to Matthias Löblich (@startmat) for the
+  report.
+- Passthrough storage improvements. Zip file is opened with the modes
+  corresponding to the calling storage. New file object methods added:
+  tell, write, flush, seek. Empty files when using the ``.save()`` method
+  are now only created if they don't already exists. Add support to the
+  encryption storage to accept unicode content. GitLab issue #876.
+- Redirect to the previous view when moving document to the trash. Closes
+  GitLab issue #873. Thanks to Bw (@bwakkie) for the report.
+- Add the current document to the context to improve navigation in the views:
+  add to favorites, remove from favorites, move to trash, delete trashed,
+  and restore trashed.
+- Add note for hardcoded vine dependency.
+- Style fixes and missing keyword arguments.
+- Add ``formset_factory`` keyword arguments.
+
+3.4.17 (2020-09-10)
+===================
+- Improve and optimize the process_messages script.
+- Add helper script that checks all apps have a corresponding
+  Transifex resource entry.
+- Update Transifex configuration file. Add missing apps, rename
+  statistics to mayan_statistics to match app name, fix typo
+  in web link app resource name. Thanks to forum user @qra
+  (https://forum.mayan-edms.com/viewtopic.php?t=3009) for the
+  report.
+- Feature complete document indexing API. Forum topics 3010 and 3011.
+  Thanks to forum user @qra for the reports and requests.
+- Add documentation note about breaking changes in django-storages version
+  1.10 regarding ``default_acl``.
+- Pin vine to version 1.3.0 to workaround upstream Celery dependency breakage.
+  https://github.com/celery/py-amqp/issues/340
+  https://stackoverflow.com/questions/32757259/celery-no-module-named-five
+  https://github.com/celery/celery/blob/v4.3.0/requirements/default.txt#L4
+
+3.4.16 (2020-08-30)
+===================
+- Merge request !36 "Properly close storage file when CachePartion.create_file
+  contextmanager ends". Thanks to Biel Massot (@biel.massot) for the report,
+  solution, and merge request. Closes GitLab issue #870.
+- Update hardware and operating system requirements.
+- Expand the documentation chapter on languages. GitLab issue #831.
+
+3.4.15 (2020-08-26)
+===================
+- Ensure workflow template field widgets receive an empty mapping
+  when the arguments field is empty. Closes GitLab issue #862.
+  Thanks to Dennis Ploeger (@dploeger) for the report, debug, and diagnostics.
+- Backport events method decorator.
+- Update comments app to use method event decorator. Solves forum issue in
+  topic 2890. Thank to forum user @qra for the report.
+- Add information about settings loading order to the settings chapter.
+  Closes GitLab issue #813. Thanks to Martin (@efelon) for the report and
+  debug information.
+- Add API endpoint to show the valid permissions for a model.
+  The URL is ``/api/objects/{app}/{model}/permissions/``.
+  Forum topic 2858. Thanks to forum user @neuhs for the report.
+
+3.4.14 (2020-08-18)
+===================
+- Fix resolved web link bug introduced by the commit
+  79ff84f7675ba0d78b1802b9f469fc67074433a0. Thanks to forum user @qra for
+  the report.
+- Add web links API.
+- Release file metadata lock on errors.
+- Raise workflow attribute errors on DEBUG.
+- Add keyword argument to parse_range.
+- Remove extra spaces in ``document_signatures/storages.py`` and
+  ``document_signatures/settings.py``.
+- Ensure metadata default values are applied when using the REST API.
+  Thanks to forum user @qra for the report and debugging.
+
+3.4.13 (2020-08-08)
+===================
+- Ensure tag attach and remove events are committed when using the REST API.
+  GitLab issue #850. Thanks to Olaf (@oohlaf) for the report.
+- Expose the document type OCR settings model via the REST API. Closes
+  GitLab issue #851. Thanks to Mike Mansell (@diamondq) for the report.
+- Expose the document type parsing settings model via the REST API.
+- Add keyword arguments to the any_stream function.
+- Rename event_tag_remove to event_tag_removed.
+- Add support to search documents and document pages by workflow transition
+  comments. Closes GitLab issue #846. Thanks to Sven Gaechter (@sgaechter)
+  for the report.
+- Backport search app icon updates from version 3.5a1.
+- Backport trashed document icon updates from version 3.5a1.
+- Fix post embedded signing redirection URL.
+- Update Django from version 2.2.14 to 2.2.15.
+- Update Sphinx from version 3.0.3 to 3.0.4.
+
+3.4.12 (2020-07-28)
+===================
+- Decode fonts dependencies when downloading. Closes GitLab
+  issue #849. Thanks to Olaf (@oohlaf) for the report and
+  investigation.
+- Unify the delete tag view behavior.
+- Update Django from version 2.2.13 to 2.2.14.
+- Expose Celery settings: ``CELERY_BROKER_LOGIN_METHOD`` and
+  ``CELERY_BROKER_USE_SSL``. These default to ``AMQPLAIN`` and ``None``
+  respectively.
+
+3.4.11 (2020-07-18)
+===================
+- Don't assume local filesystem when testing the mirroring app.
+- Fix stale document instance in cascade state actions. Fixes GitLab
+  issue #841. Thanks to Alexander Schlüter (@alexschlueter) for the
+  report, investigation, test code, and suggested solutions.
+- Wrap around long cabinet names in the document card. Fixes GitLab
+  issue #843. Thanks to Will Wright (@fireatwill) for the report and
+  debug information.
+- Include non Mayan app translations when switching locales.
+  Closes GitLab issue #848. Thanks to Frédéric Sheedy (@fsheedy) for the
+  report.
+
+3.4.10 (2020-06-24)
+===================
+- Fix repeated columns in the document index node list view.
+- Rephrase the help text for the workflow state action and transition
+  condition field.
+- Switch direction of dropdowns when there is not enough area left at the
+  bottom. Close GitLab issue #830. Thanks to Bw (@bwakkie) for the report.
+- Minor fixes to the optional services in the default Docker compose file.
+- Add support for selecting texts in cards.
+- Allow passing environment entries to the Tesseract OCR backend.
+- Update Sphinx from version 2.4.4 to version 3.0.3 and django-cors-headers
+  from version 2.5.2 to version 3.2.1. Closes GitLab issue #835. Thanks to
+  Girum Bizuayehu (@gbizuayehu) for the report.
+- Allow using non unique GID and UID when starting the Docker image.
+  Closes GitLab issue #834. Thanks to Alexander Schlüter (@alexschlueter)
+  for the report and solution.
+- Fix the storage name used in the DOCUMENTS_CACHE_MAXIMUM_SIZE callback
+  function. Closes GitLab issue #838. Thanks to forum user @Obelix1981
+  for the report and debug information.
+- Add a dependency tracking for the graphviz dot executable used to generate
+  workflow previews. It is not possible to pass a path to the graphviz Python
+  library therefore this setting is only informational.
+- Update Django from version 2.2.12 to version 2.2.13.
+- Convert the document indexing task retry delay constant into a setting
+  option. The option name is ``DOCUMENT_INDEXING_TASK_RETRY_DELAY`` and
+  defaults to the previous value of 5 seconds.
 
 3.4.9 (2020-05-26)
 ==================

@@ -1,10 +1,10 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 
-from mayan.apps.tests.tests.base import GenericViewTestCase
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 from mayan.apps.metadata.permissions import permission_document_metadata_edit
 from mayan.apps.metadata.tests.mixins import MetadataTypeTestMixin
+from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..permissions import (
     permission_group_create, permission_group_delete, permission_group_edit,
@@ -211,7 +211,7 @@ class UserViewTestCase(UserViewTestMixin, GenericViewTestCase):
 
         self.assertEqual(get_user_model().objects.count(), user_count + 1)
 
-    def test_user_delete_view_no_access(self):
+    def test_user_delete_view_no_permission(self):
         self._create_test_user()
 
         user_count = get_user_model().objects.count()
@@ -233,7 +233,7 @@ class UserViewTestCase(UserViewTestMixin, GenericViewTestCase):
 
         self.assertEqual(get_user_model().objects.count(), user_count - 1)
 
-    def test_user_multiple_delete_view_no_access(self):
+    def test_user_multiple_delete_view_no_permission(self):
         self._create_test_user()
 
         user_count = get_user_model().objects.count()

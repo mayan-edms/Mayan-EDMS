@@ -53,23 +53,15 @@ class MetadataType(models.Model):
         max_length=48, verbose_name=_('Label')
     )
     default = models.CharField(
-        blank=True, max_length=128, null=True,
-        help_text=_(
-            'Enter a template to render. '
-            'Use Django\'s default templating language '
-            '(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)'
-        ),
-        verbose_name=_('Default')
+        blank=True, max_length=128, null=True, help_text=_(
+            'Enter a template to render.'
+        ), verbose_name=_('Default')
     )
     lookup = models.TextField(
-        blank=True, null=True,
-        help_text=_(
-            'Enter a template to render. '
-            'Must result in a comma delimited string. '
-            'Use Django\'s default templating language '
-            '(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/).'
-        ),
-        verbose_name=_('Lookup')
+        blank=True, null=True, help_text=_(
+            'Enter a template to render. Must result in a comma delimited '
+            'string.'
+        ), verbose_name=_('Lookup')
     )
     validation = models.CharField(
         blank=True, choices=validation_choices(),
@@ -205,7 +197,7 @@ class DocumentMetadata(models.Model):
         verbose_name_plural = _('Document metadata')
 
     def __str__(self):
-        return force_text(self.metadata_type)
+        return force_text(s=self.metadata_type)
 
     def clean_fields(self, *args, **kwargs):
         super(DocumentMetadata, self).clean_fields(*args, **kwargs)
@@ -286,7 +278,7 @@ class DocumentTypeMetadataType(models.Model):
         verbose_name=_('Document type')
     )
     metadata_type = models.ForeignKey(
-        on_delete=models.CASCADE, to=MetadataType,
+        on_delete=models.CASCADE, related_name='document_types', to=MetadataType,
         verbose_name=_('Metadata type')
     )
     required = models.BooleanField(default=False, verbose_name=_('Required'))
@@ -300,7 +292,7 @@ class DocumentTypeMetadataType(models.Model):
         verbose_name_plural = _('Document type metadata types options')
 
     def __str__(self):
-        return force_text(self.metadata_type)
+        return force_text(s=self.metadata_type)
 
     def delete(self, *args, **kwargs):
         _user = kwargs.pop('_user', None)

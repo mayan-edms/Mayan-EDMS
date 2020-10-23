@@ -21,12 +21,17 @@ class DisableableSelectWidget(forms.widgets.SelectMultiple):
 
 
 class NamedMultiWidget(forms.widgets.Widget):
+    subwidgets = None
+    subwidgets_order = None
     template_name = 'django/forms/widgets/multiwidget.html'
 
-    def __init__(self, widgets, attrs=None):
-        self.widgets = OrderedDict()
-        for name, widget in widgets.items():
+    def __init__(self, attrs=None):
+        self.widgets = {}
+        for name, widget in OrderedDict(self.subwidgets).items():
             self.widgets[name] = widget() if isinstance(widget, type) else widget
+
+        if not self.subwidgets_order:
+            self.subwidgets_order = list(self.widgets.keys())
 
         super(NamedMultiWidget, self).__init__(attrs)
 
@@ -54,7 +59,16 @@ class NamedMultiWidget(forms.widgets.Widget):
         input_type = final_attrs.pop('type', None)
         id_ = final_attrs.get('id')
         subwidgets = []
-        for widget_name, widget in self.widgets.items():
+
+        # Include new subwidgets added by subclasses after __init__
+        _subwidgets_order = self.subwidgets_order.copy()
+        for widget in self.widgets.keys():
+            if widget not in _subwidgets_order:
+                _subwidgets_order.append(widget)
+
+        for subwidget_entry in _subwidgets_order:
+            widget_name = subwidget_entry
+            widget = self.widgets[widget_name]
             if input_type is not None:
                 widget.input_type = input_type
             full_widget_name = '%s_%s' % (name, widget_name)

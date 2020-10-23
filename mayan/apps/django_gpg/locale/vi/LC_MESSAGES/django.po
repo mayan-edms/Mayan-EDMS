@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:21-0400\n"
-"PO-Revision-Date: 2020-04-14 08:31+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"PO-Revision-Date: 2020-06-16 09:55+0000\n"
+"Last-Translator: Thanh Long Hoàng <hoangthanhlong@gmail.com>\n"
 "Language-Team: Vietnamese (http://www.transifex.com/rosarior/mayan-edms/language/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,11 +26,11 @@ msgstr ""
 msgid "Key ID"
 msgstr ""
 
-#: apps.py:56 forms.py:32 models.py:54
+#: apps.py:56 forms.py:32 models.py:53
 msgid "Type"
-msgstr ""
+msgstr "Kiểu"
 
-#: apps.py:60 forms.py:21 models.py:35
+#: apps.py:60 forms.py:21 models.py:34
 msgid "Creation date"
 msgstr ""
 
@@ -37,15 +38,15 @@ msgstr ""
 msgid "No expiration"
 msgstr ""
 
-#: apps.py:65 forms.py:25 models.py:39
+#: apps.py:65 forms.py:25 models.py:38
 msgid "Expiration date"
 msgstr ""
 
-#: apps.py:68 forms.py:30 models.py:46
+#: apps.py:68 forms.py:30 models.py:45
 msgid "Length"
 msgstr ""
 
-#: apps.py:73 forms.py:17 models.py:51
+#: apps.py:73 forms.py:17 models.py:50
 msgid "User ID"
 msgstr ""
 
@@ -55,13 +56,13 @@ msgstr ""
 
 #: forms.py:26
 msgid "None"
-msgstr ""
+msgstr "None"
 
-#: forms.py:29 models.py:43
+#: forms.py:29 models.py:42
 msgid "Fingerprint"
 msgstr ""
 
-#: forms.py:31 models.py:49
+#: forms.py:31 models.py:48
 msgid "Algorithm"
 msgstr ""
 
@@ -75,15 +76,15 @@ msgstr ""
 
 #: links.py:17
 msgid "Delete"
-msgstr ""
+msgstr "Xóa"
 
 #: links.py:22
 msgid "Details"
-msgstr ""
+msgstr "Chi tiết"
 
 #: links.py:27
 msgid "Download"
-msgstr ""
+msgstr "Tải xuống"
 
 #: links.py:32 permissions.py:26
 msgid "Query keyservers"
@@ -153,27 +154,27 @@ msgstr ""
 msgid "Document is signed with a valid signature."
 msgstr ""
 
-#: models.py:31
+#: models.py:30
 msgid "ASCII armored version of the key."
 msgstr ""
 
-#: models.py:32
+#: models.py:31
 msgid "Key data"
 msgstr ""
 
-#: models.py:60
+#: models.py:59
 msgid "Key"
 msgstr ""
 
-#: models.py:61
+#: models.py:60
 msgid "Keys"
 msgstr ""
 
-#: models.py:73
+#: models.py:72
 msgid "Invalid key data"
 msgstr ""
 
-#: models.py:76
+#: models.py:75
 msgid "Key already exists."
 msgstr ""
 

@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:23-0400\n"
-"PO-Revision-Date: 2020-03-28 12:41+0000\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"PO-Revision-Date: 2020-10-01 22:09+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -19,11 +20,11 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:11 settings.py:7
+#: apps.py:11 settings.py:9
 msgid "Storage"
 msgstr "Armazenamento"
 
-#: classes.py:81 classes.py:102
+#: classes.py:82 classes.py:103
 #, python-format
 msgid ""
 "Unable to initialize storage: %(name)s. Check the storage backend dotted "
@@ -53,8 +54,46 @@ msgstr "Processar os arquivos no sentido inverso para desfazer as transformaçõ
 msgid "Name of the storage to process."
 msgstr "Nome do armazenamento a processar."
 
-#: settings.py:12
+#: models.py:23
+msgid "File"
+msgstr "Arquivo"
+
+#: models.py:25
+msgid "Filename"
+msgstr "Nome do arquivo"
+
+#: models.py:27
+msgid "Date time"
+msgstr "Data e hora"
+
+#: models.py:31
+msgid "Shared uploaded file"
+msgstr "Arquivo compartilhado carregado"
+
+#: models.py:32 storages.py:19
+msgid "Shared uploaded files"
+msgstr "Arquivos compartilhados carregado"
+
+#: queues.py:11
+msgid "Storage periodic"
+msgstr "Armazenamento periódico"
+
+#: queues.py:16
+msgid "Delete stale uploads"
+msgstr "Excluir uploads caducos"
+
+#: settings.py:14
+msgid "A storage backend that all workers can use to share files."
+msgstr "Um backend de armazenamento que todos os workers podem usar para compartilhar arquivos."
+
+#: settings.py:23
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
 msgstr "Pasta temporária utilizada em todo o site para armazenar imagens em miniatura, visualizações e arquivos temporários."
+
+#: storages.py:12
+msgid ""
+"Unable to initialize the shared uploaded file storage. Check the settings {}"
+" and {} for formatting errors."
+msgstr "Não foi possível inicializar o storage compartilhado de upload de arquivos. Verifique as configurações {} e {} para erros de formatação."

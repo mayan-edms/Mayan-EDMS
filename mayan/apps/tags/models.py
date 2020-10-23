@@ -9,7 +9,7 @@ from mayan.apps.documents.models import Document
 from mayan.apps.documents.permissions import permission_document_view
 
 from .events import (
-    event_tag_attach, event_tag_created, event_tag_edited, event_tag_remove
+    event_tag_attach, event_tag_created, event_tag_edited, event_tag_removed
 )
 from .html_widgets import widget_single_tag
 
@@ -84,7 +84,7 @@ class Tag(models.Model):
         Remove a tag from a document and commit the corresponding event.
         """
         self.documents.remove(document)
-        event_tag_remove.commit(
+        event_tag_removed.commit(
             action_object=self, actor=user, target=document
         )
 

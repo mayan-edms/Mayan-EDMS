@@ -11,7 +11,7 @@ class SourcesLinksTestCase(GenericDocumentViewTestCase):
         context['user'] = self._test_case_user
         return link_document_create_multiple.resolve(context=context)
 
-    def test_document_create_link_no_access(self):
+    def test_document_create_link_no_permission(self):
         resolved_link = self._get_document_create_link()
         self.assertEqual(resolved_link, None)
 

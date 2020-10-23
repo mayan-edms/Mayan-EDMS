@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:21-0400\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2020\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -24,19 +24,19 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:54 events.py:6 permissions.py:6 settings.py:7
+#: apps.py:53 events.py:6 permissions.py:6 settings.py:7
 msgid "Document parsing"
 msgstr "Analyse de document"
 
-#: apps.py:106
+#: apps.py:105
 msgid "A generator returning the document's pages parsed content."
 msgstr "Un générateur renvoyant le contenu analysé des pages du document."
 
-#: apps.py:107 apps.py:140 apps.py:144 links.py:19 links.py:36 models.py:25
+#: apps.py:106 links.py:19 links.py:36 models.py:24 search.py:6 search.py:10
 msgid "Content"
 msgstr "Contenu"
 
-#: apps.py:135 models.py:76
+#: apps.py:134 models.py:74
 msgid "Result"
 msgstr "Résultat"
 
@@ -92,55 +92,55 @@ msgstr "Configurer l'analyse"
 msgid "Parse documents per type"
 msgstr "Analyser les documents par type"
 
-#: models.py:19
+#: models.py:18
 msgid "Document page"
 msgstr "Page du document"
 
-#: models.py:23
+#: models.py:22
 msgid "The actual text content as extracted by the document parsing backend."
 msgstr ""
 "Le contenu du texte tel qu'il est extrait par le moteur d'analyse du "
 "document."
 
-#: models.py:31
+#: models.py:30
 msgid "Document page content"
 msgstr "Contenu de la page du document"
 
-#: models.py:32
+#: models.py:31
 msgid "Document pages contents"
 msgstr "Contenu des pages du document"
 
-#: models.py:44
+#: models.py:43
 msgid "Document type"
 msgstr "Type de document"
 
-#: models.py:48
+#: models.py:47
 msgid "Automatically queue newly created documents for parsing."
 msgstr ""
 "Ajouter automatiquement les documents nouvellement créés à la file d'attente"
 " d'analyse."
 
-#: models.py:59
+#: models.py:58
 msgid "Document type settings"
 msgstr "Paramétrages de type de document"
 
-#: models.py:60
+#: models.py:59
 msgid "Document types settings"
 msgstr "Paramétrages de types de documents"
 
-#: models.py:71
+#: models.py:69
 msgid "Document version"
 msgstr "Version du document"
 
-#: models.py:74
+#: models.py:72
 msgid "Date time submitted"
 msgstr "Date et heure de soumission"
 
-#: models.py:80
+#: models.py:78
 msgid "Document version parse error"
 msgstr "Erreur d'analyse de la version de document"
 
-#: models.py:81
+#: models.py:79
 msgid "Document version parse errors"
 msgstr "Erreurs d'analyse de la version de document"
 

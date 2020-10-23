@@ -94,7 +94,7 @@ INSTALLED_APPS = (
     'mayan.apps.smart_settings',
     'mayan.apps.task_manager',
     'mayan.apps.templating',
-    'mayan.apps.tests',
+    'mayan.apps.testing',
     'mayan.apps.user_management',
     'mayan.apps.views',
     # Project apps
@@ -245,7 +245,7 @@ STATICFILES_FINDERS = (
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-TEST_RUNNER = 'mayan.apps.tests.runner.MayanTestRunner'
+TEST_RUNNER = 'mayan.apps.testing.runner.MayanTestRunner'
 
 # ---------- Django REST framework -----------
 

@@ -1,4 +1,4 @@
-Sphinx==3.0.3
+Sphinx==3.0.4
 sphinx-autobuild==0.7.1
 sphinx-sitemap==2.1.0
 sphinx_rtd_theme==0.4.3

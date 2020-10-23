@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:21-0400\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: kicior kicior <kiciorek+github@gmail.com>, 2020\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
@@ -23,19 +23,19 @@ msgstr ""
 "Language: pl\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: apps.py:54 events.py:6 permissions.py:6 settings.py:7
+#: apps.py:53 events.py:6 permissions.py:6 settings.py:7
 msgid "Document parsing"
 msgstr "Analiza dokumentu"
 
-#: apps.py:106
+#: apps.py:105
 msgid "A generator returning the document's pages parsed content."
 msgstr "Generator zwracający przeanalizowaną treść stron dokumentu."
 
-#: apps.py:107 apps.py:140 apps.py:144 links.py:19 links.py:36 models.py:25
+#: apps.py:106 links.py:19 links.py:36 models.py:24 search.py:6 search.py:10
 msgid "Content"
 msgstr "Zawartość"
 
-#: apps.py:135 models.py:76
+#: apps.py:134 models.py:74
 msgid "Result"
 msgstr "Wynik"
 
@@ -91,51 +91,51 @@ msgstr "Konfiguracja parsowania"
 msgid "Parse documents per type"
 msgstr "Analizuj dokumenty według typu"
 
-#: models.py:19
+#: models.py:18
 msgid "Document page"
 msgstr "Strona dokumentu"
 
-#: models.py:23
+#: models.py:22
 msgid "The actual text content as extracted by the document parsing backend."
 msgstr "Treść wyodrębniona z dokumentu w trakcie parsowania."
 
-#: models.py:31
+#: models.py:30
 msgid "Document page content"
 msgstr "Zawartość strony dokumentu"
 
-#: models.py:32
+#: models.py:31
 msgid "Document pages contents"
 msgstr "Zawartość stron dokumentu"
 
-#: models.py:44
+#: models.py:43
 msgid "Document type"
 msgstr "Typ dokumentu"
 
-#: models.py:48
+#: models.py:47
 msgid "Automatically queue newly created documents for parsing."
 msgstr "Automatycznie kolejkuj nowo utworzone dokumenty do analizy."
 
-#: models.py:59
+#: models.py:58
 msgid "Document type settings"
 msgstr "Ustawienia typu dokumentu"
 
-#: models.py:60
+#: models.py:59
 msgid "Document types settings"
 msgstr "Ustawienia typów dokumentów"
 
-#: models.py:71
+#: models.py:69
 msgid "Document version"
 msgstr "Wersja dokumentu"
 
-#: models.py:74
+#: models.py:72
 msgid "Date time submitted"
 msgstr "Data i czas zatwierdzenia"
 
-#: models.py:80
+#: models.py:78
 msgid "Document version parse error"
 msgstr "Błąd analizy wersji dokumentu"
 
-#: models.py:81
+#: models.py:79
 msgid "Document version parse errors"
 msgstr "Błędy analizy wersji dokumentu"
 

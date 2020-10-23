@@ -1,4 +1,4 @@
-|donation| |pypi| |python| |license| |docker_pulls| |docker_stars| |commit_activity| |support|
+|pypi| |python| |license| |docker_pulls| |docker_stars| |commit_activity| |support| |store| |donation|
 
 
 .. image:: https://gitlab.com/mayan-edms/mayan-edms/raw/master/docs/_static/mayan_logo.png
@@ -71,3 +71,5 @@ Important links
    :target: https://gitlab.com/mayan-edms/mayan-edms/
 .. |support| image:: https://img.shields.io/badge/Get_support-brightgreen
    :target: https://www.mayan-edms.com/support/
+.. |store| image:: https://img.shields.io/badge/Online_store-black
+   :target: https://teespring.com/stores/mayan-edms

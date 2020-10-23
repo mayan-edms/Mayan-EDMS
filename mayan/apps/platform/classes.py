@@ -13,6 +13,8 @@ from mayan.apps.task_manager.settings import (
     setting_celery_broker_url, setting_celery_result_backend
 )
 
+from .literals import DEFAULT_GUNICORN_WORKER_CLASS
+
 
 class Variable:
     def __init__(self, name, default, environment_name):
@@ -64,7 +66,7 @@ class PlatformTemplate:
         cls._registry[klass.name] = klass
 
     def __str__(self):
-        return force_text(self.get_label())
+        return force_text(s=self.get_label())
 
     def get_context(self):
         return self.context
@@ -128,6 +130,11 @@ class PlatformTemplateSupervisord(PlatformTemplate):
         setting_celery_broker_url, setting_celery_result_backend
     )
     variables = (
+        Variable(
+            name='GUNICORN_WORKER_CLASS',
+            default=DEFAULT_GUNICORN_WORKER_CLASS,
+            environment_name='MAYAN_GUNICORN_WORKER_CLASS'
+        ),
         Variable(
             name='GUNICORN_WORKERS', default=2,
             environment_name='MAYAN_GUNICORN_WORKERS'

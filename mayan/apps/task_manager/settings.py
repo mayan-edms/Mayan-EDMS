@@ -2,13 +2,21 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.smart_settings.classes import SettingNamespace
 
-# Don't import anything on star import, we just want to make it easy
-# for apps.py to activate the settings in this module.
-__all__ = ()
+from .literals import (
+    DEFAULT_CELERY_BROKER_LOGIN_METHOD, DEFAULT_CELERY_BROKER_URL,
+    DEFAULT_CELERY_BROKER_USE_SSL, DEFAULT_CELERY_RESULT_BACKEND
+)
+
 namespace = SettingNamespace(label=_('Celery'), name='celery')
 
+setting_celery_broker_login_method = namespace.add_setting(
+    global_name='CELERY_BROKER_LOGIN_METHOD',
+    default=DEFAULT_CELERY_BROKER_LOGIN_METHOD, help_text=_(
+        'Default: "AMQPLAIN". Set custom amqp login method.'
+    ),
+)
 setting_celery_broker_url = namespace.add_setting(
-    global_name='CELERY_BROKER_URL', default=None,
+    global_name='CELERY_BROKER_URL', default=DEFAULT_CELERY_BROKER_URL,
     help_text=_(
         'Default: "amqp://". Default broker URL. This must be a URL in '
         'the form of: transport://userid:password@hostname:port/virtual_host '
@@ -16,9 +24,17 @@ setting_celery_broker_url = namespace.add_setting(
         'optional, and defaults to the specific transports default values.'
     ),
 )
+setting_celery_broker_use_ssl = namespace.add_setting(
+    global_name='CELERY_BROKER_USE_SSL',
+    default=DEFAULT_CELERY_BROKER_USE_SSL, help_text=_(
+        'Default: "Disabled". Toggles SSL usage on broker connection '
+        'and SSL settings. The valid values for this option vary by '
+        'transport.'
+    ),
+)
 setting_celery_result_backend = namespace.add_setting(
-    global_name='CELERY_RESULT_BACKEND', default=None,
-    help_text=_(
+    global_name='CELERY_RESULT_BACKEND',
+    default=DEFAULT_CELERY_RESULT_BACKEND, help_text=_(
         'Default: No result backend enabled by default. The backend used '
         'to store task results (tombstones). Refer to '
         'http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.'

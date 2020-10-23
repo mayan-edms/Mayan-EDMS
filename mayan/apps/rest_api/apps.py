@@ -17,6 +17,9 @@ class RESTAPIApp(MayanAppConfig):
     app_namespace = 'rest_api'
     has_tests = True
     name = 'mayan.apps.rest_api'
+    static_media_ignore_patterns = (
+        'rest_framework/docs/*', 'rest_framework/img/glyphicons*',
+    )
     verbose_name = _('REST API')
 
     def ready(self):

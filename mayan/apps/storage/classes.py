@@ -23,11 +23,15 @@ class BufferedFile(File):
         else:
             self.stream = StringIO()
 
+        self.name = name
         self.stream_size = 0
 
     def close(self):
         self.file_object.close()
         self.stream.close()
+
+    def flush(self):
+        return self.file_object.flush()
 
     def read(self, size=None):
         if size is None:
@@ -63,7 +67,7 @@ class DefinedStorage(AppsModuleLoaderMixin):
     def get(cls, name):
         return cls._registry[name]
 
-    def __init__(self, dotted_path, label, name, kwargs, error_message=None):
+    def __init__(self, dotted_path, label, name, kwargs=None, error_message=None):
         self.dotted_path = dotted_path
         self.error_message = error_message
         self.label = label

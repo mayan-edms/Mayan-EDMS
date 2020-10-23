@@ -42,6 +42,28 @@ class DocumentOCRViewTestMixin:
         )
 
 
+class DocumentTypeOCRSettingsAPIViewTestMixin:
+    def _request_document_type_ocr_settings_details_api_view(self):
+        return self.get(
+            viewname='rest_api:document-type-ocr-settings-view',
+            kwargs={'pk': self.test_document_type.pk}
+        )
+
+    def _request_document_type_ocr_settings_patch_api_view(self):
+        return self.patch(
+            viewname='rest_api:document-type-ocr-settings-view',
+            kwargs={'pk': self.test_document_type.pk},
+            data={'auto_ocr': True}
+        )
+
+    def _request_document_type_ocr_settings_put_api_view(self):
+        return self.put(
+            viewname='rest_api:document-type-ocr-settings-view',
+            kwargs={'pk': self.test_document_type.pk},
+            data={'auto_ocr': True}
+        )
+
+
 class DocumentTypeOCRViewTestMixin:
     def _request_document_type_ocr_settings_view(self):
         return self.get(

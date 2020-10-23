@@ -105,5 +105,5 @@ class FileMetadataDriver:
     def _process(self, document_version):
         raise NotImplementedError(
             'Your %s class has not defined the required '
-            'process_document_version() method.' % self.__class__.__name__
+            '_process() method.' % self.__class__.__name__
         )

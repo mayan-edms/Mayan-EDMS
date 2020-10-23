@@ -1,6 +1,7 @@
 {% load i18n %}
 {% load static %}
 
+{% load appearance_tags %}
 {% load authentication_tags %}
 {% load common_tags %}
 {% load navigation_tags %}
@@ -21,6 +22,10 @@
 </script>
 
 {% block stylesheets %}{% endblock %}
+
+<style>
+    {% appearance_get_user_theme_stylesheet user=request.user %}
+</style>
 
 {% if appearance_type == 'plain' %}
     {% block content_plain %}{% endblock %}
@@ -80,7 +85,7 @@
                 {% include 'appearance/calculate_form_title.html' %}
 
                 {# action menu #}
-                {% navigation_resolve_menus names='object,secondary' sort_results=True as action_menus_link_results %}
+                {% navigation_resolve_menus names='object,secondary,related' sort_results=True as action_menus_link_results %}
                 {% if action_menus_link_results %}
                     <div class="pull-right btn-group" id="menu-actions">
                         <button aria-expanded="true" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown" type="button">

@@ -1,3 +1,4 @@
+from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.tests.base import (
     GenericDocumentViewTestCase, GenericViewTestCase
 )
@@ -12,9 +13,70 @@ from ..permissions import (
 
 from .literals import TEST_INDEX_LABEL, TEST_INDEX_LABEL_EDITED
 from .mixins import (
-    IndexInstaceViewTestMixin, IndexTemplateNodeViewTestMixin,
-    IndexTestMixin, IndexToolsViewTestMixin, IndexViewTestMixin
+    DocumentIndexViewTestMixin, IndexInstanceViewTestMixin,
+    IndexTemplateNodeViewTestMixin, IndexTestMixin, IndexToolsViewTestMixin,
+    IndexViewTestMixin
 )
+
+
+class DocumentIndexViewTestCase(
+    DocumentIndexViewTestMixin, IndexTestMixin, GenericDocumentViewTestCase
+):
+    def setUp(self):
+        super().setUp()
+        self._create_test_index()
+        self._create_test_index_template_node()
+        self.test_index.document_types.add(self.test_document_type)
+        self._upload_test_document()
+
+    def test_document_index_list_view_no_permission(self):
+        response = self._request_test_document_index_list_view()
+        self.assertEqual(response.status_code, 404)
+
+    def test_document_index_list_view_with_index_access(self):
+        self.grant_access(
+            obj=self.test_index,
+            permission=permission_document_indexing_instance_view
+        )
+
+        response = self._request_test_document_index_list_view()
+        self.assertEqual(response.status_code, 404)
+
+    def test_document_index_list_view_with_document_access(self):
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_view
+        )
+
+        response = self._request_test_document_index_list_view()
+        self.assertContains(
+            count=0, response=response, status_code=200, text=TEST_INDEX_LABEL
+        )
+        # 4 instances: title heading, title heading hover, JavaScript
+        # document title
+        self.assertContains(
+            count=3, response=response, status_code=200, text=self.test_document
+        )
+
+    def test_document_index_list_view_with_full_access(self):
+        self.grant_access(
+            obj=self.test_index,
+            permission=permission_document_indexing_instance_view
+        )
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_view
+        )
+
+        response = self._request_test_document_index_list_view()
+        self.assertContains(
+            count=1, response=response, status_code=200, text=TEST_INDEX_LABEL
+        )
+        # 4 instances: title heading, title heading hover, JavaScript
+        # document title, index entry
+        self.assertContains(
+            count=4, response=response, status_code=200, text=self.test_document
+        )
 
 
 class IndexViewTestCase(
@@ -94,7 +156,7 @@ class IndexViewTestCase(
 
 
 class IndexInstaceViewTestCase(
-    IndexTestMixin, IndexViewTestMixin, IndexInstaceViewTestMixin,
+    IndexTestMixin, IndexViewTestMixin, IndexInstanceViewTestMixin,
     GenericDocumentViewTestCase
 ):
     def test_index_rebuild_view_no_permission(self):

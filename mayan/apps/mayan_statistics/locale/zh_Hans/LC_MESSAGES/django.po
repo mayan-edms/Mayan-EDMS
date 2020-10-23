@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # xisafe <root@xisafe.com>, 2020
 # yulin Gong <540538248@qq.com>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:22-0400\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2020-04-02 10:30+0000\n"
 "Last-Translator: xisafe <root@xisafe.com>\n"
 "Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-edms/language/zh-Hans/)\n"
@@ -19,21 +20,21 @@ msgstr ""
 "Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:21 links.py:31 permissions.py:5 queues.py:7
+#: apps.py:27 links.py:31 permissions.py:5 queues.py:7
 msgid "Statistics"
 msgstr "统计"
 
 #. Translators: Schedule here is a noun, the 'schedule' at
 #. which the statistic will be updated
-#: apps.py:30
+#: apps.py:36
 msgid "Schedule"
 msgstr "安排"
 
-#: apps.py:36
+#: apps.py:42
 msgid "Last update"
 msgstr "最后更新"
 
-#: classes.py:148
+#: classes.py:146
 msgid "Never"
 msgstr "从不"
 
@@ -55,23 +56,23 @@ msgstr "命名空间列表"
 
 #. Translators: 'Slug' refers to the URL valid ID of the statistic
 #. More info: https://docs.djangoproject.com/en/1.7/glossary/#term-slug
-#: models.py:12
+#: models.py:10
 msgid "Slug"
 msgstr "标称"
 
-#: models.py:14
+#: models.py:12
 msgid "Date time"
 msgstr "日期时间"
 
-#: models.py:16
+#: models.py:14
 msgid "Data"
 msgstr "数据"
 
-#: models.py:19
+#: models.py:17
 msgid "Statistics result"
 msgstr "统计结果"
 
-#: models.py:20
+#: models.py:18
 msgid "Statistics results"
 msgstr "统计结果"
 
@@ -79,7 +80,7 @@ msgstr "统计结果"
 msgid "View statistics"
 msgstr "查看统计信息"
 
-#: queues.py:11
+#: queues.py:12
 msgid "Execute statistic"
 msgstr "执行统计"
 
@@ -92,31 +93,31 @@ msgstr "无可用数据"
 msgid "Last update: %(datetime)s"
 msgstr "最后更新%(datetime)s"
 
-#: views.py:15
+#: views.py:17
 msgid "Statistics namespaces"
 msgstr "统计命名空间"
 
-#: views.py:31
+#: views.py:33
 #, python-format
 msgid "Namespace details for: %s"
 msgstr "命名空间详细信息：%s"
 
-#: views.py:53
+#: views.py:55
 #, python-format
 msgid "Results for: %s"
 msgstr "结果：%s"
 
-#: views.py:60 views.py:86
+#: views.py:62 views.py:88
 #, python-format
 msgid "Statistic \"%s\" not found."
 msgstr "统计“%s”未找到。"
 
-#: views.py:78
+#: views.py:80
 #, python-format
 msgid "Queue statistic \"%s\" to be updated?"
 msgstr "队列统计“%s”有待更新？"
 
-#: views.py:92
+#: views.py:94
 #, python-format
 msgid "Statistic \"%s\" queued successfully for update."
 msgstr "统计“%s”已成功排队等待更新。"

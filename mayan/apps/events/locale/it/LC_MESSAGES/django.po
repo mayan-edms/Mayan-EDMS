@@ -3,14 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016
+# Roberto Rosario, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:22-0400\n"
-"PO-Revision-Date: 2019-08-28 12:14+0000\n"
-"Last-Translator: Daniele Bortoluzzi <daniele@elkos.it>\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"PO-Revision-Date: 2020-08-08 10:11+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,7 +20,7 @@ msgstr ""
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:27 links.py:47 links.py:52 links.py:57 permissions.py:5 views.py:34
+#: apps.py:27 links.py:30 links.py:35 links.py:40 permissions.py:5 views.py:34
 msgid "Events"
 msgstr "Eventi"
 
@@ -32,7 +34,7 @@ msgstr "Attore"
 
 #: apps.py:46 apps.py:75
 msgid "Event"
-msgstr ""
+msgstr "Evento"
 
 #: apps.py:50 apps.py:80
 msgid "Target"
@@ -40,7 +42,7 @@ msgstr "Destinazione"
 
 #: apps.py:54
 msgid "Action object"
-msgstr ""
+msgstr "Azione di oggetto"
 
 #: apps.py:59 forms.py:10 forms.py:67
 msgid "Namespace"
@@ -52,16 +54,16 @@ msgstr "Etichetta"
 
 #: apps.py:86
 msgid "Seen"
-msgstr ""
+msgstr "Visto"
 
-#: classes.py:76
+#: classes.py:142
 #, python-format
 msgid "Unknown or obsolete event type: %s"
-msgstr ""
+msgstr "Tipo di evento sconosciuto o obsoleto: %s"
 
 #: forms.py:18 forms.py:75
 msgid "Subscription"
-msgstr ""
+msgstr "Sottoscrizione"
 
 #: forms.py:20 forms.py:77
 msgid "No"
@@ -69,77 +71,77 @@ msgstr "No"
 
 #: forms.py:21 forms.py:78
 msgid "Subscribed"
-msgstr ""
+msgstr "Sottoscritto"
 
 #: html_widgets.py:57
 msgid "System"
 msgstr "Sistema"
 
-#: links.py:43
+#: links.py:26
 msgid "My events"
-msgstr ""
+msgstr "I miei eventi"
 
-#: links.py:61 models.py:65 views.py:78
+#: links.py:44 models.py:63 views.py:78
 msgid "Event subscriptions"
 msgstr ""
 
-#: links.py:65
+#: links.py:48
 msgid "Mark as seen"
-msgstr ""
+msgstr "Segna come visto"
 
-#: links.py:69
+#: links.py:52
 msgid "Mark all as seen"
-msgstr ""
+msgstr "Segna tutto come visto"
 
-#: links.py:74
+#: links.py:57
 msgid "Subscriptions"
-msgstr ""
+msgstr "Sottoscrizioni"
 
-#: models.py:23
+#: models.py:22
 msgid "Name"
 msgstr "Nome "
 
-#: models.py:27
+#: models.py:26
 msgid "Stored event type"
-msgstr ""
+msgstr "Tipo di evento memorizzato"
 
-#: models.py:28
+#: models.py:27
 msgid "Stored event types"
-msgstr ""
+msgstr "Tipi di eventi memorizzati"
 
-#: models.py:54 models.py:81 models.py:113
+#: models.py:52 models.py:78 models.py:109
 msgid "User"
 msgstr "Utente"
 
-#: models.py:58 models.py:117
+#: models.py:56 models.py:113
 msgid "Event type"
 msgstr "Tipo evento"
 
-#: models.py:64
+#: models.py:62
 msgid "Event subscription"
 msgstr ""
 
-#: models.py:85
+#: models.py:82
 msgid "Action"
 msgstr "Azione"
 
-#: models.py:87
+#: models.py:84
 msgid "Read"
-msgstr ""
+msgstr "Leggere"
 
-#: models.py:93
+#: models.py:90
 msgid "Notification"
-msgstr ""
+msgstr "Notifica"
 
-#: models.py:94 views.py:117
+#: models.py:91 views.py:117
 msgid "Notifications"
-msgstr ""
+msgstr "Notifiche"
 
-#: models.py:123
+#: models.py:119
 msgid "Object event subscription"
 msgstr ""
 
-#: models.py:124
+#: models.py:120
 msgid "Object event subscriptions"
 msgstr ""
 
@@ -162,7 +164,7 @@ msgstr ""
 
 #: views.py:115
 msgid "There are no notifications"
-msgstr ""
+msgstr "Non ci sono notifiche"
 
 #: views.py:164
 msgid ""
@@ -172,7 +174,7 @@ msgstr ""
 
 #: views.py:167
 msgid "There are no events for this object"
-msgstr ""
+msgstr "Non ci sono eventi per questo oggetto"
 
 #: views.py:169
 #, python-format

@@ -21,7 +21,7 @@ class ObjectLinkWidget:
         url = None
 
         if value:
-            label = force_text(value)
+            label = force_text(s=value)
             object_type = '{}: '.format(value._meta.verbose_name)
             try:
                 url = value.get_absolute_url()
@@ -62,7 +62,8 @@ def widget_event_actor_link(context, attribute=None):
 
         url = reverse(
             viewname='events:events_for_object', kwargs={
-                'app_label': content_type.app_label, 'model': content_type.model,
+                'app_label': content_type.app_label,
+                'model_name': content_type.model,
                 'object_id': entry.actor.pk
             }
         )

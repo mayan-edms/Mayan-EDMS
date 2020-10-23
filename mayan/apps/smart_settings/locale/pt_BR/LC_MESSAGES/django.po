@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Emerson Soares <on.emersonsoares@gmail.com>, 2011
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019-2020
@@ -11,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-26 04:23-0400\n"
+"POT-Creation-Date: 2020-10-15 06:13+0000\n"
 "PO-Revision-Date: 2020-05-25 13:57+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
@@ -29,19 +30,19 @@ msgstr "Ajustes inteligentes"
 msgid "Setting count"
 msgstr "Contagem de ajustes"
 
-#: apps.py:34
+#: apps.py:35
 msgid "Name"
 msgstr "Nome"
 
-#: apps.py:38
+#: apps.py:39
 msgid "Value"
 msgstr "Valor"
 
-#: classes.py:350
+#: classes.py:336
 msgid "Overridden"
 msgstr "Sobrescrito"
 
-#: classes.py:352
+#: classes.py:338
 msgid "Is this settings being overridden by an environment variable?"
 msgstr "Estes parâmetros estão sendo sobrescritos por uma variável de ambiente?"
 
@@ -338,30 +339,30 @@ msgid ""
 msgstr "O caminho Python completo do objeto de aplicação WSGI que o servidor embutido do Django usa (por exemplo, runserver). O comando django-admin startproject irá criar um arquivo wsgi.py simples com uma applicação callable nele, e apontará este parâmetro para aquela aplicação."
 
 #: views.py:21
+msgid "Setting updated successfully."
+msgstr "Configurações atualizadas com sucesso"
+
+#: views.py:30
+#, python-format
+msgid "Edit setting: %s"
+msgstr "Editar o parâmetro: %s"
+
+#: views.py:55
 msgid ""
 "Settings inherited from an environment variable take precedence and cannot "
 "be changed in this view. "
 msgstr "Configurações herdadas de uma variável de ambiente têm precedência e não podem ser alteradas nesta tela."
 
-#: views.py:24
+#: views.py:58
 #, python-format
 msgid "Settings in namespace: %s"
 msgstr "Ajustes na categoria: %s"
 
-#: views.py:32
+#: views.py:66
 #, python-format
 msgid "Namespace: %s, not found"
 msgstr "Namespace: %s, não encontrad"
 
-#: views.py:42
+#: views.py:76
 msgid "Setting namespaces"
 msgstr "Categorias de parâmetros"
-
-#: views.py:58
-msgid "Setting updated successfully."
-msgstr "Configurações atualizadas com sucesso"
-
-#: views.py:67
-#, python-format
-msgid "Edit setting: %s"
-msgstr "Editar o parâmetro: %s"

@@ -1,0 +1,35 @@
+.. index:: Troubleshooting
+
+===============
+Troubleshooting
+===============
+
+- :doc:`databases`
+- :doc:`dependencies`
+- :doc:`docker`
+- :doc:`ldap`
+- :doc:`ocr`
+- :doc:`passwords`
+- :doc:`python`
+- :doc:`static_files`
+- :doc:`text_encoding`
+- :doc:`user_interface`
+- :doc:`watchfolders`
+- :doc:`other`
+
+
+.. toctree::
+    :hidden:
+
+    databases
+    dependencies
+    docker
+    ldap
+    ocr
+    passwords
+    python
+    static_files
+    text_encoding
+    user_interface
+    watchfolders
+    other

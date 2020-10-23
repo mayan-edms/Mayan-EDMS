@@ -6,12 +6,13 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.links import link_acl_list
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import (
-    ModelField, ModelProperty, ModelReverseField
+    ModelCopy, ModelField, ModelProperty, ModelReverseField
 )
 from mayan.apps.common.menus import (
-    menu_facet, menu_list_facet, menu_main, menu_object, menu_secondary,
-    menu_setup, menu_tools
+    menu_facet, menu_list_facet, menu_main, menu_multi_item, menu_object,
+    menu_related, menu_secondary, menu_setup, menu_tools
 )
+from mayan.apps.documents.links.document_type_links import link_document_type_list
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list
@@ -29,9 +30,12 @@ from .handlers import (
 )
 from .html_widgets import WorkflowLogExtraDataWidget, widget_transition_events
 from .links import (
+    link_document_multiple_workflow_templates_launch,
+    link_document_single_workflow_templates_launch,
     link_workflow_instance_list, link_document_type_workflow_templates,
     link_workflow_template_document_types, link_workflow_template_create,
-    link_workflow_template_delete, link_workflow_template_edit,
+    link_workflow_template_multiple_delete,
+    link_workflow_template_single_delete, link_workflow_template_edit,
     link_workflow_template_launch, link_workflow_template_list,
     link_workflow_template_state_list,
     link_workflow_template_state_action_delete,
@@ -101,8 +105,61 @@ class DocumentStatesApp(MayanAppConfig):
         error_log.register_model(model=WorkflowStateAction)
 
         EventModelRegistry.register(model=Workflow)
+        EventModelRegistry.register(model=WorkflowState)
+        EventModelRegistry.register(model=WorkflowStateAction)
+        EventModelRegistry.register(model=WorkflowTransition)
+        EventModelRegistry.register(model=WorkflowTransitionField)
 
         WorkflowAction.load_modules()
+
+        ModelCopy(model=WorkflowState).add_fields(
+            field_names=(
+                'actions', 'workflow', 'label', 'initial', 'completion'
+            )
+        )
+        ModelCopy(model=WorkflowStateAction).add_fields(
+            field_names=(
+                'state', 'label', 'enabled', 'when', 'action_path',
+                'action_data', 'condition'
+            )
+        )
+        ModelCopy(model=WorkflowTransition).add_fields(
+            field_names=(
+                'workflow', 'label', 'origin_state', 'destination_state',
+                'condition', 'fields', 'trigger_events'
+            ),
+            field_value_gets={
+                'origin_state': {
+                    'workflow': '{workflow.pk}',
+                    'label': '{instance.origin_state.label}'
+                },
+                'destination_state': {
+                    'workflow': '{workflow.pk}',
+                    'label': '{instance.destination_state.label}'
+                },
+            }
+        )
+        ModelCopy(
+            model=WorkflowTransitionTriggerEvent
+        ).add_fields(
+            field_names=('transition', 'event_type')
+        )
+        ModelCopy(
+            model=WorkflowTransitionField
+        ).add_fields(
+            field_names=(
+                'transition', 'field_type', 'name', 'label', 'help_text',
+                'required', 'widget', 'widget_kwargs',
+            )
+        )
+        ModelCopy(
+            model=Workflow, bind_link=True, register_permission=True
+        ).add_fields(
+            field_names=(
+                'auto_launch', 'internal_name', 'label', 'document_types',
+                'states', 'transitions'
+            ),
+        )
 
         ModelEventType.register(
             event_types=(event_workflow_edited,), model=Workflow
@@ -125,7 +182,9 @@ class DocumentStatesApp(MayanAppConfig):
         )
 
         ModelPermission.register(
-            model=Document, permissions=(permission_workflow_view,)
+            model=Document, permissions=(
+                permission_workflow_tools, permission_workflow_view,
+            )
         )
         ModelPermission.register(
             model=Workflow, permissions=(
@@ -312,6 +371,10 @@ class DocumentStatesApp(MayanAppConfig):
             source=WorkflowTransition, widget=TwoStateWidget
         )
         SourceColumn(
+            attribute='get_field_display', include_label=True,
+            source=WorkflowTransition
+        )
+        SourceColumn(
             func=lambda context: widget_transition_events(
                 transition=context['object']
             ), help_text=_(
@@ -363,6 +426,14 @@ class DocumentStatesApp(MayanAppConfig):
         menu_facet.bind_links(
             links=(link_workflow_instance_list,), sources=(Document,)
         )
+        menu_secondary.bind_links(
+            links=(link_document_single_workflow_templates_launch,),
+            sources=(
+                'document_states:document_multiple_workflow_templates_launch',
+                'document_states:document_single_workflow_templates_launch',
+                'document_states:workflow_instance_list', WorkflowInstance,
+            )
+        )
 
         menu_list_facet.bind_links(
             links=(
@@ -390,10 +461,21 @@ class DocumentStatesApp(MayanAppConfig):
             ), sources=(DocumentType,)
         )
 
-        menu_main.bind_links(links=(link_workflow_runtime_proxy_list,), position=10)
+        menu_main.bind_links(
+            links=(link_workflow_runtime_proxy_list,), position=10
+        )
+        menu_multi_item.bind_links(
+            links=(link_document_multiple_workflow_templates_launch,),
+            sources=(Document,)
+        )
+        menu_multi_item.bind_links(
+            links=(link_workflow_template_multiple_delete,),
+            sources=(Workflow,)
+        )
         menu_object.bind_links(
             links=(
-                link_workflow_template_delete, link_workflow_template_edit,
+                link_workflow_template_single_delete,
+                link_workflow_template_edit,
                 link_workflow_template_launch
             ), sources=(Workflow,)
         )
@@ -442,7 +524,20 @@ class DocumentStatesApp(MayanAppConfig):
                 link_workflow_template_state_action_delete,
             ), sources=(WorkflowStateAction,)
         )
-
+        menu_related.bind_links(
+            links=(link_workflow_template_list,),
+            sources=(
+                DocumentType, 'documents:document_type_list',
+                'documents:document_type_create'
+            )
+        )
+        menu_related.bind_links(
+            links=(link_document_type_list,),
+            sources=(
+                Workflow, 'document_states:workflow_template_create',
+                'document_states:workflow_template_list'
+            )
+        )
         menu_secondary.bind_links(
             links=(link_workflow_template_list, link_workflow_template_create),
             sources=(
@@ -454,12 +549,6 @@ class DocumentStatesApp(MayanAppConfig):
             links=(link_workflow_template_transition_field_create,),
             sources=(
                 WorkflowTransition,
-            )
-        )
-        menu_secondary.bind_links(
-            links=(link_workflow_runtime_proxy_list,),
-            sources=(
-                WorkflowRuntimeProxy,
             )
         )
         menu_secondary.bind_links(
@@ -486,6 +575,8 @@ class DocumentStatesApp(MayanAppConfig):
                 'document_states:workflow_template_state_list',
             )
         )
+
+        menu_secondary.add_proxy_exclusion(source=WorkflowRuntimeProxy)
 
         menu_setup.bind_links(links=(link_workflow_template_list,))
 

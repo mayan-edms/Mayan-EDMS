@@ -4,11 +4,13 @@ from django.apps import apps
 from django.contrib.auth import get_user_model
 from django.db import OperationalError
 
+from mayan.apps.lock_manager.exceptions import LockError
 from mayan.celery import app
 
 from .literals import (
     UPDATE_PAGE_COUNT_RETRY_DELAY, UPLOAD_NEW_VERSION_RETRY_DELAY
 )
+from .settings import setting_task_generate_document_page_image_retry_delay
 
 logger = logging.getLogger(name=__name__)
 
@@ -62,8 +64,13 @@ def task_delete_stubs():
     logger.info(msg='Finshed')
 
 
-@app.task()
-def task_generate_document_page_image(document_page_id, user_id=None, **kwargs):
+@app.task(
+    bind=True,
+    default_retry_delay=setting_task_generate_document_page_image_retry_delay.value
+)
+def task_generate_document_page_image(
+    self, document_page_id, user_id=None, **kwargs
+):
     DocumentPage = apps.get_model(
         app_label='documents', model_name='DocumentPage'
     )
@@ -75,7 +82,15 @@ def task_generate_document_page_image(document_page_id, user_id=None, **kwargs):
         user = None
 
     document_page = DocumentPage.objects.get(pk=document_page_id)
-    return document_page.generate_image(user=user, **kwargs)
+    try:
+        return document_page.generate_image(user=user, **kwargs)
+    except LockError as exception:
+        logger.warning(
+            'LockError during attempt to generate document page image for '
+            'document id: %d, document page id: %d. Retrying.',
+            document_page.pk, document_page.document.pk
+        )
+        raise self.retry(exc=exception)
 
 
 @app.task(ignore_result=True)
@@ -99,6 +114,18 @@ def task_scan_duplicates_for(document_id):
     document = Document.objects.get(pk=document_id)
 
     DuplicatedDocument.objects.scan_for(document=document)
+
+
+@app.task(ignore_result=True)
+def task_trash_can_empty():
+    DeletedDocument = apps.get_model(
+        app_label='documents', model_name='DeletedDocument'
+    )
+
+    for deleted_document in DeletedDocument.objects.all():
+        task_delete_document.apply_async(
+            kwargs={'trashed_document_id': deleted_document.pk}
+        )
 
 
 @app.task(bind=True, default_retry_delay=UPDATE_PAGE_COUNT_RETRY_DELAY, ignore_result=True)

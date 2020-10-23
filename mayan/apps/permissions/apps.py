@@ -9,8 +9,9 @@ from mayan.apps.acls.permissions import (
 )
 
 from mayan.apps.common.apps import MayanAppConfig
+from mayan.apps.common.classes import ModelCopy
 from mayan.apps.common.menus import (
-    menu_list_facet, menu_object, menu_secondary, menu_setup
+    menu_list_facet, menu_object, menu_related, menu_secondary, menu_setup
 )
 from mayan.apps.common.signals import signal_perform_upgrade
 from mayan.apps.dashboards.dashboards import dashboard_main
@@ -20,6 +21,7 @@ from mayan.apps.events.links import (
 )
 from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
+from mayan.apps.user_management.links import link_group_list
 
 from .classes import Permission
 from .dashboard_widgets import DashboardWidgetRoleTotal
@@ -33,7 +35,6 @@ from .methods import method_group_roles_add, method_group_roles_remove
 from .permissions import (
     permission_role_delete, permission_role_edit, permission_role_view
 )
-from .search import role_search  # NOQA
 
 
 class PermissionsApp(MayanAppConfig):
@@ -54,6 +55,19 @@ class PermissionsApp(MayanAppConfig):
         Group.add_to_class(name='roles_remove', value=method_group_roles_remove)
 
         EventModelRegistry.register(model=Role)
+
+        ModelCopy(
+            model=Role, bind_link=True, register_permission=True
+        ).add_fields(
+            field_names=(
+                'label', 'permissions', 'groups',
+            ),
+        )
+        ModelCopy.add_fields_lazy(
+            model=Group, field_names=(
+                'roles',
+            ),
+        )
 
         ModelEventType.register(
             event_types=(event_role_created, event_role_edited), model=Role
@@ -103,6 +117,17 @@ class PermissionsApp(MayanAppConfig):
             links=(
                 link_role_delete, link_role_edit
             ), sources=(Role,)
+        )
+        menu_related.bind_links(
+            links=(link_role_list,), sources=(
+                'user_management:group_multiple_delete',
+                'user_management:group_list', 'user_management:group_create',
+                Group
+            )
+        )
+        menu_related.bind_links(
+            links=(link_group_list,),
+            sources=(Role, 'permissions:role_create', 'permissions:role_list')
         )
         menu_secondary.bind_links(
             links=(link_role_list, link_role_create),

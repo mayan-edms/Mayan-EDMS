@@ -3,7 +3,7 @@ import json
 from ..models import Quota
 
 from .literals import (
-    TEST_QUOTA_DOTTED_PATH, TEST_QUOTA_TEST_LIMIT,
+    TEST_QUOTA_DATA, TEST_QUOTA_DOTTED_PATH, TEST_QUOTA_WITH_MIXINS_DOTTED_PATH,
     TEST_QUOTA_TEST_LIMIT_EDITED
 )
 
@@ -11,8 +11,14 @@ from .literals import (
 class QuotaTestMixin:
     def _create_test_quota(self):
         self.test_quota = Quota.objects.create(
-            backend_data=json.dumps(obj={'test_limit': TEST_QUOTA_TEST_LIMIT}),
+            backend_data=json.dumps(obj=TEST_QUOTA_DATA),
             backend_path=TEST_QUOTA_DOTTED_PATH
+        )
+
+    def _create_test_quota_with_mixins(self):
+        self.test_quota = Quota.objects.create(
+            backend_data=json.dumps(obj=TEST_QUOTA_DATA),
+            backend_path=TEST_QUOTA_WITH_MIXINS_DOTTED_PATH
         )
 
 
@@ -20,15 +26,41 @@ class QuotaViewTestMixin:
     def _request_test_quota_backend_selection_get_view(self):
         return self.get(viewname='quotas:quota_backend_selection')
 
-    def _request_test_quota_create_view(self):
+    def _request_test_quota_create_get_view(self):
+        values = list(Quota.objects.values_list('pk', flat=True))
+
+        response = self.get(
+            viewname='quotas:quota_create', kwargs={
+                'class_path': TEST_QUOTA_DOTTED_PATH
+            }
+        )
+
+        # Get the instance created ignoring existing ones.
+        self.test_quota = Quota.objects.exclude(pk__in=values).first()
+
+        return response
+
+    def _request_test_quota_with_mixins_create_get_view(self):
+        values = list(Quota.objects.values_list('pk', flat=True))
+
+        response = self.get(
+            viewname='quotas:quota_create', kwargs={
+                'class_path': TEST_QUOTA_WITH_MIXINS_DOTTED_PATH
+            }
+        )
+
+        # Get the instance created ignoring existing ones.
+        self.test_quota = Quota.objects.exclude(pk__in=values).first()
+
+        return response
+
+    def _request_test_quota_create_post_view(self):
         values = list(Quota.objects.values_list('pk', flat=True))
 
         response = self.post(
             viewname='quotas:quota_create', kwargs={
                 'class_path': TEST_QUOTA_DOTTED_PATH
-            }, data={
-                'test_limit': TEST_QUOTA_TEST_LIMIT
-            }
+            }, data=TEST_QUOTA_DATA
         )
 
         # Get the instance created ignoring existing ones.

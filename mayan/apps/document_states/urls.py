@@ -19,11 +19,11 @@ from .views.workflow_proxy_views import (
     WorkflowRuntimeProxyStateListView
 )
 from .views.workflow_template_views import (
-    DocumentTypeWorkflowTemplatesView, ToolLaunchWorkflows,
-    WorkflowTemplateCreateView, WorkflowTemplateDeleteView,
-    WorkflowTemplateEditView, WorkflowTemplateLaunchView,
-    WorkflowTemplateListView, WorkflowTemplatePreviewView,
-    WorkflowTemplateDocumentTypesView
+    DocumentTypeWorkflowTemplatesView, DocumentWorkflowTemplatesLaunchView,
+    ToolLaunchWorkflows, WorkflowTemplateCreateView,
+    WorkflowTemplateDeleteView, WorkflowTemplateEditView,
+    WorkflowTemplateLaunchView, WorkflowTemplateListView,
+    WorkflowTemplatePreviewView, WorkflowTemplateDocumentTypesView
 )
 from .views.workflow_template_state_views import (
     WorkflowTemplateStateActionCreateView,
@@ -147,6 +147,16 @@ urlpatterns_workflow_templates = [
         view=DocumentTypeWorkflowTemplatesView.as_view()
     ),
     url(
+        regex=r'^documents/(?P<document_id>\d+)/workflow_templates/launch/$',
+        name='document_single_workflow_templates_launch',
+        view=DocumentWorkflowTemplatesLaunchView.as_view()
+    ),
+    url(
+        regex=r'^documents/multiple/workflow_templates/launch/$',
+        name='document_multiple_workflow_templates_launch',
+        view=DocumentWorkflowTemplatesLaunchView.as_view()
+    ),
+    url(
         regex=r'^workflow_templates/$', name='workflow_template_list',
         view=WorkflowTemplateListView.as_view()
     ),
@@ -157,7 +167,12 @@ urlpatterns_workflow_templates = [
     ),
     url(
         regex=r'^workflow_templates/(?P<workflow_template_id>\d+)/delete/$',
-        name='workflow_template_delete',
+        name='workflow_template_single_delete',
+        view=WorkflowTemplateDeleteView.as_view()
+    ),
+    url(
+        regex=r'^workflow_templates/multiple/delete/$',
+        name='workflow_template_multiple_delete',
         view=WorkflowTemplateDeleteView.as_view()
     ),
     url(

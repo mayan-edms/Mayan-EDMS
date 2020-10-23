@@ -18,7 +18,7 @@ class DocumentOCRViewsTestCase(
     # Disable descriptor leak test until fixed in upstream
     _skip_file_descriptor_test = True
 
-    def test_document_content_view_no_permissions(self):
+    def test_document_content_view_no_permission(self):
         self.test_document.submit_for_ocr()
 
         response = self._request_document_content_view()
@@ -35,7 +35,7 @@ class DocumentOCRViewsTestCase(
             response=response, text=TEST_DOCUMENT_CONTENT, status_code=200
         )
 
-    def test_document_content_delete_view_no_permissions(self):
+    def test_document_content_delete_view_no_permission(self):
         self.test_document.submit_for_ocr()
 
         response = self._request_document_content_delete_view()
@@ -62,7 +62,7 @@ class DocumentOCRViewsTestCase(
             ).exists()
         )
 
-    def test_document_page_content_view_no_permissions(self):
+    def test_document_page_content_view_no_permission(self):
         self.test_document.submit_for_ocr()
 
         response = self._request_document_page_content_view()
