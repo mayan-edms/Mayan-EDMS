@@ -84,3 +84,5 @@
 - Update Docker image tagging. Version are prefixed with lower v and series
   with lower s for the latest major and minor version. Version 1.2.3 will
   result in tags :v1.2.3 :s1 :s1.2
+- Update status of MERC for merging roles and groups. Assign number 0008 to
+  the MERC.

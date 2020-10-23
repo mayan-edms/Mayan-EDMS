@@ -1,22 +1,24 @@
 ===============================
-MERC XX: Unify Roles and Groups
+MERC 08: Unify Roles and Groups
 ===============================
 
-:MERC: XX
+:MERC: 08
 :Author: Michael Price
-:Status: Draft
+:Status: Accepted
 :Type: Feature
 :Created: 2018-02-27
-:Last-Modified: 2018-02-27
+:Last-Modified: 2020-10-23
 
 .. contents:: Table of Contents
    :depth: 3
    :local:
 
+
 Abstract
 ========
 
 This MERC proposes the merging of the Roles and Group models.
+
 
 Rationale
 =========
@@ -33,6 +35,7 @@ Other permissions systems already use Groups as permission units without
 disadvantages. An example of this is LDAP and its commercial counterpart
 Active Directory.
 
+
 Motivation
 ==========
 
@@ -44,6 +47,7 @@ Merging the Role and Group models will also provide a speed boost in every
 permission check and queryset filtering. These checks are nested in nature.
 Since the access checks are performed for every view and for every link
 in the view the performance gain should be substantial.
+
 
 Backwards Compatibility
 =======================
