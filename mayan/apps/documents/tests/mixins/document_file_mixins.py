@@ -75,6 +75,15 @@ class DocumentFileViewTestMixin:
             }, data=data
         )
 
+    def _request_test_document_file_edit_view(self):
+        return self.post(
+            viewname='documents:document_file_edit', kwargs={
+                'document_file_id': self.test_document_file.pk
+            }, data={
+                'comment': TEST_DOCUMENT_FILE_COMMENT_EDITED
+            }
+        )
+
     def _request_test_document_file_list_view(self):
         return self.get(
             viewname='documents:document_file_list', kwargs={

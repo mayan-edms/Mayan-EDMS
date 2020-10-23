@@ -8,16 +8,16 @@ from mayan.apps.navigation.classes import Link
 from ..icons import (
     icon_document_file_cache_purge, icon_document_file_delete,
     icon_document_file_download, icon_document_file_download_quick,
-    icon_document_file_list, icon_document_file_print,
-    icon_document_file_properties, icon_document_file_return_to_document,
-    icon_document_file_return_list, icon_document_file_preview,
-    icon_document_file_transformations_clear,
+    icon_document_file_edit, icon_document_file_list,
+    icon_document_file_print, icon_document_file_properties,
+    icon_document_file_return_to_document, icon_document_file_return_list,
+    icon_document_file_preview, icon_document_file_transformations_clear,
     icon_document_file_transformations_clone
 )
 from ..permissions import (
     permission_document_file_delete, permission_document_file_download,
-    permission_document_file_print, permission_document_file_view,
-    permission_document_view
+    permission_document_file_edit, permission_document_file_print,
+    permission_document_file_view, permission_document_view
 )
 
 link_document_file_cache_purge = Link(
@@ -31,6 +31,11 @@ link_document_file_delete = Link(
     icon_class=icon_document_file_delete,
     permissions=(permission_document_file_delete,), tags='dangerous',
     text=_('Delete'), view='documents:document_file_delete',
+)
+link_document_file_edit = Link(
+    args='object.pk', icon_class=icon_document_file_edit,
+    permissions=(permission_document_file_edit,),
+    text=_('Edit'), view='documents:document_file_edit',
 )
 link_document_file_download = Link(
     args='resolved_object.pk',

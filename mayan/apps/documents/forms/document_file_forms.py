@@ -8,7 +8,9 @@ from ..fields import DocumentFileField
 from ..literals import DEFAULT_DOCUMENT_FILE_ZIP_FILENAME
 from ..models.document_file_models import DocumentFile
 
-__all__ = ('DocumentFileDownloadForm', 'DocumentFilePreviewForm',)
+__all__ = (
+    'DocumentFileDownloadForm', 'DocumentFileForm', 'DocumentFilePreviewForm'
+)
 
 
 class DocumentFileDownloadForm(forms.Form):
@@ -46,6 +48,12 @@ class DocumentFileDownloadForm(forms.Form):
             self.fields['compressed'].widget.attrs.update(
                 {'disabled': 'disabled'}
             )
+
+
+class DocumentFileForm(forms.ModelForm):
+    class Meta:
+        fields = ('comment',)
+        model = DocumentFile
 
 
 class DocumentFilePreviewForm(forms.Form):
@@ -99,5 +107,5 @@ class DocumentFilePropertiesForm(DetailForm):
         super().__init__(*args, **kwargs)
 
     class Meta:
-        fields = ()
+        fields = ('comment',)
         model = DocumentFile

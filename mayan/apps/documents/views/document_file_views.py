@@ -15,7 +15,7 @@ from mayan.apps.file_caching.tasks import task_cache_partition_purge
 from mayan.apps.sources.links import link_document_file_upload
 from mayan.apps.storage.compressed_files import ZipArchive
 from mayan.apps.views.generics import (
-    ConfirmView, FormView, MultipleObjectDownloadView,
+    ConfirmView, FormView, MultipleObjectDownloadView, SingleObjectEditView,
     MultipleObjectConfirmActionView, MultipleObjectFormActionView,
     SingleObjectDeleteView, SingleObjectDetailView, SingleObjectDownloadView,
     SingleObjectListView
@@ -24,7 +24,7 @@ from mayan.apps.views.mixins import ExternalObjectMixin
 
 from ..events import event_document_download, event_document_viewed
 from ..forms.document_file_forms import (
-    DocumentFileDownloadForm, DocumentFilePreviewForm,
+    DocumentFileDownloadForm, DocumentFileForm, DocumentFilePreviewForm,
     DocumentFilePropertiesForm
 )
 from ..forms.misc_forms import PageNumberForm
@@ -34,8 +34,8 @@ from ..models.document_models import Document
 from ..models.document_file_models import DocumentFile
 from ..permissions import (
     permission_document_file_delete, permission_document_file_download,
-    permission_document_file_print, permission_document_file_tools,
-    permission_document_file_view
+    permission_document_file_edit, permission_document_file_print,
+    permission_document_file_tools, permission_document_file_view
 )
 
 from .misc_views import PrintFormView, DocumentPrintView
@@ -236,6 +236,30 @@ class DocumentFileDownloadView(SingleObjectDownloadView):
 
         return item.get_rendered_string(preserve_extension=preserve_extension)
     """
+
+
+class DocumentFileEditView(SingleObjectEditView):
+    form_class = DocumentFileForm
+    model = DocumentFile
+    object_permission = permission_document_file_edit
+    pk_url_kwarg = 'document_file_id'
+
+    def get_extra_context(self):
+        return {
+            'title': _('Edit document file: %s') % self.object,
+        }
+
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user,
+        }
+
+    def get_post_action_redirect(self):
+        return reverse(
+            viewname='documents:document_file_preview', kwargs={
+                'document_file_id': self.object.pk
+            }
+        )
 
 
 class DocumentFileListView(ExternalObjectMixin, SingleObjectListView):

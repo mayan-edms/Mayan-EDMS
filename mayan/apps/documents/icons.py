@@ -82,6 +82,9 @@ icon_document_file_download = Icon(
 icon_document_file_download_quick = Icon(
     driver_name='fontawesome', symbol='download'
 )
+icon_document_file_edit = Icon(
+    driver_name='fontawesome', symbol='pencil-alt'
+)
 icon_document_file_list = Icon(
     driver_name='fontawesome', symbol='hdd'
 )

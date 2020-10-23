@@ -21,7 +21,7 @@ from .api_views.document_version_api_views import (
 )
 from .views.document_file_views import (
     DocumentFileCachePartitionPurgeView, DocumentFileDeleteView,
-    DocumentFileDownloadView, DocumentFileListView,
+    DocumentFileDownloadView, DocumentFileEditView, DocumentFileListView,
     DocumentFilePrintFormView, DocumentFilePrintView,
     DocumentFilePropertiesView, DocumentFilePreviewView,
     DocumentFileTransformationsClearView,
@@ -118,6 +118,11 @@ urlpatterns_document_files = [
     #    name='document_file_multiple_download_form',
     #    view=DocumentFileDownloadFormView.as_view()
     #),
+    url(
+        regex=r'^documents/files/(?P<document_file_id>\d+)/edit/$',
+        name='document_file_edit',
+        view=DocumentFileEditView.as_view()
+    ),
     url(
         regex=r'^documents/files/(?P<document_file_id>\d+)/print/form/$',
         name='document_file_print_form',

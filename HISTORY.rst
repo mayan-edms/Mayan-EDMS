@@ -77,4 +77,4 @@
 - Add custom API paginator. Defaults to page size of 10, maximum page size of
   100 and provides the 'page_size' query parameter.
 - Remove NewFileBlockViewTestCase and simplify the checkout logic.
-
+- Add document file edit view.
