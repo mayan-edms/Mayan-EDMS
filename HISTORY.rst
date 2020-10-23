@@ -1,3 +1,8 @@
+3.4.19 (2020-10-XX)
+===================
+- Fix Document indexing API view. GitLab issue #885.
+- Added tests for all REST API views.
+ 
 3.4.18 (2020-10-22)
 ===================
 - Update Django from version 2.2.15 to 2.2.16.

@@ -1,5 +1,3 @@
-from django.db import models
-
 from mayan.apps.common.tests.base import GenericViewTestCase
 
 from .mixins import RESTAPIViewTestMixin
