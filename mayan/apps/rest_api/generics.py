@@ -7,12 +7,17 @@ from .mixins import (
 from .permissions import MayanPermission
 
 
-class GenericAPIView(generics.GenericAPIView):
+
+
+class GenericAPIView(SerializerInspectionAPIViewMixin, generics.GenericAPIView):
     filter_backends = (MayanObjectPermissionsFilter,)
     permission_classes = (MayanPermission,)
 
 
-class ListAPIView(SerializerExtraContextAPIViewMixin, generics.ListAPIView):
+class ListAPIView(
+    SerializerInspectionAPIViewMixin, SerializerExtraContextAPIViewMixin,
+    generics.ListAPIView
+):
     """
     requires:
         object_permission = {'GET': ...}
@@ -25,8 +30,8 @@ class ListAPIView(SerializerExtraContextAPIViewMixin, generics.ListAPIView):
 
 
 class ListCreateAPIView(
-    InstanceExtraDataAPIViewMixin, SerializerExtraContextAPIViewMixin,
-    generics.ListCreateAPIView
+    SerializerInspectionAPIViewMixin, InstanceExtraDataAPIViewMixin,
+    SerializerExtraContextAPIViewMixin, generics.ListCreateAPIView
 ):
     """
     requires:
@@ -38,8 +43,8 @@ class ListCreateAPIView(
 
 
 class RetrieveAPIView(
-    InstanceExtraDataAPIViewMixin, SerializerExtraContextAPIViewMixin,
-    generics.RetrieveAPIView
+    SerializerInspectionAPIViewMixin, InstanceExtraDataAPIViewMixin,
+    SerializerExtraContextAPIViewMixin, generics.RetrieveAPIView
 ):
     """
     requires:
@@ -51,8 +56,8 @@ class RetrieveAPIView(
 
 
 class RetrieveDestroyAPIView(
-    InstanceExtraDataAPIViewMixin, SerializerExtraContextAPIViewMixin,
-    generics.RetrieveDestroyAPIView
+    SerializerInspectionAPIViewMixin, InstanceExtraDataAPIViewMixin,
+    SerializerExtraContextAPIViewMixin, generics.RetrieveDestroyAPIView
 ):
     """
     requires:
@@ -65,8 +70,8 @@ class RetrieveDestroyAPIView(
 
 
 class RetrieveUpdateAPIView(
-    InstanceExtraDataAPIViewMixin, SerializerExtraContextAPIViewMixin,
-    generics.RetrieveUpdateAPIView
+    SerializerInspectionAPIViewMixin, InstanceExtraDataAPIViewMixin,
+    SerializerExtraContextAPIViewMixin, generics.RetrieveUpdateAPIView
 ):
     """
     requires:
@@ -80,8 +85,8 @@ class RetrieveUpdateAPIView(
 
 
 class RetrieveUpdateDestroyAPIView(
-    InstanceExtraDataAPIViewMixin, SerializerExtraContextAPIViewMixin,
-    generics.RetrieveUpdateDestroyAPIView
+    SerializerInspectionAPIViewMixin, InstanceExtraDataAPIViewMixin,
+    SerializerExtraContextAPIViewMixin, generics.RetrieveUpdateDestroyAPIView
 ):
     """
     requires:
