@@ -194,6 +194,9 @@ icon_document_type_setup = icon_document_type
 
 # Document version
 
+icon_document_version_active = Icon(
+    driver_name='fontawesome', symbol='check'
+)
 icon_document_version_cache_purge = Icon(
     driver_name='fontawesome-dual', primary_symbol='warehouse',
     secondary_symbol='check'

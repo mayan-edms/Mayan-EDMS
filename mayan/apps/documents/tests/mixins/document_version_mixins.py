@@ -20,7 +20,7 @@ class DocumentVersionAPIViewTestMixin:
         return self.delete(
             viewname='rest_api:documentversion-detail', kwargs={
                 'document_id': self.test_document.pk,
-                'document_version_id': self.test_document.latest_version.pk
+                'document_version_id': self.test_document.version_active.pk
             }
         )
 
@@ -28,7 +28,7 @@ class DocumentVersionAPIViewTestMixin:
         return self.patch(
             viewname='rest_api:documentversion-detail', kwargs={
                 'document_id': self.test_document.pk,
-                'document_version_id': self.test_document.latest_version.pk
+                'document_version_id': self.test_document.version_active.pk
             }, data={'comment': TEST_DOCUMENT_VERSION_COMMENT_EDITED}
         )
 
@@ -36,7 +36,7 @@ class DocumentVersionAPIViewTestMixin:
         return self.put(
             viewname='rest_api:documentversion-detail', kwargs={
                 'document_id': self.test_document.pk,
-                'document_version_id': self.test_document.latest_version.pk
+                'document_version_id': self.test_document.version_active.pk
             }, data={'comment': TEST_DOCUMENT_VERSION_COMMENT_EDITED}
         )
 
@@ -44,7 +44,7 @@ class DocumentVersionAPIViewTestMixin:
         return self.post(
             viewname='rest_api:documentversion-export', kwargs={
                 'document_id': self.test_document.pk,
-                'document_version_id': self.test_document.latest_version.pk,
+                'document_version_id': self.test_document.version_active.pk,
             }
         )
 
@@ -69,15 +69,18 @@ class DocumentVersionPageAPIViewTestMixin:
 
 
 class DocumentVersionTestMixin:
-    def _create_document_transformation(self):
-        layer_saved_transformations.add_transformation_to(
-            obj=self.test_document_version.pages.first(),
-            transformation_class=TEST_TRANSFORMATION_CLASS,
-            arguments=TEST_TRANSFORMATION_ARGUMENT
-        )
+    def _create_test_document_version(self):
+        self.test_document_version = self.test_document.versions.create()
 
 
 class DocumentVersionViewTestMixin:
+    def _request_test_document_version_active_view(self):
+        return self.post(
+            viewname='documents:document_version_active', kwargs={
+                'document_version_id': self.test_document_version.pk
+            }
+        )
+
     def _request_test_document_version_edit_view(self):
         return self.post(
             viewname='documents:document_version_edit', kwargs={
@@ -107,7 +110,6 @@ class DocumentVersionViewTestMixin:
                 'document_version_id': self.test_document_version.pk
             }
         )
-
 
     def _request_test_document_version_print_form_view(self):
         return self.get(

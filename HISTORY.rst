@@ -86,3 +86,4 @@
   result in tags :v1.2.3 :s1 :s1.2
 - Update status of MERC for merging roles and groups. Assign number 0008 to
   the MERC.
+- Add support for selecting the active document version.

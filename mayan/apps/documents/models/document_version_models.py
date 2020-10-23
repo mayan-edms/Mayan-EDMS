@@ -2,14 +2,13 @@ import logging
 import os
 
 from django.apps import apps
-from django.db import models
+from django.db import models, transaction
 from django.urls import reverse
 from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.classes import ModelQueryFields
 from mayan.apps.common.mixins import ModelInstanceExtraDataAPIViewMixin
-from mayan.apps.converter.classes import ConverterBase
 from mayan.apps.events.classes import EventManagerMethodAfter, EventManagerSave
 from mayan.apps.events.decorators import method_event
 from mayan.apps.templating.classes import Template
@@ -41,6 +40,11 @@ class DocumentVersion(ModelInstanceExtraDataAPIViewMixin, models.Model):
         blank=True, default='', help_text=_(
             'An optional short text describing the document version.'
         ), verbose_name=_('Comment')
+    )
+    active = models.BooleanField(
+        default=True, help_text=_(
+            'Determines the active version of the document.'
+        ), verbose_name=_('Active')
     )
 
     class Meta:
@@ -130,10 +134,6 @@ class DocumentVersion(ModelInstanceExtraDataAPIViewMixin, models.Model):
             context={'instance': self}
         )
 
-    #def natural_key(self):
-    #    return (self.checksum, self.document.natural_key())
-    #natural_key.dependencies = ['documents.Document']
-
     @property
     def is_in_trash(self):
         return self.document.is_in_trash
@@ -197,6 +197,14 @@ class DocumentVersion(ModelInstanceExtraDataAPIViewMixin, models.Model):
             annotated_content_object_list=annotated_content_object_list
         )
 
+    def active_set(self, save=True):
+        with transaction.atomic():
+            self.document.versions.exclude(pk=self.pk).update(active=False)
+            self.active = True
+
+            if save:
+                return self.save()
+
     @method_event(
         event_manager_class=EventManagerSave,
         created={
@@ -211,70 +219,11 @@ class DocumentVersion(ModelInstanceExtraDataAPIViewMixin, models.Model):
         }
     )
     def save(self, *args, **kwargs):
-        return super().save(*args, **kwargs)
+        with transaction.atomic():
+            if self.active:
+                self.active_set(save=False)
 
-    '''
-    def save(self, *args, **kwargs):
-        """
-        Overloaded save method that updates the document file's checksum,
-        mimetype, and page count when created
-        """
-        user = kwargs.pop('_user', None)
-        new_document_version = not self.pk
-
-        if new_document_version:
-            logger.info('Creating new version for document: %s', self.document)
-
-        try:
-            with transaction.atomic():
-                #self.execute_pre_save_hooks()
-
-                #signal_mayan_pre_save.send(
-                #    instance=self, sender=DocumentFile, user=user
-                #)
-
-                super().save(*args, **kwargs)
-
-                #DocumentFile._execute_hooks(
-                #    hook_list=DocumentFile._post_save_hooks,
-                #    instance=self
-                #)
-
-                if new_document_file:
-                    # Only do this for new documents
-                    self.save()
-
-                    logger.info(
-                        'New document version "%s" created for document: %s',
-                        self, self.document
-                    )
-
-                    #self.document.is_stub = False
-                    #if not self.document.label:
-                    #    self.document.label = force_text(self.file)
-
-                    self.document.save(_commit_events=False)
-        except Exception as exception:
-            logger.error(
-                'Error creating new document version for document "%s"; %s',
-                self.document, exception
-            )
-            raise
-        else:
-            if new_document_version:
-                pass
-                #event_document_version_new.commit(
-                #    actor=user, target=self, action_object=self.document
-                #)
-                #signal_post_document_file_upload.send(
-                #    sender=DocumentFile, instance=self
-                #)
-
-                #if tuple(self.document.versions.all()) == (self,):
-                #    signal_post_document_created.send(
-                #        instance=self.document, sender=Document
-                #    )
-    '''
+            return super().save(*args, **kwargs)
 
     @property
     def uuid(self):

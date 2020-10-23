@@ -6,11 +6,12 @@ from mayan.apps.converter.permissions import (
 from mayan.apps.navigation.classes import Link
 
 from ..icons import (
-    icon_document_version_cache_purge, icon_document_version_create,
-    icon_document_version_delete, icon_document_version_edit,
-    icon_document_version_export, icon_document_version_list,
-    icon_document_version_print, icon_document_version_return_document,
-    icon_document_version_return_list, icon_document_version_preview,
+    icon_document_version_active, icon_document_version_cache_purge,
+    icon_document_version_create, icon_document_version_delete,
+    icon_document_version_edit, icon_document_version_export,
+    icon_document_version_list, icon_document_version_print,
+    icon_document_version_return_document, icon_document_version_return_list,
+    icon_document_version_preview,
     icon_document_version_transformations_clear,
     icon_document_version_transformations_clone
 )
@@ -21,6 +22,13 @@ from ..permissions import (
     permission_document_view
 )
 
+
+link_document_version_active = Link(
+    args='resolved_object.pk',
+    icon_class=icon_document_version_active,
+    permissions=(permission_document_version_edit,),
+    text=_('Make active'), view='documents:document_version_active'
+)
 link_document_version_cache_purge = Link(
     args='resolved_object.pk',
     icon_class=icon_document_version_cache_purge,

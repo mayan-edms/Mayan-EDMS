@@ -54,7 +54,7 @@ from .views.document_version_page_views import (
     DocumentVersionPageZoomOutView
 )
 from .views.document_version_views import (
-    DocumentVersionCachePartitionPurgeView,
+    DocumentVersionActiveView, DocumentVersionCachePartitionPurgeView,
     DocumentVersionCreateView, DocumentVersionDeleteView,
     DocumentVersionEditView, DocumentVersionExportView,
     DocumentVersionListView, DocumentVersionPreviewView,
@@ -281,6 +281,11 @@ urlpatterns_document_version = [
         regex=r'^documents/(?P<document_id>\d+)/versions/create/$',
         name='document_version_create',
         view=DocumentVersionCreateView.as_view()
+    ),
+    url(
+        regex=r'^documents/versions/(?P<document_version_id>\d+)/active/$',
+        name='document_version_active',
+        view=DocumentVersionActiveView.as_view()
     ),
     url(
         regex=r'^documents/versions/(?P<document_version_id>\d+)/caches/purge/$',

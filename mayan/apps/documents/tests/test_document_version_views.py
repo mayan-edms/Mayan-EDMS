@@ -17,15 +17,45 @@ from ..permissions import (
 from .base import GenericDocumentViewTestCase
 from .mixins.document_version_mixins import (
     DocumentVersionPageRemapViewTestMixin,
-    DocumentVersionPageResetViewTestMixin,
+    DocumentVersionPageResetViewTestMixin, DocumentVersionTestMixin,
     DocumentVersionTransformationTestMixin,
     DocumentVersionTransformationViewTestMixin, DocumentVersionViewTestMixin
 )
 
 
 class DocumentVersionViewTestCase(
-    DocumentVersionViewTestMixin, GenericDocumentViewTestCase
+    DocumentVersionTestMixin, DocumentVersionViewTestMixin,
+    GenericDocumentViewTestCase
 ):
+    def test_document_version_active_view_no_permission(self):
+        self._create_test_document_version()
+
+        self.test_document.versions.first().active_set()
+
+        response = self._request_test_document_version_active_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.test_document_version.refresh_from_db()
+        self.assertFalse(self.test_document_version.active)
+
+    def test_document_version_active_view_with_access(self):
+        self._create_test_document_version()
+
+        self.test_document.versions.first().active_set()
+
+        self.grant_access(
+            obj=self.test_document_version,
+            permission=permission_document_version_edit
+        )
+
+        response = self._request_test_document_version_active_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.test_document_version.refresh_from_db()
+        self.assertTrue(self.test_document_version.active)
+
+    ###
+
     def test_document_version_edit_view_no_permission(self):
         document_version_comment = self.test_document_version.comment
 

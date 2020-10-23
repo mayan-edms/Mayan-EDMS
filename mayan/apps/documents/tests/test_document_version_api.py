@@ -89,10 +89,10 @@ class DocumentVersionAPIViewTestCase(
         )
         response = self._request_test_document_version_edit_via_patch_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.test_document.latest_version.refresh_from_db()
+        self.test_document.version_active.refresh_from_db()
         self.assertEqual(self.test_document.versions.count(), 1)
         self.assertEqual(
-            self.test_document.latest_version.comment,
+            self.test_document.version_active.comment,
             TEST_DOCUMENT_VERSION_COMMENT_EDITED
         )
     def test_document_version_edit_via_put_api_view_no_permission(self):
@@ -108,10 +108,10 @@ class DocumentVersionAPIViewTestCase(
         response = self._request_test_document_version_edit_via_put_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        self.test_document.latest_version.refresh_from_db()
+        self.test_document.version_active.refresh_from_db()
         self.assertEqual(self.test_document.versions.count(), 1)
         self.assertEqual(
-            self.test_document.latest_version.comment,
+            self.test_document.version_active.comment,
             TEST_DOCUMENT_VERSION_COMMENT_EDITED
         )
 
@@ -153,7 +153,7 @@ class DocumentVersionAPIViewTestCase(
 
         self.assertEqual(
             response.data['results'][0]['id'],
-            self.test_document.latest_version.id
+            self.test_document.version_active.id
         )
 
 

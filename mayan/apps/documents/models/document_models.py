@@ -196,9 +196,9 @@ class Document(ModelInstanceExtraDataAPIViewMixin, ModelMixinHooks, models.Model
         )
 
     def get_api_image_url(self, *args, **kwargs):
-        latest_version = self.latest_version
-        if latest_version:
-            return latest_version.get_api_image_url(*args, **kwargs)
+        version_active = self.version_active
+        if version_active:
+            return version_active.get_api_image_url(*args, **kwargs)
 
     @property
     def is_in_trash(self):
@@ -207,10 +207,6 @@ class Document(ModelInstanceExtraDataAPIViewMixin, ModelMixinHooks, models.Model
     @property
     def latest_file(self):
         return self.files.order_by('timestamp').last()
-
-    @property
-    def latest_version(self):
-        return self.versions.order_by('timestamp').last()
 
     def natural_key(self):
         return (self.uuid,)
@@ -258,14 +254,14 @@ class Document(ModelInstanceExtraDataAPIViewMixin, ModelMixinHooks, models.Model
                 annotated_content_object_list = []
                 annotated_content_object_list.extend(
                     DocumentVersion.annotate_content_object_list(
-                        content_object_list=self.latest_version.page_content_objects
+                        content_object_list=self.version_active.page_content_objects
                     )
                 )
 
                 annotated_content_object_list.extend(
                     DocumentVersion.annotate_content_object_list(
                         content_object_list=document_file.pages.all(),
-                        start_page_number=self.latest_version.pages.count() + 1
+                        start_page_number=self.version_active.pages.count() + 1
                     )
                 )
 
@@ -292,7 +288,7 @@ class Document(ModelInstanceExtraDataAPIViewMixin, ModelMixinHooks, models.Model
     @property
     def pages(self):
         try:
-            return self.latest_version.pages
+            return self.version_active.pages
         except AttributeError:
             # Document has no version yet
             DocumentVersionPage = apps.get_model(
@@ -332,6 +328,15 @@ class Document(ModelInstanceExtraDataAPIViewMixin, ModelMixinHooks, models.Model
         if new_document:
             if user:
                 self.add_as_recent_document_for_user(user=user)
+
+    @property
+    def version_active(self):
+        try:
+            return self.versions.filter(active=True).first()
+        except self.versions.model.DoesNotExist:
+            return self.versions.none()
+
+        #return self.versions.order_by('timestamp').last()
 
 
 class TrashedDocument(Document):

@@ -9,10 +9,10 @@ from .tasks import task_document_version_ocr_process
 
 
 def method_document_ocr_submit(self):
-    latest_version = self.latest_version
+    version_active = self.version_active
     # Don't error out if document has no version
-    if latest_version:
-        latest_version.submit_for_ocr()
+    if version_active:
+        version_active.submit_for_ocr()
 
 
 def method_document_version_ocr_submit(self):

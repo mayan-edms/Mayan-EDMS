@@ -37,7 +37,7 @@ class OCREventsTestCase(GenericDocumentTestCase):
         action = Action.objects.order_by('-timestamp').last()
 
         self.assertEqual(
-            action.target, self.test_document.latest_version
+            action.target, self.test_document.version_active
         )
         self.assertEqual(
             action.action_object, self.test_document
@@ -54,7 +54,7 @@ class OCREventsTestCase(GenericDocumentTestCase):
         action = Action.objects.order_by('-timestamp').first()
 
         self.assertEqual(
-            action.target, self.test_document.latest_version
+            action.target, self.test_document.version_active
         )
         self.assertEqual(
             action.action_object, self.test_document

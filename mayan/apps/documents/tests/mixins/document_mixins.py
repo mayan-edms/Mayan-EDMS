@@ -139,7 +139,7 @@ class DocumentTestMixin:
 
         self.test_document_file_page = document_file.pages.first()
         self.test_document_file = document_file
-        self.test_document_version = self.test_document.latest_version
+        self.test_document_version = self.test_document.version_active
 
     def _upload_test_document_file(self, action=None, _user=None):
         self._calculate_test_document_file_path()
@@ -153,7 +153,7 @@ class DocumentTestMixin:
             )
 
         self.test_document_file_page = self.test_document_file.pages.first()
-        self.test_document_version = self.test_document.latest_version
+        self.test_document_version = self.test_document.version_active
 
 
 class DocumentViewTestMixin:
