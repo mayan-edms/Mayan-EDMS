@@ -106,59 +106,6 @@ class DocumentFileDeleteView(SingleObjectDeleteView):
         )
 
 
-'''
-class DocumentFileDownloadFormView(MultipleObjectFormActionView):
-    form_class = DocumentFileDownloadForm
-    model = DocumentFile
-    pk_url_kwarg = 'document_file_id'
-    querystring_form_fields = (
-        'compressed', 'zip_filename', 'preserve_extension'
-    )
-    viewname = 'documents:document_file_multiple_download'
-
-    def form_valid(self, form):
-        # Turn a queryset into a comma separated list of primary keys
-        id_list = ','.join(
-            [
-                force_text(pk) for pk in self.object_list.values_list('pk', flat=True)
-            ]
-        )
-
-        # Construct URL with querystring to pass on to the next view
-        url = furl(
-            args={
-                'id_list': id_list
-            }, path=reverse(viewname=self.viewname)
-        )
-
-        # Pass the form field data as URL querystring to the next view
-        for field in self.querystring_form_fields:
-            data = form.cleaned_data[field]
-            if data:
-                url.args[field] = data
-
-        return HttpResponseRedirect(redirect_to=url.tostr())
-
-    def get_extra_context(self):
-
-        context = {
-            'submit_icon_class': icon_document_file_download,
-            'submit_label': _('Download'),
-            'subtemplates_list': subtemplates_list,
-            'title': _('Download document files')
-        }
-
-        if self.object_list.count() == 1:
-            context['object'] = self.object_list.first()
-
-        return context
-
-    def get_form_kwargs(self):
-        return {
-            'queryset': self.object_list
-        }
-'''
-
 class DocumentFileDownloadView(SingleObjectDownloadView):
     model = DocumentFile
     object_permission = permission_document_file_download
@@ -177,36 +124,7 @@ class DocumentFileDownloadView(SingleObjectDownloadView):
     #            target=item.document
     #        )
 
-    #def get_archive_filename(self):
-    #    return self.request.GET.get(
-    #        'zip_filename', DEFAULT_DOCUMENT_FILE_ZIP_FILENAME
-    #    )
-
     def get_download_file_object(self):
-        #queryset = self.get_object_list()
-        #zip_filename = self.get_archive_filename()
-
-        #if self.request.GET.get('compressed') == 'True' or queryset.count() > 1:
-        #    compressed_file = ZipArchive()
-        #    compressed_file.create()
-        #    for item in queryset:
-        #        with item.open() as file_object:
-        #            compressed_file.add_file(
-        #                file_object=file_object,
-        #                filename=self.get_item_filename(item=item)
-        #            )
-        #            DocumentFileDownloadView.commit_event(
-        #                item=item, request=self.request
-        #            )
-
-        #    compressed_file.close()
-
-        #    return compressed_file.as_file(zip_filename)
-        #else:
-        #item = queryset.first()
-        #DocumentFileDownloadView.commit_event(
-        #    item=item, request=self.request
-        #)
         event_document_download.commit(
             actor=self.request.user,
             action_object=self.object,
@@ -216,24 +134,7 @@ class DocumentFileDownloadView(SingleObjectDownloadView):
         return self.object.open()
 
     def get_download_filename(self):
-        #queryset = self.get_object_list()
-        #if self.request.GET.get('compressed') == 'True' or queryset.count() > 1:
-        #    return self.get_archive_filename()
-        #else:
-        #return self.get_item_filename(item=queryset.first())
-        return self.object.get_rendered_string()
-    """
-    def get_item_filename(self, item):
-        preserve_extension = self.request.GET.get(
-            'preserve_extension', self.request.POST.get(
-                'preserve_extension', False
-            )
-        )
-
-        preserve_extension = preserve_extension == 'true' or preserve_extension == 'True'
-
-        return item.get_rendered_string(preserve_extension=preserve_extension)
-    """
+        return self.object.filename
 
 
 class DocumentFileEditView(SingleObjectEditView):
