@@ -17,7 +17,8 @@ from ..icons import (
     icon_document_list, icon_document_list_recent_access,
     icon_recent_added_document_list
 )
-from ..models.document_models import Document, RecentDocument
+from ..models.document_models import Document
+from ..models.misc_models import RecentDocument
 from ..permissions import (
     permission_document_properties_edit, permission_document_view
 )
