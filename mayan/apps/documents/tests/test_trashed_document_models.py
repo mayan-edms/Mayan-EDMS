@@ -1,4 +1,4 @@
-from ..models import TrashedDocument, Document
+from ..models import Document, TrashedDocument
 
 from .base import GenericDocumentTestCase
 
@@ -13,7 +13,7 @@ class TrashedDocumentTestCase(GenericDocumentTestCase):
         self.assertEqual(Document.valid.count(), 0)
 
         # Restore the document
-        self.test_document.restore()
+        TrashedDocument.objects.get(pk=self.test_document.pk).restore()
         self.assertEqual(TrashedDocument.objects.count(), 0)
         self.assertEqual(Document.valid.count(), 1)
 
