@@ -19,7 +19,7 @@ from .literals import TEST_SMALL_DOCUMENT_PATH
 class DocumentsLinksTestCase(GenericDocumentViewTestCase):
     def test_document_file_delete_link_no_permission(self):
         with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-            self.test_document.new_file(file_object=file_object)
+            self.test_document.file_new(file_object=file_object)
 
         self.assertTrue(self.test_document.files.count(), 2)
 
@@ -35,7 +35,7 @@ class DocumentsLinksTestCase(GenericDocumentViewTestCase):
         time.sleep(1.01)
 
         with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-            self.test_document.new_file(file_object=file_object)
+            self.test_document.file_new(file_object=file_object)
 
         self.assertTrue(self.test_document.files.count(), 2)
 
@@ -58,7 +58,7 @@ class DocumentsLinksTestCase(GenericDocumentViewTestCase):
         )
 
     def test_document_file_download_link_no_permission(self):
-        self.add_test_view(test_object=self.test_document.latest_file)
+        self.add_test_view(test_object=self.test_document.file_latest)
         context = self.get_test_view()
         resolved_link = link_document_file_download.resolve(context=context)
 
@@ -70,7 +70,7 @@ class DocumentsLinksTestCase(GenericDocumentViewTestCase):
             permission=permission_document_file_download
         )
 
-        self.add_test_view(test_object=self.test_document.latest_file)
+        self.add_test_view(test_object=self.test_document.file_latest)
         context = self.get_test_view()
         resolved_link = link_document_file_download.resolve(context=context)
 
@@ -79,7 +79,7 @@ class DocumentsLinksTestCase(GenericDocumentViewTestCase):
             resolved_link.url,
             reverse(
                 viewname=link_document_file_download.view,
-                args=(self.test_document.latest_file.pk,)
+                args=(self.test_document.file_latest.pk,)
             )
         )
 

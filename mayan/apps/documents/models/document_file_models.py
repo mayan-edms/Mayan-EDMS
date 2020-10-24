@@ -88,6 +88,9 @@ class DocumentFile(ModelInstanceExtraDataAPIViewMixin, models.Model):
         storage=DefinedStorageLazy(name=STORAGE_NAME_DOCUMENT_FILES),
         upload_to=upload_to, verbose_name=_('File')
     )
+    filename = models.CharField(
+        max_length=255, verbose_name=_('Filename')
+    )
     mimetype = models.CharField(
         blank=True, editable=False, help_text=_(
             'The document file\'s file mimetype. MIME types are a '
@@ -299,15 +302,15 @@ class DocumentFile(ModelInstanceExtraDataAPIViewMixin, models.Model):
                 raise
 
     def get_rendered_string(self, preserve_extension=False):
-        if preserve_extension:
-            filename, extension = os.path.splitext(self.document.label)
-            return '{} ({}){}'.format(
-                filename, self.file, extension
-            )
-        else:
-            return Template(
-                template_string='{{ instance.document }} - {{ instance.file }}'
-            ).render(context={'instance': self})
+        #if preserve_extension:
+        #    filename, extension = os.path.splitext(self.document.label)
+        #    return '{} ({}){}'.format(
+        #        filename, self.file, extension
+        #    )
+        #else:
+        return Template(
+            template_string='{{ instance.document }} - {{ instance.filename }}'
+        ).render(context={'instance': self})
 
     def get_rendered_timestamp(self):
         return Template(
@@ -315,7 +318,6 @@ class DocumentFile(ModelInstanceExtraDataAPIViewMixin, models.Model):
         ).render(
             context={'instance': self}
         )
-
 
     def mimetype_update(self, save=True):
         """

@@ -5,7 +5,7 @@ from .tasks import task_process_document_file
 
 
 def method_document_submit(self):
-    latest_file = self.latest_file
+    latest_file = self.file_latest
     # Don't error out if document has no file
     if latest_file:
         latest_file.submit_for_file_metadata_processing()
@@ -24,7 +24,7 @@ def method_document_file_submit(self):
 
 
 def method_get_document_file_metadata(self, dotted_name):
-    latest_file = self.latest_file
+    latest_file = self.file_latest
     # Don't error out if document has no file
     if latest_file:
         return latest_file.get_file_metadata(

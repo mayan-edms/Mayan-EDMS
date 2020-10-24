@@ -49,19 +49,19 @@ class DocumentAPIViewTestCase(
         self.assertEqual(document.files.count(), 1)
 
         # Document's file exists in the document storage
-        self.assertEqual(document.latest_file.exists(), True)
+        self.assertEqual(document.file_latest.exists(), True)
 
         # And is of the expected size
-        self.assertEqual(document.latest_file.size, 272213)
+        self.assertEqual(document.file_latest.size, 272213)
 
         # Correct mimetype
-        self.assertEqual(document.latest_file.mimetype, 'application/pdf')
+        self.assertEqual(document.file_latest.mimetype, 'application/pdf')
 
         # Check document file encoding
-        self.assertEqual(document.latest_file.encoding, 'binary')
+        self.assertEqual(document.file_latest.encoding, 'binary')
         self.assertEqual(document.label, TEST_PDF_DOCUMENT_FILENAME)
         self.assertEqual(
-            document.latest_file.checksum,
+            document.file_latest.checksum,
             'c637ffab6b8bb026ed3784afdb07663fddc60099853fae2be93890852a69ecf3'
         )
         self.assertEqual(document.page_count, 47)

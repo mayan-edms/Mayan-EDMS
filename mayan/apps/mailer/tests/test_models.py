@@ -44,11 +44,11 @@ class ModelTestCase(MailerTestMixin, GenericDocumentTestCase):
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
         self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
-        with self.test_document.latest_file.open() as file_object:
+        with self.test_document.file_latest.open() as file_object:
             self.assertEqual(
                 mail.outbox[0].attachments[0], (
                     self.test_document.label, file_object.read(),
-                    self.test_document.latest_file.mimetype
+                    self.test_document.file_latest.mimetype
                 )
             )
 

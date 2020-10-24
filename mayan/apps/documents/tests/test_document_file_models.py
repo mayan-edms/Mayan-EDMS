@@ -13,7 +13,7 @@ class DocumentFileTestCase(GenericDocumentTestCase):
         self.assertEqual(self.test_document.files.count(), 2)
 
         self.assertEqual(
-            self.test_document.latest_file.checksum,
+            self.test_document.file_latest.checksum,
             TEST_SMALL_DOCUMENT_CHECKSUM
         )
 
@@ -33,4 +33,4 @@ class DocumentFileTestCase(GenericDocumentTestCase):
         self.assertEqual(self.test_document.files.count(), 1)
 
     def test_method_get_absolute_url(self):
-        self.assertTrue(self.test_document.latest_file.get_absolute_url())
+        self.assertTrue(self.test_document.file_latest.get_absolute_url())

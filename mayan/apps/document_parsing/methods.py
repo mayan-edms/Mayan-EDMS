@@ -9,7 +9,7 @@ from .tasks import task_parse_document_file
 
 
 def method_document_parsing_submit(self):
-    latest_file = self.latest_file
+    latest_file = self.file_latest
     # Don't error out if document has no file
     if latest_file:
         latest_file.submit_for_parsing()

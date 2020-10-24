@@ -55,7 +55,7 @@ def operation_document_version_page_create(apps, schema_editor):
 
     content_type = ContentType.objects.get(model='documentfilepage')
 
-    document_id_iterator = Document.objects.all().only('id').values_list('id', flat=True).iterator()
+    document_id_iterator = Document.objects.using(alias=schema_editor.connection.alias).all().only('id').values_list('id', flat=True).iterator()
 
     for document_id in document_id_iterator:
         pages_reset(

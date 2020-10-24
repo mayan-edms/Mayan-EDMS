@@ -56,7 +56,7 @@ class DjangoSearchBackendDocumentSearchTestCase(
         queryset = self.search_backend.search(
             search_model=document_search,
             query_string={
-                'versions__mimetype': self.test_document.latest_file.mimetype
+                'versions__mimetype': self.test_document.file_latest.mimetype
             }, user=self._test_case_user
         )
 
@@ -257,7 +257,7 @@ class WhooshSearchBackendDocumentSearchTestCase(
         queryset = self.search_backend.search(
             search_model=document_search,
             query_string={
-                'files__mimetype': self.test_document.latest_file.mimetype
+                'files__mimetype': self.test_document.file_latest.mimetype
             }, user=self._test_case_user
         )
 

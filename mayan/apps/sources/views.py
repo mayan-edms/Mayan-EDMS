@@ -549,7 +549,7 @@ class DocumentFileUploadInteractiveView(UploadBaseView):
             #        'document': self.document,
             #    }
             #)
-            #self.document.latest_file.execute_pre_save_hooks()
+            #self.document.file_latest.execute_pre_save_hooks()
             DocumentFile.execute_pre_create_hooks(
                 kwargs={
                     'document': self.document,

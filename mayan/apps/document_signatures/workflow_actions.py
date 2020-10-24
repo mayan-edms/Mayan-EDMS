@@ -42,7 +42,7 @@ class DocumentSignatureDetachedAction(WorkflowAction):
     }
 
     def get_arguments(self, context):
-        latest_file = context['document'].latest_file
+        latest_file = context['document'].file_latest
         if not latest_file:
             raise WorkflowStateActionError(
                 _(

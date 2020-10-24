@@ -511,7 +511,7 @@ class DocumentsApp(MayanAppConfig):
         # DocumentFile
 
         SourceColumn(
-            source=DocumentFile, attribute='file', is_identifier=True,
+            source=DocumentFile, attribute='filename', is_identifier=True,
             is_object_absolute_url=True
         )
         SourceColumn(

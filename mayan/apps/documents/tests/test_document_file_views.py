@@ -25,7 +25,7 @@ class DocumentFileViewTestCase(
     GenericDocumentViewTestCase
 ):
     def test_document_file_delete_no_permission(self):
-        first_file = self.test_document.latest_file
+        first_file = self.test_document.file_latest
         self._upload_new_file()
 
         response = self._request_test_document_file_delete_view(
@@ -36,7 +36,7 @@ class DocumentFileViewTestCase(
         self.assertEqual(self.test_document.files.count(), 2)
 
     def test_document_file_delete_with_access(self):
-        first_file = self.test_document.latest_file
+        first_file = self.test_document.file_latest
         self._upload_new_file()
 
         self.grant_access(
@@ -134,7 +134,7 @@ class DocumentFileDownloadViewTestCase(
         # Set the expected_content_types for
         # common.tests.mixins.ContentTypeCheckMixin
         self.expected_content_types = (
-            self.test_document.latest_file.mimetype,
+            self.test_document.file_latest.mimetype,
         )
 
         self.grant_access(
@@ -145,11 +145,11 @@ class DocumentFileDownloadViewTestCase(
         response = self._request_test_document_file_download_view()
         self.assertEqual(response.status_code, 200)
 
-        with self.test_document.latest_file.open() as file_object:
+        with self.test_document.file_latest.open() as file_object:
             self.assert_download_response(
                 response=response, content=file_object.read(),
-                filename=force_text(s=self.test_document.latest_file),
-                mime_type=self.test_document.latest_file.mimetype
+                filename=force_text(s=self.test_document.file_latest),
+                mime_type=self.test_document.file_latest.mimetype
             )
 
     ##DISABLED TESTS
@@ -158,7 +158,7 @@ class DocumentFileDownloadViewTestCase(
         # Set the expected_content_types for
         # common.tests.mixins.ContentTypeCheckMixin
         self.expected_content_types = (
-            self.test_document.latest_file.mimetype,
+            self.test_document.file_latest.mimetype,
         )
 
         self.grant_access(
@@ -171,12 +171,12 @@ class DocumentFileDownloadViewTestCase(
         )
         self.assertEqual(response.status_code, 200)
 
-        with self.test_document.latest_file.open() as file_object:
+        with self.test_document.file_latest.open() as file_object:
             self.assert_download_response(
                 response=response, content=file_object.read(),
-                filename=self.test_document.latest_file.get_rendered_string(
+                filename=self.test_document.file_latest.get_rendered_string(
                     preserve_extension=True
-                ), mime_type=self.test_document.latest_file.mimetype
+                ), mime_type=self.test_document.file_latest.mimetype
             )
 
     def test_document_download_form_get_view_no_permission(self):
@@ -215,7 +215,7 @@ class DocumentFileDownloadViewTestCase(
         # Set the expected_content_types for
         # common.tests.mixins.ContentTypeCheckMixin
         self.expected_content_types = (
-            self.test_document.latest_file.mimetype,
+            self.test_document.file_latest.mimetype,
         )
 
         self.grant_access(
@@ -226,11 +226,11 @@ class DocumentFileDownloadViewTestCase(
         response = self._request_test_document_file_download_view()
         self.assertEqual(response.status_code, 200)
 
-        with self.test_document.latest_file.open() as file_object:
+        with self.test_document.file_latest.open() as file_object:
             self.assert_download_response(
                 response=response, content=file_object.read(),
                 filename=TEST_SMALL_DOCUMENT_FILENAME,
-                mime_type=self.test_document.latest_file.mimetype
+                mime_type=self.test_document.file_latest.mimetype
             )
     '''
     '''
@@ -242,7 +242,7 @@ class DocumentFileDownloadViewTestCase(
         # Set the expected_content_types for
         # common.tests.mixins.ContentTypeCheckMixin
         self.expected_content_types = (
-            self.test_document.latest_file.mimetype,
+            self.test_document.file_latest.mimetype,
         )
         self.grant_access(
             obj=self.test_document,
@@ -256,7 +256,7 @@ class DocumentFileDownloadViewTestCase(
             self.assert_download_response(
                 response=response, content=file_object.read(),
                 filename=TEST_SMALL_DOCUMENT_FILENAME,
-                mime_type=self.test_document.latest_file.file_mimetype
+                mime_type=self.test_document.file_latest.file_mimetype
             )
     '''
 

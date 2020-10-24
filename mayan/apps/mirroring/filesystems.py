@@ -248,10 +248,10 @@ class IndexFilesystem(LoggingMixIn, Operations):
                     result.date_added.replace(tzinfo=None) - result.date_added.utcoffset() - datetime.datetime(1970, 1, 1)
                 ).total_seconds(),
                 'st_mtime': (
-                    result.latest_file.timestamp.replace(tzinfo=None) - result.latest_file.timestamp.utcoffset() - datetime.datetime(1970, 1, 1)
+                    result.file_latest.timestamp.replace(tzinfo=None) - result.file_latest.timestamp.utcoffset() - datetime.datetime(1970, 1, 1)
                 ).total_seconds(),
                 'st_atime': now,
-                'st_size': result.latest_file.size or 0,
+                'st_size': result.file_latest.size or 0,
                 'st_nlink': 1
             }
 
@@ -263,7 +263,7 @@ class IndexFilesystem(LoggingMixIn, Operations):
 
         if isinstance(result, Document):
             next_file_descriptor = self._get_next_file_descriptor()
-            self.file_descriptors[next_file_descriptor] = result.latest_file.open()
+            self.file_descriptors[next_file_descriptor] = result.file_latest.open()
             return next_file_descriptor
         else:
             raise FuseOSError(ENOENT)

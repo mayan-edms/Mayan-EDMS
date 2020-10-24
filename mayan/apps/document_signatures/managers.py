@@ -67,7 +67,7 @@ class EmbeddedSignatureManager(models.Manager):
                 )
 
             with open(file=temporary_filename, mode='rb') as file_object:
-                document_file.document.new_file(
+                document_file.document.file_new(
                     file_object=file_object, _user=user
                 )
             return self.get(signature_id=result.signature_id)

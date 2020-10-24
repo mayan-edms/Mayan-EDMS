@@ -17,24 +17,24 @@ class DocumentTestCase(GenericDocumentTestCase):
             self.test_document_type.label, TEST_DOCUMENT_TYPE_LABEL
         )
 
-        self.assertEqual(self.test_document.latest_file.exists(), True)
+        self.assertEqual(self.test_document.file_latest.exists(), True)
         self.assertEqual(
-            self.test_document.latest_file.size,
+            self.test_document.file_latest.size,
             TEST_SMALL_DOCUMENT_SIZE
         )
 
         self.assertEqual(
-            self.test_document.latest_file.mimetype,
+            self.test_document.file_latest.mimetype,
             TEST_SMALL_DOCUMENT_MIMETYPE
         )
         self.assertEqual(
-            self.test_document.latest_file.encoding, 'binary'
+            self.test_document.file_latest.encoding, 'binary'
         )
         self.assertEqual(
-            self.test_document.latest_file.checksum,
+            self.test_document.file_latest.checksum,
             TEST_SMALL_DOCUMENT_CHECKSUM
         )
-        self.assertEqual(self.test_document.latest_file.page_count, 1)
+        self.assertEqual(self.test_document.file_latest.page_count, 1)
         self.assertEqual(
             self.test_document.label, TEST_SMALL_DOCUMENT_FILENAME
         )

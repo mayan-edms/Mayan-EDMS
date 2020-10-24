@@ -70,6 +70,14 @@ class DocumentVersion(ModelInstanceExtraDataAPIViewMixin, models.Model):
     def __str__(self):
         return self.get_rendered_string()
 
+    def active_set(self, save=True):
+        with transaction.atomic():
+            self.document.versions.exclude(pk=self.pk).update(active=False)
+            self.active = True
+
+            if save:
+                return self.save()
+
     @cached_property
     def cache(self):
         Cache = apps.get_model(app_label='file_caching', model_name='Cache')
@@ -183,7 +191,7 @@ class DocumentVersion(ModelInstanceExtraDataAPIViewMixin, models.Model):
         Remove all page mappings and recreate them to be a 1 to 1 match
         to the latest document file or the document file supplied.
         """
-        latest_file = document_file or self.document.latest_file
+        latest_file = document_file or self.document.file_latest
 
         if latest_file:
             content_object_list = list(latest_file.pages.all())
@@ -196,14 +204,6 @@ class DocumentVersion(ModelInstanceExtraDataAPIViewMixin, models.Model):
         return self.pages_remap(
             annotated_content_object_list=annotated_content_object_list
         )
-
-    def active_set(self, save=True):
-        with transaction.atomic():
-            self.document.versions.exclude(pk=self.pk).update(active=False)
-            self.active = True
-
-            if save:
-                return self.save()
 
     @method_event(
         event_manager_class=EventManagerSave,

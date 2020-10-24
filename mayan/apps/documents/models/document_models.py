@@ -127,14 +127,6 @@ class Document(ModelInstanceExtraDataAPIViewMixin, ModelMixinHooks, models.Model
             document=self, user=user
         )
 
-    #@property
-    #def checksum(self):
-    #    return self.latest_file.checksum
-
-    #@property
-    #def date_updated(self):
-    #    return self.latest_file.timestamp
-
     def delete(self, *args, **kwargs):
         to_trash = kwargs.pop('to_trash', True)
         _user = kwargs.pop('_user', None)
@@ -168,51 +160,13 @@ class Document(ModelInstanceExtraDataAPIViewMixin, ModelMixinHooks, models.Model
                 event_document_type_changed.commit(actor=_user, target=self)
                 if _user:
                     self.add_as_recent_document_for_user(user=_user)
-
-    #def exists(self):
-    #    """
-    #    Returns a boolean value that indicates if the document's
-    #    latest file file exists in storage
-    #    """
-    #    latest_file = self.latest_file
-    #    if latest_file:
-    #        return latest_file.exists()
-    #    else:
-    #        return False
-
-    #@property
-    #def file_mime_encoding(self):
-    #    return self.latest_file.encoding
-
-    #@property
-    #def file_mimetype(self):
-    #    return self.latest_file.mimetype
-
-    def get_absolute_url(self):
-        return reverse(
-            viewname='documents:document_preview', kwargs={
-                'document_id': self.pk
-            }
-        )
-
-    def get_api_image_url(self, *args, **kwargs):
-        version_active = self.version_active
-        if version_active:
-            return version_active.get_api_image_url(*args, **kwargs)
-
     @property
-    def is_in_trash(self):
-        return self.in_trash
-
-    @property
-    def latest_file(self):
+    def file_latest(self):
         return self.files.order_by('timestamp').last()
 
-    def natural_key(self):
-        return (self.uuid,)
-    natural_key.dependencies = ['documents.DocumentType']
-
-    def new_file(self, file_object, action=None, comment=None, _user=None):
+    def file_new(
+        self, file_object, action=None, comment=None, filename=None, _user=None
+    ):
         logger.info('Creating new document file for document: %s', self)
 
         if not action:
@@ -227,7 +181,8 @@ class Document(ModelInstanceExtraDataAPIViewMixin, ModelMixinHooks, models.Model
         #transaction.atomic
         try:
             document_file = DocumentFile(
-                document=self, comment=comment, file=File(file=file_object)
+                document=self, comment=comment, file=File(file=file_object),
+                filename=filename or file_object.name
             )
             #document_file = self.files(
             #    comment=comment or '', file=File(file=file_object)
@@ -274,12 +229,25 @@ class Document(ModelInstanceExtraDataAPIViewMixin, ModelMixinHooks, models.Model
 
             return document_file
 
-    #def open(self, *args, **kwargs):
-    #    """
-    #    Return a file descriptor to a document's file irrespective of
-    #    the storage backend
-    #    """
-    #    return self.latest_file.open(*args, **kwargs)
+    def get_absolute_url(self):
+        return reverse(
+            viewname='documents:document_preview', kwargs={
+                'document_id': self.pk
+            }
+        )
+
+    def get_api_image_url(self, *args, **kwargs):
+        version_active = self.version_active
+        if version_active:
+            return version_active.get_api_image_url(*args, **kwargs)
+
+    @property
+    def is_in_trash(self):
+        return self.in_trash
+
+    def natural_key(self):
+        return (self.uuid,)
+    natural_key.dependencies = ['documents.DocumentType']
 
     @property
     def page_count(self):
@@ -335,8 +303,6 @@ class Document(ModelInstanceExtraDataAPIViewMixin, ModelMixinHooks, models.Model
             return self.versions.filter(active=True).first()
         except self.versions.model.DoesNotExist:
             return self.versions.none()
-
-        #return self.versions.order_by('timestamp').last()
 
 
 class TrashedDocument(Document):

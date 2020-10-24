@@ -150,7 +150,7 @@ class DocumentType(models.Model):
             raise
         else:
             try:
-                document_file = document.new_file(
+                document_file = document.file_new(
                     file_object=file_object, _user=_user
                 )
             except Exception as exception:

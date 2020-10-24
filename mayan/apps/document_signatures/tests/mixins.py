@@ -83,7 +83,7 @@ class DetachedSignatureViewTestMixin:
             return self.post(
                 viewname='signatures:document_file_signature_upload',
                 kwargs={
-                    'document_file_id': self.test_document.latest_file.pk
+                    'document_file_id': self.test_document.file_latest.pk
                 }, data={'signature_file': file_object}
             )
 
@@ -138,7 +138,7 @@ class SignatureTestMixin:
     def _upload_test_detached_signature(self):
         with open(file=TEST_SIGNATURE_FILE_PATH, mode='rb') as file_object:
             self.test_signature = DetachedSignature.objects.create(
-                document_file=self.test_document.latest_file,
+                document_file=self.test_document.file_latest,
                 signature_file=File(file_object)
             )
 
@@ -161,7 +161,7 @@ class SignatureViewTestMixin:
         return self.get(
             viewname='signatures:document_file_signature_list',
             kwargs={
-                'document_file_id': self.test_document.latest_file.pk
+                'document_file_id': self.test_document.file_latest.pk
             }
         )
 

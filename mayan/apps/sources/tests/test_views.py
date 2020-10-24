@@ -73,7 +73,7 @@ class DocumentUploadWizardViewTestCase(
 
         self.assertEqual(Document.objects.count(), 1)
         self.assertEqual(
-            Document.objects.first().latest_file.checksum,
+            Document.objects.first().file_latest.checksum,
             TEST_SMALL_DOCUMENT_CHECKSUM
         )
 
@@ -223,6 +223,25 @@ class DocumentFileUploadViewTestCase(
         self.test_document.refresh_from_db()
         self.assertEqual(
             self.test_document.files.count(), file_count + 1
+        )
+
+    def test_document_file_upload_view_preserve_filename_with_access(self):
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_file_new
+        )
+        file_count = self.test_document.files.count()
+
+        response = self._request_document_file_upload_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.test_document.refresh_from_db()
+        self.assertEqual(
+            self.test_document.files.count(), file_count + 1
+        )
+        self.assertEqual(
+            self.test_document.file_latest.filename,
+            self.test_document_filename
         )
 
 

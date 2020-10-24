@@ -16,7 +16,7 @@ class DocumentFileAPIViewTestMixin:
         return self.delete(
             viewname='rest_api:documentfile-detail', kwargs={
                 'document_id': self.test_document.pk,
-                'document_file_id': self.test_document.latest_file.pk
+                'document_file_id': self.test_document.file_latest.pk
             }
         )
 
@@ -24,7 +24,7 @@ class DocumentFileAPIViewTestMixin:
         return self.get(
             viewname='rest_api:documentfile-download', kwargs={
                 'document_id': self.test_document.pk,
-                'document_file_id': self.test_document.latest_file.pk,
+                'document_file_id': self.test_document.file_latest.pk,
             }
         )
 
@@ -54,7 +54,7 @@ class DocumentFileAPIViewTestMixin:
 class DocumentFileTestMixin:
     def _upload_new_file(self):
         with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-            self.test_document.new_file(
+            self.test_document.file_new(
                 comment=TEST_DOCUMENT_FILE_COMMENT, file_object=file_object
             )
 
@@ -71,7 +71,7 @@ class DocumentFileViewTestMixin:
         data = data or {}
         return self.get(
             viewname='documents:document_file_download', kwargs={
-                'document_file_id': self.test_document.latest_file.pk
+                'document_file_id': self.test_document.file_latest.pk
             }, data=data
         )
 

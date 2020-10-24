@@ -64,3 +64,5 @@
 - Improve page remap code and add annotated content object list support.
 - Don't display the file upload link on the document file delete view.
 - Update shared upload file to allow storing the original filename.
+- Upload the new document file upload code path to conserve the original
+  filename.

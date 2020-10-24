@@ -76,7 +76,7 @@ class IndexFilesystemTestCase(
 
         # Delete the physical document file without deleting the document
         # database entry.
-        document_file = self.test_document.latest_file.file
+        document_file = self.test_document.file_latest.file
         document_file.storage.delete(document_file.name)
 
         self.assertEqual(
@@ -107,10 +107,10 @@ class IndexFilesystemTestCase(
             hashlib.sha256(
                 index_filesystem.read(
                     fh=file_handle, offset=0, path=None,
-                    size=self.test_document.latest_file.size
+                    size=self.test_document.file_latest.size
                 )
             ).hexdigest(),
-            self.test_document.latest_file.checksum
+            self.test_document.file_latest.checksum
         )
 
     def test_multiline_indexes(self):
@@ -247,7 +247,7 @@ class IndexFilesystemTestCase(
         self.assertEqual(
             index_filesystem.read(
                 path=None, size=-1, offset=0, fh=file_handle
-            ), self.test_documents[0].latest_file.open().read()
+            ), self.test_documents[0].file_latest.open().read()
         )
 
         index_filesystem.release(path=None, fh=file_handle)
@@ -259,7 +259,7 @@ class IndexFilesystemTestCase(
         self.assertEqual(
             index_filesystem.read(
                 path=None, size=-1, offset=0, fh=file_handle
-            ), self.test_documents[1].latest_file.open().read()
+            ), self.test_documents[1].file_latest.open().read()
         )
 
         index_filesystem.release(path=None, fh=file_handle)
@@ -290,7 +290,7 @@ class IndexFilesystemTestCase(
         self.assertEqual(
             index_filesystem.read(
                 path=None, size=-1, offset=0, fh=file_handle
-            ), self.test_document.latest_file.open().read()
+            ), self.test_document.file_latest.open().read()
         )
 
         index_filesystem.release(path=None, fh=file_handle)
@@ -341,7 +341,7 @@ class IndexFilesystemTestCase(
         self.assertEqual(
             index_filesystem.read(
                 path=None, size=-1, offset=0, fh=file_handle
-            ), self.test_document.latest_file.open().read()
+            ), self.test_document.file_latest.open().read()
         )
 
         index_filesystem.release(path=None, fh=file_handle)

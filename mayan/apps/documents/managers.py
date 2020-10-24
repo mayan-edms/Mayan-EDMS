@@ -171,7 +171,7 @@ class DuplicatedDocumentManager(models.Manager):
         """
         Find duplicates by matching latest file checksums
         """
-        if not document.latest_file:
+        if not document.file_latest:
             return None
 
         Document = apps.get_model(

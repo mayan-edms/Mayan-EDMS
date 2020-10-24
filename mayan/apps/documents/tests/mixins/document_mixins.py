@@ -148,7 +148,7 @@ class DocumentTestMixin:
             action = DOCUMENT_FILE_ACTION_PAGES_NEW
 
         with open(file=self.test_document_path, mode='rb') as file_object:
-            self.test_document_file = self.test_document.new_file(
+            self.test_document_file = self.test_document.file_new(
                 action=action, file_object=file_object, _user=_user
             )
 

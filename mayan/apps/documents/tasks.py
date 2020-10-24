@@ -86,7 +86,7 @@ def task_document_file_page_image_generate(
 
 
 @app.task(bind=True, default_retry_delay=UPLOAD_NEW_VERSION_RETRY_DELAY, ignore_result=True)
-def task_document_file_upload(self, document_id, shared_uploaded_file_id, user_id, action=None, comment=None):
+def task_document_file_upload(self, document_id, shared_uploaded_file_id, user_id, action=None, comment=None, filename=None):
     Document = apps.get_model(
         app_label='documents', model_name='Document'
     )
@@ -118,9 +118,9 @@ def task_document_file_upload(self, document_id, shared_uploaded_file_id, user_i
 
     with shared_file.open() as file_object:
         try:
-            document_file = document.new_file(
+            document_file = document.file_new(
                 action=action, comment=comment, file_object=file_object,
-                _user=user
+                filename=filename or shared_file.filename, _user=user
             )
         except Warning as warning:
             # New document file are blocked

@@ -33,7 +33,7 @@ class DetachedSignaturesTestCase(
 
         self.assertEqual(
             self.test_signature.document_file,
-            self.test_document.latest_file
+            self.test_document.file_latest
         )
         self.assertEqual(self.test_signature.key_id, TEST_KEY_PUBLIC_ID)
         self.assertEqual(self.test_signature.public_key_fingerprint, None)
@@ -49,7 +49,7 @@ class DetachedSignaturesTestCase(
 
         self.assertEqual(
             self.test_signature.document_file,
-            self.test_document.latest_file
+            self.test_document.file_latest
         )
         self.assertEqual(self.test_signature.key_id, TEST_KEY_PUBLIC_ID)
         self.assertEqual(
@@ -67,7 +67,7 @@ class DetachedSignaturesTestCase(
 
         self.assertEqual(
             self.test_signature.document_file,
-            self.test_document.latest_file
+            self.test_document.file_latest
         )
         self.assertEqual(self.test_signature.key_id, TEST_KEY_PUBLIC_ID)
         self.assertEqual(self.test_signature.public_key_fingerprint, None)
@@ -91,7 +91,7 @@ class DetachedSignaturesTestCase(
 
         self.assertEqual(
             self.test_signature.document_file,
-            self.test_document.latest_file
+            self.test_document.file_latest
         )
         self.assertEqual(self.test_signature.key_id, TEST_KEY_PUBLIC_ID)
         self.assertEqual(
@@ -111,7 +111,7 @@ class DetachedSignaturesTestCase(
         self._upload_test_document()
 
         test_detached_signature = DetachedSignature.objects.sign_document_file(
-            document_file=self.test_document.latest_file,
+            document_file=self.test_document.file_latest,
             key=self.test_key_private,
             passphrase=TEST_KEY_PRIVATE_PASSPHRASE
         )
@@ -160,7 +160,7 @@ class EmbeddedSignaturesTestCase(
 
         signature = EmbeddedSignature.objects.first()
         self.assertEqual(
-            signature.document_file, self.test_document.latest_file
+            signature.document_file, self.test_document.file_latest
         )
         self.assertEqual(signature.key_id, TEST_KEY_PUBLIC_ID)
         self.assertEqual(signature.signature_id, None)
@@ -173,7 +173,7 @@ class EmbeddedSignaturesTestCase(
 
         signature = EmbeddedSignature.objects.first()
         self.assertEqual(
-            signature.document_file, self.test_document.latest_file
+            signature.document_file, self.test_document.file_latest
         )
         self.assertEqual(signature.key_id, TEST_KEY_PUBLIC_ID)
         self.assertEqual(signature.signature_id, None)
@@ -194,7 +194,7 @@ class EmbeddedSignaturesTestCase(
         signature = EmbeddedSignature.objects.first()
 
         self.assertEqual(
-            signature.document_file, self.test_document.latest_file
+            signature.document_file, self.test_document.file_latest
         )
         self.assertEqual(signature.key_id, TEST_KEY_PUBLIC_ID)
         self.assertEqual(signature.signature_id, TEST_SIGNATURE_ID)
@@ -216,7 +216,7 @@ class EmbeddedSignaturesTestCase(
 
         self.assertEqual(
             signature.document_file,
-            self.test_document.latest_file
+            self.test_document.file_latest
         )
         self.assertEqual(signature.key_id, TEST_KEY_PUBLIC_ID)
         self.assertEqual(
@@ -263,14 +263,14 @@ class EmbeddedSignaturesTestCase(
         self.test_document_path = TEST_DOCUMENT_PATH
         self._upload_test_document()
 
-        with self.test_document.latest_file.open() as file_object:
+        with self.test_document.file_latest.open() as file_object:
             file_object.seek(0, 2)
             original_size = file_object.tell()
             file_object.seek(0)
             original_hash = hashlib.sha256(file_object.read()).hexdigest()
 
         signature = EmbeddedSignature.objects.sign_document_file(
-            document_file=self.test_document.latest_file,
+            document_file=self.test_document.file_latest,
             key=self.test_key_private,
             passphrase=TEST_KEY_PRIVATE_PASSPHRASE
         )
@@ -297,7 +297,7 @@ class EmbeddedSignaturesTestCase(
         self._upload_test_document()
 
         with open(file=TEST_SIGNED_DOCUMENT_PATH, mode='rb') as file_object:
-            signed_file = self.test_document.new_file(
+            signed_file = self.test_document.file_new(
                 file_object=file_object, comment=''
             )
 

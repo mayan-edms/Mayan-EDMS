@@ -23,7 +23,7 @@ class DocumentSignatureLinksTestCase(
         self._upload_test_document()
 
         self.add_test_view(
-            test_object=self.test_document.latest_file.signatures.first()
+            test_object=self.test_document.file_latest.signatures.first()
         )
         context = self.get_test_view()
         resolved_link = link_document_file_signature_details.resolve(
@@ -42,7 +42,7 @@ class DocumentSignatureLinksTestCase(
         )
 
         self.add_test_view(
-            test_object=self.test_document.latest_file.signatures.first()
+            test_object=self.test_document.file_latest.signatures.first()
         )
         context = self.get_test_view()
         resolved_link = link_document_file_signature_details.resolve(
@@ -55,7 +55,7 @@ class DocumentSignatureLinksTestCase(
             reverse(
                 viewname=link_document_file_signature_details.view,
                 kwargs={
-                    'signature_id': self.test_document.latest_file.signatures.first().pk,
+                    'signature_id': self.test_document.file_latest.signatures.first().pk,
                 }
             )
         )
@@ -67,7 +67,7 @@ class DocumentSignatureLinksTestCase(
         self._upload_test_detached_signature()
 
         self.add_test_view(
-            test_object=self.test_document.latest_file.signatures.first()
+            test_object=self.test_document.file_latest.signatures.first()
         )
         context = self.get_test_view()
         resolved_link = link_document_file_signature_delete.resolve(
@@ -87,7 +87,7 @@ class DocumentSignatureLinksTestCase(
         )
 
         self.add_test_view(
-            test_object=self.test_document.latest_file.signatures.first()
+            test_object=self.test_document.file_latest.signatures.first()
         )
         context = self.get_test_view()
         resolved_link = link_document_file_signature_delete.resolve(
@@ -99,7 +99,7 @@ class DocumentSignatureLinksTestCase(
             reverse(
                 viewname=link_document_file_signature_delete.view,
                 kwargs={
-                    'signature_id': self.test_document.latest_file.signatures.first().pk,
+                    'signature_id': self.test_document.file_latest.signatures.first().pk,
                 }
             )
         )

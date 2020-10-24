@@ -76,7 +76,7 @@ class DocumentCheckoutTestCase(
 
         with self.assertRaises(expected_exception=NewDocumentFileNotAllowed):
             with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-                self.test_document.new_file(file_object=file_object)
+                self.test_document.file_new(file_object=file_object)
 
     def test_file_creation_blocking(self):
         # Silence unrelated logging
@@ -88,4 +88,4 @@ class DocumentCheckoutTestCase(
 
         with self.assertRaises(expected_exception=NewDocumentFileNotAllowed):
             with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-                self.test_document.new_file(file_object=file_object)
+                self.test_document.file_new(file_object=file_object)

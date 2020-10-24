@@ -32,7 +32,7 @@ class DocumentTypeViewsTestCase(
         self.assertEqual(response.status_code, 200)
 
         self.assertEqual(
-            self.test_document.latest_file.file_metadata_drivers.count(), 0
+            self.test_document.file_latest.file_metadata_drivers.count(), 0
         )
 
     def test_document_type_submit_view_with_access(self):
@@ -44,7 +44,7 @@ class DocumentTypeViewsTestCase(
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
-            self.test_document.latest_file.file_metadata_drivers.count(), 1
+            self.test_document.file_latest.file_metadata_drivers.count(), 1
         )
 
 
@@ -54,7 +54,7 @@ class FileMetadataViewsTestCase(
 ):
     def setUp(self):
         super().setUp()
-        self.test_driver = self.test_document.latest_file.file_metadata_drivers.first()
+        self.test_driver = self.test_document.file_latest.file_metadata_drivers.first()
 
     def test_document_file_driver_list_view_no_permission(self):
         response = self._request_document_file_driver_list_view()
@@ -87,17 +87,17 @@ class FileMetadataViewsTestCase(
         )
 
     def test_document_submit_view_no_permission(self):
-        self.test_document.latest_file.file_metadata_drivers.all().delete()
+        self.test_document.file_latest.file_metadata_drivers.all().delete()
 
         response = self._request_document_file_submit_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
-            self.test_document.latest_file.file_metadata_drivers.count(), 0
+            self.test_document.file_latest.file_metadata_drivers.count(), 0
         )
 
     def test_document_submit_view_with_access(self):
-        self.test_document.latest_file.file_metadata_drivers.all().delete()
+        self.test_document.file_latest.file_metadata_drivers.all().delete()
         self.grant_access(
             permission=permission_file_metadata_submit, obj=self.test_document
         )
@@ -106,21 +106,21 @@ class FileMetadataViewsTestCase(
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
-            self.test_document.latest_file.file_metadata_drivers.count(), 1
+            self.test_document.file_latest.file_metadata_drivers.count(), 1
         )
 
     def test_multiple_document_submit_view_no_permission(self):
-        self.test_document.latest_file.file_metadata_drivers.all().delete()
+        self.test_document.file_latest.file_metadata_drivers.all().delete()
 
         response = self._request_document_file_multiple_submit_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(
-            self.test_document.latest_file.file_metadata_drivers.count(), 0
+            self.test_document.file_latest.file_metadata_drivers.count(), 0
         )
 
     def test_multiple_document_submit_view_with_access(self):
-        self.test_document.latest_file.file_metadata_drivers.all().delete()
+        self.test_document.file_latest.file_metadata_drivers.all().delete()
         self.grant_access(
             permission=permission_file_metadata_submit, obj=self.test_document
         )
@@ -129,5 +129,5 @@ class FileMetadataViewsTestCase(
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
-            self.test_document.latest_file.file_metadata_drivers.count(), 1
+            self.test_document.file_latest.file_metadata_drivers.count(), 1
         )

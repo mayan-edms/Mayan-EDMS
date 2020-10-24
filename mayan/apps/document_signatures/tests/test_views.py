@@ -206,13 +206,13 @@ class DetachedSignaturesViewTestCase(
         self._upload_test_document()
         self._create_test_key_private()
 
-        signatures = self.test_document.latest_file.signatures.count()
+        signatures = self.test_document.file_latest.signatures.count()
 
         response = self._request_test_document_file_signature_create_view()
         self.assertEqual(response.status_code, 403)
 
         self.assertEqual(
-            self.test_document.latest_file.signatures.count(),
+            self.test_document.file_latest.signatures.count(),
             signatures
         )
 
@@ -221,7 +221,7 @@ class DetachedSignaturesViewTestCase(
         self._upload_test_document()
         self._create_test_key_private()
 
-        signatures = self.test_document.latest_file.signatures.count()
+        signatures = self.test_document.file_latest.signatures.count()
 
         self.grant_access(
             obj=self.test_document,
@@ -232,7 +232,7 @@ class DetachedSignaturesViewTestCase(
         self.assertEqual(response.status_code, 200)
 
         self.assertEqual(
-            self.test_document.latest_file.signatures.count(),
+            self.test_document.file_latest.signatures.count(),
             signatures
         )
 
@@ -241,7 +241,7 @@ class DetachedSignaturesViewTestCase(
         self._upload_test_document()
         self._create_test_key_private()
 
-        signatures = self.test_document.latest_file.signatures.count()
+        signatures = self.test_document.file_latest.signatures.count()
 
         self.grant_access(
             obj=self.test_key_private,
@@ -252,7 +252,7 @@ class DetachedSignaturesViewTestCase(
         self.assertEqual(response.status_code, 403)
 
         self.assertEqual(
-            self.test_document.latest_file.signatures.count(),
+            self.test_document.file_latest.signatures.count(),
             signatures
         )
 
@@ -261,7 +261,7 @@ class DetachedSignaturesViewTestCase(
         self._upload_test_document()
         self._create_test_key_private()
 
-        signatures = self.test_document.latest_file.signatures.count()
+        signatures = self.test_document.file_latest.signatures.count()
 
         self.grant_access(
             obj=self.test_document,
@@ -276,7 +276,7 @@ class DetachedSignaturesViewTestCase(
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
-            self.test_document.latest_file.signatures.count(),
+            self.test_document.file_latest.signatures.count(),
             signatures + 1
         )
 
@@ -344,13 +344,13 @@ class EmbeddedSignaturesViewTestCase(
         self._upload_test_document()
         self._create_test_key_private()
 
-        signatures = self.test_document.latest_file.signatures.count()
+        signatures = self.test_document.file_latest.signatures.count()
 
         response = self._request_test_document_file_signature_create_view()
         self.assertEqual(response.status_code, 403)
 
         self.assertEqual(
-            self.test_document.latest_file.signatures.count(),
+            self.test_document.file_latest.signatures.count(),
             signatures
         )
 
@@ -359,7 +359,7 @@ class EmbeddedSignaturesViewTestCase(
         self._upload_test_document()
         self._create_test_key_private()
 
-        signatures = self.test_document.latest_file.signatures.count()
+        signatures = self.test_document.file_latest.signatures.count()
 
         self.grant_access(
             obj=self.test_document,
@@ -370,7 +370,7 @@ class EmbeddedSignaturesViewTestCase(
         self.assertEqual(response.status_code, 200)
 
         self.assertEqual(
-            self.test_document.latest_file.signatures.count(),
+            self.test_document.file_latest.signatures.count(),
             signatures
         )
 
@@ -379,7 +379,7 @@ class EmbeddedSignaturesViewTestCase(
         self._upload_test_document()
         self._create_test_key_private()
 
-        signatures = self.test_document.latest_file.signatures.count()
+        signatures = self.test_document.file_latest.signatures.count()
 
         self.grant_access(
             obj=self.test_key_private,
@@ -390,7 +390,7 @@ class EmbeddedSignaturesViewTestCase(
         self.assertEqual(response.status_code, 403)
 
         self.assertEqual(
-            self.test_document.latest_file.signatures.count(),
+            self.test_document.file_latest.signatures.count(),
             signatures
         )
 
@@ -399,7 +399,7 @@ class EmbeddedSignaturesViewTestCase(
         self._upload_test_document()
         self._create_test_key_private()
 
-        signatures = self.test_document.latest_file.signatures.count()
+        signatures = self.test_document.file_latest.signatures.count()
 
         self.grant_access(
             obj=self.test_document,
@@ -413,10 +413,10 @@ class EmbeddedSignaturesViewTestCase(
         response = self._request_test_document_file_signature_create_view()
         self.assertEqual(response.status_code, 302)
         self.assertTrue(
-            str(self.test_document.latest_file.pk) in response.url
+            str(self.test_document.file_latest.pk) in response.url
         )
 
         self.assertEqual(
-            self.test_document.latest_file.signatures.count(),
+            self.test_document.file_latest.signatures.count(),
             signatures + 1
         )

@@ -22,7 +22,7 @@ class DocumentVersionTestCase(GenericDocumentTestCase):
         )
         self.assertEqual(
             self.test_document_version.page_content_objects,
-            list(self.test_document.latest_file.pages.all())
+            list(self.test_document.file_latest.pages.all())
         )
 
     def test_version_new_version_keep_pages(self):
@@ -40,7 +40,7 @@ class DocumentVersionTestCase(GenericDocumentTestCase):
         )
         self.assertNotEqual(
             self.test_document_version.page_content_objects,
-            list(self.test_document.latest_file.pages.all())
+            list(self.test_document.file_latest.pages.all())
         )
 
     def test_version_new_file_append_pages(self):

@@ -68,5 +68,5 @@ class DocumentTypeModelTestCase(GenericDocumentTestCase):
         self._upload_test_document()
         self.assertEqual(
             self.test_document_filename,
-            self.test_document.latest_file.file
+            self.test_document.file_latest.file
         )
