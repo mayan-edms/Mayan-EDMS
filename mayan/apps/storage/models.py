@@ -1,3 +1,4 @@
+from pathlib import Path
 import uuid
 
 from django.contrib.contenttypes.fields import GenericForeignKey
@@ -72,6 +73,9 @@ class SharedUploadedFile(ModelMixinDatabaseFile, models.Model):
             name=STORAGE_NAME_SHARED_UPLOADED_FILE
         ), upload_to=upload_to, verbose_name=_('File')
     )
+    filename = models.CharField(
+        blank=True, max_length=255, verbose_name=_('Filename')
+    )
 
     objects = SharedUploadedFileManager()
 
@@ -81,3 +85,7 @@ class SharedUploadedFile(ModelMixinDatabaseFile, models.Model):
 
     def __str__(self):
         return self.filename
+
+    def save(self, *args, **kwargs):
+        self.filename = self.filename or Path(path=self.file.name).name
+        super().save(*args, **kwargs)

@@ -118,15 +118,15 @@ class StorageProcessorTestCase(
     def test_processor_forwards(self):
         self._upload_and_process()
 
-        with open(file=self.test_document.latest_file.file.path, mode='rb') as file_object:
+        with open(file=self.test_document.file_latest.file.path, mode='rb') as file_object:
             self.assertEqual(
                 get_mimetype(file_object=file_object),
                 ('application/zip', 'binary')
             )
 
         self.assertEqual(
-            self.test_document.latest_file.checksum,
-            self.test_document.latest_file.checksum_update(save=False)
+            self.test_document.file_latest.checksum,
+            self.test_document.file_latest.checksum_update(save=False)
         )
 
     def test_processor_forwards_and_reverse(self):
@@ -139,13 +139,13 @@ class StorageProcessorTestCase(
             'location': self.document_storage_kwargs['location']
         }
 
-        with open(file=self.test_document.latest_file.file.path, mode='rb') as file_object:
+        with open(file=self.test_document.file_latest.file.path, mode='rb') as file_object:
             self.assertNotEqual(
                 get_mimetype(file_object=file_object),
                 ('application/zip', 'binary')
             )
 
         self.assertEqual(
-            self.test_document.latest_file.checksum,
-            self.test_document.latest_file.checksum_update(save=False)
+            self.test_document.file_latest.checksum,
+            self.test_document.file_latest.checksum_update(save=False)
         )
