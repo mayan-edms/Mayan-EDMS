@@ -23,8 +23,7 @@ from mayan.apps.views.mixins import ExternalObjectMixin
 
 from ..events import event_document_download, event_document_viewed
 from ..forms.document_file_forms import (
-    DocumentFileDownloadForm, DocumentFileForm, DocumentFilePreviewForm,
-    DocumentFilePropertiesForm
+    DocumentFileForm, DocumentFilePreviewForm, DocumentFilePropertiesForm
 )
 from ..forms.misc_forms import PageNumberForm
 from ..icons import icon_document_file_download, icon_document_file_list

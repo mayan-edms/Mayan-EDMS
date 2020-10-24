@@ -70,6 +70,7 @@ class DocumentFileViewTestCase(
         )
 
         document_file_comment = self.test_document_file.comment
+        document_file_filename = self.test_document_file.filename
 
         response = self._request_test_document_file_edit_view()
         self.assertEqual(response.status_code, 302)
@@ -78,6 +79,10 @@ class DocumentFileViewTestCase(
         self.assertNotEqual(
             self.test_document_file.comment,
             document_file_comment
+        )
+        self.assertNotEqual(
+            self.test_document_file.filename,
+            document_file_filename
         )
 
     def test_document_file_list_no_permission(self):
@@ -220,10 +225,12 @@ class DocumentFileTransformationViewTestCase(
         ).count()
 
         self.grant_access(
-            obj=self.test_document_file, permission=permission_document_file_view
+            obj=self.test_document_file,
+            permission=permission_document_file_view
         )
         self.grant_access(
-            obj=self.test_document_file, permission=permission_transformation_delete
+            obj=self.test_document_file,
+            permission=permission_transformation_delete
         )
 
         response = self._request_test_document_file_multiple_transformations_clear_view()

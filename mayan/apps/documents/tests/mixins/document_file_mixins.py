@@ -6,8 +6,9 @@ from ...literals import PAGE_RANGE_ALL
 
 from ..literals import (
     TEST_DOCUMENT_FILE_COMMENT, TEST_DOCUMENT_FILE_COMMENT_EDITED,
-    TEST_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_PATH,
-    TEST_TRANSFORMATION_ARGUMENT, TEST_TRANSFORMATION_CLASS
+    TEST_DOCUMENT_FILE_FILENAME_EDITED, TEST_DOCUMENT_PATH,
+    TEST_SMALL_DOCUMENT_PATH, TEST_TRANSFORMATION_ARGUMENT,
+    TEST_TRANSFORMATION_CLASS
 )
 
 
@@ -80,7 +81,8 @@ class DocumentFileViewTestMixin:
             viewname='documents:document_file_edit', kwargs={
                 'document_file_id': self.test_document_file.pk
             }, data={
-                'comment': TEST_DOCUMENT_FILE_COMMENT_EDITED
+                'comment': TEST_DOCUMENT_FILE_COMMENT_EDITED,
+                'filename': TEST_DOCUMENT_FILE_FILENAME_EDITED
             }
         )
 

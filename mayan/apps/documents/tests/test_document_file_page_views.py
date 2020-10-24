@@ -49,7 +49,8 @@ class DocumentFilePageViewTestCase(
         self.assertEqual(self.test_document_file.pages.count(), 0)
 
         self.grant_access(
-            obj=self.test_document_file, permission=permission_document_file_tools
+            obj=self.test_document_file,
+            permission=permission_document_file_tools
         )
 
         response = self._request_test_document_file_multiple_page_count_update_view()

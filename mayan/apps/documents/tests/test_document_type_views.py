@@ -264,13 +264,15 @@ class DocumentsQuickLabelViewTestCase(
 
         self.test_document.refresh_from_db()
         self.assertEqual(
-            self.test_document.label, self.test_document_type_filename.filename
+            self.test_document.label,
+            self.test_document_type_filename.filename
         )
 
     def test_document_quick_label_preserve_extension_with_access(self):
         self._create_test_quick_label()
         self.grant_access(
-            permission=permission_document_properties_edit, obj=self.test_document
+            obj=self.test_document,
+            permission=permission_document_properties_edit
         )
         filename, extension = os.path.splitext(self.test_document.label)
 

@@ -301,23 +301,10 @@ class DocumentFile(ModelInstanceExtraDataAPIViewMixin, models.Model):
                     cache_file.delete()
                 raise
 
-    def get_rendered_string(self, preserve_extension=False):
-        #if preserve_extension:
-        #    filename, extension = os.path.splitext(self.document.label)
-        #    return '{} ({}){}'.format(
-        #        filename, self.file, extension
-        #    )
-        #else:
+    def get_rendered_string(self):
         return Template(
             template_string='{{ instance.document }} - {{ instance.filename }}'
         ).render(context={'instance': self})
-
-    def get_rendered_timestamp(self):
-        return Template(
-            template_string='{{ instance.timestamp }}'
-        ).render(
-            context={'instance': self}
-        )
 
     def mimetype_update(self, save=True):
         """

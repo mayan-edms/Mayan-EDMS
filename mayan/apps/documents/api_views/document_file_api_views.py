@@ -102,18 +102,8 @@ class APIDocumentFileDownloadView(
         return instance.open()
 
     def get_download_filename(self):
-        preserve_extension = self.request.GET.get(
-            'preserve_extension', self.request.POST.get(
-                'preserve_extension', False
-            )
-        )
-
-        preserve_extension = preserve_extension == 'true' or preserve_extension == 'True'
-
         instance = self.get_object()
-        return instance.get_rendered_string(
-            preserve_extension=preserve_extension
-        )
+        return instance.filename
 
     def get_serializer(self, *args, **kwargs):
         return None

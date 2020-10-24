@@ -14,6 +14,7 @@ TEST_DOCUMENT_DESCRIPTION = 'test description'
 TEST_DOCUMENT_DESCRIPTION_EDITED = 'test document description edited'
 TEST_DOCUMENT_FILE_COMMENT = 'test document file comment'
 TEST_DOCUMENT_FILE_COMMENT_EDITED = 'test document file comment edited'
+TEST_DOCUMENT_FILE_FILENAME_EDITED = 'test document file filename edited'
 TEST_DOCUMENT_LABEL_EDITED = 'test document label edited'
 TEST_DOCUMENT_TYPE_DELETE_PERIOD = 30
 TEST_DOCUMENT_TYPE_DELETE_TIME_UNIT = TIME_DELTA_UNIT_DAYS
