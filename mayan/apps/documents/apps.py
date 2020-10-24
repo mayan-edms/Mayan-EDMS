@@ -195,7 +195,7 @@ class DocumentsApp(MayanAppConfig):
     def ready(self):
         super().ready()
 
-        DeletedDocument = self.get_model(model_name='DeletedDocument')
+        TrashedDocument = self.get_model(model_name='TrashedDocument')
         Document = self.get_model(model_name='Document')
         DocumentFile = self.get_model(model_name='DocumentFile')
         DocumentFilePage = self.get_model(model_name='DocumentFilePage')
@@ -221,7 +221,7 @@ class DocumentsApp(MayanAppConfig):
             serializer_class='mayan.apps.documents.serializers.document_serializers.DocumentSerializer'
         )
 
-        EventModelRegistry.register(model=DeletedDocument)
+        EventModelRegistry.register(model=TrashedDocument)
         EventModelRegistry.register(model=Document)
         EventModelRegistry.register(model=DocumentFile)
         EventModelRegistry.register(model=DocumentType)
@@ -298,7 +298,7 @@ class DocumentsApp(MayanAppConfig):
 
         ModelField(model=Document, name='description')
         ModelField(model=Document, name='date_added')
-        ModelField(model=Document, name='deleted_date_time')
+        ModelField(model=Document, name='trashed_date_time')
         ModelField(
             model=Document, name='document_type'
         )
@@ -638,15 +638,15 @@ class DocumentsApp(MayanAppConfig):
         #    label=_('Type'), source=DocumentVersionPageResult
         #)
 
-        # DeletedDocument
+        # TrashedDocument
 
         SourceColumn(
             attribute='label', is_identifier=True, is_sortable=True,
-            source=DeletedDocument
+            source=TrashedDocument
         )
         SourceColumn(
-            attribute='deleted_date_time', include_label=True, order=99,
-            source=DeletedDocument
+            attribute='trashed_date_time', include_label=True, order=99,
+            source=TrashedDocument
         )
 
         dashboard_main.add_widget(
@@ -924,13 +924,13 @@ class DocumentsApp(MayanAppConfig):
 
         menu_object.bind_links(
             links=(link_document_restore, link_document_delete),
-            sources=(DeletedDocument,)
+            sources=(TrashedDocument,)
         )
-        menu_multi_item.add_proxy_exclusion(source=DeletedDocument)
+        menu_multi_item.add_proxy_exclusion(source=TrashedDocument)
         menu_multi_item.bind_links(
             links=(
                 link_document_multiple_restore, link_document_multiple_delete
-            ), sources=(DeletedDocument,)
+            ), sources=(TrashedDocument,)
         )
 
         post_delete.connect(

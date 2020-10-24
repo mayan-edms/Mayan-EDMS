@@ -27,7 +27,7 @@ from ..signals import signal_post_document_type_change
 from .document_type_models import DocumentType
 from .mixins import ModelMixinHooks
 
-__all__ = ('Document', 'DeletedDocument', 'TrashedDocument')
+__all__ = ('Document', 'TrashedDocument', 'TrashedDocument')
 logger = logging.getLogger(name=__name__)
 
 
@@ -77,7 +77,7 @@ class Document(ModelInstanceExtraDataAPIViewMixin, ModelMixinHooks, models.Model
             'Whether or not this document is in the trash.'
         ), editable=False, verbose_name=_('In trash?')
     )
-    deleted_date_time = models.DateTimeField(
+    trashed_date_time = models.DateTimeField(
         blank=True, editable=True, help_text=_(
             'The server date and time when the document was moved to the '
             'trash.'
@@ -133,7 +133,7 @@ class Document(ModelInstanceExtraDataAPIViewMixin, ModelMixinHooks, models.Model
 
         if not self.in_trash and to_trash:
             self.in_trash = True
-            self.deleted_date_time = now()
+            self.trashed_date_time = now()
             with transaction.atomic():
                 #self.save(_commit_events=False)
                 self._event_ignore = True
@@ -265,10 +265,6 @@ class Document(ModelInstanceExtraDataAPIViewMixin, ModelMixinHooks, models.Model
 
             return DocumentVersionPage.objects.none()
 
-    def restore(self):
-        self.in_trash = False
-        self.save()
-
     @method_event(
         event_manager_class=EventManagerSave,
         created={
@@ -311,9 +307,6 @@ class TrashedDocument(Document):
     class Meta:
         proxy = True
 
-
-class DeletedDocument(Document):
-    objects = TrashCanManager()
-
-    class Meta:
-        proxy = True
+    def restore(self):
+        self.in_trash = False
+        self.save()

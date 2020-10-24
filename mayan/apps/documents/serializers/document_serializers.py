@@ -136,14 +136,14 @@ class TrashedDocumentSerializer(serializers.HyperlinkedModelSerializer):
             }
         }
         fields = (
-            'date_added', 'deleted_date_time', 'description', 'document_type',
+            'date_added', 'description', 'document_type',
             'document_type_label', 'id', 'label', 'language', 'restore',
-            'url', 'uuid',
+            'trashed_date_time', 'url', 'uuid'
         )
         model = Document
         read_only_fields = (
-            'deleted_date_time', 'description', 'document_type', 'label',
-            'language'
+            'description', 'document_type', 'label', 'language',
+            'trashed_date_time'
         )
 
     def get_document_type_label(self, instance):

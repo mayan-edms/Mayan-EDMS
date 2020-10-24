@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models.document_models import DeletedDocument, Document
+from .models.document_models import TrashedDocument, Document
 from .models.document_file_models import DocumentFile
 from .models.document_file_page_models import DocumentFilePage
 from .models.document_type_models import DocumentType, DocumentTypeFilename
@@ -28,11 +28,11 @@ class DocumentFileInline(admin.StackedInline):
     allow_add = True
 
 
-@admin.register(DeletedDocument)
-class DeletedDocumentAdmin(admin.ModelAdmin):
-    date_hierarchy = 'deleted_date_time'
+@admin.register(TrashedDocument)
+class TrashedDocumentAdmin(admin.ModelAdmin):
+    date_hierarchy = 'trashed_date_time'
     list_filter = ('document_type',)
-    list_display = ('uuid', 'label', 'document_type', 'deleted_date_time')
+    list_display = ('uuid', 'label', 'document_type', 'trashed_date_time')
     readonly_fields = ('uuid', 'document_type')
 
 

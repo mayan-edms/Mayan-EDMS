@@ -76,11 +76,11 @@ class DocumentTypeManager(models.Manager):
                     'Document type: %s, has a deletion period delta of: %s',
                     document_type, delta
                 )
-                for document in document_type.deleted_documents.filter(deleted_date_time__lt=now() - delta):
+                for document in document_type.trashed_documents.filter(trashed_date_time__lt=now() - delta):
                     logger.info(
-                        'Document "%s" with id: %d, trashed on: %s, exceded '
+                        'Document "%s" with id: %d, trashed on: %s, exceeded '
                         'delete period', document, document.pk,
-                        document.deleted_date_time
+                        document.trashed_date_time
                     )
                     document.delete()
             else:
@@ -88,7 +88,7 @@ class DocumentTypeManager(models.Manager):
                     'Document type: %s, has a no retention delta', document_type
                 )
 
-        logger.info(msg='Finshed')
+        logger.info(msg='Finished')
 
     def check_trash_periods(self):
         logger.info(msg='Executing')
@@ -109,7 +109,7 @@ class DocumentTypeManager(models.Manager):
                 )
                 for document in document_type.documents.filter(date_added__lt=now() - delta):
                     logger.info(
-                        'Document "%s" with id: %d, added on: %s, exceded '
+                        'Document "%s" with id: %d, added on: %s, exceeded '
                         'trash period', document, document.pk,
                         document.date_added
                     )
@@ -119,7 +119,7 @@ class DocumentTypeManager(models.Manager):
                     'Document type: %s, has a no retention delta', document_type
                 )
 
-        logger.info(msg='Finshed')
+        logger.info(msg='Finished')
 
     def get_by_natural_key(self, label):
         return self.get(label=label)

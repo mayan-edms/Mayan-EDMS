@@ -70,12 +70,12 @@ class DashboardWidgetDocumentsInTrash(DashboardWidgetNumeric):
         AccessControlList = apps.get_model(
             app_label='acls', model_name='AccessControlList'
         )
-        DeletedDocument = apps.get_model(
-            app_label='documents', model_name='DeletedDocument'
+        TrashedDocument = apps.get_model(
+            app_label='documents', model_name='TrashedDocument'
         )
         self.count = AccessControlList.objects.restrict_queryset(
             permission=permission_document_view, user=request.user,
-            queryset=DeletedDocument.objects.all()
+            queryset=TrashedDocument.objects.all()
         ).count()
         return super().render(request)
 

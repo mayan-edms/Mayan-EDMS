@@ -1,6 +1,6 @@
 import time
 
-from ..models import DeletedDocument, Document, DocumentType
+from ..models import TrashedDocument, Document, DocumentType
 
 from .base import GenericDocumentTestCase
 
@@ -21,12 +21,12 @@ class DocumentTypeDeletionPoliciesTestCase(GenericDocumentTestCase):
         time.sleep(1.01)
 
         self.assertEqual(Document.valid.count(), 1)
-        self.assertEqual(DeletedDocument.objects.count(), 0)
+        self.assertEqual(TrashedDocument.objects.count(), 0)
 
         DocumentType.objects.check_trash_periods()
 
         self.assertEqual(Document.valid.count(), 0)
-        self.assertEqual(DeletedDocument.objects.count(), 1)
+        self.assertEqual(TrashedDocument.objects.count(), 1)
 
     def test_auto_delete(self):
         """
@@ -39,12 +39,12 @@ class DocumentTypeDeletionPoliciesTestCase(GenericDocumentTestCase):
         self.test_document_type.save()
 
         self.assertEqual(Document.valid.count(), 1)
-        self.assertEqual(DeletedDocument.objects.count(), 0)
+        self.assertEqual(TrashedDocument.objects.count(), 0)
 
         self.test_document.delete()
 
         self.assertEqual(Document.valid.count(), 0)
-        self.assertEqual(DeletedDocument.objects.count(), 1)
+        self.assertEqual(TrashedDocument.objects.count(), 1)
 
         # Needed by MySQL as milliseconds value is not stored in timestamp
         # field
@@ -53,7 +53,7 @@ class DocumentTypeDeletionPoliciesTestCase(GenericDocumentTestCase):
         DocumentType.objects.check_delete_periods()
 
         self.assertEqual(Document.valid.count(), 0)
-        self.assertEqual(DeletedDocument.objects.count(), 0)
+        self.assertEqual(TrashedDocument.objects.count(), 0)
 
 
 class DocumentTypeModelTestCase(GenericDocumentTestCase):

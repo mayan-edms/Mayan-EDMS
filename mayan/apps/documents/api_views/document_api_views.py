@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.rest_api import generics
 
-from ..models.document_models import Document, DeletedDocument
+from ..models.document_models import Document, TrashedDocument
 from ..models.document_type_models import DocumentType
 from ..models.misc_models import RecentDocument
 from ..permissions import (
@@ -118,7 +118,7 @@ class APITrashedDocumentDetailView(generics.RetrieveDestroyAPIView):
         'DELETE': (permission_trashed_document_delete,),
         'GET': (permission_document_view,)
     }
-    queryset = DeletedDocument.objects.all()
+    queryset = TrashedDocument.objects.all()
     serializer_class = TrashedDocumentSerializer
 
 
@@ -127,7 +127,7 @@ class APITrashedDocumentListView(generics.ListAPIView):
     Returns a list of all the trashed documents.
     """
     mayan_object_permissions = {'GET': (permission_document_view,)}
-    queryset = DeletedDocument.objects.all()
+    queryset = TrashedDocument.objects.all()
     serializer_class = TrashedDocumentSerializer
 
 
@@ -139,7 +139,7 @@ class APITrashedDocumentRestoreView(generics.GenericAPIView):
     mayan_object_permissions = {
         'POST': (permission_trashed_document_restore,)
     }
-    queryset = DeletedDocument.objects.all()
+    queryset = TrashedDocument.objects.all()
 
     def get_serializer(self, *args, **kwargs):
         return None

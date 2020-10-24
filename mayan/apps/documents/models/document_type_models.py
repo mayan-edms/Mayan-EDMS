@@ -87,12 +87,12 @@ class DocumentType(models.Model):
         return super().delete(*args, **kwargs)
 
     @property
-    def deleted_documents(self):
-        DeletedDocument = apps.get_model(
-            app_label='documents', model_name='DeletedDocument'
+    def trashed_documents(self):
+        TrashedDocument = apps.get_model(
+            app_label='documents', model_name='TrashedDocument'
         )
 
-        return DeletedDocument.objects.filter(document_type=self)
+        return TrashedDocument.objects.filter(document_type=self)
 
     def get_absolute_url(self):
         return reverse(

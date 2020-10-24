@@ -23,7 +23,7 @@ def task_deindex_instance(self, app_label, model_name, object_id):
     except LockError as exception:
         raise self.retry(exc=exception)
 
-    logger.info('Finshed')
+    logger.info('Finished')
 
 
 @app.task(bind=True, default_retry_delay=TASK_RETRY_DELAY, max_retries=None, ignore_result=True)
@@ -62,4 +62,4 @@ def task_index_instance(self, app_label, model_name, object_id):
             except LockError as exception:
                 raise self.retry(exc=exception)
 
-    logger.info('Finshed')
+    logger.info('Finished')

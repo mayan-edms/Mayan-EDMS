@@ -11,7 +11,7 @@ from mayan.apps.views.generics import (
 )
 
 from ..icons import icon_document_list_deleted
-from ..models import DeletedDocument, Document
+from ..models import TrashedDocument, Document
 from ..permissions import (
     permission_trashed_document_delete, permission_trashed_document_restore,
     permission_document_trash, permission_document_view,
@@ -86,7 +86,7 @@ class EmptyTrashCanView(ConfirmView):
 
 
 class TrashedDocumentDeleteView(MultipleObjectConfirmActionView):
-    model = DeletedDocument
+    model = TrashedDocument
     object_permission = permission_trashed_document_delete
     pk_url_kwarg = 'document_id'
     success_message_singular = _(
@@ -122,7 +122,7 @@ class TrashedDocumentListView(DocumentListView):
     def get_document_queryset(self):
         return AccessControlList.objects.restrict_queryset(
             permission=permission_document_view,
-            queryset=DeletedDocument.trash.all(),
+            queryset=TrashedDocument.trash.all(),
             user=self.request.user
         )
 
@@ -147,7 +147,7 @@ class TrashedDocumentListView(DocumentListView):
 
 
 class TrashedDocumentRestoreView(MultipleObjectConfirmActionView):
-    model = DeletedDocument
+    model = TrashedDocument
     object_permission = permission_trashed_document_restore
     pk_url_kwarg = 'document_id'
     success_message_singular = _(

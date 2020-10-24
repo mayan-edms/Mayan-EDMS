@@ -6,7 +6,7 @@ from ..links.document_file_links import (
     link_document_file_delete, link_document_file_download_quick
 )
 from ..links.trashed_document_links import link_document_restore
-from ..models import DeletedDocument
+from ..models import TrashedDocument
 from ..permissions import (
     permission_document_file_delete, permission_document_file_download,
     permission_trashed_document_restore
@@ -84,21 +84,21 @@ class DocumentsLinksTestCase(GenericDocumentViewTestCase):
         )
 
 
-class DeletedDocumentsLinksTestCase(GenericDocumentViewTestCase):
+class TrashedDocumentsLinksTestCase(GenericDocumentViewTestCase):
     def setUp(self):
         super().setUp()
         self.test_document.delete()
-        self.test_deleted_document = DeletedDocument.objects.get(
+        self.test_trashed_document = TrashedDocument.objects.get(
             pk=self.test_document.pk
         )
-        self.add_test_view(test_object=self.test_deleted_document)
+        self.add_test_view(test_object=self.test_trashed_document)
         self.context = self.get_test_view()
 
-    def test_deleted_document_restore_link_no_permission(self):
+    def test_trashed_document_restore_link_no_permission(self):
         resolved_link = link_document_restore.resolve(context=self.context)
         self.assertEqual(resolved_link, None)
 
-    def test_deleted_document_restore_link_with_permission(self):
+    def test_trashed_document_restore_link_with_permission(self):
         self.grant_access(
             obj=self.test_document, permission=permission_trashed_document_restore
         )
@@ -108,6 +108,6 @@ class DeletedDocumentsLinksTestCase(GenericDocumentViewTestCase):
             resolved_link.url,
             reverse(
                 viewname=link_document_restore.view,
-                args=(self.test_deleted_document.pk,)
+                args=(self.test_trashed_document.pk,)
             )
         )

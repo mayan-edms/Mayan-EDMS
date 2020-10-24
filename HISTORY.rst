@@ -66,3 +66,5 @@
 - Update shared upload file to allow storing the original filename.
 - Upload the new document file upload code path to conserve the original
   filename.
+- Rename DeletedDocument to TrashedDocument, same with the corresponding
+  trashed fields and manager methods.

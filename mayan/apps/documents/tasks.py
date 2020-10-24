@@ -30,7 +30,7 @@ def task_document_stubs_delete():
 
     logger.info(msg='Executing')
     Document.objects.delete_stubs()
-    logger.info(msg='Finshed')
+    logger.info(msg='Finished')
 
 
 # Document file
@@ -287,13 +287,13 @@ def task_duplicates_scan_for(document_id):
 
 @app.task(ignore_result=True)
 def task_trash_can_empty():
-    DeletedDocument = apps.get_model(
-        app_label='documents', model_name='DeletedDocument'
+    TrashedDocument = apps.get_model(
+        app_label='documents', model_name='TrashedDocument'
     )
 
-    for deleted_document in DeletedDocument.objects.all():
+    for trashed_document in TrashedDocument.objects.all():
         task_trashed_document_delete.apply_async(
-            kwargs={'trashed_document_id': deleted_document.pk}
+            kwargs={'trashed_document_id': trashed_document.pk}
         )
 
 
@@ -301,11 +301,11 @@ def task_trash_can_empty():
 
 @app.task(ignore_result=True)
 def task_trashed_document_delete(trashed_document_id):
-    DeletedDocument = apps.get_model(
-        app_label='documents', model_name='DeletedDocument'
+    TrashedDocument = apps.get_model(
+        app_label='documents', model_name='TrashedDocument'
     )
 
     logger.debug(msg='Executing')
-    deleted_document = DeletedDocument.objects.get(pk=trashed_document_id)
-    deleted_document.delete()
-    logger.debug(msg='Finshed')
+    trashed_document = TrashedDocument.objects.get(pk=trashed_document_id)
+    trashed_document.delete()
+    logger.debug(msg='Finished')
