@@ -61,7 +61,6 @@ from .links.document_links import (
 )
 from .links.document_file_links import (
     link_document_file_cache_purge, link_document_file_delete,
-    link_document_file_download, link_document_file_multiple_download,
     link_document_file_download_quick, link_document_file_edit,
     link_document_file_list, link_document_file_preview,
     link_document_file_print_form, link_document_file_properties,

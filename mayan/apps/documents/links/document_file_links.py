@@ -37,16 +37,6 @@ link_document_file_edit = Link(
     permissions=(permission_document_file_edit,),
     text=_('Edit'), view='documents:document_file_edit',
 )
-link_document_file_download = Link(
-    args='resolved_object.pk',
-    icon_class=icon_document_file_download,
-    permissions=(permission_document_file_download,),
-    text=_('Advanced download'), view='documents:document_file_download_form'
-)
-link_document_file_multiple_download = Link(
-    icon_class=icon_document_file_download, text=_('Advanced download'),
-    view='documents:document_file_multiple_download_form'
-)
 link_document_file_download_quick = Link(
     args='resolved_object.id', icon_class=icon_document_file_download_quick,
     permissions=(permission_document_file_download,),

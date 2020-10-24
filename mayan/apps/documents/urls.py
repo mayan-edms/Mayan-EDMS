@@ -103,21 +103,6 @@ urlpatterns_document_files = [
         name='document_file_download',
         view=DocumentFileDownloadView.as_view()
     ),
-    #url(
-    #    regex=r'^documents/files/(?P<document_file_id>\d+)/download/form/$',
-    #    name='document_file_download_form',
-    #    view=DocumentFileDownloadFormView.as_view()
-    #),
-    #url(
-    #    regex=r'^documents/files/multiple/download/$',
-    #    name='document_file_multiple_download',
-    #    view=DocumentFileDownloadView.as_view()
-    #),
-    #url(
-    #    regex=r'^documents/files/multiple/download/form/$',
-    #    name='document_file_multiple_download_form',
-    #    view=DocumentFileDownloadFormView.as_view()
-    #),
     url(
         regex=r'^documents/files/(?P<document_file_id>\d+)/edit/$',
         name='document_file_edit',
