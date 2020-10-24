@@ -8,8 +8,8 @@ from ..links.document_file_links import (
 from ..links.trashed_document_links import link_document_restore
 from ..models import DeletedDocument
 from ..permissions import (
-    permission_document_file_download, permission_document_edit,
-    permission_trashed_document_restore, permission_document_file_delete
+    permission_document_file_delete, permission_document_file_download,
+    permission_trashed_document_restore
 )
 
 from .base import GenericDocumentViewTestCase

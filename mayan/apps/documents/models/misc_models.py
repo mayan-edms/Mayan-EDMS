@@ -6,24 +6,15 @@ from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from ..managers import (
-    DuplicatedDocumentManager, FavoriteDocumentManager, RecentDocumentManager,
-    TrashCanManager
+    DuplicatedDocumentManager, FavoriteDocumentManager, RecentDocumentManager
 )
 
 from .document_models import Document
 
 __all__ = (
-    'DeletedDocument', 'DuplicatedDocument', 'FavoriteDocument',
-    'RecentDocument'
+    'DuplicatedDocument', 'FavoriteDocument', 'RecentDocument'
 )
 logger = logging.getLogger(name=__name__)
-
-
-class DeletedDocument(Document):
-    objects = TrashCanManager()
-
-    class Meta:
-        proxy = True
 
 
 class DuplicatedDocument(models.Model):

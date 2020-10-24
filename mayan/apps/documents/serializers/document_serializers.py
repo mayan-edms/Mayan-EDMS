@@ -1,17 +1,11 @@
 from rest_framework import serializers
-from rest_framework.reverse import reverse
 
 from mayan.apps.storage.models import SharedUploadedFile
 
 from ..models.document_models import Document
-from ..models.document_file_models import DocumentFile
-from ..models.document_file_page_models import DocumentFilePage
-from ..models.document_type_models import DocumentType, DocumentTypeFilename
-from ..models.document_version_models import DocumentVersion
-from ..models.document_version_page_models import DocumentVersionPage
+from ..models.document_type_models import DocumentType
 from ..models.misc_models import RecentDocument
 
-from ..settings import setting_language
 from ..tasks import task_document_file_upload
 
 from .document_file_serializers import DocumentFileSerializer

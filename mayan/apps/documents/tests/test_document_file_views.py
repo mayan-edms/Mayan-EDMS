@@ -1,5 +1,3 @@
-from django.utils.encoding import force_text
-
 from mayan.apps.converter.layers import layer_saved_transformations
 from mayan.apps.converter.permissions import (
     permission_transformation_delete, permission_transformation_edit

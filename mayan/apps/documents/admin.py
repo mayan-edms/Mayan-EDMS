@@ -1,9 +1,10 @@
 from django.contrib import admin
 
-from .models import (
-    DeletedDocument, Document, DocumentFile, DocumentFilePage, DocumentType,
-    DocumentTypeFilename, DuplicatedDocument, RecentDocument
-)
+from .models.document_models import DeletedDocument, Document
+from .models.document_file_models import DocumentFile
+from .models.document_file_page_models import DocumentFilePage
+from .models.document_type_models import DocumentType, DocumentTypeFilename
+from .models.misc_models import DuplicatedDocument, RecentDocument
 
 
 class DocumentFilePageInline(admin.StackedInline):

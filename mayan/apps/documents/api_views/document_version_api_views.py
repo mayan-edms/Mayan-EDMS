@@ -1,13 +1,10 @@
 import logging
 
 from django.conf import settings
-from django.core.exceptions import ImproperlyConfigured
 from django.http import HttpResponse
 from django.views.decorators.cache import cache_control, patch_cache_control
 
 from rest_framework import status
-from rest_framework.response import Response
-from rest_framework.settings import api_settings
 
 from mayan.apps.rest_api import generics
 from mayan.apps.rest_api.mixins import ActionAPIViewMixin
@@ -87,10 +84,6 @@ class APIDocumentVersionListView(
     get: Return a list of the selected document's versions.
     post: Create a new document version.
     """
-    #mayan_object_permissions = {
-    #    'GET': (permission_document_version_view,),
-    #    'POST': (permission_document_version_create,),
-    #}
     serializer_class = DocumentVersionSerializer
 
     def get_instance_extra_data(self):

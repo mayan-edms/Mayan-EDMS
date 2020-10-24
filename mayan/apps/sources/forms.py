@@ -35,6 +35,7 @@ class NewFileForm(forms.Form):
         )
     )
 
+
 class UploadBaseForm(forms.Form):
     def __init__(self, *args, **kwargs):
         show_expand = kwargs.pop('show_expand', False)

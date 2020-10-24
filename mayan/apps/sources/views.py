@@ -9,7 +9,6 @@ from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.common.menus import menu_facet
 from mayan.apps.documents.literals import DOCUMENT_FILE_ACTION_PAGES_NEW
 from mayan.apps.documents.models import (
     DocumentType, Document, DocumentFile

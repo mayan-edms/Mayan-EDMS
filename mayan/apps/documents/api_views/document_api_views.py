@@ -6,9 +6,9 @@ from rest_framework.response import Response
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.rest_api import generics
 
-from ..models.document_models import Document
+from ..models.document_models import Document, DeletedDocument
 from ..models.document_type_models import DocumentType
-from ..models.misc_models import DeletedDocument, RecentDocument
+from ..models.misc_models import RecentDocument
 from ..permissions import (
     permission_document_create, permission_document_properties_edit,
     permission_document_trash, permission_document_view,

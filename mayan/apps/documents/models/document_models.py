@@ -27,7 +27,7 @@ from ..signals import signal_post_document_type_change
 from .document_type_models import DocumentType
 from .mixins import ModelMixinHooks
 
-__all__ = ('Document',)
+__all__ = ('Document', 'DeletedDocument', 'TrashedDocument')
 logger = logging.getLogger(name=__name__)
 
 
@@ -306,6 +306,13 @@ class Document(ModelInstanceExtraDataAPIViewMixin, ModelMixinHooks, models.Model
 
 
 class TrashedDocument(Document):
+    objects = TrashCanManager()
+
+    class Meta:
+        proxy = True
+
+
+class DeletedDocument(Document):
     objects = TrashCanManager()
 
     class Meta:
