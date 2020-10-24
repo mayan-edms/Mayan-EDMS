@@ -6,7 +6,7 @@ from .api_views.document_api_views import (
     APITrashedDocumentRestoreView, APITrashedDocumentDetailView
 )
 from .api_views.document_file_api_views import (
-    APIDocumentFileDetailView,  APIDocumentFileDownloadView,
+    APIDocumentFileDetailView, APIDocumentFileDownloadView,
     APIDocumentFileListView, APIDocumentFilePageImageView,
     APIDocumentFilePageDetailView, APIDocumentFilePageListView
 )
@@ -50,8 +50,7 @@ from .views.document_version_page_views import (
     DocumentVersionPageNavigationNext, DocumentVersionPageNavigationPrevious,
     DocumentVersionPageRotateLeftView, DocumentVersionPageRotateRightView,
     DocumentVersionPageView, DocumentVersionPageViewResetView,
-    DocumentVersionPageView, DocumentVersionPageZoomInView,
-    DocumentVersionPageZoomOutView
+    DocumentVersionPageZoomInView, DocumentVersionPageZoomOutView
 )
 from .views.document_version_views import (
     DocumentVersionActiveView, DocumentVersionCachePartitionPurgeView,

@@ -10,8 +10,8 @@ from mayan.apps.common.classes import (
     ModelQueryFields
 )
 from mayan.apps.common.menus import (
-    menu_facet, menu_list_facet, menu_main, menu_object, menu_related,
-    menu_return, menu_secondary, menu_setup, menu_multi_item, menu_tools
+    menu_facet, menu_list_facet, menu_main, menu_object, menu_return,
+    menu_secondary, menu_setup, menu_multi_item, menu_tools
 )
 from mayan.apps.common.signals import signal_post_initial_setup
 from mayan.apps.converter.layers import layer_decorations
@@ -32,7 +32,6 @@ from mayan.apps.rest_api.fields import DynamicSerializerField
 from mayan.apps.templating.classes import AJAXTemplate
 from mayan.apps.views.html_widgets import TwoStateWidget
 
-from .classes import *
 from .dashboard_widgets import (
     DashboardWidgetDocumentFilePagesTotal, DashboardWidgetDocumentsInTrash,
     DashboardWidgetDocumentsNewThisMonth,

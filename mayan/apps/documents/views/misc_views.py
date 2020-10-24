@@ -7,6 +7,7 @@ from mayan.apps.views.mixins import ExternalObjectMixin
 from ..forms.misc_forms import PrintForm
 from ..literals import PAGE_RANGE_RANGE
 from ..settings import setting_print_width, setting_print_height
+from ..utils import parse_range
 
 
 class PrintFormView(ExternalObjectMixin, FormView):

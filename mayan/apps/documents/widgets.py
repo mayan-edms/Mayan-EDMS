@@ -36,7 +36,7 @@ class CarouselWidget(forms.widgets.Widget):
 
 
 class DocumentFilePagesCarouselWidget(CarouselWidget):
-    target_view='documents:document_file_page_view'
+    target_view = 'documents:document_file_page_view'
 
 
 class DocumentFilePageThumbnailWidget:
@@ -60,7 +60,7 @@ class ThumbnailFormWidget(forms.widgets.Widget):
     def render(self, *args, **kwargs):
         instance = kwargs['value']
         if instance:
-           context={
+            context={
                 # Disable the clickable link if the document is in the trash
                 'disable_title_link': instance.is_in_trash,
                 'gallery_name': 'document_list',
@@ -79,8 +79,7 @@ class ThumbnailFormWidget(forms.widgets.Widget):
 
 
 class DocumentVersionPagesCarouselWidget(CarouselWidget):
-    target_view='documents:document_version_page_view'
-
+    target_view = 'documents:document_version_page_view'
 
 
 class DocumentVersionPageThumbnailWidget:

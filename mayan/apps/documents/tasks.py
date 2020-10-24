@@ -91,10 +91,6 @@ def task_document_file_upload(self, document_id, shared_uploaded_file_id, user_i
         app_label='documents', model_name='Document'
     )
 
-    DocumentFile = apps.get_model(
-        app_label='documents', model_name='DocumentFile'
-    )
-
     SharedUploadedFile = apps.get_model(
         app_label='storage', model_name='SharedUploadedFile'
     )
@@ -118,7 +114,7 @@ def task_document_file_upload(self, document_id, shared_uploaded_file_id, user_i
 
     with shared_file.open() as file_object:
         try:
-            document_file = document.file_new(
+            document.file_new(
                 action=action, comment=comment, file_object=file_object,
                 filename=filename or shared_file.filename, _user=user
             )
@@ -156,6 +152,7 @@ def task_document_file_upload(self, document_id, shared_uploaded_file_id, user_i
                     'Operational error during attempt to delete shared '
                     'file: %s; %s.', shared_file, exception
                 )
+
 
 # Document type
 
@@ -259,6 +256,7 @@ def task_duplicates_clean_empty_lists():
         app_label='documents', model_name='DuplicatedDocument'
     )
     DuplicatedDocument.objects.clean_empty_duplicate_lists()
+
 
 @app.task(ignore_result=True)
 def task_duplicates_scan_all():
