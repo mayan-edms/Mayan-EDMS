@@ -18,7 +18,7 @@ from mayan.apps.views.mixins import ExternalObjectMixin
 from mayan.apps.views.utils import resolve
 
 from ..forms.document_file_page_forms import DocumentFilePageForm
-from ..icons import icon_document_file_pages
+from ..icons import icon_document_file_page_list
 from ..links.document_file_page_links import link_document_file_page_count_update
 from ..models.document_file_models import DocumentFile
 from ..models.document_file_page_models import DocumentFilePage
@@ -92,7 +92,7 @@ class DocumentFilePageListView(ExternalObjectMixin, SingleObjectListView):
         return {
             'hide_object': True,
             'list_as_items': True,
-            'no_results_icon': icon_document_file_pages,
+            'no_results_icon': icon_document_file_page_list,
             'no_results_main_link': link_document_file_page_count_update.resolve(
                 request=self.request, resolved_object=self.external_object
             ),

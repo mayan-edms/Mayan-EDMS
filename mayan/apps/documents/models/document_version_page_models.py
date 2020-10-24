@@ -295,6 +295,15 @@ class DocumentVersionPage(ModelMixinPagedModel, models.Model):
         }
     get_label.short_description = _('Label')
 
+    def get_page_number_display(self):
+        return _(
+            'Document version page %(page_number)d of %(total_pages)d'
+        ) % {
+            'page_number': self.page_number,
+            'total_pages': self.get_pages_last_number() or 1
+        }
+    get_page_number_display.short_description = _('Page number')
+
     @property
     def is_in_trash(self):
         return self.document_version.is_in_trash

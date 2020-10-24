@@ -115,6 +115,7 @@ icon_document_file_transformations_clone = Icon(
 
 # Document file pages
 
+icon_document_file_page_list = Icon(driver_name='fontawesome', symbol='copy')
 icon_document_file_page_navigation_first = Icon(
     driver_name='fontawesome', symbol='step-backward'
 )
@@ -130,6 +131,10 @@ icon_document_file_page_navigation_previous = Icon(
 icon_document_file_page_return_to_document = icon_document_return
 icon_document_file_page_return_to_document_file = Icon(
     driver_name='fontawesome-dual', primary_symbol='hdd',
+    secondary_symbol='chevron-left'
+)
+icon_document_file_page_return_to_document_file_page_list = Icon(
+    driver_name='fontawesome-dual', primary_symbol='copy',
     secondary_symbol='chevron-left'
 )
 icon_document_file_page_rotate_left = Icon(
@@ -150,7 +155,6 @@ icon_document_file_page_zoom_in = Icon(
 icon_document_file_page_zoom_out = Icon(
     driver_name='fontawesome', symbol='search-minus'
 )
-icon_document_file_pages = Icon(driver_name='fontawesome', symbol='copy')
 
 # Document types
 
@@ -247,6 +251,10 @@ icon_document_version_page_delete = Icon(
 icon_document_version_page_return_to_document = icon_document_return
 icon_document_version_page_return_to_document_version = Icon(
     driver_name='fontawesome-dual', primary_symbol='code-branch',
+    secondary_symbol='chevron-left'
+)
+icon_document_version_page_return_to_document_version_page_list = Icon(
+    driver_name='fontawesome-dual', primary_symbol='copy',
     secondary_symbol='chevron-left'
 )
 icon_document_version_page_list = Icon(driver_name='fontawesome', symbol='copy')

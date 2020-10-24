@@ -9,11 +9,12 @@ from ..icons import (
     icon_document_file_page_navigation_previous,
     icon_document_file_page_return_to_document,
     icon_document_file_page_return_to_document_file,
+    icon_document_file_page_return_to_document_file_page_list,
     icon_document_file_page_rotate_left,
     icon_document_file_page_rotate_right, icon_document_file_page_zoom_in,
     icon_document_file_page_zoom_out, icon_document_file_page_view,
     icon_document_file_page_view_reset, icon_document_file_page_count_update,
-    icon_document_file_pages
+    icon_document_file_page_list
 )
 from ..permissions import (
     permission_document_file_tools, permission_document_file_view,
@@ -78,6 +79,12 @@ link_document_file_page_return_to_document_file = Link(
     permissions=(permission_document_file_view,), text=_('Document file'),
     view='documents:document_file_preview'
 )
+link_document_file_page_return_to_document_file_page_list = Link(
+    args='resolved_object.document_file.pk',
+    icon_class=icon_document_file_page_return_to_document_file_page_list,
+    permissions=(permission_document_file_view,),
+    text=_('Document file pages'), view='documents:document_file_page_list'
+)
 link_document_file_page_rotate_left = Link(
     args='resolved_object.pk', icon_class=icon_document_file_page_rotate_left,
     keep_query=True, permissions=(permission_document_file_view,),
@@ -111,7 +118,7 @@ link_document_file_page_zoom_out = Link(
     view='documents:document_file_page_zoom_out'
 )
 link_document_file_page_list = Link(
-    args='resolved_object.pk', icon_class=icon_document_file_pages,
+    args='resolved_object.pk', icon_class=icon_document_file_page_list,
     permissions=(permission_document_file_view,), text=_('Pages'),
     view='documents:document_file_page_list'
 )

@@ -79,6 +79,7 @@ from .links.document_file_page_links import (
     link_document_file_page_navigation_previous,
     link_document_file_page_return_to_document,
     link_document_file_page_return_to_document_file,
+    link_document_file_page_return_to_document_file_page_list,
     link_document_file_page_rotate_left, link_document_file_page_rotate_right,
     link_document_file_page_view, link_document_file_page_view_reset,
     link_document_file_page_zoom_in, link_document_file_page_zoom_out
@@ -113,6 +114,7 @@ from .links.document_version_page_links import (
     link_document_version_page_navigation_previous,
     link_document_version_page_return_to_document,
     link_document_version_page_return_to_document_version,
+    link_document_version_page_return_to_document_version_page_list,
     link_document_version_page_rotate_left,
     link_document_version_page_rotate_right, link_document_version_page_view,
     link_document_version_page_view_reset,
@@ -536,7 +538,7 @@ class DocumentsApp(MayanAppConfig):
         # DocumentFilePage
 
         SourceColumn(
-            attribute='page_number', is_identifier=True,
+            attribute='get_page_number_display', is_identifier=True,
             is_object_absolute_url=True, source=DocumentFilePage,
         )
         SourceColumn(
@@ -612,7 +614,7 @@ class DocumentsApp(MayanAppConfig):
         # DocumentVersionPage
 
         SourceColumn(
-            attribute='page_number', is_identifier=True,
+            attribute='get_page_number_display', is_identifier=True,
             is_object_absolute_url=True, source=DocumentVersionPage,
         )
         SourceColumn(
@@ -793,6 +795,7 @@ class DocumentsApp(MayanAppConfig):
             links=(
                 link_document_file_page_return_to_document,
                 link_document_file_page_return_to_document_file,
+                link_document_file_page_return_to_document_file_page_list
             ),
             sources=(DocumentFilePage,)
         )
@@ -914,6 +917,7 @@ class DocumentsApp(MayanAppConfig):
             links=(
                 link_document_version_page_return_to_document,
                 link_document_version_page_return_to_document_version,
+                link_document_version_page_return_to_document_version_page_list
             ), sources=(DocumentVersionPage,)
         )
 

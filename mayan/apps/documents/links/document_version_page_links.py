@@ -12,6 +12,7 @@ from ..icons import (
     icon_document_version_page_navigation_previous,
     icon_document_version_page_return_to_document,
     icon_document_version_page_return_to_document_version,
+    icon_document_version_page_return_to_document_version_page_list,
     icon_document_version_page_rotate_left,
     icon_document_version_page_rotate_right,
     icon_document_version_page_view, icon_document_version_page_view_reset,
@@ -105,6 +106,13 @@ link_document_version_page_return_to_document_version = Link(
     permissions=(permission_document_version_view,),
     text=_('Document version'),
     view='documents:document_version_preview',
+)
+link_document_version_page_return_to_document_version_page_list = Link(
+    args='resolved_object.document_version.pk',
+    icon_class=icon_document_version_page_return_to_document_version_page_list,
+    permissions=(permission_document_version_view,),
+    text=_('Document version pages'),
+    view='documents:document_version_page_list'
 )
 link_document_version_page_rotate_left = Link(
     args='resolved_object.pk', icon_class=icon_document_version_page_rotate_left,

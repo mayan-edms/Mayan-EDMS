@@ -264,6 +264,15 @@ class DocumentFilePage(ModelMixinPagedModel, models.Model):
         }
     get_label.short_description = _('Label')
 
+    def get_page_number_display(self):
+        return _(
+            'Document file page %(page_num)d of %(total_pages)d'
+        ) % {
+            'page_num': self.page_number,
+            'total_pages': self.get_pages_last_number() or 1
+        }
+    get_page_number_display.short_description = _('Page number')
+
     def natural_key(self):
         return (self.page_number, self.document_file.natural_key())
     natural_key.dependencies = ['documents.DocumentFile']
