@@ -3,7 +3,7 @@ import time
 from django.urls import reverse
 
 from ..links.document_file_links import (
-    link_document_file_download, link_document_file_delete
+    link_document_file_delete, link_document_file_download_quick
 )
 from ..links.trashed_document_links import link_document_restore
 from ..models import DeletedDocument
@@ -60,7 +60,7 @@ class DocumentsLinksTestCase(GenericDocumentViewTestCase):
     def test_document_file_download_link_no_permission(self):
         self.add_test_view(test_object=self.test_document.file_latest)
         context = self.get_test_view()
-        resolved_link = link_document_file_download.resolve(context=context)
+        resolved_link = link_document_file_download_quick.resolve(context=context)
 
         self.assertEqual(resolved_link, None)
 
@@ -72,13 +72,13 @@ class DocumentsLinksTestCase(GenericDocumentViewTestCase):
 
         self.add_test_view(test_object=self.test_document.file_latest)
         context = self.get_test_view()
-        resolved_link = link_document_file_download.resolve(context=context)
+        resolved_link = link_document_file_download_quick.resolve(context=context)
 
         self.assertNotEqual(resolved_link, None)
         self.assertEqual(
             resolved_link.url,
             reverse(
-                viewname=link_document_file_download.view,
+                viewname=link_document_file_download_quick.view,
                 args=(self.test_document.file_latest.pk,)
             )
         )
