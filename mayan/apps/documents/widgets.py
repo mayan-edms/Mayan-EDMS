@@ -9,7 +9,6 @@ from .settings import (
 )
 
 
-
 class CarouselWidget(forms.widgets.Widget):
     """
     Display many small representations of pages
@@ -39,7 +38,7 @@ class DocumentFilePagesCarouselWidget(CarouselWidget):
     target_view = 'documents:document_file_page_view'
 
 
-class DocumentFilePageThumbnailWidget:
+class ThumbnailWidget:
     def render(self, instance):
         return render_to_string(
             template_name='documents/widgets/thumbnail.html',
@@ -60,14 +59,14 @@ class ThumbnailFormWidget(forms.widgets.Widget):
     def render(self, *args, **kwargs):
         instance = kwargs['value']
         if instance:
-            context={
+            context = {
                 # Disable the clickable link if the document is in the trash
                 'disable_title_link': instance.is_in_trash,
                 'gallery_name': 'document_list',
                 'instance': instance,
                 'size_preview_width': setting_preview_width.value,
                 'size_preview_height': setting_preview_height.value,
-                'size_thumbnail_width': 150,#setting_thumbnail_width.value,
+                'size_thumbnail_width': setting_thumbnail_width.value,
                 'size_thumbnail_height': setting_thumbnail_height.value,
             }
         else:
@@ -80,23 +79,6 @@ class ThumbnailFormWidget(forms.widgets.Widget):
 
 class DocumentVersionPagesCarouselWidget(CarouselWidget):
     target_view = 'documents:document_version_page_view'
-
-
-class DocumentVersionPageThumbnailWidget:
-    def render(self, instance):
-        return render_to_string(
-            template_name='documents/widgets/thumbnail.html',
-            context={
-                # Disable the clickable link if the document is in the trash
-                'disable_title_link': instance.is_in_trash,
-                'gallery_name': 'document_list',
-                'instance': instance,
-                'size_preview_width': setting_preview_width.value,
-                'size_preview_height': setting_preview_height.value,
-                'size_thumbnail_width': setting_thumbnail_width.value,
-                'size_thumbnail_height': setting_thumbnail_height.value,
-            }
-        )
 
 
 class PageImageWidget(forms.widgets.Widget):

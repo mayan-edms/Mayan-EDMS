@@ -39,10 +39,10 @@ from .dashboard_widgets import (
     DashboardWidgetDocumentsTypesTotal,
 )
 from .events import (
-    event_document_create, event_document_download,
+    event_document_create, event_document_file_deleted,
+    event_document_file_downloaded, event_document_file_new,
     event_document_properties_edit, event_document_type_changed,
     event_document_type_created, event_document_type_edited,
-    event_document_file_deleted, event_document_file_new,
     event_document_version_created, event_document_version_deleted,
     event_document_version_edited, event_document_viewed
 )
@@ -177,9 +177,8 @@ from .permissions import (
 from .signals import signal_post_document_file_upload
 from .statistics import *  # NOQA
 from .widgets import (
-    DocumentFilePageThumbnailWidget, DocumentVersionPageThumbnailWidget,
-    widget_document_file_page_number, widget_document_page_number,
-    widget_document_version_page_number
+    ThumbnailWidget, widget_document_file_page_number,
+    widget_document_page_number, widget_document_version_page_number
 )
 
 
@@ -266,15 +265,14 @@ class DocumentsApp(MayanAppConfig):
 
         ModelEventType.register(
             model=Document, event_types=(
-                event_document_download, event_document_properties_edit,
-                event_document_type_changed, event_document_file_deleted,
-                event_document_file_new, event_document_version_deleted,
-                event_document_version_created, event_document_viewed
+                event_document_properties_edit, event_document_type_changed,
+                event_document_file_deleted, event_document_version_deleted,
+                event_document_viewed
             )
         )
         ModelEventType.register(
             model=DocumentFile, event_types=(
-                event_document_file_new,
+                event_document_file_downloaded, event_document_file_new
             )
         )
         ModelEventType.register(
@@ -286,7 +284,8 @@ class DocumentsApp(MayanAppConfig):
         )
         ModelEventType.register(
             model=DocumentVersion, event_types=(
-                event_document_version_deleted, event_document_version_edited
+                event_document_version_created,
+                event_document_version_edited
             )
         )
         ModelEventType.register(
@@ -454,12 +453,8 @@ class DocumentsApp(MayanAppConfig):
         )
 
         # Document file and document file page thumbnail widget
-
-        document_file_page_thumbnail_widget = DocumentFilePageThumbnailWidget()
-
         # Document version and document version page thumbnail widget
-
-        document_version_page_thumbnail_widget = DocumentVersionPageThumbnailWidget()
+        thumbnail_widget = ThumbnailWidget()
 
         # Document
 
@@ -468,7 +463,7 @@ class DocumentsApp(MayanAppConfig):
             is_sortable=True, source=Document
         )
         SourceColumn(
-            func=lambda context: document_file_page_thumbnail_widget.render(
+            func=lambda context: thumbnail_widget.render(
                 instance=context['object']
             ), html_extra_classes='text-center document-thumbnail-list',
             label=_('Thumbnail'), source=Document
@@ -513,7 +508,7 @@ class DocumentsApp(MayanAppConfig):
             is_object_absolute_url=True
         )
         SourceColumn(
-            func=lambda context: document_file_page_thumbnail_widget.render(
+            func=lambda context: thumbnail_widget.render(
                 instance=context['object']
             ), html_extra_classes='text-center document-thumbnail-list',
             label=_('Thumbnail'), source=DocumentFile
@@ -540,18 +535,20 @@ class DocumentsApp(MayanAppConfig):
             is_object_absolute_url=True, source=DocumentFilePage,
         )
         SourceColumn(
-            func=lambda context: document_file_page_thumbnail_widget.render(
+            func=lambda context: thumbnail_widget.render(
                 instance=context['object']
             ), html_extra_classes='text-center document-thumbnail-list',
             label=_('Thumbnail'), source=DocumentFilePage
         )
+
+        # DocumentFilePageResult
 
         SourceColumn(
             attribute='get_label', is_identifier=True,
             is_object_absolute_url=True, source=DocumentFilePageResult
         )
         SourceColumn(
-            func=lambda context: document_file_page_thumbnail_widget.render(
+            func=lambda context: thumbnail_widget.render(
                 instance=context['object']
             ), html_extra_classes='text-center document-thumbnail-list',
             label=_('Thumbnail'), source=DocumentFilePageResult
@@ -590,7 +587,8 @@ class DocumentsApp(MayanAppConfig):
             is_object_absolute_url=True
         )
         SourceColumn(
-            func=lambda context: document_version_page_thumbnail_widget.render(
+            #func=lambda context: document_version_page_thumbnail_widget.render(
+            func=lambda context: thumbnail_widget.render(
                 instance=context['object']
             ), html_extra_classes='text-center document-thumbnail-list',
             label=_('Thumbnail'), source=DocumentVersion
@@ -602,7 +600,7 @@ class DocumentsApp(MayanAppConfig):
         )
         SourceColumn(
             attribute='active', include_label=True, is_sortable=True,
-            source=DocumentVersion
+            source=DocumentVersion, widget=TwoStateWidget
         )
         SourceColumn(
             attribute='comment', include_label=True, is_sortable=True,
@@ -616,7 +614,8 @@ class DocumentsApp(MayanAppConfig):
             is_object_absolute_url=True, source=DocumentVersionPage,
         )
         SourceColumn(
-            func=lambda context: document_version_page_thumbnail_widget.render(
+            #func=lambda context: document_version_page_thumbnail_widget.render(
+            func=lambda context: thumbnail_widget.render(
                 instance=context['object']
             ), html_extra_classes='text-center document-thumbnail-list',
             label=_('Thumbnail'), source=DocumentVersionPage

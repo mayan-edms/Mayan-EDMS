@@ -12,21 +12,19 @@ from mayan.apps.converter.permissions import (
 )
 from mayan.apps.file_caching.tasks import task_cache_partition_purge
 from mayan.apps.sources.links import link_document_file_upload
-from mayan.apps.storage.compressed_files import ZipArchive
 from mayan.apps.views.generics import (
-    ConfirmView, FormView, MultipleObjectDownloadView, SingleObjectEditView,
-    MultipleObjectConfirmActionView, MultipleObjectFormActionView,
-    SingleObjectDeleteView, SingleObjectDetailView, SingleObjectDownloadView,
+    FormView, MultipleObjectConfirmActionView, SingleObjectDeleteView,
+    SingleObjectDetailView, SingleObjectDownloadView, SingleObjectEditView,
     SingleObjectListView
 )
 from mayan.apps.views.mixins import ExternalObjectMixin
 
-from ..events import event_document_download, event_document_viewed
+from ..events import event_document_file_downloaded, event_document_viewed
 from ..forms.document_file_forms import (
     DocumentFileForm, DocumentFilePreviewForm, DocumentFilePropertiesForm
 )
 from ..forms.misc_forms import PageNumberForm
-from ..icons import icon_document_file_download, icon_document_file_list
+from ..icons import icon_document_file_list
 from ..models.document_models import Document
 from ..models.document_file_models import DocumentFile
 from ..permissions import (
@@ -38,9 +36,8 @@ from ..permissions import (
 from .misc_views import PrintFormView, DocumentPrintView
 
 __all__ = (
-    'DocumentFileDeleteView', 'DocumentFileDownloadFormView',
-    'DocumentFileDownloadView', 'DocumentFileListView',
-    'DocumentFilePreviewView'
+    'DocumentFileDeleteView', 'DocumentFileDownloadView',
+    'DocumentFileListView', 'DocumentFilePreviewView'
 )
 logger = logging.getLogger(name=__name__)
 
@@ -110,24 +107,11 @@ class DocumentFileDownloadView(SingleObjectDownloadView):
     object_permission = permission_document_file_download
     pk_url_kwarg = 'document_file_id'
 
-    #@staticmethod
-    #def commit_event(item, request):
-    #    if isinstance(item, Document):
-    #        event_document_download.commit(
-    #            actor=request.user,
-    #            target=item
-    #        )
-    #    else:
-    #        event_document_download.commit(
-    #            actor=request.user,
-    #            target=item.document
-    #        )
-
     def get_download_file_object(self):
-        event_document_download.commit(
+        event_document_file_downloaded.commit(
             actor=self.request.user,
-            action_object=self.object,
-            target=self.object.document
+            action_object=self.object.document,
+            target=self.object
         )
 
         return self.object.open()

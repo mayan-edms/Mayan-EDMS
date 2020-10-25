@@ -68,3 +68,4 @@
   filename.
 - Rename DeletedDocument to TrashedDocument, same with the corresponding
   trashed fields and manager methods.
+- Add document file download event.

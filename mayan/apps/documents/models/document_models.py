@@ -160,6 +160,7 @@ class Document(ModelInstanceExtraDataAPIViewMixin, ModelMixinHooks, models.Model
                 event_document_type_changed.commit(actor=_user, target=self)
                 if _user:
                     self.add_as_recent_document_for_user(user=_user)
+
     @property
     def file_latest(self):
         return self.files.order_by('timestamp').last()
@@ -189,7 +190,10 @@ class Document(ModelInstanceExtraDataAPIViewMixin, ModelMixinHooks, models.Model
             #)
             document_file.save(_user=_user)
         except Exception as exception:
-            logger.error('Error creating new file for document: %s', self)
+            logger.error(
+                'Error creating new file for document: %s; %s', self,
+                exception
+            )
             raise
         else:
             logger.info('New document file queued for document: %s', self)

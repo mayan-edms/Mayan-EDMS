@@ -76,9 +76,6 @@ icon_document_file_cache_purge = Icon(
 icon_document_file_delete = Icon(
     driver_name='fontawesome', symbol='times'
 )
-icon_document_file_download = Icon(
-    driver_name='fontawesome', symbol='download'
-)
 icon_document_file_download_quick = Icon(
     driver_name='fontawesome', symbol='download'
 )

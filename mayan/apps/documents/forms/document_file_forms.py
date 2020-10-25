@@ -5,7 +5,6 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.common.forms import DetailForm
 
 from ..fields import DocumentFileField
-from ..literals import DEFAULT_DOCUMENT_FILE_ZIP_FILENAME
 from ..models.document_file_models import DocumentFile
 
 __all__ = (
@@ -33,9 +32,7 @@ class DocumentFilePropertiesForm(DetailForm):
     """
     Detail class form to display a document file properties
     """
-    def __init__(self, *args, **kwargs):
-        document_file = kwargs['instance']
-
+    class Meta:
         extra_fields = [
             {
                 'label': _('Date added'),
@@ -64,11 +61,5 @@ class DocumentFilePropertiesForm(DetailForm):
             {'label': _('Checksum'), 'field': 'checksum'},
             {'label': _('Pages'), 'field': 'page_count'},
         ]
-
-        kwargs['extra_fields'] = extra_fields
-        super().__init__(*args, **kwargs)
-
-    class Meta:
-        declared_fields = ('mimetype',)
         fields = ('filename', 'comment',)
         model = DocumentFile

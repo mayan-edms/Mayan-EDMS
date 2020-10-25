@@ -308,10 +308,6 @@ class DocumentVersionPage(ModelMixinPagedModel, models.Model):
     def is_in_trash(self):
         return self.document_version.is_in_trash
 
-    #def natural_key(self):
-    #    return (self.page_number, self.document.natural_key())
-    #natural_key.dependencies = ['documents.Document']
-
     @method_event(
         event_manager_class=EventManagerSave,
         created={

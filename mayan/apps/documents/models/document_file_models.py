@@ -1,6 +1,5 @@
 import hashlib
 import logging
-import os
 import shutil
 
 from django.apps import apps
@@ -15,9 +14,7 @@ from mayan.apps.common.mixins import ModelInstanceExtraDataAPIViewMixin
 from mayan.apps.common.signals import signal_mayan_pre_save
 from mayan.apps.converter.classes import ConverterBase
 from mayan.apps.converter.exceptions import InvalidOfficeFormat, PageCountError
-from mayan.apps.converter.layers import layer_saved_transformations
-from mayan.apps.converter.transformations import TransformationRotate
-from mayan.apps.events.classes import EventManagerMethodAfter, EventManagerSave
+from mayan.apps.events.classes import EventManagerMethodAfter
 from mayan.apps.events.decorators import method_event
 from mayan.apps.mimetype.api import get_mimetype
 from mayan.apps.storage.classes import DefinedStorageLazy
@@ -35,11 +32,6 @@ from .document_models import Document
 
 __all__ = ('DocumentFile',)
 logger = logging.getLogger(name=__name__)
-
-#TODO: convert to static methods
-# document image cache name hash function
-def hash_function():
-    return hashlib.sha256()
 
 
 def upload_to(instance, filename):
@@ -119,6 +111,10 @@ class DocumentFile(ModelInstanceExtraDataAPIViewMixin, models.Model):
         verbose_name_plural = _('Document files')
 
     objects = DocumentFileManager()
+
+    @staticmethod
+    def hash_function():
+        return hashlib.sha256()
 
     @classmethod
     def _execute_hooks(cls, hook_list, instance, **kwargs):
@@ -201,7 +197,7 @@ class DocumentFile(ModelInstanceExtraDataAPIViewMixin, models.Model):
             block_size = -1
 
         if self.exists():
-            hash_object = hash_function()
+            hash_object = DocumentFile.hash_function()
             with self.open() as file_object:
                 while (True):
                     data = file_object.read(block_size)

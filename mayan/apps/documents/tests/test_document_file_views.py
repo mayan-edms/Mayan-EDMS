@@ -4,7 +4,9 @@ from mayan.apps.converter.permissions import (
 )
 from mayan.apps.converter.tests.mixins import LayerTestMixin
 from mayan.apps.documents.tests.literals import TEST_MULTI_PAGE_TIFF
+from mayan.apps.events.tests.mixins import EventTestCaseMixin
 
+from ..events import event_document_file_downloaded
 from ..permissions import (
     permission_document_file_delete, permission_document_file_download,
     permission_document_file_edit, permission_document_file_print,
@@ -127,11 +129,16 @@ class DocumentFileViewTestCase(
 
 
 class DocumentFileDownloadViewTestCase(
-    DocumentFileViewTestMixin, GenericDocumentViewTestCase
+    DocumentFileViewTestMixin, EventTestCaseMixin, GenericDocumentViewTestCase
 ):
+    _test_event_object_name = 'test_document_file'
+
     def test_document_file_download_view_no_permission(self):
         response = self._request_test_document_file_download_view()
         self.assertEqual(response.status_code, 404)
+
+        event = self._get_test_object_event()
+        self.assertEqual(event, None)
 
     def test_document_file_download_view_with_permission(self):
         # Set the expected_content_types for
@@ -154,6 +161,11 @@ class DocumentFileDownloadViewTestCase(
                 filename=self.test_document.file_latest.filename,
                 mime_type=self.test_document.file_latest.mimetype
             )
+
+        event = self._get_test_object_event()
+        self.assertEqual(event.action_object, self.test_document)
+        self.assertEqual(event.actor, self._test_case_user)
+        self.assertEqual(event.verb, event_document_file_downloaded.id)
 
 
 class DocumentFileTransformationViewTestCase(

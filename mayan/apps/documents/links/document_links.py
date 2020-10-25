@@ -1,8 +1,5 @@
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.converter.permissions import (
-    permission_transformation_delete, permission_transformation_edit
-)
 from mayan.apps.navigation.classes import Link
 
 from ..icons import (
@@ -11,8 +8,7 @@ from ..icons import (
     icon_document_type_change, icon_recent_added_document_list
 )
 from ..permissions import (
-    permission_document_properties_edit, permission_document_version_print,
-    permission_document_view
+    permission_document_properties_edit, permission_document_view
 )
 
 

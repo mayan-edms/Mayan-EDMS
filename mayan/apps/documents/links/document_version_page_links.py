@@ -41,7 +41,6 @@ def is_min_zoom(context):
     return context['zoom'] <= setting_zoom_min_level.value
 
 
-
 link_document_version_page_delete = Link(
     args='resolved_object.pk',
     icon_class=icon_document_version_page_delete,

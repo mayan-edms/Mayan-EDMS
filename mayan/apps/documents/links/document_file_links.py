@@ -7,11 +7,11 @@ from mayan.apps.navigation.classes import Link
 
 from ..icons import (
     icon_document_file_cache_purge, icon_document_file_delete,
-    icon_document_file_download, icon_document_file_download_quick,
-    icon_document_file_edit, icon_document_file_list,
-    icon_document_file_print, icon_document_file_properties,
-    icon_document_file_return_to_document, icon_document_file_return_list,
-    icon_document_file_preview, icon_document_file_transformations_clear,
+    icon_document_file_download_quick, icon_document_file_edit,
+    icon_document_file_list, icon_document_file_print,
+    icon_document_file_properties, icon_document_file_return_to_document,
+    icon_document_file_return_list, icon_document_file_preview,
+    icon_document_file_transformations_clear,
     icon_document_file_transformations_clone
 )
 from ..permissions import (

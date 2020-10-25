@@ -22,7 +22,9 @@ from mayan.apps.views.utils import resolve
 from ..forms.document_version_page_forms import (
     DocumentVersionPageForm, DocumentVersionPageMappingFormSet
 )
-from ..icons import icon_document_version_page_list
+from ..icons import (
+    icon_document_version_page_list, icon_document_version_page_list_remap
+)
 from ..links.document_version_page_links import (
     link_document_version_page_list_remap,
     link_document_version_page_list_reset
@@ -174,10 +176,7 @@ class DocumentVersionPageListRemapView(ExternalObjectMixin, FormView):
             'form_display_mode_table': True,
             'hide_object': True,
             'list_as_items': True,
-            #'no_results_icon': icon_document_version_page_list,
-            #'no_results_main_link': link_document_file_page_count_update.resolve(
-            #    request=self.request, resolved_object=self.external_object
-            #),
+            'no_results_icon': icon_document_version_page_list_remap,
             'no_results_text': _(
                 'There are no sources available to remap for this document '
                 'version.'
