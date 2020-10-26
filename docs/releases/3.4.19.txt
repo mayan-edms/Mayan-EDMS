@@ -1,7 +1,7 @@
 Version 3.4.19
 ==============
 
-Released: October XX, 2020
+Released: October 26, 2020
 
 Changes
 -------
@@ -10,7 +10,12 @@ Changes
 Removals
 --------
 
-- None
+API
+^^^
+
+A fix for an error that occurs when Swagger UI introspects the Document
+indexing API view was added. Additional tests were added to the other
+API documentation frontends.
 
 
 Upgrading process
