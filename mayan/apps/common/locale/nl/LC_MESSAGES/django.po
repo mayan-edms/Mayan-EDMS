@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"POT-Creation-Date: 2020-10-26 13:25+0000\n"
 "PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
@@ -27,19 +27,19 @@ msgstr ""
 msgid "Common"
 msgstr "Gemeenschappelijk"
 
-#: classes.py:453
+#: classes.py:456
 msgid "Model properties"
 msgstr "Model eigenschappen"
 
-#: classes.py:458
+#: classes.py:461
 msgid "Model fields"
 msgstr "Model velden"
 
-#: classes.py:501
+#: classes.py:504
 msgid "Model related fields"
 msgstr "Model gerelateerde velden"
 
-#: classes.py:506
+#: classes.py:509
 msgid "Model reverse fields"
 msgstr "Model omgekeerde velden"
 
@@ -266,15 +266,15 @@ msgstr ""
 msgid "Object copied successfully."
 msgstr ""
 
-#: views.py:150
-msgid "No setup options available."
-msgstr "Geen instellingsopties beschikbaar."
-
-#: views.py:152
+#: views.py:151
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
 msgstr "Geen resultaten betekent dat u onvoldoende verplichte toegangsrechten heeft om de beheertaak uit te voeren."
+
+#: views.py:154
+msgid "No setup options available."
+msgstr "Geen instellingsopties beschikbaar."
 
 #: views.py:158
 msgid "Setup items"

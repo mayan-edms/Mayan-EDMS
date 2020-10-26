@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"POT-Creation-Date: 2020-10-26 13:25+0000\n"
 "PO-Revision-Date: 2020-03-28 07:24+0000\n"
 "Last-Translator: Harald Ersch, 2020\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
 #: apps.py:39 events.py:6 links.py:33 models.py:32 permissions.py:5
-#: views.py:134
+#: views.py:136
 msgid "Quotas"
 msgstr "Cote"
 
@@ -234,25 +234,25 @@ msgstr "Cota dimensiunii documentului a fost depășită."
 msgid "New quota backend selection"
 msgstr "Noua selecție de backend de cote"
 
-#: views.py:52
+#: views.py:54
 #, python-format
 msgid "Create a \"%s\" quota"
 msgstr "Creați o cotă \"%s\""
 
-#: views.py:84
+#: views.py:86
 #, python-format
 msgid "Delete quota: %s"
 msgstr "Ștergeți cota: %s"
 
-#: views.py:99
+#: views.py:101
 #, python-format
 msgid "Edit quota: %s"
 msgstr "Modifica cota: %s"
 
-#: views.py:131
+#: views.py:133
 msgid "Quotas restrict usage of system resources. "
 msgstr "Cotele restricționează utilizarea resurselor de sistem."
 
-#: views.py:133
+#: views.py:135
 msgid "No quotas available"
 msgstr "Nu există cote disponibile"
