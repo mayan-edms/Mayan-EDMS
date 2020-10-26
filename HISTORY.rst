@@ -2,6 +2,7 @@
 ===================
 - Fix Document indexing API view. GitLab issue #885.
 - Added tests for all REST API views.
+- Update GitLab CI and Make file to support automatic minor releases.
 
 3.4.18 (2020-10-22)
 ===================

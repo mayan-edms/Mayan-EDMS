@@ -25,6 +25,7 @@ job_docker_build:
     - docker logout
   only:
     - releases/all
+    - releases/all_minor
     - releases/docker
 
 job_docker_push:
@@ -54,6 +55,26 @@ job_docker_push:
     - if [ -z MINOR_VERSION ]; then docker push registry-1.docker.io/mayanedms/mayanedms:"$MINOR_VERSION";fi
   only:
     - releases/all
+    - releases/docker
+
+job_docker_push_minor:
+  stage: push_docker
+  image: docker:latest
+  services:
+    - docker:dind
+  before_script:
+    - apk add --no-cache python3
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script:
+    - PYTHON_BIN=/usr/bin/python3
+    - DOCKER_VERSION=`cat docker/rootfs/version`
+    - docker pull "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
+    - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:"$DOCKER_VERSION"
+    - docker logout
+    - docker login -u "$DOCKER_HUB_USERNAME" -p "$DOCKER_HUB_PASSWORD" https://registry-1.docker.io
+    - docker push registry-1.docker.io/mayanedms/mayanedms:"$DOCKER_VERSION"
+  only:
+    - releases/all_minor
     - releases/docker
 
 job_docker_nightly:
@@ -128,6 +149,7 @@ job_build_python:
     - make python-wheel
   only:
     - releases/all
+    - releases/all_minor
     - releases/python
 
 job_push_python:
@@ -144,6 +166,7 @@ job_push_python:
     - twine upload dist/* -r pypi
   only:
     - releases/all
+    - releases/all_minor
     - releases/python
 
 # Run the test suit
@@ -163,6 +186,7 @@ job_push_python:
     - pip install -r requirements.txt -r requirements/testing-base.txt
   only:
     - releases/all
+    - releases/all_minor
     - releases/docker
     - releases/python
     - staging
