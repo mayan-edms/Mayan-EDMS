@@ -277,10 +277,11 @@
 - Default ``DEFAULT_CELERY_BROKER_URL`` to ``'memory://'``.
   This ensures operation even when there is no broker available.
 
-3.4.19 (2020-10-XX)
+3.4.19 (2020-10-26)
 ===================
 - Fix Document indexing API view. GitLab issue #885.
 - Added tests for all REST API views.
+- Update GitLab CI and Make file to support automatic minor releases.
 
 3.4.18 (2020-10-22)
 ===================
