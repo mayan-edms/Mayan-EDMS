@@ -1,7 +1,8 @@
-3.5.2 (2020-10-XX)
+3.5.2 (2020-10-26)
 ==================
 - Allow JavaScript from Django REST framework to be served.
   Needed for the browseable API UI.
+- Merges and fixes from 3.4 series.
 
 3.5.1 (2020-10-11)
 ==================
