@@ -283,6 +283,8 @@
 - Fix Document indexing API view. GitLab issue #885.
 - Added tests for all REST API views.
 - Update GitLab CI and Make file to support automatic minor releases.
+- Skip ReDoc and Swagger UI tests when using PostgreSQL to workaround Django
+  issues #15802 and #27074.
 
 3.4.18 (2020-10-22)
 ===================
