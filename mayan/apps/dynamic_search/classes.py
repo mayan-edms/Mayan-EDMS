@@ -238,7 +238,9 @@ class SearchModel(AppsModuleLoaderMixin):
     @cached_property
     def model(self):
         if not self._model:
-            self._model = apps.get_model(self.app_label, self.model_name)
+            self._model = apps.get_model(
+                app_label=self.app_label, model_name=self.model_name
+            )
         return self._model
 
     @cached_property
