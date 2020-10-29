@@ -13,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-15 06:13+0000\n"
-"PO-Revision-Date: 2020-10-14 17:44+0000\n"
-"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
+"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"PO-Revision-Date: 2020-10-26 13:26+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -128,7 +128,7 @@ msgstr "Razem stron"
 msgid "Total documents"
 msgstr "Razem dokumenty"
 
-#: dashboard_widgets.py:66 views/trashed_document_views.py:132
+#: dashboard_widgets.py:66 views/trashed_document_views.py:143
 msgid "Documents in trash"
 msgstr "Dokumenty w koszu"
 
@@ -307,11 +307,11 @@ msgstr "Edytuj właściwości"
 msgid "All documents"
 msgstr "Wszystkie dokumenty"
 
-#: links/document_links.py:55 views/document_views.py:618
+#: links/document_links.py:55 views/document_views.py:619
 msgid "Recently accessed"
 msgstr "Ostatnio przeglądane"
 
-#: links/document_links.py:59 views/document_views.py:646
+#: links/document_links.py:59 views/document_views.py:647
 msgid "Recently added"
 msgstr "Ostatnio dodane"
 
@@ -492,7 +492,7 @@ msgstr "Typ dokumentu."
 msgid "The name of the document."
 msgstr "Nawa dokumentu."
 
-#: models/document_models.py:68 models/document_page_models.py:271
+#: models/document_models.py:68 models/document_page_models.py:272
 #: models/document_type_models.py:31 models/document_type_models.py:191
 msgid "Label"
 msgstr "Etykieta"
@@ -555,11 +555,11 @@ msgstr "Niepełny dokument, id: %d"
 msgid "Enabled"
 msgstr "Włączone"
 
-#: models/document_page_models.py:52 models/document_page_models.py:296
+#: models/document_page_models.py:52 models/document_page_models.py:297
 msgid "Document page"
 msgstr "Strona dokumentu"
 
-#: models/document_page_models.py:53 models/document_page_models.py:297
+#: models/document_page_models.py:53 models/document_page_models.py:298
 msgid "Document pages"
 msgstr "Strony dokumentu"
 
@@ -707,7 +707,7 @@ msgstr "Usuwanie dokumentów"
 msgid "Trash documents"
 msgstr "Dokumenty w koszu"
 
-#: permissions.py:17 views/document_views.py:203
+#: permissions.py:17 views/document_views.py:204
 msgid "Download documents"
 msgstr "Pobieranie dokumentów"
 
@@ -1230,41 +1230,41 @@ msgstr[3] "Zmień typ wybranych dokumentów"
 msgid "Change the type of the document: %s"
 msgstr "Zmień typ dokumentu: %s"
 
-#: views/document_views.py:151
+#: views/document_views.py:152
 #, python-format
 msgid "Document type for \"%s\" changed successfully."
 msgstr "Typ dokumentu \"%s\" zmieniono pomyślnie."
 
-#: views/document_views.py:201
+#: views/document_views.py:202
 msgid "Download"
 msgstr "Pobierz"
 
-#: views/document_views.py:300
+#: views/document_views.py:301
 #, python-format
 msgid "Preview of document: %s"
 msgstr "Podgląd dokumentu: %s"
 
-#: views/document_views.py:320
+#: views/document_views.py:321
 #, python-format
 msgid "Edit properties of document: %s"
 msgstr "Edytuj właściwości dokumentu: %s"
 
-#: views/document_views.py:351
+#: views/document_views.py:352
 #, python-format
 msgid "Properties for document: %s"
 msgstr "Właściwości dokumentu: %s"
 
-#: views/document_views.py:360
+#: views/document_views.py:361
 #, python-format
 msgid "%(count)d document queued for page count recalculation"
 msgstr "%(count)d dokument dodano do kolejki przeliczenia liczby stron"
 
-#: views/document_views.py:363
+#: views/document_views.py:364
 #, python-format
 msgid "%(count)d documents queued for page count recalculation"
 msgstr "%(count)d dokumentów dodano do kolejki przeliczenia liczby stron"
 
-#: views/document_views.py:371
+#: views/document_views.py:372
 msgid "Recalculate the page count of the selected document?"
 msgid_plural "Recalculate the page count of the selected documents?"
 msgstr[0] "Przeliczyć liczbę stron wybranego dokumentu?"
@@ -1272,29 +1272,29 @@ msgstr[1] "Przeliczyć liczbę stron wybranego dokumentu?"
 msgstr[2] "Przeliczyć liczbę stron wybranego dokumentu?"
 msgstr[3] "Przeliczyć liczbę stron wybranych dokumentów?"
 
-#: views/document_views.py:382
+#: views/document_views.py:383
 #, python-format
 msgid "Recalculate the page count of the document: %s?"
 msgstr "Przeliczyć liczbę stron dokumentu: %s?"
 
-#: views/document_views.py:398
+#: views/document_views.py:399
 #, python-format
 msgid ""
 "Document \"%(document)s\" is empty. Upload at least one document version "
 "before attempting to detect the page count."
 msgstr "Dokument \"%(document)s\" jest pusty. Załaduj ostatnią wersję dokumentu przed wyliczaniem ilości stron."
 
-#: views/document_views.py:412
+#: views/document_views.py:413
 #, python-format
 msgid "Transformation clear request processed for %(count)d document"
 msgstr "Żądanie usunięcia przekształcenia wykonano dla %(count)d dokumentu"
 
-#: views/document_views.py:415
+#: views/document_views.py:416
 #, python-format
 msgid "Transformation clear request processed for %(count)d documents"
 msgstr "Żądanie usunięcia przekształcenia wykonano dla %(count)d dokumentów"
 
-#: views/document_views.py:423
+#: views/document_views.py:424
 msgid "Clear all the page transformations for the selected document?"
 msgid_plural "Clear all the page transformations for the selected document?"
 msgstr[0] "Usunąć wszystkie przekształcenia strony dla wybranego dokumentu?"
@@ -1302,58 +1302,58 @@ msgstr[1] "Usunąć wszystkie przekształcenia strony dla wybranego dokumentu?"
 msgstr[2] "Usunąć wszystkie przekształcenia strony dla wybranego dokumentu?"
 msgstr[3] "Usunąć wszystkie przekształcenia strony dla wybranego dokumentu?"
 
-#: views/document_views.py:434
+#: views/document_views.py:435
 #, python-format
 msgid "Clear all the page transformations for the document: %s?"
 msgstr "Usunąć wszystkie przekształcenia strony dla dokumentu: %s?"
 
-#: views/document_views.py:449
+#: views/document_views.py:450
 #, python-format
 msgid ""
 "Error deleting the page transformations for document: %(document)s; "
 "%(error)s."
 msgstr "Błąd podczas usuwania przekształceń strony dla dokumentu: %(document)s; %(error)s."
 
-#: views/document_views.py:481
+#: views/document_views.py:482
 #, python-format
 msgid ""
 "Error cloning the page transformations for document: %(document)s; "
 "%(error)s."
 msgstr "Błąd klonowania przekształcenia strony dla dokumentu: %(document)s; %(error)s."
 
-#: views/document_views.py:489
+#: views/document_views.py:490
 msgid "Transformations cloned successfully."
 msgstr "Sklonowano transformacje pomyślnie."
 
-#: views/document_views.py:505 views/document_views.py:582
+#: views/document_views.py:506 views/document_views.py:583
 msgid "Submit"
 msgstr "Wykonaj"
 
-#: views/document_views.py:507
+#: views/document_views.py:508
 #, python-format
 msgid "Clone page transformations for document: %s"
 msgstr "Sklonuj transformacje strony dla dokumentu: %s"
 
-#: views/document_views.py:585
+#: views/document_views.py:586
 #, python-format
 msgid "Print: %s"
 msgstr "Wydruk: %s"
 
-#: views/document_views.py:612
+#: views/document_views.py:613
 msgid ""
 "This view will list the latest documents viewed or manipulated in any way by"
 " this user account."
 msgstr "W tym widoku wymienione są najnowsze dokumenty przeglądane lub modyfikowane w jakikolwiek sposób przez to konto użytkownika."
 
-#: views/document_views.py:616
+#: views/document_views.py:617
 msgid "There are no recently accessed document"
 msgstr "Brak ostatnio dostępnego dokumentu"
 
-#: views/document_views.py:640
+#: views/document_views.py:641
 msgid "This view will list the latest documents uploaded in the system."
 msgstr "Ten widok zawiera listę najnowszych dokumentów przesłanych do systemu."
 
-#: views/document_views.py:644
+#: views/document_views.py:645
 msgid "There are no recently added document"
 msgstr "Brak ostatnio dodanego dokumentu"
 
@@ -1410,56 +1410,56 @@ msgstr "Dokument %(count)d został dodany do ulubionych."
 msgid "%(count)d documents added to favorites."
 msgstr "%(count)d dokumentów dodano do ulubionych."
 
-#: views/favorite_document_views.py:56
+#: views/favorite_document_views.py:54
 msgid "Add"
 msgstr "Dodaj"
 
-#: views/favorite_document_views.py:59
-msgid "Add the selected document to favorites"
-msgid_plural "Add the selected documents to favorites"
-msgstr[0] "Dodaj wybrany dokument do ulubionych"
-msgstr[1] "Dodaj wybrane dokumenty do ulubionych"
-msgstr[2] "Dodaj wybrane dokumenty do ulubionych"
-msgstr[3] "Dodaj wybrane dokumenty do ulubionych"
+#: views/favorite_document_views.py:57
+msgid "Add the selected document to favorites?"
+msgid_plural "Add the selected documents to favorites?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
-#: views/favorite_document_views.py:72
+#: views/favorite_document_views.py:75
 #, python-format
 msgid "Document \"%(instance)s\" is not in favorites."
 msgstr "Dokument „%(instance)s” nie jest w ulubionych."
 
-#: views/favorite_document_views.py:77
+#: views/favorite_document_views.py:80
 #, python-format
 msgid "%(count)d document removed from favorites."
 msgstr "Dokument %(count)d został usunięty z ulubionych."
 
-#: views/favorite_document_views.py:80
+#: views/favorite_document_views.py:83
 #, python-format
 msgid "%(count)d documents removed from favorites."
 msgstr "Dokumenty %(count)d zostały usunięte z ulubionych."
 
-#: views/favorite_document_views.py:87
+#: views/favorite_document_views.py:88
 msgid "Remove"
 msgstr "Usuń"
 
-#: views/favorite_document_views.py:90
-msgid "Remove the selected document from favorites"
-msgid_plural "Remove the selected documents from favorites"
-msgstr[0] "Usuń wybrany dokument z ulubionych"
-msgstr[1] "Usuń wybrane dokumenty z ulubionych"
-msgstr[2] "Usuń wybrane dokumenty z ulubionych"
-msgstr[3] "Usuń wybrane dokumenty z ulubionych"
+#: views/favorite_document_views.py:91
+msgid "Remove the selected document from favorites?"
+msgid_plural "Remove the selected documents from favorites?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
-#: views/trashed_document_views.py:37
+#: views/trashed_document_views.py:36
 #, python-format
 msgid "%(count)d document moved to the trash."
 msgstr "Dokument %(count)d został przeniesiony do kosza."
 
-#: views/trashed_document_views.py:40
+#: views/trashed_document_views.py:39
 #, python-format
 msgid "%(count)d documents moved to the trash."
 msgstr "Dokumenty %(count)d zostały przeniesione do kosza."
 
-#: views/trashed_document_views.py:48
+#: views/trashed_document_views.py:45
 msgid "Move the selected document to the trash?"
 msgid_plural "Move the selected documents to the trash?"
 msgstr[0] "Czy przenieść wybrany dokument do kosza?"
@@ -1467,25 +1467,25 @@ msgstr[1] "Czy przenieść wybrane dokumenty do kosza?"
 msgstr[2] "Czy przenieść wybrane dokumenty do kosza?"
 msgstr[3] "Czy przenieść wybrane dokumenty do kosza?"
 
-#: views/trashed_document_views.py:65
+#: views/trashed_document_views.py:75
 msgid "Empty trash?"
 msgstr "Pusty kosz?"
 
-#: views/trashed_document_views.py:73
+#: views/trashed_document_views.py:83
 msgid "The trash emptying task has been queued."
 msgstr "Zadanie opróżnienia kosza wysłano do kolejki."
 
-#: views/trashed_document_views.py:83
+#: views/trashed_document_views.py:93
 #, python-format
 msgid "%(count)d trashed document submitted for deletion."
 msgstr "%(count)d zniszczony dokument przekazany do usunięcia."
 
-#: views/trashed_document_views.py:86
+#: views/trashed_document_views.py:96
 #, python-format
 msgid "%(count)d trashed documents submitted for deletion."
 msgstr "%(count)d zniszczonych dokumentów przekazanych do usunięcia."
 
-#: views/trashed_document_views.py:94
+#: views/trashed_document_views.py:102
 msgid "Delete the selected trashed document?"
 msgid_plural "Delete the selected trashed documents?"
 msgstr[0] "Usunąć wybrany dokument z kosza?"
@@ -1493,28 +1493,28 @@ msgstr[1] "Usunąć wybrane zniszczone dokumenty?"
 msgstr[2] "Usunąć wybrane zniszczone dokumenty?"
 msgstr[3] "Usunąć trwale wybrane dokumenty z kosza?"
 
-#: views/trashed_document_views.py:125
+#: views/trashed_document_views.py:136
 msgid ""
 "To avoid loss of data, documents are not deleted instantly. First, they are "
 "placed in the trash can. From here they can be then finally deleted or "
 "restored."
 msgstr "Aby uniknąć utraty danych, dokumenty nie są natychmiast usuwane. Najpierw są umieszczane w koszu na śmieci. Stąd można je trwale usunąć lub przywrócić."
 
-#: views/trashed_document_views.py:130
+#: views/trashed_document_views.py:141
 msgid "There are no documents in the trash can"
 msgstr "W koszu nie ma żadnych dokumentów"
 
-#: views/trashed_document_views.py:143
+#: views/trashed_document_views.py:154
 #, python-format
 msgid "%(count)d trashed document restored."
 msgstr "Dokument %(count)d został przywrócony z kosza."
 
-#: views/trashed_document_views.py:146
+#: views/trashed_document_views.py:157
 #, python-format
 msgid "%(count)d trashed documents restored."
 msgstr "Dokumenty %(count)d zostały przywrócone z kosza."
 
-#: views/trashed_document_views.py:154
+#: views/trashed_document_views.py:163
 msgid "Restore the selected trashed document?"
 msgid_plural "Restore the selected trashed documents?"
 msgstr[0] "Przywrócić wybrany zniszczony dokument?"

@@ -37,7 +37,7 @@ Install Python Requests (http://docs.python-requests.org/en/master/):
 
     pip install requests
 
-Get a list of document types::
+Get a list of document types:
 
 .. code-block:: python
 

@@ -19,7 +19,7 @@ from mayan.apps.views.mixins import ExternalObjectMixin
 from .forms import TagMultipleSelectionForm
 from .icons import icon_menu_tags, icon_document_tag_remove_submit
 from .links import link_document_tag_multiple_attach, link_tag_create
-from .models import Tag
+from .models import DocumentTag, Tag
 from .permissions import (
     permission_tag_attach, permission_tag_create, permission_tag_delete,
     permission_tag_edit, permission_tag_remove, permission_tag_view
@@ -204,6 +204,7 @@ class TagEditView(SingleObjectEditView):
 
 class TagListView(SingleObjectListView):
     object_permission = permission_tag_view
+    tag_model = Tag
 
     def get_extra_context(self):
         return {
@@ -222,7 +223,7 @@ class TagListView(SingleObjectListView):
         }
 
     def get_source_queryset(self):
-        queryset = ModelQueryFields.get(model=Tag).get_queryset()
+        queryset = ModelQueryFields.get(model=self.tag_model).get_queryset()
         return queryset.filter(pk__in=self.get_tag_queryset())
 
     def get_tag_queryset(self):
@@ -255,6 +256,7 @@ class DocumentTagListView(ExternalObjectMixin, TagListView):
     external_object_class = Document
     external_object_permission = permission_tag_view
     external_object_pk_url_kwarg = 'document_id'
+    tag_model = DocumentTag
 
     def get_extra_context(self):
         context = super().get_extra_context()

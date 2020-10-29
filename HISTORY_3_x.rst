@@ -1,7 +1,15 @@
-3.5.2 (2020-10-XX)
+3.5.3 (2020-XX-XX)
+==================
+- Ensure the document tag list view return DocumentTag instances and not
+  regular Tag instances.
+- Lower the severity of the VariableDoesNotExist exception when resolving
+  links. This exception does not is indicative of an error in the code.
+
+3.5.2 (2020-10-26)
 ==================
 - Allow JavaScript from Django REST framework to be served.
   Needed for the browseable API UI.
+- Merges and fixes from 3.4 series.
 
 3.5.1 (2020-10-11)
 ==================
@@ -276,6 +284,19 @@
   with ``CELERY_BROKER_URL``.
 - Default ``DEFAULT_CELERY_BROKER_URL`` to ``'memory://'``.
   This ensures operation even when there is no broker available.
+
+3.4.20 (2020-XX-XX)
+===================
+- Fix REST API chapter formatting.
+- Add search documentation chapter.
+
+3.4.19 (2020-10-26)
+===================
+- Fix Document indexing API view. GitLab issue #885.
+- Added tests for all REST API views.
+- Update GitLab CI and Make file to support automatic minor releases.
+- Skip ReDoc and Swagger UI tests when using PostgreSQL to workaround Django
+  issues #15802 and #27074.
 
 3.4.18 (2020-10-22)
 ===================

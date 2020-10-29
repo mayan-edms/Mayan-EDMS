@@ -6,12 +6,13 @@
 # Translators:
 # Daniel Winiarski <daniel.winiarski.dw@gmail.com>, 2016
 # Tomasz Szymanowicz <alakdae@gmail.com>, 2020
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-15 06:13+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
+"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"PO-Revision-Date: 2020-10-16 18:05+0000\n"
 "Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -24,7 +25,7 @@ msgstr ""
 msgid "Storage"
 msgstr "Magazyn"
 
-#: classes.py:82 classes.py:103
+#: classes.py:86 classes.py:107
 #, python-format
 msgid ""
 "Unable to initialize storage: %(name)s. Check the storage backend dotted "
@@ -76,7 +77,7 @@ msgstr "Pliki udostępnione"
 
 #: queues.py:11
 msgid "Storage periodic"
-msgstr ""
+msgstr "Okresowy magazyn"
 
 #: queues.py:16
 msgid "Delete stale uploads"

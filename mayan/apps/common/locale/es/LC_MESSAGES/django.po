@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"POT-Creation-Date: 2020-10-26 13:25+0000\n"
 "PO-Revision-Date: 2020-09-27 07:53+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
@@ -26,19 +26,19 @@ msgstr ""
 msgid "Common"
 msgstr "Común"
 
-#: classes.py:453
+#: classes.py:456
 msgid "Model properties"
 msgstr "Propiedades del modelo"
 
-#: classes.py:458
+#: classes.py:461
 msgid "Model fields"
 msgstr "Campos del modelo"
 
-#: classes.py:501
+#: classes.py:504
 msgid "Model related fields"
 msgstr "Campos relacionados del modelo"
 
-#: classes.py:506
+#: classes.py:509
 msgid "Model reverse fields"
 msgstr "Campos inversos de modelo"
 
@@ -265,15 +265,15 @@ msgstr "¿Hacer una copia de %(object_name)s \"%(object)s\"?"
 msgid "Object copied successfully."
 msgstr "Objeto copiado con éxito."
 
-#: views.py:150
-msgid "No setup options available."
-msgstr "No hay opciones de configuración disponibles."
-
-#: views.py:152
+#: views.py:151
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
 msgstr "Ningún resultado aquí significa que no tiene los permisos necesarios para realizar tareas administrativas."
+
+#: views.py:154
+msgid "No setup options available."
+msgstr "No hay opciones de configuración disponibles."
 
 #: views.py:158
 msgid "Setup items"

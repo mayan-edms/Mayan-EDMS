@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"POT-Creation-Date: 2020-10-26 13:25+0000\n"
 "PO-Revision-Date: 2020-03-28 07:24+0000\n"
 "Last-Translator: Roberto Rosario, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:39 events.py:6 links.py:33 models.py:32 permissions.py:5
-#: views.py:134
+#: views.py:136
 msgid "Quotas"
 msgstr "Cuotas"
 
@@ -231,25 +231,25 @@ msgstr "Cuota de tamaño de documento excedida."
 msgid "New quota backend selection"
 msgstr "Nueva selección de controlador de cuota"
 
-#: views.py:52
+#: views.py:54
 #, python-format
 msgid "Create a \"%s\" quota"
 msgstr "Crear una cuota \"%s\""
 
-#: views.py:84
+#: views.py:86
 #, python-format
 msgid "Delete quota: %s"
 msgstr "Eliminar cuota: %s"
 
-#: views.py:99
+#: views.py:101
 #, python-format
 msgid "Edit quota: %s"
 msgstr "Editar cuota: %s"
 
-#: views.py:131
+#: views.py:133
 msgid "Quotas restrict usage of system resources. "
 msgstr "Las cuotas restringen el uso de los recursos del sistema."
 
-#: views.py:133
+#: views.py:135
 msgid "No quotas available"
 msgstr "No hay cuotas disponibles"

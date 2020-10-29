@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-15 06:13+0000\n"
+"POT-Creation-Date: 2020-10-26 13:25+0000\n"
 "PO-Revision-Date: 2020-09-29 08:48+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
@@ -23,19 +23,19 @@ msgstr ""
 msgid "Common"
 msgstr "Společný"
 
-#: classes.py:453
+#: classes.py:456
 msgid "Model properties"
 msgstr "Vlastnosti modelu"
 
-#: classes.py:458
+#: classes.py:461
 msgid "Model fields"
 msgstr "Pole modelu"
 
-#: classes.py:501
+#: classes.py:504
 msgid "Model related fields"
 msgstr "Pole související s modelem"
 
-#: classes.py:506
+#: classes.py:509
 msgid "Model reverse fields"
 msgstr "Modelování zpětných polí"
 
@@ -262,15 +262,15 @@ msgstr "Vytvořit kopii %(object_name)s &quot;%(object)s&quot;?"
 msgid "Object copied successfully."
 msgstr "Objekt byl úspěšně zkopírován."
 
-#: views.py:150
-msgid "No setup options available."
-msgstr "Nejsou k dispozici žádné možnosti nastavení."
-
-#: views.py:152
+#: views.py:151
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
 msgstr "Žádné výsledky zde znamenají, že nemáte potřebná oprávnění k provedení administrativní úlohy."
+
+#: views.py:154
+msgid "No setup options available."
+msgstr "Nejsou k dispozici žádné možnosti nastavení."
 
 #: views.py:158
 msgid "Setup items"

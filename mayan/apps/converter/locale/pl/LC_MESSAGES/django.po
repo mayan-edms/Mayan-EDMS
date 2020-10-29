@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-15 06:13+0000\n"
-"PO-Revision-Date: 2020-10-14 18:19+0000\n"
+"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"PO-Revision-Date: 2020-10-16 18:17+0000\n"
 "Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -129,7 +129,7 @@ msgstr "Etykieta"
 msgid ""
 "This value will be used when referencing this asset. Can only contain "
 "letters, numbers, and underscores."
-msgstr ""
+msgstr "Wartość ta zostanie użyta podczas odwołania do tego zasobu. Może zawierać tylko litery, cyfry i podkreślenia."
 
 #: models.py:43
 msgid "Internal name"
@@ -197,7 +197,7 @@ msgstr "Przekształcenia warstwy"
 
 #: models.py:174
 msgid "Unknown transformation class"
-msgstr ""
+msgstr "Nieznana klasa przekształcenia"
 
 #: permissions.py:8
 msgid "Create new assets"

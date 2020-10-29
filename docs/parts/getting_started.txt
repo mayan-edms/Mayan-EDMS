@@ -23,4 +23,4 @@ understanding about how these concepts work.
 
   ../chapters/document_types
   ../chapters/sources
-
+  ../chapters/search
