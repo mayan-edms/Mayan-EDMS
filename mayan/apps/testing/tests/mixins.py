@@ -618,11 +618,14 @@ class TestViewTestCaseMixin:
             # before updating.
             result = dict(response.context).copy()
             result.update({'request': response.wsgi_request})
-            return Context(result)
+            context = Context(result)
         else:
             result = response.context or {}
             result.update({'request': response.wsgi_request})
-            return Context(result)
+            context = Context(result)
+
+        context.request = response.wsgi_request
+        return context
 
     def _test_view_factory(self, test_object=None):
         def test_view(request):
