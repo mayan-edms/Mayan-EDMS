@@ -1,0 +1,70 @@
+======
+Search
+======
+
+Mayan EDMS provides a backend system that allow using different programs to
+power the search function. The default backend
+(``mayan.apps.dynamic_search.backends.django.DjangoSearchBackend``) uses the
+database manager to perform searches.
+
+Search syntax
+=============
+
+Search syntax support will depend on the search backend being used. The
+``DjangoSearchBackend`` backend supports the following syntax.
+
+Text entered in the search bar are split into search terms. The blank space
+character is used as the term delimiter.
+
+By default, search terms are routed to an ``AND`` query. That means
+that a search for:
+
+``Tag1 Tag2``
+
+will only return documents with both tags attached. To offer the
+opposite choice we added an ``OR`` syntax. Searching for:
+
+``Tag1 OR Tag2``
+
+will return documents with either tag attached.
+
+Literals terms are also supported.
+
+Searching for:
+
+``blue car``
+
+will return documents with the words ``blue`` and ``car``, even if they are
+not together. That means getting documents with the phrases ``blue sky``
+and ``slow car``. To search for exact terms enclose them in quotes:
+
+``"blue car"``
+
+This will return only documents with the exact phrase "blue car".
+
+Negative terms or exclusions is also support by adding a minus (``-``)
+character to the term to be excluded.
+
+The search terms:
+
+``Tag1 -Tag2``
+
+will return documents that have the ``Tag1`` attached and that do not have
+``Tag2`` attached.
+
+
+Other backends
+==============
+
+Besides the default Django search backend, a backend using the Whoosh search
+engine is included. The name of this backend is
+``mayan.apps.dynamic_search.backends.whoosh.WhooshSearchBackend`` and can be
+enabled by changing the value of the setting ``SEARCH_BACKEND``. When changing
+the search backend, it is also necessary to launch the "Reindex search backend"
+action from the Tools menu to initialize the search engine index. Indexing the
+search engine is only required once, afterwards the search engine will be
+updated as documents are added or edited.
+
+
+Refer to Whoosh's documentation for more information about the search syntax
+it supports: https://whoosh.readthedocs.io/en/latest/querylang.html

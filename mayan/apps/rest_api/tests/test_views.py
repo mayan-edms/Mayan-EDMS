@@ -12,12 +12,12 @@ class RESTAPIViewTestCase(RESTAPIViewTestMixin, GenericViewTestCase):
         response = self._request_test_browser_api_view()
         self.assertEqual(response.status_code, 200)
 
-    @unittest.skipIf(connection.vendor == 'postgresql', 'Skip for known Django issues #15802 and #27074')
+    @unittest.skipIf(connection.vendor != 'sqlite', 'Skip for known Django issues #15802 and #27074')
     def test_redoc_ui_view(self):
         response = self._request_test_redoc_ui_view()
         self.assertEqual(response.status_code, 200)
 
-    @unittest.skipIf(connection.vendor == 'postgresql', 'Skip for known Django issues #15802 and #27074')
+    @unittest.skipIf(connection.vendor != 'sqlite', 'Skip for known Django issues #15802 and #27074')
     def test_swagger_ui_view(self):
         response = self._request_test_swagger_ui_view()
         self.assertEqual(response.status_code, 200)

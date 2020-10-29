@@ -278,6 +278,11 @@
 - Default ``DEFAULT_CELERY_BROKER_URL`` to ``'memory://'``.
   This ensures operation even when there is no broker available.
 
+3.4.20 (2020-XX-XX)
+===================
+- Fix REST API chapter formatting.
+- Add search documentation chapter.
+
 3.4.19 (2020-10-26)
 ===================
 - Fix Document indexing API view. GitLab issue #885.
