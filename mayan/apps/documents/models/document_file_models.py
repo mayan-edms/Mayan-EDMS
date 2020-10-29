@@ -29,6 +29,7 @@ from ..settings import setting_hash_block_size
 from ..signals import signal_post_document_created, signal_post_document_file_upload
 
 from .document_models import Document
+from .mixins import ModelMixinHooks
 
 __all__ = ('DocumentFile',)
 logger = logging.getLogger(name=__name__)
@@ -40,7 +41,9 @@ def upload_to(instance, filename):
     )
 
 
-class DocumentFile(ModelInstanceExtraDataAPIViewMixin, models.Model):
+class DocumentFile(
+    ModelInstanceExtraDataAPIViewMixin, ModelMixinHooks, models.Model
+):
     """
     Model that describes a document file and its properties
     Fields:
@@ -115,22 +118,6 @@ class DocumentFile(ModelInstanceExtraDataAPIViewMixin, models.Model):
     @staticmethod
     def hash_function():
         return hashlib.sha256()
-
-    @classmethod
-    def _execute_hooks(cls, hook_list, instance, **kwargs):
-        result = None
-
-        for hook in hook_list:
-            result = hook(document_file=instance, **kwargs)
-            if result:
-                kwargs.update(result)
-
-        return result
-
-    @classmethod
-    def _insert_hook_entry(cls, hook_list, func, order=None):
-        order = order or len(hook_list)
-        hook_list.insert(order, func)
 
     @classmethod
     def execute_pre_create_hooks(cls, kwargs=None):
@@ -399,6 +386,13 @@ class DocumentFile(ModelInstanceExtraDataAPIViewMixin, models.Model):
 
         if new_document_file:
             logger.info('Creating new file for document: %s', self.document)
+            DocumentFile.execute_pre_create_hooks(
+                kwargs={
+                    'document': self.document,
+                    'shared_uploaded_file': None,
+                    'user': user
+                }
+            )
 
         try:
             with transaction.atomic():

@@ -368,7 +368,7 @@ class DocumentCheckoutViewTestCase(
 
         self.assertFalse(self.test_document.is_checked_out())
 
-    def test_check_in_of_non_checked_out_document(self):
+    def test_check_in_of_non_checked_out_document_view(self):
         self.grant_access(
             obj=self.test_document, permission=permission_document_check_in
         )
@@ -379,7 +379,7 @@ class DocumentCheckoutViewTestCase(
             text=force_text(s=DocumentNotCheckedOut())
         )
 
-    def test_check_out_of_checked_out_document(self):
+    def test_check_out_of_checked_out_document_view(self):
         self._create_test_user()
         self._check_out_test_document(user=self.test_user)
         self.grant_access(
@@ -396,15 +396,24 @@ class DocumentCheckoutViewTestCase(
             text=force_text(s=DocumentAlreadyCheckedOut())
         )
 
-    def test_document_check_out_block_new_file(self):
-        self._check_out_test_document()
+
+class DocumentCheckoutOptionsViewTestCase(
+    DocumentCheckoutTestMixin, DocumentCheckoutViewTestMixin,
+    GenericDocumentViewTestCase
+):
+    def test_document_check_out_block_new_file_view(self):
+        self._create_test_user()
+        self._check_out_test_document(user=self.test_user)
         file_count = DocumentFile.objects.count()
 
         self.grant_access(
             obj=self.test_document,
             permission=permission_document_file_new
         )
-
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_file_view
+        )
         response = self.post(
             viewname='sources:document_file_upload', kwargs={
                 'document_id': self.test_document.pk

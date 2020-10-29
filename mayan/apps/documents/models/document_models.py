@@ -31,7 +31,9 @@ __all__ = ('Document', 'TrashedDocument', 'TrashedDocument')
 logger = logging.getLogger(name=__name__)
 
 
-class Document(ModelInstanceExtraDataAPIViewMixin, ModelMixinHooks, models.Model):
+class Document(
+    ModelInstanceExtraDataAPIViewMixin, ModelMixinHooks, models.Model
+):
     """
     Defines a single document with it's fields and properties
     Fields:

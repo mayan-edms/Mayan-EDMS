@@ -24,8 +24,8 @@ class DocumentCheckInView(MultipleObjectConfirmActionView):
     error_message = 'Unable to check in document "%(instance)s". %(exception)s'
     model = Document
     pk_url_kwarg = 'document_id'
-    success_message_singular = '%(count)d document checked in.'
-    success_message_plural = '%(count)d documents checked in.'
+    success_message_singular = 'Check in requested for %(count)d document.'
+    success_message_plural = 'Check in requested for %(count)d documents.'
 
     def get_extra_context(self):
         queryset = self.get_object_list()

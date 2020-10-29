@@ -66,8 +66,15 @@ class DocumentFileListViewTestCase(
         resolved_link = self._get_document_new_file_link()
         self.assertNotEqual(resolved_link, None)
 
-    def test_document_file_new_blocked(self):
-        self._check_out_test_document()
+    def test_document_file_new_blocked_different_user(self):
+        self._create_test_user()
+        self._check_out_test_document(user=self.test_user)
 
         resolved_link = self._get_document_new_file_link()
         self.assertEqual(resolved_link, None)
+
+    def test_document_file_new_blocked_same_user(self):
+        self._check_out_test_document()
+
+        resolved_link = self._get_document_new_file_link()
+        self.assertNotEqual(resolved_link, None)

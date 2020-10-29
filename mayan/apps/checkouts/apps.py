@@ -17,7 +17,6 @@ from .events import (
     event_document_auto_check_in, event_document_check_in,
     event_document_check_out, event_document_forceful_check_in
 )
-from .handlers import handler_check_new_file_creation
 from .hooks import hook_is_new_file_allowed
 from .links import (
     link_check_in_document, link_check_in_document_multiple,
@@ -65,7 +64,7 @@ class CheckoutsApp(MayanAppConfig):
             name='is_checked_out', value=method_is_checked_out
         )
 
-        DocumentFile.register_pre_save_hook(
+        DocumentFile.register_pre_create_hook(
             func=hook_is_new_file_allowed
         )
 
@@ -134,10 +133,4 @@ class CheckoutsApp(MayanAppConfig):
                 'checkouts:check_out_info', 'checkouts:check_out_document',
                 'checkouts:check_in_document'
             )
-        )
-
-        pre_save.connect(
-            dispatch_uid='checkouts_handler_check_new_file_creation',
-            receiver=handler_check_new_file_creation,
-            sender=DocumentFile
         )
