@@ -117,7 +117,7 @@ class Link:
             try:
                 request = context.request
             except AttributeError:
-                request = Variable('request').resolve(context)
+                request = Variable('request').resolve(context=context)
 
         current_path = request.META['PATH_INFO']
         current_view_name = resolve(current_path).view_name
@@ -152,7 +152,7 @@ class Link:
         # display it if the result of the conditional display function is
         # True
         if self.condition:
-            if not self.condition(context):
+            if not self.condition(context=context):
                 return None
 
         resolved_link = ResolvedLink(
@@ -165,9 +165,9 @@ class Link:
                 # TODO: Don't check for instance check for iterable in try/except
                 # block. This update required changing all 'args' argument in
                 # links.py files to be iterables and not just strings.
-                args = [Variable(arg) for arg in self.args]
+                args = [Variable(var=arg) for arg in self.args]
             else:
-                args = [Variable(self.args)]
+                args = [Variable(var=self.args)]
 
             # If we were passed an instance of the view context object we are
             # resolving, inject it into the context. This help resolve links for
@@ -188,7 +188,13 @@ class Link:
                 view_name=view_name, args=args, kwargs=kwargs, asvar=None
             )
             try:
-                resolved_link.url = node.render(context)
+                resolved_link.url = node.render(context=context)
+            except VariableDoesNotExist as exception:
+                """Not critical, ignore"""
+                logger.debug(
+                    'VariableDoesNotExist when resolving link "%s" URL; %s',
+                    self.text, exception
+                )
             except Exception as exception:
                 logger.error(
                     'Error resolving link "%s" URL; %s', self.text, exception
@@ -198,7 +204,7 @@ class Link:
 
         # This is for links that should be displayed but that are not clickable
         if self.conditional_disable:
-            resolved_link.disabled = self.conditional_disable(context)
+            resolved_link.disabled = self.conditional_disable(context=context)
         else:
             resolved_link.disabled = False
 
@@ -220,7 +226,7 @@ class Link:
                     pass
 
             # Use the link's URL but with the previous URL querystring
-            new_url = furl(resolved_link.url)
+            new_url = furl(url=resolved_link.url)
             new_url.args = parsed_url.querystr
             resolved_link.url = new_url.url
 

@@ -2,6 +2,8 @@
 ==================
 - Ensure the document tag list view return DocumentTag instances and not
   regular Tag instances.
+- Lower the severity of the VariableDoesNotExist exception when resolving
+  links. This exception does not is indicative of an error in the code.
 
 3.5.2 (2020-10-26)
 ==================
