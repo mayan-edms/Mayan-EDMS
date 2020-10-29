@@ -1,3 +1,8 @@
+3.5.3 (2020-XX-XX)
+==================
+- Ensure the document tag list view return DocumentTag instances and not
+  regular Tag instances.
+
 3.5.2 (2020-10-26)
 ==================
 - Allow JavaScript from Django REST framework to be served.
