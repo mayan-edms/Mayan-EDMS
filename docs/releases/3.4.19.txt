@@ -200,6 +200,7 @@ Backward incompatible changes
 Issues closed
 -------------
 
+- :gitlab-issue:`877` Lost Swagger and ReDoc interface when upgrade docker image version (from 3.4.12 to 3.4.17)
 - :gitlab-issue:`885` Error accessing document indexing API
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
