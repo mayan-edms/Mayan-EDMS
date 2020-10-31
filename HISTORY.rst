@@ -2,6 +2,7 @@
 ===================
 - Fix REST API chapter formatting.
 - Add search documentation chapter.
+- Remove extra space from link label.
 
 3.4.19 (2020-10-26)
 ===================
