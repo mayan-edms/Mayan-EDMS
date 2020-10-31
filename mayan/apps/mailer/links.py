@@ -37,7 +37,7 @@ link_system_mailer_error_log = Link(
 link_user_mailer_create = Link(
     icon_class_path='mayan.apps.mailer.icons.icon_user_mailer_create',
     permissions=(permission_user_mailer_create,),
-    text=_('Create mailing profile '), view='mailer:user_mailer_backend_selection',
+    text=_('Create mailing profile'), view='mailer:user_mailer_backend_selection',
 )
 link_user_mailer_delete = Link(
     args='resolved_object.pk',
