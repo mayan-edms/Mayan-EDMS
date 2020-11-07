@@ -246,17 +246,32 @@ class PartialNavigation {
                 var uri = new URI(location);
                 var uriFragment = uri.fragment();
                 var url = $form.attr('action') || uriFragment;
+                var finalUrl = new URI(url);
+                var formQueryString = new URLSearchParams(decodeURIComponent($form.serialize()));
 
                 options.url = url;
-                lastAjaxFormData.url = url + '?' + decodeURIComponent($form.serialize());
+
+                // Merge the URL and the form values in a smart way instead
+                // of just blindly adding a '?' between them.
+                formQueryString.forEach(function(value, key) {
+                    finalUrl.addQuery(key, value);
+                });
+
+                lastAjaxFormData.url = finalUrl.toString();
 
                 if ($form.attr('target') == '_blank') {
                     // If the form has a target attribute we emulate it by
                     // opening a new window and passing the form serialized
                     // data as the query.
-                    window.open(
-                        $form.attr('action') + '?' + decodeURIComponent($form.serialize())
-                    );
+                    var finalUrl = new URI($form.attr('action'));
+                    var formQueryString = new URLSearchParams(decodeURIComponent($form.serialize()));
+
+                    // Merge the URL and the form values in a smart way instead
+                    // of just blindly adding a '?' between them.
+                    formQueryString.forEach(function(value, key) {
+                        finalUrl.addQuery(key, value);
+                    });
+                    window.open(finalUrl.toString());
 
                     return false;
                 }
