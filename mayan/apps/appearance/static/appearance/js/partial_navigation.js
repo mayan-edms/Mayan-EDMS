@@ -94,7 +94,7 @@ class PartialNavigation {
                     if (response.getResponseHeader('Content-Disposition')) {
                         window.location = this.url;
                     } else {
-                        $('#ajax-content').html(data);
+                        $('#ajax-content').html(data).change();
                     }
                 }
             },
@@ -297,7 +297,7 @@ class PartialNavigation {
                     var currentUri = new URI(window.location.hash);
                     currentUri.fragment(lastAjaxFormData.url);
                     history.pushState({}, '', currentUri);
-                    $('#ajax-content').html(data);
+                    $('#ajax-content').html(data).change();
                 }
             }
         });
