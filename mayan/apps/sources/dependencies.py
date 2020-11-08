@@ -13,7 +13,7 @@ BinaryDependency(
     ), module=__name__, name='scanimage', path=setting_scanimage_path.value
 )
 JavaScriptDependency(
-    module=__name__, name='dropzone', version_string='=5.4.0'
+    module=__name__, name='dropzone', version_string='=5.7.2'
 )
 PythonDependency(
     module=__name__, name='flanker', version_string='==0.9.11'

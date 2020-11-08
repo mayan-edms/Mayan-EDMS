@@ -7,6 +7,7 @@
 - Merge and include fixes from version 3.4.20.
 - Fix column display in the dependency list views.
 - Disable initial state column for workflow proxies
+- Update Dropzone from version 5.4.0 to 5.7.2.
 
 3.5.2 (2020-10-26)
 ==================
