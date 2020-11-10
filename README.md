@@ -72,7 +72,6 @@ at: https://docs.mayan-edms.com/parts/installation.html
 
 - 2 Gigabytes of RAM (1 Gigabyte if OCR is turned off).
 - Multiple core CPU (64 bit, faster than 1 GHz recommended).
-- 
 
 <h2 align="center">Important links</h2>
 
