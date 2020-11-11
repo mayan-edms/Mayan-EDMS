@@ -212,14 +212,12 @@ class DocumentTestMixin:
             label = self.test_document_filename
 
         with open(file=self.test_document_path, mode='rb') as file_object:
-            document = self.test_document_type.new_document(
+            self.test_document, self.test_document_version = self.test_document_type.new_document(
                 file_object=file_object, label=label, _user=_user
             )
 
-        self.test_document = document
-        self.test_documents.append(document)
-        self.test_document_page = document.latest_version.pages.first()
-        self.test_document_version = document.latest_version
+        self.test_documents.append(self.test_document)
+        self.test_document_page = self.test_document_version.pages.first()
 
 
 class DocumentTypeAPIViewTestMixin:

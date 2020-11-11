@@ -33,7 +33,7 @@ class GermanOCRSupportTestCase(DocumentTestMixin, BaseTestCase):
         super(GermanOCRSupportTestCase, self).setUp()
 
         with open(file=TEST_DEU_DOCUMENT_PATH, mode='rb') as file_object:
-            self.test_document = self.test_document_type.new_document(
+            self.test_document, document_version = self.test_document_type.new_document(
                 file_object=file_object, language='deu'
             )
 
