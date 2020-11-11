@@ -8,6 +8,9 @@
 - Fix column display in the dependency list views.
 - Disable initial state column for workflow proxies
 - Update Dropzone from version 5.4.0 to 5.7.2.
+- Remove sources app custom upload form and use the app template loader.
+- Remove Dropzone upload size limit.
+- Increase width of the Dropzone error message box.
 
 3.5.2 (2020-10-26)
 ==================
