@@ -27,7 +27,7 @@ pdftoppm_path = setting_graphics_backend_arguments.value.get(
 )
 
 try:
-    pdftoppm = sh.Command(pdftoppm_path)
+    pdftoppm = sh.Command(path=pdftoppm_path)
 except sh.CommandNotFound:
     pdftoppm = None
 else:
@@ -50,7 +50,7 @@ pdfinfo_path = setting_graphics_backend_arguments.value.get(
 )
 
 try:
-    pdfinfo = sh.Command(pdfinfo_path)
+    pdfinfo = sh.Command(path=pdfinfo_path)
 except sh.CommandNotFound:
     pdfinfo = None
 
