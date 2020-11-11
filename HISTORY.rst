@@ -6,6 +6,7 @@
   links. This exception does not is indicative of an error in the code.
 - Merge and include fixes from version 3.4.20.
 - Fix column display in the dependency list views.
+- Disable initial state column for workflow proxies
 
 3.5.2 (2020-10-26)
 ==================
