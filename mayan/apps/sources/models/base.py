@@ -105,7 +105,7 @@ class Source(models.Model):
         Upload an individual document
         """
         try:
-            document = document_type.new_document(
+            document, document_version = document_type.new_document(
                 description=description, file_object=file_object, label=label,
                 language=language, _user=user
             )
@@ -118,10 +118,6 @@ class Source(models.Model):
             raise
         else:
             try:
-                document_version = document.new_version(
-                    file_object=file_object, _user=user,
-                )
-
                 if user:
                     document.add_as_recent_document_for_user(user=user)
 

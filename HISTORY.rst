@@ -11,6 +11,14 @@
 - Remove sources app custom upload form and use the app template loader.
 - Remove Dropzone upload size limit.
 - Increase width of the Dropzone error message box.
+- Fixed an issue introduced in 865ae60fcef38e07bbf6d09bd6032017e3603698 when
+  support for adding document stubs in signal handlers was added. This
+  issue causes new documents to contain two versions instead of one. The
+  only consequence of this issue is extra storage usage, no data loss occurs.
+  The extra document version can be safely deleted by using the document
+  version revert feature. Doing this will delete the extra document version
+  from the database and from the storage. Closes GitLab issue #895. Thanks
+  to Lukas Auer (@lukasauer) for the report and initial investigation.
 
 3.5.2 (2020-10-26)
 ==================

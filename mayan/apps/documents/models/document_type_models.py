@@ -149,7 +149,9 @@ class DocumentType(models.Model):
             raise
         else:
             try:
-                document.new_version(file_object=file_object, _user=_user)
+                document_version = document.new_version(
+                    file_object=file_object, _user=_user
+                )
             except Exception as exception:
                 logger.critical(
                     'Unexpected exception while trying to create initial '
@@ -158,7 +160,7 @@ class DocumentType(models.Model):
                 )
                 raise
             else:
-                return document
+                return document, document_version
 
     def save(self, *args, **kwargs):
         user = kwargs.pop('_user', None)
