@@ -1,11 +1,38 @@
 Version 3.4.20
 ==============
 
-Released: XX XX, 2020
+Released: November 11, 2020
 
 Changes
 -------
 
+Code style
+^^^^^^^^^^
+
+As part of the continuous effort to keep the code maintainable and to comply
+with MERC 0005 (https://docs.mayan-edms.com/mercs/0005-explicit-arguments.html)
+keyword arguments were added to the ``.acquire_lock()`` function, uses
+of the library ``shutil``, as well as uses of ``Command`` class from the
+``sh`` library.
+
+
+Documentation
+^^^^^^^^^^^^^
+
+A chapter devoted to the search system was added. Minor formatting error
+in the REST API chapter were fixed.
+
+
+User interface
+^^^^^^^^^^^^^^
+
+Two commits from the version 4.0 development branch were merged back.
+The first, makes sure that only one CSRF token is generated per form. There
+are no functional changes and this only concern the sources app form.
+
+The second commit fixes an edge case where URLs with a query string were
+being incorrectly modified when a form was submitted in such a way it caused
+a reload, as is the case when a required field was left empty.
 
 
 Upgrading process

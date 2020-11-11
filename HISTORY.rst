@@ -1,4 +1,4 @@
-3.4.20 (2020-XX-XX)
+3.4.20 (2020-11-11)
 ===================
 - Fix REST API chapter formatting.
 - Add search documentation chapter.
@@ -16,6 +16,7 @@
 
   Closes GitLab issue #706. Thanks to Matthias Urlichs (@smurfix)
   for the report.
+- Add keyword arguments to sh.Command().
 
 3.4.19 (2020-10-26)
 ===================
