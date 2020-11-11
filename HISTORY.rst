@@ -1,4 +1,4 @@
-3.5.3 (2020-XX-XX)
+3.5.3 (2020-11-11)
 ==================
 - Ensure the document tag list view return DocumentTag instances and not
   regular Tag instances.
