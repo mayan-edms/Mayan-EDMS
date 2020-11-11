@@ -140,7 +140,7 @@ class CachePartition(models.Model):
         lock_id = 'cache_partition-create_file-{}-{}'.format(self.pk, filename)
         try:
             logger.debug('trying to acquire lock: %s', lock_id)
-            lock = locking_backend.acquire_lock(lock_id)
+            lock = locking_backend.acquire_lock(name=lock_id)
             logger.debug('acquired lock: %s', lock_id)
             try:
                 self.cache.prune()
