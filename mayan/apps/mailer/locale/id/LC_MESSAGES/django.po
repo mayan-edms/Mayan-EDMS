@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-09-27 06:46+0000\n"
+"POT-Creation-Date: 2020-11-11 01:44+0000\n"
+"PO-Revision-Date: 2020-11-11 01:45+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/language/id/)\n"
 "MIME-Version: 1.0\n"
@@ -77,7 +77,7 @@ msgid "Email link"
 msgstr ""
 
 #: links.py:35
-msgid "Create mailing profile "
+msgid "Create mailing profile"
 msgstr ""
 
 #: links.py:41

@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-10-16 18:03+0000\n"
+"POT-Creation-Date: 2020-11-11 01:44+0000\n"
+"PO-Revision-Date: 2020-11-10 18:11+0000\n"
 "Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -242,7 +242,7 @@ msgstr "Typ dokumentów"
 
 #: models/base.py:179
 msgid "Whether to expand or not, compressed archives."
-msgstr "Czy rozpakowywać czy nie skompresowane archiwa."
+msgstr "Czy rozpakowywać skompresowane archiwa."
 
 #: models/base.py:180 models/staging_folder_sources.py:54
 #: models/webform_sources.py:34
@@ -487,7 +487,7 @@ msgstr "Wysokość podglądu"
 
 #: models/staging_folder_sources.py:53 models/webform_sources.py:33
 msgid "Whether to expand or not compressed archives."
-msgstr "Czy rozpakowywać lub nie skompresowane archiwa."
+msgstr "Czy rozpakowywać skompresowane archiwa."
 
 #: models/staging_folder_sources.py:59
 msgid "Delete the file after is has been successfully uploaded."

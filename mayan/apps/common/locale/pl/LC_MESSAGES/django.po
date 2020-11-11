@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-10-12 18:27+0000\n"
+"POT-Creation-Date: 2020-11-11 01:43+0000\n"
+"PO-Revision-Date: 2020-11-02 19:44+0000\n"
 "Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -152,11 +152,11 @@ msgstr "Akcje"
 
 #: menus.py:15
 msgid "Related"
-msgstr "Powiązany"
+msgstr "Powiązane"
 
 #: menus.py:16
 msgid "Secondary"
-msgstr "Drugorzędny"
+msgstr "Dodatkowe"
 
 #: menus.py:21 models.py:25
 msgid "User"
@@ -259,7 +259,7 @@ msgstr "Strona główna"
 #: views.py:116
 #, python-format
 msgid "Fields to be copied: %s"
-msgstr "Pola przeznaczone do skopiowanie: %s"
+msgstr "Pola przeznaczone do skopiowania: %s"
 
 #: views.py:125
 #, python-format

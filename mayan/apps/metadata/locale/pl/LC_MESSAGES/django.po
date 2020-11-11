@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-09-27 08:06+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-11-11 01:44+0000\n"
+"PO-Revision-Date: 2020-11-10 17:28+0000\n"
+"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -518,7 +518,7 @@ msgstr "Wprowadź metadane dokumentu"
 
 #: workflow_actions.py:25
 msgid "Metadata types to add to the document."
-msgstr ""
+msgstr "Typy metadanych przeznaczone do dodania do dokumentu."
 
 #: workflow_actions.py:49
 #, python-format
@@ -529,7 +529,7 @@ msgstr ""
 
 #: workflow_actions.py:88
 msgid "Metadata types to edit."
-msgstr ""
+msgstr "Typy metadanych przeznaczone do edycji."
 
 #: workflow_actions.py:96
 msgid ""
@@ -546,7 +546,7 @@ msgstr ""
 
 #: workflow_actions.py:172
 msgid "Metadata types to remove from the document."
-msgstr ""
+msgstr "Typy metadanych przeznaczone do usunięcia z dokumentu."
 
 #: workflow_actions.py:192
 #, python-format

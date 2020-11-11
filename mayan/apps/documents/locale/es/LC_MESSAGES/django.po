@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-10-26 13:26+0000\n"
+"POT-Creation-Date: 2020-11-11 01:43+0000\n"
+"PO-Revision-Date: 2020-10-26 23:57+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -1403,8 +1403,8 @@ msgstr "Agregar"
 #: views/favorite_document_views.py:57
 msgid "Add the selected document to favorites?"
 msgid_plural "Add the selected documents to favorites?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "¿Agregar el documento seleccionado a favoritos?"
+msgstr[1] "¿Agregar los documentos seleccionados a favoritos?"
 
 #: views/favorite_document_views.py:75
 #, python-format
@@ -1428,8 +1428,8 @@ msgstr "Eliminar"
 #: views/favorite_document_views.py:91
 msgid "Remove the selected document from favorites?"
 msgid_plural "Remove the selected documents from favorites?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "¿Eliminar el documento seleccionado de favoritos?"
+msgstr[1] "¿Eliminar los documentos seleccionados de favoritos?"
 
 #: views/trashed_document_views.py:36
 #, python-format

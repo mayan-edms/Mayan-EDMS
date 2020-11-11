@@ -13,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-10-26 13:26+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-11-11 01:43+0000\n"
+"PO-Revision-Date: 2020-11-02 19:46+0000\n"
+"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -122,7 +122,7 @@ msgstr "Generuj niezmienny, losowy UUID (RFC 4122) dla każdego pliku."
 
 #: dashboard_widgets.py:23
 msgid "Total pages"
-msgstr "Razem stron"
+msgstr "Razem strony"
 
 #: dashboard_widgets.py:47
 msgid "Total documents"
@@ -1417,10 +1417,10 @@ msgstr "Dodaj"
 #: views/favorite_document_views.py:57
 msgid "Add the selected document to favorites?"
 msgid_plural "Add the selected documents to favorites?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Dodać wybrany dokument do ulubionych?"
+msgstr[1] "Dodać wybrane dokumenty do ulubionych?"
+msgstr[2] "Dodać wybrane dokumenty do ulubionych?"
+msgstr[3] "Dodać wybrane dokumenty do ulubionych?"
 
 #: views/favorite_document_views.py:75
 #, python-format
@@ -1444,10 +1444,10 @@ msgstr "Usuń"
 #: views/favorite_document_views.py:91
 msgid "Remove the selected document from favorites?"
 msgid_plural "Remove the selected documents from favorites?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Usunąć wybrany dokument z ulubionych?"
+msgstr[1] "Usunąć wybrane dokumenty z ulubionych?"
+msgstr[2] "Usunąć wybrane dokumenty z ulubionych?"
+msgstr[3] "Usunąć wybrane dokumenty z ulubionych?"
 
 #: views/trashed_document_views.py:36
 #, python-format
