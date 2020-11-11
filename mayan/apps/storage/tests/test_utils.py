@@ -32,7 +32,7 @@ class PatchFilesTestCase(BaseTestCase):
 
     def tearDown(self):
         super(PatchFilesTestCase, self).tearDown()
-        shutil.rmtree(self.temporary_directory, ignore_errors=True)
+        shutil.rmtree(path=self.temporary_directory, ignore_errors=True)
 
     def _patch_test_file(self):
         replace_list = [

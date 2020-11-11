@@ -488,11 +488,12 @@ class JavaScriptDependency(Dependency):
         # We do a copy and delete instead of move because os.rename doesn't
         # support renames across filesystems.
         path_uncompressed_package = Path(temporary_directory, 'package')
-        shutil.rmtree(force_text(s=path_install))
+        shutil.rmtree(path=force_text(s=path_install))
         shutil.copytree(
-            force_text(s=path_uncompressed_package), force_text(s=path_install)
+            src=force_text(s=path_uncompressed_package),
+            dst=force_text(s=path_install)
         )
-        shutil.rmtree(force_text(s=path_uncompressed_package))
+        shutil.rmtree(path=force_text(s=path_uncompressed_package))
 
         # Clean up temporary directory used for download
         shutil.rmtree(path=temporary_directory, ignore_errors=True)
@@ -745,9 +746,9 @@ class GoogleFontDependency(Dependency):
         shutil.rmtree(path=force_text(s=path_install), ignore_errors=True)
 
         shutil.copytree(
-            force_text(s=self.path_cache), force_text(s=path_install)
+            src=force_text(s=self.path_cache), dst=force_text(s=path_install)
         )
-        shutil.rmtree(force_text(s=self.path_cache), ignore_errors=True)
+        shutil.rmtree(path=force_text(s=self.path_cache), ignore_errors=True)
 
     def get_install_path(self):
         app = apps.get_app_config(app_label=self.app_label)

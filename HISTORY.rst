@@ -4,6 +4,7 @@
   regular Tag instances.
 - Lower the severity of the VariableDoesNotExist exception when resolving
   links. This exception does not is indicative of an error in the code.
+- Merge and include fixes from version 3.4.20.
 
 3.5.2 (2020-10-26)
 ==================
@@ -285,11 +286,25 @@
 - Default ``DEFAULT_CELERY_BROKER_URL`` to ``'memory://'``.
   This ensures operation even when there is no broker available.
 
-3.4.20 (2020-XX-XX)
+3.4.20 (2020-11-11)
 ===================
 - Fix REST API chapter formatting.
 - Add search documentation chapter.
 - Remove extra space from link label.
+- Add keyword arguments to .acquire_lock().
+- Add keyword arguments to shutil library usage
+- Merge c18d145c4ea1d5cfb23dc8cd517bc8ddd4149782 "Generate only one CSRF
+  token per HTML form" from Version 4.0.
+- Merge fb3f0d3c35bf7c0880a8a4b4b650f7767ee089a7 "Merge URL and form data
+  in a smarter way" from Version 4.0.
+
+  Use URI class to merge the URL and the query string for the
+  form fields in a smart way instead of just concatenating using
+  a '?'.
+
+  Closes GitLab issue #706. Thanks to Matthias Urlichs (@smurfix)
+  for the report.
+- Add keyword arguments to sh.Command().
 
 3.4.19 (2020-10-26)
 ===================

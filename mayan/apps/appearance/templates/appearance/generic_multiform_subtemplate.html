@@ -7,11 +7,11 @@
             <form action="{{ form_action }}" class="{{ form_css_classes|default:'' }}" id="{{ form_id|default:'' }}" method="{{ submit_method|default:'post' }}">
         {% endif %}
 
-        {% for form_name, form in forms.items %}
-            {% if submit_method != 'GET' and submit_method != 'get' %}
-                {% csrf_token %}
-            {% endif %}
+        {% if submit_method != 'GET' and submit_method != 'get' %}
+            {% csrf_token %}
+        {% endif %}
 
+        {% for form_name, form in forms.items %}
             {% if next %}
                 <input name="next" type="hidden" value="{{ next }}" />
             {% endif %}

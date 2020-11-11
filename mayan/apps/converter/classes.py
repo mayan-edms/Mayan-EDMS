@@ -59,7 +59,7 @@ class ConverterBase:
         self.soffice_file = None
         Image.init()
         try:
-            self.command_libreoffice = sh.Command(libreoffice_path).bake(
+            self.command_libreoffice = sh.Command(path=libreoffice_path).bake(
                 '--headless', '--convert-to', 'pdf:writer_pdf_Export'
             )
         except sh.CommandNotFound:

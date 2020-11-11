@@ -343,7 +343,9 @@ class WatchFolderTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
         test_subfolder = test_path.joinpath(TEST_WATCHFOLDER_SUBFOLDER)
         test_subfolder.mkdir()
 
-        shutil.copy(TEST_SMALL_DOCUMENT_PATH, force_text(s=test_subfolder))
+        shutil.copy(
+            src=TEST_SMALL_DOCUMENT_PATH, dst=force_text(s=test_subfolder)
+        )
         self.test_watch_folder.check_source()
         self.assertEqual(Document.objects.count(), 0)
 
@@ -356,7 +358,9 @@ class WatchFolderTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
         test_subfolder = test_path.joinpath(TEST_WATCHFOLDER_SUBFOLDER)
         test_subfolder.mkdir()
 
-        shutil.copy(TEST_SMALL_DOCUMENT_PATH, force_text(s=test_subfolder))
+        shutil.copy(
+            src=TEST_SMALL_DOCUMENT_PATH, dst=force_text(s=test_subfolder)
+        )
         self.test_watch_folder.check_source()
         self.assertEqual(Document.objects.count(), 1)
 
@@ -377,7 +381,9 @@ class WatchFolderTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
         """
         self._create_test_watchfolder()
 
-        shutil.copy(TEST_NON_ASCII_DOCUMENT_PATH, self.temporary_directory)
+        shutil.copy(
+            src=TEST_NON_ASCII_DOCUMENT_PATH, dst=self.temporary_directory
+        )
         self.test_watch_folder.check_source()
         self.assertEqual(Document.objects.count(), 1)
 
@@ -398,7 +404,8 @@ class WatchFolderTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
         self._create_test_watchfolder()
 
         shutil.copy(
-            TEST_NON_ASCII_COMPRESSED_DOCUMENT_PATH, self.temporary_directory
+            src=TEST_NON_ASCII_COMPRESSED_DOCUMENT_PATH,
+            dst=self.temporary_directory
         )
         self.test_watch_folder.check_source()
         self.assertEqual(Document.objects.count(), 1)
@@ -417,7 +424,7 @@ class WatchFolderTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
         self._create_test_watchfolder()
 
         shutil.copy(
-            TEST_SMALL_DOCUMENT_PATH, self.temporary_directory
+            src=TEST_SMALL_DOCUMENT_PATH, dst=self.temporary_directory
         )
 
         path_test_file = Path(
