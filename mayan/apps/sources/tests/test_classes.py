@@ -13,7 +13,7 @@ from .mocks import MockStagingFolder
 class StagingFileTestCase(BaseTestCase):
     def test_unicode_staging_file(self):
         temporary_directory = mkdtemp()
-        shutil.copy(TEST_NON_ASCII_DOCUMENT_PATH, temporary_directory)
+        shutil.copy(src=TEST_NON_ASCII_DOCUMENT_PATH, dst=temporary_directory)
 
         filename = os.path.basename(TEST_NON_ASCII_DOCUMENT_PATH)
 
@@ -29,4 +29,4 @@ class StagingFileTestCase(BaseTestCase):
 
         self.assertEqual(filename, staging_file_2.filename)
 
-        shutil.rmtree(temporary_directory)
+        shutil.rmtree(path=temporary_directory)

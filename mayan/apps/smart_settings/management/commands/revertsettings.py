@@ -11,8 +11,8 @@ class Command(management.BaseCommand):
     def handle(self, *args, **options):
         try:
             copyfile(
-                settings.CONFIGURATION_LAST_GOOD_FILEPATH,
-                settings.CONFIGURATION_FILEPATH
+                src=settings.CONFIGURATION_LAST_GOOD_FILEPATH,
+                dst=settings.CONFIGURATION_FILEPATH
             )
         except IOError as exception:
             if exception.errno == errno.ENOENT:

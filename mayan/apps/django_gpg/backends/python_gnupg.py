@@ -84,7 +84,7 @@ class PythonGNUPGBackend(GPGBackend):
 
         result = function(gpg=gpg, **kwargs)
 
-        shutil.rmtree(temporary_directory)
+        shutil.rmtree(path=temporary_directory)
 
         return result
 

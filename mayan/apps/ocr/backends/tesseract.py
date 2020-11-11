@@ -38,7 +38,7 @@ class Tesseract(OCRBackendBase):
 
             try:
                 temporary_image_file = TemporaryFile()
-                shutil.copyfileobj(image, temporary_image_file)
+                shutil.copyfileobj(fsrc=image, fdst=temporary_image_file)
                 temporary_image_file.seek(0)
 
                 arguments = ['-', '-']
