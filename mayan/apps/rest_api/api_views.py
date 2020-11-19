@@ -58,28 +58,22 @@ class APIVersionRoot(ListAPIView):
         endpoint_enumerator = EndpointEnumerator()
 
         if setting_url_base_path.value:
-            index = 4
+            url_index = 4
         else:
-            index = 3
+            url_index = 3
 
         # Extract the resource names from the API endpoint URLs
-        parsed_urls = []
+        parsed_urls = set()
         for entry in endpoint_enumerator.get_api_endpoints():
-            print('!@#', entry)
-
             try:
-                parsed_urls.append(
-                    entry[0].split('/')[index]
-                )
+                url = entry[0].split('/')[url_index]
             except IndexError:
-                pass
-
-        parsed_urls = sorted(set(parsed_urls))
-
-        print("@@@@@ parsed_urls", parsed_urls)
+                """An unknown or invalid URL"""
+            else:
+                parsed_urls.add(url)
 
         endpoints = []
-        for url in parsed_urls:
+        for url in sorted(parsed_urls):
             if url:
                 endpoints.append(
                     Endpoint(label=url)
