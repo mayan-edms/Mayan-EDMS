@@ -95,7 +95,7 @@ def fs_cleanup(filename, suppress_exceptions=True):
         os.remove(filename)
     except OSError:
         try:
-            shutil.rmtree(filename)
+            shutil.rmtree(path=filename)
         except OSError:
             if suppress_exceptions:
                 pass
@@ -201,7 +201,10 @@ def patch_files(path=None, replace_list=None):
                             source_file_object.seek(0)
                             source_file_object.truncate()
                             temporary_file_object.seek(0)
-                            shutil.copyfileobj(fsrc=temporary_file_object, fdst=source_file_object)
+                            shutil.copyfileobj(
+                                fsrc=temporary_file_object,
+                                fdst=source_file_object
+                            )
 
 
 def validate_path(path):

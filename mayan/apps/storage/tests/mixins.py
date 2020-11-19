@@ -81,5 +81,5 @@ class StorageProcessorTestMixin:
 
     def tearDown(self):
         super().tearDown()
-        shutil.rmtree(self.temporary_directory, ignore_errors=True)
+        shutil.rmtree(path=self.temporary_directory, ignore_errors=True)
         self.defined_storage.kwargs = self.document_storage_kwargs

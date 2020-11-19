@@ -35,7 +35,7 @@ link_send_multiple_document_link = Link(
 link_user_mailer_create = Link(
     icon_class=icon_user_mailer_create,
     permissions=(permission_user_mailer_create,),
-    text=_('Create mailing profile '),
+    text=_('Create mailing profile'),
     view='mailer:user_mailer_backend_selection'
 )
 link_user_mailer_delete = Link(
