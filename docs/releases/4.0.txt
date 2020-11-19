@@ -198,5 +198,7 @@ Issues closed
 
 - :gitlab-issue:`777` feature request: cleanup scanned document
 - :gitlab-issue:`853` Remove parent class and self reference from super() calls
+- :gitlab-issue:`733` Feature: Draft versions of documents
+- :gitlab-issue:`865` Possible bug: Adding a new version of a document via scanner
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
