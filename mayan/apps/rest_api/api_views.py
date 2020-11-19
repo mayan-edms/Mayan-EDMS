@@ -23,21 +23,22 @@ class APIRoot(ListAPIView):
         endpoint_enumerator = EndpointEnumerator()
 
         if setting_url_base_path.value:
-            index = 3
+            url_index = 3
         else:
-            index = 2
+            url_index = 2
 
         # Extract the resource names from the API endpoint URLs
-        parsed_urls = []
+        parsed_urls = set()
         for entry in endpoint_enumerator.get_api_endpoints():
-            parsed_urls.append(
-                entry[0].split('/')[index]
-            )
-
-        parsed_urls = sorted(set(parsed_urls))
+            try:
+                url = entry[0].split('/')[url_index]
+            except IndexError:
+                """An unknown or invalid URL"""
+            else:
+                parsed_urls.add(url)
 
         endpoints = []
-        for url in parsed_urls:
+        for url in sorted(parsed_urls):
             if url:
                 endpoints.append(
                     Endpoint(label=url)
