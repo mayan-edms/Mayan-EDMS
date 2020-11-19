@@ -243,7 +243,7 @@ class DocumentMetadata(models.Model):
         )
 
     def save(self, *args, **kwargs):
-        if self.metadata_type.pk not in self.document.document_type.metadata.values_list('metadata_type', flat=True):
+        if not self.document.document_type.metadata.filter(metadata_type=self.metadata_type).exists():
             raise ValidationError(
                 _('Metadata type is not valid for this document type.')
             )
