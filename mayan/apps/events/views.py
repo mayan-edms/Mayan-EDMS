@@ -66,9 +66,6 @@ class EventTypeSubscriptionListView(FormView):
             EventTypeSubscriptionListView, self
         ).form_valid(form=form)
 
-    def get_object(self):
-        return self.request.user
-
     def get_extra_context(self):
         return {
             'form_display_mode_table': True,
@@ -90,6 +87,12 @@ class EventTypeSubscriptionListView(FormView):
             })
         return initial
 
+    def get_object(self):
+        return self.request.user
+
+    def get_post_action_redirect(self):
+        return reverse(viewname='user_management:current_user_details')
+
     def get_queryset(self):
         # Return the queryset by name from the sorted list of the class
         event_type_ids = [event_type.id for event_type in EventType.all()]
@@ -110,9 +113,6 @@ class EventTypeSubscriptionListView(FormView):
             )
         )
         return queryset.order_by('sort_index')
-
-    def get_post_action_redirect(self):
-        return reverse(viewname='user_management:current_user_details')
 
 
 class NotificationListView(SingleObjectListView):
@@ -235,26 +235,6 @@ class ObjectEventTypeSubscriptionListView(FormView):
             ObjectEventTypeSubscriptionListView, self
         ).form_valid(form=form)
 
-    def get_object(self):
-        object_content_type = get_object_or_404(
-            klass=ContentType, app_label=self.kwargs['app_label'],
-            model=self.kwargs['model_name']
-        )
-
-        try:
-            content_object = object_content_type.get_object_for_this_type(
-                pk=self.kwargs['object_id']
-            )
-        except object_content_type.model_class().DoesNotExist:
-            raise Http404
-
-        AccessControlList.objects.check_access(
-            obj=content_object, permissions=(permission_events_view,),
-            user=self.request.user
-        )
-
-        return content_object
-
     def get_extra_context(self):
         return {
             'form_display_mode_table': True,
@@ -277,6 +257,26 @@ class ObjectEventTypeSubscriptionListView(FormView):
                 }
             )
         return initial
+
+    def get_object(self):
+        object_content_type = get_object_or_404(
+            klass=ContentType, app_label=self.kwargs['app_label'],
+            model=self.kwargs['model_name']
+        )
+
+        try:
+            content_object = object_content_type.get_object_for_this_type(
+                pk=self.kwargs['object_id']
+            )
+        except object_content_type.model_class().DoesNotExist:
+            raise Http404
+
+        AccessControlList.objects.check_access(
+            obj=content_object, permissions=(permission_events_view,),
+            user=self.request.user
+        )
+
+        return content_object
 
     def get_queryset(self):
         return ModelEventType.get_for_instance(instance=self.get_object())
