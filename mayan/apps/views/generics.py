@@ -282,14 +282,14 @@ class AddRemoveView(
                             'extra_buttons': [
                                 {
                                     'label': _('Add all'),
-                                    'icon_class': icon_add_all,
+                                    'icon': icon_add_all,
                                     'name': 'add_all',
                                 }
                             ],
                             'form': self.forms['form_available'],
                             'form_css_classes': 'form-hotkey-double-click',
                             'hide_labels': True,
-                            'submit_icon_class': icon_assign_remove_add,
+                            'submit_icon': icon_assign_remove_add,
                             'submit_label': _('Add'),
                             'title': self.list_available_title or ' ',
                         }
@@ -301,14 +301,14 @@ class AddRemoveView(
                             'extra_buttons': [
                                 {
                                     'label': _('Remove all'),
-                                    'icon_class': icon_remove_all,
+                                    'icon': icon_remove_all,
                                     'name': 'remove_all',
                                 }
                             ],
                             'form': self.forms['form_added'],
                             'form_css_classes': 'form-hotkey-double-click',
                             'hide_labels': True,
-                            'submit_icon_class': icon_assign_remove_remove,
+                            'submit_icon': icon_assign_remove_remove,
                             'submit_label': _('Remove'),
                             'title': self.list_added_title or ' ',
                         }
@@ -396,8 +396,8 @@ class ConfirmView(
 
     def get_context_data(self, **kwargs):
         context = {
-            'submit_icon_class': icon_confirm_form_submit,
-            'cancel_icon_class': icon_confirm_form_cancel
+            'submit_icon': icon_confirm_form_submit,
+            'cancel_icon': icon_confirm_form_cancel
         }
         context.update(super().get_context_data(**kwargs))
         return context

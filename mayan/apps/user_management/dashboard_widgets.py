@@ -10,7 +10,7 @@ from .permissions import permission_group_view, permission_user_view
 
 
 class DashboardWidgetUserTotal(DashboardWidgetNumeric):
-    icon_class = icon_user_list
+    icon = icon_user_list
     label = _('Total users')
     link = reverse_lazy(viewname='user_management:user_list')
 
@@ -26,7 +26,7 @@ class DashboardWidgetUserTotal(DashboardWidgetNumeric):
 
 
 class DashboardWidgetGroupTotal(DashboardWidgetNumeric):
-    icon_class = icon_group_list
+    icon = icon_group_list
     label = _('Total groups')
     link = reverse_lazy(viewname='user_management:group_list')
 

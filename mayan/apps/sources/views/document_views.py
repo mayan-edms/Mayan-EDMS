@@ -58,7 +58,7 @@ class UploadBaseView(MultiFormView):
             args=args,
             conditional_active=factory_conditional_active_by_source(
                 source=source
-            ), icon_class=icon_upload_view_link, keep_query=True,
+            ), icon=icon_upload_view_link, keep_query=True,
             remove_from_query=['page'], text=source.label, view=view
         )
 

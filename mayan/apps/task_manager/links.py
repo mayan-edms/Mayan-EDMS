@@ -6,6 +6,6 @@ from .icons import icon_task_manager
 from .permissions import permission_task_view
 
 link_task_manager = Link(
-    icon_class=icon_task_manager, permissions=(permission_task_view,),
+    icon=icon_task_manager, permissions=(permission_task_view,),
     text=_('Task manager'), view='task_manager:queue_list'
 )

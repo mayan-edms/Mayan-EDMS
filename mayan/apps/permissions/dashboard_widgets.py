@@ -9,7 +9,7 @@ from .permissions import permission_role_view
 
 
 class DashboardWidgetRoleTotal(DashboardWidgetNumeric):
-    icon_class = icon_role_list
+    icon = icon_role_list
     label = _('Total roles')
     link = reverse_lazy(viewname='permissions:role_list')
 

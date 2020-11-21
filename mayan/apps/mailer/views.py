@@ -48,7 +48,7 @@ class MailDocumentView(MultipleObjectFormActionView):
         queryset = self.object_list
 
         result = {
-            'submit_icon_class': icon_mail_document_submit,
+            'submit_icon': icon_mail_document_submit,
             'submit_label': _('Send'),
             'title': ungettext(
                 singular=self.title,

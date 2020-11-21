@@ -14,37 +14,37 @@ from ..permissions import (
 
 
 link_document_delete = Link(
-    args='resolved_object.id', icon_class=icon_trashed_document_delete,
+    args='resolved_object.id', icon=icon_trashed_document_delete,
     permissions=(permission_trashed_document_delete,),
     tags='dangerous', text=_('Delete'), view='documents:document_delete'
 )
 link_document_trash = Link(
-    args='resolved_object.id', icon_class=icon_document_trash_send,
+    args='resolved_object.id', icon=icon_document_trash_send,
     permissions=(permission_document_trash,), tags='dangerous',
     text=_('Move to trash'), view='documents:document_trash'
 )
 link_document_list_deleted = Link(
-    icon_class=icon_trashed_document_list, text=_('Trash can'),
+    icon=icon_trashed_document_list, text=_('Trash can'),
     view='documents:document_list_deleted'
 )
 link_document_restore = Link(
-    args='object.pk', icon_class=icon_trashed_document_restore,
+    args='object.pk', icon=icon_trashed_document_restore,
     permissions=(permission_trashed_document_restore,), text=_('Restore'),
     view='documents:document_restore'
 )
 link_document_multiple_trash = Link(
-    icon_class=icon_document_trash_send, tags='dangerous',
+    icon=icon_document_trash_send, tags='dangerous',
     text=_('Move to trash'), view='documents:document_multiple_trash'
 )
 link_document_multiple_delete = Link(
-    icon_class=icon_trashed_document_delete, tags='dangerous',
+    icon=icon_trashed_document_delete, tags='dangerous',
     text=_('Delete'), view='documents:document_multiple_delete'
 )
 link_document_multiple_restore = Link(
-    icon_class=icon_trashed_document_restore, text=_('Restore'),
+    icon=icon_trashed_document_restore, text=_('Restore'),
     view='documents:document_multiple_restore'
 )
 link_trash_can_empty = Link(
-    icon_class=icon_trash_can_empty, permissions=(permission_trash_empty,),
+    icon=icon_trash_can_empty, permissions=(permission_trash_empty,),
     text=_('Empty trash'), view='documents:trash_can_empty'
 )

@@ -51,7 +51,7 @@ class Link:
     def __init__(
         self, text=None, view=None, args=None, badge_text=None, condition=None,
         conditional_active=None, conditional_disable=None, description=None,
-        html_data=None, html_extra_classes=None, icon_class=None,
+        html_data=None, html_extra_classes=None, icon=None,
         keep_query=False, kwargs=None, name=None, permissions=None,
         remove_from_query=None, tags=None, url=None
     ):
@@ -63,7 +63,7 @@ class Link:
         self.description = description
         self.html_data = html_data
         self.html_extra_classes = html_extra_classes
-        self.icon_class = icon_class
+        self.icon = icon
         self.keep_query = keep_query
         self.kwargs = kwargs or {}
         self.name = name
@@ -226,7 +226,7 @@ class Menu:
         del cls._registry[name]
 
     def __init__(
-        self, name, condition=None, icon_class=None, label=None,
+        self, name, condition=None, icon=None, label=None,
         non_sorted_sources=None
     ):
         if name in self.__class__._registry:
@@ -234,7 +234,7 @@ class Menu:
 
         self.bound_links = {}
         self.condition = condition
-        self.icon_class = icon_class
+        self.icon = icon
         self.label = label
         self.link_positions = {}
         self.name = name
@@ -547,8 +547,8 @@ class ResolvedLink:
         return self.link.html_extra_classes or ''
 
     @property
-    def icon_class(self):
-        return self.link.icon_class
+    def icon(self):
+        return self.link.icon
 
     @property
     def tags(self):

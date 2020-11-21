@@ -69,3 +69,5 @@
 - Rename DeletedDocument to TrashedDocument, same with the corresponding
   trashed fields and manager methods.
 - Add document file download event.
+- Rename all instances of "icon_class" to "icon" as only icon instances are
+  used now in every app.

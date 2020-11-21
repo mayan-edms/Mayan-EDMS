@@ -61,7 +61,7 @@ class DocumentMetadataAddView(
         queryset = self.object_list
 
         result = {
-            'submit_icon_class': icon_document_metadata_add,
+            'submit_icon': icon_document_metadata_add,
             'submit_label': _('Add'),
             'title': ungettext(
                 singular='Add metadata types to document',
@@ -233,7 +233,7 @@ class DocumentMetadataEditView(
                 'and assign them corresponding values.'
             ),
             'no_results_title': _('There is no metadata to edit'),
-            'submit_icon_class': icon_document_metadata_edit,
+            'submit_icon': icon_document_metadata_edit,
             'submit_label': _('Edit'),
             'title': ungettext(
                 'Edit document metadata',
@@ -399,7 +399,7 @@ class DocumentMetadataRemoveView(
 
         result = {
             'form_display_mode_table': True,
-            'submit_icon_class': icon_document_metadata_remove,
+            'submit_icon': icon_document_metadata_remove,
             'submit_label': _('Remove'),
             'title': ungettext(
                 singular='Remove metadata types from the document',

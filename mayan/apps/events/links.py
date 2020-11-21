@@ -23,24 +23,24 @@ def get_unread_notification_count(context):
 
 
 link_current_user_events = Link(
-    icon_class=icon_events_list, text=_('My events'),
+    icon=icon_events_list, text=_('My events'),
     view='events:current_user_events'
 )
 link_events_details = Link(
     text=_('Events'), view='events:events_list'
 )
 link_events_for_object = Link(
-    icon_class=icon_events_for_object,
+    icon=icon_events_for_object,
     kwargs=get_content_type_kwargs_factory(variable_name='resolved_object'),
     permissions=(permission_events_view,), text=_('Events'),
     view='events:events_for_object',
 )
 link_events_list = Link(
-    icon_class=icon_events_list, permissions=(permission_events_view,),
+    icon=icon_events_list, permissions=(permission_events_view,),
     text=_('Events'), view='events:events_list'
 )
 link_event_types_subscriptions_list = Link(
-    icon_class=icon_event_types_subscriptions_list,
+    icon=icon_event_types_subscriptions_list,
     text=_('Event subscriptions'),
     view='events:event_types_user_subcriptions_list'
 )
@@ -52,13 +52,13 @@ link_notification_mark_read_all = Link(
     text=_('Mark all as seen'), view='events:notification_mark_read_all'
 )
 link_object_event_types_user_subcriptions_list = Link(
-    icon_class=icon_object_event_types_user_subcriptions_list,
+    icon=icon_object_event_types_user_subcriptions_list,
     kwargs=get_content_type_kwargs_factory(variable_name='resolved_object'),
     permissions=(permission_events_view,), text=_('Subscriptions'),
     view='events:object_event_types_user_subcriptions_list',
 )
 link_user_notifications_list = Link(
     badge_text=get_unread_notification_count,
-    icon_class=icon_user_notifications_list, text='',
+    icon=icon_user_notifications_list, text='',
     view='events:user_notifications_list'
 )

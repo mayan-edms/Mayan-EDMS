@@ -28,53 +28,53 @@ def object_copy_conditional_disable(context):
 
 
 link_about = Link(
-    icon_class=icon_about, text=_('About this'), view='common:about_view'
+    icon=icon_about, text=_('About this'), view='common:about_view'
 )
 link_book = Link(
-    icon_class=icon_book, tags='new_window', text=_('Get the book'),
+    icon=icon_book, tags='new_window', text=_('Get the book'),
     url='https://mayan-edms.com/book/'
 )
 link_current_user_locale_profile_details = Link(
-    icon_class=icon_current_user_locale_profile_details,
+    icon=icon_current_user_locale_profile_details,
     text=_('Locale profile'),
     view='common:current_user_locale_profile_details'
 )
 link_current_user_locale_profile_edit = Link(
-    icon_class=icon_current_user_locale_profile_edit,
+    icon=icon_current_user_locale_profile_edit,
     text=_('Edit locale profile'),
     view='common:current_user_locale_profile_edit'
 )
 link_documentation = Link(
-    icon_class=icon_documentation, tags='new_window',
+    icon=icon_documentation, tags='new_window',
     text=_('Documentation'), url='https://docs.mayan-edms.com'
 )
 link_forum = Link(
-    icon_class=icon_forum, tags='new_window', text=_('Forum'),
+    icon=icon_forum, tags='new_window', text=_('Forum'),
     url='https://forum.mayan-edms.com'
 )
 link_license = Link(
-    icon_class=icon_license, text=_('License'), view='common:license_view'
+    icon=icon_license, text=_('License'), view='common:license_view'
 )
 link_object_copy = Link(
     condition=object_copy_conditional_disable,
-    icon_class=icon_object_copy, kwargs=get_content_type_kwargs_factory(),
+    icon=icon_object_copy, kwargs=get_content_type_kwargs_factory(),
     text=_('Copy'), view='common:object_copy'
 )
 link_setup = Link(
-    icon_class=icon_setup, text=_('Setup'), view='common:setup_list'
+    icon=icon_setup, text=_('Setup'), view='common:setup_list'
 )
 link_source_code = Link(
-    icon_class=icon_source_code, tags='new_window', text=_('Source code'),
+    icon=icon_source_code, tags='new_window', text=_('Source code'),
     url='https://gitlab.com/mayan-edms/mayan-edms'
 )
 link_store = Link(
-    icon_class=icon_store, tags='new_window', text=_('Online store'),
+    icon=icon_store, tags='new_window', text=_('Online store'),
     url='https://teespring.com/stores/mayan-edms'
 )
 link_support = Link(
-    icon_class=icon_support, tags='new_window', text=_('Get support'),
+    icon=icon_support, tags='new_window', text=_('Get support'),
     url='http://www.mayan-edms.com/providers/'
 )
 link_tools = Link(
-    icon_class=icon_tools, text=_('Tools'), view='common:tools_list'
+    icon=icon_tools, text=_('Tools'), view='common:tools_list'
 )

@@ -114,7 +114,7 @@ class DocumentFileDetachedSignatureCreateView(FormView):
     def get_extra_context(self):
         return {
             'object': self.get_document_file(),
-            'submit_icon_class': icon_document_file_signature_detached_create,
+            'submit_icon': icon_document_file_signature_detached_create,
             'submit_label': _('Sign'),
             'title': _(
                 'Sign document file "%s" with a detached signature'
@@ -205,7 +205,7 @@ class DocumentFileEmbeddedSignatureCreateView(FormView):
     def get_extra_context(self):
         return {
             'object': self.get_document_file(),
-            'submit_icon_class': icon_document_file_signature_embedded_create,
+            'submit_icon': icon_document_file_signature_embedded_create,
             'submit_label': _('Sign'),
             'title': _(
                 'Sign document file "%s" with a embedded signature'

@@ -297,7 +297,7 @@ class TagRemoveActionView(MultipleObjectFormActionView):
         queryset = self.object_list
 
         result = {
-            'submit_icon_class': icon_document_tag_remove_submit,
+            'submit_icon': icon_document_tag_remove_submit,
             'submit_label': _('Remove'),
             'title': ungettext(
                 singular='Remove tags from %(count)d document',

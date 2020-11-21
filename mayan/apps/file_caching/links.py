@@ -17,16 +17,16 @@ def condition_valid_storage(context):
 
 
 link_caches_list = Link(
-    icon_class=icon_file_caching, permissions=(permission_cache_view,),
+    icon=icon_file_caching, permissions=(permission_cache_view,),
     text=_('File caches'), view='file_caching:cache_list'
 )
 link_cache_purge = Link(
-    condition=condition_valid_storage, icon_class=icon_cache_purge,
+    condition=condition_valid_storage, icon=icon_cache_purge,
     kwargs={'cache_id': 'resolved_object.id'},
     permissions=(permission_cache_purge,), text=_('Purge cache'),
     view='file_caching:cache_purge'
 )
 link_cache_multiple_purge = Link(
-    icon_class=icon_cache_purge, text=_('Purge cache'),
+    icon=icon_cache_purge, text=_('Purge cache'),
     view='file_caching:cache_multiple_purge'
 )

@@ -126,7 +126,7 @@ class SearchView(SearchModelMixin, SimpleView):
                 }
             ),
             'search_model': self.search_model,
-            'submit_icon_class': icon_search_submit,
+            'submit_icon': icon_search_submit,
             'submit_label': _('Search'),
             'submit_method': 'GET',
             'title': _('Search for: %s') % self.search_model.label,

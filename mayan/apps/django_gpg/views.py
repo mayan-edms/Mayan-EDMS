@@ -132,7 +132,7 @@ class KeyQueryView(SimpleView):
         return {
             'form': self.get_form(),
             'form_action': reverse(viewname='django_gpg:key_query_results'),
-            'submit_icon_class': icon_keyserver_search,
+            'submit_icon': icon_keyserver_search,
             'submit_label': _('Search'),
             'submit_method': 'GET',
             'title': _('Query key server'),

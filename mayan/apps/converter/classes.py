@@ -397,7 +397,7 @@ class LayerLink(Link):
     def set_icon(instance, layer):
         if instance.action == 'list':
             if layer.symbol:
-                instance.icon_class = layer.get_icon()
+                instance.icon = layer.get_icon()
 
     def __init__(self, action, layer, object_name=None, **kwargs):
         super().__init__(**kwargs)

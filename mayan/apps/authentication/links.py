@@ -18,25 +18,25 @@ def has_usable_password_and_can_change_password(context):
 
 
 link_logout = Link(
-    html_extra_classes='non-ajax', icon_class=icon_logout, text=_('Logout'),
+    html_extra_classes='non-ajax', icon=icon_logout, text=_('Logout'),
     view='authentication:logout_view'
 )
 link_password_change = Link(
     condition=has_usable_password_and_can_change_password,
-    icon_class=icon_password_change, text=_('Change password'),
+    icon=icon_password_change, text=_('Change password'),
     view='authentication:password_change_view'
 )
 link_user_impersonate_start = Link(
-    icon_class=icon_impersonate_start,
+    icon=icon_impersonate_start,
     permissions=(permission_users_impersonate,), text=_('Impersonate user'),
     view='authentication:impersonate_start'
 )
 link_user_multiple_set_password = Link(
-    icon_class=icon_password_change, permissions=(permission_user_edit,),
+    icon=icon_password_change, permissions=(permission_user_edit,),
     text=_('Set password'), view='authentication:user_multiple_set_password'
 )
 link_user_set_password = Link(
-    args='object.id', icon_class=icon_password_change,
+    args='object.id', icon=icon_password_change,
     permissions=(permission_user_edit,), text=_('Set password'),
     view='authentication:user_set_password'
 )

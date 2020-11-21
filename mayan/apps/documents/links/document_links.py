@@ -13,39 +13,39 @@ from ..permissions import (
 
 
 link_document_type_change = Link(
-    args='resolved_object.id', icon_class=icon_document_type_change,
+    args='resolved_object.id', icon=icon_document_type_change,
     permissions=(permission_document_properties_edit,), text=_('Change type'),
     view='documents:document_type_change'
 )
 link_document_list = Link(
-    icon_class=icon_document_list,
+    icon=icon_document_list,
     text=_('All documents'), view='documents:document_list'
 )
 link_document_list_recent_access = Link(
-    icon_class=icon_document_list_recent_access, text=_('Recently accessed'),
+    icon=icon_document_list_recent_access, text=_('Recently accessed'),
     view='documents:document_list_recent_access'
 )
 link_document_list_recent_added = Link(
-    icon_class=icon_recent_added_document_list, text=_('Recently added'),
+    icon=icon_recent_added_document_list, text=_('Recently added'),
     view='documents:document_list_recent_added'
 )
 link_document_multiple_type_change = Link(
-    text=_('Change type'), icon_class=icon_document_type_change,
+    text=_('Change type'), icon=icon_document_type_change,
     view='documents:document_multiple_type_change'
 )
 link_document_preview = Link(
-    args='resolved_object.id', icon_class=icon_document_preview,
+    args='resolved_object.id', icon=icon_document_preview,
     permissions=(permission_document_view,), text=_('Preview'),
     view='documents:document_preview'
 )
 link_document_properties = Link(
-    args='resolved_object.id', icon_class=icon_document_properties,
+    args='resolved_object.id', icon=icon_document_properties,
     permissions=(permission_document_view,), text=_('Properties'),
     view='documents:document_properties'
 )
 link_document_properties_edit = Link(
     args='resolved_object.id',
-    icon_class=icon_document_edit,
+    icon=icon_document_edit,
     permissions=(permission_document_properties_edit,),
     text=_('Edit properties'), view='documents:document_properties_edit'
 )

@@ -79,18 +79,18 @@ class BaseDashboardWidget:
 
 class DashboardWidgetNumeric(BaseDashboardWidget):
     count = 0
-    icon_class = None
+    icon = None
     label = None
     link = None
-    link_icon_class = icon_dashboard_link_icon
+    link_icon = icon_dashboard_link_icon
     template_name = 'dashboards/numeric_widget.html'
 
     def get_context(self):
         return {
             'count': intcomma(value=self.count),
             'count_raw': self.count,
-            'icon_class': self.icon_class,
+            'icon': self.icon,
             'label': self.label,
             'link': self.link,
-            'link_icon_class': self.link_icon_class
+            'link_icon': self.link_icon
         }

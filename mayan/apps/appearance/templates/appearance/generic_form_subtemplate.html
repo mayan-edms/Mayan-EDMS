@@ -75,8 +75,8 @@
             {# Is a normal form, a wizard form, or a formset with at least one form #}
                 <div class="form-group">
                     <button class="btn btn-primary btn-hotkey-default" name="{% if form.prefix %}{{ form.prefix }}-submit{% else %}submit{% endif %}" type="submit">
-                        {% if submit_icon_class %}
-                            {{ submit_icon_class.render }}
+                        {% if submit_icon %}
+                            {{ submit_icon.render }}
                         {% else %}
                             <i class="fa fa-check"></i>
                         {% endif %}
@@ -90,8 +90,8 @@
 
                     {% for button in extra_buttons %}
                         <button class="btn btn-default" name="{% if form.prefix %}{{ form.prefix }}-{{ button.name }}{% else %}{{ button.name }}{% endif %}" type="submit">
-                            {% if button.icon_class %}
-                                {{ button.icon_class.render }}
+                            {% if button.icon %}
+                                {{ button.icon.render }}
                             {% endif %}
                             {% if button.label %}{{ button.label }}{% else %}{% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}{% endif %}
                         </button>

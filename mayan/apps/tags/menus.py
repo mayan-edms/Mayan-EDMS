@@ -11,5 +11,5 @@ menu_tags = Menu(
         app_label='tags', model_name='Tag',
         object_permission=permission_tag_view,
         view_permission=permission_tag_create,
-    ), icon_class=icon_menu_tags, label=_('Tags'), name='tags'
+    ), icon=icon_menu_tags, label=_('Tags'), name='tags'
 )

@@ -69,8 +69,9 @@ def appearance_get_user_theme_stylesheet(user):
 
 
 @register.simple_tag
-def appearance_icon_render(icon_class, enable_shadow=False):
-    return icon_class.render(extra_context={'enable_shadow': enable_shadow})
+def appearance_icon_render(icon, enable_shadow=False):
+    print("@@@", icon)
+    return icon.render(extra_context={'enable_shadow': enable_shadow})
 
 
 @register.filter

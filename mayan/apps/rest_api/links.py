@@ -13,17 +13,17 @@ def api_links_enabled(context):
 
 
 link_api = Link(
-    condition=api_links_enabled, icon_class=icon_api, tags='new_window',
+    condition=api_links_enabled, icon=icon_api, tags='new_window',
     text=_('REST API'), view='rest_api:api_root'
 )
 link_api_documentation = Link(
-    condition=api_links_enabled, icon_class=icon_api_documentation,
+    condition=api_links_enabled, icon=icon_api_documentation,
     tags='new_window', text=_('API Documentation (Swagger)'),
     view='rest_api:schema-swagger-ui'
 )
 
 link_api_documentation_redoc = Link(
-    condition=api_links_enabled, icon_class=icon_api_documentation_redoc,
+    condition=api_links_enabled, icon=icon_api_documentation_redoc,
     tags='new_window', text=_('API Documentation (ReDoc)'),
     view='rest_api:schema-redoc'
 )

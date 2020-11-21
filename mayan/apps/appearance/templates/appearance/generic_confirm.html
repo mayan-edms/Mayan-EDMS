@@ -30,8 +30,8 @@
                     {% endif %}
 
                     <button type="submit" class="btn btn-danger" data-dismiss="modal">
-                        {% if submit_icon_class %}
-                            {{ submit_icon_class.render }}
+                        {% if submit_icon %}
+                            {{ submit_icon.render }}
                         {% else %}
                             <i class="fa fa-check"></i>
                         {% endif %}
@@ -40,8 +40,8 @@
 
                     {% if previous %}
                         <a class="btn btn-primary" onclick='history.back();'>
-                        {% if cancel_icon_class %}
-                            {{ cancel_icon_class.render }}
+                        {% if cancel_icon %}
+                            {{ cancel_icon.render }}
                         {% else %}
                             <i class="fa fa-times"></i>
                         {% endif %}
