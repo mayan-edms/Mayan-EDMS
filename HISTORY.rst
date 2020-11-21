@@ -75,3 +75,5 @@
   seen links.
 - Switch both view to mark notification as read to use the POST request
   via a confirmation view.
+- Return the event type subscription list sorted by namespace label and event
+  type label.
