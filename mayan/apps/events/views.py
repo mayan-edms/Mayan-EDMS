@@ -17,9 +17,7 @@ from .classes import EventType, ModelEventType
 from .forms import (
     EventTypeUserRelationshipFormSet, ObjectEventTypeUserRelationshipFormSet
 )
-from .icons import (
-    icon_events_list, icon_user_notifications_list
-)
+from .icons import icon_events_list, icon_user_notifications_list
 from .links import link_event_types_subscriptions_list
 from .models import StoredEventType
 from .permissions import permission_events_view

@@ -71,3 +71,5 @@
 - Add document file download event.
 - Rename all instances of "icon_class" to "icon" as only icon instances are
   used now in every app.
+- Add icons to the mark notification as seen and mark all notification as
+  seen links.

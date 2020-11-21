@@ -6,7 +6,8 @@ from mayan.apps.navigation.utils import get_content_type_kwargs_factory
 
 from .icons import (
     icon_events_list, icon_events_for_object,
-    icon_event_types_subscriptions_list,
+    icon_event_types_subscriptions_list, icon_notification_mark_read,
+    icon_notification_mark_read_all,
     icon_object_event_types_user_subcriptions_list,
     icon_user_notifications_list
 )
@@ -45,11 +46,12 @@ link_event_types_subscriptions_list = Link(
     view='events:event_types_user_subcriptions_list'
 )
 link_notification_mark_read = Link(
-    args='object.pk', text=_('Mark as seen'),
-    view='events:notification_mark_read'
+    args='object.pk', icon=icon_notification_mark_read,
+    text=_('Mark as seen'), view='events:notification_mark_read'
 )
 link_notification_mark_read_all = Link(
-    text=_('Mark all as seen'), view='events:notification_mark_read_all'
+    icon=icon_notification_mark_read_all, text=_('Mark all as seen'),
+    view='events:notification_mark_read_all'
 )
 link_object_event_types_user_subcriptions_list = Link(
     icon=icon_object_event_types_user_subcriptions_list,
