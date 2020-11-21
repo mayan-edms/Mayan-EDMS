@@ -5,6 +5,8 @@
   user interface.
 - Return the event type subscription list sorted by namespace label and event
   type label.
+- Add icons to the mark notification as seen and mark all notification as
+  seen links.
 
 3.5.3 (2020-11-11)
 ==================
