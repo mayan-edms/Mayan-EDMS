@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
+from django.db import models
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.template import RequestContext
@@ -94,7 +95,23 @@ class EventTypeSubscriptionListView(FormView):
     def get_queryset(self):
         # Return the queryset by name from the sorted list of the class
         event_type_ids = [event_type.id for event_type in EventType.all()]
-        return self.submodel.objects.filter(name__in=event_type_ids)
+
+        # Preserve the queryset order to that of the sorted ID list by
+        # namespace label and event label.
+        # Create a conditional statement to annotate each row with the sort
+        # index number. Then sort the query set by the custom sort index
+        # field.
+        when_list = []
+        for sort_index, event_type_id in enumerate(event_type_ids):
+            when_list.append(models.When(name=event_type_id, then=sort_index))
+
+        queryset = self.submodel.objects.filter(name__in=event_type_ids)
+        queryset = queryset.annotate(
+            sort_index=models.Case(
+                *when_list, output_field=models.IntegerField()
+            )
+        )
+        return queryset.order_by('sort_index')
 
     def get_post_action_redirect(self):
         return reverse(viewname='user_management:current_user_details')
