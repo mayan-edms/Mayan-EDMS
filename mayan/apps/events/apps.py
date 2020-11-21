@@ -94,7 +94,11 @@ class EventsApp(MayanAppConfig):
         )
         menu_secondary.bind_links(
             links=(link_notification_mark_read_all,),
-            sources=('events:user_notifications_list',)
+            sources=(
+                'events:notification_mark_read',
+                'events:notification_mark_read_all',
+                'events:user_notifications_list'
+            )
         )
         menu_tools.bind_links(links=(link_events_list,))
         menu_user.bind_links(

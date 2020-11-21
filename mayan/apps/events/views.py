@@ -1,16 +1,16 @@
 from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
-from django.http import Http404, HttpResponseRedirect
+from django.http import Http404
 from django.shortcuts import get_object_or_404
 from django.template import RequestContext
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
 from actstream.models import Action, any_stream
 
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.views.generics import (
-    FormView, SimpleView, SingleObjectListView
+    ConfirmView, FormView, SingleObjectListView
 )
 
 from .classes import EventType, ModelEventType
@@ -117,28 +117,49 @@ class NotificationListView(SingleObjectListView):
         return self.request.user.notifications.all()
 
 
-class NotificationMarkRead(SimpleView):
-    def dispatch(self, *args, **kwargs):
+class NotificationMarkRead(ConfirmView):
+    post_action_redirect = reverse_lazy(
+        viewname='events:user_notifications_list'
+    )
+
+    def get_extra_context(self):
+        return {
+            'title': _('Mark the selected notification as read?')
+        }
+
+    def get_queryset(self):
+        return self.request.user.notifications.all()
+
+    def view_action(self, form=None):
         self.get_queryset().filter(
             pk=self.kwargs['notification_id']
         ).update(read=True)
-        return HttpResponseRedirect(
-            redirect_to=reverse(viewname='events:user_notifications_list')
+
+        messages.success(
+            message=_('Notification marked as read.'), request=self.request
         )
+
+
+class NotificationMarkReadAll(ConfirmView):
+    post_action_redirect = reverse_lazy(
+        viewname='events:user_notifications_list'
+    )
+
+    def get_extra_context(self):
+        return {
+            'title': _('Mark all notification as read?')
+        }
 
     def get_queryset(self):
         return self.request.user.notifications.all()
 
-
-class NotificationMarkReadAll(SimpleView):
-    def dispatch(self, *args, **kwargs):
+    def view_action(self, form=None):
         self.get_queryset().update(read=True)
-        return HttpResponseRedirect(
-            redirect_to=reverse(viewname='events:user_notifications_list')
-        )
 
-    def get_queryset(self):
-        return self.request.user.notifications.all()
+        messages.success(
+            message=_('All notifications marked as read.'),
+            request=self.request
+        )
 
 
 class ObjectEventListView(EventListView):

@@ -66,7 +66,6 @@ class EventManager:
                 value = self.instance.__dict__.pop(full_name, None)
             self.instance_event_attributes[attribute] = value
 
-
     def prepare(self):
         """Optional method to gather information before the actual commit"""
 
