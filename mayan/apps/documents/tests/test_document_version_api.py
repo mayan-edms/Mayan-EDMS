@@ -12,8 +12,7 @@ from ..permissions import (
 from .literals import TEST_DOCUMENT_VERSION_COMMENT_EDITED
 from .mixins.document_mixins import DocumentTestMixin
 from .mixins.document_version_mixins import (
-    DocumentVersionAPIViewTestMixin, DocumentVersionTestMixin,
-    DocumentVersionPageAPIViewTestMixin
+    DocumentVersionAPIViewTestMixin, DocumentVersionTestMixin
 )
 
 
@@ -135,20 +134,3 @@ class DocumentVersionAPIViewTestCase(
             response.data['results'][0]['id'],
             self.test_document.version_active.id
         )
-
-
-class DocumentVersionPageAPIViewTestCase(
-    DocumentVersionPageAPIViewTestMixin, DocumentTestMixin, BaseAPITestCase
-):
-    def test_document_version_page_image_api_view_no_permission(self):
-        response = self._request_test_document_version_page_image_api_view()
-        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
-
-    def test_document_version_page_image_api_view_with_access(self):
-        self.grant_access(
-            obj=self.test_document,
-            permission=permission_document_version_view
-        )
-
-        response = self._request_test_document_version_page_image_api_view()
-        self.assertEqual(response.status_code, status.HTTP_200_OK)

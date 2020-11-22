@@ -7,12 +7,12 @@ from mayan.apps.storage.classes import DefinedStorage
 from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..literals import (
-    STORAGE_NAME_DOCUMENT_VERSION_PAGE_IMAGE_CACHE, STORAGE_NAME_DOCUMENT_FILES
+    STORAGE_NAME_DOCUMENT_VERSION_PAGE_IMAGE_CACHE,
+    STORAGE_NAME_DOCUMENT_FILES
 )
 from ..settings import (
     setting_document_file_page_image_cache_maximum_size,
     setting_document_file_storage_backend_arguments,
-    setting_document_file_page_image_cache_storage_arguments,
     setting_language_codes
 )
 
@@ -85,4 +85,7 @@ class DocumentStorageSettingsTestCase(SmartSettingTestMixin, BaseTestCase):
         new_value = old_value + 1
         setting_document_file_page_image_cache_maximum_size.value = '{}'.format(new_value)
 
-        self.assertEqual(setting_document_file_page_image_cache_maximum_size.value, new_value)
+        self.assertEqual(
+            setting_document_file_page_image_cache_maximum_size.value,
+            new_value
+        )

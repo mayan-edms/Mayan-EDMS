@@ -72,7 +72,5 @@ class DocumentVersionTestCase(GenericDocumentTestCase):
             test_document_version_expected_page_content_objects
         )
 
-    ##RESET
-
     def test_method_get_absolute_url(self):
         self.assertTrue(self.test_document.version_active.get_absolute_url())
