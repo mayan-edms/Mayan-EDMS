@@ -46,7 +46,9 @@ class SearchBackend:
     def index_instance(self, instance):
         raise NotImplementedError
 
-    def search(self, search_model, query_string, user, global_and_search=False):
+    def search(
+        self, search_model, query_string, user, global_and_search=False
+    ):
         AccessControlList = apps.get_model(
             app_label='acls', model_name='AccessControlList'
         )
@@ -75,7 +77,9 @@ class SearchField:
     """
     Search for terms in fields that directly belong to the parent SearchModel
     """
-    def __init__(self, search_model, field, label=None, transformation_function=None):
+    def __init__(
+        self, search_model, field, label=None, transformation_function=None
+    ):
         self.search_model = search_model
         self.field = field
         self._label = label
@@ -191,11 +195,19 @@ class SearchModel(AppsModuleLoaderMixin):
             ).model
 
             if related_model != self.model:
-                self.__class__._model_search_relationships.setdefault(self.model, set())
-                self.__class__._model_search_relationships[self.model].add(related_model)
+                self.__class__._model_search_relationships.setdefault(
+                    self.model, set()
+                )
+                self.__class__._model_search_relationships[self.model].add(
+                    related_model
+                )
 
-                self.__class__._model_search_relationships.setdefault(related_model, set())
-                self.__class__._model_search_relationships[related_model].add(self.model)
+                self.__class__._model_search_relationships.setdefault(
+                    related_model, set()
+                )
+                self.__class__._model_search_relationships[related_model].add(
+                    self.model
+                )
 
     def add_model_field(self, *args, **kwargs):
         """
@@ -210,7 +222,9 @@ class SearchModel(AppsModuleLoaderMixin):
         """
         result = []
         for search_field in self.search_fields:
-            result.append((search_field.get_full_name(), search_field.label))
+            result.append(
+                (search_field.get_full_name(), search_field.label)
+            )
 
         return sorted(result, key=lambda x: x[1])
 

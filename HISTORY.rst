@@ -77,3 +77,5 @@
   via a confirmation view.
 - Return the event type subscription list sorted by namespace label and event
   type label.
+- Make the search fields more uniform and add missing ones.
+- Add full label for search parent fields.
