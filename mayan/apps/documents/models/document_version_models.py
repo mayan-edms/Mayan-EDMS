@@ -22,7 +22,7 @@ from ..signals import signal_post_document_version_remap
 
 from .document_models import Document
 
-__all__ = ('DocumentVersion',)
+__all__ = ('DocumentVersion', 'DocumentVersionSearchResult')
 logger = logging.getLogger(name=__name__)
 
 
@@ -63,12 +63,12 @@ class DocumentVersion(ModelInstanceExtraDataAPIViewMixin, models.Model):
 
         return map(
             content_object_to_dictionary, enumerate(
-                iterable=content_object_list, start=start_page_number or 1
+                iterable=content_object_list or (), start=start_page_number or 1
             )
         )
 
     def __str__(self):
-        return self.get_rendered_string()
+        return self.get_label()
 
     def active_set(self, save=True):
         with transaction.atomic():
@@ -124,23 +124,35 @@ class DocumentVersion(ModelInstanceExtraDataAPIViewMixin, models.Model):
         if first_page:
             return first_page.get_api_image_url(*args, **kwargs)
 
-    def get_rendered_string(self, preserve_extension=False):
+    def get_label(self, preserve_extension=False):
         if preserve_extension:
             filename, extension = os.path.splitext(self.document.label)
-            return '{} ({}){}'.format(
-                filename, self.get_rendered_timestamp(), extension
+            #return '{} ({}){}'.format(
+            #    filename, self.get_rendered_timestamp(), extension
+            #)
+            return Template(
+                template_string='{{ filename }} ({{ instance.timestamp }}){{ extension }}'
+            ).render(
+                context={
+                    'extension': extension,
+                    'filename': filename,
+                    'instance': self
+                }
             )
         else:
             return Template(
-                template_string='{{ instance.document }} - {{ instance.timestamp }}'
-            ).render(context={'instance': self})
+                template_string='{{ instance.document }} ({{ instance.timestamp }})'
+            ).render(
+                context={'instance': self}
+            )
+    get_label.short_description = _('Label')
 
-    def get_rendered_timestamp(self):
-        return Template(
-            template_string='{{ instance.timestamp }}'
-        ).render(
-            context={'instance': self}
-        )
+    #def get_rendered_timestamp(self):
+    #    return Template(
+    #        template_string='{{ instance.timestamp }}'
+    #    ).render(
+    #        context={'instance': self}
+    #    )
 
     @property
     def is_in_trash(self):
@@ -229,3 +241,8 @@ class DocumentVersion(ModelInstanceExtraDataAPIViewMixin, models.Model):
     def uuid(self):
         # Make cache UUID a mix of document UUID, file ID
         return '{}-{}'.format(self.document.uuid, self.pk)
+
+
+class DocumentVersionSearchResult(DocumentVersion):
+    class Meta:
+        proxy = True

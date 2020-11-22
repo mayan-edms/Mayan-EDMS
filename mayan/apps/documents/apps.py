@@ -195,13 +195,26 @@ class DocumentsApp(MayanAppConfig):
 
         TrashedDocument = self.get_model(model_name='TrashedDocument')
         Document = self.get_model(model_name='Document')
+        DocumentSearchResult = self.get_model(
+            model_name='DocumentSearchResult'
+        )
         DocumentFile = self.get_model(model_name='DocumentFile')
         DocumentFilePage = self.get_model(model_name='DocumentFilePage')
-        DocumentFilePageResult = self.get_model(model_name='DocumentFilePageResult')
+        DocumentFileSearchResult = self.get_model(
+            model_name='DocumentFileSearchResult'
+        )
         DocumentType = self.get_model(model_name='DocumentType')
-        DocumentTypeFilename = self.get_model(model_name='DocumentTypeFilename')
+        DocumentTypeFilename = self.get_model(
+            model_name='DocumentTypeFilename'
+        )
         DocumentVersion = self.get_model(model_name='DocumentVersion')
+        DocumentVersionSearchResult = self.get_model(
+            model_name='DocumentVersionSearchResult'
+        )
         DocumentVersionPage = self.get_model(model_name='DocumentVersionPage')
+        DocumentVersionPageSearchResult = self.get_model(
+            model_name='DocumentVersionPageSearchResult'
+        )
         DuplicatedDocument = self.get_model(model_name='DuplicatedDocument')
 
         AJAXTemplate(
@@ -404,9 +417,6 @@ class DocumentsApp(MayanAppConfig):
             model=DocumentFilePage, related='document_file__document',
         )
         ModelPermission.register_inheritance(
-            model=DocumentFilePageResult, related='document_file__document',
-        )
-        ModelPermission.register_inheritance(
             model=DocumentVersion, related='document',
         )
         ModelPermission.register_inheritance(
@@ -531,7 +541,7 @@ class DocumentsApp(MayanAppConfig):
         # DocumentFilePage
 
         SourceColumn(
-            attribute='get_page_number_display', is_identifier=True,
+            attribute='get_label', is_identifier=True,
             is_object_absolute_url=True, source=DocumentFilePage,
         )
         SourceColumn(
@@ -539,23 +549,6 @@ class DocumentsApp(MayanAppConfig):
                 instance=context['object']
             ), html_extra_classes='text-center document-thumbnail-list',
             label=_('Thumbnail'), source=DocumentFilePage
-        )
-
-        # DocumentFilePageResult
-
-        SourceColumn(
-            attribute='get_label', is_identifier=True,
-            is_object_absolute_url=True, source=DocumentFilePageResult
-        )
-        SourceColumn(
-            func=lambda context: thumbnail_widget.render(
-                instance=context['object']
-            ), html_extra_classes='text-center document-thumbnail-list',
-            label=_('Thumbnail'), source=DocumentFilePageResult
-        )
-        SourceColumn(
-            attribute='document_file.document.document_type',
-            label=_('Type'), source=DocumentFilePageResult
         )
 
         # DocumentType
@@ -583,11 +576,10 @@ class DocumentsApp(MayanAppConfig):
         # DocumentVersion
 
         SourceColumn(
-            source=DocumentVersion, attribute='timestamp', is_identifier=True,
+            source=DocumentVersion, attribute='get_label', is_identifier=True,
             is_object_absolute_url=True
         )
         SourceColumn(
-            #func=lambda context: document_version_page_thumbnail_widget.render(
             func=lambda context: thumbnail_widget.render(
                 instance=context['object']
             ), html_extra_classes='text-center document-thumbnail-list',
@@ -610,31 +602,15 @@ class DocumentsApp(MayanAppConfig):
         # DocumentVersionPage
 
         SourceColumn(
-            attribute='get_page_number_display', is_identifier=True,
+            attribute='get_label', is_identifier=True,
             is_object_absolute_url=True, source=DocumentVersionPage,
         )
         SourceColumn(
-            #func=lambda context: document_version_page_thumbnail_widget.render(
             func=lambda context: thumbnail_widget.render(
                 instance=context['object']
             ), html_extra_classes='text-center document-thumbnail-list',
             label=_('Thumbnail'), source=DocumentVersionPage
         )
-
-        #SourceColumn(
-        #    attribute='get_label', is_identifier=True,
-        #    is_object_absolute_url=True, source=DocumentVersionPageResult
-        #)
-        #SourceColumn(
-        #    func=lambda context: document_version_page_thumbnail_widget.render(
-        #        instance=context['object']
-        #    ), html_extra_classes='text-center document-thumbnail-list',
-        #    label=_('Thumbnail'), source=DocumentVersionPageResult
-        #)
-        #SourceColumn(
-        #    attribute='document_version.document.document_type',
-        #    label=_('Type'), source=DocumentVersionPageResult
-        #)
 
         # TrashedDocument
 
@@ -716,7 +692,7 @@ class DocumentsApp(MayanAppConfig):
                 link_document_multiple_favorites_remove,
                 link_document_multiple_trash,
                 link_document_multiple_type_change
-            ), sources=(Document,)
+            ), sources=(Document, DocumentSearchResult)
         )
 
         menu_secondary.bind_links(
@@ -739,16 +715,14 @@ class DocumentsApp(MayanAppConfig):
         )
         menu_multi_item.bind_links(
             links=(
-                #link_document_file_multiple_download,
                 link_document_file_multiple_page_count_update,
                 link_document_file_multiple_transformations_clear,
-            ), sources=(DocumentFile,)
+            ), sources=(DocumentFile, DocumentFileSearchResult)
         )
         menu_object.bind_links(
             links=(
                 link_document_file_cache_purge,
                 link_document_file_delete,
-                #link_document_file_download,
                 link_document_file_download_quick,
                 link_document_file_edit,
                 link_document_file_page_count_update,
@@ -855,7 +829,7 @@ class DocumentsApp(MayanAppConfig):
             links=(
                 link_document_version_multiple_delete,
                 link_document_version_multiple_transformations_clear,
-            ), sources=(DocumentVersion,)
+            ), sources=(DocumentVersion, DocumentVersionSearchResult)
         )
         menu_object.bind_links(
             links=(
@@ -903,12 +877,12 @@ class DocumentsApp(MayanAppConfig):
         menu_list_facet.bind_links(
             links=(
                 link_decorations_list, link_transformation_list,
-            ), sources=(DocumentVersionPage,)
+            ), sources=(DocumentVersionPage, DocumentVersionPageSearchResult)
         )
         menu_object.bind_links(
             links=(
                 link_document_version_page_delete,
-            ), sources=(DocumentVersionPage,)
+            ), sources=(DocumentVersionPage, DocumentVersionPageSearchResult)
         )
         menu_return.bind_links(
             links=(

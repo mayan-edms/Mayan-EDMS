@@ -31,7 +31,7 @@ from ..settings import (
 from .document_version_models import DocumentVersion
 from .mixins import ModelMixinPagedModel
 
-__all__ = ('DocumentVersionPage', 'DocumentVersionPageResult')
+__all__ = ('DocumentVersionPage', 'DocumentVersionPageSearchResult')
 logger = logging.getLogger(name=__name__)
 
 
@@ -287,22 +287,13 @@ class DocumentVersionPage(ModelMixinPagedModel, models.Model):
 
     def get_label(self):
         return _(
-            'Document version page %(page_number)d of %(total_pages)d from %(document_version)s'
+            '%(document_version)s page %(page_number)d of %(total_pages)d'
         ) % {
             'document_version': force_text(self.document_version),
             'page_number': self.page_number,
             'total_pages': self.get_pages_last_number() or 1
         }
     get_label.short_description = _('Label')
-
-    def get_page_number_display(self):
-        return _(
-            'Document version page %(page_number)d of %(total_pages)d'
-        ) % {
-            'page_number': self.page_number,
-            'total_pages': self.get_pages_last_number() or 1
-        }
-    get_page_number_display.short_description = _('Page number')
 
     @property
     def is_in_trash(self):
@@ -333,9 +324,8 @@ class DocumentVersionPage(ModelMixinPagedModel, models.Model):
         return '{}-{}'.format(self.document_version.uuid, self.pk)
 
 
-class DocumentVersionPageResult(DocumentVersionPage):
+class DocumentVersionPageSearchResult(DocumentVersionPage):
     class Meta:
-        ordering = ('document_version__document', 'page_number')
         proxy = True
         verbose_name = _('Document version page')
         verbose_name_plural = _('Document version pages')

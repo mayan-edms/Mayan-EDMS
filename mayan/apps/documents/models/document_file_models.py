@@ -18,7 +18,6 @@ from mayan.apps.events.classes import EventManagerMethodAfter
 from mayan.apps.events.decorators import method_event
 from mayan.apps.mimetype.api import get_mimetype
 from mayan.apps.storage.classes import DefinedStorageLazy
-from mayan.apps.templating.classes import Template
 
 from ..events import event_document_file_deleted, event_document_file_new
 from ..literals import (
@@ -31,7 +30,7 @@ from ..signals import signal_post_document_created, signal_post_document_file_up
 from .document_models import Document
 from .mixins import ModelMixinHooks
 
-__all__ = ('DocumentFile',)
+__all__ = ('DocumentFile', 'DocumentFileSearchResult')
 logger = logging.getLogger(name=__name__)
 
 
@@ -154,7 +153,7 @@ class DocumentFile(
         )
 
     def __str__(self):
-        return self.get_rendered_string()
+        return self.get_label()
 
     @cached_property
     def cache(self):
@@ -284,10 +283,9 @@ class DocumentFile(
                     cache_file.delete()
                 raise
 
-    def get_rendered_string(self):
-        return Template(
-            template_string='{{ instance.document }} - {{ instance.filename }}'
-        ).render(context={'instance': self})
+    def get_label(self):
+        return self.filename
+    get_label.short_description = _('Label')
 
     def mimetype_update(self, save=True):
         """
@@ -466,3 +464,8 @@ class DocumentFile(
     def uuid(self):
         # Make cache UUID a mix of document UUID, file ID
         return '{}-{}'.format(self.document.uuid, self.pk)
+
+
+class DocumentFileSearchResult(DocumentFile):
+    class Meta:
+        proxy = True

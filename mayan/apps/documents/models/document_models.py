@@ -27,7 +27,7 @@ from ..signals import signal_post_document_type_change
 from .document_type_models import DocumentType
 from .mixins import ModelMixinHooks
 
-__all__ = ('Document', 'TrashedDocument', 'TrashedDocument')
+__all__ = ('Document', 'DocumentSearchResult', 'TrashedDocument')
 logger = logging.getLogger(name=__name__)
 
 
@@ -190,7 +190,7 @@ class Document(
             #document_file = self.files(
             #    comment=comment or '', file=File(file=file_object)
             #)
-            document_file.save(_user=_user)
+            document_file.save(_event_actor=_user)
         except Exception as exception:
             logger.error(
                 'Error creating new file for document: %s; %s', self,
@@ -305,6 +305,11 @@ class Document(
             return self.versions.filter(active=True).first()
         except self.versions.model.DoesNotExist:
             return self.versions.none()
+
+
+class DocumentSearchResult(Document):
+    class Meta:
+        proxy = True
 
 
 class TrashedDocument(Document):

@@ -4,7 +4,6 @@ from furl import furl
 
 from django.db import models
 from django.urls import reverse
-from django.utils.encoding import force_text
 from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
 
@@ -26,7 +25,7 @@ from ..settings import (
 from .document_file_models import DocumentFile
 from .mixins import ModelMixinPagedModel
 
-__all__ = ('DocumentFilePage', 'DocumentFilePageResult')
+__all__ = ('DocumentFilePage', 'DocumentFilePageSearchResult')
 logger = logging.getLogger(name=__name__)
 
 
@@ -256,22 +255,13 @@ class DocumentFilePage(ModelMixinPagedModel, models.Model):
 
     def get_label(self):
         return _(
-            'Document file page %(page_num)d of %(total_pages)d from %(document_file)s'
+            '%(document_file)s - page %(page_num)d of %(total_pages)d'
         ) % {
-            'document_file': force_text(s=self.document_file),
+            'document_file': self.document_file,
             'page_num': self.page_number,
             'total_pages': self.get_pages_last_number() or 1
         }
     get_label.short_description = _('Label')
-
-    def get_page_number_display(self):
-        return _(
-            'Document file page %(page_num)d of %(total_pages)d'
-        ) % {
-            'page_num': self.page_number,
-            'total_pages': self.get_pages_last_number() or 1
-        }
-    get_page_number_display.short_description = _('Page number')
 
     def natural_key(self):
         return (self.page_number, self.document_file.natural_key())
@@ -286,7 +276,7 @@ class DocumentFilePage(ModelMixinPagedModel, models.Model):
         return '{}-{}'.format(self.document_file.uuid, self.pk)
 
 
-class DocumentFilePageResult(DocumentFilePage):
+class DocumentFilePageSearchResult(DocumentFilePage):
     class Meta:
         ordering = ('document_file__document', 'page_number')
         proxy = True

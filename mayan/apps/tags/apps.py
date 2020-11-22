@@ -57,12 +57,12 @@ class TagsApp(MayanAppConfig):
             app_label='documents', model_name='Document'
         )
 
-        DocumentFilePageResult = apps.get_model(
-            app_label='documents', model_name='DocumentFilePageResult'
-        )
-        DocumentVersionPageResult = apps.get_model(
-            app_label='documents', model_name='DocumentVersionPageResult'
-        )
+        #DocumentFilePageResult = apps.get_model(
+        #    app_label='documents', model_name='DocumentFilePageResult'
+        #)
+        #DocumentVersionPageResult = apps.get_model(
+        #    app_label='documents', model_name='DocumentVersionPageResult'
+        #)
 
         DocumentTag = self.get_model(model_name='DocumentTag')
         Tag = self.get_model(model_name='Tag')
@@ -121,19 +121,19 @@ class TagsApp(MayanAppConfig):
             ), label=_('Tags'), source=Document
         )
 
-        SourceColumn(
-            func=lambda context: widget_document_tags(
-                document=context['object'].document,
-                user=context['request'].user
-            ), label=_('Tags'), source=DocumentVersionPageResult
-        )
+        #SourceColumn(
+        #    func=lambda context: widget_document_tags(
+        #        document=context['object'].document,
+        #        user=context['request'].user
+        #    ), label=_('Tags'), source=DocumentVersionPageResult
+        #)
 
-        SourceColumn(
-            func=lambda context: widget_document_tags(
-                document=context['object'].document,
-                user=context['request'].user
-            ), label=_('Tags'), source=DocumentFilePageResult
-        )
+        #SourceColumn(
+        #    func=lambda context: widget_document_tags(
+        #        document=context['object'].document,
+        #        user=context['request'].user
+        #    ), label=_('Tags'), source=DocumentFilePageResult
+        #)
 
         SourceColumn(
             attribute='label', is_identifier=True, is_sortable=True,

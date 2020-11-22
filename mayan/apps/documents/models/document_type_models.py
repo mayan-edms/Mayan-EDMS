@@ -139,8 +139,7 @@ class DocumentType(models.Model):
                 label=label or file_object.name,
                 language=language or setting_language.value
             )
-            _event_actor = _user
-            document.save()
+            document.save(_user=_user)
         except Exception as exception:
             logger.critical(
                 'Unexpected exception while trying to create new document '
