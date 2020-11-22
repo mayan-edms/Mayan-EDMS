@@ -61,13 +61,15 @@ class DocumentSearchTestMixin:
 
     def _perform_document_file_page_search(self):
         return self.search_backend.search(
-            search_model=document_file_page_search, query_string={'q': self.test_document.label},
+            search_model=document_file_page_search,
+            query_string={'q': self.test_document.label},
             user=self._test_case_user
         )
 
     def _perform_document_search(self):
         return self.search_backend.search(
-            search_model=document_search, query_string={'q': self.test_document.label},
+            search_model=document_search,
+            query_string={'q': self.test_document.label},
             user=self._test_case_user
         )
 

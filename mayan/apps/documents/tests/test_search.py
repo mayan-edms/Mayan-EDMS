@@ -9,14 +9,14 @@ class DocumentSearchTestCase(
 ):
     def test_document_file_page_search_no_permission(self):
         queryset = self._perform_document_file_page_search()
-        self.assertFalse(self.test_document.pages.first() in queryset)
+        self.assertFalse(self.test_document.file_latest.pages.first() in queryset)
 
     def test_document_file_page_search_with_access(self):
         self.grant_access(
             obj=self.test_document, permission=permission_document_view
         )
         queryset = self._perform_document_file_page_search()
-        self.assertTrue(self.test_document.pages.first() in queryset)
+        self.assertTrue(self.test_document.file_latest.pages.first() in queryset)
 
     def test_document_search_no_permission(self):
         queryset = self._perform_document_search()
