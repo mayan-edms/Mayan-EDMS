@@ -1,3 +1,5 @@
+from django.db.models import Q
+
 from ..models import Message
 
 from .literals import (
@@ -57,7 +59,7 @@ class MessageTestMixin:
 
 class MessageViewTestMixin:
     def _request_test_message_create_view(self):
-        pk_list = list(Message.objects.values_list('pk', flat=True))
+        pk_list = list(Message.objects.values('pk'))
 
         response = self.post(
             viewname='motd:message_create', data={
@@ -66,9 +68,10 @@ class MessageViewTestMixin:
             }
         )
 
-        self.test_message = Message.objects.exclude(
-            pk__in=pk_list
-        ).first()
+        try:
+            self.test_message = Message.objects.get(~Q(pk__in=pk_list))
+        except Message.DoesNotExist:
+            self.test_message = None
 
         return response
 
