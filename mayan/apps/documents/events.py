@@ -39,6 +39,18 @@ event_document_type_created = namespace.add_event_type(
 event_document_type_edited = namespace.add_event_type(
     label=_('Document type edited'), name='document_type_edit'
 )
+event_document_type_quick_label_created = namespace.add_event_type(
+    label=_('Document type quick label created'),
+    name='document_type_quick_label_created'
+)
+event_document_type_quick_label_deleted = namespace.add_event_type(
+    label=_('Document type quick label deleted'),
+    name='document_type_quick_label_deleted'
+)
+event_document_type_quick_label_edited = namespace.add_event_type(
+    label=_('Document type quick label edited'),
+    name='document_type_quick_label_edited'
+)
 # The type of an existing document is changed to another type
 event_document_type_changed = namespace.add_event_type(
     label=_('Document type changed'), name='document_type_change'

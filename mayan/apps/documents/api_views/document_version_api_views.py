@@ -101,6 +101,22 @@ class APIDocumentVersionListView(
         return self.get_document(permission=permission).versions.all()
 
 
+class APIDocumentVersionPageDetailView(
+    ParentObjectDocumentVersionAPIViewMixin, generics.RetrieveAPIView
+):
+    """
+    get: Returns the selected document page details.
+    """
+    lookup_url_kwarg = 'document_version_page_id'
+    serializer_class = DocumentVersionPageSerializer
+    mayan_object_permissions = {
+        'GET': (permission_document_version_view,),
+    }
+
+    def get_queryset(self):
+        return self.get_document_version().pages.all()
+
+
 class APIDocumentVersionPageListView(
     ParentObjectDocumentVersionAPIViewMixin, generics.ListAPIView
 ):

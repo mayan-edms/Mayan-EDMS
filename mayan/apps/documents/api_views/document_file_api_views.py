@@ -200,7 +200,9 @@ class APIDocumentFilePageImageView(
             return response
 
 
-class APIDocumentFilePageListView(generics.ListAPIView):
+class APIDocumentFilePageListView(
+    ParentObjectDocumentFileAPIViewMixin, generics.ListAPIView
+):
     mayan_object_permissions = {
         'GET': (permission_document_file_view,),
     }

@@ -1,12 +1,32 @@
 from rest_framework import serializers
 
+from mayan.apps.rest_api.relations import MultiKwargHyperlinkedIdentityField
+
 from ..models.document_type_models import DocumentType, DocumentTypeFilename
 
 
-class DocumentTypeFilenameSerializer(serializers.ModelSerializer):
+class DocumentTypeQuickLabelSerializer(serializers.ModelSerializer):
+    document_type_url = serializers.HyperlinkedIdentityField(
+        lookup_url_kwarg='document_type_id',
+        view_name='rest_api:documenttype-detail'
+    )
+    url = MultiKwargHyperlinkedIdentityField(
+        view_kwargs=(
+            {
+                'lookup_field': 'document_type_id',
+                'lookup_url_kwarg': 'document_type_id',
+            },
+            {
+                'lookup_field': 'pk',
+                'lookup_url_kwarg': 'document_type_quick_label_id',
+            },
+        ),
+        view_name='rest_api:documenttype-quicklabel-detail'
+    )
+
     class Meta:
         model = DocumentTypeFilename
-        fields = ('filename',)
+        fields = ('document_type_url', 'enabled', 'filename', 'id', 'url')
 
 
 class DocumentTypeSerializer(serializers.HyperlinkedModelSerializer):
@@ -14,33 +34,10 @@ class DocumentTypeSerializer(serializers.HyperlinkedModelSerializer):
         lookup_url_kwarg='document_type_id',
         view_name='rest_api:documenttype-document-list'
     )
-    documents_count = serializers.SerializerMethodField()
-    filenames = DocumentTypeFilenameSerializer(many=True, read_only=True)
-
-    class Meta:
-        extra_kwargs = {
-            'url': {
-                'lookup_url_kwarg': 'document_type_id',
-                'view_name': 'rest_api:documenttype-detail'
-            },
-        }
-        fields = (
-            'delete_time_period', 'delete_time_unit', 'documents_url',
-            'documents_count', 'id', 'label', 'filenames', 'trash_time_period',
-            'trash_time_unit', 'url'
-        )
-        model = DocumentType
-
-    def get_documents_count(self, obj):
-        return obj.documents.count()
-
-
-class DocumentTypeWritableSerializer(serializers.ModelSerializer):
-    documents_url = serializers.HyperlinkedIdentityField(
+    quick_label_list_url = serializers.HyperlinkedIdentityField(
         lookup_url_kwarg='document_type_id',
-        view_name='rest_api:documenttype-document-list'
+        view_name='rest_api:documenttype-quicklabel-list'
     )
-    documents_count = serializers.SerializerMethodField()
 
     class Meta:
         extra_kwargs = {
@@ -51,10 +48,7 @@ class DocumentTypeWritableSerializer(serializers.ModelSerializer):
         }
         fields = (
             'delete_time_period', 'delete_time_unit', 'documents_url',
-            'documents_count', 'id', 'label', 'trash_time_period',
+            'id', 'label', 'quick_label_list_url', 'trash_time_period',
             'trash_time_unit', 'url'
         )
         model = DocumentType
-
-    def get_documents_count(self, obj):
-        return obj.documents.count()

@@ -172,7 +172,7 @@ class DocumentTypeQuickLabelViewsTestCase(
         self.assertEqual(self.test_document_type.filenames.count(), 1)
 
     def test_document_type_quick_label_delete_no_permission(self):
-        self._create_test_quick_label()
+        self._create_test_document_type_quick_label()
         response = self._request_test_quick_label_delete_view()
         self.assertEqual(response.status_code, 404)
 
@@ -185,7 +185,7 @@ class DocumentTypeQuickLabelViewsTestCase(
             obj=self.test_document_type,
             permission=permission_document_type_edit
         )
-        self._create_test_quick_label()
+        self._create_test_document_type_quick_label()
 
         response = self._request_test_quick_label_delete_view()
         self.assertEqual(response.status_code, 302)
@@ -195,14 +195,14 @@ class DocumentTypeQuickLabelViewsTestCase(
         )
 
     def test_document_type_quick_label_edit_no_permission(self):
-        self._create_test_quick_label()
+        self._create_test_document_type_quick_label()
 
         response = self._request_test_quick_label_edit_view()
         self.assertEqual(response.status_code, 404)
 
-        self.test_document_type_filename.refresh_from_db()
+        self.test_document_type_quick_label.refresh_from_db()
         self.assertEqual(
-            self.test_document_type_filename.filename,
+            self.test_document_type_quick_label.filename,
             TEST_DOCUMENT_TYPE_QUICK_LABEL
         )
 
@@ -211,25 +211,25 @@ class DocumentTypeQuickLabelViewsTestCase(
             obj=self.test_document_type,
             permission=permission_document_type_edit
         )
-        self._create_test_quick_label()
+        self._create_test_document_type_quick_label()
 
         response = self._request_test_quick_label_edit_view()
         self.assertEqual(response.status_code, 302)
 
-        self.test_document_type_filename.refresh_from_db()
+        self.test_document_type_quick_label.refresh_from_db()
         self.assertEqual(
-            self.test_document_type_filename.filename,
+            self.test_document_type_quick_label.filename,
             TEST_DOCUMENT_TYPE_QUICK_LABEL_EDITED
         )
 
     def test_document_type_quick_label_list_no_permission(self):
-        self._create_test_quick_label()
+        self._create_test_document_type_quick_label()
 
         response = self._request_test_quick_label_list_view()
         self.assertEqual(response.status_code, 404)
 
     def test_document_type_quick_label_list_with_access(self):
-        self._create_test_quick_label()
+        self._create_test_document_type_quick_label()
 
         self.grant_access(
             obj=self.test_document_type,
@@ -238,7 +238,7 @@ class DocumentTypeQuickLabelViewsTestCase(
 
         response = self._request_test_quick_label_list_view()
         self.assertContains(
-            response, status_code=200, text=self.test_document_type_filename
+            response, status_code=200, text=self.test_document_type_quick_label
         )
 
 
@@ -247,13 +247,13 @@ class DocumentsQuickLabelViewTestCase(
     GenericDocumentViewTestCase
 ):
     def test_document_quick_label_no_permission(self):
-        self._create_test_quick_label()
+        self._create_test_document_type_quick_label()
 
         response = self._request_test_document_quick_label_edit_view()
         self.assertEqual(response.status_code, 404)
 
     def test_document_quick_label_with_access(self):
-        self._create_test_quick_label()
+        self._create_test_document_type_quick_label()
         self.grant_access(
             obj=self.test_document,
             permission=permission_document_properties_edit
@@ -265,11 +265,11 @@ class DocumentsQuickLabelViewTestCase(
         self.test_document.refresh_from_db()
         self.assertEqual(
             self.test_document.label,
-            self.test_document_type_filename.filename
+            self.test_document_type_quick_label.filename
         )
 
     def test_document_quick_label_preserve_extension_with_access(self):
-        self._create_test_quick_label()
+        self._create_test_document_type_quick_label()
         self.grant_access(
             obj=self.test_document,
             permission=permission_document_properties_edit
@@ -284,12 +284,12 @@ class DocumentsQuickLabelViewTestCase(
         self.test_document.refresh_from_db()
         self.assertEqual(
             self.test_document.label, '{}{}'.format(
-                self.test_document_type_filename.filename, extension
+                self.test_document_type_quick_label.filename, extension
             )
         )
 
     def test_document_quick_label_no_preserve_extension_with_access(self):
-        self._create_test_quick_label()
+        self._create_test_document_type_quick_label()
         self.grant_access(
             obj=self.test_document,
             permission=permission_document_properties_edit
@@ -303,5 +303,5 @@ class DocumentsQuickLabelViewTestCase(
 
         self.test_document.refresh_from_db()
         self.assertEqual(
-            self.test_document.label, self.test_document_type_filename.filename
+            self.test_document.label, self.test_document_type_quick_label.filename
         )

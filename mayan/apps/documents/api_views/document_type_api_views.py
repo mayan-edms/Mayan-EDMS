@@ -10,7 +10,7 @@ from ..permissions import (
 )
 from ..serializers.document_serializers import DocumentSerializer
 from ..serializers.document_type_serializers import (
-    DocumentTypeSerializer, DocumentTypeWritableSerializer
+    DocumentTypeQuickLabelSerializer, DocumentTypeSerializer,
 )
 
 from .mixins import ParentObjectDocumentTypeAPIViewMixin
@@ -28,11 +28,10 @@ class APIDocumentTypeListView(generics.ListCreateAPIView):
     queryset = DocumentType.objects.all()
     serializer_class = DocumentTypeSerializer
 
-    def get_serializer_class(self):
-        if self.request.method == 'GET':
-            return DocumentTypeSerializer
-        else:
-            return DocumentTypeWritableSerializer
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user
+        }
 
 
 class APIDocumentTypeDetailView(generics.RetrieveUpdateDestroyAPIView):
@@ -44,18 +43,18 @@ class APIDocumentTypeDetailView(generics.RetrieveUpdateDestroyAPIView):
     """
     lookup_url_kwarg = 'document_type_id'
     mayan_object_permissions = {
+        'DELETE': (permission_document_type_delete,),
         'GET': (permission_document_type_view,),
-        'PUT': (permission_document_type_edit,),
         'PATCH': (permission_document_type_edit,),
-        'DELETE': (permission_document_type_delete,)
+        'PUT': (permission_document_type_edit,)
     }
     queryset = DocumentType.objects.all()
+    serializer_class = DocumentTypeSerializer
 
-    def get_serializer_class(self):
-        if self.request.method == 'GET':
-            return DocumentTypeSerializer
-        else:
-            return DocumentTypeWritableSerializer
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user
+        }
 
 
 class APIDocumentTypeDocumentListView(
@@ -71,3 +70,57 @@ class APIDocumentTypeDocumentListView(
         return self.get_document_type(
             permission=permission_document_type_view
         ).documents.all()
+
+
+class APIDocumentTypeQuickLabelDetailView(
+    ParentObjectDocumentTypeAPIViewMixin, generics.RetrieveUpdateDestroyAPIView
+):
+    """
+    delete: Delete the selected quick label.
+    get: Return the details of the selected quick label.
+    patch: Edit the properties of the selected quick label.
+    put: Edit the properties of the selected quick label.
+    """
+    lookup_url_kwarg = 'document_type_quick_label_id'
+    mayan_object_permissions = {
+        'DELETE': (permission_document_type_edit,),
+        'GET': (permission_document_type_view,),
+        'PATCH': (permission_document_type_edit,),
+        'PUT': (permission_document_type_edit,)
+    }
+    serializer_class = DocumentTypeQuickLabelSerializer
+
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user,
+        }
+
+    def get_queryset(self):
+        return self.get_document_type().filenames.all()
+
+
+class APIDocumentTypeQuickLabelListView(
+    ParentObjectDocumentTypeAPIViewMixin, generics.ListCreateAPIView
+):
+    """
+    get: Returns a list of all the document type quick labels.
+    post: Create a new document type quick label.
+    """
+    serializer_class = DocumentTypeQuickLabelSerializer
+
+    def get_instance_extra_data(self):
+        # This method is only called during POST, therefore filter only by
+        # edit permission.
+        return {
+            '_event_actor': self.request.user,
+            'document_type': self.get_document_type(
+                permission=permission_document_type_edit
+            )
+        }
+
+    def get_queryset(self):
+        # This method is only called during GET, therefore filter only by
+        # the view permission.
+        return self.get_document_type(
+            permission=permission_document_type_view
+        ).filenames.all()

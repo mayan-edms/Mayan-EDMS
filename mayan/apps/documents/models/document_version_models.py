@@ -95,7 +95,7 @@ class DocumentVersion(ModelInstanceExtraDataAPIViewMixin, models.Model):
     @method_event(
         event_manager_class=EventManagerMethodAfter,
         event=event_document_version_deleted,
-        target='document',
+        action_object='document',
     )
     def delete(self, *args, **kwargs):
         for page in self.pages.all():

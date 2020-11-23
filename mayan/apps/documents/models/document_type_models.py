@@ -7,11 +7,21 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.common.literals import TIME_DELTA_UNIT_CHOICES
+from mayan.apps.common.mixins import ModelInstanceExtraDataAPIViewMixin
 from mayan.apps.common.serialization import yaml_load
 from mayan.apps.common.validators import YAMLValidator
+from mayan.apps.events.classes import (
+    EventManagerMethodAfter, EventManagerSave
+)
+from mayan.apps.events.decorators import method_event
 
 from ..classes import BaseDocumentFilenameGenerator
-from ..events import event_document_type_created, event_document_type_edited
+from ..events import (
+    event_document_type_created, event_document_type_edited,
+    event_document_type_quick_label_created,
+    event_document_type_quick_label_deleted,
+    event_document_type_quick_label_edited
+)
 from ..literals import DEFAULT_DELETE_PERIOD, DEFAULT_DELETE_TIME_UNIT
 from ..managers import DocumentTypeManager
 from ..permissions import permission_document_view
@@ -21,7 +31,7 @@ __all__ = ('DocumentType', 'DocumentTypeFilename')
 logger = logging.getLogger(name=__name__)
 
 
-class DocumentType(models.Model):
+class DocumentType(ModelInstanceExtraDataAPIViewMixin, models.Model):
     """
     Define document types or classes to which a specific set of
     properties can be attached
@@ -162,25 +172,24 @@ class DocumentType(models.Model):
             else:
                 return document, document_file
 
+    @method_event(
+        event_manager_class=EventManagerSave,
+        created={
+            'event': event_document_type_created,
+            #'action_object': 'document_type',
+            #'keep_attributes': '_event_actor',
+            'target': 'self'
+        },
+        edited={
+            'event': event_document_type_edited,
+            'target': 'self'
+        }
+    )
     def save(self, *args, **kwargs):
-        user = kwargs.pop('_user', None)
-        created = not self.pk
-
-        result = super().save(*args, **kwargs)
-
-        if created:
-            event_document_type_created.commit(
-                actor=user, target=self
-            )
-        else:
-            event_document_type_edited.commit(
-                actor=user, target=self
-            )
-
-        return result
+        return super().save(*args, **kwargs)
 
 
-class DocumentTypeFilename(models.Model):
+class DocumentTypeFilename(ModelInstanceExtraDataAPIViewMixin, models.Model):
     """
     List of labels available to a specific document type for the
     quick rename functionality
@@ -202,3 +211,27 @@ class DocumentTypeFilename(models.Model):
 
     def __str__(self):
         return self.filename
+
+    @method_event(
+        event_manager_class=EventManagerMethodAfter,
+        event=event_document_type_quick_label_deleted,
+        action_object='document_type',
+    )
+    def delete(self, *args, **kwargs):
+        return super().delete(*args, **kwargs)
+
+    @method_event(
+        event_manager_class=EventManagerSave,
+        created={
+            'event': event_document_type_quick_label_created,
+            'action_object': 'document_type',
+            'target': 'self'
+        },
+        edited={
+            'event': event_document_type_quick_label_edited,
+            'action_object': 'document_type',
+            'target': 'self'
+        }
+    )
+    def save(self, *args, **kwargs):
+        return super().save(*args, **kwargs)

@@ -48,7 +48,7 @@ class DocumentSerializer(serializers.HyperlinkedModelSerializer):
         lookup_url_kwarg='document_id',
         view_name='rest_api:document-type-change'
     )
-    latest_file = DocumentFileSerializer(many=False, read_only=True)
+    file_latest = DocumentFileSerializer(many=False, read_only=True)
     file_list_url = serializers.HyperlinkedIdentityField(
         lookup_url_kwarg='document_id',
         view_name='rest_api:documentfile-list'
@@ -73,8 +73,8 @@ class DocumentSerializer(serializers.HyperlinkedModelSerializer):
         fields = (
             'date_added', 'description', 'document_type',
             'document_type_change_url', 'file_list_url', 'id', 'label',
-            'language', 'latest_file', 'version_active', 'pk', 'url', 'uuid',
-            'version_list_url'
+            'language', 'file_latest', 'pk', 'url', 'uuid',
+            'version_active', 'version_list_url'
         )
         model = Document
         read_only_fields = ('document_type',)

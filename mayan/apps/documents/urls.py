@@ -12,12 +12,13 @@ from .api_views.document_file_api_views import (
 )
 from .api_views.document_type_api_views import (
     APIDocumentTypeDetailView, APIDocumentTypeDocumentListView,
-    APIDocumentTypeListView
+    APIDocumentTypeListView, APIDocumentTypeQuickLabelDetailView,
+    APIDocumentTypeQuickLabelListView
 )
 from .api_views.document_version_api_views import (
     APIDocumentVersionDetailView, APIDocumentVersionExportView,
-    APIDocumentVersionListView, APIDocumentVersionPageImageView,
-    APIDocumentVersionPageListView
+    APIDocumentVersionListView, APIDocumentVersionPageDetailView,
+    APIDocumentVersionPageImageView, APIDocumentVersionPageListView
 )
 from .views.document_file_views import (
     DocumentFileCachePartitionPurgeView, DocumentFileDeleteView,
@@ -597,6 +598,16 @@ api_urls_document_types = [
         regex=r'^document_types/(?P<document_type_id>[0-9]+)/documents/$',
         name='documenttype-document-list',
         view=APIDocumentTypeDocumentListView.as_view()
+    ),
+    url(
+        regex=r'^document_types/(?P<document_type_id>[0-9]+)/quick_labels/$',
+        name='documenttype-quicklabel-list',
+        view=APIDocumentTypeQuickLabelListView.as_view()
+    ),
+    url(
+        regex=r'^document_types/(?P<document_type_id>[0-9]+)/quick_labels/(?P<document_type_quick_label_id>[0-9]+)/$',
+        name='documenttype-quicklabel-detail',
+        view=APIDocumentTypeQuickLabelDetailView.as_view()
     )
 ]
 
@@ -631,10 +642,11 @@ api_urls_document_versions = [
         name='documentversionpage-list',
         view=APIDocumentVersionPageListView.as_view()
     ),
-    #url(
-    #    regex=r'^documents/(?P<pk>[0-9]+)/versions/(?P<document_version_id>[0-9]+)/pages/(?P<page_pk>[0-9]+)$',
-    #    view=APIDocumentVersionPageView.as_view(), name='documentversionpage-detail'
-    #),
+    url(
+        regex=r'^documents/(?P<document_id>[0-9]+)/versions/(?P<document_version_id>[0-9]+)/pages/(?P<document_version_page_id>[0-9]+)/$',
+        name='documentversionpage-detail',
+        view=APIDocumentVersionPageDetailView.as_view()
+    ),
     url(
         regex=r'^documents/(?P<document_id>[0-9]+)/versions/(?P<document_version_id>[0-9]+)/pages/(?P<document_version_page_id>[0-9]+)/image/$',
         name='documentversionpage-image',
