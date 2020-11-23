@@ -16,8 +16,7 @@ from ..permissions import (
 )
 
 from .literals import (
-    TEST_DOCUMENT_TYPE_LABEL, TEST_DOCUMENT_TYPE_LABEL_EDITED,
-    TEST_DOCUMENT_TYPE_QUICK_LABEL
+    TEST_DOCUMENT_TYPE_LABEL, TEST_DOCUMENT_TYPE_QUICK_LABEL
 )
 from .mixins.document_mixins import DocumentTestMixin
 from .mixins.document_type_mixins import (
@@ -479,8 +478,6 @@ class DocumentTypeQuickLabelAPIViewTestCase(
 
     def test_document_type_quick_label_list_api_view_no_permission(self):
         self._create_test_document_type_quick_label()
-
-        document_type_quick_label_count = DocumentTypeFilename.objects.count()
 
         self._clear_events()
 

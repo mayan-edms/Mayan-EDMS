@@ -176,8 +176,6 @@ class DocumentType(ModelInstanceExtraDataAPIViewMixin, models.Model):
         event_manager_class=EventManagerSave,
         created={
             'event': event_document_type_created,
-            #'action_object': 'document_type',
-            #'keep_attributes': '_event_actor',
             'target': 'self'
         },
         edited={

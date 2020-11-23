@@ -42,9 +42,7 @@ from .events import (
     event_document_create, event_document_file_deleted,
     event_document_file_downloaded, event_document_file_new,
     event_document_properties_edit, event_document_type_changed,
-    event_document_type_created, event_document_type_edited,
-    event_document_type_quick_label_created,
-    event_document_type_quick_label_deleted,
+    event_document_type_edited, event_document_type_quick_label_deleted,
     event_document_type_quick_label_edited,
     event_document_version_created, event_document_version_deleted,
     event_document_version_edited, event_document_viewed
