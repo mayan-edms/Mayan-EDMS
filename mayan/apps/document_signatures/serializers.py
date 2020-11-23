@@ -88,7 +88,6 @@ class EmbeddedSignatureSerializer(serializers.HyperlinkedModelSerializer):
         ),
         view_name='rest_api:documentfile-detail'
     )
-
     url = MultiKwargHyperlinkedIdentityField(
         view_kwargs=(
             {
