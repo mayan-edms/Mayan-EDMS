@@ -79,3 +79,5 @@
   type label.
 - Make the search fields more uniform and add missing ones.
 - Add full label for search parent fields.
+- Add events for the document type quick label model.
+- Add dedicated API endpoints for the document type quick label model.
