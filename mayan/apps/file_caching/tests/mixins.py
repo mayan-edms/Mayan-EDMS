@@ -13,6 +13,14 @@ from .literals import (
 STORAGE_NAME_FILE_CACHING_TEST_STORAGE = 'file_caching__test_storage'
 
 
+class CachePartitionViewTestMixin:
+    def _request_test_object_file_cache_partition_purge_view(self):
+        return self.post(
+            viewname='file_caching:cache_partitions_purge',
+            kwargs=self.test_object_view_kwargs
+        )
+
+
 class CacheTestMixin:
     def setUp(self):
         super().setUp()

@@ -27,6 +27,8 @@ from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list,
 )
 from mayan.apps.events.permissions import permission_events_view
+from mayan.apps.file_caching.links import link_cache_partition_purge
+from mayan.apps.file_caching.permissions import permission_cache_partition_purge
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.rest_api.fields import DynamicSerializerField
 from mayan.apps.templating.classes import AJAXTemplate
@@ -60,12 +62,11 @@ from .links.document_links import (
     link_document_preview, link_document_properties
 )
 from .links.document_file_links import (
-    link_document_file_cache_purge, link_document_file_delete,
-    link_document_file_download_quick, link_document_file_edit,
-    link_document_file_list, link_document_file_preview,
-    link_document_file_print_form, link_document_file_properties,
-    link_document_file_return_to_document, link_document_file_return_list,
-    link_document_file_transformations_clear,
+    link_document_file_delete, link_document_file_download_quick,
+    link_document_file_edit, link_document_file_list,
+    link_document_file_preview, link_document_file_print_form,
+    link_document_file_properties, link_document_file_return_to_document,
+    link_document_file_return_list, link_document_file_transformations_clear,
     link_document_file_multiple_transformations_clear,
     link_document_file_transformations_clone
 )
@@ -92,11 +93,10 @@ from .links.document_type_links import (
     link_document_type_setup
 )
 from .links.document_version_links import (
-    link_document_version_active, link_document_version_cache_purge,
-    link_document_version_create, link_document_version_delete,
-    link_document_version_edit, link_document_version_export,
-    link_document_version_list, link_document_version_multiple_delete,
-    link_document_version_return_list,
+    link_document_version_active, link_document_version_create,
+    link_document_version_delete, link_document_version_edit,
+    link_document_version_export, link_document_version_list,
+    link_document_version_multiple_delete, link_document_version_return_list,
     link_document_version_return_to_document, link_document_version_preview,
     link_document_version_print_form,
     link_document_version_transformations_clear,
@@ -368,17 +368,19 @@ class DocumentsApp(MayanAppConfig):
         ModelPermission.register(
             model=Document, permissions=(
                 permission_acl_edit, permission_acl_view,
-                permission_trashed_document_delete, permission_document_edit,
-                permission_document_file_new,
+                permission_document_edit, permission_document_file_new,
                 permission_document_properties_edit,
-                permission_trashed_document_restore, permission_document_tools,
+                permission_document_tools,
                 permission_document_trash, permission_document_view,
                 permission_document_version_create, permission_events_view,
+                permission_trashed_document_delete,
+                permission_trashed_document_restore,
             )
         )
         ModelPermission.register(
             model=DocumentFile, permissions=(
                 permission_acl_edit, permission_acl_view,
+                permission_cache_partition_purge,
                 permission_document_file_delete,
                 permission_document_file_download,
                 permission_document_file_edit,
@@ -402,6 +404,7 @@ class DocumentsApp(MayanAppConfig):
         ModelPermission.register(
             model=DocumentVersion, permissions=(
                 permission_acl_edit, permission_acl_view,
+                permission_cache_partition_purge,
                 permission_document_version_delete,
                 permission_document_version_edit,
                 permission_document_version_export,
@@ -728,7 +731,7 @@ class DocumentsApp(MayanAppConfig):
         )
         menu_object.bind_links(
             links=(
-                link_document_file_cache_purge,
+                link_cache_partition_purge,
                 link_document_file_delete,
                 link_document_file_download_quick,
                 link_document_file_edit,
@@ -841,7 +844,7 @@ class DocumentsApp(MayanAppConfig):
         menu_object.bind_links(
             links=(
                 link_document_version_active,
-                link_document_version_cache_purge,
+                link_cache_partition_purge,
                 link_document_version_delete, link_document_version_edit,
                 link_document_version_export,
                 link_document_version_page_list_remap,

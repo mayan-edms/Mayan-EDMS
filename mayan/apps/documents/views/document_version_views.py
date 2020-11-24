@@ -10,7 +10,6 @@ from mayan.apps.converter.layers import layer_saved_transformations
 from mayan.apps.converter.permissions import (
     permission_transformation_delete, permission_transformation_edit
 )
-from mayan.apps.file_caching.tasks import task_cache_partition_purge
 from mayan.apps.views.generics import (
     ConfirmView, FormView, MultipleObjectConfirmActionView,
     MultipleObjectDeleteView, SingleObjectCreateView, SingleObjectDetailView,
@@ -41,43 +40,6 @@ __all__ = (
     'DocumentVersionPreviewView'
 )
 logger = logging.getLogger(name=__name__)
-
-
-class DocumentVersionCachePartitionPurgeView(MultipleObjectConfirmActionView):
-    model = DocumentVersion
-    #object_permission = permission_cache_purge
-    pk_url_kwarg = 'document_version_id'
-    success_message_singular = '%(count)d document version submitted for cache purging.'
-    success_message_plural = '%(count)d document versions submitted for cache purging.'
-
-    def get_extra_context(self):
-        result = {
-            'title': ungettext(
-                singular='Submit the selected document version for cache purging?',
-                plural='Submit the selected document versions for cache purging?',
-                number=self.object_list.count()
-            )
-        }
-
-        if self.object_list.count() == 1:
-            result['object'] = self.object_list.first()
-
-        return result
-
-    def object_action(self, form, instance):
-        task_cache_partition_purge.apply_async(
-            kwargs={
-                'cache_partition_id': instance.cache_partition.pk,
-                #'user_id': self.request.user.pk
-            }
-        )
-        for page in instance.pages.all():
-            task_cache_partition_purge.apply_async(
-                kwargs={
-                    'cache_partition_id': page.cache_partition.pk,
-                    #'user_id': self.request.user.pk
-                }
-            )
 
 
 class DocumentVersionActiveView(ExternalObjectMixin, ConfirmView):

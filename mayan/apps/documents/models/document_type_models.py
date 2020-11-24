@@ -213,7 +213,7 @@ class DocumentTypeFilename(ModelInstanceExtraDataAPIViewMixin, models.Model):
     @method_event(
         event_manager_class=EventManagerMethodAfter,
         event=event_document_type_quick_label_deleted,
-        action_object='document_type',
+        target='document_type',
     )
     def delete(self, *args, **kwargs):
         return super().delete(*args, **kwargs)

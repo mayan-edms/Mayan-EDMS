@@ -144,6 +144,19 @@ class ContentTypeCheckTestCaseMixin:
         self.client = CustomClient()
 
 
+class ContentTypeTestCaseMixin:
+    def _inject_test_object_content_type(self):
+        self.test_object_content_type = ContentType.objects.get_for_model(
+            model=self.test_object
+        )
+
+        self.test_object_view_kwargs = {
+            'app_label': self.test_object_content_type.app_label,
+            'model_name': self.test_object_content_type.model,
+            'object_id': self.test_object.pk
+        }
+
+
 class DownloadTestCaseMixin:
     def assert_download_response(
         self, response, content=None, filename=None, is_attachment=None,
@@ -421,7 +434,7 @@ class TempfileCheckTestCasekMixin:
         super().tearDown()
 
 
-class TestModelTestMixin(PermissionTestMixin):
+class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
     _test_models = []
     auto_create_test_object = False
     auto_create_test_object_fields = None
@@ -550,17 +563,6 @@ class TestModelTestMixin(PermissionTestMixin):
 
                 return instance.save_base(force_insert=True)
         return save
-
-    def _inject_test_object_content_type(self):
-        self.test_object_content_type = ContentType.objects.get_for_model(
-            model=self.test_object
-        )
-
-        self.test_object_view_kwargs = {
-            'app_label': self.test_object_content_type.app_label,
-            'model_name': self.test_object_content_type.model,
-            'object_id': self.test_object.pk
-        }
 
 
 class TestServerTestCaseMixin:

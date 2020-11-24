@@ -5,6 +5,10 @@ from mayan.apps.converter.permissions import (
 from mayan.apps.converter.tests.mixins import LayerTestMixin
 from mayan.apps.documents.tests.literals import TEST_MULTI_PAGE_TIFF
 from mayan.apps.events.tests.mixins import EventTestCaseMixin
+from mayan.apps.file_caching.models import CachePartitionFile
+from mayan.apps.file_caching.permissions import permission_cache_partition_purge
+from mayan.apps.file_caching.tests.mixins import CachePartitionViewTestMixin
+from mayan.apps.testing.tests.mixins import ContentTypeTestCaseMixin
 
 from ..events import event_document_file_downloaded
 from ..permissions import (
@@ -303,4 +307,55 @@ class DocumentFileTransformationViewTestCase(
             layer_saved_transformations.get_transformations_for(
                 obj=self.test_document_file.pages.last()
             ).count(), page_last_transformation_count + 1
+        )
+
+class DocumentFileCachePurgeViewTestCase(
+    CachePartitionViewTestMixin, ContentTypeTestCaseMixin,
+    GenericDocumentViewTestCase
+):
+    def test_document_file_cache_purge_no_permission(self):
+        self.test_object = self.test_document_file
+        self._inject_test_object_content_type()
+
+        self.test_document_file.file_pages.first().generate_image()
+
+        test_document_file_cache_partitions = self.test_document_file.get_cache_partitions()
+
+        cache_partition_file_count = CachePartitionFile.objects.filter(
+            partition__in=test_document_file_cache_partitions
+        ).count()
+
+        response = self._request_test_object_file_cache_partition_purge_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertEqual(
+            CachePartitionFile.objects.filter(
+                partition__in=test_document_file_cache_partitions
+            ).count(), cache_partition_file_count
+        )
+
+    def test_document_file_cache_purge_with_access(self):
+        self.test_object = self.test_document_file
+        self._inject_test_object_content_type()
+
+        self.grant_access(
+            obj=self.test_document_file,
+            permission=permission_cache_partition_purge
+        )
+
+        self.test_document_file.file_pages.first().generate_image()
+
+        test_document_file_cache_partitions = self.test_document_file.get_cache_partitions()
+
+        cache_partition_file_count = CachePartitionFile.objects.filter(
+            partition__in=test_document_file_cache_partitions
+        ).count()
+
+        response = self._request_test_object_file_cache_partition_purge_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertNotEqual(
+            CachePartitionFile.objects.filter(
+                partition__in=test_document_file_cache_partitions
+            ).count(), cache_partition_file_count
         )

@@ -95,7 +95,7 @@ class DocumentVersion(ModelInstanceExtraDataAPIViewMixin, models.Model):
     @method_event(
         event_manager_class=EventManagerMethodAfter,
         event=event_document_version_deleted,
-        action_object='document',
+        target='document',
     )
     def delete(self, *args, **kwargs):
         for page in self.pages.all():
@@ -123,6 +123,13 @@ class DocumentVersion(ModelInstanceExtraDataAPIViewMixin, models.Model):
         first_page = self.pages.first()
         if first_page:
             return first_page.get_api_image_url(*args, **kwargs)
+
+    def get_cache_partitions(self):
+        result = [self.cache_partition]
+        for page in self.version_pages.all():
+            result.append(page.cache_partition)
+
+        return result
 
     def get_label(self, preserve_extension=False):
         if preserve_extension:

@@ -1,12 +1,17 @@
+from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext
 
 from mayan.apps.views.generics import (
-    MultipleObjectConfirmActionView, SingleObjectListView
+    ConfirmView, MultipleObjectConfirmActionView, SingleObjectListView
 )
+from mayan.apps.views.mixins import ContentTypeViewMixin, ExternalObjectMixin
 
 from .models import Cache, CachePartition
-from .permissions import permission_cache_purge, permission_cache_view
+from .permissions import (
+    permission_cache_partition_purge, permission_cache_purge,
+    permission_cache_view
+)
 
 from .tasks import task_cache_partition_purge, task_cache_purge
 
@@ -20,6 +25,37 @@ class CacheListView(SingleObjectListView):
             'hide_object': True,
             'title': _('File caches list')
         }
+
+
+class CachePartitionPurgeView(
+    ContentTypeViewMixin, ExternalObjectMixin, ConfirmView
+):
+    external_object_permission = permission_cache_partition_purge
+    external_object_pk_url_kwarg = 'object_id'
+
+    def get_external_object_queryset(self):
+        return self.get_content_type().get_all_objects_for_this_type()
+
+    def get_extra_context(self):
+        return {
+            'object': self.external_object,
+            'title': _('Purge cache partition for "%s"?') % self.external_object
+        }
+
+    def view_action(self, form=None):
+        for cache_partition in self.external_object.get_cache_partitions():
+            task_cache_partition_purge.apply_async(
+                kwargs={
+                    'cache_partition_id': cache_partition.pk,
+                    'user_id': self.request.user.pk
+                }
+            )
+
+        messages.success(
+            message=_(
+                'Object cache submitted for purging.'
+            ), request=self.request
+        )
 
 
 class CachePurgeView(MultipleObjectConfirmActionView):

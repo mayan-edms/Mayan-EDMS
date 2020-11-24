@@ -308,6 +308,7 @@ class DocumentTypeQuickLabelAPIViewTestCase(
         event = self._get_test_object_event()
         self.assertEqual(event.action_object, self.test_document_type)
         self.assertEqual(event.actor, self._test_case_user)
+        self.assertEqual(event.target, self.test_document_type_quick_label)
         self.assertEqual(
             event.verb, event_document_type_quick_label_created.id
         )
@@ -351,8 +352,8 @@ class DocumentTypeQuickLabelAPIViewTestCase(
         )
 
         event = self._get_test_object_event()
-        self.assertEqual(event.action_object, self.test_document_type)
         self.assertEqual(event.actor, self._test_case_user)
+        self.assertEqual(event.target, self.test_document_type)
         self.assertEqual(event.verb, event_document_type_quick_label_deleted.id)
 
     def test_document_type_quick_label_detail_api_view_no_permission(self):
@@ -429,6 +430,7 @@ class DocumentTypeQuickLabelAPIViewTestCase(
         event = self._get_test_object_event()
         self.assertEqual(event.action_object, self.test_document_type)
         self.assertEqual(event.actor, self._test_case_user)
+        self.assertEqual(event.target, self.test_document_type_quick_label)
         self.assertEqual(event.verb, event_document_type_quick_label_edited.id)
 
     def test_document_type_quick_label_edit_via_put_api_view_no_permission(self):
@@ -474,6 +476,7 @@ class DocumentTypeQuickLabelAPIViewTestCase(
         event = self._get_test_object_event()
         self.assertEqual(event.action_object, self.test_document_type)
         self.assertEqual(event.actor, self._test_case_user)
+        self.assertEqual(event.target, self.test_document_type_quick_label)
         self.assertEqual(event.verb, event_document_type_quick_label_edited.id)
 
     def test_document_type_quick_label_list_api_view_no_permission(self):

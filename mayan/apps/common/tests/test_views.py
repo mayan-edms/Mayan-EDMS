@@ -1,7 +1,7 @@
 from django.db import models
 
 from mayan.apps.testing.tests.base import GenericViewTestCase
-from mayan.apps.testing.tests.mixins import TestModelTestMixin
+from mayan.apps.testing.tests.mixins import TestModelTestCaseMixin
 
 from ..classes import ModelCopy
 from ..permissions import permission_object_copy
@@ -17,7 +17,7 @@ class CommonViewTestCase(CommonViewTestMixin, GenericViewTestCase):
 
 
 class ObjectCopyViewTestCase(
-    ObjectCopyViewTestMixin, TestModelTestMixin, GenericViewTestCase
+    ObjectCopyViewTestMixin, TestModelTestCaseMixin, GenericViewTestCase
 ):
     auto_create_test_object = True
     auto_create_test_object_fields = {

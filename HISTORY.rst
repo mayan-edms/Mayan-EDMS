@@ -81,3 +81,7 @@
 - Add full label for search parent fields.
 - Add events for the document type quick label model.
 - Add dedicated API endpoints for the document type quick label model.
+- Update the file cache partition purge view to be a generic view that can
+  be called using the content type of an object. Adds a new file cache
+  partition purge permission.
+- Added ContentTypeTestCaseMixin.

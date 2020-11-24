@@ -1,4 +1,8 @@
+from mayan.apps.file_caching.models import CachePartitionFile
+from mayan.apps.file_caching.permissions import permission_cache_partition_purge
+from mayan.apps.file_caching.tests.mixins import CachePartitionViewTestMixin
 from mayan.apps.storage.models import DownloadFile
+from mayan.apps.testing.tests.mixins import ContentTypeTestCaseMixin
 
 from ..permissions import (
     permission_document_version_edit, permission_document_version_export,
@@ -153,3 +157,55 @@ class DocumentVersionViewTestCase(
 
         response = self._request_test_document_version_print_view()
         self.assertEqual(response.status_code, 200)
+
+
+class DocumentVersionCachePurgeViewTestCase(
+    CachePartitionViewTestMixin, ContentTypeTestCaseMixin,
+    GenericDocumentViewTestCase
+):
+    def test_document_version_cache_purge_no_permission(self):
+        self.test_object = self.test_document_version
+        self._inject_test_object_content_type()
+
+        self.test_document_version.version_pages.first().generate_image()
+
+        test_document_version_cache_partitions = self.test_document_version.get_cache_partitions()
+
+        cache_partition_version_count = CachePartitionFile.objects.filter(
+            partition__in=test_document_version_cache_partitions
+        ).count()
+
+        response = self._request_test_object_file_cache_partition_purge_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertEqual(
+            CachePartitionFile.objects.filter(
+                partition__in=test_document_version_cache_partitions
+            ).count(), cache_partition_version_count
+        )
+
+    def test_document_version_cache_purge_with_access(self):
+        self.test_object = self.test_document_version
+        self._inject_test_object_content_type()
+
+        self.grant_access(
+            obj=self.test_document_version,
+            permission=permission_cache_partition_purge
+        )
+
+        self.test_document_version.version_pages.first().generate_image()
+
+        test_document_version_cache_partitions = self.test_document_version.get_cache_partitions()
+
+        cache_partition_version_count = CachePartitionFile.objects.filter(
+            partition__in=test_document_version_cache_partitions
+        ).count()
+
+        response = self._request_test_object_file_cache_partition_purge_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertNotEqual(
+            CachePartitionFile.objects.filter(
+                partition__in=test_document_version_cache_partitions
+            ).count(), cache_partition_version_count
+        )
