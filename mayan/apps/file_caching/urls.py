@@ -19,5 +19,3 @@ urlpatterns = [
         name='cache_partitions_purge', view=CachePartitionPurgeView.as_view()
     ),
 ]
-
-

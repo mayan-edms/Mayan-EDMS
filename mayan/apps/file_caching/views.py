@@ -7,7 +7,7 @@ from mayan.apps.views.generics import (
 )
 from mayan.apps.views.mixins import ContentTypeViewMixin, ExternalObjectMixin
 
-from .models import Cache, CachePartition
+from .models import Cache
 from .permissions import (
     permission_cache_partition_purge, permission_cache_purge,
     permission_cache_view
@@ -39,7 +39,7 @@ class CachePartitionPurgeView(
     def get_extra_context(self):
         return {
             'object': self.external_object,
-            'title': _('Purge cache partition for "%s"?') % self.external_object
+            'title': _('Purge cache partitions of "%s"?') % self.external_object
         }
 
     def view_action(self, form=None):
@@ -53,7 +53,7 @@ class CachePartitionPurgeView(
 
         messages.success(
             message=_(
-                'Object cache submitted for purging.'
+                'Object cache partitions submitted for purging.'
             ), request=self.request
         )
 
