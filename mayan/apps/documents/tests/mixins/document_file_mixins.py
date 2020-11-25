@@ -1,8 +1,11 @@
 import time
 
+from django.db.models import Q
+
 from mayan.apps.converter.layers import layer_saved_transformations
 
 from ...literals import PAGE_RANGE_ALL
+from ...models.document_file_models import DocumentFile
 
 from ..literals import (
     TEST_DOCUMENT_FILE_COMMENT, TEST_DOCUMENT_FILE_COMMENT_EDITED,

@@ -1,4 +1,3 @@
-from mayan.apps.events.tests.mixins import EventTestCaseMixin
 from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..events import event_workflow_edited
@@ -12,8 +11,7 @@ from .mixins import WorkflowStateViewTestMixin, WorkflowTestMixin
 
 
 class WorkflowStateViewTestCase(
-    EventTestCaseMixin, WorkflowTestMixin, WorkflowStateViewTestMixin,
-    GenericViewTestCase
+    WorkflowTestMixin, WorkflowStateViewTestMixin, GenericViewTestCase
 ):
     _test_event_object_name = 'test_workflow'
 

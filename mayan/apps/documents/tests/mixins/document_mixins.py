@@ -139,9 +139,10 @@ class DocumentTestMixin:
         self.test_document = document
         self.test_documents.append(document)
 
-        self.test_document_file_page = document_file.pages.first()
         self.test_document_file = document_file
+        self.test_document_file_page = document_file.file_pages.first()
         self.test_document_version = self.test_document.version_active
+        self.test_document_version_page = self.test_document_version.version_pages.first()
 
     def _upload_test_document_file(self, action=None, _user=None):
         self._calculate_test_document_file_path()

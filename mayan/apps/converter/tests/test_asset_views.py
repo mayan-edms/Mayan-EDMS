@@ -1,4 +1,3 @@
-from mayan.apps.events.tests.mixins import EventTestCaseMixin
 from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from .mixins import AssetTestMixin, AssetViewTestMixin
@@ -12,7 +11,7 @@ from ..permissions import (
 
 
 class AssetViewTestCase(
-    AssetTestMixin, AssetViewTestMixin, EventTestCaseMixin, GenericViewTestCase
+    AssetTestMixin, AssetViewTestMixin, GenericViewTestCase
 ):
     _test_event_object_name = 'test_asset'
 

@@ -1,7 +1,6 @@
 from rest_framework import status
 
 from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
-from mayan.apps.events.tests.mixins import EventTestCaseMixin
 from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
 from ..events import (
@@ -19,7 +18,7 @@ from .mixins import CommentAPIViewTestMixin, DocumentCommentTestMixin
 
 class CommentAPIViewTestCase(
     CommentAPIViewTestMixin, DocumentCommentTestMixin, DocumentTestMixin,
-    EventTestCaseMixin, BaseAPITestCase
+    BaseAPITestCase
 ):
     _test_event_object_name = 'test_document_comment'
 

@@ -4,7 +4,6 @@ from mayan.apps.converter.permissions import (
 )
 from mayan.apps.converter.tests.mixins import LayerTestMixin
 from mayan.apps.documents.tests.literals import TEST_MULTI_PAGE_TIFF
-from mayan.apps.events.tests.mixins import EventTestCaseMixin
 from mayan.apps.file_caching.models import CachePartitionFile
 from mayan.apps.file_caching.permissions import permission_cache_partition_purge
 from mayan.apps.file_caching.tests.mixins import CachePartitionViewTestMixin
@@ -133,7 +132,7 @@ class DocumentFileViewTestCase(
 
 
 class DocumentFileDownloadViewTestCase(
-    DocumentFileViewTestMixin, EventTestCaseMixin, GenericDocumentViewTestCase
+    DocumentFileViewTestMixin, GenericDocumentViewTestCase
 ):
     _test_event_object_name = 'test_document_file'
 

@@ -1,5 +1,6 @@
 from rest_framework import serializers
 
+from mayan.apps.common.serializers import ContentTypeSerializer
 from mayan.apps.rest_api.relations import MultiKwargHyperlinkedIdentityField
 
 from ..models.document_version_models import DocumentVersion
@@ -53,13 +54,15 @@ class DocumentVersionSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         fields = (
-            'comment', 'document_url', 'export_url', 'id', 'pages_url',
-            'timestamp', 'url'
+            'active', 'comment', 'document_url', 'export_url', 'id',
+            'pages_url', 'timestamp', 'url'
         )
         model = DocumentVersion
 
 
 class DocumentVersionPageSerializer(serializers.HyperlinkedModelSerializer):
+    content_type = ContentTypeSerializer(read_only=True)
+    content_type_id = serializers.IntegerField(write_only=True)
     document_version_url = MultiKwargHyperlinkedIdentityField(
         view_kwargs=(
             {
@@ -107,7 +110,9 @@ class DocumentVersionPageSerializer(serializers.HyperlinkedModelSerializer):
         ),
         view_name='rest_api:documentversionpage-detail'
     )
-
     class Meta:
-        fields = ('document_version_url', 'image_url', 'page_number', 'url')
+        fields = (
+            'content_type', 'content_type_id', 'document_version_url',
+            'image_url', 'object_id', 'page_number', 'url'
+        )
         model = DocumentVersionPage

@@ -44,10 +44,13 @@ from .events import (
     event_document_create, event_document_file_deleted,
     event_document_file_downloaded, event_document_file_new,
     event_document_properties_edit, event_document_type_changed,
-    event_document_type_edited, event_document_type_quick_label_deleted,
+    event_document_type_edited, event_document_type_quick_label_created,
+    event_document_type_quick_label_deleted,
     event_document_type_quick_label_edited,
     event_document_version_created, event_document_version_deleted,
-    event_document_version_edited, event_document_viewed
+    event_document_version_edited, event_document_version_page_created,
+    event_document_version_page_deleted, event_document_version_page_edited,
+    event_document_viewed
 )
 from .handlers import (
     handler_create_default_document_type,
@@ -294,6 +297,7 @@ class DocumentsApp(MayanAppConfig):
             model=DocumentType, event_types=(
                 event_document_create,
                 event_document_type_edited,
+                event_document_type_quick_label_created
             )
         )
         ModelEventType.register(
@@ -305,12 +309,14 @@ class DocumentsApp(MayanAppConfig):
         ModelEventType.register(
             model=DocumentVersion, event_types=(
                 event_document_version_created,
-                event_document_version_edited
+                event_document_version_edited,
+                event_document_version_page_created
             )
         )
         ModelEventType.register(
             model=DocumentVersionPage, event_types=(
-                event_document_version_edited,
+                event_document_version_page_deleted,
+                event_document_version_page_edited
             )
         )
 
@@ -424,13 +430,13 @@ class DocumentsApp(MayanAppConfig):
             model=DocumentFile, related='document',
         )
         ModelPermission.register_inheritance(
-            model=DocumentFilePage, related='document_file__document',
+            model=DocumentFilePage, related='document_file',
         )
         ModelPermission.register_inheritance(
             model=DocumentVersion, related='document',
         )
         ModelPermission.register_inheritance(
-            model=DocumentVersionPage, related='document_version__document',
+            model=DocumentVersionPage, related='document_version',
         )
         ModelPermission.register_inheritance(
             model=DocumentTypeFilename, related='document_type',

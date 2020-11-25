@@ -4,7 +4,6 @@ from rest_framework import status
 
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
-from mayan.apps.events.tests.mixins import EventTestCaseMixin
 from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
 from ..events import (
@@ -19,9 +18,7 @@ from ..permissions import (
 from .mixins import TagAPIViewTestMixin, TagTestMixin
 
 
-class TagAPIViewTestCase(
-    EventTestCaseMixin, TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase
-):
+class TagAPIViewTestCase(TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase):
     _test_event_object_name = 'test_tag'
 
     def test_tag_create_view_no_permission(self):
@@ -176,8 +173,7 @@ class TagAPIViewTestCase(
 
 
 class TagDocumentAPIViewTestCase(
-    DocumentTestMixin, EventTestCaseMixin, TagAPIViewTestMixin, TagTestMixin,
-    BaseAPITestCase
+    DocumentTestMixin, TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase
 ):
     _test_event_object_name = 'test_tag'
     auto_upload_test_document = False

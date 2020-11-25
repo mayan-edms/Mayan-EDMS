@@ -5,7 +5,6 @@ from selenium.common.exceptions import NoAlertPresentException
 from django.conf import settings
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 
-from mayan.apps.events.tests.mixins import EventTestCaseMixin
 from mayan.apps.testing.tests.base import GenericViewTestCase
 from mayan.apps.testing.tests.mixins import SeleniumTestMixin
 
@@ -46,7 +45,7 @@ class BasePlainViewTestCase(
 
 
 class ThemeViewTestCase(
-    EventTestCaseMixin, ThemeTestMixin, ThemeViewTestMixin, GenericViewTestCase
+    ThemeTestMixin, ThemeViewTestMixin, GenericViewTestCase
 ):
     _test_event_object_name = 'test_theme'
 

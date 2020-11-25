@@ -56,7 +56,7 @@ event_document_type_changed = namespace.add_event_type(
     label=_('Document type changed'), name='document_type_change'
 )
 
-# Document Version
+# Document version
 
 event_document_version_created = namespace.add_event_type(
     label=_('Document version created'), name='document_version_created'
@@ -66,6 +66,21 @@ event_document_version_deleted = namespace.add_event_type(
 )
 event_document_version_edited = namespace.add_event_type(
     label=_('Document version edited'), name='document_version_edited'
+)
+
+# Document version page
+
+event_document_version_page_created = namespace.add_event_type(
+    label=_('Document version page created'),
+    name='document_version_page_created'
+)
+event_document_version_page_deleted = namespace.add_event_type(
+    label=_('Document version page deleted'),
+    name='document_version_page_deleted'
+)
+event_document_version_page_edited = namespace.add_event_type(
+    label=_('Document version page edited'),
+    name='document_version_page_edited'
 )
 
 # Trashed document

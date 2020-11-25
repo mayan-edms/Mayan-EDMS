@@ -1,6 +1,5 @@
 from rest_framework import status
 
-from mayan.apps.events.tests.mixins import EventTestCaseMixin
 from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
 from ..events import (
@@ -26,8 +25,7 @@ from .mixins.document_type_mixins import (
 
 
 class DocumentTypeAPIViewTestCase(
-    DocumentTypeAPIViewTestMixin, DocumentTestMixin, EventTestCaseMixin,
-    BaseAPITestCase
+    DocumentTypeAPIViewTestMixin, DocumentTestMixin, BaseAPITestCase
 ):
     _test_event_object_name = 'test_document_type'
     auto_upload_test_document = False
@@ -262,8 +260,7 @@ class DocumentTypeAPIViewTestCase(
 
 class DocumentTypeQuickLabelAPIViewTestCase(
     DocumentTestMixin, DocumentTypeQuickLabelTestMixin,
-    DocumentTypeQuickLabelAPIViewTestMixin, EventTestCaseMixin,
-    BaseAPITestCase
+    DocumentTypeQuickLabelAPIViewTestMixin, BaseAPITestCase
 ):
     _test_event_object_name = 'test_document_type_quick_label'
     auto_upload_test_document = False
@@ -328,7 +325,7 @@ class DocumentTypeQuickLabelAPIViewTestCase(
             document_type_quick_label_count
         )
 
-        event = self._get_test_object_event()
+        event = self._get_test_object_event(object_name='test_document_type')
         self.assertEqual(event, None)
 
     def test_document_type_quick_label_delete_api_view_with_access(self):
@@ -351,7 +348,7 @@ class DocumentTypeQuickLabelAPIViewTestCase(
             document_type_quick_label_count - 1
         )
 
-        event = self._get_test_object_event()
+        event = self._get_test_object_event(object_name='test_document_type')
         self.assertEqual(event.actor, self._test_case_user)
         self.assertEqual(event.target, self.test_document_type)
         self.assertEqual(event.verb, event_document_type_quick_label_deleted.id)

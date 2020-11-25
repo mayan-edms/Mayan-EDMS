@@ -85,3 +85,4 @@
   be called using the content type of an object. Adds a new file cache
   partition purge permission.
 - Added ContentTypeTestCaseMixin.
+- Include EventTestCaseMixin as part of the base test case mixin.

@@ -48,6 +48,11 @@ class APIDocumentVersionDetailView(
     }
     serializer_class = DocumentVersionSerializer
 
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user,
+        }
+
     def get_queryset(self):
         return self.get_document().versions.all()
 
@@ -87,46 +92,46 @@ class APIDocumentVersionListView(
     serializer_class = DocumentVersionSerializer
 
     def get_instance_extra_data(self):
+        # This method is only called during POST, therefore filter only by
+        # edit permission.
         return {
             '_event_actor': self.request.user,
-            'document': self.get_document()
+            'document': self.get_document(
+                permission=permission_document_version_create
+            )
         }
 
     def get_queryset(self):
-        if self.request.method == 'GET':
-            permission = permission_document_version_view
-        else:
-            permission = permission_document_version_create
-
-        return self.get_document(permission=permission).versions.all()
+        # This method is only called during GET, therefore filter only by
+        # the view permission.
+        return self.get_document(
+            permission=permission_document_version_view
+        ).versions.all()
 
 
 class APIDocumentVersionPageDetailView(
-    ParentObjectDocumentVersionAPIViewMixin, generics.RetrieveAPIView
+    ParentObjectDocumentVersionAPIViewMixin,
+    generics.RetrieveUpdateDestroyAPIView
 ):
     """
-    get: Returns the selected document page details.
+    delete: Delete the selected document version page.
+    get: Returns the selected document version page details.
+    patch: Edit the properties of the selected document version page.
+    put: Edit the properties of the selected document version page.
     """
     lookup_url_kwarg = 'document_version_page_id'
-    serializer_class = DocumentVersionPageSerializer
     mayan_object_permissions = {
+        'DELETE': (permission_document_version_edit,),
         'GET': (permission_document_version_view,),
-    }
-
-    def get_queryset(self):
-        return self.get_document_version().pages.all()
-
-
-class APIDocumentVersionPageListView(
-    ParentObjectDocumentVersionAPIViewMixin, generics.ListAPIView
-):
-    """
-    get: Returns an list of the pages for the selected document version.
-    """
-    mayan_object_permissions = {
-        'GET': (permission_document_version_view,),
+        'PATCH': (permission_document_version_edit,),
+        'PUT': (permission_document_version_edit,)
     }
     serializer_class = DocumentVersionPageSerializer
+
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user
+        }
 
     def get_queryset(self):
         return self.get_document_version().pages.all()
@@ -196,3 +201,31 @@ class APIDocumentVersionPageImageView(
                     max_age=setting_document_version_page_image_cache_time.value
                 )
             return response
+
+
+class APIDocumentVersionPageListView(
+    ParentObjectDocumentVersionAPIViewMixin, generics.ListCreateAPIView
+):
+    """
+    get: Returns an list of the pages for the selected document version.
+    post: Create a new document version page.
+    """
+    lookup_url_kwarg = 'document_version_page_id'
+    serializer_class = DocumentVersionPageSerializer
+
+    def get_instance_extra_data(self):
+        # This method is only called during POST, therefore filter only by
+        # edit permission.
+        return {
+            '_event_actor': self.request.user,
+            'document_version': self.get_document_version(
+                permission=permission_document_version_edit
+            )
+        }
+
+    def get_queryset(self):
+        # This method is only called during GET, therefore filter only by
+        # the view permission.
+        return self.get_document_version(
+            permission=permission_document_version_view
+        ).pages.all()

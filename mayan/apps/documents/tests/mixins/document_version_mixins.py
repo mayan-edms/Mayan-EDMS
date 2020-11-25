@@ -1,6 +1,11 @@
+from django.contrib.contenttypes.models import ContentType
+from django.db.models import Q
+
 from mayan.apps.converter.layers import layer_saved_transformations
 
 from ...literals import PAGE_RANGE_ALL
+from ...models.document_version_models import DocumentVersion
+from ...models.document_version_page_models import DocumentVersionPage
 
 from ..literals import (
     TEST_DOCUMENT_VERSION_COMMENT_EDITED, TEST_TRANSFORMATION_ARGUMENT,
@@ -10,14 +15,33 @@ from ..literals import (
 
 class DocumentVersionAPIViewTestMixin:
     def _request_test_document_version_create_api_view(self):
-        return self.post(
+        pk_list = list(DocumentVersion.objects.values_list('pk', flat=True))
+
+        response = self.post(
             viewname='rest_api:documentversion-list', kwargs={
                 'document_id': self.test_document.pk
             }
         )
 
+        try:
+            self.test_document_version = DocumentVersion.objects.get(
+                ~Q(pk__in=pk_list)
+            )
+        except DocumentVersion.DoesNotExist:
+            self.test_document_version = None
+
+        return response
+
     def _request_test_document_version_delete_api_view(self):
         return self.delete(
+            viewname='rest_api:documentversion-detail', kwargs={
+                'document_id': self.test_document.pk,
+                'document_version_id': self.test_document.version_active.pk
+            }
+        )
+
+    def _request_test_document_version_detail_api_view(self):
+        return self.get(
             viewname='rest_api:documentversion-detail', kwargs={
                 'document_id': self.test_document.pk,
                 'document_version_id': self.test_document.version_active.pk
@@ -37,7 +61,10 @@ class DocumentVersionAPIViewTestMixin:
             viewname='rest_api:documentversion-detail', kwargs={
                 'document_id': self.test_document.pk,
                 'document_version_id': self.test_document.version_active.pk
-            }, data={'comment': TEST_DOCUMENT_VERSION_COMMENT_EDITED}
+            }, data={
+                'active': True,
+                'comment': TEST_DOCUMENT_VERSION_COMMENT_EDITED
+            }
         )
 
     def _request_test_document_version_export_api_view(self):
@@ -57,13 +84,65 @@ class DocumentVersionAPIViewTestMixin:
 
 
 class DocumentVersionPageAPIViewTestMixin:
+    def _request_test_document_version_page_create_api_view(self):
+        pk_list = list(DocumentVersionPage.objects.values_list('pk', flat=True))
+
+        content_type = ContentType.objects.get_for_model(
+            model=self.test_document_file_page
+        )
+
+        response = self.post(
+            viewname='rest_api:documentversionpage-list', kwargs={
+                'document_id': self.test_document.pk,
+                'document_version_id': self.test_document_version.pk
+            }, data={
+                'content_type_id': content_type.pk,
+                'object_id': self.test_document_file_page.pk,
+                'page_number': self.test_document_file_page.page_number + 2
+            }
+        )
+
+        try:
+            self.test_document_version_page = DocumentVersionPage.objects.get(
+                ~Q(pk__in=pk_list)
+            )
+        except DocumentVersionPage.DoesNotExist:
+            self.test_document_version_page = None
+
+        return response
+
+    def _request_test_document_version_page_delete_api_view(self):
+        return self.delete(
+            viewname='rest_api:documentversionpage-detail', kwargs={
+                'document_id': self.test_document.pk,
+                'document_version_id': self.test_document_version.pk,
+                'document_version_page_id': self.test_document_version_page.pk
+            }
+        )
+
+    def _request_test_document_version_page_detail_api_view(self):
+        return self.get(
+            viewname='rest_api:documentversionpage-detail', kwargs={
+                'document_id': self.test_document.pk,
+                'document_version_id': self.test_document_version.pk,
+                'document_version_page_id': self.test_document_version_page.pk
+            }
+        )
+
     def _request_test_document_version_page_image_api_view(self):
-        page = self.test_document.pages.first()
         return self.get(
             viewname='rest_api:documentversionpage-image', kwargs={
-                'document_id': page.document_version.document_id,
-                'document_version_id': page.document_version_id,
-                'document_version_page_id': page.pk
+                'document_id': self.test_document.pk,
+                'document_version_id': self.test_document_version.pk,
+                'document_version_page_id': self.test_document_version_page.pk
+            }
+        )
+
+    def _request_test_document_version_page_list_api_view(self):
+        return self.get(
+            viewname='rest_api:documentversionpage-list', kwargs={
+                'document_id': self.test_document.pk,
+                'document_version_id': self.test_document_version.pk,
             }
         )
 

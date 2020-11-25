@@ -1,4 +1,3 @@
-from mayan.apps.events.tests.mixins import EventTestCaseMixin
 from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..events import event_theme_created, event_theme_edited
@@ -6,7 +5,7 @@ from ..events import event_theme_created, event_theme_edited
 from .mixins import ThemeTestMixin
 
 
-class ThemeTestCase(EventTestCaseMixin, ThemeTestMixin, BaseTestCase):
+class ThemeTestCase(ThemeTestMixin, BaseTestCase):
     _test_event_object_name = 'test_theme'
 
     def test_theme_create(self):
