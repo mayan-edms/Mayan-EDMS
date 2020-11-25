@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-11 01:43+0000\n"
+"POT-Creation-Date: 2020-11-25 05:01+0000\n"
 "PO-Revision-Date: 2020-10-26 21:28+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
@@ -271,7 +271,7 @@ msgid ""
 msgstr "Número de página a partir do qual todas as transformações serão clonadas. Transformações existentes serão perdidas."
 
 #: forms/document_type_forms.py:73 models/document_models.py:64
-#: models/document_type_models.py:73 models/document_type_models.py:188
+#: models/document_type_models.py:73 models/document_type_models.py:190
 msgid "Document type"
 msgstr "Tipo de Documento"
 
@@ -351,7 +351,7 @@ msgstr "Editar"
 msgid "Add quick label to document type"
 msgstr "Adicionar etiqueta rápida ao tipo de documento"
 
-#: links/document_type_links.py:60 models/document_type_models.py:199
+#: links/document_type_links.py:60 models/document_type_models.py:201
 msgid "Quick labels"
 msgstr "Etiquetas rápidas"
 
@@ -492,7 +492,7 @@ msgid "The name of the document."
 msgstr "O nome do documento."
 
 #: models/document_models.py:68 models/document_page_models.py:272
-#: models/document_type_models.py:31 models/document_type_models.py:191
+#: models/document_type_models.py:31 models/document_type_models.py:193
 msgid "Label"
 msgstr "Rótulo"
 
@@ -550,7 +550,7 @@ msgstr "É um rascunho?"
 msgid "Document stub, id: %d"
 msgstr "Rascunho de documento, id: %d"
 
-#: models/document_page_models.py:41 models/document_type_models.py:193
+#: models/document_page_models.py:41 models/document_type_models.py:195
 msgid "Enabled"
 msgstr "Habilitado"
 
@@ -621,7 +621,7 @@ msgstr "Argumentos de backend do gerador de nome de arquivo"
 msgid "Documents types"
 msgstr "Tipos de Documentos"
 
-#: models/document_type_models.py:198
+#: models/document_type_models.py:200
 msgid "Quick label"
 msgstr "Rótulo rápido"
 

@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-11 01:44+0000\n"
+"POT-Creation-Date: 2020-11-25 05:02+0000\n"
 "PO-Revision-Date: 2020-10-11 07:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
@@ -215,48 +215,48 @@ msgstr "Activé"
 msgid "Source"
 msgstr "Source"
 
-#: models/base.py:151
+#: models/base.py:147
 msgid "Interactive source"
 msgstr "Source interactive"
 
-#: models/base.py:152
+#: models/base.py:148
 msgid "Interactive sources"
 msgstr "Sources interactives "
 
-#: models/base.py:161 models/base.py:162
+#: models/base.py:157 models/base.py:158
 msgid "Out of process"
 msgstr "Process externe"
 
-#: models/base.py:168
+#: models/base.py:164
 msgid "Interval in seconds between checks for new documents."
 msgstr "Intervalle en secondes entre recherches de nouveaux documents."
 
-#: models/base.py:169
+#: models/base.py:165
 msgid "Interval"
 msgstr "Intervalle"
 
-#: models/base.py:173
+#: models/base.py:169
 msgid "Assign a document type to documents uploaded from this source."
 msgstr "Assigner un type de document aux documents transférés à partir de cette source."
 
-#: models/base.py:175 serializers.py:17
+#: models/base.py:171 serializers.py:17
 msgid "Document type"
 msgstr "Type de document"
 
-#: models/base.py:179
+#: models/base.py:175
 msgid "Whether to expand or not, compressed archives."
 msgstr "Choisir de décompresser ou pas les archives compressées."
 
-#: models/base.py:180 models/staging_folder_sources.py:54
+#: models/base.py:176 models/staging_folder_sources.py:54
 #: models/webform_sources.py:34
 msgid "Uncompress"
 msgstr "Décompresser"
 
-#: models/base.py:186
+#: models/base.py:182
 msgid "Interval source"
 msgstr "intervalle pour la source"
 
-#: models/base.py:187
+#: models/base.py:183
 msgid "Interval sources"
 msgstr "intervalle pour les sources"
 
@@ -608,31 +608,31 @@ msgstr ""
 msgid "Staging folder files"
 msgstr ""
 
-#: templates/sources/dropzone.html:82
+#: templates/sources/app/foot.html:40
 msgid "Cancel upload"
 msgstr "Annuler le téléversement"
 
-#: templates/sources/dropzone.html:83
+#: templates/sources/app/foot.html:41
 msgid "Are you sure you want to cancel this upload?"
 msgstr "Êtes-vous sûr que vous voulez annuler ce téléversement?"
 
-#: templates/sources/dropzone.html:84
+#: templates/sources/app/foot.html:42
 msgid "Drop files or click here to upload files"
 msgstr "Déposez vos fichiers ou cliquez pour téléverser des fichiers."
 
-#: templates/sources/dropzone.html:85
+#: templates/sources/app/foot.html:43
 msgid "Your browser does not support drag and drop file uploads."
 msgstr "Votre navigateur ne prend pas en charge le téléversement de fichiers par glisser-déposer."
 
-#: templates/sources/dropzone.html:86
+#: templates/sources/app/foot.html:44
 msgid "Please use the fallback form below to upload your files."
 msgstr "Veuillez utiliser le formulaire alternatif ci-dessous pour téléverser vos fichiers."
 
-#: templates/sources/dropzone.html:87
+#: templates/sources/app/foot.html:45
 msgid "Clear"
 msgstr "Effacer"
 
-#: templates/sources/dropzone.html:88
+#: templates/sources/app/foot.html:46
 msgid "Server responded with {{statusCode}} code."
 msgstr "Le serveur a répondu avec le code {{statusCode}}."
 

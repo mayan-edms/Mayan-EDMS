@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-11 01:43+0000\n"
+"POT-Creation-Date: 2020-11-25 05:01+0000\n"
 "PO-Revision-Date: 2020-10-26 13:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
@@ -270,7 +270,7 @@ msgid ""
 msgstr "Numero della pagina dalla quale verranno clonate tutte le trasformazioni. Le trasformazioni esistenti andranno perse."
 
 #: forms/document_type_forms.py:73 models/document_models.py:64
-#: models/document_type_models.py:73 models/document_type_models.py:188
+#: models/document_type_models.py:73 models/document_type_models.py:190
 msgid "Document type"
 msgstr "Tipo documento "
 
@@ -350,7 +350,7 @@ msgstr "Modifica"
 msgid "Add quick label to document type"
 msgstr "Aggiungi un'etichetta rapida al tipo documento"
 
-#: links/document_type_links.py:60 models/document_type_models.py:199
+#: links/document_type_links.py:60 models/document_type_models.py:201
 msgid "Quick labels"
 msgstr "Etichette rapide"
 
@@ -491,7 +491,7 @@ msgid "The name of the document."
 msgstr "Il nome del documento."
 
 #: models/document_models.py:68 models/document_page_models.py:272
-#: models/document_type_models.py:31 models/document_type_models.py:191
+#: models/document_type_models.py:31 models/document_type_models.py:193
 msgid "Label"
 msgstr "Etichetta"
 
@@ -549,7 +549,7 @@ msgstr "Documento troncato?"
 msgid "Document stub, id: %d"
 msgstr "Documento troncato, ID: %d"
 
-#: models/document_page_models.py:41 models/document_type_models.py:193
+#: models/document_page_models.py:41 models/document_type_models.py:195
 msgid "Enabled"
 msgstr "Abilitato"
 
@@ -620,7 +620,7 @@ msgstr "Argomenti del backend del generatore di nomi di file"
 msgid "Documents types"
 msgstr "Tipi di documenti"
 
-#: models/document_type_models.py:198
+#: models/document_type_models.py:200
 msgid "Quick label"
 msgstr "Etichetta rapida"
 

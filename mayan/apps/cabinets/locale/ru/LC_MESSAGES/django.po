@@ -10,14 +10,15 @@
 # Daler Abdulloev <abdulloevdaler@gmail.com>, 2019
 # Sergey Glita <gsv70@mail.ru>, 2020
 # OLeg Si <olegsm35@gmail.com>, 2020
+# Alex Chigrin <chalex84@mail.ru>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-11 01:43+0000\n"
+"POT-Creation-Date: 2020-11-25 05:01+0000\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
-"Last-Translator: OLeg Si <olegsm35@gmail.com>, 2020\n"
+"Last-Translator: Alex Chigrin <chalex84@mail.ru>, 2020\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -163,23 +164,23 @@ msgstr ""
 
 #: search.py:31
 msgid "Document label"
-msgstr ""
+msgstr "Этикетка документа"
 
 #: search.py:34
 msgid "Document description"
-msgstr ""
+msgstr "Описание документа"
 
 #: search.py:37
 msgid "Document UUID"
-msgstr ""
+msgstr "UUID документа"
 
 #: search.py:41
 msgid "Document checksum"
-msgstr ""
+msgstr "Контрольная сумма документа"
 
 #: serializers.py:17
 msgid "List of children cabinets."
-msgstr ""
+msgstr "Список дочерних кабинетов."
 
 #: serializers.py:20
 msgid "Number of documents on this cabinet level."

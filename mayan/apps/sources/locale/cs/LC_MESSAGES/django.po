@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-11 01:44+0000\n"
+"POT-Creation-Date: 2020-11-25 05:02+0000\n"
 "PO-Revision-Date: 2020-10-11 07:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
@@ -209,48 +209,48 @@ msgstr "Povoleno"
 msgid "Source"
 msgstr "Zdroj"
 
-#: models/base.py:151
+#: models/base.py:147
 msgid "Interactive source"
 msgstr "Interaktivní zdroj"
 
-#: models/base.py:152
+#: models/base.py:148
 msgid "Interactive sources"
 msgstr "Interaktivní zdroje"
 
-#: models/base.py:161 models/base.py:162
+#: models/base.py:157 models/base.py:158
 msgid "Out of process"
 msgstr "Mimo proces"
 
-#: models/base.py:168
+#: models/base.py:164
 msgid "Interval in seconds between checks for new documents."
 msgstr "Interval v sekundách mezi kontrolami nových dokumentů."
 
-#: models/base.py:169
+#: models/base.py:165
 msgid "Interval"
 msgstr "Interval"
 
-#: models/base.py:173
+#: models/base.py:169
 msgid "Assign a document type to documents uploaded from this source."
 msgstr "Přiřaďte typ dokumentu k dokumentům nahraným z tohoto zdroje."
 
-#: models/base.py:175 serializers.py:17
+#: models/base.py:171 serializers.py:17
 msgid "Document type"
 msgstr "Typ dokumentu"
 
-#: models/base.py:179
+#: models/base.py:175
 msgid "Whether to expand or not, compressed archives."
 msgstr "Rozbalit nebo nerozbalit, komprimované archivy."
 
-#: models/base.py:180 models/staging_folder_sources.py:54
+#: models/base.py:176 models/staging_folder_sources.py:54
 #: models/webform_sources.py:34
 msgid "Uncompress"
 msgstr "Rozbalit"
 
-#: models/base.py:186
+#: models/base.py:182
 msgid "Interval source"
 msgstr "Interval zdroje"
 
-#: models/base.py:187
+#: models/base.py:183
 msgid "Interval sources"
 msgstr "Intervaly zdrojů"
 
@@ -602,31 +602,31 @@ msgstr "Nelze inicializovat úložiště obrazu souboru pracovní složky. Zkont
 msgid "Staging folder files"
 msgstr "Pracovní soubory složek"
 
-#: templates/sources/dropzone.html:82
+#: templates/sources/app/foot.html:40
 msgid "Cancel upload"
 msgstr "Zrušit nahrávání"
 
-#: templates/sources/dropzone.html:83
+#: templates/sources/app/foot.html:41
 msgid "Are you sure you want to cancel this upload?"
 msgstr "Opravdu chcete toto nahrávání zrušit?"
 
-#: templates/sources/dropzone.html:84
+#: templates/sources/app/foot.html:42
 msgid "Drop files or click here to upload files"
 msgstr "Přetáhněte soubory nebo kliknutím sem nahrajte soubory"
 
-#: templates/sources/dropzone.html:85
+#: templates/sources/app/foot.html:43
 msgid "Your browser does not support drag and drop file uploads."
 msgstr "Váš prohlížeč nepodporuje nahrávání drag and drop souborů."
 
-#: templates/sources/dropzone.html:86
+#: templates/sources/app/foot.html:44
 msgid "Please use the fallback form below to upload your files."
 msgstr "K nahrání souborů použijte záložní formulář níže."
 
-#: templates/sources/dropzone.html:87
+#: templates/sources/app/foot.html:45
 msgid "Clear"
 msgstr "Clear"
 
-#: templates/sources/dropzone.html:88
+#: templates/sources/app/foot.html:46
 msgid "Server responded with {{statusCode}} code."
 msgstr "Server odpověděl kódem {{statusCode}}."
 

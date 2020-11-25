@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-11 01:43+0000\n"
+"POT-Creation-Date: 2020-11-25 05:01+0000\n"
 "PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
@@ -70,60 +70,60 @@ msgstr "Den Übergang der Workflow-Instanz zurückgeben."
 msgid "Get last transition"
 msgstr "Letzten Übergang holen"
 
-#: apps.py:263 apps.py:273 apps.py:282 apps.py:288
+#: apps.py:263 apps.py:275 apps.py:284 apps.py:290
 msgid "None"
 msgstr "Keiner"
 
-#: apps.py:269
+#: apps.py:271
 msgid "Current state"
 msgstr "Aktueller Status"
 
-#: apps.py:274 apps.py:298 models.py:467
+#: apps.py:276 apps.py:300 models.py:467
 msgid "User"
 msgstr "Benutzer"
 
-#: apps.py:278
+#: apps.py:280
 msgid "Last transition"
 msgstr "Letzter Übergang"
 
-#: apps.py:283 apps.py:294
+#: apps.py:285 apps.py:296
 msgid "Date and time"
 msgstr "Datum und Zeit"
 
-#: apps.py:289 models.py:568
+#: apps.py:291 models.py:568
 msgid "Completion"
 msgstr "Fertigstellung"
 
-#: apps.py:319
+#: apps.py:321
 msgid "Additional details"
 msgstr "Zusätzliche Details"
 
-#: apps.py:346
+#: apps.py:348
 msgid "When?"
 msgstr "Wann"
 
-#: apps.py:350
+#: apps.py:352
 msgid "Action type"
 msgstr "Aktionstyp"
 
-#: apps.py:381
+#: apps.py:383
 msgid ""
 "Triggers are system events that will cause the transition to be applied."
 msgstr "Trigger sind Systemereignisse, die bewirken, dass der Übergang angewendet wird."
 
-#: apps.py:383
+#: apps.py:385
 msgid "Triggers"
 msgstr "Trigger"
 
-#: apps.py:397 models.py:866
+#: apps.py:399 models.py:866
 msgid "Type"
 msgstr "Typ"
 
-#: apps.py:405
+#: apps.py:407
 msgid "Widget"
 msgstr "Widget"
 
-#: apps.py:416 apps.py:422
+#: apps.py:418 apps.py:424
 msgid "Documents"
 msgstr "Dokumente"
 

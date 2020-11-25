@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-11 01:43+0000\n"
+"POT-Creation-Date: 2020-11-25 05:01+0000\n"
 "PO-Revision-Date: 2020-10-28 17:06+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -269,7 +269,7 @@ msgid ""
 msgstr "Numărul paginii din care vor fi clonate toate transformările. Transformările existente vor fi pierdute."
 
 #: forms/document_type_forms.py:73 models/document_models.py:64
-#: models/document_type_models.py:73 models/document_type_models.py:188
+#: models/document_type_models.py:73 models/document_type_models.py:190
 msgid "Document type"
 msgstr "Tip document"
 
@@ -349,7 +349,7 @@ msgstr "Editează"
 msgid "Add quick label to document type"
 msgstr "Adăugați etichetă rapidă la tipul de document"
 
-#: links/document_type_links.py:60 models/document_type_models.py:199
+#: links/document_type_links.py:60 models/document_type_models.py:201
 msgid "Quick labels"
 msgstr "Etichete rapide"
 
@@ -490,7 +490,7 @@ msgid "The name of the document."
 msgstr "Numele documentului."
 
 #: models/document_models.py:68 models/document_page_models.py:272
-#: models/document_type_models.py:31 models/document_type_models.py:191
+#: models/document_type_models.py:31 models/document_type_models.py:193
 msgid "Label"
 msgstr "Etichetă"
 
@@ -548,7 +548,7 @@ msgstr "Este stub?"
 msgid "Document stub, id: %d"
 msgstr "Stub document, id: %d"
 
-#: models/document_page_models.py:41 models/document_type_models.py:193
+#: models/document_page_models.py:41 models/document_type_models.py:195
 msgid "Enabled"
 msgstr "Activat"
 
@@ -619,7 +619,7 @@ msgstr "Parametri backend pentru generatorul de nume de fișiere"
 msgid "Documents types"
 msgstr "Tipuri de documente"
 
-#: models/document_type_models.py:198
+#: models/document_type_models.py:200
 msgid "Quick label"
 msgstr "Etichetă rapidă"
 

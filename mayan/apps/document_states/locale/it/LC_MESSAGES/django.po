@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-11 01:43+0000\n"
+"POT-Creation-Date: 2020-11-25 05:01+0000\n"
 "PO-Revision-Date: 2020-09-30 04:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
@@ -68,60 +68,60 @@ msgstr "Restituisce la transizione dell'istanza del flusso di lavoro."
 msgid "Get last transition"
 msgstr "Ottieni l'ultima transizione"
 
-#: apps.py:263 apps.py:273 apps.py:282 apps.py:288
+#: apps.py:263 apps.py:275 apps.py:284 apps.py:290
 msgid "None"
 msgstr "Nessuna "
 
-#: apps.py:269
+#: apps.py:271
 msgid "Current state"
 msgstr "Stato corrente"
 
-#: apps.py:274 apps.py:298 models.py:467
+#: apps.py:276 apps.py:300 models.py:467
 msgid "User"
 msgstr "Utente"
 
-#: apps.py:278
+#: apps.py:280
 msgid "Last transition"
 msgstr "Ultima transizione"
 
-#: apps.py:283 apps.py:294
+#: apps.py:285 apps.py:296
 msgid "Date and time"
 msgstr "Data e ora"
 
-#: apps.py:289 models.py:568
+#: apps.py:291 models.py:568
 msgid "Completion"
 msgstr "Completamento"
 
-#: apps.py:319
+#: apps.py:321
 msgid "Additional details"
 msgstr "Dettagli aggiuntivi "
 
-#: apps.py:346
+#: apps.py:348
 msgid "When?"
 msgstr "Quando?"
 
-#: apps.py:350
+#: apps.py:352
 msgid "Action type"
 msgstr "Tipo di azione"
 
-#: apps.py:381
+#: apps.py:383
 msgid ""
 "Triggers are system events that will cause the transition to be applied."
 msgstr "I trigger sono eventi di sistema che causeranno l'applicazione della transizione."
 
-#: apps.py:383
+#: apps.py:385
 msgid "Triggers"
 msgstr "Triggers (azioni innescate)"
 
-#: apps.py:397 models.py:866
+#: apps.py:399 models.py:866
 msgid "Type"
 msgstr "Tipo"
 
-#: apps.py:405
+#: apps.py:407
 msgid "Widget"
 msgstr ""
 
-#: apps.py:416 apps.py:422
+#: apps.py:418 apps.py:424
 msgid "Documents"
 msgstr "Documenti"
 

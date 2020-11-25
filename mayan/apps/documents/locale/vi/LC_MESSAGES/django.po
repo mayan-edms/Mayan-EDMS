@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-11 01:43+0000\n"
+"POT-Creation-Date: 2020-11-25 05:01+0000\n"
 "PO-Revision-Date: 2020-10-26 13:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Vietnamese (http://www.transifex.com/rosarior/mayan-edms/language/vi/)\n"
@@ -268,7 +268,7 @@ msgid ""
 msgstr "Số trang mà thao tác biến đổi sẽ sao chép. Những biến đổi hiện tại sẽ bị mất."
 
 #: forms/document_type_forms.py:73 models/document_models.py:64
-#: models/document_type_models.py:73 models/document_type_models.py:188
+#: models/document_type_models.py:73 models/document_type_models.py:190
 msgid "Document type"
 msgstr "Kiểu tài liệu"
 
@@ -348,7 +348,7 @@ msgstr "Sửa"
 msgid "Add quick label to document type"
 msgstr "Thêm nhãn nhanh vào kiểu tài liệu"
 
-#: links/document_type_links.py:60 models/document_type_models.py:199
+#: links/document_type_links.py:60 models/document_type_models.py:201
 msgid "Quick labels"
 msgstr "Nhãn nhanh"
 
@@ -489,7 +489,7 @@ msgid "The name of the document."
 msgstr "Tên tài liệu"
 
 #: models/document_models.py:68 models/document_page_models.py:272
-#: models/document_type_models.py:31 models/document_type_models.py:191
+#: models/document_type_models.py:31 models/document_type_models.py:193
 msgid "Label"
 msgstr "Nhãn"
 
@@ -547,7 +547,7 @@ msgstr "Có phải tài liệu rỗng?"
 msgid "Document stub, id: %d"
 msgstr "Tài liệu rỗng, id: %d"
 
-#: models/document_page_models.py:41 models/document_type_models.py:193
+#: models/document_page_models.py:41 models/document_type_models.py:195
 msgid "Enabled"
 msgstr "Đã kích hoạt"
 
@@ -618,7 +618,7 @@ msgstr ""
 msgid "Documents types"
 msgstr "Các kiểu tài liệu"
 
-#: models/document_type_models.py:198
+#: models/document_type_models.py:200
 msgid "Quick label"
 msgstr "Nhãn nhanh"
 

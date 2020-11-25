@@ -4,6 +4,7 @@
 # 
 # Translators:
 # Translators:
+# Alex Chigrin <chalex84@mail.ru>, 2020
 # mizhgan <i@mizhgan.ru>, 2018
 # lilo.panic, 2016
 # OLeg Si <olegsm35@gmail.com>, 2020
@@ -11,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-11 01:43+0000\n"
-"PO-Revision-Date: 2020-10-12 08:51+0000\n"
-"Last-Translator: OLeg Si <olegsm35@gmail.com>\n"
+"POT-Creation-Date: 2020-11-25 05:01+0000\n"
+"PO-Revision-Date: 2020-11-19 11:10+0000\n"
+"Last-Translator: Alex Chigrin <chalex84@mail.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -43,15 +44,15 @@ msgstr ""
 
 #: dependencies.py:195
 msgid "Used to allow offline translation of the code text strings."
-msgstr ""
+msgstr "Используется для разрешения автономного перевода текстовых строк кода."
 
 #: dependencies.py:204
 msgid "Provides style checking."
-msgstr ""
+msgstr "Обеспечивает проверку стиля."
 
 #: dependencies.py:209
 msgid "Command line environment with autocompletion."
-msgstr ""
+msgstr "Среда командной строки с автозаполнением."
 
 #: dependencies.py:214
 msgid "Checks proper formatting of the README file."
@@ -103,7 +104,7 @@ msgstr ""
 
 #: links.py:75
 msgid "Get support"
-msgstr ""
+msgstr "Получить поддержку"
 
 #: links.py:79 queues.py:9 views.py:173
 msgid "Tools"
@@ -112,7 +113,7 @@ msgstr "Инструменты"
 #: literals.py:7
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
-msgstr ""
+msgstr "Эта функция устарела и будет удалена в будущей версии."
 
 #: literals.py:10
 msgid ""
@@ -134,7 +135,7 @@ msgstr "Минут"
 
 #: menus.py:8
 msgid "System"
-msgstr ""
+msgstr "Система"
 
 #: menus.py:10 menus.py:11
 msgid "Facet"
@@ -146,11 +147,11 @@ msgstr "Действия"
 
 #: menus.py:15
 msgid "Related"
-msgstr ""
+msgstr "Связанный"
 
 #: menus.py:16
 msgid "Secondary"
-msgstr ""
+msgstr "Вторичный"
 
 #: menus.py:21 models.py:25
 msgid "User"
@@ -210,19 +211,19 @@ msgstr ""
 
 #: settings.py:52
 msgid "Name to be displayed in the main menu."
-msgstr ""
+msgstr "Имя, отображаемое в главном меню."
 
 #: settings.py:58
 msgid "URL of the installation or homepage of the project."
-msgstr ""
+msgstr "URL-адрес установки или домашней страницы проекта."
 
 #: settings.py:63
 msgid "Base URL path to use for all views."
-msgstr ""
+msgstr "Базовый URL-путь для использования во всех представлениях."
 
 #: validators.py:44
 msgid "Enter a valid JSON value."
-msgstr ""
+msgstr "Введите допустимое JSON-значение."
 
 #: validators.py:68
 msgid "Enter a valid YAML value."
@@ -232,7 +233,7 @@ msgstr "Введите допустимое YAML-значение."
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
-msgstr ""
+msgstr "Введите допустимое «внутреннее имя», состоящее из букв, цифр и знаков подчеркивания."
 
 #: views.py:27
 msgid "About"
@@ -253,26 +254,26 @@ msgstr "Панель управления"
 #: views.py:116
 #, python-format
 msgid "Fields to be copied: %s"
-msgstr ""
+msgstr "Поля для копирования: %s"
 
 #: views.py:125
 #, python-format
 msgid "Make a copy of %(object_name)s \"%(object)s\"?"
-msgstr ""
+msgstr "Сделать копию %(object_name)s \"%(object)s\"?"
 
 #: views.py:134
 msgid "Object copied successfully."
-msgstr ""
+msgstr "Объект успешно скопирован."
 
 #: views.py:151
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
-msgstr ""
+msgstr "Отсутствие результатов означает, что у вас нет необходимых разрешений для выполнения административной задачи."
 
 #: views.py:154
 msgid "No setup options available."
-msgstr ""
+msgstr "Параметры настройки недоступны."
 
 #: views.py:158
 msgid "Setup items"
@@ -280,8 +281,8 @@ msgstr "Элементы настроек"
 
 #: views.py:160
 msgid "Here you can configure all aspects of the system."
-msgstr ""
+msgstr "Здесь вы можете настроить все аспекты системы."
 
 #: views.py:175
 msgid "These modules are used to do system maintenance."
-msgstr ""
+msgstr "Эти модули используются для обслуживания системы."
