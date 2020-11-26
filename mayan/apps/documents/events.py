@@ -18,17 +18,20 @@ event_document_viewed = namespace.add_event_type(
 
 # Document File
 
+event_document_file_created = namespace.add_event_type(
+    label=_('Document file created'), name='document_file_created'
+)
 event_document_file_deleted = namespace.add_event_type(
     label=_('Document file deleted'), name='document_file_deleted'
 )
 event_document_file_downloaded = namespace.add_event_type(
     label=_('Document file downloaded'), name='document_file_downloaded'
 )
+event_document_file_edited = namespace.add_event_type(
+    label=_('Document file edited'), name='document_file_edited'
+)
 event_document_file_new = namespace.add_event_type(
     label=_('Document file uploaded'), name='document_file_new'
-)
-event_document_file_pre_save = namespace.add_event_type(
-    label=_('Document file created'), name='document_file_pre_save'
 )
 
 # Document type
@@ -93,6 +96,9 @@ event_document_trashed = namespace.add_event_type(
 
 event_document_download = namespace.add_event_type(
     label=_('Document downloaded'), name='document_download'
+)
+event_document_file_pre_save = namespace.add_event_type(
+    label=_('Document file created'), name='document_file_pre_save'
 )
 event_document_version_revert = namespace.add_event_type(
     label=_('Document version revert'), name='document_version_revert'

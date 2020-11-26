@@ -9,15 +9,22 @@ from ...models.document_file_models import DocumentFile
 
 from ..literals import (
     TEST_DOCUMENT_FILE_COMMENT, TEST_DOCUMENT_FILE_COMMENT_EDITED,
-    TEST_DOCUMENT_FILE_FILENAME_EDITED, TEST_DOCUMENT_PATH,
-    TEST_SMALL_DOCUMENT_PATH, TEST_TRANSFORMATION_ARGUMENT,
-    TEST_TRANSFORMATION_CLASS
+    TEST_DOCUMENT_FILE_FILENAME_EDITED, TEST_SMALL_DOCUMENT_PATH,
+    TEST_TRANSFORMATION_ARGUMENT, TEST_TRANSFORMATION_CLASS
 )
 
 
 class DocumentFileAPIViewTestMixin:
     def _request_test_document_file_delete_api_view(self):
         return self.delete(
+            viewname='rest_api:documentfile-detail', kwargs={
+                'document_id': self.test_document.pk,
+                'document_file_id': self.test_document.file_latest.pk
+            }
+        )
+
+    def _request_test_document_file_detail_api_view(self):
+        return self.get(
             viewname='rest_api:documentfile-detail', kwargs={
                 'document_id': self.test_document.pk,
                 'document_file_id': self.test_document.file_latest.pk
@@ -45,14 +52,25 @@ class DocumentFileAPIViewTestMixin:
         # is the latest.
         time.sleep(1)
 
-        with open(file=TEST_DOCUMENT_PATH, mode='rb') as file_descriptor:
-            return self.post(
+        pk_list = list(DocumentFile.objects.values_list('pk', flat=True))
+
+        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_descriptor:
+            response = self.post(
                 viewname='rest_api:documentfile-list', kwargs={
                     'document_id': self.test_document.pk,
                 }, data={
-                    'comment': '', 'file': file_descriptor,
+                    'comment': '', 'file_new': file_descriptor,
                 }
             )
+
+        try:
+            self.test_document_file = DocumentFile.objects.get(
+                ~Q(pk__in=pk_list)
+            )
+        except DocumentFile.DoesNotExist:
+            self.test_document_file = None
+
+        return response
 
 
 class DocumentFileTestMixin:

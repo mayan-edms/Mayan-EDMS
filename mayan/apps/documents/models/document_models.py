@@ -15,7 +15,7 @@ from mayan.apps.events.decorators import method_event
 
 from ..events import (
     event_document_create, event_document_properties_edit,
-    event_document_trashed, event_document_type_changed,
+    event_document_trashed, event_document_type_changed
 )
 from ..literals import (
     DEFAULT_LANGUAGE, DOCUMENT_FILE_ACTION_PAGES_APPEND,
@@ -187,10 +187,12 @@ class Document(
                 document=self, comment=comment, file=File(file=file_object),
                 filename=filename or file_object.name
             )
+            document_file._event_actor = _user
             #document_file = self.files(
             #    comment=comment or '', file=File(file=file_object)
             #)
-            document_file.save(_event_actor=_user)
+            #document_file.save(_event_actor=_user)
+            document_file.save()
         except Exception as exception:
             logger.error(
                 'Error creating new file for document: %s; %s', self,

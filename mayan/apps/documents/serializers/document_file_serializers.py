@@ -1,45 +1,70 @@
 from rest_framework import serializers
-from rest_framework.reverse import reverse
+
+from mayan.apps.rest_api.mixins import CreateOnlyFieldSerializerMixin
+from mayan.apps.rest_api.relations import MultiKwargHyperlinkedIdentityField
 
 from ..models.document_file_models import DocumentFile
 from ..models.document_file_page_models import DocumentFilePage
 
 
-class DocumentFileCreateSerializer(serializers.Serializer):
-    comment = serializers.CharField(allow_blank=True)
-    file = serializers.FileField(use_url=False)
-
-    """
-    def save(self):
-        shared_uploaded_file = SharedUploadedFile.objects.create(
-            file=self.validated_data['file']
-        )
-
-        task_document_file_upload.delay(
-            comment=self.validated_data.get('comment', ''),
-            document_id=self.instance.pk,
-            shared_uploaded_file_id=shared_uploaded_file.pk, user_id=_user.pk
-        )
-    """
-
-class DocumentFileSerializer(serializers.HyperlinkedModelSerializer):
-    document_url = serializers.SerializerMethodField()
-    download_url = serializers.SerializerMethodField()
-    get_page_list_url = serializers.SerializerMethodField()
+class DocumentFileSerializer(
+    CreateOnlyFieldSerializerMixin, serializers.HyperlinkedModelSerializer
+):
+    document_url = serializers.HyperlinkedIdentityField(
+        lookup_url_kwarg='document_id',
+        view_name='rest_api:document-detail'
+    )
+    download_url = MultiKwargHyperlinkedIdentityField(
+        view_kwargs=(
+            {
+                'lookup_field': 'document_id',
+                'lookup_url_kwarg': 'document_id',
+            },
+            {
+                'lookup_field': 'pk',
+                'lookup_url_kwarg': 'document_file_id',
+            },
+        ),
+        view_name='rest_api:documentfile-download'
+    )
+    file_new = serializers.FileField(use_url=False)
+    page_list_url = MultiKwargHyperlinkedIdentityField(
+        view_kwargs=(
+            {
+                'lookup_field': 'document_id',
+                'lookup_url_kwarg': 'document_id',
+            },
+            {
+                'lookup_field': 'pk',
+                'lookup_url_kwarg': 'document_file_id',
+            },
+        ),
+        view_name='rest_api:documentfilepage-list'
+    )
     size = serializers.SerializerMethodField()
-    url = serializers.SerializerMethodField()
+    url = MultiKwargHyperlinkedIdentityField(
+        view_kwargs=(
+            {
+                'lookup_field': 'document_id',
+                'lookup_url_kwarg': 'document_id',
+            },
+            {
+                'lookup_field': 'pk',
+                'lookup_url_kwarg': 'document_file_id',
+            },
+        ),
+        view_name='rest_api:documentfile-detail'
+    )
 
     class Meta:
+        create_only_fields = ('file_new',)
         extra_kwargs = {
-            'document': {
-                'lookup_url_kwarg': 'document_id',
-                'view_name': 'rest_api:document-detail'
-            },
             'file': {'use_url': False},
         }
         fields = (
             'checksum', 'comment', 'document_url', 'download_url', 'encoding',
-            'file', 'mimetype', 'get_page_list_url', 'size', 'timestamp', 'url'
+            'file', 'filename', 'file_new', 'id', 'mimetype', 'page_list_url',
+            'size', 'timestamp', 'url'
         )
         model = DocumentFile
         read_only_fields = ('document', 'file', 'size')
@@ -47,118 +72,58 @@ class DocumentFileSerializer(serializers.HyperlinkedModelSerializer):
     def get_size(self, instance):
         return instance.size
 
-    def get_document_url(self, instance):
-        return reverse(
-            viewname='rest_api:document-detail', kwargs={
-                'document_id': instance.document_id,
-            }, request=self.context['request'], format=self.context['format']
-        )
-
-    def get_download_url(self, instance):
-        return reverse(
-            viewname='rest_api:documentfile-download', kwargs={
-                'document_id': instance.document_id,
-                'document_file_id': instance.pk,
-            }, request=self.context['request'], format=self.context['format']
-        )
-
-    def get_page_list_url(self, instance):
-        return reverse(
-            viewname='rest_api:documentfilepage-list', kwargs={
-                'document_id': instance.document_id,
-                'document_file_id': instance.pk,
-            }, request=self.context['request'], format=self.context['format']
-        )
-
-    def get_url(self, instance):
-        return reverse(
-            viewname='rest_api:documentfile-detail', kwargs={
-                'document_id': instance.document_id,
-                'document_file_id': instance.pk,
-            }, request=self.context['request'], format=self.context['format']
-        )
-
-'''
-class DocumentFileWritableSerializer(serializers.ModelSerializer):
-    document_url = serializers.SerializerMethodField()
-    download_url = serializers.SerializerMethodField()
-    pages_url = serializers.SerializerMethodField()
-    url = serializers.SerializerMethodField()
-
-    class Meta:
-        extra_kwargs = {
-            'file': {'use_url': False},
-        }
-        fields = (
-            'checksum', 'comment', 'document_url', 'download_url', 'encoding',
-            'file', 'mimetype', 'pages_url', 'timestamp', 'url'
-        )
-        model = DocumentFile
-        read_only_fields = ('document', 'file')
-
-    def get_document_url(self, instance):
-        return reverse(
-            viewname='rest_api:document-detail', kwargs={
-                'document_id': instance.document_id,
-            }, request=self.context['request'], format=self.context['format']
-        )
-
-    def get_download_url(self, instance):
-        return reverse(
-            viewname='rest_api:documentfile-download', kwargs={
-                'document_id': instance.document_id,
-                'document_file_id': instance.pk,
-            }, request=self.context['request'], format=self.context['format']
-        )
-
-    def get_pages_url(self, instance):
-        return reverse(
-            viewname='rest_api:documentfilepage-list', kwargs={
-                'document_id': instance.document_id,
-                'document_file_id': instance.pk,
-            }, request=self.context['request'], format=self.context['format']
-        )
-
-    def get_url(self, instance):
-        return reverse(
-            viewname='rest_api:documentfile-detail', kwargs={
-                'document_id': instance.document_id,
-                'document_file_id': instance.pk,
-            }, request=self.context['request'], format=self.context['format']
-        )
-'''
 
 class DocumentFilePageSerializer(serializers.HyperlinkedModelSerializer):
-    document_file_url = serializers.SerializerMethodField()
-    image_url = serializers.SerializerMethodField()
-    url = serializers.SerializerMethodField()
+    document_file_url = MultiKwargHyperlinkedIdentityField(
+        view_kwargs=(
+            {
+                'lookup_field': 'document_file.document.pk',
+                'lookup_url_kwarg': 'document_id',
+            },
+            {
+                'lookup_field': 'document_file_id',
+                'lookup_url_kwarg': 'document_file_id',
+            }
+        ),
+        view_name='rest_api:documentfile-detail'
+    )
+    image_url = MultiKwargHyperlinkedIdentityField(
+        view_kwargs=(
+            {
+                'lookup_field': 'document_file.document.pk',
+                'lookup_url_kwarg': 'document_id',
+            },
+            {
+                'lookup_field': 'document_file_id',
+                'lookup_url_kwarg': 'document_file_id',
+            },
+            {
+                'lookup_field': 'pk',
+                'lookup_url_kwarg': 'document_file_page_id',
+            }
+        ),
+        view_name='rest_api:documentfilepage-image'
+    )
+    url = MultiKwargHyperlinkedIdentityField(
+        view_kwargs=(
+            {
+                'lookup_field': 'document_file.document.pk',
+                'lookup_url_kwarg': 'document_id',
+            },
+            {
+                'lookup_field': 'document_file_id',
+                'lookup_url_kwarg': 'document_file_id',
+            },
+            {
+                'lookup_field': 'pk',
+                'lookup_url_kwarg': 'document_file_page_id',
+            }
+        ),
+        view_name='rest_api:documentfilepage-detail'
+    )
 
     class Meta:
-        fields = ('document_file_url', 'image_url', 'page_number', 'url')
+        fields = (
+            'document_file_url', 'id', 'image_url', 'page_number', 'url'
+        )
         model = DocumentFilePage
-
-    def get_document_file_url(self, instance):
-        return reverse(
-            viewname='rest_api:documentfile-detail', kwargs={
-                'document_id': instance.document_file.document_id,
-                'document_file_id': instance.document_file_id,
-            }, request=self.context['request'], format=self.context['format']
-        )
-
-    def get_image_url(self, instance):
-        return reverse(
-            viewname='rest_api:documentfilepage-image', kwargs={
-                'document_id': instance.document_file.document_id,
-                'document_file_id': instance.document_file_id,
-                'document_file_page_id': instance.pk,
-            }, request=self.context['request'], format=self.context['format']
-        )
-
-    def get_url(self, instance):
-        return reverse(
-            viewname='rest_api:documentfilepage-detail', kwargs={
-                'document_id': instance.document_file.document_id,
-                'document_file_id': instance.document_file_id,
-                'document_file_page_id': instance.pk,
-            }, request=self.context['request'], format=self.context['format']
-        )

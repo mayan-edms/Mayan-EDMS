@@ -48,9 +48,6 @@ class DocumentVersionPage(
         on_delete=models.CASCADE, related_name='version_pages',
         to=DocumentVersion, verbose_name=_('Document version'),
     )
-    #page_number = models.PositiveIntegerField(
-    #    db_index=True, blank=True, null=True, verbose_name=_('Page number')
-    #)
     page_number = models.PositiveIntegerField(
         db_index=True, default=1, verbose_name=_('Page number')
     )

@@ -134,9 +134,6 @@ class DocumentVersion(ModelInstanceExtraDataAPIViewMixin, models.Model):
     def get_label(self, preserve_extension=False):
         if preserve_extension:
             filename, extension = os.path.splitext(self.document.label)
-            #return '{} ({}){}'.format(
-            #    filename, self.get_rendered_timestamp(), extension
-            #)
             return Template(
                 template_string='{{ filename }} ({{ instance.timestamp }}){{ extension }}'
             ).render(
@@ -153,13 +150,6 @@ class DocumentVersion(ModelInstanceExtraDataAPIViewMixin, models.Model):
                 context={'instance': self}
             )
     get_label.short_description = _('Label')
-
-    #def get_rendered_timestamp(self):
-    #    return Template(
-    #        template_string='{{ instance.timestamp }}'
-    #    ).render(
-    #        context={'instance': self}
-    #    )
 
     @property
     def is_in_trash(self):

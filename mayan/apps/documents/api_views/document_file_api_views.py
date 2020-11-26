@@ -14,11 +14,11 @@ from mayan.apps.views.generics import DownloadMixin
 from ..literals import DOCUMENT_IMAGE_TASK_TIMEOUT
 from ..permissions import (
     permission_document_file_delete, permission_document_file_download,
-    permission_document_file_new, permission_document_file_view
+    permission_document_file_edit, permission_document_file_new,
+    permission_document_file_view
 )
 from ..serializers.document_file_serializers import (
-    DocumentFileSerializer, DocumentFileCreateSerializer,
-    DocumentFilePageSerializer
+    DocumentFileSerializer, DocumentFilePageSerializer
 )
 from ..settings import setting_document_file_page_image_cache_time
 from ..tasks import (
@@ -39,37 +39,39 @@ class APIDocumentFileListView(
     get: Return a list of the selected document's files.
     post: Create a new document file.
     """
+    serializer_class = DocumentFileSerializer
+
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        return Response(status=status.HTTP_202_ACCEPTED)
+
+    def perform_create(self, serializer):
         shared_uploaded_file = SharedUploadedFile.objects.create(
-            file=serializer.validated_data['file']
+            file=serializer.validated_data['file_new']
         )
 
-        task_document_file_upload.delay(
-            comment=serializer.validated_data.get('comment', ''),
-            document_id=self.get_document(
-                permission=permission_document_file_new
-            ).pk,
-            shared_uploaded_file_id=shared_uploaded_file.pk,
-            user_id=self.request.user.pk
+        task_document_file_upload.apply_async(
+            kwargs={
+                'comment': serializer.validated_data.get('comment', ''),
+                'document_id': self.get_document(
+                    permission=permission_document_file_new
+                ).pk,
+                'filename': serializer.validated_data.get('filename', ''),
+                'shared_uploaded_file_id': shared_uploaded_file.pk,
+                'user_id': self.request.user.pk
+            }
         )
-
-        headers = self.get_success_headers(serializer.data)
-        return Response(status=status.HTTP_202_ACCEPTED, headers=headers)
-
-    def get_serializer_class(self):
-        if self.request.method == 'GET':
-            return DocumentFileSerializer
-        elif self.request.method == 'POST':
-            return DocumentFileCreateSerializer
 
     def get_queryset(self):
-        return self.get_document(permission=permission_document_file_view).files.all()
+        return self.get_document(
+            permission=permission_document_file_view
+        ).files.all()
 
 
 class APIDocumentFileDetailView(
-    ParentObjectDocumentAPIViewMixin, generics.RetrieveDestroyAPIView
+    ParentObjectDocumentAPIViewMixin, generics.RetrieveUpdateDestroyAPIView
 ):
     """
     delete: Delete the selected document file.
@@ -79,8 +81,15 @@ class APIDocumentFileDetailView(
     mayan_object_permissions = {
         'DELETE': (permission_document_file_delete,),
         'GET': (permission_document_file_view,),
+        'PATCH': (permission_document_file_edit,),
+        'PUT': (permission_document_file_edit,),
     }
     serializer_class = DocumentFileSerializer
+
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user
+        }
 
     def get_queryset(self):
         return self.get_document().files.all()
@@ -99,11 +108,11 @@ class APIDocumentFileDownloadView(
 
     def get_download_file_object(self):
         instance = self.get_object()
-        return instance.open()
+        instance._event_actor = self.request.user
+        return instance.get_download_file_object()
 
     def get_download_filename(self):
-        instance = self.get_object()
-        return instance.filename
+        return self.get_object().filename
 
     def get_serializer(self, *args, **kwargs):
         return None
@@ -116,6 +125,9 @@ class APIDocumentFileDownloadView(
 
     def retrieve(self, request, *args, **kwargs):
         return self.render_to_response()
+
+
+# Document file page
 
 
 class APIDocumentFilePageDetailView(
@@ -173,12 +185,15 @@ class APIDocumentFilePageImageView(
             maximum_layer_order = int(maximum_layer_order)
 
         task = task_document_file_page_image_generate.apply_async(
-            kwargs=dict(
-                document_file_page_id=self.get_object().pk, width=width,
-                height=height, zoom=zoom, rotation=rotation,
-                maximum_layer_order=maximum_layer_order,
-                user_id=request.user.pk
-            )
+            kwargs={
+                'document_file_page_id': self.get_object().pk,
+                'height': height,
+                'maximum_layer_order': maximum_layer_order,
+                'rotation': rotation,
+                'user_id': request.user.pk,
+                'width': width,
+                'zoom': zoom
+            }
         )
 
         kwargs = {'timeout': DOCUMENT_IMAGE_TASK_TIMEOUT}

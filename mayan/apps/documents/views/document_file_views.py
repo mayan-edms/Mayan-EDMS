@@ -70,13 +70,18 @@ class DocumentFileDownloadView(SingleObjectDownloadView):
     pk_url_kwarg = 'document_file_id'
 
     def get_download_file_object(self):
-        event_document_file_downloaded.commit(
-            actor=self.request.user,
-            action_object=self.object.document,
-            target=self.object
-        )
+        instance = self.get_object()
+        instance._event_actor = self.request.user
+        return instance.get_download_file_object()
 
-        return self.object.open()
+        #return self.object.get_download_file_object()
+        #event_document_file_downloaded.commit(
+        #    actor=self.request.user,
+        #    action_object=self.object.document,
+        #    target=self.object
+        #)
+
+        #return self.object.open()
 
     def get_download_filename(self):
         return self.object.filename

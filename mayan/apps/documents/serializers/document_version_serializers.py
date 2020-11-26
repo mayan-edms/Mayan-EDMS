@@ -110,6 +110,7 @@ class DocumentVersionPageSerializer(serializers.HyperlinkedModelSerializer):
         ),
         view_name='rest_api:documentversionpage-detail'
     )
+
     class Meta:
         fields = (
             'content_type', 'content_type_id', 'document_version_url',

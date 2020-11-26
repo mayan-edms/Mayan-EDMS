@@ -65,10 +65,6 @@ class DocumentFilePage(ModelMixinPagedModel, models.Model):
         self.cache_partition.delete()
         super().delete(*args, **kwargs)
 
-    @property
-    def document(self):
-        return self.document_file.document
-
     def generate_image(self, user=None, **kwargs):
         transformation_list = self.get_combined_transformation_list(
             user=user, **kwargs

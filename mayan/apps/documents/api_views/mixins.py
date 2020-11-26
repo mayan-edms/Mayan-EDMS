@@ -46,7 +46,7 @@ class ParentObjectDocumentTypeAPIViewMixin:
 
 class ParentObjectDocumentVersionAPIViewMixin(ParentObjectDocumentAPIViewMixin):
     def get_document_version(self, permission=None):
-        queryset=self.get_document().versions.all()
+        queryset = self.get_document().versions.all()
 
         if permission:
             queryset = AccessControlList.objects.restrict_queryset(
