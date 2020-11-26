@@ -13,7 +13,6 @@ from ..permissions import (
     permission_document_version_export
 )
 
-from .literals import TEST_DOCUMENT_VERSION_COMMENT_EDITED
 from .mixins.document_mixins import DocumentTestMixin
 from .mixins.document_version_mixins import (
     DocumentVersionAPIViewTestMixin, DocumentVersionTestMixin

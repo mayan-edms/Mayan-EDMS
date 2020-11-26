@@ -129,6 +129,31 @@ class DocumentVersionPageAPIViewTestMixin:
             }
         )
 
+    def _request_test_document_version_page_edit_via_patch_api_view(self):
+        return self.patch(
+            viewname='rest_api:documentversionpage-detail', kwargs={
+                'document_id': self.test_document.pk,
+                'document_version_id': self.test_document_version.pk,
+                'document_version_page_id': self.test_document_version_page.pk
+            }, data={
+                'content_type_id': self.test_document_version_page.content_type.pk,
+                'page_number': self.test_document_version_page.page_number + 1
+            }
+        )
+
+    def _request_test_document_version_page_edit_via_put_api_view(self):
+        return self.put(
+            viewname='rest_api:documentversionpage-detail', kwargs={
+                'document_id': self.test_document.pk,
+                'document_version_id': self.test_document_version.pk,
+                'document_version_page_id': self.test_document_version_page.pk
+            }, data={
+                'content_type_id': self.test_document_version_page.content_type.pk,
+                'object_id': self.test_document_version_page.object_id,
+                'page_number': self.test_document_version_page.page_number + 1
+            }
+        )
+
     def _request_test_document_version_page_image_api_view(self):
         return self.get(
             viewname='rest_api:documentversionpage-image', kwargs={

@@ -25,7 +25,7 @@ class DocumentVersionSerializer(serializers.HyperlinkedModelSerializer):
         ),
         view_name='rest_api:documentversion-export'
     )
-    pages_url = MultiKwargHyperlinkedIdentityField(
+    page_list_url = MultiKwargHyperlinkedIdentityField(
         view_kwargs=(
             {
                 'lookup_field': 'document_id',
@@ -55,7 +55,7 @@ class DocumentVersionSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         fields = (
             'active', 'comment', 'document_url', 'export_url', 'id',
-            'pages_url', 'timestamp', 'url'
+            'page_list_url', 'timestamp', 'url'
         )
         model = DocumentVersion
 
@@ -113,6 +113,6 @@ class DocumentVersionPageSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         fields = (
             'content_type', 'content_type_id', 'document_version_url',
-            'image_url', 'object_id', 'page_number', 'url'
+            'id', 'image_url', 'object_id', 'page_number', 'url'
         )
         model = DocumentVersionPage

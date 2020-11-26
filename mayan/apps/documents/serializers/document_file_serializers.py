@@ -25,7 +25,7 @@ class DocumentFileCreateSerializer(serializers.Serializer):
 class DocumentFileSerializer(serializers.HyperlinkedModelSerializer):
     document_url = serializers.SerializerMethodField()
     download_url = serializers.SerializerMethodField()
-    pages_url = serializers.SerializerMethodField()
+    get_page_list_url = serializers.SerializerMethodField()
     size = serializers.SerializerMethodField()
     url = serializers.SerializerMethodField()
 
@@ -39,7 +39,7 @@ class DocumentFileSerializer(serializers.HyperlinkedModelSerializer):
         }
         fields = (
             'checksum', 'comment', 'document_url', 'download_url', 'encoding',
-            'file', 'mimetype', 'pages_url', 'size', 'timestamp', 'url'
+            'file', 'mimetype', 'get_page_list_url', 'size', 'timestamp', 'url'
         )
         model = DocumentFile
         read_only_fields = ('document', 'file', 'size')
@@ -62,7 +62,7 @@ class DocumentFileSerializer(serializers.HyperlinkedModelSerializer):
             }, request=self.context['request'], format=self.context['format']
         )
 
-    def get_pages_url(self, instance):
+    def get_page_list_url(self, instance):
         return reverse(
             viewname='rest_api:documentfilepage-list', kwargs={
                 'document_id': instance.document_id,
