@@ -308,6 +308,7 @@ class DocumentFileTransformationViewTestCase(
             ).count(), page_last_transformation_count + 1
         )
 
+
 class DocumentFileCachePurgeViewTestCase(
     CachePartitionViewTestMixin, ContentTypeTestCaseMixin,
     GenericDocumentViewTestCase

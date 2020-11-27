@@ -188,10 +188,6 @@ class Document(
                 filename=filename or file_object.name
             )
             document_file._event_actor = _user
-            #document_file = self.files(
-            #    comment=comment or '', file=File(file=file_object)
-            #)
-            #document_file.save(_event_actor=_user)
             document_file.save()
         except Exception as exception:
             logger.error(

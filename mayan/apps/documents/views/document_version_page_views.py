@@ -118,7 +118,6 @@ class DocumentVersionPageListRemapView(ExternalObjectMixin, FormView):
     external_object_class = DocumentVersion
     external_object_permission = permission_document_version_edit
     external_object_pk_url_kwarg = 'document_version_id'
-
     form_class = DocumentVersionPageMappingFormSet
     #success_message = _(
     #    'Metadata edit request performed on %(count)d document'

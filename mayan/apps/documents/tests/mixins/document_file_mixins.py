@@ -141,13 +141,29 @@ class DocumentFileViewTestMixin:
 
 
 class DocumentFilePageAPIViewTestMixin:
+    def _request_test_document_file_page_detail_api_view(self):
+        return self.get(
+            viewname='rest_api:documentfilepage-detail', kwargs={
+                'document_id': self.test_document.pk,
+                'document_file_id': self.test_document_file.pk,
+                'document_file_page_id': self.test_document_file_page.pk
+            }
+        )
+
     def _request_test_document_file_page_image_api_view(self):
-        page = self.test_document_file.pages.first()
         return self.get(
             viewname='rest_api:documentfilepage-image', kwargs={
-                'document_id': page.document_file.document_id,
-                'document_file_id': page.document_file_id,
-                'document_file_page_id': page.pk
+                'document_id': self.test_document.pk,
+                'document_file_id': self.test_document_file.pk,
+                'document_file_page_id': self.test_document_file_page.pk
+            }
+        )
+
+    def _request_test_document_file_page_list_api_view(self):
+        return self.get(
+            viewname='rest_api:documentfilepage-list', kwargs={
+                'document_id': self.test_document.pk,
+                'document_file_id': self.test_document_file.pk,
             }
         )
 

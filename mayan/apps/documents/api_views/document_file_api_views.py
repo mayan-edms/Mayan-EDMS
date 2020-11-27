@@ -218,10 +218,9 @@ class APIDocumentFilePageImageView(
 class APIDocumentFilePageListView(
     ParentObjectDocumentFileAPIViewMixin, generics.ListAPIView
 ):
-    mayan_object_permissions = {
-        'GET': (permission_document_file_view,),
-    }
     serializer_class = DocumentFilePageSerializer
 
     def get_queryset(self):
-        return self.get_document_file().pages.all()
+        return self.get_document_file(
+            permission=permission_document_file_view
+        ).pages.all()

@@ -18,7 +18,7 @@ from mayan.apps.views.generics import (
 )
 from mayan.apps.views.mixins import ExternalObjectMixin
 
-from ..events import event_document_file_downloaded, event_document_viewed
+from ..events import event_document_viewed
 from ..forms.document_file_forms import (
     DocumentFileForm, DocumentFilePreviewForm, DocumentFilePropertiesForm
 )
@@ -73,15 +73,6 @@ class DocumentFileDownloadView(SingleObjectDownloadView):
         instance = self.get_object()
         instance._event_actor = self.request.user
         return instance.get_download_file_object()
-
-        #return self.object.get_download_file_object()
-        #event_document_file_downloaded.commit(
-        #    actor=self.request.user,
-        #    action_object=self.object.document,
-        #    target=self.object
-        #)
-
-        #return self.object.open()
 
     def get_download_filename(self):
         return self.object.filename
@@ -160,7 +151,8 @@ class DocumentFilePreviewView(SingleObjectDetailView):
             user=request.user
         )
         event_document_viewed.commit(
-            actor=request.user, target=self.object.document
+            actor=request.user, action_object=self.object,
+            target=self.object.document
         )
 
         return result

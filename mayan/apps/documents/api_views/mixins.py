@@ -22,10 +22,17 @@ class ParentObjectDocumentAPIViewMixin:
 
 
 class ParentObjectDocumentFileAPIViewMixin(ParentObjectDocumentAPIViewMixin):
-    def get_document_file(self):
+    def get_document_file(self, permission=None):
+        queryset = self.get_document().files.all()
+
+        if permission:
+            queryset = AccessControlList.objects.restrict_queryset(
+                permission=permission, queryset=queryset,
+                user=self.request.user
+            )
+
         return get_object_or_404(
-            queryset=self.get_document().files.all(),
-            pk=self.kwargs['document_file_id']
+            queryset=queryset, pk=self.kwargs['document_file_id']
         )
 
 

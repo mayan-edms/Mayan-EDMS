@@ -615,11 +615,6 @@ api_urls_document_versions = [
         view=APIDocumentVersionExportView.as_view(),
         name='documentversion-export'
     ),
-    #url(
-    #    regex=r'^documents/(?P<document_id>[0-9]+)/versions/(?P<document_version_id>[0-9]+)/pages/reset/$',
-    #    view=APIDocumentVersionPagesResetView.as_view(),
-    #    name='documentversion-pages-reset'
-    #),
     url(
         regex=r'^documents/(?P<document_id>[0-9]+)/versions/(?P<document_version_id>[0-9]+)/pages/$',
         name='documentversionpage-list',

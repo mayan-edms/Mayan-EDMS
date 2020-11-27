@@ -240,6 +240,7 @@ class DocumentsApp(MayanAppConfig):
         EventModelRegistry.register(model=TrashedDocument)
         EventModelRegistry.register(model=Document)
         EventModelRegistry.register(model=DocumentFile)
+        EventModelRegistry.register(model=DocumentFilePage)
         EventModelRegistry.register(model=DocumentType)
         EventModelRegistry.register(model=DocumentTypeFilename)
         EventModelRegistry.register(model=DocumentVersion)
