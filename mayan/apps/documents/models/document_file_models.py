@@ -431,6 +431,9 @@ class DocumentFile(
 
                 if new_document_file:
                     # Only do this for new documents
+                    event_document_file_created.commit(
+                        actor=user, target=self, action_object=self.document
+                    )
                     self.checksum_update(save=False)
                     self.mimetype_update(save=False)
                     self.save()
@@ -447,6 +450,10 @@ class DocumentFile(
 
                     self.document._event_ignore = True
                     self.document.save()
+                else:
+                    event_document_file_edited.commit(
+                        actor=user, target=self, action_object=self.document
+                    )
         except Exception as exception:
             logger.error(
                 'Error creating new document file for document "%s"; %s',
@@ -455,9 +462,6 @@ class DocumentFile(
             raise
         else:
             if new_document_file:
-                event_document_file_created.commit(
-                    actor=user, target=self, action_object=self.document
-                )
                 signal_post_document_file_upload.send(
                     sender=DocumentFile, instance=self
                 )
@@ -466,10 +470,6 @@ class DocumentFile(
                     signal_post_document_created.send(
                         instance=self.document, sender=Document
                     )
-            else:
-                event_document_file_edited.commit(
-                    actor=user, target=self, action_object=self.document
-                )
 
     def save_to_file(self, file_object):
         """

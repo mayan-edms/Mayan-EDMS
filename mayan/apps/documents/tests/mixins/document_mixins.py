@@ -1,6 +1,7 @@
 import os
 
 from django.conf import settings
+from django.db.models import Q
 from django.utils.module_loading import import_string
 
 from mayan.apps.converter.classes import Layer
@@ -10,48 +11,80 @@ from ...models import Document, DocumentType
 from ...search import document_file_page_search, document_search
 
 from ..literals import (
-    TEST_DOCUMENT_DESCRIPTION_EDITED, TEST_DOCUMENT_PATH,
-    TEST_DOCUMENT_TYPE_LABEL, TEST_SMALL_DOCUMENT_FILENAME,
+    TEST_DOCUMENT_DESCRIPTION_EDITED, TEST_DOCUMENT_TYPE_LABEL,
+    TEST_SMALL_DOCUMENT_FILENAME, TEST_SMALL_DOCUMENT_PATH
 )
 
 
 class DocumentAPIViewTestMixin:
-    def _request_test_document_download_api_view(self):
+    def _request_test_document_change_type_api_view(self):
+        return self.post(
+            viewname='rest_api:document-change-type', kwargs={
+                'document_id': self.test_document.pk
+            }, data={'document_type_id': self.test_document_type_2.pk}
+        )
+
+    def _request_test_document_create_api_view(self):
+        pk_list = list(Document.objects.values_list('pk', flat=True))
+
+        response = self.post(
+            viewname='rest_api:document-list', data={
+                'document_type_id': self.test_document_type.pk
+            }
+        )
+
+        try:
+            self.test_document = Document.objects.get(
+                ~Q(pk__in=pk_list)
+            )
+        except Document.DoesNotExist:
+            self.test_document = None
+
+        return response
+
+    def _request_test_document_detail_api_view(self):
         return self.get(
-            viewname='rest_api:document-download', kwargs={
+            viewname='rest_api:document-detail', kwargs={
                 'document_id': self.test_document.pk
             }
         )
 
-    def _request_test_document_upload_api_view(self):
-        with open(file=TEST_DOCUMENT_PATH, mode='rb') as file_object:
-            return self.post(
-                viewname='rest_api:document-list', data={
-                    'document_type': self.test_document_type.pk,
-                    'file': file_object
-                }
-            )
-
-    def _request_test_document_description_edit_via_patch_api_view(self):
+    def _request_test_document_edit_via_patch_api_view(self):
         return self.patch(
             viewname='rest_api:document-detail', kwargs={
                 'document_id': self.test_document.pk
             }, data={'description': TEST_DOCUMENT_DESCRIPTION_EDITED}
         )
 
-    def _request_test_document_description_edit_via_put_api_view(self):
+    def _request_test_document_edit_via_put_api_view(self):
         return self.put(
             viewname='rest_api:document-detail', kwargs={
                 'document_id': self.test_document.pk
             }, data={'description': TEST_DOCUMENT_DESCRIPTION_EDITED}
         )
 
-    def _request_test_document_type_change_api_view(self):
-        return self.post(
-            viewname='rest_api:document-type-change', kwargs={
-                'document_id': self.test_document.pk
-            }, data={'new_document_type': self.test_document_type_2.pk}
-        )
+    def _request_test_document_list_api_view(self):
+        return self.get(viewname='rest_api:document-list')
+
+    def _request_test_document_upload_api_view(self):
+        pk_list = list(Document.objects.values_list('pk', flat=True))
+
+        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+            response = self.post(
+                viewname='rest_api:document-upload', data={
+                    'document_type_id': self.test_document_type.pk,
+                    'file': file_object
+                }
+            )
+
+        try:
+            self.test_document = Document.objects.get(
+                ~Q(pk__in=pk_list)
+            )
+        except Document.DoesNotExist:
+            self.test_document = None
+
+        return response
 
 
 class DocumentSearchTestMixin:

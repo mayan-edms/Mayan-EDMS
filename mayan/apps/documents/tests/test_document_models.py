@@ -1,6 +1,6 @@
 from datetime import timedelta
 
-from ..models import Document
+from ..models.document_models import Document
 from ..settings import setting_stub_expiration_interval
 
 from .base import GenericDocumentTestCase

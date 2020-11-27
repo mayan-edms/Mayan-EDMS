@@ -1,3 +1,5 @@
+from django.utils.translation import ugettext_lazy as _
+
 from rest_framework import serializers
 
 from mayan.apps.common.serializers import ContentTypeSerializer
@@ -62,7 +64,10 @@ class DocumentVersionSerializer(serializers.HyperlinkedModelSerializer):
 
 class DocumentVersionPageSerializer(serializers.HyperlinkedModelSerializer):
     content_type = ContentTypeSerializer(read_only=True)
-    content_type_id = serializers.IntegerField(write_only=True)
+    content_type_id = serializers.IntegerField(
+        help_text=_('Content type ID of the source object for the page.'),
+        write_only=True
+    )
     document_version_url = MultiKwargHyperlinkedIdentityField(
         view_kwargs=(
             {

@@ -1,3 +1,5 @@
+from django.utils.translation import ugettext_lazy as _
+
 from rest_framework import serializers
 
 from mayan.apps.rest_api.mixins import CreateOnlyFieldSerializerMixin
@@ -27,7 +29,10 @@ class DocumentFileSerializer(
         ),
         view_name='rest_api:documentfile-download'
     )
-    file_new = serializers.FileField(use_url=False)
+    file_new = serializers.FileField(
+        help_text=_('Binary content for the new file.'),
+        use_url=False
+    )
     page_list_url = MultiKwargHyperlinkedIdentityField(
         view_kwargs=(
             {

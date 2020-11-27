@@ -14,7 +14,7 @@ from mayan.apps.events.classes import EventManagerSave
 from mayan.apps.events.decorators import method_event
 
 from ..events import (
-    event_document_create, event_document_properties_edit,
+    event_document_created, event_document_edited,
     event_document_trashed, event_document_type_changed
 )
 from ..literals import (
@@ -56,7 +56,11 @@ class Document(
     )
     label = models.CharField(
         blank=True, db_index=True, default='', max_length=255,
-        help_text=_('The name of the document.'), verbose_name=_('Label')
+        help_text=_(
+            'A short text identifying the document. By default, will be '
+            'set to the filename of the first file uploaded to the document.'
+        ),
+        verbose_name=_('Label')
     )
     description = models.TextField(
         blank=True, default='', help_text=_(
@@ -71,7 +75,7 @@ class Document(
     )
     language = models.CharField(
         blank=True, default=DEFAULT_LANGUAGE, help_text=_(
-            'The dominant language in the document.'
+            'The primary language in the document.'
         ), max_length=8, verbose_name=_('Language')
     )
     in_trash = models.BooleanField(
@@ -137,7 +141,6 @@ class Document(
             self.in_trash = True
             self.trashed_date_time = now()
             with transaction.atomic():
-                #self.save(_commit_events=False)
                 self._event_ignore = True
                 self.save()
                 event_document_trashed.commit(actor=_user, target=self)
@@ -151,15 +154,18 @@ class Document(
     def document_type_change(self, document_type, force=False, _user=None):
         has_changed = self.document_type != document_type
 
-        self.document_type = document_type
-        with transaction.atomic():
-            self.save()
-            if has_changed or force:
+        if has_changed or force:
+            self.document_type = document_type
+            with transaction.atomic():
+                self._event_ignore = True
+                self.save()
                 signal_post_document_type_change.send(
                     sender=self.__class__, instance=self
                 )
 
-                event_document_type_changed.commit(actor=_user, target=self)
+                event_document_type_changed.commit(
+                    action_object=document_type, actor=_user, target=self
+                )
                 if _user:
                     self.add_as_recent_document_for_user(user=_user)
 
@@ -272,14 +278,13 @@ class Document(
     @method_event(
         event_manager_class=EventManagerSave,
         created={
-            'event': event_document_create,
+            'event': event_document_created,
             'action_object': 'document_type',
             'keep_attributes': '_event_actor',
             'target': 'self'
         },
         edited={
-            'event': event_document_properties_edit,
-            'action_object': 'document_type',
+            'event': event_document_edited,
             'target': 'self'
         }
     )

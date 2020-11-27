@@ -1,5 +1,8 @@
+from django.utils.translation import ugettext_lazy as _
+
 from rest_framework import serializers
 
+from mayan.apps.rest_api.mixins import CreateOnlyFieldSerializerMixin
 from mayan.apps.storage.models import SharedUploadedFile
 
 from ..models.document_models import Document
@@ -13,14 +16,68 @@ from .document_type_serializers import DocumentTypeSerializer
 from .document_version_serializers import DocumentVersionSerializer
 
 
-class DocumentCreateSerializer(serializers.ModelSerializer):
+class DocumentSerializer(
+    CreateOnlyFieldSerializerMixin, serializers.HyperlinkedModelSerializer
+):
+    document_type = DocumentTypeSerializer(read_only=True)
+    document_type_id = serializers.IntegerField(
+        help_text=_('Document type ID for the new document.'), write_only=True
+    )
+    document_change_type_url = serializers.HyperlinkedIdentityField(
+        lookup_url_kwarg='document_id',
+        view_name='rest_api:document-change-type'
+    )
+    file_latest = DocumentFileSerializer(many=False, read_only=True)
+    file_list_url = serializers.HyperlinkedIdentityField(
+        lookup_url_kwarg='document_id',
+        view_name='rest_api:documentfile-list'
+    )
+    version_active = DocumentVersionSerializer(many=False, read_only=True)
+    version_list_url = serializers.HyperlinkedIdentityField(
+        lookup_url_kwarg='document_id',
+        view_name='rest_api:documentversion-list'
+    )
+
+    class Meta:
+        create_only_fields = ('document_type_id',)
+        extra_kwargs = {
+            'document_type': {
+                'lookup_url_kwarg': 'document_type_id',
+                'view_name': 'rest_api:documenttype-detail'
+            },
+            'url': {
+                'lookup_url_kwarg': 'document_id',
+                'view_name': 'rest_api:document-detail'
+            },
+        }
+        fields = (
+            'date_added', 'description', 'document_change_type_url',
+            'document_type', 'document_type_id', 'file_list_url', 'id', 'label',
+            'language', 'file_latest', 'pk', 'url', 'uuid',
+            'version_active', 'version_list_url'
+        )
+        model = Document
+        read_only_fields = ('document_type',)
+
+
+class DocumentChangeTypeSerializer(serializers.ModelSerializer):
+    #TODO: Filter primary keys
+    document_type_id = serializers.PrimaryKeyRelatedField(
+        queryset=DocumentType.objects.all(), write_only=True
+    )
+
+    class Meta:
+        fields = ('document_type_id',)
+        model = Document
+
+
+class DocumentUploadSerializer(DocumentSerializer):
     file = serializers.FileField(write_only=True)
 
     def create(self, validated_data):
         file = validated_data.pop('file')
         validated_data['label'] = validated_data.get('label', str(file))
         user = validated_data['_instance_extra_data']['_event_actor']
-
         instance = super().create(validated_data=validated_data)
 
         shared_uploaded_file = SharedUploadedFile.objects.create(file=file)
@@ -35,80 +92,14 @@ class DocumentCreateSerializer(serializers.ModelSerializer):
 
         return instance
 
-    class Meta:
+    class Meta(DocumentSerializer.Meta):
+        create_only_fields = ('document_type_id', 'file')
         fields = (
-            'description', 'document_type', 'id', 'file', 'label', 'language',
-        )
-        model = Document
-
-
-class DocumentSerializer(serializers.HyperlinkedModelSerializer):
-    document_type = DocumentTypeSerializer(read_only=True)
-    document_type_change_url = serializers.HyperlinkedIdentityField(
-        lookup_url_kwarg='document_id',
-        view_name='rest_api:document-type-change'
-    )
-    file_latest = DocumentFileSerializer(many=False, read_only=True)
-    file_list_url = serializers.HyperlinkedIdentityField(
-        lookup_url_kwarg='document_id',
-        view_name='rest_api:documentfile-list'
-    )
-    version_active = DocumentVersionSerializer(many=False, read_only=True)
-    version_list_url = serializers.HyperlinkedIdentityField(
-        lookup_url_kwarg='document_id',
-        view_name='rest_api:documentversion-list'
-    )
-
-    class Meta:
-        extra_kwargs = {
-            'document_type': {
-                'lookup_url_kwarg': 'document_type_id',
-                'view_name': 'rest_api:documenttype-detail'
-            },
-            'url': {
-                'lookup_url_kwarg': 'document_id',
-                'view_name': 'rest_api:document-detail'
-            },
-        }
-        fields = (
-            'date_added', 'description', 'document_type',
-            'document_type_change_url', 'file_list_url', 'id', 'label',
-            'language', 'file_latest', 'pk', 'url', 'uuid',
+            'date_added', 'description', 'document_change_type_url',
+            'document_type', 'document_type_id', 'file', 'file_list_url',
+            'id', 'label', 'language', 'file_latest', 'pk', 'url', 'uuid',
             'version_active', 'version_list_url'
         )
-        model = Document
-        read_only_fields = ('document_type',)
-
-
-class DocumentTypeChangeSerializer(serializers.ModelSerializer):
-    new_document_type = serializers.PrimaryKeyRelatedField(
-        queryset=DocumentType.objects.all(), write_only=True
-    )
-
-    class Meta:
-        fields = ('new_document_type',)
-        model = Document
-
-
-class DocumentWritableSerializer(serializers.ModelSerializer):
-    document_type = DocumentTypeSerializer(read_only=True)
-    latest_file = DocumentFileSerializer(many=False, read_only=True)
-    files = serializers.HyperlinkedIdentityField(
-        lookup_url_kwarg='document_id',
-        view_name='rest_api:documentfile-list'
-    )
-    url = serializers.HyperlinkedIdentityField(
-        lookup_url_kwarg='document_id',
-        view_name='rest_api:document-detail'
-    )
-
-    class Meta:
-        fields = (
-            'date_added', 'description', 'document_type', 'id', 'label',
-            'language', 'latest_file', 'url', 'uuid', 'files',
-        )
-        model = Document
-        read_only_fields = ('document_type',)
 
 
 class RecentDocumentSerializer(serializers.ModelSerializer):

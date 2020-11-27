@@ -1,9 +1,10 @@
 from django.conf.urls import url
 
 from .api_views.document_api_views import (
-    APIDocumentDetailView, APIDocumentListView, APIDocumentTypeChangeView,
-    APIRecentDocumentListView, APITrashedDocumentListView,
-    APITrashedDocumentRestoreView, APITrashedDocumentDetailView
+    APIDocumentDetailView, APIDocumentListView, APIDocumentChangeTypeView,
+    APIRecentDocumentListView, APIDocumentUploadView,
+    APITrashedDocumentListView, APITrashedDocumentRestoreView,
+    APITrashedDocumentDetailView
 )
 from .api_views.document_file_api_views import (
     APIDocumentFileDetailView, APIDocumentFileDownloadView,
@@ -527,13 +528,17 @@ api_urls_documents = [
 
     ),
     url(
+        regex=r'^documents/upload/$', name='document-upload',
+        view=APIDocumentUploadView.as_view()
+    ),
+    url(
         regex=r'^documents/(?P<document_id>[0-9]+)/$',
         name='document-detail',
         view=APIDocumentDetailView.as_view()
     ),
     url(
         regex=r'^documents/(?P<document_id>[0-9]+)/type/change/$',
-        name='document-type-change', view=APIDocumentTypeChangeView.as_view()
+        name='document-change-type', view=APIDocumentChangeTypeView.as_view()
     ),
     url(
         regex=r'^documents/recent/$', name='document-recent-list',

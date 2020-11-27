@@ -1,88 +1,94 @@
-from django.utils.encoding import force_text
-
 from rest_framework import status
 
 from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
-from ..models import Document, DocumentType
+from ..events import (
+    event_document_created, event_document_edited,
+    event_document_file_created, event_document_file_edited,
+    event_document_type_changed, event_document_version_created,
+    event_document_version_page_created
+)
+from ..models.document_models import Document
+from ..models.document_type_models import DocumentType
 from ..permissions import (
-    permission_document_create, permission_trashed_document_delete,
-    permission_document_properties_edit, permission_trashed_document_restore,
-    permission_document_trash, permission_document_view
+    permission_document_create, permission_document_properties_edit,
+    permission_document_view
 )
 
-from .literals import (
-    TEST_DOCUMENT_DESCRIPTION_EDITED, TEST_PDF_DOCUMENT_FILENAME,
-    TEST_DOCUMENT_TYPE_2_LABEL
-)
+from .literals import TEST_DOCUMENT_TYPE_2_LABEL
 from .mixins.document_mixins import (
     DocumentAPIViewTestMixin, DocumentTestMixin
 )
-from .mixins.trashed_document_mixins import TrashedDocumentAPIViewTestMixin
 
 
 class DocumentAPIViewTestCase(
     DocumentAPIViewTestMixin, DocumentTestMixin, BaseAPITestCase
 ):
+    _test_event_object_name = 'test_document'
     auto_upload_test_document = False
 
-    def test_document_api_upload_view_no_permission(self):
-        response = self._request_test_document_upload_api_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+    def test_document_create_api_view_no_permission(self):
+        self._clear_events()
 
-    def test_document_api_upload_view_with_access(self):
-        self.grant_access(
-            obj=self.test_document_type, permission=permission_document_create
+        document_count = Document.objects.count()
+
+        response = self._request_test_document_create_api_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        self.assertEqual(
+            Document.objects.count(), document_count
         )
 
-        response = self._request_test_document_upload_api_view()
+        event = self._get_test_object_event()
+        self.assertEqual(event, None)
+
+    def test_document_create_api_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document_type,
+            permission=permission_document_create
+        )
+
+        document_count = Document.objects.count()
+
+        self._clear_events()
+
+        response = self._request_test_document_create_api_view()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
-        self.assertEqual(Document.objects.count(), 1)
-
-        document = Document.objects.first()
-
-        # Correct document PK
-        self.assertEqual(document.pk, response.data['id'])
-
-        # Document initial file uploaded correctly
-        self.assertEqual(document.files.count(), 1)
-
-        # Document's file exists in the document storage
-        self.assertEqual(document.file_latest.exists(), True)
-
-        # And is of the expected size
-        self.assertEqual(document.file_latest.size, 272213)
-
-        # Correct mimetype
-        self.assertEqual(document.file_latest.mimetype, 'application/pdf')
-
-        # Check document file encoding
-        self.assertEqual(document.file_latest.encoding, 'binary')
-        self.assertEqual(document.label, TEST_PDF_DOCUMENT_FILENAME)
         self.assertEqual(
-            document.file_latest.checksum,
-            'c637ffab6b8bb026ed3784afdb07663fddc60099853fae2be93890852a69ecf3'
+            Document.objects.count(), document_count + 1
         )
-        self.assertEqual(document.page_count, 47)
 
-    def test_document_document_type_change_api_via_no_permission(self):
+        event = self._get_test_object_event()
+        self.assertEqual(event.action_object, self.test_document_type)
+        self.assertEqual(event.actor, self._test_case_user)
+        self.assertEqual(event.target, self.test_document)
+        self.assertEqual(event.verb, event_document_created.id)
+
+    def test_document_change_type_api_view_no_permission(self):
         self._upload_test_document()
+
         self.test_document_type_2 = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE_2_LABEL
         )
 
-        response = self._request_test_document_type_change_api_view()
+        self._clear_events()
+
+        response = self._request_test_document_change_type_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.test_document.refresh_from_db()
-        self.assertEqual(
+        self.assertNotEqual(
             self.test_document.document_type,
-            self.test_document_type
+            self.test_document_type_2
         )
 
-    def test_document_document_type_change_api_via_with_access(self):
+        event = self._get_test_object_event()
+        self.assertEqual(event, None)
+
+    def test_document_change_type_api_view_with_access(self):
         self._upload_test_document()
+
         self.grant_access(
             obj=self.test_document,
             permission=permission_document_properties_edit
@@ -91,7 +97,9 @@ class DocumentAPIViewTestCase(
             label=TEST_DOCUMENT_TYPE_2_LABEL
         )
 
-        response = self._request_test_document_type_change_api_view()
+        self._clear_events()
+
+        response = self._request_test_document_change_type_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.test_document.refresh_from_db()
@@ -100,178 +108,258 @@ class DocumentAPIViewTestCase(
             self.test_document_type_2
         )
 
-    def test_document_description_api_edit_via_patch_view_no_permission(self):
+        events = self._get_test_object_events()
+        # Only the change event, should not have an event for the first
+        # .save() method call.
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, self.test_document_type_2)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_document)
+        self.assertEqual(events[0].verb, event_document_type_changed.id)
+
+    def test_document_detail_api_view_no_permission(self):
         self._upload_test_document()
 
-        response = self._request_test_document_description_edit_via_patch_api_view()
+        self._clear_events()
+
+        response = self._request_test_document_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-    def test_document_description_api_edit_via_patch_view_with_access(self):
+        event = self._get_test_object_event()
+        self.assertEqual(event, None)
+
+    def test_document_detail_api_view_with_access(self):
         self._upload_test_document()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_view
+        )
+
+        self._clear_events()
+
+        response = self._request_test_document_detail_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.assertEqual(
+            response.data['id'], self.test_document.pk
+        )
+
+        event = self._get_test_object_event()
+        self.assertEqual(event, None)
+
+    def test_document_edit_via_patch_api_view_no_permission(self):
+        self._upload_test_document()
+
+        document_description = self.test_document.description
+
+        self._clear_events()
+
+        response = self._request_test_document_edit_via_patch_api_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        self.test_document.refresh_from_db()
+        self.assertEqual(
+            self.test_document.description, document_description
+        )
+
+        event = self._get_test_object_event()
+        self.assertEqual(event, None)
+
+    def test_document_edit_via_patch_api_view_with_access(self):
+        self._upload_test_document()
+
+        document_description = self.test_document.description
+
         self.grant_access(
             obj=self.test_document,
             permission=permission_document_properties_edit
         )
 
-        response = self._request_test_document_description_edit_via_patch_api_view()
+        self._clear_events()
+
+        response = self._request_test_document_edit_via_patch_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.test_document.refresh_from_db()
-        self.assertEqual(
-            self.test_document.description,
-            TEST_DOCUMENT_DESCRIPTION_EDITED
+        self.assertNotEqual(
+            self.test_document.description, document_description
         )
 
-    def test_document_description_api_edit_via_put_view_no_permission(self):
+        event = self._get_test_object_event()
+        self.assertEqual(event.action_object, None)
+        self.assertEqual(event.actor, self._test_case_user)
+        self.assertEqual(event.target, self.test_document)
+        self.assertEqual(event.verb, event_document_edited.id)
+
+    def test_document_edit_via_put_api_view_no_permission(self):
         self._upload_test_document()
 
-        response = self._request_test_document_description_edit_via_put_api_view()
+        document_description = self.test_document.description
+
+        self._clear_events()
+
+        response = self._request_test_document_edit_via_put_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-    def test_document_description_api_edit_via_put_view_with_access(self):
+        self.test_document.refresh_from_db()
+        self.assertEqual(
+            self.test_document.description, document_description
+        )
+
+        event = self._get_test_object_event()
+        self.assertEqual(event, None)
+
+    def test_document_edit_via_put_api_view_with_access(self):
         self._upload_test_document()
+
+        document_description = self.test_document.description
+
         self.grant_access(
             obj=self.test_document,
             permission=permission_document_properties_edit
         )
 
-        response = self._request_test_document_description_edit_via_put_api_view()
+        self._clear_events()
+
+        response = self._request_test_document_edit_via_put_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.test_document.refresh_from_db()
-        self.assertEqual(
-            self.test_document.description,
-            TEST_DOCUMENT_DESCRIPTION_EDITED
+        self.assertNotEqual(
+            self.test_document.description, document_description
         )
 
+        event = self._get_test_object_event()
+        self.assertEqual(event.action_object, None)
+        self.assertEqual(event.actor, self._test_case_user)
+        self.assertEqual(event.target, self.test_document)
+        self.assertEqual(event.verb, event_document_edited.id)
 
-class TrashedDocumentAPIViewTestCase(
-    TrashedDocumentAPIViewTestMixin, DocumentTestMixin, BaseAPITestCase
-):
-    auto_upload_test_document = False
-
-    def test_document_trash_api_view_no_permission(self):
+    def test_document_list_api_view_no_permission(self):
         self._upload_test_document()
 
-        response = self._request_test_document_trash_api_view()
-        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+        self._clear_events()
 
-    def test_document_trash_api_view_with_access(self):
-        self._upload_test_document()
-        self.grant_access(
-            obj=self.test_document, permission=permission_document_trash
-        )
-
-        response = self._request_test_document_trash_api_view()
-        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
-
-        self.assertEqual(Document.valid.count(), 0)
-        self.assertEqual(Document.trash.count(), 1)
-
-    def test_trashed_document_delete_api_view_no_permission(self):
-        self._upload_test_document()
-        self.test_document.delete()
-
-        response = self._request_test_trashed_document_delete_api_view()
-        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
-
-        self.assertEqual(Document.valid.count(), 0)
-        self.assertEqual(Document.trash.count(), 1)
-
-    def test_trashed_document_delete_api_view_with_access(self):
-        self._upload_test_document()
-        self.test_document.delete()
-        self.grant_access(
-            obj=self.test_document,
-            permission=permission_trashed_document_delete
-        )
-
-        response = self._request_test_trashed_document_delete_api_view()
-        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
-
-        self.assertEqual(Document.valid.count(), 0)
-        self.assertEqual(Document.trash.count(), 0)
-
-    def test_trashed_document_detail_api_view_no_permission(self):
-        self._upload_test_document()
-        self.test_document.delete()
-
-        response = self._request_test_trashed_document_detail_api_view()
-        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
-        self.assertFalse('uuid' in response.data)
-
-    def test_trashed_document_detail_api_view_with_access(self):
-        self._upload_test_document()
-        self.test_document.delete()
-        self.grant_access(
-            obj=self.test_document, permission=permission_document_view
-        )
-
-        response = self._request_test_trashed_document_detail_api_view()
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(
-            response.data['uuid'], force_text(s=self.test_document.uuid)
-        )
-
-    def test_trashed_document_image_api_view_no_permission(self):
-        self._upload_test_document()
-        self.test_document.delete()
-
-        response = self._request_test_trashed_document_image_api_view()
-        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
-
-    def test_trashed_document_image_api_view_with_access(self):
-        self._upload_test_document()
-        self.test_document.delete()
-        self.grant_access(
-            obj=self.test_document, permission=permission_document_view
-        )
-
-        response = self._request_test_trashed_document_image_api_view()
+        response = self._request_test_document_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-    def test_trashed_document_list_api_view_no_permission(self):
-        self._upload_test_document()
-        self.test_document.delete()
-
-        response = self._request_test_trashed_document_list_api_view()
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['count'], 0)
 
-    def test_trashed_document_list_api_view_with_access(self):
+        event = self._get_test_object_event()
+        self.assertEqual(event, None)
+
+    def test_document_list_api_view_with_access(self):
         self._upload_test_document()
-        self.test_document.delete()
+
         self.grant_access(
             obj=self.test_document, permission=permission_document_view
         )
 
-        response = self._request_test_trashed_document_list_api_view()
+        self._clear_events()
+
+        response = self._request_test_document_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+
         self.assertEqual(
-            response.data['results'][0]['uuid'],
-            force_text(s=self.test_document.uuid)
+            response.data['results'][0]['id'], self.test_document.pk
         )
 
-    def test_trashed_document_restore_api_view_no_permission(self):
-        self._upload_test_document()
-        self.test_document.delete()
+        event = self._get_test_object_event()
+        self.assertEqual(event, None)
 
-        response = self._request_test_trashed_document_restore_api_view()
+    def test_document_upload_api_view_no_permission(self):
+        self._clear_events()
+
+        document_count = Document.objects.count()
+
+        response = self._request_test_document_upload_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-        self.assertEqual(Document.trash.count(), 1)
-        self.assertEqual(Document.valid.count(), 0)
-
-    def test_trashed_document_restore_api_view_with_access(self):
-        self._upload_test_document()
-        self.test_document.delete()
-
-        self.grant_access(
-            obj=self.test_document,
-            permission=permission_trashed_document_restore
+        self.assertEqual(
+            Document.objects.count(), document_count
         )
-        response = self._request_test_trashed_document_restore_api_view()
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        self.assertEqual(Document.trash.count(), 0)
-        self.assertEqual(Document.valid.count(), 1)
+        event = self._get_test_object_event()
+        self.assertEqual(event, None)
+
+    def test_document_upload_api_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document_type, permission=permission_document_create
+        )
+
+        self._clear_events()
+
+        document_count = Document.objects.count()
+
+        response = self._request_test_document_upload_api_view()
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+        self.assertEqual(
+            Document.objects.count(), document_count + 1
+        )
+
+        self.assertEqual(self.test_document.pk, response.data['id'])
+        self.assertEqual(
+            self.test_document.label, self.test_document.file_latest.filename
+        )
+        self.assertEqual(self.test_document.page_count, 1)
+
+        self.assertEqual(self.test_document.files.count(), 1)
+        self.assertEqual(self.test_document.file_latest.exists(), True)
+        self.assertEqual(self.test_document.file_latest.size, 17436)
+        self.assertEqual(
+            self.test_document.file_latest.mimetype, 'image/png'
+        )
+        self.assertEqual(self.test_document.file_latest.encoding, 'binary')
+        self.assertEqual(
+            self.test_document.file_latest.checksum,
+            'efa10e6cc21f83078aaa94d5cbe51de67b51af706143bafc7fd6d4c02124879a'
+        )
+
+        events = self._get_test_events()
+
+        # Document created
+
+        self.assertEqual(events[0].action_object, self.test_document_type)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_document)
+        self.assertEqual(events[0].verb, event_document_created.id)
+
+        # Document file created
+
+        self.assertEqual(events[1].action_object, self.test_document)
+        self.assertEqual(events[1].actor, self._test_case_user)
+        self.assertEqual(events[1].target, self.test_document.file_latest)
+        self.assertEqual(events[1].verb, event_document_file_created.id)
+
+        # Document file edited (MIME type, page count update)
+
+        self.assertEqual(events[2].action_object, self.test_document)
+        self.assertEqual(events[2].actor, self.test_document.file_latest)
+        self.assertEqual(events[2].target, self.test_document.file_latest)
+        self.assertEqual(events[2].verb, event_document_file_edited.id)
+
+        # Document version created
+
+        self.assertEqual(events[3].action_object, self.test_document)
+        self.assertEqual(events[3].actor, self.test_document.version_active)
+        self.assertEqual(events[3].target, self.test_document.version_active)
+        self.assertEqual(events[3].verb, event_document_version_created.id)
+
+        # Document version page created
+
+        self.assertEqual(
+            events[4].actor,
+            self.test_document.version_active.version_pages.first()
+        )
+        self.assertEqual(
+            events[4].action_object, self.test_document.version_active
+        )
+        self.assertEqual(
+            events[4].target, self.test_document.version_active.pages.first()
+        )
+        self.assertEqual(
+            events[4].verb, event_document_version_page_created.id
+        )

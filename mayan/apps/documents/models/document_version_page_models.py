@@ -46,15 +46,21 @@ class DocumentVersionPage(
 
     document_version = models.ForeignKey(
         on_delete=models.CASCADE, related_name='version_pages',
-        to=DocumentVersion, verbose_name=_('Document version'),
+        to=DocumentVersion, verbose_name=_('Document version')
     )
     page_number = models.PositiveIntegerField(
-        db_index=True, default=1, verbose_name=_('Page number')
+        db_index=True, default=1, help_text=_(
+            'Unique integer number for the page. Pages are ordered by '
+            'this number.'
+        ), verbose_name=_('Page number')
     )
     content_type = models.ForeignKey(
+        help_text=_('Content type for the source object of the page.'),
         on_delete=models.CASCADE, to=ContentType
     )
-    object_id = models.PositiveIntegerField()
+    object_id = models.PositiveIntegerField(
+        help_text=_('ID for the source object of the page.')
+    )
     content_object = GenericForeignKey(
         ct_field='content_type', fk_field='object_id'
     )
