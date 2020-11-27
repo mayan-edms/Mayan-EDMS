@@ -10,7 +10,7 @@ from django.utils.translation import ugettext_lazy as _
 from actstream.models import Action
 
 from mayan.apps.common.signals import signal_mayan_pre_save
-from mayan.apps.documents.events import event_document_create
+from mayan.apps.documents.events import event_document_created
 from mayan.apps.documents.models import Document, DocumentFile
 from mayan.apps.user_management.querysets import get_user_queryset
 
@@ -114,7 +114,7 @@ class DocumentCountQuota(
             ),
         )
         action_filter_kwargs = {
-            'verb': event_document_create.id
+            'verb': event_document_created.id
         }
         document_filter_kwargs = {}
 

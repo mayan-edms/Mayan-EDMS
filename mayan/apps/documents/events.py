@@ -6,11 +6,11 @@ namespace = EventTypeNamespace(label=_('Documents'), name='documents')
 
 # Document
 
-event_document_create = namespace.add_event_type(
+event_document_created = namespace.add_event_type(
     label=_('Document created'), name='document_create'
 )
-event_document_properties_edit = namespace.add_event_type(
-    label=_('Document properties edited'), name='document_edit'
+event_document_edited = namespace.add_event_type(
+    label=_('Document edited'), name='document_edit'
 )
 event_document_viewed = namespace.add_event_type(
     label=_('Document viewed'), name='document_view'

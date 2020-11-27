@@ -41,9 +41,9 @@ from .dashboard_widgets import (
     DashboardWidgetDocumentsTypesTotal,
 )
 from .events import (
-    event_document_create, event_document_file_created,
+    event_document_created, event_document_file_created,
     event_document_file_deleted, event_document_file_downloaded,
-    event_document_file_edited, event_document_properties_edit,
+    event_document_file_edited, event_document_edited,
     event_document_type_changed, event_document_type_edited,
     event_document_type_quick_label_created,
     event_document_type_quick_label_deleted,
@@ -285,7 +285,7 @@ class DocumentsApp(MayanAppConfig):
 
         ModelEventType.register(
             model=Document, event_types=(
-                event_document_properties_edit, event_document_type_changed,
+                event_document_edited, event_document_type_changed,
                 event_document_file_deleted, event_document_version_deleted,
                 event_document_viewed
             )
@@ -298,7 +298,7 @@ class DocumentsApp(MayanAppConfig):
         )
         ModelEventType.register(
             model=DocumentType, event_types=(
-                event_document_create,
+                event_document_created,
                 event_document_type_edited,
                 event_document_type_quick_label_created
             )

@@ -1,6 +1,6 @@
 import json
 
-from mayan.apps.documents.events import event_document_properties_edit
+from mayan.apps.documents.events import event_document_edited
 from mayan.apps.documents.tests.base import GenericDocumentTestCase
 from mayan.apps.events.classes import EventType
 from mayan.apps.testing.tests.base import BaseTestCase
@@ -181,7 +181,7 @@ class WorkflowStateActionModelTestCase(
         EventType.refresh()
 
         self.test_workflow_transition.trigger_events.create(
-            event_type=event_document_properties_edit.get_stored_event_type()
+            event_type=event_document_edited.get_stored_event_type()
         )
 
         self.test_workflow.launch_for(
