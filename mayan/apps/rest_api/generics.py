@@ -1,4 +1,4 @@
-from rest_framework import generics
+from rest_framework import generics as rest_framework_generics
 
 from .filters import MayanObjectPermissionsFilter
 from .mixins import (
@@ -8,14 +8,27 @@ from .mixins import (
 from .permissions import MayanPermission
 
 
-class GenericAPIView(SchemaInspectionAPIViewMixin, generics.GenericAPIView):
+class GenericAPIView(
+    SchemaInspectionAPIViewMixin, rest_framework_generics.GenericAPIView
+):
     filter_backends = (MayanObjectPermissionsFilter,)
+    permission_classes = (MayanPermission,)
+
+
+class CreateAPIView(
+    SchemaInspectionAPIViewMixin, InstanceExtraDataAPIViewMixin,
+    SerializerExtraContextAPIViewMixin, rest_framework_generics.CreateAPIView
+):
+    """
+    requires:
+        view_permission = {'POST': ...}
+    """
     permission_classes = (MayanPermission,)
 
 
 class ListAPIView(
     SchemaInspectionAPIViewMixin, SerializerExtraContextAPIViewMixin,
-    generics.ListAPIView
+    rest_framework_generics.ListAPIView
 ):
     """
     requires:
@@ -30,7 +43,8 @@ class ListAPIView(
 
 class ListCreateAPIView(
     SchemaInspectionAPIViewMixin, InstanceExtraDataAPIViewMixin,
-    SerializerExtraContextAPIViewMixin, generics.ListCreateAPIView
+    SerializerExtraContextAPIViewMixin,
+    rest_framework_generics.ListCreateAPIView
 ):
     """
     requires:
@@ -43,7 +57,8 @@ class ListCreateAPIView(
 
 class RetrieveAPIView(
     SchemaInspectionAPIViewMixin, InstanceExtraDataAPIViewMixin,
-    SerializerExtraContextAPIViewMixin, generics.RetrieveAPIView
+    SerializerExtraContextAPIViewMixin,
+    rest_framework_generics.RetrieveAPIView
 ):
     """
     requires:
@@ -56,7 +71,8 @@ class RetrieveAPIView(
 
 class RetrieveDestroyAPIView(
     SchemaInspectionAPIViewMixin, InstanceExtraDataAPIViewMixin,
-    SerializerExtraContextAPIViewMixin, generics.RetrieveDestroyAPIView
+    SerializerExtraContextAPIViewMixin,
+    rest_framework_generics.RetrieveDestroyAPIView
 ):
     """
     requires:
@@ -70,7 +86,8 @@ class RetrieveDestroyAPIView(
 
 class RetrieveUpdateAPIView(
     SchemaInspectionAPIViewMixin, InstanceExtraDataAPIViewMixin,
-    SerializerExtraContextAPIViewMixin, generics.RetrieveUpdateAPIView
+    SerializerExtraContextAPIViewMixin,
+    rest_framework_generics.RetrieveUpdateAPIView
 ):
     """
     requires:
@@ -85,7 +102,8 @@ class RetrieveUpdateAPIView(
 
 class RetrieveUpdateDestroyAPIView(
     SchemaInspectionAPIViewMixin, InstanceExtraDataAPIViewMixin,
-    SerializerExtraContextAPIViewMixin, generics.RetrieveUpdateDestroyAPIView
+    SerializerExtraContextAPIViewMixin,
+    rest_framework_generics.RetrieveUpdateDestroyAPIView
 ):
     """
     requires:
