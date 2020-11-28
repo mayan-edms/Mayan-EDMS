@@ -210,8 +210,12 @@ class FavoriteDocumentManager(models.Manager):
             user=user, document=document
         )
 
-        old_favorites_to_delete = self.filter(user=user).values_list('pk', flat=True)[setting_favorite_count.value:]
-        self.filter(pk__in=list(old_favorites_to_delete)).delete()
+        # Delete old (by date) favorites in excess of the values of
+        # setting_favorite_count.
+        favorites_to_delete = self.filter(user=user).values('pk').order_by(
+            '-datetime_added'
+        )[setting_favorite_count.value:]
+        self.filter(pk__in=favorites_to_delete).delete()
 
         return favorite_document
 

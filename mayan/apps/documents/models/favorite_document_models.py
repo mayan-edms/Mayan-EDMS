@@ -27,10 +27,14 @@ class FavoriteDocument(ModelInstanceExtraDataAPIViewMixin, models.Model):
         editable=False, on_delete=models.CASCADE, related_name='favorites',
         to=Document, verbose_name=_('Document')
     )
+    datetime_added = models.DateTimeField(
+        auto_now=True, db_index=True, verbose_name=_('Date and time added')
+    )
 
     objects = FavoriteDocumentManager()
 
     class Meta:
+        ordering = ('datetime_added',)
         verbose_name = _('Favorite document')
         verbose_name_plural = _('Favorite documents')
 

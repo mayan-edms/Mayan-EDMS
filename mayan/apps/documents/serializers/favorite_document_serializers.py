@@ -27,5 +27,7 @@ class FavoriteDocumentSerializer(
                 'view_name': 'rest_api:favoritedocument-detail'
             },
         }
-        fields = ('document', 'document_id', 'id', 'user', 'url')
+        fields = (
+            'document', 'document_id', 'datetime_added', 'id', 'user', 'url'
+        )
         model = FavoriteDocument

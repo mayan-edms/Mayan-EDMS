@@ -101,3 +101,5 @@
 - Rename the ``misc_models.py`` module to ``duplicated_document_models.py``.
 - Split the ``document_api_views.py`` modules into ``document_api_views.py``
   and ``trashed_document_api_views.py``.
+- Add date time field to the favorite documents models to ensure deterministic
+  ordering when deleting the oldest favorites.
