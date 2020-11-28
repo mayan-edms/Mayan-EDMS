@@ -1,4 +1,4 @@
-from ..models import DuplicatedDocument
+from ..models.duplicated_document_models import DuplicatedDocument
 
 from .base import GenericDocumentTestCase
 

@@ -98,3 +98,4 @@
   manager.
 - Add the recently created document API.
 - Add favorite documents API.
+- Rename the ``misc_models.py`` module to ``duplicated_document_models.py``.

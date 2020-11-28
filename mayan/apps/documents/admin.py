@@ -4,7 +4,7 @@ from .models.document_models import TrashedDocument, Document
 from .models.document_file_models import DocumentFile
 from .models.document_file_page_models import DocumentFilePage
 from .models.document_type_models import DocumentType, DocumentTypeFilename
-from .models.misc_models import DuplicatedDocument
+from .models.duplicated_document_models import DuplicatedDocument
 from .models.recently_accessed_document_models import RecentlyAccessedDocument
 
 
