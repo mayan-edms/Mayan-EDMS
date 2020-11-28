@@ -2,8 +2,7 @@ from django.conf.urls import url
 
 from .api_views.document_api_views import (
     APIDocumentDetailView, APIDocumentListView, APIDocumentChangeTypeView,
-    APIDocumentUploadView, APITrashedDocumentListView,
-    APITrashedDocumentRestoreView, APITrashedDocumentDetailView
+    APIDocumentUploadView
 )
 from .api_views.document_file_api_views import (
     APIDocumentFileDetailView, APIDocumentFileDownloadView,
@@ -28,6 +27,10 @@ from .api_views.recently_accessed_document_api_views import (
 )
 from .api_views.recently_created_document_api_views import (
     APIRecentlyCreatedDocumentListView
+)
+from .api_views.trashed_document_api_views import (
+    APITrashedDocumentListView, APITrashedDocumentRestoreView,
+    APITrashedDocumentDetailView
 )
 from .views.document_file_views import (
     DocumentFileDeleteView, DocumentFileDownloadView, DocumentFileEditView,

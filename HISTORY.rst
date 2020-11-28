@@ -99,3 +99,5 @@
 - Add the recently created document API.
 - Add favorite documents API.
 - Rename the ``misc_models.py`` module to ``duplicated_document_models.py``.
+- Split the ``document_api_views.py`` modules into ``document_api_views.py``
+  and ``trashed_document_api_views.py``.
