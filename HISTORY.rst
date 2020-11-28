@@ -97,3 +97,4 @@
 - Move the recently created document query calculation to it own model
   manager.
 - Add the recently created document API.
+- Add favorite documents API.

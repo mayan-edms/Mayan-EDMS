@@ -3,12 +3,12 @@ from ..permissions import permission_document_view
 
 from .base import GenericDocumentViewTestCase
 from .mixins.favorite_document_mixins import (
-    FavoriteDocumentsTestMixin, FavoriteDocumentsViewTestMixin
+    FavoriteDocumentTestMixin, FavoriteDocumentsViewTestMixin
 )
 
 
 class FavoriteDocumentsTestCase(
-    FavoriteDocumentsTestMixin, FavoriteDocumentsViewTestMixin,
+    FavoriteDocumentTestMixin, FavoriteDocumentsViewTestMixin,
     GenericDocumentViewTestCase
 ):
     def test_document_add_to_favorites_view_no_permission(self):

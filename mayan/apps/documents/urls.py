@@ -20,6 +20,9 @@ from .api_views.document_version_api_views import (
     APIDocumentVersionListView, APIDocumentVersionPageDetailView,
     APIDocumentVersionPageImageView, APIDocumentVersionPageListView
 )
+from .api_views.favorite_document_api_views import (
+    APIFavoriteDocumentDetailView, APIFavoriteDocumentListView
+)
 from .api_views.recently_accessed_document_api_views import (
     APIRecentlyAccessedDocumentListView
 )
@@ -559,6 +562,16 @@ api_urls_documents = [
         regex=r'^documents/created/$',
         name='recentlycreateddocument-list',
         view=APIRecentlyCreatedDocumentListView.as_view()
+    ),
+    url(
+        regex=r'^documents/favorites/$',
+        name='favoritedocument-list',
+        view=APIFavoriteDocumentListView.as_view()
+    ),
+    url(
+        regex=r'^documents/favorites/(?P<favorite_document_id>[0-9]+)/$',
+        name='favoritedocument-detail',
+        view=APIFavoriteDocumentDetailView.as_view()
     )
 ]
 

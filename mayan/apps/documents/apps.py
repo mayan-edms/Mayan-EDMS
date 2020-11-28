@@ -198,7 +198,6 @@ class DocumentsApp(MayanAppConfig):
     def ready(self):
         super().ready()
 
-        TrashedDocument = self.get_model(model_name='TrashedDocument')
         Document = self.get_model(model_name='Document')
         DocumentSearchResult = self.get_model(
             model_name='DocumentSearchResult'
@@ -221,12 +220,16 @@ class DocumentsApp(MayanAppConfig):
             model_name='DocumentVersionPageSearchResult'
         )
         DuplicatedDocument = self.get_model(model_name='DuplicatedDocument')
+        FavoriteDocument = self.get_model(
+            model_name='FavoriteDocument'
+        )
         RecentlyAccessedDocument = self.get_model(
             model_name='RecentlyAccessedDocument'
         )
         RecentlyCreatedDocument = self.get_model(
             model_name='RecentlyCreatedDocument'
         )
+        TrashedDocument = self.get_model(model_name='TrashedDocument')
 
         AJAXTemplate(
             name='invalid_document',
@@ -243,7 +246,6 @@ class DocumentsApp(MayanAppConfig):
             serializer_class='mayan.apps.documents.serializers.document_serializers.DocumentSerializer'
         )
 
-        EventModelRegistry.register(model=TrashedDocument)
         EventModelRegistry.register(model=Document)
         EventModelRegistry.register(model=DocumentFile)
         EventModelRegistry.register(model=DocumentFilePage)
@@ -251,6 +253,7 @@ class DocumentsApp(MayanAppConfig):
         EventModelRegistry.register(model=DocumentTypeFilename)
         EventModelRegistry.register(model=DocumentVersion)
         EventModelRegistry.register(model=DocumentVersionPage)
+        EventModelRegistry.register(model=TrashedDocument)
 
         MissingItem(
             label=_('Create a document type'),
@@ -452,6 +455,9 @@ class DocumentsApp(MayanAppConfig):
         )
         ModelPermission.register_inheritance(
             model=DocumentTypeFilename, related='document_type',
+        )
+        ModelPermission.register_inheritance(
+            model=FavoriteDocument, related='document',
         )
 
         model_query_fields_document = ModelQueryFields(model=Document)

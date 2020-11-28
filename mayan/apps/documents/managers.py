@@ -213,6 +213,8 @@ class FavoriteDocumentManager(models.Manager):
         old_favorites_to_delete = self.filter(user=user).values_list('pk', flat=True)[setting_favorite_count.value:]
         self.filter(pk__in=list(old_favorites_to_delete)).delete()
 
+        return favorite_document
+
     def get_by_natural_key(self, datetime_accessed, document_natural_key, user_natural_key):
         Document = apps.get_model(
             app_label='documents', model_name='Document'

@@ -1,9 +1,48 @@
-from ...models.misc_models import FavoriteDocument
+from django.db.models import Q
+
+from ...models.favorite_document_models import FavoriteDocument
 
 
-class FavoriteDocumentsTestMixin:
+class FavoriteDocumentAPIViewTestMixin:
+    def _request_test_favorite_document_create_api_view(self):
+        pk_list = list(FavoriteDocument.objects.values_list('pk', flat=True))
+
+        response = self.post(
+            viewname='rest_api:favoritedocument-list', data={
+                'document_id': self.test_document.pk
+            }
+        )
+
+        try:
+            self.test_favorite_document = FavoriteDocument.objects.get(
+                ~Q(pk__in=pk_list)
+            )
+        except FavoriteDocument.DoesNotExist:
+            self.test_favorite_document = None
+
+        return response
+
+    def _request_test_favorite_document_delete_api_view(self):
+        return self.delete(
+            viewname='rest_api:favoritedocument-detail', kwargs={
+                'favorite_document_id': self.test_favorite_document.pk
+            }
+        )
+
+    def _request_test_favorite_document_detail_api_view(self):
+        return self.get(
+            viewname='rest_api:favoritedocument-detail', kwargs={
+                'favorite_document_id': self.test_favorite_document.pk
+            }
+        )
+
+    def _request_test_favorite_document_list_api_view(self):
+        return self.get(viewname='rest_api:favoritedocument-list')
+
+
+class FavoriteDocumentTestMixin:
     def _document_add_to_favorites(self):
-        FavoriteDocument.objects.add_for_user(
+        self.test_favorite_document = FavoriteDocument.objects.add_for_user(
             document=self.test_document, user=self._test_case_user
         )
 
