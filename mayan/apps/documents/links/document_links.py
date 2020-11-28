@@ -3,9 +3,9 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.navigation.classes import Link
 
 from ..icons import (
-    icon_document_edit, icon_document_list_recent_access, icon_document_list,
+    icon_document_edit, icon_document_recently_accessed_list, icon_document_list,
     icon_document_preview, icon_document_properties,
-    icon_document_type_change, icon_recent_added_document_list
+    icon_document_type_change, icon_document_recently_created_list
 )
 from ..permissions import (
     permission_document_properties_edit, permission_document_view
@@ -21,13 +21,13 @@ link_document_list = Link(
     icon=icon_document_list,
     text=_('All documents'), view='documents:document_list'
 )
-link_document_list_recent_access = Link(
-    icon=icon_document_list_recent_access, text=_('Recently accessed'),
-    view='documents:document_list_recent_access'
+link_document_recently_accessed_list = Link(
+    icon=icon_document_recently_accessed_list, text=_('Recently accessed'),
+    view='documents:document_recently_accessed_list'
 )
-link_document_list_recent_added = Link(
-    icon=icon_recent_added_document_list, text=_('Recently added'),
-    view='documents:document_list_recent_added'
+link_document_recently_created_list = Link(
+    icon=icon_document_recently_created_list, text=_('Recently created'),
+    view='documents:document_recently_created_list'
 )
 link_document_multiple_type_change = Link(
     text=_('Change type'), icon=icon_document_type_change,

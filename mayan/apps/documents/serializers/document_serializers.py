@@ -50,7 +50,7 @@ class DocumentSerializer(
             },
         }
         fields = (
-            'date_added', 'description', 'document_change_type_url',
+            'datetime_created', 'description', 'document_change_type_url',
             'document_type', 'document_type_id', 'file_list_url', 'id', 'label',
             'language', 'file_latest', 'pk', 'url', 'uuid',
             'version_active', 'version_list_url'
@@ -94,7 +94,7 @@ class DocumentUploadSerializer(DocumentSerializer):
     class Meta(DocumentSerializer.Meta):
         create_only_fields = ('document_type_id', 'file')
         fields = (
-            'date_added', 'description', 'document_change_type_url',
+            'datetime_created', 'description', 'document_change_type_url',
             'document_type', 'document_type_id', 'file', 'file_list_url',
             'id', 'label', 'language', 'file_latest', 'pk', 'url', 'uuid',
             'version_active', 'version_list_url'
@@ -120,7 +120,7 @@ class TrashedDocumentSerializer(serializers.HyperlinkedModelSerializer):
             }
         }
         fields = (
-            'date_added', 'description', 'document_type',
+            'datetime_created', 'description', 'document_type',
             'document_type_label', 'id', 'label', 'language', 'restore',
             'trashed_date_time', 'url', 'uuid'
         )

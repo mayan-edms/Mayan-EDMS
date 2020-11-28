@@ -9,7 +9,7 @@ from ..permissions import permission_document_view
 
 class APIRecentlyAccessedDocumentListView(generics.ListAPIView):
     """
-    get: Return a list of the recent documents for the current user.
+    get: Return a list of the recently accessed documents for the current user.
     """
     mayan_object_permissions = {
         'GET': (permission_document_view,)

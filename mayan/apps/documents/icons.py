@@ -47,7 +47,7 @@ icon_document_list = Icon(driver_name='fontawesome', symbol='book')
 icon_document_list_deleted = Icon(
     driver_name='fontawesome', symbol='trash-alt'
 )
-icon_document_list_recent_access = Icon(
+icon_document_recently_accessed_list = Icon(
     driver_name='fontawesome', symbol='clock'
 )
 icon_document_return = Icon(
@@ -294,7 +294,7 @@ icon_duplicated_document_scan = Icon(
     secondary_class='far fa-eye'
 )
 
-icon_recent_added_document_list = Icon(
+icon_document_recently_created_list = Icon(
     driver_name='fontawesome', symbol='asterisk'
 )
 

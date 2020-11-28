@@ -61,8 +61,8 @@ from .handlers import (
 )
 from .links.document_links import (
     link_document_type_change, link_document_properties_edit,
-    link_document_list, link_document_list_recent_access,
-    link_document_list_recent_added, link_document_multiple_type_change,
+    link_document_list, link_document_recently_accessed_list,
+    link_document_recently_created_list, link_document_multiple_type_change,
     link_document_preview, link_document_properties
 )
 from .links.document_file_links import (
@@ -224,6 +224,9 @@ class DocumentsApp(MayanAppConfig):
         RecentlyAccessedDocument = self.get_model(
             model_name='RecentlyAccessedDocument'
         )
+        RecentlyCreatedDocument = self.get_model(
+            model_name='RecentlyCreatedDocument'
+        )
 
         AJAXTemplate(
             name='invalid_document',
@@ -327,7 +330,7 @@ class DocumentsApp(MayanAppConfig):
         )
 
         ModelField(model=Document, name='description')
-        ModelField(model=Document, name='date_added')
+        ModelField(model=Document, name='datetime_created')
         ModelField(model=Document, name='trashed_date_time')
         ModelField(
             model=Document, name='document_type'
@@ -525,15 +528,19 @@ class DocumentsApp(MayanAppConfig):
                 document=context['object']
             ), label=_('Pages'), source=Document
         )
-        SourceColumn(
-            attribute='date_added', include_label=True, is_sortable=True,
-            source=Document, views=('documents:document_list_recent_added',)
-        )
+
         SourceColumn(
             func=lambda context: DuplicatedDocument.objects.get(
                 document=context['object']
             ).documents.count(), include_label=True, label=_('Duplicates'),
             source=Document, views=('documents:duplicated_document_list',)
+        )
+
+        # RecentlyCreatedDocument
+
+        SourceColumn(
+            attribute='datetime_created', include_label=True,
+            is_sortable=True, source=RecentlyCreatedDocument
         )
 
         # DocumentFile
@@ -669,8 +676,8 @@ class DocumentsApp(MayanAppConfig):
 
         menu_documents.bind_links(
             links=(
-                link_document_list_recent_access,
-                link_document_list_recent_added, link_document_list_favorites,
+                link_document_recently_accessed_list,
+                link_document_recently_created_list, link_document_list_favorites,
                 link_document_list, link_document_list_deleted,
                 link_duplicated_document_list,
             )

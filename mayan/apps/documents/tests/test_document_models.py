@@ -57,7 +57,7 @@ class DocumentManagerTestCase(GenericDocumentTestCase):
 
         self.assertEqual(Document.objects.count(), 1)
 
-        document_stub.date_added = document_stub.date_added - timedelta(
+        document_stub.datetime_created = document_stub.datetime_created - timedelta(
             seconds=setting_stub_expiration_interval.value + 1
         )
         document_stub.save()

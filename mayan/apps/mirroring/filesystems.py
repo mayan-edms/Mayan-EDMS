@@ -245,7 +245,7 @@ class IndexFilesystem(LoggingMixIn, Operations):
             function_result = {
                 'st_mode': (S_IFREG | FILE_MODE),
                 'st_ctime': (
-                    result.date_added.replace(tzinfo=None) - result.date_added.utcoffset() - datetime.datetime(1970, 1, 1)
+                    result.datetime_created.replace(tzinfo=None) - result.datetime_created.utcoffset() - datetime.datetime(1970, 1, 1)
                 ).total_seconds(),
                 'st_mtime': (
                     result.file_latest.timestamp.replace(tzinfo=None) - result.file_latest.timestamp.utcoffset() - datetime.datetime(1970, 1, 1)

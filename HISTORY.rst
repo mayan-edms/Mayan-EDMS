@@ -90,3 +90,10 @@
   accessed document". This was done at the mode, view and API level.
   The recently accessed document API will now require the document view
   permission.
+- Rename the document model ``date_added`` field to ``datetime_created`` to
+  better reflect the purpose of the field.
+- Add a RecentlyCreatedDocument proxy and associate the recent document
+  columns to it.
+- Move the recently created document query calculation to it own model
+  manager.
+- Add the recently created document API.

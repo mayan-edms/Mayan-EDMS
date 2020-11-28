@@ -70,13 +70,13 @@ class IndexTestCase(IndexTestMixin, DocumentTestMixin, BaseTestCase):
 
         level_year = self.test_index.node_templates.create(
             parent=self.test_index.template_root,
-            expression='{{ document.date_added|date:"Y" }}',
+            expression='{{ document.datetime_created|date:"Y" }}',
             link_documents=False
         )
 
         self.test_index.node_templates.create(
             parent=level_year,
-            expression='{{ document.date_added|date:"m" }}',
+            expression='{{ document.datetime_created|date:"m" }}',
             link_documents=True
         )
         # Index the document created by default
@@ -90,8 +90,8 @@ class IndexTestCase(IndexTestMixin, DocumentTestMixin, BaseTestCase):
         self.assertEqual(
             list(IndexInstanceNode.objects.values_list('value', flat=True)),
             [
-                '', force_text(s=self.test_document.date_added.year),
-                '{:02}'.format(self.test_document.date_added.month)
+                '', force_text(s=self.test_document.datetime_created.year),
+                '{:02}'.format(self.test_document.datetime_created.month)
             ]
         )
 

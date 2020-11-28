@@ -146,7 +146,7 @@ setting_recent_access_count = namespace.add_setting(
         'documents to remember per user.'
     )
 )
-setting_recent_added_count = namespace.add_setting(
+setting_recent_created_document_count = namespace.add_setting(
     global_name='DOCUMENTS_RECENT_ADDED_COUNT', default=400,
     help_text=_(
         'Maximum number of recently created documents to show.'

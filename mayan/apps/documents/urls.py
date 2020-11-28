@@ -23,6 +23,9 @@ from .api_views.document_version_api_views import (
 from .api_views.recently_accessed_document_api_views import (
     APIRecentlyAccessedDocumentListView
 )
+from .api_views.recently_created_document_api_views import (
+    APIRecentlyCreatedDocumentListView
+)
 from .views.document_file_views import (
     DocumentFileDeleteView, DocumentFileDownloadView, DocumentFileEditView,
     DocumentFileListView, DocumentFilePrintFormView, DocumentFilePrintView,
@@ -65,8 +68,7 @@ from .views.document_version_views import (
 )
 from .views.document_views import (
     DocumentTypeChangeView, DocumentListView, DocumentPreviewView,
-    DocumentPropertiesEditView, DocumentPropertiesView,
-    RecentAddedDocumentListView
+    DocumentPropertiesEditView, DocumentPropertiesView
 )
 from .views.duplicated_document_views import (
     DocumentDuplicatesListView, DuplicatedDocumentListView,
@@ -77,6 +79,9 @@ from .views.favorite_document_views import (
 )
 from .views.recently_accessed_document_views import (
     RecentlyAccessedDocumentListView
+)
+from .views.recently_created_document_views import (
+    RecentCreatedDocumentListView
 )
 from .views.trashed_document_views import (
     DocumentTrashView, EmptyTrashCanView, TrashedDocumentDeleteView,
@@ -400,14 +405,14 @@ urlpatterns_documents = [
         view=DocumentListView.as_view()
     ),
     url(
-        regex=r'^documents/recent_access/$',
-        name='document_list_recent_access',
+        regex=r'^documents/recently/accessed/$',
+        name='document_recently_accessed_list',
         view=RecentlyAccessedDocumentListView.as_view()
     ),
     url(
-        regex=r'^documents/recent_added/$',
-        name='document_list_recent_added',
-        view=RecentAddedDocumentListView.as_view()
+        regex=r'^documents/recently/created/$',
+        name='document_recently_created_list',
+        view=RecentCreatedDocumentListView.as_view()
     ),
     url(
         regex=r'^documents/(?P<document_id>\d+)/preview/$',
@@ -546,9 +551,14 @@ api_urls_documents = [
         name='document-change-type', view=APIDocumentChangeTypeView.as_view()
     ),
     url(
-        regex=r'^documents/recent/access/$',
+        regex=r'^documents/accessed/$',
         name='recentlyaccesseddocument-list',
         view=APIRecentlyAccessedDocumentListView.as_view()
+    ),
+    url(
+        regex=r'^documents/created/$',
+        name='recentlycreateddocument-list',
+        view=APIRecentlyCreatedDocumentListView.as_view()
     )
 ]
 

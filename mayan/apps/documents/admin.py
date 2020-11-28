@@ -31,11 +31,11 @@ class DocumentFileInline(admin.StackedInline):
 
 @admin.register(Document)
 class DocumentAdmin(admin.ModelAdmin):
-    date_hierarchy = 'date_added'
+    date_hierarchy = 'datetime_created'
     inlines = (DocumentFileInline,)
     list_filter = ('document_type', 'is_stub')
-    list_display = ('uuid', 'label', 'document_type', 'date_added', 'is_stub')
-    readonly_fields = ('uuid', 'document_type', 'date_added')
+    list_display = ('uuid', 'label', 'document_type', 'datetime_created', 'is_stub')
+    readonly_fields = ('uuid', 'document_type', 'datetime_created')
 
 
 @admin.register(DocumentType)

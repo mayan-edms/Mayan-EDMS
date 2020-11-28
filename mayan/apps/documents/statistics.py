@@ -25,7 +25,7 @@ def get_month_name(month_number):
 def new_documents_per_month():
     Document = apps.get_model(app_label='documents', model_name='Document')
 
-    qss = qsstats.QuerySetStats(Document.objects.all(), 'date_added')
+    qss = qsstats.QuerySetStats(Document.objects.all(), 'datetime_created')
 
     now = timezone.now().date()
     start = timezone.datetime(year=now.year, month=1, day=1).date()
@@ -46,7 +46,7 @@ def new_document_pages_per_month():
     )
 
     qss = qsstats.QuerySetStats(
-        DocumentFilePage.objects.all(), 'document_file__document__date_added'
+        DocumentFilePage.objects.all(), 'document_file__document__datetime_created'
     )
 
     now = timezone.now().date()
@@ -76,7 +76,7 @@ def new_documents_this_month(user=None):
             queryset=queryset
         )
 
-    qss = qsstats.QuerySetStats(queryset, 'date_added')
+    qss = qsstats.QuerySetStats(queryset, 'datetime_created')
     return qss.this_month() or '0'
 
 
@@ -86,7 +86,7 @@ def new_document_files_per_month():
     )
 
     qss = qsstats.QuerySetStats(
-        DocumentFile.objects.all(), 'document__date_added'
+        DocumentFile.objects.all(), 'document__datetime_created'
     )
 
     now = timezone.now().date()
@@ -119,7 +119,7 @@ def new_document_pages_this_month(user=None):
         )
 
     qss = qsstats.QuerySetStats(
-        queryset, 'document_file__document__date_added'
+        queryset, 'document_file__document__datetime_created'
     )
     return qss.this_month() or '0'
 
@@ -127,7 +127,7 @@ def new_document_pages_this_month(user=None):
 def total_document_per_month():
     Document = apps.get_model(app_label='documents', model_name='Document')
 
-    qss = qsstats.QuerySetStats(Document.objects.all(), 'date_added')
+    qss = qsstats.QuerySetStats(Document.objects.all(), 'datetime_created')
     now = timezone.now()
 
     result = []
@@ -163,7 +163,7 @@ def total_document_file_per_month():
     )
 
     qss = qsstats.QuerySetStats(
-        DocumentFile.objects.all(), 'document__date_added'
+        DocumentFile.objects.all(), 'document__datetime_created'
     )
     now = timezone.now()
 
@@ -200,7 +200,7 @@ def total_document_page_per_month():
     )
 
     qss = qsstats.QuerySetStats(
-        DocumentFilePage.objects.all(), 'document_file__document__date_added'
+        DocumentFilePage.objects.all(), 'document_file__document__datetime_created'
     )
     now = timezone.now()
 

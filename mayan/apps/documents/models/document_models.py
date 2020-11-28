@@ -21,7 +21,10 @@ from ..literals import (
     DEFAULT_LANGUAGE, DOCUMENT_FILE_ACTION_PAGES_APPEND,
     DOCUMENT_FILE_ACTION_PAGES_KEEP, DOCUMENT_FILE_ACTION_PAGES_NEW
 )
-from ..managers import DocumentManager, TrashCanManager, ValidDocumentManager
+from ..managers import (
+    DocumentManager, RecentlyCreatedDocumentManager, TrashCanManager,
+    ValidDocumentManager
+)
 from ..signals import signal_post_document_type_change
 
 from .document_type_models import DocumentType
@@ -67,11 +70,11 @@ class Document(
             'An optional short text describing a document.'
         ), verbose_name=_('Description')
     )
-    date_added = models.DateTimeField(
+    datetime_created = models.DateTimeField(
         auto_now_add=True, db_index=True, help_text=_(
             'The server date and time when the document was finally '
-            'processed and added to the system.'
-        ), verbose_name=_('Added')
+            'processed and created in the system.'
+        ), verbose_name=_('Created')
     )
     language = models.CharField(
         blank=True, default=DEFAULT_LANGUAGE, help_text=_(
@@ -311,6 +314,14 @@ class Document(
 
 
 class DocumentSearchResult(Document):
+    class Meta:
+        proxy = True
+
+
+class RecentlyCreatedDocument(Document):
+    objects = models.Manager()
+    recently_created = RecentlyCreatedDocumentManager()
+
     class Meta:
         proxy = True
 

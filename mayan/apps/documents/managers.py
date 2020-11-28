@@ -8,9 +8,11 @@ from django.db.models import F, Max
 from django.utils.encoding import force_text
 from django.utils.timezone import now
 
+from mayan.apps.common.classes import ModelQueryFields
+
 from .settings import (
     setting_favorite_count, setting_recent_access_count,
-    setting_stub_expiration_interval
+    setting_recent_created_document_count, setting_stub_expiration_interval
 )
 
 logger = logging.getLogger(name=__name__)
@@ -19,7 +21,7 @@ logger = logging.getLogger(name=__name__)
 class DocumentManager(models.Manager):
     def delete_stubs(self):
         stale_stub_documents = self.filter(
-            is_stub=True, date_added__lt=now() - timedelta(
+            is_stub=True, datetime_created__lt=now() - timedelta(
                 seconds=setting_stub_expiration_interval.value
             )
         )
@@ -107,11 +109,11 @@ class DocumentTypeManager(models.Manager):
                     'Document type: %s, has a trash period delta of: %s',
                     document_type, delta
                 )
-                for document in document_type.documents.filter(date_added__lt=now() - delta):
+                for document in document_type.documents.filter(datetime_created__lt=now() - delta):
                     logger.info(
                         'Document "%s" with id: %d, added on: %s, exceeded '
                         'trash period', document, document.pk,
-                        document.date_added
+                        document.datetime_created
                     )
                     document.delete()
             else:
@@ -285,6 +287,23 @@ class RecentlyAccessedDocumentManager(models.Manager):
             ).order_by('-recent__datetime_accessed')
         else:
             return Document.objects.none()
+
+
+class RecentlyCreatedDocumentManager(models.Manager):
+    def get_queryset(self):
+        RecentlyCreatedDocument = apps.get_model(
+            app_label='documents', model_name='RecentlyCreatedDocument'
+        )
+
+        queryset = ModelQueryFields.get(
+            model=RecentlyCreatedDocument
+        ).get_queryset()
+
+        return queryset.filter(
+            pk__in=queryset.order_by('-datetime_created')[
+                :setting_recent_created_document_count.value
+            ].values('pk')
+        ).order_by('-datetime_created')
 
 
 class TrashCanManager(models.Manager):

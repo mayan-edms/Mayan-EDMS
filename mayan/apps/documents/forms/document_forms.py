@@ -101,8 +101,8 @@ class DocumentPropertiesForm(DetailForm):
 
         extra_fields = [
             {
-                'label': _('Date added'),
-                'field': 'date_added',
+                'label': _('Date created'),
+                'field': 'datetime_created',
                 'widget': forms.widgets.DateTimeInput
             },
             {'label': _('UUID'), 'field': 'uuid'},
