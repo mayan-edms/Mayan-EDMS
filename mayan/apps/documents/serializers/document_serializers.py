@@ -7,7 +7,6 @@ from mayan.apps.storage.models import SharedUploadedFile
 
 from ..models.document_models import Document
 from ..models.document_type_models import DocumentType
-from ..models.misc_models import RecentDocument
 
 from ..tasks import task_document_file_upload
 
@@ -100,12 +99,6 @@ class DocumentUploadSerializer(DocumentSerializer):
             'id', 'label', 'language', 'file_latest', 'pk', 'url', 'uuid',
             'version_active', 'version_list_url'
         )
-
-
-class RecentDocumentSerializer(serializers.ModelSerializer):
-    class Meta:
-        fields = ('document', 'datetime_accessed')
-        model = RecentDocument
 
 
 class TrashedDocumentSerializer(serializers.HyperlinkedModelSerializer):

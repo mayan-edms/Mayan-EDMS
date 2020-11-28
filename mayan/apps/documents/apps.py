@@ -221,6 +221,9 @@ class DocumentsApp(MayanAppConfig):
             model_name='DocumentVersionPageSearchResult'
         )
         DuplicatedDocument = self.get_model(model_name='DuplicatedDocument')
+        RecentlyAccessedDocument = self.get_model(
+            model_name='RecentlyAccessedDocument'
+        )
 
         AJAXTemplate(
             name='invalid_document',
@@ -437,6 +440,9 @@ class DocumentsApp(MayanAppConfig):
         )
         ModelPermission.register_inheritance(
             model=DocumentVersion, related='document',
+        )
+        ModelPermission.register_inheritance(
+            model=RecentlyAccessedDocument, related='document',
         )
         ModelPermission.register_inheritance(
             model=DocumentVersionPage, related='document_version',

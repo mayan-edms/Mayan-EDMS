@@ -86,3 +86,7 @@
   partition purge permission.
 - Added ContentTypeTestCaseMixin.
 - Include EventTestCaseMixin as part of the base test case mixin.
+- Rename usage of "recent document" to the more explicit "recently
+  accessed document". This was done at the mode, view and API level.
+  The recently accessed document API will now require the document view
+  permission.

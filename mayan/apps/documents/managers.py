@@ -239,7 +239,7 @@ class FavoriteDocumentManager(models.Manager):
         self.get(user=user, document=document).delete()
 
 
-class RecentDocumentManager(models.Manager):
+class RecentlyAccessedDocumentManager(models.Manager):
     def add_document_for_user(self, user, document):
         if user.is_authenticated:
             new_recent, created = self.model.objects.get_or_create(

@@ -126,10 +126,10 @@ class Document(
         return self.label or ugettext('Document stub, id: %d') % self.pk
 
     def add_as_recent_document_for_user(self, user):
-        RecentDocument = apps.get_model(
-            app_label='documents', model_name='RecentDocument'
+        RecentlyAccessedDocument = apps.get_model(
+            app_label='documents', model_name='RecentlyAccessedDocument'
         )
-        return RecentDocument.objects.add_document_for_user(
+        return RecentlyAccessedDocument.objects.add_document_for_user(
             document=self, user=user
         )
 

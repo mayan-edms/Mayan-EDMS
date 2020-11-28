@@ -9,7 +9,6 @@ from mayan.apps.rest_api import generics
 
 from ..models.document_models import Document, TrashedDocument
 from ..models.document_type_models import DocumentType
-from ..models.misc_models import RecentDocument
 from ..permissions import (
     permission_document_create, permission_document_properties_edit,
     permission_document_trash, permission_document_view,
@@ -17,8 +16,7 @@ from ..permissions import (
 )
 from ..serializers.document_serializers import (
     DocumentSerializer, DocumentChangeTypeSerializer,
-    DocumentUploadSerializer, RecentDocumentSerializer,
-    TrashedDocumentSerializer
+    DocumentUploadSerializer, TrashedDocumentSerializer
 )
 
 logger = logging.getLogger(name=__name__)
@@ -124,16 +122,6 @@ class APIDocumentUploadView(generics.CreateAPIView):
         return {
             '_event_actor': self.request.user
         }
-
-
-class APIRecentDocumentListView(generics.ListAPIView):
-    """
-    get: Return a list of the recent documents for the current user.
-    """
-    serializer_class = RecentDocumentSerializer
-
-    def get_queryset(self):
-        return RecentDocument.objects.filter(user=self.request.user)
 
 
 class APITrashedDocumentDetailView(generics.RetrieveDestroyAPIView):

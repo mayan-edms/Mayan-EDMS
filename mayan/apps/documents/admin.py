@@ -4,7 +4,8 @@ from .models.document_models import TrashedDocument, Document
 from .models.document_file_models import DocumentFile
 from .models.document_file_page_models import DocumentFilePage
 from .models.document_type_models import DocumentType, DocumentTypeFilename
-from .models.misc_models import DuplicatedDocument, RecentDocument
+from .models.misc_models import DuplicatedDocument
+from .models.recently_accessed_document_models import RecentlyAccessedDocument
 
 
 class DocumentFilePageInline(admin.StackedInline):
@@ -26,14 +27,6 @@ class DocumentFileInline(admin.StackedInline):
     extra = 1
     classes = ('collapse-open',)
     allow_add = True
-
-
-@admin.register(TrashedDocument)
-class TrashedDocumentAdmin(admin.ModelAdmin):
-    date_hierarchy = 'trashed_date_time'
-    list_filter = ('document_type',)
-    list_display = ('uuid', 'label', 'document_type', 'trashed_date_time')
-    readonly_fields = ('uuid', 'document_type')
 
 
 @admin.register(Document)
@@ -61,10 +54,18 @@ class DuplicatedDocumentAdmin(admin.ModelAdmin):
     )
 
 
-@admin.register(RecentDocument)
-class RecentDocumentAdmin(admin.ModelAdmin):
+@admin.register(RecentlyAccessedDocument)
+class RecentlyAccessedDocumentAdmin(admin.ModelAdmin):
     date_hierarchy = 'datetime_accessed'
     list_display = ('user', 'document', 'datetime_accessed')
     list_display_links = ('document', 'datetime_accessed')
     list_filter = ('user',)
     readonly_fields = ('user', 'document', 'datetime_accessed')
+
+
+@admin.register(TrashedDocument)
+class TrashedDocumentAdmin(admin.ModelAdmin):
+    date_hierarchy = 'trashed_date_time'
+    list_filter = ('document_type',)
+    list_display = ('uuid', 'label', 'document_type', 'trashed_date_time')
+    readonly_fields = ('uuid', 'document_type')
