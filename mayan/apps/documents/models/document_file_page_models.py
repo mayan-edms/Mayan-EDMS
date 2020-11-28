@@ -247,7 +247,7 @@ class DocumentFilePage(ModelMixinPagedModel, models.Model):
 
     @property
     def is_in_trash(self):
-        return self.document.is_in_trash
+        return self.document_file.document.is_in_trash
 
     def get_label(self):
         return _(
