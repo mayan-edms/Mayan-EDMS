@@ -15,7 +15,8 @@ from mayan.apps.events.decorators import method_event
 
 from ..events import (
     event_document_created, event_document_edited,
-    event_document_trashed, event_document_type_changed
+    event_document_trashed, event_document_type_changed,
+    event_trashed_document_deleted
 )
 from ..literals import (
     DEFAULT_LANGUAGE, DOCUMENT_FILE_ACTION_PAGES_APPEND,
@@ -30,7 +31,7 @@ from ..signals import signal_post_document_type_change
 from .document_type_models import DocumentType
 from .mixins import ModelMixinHooks
 
-__all__ = ('Document', 'DocumentSearchResult', 'TrashedDocument')
+__all__ = ('Document', 'DocumentSearchResult',)
 logger = logging.getLogger(name=__name__)
 
 
@@ -138,7 +139,7 @@ class Document(
 
     def delete(self, *args, **kwargs):
         to_trash = kwargs.pop('to_trash', True)
-        _user = kwargs.pop('_user', None)
+        user = kwargs.pop('_user', self.__dict__.pop('_event_actor', None))
 
         if not self.in_trash and to_trash:
             self.in_trash = True
@@ -146,13 +147,16 @@ class Document(
             with transaction.atomic():
                 self._event_ignore = True
                 self.save()
-                event_document_trashed.commit(actor=_user, target=self)
+                event_document_trashed.commit(actor=user, target=self)
         else:
             with transaction.atomic():
                 for document_file in self.files.all():
                     document_file.delete()
 
-                return super().delete(*args, **kwargs)
+                super().delete(*args, **kwargs)
+                event_trashed_document_deleted.commit(
+                    actor=user, target=self.document_type
+                )
 
     def document_type_change(self, document_type, force=False, _user=None):
         has_changed = self.document_type != document_type
@@ -329,14 +333,3 @@ class RecentlyCreatedDocument(Document):
 
     class Meta:
         proxy = True
-
-
-class TrashedDocument(Document):
-    objects = TrashCanManager()
-
-    class Meta:
-        proxy = True
-
-    def restore(self):
-        self.in_trash = False
-        self.save()

@@ -349,6 +349,7 @@ class DocumentTypeQuickLabelAPIViewTestCase(
         )
 
         event = self._get_test_object_event(object_name='test_document_type')
+        self.assertEqual(event.action_object, None)
         self.assertEqual(event.actor, self._test_case_user)
         self.assertEqual(event.target, self.test_document_type)
         self.assertEqual(event.verb, event_document_type_quick_label_deleted.id)

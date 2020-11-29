@@ -40,10 +40,6 @@ class DocumentSerializer(
     class Meta:
         create_only_fields = ('document_type_id',)
         extra_kwargs = {
-            'document_type': {
-                'lookup_url_kwarg': 'document_type_id',
-                'view_name': 'rest_api:documenttype-detail'
-            },
             'url': {
                 'lookup_url_kwarg': 'document_id',
                 'view_name': 'rest_api:document-detail'
@@ -52,8 +48,8 @@ class DocumentSerializer(
         fields = (
             'datetime_created', 'description', 'document_change_type_url',
             'document_type', 'document_type_id', 'file_list_url', 'id', 'label',
-            'language', 'file_latest', 'pk', 'url', 'uuid',
-            'version_active', 'version_list_url'
+            'language', 'file_latest', 'url', 'uuid', 'version_active',
+            'version_list_url'
         )
         model = Document
         read_only_fields = ('document_type',)
@@ -99,36 +95,3 @@ class DocumentUploadSerializer(DocumentSerializer):
             'id', 'label', 'language', 'file_latest', 'pk', 'url', 'uuid',
             'version_active', 'version_list_url'
         )
-
-
-class TrashedDocumentSerializer(serializers.HyperlinkedModelSerializer):
-    document_type_label = serializers.SerializerMethodField()
-    restore = serializers.HyperlinkedIdentityField(
-        lookup_url_kwarg='document_id',
-        view_name='rest_api:trasheddocument-restore'
-    )
-
-    class Meta:
-        extra_kwargs = {
-            'document_type': {
-                'lookup_url_kwarg': 'document_type_id',
-                'view_name': 'rest_api:documenttype-detail'
-            },
-            'url': {
-                'lookup_url_kwarg': 'document_id',
-                'view_name': 'rest_api:trasheddocument-detail'
-            }
-        }
-        fields = (
-            'datetime_created', 'description', 'document_type',
-            'document_type_label', 'id', 'label', 'language', 'restore',
-            'trashed_date_time', 'url', 'uuid'
-        )
-        model = Document
-        read_only_fields = (
-            'description', 'document_type', 'label', 'language',
-            'trashed_date_time'
-        )
-
-    def get_document_type_label(self, instance):
-        return instance.document_type.label

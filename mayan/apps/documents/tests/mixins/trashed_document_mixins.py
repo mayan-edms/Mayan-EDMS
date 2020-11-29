@@ -36,7 +36,14 @@ class TrashedDocumentAPIViewTestMixin:
             viewname='rest_api:trasheddocument-list'
         )
 
-    def _request_test_trashed_document_restore_api_view(self):
+    def _request_test_trashed_document_restore_via_get_api_view(self):
+        return self.get(
+            viewname='rest_api:trasheddocument-restore', kwargs={
+                'document_id': self.test_document.pk
+            }, query={'format': 'api'}
+        )
+
+    def _request_test_trashed_document_restore_via_post_api_view(self):
         return self.post(
             viewname='rest_api:trasheddocument-restore', kwargs={
                 'document_id': self.test_document.pk

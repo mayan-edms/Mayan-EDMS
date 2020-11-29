@@ -91,6 +91,12 @@ event_document_version_page_edited = namespace.add_event_type(
 event_document_trashed = namespace.add_event_type(
     label=_('Document trashed'), name='document_trashed'
 )
+event_trashed_document_deleted = namespace.add_event_type(
+    label=_('Trashed document deleted'), name='trashed_document_deleted'
+)
+event_trashed_document_restored = namespace.add_event_type(
+    label=_('Trashed document restored'), name='trashed_document_restored'
+)
 
 # Historic events
 

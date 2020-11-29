@@ -1,16 +1,13 @@
 import logging
 
-from rest_framework import status
-from rest_framework.response import Response
-
 from mayan.apps.rest_api import generics
 
-from ..models.document_models import TrashedDocument
+from ..models.trashed_document_models import TrashedDocument
 from ..permissions import (
     permission_document_view, permission_trashed_document_delete,
     permission_trashed_document_restore
 )
-from ..serializers.document_serializers import TrashedDocumentSerializer
+from ..serializers.trashed_document_serializers import TrashedDocumentSerializer
 
 logger = logging.getLogger(name=__name__)
 
@@ -29,6 +26,11 @@ class APITrashedDocumentDetailView(generics.RetrieveDestroyAPIView):
     queryset = TrashedDocument.objects.all()
     serializer_class = TrashedDocumentSerializer
 
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user
+        }
+
 
 class APITrashedDocumentListView(generics.ListAPIView):
     """
@@ -39,7 +41,7 @@ class APITrashedDocumentListView(generics.ListAPIView):
     serializer_class = TrashedDocumentSerializer
 
 
-class APITrashedDocumentRestoreView(generics.GenericAPIView):
+class APITrashedDocumentRestoreView(generics.ObjectActionAPIView):
     """
     post: Restore a trashed document.
     """
@@ -49,12 +51,10 @@ class APITrashedDocumentRestoreView(generics.GenericAPIView):
     }
     queryset = TrashedDocument.objects.all()
 
-    def get_serializer(self, *args, **kwargs):
-        return None
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user
+        }
 
-    def get_serializer_class(self):
-        return None
-
-    def post(self, *args, **kwargs):
-        self.get_object().restore()
-        return Response(status=status.HTTP_200_OK)
+    def object_action(self, request):
+        self.object.restore()

@@ -51,7 +51,8 @@ from .events import (
     event_document_version_created, event_document_version_deleted,
     event_document_version_edited, event_document_version_page_created,
     event_document_version_page_deleted, event_document_version_page_edited,
-    event_document_viewed
+    event_document_viewed, event_trashed_document_deleted,
+    event_trashed_document_restored
 )
 from .handlers import (
     handler_create_default_document_type,
@@ -296,7 +297,7 @@ class DocumentsApp(MayanAppConfig):
             model=Document, event_types=(
                 event_document_edited, event_document_type_changed,
                 event_document_file_deleted, event_document_version_deleted,
-                event_document_viewed
+                event_document_viewed, event_trashed_document_restored
             )
         )
         ModelEventType.register(
@@ -309,7 +310,8 @@ class DocumentsApp(MayanAppConfig):
             model=DocumentType, event_types=(
                 event_document_created,
                 event_document_type_edited,
-                event_document_type_quick_label_created
+                event_document_type_quick_label_created,
+                event_trashed_document_deleted
             )
         )
         ModelEventType.register(
