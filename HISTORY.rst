@@ -108,3 +108,6 @@
   to ``DOCUMENTS_RECENTLY_CREATED_COUNT``. Config file migrations and
   migration tests were added. Environment and supervisor settings need to be
   manually updated.
+- Document stubs without a label will now display their ID as the label.
+  This allows documents without files or versions to be accessible via the
+  user interface.
