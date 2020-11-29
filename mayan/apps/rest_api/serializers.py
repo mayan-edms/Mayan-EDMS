@@ -2,6 +2,10 @@ from rest_framework import serializers
 from rest_framework.reverse import reverse
 
 
+class BlankSerializer(serializers.Serializer):
+    """Serializer for the object action API view"""
+
+
 class EndpointSerializer(serializers.Serializer):
     label = serializers.CharField(read_only=True)
 
