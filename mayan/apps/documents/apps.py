@@ -930,6 +930,15 @@ class DocumentsApp(MayanAppConfig):
             ), sources=(DocumentVersionPage,)
         )
 
+        # Recently created documents
+
+        # Add one of the multi items of Document to trigger adding all.
+        menu_multi_item.bind_links(
+            links=(
+                link_document_multiple_favorites_add,
+            ), sources=(RecentlyCreatedDocument,)
+        )
+
         # Trashed documents
 
         menu_object.bind_links(
