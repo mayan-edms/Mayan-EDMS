@@ -303,8 +303,9 @@ class DocumentsApp(MayanAppConfig):
 
         # Document
         SourceColumn(
-            attribute='label', is_object_absolute_url=True, is_identifier=True,
-            is_sortable=True, source=Document
+            attribute='get_label', is_object_absolute_url=True,
+            is_identifier=True, is_sortable=True, sort_field='label',
+            source=Document
         )
         SourceColumn(
             func=lambda context: document_page_thumbnail_widget.render(

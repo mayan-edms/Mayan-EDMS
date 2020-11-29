@@ -1,3 +1,9 @@
+3.5.4 (2020-12-XX)
+==================
+- Document stubs without a label will now display their ID as the label.
+  This allows documents without files or versions to be accessible via the
+  user interface.
+
 3.5.3 (2020-11-11)
 ==================
 - Ensure the document tag list view return DocumentTag instances and not

@@ -128,7 +128,7 @@ class Document(HooksMixin, models.Model):
         verbose_name_plural = _('Documents')
 
     def __str__(self):
-        return self.label or ugettext('Document stub, id: %d') % self.pk
+        return self.get_label()
 
     def add_as_recent_document_for_user(self, user):
         RecentDocument = apps.get_model(
@@ -191,6 +191,11 @@ class Document(HooksMixin, models.Model):
         latest_version = self.latest_version
         if latest_version:
             return latest_version.get_api_image_url(*args, **kwargs)
+
+    def get_label(self):
+        return self.label or ugettext('Document stub, id: %d') % self.pk
+
+    get_label.short_description = _('Label')
 
     @property
     def is_in_trash(self):
