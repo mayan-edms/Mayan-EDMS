@@ -294,8 +294,10 @@ class Setting:
     def __str__(self):
         return force_text(s=self.global_name)
 
-    def cache_value(self):
-        environment_value = os.environ.get('MAYAN_{}'.format(self.global_name))
+    def cache_value(self, global_name=None):
+        global_name = global_name or self.global_name
+
+        environment_value = os.environ.get('MAYAN_{}'.format(global_name))
         if environment_value:
             self.environment_variable = True
             try:
@@ -304,18 +306,18 @@ class Setting:
                 raise type(exception)(
                     'Error interpreting environment variable: {} with '
                     'value: {}; {}'.format(
-                        self.global_name, environment_value, exception
+                        global_name, environment_value, exception
                     )
                 )
         else:
             try:
                 # Try the config file
-                self.raw_value = self.get_config_file_content()[self.global_name]
+                self.raw_value = self.get_config_file_content()[global_name]
             except KeyError:
                 try:
                     # Try the Django settings variable
                     self.raw_value = getattr(
-                        settings, self.global_name
+                        settings, global_name
                     )
                 except AttributeError:
                     # Finally set to the default value

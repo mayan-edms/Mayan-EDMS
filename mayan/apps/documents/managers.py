@@ -11,8 +11,8 @@ from django.utils.timezone import now
 from mayan.apps.common.classes import ModelQueryFields
 
 from .settings import (
-    setting_favorite_count, setting_recent_access_count,
-    setting_recent_created_document_count, setting_stub_expiration_interval
+    setting_favorite_count, setting_recently_accessed_document_count,
+    setting_recently_created_document_count, setting_stub_expiration_interval
 )
 
 logger = logging.getLogger(name=__name__)
@@ -258,7 +258,7 @@ class RecentlyAccessedDocumentManager(models.Manager):
                 # accessed date and time update
                 new_recent.save()
 
-            recent_to_delete = self.filter(user=user).values_list('pk', flat=True)[setting_recent_access_count.value:]
+            recent_to_delete = self.filter(user=user).values_list('pk', flat=True)[setting_recently_accessed_document_count.value:]
             self.filter(pk__in=list(recent_to_delete)).delete()
         return new_recent
 
@@ -307,7 +307,7 @@ class RecentlyCreatedDocumentManager(models.Manager):
 
         return queryset.filter(
             pk__in=queryset.order_by('-datetime_created')[
-                :setting_recent_created_document_count.value
+                :setting_recently_created_document_count.value
             ].values('pk')
         ).order_by('-datetime_created')
 

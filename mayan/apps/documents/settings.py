@@ -9,6 +9,8 @@ from .literals import (
     DEFAULT_DOCUMENT_FILE_PAGE_IMAGE_CACHE_MAXIMUM_SIZE,
     DEFAULT_DOCUMENT_VERSION_PAGE_IMAGE_CACHE_MAXIMUM_SIZE,
     DEFAULT_DOCUMENT_HASH_BLOCK_SIZE,
+    DEFAULT_DOCUMENTS_RECENTLY_ACCESSED_COUNT,
+    DEFAULT_DOCUMENTS_RECENTLY_CREATED_COUNT,
     DEFAULT_LANGUAGE, DEFAULT_LANGUAGE_CODES,
     DEFAULT_STUB_EXPIRATION_INTERVAL,
     DEFAULT_TASK_GENERATE_DOCUMENT_FILE_PAGE_IMAGE_RETRY_DELAY,
@@ -22,7 +24,7 @@ from .setting_migrations import DocumentsSettingMigration
 
 namespace = SettingNamespace(
     label=_('Documents'), migration_class=DocumentsSettingMigration,
-    name='documents', version='0002'
+    name='documents', version='0003'
 )
 
 setting_display_height = namespace.add_setting(
@@ -139,16 +141,16 @@ setting_print_height = namespace.add_setting(
 setting_print_width = namespace.add_setting(
     global_name='DOCUMENTS_PRINT_WIDTH', default='3600'
 )
-setting_recent_access_count = namespace.add_setting(
-    global_name='DOCUMENTS_RECENT_ACCESS_COUNT', default=400,
-    help_text=_(
-        'Maximum number of recently accessed (created, edited, viewed) '
-        'documents to remember per user.'
+setting_recently_accessed_document_count = namespace.add_setting(
+    global_name='DOCUMENTS_RECENTLY_ACCESSED_COUNT',
+    default=DEFAULT_DOCUMENTS_RECENTLY_ACCESSED_COUNT, help_text=_(
+        'Maximum number of recently accessed documents (created, edited, '
+        'viewed) documents to remember per user.'
     )
 )
-setting_recent_created_document_count = namespace.add_setting(
-    global_name='DOCUMENTS_RECENT_ADDED_COUNT', default=400,
-    help_text=_(
+setting_recently_created_document_count = namespace.add_setting(
+    global_name='DOCUMENTS_RECENTLY_CREATED_COUNT',
+    default=DEFAULT_DOCUMENTS_RECENTLY_CREATED_COUNT, help_text=_(
         'Maximum number of recently created documents to show.'
     )
 )

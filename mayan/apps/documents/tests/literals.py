@@ -7,6 +7,11 @@ from django.conf import settings
 from mayan.apps.common.literals import TIME_DELTA_UNIT_DAYS
 from mayan.apps.converter.transformations import TransformationRotate
 
+from ..literals import (
+    DEFAULT_DOCUMENTS_RECENTLY_ACCESSED_COUNT,
+    DEFAULT_DOCUMENTS_RECENTLY_CREATED_COUNT
+)
+
 # Filenames
 TEST_COMPRESSED_DOCUMENTS_FILENAME = 'compressed_documents.zip'
 TEST_DEU_DOCUMENT_FILENAME = 'deu_website.png'
@@ -76,6 +81,11 @@ TEST_SMALL_DOCUMENT_PATH = os.path.join(
     settings.BASE_DIR, 'apps', 'documents', 'tests', 'contrib',
     'sample_documents', TEST_SMALL_DOCUMENT_FILENAME
 )
+
+# Test settings migrations
+
+TEST_DOCUMENTS_RECENTLY_CREATED_COUNT = DEFAULT_DOCUMENTS_RECENTLY_CREATED_COUNT * 2
+TEST_DOCUMENTS_RECENTLY_ACCESSED_COUNT = DEFAULT_DOCUMENTS_RECENTLY_ACCESSED_COUNT * 2
 
 # Other
 

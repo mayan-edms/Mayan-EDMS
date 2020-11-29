@@ -103,3 +103,8 @@
   and ``trashed_document_api_views.py``.
 - Add date time field to the favorite documents models to ensure deterministic
   ordering when deleting the oldest favorites.
+- Rename the setting ``DOCUMENTS_RECENT_ACCESS_COUNT`` to
+  ``DOCUMENTS_RECENTLY_ACCESSED_COUNT``, and ``DOCUMENTS_RECENT_ADDED_COUNT``
+  to ``DOCUMENTS_RECENTLY_CREATED_COUNT``. Config file migrations and
+  migration tests were added. Environment and supervisor settings need to be
+  manually updated.
