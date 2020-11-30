@@ -1,0 +1,769 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# Translators:
+# emreunal <bywant@gmail.com>, 2019
+# Nurgül Özkan <nurgulozkan@hotmail.com>, 2017
+# serhatcan77 <serhat_can@yahoo.com>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-30 04:39+0000\n"
+"PO-Revision-Date: 2020-10-26 13:26+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/tr_TR/)\n"
+"Language: tr_TR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: apps.py:25 apps.py:39 links.py:14
+msgid "Duplicates"
+msgstr "Yinele"
+
+#: links.py:18 models.py:20 models.py:30 views.py:75
+msgid "Duplicated documents"
+msgstr "Yinelenen belgeler"
+
+#: links.py:24 queues.py:13
+msgid "Duplicated document scan"
+msgstr "Yinelenmiş doküman taraması"
+
+#: models.py:17
+msgid "Document"
+msgstr "Belge"
+
+#: models.py:23
+msgid "Added"
+msgstr "Eklendi"
+
+#: models.py:29
+msgid "Duplicated document"
+msgstr "Yinelenen doküman"
+
+#: queues.py:8
+msgid "Clean empty duplicate lists"
+msgstr ""
+
+#: queues.py:18
+msgid "Scan document duplicates"
+msgstr ""
+
+#: views.py:36
+msgid "Only exact copies of this document will be shown in the this list."
+msgstr "Bu listede bu belgenin sadece birebir aynı kopyaları gösterilir. "
+
+#: views.py:40
+msgid "There are no duplicates for this document"
+msgstr "Bu belgenin kopyası bulunmamaktadır"
+
+#: views.py:44
+#, python-format
+msgid "Duplicates for document: %s"
+msgstr "Belge için yineler: %s"
+
+#: views.py:66
+msgid ""
+"Duplicates are documents that are composed of the exact same file, down to "
+"the last byte. Files that have the same text or OCR but are not identical or "
+"were saved using a different file format will not appear as duplicates."
+msgstr ""
+"Yinelenen Belgeler son byte'ına kadar bire bir aynı belgelerdir. İçerik "
+"olarak aynı metin veya OKT(Optik Karakter Tanıma)'ya sahip olmasına rağmen "
+"aynı olmayan ya da farklı bir dosya uzantısıyla kaydedilen belgeler (belge."
+"pdf ve belge.docx gibi ) yinelenen belge olarak gösterilmemektedir."
+
+#: views.py:73
+msgid "There are no duplicated documents"
+msgstr "Yinelenen belge bulunmamaktadır"
+
+#: views.py:83
+msgid "Scan for duplicated documents?"
+msgstr "Yinelenen belgeleri tara?"
+
+#: views.py:90
+msgid "Duplicated document scan queued successfully."
+msgstr "Çoğaltılan doküman taraması başarıyla sıraya girdi."
+
+#~ msgid "Documents"
+#~ msgstr "Belgeler"
+
+#~ msgid "Create a document type"
+#~ msgstr "Belge türü oluşturma"
+
+#~ msgid ""
+#~ "Every uploaded document must be assigned a document type, it is the basic "
+#~ "way Mayan EDMS categorizes documents."
+#~ msgstr ""
+#~ "Yüklenen her belgeye bir belge türü atanmalıdır; bu, Mayan EDMS'in "
+#~ "belgeleri sınıflandırmasının temel şeklidir."
+
+#~ msgid "Document version"
+#~ msgstr "Doküman sürümü"
+
+#~ msgid "Page number"
+#~ msgstr "Sayfa numarası"
+
+#~ msgid "Thumbnail"
+#~ msgstr "Küçük ikon"
+
+#~ msgid "Pages"
+#~ msgstr "Sayfalar"
+
+#~ msgid "Type"
+#~ msgstr "Tür"
+
+#~ msgid "UUID"
+#~ msgstr "UUID"
+
+#~ msgid "Total documents"
+#~ msgstr "Toplam belge"
+
+#~ msgid "Documents in trash"
+#~ msgstr "Çöp kutusu içindeki belgeler"
+
+#~ msgid "Document types"
+#~ msgstr "Doküman türleri"
+
+#~ msgid "New documents this month"
+#~ msgstr "Bu ayki yeni belgeler"
+
+#~ msgid "New pages this month"
+#~ msgstr "Bu ayın yeni sayfaları"
+
+#~ msgid "Document created"
+#~ msgstr "Doküman oluşturuldu"
+
+#~ msgid "Document downloaded"
+#~ msgstr "Doküman indirildi"
+
+#~ msgid "New version uploaded"
+#~ msgstr "Yeni sürüm yüklendi"
+
+#~ msgid "Document properties edited"
+#~ msgstr "Düzenlenen belge özellikleri"
+
+#~ msgid "Document type changed"
+#~ msgstr "Doküman türü değişti"
+
+#~ msgid "Document version reverted"
+#~ msgstr "Doküman sürümü geri alındı"
+
+#~ msgid "Document viewed"
+#~ msgstr "Görüntülenen doküman"
+
+#~ msgid "Compress"
+#~ msgstr "Şıkıştırma"
+
+#~ msgid ""
+#~ "Download the document in the original format or in a compressed manner. "
+#~ "This option is selectable only when downloading one document, for "
+#~ "multiple documents, the bundle will always be downloads as a compressed "
+#~ "file."
+#~ msgstr ""
+#~ "Dokümanı orijinal formatında veya sıkıştırılmış bir şekilde indirin. Bu "
+#~ "seçenek yalnızca bir belgeyi indirirken seçilebilir, birden fazla belge "
+#~ "için paket sıklıkla sıkıştırılmış bir dosya olarak indirilir."
+
+#~ msgid "Compressed filename"
+#~ msgstr "Sıkıştırılmış dosya adı"
+
+#~ msgid ""
+#~ "The filename of the compressed file that will contain the documents to be "
+#~ "downloaded, if the previous option is selected."
+#~ msgstr ""
+#~ "Önceki seçenek seçiliyse, indirilecek belgeleri içeren sıkıştırılmış "
+#~ "dosyanın dosya adı."
+
+#~ msgid "Quick document rename"
+#~ msgstr "Hızlı belge yeniden adlandırma"
+
+#~ msgid "Date added"
+#~ msgstr "Ekleme Tarihi"
+
+#~ msgid "Language"
+#~ msgstr "Dil"
+
+#~ msgid "File mimetype"
+#~ msgstr "Dosya mimetype"
+
+#~ msgid "None"
+#~ msgstr "Yok"
+
+#~ msgid "File encoding"
+#~ msgstr "Dosya şifreleme"
+
+#~ msgid "File size"
+#~ msgstr "Dosya büyüklüğü"
+
+#~ msgid "Exists in storage"
+#~ msgstr "Depoda varolan varlıklar"
+
+#~ msgid "File path in storage"
+#~ msgstr "Depoda dosya yolu"
+
+#~ msgid "Checksum"
+#~ msgstr "Sağlama"
+
+#~ msgid "Page range"
+#~ msgstr "Sayfa aralığı"
+
+#~ msgid "Document type"
+#~ msgstr "Belge Türü"
+
+#~ msgid "Clear transformations"
+#~ msgstr "Dönüşümleri temizle"
+
+#~ msgid "Clone transformations"
+#~ msgstr "Klon dönüşümü"
+
+#~ msgid "Change type"
+#~ msgstr "Türünü değiştir"
+
+#~ msgid "Edit properties"
+#~ msgstr "Özellikleri düzenle"
+
+#~ msgid "All documents"
+#~ msgstr "Bütün belgeler"
+
+#~ msgid "Recently accessed"
+#~ msgstr "Son erişilenler"
+
+#~ msgid "Recently added"
+#~ msgstr "Son eklenenler"
+
+#~ msgid "Preview"
+#~ msgstr "Önizleme"
+
+#~ msgid "Properties"
+#~ msgstr "Özellikler"
+
+#~ msgid "Print"
+#~ msgstr "Yazdır"
+
+#~ msgid "Create document type"
+#~ msgstr "Belge türü oluştur"
+
+#~ msgid "Delete"
+#~ msgstr "Sil"
+
+#~ msgid "Edit"
+#~ msgstr "Düzenleme"
+
+#~ msgid "Add quick label to document type"
+#~ msgstr "Belge türüne hızlı etiket ekleme"
+
+#~ msgid "Quick labels"
+#~ msgstr "Hızlı etiketler"
+
+#~ msgid "Versions"
+#~ msgstr "Sürümler"
+
+#~ msgid "Download version"
+#~ msgstr "Sürümü indir"
+
+#~ msgid "Revert"
+#~ msgstr "Tersine çevir"
+
+#~ msgid "First page"
+#~ msgstr "İlk sayfa"
+
+#~ msgid "Last page"
+#~ msgstr "Son Sayfa"
+
+#~ msgid "Previous page"
+#~ msgstr "Önceki sayfa"
+
+#~ msgid "Next page"
+#~ msgstr "Sonraki Sayfa"
+
+#~ msgid "Rotate left"
+#~ msgstr "Sola döndür"
+
+#~ msgid "Rotate right"
+#~ msgstr "Sağa döndür"
+
+#~ msgid "Page image"
+#~ msgstr "Sayfa görüntüsü"
+
+#~ msgid "Reset view"
+#~ msgstr "Görünümü sıfırla"
+
+#~ msgid "Zoom in"
+#~ msgstr "Yakınlaştır"
+
+#~ msgid "Zoom out"
+#~ msgstr "Uzaklaştır"
+
+#~ msgid "Recalculate page count"
+#~ msgstr "Sayfa sayısını yeniden hesapla"
+
+#~ msgid "Favorites"
+#~ msgstr "Favoriler"
+
+#~ msgid "Add to favorites"
+#~ msgstr "Favorilere Ekle"
+
+#~ msgid "Remove from favorites"
+#~ msgstr "Favorilerden sil"
+
+#~ msgid "Move to trash"
+#~ msgstr "Çöp kutusuna taşıyın"
+
+#~ msgid "Trash can"
+#~ msgstr "Çöp Kutusu"
+
+#~ msgid "Restore"
+#~ msgstr "Geri yükle"
+
+#~ msgid "Empty trash"
+#~ msgstr "Çöp kutusunu boşalt"
+
+#~ msgid "Default"
+#~ msgstr "Varsayılan"
+
+#~ msgid "All pages"
+#~ msgstr "Tüm sayfalar"
+
+#~ msgid "Label"
+#~ msgstr "Etiket"
+
+#~ msgid "Description"
+#~ msgstr "Açıklama"
+
+#~ msgid "In trash?"
+#~ msgstr "Çöp kutusunda?"
+
+#~ msgid "Date and time trashed"
+#~ msgstr "Çöp kutusunun tarihi ve saati"
+
+#~ msgid ""
+#~ "A document stub is a document with an entry on the database but no file "
+#~ "uploaded. This could be an interrupted upload or a deferred upload via "
+#~ "the API."
+#~ msgstr ""
+#~ "Bir doküman koçanı, veritabanında bir girişi bulunan, ancak hiçbir dosya "
+#~ "yüklenmemiş bir dokümandır. Bu, API aracılığıyla kesilen bir yükleme veya "
+#~ "ertelenmiş bir yükleme olabilir."
+
+#~ msgid "Is stub?"
+#~ msgstr "Koçan mı?"
+
+#~ msgid "Document stub, id: %d"
+#~ msgstr "Belge koçanı, kimliği: %d"
+
+#~ msgid "Enabled"
+#~ msgstr "Etkin"
+
+#~ msgid "Document page"
+#~ msgstr "Belge sayfası"
+
+#~ msgid "Document pages"
+#~ msgstr "Doküman sayfaları"
+
+#~ msgid "Page %(page_num)d out of %(total_pages)d of %(document)s"
+#~ msgstr "Sayfa %(page_num)d dışarı-in %(total_pages)d of %(document)s"
+
+#~ msgid ""
+#~ "Amount of time after which documents of this type will be moved to the "
+#~ "trash."
+#~ msgstr "Bu türün belgelerinin çöp kutusuna taşınmasından sonraki süre."
+
+#~ msgid "Trash time period"
+#~ msgstr "Çöp kutusu süresi"
+
+#~ msgid "Trash time unit"
+#~ msgstr "Çöp saati birimi"
+
+#~ msgid ""
+#~ "Amount of time after which documents of this type in the trash will be "
+#~ "deleted."
+#~ msgstr ""
+#~ "Çöp kutusundaki bu türdeki belgelerin silinmesinden sonra geçen süre."
+
+#~ msgid "Delete time period"
+#~ msgstr "Zaman dilimini sil"
+
+#~ msgid "Delete time unit"
+#~ msgstr "Zaman birimini sil"
+
+#~ msgid "Documents types"
+#~ msgstr "Belge türleri"
+
+#~ msgid "Quick label"
+#~ msgstr "Hızlı etiket"
+
+#~ msgid "Timestamp"
+#~ msgstr "Zaman Damgası"
+
+#~ msgid "Comment"
+#~ msgstr "Yorum Yap"
+
+#~ msgid "File"
+#~ msgstr "Dosya"
+
+#~ msgid "MIME type"
+#~ msgstr "MIME türü"
+
+#~ msgid "Encoding"
+#~ msgstr "Kodlama"
+
+#~ msgid "User"
+#~ msgstr "Kullanıcı"
+
+#~ msgid "Accessed"
+#~ msgstr "Erişilen"
+
+#~ msgid "Recent document"
+#~ msgstr "Son belge"
+
+#~ msgid "Recent documents"
+#~ msgstr "Son belgeler"
+
+#~ msgid "Create documents"
+#~ msgstr "Belge oluştur"
+
+#~ msgid "Delete documents"
+#~ msgstr "Belge sil"
+
+#~ msgid "Trash documents"
+#~ msgstr "Çöp kutusu belgeleri"
+
+#~ msgid "Download documents"
+#~ msgstr "Belgeleri indir"
+
+#~ msgid "Edit documents"
+#~ msgstr "Belgeleri düzenle"
+
+#~ msgid "Create new document versions"
+#~ msgstr "Yeni belge sürümleri oluştur"
+
+#~ msgid "Edit document properties"
+#~ msgstr "Doküman özelliklerini düzenle"
+
+#~ msgid "Print documents"
+#~ msgstr "Belgeleri yazdır"
+
+#~ msgid "Restore trashed document"
+#~ msgstr "Çöpe atılmış dokümanı geri yükle"
+
+#~ msgid "Execute document modifying tools"
+#~ msgstr "Belgeyi değiştiren araçları çalıştırma"
+
+#~ msgid "Revert documents to a previous version"
+#~ msgstr "Dokümanları önceki bir sürüme geri döndürme"
+
+#~ msgid "View documents' versions list"
+#~ msgstr "Belgelerin sürüm listelerini görüntüle"
+
+#~ msgid "View documents"
+#~ msgstr "Belgeleri görüntüle"
+
+#~ msgid "Create document types"
+#~ msgstr "Doküman türleri oluştur"
+
+#~ msgid "Delete document types"
+#~ msgstr "Doküman türlerini sil"
+
+#~ msgid "Edit document types"
+#~ msgstr "Doküman türlerini düzenleme"
+
+#~ msgid "View document types"
+#~ msgstr "Doküman türlerini görüntüleme"
+
+#~ msgid "Converter"
+#~ msgstr "Dönüştürücü"
+
+#~ msgid "Documents periodic"
+#~ msgstr "Periyodik belgeler"
+
+#~ msgid "Uploads"
+#~ msgstr "Yüklemeler"
+
+#~ msgid "Generate document page image"
+#~ msgstr "Doküman sayfası görüntüsü oluştur"
+
+#~ msgid "Delete a document"
+#~ msgstr "Belgeyi sil"
+
+#~ msgid "Check document type delete periods"
+#~ msgstr "Belge türü silme periyotlarını kontrol etme"
+
+#~ msgid "Check document type trash periods"
+#~ msgstr "Belge türü çöp tenekesi periyotlarını kontrol etme"
+
+#~ msgid "Delete document stubs"
+#~ msgstr "Belge taslaklarını sil"
+
+#~ msgid "Update document page count"
+#~ msgstr "Doküman sayfa sayısını güncelle"
+
+#~ msgid "Upload new document version"
+#~ msgstr "Yeni belge sürümü yükle"
+
+#~ msgid ""
+#~ "Maximum number of recently accessed (created, edited, viewed) documents "
+#~ "to remember per user."
+#~ msgstr ""
+#~ "Kullanıcı başına en son erişilen (oluşturulmuş, düzenlenmiş, "
+#~ "görüntülenen) belgelerin maksimum sayısı."
+
+#~ msgid "Maximum number of recently created documents to show."
+#~ msgstr "Gösterilecek en fazla son oluşturulan belgeler sayısı"
+
+#~ msgid "Amount in degrees to rotate a document page per user interaction."
+#~ msgstr ""
+#~ "Kullanıcı etkileşimi başına bir doküman sayfasını döndürmek için gereken "
+#~ "derece miktarı."
+
+#~ msgid ""
+#~ "Maximum amount in percent (%) to allow user to zoom in a document page "
+#~ "interactively."
+#~ msgstr ""
+#~ "Kullanıcının bir belge sayfasını etkileşimli olarak yakınlaştırmasını "
+#~ "sağlamak için yüzde olarak maksimum miktarı (%)."
+
+#~ msgid ""
+#~ "Minimum amount in percent (%) to allow user to zoom out a document page "
+#~ "interactively."
+#~ msgstr ""
+#~ "Kullanıcıya bir belge sayfasını etkileşimli olarak uzaklaştırmak için "
+#~ "yüzde olarak minimum tutar (%)."
+
+#~ msgid ""
+#~ "Amount in percent zoom in or out a document page per user interaction."
+#~ msgstr ""
+#~ "Kullanıcı etkileşimi başına belge sayfasında yakınlaştırma veya "
+#~ "uzaklaştırma yüzdesi."
+
+#~ msgid "New documents per month"
+#~ msgstr "Aylık yeni belgeler"
+
+#~ msgid "New document versions per month"
+#~ msgstr "Aylık yeni belge sürümleri"
+
+#~ msgid "New document pages per month"
+#~ msgstr "Aylık yeni belge sayfaları"
+
+#~ msgid "Total documents at each month"
+#~ msgstr "Her ayın toplam belgeleri"
+
+#~ msgid "Total document versions at each month"
+#~ msgstr "Her ayki toplam belge versiyonu"
+
+#~ msgid "Total document pages at each month"
+#~ msgstr "Her ayki toplam belge sayfası"
+
+#~ msgid "Pages for document: %s"
+#~ msgstr "Doküman için Sayfalar: %s"
+
+#~ msgid "There are no more pages in this document"
+#~ msgstr "Bu belgede başka sayfa yok"
+
+#~ msgid "You are already at the first page of this document"
+#~ msgstr "Zaten bu belgenin ilk sayfasındasın"
+
+#~ msgid "Image of: %s"
+#~ msgstr "Görüntüsü: %s"
+
+#~ msgid "Documents of type: %s"
+#~ msgstr "Belgelerin türü: %s"
+
+#~ msgid "All documents of this type will be deleted too."
+#~ msgstr "Bu türdeki tüm belgeler de silinir."
+
+#~ msgid "Delete the document type: %s?"
+#~ msgstr "Belge türünü silin: %s?"
+
+#~ msgid "Edit document type: %s"
+#~ msgstr "Belge türünü düzenle: %s"
+
+#~ msgid "Create quick label for document type: %s"
+#~ msgstr "Belge türü için hızlı etiket oluşturun: %s"
+
+#~ msgid ""
+#~ "Delete the quick label: %(label)s, from document type \"%(document_type)s"
+#~ "\"?"
+#~ msgstr ""
+#~ "Hızlı etiketi silin: %(label)s, Belge türünün \"%(document_type)s\" ?"
+
+#~ msgid ""
+#~ "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
+#~ msgstr ""
+#~ "\"%(filename)s\" hızlı etiketini %(document_type)sBelge türünden "
+#~ "düzenleyin"
+
+#~ msgid "Quick labels for document type: %s"
+#~ msgstr "Belge türü için hızlı etiketler: %s"
+
+#~ msgid "Versions of document: %s"
+#~ msgstr "Belge versiyonları: %s"
+
+#~ msgid "All later version after this one will be deleted too."
+#~ msgstr "Bunun ardındaki tüm sonraki sürümler de silinir."
+
+#~ msgid "Revert to this version?"
+#~ msgstr "Bu sürüme geri dönmek için?"
+
+#~ msgid "Document version reverted successfully"
+#~ msgstr "Belge sürümü başarıyla geri alındı"
+
+#~ msgid "Error reverting document version; %s"
+#~ msgstr "Belge sürümünü geri yüklerken hata oluştu; %s"
+
+#~ msgid "Document type change request performed on %(count)d document"
+#~ msgstr ""
+#~ "%(count)d belge üzerinde gerçekleştirilen Belge türü değişikliği isteği"
+
+#~ msgid "Document type change request performed on %(count)d documents"
+#~ msgstr "%(count)d Belgeleri üzerinde yapılan Belge türü değişikliği talebi"
+
+#~ msgid "Change"
+#~ msgstr "Değişiklik"
+
+#~ msgid "Change the type of the selected document"
+#~ msgid_plural "Change the type of the selected documents"
+#~ msgstr[0] "Seçili belgenin türünü değiştirme"
+#~ msgstr[1] "Seçilen belgelerin türünü değiştirme"
+
+#~ msgid "Change the type of the document: %s"
+#~ msgstr "Belgenin türünü değiştirin: %s"
+
+#~ msgid "Document type for \"%s\" changed successfully."
+#~ msgstr "\"%s\" için Belge türü başarıyla değişti."
+
+#~ msgid "Download"
+#~ msgstr "İndir"
+
+#~ msgid "Preview of document: %s"
+#~ msgstr "Belgenin önizlemesi: %s"
+
+#~ msgid "Edit properties of document: %s"
+#~ msgstr "Belge özelliklerini düzenle: %s"
+
+#~ msgid "Properties for document: %s"
+#~ msgstr "Belge için özellikler: %s"
+
+#~ msgid "%(count)d document queued for page count recalculation"
+#~ msgstr ""
+#~ "%(count)d Belgesi, sayfa sayısı yeniden hesaplaması için kuyruğa alındı"
+
+#~ msgid "%(count)d documents queued for page count recalculation"
+#~ msgstr ""
+#~ "%(count)d Belgeler, sayfa sayısı yeniden hesaplaması için kuyruğa alındı"
+
+#~ msgid "Recalculate the page count of the selected document?"
+#~ msgid_plural "Recalculate the page count of the selected documents?"
+#~ msgstr[0] "Seçilen belgenin sayfa sayısını yeniden hesapla mı?"
+#~ msgstr[1] ""
+#~ "Seçilen belgelerin sayfa sayısını tekrar hesaplamak istiyor musunuz?"
+
+#~ msgid "Recalculate the page count of the document: %s?"
+#~ msgstr "Belge sayfa sayısını tekrar hesaplayın: %s?"
+
+#~ msgid "Transformation clear request processed for %(count)d document"
+#~ msgstr "%(count)d Belgesi için temizleme dönüşümü isteği işlendi"
+
+#~ msgid "Transformation clear request processed for %(count)d documents"
+#~ msgstr "%(count)d Belgeleri için temizleme dönüşümü isteği işlendi"
+
+#~ msgid "Clear all the page transformations for the selected document?"
+#~ msgid_plural "Clear all the page transformations for the selected document?"
+#~ msgstr[0] "Seçilen belgenin tüm sayfa dönüşümlerini silinsin mi?"
+#~ msgstr[1] "Seçilen belgenin tüm sayfa dönüşümlerini silinsin mi?"
+
+#~ msgid "Clear all the page transformations for the document: %s?"
+#~ msgstr "Belgenin tüm sayfa dönüşümlerini temizle: %s?"
+
+#~ msgid ""
+#~ "Error deleting the page transformations for document: %(document)s; "
+#~ "%(error)s."
+#~ msgstr ""
+#~ "Belge için sayfa dönüşümleri silinirken hata oluştu: %(document)s; "
+#~ "%(error)s."
+
+#~ msgid ""
+#~ "Error cloning the page transformations for document: %(document)s; "
+#~ "%(error)s."
+#~ msgstr ""
+#~ "Belge için sayfa dönüşümleri kopyalanırken hata oluştu: %(document)s; "
+#~ "%(error)s"
+
+#~ msgid "Transformations cloned successfully."
+#~ msgstr "Dönüşümler başarıyla kopyalandı."
+
+#~ msgid "Submit"
+#~ msgstr "Gönder"
+
+#~ msgid "Clone page transformations for document: %s"
+#~ msgstr "Belge için sayfa dönüşümlerini kopyalayın: %s"
+
+#~ msgid "Print: %s"
+#~ msgstr "Yazdırma: %s"
+
+#~ msgid ""
+#~ "This view will list the latest documents viewed or manipulated in any way "
+#~ "by this user account."
+#~ msgstr ""
+#~ "Burada bu kullanıcı tarafından en son bakılan ya da değiştirilen "
+#~ "belgelerin listesini görüntüleyebilirsiniz."
+
+#~ msgid "There are no recently accessed document"
+#~ msgstr "En son erişilen belge bulunmamaktadır"
+
+#~ msgid "This view will list the latest documents uploaded in the system."
+#~ msgstr ""
+#~ "Burada sisteme en son yüklenen belgelerin listesini görüntüleyebilirsiniz."
+
+#~ msgid "There are no recently added document"
+#~ msgstr "Son eklenen döküman bulunmamaktadır"
+
+#~ msgid ""
+#~ "Favorited documents will be listed in this view. Up to %(count)d "
+#~ "documents can be favorited per user. "
+#~ msgstr ""
+#~ "Favorilere eklenen belgeler burada gösterilecektir. Kullanıcı başına "
+#~ "%(count)d'a kadar belge favorilere eklenebilir."
+
+#~ msgid "There are no favorited documents."
+#~ msgstr "Favorilere eklenen belge bulunmamaktadır."
+
+#~ msgid "%(count)d document added to favorites."
+#~ msgstr "%(count)d döküman favorilere eklendi"
+
+#~ msgid "%(count)d documents added to favorites."
+#~ msgstr "%(count)d döküman favorilere eklendi"
+
+#~ msgid "Add"
+#~ msgstr "Ekle"
+
+#~ msgid "Document \"%(instance)s\" is not in favorites."
+#~ msgstr "%(instance)s dökümanı favorilerde değil"
+
+#~ msgid "%(count)d document removed from favorites."
+#~ msgstr "%(count)d döküman favorilerden silindi"
+
+#~ msgid "%(count)d documents removed from favorites."
+#~ msgstr "%(count)d döküman favorilerden silindi"
+
+#~ msgid "Remove"
+#~ msgstr "Sil"
+
+#~ msgid "%(count)d document moved to the trash."
+#~ msgstr "%(count)d adet belge çöp kutusuna taşındı."
+
+#~ msgid "%(count)d documents moved to the trash."
+#~ msgstr "%(count)d adet belge çöp kutusuna taşındı."
+
+#~ msgid "Move the selected document to the trash?"
+#~ msgid_plural "Move the selected documents to the trash?"
+#~ msgstr[0] "Seçili belge çöp kutusuna taşınsın mı?"
+#~ msgstr[1] "Seçili belgeler çöp kutusuna taşınsın mı?"
+
+#~ msgid "Empty trash?"
+#~ msgstr "Çöp kutusunu boşalt?"

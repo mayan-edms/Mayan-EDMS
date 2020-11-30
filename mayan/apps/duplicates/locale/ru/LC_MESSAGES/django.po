@@ -1,0 +1,671 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# Translators:
+# Alex Chigrin <chalex84@mail.ru>, 2020
+# lilo.panic, 2016
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-30 04:39+0000\n"
+"PO-Revision-Date: 2020-10-26 13:26+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/ru/)\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: apps.py:25 apps.py:39 links.py:14
+msgid "Duplicates"
+msgstr "Дубликаты"
+
+#: links.py:18 models.py:20 models.py:30 views.py:75
+msgid "Duplicated documents"
+msgstr ""
+
+#: links.py:24 queues.py:13
+msgid "Duplicated document scan"
+msgstr ""
+
+#: models.py:17
+msgid "Document"
+msgstr "Документ"
+
+#: models.py:23
+msgid "Added"
+msgstr "Добавлено"
+
+#: models.py:29
+msgid "Duplicated document"
+msgstr ""
+
+#: queues.py:8
+msgid "Clean empty duplicate lists"
+msgstr ""
+
+#: queues.py:18
+msgid "Scan document duplicates"
+msgstr ""
+
+#: views.py:36
+msgid "Only exact copies of this document will be shown in the this list."
+msgstr ""
+
+#: views.py:40
+msgid "There are no duplicates for this document"
+msgstr ""
+
+#: views.py:44
+#, python-format
+msgid "Duplicates for document: %s"
+msgstr ""
+
+#: views.py:66
+msgid ""
+"Duplicates are documents that are composed of the exact same file, down to "
+"the last byte. Files that have the same text or OCR but are not identical or "
+"were saved using a different file format will not appear as duplicates."
+msgstr ""
+
+#: views.py:73
+msgid "There are no duplicated documents"
+msgstr ""
+
+#: views.py:83
+msgid "Scan for duplicated documents?"
+msgstr ""
+
+#: views.py:90
+msgid "Duplicated document scan queued successfully."
+msgstr ""
+
+#~ msgid "Documents"
+#~ msgstr "Документы"
+
+#~ msgid "Create a document type"
+#~ msgstr "Создать тип документа"
+
+#~ msgid ""
+#~ "Every uploaded document must be assigned a document type, it is the basic "
+#~ "way Mayan EDMS categorizes documents."
+#~ msgstr ""
+#~ "Каждому загруженому документу должен быть присвоен тип документа, - это "
+#~ "основной способ, которым Mayan EDMS  распределяет документы по категориям."
+
+#~ msgid "Versions comment"
+#~ msgstr "Комментарий к версиям"
+
+#~ msgid "Versions timestamp"
+#~ msgstr "Отметка времени версий"
+
+#~ msgid "Document version"
+#~ msgstr "Версия документа"
+
+#~ msgid "Page number"
+#~ msgstr "Номер страницы"
+
+#~ msgid "Return the lastest version of the document."
+#~ msgstr "Вернуть последнюю версию документа."
+
+#~ msgid "Latest version"
+#~ msgstr "Последняя версия"
+
+#~ msgid "Return the document instance."
+#~ msgstr "Вернуть экземпляр документа."
+
+#~ msgid "Thumbnail"
+#~ msgstr "Миниатюра"
+
+#~ msgid "Pages"
+#~ msgstr "Страницы"
+
+#~ msgid "Type"
+#~ msgstr "Тип"
+
+#~ msgid "Original"
+#~ msgstr "Оригинал"
+
+#~ msgid "Keeps the original filename of the uploaded file."
+#~ msgstr "Сохранить исходное имя загруженного файла."
+
+#~ msgid "UUID"
+#~ msgstr "UUID"
+
+#~ msgid "Generate an immutable, random UUID (RFC 4122) for each file."
+#~ msgstr ""
+#~ "Создавать неизменяемый, случайный UUID (RFC 4122) для каждого файла."
+
+#~ msgid "Total pages"
+#~ msgstr "Всего страниц"
+
+#~ msgid "Total documents"
+#~ msgstr "Всего документов"
+
+#~ msgid "Documents in trash"
+#~ msgstr "Документы в корзине"
+
+#~ msgid "Document types"
+#~ msgstr "Типы документов"
+
+#~ msgid "New documents this month"
+#~ msgstr "Новые документы в этом месяце"
+
+#~ msgid "New pages this month"
+#~ msgstr "Новые страницы в этом месяце"
+
+#~ msgid "Document created"
+#~ msgstr "Документ создан"
+
+#~ msgid "Document downloaded"
+#~ msgstr "Документ загружен"
+
+#~ msgid "New version uploaded"
+#~ msgstr "Новая версия была загружена"
+
+#~ msgid "New version created"
+#~ msgstr "Создана новая версия"
+
+#~ msgid "Document properties edited"
+#~ msgstr "Свойства документа были изменены"
+
+#~ msgid "Document trashed"
+#~ msgstr "Документ удален"
+
+#~ msgid "Document type changed"
+#~ msgstr "Тип документа был изменен"
+
+#~ msgid "Document type created"
+#~ msgstr "Тип документа создан"
+
+#~ msgid "Document type edited"
+#~ msgstr "Тип документа изменен"
+
+#~ msgid "Document version reverted"
+#~ msgstr "Версия документа была восстановлена"
+
+#~ msgid "Document viewed"
+#~ msgstr "Документ просмотрен"
+
+#~ msgid "Compress"
+#~ msgstr "Сжать"
+
+#~ msgid ""
+#~ "Download the document in the original format or in a compressed manner. "
+#~ "This option is selectable only when downloading one document, for "
+#~ "multiple documents, the bundle will always be downloads as a compressed "
+#~ "file."
+#~ msgstr ""
+#~ "Скачать документ в исходном, или в сжатом формате. Этот вариант доступен "
+#~ "только при загрузке одного документа, для нескольких документов будет "
+#~ "использован сжатый файл."
+
+#~ msgid "Compressed filename"
+#~ msgstr "Имя сжатого файла"
+
+#~ msgid ""
+#~ "The filename of the compressed file that will contain the documents to be "
+#~ "downloaded, if the previous option is selected."
+#~ msgstr ""
+#~ "Имя файла сжатого файла, который будет содержать загружаемые документы, "
+#~ "если выбран предыдущий параметр."
+
+#~ msgid "Quick document rename"
+#~ msgstr "Быстро переименовать документ"
+
+#~ msgid "Preserve extension"
+#~ msgstr "Сохранить расширение"
+
+#~ msgid "Date added"
+#~ msgstr "Дата добавления"
+
+#~ msgid "Language"
+#~ msgstr "Язык"
+
+#~ msgid "File mimetype"
+#~ msgstr "Mime тип файла"
+
+#~ msgid "None"
+#~ msgstr "Ни один"
+
+#~ msgid "File encoding"
+#~ msgstr "Кодировка файла"
+
+#~ msgid "File size"
+#~ msgstr "Размер"
+
+#~ msgid "Exists in storage"
+#~ msgstr "Существует в хранилище"
+
+#~ msgid "File path in storage"
+#~ msgstr "Путь к файлу в хранилище"
+
+#~ msgid "Checksum"
+#~ msgstr "Контрольная сумма"
+
+#~ msgid "Page range"
+#~ msgstr "Диапазон страниц"
+
+#~ msgid "Document type"
+#~ msgstr "Тип документа"
+
+#~ msgid "Clear transformations"
+#~ msgstr "Очистить преобразования"
+
+#~ msgid "Change type"
+#~ msgstr "Изменить тип"
+
+#~ msgid "Edit properties"
+#~ msgstr "Редактировать свойства"
+
+#~ msgid "All documents"
+#~ msgstr "Все документы"
+
+#~ msgid "Preview"
+#~ msgstr "Предварительный просмотр"
+
+#~ msgid "Properties"
+#~ msgstr "Свойства"
+
+#~ msgid "Print"
+#~ msgstr "Печать"
+
+#~ msgid "Create document type"
+#~ msgstr "Создать тип документа"
+
+#~ msgid "Delete"
+#~ msgstr "Удалить"
+
+#~ msgid "Edit"
+#~ msgstr "Редактировать"
+
+#~ msgid "Add quick label to document type"
+#~ msgstr "Добавить быструю метку к документу"
+
+#~ msgid "Quick labels"
+#~ msgstr "Быстрые метки"
+
+#~ msgid "Versions"
+#~ msgstr "Версии"
+
+#~ msgid "Download version"
+#~ msgstr "Скачать версию"
+
+#~ msgid "Revert"
+#~ msgstr "Возврат"
+
+#~ msgid "First page"
+#~ msgstr "Первая страница"
+
+#~ msgid "Last page"
+#~ msgstr "Последняя страница"
+
+#~ msgid "Previous page"
+#~ msgstr "Предыдущая страница"
+
+#~ msgid "Next page"
+#~ msgstr "Следующая страница"
+
+#~ msgid "Rotate left"
+#~ msgstr "Повернуть влево"
+
+#~ msgid "Rotate right"
+#~ msgstr "Повернуть вправо"
+
+#~ msgid "Page image"
+#~ msgstr "Изображение страницы"
+
+#~ msgid "Reset view"
+#~ msgstr "Вернуть вид"
+
+#~ msgid "Zoom in"
+#~ msgstr "Увеличить"
+
+#~ msgid "Zoom out"
+#~ msgstr "Уменьшить"
+
+#~ msgid "Recalculate page count"
+#~ msgstr "Пересчитать количество страниц"
+
+#~ msgid "Move to trash"
+#~ msgstr "Переместить в корзину"
+
+#~ msgid "Restore"
+#~ msgstr "Восстановить"
+
+#~ msgid "Empty trash"
+#~ msgstr "Очистить корзину"
+
+#~ msgid "Default"
+#~ msgstr "Умолчание"
+
+#~ msgid "All pages"
+#~ msgstr "Все страницы"
+
+#~ msgid "Label"
+#~ msgstr "Надпись"
+
+#~ msgid "Description"
+#~ msgstr "Описание"
+
+#~ msgid "In trash?"
+#~ msgstr "В корзине?"
+
+#~ msgid "Date and time trashed"
+#~ msgstr "Время и дата удаления"
+
+#~ msgid ""
+#~ "A document stub is a document with an entry on the database but no file "
+#~ "uploaded. This could be an interrupted upload or a deferred upload via "
+#~ "the API."
+#~ msgstr ""
+#~ "Заглушка документа - это запись в базе данных без самого документа. "
+#~ "Документ может оказатсья заглушкой, если его загрузка оборвалась, или "
+#~ "выполняется его отложенная загрузка через API."
+
+#~ msgid "Is stub?"
+#~ msgstr "Является заглушкой?"
+
+#~ msgid "Document stub, id: %d"
+#~ msgstr "Заглушка документа, ид: %d"
+
+#~ msgid "Enabled"
+#~ msgstr "Доступно"
+
+#~ msgid "Document page"
+#~ msgstr "Страница документа"
+
+#~ msgid "Document pages"
+#~ msgstr "Страницы документа"
+
+#~ msgid "Page %(page_num)d out of %(total_pages)d of %(document)s"
+#~ msgstr "Страница %(page_num)d из %(total_pages)d  %(document)s"
+
+#~ msgid ""
+#~ "Amount of time after which documents of this type will be moved to the "
+#~ "trash."
+#~ msgstr ""
+#~ "Сколько должно пройти времени, прежде чем документы этого типа будут "
+#~ "перемещены в корзину."
+
+#~ msgid "Trash time period"
+#~ msgstr "Период жизни"
+
+#~ msgid "Trash time unit"
+#~ msgstr "Единица измерения периода жизни"
+
+#~ msgid ""
+#~ "Amount of time after which documents of this type in the trash will be "
+#~ "deleted."
+#~ msgstr ""
+#~ "Сколько должно пройти времени, прежде чем документы этого типа будут "
+#~ "удалены из корзины."
+
+#~ msgid "Delete time period"
+#~ msgstr "Период удаления"
+
+#~ msgid "Delete time unit"
+#~ msgstr "Единица измерения периода удаления"
+
+#~ msgid "Documents types"
+#~ msgstr "Типы документов"
+
+#~ msgid "Quick label"
+#~ msgstr "Быстрая метка"
+
+#~ msgid "Timestamp"
+#~ msgstr "временная метка"
+
+#~ msgid "Comment"
+#~ msgstr "Комментарий"
+
+#~ msgid "File"
+#~ msgstr "Файл"
+
+#~ msgid "MIME type"
+#~ msgstr "MIME type"
+
+#~ msgid "Encoding"
+#~ msgstr "Кодировка"
+
+#~ msgid "User"
+#~ msgstr "Пользователь"
+
+#~ msgid "Accessed"
+#~ msgstr "Допущен"
+
+#~ msgid "Recent document"
+#~ msgstr "Недавние документы"
+
+#~ msgid "Recent documents"
+#~ msgstr "Последние документы"
+
+#~ msgid "Create documents"
+#~ msgstr "Создание документов"
+
+#~ msgid "Delete documents"
+#~ msgstr "Удаление документов"
+
+#~ msgid "Trash documents"
+#~ msgstr "Переместить документы в корзину"
+
+#~ msgid "Download documents"
+#~ msgstr "Загрузка документов"
+
+#~ msgid "Edit documents"
+#~ msgstr "Редактировать документы"
+
+#~ msgid "Create new document versions"
+#~ msgstr "Создать новые версии документа"
+
+#~ msgid "Edit document properties"
+#~ msgstr "Редактирование свойств документа"
+
+#~ msgid "Print documents"
+#~ msgstr "Печать документов"
+
+#~ msgid "Execute document modifying tools"
+#~ msgstr "Выполнить изменения документа"
+
+#~ msgid "Revert documents to a previous version"
+#~ msgstr "Восстановить документы до предыдущей версии"
+
+#~ msgid "View documents"
+#~ msgstr "Просмотр документов"
+
+#~ msgid "Create document types"
+#~ msgstr "Создание типов документов"
+
+#~ msgid "Delete document types"
+#~ msgstr "Удалить типы документов"
+
+#~ msgid "Edit document types"
+#~ msgstr "Редактировать  типы  документов"
+
+#~ msgid "View document types"
+#~ msgstr "Просмотр типов документов"
+
+#~ msgid "Converter"
+#~ msgstr "Конвертер"
+
+#~ msgid "Amount in degrees to rotate a document page per user interaction."
+#~ msgstr "Градус поворота страницы документа в интерактивном режиме."
+
+#~ msgid ""
+#~ "Maximum amount in percent (%) to allow user to zoom in a document page "
+#~ "interactively."
+#~ msgstr "Максимальный процент увеличения страницы документа пользователем."
+
+#~ msgid ""
+#~ "Minimum amount in percent (%) to allow user to zoom out a document page "
+#~ "interactively."
+#~ msgstr ""
+#~ "Процент уменьшения масштаба страницы документа в интерактивном режиме."
+
+#~ msgid ""
+#~ "Amount in percent zoom in or out a document page per user interaction."
+#~ msgstr "Процент увеличения страницы документа пользователем."
+
+#~ msgid "New documents per month"
+#~ msgstr "Новых документов в месяц"
+
+#~ msgid "New document versions per month"
+#~ msgstr "Новых версий документов в месяц"
+
+#~ msgid "New document pages per month"
+#~ msgstr "Новых страниц документов в месяц"
+
+#~ msgid "Total documents at each month"
+#~ msgstr "Всего документов в месяц"
+
+#~ msgid "Total document versions at each month"
+#~ msgstr "Новых версий документов в месяц"
+
+#~ msgid "Total document pages at each month"
+#~ msgstr "Всего страниц документов в месяц"
+
+#~ msgid "Pages for document: %s"
+#~ msgstr "Страницы документа: %s"
+
+#~ msgid "There are no more pages in this document"
+#~ msgstr " Нет более страниц в этом документе"
+
+#~ msgid "You are already at the first page of this document"
+#~ msgstr "Вы уже на первой странице этого документа"
+
+#~ msgid "Image of: %s"
+#~ msgstr "Изображение для: %s"
+
+#~ msgid "Documents of type: %s"
+#~ msgstr "Документы с типом: %s"
+
+#~ msgid "All documents of this type will be deleted too."
+#~ msgstr "Все документы этого типа будут также удалены."
+
+#~ msgid "Delete the document type: %s?"
+#~ msgstr "Удалить тип документа: %s?"
+
+#~ msgid "Edit document type: %s"
+#~ msgstr "Редактировать тип документа: %s"
+
+#~ msgid "Create quick label for document type: %s"
+#~ msgstr "Создать быструю метку для типа документа: %s"
+
+#~ msgid ""
+#~ "Delete the quick label: %(label)s, from document type \"%(document_type)s"
+#~ "\"?"
+#~ msgstr ""
+#~ "Снять быструю метку %(label)s с типа документа \"%(document_type)s\"?"
+
+#~ msgid ""
+#~ "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
+#~ msgstr ""
+#~ "Редактировать быструю метку %(filename)s\" с типа документов "
+#~ "\"%(document_type)s\""
+
+#~ msgid "Quick labels for document type: %s"
+#~ msgstr "Быстрые метки для типа документа: %s"
+
+#~ msgid "Versions of document: %s"
+#~ msgstr "Версии документа: %s"
+
+#~ msgid "All later version after this one will be deleted too."
+#~ msgstr "Все более поздние версии после этого будут удалены"
+
+#~ msgid "Revert to this version?"
+#~ msgstr "Вернуться к этой версии?"
+
+#~ msgid "Document version reverted successfully"
+#~ msgstr "Версия документа восстановлена"
+
+#~ msgid "Error reverting document version; %s"
+#~ msgstr "Ошибка получения версии документа %s"
+
+#~ msgid "Document type for \"%s\" changed successfully."
+#~ msgstr "Тип документа для \"%s\" успешно изменён."
+
+#~ msgid "Download"
+#~ msgstr "Скачать"
+
+#~ msgid "Preview of document: %s"
+#~ msgstr "Предпросмотр документа: %s"
+
+#~ msgid "Edit properties of document: %s"
+#~ msgstr "Правка свойств документа: %s"
+
+#~ msgid "Properties for document: %s"
+#~ msgstr "Свойства документа: %s"
+
+#~ msgid "Recalculate the page count of the selected document?"
+#~ msgid_plural "Recalculate the page count of the selected documents?"
+#~ msgstr[0] "Пересчитать количество страниц для выбранного документа?"
+#~ msgstr[1] "Пересчитать количество страниц для выбранных документов?"
+#~ msgstr[2] "Пересчитать количество страниц для выбранных документов?"
+#~ msgstr[3] "Пересчитать количество страниц для выбранных документов?"
+
+#~ msgid ""
+#~ "Error deleting the page transformations for document: %(document)s; "
+#~ "%(error)s."
+#~ msgstr ""
+#~ "Ошибка при удалении страницы для преобразования документов: %(document)s; "
+#~ "%(error)s."
+
+#~ msgid "Submit"
+#~ msgstr "Подтвердить"
+
+#~ msgid "Print: %s"
+#~ msgstr "Печать: %s"
+
+#~ msgid "Add"
+#~ msgstr "Добавить"
+
+#~ msgid "Remove"
+#~ msgstr "Удалить"
+
+#~ msgid "Empty trash?"
+#~ msgstr "Очистить корзину?"
+
+#~ msgid "Delete the selected trashed document?"
+#~ msgid_plural "Delete the selected trashed documents?"
+#~ msgstr[0] "Удалить выбранный удаленный документ?"
+#~ msgstr[1] "Удалить выбранные документы из корзины?"
+#~ msgstr[2] "Удалить выбранные документы из корзины?"
+#~ msgstr[3] "Удалить выбранные документы из корзины?"
+
+#~ msgid ""
+#~ "To avoid loss of data, documents are not deleted instantly. First, they "
+#~ "are placed in the trash can. From here they can be then finally deleted "
+#~ "or restored."
+#~ msgstr ""
+#~ "Чтобы избежать потери данных, документы не удаляются мгновенно. Сначала "
+#~ "их помещают в корзину. Отсюда их можно окончательно удалить или "
+#~ "восстановить."
+
+#~ msgid "There are no documents in the trash can"
+#~ msgstr "В корзине нет документов"
+
+#~ msgid "%(count)d trashed document restored."
+#~ msgstr "%(count)d удаленный документ восстановлен."
+
+#~ msgid "%(count)d trashed documents restored."
+#~ msgstr "%(count)d удаленных документов восстановлено."
+
+#~ msgid "Restore the selected trashed document?"
+#~ msgid_plural "Restore the selected trashed documents?"
+#~ msgstr[0] "Восстановить выбранный удаленный документ?"
+#~ msgstr[1] "Восстановить выбранные документы из корзины?"
+#~ msgstr[2] "Восстановить выбранные документы из корзины?"
+#~ msgstr[3] "Восстановить выбранные документы из корзины?"
+
+#~ msgid "Pages: %d"
+#~ msgstr "Страницы: %d"
+
+#~ msgid "Send document to trash"
+#~ msgstr "Отправить документ в корзину"

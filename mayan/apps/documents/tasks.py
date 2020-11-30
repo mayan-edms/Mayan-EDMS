@@ -248,39 +248,6 @@ def task_document_version_page_image_generate(
         raise self.retry(exc=exception)
 
 
-# Duplicates
-
-@app.task(ignore_result=True)
-def task_duplicates_clean_empty_lists():
-    DuplicatedDocument = apps.get_model(
-        app_label='documents', model_name='DuplicatedDocument'
-    )
-    DuplicatedDocument.objects.clean_empty_duplicate_lists()
-
-
-@app.task(ignore_result=True)
-def task_duplicates_scan_all():
-    DuplicatedDocument = apps.get_model(
-        app_label='documents', model_name='DuplicatedDocument'
-    )
-
-    DuplicatedDocument.objects.scan()
-
-
-@app.task(ignore_result=True)
-def task_duplicates_scan_for(document_id):
-    Document = apps.get_model(
-        app_label='documents', model_name='Document'
-    )
-    DuplicatedDocument = apps.get_model(
-        app_label='documents', model_name='DuplicatedDocument'
-    )
-
-    document = Document.objects.get(pk=document_id)
-
-    DuplicatedDocument.objects.scan_for(document=document)
-
-
 # Trash can
 
 @app.task(ignore_result=True)

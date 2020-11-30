@@ -3,15 +3,17 @@ import logging
 from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.documents.models.document_models import Document
+from mayan.apps.documents.permissions import (
+    permission_document_tools, permission_document_view
+)
+from mayan.apps.documents.views.document_views import DocumentListView
 from mayan.apps.views.generics import ConfirmView
 from mayan.apps.views.mixins import ExternalObjectMixin
 
-from ..icons import icon_duplicated_document_list
-from ..models import Document, DuplicatedDocument
-from ..permissions import permission_document_tools, permission_document_view
-from ..tasks import task_duplicates_scan_all
-
-from .document_views import DocumentListView
+from .icons import icon_duplicated_document_list
+from .models import DuplicatedDocument
+from .tasks import task_duplicates_scan_all
 
 __all__ = (
     'DocumentDuplicatesListView', 'DuplicatedDocumentListView',

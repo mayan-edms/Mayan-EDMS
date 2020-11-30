@@ -1,6 +1,6 @@
-from ..models.duplicated_document_models import DuplicatedDocument
+from mayan.apps.documents.tests.base import GenericDocumentTestCase
 
-from .base import GenericDocumentTestCase
+from ..models import DuplicatedDocument
 
 
 class DuplicatedDocumentsTestCase(GenericDocumentTestCase):

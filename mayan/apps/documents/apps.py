@@ -1,4 +1,4 @@
-from django.db.models.signals import post_delete, post_migrate
+from django.db.models.signals import post_migrate
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
@@ -11,7 +11,7 @@ from mayan.apps.common.classes import (
 )
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_main, menu_object, menu_return,
-    menu_secondary, menu_setup, menu_multi_item, menu_tools
+    menu_secondary, menu_setup, menu_multi_item
 )
 from mayan.apps.common.signals import signal_post_initial_setup
 from mayan.apps.converter.layers import layer_decorations
@@ -57,8 +57,7 @@ from .events import (
 from .handlers import (
     handler_create_default_document_type,
     handler_create_document_file_page_image_cache,
-    handler_create_document_version_page_image_cache,
-    handler_remove_empty_duplicates_lists, handler_scan_duplicates_for
+    handler_create_document_version_page_image_cache
 )
 from .links.document_links import (
     link_document_type_change, link_document_properties_edit,
@@ -124,10 +123,6 @@ from .links.document_version_page_links import (
     link_document_version_page_view_reset,
     link_document_version_page_zoom_in, link_document_version_page_zoom_out
 )
-from .links.duplicated_document_links import (
-    link_document_duplicates_list, link_duplicated_document_list,
-    link_duplicated_document_scan
-)
 from .links.favorite_links import (
     link_document_favorites_add, link_document_favorites_remove,
     link_document_list_favorites, link_document_multiple_favorites_add,
@@ -180,7 +175,6 @@ from .permissions import (
     permission_trashed_document_delete, permission_trashed_document_restore
 )
 
-from .signals import signal_post_document_file_upload
 from .statistics import *  # NOQA
 from .widgets import (
     ThumbnailWidget, widget_document_file_page_number,
@@ -220,7 +214,6 @@ class DocumentsApp(MayanAppConfig):
         DocumentVersionPageSearchResult = self.get_model(
             model_name='DocumentVersionPageSearchResult'
         )
-        DuplicatedDocument = self.get_model(model_name='DuplicatedDocument')
         FavoriteDocument = self.get_model(
             model_name='FavoriteDocument'
         )
@@ -538,13 +531,6 @@ class DocumentsApp(MayanAppConfig):
             ), label=_('Pages'), source=Document
         )
 
-        SourceColumn(
-            func=lambda context: DuplicatedDocument.objects.get(
-                document=context['object']
-            ).documents.count(), include_label=True, label=_('Duplicates'),
-            source=Document, views=('documents:duplicated_document_list',)
-        )
-
         # RecentlyCreatedDocument
 
         SourceColumn(
@@ -687,23 +673,18 @@ class DocumentsApp(MayanAppConfig):
             links=(
                 link_document_recently_accessed_list,
                 link_document_recently_created_list, link_document_list_favorites,
-                link_document_list, link_document_list_deleted,
-                link_duplicated_document_list,
+                link_document_list, link_document_list_deleted
             )
         )
 
         menu_main.bind_links(links=(menu_documents,), position=0)
 
         menu_setup.bind_links(links=(link_document_type_setup,))
-        menu_tools.bind_links(
-            links=(link_duplicated_document_scan,)
-        )
 
         # Document
 
         menu_facet.bind_links(
-            links=(link_document_duplicates_list, link_acl_list,),
-            sources=(Document,)
+            links=(link_acl_list,), sources=(Document,)
         )
         menu_facet.bind_links(
             links=(link_document_preview,), sources=(Document,), position=0
@@ -955,11 +936,6 @@ class DocumentsApp(MayanAppConfig):
             ), sources=(TrashedDocument,)
         )
 
-        post_delete.connect(
-            dispatch_uid='documents_handler_remove_empty_duplicates_lists',
-            receiver=handler_remove_empty_duplicates_lists,
-            sender=Document
-        )
         post_migrate.connect(
             dispatch_uid='documents_handler_create_document_file_page_image_cache',
             receiver=handler_create_document_file_page_image_cache,
@@ -971,8 +947,4 @@ class DocumentsApp(MayanAppConfig):
         signal_post_initial_setup.connect(
             dispatch_uid='documents_handler_create_default_document_type',
             receiver=handler_create_default_document_type
-        )
-        signal_post_document_file_upload.connect(
-            dispatch_uid='documents_handler_scan_duplicates_for',
-            receiver=handler_scan_duplicates_for
         )

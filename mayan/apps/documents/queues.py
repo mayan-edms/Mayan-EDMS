@@ -2,7 +2,6 @@ from datetime import timedelta
 
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.queues import queue_tools
 from mayan.apps.task_manager.classes import CeleryQueue
 from mayan.apps.task_manager.workers import worker_fast, worker_medium
 
@@ -34,10 +33,6 @@ queue_converter.add_task_type(
     label=_('Generate document version page image')
 )
 
-queue_documents.add_task_type(
-    dotted_path='mayan.apps.documents.tasks.task_duplicates_clean_empty_lists',
-    label=_('Clean empty duplicate lists')
-)
 queue_documents.add_task_type(
     dotted_path='mayan.apps.documents.tasks.task_trash_can_empty',
     label=_('Empty the trash can')
@@ -76,11 +71,6 @@ queue_documents_periodic.add_task_type(
     ),
 )
 
-queue_tools.add_task_type(
-    dotted_path='mayan.apps.documents.tasks.task_duplicates_scan_all',
-    label=_('Duplicated document scan')
-)
-
 queue_uploads.add_task_type(
     dotted_path='mayan.apps.documents.tasks.task_document_file_page_count_update',
     label=_('Update document page count')
@@ -88,8 +78,4 @@ queue_uploads.add_task_type(
 queue_uploads.add_task_type(
     dotted_path='mayan.apps.documents.tasks.task_document_file_upload',
     label=_('Upload new document file')
-)
-queue_uploads.add_task_type(
-    dotted_path='mayan.apps.documents.tasks.task_duplicates_scan_for',
-    label=_('Scan document duplicates')
 )

@@ -76,10 +76,6 @@ from .views.document_views import (
     DocumentTypeChangeView, DocumentListView, DocumentPreviewView,
     DocumentPropertiesEditView, DocumentPropertiesView
 )
-from .views.duplicated_document_views import (
-    DocumentDuplicatesListView, DuplicatedDocumentListView,
-    ScanDuplicatedDocuments
-)
 from .views.favorite_document_views import (
     FavoriteAddView, FavoriteDocumentListView, FavoriteRemoveView
 )
@@ -445,24 +441,6 @@ urlpatterns_documents = [
     ),
 ]
 
-urlpatterns_duplicated_documents = [
-    url(
-        regex=r'^documents/duplicated/$',
-        name='duplicated_document_list',
-        view=DuplicatedDocumentListView.as_view()
-    ),
-    url(
-        regex=r'^documents/(?P<document_id>\d+)/duplicates/$',
-        name='document_duplicates_list',
-        view=DocumentDuplicatesListView.as_view()
-    ),
-    url(
-        regex=r'^tools/documents/duplicated/scan/$',
-        name='duplicated_document_scan',
-        view=ScanDuplicatedDocuments.as_view()
-    ),
-]
-
 urlpatterns_favorite_documents = [
     url(
         regex=r'^documents/favorites/$', name='document_list_favorites',
@@ -533,7 +511,6 @@ urlpatterns.extend(urlpatterns_document_types)
 urlpatterns.extend(urlpatterns_document_version_pages)
 urlpatterns.extend(urlpatterns_document_version)
 urlpatterns.extend(urlpatterns_documents)
-urlpatterns.extend(urlpatterns_duplicated_documents)
 urlpatterns.extend(urlpatterns_favorite_documents)
 urlpatterns.extend(urlpatterns_trashed_documents)
 

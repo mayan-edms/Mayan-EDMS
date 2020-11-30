@@ -1,0 +1,250 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-30 04:39+0000\n"
+"PO-Revision-Date: 2020-10-26 13:26+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Slovenian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/sl/)\n"
+"Language: sl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+"%100==4 ? 2 : 3);\n"
+
+#: apps.py:25 apps.py:39 links.py:14
+msgid "Duplicates"
+msgstr ""
+
+#: links.py:18 models.py:20 models.py:30 views.py:75
+msgid "Duplicated documents"
+msgstr ""
+
+#: links.py:24 queues.py:13
+msgid "Duplicated document scan"
+msgstr ""
+
+#: models.py:17
+msgid "Document"
+msgstr "Dokument"
+
+#: models.py:23
+msgid "Added"
+msgstr ""
+
+#: models.py:29
+msgid "Duplicated document"
+msgstr ""
+
+#: queues.py:8
+msgid "Clean empty duplicate lists"
+msgstr ""
+
+#: queues.py:18
+msgid "Scan document duplicates"
+msgstr ""
+
+#: views.py:36
+msgid "Only exact copies of this document will be shown in the this list."
+msgstr ""
+
+#: views.py:40
+msgid "There are no duplicates for this document"
+msgstr ""
+
+#: views.py:44
+#, python-format
+msgid "Duplicates for document: %s"
+msgstr ""
+
+#: views.py:66
+msgid ""
+"Duplicates are documents that are composed of the exact same file, down to "
+"the last byte. Files that have the same text or OCR but are not identical or "
+"were saved using a different file format will not appear as duplicates."
+msgstr ""
+
+#: views.py:73
+msgid "There are no duplicated documents"
+msgstr ""
+
+#: views.py:83
+msgid "Scan for duplicated documents?"
+msgstr ""
+
+#: views.py:90
+msgid "Duplicated document scan queued successfully."
+msgstr ""
+
+#~ msgid "Documents"
+#~ msgstr "Dokumenti"
+
+#~ msgid "Pages"
+#~ msgstr "Strani"
+
+#~ msgid "UUID"
+#~ msgstr "UUID"
+
+#~ msgid "Compress"
+#~ msgstr "Stisni"
+
+#~ msgid "Compressed filename"
+#~ msgstr "Ime stisnjene datoteke"
+
+#~ msgid ""
+#~ "The filename of the compressed file that will contain the documents to be "
+#~ "downloaded, if the previous option is selected."
+#~ msgstr ""
+#~ "Ime skrčene datotteke, ki do vsebovala datoteke za prenos, če je bila "
+#~ "prejšnja opcija izbrana."
+
+#~ msgid "Quick document rename"
+#~ msgstr "Hitro preimenovanje dokumenta"
+
+#~ msgid "Date added"
+#~ msgstr "Dodano datum"
+
+#~ msgid "File mimetype"
+#~ msgstr "MIME vrsta datoteke"
+
+#~ msgid "None"
+#~ msgstr "Brez"
+
+#~ msgid "File size"
+#~ msgstr "Velikost datoteke"
+
+#~ msgid "Exists in storage"
+#~ msgstr "Obstaja v shrambi"
+
+#~ msgid "File path in storage"
+#~ msgstr "Pot datoteke v shrambi"
+
+#~ msgid "Checksum"
+#~ msgstr "Nadzorna vsota"
+
+#~ msgid "Page range"
+#~ msgstr "Obseg strani"
+
+#~ msgid "Document type"
+#~ msgstr "Tip dokumenta"
+
+#~ msgid "Delete"
+#~ msgstr "Izbriši"
+
+#~ msgid "Page image"
+#~ msgstr "Slika strani"
+
+#~ msgid "Label"
+#~ msgstr "Oznaka"
+
+#~ msgid "Description"
+#~ msgstr "Opis"
+
+#~ msgid "Page %(page_num)d out of %(total_pages)d of %(document)s"
+#~ msgstr "Stran %(page_num)d od %(total_pages)d dokumenta %(document)s"
+
+#~ msgid "Comment"
+#~ msgstr "Komentar"
+
+#~ msgid "MIME type"
+#~ msgstr "MIME tip"
+
+#~ msgid "Create documents"
+#~ msgstr "Ustvari dokument"
+
+#~ msgid "Delete documents"
+#~ msgstr "Izbiši dokumente"
+
+#~ msgid "Download documents"
+#~ msgstr "Prenesi dokumente"
+
+#~ msgid "Edit documents"
+#~ msgstr "Uredi dokumente"
+
+#~ msgid "Create new document versions"
+#~ msgstr "Kreiraj novo verzijo dokumenta"
+
+#~ msgid "Edit document properties"
+#~ msgstr "Uredi lastnosti dokumenta"
+
+#~ msgid "Execute document modifying tools"
+#~ msgstr "Izvedi orodja za spreminjanje dokumentov"
+
+#~ msgid "Revert documents to a previous version"
+#~ msgstr "Povrni na prejšnjo verzijo dokumenta"
+
+#~ msgid "View documents"
+#~ msgstr "Poglej dokumente"
+
+#~ msgid "Create document types"
+#~ msgstr "Kreiran tipe dokumentov"
+
+#~ msgid "Delete document types"
+#~ msgstr "Izbriši tipe dokumentov"
+
+#~ msgid "Edit document types"
+#~ msgstr "Uredi tipe dokumentov"
+
+#~ msgid "View document types"
+#~ msgstr "Poglej tip dokumenta"
+
+#~ msgid "Amount in degrees to rotate a document page per user interaction."
+#~ msgstr ""
+#~ "Število v stopinjah za rotiranje strani dokumenta ob uporabniški "
+#~ "interakciji."
+
+#~ msgid ""
+#~ "Maximum amount in percent (%) to allow user to zoom in a document page "
+#~ "interactively."
+#~ msgstr ""
+#~ "Največji znesek v procentih (%), ki je dovoljen uporabniku za "
+#~ "približevanje strani v dokumentu."
+
+#~ msgid ""
+#~ "Minimum amount in percent (%) to allow user to zoom out a document page "
+#~ "interactively."
+#~ msgstr ""
+#~ "Naamanjši znesek v procentih (%), ki je dovoljen uporabniku za "
+#~ "približevanje strani v dokumentu."
+
+#~ msgid ""
+#~ "Amount in percent zoom in or out a document page per user interaction."
+#~ msgstr ""
+#~ "Znesek v procentih za približane oziroma oddaljene strani na dokument v "
+#~ "uporabniškem vmesniku."
+
+#~ msgid "There are no more pages in this document"
+#~ msgstr "Ni več strani v tem dokumentu"
+
+#~ msgid "You are already at the first page of this document"
+#~ msgstr "Ste že na prvi strani dokumenta"
+
+#~ msgid "All later version after this one will be deleted too."
+#~ msgstr "Vse prejšnje verzije bodo tudi izbrisane."
+
+#~ msgid "Document version reverted successfully"
+#~ msgstr "Povrnitev verzije dokumenta  je bila uspešna"
+
+#~ msgid "Error reverting document version; %s"
+#~ msgstr "Napaka v povrnitvi dokumenta verzija: %s"
+
+#~ msgid "Download"
+#~ msgstr "Prenos"
+
+#~ msgid ""
+#~ "Error deleting the page transformations for document: %(document)s; "
+#~ "%(error)s."
+#~ msgstr ""
+#~ "Napaka v izbrisu preoblikovanj strani za dokument: %(document)s; "
+#~ "%(error)s."
+
+#~ msgid "Submit"
+#~ msgstr "Pošlji"

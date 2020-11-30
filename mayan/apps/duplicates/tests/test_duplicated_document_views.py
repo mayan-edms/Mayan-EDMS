@@ -1,7 +1,7 @@
-from ..permissions import permission_document_view
+from mayan.apps.documents.permissions import permission_document_view
+from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 
-from .base import GenericDocumentViewTestCase
-from .mixins.duplicated_document_mixins import (
+from .mixins import (
     DuplicatedDocumentsTestMixin, DuplicatedDocumentsViewsTestMixin
 )
 

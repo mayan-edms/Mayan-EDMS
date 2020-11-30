@@ -4,7 +4,6 @@ from .models.document_models import Document
 from .models.document_file_models import DocumentFile
 from .models.document_file_page_models import DocumentFilePage
 from .models.document_type_models import DocumentType, DocumentTypeFilename
-from .models.duplicated_document_models import DuplicatedDocument
 from .models.recently_accessed_document_models import RecentlyAccessedDocument
 from .models.trashed_document_models import TrashedDocument
 
@@ -45,13 +44,6 @@ class DocumentTypeAdmin(admin.ModelAdmin):
     list_display = (
         'label', 'trash_time_period', 'trash_time_unit', 'delete_time_period',
         'delete_time_unit'
-    )
-
-
-@admin.register(DuplicatedDocument)
-class DuplicatedDocumentAdmin(admin.ModelAdmin):
-    list_display = (
-        'document', 'datetime_added'
     )
 
 

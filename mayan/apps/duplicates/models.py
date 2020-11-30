@@ -4,16 +4,15 @@ from django.db import models
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
-from ..managers import DuplicatedDocumentManager
+from mayan.apps.documents.models.document_models import Document
 
-from .document_models import Document
+from .managers import DuplicatedDocumentManager
 
-__all__ = ('DuplicatedDocument',)
 logger = logging.getLogger(name=__name__)
 
 
 class DuplicatedDocument(models.Model):
-    document = models.ForeignKey(
+    document = models.OneToOneField(
         on_delete=models.CASCADE, related_name='duplicates', to=Document,
         verbose_name=_('Document')
     )

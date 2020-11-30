@@ -111,5 +111,6 @@
 - Document stubs without a label will now display their ID as the label.
   This allows documents without files or versions to be accessible via the
   user interface.
-- Add the reusable ObjectActionAPIView API view. This is a view that can 
+- Add the reusable ObjectActionAPIView API view. This is a view that can
   execute an action on an object from a queryset from a POST request.
+- Move the duplicated documents code to its own app.
