@@ -54,8 +54,7 @@ class FileMetadataDriver:
                         )
                     )
             except FileMetadataDriverError:
-                # If driver raises error, try next in the list
-                pass
+                """If driver raises error, try next in the list."""
             else:
                 # If driver was successfull there is no need to try
                 # others in the list for this mimetype
