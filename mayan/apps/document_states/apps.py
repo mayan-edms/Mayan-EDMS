@@ -578,8 +578,6 @@ class DocumentStatesApp(MayanAppConfig):
             )
         )
 
-        menu_secondary.add_proxy_exclusion(source=WorkflowRuntimeProxy)
-
         menu_setup.bind_links(links=(link_workflow_template_list,))
 
         menu_tools.bind_links(links=(link_tool_launch_workflows,))

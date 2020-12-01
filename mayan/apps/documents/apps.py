@@ -202,6 +202,9 @@ class DocumentsApp(MayanAppConfig):
         DocumentFileSearchResult = self.get_model(
             model_name='DocumentFileSearchResult'
         )
+        DocumentFilePageSearchResult = self.get_model(
+            model_name='DocumentFilePageSearchResult'
+        )
         DocumentType = self.get_model(model_name='DocumentType')
         DocumentTypeFilename = self.get_model(
             model_name='DocumentTypeFilename'
@@ -714,7 +717,7 @@ class DocumentsApp(MayanAppConfig):
                 link_document_multiple_favorites_remove,
                 link_document_multiple_trash,
                 link_document_multiple_type_change
-            ), sources=(Document, DocumentSearchResult)
+            ), sources=(Document,)
         )
 
         menu_secondary.bind_links(
@@ -739,7 +742,7 @@ class DocumentsApp(MayanAppConfig):
             links=(
                 link_document_file_multiple_page_count_update,
                 link_document_file_multiple_transformations_clear,
-            ), sources=(DocumentFile, DocumentFileSearchResult)
+            ), sources=(DocumentFile,)
         )
         menu_object.bind_links(
             links=(
@@ -851,7 +854,7 @@ class DocumentsApp(MayanAppConfig):
             links=(
                 link_document_version_multiple_delete,
                 link_document_version_multiple_transformations_clear,
-            ), sources=(DocumentVersion, DocumentVersionSearchResult)
+            ), sources=(DocumentVersion,)
         )
         menu_object.bind_links(
             links=(
@@ -914,27 +917,33 @@ class DocumentsApp(MayanAppConfig):
             ), sources=(DocumentVersionPage,)
         )
 
-        # Recently created documents
-
-        # Add one of the multi items of Document to trigger adding all.
-        menu_multi_item.bind_links(
-            links=(
-                link_document_multiple_favorites_add,
-            ), sources=(RecentlyCreatedDocument,)
-        )
-
         # Trashed documents
 
         menu_object.bind_links(
             links=(link_document_restore, link_document_delete),
             sources=(TrashedDocument,)
         )
-        menu_multi_item.add_proxy_exclusion(source=TrashedDocument)
         menu_multi_item.bind_links(
             links=(
                 link_document_multiple_restore, link_document_multiple_delete
             ), sources=(TrashedDocument,)
         )
+
+        # RecentlyAccessedDocument
+
+        menu_multi_item.add_proxy_inclusions(source=RecentlyAccessedDocument)
+
+        # RecentlyCreatedDocument
+
+        menu_multi_item.add_proxy_inclusions(source=RecentlyCreatedDocument)
+
+        # Search proxies
+
+        menu_multi_item.add_proxy_inclusions(source=DocumentSearchResult)
+        menu_multi_item.add_proxy_inclusions(source=DocumentFileSearchResult)
+        menu_multi_item.add_proxy_inclusions(source=DocumentFilePageSearchResult)
+        menu_multi_item.add_proxy_inclusions(source=DocumentVersionSearchResult)
+        menu_multi_item.add_proxy_inclusions(source=DocumentVersionPageSearchResult)
 
         post_migrate.connect(
             dispatch_uid='documents_handler_create_document_file_page_image_cache',

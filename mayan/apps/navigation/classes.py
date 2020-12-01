@@ -239,7 +239,7 @@ class Menu:
         self.link_positions = {}
         self.name = name
         self.non_sorted_sources = non_sorted_sources or []
-        self.proxy_exclusions = set()
+        self.proxy_inclusions = set()
         self.unbound_links = {}
         self.__class__._registry[name] = self
 
@@ -253,8 +253,8 @@ class Menu:
             source_links.append(link)
             self.link_positions[link] = position or 0
 
-    def add_proxy_exclusion(self, source):
-        self.proxy_exclusions.add(source)
+    def add_proxy_inclusions(self, source):
+        self.proxy_inclusions.add(source)
 
     def add_unsorted_source(self, source):
         self.non_sorted_sources.append(source)
@@ -369,23 +369,23 @@ class Menu:
         for resolved_navigation_object in resolved_navigation_object_list:
             resolved_links = []
 
+            # Check to see if object is a proxy model. If it is, add its parent model
+            # menu links too.
+            if hasattr(resolved_navigation_object, '_meta'):
+                if resolved_navigation_object._meta.model in self.proxy_inclusions:
+                    parent_model = resolved_navigation_object._meta.proxy_for_model
+                    if parent_model:
+                        parent_instance = parent_model.objects.filter(pk=resolved_navigation_object.pk)
+                        if parent_instance.exists():
+                            for link_set in self.resolve(context=context, source=parent_instance.first()):
+                                for link in link_set['links']:
+                                    if link.link not in self.unbound_links.get(resolved_navigation_object, ()):
+                                        resolved_links.append(link)
+
             for bound_source, links in self.bound_links.items():
                 try:
                     if inspect.isclass(bound_source):
                         if type(resolved_navigation_object) == bound_source:
-                            # Check to see if object is a proxy model. If it is, add its parent model
-                            # menu links too.
-                            if hasattr(resolved_navigation_object, '_meta'):
-                                if resolved_navigation_object._meta.model not in self.proxy_exclusions:
-                                    parent_model = resolved_navigation_object._meta.proxy_for_model
-                                    if parent_model:
-                                        parent_instance = parent_model.objects.filter(pk=resolved_navigation_object.pk)
-                                        if parent_instance:
-                                            for link_set in self.resolve(context=context, source=parent_instance.first()):
-                                                for link in link_set['links']:
-                                                    if link.link not in self.unbound_links.get(bound_source, ()):
-                                                        resolved_links.append(link)
-
                             for link in links:
                                 resolved_link = link.resolve(
                                     context=context,
