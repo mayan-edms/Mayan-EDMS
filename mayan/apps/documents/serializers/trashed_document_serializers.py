@@ -2,11 +2,11 @@ from rest_framework import serializers
 
 from ..models.trashed_document_models import TrashedDocument
 
+from .document_serializers import DocumentSerializer
 from .document_type_serializers import DocumentTypeSerializer
 
 
-class TrashedDocumentSerializer(serializers.HyperlinkedModelSerializer):
-    document_type = DocumentTypeSerializer(read_only=True)
+class TrashedDocumentSerializer(DocumentSerializer):
     restore_url = serializers.HyperlinkedIdentityField(
         lookup_url_kwarg='document_id',
         view_name='rest_api:trasheddocument-restore'
@@ -19,9 +19,9 @@ class TrashedDocumentSerializer(serializers.HyperlinkedModelSerializer):
                 'view_name': 'rest_api:trasheddocument-detail'
             }
         }
-        fields = (
-            'datetime_created', 'description', 'document_type',
-            'id', 'label', 'language', 'restore_url',
-            'trashed_date_time', 'url', 'uuid'
+        fields = sorted(
+            DocumentSerializer.Meta.fields + (
+                'restore_url', 'trashed_date_time'
+            )
         )
         model = TrashedDocument
