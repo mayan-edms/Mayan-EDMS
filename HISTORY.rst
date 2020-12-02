@@ -10,6 +10,11 @@
 - Updated events test mixins. Allow returning one, many or all events.
 - Clean up API end point enumeration API view.
 - Split the misc_models.py models module into different modules.
+- Stricter filtering and permission checking for duplicated documents.
+  Users now need the document view permission for all duplicated documents
+  for any of them to show up in the duplicated document list. The duplicate
+  count column now performs filtering and will only show the count of
+  duplicated documents that the user can access.
 
 3.5.3 (2020-11-11)
 ==================

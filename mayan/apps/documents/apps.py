@@ -326,9 +326,11 @@ class DocumentsApp(MayanAppConfig):
             source=Document, views=('documents:document_list_recent_added',)
         )
         SourceColumn(
-            func=lambda context: DuplicatedDocument.objects.get(
-                document=context['object']
-            ).documents.count(), include_label=True, label=_('Duplicates'),
+            func=lambda context: DuplicatedDocument.objects.get_duplicates_of(
+                document=context['object'],
+                permission=permission_document_view,
+                user=context['request'].user
+            ).count(), include_label=True, label=_('Duplicates'),
             source=Document, views=('documents:duplicated_document_list',)
         )
 

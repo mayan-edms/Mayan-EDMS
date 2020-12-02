@@ -54,7 +54,9 @@ class DocumentDuplicatesListView(ExternalObjectMixin, DocumentListView):
 
 class DuplicatedDocumentListView(DocumentListView):
     def get_document_queryset(self):
-        return DuplicatedDocument.objects.get_duplicated_documents()
+        return DuplicatedDocument.objects.get_duplicated_documents(
+            permission=permission_document_view, user=self.request.user
+        )
 
     def get_extra_context(self):
         context = super(DuplicatedDocumentListView, self).get_extra_context()
