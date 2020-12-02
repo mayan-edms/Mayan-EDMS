@@ -566,8 +566,13 @@ class ModelQueryFields:
             )
         self.prefetch_related_fields.append(field_name)
 
-    def get_queryset(self):
-        queryset = self.model._meta.default_manager.all()
+    def get_queryset(self, manager_name=None):
+        if manager_name:
+            manager = getattr(self.model, manager_name)
+        else:
+            manager = self.model._meta.default_manager
+
+        queryset = manager.all()
 
         if self.select_related_fields:
             queryset = queryset.select_related(*self.select_related_fields)
