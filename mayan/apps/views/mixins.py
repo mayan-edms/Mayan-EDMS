@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ImproperlyConfigured
+from django.db.models.query import QuerySet
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
@@ -150,20 +151,21 @@ class ExternalObjectMixin:
         return self.external_object_permission
 
     def get_external_object_queryset(self):
-        if not self.external_object_queryset and not self.external_object_class:
-            raise ImproperlyConfigured(
-                'View must provide either an external_object_queryset, '
-                'an external_object_class or a custom '
-                'get_external_object_queryset() method.'
-            )
-
-        queryset = self.external_object_queryset
-
-        if not queryset:
+        if self.external_object_queryset is not None:
+            queryset = self.external_object_queryset
+            if isinstance(queryset, QuerySet):
+                queryset = queryset.all()
+        elif self.external_object_class is not None:
             manager = ModelPermission.get_manager(
                 model=self.external_object_class
             )
             queryset = manager.all()
+        else:
+            raise ImproperlyConfigured(
+                'View `%s` must provide either an external_object_queryset, '
+                'an external_object_class or a custom '
+                'get_external_object_queryset() method.'
+            ) % self.__class__.__name__
 
         return queryset
 

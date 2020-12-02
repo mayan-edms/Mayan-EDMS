@@ -15,6 +15,8 @@
   for any of them to show up in the duplicated document list. The duplicate
   count column now performs filtering and will only show the count of
   duplicated documents that the user can access.
+- Updated ``.get_external_object_queryset`` to ensure that the queryset is
+  always up to date when the view is accessed.
 
 3.5.3 (2020-11-11)
 ==================
