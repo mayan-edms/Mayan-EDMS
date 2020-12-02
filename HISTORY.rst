@@ -7,6 +7,8 @@
   type label.
 - Add icons to the mark notification as seen and mark all notification as
   seen links.
+- Updated events test mixins. Allow returning one, many or all events.
+- Clean up API end point enumeration API view.
 
 3.5.3 (2020-11-11)
 ==================
