@@ -9,6 +9,7 @@
   seen links.
 - Updated events test mixins. Allow returning one, many or all events.
 - Clean up API end point enumeration API view.
+- Split the misc_models.py models module into different modules.
 
 3.5.3 (2020-11-11)
 ==================

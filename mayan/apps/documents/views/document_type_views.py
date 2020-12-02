@@ -19,7 +19,7 @@ from ..icons import (
 from ..links.document_type_links import (
     link_document_type_create, link_document_type_filename_create
 )
-from ..models import DocumentType, DocumentTypeFilename
+from ..models.document_type_models import DocumentType, DocumentTypeFilename
 from ..permissions import (
     permission_document_type_create, permission_document_type_delete,
     permission_document_type_edit, permission_document_type_view

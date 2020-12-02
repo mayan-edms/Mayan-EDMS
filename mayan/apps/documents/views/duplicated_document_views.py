@@ -7,7 +7,8 @@ from mayan.apps.views.generics import ConfirmView
 from mayan.apps.views.mixins import ExternalObjectMixin
 
 from ..icons import icon_duplicated_document_list
-from ..models import Document, DuplicatedDocument
+from ..models.document_models import Document
+from ..models.duplicated_document_models import DuplicatedDocument
 from ..permissions import permission_document_tools, permission_document_view
 from ..tasks import task_scan_duplicates_all
 

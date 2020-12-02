@@ -35,7 +35,8 @@ from ..icons import (
     icon_document_list_recent_access, icon_recent_added_document_list
 )
 from ..literals import PAGE_RANGE_RANGE, DEFAULT_ZIP_FILENAME
-from ..models import Document, RecentDocument
+from ..models.document_models import Document
+from ..models.recently_accessed_document_models import RecentDocument
 from ..permissions import (
     permission_document_download, permission_document_print,
     permission_document_properties_edit, permission_document_tools,

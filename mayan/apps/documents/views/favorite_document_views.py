@@ -6,7 +6,8 @@ from mayan.apps.views.exceptions import ActionError
 from mayan.apps.views.generics import MultipleObjectConfirmActionView
 
 from ..icons import icon_favorite_document_list
-from ..models import Document, FavoriteDocument
+from ..models.document_models import Document
+from ..models.favorite_document_models import FavoriteDocument
 from ..permissions import permission_document_view
 from ..settings import setting_favorite_count
 

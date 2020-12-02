@@ -11,7 +11,8 @@ from mayan.apps.views.generics import (
 )
 
 from ..icons import icon_document_list_deleted
-from ..models import DeletedDocument, Document
+from ..models.document_models import Document
+from ..models.trashed_document_models import DeletedDocument
 from ..permissions import (
     permission_document_delete, permission_document_restore,
     permission_document_trash, permission_document_view,

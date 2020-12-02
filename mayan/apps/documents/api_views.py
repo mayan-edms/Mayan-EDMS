@@ -13,9 +13,10 @@ from mayan.apps.rest_api import generics
 from mayan.apps.views.generics import DownloadMixin
 
 from .literals import DOCUMENT_IMAGE_TASK_TIMEOUT
-from .models import (
-    DeletedDocument, Document, DocumentType, RecentDocument
-)
+from .models.document_models import Document
+from .models.document_type_models import DocumentType
+from .models.recently_accessed_document_models import RecentDocument
+from .models.trashed_document_models import DeletedDocument
 from .permissions import (
     permission_document_create, permission_document_delete,
     permission_document_download, permission_document_edit,

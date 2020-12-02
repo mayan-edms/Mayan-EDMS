@@ -20,7 +20,8 @@ from mayan.apps.views.utils import resolve
 from ..forms import DocumentPageForm
 from ..icons import icon_document_pages
 from ..links.document_version_page_links import link_document_update_page_count
-from ..models import Document, DocumentPage
+from ..models.document_models import Document
+from ..models.document_page_models import DocumentPage
 from ..permissions import permission_document_edit, permission_document_view
 from ..settings import (
     setting_rotation_step, setting_zoom_percent_step, setting_zoom_max_level,
