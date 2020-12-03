@@ -162,10 +162,12 @@ class ExternalObjectMixin:
             queryset = manager.all()
         else:
             raise ImproperlyConfigured(
-                'View `%s` must provide either an external_object_queryset, '
+                'View `{}` must provide either an external_object_queryset, '
                 'an external_object_class or a custom '
-                'get_external_object_queryset() method.'
-            ) % self.__class__.__name__
+                'get_external_object_queryset() method.'.format(
+                    self.__class__.__name__
+                )
+            )
 
         return queryset
 
