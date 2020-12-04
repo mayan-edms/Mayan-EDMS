@@ -19,7 +19,7 @@ class DocumentWorkflowTemplateViewTestCase(
     DocumentWorkflowTemplateViewTestMixin, WorkflowTestMixin,
     GenericDocumentViewTestCase
 ):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def setUp(self):
         super().setUp()
@@ -31,6 +31,7 @@ class DocumentWorkflowTemplateViewTestCase(
         self.test_workflow.save()
 
     def test_document_single_workflow_launch_view_no_permission(self):
+        self._upload_test_document()
         workflow_instance_count = self.test_document.workflows.count()
 
         response = self._request_test_document_single_workflow_launch_view()
@@ -41,6 +42,7 @@ class DocumentWorkflowTemplateViewTestCase(
         )
 
     def test_document_single_workflow_launch_view_with_document_access(self):
+        self._upload_test_document()
         self.grant_access(
             obj=self.test_document, permission=permission_workflow_tools
         )
@@ -55,6 +57,7 @@ class DocumentWorkflowTemplateViewTestCase(
         )
 
     def test_document_single_workflow_launch_view_with_workflow_access(self):
+        self._upload_test_document()
         self.grant_access(
             obj=self.test_workflow, permission=permission_workflow_tools
         )
@@ -69,6 +72,7 @@ class DocumentWorkflowTemplateViewTestCase(
         )
 
     def test_document_single_workflow_launch_view_with_full_access(self):
+        self._upload_test_document()
         self.grant_access(
             obj=self.test_document, permission=permission_workflow_tools
         )

@@ -661,7 +661,7 @@ class DocumentMetadataAPIViewTestCase(
 
 
 class DocumentStubMetadataAPITestCase(DocumentMetadataAPIViewTestCase):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def setUp(self):
         super().setUp()
