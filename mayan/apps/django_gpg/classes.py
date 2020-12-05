@@ -41,7 +41,11 @@ class SignatureVerification:
         self.status = raw['status']
         self.key_id = raw['key_id']
         self.pubkey_fingerprint = raw['pubkey_fingerprint']
-        self.date = date.fromtimestamp(int(raw['timestamp']))
+
+        # Invalid signatures do not have a timestamp attribute
+        if raw['timestamp']:
+            self.date = date.fromtimestamp(int(raw['timestamp']))
+
         if raw['expire_timestamp']:
             self.expires = date.fromtimestamp(int(raw['expire_timestamp']))
         else:
