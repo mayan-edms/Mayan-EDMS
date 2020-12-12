@@ -21,6 +21,8 @@
   and #920. Thanks to Sven Gaechter (@sgaechter), Francesco Musella
   (@francesco.musella-biztems), Kevin Pawsey (@kevinpawsey), and
   None Given (@nastodon) for the reports and debug information.
+- Move all static values from setting modules to the literals modules.
+  Closes GitLab issue #852.
 
 3.5.3 (2020-11-11)
 ==================

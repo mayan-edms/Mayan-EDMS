@@ -1,4 +1,8 @@
+import os
+
 import platform
+
+from django.conf import settings
 
 CONVERTER_OFFICE_FILE_MIMETYPES = (
     'application/msword',
@@ -56,13 +60,27 @@ else:
     DEFAULT_PDFINFO_PATH = '/usr/bin/pdfinfo'
     DEFAULT_PDFTOPPM_PATH = '/usr/bin/pdftoppm'
 
-DEFAULT_ZOOM_LEVEL = 100
-DEFAULT_ROTATION = 0
+DEFAULT_CONVERTER_ASSET_STORAGE_BACKEND = 'django.core.files.storage.FileSystemStorage'
+DEFAULT_CONVERTER_ASSET_STORAGE_BACKEND_ARGUMENTS = {
+    'location': os.path.join(settings.MEDIA_ROOT, 'converter_assets')
+}
+DEFAULT_CONVERTER_GRAPHICS_BACKEND = 'mayan.apps.converter.backends.python.Python'
 DEFAULT_PAGE_NUMBER = 1
-DEFAULT_PILLOW_FORMAT = 'JPEG'
-DEFAULT_PILLOW_MAXIMUM_IMAGE_PIXELS = 89478485  # Upstream default as of v6.2.1 (2019-01-16)
-
 DEFAULT_PDFTOPPM_DPI = 300
 DEFAULT_PDFTOPPM_FORMAT = 'jpeg'  # Possible values jpeg, png, tiff
+DEFAULT_PILLOW_FORMAT = 'JPEG'
+DEFAULT_PILLOW_MAXIMUM_IMAGE_PIXELS = 89478485  # Upstream default as of v6.2.1 (2019-01-16)
+DEFAULT_ROTATION = 0
+DEFAULT_ZOOM_LEVEL = 100
+
+DEFAULT_CONVERTER_GRAPHICS_BACKEND_ARGUMENTS = {
+    'libreoffice_path': DEFAULT_LIBREOFFICE_PATH,
+    'pdftoppm_dpi': DEFAULT_PDFTOPPM_DPI,
+    'pdftoppm_format': DEFAULT_PDFTOPPM_FORMAT,
+    'pdftoppm_path': DEFAULT_PDFTOPPM_PATH,
+    'pdfinfo_path': DEFAULT_PDFINFO_PATH,
+    'pillow_format': DEFAULT_PILLOW_FORMAT,
+    'pillow_maximum_image_pixels': DEFAULT_PILLOW_MAXIMUM_IMAGE_PIXELS,
+}
 
 STORAGE_NAME_ASSETS = 'converter__assets'

@@ -1,3 +1,6 @@
+import os
+
+from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
 DEFAULT_IMAP_MAILBOX = 'INBOX'
@@ -8,6 +11,12 @@ DEFAULT_METADATA_ATTACHMENT_NAME = 'metadata.yaml'
 DEFAULT_POP3_TIMEOUT = 60
 DEFAULT_SOURCE_LOCK_EXPIRE = 600
 DEFAULT_SOURCE_TASK_RETRY_DELAY = 10
+
+DEFAULT_SOURCES_SCANIMAGE_PATH = '/usr/bin/scanimage'
+DEFAULT_SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND = 'django.core.files.storage.FileSystemStorage'
+DEFAULT_SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND_ARGUMENTS = {
+    'location': os.path.join(settings.MEDIA_ROOT, 'staging_file_cache')
+}
 
 SCANNER_SOURCE_FLATBED = 'flatbed'
 SCANNER_SOURCE_ADF = 'Automatic Document Feeder'

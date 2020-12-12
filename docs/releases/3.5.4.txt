@@ -193,6 +193,7 @@ The upgrade procedure is now complete.
 Issues closed
 -------------
 
+- :gitlab-issue:`852` Turn magic number/orphan values into literals
 - :gitlab-issue:`910` Documents in "Bin" still being shown in Workflows
 - :gitlab-issue:`920` If you trash documents, you can still see them in "All documents".
 
