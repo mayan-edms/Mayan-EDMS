@@ -6,7 +6,9 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext
 
 from mayan.apps.documents.forms import DocumentTypeFilteredSelectForm
-from mayan.apps.documents.models import Document, DocumentType
+from mayan.apps.documents.models.document_models import Document
+from mayan.apps.documents.models.document_type_models import DocumentType
+from mayan.apps.documents.models.document_version_models import DocumentVersion
 from mayan.apps.views.generics import (
     FormView, MultipleObjectConfirmActionView, SingleObjectEditView,
     SingleObjectListView
@@ -23,9 +25,9 @@ from .permissions import (
 
 
 class DocumentDriverListView(ExternalObjectMixin, SingleObjectListView):
-    external_object_class = Document
     external_object_permission = permission_file_metadata_view
     external_object_pk_url_kwarg = 'document_id'
+    external_object_queryset = Document.valid
 
     def get_extra_context(self):
         return {
@@ -61,7 +63,6 @@ class DocumentDriverListView(ExternalObjectMixin, SingleObjectListView):
 class DocumentVersionDriverEntryFileMetadataListView(
     ExternalObjectMixin, SingleObjectListView
 ):
-    external_object_class = DocumentVersionDriverEntry
     external_object_permission = permission_file_metadata_view
     external_object_pk_url_kwarg = 'document_version_driver_id'
 
@@ -93,14 +94,20 @@ class DocumentVersionDriverEntryFileMetadataListView(
             },
         }
 
+    def get_external_object_queryset(self):
+        document_version_queryset = DocumentVersion.valid.all()
+        return DocumentVersionDriverEntry.objects.filter(
+            document_version_id__in=document_version_queryset.values('pk')
+        )
+
     def get_source_queryset(self):
         return self.external_object.entries.all()
 
 
 class DocumentSubmitView(MultipleObjectConfirmActionView):
-    model = Document
     object_permission = permission_file_metadata_submit
     pk_url_kwarg = 'document_id'
+    source_queryset = Document.valid
     success_message_singular = '%(count)d document submitted to the file metadata queue.'
     success_message_plural = '%(count)d documents submitted to the file metadata queue.'
 
@@ -160,9 +167,11 @@ class DocumentTypeSubmitView(FormView):
         }
 
     def form_valid(self, form):
+        document_queryset = Document.valid.all()
+
         count = 0
         for document_type in form.cleaned_data['document_type']:
-            for document in document_type.documents.all():
+            for document in document_type.documents.filter(pk__in=document_queryset.values('pk')):
                 document.submit_for_file_metadata_processing()
                 count += 1
 

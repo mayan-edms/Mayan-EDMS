@@ -21,9 +21,9 @@ from .utils import get_instance_ocr_content
 
 
 class DocumentOCRContentDeleteView(MultipleObjectConfirmActionView):
-    model = Document
     object_permission = permission_ocr_document
     pk_url_kwarg = 'document_id'
+    source_queryset = Document.valid
     success_message = 'Deleted OCR content of %(count)d document.'
     success_message_plural = 'Deleted OCR content of %(count)d documents.'
 
@@ -51,9 +51,9 @@ class DocumentOCRContentDeleteView(MultipleObjectConfirmActionView):
 
 class DocumentOCRContentView(SingleObjectDetailView):
     form_class = DocumentOCRContentForm
-    model = Document
     object_permission = permission_ocr_content_view
     pk_url_kwarg = 'document_id'
+    source_queryset = Document.valid
 
     def dispatch(self, request, *args, **kwargs):
         result = super(DocumentOCRContentView, self).dispatch(
@@ -72,9 +72,9 @@ class DocumentOCRContentView(SingleObjectDetailView):
 
 
 class DocumentOCRDownloadView(SingleObjectDownloadView):
-    model = Document
     object_permission = permission_ocr_content_view
     pk_url_kwarg = 'document_id'
+    source_queryset = Document.valid
 
     def get_download_file_object(self):
         return get_instance_ocr_content(instance=self.object)
@@ -84,9 +84,9 @@ class DocumentOCRDownloadView(SingleObjectDownloadView):
 
 
 class DocumentOCRErrorsListView(ExternalObjectMixin, SingleObjectListView):
-    external_object_class = Document
     external_object_permission = permission_ocr_document
     external_object_pk_url_kwarg = 'document_id'
+    external_object_queryset = Document.valid
 
     def get_extra_context(self):
         return {
@@ -101,9 +101,9 @@ class DocumentOCRErrorsListView(ExternalObjectMixin, SingleObjectListView):
 
 class DocumentPageOCRContentView(SingleObjectDetailView):
     form_class = DocumentPageOCRContentForm
-    model = DocumentPage
     object_permission = permission_ocr_content_view
     pk_url_kwarg = 'document_page_id'
+    source_queryset = DocumentPage.valid
 
     def dispatch(self, request, *args, **kwargs):
         result = super(DocumentPageOCRContentView, self).dispatch(
@@ -123,9 +123,9 @@ class DocumentPageOCRContentView(SingleObjectDetailView):
 
 
 class DocumentSubmitView(MultipleObjectConfirmActionView):
-    model = Document
     object_permission = permission_ocr_document
     pk_url_kwarg = 'document_id'
+    source_queryset = Document.valid
     success_message = '%(count)d document submitted to the OCR queue.'
     success_message_plural = '%(count)d documents submitted to the OCR queue.'
 
@@ -158,8 +158,11 @@ class DocumentTypeSubmitView(FormView):
 
     def form_valid(self, form):
         count = 0
+
+        valid_documents_queryset = Document.valid.all()
+
         for document_type in form.cleaned_data['document_type']:
-            for document in document_type.documents.all():
+            for document in document_type.documents.filter(pk__in=valid_documents_queryset.values('pk')):
                 document.submit_for_ocr()
                 count += 1
 

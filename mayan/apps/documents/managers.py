@@ -215,16 +215,22 @@ class FavoriteDocumentManager(models.Manager):
             user=user, document=document
         )
 
-        old_favorites_to_delete = self.filter(user=user).values_list('pk', flat=True)[setting_favorite_count.value:]
+        old_favorites_to_delete = self.filter(user=user).values_list(
+            'pk', flat=True
+        )[setting_favorite_count.value:]
         self.filter(pk__in=list(old_favorites_to_delete)).delete()
 
-    def get_by_natural_key(self, datetime_accessed, document_natural_key, user_natural_key):
+    def get_by_natural_key(
+        self, datetime_accessed, document_natural_key, user_natural_key
+    ):
         Document = apps.get_model(
             app_label='documents', model_name='Document'
         )
         User = get_user_model()
         try:
-            document = Document.objects.get_by_natural_key(*document_natural_key)
+            document = Document.objects.get_by_natural_key(
+                *document_natural_key
+            )
         except Document.DoesNotExist:
             raise self.model.DoesNotExist
         else:
@@ -240,7 +246,7 @@ class FavoriteDocumentManager(models.Manager):
             app_label='documents', model_name='Document'
         )
 
-        return Document.objects.filter(favorites__user=user)
+        return Document.valid.filter(favorites__user=user)
 
     def remove_for_user(self, user, document):
         self.get(user=user, document=document).delete()
@@ -257,17 +263,23 @@ class RecentDocumentManager(models.Manager):
                 # accessed date and time update
                 new_recent.save()
 
-            recent_to_delete = self.filter(user=user).values_list('pk', flat=True)[setting_recent_access_count.value:]
+            recent_to_delete = self.filter(user=user).values_list(
+                'pk', flat=True
+            )[setting_recent_access_count.value:]
             self.filter(pk__in=list(recent_to_delete)).delete()
         return new_recent
 
-    def get_by_natural_key(self, datetime_accessed, document_natural_key, user_natural_key):
+    def get_by_natural_key(
+        self, datetime_accessed, document_natural_key, user_natural_key
+    ):
         Document = apps.get_model(
             app_label='documents', model_name='Document'
         )
         User = get_user_model()
         try:
-            document = Document.objects.get_by_natural_key(*document_natural_key)
+            document = Document.objects.get_by_natural_key(
+                *document_natural_key
+            )
         except Document.DoesNotExist:
             raise self.model.DoesNotExist
         else:
@@ -287,7 +299,7 @@ class RecentDocumentManager(models.Manager):
         )
 
         if user.is_authenticated:
-            return Document.objects.filter(
+            return Document.valid.filter(
                 recent__user=user
             ).order_by('-recent__datetime_accessed')
         else:
@@ -318,4 +330,13 @@ class ValidDocumentPageManager(models.Manager):
     def get_queryset(self):
         return models.QuerySet(
             model=self.model, using=self._db
-        ).filter(enabled=True)
+        ).filter(enabled=True).filter(
+            document_version__document__in_trash=False
+        )
+
+
+class ValidDocumentVersionManager(models.Manager):
+    def get_queryset(self):
+        return models.QuerySet(
+            model=self.model, using=self._db
+        ).filter(document__in_trash=False)

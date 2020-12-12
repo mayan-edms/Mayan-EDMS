@@ -1,5 +1,6 @@
 from django.utils.encoding import force_text
 
+from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 from mayan.apps.testing.tests.base import GenericViewTestCase
 
@@ -61,6 +62,21 @@ class DocumentTagViewTestCase(
             response=response, text=force_text(s=self.test_tag),
             status_code=200
         )
+
+    def test_trashed_document_tags_list_with_full_access(self):
+        self._create_test_tag(add_test_document=True)
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_tag_view
+        )
+        self.grant_access(
+            obj=self.test_tag, permission=permission_tag_view
+        )
+
+        self.test_document.delete()
+
+        response = self._request_test_document_tag_list_view()
+        self.assertEqual(response.status_code, 404)
 
     def test_document_tags_list_tag_edit_link_with_full_access(self):
         # Ensure that DocumentTag instances and links are
@@ -132,6 +148,21 @@ class DocumentTagViewTestCase(
 
         self.assertTrue(self.test_tag in self.test_document.tags.all())
 
+    def test_trashed_document_tag_attach_view_with_full_access(self):
+        self._create_test_tag()
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_tag_attach
+        )
+        self.grant_access(obj=self.test_tag, permission=permission_tag_attach)
+
+        self.test_document.delete()
+
+        response = self._request_test_document_tag_attach_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertTrue(self.test_tag not in self.test_document.tags.all())
+
     def test_document_multiple_tag_attach_view_no_permission(self):
         self._create_test_tag()
 
@@ -174,6 +205,21 @@ class DocumentTagViewTestCase(
         self.assertEqual(response.status_code, 302)
 
         self.assertTrue(self.test_tag in self.test_document.tags.all())
+
+    def test_trashed_document_multiple_tag_attach_view_with_full_access(self):
+        self._create_test_tag()
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_tag_attach
+        )
+        self.grant_access(obj=self.test_tag, permission=permission_tag_attach)
+
+        self.test_document.delete()
+
+        response = self._request_test_document_multiple_tag_multiple_attach_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertTrue(self.test_tag not in self.test_document.tags.all())
 
     def test_document_tag_multiple_remove_view_no_permission(self):
         self._create_test_tag()
@@ -222,6 +268,22 @@ class DocumentTagViewTestCase(
 
         self.assertTrue(self.test_tag not in self.test_document.tags.all())
 
+    def test_trashed_document_tag_multiple_remove_view_with_full_access(self):
+        self._create_test_tag()
+        self.test_document.tags.add(self.test_tag)
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_tag_remove
+        )
+        self.grant_access(obj=self.test_tag, permission=permission_tag_remove)
+
+        self.test_document.delete()
+
+        response = self._request_test_document_tag_multiple_remove_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertTrue(self.test_tag in self.test_document.tags.all())
+
     def test_document_multiple_tag_multiple_remove_view_no_permission(self):
         self._create_test_tag()
         self.test_document.tags.add(self.test_tag)
@@ -268,6 +330,98 @@ class DocumentTagViewTestCase(
         self.assertEqual(response.status_code, 302)
 
         self.assertTrue(self.test_tag not in self.test_document.tags.all())
+
+    def test_trashed_document_multiple_tag_remove_view_with_full_access(self):
+        self._create_test_tag()
+        self.test_document.tags.add(self.test_tag)
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_tag_remove
+        )
+        self.grant_access(obj=self.test_tag, permission=permission_tag_remove)
+
+        self.test_document.delete()
+
+        response = self._request_test_document_multiple_tag_remove_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertTrue(self.test_tag in self.test_document.tags.all())
+
+    def test_tag_document_list_with_no_permission(self):
+        self._create_test_tag(add_test_document=True)
+
+        response = self._request_test_tag_document_list_view()
+        self.assertEqual(response.status_code, 404)
+
+    def test_tag_document_list_with_tag_access(self):
+        self._create_test_tag(add_test_document=True)
+
+        self.grant_access(obj=self.test_tag, permission=permission_tag_view)
+
+        response = self._request_test_tag_document_list_view()
+        self.assertContains(
+            response=response, text=force_text(s=self.test_tag),
+            status_code=200
+        )
+        self.assertNotContains(
+            response=response, text=force_text(s=self.test_document),
+            status_code=200
+        )
+
+    def test_tag_document_list_with_document_access(self):
+        self._create_test_tag(add_test_document=True)
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_view
+        )
+
+        response = self._request_test_tag_document_list_view()
+        self.assertNotContains(
+            response=response, text=force_text(s=self.test_tag),
+            status_code=404
+        )
+        self.assertNotContains(
+            response=response, text=force_text(s=self.test_document),
+            status_code=404
+        )
+
+    def test_tag_document_list_with_full_access(self):
+        self._create_test_tag(add_test_document=True)
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_view
+        )
+        self.grant_access(obj=self.test_tag, permission=permission_tag_view)
+
+        response = self._request_test_tag_document_list_view()
+        self.assertContains(
+            response=response, text=force_text(s=self.test_tag),
+            status_code=200
+        )
+        self.assertContains(
+            response=response, text=force_text(s=self.test_document),
+            status_code=200
+        )
+
+    def test_tag_trashed_document_list_with_full_access(self):
+        self._create_test_tag(add_test_document=True)
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_view
+        )
+        self.grant_access(obj=self.test_tag, permission=permission_tag_view)
+
+        self.test_document.delete()
+
+        response = self._request_test_tag_document_list_view()
+        self.assertContains(
+            response=response, text=force_text(s=self.test_tag),
+            status_code=200
+        )
+        self.assertNotContains(
+            response=response, text=force_text(s=self.test_document),
+            status_code=200
+        )
 
 
 class TagViewTestCase(TagTestMixin, TagViewTestMixin, GenericViewTestCase):

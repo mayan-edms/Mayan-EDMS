@@ -163,7 +163,8 @@ class DetachedSignature(SignatureBaseModel):
             else:
                 self.signature_file.seek(0)
 
-                self.date = verify_result.date
+                # Invalid signatures do not have a date attribute
+                self.date = getattr(verify_result, 'date', None)
                 self.key_id = verify_result.key_id
                 self.signature_id = verify_result.signature_id
                 self.public_key_fingerprint = verify_result.pubkey_fingerprint

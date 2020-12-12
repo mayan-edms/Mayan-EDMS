@@ -19,9 +19,9 @@ from ..permissions import permission_workflow_view
 
 
 class WorkflowInstanceListView(ExternalObjectMixin, SingleObjectListView):
-    external_object_class = Document
     external_object_permission = permission_workflow_view
     external_object_pk_url_kwarg = 'document_id'
+    external_object_queryset = Document.valid
 
     def get_extra_context(self):
         return {
@@ -45,9 +45,9 @@ class WorkflowInstanceListView(ExternalObjectMixin, SingleObjectListView):
 
 
 class WorkflowInstanceDetailView(ExternalObjectMixin, SingleObjectListView):
-    external_object_class = WorkflowInstance
     external_object_permission = permission_workflow_view
     external_object_pk_url_kwarg = 'workflow_instance_id'
+    external_object_queryset = WorkflowInstance.valid
 
     def get_extra_context(self):
         return {
@@ -156,7 +156,7 @@ class WorkflowInstanceTransitionExecuteView(FormView):
 
     def get_workflow_instance(self):
         return get_object_or_404(
-            klass=WorkflowInstance, pk=self.kwargs['workflow_instance_id']
+            klass=WorkflowInstance.valid, pk=self.kwargs['workflow_instance_id']
         )
 
     def get_workflow_transition(self):
@@ -168,8 +168,8 @@ class WorkflowInstanceTransitionExecuteView(FormView):
 
 
 class WorkflowInstanceTransitionSelectView(ExternalObjectMixin, FormView):
-    external_object_class = WorkflowInstance
     external_object_pk_url_kwarg = 'workflow_instance_id'
+    external_object_queryset = WorkflowInstance.valid
     form_class = WorkflowInstanceTransitionSelectForm
     template_name = 'appearance/generic_form.html'
 

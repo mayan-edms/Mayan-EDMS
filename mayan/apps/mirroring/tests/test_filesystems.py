@@ -46,6 +46,29 @@ class IndexFilesystemTestCase(
             ), None
         )
 
+    def test_trashed_document_access(self):
+        self._create_test_index()
+
+        self.test_index.node_templates.create(
+            parent=self.test_index.template_root,
+            expression=TEST_NODE_EXPRESSION, link_documents=True
+        )
+
+        self._upload_test_document()
+
+        self.test_document.delete()
+
+        index_filesystem = IndexFilesystem(index_slug=self.test_index.slug)
+
+        with self.assertRaises(expected_exception=FuseOSError):
+            self.assertEqual(
+                index_filesystem.access(
+                    '/{}/{}'.format(
+                        TEST_NODE_EXPRESSION, self.test_document.label
+                    )
+                ), None
+            )
+
     def test_document_access_failure(self):
         self._create_test_index()
 

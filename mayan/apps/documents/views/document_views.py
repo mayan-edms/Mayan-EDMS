@@ -73,11 +73,11 @@ class DocumentListView(SingleObjectListView):
                     'exception': exception
                 }, request=self.request
             )
-            self.object_list = Document.objects.none()
+            self.object_list = Document.valid.none()
             return super(DocumentListView, self).get_context_data(**kwargs)
 
     def get_document_queryset(self):
-        return Document.objects.all()
+        return Document.valid.all()
 
     def get_extra_context(self):
         return {
@@ -101,9 +101,9 @@ class DocumentListView(SingleObjectListView):
 
 class DocumentDocumentTypeEditView(MultipleObjectFormActionView):
     form_class = DocumentTypeFilteredSelectForm
-    model = Document
     object_permission = permission_document_properties_edit
     pk_url_kwarg = 'document_id'
+    source_queryset = Document.valid
     success_message = _(
         'Document type change request performed on %(count)d document'
     )
@@ -157,10 +157,10 @@ class DocumentDocumentTypeEditView(MultipleObjectFormActionView):
 
 class DocumentDownloadFormView(MultipleObjectFormActionView):
     form_class = DocumentDownloadForm
-    model = Document
     object_permission = permission_document_download
     pk_url_kwarg = 'document_id'
     querystring_form_fields = ('compressed', 'zip_filename')
+    source_queryset = Document.valid
     viewname = 'documents:document_multiple_download'
 
     def form_valid(self, form):
@@ -218,9 +218,9 @@ class DocumentDownloadFormView(MultipleObjectFormActionView):
 
 
 class DocumentDownloadView(MultipleObjectDownloadView):
-    model = Document
     object_permission = permission_document_download
     pk_url_kwarg = 'document_id'
+    source_queryset = Document.valid
 
     @staticmethod
     def commit_event(item, request):
@@ -280,9 +280,9 @@ class DocumentDownloadView(MultipleObjectDownloadView):
 
 class DocumentPreviewView(SingleObjectDetailView):
     form_class = DocumentPreviewForm
-    model = Document
     object_permission = permission_document_view
     pk_url_kwarg = 'document_id'
+    source_queryset = Document.valid
 
     def dispatch(self, request, *args, **kwargs):
         result = super(
@@ -305,9 +305,9 @@ class DocumentPreviewView(SingleObjectDetailView):
 
 class DocumentPropertiesEditView(SingleObjectEditView):
     form_class = DocumentForm
-    model = Document
     object_permission = permission_document_properties_edit
     pk_url_kwarg = 'document_id'
+    source_queryset = Document.valid
 
     def dispatch(self, request, *args, **kwargs):
         result = super(
@@ -337,9 +337,9 @@ class DocumentPropertiesEditView(SingleObjectEditView):
 
 class DocumentView(SingleObjectDetailView):
     form_class = DocumentPropertiesForm
-    model = Document
     object_permission = permission_document_view
     pk_url_kwarg = 'document_id'
+    source_queryset = Document.valid
 
     def dispatch(self, request, *args, **kwargs):
         result = super(DocumentView, self).dispatch(request, *args, **kwargs)
@@ -355,9 +355,9 @@ class DocumentView(SingleObjectDetailView):
 
 
 class DocumentUpdatePageCountView(MultipleObjectConfirmActionView):
-    model = Document
     object_permission = permission_document_tools
     pk_url_kwarg = 'document_id'
+    source_queryset = Document.valid
     success_message = _(
         '%(count)d document queued for page count recalculation'
     )
@@ -407,9 +407,9 @@ class DocumentUpdatePageCountView(MultipleObjectConfirmActionView):
 
 
 class DocumentTransformationsClearView(MultipleObjectConfirmActionView):
-    model = Document
     object_permission = permission_transformation_delete
     pk_url_kwarg = 'document_id'
+    source_queryset = Document.valid
     success_message = _(
         'Transformation clear request processed for %(count)d document'
     )
@@ -514,7 +514,7 @@ class DocumentTransformationsCloneView(FormView):
 
     def get_object(self):
         instance = get_object_or_404(
-            klass=Document, pk=self.kwargs['document_id']
+            klass=Document.valid, pk=self.kwargs['document_id']
         )
 
         AccessControlList.objects.check_access(
@@ -522,7 +522,7 @@ class DocumentTransformationsCloneView(FormView):
             user=self.request.user
         )
 
-        instance.add_as_recent_document_for_user(self.request.user)
+        instance.add_as_recent_document_for_user(user=self.request.user)
 
         return instance
 
@@ -591,7 +591,7 @@ class DocumentPrint(FormView):
 
     def get_object(self):
         return get_object_or_404(
-            klass=Document, pk=self.kwargs['document_id']
+            klass=Document.valid, pk=self.kwargs['document_id']
         )
 
     def get_template_names(self):
@@ -625,7 +625,9 @@ class RecentAccessDocumentListView(DocumentListView):
 
 class RecentAddedDocumentListView(DocumentListView):
     def get_document_queryset(self):
-        queryset = ModelQueryFields.get(model=Document).get_queryset()
+        queryset = ModelQueryFields.get(model=Document).get_queryset(
+            manager_name='valid'
+        )
 
         return queryset.filter(
             pk__in=queryset.order_by('-date_added')[

@@ -41,9 +41,9 @@ logger = logging.getLogger(name=__name__)
 
 
 class DocumentPageListView(ExternalObjectMixin, SingleObjectListView):
-    external_object_class = Document
     external_object_permission = permission_document_view
     external_object_pk_url_kwarg = 'document_id'
+    external_object_queryset = Document.valid
 
     def get_extra_context(self):
         return {
@@ -190,9 +190,9 @@ class DocumentPageViewResetView(RedirectView):
 
 
 class DocumentPageInteractiveTransformation(ExternalObjectMixin, RedirectView):
-    external_object_class = DocumentPage
     external_object_permission = permission_document_view
     external_object_pk_url_kwarg = 'document_page_id'
+    external_object_queryset = DocumentPage.valid
 
     def get_object(self):
         return self.external_object
@@ -256,6 +256,7 @@ class DocumentPageRotateRightView(DocumentPageInteractiveTransformation):
 class DocumentPageDisable(MultipleObjectConfirmActionView):
     object_permission = permission_document_edit
     pk_url_kwarg = 'document_page_id'
+    source_queryset = DocumentPage.valid
     success_message_singular = '%(count)d document page disabled.'
     success_message_plural = '%(count)d document pages disabled.'
 
@@ -274,9 +275,6 @@ class DocumentPageDisable(MultipleObjectConfirmActionView):
             result['object'] = queryset.first()
 
         return result
-
-    def get_source_queryset(self):
-        return DocumentPage.objects.all()
 
     def object_action(self, form, instance):
         instance.enabled = False
@@ -306,7 +304,11 @@ class DocumentPageEnable(MultipleObjectConfirmActionView):
         return result
 
     def get_source_queryset(self):
-        return DocumentPage.objects.all()
+        # Cannot use the `valid` manager otherwise disables pages cannot
+        # be enabled. Filter out trashed documents manually.
+        return DocumentPage.objects.filter(
+            document_version__document__in_trash=False
+        )
 
     def object_action(self, form, instance):
         instance.enabled = True

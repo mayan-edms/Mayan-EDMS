@@ -5,8 +5,8 @@ from .api_views import (
     APICabinetDocumentView, APICabinetListView, APICabinetView
 )
 from .views import (
-    DocumentAddToCabinetView, DocumentCabinetListView,
-    DocumentRemoveFromCabinetView, CabinetChildAddView, CabinetCreateView,
+    DocumentCabinetAddView, DocumentCabinetListView,
+    DocumentCabinetRemoveView, CabinetChildAddView, CabinetCreateView,
     CabinetDeleteView, CabinetDetailView, CabinetEditView, CabinetListView,
 )
 
@@ -44,22 +44,22 @@ urlpatterns_documents_cabinets = [
     ),
     url(
         regex=r'^documents/(?P<document_id>\d+)/cabinets/add/$',
-        name='document_cabinet_add', view=DocumentAddToCabinetView.as_view()
+        name='document_cabinet_add', view=DocumentCabinetAddView.as_view()
     ),
     url(
         regex=r'^documents/multiple/cabinets/add/$',
         name='document_multiple_cabinet_add',
-        view=DocumentAddToCabinetView.as_view()
+        view=DocumentCabinetAddView.as_view()
     ),
     url(
         regex=r'^documents/(?P<document_id>\d+)/cabinets/remove/$',
         name='document_cabinet_remove',
-        view=DocumentRemoveFromCabinetView.as_view()
+        view=DocumentCabinetRemoveView.as_view()
     ),
     url(
         regex=r'^documents/multiple/cabinets/remove/$',
         name='multiple_document_cabinet_remove',
-        view=DocumentRemoveFromCabinetView.as_view()
+        view=DocumentCabinetRemoveView.as_view()
     )
 ]
 

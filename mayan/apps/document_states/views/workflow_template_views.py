@@ -89,9 +89,9 @@ class DocumentTypeWorkflowTemplatesView(AddRemoveView):
 
 class DocumentWorkflowTemplatesLaunchView(MultipleObjectFormActionView):
     form_class = WorkflowMultipleSelectionForm
-    model = Document
     object_permission = permission_workflow_tools
     pk_url_kwarg = 'document_id'
+    source_queryset = Document.valid
     success_message = _('Workflows launched for %(count)d document')
     success_message_plural = _('Workflows launched for %(count)d documents')
 

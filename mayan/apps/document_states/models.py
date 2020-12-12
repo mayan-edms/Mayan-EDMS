@@ -38,7 +38,7 @@ from .literals import (
     WORKFLOW_ACTION_WHEN_CHOICES, WORKFLOW_ACTION_ON_ENTRY,
     WORKFLOW_ACTION_ON_EXIT,
 )
-from .managers import WorkflowManager
+from .managers import WorkflowManager, ValidWorkflowInstanceManager
 from .permissions import permission_workflow_transition
 
 SYMBOL_MATH_CONDITIONAL = '&rarr;'
@@ -304,6 +304,9 @@ class WorkflowInstance(models.Model):
     context = models.TextField(
         blank=True, verbose_name=_('Context')
     )
+
+    objects = models.Manager()
+    valid = ValidWorkflowInstanceManager()
 
     class Meta:
         ordering = ('workflow',)

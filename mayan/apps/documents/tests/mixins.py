@@ -513,9 +513,6 @@ class DocumentViewTestMixin:
             data={'id_list': self.test_document.pk}
         )
 
-    def _request_empty_trash_view(self):
-        return self.post(viewname='documents:trash_can_empty')
-
 
 class DocumentTypeViewTestMixin:
     def _request_test_document_type_create_view(self):
@@ -587,6 +584,21 @@ class FavoriteDocumentsTestMixin:
         )
 
 
+class FavoriteDocumentViewTestMixin:
+    def _request_test_favorite_document_list_view(self):
+        return self.get(viewname='documents:document_list_favorites')
+
+
+class RecentlyAccessedDocumentViewTestMixin:
+    def _request_test_recently_accessed_document_list_view(self):
+        return self.get(viewname='documents:document_list_recent_access')
+
+
+class RecentlyCreatedDocumentViewTestMixin:
+    def _request_test_recently_created_document_list_view(self):
+        return self.get(viewname='documents:document_list_recent_added')
+
+
 class TrashedDocumentAPIViewTestMixin:
     def _request_test_document_api_trash_view(self):
         return self.delete(
@@ -640,6 +652,9 @@ class TrashedDocumentViewTestMixin:
                 'document_id': self.test_document.pk
             }
         )
+
+    def _request_empty_trash_view(self):
+        return self.post(viewname='documents:trash_can_empty')
 
     def _request_document_trash_post_view(self):
         return self.post(

@@ -199,7 +199,7 @@ class DocumentStatesApp(MayanAppConfig):
         )
 
         ModelPermission.register_inheritance(
-            model=WorkflowInstance, related='workflow',
+            model=WorkflowInstance, related='document',
         )
         ModelPermission.register_inheritance(
             model=WorkflowInstanceLogEntry,

@@ -30,9 +30,9 @@ logger = logging.getLogger(name=__name__)
 
 
 class DocumentTrashView(MultipleObjectConfirmActionView):
-    model = Document
     object_permission = permission_document_trash
     pk_url_kwarg = 'document_id'
+    source_queryset = Document.valid
     success_message_singular = _(
         '%(count)d document moved to the trash.'
     )

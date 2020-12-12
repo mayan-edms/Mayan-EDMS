@@ -18,7 +18,7 @@ class DocumentVersionViewTestCase(
         response = self._request_document_version_download()
         self.assertEqual(response.status_code, 404)
 
-    def test_document_version_download_view_with_permission(self):
+    def test_document_version_download_view_with_access(self):
         # Set the expected_content_types for
         # common.tests.mixins.ContentTypeCheckMixin
         self.expected_content_types = (
@@ -39,7 +39,7 @@ class DocumentVersionViewTestCase(
                 mime_type=self.test_document.latest_version.mimetype
             )
 
-    def test_document_version_download_preserve_extension_view_with_permission(self):
+    def test_document_version_download_preserve_extension_view_with_access(self):
         # Set the expected_content_types for
         # common.tests.mixins.ContentTypeCheckMixin
         self.expected_content_types = (
@@ -63,6 +63,16 @@ class DocumentVersionViewTestCase(
                 ), mime_type=self.test_document.latest_version.mimetype
             )
 
+    def test_trashed_document_version_download_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_download
+        )
+
+        self.test_document.delete()
+
+        response = self._request_document_version_download()
+        self.assertEqual(response.status_code, 404)
+
     def test_document_version_list_no_permission(self):
         self._upload_new_version()
 
@@ -81,20 +91,38 @@ class DocumentVersionViewTestCase(
             response=response, status_code=200, text=TEST_VERSION_COMMENT
         )
 
+    def test_trashed_document_version_list_with_access(self):
+        self._upload_new_version()
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_version_view
+        )
+
+        self.test_document.delete()
+
+        response = self._request_document_version_list_view()
+        self.assertEqual(response.status_code, 404)
+
     def test_document_version_revert_no_permission(self):
         first_version = self.test_document.latest_version
         self._upload_new_version()
+
+        document_version_count = self.test_document.versions.count()
 
         response = self._request_document_version_revert_view(
             document_version=first_version
         )
         self.assertEqual(response.status_code, 404)
 
-        self.assertEqual(self.test_document.versions.count(), 2)
+        self.assertEqual(
+            self.test_document.versions.count(), document_version_count
+        )
 
     def test_document_version_revert_with_access(self):
         first_version = self.test_document.latest_version
         self._upload_new_version()
+
+        document_version_count = self.test_document.versions.count()
 
         self.grant_access(
             obj=self.test_document,
@@ -106,4 +134,29 @@ class DocumentVersionViewTestCase(
         )
         self.assertEqual(response.status_code, 302)
 
-        self.assertEqual(self.test_document.versions.count(), 1)
+        self.assertEqual(
+            self.test_document.versions.count(), document_version_count - 1
+        )
+
+    def test_trashed_document_version_revert_with_access(self):
+        first_version = self.test_document.latest_version
+
+        self._upload_new_version()
+
+        document_version_count = self.test_document.versions.count()
+
+        self.test_document.delete()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_version_revert
+        )
+
+        response = self._request_document_version_revert_view(
+            document_version=first_version
+        )
+        self.assertEqual(response.status_code, 404)
+
+        self.assertEqual(
+            self.test_document.versions.count(), document_version_count
+        )

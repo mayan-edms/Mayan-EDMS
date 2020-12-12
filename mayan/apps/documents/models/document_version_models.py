@@ -24,7 +24,7 @@ from ..events import event_document_version_new, event_document_version_revert
 from ..literals import (
     STORAGE_NAME_DOCUMENT_IMAGE, STORAGE_NAME_DOCUMENT_VERSION
 )
-from ..managers import DocumentVersionManager
+from ..managers import DocumentVersionManager, ValidDocumentVersionManager
 from ..settings import setting_fix_orientation, setting_hash_block_size
 from ..signals import signal_post_document_created, signal_post_version_upload
 
@@ -113,6 +113,7 @@ class DocumentVersion(models.Model):
         verbose_name_plural = _('Document version')
 
     objects = DocumentVersionManager()
+    valid = ValidDocumentVersionManager()
 
     @classmethod
     def _execute_hooks(cls, hook_list, instance, **kwargs):

@@ -13,6 +13,13 @@ class DocumentOCRViewTestMixin:
             }
         )
 
+    def _request_document_ocr_error_list_view(self):
+        return self.get(
+            viewname='ocr:document_ocr_error_list', kwargs={
+                'document_id': self.test_document.pk
+            }
+        )
+
     def _request_document_page_content_view(self):
         return self.get(
             viewname='ocr:document_page_ocr_content', kwargs={
@@ -69,6 +76,13 @@ class DocumentTypeOCRViewTestMixin:
         return self.get(
             viewname='ocr:document_type_ocr_settings', kwargs={
                 'document_type_id': self.test_document_type.pk
+            }
+        )
+
+    def _request_document_type_ocr_submit_view(self):
+        return self.post(
+            viewname='ocr:document_type_submit', data={
+                'document_type': [self.test_document_type.pk]
             }
         )
 

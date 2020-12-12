@@ -21,9 +21,9 @@ from .utils import get_instance_content
 
 
 class DocumentContentDeleteView(MultipleObjectConfirmActionView):
-    model = Document
     object_permission = permission_parse_document
     pk_url_kwarg = 'document_id'
+    source_queryset = Document.valid
     success_message = 'Deleted parsed content of %(count)d document.'
     success_message_plural = 'Deleted parsed content of %(count)d documents.'
 
@@ -51,9 +51,9 @@ class DocumentContentDeleteView(MultipleObjectConfirmActionView):
 
 class DocumentContentView(SingleObjectDetailView):
     form_class = DocumentContentForm
-    model = Document
     object_permission = permission_content_view
     pk_url_kwarg = 'document_id'
+    source_queryset = Document.valid
 
     def dispatch(self, request, *args, **kwargs):
         result = super(DocumentContentView, self).dispatch(
@@ -72,9 +72,9 @@ class DocumentContentView(SingleObjectDetailView):
 
 
 class DocumentContentDownloadView(SingleObjectDownloadView):
-    model = Document
     object_permission = permission_content_view
     pk_url_kwarg = 'document_id'
+    source_queryset = Document.valid
 
     def get_download_file_object(self):
         return get_instance_content(document=self.object)
@@ -85,7 +85,6 @@ class DocumentContentDownloadView(SingleObjectDownloadView):
 
 class DocumentPageContentView(SingleObjectDetailView):
     form_class = DocumentPageContentForm
-    model = DocumentPage
     object_permission = permission_content_view
     pk_url_kwarg = 'document_page_id'
 
@@ -105,13 +104,19 @@ class DocumentPageContentView(SingleObjectDetailView):
             'title': _('Content for document page: %s') % self.object,
         }
 
+    def get_source_queryset(self):
+        document_queryset = Document.valid.all()
+        return DocumentPage.objects.filter(
+            document_version__document_id__in=document_queryset.values('pk')
+        )
+
 
 class DocumentParsingErrorsListView(
     ExternalObjectMixin, SingleObjectListView
 ):
-    external_object_class = Document
     external_object_permission = permission_parse_document
     external_object_pk_url_kwarg = 'document_id'
+    external_object_queryset = Document.valid
 
     def get_extra_context(self):
         return {
@@ -127,9 +132,9 @@ class DocumentParsingErrorsListView(
 
 
 class DocumentSubmitView(MultipleObjectConfirmActionView):
-    model = Document
     object_permission = permission_parse_document
     pk_url_kwarg = 'document_id'
+    source_queryset = Document.valid
     success_message = _(
         '%(count)d document added to the parsing queue'
     )

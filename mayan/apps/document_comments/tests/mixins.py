@@ -75,6 +75,13 @@ class DocumentCommentViewTestMixin:
             },
         )
 
+    def _request_test_comment_detail_view(self):
+        return self.get(
+            viewname='comments:comment_details', kwargs={
+                'comment_id': self.test_document_comment.pk
+            },
+        )
+
     def _request_test_comment_edit_view(self):
         return self.post(
             viewname='comments:comment_edit', kwargs={

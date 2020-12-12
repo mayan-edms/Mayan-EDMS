@@ -22,8 +22,8 @@ from .permissions import (
 
 class DocumentCheckInView(MultipleObjectConfirmActionView):
     error_message = 'Unable to check in document "%(instance)s". %(exception)s'
-    model = Document
     pk_url_kwarg = 'document_id'
+    source_queryset = Document.valid
     success_message_singular = '%(count)d document checked in.'
     success_message_plural = '%(count)d documents checked in.'
 
@@ -92,9 +92,9 @@ class DocumentCheckInView(MultipleObjectConfirmActionView):
 class DocumentCheckOutView(MultipleObjectFormActionView):
     error_message = 'Unable to checkout document "%(instance)s". %(exception)s'
     form_class = DocumentCheckOutForm
-    model = Document
     object_permission = permission_document_check_out
     pk_url_kwarg = 'document_id'
+    source_queryset = Document.valid
     success_message_singular = '%(count)d document checked out.'
     success_message_plural = '%(count)d documents checked out.'
 
@@ -147,9 +147,9 @@ class DocumentCheckOutView(MultipleObjectFormActionView):
 
 class DocumentCheckOutDetailView(SingleObjectDetailView):
     form_class = DocumentCheckOutDetailForm
-    model = Document
     object_permission = permission_document_check_out_detail_view
     pk_url_kwarg = 'document_id'
+    source_queryset = Document.valid
 
     def get_extra_context(self):
         return {
@@ -162,11 +162,12 @@ class DocumentCheckOutDetailView(SingleObjectDetailView):
 
 class DocumentCheckOutListView(DocumentListView):
     def get_document_queryset(self):
-        return AccessControlList.objects.restrict_queryset(
+        queryset = AccessControlList.objects.restrict_queryset(
             permission=permission_document_check_out_detail_view,
             queryset=DocumentCheckout.objects.checked_out_documents(),
             user=self.request.user
         )
+        return Document.valid.filter(pk__in=queryset.values('pk'))
 
     def get_extra_context(self):
         context = super(DocumentCheckOutListView, self).get_extra_context()

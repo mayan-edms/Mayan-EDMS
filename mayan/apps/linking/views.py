@@ -81,9 +81,9 @@ class DocumentTypeSmartLinksView(AddRemoveView):
 
 
 class ResolvedSmartLinkView(ExternalObjectMixin, DocumentListView):
-    external_object_class = Document
     external_object_permission = permission_document_view
     external_object_pk_url_kwarg = 'document_id'
+    external_object_queryset = Document.valid
 
     def dispatch(self, request, *args, **kwargs):
         self.smart_link = self.get_smart_link()
@@ -205,9 +205,9 @@ class SmartLinkListView(SingleObjectListView):
 
 
 class DocumentSmartLinkListView(ExternalObjectMixin, SmartLinkListView):
-    external_object_class = Document
     external_object_permission = permission_document_view
     external_object_pk_url_kwarg = 'document_id'
+    external_object_queryset = Document.valid
 
     def get_extra_context(self):
         return {
