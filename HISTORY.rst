@@ -17,6 +17,10 @@
   duplicated documents that the user can access.
 - Updated ``.get_external_object_queryset`` to ensure that the queryset is
   always up to date when the view is accessed.
+- Update app views to filter trashed documents. Closes GitLab issues #910
+  and #920. Thanks to Sven Gaechter (@sgaechter), Francesco Musella
+  (@francesco.musella-biztems), Kevin Pawsey (@kevinpawsey), and
+  None Given (@nastodon) for the reports and debug information.
 
 3.5.3 (2020-11-11)
 ==================
