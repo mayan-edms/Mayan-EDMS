@@ -23,6 +23,14 @@
   None Given (@nastodon) for the reports and debug information.
 - Move all static values from setting modules to the literals modules.
   Closes GitLab issue #852.
+- Update workflow instance access requirements to match the intended layout
+  and the current REST API layout. In order to view the list of log entries
+  and the list of workflow instances of a document, the workflow permission
+  view is now required for the document as well as the workflow template.
+  This double permission requirement now matches the same design as the
+  metadata and tags apps.
+- Django's global_settings module instead of the settings module which is
+  not ready at the time the default are computed.
 
 3.5.3 (2020-11-11)
 ==================
