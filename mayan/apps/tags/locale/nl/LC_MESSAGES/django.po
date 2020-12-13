@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-25 05:02+0000\n"
+"POT-Creation-Date: 2020-12-13 10:28+0000\n"
 "PO-Revision-Date: 2020-09-27 06:47+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
@@ -249,56 +249,56 @@ msgstr "Labels zijn gekleurde etiketten die kunnen worden toegevoegd of verwijde
 msgid "No tags available"
 msgstr "Geen labels beschikbaar"
 
-#: views.py:246
+#: views.py:250
 #, python-format
 msgid "Documents with the tag: %s"
 msgstr "Documenten met label: %s"
 
-#: views.py:271
+#: views.py:275
 msgid "Document has no tags attached"
 msgstr "Document heet geen toegevoegde labels"
 
-#: views.py:274
+#: views.py:278
 #, python-format
 msgid "Tags for document: %s"
 msgstr "Labels voor document: %s"
 
-#: views.py:291
+#: views.py:295
 #, python-format
 msgid "Tag remove request performed on %(count)d document"
 msgstr "Label verwijderingsverzoek gedaan voor %(count)d document"
 
-#: views.py:293
+#: views.py:297
 #, python-format
 msgid "Tag remove request performed on %(count)d documents"
 msgstr "Label verwijderingsverzoek gedaan voor %(count)d documenten"
 
-#: views.py:301
+#: views.py:305
 msgid "Remove"
 msgstr "Verwijderen"
 
-#: views.py:303
+#: views.py:307
 #, python-format
 msgid "Remove tags from %(count)d document"
 msgid_plural "Remove tags from %(count)d documents"
 msgstr[0] "Labels verwijderen van %(count)d document"
 msgstr[1] "Labels verwijderen van %(count)d documenten"
 
-#: views.py:315
+#: views.py:319
 #, python-format
 msgid "Remove tags from document: %s"
 msgstr "Labels verwijderen van document: %s"
 
-#: views.py:324
+#: views.py:328
 msgid "Tags to be removed."
 msgstr "Te verwijderen labels."
 
-#: views.py:364
+#: views.py:368
 #, python-format
 msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s"
 msgstr "Document \"%(document)s\" was niet gelabeld met \"%(tag)s"
 
-#: views.py:373
+#: views.py:377
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr "Label: \"%(tag)s\" is verwijderd van document \"%(document)s\"."

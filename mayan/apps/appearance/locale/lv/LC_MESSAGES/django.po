@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-25 05:01+0000\n"
-"PO-Revision-Date: 2020-11-23 10:55+0000\n"
+"POT-Creation-Date: 2020-12-13 10:28+0000\n"
+"PO-Revision-Date: 2020-12-01 13:17+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
 "MIME-Version: 1.0\n"
@@ -189,13 +189,13 @@ msgstr "Vienuma atrašanās vieta nav pareiza."
 
 #: templates/404.html:45
 msgid "The location is correct, but the item no longer exists."
-msgstr ""
+msgstr "Atrašanās vieta ir pareiza, taču vienums vairs nepastāv."
 
 #: templates/404.html:46
 msgid ""
 "The location is be correct, but your account does not have the required "
 "permission to access it."
-msgstr ""
+msgstr "Atrašanās vieta ir pareiza, taču jūsu kontam nav vajadzīgās atļaujas, lai tai piekļūtu."
 
 #: templates/500.html:5 templates/500.html:30
 #: templates/appearance/root.html:58
@@ -204,32 +204,32 @@ msgstr "Servera kļūda"
 
 #: templates/500.html:32
 msgid "There's been an unexpected error."
-msgstr ""
+msgstr "Notika negaidīta kļūda."
 
 #: templates/500.html:40
 msgid "What to do next?"
-msgstr ""
+msgstr "Ko darīt tālāk?"
 
 #: templates/500.html:44
 msgid "Refresh the page."
-msgstr ""
+msgstr "Atsvaidziniet lapu."
 
 #: templates/500.html:45
 msgid "Wait a bit. The system might be overloaded."
-msgstr ""
+msgstr "Pagaidiet mazliet. Sistēma var būt pārslogota."
 
 #: templates/500.html:46
 msgid "Contact your system administrator."
-msgstr ""
+msgstr "Sazinieties ar sistēmas administratoru."
 
 #: templates/500.html:47
 msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
-msgstr ""
+msgstr "Pārbaudiet, vai žurnālos nav ziņojumu ar tagiem \"ERROR\", \"CRITICAL\" vai \"FATAL\"."
 
 #: templates/500.html:48
 #, python-format
 msgid "Open a ticket using the <a href=\"%(issue_url)s\">issue tracker</a>."
-msgstr ""
+msgstr "Atveriet biļeti, izmantojot <a href=\"%(issue_url)s\">problēmu izsekotāju</a> ."
 
 #: templates/appearance/about.html:10
 msgid "About"
@@ -270,7 +270,7 @@ msgid ""
 "\n"
 "                It takes great effort to make %(project_title)s as feature-rich as it is.\n"
 "            "
-msgstr ""
+msgstr "\nLai padarītu %(project_title)s tikpat bagātu kā tas ir, ir jāpieliek lielas pūles."
 
 #: templates/appearance/about.html:111
 #, python-format
@@ -278,7 +278,7 @@ msgid ""
 "\n"
 "                If you use %(project_title)s please <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">make a donation %(icon_social_paypal)s</a>\n"
 "            "
-msgstr ""
+msgstr "\nJa izmantojat %(project_title)s, lūdzu, <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">veiciet ziedojumu %(icon_social_paypal)s</a>"
 
 #: templates/appearance/about.html:117
 #, python-format
@@ -294,7 +294,7 @@ msgid ""
 "\n"
 "                For questions check the <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
 "            "
-msgstr ""
+msgstr "\nJa rodas jautājumi, skatiet <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">dokumentāciju %(icon_documentation)s</a> ."
 
 #: templates/appearance/about.html:129
 #, python-format
@@ -310,7 +310,7 @@ msgid ""
 "\n"
 "                Spread the word. Talk to your friends and colleagues about how awesome %(project_title)s is!\n"
 "            "
-msgstr ""
+msgstr "\nIzplatiet vārdu. Runājiet ar draugiem un kolēģiem par to, cik satriecošs ir %(project_title)s!"
 
 #: templates/appearance/base.html:43 templates/appearance/base.html:67
 msgid "Warning"
@@ -318,7 +318,7 @@ msgstr "Brīdinājums"
 
 #: templates/appearance/base.html:57
 msgid "Click here to fix this."
-msgstr ""
+msgstr "Noklikšķiniet šeit, lai to labotu."
 
 #: templates/appearance/base.html:67
 msgid ""
@@ -332,11 +332,11 @@ msgid ""
 "\n"
 "                                        Impersonating user \"%(user)s\".\n"
 "                                    "
-msgstr ""
+msgstr "\nUzdodas par lietotāju &quot;%(user)s&quot;."
 
 #: templates/appearance/base.html:78
 msgid "Click here when finished"
-msgstr ""
+msgstr "Kad esat pabeidzis, noklikšķiniet šeit"
 
 #: templates/appearance/base.html:92
 #: templates/appearance/generic_list_items_subtemplate.html:66
@@ -424,7 +424,7 @@ msgstr "Atlasīt / noņemt atlasi visiem"
 
 #: templates/appearance/list_toolbar.html:17
 msgid "Toggle list display mode"
-msgstr ""
+msgstr "Pārslēgt saraksta skata režīmu"
 
 #: templates/appearance/list_toolbar.html:60
 msgid ""
@@ -461,27 +461,27 @@ msgstr "Nav neviens"
 
 #: views.py:29
 msgid "Current user theme settings details"
-msgstr ""
+msgstr "Informācija par pašreizējo lietotāja tēmas iestatījumu"
 
 #: views.py:35
 msgid "Edit current user theme settings details"
-msgstr ""
+msgstr "Rediģēt pašreizējo lietotāja tēmas iestatījumu informāciju"
 
 #: views.py:69
 #, python-format
 msgid "Delete theme: %s"
-msgstr ""
+msgstr "Dzēst tēmu: %s"
 
 #: views.py:85
 #, python-format
 msgid "Edit theme: %s"
-msgstr ""
+msgstr "Rediģēt tēmu: %s"
 
 #: views.py:105
 msgid ""
 "Themes allow changing the visual appearance without requiring code changes."
-msgstr ""
+msgstr "Tēmas ļauj mainīt vizuālo izskatu, neprasot koda izmaiņas."
 
 #: views.py:109
 msgid "There are no themes"
-msgstr ""
+msgstr "Nav tēmu"

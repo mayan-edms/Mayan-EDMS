@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-25 05:01+0000\n"
+"POT-Creation-Date: 2020-12-13 10:28+0000\n"
 "PO-Revision-Date: 2020-11-19 11:10+0000\n"
 "Last-Translator: Alex Chigrin <chalex84@mail.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:133 permissions.py:5 settings.py:10
+#: apps.py:133 permissions.py:5 settings.py:13
 msgid "Common"
 msgstr "Общий"
 
@@ -110,26 +110,26 @@ msgstr "Получить поддержку"
 msgid "Tools"
 msgstr "Инструменты"
 
-#: literals.py:7
+#: literals.py:18
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
 msgstr "Эта функция устарела и будет удалена в будущей версии."
 
-#: literals.py:10
+#: literals.py:21
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
 msgstr "В качестве базы данных задан SQLite. SQLite не должен использоваться в рабочем окружении, только для разработки и тестирования!"
 
-#: literals.py:19
+#: literals.py:30
 msgid "Days"
 msgstr "Дней"
 
-#: literals.py:20
+#: literals.py:31
 msgid "Hours"
 msgstr "Часов"
 
-#: literals.py:21
+#: literals.py:32
 msgid "Minutes"
 msgstr "Минут"
 
@@ -181,13 +181,13 @@ msgstr "Копировать объект"
 msgid "Default"
 msgstr "Умолчание"
 
-#: settings.py:17
+#: settings.py:19
 msgid ""
 "Time to delay background tasks that depend on a database commit to "
 "propagate."
 msgstr "Время задержки фоновых задач зависящих от процесса распространения записанных в БД данных."
 
-#: settings.py:25
+#: settings.py:26
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
@@ -195,7 +195,7 @@ msgid ""
 " containing an application."
 msgstr ""
 
-#: settings.py:35
+#: settings.py:36
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
@@ -203,21 +203,21 @@ msgid ""
 " containing an application."
 msgstr ""
 
-#: settings.py:44
+#: settings.py:45
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
 msgstr ""
 
-#: settings.py:52
+#: settings.py:53
 msgid "Name to be displayed in the main menu."
 msgstr "Имя, отображаемое в главном меню."
 
-#: settings.py:58
+#: settings.py:59
 msgid "URL of the installation or homepage of the project."
 msgstr "URL-адрес установки или домашней страницы проекта."
 
-#: settings.py:63
+#: settings.py:64
 msgid "Base URL path to use for all views."
 msgstr "Базовый URL-путь для использования во всех представлениях."
 

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-25 05:02+0000\n"
+"POT-Creation-Date: 2020-12-13 10:28+0000\n"
 "PO-Revision-Date: 2020-10-02 20:16+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
@@ -248,56 +248,56 @@ msgstr "Маркерите са цветно кодирани свойства, 
 msgid "No tags available"
 msgstr "Няма налични маркери"
 
-#: views.py:246
+#: views.py:250
 #, python-format
 msgid "Documents with the tag: %s"
 msgstr "Документи с маркер: %s"
 
-#: views.py:271
+#: views.py:275
 msgid "Document has no tags attached"
 msgstr "Документът няма прикачени маркери"
 
-#: views.py:274
+#: views.py:278
 #, python-format
 msgid "Tags for document: %s"
 msgstr "Маркери за документ: %s"
 
-#: views.py:291
+#: views.py:295
 #, python-format
 msgid "Tag remove request performed on %(count)d document"
 msgstr "Искане за премахване на маркер, изпълнено на %(count)d документ"
 
-#: views.py:293
+#: views.py:297
 #, python-format
 msgid "Tag remove request performed on %(count)d documents"
 msgstr "Искане за премахване на маркер, изпълнено на %(count)d документи"
 
-#: views.py:301
+#: views.py:305
 msgid "Remove"
 msgstr "Премахнете"
 
-#: views.py:303
+#: views.py:307
 #, python-format
 msgid "Remove tags from %(count)d document"
 msgid_plural "Remove tags from %(count)d documents"
 msgstr[0] "Премахване на маркери от документа %(count)d"
 msgstr[1] "Премахване на маркери от %(count)dдокумента"
 
-#: views.py:315
+#: views.py:319
 #, python-format
 msgid "Remove tags from document: %s"
 msgstr "Премахване на маркери от документ: %s"
 
-#: views.py:324
+#: views.py:328
 msgid "Tags to be removed."
 msgstr "Маркери за премахване."
 
-#: views.py:364
+#: views.py:368
 #, python-format
 msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s"
 msgstr "Документът &quot;%(document)s&quot; не бе маркиран като &quot;%(tag)s"
 
-#: views.py:373
+#: views.py:377
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr "Маркерът &quot;%(tag)s&quot; успешно е премахнат от документ &quot;%(document)s&quot;."

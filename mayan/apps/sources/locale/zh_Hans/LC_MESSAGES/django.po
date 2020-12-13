@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-25 05:02+0000\n"
+"POT-Creation-Date: 2020-12-13 10:28+0000\n"
 "PO-Revision-Date: 2020-10-11 07:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-edms/language/zh-Hans/)\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:48 links.py:63 models/base.py:36 queues.py:7 settings.py:11
+#: apps.py:48 links.py:63 models/base.py:36 queues.py:7 settings.py:14
 #: views.py:193
 msgid "Sources"
 msgstr "来源"
@@ -129,67 +129,67 @@ msgstr "上传新版本"
 msgid "Check now"
 msgstr "现在检查"
 
-#: literals.py:16
+#: literals.py:25
 msgid "Flatbed"
 msgstr "平板"
 
-#: literals.py:17
+#: literals.py:26
 msgid "Document feeder"
 msgstr "文件送纸器"
 
-#: literals.py:24
+#: literals.py:33
 msgid "Simplex"
 msgstr "单面"
 
-#: literals.py:25
+#: literals.py:34
 msgid "Duplex"
 msgstr "双面"
 
-#: literals.py:33
+#: literals.py:42
 msgid "Lineart"
 msgstr "艺术线条"
 
-#: literals.py:34
+#: literals.py:43
 msgid "Monochrome"
 msgstr "单色"
 
-#: literals.py:35
+#: literals.py:44
 msgid "Color"
 msgstr "颜色"
 
-#: literals.py:43 literals.py:48
+#: literals.py:52 literals.py:57
 msgid "Always"
 msgstr "总是"
 
-#: literals.py:44 literals.py:49
+#: literals.py:53 literals.py:58
 msgid "Never"
 msgstr "从不"
 
-#: literals.py:50
+#: literals.py:59
 msgid "Ask user"
 msgstr "询问用户"
 
-#: literals.py:61
+#: literals.py:70
 msgid "Scanner"
 msgstr "扫描仪"
 
-#: literals.py:62 models/webform_sources.py:40
+#: literals.py:71 models/webform_sources.py:40
 msgid "Web form"
 msgstr "网络表单"
 
-#: literals.py:63 models/staging_folder_sources.py:67
+#: literals.py:72 models/staging_folder_sources.py:67
 msgid "Staging folder"
 msgstr "暂存文件夹"
 
-#: literals.py:64 models/watch_folder_sources.py:46
+#: literals.py:73 models/watch_folder_sources.py:46
 msgid "Watch folder"
 msgstr "监视文件夹"
 
-#: literals.py:65
+#: literals.py:74
 msgid "POP3 email"
 msgstr "POP3电子邮件"
 
-#: literals.py:66 models/email_sources.py:249 models/email_sources.py:250
+#: literals.py:75 models/email_sources.py:249 models/email_sources.py:250
 msgid "IMAP email"
 msgstr "IMAP电子邮件"
 
@@ -578,17 +578,17 @@ msgstr "处理上传"
 msgid "Upload document"
 msgstr "上传文档"
 
-#: settings.py:18
+#: settings.py:21
 msgid "File path to the scanimage program used to control image scanners."
 msgstr "用于控制图像扫描仪的scanimage程序的文件路径。"
 
-#: settings.py:25
+#: settings.py:27
 msgid ""
 "Path to the Storage subclass to use when storing the cached staging_file "
 "image files."
 msgstr "存储缓存的staging_file映像文件时要使用的Storage子类的路径。"
 
-#: settings.py:34
+#: settings.py:35
 msgid "Arguments to pass to the SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
 msgstr "传递给SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND的参数。"
 

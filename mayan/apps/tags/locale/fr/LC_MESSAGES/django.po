@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-25 05:02+0000\n"
+"POT-Creation-Date: 2020-12-13 10:28+0000\n"
 "PO-Revision-Date: 2020-09-27 06:47+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
@@ -253,56 +253,56 @@ msgstr "Les étiquettes sont des propriétés, avec un code de couleur, pouvant 
 msgid "No tags available"
 msgstr "Aucune étiquette disponible"
 
-#: views.py:246
+#: views.py:250
 #, python-format
 msgid "Documents with the tag: %s"
 msgstr "Documents avec l'étiquette : %s"
 
-#: views.py:271
+#: views.py:275
 msgid "Document has no tags attached"
 msgstr "Le document n'a pas d'étiquette attachée"
 
-#: views.py:274
+#: views.py:278
 #, python-format
 msgid "Tags for document: %s"
 msgstr "Étiquettes du document : %s"
 
-#: views.py:291
+#: views.py:295
 #, python-format
 msgid "Tag remove request performed on %(count)d document"
 msgstr "Demande de retrait de l'étiquette effectuée sur %(count)d document"
 
-#: views.py:293
+#: views.py:297
 #, python-format
 msgid "Tag remove request performed on %(count)d documents"
 msgstr "Demande de retrait de l'étiquette effectuée sur %(count)d documents"
 
-#: views.py:301
+#: views.py:305
 msgid "Remove"
 msgstr "Retirer"
 
-#: views.py:303
+#: views.py:307
 #, python-format
 msgid "Remove tags from %(count)d document"
 msgid_plural "Remove tags from %(count)d documents"
 msgstr[0] "Supprimer les balises du document %(count)d"
 msgstr[1] "Supprimer les étiquettes de %(count)d documents "
 
-#: views.py:315
+#: views.py:319
 #, python-format
 msgid "Remove tags from document: %s"
 msgstr "Retirer les étiquettes du document: %s"
 
-#: views.py:324
+#: views.py:328
 msgid "Tags to be removed."
 msgstr "Étiquettes qui seront retirées."
 
-#: views.py:364
+#: views.py:368
 #, python-format
 msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s"
 msgstr "Le document \"%(document)s\" n'a pas été étiquetté comme \"%(tag)s"
 
-#: views.py:373
+#: views.py:377
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr "L'étiquette \"%(tag)s\" à été retirée avec succès du document \"%(document)s\"."

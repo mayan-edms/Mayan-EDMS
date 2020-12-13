@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-25 05:01+0000\n"
+"POT-Creation-Date: 2020-12-13 10:28+0000\n"
 "PO-Revision-Date: 2020-09-30 04:16+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:39 events.py:5 permissions.py:5 settings.py:16
+#: apps.py:39 events.py:5 permissions.py:5 settings.py:14
 msgid "Converter"
 msgstr "Convertitore"
 
@@ -231,19 +231,19 @@ msgstr "Modifica le trasformazioni"
 msgid "View existing transformations"
 msgstr "Visualizza le trasformazioni esistenti"
 
-#: settings.py:22
+#: settings.py:21
 msgid "Graphics conversion backend to use."
 msgstr "Conversioni grafiche di backend da utilizzare."
 
-#: settings.py:35
+#: settings.py:27
 msgid "Configuration options for the graphics conversion backend."
 msgstr "Opzioni di configurazione per il backend di conversione grafica."
 
-#: settings.py:41
+#: settings.py:33
 msgid "Path to the Storage subclass to use when storing assets."
 msgstr ""
 
-#: settings.py:49
+#: settings.py:39
 msgid "Arguments to pass to the CONVERTER_ASSET_STORAGE_BACKEND."
 msgstr ""
 

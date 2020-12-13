@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-25 05:01+0000\n"
+"POT-Creation-Date: 2020-12-13 10:28+0000\n"
 "PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:133 permissions.py:5 settings.py:10
+#: apps.py:133 permissions.py:5 settings.py:13
 msgid "Common"
 msgstr "Gemeenschappelijk"
 
@@ -111,26 +111,26 @@ msgstr "Ondersteuning"
 msgid "Tools"
 msgstr "Gereedschappen"
 
-#: literals.py:7
+#: literals.py:18
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
 msgstr "Deze functie is achterhaald en zal worden verwijderd in een toekomstige versie."
 
-#: literals.py:10
+#: literals.py:21
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
 msgstr "Uw database backend is ingesteld op SQLite. SQLite dient alleen gebruikt te worden voor ontwikkeling en testen, niet voor productie-omgevingen. "
 
-#: literals.py:19
+#: literals.py:30
 msgid "Days"
 msgstr "Dagen"
 
-#: literals.py:20
+#: literals.py:31
 msgid "Hours"
 msgstr "Uren"
 
-#: literals.py:21
+#: literals.py:32
 msgid "Minutes"
 msgstr "Minuten"
 
@@ -182,13 +182,13 @@ msgstr ""
 msgid "Default"
 msgstr "Standaard"
 
-#: settings.py:17
+#: settings.py:19
 msgid ""
 "Time to delay background tasks that depend on a database commit to "
 "propagate."
 msgstr "Wachttijd voor achtergrondtaken die afhankelijk zijn van het verbreiden van een database commit."
 
-#: settings.py:25
+#: settings.py:26
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
@@ -196,7 +196,7 @@ msgid ""
 " containing an application."
 msgstr "Een lijst met tekenreeksen die alle toepassingen aanduiden die moeten worden verwijderd uit de lijst die normaal door Mayan EDMS wordt geïnstalleerd. Elke string moet een Python-pad zijn naar: een toepassingsconfiguratieklasse (bij voorkeur) of een pakket met een toepassing."
 
-#: settings.py:35
+#: settings.py:36
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
@@ -204,21 +204,21 @@ msgid ""
 " containing an application."
 msgstr "Een lijst met tekenreeksen die alle applicaties aanduiden die zijn geïnstalleerd buiten de applicaties die normaal door Mayan EDMS zijn geïnstalleerd. Elke tekenreeks moet een Python-pad zijn naar: een toepassingsconfiguratieklasse (bij voorkeur) of een pakket met een toepassing."
 
-#: settings.py:44
+#: settings.py:45
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
 msgstr "Naam van de overzicht gekoppeld aan het logo in het hoofdmenu. Dit is ook het overzicht waarnaar gebruikers worden doorgestuurd nadat ze zich hebben aangemeld."
 
-#: settings.py:52
+#: settings.py:53
 msgid "Name to be displayed in the main menu."
 msgstr "Naam die wordt weergegeven in het hoofdmenu."
 
-#: settings.py:58
+#: settings.py:59
 msgid "URL of the installation or homepage of the project."
 msgstr "URL van de installatie of homepage van het project."
 
-#: settings.py:63
+#: settings.py:64
 msgid "Base URL path to use for all views."
 msgstr "Basis URL-pad voor alle overzichten."
 

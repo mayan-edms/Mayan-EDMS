@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-25 05:02+0000\n"
+"POT-Creation-Date: 2020-12-13 10:28+0000\n"
 "PO-Revision-Date: 2020-09-27 06:47+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
@@ -250,56 +250,56 @@ msgstr "Tags sind Farbencodes die an Dokumente angehängt werden können."
 msgid "No tags available"
 msgstr "Keine Tags verfügbar"
 
-#: views.py:246
+#: views.py:250
 #, python-format
 msgid "Documents with the tag: %s"
 msgstr "Dokumente mit Tag %s"
 
-#: views.py:271
+#: views.py:275
 msgid "Document has no tags attached"
 msgstr "Keine Tags am Dokument angehängt"
 
-#: views.py:274
+#: views.py:278
 #, python-format
 msgid "Tags for document: %s"
 msgstr "Tags für Dokument %s"
 
-#: views.py:291
+#: views.py:295
 #, python-format
 msgid "Tag remove request performed on %(count)d document"
 msgstr "Tag von %(count)d Dokument entfernt"
 
-#: views.py:293
+#: views.py:297
 #, python-format
 msgid "Tag remove request performed on %(count)d documents"
 msgstr "Tag von %(count)d Dokumenten entfernt"
 
-#: views.py:301
+#: views.py:305
 msgid "Remove"
 msgstr "Entfernen"
 
-#: views.py:303
+#: views.py:307
 #, python-format
 msgid "Remove tags from %(count)d document"
 msgid_plural "Remove tags from %(count)d documents"
 msgstr[0] "Tags von %(count)d Dokument entfernen"
 msgstr[1] "Tags von %(count)d Dokumenten entfernen"
 
-#: views.py:315
+#: views.py:319
 #, python-format
 msgid "Remove tags from document: %s"
 msgstr "Tags entfernen von Dokument: %s"
 
-#: views.py:324
+#: views.py:328
 msgid "Tags to be removed."
 msgstr "Zu entfernende Tags."
 
-#: views.py:364
+#: views.py:368
 #, python-format
 msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s"
 msgstr "Dokument \"%(document)s\" wurde nicht als \"%(tag)s getaggt"
 
-#: views.py:373
+#: views.py:377
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr "Tag \"%(tag)s\" erfolgreich von Dokument \"%(document)s\" entfernt."

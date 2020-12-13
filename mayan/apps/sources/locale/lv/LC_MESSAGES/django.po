@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-25 05:02+0000\n"
+"POT-Creation-Date: 2020-12-13 10:28+0000\n"
 "PO-Revision-Date: 2020-10-11 07:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Language: lv\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
-#: apps.py:48 links.py:63 models/base.py:36 queues.py:7 settings.py:11
+#: apps.py:48 links.py:63 models/base.py:36 queues.py:7 settings.py:14
 #: views.py:193
 msgid "Sources"
 msgstr "Avoti"
@@ -129,67 +129,67 @@ msgstr "Augšupielādējiet jaunu versiju"
 msgid "Check now"
 msgstr "Pārbaudiet tagad"
 
-#: literals.py:16
+#: literals.py:25
 msgid "Flatbed"
 msgstr "Plakans"
 
-#: literals.py:17
+#: literals.py:26
 msgid "Document feeder"
 msgstr "Dokumentu padevējs"
 
-#: literals.py:24
+#: literals.py:33
 msgid "Simplex"
 msgstr "Simplex"
 
-#: literals.py:25
+#: literals.py:34
 msgid "Duplex"
 msgstr "Duplex"
 
-#: literals.py:33
+#: literals.py:42
 msgid "Lineart"
 msgstr "Lineart"
 
-#: literals.py:34
+#: literals.py:43
 msgid "Monochrome"
 msgstr "Melnbalts"
 
-#: literals.py:35
+#: literals.py:44
 msgid "Color"
 msgstr "Krāsa"
 
-#: literals.py:43 literals.py:48
+#: literals.py:52 literals.py:57
 msgid "Always"
 msgstr "Vienmēr"
 
-#: literals.py:44 literals.py:49
+#: literals.py:53 literals.py:58
 msgid "Never"
 msgstr "Nekad"
 
-#: literals.py:50
+#: literals.py:59
 msgid "Ask user"
 msgstr "Uzdot lietotāju"
 
-#: literals.py:61
+#: literals.py:70
 msgid "Scanner"
 msgstr "Skeneris"
 
-#: literals.py:62 models/webform_sources.py:40
+#: literals.py:71 models/webform_sources.py:40
 msgid "Web form"
 msgstr "Tīmekļa veidlapa"
 
-#: literals.py:63 models/staging_folder_sources.py:67
+#: literals.py:72 models/staging_folder_sources.py:67
 msgid "Staging folder"
 msgstr "Pieturvietu mape"
 
-#: literals.py:64 models/watch_folder_sources.py:46
+#: literals.py:73 models/watch_folder_sources.py:46
 msgid "Watch folder"
 msgstr "Novērot mapi"
 
-#: literals.py:65
+#: literals.py:74
 msgid "POP3 email"
 msgstr "POP3 e-pasts"
 
-#: literals.py:66 models/email_sources.py:249 models/email_sources.py:250
+#: literals.py:75 models/email_sources.py:249 models/email_sources.py:250
 msgid "IMAP email"
 msgstr "IMAP e-pasts"
 
@@ -578,17 +578,17 @@ msgstr "Rīkot augšupielādi"
 msgid "Upload document"
 msgstr "Augšupielādējiet dokumentu"
 
-#: settings.py:18
+#: settings.py:21
 msgid "File path to the scanimage program used to control image scanners."
 msgstr "Faila ceļš uz skenēšanas programmu, ko izmanto, lai kontrolētu attēlu skenerus."
 
-#: settings.py:25
+#: settings.py:27
 msgid ""
 "Path to the Storage subclass to use when storing the cached staging_file "
 "image files."
 msgstr "Ceļš uz glabāšanas apakšklasi, ko var izmantot, saglabājot kešatmiņā saglabātos attēlu failus."
 
-#: settings.py:34
+#: settings.py:35
 msgid "Arguments to pass to the SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
 msgstr "Argumenti, kas jānodod SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
 

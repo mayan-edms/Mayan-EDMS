@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-25 05:02+0000\n"
+"POT-Creation-Date: 2020-12-13 10:28+0000\n"
 "PO-Revision-Date: 2020-09-29 12:56+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -252,35 +252,35 @@ msgstr "Etichetele sunt proprietăți codate în culori care pot fi atașate sau
 msgid "No tags available"
 msgstr "Nu sunt disponibile etichete"
 
-#: views.py:246
+#: views.py:250
 #, python-format
 msgid "Documents with the tag: %s"
 msgstr "Documente cu eticheta: %s"
 
-#: views.py:271
+#: views.py:275
 msgid "Document has no tags attached"
 msgstr "Documentul nu este atașat nicio  etichetă"
 
-#: views.py:274
+#: views.py:278
 #, python-format
 msgid "Tags for document: %s"
 msgstr "Etichetele documentului: %s"
 
-#: views.py:291
+#: views.py:295
 #, python-format
 msgid "Tag remove request performed on %(count)d document"
 msgstr "Cererea de eliminare a etichetei efectuată pe %(count)ddocument "
 
-#: views.py:293
+#: views.py:297
 #, python-format
 msgid "Tag remove request performed on %(count)d documents"
 msgstr "Cererea de eliminare a etichetei efectuată pe %(count)d documente"
 
-#: views.py:301
+#: views.py:305
 msgid "Remove"
 msgstr "Şterge"
 
-#: views.py:303
+#: views.py:307
 #, python-format
 msgid "Remove tags from %(count)d document"
 msgid_plural "Remove tags from %(count)d documents"
@@ -288,21 +288,21 @@ msgstr[0] "Eliminați etichetele din documentul %(count)d"
 msgstr[1] "Eliminați etichetele din documentele %(count)d"
 msgstr[2] "Eliminați etichetele din %(count)d documentel"
 
-#: views.py:315
+#: views.py:319
 #, python-format
 msgid "Remove tags from document: %s"
 msgstr "Eliminați etichetele din documentul: %s"
 
-#: views.py:324
+#: views.py:328
 msgid "Tags to be removed."
 msgstr "Etichete ce trebuie eliminate."
 
-#: views.py:364
+#: views.py:368
 #, python-format
 msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s"
 msgstr "Documentul \"%(document)s\" nu a fost etichetat ca \"%(tag)s"
 
-#: views.py:373
+#: views.py:377
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr "Eticheta \"%(tag)s\" a fost eliminată cu succes din documentul \"%(document)s\"."

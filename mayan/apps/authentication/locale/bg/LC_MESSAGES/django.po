@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-25 05:01+0000\n"
+"POT-Creation-Date: 2020-12-13 10:28+0000\n"
 "PO-Revision-Date: 2020-03-31 10:53+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:25 events.py:6 permissions.py:6 settings.py:7
+#: apps.py:25 events.py:6 permissions.py:6 settings.py:10
 msgid "Authentication"
 msgstr "Удостоверяване"
 
@@ -89,19 +89,19 @@ msgstr "Задаване на парола"
 msgid "Impersonate users"
 msgstr "Представяне на потребители"
 
-#: settings.py:11
+#: settings.py:15
 msgid ""
 "Controls the mechanism used to authenticated user. Options are: username, "
 "email"
 msgstr "Управлява механизма, използван за удостоверяване на потребителя. Опциите са: потребителско име, имейл"
 
-#: settings.py:18
+#: settings.py:22
 msgid ""
 "Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
 " in. Value is time in seconds."
 msgstr "Максимално време, за което потребителят натискащ квадратчето „Запомни ме“ ще остане включен. Стойността е време в секунди."
 
-#: settings.py:25
+#: settings.py:29
 msgid ""
 "Remove the \"Forgot your password?\" link on the login form used to trigger "
 "the password reset."

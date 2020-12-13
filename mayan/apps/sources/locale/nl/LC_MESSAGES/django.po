@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-25 05:02+0000\n"
+"POT-Creation-Date: 2020-12-13 10:28+0000\n"
 "PO-Revision-Date: 2020-10-11 07:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:48 links.py:63 models/base.py:36 queues.py:7 settings.py:11
+#: apps.py:48 links.py:63 models/base.py:36 queues.py:7 settings.py:14
 #: views.py:193
 msgid "Sources"
 msgstr "Bronnen"
@@ -131,67 +131,67 @@ msgstr "Nieuwe versie uploaden"
 msgid "Check now"
 msgstr "Nu controleren"
 
-#: literals.py:16
+#: literals.py:25
 msgid "Flatbed"
 msgstr "Flatbed"
 
-#: literals.py:17
+#: literals.py:26
 msgid "Document feeder"
 msgstr "Documentinvoer"
 
-#: literals.py:24
+#: literals.py:33
 msgid "Simplex"
 msgstr "Enkelzijdig"
 
-#: literals.py:25
+#: literals.py:34
 msgid "Duplex"
 msgstr "Dubbelzijdig"
 
-#: literals.py:33
+#: literals.py:42
 msgid "Lineart"
 msgstr "Zwart-wit"
 
-#: literals.py:34
+#: literals.py:43
 msgid "Monochrome"
 msgstr "Grijswaarden"
 
-#: literals.py:35
+#: literals.py:44
 msgid "Color"
 msgstr "Kleur"
 
-#: literals.py:43 literals.py:48
+#: literals.py:52 literals.py:57
 msgid "Always"
 msgstr "Altijd"
 
-#: literals.py:44 literals.py:49
+#: literals.py:53 literals.py:58
 msgid "Never"
 msgstr "Nooit"
 
-#: literals.py:50
+#: literals.py:59
 msgid "Ask user"
 msgstr "Vraag gebruiker"
 
-#: literals.py:61
+#: literals.py:70
 msgid "Scanner"
 msgstr "Scanner"
 
-#: literals.py:62 models/webform_sources.py:40
+#: literals.py:71 models/webform_sources.py:40
 msgid "Web form"
 msgstr "Webformulier"
 
-#: literals.py:63 models/staging_folder_sources.py:67
+#: literals.py:72 models/staging_folder_sources.py:67
 msgid "Staging folder"
 msgstr "Netwerkmap"
 
-#: literals.py:64 models/watch_folder_sources.py:46
+#: literals.py:73 models/watch_folder_sources.py:46
 msgid "Watch folder"
 msgstr "Bewaakte map"
 
-#: literals.py:65
+#: literals.py:74
 msgid "POP3 email"
 msgstr "POP3 e-mail"
 
-#: literals.py:66 models/email_sources.py:249 models/email_sources.py:250
+#: literals.py:75 models/email_sources.py:249 models/email_sources.py:250
 msgid "IMAP email"
 msgstr "IMAP e-mail"
 
@@ -580,17 +580,17 @@ msgstr "Handle upload"
 msgid "Upload document"
 msgstr "Document uploaden"
 
-#: settings.py:18
+#: settings.py:21
 msgid "File path to the scanimage program used to control image scanners."
 msgstr "Bestandspad naar het scanprogramma dat wordt gebruikt om scanners te beheren."
 
-#: settings.py:25
+#: settings.py:27
 msgid ""
 "Path to the Storage subclass to use when storing the cached staging_file "
 "image files."
 msgstr "Pad naar de Storage subclass die gebruikt wordt bij opslag van de gecachede staging_file afbeeldingsbestanden."
 
-#: settings.py:34
+#: settings.py:35
 msgid "Arguments to pass to the SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
 msgstr "Argumenten om door te geven aan de SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
 

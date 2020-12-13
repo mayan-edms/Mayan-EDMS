@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-25 05:01+0000\n"
+"POT-Creation-Date: 2020-12-13 10:28+0000\n"
 "PO-Revision-Date: 2020-06-16 09:55+0000\n"
 "Last-Translator: Thanh Long Hoàng <hoangthanhlong@gmail.com>\n"
 "Language-Team: Vietnamese (http://www.transifex.com/rosarior/mayan-edms/language/vi/)\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: vi\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:25 events.py:6 permissions.py:6 settings.py:7
+#: apps.py:25 events.py:6 permissions.py:6 settings.py:10
 msgid "Authentication"
 msgstr ""
 
@@ -88,19 +88,19 @@ msgstr ""
 msgid "Impersonate users"
 msgstr ""
 
-#: settings.py:11
+#: settings.py:15
 msgid ""
 "Controls the mechanism used to authenticated user. Options are: username, "
 "email"
 msgstr ""
 
-#: settings.py:18
+#: settings.py:22
 msgid ""
 "Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
 " in. Value is time in seconds."
 msgstr ""
 
-#: settings.py:25
+#: settings.py:29
 msgid ""
 "Remove the \"Forgot your password?\" link on the login form used to trigger "
 "the password reset."
