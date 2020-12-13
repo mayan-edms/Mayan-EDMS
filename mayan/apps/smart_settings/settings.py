@@ -11,7 +11,7 @@ from .literals import (
     DEFAULT_EMAIL_HOST_USER, DEFAULT_EMAIL_PORT, DEFAULT_EMAIL_TIMEOUT,
     DEFAULT_EMAIL_USE_SSL, DEFAULT_EMAIL_USE_TLS,
     DEFAULT_FILE_UPLOAD_MAX_MEMORY_SIZE, DEFAULT_LOGIN_URL,
-    DEFAULT_LOGIN_REDIRECT_URL, DEFAUTL_LOGOUT_REDIRECT_URL,
+    DEFAULT_LOGIN_REDIRECT_URL, DEFAULT_LOGOUT_REDIRECT_URL,
     DEFAULT_INTERNAL_IPS, DEFAULT_LANGUAGES, DEFAULT_LANGUAGE_CODE,
     DEFAULT_SESSION_COOKIE_NAME, DEFAULT_SESSION_ENGINE,
     DEFAULT_SECURE_PROXY_SSL_HEADER, DEFAULT_STATIC_URL,
@@ -155,14 +155,6 @@ setting_django_email_timeout = namespace.add_setting(
         'operations like the connection attempt.'
     )
 )
-setting_django_email_user_tls = namespace.add_setting(
-    default=DEFAULT_EMAIL_USE_TLS, global_name='EMAIL_USE_TLS', help_text=_(
-        'Default: False. Whether to use a TLS (secure) connection when '
-        'talking to the SMTP server. This is used for explicit TLS '
-        'connections, generally on port 587. If you are experiencing '
-        'hanging connections, see the implicit TLS setting EMAIL_USE_SSL.'
-    )
-)
 setting_django_email_user_ssl = namespace.add_setting(
     default=DEFAULT_EMAIL_USE_SSL, global_name='EMAIL_USE_SSL', help_text=_(
         'Default: False. Whether to use an implicit TLS (secure) connection '
@@ -171,6 +163,14 @@ setting_django_email_user_ssl = namespace.add_setting(
         'on port 465. If you are experiencing problems, see the explicit '
         'TLS setting EMAIL_USE_TLS. Note that EMAIL_USE_TLS/EMAIL_USE_SSL '
         'are mutually exclusive, so only set one of those settings to True.'
+    )
+)
+setting_django_email_user_tls = namespace.add_setting(
+    default=DEFAULT_EMAIL_USE_TLS, global_name='EMAIL_USE_TLS', help_text=_(
+        'Default: False. Whether to use a TLS (secure) connection when '
+        'talking to the SMTP server. This is used for explicit TLS '
+        'connections, generally on port 587. If you are experiencing '
+        'hanging connections, see the implicit TLS setting EMAIL_USE_SSL.'
     )
 )
 setting_django_file_upload_max_memory_size = namespace.add_setting(
@@ -204,7 +204,7 @@ setting_django_login_redirect_url = namespace.add_setting(
     )
 )
 setting_django_logout_redirect_url = namespace.add_setting(
-    default=DEFAUTL_LOGOUT_REDIRECT_URL, global_name='LOGOUT_REDIRECT_URL',
+    default=DEFAULT_LOGOUT_REDIRECT_URL, global_name='LOGOUT_REDIRECT_URL',
     help_text=_(
         'Default: None. The URL where requests are redirected after a user '
         'logs out using LogoutView (if the view doesn\'t get a next_page '
