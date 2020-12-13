@@ -1,3 +1,5 @@
+from django.db.models import Q
+
 from ..models import Comment
 
 from .literals import TEST_COMMENT_TEXT, TEST_COMMENT_TEXT_EDITED
@@ -15,9 +17,12 @@ class CommentAPIViewTestMixin:
             }
         )
 
-        self.test_document_comment = Comment.objects.exclude(
-            pk__in=pk_list
-        ).first()
+        try:
+            self.test_document_comment = Comment.objects.get(
+                ~Q(pk__in=pk_list)
+            )
+        except Comment.DoesNotExist:
+            self.test_document_comment = None
 
         return response
 
