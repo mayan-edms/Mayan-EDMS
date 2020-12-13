@@ -27,6 +27,8 @@ class TagAPIViewTestCase(
     def test_tag_create_view_no_permission(self):
         tag_count = Tag.objects.count()
 
+        self._clear_events()
+
         response = self._request_test_tag_create_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
@@ -40,12 +42,16 @@ class TagAPIViewTestCase(
 
         tag_count = Tag.objects.count()
 
+        self._clear_events()
+
         response = self._request_test_tag_create_api_view()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
         self.assertEqual(Tag.objects.count(), tag_count + 1)
 
         event = self._get_test_object_event()
+        self.assertEqual(event.actor, self.test_tag)
+        self.assertEqual(event.target, self.test_tag)
         self.assertEqual(event.verb, event_tag_created.id)
 
     def test_tag_delete_view_no_permission(self):
@@ -53,10 +59,15 @@ class TagAPIViewTestCase(
 
         tag_count = Tag.objects.count()
 
+        self._clear_events()
+
         response = self._request_test_tag_delete_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertEqual(Tag.objects.count(), tag_count)
+
+        event = self._get_test_object_event()
+        self.assertEqual(event, None)
 
     def test_tag_delete_view_with_access(self):
         self._create_test_tag()
@@ -65,16 +76,26 @@ class TagAPIViewTestCase(
 
         tag_count = Tag.objects.count()
 
+        self._clear_events()
+
         response = self._request_test_tag_delete_api_view()
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
         self.assertEqual(Tag.objects.count(), tag_count - 1)
 
+        event = self._get_test_object_event()
+        self.assertEqual(event, None)
+
     def test_tag_detail_api_view_no_permission(self):
         self._create_test_tag()
 
+        self._clear_events()
+
         response = self._request_test_tag_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        event = self._get_test_object_event()
+        self.assertEqual(event, None)
 
     def test_tag_detail_view_api_with_access(self):
         self._create_test_tag()
@@ -82,16 +103,23 @@ class TagAPIViewTestCase(
             obj=self.test_tag, permission=permission_tag_view
         )
 
+        self._clear_events()
+
         response = self._request_test_tag_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.assertEqual(response.data['label'], self.test_tag.label)
+
+        event = self._get_test_object_event()
+        self.assertEqual(event, None)
 
     def test_tag_edit_via_patch_no_permission(self):
         self._create_test_tag()
 
         tag_label = self.test_tag.label
         tag_color = self.test_tag.color
+
+        self._clear_events()
 
         response = self._request_test_tag_edit_api_view(verb='patch')
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
@@ -101,7 +129,7 @@ class TagAPIViewTestCase(
         self.assertEqual(self.test_tag.color, tag_color)
 
         event = self._get_test_object_event()
-        self.assertEqual(event.verb, event_tag_created.id)
+        self.assertEqual(event, None)
 
     def test_tag_edit_via_patch_with_access(self):
         self._create_test_tag()
@@ -111,6 +139,8 @@ class TagAPIViewTestCase(
         tag_label = self.test_tag.label
         tag_color = self.test_tag.color
 
+        self._clear_events()
+
         response = self._request_test_tag_edit_api_view(verb='patch')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
@@ -119,6 +149,8 @@ class TagAPIViewTestCase(
         self.assertNotEqual(self.test_tag.color, tag_color)
 
         event = self._get_test_object_event()
+        self.assertEqual(event.actor, self.test_tag)
+        self.assertEqual(event.target, self.test_tag)
         self.assertEqual(event.verb, event_tag_edited.id)
 
     def test_tag_edit_via_put_no_permission(self):
@@ -126,6 +158,8 @@ class TagAPIViewTestCase(
 
         tag_label = self.test_tag.label
         tag_color = self.test_tag.color
+
+        self._clear_events()
 
         response = self._request_test_tag_edit_api_view(verb='put')
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
@@ -135,7 +169,7 @@ class TagAPIViewTestCase(
         self.assertEqual(self.test_tag.color, tag_color)
 
         event = self._get_test_object_event()
-        self.assertEqual(event.verb, event_tag_created.id)
+        self.assertEqual(event, None)
 
     def test_tag_edit_via_put_with_access(self):
         self._create_test_tag()
@@ -145,6 +179,8 @@ class TagAPIViewTestCase(
         tag_label = self.test_tag.label
         tag_color = self.test_tag.color
 
+        self._clear_events()
+
         response = self._request_test_tag_edit_api_view(verb='put')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
@@ -153,13 +189,21 @@ class TagAPIViewTestCase(
         self.assertNotEqual(self.test_tag.color, tag_color)
 
         event = self._get_test_object_event()
+        self.assertEqual(event.actor, self.test_tag)
+        self.assertEqual(event.target, self.test_tag)
         self.assertEqual(event.verb, event_tag_edited.id)
 
     def test_tag_list_api_view_no_permission(self):
         self._create_test_tag()
+
+        self._clear_events()
+
         response = self._request_test_tag_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['count'], 0)
+
+        event = self._get_test_object_event()
+        self.assertEqual(event, None)
 
     def test_tag_list_api_view_with_access(self):
         self._create_test_tag()
@@ -167,12 +211,17 @@ class TagAPIViewTestCase(
             obj=self.test_tag, permission=permission_tag_view
         )
 
+        self._clear_events()
+
         response = self._request_test_tag_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             response.data['results'][0]['label'],
             self.test_tag.label
         )
+
+        event = self._get_test_object_event()
+        self.assertEqual(event, None)
 
 
 class TagDocumentAPIViewTestCase(
@@ -190,27 +239,42 @@ class TagDocumentAPIViewTestCase(
     def test_tag_document_list_view_no_permission(self):
         self.test_tag.documents.add(self.test_document)
 
+        self._clear_events()
+
         response = self._request_test_tag_document_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        event = self._get_test_object_event()
+        self.assertEqual(event, None)
 
     def test_tag_document_list_view_with_tag_access(self):
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(obj=self.test_tag, permission=permission_tag_view)
 
+        self._clear_events()
+
         response = self._request_test_tag_document_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.assertEqual(response.data['count'], 0)
 
+        event = self._get_test_object_event()
+        self.assertEqual(event, None)
+
     def test_tag_document_list_view_with_document_access(self):
         self.test_tag.documents.add(self.test_document)
+
+        self._clear_events()
 
         self.grant_access(
             obj=self.test_document, permission=permission_document_view
         )
         response = self._request_test_tag_document_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        event = self._get_test_object_event()
+        self.assertEqual(event, None)
 
     def test_tag_document_list_view_with_access(self):
         self.test_tag.documents.add(self.test_document)
@@ -219,6 +283,9 @@ class TagDocumentAPIViewTestCase(
         self.grant_access(
             obj=self.test_document, permission=permission_document_view
         )
+
+        self._clear_events()
+
         response = self._request_test_tag_document_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
@@ -227,40 +294,49 @@ class TagDocumentAPIViewTestCase(
             force_text(s=self.test_document.uuid)
         )
 
+        event = self._get_test_object_event()
+        self.assertEqual(event, None)
+
     def test_document_attach_tag_view_no_permission(self):
+        self._clear_events()
+
         response = self._request_test_document_attach_tag_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertTrue(self.test_tag not in self.test_document.tags.all())
 
         event = self._get_test_object_event()
-        self.assertEqual(event.verb, event_tag_created.id)
+        self.assertEqual(event, None)
 
     def test_document_attach_tag_view_with_document_access(self):
         self.grant_access(
             obj=self.test_document, permission=permission_tag_attach
         )
 
+        self._clear_events()
+
         response = self._request_test_document_attach_tag_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertTrue(self.test_tag not in self.test_document.tags.all())
 
         event = self._get_test_object_event()
-        self.assertEqual(event.verb, event_tag_created.id)
+        self.assertEqual(event, None)
 
     def test_document_attach_tag_view_with_tag_access(self):
         self.grant_access(
             obj=self.test_tag, permission=permission_tag_attach
         )
 
+        self._clear_events()
+
         response = self._request_test_document_attach_tag_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertTrue(self.test_tag not in self.test_document.tags.all())
 
         event = self._get_test_object_event()
-        self.assertEqual(event.verb, event_tag_created.id)
+        self.assertEqual(event, None)
 
     def test_document_attach_tag_view_with_full_access(self):
         self.grant_access(
@@ -270,19 +346,29 @@ class TagDocumentAPIViewTestCase(
             obj=self.test_tag, permission=permission_tag_attach
         )
 
+        self._clear_events()
+
         response = self._request_test_document_attach_tag_api_view()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
         self.assertTrue(self.test_tag in self.test_document.tags.all())
 
         event = self._get_test_object_event()
+        self.assertEqual(event.actor, self._test_case_user)
+        self.assertEqual(event.action_object, self.test_tag)
+        self.assertEqual(event.target, self.test_document)
         self.assertEqual(event.verb, event_tag_attach.id)
 
     def test_document_tag_detail_view_no_permission(self):
         self.test_tag.documents.add(self.test_document)
 
+        self._clear_events()
+
         response = self._request_test_document_tag_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        event = self._get_test_object_event()
+        self.assertEqual(event, None)
 
     def test_document_tag_detail_view_with_document_access(self):
         self.test_tag.documents.add(self.test_document)
@@ -291,16 +377,26 @@ class TagDocumentAPIViewTestCase(
             obj=self.test_document, permission=permission_document_view
         )
 
+        self._clear_events()
+
         response = self._request_test_document_tag_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        event = self._get_test_object_event()
+        self.assertEqual(event, None)
 
     def test_document_tag_detail_view_with_tag_access(self):
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(obj=self.test_tag, permission=permission_tag_view)
 
+        self._clear_events()
+
         response = self._request_test_document_tag_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        event = self._get_test_object_event()
+        self.assertEqual(event, None)
 
     def test_document_tag_detail_view_with_full_access(self):
         self.test_tag.documents.add(self.test_document)
@@ -310,15 +406,25 @@ class TagDocumentAPIViewTestCase(
             obj=self.test_document, permission=permission_tag_view
         )
 
+        self._clear_events()
+
         response = self._request_test_document_tag_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['label'], self.test_tag.label)
 
+        event = self._get_test_object_event()
+        self.assertEqual(event, None)
+
     def test_document_tag_list_view_no_permission(self):
         self.test_tag.documents.add(self.test_document)
 
+        self._clear_events()
+
         response = self._request_test_document_tag_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        event = self._get_test_object_event()
+        self.assertEqual(event, None)
 
     def test_document_tag_list_view_with_document_access(self):
         self.test_tag.documents.add(self.test_document)
@@ -327,17 +433,27 @@ class TagDocumentAPIViewTestCase(
             obj=self.test_document, permission=permission_tag_view
         )
 
+        self._clear_events()
+
         response = self._request_test_document_tag_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['count'], 0)
+
+        event = self._get_test_object_event()
+        self.assertEqual(event, None)
 
     def test_document_tag_list_view_with_tag_access(self):
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(obj=self.test_tag, permission=permission_tag_view)
 
+        self._clear_events()
+
         response = self._request_test_document_tag_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        event = self._get_test_object_event()
+        self.assertEqual(event, None)
 
     def test_document_tag_list_view_with_full_access(self):
         self.test_tag.documents.add(self.test_document)
@@ -347,12 +463,19 @@ class TagDocumentAPIViewTestCase(
         )
         self.grant_access(obj=self.test_tag, permission=permission_tag_view)
 
+        self._clear_events()
+
         response = self._request_test_document_tag_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['results'][0]['label'], self.test_tag.label)
 
+        event = self._get_test_object_event()
+        self.assertEqual(event, None)
+
     def test_document_tag_remove_view_no_permission(self):
         self.test_tag.documents.add(self.test_document)
+
+        self._clear_events()
 
         response = self._request_test_document_tag_remove_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
@@ -360,7 +483,7 @@ class TagDocumentAPIViewTestCase(
         self.assertTrue(self.test_tag in self.test_document.tags.all())
 
         event = self._get_test_object_event()
-        self.assertEqual(event.verb, event_tag_created.id)
+        self.assertEqual(event, None)
 
     def test_document_tag_remove_view_with_document_access(self):
         self.test_tag.documents.add(self.test_document)
@@ -369,26 +492,30 @@ class TagDocumentAPIViewTestCase(
             obj=self.test_document, permission=permission_tag_remove
         )
 
+        self._clear_events()
+
         response = self._request_test_document_tag_remove_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertTrue(self.test_tag in self.test_document.tags.all())
 
         event = self._get_test_object_event()
-        self.assertEqual(event.verb, event_tag_created.id)
+        self.assertEqual(event, None)
 
     def test_document_tag_remove_view_with_tag_access(self):
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(obj=self.test_tag, permission=permission_tag_remove)
 
+        self._clear_events()
+
         response = self._request_test_document_tag_remove_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertTrue(self.test_tag in self.test_document.tags.all())
 
         event = self._get_test_object_event()
-        self.assertEqual(event.verb, event_tag_created.id)
+        self.assertEqual(event, None)
 
     def test_document_tag_remove_view_with_full_access(self):
         self.test_tag.documents.add(self.test_document)
@@ -398,12 +525,17 @@ class TagDocumentAPIViewTestCase(
         )
         self.grant_access(obj=self.test_tag, permission=permission_tag_remove)
 
+        self._clear_events()
+
         response = self._request_test_document_tag_remove_api_view()
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
         self.assertFalse(self.test_tag in self.test_document.tags.all())
 
         event = self._get_test_object_event()
+        self.assertEqual(event.actor, self._test_case_user)
+        self.assertEqual(event.action_object, self.test_tag)
+        self.assertEqual(event.target, self.test_document)
         self.assertEqual(event.verb, event_tag_removed.id)
 
 
