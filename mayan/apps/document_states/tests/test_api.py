@@ -68,7 +68,7 @@ class DocumentWorkflowsAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
         self.assertFalse('workflow' in response.data)
 
-    def test_workflow_instance_detail_view_with_access(self):
+    def test_workflow_instance_detail_view_with_full_access(self):
         self._create_test_workflow(add_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
@@ -126,7 +126,7 @@ class DocumentWorkflowsAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertFalse('result' in response.data)
 
-    def test_workflow_instance_list_view_with_access(self):
+    def test_workflow_instance_list_view_with_full_access(self):
         self._create_test_workflow(add_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()

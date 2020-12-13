@@ -5,6 +5,7 @@ from django.template import RequestContext
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.acls.models import AccessControlList
 from mayan.apps.documents.models import Document
 from mayan.apps.views.forms import DynamicForm
 from mayan.apps.views.generics import FormView, SingleObjectListView
@@ -22,6 +23,7 @@ class WorkflowInstanceListView(ExternalObjectMixin, SingleObjectListView):
     external_object_permission = permission_workflow_view
     external_object_pk_url_kwarg = 'document_id'
     external_object_queryset = Document.valid
+    object_permission = permission_workflow_view
 
     def get_extra_context(self):
         return {
@@ -47,7 +49,7 @@ class WorkflowInstanceListView(ExternalObjectMixin, SingleObjectListView):
 class WorkflowInstanceDetailView(ExternalObjectMixin, SingleObjectListView):
     external_object_permission = permission_workflow_view
     external_object_pk_url_kwarg = 'workflow_instance_id'
-    external_object_queryset = WorkflowInstance.valid
+    object_permission = permission_workflow_view
 
     def get_extra_context(self):
         return {
@@ -73,6 +75,17 @@ class WorkflowInstanceDetailView(ExternalObjectMixin, SingleObjectListView):
             },
             'workflow_instance': self.external_object,
         }
+
+    def get_external_object_queryset(self):
+        document_queryset = AccessControlList.objects.restrict_queryset(
+            queryset=Document.valid.all(),
+            permission=permission_workflow_view,
+            user=self.request.user
+        )
+
+        return WorkflowInstance.objects.filter(
+            document_id__in=document_queryset.values('pk')
+        )
 
     def get_source_queryset(self):
         return self.external_object.log_entries.order_by('-datetime')

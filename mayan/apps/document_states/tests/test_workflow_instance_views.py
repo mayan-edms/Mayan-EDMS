@@ -29,9 +29,30 @@ class WorkflowInstanceTransitionViewTestCase(
         response = self._request_test_document_workflow_instance_list_view()
         self.assertEqual(response.status_code, 404)
 
-    def test_document_workflow_instance_list_view_with_access(self):
+    def test_document_workflow_instance_list_view_with_document_access(self):
         self.grant_access(
             obj=self.test_document, permission=permission_workflow_view
+        )
+
+        response = self._request_test_document_workflow_instance_list_view()
+        self.assertNotContains(
+            response=response, text=self.test_workflow.label, status_code=200
+        )
+
+    def test_document_workflow_instance_list_view_with_workflow_access(self):
+        self.grant_access(
+            obj=self.test_workflow, permission=permission_workflow_view
+        )
+
+        response = self._request_test_document_workflow_instance_list_view()
+        self.assertEqual(response.status_code, 404)
+
+    def test_document_workflow_instance_list_view_with_full_access(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_workflow_view
+        )
+        self.grant_access(
+            obj=self.test_workflow, permission=permission_workflow_view
         )
 
         response = self._request_test_document_workflow_instance_list_view()
@@ -39,9 +60,12 @@ class WorkflowInstanceTransitionViewTestCase(
             response=response, text=self.test_workflow.label, status_code=200
         )
 
-    def test_trashed_document_workflow_instance_list_view_with_access(self):
+    def test_trashed_document_workflow_instance_list_view_with_full_access(self):
         self.grant_access(
             obj=self.test_document, permission=permission_workflow_view
+        )
+        self.grant_access(
+            obj=self.test_workflow, permission=permission_workflow_view
         )
 
         self.test_document.delete()
@@ -53,9 +77,28 @@ class WorkflowInstanceTransitionViewTestCase(
         response = self._request_test_workflow_instance_detail_view()
         self.assertEqual(response.status_code, 404)
 
-    def test_workflow_instance_detail_view_with_access(self):
+    def test_workflow_instance_detail_view_with_document_access(self):
         self.grant_access(
             obj=self.test_document, permission=permission_workflow_view
+        )
+
+        response = self._request_test_workflow_instance_detail_view()
+        self.assertEqual(response.status_code, 404)
+
+    def test_workflow_instance_detail_view_with_workflow_access(self):
+        self.grant_access(
+            obj=self.test_workflow, permission=permission_workflow_view
+        )
+
+        response = self._request_test_workflow_instance_detail_view()
+        self.assertEqual(response.status_code, 404)
+
+    def test_workflow_instance_detail_view_with_full_access(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_workflow_view
+        )
+        self.grant_access(
+            obj=self.test_workflow, permission=permission_workflow_view
         )
 
         response = self._request_test_workflow_instance_detail_view()
@@ -63,9 +106,12 @@ class WorkflowInstanceTransitionViewTestCase(
             response=response, text=self.test_workflow.label, status_code=200
         )
 
-    def test_trashed_document_workflow_instance_detail_view_with_access(self):
+    def test_trashed_document_workflow_instance_detail_view_with_full_access(self):
         self.grant_access(
             obj=self.test_document, permission=permission_workflow_view
+        )
+        self.grant_access(
+            obj=self.test_workflow, permission=permission_workflow_view
         )
 
         self.test_document.delete()
