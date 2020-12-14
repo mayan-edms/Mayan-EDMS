@@ -42,6 +42,7 @@ apt-get update \
     gpgv \
     gnupg1 \
     graphviz \
+    libarchive-zip-perl \
     libfuse2 \
     libmagic1 \
     libmariadb3 \

@@ -32,6 +32,9 @@
 - Django's global_settings module instead of the settings module which is
   not ready at the time the default are computed.
 - Add API endpoints for the workflow transition fields model.
+- Add ``libarchive-zip-perl`` to the Docker image to allow EXIFTOOL to
+  retrieve Zip file metadata. Closes GitLab issue #918. Thanks to Enrico
+  Gargale (@egargale) for the request.
 
 3.5.3 (2020-11-11)
 ==================
