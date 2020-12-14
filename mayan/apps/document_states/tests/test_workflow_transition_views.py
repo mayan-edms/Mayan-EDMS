@@ -173,6 +173,12 @@ class WorkflowTransitionEventViewTestCase(
     WorkflowTestMixin, WorkflowTransitionEventViewTestMixin,
     GenericDocumentViewTestCase
 ):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_document_stub()
+
     def test_workflow_transition_event_list_view_no_permission(self):
         self._create_test_workflow()
         self._create_test_workflow_states()

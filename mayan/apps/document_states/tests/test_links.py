@@ -16,6 +16,12 @@ from .mixins import WorkflowTestMixin
 class WorkflowRuntimeProxyLinkTestCase(
     WorkflowTestMixin, GenericDocumentViewTestCase
 ):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_document_stub()
+
     def _resolve_test_link(self, test_object=None):
         self.add_test_view(test_object=test_object)
         context = self.get_test_view()

@@ -197,8 +197,11 @@ class SmartLinkDocumentViewTestCase(
     SmartLinkTestMixin, SmartLinkDocumentViewTestMixin,
     GenericDocumentViewTestCase
 ):
+    auto_upload_test_document = False
+
     def setUp(self):
         super(SmartLinkDocumentViewTestCase, self).setUp()
+        self._create_test_document_stub()
         self._create_test_smart_links(add_test_document_type=True)
 
     def test_document_smart_link_list_view_no_permission(self):

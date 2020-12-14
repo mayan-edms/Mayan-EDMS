@@ -9,9 +9,11 @@ class CabinetCopyTestCase(
     CabinetTestMixin, DocumentTestMixin, ObjectCopyTestMixin, BaseTestCase
 ):
     _test_copy_method = 'get_family'
+    auto_upload_test_document = False
 
     def setUp(self):
         super().setUp()
+        self._create_test_document_stub()
         self._create_test_cabinet()
         self._create_test_cabinet_child()
         self.test_cabinet.documents.add(self.test_document)

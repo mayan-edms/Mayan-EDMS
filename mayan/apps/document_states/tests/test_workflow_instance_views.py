@@ -22,7 +22,7 @@ class WorkflowInstanceTransitionViewTestCase(
         self._create_test_workflow(add_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transitions()
-        self._upload_test_document()
+        self._create_test_document_stub()
         self.test_workflow_instance = self.test_document.workflows.first()
 
     def test_document_workflow_instance_list_view_no_permission(self):
@@ -264,6 +264,9 @@ class WorkflowInstanceTransitionFieldViewTestCase(
     WorkflowTestMixin, WorkflowTransitionFieldTestMixin,
     WorkflowInstanceViewTestMixin, GenericDocumentViewTestCase
 ):
+
+    auto_upload_test_document = False
+
     def setUp(self):
         super().setUp()
         self._create_test_workflow(add_document_type=True)
@@ -274,7 +277,8 @@ class WorkflowInstanceTransitionFieldViewTestCase(
                 'widget': WIDGET_CLASS_TEXTAREA
             }
         )
-        self._upload_test_document()
+        self._create_test_document_stub()
+
         self.test_workflow_instance = self.test_document.workflows.first()
 
     def test_workflow_instance_transition_text_area_widget_execute_view_with_transition_access(self):

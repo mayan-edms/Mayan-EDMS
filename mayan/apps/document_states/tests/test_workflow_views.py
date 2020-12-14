@@ -31,7 +31,8 @@ class DocumentWorkflowTemplateViewTestCase(
         self.test_workflow.save()
 
     def test_document_single_workflow_launch_view_no_permission(self):
-        self._upload_test_document()
+        self._create_test_document_stub()
+
         workflow_instance_count = self.test_document.workflows.count()
 
         response = self._request_test_document_single_workflow_launch_view()
@@ -42,7 +43,8 @@ class DocumentWorkflowTemplateViewTestCase(
         )
 
     def test_document_single_workflow_launch_view_with_document_access(self):
-        self._upload_test_document()
+        self._create_test_document_stub()
+
         self.grant_access(
             obj=self.test_document, permission=permission_workflow_tools
         )
@@ -57,7 +59,8 @@ class DocumentWorkflowTemplateViewTestCase(
         )
 
     def test_document_single_workflow_launch_view_with_workflow_access(self):
-        self._upload_test_document()
+        self._create_test_document_stub()
+
         self.grant_access(
             obj=self.test_workflow, permission=permission_workflow_tools
         )
@@ -72,7 +75,8 @@ class DocumentWorkflowTemplateViewTestCase(
         )
 
     def test_document_single_workflow_launch_view_with_full_access(self):
-        self._upload_test_document()
+        self._create_test_document_stub()
+
         self.grant_access(
             obj=self.test_document, permission=permission_workflow_tools
         )
@@ -90,7 +94,8 @@ class DocumentWorkflowTemplateViewTestCase(
         )
 
     def test_trashed_document_single_workflow_launch_view_with_full_access(self):
-        self._upload_test_document()
+        self._create_test_document_stub()
+
         self.grant_access(
             obj=self.test_document, permission=permission_workflow_tools
         )
@@ -210,6 +215,12 @@ class WorkflowViewTestCase(
 class WorkflowTemplateDocumentViewTestCase(
     WorkflowTestMixin, WorkflowViewTestMixin, GenericDocumentViewTestCase
 ):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_document_stub()
+
     def test_workflows_launch_view_no_permission(self):
         self._create_test_workflow(add_document_type=True)
         self._create_test_workflow_states()
@@ -266,6 +277,12 @@ class WorkflowTemplateDocumentViewTestCase(
 class WorkflowToolViewTestCase(
     WorkflowTestMixin, WorkflowToolViewTestMixin, GenericDocumentViewTestCase
 ):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_document_stub()
+
     def test_tool_launch_workflows_view_no_permission(self):
         self._create_test_workflow(add_document_type=True)
         self._create_test_workflow_states()

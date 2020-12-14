@@ -22,10 +22,12 @@ class CommentAPIViewTestCase(
     EventTestCaseMixin, BaseAPITestCase
 ):
     _test_event_object_name = 'test_document_comment'
+    auto_upload_test_document = False
 
     def setUp(self):
         super().setUp()
         self._create_test_user()
+        self._create_test_document_stub()
 
     def test_comment_create_api_view_no_permission(self):
         self._clear_events()

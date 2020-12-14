@@ -13,9 +13,12 @@ class DocumentCommentViewTestCase(
     DocumentCommentViewTestMixin, DocumentCommentTestMixin,
     GenericDocumentViewTestCase
 ):
+    auto_upload_test_document = False
+
     def setUp(self):
         super().setUp()
         self._create_test_user()
+        self._create_test_document_stub()
 
     def test_comment_create_view_no_permission(self):
         comment_count = Comment.objects.count()

@@ -71,7 +71,8 @@ class HTTPWorkflowActionTestCase(
 
     @mock.patch('requests.sessions.Session.get_adapter')
     def test_http_post_action_payload_template(self, mock_object):
-        self._upload_test_document()
+        self._create_test_document_stub()
+
         mock_object.side_effect = request_method_factory(test_case=self)
 
         action = HTTPAction(
@@ -110,7 +111,8 @@ class HTTPWorkflowActionTestCase(
 
     @mock.patch('requests.sessions.Session.get_adapter')
     def test_http_post_action_headers_template(self, mock_object):
-        self._upload_test_document()
+        self._create_test_document_stub()
+
         mock_object.side_effect = request_method_factory(test_case=self)
 
         action = HTTPAction(
@@ -247,7 +249,7 @@ class DocumentPropertiesEditActionTestCase(
     auto_upload_test_document = False
 
     def test_document_properties_edit_action_field_literals(self):
-        self._upload_test_document()
+        self._create_test_document_stub()
 
         action = DocumentPropertiesEditAction(
             form_data=TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_TEXT_DATA
@@ -267,7 +269,7 @@ class DocumentPropertiesEditActionTestCase(
         )
 
     def test_document_properties_edit_action_field_templates(self):
-        self._upload_test_document()
+        self._create_test_document_stub()
 
         label = self.test_document.label
 
@@ -299,7 +301,7 @@ class DocumentPropertiesEditActionTestCase(
         )
         self.test_workflow.document_types.add(self.test_document_type)
 
-        self._upload_test_document()
+        self._create_test_document_stub()
 
         test_workflow_instance = self.test_document.workflows.first()
         test_workflow_instance.do_transition(transition=self.test_workflow_transition)
@@ -323,7 +325,7 @@ class DocumentWorkflowLaunchActionTestCase(
         self._create_test_workflow(add_document_type=True, auto_launch=False)
         self._create_test_workflow_state()
 
-        self._upload_test_document()
+        self._create_test_document_stub()
 
         action = DocumentWorkflowLaunchAction(
             form_data={'workflows': Workflow.objects.all()}

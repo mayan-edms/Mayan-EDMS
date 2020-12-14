@@ -39,8 +39,11 @@ class WorkflowTaskTestCaseMixin:
 class WorkflowTaskTestCase(
     WorkflowTaskTestCaseMixin, WorkflowTestMixin, GenericDocumentTestCase
 ):
+    auto_upload_test_document = False
+
     def setUp(self):
         super().setUp()
+        self._create_test_document_stub()
         self._create_test_workflow(add_document_type=True)
         self._create_test_workflow_state()
 

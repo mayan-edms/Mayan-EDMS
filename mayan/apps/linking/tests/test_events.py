@@ -12,7 +12,10 @@ from ..events import event_smart_link_created, event_smart_link_edited
 from .mixins import SmartLinkTestMixin, SmartLinkViewTestMixin
 
 
-class SmartLinkTemplateEventsTestCase(DocumentTestMixin, SmartLinkTestMixin, SmartLinkViewTestMixin, GenericViewTestCase):
+class SmartLinkTemplateEventsTestCase(
+    DocumentTestMixin, SmartLinkTestMixin, SmartLinkViewTestMixin,
+    GenericViewTestCase
+):
     auto_upload_test_document = False
 
     def test_smart_link_create_event(self):

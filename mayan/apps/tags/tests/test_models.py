@@ -5,6 +5,12 @@ from .mixins import TagTestMixin
 
 
 class TagDocumentTestCase(DocumentTestMixin, TagTestMixin, BaseTestCase):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_document_stub()
+
     def test_document_addition(self):
         self._create_test_tag()
 
@@ -22,7 +28,7 @@ class TagDocumentTestCase(DocumentTestMixin, TagTestMixin, BaseTestCase):
         )
 
 
-class TagModuelTestCase(TagTestMixin, BaseTestCase):
+class TagModuleTestCase(TagTestMixin, BaseTestCase):
     def test_method_get_absolute_url(self):
         self._create_test_tag()
 

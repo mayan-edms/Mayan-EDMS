@@ -233,8 +233,8 @@ class TagDocumentAPIViewTestCase(
 
     def setUp(self):
         super().setUp()
-        self._upload_test_document()
         self._create_test_tag()
+        self._create_test_document_stub()
 
     def test_tag_document_list_view_no_permission(self):
         self.test_tag.documents.add(self.test_document)
@@ -537,12 +537,3 @@ class TagDocumentAPIViewTestCase(
         self.assertEqual(event.action_object, self.test_tag)
         self.assertEqual(event.target, self.test_document)
         self.assertEqual(event.verb, event_tag_removed.id)
-
-
-class TagDocumentStubAPIViewTestCase(TagDocumentAPIViewTestCase):
-    auto_upload_test_document = False
-
-    def setUp(self):
-        super().setUp()
-        self._create_test_document_stub()
-        self.test_document = self.test_document_stub

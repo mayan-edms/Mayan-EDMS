@@ -24,10 +24,13 @@ DOCUMENT_METADATA_REMOVE_ACTION_CLASS_PATH = 'mayan.apps.metadata.workflow_actio
 
 
 class DocumentMetadataActionTestCase(
-    DocumentMetadataMixin, MetadataTypeTestMixin, ActionTestCase
+    DocumentMetadataMixin, MetadataTypeTestMixin
 ):
+    auto_upload_test_document = False
+
     def setUp(self):
         super().setUp()
+        self._create_test_document_stub()
         self._create_test_metadata_type()
         self.test_document_type.metadata.create(
             metadata_type=self.test_metadata_type
@@ -92,8 +95,11 @@ class DocumentMetadataActionViewTestCase(
     WorkflowStateActionViewTestMixin, WorkflowTestMixin,
     GenericDocumentViewTestCase
 ):
+    auto_upload_test_document = False
+
     def setUp(self):
         super().setUp()
+        self._create_test_document_stub()
         self._create_test_workflow()
         self._create_test_workflow_state()
         self._create_test_metadata_type()

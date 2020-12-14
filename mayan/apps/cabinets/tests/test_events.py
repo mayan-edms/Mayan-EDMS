@@ -76,6 +76,12 @@ class CabinetsEventsTestCase(
 class CabinetDocumentsEventsTestCase(
     CabinetTestMixin, CabinetViewTestMixin, GenericDocumentTestCase
 ):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_document_stub()
+
     def test_document_cabinet_add_event(self):
         self._create_test_cabinet()
 

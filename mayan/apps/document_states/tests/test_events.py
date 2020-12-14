@@ -9,7 +9,9 @@ from ..permissions import permission_workflow_create, permission_workflow_edit
 from .mixins import WorkflowTestMixin, WorkflowViewTestMixin
 
 
-class WorkflowEventsTestCase(WorkflowTestMixin, WorkflowViewTestMixin, GenericViewTestCase):
+class WorkflowEventsTestCase(
+    WorkflowTestMixin, WorkflowViewTestMixin, GenericViewTestCase
+):
     def test_workflow_create_event_no_permission(self):
         action_count = Action.objects.count()
 

@@ -165,8 +165,11 @@ class CabinetChildViewTestCase(
 class CabinetDocumentViewTestCase(
     CabinetTestMixin, CabinetViewTestMixin, GenericDocumentViewTestCase
 ):
+    auto_upload_test_document = False
+
     def setUp(self):
         super().setUp()
+        self._create_test_document_stub()
         self._create_test_cabinet()
 
     def test_cabinet_add_document_view_no_permission(self):
@@ -420,8 +423,11 @@ class DocumentCabinetViewTestCase(
     CabinetTestMixin, DocumentCabinetViewTestMixin,
     GenericDocumentViewTestCase
 ):
+    auto_upload_test_document = False
+
     def setUp(self):
         super().setUp()
+        self._create_test_document_stub()
         self._create_test_cabinet()
 
     def test_document_cabinet_list_view_no_permission(self):

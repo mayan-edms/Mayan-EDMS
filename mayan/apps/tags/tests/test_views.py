@@ -17,6 +17,12 @@ from .mixins import DocumentTagViewTestMixin, TagTestMixin, TagViewTestMixin
 class DocumentTagViewTestCase(
     DocumentTagViewTestMixin, TagTestMixin, GenericDocumentViewTestCase
 ):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_document_stub()
+
     def test_document_tags_list_no_permission(self):
         self._create_test_tag(add_test_document=True)
 
