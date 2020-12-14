@@ -13,6 +13,8 @@ Docker
 Added the ``libarchive-zip-perl`` to the Docker image to allow EXIFTOOL to
 retrieve Zip file metadata.
 
+Updated the Docker image's Debian version from version 10.5 to 10.7.
+
 
 Documents
 ^^^^^^^^^
