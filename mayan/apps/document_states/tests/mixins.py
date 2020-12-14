@@ -616,6 +616,60 @@ class WorkflowTransitionAPIViewTestMixin:
         )
 
 
+class WorkflowTransitionFieldAPIViewTestMixin:
+    def _request_test_workflow_transition_field_create_api_view(self):
+        return self.post(
+            viewname='rest_api:workflowtransitionfield-list', kwargs={
+                'pk': self.test_workflow.pk,
+                'workflow_transition_id': self.test_workflow_transition.pk,
+            }, data={
+                'field_type': TEST_WORKFLOW_TRANSITION_FIELD_TYPE,
+                'name': TEST_WORKFLOW_TRANSITION_FIELD_NAME,
+                'label': TEST_WORKFLOW_TRANSITION_FIELD_LABEL,
+                'help_text': TEST_WORKFLOW_TRANSITION_FIELD_HELP_TEXT
+            }
+        )
+
+    def _request_test_workflow_transition_field_delete_api_view(self):
+        return self.delete(
+            viewname='rest_api:workflowtransitionfield-detail', kwargs={
+                'pk': self.test_workflow.pk,
+                'workflow_transition_id': self.test_workflow_transition.pk,
+                'workflow_transition_field_id': self.test_workflow_transition_field.pk,
+            }
+        )
+
+    def _request_test_workflow_transition_field_detail_api_view(self):
+        return self.get(
+            viewname='rest_api:workflowtransitionfield-detail', kwargs={
+                'pk': self.test_workflow.pk,
+                'workflow_transition_id': self.test_workflow_transition.pk,
+                'workflow_transition_field_id': self.test_workflow_transition_field.pk,
+            }
+        )
+
+    def _request_test_workflow_transition_field_edit_via_patch_api_view(self):
+        return self.patch(
+            viewname='rest_api:workflowtransitionfield-detail', kwargs={
+                'pk': self.test_workflow.pk,
+                'workflow_transition_id': self.test_workflow_transition.pk,
+                'workflow_transition_field_id': self.test_workflow_transition_field.pk,
+            }, data={
+                'label': '{} edited'.format(
+                    self.test_workflow_transition_field
+                )
+            }
+        )
+
+    def _request_test_workflow_transition_field_list_api_view(self):
+        return self.get(
+            viewname='rest_api:workflowtransitionfield-list', kwargs={
+                'pk': self.test_workflow.pk,
+                'workflow_transition_id': self.test_workflow_transition.pk,
+            }
+        )
+
+
 class WorkflowTransitionFieldTestMixin:
     def _create_test_workflow_transition_field(self, extra_data=None):
         kwargs = {

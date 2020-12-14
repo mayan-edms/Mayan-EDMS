@@ -31,6 +31,7 @@
   metadata and tags apps.
 - Django's global_settings module instead of the settings module which is
   not ready at the time the default are computed.
+- Add API endpoints for the workflow transition fields model.
 
 3.5.3 (2020-11-11)
 ==================
