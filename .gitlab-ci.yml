@@ -259,7 +259,6 @@ job_test_upgrade_postgres:
       - /var/cache/apt/archives/
   before_script:
     - set -a && . ./config.env && set +a
-    - echo "Acquire::http { Proxy \"http://192.168.11.8:3142\"; };" > /etc/apt/apt.conf.d/01proxy
     - echo "deb http://deb.debian.org/debian buster-backports main contrib non-free" >> /etc/apt/sources.list
     - echo "deb-src http://deb.debian.org/debian buster-backports main contrib non-free" >> /etc/apt/sources.list
     - apt-get update
