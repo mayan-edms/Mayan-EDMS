@@ -1,4 +1,4 @@
-3.5.4 (2020-12-XX)
+3.5.4 (2020-12-14)
 ==================
 - Document stubs without a label will now display their ID as the label.
   This allows documents without files or versions to be accessible via the
