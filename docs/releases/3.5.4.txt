@@ -7,6 +7,13 @@ Changes
 -------
 
 
+Docker
+^^^^^^
+
+Added the ``libarchive-zip-perl`` to the Docker image to allow EXIFTOOL to
+retrieve Zip file metadata.
+
+
 Documents
 ^^^^^^^^^
 
@@ -276,6 +283,7 @@ Issues closed
 
 - :gitlab-issue:`852` Turn magic number/orphan values into literals
 - :gitlab-issue:`910` Documents in "Bin" still being shown in Workflows
+- :gitlab-issue:`918` Docker Install - EXIFTOOL needs libarchive-zip-perl for ZIP file metadata.
 - :gitlab-issue:`920` If you trash documents, you can still see them in "All documents".
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
