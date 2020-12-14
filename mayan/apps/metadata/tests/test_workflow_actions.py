@@ -1,5 +1,4 @@
 from mayan.apps.document_states.permissions import permission_workflow_edit
-from mayan.apps.document_states.tests.base import ActionTestCase
 from mayan.apps.document_states.tests.mixins import (
     WorkflowTestMixin, WorkflowStateActionViewTestMixin
 )
