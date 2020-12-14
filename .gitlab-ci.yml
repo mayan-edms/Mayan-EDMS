@@ -1,17 +1,17 @@
 stages:
-  - test
-  - build_python
-  - build_docker
-  - build_documentation
-  - push_python
-  - push_docker
-  - push_documentation
-  - deploy
+  - stage_test
+  - stage_build_python
+  - stage_build_docker
+  - stage_build_documentation
+  - stage_push_python
+  - stage_push_docker
+  - stage_push_documentation
+  - stage_deploy
 
 # Docker
 
 job_docker_build:
-  stage: build_docker
+  stage: stage_build_docker
   image: docker:latest
   services:
     - docker:dind
@@ -37,7 +37,7 @@ job_docker_build:
     POSTGRES_PASSWORD: "postgres"
 
 job_docker_push:
-  stage: push_docker
+  stage: stage_push_docker
   image: docker:latest
   services:
     - docker:dind
@@ -66,7 +66,7 @@ job_docker_push:
     - releases/docker
 
 job_docker_push_minor:
-  stage: push_docker
+  stage: stage_push_docker
   image: docker:latest
   services:
     - docker:dind
@@ -86,7 +86,7 @@ job_docker_push_minor:
     - releases/docker
 
 job_docker_nightly:
-  stage: build_docker
+  stage: stage_build_docker
   image: docker:latest
   services:
     - docker:dind
@@ -101,20 +101,21 @@ job_docker_nightly:
     - staging
 
 # Documentation
+
 job_documentation_build:
-  stage: build_documentation
-  image: ubuntu:19.10
+  stage: stage_build_documentation
+  image: debian:10.7-slim
   artifacts:
     expire_in: 2 hr
     paths:
     - docs
   before_script:
     - apt-get -qq update
-    - apt-get install -qq enchant make python-dev python-virtualenv python3-dev
-    - virtualenv venv -p /usr/bin/python3
+    - apt-get install -qq enchant make python3-venv python3-dev
+    - python3 -m venv venv
     - . venv/bin/activate
   script:
-    - pip install -r requirements/documentation.txt
+    - pip install --requirement requirements/documentation.txt
     - cd docs
     - make html
   only:
@@ -122,14 +123,14 @@ job_documentation_build:
     - releases/documentation
 
 job_documentation_push:
-  stage: push_documentation
-  image: ubuntu:19.10
+  stage: stage_push_documentation
+  image: debian:10.7-slim
   before_script:
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
     - echo "$DOCUMENTATION_SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
-    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client rsync -y )'
+    - 'which ssh-agent || ( apt-get update --yes && apt-get install -qq openssh-client rsync --yes )'
     - eval $(ssh-agent -s)
     - echo "$DOCUMENTATION_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
   script:
@@ -140,20 +141,21 @@ job_documentation_push:
     - releases/documentation
 
 # Python
+
 job_build_python:
-  stage: build_python
-  image: ubuntu:19.10
+  stage: stage_build_python
+  image: debian:10.7-slim
   artifacts:
     expire_in: 2 hr
     paths:
     - dist
   before_script:
     - apt-get -qq update
-    - apt-get install -qq make python-dev python-virtualenv python3-dev
-    - virtualenv venv -p /usr/bin/python3
+    - apt-get install -qq make python3-venv python3-dev
+    - python3 -m venv venv
     - . venv/bin/activate
   script:
-    - pip install -r requirements/build.txt
+    - pip install --requirement requirements/build.txt
     - make python-wheel
   only:
     - releases/all
@@ -161,15 +163,15 @@ job_build_python:
     - releases/python
 
 job_push_python:
-  stage: push_python
-  image: ubuntu:19.10
+  stage: stage_push_python
+  image: debian:10.7-slim
   before_script:
     - apt-get -qq update
-    - apt-get install -qq make python-dev python-virtualenv python3-dev
-    - virtualenv venv -p /usr/bin/python3
+    - apt-get install -qq make python3-venv python3-dev
+    - python3 -m venv venv
     - . venv/bin/activate
   script:
-    - pip install -r requirements/build.txt
+    - pip install --requirement requirements/build.txt
     - echo "$PYPIRC" > ~/.pypirc
     - twine upload dist/* -r pypi
   only:
@@ -178,9 +180,10 @@ job_push_python:
     - releases/python
 
 # Test upgrade from the latest public version to the local version
-.test_upgrade_base: &test_upgrade_base
-  stage: test
-  image: ubuntu:19.10
+
+.job_test_upgrade_base: &job_test_upgrade_base
+  stage: stage_test
+  image: debian:10.7-slim
   cache:
     paths:
       - ~/.cache/pip/
@@ -188,13 +191,12 @@ job_push_python:
   before_script:
     - set -a && . ./config.env && set +a
     - apt-get -qq update
-    - apt-get install -qq curl exiftool gcc ghostscript gnupg1 libjpeg-dev libmagic1 libpng-dev libtiff-dev make poppler-utils python-dev python-virtualenv python3-dev tesseract-ocr
-    - virtualenv venv -p /usr/bin/python3
+    - apt-get install -qq curl exiftool gcc ghostscript gnupg1 libjpeg-dev libmagic1 libpng-dev libtiff-dev make poppler-utils python3-venv python3-dev tesseract-ocr
+    - python3 -m venv venv
     - . venv/bin/activate
     - DOCKER_VERSION=`cat docker/rootfs/version`
     - pip install "mayan-edms<$DOCKER_VERSION"
-    - pip install -r requirements/build.txt -r requirements/testing-base.txt
-    - pip install django-test-without-migrations==0.6
+    - pip install --requirement requirements/build.txt --requirement requirements/testing-base.txt --requirement requirements/build.txt
     - make python-wheel
   only:
     - releases/all
@@ -203,16 +205,16 @@ job_push_python:
     - releases/python
     - staging
 
-test_upgrade_sqlite:
-  <<: *test_upgrade_base
+job_test_upgrade_sqlite:
+  <<: *job_test_upgrade_base
   script:
     - . venv/bin/activate
     - mayan-edms.py initialsetup --settings=mayan.settings.testing.gitlab-ci
     - pip install dist/mayan_edms-*.whl
     - mayan-edms.py performupgrade --settings=mayan.settings.testing.gitlab-ci
 
-test_upgrade_mysql:
-  <<: *test_upgrade_base
+job_test_upgrade_mysql:
+  <<: *job_test_upgrade_base
   variables:
     MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     MYSQL_DATABASE: "mayan_edms"
@@ -229,8 +231,8 @@ test_upgrade_mysql:
   tags:
     - mysql
 
-test_upgrade_postgres:
-  <<: *test_upgrade_base
+job_test_upgrade_postgres:
+  <<: *job_test_upgrade_base
   variables:
     POSTGRES_DB: "mayan_edms"
     POSTGRES_PASSWORD: "postgres"
@@ -246,30 +248,35 @@ test_upgrade_postgres:
   tags:
     - postgres
 
-
 # Run the test suit
-.test_base: &test_base
-  stage: test
-  image: ubuntu:19.10
+
+.job_test_base: &job_test_base
+  stage: stage_test
+  image: debian:10.7-slim
   cache:
     paths:
       - ~/.cache/pip/
       - /var/cache/apt/archives/
   before_script:
     - set -a && . ./config.env && set +a
-    - apt-get -qq update
-    - apt-get install -qq curl exiftool firefox-geckodriver gcc ghostscript gnupg1 graphviz libfuse2 libjpeg-dev libmagic1 libpng-dev libtiff-dev libreoffice make poppler-utils python-dev python-virtualenv python3-dev sane-utils tesseract-ocr tesseract-ocr-deu
-    - virtualenv venv -p /usr/bin/python3
+    - echo "Acquire::http { Proxy \"http://192.168.11.8:3142\"; };" > /etc/apt/apt.conf.d/01proxy
+    - echo "deb http://deb.debian.org/debian buster-backports main contrib non-free" >> /etc/apt/sources.list
+    - echo "deb-src http://deb.debian.org/debian buster-backports main contrib non-free" >> /etc/apt/sources.list
+    - apt-get update
+    - apt-get install --yes --no-install-recommends --target-release buster-backports -qq libreoffice-calc-nogui libreoffice-draw-nogui libreoffice-impress-nogui libreoffice-math-nogui libreoffice-writer-nogui
+    - apt-get install --yes --no-install-recommends -qq curl exiftool gcc ghostscript gnupg1 graphviz libfuse2 libjpeg-dev libmagic1 libpng-dev libtiff-dev make poppler-utils python3-venv python3-dev sane-utils tesseract-ocr tesseract-ocr-deu
+    - python3 -m venv venv
     - . venv/bin/activate
-    - pip install -r requirements.txt -r requirements/testing-base.txt
+    - pip install wheel
+    - pip install --requirement requirements.txt --requirement requirements/testing-base.txt --requirement requirements/build.txt
   only:
     - releases/all
     - releases/docker
     - releases/python
     - staging
 
-test-postgres:
-  <<: *test_base
+job_test_postgres:
+  <<: *job_test_base
   variables:
     POSTGRES_DB: "mayan_edms"
     POSTGRES_PASSWORD: "postgres"
@@ -284,8 +291,8 @@ test-postgres:
   tags:
     - postgres
 
-test-sqlite:
-  <<: *test_base
+job_test_sqlite:
+  <<: *job_test_base
   script:
     - . venv/bin/activate
     - python manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci --skip-migrations
@@ -293,10 +300,11 @@ test-sqlite:
     - make test-all-migrations
 
 # Deploy
-deploy_demo:
+
+job_deploy_demo:
   environment:
     name: demo
-  stage: deploy
+  stage: stage_deploy
   before_script:
     - mkdir -p ~/.ssh
     - echo "${DEMO_SSH_KNOWN_HOST}" > ~/.ssh/known_hosts
@@ -308,10 +316,10 @@ deploy_demo:
     - ssh root@$DEMO_IP_ADDRESS "DELETE_VOLUMES=true ./docker.sh"
   when: manual
 
-deploy_staging:
+job_deploy_staging:
   environment:
     name: staging
-  stage: deploy
+  stage: stage_deploy
   before_script:
     - mkdir -p ~/.ssh
     - echo "${STAGING_SSH_KNOWN_HOST}" > ~/.ssh/known_hosts

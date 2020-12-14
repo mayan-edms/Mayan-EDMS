@@ -97,6 +97,8 @@ Test that do not rely on document content were updated to use document
 stubs instead. This results in a test suit speed up of 20% and overall lower
 memory usage.
 
+Switched the base image of the GitLab CI file from Ubuntu 19.10 to
+Debian 10.7. The same base image as the Docker image.
 
 Removals
 --------

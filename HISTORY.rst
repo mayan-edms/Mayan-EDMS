@@ -36,6 +36,8 @@
   retrieve Zip file metadata. Closes GitLab issue #918. Thanks to Enrico
   Gargale (@egargale) for the request.
 - Update Docker image from version debian:10-5 to debian:10-7.
+- Switch the base image of the GitLab CI file from ubuntu 19.10 to
+  debian:10-7.
 
 3.5.3 (2020-11-11)
 ==================
