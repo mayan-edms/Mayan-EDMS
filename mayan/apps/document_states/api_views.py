@@ -588,10 +588,10 @@ class APIWorkflowInstanceListView(generics.ListAPIView):
     """
     get: Returns a list of all the document workflows.
     """
-    serializer_class = WorkflowInstanceSerializer
     mayan_object_permissions = {
         'GET': (permission_workflow_view,),
     }
+    serializer_class = WorkflowInstanceSerializer
 
     def get_document(self):
         document = get_object_or_404(klass=Document, pk=self.kwargs['pk'])
