@@ -23,8 +23,8 @@ Documents stubs without a label will now display their ID as the label.
 This allows documents without versions to be accessible via the user
 interface.
 
-The ``misc_models.py`` models module into different modules with more
-descriptive names.
+The ``misc_models.py`` models module was split into different modules
+with more descriptive names.
 
 There is now stricter filtering and permission checking for duplicated
 documents. Users now need the document view permission for all duplicated
@@ -42,8 +42,8 @@ Events
 The event list for the user event type subscription list is now sorted by
 namespace label and event type label.
 
-Icons were added to the "mark notification" as seen and "mark all
-notification" asseen links.
+Icons were added to the "mark notification as seen" and "mark all
+notification as seen" links.
 
 
 REST API
@@ -57,7 +57,7 @@ extending.
 Settings
 ^^^^^^^^
 
-Django settings exposed from inside Mayan EDMS now use Djanog's
+Django settings exposed from inside Mayan EDMS now use Django's
 ``global_settings`` module instead of the ``settings`` module which is not
 ready at the time the default are computed.
 
