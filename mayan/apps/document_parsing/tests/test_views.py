@@ -170,7 +170,7 @@ class DocumentContentViewsTestCase(
         response = self._request_test_document_parsing_submit_view()
         self.assertEqual(response.status_code, 302)
 
-    def test_dtrashed_ocument_parsing_submit_view_with_access(self):
+    def test_trashed_ocument_parsing_submit_view_with_access(self):
         self.grant_access(
             obj=self.test_document, permission=permission_parse_document
         )
