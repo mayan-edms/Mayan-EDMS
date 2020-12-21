@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# WM Shinkada <shinkadawasim@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-13 10:28+0000\n"
-"PO-Revision-Date: 2019-04-27 22:53+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-12-21 05:16+0000\n"
+"PO-Revision-Date: 2020-12-20 21:32+0000\n"
+"Last-Translator: WM Shinkada <shinkadawasim@gmail.com>\n"
 "Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,11 +21,11 @@ msgstr ""
 
 #: apps.py:27 links.py:31 links.py:36 links.py:41 permissions.py:5 views.py:33
 msgid "Events"
-msgstr ""
+msgstr "الأحداث"
 
 #: apps.py:39 apps.py:67
 msgid "Date and time"
-msgstr ""
+msgstr "الوقت والتاريخ"
 
 #: apps.py:42 apps.py:70
 msgid "Actor"
@@ -32,11 +33,11 @@ msgstr ""
 
 #: apps.py:46 apps.py:75
 msgid "Event"
-msgstr ""
+msgstr "حدث"
 
 #: apps.py:50 apps.py:80
 msgid "Target"
-msgstr ""
+msgstr "المستهدف"
 
 #: apps.py:54
 msgid "Action object"
@@ -61,7 +62,7 @@ msgstr ""
 
 #: forms.py:18 forms.py:75
 msgid "Subscription"
-msgstr ""
+msgstr "متابعه"
 
 #: forms.py:20 forms.py:77
 msgid "No"
@@ -73,11 +74,11 @@ msgstr ""
 
 #: html_widgets.py:57
 msgid "System"
-msgstr ""
+msgstr "النظام"
 
 #: links.py:27
 msgid "My events"
-msgstr ""
+msgstr "الأحداث الخاص بي"
 
 #: links.py:45 models.py:63 views.py:74
 msgid "Event subscriptions"
@@ -101,11 +102,11 @@ msgstr "اسم"
 
 #: models.py:26
 msgid "Stored event type"
-msgstr ""
+msgstr "نوع الحدث المخزن"
 
 #: models.py:27
 msgid "Stored event types"
-msgstr ""
+msgstr "أنواع الحدث المخزن"
 
 #: models.py:52 models.py:78 models.py:109
 msgid "User"
@@ -121,19 +122,19 @@ msgstr ""
 
 #: models.py:82
 msgid "Action"
-msgstr ""
+msgstr "إجراء"
 
 #: models.py:84
 msgid "Read"
-msgstr ""
+msgstr "قراءه"
 
 #: models.py:90
 msgid "Notification"
-msgstr ""
+msgstr "تنبيه"
 
 #: models.py:91 views.py:132
 msgid "Notifications"
-msgstr ""
+msgstr "التنبيهات"
 
 #: models.py:119
 msgid "Object event subscription"
@@ -162,7 +163,7 @@ msgstr ""
 
 #: views.py:130
 msgid "There are no notifications"
-msgstr ""
+msgstr "لا توجد تنبيهات"
 
 #: views.py:179
 msgid ""

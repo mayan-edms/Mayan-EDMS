@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-13 10:28+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-12-21 05:16+0000\n"
+"PO-Revision-Date: 2020-12-20 22:56+0000\n"
+"Last-Translator: WM Shinkada <shinkadawasim@gmail.com>\n"
 "Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -38,11 +38,11 @@ msgstr ""
 
 #: apps.py:133
 msgid "Date and time"
-msgstr ""
+msgstr "الوقت والتاريخ"
 
 #: apps.py:136 models.py:72
 msgid "Result"
-msgstr ""
+msgstr "النتيجة"
 
 #: backends/tesseract.py:89
 msgid "Tesseract OCR not found."
@@ -139,7 +139,7 @@ msgstr ""
 
 #: models.py:70
 msgid "Date time submitted"
-msgstr ""
+msgstr "تاريخ و وقت التنفيد"
 
 #: models.py:76
 msgid "Document version OCR error"

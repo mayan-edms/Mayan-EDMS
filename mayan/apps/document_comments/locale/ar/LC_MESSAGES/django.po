@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# WM Shinkada <shinkadawasim@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-13 10:28+0000\n"
-"PO-Revision-Date: 2019-05-17 05:50+0000\n"
-"Last-Translator: Mohammed ALDOUB <voulnet@gmail.com>\n"
+"POT-Creation-Date: 2020-12-21 05:16+0000\n"
+"PO-Revision-Date: 2020-12-20 22:58+0000\n"
+"Last-Translator: WM Shinkada <shinkadawasim@gmail.com>\n"
 "Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +21,7 @@ msgstr ""
 
 #: apps.py:36 events.py:6
 msgid "Document comments"
-msgstr ""
+msgstr "تعليقات المستند"
 
 #: events.py:10
 msgid "Document comment created"
@@ -36,7 +37,7 @@ msgstr ""
 
 #: links.py:16
 msgid "Add comment"
-msgstr ""
+msgstr "إضافة تعليق"
 
 #: links.py:22
 msgid "Delete"
@@ -52,7 +53,7 @@ msgstr "التعليقات"
 
 #: models.py:29
 msgid "Document"
-msgstr ""
+msgstr "مستند"
 
 #: models.py:33 models.py:71
 msgid "User"
@@ -65,7 +66,7 @@ msgstr "تعليق"
 
 #: models.py:39
 msgid "Date time submitted"
-msgstr ""
+msgstr "تاريخ و وقت التنفيد"
 
 #: permissions.py:8
 msgid "Create new comments"
@@ -116,4 +117,4 @@ msgstr ""
 #: views.py:149
 #, python-format
 msgid "Comments for document: %s"
-msgstr ""
+msgstr "تعليقات المستند: %s"

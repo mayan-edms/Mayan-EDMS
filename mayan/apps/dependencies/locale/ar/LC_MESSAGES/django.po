@@ -7,14 +7,16 @@
 # Mohammed ALDOUB <voulnet@gmail.com>, 2019
 # Yaman Sanobar <yman.snober@gmail.com>, 2019
 # Roberto Rosario, 2019
+# Marwan Rahhal <Marwanr@sssit.net>, 2020
+# WM Shinkada <shinkadawasim@gmail.com>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-13 10:28+0000\n"
+"POT-Creation-Date: 2020-12-21 05:16+0000\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
-"Last-Translator: Roberto Rosario, 2019\n"
+"Last-Translator: WM Shinkada <shinkadawasim@gmail.com>, 2020\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,11 +34,11 @@ msgstr "العنوان"
 
 #: apps.py:36
 msgid "Internal name"
-msgstr ""
+msgstr "الإسم الداخلي"
 
 #: apps.py:41 apps.py:74 apps.py:83
 msgid "Description"
-msgstr "Description"
+msgstr "الوصف"
 
 #: apps.py:45 classes.py:138
 msgid "Type"
@@ -44,7 +46,7 @@ msgstr "النوع"
 
 #: apps.py:49 classes.py:140
 msgid "Other data"
-msgstr ""
+msgstr "بيانات اخرى"
 
 #: apps.py:53
 msgid "Declared by"
@@ -60,7 +62,7 @@ msgstr ""
 
 #: apps.py:64 classes.py:140
 msgid "Check"
-msgstr ""
+msgstr "مراجعة"
 
 #: classes.py:138
 msgid "Name"
@@ -68,7 +70,7 @@ msgstr "اسم"
 
 #: classes.py:139
 msgid "App"
-msgstr ""
+msgstr "التطبيقات"
 
 #: classes.py:254
 msgid "Need to specify at least one: app_label or module."
@@ -90,7 +92,7 @@ msgstr ""
 
 #: classes.py:293 classes.py:298 classes.py:302
 msgid "Complete."
-msgstr ""
+msgstr "Complete."
 
 #: classes.py:328
 msgid "Installed and correct version"
@@ -98,7 +100,7 @@ msgstr ""
 
 #: classes.py:330
 msgid "Missing or incorrect version"
-msgstr ""
+msgstr "تفتقد او إصدار غير متطابق"
 
 #: classes.py:359
 msgid "None"
@@ -118,7 +120,7 @@ msgstr ""
 
 #: classes.py:401
 msgid "Binary"
-msgstr ""
+msgstr "ثنائي"
 
 #: classes.py:418
 msgid ""
@@ -132,15 +134,15 @@ msgstr ""
 
 #: classes.py:451 classes.py:694
 msgid "Downloading... "
-msgstr ""
+msgstr "تحميل /تنزيل"
 
 #: classes.py:454
 msgid "Verifying... "
-msgstr ""
+msgstr "تحقق..."
 
 #: classes.py:457 classes.py:697
 msgid "Extracting... "
-msgstr ""
+msgstr "فك الضغط"
 
 #: classes.py:636
 msgid "Python packages downloaded from PyPI."
@@ -148,15 +150,15 @@ msgstr ""
 
 #: classes.py:638
 msgid "Python"
-msgstr ""
+msgstr "بايثون"
 
 #: classes.py:675
 msgid "Fonts downloaded from fonts.googleapis.com."
-msgstr ""
+msgstr "خطوط تم تحميلها من onts.googleapis.com"
 
 #: classes.py:677
 msgid "Google font"
-msgstr ""
+msgstr "خط قوقل"
 
 #: classes.py:763
 msgid "Declared in app"
@@ -168,7 +170,7 @@ msgstr ""
 
 #: classes.py:768
 msgid "Class"
-msgstr ""
+msgstr "الفئة"
 
 #: classes.py:769
 msgid ""
@@ -178,7 +180,7 @@ msgstr ""
 
 #: classes.py:774
 msgid "State"
-msgstr ""
+msgstr "الحالة"
 
 #: classes.py:775
 msgid ""
@@ -201,7 +203,7 @@ msgstr ""
 
 #: environments.py:21
 msgid "Build"
-msgstr ""
+msgstr "بناء"
 
 #: environments.py:25
 msgid ""
@@ -211,7 +213,7 @@ msgstr ""
 
 #: environments.py:27
 msgid "Development"
-msgstr ""
+msgstr "تطوير"
 
 #: environments.py:31
 msgid ""
@@ -221,7 +223,7 @@ msgstr ""
 
 #: environments.py:33
 msgid "Documentation"
-msgstr ""
+msgstr "المستند/ المستندات "
 
 #: environments.py:37
 msgid ""
@@ -242,11 +244,11 @@ msgstr ""
 
 #: environments.py:46
 msgid "Testing"
-msgstr ""
+msgstr "إختبارات"
 
 #: links.py:9 views.py:17
 msgid "Check for updates"
-msgstr ""
+msgstr "التحقق من التحديثات "
 
 #: links.py:15
 msgid "Groups"
@@ -254,7 +256,7 @@ msgstr "مجموعات"
 
 #: links.py:23
 msgid "Entries"
-msgstr ""
+msgstr "المدخلات"
 
 #: links.py:31
 msgid "Details"
@@ -285,7 +287,7 @@ msgstr ""
 
 #: management/commands/installdependencies.py:17
 msgid "Force installation even if already installed."
-msgstr ""
+msgstr "فرض التتبيت حتى لوكان مثبت"
 
 #: permissions.py:8
 msgid "View dependencies"

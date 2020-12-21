@@ -5,13 +5,14 @@
 # Translators:
 # Translators:
 # Mohammed ALDOUB <voulnet@gmail.com>, 2013
+# WM Shinkada <shinkadawasim@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-13 10:28+0000\n"
-"PO-Revision-Date: 2020-09-27 06:46+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-12-21 05:16+0000\n"
+"PO-Revision-Date: 2020-12-20 22:27+0000\n"
+"Last-Translator: WM Shinkada <shinkadawasim@gmail.com>\n"
 "Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,7 +22,7 @@ msgstr ""
 
 #: apps.py:133 permissions.py:5 settings.py:13
 msgid "Common"
-msgstr ""
+msgstr "الشائعه/ كثيرة الاستخدام "
 
 #: classes.py:456
 msgid "Model properties"
@@ -65,15 +66,15 @@ msgstr ""
 
 #: links.py:39
 msgid "Locale profile"
-msgstr ""
+msgstr "الملف الشخصي المحلي"
 
 #: links.py:44
 msgid "Edit locale profile"
-msgstr ""
+msgstr "تعديل الملف الشخصي المحلي"
 
 #: links.py:49
 msgid "Documentation"
-msgstr ""
+msgstr "المستند/ المستندات "
 
 #: links.py:52
 msgid "Forum"
@@ -89,7 +90,7 @@ msgstr ""
 
 #: links.py:64
 msgid "Setup"
-msgstr ""
+msgstr "تثبت "
 
 #: links.py:67
 msgid "Source code"
@@ -105,7 +106,7 @@ msgstr ""
 
 #: links.py:79 queues.py:9 views.py:173
 msgid "Tools"
-msgstr ""
+msgstr "الأدوات"
 
 #: literals.py:18
 msgid ""
@@ -132,7 +133,7 @@ msgstr "Minutes"
 
 #: menus.py:8
 msgid "System"
-msgstr ""
+msgstr "النظام"
 
 #: menus.py:10 menus.py:11
 msgid "Facet"
@@ -156,19 +157,19 @@ msgstr "مستخدم"
 
 #: models.py:29
 msgid "Timezone"
-msgstr ""
+msgstr "المنطقة الزمنية "
 
 #: models.py:32
 msgid "Language"
-msgstr ""
+msgstr "اللغة"
 
 #: models.py:38
 msgid "User locale profile"
-msgstr ""
+msgstr "الملف المحلي للمستخدم"
 
 #: models.py:39
 msgid "User locale profiles"
-msgstr ""
+msgstr "الملفات المحلية للمستخدم"
 
 #: permissions.py:8
 msgid "Copy object"
@@ -234,19 +235,19 @@ msgstr ""
 
 #: views.py:27
 msgid "About"
-msgstr ""
+msgstr "حول"
 
 #: views.py:40
 msgid "Current user locale profile details"
-msgstr ""
+msgstr "تفاصيل الملف الشخصي المحلي للمستخدم الحالي"
 
 #: views.py:46
 msgid "Edit current user locale profile details"
-msgstr ""
+msgstr "تعديل تفاصيل الملف الشخصي المحلي للمستخدم الحالي"
 
 #: views.py:95
 msgid "Dashboard"
-msgstr ""
+msgstr "لوحة قياس الإداء"
 
 #: views.py:116
 #, python-format
@@ -274,7 +275,7 @@ msgstr ""
 
 #: views.py:158
 msgid "Setup items"
-msgstr ""
+msgstr "تثبيت العناصر"
 
 #: views.py:160
 msgid "Here you can configure all aspects of the system."

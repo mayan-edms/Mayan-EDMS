@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-13 10:28+0000\n"
-"PO-Revision-Date: 2020-10-26 13:26+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-12-21 05:16+0000\n"
+"PO-Revision-Date: 2020-12-20 22:28+0000\n"
+"Last-Translator: WM Shinkada <shinkadawasim@gmail.com>\n"
 "Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -83,7 +83,7 @@ msgstr ""
 #: models/favorite_document_models.py:26
 #: models/recently_accessed_document_models.py:27
 msgid "Document"
-msgstr ""
+msgstr "مستند"
 
 #: apps.py:314 apps.py:347 apps.py:365 apps.py:412
 msgid "Thumbnail"
@@ -134,7 +134,7 @@ msgstr ""
 #: links/document_type_links.py:75 permissions.py:53
 #: views/document_type_views.py:78
 msgid "Document types"
-msgstr ""
+msgstr "أنواع الوثائق"
 
 #: dashboard_widgets.py:104
 msgid "New documents this month"
@@ -229,7 +229,7 @@ msgstr "تاريخ الاضافة"
 
 #: forms/document_forms.py:154 models/document_models.py:84
 msgid "Language"
-msgstr ""
+msgstr "اللغة"
 
 #: forms/document_forms.py:162
 msgid "File mimetype"
@@ -767,7 +767,7 @@ msgstr "عرض أنواع الوثائق"
 
 #: queues.py:15
 msgid "Converter"
-msgstr ""
+msgstr "المحول"
 
 #: queues.py:18
 msgid "Documents periodic"

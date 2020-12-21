@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-13 10:28+0000\n"
+"POT-Creation-Date: 2020-12-21 05:16+0000\n"
 "PO-Revision-Date: 2020-09-29 09:00+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
@@ -618,31 +618,31 @@ msgid ""
 "is attached. This URL is different than the canonical document type URL."
 msgstr "URL API směřující na typ dokumentu ve vztahu k workflow, ke kterému je připojen. Tato adresa URL je jiná než adresa URL kanonického typu dokumentu."
 
-#: serializers.py:114
+#: serializers.py:158
 msgid "Primary key of the destination state to be added."
 msgstr "Primární klíč cílového stavu, který má být přidán."
 
-#: serializers.py:118
+#: serializers.py:162
 msgid "Primary key of the origin state to be added."
 msgstr "Primární klíč stavu původu, který se má přidat."
 
-#: serializers.py:216
+#: serializers.py:260
 msgid ""
 "API URL pointing to a workflow in relation to the document to which it is "
 "attached. This URL is different than the canonical workflow URL."
 msgstr "URL API ukazující na workflow ve vztahu k dokumentu, ke kterému je připojen. Tato adresa URL se liší od kanonické adresy URL pracovního postupu."
 
-#: serializers.py:225
+#: serializers.py:269
 msgid "A link to the entire history of this workflow."
 msgstr "Odkaz na celou historii tohoto workflow."
 
-#: serializers.py:257
+#: serializers.py:301
 msgid ""
 "Comma separated list of document type primary keys to which this workflow "
 "will be attached."
 msgstr "Čárkami oddělený seznam primárních klíčů typu dokumentu, ke kterým bude toto workflow připojeno."
 
-#: serializers.py:317
+#: serializers.py:361
 msgid "Primary key of the transition to be added."
 msgstr "Primární klíč kroku, který má být přidán."
 

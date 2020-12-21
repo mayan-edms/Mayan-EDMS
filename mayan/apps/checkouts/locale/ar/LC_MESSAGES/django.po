@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# WM Shinkada <shinkadawasim@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-13 10:28+0000\n"
-"PO-Revision-Date: 2020-04-28 03:38+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-12-21 05:16+0000\n"
+"PO-Revision-Date: 2020-12-20 22:04+0000\n"
+"Last-Translator: WM Shinkada <shinkadawasim@gmail.com>\n"
 "Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -104,15 +105,15 @@ msgstr ""
 
 #: literals.py:11
 msgid "Checked in/available"
-msgstr ""
+msgstr "تحقق منه/ متاح"
 
 #: models.py:28 models.py:111
 msgid "Document"
-msgstr ""
+msgstr "مستند"
 
 #: models.py:31
 msgid "Check out date and time"
-msgstr ""
+msgstr "التحقق من الوقت والتاريخ"
 
 #: models.py:35
 msgid "Amount of time to hold the document checked out in minutes."
@@ -140,7 +141,7 @@ msgstr ""
 
 #: models.py:65
 msgid "Check out expiration date and time must be in the future."
-msgstr ""
+msgstr "التحقق من صلاحية الوقت والتاريخ، يجب ان يكون في المستقبل "
 
 #: models.py:117
 msgid "New version block"

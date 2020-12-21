@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-13 10:28+0000\n"
+"POT-Creation-Date: 2020-12-21 05:16+0000\n"
 "PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
@@ -619,31 +619,31 @@ msgid ""
 "is attached. This URL is different than the canonical document type URL."
 msgstr "URL API اشاره به نوع سند مربوط به جریان کاری که به آن متصل است. این URL متفاوت از URL سند نوع سند است."
 
-#: serializers.py:114
+#: serializers.py:158
 msgid "Primary key of the destination state to be added."
 msgstr "کلید اصلی کشور مقصد اضافه می شود"
 
-#: serializers.py:118
+#: serializers.py:162
 msgid "Primary key of the origin state to be added."
 msgstr "کلید اولیه حالت مبدأ اضافه می شود"
 
-#: serializers.py:216
+#: serializers.py:260
 msgid ""
 "API URL pointing to a workflow in relation to the document to which it is "
 "attached. This URL is different than the canonical workflow URL."
 msgstr "URL API اشاره به یک گردش کار در رابطه با سند که آن متصل است. این URL متفاوت از URL کارآفرینی کانونی است."
 
-#: serializers.py:225
+#: serializers.py:269
 msgid "A link to the entire history of this workflow."
 msgstr "لینک به کل تاریخچه این گردش کار"
 
-#: serializers.py:257
+#: serializers.py:301
 msgid ""
 "Comma separated list of document type primary keys to which this workflow "
 "will be attached."
 msgstr "لیست کاملی از نوع سند کپی اولیه که این جریان کار متصل است، جدا شده است."
 
-#: serializers.py:317
+#: serializers.py:361
 msgid "Primary key of the transition to be added."
 msgstr "کلید اصلی انتقال برای اضافه کردن"
 
