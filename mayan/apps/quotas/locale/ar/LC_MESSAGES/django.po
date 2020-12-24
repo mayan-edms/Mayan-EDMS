@@ -4,8 +4,6 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Roberto Rosario, 2020
-# Mohammed ALDOUB <voulnet@gmail.com>, 2020
 # Yaman Sanobar <yman.snober@gmail.com>, 2020
 # Marwan Rahhal <Marwanr@sssit.net>, 2020
 # 
@@ -13,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-21 05:16+0000\n"
+"POT-Creation-Date: 2020-12-24 05:12+0000\n"
 "PO-Revision-Date: 2020-03-28 07:24+0000\n"
 "Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2020\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
@@ -26,7 +24,7 @@ msgstr ""
 #: apps.py:39 events.py:6 links.py:33 models.py:32 permissions.py:5
 #: views.py:136
 msgid "Quotas"
-msgstr "النسبة"
+msgstr "المحددات"
 
 #: classes.py:65
 msgid "none"
@@ -42,11 +40,11 @@ msgstr "خلفية فارغة"
 
 #: events.py:10
 msgid "Quota created"
-msgstr "تحديد النسبة"
+msgstr "إنشاء محدد"
 
 #: events.py:13
 msgid "Quota edited"
-msgstr "تعديل النسبة"
+msgstr "تعديل محدد"
 
 #: forms.py:15 models.py:55
 msgid "Backend"
@@ -58,7 +56,7 @@ msgstr "نسبة الإدخال المحددة "
 
 #: links.py:13
 msgid "Create quota"
-msgstr "إنشاء نسبة"
+msgstr "إنشاء المحدد"
 
 #: links.py:18
 msgid "Delete"
@@ -66,11 +64,11 @@ msgstr "حذف"
 
 #: links.py:22
 msgid "Edit"
-msgstr "تحرير"
+msgstr "تعديل"
 
 #: links.py:28
 msgid "Quotas list"
-msgstr "قائمة النسب"
+msgstr "قائمة المحددات"
 
 #: mixins.py:17
 msgid "All document types"
@@ -102,11 +100,11 @@ msgstr "أنواع الوثائق : %(document_types)s"
 
 #: mixins.py:94
 msgid "Groups"
-msgstr "مجموعات"
+msgstr "المجموعات"
 
 #: mixins.py:101
 msgid "Groups to which the quota will be applied."
-msgstr "المجموعات التي سيتم تطبيق النسب عليها"
+msgstr "المجموعات التي سيتم تطبيق المحددات عليها"
 
 #: mixins.py:105
 msgid "All users"
@@ -118,8 +116,8 @@ msgid ""
 "Enabling this option, the quota will ignore the indiviual user and group "
 "selection."
 msgstr ""
-"تطبيق النسب على جميع المستخدمين في النظام ، باستثناء المسؤولين والموظفين ، "
-"عند تفعيل هذا الخيار ، ستتجاهل النسب و اختيار المستخدم والمجموعة"
+"تطبيق المحددات على جميع المستخدمين في النظام ، باستثناء المسؤولين والموظفين "
+"، عند تفعيل هذا الخيار ، سيتم تجاهل اسم المستخدم و المجموعة"
 
 #: mixins.py:115
 msgid "Users"
@@ -152,7 +150,7 @@ msgstr "بيانات الخاصة بالمبرمجين"
 
 #: models.py:26
 msgid "Allow quick disable or enable of the quota."
-msgstr "السماح بالتعطيل المختصر أو تحديد النسبة"
+msgstr "السماح بالتعطيل المختصر أو تحديد المحدد"
 
 #: models.py:27
 msgid "Enabled"
@@ -160,7 +158,7 @@ msgstr "مفعل"
 
 #: models.py:31
 msgid "Quota"
-msgstr "النسبة"
+msgstr "المحدد"
 
 #: models.py:54
 msgid "Driver used for this quota entry."
@@ -168,7 +166,7 @@ msgstr "المستخدم  المخصص لإدخال النسب"
 
 #: models.py:59
 msgid "Arguments"
-msgstr "القيم المتغيرة"
+msgstr "المحددات"
 
 #: models.py:63
 msgid "Usage"
@@ -180,19 +178,19 @@ msgstr "تحديد النسبة"
 
 #: permissions.py:11
 msgid "Delete a quota"
-msgstr "حذف النسبة"
+msgstr "حذف المحدد"
 
 #: permissions.py:14
 msgid "Edit a quota"
-msgstr "تعديل النسبة"
+msgstr "تعديل المحدد"
 
 #: permissions.py:17
 msgid "View a quota"
-msgstr "عرض النسبة"
+msgstr "عرض المحدد"
 
 #: quota_backends.py:68 quota_backends.py:168
 msgid "Document count quota exceeded."
-msgstr "تجاوزت عدد النسب المستخدمة"
+msgstr "تجاوزت عدد المحددات المستخدمة"
 
 #: quota_backends.py:72
 msgid "Documents limit"
@@ -230,27 +228,27 @@ msgstr "تجاوزت الحجم المسموح للوثائق"
 
 #: views.py:24
 msgid "New quota backend selection"
-msgstr "تحديد نسبة جديدة"
+msgstr "تحديد محدد جديدة"
 
 #: views.py:54
 #, python-format
 msgid "Create a \"%s\" quota"
-msgstr "تحديد  \"%s\" النسبة"
+msgstr "تحديد  \"%s\" المحدد"
 
 #: views.py:86
 #, python-format
 msgid "Delete quota: %s"
-msgstr "حذف النسبة : %s"
+msgstr "حذف المحدد: %s"
 
 #: views.py:101
 #, python-format
 msgid "Edit quota: %s"
-msgstr "تعديل النسبة : %s"
+msgstr "تعديل المحدد: %s"
 
 #: views.py:133
 msgid "Quotas restrict usage of system resources. "
-msgstr "مراجعة مدير النظام ، النسب المحددة في النظام"
+msgstr "مراجعة مدير النظام ، المحددات في النظام"
 
 #: views.py:135
 msgid "No quotas available"
-msgstr "لا يوجد نسب متاحة ، مراجعة مدير النظام"
+msgstr "لا يوجد محددات متاحة ، مراجعة مدير النظام"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-21 05:16+0000\n"
+"POT-Creation-Date: 2020-12-24 05:12+0000\n"
 "PO-Revision-Date: 2020-09-04 09:18+0000\n"
 "Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2020\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: apps.py:28 apps.py:40 layers.py:15 permissions.py:5
 msgid "Redactions"
-msgstr "التنقيحات"
+msgstr "التنقيح"
 
 #: dependencies.py:6
 msgid "JavaScript image cropper"

@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-21 05:15+0000\n"
-"PO-Revision-Date: 2020-12-20 10:00+0000\n"
+"POT-Creation-Date: 2020-12-24 05:11+0000\n"
+"PO-Revision-Date: 2020-12-23 22:59+0000\n"
 "Last-Translator: Marwan Rahhal <Marwanr@sssit.net>\n"
 "Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
@@ -21,15 +21,15 @@ msgstr ""
 
 #: apps.py:25 events.py:6 permissions.py:6 settings.py:10
 msgid "Authentication"
-msgstr "الدخول الى النظام"
+msgstr "مصادقة الحساب"
 
 #: events.py:10
 msgid "User impersonation ended"
-msgstr "انتهاء انشاء المستخدم"
+msgstr "انتهاء تفويض المستخدم"
 
 #: events.py:13
 msgid "User impersonation started"
-msgstr "إبتداء انشاء المستخدم"
+msgstr "بدأ تفويض المستخدم"
 
 #: forms.py:17
 msgid "Email"

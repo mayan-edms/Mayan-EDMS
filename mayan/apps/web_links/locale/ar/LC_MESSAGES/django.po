@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-21 05:16+0000\n"
+"POT-Creation-Date: 2020-12-24 05:12+0000\n"
 "PO-Revision-Date: 2019-12-03 05:24+0000\n"
 "Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2020\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
@@ -29,7 +29,7 @@ msgstr "الربط"
 #: events.py:6 links.py:14 links.py:20 links.py:54 links.py:58 models.py:40
 #: permissions.py:5 views.py:148
 msgid "Web links"
-msgstr "رابط النظام"
+msgstr "روابط النظام"
 
 #: events.py:10
 msgid "Web link created"
@@ -37,11 +37,11 @@ msgstr "رابط النظام المنشأ"
 
 #: events.py:13
 msgid "Web link edited"
-msgstr "تعديل روابط النظام"
+msgstr "تعديل رابط النظام"
 
 #: events.py:16
 msgid "Web link navigated"
-msgstr "تصفح رابط النظام"
+msgstr "إستعراض رابط النظام"
 
 #: links.py:26 views.py:189
 msgid "Create new web link"
@@ -89,19 +89,19 @@ msgstr "الرابط"
 
 #: permissions.py:8
 msgid "Create new web links"
-msgstr "أنشاء رابط جديد"
+msgstr "أنشاء روابط جديدة"
 
 #: permissions.py:11
 msgid "Delete web links"
-msgstr "حذف الرابط"
+msgstr "حذف الروابط"
 
 #: permissions.py:14
 msgid "Edit web links"
-msgstr "تعديل الرابط"
+msgstr "تعديل الروابط"
 
 #: permissions.py:17
 msgid "View existing web links"
-msgstr "إستعراض الرابط"
+msgstr "إستعراض الروابط الحالية"
 
 #: permissions.py:20
 msgid "View web link instances"
@@ -111,7 +111,7 @@ msgstr "حالة الرابط"
 msgid ""
 "Comma separated list of document type primary keys to which this web link "
 "will be attached."
-msgstr "القائمة الأساسية لنوع المستند"
+msgstr "القائمة الأساسية لنوع الوثيقة"
 
 #: views.py:42
 msgid "Available web links"
@@ -119,7 +119,7 @@ msgstr "الروابط المتاحة"
 
 #: views.py:43
 msgid "Web links enabled"
-msgstr "تفعيل الرابط"
+msgstr "تفعيل الروابط"
 
 #: views.py:75
 #, python-format

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-21 05:16+0000\n"
+"POT-Creation-Date: 2020-12-24 05:12+0000\n"
 "PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2020\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
@@ -88,7 +88,7 @@ msgstr "إستعراض الأخطاء: {}"
 
 #: settings.py:25
 msgid "Level for the logging system."
-msgstr "التسجيل للمستوى المحد\\د"
+msgstr "التسجيل للمستوى المحدد"
 
 #: settings.py:31
 msgid "Path to the logfile that will track errors during production."

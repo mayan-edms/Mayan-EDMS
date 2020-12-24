@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-21 05:15+0000\n"
-"PO-Revision-Date: 2020-12-20 11:03+0000\n"
+"POT-Creation-Date: 2020-12-24 05:11+0000\n"
+"PO-Revision-Date: 2020-12-24 01:42+0000\n"
 "Last-Translator: Marwan Rahhal <Marwanr@sssit.net>\n"
 "Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #: apps.py:59 events.py:5 permissions.py:5 settings.py:7
 msgid "Appearance"
-msgstr "الخواص"
+msgstr "التفضيلات"
 
 #: dependencies.py:8
 msgid "Lato font"
@@ -33,7 +33,7 @@ msgstr "التجهيز"
 
 #: dependencies.py:16
 msgid "Bootswatch"
-msgstr ""
+msgstr "بوتسوواتش"
 
 #: dependencies.py:30
 msgid "Fancybox"
@@ -41,43 +41,43 @@ msgstr "السلال"
 
 #: dependencies.py:34
 msgid "FontAwesome"
-msgstr ""
+msgstr "FontAwesome"
 
 #: dependencies.py:38
 msgid "jQuery"
-msgstr ""
+msgstr "مسج"
 
 #: dependencies.py:41
 msgid "JQuery Form"
-msgstr ""
+msgstr "نموذج JQuery"
 
 #: dependencies.py:45
 msgid "jQuery Lazy Load"
-msgstr ""
+msgstr "jQuery تحميل كسول"
 
 #: dependencies.py:49
 msgid "JQuery Match Height"
-msgstr ""
+msgstr "JQuery مطابقة الارتفاع"
 
 #: dependencies.py:53
 msgid "Select 2"
-msgstr "تحديد2"
+msgstr "اختيار"
 
 #: dependencies.py:57
 msgid "Toastr"
-msgstr ""
+msgstr "توستر"
 
 #: dependencies.py:60
 msgid "URI.js"
-msgstr ""
+msgstr "URI.js"
 
 #: events.py:8
 msgid "Theme created"
-msgstr "إنشاء قوالب للمستخدم "
+msgstr "إنشاء قالب"
 
 #: events.py:11
 msgid "Theme edited"
-msgstr "تعديل قالب المستخدم"
+msgstr "تعديل القالب"
 
 #: links.py:15
 msgid "Theme settings"
@@ -85,7 +85,7 @@ msgstr "إعدادات القوالب"
 
 #: links.py:20
 msgid "Edit theme settings"
-msgstr "تعديل اعدادات القوالب"
+msgstr "تعديل اعدادات القالب"
 
 #: links.py:27 views.py:47
 msgid "Create new theme"
@@ -97,7 +97,7 @@ msgstr "حذف"
 
 #: links.py:39
 msgid "Edit"
-msgstr "تحرير"
+msgstr "تعديل"
 
 #: links.py:43 links.py:47 models.py:25 views.py:111
 msgid "Themes"
@@ -105,7 +105,7 @@ msgstr "القوالب"
 
 #: models.py:12
 msgid "A short text describing the theme."
-msgstr "وصف مختصر للقوالب"
+msgstr "وصف مختصر للقالب"
 
 #: models.py:13
 msgid "Label"
@@ -115,15 +115,15 @@ msgstr "العنوان"
 msgid ""
 "The CSS stylesheet to change the appearance of the different user interface "
 "elements."
-msgstr ""
+msgstr "تغيير الشكل العام لعناصر واجهة المستخدم المختلفة"
 
 #: models.py:19
 msgid "Stylesheet"
-msgstr ""
+msgstr "الشكل العام"
 
 #: models.py:24 models.py:60
 msgid "Theme"
-msgstr "القوالب"
+msgstr "القالب"
 
 #: models.py:56
 msgid "User"
@@ -131,23 +131,23 @@ msgstr "مستخدم"
 
 #: models.py:64
 msgid "User theme setting"
-msgstr "اعدادات القوالب للمستخدم "
+msgstr "اعدادات القالب للمستخدم "
 
 #: models.py:65
 msgid "User theme settings"
-msgstr "اعدادات القوالب للمستخدم "
+msgstr "اعدادات قالب المستخدم "
 
 #: permissions.py:8
 msgid "Create new themes"
-msgstr "إنشاء قوالب خاصة "
+msgstr "إنشاء قوالب جديدة"
 
 #: permissions.py:11
 msgid "Delete themes"
-msgstr "الغاء القالب"
+msgstr "حذف القوالب"
 
 #: permissions.py:14
 msgid "Edit themes"
-msgstr "التعديل على القالب"
+msgstr "تعديل القوالب"
 
 #: permissions.py:17
 msgid "View existing themes"
@@ -177,11 +177,11 @@ msgstr "لم يتم العثور على الصفحة"
 
 #: templates/404.html:32
 msgid "The requested page could not be found."
-msgstr "الصفحة غير موجودة "
+msgstr "تعذر الحصول على الصفحة المحددة"
 
 #: templates/404.html:40
 msgid "Possible reasons"
-msgstr "السبب "
+msgstr "الاسباب التالية"
 
 #: templates/404.html:44
 msgid "The location of the item is incorrect."
@@ -189,13 +189,13 @@ msgstr "المكان المحدد غير صحيح"
 
 #: templates/404.html:45
 msgid "The location is correct, but the item no longer exists."
-msgstr "الموقع صحيح ، لكن الموقع غير موجود"
+msgstr "الصفحة المحددة موجودة ، ولم يتم العثور على الصفحة"
 
 #: templates/404.html:46
 msgid ""
 "The location is be correct, but your account does not have the required "
 "permission to access it."
-msgstr "لا تملك الصلاحيات اللازمة لتحديد الموقع"
+msgstr "لا تملك الصلاحيات اللازمة للوصول ، مراجعة مدير النظام"
 
 #: templates/500.html:5 templates/500.html:30
 #: templates/appearance/root.html:58
@@ -216,7 +216,7 @@ msgstr "اعادة تحميل الصفحة "
 
 #: templates/500.html:45
 msgid "Wait a bit. The system might be overloaded."
-msgstr "انتظر ، التحميل "
+msgstr "انتظر  التحميل "
 
 #: templates/500.html:46
 msgid "Contact your system administrator."
@@ -233,7 +233,7 @@ msgstr "فتح تذكرة <a href=\"%(issue_url)s\">يرجى مراجعة مدي
 
 #: templates/appearance/about.html:10
 msgid "About"
-msgstr "حول"
+msgstr " حول النظام"
 
 #: templates/appearance/about.html:73
 #, python-format
@@ -241,7 +241,7 @@ msgid ""
 "\n"
 "                    %(setting_project_title)s is based on %(project_title)s\n"
 "                "
-msgstr ""
+msgstr "\n                    %(setting_project_title)s is based on %(project_title)s\n                "
 
 #: templates/appearance/about.html:78
 msgid "Version"
@@ -262,7 +262,7 @@ msgid ""
 "\n"
 "                %(project_title)s is a free and open-source software brought to you with <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
 "            "
-msgstr ""
+msgstr "\n                %(project_title)s is a free and open-source software brought to you with <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> by Roberto Rosario and contributors.\n            "
 
 #: templates/appearance/about.html:105
 #, python-format
@@ -270,7 +270,7 @@ msgid ""
 "\n"
 "                It takes great effort to make %(project_title)s as feature-rich as it is.\n"
 "            "
-msgstr ""
+msgstr "\n                It takes great effort to make %(project_title)s as feature-rich as it is.\n            "
 
 #: templates/appearance/about.html:111
 #, python-format
@@ -278,7 +278,7 @@ msgid ""
 "\n"
 "                If you use %(project_title)s please <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">make a donation %(icon_social_paypal)s</a>\n"
 "            "
-msgstr ""
+msgstr "\n                If you use %(project_title)s please <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">make a donation %(icon_social_paypal)s</a>\n            "
 
 #: templates/appearance/about.html:117
 #, python-format
@@ -286,7 +286,7 @@ msgid ""
 "\n"
 "                The complete list of changes is available via the <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> or the short version <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
 "            "
-msgstr ""
+msgstr "\n                The complete list of changes is available via the <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> or the short version <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n            "
 
 #: templates/appearance/about.html:123
 #, python-format
@@ -310,7 +310,7 @@ msgid ""
 "\n"
 "                Spread the word. Talk to your friends and colleagues about how awesome %(project_title)s is!\n"
 "            "
-msgstr ""
+msgstr "\n                Spread the word. Talk to your friends and colleagues about how awesome %(project_title)s is!\n            "
 
 #: templates/appearance/base.html:43 templates/appearance/base.html:67
 msgid "Warning"
@@ -347,7 +347,7 @@ msgstr "الإجراءات"
 #: templates/appearance/generic_list_items_subtemplate.html:68
 #: templates/appearance/list_toolbar.html:67
 msgid "Toggle Dropdown"
-msgstr ""
+msgstr "تغير القائمة المنسدلة"
 
 #: templates/appearance/calculate_form_title.html:10
 msgid "Open main menu"
@@ -359,18 +359,18 @@ msgstr "هل أنت متأكد ؟"
 
 #: templates/appearance/generic_confirm.html:38
 msgid "Yes"
-msgstr "نعم"
+msgstr "قبول"
 
 #: templates/appearance/generic_confirm.html:48
 msgid "No"
-msgstr "لا"
+msgstr "رفض"
 
 #: templates/appearance/generic_form_instance.html:51
 #: templates/appearance/generic_form_instance.html:57
 #: templates/appearance/generic_form_subtemplate.html:50
 #: templates/appearance/generic_multiform_subtemplate.html:37
 msgid "required"
-msgstr "مطلوب"
+msgstr "متطلب"
 
 #: templates/appearance/generic_form_subtemplate.html:83
 #: templates/appearance/generic_form_subtemplate.html:96
@@ -416,7 +416,7 @@ msgstr "المجموع (%(start)s - %(end)s خارج %(total)sالصفحات  %(
 #: templates/appearance/list_header.html:17
 #, python-format
 msgid "Total: %(total)s"
-msgstr "Total: %(total)s"
+msgstr "المجموع : %(total)s"
 
 #: templates/appearance/list_toolbar.html:13
 msgid "Select/Deselect all"
@@ -424,20 +424,20 @@ msgstr "تحديد/عدم تحديد الكل"
 
 #: templates/appearance/list_toolbar.html:17
 msgid "Toggle list display mode"
-msgstr "تغير طريقة العرض "
+msgstr "طريقة العرض "
 
 #: templates/appearance/list_toolbar.html:60
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
-msgstr "للتحديدالمتعدد ! يرجى الضغط Shift + واختيار المحددات."
+msgstr "تحديد الكل ، يرجى الضغط على زر Sheft+ اختيار العناصر المراد تحديدها"
 
 #: templates/appearance/list_toolbar.html:65
 msgid "Bulk actions"
-msgstr "مجموعة إجراءات "
+msgstr "الإعدادات "
 
 #: templates/appearance/menu_topbar.html:11
 msgid "Toggle navigation"
-msgstr ""
+msgstr "تغير الاستعراض"
 
 #: templates/appearance/no_results.html:18
 msgid "No results"
@@ -461,21 +461,21 @@ msgstr "لا شيء"
 
 #: views.py:29
 msgid "Current user theme settings details"
-msgstr "عرض قوالب المستخدم والنظام "
+msgstr "إعدادات تفصيلية لقالب للمستخدم "
 
 #: views.py:35
 msgid "Edit current user theme settings details"
-msgstr "التعديل على اعدادات المستخدم والقوالب"
+msgstr "التعديل على قالب المستخدم"
 
 #: views.py:69
 #, python-format
 msgid "Delete theme: %s"
-msgstr "الغاء قوالب النظام : %s"
+msgstr "حذف القالب : %s"
 
 #: views.py:85
 #, python-format
 msgid "Edit theme: %s"
-msgstr "التعديل على قوالب النظام: %s"
+msgstr "تعديل القالب : %s"
 
 #: views.py:105
 msgid ""
@@ -484,4 +484,4 @@ msgstr "السماح بتغير قوالب النظام بدون التعديل�
 
 #: views.py:109
 msgid "There are no themes"
-msgstr "لا يوجد قوالب للنظام"
+msgstr "لا يوجد قوالب "

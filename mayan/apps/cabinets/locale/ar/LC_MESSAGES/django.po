@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-21 05:16+0000\n"
+"POT-Creation-Date: 2020-12-24 05:12+0000\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2020\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
@@ -35,15 +35,15 @@ msgstr "إنشاء خزائن"
 
 #: events.py:12
 msgid "Cabinet edited"
-msgstr "تعديل الخزائن"
+msgstr "تعديل خزائن"
 
 #: events.py:15
 msgid "Document added to cabinet"
-msgstr "تم إضافة وثيقة للخزائن"
+msgstr "إضافة وثيقة للخزائن"
 
 #: events.py:18
 msgid "Document removed from cabinet"
-msgstr "تم الغاء وثيقة للخزائن"
+msgstr "حذف الوثيقة من الخزائن"
 
 #: links.py:28 links.py:42 workflow_actions.py:72
 msgid "Remove from cabinets"
@@ -67,7 +67,7 @@ msgstr "حذف"
 
 #: links.py:78
 msgid "Edit"
-msgstr "تحرير"
+msgstr "تعديل"
 
 #: links.py:86
 msgid "All"
@@ -157,23 +157,23 @@ msgstr "نوع الوثيقة"
 
 #: search.py:28
 msgid "Document MIME type"
-msgstr ""
+msgstr "نوع الوثيقة"
 
 #: search.py:31
 msgid "Document label"
-msgstr "اسم المستند"
+msgstr "اسم الوثيقة"
 
 #: search.py:34
 msgid "Document description"
-msgstr "وصف المستند"
+msgstr "وصف الوثيقة"
 
 #: search.py:37
 msgid "Document UUID"
-msgstr ""
+msgstr "الوثائق المحددة"
 
 #: search.py:41
 msgid "Document checksum"
-msgstr ""
+msgstr "المجموع"
 
 #: serializers.py:17
 msgid "List of children cabinets."
@@ -268,92 +268,92 @@ msgstr "إضافة"
 #, python-format
 msgid "Add %(count)d document to cabinets"
 msgid_plural "Add %(count)d documents to cabinets"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "أضف مستندات %(count)d إلى الخزائن"
+msgstr[1] "قم باضافة الوثيقة %(count)d الى الخزائن"
+msgstr[2] "أضف مستندات %(count)d إلى الخزائن"
+msgstr[3] "أضف مستندات %(count)d إلى الخزائن"
+msgstr[4] "أضف مستندات %(count)d إلى الخزائن"
+msgstr[5] "أضف ,وثيقة %(count)d إلى الخزائن"
 
 #: views.py:214
 #, python-format
 msgid "Add document \"%s\" to cabinets"
-msgstr ""
+msgstr "أضف وثيقة&quot;%s&quot; إلى الخزانات"
 
 #: views.py:225
 msgid "Cabinets to which the selected documents will be added."
-msgstr ""
+msgstr "الخزانات التي ستتم إضافة الوثائق المحددة إليها."
 
 #: views.py:254
 #, python-format
 msgid "Document: %(document)s is already in cabinet: %(cabinet)s."
-msgstr ""
+msgstr "الوثيقة: %(document)s موجود في الخزانة: %(cabinet)s."
 
 #: views.py:266
 #, python-format
 msgid "Document: %(document)s added to cabinet: %(cabinet)s successfully."
-msgstr ""
+msgstr "تمت إضافة الوثائق: %(document)s إلى الخزانة: %(cabinet)s بنجاح."
 
 #: views.py:291
 msgid "Documents can be added to many cabinets."
-msgstr ""
+msgstr "يمكن إضافة الوثائق إلى العديد من الخزانات."
 
 #: views.py:294
 msgid "This document is not in any cabinet"
-msgstr ""
+msgstr "هذه الوثيقة ليست في أي خزانة"
 
 #: views.py:298
 #, python-format
 msgid "Cabinets containing document: %s"
-msgstr ""
+msgstr "خزائن تحتوي على وثيقة: %s"
 
 #: views.py:314
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d document."
-msgstr ""
+msgstr "حذف من طلب الخزانة الذي تم إجراؤه على الوثيقة%(count)d."
 
 #: views.py:317
 #, python-format
 msgid "Remove from cabinet request performed on %(count)d documents."
-msgstr ""
+msgstr "حذف من طلب الخزانة الذي تم إجراؤه على الوثائق%(count)d."
 
 #: views.py:324
 msgid "Remove"
-msgstr "إزالة"
+msgstr "حذف"
 
 #: views.py:326
 #, python-format
 msgid "Remove %(count)d document from cabinets"
 msgid_plural "Remove %(count)d documents from cabinets"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "قم بإزالة مستندات %(count)d من الخزانات"
+msgstr[1] "قم بإزالة مستند %(count)d من الخزانات"
+msgstr[2] "قم بإزالة مستندات %(count)d من الخزانات"
+msgstr[3] "قم بإزالة مستندات %(count)d من الخزانات"
+msgstr[4] "قم بإزالة مستندات %(count)d من الخزانات"
+msgstr[5] "قم بحذف الوثائق %(count)d من الخزانات"
 
 #: views.py:339
 #, python-format
 msgid "Remove document \"%s\" from cabinets"
-msgstr ""
+msgstr "قم بحذف الوثيقة&quot;%s&quot; من الخزانات"
 
 #: views.py:350
 msgid "Cabinets from which the selected documents will be removed."
-msgstr ""
+msgstr "الخزانات التي ستتم إحذف الوثائق المحددة منها."
 
 #: views.py:378
 #, python-format
 msgid "Document: %(document)s is not in cabinet: %(cabinet)s."
-msgstr ""
+msgstr "الوثيقة: %(document)s ليست في الخزانة: %(cabinet)s."
 
 #: views.py:390
 #, python-format
 msgid "Document: %(document)s removed from cabinet: %(cabinet)s."
-msgstr ""
+msgstr "الوثيقة : %(document)s تم حذفها من الخزانة: %(cabinet)s."
 
 #: wizard_steps.py:15
 msgid "Select cabinets"
-msgstr "تحديد الخزانة المطلوبة"
+msgstr "إختيار خزانة الحفظ"
 
 #: wizard_steps.py:29 workflow_actions.py:23
 msgid "Cabinets to which the document will be added."
