@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# Jože Detečnik <joze.detecnik@3tav.si>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-24 05:12+0000\n"
-"PO-Revision-Date: 2020-02-14 02:29+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2020-12-26 01:42+0000\n"
+"PO-Revision-Date: 2020-12-25 12:32+0000\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>\n"
 "Language-Team: Slovenian (http://www.transifex.com/rosarior/mayan-edms/language/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,12 +21,12 @@ msgstr ""
 
 #: apps.py:13 settings.py:10
 msgid "Mirroring"
-msgstr ""
+msgstr "Zrcaljenje"
 
 #: settings.py:15
 msgid "Time in seconds to cache the path lookup to a document."
-msgstr ""
+msgstr "Čas v sekundah za predpomnjenje iskanja poti do dokumenta."
 
 #: settings.py:20
 msgid "Time in seconds to cache the path lookup to an index node."
-msgstr ""
+msgstr "Čas v sekundah za predpomnjenje iskanja poti do vozlišča indeksa."
