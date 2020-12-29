@@ -8,6 +8,8 @@ from django.utils import timezone, translation
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import RedirectView
 
+from stronghold.views import StrongholdPublicMixin
+
 from mayan.apps.acls.models import AccessControlList
 
 from .forms import (
@@ -175,7 +177,7 @@ class ObjectErrorLogEntryListView(SingleObjectListView):
         return self.get_object().error_logs.all()
 
 
-class RootView(SimpleView):
+class RootView(StrongholdPublicMixin, SimpleView):
     extra_context = {'home_view': setting_home_view.value}
     template_name = 'appearance/root.html'
 
