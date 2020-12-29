@@ -135,10 +135,11 @@ class ExternalObjectMixin(object):
         else:
             pk_url_kwargs['pk'] = self.external_object_pk_url_kwarg
 
+        result = {}
         for key, value in pk_url_kwargs.items():
-            pk_url_kwargs[key] = self.kwargs[value]
+            result[key] = self.kwargs[value]
 
-        return pk_url_kwargs
+        return result
 
     def get_external_object(self):
         return get_object_or_404(
