@@ -214,7 +214,7 @@ job_test_mysql:
   services:
     - mysql:5.7
   script:
-    - apt-get install -qq libmysqlclient-dev libssl-dev mysql-client
+    - apt-get install -qq default-libmysqlclient-dev default-mysql-client libssl-dev
     - . venv/bin/activate
     - pip install mysqlclient==$PYTHON_MYSQL_VERSION
     - mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD" -e "set global character_set_server=utf8mb4;"
