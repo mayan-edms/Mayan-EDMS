@@ -1,9 +1,10 @@
-3.4.21 (2020-12-XX)
+3.4.21 (2020-12-31)
 ===================
 - Improve the Single Page App AJAX content escape logic. 
   This avoids an infinite login redirect loop on some browsers.
 - Avoid self-referencing dictionaries when resolving primary key
   URL keyword arguments.
+- Backport GitLab CI improvements from version 3.5.
 
 3.4.20 (2020-11-11)
 ===================
