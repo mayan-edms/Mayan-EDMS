@@ -1,3 +1,12 @@
+3.5.5 (2020-01-02)
+==================
+- Merge improvements and fixes from the 3.4 series.
+- Improve the Single Page App AJAX content escape logic.
+  This avoids an infinite login redirect loop on some browsers.
+- Avoid self-referencing dictionaries when resolving primary key
+  URL keyword arguments.
+- Translation updates.
+
 3.5.4 (2020-12-14)
 ==================
 - Document stubs without a label will now display their ID as the label.
@@ -340,6 +349,14 @@
   with ``CELERY_BROKER_URL``.
 - Default ``DEFAULT_CELERY_BROKER_URL`` to ``'memory://'``.
   This ensures operation even when there is no broker available.
+
+3.4.21 (2020-12-31)
+===================
+- Improve the Single Page App AJAX content escape logic.
+  This avoids an infinite login redirect loop on some browsers.
+- Avoid self-referencing dictionaries when resolving primary key
+  URL keyword arguments.
+- Backport GitLab CI improvements from version 3.5.
 
 3.4.20 (2020-11-11)
 ===================

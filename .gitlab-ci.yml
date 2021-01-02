@@ -190,6 +190,8 @@ job_push_python:
       - /var/cache/apt/archives/
   before_script:
     - set -a && . ./config.env && set +a
+    - echo "deb http://deb.debian.org/debian buster-backports main contrib non-free" >> /etc/apt/sources.list
+    - echo "deb-src http://deb.debian.org/debian buster-backports main contrib non-free" >> /etc/apt/sources.list
     - apt-get -qq update
     - apt-get install -qq curl exiftool gcc ghostscript gnupg1 libjpeg-dev libmagic1 libpng-dev libtiff-dev make poppler-utils python3-venv python3-dev tesseract-ocr
     - python3 -m venv venv
@@ -204,14 +206,6 @@ job_push_python:
     - releases/docker
     - releases/python
     - staging
-
-job_test_upgrade_sqlite:
-  <<: *job_test_upgrade_base
-  script:
-    - . venv/bin/activate
-    - mayan-edms.py initialsetup --settings=mayan.settings.testing.gitlab-ci
-    - pip install dist/mayan_edms-*.whl
-    - mayan-edms.py performupgrade --settings=mayan.settings.testing.gitlab-ci
 
 job_test_upgrade_mysql:
   <<: *job_test_upgrade_base
@@ -248,6 +242,14 @@ job_test_upgrade_postgres:
   tags:
     - postgres
 
+job_test_upgrade_sqlite:
+  <<: *job_test_upgrade_base
+  script:
+    - . venv/bin/activate
+    - mayan-edms.py initialsetup --settings=mayan.settings.testing.gitlab-ci
+    - pip install dist/mayan_edms-*.whl
+    - mayan-edms.py performupgrade --settings=mayan.settings.testing.gitlab-ci
+
 # Run the test suit
 
 .job_test_base: &job_test_base
@@ -273,6 +275,24 @@ job_test_upgrade_postgres:
     - releases/docker
     - releases/python
     - staging
+
+job_test_mysql:
+  <<: *job_test_base
+  variables:
+    MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    MYSQL_DATABASE: "mayan_edms"
+  services:
+    - mysql:5.7
+  script:
+    - apt-get install -qq default-libmysqlclient-dev default-mysql-client libssl-dev
+    - . venv/bin/activate
+    - pip install mysqlclient==$PYTHON_MYSQL_VERSION
+    - mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD" -e "set global character_set_server=utf8mb4;"
+    - mayan-edms.py initialsetup --settings=mayan.settings.testing.gitlab-ci.db_mysql
+    - pip install dist/mayan_edms-*.whl
+    - mayan-edms.py performupgrade --settings=mayan.settings.testing.gitlab-ci.db_mysql
+  tags:
+    - mysql
 
 job_test_postgres:
   <<: *job_test_base
