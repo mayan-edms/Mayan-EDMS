@@ -1,4 +1,4 @@
-3.5.5 (2021-01-02)
+3.5.5 (2021-01-05)
 ==================
 - Merge improvements and fixes from the 3.4 series.
 - Improve the Single Page App AJAX content escape logic.
