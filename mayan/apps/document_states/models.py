@@ -610,7 +610,7 @@ class WorkflowState(models.Model):
             transition__destination_state=self
         )
 
-        return Document.objects.filter(
+        return Document.valid.filter(
             Q(
                 workflows__pk__in=state_latest_entries.values_list(
                     'workflow_instance', flat=True

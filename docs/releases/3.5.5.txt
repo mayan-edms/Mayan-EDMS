@@ -48,6 +48,12 @@ The reusable primary key URL keyword arguments was updated to avoid
 self-referencing dictionaries during URL parameter resolution.
 
 
+Workflows
+^^^^^^^^^
+
+Trashed documents are now filtered from the active workflow and workflow
+state document lists.
+
 
 Removals
 --------

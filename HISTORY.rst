@@ -13,6 +13,8 @@
   MySQL doesn't yet support 'LIMIT & IN/ALL/ANY/SOME subquery'".
 - Allow trashed documents to still display a thumbnail and accurate page
   count.
+- Filter trashed documents from the active workflow and workflow states
+  document lists.
 
 3.5.4 (2020-12-14)
 ==================
