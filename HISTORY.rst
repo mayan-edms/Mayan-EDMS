@@ -11,6 +11,8 @@
   lists of IDs in Python memory and allow moving all queryset computation
   to the database layer. This is the cause of error 1235, "This version of
   MySQL doesn't yet support 'LIMIT & IN/ALL/ANY/SOME subquery'".
+- Allow trashed documents to still display a thumbnail and accurate page
+  count.
 
 3.5.4 (2020-12-14)
 ==================

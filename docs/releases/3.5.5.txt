@@ -9,6 +9,24 @@ This maintenance release includes improvements and fixes from the 3.4 series.
 Changes
 -------
 
+
+CD/CI
+^^^^^
+
+Removed CD/CI MySQL tests. MySQL does not yet support sliced subqueries.
+This queryset paradigm is used in Mayan EDMS to avoid keeping temporary
+lists of IDs in Python memory and allow moving all queryset computation
+to the database layer. This is the cause of error 1235, "This version of
+MySQL doesn't yet support 'LIMIT & IN/ALL/ANY/SOME subquery'".
+
+
+Documents
+^^^^^^^^^
+
+Allow trashed documents to still display a thumbnail and accurate page
+count.
+
+
 Translations
 ^^^^^^^^^^^^
 

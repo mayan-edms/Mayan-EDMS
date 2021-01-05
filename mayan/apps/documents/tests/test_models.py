@@ -305,3 +305,20 @@ class DuplicatedDocumentsTestCase(GenericDocumentTestCase):
                 document=self.test_documents[0]
             )
         )
+
+
+class TrashedDocumentTestCase(GenericDocumentTestCase):
+    def test_trashed_document_api_image_url(self):
+        self.test_document.delete()
+        test_trashed_document = DeletedDocument.objects.get(
+            pk=self.test_document.pk
+        )
+        self.assertTrue(test_trashed_document.get_api_image_url())
+
+    def test_trashed_document_page_count(self):
+        page_count = self.test_document.pages_valid.count()
+        self.test_document.delete()
+        test_trashed_document = DeletedDocument.objects.get(
+            pk=self.test_document.pk
+        )
+        self.assertTrue(test_trashed_document.pages_valid.count(), page_count)
