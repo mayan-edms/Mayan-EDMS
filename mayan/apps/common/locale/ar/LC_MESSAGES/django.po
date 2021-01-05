@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-31 07:33+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-12-23 23:58+0000\n"
 "Last-Translator: Marwan Rahhal <Marwanr@sssit.net>\n"
 "Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
@@ -81,7 +81,7 @@ msgstr "الوثائق"
 msgid "Forum"
 msgstr "المنتدى"
 
-#: links.py:56 views.py:104
+#: links.py:56 views.py:106
 msgid "License"
 msgstr "الرخص"
 
@@ -105,7 +105,7 @@ msgstr "متجر عالمي"
 msgid "Get support"
 msgstr "الدعم الفني"
 
-#: links.py:79 queues.py:9 views.py:173
+#: links.py:79 queues.py:9 views.py:175
 msgid "Tools"
 msgstr "الأدوات"
 
@@ -234,54 +234,54 @@ msgid ""
 "underscores."
 msgstr "أدخل &quot;اسمًا داخليًا&quot; صالحًا يتكون من أحرف وأرقام وشرطات سفلية."
 
-#: views.py:27
+#: views.py:29
 msgid "About"
 msgstr "حول"
 
-#: views.py:40
+#: views.py:42
 msgid "Current user locale profile details"
 msgstr "تفاصيل الملف الشخصي المحلي للمستخدم الحالي"
 
-#: views.py:46
+#: views.py:48
 msgid "Edit current user locale profile details"
 msgstr "تعديل تفاصيل الملف الشخصي المحلي للمستخدم الحالي"
 
-#: views.py:95
+#: views.py:97
 msgid "Dashboard"
 msgstr "لوحة قياس الإداء"
 
-#: views.py:116
+#: views.py:118
 #, python-format
 msgid "Fields to be copied: %s"
 msgstr "الحقول المراد نسخها: %s"
 
-#: views.py:125
+#: views.py:127
 #, python-format
 msgid "Make a copy of %(object_name)s \"%(object)s\"?"
 msgstr "عمل نسخة من %(object_name)s &quot;%(object)s&quot;؟"
 
-#: views.py:134
+#: views.py:136
 msgid "Object copied successfully."
 msgstr "تم نسخ الكائن بنجاح."
 
-#: views.py:151
+#: views.py:153
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
 msgstr "لا توجد نتائج هنا تعني أنه ليس لديك الأذونات المطلوبة لأداء مهمة إدارية."
 
-#: views.py:154
+#: views.py:156
 msgid "No setup options available."
 msgstr "لا توجد خيارات إعداد متاحة."
 
-#: views.py:158
+#: views.py:160
 msgid "Setup items"
 msgstr "تثبيت العناصر"
 
-#: views.py:160
+#: views.py:162
 msgid "Here you can configure all aspects of the system."
 msgstr "هنا يمكنك تكوين جميع جوانب النظام."
 
-#: views.py:175
+#: views.py:177
 msgid "These modules are used to do system maintenance."
 msgstr "تستخدم هذه الوحدات للقيام بصيانة النظام."

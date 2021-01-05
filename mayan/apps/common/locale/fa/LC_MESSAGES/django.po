@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-31 07:33+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
@@ -80,7 +80,7 @@ msgstr "مستندات"
 msgid "Forum"
 msgstr "انجمن"
 
-#: links.py:56 views.py:104
+#: links.py:56 views.py:106
 msgid "License"
 msgstr "لیسانس"
 
@@ -104,7 +104,7 @@ msgstr ""
 msgid "Get support"
 msgstr ""
 
-#: links.py:79 queues.py:9 views.py:173
+#: links.py:79 queues.py:9 views.py:175
 msgid "Tools"
 msgstr "ابزار"
 
@@ -233,54 +233,54 @@ msgid ""
 "underscores."
 msgstr "یک نام داخلی معتبر وارد کنید که شامل حروف، اعداد و حروف زیر است."
 
-#: views.py:27
+#: views.py:29
 msgid "About"
 msgstr "درباره"
 
-#: views.py:40
+#: views.py:42
 msgid "Current user locale profile details"
 msgstr "شرح پروفایل محلی کاربر فعلی"
 
-#: views.py:46
+#: views.py:48
 msgid "Edit current user locale profile details"
 msgstr "ویرایش شرح پروفایل محلی کاربر فعلی"
 
-#: views.py:95
+#: views.py:97
 msgid "Dashboard"
 msgstr "داشبورد"
 
-#: views.py:116
+#: views.py:118
 #, python-format
 msgid "Fields to be copied: %s"
 msgstr ""
 
-#: views.py:125
+#: views.py:127
 #, python-format
 msgid "Make a copy of %(object_name)s \"%(object)s\"?"
 msgstr ""
 
-#: views.py:134
+#: views.py:136
 msgid "Object copied successfully."
 msgstr ""
 
-#: views.py:151
+#: views.py:153
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
 msgstr ""
 
-#: views.py:154
+#: views.py:156
 msgid "No setup options available."
 msgstr ""
 
-#: views.py:158
+#: views.py:160
 msgid "Setup items"
 msgstr "اقلام نصب"
 
-#: views.py:160
+#: views.py:162
 msgid "Here you can configure all aspects of the system."
 msgstr ""
 
-#: views.py:175
+#: views.py:177
 msgid "These modules are used to do system maintenance."
 msgstr ""

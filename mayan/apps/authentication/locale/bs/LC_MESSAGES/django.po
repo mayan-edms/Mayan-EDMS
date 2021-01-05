@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-31 07:33+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-03-28 07:23+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (http://www.transifex.com/rosarior/mayan-edms/language/bs/)\n"
@@ -69,19 +69,19 @@ msgstr ""
 msgid "If selected, disables ending impersonation."
 msgstr ""
 
-#: links.py:22
+#: links.py:25
 msgid "Logout"
 msgstr "Logout"
 
-#: links.py:27
+#: links.py:30
 msgid "Change password"
 msgstr "Promijeni lozinku"
 
-#: links.py:32 views.py:68
+#: links.py:35 views.py:68
 msgid "Impersonate user"
 msgstr ""
 
-#: links.py:37 links.py:44
+#: links.py:40 links.py:47
 msgid "Set password"
 msgstr "Postavite lozinku"
 

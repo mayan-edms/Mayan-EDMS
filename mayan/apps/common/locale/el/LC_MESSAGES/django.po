@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-31 07:33+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-12-27 17:19+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
@@ -79,7 +79,7 @@ msgstr "Τεκμηρίωση"
 msgid "Forum"
 msgstr "Φόρουμ"
 
-#: links.py:56 views.py:104
+#: links.py:56 views.py:106
 msgid "License"
 msgstr "Άδεια χρήσης"
 
@@ -103,7 +103,7 @@ msgstr "Ηλεκτρονικά κατάστημα"
 msgid "Get support"
 msgstr "Βοήθεια"
 
-#: links.py:79 queues.py:9 views.py:173
+#: links.py:79 queues.py:9 views.py:175
 msgid "Tools"
 msgstr "Εργαλεία"
 
@@ -232,54 +232,54 @@ msgid ""
 "underscores."
 msgstr "Εισάγετε ένα έγκυρο 'εσωτερικό όνομα' που να αποτελείται από γράμματα, αριθμούς και κάτω παύλες."
 
-#: views.py:27
+#: views.py:29
 msgid "About"
 msgstr "Σχετικά"
 
-#: views.py:40
+#: views.py:42
 msgid "Current user locale profile details"
 msgstr "Λεπτομέρειες προφίλ τοποθεσίας του τρέχοντος χρήστη"
 
-#: views.py:46
+#: views.py:48
 msgid "Edit current user locale profile details"
 msgstr "Τροποποίηση προφίλ τοποθεσίας του τρέχοντος χρήστη"
 
-#: views.py:95
+#: views.py:97
 msgid "Dashboard"
 msgstr "Πίνακας ελέγχου"
 
-#: views.py:116
+#: views.py:118
 #, python-format
 msgid "Fields to be copied: %s"
 msgstr "Πεδία προς αντιγραφή: %s"
 
-#: views.py:125
+#: views.py:127
 #, python-format
 msgid "Make a copy of %(object_name)s \"%(object)s\"?"
 msgstr "Δημιουργία αντιγράφου αντικειμένων %(object_name)s \"%(object)s\";"
 
-#: views.py:134
+#: views.py:136
 msgid "Object copied successfully."
 msgstr "Το αντικείμενο αντιγράφηκε επιτυχώς."
 
-#: views.py:151
+#: views.py:153
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
 msgstr "Η μη εμφάνιση αποτελεσμάτων υποδεικνύει έλλειψη των απαιτούμενων δικαιωμάτων για την εκτέλεση εργασίας διαχειριστή. "
 
-#: views.py:154
+#: views.py:156
 msgid "No setup options available."
 msgstr "Δεν υπάρχουν διαθέσιμες επιλογές ρυθμίσεων."
 
-#: views.py:158
+#: views.py:160
 msgid "Setup items"
 msgstr "Στοιχεία ρύθμισης"
 
-#: views.py:160
+#: views.py:162
 msgid "Here you can configure all aspects of the system."
 msgstr "Εδώ μπορεί να παραμετροποιηθεί το σύστημα."
 
-#: views.py:175
+#: views.py:177
 msgid "These modules are used to do system maintenance."
 msgstr "Αυτά τα modules χρησιμοποιούνται για την συντήρηση του συστήματος."

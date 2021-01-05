@@ -6,13 +6,13 @@
 # Translators:
 # Daniele Bortoluzzi <daniele@elkos.it>, 2019
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
-# Roberto Rosario, 2016,2020
+# Roberto Rosario, 2016,2020-2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-31 07:34+0000\n"
-"PO-Revision-Date: 2020-10-26 13:26+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2021-01-04 16:37+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -793,7 +793,7 @@ msgstr "Pulisci le liste dei duplicati vuote"
 
 #: queues.py:43
 msgid "Empty the trash can"
-msgstr ""
+msgstr "Svuota il cestino"
 
 #: queues.py:48
 msgid "Check document type delete periods"
@@ -1411,8 +1411,8 @@ msgstr "Aggiungi"
 #: views/favorite_document_views.py:58
 msgid "Add the selected document to favorites?"
 msgid_plural "Add the selected documents to favorites?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Aggiungere il documento selezionato ai preferiti?"
+msgstr[1] "Aggiungere i documenti selezionati ai preferiti?"
 
 #: views/favorite_document_views.py:76
 #, python-format
@@ -1436,8 +1436,8 @@ msgstr "Rimuovi"
 #: views/favorite_document_views.py:92
 msgid "Remove the selected document from favorites?"
 msgid_plural "Remove the selected documents from favorites?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Rimuovere il documento selezionato dai preferiti?"
+msgstr[1] "Rimuovere i documenti selezionati dai preferiti?"
 
 #: views/trashed_document_views.py:37
 #, python-format
@@ -1461,7 +1461,7 @@ msgstr "Cancellare il cestino?"
 
 #: views/trashed_document_views.py:84
 msgid "The trash emptying task has been queued."
-msgstr ""
+msgstr "L'attività di svuotamento del cestino è stata messa in coda."
 
 #: views/trashed_document_views.py:94
 #, python-format

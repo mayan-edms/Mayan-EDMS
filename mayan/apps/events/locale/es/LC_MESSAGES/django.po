@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-31 07:34+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2019-04-30 16:39+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:27 links.py:31 links.py:36 links.py:41 permissions.py:5 views.py:33
+#: apps.py:27 links.py:32 links.py:37 links.py:42 permissions.py:5 views.py:33
 msgid "Events"
 msgstr "Eventos"
 
@@ -77,23 +77,23 @@ msgstr "Suscrito"
 msgid "System"
 msgstr "Sistema"
 
-#: links.py:27
+#: links.py:28
 msgid "My events"
 msgstr "Mis eventos"
 
-#: links.py:45 models.py:63 views.py:74
+#: links.py:46 models.py:63 views.py:74
 msgid "Event subscriptions"
 msgstr "Suscripciones de eventos"
 
-#: links.py:50
+#: links.py:51
 msgid "Mark as seen"
 msgstr "Marcar como visto"
 
-#: links.py:53
+#: links.py:54
 msgid "Mark all as seen"
 msgstr "Marcar todos como vistos"
 
-#: links.py:59
+#: links.py:60
 msgid "Subscriptions"
 msgstr "Suscripciones"
 

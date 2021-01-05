@@ -6,15 +6,15 @@
 # Translators:
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2019
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2019
-# Roberto Rosario, 2020
+# Roberto Rosario, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-31 07:34+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
-"Last-Translator: Roberto Rosario, 2020\n"
+"Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -78,7 +78,7 @@ msgstr "Invia per i metadati del file"
 
 #: links.py:40
 msgid "Setup file metadata"
-msgstr ""
+msgstr "Impostazione di metadati del file"
 
 #: links.py:45
 msgid "File metadata processing per type"
@@ -100,7 +100,7 @@ msgstr ""
 
 #: models.py:18
 msgid "Driver path"
-msgstr ""
+msgstr "Percorso del driver"
 
 #: models.py:22
 msgid "Internal name"
@@ -108,11 +108,11 @@ msgstr "Nome interno"
 
 #: models.py:27 models.py:70
 msgid "Driver"
-msgstr ""
+msgstr "Driver"
 
 #: models.py:28
 msgid "Drivers"
-msgstr ""
+msgstr "Drivers"
 
 #: models.py:48
 msgid "Document type"
@@ -197,7 +197,7 @@ msgstr ""
 
 #: settings.py:25
 msgid "Arguments to pass to the drivers."
-msgstr ""
+msgstr "Argomenti da passare agli autisti."
 
 #: views.py:44
 msgid ""
@@ -217,12 +217,12 @@ msgstr ""
 
 #: views.py:52
 msgid "No file metadata available"
-msgstr ""
+msgstr "Nessun metadato del file disponibile"
 
 #: views.py:55
 #, python-format
 msgid "File metadata drivers for: %s"
-msgstr ""
+msgstr "Driver dei metadati dei file per: %s"
 
 #: views.py:81
 msgid ""
@@ -230,15 +230,18 @@ msgid ""
 "the driver does not support any metadata field for the file type of this "
 "document."
 msgstr ""
+"Ciò potrebbe significare che il rilevamento dei metadati del file non è "
+"stato completato o che il driver non supporta alcun campo di metadati per il"
+" tipo di file di questo documento."
 
 #: views.py:86
 msgid "No file metadata available for this driver"
-msgstr ""
+msgstr "Nessun metadato di file disponibile per questo driver"
 
 #: views.py:90
 #, python-format
 msgid "File metadata attribures for: %(document)s, for driver: %(driver)s"
-msgstr ""
+msgstr "Attribuzioni metadati file per: %(document)s, per driver: %(driver)s"
 
 #: views.py:119
 msgid "Submit the selected document to the file metadata queue?"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-31 07:34+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2019-05-02 05:19+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:27 links.py:31 links.py:36 links.py:41 permissions.py:5 views.py:33
+#: apps.py:27 links.py:32 links.py:37 links.py:42 permissions.py:5 views.py:33
 msgid "Events"
 msgstr "Evenimente"
 
@@ -76,23 +76,23 @@ msgstr "Sunteți abonat"
 msgid "System"
 msgstr "Sistem"
 
-#: links.py:27
+#: links.py:28
 msgid "My events"
 msgstr "Evenimente personale"
 
-#: links.py:45 models.py:63 views.py:74
+#: links.py:46 models.py:63 views.py:74
 msgid "Event subscriptions"
 msgstr "Abonări la eveniment"
 
-#: links.py:50
+#: links.py:51
 msgid "Mark as seen"
 msgstr "Marcați drept văzute"
 
-#: links.py:53
+#: links.py:54
 msgid "Mark all as seen"
 msgstr "Marcați toate drept văzute"
 
-#: links.py:59
+#: links.py:60
 msgid "Subscriptions"
 msgstr "Abonamente"
 

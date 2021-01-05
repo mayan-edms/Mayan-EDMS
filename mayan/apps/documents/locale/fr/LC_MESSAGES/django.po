@@ -6,7 +6,7 @@
 # Translators:
 # Bruno CAPELETO <bruno.capeleto@abcreseau.com>, 2016
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2016-2018
-# Frédéric Sheedy <sheedf@gmail.com>, 2019-2020
+# Frédéric Sheedy <sheedf@gmail.com>, 2019-2021
 # Olivier W, 2019
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2016
 # Yves Dubois <ydubois@gmail.com>, 2018
@@ -14,9 +14,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-31 07:34+0000\n"
-"PO-Revision-Date: 2020-10-26 13:26+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2021-01-04 17:55+0000\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1414,8 +1414,8 @@ msgstr "Ajouter"
 #: views/favorite_document_views.py:58
 msgid "Add the selected document to favorites?"
 msgid_plural "Add the selected documents to favorites?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ajouter le document sélectionné aux favoris?"
+msgstr[1] "Ajouter les documents sélectionnés aux favoris?"
 
 #: views/favorite_document_views.py:76
 #, python-format
@@ -1439,8 +1439,8 @@ msgstr "Retirer"
 #: views/favorite_document_views.py:92
 msgid "Remove the selected document from favorites?"
 msgid_plural "Remove the selected documents from favorites?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Supprimer le document sélectionné des favoris?"
+msgstr[1] "Supprimer les documents sélectionnés des favoris?"
 
 #: views/trashed_document_views.py:37
 #, python-format

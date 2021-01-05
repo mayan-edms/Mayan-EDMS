@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-31 07:33+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-09-30 04:19+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
@@ -85,7 +85,7 @@ msgstr "Documentazione"
 msgid "Forum"
 msgstr "Forum"
 
-#: links.py:56 views.py:104
+#: links.py:56 views.py:106
 msgid "License"
 msgstr "Licenza"
 
@@ -109,7 +109,7 @@ msgstr "Negozio online"
 msgid "Get support"
 msgstr "Ottieni supporto"
 
-#: links.py:79 queues.py:9 views.py:173
+#: links.py:79 queues.py:9 views.py:175
 msgid "Tools"
 msgstr "Strumenti"
 
@@ -238,54 +238,54 @@ msgid ""
 "underscores."
 msgstr "Inserisci un 'internal name' valido composto da lettere, numeri e underscore."
 
-#: views.py:27
+#: views.py:29
 msgid "About"
 msgstr "Informazioni"
 
-#: views.py:40
+#: views.py:42
 msgid "Current user locale profile details"
 msgstr "Dettagli del profilo dell'utente attuale"
 
-#: views.py:46
+#: views.py:48
 msgid "Edit current user locale profile details"
 msgstr "Modificare i dettagli del profilo corrente dell'utente"
 
-#: views.py:95
+#: views.py:97
 msgid "Dashboard"
 msgstr "Dashboard"
 
-#: views.py:116
+#: views.py:118
 #, python-format
 msgid "Fields to be copied: %s"
 msgstr "Campi da copiare: %s"
 
-#: views.py:125
+#: views.py:127
 #, python-format
 msgid "Make a copy of %(object_name)s \"%(object)s\"?"
 msgstr "Creare una copia di %(object_name)s \"%(object)s\"?"
 
-#: views.py:134
+#: views.py:136
 msgid "Object copied successfully."
 msgstr "Oggetto copiato con successo."
 
-#: views.py:151
+#: views.py:153
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
 msgstr "Nessun risultato qui significa che non dispongono delle autorizzazioni necessarie per eseguire l'attività amministrativa."
 
-#: views.py:154
+#: views.py:156
 msgid "No setup options available."
 msgstr "Nessuna opzione di configurazione disponibile."
 
-#: views.py:158
+#: views.py:160
 msgid "Setup items"
 msgstr "Impostazione elementi"
 
-#: views.py:160
+#: views.py:162
 msgid "Here you can configure all aspects of the system."
 msgstr "Qui puoi configurare tutti gli aspetti del sistema."
 
-#: views.py:175
+#: views.py:177
 msgid "These modules are used to do system maintenance."
 msgstr "Questi moduli vengono utilizzati per eseguire la manutenzione del sistema."

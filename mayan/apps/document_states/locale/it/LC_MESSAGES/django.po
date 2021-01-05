@@ -6,13 +6,13 @@
 # Translators:
 # Daniele Bortoluzzi <daniele@elkos.it>, 2019
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
-# Roberto Rosario, 2020
+# Roberto Rosario, 2020-2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-31 07:34+0000\n"
-"PO-Revision-Date: 2020-09-30 04:14+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2021-01-04 16:48+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -679,7 +679,7 @@ msgstr ""
 msgid ""
 "Unable to initialize the workflow preview storage. Check the settings {} and"
 " {} for formatting errors."
-msgstr ""
+msgstr "Impossibile inizializzare l'archiviazione dell'anteprima del flusso di lavoro. Controlla le impostazioni {} e {} per errori di formattazione."
 
 #: storages.py:21
 msgid "Workflow preview images"
@@ -955,53 +955,53 @@ msgstr "Flussi di lavoro avviati per il documento %(count)d"
 #: views/workflow_template_views.py:96
 #, python-format
 msgid "Workflows launched for %(count)d documents"
-msgstr ""
+msgstr "Flussi di lavoro avviati per documenti %(count)d"
 
 #: views/workflow_template_views.py:100
 msgid "Launch"
-msgstr ""
+msgstr "Lanciare"
 
 #: views/workflow_template_views.py:102
 msgid ""
 "Workflows already launched or workflows not applicable to some documents "
 "when multiple documents are selected, will be silently ignored."
-msgstr ""
+msgstr "I flussi di lavoro già avviati o i flussi di lavoro non applicabili ad alcuni documenti quando sono selezionati più documenti, verranno silenziosamente ignorati."
 
 #: views/workflow_template_views.py:107
 #, python-format
 msgid "Launch selected workflows for %(count)d document"
 msgid_plural "Launch selected workflows for %(count)d documents"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Avvia i flussi di lavoro selezionati per %(count)d documento"
+msgstr[1] "Avvia flussi di lavoro selezionati per %(count)d documenti"
 
 #: views/workflow_template_views.py:120
 #, python-format
 msgid "Launch selected workflows for document: %s"
-msgstr ""
+msgstr "Avvia i flussi di lavoro selezionati per il documento: %s"
 
 #: views/workflow_template_views.py:133
 msgid "Workflows to be launched."
-msgstr ""
+msgstr "Flussi di lavoro da avviare."
 
 #: views/workflow_template_views.py:175
 #, python-format
 msgid "Delete request performed on %(count)d workflow"
-msgstr ""
+msgstr "Richiesta di eliminazione eseguita sul flusso di lavoro %(count)d"
 
 #: views/workflow_template_views.py:177
 #, python-format
 msgid "Delete request performed on %(count)d workflows"
-msgstr ""
+msgstr "Richiesta di eliminazione eseguita sui flussi di lavoro %(count)d"
 
 #: views/workflow_template_views.py:183
 msgid "All workflow instances will also be deleted."
-msgstr ""
+msgstr "Verranno eliminate anche tutte le istanze del flusso di lavoro."
 
 #: views/workflow_template_views.py:185
 msgid "Delete the selected workflow?"
 msgid_plural "Delete the selected workflows?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Eliminare il flusso di lavoro selezionato?"
+msgstr[1] "Eliminare i flussi di lavoro selezionati?"
 
 #: views/workflow_template_views.py:195
 #, python-format
@@ -1011,12 +1011,12 @@ msgstr "Eliminare il flusso di lavoro: %s?"
 #: views/workflow_template_views.py:206
 #, python-format
 msgid "Workflow \"%s\" deleted successfully."
-msgstr ""
+msgstr "Flusso di lavoro \"%s\" eliminato correttamente."
 
 #: views/workflow_template_views.py:211
 #, python-format
 msgid "Error deleting workflow \"%(workflow)s\": %(error)s"
-msgstr ""
+msgstr "Errore durante l'eliminazione del flusso di lavoro \"%(workflow)s\": %(error)s"
 
 #: views/workflow_template_views.py:229
 #, python-format
@@ -1044,7 +1044,7 @@ msgstr "Tipi di documento assegnati al workflow: %s"
 
 #: views/workflow_template_views.py:299
 msgid "Launch workflow?"
-msgstr ""
+msgstr "Avviare il flusso di lavoro?"
 
 #: views/workflow_template_views.py:301
 msgid ""
@@ -1053,7 +1053,7 @@ msgstr "Questo avvierà il flusso di lavoro per i documenti che sono già stati 
 
 #: views/workflow_template_views.py:313 views/workflow_template_views.py:368
 msgid "Workflow launch queued successfully."
-msgstr ""
+msgstr "Avvio del flusso di lavoro accodato correttamente."
 
 #: views/workflow_template_views.py:330
 msgid ""
@@ -1105,7 +1105,7 @@ msgstr "Modifica le proprietà del documento"
 
 #: workflow_actions.py:77
 msgid "Additional workflows to launch for the document."
-msgstr ""
+msgstr "Flussi di lavoro aggiuntivi da avviare per il documento."
 
 #: workflow_actions.py:116
 msgid "URL"
@@ -1117,7 +1117,7 @@ msgid ""
 " log entry instance as part of their context via the variable \"entry_log\"."
 " The \"entry_log\" in turn provides the \"workflow_instance\", \"datetime\","
 " \"transition\", \"user\", and \"comment\" attributes."
-msgstr ""
+msgstr "Può essere un indirizzo IP, un dominio o un modello. I modelli ricevono l'istanza della voce di registro del flusso di lavoro come parte del loro contesto tramite la variabile \"entry_log\". \"Entry_log\" a sua volta fornisce gli attributi \"workflow_instance\", \"datetime\", \"transit\", \"user\" e \"comment\"."
 
 #: workflow_actions.py:129
 msgid "Timeout"
@@ -1127,11 +1127,11 @@ msgstr "Timeout"
 msgid ""
 "Time in seconds to wait for a response. Can be a static value or a template."
 " "
-msgstr ""
+msgstr "Tempo in secondi per attendere una risposta. Può essere un valore statico o un modello."
 
 #: workflow_actions.py:138
 msgid "Payload"
-msgstr ""
+msgstr "Dati"
 
 #: workflow_actions.py:141
 msgid ""
@@ -1140,7 +1140,7 @@ msgid ""
 " part of their context via the variable \"entry_log\". The \"entry_log\" in "
 "turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
 "\"user\", and \"comment\" attributes."
-msgstr ""
+msgstr "Un documento JSON da includere nella richiesta. Può anche essere un modello che restituisce un documento JSON. I modelli ricevono l'istanza della voce di registro del flusso di lavoro come parte del loro contesto tramite la variabile \"entry_log\". \"Entry_log\" a sua volta fornisce gli attributi \"workflow_instance\", \"datetime\", \"transit\", \"user\" e \"comment\"."
 
 #: workflow_actions.py:151
 msgid "Username"
@@ -1153,7 +1153,7 @@ msgid ""
 "part of their context via the variable \"entry_log\". The \"entry_log\" in "
 "turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
 "\"user\", and \"comment\" attributes."
-msgstr ""
+msgstr "Nome utente da utilizzare per effettuare la richiesta con HTTP Basic Auth. Può essere un valore statico o un modello. I modelli ricevono l'istanza della voce di registro del flusso di lavoro come parte del loro contesto tramite la variabile \"entry_log\". \"Entry_log\" a sua volta fornisce gli attributi \"workflow_instance\", \"datetime\", \"transit\", \"user\" e \"comment\"."
 
 #: workflow_actions.py:164
 msgid "Password"
@@ -1166,11 +1166,11 @@ msgid ""
 "part of their context via the variable \"entry_log\". The \"entry_log\" in "
 "turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
 "\"user\", and \"comment\" attributes."
-msgstr ""
+msgstr "Password da utilizzare per effettuare la richiesta con HTTP Basic Auth. Può essere un valore statico o un modello. I modelli ricevono l'istanza della voce di registro del flusso di lavoro come parte del loro contesto tramite la variabile \"entry_log\". \"Entry_log\" a sua volta fornisce gli attributi \"workflow_instance\", \"datetime\", \"transit\", \"user\" e \"comment\"."
 
 #: workflow_actions.py:177
 msgid "Method"
-msgstr ""
+msgstr "Metodo"
 
 #: workflow_actions.py:180
 msgid ""
@@ -1180,7 +1180,7 @@ msgid ""
 "as part of their context via the variable \"entry_log\". The \"entry_log\" "
 "in turn provides the \"workflow_instance\", \"datetime\", \"transition\", "
 "\"user\", and \"comment\" attributes."
-msgstr ""
+msgstr "Il metodo HTTP da utilizzare per la richiesta. Le scelte tipiche sono OPTIONS, HEAD, POST, GET, PUT, PATCH, DELETE. Può essere un valore statico o un modello che restituisce il testo del metodo. I modelli ricevono l'istanza della voce di registro del flusso di lavoro come parte del loro contesto tramite la variabile \"entry_log\". \"Entry_log\" a sua volta fornisce gli attributi \"workflow_instance\", \"datetime\", \"transit\", \"user\" e \"comment\"."
 
 #: workflow_actions.py:191
 msgid "Headers"

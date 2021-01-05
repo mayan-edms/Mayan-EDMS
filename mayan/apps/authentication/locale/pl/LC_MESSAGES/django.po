@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-31 07:33+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-05-13 14:17+0000\n"
 "Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
@@ -73,19 +73,19 @@ msgstr "Stały"
 msgid "If selected, disables ending impersonation."
 msgstr "Jeśli ta opcja jest wybrana, wyłącza zakończenie podszywania."
 
-#: links.py:22
+#: links.py:25
 msgid "Logout"
 msgstr "Wyloguj"
 
-#: links.py:27
+#: links.py:30
 msgid "Change password"
 msgstr "Zmień hasło"
 
-#: links.py:32 views.py:68
+#: links.py:35 views.py:68
 msgid "Impersonate user"
 msgstr "Podszyj się pod użytkownika"
 
-#: links.py:37 links.py:44
+#: links.py:40 links.py:47
 msgid "Set password"
 msgstr "Ustaw hasło"
 

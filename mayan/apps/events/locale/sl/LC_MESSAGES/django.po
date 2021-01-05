@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-31 07:34+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-12-25 11:48+0000\n"
 "Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>\n"
 "Language-Team: Slovenian (http://www.transifex.com/rosarior/mayan-edms/language/sl/)\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Language: sl\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
-#: apps.py:27 links.py:31 links.py:36 links.py:41 permissions.py:5 views.py:33
+#: apps.py:27 links.py:32 links.py:37 links.py:42 permissions.py:5 views.py:33
 msgid "Events"
 msgstr "Dogodki"
 
@@ -76,23 +76,23 @@ msgstr "Naročeni"
 msgid "System"
 msgstr "Sistem"
 
-#: links.py:27
+#: links.py:28
 msgid "My events"
 msgstr "Moji dogodki"
 
-#: links.py:45 models.py:63 views.py:74
+#: links.py:46 models.py:63 views.py:74
 msgid "Event subscriptions"
 msgstr "Naročnine na dogodke"
 
-#: links.py:50
+#: links.py:51
 msgid "Mark as seen"
 msgstr "Označi kot videno"
 
-#: links.py:53
+#: links.py:54
 msgid "Mark all as seen"
 msgstr "Označi vse kot videno"
 
-#: links.py:59
+#: links.py:60
 msgid "Subscriptions"
 msgstr "Naročnine"
 

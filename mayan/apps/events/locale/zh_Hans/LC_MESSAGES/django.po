@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-31 07:34+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-04-02 07:35+0000\n"
 "Last-Translator: xisafe <root@xisafe.com>\n"
 "Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-edms/language/zh-Hans/)\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:27 links.py:31 links.py:36 links.py:41 permissions.py:5 views.py:33
+#: apps.py:27 links.py:32 links.py:37 links.py:42 permissions.py:5 views.py:33
 msgid "Events"
 msgstr "事件"
 
@@ -77,23 +77,23 @@ msgstr "已订阅"
 msgid "System"
 msgstr "系统"
 
-#: links.py:27
+#: links.py:28
 msgid "My events"
 msgstr "我的事件"
 
-#: links.py:45 models.py:63 views.py:74
+#: links.py:46 models.py:63 views.py:74
 msgid "Event subscriptions"
 msgstr "活动订阅"
 
-#: links.py:50
+#: links.py:51
 msgid "Mark as seen"
 msgstr "标记为已见"
 
-#: links.py:53
+#: links.py:54
 msgid "Mark all as seen"
 msgstr "标记所有为已见"
 
-#: links.py:59
+#: links.py:60
 msgid "Subscriptions"
 msgstr "订阅"
 

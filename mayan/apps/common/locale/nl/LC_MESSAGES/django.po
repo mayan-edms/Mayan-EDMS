@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-31 07:33+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
@@ -83,7 +83,7 @@ msgstr "Documentatie"
 msgid "Forum"
 msgstr "Forum"
 
-#: links.py:56 views.py:104
+#: links.py:56 views.py:106
 msgid "License"
 msgstr "Licentie"
 
@@ -107,7 +107,7 @@ msgstr "Online opslag"
 msgid "Get support"
 msgstr "Ondersteuning"
 
-#: links.py:79 queues.py:9 views.py:173
+#: links.py:79 queues.py:9 views.py:175
 msgid "Tools"
 msgstr "Gereedschappen"
 
@@ -236,54 +236,54 @@ msgid ""
 "underscores."
 msgstr "Voer een geldige 'interne naam' in die bestaat uit letter, cijfers en underscores."
 
-#: views.py:27
+#: views.py:29
 msgid "About"
 msgstr "Over"
 
-#: views.py:40
+#: views.py:42
 msgid "Current user locale profile details"
 msgstr "Details landinstellingen huidige gebruiker"
 
-#: views.py:46
+#: views.py:48
 msgid "Edit current user locale profile details"
 msgstr "Details landinstellingen huidige gebruiker bewerken"
 
-#: views.py:95
+#: views.py:97
 msgid "Dashboard"
 msgstr "Dashboard"
 
-#: views.py:116
+#: views.py:118
 #, python-format
 msgid "Fields to be copied: %s"
 msgstr ""
 
-#: views.py:125
+#: views.py:127
 #, python-format
 msgid "Make a copy of %(object_name)s \"%(object)s\"?"
 msgstr ""
 
-#: views.py:134
+#: views.py:136
 msgid "Object copied successfully."
 msgstr ""
 
-#: views.py:151
+#: views.py:153
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
 msgstr "Geen resultaten betekent dat u onvoldoende verplichte toegangsrechten heeft om de beheertaak uit te voeren."
 
-#: views.py:154
+#: views.py:156
 msgid "No setup options available."
 msgstr "Geen instellingsopties beschikbaar."
 
-#: views.py:158
+#: views.py:160
 msgid "Setup items"
 msgstr "Setup items"
 
-#: views.py:160
+#: views.py:162
 msgid "Here you can configure all aspects of the system."
 msgstr "Hier kunt u alle aspecten van het systeem instellen."
 
-#: views.py:175
+#: views.py:177
 msgid "These modules are used to do system maintenance."
 msgstr "Deze modules worden gebruikt voor systeemonderhoud."

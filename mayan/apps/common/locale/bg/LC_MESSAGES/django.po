@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-12-31 07:33+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-10-02 19:24+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
@@ -80,7 +80,7 @@ msgstr "Документация"
 msgid "Forum"
 msgstr "Форум"
 
-#: links.py:56 views.py:104
+#: links.py:56 views.py:106
 msgid "License"
 msgstr "Лиценз"
 
@@ -104,7 +104,7 @@ msgstr "Онлайн магазин"
 msgid "Get support"
 msgstr "Поддръжка"
 
-#: links.py:79 queues.py:9 views.py:173
+#: links.py:79 queues.py:9 views.py:175
 msgid "Tools"
 msgstr "Инструменти"
 
@@ -233,54 +233,54 @@ msgid ""
 "underscores."
 msgstr "Въведете валидно „вътрешно име“, състоящо се от букви, цифри и подчертавания."
 
-#: views.py:27
+#: views.py:29
 msgid "About"
 msgstr "Относно"
 
-#: views.py:40
+#: views.py:42
 msgid "Current user locale profile details"
 msgstr "Данни от текущия локален потребителски профил "
 
-#: views.py:46
+#: views.py:48
 msgid "Edit current user locale profile details"
 msgstr "Редактиране на данни за текущия локален потребителски профил"
 
-#: views.py:95
+#: views.py:97
 msgid "Dashboard"
 msgstr "Контролно табло"
 
-#: views.py:116
+#: views.py:118
 #, python-format
 msgid "Fields to be copied: %s"
 msgstr "Полета за копиране: %s"
 
-#: views.py:125
+#: views.py:127
 #, python-format
 msgid "Make a copy of %(object_name)s \"%(object)s\"?"
 msgstr "Да направя ли копие на %(object_name)s &quot;%(object)s&quot;?"
 
-#: views.py:134
+#: views.py:136
 msgid "Object copied successfully."
 msgstr "Обектът е копиран успешно."
 
-#: views.py:151
+#: views.py:153
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
 msgstr "Липса на резултати тук означава, че нямате необходимите разрешения за изпълнение на административна задача."
 
-#: views.py:154
+#: views.py:156
 msgid "No setup options available."
 msgstr "Няма опции за настройка."
 
-#: views.py:158
+#: views.py:160
 msgid "Setup items"
 msgstr "Елементи за настройка"
 
-#: views.py:160
+#: views.py:162
 msgid "Here you can configure all aspects of the system."
 msgstr "Тук можете да конфигурирате всички аспекти на системата."
 
-#: views.py:175
+#: views.py:177
 msgid "These modules are used to do system maintenance."
 msgstr "Тези модули се използват за поддръжка на системата."
