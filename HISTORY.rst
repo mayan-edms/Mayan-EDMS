@@ -6,6 +6,11 @@
 - Avoid self-referencing dictionaries when resolving primary key
   URL keyword arguments.
 - Translation updates.
+- Remove CD/CI MySQL tests. MySQL does not yet support sliced subqueries.
+  This queryset paradigm is used in Mayan EDMS to avoid keeping temporary
+  lists of IDs in Python memory and allow moving all queryset computation
+  to the database layer. This is the cause of error 1235, "This version of
+  MySQL doesn't yet support 'LIMIT & IN/ALL/ANY/SOME subquery'".
 
 3.5.4 (2020-12-14)
 ==================

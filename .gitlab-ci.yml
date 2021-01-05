@@ -276,23 +276,6 @@ job_test_upgrade_sqlite:
     - releases/python
     - staging
 
-job_test_mysql:
-  <<: *job_test_base
-  variables:
-    MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-    MYSQL_DATABASE: "mayan_edms"
-  services:
-    - mysql:5.7
-  script:
-    - apt-get install -qq default-libmysqlclient-dev default-mysql-client libssl-dev
-    - . venv/bin/activate
-    - pip install mysqlclient==$PYTHON_MYSQL_VERSION
-    - mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD" -e "set global character_set_server=utf8mb4;"
-    - make test-all SETTINGS=mayan.settings.testing.gitlab-ci.db_mysql
-    - make test-all-migrations SETTINGS=mayan.settings.testing.gitlab-ci.db_mysql
-  tags:
-    - mysql
-
 job_test_postgres:
   <<: *job_test_base
   variables:
