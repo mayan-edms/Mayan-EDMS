@@ -17,7 +17,7 @@
          */
         document.write('<script type="text/undefined">')
         var currentPath = window.location.pathname + window.location.search;
-        window.location = '/#' + currentPath;
+	window.location = '/{% smart_setting "COMMON_URL_BASE_PATH" %}#' + currentPath;
     }
 </script>
 
