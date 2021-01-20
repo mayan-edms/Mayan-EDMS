@@ -5,13 +5,13 @@
 # Translators:
 # Translators:
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016
-# Roberto Rosario, 2020
+# Roberto Rosario, 2020-2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-04 23:49+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
+"POT-Creation-Date: 2021-01-20 07:34+0000\n"
+"PO-Revision-Date: 2021-01-19 03:50+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -34,11 +34,11 @@ msgstr "Messaggi"
 
 #: events.py:8
 msgid "Message created"
-msgstr ""
+msgstr "Messaggio creato"
 
 #: events.py:11
 msgid "Message edited"
-msgstr ""
+msgstr "Messaggio modificato"
 
 #: links.py:14 views.py:31
 msgid "Create message"
@@ -111,33 +111,33 @@ msgstr "Messaggi del giorno"
 #: views.py:45
 #, python-format
 msgid "Delete request performed on %(count)d message"
-msgstr ""
+msgstr "Richiesta di eliminazione eseguita sul %(count)d messaggio"
 
 #: views.py:47
 #, python-format
 msgid "Delete request performed on %(count)d messages"
-msgstr ""
+msgstr "Richiesta di eliminazione eseguita sui %(count)d messaggi "
 
 #: views.py:54
 msgid "Delete the selected message?"
 msgid_plural "Delete the selected messages?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Eliminare il messaggio selezionato?"
+msgstr[1] "Eliminare i messaggi selezionati?"
 
 #: views.py:64
 #, python-format
 msgid "Delete message: %s?"
-msgstr ""
+msgstr "Eliminare il messaggio: %s?"
 
 #: views.py:75
 #, python-format
 msgid "Message \"%s\" deleted successfully."
-msgstr ""
+msgstr "Messaggio \"%s\" eliminato correttamente."
 
 #: views.py:80
 #, python-format
 msgid "Error deleting message \"%(message)s\": %(error)s"
-msgstr ""
+msgstr "Errore durante l'eliminazione del messaggio \"%(message)s\": %(error)s"
 
 #: views.py:96
 #, python-format

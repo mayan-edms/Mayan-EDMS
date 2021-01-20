@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# pyrotech <anastasios@tutamail.com>, 2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-04 23:49+0000\n"
-"PO-Revision-Date: 2019-12-13 05:14+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-20 07:34+0000\n"
+"PO-Revision-Date: 2021-01-10 16:51+0000\n"
+"Last-Translator: pyrotech <anastasios@tutamail.com>\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -289,7 +290,7 @@ msgid ""
 "Indexes group documents into units, usually with similar properties and of "
 "equal or similar types. Smart links allow defining relationships between "
 "documents even if they are in different indexes and are of different types."
-msgstr ""
+msgstr "Τα ευρετήρια ομαδοποιούν έγγραφα σε ενότητες, συνήθως με παρόμοιες ιδιότητες και παρόμοιων ή ιδίων τύπων. Οι έξυπνοι σύνδεσμοι επιτρέπουν τον καθορισμό σχέσεων μεταξύ εγγράφων ακόμα και αν περιέχονται σε διαφορετικά ευρετήρια ή είναι διαφορετικών τύπων."
 
 #: views.py:201
 msgid "There are no smart links"
@@ -299,7 +300,7 @@ msgstr ""
 msgid ""
 "Smart links allow defining relationships between documents even if they are "
 "in different indexes and are of different types."
-msgstr ""
+msgstr "Οι έξυπνοι σύνδεσμοι επιτρέπουν τον καθορισμό σχέσεων μεταξύ εγγράφων ακόμη και αν περιέχονται σε διαφορετικά ευρετήρια ή είναι διαφορετικών τύπων."
 
 #: views.py:224
 msgid "There are no smart links for this document"

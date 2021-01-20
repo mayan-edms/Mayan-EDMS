@@ -4,13 +4,15 @@
 # 
 # Translators:
 # Translators:
+# pyrotech <anastasios@tutamail.com>, 2021
+# pyrotech <anastasios@tutamail.com>, 2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-04 23:49+0000\n"
-"PO-Revision-Date: 2020-10-11 07:15+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-20 07:34+0000\n"
+"PO-Revision-Date: 2021-01-17 16:11+0000\n"
+"Last-Translator: pyrotech <anastasios@tutamail.com>\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -50,7 +52,7 @@ msgstr "Μικρογραφία"
 msgid ""
 "Utility provided by the SANE package. Used to control the scanner and "
 "obtained the scanned document image."
-msgstr ""
+msgstr "Βοηθητικό πρόγραμμα που παρέχεται από το πακέτο SANE. Χρησιμοποιήται για τον έλεγχο του σαρωτή και την λήψη της εικόνας του σαρωμένου εγγράφου."
 
 #: forms.py:25
 msgid "An optional comment to explain the upload."
@@ -293,7 +295,7 @@ msgstr ""
 msgid ""
 "Select a metadata type to store the email's subject value. Must be a valid "
 "metadata type for the document type selected previously."
-msgstr ""
+msgstr "Επιλέξτε έναν τύπο μεταδεδομένων για την αποθήκευση του θέματος του email. Θα πρέπει να είναι ένας έγκυρος τύπος μεταδεδομένων για τον επιλεγμένο τύπο εγγράφου."
 
 #: models/email_sources.py:62
 msgid "Subject metadata type"
@@ -303,7 +305,7 @@ msgstr ""
 msgid ""
 "Select a metadata type to store the email's \"from\" value. Must be a valid "
 "metadata type for the document type selected previously."
-msgstr ""
+msgstr "Επιλέξτε έναν τύπο μεταδεδομένων για την αποθήκευση της τιμής  \"Από\" του email. Θα πρέπει να είναι  ένας έγκυρος τύπος μεταδεδομένων για τον επιλεγμένο τύπο εγγράφου."
 
 #: models/email_sources.py:70
 msgid "From metadata type"
@@ -395,7 +397,7 @@ msgstr ""
 
 #: models/scanner_sources.py:31
 msgid "Device name as returned by the SANE backend."
-msgstr "Όνομα συσκευής όπως αναφέρθηκε από το πρόγραμμα SANE."
+msgstr "Όνομα συσκευής όπως επιστρέφεται από το SANE υποκείμνου συστήματος."
 
 #: models/scanner_sources.py:32
 msgid "Device name"
@@ -467,7 +469,7 @@ msgstr "Διαδρομή φακέλου"
 
 #: models/staging_folder_sources.py:43
 msgid "Width value to be passed to the converter backend."
-msgstr "Πλάτος που θα χρησιμοποιηθεί από το πρόγραμμα μετατροπής."
+msgstr "Τιμή πλάτους που θα διαβιβαστεί στον μετατροπέα του υποκείμενου συστήματος."
 
 #: models/staging_folder_sources.py:44
 msgid "Preview width"
@@ -475,7 +477,7 @@ msgstr "Πλάτος προεπισκόπησης"
 
 #: models/staging_folder_sources.py:48
 msgid "Height value to be passed to the converter backend."
-msgstr "Ύψος που θα χρησιμοποιηθεί από το πρόγραμα μετατροπής."
+msgstr "Τιμή ύψους που θα διαβιβαστεί στον μετατροπέα του υποκείμενου συστήματος."
 
 #: models/staging_folder_sources.py:49
 msgid "Preview height"
@@ -589,7 +591,7 @@ msgstr ""
 
 #: settings.py:35
 msgid "Arguments to pass to the SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
-msgstr ""
+msgstr "Ορίσματα που θα διαβιβαστούν στο SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
 
 #: storages.py:16
 msgid ""
@@ -640,7 +642,7 @@ msgstr ""
 #: views.py:76
 #, python-format
 msgid "Trigger check for source \"%s\"?"
-msgstr "Έναρξη ελέγχου για την πηγή \"%s\";"
+msgstr "Εκκίνηση ελέγχου πηγής \"%s\";"
 
 #: views.py:88
 msgid "Source check queued."
@@ -746,12 +748,12 @@ msgstr "Υποβολή"
 
 #: wizards.py:95
 msgid "Select document type"
-msgstr ""
+msgstr "Επιλογή τύπου εγγράφου"
 
 #: wizards.py:176
 #, python-format
 msgid "Step %(step)d of %(total_steps)d: %(step_label)s"
-msgstr ""
+msgstr "Βήμα %(step)d από %(total_steps)d: %(step_label)s"
 
 #: wizards.py:181
 msgid "Next step"
@@ -759,4 +761,4 @@ msgstr "Επόμενο βήμα"
 
 #: wizards.py:183
 msgid "Document upload wizard"
-msgstr "Οδηγός ανεβάσματος εγγράφου"
+msgstr "Οδηγός ανάρτησης εγγράφου"

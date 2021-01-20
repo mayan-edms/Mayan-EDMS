@@ -6,12 +6,13 @@
 # Translators:
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2016
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016
+# Roberto Rosario, 2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-04 23:49+0000\n"
-"PO-Revision-Date: 2019-05-17 05:51+0000\n"
+"POT-Creation-Date: 2021-01-20 07:34+0000\n"
+"PO-Revision-Date: 2021-01-19 03:51+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -32,7 +33,7 @@ msgstr "Programma "
 
 #: apps.py:42
 msgid "Last update"
-msgstr ""
+msgstr "Ultimo aggiornamento"
 
 #: classes.py:146
 msgid "Never"
@@ -82,16 +83,16 @@ msgstr "Vedi statistiche "
 
 #: queues.py:12
 msgid "Execute statistic"
-msgstr ""
+msgstr "Esegui statistica"
 
 #: templates/statistics/renderers/chartjs/line.html:14
 msgid "No data available."
-msgstr ""
+msgstr "Nessun dato disponibile."
 
 #: templates/statistics/renderers/chartjs/line.html:16
 #, python-format
 msgid "Last update: %(datetime)s"
-msgstr ""
+msgstr "Ultimo aggiornamento: %(datetime)s"
 
 #: views.py:17
 msgid "Statistics namespaces"
@@ -120,4 +121,4 @@ msgstr "Mettere in coda le statistiche \"%s\" da aggiornare? "
 #: views.py:94
 #, python-format
 msgid "Statistic \"%s\" queued successfully for update."
-msgstr ""
+msgstr "La statistica \"%s\" è stata messa in coda correttamente per l'aggiornamento."

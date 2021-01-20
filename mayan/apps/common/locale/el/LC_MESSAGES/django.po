@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
-# pyrotech <anastasios@tutamail.com>, 2020
+# pyrotech <anastasios@tutamail.com>, 2021
+# pyrotech <anastasios@tutamail.com>, 2020-2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-04 23:49+0000\n"
-"PO-Revision-Date: 2020-12-27 17:19+0000\n"
+"POT-Creation-Date: 2021-01-20 07:34+0000\n"
+"PO-Revision-Date: 2021-01-11 08:00+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
@@ -25,23 +26,23 @@ msgstr "Common"
 
 #: classes.py:456
 msgid "Model properties"
-msgstr ""
+msgstr "Ιδιότητες μοντέλου"
 
 #: classes.py:461
 msgid "Model fields"
-msgstr ""
+msgstr "Πεδία μοντέλου"
 
 #: classes.py:504
 msgid "Model related fields"
-msgstr ""
+msgstr "Πεδία σχετιζόμενα με το μοντέλο"
 
 #: classes.py:509
 msgid "Model reverse fields"
-msgstr ""
+msgstr "Πεδία αντιστροφής μοντέλου"
 
 #: dependencies.py:195
 msgid "Used to allow offline translation of the code text strings."
-msgstr ""
+msgstr "Χρησιμοποιείται για την εκτός σύνδεσης μετάφραση συμβολοσειρών κειμένου του κώδικα."
 
 #: dependencies.py:204
 msgid "Provides style checking."
@@ -97,7 +98,7 @@ msgstr "Πηγαίος κώδικας"
 
 #: links.py:71
 msgid "Online store"
-msgstr "Ηλεκτρονικά κατάστημα"
+msgstr "Ηλεκτρονικό κατάστημα"
 
 #: links.py:75
 msgid "Get support"
@@ -116,7 +117,7 @@ msgstr "Αυτό το χαρακτηριστικό είναι ξεπερασμέ
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
-msgstr "Η βάση δεδομένων σου έχει ρυθμιστεί να χρησιμοποιεί την SQLite. Η SQLite θα πρέπει να χρησιμοποιείται μόνο για ανάπτυξη και δοκιμή, όχι για παραγωγή."
+msgstr "Το υποκείμενο σύστηαμ βάσης δεδομένων έχει ρυθμιστεί να χρησιμοποιεί την SQLite. Η SQLite θα πρέπει να χρησιμοποιείται μόνο για ανάπτυξη και δοκιμή, όχι για παραγωγή."
 
 #: literals.py:30
 msgid "Days"
@@ -182,7 +183,7 @@ msgstr "Προεπιλογή"
 msgid ""
 "Time to delay background tasks that depend on a database commit to "
 "propagate."
-msgstr "Χρόνος αναμονής για ενέργειες παρασκηνίου που εξαρτώνται από την καταχώρηση στην βάση δεδομένων για να ολοκληρωθούν."
+msgstr "Χρόνος καθυστέρησης των εργασιών παρασκηνίου που για την διάδοση εξαρτώνται σε μια ενέργεια βάσης δεδομένων."
 
 #: settings.py:26
 msgid ""
@@ -190,7 +191,7 @@ msgid ""
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
 "Python path to: an application configuration class (preferred), or a package"
 " containing an application."
-msgstr ""
+msgstr "Λίστα συμβολοσειρών που ορίζουν όλες τις εφαρμογές που πρόκειται να αφαιρεθούν από την λίστα που συνήθως εγκαθίσταται από το Mayan EDMS. Κάθε συμβολοσειρά θα πρέπει να είναι μία διαδρομή Python σε: μία κλάση παραμετροποίησης εφαρμογής (προτεινόμενο), ή ένα πακέτο που περιέχει μία εφαρμογή."
 
 #: settings.py:36
 msgid ""
@@ -198,13 +199,13 @@ msgid ""
 "those normally installed by Mayan EDMS. Each string should be a dotted "
 "Python path to: an application configuration class (preferred), or a package"
 " containing an application."
-msgstr ""
+msgstr "Λίστα συμβολοσειρών που ορίζουν όλες τις εφαρμογές που είναι εγκατεστημένες πέραν αυτών που συνήθως εγκαθίστανται από το Mayan EDMS. Κάθε συμβολοσειρά θα πρέπει να είναι μία διαδρομή Python σε: μία κλάση παραμετροποίησης εφαρμογής (προτεινόμενο), ή ένα πακέτο που περιέχει μία εφαρμογή."
 
 #: settings.py:45
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
-msgstr ""
+msgstr "Το όνομα της προβολής συνδεδεμένη με τον τίτλο οργανισμού στο κεντρικό μενού. Αυτήν είναι η προβολή στην οποία θα ανακατευθύνονται οι χρήστες μετά την σύνδεση."
 
 #: settings.py:53
 msgid "Name to be displayed in the main menu."
@@ -212,7 +213,7 @@ msgstr "Το όνομα που θα εμφανίζεται στο κεντρικ
 
 #: settings.py:59
 msgid "URL of the installation or homepage of the project."
-msgstr "Το URL της εγκατάστασης ή της κεντρικής σελίδας του έργου."
+msgstr "Το URL της εγκατάστασης ή της κεντρικής σελίδας του προτζεκτ."
 
 #: settings.py:64
 msgid "Base URL path to use for all views."

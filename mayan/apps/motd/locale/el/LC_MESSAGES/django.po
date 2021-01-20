@@ -4,13 +4,13 @@
 # 
 # Translators:
 # Translators:
-# pyrotech <anastasios@tutamail.com>, 2020
+# pyrotech <anastasios@tutamail.com>, 2020-2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-04 23:49+0000\n"
-"PO-Revision-Date: 2020-12-27 16:45+0000\n"
+"POT-Creation-Date: 2021-01-20 07:34+0000\n"
+"PO-Revision-Date: 2021-01-06 17:54+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
@@ -37,7 +37,7 @@ msgstr "Δημιουργήθηκε μήνυμα"
 
 #: events.py:11
 msgid "Message edited"
-msgstr "Τροποποιήθηκε μήνυμα"
+msgstr "Μήνυμα τροποποιήθηκε"
 
 #: links.py:14 views.py:31
 msgid "Create message"

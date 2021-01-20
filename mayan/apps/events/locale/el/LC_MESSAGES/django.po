@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# pyrotech <anastasios@tutamail.com>, 2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-04 23:49+0000\n"
-"PO-Revision-Date: 2019-04-27 22:53+0000\n"
-"Last-Translator: Hmayag Antonian <hmayag@freemail.gr>\n"
+"POT-Creation-Date: 2021-01-20 07:34+0000\n"
+"PO-Revision-Date: 2021-01-10 19:12+0000\n"
+"Last-Translator: pyrotech <anastasios@tutamail.com>\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -77,11 +78,11 @@ msgstr "Σύστημα"
 
 #: links.py:28
 msgid "My events"
-msgstr ""
+msgstr "Τα συμβάντα μου"
 
 #: links.py:46 models.py:63 views.py:74
 msgid "Event subscriptions"
-msgstr ""
+msgstr "Εγγραφές σε συμβάντα"
 
 #: links.py:51
 msgid "Mark as seen"
@@ -141,7 +142,7 @@ msgstr ""
 
 #: models.py:120
 msgid "Object event subscriptions"
-msgstr ""
+msgstr "Εγγραφές συμβάντων αντικειμένου"
 
 #: permissions.py:8
 msgid "Access the events of an object"
@@ -154,11 +155,11 @@ msgstr ""
 
 #: views.py:61
 msgid "Event subscriptions updated successfully"
-msgstr ""
+msgstr "Εγγραφές συμβάντων ανανεώθηκαν επιτυχώς"
 
 #: views.py:127
 msgid "Subscribe to global or object events to receive notifications."
-msgstr ""
+msgstr "Εγγραφή σε καθολικά συμβάντα ή συμβάντα αντικειμένου για την λήψη ειδοποιήσεων."
 
 #: views.py:130
 msgid "There are no notifications"
@@ -168,11 +169,11 @@ msgstr ""
 msgid ""
 "Events are actions that have been performed to this object or using this "
 "object."
-msgstr ""
+msgstr "Τα συμβάντα είναι ενέργειες που έχουν εκτελεστεί σε αυτό το αντικείμενο ή χρησιμοποιούν αυτό το αντικείμενο."
 
 #: views.py:182
 msgid "There are no events for this object"
-msgstr ""
+msgstr "Δεν υπάρχουν συμβάντα για αυτό το αντικείμενο"
 
 #: views.py:184
 #, python-format
@@ -186,12 +187,12 @@ msgstr ""
 
 #: views.py:230
 msgid "Object event subscriptions updated successfully"
-msgstr ""
+msgstr "Εγγραφές συμβάντων αντικειμένου ανανεώθηκαν επιτυχώς"
 
 #: views.py:243
 #, python-format
 msgid "Event subscriptions for: %s"
-msgstr ""
+msgstr "Εγγραφές συμβάντων για: %s"
 
 #: views.py:295
 #, python-format

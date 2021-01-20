@@ -5,14 +5,15 @@
 # 
 # Translators:
 # Hmayag Antonian <hmayag@freemail.gr>, 2019
+# pyrotech <anastasios@tutamail.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"POT-Creation-Date: 2021-01-20 07:34+0000\n"
 "PO-Revision-Date: 2019-04-14 04:06+0000\n"
-"Last-Translator: Hmayag Antonian <hmayag@freemail.gr>, 2019\n"
+"Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,17 +23,19 @@ msgstr ""
 
 #: apps.py:13 settings.py:7
 msgid "Auto administrator"
-msgstr ""
+msgstr "Αυτόματος διαχειριστής"
 
 #: auth/allauth.py:54
 msgid ""
 "Welcome Admin! You have been given superuser privileges. Use them with "
 "caution."
 msgstr ""
+"Καλώς ήλθες Διαχειριστή! Σου έχουν δοθεί δικαιώματα υπερχρήστη. "
+"Χρησιμοποίησέ τα με προσοχή."
 
 #: models.py:13
 msgid "Account"
-msgstr ""
+msgstr "Λογαριασμός"
 
 #: models.py:16
 msgid "Password"
@@ -40,29 +43,31 @@ msgstr "Κωδικός πρόσβασης"
 
 #: models.py:19
 msgid "Password hash"
-msgstr ""
+msgstr "Τιμή κατατεμαχισμού (hash) κωδικού πρόσβασης"
 
 #: models.py:25
 msgid "Autoadmin properties"
-msgstr ""
+msgstr "Ιδιότητες αυτόματου διαχειριστή"
 
 #: settings.py:11
 msgid "Sets the email of the automatically created super user account."
-msgstr ""
+msgstr "Ορίζει το email του αυτομάτως δημιουργηθέντα υπερχρήστη."
 
 #: settings.py:16
 msgid ""
 "The password of the automatically created super user account. If it is equal"
 " to None, the password is randomly generated."
 msgstr ""
+"Ο κωδικός του αυτομάτως δημιουργηθέντα υπερχρήστη. Εάν είναι κενός, ο "
+"κωδικός δημιουργείται τυχαία."
 
 #: settings.py:22
 msgid "The username of the automatically created super user account."
-msgstr ""
+msgstr "Το όνομα χρήστη του αυτομάτως δημιουργηθέντα υπερχρήστη."
 
 #: templates/autoadmin/credentials.html:11
 msgid "Automatic credentials"
-msgstr ""
+msgstr "Αυτόματα διαπιστευτήρια"
 
 #: templates/autoadmin/credentials.html:16
 #, python-format
@@ -70,6 +75,8 @@ msgid ""
 "You have just finished installing <strong>%(project_title)s</strong>, "
 "congratulations!"
 msgstr ""
+"Μόλις ολοκληρώσατε την εγκατάσταση του <strong>%(project_title)s</strong>, "
+"συγχαρητήρια!"
 
 #: templates/autoadmin/credentials.html:17
 msgid "Login using the following credentials:"

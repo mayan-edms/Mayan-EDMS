@@ -5,14 +5,15 @@
 # 
 # Translators:
 # Hmayag Antonian <hmayag@freemail.gr>, 2020
+# pyrotech <anastasios@tutamail.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"POT-Creation-Date: 2021-01-20 07:34+0000\n"
 "PO-Revision-Date: 2020-09-04 09:18+0000\n"
-"Last-Translator: Hmayag Antonian <hmayag@freemail.gr>, 2020\n"
+"Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,7 +27,7 @@ msgstr "Πλοήγηση"
 
 #: classes.py:802
 msgid "Unnamed function"
-msgstr ""
+msgstr "Μη ονοματισμένη συνάρτηση"
 
 #: templates/navigation/generic_navigation.html:6
 msgid "Actions"

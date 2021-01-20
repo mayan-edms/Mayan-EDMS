@@ -5,13 +5,13 @@
 # Translators:
 # Translators:
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
-# Roberto Rosario, 2020
+# Roberto Rosario, 2020-2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-04 23:49+0000\n"
-"PO-Revision-Date: 2020-11-11 01:45+0000\n"
+"POT-Creation-Date: 2021-01-20 07:34+0000\n"
+"PO-Revision-Date: 2021-01-19 03:49+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -80,7 +80,7 @@ msgstr "Link email"
 
 #: links.py:35
 msgid "Create mailing profile"
-msgstr ""
+msgstr "Crea profilo di posta"
 
 #: links.py:41
 msgid "Delete"
@@ -291,7 +291,7 @@ msgstr "Template per l'oggetto del modulo e-mail per l'invio documento."
 
 #: settings.py:21
 msgid "Template for the document email form body text. Can include HTML."
-msgstr ""
+msgstr "Modello per il testo del corpo del modulo di posta elettronica del documento. Può includere HTML."
 
 #: settings.py:27
 msgid "Template for the document link email form subject line."
@@ -299,7 +299,7 @@ msgstr "Template per l'oggetto del modulo e-mail per l'invio del collegamento al
 
 #: settings.py:33
 msgid "Template for the document link email form body text. Can include HTML."
-msgstr ""
+msgstr "Modello per il testo del corpo del modulo di posta elettronica del collegamento al documento. Può includere HTML."
 
 #: validators.py:12
 #, python-format

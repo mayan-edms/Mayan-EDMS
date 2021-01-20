@@ -4,14 +4,15 @@
 # 
 # Translators:
 # Translators:
+# pyrotech <anastasios@tutamail.com>, 2021
 # Hmayag Antonian <hmayag@freemail.gr>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-04 23:49+0000\n"
-"PO-Revision-Date: 2020-10-26 13:26+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-20 07:34+0000\n"
+"PO-Revision-Date: 2021-01-11 08:13+0000\n"
+"Last-Translator: pyrotech <anastasios@tutamail.com>\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,7 +28,7 @@ msgstr "Έγγραφα"
 
 #: apps.py:148
 msgid "Decorations"
-msgstr ""
+msgstr "Διακοσμήσεις"
 
 #: apps.py:161
 msgid "Create a document type"
@@ -120,7 +121,7 @@ msgstr ""
 
 #: dashboard_widgets.py:23
 msgid "Total pages"
-msgstr ""
+msgstr "Σύνολο σελίδων"
 
 #: dashboard_widgets.py:47
 msgid "Total documents"
@@ -307,11 +308,11 @@ msgstr "Όλα τα έγγραφα"
 
 #: links/document_links.py:55 views/document_views.py:620
 msgid "Recently accessed"
-msgstr ""
+msgstr "Προσφάτως προσπελασμένα"
 
 #: links/document_links.py:59 views/document_views.py:650
 msgid "Recently added"
-msgstr ""
+msgstr "Προσφάτως αναρτημένα"
 
 #: links/document_links.py:82 links/document_version_links.py:50
 msgid "Preview"
@@ -444,15 +445,15 @@ msgstr "Ανίχνευση για διπλές καταχωρήσεις εγγρ
 
 #: links/favorite_links.py:10 views/favorite_document_views.py:36
 msgid "Favorites"
-msgstr ""
+msgstr "Αγαπημένα"
 
 #: links/favorite_links.py:16 links/favorite_links.py:26
 msgid "Add to favorites"
-msgstr ""
+msgstr "Προσθήκη στα αγαπημένα"
 
 #: links/favorite_links.py:22 links/favorite_links.py:31
 msgid "Remove from favorites"
-msgstr ""
+msgstr "Αφαίρεση από τα αγαπημένα"
 
 #: links/trashed_document_links.py:21 links/trashed_document_links.py:36
 msgid "Move to trash"
@@ -825,7 +826,7 @@ msgstr ""
 msgid ""
 "The threshold at which the DOCUMENT_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest document image cache files. Specify the size in bytes."
-msgstr ""
+msgstr "Το όριο στο οποίο το DOCUMENT_CACHE_STORAGE_BACKEND θα αρχίσει να διαγράφει τα παλαιότερα προσωρινώς αποθηκευμένα αρχεία εικόνων εγγράφων. Καθορίστε το μέγεθος σε byte."
 
 #: settings.py:43
 msgid ""
@@ -835,7 +836,7 @@ msgstr ""
 
 #: settings.py:50
 msgid "Arguments to pass to the DOCUMENT_CACHE_STORAGE_BACKEND."
-msgstr ""
+msgstr "Ορίσματα που θα διαβιβαστούν στο DOCUMENT_CACHE_STORAGE_BACKEND."
 
 #: settings.py:64
 msgid "Maximum number of favorite documents to remember per user."
@@ -873,7 +874,7 @@ msgstr ""
 msgid ""
 "Maximum number of recently accessed (created, edited, viewed) documents to "
 "remember per user."
-msgstr ""
+msgstr "Μέγιστος αριθμός προσφάτως προσπελασμένων εγγράφων (δημιουργηθέντων, τροποποιημένων, προβεβλημένων), προς απομνημόνευση ανά χρήστη."
 
 #: settings.py:124
 msgid "Maximum number of recently created documents to show."
@@ -889,7 +890,7 @@ msgstr ""
 
 #: settings.py:143
 msgid "Arguments to pass to the DOCUMENT_STORAGE_BACKEND."
-msgstr ""
+msgstr "Ορίσματα που θα διαβιβαστούν στο DOCUMENT_STORAGE_BACKEND."
 
 #: settings.py:149
 msgid ""
@@ -1024,7 +1025,7 @@ msgid ""
 "\n"
 "                    Page %(page_number)s of %(total_pages)s\n"
 "                "
-msgstr ""
+msgstr "\n                    Σελίδα %(page_number)s από %(total_pages)s\n                "
 
 #: templates/documents/forms/widgets/document_page_carousel.html:22
 msgid "No pages to display"
@@ -1339,7 +1340,7 @@ msgstr ""
 
 #: views/document_views.py:618
 msgid "There are no recently accessed document"
-msgstr ""
+msgstr "Δεν υπάρχουν προσφάτως προσπελασμένα έγγραφα"
 
 #: views/document_views.py:644
 msgid "This view will list the latest documents uploaded in the system."
@@ -1347,7 +1348,7 @@ msgstr ""
 
 #: views/document_views.py:648
 msgid "There are no recently added document"
-msgstr ""
+msgstr "Δεν έχουν αναρτηθεί προσφάτως έγγραφα"
 
 #: views/duplicated_document_views.py:35
 msgid "Only exact copies of this document will be shown in the this list."
@@ -1395,12 +1396,12 @@ msgstr ""
 #: views/favorite_document_views.py:47
 #, python-format
 msgid "%(count)d document added to favorites."
-msgstr ""
+msgstr "%(count)d έγγαφο προστέθηκε στα αγαπημένα."
 
 #: views/favorite_document_views.py:50
 #, python-format
 msgid "%(count)d documents added to favorites."
-msgstr ""
+msgstr "%(count)d έγγραφα προστέθηκαν στα αγαπημένα."
 
 #: views/favorite_document_views.py:55
 msgid "Add"
@@ -1409,23 +1410,23 @@ msgstr "Προσθήκη"
 #: views/favorite_document_views.py:58
 msgid "Add the selected document to favorites?"
 msgid_plural "Add the selected documents to favorites?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Προσθήκη των επιλεγμένων εγγράφων στα αγαπημένα;"
+msgstr[1] "Προσθήκη των επιλεγμένων εγγράφων στα αγαπημένα;"
 
 #: views/favorite_document_views.py:76
 #, python-format
 msgid "Document \"%(instance)s\" is not in favorites."
-msgstr ""
+msgstr "Το έγγραφο \"%(instance)s\" δεν ανήκει στα αγαπημένα."
 
 #: views/favorite_document_views.py:81
 #, python-format
 msgid "%(count)d document removed from favorites."
-msgstr ""
+msgstr "%(count)d έγγραφο απομακρύνθηκε από τα αγαπημένα."
 
 #: views/favorite_document_views.py:84
 #, python-format
 msgid "%(count)d documents removed from favorites."
-msgstr ""
+msgstr "%(count)d έγγραφα προστέθηκαν στα αγαπημένα."
 
 #: views/favorite_document_views.py:89
 msgid "Remove"
@@ -1434,8 +1435,8 @@ msgstr "Αφαίρεση"
 #: views/favorite_document_views.py:92
 msgid "Remove the selected document from favorites?"
 msgid_plural "Remove the selected documents from favorites?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Αφαίρεση των επιλεγμένων εγγράφων από τα αγαπημένα;"
+msgstr[1] "Αφαίρεση των επιλεγμένων εγγράφων από τα αγαπημένα;"
 
 #: views/trashed_document_views.py:37
 #, python-format

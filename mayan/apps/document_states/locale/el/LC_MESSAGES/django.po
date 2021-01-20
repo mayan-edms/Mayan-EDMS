@@ -4,13 +4,15 @@
 # 
 # Translators:
 # Translators:
+# pyrotech <anastasios@tutamail.com>, 2021
+# pyrotech <anastasios@tutamail.com>, 2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-04 23:49+0000\n"
-"PO-Revision-Date: 2020-09-27 06:46+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-20 07:34+0000\n"
+"PO-Revision-Date: 2021-01-17 16:13+0000\n"
+"Last-Translator: pyrotech <anastasios@tutamail.com>\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -104,11 +106,11 @@ msgstr "Τύπος ενέργειας"
 #: apps.py:383
 msgid ""
 "Triggers are system events that will cause the transition to be applied."
-msgstr ""
+msgstr "Οι εκκινήσεις είναι συμβάντα συστήματος που προκαλούν την εφαρμογή της μετάβασης."
 
 #: apps.py:385
 msgid "Triggers"
-msgstr ""
+msgstr "Εκκινήσεις"
 
 #: apps.py:399 models.py:869
 msgid "Type"
@@ -166,7 +168,7 @@ msgstr "Ναι"
 
 #: forms.py:194
 msgid "Select a transition to execute in the next step."
-msgstr ""
+msgstr "Επιλέξτε μία μετάβαση προς εκτέλεση στο επόμενο βήμα."
 
 #: forms.py:195 links.py:218 models.py:466 models.py:866 models.py:945
 msgid "Transition"
@@ -223,7 +225,7 @@ msgstr "Δημιουργία μετάβασης"
 
 #: links.py:151
 msgid "Transition triggers"
-msgstr ""
+msgstr "Εκκινήσεις μεταβάσης"
 
 #: links.py:157
 msgid "Transitions"
@@ -505,11 +507,11 @@ msgstr ""
 
 #: models.py:899
 msgid "A group of keyword arguments to customize the widget. Use YAML format."
-msgstr ""
+msgstr "Μια ομάδα ορισμάτων λέξεων-κλειδιών για την παραμετροποίηση του widget. Χρησιμοποιήστε τη μορφή YAML."
 
 #: models.py:902
 msgid "Widget keyword arguments"
-msgstr ""
+msgstr "Ορίσματα λέξεων-κλειδιών Widget"
 
 #: models.py:907
 msgid "Workflow transition field"
@@ -525,11 +527,11 @@ msgstr "Τύπος συμβάντος"
 
 #: models.py:953
 msgid "Workflow transition trigger event"
-msgstr "Συμβάν ενεργοποίησης μετάβασης ροής εργασίας"
+msgstr "Συμβάν εκκίνησης μετάβασης ροής εργασίας"
 
 #: models.py:954
 msgid "Workflow transitions trigger events"
-msgstr "Συμβάντα ενεργοποίησης μεταβάσεων ροής εργασίας"
+msgstr "Συμβάντα εκκίνησης μεταβάσεων ροής εργασίας"
 
 #: models.py:963
 msgid "Workflow runtime proxy"
@@ -654,7 +656,7 @@ msgstr ""
 msgid ""
 "The threshold at which the WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest workflow image cache files. Specify the size in bytes."
-msgstr ""
+msgstr "Το όριο στο οποίο το WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND θα αρχίσει να διαγράφει τα παλαιότερα προσωρινώς αποθηκευμένα αρχεία εικόνων ροής εργασίας. Καθορίστε το μέγεθος σε byte."
 
 #: settings.py:36
 msgid ""
@@ -670,7 +672,7 @@ msgstr ""
 
 #: settings.py:51
 msgid "Arguments to pass to the WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND."
-msgstr ""
+msgstr "Ορίσματα που θα διαβιβαστούν στο WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND."
 
 #: storages.py:14
 msgid ""
@@ -736,7 +738,7 @@ msgstr ""
 
 #: views/workflow_instance_views.py:204
 msgid "Select"
-msgstr ""
+msgstr "Επιλογή"
 
 #: views/workflow_instance_views.py:206
 #, python-format
@@ -811,7 +813,7 @@ msgstr "Τροποποίηση ενέργειας κατάστασης ροής 
 msgid ""
 "Workflow state actions are macros that get executed when documents enters or"
 " leaves the state in which they reside."
-msgstr ""
+msgstr "Οι ενέργειες κατάστασης ροών εργασίας είναι μακροεντολές που εκτελούνται όταν έγγραφα εισέρχονται ή εξέρχονται στην τρέχουσα κατάσταση."
 
 #: views/workflow_template_state_views.py:176
 msgid "There are no actions for this workflow state"
@@ -878,21 +880,21 @@ msgstr "Μεταβάσεις της ροής εργασίας: %s"
 #: views/workflow_template_transition_views.py:188
 #, python-format
 msgid "Error updating workflow transition trigger events; %s"
-msgstr "Σφάλμα κατά την τροποποίηση του συμβάντος ενεργοποίησης μετάβασης ροής εργασίας: %s"
+msgstr "Σφάλμα κατά την τροποποίηση του συμβάντος εκκίνησης μετάβασης ροής εργασίας: %s"
 
 #: views/workflow_template_transition_views.py:195
 msgid "Workflow transition trigger events updated successfully"
-msgstr "Επιτυχής τροποποίηση συμβάντων ενεργοποίησης μετάβασης ροής εργασίας"
+msgstr "Επιτυχής τροποποίηση συμβάντων εκκίνησης μετάβασης ροής εργασίας"
 
 #: views/workflow_template_transition_views.py:209
 msgid ""
 "Triggers are events that cause this transition to execute automatically."
-msgstr ""
+msgstr "Οι εκκινήσεις είναι συμβάντα που προκαλούν την αυτόματη εκτέλεση αυτής της μετάβασης."
 
 #: views/workflow_template_transition_views.py:213
 #, python-format
 msgid "Workflow transition trigger events for: %s"
-msgstr "Συμβάντα ενεργοποίησης μετάβασης ροής εργασίας: %s"
+msgstr "Συμβάντα εκκίνησης μετάβασης ροής εργασίας: %s"
 
 #: views/workflow_template_transition_views.py:263
 #, python-format
@@ -1079,7 +1081,7 @@ msgstr ""
 
 #: workflow_actions.py:20
 msgid "Document label"
-msgstr ""
+msgstr "Ετικέτα εγγράφου"
 
 #: workflow_actions.py:23
 msgid ""
@@ -1088,7 +1090,7 @@ msgstr ""
 
 #: workflow_actions.py:28
 msgid "Document description"
-msgstr ""
+msgstr "Περιγραφή εγγράφου"
 
 #: workflow_actions.py:31
 msgid ""

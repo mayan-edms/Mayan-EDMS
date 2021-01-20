@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# pyrotech <anastasios@tutamail.com>, 2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-04 23:49+0000\n"
-"PO-Revision-Date: 2019-05-17 05:51+0000\n"
-"Last-Translator: Hmayag Antonian <hmayag@freemail.gr>\n"
+"POT-Creation-Date: 2021-01-20 07:34+0000\n"
+"PO-Revision-Date: 2021-01-09 17:17+0000\n"
+"Last-Translator: pyrotech <anastasios@tutamail.com>\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,7 +31,7 @@ msgstr "Προγραμματισμός"
 
 #: apps.py:42
 msgid "Last update"
-msgstr ""
+msgstr "Τελευταία ενημέρωση"
 
 #: classes.py:146
 msgid "Never"
@@ -38,25 +39,25 @@ msgstr "Ποτέ"
 
 #: links.py:10
 msgid "Queue"
-msgstr "Λίστα"
+msgstr "Ουρά αναμονής"
 
 #: links.py:15
 msgid "View"
-msgstr "Εμφάνιση"
+msgstr "Προβολή"
 
 #: links.py:20
 msgid "Namespace details"
-msgstr ""
+msgstr "Λεπτομέρειες χώρου ονομάτων"
 
 #: links.py:25
 msgid "Namespace list"
-msgstr ""
+msgstr "Λίστα χώρου ονομάτων"
 
 #. Translators: 'Slug' refers to the URL valid ID of the statistic
 #. More info: https://docs.djangoproject.com/en/1.7/glossary/#term-slug
 #: models.py:10
 msgid "Slug"
-msgstr ""
+msgstr "Slug"
 
 #: models.py:12
 msgid "Date time"
@@ -84,21 +85,21 @@ msgstr "Εκτέλεση στατιστικών"
 
 #: templates/statistics/renderers/chartjs/line.html:14
 msgid "No data available."
-msgstr ""
+msgstr "Δεν υπάρχουν διαθέσιμα δεδομένα"
 
 #: templates/statistics/renderers/chartjs/line.html:16
 #, python-format
 msgid "Last update: %(datetime)s"
-msgstr ""
+msgstr "Τελευταία ενημέρωση: %(datetime)s"
 
 #: views.py:17
 msgid "Statistics namespaces"
-msgstr ""
+msgstr "Χώροι ονομάτων στατιστικής"
 
 #: views.py:33
 #, python-format
 msgid "Namespace details for: %s"
-msgstr ""
+msgstr "Λεπτομέρειες χώρου ονομάτων για: %s"
 
 #: views.py:55
 #, python-format
@@ -113,9 +114,9 @@ msgstr "Σττιστικό \"%s\" δεν βρέθηκε."
 #: views.py:80
 #, python-format
 msgid "Queue statistic \"%s\" to be updated?"
-msgstr ""
+msgstr "Υποβολή στατιστικού \"%s\" στην ουρά αναμονής προς ενημέρωση;"
 
 #: views.py:94
 #, python-format
 msgid "Statistic \"%s\" queued successfully for update."
-msgstr ""
+msgstr "Στατιστικό \"%s\" προστέθηκε επιτυχώς στην ουρά αναμονής προς ενημέρωση."

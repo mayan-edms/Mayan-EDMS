@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# pyrotech <anastasios@tutamail.com>, 2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-04 23:49+0000\n"
-"PO-Revision-Date: 2020-09-27 08:06+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-20 07:34+0000\n"
+"PO-Revision-Date: 2021-01-10 12:03+0000\n"
+"Last-Translator: pyrotech <anastasios@tutamail.com>\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -100,7 +101,7 @@ msgstr ""
 
 #: forms.py:123
 msgid "Metadata types to be added to the selected documents."
-msgstr ""
+msgstr "Τύποι μεταδεδομένων που θα προστεθούν στα επιλεγμένα έγγραφα."
 
 #: forms.py:124 models.py:84 models.py:282 search.py:9 search.py:17
 #: workflow_actions.py:86
@@ -166,7 +167,7 @@ msgstr "Τροποποίηση"
 
 #: mixins.py:21
 msgid "Selected documents must be of the same type."
-msgstr ""
+msgstr "Τα επιλεγμένα έγγραφα πρέπει να είναι του ίδιου τύπου."
 
 #: models.py:46
 msgid ""
@@ -504,7 +505,7 @@ msgstr ""
 
 #: wizard_steps.py:13
 msgid "Enter document metadata"
-msgstr ""
+msgstr "Εισαγωγή μεταδεδομένων εγγράφου"
 
 #: workflow_actions.py:25
 msgid "Metadata types to add to the document."
