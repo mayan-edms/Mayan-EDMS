@@ -91,17 +91,17 @@ class DocumentTrashViewTestCase(
             obj=self.test_document, permission=permission_document_trash
         )
 
+        self.test_document.delete()
+
         document_count = Document.valid.count()
         trashed_document_count = DeletedDocument.objects.count()
-
-        self.test_document.delete()
 
         response = self._request_document_trash_post_view()
         self.assertEqual(response.status_code, 404)
 
-        self.assertEqual(Document.valid.count(), document_count - 1)
+        self.assertEqual(Document.valid.count(), document_count)
         self.assertEqual(
-            DeletedDocument.objects.count(), trashed_document_count + 1
+            DeletedDocument.objects.count(), trashed_document_count
         )
 
 
