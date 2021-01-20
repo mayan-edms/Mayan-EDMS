@@ -26,17 +26,17 @@ class DocumentTypeDeletionPoliciesViewTestCase(
 ):
     auto_upload_test_document = False
 
-    def test_document_type_filename_generator_get_view_no_permission(self):
-        response = self._request_document_type_filename_generator_get_view()
+    def test_document_type_deletion_policies_get_view_no_permission(self):
+        response = self._request_document_type_deletion_policies_get_view()
         self.assertEqual(response.status_code, 404)
 
-    def test_document_type_filename_generator_get_view_access(self):
+    def test_document_type_deletion_policies_get_view_access(self):
         self.grant_access(
             obj=self.test_document_type,
             permission=permission_document_type_edit
         )
 
-        response = self._request_document_type_filename_generator_get_view()
+        response = self._request_document_type_deletion_policies_get_view()
         self.assertEqual(response.status_code, 200)
 
 

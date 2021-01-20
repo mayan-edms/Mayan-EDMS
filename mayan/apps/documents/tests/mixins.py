@@ -254,7 +254,7 @@ class DocumentTypeAPIViewTestMixin:
 
 
 class DocumentTypeDeletionPoliciesViewTestMixin:
-    def _request_document_type_filename_generator_get_view(self):
+    def _request_document_type_deletion_policies_get_view(self):
         return self.get(
             viewname='documents:document_type_policies', kwargs={
                 'document_type_id': self.test_document_type.pk
