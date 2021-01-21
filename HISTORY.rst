@@ -1,3 +1,7 @@
+3.5.6 (2021-XX-XX)
+==================
+- Update Django from version 2.2.16 to 2.2.17.
+
 3.5.5 (2021-01-05)
 ==================
 - Merge improvements and fixes from the 3.4 series.
