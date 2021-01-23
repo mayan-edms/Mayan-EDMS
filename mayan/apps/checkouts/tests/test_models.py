@@ -2,8 +2,6 @@ import time
 
 from mayan.apps.documents.tests.base import GenericDocumentTestCase
 from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH
-from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
-from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..exceptions import (
     DocumentAlreadyCheckedOut, DocumentNotCheckedOut,

@@ -11,7 +11,7 @@ from .events import (
     event_document_auto_check_in, event_document_check_in,
     event_document_forceful_check_in
 )
-from .exceptions import DocumentNotCheckedOut, NewDocumentFileNotAllowed
+from .exceptions import DocumentNotCheckedOut
 from .literals import STATE_CHECKED_OUT, STATE_CHECKED_IN
 from .permissions import (
     permission_document_check_in, permission_document_check_in_override

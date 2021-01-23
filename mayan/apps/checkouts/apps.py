@@ -1,5 +1,4 @@
 from django.apps import apps
-from django.db.models.signals import pre_save
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission

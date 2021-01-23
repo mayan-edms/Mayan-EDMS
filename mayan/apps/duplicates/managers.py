@@ -1,15 +1,10 @@
-from datetime import timedelta
 import logging
 
 from django.apps import apps
-from django.contrib.auth import get_user_model
 from django.db import models
 from django.db.models import F, Max
-from django.utils.encoding import force_text
-from django.utils.timezone import now
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.common.classes import ModelQueryFields
 
 
 logger = logging.getLogger(name=__name__)

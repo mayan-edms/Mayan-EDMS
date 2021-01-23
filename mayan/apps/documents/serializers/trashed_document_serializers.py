@@ -3,7 +3,6 @@ from rest_framework import serializers
 from ..models.trashed_document_models import TrashedDocument
 
 from .document_serializers import DocumentSerializer
-from .document_type_serializers import DocumentTypeSerializer
 
 
 class TrashedDocumentSerializer(DocumentSerializer):

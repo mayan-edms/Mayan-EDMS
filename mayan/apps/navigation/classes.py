@@ -15,7 +15,6 @@ from django.template import RequestContext, Variable, VariableDoesNotExist
 from django.template.defaulttags import URLNode
 from django.urls import resolve, reverse
 from django.utils.encoding import force_str, force_text
-from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.settings import setting_home_view

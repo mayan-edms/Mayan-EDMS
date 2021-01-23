@@ -30,15 +30,6 @@ class TrashedDocumentTestCase(GenericDocumentTestCase):
         self.assertEqual(TrashedDocument.objects.count(), 0)
         self.assertEqual(Document.valid.count(), 0)
 
-
-class TrashedDocumentTestCase(GenericDocumentTestCase):
-    def test_trashed_document_api_image_url(self):
-        self.test_document.delete()
-        test_trashed_document = TrashedDocument.objects.get(
-            pk=self.test_document.pk
-        )
-        self.assertTrue(test_trashed_document.get_api_image_url())
-
     def test_trashed_document_page_count(self):
         page_count = self.test_document.version_active.pages.count()
         self.test_document.delete()
@@ -48,3 +39,12 @@ class TrashedDocumentTestCase(GenericDocumentTestCase):
         self.assertTrue(
             test_trashed_document.version_active.pages.count(), page_count
         )
+
+
+class TrashedDocumentAPITestCase(GenericDocumentTestCase):
+    def test_trashed_document_api_image_url(self):
+        self.test_document.delete()
+        test_trashed_document = TrashedDocument.objects.get(
+            pk=self.test_document.pk
+        )
+        self.assertTrue(test_trashed_document.get_api_image_url())
