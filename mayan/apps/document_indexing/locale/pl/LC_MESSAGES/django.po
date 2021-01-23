@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-10-13 19:31+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-11-06 18:43+0000\n"
 "Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -91,11 +91,11 @@ msgstr "Przebuduj indeks"
 msgid "Deletes and creates from scratch all the document indexes."
 msgstr "Usuwa i tworzy od podstaw wszystkie indeksy dokumentów."
 
-#: links.py:53 views.py:446
+#: links.py:53 views.py:453
 msgid "Rebuild indexes"
 msgstr "Przebudowa indeksów"
 
-#: links.py:64 views.py:481
+#: links.py:64 views.py:488
 msgid "Reset indexes"
 msgstr "Zresetuj indeksy"
 
@@ -312,7 +312,7 @@ msgid ""
 "Amount of time in seconds, a failed indexing task will wait before retrying."
 " Lower values will increase the speed at which documents are indexed but "
 "will cause a higher count of failed/retried tasks in the queue."
-msgstr ""
+msgstr "Czas w sekundach, po którym nastąpi ponowne wykonanie nieudanego zadania indeksowania.  Niższe wartości zwiększą szybkość indeksowania dokumentów, ale spowodują większą liczbę nieudanych / ponownych zadań w kolejce."
 
 #: views.py:45
 msgid "Available indexes"
@@ -414,32 +414,32 @@ msgstr "Może to oznaczać, że nie utworzono żadnych szablonów indeksów lub 
 msgid "There are no index instances available."
 msgstr "Brak dostępnych instancji indeksu."
 
-#: views.py:377
+#: views.py:372
 #, python-format
 msgid "Navigation: %s"
 msgstr "Nawigacja: %s"
 
-#: views.py:382
+#: views.py:378
 #, python-format
 msgid "Contents for index: %s"
 msgstr "Zawartość indeksu: %s"
 
-#: views.py:425
+#: views.py:432
 msgid ""
 "Assign the document type of this document to an index to have it appear in "
 "instances of those indexes organization units. "
 msgstr "Przypisz typ dokumentu do indeksu, aby pojawiał się w instancjach tych jednostek organizacyjnych indeksów."
 
-#: views.py:430
+#: views.py:437
 msgid "This document is not in any index"
 msgstr "Ten dokument nie znajduje się w żadnym indeksie"
 
-#: views.py:434
+#: views.py:441
 #, python-format
 msgid "Indexes nodes containing document: %s"
 msgstr "Węzły indeksów zawierające dokument: %s"
 
-#: views.py:460
+#: views.py:467
 #, python-format
 msgid "%(count)d index queued for rebuild."
 msgid_plural "%(count)d indexes queued for rebuild."
@@ -448,15 +448,15 @@ msgstr[1] "Indeksy %(count)d w kolejce do przebudowania."
 msgstr[2] "Indeksy %(count)d w kolejce do przebudowania."
 msgstr[3] "Indeksy %(count)d w kolejce do przebudowania."
 
-#: views.py:493
+#: views.py:500
 #, python-format
 msgid "%(count)d index reset."
 msgid_plural "%(count)d indexes reset."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "."
+msgstr[1] "Reset %(count)d indeksów."
+msgstr[2] "Reset %(count)d indeksów."
+msgstr[3] "Reset %(count)d indeksów."
 
-#: views.py:506
+#: views.py:513
 msgid "Index templates for which their instances will be deleted."
 msgstr "Szablony indeksów, dla których ich instancje zostaną usunięte."

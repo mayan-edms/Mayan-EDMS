@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-10-02 19:59+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
@@ -42,7 +42,7 @@ msgstr "При отметка ще бъдат върнати само резул
 msgid "Search terms"
 msgstr "Термини на търсене"
 
-#: links.py:13 permissions.py:5 queues.py:7 settings.py:7
+#: links.py:13 permissions.py:5 queues.py:7 settings.py:10
 #: templates/dynamic_search/search_box.html:43 views.py:117 views.py:130
 msgid "Search"
 msgstr "Търсене"
@@ -71,16 +71,16 @@ msgstr "Премахнете екземпляр от модел от търса�
 msgid "Index a model instance to the search engine."
 msgstr "Индексирайте екземпляр на модел в търсачката."
 
-#: settings.py:13
+#: settings.py:15
 msgid "Full path to the backend to be used to handle the search."
 msgstr "Пълен път към бекенда, който да се използва при търсене."
 
-#: settings.py:23
+#: settings.py:25
 msgid ""
 "Disables the single term bar search leaving only the advanced search button."
 msgstr "Деактивира лентата за търсене на единични термини, оставяйки само бутона за разширено търсене."
 
-#: settings.py:29
+#: settings.py:31
 msgid "Maximum number search results to fetch and display."
 msgstr "Максимален брой резултати от търсенето за извличане и показване."
 

@@ -9,6 +9,15 @@ elif platform.system() == 'OpenBSD':
 else:
     DEFAULT_GPG_PATH = '/usr/bin/gpg1'
 
+DEFAULT_SIGNATURES_BACKEND = 'mayan.apps.django_gpg.backends.python_gnupg.PythonGNUPGBackend'
+DEFAULT_DEFAULT_GPG_PATH = {
+    'gpg_path': DEFAULT_GPG_PATH,
+}
+DEFAULT_SIGNATURES_KEYSERVER = 'pool.sks-keyservers.net'
+
+ERROR_MSG_BAD_PASSPHRASE = 'BAD_PASSPHRASE'
+ERROR_MSG_GOOD_PASSPHRASE = 'GOOD_PASSPHRASE'
+ERROR_MSG_MISSING_PASSPHRASE = 'MISSING_PASSPHRASE'
 
 KEY_TYPES = {
     'pub': _('Public'),
@@ -38,6 +47,8 @@ KEY_SECONDARY_CLASSES = (
 )
 
 KEYSERVER_DEFAULT_PORT = 11371
+
+OUTPUT_MESSAGE_CONTAINS_PRIVATE_KEY = 'Contains private key'
 
 SIGNATURE_STATE_BAD = 'signature bad'
 SIGNATURE_STATE_NONE = None
@@ -69,8 +80,3 @@ SIGNATURE_STATES = {
         'text': _('Document is signed with a valid signature.'),
     },
 }
-
-ERROR_MSG_BAD_PASSPHRASE = 'BAD_PASSPHRASE'
-ERROR_MSG_GOOD_PASSPHRASE = 'GOOD_PASSPHRASE'
-ERROR_MSG_MISSING_PASSPHRASE = 'MISSING_PASSPHRASE'
-OUTPUT_MESSAGE_CONTAINS_PRIVATE_KEY = 'Contains private key'

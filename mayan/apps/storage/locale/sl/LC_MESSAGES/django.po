@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# Jože Detečnik <joze.detecnik@3tav.si>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-12-25 12:39+0000\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>\n"
 "Language-Team: Slovenian (http://www.transifex.com/rosarior/mayan-edms/language/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,43 +19,43 @@ msgstr ""
 "Language: sl\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
-#: apps.py:11 settings.py:9
+#: apps.py:11 settings.py:10
 msgid "Storage"
-msgstr ""
+msgstr "Skladiščenje"
 
 #: classes.py:86 classes.py:107
 #, python-format
 msgid ""
 "Unable to initialize storage: %(name)s. Check the storage backend dotted "
 "path and arguments."
-msgstr ""
+msgstr "Shranjevanja ni mogoče inicializirati: %(name)s. Preverite potisnjeno pot in argumente v ozadju pomnilnika."
 
 #: management/commands/storage_process.py:13
 msgid "Name of the app to process."
-msgstr ""
+msgstr "Ime aplikacije za obdelavo."
 
 #: management/commands/storage_process.py:19
 msgid ""
 "Path of the database (.dbm) file that will be created/read to keep track of "
 "items processed."
-msgstr ""
+msgstr "Pot datoteke zbirke podatkov (.dbm), ki bo ustvarjena / prebrana za sledenje obdelanim elementom."
 
 #: management/commands/storage_process.py:26
 msgid "Process a specific model."
-msgstr ""
+msgstr "Obdelajte določen model."
 
 #: management/commands/storage_process.py:32
 msgid ""
 "Process the files in reverse to undo the storage pipeline transformations."
-msgstr ""
+msgstr "Datoteke obdelajte obratno, da razveljavite transformacije cevovoda za shranjevanje."
 
 #: management/commands/storage_process.py:38
 msgid "Name of the storage to process."
-msgstr ""
+msgstr "Ime shrambe za obdelavo."
 
 #: models.py:23
 msgid "File"
-msgstr ""
+msgstr "mapa"
 
 #: models.py:25
 msgid "Filename"
@@ -62,36 +63,36 @@ msgstr "Ime datoteke"
 
 #: models.py:27
 msgid "Date time"
-msgstr ""
+msgstr "Datum čas"
 
 #: models.py:31
 msgid "Shared uploaded file"
-msgstr ""
+msgstr "Naložena datoteka v skupni rabi"
 
 #: models.py:32 storages.py:19
 msgid "Shared uploaded files"
-msgstr ""
+msgstr "Naložene datoteke v skupni rabi"
 
 #: queues.py:11
 msgid "Storage periodic"
-msgstr ""
+msgstr "Občasno skladiščenje"
 
 #: queues.py:16
 msgid "Delete stale uploads"
-msgstr ""
+msgstr "Izbrišite zastarela nalaganja"
 
-#: settings.py:14
+#: settings.py:15
 msgid "A storage backend that all workers can use to share files."
-msgstr ""
+msgstr "Zaledje pomnilnika, ki ga lahko vsi delavci uporabljajo za skupno rabo datotek."
 
-#: settings.py:23
+#: settings.py:25
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
-msgstr ""
+msgstr "Začasni imenik je uporabljal spletno mesto za shranjevanje sličic, predogledov in začasnih datotek."
 
 #: storages.py:12
 msgid ""
 "Unable to initialize the shared uploaded file storage. Check the settings {}"
 " and {} for formatting errors."
-msgstr ""
+msgstr "Naložene shrambe datotek v skupni rabi ni mogoče inicializirati. Preverite nastavitve {} in {} za napake pri formatiranju."

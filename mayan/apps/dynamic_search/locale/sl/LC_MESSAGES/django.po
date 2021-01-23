@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# Jože Detečnik <joze.detecnik@3tav.si>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-09-27 06:46+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-12-25 11:47+0000\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>\n"
 "Language-Team: Slovenian (http://www.transifex.com/rosarior/mayan-edms/language/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,100 +21,100 @@ msgstr ""
 
 #: apps.py:19
 msgid "Dynamic search"
-msgstr ""
+msgstr "Dinamično iskanje"
 
 #: classes.py:154
 msgid "No search model matching the query"
-msgstr ""
+msgstr "Noben model iskanja se ne ujema s poizvedbo"
 
 #: forms.py:7
 msgid "Match all"
-msgstr ""
+msgstr "Ujemi vse"
 
 #: forms.py:8
 msgid ""
 "When checked, only results that match all fields will be returned. When "
 "unchecked results that match at least one field will be returned."
-msgstr ""
+msgstr "Če je označeno, bodo vrnjeni samo rezultati, ki se ujemajo z vsemi polji. Če so nepreverjeni rezultati, ki se ujemajo z vsaj enim poljem, bodo vrnjeni."
 
 #: forms.py:27 templates/dynamic_search/search_box.html:39
 msgid "Search terms"
-msgstr ""
+msgstr "Iskalni izrazi"
 
-#: links.py:13 permissions.py:5 queues.py:7 settings.py:7
+#: links.py:13 permissions.py:5 queues.py:7 settings.py:10
 #: templates/dynamic_search/search_box.html:43 views.py:117 views.py:130
 msgid "Search"
-msgstr ""
+msgstr "Iskanje"
 
 #: links.py:17 templates/dynamic_search/search_box.html:45 views.py:144
 msgid "Advanced search"
-msgstr ""
+msgstr "Napredno iskanje"
 
 #: links.py:21
 msgid "Search again"
-msgstr ""
+msgstr "Znova poiščite"
 
 #: links.py:25 views.py:90
 msgid "Reindex search backend"
-msgstr ""
+msgstr "Ponovni indeks iskanja"
 
 #: permissions.py:8
 msgid "Execute search tools"
-msgstr ""
+msgstr "Izvedite orodja za iskanje"
 
 #: queues.py:11
 msgid "Remove a model instance from the search engine."
-msgstr ""
+msgstr "Odstranite primerek modela iz iskalnika."
 
 #: queues.py:16
 msgid "Index a model instance to the search engine."
-msgstr ""
+msgstr "Indeksirajte primerek modela v iskalnik."
 
-#: settings.py:13
+#: settings.py:15
 msgid "Full path to the backend to be used to handle the search."
-msgstr ""
+msgstr "Celotna pot do zaledja, ki bo uporabljeno za obdelavo iskanja."
 
-#: settings.py:23
+#: settings.py:25
 msgid ""
 "Disables the single term bar search leaving only the advanced search button."
-msgstr ""
+msgstr "Onemogoči iskanje po posameznih izrazih, tako da ostane samo gumb za napredno iskanje."
 
-#: settings.py:29
+#: settings.py:31
 msgid "Maximum number search results to fetch and display."
-msgstr ""
+msgstr "Največje število rezultatov iskanja za pridobitev in prikaz."
 
 #: templates/dynamic_search/search_box.html:45
 msgid "Advanced"
-msgstr ""
+msgstr "Napredno"
 
 #: views.py:38
 msgid "Try again using different terms. "
-msgstr ""
+msgstr "Poskusite znova z drugačnimi izrazi."
 
 #: views.py:40
 msgid "No search results"
-msgstr ""
+msgstr "Ni rezultatov iskanja"
 
 #: views.py:42
 #, python-format
 msgid "Search results for: %s"
-msgstr ""
+msgstr "Rezultati iskanja za: %s"
 
 #: views.py:86
 msgid ""
 "This tool is required only for some search backends. Search results will be "
 "affected while the backend is being reindexed."
-msgstr ""
+msgstr "To orodje je potrebno samo za nekatere zaledne iskalne poizvedbe. Med ponovnim indeksiranjem zaledja bodo to vplivale na rezultate iskanja."
 
 #: views.py:92
 msgid "This tool erases and populates the search backend's internal index."
-msgstr ""
+msgstr "To orodje izbriše in zapolni notranji indeks iskalnega prostora."
 
 #: views.py:110
 msgid "Search backend reindexing queued."
-msgstr ""
+msgstr "Ponovno indeksiranje zalednega iskanja je v čakalni vrsti."
 
 #: views.py:132
 #, python-format
 msgid "Search for: %s"
-msgstr ""
+msgstr "Poiščite: %s"

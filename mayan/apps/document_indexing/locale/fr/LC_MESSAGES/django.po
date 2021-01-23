@@ -5,7 +5,7 @@
 # Translators:
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2017
-# Frédéric Sheedy <sheedf@gmail.com>, 2019-2020
+# Frédéric Sheedy <sheedf@gmail.com>, 2019-2021
 # Olivier W, 2019
 # 0041b687dd284925c1885ba94464aacd_fde037b <fc746b00d74cefecce9698255909a24f_28512>, 2012
 # SadE54 <yannsuisini@gmail.com>, 2013
@@ -15,9 +15,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-09-27 06:46+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2021-01-04 17:59+0000\n"
+"Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -94,11 +94,11 @@ msgstr "Reconstruire l'index"
 msgid "Deletes and creates from scratch all the document indexes."
 msgstr "Supprimer et reconstruire les index des documents en partant de zéro."
 
-#: links.py:53 views.py:446
+#: links.py:53 views.py:453
 msgid "Rebuild indexes"
 msgstr "Reconstruire les index"
 
-#: links.py:64 views.py:481
+#: links.py:64 views.py:488
 msgid "Reset indexes"
 msgstr "Réinitialiser les index"
 
@@ -304,11 +304,11 @@ msgstr "Somme de contrôle du document"
 
 #: serializers.py:191
 msgid "Parent cannot be empty."
-msgstr ""
+msgstr "Le parent ne peut pas être vide."
 
 #: serializers.py:198
 msgid "Parent must be from the same index template."
-msgstr ""
+msgstr "Le parent doit provenir du même modèle d'index."
 
 #: settings.py:14
 msgid ""
@@ -417,45 +417,45 @@ msgstr "Cela peut signifier qu'aucun modèle d'index n'a été créé ou qu'il e
 msgid "There are no index instances available."
 msgstr "Il n'y a pas d'instance d'index disponible."
 
-#: views.py:377
+#: views.py:372
 #, python-format
 msgid "Navigation: %s"
 msgstr "Navigation : %s"
 
-#: views.py:382
+#: views.py:378
 #, python-format
 msgid "Contents for index: %s"
 msgstr "Contenu de l'index : %s"
 
-#: views.py:425
+#: views.py:432
 msgid ""
 "Assign the document type of this document to an index to have it appear in "
 "instances of those indexes organization units. "
 msgstr "Attribuez le type de document de ce document à un index pour qu'il apparaisse dans les instances de ces unités d'organisation d'index."
 
-#: views.py:430
+#: views.py:437
 msgid "This document is not in any index"
 msgstr "Ce document ne figure dans aucun index"
 
-#: views.py:434
+#: views.py:441
 #, python-format
 msgid "Indexes nodes containing document: %s"
 msgstr "Nœuds d'index contenant le document : %s"
 
-#: views.py:460
+#: views.py:467
 #, python-format
 msgid "%(count)d index queued for rebuild."
 msgid_plural "%(count)d indexes queued for rebuild."
 msgstr[0] "%(count)d index en file d&#39;attente pour reconstruction."
 msgstr[1] "%(count)d index en en file d'attente pour la reconstruction."
 
-#: views.py:493
+#: views.py:500
 #, python-format
 msgid "%(count)d index reset."
 msgid_plural "%(count)d indexes reset."
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:506
+#: views.py:513
 msgid "Index templates for which their instances will be deleted."
 msgstr "Modèles d'index pour lesquels leurs instances seront supprimées."

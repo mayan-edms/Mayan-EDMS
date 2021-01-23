@@ -4,14 +4,15 @@
 # 
 # Translators:
 # Translators:
+# Marwan Rahhal <Marwanr@sssit.net>, 2020
 # Mohammed ALDOUB <voulnet@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-12-23 23:58+0000\n"
+"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>\n"
 "Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,49 +21,49 @@ msgstr ""
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: apps.py:52 events.py:5 links.py:18 links.py:24 permissions.py:5 queues.py:6
-#: search.py:6 search.py:10 settings.py:8
+#: search.py:6 search.py:10 settings.py:11
 msgid "OCR"
-msgstr "OCR"
+msgstr "نص الوثيقة"
 
 #: apps.py:103
 msgid "The OCR content."
-msgstr ""
+msgstr "محتوى التعرف الضوئي على الحروف."
 
 #: apps.py:108
 msgid "A generator returning the document's pages OCR content."
-msgstr ""
+msgstr "منشئ يعيد محتوى صفحات نص الوثيقة"
 
 #: apps.py:109
 msgid "OCR content"
-msgstr ""
+msgstr "محتوى التعرف الضوئي على الحروف"
 
 #: apps.py:133
 msgid "Date and time"
-msgstr ""
+msgstr "الوقت والتاريخ"
 
 #: apps.py:136 models.py:72
 msgid "Result"
-msgstr ""
+msgstr "النتيجة"
 
 #: backends/tesseract.py:89
 msgid "Tesseract OCR not found."
-msgstr ""
+msgstr "لم يتم العثور على المطلوب"
 
 #: dependencies.py:23
 msgid "Free Open Source OCR Engine"
-msgstr ""
+msgstr "النص التلقائي "
 
 #: events.py:8
 msgid "Document OCR content deleted"
-msgstr ""
+msgstr "حذف محتوى نص الوثيقة"
 
 #: events.py:12
 msgid "Document version submitted for OCR"
-msgstr ""
+msgstr "إرسال نص الوثيقة "
 
 #: events.py:16
 msgid "Document version OCR finished"
-msgstr ""
+msgstr "الإصدار النهائي لنص الوثيقة"
 
 #: forms.py:14 forms.py:45
 msgid "Contents"
@@ -71,31 +72,31 @@ msgstr "المحتويات"
 #: forms.py:74
 #, python-format
 msgid "Page %(page_number)d"
-msgstr ""
+msgstr "الصفحة %(page_number)d"
 
 #: links.py:30 links.py:35
 msgid "Delete OCR content"
-msgstr ""
+msgstr "حذف محتوى النص"
 
 #: links.py:41 links.py:46
 msgid "Submit for OCR"
-msgstr ""
+msgstr "اعتماد نص الوثيقة"
 
 #: links.py:51
 msgid "Setup OCR"
-msgstr ""
+msgstr "إعدادات نص الوثيقة"
 
 #: links.py:56
 msgid "OCR documents per type"
-msgstr ""
+msgstr "نص الوثيقة لكل نوع "
 
-#: links.py:61 links.py:67 views.py:214
+#: links.py:61 links.py:67 views.py:217
 msgid "OCR errors"
-msgstr ""
+msgstr "أخطاء نص الوثيقة"
 
 #: links.py:73
 msgid "Download OCR text"
-msgstr ""
+msgstr "تحميل النص"
 
 #: models.py:18
 msgid "Document type"
@@ -103,23 +104,23 @@ msgstr "نوع الوثيقة"
 
 #: models.py:22
 msgid "Automatically queue newly created documents for OCR."
-msgstr "Automatically queue newly created documents for OCR."
+msgstr "التحويل التلقائي للوثيقة الى نص "
 
 #: models.py:28
 msgid "Document type settings"
-msgstr ""
+msgstr "اعدادات انواع الوثائق"
 
 #: models.py:29
 msgid "Document types settings"
-msgstr ""
+msgstr "اعدادات انواع الوثائق"
 
 #: models.py:42
 msgid "Document page"
-msgstr ""
+msgstr "صفحة الوثيقة"
 
 #: models.py:46
 msgid "The actual text content extracted by the OCR backend."
-msgstr ""
+msgstr "محتوى النص الفعلي المستخرج"
 
 #: models.py:47
 msgid "Content"
@@ -127,112 +128,112 @@ msgstr "المحتوى"
 
 #: models.py:53
 msgid "Document page OCR content"
-msgstr ""
+msgstr "صفحة الوثيقة محتوى التعرف الضوئي على الحروف"
 
 #: models.py:54
 msgid "Document pages OCR contents"
-msgstr ""
+msgstr "صفحات المستندات محتويات التعرف الضوئي على الحروف"
 
 #: models.py:67
 msgid "Document version"
-msgstr ""
+msgstr "نسخة الوثيقة"
 
 #: models.py:70
 msgid "Date time submitted"
-msgstr ""
+msgstr "تاريخ و وقت الإرسال"
 
 #: models.py:76
 msgid "Document version OCR error"
-msgstr ""
+msgstr "خطأ إصدار نص الوثيقة"
 
 #: models.py:77
 msgid "Document version OCR errors"
-msgstr ""
+msgstr "أخطاء إصدار نص الوثائق"
 
 #: permissions.py:8
 msgid "Submit documents for OCR"
-msgstr "Submit documents for OCR"
+msgstr "ارسال نص الوثيقة"
 
 #: permissions.py:11
 msgid "View the transcribed text from document"
-msgstr ""
+msgstr "عرض النص المكتوب من المستند"
 
 #: permissions.py:15
 msgid "Change document type OCR settings"
-msgstr ""
+msgstr "تغيير إعدادات نوع نص الوثيقة"
 
 #: queues.py:10
 msgid "Finish document version OCR"
-msgstr ""
+msgstr "نسخة نص الوثيقة"
 
 #: queues.py:14
 msgid "Document version page OCR"
-msgstr ""
+msgstr "صفحة إصدار نص الوثيقة "
 
 #: queues.py:18
 msgid "Document version OCR"
-msgstr ""
+msgstr "نسخة نص الوثيقة"
 
-#: settings.py:15
-msgid "Full path to the backend to be used to do OCR."
-msgstr ""
-
-#: settings.py:24
+#: settings.py:17
 msgid "Set new document types to perform OCR automatically by default."
-msgstr ""
+msgstr "التحويل التلقائي الى النص بعد إنشاء وثائق جديدة"
+
+#: settings.py:22
+msgid "Full path to the backend to be used to do OCR."
+msgstr "المسار الكامل للواجهة الخلفية لاستخدامه للقيام بالتعرف الضوئي على الحروف."
 
 #: views.py:35
 msgid "Delete the OCR content of the selected document?"
 msgid_plural "Delete the OCR content of the selected documents?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "حذف محتوى OCR للمستندات المحددة؟"
+msgstr[1] "حذف محتوى OCR للمستند المحدد؟"
+msgstr[2] "حذف محتوى OCR للمستندات المحددة؟"
+msgstr[3] "حذف محتوى OCR للمستندات المحددة؟"
+msgstr[4] "حذف محتوى OCR للمستندات المحددة؟"
+msgstr[5] "حذف محتوى النص للمستندات المحددة؟"
 
 #: views.py:70
 #, python-format
 msgid "OCR result for document: %s"
-msgstr ""
+msgstr "تحويل الوثيقة الى نص : %s"
 
 #: views.py:95
 #, python-format
 msgid "OCR errors for document: %s"
-msgstr ""
+msgstr "أخطاء نص الوثيقة: %s"
 
 #: views.py:121
 #, python-format
 msgid "OCR result for document page: %s"
-msgstr ""
+msgstr "تحويل الصفحة الى وثيقة: %s"
 
 #: views.py:137
 msgid "Submit the selected document to the OCR queue?"
 msgid_plural "Submit the selected documents to the OCR queue?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "إرسال المستندات المحددة إلى قائمة انتظار التعرف الضوئي على الحروف؟"
+msgstr[1] "إرسال المستند المحدد إلى قائمة انتظار التعرف الضوئي على الحروف؟"
+msgstr[2] "إرسال المستندات المحددة إلى قائمة انتظار التعرف الضوئي على الحروف؟"
+msgstr[3] "إرسال المستندات المحددة إلى قائمة انتظار التعرف الضوئي على الحروف؟"
+msgstr[4] "إرسال المستندات المحددة إلى قائمة انتظار التعرف الضوئي على الحروف؟"
+msgstr[5] "إرسال المستندات المحددة إلى قائمة انتظار التعرف الضوئي على الحروف؟"
 
 #: views.py:154
 msgid "Submit all documents of a type for OCR"
-msgstr ""
+msgstr "إرسال جميع المستندات من نوع نص"
 
-#: views.py:168
+#: views.py:171
 #, python-format
 msgid "%(count)d documents added to the OCR queue."
-msgstr ""
+msgstr "تمت إضافة وثائق%(count)d إلى قائمة انتظار التعرف الضوئي على الحروف."
 
-#: views.py:203
+#: views.py:206
 #, python-format
 msgid "Edit OCR settings for document type: %s."
-msgstr ""
+msgstr "تحرير إعدادات النص لنوع الوثيقة: %s."
 
 #: workflow_actions.py:15
 msgid "Page condition"
-msgstr ""
+msgstr "حالة الصفحة"
 
 #: workflow_actions.py:19
 msgid ""
@@ -241,16 +242,16 @@ msgid ""
 "page. Conditions that do not return any value, that return the Python "
 "logical None, or an empty string ('') are considered to be logical false, "
 "any other value is considered to be the logical true."
-msgstr ""
+msgstr "الشرط الذي سيحدد ما إذا كان سيتم تعديل محتوى OCR لصفحة المستند أم لا. يتم تقييم الشرط مقابل صفحة المستند المتكرر. تعتبر الشروط التي لا تُرجع أي قيمة ، أو التي تُرجع قيمة Python المنطقية ، أو سلسلة فارغة (&#39;&#39;) خطأ منطقيًا ، وتعتبر أي قيمة أخرى هي الحقيقة المنطقية."
 
 #: workflow_actions.py:31
 msgid "Page content"
-msgstr ""
+msgstr "محتوى الصفحة"
 
 #: workflow_actions.py:35
 msgid "A template that will generate the OCR content to be saved."
-msgstr ""
+msgstr "قالب يقوم بإنشاء محتوى نص ليتم حفظه."
 
 #: workflow_actions.py:43
 msgid "Update document page OCR content"
-msgstr ""
+msgstr "تحديث محتوى صفحة نص الوثيقة "

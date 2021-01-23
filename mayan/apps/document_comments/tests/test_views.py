@@ -13,9 +13,12 @@ class DocumentCommentViewTestCase(
     DocumentCommentViewTestMixin, DocumentCommentTestMixin,
     GenericDocumentViewTestCase
 ):
+    auto_upload_test_document = False
+
     def setUp(self):
         super().setUp()
         self._create_test_user()
+        self._create_test_document_stub()
 
     def test_comment_create_view_no_permission(self):
         comment_count = Comment.objects.count()
@@ -23,7 +26,7 @@ class DocumentCommentViewTestCase(
         response = self._request_test_comment_create_view()
         self.assertEqual(response.status_code, 404)
 
-        self.assertEqual(comment_count, Comment.objects.count())
+        self.assertEqual(Comment.objects.count(), comment_count)
 
     def test_comment_create_view_with_permissions(self):
         comment_count = Comment.objects.count()
@@ -35,7 +38,22 @@ class DocumentCommentViewTestCase(
         response = self._request_test_comment_create_view()
         self.assertEqual(response.status_code, 302)
 
-        self.assertEqual(comment_count + 1, Comment.objects.count())
+        self.assertEqual(Comment.objects.count(), comment_count + 1)
+
+    def test_trashed_document_comment_create_view_with_permissions(self):
+        comment_count = Comment.objects.count()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_comment_create
+        )
+
+        self.test_document.delete()
+
+        response = self._request_test_comment_create_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertEqual(Comment.objects.count(), comment_count)
 
     def test_comment_delete_view_no_permission(self):
         self._create_test_comment()
@@ -61,6 +79,56 @@ class DocumentCommentViewTestCase(
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(Comment.objects.count(), comment_count - 1)
+
+    def test_trashed_document_comment_delete_view_with_access(self):
+        self._create_test_comment()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_comment_delete
+        )
+
+        self.test_document.delete()
+
+        comment_count = Comment.objects.count()
+
+        response = self._request_test_comment_delete_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertEqual(Comment.objects.count(), comment_count)
+
+    def test_comment_detail_view_no_permission(self):
+        self._create_test_comment()
+
+        response = self._request_test_comment_detail_view()
+        self.assertEqual(response.status_code, 404)
+
+    def test_comment_detail_view_with_access(self):
+        self._create_test_comment()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_comment_view
+        )
+
+        response = self._request_test_comment_detail_view()
+        self.assertContains(
+            response=response, text=self.test_document_comment.comment,
+            status_code=200
+        )
+
+    def test_trashed_documen_comment_detail_view_with_access(self):
+        self._create_test_comment()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_comment_view
+        )
+
+        self.test_document.delete()
+
+        response = self._request_test_comment_detail_view()
+        self.assertEqual(response.status_code, 404)
 
     def test_comment_edit_view_no_permission(self):
         self._create_test_comment()
@@ -88,6 +156,23 @@ class DocumentCommentViewTestCase(
         self.test_document_comment.refresh_from_db()
         self.assertNotEqual(self.test_document_comment.comment, comment_text)
 
+    def test_trashed_document_comment_edit_view_with_access(self):
+        self._create_test_comment()
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_comment_edit
+        )
+
+        comment_text = self.test_document_comment.comment
+
+        self.test_document.delete()
+
+        response = self._request_test_comment_edit_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.test_document_comment.refresh_from_db()
+        self.assertEqual(self.test_document_comment.comment, comment_text)
+
     def test_comment_list_view_with_no_permission(self):
         self._create_test_comment()
 
@@ -110,3 +195,16 @@ class DocumentCommentViewTestCase(
             response=response, text=self.test_document_comment.comment,
             status_code=200
         )
+
+    def test_trashed_document_comment_list_view_with_access(self):
+        self._create_test_comment()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_comment_view
+        )
+
+        self.test_document.delete()
+
+        response = self._request_test_comment_list_view()
+        self.assertEqual(response.status_code, 404)

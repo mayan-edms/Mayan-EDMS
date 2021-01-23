@@ -25,9 +25,9 @@ from .utils import get_document_file_content
 
 
 class DocumentFileContentDeleteView(MultipleObjectConfirmActionView):
-    model = DocumentFile
     object_permission = permission_document_file_parse
     pk_url_kwarg = 'document_file_id'
+    source_queryset = DocumentFile.valid
     success_message = 'Deleted parsed content of %(count)d document file.'
     success_message_plural = 'Deleted parsed content of %(count)d document files.'
 
@@ -54,9 +54,9 @@ class DocumentFileContentDeleteView(MultipleObjectConfirmActionView):
 
 
 class DocumentFileContentDownloadView(SingleObjectDownloadView):
-    model = DocumentFile
     object_permission = permission_document_file_content_view
     pk_url_kwarg = 'document_file_id'
+    source_queryset = DocumentFile.valid
 
     def get_download_file_object(self):
         return get_document_file_content(document_file=self.object)
@@ -67,9 +67,9 @@ class DocumentFileContentDownloadView(SingleObjectDownloadView):
 
 class DocumentFileContentView(SingleObjectDetailView):
     form_class = DocumentFileContentForm
-    model = DocumentFile
     object_permission = permission_document_file_content_view
     pk_url_kwarg = 'document_file_id'
+    source_queryset = DocumentFile.valid
 
     def dispatch(self, request, *args, **kwargs):
         result = super().dispatch(request=request, *args, **kwargs)
@@ -88,9 +88,9 @@ class DocumentFileContentView(SingleObjectDetailView):
 
 class DocumentFilePageContentView(SingleObjectDetailView):
     form_class = DocumentFilePageContentForm
-    model = DocumentFilePage
     object_permission = permission_document_file_content_view
     pk_url_kwarg = 'document_file_page_id'
+    source_queryset = DocumentFilePage.valid
 
     def dispatch(self, request, *args, **kwargs):
         result = super().dispatch(request=request, *args, **kwargs)
@@ -106,13 +106,19 @@ class DocumentFilePageContentView(SingleObjectDetailView):
             'title': _('Content for document file page: %s') % self.object,
         }
 
+    def get_source_queryset(self):
+        document_file_queryset = DocumentFile.valid.all()
+        return DocumentFilePage.objects.filter(
+            document_file_id__in=document_file_queryset.values('pk')
+        )
+
 
 class DocumentFileParsingErrorsListView(
     ExternalObjectMixin, SingleObjectListView
 ):
-    external_object_class = DocumentFile
     external_object_permission = permission_document_file_parse
     external_object_pk_url_kwarg = 'document_file_id'
+    external_object_queryset = DocumentFile.valid
 
     def get_extra_context(self):
         return {
@@ -128,9 +134,9 @@ class DocumentFileParsingErrorsListView(
 
 
 class DocumentFileSubmitView(MultipleObjectConfirmActionView):
-    model = DocumentFile
     object_permission = permission_document_file_parse
     pk_url_kwarg = 'document_file_id'
+    source_queryset = DocumentFile.valid
     success_message = _(
         '%(count)d document file added to the parsing queue'
     )

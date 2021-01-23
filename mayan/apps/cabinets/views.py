@@ -94,7 +94,7 @@ class CabinetDetailView(ExternalObjectMixin, DocumentListView):
     template_name = 'cabinets/cabinet_details.html'
 
     def get_document_queryset(self):
-        return self.external_object.documents.all()
+        return self.external_object.get_documents_queryset()
 
     def get_extra_context(self, **kwargs):
         context = super().get_extra_context(**kwargs)
@@ -180,45 +180,11 @@ class CabinetListView(SingleObjectListView):
         return Cabinet.objects.root_nodes().order_by('label')
 
 
-class DocumentCabinetListView(ExternalObjectMixin, CabinetListView):
-    external_object_class = Document
-    external_object_permission = permission_document_view
-    external_object_pk_url_kwarg = 'document_id'
-
-    def get_extra_context(self):
-        return {
-            'hide_link': True,
-            'no_results_icon': icon_cabinet,
-            'no_results_main_link': link_document_cabinet_add.resolve(
-                context=RequestContext(
-                    request=self.request, dict_={
-                        'object': self.external_object
-                    }
-                )
-            ),
-            'no_results_text': _(
-                'Documents can be added to many cabinets.'
-            ),
-            'no_results_title': _(
-                'This document is not in any cabinet'
-            ),
-            'object': self.external_object,
-            'title': _(
-                'Cabinets containing document: %s'
-            ) % self.external_object,
-        }
-
-    def get_source_queryset(self):
-        return self.external_object.get_cabinets(
-            permission=permission_cabinet_view, user=self.request.user
-        )
-
-
-class DocumentAddToCabinetView(MultipleObjectFormActionView):
+class DocumentCabinetAddView(MultipleObjectFormActionView):
     form_class = CabinetListForm
-    model = Document
     object_permission = permission_cabinet_add_document
     pk_url_kwarg = 'document_id'
+    source_queryset = Document.valid
     success_message = _(
         'Add to cabinet request performed on %(count)d document.'
     )
@@ -305,11 +271,45 @@ class DocumentAddToCabinetView(MultipleObjectFormActionView):
                 )
 
 
-class DocumentRemoveFromCabinetView(MultipleObjectFormActionView):
+class DocumentCabinetListView(ExternalObjectMixin, CabinetListView):
+    external_object_permission = permission_document_view
+    external_object_pk_url_kwarg = 'document_id'
+    external_object_queryset = Document.valid
+
+    def get_extra_context(self):
+        return {
+            'hide_link': True,
+            'no_results_icon': icon_cabinet,
+            'no_results_main_link': link_document_cabinet_add.resolve(
+                context=RequestContext(
+                    request=self.request, dict_={
+                        'object': self.external_object
+                    }
+                )
+            ),
+            'no_results_text': _(
+                'Documents can be added to many cabinets.'
+            ),
+            'no_results_title': _(
+                'This document is not in any cabinet'
+            ),
+            'object': self.external_object,
+            'title': _(
+                'Cabinets containing document: %s'
+            ) % self.external_object,
+        }
+
+    def get_source_queryset(self):
+        return self.external_object.get_cabinets(
+            permission=permission_cabinet_view, user=self.request.user
+        )
+
+
+class DocumentCabinetRemoveView(MultipleObjectFormActionView):
     form_class = CabinetListForm
-    model = Document
     object_permission = permission_cabinet_remove_document
     pk_url_kwarg = 'document_id'
+    source_queryset = Document.valid
     success_message = _(
         'Remove from cabinet request performed on %(count)d document.'
     )

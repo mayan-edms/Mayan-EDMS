@@ -106,7 +106,6 @@ class Source(models.Model):
         """
         document = None
         try:
-
             document, document_file = document_type.new_document(
                 file_object=file_object, label=label,
                 description=description, language=language,

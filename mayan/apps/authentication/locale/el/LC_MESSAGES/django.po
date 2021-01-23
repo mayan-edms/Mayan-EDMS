@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-03-28 07:23+0000\n"
 "Last-Translator: Hmayag Antonian <hmayag@freemail.gr>\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:25 events.py:6 permissions.py:6 settings.py:7
+#: apps.py:25 events.py:6 permissions.py:6 settings.py:10
 msgid "Authentication"
 msgstr "Πιστοποίηση"
 
@@ -68,19 +68,19 @@ msgstr ""
 msgid "If selected, disables ending impersonation."
 msgstr ""
 
-#: links.py:22
+#: links.py:25
 msgid "Logout"
 msgstr "Αποσύνδεση"
 
-#: links.py:27
+#: links.py:30
 msgid "Change password"
 msgstr "Αλλαγή κωδικού πρόσβασης"
 
-#: links.py:32 views.py:68
+#: links.py:35 views.py:68
 msgid "Impersonate user"
 msgstr ""
 
-#: links.py:37 links.py:44
+#: links.py:40 links.py:47
 msgid "Set password"
 msgstr "Ορισμός κωδικού"
 
@@ -88,19 +88,19 @@ msgstr "Ορισμός κωδικού"
 msgid "Impersonate users"
 msgstr ""
 
-#: settings.py:11
+#: settings.py:15
 msgid ""
 "Controls the mechanism used to authenticated user. Options are: username, "
 "email"
 msgstr "Ελέγχει τονμηχανισμό που χρησιμοποιείται για την πιστοποίηση των χρηστών. Οι διαθέσιμες επιλογές είναι: Όνομα χρήστη, email"
 
-#: settings.py:18
+#: settings.py:22
 msgid ""
 "Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
 " in. Value is time in seconds."
 msgstr ""
 
-#: settings.py:25
+#: settings.py:29
 msgid ""
 "Remove the \"Forgot your password?\" link on the login form used to trigger "
 "the password reset."

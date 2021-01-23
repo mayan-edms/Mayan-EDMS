@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-10-14 18:44+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-11-10 17:12+0000\n"
 "Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -46,7 +46,7 @@ msgstr "Zaznaczone oznacza, że zostaną zwrócone wyniki jedynie w przypadku do
 msgid "Search terms"
 msgstr "Słowa do wyszukania"
 
-#: links.py:13 permissions.py:5 queues.py:7 settings.py:7
+#: links.py:13 permissions.py:5 queues.py:7 settings.py:10
 #: templates/dynamic_search/search_box.html:43 views.py:117 views.py:130
 msgid "Search"
 msgstr "Szukaj"
@@ -69,24 +69,24 @@ msgstr "Uruchom narzędzia wyszukiwania"
 
 #: queues.py:11
 msgid "Remove a model instance from the search engine."
-msgstr ""
+msgstr "Usuń instancję modelu z silnika wyszukiwania."
 
 #: queues.py:16
 msgid "Index a model instance to the search engine."
-msgstr ""
+msgstr "Zindeksuj instancję modelu w silniku wyszukiwania."
 
-#: settings.py:13
+#: settings.py:15
 msgid "Full path to the backend to be used to handle the search."
 msgstr "Pełna ścieżka do backendu do obsługi wyszukiwania."
 
-#: settings.py:23
+#: settings.py:25
 msgid ""
 "Disables the single term bar search leaving only the advanced search button."
 msgstr "Wyłącza wyszukiwanie paska pojedynczego hasła, pozostawiając tylko przycisk wyszukiwania zaawansowanego."
 
-#: settings.py:29
+#: settings.py:31
 msgid "Maximum number search results to fetch and display."
-msgstr ""
+msgstr "Maksymalna liczba wyników wyszukiwania możliwa do pobrania i wyświetlenia."
 
 #: templates/dynamic_search/search_box.html:45
 msgid "Advanced"
@@ -109,15 +109,15 @@ msgstr "Wyniki wyszukiwania dla: %s"
 msgid ""
 "This tool is required only for some search backends. Search results will be "
 "affected while the backend is being reindexed."
-msgstr ""
+msgstr "To narzędzie jest wymagane tylko w przypadku niektórych silników wyszukiwania. Wyniki wyszukiwania ulegną zmianie podczas ponownego indeksowania silnika."
 
 #: views.py:92
 msgid "This tool erases and populates the search backend's internal index."
-msgstr ""
+msgstr "To narzędzie usuwa i zapełnia wewnętrzny indeks silnika wyszukiwania."
 
 #: views.py:110
 msgid "Search backend reindexing queued."
-msgstr ""
+msgstr "Ponowne indeksowanie silnika wyszukiwania oczekuje w kolejce."
 
 #: views.py:132
 #, python-format

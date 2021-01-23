@@ -56,7 +56,7 @@ class FavoriteDocumentAPIViewTestCase(
         self.assertEqual(event, None)
 
     def test_favorite_document_delete_api_view_no_permission(self):
-        self._document_add_to_favorites()
+        self._test_document_favorite_add()
 
         favorite_document_count = FavoriteDocument.objects.count()
 
@@ -73,7 +73,7 @@ class FavoriteDocumentAPIViewTestCase(
         self.assertEqual(event, None)
 
     def test_favorite_document_delete_api_view_with_access(self):
-        self._document_add_to_favorites()
+        self._test_document_favorite_add()
 
         favorite_document_count = FavoriteDocument.objects.count()
 
@@ -95,7 +95,7 @@ class FavoriteDocumentAPIViewTestCase(
         self.assertEqual(event, None)
 
     def test_favorite_document_detail_api_view_no_permission(self):
-        self._document_add_to_favorites()
+        self._test_document_favorite_add()
 
         self._clear_events()
 
@@ -106,7 +106,7 @@ class FavoriteDocumentAPIViewTestCase(
         self.assertEqual(event, None)
 
     def test_favorite_document_detail_api_view_with_access(self):
-        self._document_add_to_favorites()
+        self._test_document_favorite_add()
 
         self.grant_access(
             obj=self.test_document,
@@ -126,7 +126,7 @@ class FavoriteDocumentAPIViewTestCase(
         self.assertEqual(event, None)
 
     def test_favorite_document_list_api_view_no_permission(self):
-        self._document_add_to_favorites()
+        self._test_document_favorite_add()
 
         favorite_document_count = FavoriteDocument.objects.count()
 
@@ -140,7 +140,7 @@ class FavoriteDocumentAPIViewTestCase(
         self.assertEqual(event, None)
 
     def test_favorite_document_list_api_view_with_access(self):
-        self._document_add_to_favorites()
+        self._test_document_favorite_add()
 
         favorite_document_count = FavoriteDocument.objects.count()
 

@@ -4,6 +4,7 @@
 # 
 # Translators:
 # Translators:
+# Benoît GROUSSET <benoit@grousset.xyz>, 2021
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2016-2017
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015
 # Frédéric Sheedy <sheedf@gmail.com>, 2019-2020
@@ -14,9 +15,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-03-28 07:22+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2021-01-04 19:34+0000\n"
+"Last-Translator: Benoît GROUSSET <benoit@grousset.xyz>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -122,7 +123,7 @@ msgstr "Clés primaires du rôle auquel cette liste de contrôle d'accès se rat
 msgid ""
 "An ACL for \"%(object)s\" using role \"%(role)s\" already exists. Edit that "
 "ACL entry instead."
-msgstr ""
+msgstr "Le droit pour %(object)s du rôle %(role)s existe déjà. Editer ce droit à la place."
 
 #: views.py:53
 #, python-format
@@ -143,7 +144,7 @@ msgid ""
 "ACL stands for Access Control List and is a precise method to control user "
 "access to objects in the system. ACLs allow granting a permission to a role "
 "but only for a specific object or set of objects."
-msgstr ""
+msgstr "ACL signifie Access Control List (liste de contrôle d'accès) et défini précisément la façon de gérer l'accès des utilisateurs aux objets dans l'application. Les ACL permettent de donner les droits à un rôle mais uniquement pour un objet ou un ensemble d'objet."
 
 #: views.py:143
 #, python-format

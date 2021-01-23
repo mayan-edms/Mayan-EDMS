@@ -1,7 +1,15 @@
+import os
+
+from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
 DEFAULT_GRAPHVIZ_DOT_PATH = '/usr/bin/dot'
-DEFAULT_WORKFLOW_IMAGE_CACHE_MAXIMUM_SIZE = 50 * 2 ** 20  # 50 Megabytes
+DEFAULT_WORKFLOWS_IMAGE_CACHE_MAXIMUM_SIZE = 50 * 2 ** 20  # 50 Megabytes
+DEFAULT_WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND = 'django.core.files.storage.FileSystemStorage'
+DEFAULT_WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND_ARGUMENTS = {
+    'location': os.path.join(settings.MEDIA_ROOT, 'workflows')
+}
+DEFAULT_WORKFLOWS_IMAGE_CACHE_TIME = '31556926'
 
 FIELD_TYPE_CHOICE_CHAR = 1
 FIELD_TYPE_CHOICE_INTEGER = 2

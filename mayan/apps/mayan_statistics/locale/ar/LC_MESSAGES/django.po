@@ -4,14 +4,16 @@
 # 
 # Translators:
 # Translators:
+# Marwan Rahhal <Marwanr@sssit.net>, 2020
 # Mohammed ALDOUB <voulnet@gmail.com>, 2013
+# WM Shinkada <shinkadawasim@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2019-05-17 05:51+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-12-23 22:52+0000\n"
+"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>\n"
 "Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,11 +29,11 @@ msgstr "إحصائيات"
 #. which the statistic will be updated
 #: apps.py:36
 msgid "Schedule"
-msgstr ""
+msgstr "جدولة"
 
 #: apps.py:42
 msgid "Last update"
-msgstr ""
+msgstr "أخر تحديث"
 
 #: classes.py:146
 msgid "Never"
@@ -39,84 +41,84 @@ msgstr "لا"
 
 #: links.py:10
 msgid "Queue"
-msgstr ""
+msgstr "منتظر"
 
 #: links.py:15
 msgid "View"
-msgstr ""
+msgstr "عرض"
 
 #: links.py:20
 msgid "Namespace details"
-msgstr ""
+msgstr "تفاصيل خاصة"
 
 #: links.py:25
 msgid "Namespace list"
-msgstr ""
+msgstr "قائمة خاصة"
 
 #. Translators: 'Slug' refers to the URL valid ID of the statistic
 #. More info: https://docs.djangoproject.com/en/1.7/glossary/#term-slug
 #: models.py:10
 msgid "Slug"
-msgstr ""
+msgstr "حجم"
 
 #: models.py:12
 msgid "Date time"
-msgstr ""
+msgstr "التاريخ والوقت"
 
 #: models.py:14
 msgid "Data"
-msgstr ""
+msgstr "معلومات"
 
 #: models.py:17
 msgid "Statistics result"
-msgstr ""
+msgstr "نتيجة الإحصائية"
 
 #: models.py:18
 msgid "Statistics results"
-msgstr ""
+msgstr "نتيجة الإحصائيات"
 
 #: permissions.py:8
 msgid "View statistics"
-msgstr ""
+msgstr "إستعراض الاحصائيات"
 
 #: queues.py:12
 msgid "Execute statistic"
-msgstr ""
+msgstr "تنفيذ الاحصائية"
 
 #: templates/statistics/renderers/chartjs/line.html:14
 msgid "No data available."
-msgstr ""
+msgstr "لا توجد معلومات متوفرة"
 
 #: templates/statistics/renderers/chartjs/line.html:16
 #, python-format
 msgid "Last update: %(datetime)s"
-msgstr ""
+msgstr "آخر تحديث: %(datetime)s"
 
 #: views.py:17
 msgid "Statistics namespaces"
-msgstr ""
+msgstr " الإحصاءات"
 
 #: views.py:33
 #, python-format
 msgid "Namespace details for: %s"
-msgstr ""
+msgstr "تفاصيل المساحة : %s"
 
 #: views.py:55
 #, python-format
 msgid "Results for: %s"
-msgstr ""
+msgstr "نتائج: %s"
 
 #: views.py:62 views.py:88
 #, python-format
 msgid "Statistic \"%s\" not found."
-msgstr ""
+msgstr "الإحصائية &quot;%s&quot; غير موجودة."
 
 #: views.py:80
 #, python-format
 msgid "Queue statistic \"%s\" to be updated?"
-msgstr ""
+msgstr "سيتم تحديث إحصائية القائمة &quot;%s&quot;؟"
 
 #: views.py:94
 #, python-format
 msgid "Statistic \"%s\" queued successfully for update."
-msgstr ""
+msgstr "تم وضع الإحصاء &quot;%s&quot; بنجاح"

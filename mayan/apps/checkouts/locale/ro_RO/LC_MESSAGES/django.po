@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-09-29 12:57+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 msgid "Checkouts"
 msgstr "Consemnări intări/ieșiri"
 
-#: dashboard_widgets.py:14 views.py:181
+#: dashboard_widgets.py:14 views.py:182
 msgid "Checked out documents"
 msgstr "Documente consemnate ca ieșite"
 
@@ -218,13 +218,13 @@ msgstr "Consemează ca ieșit documentul: %s"
 msgid "Check out details for document: %s"
 msgstr "Verificat detaliile documentului:% s"
 
-#: views.py:177
+#: views.py:178
 msgid ""
 "Checking out a document, blocks certain operations for a predetermined "
 "amount of time."
 msgstr "Consemnarea ca ieșit a unui document blochează anumite operațiuni pentru o perioadă de timp predeterminată."
 
-#: views.py:180
+#: views.py:181
 msgid "No documents have been checked out"
 msgstr "Nu sunt documente consemnate ca ieșite"
 

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2019-04-14 04:06+0000\n"
 "Last-Translator: Bruno Martins <bruno.martins@bewgpt.com.pt>, 2020\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
@@ -49,11 +49,11 @@ msgstr "Hash da palavra passe"
 msgid "Autoadmin properties"
 msgstr "Propriedades do administrador automático"
 
-#: settings.py:12
+#: settings.py:11
 msgid "Sets the email of the automatically created super user account."
 msgstr "Define o email do super utilizador criado automaticamente."
 
-#: settings.py:18
+#: settings.py:16
 msgid ""
 "The password of the automatically created super user account. If it is equal"
 " to None, the password is randomly generated."
@@ -61,7 +61,7 @@ msgstr ""
 "A palavra passe do super utilizador criado automaticamente. Se for igual a "
 "nada, a palavra passe é gerada aleatoriamente."
 
-#: settings.py:25
+#: settings.py:22
 msgid "The username of the automatically created super user account."
 msgstr ""
 "O nome de utilizador da conta de super utilizador criada automaticamente."

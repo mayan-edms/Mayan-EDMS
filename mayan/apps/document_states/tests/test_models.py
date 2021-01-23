@@ -21,7 +21,7 @@ from .mixins import (
 class WorkflowInstanceModelTestCase(
     WorkflowTestMixin, GenericDocumentTestCase
 ):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def setUp(self):
         super().setUp()
@@ -31,7 +31,8 @@ class WorkflowInstanceModelTestCase(
         self.test_workflow.document_types.add(self.test_document_type)
 
     def test_workflow_method_get_absolute_url(self):
-        self._upload_test_document()
+        self._create_test_document_stub()
+
         self.test_workflow_instance = self.test_document.workflows.first()
 
         self.test_workflow_instance.get_absolute_url()
@@ -40,18 +41,21 @@ class WorkflowInstanceModelTestCase(
         self.test_workflow.auto_launch = False
         self.test_workflow.save()
 
-        self._upload_test_document()
+        self._create_test_document_stub()
+
         self.assertEqual(self.test_document.workflows.count(), 0)
 
     def test_workflow_transition_no_condition(self):
-        self._upload_test_document()
+        self._create_test_document_stub()
+
         self.test_workflow_instance = self.test_document.workflows.first()
         self.assertEqual(
             self.test_workflow_instance.get_transition_choices().count(), 1
         )
 
     def test_workflow_transition_false_condition(self):
-        self._upload_test_document()
+        self._create_test_document_stub()
+
         self.test_workflow_instance = self.test_document.workflows.first()
 
         self.test_workflow_transition.condition = '{{ invalid_variable }}'
@@ -62,7 +66,8 @@ class WorkflowInstanceModelTestCase(
         )
 
     def test_workflow_transition_true_condition(self):
-        self._upload_test_document()
+        self._create_test_document_stub()
+
         self.test_workflow_instance = self.test_document.workflows.first()
 
         self.test_workflow_transition.condition = '{{ workflow_instance }}'
@@ -211,7 +216,7 @@ class WorkflowTransitionFieldModelTestCase(
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
         self._create_test_workflow_transition_field()
-        self._upload_test_document()
+        self._create_test_document_stub()
 
     def test_deleted_field_context_references(self):
         """

@@ -187,6 +187,21 @@ class DocumentWebLinkViewTestCase(
             status_code=200
         )
 
+    def test_trashed_document_web_links_list_view_with_full_access(self):
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_web_link_instance_view
+        )
+        self.grant_access(
+            obj=self.test_web_link,
+            permission=permission_web_link_instance_view
+        )
+
+        self.test_document.delete()
+
+        response = self._request_test_document_web_link_list_view()
+        self.assertEqual(response.status_code, 404)
+
     def test_document_resolved_web_link_view_no_permission(self):
         response = self._request_test_document_web_link_instance_view()
         self.assertEqual(response.status_code, 404)
@@ -226,3 +241,18 @@ class DocumentWebLinkViewTestCase(
                 '{{ document.uuid }}', force_text(s=self.test_document.uuid)
             )
         )
+
+    def test_trashed_document_resolved_web_link_view_with_full_access(self):
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_web_link_instance_view
+        )
+        self.grant_access(
+            obj=self.test_web_link,
+            permission=permission_web_link_instance_view
+        )
+
+        self.test_document.delete()
+
+        response = self._request_test_document_web_link_instance_view()
+        self.assertEqual(response.status_code, 404)

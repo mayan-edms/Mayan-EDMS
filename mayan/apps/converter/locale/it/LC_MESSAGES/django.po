@@ -6,13 +6,13 @@
 # Translators:
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011,2015
-# Roberto Rosario, 2020
+# Roberto Rosario, 2020-2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-09-30 04:16+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2021-01-02 22:28+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:39 events.py:5 permissions.py:5 settings.py:16
+#: apps.py:39 events.py:5 permissions.py:5 settings.py:14
 msgid "Converter"
 msgstr "Convertitore"
 
@@ -69,11 +69,11 @@ msgstr "Utilità dal pacchetto popper-utils utilizzato per estrarre pagine da fi
 
 #: events.py:8
 msgid "Asset created"
-msgstr ""
+msgstr "Risorsa visiva creata"
 
 #: events.py:11
 msgid "Asset edited"
-msgstr ""
+msgstr "Risorsa visiva modificata"
 
 #: forms.py:22
 msgid "Available transformations for this layer."
@@ -87,7 +87,7 @@ msgstr "\"%s\" non è una voce valida."
 #: layers.py:11
 msgid ""
 "Decorations are visual elements that add contextual information to images."
-msgstr ""
+msgstr "Le decorazioni sono elementi visivi che aggiungono informazioni contestuali alle immagini."
 
 #: layers.py:13
 msgid "Decorations"
@@ -99,7 +99,7 @@ msgstr "Trasformazioni salvate"
 
 #: links.py:31 views.py:36
 msgid "Create asset"
-msgstr ""
+msgstr "Crea risorsa visiva"
 
 #: links.py:35 links.py:41 links.py:65
 msgid "Delete"
@@ -111,7 +111,7 @@ msgstr "Modifica"
 
 #: links.py:55 models.py:53 storages.py:19 views.py:127
 msgid "Assets"
-msgstr ""
+msgstr "Risorse visivi"
 
 #: links.py:77
 msgid "Transformations"
@@ -129,7 +129,7 @@ msgstr "Etichetta"
 msgid ""
 "This value will be used when referencing this asset. Can only contain "
 "letters, numbers, and underscores."
-msgstr ""
+msgstr "Questo valore verrà utilizzato quando si fa riferimento a questa risorsa visiva. Può contenere solo lettere, numeri e trattini bassi."
 
 #: models.py:43
 msgid "Internal name"
@@ -141,7 +141,7 @@ msgstr "File"
 
 #: models.py:52
 msgid "Asset"
-msgstr ""
+msgstr "Risorsa visiva"
 
 #: models.py:82 models.py:153
 msgid "Name"
@@ -197,23 +197,23 @@ msgstr "Trasformazioni di livello"
 
 #: models.py:174
 msgid "Unknown transformation class"
-msgstr ""
+msgstr "Classe di trasformazione sconosciuta"
 
 #: permissions.py:8
 msgid "Create new assets"
-msgstr ""
+msgstr "Crea nuove risorse visivi"
 
 #: permissions.py:11
 msgid "Delete assets"
-msgstr ""
+msgstr "Elimina risorse visivi"
 
 #: permissions.py:14
 msgid "Edit assets"
-msgstr ""
+msgstr "Modifica risorse visivi"
 
 #: permissions.py:17
 msgid "View existing assets"
-msgstr ""
+msgstr "Visualizza le risorse visivi esistenti"
 
 #: permissions.py:21
 msgid "Create new transformations"
@@ -231,39 +231,39 @@ msgstr "Modifica le trasformazioni"
 msgid "View existing transformations"
 msgstr "Visualizza le trasformazioni esistenti"
 
-#: settings.py:22
+#: settings.py:21
 msgid "Graphics conversion backend to use."
 msgstr "Conversioni grafiche di backend da utilizzare."
 
-#: settings.py:35
+#: settings.py:27
 msgid "Configuration options for the graphics conversion backend."
 msgstr "Opzioni di configurazione per il backend di conversione grafica."
 
-#: settings.py:41
+#: settings.py:33
 msgid "Path to the Storage subclass to use when storing assets."
-msgstr ""
+msgstr "Percorso della sottoclasse di archiviazione da utilizzare durante l'archiviazione degli risorsa visiva."
 
-#: settings.py:49
+#: settings.py:39
 msgid "Arguments to pass to the CONVERTER_ASSET_STORAGE_BACKEND."
-msgstr ""
+msgstr "Argomenti da passare a CONVERTER_ASSET_STORAGE_BACKEND."
 
 #: storages.py:13
 msgid ""
 "Unable to initialize the converter asset storage. Check the settings {} and "
 "{} for formatting errors."
-msgstr ""
+msgstr "Impossibile inizializzare l'archiviazione degli risorsa visiva del convertitore. Controlla le impostazioni {} e {} per errori di formattazione."
 
 #: transformations.py:197
 msgid "Paste an asset"
-msgstr ""
+msgstr "Incolla una risorsa visiva"
 
 #: transformations.py:248
 msgid "Paste an asset (percents coordinates)"
-msgstr ""
+msgstr "Incolla una risorsa visiva (coordinate percentuali)"
 
 #: transformations.py:291
 msgid "Paste an asset as watermark"
-msgstr ""
+msgstr "Incolla una risorsa visiva come filigrana"
 
 #: transformations.py:351
 msgid "Crop"
@@ -324,48 +324,48 @@ msgstr "Zoom"
 #: views.py:50
 #, python-format
 msgid "Delete request performed on %(count)d asset"
-msgstr ""
+msgstr "Richiesta di eliminazione eseguita sulla risorsa visiva %(count)d"
 
 #: views.py:52
 #, python-format
 msgid "Delete request performed on %(count)d assets"
-msgstr ""
+msgstr "Richiesta di eliminazione eseguita su %(count)d risorse visivi"
 
 #: views.py:59
 msgid "Delete the selected asset?"
 msgid_plural "Delete the selected assets?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Eliminare la risorsa visiva selezionata?"
+msgstr[1] "Eliminare le risorse visiva selezionate?"
 
 #: views.py:69
 #, python-format
 msgid "Delete asset: %s?"
-msgstr ""
+msgstr "Elimina risorsa visiva: %s?"
 
 #: views.py:80
 #, python-format
 msgid "Asset \"%s\" deleted successfully."
-msgstr ""
+msgstr "Rsorsa visiva \"%s\" eliminato correttamente."
 
 #: views.py:85
 #, python-format
 msgid "Error deleting asset \"%(asset)s\": %(error)s"
-msgstr ""
+msgstr "Errore durante l'eliminazione della risorsa visiva \"%(asset)s\": %(error)s"
 
 #: views.py:101
 #, python-format
 msgid "Edit asset: %s"
-msgstr ""
+msgstr "Modifica risorsa visiva: %s"
 
 #: views.py:123
 msgid ""
 "Assets are files that can be used in conjuction with certain "
 "transformations."
-msgstr ""
+msgstr "Le risorse visivi sono file che possono essere utilizzati in combinazione con determinate trasformazioni."
 
 #: views.py:126
 msgid "No assets available"
-msgstr ""
+msgstr "Nessuna risorsa visiva disponibile"
 
 #: views.py:151
 #, python-format
@@ -420,19 +420,19 @@ msgstr "Pagine"
 msgid ""
 "Pages to which the new transformations will be added. Separate by commas "
 "and/or use a dashes for a ranges. Leave blank to select all pages."
-msgstr ""
+msgstr "Pagine a cui verranno aggiunte le nuove trasformazioni. Separare da virgole e / o utilizzare un trattino per gli intervalli. Lascia vuoto per selezionare tutte le pagine."
 
 #: workflow_actions.py:32
 msgid "Transformation class"
-msgstr ""
+msgstr "Classe di trasformazione"
 
 #: workflow_actions.py:37
 msgid "Type of transformation to add."
-msgstr ""
+msgstr "Tipo di trasformazione da aggiungere."
 
 #: workflow_actions.py:42
 msgid "Transformation arguments"
-msgstr ""
+msgstr "Argomenti sulla trasformazione"
 
 #: workflow_actions.py:51
 msgid "Add transformation"

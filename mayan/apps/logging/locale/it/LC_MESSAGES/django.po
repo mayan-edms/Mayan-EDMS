@@ -4,18 +4,18 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Roberto Rosario, 2020
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2020
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2020
 # Daniele Bortoluzzi <daniele@elkos.it>, 2020
+# Roberto Rosario, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-09-27 06:46+0000\n"
-"Last-Translator: Daniele Bortoluzzi <daniele@elkos.it>, 2020\n"
+"Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,7 +25,7 @@ msgstr ""
 
 #: apps.py:15 permissions.py:5 settings.py:10
 msgid "Logging"
-msgstr ""
+msgstr "Registrazione"
 
 #: links.py:12
 msgid "Errors"
@@ -33,7 +33,7 @@ msgstr "Errori"
 
 #: links.py:18
 msgid "Clear errors"
-msgstr ""
+msgstr "Cancella errori"
 
 #: models.py:10 models.py:38
 msgid "Internal name"
@@ -41,23 +41,23 @@ msgstr "Nome interno"
 
 #: models.py:15 models.py:35
 msgid "Error log"
-msgstr ""
+msgstr "Registro degli errori"
 
 #: models.py:16
 msgid "Error logs"
-msgstr ""
+msgstr "Registri degli errori"
 
 #: models.py:25
 msgid "App label"
-msgstr ""
+msgstr "Etichetta del'app"
 
 #: models.py:43 models.py:60
 msgid "Error log partition"
-msgstr ""
+msgstr "Partizione del registro degli errori"
 
 #: models.py:44
 msgid "Error log partitions"
-msgstr ""
+msgstr "Partizioni del registro degli errori"
 
 #: models.py:63
 msgid "Date and time"
@@ -69,11 +69,11 @@ msgstr "Testo"
 
 #: models.py:70
 msgid "Error log partition entry"
-msgstr ""
+msgstr "Voce di partizione del registro degli errori"
 
 #: models.py:71
 msgid "Error log partition entries"
-msgstr ""
+msgstr "Voci della partizione del registro degli errori"
 
 #: permissions.py:8
 msgid "View error log"
@@ -83,16 +83,18 @@ msgstr "Vedi log errori"
 msgid "Automatically enable logging to all apps."
 msgstr "Abilita automaticamente i log per tutte le app."
 
-#: settings.py:20
+#: settings.py:19
 msgid ""
 "List of handlers to which logging messages will be sent. Options are: {}"
 msgstr ""
+"Elenco di gestori a cui verranno inviati i messaggi di registrazione. Le "
+"opzioni sono: {}"
 
-#: settings.py:26
+#: settings.py:25
 msgid "Level for the logging system."
-msgstr ""
+msgstr "Livello per il sistema di registrazione."
 
-#: settings.py:32
+#: settings.py:31
 msgid "Path to the logfile that will track errors during production."
 msgstr ""
 "Percorso del file di log su cui verranno scritti gli errori in produzione."

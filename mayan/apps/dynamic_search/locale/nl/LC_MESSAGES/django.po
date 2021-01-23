@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
@@ -44,7 +44,7 @@ msgstr "Indien aangevinkt worden alleen resultaten weergegeven die aan alle term
 msgid "Search terms"
 msgstr "Zoektermen"
 
-#: links.py:13 permissions.py:5 queues.py:7 settings.py:7
+#: links.py:13 permissions.py:5 queues.py:7 settings.py:10
 #: templates/dynamic_search/search_box.html:43 views.py:117 views.py:130
 msgid "Search"
 msgstr "Zoeken"
@@ -73,16 +73,16 @@ msgstr ""
 msgid "Index a model instance to the search engine."
 msgstr ""
 
-#: settings.py:13
+#: settings.py:15
 msgid "Full path to the backend to be used to handle the search."
 msgstr "Volledige pad naar de backend die gebruikt wordt om de zoekopdracht af te handelen."
 
-#: settings.py:23
+#: settings.py:25
 msgid ""
 "Disables the single term bar search leaving only the advanced search button."
 msgstr "Schakelt de zoekbalk voor één begrip uit, waardoor alleen de geavanceerd zoeken-knop overblijft."
 
-#: settings.py:29
+#: settings.py:31
 msgid "Maximum number search results to fetch and display."
 msgstr ""
 

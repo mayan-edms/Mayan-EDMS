@@ -141,13 +141,17 @@ class FavoriteDocumentManager(models.Manager):
 
         return favorite_document
 
-    def get_by_natural_key(self, datetime_accessed, document_natural_key, user_natural_key):
+    def get_by_natural_key(
+        self, datetime_accessed, document_natural_key, user_natural_key
+    ):
         Document = apps.get_model(
             app_label='documents', model_name='Document'
         )
         User = get_user_model()
         try:
-            document = Document.objects.get_by_natural_key(*document_natural_key)
+            document = Document.objects.get_by_natural_key(
+                *document_natural_key
+            )
         except Document.DoesNotExist:
             raise self.model.DoesNotExist
         else:
@@ -163,7 +167,7 @@ class FavoriteDocumentManager(models.Manager):
             app_label='documents', model_name='Document'
         )
 
-        return Document.objects.filter(favorites__user=user)
+        return Document.valid.filter(favorites__user=user)
 
     def remove_for_user(self, user, document):
         self.get(user=user, document=document).delete()
@@ -180,17 +184,25 @@ class RecentlyAccessedDocumentManager(models.Manager):
                 # accessed date and time update
                 new_recent.save()
 
-            recent_to_delete = self.filter(user=user).values_list('pk', flat=True)[setting_recently_accessed_document_count.value:]
+            recent_to_delete = self.filter(user=user).values_list(
+                'pk', flat=True
+            )[
+                setting_recently_accessed_document_count.value:
+            ]
             self.filter(pk__in=list(recent_to_delete)).delete()
         return new_recent
 
-    def get_by_natural_key(self, datetime_accessed, document_natural_key, user_natural_key):
+    def get_by_natural_key(
+        self, datetime_accessed, document_natural_key, user_natural_key
+    ):
         Document = apps.get_model(
             app_label='documents', model_name='Document'
         )
         User = get_user_model()
         try:
-            document = Document.objects.get_by_natural_key(*document_natural_key)
+            document = Document.objects.get_by_natural_key(
+                *document_natural_key
+            )
         except Document.DoesNotExist:
             raise self.model.DoesNotExist
         else:
@@ -210,7 +222,7 @@ class RecentlyAccessedDocumentManager(models.Manager):
         )
 
         if user.is_authenticated:
-            return Document.objects.filter(
+            return Document.valid.filter(
                 recent__user=user
             ).order_by('-recent__datetime_accessed')
         else:
@@ -225,7 +237,7 @@ class RecentlyCreatedDocumentManager(models.Manager):
 
         queryset = ModelQueryFields.get(
             model=RecentlyCreatedDocument
-        ).get_queryset()
+        ).get_queryset(manager_name='valid')
 
         return queryset.filter(
             pk__in=queryset.order_by('-datetime_created')[
@@ -249,4 +261,36 @@ class ValidDocumentManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(
             in_trash=False
+        )
+
+
+class ValidDocumentFileManager(models.Manager):
+    def get_queryset(self):
+        return models.QuerySet(
+            model=self.model, using=self._db
+        ).filter(document__in_trash=False)
+
+
+class ValidDocumentFilePageManager(models.Manager):
+    def get_queryset(self):
+        return models.QuerySet(
+            model=self.model, using=self._db
+        ).filter(
+            document_file__document__in_trash=False
+        )
+
+
+class ValidDocumentVersionManager(models.Manager):
+    def get_queryset(self):
+        return models.QuerySet(
+            model=self.model, using=self._db
+        ).filter(document__in_trash=False)
+
+
+class ValidDocumentVersionPageManager(models.Manager):
+    def get_queryset(self):
+        return models.QuerySet(
+            model=self.model, using=self._db
+        ).filter(
+            document_version__document__in_trash=False
         )

@@ -1,0 +1,47 @@
+{% load static %}
+
+<link href="{% static 'sources/node_modules/dropzone/dist/dropzone.css' %}" media="screen" rel="stylesheet" type="text/css" />
+
+<style>
+    .dropzone .dz-preview .dz-details {
+        top: 25px;
+    }
+
+    .dropzone .dz-preview .dz-progress {
+        top: 60%;
+    }
+
+    .dropzone-previews, .dropzone .dz-message {
+        border: 2px solid rgba(0, 0, 0, 0.3);
+        padding: 40px 20px;
+    }
+
+    .dropzone .dz-preview .dz-error-message {
+        overflow-wrap: break-word;
+        padding: 1.2em;
+        top: 180px;
+        left: -40px;
+        width: 200px;
+    }
+
+    .dropzone .dz-preview .dz-error-message:after {
+        left: 90px;
+    }
+
+    .dropzone .dz-preview .dz-details .dz-filename span,
+    .dropzone .dz-preview .dz-details .dz-size span {
+        padding: 0px;
+    }
+
+    .dropzone {
+        min-height: 150px;
+        border: inherit;
+        background: inherit;
+        padding: 0px;
+    }
+
+    .dropzone-previews, .dropzone .dz-message {
+        background: white;
+    }
+}
+</style>

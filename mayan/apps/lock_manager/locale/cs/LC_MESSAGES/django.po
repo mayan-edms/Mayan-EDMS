@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-02-06 10:07+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:9 settings.py:7
+#: apps.py:9 settings.py:10
 msgid "Lock manager"
 msgstr "Správce zámku"
 
@@ -27,31 +27,31 @@ msgstr "Správce zámku"
 msgid "Creation datetime"
 msgstr "Vytvoření datetime"
 
-#: models.py:17
+#: models.py:18
 msgid "Timeout"
 msgstr "Časový limit"
 
-#: models.py:20
+#: models.py:21
 msgid "Name"
 msgstr "název"
 
-#: models.py:26
+#: models.py:27
 msgid "Lock"
 msgstr "Zámek"
 
-#: models.py:27
+#: models.py:28
 msgid "Locks"
 msgstr "Zámky"
 
-#: settings.py:12
+#: settings.py:15
 msgid "Path to the class to use when to request and release resource locks."
 msgstr "Cesta ke třídě, která se použije, když uzamknete, nebo uvolníte prostředky."
 
-#: settings.py:18
+#: settings.py:22
 msgid "Arguments to pass to the LOCK_MANAGER_BACKEND."
 msgstr "Argumenty k předání LOCK_MANAGER_BACKEND."
 
-#: settings.py:24
+#: settings.py:28
 msgid ""
 "Default amount of time in seconds after which a resource lock will be "
 "automatically released."

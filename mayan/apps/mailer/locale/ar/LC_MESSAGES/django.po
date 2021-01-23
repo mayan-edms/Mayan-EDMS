@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# Marwan Rahhal <Marwanr@sssit.net>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-09-27 06:46+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-12-24 01:42+0000\n"
+"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>\n"
 "Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,65 +21,65 @@ msgstr ""
 
 #: apps.py:40
 msgid "Mailer"
-msgstr ""
+msgstr "مراسل رقمي"
 
 #: classes.py:80
 msgid "Null backend"
-msgstr ""
+msgstr "خلفية فارغة"
 
 #: events.py:5 permissions.py:5 queues.py:6 settings.py:10
 msgid "Mailing"
-msgstr ""
+msgstr "البريد الالكتروني"
 
 #: events.py:8
 msgid "Email sent"
-msgstr ""
+msgstr "أرسل البريد الإلكتروني"
 
 #: forms.py:60 forms.py:120
 msgid ""
 "Email address of the recipient. Can be multiple addresses separated by comma"
 " or semicolon."
-msgstr ""
+msgstr "يمكن إضافة أكثر من عنوان بريدي مع التأكد من إضافة فاصلة او فاصة منقوطة "
 
 #: forms.py:62 forms.py:122
 msgid "Email address"
-msgstr ""
+msgstr "عنوان البريد الالكترونى"
 
 #: forms.py:64 workflow_actions.py:36
 msgid "Subject"
-msgstr ""
+msgstr "موضوع"
 
 #: forms.py:66 workflow_actions.py:45
 msgid "Body"
-msgstr ""
+msgstr "الجسم"
 
 #: forms.py:70
 msgid "The email profile that will be used to send this email."
-msgstr ""
+msgstr "ملف تعريف البريد الإلكتروني الذي سيتم استخدامه لإرسال هذا البريد الإلكتروني."
 
 #: forms.py:71 models.py:55 views.py:212 workflow_actions.py:18
 msgid "Mailing profile"
-msgstr ""
+msgstr "قالب البريد الإلكتروني"
 
 #: forms.py:77
 msgid "The driver to use when sending emails."
-msgstr ""
+msgstr "برنامج التشغيل الذي يجب استخدامه عند إرسال رسائل البريد الإلكتروني."
 
 #: forms.py:78 models.py:69
 msgid "Backend"
-msgstr ""
+msgstr "في الخفاء"
 
 #: links.py:16 links.py:26
 msgid "Email document"
-msgstr ""
+msgstr "إرسال عبر البريد الإلكتروني"
 
 #: links.py:22 links.py:30
 msgid "Email link"
-msgstr ""
+msgstr "رابط البريد الإلكتروني"
 
 #: links.py:35
-msgid "Create mailing profile "
-msgstr ""
+msgid "Create mailing profile"
+msgstr "إنشاء قالب للبريد الإلكتروني"
 
 #: links.py:41
 msgid "Delete"
@@ -86,19 +87,19 @@ msgstr "حذف"
 
 #: links.py:47
 msgid "Edit"
-msgstr "تحرير"
+msgstr "تعديل"
 
 #: links.py:52
 msgid "Mailing profiles list"
-msgstr ""
+msgstr "قائمة قوالب البريد الإلكتروني"
 
 #: links.py:57 models.py:56
 msgid "Mailing profiles"
-msgstr ""
+msgstr "قوالب البريد الإلكتروني"
 
 #: links.py:63 views.py:236
 msgid "Test"
-msgstr ""
+msgstr "اختبار"
 
 #: literals.py:5
 #, python-format
@@ -107,11 +108,11 @@ msgid ""
 "\n"
 " --------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr ""
+msgstr "مرفق بهذا البريد الإلكتروني الوثيقة: {{document}} -------- من قبل%(project_title)s (%(project_website)s)"
 
 #: literals.py:9
 msgid "Document: {{ document }}"
-msgstr ""
+msgstr "الوثيقة : {{document}}"
 
 #: literals.py:11
 #, python-format
@@ -120,51 +121,51 @@ msgid ""
 "\n"
 "--------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr ""
+msgstr "للوصول إلى هذا المستند ، انقر فوق الارتباط التالي: {{link}} -------- تم إرسال هذا البريد الإلكتروني من %(project_title)s (%(project_website)s)"
 
 #: literals.py:15
 msgid "Link for document: {{ document }}"
-msgstr ""
+msgstr "رابط الوثيقة: {{document}}"
 
 #: mailers.py:19 mailers.py:108
 msgid "From"
-msgstr ""
+msgstr "من عند"
 
 #: mailers.py:22 mailers.py:111
 msgid ""
 "The sender's address. Some system will refuse to send messages if this value"
 " is not set."
-msgstr ""
+msgstr "لا يمكن اتمام عملية الإرسال دون تعبئة القيم الإجبارية"
 
 #: mailers.py:28
 msgid "Host"
-msgstr ""
+msgstr "مضيف"
 
 #: mailers.py:30
 msgid "The host to use for sending email."
-msgstr ""
+msgstr "المضيف المراد استخدامه لإرسال البريد الإلكتروني."
 
 #: mailers.py:35
 msgid "Port"
-msgstr ""
+msgstr "ميناء"
 
 #: mailers.py:37
 msgid "Port to use for the SMTP server."
-msgstr ""
+msgstr "منفذ لاستخدامه لخادم SMTP."
 
 #: mailers.py:40
 msgid "Use TLS"
-msgstr ""
+msgstr "استخدم TLS"
 
 #: mailers.py:43
 msgid ""
 "Whether to use a TLS (secure) connection when talking to the SMTP server. "
 "This is used for explicit TLS connections, generally on port 587."
-msgstr ""
+msgstr "ما إذا كنت تريد استخدام اتصال TLS (آمن) عند التحدث إلى خادم SMTP. يستخدم هذا لاتصالات TLS الصريحة ، بشكل عام على المنفذ 587."
 
 #: mailers.py:48
 msgid "Use SSL"
-msgstr ""
+msgstr "استخدم SSL"
 
 #: mailers.py:51
 msgid ""
@@ -174,17 +175,17 @@ msgid ""
 "problems, see the explicit TLS setting \"Use TLS\". Note that \"Use TLS\" "
 "and \"Use SSL\" are mutually exclusive, so only set one of those settings to"
 " True."
-msgstr ""
+msgstr "ما إذا كنت تريد استخدام اتصال TLS ضمني (آمن) عند التحدث إلى خادم SMTP. في معظم وثائق البريد الإلكتروني ، يُشار إلى هذا النوع من اتصال TLS باسم SSL. يتم استخدامه بشكل عام على المنفذ 465. إذا كنت تواجه مشكلات ، فراجع إعداد TLS الصريح &quot;استخدام TLS&quot;. لاحظ أن &quot;Use TLS&quot; و &quot;Use SSL&quot; هما حصريان متبادلان ، لذلك عيِّن واحدًا فقط من هذه الإعدادات على True."
 
 #: mailers.py:60
 msgid "Username"
-msgstr ""
+msgstr "اسم الدخول"
 
 #: mailers.py:63
 msgid ""
 "Username to use for the SMTP server. If empty, authentication won't "
 "attempted."
-msgstr ""
+msgstr "اسم المستخدم المراد استخدامه لخادم SMTP. إذا كانت فارغة ، فلن تتم محاولة المصادقة."
 
 #: mailers.py:69
 msgid "Password"
@@ -195,23 +196,23 @@ msgid ""
 "Password to use for the SMTP server. This setting is used in conjunction "
 "with the username when authenticating to the SMTP server. If either of these"
 " settings is empty, authentication won't be attempted."
-msgstr ""
+msgstr "كلمة المرور المراد استخدامها لخادم SMTP. يتم استخدام هذا الإعداد مع اسم المستخدم عند المصادقة على خادم SMTP. إذا كان أي من هذه الإعدادات فارغًا ، فلن تتم محاولة المصادقة."
 
 #: mailers.py:81
 msgid "Django SMTP backend"
-msgstr ""
+msgstr "خلفية Django SMTP"
 
 #: mailers.py:103
 msgid "File path"
-msgstr ""
+msgstr "مسار الملف"
 
 #: mailers.py:118
 msgid "Django file based backend"
-msgstr ""
+msgstr "ملف Django القائم على الخلفية"
 
 #: models.py:32
 msgid "A short text describing the mailing profile."
-msgstr ""
+msgstr "وصف قالب البريد الإلكتروني"
 
 #: models.py:33
 msgid "Label"
@@ -221,11 +222,11 @@ msgstr "العنوان"
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
-msgstr ""
+msgstr "سيتم تحديد ملف التعريف هذا مسبقًا في نموذج إرسال االوثائق  بالبريد الإلكتروني."
 
 #: models.py:39
 msgid "Default"
-msgstr "Default"
+msgstr "القيمة الإفتراضية"
 
 #: models.py:41
 msgid "Enabled"
@@ -233,162 +234,162 @@ msgstr "مفعل"
 
 #: models.py:44
 msgid "The dotted Python path to the backend class."
-msgstr ""
+msgstr "مسار النظام"
 
 #: models.py:45
 msgid "Backend path"
-msgstr ""
+msgstr "الرابط الخاص بالمبرمجين"
 
 #: models.py:48
 msgid "Backend data"
-msgstr ""
+msgstr "بيانات الخاصة بالمبرمجين"
 
 #: models.py:70
 msgid "The backend class for this entry."
-msgstr ""
+msgstr "فئة الواجهة الخلفية لهذا الإدخال."
 
 #: models.py:209
 msgid "Test email from Mayan EDMS"
-msgstr ""
+msgstr "اختبار البريد الإلكتروني من Mayan EDMS"
 
 #: permissions.py:8
 msgid "Send document link via email"
-msgstr ""
+msgstr "أرسال رابط الوثيقة عبر البريد الإلكتروني"
 
 #: permissions.py:11
 msgid "Send document via email"
-msgstr ""
+msgstr "إرسال الوثيقة عبر البريد الإلكتروني"
 
 #: permissions.py:14
 msgid "Create a mailing profile"
-msgstr ""
+msgstr "إنشاء قالب البريد الإلكتروني"
 
 #: permissions.py:17
 msgid "Delete a mailing profile"
-msgstr ""
+msgstr "حذف قالب البريد الإلكتروني"
 
 #: permissions.py:20
 msgid "Edit a mailing profile"
-msgstr ""
+msgstr "تعديل قالب البريد الإلكتروني"
 
 #: permissions.py:23
 msgid "View a mailing profile"
-msgstr ""
+msgstr "عرض قالب البريد الإلكتروني"
 
 #: permissions.py:26
 msgid "Use a mailing profile"
-msgstr ""
+msgstr "استخدم قالب البريد الإلكتروني"
 
 #: queues.py:8
 msgid "Send document"
-msgstr ""
+msgstr "أرسل الوثيقة"
 
-#: settings.py:14
+#: settings.py:15
 msgid "Template for the document email form subject line."
-msgstr ""
+msgstr "قالب لسطر موضوع نموذج البريد الإلكتروني للمستند."
 
-#: settings.py:19
+#: settings.py:21
 msgid "Template for the document email form body text. Can include HTML."
-msgstr ""
+msgstr "قالب للنص الأساسي لنموذج البريد الإلكتروني للمستند. يمكن أن تشمل HTML."
 
-#: settings.py:24
+#: settings.py:27
 msgid "Template for the document link email form subject line."
-msgstr ""
+msgstr "رابط البريد الإلكتروني للوثيقة "
 
-#: settings.py:29
+#: settings.py:33
 msgid "Template for the document link email form body text. Can include HTML."
-msgstr ""
+msgstr "القالب النصي للبريد الإلكتروني لرابط الوثيقة "
 
 #: validators.py:12
 #, python-format
 msgid "%(email)s is not a valid email address."
-msgstr ""
+msgstr "%(email)s ليس عنوان بريد إلكتروني صالحًا."
 
 #: views.py:39
 #, python-format
 msgid "%(count)d document queued for email delivery"
-msgstr ""
+msgstr "تم وضع مستند %(count)d في قائمة الانتظار لتسليم البريد الإلكتروني"
 
 #: views.py:41
 #, python-format
 msgid "%(count)d documents queued for email delivery"
-msgstr ""
+msgstr "تم وضع مستندات %(count)d في قائمة الانتظار لتسليم البريد الإلكتروني"
 
 #: views.py:52
 msgid "Send"
-msgstr ""
+msgstr "إرسال"
 
 #: views.py:98
 #, python-format
 msgid "%(count)d document link queued for email delivery"
-msgstr ""
+msgstr "تم وضع ارتباط الوثيقة %(count)d في قائمة الانتظار لتسليم البريد الإلكتروني"
 
 #: views.py:100
 #, python-format
 msgid "%(count)d document links queued for email delivery"
-msgstr ""
+msgstr "%(count)d تم وضع رابط الوثائق في قائمة انتظار تسليم البريد الإلكتروني"
 
 #: views.py:109
 msgid "New mailing profile backend selection"
-msgstr ""
+msgstr "تحديد الخلفية الجديدة للقالب"
 
 #: views.py:141
 #, python-format
 msgid "Create a \"%s\" mailing profile"
-msgstr ""
+msgstr "إنشاء قالب البريد الإلكتروني &quot;%s&quot;"
 
 #: views.py:168
 #, python-format
 msgid "Delete mailing profile: %s"
-msgstr ""
+msgstr "حذف قالب البريد الإلكتروني: %s"
 
 #: views.py:180
 #, python-format
 msgid "Edit mailing profile: %s"
-msgstr ""
+msgstr "تعديل قالب البريد الإلكتروني: %s"
 
 #: views.py:207
 msgid ""
 "Mailing profiles are email configurations. Mailing profiles allow sending "
 "documents as attachments or as links via email."
-msgstr ""
+msgstr "تسمح قوالب البريد الإلكتروني بإرسال الوثائق كمرفقات أو كروابط عبر البريد الإلكتروني."
 
 #: views.py:211
 msgid "No mailing profiles available"
-msgstr ""
+msgstr "لا توجد قوالب بريد الإلكتروني متاح"
 
 #: views.py:228
 msgid "Test email sent."
-msgstr ""
+msgstr "إرسال بريد الكتروني تجريبي"
 
 #: views.py:237
 #, python-format
 msgid "Test mailing profile: %s"
-msgstr ""
+msgstr "اختبار قالب البريد الإلكتروني: %s"
 
 #: workflow_actions.py:20
 msgid "Mailing profile to use when sending the email."
-msgstr ""
+msgstr "قالب بريد الكتروني يستخدم عند إرسال البريد الإلكتروني"
 
 #: workflow_actions.py:25
 msgid "Recipient"
-msgstr ""
+msgstr "مستلم"
 
 #: workflow_actions.py:28
 msgid ""
 "Email address of the recipient. Can be multiple addresses separated by comma"
 " or semicolon. A template can be used to reference properties of the "
 "document."
-msgstr ""
+msgstr "يمكن إضافة أكثر من عنوان بريدي مع التأكد من إضافة فاصلة او فاصة منقوطة كما يمكن إضافة قالب محدد للإيميل"
 
 #: workflow_actions.py:39
 msgid "Subject of the email. Can be a string or a template."
-msgstr ""
+msgstr "موضوع البريد الإلكتروني. يمكن أن يكون سلسلة أو نموذجًا."
 
 #: workflow_actions.py:48
 msgid "Body of the email to send. Can be a string or a template."
-msgstr ""
+msgstr "نص البريد الإلكتروني لإرساله. يمكن أن يكون سلسلة أو نموذجًا."
 
 #: workflow_actions.py:55
 msgid "Send email"
-msgstr ""
+msgstr "ارسل بريد الكتروني"

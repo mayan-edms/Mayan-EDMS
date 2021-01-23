@@ -4,16 +4,16 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Mohammed ALDOUB <voulnet@gmail.com>, 2019
 # Bashar Al-Abdulhadi, 2020
+# Marwan Rahhal <Marwanr@sssit.net>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2019-04-14 04:06+0000\n"
-"Last-Translator: Bashar Al-Abdulhadi, 2020\n"
+"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2020\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -41,29 +41,29 @@ msgstr "كلمة المرور"
 
 #: models.py:19
 msgid "Password hash"
-msgstr "تجزئة كلمة المرور"
+msgstr "تشفير كلمة المرور"
 
 #: models.py:25
 msgid "Autoadmin properties"
 msgstr "خصائص المشرف التلقائي"
 
-#: settings.py:12
+#: settings.py:11
 msgid "Sets the email of the automatically created super user account."
-msgstr ""
+msgstr "ضبط البريد الإلكتروني لحساب المستخدم  "
 
-#: settings.py:18
+#: settings.py:16
 msgid ""
 "The password of the automatically created super user account. If it is equal"
 " to None, the password is randomly generated."
-msgstr ""
+msgstr "تم إنشاء كلمة المرور للحساب"
 
-#: settings.py:25
+#: settings.py:22
 msgid "The username of the automatically created super user account."
-msgstr ""
+msgstr "تم إنشاء اسم المستخدم "
 
 #: templates/autoadmin/credentials.html:11
 msgid "Automatic credentials"
-msgstr ""
+msgstr "تم اعتماد تسجيل الدخول"
 
 #: templates/autoadmin/credentials.html:16
 #, python-format
@@ -71,10 +71,11 @@ msgid ""
 "You have just finished installing <strong>%(project_title)s</strong>, "
 "congratulations!"
 msgstr ""
+"تم انهاء عملية التنصيب  <strong>%(project_title)s</strong>, والإعدادات !"
 
 #: templates/autoadmin/credentials.html:17
 msgid "Login using the following credentials:"
-msgstr "Login using the following credentials:"
+msgstr "تسجيل الدخول الى النظام "
 
 #: templates/autoadmin/credentials.html:19
 #, python-format
@@ -95,4 +96,4 @@ msgstr "كلمة المرور: <strong>%(password)s</strong>"
 msgid ""
 "Be sure to change the password to increase security and to disable this "
 "message."
-msgstr ""
+msgstr "إدخال كلمة مرور متمرسة"

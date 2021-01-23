@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>, 2020\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -80,18 +80,18 @@ msgstr "Zobrazit protokol chyb"
 msgid "Automatically enable logging to all apps."
 msgstr "Automaticky povolit protokolování pro všechny aplikace."
 
-#: settings.py:20
+#: settings.py:19
 msgid ""
 "List of handlers to which logging messages will be sent. Options are: {}"
 msgstr ""
 "Seznam obslužných programů, kterým budou zasílány zaznamenané zprávy. "
 "Možnosti jsou: {}"
 
-#: settings.py:26
+#: settings.py:25
 msgid "Level for the logging system."
 msgstr "Úroveň systému protokolování."
 
-#: settings.py:32
+#: settings.py:31
 msgid "Path to the logfile that will track errors during production."
 msgstr "Cesta k souboru protokolu, který bude sledovat chyby produkce."
 

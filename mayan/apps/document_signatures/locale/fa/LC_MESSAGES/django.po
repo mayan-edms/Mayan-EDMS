@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-08-18 04:38+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:49 permissions.py:6 settings.py:11
+#: apps.py:49 permissions.py:6 settings.py:12
 msgid "Document signatures"
 msgstr "امضا سند"
 
@@ -241,11 +241,11 @@ msgstr "نسخه سند را تایید کنید"
 msgid "Verify missing embedded signature"
 msgstr "امضای جاسازی نشده را تأیید کنید"
 
-#: settings.py:19
+#: settings.py:20
 msgid "Path to the Storage subclass to use when storing detached signatures."
 msgstr ""
 
-#: settings.py:28
+#: settings.py:27
 msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND."
 msgstr ""
 
@@ -259,72 +259,72 @@ msgstr ""
 msgid "Detached signatures"
 msgstr ""
 
-#: views.py:68 views.py:156
+#: views.py:68 views.py:159
 msgid "Passphrase is needed to unlock this key."
 msgstr "رمز عبور برای باز کردن قفل این کلید ضروری است."
 
-#: views.py:81 views.py:169
+#: views.py:81 views.py:172
 msgid "Passphrase is incorrect."
 msgstr "عبارت عبور اشتباه است"
 
-#: views.py:94 views.py:182
+#: views.py:94 views.py:185
 msgid "Document version signed successfully."
 msgstr "نسخه سند با موفقیت امضا شد"
 
-#: views.py:122 views.py:217
+#: views.py:125 views.py:223
 msgid "Sign"
 msgstr ""
 
-#: views.py:124
+#: views.py:127
 #, python-format
 msgid "Sign document version \"%s\" with a detached signature"
 msgstr "نسخه سند \"%s\" را با امضای جداگانه وارد کنید"
 
-#: views.py:219
+#: views.py:225
 #, python-format
 msgid "Sign document version \"%s\" with a embedded signature"
 msgstr "نسخه سند \"%s\" را با امضای جاسازی شده وارد کنید"
 
-#: views.py:236
+#: views.py:241
 #, python-format
 msgid "Delete detached signature: %s"
 msgstr "امضای جداگانه را حذف کنید: %s"
 
-#: views.py:259
+#: views.py:271
 #, python-format
 msgid "Details for signature: %s"
 msgstr "جزئیات برای امضا: %s"
 
-#: views.py:291
+#: views.py:313
 msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
 "document itself or uploaded as a separate file."
 msgstr ""
 
-#: views.py:320
+#: views.py:342
 msgid "There are no signatures for this document."
 msgstr ""
 
-#: views.py:324
+#: views.py:346
 #, python-format
 msgid "Signatures for document version: %s"
 msgstr "امضا برای نسخه سند: %s"
 
-#: views.py:356
+#: views.py:381
 #, python-format
 msgid "Upload detached signature for document version: %s"
 msgstr "امضای جداگانه برای نسخه سند آپلود: %s"
 
-#: views.py:374
+#: views.py:399
 msgid "On large databases this operation may take some time to execute."
 msgstr "در پایگاه داده های بزرگ این عملیات ممکن است برای اجرای برخی از زمان ها طول بکشد."
 
-#: views.py:375
+#: views.py:400
 msgid "Verify all document for signatures?"
 msgstr "همه سند را برای امضاء تأیید کنید؟"
 
-#: views.py:385
+#: views.py:410
 msgid "Signature verification queued successfully."
 msgstr "تأیید امضا با موفقیت انجام شد."
 

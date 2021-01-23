@@ -7,14 +7,16 @@
 # Roberto Rosario, 2017
 # Yaman Sanobar <yman.snober@gmail.com>, 2019
 # Ali Alahnomy <ashari@open-alt.com>, 2019
+# WM Shinkada <shinkadawasim@gmail.com>, 2020
+# Marwan Rahhal <Marwanr@sssit.net>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2017-06-30 22:04+0000\n"
-"Last-Translator: Ali Alahnomy <ashari@open-alt.com>, 2019\n"
+"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2020\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,7 +26,7 @@ msgstr ""
 
 #: apps.py:16 links.py:10 permissions.py:5
 msgid "Task manager"
-msgstr ""
+msgstr "مدير المهام "
 
 #: apps.py:24
 msgid "Label"
@@ -36,11 +38,11 @@ msgstr "اسم"
 
 #: apps.py:33
 msgid "Default queue?"
-msgstr ""
+msgstr "قائمة الانتظار"
 
 #: apps.py:38
 msgid "Is transient?"
-msgstr ""
+msgstr "هل تم الإضافة؟"
 
 #: apps.py:42
 msgid "Type"
@@ -52,31 +54,31 @@ msgstr "وقت البداية"
 
 #: apps.py:51
 msgid "Host"
-msgstr ""
+msgstr "مضيف"
 
 #: apps.py:55
 msgid "Arguments"
-msgstr ""
+msgstr "المحددات"
 
 #: apps.py:59
 msgid "Keyword arguments"
-msgstr ""
+msgstr "المحددات الرئيسية"
 
 #: apps.py:63
 msgid "Worker process ID"
-msgstr ""
+msgstr "رقم العمل للعميل"
 
 #: permissions.py:8
 msgid "View tasks"
-msgstr ""
+msgstr "عرض المهام"
 
 #: settings.py:10
 msgid "Celery"
-msgstr ""
+msgstr "كرفس"
 
 #: settings.py:15
 msgid "Default: \"AMQPLAIN\". Set custom amqp login method."
-msgstr ""
+msgstr "الدخول المتخصص"
 
 #: settings.py:21
 msgid ""
@@ -85,12 +87,15 @@ msgid ""
 " (transport://) is required, the rest is optional, and defaults to the "
 "specific transports default values."
 msgstr ""
+": \"المكان الإفتراضي المحدد للنقل://\". Default broker URL. This must be a "
+"URL in the form of: transport://userid:password@hostname:port/virtual_host "
+"Only the scheme part (transport://) ."
 
 #: settings.py:30
 msgid ""
 "Default: \"Disabled\". Toggles SSL usage on broker connection and SSL "
 "settings. The valid values for this option vary by transport."
-msgstr ""
+msgstr "الغاء التفعيل الخيار الإفتراضي."
 
 #: settings.py:38
 msgid ""
@@ -99,11 +104,14 @@ msgid ""
 "http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
 "backend"
 msgstr ""
+": الخيار الافتراضي "
+"http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
+"backend"
 
 #: tests/literals.py:3
 msgid "Test queue"
-msgstr ""
+msgstr "منتظر الاختبار"
 
 #: views.py:12
 msgid "Background task queues"
-msgstr ""
+msgstr "المهام تحت المعالجة"

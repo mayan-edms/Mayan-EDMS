@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2020\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
@@ -82,18 +82,18 @@ msgstr "Ver log de erros"
 msgid "Automatically enable logging to all apps."
 msgstr "Ativar automaticamente o logging de todos as apps."
 
-#: settings.py:20
+#: settings.py:19
 msgid ""
 "List of handlers to which logging messages will be sent. Options are: {}"
 msgstr ""
 "Lista de handlers para os quais as mensagens de registro serão enviadas. As "
 "opções são: {}"
 
-#: settings.py:26
+#: settings.py:25
 msgid "Level for the logging system."
 msgstr "Nível de logging do sistema."
 
-#: settings.py:32
+#: settings.py:31
 msgid "Path to the logfile that will track errors during production."
 msgstr "Caminho para o arquivo de log que rastreará erros durante a produção."
 

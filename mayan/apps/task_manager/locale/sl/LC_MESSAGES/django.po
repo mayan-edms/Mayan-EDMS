@@ -5,14 +5,15 @@
 # 
 # Translators:
 # Roberto Rosario, 2020
+# Jože Detečnik <joze.detecnik@3tav.si>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2017-06-30 22:04+0000\n"
-"Last-Translator: Roberto Rosario, 2020\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2020\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +23,7 @@ msgstr ""
 
 #: apps.py:16 links.py:10 permissions.py:5
 msgid "Task manager"
-msgstr ""
+msgstr "Upravitelj opravil"
 
 #: apps.py:24
 msgid "Label"
@@ -34,47 +35,47 @@ msgstr "Ime"
 
 #: apps.py:33
 msgid "Default queue?"
-msgstr ""
+msgstr "Privzeta vrsta?"
 
 #: apps.py:38
 msgid "Is transient?"
-msgstr ""
+msgstr "Je prehodno?"
 
 #: apps.py:42
 msgid "Type"
-msgstr ""
+msgstr "Tip"
 
 #: apps.py:47
 msgid "Start time"
-msgstr ""
+msgstr "Začetni čas"
 
 #: apps.py:51
 msgid "Host"
-msgstr ""
+msgstr "Strežnik"
 
 #: apps.py:55
 msgid "Arguments"
-msgstr ""
+msgstr "Argumenti"
 
 #: apps.py:59
 msgid "Keyword arguments"
-msgstr ""
+msgstr "Argumenti ključnih besed"
 
 #: apps.py:63
 msgid "Worker process ID"
-msgstr ""
+msgstr "ID delovnega procesa"
 
 #: permissions.py:8
 msgid "View tasks"
-msgstr ""
+msgstr "Ogled opravil"
 
 #: settings.py:10
 msgid "Celery"
-msgstr ""
+msgstr "Zelena"
 
 #: settings.py:15
 msgid "Default: \"AMQPLAIN\". Set custom amqp login method."
-msgstr ""
+msgstr "Privzeto: &quot;AMQPLAIN&quot;. Nastavite način prijave po meri amqp."
 
 #: settings.py:21
 msgid ""
@@ -83,12 +84,19 @@ msgid ""
 " (transport://) is required, the rest is optional, and defaults to the "
 "specific transports default values."
 msgstr ""
+"Privzeto: &quot;amqp: //&quot;. Privzeti URL posrednika. To mora biti URL v "
+"obliki: transport: // userid: geslo @ ime gostitelja: port / virtual_host "
+"Zahtevan je le del sheme (transport: //), preostali del je neobvezen in "
+"privzeto določi privzete vrednosti transporta."
 
 #: settings.py:30
 msgid ""
 "Default: \"Disabled\". Toggles SSL usage on broker connection and SSL "
 "settings. The valid values for this option vary by transport."
 msgstr ""
+"Privzeto: &quot;Onemogočeno&quot;. Preklopi uporabo SSL na povezavi "
+"posrednika in nastavitvah SSL. Veljavne vrednosti za to možnost se "
+"razlikujejo glede na prevoz."
 
 #: settings.py:38
 msgid ""
@@ -97,11 +105,15 @@ msgid ""
 "http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
 "backend"
 msgstr ""
+"Privzeto: Privzeto ni omogočen noben rezultat. Zaledje, ki se uporablja za "
+"shranjevanje rezultatov opravil (nagrobni kamni). Glejte "
+"http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
+"backend"
 
 #: tests/literals.py:3
 msgid "Test queue"
-msgstr ""
+msgstr "Preskusna vrsta"
 
 #: views.py:12
 msgid "Background task queues"
-msgstr ""
+msgstr "Čakalne vrste opravil"

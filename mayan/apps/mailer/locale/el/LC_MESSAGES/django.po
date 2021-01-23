@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-09-27 06:46+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-11-11 01:45+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
@@ -77,7 +77,7 @@ msgid "Email link"
 msgstr "Αποστολή συνδέσμου"
 
 #: links.py:35
-msgid "Create mailing profile "
+msgid "Create mailing profile"
 msgstr ""
 
 #: links.py:41
@@ -283,19 +283,19 @@ msgstr "Χρήση ενός προφίλ ηλεκτρονικού ταχυδρο
 msgid "Send document"
 msgstr "Αποστολή εγγρου"
 
-#: settings.py:14
+#: settings.py:15
 msgid "Template for the document email form subject line."
 msgstr "Πρότυπο για την γραμμή θέματος φόρμας μηνύματος αποστολής εγγράφου."
 
-#: settings.py:19
+#: settings.py:21
 msgid "Template for the document email form body text. Can include HTML."
 msgstr ""
 
-#: settings.py:24
+#: settings.py:27
 msgid "Template for the document link email form subject line."
 msgstr "Πρότυπο για την γραμμή θέματος φόρμας μηνύματος για την αποστολή συνδέσμου σε έγγραφο."
 
-#: settings.py:29
+#: settings.py:33
 msgid "Template for the document link email form body text. Can include HTML."
 msgstr ""
 

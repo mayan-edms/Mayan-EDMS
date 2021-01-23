@@ -7,14 +7,14 @@
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011
 # Roberto Rosario, 2012
-# Roberto Rosario, 2020
+# Roberto Rosario, 2020-2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Pierpaolo Baldan <pierpaolo.baldan@gmail.com>\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2021-01-04 16:57+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -53,7 +53,7 @@ msgstr "Email"
 
 #: apps.py:113 search.py:28
 msgid "First name"
-msgstr ""
+msgstr "Forename"
 
 #: apps.py:115
 msgid "Is active?"
@@ -189,7 +189,7 @@ msgstr "Visualizza utenti"
 
 #: search.py:40
 msgid "username"
-msgstr ""
+msgstr "nome utente"
 
 #: serializers.py:32
 msgid "Comma separated list of group primary keys to assign this user to."

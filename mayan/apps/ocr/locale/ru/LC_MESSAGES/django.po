@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-09-27 06:47+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:52 events.py:5 links.py:18 links.py:24 permissions.py:5 queues.py:6
-#: search.py:6 search.py:10 settings.py:8
+#: search.py:6 search.py:10 settings.py:11
 msgid "OCR"
 msgstr "Распознавание текста"
 
@@ -90,7 +90,7 @@ msgstr "Настройки распознавания"
 msgid "OCR documents per type"
 msgstr "Распознавание документов с определенным типом"
 
-#: links.py:61 links.py:67 views.py:214
+#: links.py:61 links.py:67 views.py:217
 msgid "OCR errors"
 msgstr "Ошибки распознавания"
 
@@ -174,13 +174,13 @@ msgstr ""
 msgid "Document version OCR"
 msgstr "Распознавание версии документа"
 
-#: settings.py:15
-msgid "Full path to the backend to be used to do OCR."
-msgstr "Полный путь до бекенда, выполняющего OCR."
-
-#: settings.py:24
+#: settings.py:17
 msgid "Set new document types to perform OCR automatically by default."
 msgstr "Задать новые типы документов для которых распознавание будет запускаться по умолчанию. "
+
+#: settings.py:22
+msgid "Full path to the backend to be used to do OCR."
+msgstr "Полный путь до бекенда, выполняющего OCR."
 
 #: views.py:35
 msgid "Delete the OCR content of the selected document?"
@@ -217,12 +217,12 @@ msgstr[3] "Отправить выделенные документы в оче�
 msgid "Submit all documents of a type for OCR"
 msgstr "Отправить все документы определённого типа на распознавание"
 
-#: views.py:168
+#: views.py:171
 #, python-format
 msgid "%(count)d documents added to the OCR queue."
 msgstr ""
 
-#: views.py:203
+#: views.py:206
 #, python-format
 msgid "Edit OCR settings for document type: %s."
 msgstr ""

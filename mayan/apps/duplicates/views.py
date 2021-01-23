@@ -23,8 +23,8 @@ logger = logging.getLogger(name=__name__)
 
 
 class DocumentDuplicatesListView(ExternalObjectMixin, DocumentListView):
-    external_object_class = Document
     external_object_permission = permission_document_view
+    external_object_queryset = Document.valid.all()
     external_object_pk_url_kwarg = 'document_id'
 
     def get_extra_context(self):
@@ -55,7 +55,9 @@ class DocumentDuplicatesListView(ExternalObjectMixin, DocumentListView):
 
 class DuplicatedDocumentListView(DocumentListView):
     def get_document_queryset(self):
-        return DuplicatedDocument.objects.get_duplicated_documents()
+        return DuplicatedDocument.objects.get_duplicated_documents(
+            permission=permission_document_view, user=self.request.user
+        )
 
     def get_extra_context(self):
         context = super().get_extra_context()

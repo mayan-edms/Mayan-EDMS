@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2019-12-03 05:23+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:9 settings.py:7
+#: apps.py:9 settings.py:10
 msgid "Lock manager"
 msgstr "Gestore blocco"
 
@@ -27,31 +27,31 @@ msgstr "Gestore blocco"
 msgid "Creation datetime"
 msgstr "Data e ora creazione"
 
-#: models.py:17
+#: models.py:18
 msgid "Timeout"
 msgstr "Timeout"
 
-#: models.py:20
+#: models.py:21
 msgid "Name"
 msgstr "Nome "
 
-#: models.py:26
+#: models.py:27
 msgid "Lock"
 msgstr "Blocco"
 
-#: models.py:27
+#: models.py:28
 msgid "Locks"
 msgstr "Blocchi"
 
-#: settings.py:12
+#: settings.py:15
 msgid "Path to the class to use when to request and release resource locks."
 msgstr ""
 
-#: settings.py:18
+#: settings.py:22
 msgid "Arguments to pass to the LOCK_MANAGER_BACKEND."
 msgstr ""
 
-#: settings.py:24
+#: settings.py:28
 msgid ""
 "Default amount of time in seconds after which a resource lock will be "
 "automatically released."

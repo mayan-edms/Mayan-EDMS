@@ -1,4 +1,4 @@
-4.0 (202X-XX-XX)
+4.0 (2021-XX-XX)
 ================
 - Add document version page list reset.
 - Add document version page delete.
@@ -19,7 +19,7 @@
 - Add document version page model.
 - Add caches, settings and handlers for the document version cache.
 - Add document version page image API.
-- Rename DocumentPage model to DocumentFilePage.
+- Rename ``DocumentPage`` model to ``DocumentFilePage``.
 - Invert the document and OCR migrations dependency. Makes the OCR migration
   dependent on the documents app migration. This allows disabling the OCR app.
 - New event ignore and keep attribute options
@@ -48,15 +48,15 @@
   document file, and document file page views.
 - Remove the "File..." reference to the document file form fields as these
   are now obvious.
-- Add more return links. From document version to version list, from document file
-  to document file list, from document version page to document, from document file page
-  to document.
+- Add more return links. From document version to version list, from
+  document file to document file list, from document version page to
+  document, from document file page to document.
 - Add document version edit view. Allows editing the document version comment.
 - Improve the return links with the chevron as the uniform secondary icon.
 - Rename the document view, document version view and document file views to
   document preview, document file preview and document version preview.
-- Enable more cabinets, checkouts, document comments, metadata, linking, mailer,
-  mirroring, web links apps.
+- Enable more cabinets, checkouts, document comments, metadata, linking,
+  mailer, mirroring, web links apps.
 - Allow using staging folders for new document file uploads.
 - Add conditional source link highlighting.
 - Add document version create view and permission.
@@ -66,11 +66,11 @@
 - Update shared upload file to allow storing the original filename.
 - Upload the new document file upload code path to conserve the original
   filename.
-- Rename DeletedDocument to TrashedDocument, same with the corresponding
-  trashed fields and manager methods.
+- Rename ``DeletedDocument`` to ``TrashedDocument``, same with the
+  corresponding trashed fields and manager methods.
 - Add document file download event.
-- Rename all instances of "icon_class" to "icon" as only icon instances are
-  used now in every app.
+- Rename all instances of ``icon_class`` to ``icon`` as only icon instances
+  are used now in every app.
 - Add icons to the mark notification as seen and mark all notification as
   seen links.
 - Switch both view to mark notification as read to use the POST request
@@ -84,38 +84,14 @@
 - Update the file cache partition purge view to be a generic view that can
   be called using the content type of an object. Adds a new file cache
   partition purge permission.
-- Added ContentTypeTestCaseMixin.
-- Include EventTestCaseMixin as part of the base test case mixin.
+- Added ``ContentTypeTestCaseMixin``.
+- Include ``EventTestCaseMixin`` as part of the base test case mixin.
 - Rename usage of "recent document" to the more explicit "recently
   accessed document". This was done at the mode, view and API level.
   The recently accessed document API will now require the document view
   permission.
 - Rename the document model ``date_added`` field to ``datetime_created`` to
   better reflect the purpose of the field.
-- Add a RecentlyCreatedDocument proxy and associate the recent document
+- Add a ``RecentlyCreatedDocument`` proxy and associate the recent document
   columns to it.
 - Move the recently created document query calculation to it own model
-  manager.
-- Add the recently created document API.
-- Add favorite documents API.
-- Rename the ``misc_models.py`` module to ``duplicated_document_models.py``.
-- Split the ``document_api_views.py`` modules into ``document_api_views.py``
-  and ``trashed_document_api_views.py``.
-- Add date time field to the favorite documents models to ensure deterministic
-  ordering when deleting the oldest favorites.
-- Rename the setting ``DOCUMENTS_RECENT_ACCESS_COUNT`` to
-  ``DOCUMENTS_RECENTLY_ACCESSED_COUNT``, and ``DOCUMENTS_RECENT_ADDED_COUNT``
-  to ``DOCUMENTS_RECENTLY_CREATED_COUNT``. Config file migrations and
-  migration tests were added. Environment and supervisor settings need to be
-  manually updated.
-- Document stubs without a label will now display their ID as the label.
-  This allows documents without files or versions to be accessible via the
-  user interface.
-- Add the reusable ObjectActionAPIView API view. This is a view that can
-  execute an action on an object from a queryset from a POST request.
-- Move the duplicated documents code to its own app.
-- Improve proxy model menu link resolution. Proxy model don't need at least
-  one bound link anymore to trigger resolution of all the parent model links.
-  The inclusion logic is now reverse and defaults to exclusion. Menu need to
-  be configured explicitly enable to proxy model link resolution using the new
-  ``.add_proxy_inclusions(source)`` method.

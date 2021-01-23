@@ -9,13 +9,13 @@
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2014
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011-2012,2015
-# Roberto Rosario, 2020
+# Roberto Rosario, 2020-2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-09-27 06:46+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2021-01-04 16:39+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -93,11 +93,11 @@ msgstr "Ricostruisci l'indice"
 msgid "Deletes and creates from scratch all the document indexes."
 msgstr "Cancellazione e ricostruzione di tutti gli indici documento"
 
-#: links.py:53 views.py:446
+#: links.py:53 views.py:453
 msgid "Rebuild indexes"
 msgstr "Ricostruisci indici"
 
-#: links.py:64 views.py:481
+#: links.py:64 views.py:488
 msgid "Reset indexes"
 msgstr "Reimposta gli indici"
 
@@ -303,18 +303,18 @@ msgstr "Checksum del documento"
 
 #: serializers.py:191
 msgid "Parent cannot be empty."
-msgstr ""
+msgstr "Parent non può essere vuoto."
 
 #: serializers.py:198
 msgid "Parent must be from the same index template."
-msgstr ""
+msgstr "Il padre deve provenire dallo stesso modello di indice."
 
 #: settings.py:14
 msgid ""
 "Amount of time in seconds, a failed indexing task will wait before retrying."
 " Lower values will increase the speed at which documents are indexed but "
 "will cause a higher count of failed/retried tasks in the queue."
-msgstr ""
+msgstr "Tempo di attesa in secondi per un'attività di indicizzazione non riuscita prima di riprovare. Valori inferiori aumenteranno la velocità di indicizzazione dei documenti, ma determineranno un numero maggiore di attività non riuscite / riprovate nella coda."
 
 #: views.py:45
 msgid "Available indexes"
@@ -416,45 +416,45 @@ msgstr "Questo significa che non sono stati creati template di indice oppure che
 msgid "There are no index instances available."
 msgstr "Non ci sono istanze di indice disponibili."
 
-#: views.py:377
+#: views.py:372
 #, python-format
 msgid "Navigation: %s"
 msgstr "Navigazione: %s"
 
-#: views.py:382
+#: views.py:378
 #, python-format
 msgid "Contents for index: %s"
 msgstr "Contenuti per l'indice: %s"
 
-#: views.py:425
+#: views.py:432
 msgid ""
 "Assign the document type of this document to an index to have it appear in "
 "instances of those indexes organization units. "
 msgstr "Assegna il tipo di documento di questo documento a un indice in modo che appaia nelle istanze di tali unità organizzative degli indici."
 
-#: views.py:430
+#: views.py:437
 msgid "This document is not in any index"
 msgstr "Questo documento non è presente in nessun indice"
 
-#: views.py:434
+#: views.py:441
 #, python-format
 msgid "Indexes nodes containing document: %s"
 msgstr "Indici contenuti nel documento: %s"
 
-#: views.py:460
+#: views.py:467
 #, python-format
 msgid "%(count)d index queued for rebuild."
 msgid_plural "%(count)d indexes queued for rebuild."
 msgstr[0] "%(count)d indici in coda per la ricostruzione."
 msgstr[1] "%(count)d indici in attesa di ricostruzione."
 
-#: views.py:493
+#: views.py:500
 #, python-format
 msgid "%(count)d index reset."
 msgid_plural "%(count)d indexes reset."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "."
+msgstr[1] "%(count)d indici reimpostati."
 
-#: views.py:506
+#: views.py:513
 msgid "Index templates for which their instances will be deleted."
 msgstr "Modelli di indice per i quali verranno eliminate le loro istanze."

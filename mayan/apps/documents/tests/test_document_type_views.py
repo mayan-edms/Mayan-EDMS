@@ -26,11 +26,11 @@ class DocumentTypeDeletionPoliciesViewTestCase(
 ):
     auto_upload_test_document = False
 
-    def test_document_type_filename_policies_get_view_no_permission(self):
+    def test_document_type_deletion_policies_get_view_no_permission(self):
         response = self._request_test_document_type_policies_get_view()
         self.assertEqual(response.status_code, 404)
 
-    def test_document_type_filename_policies_get_view_access(self):
+    def test_document_type_deletion_policies_get_view_access(self):
         self.grant_access(
             obj=self.test_document_type,
             permission=permission_document_type_edit
@@ -38,6 +38,19 @@ class DocumentTypeDeletionPoliciesViewTestCase(
 
         response = self._request_test_document_type_policies_get_view()
         self.assertEqual(response.status_code, 200)
+
+    def test_document_type_deletion_policies_post_view_no_permission(self):
+        response = self._request_test_document_type_policies_post_view()
+        self.assertEqual(response.status_code, 404)
+
+    def test_document_type_deletion_policies_post_view_access(self):
+        self.grant_access(
+            obj=self.test_document_type,
+            permission=permission_document_type_edit
+        )
+
+        response = self._request_test_document_type_policies_post_view()
+        self.assertEqual(response.status_code, 302)
 
 
 class DocumentTypeFilenameGeneratorViewTestCase(
@@ -57,6 +70,19 @@ class DocumentTypeFilenameGeneratorViewTestCase(
 
         response = self._request_test_document_type_filename_generator_get_view()
         self.assertEqual(response.status_code, 200)
+
+    def test_document_type_filename_generator_post_view_no_permission(self):
+        response = self._request_test_document_type_filename_generator_post_view()
+        self.assertEqual(response.status_code, 404)
+
+    def test_document_type_filename_generator_post_view_access(self):
+        self.grant_access(
+            obj=self.test_document_type,
+            permission=permission_document_type_edit
+        )
+
+        response = self._request_test_document_type_filename_generator_post_view()
+        self.assertEqual(response.status_code, 302)
 
 
 class DocumentTypeViewsTestCase(
@@ -102,13 +128,15 @@ class DocumentTypeViewsTestCase(
         self.assertEqual(DocumentType.objects.count(), 0)
 
     def test_document_type_edit_view_no_permission(self):
+        document_type_label = self.test_document_type.label
+
         response = self._request_test_document_type_edit_view()
 
         self.assertEqual(response.status_code, 404)
-        self.test_document_type.refresh_from_db()
 
+        self.test_document_type.refresh_from_db()
         self.assertEqual(
-            self.test_document_type.label, TEST_DOCUMENT_TYPE_LABEL
+            self.test_document_type.label, document_type_label
         )
 
     def test_document_type_edit_view_with_access(self):
@@ -117,12 +145,14 @@ class DocumentTypeViewsTestCase(
             permission=permission_document_type_edit
         )
 
+        document_type_label = self.test_document_type.label
+
         response = self._request_test_document_type_edit_view()
         self.assertEqual(response.status_code, 302)
 
         self.test_document_type.refresh_from_db()
-        self.assertEqual(
-            self.test_document_type.label, TEST_DOCUMENT_TYPE_LABEL_EDITED
+        self.assertNotEqual(
+            self.test_document_type.label, document_type_label
         )
 
     def test_document_type_list_view_no_permission(self):

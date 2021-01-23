@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-08-18 04:38+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Language: lv\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
-#: apps.py:49 permissions.py:6 settings.py:11
+#: apps.py:49 permissions.py:6 settings.py:12
 msgid "Document signatures"
 msgstr "Dokumentu paraksti"
 
@@ -241,11 +241,11 @@ msgstr "Pārbaudiet dokumenta versiju"
 msgid "Verify missing embedded signature"
 msgstr "Pārbaudiet trūkstošo iegulto parakstu"
 
-#: settings.py:19
+#: settings.py:20
 msgid "Path to the Storage subclass to use when storing detached signatures."
 msgstr "Ceļš uz glabāšanas apakšklasi, kas jāizmanto, uzglabājot atdalītos parakstus."
 
-#: settings.py:28
+#: settings.py:27
 msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND."
 msgstr ""
 
@@ -259,72 +259,72 @@ msgstr ""
 msgid "Detached signatures"
 msgstr ""
 
-#: views.py:68 views.py:156
+#: views.py:68 views.py:159
 msgid "Passphrase is needed to unlock this key."
 msgstr "Lai atslēgtu šo atslēgu, ir nepieciešama ieejas frāze."
 
-#: views.py:81 views.py:169
+#: views.py:81 views.py:172
 msgid "Passphrase is incorrect."
 msgstr "Parole ir nepareiza."
 
-#: views.py:94 views.py:182
+#: views.py:94 views.py:185
 msgid "Document version signed successfully."
 msgstr "Dokumenta versija ir veiksmīgi parakstīta."
 
-#: views.py:122 views.py:217
+#: views.py:125 views.py:223
 msgid "Sign"
 msgstr ""
 
-#: views.py:124
+#: views.py:127
 #, python-format
 msgid "Sign document version \"%s\" with a detached signature"
 msgstr "Parakstiet dokumenta versiju \"%s\" ar atdalītu parakstu"
 
-#: views.py:219
+#: views.py:225
 #, python-format
 msgid "Sign document version \"%s\" with a embedded signature"
 msgstr "Parakstiet dokumenta versiju \"%s\" ar iegulto parakstu"
 
-#: views.py:236
+#: views.py:241
 #, python-format
 msgid "Delete detached signature: %s"
 msgstr "Noņemt atdalīto parakstu: %s"
 
-#: views.py:259
+#: views.py:271
 #, python-format
 msgid "Details for signature: %s"
 msgstr "Sīkāka informācija par parakstu: %s"
 
-#: views.py:291
+#: views.py:313
 msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
 "document itself or uploaded as a separate file."
 msgstr "Paraksti palīdz nodrošināt autorības pierādījumus un manipulāciju atklāšanu. Viņi ir ļoti droši un grūti veidojami. Parakstu var ievietot kā daļu no dokumenta vai augšupielādēt kā atsevišķu failu."
 
-#: views.py:320
+#: views.py:342
 msgid "There are no signatures for this document."
 msgstr "Šim dokumentam nav parakstu."
 
-#: views.py:324
+#: views.py:346
 #, python-format
 msgid "Signatures for document version: %s"
 msgstr "Paraksti dokumenta versijai: %s"
 
-#: views.py:356
+#: views.py:381
 #, python-format
 msgid "Upload detached signature for document version: %s"
 msgstr "Augšupielādējiet atdalītu parakstu dokumenta versijai: %s"
 
-#: views.py:374
+#: views.py:399
 msgid "On large databases this operation may take some time to execute."
 msgstr "Lielās datubāzēs šī darbība var aizņemt kādu laiku, lai izpildītu."
 
-#: views.py:375
+#: views.py:400
 msgid "Verify all document for signatures?"
 msgstr "Pārbaudiet visus dokumentus parakstiem?"
 
-#: views.py:385
+#: views.py:410
 msgid "Signature verification queued successfully."
 msgstr "Paraksta verifikācija veiksmīgi rindā."
 

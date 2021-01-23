@@ -6,6 +6,8 @@ from django.utils import timezone, translation
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import RedirectView
 
+from stronghold.views import StrongholdPublicMixin
+
 from mayan.apps.views.generics import (
     ConfirmView, SingleObjectEditView, SimpleView
 )
@@ -134,7 +136,7 @@ class ObjectCopyView(ExternalContentTypeObjectMixin, ObjectNameMixin, ConfirmVie
         )
 
 
-class RootView(SimpleView):
+class RootView(StrongholdPublicMixin, SimpleView):
     extra_context = {'home_view': setting_home_view.value}
     template_name = 'appearance/root.html'
 

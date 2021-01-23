@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-10-11 07:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:48 links.py:63 models/base.py:36 queues.py:7 settings.py:11
+#: apps.py:48 links.py:63 models/base.py:36 queues.py:7 settings.py:14
 #: views.py:193
 msgid "Sources"
 msgstr "Fuentes"
@@ -132,67 +132,67 @@ msgstr "Subir versión nueva"
 msgid "Check now"
 msgstr "Revisar ahora"
 
-#: literals.py:16
+#: literals.py:25
 msgid "Flatbed"
 msgstr "Cama plana"
 
-#: literals.py:17
+#: literals.py:26
 msgid "Document feeder"
 msgstr "Alimentador de documentos"
 
-#: literals.py:24
+#: literals.py:33
 msgid "Simplex"
 msgstr "Simple"
 
-#: literals.py:25
+#: literals.py:34
 msgid "Duplex"
 msgstr "Dúplex"
 
-#: literals.py:33
+#: literals.py:42
 msgid "Lineart"
 msgstr "Arte lineal"
 
-#: literals.py:34
+#: literals.py:43
 msgid "Monochrome"
 msgstr "Monocromático"
 
-#: literals.py:35
+#: literals.py:44
 msgid "Color"
 msgstr "Color"
 
-#: literals.py:43 literals.py:48
+#: literals.py:52 literals.py:57
 msgid "Always"
 msgstr "Siempre"
 
-#: literals.py:44 literals.py:49
+#: literals.py:53 literals.py:58
 msgid "Never"
 msgstr "Nunca"
 
-#: literals.py:50
+#: literals.py:59
 msgid "Ask user"
 msgstr "Preguntar al usuario"
 
-#: literals.py:61
+#: literals.py:70
 msgid "Scanner"
 msgstr "Escáner"
 
-#: literals.py:62 models/webform_sources.py:40
+#: literals.py:71 models/webform_sources.py:40
 msgid "Web form"
 msgstr "Formulario web"
 
-#: literals.py:63 models/staging_folder_sources.py:67
+#: literals.py:72 models/staging_folder_sources.py:67
 msgid "Staging folder"
 msgstr "Archivos provisionales"
 
-#: literals.py:64 models/watch_folder_sources.py:46
+#: literals.py:73 models/watch_folder_sources.py:46
 msgid "Watch folder"
 msgstr "Carpeta observada"
 
-#: literals.py:65
+#: literals.py:74
 msgid "POP3 email"
 msgstr "Correo electrónico POP3"
 
-#: literals.py:66 models/email_sources.py:249 models/email_sources.py:250
+#: literals.py:75 models/email_sources.py:249 models/email_sources.py:250
 msgid "IMAP email"
 msgstr "Correo electrónico IMAP"
 
@@ -212,48 +212,48 @@ msgstr "Habilitado"
 msgid "Source"
 msgstr "Fuente"
 
-#: models/base.py:151
+#: models/base.py:147
 msgid "Interactive source"
 msgstr "Fuente interactiva"
 
-#: models/base.py:152
+#: models/base.py:148
 msgid "Interactive sources"
 msgstr "Fuentes interactivas"
 
-#: models/base.py:161 models/base.py:162
+#: models/base.py:157 models/base.py:158
 msgid "Out of process"
 msgstr "Fuera de proceso"
 
-#: models/base.py:168
+#: models/base.py:164
 msgid "Interval in seconds between checks for new documents."
 msgstr "Intérvalo en segundos para detectar documentos nuevos"
 
-#: models/base.py:169
+#: models/base.py:165
 msgid "Interval"
 msgstr "Intérvalo"
 
-#: models/base.py:173
+#: models/base.py:169
 msgid "Assign a document type to documents uploaded from this source."
 msgstr "Asignar un tipo de documento a los documentos subidos desde esta fuente"
 
-#: models/base.py:175 serializers.py:17
+#: models/base.py:171 serializers.py:17
 msgid "Document type"
 msgstr "Tipo de documento"
 
-#: models/base.py:179
+#: models/base.py:175
 msgid "Whether to expand or not, compressed archives."
 msgstr "Expandir o no archivos comprimidos."
 
-#: models/base.py:180 models/staging_folder_sources.py:54
+#: models/base.py:176 models/staging_folder_sources.py:54
 #: models/webform_sources.py:34
 msgid "Uncompress"
 msgstr "Descomprimir"
 
-#: models/base.py:186
+#: models/base.py:182
 msgid "Interval source"
 msgstr "Fuente de intervalo"
 
-#: models/base.py:187
+#: models/base.py:183
 msgid "Interval sources"
 msgstr "Fuentes de intervalo"
 
@@ -581,17 +581,17 @@ msgstr "Manejar la carga"
 msgid "Upload document"
 msgstr "Subir documento"
 
-#: settings.py:18
+#: settings.py:21
 msgid "File path to the scanimage program used to control image scanners."
 msgstr "Ruta de acceso al programa scanimage utilizado para controlar los escáneres de imágenes."
 
-#: settings.py:25
+#: settings.py:27
 msgid ""
 "Path to the Storage subclass to use when storing the cached staging_file "
 "image files."
 msgstr "Ruta a la subclase de almacenamiento para usar cuando se almacenan los archivos de imagen de staging_file almacenados en caché."
 
-#: settings.py:34
+#: settings.py:35
 msgid "Arguments to pass to the SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
 msgstr "Argumentos para pasar a SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
 
@@ -605,31 +605,31 @@ msgstr "No se puede inicializar el almacenamiento de imágenes del archivo de la
 msgid "Staging folder files"
 msgstr "Archivos de carpetas de ensayo"
 
-#: templates/sources/dropzone.html:82
+#: templates/sources/app/foot.html:40
 msgid "Cancel upload"
 msgstr "Cancelar carga"
 
-#: templates/sources/dropzone.html:83
+#: templates/sources/app/foot.html:41
 msgid "Are you sure you want to cancel this upload?"
 msgstr "¿Estás seguro de que desea cancelar esta carga?"
 
-#: templates/sources/dropzone.html:84
+#: templates/sources/app/foot.html:42
 msgid "Drop files or click here to upload files"
 msgstr "Soltar archivos o hacer clic aquí para subir archivos"
 
-#: templates/sources/dropzone.html:85
+#: templates/sources/app/foot.html:43
 msgid "Your browser does not support drag and drop file uploads."
 msgstr "Su navegador no admite la carga de archivos mediante arrastrar y soltar."
 
-#: templates/sources/dropzone.html:86
+#: templates/sources/app/foot.html:44
 msgid "Please use the fallback form below to upload your files."
 msgstr "Por favor, use el formulario de reserva a continuación para cargar sus archivos."
 
-#: templates/sources/dropzone.html:87
+#: templates/sources/app/foot.html:45
 msgid "Clear"
 msgstr "Limpiar"
 
-#: templates/sources/dropzone.html:88
+#: templates/sources/app/foot.html:46
 msgid "Server responded with {{statusCode}} code."
 msgstr "El servidor respondió con el código {{statusCode}}."
 

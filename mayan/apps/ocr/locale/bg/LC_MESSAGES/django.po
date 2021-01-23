@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-10-02 20:14+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-12-09 18:46+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:52 events.py:5 links.py:18 links.py:24 permissions.py:5 queues.py:6
-#: search.py:6 search.py:10 settings.py:8
+#: search.py:6 search.py:10 settings.py:11
 msgid "OCR"
 msgstr "OCR"
 
@@ -51,7 +51,7 @@ msgstr "Tesseract OCR не е намерен."
 
 #: dependencies.py:23
 msgid "Free Open Source OCR Engine"
-msgstr "Безплатен двигател OCR с отворен код"
+msgstr "Безплатен автомат OCR с отворен код"
 
 #: events.py:8
 msgid "Document OCR content deleted"
@@ -90,7 +90,7 @@ msgstr "Настройка на OCR"
 msgid "OCR documents per type"
 msgstr "OCR на документи по тип"
 
-#: links.py:61 links.py:67 views.py:214
+#: links.py:61 links.py:67 views.py:217
 msgid "OCR errors"
 msgstr "Грешки в OCR"
 
@@ -174,13 +174,13 @@ msgstr "OCR на страница с версия на документа"
 msgid "Document version OCR"
 msgstr "OCR за версия на документа"
 
-#: settings.py:15
-msgid "Full path to the backend to be used to do OCR."
-msgstr "Пълен път към бекенда, за да се използва OCR."
-
-#: settings.py:24
+#: settings.py:17
 msgid "Set new document types to perform OCR automatically by default."
 msgstr "Задайте нови типове документи за автоматично изпълнение на OCR по подразбиране."
+
+#: settings.py:22
+msgid "Full path to the backend to be used to do OCR."
+msgstr "Пълен път към бекенда, за да се използва OCR."
 
 #: views.py:35
 msgid "Delete the OCR content of the selected document?"
@@ -213,12 +213,12 @@ msgstr[1] "Да изпратите ли избраните документи н
 msgid "Submit all documents of a type for OCR"
 msgstr "Изпратете всички документи от даден тип за OCR"
 
-#: views.py:168
+#: views.py:171
 #, python-format
 msgid "%(count)d documents added to the OCR queue."
 msgstr "%(count)d документи, добавени към OCR опашката."
 
-#: views.py:203
+#: views.py:206
 #, python-format
 msgid "Edit OCR settings for document type: %s."
 msgstr "Редактиране на настройките на OCR за типа документ: %s."

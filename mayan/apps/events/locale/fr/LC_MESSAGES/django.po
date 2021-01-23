@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2019-09-10 20:39+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:27 links.py:30 links.py:35 links.py:40 permissions.py:5 views.py:34
+#: apps.py:27 links.py:32 links.py:37 links.py:42 permissions.py:5 views.py:33
 msgid "Events"
 msgstr "Événements"
 
@@ -79,23 +79,23 @@ msgstr "Abonné"
 msgid "System"
 msgstr "Système"
 
-#: links.py:26
+#: links.py:28
 msgid "My events"
 msgstr "Mes événements"
 
-#: links.py:44 models.py:63 views.py:78
+#: links.py:46 models.py:63 views.py:74
 msgid "Event subscriptions"
 msgstr "Abonnements aux événements"
 
-#: links.py:48
+#: links.py:51
 msgid "Mark as seen"
 msgstr "Marquer comme vu"
 
-#: links.py:52
+#: links.py:54
 msgid "Mark all as seen"
 msgstr "Tout marquer comme vu"
 
-#: links.py:57
+#: links.py:60
 msgid "Subscriptions"
 msgstr "Abonnements"
 
@@ -135,7 +135,7 @@ msgstr "Lire"
 msgid "Notification"
 msgstr "Notification"
 
-#: models.py:91 views.py:117
+#: models.py:91 views.py:132
 msgid "Notifications"
 msgstr "Notifications"
 
@@ -151,53 +151,53 @@ msgstr "Abonnements aux événements de l'objet"
 msgid "Access the events of an object"
 msgstr "Accéder aux évènements de cet objet"
 
-#: views.py:57
+#: views.py:56
 #, python-format
 msgid "Error updating event subscription; %s"
 msgstr "Erreur de mise à jour de l'abonnement aux événements ; %s"
 
-#: views.py:62
+#: views.py:61
 msgid "Event subscriptions updated successfully"
 msgstr "Abonnements aux événements mises à jour avec succès"
 
-#: views.py:112
+#: views.py:127
 msgid "Subscribe to global or object events to receive notifications."
 msgstr "Abonnez-vous à des événements globaux ou à des objets pour recevoir des notifications."
 
-#: views.py:115
+#: views.py:130
 msgid "There are no notifications"
 msgstr "Il n'y a pas de notification"
 
-#: views.py:164
+#: views.py:179
 msgid ""
 "Events are actions that have been performed to this object or using this "
 "object."
 msgstr "Les événements sont des actions qui ont été effectuées sur cet objet ou utilisant cet objet."
 
-#: views.py:167
+#: views.py:182
 msgid "There are no events for this object"
 msgstr "Il n'y a pas d'événement pour cet objet"
 
-#: views.py:169
+#: views.py:184
 #, python-format
 msgid "Events for: %s"
 msgstr "Évènements pour : %s"
 
-#: views.py:209
+#: views.py:224
 #, python-format
 msgid "Error updating object event subscription; %s"
 msgstr "Erreur de mise à jour de souscription aux événements de l'objet ; %s"
 
-#: views.py:215
+#: views.py:230
 msgid "Object event subscriptions updated successfully"
 msgstr "Abonnements aux événements de l'objet mises à jour avec succès"
 
-#: views.py:248
+#: views.py:243
 #, python-format
 msgid "Event subscriptions for: %s"
 msgstr "Abonnements aux événements pour : %s"
 
-#: views.py:280
+#: views.py:295
 #, python-format
 msgid "Events of type: %s"
 msgstr "Événements de type : %s"

@@ -17,9 +17,14 @@ from .literals import (
 from .mixins import MetadataTypeTestMixin
 
 
-class MetadataTypeTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCase):
+class MetadataTypeTestCase(
+    DocumentTestMixin, MetadataTypeTestMixin, BaseTestCase
+):
+    auto_upload_test_document = False
+
     def setUp(self):
         super().setUp()
+        self._create_test_document_stub()
         self._create_test_metadata_type()
         self.test_document_type.metadata.create(
             metadata_type=self.test_metadata_type

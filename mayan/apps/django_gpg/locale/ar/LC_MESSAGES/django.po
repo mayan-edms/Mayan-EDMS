@@ -4,14 +4,16 @@
 # 
 # Translators:
 # Translators:
+# Marwan Rahhal <Marwanr@sssit.net>, 2020
 # Mohammed ALDOUB <voulnet@gmail.com>, 2013
+# WM Shinkada <shinkadawasim@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-04-14 08:31+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-12-24 01:35+0000\n"
+"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>\n"
 "Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,11 +23,11 @@ msgstr ""
 
 #: apps.py:30
 msgid "Django GPG"
-msgstr ""
+msgstr "Django GPG"
 
 #: apps.py:46 apps.py:52 forms.py:15
 msgid "Key ID"
-msgstr "Key ID"
+msgstr "مفتاح "
 
 #: apps.py:56 forms.py:32 models.py:53
 msgid "Type"
@@ -33,27 +35,27 @@ msgstr "النوع"
 
 #: apps.py:60 forms.py:21 models.py:34
 msgid "Creation date"
-msgstr ""
+msgstr "تاريخ الإنشاء "
 
 #: apps.py:64
 msgid "No expiration"
-msgstr ""
+msgstr "لا توجد انتهاء الصلاحية"
 
 #: apps.py:65 forms.py:25 models.py:38
 msgid "Expiration date"
-msgstr ""
+msgstr "تاريخ انتهاء الصلاحية"
 
 #: apps.py:68 forms.py:30 models.py:45
 msgid "Length"
-msgstr ""
+msgstr "الطول"
 
 #: apps.py:73 forms.py:17 models.py:50
 msgid "User ID"
-msgstr ""
+msgstr "معرف المستخدم"
 
 #: dependencies.py:10
 msgid "GNU privacy guard - a PGP implementation."
-msgstr ""
+msgstr "الخصوصية"
 
 #: forms.py:26
 msgid "None"
@@ -61,19 +63,19 @@ msgstr "لا شيء"
 
 #: forms.py:29 models.py:42
 msgid "Fingerprint"
-msgstr ""
+msgstr "البصمة"
 
 #: forms.py:31 models.py:48
 msgid "Algorithm"
-msgstr ""
+msgstr "الخوارزمية"
 
 #: forms.py:45
 msgid "Term"
-msgstr "Term"
+msgstr "مصطلح"
 
 #: forms.py:46
 msgid "Name, e-mail, key ID or key fingerprint to look for."
-msgstr "Name, e-mail, key ID or key fingerprint to look for."
+msgstr "البحث بالاسم ، البريد الإلكتروني ، رقم الهوية ، البصمة"
 
 #: links.py:17
 msgid "Delete"
@@ -89,174 +91,174 @@ msgstr "تحميل"
 
 #: links.py:32 permissions.py:26
 msgid "Query keyservers"
-msgstr "Query keyservers"
+msgstr "الخوادم الخاصة برخص النظام"
 
 #: links.py:37
 msgid "Import"
-msgstr ""
+msgstr "استيراد"
 
 #: links.py:42 permissions.py:5
 msgid "Key management"
-msgstr "Key management"
+msgstr "إدارة المفتايح"
 
 #: links.py:46
 msgid "Upload key"
-msgstr ""
+msgstr "التحميل"
 
 #: links.py:50 views.py:180
 msgid "Private keys"
-msgstr ""
+msgstr "المفاتيح الخاصة"
 
 #: links.py:54 views.py:204
 msgid "Public keys"
-msgstr ""
+msgstr "المفاتيح العامة"
 
-#: literals.py:14 literals.py:22
+#: literals.py:23 literals.py:31
 msgid "Public"
-msgstr "Public"
+msgstr "عام"
 
-#: literals.py:15 literals.py:23
+#: literals.py:24 literals.py:32
 msgid "Secret"
-msgstr "Secret"
+msgstr "خاص"
 
-#: literals.py:31 literals.py:36
+#: literals.py:40 literals.py:45
 msgid "RSA"
 msgstr "RSA"
 
-#: literals.py:32
+#: literals.py:41
 msgid "DSA"
 msgstr "DSA"
 
-#: literals.py:37
+#: literals.py:46
 msgid "Elgamal"
-msgstr "Elgamal"
+msgstr "الجمل"
 
-#: literals.py:51
+#: literals.py:62
 msgid "Bad signature."
-msgstr "Bad signature."
+msgstr "التوقيع غير صالح"
 
-#: literals.py:54
+#: literals.py:65
 msgid "Document not signed or invalid signature."
-msgstr "Document not signed or invalid signature."
+msgstr "التوقيع غير صالح أو الوثيقة غير موقعة"
 
-#: literals.py:57
+#: literals.py:68
 msgid "Signature error."
-msgstr "Signature error."
+msgstr "خطأ في التوقيع"
 
-#: literals.py:61
+#: literals.py:72
 msgid "Document is signed but no public key is available for verification."
-msgstr "Document is signed but no public key is available for verification."
+msgstr "تم التوقيع ، يجبإضافة المفتاح العام للوثيقة"
 
-#: literals.py:66
+#: literals.py:77
 msgid "Document is signed, and signature is good."
-msgstr "Document is signed, and signature is good."
+msgstr "تم التوقيع بنجاح"
 
-#: literals.py:69
+#: literals.py:80
 msgid "Document is signed with a valid signature."
-msgstr "Document is signed with a valid signature."
+msgstr "تم التوقيع بنجاح"
 
 #: models.py:30
 msgid "ASCII armored version of the key."
-msgstr ""
+msgstr "نسخة ASCII المدرعة من المفتاح."
 
 #: models.py:31
 msgid "Key data"
-msgstr ""
+msgstr "البيانات الرئيسية"
 
 #: models.py:59
 msgid "Key"
-msgstr ""
+msgstr "مفتاح"
 
 #: models.py:60
 msgid "Keys"
-msgstr ""
+msgstr "مفاتيح"
 
 #: models.py:72
 msgid "Invalid key data"
-msgstr ""
+msgstr "بيانات مفتاح غير صالحة"
 
 #: models.py:75
 msgid "Key already exists."
-msgstr ""
+msgstr "المفتاح موجود بالفعل."
 
 #: permissions.py:8
 msgid "Delete keys"
-msgstr "Delete keys"
+msgstr "حذف المفاتيح"
 
 #: permissions.py:11
 msgid "Download keys"
-msgstr ""
+msgstr "مفاتيح التحميل"
 
 #: permissions.py:14
 msgid "Import keys from keyservers"
-msgstr "Import keys from keyservers"
+msgstr "إستيراد المفاتيح من الخوادم"
 
 #: permissions.py:17
 msgid "Use keys to sign content"
-msgstr ""
+msgstr "استخدم المفاتيح لتوقيع المحتوى"
 
 #: permissions.py:20
 msgid "Upload keys"
-msgstr ""
+msgstr "مفاتيح التحميل"
 
 #: permissions.py:23
 msgid "View keys"
-msgstr "View keys"
+msgstr "إستعراض المفاتيح"
 
-#: settings.py:7
+#: settings.py:10
 msgid "Signatures"
-msgstr ""
+msgstr "التوقيعات"
 
-#: settings.py:14
+#: settings.py:16
 msgid "Full path to the backend to be used to handle keys and signatures."
-msgstr ""
+msgstr "المسار الكامل للواجهة الخلفية لاستخدامه في التعامل مع المفاتيح والتوقيعات."
 
 #: settings.py:25
 msgid "Keyserver used to query for keys."
-msgstr ""
+msgstr "يستخدم خادم المفاتيح للاستعلام عن المفاتيح."
 
 #: views.py:36
 #, python-format
 msgid "Delete key: %s"
-msgstr ""
+msgstr "مفتاح الحذف: %s"
 
 #: views.py:53
 #, python-format
 msgid "Details for key: %s"
-msgstr ""
+msgstr "تفاصيل المفتاح: %s"
 
 #: views.py:75
 #, python-format
 msgid "Import key ID: %s?"
-msgstr ""
+msgstr "معرف مفتاح الاستيراد: %s؟"
 
 #: views.py:76
 msgid "Import key"
-msgstr "Import key"
+msgstr "استيراد المفتاح"
 
 #: views.py:85
 #, python-format
 msgid "Unable to import key: %(key_id)s; %(error)s"
-msgstr ""
+msgstr "تعذر استيراد المفتاح: %(key_id)s ؛ %(error)s"
 
 #: views.py:93
 #, python-format
 msgid "Successfully received key: %(key_id)s"
-msgstr ""
+msgstr "تم استلام المفتاح بنجاح: %(key_id)s"
 
 #: views.py:110
 msgid ""
 "Use names, last names, key ids or emails to search public keys to import "
 "from the keyserver."
-msgstr ""
+msgstr "استخدم الأسماء أو الأسماء الأخيرة أو معرّفات المفاتيح أو رسائل البريد الإلكتروني للبحث عن المفاتيح العامة للاستيراد من خادم المفاتيح."
 
 #: views.py:114
 msgid "No results returned"
-msgstr ""
+msgstr "لم يتم إرجاع أي نتائج"
 
 #: views.py:116
 msgid "Key query results"
-msgstr ""
+msgstr "نتائج الاستعلام الرئيسية"
 
 #: views.py:136
 msgid "Search"
@@ -264,29 +266,29 @@ msgstr "البحث"
 
 #: views.py:138
 msgid "Query key server"
-msgstr "Query key server"
+msgstr "الاستعلام عن مفتاح الخادم"
 
 #: views.py:157
 msgid "Upload new key"
-msgstr ""
+msgstr "تحميل مفتاح جديد"
 
 #: views.py:173
 msgid ""
 "Private keys are used to signed documents. Private keys can only be uploaded"
 " by the user. The view to upload private and public keys is the same."
-msgstr ""
+msgstr "تستخدم المفاتيح الخاصة في المستندات الموقعة. يمكن للمستخدم فقط تحميل المفاتيح الخاصة. طريقة العرض لتحميل المفاتيح الخاصة والعامة هي نفسها."
 
 #: views.py:178
 msgid "There no private keys"
-msgstr ""
+msgstr "لا توجد مفاتيح خاصة"
 
 #: views.py:196
 msgid ""
 "Public keys are used to verify signed documents. Public keys can be uploaded"
 " by the user or downloaded from keyservers. The view to upload private and "
 "public keys is the same."
-msgstr ""
+msgstr "تستخدم المفاتيح العامة للتحقق من المستندات الموقعة. يمكن للمستخدم تحميل المفاتيح العامة أو تنزيلها من خوادم المفاتيح. طريقة العرض لتحميل المفاتيح الخاصة والعامة هي نفسها."
 
 #: views.py:202
 msgid "There no public keys"
-msgstr ""
+msgstr "لا توجد مفاتيح عامة"

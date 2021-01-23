@@ -120,8 +120,9 @@ Release using GitLab CI using the makefile
 ------------------------------------------
 
 #. Use of the GitLab makefile targets: ``gitlab-release-all``,
-   ``gitlab-release-docker``, ``gitlab-release-documentation``,
-   ``gitlab-release-python``.
+   ``gitlab-release-all-minor``, ``gitlab-release-docker-minor``,
+   ``gitlab-release-python-minor``, ``gitlab-release-docker``,
+   ``gitlab-release-documentation``, ``gitlab-release-python``.
 
 
 Release using GitLab CI manually

@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# Jože Detečnik <joze.detecnik@3tav.si>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-09-27 06:46+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-12-25 10:52+0000\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>\n"
 "Language-Team: Slovenian (http://www.transifex.com/rosarior/mayan-edms/language/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,124 +19,124 @@ msgstr ""
 "Language: sl\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
-#: apps.py:133 permissions.py:5 settings.py:10
+#: apps.py:133 permissions.py:5 settings.py:13
 msgid "Common"
-msgstr ""
+msgstr "Običajni"
 
 #: classes.py:456
 msgid "Model properties"
-msgstr ""
+msgstr "Lastnosti modela"
 
 #: classes.py:461
 msgid "Model fields"
-msgstr ""
+msgstr "Modelna polja"
 
 #: classes.py:504
 msgid "Model related fields"
-msgstr ""
+msgstr "Model povezana polja"
 
 #: classes.py:509
 msgid "Model reverse fields"
-msgstr ""
+msgstr "Model povratnih polj"
 
 #: dependencies.py:195
 msgid "Used to allow offline translation of the code text strings."
-msgstr ""
+msgstr "Uporablja se za prevajanje besedilnih nizov kode brez povezave."
 
 #: dependencies.py:204
 msgid "Provides style checking."
-msgstr ""
+msgstr "Omogoča preverjanje sloga."
 
 #: dependencies.py:209
 msgid "Command line environment with autocompletion."
-msgstr ""
+msgstr "Okolje ukazne vrstice s samodokončanjem."
 
 #: dependencies.py:214
 msgid "Checks proper formatting of the README file."
-msgstr ""
+msgstr "Preveri pravilno oblikovanje datoteke README."
 
 #: links.py:31
 msgid "About this"
-msgstr ""
+msgstr "O tem"
 
 #: links.py:34
 msgid "Get the book"
-msgstr ""
+msgstr "Vzemi knjigo"
 
 #: links.py:39
 msgid "Locale profile"
-msgstr ""
+msgstr "Lokalni profil"
 
 #: links.py:44
 msgid "Edit locale profile"
-msgstr ""
+msgstr "Urejanje profila področne nastavitve"
 
 #: links.py:49
 msgid "Documentation"
-msgstr ""
+msgstr "Dokumentacija"
 
 #: links.py:52
 msgid "Forum"
-msgstr ""
+msgstr "Forum"
 
-#: links.py:56 views.py:104
+#: links.py:56 views.py:106
 msgid "License"
-msgstr ""
+msgstr "Licenca"
 
 #: links.py:61
 msgid "Copy"
-msgstr ""
+msgstr "Kopirati"
 
 #: links.py:64
 msgid "Setup"
-msgstr ""
+msgstr "Nastaviti"
 
 #: links.py:67
 msgid "Source code"
-msgstr ""
+msgstr "Izvorna koda"
 
 #: links.py:71
 msgid "Online store"
-msgstr ""
+msgstr "Spletna trgovina"
 
 #: links.py:75
 msgid "Get support"
-msgstr ""
+msgstr "Poiščite podporo"
 
-#: links.py:79 queues.py:9 views.py:173
+#: links.py:79 queues.py:9 views.py:175
 msgid "Tools"
-msgstr ""
+msgstr "Orodja"
 
-#: literals.py:7
+#: literals.py:18
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
-msgstr ""
+msgstr "Ta funkcija je zastarela in bo v prihodnji različici odstranjena."
 
-#: literals.py:10
+#: literals.py:21
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
-msgstr ""
+msgstr "Zaledje vaše baze podatkov je nastavljeno za uporabo SQLite. SQLite se sme uporabljati samo za razvoj in testiranje, ne pa tudi za proizvodnjo."
 
-#: literals.py:19
+#: literals.py:30
 msgid "Days"
-msgstr ""
+msgstr "Dnevi"
 
-#: literals.py:20
+#: literals.py:31
 msgid "Hours"
-msgstr ""
+msgstr "Ure"
 
-#: literals.py:21
+#: literals.py:32
 msgid "Minutes"
-msgstr ""
+msgstr "Zapisnik"
 
 #: menus.py:8
 msgid "System"
-msgstr ""
+msgstr "Sistem"
 
 #: menus.py:10 menus.py:11
 msgid "Facet"
-msgstr ""
+msgstr "Faset"
 
 #: menus.py:14
 msgid "Actions"
@@ -143,142 +144,142 @@ msgstr "Akcije"
 
 #: menus.py:15
 msgid "Related"
-msgstr ""
+msgstr "Sorodno"
 
 #: menus.py:16
 msgid "Secondary"
-msgstr ""
+msgstr "Sekundarni"
 
 #: menus.py:21 models.py:25
 msgid "User"
-msgstr ""
+msgstr "Uporabnik"
 
 #: models.py:29
 msgid "Timezone"
-msgstr ""
+msgstr "Časovni pas"
 
 #: models.py:32
 msgid "Language"
-msgstr ""
+msgstr "Jezik"
 
 #: models.py:38
 msgid "User locale profile"
-msgstr ""
+msgstr "Profil uporabniškega jezika"
 
 #: models.py:39
 msgid "User locale profiles"
-msgstr ""
+msgstr "Profili uporabniškega jezika"
 
 #: permissions.py:8
 msgid "Copy object"
-msgstr ""
+msgstr "Kopiraj objekt"
 
 #: queues.py:7
 msgid "Default"
-msgstr ""
+msgstr "Privzeto"
 
-#: settings.py:17
+#: settings.py:19
 msgid ""
 "Time to delay background tasks that depend on a database commit to "
 "propagate."
-msgstr ""
+msgstr "Čas za zakasnitev opravil v ozadju, ki so odvisne od obveze baze podatkov za širjenje."
 
-#: settings.py:25
+#: settings.py:26
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
 "Python path to: an application configuration class (preferred), or a package"
 " containing an application."
-msgstr ""
+msgstr "Seznam nizov, ki označujejo vse programe, ki jih je treba odstraniti s seznama, ki ga običajno namesti Mayan EDMS. Vsak niz mora biti pikčasta pot Pythona do: razreda konfiguracije aplikacije (prednostno) ali paketa, ki vsebuje aplikacijo."
 
-#: settings.py:35
+#: settings.py:36
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
 "Python path to: an application configuration class (preferred), or a package"
 " containing an application."
-msgstr ""
+msgstr "Seznam nizov, ki označujejo vse aplikacije, ki so nameščene poleg tistih, ki jih običajno namesti Mayan EDMS. Vsak niz mora biti pikčasta pot Pythona do: razreda konfiguracije aplikacije (prednostno) ali paketa, ki vsebuje aplikacijo."
 
-#: settings.py:44
+#: settings.py:45
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
-msgstr ""
+msgstr "Ime pogleda, pritrjenega na sidro znamke v glavnem meniju. To je tudi pogled, na katerega bodo uporabniki preusmerjeni po prijavi."
 
-#: settings.py:52
+#: settings.py:53
 msgid "Name to be displayed in the main menu."
-msgstr ""
+msgstr "Ime, ki bo prikazano v glavnem meniju."
 
-#: settings.py:58
+#: settings.py:59
 msgid "URL of the installation or homepage of the project."
-msgstr ""
+msgstr "URL namestitvene ali domače strani projekta."
 
-#: settings.py:63
+#: settings.py:64
 msgid "Base URL path to use for all views."
-msgstr ""
+msgstr "Osnovna pot URL-ja za vse poglede."
 
 #: validators.py:44
 msgid "Enter a valid JSON value."
-msgstr ""
+msgstr "Vnesite veljavno vrednost JSON."
 
 #: validators.py:68
 msgid "Enter a valid YAML value."
-msgstr ""
+msgstr "Vnesite veljavno vrednost YAML."
 
 #: validators.py:84
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
-msgstr ""
+msgstr "Vnesite veljavno &quot;interno ime&quot;, sestavljeno iz črk, številk in podčrtajev."
 
-#: views.py:27
+#: views.py:29
 msgid "About"
 msgstr " O programu"
 
-#: views.py:40
+#: views.py:42
 msgid "Current user locale profile details"
-msgstr ""
+msgstr "Podrobnosti o trenutnem profilu uporabniškega jezika"
 
-#: views.py:46
+#: views.py:48
 msgid "Edit current user locale profile details"
-msgstr ""
+msgstr "Uredite podrobnosti trenutnega profila uporabniškega jezika"
 
-#: views.py:95
+#: views.py:97
 msgid "Dashboard"
 msgstr "Nadzorna plošča"
 
-#: views.py:116
+#: views.py:118
 #, python-format
 msgid "Fields to be copied: %s"
-msgstr ""
+msgstr "Kopirana polja: %s"
 
-#: views.py:125
+#: views.py:127
 #, python-format
 msgid "Make a copy of %(object_name)s \"%(object)s\"?"
-msgstr ""
+msgstr "Ali želite kopirati %(object_name)s &quot;%(object)s&quot;?"
 
-#: views.py:134
+#: views.py:136
 msgid "Object copied successfully."
-msgstr ""
+msgstr "Predmet je bil uspešno kopiran."
 
-#: views.py:151
+#: views.py:153
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
-msgstr ""
+msgstr "Ni rezultatov tukaj pomeni, da nimajo zahtevanih dovoljenj za izvajanje skrbniške naloge."
 
-#: views.py:154
+#: views.py:156
 msgid "No setup options available."
-msgstr ""
-
-#: views.py:158
-msgid "Setup items"
-msgstr ""
+msgstr "Možnosti nastavitve niso na voljo."
 
 #: views.py:160
-msgid "Here you can configure all aspects of the system."
-msgstr ""
+msgid "Setup items"
+msgstr "Elementi nastavitve"
 
-#: views.py:175
+#: views.py:162
+msgid "Here you can configure all aspects of the system."
+msgstr "Tu lahko nastavite vse vidike sistema."
+
+#: views.py:177
 msgid "These modules are used to do system maintenance."
-msgstr ""
+msgstr "Ti moduli se uporabljajo za vzdrževanje sistema."

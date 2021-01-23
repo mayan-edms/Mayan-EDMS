@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Roberto Rosario, 2020\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
@@ -80,16 +80,16 @@ msgstr "查看错误日志"
 msgid "Automatically enable logging to all apps."
 msgstr "自动启用所有应用程序的日志记录。"
 
-#: settings.py:20
+#: settings.py:19
 msgid ""
 "List of handlers to which logging messages will be sent. Options are: {}"
 msgstr ""
 
-#: settings.py:26
+#: settings.py:25
 msgid "Level for the logging system."
 msgstr ""
 
-#: settings.py:32
+#: settings.py:31
 msgid "Path to the logfile that will track errors during production."
 msgstr "日志文件的路径，用于跟踪生产期间的错误。"
 

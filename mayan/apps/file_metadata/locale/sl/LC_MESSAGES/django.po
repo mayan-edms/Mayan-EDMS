@@ -5,14 +5,15 @@
 # 
 # Translators:
 # Roberto Rosario, 2020
+# Jože Detečnik <joze.detecnik@3tav.si>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
-"Last-Translator: Roberto Rosario, 2020\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2020\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,86 +26,88 @@ msgid "Label"
 msgstr "Oznaka"
 
 #: apps.py:49 events.py:6 links.py:17 permissions.py:5 queues.py:7
-#: settings.py:9
+#: settings.py:12
 msgid "File metadata"
-msgstr ""
+msgstr "Datotečni metapodatki"
 
 #: apps.py:99 search.py:7 search.py:16
 msgid "File metadata key"
-msgstr ""
+msgstr "Ključ metapodatkov datoteke"
 
 #: apps.py:103 search.py:11 search.py:20
 msgid "File metadata value"
-msgstr ""
+msgstr "Vrednost metapodatkov datoteke"
 
 #: apps.py:130
 msgid "Return the value of a specific file metadata."
-msgstr ""
+msgstr "Vrne vrednost metapodatkov določene datoteke."
 
 #: apps.py:131
 msgid "File metadata value of"
-msgstr ""
+msgstr "Vrednost metapodatkov datoteke"
 
 #: dependencies.py:12
 msgid ""
 "Library and program to read and write meta information in multimedia files."
 msgstr ""
+"Knjižnica in program za branje in pisanje meta informacij v "
+"večpredstavnostnih datotekah."
 
 #: drivers/exiftool.py:19
 msgid "EXIF Tool"
-msgstr ""
+msgstr "Orodje EXIF"
 
 #: events.py:10
 msgid "Document version submitted for file metadata processing"
-msgstr ""
+msgstr "Različica dokumenta, predložena v obdelavo metapodatkov datoteke"
 
 #: events.py:14
 msgid "Document version file metadata processing finished"
-msgstr ""
+msgstr "Obdelava metapodatkov datoteke različice dokumenta je končana"
 
 #: links.py:23
 msgid "Attributes"
-msgstr ""
+msgstr "Lastnosti"
 
 #: links.py:30 links.py:33
 msgid "Submit for file metadata"
-msgstr ""
+msgstr "Predložite za metapodatke o datoteki"
 
 #: links.py:40
 msgid "Setup file metadata"
-msgstr ""
+msgstr "Metapodatki o nastavitveni datoteki"
 
 #: links.py:45
 msgid "File metadata processing per type"
-msgstr ""
+msgstr "Obdelava metapodatkov datoteke glede na vrsto"
 
 #: methods.py:36
 msgid "get_file_metadata(< file metadata dotted path >)"
-msgstr ""
+msgstr "get_file_metadata (&lt;potiskana pot metapodatkov datoteke&gt;)"
 
 #: methods.py:39
 msgid "Return the specified document file metadata entry."
-msgstr ""
+msgstr "Vrnite vnos metapodatkov za navedeno datoteko dokumenta."
 
 #: methods.py:66
 msgid "Return the specified document version file metadata entry."
-msgstr ""
+msgstr "Vrnite vnos metapodatkov za navedeno datoteko različice dokumenta."
 
 #: models.py:18
 msgid "Driver path"
-msgstr ""
+msgstr "Pot do gonilnika"
 
 #: models.py:22
 msgid "Internal name"
-msgstr ""
+msgstr "Interno ime"
 
 #: models.py:27 models.py:70
 msgid "Driver"
-msgstr ""
+msgstr "Gonilnik"
 
 #: models.py:28
 msgid "Drivers"
-msgstr ""
+msgstr "Gonilniki"
 
 #: models.py:48
 msgid "Document type"
@@ -113,82 +116,85 @@ msgstr "Tip dokumenta"
 #: models.py:52
 msgid "Automatically queue newly created documents for processing."
 msgstr ""
+"Novo ustvarjene dokumente samodejno postavi v čakalno vrsto za obdelavo."
 
 #: models.py:59
 msgid "Document type settings"
-msgstr ""
+msgstr "Nastavitve vrste dokumenta"
 
 #: models.py:60
 msgid "Document types settings"
-msgstr ""
+msgstr "Nastavitve vrst dokumentov"
 
 #: models.py:74
 msgid "Document version"
-msgstr ""
+msgstr "Različica dokumenta"
 
 #: models.py:80 models.py:95
 msgid "Document version driver entry"
-msgstr ""
+msgstr "Vnos gonilnika različice dokumenta"
 
 #: models.py:81
 msgid "Document version driver entries"
-msgstr ""
+msgstr "Vnosi gonilnika različice dokumenta"
 
 #: models.py:88
 msgid "Attribute count"
-msgstr ""
+msgstr "Število atributov"
 
 #: models.py:99
 msgid "Name of the file metadata entry."
-msgstr ""
+msgstr "Ime vnosa metapodatkov datoteke."
 
 #: models.py:100
 msgid "Key"
-msgstr ""
+msgstr "Ključ"
 
 #: models.py:103
 msgid "Value of the file metadata entry."
-msgstr ""
+msgstr "Vrednost vnosa metapodatkov datoteke."
 
 #: models.py:104
 msgid "Value"
-msgstr ""
+msgstr "Vrednost"
 
 #: models.py:109
 msgid "File metadata entry"
-msgstr ""
+msgstr "Vnos metapodatkov datoteke"
 
 #: models.py:110
 msgid "File metadata entries"
-msgstr ""
+msgstr "Datotečni vnosi metapodatkov"
 
 #: permissions.py:8
 msgid "Change document type file metadata settings"
-msgstr ""
+msgstr "Spremenite nastavitve metapodatkov datoteke vrste dokumenta"
 
 #: permissions.py:13
 msgid "Submit document for file metadata processing"
-msgstr ""
+msgstr "Predložite dokument za obdelavo metapodatkov datoteke"
 
 #: permissions.py:17
 msgid "View file metadata"
-msgstr ""
+msgstr "Ogled metapodatkov datoteke"
 
 #: queues.py:10
 msgid "Process document version"
-msgstr ""
+msgstr "Obdelaj različico dokumenta"
 
-#: settings.py:16
+#: settings.py:18
 msgid ""
 "Set new document types to perform file metadata processing automatically by "
 "default."
 msgstr ""
+"Nastavite nove vrste dokumentov za samodejno obdelavo metapodatkov datotek "
+"privzeto."
 
-#: settings.py:22
+#: settings.py:25
 msgid "Arguments to pass to the drivers."
-msgstr ""
+msgstr "Argumenti za posredovanje voznikom."
 
-#: views.py:42
+#: views.py:44
 msgid ""
 "File metadata are the attributes of the document's file. They can range from"
 " camera information used to take a photo to the author that created a file. "
@@ -196,50 +202,63 @@ msgid ""
 "metadata attributes reside in the file itself. They are not the same as the "
 "document metadata, which are user defined and reside in the database."
 msgstr ""
+"Metapodatki datoteke so atributi datoteke dokumenta. Lahko segajo od "
+"informacij o fotoaparatu, ki se uporabljajo za fotografiranje, do avtorja, "
+"ki je ustvaril datoteko. Metapodatki o datoteki so nastavljeni, ko je bila "
+"datoteka dokumenta prvič ustvarjena. Atributi metapodatkov datoteke se "
+"nahajajo v sami datoteki. Niso enaki metapodatkom dokumenta, ki jih določi "
+"uporabnik in se nahajajo v bazi podatkov."
 
-#: views.py:50
+#: views.py:52
 msgid "No file metadata available"
-msgstr ""
+msgstr "Na voljo niso nobeni metapodatki o datoteki"
 
-#: views.py:53
+#: views.py:55
 #, python-format
 msgid "File metadata drivers for: %s"
-msgstr ""
+msgstr "Datotečni gonilniki metapodatkov za: %s"
 
-#: views.py:80
+#: views.py:81
 msgid ""
 "This could mean that the file metadata detection has not completed or that "
 "the driver does not support any metadata field for the file type of this "
 "document."
 msgstr ""
+"To lahko pomeni, da zaznavanje metapodatkov datoteke ni končano ali da "
+"gonilnik ne podpira nobenega polja metapodatkov za vrsto datoteke tega "
+"dokumenta."
 
-#: views.py:85
+#: views.py:86
 msgid "No file metadata available for this driver"
-msgstr ""
+msgstr "Za ta gonilnik ni na voljo metapodatkov o datoteki"
 
-#: views.py:89
+#: views.py:90
 #, python-format
 msgid "File metadata attribures for: %(document)s, for driver: %(driver)s"
 msgstr ""
+"Datoteke atributov metapodatkov za: %(document)s, za gonilnik: %(driver)s"
 
-#: views.py:112
+#: views.py:119
 msgid "Submit the selected document to the file metadata queue?"
 msgid_plural "Submit the selected documents to the file metadata queue?"
 msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+"Želite poslati izbrani dokument v čakalno vrsto metapodatkov datoteke?"
+msgstr[1] "Želite poslati izbrane dokumente v čakalno vrsto metapodatkov?"
+msgstr[2] "Želite poslati izbrane dokumente v čakalno vrsto metapodatkov?"
+msgstr[3] "Želite poslati izbrane dokumente v čakalno vrsto metapodatkov?"
 
-#: views.py:138
+#: views.py:145
 #, python-format
 msgid "Edit file metadata settings for document type: %s"
-msgstr ""
+msgstr "Uredite nastavitve metapodatkov datoteke za vrsto dokumenta: %s"
 
-#: views.py:149
+#: views.py:156
 msgid "Submit all documents of a type for file metadata processing."
-msgstr ""
+msgstr "Predložite vse dokumente neke vrste za obdelavo metapodatkov datotek."
 
-#: views.py:171
+#: views.py:180
 #, python-format
 msgid "%(count)d documents added to the file metadata processing queue."
 msgstr ""
+"%(count)d dokumenti, dodani v čakalno vrsto za obdelavo metapodatkov "
+"datoteke."

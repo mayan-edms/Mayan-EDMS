@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2019-05-17 05:50+0000\n"
 "Last-Translator: Adek Lanin\n"
 "Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/language/id/)\n"
@@ -88,32 +88,32 @@ msgstr "Lihat komentar-komentar"
 msgid "Add comment to document: %s"
 msgstr "Menambah komentar ke dokumen: %s"
 
-#: views.py:60
+#: views.py:59
 #, python-format
 msgid "Delete comment: %s?"
 msgstr ""
 
-#: views.py:87
+#: views.py:90
 #, python-format
 msgid "Details for comment: %s?"
 msgstr ""
 
-#: views.py:102
+#: views.py:109
 #, python-format
 msgid "Edit comment: %s?"
 msgstr ""
 
-#: views.py:132
+#: views.py:144
 msgid ""
 "Document comments are timestamped text entries from users. They are great "
 "for collaboration."
 msgstr ""
 
-#: views.py:135
+#: views.py:147
 msgid "There are no comments"
 msgstr ""
 
-#: views.py:137
+#: views.py:149
 #, python-format
 msgid "Comments for document: %s"
 msgstr ""

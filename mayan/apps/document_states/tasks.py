@@ -26,7 +26,7 @@ def task_launch_all_workflows():
     )
 
     logger.info('Start launching workflows')
-    for document in Document.objects.all():
+    for document in Document.valid.all():
         Workflow.objects.launch_for(document=document)
 
     logger.info('Finished launching workflows')
@@ -42,7 +42,7 @@ def task_launch_workflow(workflow_id):
     workflow = Workflow.objects.get(pk=workflow_id)
 
     logger.info('Start launching workflow: %d', workflow_id)
-    for document in Document.objects.filter(document_type__in=workflow.document_types.all()):
+    for document in Document.valid.filter(document_type__in=workflow.document_types.all()):
         workflow.launch_for(document=document)
 
     logger.info('Finished launching workflow: %d', workflow_id)
@@ -55,7 +55,7 @@ def task_launch_workflow_for(document_id, workflow_id):
         app_label='document_states', model_name='Workflow'
     )
 
-    document = Document.objects.get(pk=document_id)
+    document = Document.valid.get(pk=document_id)
     workflow = Workflow.objects.get(pk=workflow_id)
 
     logger.info(
@@ -76,7 +76,7 @@ def task_launch_all_workflow_for(document_id):
         app_label='document_states', model_name='Workflow'
     )
 
-    document = Document.objects.get(pk=document_id)
+    document = Document.valid.get(pk=document_id)
 
     logger.info(
         'Start launching all workflows for document: %d', document_id

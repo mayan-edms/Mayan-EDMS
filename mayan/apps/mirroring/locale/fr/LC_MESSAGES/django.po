@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2018-04-11 12:04+0000\n"
 "Last-Translator: Yves Dubois <ydubois@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
@@ -20,14 +20,14 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:13 settings.py:5
+#: apps.py:13 settings.py:10
 msgid "Mirroring"
 msgstr "Duplication"
 
-#: settings.py:9
+#: settings.py:15
 msgid "Time in seconds to cache the path lookup to a document."
 msgstr "Temps en secondes de rétention en cache du chemin d'accès à un document."
 
-#: settings.py:13
+#: settings.py:20
 msgid "Time in seconds to cache the path lookup to an index node."
 msgstr "Temps en seconde de rétention en cache du chemin d'accès à un nœud d'index."

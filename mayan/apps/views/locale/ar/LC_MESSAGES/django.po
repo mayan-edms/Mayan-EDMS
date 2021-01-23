@@ -6,14 +6,15 @@
 # Translators:
 # Roberto Rosario, 2020
 # Mohammed ALDOUB <voulnet@gmail.com>, 2020
+# Marwan Rahhal <Marwanr@sssit.net>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Mohammed ALDOUB <voulnet@gmail.com>, 2020\n"
+"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2020\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,9 +22,9 @@ msgstr ""
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: apps.py:15 settings.py:5
+#: apps.py:15 settings.py:7
 msgid "Views"
-msgstr ""
+msgstr "إستعراض"
 
 #: forms.py:24
 msgid "Selection"
@@ -39,6 +40,9 @@ msgid ""
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr ""
+"حدد الإدخالات المراد حذفها ،  اضغط مع الاستمرار على التحكم لتحديد عدة "
+"إدخالات. بمجرد اكتمال التحديد ، انقر فوق الزر أدناه أو انقر نقرًا مزدوجًا "
+"فوق القائمة لتنشيط الإجراء"
 
 #: generics.py:151
 msgid ""
@@ -46,10 +50,13 @@ msgid ""
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr ""
+"حدد الإدخالات لتتم إضافتها ، اضغط مع الاستمرار على التحكم لتحديد عدة إدخالات"
+" ، بمجرد اكتمال التحديد ، انقر فوق الزر أدناه أو انقر نقرًا مزدوجًا فوق "
+"القائمة لتنشيط الإجراء"
 
 #: generics.py:284
 msgid "Add all"
-msgstr ""
+msgstr "إضافة الكل"
 
 #: generics.py:293
 msgid "Add"
@@ -57,59 +64,59 @@ msgstr "إضافة"
 
 #: generics.py:303
 msgid "Remove all"
-msgstr ""
+msgstr "حذف الكل"
 
 #: generics.py:312
 msgid "Remove"
-msgstr "إزالة"
+msgstr "حذف"
 
 #: generics.py:522
 #, python-format
 msgid "Duplicate data error: %(error)s"
-msgstr ""
+msgstr "تكرار خطأ في المعلومات : %(error)s"
 
 #: generics.py:543
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
-msgstr ""
+msgstr "%(object)s لم ينشأ , الخطأ : %(error)s"
 
 #: generics.py:556
 #, python-format
 msgid "%(object)s created successfully."
-msgstr ""
+msgstr "%(object)s الإنشاء الناجح."
 
 #: generics.py:595
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
-msgstr ""
+msgstr "%(object)s لم تحذف , الخطأ : %(error)s."
 
 #: generics.py:604
 #, python-format
 msgid "%(object)s deleted successfully."
-msgstr ""
+msgstr "%(object)s احذف الناجح."
 
 #: generics.py:740
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
-msgstr ""
+msgstr "%(object)s لم يتم التعديل, الخطأ: %(error)s."
 
 #: generics.py:751
 #, python-format
 msgid "%(object)s updated successfully."
-msgstr ""
+msgstr "%(object)s التعديل الناجح."
 
-#: mixins.py:319
+#: mixins.py:324
 #, python-format
 msgid "No %(verbose_name)s found matching the query"
-msgstr ""
+msgstr "لا %(verbose_name)s ايجاد المتشابه"
 
-#: mixins.py:433
+#: mixins.py:438
 msgid "Object"
-msgstr "Object"
+msgstr "عنصر"
 
-#: settings.py:11
+#: settings.py:12
 msgid "The number objects that will be displayed per page."
-msgstr ""
+msgstr "عدد العناصر الظاهرة في الصفحة"
 
 #: templatetags/views_tags.py:28
 msgid "Confirm delete"
@@ -118,7 +125,7 @@ msgstr "تأكيد حذف"
 #: templatetags/views_tags.py:33
 #, python-format
 msgid "Edit %s"
-msgstr ""
+msgstr "التعديل %s"
 
 #: templatetags/views_tags.py:36
 msgid "Confirm"
@@ -127,12 +134,12 @@ msgstr "تأكيد"
 #: templatetags/views_tags.py:40
 #, python-format
 msgid "Details for: %s"
-msgstr ""
+msgstr "التفاصيل : %s"
 
 #: templatetags/views_tags.py:44
 #, python-format
 msgid "Edit: %s"
-msgstr ""
+msgstr "تعديل : %s"
 
 #: templatetags/views_tags.py:48
 msgid "Create"

@@ -137,6 +137,8 @@ class DocumentFileDownloadViewTestCase(
     _test_event_object_name = 'test_document_file'
 
     def test_document_file_download_view_no_permission(self):
+        self._clear_events()
+
         response = self._request_test_document_file_download_view()
         self.assertEqual(response.status_code, 404)
 
@@ -155,6 +157,8 @@ class DocumentFileDownloadViewTestCase(
             permission=permission_document_file_download
         )
 
+        self._clear_events()
+
         response = self._request_test_document_file_download_view()
         self.assertEqual(response.status_code, 200)
 
@@ -168,6 +172,7 @@ class DocumentFileDownloadViewTestCase(
         event = self._get_test_object_event()
         self.assertEqual(event.action_object, self.test_document)
         self.assertEqual(event.actor, self._test_case_user)
+        self.assertEqual(event.target, self.test_document_file)
         self.assertEqual(event.verb, event_document_file_downloaded.id)
 
 

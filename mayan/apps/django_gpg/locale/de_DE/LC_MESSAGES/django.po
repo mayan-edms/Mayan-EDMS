@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-08-17 15:08+0000\n"
 "Last-Translator: Marvin Haschker <marvin@haschker.me>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
@@ -117,47 +117,47 @@ msgstr "Private Schlüssel"
 msgid "Public keys"
 msgstr "Öffentliche Schlüssel"
 
-#: literals.py:14 literals.py:22
+#: literals.py:23 literals.py:31
 msgid "Public"
 msgstr "Öffentlich"
 
-#: literals.py:15 literals.py:23
+#: literals.py:24 literals.py:32
 msgid "Secret"
 msgstr "Geheim"
 
-#: literals.py:31 literals.py:36
+#: literals.py:40 literals.py:45
 msgid "RSA"
 msgstr "RSA"
 
-#: literals.py:32
+#: literals.py:41
 msgid "DSA"
 msgstr "DSA"
 
-#: literals.py:37
+#: literals.py:46
 msgid "Elgamal"
 msgstr "Elgamal"
 
-#: literals.py:51
+#: literals.py:62
 msgid "Bad signature."
 msgstr "Ungültige Signatur."
 
-#: literals.py:54
+#: literals.py:65
 msgid "Document not signed or invalid signature."
 msgstr "Dokument nicht signiert oder ungültige Signatur."
 
-#: literals.py:57
+#: literals.py:68
 msgid "Signature error."
 msgstr "Signaturfehler."
 
-#: literals.py:61
+#: literals.py:72
 msgid "Document is signed but no public key is available for verification."
 msgstr "Das Dokument ist signiert, aber kein öffentlicher Schlüssel zur Überprüfung verfügbar."
 
-#: literals.py:66
+#: literals.py:77
 msgid "Document is signed, and signature is good."
 msgstr "Dokument ist signiert mit gültiger Unterschrift."
 
-#: literals.py:69
+#: literals.py:80
 msgid "Document is signed with a valid signature."
 msgstr "Das Dokument ist mit einer gültigen Signatur signiert."
 
@@ -209,11 +209,11 @@ msgstr "Schlüssel hochladen"
 msgid "View keys"
 msgstr "Schlüssel anzeigen"
 
-#: settings.py:7
+#: settings.py:10
 msgid "Signatures"
 msgstr "Unterschriften"
 
-#: settings.py:14
+#: settings.py:16
 msgid "Full path to the backend to be used to handle keys and signatures."
 msgstr "Vollständiger Pfad zum Backend, welcher für die Behandlung von Schlüsseln und Signaturen verwendet werden soll."
 

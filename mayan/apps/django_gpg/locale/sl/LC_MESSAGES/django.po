@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# Jože Detečnik <joze.detecnik@3tav.si>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-04-14 08:31+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-12-25 11:43+0000\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>\n"
 "Language-Team: Slovenian (http://www.transifex.com/rosarior/mayan-edms/language/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,39 +21,39 @@ msgstr ""
 
 #: apps.py:30
 msgid "Django GPG"
-msgstr ""
+msgstr "Django GPG"
 
 #: apps.py:46 apps.py:52 forms.py:15
 msgid "Key ID"
-msgstr ""
+msgstr "ID ključa"
 
 #: apps.py:56 forms.py:32 models.py:53
 msgid "Type"
-msgstr ""
+msgstr "Tip"
 
 #: apps.py:60 forms.py:21 models.py:34
 msgid "Creation date"
-msgstr ""
+msgstr "Datum nastanka"
 
 #: apps.py:64
 msgid "No expiration"
-msgstr ""
+msgstr "Brez izteka"
 
 #: apps.py:65 forms.py:25 models.py:38
 msgid "Expiration date"
-msgstr ""
+msgstr "Datum veljavnosti"
 
 #: apps.py:68 forms.py:30 models.py:45
 msgid "Length"
-msgstr ""
+msgstr "Dolžina"
 
 #: apps.py:73 forms.py:17 models.py:50
 msgid "User ID"
-msgstr ""
+msgstr "Uporabniško ime"
 
 #: dependencies.py:10
 msgid "GNU privacy guard - a PGP implementation."
-msgstr ""
+msgstr "Zaščita zasebnosti GNU - izvedba PGP."
 
 #: forms.py:26
 msgid "None"
@@ -60,19 +61,19 @@ msgstr "Brez"
 
 #: forms.py:29 models.py:42
 msgid "Fingerprint"
-msgstr ""
+msgstr "Prstni odtis"
 
 #: forms.py:31 models.py:48
 msgid "Algorithm"
-msgstr ""
+msgstr "Algoritem"
 
 #: forms.py:45
 msgid "Term"
-msgstr ""
+msgstr "Izraz"
 
 #: forms.py:46
 msgid "Name, e-mail, key ID or key fingerprint to look for."
-msgstr ""
+msgstr "Ime, e-pošta, ID ključa ali prstni odtis ključa, ki ga želite poiskati."
 
 #: links.py:17
 msgid "Delete"
@@ -88,204 +89,204 @@ msgstr "Prenos"
 
 #: links.py:32 permissions.py:26
 msgid "Query keyservers"
-msgstr ""
+msgstr "Poizvedovanje strežnikov ključev"
 
 #: links.py:37
 msgid "Import"
-msgstr ""
+msgstr "Uvozi"
 
 #: links.py:42 permissions.py:5
 msgid "Key management"
-msgstr ""
+msgstr "Upravljanje ključev"
 
 #: links.py:46
 msgid "Upload key"
-msgstr ""
+msgstr "Ključ za nalaganje"
 
 #: links.py:50 views.py:180
 msgid "Private keys"
-msgstr ""
+msgstr "Zasebni ključi"
 
 #: links.py:54 views.py:204
 msgid "Public keys"
-msgstr ""
+msgstr "Javni ključi"
 
-#: literals.py:14 literals.py:22
+#: literals.py:23 literals.py:31
 msgid "Public"
-msgstr ""
+msgstr "Javno"
 
-#: literals.py:15 literals.py:23
+#: literals.py:24 literals.py:32
 msgid "Secret"
-msgstr ""
+msgstr "Skrivnost"
 
-#: literals.py:31 literals.py:36
+#: literals.py:40 literals.py:45
 msgid "RSA"
-msgstr ""
+msgstr "RSA"
 
-#: literals.py:32
+#: literals.py:41
 msgid "DSA"
-msgstr ""
+msgstr "DSA"
 
-#: literals.py:37
+#: literals.py:46
 msgid "Elgamal"
-msgstr ""
+msgstr "Elgamal"
 
-#: literals.py:51
+#: literals.py:62
 msgid "Bad signature."
-msgstr ""
+msgstr "Slab podpis."
 
-#: literals.py:54
+#: literals.py:65
 msgid "Document not signed or invalid signature."
-msgstr ""
+msgstr "Dokument ni podpisan ali neveljaven podpis."
 
-#: literals.py:57
+#: literals.py:68
 msgid "Signature error."
-msgstr ""
+msgstr "Napaka podpisa."
 
-#: literals.py:61
+#: literals.py:72
 msgid "Document is signed but no public key is available for verification."
-msgstr ""
+msgstr "Dokument je podpisan, vendar noben javni ključ ni na voljo za preverjanje."
 
-#: literals.py:66
+#: literals.py:77
 msgid "Document is signed, and signature is good."
-msgstr ""
+msgstr "Dokument je podpisan in podpis je dober."
 
-#: literals.py:69
+#: literals.py:80
 msgid "Document is signed with a valid signature."
-msgstr ""
+msgstr "Dokument je podpisan z veljavnim podpisom."
 
 #: models.py:30
 msgid "ASCII armored version of the key."
-msgstr ""
+msgstr "Oklepna različica ključa ASCII."
 
 #: models.py:31
 msgid "Key data"
-msgstr ""
+msgstr "Ključni podatki"
 
 #: models.py:59
 msgid "Key"
-msgstr ""
+msgstr "Ključ"
 
 #: models.py:60
 msgid "Keys"
-msgstr ""
+msgstr "Ključi"
 
 #: models.py:72
 msgid "Invalid key data"
-msgstr ""
+msgstr "Neveljavni ključni podatki"
 
 #: models.py:75
 msgid "Key already exists."
-msgstr ""
+msgstr "Ključ že obstaja."
 
 #: permissions.py:8
 msgid "Delete keys"
-msgstr ""
+msgstr "Izbriši tipke"
 
 #: permissions.py:11
 msgid "Download keys"
-msgstr ""
+msgstr "Tipke za prenos"
 
 #: permissions.py:14
 msgid "Import keys from keyservers"
-msgstr ""
+msgstr "Uvozi ključe iz strežnikov ključev"
 
 #: permissions.py:17
 msgid "Use keys to sign content"
-msgstr ""
+msgstr "Uporabite tipke za podpisovanje vsebine"
 
 #: permissions.py:20
 msgid "Upload keys"
-msgstr ""
+msgstr "Naloži ključe"
 
 #: permissions.py:23
 msgid "View keys"
-msgstr ""
+msgstr "Tipke za ogled"
 
-#: settings.py:7
+#: settings.py:10
 msgid "Signatures"
-msgstr ""
+msgstr "Podpisi"
 
-#: settings.py:14
+#: settings.py:16
 msgid "Full path to the backend to be used to handle keys and signatures."
-msgstr ""
+msgstr "Celotna pot do zaledja, ki se uporablja za obdelavo ključev in podpisov."
 
 #: settings.py:25
 msgid "Keyserver used to query for keys."
-msgstr ""
+msgstr "Strežnik ključev, ki se uporablja za iskanje ključev."
 
 #: views.py:36
 #, python-format
 msgid "Delete key: %s"
-msgstr ""
+msgstr "Tipka za brisanje: %s"
 
 #: views.py:53
 #, python-format
 msgid "Details for key: %s"
-msgstr ""
+msgstr "Podrobnosti za ključ: %s"
 
 #: views.py:75
 #, python-format
 msgid "Import key ID: %s?"
-msgstr ""
+msgstr "Uvoz ID ključa: %s?"
 
 #: views.py:76
 msgid "Import key"
-msgstr ""
+msgstr "Uvozni ključ"
 
 #: views.py:85
 #, python-format
 msgid "Unable to import key: %(key_id)s; %(error)s"
-msgstr ""
+msgstr "Ključa ni mogoče uvoziti: %(key_id)s; %(error)s"
 
 #: views.py:93
 #, python-format
 msgid "Successfully received key: %(key_id)s"
-msgstr ""
+msgstr "Uspešno prejet ključ: %(key_id)s"
 
 #: views.py:110
 msgid ""
 "Use names, last names, key ids or emails to search public keys to import "
 "from the keyserver."
-msgstr ""
+msgstr "Za iskanje po javnih ključih za uvoz iz strežnika tipk uporabite imena, priimke, ID-je ključev ali e-pošto."
 
 #: views.py:114
 msgid "No results returned"
-msgstr ""
+msgstr "Rezultati niso vrnjeni"
 
 #: views.py:116
 msgid "Key query results"
-msgstr ""
+msgstr "Rezultati ključnih poizvedb"
 
 #: views.py:136
 msgid "Search"
-msgstr ""
+msgstr "Iskanje"
 
 #: views.py:138
 msgid "Query key server"
-msgstr ""
+msgstr "Poizvedbeni strežnik"
 
 #: views.py:157
 msgid "Upload new key"
-msgstr ""
+msgstr "Naloži nov ključ"
 
 #: views.py:173
 msgid ""
 "Private keys are used to signed documents. Private keys can only be uploaded"
 " by the user. The view to upload private and public keys is the same."
-msgstr ""
+msgstr "Zasebni ključi se uporabljajo za podpisane dokumente. Zasebne ključe lahko naloži samo uporabnik. Pogled za nalaganje zasebnih in javnih ključev je enak."
 
 #: views.py:178
 msgid "There no private keys"
-msgstr ""
+msgstr "Zasebnih ključev ni"
 
 #: views.py:196
 msgid ""
 "Public keys are used to verify signed documents. Public keys can be uploaded"
 " by the user or downloaded from keyservers. The view to upload private and "
 "public keys is the same."
-msgstr ""
+msgstr "Javni ključi se uporabljajo za preverjanje podpisanih dokumentov. Javne ključe lahko uporabnik naloži ali prenese s strežnikov ključev. Pogled za nalaganje zasebnih in javnih ključev je enak."
 
 #: views.py:202
 msgid "There no public keys"
-msgstr ""
+msgstr "Javnih ključev ni"

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
@@ -92,11 +92,11 @@ msgstr "Index opnieuw opbouwen"
 msgid "Deletes and creates from scratch all the document indexes."
 msgstr "Alle documentindexeringen vanaf nul opbouwen"
 
-#: links.py:53 views.py:446
+#: links.py:53 views.py:453
 msgid "Rebuild indexes"
 msgstr "Indexeringen opnieuw opbouwen"
 
-#: links.py:64 views.py:481
+#: links.py:64 views.py:488
 msgid "Reset indexes"
 msgstr "Indexering opnieuw instellen"
 
@@ -415,45 +415,45 @@ msgstr "Dit kan betekenen dat er geen indexsjablonen zijn aangemaakt of dat er w
 msgid "There are no index instances available."
 msgstr "Er zijn geen index-instanties beschikbaar."
 
-#: views.py:377
+#: views.py:372
 #, python-format
 msgid "Navigation: %s"
 msgstr "Navigatie: %s"
 
-#: views.py:382
+#: views.py:378
 #, python-format
 msgid "Contents for index: %s"
 msgstr "Inhoud voor index: %s"
 
-#: views.py:425
+#: views.py:432
 msgid ""
 "Assign the document type of this document to an index to have it appear in "
 "instances of those indexes organization units. "
 msgstr "Het documenttype van dit document toewijzen aan een index zodat het wordt weergegeven in instanties van die indexen organisatie-eenheden."
 
-#: views.py:430
+#: views.py:437
 msgid "This document is not in any index"
 msgstr "Dit document is in geen enkele index"
 
-#: views.py:434
+#: views.py:441
 #, python-format
 msgid "Indexes nodes containing document: %s"
 msgstr "Indexnodes die document bevatten: %s"
 
-#: views.py:460
+#: views.py:467
 #, python-format
 msgid "%(count)d index queued for rebuild."
 msgid_plural "%(count)d indexes queued for rebuild."
 msgstr[0] "%(count)d index in wachtrij voor opnieuw opbouwen."
 msgstr[1] "%(count)d indexeringen in wachtrij voor opnieuw opbouwen."
 
-#: views.py:493
+#: views.py:500
 #, python-format
 msgid "%(count)d index reset."
 msgid_plural "%(count)d indexes reset."
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:506
+#: views.py:513
 msgid "Index templates for which their instances will be deleted."
 msgstr "Indexsjablonen waarvan de instanties worden verwijderd."

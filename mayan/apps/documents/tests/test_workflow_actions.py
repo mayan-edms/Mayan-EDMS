@@ -2,7 +2,7 @@ from mayan.apps.document_states.tests.mixins import WorkflowTestMixin
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 from mayan.apps.document_states.literals import WORKFLOW_ACTION_ON_ENTRY
 
-from ..models.document_models import TrashedDocument
+from ..models.trashed_document_models import TrashedDocument
 from ..workflow_actions import TrashDocumentAction
 
 from .literals import TEST_TRASH_DOCUMENT_WORKFLOW_ACTION_DOTTED_PATH

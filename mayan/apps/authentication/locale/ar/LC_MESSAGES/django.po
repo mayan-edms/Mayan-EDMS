@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# Marwan Rahhal <Marwanr@sssit.net>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-03-28 07:23+0000\n"
-"Last-Translator: Mohammed ALDOUB <voulnet@gmail.com>\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-12-23 22:59+0000\n"
+"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>\n"
 "Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,17 +19,17 @@ msgstr ""
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: apps.py:25 events.py:6 permissions.py:6 settings.py:7
+#: apps.py:25 events.py:6 permissions.py:6 settings.py:10
 msgid "Authentication"
-msgstr ""
+msgstr "مصادقة الحساب"
 
 #: events.py:10
 msgid "User impersonation ended"
-msgstr ""
+msgstr "انتهاء تفويض المستخدم"
 
 #: events.py:13
 msgid "User impersonation started"
-msgstr ""
+msgstr "بدأ تفويض المستخدم"
 
 #: forms.py:17
 msgid "Email"
@@ -40,13 +41,13 @@ msgstr "كلمة المرور"
 
 #: forms.py:22 forms.py:89
 msgid "Remember me"
-msgstr ""
+msgstr "تذكرني"
 
 #: forms.py:25
 msgid ""
 "Please enter a correct email and password. Note that the password field is "
 "case-sensitive."
-msgstr ""
+msgstr "يرجى التأكد من إدخال الإيميل والباسورد في الشكل الصحيح"
 
 #: forms.py:27
 msgid "This account is inactive."
@@ -58,66 +59,66 @@ msgstr "مستخدم"
 
 #: forms.py:78
 msgid "User to be impersonated."
-msgstr ""
+msgstr "تفويض المستخدم"
 
 #: forms.py:82
 msgid "Permanent"
-msgstr ""
+msgstr "بشكل دائم"
 
 #: forms.py:83
 msgid "If selected, disables ending impersonation."
-msgstr ""
+msgstr "الغاء التفويض للمحدد"
 
-#: links.py:22
+#: links.py:25
 msgid "Logout"
 msgstr "خروج"
 
-#: links.py:27
+#: links.py:30
 msgid "Change password"
-msgstr ""
+msgstr "تغير كلمة المرور"
 
-#: links.py:32 views.py:68
+#: links.py:35 views.py:68
 msgid "Impersonate user"
-msgstr ""
+msgstr "تفويض المستخدم"
 
-#: links.py:37 links.py:44
+#: links.py:40 links.py:47
 msgid "Set password"
-msgstr ""
+msgstr "ادخال كلمة المرور"
 
 #: permissions.py:10
 msgid "Impersonate users"
-msgstr ""
+msgstr "تفويض مستخدم آخر"
 
-#: settings.py:11
+#: settings.py:15
 msgid ""
 "Controls the mechanism used to authenticated user. Options are: username, "
 "email"
-msgstr ""
+msgstr "المصادقة على بيانات المستخدم"
 
-#: settings.py:18
+#: settings.py:22
 msgid ""
 "Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
 " in. Value is time in seconds."
-msgstr ""
+msgstr "أقصى مدة لتذكر كلمة المرور /الثانية"
 
-#: settings.py:25
+#: settings.py:29
 msgid ""
 "Remove the \"Forgot your password?\" link on the login form used to trigger "
 "the password reset."
-msgstr ""
+msgstr "ازالة الرابط / اعادة تعين كلمة المرور"
 
 #: templates/authentication/login.html:11
 msgid "Login"
-msgstr "Login"
+msgstr "الدخول الى النظام"
 
 #: templates/authentication/login.html:23
 #: templates/authentication/login.html:32
 msgid "Sign in"
-msgstr ""
+msgstr "تسجيل الدخول "
 
 #: templates/authentication/login.html:39
 msgid "Forgot your password?"
-msgstr ""
+msgstr "هل نسيت كلمة المرور"
 
 #: templates/authentication/password_reset_complete.html:8
 #: templates/authentication/password_reset_confirm.html:8
@@ -126,24 +127,24 @@ msgstr ""
 #: templates/authentication/password_reset_form.html:8
 #: templates/authentication/password_reset_form.html:20
 msgid "Password reset"
-msgstr ""
+msgstr "اعادة تعين كلمة المرور"
 
 #: templates/authentication/password_reset_complete.html:15
 msgid "Password reset complete! Click the link below to login."
-msgstr ""
+msgstr "تم اعادة تعين كلمة المرور ! الضغط على الرابط"
 
 #: templates/authentication/password_reset_complete.html:17
 msgid "Login page"
-msgstr ""
+msgstr "صفحة تسجيل الدخول الى النظام"
 
 #: templates/authentication/password_reset_confirm.html:29
 #: templates/authentication/password_reset_form.html:29 views.py:212
 msgid "Submit"
-msgstr "ارسال"
+msgstr "اعتماد"
 
 #: templates/authentication/password_reset_done.html:15
 msgid "Password reset email sent!"
-msgstr ""
+msgstr "تم اعادة تعيني كلمة المرور ! تم ارسال الايميل "
 
 #: views.py:121
 msgid "Your password has been successfully changed."
@@ -155,43 +156,43 @@ msgstr "تغيير كلمة السر للمستخدم الحالي"
 
 #: views.py:136
 msgid "Changing the password is not allowed for this account."
-msgstr ""
+msgstr "لا يمكن تغير كلمة المرور للمستخدم"
 
 #: views.py:203
 #, python-format
 msgid "Password change request performed on %(count)d user"
-msgstr ""
+msgstr "تم تغير كلمة المرور بانجاز %(count)d "
 
 #: views.py:205
 #, python-format
 msgid "Password change request performed on %(count)d users"
-msgstr ""
+msgstr "تم تغير كلمة المرور بانجاز %(count)d "
 
 #: views.py:214
 msgid "Change user password"
 msgid_plural "Change users passwords"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "تغيير كلمات مرور المستخدمين"
+msgstr[1] "تغيير كلمة مرور المستخدم"
+msgstr[2] "تغيير كلمات مرور المستخدمين"
+msgstr[3] "تغيير كلمات مرور المستخدمين"
+msgstr[4] "تغيير كلمات مرور المستخدمين"
+msgstr[5] "تغيير كلمات مرور المستخدمين"
 
 #: views.py:224
 #, python-format
 msgid "Change password for user: %s"
-msgstr ""
+msgstr "تغير كلمة المرور للمستخدم : %s"
 
 #: views.py:244
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr "Super user and staff user password reseting is not allowed, use the admin interface for these cases."
+msgstr "لا يمكن تغير كلمة المرور للمستخدم ! الاتصال بمدير النظام"
 
 #: views.py:254
 #, python-format
 msgid "Successful password reset for user: %s."
-msgstr ""
+msgstr "تم إعادة تعين كلمة المرور : %s."
 
 #: views.py:260
 #, python-format

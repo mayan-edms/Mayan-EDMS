@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# Jože Detečnik <joze.detecnik@3tav.si>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-12-25 11:07+0000\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>\n"
 "Language-Team: Slovenian (http://www.transifex.com/rosarior/mayan-edms/language/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,11 +21,11 @@ msgstr ""
 
 #: apps.py:79 events.py:6 permissions.py:6
 msgid "User management"
-msgstr ""
+msgstr "Upravljanje uporabnikov"
 
 #: apps.py:100 search.py:10
 msgid "Group"
-msgstr ""
+msgstr "Skupina"
 
 #: apps.py:101 apps.py:114 links.py:39 links.py:50 links.py:73 search.py:34
 #: views.py:120
@@ -37,91 +38,91 @@ msgstr "Ime"
 
 #: apps.py:108 models.py:16 search.py:22
 msgid "User"
-msgstr ""
+msgstr "Uporabnik"
 
 #: apps.py:109 apps.py:194 links.py:45 links.py:78 links.py:94 views.py:305
 msgid "Users"
-msgstr ""
+msgstr "Uporabniki"
 
 #: apps.py:112 search.py:31
 msgid "Email"
-msgstr ""
+msgstr "E-naslov"
 
 #: apps.py:113 search.py:28
 msgid "First name"
-msgstr ""
+msgstr "Ime"
 
 #: apps.py:115
 msgid "Is active?"
-msgstr ""
+msgstr "Je aktiven?"
 
 #: apps.py:116 search.py:37
 msgid "Last name"
-msgstr ""
+msgstr "Priimek"
 
 #: apps.py:117
 msgid "Password"
-msgstr ""
+msgstr "Geslo"
 
 #: apps.py:118
 msgid "Username"
-msgstr ""
+msgstr "Uporabniško ime"
 
 #: apps.py:121
 msgid "Has usable password?"
-msgstr ""
+msgstr "Ima uporabno geslo?"
 
 #: apps.py:136
 msgid "All the groups."
-msgstr ""
+msgstr "Vse skupine."
 
 #: apps.py:140
 msgid "All the users."
-msgstr ""
+msgstr "Vsi uporabniki."
 
 #: dashboard_widgets.py:14
 msgid "Total users"
-msgstr ""
+msgstr "Skupno število uporabnikov"
 
 #: dashboard_widgets.py:30
 msgid "Total groups"
-msgstr ""
+msgstr "Skupno skupin"
 
 #: events.py:10
 msgid "Group created"
-msgstr ""
+msgstr "Skupina ustvarjena"
 
 #: events.py:13
 msgid "Group edited"
-msgstr ""
+msgstr "Skupina urejena"
 
 #: events.py:17
 msgid "User created"
-msgstr ""
+msgstr "Uporabnik je ustvaril"
 
 #: events.py:20
 msgid "User edited"
-msgstr ""
+msgstr "Uporabnik uredil"
 
 #: events.py:23
 msgid "User logged in"
-msgstr ""
+msgstr "Uporabnik prijavljen"
 
 #: events.py:26
 msgid "User logged out"
-msgstr ""
+msgstr "Uporabnik se je odjavil"
 
 #: links.py:14
 msgid "User details"
-msgstr ""
+msgstr "Podrobnosti o uporabniku"
 
 #: links.py:18
 msgid "Edit details"
-msgstr ""
+msgstr "Uredi podrobnosti"
 
 #: links.py:22 views.py:54
 msgid "Create new group"
-msgstr ""
+msgstr "Ustvari novo skupino"
 
 #: links.py:29 links.py:62 links.py:83
 msgid "Delete"
@@ -129,193 +130,193 @@ msgstr "Izbriši"
 
 #: links.py:34 links.py:67
 msgid "Edit"
-msgstr ""
+msgstr "Uredi"
 
 #: links.py:55 views.py:152
 msgid "Create new user"
-msgstr ""
+msgstr "Ustvari novega uporabnika"
 
 #: links.py:90
 msgid "User options"
-msgstr ""
+msgstr "Uporabniške možnosti"
 
 #: models.py:20
 msgid "Forbid this user from changing their password."
-msgstr ""
+msgstr "Temu uporabniku prepovedi spreminjanja gesla."
 
 #: models.py:26
 msgid "User settings"
-msgstr ""
+msgstr "Uporabniške nastavitve"
 
 #: models.py:27
 msgid "Users settings"
-msgstr ""
+msgstr "Uporabniške nastavitve"
 
 #: permissions.py:10
 msgid "Create new groups"
-msgstr ""
+msgstr "Ustvari nove skupine"
 
 #: permissions.py:13
 msgid "Delete existing groups"
-msgstr ""
+msgstr "Izbriši obstoječe skupine"
 
 #: permissions.py:16
 msgid "Edit existing groups"
-msgstr ""
+msgstr "Uredite obstoječe skupine"
 
 #: permissions.py:19
 msgid "View existing groups"
-msgstr ""
+msgstr "Oglejte si obstoječe skupine"
 
 #: permissions.py:22
 msgid "Create new users"
-msgstr ""
+msgstr "Ustvari nove uporabnike"
 
 #: permissions.py:25
 msgid "Delete existing users"
-msgstr ""
+msgstr "Izbriši obstoječe uporabnike"
 
 #: permissions.py:28
 msgid "Edit existing users"
-msgstr ""
+msgstr "Uredite obstoječe uporabnike"
 
 #: permissions.py:31
 msgid "View existing users"
-msgstr ""
+msgstr "Oglejte si obstoječe uporabnike"
 
 #: search.py:40
 msgid "username"
-msgstr ""
+msgstr "uporabniško ime"
 
 #: serializers.py:32
 msgid "Comma separated list of group primary keys to assign this user to."
-msgstr ""
+msgstr "Seznam skupinskih primarnih ključev, ločenih z vejicami, ki jim želite dodeliti tega uporabnika."
 
 #: serializers.py:62
 msgid "List of group primary keys to which to add the user."
-msgstr ""
+msgstr "Seznam primarnih ključev skupine, v katere želite dodati uporabnika."
 
 #: utils.py:6
 msgid "Anonymous"
-msgstr ""
+msgstr "Anonimno"
 
 #: views.py:35
 msgid "Current user details"
-msgstr ""
+msgstr "Trenutni podatki o uporabniku"
 
 #: views.py:43
 msgid "Edit current user details"
-msgstr ""
+msgstr "Uredite trenutne podrobnosti o uporabniku"
 
 #: views.py:77
 #, python-format
 msgid "Delete the group: %s?"
-msgstr ""
+msgstr "Izbriši skupino: %s?"
 
 #: views.py:93
 #, python-format
 msgid "Edit group: %s"
-msgstr ""
+msgstr "Uredi skupino: %s"
 
 #: views.py:113
 msgid ""
 "User groups are organizational units. They should mirror the organizational "
 "units of your organization. Groups can't be used for access control. Use "
 "roles for permissions and access control, add groups to them."
-msgstr ""
+msgstr "Uporabniške skupine so organizacijske enote. Odsevati morajo organizacijske enote vaše organizacije. Skupin ni mogoče uporabiti za nadzor dostopa. Uporabite vloge za dovoljenja in nadzor dostopa, dodajte jim skupine."
 
 #: views.py:119
 msgid "There are no user groups"
-msgstr ""
+msgstr "Ni uporabniških skupin"
 
 #: views.py:132
 msgid "Available users"
-msgstr ""
+msgstr "Razpoložljivi uporabniki"
 
 #: views.py:133
 msgid "Group users"
-msgstr ""
+msgstr "Skupinski uporabniki"
 
 #: views.py:141
 #, python-format
 msgid "Users of group: %s"
-msgstr ""
+msgstr "Uporabniki skupine: %s"
 
 #: views.py:175
 #, python-format
 msgid "User delete request performed on %(count)d user"
-msgstr ""
+msgstr "Zahteva za brisanje uporabnika, izvedena za uporabnika %(count)d"
 
 #: views.py:177
 #, python-format
 msgid "User delete request performed on %(count)d users"
-msgstr ""
+msgstr "Zahteva za izbris uporabnika, izvedena za uporabnike %(count)d"
 
 #: views.py:185
 msgid "Delete user"
 msgid_plural "Delete users"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Izbriši uporabnika"
+msgstr[1] "Izbriši uporabnike"
+msgstr[2] "Izbriši uporabnike"
+msgstr[3] "Izbriši uporabnike"
 
 #: views.py:195
 #, python-format
 msgid "Delete user: %s"
-msgstr ""
+msgstr "Izbriši uporabnika: %s"
 
 #: views.py:206
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
+msgstr "Brisanje uporabnikov in uporabnikov osebja ni dovoljeno, za te primere uporabite skrbniški vmesnik."
 
 #: views.py:214
 #, python-format
 msgid "User \"%s\" deleted successfully."
-msgstr ""
+msgstr "Uporabnik &quot;%s&quot; je bil uspešno izbrisan."
 
 #: views.py:220
 #, python-format
 msgid "Error deleting user \"%(user)s\": %(error)s"
-msgstr ""
+msgstr "Napaka pri brisanju uporabnika &quot;%(user)s&quot;: %(error)s"
 
 #: views.py:238
 #, python-format
 msgid "Details of user: %s"
-msgstr ""
+msgstr "Podrobnosti o uporabniku: %s"
 
 #: views.py:254
 #, python-format
 msgid "Edit user: %s"
-msgstr ""
+msgstr "Uredi uporabnika: %s"
 
 #: views.py:269
 msgid "Available groups"
-msgstr ""
+msgstr "Razpoložljive skupine"
 
 #. Translators: "User groups" here refer to the group list of a specific
 #. user.
 #: views.py:272
 msgid "User groups"
-msgstr ""
+msgstr "Skupine uporabnikov"
 
 #: views.py:280
 #, python-format
 msgid "Groups of user: %s"
-msgstr ""
+msgstr "Skupine uporabnikov: %s"
 
 #: views.py:301
 msgid ""
 "User accounts can be create from this view. After creating a user account "
 "you will prompted to set a password for it. "
-msgstr ""
+msgstr "V tem pogledu je mogoče ustvariti uporabniške račune. Po ustvarjanju uporabniškega računa boste pozvani, da zanj nastavite geslo."
 
 #: views.py:304
 msgid "There are no user accounts"
-msgstr ""
+msgstr "Ni uporabniških računov"
 
 #: views.py:323
 #, python-format
 msgid "Edit options for user: %s"
-msgstr ""
+msgstr "Možnosti urejanja za uporabnika: %s"

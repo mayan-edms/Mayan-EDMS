@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-09-27 07:55+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:52 events.py:5 links.py:18 links.py:24 permissions.py:5 queues.py:6
-#: search.py:6 search.py:10 settings.py:8
+#: search.py:6 search.py:10 settings.py:11
 msgid "OCR"
 msgstr "OCR"
 
@@ -91,7 +91,7 @@ msgstr "Configurar OCR"
 msgid "OCR documents per type"
 msgstr "Realizar OCR por tipo de documento"
 
-#: links.py:61 links.py:67 views.py:214
+#: links.py:61 links.py:67 views.py:217
 msgid "OCR errors"
 msgstr "Errores de OCR"
 
@@ -175,13 +175,13 @@ msgstr "OCR de página de versión del documento"
 msgid "Document version OCR"
 msgstr "OCR de versión de documento"
 
-#: settings.py:15
-msgid "Full path to the backend to be used to do OCR."
-msgstr "Ruta completa a la aplicación que se usará para OCR."
-
-#: settings.py:24
+#: settings.py:17
 msgid "Set new document types to perform OCR automatically by default."
 msgstr "Realizar OCR a nuevo tipos de documentos por defecto."
+
+#: settings.py:22
+msgid "Full path to the backend to be used to do OCR."
+msgstr "Ruta completa a la aplicación que se usará para OCR."
 
 #: views.py:35
 msgid "Delete the OCR content of the selected document?"
@@ -214,12 +214,12 @@ msgstr[1] "¿Envía los documentos seleccionados a la cola de OCR?"
 msgid "Submit all documents of a type for OCR"
 msgstr "Enviar todos los documentos de un tipo para OCR"
 
-#: views.py:168
+#: views.py:171
 #, python-format
 msgid "%(count)d documents added to the OCR queue."
 msgstr "%(count)d documentos agregados a la lista de OCR."
 
-#: views.py:203
+#: views.py:206
 #, python-format
 msgid "Edit OCR settings for document type: %s."
 msgstr "Editar la configuración de OCR para el tipo de documento: %s."

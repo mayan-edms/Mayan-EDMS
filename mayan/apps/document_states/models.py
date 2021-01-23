@@ -20,6 +20,7 @@ from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
+from mayan.apps.common.mixins import ModelInstanceExtraDataAPIViewMixin
 from mayan.apps.common.serialization import yaml_load
 from mayan.apps.common.validators import YAMLValidator, validate_internal_name
 from mayan.apps.documents.models import Document, DocumentType
@@ -38,7 +39,7 @@ from .literals import (
     WORKFLOW_ACTION_WHEN_CHOICES, WORKFLOW_ACTION_ON_ENTRY,
     WORKFLOW_ACTION_ON_EXIT,
 )
-from .managers import WorkflowManager
+from .managers import WorkflowManager, ValidWorkflowInstanceManager
 from .permissions import permission_workflow_transition
 
 SYMBOL_MATH_CONDITIONAL = '&rarr;'
@@ -304,6 +305,9 @@ class WorkflowInstance(models.Model):
     context = models.TextField(
         blank=True, verbose_name=_('Context')
     )
+
+    objects = models.Manager()
+    valid = ValidWorkflowInstanceManager()
 
     class Meta:
         ordering = ('workflow',)
@@ -607,7 +611,7 @@ class WorkflowState(models.Model):
             transition__destination_state=self
         )
 
-        return Document.objects.filter(
+        return Document.valid.filter(
             Q(
                 workflows__pk__in=state_latest_entries.values_list(
                     'workflow_instance', flat=True
@@ -857,7 +861,7 @@ class WorkflowTransition(models.Model):
         return super().save(*args, **kwargs)
 
 
-class WorkflowTransitionField(models.Model):
+class WorkflowTransitionField(ModelInstanceExtraDataAPIViewMixin, models.Model):
     transition = models.ForeignKey(
         on_delete=models.CASCADE, related_name='fields',
         to=WorkflowTransition, verbose_name=_('Transition')

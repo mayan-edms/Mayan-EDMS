@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-09-27 06:47+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (http://www.transifex.com/rosarior/mayan-edms/language/bs/)\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Language: bs\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:11 settings.py:9
+#: apps.py:11 settings.py:10
 msgid "Storage"
 msgstr "Skladište"
 
@@ -81,11 +81,11 @@ msgstr ""
 msgid "Delete stale uploads"
 msgstr "Obriši stare otpreme"
 
-#: settings.py:14
+#: settings.py:15
 msgid "A storage backend that all workers can use to share files."
 msgstr " Backend skladišta koju svi radnici mogu koristiti za dijeljenje datoteka."
 
-#: settings.py:23
+#: settings.py:25
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."

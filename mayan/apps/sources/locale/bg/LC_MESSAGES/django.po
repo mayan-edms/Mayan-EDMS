@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-10-11 07:15+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-12-10 20:20+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:48 links.py:63 models/base.py:36 queues.py:7 settings.py:11
+#: apps.py:48 links.py:63 models/base.py:36 queues.py:7 settings.py:14
 #: views.py:193
 msgid "Sources"
 msgstr "Източници"
@@ -130,67 +130,67 @@ msgstr "Качете нова версия"
 msgid "Check now"
 msgstr "Провери сега"
 
-#: literals.py:16
+#: literals.py:25
 msgid "Flatbed"
 msgstr "Плосък скенер"
 
-#: literals.py:17
+#: literals.py:26
 msgid "Document feeder"
 msgstr "Подавач на документи"
 
-#: literals.py:24
+#: literals.py:33
 msgid "Simplex"
 msgstr "Симплекс"
 
-#: literals.py:25
+#: literals.py:34
 msgid "Duplex"
 msgstr "Дуплекс"
 
-#: literals.py:33
+#: literals.py:42
 msgid "Lineart"
 msgstr "Графика"
 
-#: literals.py:34
+#: literals.py:43
 msgid "Monochrome"
 msgstr "Монохромно"
 
-#: literals.py:35
+#: literals.py:44
 msgid "Color"
 msgstr "Цвят"
 
-#: literals.py:43 literals.py:48
+#: literals.py:52 literals.py:57
 msgid "Always"
 msgstr "Винаги"
 
-#: literals.py:44 literals.py:49
+#: literals.py:53 literals.py:58
 msgid "Never"
 msgstr "Никога"
 
-#: literals.py:50
+#: literals.py:59
 msgid "Ask user"
 msgstr "Питане на потребителя"
 
-#: literals.py:61
+#: literals.py:70
 msgid "Scanner"
 msgstr "Скенер"
 
-#: literals.py:62 models/webform_sources.py:40
+#: literals.py:71 models/webform_sources.py:40
 msgid "Web form"
 msgstr "Уеб формуляр"
 
-#: literals.py:63 models/staging_folder_sources.py:67
+#: literals.py:72 models/staging_folder_sources.py:67
 msgid "Staging folder"
 msgstr "Изходна папка"
 
-#: literals.py:64 models/watch_folder_sources.py:46
+#: literals.py:73 models/watch_folder_sources.py:46
 msgid "Watch folder"
 msgstr "Наблюдавана папка"
 
-#: literals.py:65
+#: literals.py:74
 msgid "POP3 email"
 msgstr "POP3 имейл"
 
-#: literals.py:66 models/email_sources.py:249 models/email_sources.py:250
+#: literals.py:75 models/email_sources.py:249 models/email_sources.py:250
 msgid "IMAP email"
 msgstr "IMAP имейл"
 
@@ -210,48 +210,48 @@ msgstr "Активиран"
 msgid "Source"
 msgstr "Източник"
 
-#: models/base.py:151
+#: models/base.py:147
 msgid "Interactive source"
 msgstr "Интерактивен източник"
 
-#: models/base.py:152
+#: models/base.py:148
 msgid "Interactive sources"
 msgstr "Интерактивни източници"
 
-#: models/base.py:161 models/base.py:162
+#: models/base.py:157 models/base.py:158
 msgid "Out of process"
 msgstr "Извън процес"
 
-#: models/base.py:168
+#: models/base.py:164
 msgid "Interval in seconds between checks for new documents."
 msgstr "Интервал в секунди между проверки за нови документи."
 
-#: models/base.py:169
+#: models/base.py:165
 msgid "Interval"
 msgstr "Интервал"
 
-#: models/base.py:173
+#: models/base.py:169
 msgid "Assign a document type to documents uploaded from this source."
 msgstr "Задайте тип документ за документи, качени от този източник."
 
-#: models/base.py:175 serializers.py:17
+#: models/base.py:171 serializers.py:17
 msgid "Document type"
 msgstr "Тип документ"
 
-#: models/base.py:179
+#: models/base.py:175
 msgid "Whether to expand or not, compressed archives."
 msgstr "Дали да се разархивират или не, компресирани архиви."
 
-#: models/base.py:180 models/staging_folder_sources.py:54
+#: models/base.py:176 models/staging_folder_sources.py:54
 #: models/webform_sources.py:34
 msgid "Uncompress"
 msgstr "Разкомпресиране"
 
-#: models/base.py:186
+#: models/base.py:182
 msgid "Interval source"
 msgstr "Интервален източник"
 
-#: models/base.py:187
+#: models/base.py:183
 msgid "Interval sources"
 msgstr "Интервални източници"
 
@@ -377,7 +377,7 @@ msgstr "Изпълнете командата IMAP expunge след обрабо
 
 #: models/email_sources.py:238
 msgid "Execute expunge"
-msgstr "Изпълнете expunge"
+msgstr "Премахнете изцяло"
 
 #: models/email_sources.py:242
 msgid "IMAP Mailbox to which processed messages will be copied."
@@ -579,17 +579,17 @@ msgstr "Обработете качването"
 msgid "Upload document"
 msgstr "Качване на документ"
 
-#: settings.py:18
+#: settings.py:21
 msgid "File path to the scanimage program used to control image scanners."
 msgstr "Пътека към файла на програмата за сканиране, използвана за управление на скенери за изображения."
 
-#: settings.py:25
+#: settings.py:27
 msgid ""
 "Path to the Storage subclass to use when storing the cached staging_file "
 "image files."
 msgstr "Път към подкласа за съхранение, който да се използва при съхранение на кешираните файлове с изображения staging_file."
 
-#: settings.py:34
+#: settings.py:35
 msgid "Arguments to pass to the SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
 msgstr "Аргументи за подаване към SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
 
@@ -603,31 +603,31 @@ msgstr "Невъзможно е да се инициализира съхран�
 msgid "Staging folder files"
 msgstr "Активиране на файлове в папките"
 
-#: templates/sources/dropzone.html:82
+#: templates/sources/app/foot.html:40
 msgid "Cancel upload"
 msgstr "Прекратете качването"
 
-#: templates/sources/dropzone.html:83
+#: templates/sources/app/foot.html:41
 msgid "Are you sure you want to cancel this upload?"
 msgstr "Наистина ли искате да прекратите това качване?"
 
-#: templates/sources/dropzone.html:84
+#: templates/sources/app/foot.html:42
 msgid "Drop files or click here to upload files"
 msgstr "Пуснете файлове или щракнете тук, за да качите файлове"
 
-#: templates/sources/dropzone.html:85
+#: templates/sources/app/foot.html:43
 msgid "Your browser does not support drag and drop file uploads."
 msgstr "Вашият браузър не поддържа качване на файлове с плъзгане и пускане."
 
-#: templates/sources/dropzone.html:86
+#: templates/sources/app/foot.html:44
 msgid "Please use the fallback form below to upload your files."
 msgstr "Моля, използвайте резервния формуляр по-долу, за да качите вашите файлове."
 
-#: templates/sources/dropzone.html:87
+#: templates/sources/app/foot.html:45
 msgid "Clear"
 msgstr "Изчистване"
 
-#: templates/sources/dropzone.html:88
+#: templates/sources/app/foot.html:46
 msgid "Server responded with {{statusCode}} code."
 msgstr "Сървърът отговори с {{statusCode}} код."
 

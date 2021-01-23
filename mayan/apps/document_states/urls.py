@@ -6,7 +6,9 @@ from .api_views import (
     APIWorkflowInstanceListView, APIWorkflowInstanceView,
     APIWorkflowInstanceLogEntryListView, APIWorkflowRuntimeProxyListView,
     APIWorkflowStateListView, APIWorkflowStateView,
-    APIWorkflowTransitionListView, APIWorkflowTransitionView, APIWorkflowView
+    APIWorkflowTransitionListView, APIWorkflowTransitionView,
+    APIWorkflowTransitionFieldDetailView, APIWorkflowTransitionFieldListView,
+    APIWorkflowView
 )
 from .views.workflow_instance_views import (
     WorkflowInstanceDetailView, WorkflowInstanceListView,
@@ -304,6 +306,16 @@ api_urls = [
         regex=r'^workflows/(?P<pk>[0-9]+)/transitions/(?P<transition_pk>[0-9]+)/$',
         name='workflowtransition-detail',
         view=APIWorkflowTransitionView.as_view()
+    ),
+    url(
+        regex=r'^workflows/(?P<pk>[0-9]+)/transitions/(?P<workflow_transition_id>[0-9]+)/fields/$',
+        name='workflowtransitionfield-list',
+        view=APIWorkflowTransitionFieldListView.as_view()
+    ),
+    url(
+        regex=r'^workflows/(?P<pk>[0-9]+)/transitions/(?P<workflow_transition_id>[0-9]+)/fields/(?P<workflow_transition_field_id>[0-9]+)$',
+        name='workflowtransitionfield-detail',
+        view=APIWorkflowTransitionFieldDetailView.as_view()
     ),
     url(
         regex=r'^documents/(?P<pk>[0-9]+)/workflows/$',

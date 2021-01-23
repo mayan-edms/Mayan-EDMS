@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: e6bc1d20d3f0031709c3c11db1061ebc_be0a371 <8b4e580508477646e97982ebad39e3af_312311>, 2020\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
@@ -54,7 +54,7 @@ msgstr "Toegewezen door"
 msgid "Version"
 msgstr "Versie"
 
-#: apps.py:61 classes.py:139 classes.py:780
+#: apps.py:61 classes.py:139 classes.py:781
 msgid "Environment"
 msgstr "Omgeving"
 
@@ -133,7 +133,7 @@ msgstr ""
 msgid "JavaScript"
 msgstr "JavaScript"
 
-#: classes.py:451 classes.py:693
+#: classes.py:451 classes.py:694
 msgid "Downloading... "
 msgstr "Aan het downloaden..."
 
@@ -141,39 +141,39 @@ msgstr "Aan het downloaden..."
 msgid "Verifying... "
 msgstr "Aan het verifiëren..."
 
-#: classes.py:457 classes.py:696
+#: classes.py:457 classes.py:697
 msgid "Extracting... "
 msgstr "Aan het uitpakken..."
 
-#: classes.py:635
+#: classes.py:636
 msgid "Python packages downloaded from PyPI."
 msgstr "Pythonpakketten gedownload van PyPI."
 
-#: classes.py:637
+#: classes.py:638
 msgid "Python"
 msgstr "Python"
 
-#: classes.py:674
+#: classes.py:675
 msgid "Fonts downloaded from fonts.googleapis.com."
 msgstr "Fonts gedownload van fonts.googleapis.com."
 
-#: classes.py:676
+#: classes.py:677
 msgid "Google font"
 msgstr "Google font"
 
-#: classes.py:762
+#: classes.py:763
 msgid "Declared in app"
 msgstr "Toegewezen in app"
 
-#: classes.py:763
+#: classes.py:764
 msgid "Show dependencies by the app that declared them."
 msgstr "Toon afhankelijkheden door de app die ze heeft toegewezen."
 
-#: classes.py:767
+#: classes.py:768
 msgid "Class"
 msgstr "Klasse"
 
-#: classes.py:768
+#: classes.py:769
 msgid ""
 "Show the different classes of dependencies. Classes are usually divided by "
 "language or the file types of the dependency."
@@ -181,11 +181,11 @@ msgstr ""
 "Toon de verschillende klassen van afhankelijkheden. Klassen worden meestal "
 "onderverdeeld per taal of de bestandstypen van de afhankelijkheid."
 
-#: classes.py:773
+#: classes.py:774
 msgid "State"
 msgstr "Status"
 
-#: classes.py:774
+#: classes.py:775
 msgid ""
 "Show the different states of the dependencies. True means that the "
 "dependencies is installed and is of a correct version. False means the "
@@ -196,7 +196,7 @@ msgstr ""
 "\"Niet Waar\" betekent dat de afhankelijkheden ontbreken of dat er een "
 "onjuiste versie aanwezig is."
 
-#: classes.py:781
+#: classes.py:782
 msgid ""
 "Dependencies required for an environment might not be required for another. "
 "Example environments: Production, Development."

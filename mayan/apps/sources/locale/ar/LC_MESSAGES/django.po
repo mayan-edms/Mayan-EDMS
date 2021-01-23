@@ -4,14 +4,15 @@
 # 
 # Translators:
 # Translators:
+# Marwan Rahhal <Marwanr@sssit.net>, 2020
 # Mohammed ALDOUB <voulnet@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-10-11 07:15+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-12-24 01:42+0000\n"
+"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>\n"
 "Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,21 +20,21 @@ msgstr ""
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: apps.py:48 links.py:63 models/base.py:36 queues.py:7 settings.py:11
+#: apps.py:48 links.py:63 models/base.py:36 queues.py:7 settings.py:14
 #: views.py:193
 msgid "Sources"
-msgstr ""
+msgstr "المصادر"
 
 #: apps.py:71
 msgid "Create a document source"
-msgstr ""
+msgstr "إنشاء مصدر للوثيقة"
 
 #: apps.py:73
 msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
-msgstr ""
+msgstr "مصادر الوثائق هي الطريقة التي يتم بها تغذية الوثائق الجديدة إلى ، وإنشاء مصدر نموذج حتى تتمكن من تحميل الوثائق بسهولة"
 
 #: apps.py:86
 msgid "Type"
@@ -41,25 +42,25 @@ msgstr "النوع"
 
 #: apps.py:97
 msgid "Created"
-msgstr ""
+msgstr "أنشأت"
 
 #: apps.py:103
 msgid "Thumbnail"
-msgstr ""
+msgstr "الوثيقة المصغرة"
 
 #: dependencies.py:11
 msgid ""
 "Utility provided by the SANE package. Used to control the scanner and "
 "obtained the scanned document image."
-msgstr ""
+msgstr "تستخدم للتحكم في الماسح الضوئي والحصول على صورة المستند الممسوحة ضوئيًا."
 
 #: forms.py:25
 msgid "An optional comment to explain the upload."
-msgstr ""
+msgstr "إضافة شرح على الوثيقة التي تم تحميلها"
 
 #: forms.py:26
 msgid "Comment"
-msgstr "تعليق"
+msgstr "الشرح"
 
 #: forms.py:40 serializers.py:21
 msgid "Expand compressed files"
@@ -67,7 +68,7 @@ msgstr "فك الملفات المضغوطة"
 
 #: forms.py:42 serializers.py:22
 msgid "Upload a compressed file's contained files as individual documents."
-msgstr ""
+msgstr "لا يمكن تحميل ملف مضغوط"
 
 #: forms.py:63 views.py:205
 msgid "Staging file"
@@ -79,35 +80,35 @@ msgstr "ملف"
 
 #: handlers.py:25
 msgid "Default"
-msgstr "Default"
+msgstr "القيمة الإفتراضية"
 
 #: links.py:58
 msgid "New document"
-msgstr ""
+msgstr "وثيقة جديدة"
 
 #: links.py:70
 msgid "Add new IMAP email"
-msgstr ""
+msgstr "إضافة بريد إلكتروني جديد"
 
 #: links.py:76
 msgid "Add new POP3 email"
-msgstr ""
+msgstr "إضافة بريد إلكتروني جديد"
 
 #: links.py:82
 msgid "Add new staging folder"
-msgstr ""
+msgstr "إضافة مجلد مؤقت جديد"
 
 #: links.py:88
 msgid "Add new watch folder"
-msgstr ""
+msgstr "إضافة مجلد مؤقت جديد"
 
 #: links.py:94
 msgid "Add new webform source"
-msgstr ""
+msgstr "إضافة مصدر جديد"
 
 #: links.py:100
 msgid "Add new SANE scanner"
-msgstr ""
+msgstr "إضافة ماسح ضوئي جديد"
 
 #: links.py:106 links.py:123
 msgid "Delete"
@@ -123,79 +124,79 @@ msgstr "مصادر الوثائق"
 
 #: links.py:130
 msgid "Upload new version"
-msgstr ""
+msgstr "تحميل نسخة جديدة"
 
 #: links.py:135
 msgid "Check now"
 msgstr "تأكد الان"
 
-#: literals.py:16
+#: literals.py:25
 msgid "Flatbed"
 msgstr "مسطحة"
 
-#: literals.py:17
+#: literals.py:26
 msgid "Document feeder"
 msgstr "وحدة تغذية المستندات"
 
-#: literals.py:24
+#: literals.py:33
 msgid "Simplex"
 msgstr "البسيط"
 
-#: literals.py:25
+#: literals.py:34
 msgid "Duplex"
 msgstr "دوبلكس"
 
-#: literals.py:33
+#: literals.py:42
 msgid "Lineart"
 msgstr "فن الخط"
 
-#: literals.py:34
+#: literals.py:43
 msgid "Monochrome"
 msgstr "أحادي اللون"
 
-#: literals.py:35
+#: literals.py:44
 msgid "Color"
 msgstr "اللون"
 
-#: literals.py:43 literals.py:48
+#: literals.py:52 literals.py:57
 msgid "Always"
 msgstr "دائما"
 
-#: literals.py:44 literals.py:49
+#: literals.py:53 literals.py:58
 msgid "Never"
 msgstr "لا"
 
-#: literals.py:50
+#: literals.py:59
 msgid "Ask user"
 msgstr "اسئل المستخدم"
 
-#: literals.py:61
+#: literals.py:70
 msgid "Scanner"
 msgstr "الماسح الضوئي"
 
-#: literals.py:62 models/webform_sources.py:40
+#: literals.py:71 models/webform_sources.py:40
 msgid "Web form"
-msgstr "Web form"
+msgstr "ملف برمجي"
 
-#: literals.py:63 models/staging_folder_sources.py:67
+#: literals.py:72 models/staging_folder_sources.py:67
 msgid "Staging folder"
-msgstr "مجلد التدريج"
+msgstr "ملف التدرج"
 
-#: literals.py:64 models/watch_folder_sources.py:46
+#: literals.py:73 models/watch_folder_sources.py:46
 msgid "Watch folder"
 msgstr "مشاهدة المجلد"
 
-#: literals.py:65
+#: literals.py:74
 msgid "POP3 email"
 msgstr "بريد POP3 الإلكتروني"
 
-#: literals.py:66 models/email_sources.py:249 models/email_sources.py:250
+#: literals.py:75 models/email_sources.py:249 models/email_sources.py:250
 msgid "IMAP email"
 msgstr "بريد IMAP الإلكتروني"
 
 #: models/base.py:26
 msgid "A short text to describe this source."
-msgstr "نص قصير لوصف هذه الوثيقة"
+msgstr "الوصف المختصر للوثيقة"
 
 #: models/base.py:27
 msgid "Label"
@@ -209,72 +210,72 @@ msgstr "مفعل"
 msgid "Source"
 msgstr "مصدر"
 
-#: models/base.py:151
+#: models/base.py:147
 msgid "Interactive source"
 msgstr "مصدر تفاعلي"
 
-#: models/base.py:152
+#: models/base.py:148
 msgid "Interactive sources"
 msgstr "مصادر تفاعلية"
 
-#: models/base.py:161 models/base.py:162
+#: models/base.py:157 models/base.py:158
 msgid "Out of process"
 msgstr "خارج العملية"
 
-#: models/base.py:168
+#: models/base.py:164
 msgid "Interval in seconds between checks for new documents."
-msgstr "ثواني بين الشيكات للمستندات الجديدة"
+msgstr "الوقت اللازم لعملية التحقق من الوثائق الجديدة"
 
-#: models/base.py:169
+#: models/base.py:165
 msgid "Interval"
 msgstr "فترة"
 
-#: models/base.py:173
+#: models/base.py:169
 msgid "Assign a document type to documents uploaded from this source."
-msgstr "قم بتعيين نوع مستند إلى المستندات التي تم إنشاؤها من هذا الموقع"
+msgstr "قم بتعيين نوع الوثيقة إلى الوثائق التي تم إنشاؤها من هذا الموقع"
 
-#: models/base.py:175 serializers.py:17
+#: models/base.py:171 serializers.py:17
 msgid "Document type"
 msgstr "نوع الوثيقة"
 
-#: models/base.py:179
+#: models/base.py:175
 msgid "Whether to expand or not, compressed archives."
-msgstr ""
+msgstr "الوثائق المضغوطة."
 
-#: models/base.py:180 models/staging_folder_sources.py:54
+#: models/base.py:176 models/staging_folder_sources.py:54
 #: models/webform_sources.py:34
 msgid "Uncompress"
-msgstr ""
+msgstr "الغاء الضغط"
 
-#: models/base.py:186
+#: models/base.py:182
 msgid "Interval source"
-msgstr ""
+msgstr "مصدر الفاصل"
 
-#: models/base.py:187
+#: models/base.py:183
 msgid "Interval sources"
-msgstr ""
+msgstr "مصادر الفترات"
 
 #: models/email_sources.py:40
 msgid "Host"
-msgstr ""
+msgstr "مضيف"
 
 #: models/email_sources.py:41
 msgid "SSL"
-msgstr ""
+msgstr "SSL"
 
 #: models/email_sources.py:43
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
-msgstr ""
+msgstr "الخيارات النموذجية هي 110 لـ POP3 ، و 995 لـ POP3 عبر SSL ، و 143 لـ IMAP ، و 993 لـ IMAP عبر SSL."
 
 #: models/email_sources.py:44
 msgid "Port"
-msgstr ""
+msgstr "Port"
 
 #: models/email_sources.py:46
 msgid "Username"
-msgstr ""
+msgstr "اسم الدخول"
 
 #: models/email_sources.py:47
 msgid "Password"
@@ -284,79 +285,79 @@ msgstr "كلمة المرور"
 msgid ""
 "Name of the attachment that will contains the metadata type names and value "
 "pairs to be assigned to the rest of the downloaded attachments."
-msgstr ""
+msgstr "اسم المرفق الذي سيحتوي على أسماء أنواع البيانات الوصفية وأزواج القيم التي سيتم تخصيصها لبقية المرفقات التي تم تنزيلها."
 
 #: models/email_sources.py:54
 msgid "Metadata attachment name"
-msgstr ""
+msgstr "اسم مرفق البيانات الوصفية"
 
 #: models/email_sources.py:58
 msgid ""
 "Select a metadata type to store the email's subject value. Must be a valid "
 "metadata type for the document type selected previously."
-msgstr ""
+msgstr "حدد نوع البيانات الوصفية لتخزين قيمة موضوع البريد الإلكتروني. يجب أن يكون نوع بيانات وصفية صالحًا لنوع المستند المحدد مسبقًا."
 
 #: models/email_sources.py:62
 msgid "Subject metadata type"
-msgstr ""
+msgstr "نوع البيانات الوصفية للموضوع"
 
 #: models/email_sources.py:66
 msgid ""
 "Select a metadata type to store the email's \"from\" value. Must be a valid "
 "metadata type for the document type selected previously."
-msgstr ""
+msgstr "حدد نوع البيانات الوصفية لتخزين قيمة البريد الإلكتروني &quot;من&quot;. يجب أن يكون نوع بيانات وصفية صالحًا لنوع المستند المحدد مسبقًا."
 
 #: models/email_sources.py:70
 msgid "From metadata type"
-msgstr ""
+msgstr "من نوع البيانات الوصفية"
 
 #: models/email_sources.py:74
 msgid "Store the body of the email as a text document."
-msgstr ""
+msgstr "قم بتخزين نص البريد الإلكتروني كمستند نصي."
 
 #: models/email_sources.py:75
 msgid "Store email body"
-msgstr ""
+msgstr "تخزين نص البريد الإلكتروني"
 
 #: models/email_sources.py:81
 msgid "Email source"
-msgstr ""
+msgstr "مصدر البريد الإلكتروني"
 
 #: models/email_sources.py:82
 msgid "Email sources"
-msgstr ""
+msgstr "مصادر البريد الإلكتروني"
 
 #: models/email_sources.py:187
 #, python-format
 msgid ""
 "Subject metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr ""
+msgstr "نوع البيانات الوصفية للموضوع &quot;%(metadata_type)s&quot; غير صالح لنوع المستند: %(document_type)s"
 
 #: models/email_sources.py:201
 #, python-format
 msgid ""
 "\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
 "type: %(document_type)s"
-msgstr ""
+msgstr "نوع البيانات الوصفية &quot;من&quot; &quot;%(metadata_type)s&quot; غير صالح لنوع المستند: %(document_type)s"
 
 #: models/email_sources.py:216
 msgid "IMAP Mailbox from which to check for messages."
-msgstr ""
+msgstr "صندوق بريد IMAP الذي يمكن من خلاله التحقق من وجود رسائل."
 
 #: models/email_sources.py:217
 msgid "Mailbox"
-msgstr ""
+msgstr "صندوق بريد"
 
 #: models/email_sources.py:221
 msgid ""
 "Criteria to use when searching for messages to process. Use the format "
 "specified in https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
-msgstr ""
+msgstr "معايير لاستخدامها عند البحث عن الرسائل لمعالجتها. استخدم التنسيق المحدد في https://tools.ietf.org/html/rfc2060.html#section-6.4.4"
 
 #: models/email_sources.py:224
 msgid "Search criteria"
-msgstr ""
+msgstr "معايير البحث"
 
 #: models/email_sources.py:228
 msgid ""
@@ -364,99 +365,99 @@ msgid ""
 "command per line. Use the commands specified in "
 "https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
 "commands for your IMAP server."
-msgstr ""
+msgstr "أمر IMAP STORE لتنفيذه على الرسائل بعد معالجتها. أمر واحد لكل سطر. استخدم الأوامر المحددة في https://tools.ietf.org/html/rfc2060.html#section-6.4.6 أو الأوامر المخصصة لخادم IMAP."
 
 #: models/email_sources.py:232
 msgid "Store commands"
-msgstr ""
+msgstr "أوامر المتجر"
 
 #: models/email_sources.py:236
 msgid "Execute the IMAP expunge command after processing each email message."
-msgstr ""
+msgstr "نفِّذ أمر مسح IMAP بعد معالجة كل رسالة بريد إلكتروني."
 
 #: models/email_sources.py:238
 msgid "Execute expunge"
-msgstr ""
+msgstr "نفذ المحو"
 
 #: models/email_sources.py:242
 msgid "IMAP Mailbox to which processed messages will be copied."
-msgstr ""
+msgstr "صندوق بريد IMAP الذي سيتم نسخ الرسائل المعالجة إليه."
 
 #: models/email_sources.py:243
 msgid "Destination mailbox"
-msgstr ""
+msgstr "صندوق بريد الوجهة"
 
 #: models/email_sources.py:349
 msgid "Timeout"
-msgstr ""
+msgstr "انتهاء الوقت"
 
 #: models/email_sources.py:355 models/email_sources.py:356
 msgid "POP email"
-msgstr ""
+msgstr "بريد POP الإلكتروني"
 
 #: models/scanner_sources.py:31
 msgid "Device name as returned by the SANE backend."
-msgstr ""
+msgstr "اسم الجهاز كما تم إرجاعه بواسطة الواجهة الخلفية SANE."
 
 #: models/scanner_sources.py:32
 msgid "Device name"
-msgstr ""
+msgstr "اسم الجهاز"
 
 #: models/scanner_sources.py:37
 msgid ""
 "Selects the scan mode (e.g., lineart, monochrome, or color). If this option "
 "is not supported by your scanner, leave it blank."
-msgstr ""
+msgstr "يحدد وضع المسح (على سبيل المثال ، خطي أو أحادي اللون أو ملون). إذا لم يكن الماسح الضوئي لديك مدعومًا بهذا الخيار ، فاتركه فارغًا."
 
 #: models/scanner_sources.py:39
 msgid "Mode"
-msgstr ""
+msgstr "الوضع"
 
 #: models/scanner_sources.py:43
 msgid ""
 "Sets the resolution of the scanned image in DPI (dots per inch). Typical "
 "value is 200. If this option is not supported by your scanner, leave it "
 "blank."
-msgstr ""
+msgstr "يضبط دقة الصورة الممسوحة ضوئيًا في DPI (نقاط في البوصة). القيمة النموذجية هي 200. إذا كان هذا الخيار لا يدعمه الماسح الضوئي الخاص بك ، فاتركه فارغًا."
 
 #: models/scanner_sources.py:46
 msgid "Resolution"
-msgstr ""
+msgstr "الدقة"
 
 #: models/scanner_sources.py:50
 msgid ""
 "Selects the scan source (such as a document-feeder). If this option is not "
 "supported by your scanner, leave it blank."
-msgstr ""
+msgstr "يحدد مصدر المسح (مثل وحدة تغذية المستندات). إذا لم يكن الماسح الضوئي لديك مدعومًا بهذا الخيار ، فاتركه فارغًا."
 
 #: models/scanner_sources.py:52
 msgid "Paper source"
-msgstr ""
+msgstr "مصدر الورق"
 
 #: models/scanner_sources.py:57
 msgid ""
 "Selects the document feeder mode (simplex/duplex). If this option is not "
 "supported by your scanner, leave it blank."
-msgstr ""
+msgstr "يحدد وضع وحدة التغذية بالمستندات (وجه واحد / مزدوج). إذا لم يكن الماسح الضوئي لديك مدعومًا بهذا الخيار ، فاتركه فارغًا."
 
 #: models/scanner_sources.py:59
 msgid "ADF mode"
-msgstr ""
+msgstr "وضع ADF"
 
 #: models/scanner_sources.py:65
 msgid "SANE Scanner"
-msgstr ""
+msgstr "ماسح ضوئي"
 
 #: models/scanner_sources.py:66
 msgid "SANE Scanners"
-msgstr ""
+msgstr "ماسحات ضوئية SANE"
 
 #: models/scanner_sources.py:95
 #, python-format
 msgid ""
 "Error while executing scanning command \"%(command_line)s\"; "
 "%(error_message)s"
-msgstr ""
+msgstr "خطأ أثناء تنفيذ أمر المسح &quot;%(command_line)s&quot; ؛ %(error_message)s"
 
 #: models/staging_folder_sources.py:39
 msgid "Server side filesystem path."
@@ -464,7 +465,7 @@ msgstr "مسار نظام الملفات على الخادم"
 
 #: models/staging_folder_sources.py:40 models/watch_folder_sources.py:33
 msgid "Folder path"
-msgstr ""
+msgstr "مسار الملف"
 
 #: models/staging_folder_sources.py:43
 msgid "Width value to be passed to the converter backend."
@@ -472,7 +473,7 @@ msgstr "قيمة العرض لتمريرها إلى نظام المعالجة"
 
 #: models/staging_folder_sources.py:44
 msgid "Preview width"
-msgstr ""
+msgstr "عرض المعاينة"
 
 #: models/staging_folder_sources.py:48
 msgid "Height value to be passed to the converter backend."
@@ -480,7 +481,7 @@ msgstr "قيمة الارتفاع لتمريرها إلى نظام المعال�
 
 #: models/staging_folder_sources.py:49
 msgid "Preview height"
-msgstr ""
+msgstr "معاينة الارتفاع"
 
 #: models/staging_folder_sources.py:53 models/webform_sources.py:33
 msgid "Whether to expand or not compressed archives."
@@ -496,12 +497,12 @@ msgstr "حذف بعد التحميل"
 
 #: models/staging_folder_sources.py:68
 msgid "Staging folders"
-msgstr "مجلدات التدريج"
+msgstr "ملفات التدريج"
 
 #: models/staging_folder_sources.py:80
 #, python-format
 msgid "Error deleting staging file; %s"
-msgstr ""
+msgstr "خطأ في حذف الملف المرحلي ؛ %s"
 
 #: models/staging_folder_sources.py:96
 #, python-format
@@ -516,19 +517,19 @@ msgstr "مسار ملف الخادم للصفحات الممسوحة ضوئيً�
 msgid ""
 "If checked, not only will the folder path be scanned for files but also its "
 "subdirectories."
-msgstr ""
+msgstr "إذا تم تحديده ، فلن يتم فحص مسار المجلد للملفات فحسب ، بل سيتم أيضًا فحص الدلائل الفرعية الخاصة به."
 
 #: models/watch_folder_sources.py:40
 msgid "Include subdirectories?"
-msgstr ""
+msgstr "تضمين الدلائل الفرعية؟"
 
 #: models/watch_folder_sources.py:47
 msgid "Watch folders"
-msgstr ""
+msgstr "مشاهدة المجلدات"
 
 #: models/webform_sources.py:41
 msgid "Web forms"
-msgstr ""
+msgstr "نماذج الويب"
 
 #: permissions.py:5
 msgid "Sources setup"
@@ -536,7 +537,7 @@ msgstr "إعداد المصادر"
 
 #: permissions.py:8
 msgid "Create new document sources"
-msgstr "خلق مصادر وثائق جديدة"
+msgstr "أنشاء أنواع وثائق جديدة"
 
 #: permissions.py:11
 msgid "Delete document sources"
@@ -552,81 +553,81 @@ msgstr "عرض مصادر الوثائق الحالية"
 
 #: permissions.py:20
 msgid "Delete staging files"
-msgstr ""
+msgstr "حذف الملفات المرحلية"
 
 #: queues.py:10
 msgid "Sources periodic"
-msgstr ""
+msgstr "مصادر دورية"
 
 #: queues.py:14
 msgid "Sources fast"
-msgstr ""
+msgstr "مصادر سريعة"
 
 #: queues.py:19
 msgid "Generate staging file image"
-msgstr ""
+msgstr "توليد صورة ملف مرحلي"
 
 #: queues.py:23
 msgid "Check interval source"
-msgstr ""
+msgstr "تحقق من مصدر الفاصل"
 
 #: queues.py:27
 msgid "Handle upload"
-msgstr ""
+msgstr "التعامل مع التحميل"
 
 #: queues.py:31
 msgid "Upload document"
-msgstr ""
+msgstr "تحميل الوثيقة"
 
-#: settings.py:18
+#: settings.py:21
 msgid "File path to the scanimage program used to control image scanners."
-msgstr ""
+msgstr "مسار الملف إلى برنامج scanimage المستخدم للتحكم في ماسحات الصور."
 
-#: settings.py:25
+#: settings.py:27
 msgid ""
 "Path to the Storage subclass to use when storing the cached staging_file "
 "image files."
-msgstr ""
+msgstr "المسار إلى فئة التخزين الفرعية لاستخدامها عند تخزين ملفات صور staging_file المخزنة مؤقتًا."
 
-#: settings.py:34
+#: settings.py:35
 msgid "Arguments to pass to the SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
-msgstr ""
+msgstr "وسيطات لتمريرها إلى SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
 
 #: storages.py:16
 msgid ""
 "Unable to initialize the staging folder file image storage. Check the "
 "settings {} and {} for formatting errors."
-msgstr ""
+msgstr "غير قادر على تهيئة تخزين صورة ملف المجلد المرحلي. تحقق من إعدادات {} و {} لأخطاء التنسيق."
 
 #: storages.py:23
 msgid "Staging folder files"
-msgstr ""
+msgstr "ملفات مجلد التدريج"
 
-#: templates/sources/dropzone.html:82
+#: templates/sources/app/foot.html:40
 msgid "Cancel upload"
-msgstr ""
+msgstr "إلغاء الرفع"
 
-#: templates/sources/dropzone.html:83
+#: templates/sources/app/foot.html:41
 msgid "Are you sure you want to cancel this upload?"
-msgstr ""
+msgstr "هل أنت متأكد أنك تريد إلغاء هذا التحميل؟"
 
-#: templates/sources/dropzone.html:84
+#: templates/sources/app/foot.html:42
 msgid "Drop files or click here to upload files"
-msgstr ""
+msgstr "قم بإسقاط الملفات أو انقر هنا لتحميل الملفات"
 
-#: templates/sources/dropzone.html:85
+#: templates/sources/app/foot.html:43
 msgid "Your browser does not support drag and drop file uploads."
 msgstr "السحب والإفلات لا يدعمه متصفحك"
 
-#: templates/sources/dropzone.html:86
+#: templates/sources/app/foot.html:44
 msgid "Please use the fallback form below to upload your files."
 msgstr "الرجاء استخدام النموذج أدناه لتحميل الملفات الخاصة بك"
 
-#: templates/sources/dropzone.html:87
+#: templates/sources/app/foot.html:45
 msgid "Clear"
-msgstr "مسح / إزالة"
+msgstr "مسح "
 
-#: templates/sources/dropzone.html:88
+#: templates/sources/app/foot.html:46
 msgid "Server responded with {{statusCode}} code."
 msgstr "استجاب الخادم برمز {{statusCode}}."
 
@@ -636,16 +637,16 @@ msgid ""
 "Sources that delete content after downloading will not do so while being "
 "tested. Check the source's error log for information during testing. A "
 "successful test will clear the error log."
-msgstr ""
+msgstr "سيؤدي هذا إلى تنفيذ كود التحقق من المصدر حتى إذا لم يتم تمكين المصدر. المصادر التي تحذف المحتوى بعد التنزيل لن تفعل ذلك أثناء الاختبار. تحقق من سجل أخطاء المصدر للحصول على معلومات أثناء الاختبار. سيؤدي الاختبار الناجح إلى مسح سجل الأخطاء."
 
 #: views.py:76
 #, python-format
 msgid "Trigger check for source \"%s\"?"
-msgstr ""
+msgstr "التحقق من تشغيل المصدر &quot;%s&quot;؟"
 
 #: views.py:88
 msgid "Source check queued."
-msgstr ""
+msgstr "تم وضع فحص المصدر في قائمة الانتظار."
 
 #: views.py:102
 #, python-format
@@ -655,12 +656,12 @@ msgstr "انشاء مصدر جديد من النوع: %s"
 #: views.py:125
 #, python-format
 msgid "Delete the source: %s?"
-msgstr ""
+msgstr "حذف المصدر: %s؟"
 
 #: views.py:147
 #, python-format
 msgid "Edit source: %s"
-msgstr ""
+msgstr "تحرير المصدر: %s"
 
 #: views.py:187
 msgid ""
@@ -668,37 +669,37 @@ msgid ""
 "webform, are interactive and require user input to operate. Others like the "
 "email sources, are automatic and run on the background without user "
 "intervention."
-msgstr ""
+msgstr "توفر المصادر وسيلة لتحميل المستندات. بعض المصادر ، مثل نموذج الويب ، تفاعلية وتتطلب إدخال المستخدم للعمل. البعض الآخر مثل مصادر البريد الإلكتروني ، يتم تشغيله تلقائيًا في الخلفية دون تدخل المستخدم."
 
 #: views.py:192
 msgid "No sources available"
-msgstr ""
+msgstr "لا توجد مصادر متاحة"
 
 #: views.py:206
 #, python-format
 msgid "Delete staging file \"%s\"?"
-msgstr ""
+msgstr "هل تريد حذف الملف المرحلي &quot;%s&quot;؟"
 
 #: views.py:257 wizards.py:152
 msgid ""
 "No interactive document sources have been defined or none have been enabled,"
 " create one before proceeding."
-msgstr ""
+msgstr "لم يتم تحديد أية مصادر تفاعلية للمستندات أو لم يتم تمكين أي منها ، قم بإنشاء واحدة قبل المتابعة."
 
 #: views.py:285 views.py:314 views.py:324
 msgid "Document properties"
-msgstr ""
+msgstr "خصائص المستند"
 
 #: views.py:294
 msgid ""
 "This could mean that the staging folder is empty. It could also mean that "
 "the operating system user account being used for Mayan EDMS doesn't have the"
 " necessary file system permissions for the folder."
-msgstr ""
+msgstr "المجلد فارغ ! أو لا تمتلك الاذونات الكافية"
 
 #: views.py:301
 msgid "No staging files available"
-msgstr ""
+msgstr "لا توجد ملفات مرحلية متاحة"
 
 #: views.py:304
 msgid "Files in staging path"
@@ -706,40 +707,40 @@ msgstr "الملفات في مسار الإرسال"
 
 #: views.py:315
 msgid "Scan"
-msgstr ""
+msgstr "مسح"
 
 #: views.py:462
 #, python-format
 msgid "Error executing document upload task; %(exception)s"
-msgstr ""
+msgstr "خطأ في تحميل الوثيقة؛ %(exception)s"
 
 #: views.py:472
 msgid "New document queued for upload and will be available shortly."
-msgstr ""
+msgstr "إصدار جديد في قائمة الانتظار من الوثيقة قيد التحميل وسيكون متاحًا قريبًا"
 
 #: views.py:489
 #, python-format
 msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
-msgstr ""
+msgstr "قم بتحميل مستند من نوع &quot;%(document_type)s&quot; من المصدر: %(source)s"
 
 #: views.py:551
 #, python-format
 msgid "Unable to upload new versions for document \"%(document)s\". %(exception)s"
-msgstr ""
+msgstr "تعذر تحميل إصدارات جديدة من الوثيقة&quot;%(document)s&quot;. %(exception)s"
 
 #: views.py:612
 #, python-format
 msgid "Error executing document version upload task; %(exception)s"
-msgstr ""
+msgstr "خطأ في تحميل نسخة الوثيقة؛ %(exception)s"
 
 #: views.py:627
 msgid "New document version queued for upload and will be available shortly."
-msgstr "إصدار جديد من المستند قيد التحميل وسيكون متاحًا قريبًا"
+msgstr "إصدار جديد من الوثيقة قيد التحميل وسيكون متاحًا قريبًا"
 
 #: views.py:654
 #, python-format
 msgid "Upload a new version for document \"%(document)s\" from source: %(source)s"
-msgstr ""
+msgstr "تحميل نسخة جديدة للمستند &quot;%(document)s&quot; من المصدر: %(source)s"
 
 #: views.py:657
 msgid "Submit"
@@ -747,12 +748,12 @@ msgstr "ارسال"
 
 #: wizards.py:95
 msgid "Select document type"
-msgstr "حدد نوع المستند"
+msgstr "نوع الوثيقة"
 
 #: wizards.py:176
 #, python-format
 msgid "Step %(step)d of %(total_steps)d: %(step_label)s"
-msgstr ""
+msgstr "الخطوة %(step)d من %(total_steps)d: %(step_label)s"
 
 #: wizards.py:181
 msgid "Next step"
@@ -760,4 +761,4 @@ msgstr "الخطوة التالية"
 
 #: wizards.py:183
 msgid "Document upload wizard"
-msgstr "مساعد تحميل المستند"
+msgstr "تحميل الوثيقة"

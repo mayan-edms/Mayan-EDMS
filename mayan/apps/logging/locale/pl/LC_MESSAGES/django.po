@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>, 2020\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
@@ -24,7 +24,7 @@ msgstr ""
 
 #: apps.py:15 permissions.py:5 settings.py:10
 msgid "Logging"
-msgstr ""
+msgstr "Zapisywanie w dzienniku zdarzeń"
 
 #: links.py:12
 msgid "Errors"
@@ -48,15 +48,15 @@ msgstr "Dzienniki błędów"
 
 #: models.py:25
 msgid "App label"
-msgstr ""
+msgstr "Etykieta aplikacji"
 
 #: models.py:43 models.py:60
 msgid "Error log partition"
-msgstr ""
+msgstr "Partycja dziennika błędów"
 
 #: models.py:44
 msgid "Error log partitions"
-msgstr ""
+msgstr "Partycje dziennika błędów"
 
 #: models.py:63
 msgid "Date and time"
@@ -68,11 +68,11 @@ msgstr "Tekst"
 
 #: models.py:70
 msgid "Error log partition entry"
-msgstr ""
+msgstr "Wpis w partycji dziennika błędów"
 
 #: models.py:71
 msgid "Error log partition entries"
-msgstr ""
+msgstr "Wpisy w partycji błędów."
 
 #: permissions.py:8
 msgid "View error log"
@@ -82,16 +82,18 @@ msgstr "Wyświetl dziennik błędów"
 msgid "Automatically enable logging to all apps."
 msgstr "Włącz dla wszystkich aplikacji automatyczny zapis zdarzeń."
 
-#: settings.py:20
+#: settings.py:19
 msgid ""
 "List of handlers to which logging messages will be sent. Options are: {}"
 msgstr ""
+"Lista procedur, do których zostaną wysłane wiadomości z dziennika zdarzeń. "
+"Opcje: {}"
 
-#: settings.py:26
+#: settings.py:25
 msgid "Level for the logging system."
-msgstr ""
+msgstr "Poziom systemu dziennika zdarzeń."
 
-#: settings.py:32
+#: settings.py:31
 msgid "Path to the logfile that will track errors during production."
 msgstr "Ścieżka do pliku dziennika śledzącego błędy w systemie produkcyjnym."
 

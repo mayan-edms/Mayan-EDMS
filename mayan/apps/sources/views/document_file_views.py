@@ -39,7 +39,7 @@ class DocumentFileUploadInteractiveView(UploadBaseView):
         self.subtemplates_list = []
 
         self.document = get_object_or_404(
-            klass=Document, pk=kwargs['document_id']
+            klass=Document.valid, pk=kwargs['document_id']
         )
 
         AccessControlList.objects.check_access(

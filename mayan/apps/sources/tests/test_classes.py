@@ -14,7 +14,9 @@ class StagingFileTestCase(BaseTestCase):
     def setUp(self):
         super().setUp()
         self.temporary_directory = mkdtemp()
-        shutil.copy(TEST_NON_ASCII_DOCUMENT_PATH, self.temporary_directory)
+        shutil.copy(
+            src=TEST_NON_ASCII_DOCUMENT_PATH, dst=self.temporary_directory
+        )
         self.test_filename = os.path.basename(TEST_NON_ASCII_DOCUMENT_PATH)
         self.test_staging_folder = MockStagingFolder()
         self.test_staging_folder.folder_path = self.temporary_directory

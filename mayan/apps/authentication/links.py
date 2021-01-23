@@ -8,13 +8,16 @@ from .permissions import permission_users_impersonate
 
 
 def has_usable_password_and_can_change_password(context):
-    return (
-        context[
-            'request'
-        ].user.has_usable_password and not context[
-            'request'
-        ].user.user_options.block_password_change
-    )
+    if context['request'].user.is_authenticated:
+        return (
+            context[
+                'request'
+            ].user.has_usable_password and not context[
+                'request'
+            ].user.user_options.block_password_change
+        )
+    else:
+        return False
 
 
 link_logout = Link(

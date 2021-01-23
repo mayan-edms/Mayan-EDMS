@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Thanh Long Hoàng <hoangthanhlong@gmail.com>, 2020\n"
 "Language-Team: Vietnamese (https://www.transifex.com/rosarior/teams/13584/vi/)\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:53 apps.py:149 apps.py:156 events.py:5 forms.py:14 links.py:22
-#: menus.py:14 models.py:45 models.py:167 permissions.py:5 search.py:46
+#: menus.py:14 models.py:45 models.py:174 permissions.py:5 search.py:46
 #: search.py:49 views.py:164 workflow_actions.py:20
 msgid "Cabinets"
 msgstr ""
@@ -94,33 +94,33 @@ msgstr "Nhãn"
 msgid "Documents"
 msgstr "Tài liệu"
 
-#: models.py:44 models.py:141 models.py:166 serializers.py:136
+#: models.py:44 models.py:148 models.py:173 serializers.py:136
 #: workflow_actions.py:64
 msgid "Cabinet"
 msgstr ""
 
-#: models.py:107
+#: models.py:114
 msgid "The path to the cabinet including all ancestors."
 msgstr ""
 
-#: models.py:109
+#: models.py:116
 msgid "Full path"
 msgstr ""
 
-#: models.py:142 serializers.py:137
+#: models.py:149 serializers.py:137
 msgid "Parent and Label"
 msgstr ""
 
-#: models.py:149 serializers.py:143
+#: models.py:156 serializers.py:143
 #, python-format
 msgid "%(model_name)s with this %(field_labels)s already exists."
 msgstr ""
 
-#: models.py:178
+#: models.py:185
 msgid "Document cabinet"
 msgstr ""
 
-#: models.py:179
+#: models.py:186
 msgid "Document cabinets"
 msgstr ""
 
@@ -243,56 +243,56 @@ msgstr ""
 msgid "No cabinets available"
 msgstr ""
 
-#: views.py:200
-msgid "Documents can be added to many cabinets."
-msgstr ""
-
-#: views.py:203
-msgid "This document is not in any cabinet"
-msgstr ""
-
-#: views.py:207
-#, python-format
-msgid "Cabinets containing document: %s"
-msgstr ""
-
-#: views.py:223
+#: views.py:189
 #, python-format
 msgid "Add to cabinet request performed on %(count)d document."
 msgstr ""
 
-#: views.py:226
+#: views.py:192
 #, python-format
 msgid "Add to cabinet request performed on %(count)d documents."
 msgstr ""
 
-#: views.py:233
+#: views.py:199
 msgid "Add"
 msgstr "Thêm"
 
-#: views.py:235
+#: views.py:201
 #, python-format
 msgid "Add %(count)d document to cabinets"
 msgid_plural "Add %(count)d documents to cabinets"
 msgstr[0] ""
 
-#: views.py:248
+#: views.py:214
 #, python-format
 msgid "Add document \"%s\" to cabinets"
 msgstr ""
 
-#: views.py:259
+#: views.py:225
 msgid "Cabinets to which the selected documents will be added."
 msgstr ""
 
-#: views.py:288
+#: views.py:254
 #, python-format
 msgid "Document: %(document)s is already in cabinet: %(cabinet)s."
 msgstr ""
 
-#: views.py:300
+#: views.py:266
 #, python-format
 msgid "Document: %(document)s added to cabinet: %(cabinet)s successfully."
+msgstr ""
+
+#: views.py:291
+msgid "Documents can be added to many cabinets."
+msgstr ""
+
+#: views.py:294
+msgid "This document is not in any cabinet"
+msgstr ""
+
+#: views.py:298
+#, python-format
+msgid "Cabinets containing document: %s"
 msgstr ""
 
 #: views.py:314

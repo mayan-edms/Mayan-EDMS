@@ -33,9 +33,9 @@ from .tasks import task_send_document
 class MailDocumentView(MultipleObjectFormActionView):
     as_attachment = True
     form_class = DocumentMailForm
-    model = Document
     object_permission = permission_mailing_send_document
     pk_url_kwarg = 'document_id'
+    source_queryset = Document.valid
     success_message = _('%(count)d document queued for email delivery')
     success_message_plural = _(
         '%(count)d documents queued for email delivery'

@@ -11,7 +11,6 @@ from .icons import (
     icon_document_file_signature_download,
     icon_document_file_signature_embedded_create,
     icon_document_file_signature_list, icon_document_file_signature_upload,
-    icon_document_signature_list
 )
 from .permissions import (
     permission_document_file_sign_detached,

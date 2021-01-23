@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-09-27 06:47+0000\n"
 "Last-Translator: Mads L. Nielsen <sirlundgaard@gmail.com>, 2020\n"
 "Language-Team: Danish (https://www.transifex.com/rosarior/teams/13584/da/)\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Language: da\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:15 settings.py:5
+#: apps.py:15 settings.py:7
 msgid "Views"
 msgstr ""
 
@@ -97,16 +97,16 @@ msgstr ""
 msgid "%(object)s updated successfully."
 msgstr ""
 
-#: mixins.py:319
+#: mixins.py:324
 #, python-format
 msgid "No %(verbose_name)s found matching the query"
 msgstr ""
 
-#: mixins.py:433
+#: mixins.py:438
 msgid "Object"
 msgstr "Objekt"
 
-#: settings.py:11
+#: settings.py:12
 msgid "The number objects that will be displayed per page."
 msgstr ""
 

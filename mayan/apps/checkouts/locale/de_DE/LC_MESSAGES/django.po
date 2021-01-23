@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-08-17 15:05+0000\n"
 "Last-Translator: Marvin Haschker <marvin@haschker.me>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
@@ -28,7 +28,7 @@ msgstr ""
 msgid "Checkouts"
 msgstr "Ausbuchungen"
 
-#: dashboard_widgets.py:14 views.py:181
+#: dashboard_widgets.py:14 views.py:182
 msgid "Checked out documents"
 msgstr "Ausgebuchte Dokumente"
 
@@ -221,13 +221,13 @@ msgstr "Dokument %s ausbuchen"
 msgid "Check out details for document: %s"
 msgstr "Ausbuchungsdetails für Dokument %s"
 
-#: views.py:177
+#: views.py:178
 msgid ""
 "Checking out a document, blocks certain operations for a predetermined "
 "amount of time."
 msgstr "Durch Ausbuchen eines Dokuments werden bestimmte Vorgänge für eine bestimmte Zeitspanne gesperrt."
 
-#: views.py:180
+#: views.py:181
 msgid "No documents have been checked out"
 msgstr "Keine Dokumente ausgebucht"
 

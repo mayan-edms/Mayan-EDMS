@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-09-27 06:46+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-12-09 08:51+0000\n"
+"Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -79,7 +79,7 @@ msgid "Email link"
 msgstr "Имейл връзка"
 
 #: links.py:35
-msgid "Create mailing profile "
+msgid "Create mailing profile"
 msgstr "Създайте пощенски профил"
 
 #: links.py:41
@@ -285,19 +285,19 @@ msgstr "Използване на пощенски профил"
 msgid "Send document"
 msgstr "Изпращане на документ"
 
-#: settings.py:14
+#: settings.py:15
 msgid "Template for the document email form subject line."
 msgstr "Шаблон за реда \"Относно\" на формуляр за документен имейл."
 
-#: settings.py:19
+#: settings.py:21
 msgid "Template for the document email form body text. Can include HTML."
 msgstr "Шаблон за основния текст на формуляра за документен имейл. Може да включва HTML."
 
-#: settings.py:24
+#: settings.py:27
 msgid "Template for the document link email form subject line."
 msgstr "Шаблон за реда \"Относно\" за формуляр на имейл от връзка в документ."
 
-#: settings.py:29
+#: settings.py:33
 msgid "Template for the document link email form body text. Can include HTML."
 msgstr "Шаблон за основния текст за формуляра на имейл от връзка в документа Може да включва HTML."
 

@@ -263,6 +263,11 @@ class Document(
 
     get_label.short_description = _('Label')
 
+    def get_label(self):
+        return self.label or ugettext('Document stub, id: %d') % self.pk
+
+    get_label.short_description = _('Label')
+
     @property
     def is_in_trash(self):
         return self.in_trash

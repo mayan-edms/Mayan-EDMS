@@ -42,69 +42,64 @@ def is_min_zoom(context):
 
 
 link_document_version_page_delete = Link(
-    args='resolved_object.pk',
-    icon=icon_document_version_page_delete,
+    args='resolved_object.pk', icon=icon_document_version_page_delete,
     permissions=(permission_document_version_edit,), tags='dangerous',
-    text=_('Delete'), view='documents:document_version_page_delete',
+    text=_('Delete'), view='documents:document_version_page_delete'
 )
 link_document_version_page_list = Link(
-    args='resolved_object.pk',
-    icon=icon_document_version_page_list,
+    args='resolved_object.pk', icon=icon_document_version_page_list,
     permissions=(permission_document_version_view,), text=_('Pages'),
-    view='documents:document_version_page_list',
+    view='documents:document_version_page_list'
 )
 link_document_version_page_list_remap = Link(
-    args='resolved_object.pk',
-    icon=icon_document_version_page_list_remap,
+    args='resolved_object.pk', icon=icon_document_version_page_list_remap,
     permissions=(permission_document_version_edit,), text=_('Remap pages'),
-    view='documents:document_version_page_list_remap',
+    view='documents:document_version_page_list_remap'
 )
 link_document_version_page_list_reset = Link(
-    args='resolved_object.pk',
-    icon=icon_document_version_page_list_reset,
+    args='resolved_object.pk', icon=icon_document_version_page_list_reset,
     permissions=(permission_document_version_edit,), text=_('Reset pages'),
-    view='documents:document_version_page_list_reset',
+    view='documents:document_version_page_list_reset'
 )
 link_document_version_page_navigation_first = Link(
     args='resolved_object.pk', conditional_disable=is_first_page,
     icon=icon_document_version_page_navigation_first,
     keep_query=True, permissions=(permission_document_version_view,),
-    text=_('First page'), view='documents:document_version_page_navigation_first',
+    text=_('First page'),
+    view='documents:document_version_page_navigation_first'
 )
 link_document_version_page_navigation_last = Link(
     args='resolved_object.pk', conditional_disable=is_last_page,
     icon=icon_document_version_page_navigation_last,
     keep_query=True, text=_('Last page'),
     permissions=(permission_document_version_view,),
-    view='documents:document_version_page_navigation_last',
+    view='documents:document_version_page_navigation_last'
 )
 link_document_version_page_navigation_previous = Link(
     args='resolved_object.pk', conditional_disable=is_first_page,
     icon=icon_document_version_page_navigation_previous,
     keep_query=True, permissions=(permission_document_version_view,),
     text=_('Previous page'),
-    view='documents:document_version_page_navigation_previous',
+    view='documents:document_version_page_navigation_previous'
 )
 link_document_version_page_navigation_next = Link(
     args='resolved_object.pk', conditional_disable=is_last_page,
     icon=icon_document_version_page_navigation_next,
     keep_query=True, text=_('Next page'),
     permissions=(permission_document_version_view,),
-    view='documents:document_version_page_navigation_next',
+    view='documents:document_version_page_navigation_next'
 )
 link_document_version_page_return_to_document = Link(
     args='resolved_object.document_version.document.pk',
     icon=icon_document_version_page_return_to_document,
     permissions=(permission_document_view,),
-    text=_('Document'),
-    view='documents:document_preview',
+    text=_('Document'), view='documents:document_preview'
 )
 link_document_version_page_return_to_document_version = Link(
     args='resolved_object.document_version.pk',
     icon=icon_document_version_page_return_to_document_version,
     permissions=(permission_document_version_view,),
-    text=_('Document version'),
-    view='documents:document_version_preview',
+    text=_('Document version'), view='documents:document_version_preview'
 )
 link_document_version_page_return_to_document_version_page_list = Link(
     args='resolved_object.document_version.pk',
@@ -116,32 +111,33 @@ link_document_version_page_return_to_document_version_page_list = Link(
 link_document_version_page_rotate_left = Link(
     args='resolved_object.pk', icon=icon_document_version_page_rotate_left,
     keep_query=True, permissions=(permission_document_version_view,),
-    text=_('Rotate left'), view='documents:document_version_page_rotate_left',
+    text=_('Rotate left'), view='documents:document_version_page_rotate_left'
 )
 link_document_version_page_rotate_right = Link(
     args='resolved_object.pk', icon=icon_document_version_page_rotate_right,
     keep_query=True, permissions=(permission_document_version_view,),
-    text=_('Rotate right'), view='documents:document_version_page_rotate_right',
+    text=_('Rotate right'),
+    view='documents:document_version_page_rotate_right'
 )
 link_document_version_page_view = Link(
-    icon=icon_document_version_page_view,
+    args='resolved_object.pk', icon=icon_document_version_page_view,
     permissions=(permission_document_version_view,), text=_('Page image'),
-    view='documents:document_version_page_view', args='resolved_object.pk'
+    view='documents:document_version_page_view'
 )
 link_document_version_page_view_reset = Link(
-    icon=icon_document_version_page_view_reset,
+    args='resolved_object.pk', icon=icon_document_version_page_view_reset,
     permissions=(permission_document_version_view,), text=_('Reset view'),
-    view='documents:document_version_page_view_reset', args='resolved_object.pk'
+    view='documents:document_version_page_view_reset'
 )
 link_document_version_page_zoom_in = Link(
     args='resolved_object.pk', conditional_disable=is_max_zoom,
     icon=icon_document_version_page_zoom_in, keep_query=True,
     permissions=(permission_document_version_view,), text=_('Zoom in'),
-    view='documents:document_version_page_zoom_in',
+    view='documents:document_version_page_zoom_in'
 )
 link_document_version_page_zoom_out = Link(
     args='resolved_object.pk', conditional_disable=is_min_zoom,
     icon=icon_document_version_page_zoom_out, keep_query=True,
     permissions=(permission_document_version_view,), text=_('Zoom out'),
-    view='documents:document_version_page_zoom_out',
+    view='documents:document_version_page_zoom_out'
 )

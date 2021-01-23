@@ -8,13 +8,14 @@
 # Daniel Winiarski <daniel.winiarski.dw@gmail.com>, 2016
 # Marcin Lozynski <mlozynski@wp.pl>, 2019
 # mic <winterfall24@gmail.com>, 2012
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2020
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-11-02 19:05+0000\n"
 "Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -86,11 +87,11 @@ msgstr "Wszyscy użytkownicy."
 
 #: dashboard_widgets.py:14
 msgid "Total users"
-msgstr "Razem użytkowników"
+msgstr "Razem użytkownicy"
 
 #: dashboard_widgets.py:30
 msgid "Total groups"
-msgstr "Razem grup"
+msgstr "Razem grupy"
 
 #: events.py:10
 msgid "Group created"

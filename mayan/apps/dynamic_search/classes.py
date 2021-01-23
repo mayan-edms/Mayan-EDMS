@@ -132,6 +132,7 @@ class SearchModel(AppsModuleLoaderMixin):
             post_save.connect(
                 dispatch_uid='search_handler_index_instance',
                 receiver=handler_index_instance,
+                sender=search_model.model
             )
             pre_delete.connect(
                 dispatch_uid='search_handler_deindex_instance_{}'.format(search_model),

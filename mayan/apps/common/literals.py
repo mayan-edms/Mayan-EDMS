@@ -1,6 +1,17 @@
+from django.conf import settings
+
 from django.utils.translation import ugettext_lazy as _
 
+import mayan
+
+DEFAULT_COMMON_DB_SYNC_TASK_DELAY = 2
+DEFAULT_COMMON_DISABLED_APPS = settings.COMMON_DISABLED_APPS
+DEFAULT_COMMON_EXTRA_APPS = settings.COMMON_EXTRA_APPS
 DEFAULT_COMMON_HOME_VIEW = 'common:home'
+DEFAULT_COMMON_PROJECT_TITLE = mayan.__title__
+DEFAULT_COMMON_PROJECT_URL = mayan.__website__
+DEFAULT_COMMON_URL_BASE_PATH = ''
+
 DJANGO_SQLITE_BACKEND = 'django.db.backends.sqlite3'
 
 MESSAGE_DEPRECATION_WARNING = _(

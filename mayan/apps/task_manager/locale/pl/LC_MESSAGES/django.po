@@ -4,17 +4,17 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2018
 # Marcin Lozynski <mlozynski@wp.pl>, 2019
 # Tomasz Szymanowicz <alakdae@gmail.com>, 2020
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2017-06-30 22:04+0000\n"
-"Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>, 2020\n"
+"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>, 2020\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -76,7 +76,7 @@ msgstr "Celery"
 
 #: settings.py:15
 msgid "Default: \"AMQPLAIN\". Set custom amqp login method."
-msgstr ""
+msgstr "Domyślnie: \"AMQPLAIN\". Ustaw własną metodą logowania do amqp."
 
 #: settings.py:21
 msgid ""
@@ -95,6 +95,9 @@ msgid ""
 "Default: \"Disabled\". Toggles SSL usage on broker connection and SSL "
 "settings. The valid values for this option vary by transport."
 msgstr ""
+"Domyślnie: „Wyłączone”. Przełącza użycie SSL w połączeniu z brokerem i "
+"ustawieniach SSL. Prawidłowe wartości tej opcji różnią się w zależności od "
+"transportu."
 
 #: settings.py:38
 msgid ""

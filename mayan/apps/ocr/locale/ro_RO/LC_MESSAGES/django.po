@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-09-29 12:52+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
 #: apps.py:52 events.py:5 links.py:18 links.py:24 permissions.py:5 queues.py:6
-#: search.py:6 search.py:10 settings.py:8
+#: search.py:6 search.py:10 settings.py:11
 msgid "OCR"
 msgstr "OCR"
 
@@ -90,7 +90,7 @@ msgstr "Configurare OCR"
 msgid "OCR documents per type"
 msgstr "Documente OCR pe tip"
 
-#: links.py:61 links.py:67 views.py:214
+#: links.py:61 links.py:67 views.py:217
 msgid "OCR errors"
 msgstr "Erori OCR"
 
@@ -174,13 +174,13 @@ msgstr "Pagina de versiune a documentului OCR"
 msgid "Document version OCR"
 msgstr "OCR pe versiunea documentului "
 
-#: settings.py:15
-msgid "Full path to the backend to be used to do OCR."
-msgstr "Calea completă spre backend-ul care trebuie utilizat pentru a face OCR."
-
-#: settings.py:24
+#: settings.py:17
 msgid "Set new document types to perform OCR automatically by default."
 msgstr "Setați tipuri noi de documente pentru a efectua automat funcția OCR în mod implicit."
+
+#: settings.py:22
+msgid "Full path to the backend to be used to do OCR."
+msgstr "Calea completă spre backend-ul care trebuie utilizat pentru a face OCR."
 
 #: views.py:35
 msgid "Delete the OCR content of the selected document?"
@@ -215,12 +215,12 @@ msgstr[2] "Trimiteți documentele selectate în coada de OCR?"
 msgid "Submit all documents of a type for OCR"
 msgstr "Trimiteți toate documentele de acest tip la OCR"
 
-#: views.py:168
+#: views.py:171
 #, python-format
 msgid "%(count)d documents added to the OCR queue."
 msgstr "%(count)d documente adăugate în coada OCR."
 
-#: views.py:203
+#: views.py:206
 #, python-format
 msgid "Edit OCR settings for document type: %s."
 msgstr "Editați setările OCR pentru tipul de document: %s."

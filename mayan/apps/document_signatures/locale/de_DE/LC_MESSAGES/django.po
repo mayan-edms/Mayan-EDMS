@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-08-18 07:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
@@ -28,7 +28,7 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:49 permissions.py:6 settings.py:11
+#: apps.py:49 permissions.py:6 settings.py:12
 msgid "Document signatures"
 msgstr "Dokumentenunterschriften"
 
@@ -250,11 +250,11 @@ msgstr "Dokumentenversion verifizieren"
 msgid "Verify missing embedded signature"
 msgstr "Fehlende eingebettete Unterschrift überprüfen"
 
-#: settings.py:19
+#: settings.py:20
 msgid "Path to the Storage subclass to use when storing detached signatures."
 msgstr "Pfad zu der Speicherklasse (Storage subclass) für die Speicherung separater Unterschriften."
 
-#: settings.py:28
+#: settings.py:27
 msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND."
 msgstr "Argumente, die an das SIGNATURE_STORAGE_BACKEND übergeben werden sollen."
 
@@ -268,72 +268,72 @@ msgstr "Der Dateispeicher für separate Unterschriften kann nicht initialisiert 
 msgid "Detached signatures"
 msgstr "Separate Unterschriften"
 
-#: views.py:68 views.py:156
+#: views.py:68 views.py:159
 msgid "Passphrase is needed to unlock this key."
 msgstr "Passwort wird benötigt um den Schlüssel zu entsperren."
 
-#: views.py:81 views.py:169
+#: views.py:81 views.py:172
 msgid "Passphrase is incorrect."
 msgstr "Passwort ist ungültig."
 
-#: views.py:94 views.py:182
+#: views.py:94 views.py:185
 msgid "Document version signed successfully."
 msgstr "Dokumentenversion wurde erfolgreich signiert."
 
-#: views.py:122 views.py:217
+#: views.py:125 views.py:223
 msgid "Sign"
 msgstr "Signieren"
 
-#: views.py:124
+#: views.py:127
 #, python-format
 msgid "Sign document version \"%s\" with a detached signature"
 msgstr "Dokumentenversion \"%s\" mit seperater Unterschrift signieren"
 
-#: views.py:219
+#: views.py:225
 #, python-format
 msgid "Sign document version \"%s\" with a embedded signature"
 msgstr "Dokumentenversion \"%s\" mit eingebetteter Unterschrift signieren"
 
-#: views.py:236
+#: views.py:241
 #, python-format
 msgid "Delete detached signature: %s"
 msgstr "Separate Unterschrift %s löschen"
 
-#: views.py:259
+#: views.py:271
 #, python-format
 msgid "Details for signature: %s"
 msgstr "Details für Signatur %s"
 
-#: views.py:291
+#: views.py:313
 msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
 "document itself or uploaded as a separate file."
 msgstr "Unterschriften dienen der Ermittlung der Autorenschaft und der Entdeckung von Fälschungen. Sie sind sehr sicher und schwer zu fälschen. Eine Unterschrift kann als Teil des Dokuments in dieses eingebettet sein oder separat erstellt und hochgeladen werden."
 
-#: views.py:320
+#: views.py:342
 msgid "There are no signatures for this document."
 msgstr "Keine Unterschriften für dieses Dokument vorhanden."
 
-#: views.py:324
+#: views.py:346
 #, python-format
 msgid "Signatures for document version: %s"
 msgstr "Unterschriften für Dokumentenversion: %s"
 
-#: views.py:356
+#: views.py:381
 #, python-format
 msgid "Upload detached signature for document version: %s"
 msgstr "Seperate Unterschrift für Dokumentenversion %s hochladen"
 
-#: views.py:374
+#: views.py:399
 msgid "On large databases this operation may take some time to execute."
 msgstr "Bei großen Datenbanken kann dieser Vorgang einige Zeit in Anspruch nehmen."
 
-#: views.py:375
+#: views.py:400
 msgid "Verify all document for signatures?"
 msgstr "Alle Dokumentenunterschriften überprüfen?"
 
-#: views.py:385
+#: views.py:410
 msgid "Signature verification queued successfully."
 msgstr "Überprüfung der Unterschriften erfolgreich eingereiht."
 

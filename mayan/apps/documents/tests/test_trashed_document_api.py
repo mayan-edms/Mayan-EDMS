@@ -12,7 +12,8 @@ from ..events import (
 from ..models.document_models import Document
 from ..permissions import (
     permission_trashed_document_delete, permission_trashed_document_restore,
-    permission_document_trash, permission_document_view
+    permission_document_trash, permission_document_version_view,
+    permission_document_view
 )
 
 from .mixins.document_mixins import DocumentTestMixin
@@ -168,7 +169,7 @@ class TrashedDocumentAPIViewTestCase(
         self._upload_test_document()
         self.test_document.delete()
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self.test_document, permission=permission_document_version_view
         )
 
         self._clear_events()

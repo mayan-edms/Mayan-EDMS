@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# pyrotech <anastasios@tutamail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-03-28 07:22+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-12-27 15:35+0000\n"
+"Last-Translator: pyrotech <anastasios@tutamail.com>\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,11 +29,11 @@ msgstr "Λίστες Ελέγχου Πρόσβασης (ΛΕΠ)"
 
 #: events.py:10
 msgid "ACL created"
-msgstr ""
+msgstr "Δημιουργήθηκε ΛΕΠ"
 
 #: events.py:13
 msgid "ACL edited"
-msgstr ""
+msgstr "Τροποποιήθηκε ΛΕΠ"
 
 #: forms.py:13 models.py:44 views.py:67
 msgid "Role"
@@ -48,12 +49,12 @@ msgstr "Διαγραφή"
 
 #: links.py:31 models.py:40 workflow_actions.py:46 workflow_actions.py:161
 msgid "Permissions"
-msgstr "Ανεπαρκή δικαιώματα"
+msgstr "Δικαιώματα"
 
 #: managers.py:229
 #, python-format
 msgid "Object \"%s\" is not a model and cannot be checked for access."
-msgstr ""
+msgstr "To αντικείμενο \"%s\" δεν είναι πρότυπο και δεν μπορεί να ελεγχθεί για πρόσβαση."
 
 #: managers.py:250
 #, python-format
@@ -62,20 +63,20 @@ msgstr "Μη επαρκή δικαιώματα πρόσβασης για το: %
 
 #: models.py:52
 msgid "Access entry"
-msgstr ""
+msgstr "Πρόσβαση στην εγγραφή"
 
 #: models.py:53
 msgid "Access entries"
-msgstr ""
+msgstr "Πρόσβαση στις εγγραφές"
 
 #: models.py:57
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\""
-msgstr "Δικαιώματα του Ρόλου \"%(role)s\" για  \"%(object)s\""
+msgstr "Δικαιώματα Ρόλου \"%(role)s\" για \"%(object)s\""
 
 #: permissions.py:8
 msgid "Edit ACLs"
-msgstr "Τροποποιηση ΛΕΠ"
+msgstr "Τροποποίηση ΛΕΠ"
 
 #: permissions.py:11
 msgid "View ACLs"
@@ -84,17 +85,17 @@ msgstr "Εμφάνιση ΛΕΠ"
 #: serializers.py:24 serializers.py:134
 msgid ""
 "API URL pointing to the list of permissions for this access control list."
-msgstr ""
+msgstr "Το API URL που παραπέμπει στην λίστα δικαιωμάτων της Λίστας Ελέγχου Πρόσβασης."
 
 #: serializers.py:57
 msgid ""
 "API URL pointing to a permission in relation to the access control list to "
 "which it is attached. This URL is different than the canonical workflow URL."
-msgstr ""
+msgstr "Το API URL που παραπέμπει σε ένα δικαίωμα συσχετισμένο με την Λίστα Ελέγχου Πρόσβασης στην οποία είναι συνδεδεμένο. Αυτό το URL είναι διαφορετικό από το canonical URL ροής εργασίας."
 
 #: serializers.py:89
 msgid "Primary key of the new permission to grant to the access control list."
-msgstr ""
+msgstr "Πρωτεύον κλειδί του νέου δικαιώματος που θα παραχωρηθεί στην λίστα ελέγχου πρόσβασης."
 
 #: serializers.py:113 serializers.py:189
 #, python-format
@@ -105,23 +106,23 @@ msgstr "Άγνωστο δικαίωμα: %s"
 msgid ""
 "Comma separated list of permission primary keys to grant to this access "
 "control list."
-msgstr ""
+msgstr "Λίστα δικαιωμάτων πρωτευόντων κλειδιών προς παραχώρηση σε αυτήν την λίστα ελέγχου πρόσβασης."
 
 #: serializers.py:140
 msgid "Primary keys of the role to which this access control list binds to."
-msgstr ""
+msgstr "Πρωτεύοντα κλειδιά του ρόλου με τον οποίο αυτή η λίστα ελέγχου πρόσβασης είναι συνδεδεμένη."
 
 #: views.py:40
 #, python-format
 msgid ""
 "An ACL for \"%(object)s\" using role \"%(role)s\" already exists. Edit that "
 "ACL entry instead."
-msgstr ""
+msgstr "Υπάρχει ήδη ΛΕΠ για \"%(object)s\" σε χρήση με τον ρόλο \"%(role)s\". Τροποποίησε εκείνη την ΛΕΠ."
 
 #: views.py:53
 #, python-format
 msgid "New access control lists for: %s"
-msgstr "Νέα λίστα ελέγχου για: %s"
+msgstr "Νέες λίστες ελέγχου για: %s"
 
 #: views.py:95
 #, python-format
@@ -130,14 +131,14 @@ msgstr "Διαγραφή ΛΕΠ: %s"
 
 #: views.py:133
 msgid "There are no ACLs for this object"
-msgstr ""
+msgstr "Δεν υπάρχουν ΛΕΠ για αυτό το αντικείμενο"
 
 #: views.py:136
 msgid ""
 "ACL stands for Access Control List and is a precise method to control user "
 "access to objects in the system. ACLs allow granting a permission to a role "
 "but only for a specific object or set of objects."
-msgstr ""
+msgstr "Η ΛΕΠ είναι ακρωνύμιο της Λίστας Ελέγχου Πρόσβασης και είναι μία ακριβής μέθοδος για τον έλεγχο της πρόσβασης των χρηστών στα αντικείμενα του συστήματος. Οι ΛΕΠ επιτρέπουν την παραχώρηση δικαιωμάτων σε έναν ρόλο αλλά μόνο για ένα συγκεκριμένο αντικείμενο ή μια ομάδας αντικειμένων."
 
 #: views.py:143
 #, python-format
@@ -146,7 +147,7 @@ msgstr "Λίστα ελέγχου πρόσβασης για: %s"
 
 #: views.py:157
 msgid "Granted permissions"
-msgstr "Χωρηγημένα δικαιώματα"
+msgstr "Παραχωρημένα δικαιώματα"
 
 #: views.py:158
 msgid "Available permissions"
@@ -155,7 +156,7 @@ msgstr "Διαθέσιμα δικαιώματα"
 #: views.py:202
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\"."
-msgstr ""
+msgstr "Τα δικαιώματα του ρόλου \"%(role)s\" για \"%(object)s\""
 
 #: views.py:211
 msgid ""
@@ -163,7 +164,7 @@ msgid ""
 "to the role and can't be removed from this view. Inherited permissions need "
 "to be removed from the parent object's ACL or from them role via the Setup "
 "menu."
-msgstr ""
+msgstr "Τα απενεργοποιημένα δικαιώματα έχουν μεταβιβαστεί από κάποιο αντικείμενο-γονέα ή απ'ευθείας στον ρόλο και δεν μπορούν να αφαιρεθούν από αυτή την προβολή. Τα μεταβιβασμένα δικαιώματα πρέπει να αφαιρεθούν είτε από την ΛΕΠ του αντικειμένου γονέα ή από τον ρόλο μέσω του μενού Ρυθμίσεις."
 
 #: workflow_actions.py:23
 msgid "Object type"
@@ -188,25 +189,25 @@ msgstr "Ρόλοι"
 
 #: workflow_actions.py:42 workflow_actions.py:157
 msgid "Roles whose access will be modified."
-msgstr "Ρόλοι των οποιων η πρόσβαση θα τροποποιηθει."
+msgstr "Ρόλοι των οποίων η πρόσβαση θα τροποποιηθει."
 
 #: workflow_actions.py:49 workflow_actions.py:164
 msgid ""
 "Permissions to grant/revoke to/from the role for the object selected above."
-msgstr "Δικαιώματα προς χορήγηση/ανάληση προς/από τον ρόλο για το ανωτέρω επιλεγμένο αντικείμενο."
+msgstr "Δικαιώματα προς παραχώρηση/ανάκληση προς/από τον ρόλο για το άνωθεν επιλεγμένο αντικείμενο."
 
 #: workflow_actions.py:57
 msgid "Grant object access"
-msgstr ""
+msgstr "Παραχώρηση πρόσβασης σε αντικείμενο"
 
 #: workflow_actions.py:140
 msgid "Revoke object access"
-msgstr ""
+msgstr "Ανάκληση πρόσβασης σε αντικείμενο"
 
 #: workflow_actions.py:172
 msgid "Grant document access"
-msgstr ""
+msgstr "Παραχώρηση πρόσβασης σε έγγραφο"
 
 #: workflow_actions.py:211
 msgid "Revoke document access"
-msgstr ""
+msgstr "Ανάκληση πρόσβασης σε αντικείμενο"

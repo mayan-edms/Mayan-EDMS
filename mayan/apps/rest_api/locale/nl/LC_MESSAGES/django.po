@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-04-26 09:44+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:23 links.py:17 settings.py:6
+#: apps.py:23 links.py:17 settings.py:8
 msgid "REST API"
 msgstr "REST API"
 
@@ -42,6 +42,6 @@ msgstr "API Documentatie (ReDoc)"
 msgid "%s API"
 msgstr "%s API"
 
-#: settings.py:12
+#: settings.py:14
 msgid "Disable the REST API links in the tools menu."
 msgstr "De REST API links uitschakelen in het gereedschappen menu."

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-09-29 08:53+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:23 links.py:17 settings.py:6
+#: apps.py:23 links.py:17 settings.py:8
 msgid "REST API"
 msgstr "REST API"
 
@@ -41,6 +41,6 @@ msgstr "Dokumentace API (ReDoc)"
 msgid "%s API"
 msgstr "%s API"
 
-#: settings.py:12
+#: settings.py:14
 msgid "Disable the REST API links in the tools menu."
 msgstr "Zakažte odkazy REST API v nabídce nástrojů."

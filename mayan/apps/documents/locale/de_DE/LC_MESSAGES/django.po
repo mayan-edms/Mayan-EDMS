@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-10-26 13:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
@@ -28,8 +28,8 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:131 apps.py:378 events.py:5 menus.py:8
-#: models/document_models.py:128 permissions.py:5 queues.py:25 settings.py:18
+#: apps.py:131 apps.py:381 events.py:5 menus.py:8
+#: models/document_models.py:128 permissions.py:5 queues.py:25 settings.py:28
 #: statistics.py:234
 msgid "Documents"
 msgstr "Dokumente"
@@ -87,25 +87,27 @@ msgstr ""
 
 #: apps.py:246 links/document_version_links.py:37
 #: links/document_version_page_links.py:96 models/document_models.py:127
-#: models/document_version_models.py:71 models/misc_models.py:32
-#: models/misc_models.py:61 models/misc_models.py:89
+#: models/document_version_models.py:71
+#: models/duplicated_document_models.py:18
+#: models/favorite_document_models.py:26
+#: models/recently_accessed_document_models.py:27
 msgid "Document"
 msgstr "Dokument"
 
-#: apps.py:313 apps.py:344 apps.py:362 apps.py:409
+#: apps.py:314 apps.py:347 apps.py:365 apps.py:412
 msgid "Thumbnail"
 msgstr "Miniaturbild"
 
-#: apps.py:321 apps.py:414 forms/document_forms.py:183
+#: apps.py:322 apps.py:417 forms/document_forms.py:183
 #: links/document_version_page_links.py:135
 msgid "Pages"
 msgstr "Seiten"
 
-#: apps.py:330 links/duplicated_document_links.py:12
+#: apps.py:333 links/duplicated_document_links.py:12
 msgid "Duplicates"
 msgstr "Duplikate"
 
-#: apps.py:366
+#: apps.py:369
 msgid "Type"
 msgstr "Typ"
 
@@ -133,7 +135,7 @@ msgstr "Seiten gesamt"
 msgid "Total documents"
 msgstr "Alle Dokumente"
 
-#: dashboard_widgets.py:66 views/trashed_document_views.py:143
+#: dashboard_widgets.py:66 views/trashed_document_views.py:144
 msgid "Documents in trash"
 msgstr "Dokumente im Papierkorb"
 
@@ -266,7 +268,7 @@ msgstr "Pfad im Dateispeicher"
 msgid "Checksum"
 msgstr "Prüfsumme"
 
-#: forms/document_forms.py:199 literals.py:39
+#: forms/document_forms.py:199 literals.py:67
 msgid "Page range"
 msgstr "Seitenbereich"
 
@@ -277,7 +279,7 @@ msgid ""
 msgstr "Seitenzahl von der alle Transformationen übernommen werden. Bestehende Transformationen gehen verloren."
 
 #: forms/document_type_forms.py:73 models/document_models.py:64
-#: models/document_type_models.py:73 models/document_type_models.py:188
+#: models/document_type_models.py:73 models/document_type_models.py:190
 msgid "Document type"
 msgstr "Dokumententyp"
 
@@ -308,15 +310,15 @@ msgstr "Erweiterte Downloadoptionen"
 msgid "Edit properties"
 msgstr "Eigenschaften bearbeiten"
 
-#: links/document_links.py:51 views/document_views.py:93
+#: links/document_links.py:51 views/document_views.py:94
 msgid "All documents"
 msgstr "Alle Dokumente"
 
-#: links/document_links.py:55 views/document_views.py:619
+#: links/document_links.py:55 views/document_views.py:620
 msgid "Recently accessed"
 msgstr "Kürzlich abgerufen"
 
-#: links/document_links.py:59 views/document_views.py:647
+#: links/document_links.py:59 views/document_views.py:650
 msgid "Recently added"
 msgstr "Zuletzt hinzugefügt"
 
@@ -357,7 +359,7 @@ msgstr "Bearbeiten"
 msgid "Add quick label to document type"
 msgstr "Schnellbezeichner zu Dokumententyp hinzufügen"
 
-#: links/document_type_links.py:60 models/document_type_models.py:199
+#: links/document_type_links.py:60 models/document_type_models.py:201
 msgid "Quick labels"
 msgstr "Schnellbezeichner"
 
@@ -438,8 +440,10 @@ msgstr "Ansicht verkleinern"
 msgid "Recalculate page count"
 msgstr "Seitenzählung korrigieren"
 
-#: links/duplicated_document_links.py:16 models/misc_models.py:35
-#: models/misc_models.py:45 views/duplicated_document_views.py:73
+#: links/duplicated_document_links.py:16
+#: models/duplicated_document_models.py:21
+#: models/duplicated_document_models.py:31
+#: views/duplicated_document_views.py:76
 msgid "Duplicated documents"
 msgstr "Duplikate"
 
@@ -447,7 +451,7 @@ msgstr "Duplikate"
 msgid "Duplicated document scan"
 msgstr "Duplikatsuche"
 
-#: links/favorite_links.py:10 views/favorite_document_views.py:35
+#: links/favorite_links.py:10 views/favorite_document_views.py:36
 msgid "Favorites"
 msgstr "Favoriten"
 
@@ -475,11 +479,11 @@ msgstr "Wiederherstellen"
 msgid "Empty trash"
 msgstr "Papierkorb leeren"
 
-#: literals.py:10
+#: literals.py:13
 msgid "Default"
 msgstr "Standard"
 
-#: literals.py:39
+#: literals.py:67
 msgid "All pages"
 msgstr "Alle Seiten"
 
@@ -497,8 +501,9 @@ msgstr "Der Dokumententyp des Dokuments."
 msgid "The name of the document."
 msgstr "Name des Dokuments."
 
-#: models/document_models.py:68 models/document_page_models.py:272
-#: models/document_type_models.py:31 models/document_type_models.py:191
+#: models/document_models.py:68 models/document_models.py:198
+#: models/document_page_models.py:272 models/document_type_models.py:31
+#: models/document_type_models.py:193
 msgid "Label"
 msgstr "Bezeichner"
 
@@ -516,7 +521,7 @@ msgid ""
 "to the system."
 msgstr "Datum und Uhrzeit in Serverzeit, zu dem das Dokument auf dem System verarbeitet wurde."
 
-#: models/document_models.py:79 models/misc_models.py:38
+#: models/document_models.py:79 models/duplicated_document_models.py:24
 msgid "Added"
 msgstr "Hinzugefügt"
 
@@ -551,12 +556,12 @@ msgstr "Ein Fragment ist ein Dokument mit einem Eintrag in der Datenbank, für d
 msgid "Is stub?"
 msgstr "Inkomplett"
 
-#: models/document_models.py:131
+#: models/document_models.py:196
 #, python-format
 msgid "Document stub, id: %d"
 msgstr "Fragment, ID: %d"
 
-#: models/document_page_models.py:41 models/document_type_models.py:193
+#: models/document_page_models.py:41 models/document_type_models.py:195
 msgid "Enabled"
 msgstr "Aktiviert"
 
@@ -627,7 +632,7 @@ msgstr ""
 msgid "Documents types"
 msgstr "Dokumententypen"
 
-#: models/document_type_models.py:198
+#: models/document_type_models.py:200
 msgid "Quick label"
 msgstr "Schnellbezeichner"
 
@@ -672,31 +677,32 @@ msgstr "Die Kodierung der Datei der Dokumentenversion. binary 7-bit, binary 8-bi
 msgid "Encoding"
 msgstr "Kodierung"
 
-#: models/misc_models.py:44
+#: models/duplicated_document_models.py:30
 msgid "Duplicated document"
 msgstr "Duplikat"
 
-#: models/misc_models.py:57 models/misc_models.py:85
+#: models/favorite_document_models.py:22
+#: models/recently_accessed_document_models.py:23
 msgid "User"
 msgstr "Benutzer"
 
-#: models/misc_models.py:67
+#: models/favorite_document_models.py:32
 msgid "Favorite document"
 msgstr "Favoritendokument"
 
-#: models/misc_models.py:68
+#: models/favorite_document_models.py:33
 msgid "Favorite documents"
 msgstr "Favoritendokumente"
 
-#: models/misc_models.py:92
+#: models/recently_accessed_document_models.py:30
 msgid "Accessed"
 msgstr "Letzter Zugriff"
 
-#: models/misc_models.py:99
+#: models/recently_accessed_document_models.py:37
 msgid "Recent document"
 msgstr "Letztes Dokument"
 
-#: models/misc_models.py:100
+#: models/recently_accessed_document_models.py:38
 msgid "Recent documents"
 msgstr "Letzte Dokumente"
 
@@ -712,7 +718,7 @@ msgstr "Dokumente löschen"
 msgid "Trash documents"
 msgstr "Dokumente in den Papierkorb verschieben"
 
-#: permissions.py:17 views/document_views.py:204
+#: permissions.py:17 views/document_views.py:205
 msgid "Download documents"
 msgstr "Dokumente herunterladen"
 
@@ -824,104 +830,104 @@ msgstr "Duplikate scannen"
 msgid "Document type label"
 msgstr ""
 
-#: settings.py:26
+#: settings.py:35
 msgid ""
 "The threshold at which the DOCUMENT_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest document image cache files. Specify the size in bytes."
 msgstr "Der Schwellenwert, ab dem DOCUMENT_CACHE_STORAGE_BACKEND die ältesten Dokumentbild-Cache-Dateien löscht. Geben Sie die Größe in Bytes an."
 
-#: settings.py:34
+#: settings.py:43
 msgid ""
 "Path to the Storage subclass to use when storing the cached document image "
 "files."
 msgstr "Pfad zu der Speicherklasse für die Speicherung des Bildercaches."
 
-#: settings.py:42
+#: settings.py:50
 msgid "Arguments to pass to the DOCUMENT_CACHE_STORAGE_BACKEND."
 msgstr "Argumente, die an das DOCUMENT_CACHE_STORAGE_BACKEND weitergeleitet werden."
 
-#: settings.py:54
+#: settings.py:64
 msgid "Maximum number of favorite documents to remember per user."
 msgstr "Maximale Anzahl von Favoriten pro Benutzer."
 
-#: settings.py:60
+#: settings.py:69
 msgid ""
 "Detect the orientation of each of the document's pages and create a "
 "corresponding rotation transformation to display it rightside up. This is an"
 " experimental feature and it is disabled by default."
 msgstr "Erkennung der Ausrichtung von Dokumentenseiten und Erstellung einer entsprechenden Rotationstransformation, um die Seite in der korrekten Ausrichtung anzuzeigen. Dies ist eine experimentelle Eigenschaft, weshalb sie standardmäßig deaktiviert ist."
 
-#: settings.py:69
+#: settings.py:78
 msgid ""
 "Size of blocks to use when calculating the document file's checksum. A value"
 " of 0 disables the block calculation and the entire file will be loaded into"
 " memory."
 msgstr "Blockgröße die für die Berechnung der Dokumentenprüfsumme verwendet wird. Der Wert 0 verhindert die Berücksichtigung von Blöcken und das gesamte Dokument wird in den Speicher geladen."
 
-#: settings.py:76
+#: settings.py:85
 msgid "Default documents language (in ISO639-3 format)."
 msgstr "Standarddokumentensprache (in ISO639-3 Format)."
 
-#: settings.py:80
+#: settings.py:89
 msgid "List of supported document languages. In ISO639-3 format."
 msgstr "Liste der unterstützten Dokumentensprachen. In ISO639-3 Format."
 
-#: settings.py:85
+#: settings.py:94
 msgid ""
 "Time in seconds that the browser should cache the supplied document images. "
 "The default of 31559626 seconds corresponde to 1 year."
 msgstr "Zeit in Sekunden, die der Browser die übermittelten Dokumentengraphiken im Cache speichern sollte. Der Standard von 31559626 Sekunden entspricht 1 Jahr."
 
-#: settings.py:104
+#: settings.py:117
 msgid ""
 "Maximum number of recently accessed (created, edited, viewed) documents to "
 "remember per user."
 msgstr "Maximale Anzahl der letztens zugegriffenen (erstellten, bearbeiteten, angesehenen) Dokumente, die pro Benutzer gemerkt werden sollen."
 
-#: settings.py:111
+#: settings.py:124
 msgid "Maximum number of recently created documents to show."
 msgstr "Maximale Anzahl der letztens erstellten Dokumente, die angezeigt werden soll."
 
-#: settings.py:117
+#: settings.py:130
 msgid "Amount in degrees to rotate a document page per user interaction."
 msgstr "Gradzahl, die ein Dokument pro Benutzer Aktion gedreht wird."
 
-#: settings.py:123
+#: settings.py:136
 msgid "Path to the Storage subclass to use when storing document files."
 msgstr "Pfad zur Speicher-Unterklasse (Storage subclass) für die Speicherung der Dokumentendateien."
 
-#: settings.py:130
+#: settings.py:143
 msgid "Arguments to pass to the DOCUMENT_STORAGE_BACKEND."
 msgstr "Argumente, die an das DOCUMENT_STORAGE_BACKEND übergeben werden sollen."
 
-#: settings.py:136
+#: settings.py:149
 msgid ""
 "Time after which a document stub will be considered invalid and deleted."
 msgstr "Zeitspanne nach der ein Dokumentenfragment als ungültig angesehen und gelöscht wird."
 
-#: settings.py:144
+#: settings.py:157
 msgid ""
 "Amount of time in seconds, a failed document page image task will wait "
 "before retrying."
 msgstr ""
 
-#: settings.py:150
+#: settings.py:164
 msgid "Height in pixels of the document thumbnail image."
 msgstr "Höhe des Dokumentenminiaturbilds (Thumbnail) in Pixeln."
 
-#: settings.py:167
+#: settings.py:183
 msgid ""
 "Maximum amount in percent (%) to allow user to zoom in a document page "
 "interactively."
 msgstr "Maximaler erlaubter Zoom in %, den Benutzer interaktiv wählen können."
 
-#: settings.py:174
+#: settings.py:190
 msgid ""
 "Minimum amount in percent (%) to allow user to zoom out a document page "
 "interactively."
 msgstr "Minimaler erlaubter Zoom in %, den Benutzer interaktiv wählen können."
 
-#: settings.py:181
+#: settings.py:197
 msgid "Amount in percent zoom in or out a document page per user interaction."
 msgstr "Betrag in Prozent für Ansicht vergrößern/verkleinern pro Benutzer Aktion."
 
@@ -1042,7 +1048,7 @@ msgstr "Dokumentenbild"
 msgid "Unknown language \"%s\""
 msgstr "Unbekannte Sprache \"%s\""
 
-#: views/document_page_views.py:56
+#: views/document_page_views.py:57
 msgid ""
 "This could mean that the document is of a format that is not supported, that"
 " it is corrupted or that the upload process was interrupted. Use the "
@@ -1050,35 +1056,35 @@ msgid ""
 "again."
 msgstr "Das könnte bedeuten, dass das Format des Dokuments nicht unterstützt ist, dass es beschädigt ist oder dass der Uploadpozess unterbrochen wurde. Verwenden Sie die Neuberechnung der Seitenzahl für einen Aktualisierungsversuch."
 
-#: views/document_page_views.py:61
+#: views/document_page_views.py:62
 msgid "No document pages available"
 msgstr "Keine Dokumentenseiten verfügbar"
 
-#: views/document_page_views.py:63
+#: views/document_page_views.py:64
 #, python-format
 msgid "Pages for document: %s"
 msgstr "Seiten des Dokuments: %s"
 
-#: views/document_page_views.py:133
+#: views/document_page_views.py:134
 msgid "There are no more pages in this document"
 msgstr "Keine weiteren Seiten in diesem Dokument"
 
-#: views/document_page_views.py:149
+#: views/document_page_views.py:150
 msgid "You are already at the first page of this document"
 msgstr "Sie sind bereits auf der ersten Seite dieses Dokuments"
 
-#: views/document_page_views.py:169
+#: views/document_page_views.py:170
 #, python-format
 msgid "Image of: %s"
 msgstr "Seitenbild für %s"
 
-#: views/document_page_views.py:266
+#: views/document_page_views.py:268
 msgid "Disable the selected document page?"
 msgid_plural "Disable the selected document pages?"
 msgstr[0] "Die ausgewählte Dokumentseite deaktivieren?"
 msgstr[1] "Ausgewählte Dokumentenseiten deaktivieren?"
 
-#: views/document_page_views.py:296
+#: views/document_page_views.py:295
 msgid "Enable the selected document page?"
 msgid_plural "Enable the selected document pages?"
 msgstr[0] "Die ausgewählte Dokumentseite aktivieren?"
@@ -1157,351 +1163,351 @@ msgstr "Schnellbezeichner für Dokumententyp %s"
 msgid "Filename generation setup for document type: %s"
 msgstr ""
 
-#: views/document_version_views.py:43
+#: views/document_version_views.py:44
 msgid "Download document version"
 msgstr "Dokumentenversion herunterladen"
 
-#: views/document_version_views.py:81
+#: views/document_version_views.py:82
 #, python-format
 msgid "Versions of document: %s"
 msgstr "Versionen von Dokument %s"
 
-#: views/document_version_views.py:96
+#: views/document_version_views.py:97
 msgid "All later version after this one will be deleted too."
 msgstr "Alle späteren Versionen dieses Dokuments werden ebenfalls gelöscht."
 
-#: views/document_version_views.py:99
+#: views/document_version_views.py:100
 msgid "Revert to this version?"
 msgstr "Diese Dokumentenversion wiederherstellen?"
 
-#: views/document_version_views.py:107
+#: views/document_version_views.py:108
 msgid "Document version reverted successfully"
 msgstr "Dokument wurde erfolgreich wiederhergestellt"
 
-#: views/document_version_views.py:112
+#: views/document_version_views.py:113
 #, python-format
 msgid "Error reverting document version; %s"
 msgstr "Fehler beim Wiederherstellen der Dokumentenversion %s"
 
-#: views/document_version_views.py:140
+#: views/document_version_views.py:141
 #, python-format
 msgid "Preview of document version: %s"
 msgstr "Vorschau von Dokumentenversion %s"
 
-#: views/document_views.py:70
+#: views/document_views.py:71
 #, python-format
 msgid "Error retrieving document list: %(exception)s."
 msgstr "Fehler bei der Erzeugung der Dokumentenliste: %(exception)s."
 
-#: views/document_views.py:88
+#: views/document_views.py:89
 msgid ""
 "This could mean that no documents have been uploaded or that your user "
 "account has not been granted the view permission for any document or "
 "document type."
 msgstr "Das könnte bedeuten, dass keine Dokumente hochgeladen wurden oder dass Ihr Benutzerkonto nicht die notwendigen Berechtigungen hat, um Dokumente oder Dokumententypen anzusehen."
 
-#: views/document_views.py:92
+#: views/document_views.py:93
 msgid "No documents available"
 msgstr "Keine Dokumente vorhanden"
 
-#: views/document_views.py:107
+#: views/document_views.py:108
 #, python-format
 msgid "Document type change request performed on %(count)d document"
 msgstr "Dokumententyp geändert für %(count)d Dokument"
 
-#: views/document_views.py:110
+#: views/document_views.py:111
 #, python-format
 msgid "Document type change request performed on %(count)d documents"
 msgstr "Dokumententyp geändert für %(count)d Dokumente"
 
-#: views/document_views.py:117
+#: views/document_views.py:118
 msgid "Change"
 msgstr "Ändern"
 
-#: views/document_views.py:119
+#: views/document_views.py:120
 msgid "Change the type of the selected document"
 msgid_plural "Change the type of the selected documents"
 msgstr[0] "Typ des ausgewählten Dokuments ändern"
 msgstr[1] "Typ der ausgewählten Dokumente ändern"
 
-#: views/document_views.py:130
+#: views/document_views.py:131
 #, python-format
 msgid "Change the type of the document: %s"
 msgstr "Typ ändern für Dokument: %s"
 
-#: views/document_views.py:152
+#: views/document_views.py:153
 #, python-format
 msgid "Document type for \"%s\" changed successfully."
 msgstr "Dokumententyp für \"%s\" erfolgreich geändert."
 
-#: views/document_views.py:202
+#: views/document_views.py:203
 msgid "Download"
 msgstr "Herunterladen"
 
-#: views/document_views.py:301
+#: views/document_views.py:302
 #, python-format
 msgid "Preview of document: %s"
 msgstr "Vorschau von Dokument %s"
 
-#: views/document_views.py:321
+#: views/document_views.py:322
 #, python-format
 msgid "Edit properties of document: %s"
 msgstr "Eigenschaften von Dokument \"%s\" bearbeiten"
 
-#: views/document_views.py:352
+#: views/document_views.py:353
 #, python-format
 msgid "Properties for document: %s"
 msgstr "Eigenschaften von Dokument %s"
 
-#: views/document_views.py:361
+#: views/document_views.py:362
 #, python-format
 msgid "%(count)d document queued for page count recalculation"
 msgstr "%(count)d Dokument vorgemerkt für Neuberechnung der Seitenzahl"
 
-#: views/document_views.py:364
+#: views/document_views.py:365
 #, python-format
 msgid "%(count)d documents queued for page count recalculation"
 msgstr "%(count)d Dokumente vorgemerkt für Neuberechnung der Seitenzahl"
 
-#: views/document_views.py:372
+#: views/document_views.py:373
 msgid "Recalculate the page count of the selected document?"
 msgid_plural "Recalculate the page count of the selected documents?"
 msgstr[0] "Seitenzahl des ausgewählten Dokuments neu berechnen?"
 msgstr[1] "Seitenzahl der ausgewählten Dokumente neu berechnen?"
 
-#: views/document_views.py:383
+#: views/document_views.py:384
 #, python-format
 msgid "Recalculate the page count of the document: %s?"
 msgstr "Seitenzahl neu berechnen für Dokument: %s?"
 
-#: views/document_views.py:399
+#: views/document_views.py:400
 #, python-format
 msgid ""
 "Document \"%(document)s\" is empty. Upload at least one document version "
 "before attempting to detect the page count."
 msgstr "Dokument \"%(document)s\" hat keinen Inhalt. Laden Sie wenigstens eine Dokumentenversion hoch, bevor Sie versuchen die Seitenzahl zu ermitteln."
 
-#: views/document_views.py:413
+#: views/document_views.py:414
 #, python-format
 msgid "Transformation clear request processed for %(count)d document"
 msgstr "Transformation für %(count)d Dokument gelöscht"
 
-#: views/document_views.py:416
+#: views/document_views.py:417
 #, python-format
 msgid "Transformation clear request processed for %(count)d documents"
 msgstr "Transformation für %(count)d Dokumente gelöscht"
 
-#: views/document_views.py:424
+#: views/document_views.py:425
 msgid "Clear all the page transformations for the selected document?"
 msgid_plural "Clear all the page transformations for the selected document?"
 msgstr[0] "Alle Seitentransformationen für das ausgewählte Dokument löschen?"
 msgstr[1] "Alle Seitentransformationen für die ausgewählten Dokumente löschen?"
 
-#: views/document_views.py:435
+#: views/document_views.py:436
 #, python-format
 msgid "Clear all the page transformations for the document: %s?"
 msgstr "Transformationen zurücksetzen für Dokument: %s?"
 
-#: views/document_views.py:450
+#: views/document_views.py:451
 #, python-format
 msgid ""
 "Error deleting the page transformations for document: %(document)s; "
 "%(error)s."
 msgstr "Fehler beim Löschen der Seitentransformation von %(document)s; %(error)s."
 
-#: views/document_views.py:482
+#: views/document_views.py:483
 #, python-format
 msgid ""
 "Error cloning the page transformations for document: %(document)s; "
 "%(error)s."
 msgstr "Fehler beim Klonen der Seitentransformationen für Dokument: %(document)s; %(error)s."
 
-#: views/document_views.py:490
+#: views/document_views.py:491
 msgid "Transformations cloned successfully."
 msgstr "Transformationen erfolgreich kopiert."
 
-#: views/document_views.py:506 views/document_views.py:583
+#: views/document_views.py:507 views/document_views.py:584
 msgid "Submit"
 msgstr "Ändern"
 
-#: views/document_views.py:508
+#: views/document_views.py:509
 #, python-format
 msgid "Clone page transformations for document: %s"
 msgstr "Kopieren der Seiten-Transformationen für Dokument: %s"
 
-#: views/document_views.py:586
+#: views/document_views.py:587
 #, python-format
 msgid "Print: %s"
 msgstr "%s drucken"
 
-#: views/document_views.py:613
+#: views/document_views.py:614
 msgid ""
 "This view will list the latest documents viewed or manipulated in any way by"
 " this user account."
 msgstr "Diese Sicht zeigt die letzten in diesem Benutzerkonto angesehenen oder irgendwie bearbeiteten Bilder."
 
-#: views/document_views.py:617
+#: views/document_views.py:618
 msgid "There are no recently accessed document"
 msgstr "Keine zuletzt benutzten Dokumente vorhanden"
 
-#: views/document_views.py:641
+#: views/document_views.py:644
 msgid "This view will list the latest documents uploaded in the system."
 msgstr "Diese Sicht listet die letzten in das System hochgeladenen Dokumente."
 
-#: views/document_views.py:645
+#: views/document_views.py:648
 msgid "There are no recently added document"
 msgstr "Keine zuletzt hinzugefügten Dokumente vorhanden"
 
-#: views/duplicated_document_views.py:34
+#: views/duplicated_document_views.py:35
 msgid "Only exact copies of this document will be shown in the this list."
 msgstr "Nur exakte Kopien dieses Dokuments werden in dieser Liste angezeigt."
 
-#: views/duplicated_document_views.py:38
+#: views/duplicated_document_views.py:39
 msgid "There are no duplicates for this document"
 msgstr "Keine Duplikate für dieses Dokument vorhanden"
 
-#: views/duplicated_document_views.py:42
+#: views/duplicated_document_views.py:43
 #, python-format
 msgid "Duplicates for document: %s"
 msgstr "Duplikate für Dokument %s"
 
-#: views/duplicated_document_views.py:64
+#: views/duplicated_document_views.py:67
 msgid ""
 "Duplicates are documents that are composed of the exact same file, down to "
 "the last byte. Files that have the same text or OCR but are not identical or"
 " were saved using a different file format will not appear as duplicates."
 msgstr "Duplikate sind Dokumente, die von exakt derselben (byte-identischen) Datei stammen. Dateien mit demselben Text oder OCR-Ergebnis, aber mit nicht exakt identischer Ursprungsdatei oder einem unterschiedlichen Speicherformat werden nicht als Duplikate geführt."
 
-#: views/duplicated_document_views.py:71
+#: views/duplicated_document_views.py:74
 msgid "There are no duplicated documents"
 msgstr "Keine Duplikate vorhanden"
 
-#: views/duplicated_document_views.py:81
+#: views/duplicated_document_views.py:84
 msgid "Scan for duplicated documents?"
 msgstr "Nach Duplikaten suchen?"
 
-#: views/duplicated_document_views.py:88
+#: views/duplicated_document_views.py:91
 msgid "Duplicated document scan queued successfully."
 msgstr "Duplikatsuche erfolgreich in die Warteschlange eingestellt."
 
-#: views/favorite_document_views.py:31
+#: views/favorite_document_views.py:32
 #, python-format
 msgid ""
 "Favorited documents will be listed in this view. Up to %(count)d documents "
 "can be favorited per user. "
 msgstr "Favoriten werden in dieser Ansicht gelistet. Bis zu %(count)d Dokumente werden pro Benutzer als Favoriten gemerkt."
 
-#: views/favorite_document_views.py:34
+#: views/favorite_document_views.py:35
 msgid "There are no favorited documents."
 msgstr "Keine Favoriten vorhanden."
 
-#: views/favorite_document_views.py:46
+#: views/favorite_document_views.py:47
 #, python-format
 msgid "%(count)d document added to favorites."
 msgstr "%(count)d Dokument zu Favoriten hinzugefügt."
 
-#: views/favorite_document_views.py:49
+#: views/favorite_document_views.py:50
 #, python-format
 msgid "%(count)d documents added to favorites."
 msgstr "%(count)d Dokumente zu Favoriten hinzugefügt."
 
-#: views/favorite_document_views.py:54
+#: views/favorite_document_views.py:55
 msgid "Add"
 msgstr "Hinzufügen"
 
-#: views/favorite_document_views.py:57
+#: views/favorite_document_views.py:58
 msgid "Add the selected document to favorites?"
 msgid_plural "Add the selected documents to favorites?"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views/favorite_document_views.py:75
+#: views/favorite_document_views.py:76
 #, python-format
 msgid "Document \"%(instance)s\" is not in favorites."
 msgstr "Dokument \"%(instance)s\" ist nicht in den Favoriten."
 
-#: views/favorite_document_views.py:80
+#: views/favorite_document_views.py:81
 #, python-format
 msgid "%(count)d document removed from favorites."
 msgstr "%(count)d Dokument aus den Favoriten entfernt."
 
-#: views/favorite_document_views.py:83
+#: views/favorite_document_views.py:84
 #, python-format
 msgid "%(count)d documents removed from favorites."
 msgstr "%(count)d Dokumente aus den Favoriten entfernt."
 
-#: views/favorite_document_views.py:88
+#: views/favorite_document_views.py:89
 msgid "Remove"
 msgstr "Entfernen"
 
-#: views/favorite_document_views.py:91
+#: views/favorite_document_views.py:92
 msgid "Remove the selected document from favorites?"
 msgid_plural "Remove the selected documents from favorites?"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views/trashed_document_views.py:36
+#: views/trashed_document_views.py:37
 #, python-format
 msgid "%(count)d document moved to the trash."
 msgstr "%(count)d Dokument in den Papierkorb verschoben."
 
-#: views/trashed_document_views.py:39
+#: views/trashed_document_views.py:40
 #, python-format
 msgid "%(count)d documents moved to the trash."
 msgstr "%(count)d Dokumente in den Papierkorb verschoben."
 
-#: views/trashed_document_views.py:45
+#: views/trashed_document_views.py:46
 msgid "Move the selected document to the trash?"
 msgid_plural "Move the selected documents to the trash?"
 msgstr[0] "Ausgewähltes Dokument in den Papierkorb verschieben?"
 msgstr[1] "Ausgewählte Dokumente in den Papierkorb verschieben?"
 
-#: views/trashed_document_views.py:75
+#: views/trashed_document_views.py:76
 msgid "Empty trash?"
 msgstr "Papierkorb leeren?"
 
-#: views/trashed_document_views.py:83
+#: views/trashed_document_views.py:84
 msgid "The trash emptying task has been queued."
 msgstr ""
 
-#: views/trashed_document_views.py:93
+#: views/trashed_document_views.py:94
 #, python-format
 msgid "%(count)d trashed document submitted for deletion."
 msgstr "%(count)d Dokument aus dem Papierkorb zum Löschen eingereicht."
 
-#: views/trashed_document_views.py:96
+#: views/trashed_document_views.py:97
 #, python-format
 msgid "%(count)d trashed documents submitted for deletion."
 msgstr "%(count)d Dokumente aus dem Papierkorb zum Löschen eingereicht."
 
-#: views/trashed_document_views.py:102
+#: views/trashed_document_views.py:103
 msgid "Delete the selected trashed document?"
 msgid_plural "Delete the selected trashed documents?"
 msgstr[0] "Ausgewähltes Dokument aus dem Papierkorb löschen?"
 msgstr[1] "Ausgewählte Dokumente aus dem Papierkorb löschen?"
 
-#: views/trashed_document_views.py:136
+#: views/trashed_document_views.py:137
 msgid ""
 "To avoid loss of data, documents are not deleted instantly. First, they are "
 "placed in the trash can. From here they can be then finally deleted or "
 "restored."
 msgstr "Um Datenverlust zu verhindern werden Dokumente nicht sofort gelöscht, sondern in den Papierkorb verschoben. Von hier aus können sie dann endgültig gelöscht oder wiederhergestellt werden."
 
-#: views/trashed_document_views.py:141
+#: views/trashed_document_views.py:142
 msgid "There are no documents in the trash can"
 msgstr "Es sind keine Dokumente im Papierkorb"
 
-#: views/trashed_document_views.py:154
+#: views/trashed_document_views.py:155
 #, python-format
 msgid "%(count)d trashed document restored."
 msgstr "%(count)d Dokument aus dem Papierkorb wiederhergestellt."
 
-#: views/trashed_document_views.py:157
+#: views/trashed_document_views.py:158
 #, python-format
 msgid "%(count)d trashed documents restored."
 msgstr "%(count)d Dokumente aus dem Papierkorb wiederhergestellt."
 
-#: views/trashed_document_views.py:163
+#: views/trashed_document_views.py:164
 msgid "Restore the selected trashed document?"
 msgid_plural "Restore the selected trashed documents?"
 msgstr[0] "Ausgewähltes Dokument aus dem Papierkorb wiederherstellen?"

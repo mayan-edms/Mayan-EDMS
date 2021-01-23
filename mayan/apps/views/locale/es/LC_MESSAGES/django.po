@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-09-27 06:47+0000\n"
 "Last-Translator: Roberto Rosario, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:15 settings.py:5
+#: apps.py:15 settings.py:7
 msgid "Views"
 msgstr "Vistas"
 
@@ -104,16 +104,16 @@ msgstr "%(object)s no se pudo actualizar, error: %(error)s."
 msgid "%(object)s updated successfully."
 msgstr "%(object)s actualizado con éxito."
 
-#: mixins.py:319
+#: mixins.py:324
 #, python-format
 msgid "No %(verbose_name)s found matching the query"
 msgstr "No se encontró %(verbose_name)s que coincida con la consulta"
 
-#: mixins.py:433
+#: mixins.py:438
 msgid "Object"
 msgstr "Objeto"
 
-#: settings.py:11
+#: settings.py:12
 msgid "The number objects that will be displayed per page."
 msgstr "El número de objetos que se mostrarán por página."
 

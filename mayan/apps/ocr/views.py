@@ -4,6 +4,7 @@ from django.urls import reverse, reverse_lazy
 from django.utils.translation import ugettext_lazy as _, ungettext
 
 from mayan.apps.documents.forms.document_type_forms import DocumentTypeFilteredSelectForm
+from mayan.apps.documents.models.document_models import Document
 from mayan.apps.documents.models.document_type_models import DocumentType
 from mayan.apps.documents.models.document_version_models import DocumentVersion
 from mayan.apps.documents.models.document_version_page_models import DocumentVersionPage
@@ -24,9 +25,9 @@ from .utils import get_instance_ocr_content
 
 
 class DocumentVersionOCRContentDeleteView(MultipleObjectConfirmActionView):
-    model = DocumentVersion
     object_permission = permission_document_version_ocr
     pk_url_kwarg = 'document_version_id'
+    source_queryset = DocumentVersion.valid
     success_message = 'Deleted OCR content of %(count)d document version.'
     success_message_plural = 'Deleted OCR content of %(count)d document versions.'
 
@@ -54,9 +55,9 @@ class DocumentVersionOCRContentDeleteView(MultipleObjectConfirmActionView):
 
 class DocumentVersionOCRContentView(SingleObjectDetailView):
     form_class = DocumentVersionOCRContentForm
-    model = DocumentVersion
     object_permission = permission_document_version_ocr_content_view
     pk_url_kwarg = 'document_version_id'
+    source_queryset = DocumentVersion.valid
 
     def dispatch(self, request, *args, **kwargs):
         result = super().dispatch(
@@ -75,9 +76,9 @@ class DocumentVersionOCRContentView(SingleObjectDetailView):
 
 
 class DocumentVersionOCRDownloadView(SingleObjectDownloadView):
-    model = DocumentVersion
     object_permission = permission_document_version_ocr_content_view
     pk_url_kwarg = 'document_version_id'
+    source_queryset = DocumentVersion.valid
 
     def get_download_file_object(self):
         return get_instance_ocr_content(instance=self.object)
@@ -87,9 +88,9 @@ class DocumentVersionOCRDownloadView(SingleObjectDownloadView):
 
 
 class DocumentVersionOCRErrorsListView(ExternalObjectMixin, SingleObjectListView):
-    external_object_class = DocumentVersion
     external_object_permission = permission_document_version_ocr
     external_object_pk_url_kwarg = 'document_version_id'
+    external_object_queryset = DocumentVersion.valid
 
     def get_extra_context(self):
         return {
@@ -103,19 +104,19 @@ class DocumentVersionOCRErrorsListView(ExternalObjectMixin, SingleObjectListView
 
 
 class DocumentVersionOCRSubmitView(MultipleObjectConfirmActionView):
-    model = DocumentVersion
     object_permission = permission_document_version_ocr
     pk_url_kwarg = 'document_version_id'
-    success_message = '%(count)d document submitted to the OCR queue.'
-    success_message_plural = '%(count)d documents submitted to the OCR queue.'
+    source_queryset = DocumentVersion.valid
+    success_message = '%(count)d document version submitted to the OCR queue.'
+    success_message_plural = '%(count)d document versions submitted to the OCR queue.'
 
     def get_extra_context(self):
         queryset = self.object_list
 
         result = {
             'title': ungettext(
-                singular='Submit the selected document to the OCR queue?',
-                plural='Submit the selected documents to the OCR queue?',
+                singular='Submit the selected document version to the OCR queue?',
+                plural='Submit the selected document versions to the OCR queue?',
                 number=queryset.count()
             )
         }
@@ -131,9 +132,9 @@ class DocumentVersionOCRSubmitView(MultipleObjectConfirmActionView):
 
 class DocumentVersionPageOCRContentView(SingleObjectDetailView):
     form_class = DocumentVersionPageOCRContentForm
-    model = DocumentVersionPage
     object_permission = permission_document_version_ocr_content_view
     pk_url_kwarg = 'document_version_page_id'
+    source_queryset = DocumentVersionPage.valid
 
     def dispatch(self, request, *args, **kwargs):
         result = super().dispatch(
@@ -161,8 +162,11 @@ class DocumentTypeSubmitView(FormView):
 
     def form_valid(self, form):
         count = 0
+
+        valid_documents_queryset = Document.valid.all()
+
         for document_type in form.cleaned_data['document_type']:
-            for document in document_type.documents.all():
+            for document in document_type.documents.filter(pk__in=valid_documents_queryset.values('pk')):
                 document.submit_for_ocr()
                 count += 1
 

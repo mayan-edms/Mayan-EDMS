@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-09-27 06:46+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-11-11 01:45+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (http://www.transifex.com/rosarior/mayan-edms/language/bs/)\n"
 "MIME-Version: 1.0\n"
@@ -78,7 +78,7 @@ msgid "Email link"
 msgstr "Email link"
 
 #: links.py:35
-msgid "Create mailing profile "
+msgid "Create mailing profile"
 msgstr ""
 
 #: links.py:41
@@ -284,19 +284,19 @@ msgstr "Koristite mailing listu"
 msgid "Send document"
 msgstr "Pošaljite dokument"
 
-#: settings.py:14
+#: settings.py:15
 msgid "Template for the document email form subject line."
 msgstr "Šablon za temu linije naslova e-pošte dokumenta."
 
-#: settings.py:19
+#: settings.py:21
 msgid "Template for the document email form body text. Can include HTML."
 msgstr "Šablon za tekst e-pošte oblikuje tekst tela. Može uključiti HTML."
 
-#: settings.py:24
+#: settings.py:27
 msgid "Template for the document link email form subject line."
 msgstr "Šablon za liniju naslova linka e-poruke."
 
-#: settings.py:29
+#: settings.py:33
 msgid "Template for the document link email form body text. Can include HTML."
 msgstr "Šablon za link dokumenta e-pošte oblikuje tekst tela. Može uključiti HTML."
 

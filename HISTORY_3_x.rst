@@ -1,9 +1,83 @@
-3.5.3 (2020-XX-XX)
+3.5.5 (2021-01-05)
 ==================
-- Ensure the document tag list view return DocumentTag instances and not
-  regular Tag instances.
-- Lower the severity of the VariableDoesNotExist exception when resolving
+- Merge improvements and fixes from the 3.4 series.
+- Improve the Single Page App AJAX content escape logic.
+  This avoids an infinite login redirect loop on some browsers.
+- Avoid self-referencing dictionaries when resolving primary key
+  URL keyword arguments.
+- Translation updates.
+- Remove CD/CI MySQL tests. MySQL does not yet support sliced subqueries.
+  This queryset paradigm is used in Mayan EDMS to avoid keeping temporary
+  lists of IDs in Python memory and allow moving all queryset computation
+  to the database layer. This is the cause of error 1235, "This version of
+  MySQL doesn't yet support 'LIMIT & IN/ALL/ANY/SOME subquery'".
+- Allow trashed documents to still display a thumbnail and accurate page
+  count.
+- Filter trashed documents from the active workflow and workflow states
+  document lists.
+
+3.5.4 (2020-12-14)
+==================
+- Document stubs without a label will now display their ID as the label.
+  This allows documents without files or versions to be accessible via the
+  user interface.
+- Return the event type subscription list sorted by namespace label and event
+  type label.
+- Add icons to the mark notification as seen and mark all notification as
+  seen links.
+- Updated events test mixins. Allow returning one, many or all events.
+- Clean up API end point enumeration API view.
+- Split the misc_models.py models module into different modules.
+- Stricter filtering and permission checking for duplicated documents.
+  Users now need the document view permission for all duplicated documents
+  for any of them to show up in the duplicated document list. The duplicate
+  count column now performs filtering and will only show the count of
+  duplicated documents that the user can access.
+- Updated ``.get_external_object_queryset`` to ensure that the queryset is
+  always up to date when the view is accessed.
+- Update app views to filter trashed documents. Closes GitLab issues #910
+  and #920. Thanks to Sven Gaechter (@sgaechter), Francesco Musella
+  (@francesco.musella-biztems), Kevin Pawsey (@kevinpawsey), and
+  None Given (@nastodon) for the reports and debug information.
+- Move all static values from setting modules to the literals modules.
+  Closes GitLab issue #852.
+- Update workflow instance access requirements to match the intended layout
+  and the current REST API layout. In order to view the list of log entries
+  and the list of workflow instances of a document, the workflow permission
+  view is now required for the document as well as the workflow template.
+  This double permission requirement now matches the same design as the
+  metadata and tags apps.
+- Django's global_settings module instead of the settings module which is
+  not ready at the time the default are computed.
+- Add API endpoints for the workflow transition fields model.
+- Add ``libarchive-zip-perl`` to the Docker image to allow EXIFTOOL to
+  retrieve Zip file metadata. Closes GitLab issue #918. Thanks to Enrico
+  Gargale (@egargale) for the request.
+- Update Docker image from version debian:10-5 to debian:10-7.
+- Switch the base image of the GitLab CI file from ubuntu 19.10 to
+  debian:10-7.
+
+3.5.3 (2020-11-11)
+==================
+- Ensure the document tag list view return ``DocumentTag`` instances and not
+  regular ``Tag`` instances.
+- Lower the severity of the ``VariableDoesNotExist`` exception when resolving
   links. This exception does not is indicative of an error in the code.
+- Merge and include fixes from version 3.4.20.
+- Fix column display in the dependency list views.
+- Disable initial state column for workflow proxies
+- Update Dropzone from version 5.4.0 to 5.7.2.
+- Remove sources app custom upload form and use the app template loader.
+- Remove Dropzone upload size limit.
+- Increase width of the Dropzone error message box.
+- Fixed an issue introduced in ``865ae60fcef38e07bbf6d09bd6032017e3603698``
+  when support for adding document stubs in signal handlers was added. This
+  issue causes new documents to contain two versions instead of one. The
+  only consequence of this issue is extra storage usage, no data loss occurs.
+  The extra document version can be safely deleted by using the document
+  version revert feature. Doing this will delete the extra document version
+  from the database and from the storage. Closes GitLab issue #895. Thanks
+  to Lukas Auer (@lukasauer) for the report and initial investigation.
 
 3.5.2 (2020-10-26)
 ==================

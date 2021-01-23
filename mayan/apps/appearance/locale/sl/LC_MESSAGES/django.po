@@ -4,14 +4,15 @@
 # 
 # Translators:
 # Translators:
+# Jože Detečnik <joze.detecnik@3tav.si>, 2020
 # kontrabant <kontrabant@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-09-27 08:36+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-12-25 10:28+0000\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>\n"
 "Language-Team: Slovenian (http://www.transifex.com/rosarior/mayan-edms/language/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,71 +26,71 @@ msgstr "Videz"
 
 #: dependencies.py:8
 msgid "Lato font"
-msgstr ""
+msgstr "Lato pisava"
 
 #: dependencies.py:12
 msgid "Bootstrap"
-msgstr ""
+msgstr "Bootstrap"
 
 #: dependencies.py:16
 msgid "Bootswatch"
-msgstr ""
+msgstr "Bootswatch"
 
 #: dependencies.py:30
 msgid "Fancybox"
-msgstr ""
+msgstr "Fancybox"
 
 #: dependencies.py:34
 msgid "FontAwesome"
-msgstr ""
+msgstr "FontAwesome"
 
 #: dependencies.py:38
 msgid "jQuery"
-msgstr ""
+msgstr "jQuery"
 
 #: dependencies.py:41
 msgid "JQuery Form"
-msgstr ""
+msgstr "Obrazec JQuery"
 
 #: dependencies.py:45
 msgid "jQuery Lazy Load"
-msgstr ""
+msgstr "jQuery Lazy Load"
 
 #: dependencies.py:49
 msgid "JQuery Match Height"
-msgstr ""
+msgstr "Višina ujemanja JQuery"
 
 #: dependencies.py:53
 msgid "Select 2"
-msgstr ""
+msgstr "Izberite 2"
 
 #: dependencies.py:57
 msgid "Toastr"
-msgstr ""
+msgstr "Toastr"
 
 #: dependencies.py:60
 msgid "URI.js"
-msgstr ""
+msgstr "URI.js"
 
 #: events.py:8
 msgid "Theme created"
-msgstr ""
+msgstr "Tema ustvarjena"
 
 #: events.py:11
 msgid "Theme edited"
-msgstr ""
+msgstr "Tema urejena"
 
 #: links.py:15
 msgid "Theme settings"
-msgstr ""
+msgstr "Nastavitve teme"
 
 #: links.py:20
 msgid "Edit theme settings"
-msgstr ""
+msgstr "Urejanje nastavitev teme"
 
 #: links.py:27 views.py:47
 msgid "Create new theme"
-msgstr ""
+msgstr "Ustvari novo temo"
 
 #: links.py:33
 msgid "Delete"
@@ -97,15 +98,15 @@ msgstr "Izbriši"
 
 #: links.py:39
 msgid "Edit"
-msgstr ""
+msgstr "Uredi"
 
 #: links.py:43 links.py:47 models.py:25 views.py:111
 msgid "Themes"
-msgstr ""
+msgstr "Teme"
 
 #: models.py:12
 msgid "A short text describing the theme."
-msgstr ""
+msgstr "Kratko besedilo, ki opisuje temo."
 
 #: models.py:13
 msgid "Label"
@@ -115,57 +116,57 @@ msgstr "Oznaka"
 msgid ""
 "The CSS stylesheet to change the appearance of the different user interface "
 "elements."
-msgstr ""
+msgstr "Tabela s slogi CSS za spreminjanje videza različnih elementov uporabniškega vmesnika."
 
 #: models.py:19
 msgid "Stylesheet"
-msgstr ""
+msgstr "Preglednica"
 
 #: models.py:24 models.py:60
 msgid "Theme"
-msgstr ""
+msgstr "Tema"
 
 #: models.py:56
 msgid "User"
-msgstr ""
+msgstr "Uporabnik"
 
 #: models.py:64
 msgid "User theme setting"
-msgstr ""
+msgstr "Uporabniška nastavitev teme"
 
 #: models.py:65
 msgid "User theme settings"
-msgstr ""
+msgstr "Nastavitve uporabniške teme"
 
 #: permissions.py:8
 msgid "Create new themes"
-msgstr ""
+msgstr "Ustvari nove teme"
 
 #: permissions.py:11
 msgid "Delete themes"
-msgstr ""
+msgstr "Izbriši teme"
 
 #: permissions.py:14
 msgid "Edit themes"
-msgstr ""
+msgstr "Urejanje tem"
 
 #: permissions.py:17
 msgid "View existing themes"
-msgstr ""
+msgstr "Oglejte si obstoječe teme"
 
 #: settings.py:12
 msgid "Maximum number of characters that will be displayed as the view title."
-msgstr ""
+msgstr "Največje število znakov, ki bo prikazano kot naslov pogleda."
 
 #: settings.py:19
 msgid ""
 "Position where the system message will be displayed. Options are: top-left, "
 "top-center, top-right, bottom-left, bottom-center, bottom-right."
-msgstr ""
+msgstr "Položaj, kjer bo prikazano sistemsko sporočilo. Možnosti so: zgoraj-levo, zgoraj na sredini, zgoraj-desno, spodaj-levo, spodaj-na sredini, spodaj-desno."
 
 #: templates/403.html:5 templates/403.html:30
 msgid "Insufficient permission"
-msgstr ""
+msgstr "Nezadostno dovoljenje"
 
 #: templates/403.html:32
 msgid "You don't have enough permissions for this operation."
@@ -177,25 +178,25 @@ msgstr "Stran ni najdena"
 
 #: templates/404.html:32
 msgid "The requested page could not be found."
-msgstr ""
+msgstr "Zahtevane strani ni bilo mogoče najti."
 
 #: templates/404.html:40
 msgid "Possible reasons"
-msgstr ""
+msgstr "Možni razlogi"
 
 #: templates/404.html:44
 msgid "The location of the item is incorrect."
-msgstr ""
+msgstr "Lokacija predmeta je napačna."
 
 #: templates/404.html:45
 msgid "The location is correct, but the item no longer exists."
-msgstr ""
+msgstr "Lokacija je pravilna, vendar element ne obstaja več."
 
 #: templates/404.html:46
 msgid ""
 "The location is be correct, but your account does not have the required "
 "permission to access it."
-msgstr ""
+msgstr "Lokacija je pravilna, vendar vaš račun nima zahtevanega dovoljenja za dostop do nje."
 
 #: templates/500.html:5 templates/500.html:30
 #: templates/appearance/root.html:58
@@ -204,32 +205,32 @@ msgstr "Napaka strežnika"
 
 #: templates/500.html:32
 msgid "There's been an unexpected error."
-msgstr ""
+msgstr "Prišlo je do nepričakovane napake."
 
 #: templates/500.html:40
 msgid "What to do next?"
-msgstr ""
+msgstr "Kaj storiti naprej?"
 
 #: templates/500.html:44
 msgid "Refresh the page."
-msgstr ""
+msgstr "Osvežite stran."
 
 #: templates/500.html:45
 msgid "Wait a bit. The system might be overloaded."
-msgstr ""
+msgstr "Počakaj malo. Sistem je morda preobremenjen."
 
 #: templates/500.html:46
 msgid "Contact your system administrator."
-msgstr ""
+msgstr "Obrnite se na skrbnika sistema."
 
 #: templates/500.html:47
 msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
-msgstr ""
+msgstr "V dnevnikih preverite sporočila z oznakami »NAPAKA«, »KRITIČNO« ali »FATAL«."
 
 #: templates/500.html:48
 #, python-format
 msgid "Open a ticket using the <a href=\"%(issue_url)s\">issue tracker</a>."
-msgstr ""
+msgstr "Odprite vozovnico s pomočjo <a href=\"%(issue_url)s\">sledilca težav</a> ."
 
 #: templates/appearance/about.html:10
 msgid "About"
@@ -241,7 +242,7 @@ msgid ""
 "\n"
 "                    %(setting_project_title)s is based on %(project_title)s\n"
 "                "
-msgstr ""
+msgstr "\n                    %(setting_project_title)s temelji na %(project_title)s\n                "
 
 #: templates/appearance/about.html:78
 msgid "Version"
@@ -254,7 +255,7 @@ msgstr "Številka izgradnje: %(build_number)s"
 
 #: templates/appearance/about.html:93
 msgid "Released under the license:"
-msgstr ""
+msgstr "Izdano pod licenco:"
 
 #: templates/appearance/about.html:99
 #, python-format
@@ -262,7 +263,7 @@ msgid ""
 "\n"
 "                %(project_title)s is a free and open-source software brought to you with <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
 "            "
-msgstr ""
+msgstr "\n                %(project_title)s je brezplačna in odprtokodna programska oprema, ki vam jo prinašamo <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> Roberto Rosario in ekipa.\n            "
 
 #: templates/appearance/about.html:105
 #, python-format
@@ -270,7 +271,7 @@ msgid ""
 "\n"
 "                It takes great effort to make %(project_title)s as feature-rich as it is.\n"
 "            "
-msgstr ""
+msgstr "\n               Za to si je treba zelo prizadevati da je   %(project_title)s tako funkcionalen.\n            "
 
 #: templates/appearance/about.html:111
 #, python-format
@@ -278,7 +279,7 @@ msgid ""
 "\n"
 "                If you use %(project_title)s please <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">make a donation %(icon_social_paypal)s</a>\n"
 "            "
-msgstr ""
+msgstr "\n                Če uporabljate %(project_title)s prosim <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">za prispevek %(icon_social_paypal)s</a>\n            "
 
 #: templates/appearance/about.html:117
 #, python-format
@@ -286,7 +287,7 @@ msgid ""
 "\n"
 "                The complete list of changes is available via the <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> or the short version <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
 "            "
-msgstr ""
+msgstr "\n                Celoten seznam sprememb je na voljo na <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Opombe ob izdaji %(icon_documentation)s</a> oziroma v kratki različici <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Spremembe %(icon_documentation)s</a>.\n            "
 
 #: templates/appearance/about.html:123
 #, python-format
@@ -294,7 +295,7 @@ msgid ""
 "\n"
 "                For questions check the <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
 "            "
-msgstr ""
+msgstr "\n                Za vprašanja preverite <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">dokumentacijo%(icon_documentation)s</a>.\n            "
 
 #: templates/appearance/about.html:129
 #, python-format
@@ -302,7 +303,7 @@ msgid ""
 "\n"
 "                If you found a bug or have a feature idea, visit the <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository %(icon_source_code)s</a>.\n"
 "            "
-msgstr ""
+msgstr "\n                Če ste našli napako ali imate idejo za funkcijo, obiščite <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> ali odprite zahtevek <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Izvorna koda %(icon_source_code)s</a>.\n            "
 
 #: templates/appearance/about.html:134
 #, python-format
@@ -310,21 +311,21 @@ msgid ""
 "\n"
 "                Spread the word. Talk to your friends and colleagues about how awesome %(project_title)s is!\n"
 "            "
-msgstr ""
+msgstr "\n              Razširi besedo. Pogovorite se s prijatelji in sodelavci o tem, kako čudovit je%(project_title)s !\n            "
 
 #: templates/appearance/base.html:43 templates/appearance/base.html:67
 msgid "Warning"
-msgstr ""
+msgstr "Opozorilo"
 
 #: templates/appearance/base.html:57
 msgid "Click here to fix this."
-msgstr ""
+msgstr "Kliknite tukaj, da to popravite."
 
 #: templates/appearance/base.html:67
 msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."
-msgstr ""
+msgstr "Nastavitve posodobljene, znova zaženite namestitev in osvežite brskalnik, da bodo spremembe začele veljati."
 
 #: templates/appearance/base.html:75
 #, python-format
@@ -332,11 +333,11 @@ msgid ""
 "\n"
 "                                        Impersonating user \"%(user)s\".\n"
 "                                    "
-msgstr ""
+msgstr "\n                                        Uporabnik \"%(user)s\".\n                                    "
 
 #: templates/appearance/base.html:78
 msgid "Click here when finished"
-msgstr ""
+msgstr "Ko končate, kliknite tukaj"
 
 #: templates/appearance/base.html:92
 #: templates/appearance/generic_list_items_subtemplate.html:66
@@ -351,11 +352,11 @@ msgstr "Preklopi spustni seznam"
 
 #: templates/appearance/calculate_form_title.html:10
 msgid "Open main menu"
-msgstr ""
+msgstr "Odprite glavni meni"
 
 #: templates/appearance/generic_confirm.html:14
 msgid "Are you sure?"
-msgstr ""
+msgstr "Ali si prepričan?"
 
 #: templates/appearance/generic_confirm.html:38
 msgid "Yes"
@@ -399,11 +400,11 @@ msgstr "Nadzorna plošča"
 
 #: templates/appearance/home.html:26
 msgid "Getting started"
-msgstr ""
+msgstr "Kako začeti"
 
 #: templates/appearance/home.html:29
 msgid "Before you can fully use Mayan EDMS you need the following:"
-msgstr ""
+msgstr "Preden lahko v celoti uporabljate Mayan EDMS, potrebujete naslednje:"
 
 #: templates/appearance/list_header.html:12
 #, python-format
@@ -420,20 +421,20 @@ msgstr "Skupaj: %(total)s"
 
 #: templates/appearance/list_toolbar.html:13
 msgid "Select/Deselect all"
-msgstr ""
+msgstr "Izberite / Prekliči izbor"
 
 #: templates/appearance/list_toolbar.html:17
 msgid "Toggle list display mode"
-msgstr ""
+msgstr "Preklopi način prikaza seznama"
 
 #: templates/appearance/list_toolbar.html:60
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
-msgstr ""
+msgstr "Izberite elemente, da aktivirate množična dejanja. Uporabite Shift + klik, da izberete več."
 
 #: templates/appearance/list_toolbar.html:65
 msgid "Bulk actions"
-msgstr ""
+msgstr "Množična dejanja"
 
 #: templates/appearance/menu_topbar.html:11
 msgid "Toggle navigation"
@@ -445,15 +446,15 @@ msgstr "Ni rezultatov"
 
 #: templates/appearance/root.html:63
 msgid "Close"
-msgstr ""
+msgstr "Zapri"
 
 #: templates/appearance/root.html:73
 msgid "Server communication error"
-msgstr ""
+msgstr "Napaka komunikacije strežnika"
 
 #: templates/appearance/root.html:75
 msgid "Check you network connection and try again in a few moments."
-msgstr ""
+msgstr "Preverite omrežno povezavo in poskusite znova čez nekaj trenutkov."
 
 #: templatetags/appearance_tags.py:44
 msgid "None"
@@ -461,27 +462,27 @@ msgstr "Brez"
 
 #: views.py:29
 msgid "Current user theme settings details"
-msgstr ""
+msgstr "Podrobnosti o trenutnih nastavitvah uporabniške teme"
 
 #: views.py:35
 msgid "Edit current user theme settings details"
-msgstr ""
+msgstr "Uredite podrobnosti trenutnih nastavitev uporabniške teme"
 
 #: views.py:69
 #, python-format
 msgid "Delete theme: %s"
-msgstr ""
+msgstr "Izbriši temo: %s"
 
 #: views.py:85
 #, python-format
 msgid "Edit theme: %s"
-msgstr ""
+msgstr "Uredi temo: %s"
 
 #: views.py:105
 msgid ""
 "Themes allow changing the visual appearance without requiring code changes."
-msgstr ""
+msgstr "Teme omogočajo spreminjanje vizualnega videza brez potrebe po spremembi kode."
 
 #: views.py:109
 msgid "There are no themes"
-msgstr ""
+msgstr "Teme ni"

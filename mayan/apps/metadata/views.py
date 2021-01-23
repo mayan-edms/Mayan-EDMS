@@ -49,9 +49,9 @@ class DocumentMetadataAddView(
     DocumentMetadataSameTypeMixin, MultipleObjectFormActionView
 ):
     form_class = DocumentMetadataAddForm
-    model = Document
     object_permission = permission_document_metadata_add
     pk_url_kwarg = 'document_id'
+    source_queryset = Document.valid
     success_message = _('Metadata add request performed on %(count)d document')
     success_message_plural = _(
         'Metadata add request performed on %(count)d documents'
@@ -191,9 +191,9 @@ class DocumentMetadataEditView(
     DocumentMetadataSameTypeMixin, MultipleObjectFormActionView
 ):
     form_class = DocumentMetadataFormSet
-    model = Document
     object_permission = permission_document_metadata_edit
     pk_url_kwarg = 'document_id'
+    source_queryset = Document.valid
     success_message = _(
         'Metadata edit request performed on %(count)d document'
     )
@@ -348,9 +348,9 @@ class DocumentMetadataEditView(
 
 
 class DocumentMetadataListView(ExternalObjectMixin, SingleObjectListView):
-    external_object_class = Document
     external_object_permission = permission_document_metadata_view
     external_object_pk_url_kwarg = 'document_id'
+    external_object_queryset = Document.valid
     object_permission = permission_document_metadata_view
 
     def get_extra_context(self):
@@ -384,9 +384,9 @@ class DocumentMetadataRemoveView(
     DocumentMetadataSameTypeMixin, MultipleObjectFormActionView
 ):
     form_class = DocumentMetadataRemoveFormSet
-    model = Document
     object_permission = permission_document_metadata_remove
     pk_url_kwarg = 'document_id'
+    source_queryset = Document.valid
     success_message = _(
         'Metadata remove request performed on %(count)d document'
     )

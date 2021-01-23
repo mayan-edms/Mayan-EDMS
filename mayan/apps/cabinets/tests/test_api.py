@@ -145,7 +145,7 @@ class CabinetDocumentAPITestCase(
     auto_upload_test_document = False
 
     def test_cabinet_create_with_single_document(self):
-        self._upload_test_document()
+        self._create_test_document_stub()
 
         self.grant_permission(permission=permission_cabinet_create)
 
@@ -166,8 +166,8 @@ class CabinetDocumentAPITestCase(
         )
 
     def test_cabinet_create_with_multiple_documents(self):
-        self._upload_test_document()
-        self._upload_test_document()
+        self._create_test_document_stub()
+        self._create_test_document_stub()
 
         documents_pk_list = ','.join(
             [force_text(s=document.pk) for document in self.test_documents]
@@ -192,7 +192,7 @@ class CabinetDocumentAPITestCase(
         )
 
     def test_cabinet_document_remove_api_view(self):
-        self._upload_test_document()
+        self._create_test_document_stub()
 
         self._create_test_cabinet()
         self.test_cabinet.documents.add(self.test_document)
@@ -207,7 +207,7 @@ class CabinetDocumentAPITestCase(
         self.assertEqual(self.test_cabinet.documents.count(), 0)
 
     def test_cabinet_document_detail_api_view(self):
-        self._upload_test_document()
+        self._create_test_document_stub()
 
         self._create_test_cabinet()
 
@@ -232,7 +232,7 @@ class CabinetDocumentAPITestCase(
         )
 
     def test_cabinet_document_list_api_view(self):
-        self._upload_test_document()
+        self._create_test_document_stub()
 
         self._create_test_cabinet()
 
@@ -254,7 +254,7 @@ class CabinetDocumentAPITestCase(
         )
 
     def test_cabinet_add_document_api_view(self):
-        self._upload_test_document()
+        self._create_test_document_stub()
 
         self._create_test_cabinet()
 
@@ -272,8 +272,8 @@ class CabinetDocumentAPITestCase(
         )
 
     def test_cabinet_add_multiple_documents_api_view(self):
-        self._upload_test_document()
-        self._upload_test_document()
+        self._create_test_document_stub()
+        self._create_test_document_stub()
 
         documents_pk_list = ','.join(
             [force_text(s=document.pk) for document in self.test_documents]
@@ -305,7 +305,7 @@ class DocumentCabinetAPITestCase(
 
     def setUp(self):
         super().setUp()
-        self._upload_test_document()
+        self._create_test_document_stub()
         self._create_test_cabinet()
         self.test_cabinet.documents.add(self.test_document)
 

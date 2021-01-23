@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-09-29 12:37+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
 #: apps.py:72 events.py:6 forms.py:42 links.py:18 links.py:59 links.py:212
-#: links.py:236 models.py:80 settings.py:13 views/workflow_proxy_views.py:66
+#: links.py:236 models.py:80 settings.py:14 views/workflow_proxy_views.py:66
 #: views/workflow_template_views.py:337 workflow_actions.py:74
 msgid "Workflows"
 msgstr "Fluxuri de lucru"
@@ -66,60 +66,60 @@ msgstr "Întoarceți tranziția instanței fluxului de lucru."
 msgid "Get last transition"
 msgstr "Obțineți ultima tranziție"
 
-#: apps.py:263 apps.py:273 apps.py:282 apps.py:288
+#: apps.py:263 apps.py:275 apps.py:284 apps.py:290
 msgid "None"
 msgstr "Nici unul"
 
-#: apps.py:269
+#: apps.py:271
 msgid "Current state"
 msgstr "Starea curentă"
 
-#: apps.py:274 apps.py:298 models.py:467
+#: apps.py:276 apps.py:300 models.py:470
 msgid "User"
 msgstr "Utilizator"
 
-#: apps.py:278
+#: apps.py:280
 msgid "Last transition"
 msgstr "Ultima tranziție"
 
-#: apps.py:283 apps.py:294
+#: apps.py:285 apps.py:296
 msgid "Date and time"
 msgstr "Data și ora"
 
-#: apps.py:289 models.py:568
+#: apps.py:291 models.py:571
 msgid "Completion"
 msgstr "Finalizare"
 
-#: apps.py:319
+#: apps.py:321
 msgid "Additional details"
 msgstr "Detalii suplimentare"
 
-#: apps.py:346
+#: apps.py:348
 msgid "When?"
 msgstr "Cănd?"
 
-#: apps.py:350
+#: apps.py:352
 msgid "Action type"
 msgstr "Tipul de acțiune"
 
-#: apps.py:381
+#: apps.py:383
 msgid ""
 "Triggers are system events that will cause the transition to be applied."
 msgstr "Declanșatoarele sunt evenimente de sistem care vor determina aplicarea tranziției."
 
-#: apps.py:383
+#: apps.py:385
 msgid "Triggers"
 msgstr "Declanșatoare"
 
-#: apps.py:397 models.py:866
+#: apps.py:399 models.py:869
 msgid "Type"
 msgstr "Tip"
 
-#: apps.py:405
+#: apps.py:407
 msgid "Widget"
 msgstr "Widget"
 
-#: apps.py:416 apps.py:422
+#: apps.py:418 apps.py:424
 msgid "Documents"
 msgstr "Documente"
 
@@ -148,12 +148,12 @@ msgstr "Acțiune"
 msgid "Namespace"
 msgstr "Spațiu de nume"
 
-#: forms.py:137 models.py:67 models.py:555 models.py:658 models.py:779
-#: models.py:877
+#: forms.py:137 models.py:67 models.py:558 models.py:661 models.py:782
+#: models.py:880
 msgid "Label"
 msgstr "Etichetă"
 
-#: forms.py:141 models.py:660
+#: forms.py:141 models.py:663
 msgid "Enabled"
 msgstr "Activat"
 
@@ -169,7 +169,7 @@ msgstr "Da"
 msgid "Select a transition to execute in the next step."
 msgstr "Selectați o tranziție de executat în pasul următor."
 
-#: forms.py:195 links.py:218 models.py:463 models.py:863 models.py:942
+#: forms.py:195 links.py:218 models.py:466 models.py:866 models.py:945
 msgid "Transition"
 msgstr "Tranziție"
 
@@ -238,7 +238,7 @@ msgstr "Lansați fluxuri de lucru"
 msgid "Create field"
 msgstr "Creați câmp"
 
-#: links.py:197 models.py:833
+#: links.py:197 models.py:836
 msgid "Fields"
 msgstr "Câmpuri"
 
@@ -258,23 +258,23 @@ msgstr "Stare documente"
 msgid "Launch all workflows"
 msgstr "Lansați toate fluxurile de lucru"
 
-#: literals.py:9
+#: literals.py:17
 msgid "Character"
 msgstr "Caracter"
 
-#: literals.py:10
+#: literals.py:18
 msgid "Number (Integer)"
 msgstr "Număr (număr întreg)"
 
-#: literals.py:20
+#: literals.py:28
 msgid "Text area"
 msgstr "Zona de text"
 
-#: literals.py:31
+#: literals.py:39
 msgid "On entry"
 msgstr "La intrare"
 
-#: literals.py:32
+#: literals.py:40
 msgid "On exit"
 msgstr "La ieșire"
 
@@ -292,7 +292,7 @@ msgid ""
 "contain letters, numbers, and underscores."
 msgstr "Această valoare va fi utilizată de alte aplicații pentru a face referire la acest flux de lucru. Pot conține numai litere, numere și subliniere."
 
-#: models.py:63 models.py:872
+#: models.py:63 models.py:875
 msgid "Internal name"
 msgstr "Nume intern"
 
@@ -300,7 +300,7 @@ msgstr "Nume intern"
 msgid "A short text to describe the workflow."
 msgstr "Un text scurt pentru a descrie fluxul de lucru."
 
-#: models.py:79 models.py:298 models.py:551 models.py:775
+#: models.py:79 models.py:298 models.py:554 models.py:778
 msgid "Workflow"
 msgstr "Flux de lucru"
 
@@ -316,91 +316,91 @@ msgstr "Document"
 msgid "Context"
 msgstr "Context"
 
-#: models.py:311 models.py:456
+#: models.py:314 models.py:459
 msgid "Workflow instance"
 msgstr "Instanță de flux de lucru"
 
-#: models.py:312
+#: models.py:315
 msgid "Workflow instances"
 msgstr "Instanțe de flux de lucru"
 
-#: models.py:459
+#: models.py:462
 msgid "Datetime"
 msgstr "Marcă temporală"
 
-#: models.py:469 views/workflow_instance_views.py:118
+#: models.py:472 views/workflow_instance_views.py:131
 msgid "Comment"
 msgstr "Comentariu"
 
-#: models.py:470
+#: models.py:473
 msgid "Extra data"
 msgstr "Date suplimentare"
 
-#: models.py:474
+#: models.py:477
 msgid "Workflow instance log entry"
 msgstr "Înregistrare din jurnalul instanțelor fluxului de lucru"
 
-#: models.py:475
+#: models.py:478
 msgid "Workflow instance log entries"
 msgstr "Înregistrări din jurnalul instanțelor fluxului de lucru"
 
-#: models.py:482
+#: models.py:485
 msgid "Not a valid transition choice."
 msgstr "Nu este o alegere de tranziție valabilă."
 
-#: models.py:554
+#: models.py:557
 msgid "A short text to describe the workflow state."
 msgstr "Un text scurt pentru a descrie starea fluxului de lucru."
 
-#: models.py:560
+#: models.py:563
 msgid ""
 "The state at which the workflow will start in. Only one state can be the "
 "initial state."
 msgstr "Starea în care va începe fluxul de lucru. O singură stare poate fi starea inițială."
 
-#: models.py:562
+#: models.py:565
 msgid "Initial"
 msgstr "Iniţială"
 
-#: models.py:566
+#: models.py:569
 msgid ""
 "The percent of completion that this state represents in relation to the "
 "workflow. Use numbers without the percent sign."
 msgstr "Procentul de finalizare pe care îl reprezintă această stare în raport cu fluxul de lucru. Utilizați numerele fără semnul procentual."
 
-#: models.py:574 models.py:654
+#: models.py:577 models.py:657
 msgid "Workflow state"
 msgstr "Starea fluxului de lucru"
 
-#: models.py:575
+#: models.py:578
 msgid "Workflow states"
 msgstr "Stările fluxului de lucru"
 
-#: models.py:657
+#: models.py:660
 msgid "A short text describing the action."
 msgstr "Un text scurt care descrie acțiunea."
 
-#: models.py:664
+#: models.py:667
 msgid "At which moment of the state this action will execute."
 msgstr "În ce moment al stării se va executa această acțiune."
 
-#: models.py:665
+#: models.py:668
 msgid "When"
 msgstr "Cănd"
 
-#: models.py:669
+#: models.py:672
 msgid "The dotted Python path to the workflow action class to execute."
 msgstr "Calea Python punctată la clasa de acțiune a fluxului de lucru care trebuie executată."
 
-#: models.py:670
+#: models.py:673
 msgid "Entry action path"
 msgstr "Căi de acțiune pentru intrare"
 
-#: models.py:673
+#: models.py:676
 msgid "Entry action data"
 msgstr "Datele privind acțiunile de intrare"
 
-#: models.py:677
+#: models.py:680
 msgid ""
 "The condition that will determine if this state action is executed or not. "
 "The condition is evaluated against the workflow instance. Conditions that do"
@@ -409,44 +409,44 @@ msgid ""
 "considered to be the logical true."
 msgstr "Condiția care va determina dacă această acțiune de stare este executată sau nu. Condiția este evaluată în raport cu instanța fluxului de lucru. Condițiile care nu returnează nicio valoare, care returnează Python logic None sau un șir gol ('') sunt considerate logice false, orice altă valoare este considerată a fi logica adevărată."
 
-#: models.py:683 models.py:797
+#: models.py:686 models.py:800
 msgid "Condition"
 msgstr "Condiție"
 
-#: models.py:689
+#: models.py:692
 msgid "Workflow state action"
 msgstr "Acțiune de stare de flux de lucru"
 
-#: models.py:690
+#: models.py:693
 msgid "Workflow state actions"
 msgstr "Acțiuni de stare de lucru"
 
-#: models.py:742
+#: models.py:745
 msgid "Unknown action type"
 msgstr "Tip de acțiune necunoscut"
 
-#: models.py:747
+#: models.py:750
 msgid ""
 "The state action will be executed, depending on the condition return value."
 msgstr "Starea acțiunii va fi executată, în funcție de valoarea de returnare a condiției."
 
-#: models.py:750 models.py:841
+#: models.py:753 models.py:844
 msgid "Has a condition?"
 msgstr "Are o condiție?"
 
-#: models.py:778
+#: models.py:781
 msgid "A short text to describe the transition."
 msgstr "Un text scurt pentru a descrie tranziția."
 
-#: models.py:783
+#: models.py:786
 msgid "Origin state"
 msgstr "Stare originală"
 
-#: models.py:787
+#: models.py:790
 msgid "Destination state"
 msgstr "Stare destinație"
 
-#: models.py:791
+#: models.py:794
 msgid ""
 "The condition that will determine if this transition is enabled or not. The "
 "condition is evaluated against the workflow instance. Conditions that do not"
@@ -455,96 +455,96 @@ msgid ""
 " the logical true."
 msgstr "Condiția care va determina dacă această tranziție este activată sau nu. Condiția este evaluată în raport cu instanța fluxului de lucru. Condițiile care nu returnează nicio valoare, care returnează Python logic None sau un șir gol ('') sunt considerate logice false, orice altă valoare este considerată a fi logica adevărată."
 
-#: models.py:805
+#: models.py:808
 msgid "Workflow transition"
 msgstr "Tranziția fluxului de lucru"
 
-#: models.py:806
+#: models.py:809
 msgid "Workflow transitions"
 msgstr "Tranziții ale fluxului de lucru"
 
-#: models.py:838
+#: models.py:841
 msgid ""
 "The transition will be available, depending on the condition return value."
 msgstr "Tranziția va fi disponibilă, în funcție de valoarea  întoarsă de condiție."
 
-#: models.py:870
+#: models.py:873
 msgid ""
 "The name that will be used to identify this field in other parts of the "
 "workflow system."
 msgstr "Numele care va fi utilizat pentru a identifica acest câmp în alte părți ale sistemului de flux de lucru."
 
-#: models.py:876
+#: models.py:879
 msgid "The field name that will be shown on the user interface."
 msgstr "Numele câmpului care va fi afișat pe interfața de utilizator."
 
-#: models.py:880
+#: models.py:883
 msgid ""
 "An optional message that will help users better understand the purpose of "
 "the field and data to provide."
 msgstr "Un mesaj opțional care îi va ajuta pe utilizatori să înțeleagă mai bine scopul câmpului și datele pe care să le furnizeze."
 
-#: models.py:882
+#: models.py:885
 msgid "Help text"
 msgstr "Text de ajutor"
 
-#: models.py:886
+#: models.py:889
 msgid "Whether this fields needs to be filled out or not to proceed."
 msgstr "Specificați dacă aceste câmpuri trebuie completate sau nu."
 
-#: models.py:887
+#: models.py:890
 msgid "Required"
 msgstr "Necesară"
 
-#: models.py:891
+#: models.py:894
 msgid "An optional class to change the default presentation of the field."
 msgstr "O clasă opțională pentru a modifica prezentarea implicită a câmpului."
 
-#: models.py:892
+#: models.py:895
 msgid "Widget class"
 msgstr "Clasa widget"
 
-#: models.py:896
+#: models.py:899
 msgid "A group of keyword arguments to customize the widget. Use YAML format."
 msgstr "Un grup de argumente de cuvinte cheie pentru a personaliza widget-ul. Folosiți formatul YAML."
 
-#: models.py:899
+#: models.py:902
 msgid "Widget keyword arguments"
 msgstr "Argumentele cuvintelor cheie pentru Widget "
 
-#: models.py:904
+#: models.py:907
 msgid "Workflow transition field"
 msgstr "Câmpul de tranziție a fluxului de lucru"
 
-#: models.py:905
+#: models.py:908
 msgid "Workflow transition fields"
 msgstr "Câmpuri de tranziție a fluxului de lucru"
 
-#: models.py:946
+#: models.py:949
 msgid "Event type"
 msgstr "Tip eveniment"
 
-#: models.py:950
+#: models.py:953
 msgid "Workflow transition trigger event"
 msgstr "Evenimentul de declanșare a tranziției fluxului de lucru"
 
-#: models.py:951
+#: models.py:954
 msgid "Workflow transitions trigger events"
 msgstr "Evenimente de declanșare a tranzițiilor fluxului de lucru"
 
-#: models.py:960
+#: models.py:963
 msgid "Workflow runtime proxy"
 msgstr "Proxy runtime pentru fluxul de lucru"
 
-#: models.py:961
+#: models.py:964
 msgid "Workflow runtime proxies"
 msgstr "Proxy-uri de runtime pentru fluxul de lucru"
 
-#: models.py:978
+#: models.py:981
 msgid "Workflow state runtime proxy"
 msgstr "Proxy de runtime pentru starea fluxului de lucru"
 
-#: models.py:979
+#: models.py:982
 msgid "Workflow state runtime proxies"
 msgstr "Proxy-uri runtime de stare de flux de lucru"
 
@@ -618,58 +618,58 @@ msgid ""
 "is attached. This URL is different than the canonical document type URL."
 msgstr "Adresă URL API care indică un tip de document în raport cu fluxul de lucru la care este atașat. Această adresă URL este diferită de URL-ul tipului de document canonic."
 
-#: serializers.py:114
+#: serializers.py:158
 msgid "Primary key of the destination state to be added."
 msgstr "Cheia primară a stării destinației care urmează să fie adăugată."
 
-#: serializers.py:118
+#: serializers.py:162
 msgid "Primary key of the origin state to be added."
 msgstr "Cheia primară a stării de origine care urmează să fie adăugată."
 
-#: serializers.py:216
+#: serializers.py:260
 msgid ""
 "API URL pointing to a workflow in relation to the document to which it is "
 "attached. This URL is different than the canonical workflow URL."
 msgstr "Adresă URL API care indică un flux de lucru în raport cu documentul la care este atașat. Această adresă URL este diferită de adresa URL canonică a fluxului de lucru."
 
-#: serializers.py:225
+#: serializers.py:269
 msgid "A link to the entire history of this workflow."
 msgstr "O legătură către întreaga istorie a acestui flux de lucru."
 
-#: serializers.py:257
+#: serializers.py:301
 msgid ""
 "Comma separated list of document type primary keys to which this workflow "
 "will be attached."
 msgstr "Listă separată prin virgule de chei primare de tip de documente la care se va atașa acest flux de lucru."
 
-#: serializers.py:317
+#: serializers.py:361
 msgid "Primary key of the transition to be added."
 msgstr "Cheia primară a tranziției care urmează să fie adăugată."
 
-#: settings.py:18
+#: settings.py:19
 msgid ""
 "File path to the graphviz dot program used to generate workflow previews."
 msgstr "Calea fișierului către programul graphviz dot utilizat pentru a genera previzualizări ale fluxului de lucru."
 
-#: settings.py:26
+#: settings.py:27
 msgid ""
 "The threshold at which the WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest workflow image cache files. Specify the size in bytes."
 msgstr "Pragul la care WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND va începe să șteargă cele mai vechi fișiere de memorie cache a imaginilor fluxului de lucru. Specificați dimensiunea în octeți."
 
-#: settings.py:34
+#: settings.py:36
 msgid ""
 "Time in seconds that the browser should cache the supplied workflow images. "
 "The default of 31559626 seconds corresponde to 1 year."
 msgstr "Timp în secunde care browser-ul trebuie să cacheze imaginile fluxului de lucru furnizate. Valoarea implicită de 31559626 secunde corespunde unui an."
 
-#: settings.py:41
+#: settings.py:43
 msgid ""
 "Path to the Storage subclass to use when storing the cached workflow image "
 "files."
 msgstr "Calea către subclasa de stocare pe care să o utilizați la stocarea fișierelor de imagine ale fluxului de lucru din cache"
 
-#: settings.py:49
+#: settings.py:51
 msgid "Arguments to pass to the WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND."
 msgstr "Argumente de transmis la WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND."
 
@@ -687,59 +687,59 @@ msgstr "Imagini de previzualizare a fluxului de lucru"
 msgid "Workflow preview"
 msgstr "Previzualizare flux de lucru"
 
-#: views/workflow_instance_views.py:31
+#: views/workflow_instance_views.py:33
 msgid ""
 "Assign workflows to the document type of this document to have this document"
 " execute those workflows. "
 msgstr "Atribuiți fluxurile de lucru la acest tip de document pentru ca acest document să execute acele fluxuri de lucru."
 
-#: views/workflow_instance_views.py:35
+#: views/workflow_instance_views.py:37
 msgid "There are no workflows for this document"
 msgstr "Nu există fluxuri de lucru pentru acest document"
 
-#: views/workflow_instance_views.py:39
+#: views/workflow_instance_views.py:41
 #, python-format
 msgid "Workflows for document: %s"
 msgstr "Fluxuri de lucru pentru documentul: %s"
 
-#: views/workflow_instance_views.py:64
+#: views/workflow_instance_views.py:66
 msgid ""
 "This view will show the state changes as a workflow instance is "
 "transitioned."
 msgstr "Această vizualizare va afișa modificările de stare pe măsură ce o instanță a fluxului de lucru este tranziționată."
 
-#: views/workflow_instance_views.py:68
+#: views/workflow_instance_views.py:70
 msgid "There are no details for this workflow instance"
 msgstr "Nu există detalii despre acest exemplu de flux de lucru"
 
-#: views/workflow_instance_views.py:71
+#: views/workflow_instance_views.py:73
 #, python-format
 msgid "Detail of workflow: %(workflow)s"
 msgstr "Detalii despre fluxul de lucru: %(workflow)s"
 
-#: views/workflow_instance_views.py:95
+#: views/workflow_instance_views.py:108
 #, python-format
 msgid "Document \"%s\" transitioned successfully"
 msgstr "Documentul \"%s\" a schimbat starea cu succes"
 
-#: views/workflow_instance_views.py:104
+#: views/workflow_instance_views.py:117
 msgid "Submit"
 msgstr "Trimiteţi"
 
-#: views/workflow_instance_views.py:106
+#: views/workflow_instance_views.py:119
 #, python-format
 msgid "Execute transition \"%(transition)s\" for workflow: %(workflow)s"
 msgstr "Executați tranziția \"%(transition)s\" pentru fluxul de lucru: %(workflow)s"
 
-#: views/workflow_instance_views.py:121
+#: views/workflow_instance_views.py:134
 msgid "Optional comment to attach to the transition."
 msgstr "Comentariu opțional de atașat la tranziție."
 
-#: views/workflow_instance_views.py:191
+#: views/workflow_instance_views.py:204
 msgid "Select"
 msgstr "Selecta"
 
-#: views/workflow_instance_views.py:193
+#: views/workflow_instance_views.py:206
 #, python-format
 msgid "Select transition for workflow: %s"
 msgstr "Selectați tranziția pentru fluxul de lucru: %s"
@@ -779,7 +779,7 @@ msgid "Documents in the workflow \"%s\", state \"%s\""
 msgstr "Documentele din fluxul de lucru \"%s\", starea \"%s\""
 
 #: views/workflow_proxy_views.py:121
-#: views/workflow_template_state_views.py:324
+#: views/workflow_template_state_views.py:326
 msgid "Create states and link them using transitions."
 msgstr "Creați stări și conectați-le folosind tranziții."
 
@@ -788,7 +788,7 @@ msgid "This workflow doesn't have any state"
 msgstr "Acest flux de lucru nu are nicio stare"
 
 #: views/workflow_proxy_views.py:127
-#: views/workflow_template_state_views.py:330
+#: views/workflow_template_state_views.py:332
 #, python-format
 msgid "States of workflow: %s"
 msgstr "Stările fluxului de lucru: %s"
@@ -827,101 +827,101 @@ msgstr "Acțiuni pentru starea fluxului de lucru: %s"
 msgid "New workflow state action selection"
 msgstr "Selectare a unei noi acțiunii de stare a fluxului de lucru"
 
-#: views/workflow_template_state_views.py:228
+#: views/workflow_template_state_views.py:230
 #, python-format
 msgid "Create states for workflow: %s"
 msgstr "Creați stări pentru fluxul de lucru: %s"
 
-#: views/workflow_template_state_views.py:261
+#: views/workflow_template_state_views.py:263
 #, python-format
 msgid "Delete workflow state: %s?"
 msgstr "Ștergeți starea fluxului de lucru: %s?"
 
-#: views/workflow_template_state_views.py:291
+#: views/workflow_template_state_views.py:293
 #, python-format
 msgid "Edit workflow state: %s"
 msgstr "Editați starea fluxului de lucru: %s"
 
-#: views/workflow_template_state_views.py:327
+#: views/workflow_template_state_views.py:329
 msgid "This workflow doesn't have any states"
 msgstr "Acest flux de lucru nu are stări"
 
-#: views/workflow_template_transition_views.py:36
+#: views/workflow_template_transition_views.py:38
 #, python-format
 msgid "Create transitions for workflow: %s"
 msgstr "Creați tranziții pentru fluxul de lucru: %s"
 
-#: views/workflow_template_transition_views.py:78
+#: views/workflow_template_transition_views.py:80
 #, python-format
 msgid "Delete workflow transition: %s?"
 msgstr "Ștergeți tranziția fluxului de lucru: %s?"
 
-#: views/workflow_template_transition_views.py:106
+#: views/workflow_template_transition_views.py:108
 #, python-format
 msgid "Edit workflow transition: %s"
 msgstr "Editați tranziția fluxului de lucru: %s"
 
-#: views/workflow_template_transition_views.py:146
+#: views/workflow_template_transition_views.py:150
 msgid ""
 "Create a transition and use it to move a workflow from  one state to "
 "another."
 msgstr "Creați o tranziție și utilizați-o pentru a muta un flux de lucru dintr-o stare în alta."
 
-#: views/workflow_template_transition_views.py:150
+#: views/workflow_template_transition_views.py:154
 msgid "This workflow doesn't have any transitions"
 msgstr "Acest flux de lucru nu are nicio tranziție"
 
-#: views/workflow_template_transition_views.py:154
+#: views/workflow_template_transition_views.py:158
 #, python-format
 msgid "Transitions of workflow: %s"
 msgstr "Tranzițiile fluxului de lucru: %s"
 
-#: views/workflow_template_transition_views.py:182
+#: views/workflow_template_transition_views.py:188
 #, python-format
 msgid "Error updating workflow transition trigger events; %s"
 msgstr "Eroare la actualizarea evenimentelor de declanșare a fluxului de lucru; %s"
 
-#: views/workflow_template_transition_views.py:189
+#: views/workflow_template_transition_views.py:195
 msgid "Workflow transition trigger events updated successfully"
 msgstr "Evenimentele de declanșare a fluxului de lucru au fost actualizate cu succes"
 
-#: views/workflow_template_transition_views.py:203
+#: views/workflow_template_transition_views.py:209
 msgid ""
 "Triggers are events that cause this transition to execute automatically."
 msgstr "Declanșatoarele sunt evenimente care determină ca această tranziție să fie executată automat."
 
-#: views/workflow_template_transition_views.py:207
+#: views/workflow_template_transition_views.py:213
 #, python-format
 msgid "Workflow transition trigger events for: %s"
 msgstr "Evenimente de declanșare a fluxului de lucru pentru: %s"
 
-#: views/workflow_template_transition_views.py:257
+#: views/workflow_template_transition_views.py:263
 #, python-format
 msgid "Create a field for workflow transition: %s"
 msgstr "Creați un câmp pentru tranziția fluxului de lucru: %s"
 
-#: views/workflow_template_transition_views.py:291
+#: views/workflow_template_transition_views.py:297
 #, python-format
 msgid "Delete workflow transition field: %s"
 msgstr "Ștergeți câmpul de tranziție a fluxului de lucru: %s"
 
-#: views/workflow_template_transition_views.py:325
+#: views/workflow_template_transition_views.py:331
 #, python-format
 msgid "Edit workflow transition field: %s"
 msgstr "Editați câmpul de tranziție a fluxului de lucru: %s"
 
-#: views/workflow_template_transition_views.py:362
+#: views/workflow_template_transition_views.py:370
 msgid ""
 "Workflow transition fields allow adding data to the workflow's context. This"
 " additional context data can then be used by other elements of the workflow "
 "system like the workflow state actions."
 msgstr "Câmpurile de tranziție ale fluxului de lucru permit adăugarea de date în contextul fluxului de lucru. Aceste date de context adiționale pot fi apoi utilizate de alte elemente ale sistemului de flux de lucru, cum ar fi acțiunile stării fluxului de lucru."
 
-#: views/workflow_template_transition_views.py:368
+#: views/workflow_template_transition_views.py:376
 msgid "There are no fields for this workflow transition"
 msgstr "Nu există câmpuri pentru această tranziție a fluxului de lucru"
 
-#: views/workflow_template_transition_views.py:372
+#: views/workflow_template_transition_views.py:380
 #, python-format
 msgid "Fields for workflow transition: %s"
 msgstr "Câmpuri pentru tranziția fluxului de lucru: %s"

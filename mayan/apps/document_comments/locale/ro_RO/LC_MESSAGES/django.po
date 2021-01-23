@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2019-05-17 18:46+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -89,32 +89,32 @@ msgstr "Vezi comentariile"
 msgid "Add comment to document: %s"
 msgstr "Adaugă comentariu la document:% s"
 
-#: views.py:60
+#: views.py:59
 #, python-format
 msgid "Delete comment: %s?"
 msgstr "Ștergeți comentariul: %s?"
 
-#: views.py:87
+#: views.py:90
 #, python-format
 msgid "Details for comment: %s?"
 msgstr "Detalii pentru comentariul: %s?"
 
-#: views.py:102
+#: views.py:109
 #, python-format
 msgid "Edit comment: %s?"
 msgstr "Editează comentariul: %s?"
 
-#: views.py:132
+#: views.py:144
 msgid ""
 "Document comments are timestamped text entries from users. They are great "
 "for collaboration."
 msgstr "Comentariile documentului sunt înregistrări de text marcate temporal de la utilizatori. Ele sunt  excelente pentru colaborare."
 
-#: views.py:135
+#: views.py:147
 msgid "There are no comments"
 msgstr "Nu există comentarii"
 
-#: views.py:137
+#: views.py:149
 #, python-format
 msgid "Comments for document: %s"
 msgstr "Comentarii pentru documentul: %s"

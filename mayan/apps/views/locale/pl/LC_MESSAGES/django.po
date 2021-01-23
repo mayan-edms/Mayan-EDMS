@@ -6,18 +6,18 @@
 # Translators:
 # mic <winterfall24@gmail.com>, 2020
 # Roberto Rosario, 2020
-# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2020
 # Przemysław Bodio <przemyslawbodio.dev@gmail.com>, 2020
 # Marcin Lozynski <mlozynski@wp.pl>, 2020
 # Tomasz Szymanowicz <alakdae@gmail.com>, 2020
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>, 2020\n"
+"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>, 2020\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,9 +25,9 @@ msgstr ""
 "Language: pl\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: apps.py:15 settings.py:5
+#: apps.py:15 settings.py:7
 msgid "Views"
-msgstr ""
+msgstr "Widoki"
 
 #: forms.py:24
 msgid "Selection"
@@ -108,16 +108,16 @@ msgstr "%(object)s nie zaktualizowano, błąd: %(error)s."
 msgid "%(object)s updated successfully."
 msgstr "%(object)s zaktualizowano pomyślnie."
 
-#: mixins.py:319
+#: mixins.py:324
 #, python-format
 msgid "No %(verbose_name)s found matching the query"
 msgstr "Nie znaleziono %(verbose_name)s pasującego do zapytania"
 
-#: mixins.py:433
+#: mixins.py:438
 msgid "Object"
 msgstr "Obiekt"
 
-#: settings.py:11
+#: settings.py:12
 msgid "The number objects that will be displayed per page."
 msgstr "Liczba obiektów, które będą wyświetlane na stronie."
 

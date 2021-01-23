@@ -20,7 +20,9 @@ class BackendModelMixin(models.Model):
         ), verbose_name=_('Backend path')
     )
     backend_data = models.TextField(
-        blank=True, verbose_name=_('Backend data')
+        blank=True, help_text=_(
+            'JSON encoded data for the backend class.'
+        ), verbose_name=_('Backend data')
     )
 
     class Meta:

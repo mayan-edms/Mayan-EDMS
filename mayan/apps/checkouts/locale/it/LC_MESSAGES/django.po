@@ -5,12 +5,13 @@
 # Translators:
 # Translators:
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
+# Roberto Rosario, 2020-2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-04-28 03:38+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2021-01-02 22:19+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -21,39 +22,39 @@ msgstr ""
 
 #: apps.py:43 events.py:5 links.py:32
 msgid "Checkouts"
-msgstr "Uscite"
+msgstr "Prenotari"
 
-#: dashboard_widgets.py:14 views.py:181
+#: dashboard_widgets.py:14 views.py:182
 msgid "Checked out documents"
-msgstr ""
+msgstr "Prenotari di documenti"
 
 #: events.py:8
 msgid "Document automatically checked in"
-msgstr "Documento automaticamente in entrata"
+msgstr "Documento liberato automaticamente"
 
 #: events.py:12
 msgid "Document checked in"
-msgstr "Documento in entrata"
+msgstr "Documento liberato"
 
 #: events.py:15
 msgid "Document checked out"
-msgstr "Documento in uscita"
+msgstr "Documento prenotato"
 
 #: events.py:18
 msgid "Document forcefully checked in"
-msgstr "Forza documento in entrata"
+msgstr "Documento liberato in forza"
 
 #: exceptions.py:15
 msgid "Document not checked out."
-msgstr ""
+msgstr "Documento non prenotato."
 
 #: exceptions.py:23
 msgid "Document already checked out."
-msgstr "Documento già uscito"
+msgstr "Documento già prenotato"
 
 #: forms.py:26
 msgid "Document status"
-msgstr "Stato documento"
+msgstr "Stato di documento"
 
 #: forms.py:37 models.py:41 models.py:133
 msgid "User"
@@ -61,11 +62,11 @@ msgstr "Utente"
 
 #: forms.py:41
 msgid "Check out time"
-msgstr "Tempo di uscita"
+msgstr "Tempo di prenotazione"
 
 #: forms.py:46
 msgid "Check out expiration"
-msgstr "Scadenza dell'uscita"
+msgstr "Scadenza della prenotazione"
 
 #: forms.py:51
 msgid "New versions allowed?"
@@ -81,31 +82,31 @@ msgstr "No"
 
 #: links.py:39
 msgid "Check out document"
-msgstr "Documento in uscita"
+msgstr "Prenotare documento"
 
 #: links.py:43
 msgid "Check out"
-msgstr ""
+msgstr "Prenotazione"
 
 #: links.py:50
 msgid "Check in document"
-msgstr "Documento in entrata"
+msgstr "Libero documento"
 
 #: links.py:54
 msgid "Check in"
-msgstr ""
+msgstr "Libero"
 
 #: links.py:60
 msgid "Check in/out"
-msgstr "Check in / out"
+msgstr "Prenotare / liberare"
 
 #: literals.py:10
 msgid "Checked out"
-msgstr "Uscito"
+msgstr "Prenotare"
 
 #: literals.py:11
 msgid "Checked in/available"
-msgstr "Check-in / disponibile"
+msgstr "Libero / disponibile"
 
 #: models.py:28 models.py:111
 msgid "Document"
@@ -113,15 +114,15 @@ msgstr "Documento"
 
 #: models.py:31
 msgid "Check out date and time"
-msgstr "Uscito in data e ora"
+msgstr "Prenotazione data e ora"
 
 #: models.py:35
 msgid "Amount of time to hold the document checked out in minutes."
-msgstr "Minuti disponibili per fermare il documento in checked out"
+msgstr "Minuti disponibili per fermare il documento in prenotazione"
 
 #: models.py:37
 msgid "Check out expiration date and time"
-msgstr "Scopri la data e l'ora di scadenza"
+msgstr "Data e l'ora di scadenza de prenotazione"
 
 #: models.py:46
 msgid "Do not allow new version of this document to be uploaded."
@@ -133,11 +134,11 @@ msgstr "Blocca la nuova versione in caricamento"
 
 #: models.py:56 permissions.py:5
 msgid "Document checkout"
-msgstr "Documento uscito"
+msgstr "Prenotazione di documento "
 
 #: models.py:57
 msgid "Document checkouts"
-msgstr "Documenti usciti"
+msgstr "Prenotazioni di documenti"
 
 #: models.py:65
 msgid "Check out expiration date and time must be in the future."
@@ -153,7 +154,7 @@ msgstr "Nuove versioni blocco"
 
 #: models.py:138
 msgid "Checkout time and date"
-msgstr "Ora e data checkout "
+msgstr "Ora e data di la prenotazione"
 
 #: models.py:143
 msgid "Checkout expiration"
@@ -161,71 +162,71 @@ msgstr "Scadenza checkout "
 
 #: permissions.py:8
 msgid "Check in documents"
-msgstr "Check in documenti"
+msgstr "Liberare documenti"
 
 #: permissions.py:11
 msgid "Forcefully check in documents"
-msgstr "Forza il check in dei documenti"
+msgstr "Forza il libero dei documenti"
 
 #: permissions.py:14
 msgid "Check out documents"
-msgstr "Check out dei documenti"
+msgstr "Prenotare documenti"
 
 #: permissions.py:17
 msgid "Check out details view"
-msgstr "Visualizzazione in dettaglio dell'uscita"
+msgstr "Visualizzazione in dettagli della prenotazione"
 
 #: queues.py:11
 msgid "Checkouts periodic"
-msgstr ""
+msgstr "Prenotazione periodici"
 
 #: queues.py:15
 msgid "Check expired checkouts"
-msgstr ""
+msgstr "Controlla i prenotazione scaduti"
 
 #: serializers.py:29
 msgid "Primary key of the document to be checked out."
-msgstr ""
+msgstr "Chiave primaria del documento da prenotare."
 
 #: views.py:35
 #, python-format
 msgid "Check in %(count)d document"
 msgid_plural "Check in %(count)d documents"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Liberare %(count)d documento"
+msgstr[1] "Liberare %(count)d documenti"
 
 #: views.py:48
 #, python-format
 msgid "Check in document: %s"
-msgstr ""
+msgstr "Liberare documento: %s"
 
 #: views.py:106
 #, python-format
 msgid "Checkout %(count)d document"
 msgid_plural "Checkout %(count)d documents"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Prenotare %(count)d documento"
+msgstr[1] "Prenotare %(count)d documenti"
 
 #: views.py:119
 #, python-format
 msgid "Check out document: %s"
-msgstr "Check out documento: %s"
+msgstr "Prenotare documento: %s"
 
 #: views.py:158
 #, python-format
 msgid "Check out details for document: %s"
-msgstr "Dettaglio del check out per il documento: %s"
+msgstr "Dettagli della prenotazione de il documento: %s"
 
-#: views.py:177
+#: views.py:178
 msgid ""
 "Checking out a document, blocks certain operations for a predetermined "
 "amount of time."
-msgstr ""
+msgstr "La prenotazione di un documento blocca determinate operazioni per un periodo di tempo predeterminato."
 
-#: views.py:180
+#: views.py:181
 msgid "No documents have been checked out"
-msgstr ""
+msgstr "Nessun documento prenotato"
 
 #: widgets.py:23
 msgid "Amount"
-msgstr ""
+msgstr "Quantità"

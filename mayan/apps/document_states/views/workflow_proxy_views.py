@@ -20,7 +20,7 @@ class WorkflowRuntimeProxyDocumentListView(
     external_object_pk_url_kwarg = 'workflow_runtime_proxy_id'
 
     def get_document_queryset(self):
-        return Document.objects.filter(
+        return Document.valid.filter(
             workflows__workflow=self.external_object
         )
 

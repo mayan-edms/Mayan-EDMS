@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2017-09-22 21:28+0000\n"
 "Last-Translator: serhatcan77 <serhat_can@yahoo.com>\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
@@ -19,14 +19,14 @@ msgstr ""
 "Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:13 settings.py:5
+#: apps.py:13 settings.py:10
 msgid "Mirroring"
 msgstr "Yansıtma"
 
-#: settings.py:9
+#: settings.py:15
 msgid "Time in seconds to cache the path lookup to a document."
 msgstr "Bir belgenin yolunu önbelleklemek için gereken saniye cinsinden süre."
 
-#: settings.py:13
+#: settings.py:20
 msgid "Time in seconds to cache the path lookup to an index node."
 msgstr "Bir dizin düğümünün yolunu önbelleklemek için gereken saniye cinsinden süre."

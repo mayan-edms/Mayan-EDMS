@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
 #: apps.py:72 events.py:6 forms.py:42 links.py:18 links.py:59 links.py:212
-#: links.py:236 models.py:80 settings.py:13 views/workflow_proxy_views.py:66
+#: links.py:236 models.py:80 settings.py:14 views/workflow_proxy_views.py:66
 #: views/workflow_template_views.py:337 workflow_actions.py:74
 msgid "Workflows"
 msgstr "Darbplūsmas"
@@ -66,60 +66,60 @@ msgstr ""
 msgid "Get last transition"
 msgstr ""
 
-#: apps.py:263 apps.py:273 apps.py:282 apps.py:288
+#: apps.py:263 apps.py:275 apps.py:284 apps.py:290
 msgid "None"
 msgstr "Nav neviens"
 
-#: apps.py:269
+#: apps.py:271
 msgid "Current state"
 msgstr "Pašreizējais stāvoklis"
 
-#: apps.py:274 apps.py:298 models.py:467
+#: apps.py:276 apps.py:300 models.py:470
 msgid "User"
 msgstr "Lietotājs"
 
-#: apps.py:278
+#: apps.py:280
 msgid "Last transition"
 msgstr "Pēdējā pāreja"
 
-#: apps.py:283 apps.py:294
+#: apps.py:285 apps.py:296
 msgid "Date and time"
 msgstr "Datums un laiks"
 
-#: apps.py:289 models.py:568
+#: apps.py:291 models.py:571
 msgid "Completion"
 msgstr "Pabeigšana"
 
-#: apps.py:319
+#: apps.py:321
 msgid "Additional details"
 msgstr ""
 
-#: apps.py:346
+#: apps.py:348
 msgid "When?"
 msgstr "Kad?"
 
-#: apps.py:350
+#: apps.py:352
 msgid "Action type"
 msgstr "Darbības veids"
 
-#: apps.py:381
+#: apps.py:383
 msgid ""
 "Triggers are system events that will cause the transition to be applied."
 msgstr ""
 
-#: apps.py:383
+#: apps.py:385
 msgid "Triggers"
 msgstr "Palaišanas"
 
-#: apps.py:397 models.py:866
+#: apps.py:399 models.py:869
 msgid "Type"
 msgstr "Tips"
 
-#: apps.py:405
+#: apps.py:407
 msgid "Widget"
 msgstr ""
 
-#: apps.py:416 apps.py:422
+#: apps.py:418 apps.py:424
 msgid "Documents"
 msgstr "Dokumenti"
 
@@ -148,12 +148,12 @@ msgstr "Rīcība"
 msgid "Namespace"
 msgstr "Vārda vieta"
 
-#: forms.py:137 models.py:67 models.py:555 models.py:658 models.py:779
-#: models.py:877
+#: forms.py:137 models.py:67 models.py:558 models.py:661 models.py:782
+#: models.py:880
 msgid "Label"
 msgstr "Etiķete"
 
-#: forms.py:141 models.py:660
+#: forms.py:141 models.py:663
 msgid "Enabled"
 msgstr "Iespējots"
 
@@ -169,7 +169,7 @@ msgstr "Jā"
 msgid "Select a transition to execute in the next step."
 msgstr ""
 
-#: forms.py:195 links.py:218 models.py:463 models.py:863 models.py:942
+#: forms.py:195 links.py:218 models.py:466 models.py:866 models.py:945
 msgid "Transition"
 msgstr "Pāreja"
 
@@ -238,7 +238,7 @@ msgstr ""
 msgid "Create field"
 msgstr ""
 
-#: links.py:197 models.py:833
+#: links.py:197 models.py:836
 msgid "Fields"
 msgstr ""
 
@@ -258,23 +258,23 @@ msgstr "Valsts dokumenti"
 msgid "Launch all workflows"
 msgstr "Uzsākt visas darbplūsmas"
 
-#: literals.py:9
+#: literals.py:17
 msgid "Character"
 msgstr ""
 
-#: literals.py:10
+#: literals.py:18
 msgid "Number (Integer)"
 msgstr ""
 
-#: literals.py:20
+#: literals.py:28
 msgid "Text area"
 msgstr ""
 
-#: literals.py:31
+#: literals.py:39
 msgid "On entry"
 msgstr "Ieejot"
 
-#: literals.py:32
+#: literals.py:40
 msgid "On exit"
 msgstr "Iziet"
 
@@ -292,7 +292,7 @@ msgid ""
 "contain letters, numbers, and underscores."
 msgstr "Šo vērtību izmantos citas lietotnes, lai atsauktos uz šo darbplūsmu. Var saturēt tikai burtus, ciparus un pasvītrojumus."
 
-#: models.py:63 models.py:872
+#: models.py:63 models.py:875
 msgid "Internal name"
 msgstr "Iekšējais nosaukums"
 
@@ -300,7 +300,7 @@ msgstr "Iekšējais nosaukums"
 msgid "A short text to describe the workflow."
 msgstr ""
 
-#: models.py:79 models.py:298 models.py:551 models.py:775
+#: models.py:79 models.py:298 models.py:554 models.py:778
 msgid "Workflow"
 msgstr "Darbplūsma"
 
@@ -316,91 +316,91 @@ msgstr "Dokuments"
 msgid "Context"
 msgstr ""
 
-#: models.py:311 models.py:456
+#: models.py:314 models.py:459
 msgid "Workflow instance"
 msgstr "Darbplūsmas piemērs"
 
-#: models.py:312
+#: models.py:315
 msgid "Workflow instances"
 msgstr "Darbplūsmas gadījumi"
 
-#: models.py:459
+#: models.py:462
 msgid "Datetime"
 msgstr "Datums Laiks"
 
-#: models.py:469 views/workflow_instance_views.py:118
+#: models.py:472 views/workflow_instance_views.py:131
 msgid "Comment"
 msgstr "Komentārs"
 
-#: models.py:470
+#: models.py:473
 msgid "Extra data"
 msgstr ""
 
-#: models.py:474
+#: models.py:477
 msgid "Workflow instance log entry"
 msgstr "Darbplūsmas gadījumu žurnāla ieraksts"
 
-#: models.py:475
+#: models.py:478
 msgid "Workflow instance log entries"
 msgstr "Darbplūsmas gadījumu žurnāla ieraksti"
 
-#: models.py:482
+#: models.py:485
 msgid "Not a valid transition choice."
 msgstr "Nav derīga pārejas izvēle."
 
-#: models.py:554
+#: models.py:557
 msgid "A short text to describe the workflow state."
 msgstr ""
 
-#: models.py:560
+#: models.py:563
 msgid ""
 "The state at which the workflow will start in. Only one state can be the "
 "initial state."
 msgstr ""
 
-#: models.py:562
+#: models.py:565
 msgid "Initial"
 msgstr "Sākotnējais"
 
-#: models.py:566
+#: models.py:569
 msgid ""
 "The percent of completion that this state represents in relation to the "
 "workflow. Use numbers without the percent sign."
 msgstr ""
 
-#: models.py:574 models.py:654
+#: models.py:577 models.py:657
 msgid "Workflow state"
 msgstr "Darbplūsmas stāvoklis"
 
-#: models.py:575
+#: models.py:578
 msgid "Workflow states"
 msgstr "Darbplūsmas stāvokļi"
 
-#: models.py:657
+#: models.py:660
 msgid "A short text describing the action."
 msgstr ""
 
-#: models.py:664
+#: models.py:667
 msgid "At which moment of the state this action will execute."
 msgstr ""
 
-#: models.py:665
+#: models.py:668
 msgid "When"
 msgstr "Kad"
 
-#: models.py:669
+#: models.py:672
 msgid "The dotted Python path to the workflow action class to execute."
 msgstr "Punkta Python ceļš uz darbplūsmas darbības klasi, lai izpildītu."
 
-#: models.py:670
+#: models.py:673
 msgid "Entry action path"
 msgstr "Ieejas ceļš"
 
-#: models.py:673
+#: models.py:676
 msgid "Entry action data"
 msgstr "Ievades darbības dati"
 
-#: models.py:677
+#: models.py:680
 msgid ""
 "The condition that will determine if this state action is executed or not. "
 "The condition is evaluated against the workflow instance. Conditions that do"
@@ -409,44 +409,44 @@ msgid ""
 "considered to be the logical true."
 msgstr ""
 
-#: models.py:683 models.py:797
+#: models.py:686 models.py:800
 msgid "Condition"
 msgstr ""
 
-#: models.py:689
+#: models.py:692
 msgid "Workflow state action"
 msgstr "Darbplūsmas stāvokļa darbība"
 
-#: models.py:690
+#: models.py:693
 msgid "Workflow state actions"
 msgstr "Darbplūsmas stāvokļa darbības"
 
-#: models.py:742
+#: models.py:745
 msgid "Unknown action type"
 msgstr ""
 
-#: models.py:747
+#: models.py:750
 msgid ""
 "The state action will be executed, depending on the condition return value."
 msgstr ""
 
-#: models.py:750 models.py:841
+#: models.py:753 models.py:844
 msgid "Has a condition?"
 msgstr ""
 
-#: models.py:778
+#: models.py:781
 msgid "A short text to describe the transition."
 msgstr ""
 
-#: models.py:783
+#: models.py:786
 msgid "Origin state"
 msgstr "Izcelsmes valsts"
 
-#: models.py:787
+#: models.py:790
 msgid "Destination state"
 msgstr "Galamērķa valsts"
 
-#: models.py:791
+#: models.py:794
 msgid ""
 "The condition that will determine if this transition is enabled or not. The "
 "condition is evaluated against the workflow instance. Conditions that do not"
@@ -455,96 +455,96 @@ msgid ""
 " the logical true."
 msgstr ""
 
-#: models.py:805
+#: models.py:808
 msgid "Workflow transition"
 msgstr "Darbplūsmas pāreja"
 
-#: models.py:806
+#: models.py:809
 msgid "Workflow transitions"
 msgstr "Darbplūsmas pārejas"
 
-#: models.py:838
+#: models.py:841
 msgid ""
 "The transition will be available, depending on the condition return value."
 msgstr ""
 
-#: models.py:870
+#: models.py:873
 msgid ""
 "The name that will be used to identify this field in other parts of the "
 "workflow system."
 msgstr ""
 
-#: models.py:876
+#: models.py:879
 msgid "The field name that will be shown on the user interface."
 msgstr ""
 
-#: models.py:880
+#: models.py:883
 msgid ""
 "An optional message that will help users better understand the purpose of "
 "the field and data to provide."
 msgstr ""
 
-#: models.py:882
+#: models.py:885
 msgid "Help text"
 msgstr ""
 
-#: models.py:886
+#: models.py:889
 msgid "Whether this fields needs to be filled out or not to proceed."
 msgstr ""
 
-#: models.py:887
+#: models.py:890
 msgid "Required"
 msgstr ""
 
-#: models.py:891
+#: models.py:894
 msgid "An optional class to change the default presentation of the field."
 msgstr ""
 
-#: models.py:892
+#: models.py:895
 msgid "Widget class"
 msgstr ""
 
-#: models.py:896
+#: models.py:899
 msgid "A group of keyword arguments to customize the widget. Use YAML format."
 msgstr ""
 
-#: models.py:899
+#: models.py:902
 msgid "Widget keyword arguments"
 msgstr ""
 
-#: models.py:904
+#: models.py:907
 msgid "Workflow transition field"
 msgstr ""
 
-#: models.py:905
+#: models.py:908
 msgid "Workflow transition fields"
 msgstr ""
 
-#: models.py:946
+#: models.py:949
 msgid "Event type"
 msgstr "Notikuma veids"
 
-#: models.py:950
+#: models.py:953
 msgid "Workflow transition trigger event"
 msgstr "Darbplūsmas pārejas sprūda notikums"
 
-#: models.py:951
+#: models.py:954
 msgid "Workflow transitions trigger events"
 msgstr "Darbplūsmas pārejas izraisa notikumus"
 
-#: models.py:960
+#: models.py:963
 msgid "Workflow runtime proxy"
 msgstr "Darbplūsmas izpildes laiks"
 
-#: models.py:961
+#: models.py:964
 msgid "Workflow runtime proxies"
 msgstr "Darbplūsmas izpildes laiks"
 
-#: models.py:978
+#: models.py:981
 msgid "Workflow state runtime proxy"
 msgstr "Darbplūsmas stāvokļa izpildlaika starpniekserveris"
 
-#: models.py:979
+#: models.py:982
 msgid "Workflow state runtime proxies"
 msgstr "Darbplūsmas stāvokļa izpildes laiks"
 
@@ -618,58 +618,58 @@ msgid ""
 "is attached. This URL is different than the canonical document type URL."
 msgstr "API URL, kas norāda uz dokumenta veidu saistībā ar darbplūsmu, kurai tas ir pievienots. Šis URL atšķiras no kanoniskā dokumenta tipa URL."
 
-#: serializers.py:114
+#: serializers.py:158
 msgid "Primary key of the destination state to be added."
 msgstr "Pievienojamās galamērķa valsts primārā atslēga."
 
-#: serializers.py:118
+#: serializers.py:162
 msgid "Primary key of the origin state to be added."
 msgstr "Pievienojamās izcelsmes valsts primārā atslēga."
 
-#: serializers.py:216
+#: serializers.py:260
 msgid ""
 "API URL pointing to a workflow in relation to the document to which it is "
 "attached. This URL is different than the canonical workflow URL."
 msgstr "API URL, kas norāda uz darbplūsmu saistībā ar dokumentu, uz kuru tas ir pievienots. Šis URL atšķiras no kanoniskā darbplūsmas URL."
 
-#: serializers.py:225
+#: serializers.py:269
 msgid "A link to the entire history of this workflow."
 msgstr "Saite uz visu šīs darbplūsmas vēsturi."
 
-#: serializers.py:257
+#: serializers.py:301
 msgid ""
 "Comma separated list of document type primary keys to which this workflow "
 "will be attached."
 msgstr "Komatu atdalīts dokumentu tipa primāro atslēgu saraksts, kurām šī darbplūsma tiks pievienota."
 
-#: serializers.py:317
+#: serializers.py:361
 msgid "Primary key of the transition to be added."
 msgstr "Pievienojamās pārejas primārā atslēga."
 
-#: settings.py:18
+#: settings.py:19
 msgid ""
 "File path to the graphviz dot program used to generate workflow previews."
 msgstr ""
 
-#: settings.py:26
+#: settings.py:27
 msgid ""
 "The threshold at which the WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest workflow image cache files. Specify the size in bytes."
 msgstr ""
 
-#: settings.py:34
+#: settings.py:36
 msgid ""
 "Time in seconds that the browser should cache the supplied workflow images. "
 "The default of 31559626 seconds corresponde to 1 year."
 msgstr ""
 
-#: settings.py:41
+#: settings.py:43
 msgid ""
 "Path to the Storage subclass to use when storing the cached workflow image "
 "files."
 msgstr ""
 
-#: settings.py:49
+#: settings.py:51
 msgid "Arguments to pass to the WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND."
 msgstr ""
 
@@ -687,59 +687,59 @@ msgstr ""
 msgid "Workflow preview"
 msgstr ""
 
-#: views/workflow_instance_views.py:31
+#: views/workflow_instance_views.py:33
 msgid ""
 "Assign workflows to the document type of this document to have this document"
 " execute those workflows. "
 msgstr "Piešķiriet šī dokumenta dokumenta tipam darbplūsmas, lai šis dokuments izpildītu šīs darbplūsmas."
 
-#: views/workflow_instance_views.py:35
+#: views/workflow_instance_views.py:37
 msgid "There are no workflows for this document"
 msgstr ""
 
-#: views/workflow_instance_views.py:39
+#: views/workflow_instance_views.py:41
 #, python-format
 msgid "Workflows for document: %s"
 msgstr "Dokumenta darbplūsmas: %s"
 
-#: views/workflow_instance_views.py:64
+#: views/workflow_instance_views.py:66
 msgid ""
 "This view will show the state changes as a workflow instance is "
 "transitioned."
 msgstr "Šis skats parādīs stāvokļa izmaiņas, kad notiks darbplūsmas instances pāreja."
 
-#: views/workflow_instance_views.py:68
+#: views/workflow_instance_views.py:70
 msgid "There are no details for this workflow instance"
 msgstr "Šajā darbplūsmas instancē nav sīkākas informācijas"
 
-#: views/workflow_instance_views.py:71
+#: views/workflow_instance_views.py:73
 #, python-format
 msgid "Detail of workflow: %(workflow)s"
 msgstr "Darba plūsmas apraksts: %(workflow)s"
 
-#: views/workflow_instance_views.py:95
+#: views/workflow_instance_views.py:108
 #, python-format
 msgid "Document \"%s\" transitioned successfully"
 msgstr "Dokuments \"%s\" veiksmīgi mainīts"
 
-#: views/workflow_instance_views.py:104
+#: views/workflow_instance_views.py:117
 msgid "Submit"
 msgstr "Iesniegt"
 
-#: views/workflow_instance_views.py:106
+#: views/workflow_instance_views.py:119
 #, python-format
 msgid "Execute transition \"%(transition)s\" for workflow: %(workflow)s"
 msgstr ""
 
-#: views/workflow_instance_views.py:121
+#: views/workflow_instance_views.py:134
 msgid "Optional comment to attach to the transition."
 msgstr "Izvēles komentārs, ko var pievienot pārejai."
 
-#: views/workflow_instance_views.py:191
+#: views/workflow_instance_views.py:204
 msgid "Select"
 msgstr ""
 
-#: views/workflow_instance_views.py:193
+#: views/workflow_instance_views.py:206
 #, python-format
 msgid "Select transition for workflow: %s"
 msgstr ""
@@ -779,7 +779,7 @@ msgid "Documents in the workflow \"%s\", state \"%s\""
 msgstr "Dokumenti darbplūsmā \"%s\", norādiet \"%s\""
 
 #: views/workflow_proxy_views.py:121
-#: views/workflow_template_state_views.py:324
+#: views/workflow_template_state_views.py:326
 msgid "Create states and link them using transitions."
 msgstr "Izveidojiet valstis un saistiet tās, izmantojot pārejas."
 
@@ -788,7 +788,7 @@ msgid "This workflow doesn't have any state"
 msgstr "Šai darbplūsmai nav nekādas valsts"
 
 #: views/workflow_proxy_views.py:127
-#: views/workflow_template_state_views.py:330
+#: views/workflow_template_state_views.py:332
 #, python-format
 msgid "States of workflow: %s"
 msgstr "Darba plūsmas valstis: %s"
@@ -827,101 +827,101 @@ msgstr "Darbplūsmas stāvokļa darbības: %s"
 msgid "New workflow state action selection"
 msgstr "Jauna darbplūsmas stāvokļa darbības izvēle"
 
-#: views/workflow_template_state_views.py:228
+#: views/workflow_template_state_views.py:230
 #, python-format
 msgid "Create states for workflow: %s"
 msgstr "Izveidojiet darbplūsmas stāvokļus: %s"
 
-#: views/workflow_template_state_views.py:261
+#: views/workflow_template_state_views.py:263
 #, python-format
 msgid "Delete workflow state: %s?"
 msgstr "Dzēst darbplūsmas stāvokli: %s?"
 
-#: views/workflow_template_state_views.py:291
+#: views/workflow_template_state_views.py:293
 #, python-format
 msgid "Edit workflow state: %s"
 msgstr "Rediģēt darbplūsmas stāvokli: %s"
 
-#: views/workflow_template_state_views.py:327
+#: views/workflow_template_state_views.py:329
 msgid "This workflow doesn't have any states"
 msgstr "Šai darbplūsmai nav neviena stāvokļa"
 
-#: views/workflow_template_transition_views.py:36
+#: views/workflow_template_transition_views.py:38
 #, python-format
 msgid "Create transitions for workflow: %s"
 msgstr "Izveidojiet pārejas darbplūsmai: %s"
 
-#: views/workflow_template_transition_views.py:78
+#: views/workflow_template_transition_views.py:80
 #, python-format
 msgid "Delete workflow transition: %s?"
 msgstr "Dzēst darbplūsmas pāreju: %s?"
 
-#: views/workflow_template_transition_views.py:106
+#: views/workflow_template_transition_views.py:108
 #, python-format
 msgid "Edit workflow transition: %s"
 msgstr "Rediģēt darbplūsmas pāreju: %s"
 
-#: views/workflow_template_transition_views.py:146
+#: views/workflow_template_transition_views.py:150
 msgid ""
 "Create a transition and use it to move a workflow from  one state to "
 "another."
 msgstr "Izveidojiet pāreju un izmantojiet to, lai pārvietotu darbplūsmu no vienas valsts uz citu."
 
-#: views/workflow_template_transition_views.py:150
+#: views/workflow_template_transition_views.py:154
 msgid "This workflow doesn't have any transitions"
 msgstr "Šai darbplūsmai nav nekādu pāreju"
 
-#: views/workflow_template_transition_views.py:154
+#: views/workflow_template_transition_views.py:158
 #, python-format
 msgid "Transitions of workflow: %s"
 msgstr "Darbplūsmas pārejas: %s"
 
-#: views/workflow_template_transition_views.py:182
+#: views/workflow_template_transition_views.py:188
 #, python-format
 msgid "Error updating workflow transition trigger events; %s"
 msgstr "Kļūda, atjauninot darbplūsmas pārejas sprūda notikumus; %s"
 
-#: views/workflow_template_transition_views.py:189
+#: views/workflow_template_transition_views.py:195
 msgid "Workflow transition trigger events updated successfully"
 msgstr "Darbplūsmas pārejas sprūda notikumi tika veiksmīgi atjaunināti"
 
-#: views/workflow_template_transition_views.py:203
+#: views/workflow_template_transition_views.py:209
 msgid ""
 "Triggers are events that cause this transition to execute automatically."
 msgstr "Indikatori ir notikumi, kas izraisa šīs pārejas izpildi automātiski."
 
-#: views/workflow_template_transition_views.py:207
+#: views/workflow_template_transition_views.py:213
 #, python-format
 msgid "Workflow transition trigger events for: %s"
 msgstr "Darbplūsmas pārejas sprūda notikumi: %s"
 
-#: views/workflow_template_transition_views.py:257
+#: views/workflow_template_transition_views.py:263
 #, python-format
 msgid "Create a field for workflow transition: %s"
 msgstr ""
 
-#: views/workflow_template_transition_views.py:291
+#: views/workflow_template_transition_views.py:297
 #, python-format
 msgid "Delete workflow transition field: %s"
 msgstr ""
 
-#: views/workflow_template_transition_views.py:325
+#: views/workflow_template_transition_views.py:331
 #, python-format
 msgid "Edit workflow transition field: %s"
 msgstr ""
 
-#: views/workflow_template_transition_views.py:362
+#: views/workflow_template_transition_views.py:370
 msgid ""
 "Workflow transition fields allow adding data to the workflow's context. This"
 " additional context data can then be used by other elements of the workflow "
 "system like the workflow state actions."
 msgstr ""
 
-#: views/workflow_template_transition_views.py:368
+#: views/workflow_template_transition_views.py:376
 msgid "There are no fields for this workflow transition"
 msgstr ""
 
-#: views/workflow_template_transition_views.py:372
+#: views/workflow_template_transition_views.py:380
 #, python-format
 msgid "Fields for workflow transition: %s"
 msgstr ""

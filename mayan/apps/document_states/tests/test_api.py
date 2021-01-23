@@ -19,8 +19,9 @@ from .literals import (
 
 from .mixins import (
     DocumentWorkflowAPIViewTestMixin, WorkflowAPIViewTestMixin,
-    WorkflowStateAPIViewTestMixin, WorkflowTransitionAPIViewTestMixin,
-    WorkflowTestMixin
+    WorkflowStateAPIViewTestMixin, WorkflowTestMixin,
+    WorkflowTransitionAPIViewTestMixin,
+    WorkflowTransitionFieldAPIViewTestMixin, WorkflowTransitionFieldTestMixin
 )
 
 
@@ -34,7 +35,7 @@ class DocumentWorkflowsAPIViewTestCase(
         self._create_test_workflow(add_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
-        self._upload_test_document()
+        self._create_test_document_stub()
 
         response = self._request_test_workflow_instance_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
@@ -44,7 +45,7 @@ class DocumentWorkflowsAPIViewTestCase(
         self._create_test_workflow(add_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
-        self._upload_test_document()
+        self._create_test_document_stub()
 
         self.grant_access(
             obj=self.test_workflow, permission=permission_workflow_view
@@ -58,7 +59,7 @@ class DocumentWorkflowsAPIViewTestCase(
         self._create_test_workflow(add_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
-        self._upload_test_document()
+        self._create_test_document_stub()
 
         self.grant_access(
             obj=self.test_document, permission=permission_workflow_view
@@ -68,11 +69,11 @@ class DocumentWorkflowsAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
         self.assertFalse('workflow' in response.data)
 
-    def test_workflow_instance_detail_view_with_access(self):
+    def test_workflow_instance_detail_view_with_full_access(self):
         self._create_test_workflow(add_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
-        self._upload_test_document()
+        self._create_test_document_stub()
 
         self.grant_access(
             obj=self.test_workflow, permission=permission_workflow_view
@@ -92,7 +93,7 @@ class DocumentWorkflowsAPIViewTestCase(
         self._create_test_workflow(add_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
-        self._upload_test_document()
+        self._create_test_document_stub()
 
         response = self._request_test_workflow_instance_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
@@ -102,7 +103,7 @@ class DocumentWorkflowsAPIViewTestCase(
         self._create_test_workflow(add_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
-        self._upload_test_document()
+        self._create_test_document_stub()
 
         self.grant_access(
             obj=self.test_document, permission=permission_workflow_view
@@ -116,7 +117,7 @@ class DocumentWorkflowsAPIViewTestCase(
         self._create_test_workflow(add_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
-        self._upload_test_document()
+        self._create_test_document_stub()
 
         self.grant_access(
             obj=self.test_workflow, permission=permission_workflow_view
@@ -126,11 +127,11 @@ class DocumentWorkflowsAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertFalse('result' in response.data)
 
-    def test_workflow_instance_list_view_with_access(self):
+    def test_workflow_instance_list_view_with_full_access(self):
         self._create_test_workflow(add_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
-        self._upload_test_document()
+        self._create_test_document_stub()
 
         self.grant_access(
             obj=self.test_workflow, permission=permission_workflow_view
@@ -150,7 +151,7 @@ class DocumentWorkflowsAPIViewTestCase(
         self._create_test_workflow(add_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
-        self._upload_test_document()
+        self._create_test_document_stub()
 
         workflow_instance = self.test_document.workflows.first()
         response = self._request_test_workflow_instance_log_entry_create_api_view(
@@ -166,7 +167,7 @@ class DocumentWorkflowsAPIViewTestCase(
         self._create_test_workflow(add_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
-        self._upload_test_document()
+        self._create_test_document_stub()
 
         self.grant_access(
             obj=self.test_workflow, permission=permission_workflow_transition
@@ -188,7 +189,7 @@ class DocumentWorkflowsAPIViewTestCase(
         self._create_test_workflow(add_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
-        self._upload_test_document()
+        self._create_test_document_stub()
         self._create_test_workflow_instance_log_entry()
 
         response = self._request_test_workflow_instance_log_entry_list_api_view()
@@ -199,7 +200,7 @@ class DocumentWorkflowsAPIViewTestCase(
         self._create_test_workflow(add_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
-        self._upload_test_document()
+        self._create_test_document_stub()
         self._create_test_workflow_instance_log_entry()
 
         self.grant_access(
@@ -700,7 +701,7 @@ class WorkflowStatesAPIViewTestCase(
         )
 
 
-class WorkflowTransitionsAPIViewTestCase(
+class WorkflowTransitionAPIViewTestCase(
     WorkflowTransitionAPIViewTestMixin, DocumentTestMixin, WorkflowTestMixin,
     BaseAPITestCase
 ):
@@ -901,4 +902,173 @@ class WorkflowTransitionsAPIViewTestCase(
         self.assertEqual(
             self.test_workflow_transition.destination_state,
             self.test_workflow_state_1
+        )
+
+
+class WorkflowTransitionFieldAPIViewTestCase(
+    WorkflowTransitionFieldAPIViewTestMixin, DocumentTestMixin,
+    WorkflowTestMixin, WorkflowTransitionFieldTestMixin, BaseAPITestCase
+):
+    auto_upload_test_document = False
+
+    def test_workflow_transition_field_create_view_no_permission(self):
+        self._create_test_workflow()
+        self._create_test_workflow_states()
+        self._create_test_workflow_transition()
+
+        transition_field_count = self.test_workflow_transition.fields.count()
+
+        response = self._request_test_workflow_transition_field_create_api_view()
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+        self.test_workflow_transition.refresh_from_db()
+        self.assertEqual(
+            self.test_workflow_transition.fields.count(),
+            transition_field_count
+        )
+
+    def test_workflow_transition_field_create_view_with_access(self):
+        self._create_test_workflow()
+        self._create_test_workflow_states()
+        self._create_test_workflow_transition()
+
+        self.grant_access(
+            obj=self.test_workflow, permission=permission_workflow_edit
+        )
+
+        transition_field_count = self.test_workflow_transition.fields.count()
+
+        response = self._request_test_workflow_transition_field_create_api_view()
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+        self.test_workflow_transition.refresh_from_db()
+        self.assertEqual(
+            self.test_workflow_transition.fields.count(),
+            transition_field_count + 1
+        )
+
+    def test_workflow_transition_field_delete_view_no_permission(self):
+        self._create_test_workflow()
+        self._create_test_workflow_states()
+        self._create_test_workflow_transition()
+        self._create_test_workflow_transition_field()
+
+        transition_field_count = self.test_workflow_transition.fields.count()
+
+        response = self._request_test_workflow_transition_field_delete_api_view()
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+        self.assertEqual(
+            self.test_workflow_transition.fields.count(),
+            transition_field_count
+        )
+
+    def test_workflow_transition_field_delete_view_with_access(self):
+        self._create_test_workflow()
+        self._create_test_workflow_states()
+        self._create_test_workflow_transition()
+        self._create_test_workflow_transition_field()
+
+        self.grant_access(
+            obj=self.test_workflow, permission=permission_workflow_edit
+        )
+
+        transition_field_count = self.test_workflow_transition.fields.count()
+
+        response = self._request_test_workflow_transition_field_delete_api_view()
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
+        self.assertEqual(
+            self.test_workflow_transition.fields.count(),
+            transition_field_count - 1
+        )
+
+    def test_workflow_transition_field_detail_view_no_permission(self):
+        self._create_test_workflow()
+        self._create_test_workflow_states()
+        self._create_test_workflow_transition()
+        self._create_test_workflow_transition_field()
+
+        response = self._request_test_workflow_transition_field_detail_api_view()
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertFalse('results' in response.data)
+
+    def test_workflow_transition_field_detail_view_with_access(self):
+        self._create_test_workflow()
+        self._create_test_workflow_states()
+        self._create_test_workflow_transition()
+        self._create_test_workflow_transition_field()
+
+        self.grant_access(
+            obj=self.test_workflow, permission=permission_workflow_view
+        )
+
+        response = self._request_test_workflow_transition_field_detail_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(
+            response.data['label'],
+            self.test_workflow_transition_field.label
+        )
+
+    def test_workflow_transition_field_edit_via_patch_view_no_permission(self):
+        self._create_test_workflow()
+        self._create_test_workflow_states()
+        self._create_test_workflow_transition()
+        self._create_test_workflow_transition_field()
+
+        transition_field_label = self.test_workflow_transition_field.label
+
+        response = self._request_test_workflow_transition_field_edit_via_patch_api_view()
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+        self.test_workflow_transition_field.refresh_from_db()
+        self.assertEqual(
+            self.test_workflow_transition_field.label, transition_field_label
+        )
+
+    def test_workflow_transition_field_edit_via_patch_view_with_access(self):
+        self._create_test_workflow()
+        self._create_test_workflow_states()
+        self._create_test_workflow_transition()
+        self._create_test_workflow_transition_field()
+
+        self.grant_access(
+            obj=self.test_workflow, permission=permission_workflow_edit
+        )
+
+        transition_field_label = self.test_workflow_transition_field.label
+
+        response = self._request_test_workflow_transition_field_edit_via_patch_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.test_workflow_transition_field.refresh_from_db()
+        self.assertNotEqual(
+            self.test_workflow_transition_field.label, transition_field_label
+        )
+
+    def test_workflow_transition_field_list_view_no_permission(self):
+        self._create_test_workflow()
+        self._create_test_workflow_states()
+        self._create_test_workflow_transition()
+        self._create_test_workflow_transition_field()
+
+        response = self._request_test_workflow_transition_field_list_api_view()
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertFalse('results' in response.data)
+
+    def test_workflow_transition_field_list_view_with_access(self):
+        self._create_test_workflow()
+        self._create_test_workflow_states()
+        self._create_test_workflow_transition()
+        self._create_test_workflow_transition_field()
+
+        self.grant_access(
+            obj=self.test_workflow, permission=permission_workflow_view
+        )
+
+        response = self._request_test_workflow_transition_field_list_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(
+            response.data['results'][0]['label'],
+            self.test_workflow_transition_field.label
         )

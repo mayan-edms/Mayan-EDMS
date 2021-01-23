@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-04-28 14:42+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
@@ -27,7 +27,7 @@ msgstr ""
 msgid "Checkouts"
 msgstr "Retiradas"
 
-#: dashboard_widgets.py:14 views.py:181
+#: dashboard_widgets.py:14 views.py:182
 msgid "Checked out documents"
 msgstr "Documentos retirados"
 
@@ -220,13 +220,13 @@ msgstr "Retirar o documento: %s"
 msgid "Check out details for document: %s"
 msgstr "Detalhes da retirada para o documento: %s "
 
-#: views.py:177
+#: views.py:178
 msgid ""
 "Checking out a document, blocks certain operations for a predetermined "
 "amount of time."
 msgstr "Retirar um documento bloqueia certas operações por uma quantidade de tempo predeterminada."
 
-#: views.py:180
+#: views.py:181
 msgid "No documents have been checked out"
 msgstr "Nenhum documento foi retirado."
 

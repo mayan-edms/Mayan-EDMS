@@ -4,14 +4,16 @@
 # 
 # Translators:
 # Translators:
+# Marwan Rahhal <Marwanr@sssit.net>, 2020
 # Mohammed ALDOUB <voulnet@gmail.com>, 2013
+# WM Shinkada <shinkadawasim@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-08-18 04:38+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-12-24 01:42+0000\n"
+"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>\n"
 "Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,21 +21,21 @@ msgstr ""
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: apps.py:49 permissions.py:6 settings.py:11
+#: apps.py:49 permissions.py:6 settings.py:12
 msgid "Document signatures"
-msgstr "Document signatures"
+msgstr "توقيعات الوثيقة"
 
 #: apps.py:95
 msgid "Date"
-msgstr "Date"
+msgstr "التاريخ"
 
 #: apps.py:98 models.py:46
 msgid "Key ID"
-msgstr "Key ID"
+msgstr "مفتاح"
 
 #: apps.py:102 forms.py:62 models.py:51
 msgid "Signature ID"
-msgstr ""
+msgstr "معرف التوقيع"
 
 #: apps.py:103 forms.py:74
 msgid "None"
@@ -45,73 +47,73 @@ msgstr "النوع"
 
 #: forms.py:17 forms.py:31 workflow_actions.py:19
 msgid "Key"
-msgstr ""
+msgstr "مفتاح"
 
 #: forms.py:22 serializers.py:33 workflow_actions.py:30
 msgid ""
 "The passphrase to unlock the key and allow it to be used to sign the "
 "document version."
-msgstr ""
+msgstr "عبارة المرور لفتح المفتاح والسماح باستخدامه لتوقيع إصدار المستند."
 
 #: forms.py:24 workflow_actions.py:27
 msgid "Passphrase"
-msgstr ""
+msgstr "عبارة المرور"
 
 #: forms.py:33
 msgid "Private key that will be used to sign this document version."
-msgstr ""
+msgstr "المفتاح الخاص الذي سيتم استخدامه للتوقيع على إصدار المستند هذا."
 
 #: forms.py:44
 msgid "Signature is embedded?"
-msgstr ""
+msgstr "التوقيع مضمن؟"
 
 #: forms.py:46
 msgid "Signature date"
-msgstr ""
+msgstr "تاريخ التوقيع"
 
 #: forms.py:49
 msgid "Signature key ID"
-msgstr ""
+msgstr "مفتاح التوقيع"
 
 #: forms.py:51
 msgid "Signature key present?"
-msgstr ""
+msgstr "مفتاح التوقيع موجود؟"
 
 #: forms.py:64
 msgid "Key fingerprint"
-msgstr ""
+msgstr "مفتاح البصمة"
 
 #: forms.py:68
 msgid "Key creation date"
-msgstr ""
+msgstr "تاريخ انشاء المفتاح "
 
 #: forms.py:73
 msgid "Key expiration date"
-msgstr ""
+msgstr "تاريخ انتهاء المفتاح"
 
 #: forms.py:78
 msgid "Key length"
-msgstr ""
+msgstr "طول المفتاح"
 
 #: forms.py:82
 msgid "Key algorithm"
-msgstr ""
+msgstr "الخوارزمية الرئيسية"
 
 #: forms.py:86
 msgid "Key user ID"
-msgstr ""
+msgstr "معرف مفتاح المستخدم "
 
 #: forms.py:90
 msgid "Key type"
-msgstr ""
+msgstr "نوع المفتاح"
 
 #: links.py:30
 msgid "Verify all documents"
-msgstr ""
+msgstr "تم توثيق جميع الوثائق"
 
 #: links.py:37 links.py:77 queues.py:8
 msgid "Signatures"
-msgstr ""
+msgstr "التوقيعات"
 
 #: links.py:43
 msgid "Delete"
@@ -119,7 +121,7 @@ msgstr "حذف"
 
 #: links.py:50
 msgid "Sign detached"
-msgstr ""
+msgstr "علامة منفصلة"
 
 #: links.py:57
 msgid "Details"
@@ -131,217 +133,217 @@ msgstr "تحميل"
 
 #: links.py:70
 msgid "Sign embedded"
-msgstr ""
+msgstr "التوقيع مضمن"
 
 #: links.py:83
 msgid "Upload signature"
-msgstr ""
+msgstr "تحميل التوقيع "
 
 #: models.py:38
 msgid "Document version"
-msgstr ""
+msgstr "نسخة الوثيقة"
 
 #: models.py:42
 msgid "Date signed"
-msgstr ""
+msgstr "تاريخ التوقيع"
 
 #: models.py:45
 msgid "ID of the key that will be used to sign the document."
-msgstr ""
+msgstr "معرف المفتاح الذي سيتم استخدامه لتوقيع المستند."
 
 #: models.py:55
 msgid "Public key fingerprint"
-msgstr ""
+msgstr "مفتاح البصمة العام"
 
 #: models.py:62
 msgid "Document version signature"
-msgstr ""
+msgstr "توقيع إصدار الوثيقة"
 
 #: models.py:63
 msgid "Document version signatures"
-msgstr ""
+msgstr "توقيعات نسخة الوثيقة"
 
 #: models.py:82
 msgid "Detached"
-msgstr ""
+msgstr "منفصل"
 
 #: models.py:84
 msgid "Embedded"
-msgstr ""
+msgstr "المضمنة"
 
 #: models.py:99
 msgid "Document version embedded signature"
-msgstr ""
+msgstr "نسخة الوثيقة التوقيع المضمنة"
 
 #: models.py:100
 msgid "Document version embedded signatures"
-msgstr ""
+msgstr "نسخة الوثيقة التواقيع المضمنة"
 
 #: models.py:132
 msgid "Signature file previously generated."
-msgstr ""
+msgstr "تم إنشاء ملف التوقيع مسبقًا."
 
 #: models.py:135
 msgid "Signature file"
-msgstr "Signature file"
+msgstr "توقيع الملف"
 
 #: models.py:141
 msgid "Document version detached signature"
-msgstr ""
+msgstr "نسخة وثيقة التوقيع منفصل"
 
 #: models.py:142
 msgid "Document version detached signatures"
-msgstr ""
+msgstr "نسخة الوثيقة فصل التواقيع"
 
 #: models.py:145
 msgid "signature"
-msgstr ""
+msgstr "التوقيع"
 
 #: permissions.py:10
 msgid "Sign documents with detached signatures"
-msgstr ""
+msgstr "التوقيع على المستندات بالتوقيعات المنفصلة"
 
 #: permissions.py:14
 msgid "Sign documents with embedded signatures"
-msgstr ""
+msgstr "قم بتوقيع المستندات بالتوقيعات المضمنة"
 
 #: permissions.py:18
 msgid "Delete detached signatures"
-msgstr ""
+msgstr "حذف التوقيعات المنفصلة"
 
 #: permissions.py:22
 msgid "Download detached document signatures"
-msgstr ""
+msgstr "قم بتنزيل توقيعات المستندات المنفصلة"
 
 #: permissions.py:26
 msgid "Upload detached document signatures"
-msgstr ""
+msgstr "تحميل توقيعات وثيقة منفصلة"
 
 #: permissions.py:30
 msgid "Verify document signatures"
-msgstr "Verify document signatures"
+msgstr "مطابقة توقيع الوثيقة"
 
 #: permissions.py:34
 msgid "View details of document signatures"
-msgstr ""
+msgstr "عرض تفاصيل توقيعات الوثيقة"
 
 #: queues.py:13
 msgid "Verify key signatures"
-msgstr ""
+msgstr "تحقق من التوقيعات الرئيسية"
 
 #: queues.py:17
 msgid "Unverify key signatures"
-msgstr ""
+msgstr "عدم التحقق من التوقيعات الرئيسية"
 
 #: queues.py:21
 msgid "Verify document version"
-msgstr ""
+msgstr "تحقق من إصدار المستند"
 
 #: queues.py:26
 msgid "Verify missing embedded signature"
-msgstr ""
+msgstr "تحقق من فقدان التوقيع المضمّن"
 
-#: settings.py:19
+#: settings.py:20
 msgid "Path to the Storage subclass to use when storing detached signatures."
-msgstr ""
+msgstr "المسار إلى فئة التخزين الفرعية لاستخدامها عند تخزين التوقيعات المنفصلة."
 
-#: settings.py:28
+#: settings.py:27
 msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND."
-msgstr ""
+msgstr "تفعيل المتغيرات"
 
 #: storages.py:13
 msgid ""
 "Unable to initialize the detached signatures storage. Check the settings {} "
 "and {} for formatting errors."
-msgstr ""
+msgstr "تعذر تهيئة مخزن التوقيعات المنفصلة. تحقق من إعدادات {} و {} لأخطاء التنسيق."
 
 #: storages.py:20
 msgid "Detached signatures"
-msgstr ""
+msgstr "التوقيعات المنفصلة"
 
-#: views.py:68 views.py:156
+#: views.py:68 views.py:159
 msgid "Passphrase is needed to unlock this key."
-msgstr ""
+msgstr "هناك حاجة إلى عبارة المرور لفتح هذا المفتاح."
 
-#: views.py:81 views.py:169
+#: views.py:81 views.py:172
 msgid "Passphrase is incorrect."
-msgstr ""
+msgstr "عبارة المرور غير صحيحة."
 
-#: views.py:94 views.py:182
+#: views.py:94 views.py:185
 msgid "Document version signed successfully."
-msgstr ""
+msgstr "نوع المستندات الموقعة بنجاح "
 
-#: views.py:122 views.py:217
+#: views.py:125 views.py:223
 msgid "Sign"
-msgstr ""
+msgstr "توقيع"
 
-#: views.py:124
+#: views.py:127
 #, python-format
 msgid "Sign document version \"%s\" with a detached signature"
-msgstr ""
+msgstr "إصدار وثيقة التوقيع &quot;%s&quot; بتوقيع منفصل"
 
-#: views.py:219
+#: views.py:225
 #, python-format
 msgid "Sign document version \"%s\" with a embedded signature"
-msgstr ""
+msgstr "إصدار وثيقة التوقيع &quot;%s&quot; بتوقيع مدمج"
 
-#: views.py:236
+#: views.py:241
 #, python-format
 msgid "Delete detached signature: %s"
-msgstr ""
+msgstr "حذف التوقيع المنفصل: %s"
 
-#: views.py:259
+#: views.py:271
 #, python-format
 msgid "Details for signature: %s"
-msgstr ""
+msgstr "تفاصيل التوقيع: %s"
 
-#: views.py:291
+#: views.py:313
 msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
 "document itself or uploaded as a separate file."
-msgstr ""
+msgstr "تساعد التوقيعات في توفير دليل التأليف واكتشاف التلاعب. هم آمنون للغاية ويصعب تزويرهم. يمكن تضمين التوقيع كجزء من المستند نفسه أو تحميله كملف منفصل."
 
-#: views.py:320
+#: views.py:342
 msgid "There are no signatures for this document."
-msgstr ""
+msgstr "لا توجد توقيعات لهذه الوثيقة."
 
-#: views.py:324
+#: views.py:346
 #, python-format
 msgid "Signatures for document version: %s"
-msgstr ""
+msgstr "التوقيعات الخاصة بإصدار الوثيقة: %s"
 
-#: views.py:356
+#: views.py:381
 #, python-format
 msgid "Upload detached signature for document version: %s"
-msgstr ""
+msgstr "تحميل توقيع منفصل لإصدار المستند: %s"
 
-#: views.py:374
+#: views.py:399
 msgid "On large databases this operation may take some time to execute."
-msgstr "On large databases this operation may take some time to execute."
+msgstr "يرجى الإنتظار ، قد تستغرق عملية الحفظ وقت أطول"
 
-#: views.py:375
+#: views.py:400
 msgid "Verify all document for signatures?"
-msgstr ""
+msgstr "تحقق من كل وثيقة للتوقيعات؟"
 
-#: views.py:385
+#: views.py:410
 msgid "Signature verification queued successfully."
-msgstr ""
+msgstr "تم وضع التحقق من التوقيع في قائمة الانتظار بنجاح."
 
 #: workflow_actions.py:22
 msgid "Private key that will be used to sign the document version."
-msgstr ""
+msgstr "المفتاح الخاص الذي سيتم استخدامه للتوقيع على إصدار المستند."
 
 #: workflow_actions.py:37
 msgid "Sign document (detached)"
-msgstr ""
+msgstr "توقيع الوثيقة (منفصلة)"
 
 #: workflow_actions.py:49
 msgid ""
 "Document has no version to sign. You might be trying to use this action in "
 "an initial state before the created document is yet to be processed."
-msgstr ""
+msgstr "المستند ليس لديه نسخة للتوقيع. ربما تحاول استخدام هذا الإجراء في حالة أولية قبل أن تتم معالجة المستند الذي تم إنشاؤه."
 
 #: workflow_actions.py:80
 msgid "Sign document (embedded)"
-msgstr ""
+msgstr "توقيع الوثيقة (مضمن)"

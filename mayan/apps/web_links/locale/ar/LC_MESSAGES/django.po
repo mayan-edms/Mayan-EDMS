@@ -6,14 +6,15 @@
 # Translators:
 # Mohammed ALDOUB <voulnet@gmail.com>, 2019
 # Yaman Sanobar <yman.snober@gmail.com>, 2019
+# Marwan Rahhal <Marwanr@sssit.net>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2019-12-03 05:24+0000\n"
-"Last-Translator: Yaman Sanobar <yman.snober@gmail.com>, 2019\n"
+"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2020\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,28 +24,28 @@ msgstr ""
 
 #: apps.py:42
 msgid "Links"
-msgstr ""
+msgstr "الربط"
 
 #: events.py:6 links.py:14 links.py:20 links.py:54 links.py:58 models.py:40
 #: permissions.py:5 views.py:148
 msgid "Web links"
-msgstr ""
+msgstr "روابط النظام"
 
 #: events.py:10
 msgid "Web link created"
-msgstr ""
+msgstr "رابط النظام المنشأ"
 
 #: events.py:13
 msgid "Web link edited"
-msgstr ""
+msgstr "تعديل رابط النظام"
 
 #: events.py:16
 msgid "Web link navigated"
-msgstr ""
+msgstr "إستعراض رابط النظام"
 
 #: links.py:26 views.py:189
 msgid "Create new web link"
-msgstr ""
+msgstr "إنشاء رابط جديد"
 
 #: links.py:32
 msgid "Delete"
@@ -52,7 +53,7 @@ msgstr "حذف"
 
 #: links.py:38 models.py:34
 msgid "Document types"
-msgstr ""
+msgstr "أنواع الوثائق"
 
 #: links.py:44
 msgid "Edit"
@@ -60,11 +61,11 @@ msgstr "تحرير"
 
 #: links.py:50
 msgid "Navigate"
-msgstr ""
+msgstr "المتصفح"
 
 #: models.py:22
 msgid "A short text describing the web link."
-msgstr ""
+msgstr "وصف مختصر لروابط النظام"
 
 #: models.py:23
 msgid "Label"
@@ -72,11 +73,11 @@ msgstr "العنوان"
 
 #: models.py:27
 msgid "Template that will be used to craft the final URL of the web link."
-msgstr ""
+msgstr "القالب المستخدم "
 
 #: models.py:29
 msgid "Template"
-msgstr ""
+msgstr "القالب"
 
 #: models.py:31
 msgid "Enabled"
@@ -84,85 +85,87 @@ msgstr "مفعل"
 
 #: models.py:39
 msgid "Web link"
-msgstr ""
+msgstr "الرابط"
 
 #: permissions.py:8
 msgid "Create new web links"
-msgstr ""
+msgstr "أنشاء روابط جديدة"
 
 #: permissions.py:11
 msgid "Delete web links"
-msgstr ""
+msgstr "حذف الروابط"
 
 #: permissions.py:14
 msgid "Edit web links"
-msgstr ""
+msgstr "تعديل الروابط"
 
 #: permissions.py:17
 msgid "View existing web links"
-msgstr ""
+msgstr "إستعراض الروابط الحالية"
 
 #: permissions.py:20
 msgid "View web link instances"
-msgstr ""
+msgstr "حالة الرابط"
 
 #: serializers.py:62
 msgid ""
 "Comma separated list of document type primary keys to which this web link "
 "will be attached."
-msgstr ""
+msgstr "القائمة الأساسية لنوع الوثيقة"
 
 #: views.py:42
 msgid "Available web links"
-msgstr ""
+msgstr "الروابط المتاحة"
 
 #: views.py:43
 msgid "Web links enabled"
-msgstr ""
+msgstr "تفعيل الروابط"
 
 #: views.py:75
 #, python-format
 msgid "Web links to enable for document type: %s"
-msgstr ""
+msgstr "تفعيل الروابط لأنواع الوثائق: %s"
 
 #: views.py:113
 msgid "Available document types"
-msgstr ""
+msgstr "أنواع الوثائق المتاحة"
 
 #: views.py:114
 msgid "Document types enabled"
-msgstr ""
+msgstr "تفعيل الوثائق"
 
 #: views.py:124
 #, python-format
 msgid "Document type for which to enable web link: %s"
-msgstr ""
+msgstr "أنواع الوثائق المفعلة  للرابط : %s"
 
 #: views.py:141 views.py:171
 msgid ""
 "Web links allow generating HTTP links from documents to external resources. "
 "The link URL's can contain document properties values."
 msgstr ""
+"تسمح روابط الويب بإنشاء روابط HTTP من الوثائق إلى الأنظمة الخارجيةويمكن أن "
+"يحتوي عنوان الرابط على قيم خصائص الوثيقة."
 
 #: views.py:146
 msgid "There are no web links"
-msgstr ""
+msgstr "لا يوجد روابط "
 
 #: views.py:176
 msgid "There are no web links for this document"
-msgstr ""
+msgstr "لا توجد روابط لهذه الوثيقة"
 
 #: views.py:179
 #, python-format
 msgid "Web links for document: %s"
-msgstr ""
+msgstr "روابط الوثائق : %s"
 
 #: views.py:211
 #, python-format
 msgid "Delete web link: %s"
-msgstr ""
+msgstr "حذف الرابط : %s"
 
 #: views.py:227
 #, python-format
 msgid "Edit web link: %s"
-msgstr ""
+msgstr "تعديل الرابط : %s"

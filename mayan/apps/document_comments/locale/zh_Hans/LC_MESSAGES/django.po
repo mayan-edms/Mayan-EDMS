@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-04-02 07:30+0000\n"
 "Last-Translator: xisafe <root@xisafe.com>\n"
 "Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-edms/language/zh-Hans/)\n"
@@ -90,32 +90,32 @@ msgstr "查看评论"
 msgid "Add comment to document: %s"
 msgstr "添加评论到文档：%s"
 
-#: views.py:60
+#: views.py:59
 #, python-format
 msgid "Delete comment: %s?"
 msgstr "删除评论：%s？"
 
-#: views.py:87
+#: views.py:90
 #, python-format
 msgid "Details for comment: %s?"
 msgstr "评论详情: 1%s?"
 
-#: views.py:102
+#: views.py:109
 #, python-format
 msgid "Edit comment: %s?"
 msgstr "编辑评论: 1%s?"
 
-#: views.py:132
+#: views.py:144
 msgid ""
 "Document comments are timestamped text entries from users. They are great "
 "for collaboration."
 msgstr "文档注释是来自用户的带时间戳的文本条目。它们非常适合合作。"
 
-#: views.py:135
+#: views.py:147
 msgid "There are no comments"
 msgstr "没有评论"
 
-#: views.py:137
+#: views.py:149
 #, python-format
 msgid "Comments for document: %s"
 msgstr "文档评论：%s"

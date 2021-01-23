@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-09-29 08:48+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:133 permissions.py:5 settings.py:10
+#: apps.py:133 permissions.py:5 settings.py:13
 msgid "Common"
 msgstr "Společný"
 
@@ -79,7 +79,7 @@ msgstr "Dokumentace"
 msgid "Forum"
 msgstr "Forum"
 
-#: links.py:56 views.py:104
+#: links.py:56 views.py:106
 msgid "License"
 msgstr "Licence"
 
@@ -103,30 +103,30 @@ msgstr "Internetový obchod"
 msgid "Get support"
 msgstr "Získat podporu"
 
-#: links.py:79 queues.py:9 views.py:173
+#: links.py:79 queues.py:9 views.py:175
 msgid "Tools"
 msgstr "Nástroje"
 
-#: literals.py:7
+#: literals.py:18
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
 msgstr "Tato funkce byla ukončena a v budoucí verzi bude odstraněna."
 
-#: literals.py:10
+#: literals.py:21
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
 msgstr "Backend vaší databáze je nastaven na použití SQLite. SQLite by se měl používat pouze pro vývoj a testování, nikoli pro produkční prostředí."
 
-#: literals.py:19
+#: literals.py:30
 msgid "Days"
 msgstr "Dny"
 
-#: literals.py:20
+#: literals.py:31
 msgid "Hours"
 msgstr "Hodiny"
 
-#: literals.py:21
+#: literals.py:32
 msgid "Minutes"
 msgstr "Minuty"
 
@@ -178,13 +178,13 @@ msgstr "Zkopírujte objekt"
 msgid "Default"
 msgstr "Výchozí"
 
-#: settings.py:17
+#: settings.py:19
 msgid ""
 "Time to delay background tasks that depend on a database commit to "
 "propagate."
 msgstr "Čas na čekání úkolů na pozadí, čekající na propagaci do databáze."
 
-#: settings.py:25
+#: settings.py:26
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
@@ -192,7 +192,7 @@ msgid ""
 " containing an application."
 msgstr "Seznam řetězců označujících všechny aplikace, které mají být odstraněny ze seznamu normálně nainstalovaného Mayan EDMS. Každý řetězec by měla být tečkovaná cesta Pythonu k: třídě konfigurace aplikace (upřednostňováno) nebo balíčku obsahující aplikaci."
 
-#: settings.py:35
+#: settings.py:36
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
@@ -200,21 +200,21 @@ msgid ""
 " containing an application."
 msgstr "Seznam řetězců označujících všechny aplikace, které jsou nainstalovány nad rámec těch, které jsou obvykle nainstalovány Mayn EDMS. Každý řetězec by měla být tečkovaná cesta Pythonu k: třídě konfigurace aplikace (upřednostňováno) nebo balíčku obsahující aplikaci."
 
-#: settings.py:44
+#: settings.py:45
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
 msgstr "Název pohledu připojeného ke kotvě značky v hlavní nabídce. Toto je také pohled, na který budou uživatelé přesměrováni po přihlášení."
 
-#: settings.py:52
+#: settings.py:53
 msgid "Name to be displayed in the main menu."
 msgstr "Název, který se zobrazí v hlavní nabídce."
 
-#: settings.py:58
+#: settings.py:59
 msgid "URL of the installation or homepage of the project."
 msgstr "URL instalace nebo domovská stránka projektu."
 
-#: settings.py:63
+#: settings.py:64
 msgid "Base URL path to use for all views."
 msgstr "Základní cesta URL, kterou lze použít pro všechna zobrazení."
 
@@ -232,54 +232,54 @@ msgid ""
 "underscores."
 msgstr "Zadejte platný „interní název“ skládající se z písmen, číslic a podtržítek."
 
-#: views.py:27
+#: views.py:29
 msgid "About"
 msgstr "O Mayan EDMS"
 
-#: views.py:40
+#: views.py:42
 msgid "Current user locale profile details"
 msgstr "Podrobnosti o aktuálním místním profilu uživatele"
 
-#: views.py:46
+#: views.py:48
 msgid "Edit current user locale profile details"
 msgstr "Upravit podrobnosti o aktuálním místním profilu uživatele"
 
-#: views.py:95
+#: views.py:97
 msgid "Dashboard"
 msgstr "Řídící panel"
 
-#: views.py:116
+#: views.py:118
 #, python-format
 msgid "Fields to be copied: %s"
 msgstr "Pole ke kopírování: %s"
 
-#: views.py:125
+#: views.py:127
 #, python-format
 msgid "Make a copy of %(object_name)s \"%(object)s\"?"
 msgstr "Vytvořit kopii %(object_name)s &quot;%(object)s&quot;?"
 
-#: views.py:134
+#: views.py:136
 msgid "Object copied successfully."
 msgstr "Objekt byl úspěšně zkopírován."
 
-#: views.py:151
+#: views.py:153
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
 msgstr "Žádné výsledky zde znamenají, že nemáte potřebná oprávnění k provedení administrativní úlohy."
 
-#: views.py:154
+#: views.py:156
 msgid "No setup options available."
 msgstr "Nejsou k dispozici žádné možnosti nastavení."
 
-#: views.py:158
+#: views.py:160
 msgid "Setup items"
 msgstr "Položky nastavení"
 
-#: views.py:160
+#: views.py:162
 msgid "Here you can configure all aspects of the system."
 msgstr "Zde můžete nakonfigurovat všechny aspekty systému."
 
-#: views.py:175
+#: views.py:177
 msgid "These modules are used to do system maintenance."
 msgstr "Tyto moduly se používají k údržbě systému."

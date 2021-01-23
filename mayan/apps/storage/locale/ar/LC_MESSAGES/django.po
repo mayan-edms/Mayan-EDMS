@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# Marwan Rahhal <Marwanr@sssit.net>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-12-23 22:59+0000\n"
+"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>\n"
 "Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,39 +19,39 @@ msgstr ""
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: apps.py:11 settings.py:9
+#: apps.py:11 settings.py:10
 msgid "Storage"
-msgstr ""
+msgstr "المساحة التخزينية"
 
 #: classes.py:86 classes.py:107
 #, python-format
 msgid ""
 "Unable to initialize storage: %(name)s. Check the storage backend dotted "
 "path and arguments."
-msgstr ""
+msgstr "غير قادر على تهيئة التخزين: %(name)s. يرجى مراجعة مدير النظام."
 
 #: management/commands/storage_process.py:13
 msgid "Name of the app to process."
-msgstr ""
+msgstr "معالجة اسم التطبيق"
 
 #: management/commands/storage_process.py:19
 msgid ""
 "Path of the database (.dbm) file that will be created/read to keep track of "
 "items processed."
-msgstr ""
+msgstr "مسار ملف قاعدة البيانات (.dbm) "
 
 #: management/commands/storage_process.py:26
 msgid "Process a specific model."
-msgstr ""
+msgstr "معالجة نموذج محدد"
 
 #: management/commands/storage_process.py:32
 msgid ""
 "Process the files in reverse to undo the storage pipeline transformations."
-msgstr ""
+msgstr "يجب اعادة التخزين"
 
 #: management/commands/storage_process.py:38
 msgid "Name of the storage to process."
-msgstr ""
+msgstr "معالجة المساحة التخزينية"
 
 #: models.py:23
 msgid "File"
@@ -62,36 +63,36 @@ msgstr "اسم الملف"
 
 #: models.py:27
 msgid "Date time"
-msgstr ""
+msgstr "التاريخ والوقت"
 
 #: models.py:31
 msgid "Shared uploaded file"
-msgstr ""
+msgstr "ملف مشترك"
 
 #: models.py:32 storages.py:19
 msgid "Shared uploaded files"
-msgstr ""
+msgstr "ملف محمل مشترك"
 
 #: queues.py:11
 msgid "Storage periodic"
-msgstr ""
+msgstr "التخزين الدوري"
 
 #: queues.py:16
 msgid "Delete stale uploads"
-msgstr ""
+msgstr "حذف التحميلات "
 
-#: settings.py:14
+#: settings.py:15
 msgid "A storage backend that all workers can use to share files."
-msgstr ""
+msgstr "مساحة تخزينية مشتركة"
 
-#: settings.py:23
+#: settings.py:25
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
-msgstr ""
+msgstr "مساحة تخزينية مؤقتة"
 
 #: storages.py:12
 msgid ""
 "Unable to initialize the shared uploaded file storage. Check the settings {}"
 " and {} for formatting errors."
-msgstr ""
+msgstr "تعذر تهيئة التخزين ، للتحقق من إعدادات {} و {} لأخطاء ."

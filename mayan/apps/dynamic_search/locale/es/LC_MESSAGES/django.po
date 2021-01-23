@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-09-27 07:47+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
@@ -44,7 +44,7 @@ msgstr "Cuando se selecciona, sólo se devolverán los resultados que coincidan 
 msgid "Search terms"
 msgstr "Términos de búsqueda"
 
-#: links.py:13 permissions.py:5 queues.py:7 settings.py:7
+#: links.py:13 permissions.py:5 queues.py:7 settings.py:10
 #: templates/dynamic_search/search_box.html:43 views.py:117 views.py:130
 msgid "Search"
 msgstr "Búsqueda"
@@ -73,16 +73,16 @@ msgstr "Elimina una instancia de modelo del motor de búsqueda."
 msgid "Index a model instance to the search engine."
 msgstr "Indexar una instancia de modelo en el motor de búsqueda."
 
-#: settings.py:13
+#: settings.py:15
 msgid "Full path to the backend to be used to handle the search."
 msgstr "Ruta completa al controlador que se utilizará para manejar la búsqueda."
 
-#: settings.py:23
+#: settings.py:25
 msgid ""
 "Disables the single term bar search leaving only the advanced search button."
 msgstr "Inhabilita la búsqueda de barra de término único dejando solo el botón de búsqueda avanzada."
 
-#: settings.py:29
+#: settings.py:31
 msgid "Maximum number search results to fetch and display."
 msgstr "Número máximo de resultados de búsqueda para obtener y mostrar."
 

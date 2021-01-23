@@ -41,26 +41,26 @@ class FavoriteDocumentAPIViewTestMixin:
 
 
 class FavoriteDocumentTestMixin:
-    def _document_add_to_favorites(self):
+    def _test_document_favorite_add(self):
         self.test_favorite_document = FavoriteDocument.objects.add_for_user(
             document=self.test_document, user=self._test_case_user
         )
 
 
 class FavoriteDocumentsViewTestMixin:
-    def _request_test_document_favorites_add_view(self):
+    def _request_test_document_favorite_add_view(self):
         return self.post(
-            viewname='documents:document_add_to_favorites',
+            viewname='documents:document_favorite_add',
             kwargs={'document_id': self.test_document.pk}
         )
 
     def _request_test_document_favorites_list_view(self):
         return self.get(
-            viewname='documents:document_list_favorites',
+            viewname='documents:document_favorite_list',
         )
 
-    def _request_test_document_favorites_remove_view(self):
+    def _request_test_document_favorite_remove_view(self):
         return self.post(
-            viewname='documents:document_remove_from_favorites',
+            viewname='documents:document_favorite_remove',
             kwargs={'document_id': self.test_document.pk}
         )

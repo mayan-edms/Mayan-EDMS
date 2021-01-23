@@ -4,13 +4,15 @@
 # 
 # Translators:
 # Translators:
+# Marwan Rahhal <Marwanr@sssit.net>, 2020
+# WM Shinkada <shinkadawasim@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2019-04-27 22:53+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-12-24 01:42+0000\n"
+"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>\n"
 "Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,33 +20,33 @@ msgstr ""
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: apps.py:27 links.py:30 links.py:35 links.py:40 permissions.py:5 views.py:34
+#: apps.py:27 links.py:32 links.py:37 links.py:42 permissions.py:5 views.py:33
 msgid "Events"
-msgstr ""
+msgstr "الأحداث"
 
 #: apps.py:39 apps.py:67
 msgid "Date and time"
-msgstr ""
+msgstr "الوقت والتاريخ"
 
 #: apps.py:42 apps.py:70
 msgid "Actor"
-msgstr ""
+msgstr "الممثل"
 
 #: apps.py:46 apps.py:75
 msgid "Event"
-msgstr ""
+msgstr "حدث"
 
 #: apps.py:50 apps.py:80
 msgid "Target"
-msgstr ""
+msgstr "المستهدف"
 
 #: apps.py:54
 msgid "Action object"
-msgstr ""
+msgstr "كائن العمل"
 
 #: apps.py:59 forms.py:10 forms.py:67
 msgid "Namespace"
-msgstr ""
+msgstr "مساحة الاسم"
 
 #: apps.py:62 forms.py:14 forms.py:71
 msgid "Label"
@@ -52,48 +54,48 @@ msgstr "العنوان"
 
 #: apps.py:86
 msgid "Seen"
-msgstr ""
+msgstr "رأيت"
 
 #: classes.py:142
 #, python-format
 msgid "Unknown or obsolete event type: %s"
-msgstr ""
+msgstr "نوع الحدث غير معروف أو قديم: %s"
 
 #: forms.py:18 forms.py:75
 msgid "Subscription"
-msgstr ""
+msgstr "متابعه"
 
 #: forms.py:20 forms.py:77
 msgid "No"
-msgstr "لا"
+msgstr "رفض"
 
 #: forms.py:21 forms.py:78
 msgid "Subscribed"
-msgstr ""
+msgstr "إشتراك"
 
 #: html_widgets.py:57
 msgid "System"
-msgstr ""
+msgstr "النظام"
 
-#: links.py:26
+#: links.py:28
 msgid "My events"
-msgstr ""
+msgstr "الأحداث الخاص بي"
 
-#: links.py:44 models.py:63 views.py:78
+#: links.py:46 models.py:63 views.py:74
 msgid "Event subscriptions"
-msgstr ""
+msgstr "اشتراكات المستخدم"
 
-#: links.py:48
+#: links.py:51
 msgid "Mark as seen"
-msgstr ""
+msgstr "وضع علامة كما شوهد"
 
-#: links.py:52
+#: links.py:54
 msgid "Mark all as seen"
-msgstr ""
+msgstr "ضع علامة على الكل كما رأينا"
 
-#: links.py:57
+#: links.py:60
 msgid "Subscriptions"
-msgstr ""
+msgstr "الاشتراكات"
 
 #: models.py:22
 msgid "Name"
@@ -101,11 +103,11 @@ msgstr "اسم"
 
 #: models.py:26
 msgid "Stored event type"
-msgstr ""
+msgstr "نوع الحدث المخزن"
 
 #: models.py:27
 msgid "Stored event types"
-msgstr ""
+msgstr "أنواع الحدث المخزن"
 
 #: models.py:52 models.py:78 models.py:109
 msgid "User"
@@ -113,87 +115,87 @@ msgstr "مستخدم"
 
 #: models.py:56 models.py:113
 msgid "Event type"
-msgstr "Event type"
+msgstr "أنواع الأحداث"
 
 #: models.py:62
 msgid "Event subscription"
-msgstr ""
+msgstr "الاشتراك في الحدث"
 
 #: models.py:82
 msgid "Action"
-msgstr ""
+msgstr "إجراء"
 
 #: models.py:84
 msgid "Read"
-msgstr ""
+msgstr "قراءه"
 
 #: models.py:90
 msgid "Notification"
-msgstr ""
+msgstr "تنبيه"
 
-#: models.py:91 views.py:117
+#: models.py:91 views.py:132
 msgid "Notifications"
-msgstr ""
+msgstr "التنبيهات"
 
 #: models.py:119
 msgid "Object event subscription"
-msgstr ""
+msgstr "اشتراك حدث الكائن"
 
 #: models.py:120
 msgid "Object event subscriptions"
-msgstr ""
+msgstr "اشتراكات أحداث الكائن"
 
 #: permissions.py:8
 msgid "Access the events of an object"
-msgstr ""
+msgstr "الوصول إلى أحداث الكائن"
 
-#: views.py:57
+#: views.py:56
 #, python-format
 msgid "Error updating event subscription; %s"
-msgstr ""
+msgstr "خطأ في تحديث اشتراك الحدث ؛ %s"
 
-#: views.py:62
+#: views.py:61
 msgid "Event subscriptions updated successfully"
-msgstr ""
+msgstr "تم تحديث اشتراكات المستخدم بنجاح"
 
-#: views.py:112
+#: views.py:127
 msgid "Subscribe to global or object events to receive notifications."
-msgstr ""
+msgstr "إشترك لتلقي التنبيهات"
 
-#: views.py:115
+#: views.py:130
 msgid "There are no notifications"
-msgstr ""
+msgstr "لا توجد تنبيهات"
 
-#: views.py:164
+#: views.py:179
 msgid ""
 "Events are actions that have been performed to this object or using this "
 "object."
-msgstr ""
+msgstr "الأحداث هي الإجراءات التي تم تنفيذها على هذا الكائن أو باستخدام هذا الكائن."
 
-#: views.py:167
+#: views.py:182
 msgid "There are no events for this object"
-msgstr ""
+msgstr "لا توجد أحداث لهذا الكائن"
 
-#: views.py:169
+#: views.py:184
 #, python-format
 msgid "Events for: %s"
-msgstr ""
+msgstr "سجل التعديلات: %s"
 
-#: views.py:209
+#: views.py:224
 #, python-format
 msgid "Error updating object event subscription; %s"
-msgstr ""
+msgstr "خطأ في تحديث اشتراك حدث الكائن ؛ %s"
 
-#: views.py:215
+#: views.py:230
 msgid "Object event subscriptions updated successfully"
-msgstr ""
+msgstr "تم تحديث اشتراكات حدث الكائن بنجاح"
 
-#: views.py:248
+#: views.py:243
 #, python-format
 msgid "Event subscriptions for: %s"
-msgstr ""
+msgstr "اشتراكات المستخدم لـ: %s"
 
-#: views.py:280
+#: views.py:295
 #, python-format
 msgid "Events of type: %s"
-msgstr ""
+msgstr "أحداث من النوع: %s"

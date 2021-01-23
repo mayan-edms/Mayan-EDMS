@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Bruno Martins <bruno.martins@bewgpt.com.pt>, 2020\n"
 "Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
@@ -27,7 +27,7 @@ msgid "Label"
 msgstr "Nome"
 
 #: apps.py:49 events.py:6 links.py:17 permissions.py:5 queues.py:7
-#: settings.py:9
+#: settings.py:12
 msgid "File metadata"
 msgstr ""
 
@@ -180,17 +180,17 @@ msgstr ""
 msgid "Process document version"
 msgstr ""
 
-#: settings.py:16
+#: settings.py:18
 msgid ""
 "Set new document types to perform file metadata processing automatically by "
 "default."
 msgstr ""
 
-#: settings.py:22
+#: settings.py:25
 msgid "Arguments to pass to the drivers."
 msgstr ""
 
-#: views.py:42
+#: views.py:44
 msgid ""
 "File metadata are the attributes of the document's file. They can range from"
 " camera information used to take a photo to the author that created a file. "
@@ -199,47 +199,47 @@ msgid ""
 "document metadata, which are user defined and reside in the database."
 msgstr ""
 
-#: views.py:50
+#: views.py:52
 msgid "No file metadata available"
 msgstr ""
 
-#: views.py:53
+#: views.py:55
 #, python-format
 msgid "File metadata drivers for: %s"
 msgstr ""
 
-#: views.py:80
+#: views.py:81
 msgid ""
 "This could mean that the file metadata detection has not completed or that "
 "the driver does not support any metadata field for the file type of this "
 "document."
 msgstr ""
 
-#: views.py:85
+#: views.py:86
 msgid "No file metadata available for this driver"
 msgstr ""
 
-#: views.py:89
+#: views.py:90
 #, python-format
 msgid "File metadata attribures for: %(document)s, for driver: %(driver)s"
 msgstr ""
 
-#: views.py:112
+#: views.py:119
 msgid "Submit the selected document to the file metadata queue?"
 msgid_plural "Submit the selected documents to the file metadata queue?"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:138
+#: views.py:145
 #, python-format
 msgid "Edit file metadata settings for document type: %s"
 msgstr ""
 
-#: views.py:149
+#: views.py:156
 msgid "Submit all documents of a type for file metadata processing."
 msgstr ""
 
-#: views.py:171
+#: views.py:180
 #, python-format
 msgid "%(count)d documents added to the file metadata processing queue."
 msgstr ""

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>, 2020\n"
 "Language-Team: Latvian (https://www.transifex.com/rosarior/teams/13584/lv/)\n"
@@ -21,26 +21,26 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
 #: apps.py:53 apps.py:149 apps.py:156 events.py:5 forms.py:14 links.py:22
-#: menus.py:14 models.py:45 models.py:167 permissions.py:5 search.py:46
+#: menus.py:14 models.py:45 models.py:174 permissions.py:5 search.py:46
 #: search.py:49 views.py:164 workflow_actions.py:20
 msgid "Cabinets"
 msgstr "Kabineti"
 
 #: events.py:9
 msgid "Cabinet created"
-msgstr ""
+msgstr "Izveidots kabinets"
 
 #: events.py:12
 msgid "Cabinet edited"
-msgstr ""
+msgstr "Rediģēts kabinets"
 
 #: events.py:15
 msgid "Document added to cabinet"
-msgstr ""
+msgstr "Dokuments pievienots kabinetam"
 
 #: events.py:18
 msgid "Document removed from cabinet"
-msgstr ""
+msgstr "Dokuments izņemts no kabineta"
 
 #: links.py:28 links.py:42 workflow_actions.py:72
 msgid "Remove from cabinets"
@@ -76,11 +76,11 @@ msgstr "Detaļas"
 
 #: methods.py:20
 msgid "Return a list of cabinets containing the document."
-msgstr ""
+msgstr "Atgrieziet kabientu sarakstu, kas satur šo dokumentu"
 
 #: methods.py:22
 msgid "get_cabinets()"
-msgstr ""
+msgstr "get_cabinets ()"
 
 #: models.py:31
 msgid "A short text used to identify the cabinet."
@@ -94,33 +94,33 @@ msgstr "Etiķete"
 msgid "Documents"
 msgstr "Dokumenti"
 
-#: models.py:44 models.py:141 models.py:166 serializers.py:136
+#: models.py:44 models.py:148 models.py:173 serializers.py:136
 #: workflow_actions.py:64
 msgid "Cabinet"
 msgstr "Kabinets"
 
-#: models.py:107
+#: models.py:114
 msgid "The path to the cabinet including all ancestors."
-msgstr ""
+msgstr "Ceļš uz kabinetu, ieskaitot visus senčus."
 
-#: models.py:109
+#: models.py:116
 msgid "Full path"
-msgstr ""
+msgstr "Pilns ceļš"
 
-#: models.py:142 serializers.py:137
+#: models.py:149 serializers.py:137
 msgid "Parent and Label"
 msgstr "Mātes elements un etiķete"
 
-#: models.py:149 serializers.py:143
+#: models.py:156 serializers.py:143
 #, python-format
 msgid "%(model_name)s with this %(field_labels)s already exists."
 msgstr "%(model_name)s ar šo %(field_labels)s jau eksistē."
 
-#: models.py:178
+#: models.py:185
 msgid "Document cabinet"
 msgstr "Dokumentu kabinets"
 
-#: models.py:179
+#: models.py:186
 msgid "Document cabinets"
 msgstr "Dokumentu kabineti"
 
@@ -154,7 +154,7 @@ msgstr "Dokumenta veids"
 
 #: search.py:28
 msgid "Document MIME type"
-msgstr ""
+msgstr "Dokumenta MIME tips"
 
 #: search.py:31
 msgid "Document label"
@@ -166,11 +166,11 @@ msgstr "Dokumenta apraksts"
 
 #: search.py:37
 msgid "Document UUID"
-msgstr ""
+msgstr "Dokumenta UUID"
 
 #: search.py:41
 msgid "Document checksum"
-msgstr ""
+msgstr "Dokumenta kontrolsumma"
 
 #: serializers.py:17
 msgid "List of children cabinets."
@@ -251,59 +251,59 @@ msgstr ""
 msgid "No cabinets available"
 msgstr "Neviens kabinets nav pieejams"
 
-#: views.py:200
-msgid "Documents can be added to many cabinets."
-msgstr "Dokumentus var pievienot daudziem kabinetiem."
-
-#: views.py:203
-msgid "This document is not in any cabinet"
-msgstr "Šis dokuments nav nevienā kabinetā"
-
-#: views.py:207
-#, python-format
-msgid "Cabinets containing document: %s"
-msgstr "Kabineti, kas satur dokumentu: %s"
-
-#: views.py:223
+#: views.py:189
 #, python-format
 msgid "Add to cabinet request performed on %(count)d document."
-msgstr ""
+msgstr "Pievienot kabineta pieprasījumam, kas veikts %(count)d dokumentā."
 
-#: views.py:226
+#: views.py:192
 #, python-format
 msgid "Add to cabinet request performed on %(count)d documents."
-msgstr ""
+msgstr "Pievienot kabineta pieprasījumam, kas veikts %(count)d dokumentiem."
 
-#: views.py:233
+#: views.py:199
 msgid "Add"
 msgstr "Pievienot"
 
-#: views.py:235
+#: views.py:201
 #, python-format
 msgid "Add %(count)d document to cabinets"
 msgid_plural "Add %(count)d documents to cabinets"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Pievienojiet skapjiem %(count)d dokumentus"
+msgstr[1] "Pievienojiet skapjiem %(count)d dokumentu"
+msgstr[2] "Pievienot kabinetiem %(count)d dokumentus"
 
-#: views.py:248
+#: views.py:214
 #, python-format
 msgid "Add document \"%s\" to cabinets"
 msgstr "Pievienot dokumentu \"%s\" kabinetiem"
 
-#: views.py:259
+#: views.py:225
 msgid "Cabinets to which the selected documents will be added."
 msgstr "Kabienti, kuriem iezīmētie dokumenti tiks pievienoti."
 
-#: views.py:288
+#: views.py:254
 #, python-format
 msgid "Document: %(document)s is already in cabinet: %(cabinet)s."
 msgstr "Dokuments: %(document)s jau ir kabinetā: %(cabinet)s."
 
-#: views.py:300
+#: views.py:266
 #, python-format
 msgid "Document: %(document)s added to cabinet: %(cabinet)s successfully."
 msgstr "Dokuments: %(document)s pievienots kabinetam: %(cabinet)s veiksmīgi."
+
+#: views.py:291
+msgid "Documents can be added to many cabinets."
+msgstr "Dokumentus var pievienot daudziem kabinetiem."
+
+#: views.py:294
+msgid "This document is not in any cabinet"
+msgstr "Šis dokuments nav nevienā kabinetā"
+
+#: views.py:298
+#, python-format
+msgid "Cabinets containing document: %s"
+msgstr "Kabineti, kas satur dokumentu: %s"
 
 #: views.py:314
 #, python-format

@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# pyrotech <anastasios@tutamail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-09-27 06:46+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-12-27 17:19+0000\n"
+"Last-Translator: pyrotech <anastasios@tutamail.com>\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,9 +19,9 @@ msgstr ""
 "Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:133 permissions.py:5 settings.py:10
+#: apps.py:133 permissions.py:5 settings.py:13
 msgid "Common"
-msgstr "Κοινό"
+msgstr "Common"
 
 #: classes.py:456
 msgid "Model properties"
@@ -44,23 +45,23 @@ msgstr ""
 
 #: dependencies.py:204
 msgid "Provides style checking."
-msgstr ""
+msgstr "Παρέχει έλεγχο του στυλ."
 
 #: dependencies.py:209
 msgid "Command line environment with autocompletion."
-msgstr ""
+msgstr "Γραμμή εντολών με αυτόματη συμπλήρωση."
 
 #: dependencies.py:214
 msgid "Checks proper formatting of the README file."
-msgstr ""
+msgstr "Ελέγχει την ορθή μορφοποίηση του αρχείου README."
 
 #: links.py:31
 msgid "About this"
-msgstr "Σχετικά με αυτό"
+msgstr "Σχετικά με"
 
 #: links.py:34
 msgid "Get the book"
-msgstr ""
+msgstr "Απόκτησε το βιβλίο"
 
 #: links.py:39
 msgid "Locale profile"
@@ -78,13 +79,13 @@ msgstr "Τεκμηρίωση"
 msgid "Forum"
 msgstr "Φόρουμ"
 
-#: links.py:56 views.py:104
+#: links.py:56 views.py:106
 msgid "License"
 msgstr "Άδεια χρήσης"
 
 #: links.py:61
 msgid "Copy"
-msgstr ""
+msgstr "Αντιγραφή"
 
 #: links.py:64
 msgid "Setup"
@@ -92,40 +93,40 @@ msgstr "Ρυθμίσεις"
 
 #: links.py:67
 msgid "Source code"
-msgstr "Πηγαιος κώδικας"
+msgstr "Πηγαίος κώδικας"
 
 #: links.py:71
 msgid "Online store"
-msgstr ""
+msgstr "Ηλεκτρονικά κατάστημα"
 
 #: links.py:75
 msgid "Get support"
-msgstr ""
+msgstr "Βοήθεια"
 
-#: links.py:79 queues.py:9 views.py:173
+#: links.py:79 queues.py:9 views.py:175
 msgid "Tools"
 msgstr "Εργαλεία"
 
-#: literals.py:7
+#: literals.py:18
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
-msgstr ""
+msgstr "Αυτό το χαρακτηριστικό είναι ξεπερασμένο και θα αφαιρεθεί σε επόμενη έκδοση."
 
-#: literals.py:10
+#: literals.py:21
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
-msgstr ""
+msgstr "Η βάση δεδομένων σου έχει ρυθμιστεί να χρησιμοποιεί την SQLite. Η SQLite θα πρέπει να χρησιμοποιείται μόνο για ανάπτυξη και δοκιμή, όχι για παραγωγή."
 
-#: literals.py:19
+#: literals.py:30
 msgid "Days"
 msgstr "Ημέρες"
 
-#: literals.py:20
+#: literals.py:31
 msgid "Hours"
 msgstr "Ώρες"
 
-#: literals.py:21
+#: literals.py:32
 msgid "Minutes"
 msgstr "Λεπτά"
 
@@ -135,7 +136,7 @@ msgstr "Σύστημα"
 
 #: menus.py:10 menus.py:11
 msgid "Facet"
-msgstr ""
+msgstr "Πτυχή"
 
 #: menus.py:14
 msgid "Actions"
@@ -143,11 +144,11 @@ msgstr "Ενέργειες"
 
 #: menus.py:15
 msgid "Related"
-msgstr ""
+msgstr "Συσχετισμένο"
 
 #: menus.py:16
 msgid "Secondary"
-msgstr ""
+msgstr "Δευτερεύον"
 
 #: menus.py:21 models.py:25
 msgid "User"
@@ -171,19 +172,19 @@ msgstr "Προφίλ τοποθεσίας χρήστη"
 
 #: permissions.py:8
 msgid "Copy object"
-msgstr ""
+msgstr "Αντιγραφή αντικειμένου"
 
 #: queues.py:7
 msgid "Default"
-msgstr "Προκαθορισμένο"
+msgstr "Προεπιλογή"
 
-#: settings.py:17
+#: settings.py:19
 msgid ""
 "Time to delay background tasks that depend on a database commit to "
 "propagate."
 msgstr "Χρόνος αναμονής για ενέργειες παρασκηνίου που εξαρτώνται από την καταχώρηση στην βάση δεδομένων για να ολοκληρωθούν."
 
-#: settings.py:25
+#: settings.py:26
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
@@ -191,7 +192,7 @@ msgid ""
 " containing an application."
 msgstr ""
 
-#: settings.py:35
+#: settings.py:36
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
@@ -199,86 +200,86 @@ msgid ""
 " containing an application."
 msgstr ""
 
-#: settings.py:44
+#: settings.py:45
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
 msgstr ""
 
-#: settings.py:52
+#: settings.py:53
 msgid "Name to be displayed in the main menu."
-msgstr ""
+msgstr "Το όνομα που θα εμφανίζεται στο κεντρικού μενού."
 
-#: settings.py:58
+#: settings.py:59
 msgid "URL of the installation or homepage of the project."
-msgstr ""
+msgstr "Το URL της εγκατάστασης ή της κεντρικής σελίδας του έργου."
 
-#: settings.py:63
+#: settings.py:64
 msgid "Base URL path to use for all views."
-msgstr ""
+msgstr "Η βασική διαδρομή URL που θα χρησιμοποιείται από όλες τις προβολές."
 
 #: validators.py:44
 msgid "Enter a valid JSON value."
-msgstr ""
+msgstr "Εισάγετε μία έγκυρη τιμή JSON."
 
 #: validators.py:68
 msgid "Enter a valid YAML value."
-msgstr ""
+msgstr "Εισάγετε μια έγκυρη τιμή YAML."
 
 #: validators.py:84
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
-msgstr ""
+msgstr "Εισάγετε ένα έγκυρο 'εσωτερικό όνομα' που να αποτελείται από γράμματα, αριθμούς και κάτω παύλες."
 
-#: views.py:27
+#: views.py:29
 msgid "About"
 msgstr "Σχετικά"
 
-#: views.py:40
+#: views.py:42
 msgid "Current user locale profile details"
 msgstr "Λεπτομέρειες προφίλ τοποθεσίας του τρέχοντος χρήστη"
 
-#: views.py:46
+#: views.py:48
 msgid "Edit current user locale profile details"
 msgstr "Τροποποίηση προφίλ τοποθεσίας του τρέχοντος χρήστη"
 
-#: views.py:95
+#: views.py:97
 msgid "Dashboard"
 msgstr "Πίνακας ελέγχου"
 
-#: views.py:116
+#: views.py:118
 #, python-format
 msgid "Fields to be copied: %s"
-msgstr ""
+msgstr "Πεδία προς αντιγραφή: %s"
 
-#: views.py:125
+#: views.py:127
 #, python-format
 msgid "Make a copy of %(object_name)s \"%(object)s\"?"
-msgstr ""
+msgstr "Δημιουργία αντιγράφου αντικειμένων %(object_name)s \"%(object)s\";"
 
-#: views.py:134
+#: views.py:136
 msgid "Object copied successfully."
-msgstr ""
+msgstr "Το αντικείμενο αντιγράφηκε επιτυχώς."
 
-#: views.py:151
+#: views.py:153
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
-msgstr ""
+msgstr "Η μη εμφάνιση αποτελεσμάτων υποδεικνύει έλλειψη των απαιτούμενων δικαιωμάτων για την εκτέλεση εργασίας διαχειριστή. "
 
-#: views.py:154
+#: views.py:156
 msgid "No setup options available."
-msgstr ""
-
-#: views.py:158
-msgid "Setup items"
-msgstr "Ρυθμίσεις"
+msgstr "Δεν υπάρχουν διαθέσιμες επιλογές ρυθμίσεων."
 
 #: views.py:160
-msgid "Here you can configure all aspects of the system."
-msgstr ""
+msgid "Setup items"
+msgstr "Στοιχεία ρύθμισης"
 
-#: views.py:175
+#: views.py:162
+msgid "Here you can configure all aspects of the system."
+msgstr "Εδώ μπορεί να παραμετροποιηθεί το σύστημα."
+
+#: views.py:177
 msgid "These modules are used to do system maintenance."
-msgstr ""
+msgstr "Αυτά τα modules χρησιμοποιούνται για την συντήρηση του συστήματος."

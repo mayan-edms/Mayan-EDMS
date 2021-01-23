@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-05-02 12:56+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
@@ -113,47 +113,47 @@ msgstr "Privésleutels"
 msgid "Public keys"
 msgstr "Openbare sleutels"
 
-#: literals.py:14 literals.py:22
+#: literals.py:23 literals.py:31
 msgid "Public"
 msgstr "Openbaar"
 
-#: literals.py:15 literals.py:23
+#: literals.py:24 literals.py:32
 msgid "Secret"
 msgstr "Geheim"
 
-#: literals.py:31 literals.py:36
+#: literals.py:40 literals.py:45
 msgid "RSA"
 msgstr "RSA"
 
-#: literals.py:32
+#: literals.py:41
 msgid "DSA"
 msgstr "DSA"
 
-#: literals.py:37
+#: literals.py:46
 msgid "Elgamal"
 msgstr "Elgamal"
 
-#: literals.py:51
+#: literals.py:62
 msgid "Bad signature."
 msgstr "Foutieve handtekening."
 
-#: literals.py:54
+#: literals.py:65
 msgid "Document not signed or invalid signature."
 msgstr "Document niet getekend of ongeldige handtekening."
 
-#: literals.py:57
+#: literals.py:68
 msgid "Signature error."
 msgstr "Handtekeningfout."
 
-#: literals.py:61
+#: literals.py:72
 msgid "Document is signed but no public key is available for verification."
 msgstr "Document is ondertekend, maar er is geen publieke sleutel beschikbaar voor verificatie."
 
-#: literals.py:66
+#: literals.py:77
 msgid "Document is signed, and signature is good."
 msgstr "Document is getekend, en handtekening is goed."
 
-#: literals.py:69
+#: literals.py:80
 msgid "Document is signed with a valid signature."
 msgstr "Document is getekend met een geldige handtekening."
 
@@ -205,11 +205,11 @@ msgstr "Sleutels uploaden"
 msgid "View keys"
 msgstr "Sleutels bekijken"
 
-#: settings.py:7
+#: settings.py:10
 msgid "Signatures"
 msgstr "Handtekeningen"
 
-#: settings.py:14
+#: settings.py:16
 msgid "Full path to the backend to be used to handle keys and signatures."
 msgstr "Volledige pad naar backend die gebruikt wordt om sleutels en handtekeningen af te handelen."
 

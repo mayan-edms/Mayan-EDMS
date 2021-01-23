@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: yan songwei <yansw@vip.163.com>, 2020\n"
 "Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
@@ -53,7 +53,7 @@ msgstr "声明"
 msgid "Version"
 msgstr "版本"
 
-#: apps.py:61 classes.py:139 classes.py:780
+#: apps.py:61 classes.py:139 classes.py:781
 msgid "Environment"
 msgstr "环境"
 
@@ -129,7 +129,7 @@ msgstr "JavaScript库从NPM注册表中已下载，并用于前端功能。"
 msgid "JavaScript"
 msgstr "JavaScript"
 
-#: classes.py:451 classes.py:693
+#: classes.py:451 classes.py:694
 msgid "Downloading... "
 msgstr "正在下载..."
 
@@ -137,56 +137,56 @@ msgstr "正在下载..."
 msgid "Verifying... "
 msgstr "验证中..."
 
-#: classes.py:457 classes.py:696
+#: classes.py:457 classes.py:697
 msgid "Extracting... "
 msgstr "提取中..."
 
-#: classes.py:635
+#: classes.py:636
 msgid "Python packages downloaded from PyPI."
 msgstr "从PyPI下载的Python软件包。"
 
-#: classes.py:637
+#: classes.py:638
 msgid "Python"
 msgstr "Python"
 
-#: classes.py:674
+#: classes.py:675
 msgid "Fonts downloaded from fonts.googleapis.com."
 msgstr "从fonts.googleapis.com下载字体。"
 
-#: classes.py:676
+#: classes.py:677
 msgid "Google font"
 msgstr "Google字体"
 
-#: classes.py:762
+#: classes.py:763
 msgid "Declared in app"
 msgstr "在应用中声明"
 
-#: classes.py:763
+#: classes.py:764
 msgid "Show dependencies by the app that declared them."
 msgstr "通过声明它们的应用程序显示依赖关系。"
 
-#: classes.py:767
+#: classes.py:768
 msgid "Class"
 msgstr "类"
 
-#: classes.py:768
+#: classes.py:769
 msgid ""
 "Show the different classes of dependencies. Classes are usually divided by "
 "language or the file types of the dependency."
 msgstr "显示依赖关系的不同类别。类通常按语言或依赖项的文件类型划分。"
 
-#: classes.py:773
+#: classes.py:774
 msgid "State"
 msgstr "状态"
 
-#: classes.py:774
+#: classes.py:775
 msgid ""
 "Show the different states of the dependencies. True means that the "
 "dependencies is installed and is of a correct version. False means the "
 "dependencies is missing or an incorrect version is present."
 msgstr ""
 
-#: classes.py:781
+#: classes.py:782
 msgid ""
 "Dependencies required for an environment might not be required for another. "
 "Example environments: Production, Development."

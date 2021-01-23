@@ -34,12 +34,9 @@
             // template.
             var currentHash = window.location.hash;
             if (currentHash.length) {
-                if(document.cookie.replace(/(?:(?:^|.*;\s*)mayanAJAXescapeRedirect\s*\=\s*([^;]*).*$)|^.*$/, '$1') !== 'true') {
-                    document.cookie='mayanAJAXescapeRedirect=true; expires=Fri, 31 Dec 9999 23:59:59 GMT';
-                    window.location.pathname = currentHash.substring(1);
-                } else {
-                    document.cookie='mayanAJAXescapeRedirect=';
-                }
+                var uri = new URI(window.location);
+                var uriFragment = uri.fragment();
+                window.location = uriFragment;
             }
         </script>
     </head>

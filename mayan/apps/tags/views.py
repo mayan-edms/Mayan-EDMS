@@ -30,9 +30,9 @@ logger = logging.getLogger(name=__name__)
 
 class TagAttachActionView(MultipleObjectFormActionView):
     form_class = TagMultipleSelectionForm
-    model = Document
     object_permission = permission_tag_attach
     pk_url_kwarg = 'document_id'
+    source_queryset = Document.valid
     success_message = _('Tag attach request performed on %(count)d document')
     success_message_plural = _(
         'Tag attach request performed on %(count)d documents'
@@ -236,7 +236,11 @@ class TagDocumentListView(ExternalObjectMixin, DocumentListView):
     external_object_pk_url_kwarg = 'tag_id'
 
     def get_document_queryset(self):
-        return self.get_tag().get_documents(user=self.request.user).all()
+        return Document.valid.filter(
+            pk__in=self.get_tag().get_documents(
+                user=self.request.user
+            ).values('pk')
+        )
 
     def get_extra_context(self):
         context = super().get_extra_context()
@@ -253,9 +257,9 @@ class TagDocumentListView(ExternalObjectMixin, DocumentListView):
 
 
 class DocumentTagListView(ExternalObjectMixin, TagListView):
-    external_object_class = Document
     external_object_permission = permission_tag_view
     external_object_pk_url_kwarg = 'document_id'
+    external_object_queryset = Document.valid
     tag_model = DocumentTag
 
     def get_extra_context(self):
@@ -285,9 +289,9 @@ class DocumentTagListView(ExternalObjectMixin, TagListView):
 
 class TagRemoveActionView(MultipleObjectFormActionView):
     form_class = TagMultipleSelectionForm
-    model = Document
     object_permission = permission_tag_remove
     pk_url_kwarg = 'document_id'
+    source_queryset = Document.valid
     success_message = _('Tag remove request performed on %(count)d document')
     success_message_plural = _(
         'Tag remove request performed on %(count)d documents'

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-09-29 12:31+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:39 events.py:5 permissions.py:5 settings.py:16
+#: apps.py:39 events.py:5 permissions.py:5 settings.py:14
 msgid "Converter"
 msgstr "Convertizor"
 
@@ -230,19 +230,19 @@ msgstr "Editați transformări"
 msgid "View existing transformations"
 msgstr "Vizualizați transformările existente"
 
-#: settings.py:22
+#: settings.py:21
 msgid "Graphics conversion backend to use."
 msgstr "Back-end de conversie grafică."
 
-#: settings.py:35
+#: settings.py:27
 msgid "Configuration options for the graphics conversion backend."
 msgstr "Opțiuni de configurare pentru backend-ul de conversie grafică."
 
-#: settings.py:41
+#: settings.py:33
 msgid "Path to the Storage subclass to use when storing assets."
 msgstr "Calea către subclasa de stocare de utilizat la stocarea elementelor."
 
-#: settings.py:49
+#: settings.py:39
 msgid "Arguments to pass to the CONVERTER_ASSET_STORAGE_BACKEND."
 msgstr "Argumente de transmis la CONVERTER_ASSET_STORAGE_BACKEND."
 

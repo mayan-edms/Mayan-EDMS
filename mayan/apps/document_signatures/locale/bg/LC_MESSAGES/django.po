@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-08-20 17:24+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:49 permissions.py:6 settings.py:11
+#: apps.py:49 permissions.py:6 settings.py:12
 msgid "Document signatures"
 msgstr "Подписване на документи"
 
@@ -242,11 +242,11 @@ msgstr "Проверете версията на документа"
 msgid "Verify missing embedded signature"
 msgstr "Проверете за липсващ вграден подпис"
 
-#: settings.py:19
+#: settings.py:20
 msgid "Path to the Storage subclass to use when storing detached signatures."
 msgstr "Път към подклас Storage, който да се използва при съхранение на отделени подписи."
 
-#: settings.py:28
+#: settings.py:27
 msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND."
 msgstr "Аргументи за предаване към SIGNATURE_STORAGE_BACKEND."
 
@@ -260,72 +260,72 @@ msgstr "Не може да се инициализира съхранениет�
 msgid "Detached signatures"
 msgstr "Отделени подписи"
 
-#: views.py:68 views.py:156
+#: views.py:68 views.py:159
 msgid "Passphrase is needed to unlock this key."
 msgstr "За отключване на този ключ е необходима фраза парола."
 
-#: views.py:81 views.py:169
+#: views.py:81 views.py:172
 msgid "Passphrase is incorrect."
 msgstr "Фразата парола е неправилна."
 
-#: views.py:94 views.py:182
+#: views.py:94 views.py:185
 msgid "Document version signed successfully."
 msgstr "Версията на документа е подписана успешно."
 
-#: views.py:122 views.py:217
+#: views.py:125 views.py:223
 msgid "Sign"
 msgstr "Подпишете"
 
-#: views.py:124
+#: views.py:127
 #, python-format
 msgid "Sign document version \"%s\" with a detached signature"
 msgstr "Подпишете версия на документа &quot;%s&quot; с отделен подпис"
 
-#: views.py:219
+#: views.py:225
 #, python-format
 msgid "Sign document version \"%s\" with a embedded signature"
 msgstr "Подпишете версия на документа &quot;%s&quot; с вграден подпис"
 
-#: views.py:236
+#: views.py:241
 #, python-format
 msgid "Delete detached signature: %s"
 msgstr "Изтрийте отделен подпис: %s"
 
-#: views.py:259
+#: views.py:271
 #, python-format
 msgid "Details for signature: %s"
 msgstr "Данни за подпис: %s"
 
-#: views.py:291
+#: views.py:313
 msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
 "document itself or uploaded as a separate file."
 msgstr "Подписите помагат за предоставяне на доказателства за авторство и откриване на подправки. Те са много сигурни и трудно подправящи се. Подписът може да бъде вграден като част от самия документ или качен като отделен файл."
 
-#: views.py:320
+#: views.py:342
 msgid "There are no signatures for this document."
 msgstr "Няма подписи за този документ."
 
-#: views.py:324
+#: views.py:346
 #, python-format
 msgid "Signatures for document version: %s"
 msgstr "Подписи за версия на документа: %s"
 
-#: views.py:356
+#: views.py:381
 #, python-format
 msgid "Upload detached signature for document version: %s"
 msgstr "Качете отделен подпис за версия на документа: %s"
 
-#: views.py:374
+#: views.py:399
 msgid "On large databases this operation may take some time to execute."
 msgstr "При големи бази данни тази операция може да отнеме известно време за изпълнение."
 
-#: views.py:375
+#: views.py:400
 msgid "Verify all document for signatures?"
 msgstr "Да проверите ли всички документи за подписи?"
 
-#: views.py:385
+#: views.py:410
 msgid "Signature verification queued successfully."
 msgstr "Проверката на подписа успешно е поставена на опашка."
 

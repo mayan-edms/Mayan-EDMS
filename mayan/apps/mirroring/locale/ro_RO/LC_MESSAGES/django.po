@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2019-03-15 11:18+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -19,14 +19,14 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:13 settings.py:5
+#: apps.py:13 settings.py:10
 msgid "Mirroring"
 msgstr "Oglindire"
 
-#: settings.py:9
+#: settings.py:15
 msgid "Time in seconds to cache the path lookup to a document."
 msgstr "Timp în secunde pentru păstrarea în cache  a unei căutări de traseu la un document."
 
-#: settings.py:13
+#: settings.py:20
 msgid "Time in seconds to cache the path lookup to an index node."
 msgstr "Timp în secunde pentru păstrarea în cache a unei căutări de index la un nod."

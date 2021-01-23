@@ -443,26 +443,24 @@ urlpatterns_documents = [
 
 urlpatterns_favorite_documents = [
     url(
-        regex=r'^documents/favorites/$', name='document_list_favorites',
+        regex=r'^documents/favorites/$', name='document_favorite_list',
         view=FavoriteDocumentListView.as_view()
     ),
     url(
         regex=r'^documents/(?P<document_id>\d+)/add_to_favorites/$',
-        name='document_add_to_favorites', view=FavoriteAddView.as_view()
+        name='document_favorite_add', view=FavoriteAddView.as_view()
     ),
     url(
         regex=r'^documents/multiple/add_to_favorites/$',
-        name='document_multiple_add_to_favorites',
-        view=FavoriteAddView.as_view()
+        name='document_multiple_favorite_add', view=FavoriteAddView.as_view()
     ),
     url(
         regex=r'^documents/(?P<document_id>\d+)/remove_from_favorites/$',
-        name='document_remove_from_favorites',
-        view=FavoriteRemoveView.as_view()
+        name='document_favorite_remove', view=FavoriteRemoveView.as_view()
     ),
     url(
         regex=r'^documents/multiple/remove_from_favorites/$',
-        name='document_multiple_remove_from_favorites',
+        name='document_multiple_favorite_remove',
         view=FavoriteRemoveView.as_view()
     ),
 ]

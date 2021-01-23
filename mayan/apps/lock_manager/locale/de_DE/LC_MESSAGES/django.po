@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-03-18 22:35+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:9 settings.py:7
+#: apps.py:9 settings.py:10
 msgid "Lock manager"
 msgstr "Sperrverwaltung"
 
@@ -32,31 +32,31 @@ msgstr "Sperrverwaltung"
 msgid "Creation datetime"
 msgstr "Erstellungsdatum"
 
-#: models.py:17
+#: models.py:18
 msgid "Timeout"
 msgstr "Timeout"
 
-#: models.py:20
+#: models.py:21
 msgid "Name"
 msgstr "Name"
 
-#: models.py:26
+#: models.py:27
 msgid "Lock"
 msgstr "Sperre"
 
-#: models.py:27
+#: models.py:28
 msgid "Locks"
 msgstr "Sperren"
 
-#: settings.py:12
+#: settings.py:15
 msgid "Path to the class to use when to request and release resource locks."
 msgstr "Der Pfad zu der zu nutzenden Klasse für die Aktivierung und Aufhebung der Ressourcensperre."
 
-#: settings.py:18
+#: settings.py:22
 msgid "Arguments to pass to the LOCK_MANAGER_BACKEND."
 msgstr "Argumente, die an LOCK_MANAGER_BACKEND übergeben werden sollen."
 
-#: settings.py:24
+#: settings.py:28
 msgid ""
 "Default amount of time in seconds after which a resource lock will be "
 "automatically released."

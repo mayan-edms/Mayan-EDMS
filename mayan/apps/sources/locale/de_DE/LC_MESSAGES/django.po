@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-10-11 07:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
@@ -29,7 +29,7 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:48 links.py:63 models/base.py:36 queues.py:7 settings.py:11
+#: apps.py:48 links.py:63 models/base.py:36 queues.py:7 settings.py:14
 #: views.py:193
 msgid "Sources"
 msgstr "Quellen"
@@ -139,67 +139,67 @@ msgstr "Neue Version hochladen"
 msgid "Check now"
 msgstr "Jetzt prüfen"
 
-#: literals.py:16
+#: literals.py:25
 msgid "Flatbed"
 msgstr "Flachbett"
 
-#: literals.py:17
+#: literals.py:26
 msgid "Document feeder"
 msgstr "Dokumenteneinzug"
 
-#: literals.py:24
+#: literals.py:33
 msgid "Simplex"
 msgstr "Simplex"
 
-#: literals.py:25
+#: literals.py:34
 msgid "Duplex"
 msgstr "Duplex"
 
-#: literals.py:33
+#: literals.py:42
 msgid "Lineart"
 msgstr "Lineart"
 
-#: literals.py:34
+#: literals.py:43
 msgid "Monochrome"
 msgstr "Monochrom"
 
-#: literals.py:35
+#: literals.py:44
 msgid "Color"
 msgstr "Farbe"
 
-#: literals.py:43 literals.py:48
+#: literals.py:52 literals.py:57
 msgid "Always"
 msgstr "Immer"
 
-#: literals.py:44 literals.py:49
+#: literals.py:53 literals.py:58
 msgid "Never"
 msgstr "Niemals"
 
-#: literals.py:50
+#: literals.py:59
 msgid "Ask user"
 msgstr "Benutzer fragen"
 
-#: literals.py:61
+#: literals.py:70
 msgid "Scanner"
 msgstr "Scanner"
 
-#: literals.py:62 models/webform_sources.py:40
+#: literals.py:71 models/webform_sources.py:40
 msgid "Web form"
 msgstr "Webformular"
 
-#: literals.py:63 models/staging_folder_sources.py:67
+#: literals.py:72 models/staging_folder_sources.py:67
 msgid "Staging folder"
 msgstr "Staging-Ordner"
 
-#: literals.py:64 models/watch_folder_sources.py:46
+#: literals.py:73 models/watch_folder_sources.py:46
 msgid "Watch folder"
 msgstr "Beobachtungs-Ordner"
 
-#: literals.py:65
+#: literals.py:74
 msgid "POP3 email"
 msgstr "POP3"
 
-#: literals.py:66 models/email_sources.py:249 models/email_sources.py:250
+#: literals.py:75 models/email_sources.py:249 models/email_sources.py:250
 msgid "IMAP email"
 msgstr "IMAP"
 
@@ -219,48 +219,48 @@ msgstr "Aktiviert"
 msgid "Source"
 msgstr "Quelle"
 
-#: models/base.py:151
+#: models/base.py:147
 msgid "Interactive source"
 msgstr "Interaktive Quelle"
 
-#: models/base.py:152
+#: models/base.py:148
 msgid "Interactive sources"
 msgstr "Interaktive Quellen"
 
-#: models/base.py:161 models/base.py:162
+#: models/base.py:157 models/base.py:158
 msgid "Out of process"
 msgstr "Außer Kontrolle"
 
-#: models/base.py:168
+#: models/base.py:164
 msgid "Interval in seconds between checks for new documents."
 msgstr "Intervall in Sekunden zwischen den Überprüfungen auf neue Dokumente."
 
-#: models/base.py:169
+#: models/base.py:165
 msgid "Interval"
 msgstr "Intervall"
 
-#: models/base.py:173
+#: models/base.py:169
 msgid "Assign a document type to documents uploaded from this source."
 msgstr "Ordnen Sie einen Dokumententyp für Dokumente aus dieser Quelle zu."
 
-#: models/base.py:175 serializers.py:17
+#: models/base.py:171 serializers.py:17
 msgid "Document type"
 msgstr "Dokumententyp"
 
-#: models/base.py:179
+#: models/base.py:175
 msgid "Whether to expand or not, compressed archives."
 msgstr "Ob komprimierte Archive entpackt werden sollen."
 
-#: models/base.py:180 models/staging_folder_sources.py:54
+#: models/base.py:176 models/staging_folder_sources.py:54
 #: models/webform_sources.py:34
 msgid "Uncompress"
 msgstr "Entpacken"
 
-#: models/base.py:186
+#: models/base.py:182
 msgid "Interval source"
 msgstr "Intarvall Quelle"
 
-#: models/base.py:187
+#: models/base.py:183
 msgid "Interval sources"
 msgstr "Intarvall Quellen"
 
@@ -588,17 +588,17 @@ msgstr "Hochladen erledigen"
 msgid "Upload document"
 msgstr "Dokument hochladen"
 
-#: settings.py:18
+#: settings.py:21
 msgid "File path to the scanimage program used to control image scanners."
 msgstr "Dateipfad zum Programm scanimage, das für die Kontrolle von Scannern verwendet wird."
 
-#: settings.py:25
+#: settings.py:27
 msgid ""
 "Path to the Storage subclass to use when storing the cached staging_file "
 "image files."
 msgstr "Pfad zu Speicher-Unterklasse für den Cache von Bildern für bereitgestellte Dateien."
 
-#: settings.py:34
+#: settings.py:35
 msgid "Arguments to pass to the SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND."
 msgstr "Argumente die an das SOURCES_STAGING_FILE_CACHE_STORAGE_BACKEND weitergeleitet werden."
 
@@ -612,31 +612,31 @@ msgstr "Der Image-Speicher für die Stagingordner-Dateien konnte nicht initialis
 msgid "Staging folder files"
 msgstr "Stagingordner-Dateien"
 
-#: templates/sources/dropzone.html:82
+#: templates/sources/app/foot.html:40
 msgid "Cancel upload"
 msgstr "Hochladen abbrechen"
 
-#: templates/sources/dropzone.html:83
+#: templates/sources/app/foot.html:41
 msgid "Are you sure you want to cancel this upload?"
 msgstr "Hochladen wirklich abbrechen?"
 
-#: templates/sources/dropzone.html:84
+#: templates/sources/app/foot.html:42
 msgid "Drop files or click here to upload files"
 msgstr "Dateien auf diese Fläche ziehen oder darauf klicken, um Dateien zum Hochladen auszuwählen"
 
-#: templates/sources/dropzone.html:85
+#: templates/sources/app/foot.html:43
 msgid "Your browser does not support drag and drop file uploads."
 msgstr "Ihr Browser unterstützt kein Drag and Drop."
 
-#: templates/sources/dropzone.html:86
+#: templates/sources/app/foot.html:44
 msgid "Please use the fallback form below to upload your files."
 msgstr "Bitte benützen Sie das Formular weiter unten um Dateien hochzuladen."
 
-#: templates/sources/dropzone.html:87
+#: templates/sources/app/foot.html:45
 msgid "Clear"
 msgstr "Löschen"
 
-#: templates/sources/dropzone.html:88
+#: templates/sources/app/foot.html:46
 msgid "Server responded with {{statusCode}} code."
 msgstr "Der Server antwortete mit Code {{statusCode}}."
 

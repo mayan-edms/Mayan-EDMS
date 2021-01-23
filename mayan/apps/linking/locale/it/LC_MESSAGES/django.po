@@ -6,12 +6,13 @@
 # Translators:
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011-2012
+# Roberto Rosario, 2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2019-12-13 05:14+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2021-01-04 16:37+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -35,15 +36,15 @@ msgstr "Link intelligenti"
 
 #: events.py:10
 msgid "Smart link created"
-msgstr ""
+msgstr "Collegamento intelligente creato"
 
 #: events.py:13
 msgid "Smart link edited"
-msgstr ""
+msgstr "Collegamento intelligente modificato"
 
 #: forms.py:45
 msgid "Foreign document field"
-msgstr ""
+msgstr "Campo documento estero"
 
 #: links.py:24
 msgid "Create condition"
@@ -143,13 +144,13 @@ msgstr "è un'espressione regolare (case insensitive)"
 
 #: models.py:24
 msgid "A short text describing the smart link."
-msgstr ""
+msgstr "Un breve testo che descrive lo collegamento intelligente."
 
 #: models.py:29
 msgid ""
 "Use this field to show a unique label depending on the document from which "
 "the smart link is being accessed."
-msgstr ""
+msgstr "Utilizzare questo campo per mostrare un'etichetta univoca a seconda del documento da cui si accede allo collegamento intelligente."
 
 #: models.py:31
 msgid "Dynamic label"
@@ -188,7 +189,7 @@ msgstr "Attributo documento esterno"
 msgid ""
 "The expression using document properties to be evaluated against the foreign"
 " document field."
-msgstr ""
+msgstr "L'espressione che utilizza le proprietà del documento da valutare rispetto al campo del documento esterno."
 
 #: models.py:183
 msgid "Expression"
@@ -216,7 +217,7 @@ msgstr "not"
 
 #: models.py:205
 msgid "Full label"
-msgstr ""
+msgstr "Etichetta completa"
 
 #: permissions.py:8
 msgid "Create new smart links"
@@ -247,16 +248,16 @@ msgstr "Nessun tipo documento: %s"
 
 #: views.py:45
 msgid "Available smart links"
-msgstr ""
+msgstr "Collegamenti intelligenti disponibili"
 
 #: views.py:46
 msgid "Smart links enabled"
-msgstr ""
+msgstr "Collegamento intelligente abilitati"
 
 #: views.py:78
 #, python-format
 msgid "Smart links to enable for document type: %s"
-msgstr ""
+msgstr "Collegamenti intelligenti da abilitare per il tipo di documento: %s"
 
 #: views.py:115
 #, python-format
@@ -291,21 +292,21 @@ msgid ""
 "Indexes group documents into units, usually with similar properties and of "
 "equal or similar types. Smart links allow defining relationships between "
 "documents even if they are in different indexes and are of different types."
-msgstr ""
+msgstr "Gli indici raggruppano i documenti in unità, solitamente con proprietà simili e di tipo uguale o simile. I collegamenti intelligenti consentono di definire le relazioni tra i documenti anche se si trovano in indici diversi e sono di tipi diversi."
 
 #: views.py:201
 msgid "There are no smart links"
-msgstr ""
+msgstr "Non ci sono collegamenti intelligenti"
 
 #: views.py:219
 msgid ""
 "Smart links allow defining relationships between documents even if they are "
 "in different indexes and are of different types."
-msgstr ""
+msgstr "I collegamenti intelligenti consentono di definire le relazioni tra i documenti anche se si trovano in indici diversi e sono di tipi diversi."
 
 #: views.py:224
 msgid "There are no smart links for this document"
-msgstr ""
+msgstr "Non ci sono collegamenti intelligenti per questo documento"
 
 #: views.py:227
 #, python-format
@@ -326,11 +327,11 @@ msgstr "Modifica il link intelligente: %s"
 msgid ""
 "Conditions are small logic units that when combined define how the smart "
 "link will behave."
-msgstr ""
+msgstr "Le condizioni sono piccole unità logiche che, se combinate, definiscono come si comporterà lo collegamento intelligente."
 
 #: views.py:306
 msgid "There are no conditions for this smart link"
-msgstr ""
+msgstr "Non ci sono condizioni per questo collegamento intelligente"
 
 #: views.py:310
 #, python-format

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2019-04-30 16:40+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
@@ -19,14 +19,14 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:13 settings.py:5
+#: apps.py:13 settings.py:10
 msgid "Mirroring"
 msgstr "Reflejado"
 
-#: settings.py:9
+#: settings.py:15
 msgid "Time in seconds to cache the path lookup to a document."
 msgstr "Tiempo en segundos durante los cuales se almacenará en caché la ruta de búsqueda de acceso a un documento."
 
-#: settings.py:13
+#: settings.py:20
 msgid "Time in seconds to cache the path lookup to an index node."
 msgstr "Tiempo en segundos durante los cuales se almacenará en caché la ruta de búsqueda de acceso a un nodo de índice."

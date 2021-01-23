@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-10-01 22:09+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:11 settings.py:9
+#: apps.py:11 settings.py:10
 msgid "Storage"
 msgstr "Armazenamento"
 
@@ -82,11 +82,11 @@ msgstr "Armazenamento periódico"
 msgid "Delete stale uploads"
 msgstr "Excluir uploads caducos"
 
-#: settings.py:14
+#: settings.py:15
 msgid "A storage backend that all workers can use to share files."
 msgstr "Um backend de armazenamento que todos os workers podem usar para compartilhar arquivos."
 
-#: settings.py:23
+#: settings.py:25
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."

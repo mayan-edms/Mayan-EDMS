@@ -12,6 +12,7 @@ from django_celery_beat.models import PeriodicTask
 
 from mayan.apps.common.serialization import yaml_dump
 from mayan.apps.documents.models import Document
+from mayan.apps.documents.storages import storage_document_files
 from mayan.apps.documents.tests.base import GenericDocumentTestCase
 from mayan.apps.documents.tests.literals import (
     TEST_COMPRESSED_DOCUMENT_PATH, TEST_NON_ASCII_DOCUMENT_FILENAME,
@@ -437,3 +438,30 @@ class WatchFolderTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
             process.join()
 
             self.assertEqual(Document.objects.count(), 0)
+
+
+class SourceModelTestCase(SourceTestMixin, GenericDocumentTestCase):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self.document_version_storage_instance = storage_document_files.get_storage_instance()
+
+    def _get_document_version_storage_file_count(self):
+        return len(
+            self.document_version_storage_instance.listdir(path='')[1]
+        )
+
+    def test_single_storage_file_creation(self):
+        document_version_file_count = self._get_document_version_storage_file_count()
+
+        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+            self.test_source.handle_upload(
+                file_object=file_object,
+                document_type=self.test_document_type
+            )
+
+        self.assertEqual(
+            self._get_document_version_storage_file_count(),
+            document_version_file_count + 1
+        )

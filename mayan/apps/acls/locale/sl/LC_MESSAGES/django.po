@@ -4,14 +4,15 @@
 # 
 # Translators:
 # Translators:
+# Jože Detečnik <joze.detecnik@3tav.si>, 2020
 # kontrabant <kontrabant@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-03-28 07:22+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-12-25 10:13+0000\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>\n"
 "Language-Team: Slovenian (http://www.transifex.com/rosarior/mayan-edms/language/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,11 +30,11 @@ msgstr "Seznami za nadzor dostopa"
 
 #: events.py:10
 msgid "ACL created"
-msgstr ""
+msgstr "ACL je ustvarjen"
 
 #: events.py:13
 msgid "ACL edited"
-msgstr ""
+msgstr "ACL urejeno"
 
 #: forms.py:13 models.py:44 views.py:67
 msgid "Role"
@@ -54,7 +55,7 @@ msgstr "Pravice"
 #: managers.py:229
 #, python-format
 msgid "Object \"%s\" is not a model and cannot be checked for access."
-msgstr ""
+msgstr "Predmet &quot;%s&quot; ni model in ga ni mogoče preveriti za dostop."
 
 #: managers.py:250
 #, python-format
@@ -117,7 +118,7 @@ msgstr "Primarni ključi vloge, na katere se ta kontrolni seznam za dostop pove�
 msgid ""
 "An ACL for \"%(object)s\" using role \"%(role)s\" already exists. Edit that "
 "ACL entry instead."
-msgstr ""
+msgstr "ACL za &quot;%(object)s&quot; z uporabo vloge &quot;%(role)s&quot; že obstaja. Namesto tega uredite ta vnos ACL."
 
 #: views.py:53
 #, python-format
@@ -131,14 +132,14 @@ msgstr "Brisanje ACL: %s"
 
 #: views.py:133
 msgid "There are no ACLs for this object"
-msgstr ""
+msgstr "Za ta objekt ni ACL-jev"
 
 #: views.py:136
 msgid ""
 "ACL stands for Access Control List and is a precise method to control user "
 "access to objects in the system. ACLs allow granting a permission to a role "
 "but only for a specific object or set of objects."
-msgstr ""
+msgstr "ACL je kratica za Access Control List in je natančna metoda za nadzor uporabniškega dostopa do predmetov v sistemu. ACL omogočajo dodelitev dovoljenja za vlogo, vendar le za določen predmet ali nabor predmetov."
 
 #: views.py:143
 #, python-format
@@ -156,7 +157,7 @@ msgstr "Razpoložljiva dovoljenja"
 #: views.py:202
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\"."
-msgstr ""
+msgstr "Vloga &quot;%(role)s&quot; dovoljenja za &quot;%(object)s&quot;."
 
 #: views.py:211
 msgid ""
@@ -164,7 +165,7 @@ msgid ""
 "to the role and can't be removed from this view. Inherited permissions need "
 "to be removed from the parent object's ACL or from them role via the Setup "
 "menu."
-msgstr ""
+msgstr "Onemogočena dovoljenja so podedovana od nadrejenega predmeta ali neposredno dodeljena vlogi in je ni mogoče odstraniti iz tega pogleda. Podedovana dovoljenja je treba odstraniti iz nadrejenega predmeta ali vloge v nastavitvah."
 
 #: workflow_actions.py:23
 msgid "Object type"
@@ -198,16 +199,16 @@ msgstr "Dovoljenja za odobritev/preklic v/iz vlog za zgoraj izbrani objekt."
 
 #: workflow_actions.py:57
 msgid "Grant object access"
-msgstr ""
+msgstr "Odobrite dostop do predmeta"
 
 #: workflow_actions.py:140
 msgid "Revoke object access"
-msgstr ""
+msgstr "Prekliči dostop do predmeta"
 
 #: workflow_actions.py:172
 msgid "Grant document access"
-msgstr ""
+msgstr "Odobrite dostop do dokumentov"
 
 #: workflow_actions.py:211
 msgid "Revoke document access"
-msgstr ""
+msgstr "Prekliči dostop do dokumentov"

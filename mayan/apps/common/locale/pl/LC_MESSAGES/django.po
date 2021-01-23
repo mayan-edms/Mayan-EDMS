@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-10-12 18:27+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-12-09 16:17+0000\n"
 "Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Language: pl\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: apps.py:133 permissions.py:5 settings.py:10
+#: apps.py:133 permissions.py:5 settings.py:13
 msgid "Common"
 msgstr "Ustawienia wspólne"
 
@@ -87,13 +87,13 @@ msgstr "Dokumentacja"
 msgid "Forum"
 msgstr "Forum"
 
-#: links.py:56 views.py:104
+#: links.py:56 views.py:106
 msgid "License"
 msgstr "Licencja"
 
 #: links.py:61
 msgid "Copy"
-msgstr "Kopia"
+msgstr "Skopiuj"
 
 #: links.py:64
 msgid "Setup"
@@ -111,30 +111,30 @@ msgstr "Sklep internetowy"
 msgid "Get support"
 msgstr "Uzyskaj wsparcie"
 
-#: links.py:79 queues.py:9 views.py:173
+#: links.py:79 queues.py:9 views.py:175
 msgid "Tools"
 msgstr "Narzędzia"
 
-#: literals.py:7
+#: literals.py:18
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
 msgstr "Ta funkcja jest przestarzała i zostanie usunięta w przyszłych wersjach."
 
-#: literals.py:10
+#: literals.py:21
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
 msgstr "Twój backend bazy danych jest skonfigurowany do używania SQLite. SQLite powinien być używany tylko do programowania i testowania, a nie na produkcji."
 
-#: literals.py:19
+#: literals.py:30
 msgid "Days"
 msgstr "Dni"
 
-#: literals.py:20
+#: literals.py:31
 msgid "Hours"
 msgstr "Godziny"
 
-#: literals.py:21
+#: literals.py:32
 msgid "Minutes"
 msgstr "Minuty"
 
@@ -152,11 +152,11 @@ msgstr "Akcje"
 
 #: menus.py:15
 msgid "Related"
-msgstr "Powiązany"
+msgstr "Powiązane"
 
 #: menus.py:16
 msgid "Secondary"
-msgstr "Drugorzędny"
+msgstr "Dodatkowe"
 
 #: menus.py:21 models.py:25
 msgid "User"
@@ -186,13 +186,13 @@ msgstr "Obiekt kopii"
 msgid "Default"
 msgstr "Domyślny"
 
-#: settings.py:17
+#: settings.py:19
 msgid ""
 "Time to delay background tasks that depend on a database commit to "
 "propagate."
 msgstr "Czas opóźnienia wykonania zadań zależnych od operacji na bazie danych."
 
-#: settings.py:25
+#: settings.py:26
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
@@ -200,7 +200,7 @@ msgid ""
 " containing an application."
 msgstr "Lista ciągów znaków wskazujących wszystkie aplikacje, które mają zostać usunięte z listy normalnie instalowanej przez Mayan EDMS. Każdy ciąg powinien być kropkowaną ścieżką Pythona do: klasy konfiguracji aplikacji (preferowane) lub pakietu zawierającego aplikację."
 
-#: settings.py:35
+#: settings.py:36
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
@@ -208,21 +208,21 @@ msgid ""
 " containing an application."
 msgstr "Lista ciągów oznaczających wszystkie aplikacje, które są instalowane poza tymi, które normalnie instaluje Mayan EDMS. Każdy ciąg powinien być kropkowaną ścieżką Pythona do: klasy konfiguracji aplikacji (preferowane) lub pakietu zawierającego aplikację."
 
-#: settings.py:44
+#: settings.py:45
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
 msgstr "Nazwa widoku dołączonego do marki w menu głównym. Jest to również widok, do którego użytkownicy będą przekierowywani po zalogowaniu."
 
-#: settings.py:52
+#: settings.py:53
 msgid "Name to be displayed in the main menu."
 msgstr "Nazwa wyświetlana w menu głównym."
 
-#: settings.py:58
+#: settings.py:59
 msgid "URL of the installation or homepage of the project."
 msgstr "Adres URL instalacji lub strona główna projektu."
 
-#: settings.py:63
+#: settings.py:64
 msgid "Base URL path to use for all views."
 msgstr "Podstawowa ścieżka adresu URL do użycia we wszystkich widokach."
 
@@ -240,54 +240,54 @@ msgid ""
 "underscores."
 msgstr "Podaj prawidłową 'internal name' składającą się z liter, liczb i podkreśleń."
 
-#: views.py:27
+#: views.py:29
 msgid "About"
 msgstr "Informacje"
 
-#: views.py:40
+#: views.py:42
 msgid "Current user locale profile details"
 msgstr "Profil regionalny użytkownika"
 
-#: views.py:46
+#: views.py:48
 msgid "Edit current user locale profile details"
 msgstr "Edycja ustawień regionalnych użytkownika"
 
-#: views.py:95
+#: views.py:97
 msgid "Dashboard"
 msgstr "Strona główna"
 
-#: views.py:116
+#: views.py:118
 #, python-format
 msgid "Fields to be copied: %s"
-msgstr "Pola przeznaczone do skopiowanie: %s"
+msgstr "Pola przeznaczone do skopiowania: %s"
 
-#: views.py:125
+#: views.py:127
 #, python-format
 msgid "Make a copy of %(object_name)s \"%(object)s\"?"
 msgstr "Czy skopiować %(object_name)s \"%(object)s\"?"
 
-#: views.py:134
+#: views.py:136
 msgid "Object copied successfully."
 msgstr "Obiekt został skopiowany pomyślnie."
 
-#: views.py:151
+#: views.py:153
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
 msgstr "Brak wyników oznacza, że nie masz wymaganych uprawnień administratora do wykonania zadania."
 
-#: views.py:154
+#: views.py:156
 msgid "No setup options available."
 msgstr "Brak opcji konfiguracji."
 
-#: views.py:158
+#: views.py:160
 msgid "Setup items"
 msgstr "Ustawienia"
 
-#: views.py:160
+#: views.py:162
 msgid "Here you can configure all aspects of the system."
 msgstr "Tutaj możesz skonfigurować wszystkie ustawienia systemu."
 
-#: views.py:175
+#: views.py:177
 msgid "These modules are used to do system maintenance."
 msgstr "Moduły związane z obsługą systemu."

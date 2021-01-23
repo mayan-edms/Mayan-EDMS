@@ -1,2 +1,3 @@
-DEFAULT_BACKEND = 'mayan.apps.lock_manager.backends.file_lock.FileLock'
-DEFAULT_LOCK_TIMEOUT_VALUE = 30
+DEFAULT_LOCK_MANAGER_BACKEND = 'mayan.apps.lock_manager.backends.file_lock.FileLock'
+DEFAULT_LOCK_MANAGER_BACKEND_ARGUMENTS = {}
+DEFAULT_LOCK_MANAGER_DEFAULT_LOCK_TIMEOUT = 30

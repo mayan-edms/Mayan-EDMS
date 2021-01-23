@@ -137,6 +137,8 @@ class DocumentTestMixin:
         self.test_document_stub = Document.objects.create(
             document_type=self.test_document_type, label='document_stub'
         )
+        self.test_document = self.test_document_stub
+        self.test_documents.append(self.test_document)
 
     def _create_test_document_type(self):
         self.test_document_type = DocumentType.objects.create(

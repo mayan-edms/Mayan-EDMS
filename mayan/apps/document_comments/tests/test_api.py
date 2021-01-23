@@ -21,24 +21,30 @@ class CommentAPIViewTestCase(
     BaseAPITestCase
 ):
     _test_event_object_name = 'test_document_comment'
+    auto_upload_test_document = False
 
     def setUp(self):
         super().setUp()
         self._create_test_user()
+        self._create_test_document_stub()
 
-    def test_comment_create_view_no_permission(self):
+    def test_comment_create_api_view_no_permission(self):
+        self._clear_events()
+
         response = self._request_test_comment_create_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
         self.assertEqual(Comment.objects.count(), 0)
 
         event = self._get_test_object_event()
-        self.assertNotEqual(event.verb, event_document_comment_created.id)
+        self.assertEqual(event, None)
 
-    def test_comment_create_view_with_access(self):
+    def test_comment_create_api_view_with_access(self):
         self.grant_access(
             obj=self.test_document, permission=permission_document_comment_create
         )
+
+        self._clear_events()
 
         response = self._request_test_comment_create_api_view()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
@@ -48,11 +54,15 @@ class CommentAPIViewTestCase(
         self.assertEqual(response.data['id'], comment.pk)
 
         event = self._get_test_object_event()
-        self.assertEqual(event.verb, event_document_comment_created.id)
         self.assertEqual(event.actor, self._test_case_user)
+        self.assertEqual(event.action_object, self.test_document)
+        self.assertEqual(event.target, self.test_document_comment)
+        self.assertEqual(event.verb, event_document_comment_created.id)
 
-    def test_comment_delete_view_no_permission(self):
+    def test_comment_delete_api_view_no_permission(self):
         self._create_test_comment()
+
+        self._clear_events()
 
         response = self._request_test_comment_delete_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
@@ -60,14 +70,15 @@ class CommentAPIViewTestCase(
         self.assertTrue(self.test_document_comment in Comment.objects.all())
 
         event = self._get_test_object_event(object_name='test_document')
-        self.assertEqual(event.verb, event_document_comment_created.id)
-        self.assertEqual(event.actor, self.test_user)
+        self.assertEqual(event, None)
 
-    def test_comment_delete_view_with_access(self):
+    def test_comment_delete_api_view_with_access(self):
         self._create_test_comment()
         self.grant_access(
             obj=self.test_document, permission=permission_document_comment_delete
         )
+
+        self._clear_events()
 
         response = self._request_test_comment_delete_api_view()
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
@@ -75,12 +86,42 @@ class CommentAPIViewTestCase(
         self.assertFalse(self.test_document_comment in Comment.objects.all())
 
         event = self._get_test_object_event(object_name='test_document')
-        self.assertEqual(event.verb, event_document_comment_deleted.id)
         self.assertEqual(event.actor, self._test_case_user)
+        self.assertEqual(event.target, self.test_document)
+        self.assertEqual(event.verb, event_document_comment_deleted.id)
 
-    def test_comment_edit_view_no_permission(self):
+    def test_comment_detail_api_view_no_permission(self):
+        self._create_test_comment()
+
+        self._clear_events()
+
+        response = self._request_test_comment_detail_api_view()
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+        event = self._get_test_object_event()
+        self.assertEqual(event, None)
+
+    def test_comment_detail_api_view_with_access(self):
+        self._create_test_comment()
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_comment_view
+        )
+
+        self._clear_events()
+
+        response = self._request_test_comment_detail_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.assertEqual(response.data['comment'], self.test_document_comment.comment)
+
+        event = self._get_test_object_event()
+        self.assertEqual(event, None)
+
+    def test_comment_edit_via_patch_api_view_no_permission(self):
         self._create_test_comment()
         comment_text = self.test_document_comment.comment
+
+        self._clear_events()
 
         response = self._request_test_comment_edit_patch_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
@@ -89,15 +130,16 @@ class CommentAPIViewTestCase(
         self.assertEqual(self.test_document_comment.comment, comment_text)
 
         event = self._get_test_object_event()
-        self.assertEqual(event.verb, event_document_comment_created.id)
-        self.assertEqual(event.actor, self.test_user)
+        self.assertEqual(event, None)
 
-    def test_comment_edit_view_with_access(self):
+    def test_comment_edit_via_patch_api_view_with_access(self):
         self._create_test_comment()
         self.grant_access(
             obj=self.test_document, permission=permission_document_comment_edit
         )
         comment_text = self.test_document_comment.comment
+
+        self._clear_events()
 
         response = self._request_test_comment_edit_patch_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -106,49 +148,28 @@ class CommentAPIViewTestCase(
         self.assertNotEqual(self.test_document_comment.comment, comment_text)
 
         event = self._get_test_object_event()
-        self.assertEqual(event.verb, event_document_comment_edited.id)
         self.assertEqual(event.actor, self._test_case_user)
+        self.assertEqual(event.target, self.test_document_comment)
+        self.assertEqual(event.verb, event_document_comment_edited.id)
 
-    def test_comment_detail_view_no_permission(self):
+    def test_comment_list_api_view_no_permission(self):
         self._create_test_comment()
 
-        response = self._request_test_comment_detail_api_view()
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-
-        event = self._get_test_object_event()
-        self.assertEqual(event.verb, event_document_comment_created.id)
-        self.assertEqual(event.actor, self.test_user)
-
-    def test_comment_detail_view_with_access(self):
-        self._create_test_comment()
-        self.grant_access(
-            obj=self.test_document, permission=permission_document_comment_view
-        )
-
-        response = self._request_test_comment_detail_api_view()
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-
-        self.assertEqual(response.data['comment'], self.test_document_comment.comment)
-
-        event = self._get_test_object_event()
-        self.assertEqual(event.verb, event_document_comment_created.id)
-        self.assertEqual(event.actor, self.test_user)
-
-    def test_comment_list_view_no_permission(self):
-        self._create_test_comment()
+        self._clear_events()
 
         response = self._request_test_comment_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
         event = self._get_test_object_event()
-        self.assertEqual(event.verb, event_document_comment_created.id)
-        self.assertEqual(event.actor, self.test_user)
+        self.assertEqual(event, None)
 
-    def test_comment_list_view_with_access(self):
+    def test_comment_list_api_view_with_access(self):
         self._create_test_comment()
         self.grant_access(
             obj=self.test_document, permission=permission_document_comment_view
         )
+
+        self._clear_events()
 
         response = self._request_test_comment_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -157,5 +178,4 @@ class CommentAPIViewTestCase(
         )
 
         event = self._get_test_object_event()
-        self.assertEqual(event.verb, event_document_comment_created.id)
-        self.assertEqual(event.actor, self.test_user)
+        self.assertEqual(event, None)

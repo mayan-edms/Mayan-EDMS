@@ -51,6 +51,13 @@ class DocumentTagViewTestMixin:
             }
         )
 
+    def _request_test_tag_document_list_view(self):
+        return self.get(
+            viewname='tags:tag_document_list', kwargs={
+                'tag_id': self.test_tag.pk
+            }
+        )
+
 
 class TagAPIViewTestMixin:
     def _request_test_document_attach_tag_api_view(self):
@@ -162,13 +169,6 @@ class TagViewTestMixin:
             viewname='tags:tag_multiple_delete', data={
                 'id_list': self.test_tag.pk
             },
-        )
-
-    def _request_test_tag_document_list_view(self):
-        return self.get(
-            viewname='tags:tag_document_list', kwargs={
-                'tag_id': self.test_tag.pk
-            }
         )
 
     def _request_test_tag_edit_view(self):

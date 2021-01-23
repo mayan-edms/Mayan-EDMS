@@ -215,7 +215,9 @@ class WorkflowTemplateStateActionSelectionView(ExternalObjectMixin, FormView):
         )
 
 
-class WorkflowTemplateStateCreateView(ExternalObjectMixin, SingleObjectCreateView):
+class WorkflowTemplateStateCreateView(
+    ExternalObjectMixin, SingleObjectCreateView
+):
     external_object_class = Workflow
     external_object_permission = permission_workflow_edit
     external_object_pk_url_kwarg = 'workflow_template_id'

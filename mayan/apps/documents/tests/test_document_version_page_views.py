@@ -180,7 +180,14 @@ class DocumentVersionTransformationViewTestCase(
     LayerTestMixin, DocumentVersionTransformationTestMixin,
     DocumentVersionTransformationViewTestMixin, GenericDocumentViewTestCase
 ):
-    test_document_versionname = TEST_MULTI_PAGE_TIFF
+    test_document_filename = TEST_MULTI_PAGE_TIFF
+
+    def setUp(self):
+        super().setUp()
+        self.assertTrue(
+            expr=self.test_document_version.pages.count() > 1,
+            msg='Test document must have more than one page'
+        )
 
     def test_document_version_transformations_clear_view_no_permission(self):
         self._create_document_version_transformation()

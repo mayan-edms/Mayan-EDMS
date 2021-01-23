@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# Jože Detečnik <joze.detecnik@3tav.si>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-03-28 07:22+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-12-25 10:32+0000\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>\n"
 "Language-Team: Slovenian (http://www.transifex.com/rosarior/mayan-edms/language/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,106 +19,106 @@ msgstr ""
 "Language: sl\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
-#: apps.py:25 events.py:6 permissions.py:6 settings.py:7
+#: apps.py:25 events.py:6 permissions.py:6 settings.py:10
 msgid "Authentication"
-msgstr ""
+msgstr "Preverjanje pristnosti"
 
 #: events.py:10
 msgid "User impersonation ended"
-msgstr ""
+msgstr "Predstavljanje uporabnika se je končalo"
 
 #: events.py:13
 msgid "User impersonation started"
-msgstr ""
+msgstr "Predstavljanje uporabnika se je začelo"
 
 #: forms.py:17
 msgid "Email"
-msgstr ""
+msgstr "E-naslov"
 
 #: forms.py:20
 msgid "Password"
-msgstr ""
+msgstr "Geslo"
 
 #: forms.py:22 forms.py:89
 msgid "Remember me"
-msgstr ""
+msgstr "Zapomni si me"
 
 #: forms.py:25
 msgid ""
 "Please enter a correct email and password. Note that the password field is "
 "case-sensitive."
-msgstr ""
+msgstr "Vnesite pravilen e-poštni naslov in geslo. Polje za geslo razlikuje med velikimi in malimi črkami."
 
 #: forms.py:27
 msgid "This account is inactive."
-msgstr ""
+msgstr "Ta račun je neaktiven."
 
 #: forms.py:78
 msgid "User"
-msgstr ""
+msgstr "Uporabnik"
 
 #: forms.py:78
 msgid "User to be impersonated."
-msgstr ""
+msgstr "Uporabnik, ki se mora lažno predstavljati."
 
 #: forms.py:82
 msgid "Permanent"
-msgstr ""
+msgstr "Stalno"
 
 #: forms.py:83
 msgid "If selected, disables ending impersonation."
-msgstr ""
+msgstr "Če je izbrana, onemogoči končno lažno predstavljanje."
 
-#: links.py:22
+#: links.py:25
 msgid "Logout"
-msgstr ""
+msgstr "Odjava"
 
-#: links.py:27
+#: links.py:30
 msgid "Change password"
-msgstr ""
+msgstr "Spremeni geslo"
 
-#: links.py:32 views.py:68
+#: links.py:35 views.py:68
 msgid "Impersonate user"
-msgstr ""
+msgstr "Predstavitev uporabnika"
 
-#: links.py:37 links.py:44
+#: links.py:40 links.py:47
 msgid "Set password"
-msgstr ""
+msgstr "Nastavi geslo"
 
 #: permissions.py:10
 msgid "Impersonate users"
-msgstr ""
+msgstr "Uporabniki"
 
-#: settings.py:11
+#: settings.py:15
 msgid ""
 "Controls the mechanism used to authenticated user. Options are: username, "
 "email"
-msgstr ""
+msgstr "Nadzira mehanizem, ki se uporablja za overjenega uporabnika. Možnosti so: uporabniško ime, e-pošta"
 
-#: settings.py:18
+#: settings.py:22
 msgid ""
 "Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
 " in. Value is time in seconds."
-msgstr ""
+msgstr "Najdaljši čas, ko uporabnik klikne potrditveno polje &quot;Zapomni si me&quot;, ostane prijavljen. Vrednost je čas v sekundah."
 
-#: settings.py:25
+#: settings.py:29
 msgid ""
 "Remove the \"Forgot your password?\" link on the login form used to trigger "
 "the password reset."
-msgstr ""
+msgstr "Odstranite sporočilo »Ste pozabili geslo?« povezava na prijavnem obrazcu, ki se uporablja za sprožitev ponastavitve gesla."
 
 #: templates/authentication/login.html:11
 msgid "Login"
-msgstr ""
+msgstr "Vpiši se"
 
 #: templates/authentication/login.html:23
 #: templates/authentication/login.html:32
 msgid "Sign in"
-msgstr ""
+msgstr "Vpis"
 
 #: templates/authentication/login.html:39
 msgid "Forgot your password?"
-msgstr ""
+msgstr "Ste pozabili geslo?"
 
 #: templates/authentication/password_reset_complete.html:8
 #: templates/authentication/password_reset_confirm.html:8
@@ -126,15 +127,15 @@ msgstr ""
 #: templates/authentication/password_reset_form.html:8
 #: templates/authentication/password_reset_form.html:20
 msgid "Password reset"
-msgstr ""
+msgstr "Resetiranje gesla"
 
 #: templates/authentication/password_reset_complete.html:15
 msgid "Password reset complete! Click the link below to login."
-msgstr ""
+msgstr "Ponastavitev gesla je končana! Za prijavo kliknite spodnjo povezavo."
 
 #: templates/authentication/password_reset_complete.html:17
 msgid "Login page"
-msgstr ""
+msgstr "Stran za prijavo"
 
 #: templates/authentication/password_reset_confirm.html:29
 #: templates/authentication/password_reset_form.html:29 views.py:212
@@ -143,55 +144,55 @@ msgstr "Pošlji"
 
 #: templates/authentication/password_reset_done.html:15
 msgid "Password reset email sent!"
-msgstr ""
+msgstr "E-poštno sporočilo za ponastavitev gesla je poslano!"
 
 #: views.py:121
 msgid "Your password has been successfully changed."
-msgstr ""
+msgstr "Vaše geslo je bilo uspešno spremenjeno."
 
 #: views.py:128
 msgid "Current user password change"
-msgstr ""
+msgstr "Sprememba trenutnega uporabniškega gesla"
 
 #: views.py:136
 msgid "Changing the password is not allowed for this account."
-msgstr ""
+msgstr "Spreminjanje gesla za ta račun ni dovoljeno."
 
 #: views.py:203
 #, python-format
 msgid "Password change request performed on %(count)d user"
-msgstr ""
+msgstr "Zahteva za spremembo gesla, izvedena za uporabnika %(count)d"
 
 #: views.py:205
 #, python-format
 msgid "Password change request performed on %(count)d users"
-msgstr ""
+msgstr "Zahteva za spremembo gesla, izvedena za uporabnike %(count)d"
 
 #: views.py:214
 msgid "Change user password"
 msgid_plural "Change users passwords"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Spremenite uporabniško geslo"
+msgstr[1] "Spremenite gesla uporabnikov"
+msgstr[2] "Spremenite gesla uporabnikov"
+msgstr[3] "Spremenite gesla uporabnikov"
 
 #: views.py:224
 #, python-format
 msgid "Change password for user: %s"
-msgstr ""
+msgstr "Spremenite geslo za uporabnika: %s"
 
 #: views.py:244
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr ""
+msgstr "Ponastavitev gesla za uporabnike in uporabnike osebja ni dovoljena, za te primere uporabite skrbniški vmesnik."
 
 #: views.py:254
 #, python-format
 msgid "Successful password reset for user: %s."
-msgstr ""
+msgstr "Uspešna ponastavitev gesla za uporabnika: %s."
 
 #: views.py:260
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
-msgstr ""
+msgstr "Napaka pri ponastavitvi gesla za uporabnika &quot;%(user)s&quot;: %(error)s"

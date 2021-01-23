@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-10-01 22:12+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:133 permissions.py:5 settings.py:10
+#: apps.py:133 permissions.py:5 settings.py:13
 msgid "Common"
 msgstr "Comum"
 
@@ -85,7 +85,7 @@ msgstr "Documentação"
 msgid "Forum"
 msgstr "Fórum"
 
-#: links.py:56 views.py:104
+#: links.py:56 views.py:106
 msgid "License"
 msgstr "Licença"
 
@@ -109,30 +109,30 @@ msgstr "Loja online"
 msgid "Get support"
 msgstr "Obtenha ajuda"
 
-#: links.py:79 queues.py:9 views.py:173
+#: links.py:79 queues.py:9 views.py:175
 msgid "Tools"
 msgstr "Ferramentas"
 
-#: literals.py:7
+#: literals.py:18
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
 msgstr "Essa funcionalidade foi deprecada e será removida numa versão futura"
 
-#: literals.py:10
+#: literals.py:21
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
 msgstr "Sua base de dados está configurada para utilizar SQLite. SQLite deve ser usado apenas em ambientes de desenvolvimento e testes, não de produção."
 
-#: literals.py:19
+#: literals.py:30
 msgid "Days"
 msgstr "Dias"
 
-#: literals.py:20
+#: literals.py:31
 msgid "Hours"
 msgstr "Horas"
 
-#: literals.py:21
+#: literals.py:32
 msgid "Minutes"
 msgstr "Minutos"
 
@@ -184,13 +184,13 @@ msgstr "Copiar objeto"
 msgid "Default"
 msgstr "Padrão"
 
-#: settings.py:17
+#: settings.py:19
 msgid ""
 "Time to delay background tasks that depend on a database commit to "
 "propagate."
 msgstr "Tempo para atrasar as tarefas de fundo que dependem da propagação de informação na base de dados."
 
-#: settings.py:25
+#: settings.py:26
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
@@ -198,7 +198,7 @@ msgid ""
 " containing an application."
 msgstr "Uma lista de strings designando todas as aplicações que serão removidas daquelas normamente instaladas pelo Mayan EDMS. Cada string deve ser um caminho Python pontuado para uma classe de configuração da aplicação (preferencialmente) ou um pacote contendo uma aplicação."
 
-#: settings.py:35
+#: settings.py:36
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
@@ -206,21 +206,21 @@ msgid ""
 " containing an application."
 msgstr "Uma lista de strings designando todas as aplicações que serão instaladas para além daquelas normamente instaladas pelo Mayan EDMS. Cada string deve ser um caminho Python pontuado para uma classe de configuração da aplicação (preferencialmente) ou um pacote contendo uma aplicação."
 
-#: settings.py:44
+#: settings.py:45
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
 msgstr "Nome da tela associada à âncora da marca no menu principal. Esta é também a tela para qual os usuários serão direcionados após o login."
 
-#: settings.py:52
+#: settings.py:53
 msgid "Name to be displayed in the main menu."
 msgstr "Nome a ser mostrado no menu principal."
 
-#: settings.py:58
+#: settings.py:59
 msgid "URL of the installation or homepage of the project."
 msgstr "URL da instalação ou homepage do projeto."
 
-#: settings.py:63
+#: settings.py:64
 msgid "Base URL path to use for all views."
 msgstr "Caminho do URL base a ser usado em todas as visualizações."
 
@@ -238,54 +238,54 @@ msgid ""
 "underscores."
 msgstr "Insira um 'nome interno' válido que contenha letras, números e subtraços."
 
-#: views.py:27
+#: views.py:29
 msgid "About"
 msgstr "Sobre"
 
-#: views.py:40
+#: views.py:42
 msgid "Current user locale profile details"
 msgstr "Detalhes do perfil de locale do usuário atual"
 
-#: views.py:46
+#: views.py:48
 msgid "Edit current user locale profile details"
 msgstr "Editar detalhes do perfil de locale do usuário atual"
 
-#: views.py:95
+#: views.py:97
 msgid "Dashboard"
 msgstr "Painel de controle"
 
-#: views.py:116
+#: views.py:118
 #, python-format
 msgid "Fields to be copied: %s"
 msgstr "Campos a serem copiados: %s"
 
-#: views.py:125
+#: views.py:127
 #, python-format
 msgid "Make a copy of %(object_name)s \"%(object)s\"?"
 msgstr "Faça uma cópia de %(object_name)s \"%(object)s\"?"
 
-#: views.py:134
+#: views.py:136
 msgid "Object copied successfully."
 msgstr "Objeto copiado com sucesso."
 
-#: views.py:151
+#: views.py:153
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
 msgstr "Nenhum resultado aqui significa que o usuário não possui as permissões necessárias para realizar tarefas administrativas."
 
-#: views.py:154
+#: views.py:156
 msgid "No setup options available."
 msgstr "Não há opções de configuração disponíveis."
 
-#: views.py:158
+#: views.py:160
 msgid "Setup items"
 msgstr "Itens da Configuração"
 
-#: views.py:160
+#: views.py:162
 msgid "Here you can configure all aspects of the system."
 msgstr "Aqui você pode configurar todos os aspectos do sistema."
 
-#: views.py:175
+#: views.py:177
 msgid "These modules are used to do system maintenance."
 msgstr "Estes módulos são usados para a manutenção do sistema."

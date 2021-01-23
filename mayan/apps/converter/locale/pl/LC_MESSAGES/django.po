@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-10-16 18:17+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-12-01 17:18+0000\n"
 "Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Language: pl\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: apps.py:39 events.py:5 permissions.py:5 settings.py:16
+#: apps.py:39 events.py:5 permissions.py:5 settings.py:14
 msgid "Converter"
 msgstr "Konwerter"
 
@@ -231,19 +231,19 @@ msgstr "Edytuj przekształcenia"
 msgid "View existing transformations"
 msgstr "Przeglądaj utworzone przekształcenia"
 
-#: settings.py:22
+#: settings.py:21
 msgid "Graphics conversion backend to use."
 msgstr "Backend używany do konwersji grafiki."
 
-#: settings.py:35
+#: settings.py:27
 msgid "Configuration options for the graphics conversion backend."
 msgstr "Opcje konfiguracji dla silnika konwersji grafiki."
 
-#: settings.py:41
+#: settings.py:33
 msgid "Path to the Storage subclass to use when storing assets."
-msgstr ""
+msgstr "Ścieżka do Storage class używana podczas zapisywania zasobów."
 
-#: settings.py:49
+#: settings.py:39
 msgid "Arguments to pass to the CONVERTER_ASSET_STORAGE_BACKEND."
 msgstr "Argumenty dla CONVERTER_ASSET_STORAGE_BACKEND."
 
@@ -251,7 +251,7 @@ msgstr "Argumenty dla CONVERTER_ASSET_STORAGE_BACKEND."
 msgid ""
 "Unable to initialize the converter asset storage. Check the settings {} and "
 "{} for formatting errors."
-msgstr ""
+msgstr "Brak możliwości inicjalizacji magazynu zasobów konwertera. Sprawdź ustawienia {} i {} z powodu błędów formatowania."
 
 #: transformations.py:197
 msgid "Paste an asset"
@@ -259,7 +259,7 @@ msgstr "Wklej zasób"
 
 #: transformations.py:248
 msgid "Paste an asset (percents coordinates)"
-msgstr ""
+msgstr "Wklej zasób (współrzędne procentowe)"
 
 #: transformations.py:291
 msgid "Paste an asset as watermark"
@@ -324,12 +324,12 @@ msgstr "Powiększenie"
 #: views.py:50
 #, python-format
 msgid "Delete request performed on %(count)d asset"
-msgstr ""
+msgstr "Usuń żądanie wykonane na zasobie %(count)d"
 
 #: views.py:52
 #, python-format
 msgid "Delete request performed on %(count)d assets"
-msgstr ""
+msgstr "Usuń żądanie wykonane na zasobach %(count)d"
 
 #: views.py:59
 msgid "Delete the selected asset?"
@@ -422,7 +422,7 @@ msgstr "Strony"
 msgid ""
 "Pages to which the new transformations will be added. Separate by commas "
 "and/or use a dashes for a ranges. Leave blank to select all pages."
-msgstr ""
+msgstr "Strony, do których zostaną dodane nowe przekształcenia. Oddziel przecinkami i / lub użyj myślników dla zakresów. Pozostaw puste, aby zaznaczyć wszystkie strony. \n \n "
 
 #: workflow_actions.py:32
 msgid "Transformation class"

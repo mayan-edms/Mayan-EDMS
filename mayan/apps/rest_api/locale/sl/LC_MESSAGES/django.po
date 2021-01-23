@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# Jože Detečnik <joze.detecnik@3tav.si>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-02-14 02:29+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-12-25 12:32+0000\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>\n"
 "Language-Team: Slovenian (http://www.transifex.com/rosarior/mayan-edms/language/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,28 +19,28 @@ msgstr ""
 "Language: sl\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
-#: apps.py:23 links.py:17 settings.py:6
+#: apps.py:23 links.py:17 settings.py:8
 msgid "REST API"
-msgstr ""
+msgstr "API REST"
 
 #: fields.py:30
 #, python-format
 msgid "Unable to find serializer class for: %s"
-msgstr ""
+msgstr "Ni mogoče najti razreda serializatorja za: %s"
 
 #: links.py:21
 msgid "API Documentation (Swagger)"
-msgstr ""
+msgstr "Dokumentacija API (Swagger)"
 
 #: links.py:27
 msgid "API Documentation (ReDoc)"
-msgstr ""
+msgstr "Dokumentacija API (ReDoc)"
 
 #: schemas.py:9
 #, python-format
 msgid "%s API"
-msgstr ""
+msgstr "%s API"
 
-#: settings.py:12
+#: settings.py:14
 msgid "Disable the REST API links in the tools menu."
-msgstr ""
+msgstr "Onemogočite povezave REST API v meniju orodij."

@@ -4,7 +4,7 @@
 # 
 # Translators:
 # Translators:
-# Ben Zweekhorst <bzweekhorst@gmail.com>, 2019
+# Ben <bzweekhorst@gmail.com>, 2019
 # bwakkie <bwakkie@gmail.com>, 2020
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
 # j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-09-27 06:46+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-11-11 01:45+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -81,8 +81,8 @@ msgid "Email link"
 msgstr "E-mail link"
 
 #: links.py:35
-msgid "Create mailing profile "
-msgstr "Mailprofiel aanmaken"
+msgid "Create mailing profile"
+msgstr ""
 
 #: links.py:41
 msgid "Delete"
@@ -287,19 +287,19 @@ msgstr "Een mailprofiel gebruiken"
 msgid "Send document"
 msgstr "Document verzenden"
 
-#: settings.py:14
+#: settings.py:15
 msgid "Template for the document email form subject line."
 msgstr "Sjabloon voor de onderwerpregel van het \"Document mailen\" formulier."
 
-#: settings.py:19
+#: settings.py:21
 msgid "Template for the document email form body text. Can include HTML."
 msgstr "Sjabloon voor de inhoudstekst van het \"Document mailen\" formulier. Kan HTML bevatten."
 
-#: settings.py:24
+#: settings.py:27
 msgid "Template for the document link email form subject line."
 msgstr "Sjabloon voor de onderwerpregel van het \"Documentlink mailen\" formulier."
 
-#: settings.py:29
+#: settings.py:33
 msgid "Template for the document link email form body text. Can include HTML."
 msgstr "Sjabloon voor de inhoudstekst van het \"Documentlink mailen\" formulier. Kan HTML bevatten."
 

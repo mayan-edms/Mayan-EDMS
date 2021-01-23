@@ -18,6 +18,7 @@ from ..events import (
     event_document_version_edited
 )
 from ..literals import STORAGE_NAME_DOCUMENT_VERSION_PAGE_IMAGE_CACHE
+from ..managers import ValidDocumentVersionManager
 from ..signals import signal_post_document_version_remap
 
 from .document_models import Document
@@ -51,6 +52,9 @@ class DocumentVersion(ModelInstanceExtraDataAPIViewMixin, models.Model):
         ordering = ('timestamp',)
         verbose_name = _('Document version')
         verbose_name_plural = _('Document versions')
+
+    objects = models.Manager()
+    valid = ValidDocumentVersionManager()
 
     @staticmethod
     def annotate_content_object_list(content_object_list, start_page_number=None):

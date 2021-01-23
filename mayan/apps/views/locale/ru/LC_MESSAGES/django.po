@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-09-27 06:47+0000\n"
 "Last-Translator: OLeg Si <olegsm35@gmail.com>, 2020\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:15 settings.py:5
+#: apps.py:15 settings.py:7
 msgid "Views"
 msgstr ""
 
@@ -106,16 +106,16 @@ msgstr "%(object)s не обновлён, ошибка: %(error)s."
 msgid "%(object)s updated successfully."
 msgstr "%(object)s успешно обновлён."
 
-#: mixins.py:319
+#: mixins.py:324
 #, python-format
 msgid "No %(verbose_name)s found matching the query"
 msgstr ""
 
-#: mixins.py:433
+#: mixins.py:438
 msgid "Object"
 msgstr "Объект"
 
-#: settings.py:11
+#: settings.py:12
 msgid "The number objects that will be displayed per page."
 msgstr "Количество объектов для отображения на страницу."
 

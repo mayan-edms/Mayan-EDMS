@@ -8,13 +8,13 @@
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2014
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016-2017
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011
-# Roberto Rosario, 2020
+# Roberto Rosario, 2020-2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-09-27 06:46+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2021-01-04 16:34+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -45,7 +45,7 @@ msgstr "Se selezionato, verranno restituiti solo i risultati che corrispondono a
 msgid "Search terms"
 msgstr "Cerca termini "
 
-#: links.py:13 permissions.py:5 queues.py:7 settings.py:7
+#: links.py:13 permissions.py:5 queues.py:7 settings.py:10
 #: templates/dynamic_search/search_box.html:43 views.py:117 views.py:130
 msgid "Search"
 msgstr "Cerca"
@@ -60,32 +60,32 @@ msgstr "Cerca ancora"
 
 #: links.py:25 views.py:90
 msgid "Reindex search backend"
-msgstr ""
+msgstr "Reindicizza il backend di ricerca"
 
 #: permissions.py:8
 msgid "Execute search tools"
-msgstr ""
+msgstr "Esegui strumenti di ricerca"
 
 #: queues.py:11
 msgid "Remove a model instance from the search engine."
-msgstr ""
+msgstr "Rimuovi un'istanza del modello dal motore di ricerca."
 
 #: queues.py:16
 msgid "Index a model instance to the search engine."
-msgstr ""
+msgstr "Indicizza un'istanza del modello nel motore di ricerca."
 
-#: settings.py:13
+#: settings.py:15
 msgid "Full path to the backend to be used to handle the search."
 msgstr "Percorso completo per il backend da utilizzare per gestire la ricerca."
 
-#: settings.py:23
+#: settings.py:25
 msgid ""
 "Disables the single term bar search leaving only the advanced search button."
 msgstr "Disabilita la ricerca della barra a termine singolo lasciando solo il pulsante di ricerca avanzata."
 
-#: settings.py:29
+#: settings.py:31
 msgid "Maximum number search results to fetch and display."
-msgstr ""
+msgstr "Numero massimo di risultati di ricerca da recuperare e visualizzare."
 
 #: templates/dynamic_search/search_box.html:45
 msgid "Advanced"
@@ -108,15 +108,15 @@ msgstr "Risultati ricerca per: %s"
 msgid ""
 "This tool is required only for some search backends. Search results will be "
 "affected while the backend is being reindexed."
-msgstr ""
+msgstr "Questo strumento è richiesto solo per alcuni backend di ricerca. I risultati della ricerca saranno influenzati durante la reindicizzazione del backend."
 
 #: views.py:92
 msgid "This tool erases and populates the search backend's internal index."
-msgstr ""
+msgstr "Questo strumento cancella e popola l'indice interno del backend di ricerca."
 
 #: views.py:110
 msgid "Search backend reindexing queued."
-msgstr ""
+msgstr "Reindicizzazione del backend di ricerca in coda."
 
 #: views.py:132
 #, python-format

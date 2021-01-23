@@ -4,14 +4,15 @@
 # 
 # Translators:
 # Translators:
+# Marwan Rahhal <Marwanr@sssit.net>, 2020
 # Mohammed ALDOUB <voulnet@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-12-24 01:42+0000\n"
+"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>\n"
 "Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,9 +22,9 @@ msgstr ""
 
 #: apps.py:50 apps.py:118 apps.py:125 events.py:5 forms.py:15 links.py:23
 #: menus.py:14 models.py:38 permissions.py:5 search.py:9 search.py:11
-#: views.py:221 workflow_actions.py:18 workflow_actions.py:61
+#: views.py:222 workflow_actions.py:18 workflow_actions.py:61
 msgid "Tags"
-msgstr "الكلمات الاستدلالية"
+msgstr "الدلالات"
 
 #: apps.py:138 models.py:32
 msgid "Documents"
@@ -31,35 +32,35 @@ msgstr "الوثائق"
 
 #: events.py:8
 msgid "Tag attached to document"
-msgstr ""
+msgstr "الدلالات للوثيقة"
 
 #: events.py:11
 msgid "Tag created"
-msgstr ""
+msgstr "إنشاء دلالة"
 
 #: events.py:14
 msgid "Tag edited"
-msgstr ""
+msgstr "تعديل دلالة"
 
 #: events.py:17
 msgid "Tag removed from document"
-msgstr ""
+msgstr "حذف دلالة من وثيقة"
 
 #: links.py:14 workflow_actions.py:68
 msgid "Remove tag"
-msgstr ""
+msgstr "حذف دلالة"
 
 #: links.py:18 links.py:35
 msgid "Attach tags"
-msgstr ""
+msgstr "دلالات المرفق"
 
 #: links.py:29
 msgid "Remove tags"
-msgstr ""
+msgstr "حذف الدلالات"
 
 #: links.py:42
 msgid "Create new tag"
-msgstr ""
+msgstr "إنشاء دلالة جديدة"
 
 #: links.py:48 links.py:65
 msgid "Delete"
@@ -67,7 +68,7 @@ msgstr "حذف"
 
 #: links.py:53
 msgid "Edit"
-msgstr "تحرير"
+msgstr "تعديل"
 
 #: links.py:61
 msgid "All"
@@ -75,15 +76,15 @@ msgstr "الكل"
 
 #: methods.py:18
 msgid "Return the tags attached to the document."
-msgstr ""
+msgstr "اعادة الدلالة للوثيقة"
 
 #: methods.py:20
 msgid "get_tags()"
-msgstr ""
+msgstr "get_tags ()"
 
 #: models.py:24
 msgid "A short text used as the tag name."
-msgstr ""
+msgstr "وصف الدلالة"
 
 #: models.py:25
 msgid "Label"
@@ -91,7 +92,7 @@ msgstr "العنوان"
 
 #: models.py:28
 msgid "The RGB color values for the tag."
-msgstr ""
+msgstr "الوان الدلالة"
 
 #: models.py:29
 msgid "Color"
@@ -99,232 +100,232 @@ msgstr "اللون"
 
 #: models.py:37
 msgid "Tag"
-msgstr ""
+msgstr "الدلالة"
 
 #: models.py:80
 msgid "Preview"
-msgstr ""
+msgstr "استعراض "
 
 #: models.py:109
 msgid "Document tag"
-msgstr ""
+msgstr "دلالة الوثيقة"
 
 #: models.py:110
 msgid "Document tags"
-msgstr ""
+msgstr "دلالات الوثيقة"
 
 #: permissions.py:8
 msgid "Create new tags"
-msgstr "أنشأ كلمات استدلالية جديدة"
+msgstr "إنشاء دلالة جديدة"
 
 #: permissions.py:11
 msgid "Delete tags"
-msgstr "حذف الكلمات الاستدلالية"
+msgstr "حذف الدلالات"
 
 #: permissions.py:14
 msgid "View tags"
-msgstr "عرض الكلمات الاستدلالية"
+msgstr "عرض الدلالات"
 
 #: permissions.py:17
 msgid "Edit tags"
-msgstr "تعديل الكلمات الاستدلالية"
+msgstr "تعديل الدلالات"
 
 #: permissions.py:20
 msgid "Attach tags to documents"
-msgstr "إضافة كلمات استدلالية للوثائق"
+msgstr "إضافة الدلالات للوثائق"
 
 #: permissions.py:23
 msgid "Remove tags from documents"
-msgstr "إزالة الكلمات الاستدلالية من الوثائق"
+msgstr "حذف الدلالات من الوثائق"
 
 #: serializers.py:36
 msgid ""
 "Comma separated list of document primary keys to which this tag will be "
 "attached."
-msgstr ""
+msgstr "ارفاق القوائم الى الدلالة"
 
 #: serializers.py:85
 msgid ""
 "API URL pointing to a tag in relation to the document attached to it. This "
 "URL is different than the canonical tag URL."
-msgstr ""
+msgstr "إختلاف لون الدلالة عن اللون الافتراضي"
 
 #: serializers.py:105
 msgid "Primary key of the tag to be added."
-msgstr ""
+msgstr "ترميز الدلالة"
 
 #: views.py:36
 #, python-format
 msgid "Tag attach request performed on %(count)d document"
-msgstr ""
+msgstr "تم إضافة دلالة %(count)d للوثيقة"
 
 #: views.py:38
 #, python-format
 msgid "Tag attach request performed on %(count)d documents"
-msgstr ""
+msgstr "تم إضافة دلالة %(count)d للوثائق"
 
 #: views.py:45
 msgid "Attach"
-msgstr ""
+msgstr "المرفقات"
 
 #: views.py:47
 #, python-format
 msgid "Attach tags to %(count)d document"
 msgid_plural "Attach tags to %(count)d documents"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "إرفاق العلامات بمستندات %(count)d"
+msgstr[1] "قم بإرفاق علامات التمييز بوثيقة %(count)d"
+msgstr[2] "إرفاق العلامات بمستندات %(count)d"
+msgstr[3] "إرفاق العلامات بمستندات %(count)d"
+msgstr[4] "إرفاق العلامات بمستندات %(count)d"
+msgstr[5] "إرفاق دلالات بالوثائق%(count)d"
 
 #: views.py:59
 #, python-format
 msgid "Attach tags to document: %s"
-msgstr ""
+msgstr "إضافة الدلالات الى الوثيقة: %s"
 
 #: views.py:68 wizard_steps.py:27
 msgid "Tags to be attached."
-msgstr ""
+msgstr "الدلالات المراد ارفاقها"
 
 #: views.py:110
 #, python-format
 msgid "Document \"%(document)s\" is already tagged as \"%(tag)s\""
-msgstr "الوثيقة \"%(document)s\" مربوطة مسبقاً بالكلمات الاستدلالية \"%(tag)s\""
+msgstr "الوثيقة \"%(document)s\" مربوطة مسبقاً بالدلالات \"%(tag)s\""
 
 #: views.py:120
 #, python-format
 msgid "Tag \"%(tag)s\" attached successfully to document \"%(document)s\"."
-msgstr "تم ربط الكلمة الاستدلالية \"%(tag)s\" بالوثيقة \"%(document)s\" ."
+msgstr "تم ربط الدلالات \"%(tag)s\" بالوثيقة \"%(document)s\" ."
 
 #: views.py:129
 msgid "Create tag"
-msgstr ""
+msgstr "إنشاء دلالة"
 
 #: views.py:144
 #, python-format
 msgid "Tag delete request performed on %(count)d tag"
-msgstr ""
+msgstr "حذف الدلالة %(count)d"
 
 #: views.py:146
 #, python-format
 msgid "Tag delete request performed on %(count)d tags"
-msgstr ""
+msgstr "حذف الدلالات %(count)d"
 
 #: views.py:154
 msgid "Will be removed from all documents."
-msgstr "ستتم الإزالة من جميع الوثائق."
+msgstr "ستتم الإلغاء من جميع الوثائق."
 
 #: views.py:156
 msgid "Delete the selected tag?"
 msgid_plural "Delete the selected tags?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "حذف العلامات المختارة؟"
+msgstr[1] "حذف العلامة المختارة؟"
+msgstr[2] "حذف العلامات المختارة؟"
+msgstr[3] "حذف العلامات المختارة؟"
+msgstr[4] "حذف العلامات المختارة؟"
+msgstr[5] "حذف الدلالات المحددة؟"
 
 #: views.py:166
 #, python-format
 msgid "Delete tag: %s?"
-msgstr ""
+msgstr "حذف الدلالة: %s؟"
 
 #: views.py:177
 #, python-format
 msgid "Tag \"%s\" deleted successfully."
-msgstr "الكلمة الاستدلالية \"%s\" مسحت بنجاح."
+msgstr "الدلالات \"%s\" حذفت بنجاح."
 
 #: views.py:182
 #, python-format
 msgid "Error deleting tag \"%(tag)s\": %(error)s"
-msgstr "خطأ أثناء مسح الكلمة الاستدلالية \"%(tag)s\": %(error)s"
+msgstr "خطأ أثناء  حذف الدلالات\"%(tag)s\": %(error)s"
 
 #: views.py:198
 #, python-format
 msgid "Edit tag: %s"
-msgstr ""
+msgstr "تعديل الدلالة: %s"
 
-#: views.py:217
+#: views.py:218
 msgid ""
 "Tags are color coded properties that can be attached or removed from "
 "documents."
-msgstr ""
+msgstr "إضافة أو إزالة دلالات مرمزة بالألوان"
 
-#: views.py:220
+#: views.py:221
 msgid "No tags available"
-msgstr ""
+msgstr "لا توجد دلالات متاحة"
 
-#: views.py:245
+#: views.py:250
 #, python-format
 msgid "Documents with the tag: %s"
-msgstr ""
+msgstr "الوثائق ذات الدلالات: %s"
 
-#: views.py:269
+#: views.py:275
 msgid "Document has no tags attached"
-msgstr ""
+msgstr "لا توجد دلالات للوثيقة"
 
-#: views.py:272
+#: views.py:278
 #, python-format
 msgid "Tags for document: %s"
-msgstr ""
+msgstr "دلالات الوثيقة: %s"
 
-#: views.py:289
+#: views.py:295
 #, python-format
 msgid "Tag remove request performed on %(count)d document"
-msgstr ""
+msgstr " الغاء الدلالة عن الوثيقة %(count)d"
 
-#: views.py:291
+#: views.py:297
 #, python-format
 msgid "Tag remove request performed on %(count)d documents"
-msgstr ""
+msgstr "الغاء الدلالة عن الوثائق %(count)d"
 
-#: views.py:299
+#: views.py:305
 msgid "Remove"
-msgstr "إزالة"
+msgstr "حذف"
 
-#: views.py:301
+#: views.py:307
 #, python-format
 msgid "Remove tags from %(count)d document"
 msgid_plural "Remove tags from %(count)d documents"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "قم بإزالة العلامات من مستندات %(count)d"
+msgstr[1] "قم بإزالة العلامات من وثيقة %(count)d"
+msgstr[2] "قم بإزالة العلامات من مستندات %(count)d"
+msgstr[3] "قم بإزالة العلامات من مستندات %(count)d"
+msgstr[4] "قم بإزالة العلامات من مستندات %(count)d"
+msgstr[5] "الغاء الدلالات عن الوثائق %(count)d"
 
-#: views.py:313
+#: views.py:319
 #, python-format
 msgid "Remove tags from document: %s"
-msgstr ""
+msgstr "الغاء الدلالات عن الوثيقة: %s"
 
-#: views.py:322
+#: views.py:328
 msgid "Tags to be removed."
-msgstr ""
+msgstr "الدلالات التي سيتم الغائها"
 
-#: views.py:362
+#: views.py:368
 #, python-format
 msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s"
-msgstr ""
+msgstr "لم يتم تحديد دلالة على الوثيقة &quot;%(document)s&quot; كـ &quot;%(tag)s"
 
-#: views.py:371
+#: views.py:377
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
-msgstr "الكلمة الاستدلالية \"%(tag)s\" أزيلت بنجاح من الوثيقة \"%(document)s\"."
+msgstr "الدلالات \"%(tag)s\" أزيلت بنجاح من الوثيقة \"%(document)s\"."
 
 #: wizard_steps.py:15
 msgid "Select tags"
-msgstr ""
+msgstr "تحديد الدلالات"
 
 #: workflow_actions.py:20
 msgid "Tags to attach to the document"
-msgstr ""
+msgstr "دلالات سيتم ارفاقها مع الوثيقة"
 
 #: workflow_actions.py:25
 msgid "Attach tag"
-msgstr ""
+msgstr "الدلالة المرفقة"
 
 #: workflow_actions.py:63
 msgid "Tags to remove from the document"
-msgstr ""
+msgstr "سيتم الغاء الدلالات عن الوثيقة"

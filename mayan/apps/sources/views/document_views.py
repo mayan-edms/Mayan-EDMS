@@ -129,7 +129,7 @@ class UploadBaseView(MultiFormView):
                 ]
         elif isinstance(self.source, SaneScanner):
             subtemplates_list.append({
-                'name': 'sources/upload_multiform_subtemplate.html',
+                'name': 'appearance/generic_multiform_subtemplate.html',
                 'context': {
                     'forms': context['forms'],
                     'is_multipart': True,
@@ -139,7 +139,7 @@ class UploadBaseView(MultiFormView):
             })
         else:
             subtemplates_list.append({
-                'name': 'sources/upload_multiform_subtemplate.html',
+                'name': 'appearance/generic_multiform_subtemplate.html',
                 'context': {
                     'forms': context['forms'],
                     'is_multipart': True,

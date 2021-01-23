@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-09-27 06:47+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:52 events.py:5 links.py:18 links.py:24 permissions.py:5 queues.py:6
-#: search.py:6 search.py:10 settings.py:8
+#: search.py:6 search.py:10 settings.py:11
 msgid "OCR"
 msgstr "OCR"
 
@@ -90,7 +90,7 @@ msgstr "OCR'yi kur"
 msgid "OCR documents per type"
 msgstr "Türe göre OCR belgeleri"
 
-#: links.py:61 links.py:67 views.py:214
+#: links.py:61 links.py:67 views.py:217
 msgid "OCR errors"
 msgstr "OCR hataları"
 
@@ -174,13 +174,13 @@ msgstr ""
 msgid "Document version OCR"
 msgstr "Doküman sürümü OCR"
 
-#: settings.py:15
-msgid "Full path to the backend to be used to do OCR."
-msgstr "OCR yapmak için kullanılacak arka uç için tam yol."
-
-#: settings.py:24
+#: settings.py:17
 msgid "Set new document types to perform OCR automatically by default."
 msgstr "Varsayılan olarak otomatik olarak OCR gerçekleştirmek için yeni belge türlerini ayarlayın."
+
+#: settings.py:22
+msgid "Full path to the backend to be used to do OCR."
+msgstr "OCR yapmak için kullanılacak arka uç için tam yol."
 
 #: views.py:35
 msgid "Delete the OCR content of the selected document?"
@@ -213,12 +213,12 @@ msgstr[1] ""
 msgid "Submit all documents of a type for OCR"
 msgstr "OCR için bir türdeki tüm belgeleri gönderin"
 
-#: views.py:168
+#: views.py:171
 #, python-format
 msgid "%(count)d documents added to the OCR queue."
 msgstr ""
 
-#: views.py:203
+#: views.py:206
 #, python-format
 msgid "Edit OCR settings for document type: %s."
 msgstr ""

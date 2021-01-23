@@ -16,7 +16,7 @@ from mayan.apps.converter.transformations import (
 )
 from mayan.apps.lock_manager.backends.base import LockingBackend
 
-from ..managers import DocumentFilePageManager
+from ..managers import DocumentFilePageManager, ValidDocumentFilePageManager
 from ..settings import (
     setting_display_width, setting_display_height, setting_zoom_max_level,
     setting_zoom_min_level
@@ -50,6 +50,9 @@ class DocumentFilePage(ModelMixinPagedModel, models.Model):
         ordering = ('page_number',)
         verbose_name = _('Document file page')
         verbose_name_plural = _('Document file pages')
+
+    objects = DocumentFilePageManager()
+    valid = ValidDocumentFilePageManager()
 
     def __str__(self):
         return self.get_label()

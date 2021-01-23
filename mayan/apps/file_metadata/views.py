@@ -6,6 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext
 
 from mayan.apps.documents.forms.document_type_forms import DocumentTypeFilteredSelectForm
+from mayan.apps.documents.models.document_models import Document
 from mayan.apps.documents.models.document_file_models import DocumentFile
 from mayan.apps.documents.models.document_type_models import DocumentType
 from mayan.apps.views.generics import (
@@ -24,9 +25,9 @@ from .permissions import (
 
 
 class DocumentFileDriverListView(ExternalObjectMixin, SingleObjectListView):
-    external_object_class = DocumentFile
     external_object_permission = permission_file_metadata_view
     external_object_pk_url_kwarg = 'document_file_id'
+    external_object_queryset = DocumentFile.valid
 
     def get_extra_context(self):
         return {
@@ -62,7 +63,6 @@ class DocumentFileDriverListView(ExternalObjectMixin, SingleObjectListView):
 class DocumentFileDriverEntryFileMetadataListView(
     ExternalObjectMixin, SingleObjectListView
 ):
-    external_object_class = DocumentFileDriverEntry
     external_object_permission = permission_file_metadata_view
     external_object_pk_url_kwarg = 'document_file_driver_id'
 
@@ -94,14 +94,20 @@ class DocumentFileDriverEntryFileMetadataListView(
             },
         }
 
+    def get_external_object_queryset(self):
+        document_file_queryset = DocumentFile.valid.all()
+        return DocumentFileDriverEntry.objects.filter(
+            document_file_id__in=document_file_queryset.values('pk')
+        )
+
     def get_source_queryset(self):
         return self.external_object.entries.all()
 
 
 class DocumentFileSubmitView(MultipleObjectConfirmActionView):
-    model = DocumentFile
     object_permission = permission_file_metadata_submit
     pk_url_kwarg = 'document_file_id'
+    source_queryset = DocumentFile.valid
     success_message_singular = '%(count)d document file submitted to the file metadata queue.'
     success_message_plural = '%(count)d documents files submitted to the file metadata queue.'
 
@@ -161,9 +167,11 @@ class DocumentTypeSubmitView(FormView):
         }
 
     def form_valid(self, form):
+        document_queryset = Document.valid.all()
+
         count = 0
         for document_type in form.cleaned_data['document_type']:
-            for document in document_type.documents.all():
+            for document in document_type.documents.filter(pk__in=document_queryset.values('pk')):
                 document.submit_for_file_metadata_processing()
                 count += 1
 

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-09-27 06:47+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (http://www.transifex.com/rosarior/mayan-edms/language/bs/)\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: apps.py:52 events.py:5 links.py:18 links.py:24 permissions.py:5 queues.py:6
-#: search.py:6 search.py:10 settings.py:8
+#: search.py:6 search.py:10 settings.py:11
 msgid "OCR"
 msgstr "OCR"
 
@@ -90,7 +90,7 @@ msgstr "Setup OCR"
 msgid "OCR documents per type"
 msgstr "OCR dokumenti po tipu"
 
-#: links.py:61 links.py:67 views.py:214
+#: links.py:61 links.py:67 views.py:217
 msgid "OCR errors"
 msgstr "OCR greške"
 
@@ -174,13 +174,13 @@ msgstr ""
 msgid "Document version OCR"
 msgstr "Verzija dokumenta OCR"
 
-#: settings.py:15
-msgid "Full path to the backend to be used to do OCR."
-msgstr "Puni put do baze koja se koristi za izvršenje OCR-a."
-
-#: settings.py:24
+#: settings.py:17
 msgid "Set new document types to perform OCR automatically by default."
 msgstr "Podesite nove tipove dokumenata koji automatski podrazumevaju OCR."
+
+#: settings.py:22
+msgid "Full path to the backend to be used to do OCR."
+msgstr "Puni put do baze koja se koristi za izvršenje OCR-a."
 
 #: views.py:35
 msgid "Delete the OCR content of the selected document?"
@@ -215,12 +215,12 @@ msgstr[2] "Pošaljite odabrane dokumente u redosled OCR-a?"
 msgid "Submit all documents of a type for OCR"
 msgstr "Pošaljite sve dokumente vrste za OCR"
 
-#: views.py:168
+#: views.py:171
 #, python-format
 msgid "%(count)d documents added to the OCR queue."
 msgstr ""
 
-#: views.py:203
+#: views.py:206
 #, python-format
 msgid "Edit OCR settings for document type: %s."
 msgstr ""

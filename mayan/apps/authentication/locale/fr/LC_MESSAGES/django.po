@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-07-08 02:11+0000\n"
 "Last-Translator: Guillaume Trottier <gui.trottier@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:25 events.py:6 permissions.py:6 settings.py:7
+#: apps.py:25 events.py:6 permissions.py:6 settings.py:10
 msgid "Authentication"
 msgstr "Identification"
 
@@ -74,19 +74,19 @@ msgstr "Permanent"
 msgid "If selected, disables ending impersonation."
 msgstr "Cette option désactive la fin de l'emprunt d'identité."
 
-#: links.py:22
+#: links.py:25
 msgid "Logout"
 msgstr "Déconnexion"
 
-#: links.py:27
+#: links.py:30
 msgid "Change password"
 msgstr "Modifier le mot de passe"
 
-#: links.py:32 views.py:68
+#: links.py:35 views.py:68
 msgid "Impersonate user"
 msgstr "Prendre temporairement l'identité de l'utilisateur"
 
-#: links.py:37 links.py:44
+#: links.py:40 links.py:47
 msgid "Set password"
 msgstr " Définir le mot de passe"
 
@@ -94,19 +94,19 @@ msgstr " Définir le mot de passe"
 msgid "Impersonate users"
 msgstr "Prendre temporairement l'identité des utilisateurs."
 
-#: settings.py:11
+#: settings.py:15
 msgid ""
 "Controls the mechanism used to authenticated user. Options are: username, "
 "email"
 msgstr "Contrôle le mécanisme utilisé pour identifier l'utilisateur. Les options sont : nom d'utilisateur, courriel"
 
-#: settings.py:18
+#: settings.py:22
 msgid ""
 "Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
 " in. Value is time in seconds."
 msgstr "Le temps maximum pendant lequel un utilisateur restera connecté lorsqu'il a coché la case à cocher \"Se souvenir de moi\". La valeur est le temps en secondes."
 
-#: settings.py:25
+#: settings.py:29
 msgid ""
 "Remove the \"Forgot your password?\" link on the login form used to trigger "
 "the password reset."

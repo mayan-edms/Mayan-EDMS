@@ -52,8 +52,20 @@ class EventsViewTestCase(
 
 
 class NotificationViewTestCase(
-    NotificationTestMixin, NotificationViewTestMixin, GenericViewTestCase
+    EventTypeTestMixin, NotificationTestMixin, NotificationViewTestMixin,
+    GenericDocumentViewTestCase
 ):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_event_type()
+        self._create_test_user()
+
+        self.test_event_type.commit(
+            actor=self.test_user, action_object=self.test_document_type
+        )
+
     def test_notification_list_view(self):
         response = self._request_test_notification_list_view()
         self.assertEqual(response.status_code, 200)

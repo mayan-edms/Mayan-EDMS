@@ -1,3 +1,5 @@
+from django.db.models import Q
+
 from ..models import Comment
 
 from .literals import TEST_COMMENT_TEXT, TEST_COMMENT_TEXT_EDITED
@@ -15,9 +17,12 @@ class CommentAPIViewTestMixin:
             }
         )
 
-        self.test_document_comment = Comment.objects.exclude(
-            pk__in=pk_list
-        ).first()
+        try:
+            self.test_document_comment = Comment.objects.get(
+                ~Q(pk__in=pk_list)
+            )
+        except Comment.DoesNotExist:
+            self.test_document_comment = None
 
         return response
 
@@ -71,6 +76,13 @@ class DocumentCommentViewTestMixin:
     def _request_test_comment_delete_view(self):
         return self.post(
             viewname='comments:comment_delete', kwargs={
+                'comment_id': self.test_document_comment.pk
+            },
+        )
+
+    def _request_test_comment_detail_view(self):
+        return self.get(
+            viewname='comments:comment_details', kwargs={
                 'comment_id': self.test_document_comment.pk
             },
         )

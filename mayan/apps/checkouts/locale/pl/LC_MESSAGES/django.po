@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-05-13 14:21+0000\n"
 "Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "Checkouts"
 msgstr "Blokady"
 
-#: dashboard_widgets.py:14 views.py:181
+#: dashboard_widgets.py:14 views.py:182
 msgid "Checked out documents"
 msgstr "Zablokowane dokumenty"
 
@@ -222,13 +222,13 @@ msgstr "Zablokuj dokument: %s"
 msgid "Check out details for document: %s"
 msgstr "Szczegóły blokady dokumentu: %s"
 
-#: views.py:177
+#: views.py:178
 msgid ""
 "Checking out a document, blocks certain operations for a predetermined "
 "amount of time."
 msgstr "Zablokowanie dokumentu powoduje blokadę pewnych operacji na określony czas."
 
-#: views.py:180
+#: views.py:181
 msgid "No documents have been checked out"
 msgstr "Żadne dokumenty nie zostały zablokowane"
 

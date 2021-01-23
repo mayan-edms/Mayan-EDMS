@@ -1,0 +1,293 @@
+Version 3.5.4
+=============
+
+Released: December 14, 2020
+
+Changes
+-------
+
+
+Docker
+^^^^^^
+
+Added the ``libarchive-zip-perl`` to the Docker image to allow EXIFTOOL to
+retrieve Zip file metadata.
+
+Updated the Docker image's Debian version from version 10.5 to 10.7.
+
+
+Documents
+^^^^^^^^^
+
+Documents stubs without a label will now display their ID as the label.
+This allows documents without versions to be accessible via the user
+interface.
+
+The ``misc_models.py`` models module was split into different modules
+with more descriptive names.
+
+There is now stricter filtering and permission checking for duplicated
+documents. Users now need the document view permission for all duplicated
+documents for any of them to show up in the duplicated document list.
+The duplicate count column now performs filtering and will only show the
+count of duplicated documents that the user can access.
+
+The way trashed documents were handled was improved. Trashed documents
+are now filtered from all views that show documents or allow document actions.
+
+
+Events
+^^^^^^
+
+The event list for the user event type subscription list is now sorted by
+namespace label and event type label.
+
+Icons were added to the "mark notification as seen" and "mark all
+notification as seen" links.
+
+
+REST API
+^^^^^^^^
+
+The API end point enumeration API view was improved. It will continue to show
+the same results but does so with a more intuitive internal logic when
+extending.
+
+
+Settings
+^^^^^^^^
+
+Django settings exposed from inside Mayan EDMS now use Django's
+``global_settings`` module instead of the ``settings`` module which is not
+ready at the time the default are computed.
+
+
+Views
+^^^^^
+
+The ``.get_external_object_queryset`` method was improved to ensure that the
+queryset passed to the reusable views is always up to date when the view is
+accessed at runtime.
+
+
+Workflows
+^^^^^^^^^
+
+The workflow instance access requirements was updated to match the intended
+layout and the current REST API layout. In order to view the list of log
+entries and the list of workflow instances of a document, the workflow
+view permission is now required for the document as well as the workflow
+template. This double permission requirement now matches the same design
+as the metadata and tags apps.
+
+The necessary API endpoints to expose the workflow transition fields model
+were added.
+
+
+Other
+^^^^^
+
+All static values from ``settings.py`` modules were moved to the literals
+modules with descriptive variable names.
+
+The events test mixins was updated to allow returning either, one, many or
+all events during a test.
+
+Test that do not rely on document content were updated to use document
+stubs instead. This results in a test suit speed up of 20% and overall lower
+memory usage.
+
+Switched the base image of the GitLab CI file from Ubuntu 19.10 to
+Debian 10.7. The same base image as the Docker image.
+
+Removals
+--------
+
+- None
+
+
+Upgrading process
+-----------------
+
+
+Upgrading from Mayan EDMS 3.2.x or earlier
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. Stop supervisord::
+
+    sudo systemctl stop supervisor
+
+#. Update the Redis configuration:
+
+   Configure Redis to discard data when it runs out of memory, not save its
+   database, and only keep 2 database:
+
+   .. code-block:: bash
+
+       echo "maxmemory-policy allkeys-lru" | sudo tee -a /etc/redis/redis.conf
+       echo "save \"\"" | sudo tee -a /etc/redis/redis.conf
+       echo "databases 2" | sudo tee -a /etc/redis/redis.conf
+       echo "requirepass |DEFAULT_REDIS_PASSWORD|" | sudo tee -a /etc/redis/redis.conf
+       sudo systemctl restart redis
+
+
+#. Install the Python 3 development OS package:
+
+   .. code-block:: bash
+
+    sudo apt-get install python3-dev
+
+
+#. Update the virtualenv to use Python 3:
+
+   .. code-block:: bash
+
+    sudo -u |DEFAULT_OS_USERNAME| virtualenv --clear /opt/mayan-edms -p /usr/bin/python3
+
+
+#. Create a home directory for the Mayan EDMS system user:
+
+   .. code-block:: bash
+
+    mkdir /home/mayan
+
+
+#. Grant ownership to the Mayan EDMS system user:
+
+   .. code-block:: bash
+
+    chown mayan:mayan /home/mayan
+
+#. Reinstall the Python client for PostgreSQL and Redis:
+
+   .. code-block:: bash
+
+       sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install psycopg2==|PYTHON_PSYCOPG2_VERSION| redis==|PYTHON_REDIS_VERSION|
+
+   .. note::
+
+       Platforms with the ARM CPU might also need additional requirements:
+
+       .. code-block:: bash
+
+           sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install psutil==|PYTHON_PSUTIL_VERSION|
+
+
+#. Reinstall the Python client for RabbitMQ if you are using RabbitMQ as a broker:
+
+   .. code-block:: bash
+
+       sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install amqp==|PYTHON_AMQP_VERSION|
+
+
+Upgrading from Mayan EDMS 3.4.x or 3.3.x
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. Stop supervisord::
+
+    sudo systemctl stop supervisor
+
+#. Upgrade to the latest pip version:
+
+   .. code-block:: bash
+
+       sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install -U pip
+
+
+#. Update the Redis configuration to enable password protection:
+
+   .. code-block:: bash
+
+       echo "requirepass mayanredispassword" | sudo tee -a /etc/redis/redis.conf
+       sudo systemctl restart redis
+
+
+#. Remove deprecated requirements:
+
+   .. code-block:: bash
+
+    sudo -u |DEFAULT_OS_USERNAME| curl |SOURCE_CODE_REPOSITORY|raw/master/removals.txt -o /tmp/removals.txt \
+    && sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| uninstall -y -r /tmp/removals.txt
+
+
+#. Update the Mayan EDMS Python package:
+
+   .. code-block:: bash
+
+    sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install mayan-edms==3.5.4
+
+   the requirements will also be updated automatically.
+
+
+#. Make a backup of your supervisord file:
+
+   .. code-block:: bash
+
+       sudo cp |MAYAN_SUPERVISOR_CONF| |MAYAN_SUPERVISOR_CONF|.bck
+
+
+#. Update the supervisord configuration file. Replace the environment
+   variables values show here with your respective settings. This step will refresh
+   the supervisord configuration file with the new queues and the latest
+   recommended layout:
+
+   .. code-block:: bash
+
+       sudo -u |DEFAULT_OS_USERNAME| MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=|DEFAULT_DATABASE_NAME| \
+       MAYAN_DATABASE_PASSWORD=|DEFAULT_DATABASE_PASSWORD| MAYAN_DATABASE_USER=|DEFAULT_DATABASE_USER| \
+       MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| platformtemplate supervisord | sudo sh -c "cat > |MAYAN_SUPERVISOR_CONF|"
+
+   or:
+
+   .. code-block:: bash
+
+       sudo -u |DEFAULT_OS_USERNAME| MAYAN_DATABASES=\"{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'|DEFAULT_DATABASE_NAME|','PASSWORD':'|DEFAULT_DATABASE_PASSWORD|','USER':'|DEFAULT_DATABASE_USER|','HOST':'127.0.0.1'}}\" \
+       MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| platformtemplate supervisord | sudo sh -c "cat > |MAYAN_SUPERVISOR_CONF|"
+
+
+#. Edit the supervisord configuration file and update any setting specific to your installation:
+
+   .. code-block:: bash
+
+       sudo vi |MAYAN_SUPERVISOR_CONF|
+
+
+#. Migrate existing database schema and static media files with:
+
+   .. code-block:: bash
+
+       sudo -u |DEFAULT_OS_USERNAME| MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=|DEFAULT_DATABASE_NAME| \
+       MAYAN_DATABASE_PASSWORD=|DEFAULT_DATABASE_PASSWORD| MAYAN_DATABASE_USER=|DEFAULT_DATABASE_USER| \
+       MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| performupgrade
+
+   or:
+
+   .. code-block:: bash
+
+       sudo -u |DEFAULT_OS_USERNAME| MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'|DEFAULT_DATABASE_NAME|','PASSWORD':'|DEFAULT_DATABASE_PASSWORD|','USER':'|DEFAULT_DATABASE_USER|','HOST':'127.0.0.1'}}" \
+       MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+      |MAYAN_BIN| performupgrade
+
+
+#. Start supervisord:
+
+   .. code-block:: bash
+
+       sudo systemctl start supervisor
+
+#. Clear the browser cache to avoid loading old web assets.
+
+The upgrade procedure is now complete.
+
+Issues closed
+-------------
+
+- :gitlab-issue:`852` Turn magic number/orphan values into literals
+- :gitlab-issue:`910` Documents in "Bin" still being shown in Workflows
+- :gitlab-issue:`918` Docker Install - EXIFTOOL needs libarchive-zip-perl for ZIP file metadata.
+- :gitlab-issue:`920` If you trash documents, you can still see them in "All documents".
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-10-02 20:09+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-12-09 09:11+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:65 apps.py:180 apps.py:185 events.py:5 links.py:46 permissions.py:5
-#: queues.py:7 settings.py:8
+#: queues.py:7 settings.py:9
 msgid "Metadata"
 msgstr "Метаданни"
 
@@ -238,7 +238,7 @@ msgstr "Метаданни за документа"
 
 #: models.py:218
 msgid "Metadata type is required for this document type."
-msgstr "Тип метаданни са необходими за този тип документ."
+msgstr "Типът метаданни е необходим за този тип документ."
 
 #: models.py:248
 msgid "Metadata type is not valid for this document type."
@@ -302,7 +302,7 @@ msgstr "Добавяне на задължителен тип метаданни
 
 #: search.py:12 search.py:21
 msgid "Metadata value"
-msgstr "Стойност на мета данни"
+msgstr "Стойност на метаданни"
 
 #: serializers.py:52
 msgid "Primary key of the metadata type to be added."
@@ -403,7 +403,7 @@ msgid ""
 "Add metadata types this document's type to be able to add them to individual"
 " documents. Once added to individual document, you can then edit their "
 "values."
-msgstr "Добавете типове метаданни към типът на този документ, за да можете да ги добавите към отделни документи. След като са добавени към отделен документ, можете да редактирате техните стойности."
+msgstr "Добавете типове метаданни към типа на този документ, за да можете да ги добавите към отделни документи. След като са добавени към отделен документ, можете да редактирате техните стойности."
 
 #: views.py:375
 msgid "This document doesn't have any metadata"
@@ -470,7 +470,7 @@ msgid ""
 "or required, for each. Setting a metadata type as required for a document "
 "type will block the upload of documents of that type until a metadata value "
 "is provided."
-msgstr "Типовете метаданни са свойства дефинирани от потребителите, на които могат да бъдат присвоени стойности. Веднъж създадени, те трябва да бъдат свързани с типове документи, като незадължителни или задължителни, за всеки тип. Задаването на тип метаданни към тип документ, ще блокира качването на документи от този тип, докато не бъде предоставена стойност на метаданните."
+msgstr "Типовете метаданни са свойства дефинирани от потребителите, на които могат да бъдат присвоени стойности. Веднъж създадени, те трябва да бъдат свързани с типове документи, като незадължителни или задължителни, за всеки тип. Задаването на тип метаданни към тип документ ще блокира качването на документи от този тип докато не бъде предоставена стойност на метаданните."
 
 #: views.py:572
 msgid "There are no metadata types"

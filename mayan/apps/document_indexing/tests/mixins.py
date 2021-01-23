@@ -121,7 +121,7 @@ class IndexTestMixin:
             },
         ]
 
-    def _create_test_index(self, extra_data=None, rebuild=False):
+    def _create_test_index(self, extra_data=None):
         data = self._test_indexes_data[len(self.test_indexes)]
 
         if extra_data:
@@ -136,15 +136,12 @@ class IndexTestMixin:
         if hasattr(self, 'test_document_type'):
             self.test_index.document_types.add(self.test_document_type)
 
-        # Rebuild indexes
-        if rebuild:
-            Index.objects.rebuild()
+    def _create_test_index_template_node(self, expression=None, rebuild=False):
+        expression = expression or TEST_INDEX_TEMPLATE_DOCUMENT_LABEL_EXPRESSION
 
-    def _create_test_index_template_node(self, rebuild=False):
         self.test_index_template_node = self.test_index.node_templates.create(
             parent=self.test_index.template_root,
-            expression=TEST_INDEX_TEMPLATE_DOCUMENT_LABEL_EXPRESSION,
-            link_documents=True
+            expression=expression, link_documents=True
         )
 
         if rebuild:

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-05-13 14:17+0000\n"
 "Last-Translator: Tomasz Szymanowicz <alakdae@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Language: pl\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: apps.py:25 events.py:6 permissions.py:6 settings.py:7
+#: apps.py:25 events.py:6 permissions.py:6 settings.py:10
 msgid "Authentication"
 msgstr "Uwierzytelnianie"
 
@@ -73,19 +73,19 @@ msgstr "Stały"
 msgid "If selected, disables ending impersonation."
 msgstr "Jeśli ta opcja jest wybrana, wyłącza zakończenie podszywania."
 
-#: links.py:22
+#: links.py:25
 msgid "Logout"
 msgstr "Wyloguj"
 
-#: links.py:27
+#: links.py:30
 msgid "Change password"
 msgstr "Zmień hasło"
 
-#: links.py:32 views.py:68
+#: links.py:35 views.py:68
 msgid "Impersonate user"
 msgstr "Podszyj się pod użytkownika"
 
-#: links.py:37 links.py:44
+#: links.py:40 links.py:47
 msgid "Set password"
 msgstr "Ustaw hasło"
 
@@ -93,19 +93,19 @@ msgstr "Ustaw hasło"
 msgid "Impersonate users"
 msgstr "Podszywaj się pod użytkowników"
 
-#: settings.py:11
+#: settings.py:15
 msgid ""
 "Controls the mechanism used to authenticated user. Options are: username, "
 "email"
 msgstr "Kontroluje mechanizm uwierzytelniania użytkownika. Opcje: nazwa użytkownika, email"
 
-#: settings.py:18
+#: settings.py:22
 msgid ""
 "Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
 " in. Value is time in seconds."
 msgstr "Maksymalny czas jaki może minąć aby użytkownik zaznaczył pole \"Zapamiętaj mnie\". Wartość podawana w sekundach."
 
-#: settings.py:25
+#: settings.py:29
 msgid ""
 "Remove the \"Forgot your password?\" link on the login form used to trigger "
 "the password reset."

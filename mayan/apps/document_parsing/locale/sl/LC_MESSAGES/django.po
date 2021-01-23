@@ -5,14 +5,15 @@
 # 
 # Translators:
 # Roberto Rosario, 2020
+# Jože Detečnik <joze.detecnik@3tav.si>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
-"Last-Translator: Roberto Rosario, 2020\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2020\n"
 "Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,13 +21,13 @@ msgstr ""
 "Language: sl\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
-#: apps.py:53 events.py:6 permissions.py:6 settings.py:7
+#: apps.py:53 events.py:6 permissions.py:6 settings.py:10
 msgid "Document parsing"
-msgstr ""
+msgstr "Razčlenjevanje dokumentov"
 
 #: apps.py:105
 msgid "A generator returning the document's pages parsed content."
-msgstr ""
+msgstr "Generator, ki vrne razčlenjeno vsebino strani dokumenta."
 
 #: apps.py:106 links.py:19 links.py:36 models.py:24 search.py:6 search.py:10
 msgid "Content"
@@ -34,29 +35,31 @@ msgstr "Vsebina"
 
 #: apps.py:134 models.py:74
 msgid "Result"
-msgstr ""
+msgstr "Rezultat"
 
 #: dependencies.py:9
 msgid ""
 "Utility from the poppler-utils package used to text content from PDF files."
 msgstr ""
+"Pripomoček iz paketa poppler-utils, ki se uporablja za besedilno vsebino iz "
+"datotek PDF."
 
 #: events.py:10
 msgid "Document parsed content deleted"
-msgstr ""
+msgstr "Vsebina razčlenjena v dokumentu je izbrisana"
 
 #: events.py:14
 msgid "Document version submitted for parsing"
-msgstr ""
+msgstr "Različica dokumenta oddana v razčlenitev"
 
 #: events.py:17
 msgid "Document version parsing finished"
-msgstr ""
+msgstr "Razčlenjevanje različice dokumenta je končano"
 
 #: forms.py:37
 #, python-format
 msgid "Page %(page_number)d"
-msgstr ""
+msgstr "Stran %(page_number)d"
 
 #: forms.py:45 forms.py:57
 msgid "Contents"
@@ -64,43 +67,44 @@ msgstr "Vsebina"
 
 #: links.py:25 links.py:30
 msgid "Delete parsed content"
-msgstr ""
+msgstr "Izbrišite razčlenjeno vsebino"
 
-#: links.py:42 links.py:80 views.py:228
+#: links.py:42 links.py:80 views.py:233
 msgid "Parsing errors"
-msgstr ""
+msgstr "Napake pri razčlenjevanju"
 
 #: links.py:48
 msgid "Download content"
-msgstr ""
+msgstr "Prenesite vsebino"
 
 #: links.py:53 links.py:60
 msgid "Submit for parsing"
-msgstr ""
+msgstr "Predložite v razčlenitev"
 
 #: links.py:66
 msgid "Setup parsing"
-msgstr ""
+msgstr "Nastavitev razčlenjevanja"
 
 #: links.py:75
 msgid "Parse documents per type"
-msgstr ""
+msgstr "Razčleni dokumente po vrstah"
 
 #: models.py:18
 msgid "Document page"
-msgstr ""
+msgstr "Stran dokumenta"
 
 #: models.py:22
 msgid "The actual text content as extracted by the document parsing backend."
 msgstr ""
+"Dejanska vsebina besedila, kot jo izvleče zaledje razčlenjevanja dokumentov."
 
 #: models.py:30
 msgid "Document page content"
-msgstr ""
+msgstr "Vsebina strani dokumenta"
 
 #: models.py:31
 msgid "Document pages contents"
-msgstr ""
+msgstr "Vsebina strani dokumenta"
 
 #: models.py:43
 msgid "Document type"
@@ -109,128 +113,133 @@ msgstr "Tip dokumenta"
 #: models.py:47
 msgid "Automatically queue newly created documents for parsing."
 msgstr ""
+"Na novo ustvarjene dokumente samodejno postavi v vrsto za razčlenjevanje."
 
 #: models.py:58
 msgid "Document type settings"
-msgstr ""
+msgstr "Nastavitve vrste dokumenta"
 
 #: models.py:59
 msgid "Document types settings"
-msgstr ""
+msgstr "Nastavitve vrst dokumentov"
 
 #: models.py:69
 msgid "Document version"
-msgstr ""
+msgstr "Različica dokumenta"
 
 #: models.py:72
 msgid "Date time submitted"
-msgstr ""
+msgstr "Datum oddaje"
 
 #: models.py:78
 msgid "Document version parse error"
-msgstr ""
+msgstr "Napaka pri razčlenjevanju različice dokumenta"
 
 #: models.py:79
 msgid "Document version parse errors"
-msgstr ""
+msgstr "Napake pri razčlenjevanju različice dokumenta"
 
 #: parsers.py:90
 #, python-format
 msgid "Exception parsing page; %s"
-msgstr ""
+msgstr "Stran za razčlenitev izjem; %s"
 
 #: parsers.py:116
 #, python-format
 msgid "Cannot find pdftotext executable at: %s"
-msgstr ""
+msgstr "Ne morem najti izvršljive datoteke pdftotext na: %s"
 
 #: permissions.py:10
 msgid "View the content of a document"
-msgstr ""
+msgstr "Oglejte si vsebino dokumenta"
 
 #: permissions.py:13
 msgid "Change document type parsing settings"
-msgstr ""
+msgstr "Spremenite nastavitve razčlenitve vrste dokumenta"
 
 #: permissions.py:17
 msgid "Parse the content of a document"
-msgstr ""
+msgstr "Razčlenite vsebino dokumenta"
 
 #: queues.py:6
 msgid "Parsing"
-msgstr ""
+msgstr "Razčlenitev"
 
 #: queues.py:9
 msgid "Document version parsing"
-msgstr ""
+msgstr "Razčlenjevanje različice dokumenta"
 
-#: settings.py:12
+#: settings.py:15
 msgid "Set new document types to perform parsing automatically by default."
 msgstr ""
+"Nastavite nove vrste dokumentov, da privzeto samodejno izvedejo "
+"razčlenjevanje."
 
-#: settings.py:19
+#: settings.py:21
 msgid ""
 "File path to poppler's pdftotext program used to extract text from PDF "
 "files."
 msgstr ""
+"Pot do datoteke popplerjevega programa pdftotext, ki se uporablja za "
+"pridobivanje besedila iz datotek PDF."
 
 #: views.py:35
 msgid "Delete the parsed content of the selected document?"
 msgid_plural "Delete the parsed content of the selected documents?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Ali želite izbrisati razčlenjeno vsebino izbranega dokumenta?"
+msgstr[1] "Ali želite izbrisati razčlenjeno vsebino izbranih dokumentov?"
+msgstr[2] "Ali želite izbrisati razčlenjeno vsebino izbranih dokumentov?"
+msgstr[3] "Ali želite izbrisati razčlenjeno vsebino izbranih dokumentov?"
 
 #: views.py:70
 #, python-format
 msgid "Content for document: %s"
-msgstr ""
+msgstr "Vsebina dokumenta: %s"
 
-#: views.py:105
+#: views.py:104
 #, python-format
 msgid "Content for document page: %s"
-msgstr ""
+msgstr "Vsebina strani dokumenta: %s"
 
-#: views.py:121
+#: views.py:126
 #, python-format
 msgid "Parsing errors for document: %s"
-msgstr ""
+msgstr "Napake pri razčlenjevanju dokumenta: %s"
 
-#: views.py:134
+#: views.py:139
 #, python-format
 msgid "%(count)d document added to the parsing queue"
-msgstr ""
+msgstr "%(count)d dokument je dodan v čakalno vrsto za razčlenjevanje"
 
-#: views.py:137
+#: views.py:142
 #, python-format
 msgid "%(count)d documents added to the parsing queue"
-msgstr ""
+msgstr "%(count)d dokumenti, dodani v čakalno vrsto za razčlenjevanje"
 
-#: views.py:145
+#: views.py:150
 #, python-format
 msgid "Submit %(count)d document to the parsing queue?"
 msgid_plural "Submit %(count)d documents to the parsing queue?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Predložiti dokument %(count)d v čakalno vrsto za razčlenjevanje?"
+msgstr[1] "Predložiti dokumente %(count)d v čakalno vrsto za razčlenjevanje?"
+msgstr[2] "Predložiti dokumente %(count)d v čakalno vrsto za razčlenjevanje?"
+msgstr[3] "Predložiti dokumente %(count)d v čakalno vrsto za razčlenjevanje?"
 
-#: views.py:158
+#: views.py:163
 #, python-format
 msgid "Submit document \"%s\" to the parsing queue"
-msgstr ""
+msgstr "Predložite dokument &quot;%s&quot; v čakalno vrsto za razčlenjevanje"
 
-#: views.py:185
+#: views.py:190
 #, python-format
 msgid "Edit parsing settings for document type: %s."
-msgstr ""
+msgstr "Uredite nastavitve razčlenjevanja za vrsto dokumenta: %s."
 
-#: views.py:195
+#: views.py:200
 msgid "Submit all documents of a type for parsing"
-msgstr ""
+msgstr "Predložite vse dokumente neke vrste za razčlenitev"
 
-#: views.py:216
+#: views.py:221
 #, python-format
 msgid "%(count)d documents added to the parsing queue."
-msgstr ""
+msgstr "%(count)d dokumenti, dodani v čakalno vrsto za razčlenjevanje."

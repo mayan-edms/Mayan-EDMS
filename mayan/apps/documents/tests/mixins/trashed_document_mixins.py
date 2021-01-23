@@ -21,13 +21,11 @@ class TrashedDocumentAPIViewTestMixin:
         )
 
     def _request_test_trashed_document_image_api_view(self):
-        version_active = self.test_document.version_active
-
         return self.get(
             viewname='rest_api:documentversionpage-image', kwargs={
                 'document_id': self.test_document.pk,
-                'document_version_id': version_active.pk,
-                'document_version_page_id': version_active.pages.first().pk
+                'document_version_id': self.test_document_version.pk,
+                'document_version_page_id': self.test_document_version_page.pk
             }
         )
 

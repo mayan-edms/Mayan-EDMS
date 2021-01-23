@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-09-27 06:46+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-11-11 19:33+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -80,7 +80,7 @@ msgid "Email link"
 msgstr "Enviar enlace"
 
 #: links.py:35
-msgid "Create mailing profile "
+msgid "Create mailing profile"
 msgstr "Crear perfil de correo"
 
 #: links.py:41
@@ -286,19 +286,19 @@ msgstr "Utilizar un perfil de correo"
 msgid "Send document"
 msgstr "Enviar documento"
 
-#: settings.py:14
+#: settings.py:15
 msgid "Template for the document email form subject line."
 msgstr "Plantilla para la línea de sujeto del correo electrónico de envio de documento."
 
-#: settings.py:19
+#: settings.py:21
 msgid "Template for the document email form body text. Can include HTML."
 msgstr "Plantilla para el texto del cuerpo del correo electrónico con documento anejado. Puede incluir HTML."
 
-#: settings.py:24
+#: settings.py:27
 msgid "Template for the document link email form subject line."
 msgstr "Plantilla para la línea de asunto del correo electrónico para envío de enlace del documento."
 
-#: settings.py:29
+#: settings.py:33
 msgid "Template for the document link email form body text. Can include HTML."
 msgstr "Plantilla para el texto del cuerpo del correo electrónico del enlace del documento. Puede incluir HTML."
 

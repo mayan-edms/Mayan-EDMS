@@ -27,6 +27,7 @@ from ..events import (
     event_document_version_page_created, event_document_version_page_deleted,
     event_document_version_page_edited
 )
+from ..managers import ValidDocumentVersionPageManager
 from ..settings import (
     setting_display_width, setting_display_height, setting_zoom_max_level,
     setting_zoom_min_level
@@ -70,6 +71,9 @@ class DocumentVersionPage(
         unique_together = ('document_version', 'page_number')
         verbose_name = _('Document version page')
         verbose_name_plural = _('Document version pages')
+
+    objects = models.Manager()
+    valid = ValidDocumentVersionPageManager()
 
     def __str__(self):
         return self.get_label()

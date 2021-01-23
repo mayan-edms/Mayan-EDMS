@@ -299,8 +299,12 @@ class DocumentMetadataAPIViewTestCase(
     DocumentTestMixin, DocumentMetadataAPIViewTestMixin, MetadataTypeTestMixin,
     BaseAPITestCase
 ):
+
+    auto_upload_test_document = False
+
     def setUp(self):
         super().setUp()
+        self._create_test_document_stub()
         self._create_test_metadata_type()
         self.test_metadata_type.default = TEST_METADATA_TYPE_DEFAULT_VALUE
         self.test_metadata_type.save()
@@ -658,12 +662,3 @@ class DocumentMetadataAPIViewTestCase(
         self.assertEqual(
             self.test_document_metadata.value, TEST_METADATA_TYPE_DEFAULT_VALUE
         )
-
-
-class DocumentStubMetadataAPITestCase(DocumentMetadataAPIViewTestCase):
-    auto_upload_document = False
-
-    def setUp(self):
-        super().setUp()
-        self._create_test_document_stub()
-        self.test_document = self.test_document_stub

@@ -5,14 +5,15 @@
 # 
 # Translators:
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2019
+# Roberto Rosario, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2019-05-17 05:51+0000\n"
-"Last-Translator: Marco Camplese <marco.camplese.mc@gmail.com>, 2019\n"
+"Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,12 +27,12 @@ msgstr "Piattaforma"
 
 #: classes.py:127
 msgid "Template for Supervisord."
-msgstr ""
+msgstr "Modello per Supervisord."
 
 #: classes.py:188
 msgid "Template for Supervisord inside a Docker image."
-msgstr ""
+msgstr "Modello per Supervisord all'interno di un'immagine Docker."
 
 #: classes.py:196
 msgid "Template showing the queues of a worker."
-msgstr ""
+msgstr "Modello che mostra le code di un lavoratore."

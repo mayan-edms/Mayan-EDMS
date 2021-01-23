@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-04-14 08:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
@@ -112,47 +112,47 @@ msgstr "Özel anahtarlar"
 msgid "Public keys"
 msgstr "Genel anahtarlar"
 
-#: literals.py:14 literals.py:22
+#: literals.py:23 literals.py:31
 msgid "Public"
 msgstr "Herkese açık"
 
-#: literals.py:15 literals.py:23
+#: literals.py:24 literals.py:32
 msgid "Secret"
 msgstr "Gizli"
 
-#: literals.py:31 literals.py:36
+#: literals.py:40 literals.py:45
 msgid "RSA"
 msgstr "RSA"
 
-#: literals.py:32
+#: literals.py:41
 msgid "DSA"
 msgstr "DSA"
 
-#: literals.py:37
+#: literals.py:46
 msgid "Elgamal"
 msgstr "Elgamal"
 
-#: literals.py:51
+#: literals.py:62
 msgid "Bad signature."
 msgstr "Kötü imza."
 
-#: literals.py:54
+#: literals.py:65
 msgid "Document not signed or invalid signature."
 msgstr "Belge imzalanmamış veya geçersiz imza."
 
-#: literals.py:57
+#: literals.py:68
 msgid "Signature error."
 msgstr "İmza hatası."
 
-#: literals.py:61
+#: literals.py:72
 msgid "Document is signed but no public key is available for verification."
 msgstr "Belge imzalanmış ancak doğrulama için genel anahtar bulunmamaktadır."
 
-#: literals.py:66
+#: literals.py:77
 msgid "Document is signed, and signature is good."
 msgstr "Belge imzalanmış ve imza iyi."
 
-#: literals.py:69
+#: literals.py:80
 msgid "Document is signed with a valid signature."
 msgstr "Belge geçerli bir imza ile imzalanmıştır."
 
@@ -204,11 +204,11 @@ msgstr "Anahtarları yükle"
 msgid "View keys"
 msgstr "Anahtarları görüntüle"
 
-#: settings.py:7
+#: settings.py:10
 msgid "Signatures"
 msgstr "İmzalar"
 
-#: settings.py:14
+#: settings.py:16
 msgid "Full path to the backend to be used to handle keys and signatures."
 msgstr ""
 

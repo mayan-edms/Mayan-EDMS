@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-10-26 13:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
@@ -19,8 +19,8 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:131 apps.py:378 events.py:5 menus.py:8
-#: models/document_models.py:128 permissions.py:5 queues.py:25 settings.py:18
+#: apps.py:131 apps.py:381 events.py:5 menus.py:8
+#: models/document_models.py:128 permissions.py:5 queues.py:25 settings.py:28
 #: statistics.py:234
 msgid "Documents"
 msgstr "Dokumenty"
@@ -78,25 +78,27 @@ msgstr "Vraťte instanci dokumentu."
 
 #: apps.py:246 links/document_version_links.py:37
 #: links/document_version_page_links.py:96 models/document_models.py:127
-#: models/document_version_models.py:71 models/misc_models.py:32
-#: models/misc_models.py:61 models/misc_models.py:89
+#: models/document_version_models.py:71
+#: models/duplicated_document_models.py:18
+#: models/favorite_document_models.py:26
+#: models/recently_accessed_document_models.py:27
 msgid "Document"
 msgstr "Dokument"
 
-#: apps.py:313 apps.py:344 apps.py:362 apps.py:409
+#: apps.py:314 apps.py:347 apps.py:365 apps.py:412
 msgid "Thumbnail"
 msgstr "Náhled"
 
-#: apps.py:321 apps.py:414 forms/document_forms.py:183
+#: apps.py:322 apps.py:417 forms/document_forms.py:183
 #: links/document_version_page_links.py:135
 msgid "Pages"
 msgstr "Strany"
 
-#: apps.py:330 links/duplicated_document_links.py:12
+#: apps.py:333 links/duplicated_document_links.py:12
 msgid "Duplicates"
 msgstr "Duplikáty"
 
-#: apps.py:366
+#: apps.py:369
 msgid "Type"
 msgstr "Typ"
 
@@ -124,7 +126,7 @@ msgstr "Počet stran"
 msgid "Total documents"
 msgstr "Celkem dokumentů"
 
-#: dashboard_widgets.py:66 views/trashed_document_views.py:143
+#: dashboard_widgets.py:66 views/trashed_document_views.py:144
 msgid "Documents in trash"
 msgstr "Dokumenty v koši"
 
@@ -257,7 +259,7 @@ msgstr "Cesta k souboru v úložišti"
 msgid "Checksum"
 msgstr "Kontrolní součet"
 
-#: forms/document_forms.py:199 literals.py:39
+#: forms/document_forms.py:199 literals.py:67
 msgid "Page range"
 msgstr "Rozsah stran"
 
@@ -268,7 +270,7 @@ msgid ""
 msgstr "Číslo stránky, ze kterého budou klonovány všechny transformace. Stávající transformace budou ztraceny."
 
 #: forms/document_type_forms.py:73 models/document_models.py:64
-#: models/document_type_models.py:73 models/document_type_models.py:188
+#: models/document_type_models.py:73 models/document_type_models.py:190
 msgid "Document type"
 msgstr "Typ dokumentu"
 
@@ -299,15 +301,15 @@ msgstr "Pokročilé stahování"
 msgid "Edit properties"
 msgstr "Upravit vlastnosti"
 
-#: links/document_links.py:51 views/document_views.py:93
+#: links/document_links.py:51 views/document_views.py:94
 msgid "All documents"
 msgstr "Všechny dokumenty"
 
-#: links/document_links.py:55 views/document_views.py:619
+#: links/document_links.py:55 views/document_views.py:620
 msgid "Recently accessed"
 msgstr "Nedávno otevřeno"
 
-#: links/document_links.py:59 views/document_views.py:647
+#: links/document_links.py:59 views/document_views.py:650
 msgid "Recently added"
 msgstr "Nedávno přidané"
 
@@ -348,7 +350,7 @@ msgstr "Editovat"
 msgid "Add quick label to document type"
 msgstr "Přidejte k typu dokumentu rychlou jmenovku"
 
-#: links/document_type_links.py:60 models/document_type_models.py:199
+#: links/document_type_links.py:60 models/document_type_models.py:201
 msgid "Quick labels"
 msgstr "Rychlé jmenovky"
 
@@ -429,8 +431,10 @@ msgstr "Oddálit"
 msgid "Recalculate page count"
 msgstr "Přepočítat počet stran"
 
-#: links/duplicated_document_links.py:16 models/misc_models.py:35
-#: models/misc_models.py:45 views/duplicated_document_views.py:73
+#: links/duplicated_document_links.py:16
+#: models/duplicated_document_models.py:21
+#: models/duplicated_document_models.py:31
+#: views/duplicated_document_views.py:76
 msgid "Duplicated documents"
 msgstr "Duplicitní dokumenty"
 
@@ -438,7 +442,7 @@ msgstr "Duplicitní dokumenty"
 msgid "Duplicated document scan"
 msgstr "Skenování duplicitních dokumentů"
 
-#: links/favorite_links.py:10 views/favorite_document_views.py:35
+#: links/favorite_links.py:10 views/favorite_document_views.py:36
 msgid "Favorites"
 msgstr "Oblíbené"
 
@@ -466,11 +470,11 @@ msgstr "Obnovit"
 msgid "Empty trash"
 msgstr "Prázdný koš"
 
-#: literals.py:10
+#: literals.py:13
 msgid "Default"
 msgstr "Výchozí"
 
-#: literals.py:39
+#: literals.py:67
 msgid "All pages"
 msgstr "Všechny strany"
 
@@ -488,8 +492,9 @@ msgstr "Typ dokumentu."
 msgid "The name of the document."
 msgstr "Název dokumentu."
 
-#: models/document_models.py:68 models/document_page_models.py:272
-#: models/document_type_models.py:31 models/document_type_models.py:191
+#: models/document_models.py:68 models/document_models.py:198
+#: models/document_page_models.py:272 models/document_type_models.py:31
+#: models/document_type_models.py:193
 msgid "Label"
 msgstr "Jmenovky"
 
@@ -507,7 +512,7 @@ msgid ""
 "to the system."
 msgstr "Datum a čas serveru, kdy byl dokument nakonec zpracován a přidán do systému."
 
-#: models/document_models.py:79 models/misc_models.py:38
+#: models/document_models.py:79 models/duplicated_document_models.py:24
 msgid "Added"
 msgstr "Přidáno"
 
@@ -542,12 +547,12 @@ msgstr "Útržek dokumentu je dokument s položkou v databázi, ale není nahrá
 msgid "Is stub?"
 msgstr "Je to útržek?"
 
-#: models/document_models.py:131
+#: models/document_models.py:196
 #, python-format
 msgid "Document stub, id: %d"
 msgstr "Útržek dokumentu, id: %d"
 
-#: models/document_page_models.py:41 models/document_type_models.py:193
+#: models/document_page_models.py:41 models/document_type_models.py:195
 msgid "Enabled"
 msgstr "Povoleno"
 
@@ -618,7 +623,7 @@ msgstr "Argumenty backendu generátoru názvu souboru"
 msgid "Documents types"
 msgstr "Typy dokumentů"
 
-#: models/document_type_models.py:198
+#: models/document_type_models.py:200
 msgid "Quick label"
 msgstr "Rychlé jmenovky"
 
@@ -663,31 +668,32 @@ msgstr "Kódování souboru verze dokumentu. binární 7bitové, binární 8bito
 msgid "Encoding"
 msgstr "Kódování"
 
-#: models/misc_models.py:44
+#: models/duplicated_document_models.py:30
 msgid "Duplicated document"
 msgstr "Duplikovaný dokument"
 
-#: models/misc_models.py:57 models/misc_models.py:85
+#: models/favorite_document_models.py:22
+#: models/recently_accessed_document_models.py:23
 msgid "User"
 msgstr "Uživatel"
 
-#: models/misc_models.py:67
+#: models/favorite_document_models.py:32
 msgid "Favorite document"
 msgstr "Oblíbený dokument"
 
-#: models/misc_models.py:68
+#: models/favorite_document_models.py:33
 msgid "Favorite documents"
 msgstr "Oblíbené dokumenty"
 
-#: models/misc_models.py:92
+#: models/recently_accessed_document_models.py:30
 msgid "Accessed"
 msgstr "Přístupné"
 
-#: models/misc_models.py:99
+#: models/recently_accessed_document_models.py:37
 msgid "Recent document"
 msgstr "Poslední dokument"
 
-#: models/misc_models.py:100
+#: models/recently_accessed_document_models.py:38
 msgid "Recent documents"
 msgstr "Poslední dokumenty"
 
@@ -703,7 +709,7 @@ msgstr "Odstranit dokumenty"
 msgid "Trash documents"
 msgstr "Dokumenty koše"
 
-#: permissions.py:17 views/document_views.py:204
+#: permissions.py:17 views/document_views.py:205
 msgid "Download documents"
 msgstr "Stáhněte si dokumenty"
 
@@ -815,104 +821,104 @@ msgstr "Sken dplicitních dokumentů"
 msgid "Document type label"
 msgstr "Štítek s typem dokumentu"
 
-#: settings.py:26
+#: settings.py:35
 msgid ""
 "The threshold at which the DOCUMENT_CACHE_STORAGE_BACKEND will start "
 "deleting the oldest document image cache files. Specify the size in bytes."
 msgstr "Prahová hodnota, při které DOCUMENT_CACHE_STORAGE_BACKEND začne mazat nejstarší soubory mezipaměti obrázků dokumentu. Zadejte velikost v bajtech."
 
-#: settings.py:34
+#: settings.py:43
 msgid ""
 "Path to the Storage subclass to use when storing the cached document image "
 "files."
 msgstr "Cesta k podtřídě Úložiště, která se použije při ukládání obrazových souborů dokumentů v mezipaměti."
 
-#: settings.py:42
+#: settings.py:50
 msgid "Arguments to pass to the DOCUMENT_CACHE_STORAGE_BACKEND."
 msgstr "Argumenty k předání do DOCUMENT_CACHE_STORAGE_BACKEND."
 
-#: settings.py:54
+#: settings.py:64
 msgid "Maximum number of favorite documents to remember per user."
 msgstr "Maximální počet oblíbených dokumentů, na uživatele"
 
-#: settings.py:60
+#: settings.py:69
 msgid ""
 "Detect the orientation of each of the document's pages and create a "
 "corresponding rotation transformation to display it rightside up. This is an"
 " experimental feature and it is disabled by default."
 msgstr "Zjistěte orientaci každé ze stránek dokumentu a vytvořte odpovídající rotační transformaci, aby se zobrazila napravo. Toto je experimentální funkce a ve výchozím nastavení je deaktivována."
 
-#: settings.py:69
+#: settings.py:78
 msgid ""
 "Size of blocks to use when calculating the document file's checksum. A value"
 " of 0 disables the block calculation and the entire file will be loaded into"
 " memory."
 msgstr "Velikost bloků, které se mají použít při výpočtu kontrolního součtu souboru dokumentu. Hodnota 0 zakáže výpočet bloku a celý soubor bude načten do paměti."
 
-#: settings.py:76
+#: settings.py:85
 msgid "Default documents language (in ISO639-3 format)."
 msgstr "Výchozí jazyk dokumentů (ve formátu ISO639-3)."
 
-#: settings.py:80
+#: settings.py:89
 msgid "List of supported document languages. In ISO639-3 format."
 msgstr "Seznam podporovaných jazyků dokumentů. Ve formátu ISO639-3."
 
-#: settings.py:85
+#: settings.py:94
 msgid ""
 "Time in seconds that the browser should cache the supplied document images. "
 "The default of 31559626 seconds corresponde to 1 year."
 msgstr "Čas v sekundách, který má prohlížeč ukládat do mezipaměti dodané obrázky dokumentů. Výchozí hodnota 31559626 sekund odpovídá 1 roku."
 
-#: settings.py:104
+#: settings.py:117
 msgid ""
 "Maximum number of recently accessed (created, edited, viewed) documents to "
 "remember per user."
 msgstr "Maximální počet nedávno zpřístupněných (vytvořených, upravených, zobrazených) dokumentů, na uživatele."
 
-#: settings.py:111
+#: settings.py:124
 msgid "Maximum number of recently created documents to show."
 msgstr "Maximální počet nedávno vytvořených dokumentů k zobrazení."
 
-#: settings.py:117
+#: settings.py:130
 msgid "Amount in degrees to rotate a document page per user interaction."
 msgstr "Částka ve stupních pro otočení stránky dokumentu na interakci uživatele."
 
-#: settings.py:123
+#: settings.py:136
 msgid "Path to the Storage subclass to use when storing document files."
 msgstr "Cesta k podtřídě Úložiště, která se použije při ukládání souborů dokumentů."
 
-#: settings.py:130
+#: settings.py:143
 msgid "Arguments to pass to the DOCUMENT_STORAGE_BACKEND."
 msgstr "Argumenty k předání do DOCUMENT_STORAGE_BACKEND."
 
-#: settings.py:136
+#: settings.py:149
 msgid ""
 "Time after which a document stub will be considered invalid and deleted."
 msgstr "Čas, po kterém bude útržek dokumentu považován za neplatný a odstraněný."
 
-#: settings.py:144
+#: settings.py:157
 msgid ""
 "Amount of time in seconds, a failed document page image task will wait "
 "before retrying."
 msgstr "Doba v sekundách, po kterou neúspěšná úloha tvorby obrázku strany počká, neč akci zopakuje."
 
-#: settings.py:150
+#: settings.py:164
 msgid "Height in pixels of the document thumbnail image."
 msgstr "Výška obrázku v náhledech obrázku v pixelech."
 
-#: settings.py:167
+#: settings.py:183
 msgid ""
 "Maximum amount in percent (%) to allow user to zoom in a document page "
 "interactively."
 msgstr "Maximální částka v procentech (%), která uživateli umožňuje interaktivně přibližovat stránku dokumentu."
 
-#: settings.py:174
+#: settings.py:190
 msgid ""
 "Minimum amount in percent (%) to allow user to zoom out a document page "
 "interactively."
 msgstr "Minimální částka v procentech (%) umožňující uživateli interaktivně oddálit stránku dokumentu."
 
-#: settings.py:181
+#: settings.py:197
 msgid "Amount in percent zoom in or out a document page per user interaction."
 msgstr "Částka v procentech přiblížení nebo oddálení stránky dokumentu na interakci uživatele."
 
@@ -1033,7 +1039,7 @@ msgstr "Obrázek dokumentu"
 msgid "Unknown language \"%s\""
 msgstr "Neznámý jazyk &quot;%s&quot;"
 
-#: views/document_page_views.py:56
+#: views/document_page_views.py:57
 msgid ""
 "This could mean that the document is of a format that is not supported, that"
 " it is corrupted or that the upload process was interrupted. Use the "
@@ -1041,29 +1047,29 @@ msgid ""
 "again."
 msgstr "To by mohlo znamenat, že dokument je ve formátu, který není podporován, že je poškozen, nebo že byl proces nahrávání přerušen. Pokuste se znovu zjistit počet stránek pomocí akce přepočítání stránky dokumentu."
 
-#: views/document_page_views.py:61
+#: views/document_page_views.py:62
 msgid "No document pages available"
 msgstr "Nejsou k dispozici žádné stránky dokumentu"
 
-#: views/document_page_views.py:63
+#: views/document_page_views.py:64
 #, python-format
 msgid "Pages for document: %s"
 msgstr "Strany pro dokument: %s"
 
-#: views/document_page_views.py:133
+#: views/document_page_views.py:134
 msgid "There are no more pages in this document"
 msgstr "V tomto dokumentu nejsou žádné další stránky"
 
-#: views/document_page_views.py:149
+#: views/document_page_views.py:150
 msgid "You are already at the first page of this document"
 msgstr "Jste již na první straně tohoto dokumentu"
 
-#: views/document_page_views.py:169
+#: views/document_page_views.py:170
 #, python-format
 msgid "Image of: %s"
 msgstr "Obrázek: %s"
 
-#: views/document_page_views.py:266
+#: views/document_page_views.py:268
 msgid "Disable the selected document page?"
 msgid_plural "Disable the selected document pages?"
 msgstr[0] "Zakázat vybranou stránku dokumentu?"
@@ -1071,7 +1077,7 @@ msgstr[1] "Zakázat vybrané stránky dokumentu?"
 msgstr[2] "Zakázat vybrané stránky dokumentu?"
 msgstr[3] "Zakázat vybrané stránky dokumentu?"
 
-#: views/document_page_views.py:296
+#: views/document_page_views.py:295
 msgid "Enable the selected document page?"
 msgid_plural "Enable the selected document pages?"
 msgstr[0] "Povolit vybranou stránku dokumentu?"
@@ -1152,68 +1158,68 @@ msgstr "Rychlé jmenovky pro typ dokumentu: %s"
 msgid "Filename generation setup for document type: %s"
 msgstr "Nastavení generování názvu souboru pro typ dokumentu: %s"
 
-#: views/document_version_views.py:43
+#: views/document_version_views.py:44
 msgid "Download document version"
 msgstr "Stáhněte si verzi dokumentu"
 
-#: views/document_version_views.py:81
+#: views/document_version_views.py:82
 #, python-format
 msgid "Versions of document: %s"
 msgstr "Verze dokumentu: %s"
 
-#: views/document_version_views.py:96
+#: views/document_version_views.py:97
 msgid "All later version after this one will be deleted too."
 msgstr "Všechny pozdější verze po této budou také smazány."
 
-#: views/document_version_views.py:99
+#: views/document_version_views.py:100
 msgid "Revert to this version?"
 msgstr "Vrátit se k této verzi?"
 
-#: views/document_version_views.py:107
+#: views/document_version_views.py:108
 msgid "Document version reverted successfully"
 msgstr "Verze dokumentu byla úspěšně vrácena"
 
-#: views/document_version_views.py:112
+#: views/document_version_views.py:113
 #, python-format
 msgid "Error reverting document version; %s"
 msgstr "Při vrácení verze dokumentu došlo k chybě; %s"
 
-#: views/document_version_views.py:140
+#: views/document_version_views.py:141
 #, python-format
 msgid "Preview of document version: %s"
 msgstr "Náhled verze dokumentu: %s"
 
-#: views/document_views.py:70
+#: views/document_views.py:71
 #, python-format
 msgid "Error retrieving document list: %(exception)s."
 msgstr "Chyba při načítání seznamu dokumentů: %(exception)s."
 
-#: views/document_views.py:88
+#: views/document_views.py:89
 msgid ""
 "This could mean that no documents have been uploaded or that your user "
 "account has not been granted the view permission for any document or "
 "document type."
 msgstr "To by mohlo znamenat, že nebyly nahrány žádné dokumenty nebo že váš uživatelský účet nezískal oprávnění k zobrazení pro jakýkoli dokument nebo typ dokumentu."
 
-#: views/document_views.py:92
+#: views/document_views.py:93
 msgid "No documents available"
 msgstr "Nejsou k dispozici žádné dokumenty"
 
-#: views/document_views.py:107
+#: views/document_views.py:108
 #, python-format
 msgid "Document type change request performed on %(count)d document"
 msgstr "Žádost o změnu typu dokumentu provedená v dokumentu %(count)d"
 
-#: views/document_views.py:110
+#: views/document_views.py:111
 #, python-format
 msgid "Document type change request performed on %(count)d documents"
 msgstr "Žádost o změnu typu dokumentu provedená na dokumentech %(count)d"
 
-#: views/document_views.py:117
+#: views/document_views.py:118
 msgid "Change"
 msgstr "Změna"
 
-#: views/document_views.py:119
+#: views/document_views.py:120
 msgid "Change the type of the selected document"
 msgid_plural "Change the type of the selected documents"
 msgstr[0] "Změňte typ vybraného dokumentu"
@@ -1221,46 +1227,46 @@ msgstr[1] "Změňte typ vybraných dokumentů"
 msgstr[2] "Změňte typ vybraných dokumentů"
 msgstr[3] "Změňte typ vybraných dokumentů"
 
-#: views/document_views.py:130
+#: views/document_views.py:131
 #, python-format
 msgid "Change the type of the document: %s"
 msgstr "Změňte typ dokumentu: %s"
 
-#: views/document_views.py:152
+#: views/document_views.py:153
 #, python-format
 msgid "Document type for \"%s\" changed successfully."
 msgstr "Typ dokumentu pro &quot;%s&quot; byl úspěšně změněn."
 
-#: views/document_views.py:202
+#: views/document_views.py:203
 msgid "Download"
 msgstr "Stažení"
 
-#: views/document_views.py:301
+#: views/document_views.py:302
 #, python-format
 msgid "Preview of document: %s"
 msgstr "Náhled dokumentu: %s"
 
-#: views/document_views.py:321
+#: views/document_views.py:322
 #, python-format
 msgid "Edit properties of document: %s"
 msgstr "Upravit vlastnosti dokumentu: %s"
 
-#: views/document_views.py:352
+#: views/document_views.py:353
 #, python-format
 msgid "Properties for document: %s"
 msgstr "Vlastnosti dokumentu: %s"
 
-#: views/document_views.py:361
+#: views/document_views.py:362
 #, python-format
 msgid "%(count)d document queued for page count recalculation"
 msgstr "dokument %(count)d zařazený do fronty pro přepočet počtu stránek"
 
-#: views/document_views.py:364
+#: views/document_views.py:365
 #, python-format
 msgid "%(count)d documents queued for page count recalculation"
 msgstr "%(count)d dokumenty zařazené do fronty pro přepočet počtu stránek"
 
-#: views/document_views.py:372
+#: views/document_views.py:373
 msgid "Recalculate the page count of the selected document?"
 msgid_plural "Recalculate the page count of the selected documents?"
 msgstr[0] "Přepočítat počet stránek vybraného dokumentu?"
@@ -1268,29 +1274,29 @@ msgstr[1] "Přepočítat počet stránek vybraných dokumentů?"
 msgstr[2] "Přepočítat počet stránek vybraných dokumentů?"
 msgstr[3] "Přepočítat počet stránek vybraných dokumentů?"
 
-#: views/document_views.py:383
+#: views/document_views.py:384
 #, python-format
 msgid "Recalculate the page count of the document: %s?"
 msgstr "Přepočítat počet stránek dokumentu: %s?"
 
-#: views/document_views.py:399
+#: views/document_views.py:400
 #, python-format
 msgid ""
 "Document \"%(document)s\" is empty. Upload at least one document version "
 "before attempting to detect the page count."
 msgstr "Dokument „%(document)s“ je prázdný. Před pokusem zjistit počet stránek nahrajte alespoň jednu verzi dokumentu."
 
-#: views/document_views.py:413
+#: views/document_views.py:414
 #, python-format
 msgid "Transformation clear request processed for %(count)d document"
 msgstr "Žádost o smazání transformací zpracovaná pro dokument %(count)d"
 
-#: views/document_views.py:416
+#: views/document_views.py:417
 #, python-format
 msgid "Transformation clear request processed for %(count)d documents"
 msgstr "Žádost o smazání transformací zpracovaná pro dokumenty %(count)d"
 
-#: views/document_views.py:424
+#: views/document_views.py:425
 msgid "Clear all the page transformations for the selected document?"
 msgid_plural "Clear all the page transformations for the selected document?"
 msgstr[0] "Vymazat všechny transformace stránky pro vybraný dokument?"
@@ -1298,119 +1304,119 @@ msgstr[1] "Vymazat všechny transformace stránky pro vybraný dokument?"
 msgstr[2] "Vymazat všechny transformace stránky pro vybraný dokument?"
 msgstr[3] "Vymazat všechny transformace stránky pro vybraný dokument?"
 
-#: views/document_views.py:435
+#: views/document_views.py:436
 #, python-format
 msgid "Clear all the page transformations for the document: %s?"
 msgstr "Vymazat všechny transformace stránky pro dokument: %s?"
 
-#: views/document_views.py:450
+#: views/document_views.py:451
 #, python-format
 msgid ""
 "Error deleting the page transformations for document: %(document)s; "
 "%(error)s."
 msgstr "Chyba při odstraňování transformací stránky pro dokument: %(document)s; %(error)s."
 
-#: views/document_views.py:482
+#: views/document_views.py:483
 #, python-format
 msgid ""
 "Error cloning the page transformations for document: %(document)s; "
 "%(error)s."
 msgstr "Chyba při klonování transformací stránky pro dokument: %(document)s; %(error)s."
 
-#: views/document_views.py:490
+#: views/document_views.py:491
 msgid "Transformations cloned successfully."
 msgstr "Transformace byly úspěšně klonovány."
 
-#: views/document_views.py:506 views/document_views.py:583
+#: views/document_views.py:507 views/document_views.py:584
 msgid "Submit"
 msgstr "Odeslat"
 
-#: views/document_views.py:508
+#: views/document_views.py:509
 #, python-format
 msgid "Clone page transformations for document: %s"
 msgstr "Klonování transformací stránky pro dokument: %s"
 
-#: views/document_views.py:586
+#: views/document_views.py:587
 #, python-format
 msgid "Print: %s"
 msgstr "Tisk: %s"
 
-#: views/document_views.py:613
+#: views/document_views.py:614
 msgid ""
 "This view will list the latest documents viewed or manipulated in any way by"
 " this user account."
 msgstr "V tomto zobrazení budou uvedeny nejnovější dokumenty, které byly tímto uživatelským účtem jakýmkoli způsobem prohlíženy nebo jakýmkoli jiným způsobem manipulovány."
 
-#: views/document_views.py:617
+#: views/document_views.py:618
 msgid "There are no recently accessed document"
 msgstr "Neexistují žádné nedávno prohlédnuté dokumenty"
 
-#: views/document_views.py:641
+#: views/document_views.py:644
 msgid "This view will list the latest documents uploaded in the system."
 msgstr "V tomto zobrazení se zobrazí nejnovější dokumenty nahrané do systému."
 
-#: views/document_views.py:645
+#: views/document_views.py:648
 msgid "There are no recently added document"
 msgstr "Neexistují žádné nedávno přidané dokumenty"
 
-#: views/duplicated_document_views.py:34
+#: views/duplicated_document_views.py:35
 msgid "Only exact copies of this document will be shown in the this list."
 msgstr "V tomto seznamu se zobrazí pouze přesné kopie tohoto dokumentu."
 
-#: views/duplicated_document_views.py:38
+#: views/duplicated_document_views.py:39
 msgid "There are no duplicates for this document"
 msgstr "Pro tento dokument nejsou duplikáty"
 
-#: views/duplicated_document_views.py:42
+#: views/duplicated_document_views.py:43
 #, python-format
 msgid "Duplicates for document: %s"
 msgstr "Duplikáty dokumentu: %s"
 
-#: views/duplicated_document_views.py:64
+#: views/duplicated_document_views.py:67
 msgid ""
 "Duplicates are documents that are composed of the exact same file, down to "
 "the last byte. Files that have the same text or OCR but are not identical or"
 " were saved using a different file format will not appear as duplicates."
 msgstr "Duplikáty jsou dokumenty, které se skládají ze stejného souboru, až po poslední bajt. Soubory, které mají stejný text nebo OCR, ale nejsou totožné nebo byly uloženy pomocí jiného formátu souboru, se nebudou zobrazovat jako duplikáty."
 
-#: views/duplicated_document_views.py:71
+#: views/duplicated_document_views.py:74
 msgid "There are no duplicated documents"
 msgstr "Nejsou žádné duplicitní dokumenty"
 
-#: views/duplicated_document_views.py:81
+#: views/duplicated_document_views.py:84
 msgid "Scan for duplicated documents?"
 msgstr "Hledáte duplicitní dokumenty?"
 
-#: views/duplicated_document_views.py:88
+#: views/duplicated_document_views.py:91
 msgid "Duplicated document scan queued successfully."
 msgstr "Skenování duplicitních dokumentů bylo úspěšně zařazeno do fronty."
 
-#: views/favorite_document_views.py:31
+#: views/favorite_document_views.py:32
 #, python-format
 msgid ""
 "Favorited documents will be listed in this view. Up to %(count)d documents "
 "can be favorited per user. "
 msgstr "V tomto zobrazení budou uvedeny oblíbené dokumenty. Na uživatele může být upřednostněno až %(count)d."
 
-#: views/favorite_document_views.py:34
+#: views/favorite_document_views.py:35
 msgid "There are no favorited documents."
 msgstr "Nejsou žádné oblíbené dokumenty."
 
-#: views/favorite_document_views.py:46
+#: views/favorite_document_views.py:47
 #, python-format
 msgid "%(count)d document added to favorites."
 msgstr "dokument %(count)d byl přidán k oblíbeným."
 
-#: views/favorite_document_views.py:49
+#: views/favorite_document_views.py:50
 #, python-format
 msgid "%(count)d documents added to favorites."
 msgstr "%(count)d dokumenty přidané do oblíbených."
 
-#: views/favorite_document_views.py:54
+#: views/favorite_document_views.py:55
 msgid "Add"
 msgstr "Přidat"
 
-#: views/favorite_document_views.py:57
+#: views/favorite_document_views.py:58
 msgid "Add the selected document to favorites?"
 msgid_plural "Add the selected documents to favorites?"
 msgstr[0] ""
@@ -1418,26 +1424,26 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: views/favorite_document_views.py:75
+#: views/favorite_document_views.py:76
 #, python-format
 msgid "Document \"%(instance)s\" is not in favorites."
 msgstr "Dokument &quot;%(instance)s&quot; není v oblíbených."
 
-#: views/favorite_document_views.py:80
+#: views/favorite_document_views.py:81
 #, python-format
 msgid "%(count)d document removed from favorites."
 msgstr "%(count)d dokument odstraněn z oblíbených."
 
-#: views/favorite_document_views.py:83
+#: views/favorite_document_views.py:84
 #, python-format
 msgid "%(count)d documents removed from favorites."
 msgstr "%(count)d dokumenty byly odebrány z oblíbených."
 
-#: views/favorite_document_views.py:88
+#: views/favorite_document_views.py:89
 msgid "Remove"
 msgstr "Odstranit"
 
-#: views/favorite_document_views.py:91
+#: views/favorite_document_views.py:92
 msgid "Remove the selected document from favorites?"
 msgid_plural "Remove the selected documents from favorites?"
 msgstr[0] ""
@@ -1445,17 +1451,17 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: views/trashed_document_views.py:36
+#: views/trashed_document_views.py:37
 #, python-format
 msgid "%(count)d document moved to the trash."
 msgstr "Dokument %(count)d byl přesunut do koše."
 
-#: views/trashed_document_views.py:39
+#: views/trashed_document_views.py:40
 #, python-format
 msgid "%(count)d documents moved to the trash."
 msgstr "Dokumenty %(count)d byly přesunuty do koše."
 
-#: views/trashed_document_views.py:45
+#: views/trashed_document_views.py:46
 msgid "Move the selected document to the trash?"
 msgid_plural "Move the selected documents to the trash?"
 msgstr[0] "Přesunout vybraný dokument do koše?"
@@ -1463,25 +1469,25 @@ msgstr[1] "Přesunout vybrané dokumenty do koše?"
 msgstr[2] "Přesunout vybrané dokumenty do koše?"
 msgstr[3] "Přesunout vybrané dokumenty do koše?"
 
-#: views/trashed_document_views.py:75
+#: views/trashed_document_views.py:76
 msgid "Empty trash?"
 msgstr "Vysypat koš?"
 
-#: views/trashed_document_views.py:83
+#: views/trashed_document_views.py:84
 msgid "The trash emptying task has been queued."
 msgstr "Úkol vyprázdnění koše byl zařazen do fronty."
 
-#: views/trashed_document_views.py:93
+#: views/trashed_document_views.py:94
 #, python-format
 msgid "%(count)d trashed document submitted for deletion."
 msgstr "%(count)d vyhozený dokument předložený k odstranění."
 
-#: views/trashed_document_views.py:96
+#: views/trashed_document_views.py:97
 #, python-format
 msgid "%(count)d trashed documents submitted for deletion."
 msgstr "%(count)d vyhozené dokumenty předložené k odstranění."
 
-#: views/trashed_document_views.py:102
+#: views/trashed_document_views.py:103
 msgid "Delete the selected trashed document?"
 msgid_plural "Delete the selected trashed documents?"
 msgstr[0] "Chcete smazat vybraný dokument v koši?"
@@ -1489,28 +1495,28 @@ msgstr[1] "Smazat vybrané koše?"
 msgstr[2] "Smazat vybrané koše?"
 msgstr[3] "Smazat vybrané dokumenty z koše?"
 
-#: views/trashed_document_views.py:136
+#: views/trashed_document_views.py:137
 msgid ""
 "To avoid loss of data, documents are not deleted instantly. First, they are "
 "placed in the trash can. From here they can be then finally deleted or "
 "restored."
 msgstr "Aby nedocházelo ke ztrátě dat, dokumenty se neodstraní okamžitě. Nejprve jsou umístěny do koše. Odtud mohou být nakonec odstraněny nebo obnoveny."
 
-#: views/trashed_document_views.py:141
+#: views/trashed_document_views.py:142
 msgid "There are no documents in the trash can"
 msgstr "V koši nejsou žádné dokumenty"
 
-#: views/trashed_document_views.py:154
+#: views/trashed_document_views.py:155
 #, python-format
 msgid "%(count)d trashed document restored."
 msgstr "%(count)d dokument byl obnoven z koše."
 
-#: views/trashed_document_views.py:157
+#: views/trashed_document_views.py:158
 #, python-format
 msgid "%(count)d trashed documents restored."
 msgstr "%(count)d dkumenty obnoveny z koše."
 
-#: views/trashed_document_views.py:163
+#: views/trashed_document_views.py:164
 msgid "Restore the selected trashed document?"
 msgid_plural "Restore the selected trashed documents?"
 msgstr[0] "Obnovit vybraný dokument v koši?"

@@ -22,7 +22,6 @@ class DocumentFileContentViewsTestCase(
     DocumentFileContentViewTestMixin, GenericDocumentViewTestCase
 ):
     _skip_file_descriptor_test = True
-
     # Ensure we use a PDF file
     test_document_filename = TEST_HYBRID_DOCUMENT
 
@@ -79,6 +78,17 @@ class DocumentFileContentViewsTestCase(
             response=response, text=TEST_DOCUMENT_CONTENT, status_code=200
         )
 
+    def test_trashed_document_file_page_content_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_file_content_view
+        )
+
+        self.test_document.delete()
+
+        response = self._request_test_document_file_page_content_view()
+        self.assertEqual(response.status_code, 404)
+
     def test_document_file_parsing_download_view_no_permission(self):
         response = self._request_test_document_file_content_download_view()
         self.assertEqual(response.status_code, 404)
@@ -103,8 +113,20 @@ class DocumentFileContentViewsTestCase(
             ),
         )
 
+    def test_trashed_document_file_parsing_download_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_file_content_view
+        )
+
+        self.test_document.delete()
+
+        response = self._request_test_document_file_content_download_view()
+        self.assertEqual(response.status_code, 404)
+
     def test_document_file_parsing_error_list_view_no_permission(self):
         response = self._request_test_document_file_parsing_error_list_view()
+
         self.assertEqual(response.status_code, 404)
 
     def test_document_file_parsing_error_list_view_with_access(self):
@@ -114,6 +136,38 @@ class DocumentFileContentViewsTestCase(
 
         response = self._request_test_document_file_parsing_error_list_view()
         self.assertEqual(response.status_code, 200)
+
+    def test_trashed_document_file_parsing_error_list_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_file_parse
+        )
+
+        self.test_document.delete()
+
+        response = self._request_test_document_file_parsing_error_list_view()
+        self.assertEqual(response.status_code, 404)
+
+    def test_document_file_parsing_submit_view_no_permission(self):
+        response = self._request_test_document_file_parsing_submit_view()
+        self.assertEqual(response.status_code, 404)
+
+    def test_document_file_parsing_submit_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_file_parse
+        )
+
+        response = self._request_test_document_file_parsing_submit_view()
+        self.assertEqual(response.status_code, 302)
+
+    def test_trashed_document_file_parsing_submit_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_file_parse
+        )
+
+        self.test_document.delete()
+
+        response = self._request_test_document_file_parsing_submit_view()
+        self.assertEqual(response.status_code, 404)
 
 
 class DocumentTypeParsingViewsTestCase(

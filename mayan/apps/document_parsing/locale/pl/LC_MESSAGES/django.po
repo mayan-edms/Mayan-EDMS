@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: kicior kicior <kiciorek+github@gmail.com>, 2020\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Language: pl\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: apps.py:53 events.py:6 permissions.py:6 settings.py:7
+#: apps.py:53 events.py:6 permissions.py:6 settings.py:10
 msgid "Document parsing"
 msgstr "Analiza dokumentu"
 
@@ -71,7 +71,7 @@ msgstr "Zawartość"
 msgid "Delete parsed content"
 msgstr "Usuń przeanalizowaną treść"
 
-#: links.py:42 links.py:80 views.py:228
+#: links.py:42 links.py:80 views.py:233
 msgid "Parsing errors"
 msgstr "Błędy parsowania"
 
@@ -169,13 +169,13 @@ msgstr "Analiza"
 msgid "Document version parsing"
 msgstr "Analiza wersji dokumentu"
 
-#: settings.py:12
+#: settings.py:15
 msgid "Set new document types to perform parsing automatically by default."
 msgstr ""
 "Ustaw nowe typy dokumentów, aby domyślnie przeprowadzać automatyczne "
 "parsowanie."
 
-#: settings.py:19
+#: settings.py:21
 msgid ""
 "File path to poppler's pdftotext program used to extract text from PDF "
 "files."
@@ -196,27 +196,27 @@ msgstr[3] "Usunąć przeanalizowaną zawartość wybranych dokumentów?"
 msgid "Content for document: %s"
 msgstr "Treść dokumentu: %s"
 
-#: views.py:105
+#: views.py:104
 #, python-format
 msgid "Content for document page: %s"
 msgstr "Treść strony dokumentu: %s"
 
-#: views.py:121
+#: views.py:126
 #, python-format
 msgid "Parsing errors for document: %s"
 msgstr "Błędy parsowania dla dokumentu: %s"
 
-#: views.py:134
+#: views.py:139
 #, python-format
 msgid "%(count)d document added to the parsing queue"
 msgstr "Dokument %(count)d został dodany do kolejki analizowania"
 
-#: views.py:137
+#: views.py:142
 #, python-format
 msgid "%(count)d documents added to the parsing queue"
 msgstr "Dokumenty %(count)d dodane do kolejki parsowania"
 
-#: views.py:145
+#: views.py:150
 #, python-format
 msgid "Submit %(count)d document to the parsing queue?"
 msgid_plural "Submit %(count)d documents to the parsing queue?"
@@ -225,21 +225,21 @@ msgstr[1] "Przesłać dokumenty %(count)d do kolejki analizowania?"
 msgstr[2] "Przesłać dokumenty %(count)d do kolejki analizowania?"
 msgstr[3] "Przesłać dokumenty %(count)d do kolejki analizowania?"
 
-#: views.py:158
+#: views.py:163
 #, python-format
 msgid "Submit document \"%s\" to the parsing queue"
 msgstr "Prześlij dokument „%s” do kolejki analizowania"
 
-#: views.py:185
+#: views.py:190
 #, python-format
 msgid "Edit parsing settings for document type: %s."
 msgstr "Edytuj ustawienia analizowania dla typu dokumentu: %s."
 
-#: views.py:195
+#: views.py:200
 msgid "Submit all documents of a type for parsing"
 msgstr "Prześlij wszystkie dokumenty danego typu do parsowania"
 
-#: views.py:216
+#: views.py:221
 #, python-format
 msgid "%(count)d documents added to the parsing queue."
 msgstr "Dokumenty %(count)d dodane do kolejki analizowania."

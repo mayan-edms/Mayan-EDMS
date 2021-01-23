@@ -18,9 +18,10 @@ def get_unread_notification_count(context):
     Notification = apps.get_model(
         app_label='events', model_name='Notification'
     )
-    return Notification.objects.filter(
-        user=context.request.user
-    ).filter(read=False).count()
+    if context.request.user.is_authenticated:
+        return Notification.objects.filter(
+            user=context.request.user
+        ).filter(read=False).count()
 
 
 link_current_user_events = Link(

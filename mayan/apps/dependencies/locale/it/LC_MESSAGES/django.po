@@ -7,15 +7,15 @@
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2019
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2019
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2019
-# Roberto Rosario, 2020
+# Roberto Rosario, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
-"Last-Translator: Roberto Rosario, 2020\n"
+"Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -55,13 +55,13 @@ msgstr "Dichiarato da"
 msgid "Version"
 msgstr "Versione"
 
-#: apps.py:61 classes.py:139 classes.py:780
+#: apps.py:61 classes.py:139 classes.py:781
 msgid "Environment"
 msgstr "Ambiente"
 
 #: apps.py:64 classes.py:140
 msgid "Check"
-msgstr ""
+msgstr "Dai un'occhiata"
 
 #: classes.py:138
 msgid "Name"
@@ -133,7 +133,7 @@ msgstr ""
 msgid "JavaScript"
 msgstr "JavaScript"
 
-#: classes.py:451 classes.py:693
+#: classes.py:451 classes.py:694
 msgid "Downloading... "
 msgstr "Download in corso..."
 
@@ -141,39 +141,39 @@ msgstr "Download in corso..."
 msgid "Verifying... "
 msgstr "Verifica..."
 
-#: classes.py:457 classes.py:696
+#: classes.py:457 classes.py:697
 msgid "Extracting... "
 msgstr "Estrazione..."
 
-#: classes.py:635
+#: classes.py:636
 msgid "Python packages downloaded from PyPI."
 msgstr "Pacchetti Python scaricati da PyPI."
 
-#: classes.py:637
+#: classes.py:638
 msgid "Python"
 msgstr "Python"
 
-#: classes.py:674
+#: classes.py:675
 msgid "Fonts downloaded from fonts.googleapis.com."
 msgstr "Caratteri scaricati da fonts.googleapis.com."
 
-#: classes.py:676
+#: classes.py:677
 msgid "Google font"
 msgstr "Carattere di Google"
 
-#: classes.py:762
+#: classes.py:763
 msgid "Declared in app"
 msgstr "Dichiarato in app"
 
-#: classes.py:763
+#: classes.py:764
 msgid "Show dependencies by the app that declared them."
 msgstr "Mostra le dipendenze dall'app che le ha dichiarate."
 
-#: classes.py:767
+#: classes.py:768
 msgid "Class"
 msgstr "Classe"
 
-#: classes.py:768
+#: classes.py:769
 msgid ""
 "Show the different classes of dependencies. Classes are usually divided by "
 "language or the file types of the dependency."
@@ -181,11 +181,11 @@ msgstr ""
 "Mostra le diverse classi di dipendenze. Le classi sono generalmente divise "
 "per lingua o tipi di file della dipendenza."
 
-#: classes.py:773
+#: classes.py:774
 msgid "State"
 msgstr "Stato"
 
-#: classes.py:774
+#: classes.py:775
 msgid ""
 "Show the different states of the dependencies. True means that the "
 "dependencies is installed and is of a correct version. False means the "
@@ -195,7 +195,7 @@ msgstr ""
 "sono installate e hanno una versione corretta. Falso significa che mancano "
 "le dipendenze o è presente una versione errata."
 
-#: classes.py:781
+#: classes.py:782
 msgid ""
 "Dependencies required for an environment might not be required for another. "
 "Example environments: Production, Development."
@@ -213,7 +213,7 @@ msgstr ""
 
 #: environments.py:21
 msgid "Build"
-msgstr ""
+msgstr "Numero di build"
 
 #: environments.py:25
 msgid ""
@@ -226,7 +226,7 @@ msgstr ""
 
 #: environments.py:27
 msgid "Development"
-msgstr ""
+msgstr "Sviluppo"
 
 #: environments.py:31
 msgid ""
@@ -264,7 +264,7 @@ msgstr ""
 
 #: environments.py:46
 msgid "Testing"
-msgstr ""
+msgstr "Test"
 
 #: links.py:9 views.py:17
 msgid "Check for updates"
@@ -276,7 +276,7 @@ msgstr "Gruppi"
 
 #: links.py:23
 msgid "Entries"
-msgstr ""
+msgstr "Inserimenti"
 
 #: links.py:31
 msgid "Details"

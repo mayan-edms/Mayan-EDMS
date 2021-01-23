@@ -342,40 +342,34 @@ class IndexInstanceNodeView(DocumentListView):
     template_name = 'document_indexing/node_details.html'
 
     def dispatch(self, request, *args, **kwargs):
-        self.index_instance_node = get_object_or_404(
-            klass=IndexInstanceNode, pk=self.kwargs['index_instance_node_id']
-        )
-
-        AccessControlList.objects.check_access(
-            obj=self.index_instance_node.index(),
-            permissions=(permission_document_indexing_instance_view,),
-            user=request.user
-        )
+        self.index_instance_node = self.get_index_instance_node()
 
         if self.index_instance_node:
             if self.index_instance_node.index_template_node.link_documents:
-                return super().dispatch(
-                    request, *args, **kwargs
-                )
+                return super().dispatch(request=request, *args, **kwargs)
 
-        return SingleObjectListView.dispatch(self, request, *args, **kwargs)
+        return SingleObjectListView.dispatch(
+            self, request=request, *args, **kwargs
+        )
 
     def get_document_queryset(self):
         if self.index_instance_node:
             if self.index_instance_node.index_template_node.link_documents:
-                return self.index_instance_node.documents.all()
+                return self.index_instance_node.get_documents()
+
+        return Document.valid.none()
 
     def get_extra_context(self):
         context = super().get_extra_context()
         context.update(
             {
                 'column_class': 'col-xs-12 col-sm-6 col-md-4 col-lg-3',
-                'object': self.index_instance_node,
                 'navigation': mark_safe(
                     _('Navigation: %s') % node_tree(
                         node=self.index_instance_node, user=self.request.user
                     )
                 ),
+                'object': self.index_instance_node,
                 'title': _(
                     'Contents for index: %s'
                 ) % self.index_instance_node.get_full_path(),
@@ -391,6 +385,17 @@ class IndexInstanceNodeView(DocumentListView):
             )
 
         return context
+
+    def get_index_instance_node(self):
+        instance = get_object_or_404(
+            klass=IndexInstanceNode, pk=self.kwargs['index_instance_node_id']
+        )
+        AccessControlList.objects.check_access(
+            obj=instance, permissions=(
+                permission_document_indexing_instance_view,
+            ), user=self.request.user
+        )
+        return instance
 
     def get_source_queryset(self):
         if self.index_instance_node:
@@ -410,9 +415,9 @@ class DocumentIndexNodeListView(ExternalObjectMixin, SingleObjectListView):
     """
     Show a list of indexes where the current document can be found
     """
-    external_object_class = Document
     external_object_permission = permission_document_view
     external_object_pk_url_kwarg = 'document_id'
+    external_object_queryset = Document.valid
     object_permission = permission_document_indexing_instance_view
 
     def get_extra_context(self):

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-04-19 12:21+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
@@ -112,47 +112,47 @@ msgstr "Частни ключове"
 msgid "Public keys"
 msgstr "Публични ключове"
 
-#: literals.py:14 literals.py:22
+#: literals.py:23 literals.py:31
 msgid "Public"
 msgstr "Публични"
 
-#: literals.py:15 literals.py:23
+#: literals.py:24 literals.py:32
 msgid "Secret"
 msgstr "Тайни"
 
-#: literals.py:31 literals.py:36
+#: literals.py:40 literals.py:45
 msgid "RSA"
 msgstr "RSA"
 
-#: literals.py:32
+#: literals.py:41
 msgid "DSA"
 msgstr "DSA"
 
-#: literals.py:37
+#: literals.py:46
 msgid "Elgamal"
 msgstr "ElGamal (асиметричен алгоритъм за криптиране)"
 
-#: literals.py:51
+#: literals.py:62
 msgid "Bad signature."
 msgstr "Лош подпис."
 
-#: literals.py:54
+#: literals.py:65
 msgid "Document not signed or invalid signature."
 msgstr "Документът не е подписан или подписа е невалиден."
 
-#: literals.py:57
+#: literals.py:68
 msgid "Signature error."
 msgstr "Грешка в подписа."
 
-#: literals.py:61
+#: literals.py:72
 msgid "Document is signed but no public key is available for verification."
 msgstr "Документът е подписан, но не е наличен публичен ключ за удостоверение."
 
-#: literals.py:66
+#: literals.py:77
 msgid "Document is signed, and signature is good."
 msgstr "Документът е подписан и подписа е валиден."
 
-#: literals.py:69
+#: literals.py:80
 msgid "Document is signed with a valid signature."
 msgstr "Документът е подписан с валиден подпис."
 
@@ -204,11 +204,11 @@ msgstr "Ключове за качване"
 msgid "View keys"
 msgstr "Виж ключове"
 
-#: settings.py:7
+#: settings.py:10
 msgid "Signatures"
 msgstr "Подписи"
 
-#: settings.py:14
+#: settings.py:16
 msgid "Full path to the backend to be used to handle keys and signatures."
 msgstr "Пълен път към бекенда, който да се използва за обработка на ключове и подписи."
 

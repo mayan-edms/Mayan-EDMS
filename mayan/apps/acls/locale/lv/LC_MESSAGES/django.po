@@ -4,14 +4,14 @@
 # 
 # Translators:
 # Translators:
-# Māris Teivāns <maris.teivans@gmail.com>, 2019
+# Māris Teivāns <maris.teivans@gmail.com>, 2019-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-03-28 07:22+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-11-23 10:24+0000\n"
+"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -117,7 +117,7 @@ msgstr "Primārās atslēgas lomai, pie kuras šis piekļuves kontroles saraksts
 msgid ""
 "An ACL for \"%(object)s\" using role \"%(role)s\" already exists. Edit that "
 "ACL entry instead."
-msgstr ""
+msgstr "ACL \"%(object)s\", izmantojot lomu \"%(role)s\", jau pastāv. Tā vietā rediģējiet šo ACL ierakstu."
 
 #: views.py:53
 #, python-format
@@ -138,7 +138,7 @@ msgid ""
 "ACL stands for Access Control List and is a precise method to control user "
 "access to objects in the system. ACLs allow granting a permission to a role "
 "but only for a specific object or set of objects."
-msgstr ""
+msgstr "ACL nozīmē Access Control List un ir precīza metode, kā kontrolēt lietotāju piekļuvi sistēmas objektiem. ACL ļauj piešķirt lomai atļauju, bet tikai noteiktam objektam vai objektu kopai."
 
 #: views.py:143
 #, python-format

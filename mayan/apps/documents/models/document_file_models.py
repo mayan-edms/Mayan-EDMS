@@ -28,9 +28,11 @@ from ..events import (
 from ..literals import (
     STORAGE_NAME_DOCUMENT_FILE_PAGE_IMAGE_CACHE, STORAGE_NAME_DOCUMENT_FILES
 )
-from ..managers import DocumentFileManager
+from ..managers import DocumentFileManager, ValidDocumentFileManager
 from ..settings import setting_hash_block_size
-from ..signals import signal_post_document_created, signal_post_document_file_upload
+from ..signals import (
+    signal_post_document_created, signal_post_document_file_upload
+)
 
 from .document_models import Document
 from .mixins import ModelMixinHooks
@@ -118,6 +120,7 @@ class DocumentFile(
         verbose_name_plural = _('Document files')
 
     objects = DocumentFileManager()
+    valid = ValidDocumentFileManager()
 
     @staticmethod
     def hash_function():

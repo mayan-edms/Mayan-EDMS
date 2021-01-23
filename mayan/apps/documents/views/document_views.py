@@ -42,11 +42,11 @@ class DocumentListView(SingleObjectListView):
                     'exception': exception
                 }, request=self.request
             )
-            self.object_list = Document.objects.none()
+            self.object_list = Document.valid.none()
             return super().get_context_data(**kwargs)
 
     def get_document_queryset(self):
-        return Document.objects.all()
+        return Document.valid.all()
 
     def get_extra_context(self):
         return {
@@ -70,9 +70,9 @@ class DocumentListView(SingleObjectListView):
 
 class DocumentTypeChangeView(MultipleObjectFormActionView):
     form_class = DocumentTypeFilteredSelectForm
-    model = Document
     object_permission = permission_document_properties_edit
     pk_url_kwarg = 'document_id'
+    source_queryset = Document.valid
     success_message = _(
         'Document type change request performed on %(count)d document'
     )
@@ -125,9 +125,9 @@ class DocumentTypeChangeView(MultipleObjectFormActionView):
 
 
 class DocumentPreviewView(DocumentVersionPreviewView):
-    model = Document
     object_permission = permission_document_view
     pk_url_kwarg = 'document_id'
+    source_queryset = Document.valid
 
     def dispatch(self, request, *args, **kwargs):
         result = super(
@@ -150,9 +150,9 @@ class DocumentPreviewView(DocumentVersionPreviewView):
 
 class DocumentPropertiesEditView(SingleObjectEditView):
     form_class = DocumentForm
-    model = Document
     object_permission = permission_document_properties_edit
     pk_url_kwarg = 'document_id'
+    source_queryset = Document.valid
 
     def dispatch(self, request, *args, **kwargs):
         result = super().dispatch(request, *args, **kwargs)
@@ -180,9 +180,9 @@ class DocumentPropertiesEditView(SingleObjectEditView):
 
 class DocumentPropertiesView(SingleObjectDetailView):
     form_class = DocumentPropertiesForm
-    model = Document
     object_permission = permission_document_view
     pk_url_kwarg = 'document_id'
+    source_queryset = Document.valid
 
     def dispatch(self, request, *args, **kwargs):
         result = super().dispatch(request, *args, **kwargs)

@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# Jože Detečnik <joze.detecnik@3tav.si>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-02-14 02:29+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-12-25 11:50+0000\n"
+"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>\n"
 "Language-Team: Slovenian (http://www.transifex.com/rosarior/mayan-edms/language/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +21,7 @@ msgstr ""
 
 #: apps.py:43
 msgid "Linking"
-msgstr ""
+msgstr "Povezovanje"
 
 #: apps.py:96 models.py:25
 msgid "Label"
@@ -29,23 +30,23 @@ msgstr "Oznaka"
 #: events.py:6 links.py:18 links.py:77 links.py:82 links.py:87 models.py:44
 #: permissions.py:5 views.py:203
 msgid "Smart links"
-msgstr ""
+msgstr "Pametne povezave"
 
 #: events.py:10
 msgid "Smart link created"
-msgstr ""
+msgstr "Pametna povezava je ustvarjena"
 
 #: events.py:13
 msgid "Smart link edited"
-msgstr ""
+msgstr "Pametna povezava urejena"
 
 #: forms.py:45
 msgid "Foreign document field"
-msgstr ""
+msgstr "Polje tujega dokumenta"
 
 #: links.py:24
 msgid "Create condition"
-msgstr ""
+msgstr "Ustvari pogoj"
 
 #: links.py:31 links.py:55
 msgid "Delete"
@@ -53,19 +54,19 @@ msgstr "Izbriši"
 
 #: links.py:38 links.py:67
 msgid "Edit"
-msgstr ""
+msgstr "Uredi"
 
 #: links.py:44
 msgid "Conditions"
-msgstr ""
+msgstr "Pogoji"
 
 #: links.py:49 views.py:239
 msgid "Create new smart link"
-msgstr ""
+msgstr "Ustvari novo pametno povezavo"
 
 #: links.py:61 models.py:36
 msgid "Document types"
-msgstr ""
+msgstr "Vrste dokumentov"
 
 #: links.py:71
 msgid "Documents"
@@ -73,278 +74,278 @@ msgstr "Dokumenti"
 
 #: literals.py:7
 msgid "and"
-msgstr ""
+msgstr "in"
 
 #: literals.py:8
 msgid "or"
-msgstr ""
+msgstr "ali"
 
 #: literals.py:12
 msgid "is equal to"
-msgstr ""
+msgstr "je enako"
 
 #: literals.py:13
 msgid "is equal to (case insensitive)"
-msgstr ""
+msgstr "je enako (ne razlikuje med velikimi in malimi črkami)"
 
 #: literals.py:14
 msgid "contains"
-msgstr ""
+msgstr "vsebuje"
 
 #: literals.py:15
 msgid "contains (case insensitive)"
-msgstr ""
+msgstr "vsebuje (ne razlikuje med velikimi in malimi črkami)"
 
 #: literals.py:16
 msgid "is in"
-msgstr ""
+msgstr "je v"
 
 #: literals.py:17
 msgid "is greater than"
-msgstr ""
+msgstr "je večje od"
 
 #: literals.py:18
 msgid "is greater than or equal to"
-msgstr ""
+msgstr "je večje ali enako"
 
 #: literals.py:19
 msgid "is less than"
-msgstr ""
+msgstr "je manj kot"
 
 #: literals.py:20
 msgid "is less than or equal to"
-msgstr ""
+msgstr "je manjši ali enak"
 
 #: literals.py:21
 msgid "starts with"
-msgstr ""
+msgstr "začne se z"
 
 #: literals.py:22
 msgid "starts with (case insensitive)"
-msgstr ""
+msgstr "začne se z (ne razlikuje med velikimi in malimi črkami)"
 
 #: literals.py:23
 msgid "ends with"
-msgstr ""
+msgstr "konča z"
 
 #: literals.py:24
 msgid "ends with (case insensitive)"
-msgstr ""
+msgstr "konča z (ne razlikuje med velikimi in malimi črkami)"
 
 #: literals.py:25
 msgid "is in regular expression"
-msgstr ""
+msgstr "je v regularnem izrazu"
 
 #: literals.py:26
 msgid "is in regular expression (case insensitive)"
-msgstr ""
+msgstr "je v regularnem izrazu (ne razlikuje med velikimi in malimi črkami)"
 
 #: models.py:24
 msgid "A short text describing the smart link."
-msgstr ""
+msgstr "Kratko besedilo, ki opisuje pametno povezavo."
 
 #: models.py:29
 msgid ""
 "Use this field to show a unique label depending on the document from which "
 "the smart link is being accessed."
-msgstr ""
+msgstr "To polje uporabite za prikaz edinstvene nalepke, odvisno od dokumenta, iz katerega dostopate do pametne povezave."
 
 #: models.py:31
 msgid "Dynamic label"
-msgstr ""
+msgstr "Dinamična oznaka"
 
 #: models.py:33 models.py:189
 msgid "Enabled"
-msgstr ""
+msgstr "Omogočeno"
 
 #: models.py:43 models.py:167
 msgid "Smart link"
-msgstr ""
+msgstr "Pametna povezava"
 
 #: models.py:82
 #, python-format
 msgid "Error generating dynamic label; %s"
-msgstr ""
+msgstr "Napaka pri ustvarjanju dinamične nalepke; %s"
 
 #: models.py:97
 msgid "This smart link is not allowed for the selected document's type."
-msgstr ""
+msgstr "Ta pametna povezava ni dovoljena za vrsto izbranega dokumenta."
 
 #: models.py:171
 msgid "The inclusion is ignored for the first item."
-msgstr ""
+msgstr "Vključitev se za prvi element prezre."
 
 #: models.py:175
 msgid "This represents the metadata of all other documents."
-msgstr ""
+msgstr "To predstavlja metapodatke vseh drugih dokumentov."
 
 #: models.py:176
 msgid "Foreign document attribute"
-msgstr ""
+msgstr "Atribut tujega dokumenta"
 
 #: models.py:181
 msgid ""
 "The expression using document properties to be evaluated against the foreign"
 " document field."
-msgstr ""
+msgstr "Izraz, ki uporablja lastnosti dokumenta, ki jih je treba ovrednotiti glede na polje tujega dokumenta."
 
 #: models.py:183
 msgid "Expression"
-msgstr ""
+msgstr "Izraz"
 
 #: models.py:186
 msgid "Inverts the logic of the operator."
-msgstr ""
+msgstr "Pretvori logiko operaterja."
 
 #: models.py:187
 msgid "Negated"
-msgstr ""
+msgstr "Negativno"
 
 #: models.py:192
 msgid "Link condition"
-msgstr ""
+msgstr "Pogoj povezave"
 
 #: models.py:193
 msgid "Link conditions"
-msgstr ""
+msgstr "Pogoji povezave"
 
 #: models.py:201
 msgid "not"
-msgstr ""
+msgstr "ne"
 
 #: models.py:205
 msgid "Full label"
-msgstr ""
+msgstr "Celotna oznaka"
 
 #: permissions.py:8
 msgid "Create new smart links"
-msgstr ""
+msgstr "Ustvarite nove pametne povezave"
 
 #: permissions.py:11
 msgid "Delete smart links"
-msgstr ""
+msgstr "Izbrišite pametne povezave"
 
 #: permissions.py:14
 msgid "Edit smart links"
-msgstr ""
+msgstr "Urejajte pametne povezave"
 
 #: permissions.py:17
 msgid "View existing smart links"
-msgstr ""
+msgstr "Oglejte si obstoječe pametne povezave"
 
 #: serializers.py:115
 msgid ""
 "Comma separated list of document type primary keys to which this smart link "
 "will be attached."
-msgstr ""
+msgstr "Seznam primarnih ključev vrste dokumentov, na katere bo priložena ta pametna povezava, ločen z vejicami."
 
 #: serializers.py:139
 #, python-format
 msgid "No such document type: %s"
-msgstr ""
+msgstr "Takšne vrste dokumenta ni: %s"
 
 #: views.py:45
 msgid "Available smart links"
-msgstr ""
+msgstr "Na voljo pametne povezave"
 
 #: views.py:46
 msgid "Smart links enabled"
-msgstr ""
+msgstr "Pametne povezave so omogočene"
 
 #: views.py:78
 #, python-format
 msgid "Smart links to enable for document type: %s"
-msgstr ""
+msgstr "Pametne povezave za omogočanje vrste dokumenta: %s"
 
 #: views.py:115
 #, python-format
 msgid "Smart link query error: %s"
-msgstr ""
+msgstr "Napaka pri poizvedbi pametne povezave: %s"
 
 #: views.py:126
 #, python-format
 msgid "Documents in smart link: %s"
-msgstr ""
+msgstr "Dokumenti v pametni povezavi: %s"
 
 #: views.py:129
 #, python-format
 msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
-msgstr ""
+msgstr "Dokumenti v pametni povezavi &quot;%(smart_link)s&quot; kot povezani z &quot;%(document)s&quot;"
 
 #: views.py:165
 msgid "Available document types"
-msgstr ""
+msgstr "Razpoložljive vrste dokumentov"
 
 #: views.py:166
 msgid "Document types enabled"
-msgstr ""
+msgstr "Vrste dokumentov omogočene"
 
 #: views.py:176
 #, python-format
 msgid "Document type for which to enable smart link: %s"
-msgstr ""
+msgstr "Vrsta dokumenta, za katerega je treba omogočiti pametno povezavo: %s"
 
 #: views.py:194
 msgid ""
 "Indexes group documents into units, usually with similar properties and of "
 "equal or similar types. Smart links allow defining relationships between "
 "documents even if they are in different indexes and are of different types."
-msgstr ""
+msgstr "Kazala združujejo dokumente v enote, običajno s podobnimi lastnostmi in enakih ali podobnih vrst. Pametne povezave omogočajo definiranje razmerij med dokumenti, tudi če so v različnih indeksih in so različnih vrst."
 
 #: views.py:201
 msgid "There are no smart links"
-msgstr ""
+msgstr "Pametnih povezav ni"
 
 #: views.py:219
 msgid ""
 "Smart links allow defining relationships between documents even if they are "
 "in different indexes and are of different types."
-msgstr ""
+msgstr "Pametne povezave omogočajo definiranje razmerij med dokumenti, tudi če so v različnih indeksih in so različnih vrst."
 
 #: views.py:224
 msgid "There are no smart links for this document"
-msgstr ""
+msgstr "Za ta dokument ni pametnih povezav"
 
 #: views.py:227
 #, python-format
 msgid "Smart links for document: %s"
-msgstr ""
+msgstr "Pametne povezave za dokument: %s"
 
 #: views.py:261
 #, python-format
 msgid "Delete smart link: %s"
-msgstr ""
+msgstr "Izbriši pametno povezavo: %s"
 
 #: views.py:277
 #, python-format
 msgid "Edit smart link: %s"
-msgstr ""
+msgstr "Uredi pametno povezavo: %s"
 
 #: views.py:302
 msgid ""
 "Conditions are small logic units that when combined define how the smart "
 "link will behave."
-msgstr ""
+msgstr "Pogoji so majhne logične enote, ki v kombinaciji določajo, kako se bo pametna povezava obnašala."
 
 #: views.py:306
 msgid "There are no conditions for this smart link"
-msgstr ""
+msgstr "Za to pametno povezavo ni pogojev"
 
 #: views.py:310
 #, python-format
 msgid "Conditions for smart link: %s"
-msgstr ""
+msgstr "Pogoji za pametno povezavo: %s"
 
 #: views.py:329
 #, python-format
 msgid "Add new conditions to smart link: \"%s\""
-msgstr ""
+msgstr "Pametni povezavi dodajte nove pogoje: &quot;%s&quot;"
 
 #: views.py:359
 #, python-format
 msgid "Delete smart link condition: \"%s\"?"
-msgstr ""
+msgstr "Želite izbrisati pogoj pametne povezave: &quot;%s&quot;?"
 
 #: views.py:382
 msgid "Edit smart link condition"
-msgstr ""
+msgstr "Uredi stanje pametne povezave"

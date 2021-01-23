@@ -42,9 +42,9 @@ logger = logging.getLogger(name=__name__)
 
 
 class DocumentFileDeleteView(SingleObjectDeleteView):
-    model = DocumentFile
     object_permission = permission_document_file_delete
     pk_url_kwarg = 'document_file_id'
+    source_queryset = DocumentFile.valid
 
     def get_extra_context(self):
         return {
@@ -65,12 +65,13 @@ class DocumentFileDeleteView(SingleObjectDeleteView):
 
 
 class DocumentFileDownloadView(SingleObjectDownloadView):
-    model = DocumentFile
     object_permission = permission_document_file_download
     pk_url_kwarg = 'document_file_id'
+    source_queryset = DocumentFile.valid
 
     def get_download_file_object(self):
         instance = self.get_object()
+        instance._event_action_object = instance.document
         instance._event_actor = self.request.user
         return instance.get_download_file_object()
 
@@ -80,9 +81,9 @@ class DocumentFileDownloadView(SingleObjectDownloadView):
 
 class DocumentFileEditView(SingleObjectEditView):
     form_class = DocumentFileForm
-    model = DocumentFile
     object_permission = permission_document_file_edit
     pk_url_kwarg = 'document_file_id'
+    source_queryset = DocumentFile.valid
 
     def get_extra_context(self):
         return {
@@ -103,9 +104,9 @@ class DocumentFileEditView(SingleObjectEditView):
 
 
 class DocumentFileListView(ExternalObjectMixin, SingleObjectListView):
-    external_object_class = Document
     external_object_permission = permission_document_file_view
     external_object_pk_url_kwarg = 'document_id'
+    external_object_queryset = Document.valid
 
     def get_document(self):
         document = self.external_object
@@ -141,9 +142,9 @@ class DocumentFileListView(ExternalObjectMixin, SingleObjectListView):
 
 class DocumentFilePreviewView(SingleObjectDetailView):
     form_class = DocumentFilePreviewForm
-    model = DocumentFile
     object_permission = permission_document_file_view
     pk_url_kwarg = 'document_file_id'
+    source_queryset = DocumentFile.valid
 
     def dispatch(self, request, *args, **kwargs):
         result = super().dispatch(request, *args, **kwargs)
@@ -166,9 +167,9 @@ class DocumentFilePreviewView(SingleObjectDetailView):
 
 
 class DocumentFilePrintFormView(PrintFormView):
-    external_object_class = DocumentFile
     external_object_permission = permission_document_file_print
     external_object_pk_url_kwarg = 'document_file_id'
+    external_object_queryset = DocumentFile.valid
     print_view_name = 'documents:document_file_print_view'
     print_view_kwarg = 'document_file_id'
 
@@ -179,9 +180,9 @@ class DocumentFilePrintFormView(PrintFormView):
 
 
 class DocumentFilePrintView(DocumentPrintView):
-    external_object_class = DocumentFile
     external_object_permission = permission_document_file_print
     external_object_pk_url_kwarg = 'document_file_id'
+    external_object_queryset = DocumentFile.valid
 
     def _add_recent_document(self):
         self.external_object.document.add_as_recent_document_for_user(
@@ -191,9 +192,9 @@ class DocumentFilePrintView(DocumentPrintView):
 
 class DocumentFilePropertiesView(SingleObjectDetailView):
     form_class = DocumentFilePropertiesForm
-    model = DocumentFile
     object_permission = permission_document_file_view
     pk_url_kwarg = 'document_file_id'
+    source_queryset = DocumentFile.valid
 
     def dispatch(self, request, *args, **kwargs):
         result = super().dispatch(request, *args, **kwargs)
@@ -211,9 +212,9 @@ class DocumentFilePropertiesView(SingleObjectDetailView):
 
 
 class DocumentFileTransformationsClearView(MultipleObjectConfirmActionView):
-    model = DocumentFile
     object_permission = permission_transformation_delete
     pk_url_kwarg = 'document_file_id'
+    source_queryset = DocumentFile.valid
     success_message = _(
         'Transformation clear request processed for %(count)d document file.'
     )
@@ -261,9 +262,9 @@ class DocumentFileTransformationsClearView(MultipleObjectConfirmActionView):
 
 
 class DocumentFileTransformationsCloneView(ExternalObjectMixin, FormView):
-    external_object_class = DocumentFile
     external_object_permission = permission_transformation_edit
     external_object_pk_url_kwarg = 'document_file_id'
+    external_object_queryset = DocumentFile.valid
     form_class = PageNumberForm
 
     def dispatch(self, request, *args, **kwargs):

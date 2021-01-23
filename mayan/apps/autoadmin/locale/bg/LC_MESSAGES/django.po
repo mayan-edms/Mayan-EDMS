@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2019-04-14 04:06+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2020\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
@@ -49,13 +49,13 @@ msgstr "Хеш на парола"
 msgid "Autoadmin properties"
 msgstr "Свойства за автоматично администриране"
 
-#: settings.py:12
+#: settings.py:11
 msgid "Sets the email of the automatically created super user account."
 msgstr ""
 "Задава електронната поща на автоматично създадения свръхпотребителски "
 "акаунт."
 
-#: settings.py:18
+#: settings.py:16
 msgid ""
 "The password of the automatically created super user account. If it is equal"
 " to None, the password is randomly generated."
@@ -63,7 +63,7 @@ msgstr ""
 "Паролата на автоматично създадения свръхпотребителски акаунт. Ако е равна на"
 " None, паролата се генерира на случаен принцип."
 
-#: settings.py:25
+#: settings.py:22
 msgid "The username of the automatically created super user account."
 msgstr ""
 "Потребителското име на автоматично създадения свръхпотребителски акаунт."

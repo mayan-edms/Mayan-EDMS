@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2019-04-14 04:06+0000\n"
 "Last-Translator: e6bc1d20d3f0031709c3c11db1061ebc_be0a371 <8b4e580508477646e97982ebad39e3af_312311>, 2020\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
@@ -49,12 +49,12 @@ msgstr "Wachtwoord-hash"
 msgid "Autoadmin properties"
 msgstr "Autoadmin eigenschappen"
 
-#: settings.py:12
+#: settings.py:11
 msgid "Sets the email of the automatically created super user account."
 msgstr ""
 "Stelt de e-mail in van het automatisch aangemaakte supergebruikersaccount."
 
-#: settings.py:18
+#: settings.py:16
 msgid ""
 "The password of the automatically created super user account. If it is equal"
 " to None, the password is randomly generated."
@@ -62,7 +62,7 @@ msgstr ""
 "Het wachtwoord van het automatisch aangemaakte supergebruikersaccount. Als "
 "het gelijk is aan \"None\", wordt het wachtwoord willekeurig gegenereerd."
 
-#: settings.py:25
+#: settings.py:22
 msgid "The username of the automatically created super user account."
 msgstr ""
 "De gebruikersnaam van het automatisch aangemaakte supergebruikersaccount."

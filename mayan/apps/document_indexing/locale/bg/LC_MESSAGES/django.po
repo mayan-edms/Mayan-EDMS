@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-10-02 19:37+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
@@ -89,11 +89,11 @@ msgstr "Възстановяване на индекс"
 msgid "Deletes and creates from scratch all the document indexes."
 msgstr "Изтриване и създаване от нулата на всички индекси за документа."
 
-#: links.py:53 views.py:446
+#: links.py:53 views.py:453
 msgid "Rebuild indexes"
 msgstr "Възстановяване на индекси"
 
-#: links.py:64 views.py:481
+#: links.py:64 views.py:488
 msgid "Reset indexes"
 msgstr "Нулиране на индекси"
 
@@ -412,45 +412,45 @@ msgstr "Това може да означава, че не са създаден
 msgid "There are no index instances available."
 msgstr "Няма налични моменти на индексиране."
 
-#: views.py:377
+#: views.py:372
 #, python-format
 msgid "Navigation: %s"
 msgstr "Навигация: %s"
 
-#: views.py:382
+#: views.py:378
 #, python-format
 msgid "Contents for index: %s"
 msgstr "Съдържание на индекса: %s"
 
-#: views.py:425
+#: views.py:432
 msgid ""
 "Assign the document type of this document to an index to have it appear in "
 "instances of those indexes organization units. "
 msgstr "Задайте типа на този документ в индекс, за да се появи в моменти на организационните единици на тези индекси."
 
-#: views.py:430
+#: views.py:437
 msgid "This document is not in any index"
 msgstr "Този документ не е в нито един индекс"
 
-#: views.py:434
+#: views.py:441
 #, python-format
 msgid "Indexes nodes containing document: %s"
 msgstr "Индексира възли, съдържащи документ: %s"
 
-#: views.py:460
+#: views.py:467
 #, python-format
 msgid "%(count)d index queued for rebuild."
 msgid_plural "%(count)d indexes queued for rebuild."
 msgstr[0] "индекс %(count)d, който е поставен на опашка за възстановяване."
 msgstr[1] "%(count)d индекси на опашка за възстановяване."
 
-#: views.py:493
+#: views.py:500
 #, python-format
 msgid "%(count)d index reset."
 msgid_plural "%(count)d indexes reset."
 msgstr[0] "."
 msgstr[1] "%(count)d индекса са нулирани."
 
-#: views.py:506
+#: views.py:513
 msgid "Index templates for which their instances will be deleted."
 msgstr "Индексни шаблони, екземплярите на които ще бъдат изтрити."

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-09-06 08:41+0000\n"
 "Last-Translator: bwakkie <bwakkie@gmail.com>\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:25 events.py:6 permissions.py:6 settings.py:7
+#: apps.py:25 events.py:6 permissions.py:6 settings.py:10
 msgid "Authentication"
 msgstr "Authenticatie"
 
@@ -73,19 +73,19 @@ msgstr "Permanent"
 msgid "If selected, disables ending impersonation."
 msgstr "Indien geselecteerd, wordt het beëindigen van identiteit nabootsing uitgeschakeld."
 
-#: links.py:22
+#: links.py:25
 msgid "Logout"
 msgstr "Afmelden"
 
-#: links.py:27
+#: links.py:30
 msgid "Change password"
 msgstr "Pas wachtwoord aan"
 
-#: links.py:32 views.py:68
+#: links.py:35 views.py:68
 msgid "Impersonate user"
 msgstr "Nabootsen gebruiker"
 
-#: links.py:37 links.py:44
+#: links.py:40 links.py:47
 msgid "Set password"
 msgstr "Stel wachtwoord in"
 
@@ -93,19 +93,19 @@ msgstr "Stel wachtwoord in"
 msgid "Impersonate users"
 msgstr "Nabootsen gebruikers"
 
-#: settings.py:11
+#: settings.py:15
 msgid ""
 "Controls the mechanism used to authenticated user. Options are: username, "
 "email"
 msgstr "Beinvloed de manier waarop gebruikers worden geauthenticeerd. Opties zijn: gebruikersnaam, email"
 
-#: settings.py:18
+#: settings.py:22
 msgid ""
 "Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
 " in. Value is time in seconds."
 msgstr "De maximale tijd dat een gebruiker \"Onthoud mij\" gebruikt, aangemeld blijft. Waarde is in seconden."
 
-#: settings.py:25
+#: settings.py:29
 msgid ""
 "Remove the \"Forgot your password?\" link on the login form used to trigger "
 "the password reset."

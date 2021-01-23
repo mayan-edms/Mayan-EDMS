@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-10-12 18:44+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-12-09 16:28+0000\n"
 "Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -258,7 +258,7 @@ msgstr "Numer wersji: %(build_number)s"
 
 #: templates/appearance/about.html:93
 msgid "Released under the license:"
-msgstr "Opublikowane na podstawie licencji:"
+msgstr "Opublikowany na podstawie licencji:"
 
 #: templates/appearance/about.html:99
 #, python-format
@@ -266,7 +266,7 @@ msgid ""
 "\n"
 "                %(project_title)s is a free and open-source software brought to you with <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
 "            "
-msgstr "\n%(project_title)s jest darmowym oprogramowaniem typu open source dostarczonym z <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> przez Roberto Rosario i współpracowników."
+msgstr "\n%(project_title)s jest darmowym oprogramowaniem typu open source dostarczonym z <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> przez Roberto Rosario i współtwórców."
 
 #: templates/appearance/about.html:105
 #, python-format
@@ -274,7 +274,7 @@ msgid ""
 "\n"
 "                It takes great effort to make %(project_title)s as feature-rich as it is.\n"
 "            "
-msgstr "\nAby projekt %(project_title)s był tak bogaty w funkcje, jak jest, wymagane jest wiele pracy."
+msgstr "\nAby projekt %(project_title)s był tak bogaty w funkcje, jakie oferuje, wymaga wiele pracy."
 
 #: templates/appearance/about.html:111
 #, python-format
@@ -290,7 +290,7 @@ msgid ""
 "\n"
 "                The complete list of changes is available via the <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> or the short version <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
 "            "
-msgstr "\nPełna lista zmian jest dostępna w <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">informacjach o wersji %(icon_documentation)s</a> lub w krótkiej wersji <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Dziennik zmian %(icon_documentation)s</a> ."
+msgstr "\nPełna lista zmian jest dostępna w <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">informacjach o wersji %(icon_documentation)s</a> lub w krótkiej wersji <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">dziennika zmian%(icon_documentation)s</a> ."
 
 #: templates/appearance/about.html:123
 #, python-format
@@ -306,7 +306,7 @@ msgid ""
 "\n"
 "                If you found a bug or have a feature idea, visit the <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository %(icon_source_code)s</a>.\n"
 "            "
-msgstr "\nJeśli znalazłeś błąd lub masz pomysł na funkcję, odwiedź <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">forum %(icon_forum)s</a> lub otwórz zgłoszenie w <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">repozytorium kodu źródłowego %(icon_source_code)s</a> ."
+msgstr "\nJeśli znalazłeś błąd lub masz pomysł na dodatkową funkcję w programie, odwiedź <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">forum %(icon_forum)s</a> lub otwórz zgłoszenie w <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">repozytorium kodu źródłowego %(icon_source_code)s</a> ."
 
 #: templates/appearance/about.html:134
 #, python-format

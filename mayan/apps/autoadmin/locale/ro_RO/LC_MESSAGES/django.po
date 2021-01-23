@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2019-04-14 04:06+0000\n"
 "Last-Translator: Harald Ersch, 2019\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -50,11 +50,11 @@ msgstr "Hash pt. parola"
 msgid "Autoadmin properties"
 msgstr "Proprietăți autoadmin"
 
-#: settings.py:12
+#: settings.py:11
 msgid "Sets the email of the automatically created super user account."
 msgstr "Setează e-mailul contului de superutilizator creat automat."
 
-#: settings.py:18
+#: settings.py:16
 msgid ""
 "The password of the automatically created super user account. If it is equal"
 " to None, the password is randomly generated."
@@ -62,7 +62,7 @@ msgstr ""
 "Parola contului de superutilizator creat automat. Dacă este egală cu None, "
 "parola este generată aleator."
 
-#: settings.py:25
+#: settings.py:22
 msgid "The username of the automatically created super user account."
 msgstr "Numele de utilizator al contului de superutilizator creat automat."
 

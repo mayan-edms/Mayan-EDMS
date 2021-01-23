@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# pyrotech <anastasios@tutamail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-09-27 08:36+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-12-27 16:14+0000\n"
+"Last-Translator: pyrotech <anastasios@tutamail.com>\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,75 +21,75 @@ msgstr ""
 
 #: apps.py:59 events.py:5 permissions.py:5 settings.py:7
 msgid "Appearance"
-msgstr "Παρουσιαστικό"
+msgstr "Εμφάνιση"
 
 #: dependencies.py:8
 msgid "Lato font"
-msgstr ""
+msgstr "Lato font"
 
 #: dependencies.py:12
 msgid "Bootstrap"
-msgstr ""
+msgstr "Bootstrap"
 
 #: dependencies.py:16
 msgid "Bootswatch"
-msgstr ""
+msgstr "Bootswatch"
 
 #: dependencies.py:30
 msgid "Fancybox"
-msgstr ""
+msgstr "Fancybox"
 
 #: dependencies.py:34
 msgid "FontAwesome"
-msgstr ""
+msgstr "FontAwesome"
 
 #: dependencies.py:38
 msgid "jQuery"
-msgstr ""
+msgstr "jQuery"
 
 #: dependencies.py:41
 msgid "JQuery Form"
-msgstr ""
+msgstr "JQuery Form"
 
 #: dependencies.py:45
 msgid "jQuery Lazy Load"
-msgstr ""
+msgstr "jQuery Lazy Load"
 
 #: dependencies.py:49
 msgid "JQuery Match Height"
-msgstr ""
+msgstr "JQuery Match Height"
 
 #: dependencies.py:53
 msgid "Select 2"
-msgstr ""
+msgstr "Select 2"
 
 #: dependencies.py:57
 msgid "Toastr"
-msgstr ""
+msgstr "Toastr"
 
 #: dependencies.py:60
 msgid "URI.js"
-msgstr ""
+msgstr "URI.js"
 
 #: events.py:8
 msgid "Theme created"
-msgstr ""
+msgstr "Το θέμα δημιουργήθηκε"
 
 #: events.py:11
 msgid "Theme edited"
-msgstr ""
+msgstr "Το θέμα τροποποιήθηκε"
 
 #: links.py:15
 msgid "Theme settings"
-msgstr ""
+msgstr "Ρυθμίσεις θέματος"
 
 #: links.py:20
 msgid "Edit theme settings"
-msgstr ""
+msgstr "Τροποποίηση ρυθμίσεων θέματος"
 
 #: links.py:27 views.py:47
 msgid "Create new theme"
-msgstr ""
+msgstr "Δημιουργία νέου θέματος"
 
 #: links.py:33
 msgid "Delete"
@@ -100,11 +101,11 @@ msgstr "Τροποποίηση"
 
 #: links.py:43 links.py:47 models.py:25 views.py:111
 msgid "Themes"
-msgstr ""
+msgstr "Θέματα"
 
 #: models.py:12
 msgid "A short text describing the theme."
-msgstr ""
+msgstr "Σύντομη περιγραφή θέματος."
 
 #: models.py:13
 msgid "Label"
@@ -122,7 +123,7 @@ msgstr ""
 
 #: models.py:24 models.py:60
 msgid "Theme"
-msgstr ""
+msgstr "Θέμα"
 
 #: models.py:56
 msgid "User"

@@ -4,13 +4,15 @@
 # 
 # Translators:
 # Translators:
+# Marwan Rahhal <Marwanr@sssit.net>, 2020
+# WM Shinkada <shinkadawasim@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-04-28 03:38+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-12-24 00:42+0000\n"
+"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>\n"
 "Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,39 +22,39 @@ msgstr ""
 
 #: apps.py:43 events.py:5 links.py:32
 msgid "Checkouts"
-msgstr ""
+msgstr "المخرجات"
 
-#: dashboard_widgets.py:14 views.py:181
+#: dashboard_widgets.py:14 views.py:182
 msgid "Checked out documents"
-msgstr ""
+msgstr "الوثائق التي تم إستخراجها"
 
 #: events.py:8
 msgid "Document automatically checked in"
-msgstr "Document automatically checked in"
+msgstr "إدخال الوثيقة تلقائيًا"
 
 #: events.py:12
 msgid "Document checked in"
-msgstr "Document checked in"
+msgstr "إدخال الوثيقة "
 
 #: events.py:15
 msgid "Document checked out"
-msgstr "Document checked out"
+msgstr "إستخراج الوثيقة"
 
 #: events.py:18
 msgid "Document forcefully checked in"
-msgstr "Document forcefully checked in"
+msgstr "إدخال الوثيقة بشكل إجباري"
 
 #: exceptions.py:15
 msgid "Document not checked out."
-msgstr ""
+msgstr "لم يتم إستخراج الوثيقة."
 
 #: exceptions.py:23
 msgid "Document already checked out."
-msgstr "Document already checked out."
+msgstr "تم إستخراج الوثيقة"
 
 #: forms.py:26
 msgid "Document status"
-msgstr ""
+msgstr "حالة الوثيقة"
 
 #: forms.py:37 models.py:41 models.py:133
 msgid "User"
@@ -60,179 +62,179 @@ msgstr "مستخدم"
 
 #: forms.py:41
 msgid "Check out time"
-msgstr ""
+msgstr "تحقق من الوقت"
 
 #: forms.py:46
 msgid "Check out expiration"
-msgstr ""
+msgstr "تحقق من انتهاء الصلاحية"
 
 #: forms.py:51
 msgid "New versions allowed?"
-msgstr ""
+msgstr "الإصدارات الجديدة المسموح بها؟"
 
 #: forms.py:52
 msgid "Yes"
-msgstr "نعم"
+msgstr "قبول"
 
 #: forms.py:52
 msgid "No"
-msgstr "لا"
+msgstr "رفض"
 
 #: links.py:39
 msgid "Check out document"
-msgstr ""
+msgstr "إستخراج الوثيقة"
 
 #: links.py:43
 msgid "Check out"
-msgstr ""
+msgstr "إرسال التعديلات"
 
 #: links.py:50
 msgid "Check in document"
-msgstr ""
+msgstr "إدخال الوثيقة"
 
 #: links.py:54
 msgid "Check in"
-msgstr ""
+msgstr "تحقق في"
 
 #: links.py:60
 msgid "Check in/out"
-msgstr ""
+msgstr "التحقق"
 
 #: literals.py:10
 msgid "Checked out"
-msgstr ""
+msgstr "تم الفحص"
 
 #: literals.py:11
 msgid "Checked in/available"
-msgstr ""
+msgstr "التحقق المتاح"
 
 #: models.py:28 models.py:111
 msgid "Document"
-msgstr ""
+msgstr "الوثيقة"
 
 #: models.py:31
 msgid "Check out date and time"
-msgstr ""
+msgstr "التحقق من الوقت والتاريخ"
 
 #: models.py:35
 msgid "Amount of time to hold the document checked out in minutes."
-msgstr "Amount of time to hold the document checked out in minutes."
+msgstr "المدة اللازمة للاحتفاظ بالوثيقة التي تم استخراجها بالدقائق."
 
 #: models.py:37
 msgid "Check out expiration date and time"
-msgstr "Check out expiration date and time"
+msgstr "التحقق من تاريخ انتهاء الصلاحية للوقت والتاريخ"
 
 #: models.py:46
 msgid "Do not allow new version of this document to be uploaded."
-msgstr "Do not allow new version of this document to be uploaded."
+msgstr "لا يمكن تحميل نسخة جديدة من الوثيقة"
 
 #: models.py:48
 msgid "Block new version upload"
-msgstr ""
+msgstr "منع تحميل الإصدار الجديد"
 
 #: models.py:56 permissions.py:5
 msgid "Document checkout"
-msgstr "Document checkout"
+msgstr "الوثيقة النهائية"
 
 #: models.py:57
 msgid "Document checkouts"
-msgstr ""
+msgstr "إستخراج الوثيقة"
 
 #: models.py:65
 msgid "Check out expiration date and time must be in the future."
-msgstr ""
+msgstr "التحقق من صلاحية الوقت والتاريخ، يجب ان يكون في المستقبل "
 
 #: models.py:117
 msgid "New version block"
-msgstr ""
+msgstr "كتلة الإصدار الجديد"
 
 #: models.py:118
 msgid "New version blocks"
-msgstr ""
+msgstr "كتل الإصدار الجديد"
 
 #: models.py:138
 msgid "Checkout time and date"
-msgstr ""
+msgstr "وقت وتاريخ الخروج"
 
 #: models.py:143
 msgid "Checkout expiration"
-msgstr ""
+msgstr "انتهاء صلاحية الخروج"
 
 #: permissions.py:8
 msgid "Check in documents"
-msgstr "Check in documents"
+msgstr "إدخال الوثيقة"
 
 #: permissions.py:11
 msgid "Forcefully check in documents"
-msgstr "Forcefully check in documents"
+msgstr "إدخال الوثائق"
 
 #: permissions.py:14
 msgid "Check out documents"
-msgstr "Check out documents"
+msgstr "الوثائق النهائية"
 
 #: permissions.py:17
 msgid "Check out details view"
-msgstr ""
+msgstr "تحقق من عرض التفاصيل"
 
 #: queues.py:11
 msgid "Checkouts periodic"
-msgstr ""
+msgstr "الخروج الدوري"
 
 #: queues.py:15
 msgid "Check expired checkouts"
-msgstr ""
+msgstr "تحقق من الخروج منتهية الصلاحية"
 
 #: serializers.py:29
 msgid "Primary key of the document to be checked out."
-msgstr ""
+msgstr "المفتاح الأساسي للمستند المراد سحبه."
 
 #: views.py:35
 #, python-format
 msgid "Check in %(count)d document"
 msgid_plural "Check in %(count)d documents"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "إيداع المستندات %(count)d"
+msgstr[1] "إيداع مستند %(count)d"
+msgstr[2] "إيداع المستندات %(count)d"
+msgstr[3] "إيداع المستندات %(count)d"
+msgstr[4] "إيداع المستندات %(count)d"
+msgstr[5] "إيداع الوثائق%(count)d"
 
 #: views.py:48
 #, python-format
 msgid "Check in document: %s"
-msgstr ""
+msgstr "إدخال الوثيقة: %s"
 
 #: views.py:106
 #, python-format
 msgid "Checkout %(count)d document"
 msgid_plural "Checkout %(count)d documents"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "سحب المستندات %(count)d"
+msgstr[1] "تسجيل الخروج %(count)d المستند"
+msgstr[2] "سحب المستندات %(count)d"
+msgstr[3] "سحب المستندات %(count)d"
+msgstr[4] "سحب المستندات %(count)d"
+msgstr[5] "سحب الوثائق%(count)d"
 
 #: views.py:119
 #, python-format
 msgid "Check out document: %s"
-msgstr "Check out document: %s"
+msgstr "سحب الوثيقة: %s"
 
 #: views.py:158
 #, python-format
 msgid "Check out details for document: %s"
-msgstr "Check out details for document: %s"
+msgstr "التأكد من تفاصيل الوثيقة: %s"
 
-#: views.py:177
+#: views.py:178
 msgid ""
 "Checking out a document, blocks certain operations for a predetermined "
 "amount of time."
-msgstr ""
+msgstr "سحب وثيقة، يمنع عمليات معينة لفترة زمنية محددة مسبقًا."
 
-#: views.py:180
+#: views.py:181
 msgid "No documents have been checked out"
-msgstr ""
+msgstr "لم يتم إستخراج أوثائق"
 
 #: widgets.py:23
 msgid "Amount"
-msgstr ""
+msgstr "كمية"

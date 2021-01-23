@@ -9,13 +9,18 @@ class ThemeTestCase(ThemeTestMixin, BaseTestCase):
     _test_event_object_name = 'test_theme'
 
     def test_theme_create(self):
+        self._clear_events()
+
         self._create_test_theme()
 
         event = self._get_test_object_event()
         self.assertEqual(event.verb, event_theme_created.id)
 
-    def test_document_remove(self):
+    def test_theme_edit(self):
         self._create_test_theme()
+
+        self._clear_events()
+
         self._edit_test_theme()
 
         event = self._get_test_object_event()

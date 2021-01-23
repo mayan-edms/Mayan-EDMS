@@ -2,6 +2,7 @@ from mayan.apps.events.classes import EventManagerMethodAfter
 from mayan.apps.events.decorators import method_event
 
 from ..events import event_trashed_document_restored
+
 from ..managers import TrashCanManager
 
 from .document_models import Document

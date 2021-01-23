@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Alex Chigrin <chalex84@mail.ru>, 2020\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -85,18 +85,18 @@ msgstr ""
 "Автоматически разрешать всем установленным приложениям делать записи в "
 "журнале."
 
-#: settings.py:20
+#: settings.py:19
 msgid ""
 "List of handlers to which logging messages will be sent. Options are: {}"
 msgstr ""
 "Список обработчиков, которым будут отправляться сообщения журнала. Возможные"
 " варианты: {}"
 
-#: settings.py:26
+#: settings.py:25
 msgid "Level for the logging system."
 msgstr "Уровень для системы логирования"
 
-#: settings.py:32
+#: settings.py:31
 msgid "Path to the logfile that will track errors during production."
 msgstr ""
 "Путь к файлу журнала, который будет отслеживать ошибки во время работы."

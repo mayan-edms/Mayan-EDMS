@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-09-27 06:46+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-12-16 18:17+0000\n"
+"Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -78,8 +78,8 @@ msgid "Email link"
 msgstr "Email link"
 
 #: links.py:35
-msgid "Create mailing profile "
-msgstr "Creați un profil de corespondență"
+msgid "Create mailing profile"
+msgstr "Creați un profil de corespondență electronică"
 
 #: links.py:41
 msgid "Delete"
@@ -284,19 +284,19 @@ msgstr "Utilizați un profil de corespondență"
 msgid "Send document"
 msgstr "Trimiteți un document"
 
-#: settings.py:14
+#: settings.py:15
 msgid "Template for the document email form subject line."
 msgstr "Șablon pentru subiectul liniei de subiecte a documentului."
 
-#: settings.py:19
+#: settings.py:21
 msgid "Template for the document email form body text. Can include HTML."
 msgstr "Șablon pentru textul corpului mail-ului. Poate include HTML."
 
-#: settings.py:24
+#: settings.py:27
 msgid "Template for the document link email form subject line."
 msgstr "Șablon pentru subiectul liniei de e-mail a documentului."
 
-#: settings.py:29
+#: settings.py:33
 msgid "Template for the document link email form body text. Can include HTML."
 msgstr "Șablon pentru corpul formularul de e-mail pentru link-ul documentului. Poate include HTML."
 

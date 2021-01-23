@@ -4,14 +4,15 @@
 # 
 # Translators:
 # Translators:
+# Marwan Rahhal <Marwanr@sssit.net>, 2020
 # Mohammed ALDOUB <voulnet@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-12-24 00:42+0000\n"
+"Last-Translator: Marwan Rahhal <Marwanr@sssit.net>\n"
 "Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,7 +26,7 @@ msgstr "الصلاحيات"
 
 #: apps.py:99 models.py:142
 msgid "Group count"
-msgstr ""
+msgstr "عدد المجموعة"
 
 #: classes.py:85
 msgid "Insufficient permissions."
@@ -33,23 +34,23 @@ msgstr "صلاحيات غير كافية."
 
 #: dashboard_widgets.py:13
 msgid "Total roles"
-msgstr ""
+msgstr "إجمالي الأدوار"
 
 #: events.py:10
 msgid "Role created"
-msgstr ""
+msgstr "إنشاء الدور"
 
 #: events.py:13
 msgid "Role edited"
-msgstr ""
+msgstr "تعديل الدور"
 
 #: links.py:14 links.py:38 models.py:115 views.py:171
 msgid "Roles"
-msgstr "Roles"
+msgstr "أدوار"
 
 #: links.py:21 views.py:51
 msgid "Create new role"
-msgstr ""
+msgstr "أنشئ دورًا جديدًا"
 
 #: links.py:27
 msgid "Delete"
@@ -57,19 +58,19 @@ msgstr "حذف"
 
 #: links.py:32
 msgid "Edit"
-msgstr "تحرير"
+msgstr "تعديل"
 
 #: links.py:43 models.py:107
 msgid "Groups"
-msgstr "مجموعات"
+msgstr "المجموعات"
 
 #: links.py:50
 msgid "Role permissions"
-msgstr ""
+msgstr "أذونات الدور"
 
 #: models.py:26
 msgid "Namespace"
-msgstr ""
+msgstr "مساحة الاسم"
 
 #: models.py:27
 msgid "Name"
@@ -77,11 +78,11 @@ msgstr "اسم"
 
 #: models.py:34
 msgid "Permission"
-msgstr ""
+msgstr "الإذن"
 
 #: models.py:99
 msgid "A short text describing the role."
-msgstr ""
+msgstr "وصف مختصر"
 
 #: models.py:100 search.py:14
 msgid "Label"
@@ -89,11 +90,11 @@ msgstr "العنوان"
 
 #: models.py:114
 msgid "Role"
-msgstr ""
+msgstr "دور"
 
 #: models.py:150
 msgid "Permission count"
-msgstr ""
+msgstr "عدد الأذونات"
 
 #: permissions.py:8
 msgid "Create roles"
@@ -113,72 +114,72 @@ msgstr "عرض الأدوار"
 
 #: search.py:18
 msgid "Group name"
-msgstr ""
+msgstr "إسم المجموعة"
 
 #: serializers.py:44
 msgid ""
 "Comma separated list of groups primary keys to add to, or replace in this "
 "role."
-msgstr ""
+msgstr "قائمة مجموعات مفصولة بفواصل المفاتيح الأساسية لإضافتها أو استبدالها في هذا الدور."
 
 #: serializers.py:51
 msgid "Comma separated list of permission primary keys to grant to this role."
-msgstr ""
+msgstr "قائمة مفصولة بفاصلة للمفاتيح الأساسية للإذن لمنح هذا الدور."
 
 #: serializers.py:88
 #, python-format
 msgid "No such permission: %s"
-msgstr ""
+msgstr "هذه الصلاحية غير موجودة: %s"
 
 #: views.py:30
 msgid "Available roles"
-msgstr ""
+msgstr "الأدوار المتاحة"
 
 #: views.py:31
 msgid "Group roles"
-msgstr ""
+msgstr "أدوار المجموعة"
 
 #: views.py:40
 #, python-format
 msgid "Roles of group: %s"
-msgstr ""
+msgstr "أدوار المجموعة: %s"
 
 #: views.py:82
 msgid "Available groups"
-msgstr ""
+msgstr "المجموعات المتاحة"
 
 #: views.py:83
 msgid "Role groups"
-msgstr ""
+msgstr "أدوار المجموعات"
 
 #: views.py:92
 #, python-format
 msgid "Groups of role: %s"
-msgstr ""
+msgstr "أدوار المجموعات: %s"
 
 #: views.py:94
 msgid ""
 "Add groups to be part of a role. They will inherit the role's permissions "
 "and access controls."
-msgstr ""
+msgstr "أضف مجموعات لتكون جزءًا من دور. سيرثون أذونات الدور وضوابط الوصول."
 
 #: views.py:107
 msgid "Available permissions"
-msgstr ""
+msgstr "الصلاحيات المتاحة"
 
 #: views.py:108
 msgid "Granted permissions"
-msgstr ""
+msgstr "الصلاحيات الممنوحة"
 
 #: views.py:143
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
-msgstr ""
+msgstr "سيتم تطبيق الأذونات الممنوحة هنا على النظام بأكمله وجميع المتغيرات"
 
 #: views.py:146
 #, python-format
 msgid "Permissions for role: %s"
-msgstr ""
+msgstr "أذونات الدور: %s"
 
 #: views.py:163
 msgid ""
@@ -186,8 +187,8 @@ msgid ""
 "role permissions for the entire system. Roles can also part of access "
 "controls lists. Access controls list are permissions granted to a role for "
 "specific objects which its group members inherit."
-msgstr ""
+msgstr "الأدوار هي وحدات تفويض. تحتوي على مجموعات مستخدمين ترث أذونات الدور للنظام بأكمله. يمكن أيضًا أن تكون الأدوار جزءًا من قوائم ضوابط الوصول. قائمة عناصر التحكم في الوصول هي أذونات تُمنح لدور لمتغيرات معينة يرثها أعضاء المجموعة."
 
 #: views.py:170
 msgid "There are no roles"
-msgstr ""
+msgstr "لا توجد أدوار"

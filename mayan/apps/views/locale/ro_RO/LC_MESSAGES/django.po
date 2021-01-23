@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-09-27 06:47+0000\n"
 "Last-Translator: Harald Ersch, 2020\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/teams/13584/ro_RO/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:15 settings.py:5
+#: apps.py:15 settings.py:7
 msgid "Views"
 msgstr "Vizualizări"
 
@@ -106,16 +106,16 @@ msgstr "Obiectul tip %(object)s nu a fost actualizat, eroare: %(error)s."
 msgid "%(object)s updated successfully."
 msgstr "Obiectul tip %(object)s a fost actualizat cu succes."
 
-#: mixins.py:319
+#: mixins.py:324
 #, python-format
 msgid "No %(verbose_name)s found matching the query"
 msgstr "Nu am găsit %(verbose_name)s care să corespundă interogării"
 
-#: mixins.py:433
+#: mixins.py:438
 msgid "Object"
 msgstr "Obiect"
 
-#: settings.py:11
+#: settings.py:12
 msgid "The number objects that will be displayed per page."
 msgstr "Obiectele numerice care vor fi afișate pe pagină."
 

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-26 13:25+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2020-03-28 21:26+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:25 events.py:6 permissions.py:6 settings.py:7
+#: apps.py:25 events.py:6 permissions.py:6 settings.py:10
 msgid "Authentication"
 msgstr "Autentificare"
 
@@ -69,19 +69,19 @@ msgstr "Permanent"
 msgid "If selected, disables ending impersonation."
 msgstr "Dacă este selectat, dezactivează încetarea preluării rolului."
 
-#: links.py:22
+#: links.py:25
 msgid "Logout"
 msgstr "Deconectare"
 
-#: links.py:27
+#: links.py:30
 msgid "Change password"
 msgstr "Schimbați parola"
 
-#: links.py:32 views.py:68
+#: links.py:35 views.py:68
 msgid "Impersonate user"
 msgstr "Schimb de rol a utilizatorului"
 
-#: links.py:37 links.py:44
+#: links.py:40 links.py:47
 msgid "Set password"
 msgstr "Seteaza parola"
 
@@ -89,19 +89,19 @@ msgstr "Seteaza parola"
 msgid "Impersonate users"
 msgstr "Schimb de rol pentru utilizatori"
 
-#: settings.py:11
+#: settings.py:15
 msgid ""
 "Controls the mechanism used to authenticated user. Options are: username, "
 "email"
 msgstr "Controlează mecanismul utilizat pentru utilizatorul autentificat. Opțiunile sunt: numele de utilizator, e-mailul"
 
-#: settings.py:18
+#: settings.py:22
 msgid ""
 "Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
 " in. Value is time in seconds."
 msgstr "Timpul maxim pe care un utilizator îl dă clic pe caseta de selectare \"Reține-mă\" va rămâne logat. Valoarea este timpul în secunde."
 
-#: settings.py:25
+#: settings.py:29
 msgid ""
 "Remove the \"Forgot your password?\" link on the login form used to trigger "
 "the password reset."
