@@ -94,4 +94,5 @@
   better reflect the purpose of the field.
 - Add a ``RecentlyCreatedDocument`` proxy and associate the recent document
   columns to it.
-- Move the recently created document query calculation to it own model
+- Move the recently created document query calculation to it own model.
+- Add support for search model proxy registration.

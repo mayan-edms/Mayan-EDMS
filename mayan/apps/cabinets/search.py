@@ -23,6 +23,9 @@ cabinet_search = SearchModel(
     permission=permission_cabinet_view,
     serializer_path='mayan.apps.cabinets.serializers.CabinetSerializer'
 )
+cabinet_search.add_proxy_model(
+    app_label='cabinets', model_name='Cabinet'
+)
 
 cabinet_search.add_model_field(field='label')
 

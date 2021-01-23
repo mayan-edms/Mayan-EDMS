@@ -18,6 +18,9 @@ index_instance_node_search = SearchModel(
     permission=permission_document_indexing_instance_view,
     serializer_path='mayan.apps.document_indexing.serializers.IndexInstanceNodeSerializer'
 )
+index_instance_node_search.add_proxy_model(
+    app_label='document_indexing', model_name='IndexInstanceNode'
+)
 
 index_instance_node_search.add_model_field(
     field='value', label=_('Value')

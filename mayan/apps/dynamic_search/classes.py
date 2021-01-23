@@ -130,7 +130,7 @@ class SearchModel(AppsModuleLoaderMixin):
 
         for search_model in SearchModel.all():
             post_save.connect(
-                dispatch_uid='search_handler_index_instance',
+                dispatch_uid='search_handler_index_instance_{}'.format(search_model),
                 receiver=handler_index_instance,
                 sender=search_model.model
             )
@@ -140,6 +140,18 @@ class SearchModel(AppsModuleLoaderMixin):
                 sender=search_model.model,
                 weak=False
             )
+            for proxy in search_model.proxies:
+                post_save.connect(
+                    dispatch_uid='search_handler_index_instance_{}'.format(search_model),
+                    receiver=handler_index_instance,
+                    sender=proxy
+                )
+                pre_delete.connect(
+                    dispatch_uid='search_handler_deindex_instance_{}'.format(search_model),
+                    receiver=handler_factory_deindex_instance(search_model=search_model),
+                    sender=proxy,
+                    weak=False
+                )
 
             search_model._initialize()
 
@@ -168,17 +180,18 @@ class SearchModel(AppsModuleLoaderMixin):
 
     def __init__(
         self, app_label, model_name, serializer_path, label=None,
-        list_mode=None, permission=None, queryset=None
+        list_mode=None, permission=None, queryset=None,
     ):
+        self._label = label
+        #self._model = None  # Lazy
         self.app_label = app_label
         self.list_mode = list_mode or LIST_MODE_CHOICE_LIST
         self.model_name = model_name
-        self.search_fields = []
-        self._model = None  # Lazy
-        self._label = label
-        self.serializer_path = serializer_path
+        self._proxies = []  # Lazy
         self.permission = permission
         self.queryset = queryset
+        self.search_fields = []
+        self.serializer_path = serializer_path
         self.__class__._registry[self.get_full_name()] = self
 
     def __repr__(self):
@@ -217,6 +230,15 @@ class SearchModel(AppsModuleLoaderMixin):
         search_field = SearchField(self, *args, **kwargs)
         self.search_fields.append(search_field)
 
+    def add_proxy_model(self, app_label, model_name):
+        self._proxies.append(
+            {
+                'app_label': app_label, 'model_name': model_name
+            }
+        )
+
+        self.__class__._registry['{}.{}'.format(app_label, model_name)] = self
+
     def get_fields_simple_list(self):
         """
         Returns a list of the fields for the SearchModel
@@ -230,7 +252,7 @@ class SearchModel(AppsModuleLoaderMixin):
         return sorted(result, key=lambda x: x[1])
 
     def get_full_name(self):
-        return '%s.%s' % (self.app_label, self.model_name)
+        return '{}.{}'.format(self.app_label, self.model_name)
 
     def get_queryset(self):
         if self.queryset:
@@ -252,15 +274,24 @@ class SearchModel(AppsModuleLoaderMixin):
 
     @cached_property
     def model(self):
-        if not self._model:
-            self._model = apps.get_model(
-                app_label=self.app_label, model_name=self.model_name
-            )
-        return self._model
+        return apps.get_model(
+            app_label=self.app_label, model_name=self.model_name
+        )
 
     @cached_property
     def pk(self):
         return self.get_full_name()
+
+    @cached_property
+    def proxies(self):
+        result = []
+        for proxy in self._proxies:
+            result.append(
+                apps.get_model(
+                    app_label=proxy['app_label'], model_name=proxy['model_name']
+                )
+            )
+        return result
 
     def sieve(self, field_map, instance):
         """

@@ -25,6 +25,7 @@ document_search = SearchModel(
     permission=permission_document_view,
     serializer_path='mayan.apps.documents.serializers.document_serializers.DocumentSerializer'
 )
+document_search.add_proxy_model(app_label='documents', model_name='Document')
 
 document_search.add_model_field(
     field='document_type__label', label=_('Document type label')
@@ -52,6 +53,10 @@ document_file_search = SearchModel(
     permission=permission_document_file_view,
     serializer_path='mayan.apps.documents.serializers.document_file_serializers.DocumentFileSerializer'
 )
+document_file_search.add_proxy_model(
+    app_label='documents', model_name='DocumentFile'
+)
+
 document_file_search.add_model_field(
     field='document__document_type__label',
     label=_('Document type label')
@@ -74,6 +79,9 @@ document_file_page_search = SearchModel(
     list_mode=LIST_MODE_CHOICE_ITEM, model_name='DocumentFilePageSearchResult',
     permission=permission_document_file_view,
     serializer_path='mayan.apps.documents.serializers.document_file_serializers.DocumentFilePageSerializer'
+)
+document_file_page_search.add_proxy_model(
+    app_label='documents', model_name='DocumentFilePage'
 )
 
 document_file_page_search.add_model_field(
@@ -111,6 +119,10 @@ document_version_search = SearchModel(
     permission=permission_document_version_view,
     serializer_path='mayan.apps.documents.serializers.document_version_serializers.DocumentVersionSerializer'
 )
+document_version_search.add_proxy_model(
+    app_label='documents', model_name='DocumentVersion'
+)
+
 document_version_search.add_model_field(field='comment')
 document_version_search.add_model_field(
     field='document__document_type__label',
@@ -131,6 +143,9 @@ document_version_page_search = SearchModel(
     model_name='DocumentVersionPageSearchResult',
     permission=permission_document_version_view,
     serializer_path='mayan.apps.documents.serializers.document_version_serializers.DocumentVersionPageSerializer'
+)
+document_version_page_search.add_proxy_model(
+    app_label='documents', model_name='DocumentVersionPage'
 )
 
 document_version_page_search.add_model_field(
