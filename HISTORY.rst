@@ -122,3 +122,6 @@
 - Add duplication backend support to the duplicates app.
 - Add duplicates app API.
 - Add support for search model proxy registration.
+- Remove the ``views`` arguments from the SourceColumn class. Use models
+  proxies instead to customize the columns of a model based on the view
+  displayed.

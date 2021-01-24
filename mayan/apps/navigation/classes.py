@@ -680,11 +680,7 @@ class SourceColumn:
 
         current_view_name = get_current_view_name(request=request)
         for column in columns:
-            if column.views:
-                if current_view_name in column.views:
-                    final_result.append(column)
-            else:
-                final_result.append(column)
+            final_result.append(column)
 
         return final_result
 
@@ -693,7 +689,7 @@ class SourceColumn:
         help_text=None, html_extra_classes=None, include_label=False,
         is_attribute_absolute_url=False, is_object_absolute_url=False,
         is_identifier=False, is_sortable=False, kwargs=None, label=None,
-        order=None, sort_field=None, views=None, widget=None,
+        order=None, sort_field=None, widget=None,
         widget_condition=None
     ):
         self._label = label
@@ -712,7 +708,6 @@ class SourceColumn:
         self.include_label = include_label
         self.order = order or 0
         self.sort_field = sort_field
-        self.views = views or []
         self.widget = widget
         self.widget_condition = widget_condition
 
@@ -832,10 +827,6 @@ class SourceColumn:
         return '?{}'.format(querystring.urlencode())
 
     def resolve(self, context):
-        if self.views:
-            if get_current_view_name(request=context.request) not in self.views:
-                return
-
         if self.attribute:
             result = resolve_attribute(
                 attribute=self.attribute, kwargs=self.kwargs,
