@@ -1,10 +1,15 @@
 from django.contrib import admin
 
-from .models import DuplicatedDocument
+from .models import DuplicateBackendEntry, StoredDuplicateBackend
 
 
-@admin.register(DuplicatedDocument)
-class DuplicatedDocumentAdmin(admin.ModelAdmin):
+@admin.register(DuplicateBackendEntry)
+class DuplicateBackendEntryAdmin(admin.ModelAdmin):
+    list_display = ('document',)
+
+
+@admin.register(StoredDuplicateBackend)
+class StoredDuplicateBackendAdmin(admin.ModelAdmin):
     list_display = (
-        'document', 'datetime_added'
+        'backend_path', 'backend_data'
     )

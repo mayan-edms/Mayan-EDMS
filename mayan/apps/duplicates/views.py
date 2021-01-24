@@ -12,7 +12,7 @@ from mayan.apps.views.generics import ConfirmView
 from mayan.apps.views.mixins import ExternalObjectMixin
 
 from .icons import icon_duplicated_document_list
-from .models import DuplicatedDocument
+from .models import DuplicateBackendEntry
 from .tasks import task_duplicates_scan_all
 
 __all__ = (
@@ -48,14 +48,14 @@ class DocumentDuplicatesListView(ExternalObjectMixin, DocumentListView):
         return context
 
     def get_source_queryset(self):
-        return DuplicatedDocument.objects.get_duplicates_of(
+        return DuplicateBackendEntry.objects.get_duplicates_of(
             document=self.external_object
         )
 
 
 class DuplicatedDocumentListView(DocumentListView):
     def get_document_queryset(self):
-        return DuplicatedDocument.objects.get_duplicated_documents(
+        return DuplicateBackendEntry.objects.get_duplicated_documents(
             permission=permission_document_view, user=self.request.user
         )
 

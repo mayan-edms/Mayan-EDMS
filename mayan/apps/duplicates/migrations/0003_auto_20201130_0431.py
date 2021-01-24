@@ -11,6 +11,10 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='duplicateddocument',
             name='document',
-            field=models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, related_name='duplicates', to='documents.Document', verbose_name='Document'),
+            field=models.OneToOneField(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name='duplicates', to='documents.Document',
+                verbose_name='Document'
+            ),
         ),
     ]

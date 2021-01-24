@@ -2,12 +2,12 @@ from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 
 from .mixins import (
-    DuplicatedDocumentsTestMixin, DuplicatedDocumentsViewsTestMixin
+    DuplicatedDocumentTestMixin, DuplicatedDocumentViewTestMixin
 )
 
 
 class DocumentsDuplicateListViewsTestCase(
-    DuplicatedDocumentsTestMixin, DuplicatedDocumentsViewsTestMixin,
+    DuplicatedDocumentTestMixin, DuplicatedDocumentViewTestMixin,
     GenericDocumentViewTestCase
 ):
     def test_document_duplicates_list_no_permission(self):
@@ -24,6 +24,10 @@ class DocumentsDuplicateListViewsTestCase(
         )
 
         response = self._request_test_document_duplicates_list_view()
+        self.assertContains(
+            response=response, status_code=200,
+            text=self.test_documents[0].label
+        )
         self.assertNotContains(
             response=response, status_code=200,
             text=self.test_documents[1].label
@@ -52,6 +56,10 @@ class DocumentsDuplicateListViewsTestCase(
         )
 
         response = self._request_test_document_duplicates_list_view()
+        self.assertContains(
+            response=response, status_code=200,
+            text=self.test_documents[0].label
+        )
         self.assertContains(
             response=response, status_code=200,
             text=self.test_documents[1].label
@@ -87,6 +95,10 @@ class DocumentsDuplicateListViewsTestCase(
         self.test_documents[1].delete()
 
         response = self._request_test_document_duplicates_list_view()
+        self.assertContains(
+            response=response, status_code=200,
+            text=self.test_documents[0].label
+        )
         self.assertNotContains(
             response=response, status_code=200,
             text=self.test_documents[1].label
@@ -94,7 +106,7 @@ class DocumentsDuplicateListViewsTestCase(
 
 
 class DuplicatedDocumentListViewsTestCase(
-    DuplicatedDocumentsTestMixin, DuplicatedDocumentsViewsTestMixin,
+    DuplicatedDocumentTestMixin, DuplicatedDocumentViewTestMixin,
     GenericDocumentViewTestCase
 ):
     def test_duplicated_document_list_no_permission(self):

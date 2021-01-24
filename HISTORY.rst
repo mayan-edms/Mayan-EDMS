@@ -94,5 +94,31 @@
   better reflect the purpose of the field.
 - Add a ``RecentlyCreatedDocument`` proxy and associate the recent document
   columns to it.
-- Move the recently created document query calculation to it own model.
+- Move the recently created document query calculation to it own model
+  manager.
+- Add the recently created document API.
+- Add favorite documents API.
+- Rename the ``misc_models.py`` module to ``duplicated_document_models.py``.
+- Split the ``document_api_views.py`` modules into ``document_api_views.py``
+  and ``trashed_document_api_views.py``.
+- Add date time field to the favorite documents models to ensure deterministic
+  ordering when deleting the oldest favorites.
+- Rename the setting ``DOCUMENTS_RECENT_ACCESS_COUNT`` to
+  ``DOCUMENTS_RECENTLY_ACCESSED_COUNT``, and ``DOCUMENTS_RECENT_ADDED_COUNT``
+  to ``DOCUMENTS_RECENTLY_CREATED_COUNT``. Config file migrations and
+  migration tests were added. Environment and supervisor settings need to be
+  manually updated.
+- Document stubs without a label will now display their ID as the label.
+  This allows documents without files or versions to be accessible via the
+  user interface.
+- Add the reusable ObjectActionAPIView API view. This is a view that can
+  execute an action on an object from a queryset from a POST request.
+- Improve proxy model menu link resolution. Proxy model don't need at least
+  one bound link anymore to trigger resolution of all the parent model links.
+  The inclusion logic is now reverse and defaults to exclusion. Menu need to
+  be configured explicitly enable to proxy model link resolution using the new
+  ``.add_proxy_inclusions(source)`` method.
+- Move the duplicated documents code to its own app.
+- Add duplication backend support to the duplicates app.
+- Add duplicates app API.
 - Add support for search model proxy registration.
