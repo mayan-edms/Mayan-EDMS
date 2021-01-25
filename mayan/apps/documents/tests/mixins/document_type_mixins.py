@@ -93,6 +93,7 @@ class DocumentTypeDeletionPoliciesViewTestMixin:
             }
         )
 
+
 class DocumentTypeFilenameGeneratorViewTestMixin:
     def _request_test_document_type_filename_generator_get_view(self):
         return self.get(

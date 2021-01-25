@@ -94,7 +94,7 @@
   better reflect the purpose of the field.
 - Add a ``RecentlyCreatedDocument`` proxy and associate the recent document
   columns to it.
-- Move the recently created document query calculation to it own model
+- Move the recently created document query calculation to its own model
   manager.
 - Add the recently created document API.
 - Add favorite documents API.
@@ -125,3 +125,4 @@
 - Remove the ``views`` arguments from the SourceColumn class. Use models
   proxies instead to customize the columns of a model based on the view
   displayed.
+- Add document type change workflow action.

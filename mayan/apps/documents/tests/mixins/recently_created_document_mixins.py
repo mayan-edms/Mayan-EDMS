@@ -8,4 +8,3 @@ class RecentlyCreatedDocumentAPIViewTestMixin:
 class RecentlyCreatedDocumentViewTestMixin:
     def _request_test_recently_created_document_list_view(self):
         return self.get(viewname='documents:document_recently_created_list')
-

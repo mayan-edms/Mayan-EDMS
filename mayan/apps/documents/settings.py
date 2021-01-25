@@ -34,7 +34,6 @@ from .setting_callbacks import (
 from .setting_migrations import DocumentsSettingMigration
 
 
-
 namespace = SettingNamespace(
     label=_('Documents'), migration_class=DocumentsSettingMigration,
     name='documents', version='0003'

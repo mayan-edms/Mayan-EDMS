@@ -121,6 +121,7 @@ class DocumentTestMixin:
         Layer.invalidate_cache()
 
         self.test_documents = []
+        self.test_document_types = []
 
         if self.auto_create_test_document_type:
             self._create_test_document_type()
@@ -133,17 +134,19 @@ class DocumentTestMixin:
             document_type.delete()
         super().tearDown()
 
-    def _create_test_document_stub(self):
+    def _create_test_document_stub(self, document_type=None):
         self.test_document_stub = Document.objects.create(
-            document_type=self.test_document_type, label='document_stub'
+            document_type=document_type or self.test_document_type,
+            label='document_stub'
         )
         self.test_document = self.test_document_stub
         self.test_documents.append(self.test_document)
 
-    def _create_test_document_type(self):
+    def _create_test_document_type(self, label=None):
         self.test_document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE_LABEL
+            label=label or TEST_DOCUMENT_TYPE_LABEL
         )
+        self.test_document_types.append(self.test_document_type)
 
     def _calculate_test_document_path(self):
         if not self.test_document_path:
@@ -159,14 +162,16 @@ class DocumentTestMixin:
                 'sample_documents', self.test_document_file_filename
             )
 
-    def _upload_test_document(self, label=None, _user=None):
+    def _upload_test_document(self, document_type=None, label=None, _user=None):
         self._calculate_test_document_path()
 
         if not label:
             label = self.test_document_filename
 
+        document_type = document_type or self.test_document_type
+
         with open(file=self.test_document_path, mode='rb') as file_object:
-            document, document_file = self.test_document_type.new_document(
+            document, document_file = document_type.new_document(
                 file_object=file_object, label=label,
                 language=self.test_document_language, _user=_user
             )
