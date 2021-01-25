@@ -51,8 +51,6 @@ class TagsApp(MayanAppConfig):
 
     def ready(self):
         super().ready()
-        from .wizard_steps import DocumentCreateWizardStepTags  # NOQA
-
         Document = apps.get_model(
             app_label='documents', model_name='Document'
         )

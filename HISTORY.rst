@@ -126,3 +126,8 @@
   proxies instead to customize the columns of a model based on the view
   displayed.
 - Add document type change workflow action.
+- Rename WizardStep to DocumentCreateWizardStep. This change better reflects
+  its purpose and interface.
+- Move DocumentCreateWizardStep to the sources.classes module.
+- Add automatic loading support for the ``wizard_step`` modules. It is no
+  longer necessary to import these modules inside the App's .ready() method.

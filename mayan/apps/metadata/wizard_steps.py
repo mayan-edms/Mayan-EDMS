@@ -4,8 +4,8 @@ from mayan.apps.metadata.api import (
     decode_metadata_from_querystring, save_metadata_list
 )
 from mayan.apps.metadata.forms import DocumentMetadataFormSet
-
-from mayan.apps.sources.wizards import DocumentCreateWizardStep, DocumentCreateWizardStepDocumentType
+from mayan.apps.sources.classes import DocumentCreateWizardStep
+from mayan.apps.sources.wizard_steps import DocumentCreateWizardStepDocumentType
 
 
 class DocumentCreateWizardStepMetadata(DocumentCreateWizardStep):

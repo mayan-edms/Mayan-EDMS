@@ -17,7 +17,7 @@ from mayan.apps.common.menus import (
     menu_list_facet, menu_object, menu_secondary, menu_setup
 )
 
-from .classes import StagingFile
+from .classes import DocumentCreateWizardStep, StagingFile
 from .handlers import (
     handler_copy_transformations_to_file,
     handler_create_default_document_source,
@@ -51,6 +51,9 @@ class SourcesApp(MayanAppConfig):
 
     def ready(self):
         super().ready()
+
+        DocumentCreateWizardStep.load_modules()
+
         DocumentType = apps.get_model(
             app_label='documents', model_name='DocumentType'
         )
