@@ -124,7 +124,7 @@ job_docker_nightly:
     - docker logout
   services:
     - docker:dind
-  stage: build_docker
+  stage: stage_build_docker
 
 job_docker_testing:
   before_script:
