@@ -9,15 +9,15 @@ logger = logging.getLogger(name=__name__)
 
 class AppsModuleLoaderMixin:
     _loader_module_name = None
-    _loader_module_sets = {}
+    __loader_module_sets = {}
 
     @classmethod
     def load_modules(cls):
         # This set keeps track of what apps have already been processed.
-        cls._loader_module_sets.setdefault(cls._loader_module_name, set())
+        cls.__loader_module_sets.setdefault(cls._loader_module_name, set())
 
         for app in apps.get_app_configs():
-            if app not in cls._loader_module_sets[cls._loader_module_name]:
+            if app not in cls.__loader_module_sets[cls._loader_module_name]:
                 try:
                     import_module('{}.{}'.format(app.name, cls._loader_module_name))
                 except ImportError as exception:
@@ -32,4 +32,4 @@ class AppsModuleLoaderMixin:
                         )
                         raise
                 finally:
-                    cls._loader_module_sets[cls._loader_module_name].add(app)
+                    cls.__loader_module_sets[cls._loader_module_name].add(app)
