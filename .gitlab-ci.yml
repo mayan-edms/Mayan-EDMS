@@ -29,7 +29,7 @@ job_docker_build:
   services:
     - docker:dind
     - postgres:9.6-alpine
-  stage: build_docker
+  stage: stage_build_docker
   tags:
     - postgres
   variables:
