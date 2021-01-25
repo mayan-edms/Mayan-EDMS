@@ -2583,3 +2583,5 @@
 - Recalculate a document's indexes when attaching or removing a tag from
   or to it.
 - Recalculate all of a tag's documents when a tag is about to be deleted.
+- Rename WizardStep class to DocumentCreateWizardStep to better reflect its
+  purpose and interface.

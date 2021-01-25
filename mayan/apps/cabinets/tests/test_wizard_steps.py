@@ -5,9 +5,9 @@ from mayan.apps.sources.models import WebFormSource
 from mayan.apps.sources.tests.literals import (
     TEST_SOURCE_LABEL, TEST_SOURCE_UNCOMPRESS_N
 )
-from mayan.apps.sources.wizards import WizardStep
+from mayan.apps.sources.wizards import DocumentCreateWizardStep
 
-from ..wizard_steps import WizardStepCabinets
+from ..wizard_steps import DocumentCreateWizardStepCabinets
 
 from .mixins import CabinetDocumentUploadTestMixin, CabinetTestMixin
 
@@ -27,7 +27,7 @@ class CabinetDocumentUploadTestCase(
 
     def tearDown(self):
         super().tearDown()
-        WizardStep.reregister_all()
+        DocumentCreateWizardStep.reregister_all()
 
     def test_upload_interactive_view_with_access(self):
         self._create_test_cabinet()
@@ -46,8 +46,8 @@ class CabinetDocumentUploadTestCase(
         )
 
     def test_upload_interactive_cabinet_selection_view_with_access(self):
-        WizardStep.deregister_all()
-        WizardStep.reregister(name=WizardStepCabinets.name)
+        DocumentCreateWizardStep.deregister_all()
+        DocumentCreateWizardStep.reregister(name=DocumentCreateWizardStepCabinets.name)
 
         self._create_test_cabinet()
         self.grant_access(

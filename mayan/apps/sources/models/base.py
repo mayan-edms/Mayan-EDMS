@@ -16,7 +16,7 @@ from mayan.apps.storage.exceptions import NoMIMETypeMatch
 from ..literals import (
     DEFAULT_INTERVAL, SOURCE_CHOICES, SOURCE_UNCOMPRESS_CHOICES
 )
-from ..wizards import WizardStep
+from ..wizards import DocumentCreateWizardStep
 
 logger = logging.getLogger(name=__name__)
 
@@ -127,7 +127,7 @@ class Source(models.Model):
             layer_saved_transformations.copy_transformations(
                 source=self, targets=document_file.pages.all()
             )
-            WizardStep.post_upload_process(
+            DocumentCreateWizardStep.post_upload_process(
                 document=document, querystring=querystring
             )
             return document

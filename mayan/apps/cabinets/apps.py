@@ -54,7 +54,7 @@ class CabinetsApp(MayanAppConfig):
 
     def ready(self):
         super().ready()
-        from .wizard_steps import WizardStepCabinets  # NOQA
+        from .wizard_steps import DocumentCreateWizardStepCabinets  # NOQA
 
         Cabinet = self.get_model(model_name='Cabinet')
         CabinetSearchResult = self.get_model(model_name='CabinetSearchResult')

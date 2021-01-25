@@ -5,10 +5,10 @@ from mayan.apps.metadata.api import (
 )
 from mayan.apps.metadata.forms import DocumentMetadataFormSet
 
-from mayan.apps.sources.wizards import WizardStep, WizardStepDocumentType
+from mayan.apps.sources.wizards import DocumentCreateWizardStep, DocumentCreateWizardStepDocumentType
 
 
-class WizardStepMetadata(WizardStep):
+class DocumentCreateWizardStepMetadata(DocumentCreateWizardStep):
     form_class = DocumentMetadataFormSet
     label = _('Enter document metadata')
     name = 'metadata_entry'
@@ -19,7 +19,7 @@ class WizardStepMetadata(WizardStep):
         """
         Skip step if document type has no associated metadata
         """
-        cleaned_data = wizard.get_cleaned_data_for_step(WizardStepDocumentType.name) or {}
+        cleaned_data = wizard.get_cleaned_data_for_step(DocumentCreateWizardStepDocumentType.name) or {}
 
         document_type = cleaned_data.get('document_type')
 
@@ -30,7 +30,7 @@ class WizardStepMetadata(WizardStep):
     def get_form_initial(cls, wizard):
         initial = []
 
-        step_data = wizard.get_cleaned_data_for_step(WizardStepDocumentType.name)
+        step_data = wizard.get_cleaned_data_for_step(DocumentCreateWizardStepDocumentType.name)
         if step_data:
             document_type = step_data['document_type']
             for document_type_metadata_type in document_type.metadata.all():
@@ -65,4 +65,4 @@ class WizardStepMetadata(WizardStep):
             )
 
 
-WizardStep.register(step=WizardStepMetadata)
+DocumentCreateWizardStep.register(step=DocumentCreateWizardStepMetadata)

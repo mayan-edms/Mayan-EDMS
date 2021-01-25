@@ -15,7 +15,7 @@ from mayan.apps.documents.permissions import permission_document_create
 from .icons import icon_wizard_submit
 
 
-class WizardStep:
+class DocumentCreateWizardStep:
     _deregistry = {}
     _registry = {}
 
@@ -90,7 +90,7 @@ class WizardStep:
         pass
 
 
-class WizardStepDocumentType(WizardStep):
+class DocumentCreateWizardStepDocumentType(DocumentCreateWizardStep):
     form_class = DocumentTypeFilteredSelectForm
     label = _('Select document type')
     name = 'document_type_selection'
@@ -116,7 +116,7 @@ class WizardStepDocumentType(WizardStep):
         }
 
 
-WizardStep.register(WizardStepDocumentType)
+DocumentCreateWizardStep.register(DocumentCreateWizardStepDocumentType)
 
 
 class DocumentCreateWizard(SessionWizardView):
@@ -124,9 +124,9 @@ class DocumentCreateWizard(SessionWizardView):
 
     @classonlymethod
     def as_view(cls, *args, **kwargs):
-        cls.form_list = WizardStep.get_choices(attribute_name='form_class')
+        cls.form_list = DocumentCreateWizardStep.get_choices(attribute_name='form_class')
         cls.condition_dict = dict(
-            WizardStep.get_choices(attribute_name='condition')
+            DocumentCreateWizardStep.get_choices(attribute_name='condition')
         )
         return super().as_view(*args, **kwargs)
 
@@ -135,9 +135,9 @@ class DocumentCreateWizard(SessionWizardView):
             app_label='sources', model_name='InteractiveSource'
         )
 
-        form_list = WizardStep.get_choices(attribute_name='form_class')
+        form_list = DocumentCreateWizardStep.get_choices(attribute_name='form_class')
         condition_dict = dict(
-            WizardStep.get_choices(attribute_name='condition')
+            DocumentCreateWizardStep.get_choices(attribute_name='condition')
         )
 
         result = self.__class__.get_initkwargs(
@@ -163,7 +163,7 @@ class DocumentCreateWizard(SessionWizardView):
     def get_context_data(self, form, **kwargs):
         context = super().get_context_data(form=form, **kwargs)
 
-        wizard_step = WizardStep.get(name=self.steps.current)
+        wizard_step = DocumentCreateWizardStep.get(name=self.steps.current)
 
         context.update(
             {
@@ -178,21 +178,21 @@ class DocumentCreateWizard(SessionWizardView):
                 'submit_icon': icon_wizard_submit,
                 'title': _('Document upload wizard'),
                 'wizard_step': wizard_step,
-                'wizard_steps': WizardStep.get_all(),
+                'wizard_steps': DocumentCreateWizardStep.get_all(),
             }
         )
         return context
 
     def get_form_initial(self, step):
-        return WizardStep.get(name=step).get_form_initial(wizard=self) or {}
+        return DocumentCreateWizardStep.get(name=step).get_form_initial(wizard=self) or {}
 
     def get_form_kwargs(self, step):
-        return WizardStep.get(name=step).get_form_kwargs(wizard=self) or {}
+        return DocumentCreateWizardStep.get(name=step).get_form_kwargs(wizard=self) or {}
 
     def done(self, form_list, **kwargs):
         query_dict = {}
 
-        for step in WizardStep.get_all():
+        for step in DocumentCreateWizardStep.get_all():
             query_dict.update(step.done(wizard=self) or {})
 
         url = furl(reverse(viewname='sources:document_upload_interactive'))
