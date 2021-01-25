@@ -26,6 +26,7 @@ class APIMessageView(generics.RetrieveUpdateDestroyAPIView):
     patch: Edit the selected message.
     put: Edit the selected message.
     """
+    lookup_url_kwarg = 'message_id'
     mayan_object_permissions = {
         'DELETE': (permission_message_delete,),
         'GET': (permission_message_view,),

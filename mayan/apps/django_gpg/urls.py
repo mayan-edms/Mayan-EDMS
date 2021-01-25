@@ -49,7 +49,7 @@ urlpatterns = [
 
 api_urls = [
     url(
-        regex=r'^keys/(?P<pk>[0-9]+)/$', name='key-detail',
+        regex=r'^keys/(?P<key_id>[0-9]+)/$', name='key-detail',
         view=APIKeyView.as_view()
     ),
     url(regex=r'^keys/$', name='key-list', view=APIKeyListView.as_view())

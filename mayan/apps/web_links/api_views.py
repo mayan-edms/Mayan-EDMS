@@ -21,7 +21,9 @@ class APIDocumentViewMixin:
             permission=permission_web_link_instance_view,
             queryset=Document.objects.all(), user=self.request.user
         )
-        return get_object_or_404(klass=queryset, pk=self.kwargs['pk'])
+        return get_object_or_404(
+            klass=queryset, pk=self.kwargs['document_id']
+        )
 
 
 class APIResolvedWebLinkListView(APIDocumentViewMixin, generics.ListAPIView):
@@ -55,7 +57,7 @@ class APIResolvedWebLinkView(APIDocumentViewMixin, generics.RetrieveAPIView):
     """
     get: Return the details of the selected resolved smart link.
     """
-    lookup_url_kwarg = 'resolved_web_link_pk'
+    lookup_url_kwarg = 'resolved_web_link_id'
     mayan_object_permissions = {'GET': (permission_web_link_instance_view,)}
     serializer_class = ResolvedWebLinkSerializer
 
@@ -85,7 +87,7 @@ class APIResolvedWebLinkNavigateView(
     """
     get: Perform a redirection to the target URL of the selected resolved smart link.
     """
-    lookup_url_kwarg = 'resolved_web_link_pk'
+    lookup_url_kwarg = 'resolved_web_link_id'
     mayan_object_permissions = {'GET': (permission_web_link_instance_view,)}
 
     def get_queryset(self):
@@ -128,7 +130,7 @@ class APIWebLinkView(generics.RetrieveUpdateDestroyAPIView):
     patch: Edit the selected web link.
     put: Edit the selected web link.
     """
-    lookup_url_kwarg = 'pk'
+    lookup_url_kwarg = 'web_link_id'
     mayan_object_permissions = {
         'DELETE': (permission_web_link_delete,),
         'GET': (permission_web_link_view,),

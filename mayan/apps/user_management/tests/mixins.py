@@ -25,14 +25,14 @@ class GroupAPIViewTestMixin:
     def _request_test_group_delete_api_view(self):
         return self.delete(
             viewname='rest_api:group-detail', kwargs={
-                'pk': self.test_group.pk
+                'group_id': self.test_group.pk
             }
         )
 
     def _request_test_group_edit_patch_api_view(self):
         return self.patch(
             viewname='rest_api:group-detail', kwargs={
-                'pk': self.test_group.pk
+                'group_id': self.test_group.pk
             }, data={
                 'name': TEST_GROUP_NAME_EDITED
             }
@@ -41,7 +41,7 @@ class GroupAPIViewTestMixin:
     def _request_test_group_edit_put_api_view(self):
         return self.put(
             viewname='rest_api:group-detail', kwargs={
-                'pk': self.test_group.pk
+                'group_id': self.test_group.pk
             }, data={
                 'name': TEST_GROUP_NAME_EDITED
             }
@@ -128,28 +128,28 @@ class UserAPIViewTestMixin:
     def _request_test_user_delete_api_view(self):
         return self.delete(
             viewname='rest_api:user-detail', kwargs={
-                'pk': self.test_user.pk
+                'user_id': self.test_user.pk
             }
         )
 
     def _request_test_user_edit_patch_api_view(self):
         return self.patch(
             viewname='rest_api:user-detail', kwargs={
-                'pk': self.test_user.pk
+                'user_id': self.test_user.pk
             }, data={'username': TEST_USER_USERNAME_EDITED}
         )
 
     def _request_test_user_edit_put_api_view(self):
         return self.put(
             viewname='rest_api:user-detail', kwargs={
-                'pk': self.test_user.pk
+                'user_id': self.test_user.pk
             }, data={'username': TEST_USER_USERNAME_EDITED}
         )
 
     def _request_test_user_group_add_api_view(self):
         return self.post(
             viewname='rest_api:users-group-list', kwargs={
-                'pk': self.test_user.pk
+                'user_id': self.test_user.pk
             }, data={
                 'group_pk_list': '{}'.format(self.test_group.pk)
             }
@@ -158,14 +158,14 @@ class UserAPIViewTestMixin:
     def _request_test_user_group_list_api_view(self):
         return self.get(
             viewname='rest_api:users-group-list', kwargs={
-                'pk': self.test_user.pk
+                'user_id': self.test_user.pk
             }
         )
 
     def _request_test_user_password_change_api_view(self):
         result = self.patch(
             viewname='rest_api:user-detail', kwargs={
-                'pk': self.test_user.pk
+                'user_id': self.test_user.pk
             }, data={
                 'password': TEST_USER_PASSWORD_EDITED,
             }

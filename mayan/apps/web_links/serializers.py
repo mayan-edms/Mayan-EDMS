@@ -19,7 +19,7 @@ class WebLinkSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         extra_kwargs = {
             'url': {
-                'lookup_url_kwarg': 'pk',
+                'lookup_url_kwarg': 'web_link_id',
                 'view_name': 'rest_api:web_link-detail'
             },
         }
@@ -41,8 +41,8 @@ class ResolvedWebLinkSerializer(serializers.HyperlinkedModelSerializer):
         return reverse(
             viewname='rest_api:resolved_web_link-detail',
             kwargs={
-                'pk': self.context['document'].pk,
-                'resolved_web_link_pk': instance.pk
+                'document_id': self.context['document'].pk,
+                'resolved_web_link_id': instance.pk
             }, request=self.context['request'],
             format=self.context['format']
         )
@@ -51,8 +51,8 @@ class ResolvedWebLinkSerializer(serializers.HyperlinkedModelSerializer):
         return reverse(
             viewname='rest_api:resolved_web_link-navigate',
             kwargs={
-                'pk': self.context['document'].pk,
-                'resolved_web_link_pk': instance.pk
+                'document_id': self.context['document'].pk,
+                'resolved_web_link_id': instance.pk
             }, request=self.context['request'],
             format=self.context['format']
         )
@@ -68,7 +68,10 @@ class WritableWebLinkSerializer(serializers.ModelSerializer):
 
     class Meta:
         extra_kwargs = {
-            'url': {'view_name': 'rest_api:web_link-detail'},
+            'url': {
+                'lookup_url_kwarg': 'web_link_id',
+                'view_name': 'rest_api:web_link-detail'
+            }
         }
         fields = (
             'document_types_pk_list', 'enabled', 'label', 'id', 'template',

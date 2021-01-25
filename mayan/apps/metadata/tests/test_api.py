@@ -27,63 +27,63 @@ from .mixins import (
 class MetadataTypeAPITestCase(
     MetadataTypeAPIViewTestMixin, MetadataTypeTestMixin, BaseAPITestCase
 ):
-    def test_metadata_type_create_no_permission(self):
-        response = self._request_test_metadata_type_create_view()
+    def test_metadata_type_create_api_view_no_permission(self):
+        response = self._request_test_metadata_type_create_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertEqual(MetadataType.objects.count(), 0)
 
-    def test_metadata_type_create_with_permission(self):
+    def test_metadata_type_create_api_view_with_permission(self):
         self.grant_permission(permission=permission_metadata_type_create)
-        response = self._request_test_metadata_type_create_view()
+        response = self._request_test_metadata_type_create_api_view()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
         metadata_type = MetadataType.objects.first()
         self.assertEqual(response.data['id'], metadata_type.pk)
 
-    def test_metadata_type_delete_no_permission(self):
+    def test_metadata_type_delete_api_view_no_permission(self):
         self._create_test_metadata_type()
-        response = self._request_test_metadata_type_delete_view()
+        response = self._request_test_metadata_type_delete_api_view()
 
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
         self.assertEqual(MetadataType.objects.count(), 1)
 
-    def test_metadata_type_delete_with_access(self):
+    def test_metadata_type_delete_api_view_with_access(self):
         self._create_test_metadata_type()
         self.grant_access(
             obj=self.test_metadata_type, permission=permission_metadata_type_delete
         )
 
-        response = self._request_test_metadata_type_delete_view()
+        response = self._request_test_metadata_type_delete_api_view()
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
         self.assertEqual(MetadataType.objects.count(), 0)
 
-    def test_metadata_type_detail_view_no_permission(self):
+    def test_metadata_type_detail_api_view_no_permission(self):
         self._create_test_metadata_type()
 
-        response = self._request_test_metadata_type_detail_view()
+        response = self._request_test_metadata_type_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-    def test_metadata_type_detail_view_with_access(self):
+    def test_metadata_type_detail_api_view_with_access(self):
         self._create_test_metadata_type()
         self.grant_access(
             obj=self.test_metadata_type, permission=permission_metadata_type_view
         )
 
-        response = self._request_test_metadata_type_detail_view()
+        response = self._request_test_metadata_type_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.assertEqual(
             response.data['label'], self.test_metadata_type.label
         )
 
-    def test_metadata_type_patch_view_no_permission(self):
+    def test_metadata_type_patch_api_view_no_permission(self):
         self._create_test_metadata_type()
         metadata_type_values = self._model_instance_to_dictionary(
             instance=self.test_metadata_type
         )
 
-        response = self._request_test_metadata_type_edit_view_via_patch()
+        response = self._request_test_metadata_type_edit_api_view_via_patch()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.test_metadata_type.refresh_from_db()
@@ -93,7 +93,7 @@ class MetadataTypeAPITestCase(
             ), metadata_type_values
         )
 
-    def test_metadata_type_patch_view_with_access(self):
+    def test_metadata_type_patch_api_view_with_access(self):
         self._create_test_metadata_type()
         metadata_type_values = self._model_instance_to_dictionary(
             instance=self.test_metadata_type
@@ -102,7 +102,7 @@ class MetadataTypeAPITestCase(
             obj=self.test_metadata_type, permission=permission_metadata_type_edit
         )
 
-        response = self._request_test_metadata_type_edit_view_via_patch()
+        response = self._request_test_metadata_type_edit_api_view_via_patch()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.test_metadata_type.refresh_from_db()
@@ -112,13 +112,13 @@ class MetadataTypeAPITestCase(
             ), metadata_type_values
         )
 
-    def test_metadata_type_put_view_no_permission(self):
+    def test_metadata_type_put_api_view_no_permission(self):
         self._create_test_metadata_type()
         metadata_type_values = self._model_instance_to_dictionary(
             instance=self.test_metadata_type
         )
 
-        response = self._request_test_metadata_type_edit_view_via_put()
+        response = self._request_test_metadata_type_edit_api_view_via_put()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.test_metadata_type.refresh_from_db()
@@ -128,7 +128,7 @@ class MetadataTypeAPITestCase(
             ), metadata_type_values
         )
 
-    def test_metadata_type_put_view_with_access(self):
+    def test_metadata_type_put_api_view_with_access(self):
         self._create_test_metadata_type()
         metadata_type_values = self._model_instance_to_dictionary(
             instance=self.test_metadata_type
@@ -138,7 +138,7 @@ class MetadataTypeAPITestCase(
             permission=permission_metadata_type_edit
         )
 
-        response = self._request_test_metadata_type_edit_view_via_put()
+        response = self._request_test_metadata_type_edit_api_view_via_put()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.test_metadata_type.refresh_from_db()
@@ -148,21 +148,21 @@ class MetadataTypeAPITestCase(
             ), metadata_type_values
         )
 
-    def test_metadata_type_list_view_no_permission(self):
+    def test_metadata_type_list_api_view_no_permission(self):
         self._create_test_metadata_type()
-        response = self._request_test_metadata_type_list_view()
+        response = self._request_test_metadata_type_list_api_view()
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['count'], 0)
 
-    def test_metadata_type_list_view_with_access(self):
+    def test_metadata_type_list_api_view_with_access(self):
         self._create_test_metadata_type()
         self.grant_access(
             obj=self.test_metadata_type,
             permission=permission_metadata_type_view
         )
 
-        response = self._request_test_metadata_type_list_view()
+        response = self._request_test_metadata_type_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             response.data['results'][0]['label'],
@@ -185,110 +185,110 @@ class DocumentTypeMetadataTypeAPITestCase(
             metadata_type=self.test_metadata_type, required=False
         )
 
-    def test_document_type_metadata_type_create_view_no_permission(self):
-        response = self._request_document_type_metadata_type_create_view()
+    def test_document_type_metadata_type_create_api_view_no_permission(self):
+        response = self._request_document_type_metadata_type_create_api_view()
 
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertEqual(self.test_document_type.metadata.count(), 0)
 
-    def test_document_type_metadata_type_create_view_with_access(self):
+    def test_document_type_metadata_type_create_api_view_with_access(self):
         self.grant_access(
             obj=self.test_document_type,
             permission=permission_document_type_edit
         )
 
-        response = self._request_document_type_metadata_type_create_view()
+        response = self._request_document_type_metadata_type_create_api_view()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
         document_type_metadata_type = DocumentTypeMetadataType.objects.first()
         self.assertEqual(response.data['id'], document_type_metadata_type.pk)
 
-    def test_document_type_metadata_type_create_dupicate_view(self):
+    def test_document_type_metadata_type_create_dupicate_api_view(self):
         self._create_test_document_type_metadata_type()
         self.grant_permission(permission=permission_document_type_edit)
-        response = self._request_document_type_metadata_type_create_view()
+        response = self._request_document_type_metadata_type_create_api_view()
 
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertEqual(list(response.data.keys())[0], 'non_field_errors')
 
-    def test_document_type_metadata_type_delete_view_no_permission(self):
+    def test_document_type_metadata_type_delete_api_view_no_permission(self):
         self._create_test_document_type_metadata_type()
 
-        response = self._request_document_type_metadata_type_delete_view()
+        response = self._request_document_type_metadata_type_delete_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
         self.assertEqual(self.test_document_type.metadata.count(), 1)
 
-    def test_document_type_metadata_type_delete_view_with_access(self):
+    def test_document_type_metadata_type_delete_api_view_with_access(self):
         self._create_test_document_type_metadata_type()
         self.grant_access(
             obj=self.test_document_type,
             permission=permission_document_type_edit
         )
 
-        response = self._request_document_type_metadata_type_delete_view()
+        response = self._request_document_type_metadata_type_delete_api_view()
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
         self.assertEqual(self.test_document_type.metadata.all().count(), 0)
 
-    def test_document_type_metadata_type_list_view_no_permission(self):
+    def test_document_type_metadata_type_list_api_view_no_permission(self):
         self._create_test_document_type_metadata_type()
 
-        response = self._request_document_type_metadata_type_list_view()
+        response = self._request_document_type_metadata_type_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
-    def test_document_type_metadata_type_list_view_with_access(self):
+    def test_document_type_metadata_type_list_api_view_with_access(self):
         self._create_test_document_type_metadata_type()
         self.grant_access(
             obj=self.test_document_type,
             permission=permission_document_type_view
         )
 
-        response = self._request_document_type_metadata_type_list_view()
+        response = self._request_document_type_metadata_type_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             response.data['results'][0]['id'],
             self.test_document_type_metadata_type.pk
         )
 
-    def test_document_type_metadata_type_patch_view_no_permission(self):
+    def test_document_type_metadata_type_patch_api_view_no_permission(self):
         self._create_test_document_type_metadata_type()
 
-        response = self._request_document_type_metadata_type_edit_view_via_patch()
+        response = self._request_document_type_metadata_type_edit_api_view_via_patch()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
         document_type_metadata_type = DocumentTypeMetadataType.objects.first()
         self.assertFalse(document_type_metadata_type.required, True)
 
-    def test_document_type_metadata_type_patch_view_with_access(self):
+    def test_document_type_metadata_type_patch_api_view_with_access(self):
         self._create_test_document_type_metadata_type()
         self.grant_access(
             obj=self.test_document_type,
             permission=permission_document_type_edit
         )
 
-        response = self._request_document_type_metadata_type_edit_view_via_patch()
+        response = self._request_document_type_metadata_type_edit_api_view_via_patch()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         document_type_metadata_type = DocumentTypeMetadataType.objects.first()
         self.assertEqual(document_type_metadata_type.required, True)
 
-    def test_document_type_metadata_type_put_view_no_permission(self):
+    def test_document_type_metadata_type_put_api_view_no_permission(self):
         self._create_test_document_type_metadata_type()
 
-        response = self._request_document_type_metadata_type_edit_view_via_put()
+        response = self._request_document_type_metadata_type_edit_api_view_via_put()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
         document_type_metadata_type = DocumentTypeMetadataType.objects.first()
         self.assertFalse(document_type_metadata_type.required, True)
 
-    def test_document_type_metadata_type_put_view_with_access(self):
+    def test_document_type_metadata_type_put_api_view_with_access(self):
         self._create_test_document_type_metadata_type()
         self.grant_access(
             obj=self.test_document_type, permission=permission_document_type_edit
         )
 
-        response = self._request_document_type_metadata_type_edit_view_via_put()
+        response = self._request_document_type_metadata_type_edit_api_view_via_put()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         document_type_metadata_type = DocumentTypeMetadataType.objects.first()
@@ -317,32 +317,32 @@ class DocumentMetadataAPIViewTestCase(
             metadata_type=self.test_metadata_type, value=TEST_METADATA_VALUE
         )
 
-    def test_document_metadata_create_view_no_permission(self):
-        response = self._request_document_metadata_create_view()
+    def test_document_metadata_create_api_view_no_permission(self):
+        response = self._request_document_metadata_create_api_view()
 
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
         self.assertEqual(self.test_document.metadata.count(), 0)
 
-    def test_document_metadata_create_view_with_document_access(self):
+    def test_document_metadata_create_api_view_with_document_access(self):
         self.grant_access(
             obj=self.test_document, permission=permission_document_metadata_add
         )
 
-        response = self._request_document_metadata_create_view()
+        response = self._request_document_metadata_create_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
         self.assertEqual(self.test_document.metadata.count(), 0)
 
-    def test_document_metadata_create_view_with_metadata_type_access(self):
+    def test_document_metadata_create_api_view_with_metadata_type_access(self):
         self.grant_access(
             obj=self.test_metadata_type,
             permission=permission_document_metadata_add
         )
 
-        response = self._request_document_metadata_create_view()
+        response = self._request_document_metadata_create_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
         self.assertEqual(self.test_document.metadata.count(), 0)
 
-    def test_document_metadata_create_view_with_full_access(self):
+    def test_document_metadata_create_api_view_with_full_access(self):
         self.grant_access(
             obj=self.test_document,
             permission=permission_document_metadata_add
@@ -352,7 +352,7 @@ class DocumentMetadataAPIViewTestCase(
             permission=permission_document_metadata_add
         )
 
-        response = self._request_document_metadata_create_view()
+        response = self._request_document_metadata_create_api_view()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
         document_metadata = self.test_document.metadata.first()
@@ -360,7 +360,7 @@ class DocumentMetadataAPIViewTestCase(
         self.assertEqual(document_metadata.metadata_type, self.test_metadata_type)
         self.assertEqual(document_metadata.value, TEST_METADATA_VALUE)
 
-    def test_document_metadata_create_default_value_view_with_full_access(self):
+    def test_document_metadata_create_default_value_api_view_with_full_access(self):
         self.grant_access(
             obj=self.test_document,
             permission=permission_document_metadata_add
@@ -370,7 +370,7 @@ class DocumentMetadataAPIViewTestCase(
             permission=permission_document_metadata_add
         )
 
-        response = self._request_document_metadata_create_view(
+        response = self._request_document_metadata_create_api_view(
             extra_data={'value': ''}
         )
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
@@ -384,53 +384,53 @@ class DocumentMetadataAPIViewTestCase(
             document_metadata.value, TEST_METADATA_TYPE_DEFAULT_VALUE
         )
 
-    def test_document_metadata_create_duplicate_view(self):
+    def test_document_metadata_create_duplicate_api_view(self):
         self._create_document_metadata()
         self.grant_permission(permission=permission_document_metadata_add)
 
-        response = self._request_document_metadata_create_view()
+        response = self._request_document_metadata_create_api_view()
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertEqual(list(response.data.keys())[0], 'non_field_errors')
 
-    def test_document_metadata_create_invalid_lookup_value_view(self):
+    def test_document_metadata_create_invalid_lookup_value_api_view(self):
         self.test_metadata_type.lookup = 'invalid,lookup,values,on,purpose'
         self.test_metadata_type.save()
         self.grant_permission(permission=permission_document_metadata_add)
 
-        response = self._request_document_metadata_create_view()
+        response = self._request_document_metadata_create_api_view()
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertEqual(list(response.data.keys())[0], 'non_field_errors')
 
-    def test_document_metadata_delete_view_no_permission(self):
+    def test_document_metadata_delete_api_view_no_permission(self):
         self._create_document_metadata()
 
-        response = self._request_document_metadata_delete_view()
+        response = self._request_document_metadata_delete_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
         self.assertEqual(self.test_document.metadata.all().count(), 1)
 
-    def test_document_metadata_delete_view_with_document_access(self):
+    def test_document_metadata_delete_api_view_with_document_access(self):
         self._create_document_metadata()
         self.grant_access(
             obj=self.test_document,
             permission=permission_document_metadata_remove
         )
 
-        response = self._request_document_metadata_delete_view()
+        response = self._request_document_metadata_delete_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
         self.assertEqual(self.test_document.metadata.all().count(), 1)
 
-    def test_document_metadata_delete_view_with_metadata_type_access(self):
+    def test_document_metadata_delete_api_view_with_metadata_type_access(self):
         self._create_document_metadata()
         self.grant_access(
             obj=self.test_metadata_type,
             permission=permission_document_metadata_remove
         )
 
-        response = self._request_document_metadata_delete_view()
+        response = self._request_document_metadata_delete_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
         self.assertEqual(self.test_document.metadata.all().count(), 1)
 
-    def test_document_metadata_delete_view_with_full_access(self):
+    def test_document_metadata_delete_api_view_with_full_access(self):
         self._create_document_metadata()
         self.grant_access(
             obj=self.test_document,
@@ -441,17 +441,17 @@ class DocumentMetadataAPIViewTestCase(
             permission=permission_document_metadata_remove
         )
 
-        response = self._request_document_metadata_delete_view()
+        response = self._request_document_metadata_delete_api_view()
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         self.assertEqual(self.test_document.metadata.all().count(), 0)
 
-    def test_document_metadata_list_view_no_permission(self):
+    def test_document_metadata_list_api_view_no_permission(self):
         self._create_document_metadata()
 
-        response = self._request_document_metadata_list_view()
+        response = self._request_document_metadata_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-    def test_document_metadata_list_view_with_document_access(self):
+    def test_document_metadata_list_api_view_with_document_access(self):
         self._create_document_metadata()
 
         self.grant_access(
@@ -459,11 +459,11 @@ class DocumentMetadataAPIViewTestCase(
             permission=permission_document_metadata_view
         )
 
-        response = self._request_document_metadata_list_view()
+        response = self._request_document_metadata_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['count'], 0)
 
-    def test_document_metadata_list_view_with_metadata_type_access(self):
+    def test_document_metadata_list_api_view_with_metadata_type_access(self):
         self._create_document_metadata()
 
         self.grant_access(
@@ -471,10 +471,10 @@ class DocumentMetadataAPIViewTestCase(
             permission=permission_document_metadata_view
         )
 
-        response = self._request_document_metadata_list_view()
+        response = self._request_document_metadata_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-    def test_document_metadata_list_view_with_full_access(self):
+    def test_document_metadata_list_api_view_with_full_access(self):
         self._create_document_metadata()
         self.grant_access(
             obj=self.test_document,
@@ -485,7 +485,7 @@ class DocumentMetadataAPIViewTestCase(
             permission=permission_document_metadata_view
         )
 
-        response = self._request_document_metadata_list_view()
+        response = self._request_document_metadata_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             response.data['results'][0]['document']['id'], self.test_document.pk
@@ -501,42 +501,42 @@ class DocumentMetadataAPIViewTestCase(
             response.data['results'][0]['id'], self.test_document_metadata.pk
         )
 
-    def test_document_metadata_patch_view_no_permission(self):
+    def test_document_metadata_patch_api_view_no_permission(self):
         self._create_document_metadata()
 
-        response = self._request_document_metadata_edit_view_via_patch()
+        response = self._request_document_metadata_edit_api_view_via_patch()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.test_document_metadata.refresh_from_db()
         self.assertEqual(self.test_document_metadata.value, TEST_METADATA_VALUE)
 
-    def test_document_metadata_patch_view_document_access(self):
+    def test_document_metadata_patch_api_view_document_access(self):
         self._create_document_metadata()
         self.grant_access(
             obj=self.test_document,
             permission=permission_document_metadata_edit
         )
 
-        response = self._request_document_metadata_edit_view_via_patch()
+        response = self._request_document_metadata_edit_api_view_via_patch()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.test_document_metadata.refresh_from_db()
         self.assertEqual(self.test_document_metadata.value, TEST_METADATA_VALUE)
 
-    def test_document_metadata_patch_view_metadata_type_access(self):
+    def test_document_metadata_patch_api_view_metadata_type_access(self):
         self._create_document_metadata()
         self.grant_access(
             obj=self.test_metadata_type,
             permission=permission_document_metadata_edit
         )
 
-        response = self._request_document_metadata_edit_view_via_patch()
+        response = self._request_document_metadata_edit_api_view_via_patch()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.test_document_metadata.refresh_from_db()
         self.assertEqual(self.test_document_metadata.value, TEST_METADATA_VALUE)
 
-    def test_document_metadata_patch_view_with_full_access(self):
+    def test_document_metadata_patch_api_view_with_full_access(self):
         self._create_document_metadata()
         self.grant_access(
             obj=self.test_document,
@@ -547,7 +547,7 @@ class DocumentMetadataAPIViewTestCase(
             permission=permission_document_metadata_edit
         )
 
-        response = self._request_document_metadata_edit_view_via_patch()
+        response = self._request_document_metadata_edit_api_view_via_patch()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.test_document_metadata.refresh_from_db()
@@ -558,7 +558,7 @@ class DocumentMetadataAPIViewTestCase(
             self.test_document_metadata.value, TEST_METADATA_VALUE_EDITED
         )
 
-    def test_document_metadata_patch_default_value_view_with_full_access(self):
+    def test_document_metadata_patch_default_value_api_view_with_full_access(self):
         self._create_document_metadata()
         self.grant_access(
             obj=self.test_document,
@@ -569,7 +569,7 @@ class DocumentMetadataAPIViewTestCase(
             permission=permission_document_metadata_edit
         )
 
-        response = self._request_document_metadata_edit_view_via_patch(
+        response = self._request_document_metadata_edit_api_view_via_patch(
             extra_data={'value': ''}
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -582,42 +582,42 @@ class DocumentMetadataAPIViewTestCase(
             self.test_document_metadata.value, TEST_METADATA_TYPE_DEFAULT_VALUE
         )
 
-    def test_document_metadata_put_view_no_permission(self):
+    def test_document_metadata_put_api_view_no_permission(self):
         self._create_document_metadata()
 
-        response = self._request_document_metadata_edit_view_via_put()
+        response = self._request_document_metadata_edit_api_view_via_put()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.test_document_metadata.refresh_from_db()
         self.assertEqual(self.test_document_metadata.value, TEST_METADATA_VALUE)
 
-    def test_document_metadata_put_view_document_access(self):
+    def test_document_metadata_put_api_view_document_access(self):
         self._create_document_metadata()
         self.grant_access(
             obj=self.test_document,
             permission=permission_document_metadata_edit
         )
 
-        response = self._request_document_metadata_edit_view_via_put()
+        response = self._request_document_metadata_edit_api_view_via_put()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.test_document_metadata.refresh_from_db()
         self.assertEqual(self.test_document_metadata.value, TEST_METADATA_VALUE)
 
-    def test_document_metadata_put_view_metadata_type_access(self):
+    def test_document_metadata_put_api_view_metadata_type_access(self):
         self._create_document_metadata()
         self.grant_access(
             obj=self.test_metadata_type,
             permission=permission_document_metadata_edit
         )
 
-        response = self._request_document_metadata_edit_view_via_put()
+        response = self._request_document_metadata_edit_api_view_via_put()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.test_document_metadata.refresh_from_db()
         self.assertEqual(self.test_document_metadata.value, TEST_METADATA_VALUE)
 
-    def test_document_metadata_put_view_with_full_access(self):
+    def test_document_metadata_put_api_view_with_full_access(self):
         self._create_document_metadata()
         self.grant_access(
             obj=self.test_document,
@@ -628,7 +628,7 @@ class DocumentMetadataAPIViewTestCase(
             permission=permission_document_metadata_edit
         )
 
-        response = self._request_document_metadata_edit_view_via_put()
+        response = self._request_document_metadata_edit_api_view_via_put()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.test_document_metadata.refresh_from_db()
@@ -639,7 +639,7 @@ class DocumentMetadataAPIViewTestCase(
             self.test_document_metadata.value, TEST_METADATA_VALUE_EDITED
         )
 
-    def test_document_metadata_put_default_value_view_with_full_access(self):
+    def test_document_metadata_put_default_value_api_view_with_full_access(self):
         self._create_document_metadata()
         self.grant_access(
             obj=self.test_document,
@@ -650,7 +650,7 @@ class DocumentMetadataAPIViewTestCase(
             permission=permission_document_metadata_edit
         )
 
-        response = self._request_document_metadata_edit_view_via_put(
+        response = self._request_document_metadata_edit_api_view_via_put(
             extra_data={'value': ''}
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)

@@ -48,6 +48,7 @@ class APIRoleView(generics.RetrieveUpdateDestroyAPIView):
     patch: Edit the selected role.
     put: Edit the selected role.
     """
+    lookup_url_kwarg = 'role_id'
     mayan_object_permissions = {
         'GET': (permission_role_view,),
         'PUT': (permission_role_edit,),

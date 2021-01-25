@@ -77,31 +77,31 @@ api_urls = [
         view=APISmartLinkListView.as_view()
     ),
     url(
-        regex=r'^smart_links/(?P<pk>[0-9]+)/$', name='smartlink-detail',
+        regex=r'^smart_links/(?P<smart_link_id>[0-9]+)/$', name='smartlink-detail',
         view=APISmartLinkView.as_view()
     ),
     url(
-        regex=r'^smart_links/(?P<pk>[0-9]+)/conditions/$',
+        regex=r'^smart_links/(?P<smart_link_id>[0-9]+)/conditions/$',
         name='smartlinkcondition-list',
         view=APISmartLinkConditionListView.as_view()
     ),
     url(
-        regex=r'^smart_links/(?P<pk>[0-9]+)/conditions/(?P<condition_pk>[0-9]+)/$',
+        regex=r'^smart_links/(?P<smart_link_id>[0-9]+)/conditions/(?P<smart_link_condition_id>[0-9]+)/$',
         name='smartlinkcondition-detail',
         view=APISmartLinkConditionView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<pk>[0-9]+)/resolved_smart_links/$',
+        regex=r'^documents/(?P<document_id>[0-9]+)/resolved_smart_links/$',
         name='resolvedsmartlink-list',
         view=APIResolvedSmartLinkListView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<pk>[0-9]+)/resolved_smart_links/(?P<smart_link_pk>[0-9]+)/$',
+        regex=r'^documents/(?P<document_id>[0-9]+)/resolved_smart_links/(?P<smart_link_id>[0-9]+)/$',
         name='resolvedsmartlink-detail',
         view=APIResolvedSmartLinkView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<pk>[0-9]+)/resolved_smart_links/(?P<smart_link_pk>[0-9]+)/documents/$',
+        regex=r'^documents/(?P<document_id>[0-9]+)/resolved_smart_links/(?P<smart_link_id>[0-9]+)/documents/$',
         name='resolvedsmartlinkdocument-list',
         view=APIResolvedSmartLinkDocumentListView.as_view()
     )

@@ -272,68 +272,68 @@ api_urls = [
         view=APIWorkflowRuntimeProxyListView.as_view()
     ),
     url(
-        regex=r'^workflows/(?P<pk>[0-9]+)/$', name='workflow-detail',
+        regex=r'^workflows/(?P<workflow_template_id>[0-9]+)/$', name='workflow-detail',
         view=APIWorkflowView.as_view()
     ),
     url(
-        regex=r'^workflows/(?P<pk>[0-9]+)/document_types/$',
+        regex=r'^workflows/(?P<workflow_template_id>[0-9]+)/document_types/$',
         name='workflow-document-type-list',
         view=APIWorkflowDocumentTypeList.as_view()
     ),
     url(
-        regex=r'^workflows/(?P<pk>[0-9]+)/document_types/(?P<document_type_pk>[0-9]+)/$',
+        regex=r'^workflows/(?P<workflow_template_id>[0-9]+)/document_types/(?P<document_type_id>[0-9]+)/$',
         name='workflow-document-type-detail',
         view=APIWorkflowDocumentTypeView.as_view()
     ),
     url(
-        regex=r'^workflows/(?P<pk>\d+)/image/$',
+        regex=r'^workflows/(?P<workflow_template_id>\d+)/image/$',
         name='workflow-image', view=APIWorkflowImageView.as_view()
     ),
     url(
-        regex=r'^workflows/(?P<pk>[0-9]+)/states/$',
+        regex=r'^workflows/(?P<workflow_template_id>[0-9]+)/states/$',
         name='workflowstate-list', view=APIWorkflowStateListView.as_view()
     ),
     url(
-        regex=r'^workflows/(?P<pk>[0-9]+)/states/(?P<state_pk>[0-9]+)/$',
+        regex=r'^workflows/(?P<workflow_template_id>[0-9]+)/states/(?P<workflow_template_state_id>[0-9]+)/$',
         name='workflowstate-detail', view=APIWorkflowStateView.as_view()
     ),
     url(
-        regex=r'^workflows/(?P<pk>[0-9]+)/transitions/$',
+        regex=r'^workflows/(?P<workflow_template_id>[0-9]+)/transitions/$',
         name='workflowtransition-list',
         view=APIWorkflowTransitionListView.as_view()
     ),
     url(
-        regex=r'^workflows/(?P<pk>[0-9]+)/transitions/(?P<transition_pk>[0-9]+)/$',
+        regex=r'^workflows/(?P<workflow_template_id>[0-9]+)/transitions/(?P<workflow_template_transition_id>[0-9]+)/$',
         name='workflowtransition-detail',
         view=APIWorkflowTransitionView.as_view()
     ),
     url(
-        regex=r'^workflows/(?P<pk>[0-9]+)/transitions/(?P<workflow_transition_id>[0-9]+)/fields/$',
+        regex=r'^workflows/(?P<workflow_template_id>[0-9]+)/transitions/(?P<workflow_template_transition_id>[0-9]+)/fields/$',
         name='workflowtransitionfield-list',
         view=APIWorkflowTransitionFieldListView.as_view()
     ),
     url(
-        regex=r'^workflows/(?P<pk>[0-9]+)/transitions/(?P<workflow_transition_id>[0-9]+)/fields/(?P<workflow_transition_field_id>[0-9]+)$',
+        regex=r'^workflows/(?P<workflow_template_id>[0-9]+)/transitions/(?P<workflow_template_transition_id>[0-9]+)/fields/(?P<workflow_template_transition_field_id>[0-9]+)$',
         name='workflowtransitionfield-detail',
         view=APIWorkflowTransitionFieldDetailView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<pk>[0-9]+)/workflows/$',
+        regex=r'^documents/(?P<document_id>[0-9]+)/workflows/$',
         name='workflowinstance-list',
         view=APIWorkflowInstanceListView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<pk>[0-9]+)/workflows/(?P<workflow_pk>[0-9]+)/$',
+        regex=r'^documents/(?P<document_id>[0-9]+)/workflows/(?P<workflow_instance_id>[0-9]+)/$',
         name='workflowinstance-detail',
         view=APIWorkflowInstanceView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<pk>[0-9]+)/workflows/(?P<workflow_pk>[0-9]+)/log_entries/$',
+        regex=r'^documents/(?P<document_id>[0-9]+)/workflows/(?P<workflow_instance_id>[0-9]+)/log_entries/$',
         name='workflowinstancelogentry-list',
         view=APIWorkflowInstanceLogEntryListView.as_view()
     ),
     url(
-        regex=r'^document_types/(?P<pk>[0-9]+)/workflows/$',
+        regex=r'^document_types/(?P<document_type_id>[0-9]+)/workflows/$',
         name='documenttype-workflow-list',
         view=APIDocumentTypeWorkflowRuntimeProxyListView.as_view()
     )

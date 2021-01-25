@@ -6,11 +6,11 @@ from mayan.apps.sources.tests.literals import (
     TEST_SOURCE_LABEL, TEST_SOURCE_UNCOMPRESS_N
 )
 
-from .mixins import TagTestMixin, TaggedDocumentUploadViewTestMixin
+from .mixins import TagTestMixin, TaggedDocumentUploadWizardStepViewTestMixin
 
 
 class TaggedDocumentUploadViewTestCase(
-    TaggedDocumentUploadViewTestMixin, TagTestMixin,
+    TaggedDocumentUploadWizardStepViewTestMixin, TagTestMixin,
     GenericDocumentViewTestCase
 ):
     auto_upload_test_document = False

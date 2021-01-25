@@ -41,7 +41,7 @@ api_urls = [
     ),
     url(regex=r'^roles/$', name='role-list', view=APIRoleListView.as_view()),
     url(
-        regex=r'^roles/(?P<pk>[0-9]+)/$', name='role-detail',
+        regex=r'^roles/(?P<role_id>[0-9]+)/$', name='role-detail',
         view=APIRoleView.as_view()
     )
 ]

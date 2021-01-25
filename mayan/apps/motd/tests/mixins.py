@@ -18,21 +18,21 @@ class MessageAPIViewTestMixin:
     def _request_message_delete_view(self):
         return self.delete(
             viewname='rest_api:message-detail', kwargs={
-                'pk': self.test_message.pk
+                'message_id': self.test_message.pk
             }
         )
 
     def _request_message_detail_view(self):
         return self.get(
             viewname='rest_api:message-detail', kwargs={
-                'pk': self.test_message.pk
+                'message_id': self.test_message.pk
             }
         )
 
     def _request_message_edit_via_patch_view(self):
         return self.patch(
             viewname='rest_api:message-detail', kwargs={
-                'pk': self.test_message.pk
+                'message_id': self.test_message.pk
             }, data={
                 'label': TEST_LABEL_EDITED,
                 'message': TEST_MESSAGE_EDITED
@@ -42,7 +42,7 @@ class MessageAPIViewTestMixin:
     def _request_message_edit_via_put_view(self):
         return self.put(
             viewname='rest_api:message-detail', kwargs={
-                'pk': self.test_message.pk
+                'message_id': self.test_message.pk
             }, data={
                 'label': TEST_LABEL_EDITED,
                 'message': TEST_MESSAGE_EDITED

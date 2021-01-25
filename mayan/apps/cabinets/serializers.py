@@ -29,13 +29,17 @@ class CabinetSerializer(serializers.ModelSerializer):
         help_text=_(
             'URL of the API endpoint showing the list documents inside this '
             'cabinet.'
-        ), view_name='rest_api:cabinet-document-list'
+        ), lookup_url_kwarg='cabinet_id',
+        view_name='rest_api:cabinet-document-list'
     )
     parent_url = serializers.SerializerMethodField()
 
     class Meta:
         extra_kwargs = {
-            'url': {'view_name': 'rest_api:cabinet-detail'},
+            'url': {
+                'lookup_url_kwarg': 'cabinet_id',
+                'view_name': 'rest_api:cabinet-detail'
+            },
         }
         fields = (
             'children', 'documents_count', 'documents_url', 'full_path', 'id',
@@ -52,7 +56,8 @@ class CabinetSerializer(serializers.ModelSerializer):
     def get_parent_url(self, obj):
         if obj.parent:
             return reverse(
-                'rest_api:cabinet-detail', args=(obj.parent.pk,),
+                viewname='rest_api:cabinet-detail',
+                kwargs={'cabinet_id': obj.parent.pk},
                 format=self.context['format'],
                 request=self.context.get('request')
             )
@@ -165,9 +170,10 @@ class CabinetDocumentSerializer(DocumentSerializer):
 
     def get_cabinet_document_url(self, instance):
         return reverse(
-            'rest_api:cabinet-document', args=(
-                self.context['cabinet'].pk, instance.pk
-            ), request=self.context['request'], format=self.context['format']
+            viewname='rest_api:cabinet-document', kwargs={
+                'cabinet_id': self.context['cabinet'].pk,
+                'document_id': instance.pk
+            }, request=self.context['request'], format=self.context['format']
         )
 
 

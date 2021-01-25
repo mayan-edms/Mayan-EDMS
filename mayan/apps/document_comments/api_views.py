@@ -23,7 +23,7 @@ class APICommentListView(generics.ListCreateAPIView):
             permission_required = permission_document_comment_create
 
         document = get_object_or_404(
-            klass=Document, pk=self.kwargs['document_pk']
+            klass=Document, pk=self.kwargs['document_id']
         )
 
         AccessControlList.objects.check_access(
@@ -68,7 +68,7 @@ class APICommentView(generics.RetrieveUpdateDestroyAPIView):
     delete: Delete the selected document comment.
     get: Returns the details of the selected document comment.
     """
-    lookup_url_kwarg = 'comment_pk'
+    lookup_url_kwarg = 'comment_id'
     serializer_class = CommentSerializer
 
     def get_document(self):
@@ -80,7 +80,7 @@ class APICommentView(generics.RetrieveUpdateDestroyAPIView):
             permission_required = permission_document_comment_view
 
         document = get_object_or_404(
-            klass=Document, pk=self.kwargs['document_pk']
+            klass=Document, pk=self.kwargs['document_id']
         )
 
         AccessControlList.objects.check_access(

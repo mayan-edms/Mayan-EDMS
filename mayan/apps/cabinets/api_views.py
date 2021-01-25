@@ -27,7 +27,9 @@ class APIDocumentCabinetListView(generics.ListAPIView):
     serializer_class = CabinetSerializer
 
     def get_queryset(self):
-        document = get_object_or_404(klass=Document, pk=self.kwargs['pk'])
+        document = get_object_or_404(
+            klass=Document, pk=self.kwargs['document_id']
+        )
         AccessControlList.objects.check_access(
             obj=document, permissions=(permission_document_view,),
             user=self.request.user
@@ -67,6 +69,7 @@ class APICabinetView(generics.RetrieveUpdateDestroyAPIView):
     patch: Edit the selected cabinet.
     put: Edit the selected cabinet.
     """
+    lookup_url_kwarg = 'cabinet_id'
     mayan_object_permissions = {
         'GET': (permission_cabinet_view,),
         'PUT': (permission_cabinet_edit,),
@@ -93,6 +96,7 @@ class APICabinetDocumentListView(generics.ListCreateAPIView):
     get: Returns a list of all the documents contained in a particular cabinet.
     post: Add a document to the selected cabinet.
     """
+    lookup_url_kwarg = 'cabinet_id'
     mayan_object_permissions = {
         'GET': (permission_cabinet_view,),
         'POST': (permission_cabinet_add_document,)
@@ -125,7 +129,7 @@ class APICabinetDocumentListView(generics.ListCreateAPIView):
         return context
 
     def get_cabinet(self):
-        return get_object_or_404(klass=Cabinet, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=Cabinet, pk=self.kwargs['cabinet_id'])
 
     def get_queryset(self):
         cabinet = self.get_cabinet()
@@ -144,7 +148,7 @@ class APICabinetDocumentView(generics.RetrieveDestroyAPIView):
     delete: Remove a document from the selected cabinet.
     get: Returns the details of the selected cabinet document.
     """
-    lookup_url_kwarg = 'document_pk'
+    lookup_url_kwarg = 'document_id'
     mayan_object_permissions = {
         'GET': (permission_cabinet_view,),
         'DELETE': (permission_cabinet_remove_document,)
@@ -152,7 +156,7 @@ class APICabinetDocumentView(generics.RetrieveDestroyAPIView):
     serializer_class = CabinetDocumentSerializer
 
     def get_cabinet(self):
-        return get_object_or_404(klass=Cabinet, pk=self.kwargs['pk'])
+        return get_object_or_404(klass=Cabinet, pk=self.kwargs['cabinet_id'])
 
     def get_queryset(self):
         return self.get_cabinet().documents.all()

@@ -16,6 +16,7 @@ class DocumentCheckoutSerializer(serializers.ModelSerializer):
     class Meta:
         extra_kwargs = {
             'url': {
+                'lookup_url_kwarg': 'checkout_id',
                 'view_name': 'rest_api:checkedout-document-view'
             },
         }
@@ -29,7 +30,6 @@ class NewDocumentCheckoutSerializer(serializers.ModelSerializer):
         help_text=_('Primary key of the document to be checked out.'),
         write_only=True
     )
-
     expiration_datetime = serializers.DateTimeField()
 
     class Meta:

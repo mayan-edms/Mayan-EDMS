@@ -4,24 +4,24 @@ from .literals import TEST_KEY_PRIVATE_DATA, TEST_KEY_PUBLIC_FILE_PATH
 
 
 class KeyAPIViewTestMixin:
-    def _request_test_key_create_view(self):
+    def _request_test_key_create_api_view(self):
         return self.post(
             viewname='rest_api:key-list', data={
                 'key_data': TEST_KEY_PRIVATE_DATA
             }
         )
 
-    def _request_test_key_delete_view(self):
+    def _request_test_key_delete_api_view(self):
         return self.delete(
             viewname='rest_api:key-detail', kwargs={
-                'pk': self.test_key_private.pk
+                'key_id': self.test_key_private.pk
             }
         )
 
-    def _request_test_key_detail_view(self):
+    def _request_test_key_detail_api_view(self):
         return self.get(
             viewname='rest_api:key-detail', kwargs={
-                'pk': self.test_key_private.pk
+                'key_id': self.test_key_private.pk
             }
         )
 

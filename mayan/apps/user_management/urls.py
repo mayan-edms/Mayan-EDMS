@@ -84,12 +84,12 @@ urlpatterns.extend(urlpatterns_users)
 api_urls = [
     url(regex=r'^groups/$', view=APIGroupListView.as_view(), name='group-list'),
     url(
-        regex=r'^groups/(?P<pk>[0-9]+)/$', view=APIGroupView.as_view(),
+        regex=r'^groups/(?P<group_id>[0-9]+)/$', view=APIGroupView.as_view(),
         name='group-detail'
     ),
     url(regex=r'^users/$', view=APIUserListView.as_view(), name='user-list'),
     url(
-        regex=r'^users/(?P<pk>[0-9]+)/$', view=APIUserView.as_view(),
+        regex=r'^users/(?P<user_id>[0-9]+)/$', view=APIUserView.as_view(),
         name='user-detail'
     ),
     url(
@@ -97,7 +97,7 @@ api_urls = [
         name='user-current'
     ),
     url(
-        regex=r'^users/(?P<pk>[0-9]+)/groups/$',
+        regex=r'^users/(?P<user_id>[0-9]+)/groups/$',
         view=APIUserGroupList.as_view(), name='users-group-list'
     ),
 ]

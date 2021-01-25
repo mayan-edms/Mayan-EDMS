@@ -20,13 +20,13 @@ class DocumentCheckoutsAPIViewTestMixin:
     def _request_test_document_check_out_delete_api_view(self):
         return self.delete(
             viewname='rest_api:checkedout-document-view',
-            kwargs={'pk': self.test_check_out.pk}
+            kwargs={'checkout_id': self.test_check_out.pk}
         )
 
     def _request_test_document_check_out_detail_api_view(self):
         return self.get(
             viewname='rest_api:checkedout-document-view',
-            kwargs={'pk': self.test_check_out.pk}
+            kwargs={'checkout_id': self.test_check_out.pk}
         )
 
     def _request_test_document_check_out_list_api_view(self):

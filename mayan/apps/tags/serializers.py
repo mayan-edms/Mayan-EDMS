@@ -13,13 +13,17 @@ from .permissions import permission_tag_attach
 
 class TagSerializer(serializers.HyperlinkedModelSerializer):
     documents_url = serializers.HyperlinkedIdentityField(
+        lookup_url_kwarg='tag_id',
         view_name='rest_api:tag-document-list'
     )
     documents_count = serializers.SerializerMethodField()
 
     class Meta:
         extra_kwargs = {
-            'url': {'view_name': 'rest_api:tag-detail'},
+            'url': {
+                'lookup_url_kwarg': 'tag_id',
+                'view_name': 'rest_api:tag-detail'
+            },
         }
         fields = (
             'color', 'documents_count', 'documents_url', 'id', 'label', 'url'
@@ -94,9 +98,10 @@ class DocumentTagSerializer(TagSerializer):
 
     def get_document_tag_url(self, instance):
         return reverse(
-            viewname='rest_api:document-tag-detail', args=(
-                self.context['document'].pk, instance.pk
-            ), request=self.context['request'], format=self.context['format']
+            viewname='rest_api:document-tag-detail', kwargs={
+                'document_id': self.context['document'].pk,
+                'tag_id': instance.pk
+            }, request=self.context['request'], format=self.context['format']
         )
 
 

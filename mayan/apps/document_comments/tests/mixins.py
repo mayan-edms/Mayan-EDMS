@@ -11,7 +11,7 @@ class CommentAPIViewTestMixin:
 
         response = self.post(
             viewname='rest_api:comment-list', kwargs={
-                'document_pk': self.test_document.pk
+                'document_id': self.test_document.pk
             }, data={
                 'comment': TEST_COMMENT_TEXT
             }
@@ -29,31 +29,31 @@ class CommentAPIViewTestMixin:
     def _request_test_comment_delete_api_view(self):
         return self.delete(
             viewname='rest_api:comment-detail', kwargs={
-                'document_pk': self.test_document.pk,
-                'comment_pk': self.test_document_comment.pk,
+                'document_id': self.test_document.pk,
+                'comment_id': self.test_document_comment.pk,
             }
         )
 
     def _request_test_comment_detail_api_view(self):
         return self.get(
             viewname='rest_api:comment-detail', kwargs={
-                'document_pk': self.test_document.pk,
-                'comment_pk': self.test_document_comment.pk
+                'document_id': self.test_document.pk,
+                'comment_id': self.test_document_comment.pk
             }
         )
 
     def _request_test_comment_edit_patch_api_view(self):
         return self.patch(
             viewname='rest_api:comment-detail', kwargs={
-                'document_pk': self.test_document.pk,
-                'comment_pk': self.test_document_comment.pk,
+                'document_id': self.test_document.pk,
+                'comment_id': self.test_document_comment.pk,
             }, data={'comment': TEST_COMMENT_TEXT_EDITED}
         )
 
     def _request_test_comment_list_api_view(self):
         return self.get(
             viewname='rest_api:comment-list', kwargs={
-                'document_pk': self.test_document.pk
+                'document_id': self.test_document.pk
             }
         )
 

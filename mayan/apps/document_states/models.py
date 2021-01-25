@@ -124,7 +124,7 @@ class Workflow(models.Model):
         final_url.args = kwargs
         final_url.path = reverse(
             viewname='rest_api:workflow-image',
-            kwargs={'pk': self.pk}
+            kwargs={'workflow_template_id': self.pk}
         )
         final_url.args['_hash'] = self.get_hash()
 

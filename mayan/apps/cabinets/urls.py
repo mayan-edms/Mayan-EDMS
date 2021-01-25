@@ -69,16 +69,16 @@ urlpatterns.extend(urlpatterns_documents_cabinets)
 
 api_urls = [
     url(
-        regex=r'^cabinets/(?P<pk>[0-9]+)/documents/(?P<document_pk>[0-9]+)/$',
+        regex=r'^cabinets/(?P<cabinet_id>[0-9]+)/documents/(?P<document_id>[0-9]+)/$',
         name='cabinet-document', view=APICabinetDocumentView.as_view()
     ),
     url(
-        regex=r'^cabinets/(?P<pk>[0-9]+)/documents/$',
+        regex=r'^cabinets/(?P<cabinet_id>[0-9]+)/documents/$',
         name='cabinet-document-list',
         view=APICabinetDocumentListView.as_view()
     ),
     url(
-        regex=r'^cabinets/(?P<pk>[0-9]+)/$', name='cabinet-detail',
+        regex=r'^cabinets/(?P<cabinet_id>[0-9]+)/$', name='cabinet-detail',
         view=APICabinetView.as_view()
     ),
     url(
@@ -86,7 +86,7 @@ api_urls = [
         view=APICabinetListView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<pk>[0-9]+)/cabinets/$',
+        regex=r'^documents/(?P<document_id>[0-9]+)/cabinets/$',
         name='document-cabinet-list',
         view=APIDocumentCabinetListView.as_view()
     ),

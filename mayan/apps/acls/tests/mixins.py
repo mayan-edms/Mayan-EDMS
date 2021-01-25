@@ -29,7 +29,7 @@ class ACLAPIViewTestMixin:
                 'app_label': self.test_object_content_type.app_label,
                 'model_name': self.test_object_content_type.model,
                 'object_id': self.test_object.pk,
-                'pk': self.test_acl.pk
+                'acl_id': self.test_acl.pk
             }
         )
 
@@ -39,7 +39,7 @@ class ACLAPIViewTestMixin:
                 'app_label': self.test_object_content_type.app_label,
                 'model_name': self.test_object_content_type.model,
                 'object_id': self.test_object.pk,
-                'pk': self.test_acl.pk
+                'acl_id': self.test_acl.pk
             }
         )
 
@@ -58,8 +58,8 @@ class ACLAPIViewTestMixin:
                 'app_label': self.test_object_content_type.app_label,
                 'model_name': self.test_object_content_type.model,
                 'object_id': self.test_object.pk,
-                'pk': self.test_acl.pk,
-                'permission_pk': self.test_permission.stored_permission.pk
+                'acl_id': self.test_acl.pk,
+                'permission_id': self.test_permission.stored_permission.pk
             }
         )
 
@@ -69,8 +69,8 @@ class ACLAPIViewTestMixin:
                 'app_label': self.test_object_content_type.app_label,
                 'model_name': self.test_object_content_type.model,
                 'object_id': self.test_object.pk,
-                'pk': self.test_acl.pk,
-                'permission_pk': self.test_acl.permissions.first().pk
+                'acl_id': self.test_acl.pk,
+                'permission_id': self.test_acl.permissions.first().pk
             }
         )
 
@@ -80,7 +80,7 @@ class ACLAPIViewTestMixin:
                 'app_label': self.test_object_content_type.app_label,
                 'model_name': self.test_object_content_type.model,
                 'object_id': self.test_object.pk,
-                'pk': self.test_acl.pk
+                'acl_id': self.test_acl.pk
             }
         )
 
@@ -90,7 +90,7 @@ class ACLAPIViewTestMixin:
                 'app_label': self.test_object_content_type.app_label,
                 'model_name': self.test_object_content_type.model,
                 'object_id': self.test_object.pk,
-                'pk': self.test_acl.pk
+                'acl_id': self.test_acl.pk
             }, data={'permission_pk': self.test_permission.pk}
         )
 

@@ -10,7 +10,7 @@ from .literals import (
 
 
 class DocumentMetadataAPIViewTestMixin:
-    def _request_document_metadata_create_view(self, extra_data=None):
+    def _request_document_metadata_create_api_view(self, extra_data=None):
         data = {
             'metadata_type_pk': self.test_metadata_type.pk,
             'value': TEST_METADATA_VALUE
@@ -19,19 +19,19 @@ class DocumentMetadataAPIViewTestMixin:
 
         return self.post(
             viewname='rest_api:documentmetadata-list',
-            kwargs={'document_pk': self.test_document.pk}, data=data
+            kwargs={'document_id': self.test_document.pk}, data=data
         )
 
-    def _request_document_metadata_delete_view(self):
+    def _request_document_metadata_delete_api_view(self):
         return self.delete(
             viewname='rest_api:documentmetadata-detail',
             kwargs={
-                'document_pk': self.test_document.pk,
-                'metadata_pk': self.test_document_metadata.pk
+                'document_id': self.test_document.pk,
+                'metadata_id': self.test_document_metadata.pk
             }
         )
 
-    def _request_document_metadata_edit_view_via_patch(self, extra_data=None):
+    def _request_document_metadata_edit_api_view_via_patch(self, extra_data=None):
         data = {
             'value': TEST_METADATA_VALUE_EDITED
         }
@@ -40,12 +40,12 @@ class DocumentMetadataAPIViewTestMixin:
         return self.patch(
             viewname='rest_api:documentmetadata-detail',
             kwargs={
-                'document_pk': self.test_document.pk,
-                'metadata_pk': self.test_document_metadata.pk
+                'document_id': self.test_document.pk,
+                'metadata_id': self.test_document_metadata.pk
             }, data=data
         )
 
-    def _request_document_metadata_edit_view_via_put(self, extra_data=None):
+    def _request_document_metadata_edit_api_view_via_put(self, extra_data=None):
         data = {
             'value': TEST_METADATA_VALUE_EDITED
         }
@@ -54,15 +54,15 @@ class DocumentMetadataAPIViewTestMixin:
         return self.put(
             viewname='rest_api:documentmetadata-detail',
             kwargs={
-                'document_pk': self.test_document.pk,
-                'metadata_pk': self.test_document_metadata.pk
+                'document_id': self.test_document.pk,
+                'metadata_id': self.test_document_metadata.pk
             }, data=data
         )
 
-    def _request_document_metadata_list_view(self):
+    def _request_document_metadata_list_api_view(self):
         return self.get(
             viewname='rest_api:documentmetadata-list', kwargs={
-                'document_pk': self.test_document.pk
+                'document_id': self.test_document.pk
             }
         )
 
@@ -181,47 +181,48 @@ class DocumentMetadataViewTestMixin:
 
 
 class DocumentTypeMetadataTypeAPIViewTestMixin:
-    def _request_document_type_metadata_type_create_view(self):
+    def _request_document_type_metadata_type_create_api_view(self):
         return self.post(
             viewname='rest_api:documenttypemetadatatype-list',
-            kwargs={'document_type_pk': self.test_document_type.pk}, data={
-                'metadata_type_pk': self.test_metadata_type.pk, 'required': False
+            kwargs={'document_type_id': self.test_document_type.pk}, data={
+                'metadata_type_pk': self.test_metadata_type.pk,
+                'required': False
             }
         )
 
-    def _request_document_type_metadata_type_delete_view(self):
+    def _request_document_type_metadata_type_delete_api_view(self):
         return self.delete(
             viewname='rest_api:documenttypemetadatatype-detail',
             kwargs={
-                'document_type_pk': self.test_document_type.pk,
-                'metadata_type_pk': self.test_document_type_metadata_type.pk
+                'document_type_id': self.test_document_type.pk,
+                'metadata_type_id': self.test_document_type_metadata_type.pk
             }
         )
 
-    def _request_document_type_metadata_type_list_view(self):
+    def _request_document_type_metadata_type_list_api_view(self):
         return self.get(
             viewname='rest_api:documenttypemetadatatype-list', kwargs={
-                'document_type_pk': self.test_document_type.pk
+                'document_type_id': self.test_document_type.pk
             }
         )
 
-    def _request_document_type_metadata_type_edit_view_via_patch(self):
+    def _request_document_type_metadata_type_edit_api_view_via_patch(self):
         return self.patch(
             viewname='rest_api:documenttypemetadatatype-detail',
             kwargs={
-                'document_type_pk': self.test_document_type.pk,
-                'metadata_type_pk': self.test_document_type_metadata_type.pk
+                'document_type_id': self.test_document_type.pk,
+                'metadata_type_id': self.test_document_type_metadata_type.pk
             }, data={
                 'required': True
             }
         )
 
-    def _request_document_type_metadata_type_edit_view_via_put(self):
+    def _request_document_type_metadata_type_edit_api_view_via_put(self):
         return self.put(
             viewname='rest_api:documenttypemetadatatype-detail',
             kwargs={
-                'document_type_pk': self.test_document_type.pk,
-                'metadata_type_pk': self.test_document_type_metadata_type.pk
+                'document_type_id': self.test_document_type.pk,
+                'metadata_type_id': self.test_document_type_metadata_type.pk
             }, data={
                 'required': True
             }
@@ -235,43 +236,43 @@ class MetadataTypeAPIViewTestMixin:
             TEST_METADATA_TYPES_FIXTURES
         )
 
-    def _request_test_metadata_type_create_view(self):
+    def _request_test_metadata_type_create_api_view(self):
         return self.post(
             viewname='rest_api:metadatatype-list',
             data=self.test_metadata_types_fixtures_api_views.pop()
         )
 
-    def _request_test_metadata_type_delete_view(self):
+    def _request_test_metadata_type_delete_api_view(self):
         return self.delete(
             viewname='rest_api:metadatatype-detail',
-            kwargs={'metadata_type_pk': self.test_metadata_type.pk}
+            kwargs={'metadata_type_id': self.test_metadata_type.pk}
         )
 
-    def _request_test_metadata_type_detail_view(self):
+    def _request_test_metadata_type_detail_api_view(self):
         return self.get(
             viewname='rest_api:metadatatype-detail',
-            kwargs={'metadata_type_pk': self.test_metadata_type.pk}
+            kwargs={'metadata_type_id': self.test_metadata_type.pk}
         )
 
-    def _request_test_metadata_type_edit_view_via_patch(self):
+    def _request_test_metadata_type_edit_api_view_via_patch(self):
         return self.patch(
             viewname='rest_api:metadatatype-detail',
-            kwargs={'metadata_type_pk': self.test_metadata_type.pk}, data={
+            kwargs={'metadata_type_id': self.test_metadata_type.pk}, data={
                 'label': '{} edited'.format(self.test_metadata_type.label),
                 'name': '{}_edited'.format(self.test_metadata_type.name),
             }
         )
 
-    def _request_test_metadata_type_edit_view_via_put(self):
+    def _request_test_metadata_type_edit_api_view_via_put(self):
         return self.put(
             viewname='rest_api:metadatatype-detail',
-            kwargs={'metadata_type_pk': self.test_metadata_type.pk}, data={
+            kwargs={'metadata_type_id': self.test_metadata_type.pk}, data={
                 'label': '{} edited'.format(self.test_metadata_type.label),
                 'name': '{}_edited'.format(self.test_metadata_type.name),
             }
         )
 
-    def _request_test_metadata_type_list_view(self):
+    def _request_test_metadata_type_list_api_view(self):
         return self.get(viewname='rest_api:metadatatype-list')
 
 

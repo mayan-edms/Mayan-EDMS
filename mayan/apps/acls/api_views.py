@@ -96,6 +96,7 @@ class APIObjectACLView(generics.RetrieveDestroyAPIView):
     delete: Delete the selected access control list.
     get: Returns the details of the selected access control list.
     """
+    lookup_url_kwarg = 'acl_id'
     serializer_class = AccessControlListSerializer
 
     def get_content_object(self):
@@ -131,7 +132,7 @@ class APIObjectACLPermissionListView(generics.ListCreateAPIView):
     """
     def get_acl(self):
         return get_object_or_404(
-            klass=self.get_content_object().acls, pk=self.kwargs['pk']
+            klass=self.get_content_object().acls, pk=self.kwargs['acl_id']
         )
 
     def get_content_object(self):
@@ -188,12 +189,12 @@ class APIObjectACLPermissionView(generics.RetrieveDestroyAPIView):
     delete: Remove the permission from the selected access control list.
     get: Returns the details of the selected access control list permission.
     """
-    lookup_url_kwarg = 'permission_pk'
+    lookup_url_kwarg = 'permission_id'
     serializer_class = AccessControlListPermissionSerializer
 
     def get_acl(self):
         return get_object_or_404(
-            klass=self.get_content_object().acls, pk=self.kwargs['pk']
+            klass=self.get_content_object().acls, pk=self.kwargs['acl_id']
         )
 
     def get_content_object(self):

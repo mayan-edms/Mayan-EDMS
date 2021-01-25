@@ -78,26 +78,26 @@ api_urls = [
         view=APIMetadataTypeListView.as_view()
     ),
     url(
-        regex=r'^metadata_types/(?P<metadata_type_pk>\d+)/$',
+        regex=r'^metadata_types/(?P<metadata_type_id>\d+)/$',
         name='metadatatype-detail', view=APIMetadataTypeView.as_view()
     ),
     url(
-        regex=r'^document_types/(?P<document_type_pk>\d+)/metadata_types/$',
+        regex=r'^document_types/(?P<document_type_id>\d+)/metadata_types/$',
         name='documenttypemetadatatype-list',
         view=APIDocumentTypeMetadataTypeListView.as_view()
     ),
     url(
-        regex=r'^document_types/(?P<document_type_pk>\d+)/metadata_types/(?P<metadata_type_pk>\d+)/$',
+        regex=r'^document_types/(?P<document_type_id>\d+)/metadata_types/(?P<metadata_type_id>\d+)/$',
         name='documenttypemetadatatype-detail',
         view=APIDocumentTypeMetadataTypeView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<document_pk>\d+)/metadata/$',
+        regex=r'^documents/(?P<document_id>\d+)/metadata/$',
         name='documentmetadata-list',
         view=APIDocumentMetadataListView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<document_pk>\d+)/metadata/(?P<metadata_pk>\d+)/$',
+        regex=r'^documents/(?P<document_id>\d+)/metadata/(?P<metadata_id>\d+)/$',
         name='documentmetadata-detail',
         view=APIDocumentMetadataView.as_view()
     )

@@ -23,6 +23,7 @@ class APIKeyView(generics.RetrieveDestroyAPIView):
     delete: Delete the selected key.
     get: Return the details of the selected key.
     """
+    lookup_url_kwarg = 'key_id'
     mayan_object_permissions = {
         'DELETE': (permission_key_delete,),
         'GET': (permission_key_view,),

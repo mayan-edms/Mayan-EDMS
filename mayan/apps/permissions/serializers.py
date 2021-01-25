@@ -32,7 +32,10 @@ class RoleSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         extra_kwargs = {
-            'url': {'view_name': 'rest_api:role-detail'},
+            'url': {
+                'lookup_url_kwarg': 'role_id',
+                'view_name': 'rest_api:role-detail'
+            }
         }
         fields = ('groups', 'id', 'label', 'permissions', 'url')
         model = Role

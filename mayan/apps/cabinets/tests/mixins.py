@@ -1,3 +1,5 @@
+from django.utils.encoding import force_text
+
 from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH
 
 from ..models import Cabinet
@@ -26,28 +28,66 @@ class CabinetAPIViewTestMixin:
     def _request_test_cabinet_delete_api_view(self):
         return self.delete(
             viewname='rest_api:cabinet-detail', kwargs={
-                'pk': self.test_cabinet.pk
+                'cabinet_id': self.test_cabinet.pk
+            }
+        )
+
+    def _request_test_cabinet_multiple_document_add_api_view(self):
+        return self.post(
+            data={
+                'documents_pk_list': '{}'.format(self.test_document.pk)
+            }, kwargs={
+                'cabinet_id': self.test_cabinet.pk
+            }, viewname='rest_api:cabinet-document-list'
+        )
+
+    def _request_test_cabinet_single_document_add_api_view(self):
+        documents_pk_list = ','.join(
+            [force_text(s=document.pk) for document in self.test_documents]
+        )
+
+        return self.post(
+            data={
+                'documents_pk_list': documents_pk_list
+            }, kwargs={
+                'cabinet_id': self.test_cabinet.pk
+            }, viewname='rest_api:cabinet-document-list'
+        )
+
+    def _request_test_cabinet_document_detail_api_view(self):
+        return self.get(
+            viewname='rest_api:cabinet-document', kwargs={
+                'cabinet_id': self.test_cabinet.pk,
+                'document_id': self.test_document.pk
+            }
+        )
+
+    def _request_test_cabinet_document_list_api_view(self):
+        return self.get(
+            viewname='rest_api:cabinet-document-list', kwargs={
+                'cabinet_id': self.test_cabinet.pk
             }
         )
 
     def _request_test_cabinet_document_remove_api_view(self):
         return self.delete(
             viewname='rest_api:cabinet-document', kwargs={
-                'pk': self.test_cabinet.pk, 'document_pk': self.test_document.pk
+                'cabinet_id': self.test_cabinet.pk,
+                'document_id': self.test_document.pk
             }
         )
 
     def _request_test_cabinet_edit_api_patch_view(self):
         return self.patch(
             data={'label': TEST_CABINET_LABEL_EDITED}, kwargs={
-                'pk': self.test_cabinet.pk
+                'cabinet_id': self.test_cabinet.pk
             }, viewname='rest_api:cabinet-detail'
         )
 
     def _request_test_cabinet_edit_api_put_view(self):
         return self.put(
             data={'label': TEST_CABINET_LABEL_EDITED}, kwargs={
-                'pk': self.test_cabinet.pk
+                'cabinet_id': self.test_cabinet.pk
             }, viewname='rest_api:cabinet-detail'
         )
 
@@ -55,7 +95,7 @@ class CabinetAPIViewTestMixin:
         return self.get(viewname='rest_api:cabinet-list')
 
 
-class CabinetDocumentUploadTestMixin:
+class CabinetDocumentUploadWizardStepTestMixin:
     def _request_upload_interactive_document_create_view(self):
         with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             return self.post(
@@ -185,10 +225,10 @@ class CabinetViewTestMixin:
 
 
 class DocumentCabinetAPIViewTestMixin:
-    def _request_test_document_cabinet_list_view(self):
+    def _request_test_document_cabinet_list_api_view(self):
         return self.get(
             viewname='rest_api:document-cabinet-list', kwargs={
-                'pk': self.test_document.pk
+                'document_id': self.test_document.pk
             }
         )
 

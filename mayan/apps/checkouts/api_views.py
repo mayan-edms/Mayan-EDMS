@@ -49,6 +49,7 @@ class APICheckedoutDocumentView(generics.RetrieveDestroyAPIView):
     get: Retrieve the details of the selected checked out document entry.
     delete: Checkin a document.
     """
+    lookup_url_kwarg = 'checkout_id'
     serializer_class = DocumentCheckoutSerializer
 
     def get_queryset(self):

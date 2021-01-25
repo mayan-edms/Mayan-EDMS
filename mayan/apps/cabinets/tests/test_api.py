@@ -144,7 +144,7 @@ class CabinetDocumentAPITestCase(
 ):
     auto_upload_test_document = False
 
-    def test_cabinet_create_with_single_document(self):
+    def test_cabinet_create_with_single_document_api_view(self):
         self._create_test_document_stub()
 
         self.grant_permission(permission=permission_cabinet_create)
@@ -165,7 +165,7 @@ class CabinetDocumentAPITestCase(
             self.test_cabinet.documents.all(), (repr(self.test_document),)
         )
 
-    def test_cabinet_create_with_multiple_documents(self):
+    def test_cabinet_create_with_multiple_documents_api_view(self):
         self._create_test_document_stub()
         self._create_test_document_stub()
 
@@ -193,7 +193,6 @@ class CabinetDocumentAPITestCase(
 
     def test_cabinet_document_remove_api_view(self):
         self._create_test_document_stub()
-
         self._create_test_cabinet()
         self.test_cabinet.documents.add(self.test_document)
 
@@ -208,9 +207,7 @@ class CabinetDocumentAPITestCase(
 
     def test_cabinet_document_detail_api_view(self):
         self._create_test_document_stub()
-
         self._create_test_cabinet()
-
         self.test_cabinet.documents.add(self.test_document)
 
         self.grant_permission(
@@ -219,12 +216,8 @@ class CabinetDocumentAPITestCase(
         self.grant_permission(
             permission=permission_document_view
         )
-        response = self.get(
-            viewname='rest_api:cabinet-document', kwargs={
-                'pk': self.test_cabinet.pk,
-                'document_pk': self.test_document.pk
-            }
-        )
+        response = self._request_test_cabinet_document_detail_api_view()
+
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.assertEqual(
@@ -233,19 +226,13 @@ class CabinetDocumentAPITestCase(
 
     def test_cabinet_document_list_api_view(self):
         self._create_test_document_stub()
-
         self._create_test_cabinet()
-
         self.test_cabinet.documents.add(self.test_document)
 
         self.grant_permission(permission=permission_cabinet_view)
         self.grant_permission(permission=permission_document_view)
 
-        response = self.get(
-            viewname='rest_api:cabinet-document-list', kwargs={
-                'pk': self.test_cabinet.pk
-            }
-        )
+        response = self._request_test_cabinet_document_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.assertEqual(
@@ -253,42 +240,25 @@ class CabinetDocumentAPITestCase(
             force_text(s=self.test_document.uuid)
         )
 
-    def test_cabinet_add_document_api_view(self):
+    def test_cabinet_document_add_api_view(self):
         self._create_test_document_stub()
-
         self._create_test_cabinet()
 
-        response = self.post(
-            data={
-                'documents_pk_list': '{}'.format(self.test_document.pk)
-            }, kwargs={
-                'pk': self.test_cabinet.pk
-            }, viewname='rest_api:cabinet-document-list'
-        )
+        response = self._request_test_cabinet_multiple_document_add_api_view()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
         self.assertQuerysetEqual(
             self.test_cabinet.documents.all(), (repr(self.test_document),)
         )
 
-    def test_cabinet_add_multiple_documents_api_view(self):
+    def test_cabinet_multiple_documents_add_api_view(self):
         self._create_test_document_stub()
         self._create_test_document_stub()
-
-        documents_pk_list = ','.join(
-            [force_text(s=document.pk) for document in self.test_documents]
-        )
-
         self._create_test_cabinet()
 
         self.grant_permission(permission=permission_cabinet_add_document)
-        response = self.post(
-            data={
-                'documents_pk_list': documents_pk_list
-            }, kwargs={
-                'pk': self.test_cabinet.pk
-            }, viewname='rest_api:cabinet-document-list'
-        )
+
+        response = self._request_test_cabinet_single_document_add_api_view()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
         self.assertQuerysetEqual(
@@ -309,30 +279,30 @@ class DocumentCabinetAPITestCase(
         self._create_test_cabinet()
         self.test_cabinet.documents.add(self.test_document)
 
-    def test_document_cabinet_list_view_no_permission(self):
-        response = self._request_test_document_cabinet_list_view()
+    def test_document_cabinet_list_api_view_no_permission(self):
+        response = self._request_test_document_cabinet_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertTrue('count' not in response.data)
 
-    def test_document_cabinet_list_view_with_document_access(self):
+    def test_document_cabinet_list_api_view_with_document_access(self):
         self.grant_access(
             obj=self.test_document, permission=permission_document_view,
         )
 
-        response = self._request_test_document_cabinet_list_view()
+        response = self._request_test_document_cabinet_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['count'], 0)
 
-    def test_document_cabinet_list_view_with_cabinet_access(self):
+    def test_document_cabinet_list_api_view_with_cabinet_access(self):
         self.grant_access(
             obj=self.test_cabinet, permission=permission_cabinet_view,
         )
 
-        response = self._request_test_document_cabinet_list_view()
+        response = self._request_test_document_cabinet_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertTrue('count' not in response.data)
 
-    def test_document_cabinet_list_view_with_full_access(self):
+    def test_document_cabinet_list_api_view_with_full_access(self):
         self.grant_access(
             obj=self.test_document, permission=permission_document_view,
         )
@@ -340,7 +310,7 @@ class DocumentCabinetAPITestCase(
             obj=self.test_cabinet, permission=permission_cabinet_view,
         )
 
-        response = self._request_test_document_cabinet_list_view()
+        response = self._request_test_document_cabinet_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             response.data['count'], Cabinet.objects.all().count()

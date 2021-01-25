@@ -49,17 +49,17 @@ urlpatterns = [
 
 api_urls = [
     url(
-        regex=r'^documents/(?P<pk>[0-9]+)/resolved_web_links/$',
+        regex=r'^documents/(?P<document_id>[0-9]+)/resolved_web_links/$',
         name='resolved_web_link-list',
         view=APIResolvedWebLinkListView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<pk>[0-9]+)/resolved_web_links/(?P<resolved_web_link_pk>[0-9]+)/$',
+        regex=r'^documents/(?P<document_id>[0-9]+)/resolved_web_links/(?P<resolved_web_link_id>[0-9]+)/$',
         name='resolved_web_link-detail',
         view=APIResolvedWebLinkView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<pk>[0-9]+)/resolved_web_links/(?P<resolved_web_link_pk>[0-9]+)/navigate/$',
+        regex=r'^documents/(?P<document_id>[0-9]+)/resolved_web_links/(?P<resolved_web_link_id>[0-9]+)/navigate/$',
         name='resolved_web_link-navigate',
         view=APIResolvedWebLinkNavigateView.as_view()
     ),
@@ -68,7 +68,7 @@ api_urls = [
         name='web_link-list'
     ),
     url(
-        regex=r'^web_links/(?P<pk>[0-9]+)/$',
+        regex=r'^web_links/(?P<web_link_id>[0-9]+)/$',
         view=APIWebLinkView.as_view(), name='web_link-detail'
     ),
 ]

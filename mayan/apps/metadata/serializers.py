@@ -22,7 +22,8 @@ class MetadataTypeSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         extra_kwargs = {
             'url': {
-                'lookup_field': 'pk', 'lookup_url_kwarg': 'metadata_type_pk',
+                #'lookup_field': 'pk', 'lookup_url_kwarg': 'metadata_type_id',
+                'lookup_field': 'pk', 'lookup_url_kwarg': 'metadata_type_id',
                 'view_name': 'rest_api:metadatatype-detail'
             },
         }
@@ -44,9 +45,10 @@ class DocumentTypeMetadataTypeSerializer(serializers.HyperlinkedModelSerializer)
 
     def get_url(self, instance):
         return reverse(
-            'rest_api:documenttypemetadatatype-detail', args=(
-                instance.document_type.pk, instance.pk
-            ), request=self.context['request'], format=self.context['format']
+            viewname='rest_api:documenttypemetadatatype-detail', kwargs={
+                'document_type_id': instance.document_type.pk,
+                'metadata_type_id': instance.pk
+            }, request=self.context['request'], format=self.context['format']
         )
 
 
@@ -65,9 +67,10 @@ class NewDocumentTypeMetadataTypeSerializer(serializers.ModelSerializer):
 
     def get_url(self, instance):
         return reverse(
-            'rest_api:documenttypemetadatatype-detail', args=(
-                instance.document_type.pk, instance.pk
-            ), request=self.context['request'], format=self.context['format']
+            viewname='rest_api:documenttypemetadatatype-detail', kwargs={
+                'document_type_id': instance.document_type.pk,
+                'metadata_type_id': instance.pk
+            }, request=self.context['request'], format=self.context['format']
         )
 
     def validate(self, attrs):
@@ -96,9 +99,10 @@ class WritableDocumentTypeMetadataTypeSerializer(serializers.ModelSerializer):
 
     def get_url(self, instance):
         return reverse(
-            'rest_api:documenttypemetadatatype-detail', args=(
-                instance.document_type.pk, instance.pk
-            ), request=self.context['request'], format=self.context['format']
+            viewname='rest_api:documenttypemetadatatype-detail', kwargs={
+                'document_type_id': instance.document_type.pk,
+                'metadata_type_id': instance.pk
+            }, request=self.context['request'], format=self.context['format']
         )
 
 
@@ -114,9 +118,10 @@ class DocumentMetadataSerializer(serializers.HyperlinkedModelSerializer):
 
     def get_url(self, instance):
         return reverse(
-            'rest_api:documentmetadata-detail', args=(
-                instance.document.pk, instance.pk
-            ), request=self.context['request'], format=self.context['format']
+            viewname='rest_api:documentmetadata-detail', kwargs={
+                'document_id': instance.document.pk,
+                'metadata_id': instance.pk
+            }, request=self.context['request'], format=self.context['format']
         )
 
     def validate(self, attrs):
@@ -159,9 +164,10 @@ class NewDocumentMetadataSerializer(serializers.ModelSerializer):
 
     def get_url(self, instance):
         return reverse(
-            'rest_api:documentmetadata-detail', args=(
-                instance.document.pk, instance.pk
-            ), request=self.context['request'], format=self.context['format']
+            viewname='rest_api:documentmetadata-detail', kwargs={
+                'document_id': instance.document.pk,
+                'metadata_id': instance.pk
+            }, request=self.context['request'], format=self.context['format']
         )
 
     def validate(self, attrs):

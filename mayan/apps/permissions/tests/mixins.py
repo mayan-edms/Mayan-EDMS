@@ -73,7 +73,9 @@ class RoleAPIViewTestMixin:
 
     def _request_test_role_delete_api_view(self):
         return self.delete(
-            viewname='rest_api:role-detail', kwargs={'pk': self.test_role.pk}
+            viewname='rest_api:role-detail', kwargs={
+                'role_id': self.test_role.pk
+            }
         )
 
     def _request_test_role_edit_api_view(
@@ -88,7 +90,7 @@ class RoleAPIViewTestMixin:
 
         return getattr(self, request_type)(
             viewname='rest_api:role-detail', kwargs={
-                'pk': self.test_role.pk
+                'role_id': self.test_role.pk
             }, data=data
         )
 

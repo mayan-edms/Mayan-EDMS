@@ -45,6 +45,7 @@ class APITagView(generics.RetrieveUpdateDestroyAPIView):
     patch: Edit the selected tag.
     put: Edit the selected tag.
     """
+    lookup_url_kwarg = 'tag_id'
     mayan_object_permissions = {
         'DELETE': (permission_tag_delete,),
         'GET': (permission_tag_view,),
@@ -73,7 +74,7 @@ class APITagDocumentListView(generics.ListAPIView):
             user=self.request.user
         )
 
-        tag = get_object_or_404(klass=queryset, pk=self.kwargs['pk'])
+        tag = get_object_or_404(klass=queryset, pk=self.kwargs['tag_id'])
 
         return tag.documents.all()
 
@@ -99,7 +100,7 @@ class APIDocumentTagListView(generics.ListCreateAPIView):
             user=self.request.user
         )
         return get_object_or_404(
-            klass=queryset, pk=self.kwargs['document_pk']
+            klass=queryset, pk=self.kwargs['document_id']
         )
 
     def get_queryset(self):
@@ -134,6 +135,7 @@ class APIDocumentTagView(generics.RetrieveDestroyAPIView):
     delete: Remove a tag from the selected document.
     get: Returns the details of the selected document tag.
     """
+    lookup_url_kwarg = 'tag_id'
     mayan_object_permissions = {
         'GET': (permission_tag_view,),
         'DELETE': (permission_tag_remove,)
@@ -151,7 +153,7 @@ class APIDocumentTagView(generics.RetrieveDestroyAPIView):
             user=self.request.user
         )
         return get_object_or_404(
-            klass=queryset, pk=self.kwargs['document_pk']
+            klass=queryset, pk=self.kwargs['document_id']
         )
 
     def get_queryset(self):

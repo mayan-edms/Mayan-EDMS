@@ -32,11 +32,11 @@ urlpatterns = [
 
 api_urls = [
     url(
-        regex=r'^documents/(?P<document_pk>[0-9]+)/comments/$',
+        regex=r'^documents/(?P<document_id>[0-9]+)/comments/$',
         name='comment-list', view=APICommentListView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<document_pk>[0-9]+)/comments/(?P<comment_pk>[0-9]+)/$',
+        regex=r'^documents/(?P<document_id>[0-9]+)/comments/(?P<comment_id>[0-9]+)/$',
         name='comment-detail', view=APICommentView.as_view()
     ),
 ]

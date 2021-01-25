@@ -34,7 +34,7 @@ api_urls = [
         view=APIMessageListView.as_view()
     ),
     url(
-        regex=r'^messages/(?P<pk>[0-9]+)/$', name='message-detail',
+        regex=r'^messages/(?P<message_id>[0-9]+)/$', name='message-detail',
         view=APIMessageView.as_view()
     ),
 ]

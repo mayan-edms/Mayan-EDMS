@@ -17,7 +17,10 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         extra_kwargs = {
-            'url': {'view_name': 'rest_api:group-detail'}
+            'url': {
+                'lookup_url_kwarg': 'group_id',
+                'view_name': 'rest_api:group-detail'
+            }
         }
         fields = ('id', 'name', 'url', 'users_count')
         model = Group
@@ -68,7 +71,10 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         extra_kwargs = {
-            'url': {'view_name': 'rest_api:user-detail'}
+            'url': {
+                'lookup_url_kwarg': 'user_id',
+                'view_name': 'rest_api:user-detail'
+            }
         }
         fields = (
             'first_name', 'date_joined', 'email', 'groups', 'groups_pk_list',

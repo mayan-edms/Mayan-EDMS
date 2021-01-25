@@ -9,11 +9,11 @@ from mayan.apps.sources.wizards import DocumentCreateWizardStep
 
 from ..wizard_steps import DocumentCreateWizardStepCabinets
 
-from .mixins import CabinetDocumentUploadTestMixin, CabinetTestMixin
+from .mixins import CabinetDocumentUploadWizardStepTestMixin, CabinetTestMixin
 
 
 class CabinetDocumentUploadTestCase(
-    CabinetTestMixin, CabinetDocumentUploadTestMixin,
+    CabinetTestMixin, CabinetDocumentUploadWizardStepTestMixin,
     GenericDocumentViewTestCase
 ):
     auto_upload_test_document = False

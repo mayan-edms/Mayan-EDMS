@@ -131,3 +131,4 @@
 - Move DocumentCreateWizardStep to the sources.classes module.
 - Add automatic loading support for the ``wizard_step`` modules. It is no
   longer necessary to import these modules inside the App's .ready() method.
+- Update API endpoints to use explicit primary key URL keyword arguments.

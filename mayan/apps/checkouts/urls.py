@@ -40,7 +40,7 @@ api_urls = [
         view=APICheckedoutDocumentListView.as_view()
     ),
     url(
-        regex=r'^checkouts/(?P<pk>[0-9]+)/checkout_info/$',
+        regex=r'^checkouts/(?P<checkout_id>[0-9]+)/checkout_info/$',
         name='checkedout-document-view',
         view=APICheckedoutDocumentView.as_view()
     )

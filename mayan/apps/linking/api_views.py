@@ -25,7 +25,9 @@ class APIResolvedSmartLinkDocumentListView(generics.ListAPIView):
     serializer_class = ResolvedSmartLinkDocumentSerializer
 
     def get_document(self):
-        document = get_object_or_404(klass=Document, pk=self.kwargs['pk'])
+        document = get_object_or_404(
+            klass=Document, pk=self.kwargs['document_id']
+        )
 
         AccessControlList.objects.check_access(
             obj=document, permissions=(permission_document_view,),
@@ -57,7 +59,7 @@ class APIResolvedSmartLinkDocumentListView(generics.ListAPIView):
     def get_smart_link(self):
         smart_link = get_object_or_404(
             klass=SmartLink.objects.get_for(document=self.get_document()),
-            pk=self.kwargs['smart_link_pk']
+            pk=self.kwargs['smart_link_id']
         )
 
         AccessControlList.objects.check_access(
@@ -72,12 +74,14 @@ class APIResolvedSmartLinkView(generics.RetrieveAPIView):
     """
     get: Return the details of the selected resolved smart link.
     """
-    lookup_url_kwarg = 'smart_link_pk'
+    lookup_url_kwarg = 'smart_link_id'
     mayan_object_permissions = {'GET': (permission_smart_link_view,)}
     serializer_class = ResolvedSmartLinkSerializer
 
     def get_document(self):
-        document = get_object_or_404(klass=Document, pk=self.kwargs['pk'])
+        document = get_object_or_404(
+            klass=Document, pk=self.kwargs['document_id']
+        )
 
         AccessControlList.objects.check_access(
             obj=document, permissions=(permission_document_view,),
@@ -112,7 +116,9 @@ class APIResolvedSmartLinkListView(generics.ListAPIView):
     serializer_class = ResolvedSmartLinkSerializer
 
     def get_document(self):
-        document = get_object_or_404(klass=Document, pk=self.kwargs['pk'])
+        document = get_object_or_404(
+            klass=Document, pk=self.kwargs['document_id']
+        )
 
         AccessControlList.objects.check_access(
             obj=document, permissions=(permission_document_view,),
@@ -171,7 +177,9 @@ class APISmartLinkConditionListView(generics.ListCreateAPIView):
         else:
             permission_required = permission_smart_link_edit
 
-        smart_link = get_object_or_404(klass=SmartLink, pk=self.kwargs['pk'])
+        smart_link = get_object_or_404(
+            klass=SmartLink, pk=self.kwargs['smart_link_id']
+        )
 
         AccessControlList.objects.check_access(
             obj=smart_link, permissions=(permission_required,),
@@ -188,7 +196,7 @@ class APISmartLinkConditionView(generics.RetrieveUpdateDestroyAPIView):
     patch: Edit the selected smart link condition.
     put: Edit the selected smart link condition.
     """
-    lookup_url_kwarg = 'condition_pk'
+    lookup_url_kwarg = 'smart_link_condition_id'
     serializer_class = SmartLinkConditionSerializer
 
     def get_queryset(self):
@@ -214,7 +222,9 @@ class APISmartLinkConditionView(generics.RetrieveUpdateDestroyAPIView):
         else:
             permission_required = permission_smart_link_edit
 
-        smart_link = get_object_or_404(klass=SmartLink, pk=self.kwargs['pk'])
+        smart_link = get_object_or_404(
+            klass=SmartLink, pk=self.kwargs['smart_link_id']
+        )
 
         AccessControlList.objects.check_access(
             obj=smart_link, permissions=(permission_required,),
@@ -253,6 +263,7 @@ class APISmartLinkView(generics.RetrieveUpdateDestroyAPIView):
     patch: Edit the selected smart link.
     put: Edit the selected smart link.
     """
+    lookup_url_kwarg = 'smart_link_id'
     mayan_object_permissions = {
         'DELETE': (permission_smart_link_delete,),
         'GET': (permission_smart_link_view,),
