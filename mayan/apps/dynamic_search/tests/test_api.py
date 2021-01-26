@@ -10,7 +10,7 @@ from .mixins import SearchAPIViewTestMixin
 
 
 class SearchModelAPIViewTestCase(BaseAPITestCase):
-    def test_search_models_view(self):
+    def test_search_models_api_view(self):
         response = self.get(
             viewname='rest_api:searchmodel-list', query={'page_size': 50}
         )
@@ -25,12 +25,12 @@ class SearchModelAPIViewTestCase(BaseAPITestCase):
 class SearchAPIViewTestCase(
     SearchAPIViewTestMixin, DocumentTestMixin, BaseAPITestCase
 ):
-    def test_search_no_permission(self):
+    def test_search_api_view_no_permission(self):
         response = self._request_search_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['count'], 0)
 
-    def test_search_with_access(self):
+    def test_search_api_view_with_access(self):
         self.grant_access(
             obj=self.test_document, permission=permission_document_view
         )

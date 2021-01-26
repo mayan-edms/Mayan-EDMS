@@ -17,13 +17,13 @@ from .mixins import MessageAPIViewTestMixin, MessageTestMixin
 class MessageAPIViewTestCase(
     MessageAPIViewTestMixin, MessageTestMixin, BaseAPITestCase
 ):
-    def test_message_create_view_no_permission(self):
+    def test_message_create_api_view_no_permission(self):
         response = self._request_message_create_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
         self.assertEqual(Message.objects.count(), 0)
 
-    def test_message_create_view_with_permission(self):
+    def test_message_create_api_view_with_permission(self):
         self.grant_permission(permission=permission_message_create)
 
         response = self._request_message_create_view()
@@ -38,7 +38,7 @@ class MessageAPIViewTestCase(
         self.assertEqual(message.label, TEST_LABEL)
         self.assertEqual(message.message, TEST_MESSAGE)
 
-    def test_message_delete_view_no_permission(self):
+    def test_message_delete_api_view_no_permission(self):
         self._create_test_message()
 
         response = self._request_message_delete_view()
@@ -46,7 +46,7 @@ class MessageAPIViewTestCase(
 
         self.assertEqual(Message.objects.count(), 1)
 
-    def test_message_delete_view_with_access(self):
+    def test_message_delete_api_view_with_access(self):
         self._create_test_message()
         self.grant_access(
             obj=self.test_message, permission=permission_message_delete
@@ -57,13 +57,13 @@ class MessageAPIViewTestCase(
 
         self.assertEqual(Message.objects.count(), 0)
 
-    def test_message_detail_view_no_permission(self):
+    def test_message_detail_api_view_no_permission(self):
         self._create_test_message()
 
         response = self._request_message_detail_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-    def test_message_detail_view_with_access(self):
+    def test_message_detail_api_view_with_access(self):
         self._create_test_message()
         self.grant_access(
             obj=self.test_message, permission=permission_message_view
@@ -74,7 +74,7 @@ class MessageAPIViewTestCase(
 
         self.assertEqual(response.data['label'], TEST_LABEL)
 
-    def test_message_edit_via_patch_view_no_permission(self):
+    def test_message_edit_api_view_via_patch_view_no_permission(self):
         self._create_test_message()
 
         response = self._request_message_edit_via_patch_view()
@@ -85,7 +85,7 @@ class MessageAPIViewTestCase(
         self.assertEqual(self.test_message.label, TEST_LABEL)
         self.assertEqual(self.test_message.message, TEST_MESSAGE)
 
-    def test_message_edit_via_patch_view_with_access(self):
+    def test_message_edit_api_view_via_patch_view_with_access(self):
         self._create_test_message()
         self.grant_access(
             obj=self.test_message, permission=permission_message_edit
@@ -98,7 +98,7 @@ class MessageAPIViewTestCase(
         self.assertEqual(self.test_message.label, TEST_LABEL_EDITED)
         self.assertEqual(self.test_message.message, TEST_MESSAGE_EDITED)
 
-    def test_message_edit_via_put_view_no_permission(self):
+    def test_message_edit_api_view_via_put_view_no_permission(self):
         self._create_test_message()
 
         response = self._request_message_edit_via_put_view()
@@ -109,7 +109,7 @@ class MessageAPIViewTestCase(
         self.assertEqual(self.test_message.label, TEST_LABEL)
         self.assertEqual(self.test_message.message, TEST_MESSAGE)
 
-    def test_message_edit_via_put_view_with_access(self):
+    def test_message_edit_api_view_via_put_view_with_access(self):
         self._create_test_message()
         self.grant_access(
             obj=self.test_message, permission=permission_message_edit

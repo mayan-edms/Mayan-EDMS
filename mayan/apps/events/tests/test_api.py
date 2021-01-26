@@ -17,13 +17,13 @@ class EventListAPIViewTestCase(
     DocumentTestMixin, EventTypeTestMixin, EventListAPIViewTestMixin,
     BaseAPITestCase
 ):
-    def test_event_list_view_no_permission(self):
+    def test_event_list_api_view_no_permission(self):
         response = self._request_test_event_list_api_view()
         self.assertEqual(
             response.status_code, status.HTTP_403_FORBIDDEN
         )
 
-    def test_event_list_view_with_access(self):
+    def test_event_list_api_view_with_access(self):
         self.grant_permission(permission=permission_events_view)
 
         response = self._request_test_event_list_api_view()
@@ -37,15 +37,15 @@ class EventTypeNamespaceAPITestCase(
         super().setUp()
         self._create_test_event_type()
 
-    def test_event_type_list_view(self):
+    def test_event_type_list_api_view(self):
         response = self._request_test_event_type_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-    def test_event_type_namespace_list_view(self):
+    def test_event_type_namespace_list_api_view(self):
         response = self._request_test_event_namespace_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-    def test_event_type_namespace_event_type_list_view(self):
+    def test_event_type_namespace_event_type_list_api_view(self):
         response = self._request_test_event_type_namespace_event_type_list_api_view()
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -70,13 +70,13 @@ class ObjectEventAPITestCase(
             'object_id': self.test_object.pk
         }
 
-    def test_object_event_list_view_no_permission(self):
+    def test_object_event_list_api_view_no_permission(self):
         response = self._request_object_event_list_api_view()
         self.assertEqual(
             response.status_code, status.HTTP_403_FORBIDDEN
         )
 
-    def test_object_event_list_view_with_access(self):
+    def test_object_event_list_api_view_with_access(self):
         self.grant_access(
             obj=self.test_object, permission=permission_events_view
         )

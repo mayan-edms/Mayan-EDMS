@@ -27,7 +27,7 @@ class DetachedSignatureDocumentAPIViewTestCase(
 ):
     auto_upload_test_document = False
 
-    def test_document_signature_detached_create_view_no_permission(self):
+    def test_document_signature_detached_create_api_view_no_permission(self):
         self._upload_test_document()
         self._create_test_key_private()
 
@@ -41,7 +41,7 @@ class DetachedSignatureDocumentAPIViewTestCase(
             signatures
         )
 
-    def test_document_signature_detached_create_view_with_access(self):
+    def test_document_signature_detached_create_api_view_with_access(self):
         self._upload_test_document()
         self._create_test_key_private()
 
@@ -60,7 +60,7 @@ class DetachedSignatureDocumentAPIViewTestCase(
             signatures + 1
         )
 
-    def test_document_signature_detached_delete_no_permission(self):
+    def test_document_signature_detached_delete_api_view_no_permission(self):
         self._upload_test_document()
         self._upload_test_detached_signature()
 
@@ -74,7 +74,7 @@ class DetachedSignatureDocumentAPIViewTestCase(
             signatures
         )
 
-    def test_document_signature_detached_delete_with_access(self):
+    def test_document_signature_detached_delete_api_view_with_access(self):
         self._upload_test_document()
         self._upload_test_detached_signature()
 
@@ -93,14 +93,14 @@ class DetachedSignatureDocumentAPIViewTestCase(
             signatures - 1
         )
 
-    def test_document_signature_detached_detail_no_permission(self):
+    def test_document_signature_detached_detail_api_view_no_permission(self):
         self._upload_test_document()
         self._upload_test_detached_signature()
 
         response = self._request_test_document_signature_detached_detail_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-    def test_document_signature_detached_detail_with_access(self):
+    def test_document_signature_detached_detail_api_view_with_access(self):
         self._upload_test_document()
         self._upload_test_detached_signature()
 
@@ -116,14 +116,14 @@ class DetachedSignatureDocumentAPIViewTestCase(
             response.data['key_id'], TEST_KEY_PUBLIC_ID
         )
 
-    def test_document_signature_detached_list_view_no_permission(self):
+    def test_document_signature_detached_list_api_view_no_permission(self):
         self._upload_test_document()
         self._upload_test_detached_signature()
 
         response = self._request_test_document_signature_detached_list_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-    def test_document_signature_detached_list_view_with_access(self):
+    def test_document_signature_detached_list_api_view_with_access(self):
         self._upload_test_document()
         self._upload_test_detached_signature()
 
@@ -138,7 +138,7 @@ class DetachedSignatureDocumentAPIViewTestCase(
             response.data['results'][0]['key_id'], TEST_KEY_PUBLIC_ID
         )
 
-    def test_document_signature_detached_sign_view_with_no_permission(self):
+    def test_document_signature_detached_sign_api_view_with_no_permission(self):
         self._upload_test_document()
         self._create_test_key_private()
 
@@ -152,7 +152,7 @@ class DetachedSignatureDocumentAPIViewTestCase(
             signatures
         )
 
-    def test_document_signature_detached_sign_view_with_document_access(self):
+    def test_document_signature_detached_sign_api_view_with_document_access(self):
         self._upload_test_document()
         self._create_test_key_private()
 
@@ -171,7 +171,7 @@ class DetachedSignatureDocumentAPIViewTestCase(
             signatures
         )
 
-    def test_document_signature_detached_sign_view_with_key_access(self):
+    def test_document_signature_detached_sign_api_view_with_key_access(self):
         self._upload_test_document()
         self._create_test_key_private()
 
@@ -190,7 +190,7 @@ class DetachedSignatureDocumentAPIViewTestCase(
             signatures
         )
 
-    def test_document_signature_detached_sign_view_with_full_access(self):
+    def test_document_signature_detached_sign_api_view_with_full_access(self):
         self._upload_test_document()
         self._create_test_key_private()
 
@@ -220,7 +220,7 @@ class EmbeddedSignatureDocumentAPIViewTestCase(
 ):
     auto_upload_test_document = False
 
-    def test_document_signature_embedded_sign_view_with_no_permission(self):
+    def test_document_signature_embedded_sign_api_view_with_no_permission(self):
         self._upload_test_document()
         self._create_test_key_private()
 
@@ -234,7 +234,7 @@ class EmbeddedSignatureDocumentAPIViewTestCase(
             signatures
         )
 
-    def test_document_signature_embedded_sign_view_with_document_access(self):
+    def test_document_signature_embedded_sign_api_view_with_document_access(self):
         self._upload_test_document()
         self._create_test_key_private()
 
@@ -253,7 +253,7 @@ class EmbeddedSignatureDocumentAPIViewTestCase(
             signatures
         )
 
-    def test_document_signature_embedded_sign_view_with_key_access(self):
+    def test_document_signature_embedded_sign_api_view_with_key_access(self):
         self._upload_test_document()
         self._create_test_key_private()
 
@@ -272,7 +272,7 @@ class EmbeddedSignatureDocumentAPIViewTestCase(
             signatures
         )
 
-    def test_document_signature_embedded_sign_view_with_full_access(self):
+    def test_document_signature_embedded_sign_api_view_with_full_access(self):
         self._upload_test_document()
         self._create_test_key_private()
 
@@ -295,14 +295,14 @@ class EmbeddedSignatureDocumentAPIViewTestCase(
             signatures + 1
         )
 
-    def test_document_signature_embedded_detail_no_permission(self):
+    def test_document_signature_embedded_detail_api_view_no_permission(self):
         self.test_document_path = TEST_SIGNED_DOCUMENT_PATH
         self._upload_test_document()
 
         response = self._request_test_document_signature_embedded_detail_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-    def test_document_signature_embedded_detail_with_access(self):
+    def test_document_signature_embedded_detail_api_view_with_access(self):
         self.test_document_path = TEST_SIGNED_DOCUMENT_PATH
         self._upload_test_document()
 
@@ -318,14 +318,14 @@ class EmbeddedSignatureDocumentAPIViewTestCase(
             response.data['key_id'], TEST_KEY_PUBLIC_ID
         )
 
-    def test_document_signature_embedded_list_view_no_permission(self):
+    def test_document_signature_embedded_list_api_view_no_permission(self):
         self.test_document_path = TEST_SIGNED_DOCUMENT_PATH
         self._upload_test_document()
 
         response = self._request_test_document_signature_embedded_list_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-    def test_document_signature_embedded_list_view_with_access(self):
+    def test_document_signature_embedded_list_api_view_with_access(self):
         self.test_document_path = TEST_SIGNED_DOCUMENT_PATH
         self._upload_test_document()
 

@@ -23,11 +23,11 @@ class DocumentParsingAPITestCase(
 ):
     test_document_filename = TEST_HYBRID_DOCUMENT
 
-    def test_get_document_file_page_content_no_permission(self):
+    def test_get_document_file_page_content_api_view_no_permission(self):
         response = self._request_document_file_page_content_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-    def test_get_document_file_page_content_with_access(self):
+    def test_get_document_file_page_content_api_view_with_access(self):
         self.grant_access(
             permission=permission_document_file_content_view, obj=self.test_document
         )

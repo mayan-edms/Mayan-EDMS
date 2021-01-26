@@ -21,7 +21,7 @@ from .mixins import TagAPIViewTestMixin, TagTestMixin
 class TagAPIViewTestCase(TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase):
     _test_event_object_name = 'test_tag'
 
-    def test_tag_create_view_no_permission(self):
+    def test_tag_create_api_view_no_permission(self):
         tag_count = Tag.objects.count()
 
         self._clear_events()
@@ -34,7 +34,7 @@ class TagAPIViewTestCase(TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase):
         event = self._get_test_object_event()
         self.assertEqual(event, None)
 
-    def test_tag_create_view_with_permission(self):
+    def test_tag_create_api_view_with_permission(self):
         self.grant_permission(permission=permission_tag_create)
 
         tag_count = Tag.objects.count()
@@ -51,7 +51,7 @@ class TagAPIViewTestCase(TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase):
         self.assertEqual(event.target, self.test_tag)
         self.assertEqual(event.verb, event_tag_created.id)
 
-    def test_tag_delete_view_no_permission(self):
+    def test_tag_delete_api_view_no_permission(self):
         self._create_test_tag()
 
         tag_count = Tag.objects.count()
@@ -66,7 +66,7 @@ class TagAPIViewTestCase(TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase):
         event = self._get_test_object_event()
         self.assertEqual(event, None)
 
-    def test_tag_delete_view_with_access(self):
+    def test_tag_delete_api_view_with_access(self):
         self._create_test_tag()
 
         self.grant_access(obj=self.test_tag, permission=permission_tag_delete)
@@ -94,7 +94,7 @@ class TagAPIViewTestCase(TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase):
         event = self._get_test_object_event()
         self.assertEqual(event, None)
 
-    def test_tag_detail_view_api_with_access(self):
+    def test_tag_detail_api_view_with_access(self):
         self._create_test_tag()
         self.grant_access(
             obj=self.test_tag, permission=permission_tag_view
@@ -110,7 +110,7 @@ class TagAPIViewTestCase(TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase):
         event = self._get_test_object_event()
         self.assertEqual(event, None)
 
-    def test_tag_edit_via_patch_no_permission(self):
+    def test_tag_edit_api_view_via_patch_no_permission(self):
         self._create_test_tag()
 
         tag_label = self.test_tag.label
@@ -128,7 +128,7 @@ class TagAPIViewTestCase(TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase):
         event = self._get_test_object_event()
         self.assertEqual(event, None)
 
-    def test_tag_edit_via_patch_with_access(self):
+    def test_tag_edit_api_view_via_patch_with_access(self):
         self._create_test_tag()
 
         self.grant_access(obj=self.test_tag, permission=permission_tag_edit)
@@ -150,7 +150,7 @@ class TagAPIViewTestCase(TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase):
         self.assertEqual(event.target, self.test_tag)
         self.assertEqual(event.verb, event_tag_edited.id)
 
-    def test_tag_edit_via_put_no_permission(self):
+    def test_tag_edit_api_view_via_put_no_permission(self):
         self._create_test_tag()
 
         tag_label = self.test_tag.label
@@ -168,7 +168,7 @@ class TagAPIViewTestCase(TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase):
         event = self._get_test_object_event()
         self.assertEqual(event, None)
 
-    def test_tag_edit_via_put_with_access(self):
+    def test_tag_edit_api_view_via_put_with_access(self):
         self._create_test_tag()
 
         self.grant_access(obj=self.test_tag, permission=permission_tag_edit)
@@ -232,7 +232,7 @@ class TagDocumentAPIViewTestCase(
         self._create_test_tag()
         self._create_test_document_stub()
 
-    def test_tag_document_list_view_no_permission(self):
+    def test_tag_document_list_api_view_no_permission(self):
         self.test_tag.documents.add(self.test_document)
 
         self._clear_events()
@@ -243,7 +243,7 @@ class TagDocumentAPIViewTestCase(
         event = self._get_test_object_event()
         self.assertEqual(event, None)
 
-    def test_tag_document_list_view_with_tag_access(self):
+    def test_tag_document_list_api_view_with_tag_access(self):
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(obj=self.test_tag, permission=permission_tag_view)
@@ -258,7 +258,7 @@ class TagDocumentAPIViewTestCase(
         event = self._get_test_object_event()
         self.assertEqual(event, None)
 
-    def test_tag_document_list_view_with_document_access(self):
+    def test_tag_document_list_api_view_with_document_access(self):
         self.test_tag.documents.add(self.test_document)
 
         self._clear_events()
@@ -272,7 +272,7 @@ class TagDocumentAPIViewTestCase(
         event = self._get_test_object_event()
         self.assertEqual(event, None)
 
-    def test_tag_document_list_view_with_access(self):
+    def test_tag_document_list_api_view_with_access(self):
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(obj=self.test_tag, permission=permission_tag_view)
@@ -293,7 +293,7 @@ class TagDocumentAPIViewTestCase(
         event = self._get_test_object_event()
         self.assertEqual(event, None)
 
-    def test_document_attach_tag_view_no_permission(self):
+    def test_document_attach_tag_api_view_no_permission(self):
         self._clear_events()
 
         response = self._request_test_document_attach_tag_api_view()
@@ -304,7 +304,7 @@ class TagDocumentAPIViewTestCase(
         event = self._get_test_object_event()
         self.assertEqual(event, None)
 
-    def test_document_attach_tag_view_with_document_access(self):
+    def test_document_attach_tag_api_view_with_document_access(self):
         self.grant_access(
             obj=self.test_document, permission=permission_tag_attach
         )
@@ -319,7 +319,7 @@ class TagDocumentAPIViewTestCase(
         event = self._get_test_object_event()
         self.assertEqual(event, None)
 
-    def test_document_attach_tag_view_with_tag_access(self):
+    def test_document_attach_tag_api_view_with_tag_access(self):
         self.grant_access(
             obj=self.test_tag, permission=permission_tag_attach
         )
@@ -334,7 +334,7 @@ class TagDocumentAPIViewTestCase(
         event = self._get_test_object_event()
         self.assertEqual(event, None)
 
-    def test_document_attach_tag_view_with_full_access(self):
+    def test_document_attach_tag_api_view_with_full_access(self):
         self.grant_access(
             obj=self.test_document, permission=permission_tag_attach
         )
@@ -355,7 +355,7 @@ class TagDocumentAPIViewTestCase(
         self.assertEqual(event.target, self.test_document)
         self.assertEqual(event.verb, event_tag_attach.id)
 
-    def test_document_tag_detail_view_no_permission(self):
+    def test_document_tag_detail_api_view_no_permission(self):
         self.test_tag.documents.add(self.test_document)
 
         self._clear_events()
@@ -366,7 +366,7 @@ class TagDocumentAPIViewTestCase(
         event = self._get_test_object_event()
         self.assertEqual(event, None)
 
-    def test_document_tag_detail_view_with_document_access(self):
+    def test_document_tag_detail_api_view_with_document_access(self):
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(
@@ -381,7 +381,7 @@ class TagDocumentAPIViewTestCase(
         event = self._get_test_object_event()
         self.assertEqual(event, None)
 
-    def test_document_tag_detail_view_with_tag_access(self):
+    def test_document_tag_detail_api_view_with_tag_access(self):
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(obj=self.test_tag, permission=permission_tag_view)
@@ -394,7 +394,7 @@ class TagDocumentAPIViewTestCase(
         event = self._get_test_object_event()
         self.assertEqual(event, None)
 
-    def test_document_tag_detail_view_with_full_access(self):
+    def test_document_tag_detail_api_view_with_full_access(self):
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(obj=self.test_tag, permission=permission_tag_view)
@@ -411,7 +411,7 @@ class TagDocumentAPIViewTestCase(
         event = self._get_test_object_event()
         self.assertEqual(event, None)
 
-    def test_document_tag_list_view_no_permission(self):
+    def test_document_tag_list_api_view_no_permission(self):
         self.test_tag.documents.add(self.test_document)
 
         self._clear_events()
@@ -422,7 +422,7 @@ class TagDocumentAPIViewTestCase(
         event = self._get_test_object_event()
         self.assertEqual(event, None)
 
-    def test_document_tag_list_view_with_document_access(self):
+    def test_document_tag_list_api_view_with_document_access(self):
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(
@@ -438,7 +438,7 @@ class TagDocumentAPIViewTestCase(
         event = self._get_test_object_event()
         self.assertEqual(event, None)
 
-    def test_document_tag_list_view_with_tag_access(self):
+    def test_document_tag_list_api_view_with_tag_access(self):
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(obj=self.test_tag, permission=permission_tag_view)
@@ -451,7 +451,7 @@ class TagDocumentAPIViewTestCase(
         event = self._get_test_object_event()
         self.assertEqual(event, None)
 
-    def test_document_tag_list_view_with_full_access(self):
+    def test_document_tag_list_api_view_with_full_access(self):
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(
@@ -468,7 +468,7 @@ class TagDocumentAPIViewTestCase(
         event = self._get_test_object_event()
         self.assertEqual(event, None)
 
-    def test_document_tag_remove_view_no_permission(self):
+    def test_document_tag_remove_api_view_no_permission(self):
         self.test_tag.documents.add(self.test_document)
 
         self._clear_events()
@@ -481,7 +481,7 @@ class TagDocumentAPIViewTestCase(
         event = self._get_test_object_event()
         self.assertEqual(event, None)
 
-    def test_document_tag_remove_view_with_document_access(self):
+    def test_document_tag_remove_api_view_with_document_access(self):
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(
@@ -498,7 +498,7 @@ class TagDocumentAPIViewTestCase(
         event = self._get_test_object_event()
         self.assertEqual(event, None)
 
-    def test_document_tag_remove_view_with_tag_access(self):
+    def test_document_tag_remove_api_view_with_tag_access(self):
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(obj=self.test_tag, permission=permission_tag_remove)
@@ -513,7 +513,7 @@ class TagDocumentAPIViewTestCase(
         event = self._get_test_object_event()
         self.assertEqual(event, None)
 
-    def test_document_tag_remove_view_with_full_access(self):
+    def test_document_tag_remove_api_view_with_full_access(self):
         self.test_tag.documents.add(self.test_document)
 
         self.grant_access(

@@ -122,7 +122,7 @@ class ACLAPIViewTestCase(ACLTestMixin, ACLAPIViewTestMixin, BaseAPITestCase):
             response=response, text=self.test_acl.role.label
         )
 
-    def test_acl_permission_delete_view_with_access(self):
+    def test_acl_permission_delete_api_view_with_access(self):
         self._create_test_acl()
         self.test_acl.permissions.add(self.test_permission.stored_permission)
 
