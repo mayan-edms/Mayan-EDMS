@@ -166,6 +166,13 @@ class WorkflowAPIViewTestMixin:
             }
         )
 
+    def _request_test_workflow_image_view_api_view(self):
+        return self.get(
+            viewname='rest_api:workflow-image', kwargs={
+                'workflow_template_id': self.test_workflow.pk
+            }
+        )
+
     def _request_test_workflow_list_api_view(self):
         return self.get(viewname='rest_api:workflow-list')
 

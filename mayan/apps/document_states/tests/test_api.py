@@ -439,6 +439,22 @@ class WorkflowAPIViewTestCase(
             response.data['results'][0]['label'], self.test_document_type.label
         )
 
+    def test_workflow_image_api_view_no_permission(self):
+        self._create_test_workflow(add_document_type=True)
+
+        response = self._request_test_workflow_image_view_api_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+    def test_workflow_image_api_view_with_access(self):
+        self._create_test_workflow(add_document_type=True)
+
+        self.grant_access(
+            obj=self.test_workflow, permission=permission_workflow_view
+        )
+
+        response = self._request_test_workflow_image_view_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
     def test_workflow_list_view_no_permission(self):
         self._create_test_workflow()
 
