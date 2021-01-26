@@ -511,7 +511,11 @@ class DocumentsApp(MayanAppConfig):
             ), html_extra_classes='text-center document-thumbnail-list',
             label=_('Thumbnail'), source=Document
         )
+
+        ########
         ##TEMP
+        ##TODO:REMOVE
+        #######
         SourceColumn(
             func=lambda context: 'Files: {}'.format(context['object'].files.count()),
             label=_('Files'), source=Document
@@ -524,9 +528,15 @@ class DocumentsApp(MayanAppConfig):
             func=lambda context: context['object'].is_stub,
             label=_('Is stub'), source=Document
         )
-        ##TEMP
+
+        ###########
+        ##TEMP -end
+        ##TODO:REMOVE
+        ###########
+
         SourceColumn(
-            attribute='document_type', is_sortable=True, source=Document,
+            attribute='document_type', include_label=True, is_sortable=True,
+            label=_('Type'), source=Document,
         )
         SourceColumn(
             func=lambda context: widget_document_page_number(
