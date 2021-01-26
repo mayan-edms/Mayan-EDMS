@@ -39,4 +39,3 @@ document_version_page_search.add_model_field(
     field='document_version__document__workflows__log_entries__comment',
     label=_('Document workflow transition comment')
 )
-

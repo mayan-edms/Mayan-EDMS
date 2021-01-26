@@ -180,6 +180,7 @@ class APIWorkflowImageView(generics.RetrieveAPIView):
     """
     get: Returns an image representation of the selected workflow.
     """
+    lookup_url_kwarg = 'workflow_template_id'
     mayan_object_permissions = {
         'GET': (permission_workflow_view,),
     }
