@@ -133,3 +133,5 @@
   longer necessary to import these modules inside the App's .ready() method.
 - Update API endpoints to use explicit primary key URL keyword arguments.
 - Split workflow models module into separate modules.
+- Remove usage of Document.save(_user). The event_actor attribute is used
+  instead.

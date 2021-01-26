@@ -149,7 +149,9 @@ class DocumentType(ModelInstanceExtraDataAPIViewMixin, models.Model):
                 label=label or file_object.name,
                 language=language or setting_language.value
             )
-            document.save(_user=_user)
+            document._event_keep_attributes = ('_event_actor',)
+            document._event_actor = _user
+            document.save()
         except Exception as exception:
             logger.critical(
                 'Unexpected exception while trying to create new document '

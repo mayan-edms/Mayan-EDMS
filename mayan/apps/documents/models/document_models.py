@@ -297,7 +297,6 @@ class Document(
         created={
             'event': event_document_created,
             'action_object': 'document_type',
-            'keep_attributes': '_event_actor',
             'target': 'self'
         },
         edited={
@@ -306,7 +305,7 @@ class Document(
         }
     )
     def save(self, *args, **kwargs):
-        user = kwargs.pop('_user', self.__dict__.pop('_event_actor', None))
+        user = self.__dict__.pop('_event_actor', None)
         new_document = not self.pk
 
         signal_mayan_pre_save.send(
