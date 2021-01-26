@@ -7,11 +7,11 @@ from django.utils.translation import ugettext_lazy as _
 
 from .classes import WorkflowAction
 from .exceptions import WorkflowStateActionError
+from .literals import DEFAULT_HTTP_ACTION_TIMEOUT
 from .models import Workflow
 from .tasks import task_launch_workflow_for
 
 logger = logging.getLogger(name=__name__)
-DEFAULT_TIMEOUT = 4  # 4 seconds
 
 
 class DocumentPropertiesEditAction(WorkflowAction):
@@ -127,7 +127,8 @@ class HTTPAction(WorkflowAction):
             },
         }, 'timeout': {
             'label': _('Timeout'),
-            'class': 'django.forms.IntegerField', 'default': DEFAULT_TIMEOUT,
+            'class': 'django.forms.IntegerField',
+            'default': DEFAULT_HTTP_ACTION_TIMEOUT,
             'help_text': _(
                 'Time in seconds to wait for a response. Can be a static '
                 'value or a template. '

@@ -35,14 +35,13 @@ from mayan.apps.templating.classes import Template
 
 from .events import event_workflow_created, event_workflow_edited
 from .literals import (
-    FIELD_TYPE_CHOICES, STORAGE_NAME_WORKFLOW_CACHE, WIDGET_CLASS_CHOICES,
-    WORKFLOW_ACTION_WHEN_CHOICES, WORKFLOW_ACTION_ON_ENTRY,
-    WORKFLOW_ACTION_ON_EXIT,
+    FIELD_TYPE_CHOICES, STORAGE_NAME_WORKFLOW_CACHE, SYMBOL_MATH_CONDITIONAL,
+    WIDGET_CLASS_CHOICES, WORKFLOW_ACTION_WHEN_CHOICES,
+    WORKFLOW_ACTION_ON_ENTRY, WORKFLOW_ACTION_ON_EXIT
 )
 from .managers import WorkflowManager, ValidWorkflowInstanceManager
 from .permissions import permission_workflow_transition
 
-SYMBOL_MATH_CONDITIONAL = '&rarr;'
 logger = logging.getLogger(name=__name__)
 
 
