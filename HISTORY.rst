@@ -1,4 +1,4 @@
-4.0 (2021-XX-XX)
+4.0 (2021-02-XX)
 ================
 - Add document version page list reset.
 - Add document version page delete.

@@ -1,7 +1,7 @@
 Version 4.0
 ===========
 
-Released: XX XX, XX
+Released: February XX, 2021
 
 
 Changes
