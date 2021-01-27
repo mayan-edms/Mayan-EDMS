@@ -1,3 +1,5 @@
+import importlib
+import logging
 from pathlib import Path
 import shutil
 
@@ -6,6 +8,7 @@ from django.core.files.base import ContentFile
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.documents.literals import STORAGE_NAME_DOCUMENT_FILES
 from mayan.apps.permissions.tests.mixins import PermissionTestMixin
+from mayan.apps.smart_settings.classes import SettingNamespace
 
 from ..classes import DefinedStorage
 from ..models import DownloadFile
@@ -19,7 +22,9 @@ class DownloadFileTestMixin(PermissionTestMixin):
         file_content = None
 
         if content:
-            file_content = ContentFile(content=content, name=DOWNLOAD_FILE_CONTENT_FILE_NAME)
+            file_content = ContentFile(
+                content=content, name=DOWNLOAD_FILE_CONTENT_FILE_NAME
+            )
 
         self.test_download_file = DownloadFile.objects.create(
             file=file_content
@@ -29,7 +34,9 @@ class DownloadFileTestMixin(PermissionTestMixin):
         file_content = None
 
         if content:
-            file_content = ContentFile(content=content, name=DOWNLOAD_FILE_CONTENT_FILE_NAME)
+            file_content = ContentFile(
+                content=content, name=DOWNLOAD_FILE_CONTENT_FILE_NAME
+            )
 
         self._create_test_permission()
 
@@ -83,3 +90,30 @@ class StorageProcessorTestMixin:
         super().tearDown()
         shutil.rmtree(path=self.temporary_directory, ignore_errors=True)
         self.defined_storage.kwargs = self.document_storage_kwargs
+
+
+class StorageSettingTestMixin:
+    def _test_storage_setting_with_invalid_value(
+        self, setting, storage_module, storage_name
+    ):
+        old_value = setting.value
+        SettingNamespace.invalidate_cache_all()
+
+        self._set_environment_variable(
+            name='MAYAN_{}'.format(
+                setting.global_name
+            ), value='invalid_value'
+        )
+        self.test_case_silenced_logger_new_level = logging.FATAL + 10
+        self._silence_logger(name='mayan.apps.storage.classes')
+
+        with self.assertRaises(expected_exception=TypeError) as assertion:
+            importlib.reload(storage_module)
+            DefinedStorage.get(
+                name=storage_name
+            ).get_storage_instance()
+
+        setting.set(value=old_value)
+        importlib.reload(storage_module)
+
+        return assertion
