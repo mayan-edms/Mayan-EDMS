@@ -8,7 +8,12 @@ from django.utils.encoding import force_text
 from django.utils.timezone import make_aware
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.common.mixins import ModelInstanceExtraDataAPIViewMixin
+from mayan.apps.events.classes import EventManagerSave
+from mayan.apps.events.decorators import method_event
+
 from .classes import GPGBackend
+from .events import event_key_created
 from .exceptions import NeedPassphrase, PassphraseError
 from .literals import (
     ERROR_MSG_BAD_PASSPHRASE, ERROR_MSG_GOOD_PASSPHRASE,
@@ -21,7 +26,7 @@ from .managers import KeyManager
 logger = logging.getLogger(name=__name__)
 
 
-class Key(models.Model):
+class Key(ModelInstanceExtraDataAPIViewMixin, models.Model):
     """
     Fields:
     * key_type - Will show private or public, the only two types of keys in
@@ -113,6 +118,13 @@ class Key(models.Model):
         else:
             self.key_type = key_info['type']
 
+    @method_event(
+        event_manager_class=EventManagerSave,
+        created={
+            'event': event_key_created,
+            'target': 'self'
+        },
+    )
     def save(self, *args, **kwargs):
         self.introspect_key_data()
         super().save(*args, **kwargs)

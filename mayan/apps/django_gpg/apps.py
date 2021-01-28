@@ -5,11 +5,17 @@ from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import (
-    menu_facet, menu_object, menu_secondary, menu_setup
+    menu_list_facet, menu_object, menu_related, menu_secondary, menu_setup
 )
+from mayan.apps.events.classes import EventModelRegistry, ModelEventType
+from mayan.apps.events.links import (
+    link_events_for_object, link_object_event_types_user_subcriptions_list,
+)
+from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
 
 from .classes import KeyStub
+from .events import event_key_downloaded
 from .links import (
     link_key_delete, link_key_detail, link_key_download, link_key_query,
     link_key_receive, link_key_setup, link_key_upload, link_private_keys,
@@ -34,11 +40,18 @@ class DjangoGPGApp(MayanAppConfig):
 
         Key = self.get_model(model_name='Key')
 
+        EventModelRegistry.register(model=Key)
+        ModelEventType.register(
+            model=Key, event_types=(
+                event_key_downloaded,
+            )
+        )
         ModelPermission.register(
             model=Key, permissions=(
                 permission_acl_edit, permission_acl_view,
-                permission_key_delete, permission_key_download,
-                permission_key_sign, permission_key_view
+                permission_events_view, permission_key_delete,
+                permission_key_download, permission_key_sign,
+                permission_key_view
             )
         )
 
@@ -80,7 +93,13 @@ class DjangoGPGApp(MayanAppConfig):
             links=(link_acl_list, link_key_delete, link_key_download,),
             sources=(Key,)
         )
-        menu_facet.bind_links(
+        menu_list_facet.bind_links(
+            links=(
+                link_events_for_object,
+                link_object_event_types_user_subcriptions_list,
+            ), sources=(Key, KeyStub,), position=2
+        )
+        menu_related.bind_links(
             links=(link_private_keys, link_public_keys),
             sources=(
                 'django_gpg:key_public_list', 'django_gpg:key_private_list',

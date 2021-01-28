@@ -136,3 +136,5 @@
 - Remove usage of Document.save(_user). The event_actor attribute is used
   instead.
 - Convert the key creation and expiration fields to date and time fields.
+- Add creation and download events for keys.
+- Add event subscription for keys.

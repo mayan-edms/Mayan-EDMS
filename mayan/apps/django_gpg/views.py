@@ -10,7 +10,10 @@ from mayan.apps.views.generics import (
     SingleObjectDetailView, SingleObjectDownloadView, SingleObjectListView,
     SimpleView
 )
+from mayan.apps.events.classes import EventManagerMethodAfter
+from mayan.apps.events.decorators import method_event
 
+from .events import event_key_downloaded
 from .forms import KeyDetailForm, KeySearchForm
 from .icons import (
     icon_key_setup, icon_keyserver_search, icon_private_keys,
@@ -59,6 +62,12 @@ class KeyDownloadView(SingleObjectDownloadView):
     object_permission = permission_key_download
     pk_url_kwarg = 'key_id'
 
+    @method_event(
+        actor='request.user',
+        event_manager_class=EventManagerMethodAfter,
+        event=event_key_downloaded,
+        target='object'
+    )
     def get_download_file_object(self):
         return self.object.key_data
 
@@ -155,6 +164,11 @@ class KeyUploadView(SingleObjectCreateView):
     def get_extra_context(self):
         return {
             'title': _('Upload new key'),
+        }
+
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user
         }
 
 

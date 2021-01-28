@@ -1,6 +1,4 @@
-from datetime import date, datetime
-
-import pytz
+from datetime import datetime
 
 from django.db import migrations
 from django.utils.encoding import force_text

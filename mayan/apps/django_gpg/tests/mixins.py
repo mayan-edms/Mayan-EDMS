@@ -1,3 +1,5 @@
+from django.db.models import Q
+
 from ..models import Key
 
 from .literals import TEST_KEY_PRIVATE_DATA, TEST_KEY_PUBLIC_FILE_PATH
@@ -5,11 +7,22 @@ from .literals import TEST_KEY_PRIVATE_DATA, TEST_KEY_PUBLIC_FILE_PATH
 
 class KeyAPIViewTestMixin:
     def _request_test_key_create_api_view(self):
-        return self.post(
+        pk_list = list(Key.objects.values_list('pk', flat=True))
+
+        response = self.post(
             viewname='rest_api:key-list', data={
                 'key_data': TEST_KEY_PRIVATE_DATA
             }
         )
+
+        try:
+            self.test_key_private = Key.objects.get(
+                ~Q(pk__in=pk_list)
+            )
+        except Key.DoesNotExist:
+            self.test_key_private = None
+
+        return response
 
     def _request_test_key_delete_api_view(self):
         return self.delete(
@@ -48,8 +61,19 @@ class KeyViewTestMixin:
         )
 
     def _request_test_key_upload_view(self):
-        return self.post(
+        pk_list = list(Key.objects.values_list('pk', flat=True))
+
+        response = self.post(
             viewname='django_gpg:key_upload', data={
                 'key_data': TEST_KEY_PRIVATE_DATA
             }
         )
+
+        try:
+            self.test_key_private = Key.objects.get(
+                ~Q(pk__in=pk_list)
+            )
+        except Key.DoesNotExist:
+            self.test_key_private = None
+
+        return response
