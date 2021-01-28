@@ -4,6 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.navigation.classes import Link
 
 from .icons import (
+    icon_document_file_all_signature_refresh,
     icon_document_file_all_signature_verify,
     icon_document_file_signature_delete,
     icon_document_file_signature_detached_create,
@@ -33,6 +34,12 @@ def is_detached_signature(context):
     ).is_detached
 
 
+link_document_file_all_signature_refresh = Link(
+    icon=icon_document_file_all_signature_refresh,
+    permissions=(permission_document_file_signature_verify,),
+    text=_('Refresh all signatures'),
+    view='signatures:all_document_file_signature_refresh',
+)
 link_document_file_all_signature_verify = Link(
     icon=icon_document_file_all_signature_verify,
     permissions=(permission_document_file_signature_verify,),

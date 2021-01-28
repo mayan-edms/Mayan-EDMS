@@ -18,6 +18,7 @@ from .hooks import (
     hook_create_embedded_signature, hook_decrypt_document_file
 )
 from .links import (
+    link_document_file_all_signature_refresh,
     link_document_file_all_signature_verify,
     link_document_file_signature_delete,
     link_document_file_signature_detached_create,
@@ -131,7 +132,10 @@ class DocumentSignaturesApp(MayanAppConfig):
             ), sources=(DocumentFile,)
         )
         menu_tools.bind_links(
-            links=(link_document_file_all_signature_verify,)
+            links=(
+                link_document_file_all_signature_refresh,
+                link_document_file_all_signature_verify,
+            )
         )
 
         post_delete.connect(

@@ -1,6 +1,7 @@
-from datetime import date
+from datetime import datetime
 
 from django.utils.module_loading import import_string
+from django.utils.timezone import make_aware
 
 from .settings import (
     setting_gpg_backend, setting_gpg_backend_arguments
@@ -22,9 +23,13 @@ class KeyStub:
     def __init__(self, raw):
         self.fingerprint = raw['keyid']
         self.key_type = raw['type']
-        self.date = date.fromtimestamp(int(raw['date']))
+        self.date = make_aware(
+            value=datetime.fromtimestamp(int(raw['date']))
+        )
         if raw['expires']:
-            self.expires = date.fromtimestamp(int(raw['expires']))
+            self.expires = make_aware(
+                value=datetime.fromtimestamp(int(raw['expires']))
+            )
         else:
             self.expires = None
         self.length = raw['length']
@@ -44,10 +49,14 @@ class SignatureVerification:
 
         # Invalid signatures do not have a timestamp attribute
         if raw['timestamp']:
-            self.date = date.fromtimestamp(int(raw['timestamp']))
+            self.date_time = make_aware(
+                value=datetime.fromtimestamp(int(raw['timestamp']))
+            )
 
         if raw['expire_timestamp']:
-            self.expires = date.fromtimestamp(int(raw['expire_timestamp']))
+            self.expires = make_aware(
+                value=datetime.fromtimestamp(int(raw['expire_timestamp']))
+            )
         else:
             self.expires = None
         self.trust_text = raw['trust_text']

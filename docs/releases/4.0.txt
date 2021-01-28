@@ -7,11 +7,14 @@ Released: February XX, 2021
 Changes
 -------
 
+- Refresh signatures after upgrade.
+
+
 
 Removals
 --------
 
-- None
+- Document storage and caching settings.
 
 
 Upgrading process
@@ -200,5 +203,6 @@ Issues closed
 - :gitlab-issue:`853` Remove parent class and self reference from super() calls
 - :gitlab-issue:`733` Feature: Draft versions of documents
 - :gitlab-issue:`865` Possible bug: Adding a new version of a document via scanner
+- :gitlab-issue:`941` Include time of document signature
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

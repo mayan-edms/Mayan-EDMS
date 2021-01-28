@@ -38,8 +38,10 @@ class SignatureBaseModel(models.Model):
         to=DocumentFile, verbose_name=_('Document file')
     )
     # Basic fields
-    date = models.DateField(
-        blank=True, editable=False, null=True, verbose_name=_('Date signed')
+    date_time = models.DateTimeField(
+        blank=True, editable=False, null=True, verbose_name=_(
+            'Date and time signed'
+        )
     )
     key_id = models.CharField(
         help_text=_('ID of the key that will be used to sign the document.'),
@@ -63,7 +65,7 @@ class SignatureBaseModel(models.Model):
         verbose_name_plural = _('Document file signatures')
 
     def __str__(self):
-        return self.signature_id or '{} - {}'.format(self.date, self.key_id)
+        return self.signature_id or '{} - {}'.format(self.date_time, self.key_id)
 
     def get_absolute_url(self):
         return reverse(
@@ -118,12 +120,14 @@ class EmbeddedSignature(SignatureBaseModel):
                     'embedded signature verification error; %s', exception
                 )
             else:
-                self.date = verify_result.date
+                self.date_time = verify_result.date_time
                 self.key_id = verify_result.key_id
                 self.signature_id = verify_result.signature_id
                 self.public_key_fingerprint = verify_result.pubkey_fingerprint
 
-                super().save(*args, **kwargs)
+                # Return must be under the else: context to ensure that an
+                # embedded signature instance is created only when valid.
+                return super().save(*args, **kwargs)
 
 
 class DetachedSignature(SignatureBaseModel):
@@ -164,7 +168,7 @@ class DetachedSignature(SignatureBaseModel):
                 self.signature_file.seek(0)
 
                 # Invalid signatures do not have a date attribute
-                self.date = getattr(verify_result, 'date', None)
+                self.date_time = getattr(verify_result, 'date_time', None)
                 self.key_id = verify_result.key_id
                 self.signature_id = verify_result.signature_id
                 self.public_key_fingerprint = verify_result.pubkey_fingerprint

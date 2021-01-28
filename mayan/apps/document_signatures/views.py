@@ -39,7 +39,9 @@ from .permissions import (
     permission_document_file_signature_verify,
     permission_document_file_signature_view,
 )
-from .tasks import task_verify_missing_embedded_signature
+from .tasks import (
+    task_refresh_signature_information, task_verify_missing_embedded_signature
+)
 
 logger = logging.getLogger(name=__name__)
 
@@ -329,6 +331,25 @@ class DocumentFileSignatureUploadView(
             viewname='signatures:document_file_signature_list', kwargs={
                 'document_file_id': self.external_object.pk
             }
+        )
+
+
+class AllDocumentSignatureRefreshView(ConfirmView):
+    extra_context = {
+        'message': _(
+            'On large databases this operation may take some time to execute.'
+        ), 'title': _('Refresh all signatures information?'),
+    }
+    view_permission = permission_document_file_signature_verify
+
+    def get_post_action_redirect(self):
+        return reverse(viewname='common:tools_list')
+
+    def view_action(self):
+        task_refresh_signature_information.delay()
+        messages.success(
+            message=_('Signature information refresh queued successfully.'),
+            request=self.request
         )
 
 

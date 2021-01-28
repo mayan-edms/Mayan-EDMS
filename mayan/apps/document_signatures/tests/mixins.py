@@ -165,6 +165,13 @@ class SignatureViewTestMixin:
             }
         )
 
+
+class SignatureToolsViewTestMixin:
+    def _request_all_test_document_file_signature_refresh_view(self):
+        return self.post(
+            viewname='signatures:all_document_file_signature_refresh'
+        )
+
     def _request_all_test_document_file_signature_verify_view(self):
         return self.post(
             viewname='signatures:all_document_file_signature_verify'

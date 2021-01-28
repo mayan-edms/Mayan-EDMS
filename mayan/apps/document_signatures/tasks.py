@@ -78,3 +78,35 @@ def task_verify_document_file(self, document_file_pk):
         )
         logger.error(error_message)
         raise IOError(error_message)
+
+
+@app.task(ignore_result=True)
+def task_refresh_signature_information():
+    DetachedSignature = apps.get_model(
+        app_label='document_signatures', model_name='DetachedSignature'
+    )
+    EmbeddedSignature = apps.get_model(
+        app_label='document_signatures', model_name='EmbeddedSignature'
+    )
+
+    for signanture in DetachedSignature.objects.all():
+        try:
+            signanture.save()
+        except Exception as exception:
+            logger.error(
+                'Error refreshing detached signature {} for document file ID {}; {}'.format(
+                    signanture, signanture.document_file_id, exception
+                )
+            )
+            raise
+
+    for signanture in EmbeddedSignature.objects.all():
+        try:
+            signanture.save()
+        except Exception as exception:
+            logger.error(
+                'Error refreshing embedded signature {} for document file ID {}; {}'.format(
+                    signanture, signanture.document_file_id, exception
+                )
+            )
+            raise

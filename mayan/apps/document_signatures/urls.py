@@ -7,11 +7,11 @@ from .api_views import (
 )
 
 from .views import (
-    AllDocumentSignatureVerifyView, DocumentFileDetachedSignatureCreateView,
-    DocumentFileEmbeddedSignatureCreateView,
-    DocumentFileSignatureDeleteView, DocumentFileSignatureDetailView,
-    DocumentFileSignatureDownloadView, DocumentFileSignatureListView,
-    DocumentFileSignatureUploadView
+    AllDocumentSignatureRefreshView, AllDocumentSignatureVerifyView,
+    DocumentFileDetachedSignatureCreateView,
+    DocumentFileEmbeddedSignatureCreateView, DocumentFileSignatureDeleteView,
+    DocumentFileSignatureDetailView, DocumentFileSignatureDownloadView,
+    DocumentFileSignatureListView, DocumentFileSignatureUploadView
 )
 
 urlpatterns = [
@@ -49,6 +49,11 @@ urlpatterns = [
         regex=r'^signatures/(?P<signature_id>\d+)/download/$',
         name='document_file_signature_download',
         view=DocumentFileSignatureDownloadView.as_view()
+    ),
+    url(
+        regex=r'^tools/all/document/file/signature/refresh/$',
+        name='all_document_file_signature_refresh',
+        view=AllDocumentSignatureRefreshView.as_view()
     ),
     url(
         regex=r'^tools/all/document/file/signature/verify/$',

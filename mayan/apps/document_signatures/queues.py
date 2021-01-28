@@ -25,3 +25,7 @@ queue_tools.add_task_type(
     dotted_path='mayan.apps.document_signatures.tasks.task_verify_missing_embedded_signature',
     label=_('Verify missing embedded signature')
 )
+queue_tools.add_task_type(
+    dotted_path='mayan.apps.document_signatures.tasks.task_refresh_signature_information',
+    label=_('Refresh existing signature information')
+)

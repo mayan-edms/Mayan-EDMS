@@ -43,8 +43,8 @@ class DocumentFileSignatureDetailForm(DetailForm):
         extra_fields = (
             {'label': _('Signature is embedded?'), 'field': 'is_embedded'},
             {
-                'label': _('Signature date'), 'field': 'date',
-                'widget': forms.widgets.DateInput
+                'label': _('Signature date'), 'field': 'date_time',
+                'widget': forms.widgets.DateTimeInput
             },
             {'label': _('Signature key ID'), 'field': 'key_id'},
             {
@@ -67,12 +67,12 @@ class DocumentFileSignatureDetailForm(DetailForm):
                 {
                     'label': _('Key creation date'),
                     'field': lambda x: key.creation_date,
-                    'widget': forms.widgets.DateInput
+                    'widget': forms.widgets.DateTimeInput
                 },
                 {
                     'label': _('Key expiration date'),
                     'field': lambda x: key.expiration_date or _('None'),
-                    'widget': forms.widgets.DateInput
+                    'widget': forms.widgets.DateTimeInput
                 },
                 {
                     'label': _('Key length'),
