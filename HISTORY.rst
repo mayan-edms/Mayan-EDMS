@@ -135,3 +135,4 @@
 - Split workflow models module into separate modules.
 - Remove usage of Document.save(_user). The event_actor attribute is used
   instead.
+- Convert the key creation and expiration fields to date and time fields.

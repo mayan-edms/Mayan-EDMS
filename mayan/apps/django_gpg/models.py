@@ -1,10 +1,11 @@
-from datetime import date
+from datetime import datetime
 import logging
 
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.urls import reverse
 from django.utils.encoding import force_text
+from django.utils.timezone import make_aware
 from django.utils.translation import ugettext_lazy as _
 
 from .classes import GPGBackend
@@ -30,10 +31,10 @@ class Key(models.Model):
         help_text=_('ASCII armored version of the key.'),
         verbose_name=_('Key data')
     )
-    creation_date = models.DateField(
+    creation_date = models.DateTimeField(
         editable=False, verbose_name=_('Creation date')
     )
-    expiration_date = models.DateField(
+    expiration_date = models.DateTimeField(
         blank=True, editable=False, null=True,
         verbose_name=_('Expiration date')
     )
@@ -86,7 +87,7 @@ class Key(models.Model):
         """
         return self.fingerprint[-8:]
 
-    def save(self, *args, **kwargs):
+    def introspect_key_data(self):
         # Fix the encoding of the key data stream.
         self.key_data = force_text(self.key_data)
         import_results, key_info = GPGBackend.get_instance().import_and_list_keys(
@@ -95,10 +96,14 @@ class Key(models.Model):
         logger.debug('key_info: %s', key_info)
 
         self.algorithm = key_info['algo']
-        self.creation_date = date.fromtimestamp(int(key_info['date']))
+        self.creation_date = make_aware(
+            value=datetime.fromtimestamp(int(key_info['date']))
+        )
         if key_info['expires']:
-            self.expiration_date = date.fromtimestamp(
-                int(key_info['expires'])
+            self.expiration_date = make_aware(
+                value=datetime.fromtimestamp(
+                    int(key_info['expires'])
+                )
             )
         self.fingerprint = key_info['fingerprint']
         self.length = int(key_info['length'])
@@ -108,6 +113,8 @@ class Key(models.Model):
         else:
             self.key_type = key_info['type']
 
+    def save(self, *args, **kwargs):
+        self.introspect_key_data()
         super().save(*args, **kwargs)
 
     def sign_file(
