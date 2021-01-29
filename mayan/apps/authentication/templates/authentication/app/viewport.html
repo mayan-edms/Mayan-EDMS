@@ -1,0 +1,17 @@
+{% load i18n %}
+{% load static %}
+
+{% load authentication_tags %}
+
+{% authentication_impersonation_check as impersonated_user %}
+
+{% if impersonated_user %}
+    <div class="alert alert-warning">
+        <p>
+            {% blocktrans with impersonated_user.full_name|default:impersonated_user as user %}
+                Impersonating user "{{ user }}".
+            {% endblocktrans %}
+            <a class="btn btn-primary btn-xs" href="{% url 'authentication:user_impersonate_end' %}">{% trans 'Click here when finished' %}</a>
+        </p>
+    </div>
+{% endif %}

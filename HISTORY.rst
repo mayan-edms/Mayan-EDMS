@@ -147,3 +147,5 @@
 - Add global ACL list view.
 - ``appearance_app_templates`` now passes the request to the templates being
   rendered.
+- Remove the user impersonation fragment form the ``base.html`` template and
+  moved it to its own viewport template.
