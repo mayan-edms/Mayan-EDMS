@@ -40,7 +40,9 @@ class AccessControlList(models.Model):
         verbose_name=_('Permissions')
     )
     role = models.ForeignKey(
-        on_delete=models.CASCADE, related_name='acls', to=Role,
+        help_text=_(
+            'Role to which the access is granted for the specified object.'
+        ), on_delete=models.CASCADE, related_name='acls', to=Role,
         verbose_name=_('Role')
     )
 
@@ -98,3 +100,8 @@ class AccessControlList(models.Model):
                 event_acl_edited.commit(
                     actor=_user, target=self
                 )
+
+
+class GlobalAccessControlListProxy(AccessControlList):
+    class Meta:
+        proxy = True

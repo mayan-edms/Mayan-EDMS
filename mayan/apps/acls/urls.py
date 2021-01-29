@@ -6,10 +6,15 @@ from .api_views import (
     APIObjectACLView
 )
 from .views import (
-    ACLCreateView, ACLDeleteView, ACLListView, ACLPermissionsView
+    ACLCreateView, ACLDeleteView, ACLListView, ACLPermissionsView,
+    GlobalACLListView
 )
 
 urlpatterns = [
+    url(
+        regex=r'^acls/global/', name='global_acl_list',
+        view=GlobalACLListView.as_view()
+    ),
     url(
         regex=r'^acls/(?P<acl_id>\d+)/delete/$', name='acl_delete',
         view=ACLDeleteView.as_view()

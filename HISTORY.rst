@@ -139,7 +139,9 @@
 - Add creation and download events for keys.
 - Add event subscription for keys.
 - Include time of document signatures. Closes GitLab issue #941. Thanks
-  to forum user @qra and Tomek (@tkwoka) for the report and additional
+  to forum user Tomek (@tkwoka) for the report and additional
   information.
 - Add document signature tool to refresh the content of existing signatures
   when there are database or backend changes.
+- Moved ``ObjectLinkWidget`` to the views app.
+- Add global ACL list view.

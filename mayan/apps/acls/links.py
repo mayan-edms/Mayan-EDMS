@@ -4,7 +4,8 @@ from mayan.apps.navigation.classes import Link
 from mayan.apps.navigation.utils import get_content_type_kwargs_factory
 
 from .icons import (
-    icon_acl_delete, icon_acl_list, icon_acl_new, icon_acl_permissions
+    icon_acl_delete, icon_acl_list, icon_acl_new, icon_acl_permissions,
+    icon_global_acl_list
 )
 from .permissions import permission_acl_view, permission_acl_edit
 
@@ -29,4 +30,8 @@ link_acl_permissions = Link(
     args='resolved_object.pk', icon=icon_acl_permissions,
     permissions=(permission_acl_edit,),
     text=_('Permissions'), view='acls:acl_permissions'
+)
+link_global_acl_list = Link(
+    icon=icon_global_acl_list, text=_('Global ACLs'),
+    view='acls:global_acl_list'
 )

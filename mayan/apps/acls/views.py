@@ -18,7 +18,7 @@ from .classes import ModelPermission
 from .forms import ACLCreateForm
 from .icons import icon_acl_list
 from .links import link_acl_create
-from .models import AccessControlList
+from .models import AccessControlList, GlobalAccessControlListProxy
 from .permissions import permission_acl_edit, permission_acl_view
 
 logger = logging.getLogger(name=__name__)
@@ -236,3 +236,26 @@ class ACLPermissionsView(AddRemoveView):
         return ModelPermission.get_for_instance(
             instance=self.main_object.content_object
         )
+
+
+class GlobalACLListView(SingleObjectListView):
+    model = GlobalAccessControlListProxy
+    object_permission = permission_acl_view
+
+    def get_extra_context(self):
+        return {
+            'hide_object': True,
+            'no_results_icon': icon_acl_list,
+            'no_results_title': _(
+                'There are no ACLs'
+            ),
+            'no_results_text': _(
+                'ACL stands for Access Control List and is a precise method '
+                'to control user access to objects in the system. ACLs '
+                'allow granting a permission to a role but only for a '
+                'specific object or set of objects.'
+            ),
+            'title': _(
+                'Global access control lists'
+            ),
+        }

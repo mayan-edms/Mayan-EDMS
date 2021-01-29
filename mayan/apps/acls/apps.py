@@ -2,16 +2,20 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import ModelCopy
-from mayan.apps.common.menus import menu_object, menu_secondary
+from mayan.apps.common.menus import menu_object, menu_secondary, menu_tools
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list
 )
 from mayan.apps.navigation.classes import SourceColumn
+from mayan.apps.views.html_widgets import ObjectLinkWidget
 
 from .classes import ModelPermission
 from .events import event_acl_created, event_acl_edited
-from .links import link_acl_create, link_acl_delete, link_acl_permissions
+from .links import (
+    link_acl_create, link_acl_delete, link_acl_permissions,
+    link_global_acl_list
+)
 
 
 class ACLsApp(MayanAppConfig):
@@ -26,6 +30,7 @@ class ACLsApp(MayanAppConfig):
         super().ready()
 
         AccessControlList = self.get_model(model_name='AccessControlList')
+        GlobalAccessControlListProxy = self.get_model(model_name='GlobalAccessControlListProxy')
 
         EventModelRegistry.register(model=AccessControlList)
 
@@ -45,7 +50,19 @@ class ACLsApp(MayanAppConfig):
         )
 
         SourceColumn(
-            attribute='role', is_sortable=True, source=AccessControlList,
+            attribute='role', is_sortable=True, source=AccessControlList
+        )
+
+        SourceColumn(
+            attribute='content_object',
+            is_identifier=True,
+            help_text=_(
+                'Object for which the access is granted. When sorting '
+                'objects, only the type is used and not the actual label of '
+                'the object.'
+            ), include_label=True, is_sortable=True, label=_('Object'),
+            sort_field='content_type', source=GlobalAccessControlListProxy,
+            widget=ObjectLinkWidget
         )
 
         menu_object.bind_links(
@@ -54,8 +71,11 @@ class ACLsApp(MayanAppConfig):
                 link_events_for_object,
                 link_object_event_types_user_subcriptions_list
             ),
-            sources=(AccessControlList,)
+            sources=(AccessControlList, GlobalAccessControlListProxy)
         )
         menu_secondary.bind_links(
             links=(link_acl_create,), sources=('acls:acl_list',)
+        )
+        menu_tools.bind_links(
+            links=(link_global_acl_list,)
         )

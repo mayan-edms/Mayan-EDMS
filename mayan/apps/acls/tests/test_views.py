@@ -145,6 +145,34 @@ class AccessControlListViewTestCase(
             status_code=200
         )
 
+    def test_global_acl_list_view_no_permission(self):
+        self._create_acl_test_object()
+
+        self._create_test_acl()
+
+        response = self._request_test_global_acl_list_view()
+
+        self.assertNotContains(
+            response=response, text=force_text(s=self.test_object),
+            status_code=200
+        )
+
+    def test_global_acl_list_view_with_access(self):
+        self._create_acl_test_object()
+
+        self._create_test_acl()
+
+        self.grant_access(
+            obj=self.test_object, permission=permission_acl_view
+        )
+
+        response = self._request_test_global_acl_list_view()
+
+        self.assertContains(
+            response=response, text=force_text(s=self.test_object),
+            status_code=200
+        )
+
     def test_orphan_acl_create_view_with_permission(self):
         """
         Test creating an ACL entry for an object with no model permissions.

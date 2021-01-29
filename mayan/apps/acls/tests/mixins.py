@@ -192,3 +192,8 @@ class AccessControlListViewTestMixin:
                 'acl_id': self.test_acl.pk
             }
         )
+
+    def _request_test_global_acl_list_view(self):
+        return self.get(
+            viewname='acls:global_acl_list',
+        )
