@@ -37,7 +37,7 @@ class DashboardWidgetDocumentFilePagesTotal(DashboardWidgetNumeric):
         )
         self.count = AccessControlList.objects.restrict_queryset(
             permission=permission_document_view, user=request.user,
-            queryset=DocumentFilePage.objects.all()
+            queryset=DocumentFilePage.valid.all()
         ).count()
         return super().render(request)
 
@@ -56,7 +56,7 @@ class DashboardWidgetDocumentsTotal(DashboardWidgetNumeric):
         )
         self.count = AccessControlList.objects.restrict_queryset(
             permission=permission_document_view, user=request.user,
-            queryset=Document.objects.all()
+            queryset=Document.valid.all()
         ).count()
         return super().render(request)
 
