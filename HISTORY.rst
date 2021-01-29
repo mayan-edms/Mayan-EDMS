@@ -152,3 +152,4 @@
 - Enable subscribing to user impersonation events.
 - Enable impersonation permission for individual users.
 - Allow impersonating users from the user list view.
+- Update jQuery from version 3.4.1 to 3.5.1.

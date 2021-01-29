@@ -35,7 +35,7 @@ JavaScriptDependency(
     name='@fortawesome/fontawesome-free', version_string='=5.6.3'
 )
 JavaScriptDependency(
-    label=_('jQuery'), module=__name__, name='jquery', version_string='=3.4.1'
+    label=_('jQuery'), module=__name__, name='jquery', version_string='=3.5.1'
 )
 JavaScriptDependency(
     label=_('JQuery Form'), module=__name__, name='jquery-form',
