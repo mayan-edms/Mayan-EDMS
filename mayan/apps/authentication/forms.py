@@ -7,6 +7,9 @@ from django.forms.widgets import EmailInput
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.user_management.querysets import get_user_queryset
+from mayan.apps.views.forms import FilteredSelectionForm
+
+from .permissions import permission_users_impersonate
 
 
 class EmailAuthenticationForm(forms.Form):
@@ -69,20 +72,33 @@ class EmailAuthenticationForm(forms.Form):
         return self.user_cache
 
 
-class UserListForm(forms.Form):
+class UserImpersonationOptionsForm(forms.Form):
     def __init__(self, *args, **kwargs):
-        user = kwargs.pop('user')
         super().__init__(*args, **kwargs)
-        queryset = get_user_queryset().exclude(pk=user.pk)
-        self.fields['user'] = forms.ModelChoiceField(
-            label=_('User'), help_text=_('User to be impersonated.'),
-            queryset=queryset
-        )
         self.fields['permanent'] = forms.BooleanField(
             label=_('Permanent'), help_text=_(
                 'If selected, disables ending impersonation.'
             ), required=False
         )
+
+
+class UserImpersonationSelectionForm(
+    FilteredSelectionForm, UserImpersonationOptionsForm
+):
+    class Meta:
+        allow_multiple = False
+        field_name = 'user_to_impersonate'
+        label = _('User')
+        queryset = get_user_queryset().none()
+        permission = permission_users_impersonate
+        required = True
+        widget_attributes = {'class': 'select2'}
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        queryset = get_user_queryset().exclude(pk=kwargs['user'].pk)
+        self.fields['user_to_impersonate'].queryset = queryset
+        self.order_fields(field_order=('user_to_impersonate', 'permanent'))
 
 
 class UsernameAuthenticationForm(AuthenticationForm):

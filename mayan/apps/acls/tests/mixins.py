@@ -112,6 +112,11 @@ class ACLTestCaseMixin(RoleTestCaseMixin, UserTestCaseMixin):
             obj=obj, permission=permission, role=self._test_case_role
         )
 
+    def revoke_access(self, obj, permission):
+        self._test_case_acl = AccessControlList.objects.revoke(
+            obj=obj, permission=permission, role=self._test_case_role
+        )
+
 
 class ACLTestMixin(RoleTestMixin, TestModelTestCaseMixin):
     auto_create_test_role = True

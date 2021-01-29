@@ -17,6 +17,7 @@ from mayan.apps.user_management.tests.literals import (
     TEST_USER_PASSWORD_EDITED
 )
 
+from ..literals import USER_IMPERSONATE_VARIABLE_DISABLE
 from ..permissions import permission_users_impersonate
 from ..settings import setting_maximum_session_length
 
@@ -51,20 +52,23 @@ class CurrentUserViewTestCase(GenericViewTestCase):
 class UserImpersonationViewTestCase(
     UserImpersonationViewTestMixin, GenericViewTestCase
 ):
-    def test_user_impersonate_start_view_no_permission(self):
+    def test_user_impersonate_form_start_view_no_permission(self):
         self._create_test_user()
-        response = self._request_impersonate_start_view()
-        self.assertEqual(response.status_code, 403)
-        self.expected_content_types = ('application/json',)
+        response = self._request_test_user_impersonate_form_start_view()
+        self.assertEqual(response.status_code, 200)
 
+        self.expected_content_types = ('application/json',)
         response = self.get(viewname='rest_api:user-current')
         self.assertEqual(response.data['id'], self._test_case_user.pk)
 
-    def test_user_impersonate_start_view_with_permission(self):
+    def test_user_impersonate_form_start_view_with_access(self):
         self._create_test_user()
-        self.grant_permission(permission=permission_users_impersonate)
 
-        response = self._request_impersonate_start_view()
+        self.grant_access(
+            obj=self.test_user, permission=permission_users_impersonate
+        )
+
+        response = self._request_test_user_impersonate_form_start_view()
         self.assertEqual(response.status_code, 200)
 
         self.expected_content_types = ('application/json',)
@@ -73,41 +77,56 @@ class UserImpersonationViewTestCase(
 
     def test_user_impersonate_end_view_no_permission(self):
         self._create_test_user()
-        self.grant_permission(permission=permission_users_impersonate)
 
         self._impersonate_test_user()
+
+        self.grant_access(
+            obj=self.test_user, permission=permission_users_impersonate
+        )
 
         self.expected_content_types = ('application/json',)
         response = self.get(viewname='rest_api:user-current')
         self.assertEqual(response.data['id'], self.test_user.pk)
 
-        self.revoke_permission(permission=permission_users_impersonate)
+        self.revoke_access(
+            obj=self.test_user, permission=permission_users_impersonate
+        )
 
         self.expected_content_types = ('text/html; charset=utf-8',)
-        response = self._request_impersonate_end_view()
-        self.assertEqual(response.status_code, 403)
-
-    def test_user_impersonate_end_view_with_permission(self):
-        self._create_test_user()
-        self.grant_permission(permission=permission_users_impersonate)
-
-        self._impersonate_test_user()
-
-        self.expected_content_types = ('application/json',)
-        response = self.get(viewname='rest_api:user-current')
-        self.assertEqual(response.data['id'], self.test_user.pk)
-
-        self.expected_content_types = ('text/html; charset=utf-8',)
-        response = self._request_impersonate_end_view()
+        response = self._request_test_user_impersonate_end_view()
         self.assertEqual(response.status_code, 200)
 
         self.expected_content_types = ('application/json',)
         response = self.get(viewname='rest_api:user-current')
         self.assertEqual(response.data['id'], self._test_case_user.pk)
 
-    def test_session_impersonate_set_with_permission(self):
+    def test_user_impersonate_end_view_with_access(self):
         self._create_test_user()
-        self.grant_permission(permission=permission_users_impersonate)
+
+        self._impersonate_test_user()
+
+        self.grant_access(
+            obj=self.test_user, permission=permission_users_impersonate
+        )
+
+        self.expected_content_types = ('application/json',)
+        response = self.get(viewname='rest_api:user-current')
+        self.assertEqual(response.data['id'], self.test_user.pk)
+
+        self.expected_content_types = ('text/html; charset=utf-8',)
+        response = self._request_test_user_impersonate_end_view()
+        self.assertEqual(response.status_code, 200)
+
+        self.expected_content_types = ('application/json',)
+        response = self.get(viewname='rest_api:user-current')
+        self.assertEqual(response.data['id'], self._test_case_user.pk)
+
+    def test_session_impersonate_set_with_acess(self):
+        self._create_test_user()
+
+        self.grant_access(
+            obj=self.test_user, permission=permission_users_impersonate
+        )
 
         self._impersonate_test_user()
 
@@ -115,18 +134,46 @@ class UserImpersonationViewTestCase(
         response = self.get(viewname='rest_api:user-current')
         self.assertEqual(response.data['id'], self.test_user.pk)
 
-    def test_session_impersonate_unset_with_permission(self):
+    def test_session_impersonate_unset_with_access(self):
         self._create_test_user()
-        self.grant_permission(permission=permission_users_impersonate)
+        self.grant_access(
+            obj=self.test_user, permission=permission_users_impersonate
+        )
 
         self._impersonate_test_user()
 
         self.expected_content_types = ('application/json',)
 
         response = self.get(
-            viewname='rest_api:user-current', query={'_impersonate_end': ''}
+            viewname='rest_api:user-current', query={
+                USER_IMPERSONATE_VARIABLE_DISABLE: ''
+            }
         )
         self.assertEqual(response.data['id'], self._test_case_user.pk)
+
+    def test_user_impersonate_start_view_no_permission(self):
+        self._create_test_user()
+
+        response = self._request_test_user_impersonate_start_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.expected_content_types = ('application/json',)
+        response = self.get(viewname='rest_api:user-current')
+        self.assertEqual(response.data['id'], self._test_case_user.pk)
+
+    def test_user_impersonate_start_view_with_access(self):
+        self._create_test_user()
+
+        self.grant_access(
+            obj=self.test_user, permission=permission_users_impersonate
+        )
+
+        response = self._request_test_user_impersonate_start_view()
+        self.assertEqual(response.status_code, 200)
+
+        self.expected_content_types = ('application/json',)
+        response = self.get(viewname='rest_api:user-current')
+        self.assertEqual(response.data['id'], self.test_user.pk)
 
 
 class UserLoginTestCase(UserLoginTestMixin, GenericViewTestCase):

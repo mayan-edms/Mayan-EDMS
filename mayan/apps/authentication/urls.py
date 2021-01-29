@@ -1,10 +1,11 @@
 from django.conf.urls import url
 
 from .views import (
-    ImpersonateEndView, ImpersonateStartView, MayanLoginView, MayanLogoutView,
-    MayanPasswordChangeDoneView, MayanPasswordChangeView,
-    MayanPasswordResetCompleteView, MayanPasswordResetConfirmView,
-    MayanPasswordResetDoneView, MayanPasswordResetView, UserSetPasswordView
+    MayanLoginView, MayanLogoutView, MayanPasswordChangeDoneView,
+    MayanPasswordChangeView, MayanPasswordResetCompleteView,
+    MayanPasswordResetConfirmView, MayanPasswordResetDoneView,
+    MayanPasswordResetView, UserSetPasswordView, UserImpersonateEndView,
+    UserImpersonateFormStartView, UserImpersonateStartView
 )
 
 urlpatterns_authenticattion = [
@@ -54,12 +55,16 @@ urlpatterns_password = [
 
 urlpatterns_user_impersonation = [
     url(
-        regex=r'^impersonate/end/$', name='impersonate_end',
-        view=ImpersonateEndView.as_view()
+        regex=r'^impersonate/end/$', name='user_impersonate_end',
+        view=UserImpersonateEndView.as_view()
     ),
     url(
-        regex=r'^impersonate/start/$', name='impersonate_start',
-        view=ImpersonateStartView.as_view()
+        regex=r'^impersonate/start/$', name='user_impersonate_form_start',
+        view=UserImpersonateFormStartView.as_view()
+    ),
+    url(
+        regex=r'^impersonate/(?P<user_id>\d+)/start/$',
+        name='user_impersonate_start', view=UserImpersonateStartView.as_view()
     )
 ]
 

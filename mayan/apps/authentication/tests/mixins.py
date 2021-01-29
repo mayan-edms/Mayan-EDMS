@@ -1,3 +1,6 @@
+from ..literals import USER_IMPERSONATE_VARIABLE_ID
+
+
 class UserPasswordViewTestMixin:
     def _request_test_user_password_set_view(self, password):
         return self.post(
@@ -21,18 +24,26 @@ class UserPasswordViewTestMixin:
 class UserImpersonationViewTestMixin:
     def _impersonate_test_user(self):
         session = self.client.session
-        session['_impersonate_id'] = self.test_user.pk
+        session[USER_IMPERSONATE_VARIABLE_ID] = self.test_user.pk
         session.save()
 
-    def _request_impersonate_end_view(self):
+    def _request_test_user_impersonate_end_view(self):
         return self.get(
-            follow=True, viewname='authentication:impersonate_end'
+            follow=True, viewname='authentication:user_impersonate_end'
         )
 
-    def _request_impersonate_start_view(self):
+    def _request_test_user_impersonate_form_start_view(self):
         return self.post(
-            follow=True, viewname='authentication:impersonate_start', data={
-                'user': self.test_user.pk
+            follow=True, viewname='authentication:user_impersonate_form_start',
+            data={
+                'user_to_impersonate': self.test_user.pk
+            }
+        )
+
+    def _request_test_user_impersonate_start_view(self):
+        return self.post(
+            follow=True, viewname='authentication:user_impersonate_start', kwargs={
+                'user_id': self.test_user.pk
             }
         )
 

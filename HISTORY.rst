@@ -149,3 +149,6 @@
   rendered.
 - Remove the user impersonation fragment form the ``base.html`` template and
   moved it to its own viewport template.
+- Enable subscribing to user impersonation events.
+- Enable impersonation permission for individual users.
+- Allow impersonating users from the user list view.

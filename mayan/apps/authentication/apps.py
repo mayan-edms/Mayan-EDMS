@@ -3,16 +3,23 @@ import logging
 from django.contrib.auth import get_user_model
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import (
     menu_multi_item, menu_object, menu_tools, menu_user
 )
+from mayan.apps.events.classes import ModelEventType
 from mayan.apps.navigation.classes import Separator
 
-from .links import (
-    link_logout, link_password_change, link_user_impersonate_start,
-    link_user_multiple_set_password, link_user_set_password
+from .events import (
+    event_user_impersonation_ended, event_user_impersonation_started
 )
+from .links import (
+    link_logout, link_password_change, link_user_impersonate_form_start,
+    link_user_impersonate_start, link_user_multiple_set_password,
+    link_user_set_password
+)
+from .permissions import permission_users_impersonate
 
 logger = logging.getLogger(name=__name__)
 
@@ -29,17 +36,32 @@ class AuthenticationApp(MayanAppConfig):
 
         User = get_user_model()
 
+        ModelEventType.register(
+            model=User, event_types=(
+                event_user_impersonation_ended,
+                event_user_impersonation_started
+            )
+        )
+
+        ModelPermission.register(
+            model=User, permissions=(
+                permission_users_impersonate,
+            )
+        )
+
         menu_multi_item.bind_links(
             links=(link_user_multiple_set_password,),
             sources=('user_management:user_list',)
         )
 
         menu_object.bind_links(
-            links=(link_user_set_password,), sources=(User,)
+            links=(
+                link_user_impersonate_start, link_user_set_password,
+            ), sources=(User,)
         )
 
         menu_tools.bind_links(
-            links=(link_user_impersonate_start,)
+            links=(link_user_impersonate_form_start,)
         )
 
         menu_user.bind_links(
