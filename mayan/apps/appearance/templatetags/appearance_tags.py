@@ -13,18 +13,17 @@ app_templates_cache = {}
 register = Library()
 
 
-@register.simple_tag
-def appearance_app_templates(template_name):
+@register.simple_tag(takes_context=True)
+def appearance_app_templates(context, template_name):
     result = []
 
     for app in apps.get_app_configs():
         template_id = '{}.{}'.format(app.label, template_name)
-
-        if settings.DEBUG or template_id not in app_templates_cache:
+        if template_id not in app_templates_cache or settings.DEBUG:
             try:
                 app_templates_cache[template_id] = get_template(
                     '{}/app/{}.html'.format(app.label, template_name)
-                ).render()
+                ).render(request=context['request'])
             except TemplateDoesNotExist:
                 """Non fatal"""
                 app_templates_cache[template_id] = ''

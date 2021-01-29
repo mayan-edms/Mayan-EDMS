@@ -145,3 +145,5 @@
   when there are database or backend changes.
 - Moved ``ObjectLinkWidget`` to the views app.
 - Add global ACL list view.
+- ``appearance_app_templates`` now passes the request to the templates being
+  rendered.
