@@ -6,11 +6,9 @@ from mayan.apps.common.menus import (
     menu_object, menu_secondary, menu_tools, menu_topbar, menu_user
 )
 from mayan.apps.navigation.classes import SourceColumn
-from mayan.apps.views.html_widgets import TwoStateWidget
+from mayan.apps.views.html_widgets import ObjectLinkWidget, TwoStateWidget
 
-from .html_widgets import (
-    ObjectLinkWidget, widget_event_actor_link, widget_event_type_link
-)
+from .html_widgets import widget_event_actor_link, widget_event_type_link
 from .links import (
     link_current_user_events, link_event_types_subscriptions_list,
     link_events_list, link_notification_mark_read,
