@@ -1,6 +1,6 @@
 from django import forms
 
-from mayan.apps.common.forms import DetailForm
+from mayan.apps.views.forms import DetailForm
 
 from .models import Comment
 
