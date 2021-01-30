@@ -15,8 +15,8 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         fields = (
-            'comment', 'document', 'document_comments_url', 'id',
-            'submit_date', 'url', 'user'
+            'document', 'document_comments_url', 'id', 'submit_date',
+            'text', 'url', 'user'
         )
         model = Comment
 
@@ -44,8 +44,8 @@ class WritableCommentSerializer(serializers.ModelSerializer):
 
     class Meta:
         fields = (
-            'comment', 'document', 'document_comments_url', 'id',
-            'submit_date', 'url', 'user'
+            'document', 'document_comments_url', 'id', 'submit_date',
+            'text', 'url', 'user'
         )
         model = Comment
         read_only_fields = ('document',)

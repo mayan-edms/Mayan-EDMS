@@ -112,14 +112,14 @@ class CommentAPIViewTestCase(
         response = self._request_test_comment_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        self.assertEqual(response.data['comment'], self.test_document_comment.comment)
+        self.assertEqual(response.data['text'], self.test_document_comment.text)
 
         event = self._get_test_object_event()
         self.assertEqual(event, None)
 
     def test_comment_edit_via_patch_api_view_no_permission(self):
         self._create_test_comment()
-        comment_text = self.test_document_comment.comment
+        comment_text = self.test_document_comment.text
 
         self._clear_events()
 
@@ -127,7 +127,7 @@ class CommentAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
         self.test_document_comment.refresh_from_db()
-        self.assertEqual(self.test_document_comment.comment, comment_text)
+        self.assertEqual(self.test_document_comment.text, comment_text)
 
         event = self._get_test_object_event()
         self.assertEqual(event, None)
@@ -137,7 +137,7 @@ class CommentAPIViewTestCase(
         self.grant_access(
             obj=self.test_document, permission=permission_document_comment_edit
         )
-        comment_text = self.test_document_comment.comment
+        comment_text = self.test_document_comment.text
 
         self._clear_events()
 
@@ -145,7 +145,7 @@ class CommentAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.test_document_comment.refresh_from_db()
-        self.assertNotEqual(self.test_document_comment.comment, comment_text)
+        self.assertNotEqual(self.test_document_comment.text, comment_text)
 
         event = self._get_test_object_event()
         self.assertEqual(event.actor, self._test_case_user)
@@ -174,7 +174,7 @@ class CommentAPIViewTestCase(
         response = self._request_test_comment_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
-            response.data['results'][0]['comment'], self.test_document_comment.comment
+            response.data['results'][0]['text'], self.test_document_comment.text
         )
 
         event = self._get_test_object_event()

@@ -23,7 +23,7 @@ class DocumentCommentCreateView(ExternalObjectMixin, SingleObjectCreateView):
     external_object_permission = permission_document_comment_create
     external_object_pk_url_kwarg = 'document_id'
     external_object_queryset = Document.valid
-    fields = ('comment',)
+    fields = ('text',)
 
     def get_extra_context(self):
         return {
@@ -97,7 +97,7 @@ class DocumentCommentDetailView(SingleObjectDetailView):
 
 
 class DocumentCommentEditView(SingleObjectEditView):
-    fields = ('comment',)
+    fields = ('text',)
     pk_url_kwarg = 'comment_id'
     object_permission = permission_document_comment_edit
 

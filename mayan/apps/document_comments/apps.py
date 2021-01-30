@@ -74,12 +74,14 @@ class DocumentCommentsApp(MayanAppConfig):
         )
 
         SourceColumn(
-            attribute='submit_date', is_identifier=True, source=Comment
+            attribute='submit_date', is_identifier=True, is_sortable=True,
+            source=Comment
         )
         SourceColumn(
-            attribute='get_user_label', include_label=True, source=Comment
+            attribute='get_user_label', is_sortable=True,
+            include_label=True, sort_field='user', source=Comment
         )
-        SourceColumn(attribute='comment', include_label=True, source=Comment)
+        SourceColumn(attribute='text', include_label=True, source=Comment)
 
         menu_facet.bind_links(
             links=(link_comments_for_document,), sources=(Document,)

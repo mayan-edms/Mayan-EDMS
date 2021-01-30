@@ -13,7 +13,7 @@ class CommentAPIViewTestMixin:
             viewname='rest_api:comment-list', kwargs={
                 'document_id': self.test_document.pk
             }, data={
-                'comment': TEST_COMMENT_TEXT
+                'text': TEST_COMMENT_TEXT
             }
         )
 
@@ -47,7 +47,7 @@ class CommentAPIViewTestMixin:
             viewname='rest_api:comment-detail', kwargs={
                 'document_id': self.test_document.pk,
                 'comment_id': self.test_document_comment.pk,
-            }, data={'comment': TEST_COMMENT_TEXT_EDITED}
+            }, data={'text': TEST_COMMENT_TEXT_EDITED}
         )
 
     def _request_test_comment_list_api_view(self):
@@ -61,7 +61,7 @@ class CommentAPIViewTestMixin:
 class DocumentCommentTestMixin:
     def _create_test_comment(self):
         self.test_document_comment = self.test_document.comments.create(
-            comment=TEST_COMMENT_TEXT, user=self.test_user
+            text=TEST_COMMENT_TEXT, user=self.test_user
         )
 
 
@@ -70,7 +70,7 @@ class DocumentCommentViewTestMixin:
         return self.post(
             viewname='comments:comment_add', kwargs={
                 'document_id': self.test_document.pk
-            }, data={'comment': TEST_COMMENT_TEXT}
+            }, data={'text': TEST_COMMENT_TEXT}
         )
 
     def _request_test_comment_delete_view(self):
@@ -92,7 +92,7 @@ class DocumentCommentViewTestMixin:
             viewname='comments:comment_edit', kwargs={
                 'comment_id': self.test_document_comment.pk,
             }, data={
-                'comment': TEST_COMMENT_TEXT_EDITED
+                'text': TEST_COMMENT_TEXT_EDITED
             }
         )
 

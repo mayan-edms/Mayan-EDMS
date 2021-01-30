@@ -157,3 +157,5 @@
   called `locales`.
 - Move common and smart settings app `base` template markup to their own
   apps via the `viewport` app template.
+- Rename document comment model's `comment` field to `text`.
+- Support sorting document comments by user or by date.

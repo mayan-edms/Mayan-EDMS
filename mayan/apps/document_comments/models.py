@@ -32,8 +32,7 @@ class Comment(models.Model):
         editable=False, on_delete=models.CASCADE, related_name='comments',
         to=settings.AUTH_USER_MODEL, verbose_name=_('User'),
     )
-    # Translators: Comment here is a noun and refers to the actual text stored
-    comment = models.TextField(verbose_name=_('Comment'))
+    text = models.TextField(verbose_name=_('Text'))
     submit_date = models.DateTimeField(
         auto_now_add=True, db_index=True,
         verbose_name=_('Date time submitted')
@@ -46,7 +45,7 @@ class Comment(models.Model):
         verbose_name_plural = _('Comments')
 
     def __str__(self):
-        return self.comment
+        return self.text
 
     @method_event(
         event_manager_class=EventManagerMethodAfter,
