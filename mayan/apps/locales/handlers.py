@@ -5,7 +5,7 @@ from django.utils import timezone, translation
 
 def handler_user_locale_profile_session_config(sender, request, user, **kwargs):
     UserLocaleProfile = apps.get_model(
-        app_label='common', model_name='UserLocaleProfile'
+        app_label='locales', model_name='UserLocaleProfile'
     )
 
     user_locale_profile, created = UserLocaleProfile.objects.get_or_create(
@@ -36,7 +36,7 @@ def handler_user_locale_profile_session_config(sender, request, user, **kwargs):
 
 def handler_user_locale_profile_create(sender, instance, created, **kwargs):
     UserLocaleProfile = apps.get_model(
-        app_label='common', model_name='UserLocaleProfile'
+        app_label='locales', model_name='UserLocaleProfile'
     )
 
     if created:
