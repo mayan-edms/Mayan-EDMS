@@ -155,3 +155,5 @@
 - Update jQuery from version 3.4.1 to 3.5.1.
 - Move user language and timezone code from the `common` app to a new app
   called `locales`.
+- Move common and smart settings app `base` template markup to their own
+  apps via the `viewport` app template.
