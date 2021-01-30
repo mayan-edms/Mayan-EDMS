@@ -77,14 +77,14 @@ setting_document_file_storage_backend_arguments = namespace.add_setting(
         'Arguments to pass to the DOCUMENT_FILE_STORAGE_BACKEND.'
     )
 )
-setting_document_file_page_image_cache_storage = namespace.add_setting(
+setting_document_file_page_image_cache_storage_backend = namespace.add_setting(
     default=DEFAULT_DOCUMENTS_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND,
     global_name='DOCUMENTS_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND', help_text=_(
         'Path to the Storage subclass to use when storing the cached '
         'document file page image files.'
     )
 )
-setting_document_file_page_image_cache_storage_arguments = namespace.add_setting(
+setting_document_file_page_image_cache_storage_backend_arguments = namespace.add_setting(
     default=DEFAULT_DOCUMENTS_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND_ARGUMENTS,
     global_name='DOCUMENTS_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND_ARGUMENTS',
     help_text=_(
@@ -130,7 +130,7 @@ setting_document_version_page_image_cache_time = namespace.add_setting(
         'to 1 year.'
     )
 )
-setting_document_version_page_image_cache_storage = namespace.add_setting(
+setting_document_version_page_image_cache_storage_backend = namespace.add_setting(
     default=DEFAULT_DOCUMENTS_VERSION_PAGE_IMAGE_CACHE_STORAGE_BACKEND,
     global_name='DOCUMENTS_VERSION_PAGE_IMAGE_CACHE_STORAGE_BACKEND',
     help_text=_(
@@ -138,7 +138,7 @@ setting_document_version_page_image_cache_storage = namespace.add_setting(
         'document version page image versions.'
     )
 )
-setting_document_version_page_image_cache_storage_arguments = namespace.add_setting(
+setting_document_version_page_image_cache_storage_backend_arguments = namespace.add_setting(
     default=DEFAULT_DOCUMENTS_VERSION_PAGE_IMAGE_CACHE_STORAGE_BACKEND_ARGUMENTS,
     global_name='DOCUMENTS_VERSION_PAGE_IMAGE_CACHE_STORAGE_BACKEND_ARGUMENTS',
     help_text=_(

@@ -8,10 +8,10 @@ from ..literals import (
     STORAGE_NAME_DOCUMENT_VERSION_PAGE_IMAGE_CACHE
 )
 from ..settings import (
-    setting_document_file_page_image_cache_storage_arguments,
+    setting_document_file_page_image_cache_storage_backend_arguments,
     setting_document_file_page_image_cache_maximum_size,
     setting_document_file_storage_backend_arguments,
-    setting_document_version_page_image_cache_storage_arguments,
+    setting_document_version_page_image_cache_storage_backend_arguments,
     setting_language_codes
 )
 
@@ -63,9 +63,9 @@ class DocumentStorageSettingsTestCase(
             new_value
         )
 
-    def test_setting_document_file_page_image_cache_storage_arguments_invalid_value(self):
+    def test_setting_document_file_page_image_cache_storage_backend_arguments_invalid_value(self):
         assertion = self._test_storage_setting_with_invalid_value(
-            setting=setting_document_file_page_image_cache_storage_arguments,
+            setting=setting_document_file_page_image_cache_storage_backend_arguments,
             storage_module=storages,
             storage_name=STORAGE_NAME_DOCUMENT_FILE_PAGE_IMAGE_CACHE
         )
@@ -75,9 +75,9 @@ class DocumentStorageSettingsTestCase(
             'document file image storage' in str(assertion.exception)
         )
 
-    def test_setting_document_version_page_image_cache_storage_arguments_invalid_value(self):
+    def test_setting_document_version_page_image_cache_storage_backend_arguments_invalid_value(self):
         assertion = self._test_storage_setting_with_invalid_value(
-            setting=setting_document_version_page_image_cache_storage_arguments,
+            setting=setting_document_version_page_image_cache_storage_backend_arguments,
             storage_module=storages,
             storage_name=STORAGE_NAME_DOCUMENT_VERSION_PAGE_IMAGE_CACHE
         )
