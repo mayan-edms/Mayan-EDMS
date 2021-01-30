@@ -21,7 +21,7 @@ link_current_user_details = Link(
     view='user_management:current_user_details'
 )
 link_current_user_edit = Link(
-    icon=icon_current_user_edit, text=_('Edit details'),
+    icon=icon_current_user_edit, text=_('Edit user details'),
     view='user_management:current_user_edit'
 )
 link_group_create = Link(

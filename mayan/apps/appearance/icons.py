@@ -4,7 +4,8 @@ icon_current_user_theme_settings_details = Icon(
     driver_name='fontawesome', symbol='palette'
 )
 icon_current_user_theme_settings_edit = Icon(
-    driver_name='fontawesome', symbol='palette'
+    driver_name='fontawesome-dual', primary_symbol='palette',
+    secondary_symbol='pencil-alt'
 )
 
 icon_theme = Icon(driver_name='fontawesome', symbol='palette')
