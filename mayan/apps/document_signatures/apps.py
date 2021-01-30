@@ -92,21 +92,22 @@ class DocumentSignaturesApp(MayanAppConfig):
         )
 
         SourceColumn(
-            source=SignatureBaseModel, label=_('Date'), attribute='date'
+            attribute='date_time', label=_('Date and time'),
+            source=SignatureBaseModel
         )
         SourceColumn(
-            source=SignatureBaseModel, label=_('Key ID'),
-            attribute='get_key_id'
+            attribute='get_key_id', label=_('Key ID'),
+            source=SignatureBaseModel
         )
         SourceColumn(
-            source=SignatureBaseModel, label=_('Signature ID'),
-            func=lambda context: context['object'].signature_id or _('None')
+            func=lambda context: context['object'].signature_id or _('None'),
+            label=_('Signature ID'), source=SignatureBaseModel
         )
         SourceColumn(
-            source=SignatureBaseModel, label=_('Type'),
             func=lambda context: SignatureBaseModel.objects.get_subclass(
                 pk=context['object'].pk
-            ).get_signature_type_display()
+            ).get_signature_type_display(), label=_('Type'),
+            source=SignatureBaseModel
         )
 
         menu_list_facet.bind_links(

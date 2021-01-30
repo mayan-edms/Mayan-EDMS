@@ -61,7 +61,7 @@ class DetachedSignatureSerializer(BaseSignatureSerializer):
             'signature_file': {'write_only': True},
         }
         fields = (
-            'date', 'document_file_url', 'key_id', 'signature_file',
+            'date_time', 'document_file_url', 'key_id', 'signature_file',
             'signature_id', 'public_key_fingerprint', 'url'
         )
         model = DetachedSignature
@@ -109,7 +109,7 @@ class EmbeddedSignatureSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         fields = (
-            'date', 'document_file_url', 'key_id', 'signature_id',
+            'date_time', 'document_file_url', 'key_id', 'signature_id',
             'passphrase', 'public_key_fingerprint', 'url'
         )
         model = EmbeddedSignature
@@ -145,7 +145,7 @@ class EmbeddedSignatureSerializer(serializers.HyperlinkedModelSerializer):
 class SignDetachedSerializer(BaseSignatureSerializer, BaseSignSerializer):
     class Meta:
         fields = (
-            'date', 'document_file_url', 'key_id', 'signature_id',
+            'date_time', 'document_file_url', 'key_id', 'signature_id',
             'passphrase', 'public_key_fingerprint', 'url'
         )
         model = DetachedSignature
@@ -176,7 +176,7 @@ class SignDetachedSerializer(BaseSignatureSerializer, BaseSignSerializer):
 class SignEmbeddedSerializer(SignDetachedSerializer):
     class Meta:
         fields = (
-            'date', 'document_file_url', 'key_id', 'signature_id',
+            'date_time', 'document_file_url', 'key_id', 'signature_id',
             'passphrase', 'public_key_fingerprint', 'url'
         )
         model = EmbeddedSignature
