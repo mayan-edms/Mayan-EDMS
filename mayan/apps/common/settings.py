@@ -27,7 +27,7 @@ setting_disabled_apps = namespace.add_setting(
         'removed from the list normally installed by Mayan EDMS. Each '
         'string should be a dotted Python path to: an application '
         'configuration class (preferred), or a package containing an '
-        'application.'
+        'application. Example: [\'app_1\', \'app_2\']'
     )
 )
 setting_extra_apps = namespace.add_setting(
@@ -36,7 +36,8 @@ setting_extra_apps = namespace.add_setting(
         'A list of strings designating all applications that are installed '
         'beyond those normally installed by Mayan EDMS. Each string '
         'should be a dotted Python path to: an application configuration '
-        'class (preferred), or a package containing an application.'
+        'class (preferred), or a package containing an application. '
+        'Example: [\'app_1\', \'app_2\']'
     )
 )
 setting_home_view = namespace.add_setting(

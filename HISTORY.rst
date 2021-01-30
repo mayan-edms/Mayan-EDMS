@@ -162,3 +162,6 @@
 - Increase the size of the ``Lock`` lock manager model ``name`` field to a
   255 char field. Closes GitLab issue #939. Thanks to Will Wright
   (@fireatwill) for the report and investigation.
+- Add example usage for the ``COMMON_EXTRA_APPS`` and
+  ``COMMON_DISABLED_APPS``. Closes GitLab issue #929. Thanks to Francesco
+  Musella (@francesco.musella-biztems) for the report.
