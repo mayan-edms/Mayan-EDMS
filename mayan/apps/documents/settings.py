@@ -130,7 +130,7 @@ setting_document_version_page_image_cache_time = namespace.add_setting(
         'to 1 year.'
     )
 )
-setting_documentversionpageimagecache_storage = namespace.add_setting(
+setting_document_version_page_image_cache_storage = namespace.add_setting(
     default=DEFAULT_DOCUMENTS_VERSION_PAGE_IMAGE_CACHE_STORAGE_BACKEND,
     global_name='DOCUMENTS_VERSION_PAGE_IMAGE_CACHE_STORAGE_BACKEND',
     help_text=_(
@@ -138,7 +138,7 @@ setting_documentversionpageimagecache_storage = namespace.add_setting(
         'document version page image versions.'
     )
 )
-setting_documentversionpageimagecache_storage_arguments = namespace.add_setting(
+setting_document_version_page_image_cache_storage_arguments = namespace.add_setting(
     default=DEFAULT_DOCUMENTS_VERSION_PAGE_IMAGE_CACHE_STORAGE_BACKEND_ARGUMENTS,
     global_name='DOCUMENTS_VERSION_PAGE_IMAGE_CACHE_STORAGE_BACKEND_ARGUMENTS',
     help_text=_(

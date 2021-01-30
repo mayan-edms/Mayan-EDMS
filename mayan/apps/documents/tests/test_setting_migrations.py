@@ -8,8 +8,8 @@ from ..settings import (
     setting_document_file_page_image_cache_storage_arguments,
     setting_document_file_storage_backend,
     setting_document_file_storage_backend_arguments,
-    setting_documentversionpageimagecache_storage,
-    setting_documentversionpageimagecache_storage_arguments,
+    setting_document_version_page_image_cache_storage,
+    setting_document_version_page_image_cache_storage_arguments,
     setting_recently_accessed_document_count,
     setting_recently_created_document_count,
 )
@@ -73,26 +73,26 @@ class DocumentSettingMigrationTestCase(SmartSettingTestMixin, BaseTestCase):
         )
 
     @override_settings(DOCUMENTS_CACHE_STORAGE_BACKEND=TEST_DOCUMENTS_CACHE_STORAGE_BACKEND)
-    def test_setting_documentversionpageimagecache_storage_0003(self):
+    def test_setting_document_version_page_image_cache_storage_0003(self):
         test_value = None
-        self.test_setting = setting_documentversionpageimagecache_storage
+        self.test_setting = setting_document_version_page_image_cache_storage
         self.test_config_value = test_value
         self._create_test_config_file()
 
         self.assertEqual(
-            setting_documentversionpageimagecache_storage.value,
+            setting_document_version_page_image_cache_storage.value,
             TEST_DOCUMENTS_CACHE_STORAGE_BACKEND
         )
 
     @override_settings(DOCUMENTS_CACHE_STORAGE_BACKEND_ARGUMENTS=TEST_DOCUMENTS_CACHE_STORAGE_BACKEND_ARGUMENTS)
-    def test_setting_documentversionpageimagecache_storage_arguments_0003(self):
+    def test_setting_document_version_page_image_cache_storage_arguments_0003(self):
         test_value = None
-        self.test_setting = setting_documentversionpageimagecache_storage_arguments
+        self.test_setting = setting_document_version_page_image_cache_storage_arguments
         self.test_config_value = test_value
         self._create_test_config_file()
 
         self.assertEqual(
-            setting_documentversionpageimagecache_storage_arguments.value,
+            setting_document_version_page_image_cache_storage_arguments.value,
             TEST_DOCUMENTS_CACHE_STORAGE_BACKEND_ARGUMENTS
         )
 
