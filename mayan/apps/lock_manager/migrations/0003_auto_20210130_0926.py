@@ -1,9 +1,9 @@
-from django.db import models, migrations
+from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
     dependencies = [
-        ('lock_manager', '0001_initial'),
+        ('lock_manager', '0002_auto_20150604_2219'),
     ]
 
     operations = [
@@ -11,8 +11,7 @@ class Migration(migrations.Migration):
             model_name='lock',
             name='name',
             field=models.CharField(
-                unique=True, max_length=64, verbose_name='Name'
+                max_length=255, unique=True, verbose_name='Name'
             ),
-            preserve_default=True,
         ),
     ]

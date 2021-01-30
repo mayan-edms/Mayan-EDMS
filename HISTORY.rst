@@ -159,3 +159,6 @@
   apps via the `viewport` app template.
 - Rename document comment model's `comment` field to `text`.
 - Support sorting document comments by user or by date.
+- Increase the size of the ``Lock`` lock manager model ``name`` field to a
+  255 char field. Closes GitLab issue #939. Thanks to Will Wright
+  (@fireatwill) for the report and investigation.
