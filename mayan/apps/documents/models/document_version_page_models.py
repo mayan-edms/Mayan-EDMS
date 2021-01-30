@@ -301,7 +301,7 @@ class DocumentVersionPage(
         return _(
             '%(document_version)s page %(page_number)d of %(total_pages)d'
         ) % {
-            'document_version': force_text(self.document_version),
+            'document_version': force_text(s=self.document_version),
             'page_number': self.page_number,
             'total_pages': self.get_pages_last_number() or 1
         }

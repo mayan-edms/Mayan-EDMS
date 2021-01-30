@@ -14,7 +14,7 @@ def operation_save_keys(apps, schema_editor):
     )
 
     for key in Key.objects.using(alias=schema_editor.connection.alias).all():
-        key_data = force_text(key.key_data)
+        key_data = force_text(s=key.key_data)
         import_results, key_info = GPGBackend.get_instance().import_and_list_keys(
             key_data=key_data
         )
@@ -38,7 +38,7 @@ def operation_save_keys_reverse(apps, schema_editor):
     )
 
     for key in Key.objects.using(alias=schema_editor.connection.alias).all():
-        key_data = force_text(key.key_data)
+        key_data = force_text(s=key.key_data)
         import_results, key_info = GPGBackend.get_instance().import_and_list_keys(
             key_data=key_data
         )

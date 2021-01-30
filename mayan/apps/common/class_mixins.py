@@ -36,7 +36,7 @@ class AppsModuleLoaderMixin:
                             app_label=app.name, module_name=cls._loader_module_name
                         )
                     )
-                    if force_text(exception) not in non_fatal_messages:
+                    if force_text(s=exception) not in non_fatal_messages:
                         logger.error(
                             'Error importing %s %s.py file; %s', app.name,
                             cls._loader_module_name, exception

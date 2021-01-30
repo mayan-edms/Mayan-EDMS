@@ -93,7 +93,7 @@ class MetadataType(models.Model):
         splitter.whitespace = ','
         splitter.whitespace_split = True
         splitter.commenters = ''
-        return [force_text(e) for e in splitter]
+        return [force_text(s=e) for e in splitter]
 
     def get_absolute_url(self):
         return reverse(

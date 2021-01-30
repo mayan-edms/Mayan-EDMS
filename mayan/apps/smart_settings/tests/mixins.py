@@ -92,7 +92,7 @@ class SmartSettingTestMixin(EnvironmentTestCaseMixin):
             )
             test_config_file_object.write(
                 force_bytes(
-                    Setting.serialize_value(value=test_config_entry)
+                    s=Setting.serialize_value(value=test_config_entry)
                 )
             )
             test_config_file_object.seek(0)

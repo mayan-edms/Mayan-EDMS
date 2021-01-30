@@ -344,7 +344,7 @@ class WhooshSearchBackendDocumentSearchTestCase(
 
         queryset = self.search_backend.search(
             search_model=document_search,
-            query_string={'uuid': force_text(self.test_document.uuid)},
+            query_string={'uuid': force_text(s=self.test_document.uuid)},
             user=self._test_case_user
         )
         self.assertEqual(queryset.count(), 1)

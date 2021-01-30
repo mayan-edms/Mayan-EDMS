@@ -175,7 +175,7 @@ class DownloadTestCaseMixin:
             response_content = b''.join(list(response))
 
             try:
-                response_content = force_text(response_content)
+                response_content = force_text(s=response_content)
             except DjangoUnicodeDecodeError:
                 """Leave as bytes"""
 

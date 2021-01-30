@@ -200,7 +200,7 @@ class DocumentFile(
 
                     hash_object.update(data)
 
-            self.checksum = force_text(hash_object.hexdigest())
+            self.checksum = force_text(s=hash_object.hexdigest())
             if save:
                 self.save()
 
@@ -449,7 +449,7 @@ class DocumentFile(
 
                     self.document.is_stub = False
                     if not self.document.label:
-                        self.document.label = force_text(self.file)
+                        self.document.label = force_text(s=self.file)
 
                     self.document._event_ignore = True
                     self.document.save()

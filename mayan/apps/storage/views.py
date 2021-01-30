@@ -31,7 +31,7 @@ class DownloadFileDownloadViewView(
         return self.object.open(mode='rb')
 
     def get_download_filename(self):
-        return force_text(self.object)
+        return force_text(s=self.object)
 
 
 class DownloadFileListView(

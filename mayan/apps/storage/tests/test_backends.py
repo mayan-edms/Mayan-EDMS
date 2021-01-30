@@ -32,7 +32,7 @@ class EncryptedPassthroughStorageTestCase(BaseTestCase):
 
         test_file_name = storage.save(
             name=TEST_FILE_NAME, content=ContentFile(
-                content=force_bytes(TEST_CONTENT)
+                content=force_bytes(s=TEST_CONTENT)
             )
         )
 
@@ -84,7 +84,7 @@ class ZipCompressedPassthroughStorageTestCase(BaseTestCase):
 
         with path_file.open(mode='rb') as file_object:
             self.assertNotEqual(
-                file_object.read(), force_bytes(TEST_CONTENT)
+                file_object.read(), force_bytes(s=TEST_CONTENT)
             )
 
         with storage.open(name=TEST_FILE_NAME, mode='r') as file_object:
@@ -125,7 +125,7 @@ class CombinationPassthroughStorageTestCase(BaseTestCase):
 
         with path_file.open(mode='rb') as file_object:
             self.assertNotEqual(
-                file_object.read(), force_bytes(TEST_CONTENT)
+                file_object.read(), force_bytes(s=TEST_CONTENT)
             )
         with storage.open(name=TEST_FILE_NAME, mode='r') as file_object:
             self.assertEqual(file_object.read(), TEST_CONTENT)

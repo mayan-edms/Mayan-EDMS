@@ -323,7 +323,7 @@ class SANESourceTestCase(GenericDocumentTestCase):
     def test_command(self):
         self._create_test_scanner_source()
         file_object = self.test_source.execute_command(arguments=('-V',))
-        self.assertTrue(force_bytes('sane') in file_object.read())
+        self.assertTrue(force_bytes(s='sane') in file_object.read())
 
     def test_scan(self):
         self._create_test_scanner_source()

@@ -11,7 +11,7 @@ from .settings import (
 class IndexFilesystemCache:
     @staticmethod
     def get_key_hash(key):
-        return hashlib.sha256(force_bytes(key)).hexdigest()
+        return hashlib.sha256(force_bytes(s=key)).hexdigest()
 
     @staticmethod
     def get_document_key(document):

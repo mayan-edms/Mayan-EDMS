@@ -268,7 +268,7 @@ class UploadInteractiveView(UploadBaseView):
                         'document_type_id': self.document_type.pk,
                         'expand': expand,
                         'label': forms['document_form'].get_final_label(
-                            filename=force_text(shared_uploaded_file)
+                            filename=force_text(s=shared_uploaded_file)
                         ),
                         'language': forms['document_form'].cleaned_data.get('language'),
                         'querystring': querystring.urlencode(),

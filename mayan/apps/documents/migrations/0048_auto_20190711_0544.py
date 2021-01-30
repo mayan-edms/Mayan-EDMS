@@ -7,7 +7,7 @@ import mayan.apps.storage.classes
 
 
 def UUID_FUNCTION(*args, **kwargs):
-    return force_text(uuid.uuid4())
+    return force_text(s=uuid.uuid4())
 
 
 class Migration(migrations.Migration):

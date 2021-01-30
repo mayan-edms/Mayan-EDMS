@@ -250,7 +250,7 @@ class Setting:
     @classmethod
     def get_hash(cls):
         return force_text(
-            s=hashlib.sha256(force_bytes(cls.dump_data())).hexdigest()
+            s=hashlib.sha256(force_bytes(s=cls.dump_data())).hexdigest()
         )
 
     @classmethod

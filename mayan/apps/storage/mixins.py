@@ -31,7 +31,7 @@ class ModelMixinDatabaseFile(models.Model):
                 content='', name=self.filename or ugettext('Unnamed file')
             )
 
-        self.filename = self.filename or force_text(self.file)
+        self.filename = self.filename or force_text(s=self.file)
         super().save(*args, **kwargs)
 
     class Meta:

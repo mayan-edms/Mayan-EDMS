@@ -163,7 +163,7 @@ class KeyTestCase(BaseTestCase):
             )
 
         signature_file = io.BytesIO()
-        signature_file.write(force_bytes(detached_signature))
+        signature_file.write(force_bytes(s=detached_signature))
         signature_file.seek(0)
 
         with open(file=TEST_FILE, mode='rb') as test_file:

@@ -25,7 +25,7 @@ class Theme(models.Model):
         verbose_name_plural = _('Themes')
 
     def __str__(self):
-        return force_text(self.label)
+        return force_text(s=self.label)
 
     def get_absolute_url(self):
         return reverse(
@@ -65,4 +65,4 @@ class UserThemeSetting(models.Model):
         verbose_name_plural = _('User theme settings')
 
     def __str__(self):
-        return force_text(self.user)
+        return force_text(s=self.user)

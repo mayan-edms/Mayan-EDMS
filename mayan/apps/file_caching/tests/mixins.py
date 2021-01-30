@@ -50,7 +50,7 @@ class CacheTestMixin:
     def _create_test_cache_partition_file(self):
         with self.test_cache_partition.create_file(filename=TEST_CACHE_PARTITION_FILE_FILENAME) as file_object:
             file_object.write(
-                force_bytes(' ' * TEST_CACHE_PARTITION_FILE_SIZE)
+                force_bytes(s=' ' * TEST_CACHE_PARTITION_FILE_SIZE)
             )
 
         self.test_cache_partition_file = self.test_cache_partition.files.get(

@@ -28,7 +28,7 @@ class DocumentManager(models.Manager):
             stale_stub_document.delete(to_trash=False)
 
     def get_by_natural_key(self, uuid):
-        return self.get(uuid=force_text(uuid))
+        return self.get(uuid=force_text(s=uuid))
 
 
 class DocumentFileManager(models.Manager):

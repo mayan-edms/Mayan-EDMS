@@ -22,7 +22,7 @@ logger = logging.getLogger(name=__name__)
 
 lock_file = os.path.join(
     setting_temporary_directory.value, hashlib.sha256(
-        force_bytes(settings.SECRET_KEY)
+        force_bytes(s=settings.SECRET_KEY)
     ).hexdigest()
 )
 open(file=lock_file, mode='a').close()

@@ -225,7 +225,7 @@ class MockPOP3Mailbox:
 
     def getwelcome(self):
         return force_bytes(
-            '+OK server ready for requests from 127.0.0.0 xxxxxxxxxxxxxxxxx'
+            s='+OK server ready for requests from 127.0.0.0 xxxxxxxxxxxxxxxxx'
         )
 
     def list(self, which=None):
@@ -250,7 +250,7 @@ class MockPOP3Mailbox:
 
             messages_total_size = messages_total_size + message_size
             message_list.append(
-                force_bytes('{} {}'.format(message_number, message_size))
+                force_bytes(s='{} {}'.format(message_number, message_size))
             )
 
             message_number = message_number + 1
@@ -262,17 +262,17 @@ class MockPOP3Mailbox:
 
         return (
             force_bytes(
-                '+OK {} messages ({} bytes)'.format(
+                s='+OK {} messages ({} bytes)'.format(
                     len(self.messages), messages_total_size
                 )
             ), message_list, result_size
         )
 
     def user(self, user):
-        return force_bytes('+OK send PASS')
+        return force_bytes(s='+OK send PASS')
 
     def pass_(self, pswd):
-        return force_bytes('+OK Welcome.')
+        return force_bytes(s='+OK Welcome.')
 
     def quit(self):
         return

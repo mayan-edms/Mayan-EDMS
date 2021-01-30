@@ -94,7 +94,7 @@ class Key(ModelInstanceExtraDataAPIViewMixin, models.Model):
 
     def introspect_key_data(self):
         # Fix the encoding of the key data stream.
-        self.key_data = force_text(self.key_data)
+        self.key_data = force_text(s=self.key_data)
         import_results, key_info = GPGBackend.get_instance().import_and_list_keys(
             key_data=self.key_data
         )

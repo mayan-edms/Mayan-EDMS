@@ -87,7 +87,7 @@ class EmailBaseModel(IntervalBaseModel):
 
         metadata_dictionary = {}
 
-        message = mime.from_string(force_bytes(message_text))
+        message = mime.from_string(force_bytes(s=message_text))
 
         if source.from_metadata_type:
             metadata_dictionary[
@@ -166,7 +166,7 @@ class EmailBaseModel(IntervalBaseModel):
                     label = 'email_body.txt'
 
                 if source.store_body:
-                    with ContentFile(content=force_bytes(message.body), name=label) as file_object:
+                    with ContentFile(content=force_bytes(s=message.body), name=label) as file_object:
                         documents = source.handle_upload(
                             document_type=source.document_type,
                             expand=SOURCE_UNCOMPRESS_CHOICE_N,

@@ -65,7 +65,7 @@ class DownloadFileViewTestCase(
         with self.test_download_file.open(mode='r') as file_object:
             self.assert_download_response(
                 response=response, content=file_object.read(),
-                filename=force_text(self.test_download_file),
+                filename=force_text(s=self.test_download_file),
                 mime_type='text/plain'
             )
 
@@ -93,7 +93,7 @@ class DownloadFileViewTestCase(
         with self.test_download_file.open(mode='r') as file_object:
             self.assert_download_response(
                 response=response, content=file_object.read(),
-                filename=force_text(self.test_download_file),
+                filename=force_text(s=self.test_download_file),
                 mime_type='text/plain'
             )
 

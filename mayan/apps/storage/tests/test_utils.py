@@ -92,7 +92,7 @@ class StorageProcessorTestCase(
         storage_processor = PassthroughStorageProcessor(
             app_label='documents',
             defined_storage_name=storage_document_files.name,
-            log_file=force_text(self.path_test_file),
+            log_file=force_text(s=self.path_test_file),
             model_name='DocumentFile'
         )
         storage_processor.execute(reverse=reverse)

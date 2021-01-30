@@ -90,7 +90,7 @@ Zealand. '''.replace('\n', '\r\n')
                 archive.member_contents(
                     filename=self.member_name
                 ).startswith(
-                    force_bytes(self.member_contents_partial)
+                    force_bytes(s=self.member_contents_partial)
                 )
             )
 
@@ -100,7 +100,7 @@ Zealand. '''.replace('\n', '\r\n')
             file_object = archive.open_member(filename=self.member_name)
             self.assertTrue(
                 file_object.read().startswith(
-                    force_bytes(self.member_contents_partial)
+                    force_bytes(s=self.member_contents_partial)
                 )
             )
 

@@ -67,7 +67,7 @@ class UUIDDocumentFilenameGenerator(BaseDocumentFilenameGenerator):
     )
 
     def upload_to(self, instance, filename):
-        return force_text(uuid.uuid4())
+        return force_text(s=uuid.uuid4())
 
 
 BaseDocumentFilenameGenerator.register(klass=OriginalDocumentFilenameGenerator)
