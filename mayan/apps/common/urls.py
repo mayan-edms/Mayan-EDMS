@@ -5,21 +5,9 @@ from django.views.i18n import JavaScriptCatalog
 
 from .api_views import APIContentTypeList
 from .views import (
-    AboutView, CurrentUserLocaleProfileDetailsView,
-    CurrentUserLocaleProfileEditView, FaviconRedirectView, HomeView,
-    LicenseView, ObjectCopyView, RootView, SetupListView, ToolsListView
+    AboutView, FaviconRedirectView, HomeView, LicenseView, ObjectCopyView,
+    RootView, SetupListView, ToolsListView
 )
-
-urlpatterns_user_locale = [
-    url(
-        regex=r'^user/locale/$', name='current_user_locale_profile_details',
-        view=CurrentUserLocaleProfileDetailsView.as_view()
-    ),
-    url(
-        regex=r'^user/locale/edit/$', name='current_user_locale_profile_edit',
-        view=CurrentUserLocaleProfileEditView.as_view()
-    )
-]
 
 urlpatterns_misc = [
     url(
@@ -45,7 +33,6 @@ urlpatterns = [
 ]
 
 urlpatterns.extend(urlpatterns_misc)
-urlpatterns.extend(urlpatterns_user_locale)
 
 passthru_urlpatterns = [
     url(regex=r'^admin/', view=admin.site.urls),

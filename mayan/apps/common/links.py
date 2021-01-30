@@ -4,10 +4,9 @@ from mayan.apps.navigation.classes import Link
 from mayan.apps.navigation.utils import get_content_type_kwargs_factory
 
 from .icons import (
-    icon_about, icon_book, icon_current_user_locale_profile_details,
-    icon_current_user_locale_profile_edit, icon_documentation, icon_forum,
-    icon_license, icon_object_copy, icon_setup, icon_source_code, icon_store,
-    icon_support, icon_tools
+    icon_about, icon_book, icon_documentation, icon_forum, icon_license,
+    icon_object_copy, icon_setup, icon_source_code, icon_store, icon_support,
+    icon_tools
 )
 
 
@@ -33,16 +32,6 @@ link_about = Link(
 link_book = Link(
     icon=icon_book, tags='new_window', text=_('Get the book'),
     url='https://mayan-edms.com/book/'
-)
-link_current_user_locale_profile_details = Link(
-    icon=icon_current_user_locale_profile_details,
-    text=_('Locale profile'),
-    view='common:current_user_locale_profile_details'
-)
-link_current_user_locale_profile_edit = Link(
-    icon=icon_current_user_locale_profile_edit,
-    text=_('Edit locale profile'),
-    view='common:current_user_locale_profile_edit'
 )
 link_documentation = Link(
     icon=icon_documentation, tags='new_window',

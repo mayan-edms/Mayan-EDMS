@@ -4,11 +4,8 @@ import traceback
 import warnings
 
 from django import apps
-from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
-from django.contrib.auth.signals import user_logged_in
-from django.db.models.signals import post_save
 from django.utils.encoding import force_text
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
@@ -16,18 +13,14 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.logging.mixins import AppConfigLoggingMixin
 from mayan.apps.templating.classes import AJAXTemplate
 
-from .handlers import (
-    handler_pre_initial_setup, handler_pre_upgrade,
-    handler_user_locale_profile_session_config, handler_user_locale_profile_create
-)
+from .handlers import handler_pre_initial_setup, handler_pre_upgrade
 from .links import (
-    link_about, link_book, link_current_user_locale_profile_edit, link_license,
-    link_setup, link_store, link_support, link_tools
+    link_about, link_book, link_license, link_setup, link_store,
+    link_support, link_tools
 )
 
 from .literals import MESSAGE_SQLITE_WARNING
 from .menus import menu_about, menu_topbar, menu_user
-from .patches import patchDjangoTranslation
 from .settings import setting_url_base_path
 
 from .signals import signal_pre_initial_setup, signal_pre_upgrade
@@ -134,7 +127,6 @@ class CommonApp(AppConfigLoggingMixin, MayanAppConfig):
 
     def ready(self):
         super().ready()
-        patchDjangoTranslation()
 
         admin.autodiscover()
 
@@ -149,12 +141,6 @@ class CommonApp(AppConfigLoggingMixin, MayanAppConfig):
         )
         AJAXTemplate(
             name='menu_topbar', template_name='appearance/menu_topbar.html'
-        )
-
-        menu_user.bind_links(
-            links=(
-                link_current_user_locale_profile_edit,
-            ), position=50
         )
 
         menu_about.bind_links(
@@ -173,14 +159,4 @@ class CommonApp(AppConfigLoggingMixin, MayanAppConfig):
         signal_pre_upgrade.connect(
             dispatch_uid='common_handler_pre_upgrade',
             receiver=handler_pre_upgrade
-        )
-        post_save.connect(
-            dispatch_uid='common_handler_user_locale_profile_create',
-            receiver=handler_user_locale_profile_create,
-            sender=settings.AUTH_USER_MODEL
-        )
-
-        user_logged_in.connect(
-            dispatch_uid='common_handler_user_locale_profile_session_config',
-            receiver=handler_user_locale_profile_session_config
         )

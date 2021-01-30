@@ -153,3 +153,5 @@
 - Enable impersonation permission for individual users.
 - Allow impersonating users from the user list view.
 - Update jQuery from version 3.4.1 to 3.5.1.
+- Move user language and timezone code from the `common` app to a new app
+  called `locales`.
