@@ -188,6 +188,11 @@ class EventType:
             app_label='events', model_name='Notification'
         )
 
+        if actor is None and target is None:
+            # If the actor and the target are None there is no way to
+            # create a new event.
+            return
+
         results = action.send(
             actor or target, actor=actor, verb=self.id,
             action_object=action_object, target=target
