@@ -147,16 +147,18 @@ class Document(
             with transaction.atomic():
                 self._event_ignore = True
                 self.save()
-                event_document_trashed.commit(actor=user, target=self)
+
+            event_document_trashed.commit(actor=user, target=self)
         else:
             with transaction.atomic():
                 for document_file in self.files.all():
                     document_file.delete()
 
                 super().delete(*args, **kwargs)
-                event_trashed_document_deleted.commit(
-                    actor=user, target=self.document_type
-                )
+
+            event_trashed_document_deleted.commit(
+                actor=user, target=self.document_type
+            )
 
     def document_type_change(self, document_type, force=False, _user=None):
         has_changed = self.document_type != document_type
