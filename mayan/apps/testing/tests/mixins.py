@@ -511,6 +511,7 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
                 schema_editor.create_model(model=model)
 
         self._test_models.append(model)
+        self.test_model = model
         ContentType.objects.clear_cache()
 
         return model
