@@ -17,14 +17,16 @@ from ..permissions import (
     permission_document_file_signature_view
 )
 
-from .literals import TEST_SIGNED_DOCUMENT_PATH
+from .literals import (
+    TEST_SIGNED_DOCUMENT_COUNT, TEST_SIGNED_DOCUMENT_PATH,
+    TEST_UNSIGNED_DOCUMENT_COUNT
+)
 from .mixins import (
     DetachedSignatureViewTestMixin, EmbeddedSignatureViewTestMixin,
     SignatureTestMixin, SignatureToolsViewTestMixin, SignatureViewTestMixin
 )
 
-TEST_UNSIGNED_DOCUMENT_COUNT = 4
-TEST_SIGNED_DOCUMENT_COUNT = 2
+
 
 
 class SignaturesViewTestCase(

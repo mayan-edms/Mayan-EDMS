@@ -14,9 +14,6 @@ from django.utils.deconstruct import deconstructible
 from django.utils.functional import SimpleLazyObject
 from django.utils.translation import ugettext_lazy as _
 
-# These values, if given to validate(), will trigger the self.required check.
-EMPTY_VALUES = (None, '', [], (), {})
-
 
 def _lazy_re_compile(regex, flags=0):
     """Lazily compile a regex with flags."""

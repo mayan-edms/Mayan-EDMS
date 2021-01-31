@@ -14,7 +14,7 @@ from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
 logger = logging.getLogger(name=__name__)
 
 
-__ALL__ = ('QuotaBackend',)
+__all__ = ('QuotaBackend',)
 
 
 class QuotaBackendMetaclass(type):

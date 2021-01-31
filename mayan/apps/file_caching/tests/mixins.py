@@ -7,10 +7,9 @@ from ..models import Cache
 
 from .literals import (
     TEST_CACHE_MAXIMUM_SIZE, TEST_CACHE_PARTITION_FILE_FILENAME,
-    TEST_CACHE_PARTITION_FILE_SIZE, TEST_CACHE_PARTITION_NAME
+    TEST_CACHE_PARTITION_FILE_SIZE, TEST_CACHE_PARTITION_NAME,
+    TEST_STORAGE_NAME_FILE_CACHING_TEST_STORAGE
 )
-
-STORAGE_NAME_FILE_CACHING_TEST_STORAGE = 'file_caching__test_storage'
 
 
 class CachePartitionViewTestMixin:
@@ -28,7 +27,7 @@ class CacheTestMixin:
         DefinedStorage(
             dotted_path='django.core.files.storage.FileSystemStorage',
             label='File caching test storage',
-            name=STORAGE_NAME_FILE_CACHING_TEST_STORAGE,
+            name=TEST_STORAGE_NAME_FILE_CACHING_TEST_STORAGE,
             kwargs={'location': self.temporary_directory}
         )
 
@@ -39,7 +38,7 @@ class CacheTestMixin:
     def _create_test_cache(self):
         self.test_cache = Cache.objects.create(
             maximum_size=TEST_CACHE_MAXIMUM_SIZE,
-            defined_storage_name=STORAGE_NAME_FILE_CACHING_TEST_STORAGE,
+            defined_storage_name=TEST_STORAGE_NAME_FILE_CACHING_TEST_STORAGE,
         )
 
     def _create_test_cache_partition(self):

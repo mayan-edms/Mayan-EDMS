@@ -13,3 +13,6 @@ TEST_SIGNATURE_FILE_PATH = os.path.join(
     'sample_documents', 'mayan_11_1.pdf.sig'
 )
 TEST_SIGNATURE_ID = 'XVkoGKw35yU1iq11dZPiv7uAY7k'
+
+TEST_SIGNED_DOCUMENT_COUNT = 2
+TEST_UNSIGNED_DOCUMENT_COUNT = 4

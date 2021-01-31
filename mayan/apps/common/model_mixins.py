@@ -5,10 +5,9 @@ from django.db import models
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
+from .literals import IMPORT_ERROR_EXCLUSION_TEXTS
+
 logger = logging.getLogger(name=__name__)
-IMPORT_ERROR_EXCLUSION_TEXTS = (
-    'doesn\'t look like a module path', 'No module named'
-)
 
 
 class BackendModelMixin(models.Model):

@@ -11,11 +11,7 @@ from mayan.apps.mayan_statistics.classes import (
 
 from .permissions import permission_document_view
 
-MONTH_NAMES = [
-    _('January'), _('February'), _('March'), _('April'), _('May'),
-    _('June'), _('July'), _('August'), _('September'), _('October'),
-    _('November'), _('December')
-]
+from .literals import MONTH_NAMES
 
 
 def get_month_name(month_number):

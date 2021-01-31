@@ -17,16 +17,7 @@ from mayan.apps.lock_manager.exceptions import LockError
 from ..classes import SearchBackend, SearchField, SearchModel
 from ..settings import setting_results_limit
 
-DJANGO_TO_WHOOSH_FIELD_MAP = {
-    models.AutoField: {
-        'field': whoosh.fields.ID(stored=True), 'transformation': str
-    },
-    models.CharField: {'field': whoosh.fields.TEXT},
-    models.TextField: {'field': whoosh.fields.TEXT},
-    models.UUIDField: {'field': whoosh.fields.TEXT, 'transformation': str},
-    RGBColorField: {'field': whoosh.fields.TEXT},
-}
-INDEX_DIRECTORY_NAME = 'whoosh'
+from .literals import DJANGO_TO_WHOOSH_FIELD_MAP, WHOOSH_INDEX_DIRECTORY_NAME
 logger = logging.getLogger(name=__name__)
 
 
@@ -37,7 +28,7 @@ class WhooshSearchBackend(SearchBackend):
         super().__init__(**kwargs)
         self.index_path = Path(
             self.kwargs.get(
-                'index_path', Path(settings.MEDIA_ROOT, INDEX_DIRECTORY_NAME)
+                'index_path', Path(settings.MEDIA_ROOT, WHOOSH_INDEX_DIRECTORY_NAME)
             )
         )
         self.index_path.mkdir(exist_ok=True)

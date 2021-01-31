@@ -78,8 +78,13 @@ DOCUMENT_FILE_ACTION_PAGE_CHOICES = (
     (DOCUMENT_FILE_ACTION_PAGES_KEEP, _('Keep. Do not create a new version and keep the current version pages.')),
 )
 DOCUMENT_IMAGE_TASK_TIMEOUT = 120
-UPDATE_PAGE_COUNT_RETRY_DELAY = 10
-UPLOAD_NEW_VERSION_RETRY_DELAY = 10
+
+MONTH_NAMES = (
+    _('January'), _('February'), _('March'), _('April'), _('May'),
+    _('June'), _('July'), _('August'), _('September'), _('October'),
+    _('November'), _('December')
+)
+
 PAGE_RANGE_ALL = 'all'
 PAGE_RANGE_RANGE = 'range'
 PAGE_RANGE_CHOICES = (
@@ -88,3 +93,6 @@ PAGE_RANGE_CHOICES = (
 STORAGE_NAME_DOCUMENT_FILE_PAGE_IMAGE_CACHE = 'documents__documentfilepageimagecache'
 STORAGE_NAME_DOCUMENT_FILES = 'documents__documentfiles'
 STORAGE_NAME_DOCUMENT_VERSION_PAGE_IMAGE_CACHE = 'documents__documentversionpageimagecache'
+
+UPDATE_PAGE_COUNT_RETRY_DELAY = 10
+UPLOAD_NEW_VERSION_RETRY_DELAY = 10

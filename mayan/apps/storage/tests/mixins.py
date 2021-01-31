@@ -14,7 +14,7 @@ from ..classes import DefinedStorage
 from ..models import DownloadFile
 from ..utils import mkdtemp
 
-DOWNLOAD_FILE_CONTENT_FILE_NAME = 'test content name'
+from .literals import TEST_DOWNLOAD_FILE_CONTENT_FILE_NAME
 
 
 class DownloadFileTestMixin(PermissionTestMixin):
@@ -23,7 +23,7 @@ class DownloadFileTestMixin(PermissionTestMixin):
 
         if content:
             file_content = ContentFile(
-                content=content, name=DOWNLOAD_FILE_CONTENT_FILE_NAME
+                content=content, name=TEST_DOWNLOAD_FILE_CONTENT_FILE_NAME
             )
 
         self.test_download_file = DownloadFile.objects.create(
@@ -35,7 +35,7 @@ class DownloadFileTestMixin(PermissionTestMixin):
 
         if content:
             file_content = ContentFile(
-                content=content, name=DOWNLOAD_FILE_CONTENT_FILE_NAME
+                content=content, name=TEST_DOWNLOAD_FILE_CONTENT_FILE_NAME
             )
 
         self._create_test_permission()

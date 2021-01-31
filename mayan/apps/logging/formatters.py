@@ -2,19 +2,12 @@ import logging
 
 from django.utils.termcolors import colorize
 
-PALETTE = {
-    'CRITICAL': {'fg': 'red', 'opts': ('bold', 'blink', 'reverse')},
-    'DEBUG': {'fg': 'cyan'},
-    'ERROR': {'fg': 'red', 'opts': ('bold',)},
-    'INFO': {'fg': 'white'},
-    'SUCCESS': {'fg': 'green'},
-    'WARNING': {'fg': 'yellow', 'opts': ('bold', 'underscore')},
-}
+from .literals import FORMATTER_PALETTE
 
 
 class ColorFormatter(logging.Formatter):
     def format(self, record):
         record.msg = colorize(
-            text=record.msg, **PALETTE.get(record.levelname, {})
+            text=record.msg, **FORMATTER_PALETTE.get(record.levelname, {})
         )
         return super().format(record)

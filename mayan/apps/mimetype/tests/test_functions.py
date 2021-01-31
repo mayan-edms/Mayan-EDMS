@@ -9,11 +9,7 @@ from mayan.apps.documents.tests.literals import TEST_PDF_DOCUMENT_FILENAME
 from mayan.apps.testing.literals import EXCLUDE_TEST_TAG
 from mayan.apps.testing.tests.base import BaseTestCase
 
-# This constant may need tweaking as document upload code path changes.
-# The value is targeted at making the document upload process fail exactly
-# during the MIME type detection phase. Different architectures may need
-# different values.
-MAXIMUM_HEAP_MEMORY = 140000000
+from .literals import MAXIMUM_HEAP_MEMORY
 
 
 @unittest.skip('This test should be used only in development.')
