@@ -78,7 +78,10 @@ class EventsApp(MayanAppConfig):
             attribute='action.target', label=_('Target'), include_label=True,
             source=Notification, widget=ObjectLinkWidget
         )
-
+        SourceColumn(
+            attribute='action.action_object', label=_('Action object'),
+            include_label=True, source=Notification, widget=ObjectLinkWidget
+        )
         SourceColumn(
             attribute='read', include_label=True, is_sortable=True,
             label=_('Seen'), source=Notification, widget=TwoStateWidget
