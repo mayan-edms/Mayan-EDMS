@@ -104,7 +104,7 @@ event_document_download = namespace.add_event_type(
     label=_('Document downloaded'), name='document_download'
 )
 event_document_file_pre_save = namespace.add_event_type(
-    label=_('Document file created'), name='document_file_pre_save'
+    label=_('Document file created (historic)'), name='document_file_pre_save'
 )
 event_document_version_revert = namespace.add_event_type(
     label=_('Document version revert'), name='document_version_revert'
