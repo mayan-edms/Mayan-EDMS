@@ -51,3 +51,14 @@ class GenericViewTestCase(
     a single, user customizable view to test object resolution and shorthand
     HTTP method functions.
     """
+
+
+class GenericTransactionViewTestCase(
+    ClientMethodsTestCaseMixin, ContentTypeCheckTestCaseMixin,
+    TestViewTestCaseMixin, BaseTransactionTestCase
+):
+    """
+    A generic view test case built on top of the transaction base test case
+    providing a single, user customizable view to test object resolution
+    and shorthand HTTP method functions.
+    """
