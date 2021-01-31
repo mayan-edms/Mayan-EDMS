@@ -1,8 +1,3 @@
-from django.core.files.base import ContentFile
-from django.db import models
-from django.utils.encoding import force_text
-from django.utils.translation import ugettext_lazy as _, ugettext
-
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.permissions.models import StoredPermission
 

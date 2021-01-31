@@ -18,7 +18,7 @@ from .literals import TEST_DOWNLOAD_FILE_CONTENT_FILE_NAME
 
 
 class DownloadFileTestMixin(PermissionTestMixin):
-    def _create_test_download_file(self, content=None):
+    def _create_test_download_file(self, content=None, content_object=None):
         file_content = None
 
         if content:
@@ -27,7 +27,7 @@ class DownloadFileTestMixin(PermissionTestMixin):
             )
 
         self.test_download_file = DownloadFile.objects.create(
-            file=file_content
+            content_object=content_object, file=file_content
         )
 
     def _create_test_download_file_with_permission(self, content=None):

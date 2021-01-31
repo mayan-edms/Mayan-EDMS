@@ -20,6 +20,11 @@ class DownloadFileDeleteView(
         viewname='storage:download_file_list'
     )
 
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user,
+        }
+
 
 class DownloadFileDownloadViewView(
     RelatedObjectPermissionViewMixin, SingleObjectDownloadView
@@ -28,7 +33,9 @@ class DownloadFileDownloadViewView(
     pk_url_kwarg = 'download_file_id'
 
     def get_download_file_object(self):
-        return self.object.open(mode='rb')
+        instance = self.get_object()
+        instance._event_actor = self.request.user
+        return instance.get_download_file_object()
 
     def get_download_filename(self):
         return force_text(s=self.object)

@@ -1,10 +1,19 @@
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.acls.classes import ModelPermission
+from mayan.apps.acls.links import link_acl_list
+from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.menus import menu_object, menu_tools
+from mayan.apps.common.menus import menu_list_facet, menu_object, menu_tools
+from mayan.apps.events.classes import EventModelRegistry, ModelEventType
+from mayan.apps.events.links import (
+    link_events_for_object, link_object_event_types_user_subcriptions_list,
+)
+from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
 
 from .classes import DefinedStorage
+from .events import event_download_file_downloaded
 from .links import (
     link_download_file_delete, link_download_file_download,
     link_download_file_list
@@ -23,6 +32,21 @@ class StorageApp(MayanAppConfig):
         DefinedStorage.load_modules()
 
         DownloadFile = self.get_model(model_name='DownloadFile')
+
+        EventModelRegistry.register(model=DownloadFile)
+
+        ModelEventType.register(
+            model=DownloadFile, event_types=(
+                event_download_file_downloaded,
+            )
+        )
+
+        ModelPermission.register(
+            model=DownloadFile, permissions=(
+                permission_acl_edit, permission_acl_view,
+                permission_events_view
+            )
+        )
 
         SourceColumn(
             attribute='datetime', is_identifier=True, include_label=True,
@@ -43,6 +67,12 @@ class StorageApp(MayanAppConfig):
             source=DownloadFile
         )
 
+        menu_list_facet.bind_links(
+            links=(
+                link_acl_list, link_events_for_object,
+                link_object_event_types_user_subcriptions_list,
+            ), sources=(DownloadFile,)
+        )
         menu_object.bind_links(
             links=(
                 link_download_file_delete, link_download_file_download,
