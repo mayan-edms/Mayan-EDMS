@@ -23,7 +23,7 @@ def appearance_app_templates(context, template_name):
             try:
                 app_templates_cache[template_id] = get_template(
                     '{}/app/{}.html'.format(app.label, template_name)
-                ).render(request=context['request'])
+                ).render(request=context.get('request'))
             except TemplateDoesNotExist:
                 """Non fatal"""
                 app_templates_cache[template_id] = ''
