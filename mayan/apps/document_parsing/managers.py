@@ -33,25 +33,22 @@ class DocumentFilePageContentManager(models.Manager):
         )
         logger.debug('document file: %d', document_file.pk)
         try:
-            with transaction.atomic():
-                Parser.parse_document_file(document_file=document_file)
+            Parser.parse_document_file(document_file=document_file)
 
-                logger.info(
-                    'Parsing complete for document file: %s', document_file
-                )
-                document_file.parsing_errors.all().delete()
+            logger.info(
+                'Parsing complete for document file: %s', document_file
+            )
+            document_file.parsing_errors.all().delete()
 
-                event_parsing_document_file_finish.commit(
-                    action_object=document_file.document,
-                    target=document_file
-                )
+            signal_post_document_file_parsing.send(
+                sender=document_file.__class__,
+                instance=document_file
+            )
 
-                transaction.on_commit(
-                    lambda: signal_post_document_file_parsing.send(
-                        sender=document_file.__class__,
-                        instance=document_file
-                    )
-                )
+            event_parsing_document_file_finish.commit(
+                action_object=document_file.document,
+                target=document_file
+            )
         except Exception as exception:
             logger.error(
                 'Parsing error for document file: %d; %s',

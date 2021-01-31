@@ -40,19 +40,18 @@ class FileMetadataDriver:
 
                 driver.initialize()
 
-                with transaction.atomic():
-                    driver.process(document_file=document_file)
-                    event_file_metadata_document_file_finish.commit(
-                        action_object=document_file.document,
-                        target=document_file
-                    )
+                driver.process(document_file=document_file)
 
-                    transaction.on_commit(
-                        lambda: signal_post_document_file_file_metadata_processing.send(
-                            sender=document_file.__class__,
-                            instance=document_file
-                        )
-                    )
+                signal_post_document_file_file_metadata_processing.send(
+                    sender=document_file.__class__,
+                    instance=document_file
+                )
+
+                event_file_metadata_document_file_finish.commit(
+                    action_object=document_file.document,
+                    target=document_file
+                )
+
             except FileMetadataDriverError:
                 """If driver raises error, try next in the list."""
             else:
