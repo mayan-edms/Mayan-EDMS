@@ -40,20 +40,39 @@ from .dashboard_widgets import (
     DashboardWidgetDocumentsPagesNewThisMonth, DashboardWidgetDocumentsTotal,
     DashboardWidgetDocumentsTypesTotal,
 )
+
+# Documents
+
 from .events import (
-    event_document_created, event_document_file_created,
-    event_document_file_deleted, event_document_file_downloaded,
-    event_document_file_edited, event_document_edited,
+    event_document_created, event_document_edited, event_document_viewed,
+    event_trashed_document_deleted, event_trashed_document_restored
+)
+
+# Document files
+
+from .events import (
+    event_document_file_created, event_document_file_deleted,
+    event_document_file_downloaded, event_document_file_edited
+)
+
+# Document types
+
+from .events import (
     event_document_type_changed, event_document_type_edited,
     event_document_type_quick_label_created,
     event_document_type_quick_label_deleted,
-    event_document_type_quick_label_edited,
-    event_document_version_created, event_document_version_deleted,
-    event_document_version_edited, event_document_version_page_created,
-    event_document_version_page_deleted, event_document_version_page_edited,
-    event_document_viewed, event_trashed_document_deleted,
-    event_trashed_document_restored
+    event_document_type_quick_label_edited
 )
+
+# Document versions
+
+from .events import (
+    event_document_version_created, event_document_version_deleted,
+    event_document_version_edited, event_document_version_exported,
+    event_document_version_page_created, event_document_version_page_deleted,
+    event_document_version_page_edited,
+)
+
 from .handlers import (
     handler_create_default_document_type,
     handler_create_document_file_page_image_cache,
@@ -217,6 +236,9 @@ class DocumentsApp(MayanAppConfig):
         DocumentVersionPageSearchResult = self.get_model(
             model_name='DocumentVersionPageSearchResult'
         )
+        DownloadFile = apps.get_model(
+            app_label='storage', model_name='DownloadFile'
+        )
         FavoriteDocument = self.get_model(
             model_name='FavoriteDocument'
         )
@@ -237,6 +259,8 @@ class DocumentsApp(MayanAppConfig):
             layer=layer_decorations
         )
         link_decorations_list.text = _('Decorations')
+
+        DownloadFile.objects.register_content_object(model=Document)
 
         DynamicSerializerField.add_serializer(
             klass=Document,
@@ -320,6 +344,7 @@ class DocumentsApp(MayanAppConfig):
             model=DocumentVersion, event_types=(
                 event_document_version_created,
                 event_document_version_edited,
+                event_document_version_exported,
                 event_document_version_page_created
             )
         )

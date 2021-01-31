@@ -2,12 +2,13 @@ import logging
 
 from django.apps import apps
 from django.contrib.auth import get_user_model
-from django.db import OperationalError
+from django.db import OperationalError, transaction
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.lock_manager.exceptions import LockError
 from mayan.celery import app
 
+from .events import event_document_version_exported
 from .literals import (
     UPDATE_PAGE_COUNT_RETRY_DELAY, UPLOAD_NEW_VERSION_RETRY_DELAY
 )
@@ -201,16 +202,23 @@ def task_document_version_export(document_version_id):
         pk=document_version_id
     )
 
-    download_file = DownloadFile.objects.create(
-        content_object=document_version,
-        filename='{}.pdf'.format(document_version),
-        label=_('Document version export to PDF'),
-        permission=permission_document_version_export.stored_permission
-    )
+    with transaction.atomic():
+        download_file = DownloadFile.objects.create(
+            content_object=document_version,
+            filename='{}.pdf'.format(document_version),
+            label=_('Document version export to PDF'),
+            permission=permission_document_version_export.stored_permission
+        )
 
-    with download_file.open(mode='wb+') as file_object:
-        document_version.export(file_object=file_object)
+        with download_file.open(mode='wb+') as file_object:
+            document_version.export(file_object=file_object)
 
+        transaction.on_commit(
+            lambda: event_document_version_exported.commit(
+                action_object=download_file,
+                target=document_version
+            )
+        )
 
 # Document version page
 

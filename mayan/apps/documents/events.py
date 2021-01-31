@@ -70,6 +70,9 @@ event_document_version_deleted = namespace.add_event_type(
 event_document_version_edited = namespace.add_event_type(
     label=_('Document version edited'), name='document_version_edited'
 )
+event_document_version_exported = namespace.add_event_type(
+    label=_('Document version exported'), name='document_version_exported'
+)
 
 # Document version page
 
