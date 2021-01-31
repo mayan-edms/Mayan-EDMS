@@ -23,13 +23,13 @@ from ..settings import (
 )
 
 from .document_file_models import DocumentFile
-from .mixins import ModelMixinPagedModel
+from .mixins import PagedModelMixin
 
 __all__ = ('DocumentFilePage', 'DocumentFilePageSearchResult')
 logger = logging.getLogger(name=__name__)
 
 
-class DocumentFilePage(ModelMixinPagedModel, models.Model):
+class DocumentFilePage(PagedModelMixin, models.Model):
     """
     Model that describes a document file page
     """

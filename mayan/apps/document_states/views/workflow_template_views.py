@@ -14,7 +14,7 @@ from mayan.apps.views.generics import (
     MultipleObjectConfirmActionView, SingleObjectCreateView,
     SingleObjectDetailView, SingleObjectEditView, SingleObjectListView
 )
-from mayan.apps.views.mixins import ExternalObjectMixin
+from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from ..events import event_workflow_edited
 from ..forms import (
@@ -289,7 +289,7 @@ class WorkflowTemplateDocumentTypesView(AddRemoveView):
                 ).delete()
 
 
-class WorkflowTemplateLaunchView(ExternalObjectMixin, ConfirmView):
+class WorkflowTemplateLaunchView(ExternalObjectViewMixin, ConfirmView):
     external_object_class = Workflow
     external_object_permission = permission_workflow_tools
     external_object_pk_url_kwarg = 'workflow_template_id'

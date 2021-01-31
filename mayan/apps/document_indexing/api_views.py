@@ -5,7 +5,7 @@ from mayan.apps.documents.models import Document
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.serializers.document_serializers import DocumentSerializer
 from mayan.apps.rest_api import generics
-from mayan.apps.rest_api.mixins import AsymmetricSerializerViewMixin
+from mayan.apps.rest_api.api_view_mixins import AsymmetricSerializerAPIViewMixin
 
 from .models import Index, IndexInstance
 from .permissions import (
@@ -121,7 +121,7 @@ class APIIndexInstanceNodeDocumentListView(
         return self.get_node().documents.all()
 
 
-class APIIndexTemplateViewMixin(AsymmetricSerializerViewMixin):
+class APIIndexTemplateViewMixin(AsymmetricSerializerAPIViewMixin):
     queryset = Index.objects.all()
     read_serializer_class = IndexTemplateSerializer
     write_serializer_class = IndexTemplateWriteSerializer
@@ -158,7 +158,7 @@ class APIIndexTemplateDetailView(
     queryset = Index.objects.all()
 
 
-class APIIndexTemplateNodeViewMixin(AsymmetricSerializerViewMixin):
+class APIIndexTemplateNodeViewMixin(AsymmetricSerializerAPIViewMixin):
     object_permissions = {
         'GET': permission_document_indexing_view,
         'PATCH': permission_document_indexing_edit,

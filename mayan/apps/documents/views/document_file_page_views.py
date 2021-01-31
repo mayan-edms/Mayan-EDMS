@@ -14,7 +14,7 @@ from mayan.apps.converter.literals import DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
 from mayan.apps.views.generics import (
     MultipleObjectConfirmActionView, SimpleView, SingleObjectListView
 )
-from mayan.apps.views.mixins import ExternalObjectMixin
+from mayan.apps.views.mixins import ExternalObjectViewMixin
 from mayan.apps.views.utils import resolve
 
 from ..forms.document_file_page_forms import DocumentFilePageForm
@@ -83,7 +83,7 @@ class DocumentFilePageCountUpdateView(MultipleObjectConfirmActionView):
         )
 
 
-class DocumentFilePageListView(ExternalObjectMixin, SingleObjectListView):
+class DocumentFilePageListView(ExternalObjectViewMixin, SingleObjectListView):
     external_object_permission = permission_document_file_view
     external_object_pk_url_kwarg = 'document_file_id'
     external_object_queryset = DocumentFile.valid
@@ -113,7 +113,7 @@ class DocumentFilePageListView(ExternalObjectMixin, SingleObjectListView):
         return queryset.filter(pk__in=self.external_object.pages.all())
 
 
-class DocumentFilePageNavigationBase(ExternalObjectMixin, RedirectView):
+class DocumentFilePageNavigationBase(ExternalObjectViewMixin, RedirectView):
     external_object_permission = permission_document_file_view
     external_object_pk_url_kwarg = 'document_file_page_id'
     external_object_queryset = DocumentFilePage.valid
@@ -201,7 +201,7 @@ class DocumentFilePageNavigationPrevious(DocumentFilePageNavigationBase):
             return {'document_file_page_id': self.external_object.pk}
 
 
-class DocumentFilePageView(ExternalObjectMixin, SimpleView):
+class DocumentFilePageView(ExternalObjectViewMixin, SimpleView):
     external_object_permission = permission_document_file_view
     external_object_pk_url_kwarg = 'document_file_page_id'
     external_object_queryset = DocumentFilePage.valid
@@ -238,7 +238,7 @@ class DocumentFilePageViewResetView(RedirectView):
 
 
 class DocumentFilePageInteractiveTransformation(
-    ExternalObjectMixin, RedirectView
+    ExternalObjectViewMixin, RedirectView
 ):
     external_object_permission = permission_document_file_view
     external_object_pk_url_kwarg = 'document_file_page_id'

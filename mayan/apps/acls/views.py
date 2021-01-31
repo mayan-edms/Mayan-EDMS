@@ -11,7 +11,7 @@ from mayan.apps.views.generics import (
     SingleObjectListView
 )
 from mayan.apps.views.mixins import (
-    ContentTypeViewMixin, ExternalObjectMixin
+    ContentTypeViewMixin, ExternalObjectViewMixin
 )
 
 from .classes import ModelPermission
@@ -25,7 +25,7 @@ logger = logging.getLogger(name=__name__)
 
 
 class ACLCreateView(
-    ContentTypeViewMixin, ExternalObjectMixin, SingleObjectCreateView
+    ContentTypeViewMixin, ExternalObjectViewMixin, SingleObjectCreateView
 ):
     content_type_url_kw_args = {
         'app_label': 'app_label',
@@ -105,7 +105,7 @@ class ACLDeleteView(SingleObjectDeleteView):
         )
 
 
-class ACLListView(ContentTypeViewMixin, ExternalObjectMixin, SingleObjectListView):
+class ACLListView(ContentTypeViewMixin, ExternalObjectViewMixin, SingleObjectListView):
     content_type_url_kw_args = {
         'app_label': 'app_label',
         'model_name': 'model_name'

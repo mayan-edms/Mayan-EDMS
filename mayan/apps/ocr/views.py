@@ -13,7 +13,7 @@ from mayan.apps.views.generics import (
     FormView, MultipleObjectConfirmActionView, SingleObjectDetailView,
     SingleObjectDownloadView, SingleObjectEditView, SingleObjectListView
 )
-from mayan.apps.views.mixins import ExternalObjectMixin
+from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from .forms import DocumentVersionPageOCRContentForm, DocumentVersionOCRContentForm
 from .models import DocumentVersionPageOCRContent, DocumentVersionOCRError
@@ -87,7 +87,7 @@ class DocumentVersionOCRDownloadView(SingleObjectDownloadView):
         return '{}-OCR'.format(self.object)
 
 
-class DocumentVersionOCRErrorsListView(ExternalObjectMixin, SingleObjectListView):
+class DocumentVersionOCRErrorsListView(ExternalObjectViewMixin, SingleObjectListView):
     external_object_permission = permission_document_version_ocr
     external_object_pk_url_kwarg = 'document_version_id'
     external_object_queryset = DocumentVersion.valid
@@ -191,7 +191,7 @@ class DocumentTypeSubmitView(FormView):
         return reverse(viewname='common:tools_list')
 
 
-class DocumentTypeSettingsEditView(ExternalObjectMixin, SingleObjectEditView):
+class DocumentTypeSettingsEditView(ExternalObjectViewMixin, SingleObjectEditView):
     external_object_class = DocumentType
     external_object_permission = permission_document_type_ocr_setup
     external_object_pk_url_kwarg = 'document_type_id'

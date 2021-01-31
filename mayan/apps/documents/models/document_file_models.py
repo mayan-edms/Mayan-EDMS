@@ -10,7 +10,7 @@ from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.classes import ModelQueryFields
-from mayan.apps.common.mixins import ModelInstanceExtraDataAPIViewMixin
+from mayan.apps.common.model_mixins import ExtraDataModelMixin
 from mayan.apps.common.signals import signal_mayan_pre_save
 from mayan.apps.converter.classes import ConverterBase
 from mayan.apps.converter.exceptions import (
@@ -35,7 +35,7 @@ from ..signals import (
 )
 
 from .document_models import Document
-from .mixins import ModelMixinHooks
+from .mixins import HooksModelMixin
 
 __all__ = ('DocumentFile', 'DocumentFileSearchResult')
 logger = logging.getLogger(name=__name__)
@@ -48,7 +48,7 @@ def upload_to(instance, filename):
 
 
 class DocumentFile(
-    ModelInstanceExtraDataAPIViewMixin, ModelMixinHooks, models.Model
+    ExtraDataModelMixin, HooksModelMixin, models.Model
 ):
     """
     Model that describes a document file and its properties

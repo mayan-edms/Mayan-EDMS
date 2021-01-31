@@ -165,3 +165,5 @@
 - Add example usage for the ``COMMON_EXTRA_APPS`` and
   ``COMMON_DISABLED_APPS``. Closes GitLab issue #929. Thanks to Francesco
   Musella (@francesco.musella-biztems) for the report.
+- Reorganize mixins. Add a suffix to specify the purpose of the mixin and
+  move them to different module when appropriate.

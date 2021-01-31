@@ -13,7 +13,7 @@ from mayan.apps.views.generics import (
     ConfirmView, FormView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectDetailView, SingleObjectDownloadView, SingleObjectListView
 )
-from mayan.apps.views.mixins import ExternalObjectMixin
+from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from .forms import (
     DocumentFileSignatureCreateForm,
@@ -46,7 +46,7 @@ from .tasks import (
 logger = logging.getLogger(name=__name__)
 
 
-class DocumentFileDetachedSignatureCreateView(ExternalObjectMixin, FormView):
+class DocumentFileDetachedSignatureCreateView(ExternalObjectViewMixin, FormView):
     external_object_permission = permission_document_file_sign_detached
     external_object_pk_url_kwarg = 'document_file_id'
     external_object_queryset = DocumentFile.valid
@@ -115,7 +115,7 @@ class DocumentFileDetachedSignatureCreateView(ExternalObjectMixin, FormView):
         )
 
 
-class DocumentFileEmbeddedSignatureCreateView(ExternalObjectMixin, FormView):
+class DocumentFileEmbeddedSignatureCreateView(ExternalObjectViewMixin, FormView):
     external_object_permission = permission_document_file_sign_embedded
     external_object_pk_url_kwarg = 'document_file_id'
     external_object_queryset = DocumentFile.valid
@@ -254,7 +254,7 @@ class DocumentFileSignatureDownloadView(SingleObjectDownloadView):
 
 
 class DocumentFileSignatureListView(
-    ExternalObjectMixin, SingleObjectListView
+    ExternalObjectViewMixin, SingleObjectListView
 ):
     external_object_permission = permission_document_file_signature_view
     external_object_pk_url_kwarg = 'document_file_id'
@@ -307,7 +307,7 @@ class DocumentFileSignatureListView(
 
 
 class DocumentFileSignatureUploadView(
-    ExternalObjectMixin, SingleObjectCreateView
+    ExternalObjectViewMixin, SingleObjectCreateView
 ):
     external_object_permission = permission_document_file_signature_upload
     external_object_pk_url_kwarg = 'document_file_id'

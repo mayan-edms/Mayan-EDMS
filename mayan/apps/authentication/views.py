@@ -22,7 +22,7 @@ from mayan.apps.user_management.permissions import permission_user_edit
 from mayan.apps.user_management.querysets import get_user_queryset
 from mayan.apps.views.http import URL
 from mayan.apps.views.generics import FormView, MultipleObjectFormActionView
-from mayan.apps.views.mixins import ExternalObjectMixin, RedirectionMixin
+from mayan.apps.views.mixins import ExternalObjectViewMixin, RedirectionViewMixin
 
 from .forms import (
     EmailAuthenticationForm, UsernameAuthenticationForm,
@@ -220,7 +220,7 @@ class UserSetPasswordView(MultipleObjectFormActionView):
             )
 
 
-class UserImpersonateEndView(RedirectionMixin, View):
+class UserImpersonateEndView(RedirectionViewMixin, View):
     def get(self, request, *args, **kwargs):
         url = URL(
             viewname=setting_home_view.value, query={
@@ -256,7 +256,7 @@ class UserImpersonateFormStartView(FormView):
         }
 
 
-class UserImpersonateStartView(ExternalObjectMixin, FormView):
+class UserImpersonateStartView(ExternalObjectViewMixin, FormView):
     external_object_queryset = get_user_queryset()
     external_object_permission = permission_users_impersonate
     external_object_pk_url_kwarg = 'user_id'

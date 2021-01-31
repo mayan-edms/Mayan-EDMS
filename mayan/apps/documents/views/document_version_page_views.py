@@ -16,7 +16,7 @@ from mayan.apps.views.generics import (
     FormView, MultipleObjectConfirmActionView, SingleObjectDeleteView,
     SingleObjectListView, SimpleView
 )
-from mayan.apps.views.mixins import ExternalObjectMixin
+from mayan.apps.views.mixins import ExternalObjectViewMixin
 from mayan.apps.views.utils import resolve
 
 from ..forms.document_version_page_forms import (
@@ -81,7 +81,7 @@ class DocumentVersionPageDeleteView(SingleObjectDeleteView):
         )
 
 
-class DocumentVersionPageListView(ExternalObjectMixin, SingleObjectListView):
+class DocumentVersionPageListView(ExternalObjectViewMixin, SingleObjectListView):
     external_object_permission = permission_document_version_view
     external_object_pk_url_kwarg = 'document_version_id'
     external_object_queryset = DocumentVersion.valid
@@ -114,7 +114,7 @@ class DocumentVersionPageListView(ExternalObjectMixin, SingleObjectListView):
         return queryset.filter(pk__in=self.external_object.pages.all())
 
 
-class DocumentVersionPageListRemapView(ExternalObjectMixin, FormView):
+class DocumentVersionPageListRemapView(ExternalObjectViewMixin, FormView):
     external_object_permission = permission_document_version_edit
     external_object_pk_url_kwarg = 'document_version_id'
     external_object_queryset = DocumentVersion.valid
@@ -268,7 +268,7 @@ class DocumentVersionPageListResetView(MultipleObjectConfirmActionView):
         )
 
 
-class DocumentVersionPageNavigationBase(ExternalObjectMixin, RedirectView):
+class DocumentVersionPageNavigationBase(ExternalObjectViewMixin, RedirectView):
     external_object_permission = permission_document_version_view
     external_object_pk_url_kwarg = 'document_version_page_id'
     external_object_queryset = DocumentVersionPage.valid
@@ -356,7 +356,7 @@ class DocumentVersionPageNavigationPrevious(DocumentVersionPageNavigationBase):
             return {'document_version_page_id': self.external_object.pk}
 
 
-class DocumentVersionPageView(ExternalObjectMixin, SimpleView):
+class DocumentVersionPageView(ExternalObjectViewMixin, SimpleView):
     external_object_permission = permission_document_version_view
     external_object_pk_url_kwarg = 'document_version_page_id'
     external_object_queryset = DocumentVersionPage.valid
@@ -392,7 +392,7 @@ class DocumentVersionPageViewResetView(RedirectView):
     pattern_name = 'documents:document_version_page_view'
 
 
-class DocumentVersionPageInteractiveTransformation(ExternalObjectMixin, RedirectView):
+class DocumentVersionPageInteractiveTransformation(ExternalObjectViewMixin, RedirectView):
     external_object_permission = permission_document_version_view
     external_object_pk_url_kwarg = 'document_version_page_id'
     external_object_queryset = DocumentVersionPage.valid

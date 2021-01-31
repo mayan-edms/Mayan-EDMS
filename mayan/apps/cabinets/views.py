@@ -13,7 +13,7 @@ from mayan.apps.views.generics import (
     MultipleObjectFormActionView, SingleObjectCreateView,
     SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
 )
-from mayan.apps.views.mixins import ExternalObjectMixin
+from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from .forms import CabinetListForm
 from .icons import icon_cabinet
@@ -46,7 +46,7 @@ class CabinetCreateView(SingleObjectCreateView):
         return {'_user': self.request.user}
 
 
-class CabinetChildAddView(ExternalObjectMixin, SingleObjectCreateView):
+class CabinetChildAddView(ExternalObjectViewMixin, SingleObjectCreateView):
     fields = ('label',)
     external_object_class = Cabinet
     external_object_permission = permission_cabinet_edit
@@ -87,7 +87,7 @@ class CabinetDeleteView(SingleObjectDeleteView):
         }
 
 
-class CabinetDetailView(ExternalObjectMixin, DocumentListView):
+class CabinetDetailView(ExternalObjectViewMixin, DocumentListView):
     external_object_class = Cabinet
     external_object_permission = permission_cabinet_view
     external_object_pk_url_kwarg = 'cabinet_id'
@@ -271,7 +271,7 @@ class DocumentCabinetAddView(MultipleObjectFormActionView):
                 )
 
 
-class DocumentCabinetListView(ExternalObjectMixin, CabinetListView):
+class DocumentCabinetListView(ExternalObjectViewMixin, CabinetListView):
     external_object_permission = permission_document_view
     external_object_pk_url_kwarg = 'document_id'
     external_object_queryset = Document.valid

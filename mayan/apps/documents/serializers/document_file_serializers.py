@@ -2,8 +2,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from rest_framework import serializers
 
-from mayan.apps.rest_api.mixins import CreateOnlyFieldSerializerMixin
 from mayan.apps.rest_api.relations import MultiKwargHyperlinkedIdentityField
+from mayan.apps.rest_api.serializer_mixins import CreateOnlyFieldSerializerMixin
 
 from ..models.document_file_models import DocumentFile
 from ..models.document_file_page_models import DocumentFilePage

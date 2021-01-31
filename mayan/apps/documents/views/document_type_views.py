@@ -8,7 +8,7 @@ from mayan.apps.views.generics import (
     SingleObjectCreateView, SingleObjectDeleteView, SingleObjectEditView,
     SingleObjectListView
 )
-from mayan.apps.views.mixins import ExternalObjectMixin
+from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from ..forms.document_type_forms import (
     DocumentTypeFilenameGeneratorForm, DocumentTypeFilenameForm_create
@@ -36,7 +36,7 @@ __all__ = (
 logger = logging.getLogger(name=__name__)
 
 
-class DocumentTypeDocumentListView(ExternalObjectMixin, DocumentListView):
+class DocumentTypeDocumentListView(ExternalObjectViewMixin, DocumentListView):
     external_object_class = DocumentType
     external_object_permission = permission_document_type_view
     external_object_pk_url_kwarg = 'document_type_id'
@@ -155,7 +155,7 @@ class DocumentTypeDeletionPoliciesEditView(SingleObjectEditView):
         }
 
 
-class DocumentTypeFilenameCreateView(ExternalObjectMixin, SingleObjectCreateView):
+class DocumentTypeFilenameCreateView(ExternalObjectViewMixin, SingleObjectCreateView):
     external_object_class = DocumentType
     external_object_permission = permission_document_type_edit
     external_object_pk_url_kwarg = 'document_type_id'
@@ -229,7 +229,7 @@ class DocumentTypeFilenameEditView(SingleObjectEditView):
         )
 
 
-class DocumentTypeFilenameListView(ExternalObjectMixin, SingleObjectListView):
+class DocumentTypeFilenameListView(ExternalObjectViewMixin, SingleObjectListView):
     external_object_class = DocumentType
     external_object_permission = permission_document_type_view
     external_object_pk_url_kwarg = 'document_type_id'

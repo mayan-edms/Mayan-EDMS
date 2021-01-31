@@ -6,7 +6,7 @@ from rest_framework.mixins import CreateModelMixin
 from rest_framework.response import Response
 from rest_framework.settings import api_settings
 
-from mayan.apps.views.mixins import ExternalObjectMixin
+from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 
 class ActionAPIViewMixin:
@@ -33,7 +33,7 @@ class ActionAPIViewMixin:
         )
 
 
-class AsymmetricSerializerViewMixin:
+class AsymmetricSerializerAPIViewMixin:
     _write_methods = ('PATCH', 'POST', 'PUT')
     read_serializer_class = None
     write_serializer_class = None
@@ -51,7 +51,7 @@ class AsymmetricSerializerViewMixin:
     def get_serializer_class(self):
         if getattr(self, 'serializer_class', None):
             raise ImproperlyConfigured(
-                'View {} can not use AsymmetricSerializerViewMixin while '
+                'View {} can not use AsymmetricSerializerAPIViewMixin while '
                 'also specifying a serializer_class.'.format(
                     self.__class__.__name__
                 )
@@ -73,28 +73,7 @@ class AsymmetricSerializerViewMixin:
             return self.write_serializer_class
 
 
-class CreateOnlyFieldSerializerMixin:
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        if not self.is_create_view():
-            # Remove the create only fields if the view is anything other
-            # than a create view.
-            for field in getattr(self.Meta, 'create_only_fields', ()):
-                self.fields.pop(field)
-
-    def is_create_view(self):
-        request = self.context.get('request')
-        view = self.context.get('view')
-
-        if request and view:
-            if isinstance(view, CreateModelMixin) and request.method.lower() == 'post':
-                # This is a create view with a request to create an instance.
-                return True
-
-        return False
-
-
-class ExternalObjectAPIViewMixin(ExternalObjectMixin):
+class ExternalObjectAPIViewMixin(ExternalObjectViewMixin):
     """
     Override get_external_object to use REST API get_object_or_404.
     """

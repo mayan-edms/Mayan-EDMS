@@ -15,14 +15,14 @@ from .classes import SearchBackend, SearchModel
 from .forms import SearchForm, AdvancedSearchForm
 from .icons import icon_search_submit
 from .links import link_search_again
-from .mixins import SearchModelMixin
 from .permissions import permission_search_tools
 from .tasks import task_index_search_model
+from .view_mixins import SearchModelViewMixin
 
 logger = logging.getLogger(name=__name__)
 
 
-class ResultsView(SearchModelMixin, SingleObjectListView):
+class ResultsView(SearchModelViewMixin, SingleObjectListView):
     def get_extra_context(self):
         context = {
             'hide_object': True,
@@ -112,7 +112,7 @@ class SearchBackendReindexView(ConfirmView):
         )
 
 
-class SearchView(SearchModelMixin, SimpleView):
+class SearchView(SearchModelViewMixin, SimpleView):
     template_name = 'appearance/generic_form.html'
     title = _('Search')
 

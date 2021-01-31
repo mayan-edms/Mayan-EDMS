@@ -13,7 +13,7 @@ from mayan.apps.views.generics import (
     FormView, MultipleObjectConfirmActionView, SingleObjectEditView,
     SingleObjectListView
 )
-from mayan.apps.views.mixins import ExternalObjectMixin
+from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from .icons import icon_file_metadata
 from .links import link_document_file_submit
@@ -24,7 +24,7 @@ from .permissions import (
 )
 
 
-class DocumentFileDriverListView(ExternalObjectMixin, SingleObjectListView):
+class DocumentFileDriverListView(ExternalObjectViewMixin, SingleObjectListView):
     external_object_permission = permission_file_metadata_view
     external_object_pk_url_kwarg = 'document_file_id'
     external_object_queryset = DocumentFile.valid
@@ -61,7 +61,7 @@ class DocumentFileDriverListView(ExternalObjectMixin, SingleObjectListView):
 
 
 class DocumentFileDriverEntryFileMetadataListView(
-    ExternalObjectMixin, SingleObjectListView
+    ExternalObjectViewMixin, SingleObjectListView
 ):
     external_object_permission = permission_file_metadata_view
     external_object_pk_url_kwarg = 'document_file_driver_id'
@@ -131,7 +131,7 @@ class DocumentFileSubmitView(MultipleObjectConfirmActionView):
         instance.submit_for_file_metadata_processing()
 
 
-class DocumentTypeSettingsEditView(ExternalObjectMixin, SingleObjectEditView):
+class DocumentTypeSettingsEditView(ExternalObjectViewMixin, SingleObjectEditView):
     external_object_class = DocumentType
     external_object_permission = permission_document_type_file_metadata_setup
     external_object_pk_url_kwarg = 'document_type_id'

@@ -7,7 +7,7 @@ from mayan.apps.views.generics import (
     SingleObjectCreateView, SingleObjectDeleteView, SingleObjectDetailView,
     SingleObjectEditView, SingleObjectListView
 )
-from mayan.apps.views.mixins import ExternalObjectMixin
+from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from .forms import DocumentCommentDetailForm
 from .icons import icon_comments_for_document
@@ -19,7 +19,7 @@ from .permissions import (
 )
 
 
-class DocumentCommentCreateView(ExternalObjectMixin, SingleObjectCreateView):
+class DocumentCommentCreateView(ExternalObjectViewMixin, SingleObjectCreateView):
     external_object_permission = permission_document_comment_create
     external_object_pk_url_kwarg = 'document_id'
     external_object_queryset = Document.valid
@@ -127,7 +127,7 @@ class DocumentCommentEditView(SingleObjectEditView):
         )
 
 
-class DocumentCommentListView(ExternalObjectMixin, SingleObjectListView):
+class DocumentCommentListView(ExternalObjectViewMixin, SingleObjectListView):
     external_object_permission = permission_document_comment_view
     external_object_pk_url_kwarg = 'document_id'
     external_object_queryset = Document.valid

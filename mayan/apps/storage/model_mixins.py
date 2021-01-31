@@ -7,7 +7,7 @@ from mayan.apps.acls.models import AccessControlList
 from mayan.apps.permissions.models import StoredPermission
 
 
-class ModelMixinDatabaseFile(models.Model):
+class DatabaseFileModelMixin(models.Model):
     filename = models.CharField(
         db_index=True, max_length=255, verbose_name=_('Filename')
     )

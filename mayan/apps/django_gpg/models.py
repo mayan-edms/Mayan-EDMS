@@ -8,7 +8,7 @@ from django.utils.encoding import force_text
 from django.utils.timezone import make_aware
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.mixins import ModelInstanceExtraDataAPIViewMixin
+from mayan.apps.common.model_mixins import ExtraDataModelMixin
 from mayan.apps.events.classes import EventManagerSave
 from mayan.apps.events.decorators import method_event
 
@@ -26,7 +26,7 @@ from .managers import KeyManager
 logger = logging.getLogger(name=__name__)
 
 
-class Key(ModelInstanceExtraDataAPIViewMixin, models.Model):
+class Key(ExtraDataModelMixin, models.Model):
     """
     Fields:
     * key_type - Will show private or public, the only two types of keys in

@@ -9,7 +9,7 @@ from rest_framework.response import Response
 
 from mayan.apps.rest_api import generics
 from mayan.apps.storage.models import SharedUploadedFile
-from mayan.apps.views.generics import DownloadMixin
+from mayan.apps.views.generics import DownloadViewMixin
 
 from ..literals import DOCUMENT_IMAGE_TASK_TIMEOUT
 from ..permissions import (
@@ -96,7 +96,7 @@ class APIDocumentFileDetailView(
 
 
 class APIDocumentFileDownloadView(
-    DownloadMixin, ParentObjectDocumentAPIViewMixin, generics.RetrieveAPIView
+    DownloadViewMixin, ParentObjectDocumentAPIViewMixin, generics.RetrieveAPIView
 ):
     """
     get: Download a document file.

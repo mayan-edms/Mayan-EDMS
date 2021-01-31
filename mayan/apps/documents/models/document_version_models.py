@@ -8,7 +8,7 @@ from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.classes import ModelQueryFields
-from mayan.apps.common.mixins import ModelInstanceExtraDataAPIViewMixin
+from mayan.apps.common.model_mixins import ExtraDataModelMixin
 from mayan.apps.events.classes import EventManagerMethodAfter, EventManagerSave
 from mayan.apps.events.decorators import method_event
 from mayan.apps.templating.classes import Template
@@ -27,7 +27,7 @@ __all__ = ('DocumentVersion', 'DocumentVersionSearchResult')
 logger = logging.getLogger(name=__name__)
 
 
-class DocumentVersion(ModelInstanceExtraDataAPIViewMixin, models.Model):
+class DocumentVersion(ExtraDataModelMixin, models.Model):
     document = models.ForeignKey(
         on_delete=models.CASCADE, related_name='versions', to=Document,
         verbose_name=_('Document')

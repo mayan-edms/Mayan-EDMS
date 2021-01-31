@@ -1,7 +1,7 @@
 from django.db.models import Max
 
 
-class ModelMixinHooks:
+class HooksModelMixin:
     @classmethod
     def _execute_hooks(cls, hook_list, **kwargs):
         result = None
@@ -19,7 +19,7 @@ class ModelMixinHooks:
         hook_list.insert(order, func)
 
 
-class ModelMixinPagedModel:
+class PagedModelMixin:
     def get_pages_last_number(self):
         last_page_number = self.siblings.aggregate(
             page_number_maximum=Max('page_number')

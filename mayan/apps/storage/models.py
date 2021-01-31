@@ -13,7 +13,7 @@ from .literals import (
     STORAGE_NAME_DOWNLOAD_FILE, STORAGE_NAME_SHARED_UPLOADED_FILE
 )
 from .managers import DownloadFileManager, SharedUploadedFileManager
-from .mixins import ModelMixinDatabaseFile
+from .model_mixins import DatabaseFileModelMixin
 
 
 def upload_to(instance, filename):
@@ -24,7 +24,7 @@ def download_file_upload_to(instance, filename):
     return 'download-file-{}'.format(uuid.uuid4().hex)
 
 
-class DownloadFile(ModelMixinDatabaseFile, models.Model):
+class DownloadFile(DatabaseFileModelMixin, models.Model):
     """
     Keep a database link to a stored file. Used for generates files meant
     to be downloaded at a later time.
@@ -63,7 +63,7 @@ class DownloadFile(ModelMixinDatabaseFile, models.Model):
             return self.content_object.get_absolute_url()
 
 
-class SharedUploadedFile(ModelMixinDatabaseFile, models.Model):
+class SharedUploadedFile(DatabaseFileModelMixin, models.Model):
     """
     Keep a database link to a stored file. Used to share files between code
     that runs out of process.

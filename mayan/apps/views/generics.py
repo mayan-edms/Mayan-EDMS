@@ -32,10 +32,10 @@ from .literals import (
     TEXT_SORT_ORDER_VARIABLE_NAME
 )
 from .mixins import (
-    DeleteExtraDataMixin, DownloadMixin, DynamicFormViewMixin,
-    ExternalObjectMixin, ExtraContextMixin, FormExtraKwargsMixin,
-    ListModeMixin, MultipleObjectMixin, ObjectActionMixin, ObjectNameMixin,
-    RedirectionMixin, RestrictedQuerysetMixin, ViewPermissionCheckMixin
+    ExtraDataDeleteViewMixin, DownloadViewMixin, DynamicFormViewMixin,
+    ExternalObjectViewMixin, ExtraContextViewMixin, FormExtraKwargsViewMixin,
+    ListModeViewMixin, MultipleObjectViewMixin, ObjectActionViewMixin, ObjectNameViewMixin,
+    RedirectionViewMixin, RestrictedQuerysetViewMixin, ViewPermissionCheckViewMixin
 )
 
 from .settings import setting_paginate_by
@@ -138,8 +138,8 @@ class MultiFormView(DjangoFormView):
 
 
 class AddRemoveView(
-    ExternalObjectMixin, ExtraContextMixin, ViewPermissionCheckMixin,
-    RestrictedQuerysetMixin, MultiFormView
+    ExternalObjectViewMixin, ExtraContextViewMixin, ViewPermissionCheckViewMixin,
+    RestrictedQuerysetViewMixin, MultiFormView
 ):
     form_classes = {'form_available': ChoiceForm, 'form_added': ChoiceForm}
     list_added_help_text = _(
@@ -389,8 +389,8 @@ class AddRemoveView(
 
 
 class ConfirmView(
-    RestrictedQuerysetMixin, ViewPermissionCheckMixin, ExtraContextMixin,
-    RedirectionMixin, TemplateView
+    RestrictedQuerysetViewMixin, ViewPermissionCheckViewMixin, ExtraContextViewMixin,
+    RedirectionViewMixin, TemplateView
 ):
     template_name = 'appearance/generic_confirm.html'
 
@@ -408,8 +408,8 @@ class ConfirmView(
 
 
 class FormView(
-    ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin,
-    FormExtraKwargsMixin, DjangoFormView
+    ViewPermissionCheckViewMixin, ExtraContextViewMixin, RedirectionViewMixin,
+    FormExtraKwargsViewMixin, DjangoFormView
 ):
     template_name = 'appearance/generic_form.html'
 
@@ -419,9 +419,9 @@ class DynamicFormView(DynamicFormViewMixin, FormView):
 
 
 class MultipleObjectFormActionView(
-    ExtraContextMixin, ObjectActionMixin, ViewPermissionCheckMixin,
-    RestrictedQuerysetMixin, MultipleObjectMixin, FormExtraKwargsMixin,
-    RedirectionMixin, DjangoFormView
+    ExtraContextViewMixin, ObjectActionViewMixin, ViewPermissionCheckViewMixin,
+    RestrictedQuerysetViewMixin, MultipleObjectViewMixin, FormExtraKwargsViewMixin,
+    RedirectionViewMixin, DjangoFormView
 ):
     """
     This view will present a form and upon receiving a POST request will
@@ -455,8 +455,8 @@ class MultipleObjectFormActionView(
 
 
 class MultipleObjectConfirmActionView(
-    ExtraContextMixin, ObjectActionMixin, ViewPermissionCheckMixin,
-    RestrictedQuerysetMixin, MultipleObjectMixin, RedirectionMixin, TemplateView
+    ExtraContextViewMixin, ObjectActionViewMixin, ViewPermissionCheckViewMixin,
+    RestrictedQuerysetViewMixin, MultipleObjectViewMixin, RedirectionViewMixin, TemplateView
 ):
     template_name = 'appearance/generic_confirm.html'
 
@@ -485,15 +485,15 @@ class MultipleObjectConfirmActionView(
         return HttpResponseRedirect(redirect_to=self.get_success_url())
 
 
-class SimpleView(ViewPermissionCheckMixin, ExtraContextMixin, TemplateView):
+class SimpleView(ViewPermissionCheckViewMixin, ExtraContextViewMixin, TemplateView):
     """
     Basic template view class with permission check and extra context
     """
 
 
 class SingleObjectCreateView(
-    ObjectNameMixin, ViewPermissionCheckMixin, ExtraContextMixin,
-    RedirectionMixin, FormExtraKwargsMixin, CreateView
+    ObjectNameViewMixin, ViewPermissionCheckViewMixin, ExtraContextViewMixin,
+    RedirectionViewMixin, FormExtraKwargsViewMixin, CreateView
 ):
     error_message_duplicate = None
     template_name = 'appearance/generic_form.html'
@@ -561,8 +561,8 @@ class SingleObjectCreateView(
 
 
 class SingleObjectDeleteView(
-    ObjectNameMixin, DeleteExtraDataMixin, ViewPermissionCheckMixin,
-    RestrictedQuerysetMixin, ExtraContextMixin, RedirectionMixin, DeleteView
+    ObjectNameViewMixin, ExtraDataDeleteViewMixin, ViewPermissionCheckViewMixin,
+    RestrictedQuerysetViewMixin, ExtraContextViewMixin, RedirectionViewMixin, DeleteView
 ):
     template_name = 'appearance/generic_confirm.html'
 
@@ -618,8 +618,8 @@ class SingleObjectDeleteView(
 
 
 class SingleObjectDetailView(
-    ViewPermissionCheckMixin, RestrictedQuerysetMixin, FormExtraKwargsMixin,
-    ExtraContextMixin, ModelFormMixin, DetailView
+    ViewPermissionCheckViewMixin, RestrictedQuerysetViewMixin, FormExtraKwargsViewMixin,
+    ExtraContextViewMixin, ModelFormMixin, DetailView
 ):
     template_name = 'appearance/generic_form.html'
 
@@ -649,13 +649,13 @@ class SingleObjectDetailView(
             return super().get_queryset()
 
 
-class BaseDownloadView(DownloadMixin, ViewPermissionCheckMixin, View):
+class BaseDownloadView(DownloadViewMixin, ViewPermissionCheckViewMixin, View):
     def get(self, request, *args, **kwargs):
         return self.render_to_response()
 
 
 class SingleObjectDownloadView(
-    RestrictedQuerysetMixin, SingleObjectMixin, BaseDownloadView
+    RestrictedQuerysetViewMixin, SingleObjectMixin, BaseDownloadView
 ):
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()
@@ -671,7 +671,7 @@ class SingleObjectDownloadView(
 
 
 class MultipleObjectDownloadView(
-    RestrictedQuerysetMixin, MultipleObjectMixin, BaseDownloadView
+    RestrictedQuerysetViewMixin, MultipleObjectViewMixin, BaseDownloadView
 ):
     """
     View that support receiving multiple objects via a pk_list query.
@@ -704,8 +704,8 @@ class SingleObjectDynamicFormCreateView(
 
 
 class SingleObjectEditView(
-    ObjectNameMixin, ViewPermissionCheckMixin, RestrictedQuerysetMixin,
-    ExtraContextMixin, FormExtraKwargsMixin, RedirectionMixin, UpdateView
+    ObjectNameViewMixin, ViewPermissionCheckViewMixin, RestrictedQuerysetViewMixin,
+    ExtraContextViewMixin, FormExtraKwargsViewMixin, RedirectionViewMixin, UpdateView
 ):
     template_name = 'appearance/generic_form.html'
 
@@ -765,8 +765,8 @@ class SingleObjectDynamicFormEditView(
 
 
 class SingleObjectListView(
-    ListModeMixin, PaginationMixin, ViewPermissionCheckMixin,
-    RestrictedQuerysetMixin, ExtraContextMixin, RedirectionMixin, ListView
+    ListModeViewMixin, PaginationMixin, ViewPermissionCheckViewMixin,
+    RestrictedQuerysetViewMixin, ExtraContextViewMixin, RedirectionViewMixin, ListView
 ):
     template_name = 'appearance/generic_list.html'
 

@@ -16,7 +16,7 @@ from mayan.apps.views.generics import (
     AddRemoveView, ConfirmView, FormView, SingleObjectCreateView,
     SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
 )
-from mayan.apps.views.mixins import ExternalObjectMixin
+from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from .events import event_index_template_edited
 from .forms import IndexTemplateFilteredForm, IndexTemplateNodeForm
@@ -211,7 +211,7 @@ class SetupIndexDocumentTypesView(AddRemoveView):
 
 
 class SetupIndexTreeTemplateListView(
-    ExternalObjectMixin, SingleObjectListView
+    ExternalObjectViewMixin, SingleObjectListView
 ):
     external_object_class = Index
     external_object_permission = permission_document_indexing_edit
@@ -411,7 +411,7 @@ class IndexInstanceNodeView(DocumentListView):
             return IndexInstanceNode.objects.none()
 
 
-class DocumentIndexNodeListView(ExternalObjectMixin, SingleObjectListView):
+class DocumentIndexNodeListView(ExternalObjectViewMixin, SingleObjectListView):
     """
     Show a list of indexes where the current document can be found
     """

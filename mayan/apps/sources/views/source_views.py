@@ -9,7 +9,7 @@ from mayan.apps.views.generics import (
     ConfirmView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectEditView, SingleObjectListView
 )
-from mayan.apps.views.mixins import ExternalObjectMixin
+from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from ..icons import icon_setup_sources
 from ..links import (
@@ -34,7 +34,7 @@ __all__ = (
 logger = logging.getLogger(name=__name__)
 
 
-class SourceCheckView(ExternalObjectMixin, ConfirmView):
+class SourceCheckView(ExternalObjectViewMixin, ConfirmView):
     """
     Trigger the task_check_interval_source task for a given source to
     test/debug their configuration irrespective of the schedule task setup.
@@ -91,7 +91,7 @@ class SourceCreateView(SingleObjectCreateView):
         )
 
 
-class SourceDeleteView(ExternalObjectMixin, SingleObjectDeleteView):
+class SourceDeleteView(ExternalObjectViewMixin, SingleObjectDeleteView):
     external_object_permission = permission_sources_setup_delete
     external_object_pk_url_kwarg = 'source_id'
     external_object_queryset = Source.objects.select_subclasses()
@@ -112,7 +112,7 @@ class SourceDeleteView(ExternalObjectMixin, SingleObjectDeleteView):
         return self.external_object
 
 
-class SourceEditView(ExternalObjectMixin, SingleObjectEditView):
+class SourceEditView(ExternalObjectViewMixin, SingleObjectEditView):
     external_object_permission = permission_sources_setup_edit
     external_object_pk_url_kwarg = 'source_id'
     external_object_queryset = Source.objects.select_subclasses()
@@ -174,7 +174,7 @@ class SourceListView(SingleObjectListView):
         }
 
 
-class StagingFileDeleteView(ExternalObjectMixin, SingleObjectDeleteView):
+class StagingFileDeleteView(ExternalObjectViewMixin, SingleObjectDeleteView):
     external_object_class = StagingFolderSource
     external_object_permission = permission_staging_file_delete
     external_object_pk_url_kwarg = 'staging_folder_id'

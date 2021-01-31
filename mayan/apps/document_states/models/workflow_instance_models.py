@@ -48,7 +48,9 @@ class WorkflowInstance(models.Model):
     def __str__(self):
         return force_text(s=getattr(self, 'workflow', 'WI'))
 
-    def do_transition(self, transition, comment=None, extra_data=None, user=None):
+    def do_transition(
+        self, transition, comment=None, extra_data=None, user=None
+    ):
         with transaction.atomic():
             try:
                 if transition in self.get_current_state().origin_transitions.all():

@@ -44,7 +44,7 @@ class ContentTypeViewMixin:
         )
 
 
-class DeleteExtraDataMixin:
+class ExtraDataDeleteViewMixin:
     """
     Mixin to populate the extra data needed for delete views
     """
@@ -64,7 +64,7 @@ class DeleteExtraDataMixin:
         return HttpResponseRedirect(redirect_to=success_url)
 
 
-class DownloadMixin:
+class DownloadViewMixin:
     as_attachment = True
 
     def get_as_attachment(self):
@@ -96,23 +96,7 @@ class DynamicFormViewMixin:
         return data
 
 
-class ExtraContextMixin:
-    """
-    Mixin that allows views to pass extra context to the template much easier
-    than overloading .get_context_data().
-    """
-    extra_context = {}
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context.update(self.get_extra_context())
-        return context
-
-    def get_extra_context(self):
-        return self.extra_context
-
-
-class ExternalObjectMixin:
+class ExternalObjectViewMixin:
     """
     Mixin to allow views to load an object with minimal code but with all
     the filtering and configurability possible. This object is often use as
@@ -185,7 +169,9 @@ class ExternalObjectMixin:
         return queryset
 
 
-class ExternalContentTypeObjectMixin(ContentTypeViewMixin, ExternalObjectMixin):
+class ExternalContentTypeObjectViewMixin(
+    ContentTypeViewMixin, ExternalObjectViewMixin
+):
     """
     Mixin to retrieve an external object by content type from the URL pattern.
     """
@@ -197,7 +183,23 @@ class ExternalContentTypeObjectMixin(ContentTypeViewMixin, ExternalObjectMixin):
         return super().get_external_object_queryset()
 
 
-class FormExtraKwargsMixin:
+class ExtraContextViewMixin:
+    """
+    Mixin that allows views to pass extra context to the template much easier
+    than overloading .get_context_data().
+    """
+    extra_context = {}
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context.update(self.get_extra_context())
+        return context
+
+    def get_extra_context(self):
+        return self.extra_context
+
+
+class FormExtraKwargsViewMixin:
     """
     Mixin that allows a view to pass extra keyword arguments to forms
     """
@@ -212,7 +214,7 @@ class FormExtraKwargsMixin:
         return result
 
 
-class ListModeMixin:
+class ListModeViewMixin:
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
@@ -233,7 +235,7 @@ class ListModeMixin:
         return context
 
 
-class MultipleObjectMixin(SingleObjectMixin):
+class MultipleObjectViewMixin(SingleObjectMixin):
     """
     Mixin that allows a view to work on a single or multiple objects. It can
     receive a pk, a slug or a list of IDs via an id_list query.
@@ -340,7 +342,7 @@ class MultipleObjectMixin(SingleObjectMixin):
             return None
 
 
-class ObjectActionMixin:
+class ObjectActionViewMixin:
     """
     Mixin that performs a user action to a queryset
     """
@@ -421,7 +423,7 @@ class ObjectActionMixin:
             self.success_url = success_url
 
 
-class ObjectNameMixin:
+class ObjectNameViewMixin:
     def get_object_name(self, context=None):
         if not context:
             context = self.get_context_data()
@@ -438,7 +440,7 @@ class ObjectNameMixin:
         return object_name
 
 
-class RedirectionMixin:
+class RedirectionViewMixin:
     action_cancel_redirect = None
     next_url = None
     previous_url = None
@@ -494,7 +496,7 @@ class RedirectionMixin:
         return self.success_url or self.get_next_url() or self.get_previous_url()
 
 
-class RestrictedQuerysetMixin:
+class RestrictedQuerysetViewMixin:
     """
     Restrict the view's queryset against a permission via ACL checking.
     Used to restrict the object list of a multiple object view or the source
@@ -535,7 +537,7 @@ class RestrictedQuerysetMixin:
         return self.source_queryset.all()
 
 
-class ViewPermissionCheckMixin:
+class ViewPermissionCheckViewMixin:
     """
     Restrict access to the view based on the user's direct permissions from
     roles. This mixing is used for views whose objects don't support ACLs or

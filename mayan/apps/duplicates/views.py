@@ -9,7 +9,7 @@ from mayan.apps.documents.permissions import (
 )
 from mayan.apps.documents.views.document_views import DocumentListView
 from mayan.apps.views.generics import ConfirmView
-from mayan.apps.views.mixins import ExternalObjectMixin
+from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from .icons import icon_duplicated_document_list
 from .models import DuplicateBackendEntry
@@ -22,7 +22,7 @@ __all__ = (
 logger = logging.getLogger(name=__name__)
 
 
-class DocumentDuplicatesListView(ExternalObjectMixin, DocumentListView):
+class DocumentDuplicatesListView(ExternalObjectViewMixin, DocumentListView):
     external_object_permission = permission_document_view
     external_object_queryset = Document.valid.all()
     external_object_pk_url_kwarg = 'document_id'

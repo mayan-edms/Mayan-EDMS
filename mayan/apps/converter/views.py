@@ -10,7 +10,7 @@ from mayan.apps.views.generics import (
     FormView, MultipleObjectConfirmActionView, SingleObjectCreateView,
     SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
 )
-from mayan.apps.views.mixins import ExternalContentTypeObjectMixin
+from mayan.apps.views.mixins import ExternalContentTypeObjectViewMixin
 
 from .forms import LayerTransformationForm, LayerTransformationSelectForm
 from .icons import icon_asset_list
@@ -129,7 +129,7 @@ class AssetListView(SingleObjectListView):
 
 
 class TransformationCreateView(
-    LayerViewMixin, ExternalContentTypeObjectMixin, SingleObjectCreateView
+    LayerViewMixin, ExternalContentTypeObjectViewMixin, SingleObjectCreateView
 ):
     form_class = LayerTransformationForm
 
@@ -302,7 +302,7 @@ class TransformationEditView(LayerViewMixin, SingleObjectEditView):
 
 
 class TransformationListView(
-    LayerViewMixin, ExternalContentTypeObjectMixin, SingleObjectListView
+    LayerViewMixin, ExternalContentTypeObjectViewMixin, SingleObjectListView
 ):
     def get_external_object_permission(self):
         return self.layer.get_permission(action='view')
@@ -339,7 +339,7 @@ class TransformationListView(
 
 
 class TransformationSelectView(
-    LayerViewMixin, ExternalContentTypeObjectMixin, FormView
+    LayerViewMixin, ExternalContentTypeObjectViewMixin, FormView
 ):
     form_class = LayerTransformationSelectForm
     template_name = 'appearance/generic_form.html'

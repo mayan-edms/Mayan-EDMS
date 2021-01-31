@@ -18,7 +18,7 @@ from mayan.apps.views.generics import (
     FormView, MultipleObjectFormActionView, SingleObjectCreateView,
     SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
 )
-from mayan.apps.views.mixins import ExternalObjectMixin
+from mayan.apps.views.mixins import ExternalObjectViewMixin
 from mayan.apps.views.utils import convert_to_id_list
 
 from .api import save_metadata_list
@@ -35,7 +35,7 @@ from .links import (
     link_metadata_add, link_metadata_multiple_add,
     link_setup_metadata_type_create
 )
-from .mixins import DocumentMetadataSameTypeMixin
+from .mixins import DocumentMetadataSameTypeViewMixin
 from .models import DocumentMetadata, MetadataType
 from .permissions import (
     permission_document_metadata_add, permission_document_metadata_edit,
@@ -46,7 +46,7 @@ from .permissions import (
 
 
 class DocumentMetadataAddView(
-    DocumentMetadataSameTypeMixin, MultipleObjectFormActionView
+    DocumentMetadataSameTypeViewMixin, MultipleObjectFormActionView
 ):
     form_class = DocumentMetadataAddForm
     object_permission = permission_document_metadata_add
@@ -188,7 +188,7 @@ class DocumentMetadataAddView(
 
 
 class DocumentMetadataEditView(
-    DocumentMetadataSameTypeMixin, MultipleObjectFormActionView
+    DocumentMetadataSameTypeViewMixin, MultipleObjectFormActionView
 ):
     form_class = DocumentMetadataFormSet
     object_permission = permission_document_metadata_edit
@@ -347,7 +347,7 @@ class DocumentMetadataEditView(
             )
 
 
-class DocumentMetadataListView(ExternalObjectMixin, SingleObjectListView):
+class DocumentMetadataListView(ExternalObjectViewMixin, SingleObjectListView):
     external_object_permission = permission_document_metadata_view
     external_object_pk_url_kwarg = 'document_id'
     external_object_queryset = Document.valid
@@ -381,7 +381,7 @@ class DocumentMetadataListView(ExternalObjectMixin, SingleObjectListView):
 
 
 class DocumentMetadataRemoveView(
-    DocumentMetadataSameTypeMixin, MultipleObjectFormActionView
+    DocumentMetadataSameTypeViewMixin, MultipleObjectFormActionView
 ):
     form_class = DocumentMetadataRemoveFormSet
     object_permission = permission_document_metadata_remove

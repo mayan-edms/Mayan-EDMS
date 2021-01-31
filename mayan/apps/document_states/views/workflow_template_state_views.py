@@ -8,7 +8,7 @@ from mayan.apps.views.generics import (
     SingleObjectDynamicFormCreateView, SingleObjectDynamicFormEditView,
     SingleObjectEditView, SingleObjectListView
 )
-from mayan.apps.views.mixins import ExternalObjectMixin
+from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from ..classes import WorkflowAction
 from ..forms import (
@@ -25,7 +25,7 @@ from ..permissions import permission_workflow_edit, permission_workflow_view
 
 
 class WorkflowTemplateStateActionCreateView(
-    ExternalObjectMixin, SingleObjectDynamicFormCreateView
+    ExternalObjectViewMixin, SingleObjectDynamicFormCreateView
 ):
     external_object_class = WorkflowState
     external_object_permission = permission_workflow_edit
@@ -150,7 +150,7 @@ class WorkflowTemplateStateActionEditView(SingleObjectDynamicFormEditView):
 
 
 class WorkflowTemplateStateActionListView(
-    ExternalObjectMixin, SingleObjectListView
+    ExternalObjectViewMixin, SingleObjectListView
 ):
     external_object_class = WorkflowState
     external_object_permission = permission_workflow_edit
@@ -186,7 +186,9 @@ class WorkflowTemplateStateActionListView(
         return self.external_object.actions.all()
 
 
-class WorkflowTemplateStateActionSelectionView(ExternalObjectMixin, FormView):
+class WorkflowTemplateStateActionSelectionView(
+    ExternalObjectViewMixin, FormView
+):
     external_object_class = WorkflowState
     external_object_permission = permission_workflow_edit
     external_object_pk_url_kwarg = 'workflow_template_state_id'
@@ -216,7 +218,7 @@ class WorkflowTemplateStateActionSelectionView(ExternalObjectMixin, FormView):
 
 
 class WorkflowTemplateStateCreateView(
-    ExternalObjectMixin, SingleObjectCreateView
+    ExternalObjectViewMixin, SingleObjectCreateView
 ):
     external_object_class = Workflow
     external_object_permission = permission_workflow_edit
@@ -307,7 +309,9 @@ class WorkflowTemplateStateEditView(SingleObjectEditView):
         )
 
 
-class WorkflowTemplateStateListView(ExternalObjectMixin, SingleObjectListView):
+class WorkflowTemplateStateListView(
+    ExternalObjectViewMixin, SingleObjectListView
+):
     external_object_class = Workflow
     external_object_permission = permission_workflow_view
     external_object_pk_url_kwarg = 'workflow_template_id'

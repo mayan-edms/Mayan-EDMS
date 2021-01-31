@@ -5,7 +5,7 @@ from django.utils.translation import ungettext
 from mayan.apps.views.generics import (
     ConfirmView, MultipleObjectConfirmActionView, SingleObjectListView
 )
-from mayan.apps.views.mixins import ContentTypeViewMixin, ExternalObjectMixin
+from mayan.apps.views.mixins import ContentTypeViewMixin, ExternalObjectViewMixin
 
 from .models import Cache
 from .permissions import (
@@ -28,7 +28,7 @@ class CacheListView(SingleObjectListView):
 
 
 class CachePartitionPurgeView(
-    ContentTypeViewMixin, ExternalObjectMixin, ConfirmView
+    ContentTypeViewMixin, ExternalObjectViewMixin, ConfirmView
 ):
     external_object_permission = permission_cache_partition_purge
     external_object_pk_url_kwarg = 'object_id'

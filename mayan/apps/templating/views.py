@@ -8,14 +8,14 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.documents.models import Document
 from mayan.apps.views.generics import FormView
 from mayan.apps.views.http import URL
-from mayan.apps.views.mixins import ExternalObjectMixin
+from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from .classes import Template
 from .forms import DocumentTemplateSandboxForm
 from .permissions import permission_template_sandbox
 
 
-class DocumentTemplateSandboxView(ExternalObjectMixin, FormView):
+class DocumentTemplateSandboxView(ExternalObjectViewMixin, FormView):
     external_object_class = Document
     external_object_permission = permission_template_sandbox
     external_object_pk_url_kwarg = 'document_id'

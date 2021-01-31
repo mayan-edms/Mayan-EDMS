@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.utils.translation import ugettext_lazy as _
 
 
-class DocumentMetadataSameTypeMixin:
+class DocumentMetadataSameTypeViewMixin:
     def dispatch(self, request, *args, **kwargs):
         result = super().dispatch(request=request, *args, **kwargs)
 

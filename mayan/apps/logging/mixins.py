@@ -12,7 +12,7 @@ from .settings import (
 logger = logging.getLogger(name=__name__)
 
 
-class AppConfigLoggingMixin:
+class LoggingAppConfigMixin:
     def ready(self):
         super().ready()
 

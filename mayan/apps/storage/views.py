@@ -7,8 +7,8 @@ from mayan.apps.views.generics import (
 )
 
 from .icons import icon_download_file_list
-from .mixins import ViewMixinRelatedObjectPermission
 from .models import DownloadFile
+from .view_mixins import ViewMixinRelatedObjectPermission
 
 
 class DownloadFileDeleteView(

@@ -59,7 +59,8 @@ def task_launch_workflow_for(document_id, workflow_id):
     workflow = Workflow.objects.get(pk=workflow_id)
 
     logger.info(
-        'Start launching workflow: %d for document: %d', workflow_id, document_id
+        'Start launching workflow: %d for document: %d',
+        workflow_id, document_id
     )
     workflow.launch_for(document=document)
 

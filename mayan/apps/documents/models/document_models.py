@@ -8,7 +8,7 @@ from django.urls import reverse
 from django.utils.timezone import now
 from django.utils.translation import ugettext, ugettext_lazy as _
 
-from mayan.apps.common.mixins import ModelInstanceExtraDataAPIViewMixin
+from mayan.apps.common.model_mixins import ExtraDataModelMixin
 from mayan.apps.common.signals import signal_mayan_pre_save
 from mayan.apps.events.classes import EventManagerSave
 from mayan.apps.events.decorators import method_event
@@ -29,14 +29,14 @@ from ..managers import (
 from ..signals import signal_post_document_type_change
 
 from .document_type_models import DocumentType
-from .mixins import ModelMixinHooks
+from .mixins import HooksModelMixin
 
 __all__ = ('Document', 'DocumentSearchResult',)
 logger = logging.getLogger(name=__name__)
 
 
 class Document(
-    ModelInstanceExtraDataAPIViewMixin, ModelMixinHooks, models.Model
+    ExtraDataModelMixin, HooksModelMixin, models.Model
 ):
     """
     Defines a single document with it's fields and properties

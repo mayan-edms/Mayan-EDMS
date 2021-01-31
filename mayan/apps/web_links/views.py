@@ -15,7 +15,7 @@ from mayan.apps.views.generics import (
     AddRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectEditView, SingleObjectListView
 )
-from mayan.apps.views.mixins import ExternalObjectMixin
+from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from .events import event_web_link_edited
 from .forms import WebLinkForm
@@ -77,7 +77,7 @@ class DocumentTypeWebLinksView(AddRemoveView):
         }
 
 
-class ResolvedWebLinkView(ExternalObjectMixin, RedirectView):
+class ResolvedWebLinkView(ExternalObjectViewMixin, RedirectView):
     external_object_pk_url_kwarg = 'document_id'
     external_object_permission = permission_web_link_instance_view
     external_object_queryset = Document.valid
@@ -155,7 +155,7 @@ class WebLinkListView(SingleObjectListView):
         return WebLink.objects.all()
 
 
-class DocumentWebLinkListView(ExternalObjectMixin, WebLinkListView):
+class DocumentWebLinkListView(ExternalObjectViewMixin, WebLinkListView):
     external_object_permission = permission_web_link_instance_view
     external_object_pk_url_kwarg = 'document_id'
     external_object_queryset = Document.valid

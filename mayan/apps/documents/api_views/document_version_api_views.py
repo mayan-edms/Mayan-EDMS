@@ -7,7 +7,7 @@ from django.views.decorators.cache import cache_control, patch_cache_control
 from rest_framework import status
 
 from mayan.apps.rest_api import generics
-from mayan.apps.rest_api.mixins import ActionAPIViewMixin
+from mayan.apps.rest_api.api_view_mixins import ActionAPIViewMixin
 
 from ..literals import DOCUMENT_IMAGE_TASK_TIMEOUT
 from ..permissions import (

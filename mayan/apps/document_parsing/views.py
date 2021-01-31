@@ -13,7 +13,7 @@ from mayan.apps.views.generics import (
     FormView, MultipleObjectConfirmActionView, SingleObjectDetailView,
     SingleObjectDownloadView, SingleObjectEditView, SingleObjectListView
 )
-from mayan.apps.views.mixins import ExternalObjectMixin
+from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from .forms import DocumentFileContentForm, DocumentFilePageContentForm
 from .models import DocumentFileParseError, DocumentFilePageContent
@@ -114,7 +114,7 @@ class DocumentFilePageContentView(SingleObjectDetailView):
 
 
 class DocumentFileParsingErrorsListView(
-    ExternalObjectMixin, SingleObjectListView
+    ExternalObjectViewMixin, SingleObjectListView
 ):
     external_object_permission = permission_document_file_parse
     external_object_pk_url_kwarg = 'document_file_id'
@@ -173,7 +173,7 @@ class DocumentFileSubmitView(MultipleObjectConfirmActionView):
         instance.submit_for_parsing()
 
 
-class DocumentTypeSettingsEditView(ExternalObjectMixin, SingleObjectEditView):
+class DocumentTypeSettingsEditView(ExternalObjectViewMixin, SingleObjectEditView):
     external_object_class = DocumentType
     external_object_permission = permission_document_type_parsing_setup
     external_object_pk_url_kwarg = 'document_type_id'

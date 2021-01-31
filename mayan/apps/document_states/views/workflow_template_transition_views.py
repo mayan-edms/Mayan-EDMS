@@ -9,7 +9,7 @@ from mayan.apps.views.generics import (
     FormView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectEditView, SingleObjectListView
 )
-from mayan.apps.views.mixins import ExternalObjectMixin
+from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from ..forms import (
     WorkflowTransitionForm, WorkflowTransitionTriggerEventRelationshipFormSet
@@ -24,7 +24,7 @@ from ..permissions import permission_workflow_edit, permission_workflow_view
 
 
 class WorkflowTemplateTransitionCreateView(
-    ExternalObjectMixin, SingleObjectCreateView
+    ExternalObjectViewMixin, SingleObjectCreateView
 ):
     external_object_class = Workflow
     external_object_permission = permission_workflow_edit
@@ -126,7 +126,7 @@ class WorkflowTemplateTransitionEditView(SingleObjectEditView):
 
 
 class WorkflowTemplateTransitionListView(
-    ExternalObjectMixin, SingleObjectListView
+    ExternalObjectViewMixin, SingleObjectListView
 ):
     external_object_class = Workflow
     external_object_permission = permission_workflow_view
@@ -161,7 +161,7 @@ class WorkflowTemplateTransitionListView(
 
 
 class WorkflowTemplateTransitionTriggerEventListView(
-    ExternalObjectMixin, FormView
+    ExternalObjectViewMixin, FormView
 ):
     external_object_class = WorkflowTransition
     external_object_permission = permission_workflow_edit
@@ -237,7 +237,7 @@ class WorkflowTemplateTransitionTriggerEventListView(
 
 
 class WorkflowTemplateTransitionFieldCreateView(
-    ExternalObjectMixin, SingleObjectCreateView
+    ExternalObjectViewMixin, SingleObjectCreateView
 ):
     external_object_class = WorkflowTransition
     external_object_permission = permission_workflow_edit
@@ -340,7 +340,7 @@ class WorkflowTemplateTransitionFieldEditView(SingleObjectEditView):
 
 
 class WorkflowTemplateTransitionFieldListView(
-    ExternalObjectMixin, SingleObjectListView
+    ExternalObjectViewMixin, SingleObjectListView
 ):
     external_object_class = WorkflowTransition
     external_object_permission = permission_workflow_edit

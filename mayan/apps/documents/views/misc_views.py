@@ -2,7 +2,7 @@ from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.views.generics import FormView, SimpleView
-from mayan.apps.views.mixins import ExternalObjectMixin
+from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from ..forms.misc_forms import PrintForm
 from ..literals import PAGE_RANGE_RANGE
@@ -10,7 +10,7 @@ from ..settings import setting_print_width, setting_print_height
 from ..utils import parse_range
 
 
-class PrintFormView(ExternalObjectMixin, FormView):
+class PrintFormView(ExternalObjectViewMixin, FormView):
     external_object_class = None
     external_object_permission = None
     external_object_pk_url_kwarg = None
@@ -45,7 +45,7 @@ class PrintFormView(ExternalObjectMixin, FormView):
         }
 
 
-class DocumentPrintView(ExternalObjectMixin, SimpleView):
+class DocumentPrintView(ExternalObjectViewMixin, SimpleView):
     external_object_class = None
     external_object_permission = None
     external_object_pk_url_kwarg = None

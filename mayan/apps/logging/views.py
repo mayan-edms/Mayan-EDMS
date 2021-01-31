@@ -2,19 +2,23 @@ from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.views.generics import ConfirmView, SingleObjectListView
-from mayan.apps.views.mixins import ExternalContentTypeObjectMixin
+from mayan.apps.views.mixins import ExternalContentTypeObjectViewMixin
 
 from .icons import icon_object_errors
 from .permissions import permission_error_log_view
 
 
-class ObjectErrorLogEntryListClearView(ExternalContentTypeObjectMixin, ConfirmView):
+class ObjectErrorLogEntryListClearView(
+    ExternalContentTypeObjectViewMixin, ConfirmView
+):
     external_object_permission = permission_error_log_view
 
     def get_extra_context(self):
         return {
             'object': self.external_object,
-            'title': _('Clear error log entries for: %s' % self.external_object),
+            'title': _(
+                'Clear error log entries for: %s' % self.external_object
+            ),
         }
 
     def view_action(self):
@@ -25,7 +29,9 @@ class ObjectErrorLogEntryListClearView(ExternalContentTypeObjectMixin, ConfirmVi
         )
 
 
-class ObjectErrorLogEntryListView(ExternalContentTypeObjectMixin, SingleObjectListView):
+class ObjectErrorLogEntryListView(
+    ExternalContentTypeObjectViewMixin, SingleObjectListView
+):
     external_object_permission = permission_error_log_view
 
     def get_extra_context(self):

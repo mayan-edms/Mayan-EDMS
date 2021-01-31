@@ -16,7 +16,7 @@ from mayan.apps.views.generics import (
     SingleObjectDetailView, SingleObjectDownloadView, SingleObjectEditView,
     SingleObjectListView
 )
-from mayan.apps.views.mixins import ExternalObjectMixin
+from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from ..events import event_document_viewed
 from ..forms.document_file_forms import (
@@ -103,7 +103,7 @@ class DocumentFileEditView(SingleObjectEditView):
         )
 
 
-class DocumentFileListView(ExternalObjectMixin, SingleObjectListView):
+class DocumentFileListView(ExternalObjectViewMixin, SingleObjectListView):
     external_object_permission = permission_document_file_view
     external_object_pk_url_kwarg = 'document_id'
     external_object_queryset = Document.valid
@@ -261,7 +261,7 @@ class DocumentFileTransformationsClearView(MultipleObjectConfirmActionView):
             )
 
 
-class DocumentFileTransformationsCloneView(ExternalObjectMixin, FormView):
+class DocumentFileTransformationsCloneView(ExternalObjectViewMixin, FormView):
     external_object_permission = permission_transformation_edit
     external_object_pk_url_kwarg = 'document_file_id'
     external_object_queryset = DocumentFile.valid

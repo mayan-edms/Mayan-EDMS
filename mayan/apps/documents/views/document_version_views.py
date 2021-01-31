@@ -15,7 +15,7 @@ from mayan.apps.views.generics import (
     MultipleObjectDeleteView, SingleObjectCreateView, SingleObjectDetailView,
     SingleObjectEditView, SingleObjectListView
 )
-from mayan.apps.views.mixins import ExternalObjectMixin
+from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from ..events import event_document_viewed
 from ..forms.document_version_forms import (
@@ -42,7 +42,7 @@ __all__ = (
 logger = logging.getLogger(name=__name__)
 
 
-class DocumentVersionActiveView(ExternalObjectMixin, ConfirmView):
+class DocumentVersionActiveView(ExternalObjectViewMixin, ConfirmView):
     external_object_permission = permission_document_version_edit
     external_object_pk_url_kwarg = 'document_version_id'
     external_object_queryset = DocumentVersion.valid
@@ -64,7 +64,7 @@ class DocumentVersionActiveView(ExternalObjectMixin, ConfirmView):
         )
 
 
-class DocumentVersionCreateView(ExternalObjectMixin, SingleObjectCreateView):
+class DocumentVersionCreateView(ExternalObjectViewMixin, SingleObjectCreateView):
     external_object_permission = permission_document_version_create
     external_object_pk_url_kwarg = 'document_id'
     external_object_queryset = Document.valid
@@ -166,7 +166,7 @@ class DocumentVersionExportView(MultipleObjectConfirmActionView):
         )
 
 
-class DocumentVersionListView(ExternalObjectMixin, SingleObjectListView):
+class DocumentVersionListView(ExternalObjectViewMixin, SingleObjectListView):
     external_object_permission = permission_document_version_view
     external_object_pk_url_kwarg = 'document_id'
     external_object_queryset = Document.valid
@@ -298,7 +298,7 @@ class DocumentVersionTransformationsClearView(MultipleObjectConfirmActionView):
             )
 
 
-class DocumentVersionTransformationsCloneView(ExternalObjectMixin, FormView):
+class DocumentVersionTransformationsCloneView(ExternalObjectViewMixin, FormView):
     external_object_permission = permission_transformation_edit
     external_object_pk_url_kwarg = 'document_version_id'
     external_object_queryset = DocumentVersion.valid

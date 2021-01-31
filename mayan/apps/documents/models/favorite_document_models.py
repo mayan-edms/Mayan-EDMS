@@ -5,7 +5,7 @@ from django.db import models
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.mixins import ModelInstanceExtraDataAPIViewMixin
+from mayan.apps.common.model_mixins import ExtraDataModelMixin
 
 from ..managers import FavoriteDocumentManager
 
@@ -15,7 +15,7 @@ __all__ = ('FavoriteDocument',)
 logger = logging.getLogger(name=__name__)
 
 
-class FavoriteDocument(ModelInstanceExtraDataAPIViewMixin, models.Model):
+class FavoriteDocument(ExtraDataModelMixin, models.Model):
     """
     Keeps a list of the favorited documents of a given user.
     """

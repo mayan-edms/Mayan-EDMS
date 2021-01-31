@@ -6,7 +6,7 @@ from django.db import models
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.mixins import ModelInstanceExtraDataAPIViewMixin
+from mayan.apps.common.model_mixins import ExtraDataModelMixin
 from mayan.apps.common.serialization import yaml_load
 from mayan.apps.common.validators import YAMLValidator
 from mayan.apps.events.classes import (
@@ -130,7 +130,7 @@ class WorkflowTransition(models.Model):
         return super().save(*args, **kwargs)
 
 
-class WorkflowTransitionField(ModelInstanceExtraDataAPIViewMixin, models.Model):
+class WorkflowTransitionField(ExtraDataModelMixin, models.Model):
     transition = models.ForeignKey(
         on_delete=models.CASCADE, related_name='fields',
         to=WorkflowTransition, verbose_name=_('Transition')

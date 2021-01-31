@@ -9,7 +9,7 @@ from mayan.apps.acls.models import AccessControlList
 from mayan.apps.documents.models import Document
 from mayan.apps.views.forms import DynamicForm
 from mayan.apps.views.generics import FormView, SingleObjectListView
-from mayan.apps.views.mixins import ExternalObjectMixin
+from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from ..forms import WorkflowInstanceTransitionSelectForm
 from ..icons import icon_workflow_instance_detail, icon_workflow_template_list
@@ -19,7 +19,7 @@ from ..models import WorkflowInstance
 from ..permissions import permission_workflow_view
 
 
-class WorkflowInstanceListView(ExternalObjectMixin, SingleObjectListView):
+class WorkflowInstanceListView(ExternalObjectViewMixin, SingleObjectListView):
     external_object_permission = permission_workflow_view
     external_object_pk_url_kwarg = 'document_id'
     external_object_queryset = Document.valid
@@ -46,7 +46,7 @@ class WorkflowInstanceListView(ExternalObjectMixin, SingleObjectListView):
         return self.external_object.workflows.all()
 
 
-class WorkflowInstanceDetailView(ExternalObjectMixin, SingleObjectListView):
+class WorkflowInstanceDetailView(ExternalObjectViewMixin, SingleObjectListView):
     external_object_permission = permission_workflow_view
     external_object_pk_url_kwarg = 'workflow_instance_id'
     object_permission = permission_workflow_view
@@ -180,7 +180,7 @@ class WorkflowInstanceTransitionExecuteView(FormView):
         )
 
 
-class WorkflowInstanceTransitionSelectView(ExternalObjectMixin, FormView):
+class WorkflowInstanceTransitionSelectView(ExternalObjectViewMixin, FormView):
     external_object_pk_url_kwarg = 'workflow_instance_id'
     external_object_queryset = WorkflowInstance.valid
     form_class = WorkflowInstanceTransitionSelectForm

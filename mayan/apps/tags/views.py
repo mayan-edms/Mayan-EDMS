@@ -14,7 +14,7 @@ from mayan.apps.views.generics import (
     MultipleObjectFormActionView, MultipleObjectConfirmActionView,
     SingleObjectCreateView, SingleObjectEditView, SingleObjectListView
 )
-from mayan.apps.views.mixins import ExternalObjectMixin
+from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from .forms import TagMultipleSelectionForm
 from .icons import icon_menu_tags, icon_document_tag_remove_submit
@@ -230,7 +230,7 @@ class TagListView(SingleObjectListView):
         return Tag.objects.all()
 
 
-class TagDocumentListView(ExternalObjectMixin, DocumentListView):
+class TagDocumentListView(ExternalObjectViewMixin, DocumentListView):
     external_object_class = Tag
     external_object_permission = permission_tag_view
     external_object_pk_url_kwarg = 'tag_id'
@@ -256,7 +256,7 @@ class TagDocumentListView(ExternalObjectMixin, DocumentListView):
         return self.external_object
 
 
-class DocumentTagListView(ExternalObjectMixin, TagListView):
+class DocumentTagListView(ExternalObjectViewMixin, TagListView):
     external_object_permission = permission_tag_view
     external_object_pk_url_kwarg = 'document_id'
     external_object_queryset = Document.valid

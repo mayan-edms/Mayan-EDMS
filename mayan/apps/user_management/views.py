@@ -10,7 +10,7 @@ from mayan.apps.views.generics import (
     SingleObjectCreateView, SingleObjectDeleteView, SingleObjectDetailView,
     SingleObjectEditView, SingleObjectListView
 )
-from mayan.apps.views.mixins import ExternalObjectMixin
+from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from .forms import UserForm
 from .icons import icon_group_setup, icon_user_setup
@@ -307,7 +307,7 @@ class UserListView(SingleObjectListView):
         }
 
 
-class UserOptionsEditView(ExternalObjectMixin, SingleObjectEditView):
+class UserOptionsEditView(ExternalObjectViewMixin, SingleObjectEditView):
     external_object_permission = permission_user_edit
     external_object_pk_url_kwarg = 'user_id'
     external_object_queryset = get_user_queryset()

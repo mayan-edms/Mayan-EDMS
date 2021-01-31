@@ -19,7 +19,7 @@ from mayan.apps.views.generics import (
     AddRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectEditView, SingleObjectListView
 )
-from mayan.apps.views.mixins import ExternalObjectMixin
+from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from .events import event_smart_link_edited
 from .forms import SmartLinkConditionForm, SmartLinkForm
@@ -80,7 +80,7 @@ class DocumentTypeSmartLinksView(AddRemoveView):
         }
 
 
-class ResolvedSmartLinkView(ExternalObjectMixin, DocumentListView):
+class ResolvedSmartLinkView(ExternalObjectViewMixin, DocumentListView):
     external_object_permission = permission_document_view
     external_object_pk_url_kwarg = 'document_id'
     external_object_queryset = Document.valid
@@ -202,7 +202,7 @@ class SmartLinkListView(SingleObjectListView):
         }
 
 
-class DocumentSmartLinkListView(ExternalObjectMixin, SmartLinkListView):
+class DocumentSmartLinkListView(ExternalObjectViewMixin, SmartLinkListView):
     external_object_permission = permission_document_view
     external_object_pk_url_kwarg = 'document_id'
     external_object_queryset = Document.valid
@@ -279,7 +279,7 @@ class SmartLinkEditView(SingleObjectEditView):
         return {'_user': self.request.user}
 
 
-class SmartLinkConditionListView(ExternalObjectMixin, SingleObjectListView):
+class SmartLinkConditionListView(ExternalObjectViewMixin, SingleObjectListView):
     external_object_class = SmartLink
     external_object_permission = permission_smart_link_edit
     external_object_pk_url_kwarg = 'smart_link_id'
@@ -314,7 +314,7 @@ class SmartLinkConditionListView(ExternalObjectMixin, SingleObjectListView):
 
 
 class SmartLinkConditionCreateView(
-    ExternalObjectMixin, SingleObjectCreateView
+    ExternalObjectViewMixin, SingleObjectCreateView
 ):
     external_object_class = SmartLink
     external_object_permission = permission_smart_link_edit

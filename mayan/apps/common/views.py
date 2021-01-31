@@ -7,7 +7,7 @@ from stronghold.views import StrongholdPublicMixin
 
 from mayan.apps.views.generics import ConfirmView, SimpleView
 from mayan.apps.views.mixins import (
-    ExternalContentTypeObjectMixin, ObjectNameMixin
+    ExternalContentTypeObjectViewMixin, ObjectNameViewMixin
 )
 
 from .classes import ModelCopy
@@ -50,7 +50,7 @@ class LicenseView(SimpleView):
     template_name = 'appearance/generic_form.html'
 
 
-class ObjectCopyView(ExternalContentTypeObjectMixin, ObjectNameMixin, ConfirmView):
+class ObjectCopyView(ExternalContentTypeObjectViewMixin, ObjectNameViewMixin, ConfirmView):
     external_object_permission = permission_object_copy
 
     def get_extra_context(self):
