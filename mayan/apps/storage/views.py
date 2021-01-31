@@ -8,11 +8,11 @@ from mayan.apps.views.generics import (
 
 from .icons import icon_download_file_list
 from .models import DownloadFile
-from .view_mixins import ViewMixinRelatedObjectPermission
+from .view_mixins import RelatedObjectPermissionViewMixin
 
 
 class DownloadFileDeleteView(
-    ViewMixinRelatedObjectPermission, MultipleObjectDeleteView
+    RelatedObjectPermissionViewMixin, MultipleObjectDeleteView
 ):
     model = DownloadFile
     pk_url_kwarg = 'download_file_id'
@@ -22,7 +22,7 @@ class DownloadFileDeleteView(
 
 
 class DownloadFileDownloadViewView(
-    ViewMixinRelatedObjectPermission, SingleObjectDownloadView
+    RelatedObjectPermissionViewMixin, SingleObjectDownloadView
 ):
     model = DownloadFile
     pk_url_kwarg = 'download_file_id'
@@ -35,7 +35,7 @@ class DownloadFileDownloadViewView(
 
 
 class DownloadFileListView(
-    ViewMixinRelatedObjectPermission, SingleObjectListView
+    RelatedObjectPermissionViewMixin, SingleObjectListView
 ):
     model = DownloadFile
 
