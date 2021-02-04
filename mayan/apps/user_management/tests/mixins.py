@@ -49,8 +49,20 @@ class GroupAPIViewTestMixin:
 
 
 class GroupTestMixin:
-    def _create_test_group(self):
-        self.test_group = Group.objects.create(name=TEST_GROUP_NAME)
+    def setUp(self):
+        super().setUp()
+        self.test_groups = []
+
+    def _create_test_group(self, add_users=None):
+        total_test_groups = len(self.test_groups)
+        name = '{}_{}'.format(TEST_GROUP_NAME, total_test_groups)
+
+        self.test_group = Group.objects.create(name=name)
+
+        self.test_groups.append(self.test_group)
+
+        for user in add_users or []:
+            self.test_group.user_set.add(user)
 
     def _edit_test_group(self):
         self.test_group.name = TEST_GROUP_NAME_EDITED
@@ -252,6 +264,10 @@ class UserTestCaseMixin:
 
 
 class UserTestMixin:
+    def setUp(self):
+        super().setUp()
+        self.test_users = []
+
     def _create_test_superuser(self):
         self.test_superuser = get_user_model().objects.create_superuser(
             username=TEST_CASE_SUPERUSER_USERNAME,
@@ -270,10 +286,6 @@ class UserTestMixin:
         )
         self.test_user.cleartext_password = TEST_USER_PASSWORD
         self.test_users.append(self.test_user)
-
-    def setUp(self):
-        super().setUp()
-        self.test_users = []
 
 
 class UserViewTestMixin:
