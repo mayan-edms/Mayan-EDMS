@@ -435,7 +435,6 @@ class TempfileCheckTestCasekMixin:
 
 
 class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
-    _test_models = []
     auto_create_test_object = False
     auto_create_test_object_fields = None
     auto_create_test_object_instance_kwargs = None
@@ -449,6 +448,9 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
         super().setUpClass()
 
     def setUp(self):
+        self._test_models = []
+        self.test_objects = []
+
         super().setUp()
 
         if self.auto_create_test_object:
@@ -475,7 +477,9 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
         self, base_class=models.Model, fields=None, model_name=None,
         options=None
     ):
-        self.model_name = model_name or 'TestModel'
+        test_model_count = len(self._test_models)
+        self.model_name = model_name or '{}_{}'.format('TestModel', test_model_count)
+
         self.options = options
         # Obtain the app_config and app_label from the test's module path
         self.app_config = apps.get_containing_app_config(
@@ -511,7 +515,6 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
                 schema_editor.create_model(model=model)
 
         self._test_models.append(model)
-        self.test_model = model
         ContentType.objects.clear_cache()
 
         return model
@@ -522,7 +525,9 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
     ):
         instance_kwargs = instance_kwargs or {}
 
-        self.TestModel = self._create_test_model(fields=fields, model_name=model_name)
+        self.TestModel = self._create_test_model(
+            fields=fields, model_name=model_name
+        )
         self.test_object = self.TestModel.objects.create(**instance_kwargs)
         self._inject_test_object_content_type()
 
@@ -534,6 +539,8 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
                     self.test_permission,
                 )
             )
+
+        self.test_objects.append(self.test_object)
 
     def _get_test_model_meta(self):
         self.db_table = '{}_{}'.format(
