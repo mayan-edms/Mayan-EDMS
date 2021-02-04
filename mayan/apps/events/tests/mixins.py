@@ -1,7 +1,15 @@
 from actstream.models import Action, any_stream
 
-from ..classes import EventTypeNamespace
+from mayan.apps.acls.classes import ModelPermission
+from mayan.apps.permissions.tests.mixins import RoleTestMixin
+from mayan.apps.testing.tests.mixins import TestModelTestCaseMixin
+from mayan.apps.user_management.tests.mixins import GroupTestMixin
+
+from ..classes import (
+    EventModelRegistry, EventTypeNamespace, EventType, ModelEventType
+)
 from ..models import Notification
+from ..permissions import permission_events_view
 
 from .literals import (
     TEST_EVENT_TYPE_LABEL, TEST_EVENT_TYPE_NAME,
@@ -74,7 +82,31 @@ class EventsViewTestMixin:
         )
 
 
-class NotificationTestMixin:
+class NotificationTestMixin(
+    EventTypeTestMixin, GroupTestMixin, RoleTestMixin, TestModelTestCaseMixin
+):
+    def _create_local_test_object(self):
+        super()._create_test_object()
+
+        EventModelRegistry.register(model=self.TestModel)
+
+        ModelEventType.register(
+            event_types=(self.test_event_type,), model=self.TestModel
+        )
+
+        EventType.refresh()
+
+        ModelPermission.register(
+            model=self.TestModel, permissions=(
+                permission_events_view,
+            )
+        )
+
+    def _create_local_test_user(self):
+        self._create_test_user()
+        self._create_test_group(add_users=(self.test_user,))
+        self._create_test_role(add_groups=(self.test_group,))
+
     def _create_test_notification(self):
         self.test_notification = Notification.objects.create(
             user=self._test_case_user, action=Action.objects.first(),

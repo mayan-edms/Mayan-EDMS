@@ -160,7 +160,7 @@ class EventType:
     def refresh(cls):
         for event_type in cls.all():
             # Invalidate cache and recreate store events while repopulating
-            # cache
+            # cache.
             event_type.stored_event_type = None
             event_type.get_stored_event_type()
 
@@ -184,89 +184,97 @@ class EventType:
         ContentType = apps.get_model(
             app_label='contenttypes', model_name='ContentType'
         )
+
+        EventSubscription = apps.get_model(
+            app_label='events', model_name='EventSubscription'
+        )
         Notification = apps.get_model(
             app_label='events', model_name='Notification'
         )
+        ObjectEventSubscription = apps.get_model(
+            app_label='events', model_name='ObjectEventSubscription'
+        )
+        User = get_user_model()
 
         if actor is None and target is None:
             # If the actor and the target are None there is no way to
             # create a new event.
             return
 
-        results = action.send(
+        result = action.send(
             actor or target, actor=actor, verb=self.id,
             action_object=action_object, target=target
+        )[0][1]
+        # The [0][1] means: get the first and only action from the list
+        # and ignore the handler.
+
+        # Create notifications for the actions created by the event committed.
+
+        # Gather the users subscribed globally to the event.
+        user_queryset = User.objects.filter(
+            id__in=EventSubscription.objects.filter(
+                stored_event_type__name=result.verb
+            ).values('user')
         )
 
-        for handler, result in results:
-            if isinstance(result, Action):
-                for user in get_user_model().objects.all():
-                    notification = None
+        # Gather the users subscribed to the target object event.
+        if result.target:
+            user_queryset = user_queryset | User.objects.filter(
+                id__in=ObjectEventSubscription.objects.filter(
+                    content_type=result.target_content_type,
+                    object_id=result.target.pk,
+                    stored_event_type__name=result.verb
+                ).values('user')
+            )
 
-                    if user.event_subscriptions.filter(stored_event_type__name=result.verb).exists():
-                        if result.target:
-                            try:
-                                AccessControlList.objects.check_access(
-                                    obj=result.target,
-                                    permissions=(permission_events_view,),
-                                    user=user
-                                )
-                            except PermissionDenied:
-                                pass
-                            else:
-                                notification, created = Notification.objects.get_or_create(
-                                    action=result, user=user
-                                )
-                        else:
-                            notification, created = Notification.objects.get_or_create(
-                                action=result, user=user
-                            )
+        # Gather the users subscribed to the action object event.
+        if result.action_object:
+            user_queryset = user_queryset | User.objects.filter(
+                id__in=ObjectEventSubscription.objects.filter(
+                    content_type=result.action_object_content_type,
+                    object_id=result.action_object.pk,
+                    stored_event_type__name=result.verb
+                ).values('user')
+            )
 
-                    if result.target:
-                        content_type = ContentType.objects.get_for_model(model=result.target)
+        for user in user_queryset:
+            if result.target:
+                try:
+                    AccessControlList.objects.check_access(
+                        obj=result.target,
+                        permissions=(permission_events_view,),
+                        user=user
+                    )
+                except PermissionDenied:
+                    """
+                    User is subscribed to the event but does
+                    not have permissions for the event's target.
+                    """
+                else:
+                    Notification.objects.create(action=result, user=user)
+                    # Don't check or add any other notification for the
+                    # same user-event-object.
+                    continue
 
-                        relationship = user.object_subscriptions.filter(
-                            content_type=content_type,
-                            object_id=result.target.pk,
-                            stored_event_type__name=result.verb
-                        )
+            if result.action_object:
+                try:
+                    AccessControlList.objects.check_access(
+                        obj=result.action_object,
+                        permissions=(permission_events_view,),
+                        user=user
+                    )
+                except PermissionDenied:
+                    """
+                    User is subscribed to the event but does
+                    not have permissions for the event's action_object.
+                    """
+                else:
+                    Notification.objects.create(action=result, user=user)
+                    # Don't check or add any other notification for the
+                    # same user-event-object.
+                    continue
 
-                        if relationship.exists():
-                            try:
-                                AccessControlList.objects.check_access(
-                                    obj=result.target,
-                                    permissions=(permission_events_view,),
-                                    user=user
-                                )
-                            except PermissionDenied:
-                                pass
-                            else:
-                                notification, created = Notification.objects.get_or_create(
-                                    action=result, user=user
-                                )
-
-                    if not notification and result.action_object:
-                        content_type = ContentType.objects.get_for_model(model=result.action_object)
-
-                        relationship = user.object_subscriptions.filter(
-                            content_type=content_type,
-                            object_id=result.action_object.pk,
-                            stored_event_type__name=result.verb
-                        )
-
-                        if relationship.exists():
-                            try:
-                                AccessControlList.objects.check_access(
-                                    obj=result.action_object,
-                                    permissions=(permission_events_view,),
-                                    user=user
-                                )
-                            except PermissionDenied:
-                                pass
-                            else:
-                                notification, created = Notification.objects.get_or_create(
-                                    action=result, user=user
-                                )
+        return result
 
     def get_stored_event_type(self):
         if not self.stored_event_type:

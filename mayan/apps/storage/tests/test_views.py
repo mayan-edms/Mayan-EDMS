@@ -37,7 +37,7 @@ class DownloadFileViewTestCase(
 
     def test_download_file_no_permission_with_content_object_delete_view(self):
         self._create_test_object()
-        DownloadFile.objects.register_content_object(model=self.test_model)
+        DownloadFile.objects.register_content_object(model=self.TestModel)
         self._create_test_download_file(content_object=self.test_object)
 
         download_file_count = DownloadFile.objects.count()

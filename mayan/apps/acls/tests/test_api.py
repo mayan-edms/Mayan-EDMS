@@ -1,6 +1,5 @@
 from rest_framework import status
 
-from mayan.apps.permissions.tests.literals import TEST_ROLE_LABEL
 from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
 from ..classes import ModelPermission
@@ -97,7 +96,7 @@ class ACLAPIViewTestCase(ACLTestMixin, ACLAPIViewTestMixin, BaseAPITestCase):
             self.test_object_content_type.app_label
         )
         self.assertEqual(
-            response.data['role']['label'], TEST_ROLE_LABEL
+            response.data['role']['label'], self.test_role.label
         )
 
     def test_acl_list_api_view_no_permission(self):

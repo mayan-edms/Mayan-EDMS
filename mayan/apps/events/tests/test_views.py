@@ -52,7 +52,7 @@ class EventsViewTestCase(
 
 
 class NotificationViewTestCase(
-    EventTypeTestMixin, NotificationTestMixin, NotificationViewTestMixin,
+    NotificationTestMixin, NotificationViewTestMixin,
     GenericDocumentViewTestCase
 ):
     auto_upload_test_document = False

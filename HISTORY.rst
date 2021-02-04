@@ -167,3 +167,8 @@
   Musella (@francesco.musella-biztems) for the report.
 - Reorganize mixins. Add a suffix to specify the purpose of the mixin and
   move them to different module when appropriate.
+- Refactored the notification generation for efficiency, scalability and
+  simplicity. Only users subscribed to events are queued for notifications.
+  Content types of event targets and action objects is reused from the action
+  model instead of gathering from inspection. Nested loop removed and lowered
+  to a single loop.
