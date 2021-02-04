@@ -133,8 +133,20 @@ class RoleTestCaseMixin:
 
 
 class RoleTestMixin:
-    def _create_test_role(self):
-        self.test_role = Role.objects.create(label=TEST_ROLE_LABEL)
+    def setUp(self):
+        super().setUp()
+        self.test_roles = []
+
+    def _create_test_role(self, add_groups=None):
+        total_test_roles = len(self.test_roles)
+        label = '{}_{}'.format(TEST_ROLE_LABEL, total_test_roles)
+
+        self.test_role = Role.objects.create(label=label)
+
+        self.test_roles.append(self.test_role)
+
+        for group in add_groups or []:
+            self.test_role.groups.add(group)
 
 
 class RoleViewTestMixin:
