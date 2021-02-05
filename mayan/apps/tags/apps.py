@@ -55,12 +55,18 @@ class TagsApp(MayanAppConfig):
             app_label='documents', model_name='Document'
         )
 
-        #DocumentFilePageResult = apps.get_model(
-        #    app_label='documents', model_name='DocumentFilePageResult'
-        #)
-        #DocumentVersionPageResult = apps.get_model(
-        #    app_label='documents', model_name='DocumentVersionPageResult'
-        #)
+        DocumentFileSearchResult = apps.get_model(
+            app_label='documents', model_name='DocumentFileSearchResult'
+        )
+        DocumentFilePageSearchResult = apps.get_model(
+            app_label='documents', model_name='DocumentFilePageSearchResult'
+        )
+        DocumentVersionSearchResult = apps.get_model(
+            app_label='documents', model_name='DocumentVersionSearchResult'
+        )
+        DocumentVersionPageSearchResult = apps.get_model(
+            app_label='documents', model_name='DocumentVersionPageSearchResult'
+        )
 
         DocumentTag = self.get_model(model_name='DocumentTag')
         Tag = self.get_model(model_name='Tag')
@@ -119,19 +125,31 @@ class TagsApp(MayanAppConfig):
             ), label=_('Tags'), source=Document
         )
 
-        #SourceColumn(
-        #    func=lambda context: widget_document_tags(
-        #        document=context['object'].document,
-        #        user=context['request'].user
-        #    ), label=_('Tags'), source=DocumentVersionPageResult
-        #)
+        SourceColumn(
+            func=lambda context: widget_document_tags(
+                document=context['object'].document,
+                user=context['request'].user
+            ), label=_('Tags'), source=DocumentFileSearchResult
+        )
+        SourceColumn(
+            func=lambda context: widget_document_tags(
+                document=context['object'].document_file.document,
+                user=context['request'].user
+            ), label=_('Tags'), source=DocumentFilePageSearchResult
+        )
 
-        #SourceColumn(
-        #    func=lambda context: widget_document_tags(
-        #        document=context['object'].document,
-        #        user=context['request'].user
-        #    ), label=_('Tags'), source=DocumentFilePageResult
-        #)
+        SourceColumn(
+            func=lambda context: widget_document_tags(
+                document=context['object'].document,
+                user=context['request'].user
+            ), label=_('Tags'), source=DocumentVersionSearchResult
+        )
+        SourceColumn(
+            func=lambda context: widget_document_tags(
+                document=context['object'].document_version.document,
+                user=context['request'].user
+            ), label=_('Tags'), source=DocumentVersionPageSearchResult
+        )
 
         SourceColumn(
             attribute='label', is_identifier=True, is_sortable=True,
