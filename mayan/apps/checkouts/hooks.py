@@ -3,7 +3,7 @@ from django.apps import apps
 from .exceptions import DocumentNotCheckedOut, NewDocumentFileNotAllowed
 
 
-def hook_is_new_file_allowed(instance, kwargs=None):#, document=None):
+def hook_is_new_file_allowed(instance, kwargs=None):
     DocumentCheckout = apps.get_model(
         app_label='checkouts', model_name='DocumentCheckout'
     )

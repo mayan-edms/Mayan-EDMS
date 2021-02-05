@@ -1,7 +1,6 @@
 import logging
 
 from django.apps import apps
-from django.db import transaction
 
 from mayan.apps.common.classes import PropertyHelper
 

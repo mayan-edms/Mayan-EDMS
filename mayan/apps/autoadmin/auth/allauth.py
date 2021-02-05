@@ -7,7 +7,6 @@ except ImportError:
     print('ERROR: This authentication adapter requires django-allauth.')
     raise
 
-from django.conf import settings
 from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
 

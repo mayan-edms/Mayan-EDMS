@@ -16,12 +16,12 @@ link_quota_create = Link(
     text=_('Create quota'), view='quotas:quota_backend_selection'
 )
 link_quota_delete = Link(
-    icon=icon_quota_delete,  args='resolved_object.pk',
+    args='resolved_object.pk', icon=icon_quota_delete,
     permissions=(permission_quota_delete,), tags='dangerous',
     text=_('Delete'), view='quotas:quota_delete'
 )
 link_quota_edit = Link(
-    icon=icon_quota_edit, args='object.pk',
+    args='object.pk', icon=icon_quota_edit,
     permissions=(permission_quota_edit,), text=_('Edit'),
     view='quotas:quota_edit'
 )

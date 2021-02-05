@@ -212,7 +212,6 @@ class DocumentVersionViewTestCase(
         self.assertEqual(event, None)
 
 
-
 class DocumentVersionExportViewTestCase(
     DocumentVersionTestMixin, DocumentVersionViewTestMixin,
     GenericTransactionDocumentViewTestCase

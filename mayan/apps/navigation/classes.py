@@ -663,22 +663,6 @@ class SourceColumn:
 
         final_result = []
 
-        try:
-            request = context.request
-        except AttributeError:
-            # Simple request extraction failed. Might not be a view context.
-            # Try alternate method.
-            try:
-                request = Variable('request').resolve(context)
-            except VariableDoesNotExist:
-                # There is no request variable, most probable a 500 in a test
-                # view. Don't return any resolved request.
-                logger.warning(
-                    'No request variable, aborting request resolution'
-                )
-                return result
-
-        current_view_name = get_current_view_name(request=request)
         for column in columns:
             final_result.append(column)
 

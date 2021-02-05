@@ -7,9 +7,6 @@ from whoosh.filedb.filestore import FileStorage
 from whoosh.index import EmptyIndexError
 
 from django.conf import settings
-from django.db import models
-
-from colorful.fields import RGBColorField
 
 from mayan.apps.lock_manager.backends.base import LockingBackend
 from mayan.apps.lock_manager.exceptions import LockError

@@ -27,8 +27,6 @@ from .mixins import (
 )
 
 
-
-
 class SignaturesViewTestCase(
     KeyTestMixin, SignatureTestMixin, SignatureViewTestMixin,
     GenericDocumentViewTestCase

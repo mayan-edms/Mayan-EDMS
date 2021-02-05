@@ -178,13 +178,6 @@ class EventType:
         AccessControlList = apps.get_model(
             app_label='acls', model_name='AccessControlList'
         )
-        Action = apps.get_model(
-            app_label='actstream', model_name='Action'
-        )
-        ContentType = apps.get_model(
-            app_label='contenttypes', model_name='ContentType'
-        )
-
         EventSubscription = apps.get_model(
             app_label='events', model_name='EventSubscription'
         )
