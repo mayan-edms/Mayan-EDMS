@@ -535,7 +535,7 @@ class DocumentsApp(MayanAppConfig):
             func=lambda context: thumbnail_widget.render(
                 instance=context['object']
             ), html_extra_classes='text-center document-thumbnail-list',
-            label=_('Thumbnail'), source=Document
+            label=_('Thumbnail'), order=-99, source=Document
         )
 
         ########
