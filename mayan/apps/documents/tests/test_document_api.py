@@ -304,7 +304,7 @@ class DocumentAPIViewTestCase(
         self.assertEqual(
             self.test_document.label, self.test_document.file_latest.filename
         )
-        self.assertEqual(self.test_document.page_count, 1)
+        self.assertEqual(self.test_document.pages.count(), 1)
 
         self.assertEqual(self.test_document.files.count(), 1)
         self.assertEqual(self.test_document.file_latest.exists(), True)

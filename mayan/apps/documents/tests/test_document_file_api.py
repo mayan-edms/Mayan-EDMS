@@ -213,7 +213,7 @@ class DocumentFileAPIViewTestCase(
             self.test_document.file_latest.checksum,
             'efa10e6cc21f83078aaa94d5cbe51de67b51af706143bafc7fd6d4c02124879a'
         )
-        self.assertEqual(self.test_document.page_count, 1)
+        self.assertEqual(self.test_document.pages.count(), 1)
 
         event = self._get_test_object_event()
         self.assertEqual(event.actor, self._test_case_user)

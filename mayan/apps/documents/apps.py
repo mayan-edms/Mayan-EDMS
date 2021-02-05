@@ -196,10 +196,7 @@ from .permissions import (
 )
 
 from .statistics import *  # NOQA
-from .widgets import (
-    ThumbnailWidget, widget_document_file_page_number,
-    widget_document_page_number, widget_document_version_page_number
-)
+from .widgets import ThumbnailWidget
 
 
 class DocumentsApp(MayanAppConfig):
@@ -543,16 +540,16 @@ class DocumentsApp(MayanAppConfig):
         ##TODO:REMOVE
         #######
         SourceColumn(
-            func=lambda context: 'Files: {}'.format(context['object'].files.count()),
-            label=_('Files'), source=Document
+            func=lambda context: context['object'].files.count(),
+            include_label=True, label=_('Files'), source=Document
         )
         SourceColumn(
-            func=lambda context: 'Versions: {}'.format(context['object'].versions.count()),
-            label=_('Versions'), source=Document
+            func=lambda context: context['object'].versions.count(),
+            include_label=True, label=_('Versions'), source=Document
         )
         SourceColumn(
             func=lambda context: context['object'].is_stub,
-            label=_('Is stub'), source=Document
+            include_label=True, label=_('Is stub'), source=Document
         )
 
         ###########
@@ -562,12 +559,11 @@ class DocumentsApp(MayanAppConfig):
 
         SourceColumn(
             attribute='document_type', include_label=True, is_sortable=True,
-            label=_('Type'), source=Document,
+            label=_('Type'), order=-9, source=Document,
         )
         SourceColumn(
-            func=lambda context: widget_document_page_number(
-                document=context['object']
-            ), label=_('Pages'), source=Document
+            func=lambda context: context['object'].pages.count(),
+            label=_('Pages'), include_label=True, order=-8, source=Document
         )
 
         # RecentlyCreatedDocument
@@ -587,21 +583,24 @@ class DocumentsApp(MayanAppConfig):
             func=lambda context: thumbnail_widget.render(
                 instance=context['object']
             ), html_extra_classes='text-center document-thumbnail-list',
-            label=_('Thumbnail'), source=DocumentFile
+            label=_('Thumbnail'), order=-99, source=DocumentFile
         )
         SourceColumn(
-            func=lambda context: widget_document_file_page_number(
-                document_file=context['object']
-            ), label=_('Pages'), source=DocumentFile
+            func=lambda context: context['object'].pages.count(),
+            include_label=True, label=_('Pages'), order=-6,
+            source=DocumentFile
         )
         SourceColumn(
-            attribute='mimetype', is_sortable=True, source=DocumentFile
+            attribute='comment', is_sortable=True, order=-7,
+            source=DocumentFile
         )
         SourceColumn(
-            attribute='encoding', is_sortable=True, source=DocumentFile
+            attribute='encoding', include_label=True, is_sortable=True,
+            order=-8, source=DocumentFile
         )
         SourceColumn(
-            attribute='comment', is_sortable=True, source=DocumentFile
+            attribute='mimetype', include_label=True, is_sortable=True,
+            order=-9, source=DocumentFile
         )
 
         # DocumentFilePage
@@ -614,7 +613,7 @@ class DocumentsApp(MayanAppConfig):
             func=lambda context: thumbnail_widget.render(
                 instance=context['object']
             ), html_extra_classes='text-center document-thumbnail-list',
-            label=_('Thumbnail'), source=DocumentFilePage
+            label=_('Thumbnail'), order=-99, source=DocumentFilePage
         )
 
         # DocumentType
@@ -649,20 +648,20 @@ class DocumentsApp(MayanAppConfig):
             func=lambda context: thumbnail_widget.render(
                 instance=context['object']
             ), html_extra_classes='text-center document-thumbnail-list',
-            label=_('Thumbnail'), source=DocumentVersion
+            label=_('Thumbnail'), order=-99, source=DocumentVersion
         )
         SourceColumn(
-            func=lambda context: widget_document_version_page_number(
-                document_version=context['object']
-            ), label=_('Pages'), source=DocumentVersion
+            func=lambda context: context['object'].pages.count(),
+            include_label=True, label=_('Pages'), order=-8,
+            source=DocumentVersion
         )
         SourceColumn(
             attribute='active', include_label=True, is_sortable=True,
-            source=DocumentVersion, widget=TwoStateWidget
+            order=-9, source=DocumentVersion, widget=TwoStateWidget
         )
         SourceColumn(
             attribute='comment', include_label=True, is_sortable=True,
-            source=DocumentVersion
+            order=-7, source=DocumentVersion
         )
 
         # DocumentVersionPage
@@ -675,7 +674,7 @@ class DocumentsApp(MayanAppConfig):
             func=lambda context: thumbnail_widget.render(
                 instance=context['object']
             ), html_extra_classes='text-center document-thumbnail-list',
-            label=_('Thumbnail'), source=DocumentVersionPage
+            label=_('Thumbnail'), order=-99, source=DocumentVersionPage
         )
 
         # TrashedDocument

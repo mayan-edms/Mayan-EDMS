@@ -373,7 +373,7 @@ class WatchFolderTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
         self.assertEqual(document.file_latest.mimetype, 'image/png')
         self.assertEqual(document.file_latest.encoding, 'binary')
         self.assertEqual(document.label, TEST_SMALL_DOCUMENT_FILENAME)
-        self.assertEqual(document.file_latest.page_count, 1)
+        self.assertEqual(document.file_latest.pages.count(), 1)
 
     def test_issue_gh_163(self):
         """
@@ -396,7 +396,7 @@ class WatchFolderTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
         self.assertEqual(document.file_latest.mimetype, 'image/png')
         self.assertEqual(document.file_latest.encoding, 'binary')
         self.assertEqual(document.label, TEST_NON_ASCII_DOCUMENT_FILENAME)
-        self.assertEqual(document.file_latest.page_count, 1)
+        self.assertEqual(document.file_latest.pages.count(), 1)
 
     def test_issue_gh_163_expanded(self):
         """
@@ -418,7 +418,7 @@ class WatchFolderTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
         self.assertEqual(document.file_latest.mimetype, 'image/png')
         self.assertEqual(document.file_latest.encoding, 'binary')
         self.assertEqual(document.label, TEST_NON_ASCII_DOCUMENT_FILENAME)
-        self.assertEqual(document.file_latest.page_count, 1)
+        self.assertEqual(document.file_latest.pages.count(), 1)
 
     def test_locking_support(self):
         self._create_test_watchfolder()

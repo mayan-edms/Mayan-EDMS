@@ -160,13 +160,6 @@ class DocumentVersion(ExtraDataModelMixin, models.Model):
         return self.document.is_in_trash
 
     @property
-    def page_count(self):
-        """
-        The number of pages that the document posses.
-        """
-        return self.pages.count()
-
-    @property
     def page_content_objects(self):
         result = []
         for page in self.pages.all():

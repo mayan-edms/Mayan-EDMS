@@ -358,13 +358,6 @@ class DocumentFile(
             else:
                 return file_object
 
-    @property
-    def page_count(self):
-        """
-        The number of pages that the document posses.
-        """
-        return self.pages.count()
-
     def page_count_update(self, save=True):
         try:
             with self.open() as file_object:

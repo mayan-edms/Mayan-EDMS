@@ -34,7 +34,7 @@ class DocumentTestCase(GenericDocumentTestCase):
             self.test_document.file_latest.checksum,
             TEST_SMALL_DOCUMENT_CHECKSUM
         )
-        self.assertEqual(self.test_document.file_latest.page_count, 1)
+        self.assertEqual(self.test_document.file_latest.pages.count(), 1)
         self.assertEqual(
             self.test_document.label, TEST_SMALL_DOCUMENT_FILENAME
         )

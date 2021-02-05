@@ -274,10 +274,6 @@ class Document(
     natural_key.dependencies = ['documents.DocumentType']
 
     @property
-    def page_count(self):
-        return self.pages.count()
-
-    @property
     def pages(self):
         try:
             return self.version_active.pages
