@@ -248,8 +248,6 @@ class SearchModel(AppsModuleLoaderMixin):
             }
         )
 
-        self.__class__._registry['{}.{}'.format(app_label, model_name)] = self
-
     def get_fields_simple_list(self):
         """
         Returns a list of the fields for the SearchModel
