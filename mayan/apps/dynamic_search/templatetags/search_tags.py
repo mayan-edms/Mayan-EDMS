@@ -7,6 +7,11 @@ register = Library()
 
 
 @register.simple_tag
+def search_get_default_search_model():
+    return SearchModel.get_default()
+
+
+@register.simple_tag
 def search_get_search_models():
     return SearchModel.all()
 

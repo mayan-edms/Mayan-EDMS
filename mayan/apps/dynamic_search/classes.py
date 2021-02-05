@@ -175,15 +175,21 @@ class SearchModel(AppsModuleLoaderMixin):
         return result
 
     @classmethod
+    def get_default(cls):
+        for search_class in cls.all():
+            if search_class.default:
+                return search_class
+
+    @classmethod
     def get_for_model(cls, instance):
         return cls.get(name=instance._meta.label)
 
     def __init__(
-        self, app_label, model_name, serializer_path, label=None,
-        list_mode=None, permission=None, queryset=None,
+        self, app_label, model_name, serializer_path, default=False,
+        label=None, list_mode=None, permission=None, queryset=None
     ):
+        self.default = default
         self._label = label
-        #self._model = None  # Lazy
         self.app_label = app_label
         self.list_mode = list_mode or LIST_MODE_CHOICE_LIST
         self.model_name = model_name
@@ -192,6 +198,11 @@ class SearchModel(AppsModuleLoaderMixin):
         self.queryset = queryset
         self.search_fields = []
         self.serializer_path = serializer_path
+
+        if default:
+            for search_class in self.__class__._registry.values():
+                search_class.default = False
+
         self.__class__._registry[self.get_full_name()] = self
 
     def __repr__(self):

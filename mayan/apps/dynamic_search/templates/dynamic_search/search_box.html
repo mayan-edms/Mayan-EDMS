@@ -6,6 +6,8 @@
 {% search_get_search_models as search_models %}
 {% smart_setting global_name="SEARCH_DISABLE_SIMPLE_SEARCH" as setting_disable_simple_search %}
 
+{% search_get_default_search_model  as default_search_model %}
+
 {% if setting_disable_simple_search %}
 <div class="row">
 <div class="col-xs-6 col-xs-offset-3">
@@ -23,7 +25,7 @@
                     <select class="form-control" id="selectSearchModel" name="_search_model_name">
                         {% for search_model in search_models %}
                         {{ search_model.self.get_full_name }}
-                            <option {% if search_model.get_full_name == 'documents.Document' %}selected{% endif %} value="{{ search_model.get_full_name }}">{{ search_model }}</option>
+                            <option {% if search_model.get_full_name == default_search_model.get_full_name %}selected{% endif %} value="{{ search_model.get_full_name }}">{{ search_model }}</option>
                         {% endfor %}
                     </select>
                 </div>

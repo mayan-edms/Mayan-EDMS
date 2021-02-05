@@ -176,3 +176,6 @@
   types. Ensure columns are not repeated when resolved even if they were
   defined multiple times. Improve docstring for the resolution logic in each
   level. Remove unused ``context`` parameter. Add SourceColumn tests.
+- Support defining the default ``SearchModel``. This allows removing the hard
+  coded search model name from the search template and allows third party
+  apps to define their own default ``SearchModel``.
