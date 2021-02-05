@@ -20,7 +20,7 @@ def transformation_format_uuid(term_string):
 # Document
 
 document_search = SearchModel(
-    app_label='documents', label=_('Document'),
+    app_label='documents', default=True, label=_('Document'),
     list_mode=LIST_MODE_CHOICE_ITEM, model_name='DocumentSearchResult',
     permission=permission_document_view,
     serializer_path='mayan.apps.documents.serializers.document_serializers.DocumentSerializer'
