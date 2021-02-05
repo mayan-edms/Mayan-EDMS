@@ -106,7 +106,7 @@ class Link:
             try:
                 resolved_object = Variable('object').resolve(context=context)
             except VariableDoesNotExist:
-                pass
+                """No object variable in the context"""
 
         # If this link has a required permission check that the user has it
         # too
@@ -604,9 +604,12 @@ class SourceColumn:
         return sorted(columns, key=lambda x: x.order)
 
     @classmethod
-    def get_for_source(cls, context, source, exclude_identifier=False, only_identifier=False):
-        columns = []
-
+    def get_for_source(
+        cls, source, exclude_identifier=False, only_identifier=False
+    ):
+        # Process columns as a set to avoid duplicate resolved column
+        # detection code.
+        columns = set()
         source_classes = set()
 
         if hasattr(source, '_meta'):
@@ -615,58 +618,74 @@ class SourceColumn:
             source_classes.add(source)
 
         try:
-            columns.extend(cls._registry[source])
+            primary_model_columns = cls._registry[source]
         except KeyError:
-            pass
+            """Primary model has no columns."""
+            try:
+                # Might be an instance, try its class.
+                # Works for model instances and custom class instances.
+                primary_model_instance_columns = cls._registry[source.__class__]
+            except KeyError:
+                # Might be a subclass, try its super classes.
+                for super_class in source.__class__.__mro__[1:-1]:
+                    columns.update(cls._registry.get(super_class, ()))
+            else:
+                columns.update(primary_model_instance_columns)
+
+        else:
+            columns.update(primary_model_columns)
 
         try:
-            # Might be an instance, try its class
-            columns.extend(cls._registry[source.__class__])
-        except KeyError:
-            # Might be a subclass, try its root class
-            for parent_class in source.__class__.__mro__[1:-1]:
-                columns.extend(cls._registry.get(parent_class, ()))
-        try:
-            # Might be an inherited class instance, try its source class
-            columns.extend(cls._registry[source.source_ptr.__class__])
+            # Might be an related class instance, try its parent class.
+            parent_class_columns = cls._registry[source.source_ptr.__class__]
         except (KeyError, AttributeError):
-            pass
+            """The parent class has no columns."""
+        else:
+            columns.update(parent_class_columns)
 
         try:
-            # Try it as a queryset
-            columns.extend(cls._registry[source.model])
-        except AttributeError:
+            # Try it as a queryset.
+            queryset_model_columns = cls._registry[source.model]
+        except (AttributeError, KeyError):
+            """Is not a queryset model or queryset model has no columns."""
             try:
                 # Special case for queryset items produced from
-                # .defer() or .only() optimizations
-                result = cls._registry[list(source._meta.parents.items())[0][0]]
+                # .defer() or .only() optimizations.
+                queryset_model_columns = cls._registry[list(source._meta.parents.items())[0][0]]
             except (AttributeError, KeyError, IndexError):
-                pass
+                """Queryset model has no columns."""
             else:
-                # Second level special case for model subclasses from
-                # .defer and .only querysets
-                # Examples: Workflow runtime proxy and index instances in 3.2.x
-                for column in result:
-                    if not source_classes.intersection(set(column.exclude)):
-                        columns.append(column)
-
-        columns = SourceColumn.sort(columns=columns)
+                columns.update(queryset_model_columns)
+        else:
+            columns.update(queryset_model_columns)
 
         if exclude_identifier:
             columns = [column for column in columns if not column.is_identifier]
         else:
+            # exclude_identifier and only_identifier and mutually exclusive.
             if only_identifier:
                 for column in columns:
                     if column.is_identifier:
                         return column
+
+                # There is no column with the identifier marker.
                 return None
 
-        final_result = []
-
+        # Move filtering outside of the queryset area to work for all kind of
+        # objects and to avoid filtering when only_identifier is used.
+        filtered_columns = set()
         for column in columns:
-            final_result.append(column)
+            # Make sure the column has not been excluded for proxies.
+            # Examples: Workflow runtime proxy and index instances in 3.2.x
+            if not source_classes.intersection(column.exclude):
+                filtered_columns.add(column)
 
-        return final_result
+        # Sort columns by their `order` attribute and return as a list.
+        # Keep sorting as the very last operation to sort only was is really
+        # needed.
+        columns = SourceColumn.sort(columns=filtered_columns)
+
+        return columns
 
     def __init__(
         self, source, attribute=None, empty_value=None, func=None,
@@ -681,7 +700,7 @@ class SourceColumn:
         self.source = source
         self.attribute = attribute
         self.empty_value = empty_value
-        self.exclude = ()
+        self.exclude = set()
         self.func = func
         self.html_extra_classes = html_extra_classes
         self.is_attribute_absolute_url = is_attribute_absolute_url
@@ -763,7 +782,7 @@ class SourceColumn:
         self.label = self._label
 
     def add_exclude(self, source):
-        self.exclude = self.exclude + (source,)
+        self.exclude.add(source)
 
     def check_widget_condition(self, context):
         if self.widget_condition:

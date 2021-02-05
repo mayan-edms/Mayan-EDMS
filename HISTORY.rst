@@ -172,3 +172,7 @@
   Content types of event targets and action objects is reused from the action
   model instead of gathering from inspection. Nested loop removed and lowered
   to a single loop.
+- Optimize SourceColumn resolution. Support column exclusion for all object
+  types. Ensure columns are not repeated when resolved even if they were
+  defined multiple times. Improve docstring for the resolution logic in each
+  level. Remove unused ``context`` parameter. Add SourceColumn tests.

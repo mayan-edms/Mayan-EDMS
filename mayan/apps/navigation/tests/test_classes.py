@@ -7,8 +7,9 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.permissions import Permission, PermissionNamespace
 from mayan.apps.testing.literals import TEST_VIEW_NAME
 from mayan.apps.testing.tests.base import GenericViewTestCase
+from mayan.apps.testing.tests.mixins import TestModelTestCaseMixin
 
-from ..classes import Link, Menu
+from ..classes import Link, Menu, SourceColumn
 
 from .literals import (
     TEST_PERMISSION_NAMESPACE_NAME, TEST_PERMISSION_NAMESPACE_TEXT,
@@ -202,3 +203,71 @@ class MenuClassTestCase(GenericViewTestCase):
         self.menu.unbind_links(links=(self.sub_menu,))
 
         self.assertEqual(self.menu.resolve(context=context), [])
+
+
+class SourceColumnClassTestCase(TestModelTestCaseMixin, GenericViewTestCase):
+    def setUp(self):
+        super().setUp()
+
+        self._create_test_object()
+
+    def test_get_for_source_for_model_proxies_no_columns(self):
+        TestModelProxy = self._create_test_model(
+            base_class=self.TestModel, options={'proxy': True}
+        )
+
+        test_model_proxy = TestModelProxy.objects.create()
+
+        columns = SourceColumn.get_for_source(source=test_model_proxy)
+
+        self.assertEqual(len(columns), 0)
+
+    def test_get_for_source_for_model_proxies_with_columns(self):
+        SourceColumn(
+            attribute='__str__', source=self.TestModel
+        )
+
+        TestModelProxy = self._create_test_model(
+            base_class=self.TestModel, options={'proxy': True}
+        )
+
+        test_model_proxy = TestModelProxy.objects.create()
+
+        columns = SourceColumn.get_for_source(source=test_model_proxy)
+
+        self.assertEqual(len(columns), 1)
+
+    def test_get_for_source_for_model_proxies_and_exclude_with_columns(self):
+        column = SourceColumn(
+            attribute='__str__', source=self.TestModel
+        )
+
+        TestModelProxy = self._create_test_model(
+            base_class=self.TestModel, options={'proxy': True}
+        )
+
+        column.add_exclude(source=TestModelProxy)
+
+        test_model_proxy = TestModelProxy.objects.create()
+
+        columns = SourceColumn.get_for_source(source=test_model_proxy)
+
+        self.assertEqual(len(columns), 0)
+
+    def test_get_for_source_for_querysets_no_columns(self):
+        columns = SourceColumn.get_for_source(
+            source=self.TestModel.objects.all()
+        )
+
+        self.assertEqual(len(columns), 0)
+
+    def test_get_for_source_for_querysets_with_columns(self):
+        SourceColumn(
+            attribute='__str__', source=self.TestModel
+        )
+
+        columns = SourceColumn.get_for_source(
+            source=self.TestModel.objects.all()
+        )
+
+        self.assertEqual(len(columns), 1)
