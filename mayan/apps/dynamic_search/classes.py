@@ -157,7 +157,9 @@ class SearchModel(AppsModuleLoaderMixin):
 
     @classmethod
     def all(cls):
-        return sorted(list(cls._registry.values()), key=lambda x: x.label)
+        return sorted(
+            list(set(cls._registry.values())), key=lambda x: x.label
+        )
 
     @classmethod
     def as_choices(cls):
@@ -247,6 +249,8 @@ class SearchModel(AppsModuleLoaderMixin):
                 'app_label': app_label, 'model_name': model_name
             }
         )
+
+        self.__class__._registry['{}.{}'.format(app_label, model_name)] = self
 
     def get_fields_simple_list(self):
         """
