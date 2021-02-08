@@ -1,5 +1,4 @@
 import hashlib
-import time
 
 from mayan.apps.django_gpg.tests.literals import (
     TEST_KEY_PRIVATE_PASSPHRASE, TEST_KEY_PUBLIC_ID
@@ -300,11 +299,6 @@ class EmbeddedSignaturesTestCase(
             signed_file = self.test_document.file_new(
                 file_object=file_object, comment=''
             )
-
-        # Artifical delay since MySQL doesn't store microsecond data in
-        # timestamps. File timestamp is used to determine which file
-        # is the latest.
-        time.sleep(1)
 
         self.assertEqual(EmbeddedSignature.objects.count(), 1)
 

@@ -3,6 +3,7 @@ import importlib
 import logging
 import os
 import random
+import time
 
 from furl import furl
 from selenium.webdriver.firefox.options import Options
@@ -155,6 +156,11 @@ class ContentTypeTestCaseMixin:
             'model_name': self.test_object_content_type.model,
             'object_id': self.test_object.pk
         }
+
+
+class DelayTestCaseMixin:
+    def _test_delay(self, seconds=0.1):
+        time.sleep(seconds)
 
 
 class DownloadTestCaseMixin:

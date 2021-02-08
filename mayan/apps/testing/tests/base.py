@@ -9,15 +9,15 @@ from mayan.apps.user_management.tests.mixins import UserTestMixin
 
 from .mixins import (
     ClientMethodsTestCaseMixin, ConnectionsCheckTestCaseMixin,
-    ContentTypeCheckTestCaseMixin, DownloadTestCaseMixin, ModelTestCaseMixin,
-    OpenFileCheckTestCaseMixin, RandomPrimaryKeyModelMonkeyPatchMixin,
-    SilenceLoggerTestCaseMixin, TempfileCheckTestCasekMixin,
-    TestViewTestCaseMixin
+    ContentTypeCheckTestCaseMixin, DelayTestCaseMixin, DownloadTestCaseMixin,
+    ModelTestCaseMixin, OpenFileCheckTestCaseMixin,
+    RandomPrimaryKeyModelMonkeyPatchMixin, SilenceLoggerTestCaseMixin,
+    TempfileCheckTestCasekMixin, TestViewTestCaseMixin
 )
 
 
 class BaseTestCaseMixin(
-    LayerTestCaseMixin, SilenceLoggerTestCaseMixin,
+    DelayTestCaseMixin, LayerTestCaseMixin, SilenceLoggerTestCaseMixin,
     ConnectionsCheckTestCaseMixin, DownloadTestCaseMixin,
     EventTestCaseMixin, RandomPrimaryKeyModelMonkeyPatchMixin,
     ACLTestCaseMixin, ModelTestCaseMixin, OpenFileCheckTestCaseMixin,

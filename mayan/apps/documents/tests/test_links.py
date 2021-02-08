@@ -1,5 +1,3 @@
-import time
-
 from django.urls import reverse
 
 from ..links.document_file_links import (
@@ -13,13 +11,13 @@ from ..permissions import (
 )
 
 from .base import GenericDocumentViewTestCase
-from .literals import TEST_SMALL_DOCUMENT_PATH
 
 
 class DocumentsLinksTestCase(GenericDocumentViewTestCase):
     def test_document_file_delete_link_no_permission(self):
-        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-            self.test_document.file_new(file_object=file_object)
+        self._upload_test_document_file()
+        #with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+        #    self.test_document.file_new(file_object=file_object)
 
         self.assertTrue(self.test_document.files.count(), 2)
 
@@ -30,12 +28,10 @@ class DocumentsLinksTestCase(GenericDocumentViewTestCase):
         self.assertEqual(resolved_link, None)
 
     def test_document_file_delete_link_with_permission(self):
-        # Needed by MySQL as milliseconds value is not store in timestamp
-        # field
-        time.sleep(1.01)
+        self._upload_test_document_file()
 
-        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-            self.test_document.file_new(file_object=file_object)
+        #with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+        #    self.test_document.file_new(file_object=file_object)
 
         self.assertTrue(self.test_document.files.count(), 2)
 

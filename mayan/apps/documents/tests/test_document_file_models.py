@@ -1,5 +1,3 @@
-import time
-
 from .base import GenericDocumentTestCase
 from .literals import TEST_SMALL_DOCUMENT_CHECKSUM
 
@@ -19,10 +17,6 @@ class DocumentFileTestCase(GenericDocumentTestCase):
 
     def test_file_delete(self):
         self.assertEqual(self.test_document.files.count(), 1)
-
-        # Needed by MySQL as milliseconds value is not store in timestamp
-        # field
-        time.sleep(1.01)
 
         self._upload_test_document_file()
 

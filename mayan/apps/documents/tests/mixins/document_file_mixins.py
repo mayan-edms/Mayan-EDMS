@@ -1,5 +1,3 @@
-import time
-
 from django.db.models import Q
 
 from mayan.apps.converter.layers import layer_saved_transformations
@@ -47,11 +45,6 @@ class DocumentFileAPIViewTestMixin:
         )
 
     def _request_test_document_file_upload_api_view(self):
-        # Artificial delay since MySQL doesn't store microsecond data in
-        # timestamps. File timestamp is used to determine which file
-        # is the latest.
-        time.sleep(1)
-
         pk_list = list(DocumentFile.objects.values_list('pk', flat=True))
 
         with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_descriptor:

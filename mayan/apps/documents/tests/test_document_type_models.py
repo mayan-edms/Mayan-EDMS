@@ -1,5 +1,3 @@
-import time
-
 from ..models import TrashedDocument, Document, DocumentType
 
 from .base import GenericDocumentTestCase
@@ -16,9 +14,7 @@ class DocumentTypeDeletionPoliciesTestCase(GenericDocumentTestCase):
         self.test_document_type.trash_time_unit = 'seconds'
         self.test_document_type.save()
 
-        # Needed by MySQL as milliseconds value is not store in timestamp
-        # field
-        time.sleep(1.01)
+        self._test_delay(seconds=1.01)
 
         self.assertEqual(Document.valid.count(), 1)
         self.assertEqual(TrashedDocument.objects.count(), 0)
@@ -46,9 +42,7 @@ class DocumentTypeDeletionPoliciesTestCase(GenericDocumentTestCase):
         self.assertEqual(Document.valid.count(), 0)
         self.assertEqual(TrashedDocument.objects.count(), 1)
 
-        # Needed by MySQL as milliseconds value is not stored in timestamp
-        # field
-        time.sleep(1.01)
+        self._test_delay(seconds=1.01)
 
         DocumentType.objects.check_delete_periods()
 
