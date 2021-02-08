@@ -79,6 +79,7 @@ from .handlers import (
     handler_create_document_file_page_image_cache,
     handler_create_document_version_page_image_cache
 )
+from .html_widgets import ThumbnailWidget
 from .links.document_links import (
     link_document_type_change, link_document_properties_edit,
     link_document_list, link_document_recently_accessed_list,
@@ -196,7 +197,6 @@ from .permissions import (
 )
 
 from .statistics import *  # NOQA
-from .widgets import ThumbnailWidget
 
 
 class DocumentsApp(MayanAppConfig):
@@ -517,9 +517,9 @@ class DocumentsApp(MayanAppConfig):
             field_name='document'
         )
 
-        # Document file and document file page thumbnail widget
-        # Document version and document version page thumbnail widget
-        thumbnail_widget = ThumbnailWidget()
+        ## Document file and document file page thumbnail widget
+        ## Document version and document version page thumbnail widget
+        #thumbnail_widget = ThumbnailWidget()
 
         # Document
 
@@ -529,10 +529,13 @@ class DocumentsApp(MayanAppConfig):
             source=Document
         )
         SourceColumn(
-            func=lambda context: thumbnail_widget.render(
-                instance=context['object']
-            ), html_extra_classes='text-center document-thumbnail-list',
-            label=_('Thumbnail'), order=-99, source=Document
+            #func=lambda context: thumbnail_widget.render(
+            #    instance=context['object']
+            #), html_extra_classes='text-center document-thumbnail-list',
+            #),
+            html_extra_classes='text-center document-thumbnail-list',
+            label=_('Thumbnail'), order=-99, source=Document,
+            widget=ThumbnailWidget
         )
 
         ########
@@ -580,10 +583,9 @@ class DocumentsApp(MayanAppConfig):
             is_object_absolute_url=True
         )
         SourceColumn(
-            func=lambda context: thumbnail_widget.render(
-                instance=context['object']
-            ), html_extra_classes='text-center document-thumbnail-list',
-            label=_('Thumbnail'), order=-99, source=DocumentFile
+            html_extra_classes='text-center document-thumbnail-list',
+            label=_('Thumbnail'), order=-99, source=DocumentFile,
+            widget=ThumbnailWidget
         )
         SourceColumn(
             func=lambda context: context['object'].pages.count(),
@@ -610,10 +612,9 @@ class DocumentsApp(MayanAppConfig):
             is_object_absolute_url=True, source=DocumentFilePage,
         )
         SourceColumn(
-            func=lambda context: thumbnail_widget.render(
-                instance=context['object']
-            ), html_extra_classes='text-center document-thumbnail-list',
-            label=_('Thumbnail'), order=-99, source=DocumentFilePage
+            html_extra_classes='text-center document-thumbnail-list',
+            label=_('Thumbnail'), order=-99, source=DocumentFilePage,
+            widget=ThumbnailWidget
         )
 
         # DocumentType
@@ -645,10 +646,9 @@ class DocumentsApp(MayanAppConfig):
             is_object_absolute_url=True
         )
         SourceColumn(
-            func=lambda context: thumbnail_widget.render(
-                instance=context['object']
-            ), html_extra_classes='text-center document-thumbnail-list',
-            label=_('Thumbnail'), order=-99, source=DocumentVersion
+            html_extra_classes='text-center document-thumbnail-list',
+            label=_('Thumbnail'), order=-99, source=DocumentVersion,
+            widget=ThumbnailWidget
         )
         SourceColumn(
             func=lambda context: context['object'].pages.count(),
@@ -671,10 +671,9 @@ class DocumentsApp(MayanAppConfig):
             is_object_absolute_url=True, source=DocumentVersionPage,
         )
         SourceColumn(
-            func=lambda context: thumbnail_widget.render(
-                instance=context['object']
-            ), html_extra_classes='text-center document-thumbnail-list',
-            label=_('Thumbnail'), order=-99, source=DocumentVersionPage
+            html_extra_classes='text-center document-thumbnail-list',
+            label=_('Thumbnail'), order=-99, source=DocumentVersionPage,
+            widget=ThumbnailWidget
         )
 
         # TrashedDocument

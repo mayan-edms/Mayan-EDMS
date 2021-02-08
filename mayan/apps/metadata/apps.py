@@ -36,7 +36,7 @@ from .handlers import (
     handler_post_document_type_metadata_type_delete,
     handler_post_document_type_change_metadata
 )
-from .html_widgets import widget_document_metadata
+from .html_widgets import DocumentMetadataWidget
 from .links import (
     link_metadata_add, link_metadata_edit, link_metadata_multiple_add,
     link_metadata_multiple_edit, link_metadata_multiple_remove,
@@ -70,12 +70,19 @@ class MetadataApp(MayanAppConfig):
         Document = apps.get_model(
             app_label='documents', model_name='Document'
         )
-        #DocumentFilePageResult = apps.get_model(
-        #    app_label='documents', model_name='DocumentFilePageResult'
-        #)
-        #DocumentVersionPageResult = apps.get_model(
-        #    app_label='documents', model_name='DocumentVersionPageResult'
-        #)
+        DocumentFileSearchResult = apps.get_model(
+            app_label='documents', model_name='DocumentFileSearchResult'
+        )
+        DocumentFilePageSearchResult = apps.get_model(
+            app_label='documents', model_name='DocumentFilePageSearchResult'
+        )
+        DocumentVersionSearchResult = apps.get_model(
+            app_label='documents', model_name='DocumentVersionSearchResult'
+        )
+        DocumentVersionPageSearchResult = apps.get_model(
+            app_label='documents',
+            model_name='DocumentVersionPageSearchResult'
+        )
 
         DocumentType = apps.get_model(
             app_label='documents', model_name='DocumentType'
@@ -175,21 +182,39 @@ class MetadataApp(MayanAppConfig):
         )
 
         model_query_fields_document = ModelQueryFields(model=Document)
-        model_query_fields_document.add_prefetch_related_field(field_name='metadata')
+        model_query_fields_document.add_prefetch_related_field(
+            field_name='metadata'
+        )
 
         SourceColumn(
             source=Document, label=_('Metadata'),
-            func=widget_document_metadata
+            widget=DocumentMetadataWidget
         )
 
-        #SourceColumn(
-        #    source=DocumentFilePageResult, label=_('Metadata'),
-        #    func=widget_document_metadata
-        #)
-        #SourceColumn(
-        #    source=DocumentVersionPageResult, label=_('Metadata'),
-        #    func=widget_document_metadata
-        #)
+        SourceColumn(
+            source=DocumentFileSearchResult, label=_('Metadata'),
+            widget=DocumentMetadataWidget, widget_kwargs={
+                'attribute': 'document'
+            }
+        )
+        SourceColumn(
+            source=DocumentFilePageSearchResult, label=_('Metadata'),
+            widget=DocumentMetadataWidget, widget_kwargs={
+                'attribute': 'document_file.document'
+            }
+        )
+        SourceColumn(
+            source=DocumentVersionSearchResult, label=_('Metadata'),
+            widget=DocumentMetadataWidget, widget_kwargs={
+                'attribute': 'document'
+            }
+        )
+        SourceColumn(
+            source=DocumentVersionPageSearchResult, label=_('Metadata'),
+            widget=DocumentMetadataWidget, widget_kwargs={
+                'attribute': 'document_version.document'
+            }
+        )
 
         SourceColumn(
             attribute='metadata_type', is_identifier=True,

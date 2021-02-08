@@ -213,8 +213,7 @@ class UserManagementApp(MayanAppConfig):
         )
         SourceColumn(
             attribute='is_active', include_label=True, is_sortable=True,
-            source=User,
-            widget=TwoStateWidget
+            source=User, widget=TwoStateWidget
         )
         SourceColumn(
             attribute='has_usable_password', include_label=True, source=User,

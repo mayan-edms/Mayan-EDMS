@@ -1,7 +1,5 @@
 from django import forms
 from django.template.loader import render_to_string
-from django.utils.safestring import mark_safe
-from django.utils.translation import ugettext_lazy as _
 
 from .settings import (
     setting_display_width, setting_display_height, setting_preview_width,
@@ -36,23 +34,6 @@ class CarouselWidget(forms.widgets.Widget):
 
 class DocumentFilePagesCarouselWidget(CarouselWidget):
     target_view = 'documents:document_file_page_view'
-
-
-class ThumbnailWidget:
-    def render(self, instance):
-        return render_to_string(
-            template_name='documents/widgets/thumbnail.html',
-            context={
-                # Disable the clickable link if the document is in the trash
-                'disable_title_link': instance.is_in_trash,
-                'gallery_name': 'document_list',
-                'instance': instance,
-                'size_preview_width': setting_preview_width.value,
-                'size_preview_height': setting_preview_height.value,
-                'size_thumbnail_width': setting_thumbnail_width.value,
-                'size_thumbnail_height': setting_thumbnail_height.value,
-            }
-        )
 
 
 class ThumbnailFormWidget(forms.widgets.Widget):
@@ -99,9 +80,3 @@ class PageImageWidget(forms.widgets.Widget):
         if value == '' or value is None:
             return None
         return value
-
-
-def document_link(document):
-    return mark_safe('<a href="%s">%s</a>' % (
-        document.get_absolute_url(), document)
-    )

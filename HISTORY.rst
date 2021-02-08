@@ -182,3 +182,5 @@
 - Update MySQL Docker image from version 5.7 to 8.0. PostreSQL image from version
   10.14 to 10.15. Redis image from version 5.0 to 6.0.
 - Move time delays from test and into its own test mixin. Remove MySQL test delays.
+- Standardize a class for the widgets of the class ``SourceColumn`` named
+  ``SourceColumnWidget``.

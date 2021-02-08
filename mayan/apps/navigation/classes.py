@@ -609,7 +609,7 @@ class SourceColumn:
     ):
         # Process columns as a set to avoid duplicate resolved column
         # detection code.
-        columns = set()
+        columns = []
         source_classes = set()
 
         if hasattr(source, '_meta'):
@@ -628,12 +628,12 @@ class SourceColumn:
             except KeyError:
                 # Might be a subclass, try its super classes.
                 for super_class in source.__class__.__mro__[1:-1]:
-                    columns.update(cls._registry.get(super_class, ()))
+                    columns.extend(cls._registry.get(super_class, ()))
             else:
-                columns.update(primary_model_instance_columns)
+                columns.extend(primary_model_instance_columns)
 
         else:
-            columns.update(primary_model_columns)
+            columns.extend(primary_model_columns)
 
         try:
             # Might be an related class instance, try its parent class.
@@ -641,7 +641,7 @@ class SourceColumn:
         except (KeyError, AttributeError):
             """The parent class has no columns."""
         else:
-            columns.update(parent_class_columns)
+            columns.extend(parent_class_columns)
 
         try:
             # Try it as a queryset.
@@ -655,9 +655,9 @@ class SourceColumn:
             except (AttributeError, KeyError, IndexError):
                 """Queryset model has no columns."""
             else:
-                columns.update(queryset_model_columns)
+                columns.extend(queryset_model_columns)
         else:
-            columns.update(queryset_model_columns)
+            columns.extend(queryset_model_columns)
 
         if exclude_identifier:
             columns = [column for column in columns if not column.is_identifier]
@@ -674,10 +674,11 @@ class SourceColumn:
         # Move filtering outside of the queryset area to work for all kind of
         # objects and to avoid filtering when only_identifier is used.
         filtered_columns = set()
-        for column in columns:
+        for column_index, column in enumerate(iterable=columns, start=100):
             # Make sure the column has not been excluded for proxies.
             # Examples: Workflow runtime proxy and index instances in 3.2.x
             if not source_classes.intersection(column.exclude):
+                column.order = column.order or column_index
                 filtered_columns.add(column)
 
         # Sort columns by their `order` attribute and return as a list.
@@ -693,7 +694,7 @@ class SourceColumn:
         is_attribute_absolute_url=False, is_object_absolute_url=False,
         is_identifier=False, is_sortable=False, kwargs=None, label=None,
         order=None, sort_field=None, widget=None,
-        widget_condition=None
+        widget_condition=None, widget_kwargs=None
     ):
         self._label = label
         self._help_text = help_text
@@ -712,6 +713,7 @@ class SourceColumn:
         self.order = order or 0
         self.sort_field = sort_field
         self.widget = widget
+        self.widget_kwargs = widget_kwargs or {}
         self.widget_condition = widget_condition
 
         if self.is_attribute_absolute_url or self.is_object_absolute_url:
@@ -843,9 +845,15 @@ class SourceColumn:
         self.absolute_url = self.get_absolute_url(obj=context['object'])
         if self.widget:
             if self.check_widget_condition(context=context):
-                widget_instance = self.widget()
-                widget_instance.column = self
-                return widget_instance.render(name=self.attribute, value=result)
+                widget_instance = self.widget(
+                    column=self, request=context['request'],
+                    **self.widget_kwargs
+                )
+                #widget_instance.column = self
+                return widget_instance.render(
+                    #name=self.attribute, value=result
+                    value=result
+                )
 
         if not result:
             if self.empty_value:

@@ -119,12 +119,6 @@ class DocumentVersionPageListRemapView(ExternalObjectViewMixin, FormView):
     external_object_pk_url_kwarg = 'document_version_id'
     external_object_queryset = DocumentVersion.valid
     form_class = DocumentVersionPageMappingFormSet
-    #success_message = _(
-    #    'Metadata edit request performed on %(count)d document'
-    #)
-    #success_message_plural = _(
-    #    'Metadata edit request performed on %(count)d documents'
-    #)
 
     def form_valid(self, form):
         annotated_content_object_list = []
