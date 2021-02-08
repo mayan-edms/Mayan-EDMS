@@ -16,8 +16,6 @@ from .base import GenericDocumentViewTestCase
 class DocumentsLinksTestCase(GenericDocumentViewTestCase):
     def test_document_file_delete_link_no_permission(self):
         self._upload_test_document_file()
-        #with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-        #    self.test_document.file_new(file_object=file_object)
 
         self.assertTrue(self.test_document.files.count(), 2)
 
@@ -29,9 +27,6 @@ class DocumentsLinksTestCase(GenericDocumentViewTestCase):
 
     def test_document_file_delete_link_with_permission(self):
         self._upload_test_document_file()
-
-        #with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-        #    self.test_document.file_new(file_object=file_object)
 
         self.assertTrue(self.test_document.files.count(), 2)
 
