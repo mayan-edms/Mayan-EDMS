@@ -28,7 +28,7 @@ class ChartJSLine(ChartRenderer):
         labels = []
         datasets = []
 
-        for count, serie in enumerate(self.data['series'].items()):
+        for count, serie in enumerate(iterable=self.data['series'].items()):
             series_name, series_data = serie
             dataset_labels = []
             dataset_values = []

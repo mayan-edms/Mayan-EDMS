@@ -156,7 +156,7 @@ class IndexFilesystem(LoggingMixIn, Operations):
                     else:
                         return Document.valid.get(pk=document_pk)
 
-            for count, part in enumerate(parts[1:]):
+            for count, part in enumerate(iterable=parts[1:]):
                 try:
                     node = IndexFilesystem._clean_queryset(
                         queryset=node.get_children(),

@@ -61,12 +61,18 @@ class CabinetsApp(MayanAppConfig):
             app_label='documents', model_name='Document'
         )
         DocumentCabinet = self.get_model(model_name='DocumentCabinet')
-        #DocumentFilePageResult = apps.get_model(
-        #    app_label='documents', model_name='DocumentFilePageResult'
-        #)
-        #DocumentVersionPageResult = apps.get_model(
-        #    app_label='documents', model_name='DocumentVersionPageResult'
-        #)
+        DocumentFileSearchResult = apps.get_model(
+            app_label='documents', model_name='DocumentFileSearchResult'
+        )
+        DocumentFilePageSearchResult = apps.get_model(
+            app_label='documents', model_name='DocumentFilePageSearchResult'
+        )
+        DocumentVersionSearchResult = apps.get_model(
+            app_label='documents', model_name='DocumentVersionPageSearchResult'
+        )
+        DocumentVersionPageSearchResult = apps.get_model(
+            app_label='documents', model_name='DocumentVersionSearchResult'
+        )
 
         # Add explicit order_by as DocumentCabinet ordering Meta option has no
         # effect.

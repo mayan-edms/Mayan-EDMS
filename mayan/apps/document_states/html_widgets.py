@@ -1,4 +1,3 @@
-from django.template.loader import render_to_string
 from django.utils.html import format_html_join
 
 from mayan.apps.navigation.html_widgets import SourceColumnWidget

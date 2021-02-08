@@ -849,11 +849,7 @@ class SourceColumn:
                     column=self, request=context['request'],
                     **self.widget_kwargs
                 )
-                #widget_instance.column = self
-                return widget_instance.render(
-                    #name=self.attribute, value=result
-                    value=result
-                )
+                return widget_instance.render(value=result)
 
         if not result:
             if self.empty_value:

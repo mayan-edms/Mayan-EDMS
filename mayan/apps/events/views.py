@@ -101,7 +101,7 @@ class EventTypeSubscriptionListView(FormView):
         # index number. Then sort the query set by the custom sort index
         # field.
         when_list = []
-        for sort_index, event_type_id in enumerate(event_type_ids):
+        for sort_index, event_type_id in enumerate(iterable=event_type_ids):
             when_list.append(models.When(name=event_type_id, then=sort_index))
 
         queryset = self.submodel.objects.filter(name__in=event_type_ids)
