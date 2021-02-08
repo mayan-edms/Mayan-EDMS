@@ -179,3 +179,5 @@
 - Support defining the default ``SearchModel``. This allows removing the hard
   coded search model name from the search template and allows third party
   apps to define their own default ``SearchModel``.
+- Update MySQL Docker image from version 5.7 to 8.0. PostreSQL image from version
+  10.14 to 10.15. Redis image from version 5.0 to 6.0.
