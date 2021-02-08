@@ -201,6 +201,7 @@ Issues closed
 - :gitlab-issue:`777` feature request: cleanup scanned document
 - :gitlab-issue:`853` Remove parent class and self reference from super() calls
 - :gitlab-issue:`733` Feature: Draft versions of documents
+- :gitlab-issue:`859` Convert DocumentTypeFilteredSelectForm to use generic FilteredSelectionForm
 - :gitlab-issue:`865` Possible bug: Adding a new version of a document via scanner
 - :gitlab-issue:`867` Rename document comment model "comment" field to "text"
 - :gitlab-issue:`929` COMMON_EXTRA_APPS env variable not doing anything
