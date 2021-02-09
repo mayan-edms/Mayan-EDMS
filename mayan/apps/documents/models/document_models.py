@@ -1,4 +1,5 @@
 import logging
+from pathlib import Path
 import uuid
 
 from django.apps import apps
@@ -183,7 +184,8 @@ class Document(
         return self.files.order_by('timestamp').last()
 
     def file_new(
-        self, file_object, action=None, comment=None, filename=None, _user=None
+        self, file_object, action=None, comment=None, filename=None,
+        _user=None
     ):
         logger.info('Creating new document file for document: %s', self)
 
@@ -200,7 +202,7 @@ class Document(
         try:
             document_file = DocumentFile(
                 document=self, comment=comment, file=File(file=file_object),
-                filename=filename or file_object.name
+                filename=filename or Path(file_object.name).name
             )
             document_file._event_actor = _user
             document_file.save()

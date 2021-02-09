@@ -36,7 +36,10 @@ def task_document_stubs_delete():
 
 # Document file
 
-@app.task(bind=True, default_retry_delay=UPDATE_PAGE_COUNT_RETRY_DELAY, ignore_result=True)
+@app.task(
+    bind=True, default_retry_delay=UPDATE_PAGE_COUNT_RETRY_DELAY,
+    ignore_result=True
+)
 def task_document_file_page_count_update(self, document_file_id):
     DocumentFile = apps.get_model(
         app_label='documents', model_name='DocumentFile'
@@ -86,8 +89,14 @@ def task_document_file_page_image_generate(
         raise self.retry(exc=exception)
 
 
-@app.task(bind=True, default_retry_delay=UPLOAD_NEW_VERSION_RETRY_DELAY, ignore_result=True)
-def task_document_file_upload(self, document_id, shared_uploaded_file_id, user_id, action=None, comment=None, filename=None):
+@app.task(
+    bind=True, default_retry_delay=UPLOAD_NEW_VERSION_RETRY_DELAY,
+    ignore_result=True
+)
+def task_document_file_upload(
+    self, document_id, shared_uploaded_file_id, user_id, action=None,
+    comment=None, filename=None
+):
     Document = apps.get_model(
         app_label='documents', model_name='Document'
     )

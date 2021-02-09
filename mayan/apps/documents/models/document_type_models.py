@@ -162,7 +162,7 @@ class DocumentType(ExtraDataModelMixin, models.Model):
         else:
             try:
                 document_file = document.file_new(
-                    file_object=file_object, _user=_user
+                    file_object=file_object, filename=label, _user=_user
                 )
             except Exception as exception:
                 logger.critical(
