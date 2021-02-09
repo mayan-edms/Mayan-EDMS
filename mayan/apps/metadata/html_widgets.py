@@ -1,6 +1,6 @@
 from django.apps import apps
+from django.core.exceptions import PermissionDenied
 
-from mayan.apps.common.utils import resolve_attribute
 from mayan.apps.navigation.html_widgets import SourceColumnWidget
 
 from .permissions import permission_document_metadata_view
@@ -22,17 +22,18 @@ class DocumentMetadataWidget(SourceColumnWidget):
             app_label='acls', model_name='AccessControlList'
         )
 
-        if self.attribute:
-            attribute = resolve_attribute(
-                obj=self.value, attribute=self.attribute
+        try:
+            AccessControlList.objects.check_access(
+                obj=self.value,
+                permissions=(permission_document_metadata_view,),
+                user=self.request.user
             )
+        except PermissionDenied:
+            queryset = self.value.metadata.none()
         else:
-            attribute = self.value
-
-        queryset = AccessControlList.objects.restrict_queryset(
-            queryset=attribute.metadata.all(),
-            permission=permission_document_metadata_view,
-            user=self.request.user
-        )
+            queryset = self.value.get_metadata(
+                permission=permission_document_metadata_view,
+                user=self.request.user
+            )
 
         return {'queryset': queryset}

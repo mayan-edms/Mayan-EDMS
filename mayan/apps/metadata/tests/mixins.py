@@ -291,11 +291,18 @@ class MetadataTypeTestMixin:
             ]
         )
 
-    def _create_test_metadata_type(self):
+    def _create_test_metadata_type(
+        self, add_test_document_type=False, required=False
+    ):
         self.test_metadata_type = MetadataType.objects.create(
             **self.test_metadata_types_fixtures_models.pop()
         )
         self.test_metadata_types.append(self.test_metadata_type)
+
+        if add_test_document_type:
+            self.test_document_type.metadata.create(
+                metadata_type=self.test_metadata_type, required=required
+            )
 
 
 class MetadataTypeViewTestMixin:

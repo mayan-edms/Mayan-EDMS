@@ -45,6 +45,7 @@ from .links import (
     link_setup_metadata_type_delete, link_setup_metadata_type_document_types,
     link_setup_metadata_type_edit, link_setup_metadata_type_list,
 )
+from .methods import method_document_get_metadata
 from .permissions import (
     permission_document_metadata_add, permission_document_metadata_edit,
     permission_document_metadata_remove, permission_document_metadata_view,
@@ -96,6 +97,9 @@ class MetadataApp(MayanAppConfig):
 
         Document.add_to_class(
             name='metadata_value_of', value=DocumentMetadataHelper.constructor
+        )
+        Document.add_to_class(
+            name='get_metadata', value=method_document_get_metadata
         )
 
         EventModelRegistry.register(model=MetadataType)
@@ -192,28 +196,22 @@ class MetadataApp(MayanAppConfig):
         )
 
         SourceColumn(
-            source=DocumentFileSearchResult, label=_('Metadata'),
-            widget=DocumentMetadataWidget, widget_kwargs={
-                'attribute': 'document'
-            }
+            attribute='document', source=DocumentFileSearchResult,
+            label=_('Metadata'), widget=DocumentMetadataWidget
         )
         SourceColumn(
+            attribute='document_file__document',
             source=DocumentFilePageSearchResult, label=_('Metadata'),
-            widget=DocumentMetadataWidget, widget_kwargs={
-                'attribute': 'document_file.document'
-            }
+            widget=DocumentMetadataWidget
         )
         SourceColumn(
-            source=DocumentVersionSearchResult, label=_('Metadata'),
-            widget=DocumentMetadataWidget, widget_kwargs={
-                'attribute': 'document'
-            }
+            attribute='document', source=DocumentVersionSearchResult,
+            label=_('Metadata'), widget=DocumentMetadataWidget
         )
         SourceColumn(
+            attribute='document_version__document',
             source=DocumentVersionPageSearchResult, label=_('Metadata'),
-            widget=DocumentMetadataWidget, widget_kwargs={
-                'attribute': 'document_version.document'
-            }
+            widget=DocumentMetadataWidget
         )
 
         SourceColumn(
