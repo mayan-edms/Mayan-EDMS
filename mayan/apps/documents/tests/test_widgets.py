@@ -5,15 +5,6 @@ from .base import GenericDocumentTestCase, GenericDocumentViewTestCase
 from .mixins.document_mixins import DocumentViewTestMixin
 
 
-class DocumentFilePageWidgetTestCase(GenericDocumentTestCase):
-    def test_document_list_view_document_with_no_pages(self):
-        thumbnail_widget = ThumbnailWidget()
-        self.test_document.pages.all().delete()
-        result = thumbnail_widget.render(instance=self.test_document)
-
-        self.assertTrue(self.test_document.get_absolute_url() in result)
-
-
 class DocumentPreviewWidgetViewTestCase(
     DocumentViewTestMixin, GenericDocumentViewTestCase
 ):
