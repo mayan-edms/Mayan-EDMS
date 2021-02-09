@@ -24,7 +24,7 @@ from .events import (
     event_tag_attach, event_tag_edited, event_tag_removed
 )
 from .handlers import handler_index_document, handler_tag_pre_delete
-from .html_widgets import widget_document_tags
+from .html_widgets import DocumentTagWidget
 from .links import (
     link_document_tag_list, link_document_multiple_tag_multiple_attach,
     link_document_multiple_tag_multiple_remove,
@@ -120,35 +120,25 @@ class TagsApp(MayanAppConfig):
         )
 
         SourceColumn(
-            func=lambda context: widget_document_tags(
-                document=context['object'], user=context['request'].user
-            ), label=_('Tags'), source=Document
+            label=_('Tags'), source=Document, widget=DocumentTagWidget
         )
 
         SourceColumn(
-            func=lambda context: widget_document_tags(
-                document=context['object'].document,
-                user=context['request'].user
-            ), label=_('Tags'), source=DocumentFileSearchResult
+            attribute='document', label=_('Tags'),
+            source=DocumentFileSearchResult, widget=DocumentTagWidget
         )
         SourceColumn(
-            func=lambda context: widget_document_tags(
-                document=context['object'].document_file.document,
-                user=context['request'].user
-            ), label=_('Tags'), source=DocumentFilePageSearchResult
+            attribute='document_file__document', label=_('Tags'),
+            source=DocumentFilePageSearchResult, widget=DocumentTagWidget
         )
 
         SourceColumn(
-            func=lambda context: widget_document_tags(
-                document=context['object'].document,
-                user=context['request'].user
-            ), label=_('Tags'), source=DocumentVersionSearchResult
+            attribute='document', label=_('Tags'),
+            source=DocumentVersionSearchResult, widget=DocumentTagWidget
         )
         SourceColumn(
-            func=lambda context: widget_document_tags(
-                document=context['object'].document_version.document,
-                user=context['request'].user
-            ), label=_('Tags'), source=DocumentVersionPageSearchResult
+            attribute='document_version__document', label=_('Tags'),
+            source=DocumentVersionPageSearchResult, widget=DocumentTagWidget
         )
 
         SourceColumn(
