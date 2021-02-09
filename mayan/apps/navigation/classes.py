@@ -694,7 +694,7 @@ class SourceColumn:
         is_attribute_absolute_url=False, is_object_absolute_url=False,
         is_identifier=False, is_sortable=False, kwargs=None, label=None,
         order=None, sort_field=None, widget=None,
-        widget_condition=None, widget_kwargs=None
+        widget_condition=None
     ):
         self._label = label
         self._help_text = help_text
@@ -713,7 +713,6 @@ class SourceColumn:
         self.order = order or 0
         self.sort_field = sort_field
         self.widget = widget
-        self.widget_kwargs = widget_kwargs or {}
         self.widget_condition = widget_condition
 
         if self.is_attribute_absolute_url or self.is_object_absolute_url:
@@ -846,8 +845,7 @@ class SourceColumn:
         if self.widget:
             if self.check_widget_condition(context=context):
                 widget_instance = self.widget(
-                    column=self, request=context['request'],
-                    **self.widget_kwargs
+                    column=self, request=context['request']
                 )
                 return widget_instance.render(value=result)
 

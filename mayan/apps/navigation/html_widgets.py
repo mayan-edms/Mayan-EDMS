@@ -8,7 +8,7 @@ class SourceColumnWidget:
     template_name = None
     template_string = None
 
-    def __init__(self, column, request, **kwargs):
+    def __init__(self, column, request):
         self.column = column
         self.request = request
 
