@@ -8,14 +8,9 @@ from .permissions import permission_document_metadata_view
 
 class DocumentMetadataWidget(SourceColumnWidget):
     """
-    A widget that displays the metadata for the given document or related
-    object.
+    A widget that displays the metadata for the given document.
     """
     template_name = 'metadata/document_metadata_widget.html'
-
-    def __init__(self, attribute=None, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.attribute = attribute
 
     def get_extra_context(self):
         AccessControlList = apps.get_model(

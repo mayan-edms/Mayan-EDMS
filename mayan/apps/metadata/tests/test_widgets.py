@@ -127,6 +127,28 @@ class DocumentSearchResultWidgetViewTestCase(
             status_code=200
         )
 
+    def test_document_metadata_widget_with_metadata_view_and_document_view_access(self):
+        self.grant_access(
+            obj=self.test_document, permission=self._test_object_permission
+        )
+        self.grant_access(
+            obj=self.test_metadata_type,
+            permission=permission_document_metadata_view
+        )
+
+        response = self._request_search_results_view(
+            data=self._test_search_term_data, kwargs={
+                'search_model_name': self._test_search_model.get_full_name()
+            }
+        )
+        self.assertContains(
+            response=response, text=self._test_object_text, status_code=200
+        )
+        self.assertNotContains(
+            response=response, text=self.test_metadata_type.label,
+            status_code=200
+        )
+
     def test_document_metadata_widget_with_full_access(self):
         self.grant_access(
             obj=self.test_document,
