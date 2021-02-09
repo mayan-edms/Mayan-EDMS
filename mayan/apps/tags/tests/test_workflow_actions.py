@@ -1,8 +1,9 @@
-from __future__ import unicode_literals
-
-from mayan.apps.common.tests.base import GenericViewTestCase
+from mayan.apps.document_states.permissions import permission_workflow_edit
 from mayan.apps.document_states.tests.base import ActionTestCase
-from mayan.apps.document_states.tests.mixins import WorkflowTestMixin
+from mayan.apps.document_states.tests.mixins import (
+    WorkflowStateActionViewTestMixin, WorkflowTestMixin
+)
+from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..models import Tag
 from ..workflow_actions import AttachTagAction, RemoveTagAction
@@ -10,9 +11,9 @@ from ..workflow_actions import AttachTagAction, RemoveTagAction
 from .mixins import TagTestMixin
 
 
-class TagActionTestCase(TagTestMixin, ActionTestCase):
+class TagWorkflowActionTestCase(TagTestMixin, ActionTestCase):
     def setUp(self):
-        super(TagActionTestCase, self).setUp()
+        super().setUp()
         self._create_test_tag()
 
     def test_tag_attach_action(self):
@@ -31,31 +32,29 @@ class TagActionTestCase(TagTestMixin, ActionTestCase):
         self.assertEqual(self.test_tag.documents.count(), 0)
 
 
-class TagActionViewTestCase(WorkflowTestMixin, GenericViewTestCase):
+class TagWorkflowActionViewTestCase(
+    WorkflowStateActionViewTestMixin, WorkflowTestMixin, GenericViewTestCase
+):
     def test_tag_attach_action_create_view(self):
         self._create_test_workflow()
         self._create_test_workflow_state()
-
-        response = self.get(
-            viewname='document_states:workflow_template_state_action_create',
-            kwargs={
-                'pk': self.test_workflow_state.pk,
-                'class_path': 'mayan.apps.tags.workflow_actions.AttachTagAction'
-            }
+        self.grant_access(
+            obj=self.test_workflow, permission=permission_workflow_edit
         )
 
-        self.assertEqual(response.status_code, 200)
+        response = self._request_test_workflow_template_state_action_create_post_view(
+            class_path='mayan.apps.tags.workflow_actions.AttachTagAction'
+        )
+        self.assertEqual(response.status_code, 302)
 
     def test_tag_remove_action_create_view(self):
         self._create_test_workflow()
         self._create_test_workflow_state()
-
-        response = self.get(
-            viewname='document_states:workflow_template_state_action_create',
-            kwargs={
-                'pk': self.test_workflow_state.pk,
-                'class_path': 'mayan.apps.tags.workflow_actions.RemoveTagAction'
-            }
+        self.grant_access(
+            obj=self.test_workflow, permission=permission_workflow_edit
         )
 
-        self.assertEqual(response.status_code, 200)
+        response = self._request_test_workflow_template_state_action_create_post_view(
+            class_path='mayan.apps.tags.workflow_actions.RemoveTagAction'
+        )
+        self.assertEqual(response.status_code, 302)

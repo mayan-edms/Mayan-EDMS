@@ -1,6 +1,4 @@
-from __future__ import absolute_import, unicode_literals
-
-from mayan.apps.common.tests.base import BaseTestCase
+from mayan.apps.testing.tests.base import BaseTestCase
 
 from .literals import (
     TEST_BOOTSTAP_SETTING_NAME, TEST_SETTING_VALUE,
@@ -13,7 +11,7 @@ class BoostrapSettingTestCase(
     BoostrapSettingTestMixin, SmartSettingTestMixin, BaseTestCase
 ):
     def setUp(self):
-        super(BoostrapSettingTestCase, self).setUp()
+        super().setUp()
         self._register_test_boostrap_setting()
         self._create_test_bootstrap_singleton()
 

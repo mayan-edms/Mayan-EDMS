@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.shortcuts import get_object_or_404
 
 from rest_framework.exceptions import ValidationError
@@ -8,7 +6,9 @@ from rest_framework.response import Response
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.permissions import permission_document_view
-from mayan.apps.documents.serializers import DocumentSerializer
+from mayan.apps.documents.serializers.document_serializers import (
+    DocumentSerializer
+)
 from mayan.apps.rest_api import generics
 
 from .models import Tag
@@ -31,12 +31,6 @@ class APITagListView(generics.ListCreateAPIView):
     mayan_view_permissions = {'POST': (permission_tag_create,)}
     queryset = Tag.objects.all()
 
-    def get_serializer(self, *args, **kwargs):
-        if not self.request:
-            return None
-
-        return super(APITagListView, self).get_serializer(*args, **kwargs)
-
     def get_serializer_class(self):
         if self.request.method == 'GET':
             return TagSerializer
@@ -51,6 +45,7 @@ class APITagView(generics.RetrieveUpdateDestroyAPIView):
     patch: Edit the selected tag.
     put: Edit the selected tag.
     """
+    lookup_url_kwarg = 'tag_id'
     mayan_object_permissions = {
         'DELETE': (permission_tag_delete,),
         'GET': (permission_tag_view,),
@@ -58,12 +53,6 @@ class APITagView(generics.RetrieveUpdateDestroyAPIView):
         'PUT': (permission_tag_edit,)
     }
     queryset = Tag.objects.all()
-
-    def get_serializer(self, *args, **kwargs):
-        if not self.request:
-            return None
-
-        return super(APITagView, self).get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -85,7 +74,7 @@ class APITagDocumentListView(generics.ListAPIView):
             user=self.request.user
         )
 
-        tag = get_object_or_404(klass=queryset, pk=self.kwargs['pk'])
+        tag = get_object_or_404(klass=queryset, pk=self.kwargs['tag_id'])
 
         return tag.documents.all()
 
@@ -111,17 +100,11 @@ class APIDocumentTagListView(generics.ListCreateAPIView):
             user=self.request.user
         )
         return get_object_or_404(
-            klass=queryset, pk=self.kwargs['document_pk']
+            klass=queryset, pk=self.kwargs['document_id']
         )
 
     def get_queryset(self):
         return self.get_document().tags.all()
-
-    def get_serializer(self, *args, **kwargs):
-        if not self.request:
-            return None
-
-        return super(APIDocumentTagListView, self).get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -133,7 +116,7 @@ class APIDocumentTagListView(generics.ListCreateAPIView):
         """
         Extra context provided to the serializer class.
         """
-        context = super(APIDocumentTagListView, self).get_serializer_context()
+        context = super().get_serializer_context()
         if self.kwargs:
             context.update(
                 {
@@ -152,6 +135,7 @@ class APIDocumentTagView(generics.RetrieveDestroyAPIView):
     delete: Remove a tag from the selected document.
     get: Returns the details of the selected document tag.
     """
+    lookup_url_kwarg = 'tag_id'
     mayan_object_permissions = {
         'GET': (permission_tag_view,),
         'DELETE': (permission_tag_remove,)
@@ -169,23 +153,17 @@ class APIDocumentTagView(generics.RetrieveDestroyAPIView):
             user=self.request.user
         )
         return get_object_or_404(
-            klass=queryset, pk=self.kwargs['document_pk']
+            klass=queryset, pk=self.kwargs['document_id']
         )
 
     def get_queryset(self):
         return self.get_document().tags.all()
 
-    def get_serializer(self, *args, **kwargs):
-        if not self.request:
-            return None
-
-        return super(APIDocumentTagView, self).get_serializer(*args, **kwargs)
-
     def get_serializer_context(self):
         """
         Extra context provided to the serializer class.
         """
-        context = super(APIDocumentTagView, self).get_serializer_context()
+        context = super().get_serializer_context()
         if self.kwargs:
             context.update(
                 {
@@ -197,7 +175,9 @@ class APIDocumentTagView(generics.RetrieveDestroyAPIView):
 
     def perform_destroy(self, instance):
         try:
-            instance.documents.remove(self.get_document())
+            instance.remove_from(
+                document=self.get_document(), user=self.request.user
+            )
         except Exception as exception:
             raise ValidationError(exception)
 

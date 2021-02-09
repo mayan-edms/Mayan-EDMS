@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.urls import reverse
 
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
@@ -18,6 +16,12 @@ from .mixins import WorkflowTestMixin
 class WorkflowRuntimeProxyLinkTestCase(
     WorkflowTestMixin, GenericDocumentViewTestCase
 ):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_document_stub()
+
     def _resolve_test_link(self, test_object=None):
         self.add_test_view(test_object=test_object)
         context = self.get_test_view()
@@ -48,7 +52,7 @@ class WorkflowRuntimeProxyLinkTestCase(
             self.resolved_test_link.url,
             reverse(
                 viewname=self.test_link.view, kwargs={
-                    'pk': self.test_workflow_runtime_proxy.pk
+                    'workflow_runtime_proxy_id': self.test_workflow_runtime_proxy.pk
                 }
             )
         )
@@ -107,7 +111,7 @@ class WorkflowRuntimeProxyLinkTestCase(
             self.resolved_test_link.url,
             reverse(
                 viewname=self.test_link.view, kwargs={
-                    'pk': self.test_workflow_state_runtime_proxy.pk
+                    'workflow_runtime_proxy_state_id': self.test_workflow_state_runtime_proxy.pk
                 }
             )
         )
@@ -136,7 +140,7 @@ class WorkflowRuntimeProxyLinkTestCase(
             self.resolved_test_link.url,
             reverse(
                 viewname=self.test_link.view, kwargs={
-                    'pk': self.test_workflow_runtime_proxy.pk
+                    'workflow_runtime_proxy_id': self.test_workflow_runtime_proxy.pk
                 }
             )
         )

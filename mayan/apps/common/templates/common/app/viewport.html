@@ -1,0 +1,25 @@
+{% load i18n %}
+
+{% load common_tags %}
+
+{% common_check_sqlite as check_sqlite %}
+{% if common_check_sqlite %}
+    <div class="alert alert-dismissible alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <p><strong>{% trans 'Warning' %}</strong> {{ check_sqlite }}</p>
+    </div>
+{% endif %}
+
+{% common_get_missing_items as missing_items %}
+
+{% if missing_items %}
+    <div class="alert alert-warning">
+        {% for item in missing_items %}
+            <p><strong>{{ item.label }}</strong> </p>
+            <p>
+                {{ item.description }}
+                {% if item.view %}<a class="btn btn-primary btn-xs" href="{% url item.view %}">{% trans 'Click here to fix this.' %}</a>{% endif %}
+            </p>
+    {% endfor %}
+    </div>
+{% endif %}

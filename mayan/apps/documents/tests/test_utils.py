@@ -1,6 +1,4 @@
-from __future__ import unicode_literals
-
-from mayan.apps.common.tests.base import BaseTestCase
+from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..utils import parse_range
 

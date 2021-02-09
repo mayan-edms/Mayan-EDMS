@@ -1,8 +1,5 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.db import models, transaction
 from django.urls import reverse
-from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from colorful.fields import RGBColorField
@@ -12,12 +9,11 @@ from mayan.apps.documents.models import Document
 from mayan.apps.documents.permissions import permission_document_view
 
 from .events import (
-    event_tag_attach, event_tag_created, event_tag_edited, event_tag_remove
+    event_tag_attach, event_tag_created, event_tag_edited, event_tag_removed
 )
 from .html_widgets import widget_single_tag
 
 
-@python_2_unicode_compatible
 class Tag(models.Model):
     """
     This model represents a binary property that can be applied to a document.
@@ -55,7 +51,7 @@ class Tag(models.Model):
 
     def get_absolute_url(self):
         return reverse(
-            viewname='tags:tag_document_list', kwargs={'pk': self.pk}
+            viewname='tags:tag_document_list', kwargs={'tag_id': self.pk}
         )
 
     def get_document_count(self, user):
@@ -88,7 +84,7 @@ class Tag(models.Model):
         Remove a tag from a document and commit the corresponding event.
         """
         self.documents.remove(document)
-        event_tag_remove.commit(
+        event_tag_removed.commit(
             action_object=self, actor=user, target=document
         )
 
@@ -97,7 +93,7 @@ class Tag(models.Model):
         created = not self.pk
 
         with transaction.atomic():
-            result = super(Tag, self).save(*args, **kwargs)
+            result = super().save(*args, **kwargs)
 
             if created:
                 event_tag_created.commit(actor=_user, target=self)

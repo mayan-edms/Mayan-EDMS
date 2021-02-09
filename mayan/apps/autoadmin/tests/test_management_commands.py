@@ -1,10 +1,8 @@
-from __future__ import unicode_literals
-
 from django.contrib.auth import get_user_model
 from django.core import management
 
-from mayan.apps.common.tests.base import BaseTestCase
-from mayan.apps.common.tests.utils import mute_stdout
+from mayan.apps.testing.tests.base import BaseTestCase
+from mayan.apps.testing.tests.utils import mute_stdout
 
 from ..models import AutoAdminSingleton
 
@@ -13,13 +11,13 @@ class AutoAdminManagementCommandTestCase(BaseTestCase):
     create_test_case_user = False
 
     def setUp(self):
-        super(AutoAdminManagementCommandTestCase, self).setUp()
+        super().setUp()
         with mute_stdout():
             management.call_command('createautoadmin')
 
     def tearDown(self):
         AutoAdminSingleton.objects.all().delete()
-        super(AutoAdminManagementCommandTestCase, self).tearDown()
+        super().tearDown()
 
     def test_autoadmin_creation(self):
         autoadmin = AutoAdminSingleton.objects.get()

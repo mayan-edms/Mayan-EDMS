@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from actstream.models import Action
 
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
@@ -21,7 +19,14 @@ class CommentEventsTestCase(
     DocumentCommentTestMixin, DocumentCommentViewTestMixin,
     GenericDocumentViewTestCase
 ):
-    def test_comment_create_event_no_permissions(self):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_user()
+        self._create_test_document_stub()
+
+    def test_comment_create_event_no_permission(self):
         action_count = Action.objects.count()
 
         response = self._request_test_comment_create_view()
@@ -48,7 +53,7 @@ class CommentEventsTestCase(
         self.assertEqual(event.target, comment)
         self.assertEqual(event.verb, event_document_comment_created.id)
 
-    def test_comment_delete_event_no_permissions(self):
+    def test_comment_delete_event_no_permission(self):
         self._create_test_comment()
 
         action_count = Action.objects.count()
@@ -80,7 +85,7 @@ class CommentEventsTestCase(
         self.assertEqual(event.target, self.test_document)
         self.assertEqual(event.verb, event_document_comment_deleted.id)
 
-    def test_comment_edit_event_no_permissions(self):
+    def test_comment_edit_event_no_permission(self):
         self._create_test_comment()
 
         action_count = Action.objects.count()

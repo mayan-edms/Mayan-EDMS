@@ -1,12 +1,10 @@
-from __future__ import unicode_literals
-
 import logging
 
 from django.apps import apps
 
 from mayan.celery import app
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 @app.task(ignore_result=True)

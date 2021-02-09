@@ -1,8 +1,6 @@
-from __future__ import unicode_literals
-
 from actstream.models import Action
 
-from mayan.apps.common.tests.base import GenericViewTestCase
+from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..events import event_workflow_created, event_workflow_edited
 from ..models import Workflow
@@ -11,8 +9,10 @@ from ..permissions import permission_workflow_create, permission_workflow_edit
 from .mixins import WorkflowTestMixin, WorkflowViewTestMixin
 
 
-class WorkflowEventsTestCase(WorkflowTestMixin, WorkflowViewTestMixin, GenericViewTestCase):
-    def test_workflow_create_event_no_permissions(self):
+class WorkflowEventsTestCase(
+    WorkflowTestMixin, WorkflowViewTestMixin, GenericViewTestCase
+):
+    def test_workflow_create_event_no_permission(self):
         action_count = Action.objects.count()
 
         response = self._request_test_workflow_create_view()
@@ -38,7 +38,7 @@ class WorkflowEventsTestCase(WorkflowTestMixin, WorkflowViewTestMixin, GenericVi
         self.assertEqual(event.target, workflow)
         self.assertEqual(event.actor, self._test_case_user)
 
-    def test_workflow_edit_event_no_permissions(self):
+    def test_workflow_edit_event_no_permission(self):
         self._create_test_workflow()
 
         action_count = Action.objects.count()

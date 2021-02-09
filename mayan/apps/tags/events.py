@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.events.classes import EventTypeNamespace
@@ -15,6 +13,6 @@ event_tag_created = namespace.add_event_type(
 event_tag_edited = namespace.add_event_type(
     label=_('Tag edited'), name='tag_edited'
 )
-event_tag_remove = namespace.add_event_type(
+event_tag_removed = namespace.add_event_type(
     label=_('Tag removed from document'), name='remove'
 )

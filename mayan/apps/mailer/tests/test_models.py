@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.core import mail
 
 from mayan.apps.documents.tests.base import GenericDocumentTestCase
@@ -46,11 +44,11 @@ class ModelTestCase(MailerTestMixin, GenericDocumentTestCase):
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
         self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
-        with self.test_document.open() as file_object:
+        with self.test_document.file_latest.open() as file_object:
             self.assertEqual(
                 mail.outbox[0].attachments[0], (
                     self.test_document.label, file_object.read(),
-                    self.test_document.file_mimetype
+                    self.test_document.file_latest.mimetype
                 )
             )
 
@@ -83,3 +81,21 @@ class ModelTestCase(MailerTestMixin, GenericDocumentTestCase):
         self.assertEqual(
             mail.outbox[0].to, TEST_RECIPIENTS_MULTIPLE_MIXED_RESULT
         )
+
+    def test_send_to_cc(self):
+        self._create_test_user_mailer()
+        self.test_user_mailer.send(to=TEST_EMAIL_ADDRESS, cc=TEST_EMAIL_ADDRESS)
+
+        self.assertEqual(len(mail.outbox), 1)
+        self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
+        self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
+        self.assertEqual(mail.outbox[0].cc, [TEST_EMAIL_ADDRESS])
+
+    def test_send_to_bcc(self):
+        self._create_test_user_mailer()
+        self.test_user_mailer.send(to=TEST_EMAIL_ADDRESS, bcc=TEST_EMAIL_ADDRESS)
+
+        self.assertEqual(len(mail.outbox), 1)
+        self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
+        self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
+        self.assertEqual(mail.outbox[0].bcc, [TEST_EMAIL_ADDRESS])

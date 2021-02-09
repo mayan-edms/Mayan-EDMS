@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from contextlib import contextmanager
 import logging
 
@@ -8,40 +6,32 @@ from django.core.files.base import ContentFile
 from django.db import models, transaction
 from django.db.models import Sum
 from django.template.defaultfilters import filesizeformat
-from django.utils.encoding import python_2_unicode_compatible
+from django.utils.encoding import force_text
 from django.utils.functional import cached_property
-from django.utils.module_loading import import_string
+from django.utils.text import format_lazy
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.lock_manager.backends.base import LockingBackend
 from mayan.apps.lock_manager.exceptions import LockError
-from mayan.apps.lock_manager.runtime import locking_backend
+from mayan.apps.storage.classes import DefinedStorage
 
 from .events import (
     event_cache_created, event_cache_edited, event_cache_purged
 )
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
-@python_2_unicode_compatible
 class Cache(models.Model):
-    name = models.CharField(
-        db_index=True, help_text=_('Internal name of the cache.'),
-        max_length=128, unique=True, verbose_name=_('Name')
-    )
-    label = models.CharField(
-        help_text=_('A short text describing the cache.'), max_length=128,
-        verbose_name=_('Label')
+    defined_storage_name = models.CharField(
+        db_index=True, help_text=_(
+            'Internal name of the defined storage for this cache.'
+        ), max_length=96, unique=True, verbose_name=_('Defined storage name')
     )
     maximum_size = models.BigIntegerField(
         help_text=_('Maximum size of the cache in bytes.'), validators=[
             validators.MinValueValidator(limit_value=1)
         ], verbose_name=_('Maximum size')
-    )
-    storage_instance_path = models.CharField(
-        help_text=_(
-            'Dotted path to the actual storage class used for the cache.'
-        ), max_length=255, unique=True, verbose_name=_('Storage instance path')
     )
 
     class Meta:
@@ -49,7 +39,7 @@ class Cache(models.Model):
         verbose_name_plural = _('Caches')
 
     def __str__(self):
-        return self.label
+        return force_text(s=self.label)
 
     def get_files(self):
         return CachePartitionFile.objects.filter(partition__cache__id=self.pk)
@@ -62,6 +52,14 @@ class Cache(models.Model):
     )
     get_maximum_size_display.short_description = _('Maximum size')
 
+    def get_defined_storage(self):
+        try:
+            return DefinedStorage.get(name=self.defined_storage_name)
+        except KeyError:
+            return DefinedStorage(
+                dotted_path='', label=_('Unknown'), name='unknown'
+            )
+
     def get_total_size(self):
         """
         Return the actual usage of the cache.
@@ -71,10 +69,17 @@ class Cache(models.Model):
         )['file_size__sum'] or 0
 
     def get_total_size_display(self):
-        return filesizeformat(bytes_=self.get_total_size())
+        return format_lazy(
+            '{} ({:0.1f}%)', filesizeformat(bytes_=self.get_total_size()),
+            self.get_total_size() / self.maximum_size * 100
+        )
 
-    get_total_size_display.short_description = _('Total size')
+    get_total_size_display.short_description = _('Current size')
     get_total_size_display.help_text = _('Current size of the cache.')
+
+    @cached_property
+    def label(self):
+        return self.get_defined_storage().label
 
     def prune(self):
         """
@@ -88,16 +93,25 @@ class Cache(models.Model):
         """
         Deletes the entire cache.
         """
-        for partition in self.partitions.all():
-            partition.purge()
+        try:
+            DefinedStorage.get(name=self.defined_storage_name)
+        except KeyError:
+            """
+            Unknown or deleted storage. Must not be purged otherwise only
+            the database data will be erased but the actual storage files
+            will remain.
+            """
+        else:
+            for partition in self.partitions.all():
+                partition.purge()
 
-        event_cache_purged.commit(actor=_user, target=self)
+            event_cache_purged.commit(actor=_user, target=self)
 
     def save(self, *args, **kwargs):
         _user = kwargs.pop('_user', None)
         with transaction.atomic():
             is_new = not self.pk
-            result = super(Cache, self).save(*args, **kwargs)
+            result = super().save(*args, **kwargs)
             if is_new:
                 event_cache_created.commit(
                     actor=_user, target=self
@@ -112,7 +126,7 @@ class Cache(models.Model):
 
     @cached_property
     def storage(self):
-        return import_string(self.storage_instance_path)
+        return self.get_defined_storage().get_storage_instance()
 
 
 class CachePartition(models.Model):
@@ -138,7 +152,7 @@ class CachePartition(models.Model):
         lock_id = 'cache_partition-create_file-{}-{}'.format(self.pk, filename)
         try:
             logger.debug('trying to acquire lock: %s', lock_id)
-            lock = locking_backend.acquire_lock(lock_id)
+            lock = LockingBackend.get_instance().acquire_lock(name=lock_id)
             logger.debug('acquired lock: %s', lock_id)
             try:
                 self.cache.prune()
@@ -157,7 +171,7 @@ class CachePartition(models.Model):
                     with transaction.atomic():
                         partition_file = self.files.create(filename=filename)
                         yield partition_file.open(mode='wb')
-                        partition_file.update_size()
+
                 except Exception as exception:
                     logger.error(
                         'Unexpected exception while trying to save new '
@@ -167,6 +181,9 @@ class CachePartition(models.Model):
                         name=self.get_full_filename(filename=filename)
                     )
                     raise
+                finally:
+                    partition_file.close()
+                    partition_file.update_size()
             finally:
                 lock.release()
         except LockError:
@@ -175,7 +192,7 @@ class CachePartition(models.Model):
 
     def delete(self, *args, **kwargs):
         self.purge()
-        return super(CachePartition, self).delete(*args, **kwargs)
+        return super().delete(*args, **kwargs)
 
     def get_file(self, filename):
         try:
@@ -206,6 +223,8 @@ class CachePartitionFile(models.Model):
         default=0, verbose_name=_('File size')
     )
 
+    _storage_object = None
+
     class Meta:
         get_latest_by = 'datetime'
         unique_together = ('partition', 'filename')
@@ -214,7 +233,7 @@ class CachePartitionFile(models.Model):
 
     def delete(self, *args, **kwargs):
         self.partition.cache.storage.delete(name=self.full_filename)
-        return super(CachePartitionFile, self).delete(*args, **kwargs)
+        return super().delete(*args, **kwargs)
 
     def exists(self):
         return self.partition.cache.storage.exists(name=self.full_filename)
@@ -229,14 +248,20 @@ class CachePartitionFile(models.Model):
         # Open the file for reading. If the file is written to, the
         # .update_size() must be called.
         try:
-            return self.partition.cache.storage.open(
+            self._storage_object = self.partition.cache.storage.open(
                 name=self.full_filename, mode=mode
             )
+            return self._storage_object
         except Exception as exception:
             logger.error(
                 'Unexpected exception opening the cache file; %s', exception
             )
             raise
+
+    def close(self):
+        if self._storage_object is not None:
+            self._storage_object.close()
+        self._storage_object = None
 
     def update_size(self):
         self.file_size = self.partition.cache.storage.size(

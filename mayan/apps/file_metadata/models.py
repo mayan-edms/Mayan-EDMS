@@ -1,21 +1,18 @@
-from __future__ import unicode_literals
-
 import logging
 
 from django.db import models
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
 from django.utils.functional import cached_property
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.documents.models import DocumentType, DocumentVersion
+from mayan.apps.documents.models import DocumentFile, DocumentType
 
 from .managers import DocumentTypeSettingsManager
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
-@python_2_unicode_compatible
 class StoredDriver(models.Model):
     driver_path = models.CharField(
         max_length=255, unique=True, verbose_name=_('Driver path')
@@ -31,11 +28,11 @@ class StoredDriver(models.Model):
         verbose_name_plural = _('Drivers')
 
     def __str__(self):
-        return force_text(self.driver_label)
+        return force_text(s=self.driver_label)
 
     @cached_property
     def driver_class(self):
-        return import_string(self.driver_path)
+        return import_string(dotted_path=self.driver_path)
 
     @cached_property
     def driver_label(self):
@@ -67,37 +64,35 @@ class DocumentTypeSettings(models.Model):
     natural_key.dependencies = ['documents.DocumentType']
 
 
-@python_2_unicode_compatible
-class DocumentVersionDriverEntry(models.Model):
+class DocumentFileDriverEntry(models.Model):
     driver = models.ForeignKey(
         on_delete=models.CASCADE, related_name='driver_entries',
         to=StoredDriver, verbose_name=_('Driver')
     )
-    document_version = models.ForeignKey(
+    document_file = models.ForeignKey(
         on_delete=models.CASCADE, related_name='file_metadata_drivers',
-        to=DocumentVersion, verbose_name=_('Document version')
+        to=DocumentFile, verbose_name=_('Document file')
     )
 
     class Meta:
-        ordering = ('document_version', 'driver')
-        unique_together = ('driver', 'document_version')
-        verbose_name = _('Document version driver entry')
-        verbose_name_plural = _('Document version driver entries')
+        ordering = ('document_file', 'driver')
+        unique_together = ('driver', 'document_file')
+        verbose_name = _('Document file driver entry')
+        verbose_name_plural = _('Document file driver entries')
 
     def __str__(self):
-        return force_text(self.driver)
+        return force_text(s=self.driver)
 
     def get_attribute_count(self):
         return self.entries.count()
     get_attribute_count.short_description = _('Attribute count')
 
 
-@python_2_unicode_compatible
 class FileMetadataEntry(models.Model):
-    document_version_driver_entry = models.ForeignKey(
+    document_file_driver_entry = models.ForeignKey(
         on_delete=models.CASCADE, related_name='entries',
-        to=DocumentVersionDriverEntry,
-        verbose_name=_('Document version driver entry')
+        to=DocumentFileDriverEntry,
+        verbose_name=_('Document file driver entry')
     )
 
     key = models.CharField(
@@ -116,5 +111,5 @@ class FileMetadataEntry(models.Model):
 
     def __str__(self):
         return '{}: {}: {}'.format(
-            self.document_version_driver_entry, self.key, self.value
+            self.document_file_driver_entry, self.key, self.value
         )

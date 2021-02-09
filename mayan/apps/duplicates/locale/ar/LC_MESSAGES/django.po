@@ -1,0 +1,281 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# Translators:
+# Yaman Sanobar <yman.snober@gmail.com>, 2019
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-30 04:39+0000\n"
+"PO-Revision-Date: 2020-10-26 13:26+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/"
+"ar/)\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: apps.py:25 apps.py:39 links.py:14
+msgid "Duplicates"
+msgstr "النسخ المكررة"
+
+#: links.py:18 models.py:20 models.py:30 views.py:75
+msgid "Duplicated documents"
+msgstr ""
+
+#: links.py:24 queues.py:13
+msgid "Duplicated document scan"
+msgstr ""
+
+#: models.py:17
+msgid "Document"
+msgstr ""
+
+#: models.py:23
+msgid "Added"
+msgstr ""
+
+#: models.py:29
+msgid "Duplicated document"
+msgstr ""
+
+#: queues.py:8
+msgid "Clean empty duplicate lists"
+msgstr ""
+
+#: queues.py:18
+msgid "Scan document duplicates"
+msgstr ""
+
+#: views.py:36
+msgid "Only exact copies of this document will be shown in the this list."
+msgstr ""
+
+#: views.py:40
+msgid "There are no duplicates for this document"
+msgstr ""
+
+#: views.py:44
+#, python-format
+msgid "Duplicates for document: %s"
+msgstr ""
+
+#: views.py:66
+msgid ""
+"Duplicates are documents that are composed of the exact same file, down to "
+"the last byte. Files that have the same text or OCR but are not identical or "
+"were saved using a different file format will not appear as duplicates."
+msgstr ""
+
+#: views.py:73
+msgid "There are no duplicated documents"
+msgstr ""
+
+#: views.py:83
+msgid "Scan for duplicated documents?"
+msgstr ""
+
+#: views.py:90
+msgid "Duplicated document scan queued successfully."
+msgstr ""
+
+#~ msgid "Documents"
+#~ msgstr "الوثائق"
+
+#~ msgid "Create a document type"
+#~ msgstr "انشاء نوع وثيقة"
+
+#~ msgid ""
+#~ "Every uploaded document must be assigned a document type, it is the basic "
+#~ "way Mayan EDMS categorizes documents."
+#~ msgstr ""
+#~ "كل وثيقة ترفع يجب ان يحدد لها نوع \"نوع الوثيقة\", انها الطريقة الاساسية "
+#~ "التي يقوم مايان اي دي ام اس بها بترتيب الوثائق. "
+
+#~ msgid "Pages"
+#~ msgstr "صفحات"
+
+#~ msgid "Type"
+#~ msgstr "النوع"
+
+#~ msgid "UUID"
+#~ msgstr "UUID"
+
+#~ msgid "Total pages"
+#~ msgstr "عدد الصفحات الكلي"
+
+#~ msgid "Total documents"
+#~ msgstr "عدد الوثائق الكلي"
+
+#~ msgid "Compress"
+#~ msgstr "ضغط"
+
+#~ msgid "Compressed filename"
+#~ msgstr "اسم الملف المضغوط"
+
+#~ msgid ""
+#~ "The filename of the compressed file that will contain the documents to be "
+#~ "downloaded, if the previous option is selected."
+#~ msgstr ""
+#~ "اسم الملف المضغوط سيحتوي الوثائق التي سيتم تحويلها، اذا تم اختيار الخيار "
+#~ "السابق"
+
+#~ msgid "Quick document rename"
+#~ msgstr "إعادة تسمية الوثيقة بسرعة"
+
+#~ msgid "Date added"
+#~ msgstr "تاريخ الاضافة"
+
+#~ msgid "File mimetype"
+#~ msgstr "نوع الملف"
+
+#~ msgid "None"
+#~ msgstr "لا شيء"
+
+#~ msgid "File size"
+#~ msgstr "حجم الملف"
+
+#~ msgid "Exists in storage"
+#~ msgstr "موجود في التخزين"
+
+#~ msgid "File path in storage"
+#~ msgstr "مسار الملف في التخزين"
+
+#~ msgid "Checksum"
+#~ msgstr "Checksum"
+
+#~ msgid "Page range"
+#~ msgstr "نطاق الصفحات"
+
+#~ msgid "Document type"
+#~ msgstr "نوع الوثيقة"
+
+#~ msgid "Delete"
+#~ msgstr "حذف"
+
+#~ msgid "Edit"
+#~ msgstr "تحرير"
+
+#~ msgid "Page image"
+#~ msgstr "صورة الصفحة"
+
+#~ msgid "Default"
+#~ msgstr "Default"
+
+#~ msgid "Label"
+#~ msgstr "العنوان"
+
+#~ msgid "Description"
+#~ msgstr "Description"
+
+#~ msgid "Enabled"
+#~ msgstr "مفعل"
+
+#~ msgid "Page %(page_num)d out of %(total_pages)d of %(document)s"
+#~ msgstr "صفحة %(page_num)d من أصل %(total_pages)d للوثيقة %(document)s"
+
+#~ msgid "Comment"
+#~ msgstr "تعليق"
+
+#~ msgid "File"
+#~ msgstr "ملف"
+
+#~ msgid "MIME type"
+#~ msgstr "نوع الملف"
+
+#~ msgid "User"
+#~ msgstr "مستخدم"
+
+#~ msgid "Create documents"
+#~ msgstr "إنشاء وثائق"
+
+#~ msgid "Delete documents"
+#~ msgstr "حذف الوثائق"
+
+#~ msgid "Download documents"
+#~ msgstr "تحميل الوثائق"
+
+#~ msgid "Edit documents"
+#~ msgstr "تحرير الوثائق"
+
+#~ msgid "Create new document versions"
+#~ msgstr "انشأ اصدارات جديدة للوثيقة"
+
+#~ msgid "Edit document properties"
+#~ msgstr "تحرير خصائص الوثيقة"
+
+#~ msgid "Execute document modifying tools"
+#~ msgstr "تشغيل أدوات تعديل الوثيقة"
+
+#~ msgid "Revert documents to a previous version"
+#~ msgstr "أعد الوثيقة لإصدار قديم"
+
+#~ msgid "View documents"
+#~ msgstr "عرض الوثائق"
+
+#~ msgid "Create document types"
+#~ msgstr "إنشاء أنواع الوثائق"
+
+#~ msgid "Delete document types"
+#~ msgstr "حذف أنواع الوثائق"
+
+#~ msgid "Edit document types"
+#~ msgstr "تحرير أنواع الوثائق"
+
+#~ msgid "View document types"
+#~ msgstr "عرض أنواع الوثائق"
+
+#~ msgid "Amount in degrees to rotate a document page per user interaction."
+#~ msgstr "الدرجة المسموح بها لتدوير الوثيقة لكل مستخدم."
+
+#~ msgid ""
+#~ "Maximum amount in percent (%) to allow user to zoom in a document page "
+#~ "interactively."
+#~ msgstr "أكبر نسبة مئوية (%) للسماح بالتكبير داخل الوثيقة لكل مستخدم."
+
+#~ msgid ""
+#~ "Minimum amount in percent (%) to allow user to zoom out a document page "
+#~ "interactively."
+#~ msgstr "أقل نسبة مئوية (%) للسماح بالتكبير داخل الوثيقة لكل مستخدم."
+
+#~ msgid ""
+#~ "Amount in percent zoom in or out a document page per user interaction."
+#~ msgstr "النسبة المئوية لتكبير أو تصغير في صفحة الوثيقة لكل مستخدم."
+
+#~ msgid "There are no more pages in this document"
+#~ msgstr "لا توجد صفحات أخرى بهذه الوثيقة"
+
+#~ msgid "You are already at the first page of this document"
+#~ msgstr "أنت بالفعل في الصفحة الأولى من هذه الوثيقة"
+
+#~ msgid "All later version after this one will be deleted too."
+#~ msgstr "سيتم حذف جميع الإصدارات اللاحقة بعد هذا الإصدار أيضا."
+
+#~ msgid "Document version reverted successfully"
+#~ msgstr "تم ارجاع اصدار الوثيقة بنجاح"
+
+#~ msgid "Error reverting document version; %s"
+#~ msgstr "خطأ بارجاع اصدار الوثيقة %s"
+
+#~ msgid "Download"
+#~ msgstr "تحميل"
+
+#~ msgid ""
+#~ "Error deleting the page transformations for document: %(document)s; "
+#~ "%(error)s."
+#~ msgstr "خطأ بمسح التحويلات الخاصة بالوثيقة: %(document)s; %(error)s."
+
+#~ msgid "Submit"
+#~ msgstr "ارسال"
+
+#~ msgid "Add"
+#~ msgstr "إضافة"
+
+#~ msgid "Remove"
+#~ msgstr "إزالة"

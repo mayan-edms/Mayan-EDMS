@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.db import migrations, models
 
 
@@ -9,7 +7,7 @@ def operation_rename_duplicates(apps, schema_editor):
     )
     slugs = []
 
-    for entry in StatisticResult.objects.using(schema_editor.connection.alias).all():
+    for entry in StatisticResult.objects.using(alias=schema_editor.connection.alias).all():
         if entry.slug in slugs:
             counter = 1
             while(True):
@@ -26,7 +24,6 @@ def operation_rename_duplicates(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('mayan_statistics', '0001_initial'),
     ]

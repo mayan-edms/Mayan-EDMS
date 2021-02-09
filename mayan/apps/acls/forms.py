@@ -1,9 +1,7 @@
-from __future__ import unicode_literals
-
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.forms import FilteredSelectionForm
+from mayan.apps.views.forms import FilteredSelectionForm
 
 from .models import AccessControlList
 

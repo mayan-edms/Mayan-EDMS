@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 #
 # Mayan EDMS documentation build configuration file, created by
 # sphinx-quickstart on Fri Aug 19 05:13:38 2011.

@@ -1,13 +1,9 @@
-from __future__ import unicode_literals
-
 import json
 
 from django.db import models
-from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 
-@python_2_unicode_compatible
 class StatisticResult(models.Model):
     # Translators: 'Slug' refers to the URL valid ID of the statistic
     # More info: https://docs.djangoproject.com/en/1.7/glossary/#term-slug
@@ -25,8 +21,8 @@ class StatisticResult(models.Model):
         return self.slug
 
     def get_data(self):
-        return json.loads(self.serialize_data)
+        return json.loads(s=self.serialize_data)
 
     def store_data(self, data):
-        self.serialize_data = json.dumps(data)
+        self.serialize_data = json.dumps(obj=data)
         self.save()

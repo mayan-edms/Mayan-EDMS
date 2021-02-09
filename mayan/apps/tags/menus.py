@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.navigation.classes import Menu
@@ -13,5 +11,5 @@ menu_tags = Menu(
         app_label='tags', model_name='Tag',
         object_permission=permission_tag_view,
         view_permission=permission_tag_create,
-    ), icon_class=icon_menu_tags, label=_('Tags'), name='tags'
+    ), icon=icon_menu_tags, label=_('Tags'), name='tags'
 )

@@ -1,33 +1,18 @@
-from __future__ import unicode_literals
+from mayan.apps.testing.tests.base import GenericViewTestCase
 
-from mayan.apps.common.tests.base import GenericViewTestCase
-
-from ..classes import Worker, CeleryQueue
 from ..permissions import permission_task_view
 
-from .literals import TEST_QUEUE_LABEL, TEST_QUEUE_NAME, TEST_WORKER_NAME
+from .mixins import TaskManagerTestMixin, TaskManagerViewTestMixin
 
 
-class TaskManagerTestMixin(object):
-    def _create_test_queue(self):
-        self.test_worker = Worker(name=TEST_WORKER_NAME)
-        self.test_queue = CeleryQueue(
-            label=TEST_QUEUE_LABEL, name=TEST_QUEUE_NAME,
-            worker=self.test_worker
-        )
-
-
-class TaskManagerViewTestCase(TaskManagerTestMixin, GenericViewTestCase):
+class TaskManagerViewTestCase(
+    TaskManagerTestMixin, TaskManagerViewTestMixin, GenericViewTestCase
+):
     def setUp(self):
-        super(TaskManagerViewTestCase, self).setUp()
+        super().setUp()
         self._create_test_queue()
 
-    def _request_queue_list(self):
-        return self.get(
-            viewname='task_manager:queue_list', follow=True
-        )
-
-    def test_queue_list_view_no_permissions(self):
+    def test_queue_list_view_no_permission(self):
         response = self._request_queue_list()
 
         self.assertEqual(response.status_code, 403)

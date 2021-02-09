@@ -1,35 +1,33 @@
-from __future__ import unicode_literals
-
 from django.utils.translation import ugettext_lazy as _
 
-from .events import event_file_metadata_document_version_submit
-from .tasks import task_process_document_version
+from .events import event_file_metadata_document_file_submit
+from .tasks import task_process_document_file
 
 
 def method_document_submit(self):
-    latest_version = self.latest_version
-    # Don't error out if document has no version
-    if latest_version:
-        latest_version.submit_for_file_metadata_processing()
+    latest_file = self.file_latest
+    # Don't error out if document has no file
+    if latest_file:
+        latest_file.submit_for_file_metadata_processing()
 
 
-def method_document_version_submit(self):
-    event_file_metadata_document_version_submit.commit(
+def method_document_file_submit(self):
+    event_file_metadata_document_file_submit.commit(
         action_object=self.document, target=self
     )
 
-    task_process_document_version.apply_async(
+    task_process_document_file.apply_async(
         kwargs={
-            'document_version_id': self.pk,
+            'document_file_id': self.pk,
         }
     )
 
 
 def method_get_document_file_metadata(self, dotted_name):
-    latest_version = self.latest_version
-    # Don't error out if document has no version
-    if latest_version:
-        return latest_version.get_file_metadata(
+    latest_file = self.file_latest
+    # Don't error out if document has no file
+    if latest_file:
+        return latest_file.get_file_metadata(
             dotted_name=dotted_name
         )
 
@@ -42,7 +40,7 @@ method_get_document_file_metadata.help_text = _(
 )
 
 
-def method_get_document_version_file_metadata(self, dotted_name):
+def method_get_document_file_file_metadata(self, dotted_name):
     parts = dotted_name.split('.', 1)
 
     if len(parts) < 2:
@@ -64,6 +62,6 @@ def method_get_document_version_file_metadata(self, dotted_name):
             return
 
 
-method_get_document_version_file_metadata.help_text = _(
-    'Return the specified document version file metadata entry.'
+method_get_document_file_file_metadata.help_text = _(
+    'Return the specified document file file metadata entry.'
 )

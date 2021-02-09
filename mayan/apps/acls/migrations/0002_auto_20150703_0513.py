@@ -1,10 +1,7 @@
-from __future__ import unicode_literals
-
 from django.db import models, migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('contenttypes', '0001_initial'),
         ('permissions', '0002_auto_20150628_0533'),

@@ -4,7 +4,7 @@
 {% if link|common_get_type == "<class 'mayan.apps.navigation.classes.Menu'>" %}
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
-            {% if link.icon_class %}{{ link.icon_class.render }}{% endif %}
+            {% if link.icon %}{{ link.icon.render }}{% endif %}
             {{ link.label }}
             <span class="caret"></span>
         </a>
@@ -22,15 +22,11 @@
         </ul>
     </li>
 {% else %}
-
     {% if as_li %}
         <li class="{% if link.active and li_class_active %}{{ li_class_active }}{% endif %}">
     {% endif %}
-
         {% include link_template|default:'navigation/generic_link_instance.html' %}
-
     {% if as_li %}
         </li>
     {% endif %}
-
 {% endif %}

@@ -1,9 +1,7 @@
-from __future__ import unicode_literals
-
 from django.template.loader import get_template
 
 
-class IconDriver(object):
+class IconDriver:
     context = {}
     _registry = {}
 
@@ -36,6 +34,31 @@ class FontAwesomeDriver(IconDriver):
 
     def get_context(self):
         return {'symbol': self.symbol}
+
+
+class FontAwesomeDualClassesDriver(IconDriver):
+    name = 'fontawesome-dual-classes'
+    template_name = 'appearance/icons/font_awesome_layers.html'
+
+    def __init__(self, primary_class, secondary_class):
+        self.primary_class = primary_class
+        self.secondary_class = secondary_class
+
+    def get_context(self):
+        return {
+            'data': (
+                {
+                    'class': 'fas fa-circle',
+                    'transform': 'down-3 right-10',
+                    'mask': '{}'.format(self.primary_class)
+                },
+                {'class': 'far fa-circle', 'transform': 'down-3 right-10'},
+                {
+                    'class': '{}'.format(self.secondary_class),
+                    'transform': 'shrink-4 down-3 right-10'
+                },
+            )
+        }
 
 
 class FontAwesomeDualDriver(IconDriver):
@@ -89,18 +112,16 @@ class FontAwesomeLayersDriver(IconDriver):
     name = 'fontawesome-layers'
     template_name = 'appearance/icons/font_awesome_layers.html'
 
-    def __init__(self, data, shadow_class=None):
+    def __init__(self, data):
         self.data = data
-        self.shadow_class = shadow_class
 
     def get_context(self):
         return {
             'data': self.data,
-            'shadow_class': self.shadow_class,
         }
 
 
-class Icon(object):
+class Icon:
     def __init__(self, driver_name, **kwargs):
         self.kwargs = kwargs
         self.driver = IconDriver.get(name=driver_name)(**kwargs)
@@ -111,6 +132,7 @@ class Icon(object):
 
 IconDriver.register(driver_class=FontAwesomeCSSDriver)
 IconDriver.register(driver_class=FontAwesomeDriver)
+IconDriver.register(driver_class=FontAwesomeDualClassesDriver)
 IconDriver.register(driver_class=FontAwesomeDualDriver)
 IconDriver.register(driver_class=FontAwesomeLayersDriver)
 IconDriver.register(driver_class=FontAwesomeMasksDriver)

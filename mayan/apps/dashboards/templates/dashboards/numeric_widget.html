@@ -8,10 +8,8 @@
             <div class="row">
                 <div class="col-xs-2">
                     {% if icon %}
-                        <i class="dashboard-widget-icon {{ icon }}"></i>
-                    {% elif icon_class %}
                         <div class="dashboard-widget-icon">
-                            {% appearance_icon_render icon_class enable_shadow=True %}
+                            {% appearance_icon_render icon enable_shadow=True %}
                         </div>
                     {% endif %}
                 </div>
@@ -27,7 +25,7 @@
             <a href="{{ link }}">
                 <div class="panel-footer">
                     <span class="pull-left">{% trans 'View details' %}</span>
-                    <span class="pull-right"><i class="fa fa-external-link-alt"></i></span>
+                    <span class="pull-right">{% appearance_icon_render link_icon %}</span>
                     <div class="clearfix"></div>
                 </div>
             </a>

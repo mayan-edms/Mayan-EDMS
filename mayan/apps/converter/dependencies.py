@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.dependencies.classes import BinaryDependency, PythonDependency
@@ -24,7 +22,7 @@ BinaryDependency(
 )
 PythonDependency(
     copyright_attribute='PIL.__doc__', module=__name__, name='Pillow',
-    version_string='==6.2.2',
+    version_string='==7.1.2',
 )
 PythonDependency(
     module=__name__, name='PyPDF2', version_string='==1.26.0'

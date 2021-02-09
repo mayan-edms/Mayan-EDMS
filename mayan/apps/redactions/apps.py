@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import logging
 
 from django.apps import apps
@@ -12,22 +10,31 @@ from mayan.apps.common.menus import menu_list_facet
 from .layers import layer_redactions
 from .transformations import *  # NOQA
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class RedactionsApp(MayanAppConfig):
     app_namespace = 'redactions'
     app_url = 'redactions'
     has_rest_api = False
+    has_static_media = True
     has_tests = False
     name = 'mayan.apps.redactions'
+    static_media_ignore_patterns = (
+        'redactions/node_modules/cropperjs/src/*',
+        'redactions/node_modules/cropperjs/types/index.d.ts',
+        'redactions/node_modules/jquery-cropper/src/*',
+    )
     verbose_name = _('Redactions')
 
     def ready(self):
-        super(RedactionsApp, self).ready()
+        super().ready()
 
-        DocumentPage = apps.get_model(
-            app_label='documents', model_name='DocumentPage'
+        DocumentFilePage = apps.get_model(
+            app_label='documents', model_name='DocumentFilePage'
+        )
+        DocumentVersionPage = apps.get_model(
+            app_label='documents', model_name='DocumentVersionPage'
         )
 
         link_redaction_list = link_transformation_list.copy(
@@ -36,5 +43,7 @@ class RedactionsApp(MayanAppConfig):
         link_redaction_list.text = _('Redactions')
 
         menu_list_facet.bind_links(
-            links=(link_redaction_list,), sources=(DocumentPage,)
+            links=(link_redaction_list,), sources=(
+                DocumentFilePage, DocumentVersionPage,
+            )
         )

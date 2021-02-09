@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from django.contrib.auth.password_validation import validate_password
@@ -19,7 +17,10 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         extra_kwargs = {
-            'url': {'view_name': 'rest_api:group-detail'}
+            'url': {
+                'lookup_url_kwarg': 'group_id',
+                'view_name': 'rest_api:group-detail'
+            }
         }
         fields = ('id', 'name', 'url', 'users_count')
         model = Group
@@ -70,7 +71,10 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         extra_kwargs = {
-            'url': {'view_name': 'rest_api:user-detail'}
+            'url': {
+                'lookup_url_kwarg': 'user_id',
+                'view_name': 'rest_api:user-detail'
+            }
         }
         fields = (
             'first_name', 'date_joined', 'email', 'groups', 'groups_pk_list',
@@ -89,7 +93,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     def create(self, validated_data):
         self.groups_pk_list = validated_data.pop('groups_pk_list', '')
         password = validated_data.pop('password', None)
-        instance = super(UserSerializer, self).create(validated_data)
+        instance = super().create(validated_data)
 
         if password:
             instance.set_password(password)
@@ -107,7 +111,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
             instance.set_password(validated_data['password'])
             validated_data.pop('password')
 
-        instance = super(UserSerializer, self).update(instance, validated_data)
+        instance = super().update(instance, validated_data)
 
         if self.groups_pk_list:
             instance.groups.clear()

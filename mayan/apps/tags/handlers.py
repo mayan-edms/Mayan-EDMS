@@ -1,10 +1,8 @@
-from __future__ import unicode_literals
-
 import logging
 
 from mayan.apps.document_indexing.tasks import task_index_document
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 def handler_index_document(sender, **kwargs):

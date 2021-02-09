@@ -1,16 +1,14 @@
-from __future__ import unicode_literals
-
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.metadata.api import (
     decode_metadata_from_querystring, save_metadata_list
 )
 from mayan.apps.metadata.forms import DocumentMetadataFormSet
+from mayan.apps.sources.classes import DocumentCreateWizardStep
+from mayan.apps.sources.wizard_steps import DocumentCreateWizardStepDocumentType
 
-from mayan.apps.sources.wizards import WizardStep, WizardStepDocumentType
 
-
-class WizardStepMetadata(WizardStep):
+class DocumentCreateWizardStepMetadata(DocumentCreateWizardStep):
     form_class = DocumentMetadataFormSet
     label = _('Enter document metadata')
     name = 'metadata_entry'
@@ -21,7 +19,7 @@ class WizardStepMetadata(WizardStep):
         """
         Skip step if document type has no associated metadata
         """
-        cleaned_data = wizard.get_cleaned_data_for_step(WizardStepDocumentType.name) or {}
+        cleaned_data = wizard.get_cleaned_data_for_step(DocumentCreateWizardStepDocumentType.name) or {}
 
         document_type = cleaned_data.get('document_type')
 
@@ -32,7 +30,7 @@ class WizardStepMetadata(WizardStep):
     def get_form_initial(cls, wizard):
         initial = []
 
-        step_data = wizard.get_cleaned_data_for_step(WizardStepDocumentType.name)
+        step_data = wizard.get_cleaned_data_for_step(DocumentCreateWizardStepDocumentType.name)
         if step_data:
             document_type = step_data['document_type']
             for document_type_metadata_type in document_type.metadata.all():
@@ -50,7 +48,7 @@ class WizardStepMetadata(WizardStep):
         result = {}
         cleaned_data = wizard.get_cleaned_data_for_step(cls.name)
         if cleaned_data:
-            for identifier, metadata in enumerate(wizard.get_cleaned_data_for_step(cls.name)):
+            for identifier, metadata in enumerate(iterable=wizard.get_cleaned_data_for_step(cls.name)):
                 if metadata.get('update'):
                     result['metadata%s_id' % identifier] = metadata['id']
                     result['metadata%s_value' % identifier] = metadata['value']
@@ -67,4 +65,4 @@ class WizardStepMetadata(WizardStep):
             )
 
 
-WizardStep.register(step=WizardStepMetadata)
+DocumentCreateWizardStep.register(step=DocumentCreateWizardStepMetadata)

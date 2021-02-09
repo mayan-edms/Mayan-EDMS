@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.apps import apps
 from django.db.models.signals import post_migrate
 from django.utils.translation import ugettext_lazy as _
@@ -11,17 +9,19 @@ from mayan.apps.acls.permissions import (
 )
 
 from mayan.apps.common.apps import MayanAppConfig
+from mayan.apps.common.classes import ModelCopy
 from mayan.apps.common.menus import (
-    menu_list_facet, menu_object, menu_secondary, menu_setup
+    menu_list_facet, menu_object, menu_related, menu_secondary, menu_setup
 )
-from mayan.apps.common.signals import perform_upgrade
+from mayan.apps.common.signals import signal_perform_upgrade
 from mayan.apps.dashboards.dashboards import dashboard_main
-from mayan.apps.events.classes import ModelEventType
+from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list
 )
 from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
+from mayan.apps.user_management.links import link_group_list
 
 from .classes import Permission
 from .dashboard_widgets import DashboardWidgetRoleTotal
@@ -35,7 +35,6 @@ from .methods import method_group_roles_add, method_group_roles_remove
 from .permissions import (
     permission_role_delete, permission_role_edit, permission_role_view
 )
-from .search import role_search  # NOQA
 
 
 class PermissionsApp(MayanAppConfig):
@@ -47,14 +46,28 @@ class PermissionsApp(MayanAppConfig):
     verbose_name = _('Permissions')
 
     def ready(self):
-        super(PermissionsApp, self).ready()
-        from actstream import registry
+        super().ready()
 
         Role = self.get_model('Role')
         Group = apps.get_model(app_label='auth', model_name='Group')
 
         Group.add_to_class(name='roles_add', value=method_group_roles_add)
         Group.add_to_class(name='roles_remove', value=method_group_roles_remove)
+
+        EventModelRegistry.register(model=Role)
+
+        ModelCopy(
+            model=Role, bind_link=True, register_permission=True
+        ).add_fields(
+            field_names=(
+                'label', 'permissions', 'groups',
+            ),
+        )
+        ModelCopy.add_fields_lazy(
+            model=Group, field_names=(
+                'roles',
+            ),
+        )
 
         ModelEventType.register(
             event_types=(event_role_created, event_role_edited), model=Role
@@ -70,10 +83,20 @@ class PermissionsApp(MayanAppConfig):
 
         # Initialize the permissions at the ready method for subsequent
         # restarts.
-        Permission.initialize()
+        Permission.load_modules()
 
         SourceColumn(
-            attribute='label', is_identifier=True, is_sortable=True, source=Role
+            attribute='label', is_identifier=True, is_sortable=True,
+            source=Role
+        )
+        SourceColumn(
+            attribute='get_permission_count', include_label=True,
+            source=Role
+        )
+        SourceColumn(
+            func=lambda context: context['object'].get_group_count(
+                user=context['request'].user
+            ), include_label=True, label=_('Group count'), source=Role
         )
 
         dashboard_main.add_widget(
@@ -95,6 +118,17 @@ class PermissionsApp(MayanAppConfig):
                 link_role_delete, link_role_edit
             ), sources=(Role,)
         )
+        menu_related.bind_links(
+            links=(link_role_list,), sources=(
+                'user_management:group_multiple_delete',
+                'user_management:group_list', 'user_management:group_create',
+                Group
+            )
+        )
+        menu_related.bind_links(
+            links=(link_group_list,),
+            sources=(Role, 'permissions:role_create', 'permissions:role_list')
+        )
         menu_secondary.bind_links(
             links=(link_role_list, link_role_create),
             sources=(Role, 'permissions:role_create', 'permissions:role_list')
@@ -108,10 +142,7 @@ class PermissionsApp(MayanAppConfig):
             receiver=handler_permission_initialize,
             sender=self
         )
-
-        perform_upgrade.connect(
+        signal_perform_upgrade.connect(
             dispatch_uid='permissions_handler_purge_permissions',
             receiver=handler_purge_permissions
         )
-
-        registry.register(Role)

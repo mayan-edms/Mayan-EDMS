@@ -1,17 +1,26 @@
-from __future__ import absolute_import, unicode_literals
-
 from django import forms
 
-from .widgets import DocumentPagesCarouselWidget, DocumentPageImageWidget
+from .widgets import (
+    DocumentFilePagesCarouselWidget, DocumentVersionPagesCarouselWidget,
+    PageImageWidget, ThumbnailFormWidget
+)
 
 
-class DocumentField(forms.fields.Field):
-    widget = DocumentPagesCarouselWidget
+class DocumentFileField(forms.fields.Field):
+    widget = DocumentFilePagesCarouselWidget
 
 
-class DocumentPageField(forms.fields.Field):
-    widget = DocumentPageImageWidget
+class DocumentFilePageField(forms.fields.Field):
+    widget = PageImageWidget
 
 
 class DocumentVersionField(forms.fields.Field):
-    widget = DocumentPagesCarouselWidget
+    widget = DocumentVersionPagesCarouselWidget
+
+
+class DocumentVersionPageField(forms.fields.Field):
+    widget = PageImageWidget
+
+
+class ThumbnailFormField(forms.fields.Field):
+    widget = ThumbnailFormWidget

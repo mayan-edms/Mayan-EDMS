@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
@@ -7,15 +5,18 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.html_widgets import TwoStateWidget
+from mayan.apps.common.classes import ModelCopy
 from mayan.apps.common.menus import (
-    menu_facet, menu_list_facet, menu_object, menu_secondary, menu_setup
+    menu_facet, menu_list_facet, menu_object, menu_related, menu_secondary,
+    menu_setup
 )
-from mayan.apps.events.classes import ModelEventType
+from mayan.apps.documents.links.document_type_links import link_document_type_list
+from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list
 )
 from mayan.apps.navigation.classes import SourceColumn
+from mayan.apps.views.html_widgets import TwoStateWidget
 
 from .events import event_smart_link_edited
 from .links import (
@@ -42,8 +43,7 @@ class LinkingApp(MayanAppConfig):
     verbose_name = _('Linking')
 
     def ready(self):
-        super(LinkingApp, self).ready()
-        from actstream import registry
+        super().ready()
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'
@@ -56,6 +56,25 @@ class LinkingApp(MayanAppConfig):
         SmartLink = self.get_model(model_name='SmartLink')
         SmartLinkCondition = self.get_model(model_name='SmartLinkCondition')
 
+        EventModelRegistry.register(model=SmartLink)
+
+        ModelCopy(
+            model=SmartLinkCondition
+        ).add_fields(
+            field_names=(
+                'smart_link', 'inclusion', 'foreign_document_data', 'operator', 'expression',
+                'negated', 'enabled',
+            )
+        )
+        ModelCopy(
+            model=SmartLink, bind_link=True, register_permission=True
+        ).add_fields(
+            field_names=(
+                'label', 'dynamic_label', 'enabled', 'document_types',
+                'conditions'
+            ),
+        )
+
         ModelEventType.register(
             event_types=(event_smart_link_edited,), model=SmartLink
         )
@@ -67,35 +86,43 @@ class LinkingApp(MayanAppConfig):
                 permission_smart_link_view
             )
         )
+        ModelPermission.register_inheritance(
+            model=SmartLinkCondition, related='smart_link',
+        )
 
         SourceColumn(
-            source=ResolvedSmartLink, label=_('Label'),
             func=lambda context: context['object'].get_label_for(
                 document=context['document']
-            )
+            ), is_identifier=True, label=_('Label'),
+            source=ResolvedSmartLink
         )
 
         source_column_smart_link_label = SourceColumn(
             attribute='label', is_identifier=True, is_sortable=True,
             source=SmartLink
         )
-        source_column_smart_link_label.add_exclude(ResolvedSmartLink)
+        source_column_smart_link_label.add_exclude(source=ResolvedSmartLink)
         source_column_smart_link_dynamic_label = SourceColumn(
-            attribute='dynamic_label', is_sortable=True, source=SmartLink
+            attribute='dynamic_label', include_label=True, is_sortable=True,
+            source=SmartLink
         )
-        source_column_smart_link_dynamic_label.add_exclude(ResolvedSmartLink)
+        source_column_smart_link_dynamic_label.add_exclude(
+            source=ResolvedSmartLink
+        )
         source_column_smart_link_enabled = SourceColumn(
-            attribute='enabled', is_sortable=True, source=SmartLink,
-            widget=TwoStateWidget
+            attribute='enabled', include_label=True, is_sortable=True,
+            source=SmartLink, widget=TwoStateWidget
         )
-        source_column_smart_link_enabled.add_exclude(ResolvedSmartLink)
+        source_column_smart_link_enabled.add_exclude(
+            source=ResolvedSmartLink
+        )
         SourceColumn(
             attribute='get_full_label', is_identifier=True,
             source=SmartLinkCondition
         )
         SourceColumn(
-            attribute='enabled', is_sortable=True, source=SmartLinkCondition,
-            widget=TwoStateWidget
+            attribute='enabled', include_label=True, is_sortable=True,
+            source=SmartLinkCondition, widget=TwoStateWidget
         )
 
         menu_facet.bind_links(
@@ -132,6 +159,20 @@ class LinkingApp(MayanAppConfig):
             links=(link_smart_link_delete, link_smart_link_edit,),
             sources=(ResolvedSmartLink,)
         )
+        menu_related.bind_links(
+            links=(link_smart_link_list,),
+            sources=(
+                DocumentType, 'documents:document_type_list',
+                'documents:document_type_create'
+            )
+        )
+        menu_related.bind_links(
+            links=(link_document_type_list,),
+            sources=(
+                SmartLink, 'linking:smart_link_list',
+                'linking:smart_link_create'
+            )
+        )
         menu_secondary.bind_links(
             links=(link_smart_link_list, link_smart_link_create),
             sources=(
@@ -149,5 +190,3 @@ class LinkingApp(MayanAppConfig):
             )
         )
         menu_setup.bind_links(links=(link_smart_link_setup,))
-
-        registry.register(SmartLink)

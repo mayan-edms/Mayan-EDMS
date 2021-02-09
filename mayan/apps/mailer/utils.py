@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from .literals import EMAIL_SEPARATORS
 
 

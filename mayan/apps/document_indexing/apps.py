@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.apps import apps
 from django.db.models.signals import post_delete, post_save, pre_delete
 from django.utils.translation import ugettext_lazy as _
@@ -8,17 +6,19 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.html_widgets import TwoStateWidget
+from mayan.apps.common.classes import ModelCopy
 from mayan.apps.common.menus import (
-    menu_facet, menu_list_facet, menu_main, menu_object, menu_secondary,
-    menu_setup, menu_tools
+    menu_facet, menu_list_facet, menu_main, menu_object, menu_related,
+    menu_secondary, menu_setup, menu_tools
 )
-from mayan.apps.documents.signals import post_document_created, post_initial_document_type
-from mayan.apps.events.classes import ModelEventType
+from mayan.apps.documents.links.document_type_links import link_document_type_list
+from mayan.apps.documents.signals import signal_post_document_created, signal_post_initial_document_type
+from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list
 )
 from mayan.apps.navigation.classes import SourceColumn
+from mayan.apps.views.html_widgets import TwoStateWidget
 
 from .events import event_index_template_created, event_index_template_edited
 from .handlers import (
@@ -55,8 +55,7 @@ class DocumentIndexingApp(MayanAppConfig):
     verbose_name = _('Document indexing')
 
     def ready(self):
-        super(DocumentIndexingApp, self).ready()
-        from actstream import registry
+        super().ready()
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'
@@ -73,7 +72,28 @@ class DocumentIndexingApp(MayanAppConfig):
         Index = self.get_model(model_name='Index')
         IndexInstance = self.get_model(model_name='IndexInstance')
         IndexInstanceNode = self.get_model(model_name='IndexInstanceNode')
+        IndexInstanceNodeSearchResult = self.get_model(
+            model_name='IndexInstanceNodeSearchResult'
+        )
         IndexTemplateNode = self.get_model(model_name='IndexTemplateNode')
+
+        EventModelRegistry.register(model=Index)
+
+        ModelCopy(
+            model=IndexTemplateNode, excludes={'parent__isnull': False},
+            extra_kwargs={'get_or_create': True}
+        ).add_fields(
+            field_names=(
+                'index', 'expression', 'enabled', 'link_documents'
+            ),
+        )
+        ModelCopy(
+            model=Index, bind_link=True, register_permission=True
+        ).add_fields(
+            field_names=(
+                'label', 'slug', 'enabled', 'document_types', 'node_templates'
+            ),
+        )
 
         ModelEventType.register(
             event_types=(
@@ -105,79 +125,83 @@ class DocumentIndexingApp(MayanAppConfig):
         )
         column_index_label.add_exclude(source=IndexInstance)
         SourceColumn(
-            attribute='label', is_object_absolute_url=True, is_identifier=True,
-            is_sortable=True, source=IndexInstance
+            attribute='label', is_object_absolute_url=True,
+            is_identifier=True, is_sortable=True, source=IndexInstance
         )
         column_index_slug = SourceColumn(
-            attribute='slug', is_sortable=True, source=Index
+            attribute='slug', include_label=True, is_sortable=True,
+            source=Index
         )
-        column_index_slug.add_exclude(IndexInstance)
+        column_index_slug.add_exclude(source=IndexInstance)
         column_index_enabled = SourceColumn(
-            attribute='enabled', is_sortable=True, source=Index,
-            widget=TwoStateWidget
+            attribute='enabled', include_label=True, is_sortable=True,
+            source=Index, widget=TwoStateWidget
         )
         column_index_enabled.add_exclude(source=IndexInstance)
 
         SourceColumn(
             func=lambda context: context[
                 'object'
-            ].instance_root.get_descendants_count(), label=_('Total levels'),
-            source=IndexInstance
+            ].instance_root.get_descendants_count(), include_label=True,
+            label=_('Total levels'), source=IndexInstance
         )
         SourceColumn(
             func=lambda context: context[
                 'object'
             ].instance_root.get_descendants_document_count(
                 user=context['request'].user
-            ), label=_('Total documents'), source=IndexInstance
+            ), include_label=True, label=_('Total documents'),
+            source=IndexInstance
         )
 
         SourceColumn(
             func=lambda context: node_level(context['object']),
-            label=_('Level'), source=IndexTemplateNode
+            include_label=True, is_identifier=True, label=_('Level'),
+            source=IndexTemplateNode
         )
         SourceColumn(
-            attribute='enabled', is_sortable=True, source=IndexTemplateNode,
-            widget=TwoStateWidget
-        )
-        SourceColumn(
-            attribute='link_documents', is_sortable=True,
+            attribute='enabled', include_label=True, is_sortable=True,
             source=IndexTemplateNode, widget=TwoStateWidget
         )
         SourceColumn(
+            attribute='link_documents', include_label=True, is_sortable=True,
+            source=IndexTemplateNode, widget=TwoStateWidget
+        )
+
+        column_index_instance_node_level = SourceColumn(
             func=lambda context: index_instance_item_link(context['object']),
-            label=_('Level'), is_sortable=True, sort_field='value',
-            source=IndexInstanceNode
+            is_identifier=True, is_sortable=True, label=_('Level'),
+            sort_field='value', source=IndexInstanceNode
+        )
+        column_index_instance_node_level.add_exclude(
+            source=DocumentIndexInstanceNode
         )
         SourceColumn(
             func=lambda context: context['object'].get_descendants_count(),
-            label=_('Levels'), source=IndexInstanceNode
+            include_label=True, label=_('Levels'), source=IndexInstanceNode
         )
-
         SourceColumn(
             func=lambda context: context[
                 'object'
             ].get_descendants_document_count(
                 user=context['request'].user
-            ), label=_('Documents'), source=IndexInstanceNode
+            ), include_label=True, label=_('Documents'),
+            source=IndexInstanceNode
+        )
+        SourceColumn(
+            func=lambda context: index_instance_item_link(context['object']),
+            is_identifier=True, is_sortable=True, label=_('Level'),
+            sort_field='value', source=IndexInstanceNodeSearchResult
+        )
+        SourceColumn(
+            attribute='get_full_path', source=IndexInstanceNodeSearchResult
         )
 
         SourceColumn(
             func=lambda context: get_instance_link(
                 index_instance_node=context['object'],
-            ), label=_('Level'), is_sortable=True, sort_field='value',
-            source=DocumentIndexInstanceNode
-        )
-        SourceColumn(
-            func=lambda context: context['object'].get_descendants_count(),
-            label=_('Levels'), source=DocumentIndexInstanceNode
-        )
-        SourceColumn(
-            func=lambda context: context[
-                'object'
-            ].get_descendants_document_count(
-                user=context['request'].user
-            ), label=_('Documents'), source=DocumentIndexInstanceNode
+            ), include_label=True, is_sortable=True, label=_('Level'),
+            sort_field='value', source=DocumentIndexInstanceNode
         )
 
         menu_facet.bind_links(
@@ -210,6 +234,20 @@ class DocumentIndexingApp(MayanAppConfig):
             ), sources=(IndexTemplateNode,)
         )
         menu_main.bind_links(links=(link_index_instance_menu,), position=98)
+        menu_related.bind_links(
+            links=(link_index_template_list,),
+            sources=(
+                DocumentType, 'documents:document_type_list',
+                'documents:document_type_create'
+            )
+        )
+        menu_related.bind_links(
+            links=(link_document_type_list,),
+            sources=(
+                Index, 'indexing:index_setup_list',
+                'indexing:index_setup_create'
+            )
+        )
         menu_secondary.bind_links(
             links=(link_index_template_list, link_index_template_create),
             sources=(
@@ -222,24 +260,14 @@ class DocumentIndexingApp(MayanAppConfig):
             links=(link_index_instances_rebuild, link_index_instances_reset)
         )
 
-        post_delete.connect(
-            dispatch_uid='document_indexing_handler_delete_empty',
-            receiver=handler_delete_empty,
-            sender=Document
-        )
-        post_document_created.connect(
-            dispatch_uid='document_indexing_handler_index_document',
-            receiver=handler_index_document,
-            sender=Document
-        )
-        post_initial_document_type.connect(
-            dispatch_uid='document_indexing_handler_create_default_document_index',
-            receiver=handler_create_default_document_index,
-            sender=DocumentType
-        )
         post_save.connect(
             dispatch_uid='document_indexing_handler_post_save_index_document',
             receiver=handler_post_save_index_document,
+            sender=Document
+        )
+        post_delete.connect(
+            dispatch_uid='document_indexing_handler_delete_empty',
+            receiver=handler_delete_empty,
             sender=Document
         )
         pre_delete.connect(
@@ -247,5 +275,13 @@ class DocumentIndexingApp(MayanAppConfig):
             receiver=handler_remove_document,
             sender=Document
         )
-
-        registry.register(Index)
+        signal_post_document_created.connect(
+            dispatch_uid='document_indexing_handler_index_document',
+            receiver=handler_index_document,
+            sender=Document
+        )
+        signal_post_initial_document_type.connect(
+            dispatch_uid='document_indexing_handler_create_default_document_index',
+            receiver=handler_create_default_document_index,
+            sender=DocumentType
+        )

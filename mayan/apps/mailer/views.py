@@ -1,19 +1,17 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.contrib import messages
 from django.http import Http404, HttpResponseRedirect
-from django.shortcuts import get_object_or_404
 from django.template import RequestContext
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import ungettext, ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.common.generics import (
+from mayan.apps.documents.models import Document
+from mayan.apps.views.generics import (
     FormView, MultipleObjectFormActionView, SingleObjectDeleteView,
     SingleObjectDynamicFormCreateView, SingleObjectDynamicFormEditView,
     SingleObjectListView
 )
-from mayan.apps.documents.models import Document
+from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from .classes import MailerBackend
 from .forms import (
@@ -22,31 +20,22 @@ from .forms import (
 )
 from .icons import icon_mail_document_submit, icon_user_mailer_setup
 from .links import link_user_mailer_create
-from .models import LogEntry, UserMailer
+from .models import UserMailer
 from .permissions import (
     permission_mailing_link, permission_mailing_send_document,
     permission_user_mailer_create, permission_user_mailer_delete,
     permission_user_mailer_edit, permission_user_mailer_use,
-    permission_user_mailer_view, permission_view_error_log
+    permission_user_mailer_view
 )
 from .tasks import task_send_document
-
-
-class SystemMailerLogEntryListView(SingleObjectListView):
-    extra_context = {
-        'hide_object': True,
-        'title': _('Document mailing error log'),
-    }
-    model = LogEntry
-    view_permission = permission_view_error_log
 
 
 class MailDocumentView(MultipleObjectFormActionView):
     as_attachment = True
     form_class = DocumentMailForm
-    model = Document
     object_permission = permission_mailing_send_document
-
+    pk_url_kwarg = 'document_id'
+    source_queryset = Document.valid
     success_message = _('%(count)d document queued for email delivery')
     success_message_plural = _(
         '%(count)d documents queued for email delivery'
@@ -59,7 +48,7 @@ class MailDocumentView(MultipleObjectFormActionView):
         queryset = self.object_list
 
         result = {
-            'submit_icon_class': icon_mail_document_submit,
+            'submit_icon': icon_mail_document_submit,
             'submit_label': _('Send'),
             'title': ungettext(
                 singular=self.title,
@@ -171,11 +160,12 @@ class UserMailingCreateView(SingleObjectDynamicFormCreateView):
 class UserMailingDeleteView(SingleObjectDeleteView):
     model = UserMailer
     object_permission = permission_user_mailer_delete
+    pk_url_kwarg = 'mailer_id'
     post_action_redirect = reverse_lazy(viewname='mailer:user_mailer_list')
 
     def get_extra_context(self):
         return {
-            'title': _('Delete mailing profile: %s') % self.get_object(),
+            'title': _('Delete mailing profile: %s') % self.object,
         }
 
 
@@ -183,14 +173,15 @@ class UserMailingEditView(SingleObjectDynamicFormEditView):
     form_class = UserMailerDynamicForm
     model = UserMailer
     object_permission = permission_user_mailer_edit
+    pk_url_kwarg = 'mailer_id'
 
     def get_extra_context(self):
         return {
-            'title': _('Edit mailing profile: %s') % self.get_object(),
+            'title': _('Edit mailing profile: %s') % self.object,
         }
 
     def get_form_schema(self):
-        backend = self.get_object().get_backend()
+        backend = self.object.get_backend()
         result = {
             'fields': backend.fields,
             'widgets': getattr(backend, 'widgets', {})
@@ -199,24 +190,6 @@ class UserMailingEditView(SingleObjectDynamicFormEditView):
             result['field_order'] = backend.field_order
 
         return result
-
-
-class UserMailerLogEntryListView(SingleObjectListView):
-    model = LogEntry
-    view_permission = permission_user_mailer_view
-
-    def get_extra_context(self):
-        return {
-            'hide_object': True,
-            'object': self.get_user_mailer(),
-            'title': _('Error log for: %s') % self.get_user_mailer(),
-        }
-
-    def get_source_queryset(self):
-        return self.get_user_mailer().error_log.all()
-
-    def get_user_mailer(self):
-        return get_object_or_404(klass=UserMailer, pk=self.kwargs['pk'])
 
 
 class UserMailerListView(SingleObjectListView):
@@ -243,30 +216,23 @@ class UserMailerListView(SingleObjectListView):
         return {'fields': self.get_backend().fields}
 
 
-class UserMailerTestView(FormView):
+class UserMailerTestView(ExternalObjectViewMixin, FormView):
+    external_object_class = UserMailer
+    external_object_permission = permission_user_mailer_use
+    external_object_pk_url_kwarg = 'mailer_id'
     form_class = UserMailerTestForm
-    object_permission = permission_user_mailer_edit
 
     def form_valid(self, form):
-        self.get_object().test(to=form.cleaned_data['email'])
+        self.external_object.test(to=form.cleaned_data['email'])
         messages.success(
             message=_('Test email sent.'), request=self.request
         )
-        return super(UserMailerTestView, self).form_valid(form=form)
+        return super().form_valid(form=form)
 
     def get_extra_context(self):
         return {
             'hide_object': True,
-            'object': self.get_object(),
+            'object': self.external_object,
             'submit_label': _('Test'),
-            'title': _('Test mailing profile: %s') % self.get_object(),
+            'title': _('Test mailing profile: %s') % self.external_object,
         }
-
-    def get_object(self):
-        user_mailer = get_object_or_404(klass=UserMailer, pk=self.kwargs['pk'])
-        AccessControlList.objects.check_access(
-            obj=user_mailer, permissions=(permission_user_mailer_use,),
-            user=self.request.user
-        )
-
-        return user_mailer

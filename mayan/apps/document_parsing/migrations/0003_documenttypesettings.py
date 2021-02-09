@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.db import migrations, models
 import django.db.models.deletion
 
@@ -12,10 +10,10 @@ def operation_create_parsing_setting_for_existing_document_types(apps, schema_ed
         app_label='document_parsing', model_name='DocumentTypeSettings'
     )
 
-    for document_type in DocumentType.objects.using(schema_editor.connection.alias).all():
+    for document_type in DocumentType.objects.using(alias=schema_editor.connection.alias).all():
         try:
             DocumentTypeSettings.objects.using(
-                schema_editor.connection.alias
+                alias=schema_editor.connection.alias
             ).create(document_type=document_type)
         except DocumentTypeSettings.DoesNotExist:
             pass
@@ -29,17 +27,16 @@ def operation_delete_parsing_setting_for_existing_document_types(apps, schema_ed
         app_label='document_parsing', model_name='DocumentTypeSettings'
     )
 
-    for document_type in DocumentType.objects.using(schema_editor.connection.alias).all():
+    for document_type in DocumentType.objects.using(alias=schema_editor.connection.alias).all():
         try:
             DocumentTypeSettings.objects.using(
-                schema_editor.connection.alias
+                alias=schema_editor.connection.alias
             ).get(document_type=document_type).delete()
         except DocumentTypeSettings.DoesNotExist:
             pass
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('documents', '0042_auto_20180403_0702'),
         ('document_parsing', '0002_auto_20170827_1617'),

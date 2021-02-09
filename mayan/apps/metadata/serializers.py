@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.core.exceptions import ValidationError as DjangoValidationError
 from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext_lazy as _
@@ -9,8 +7,11 @@ from rest_framework.exceptions import ValidationError
 from rest_framework.reverse import reverse
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.documents.serializers import (
-    DocumentSerializer, DocumentTypeSerializer
+from mayan.apps.documents.serializers.document_serializers import (
+    DocumentSerializer
+)
+from mayan.apps.documents.serializers.document_type_serializers import (
+    DocumentTypeSerializer
 )
 
 from .models import DocumentMetadata, DocumentTypeMetadataType, MetadataType
@@ -21,7 +22,7 @@ class MetadataTypeSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         extra_kwargs = {
             'url': {
-                'lookup_field': 'pk', 'lookup_url_kwarg': 'metadata_type_pk',
+                'lookup_field': 'pk', 'lookup_url_kwarg': 'metadata_type_id',
                 'view_name': 'rest_api:metadatatype-detail'
             },
         }
@@ -43,9 +44,10 @@ class DocumentTypeMetadataTypeSerializer(serializers.HyperlinkedModelSerializer)
 
     def get_url(self, instance):
         return reverse(
-            'rest_api:documenttypemetadatatype-detail', args=(
-                instance.document_type.pk, instance.pk
-            ), request=self.context['request'], format=self.context['format']
+            viewname='rest_api:documenttypemetadatatype-detail', kwargs={
+                'document_type_id': instance.document_type.pk,
+                'metadata_type_id': instance.pk
+            }, request=self.context['request'], format=self.context['format']
         )
 
 
@@ -64,9 +66,10 @@ class NewDocumentTypeMetadataTypeSerializer(serializers.ModelSerializer):
 
     def get_url(self, instance):
         return reverse(
-            'rest_api:documenttypemetadatatype-detail', args=(
-                instance.document_type.pk, instance.pk
-            ), request=self.context['request'], format=self.context['format']
+            viewname='rest_api:documenttypemetadatatype-detail', kwargs={
+                'document_type_id': instance.document_type.pk,
+                'metadata_type_id': instance.pk
+            }, request=self.context['request'], format=self.context['format']
         )
 
     def validate(self, attrs):
@@ -95,9 +98,10 @@ class WritableDocumentTypeMetadataTypeSerializer(serializers.ModelSerializer):
 
     def get_url(self, instance):
         return reverse(
-            'rest_api:documenttypemetadatatype-detail', args=(
-                instance.document_type.pk, instance.pk
-            ), request=self.context['request'], format=self.context['format']
+            viewname='rest_api:documenttypemetadatatype-detail', kwargs={
+                'document_type_id': instance.document_type.pk,
+                'metadata_type_id': instance.pk
+            }, request=self.context['request'], format=self.context['format']
         )
 
 
@@ -113,9 +117,10 @@ class DocumentMetadataSerializer(serializers.HyperlinkedModelSerializer):
 
     def get_url(self, instance):
         return reverse(
-            'rest_api:documentmetadata-detail', args=(
-                instance.document.pk, instance.pk
-            ), request=self.context['request'], format=self.context['format']
+            viewname='rest_api:documentmetadata-detail', kwargs={
+                'document_id': instance.document.pk,
+                'metadata_id': instance.pk
+            }, request=self.context['request'], format=self.context['format']
         )
 
     def validate(self, attrs):
@@ -125,6 +130,8 @@ class DocumentMetadataSerializer(serializers.HyperlinkedModelSerializer):
             self.instance.full_clean()
         except DjangoValidationError as exception:
             raise ValidationError(exception)
+
+        attrs['value'] = self.instance.value
 
         return attrs
 
@@ -152,15 +159,14 @@ class NewDocumentMetadataSerializer(serializers.ModelSerializer):
             klass=queryset, pk=validated_data['metadata_type'].pk
         )
 
-        return super(NewDocumentMetadataSerializer, self).create(
-            validated_data=validated_data
-        )
+        return super().create(validated_data=validated_data)
 
     def get_url(self, instance):
         return reverse(
-            'rest_api:documentmetadata-detail', args=(
-                instance.document.pk, instance.pk
-            ), request=self.context['request'], format=self.context['format']
+            viewname='rest_api:documentmetadata-detail', kwargs={
+                'document_id': instance.document.pk,
+                'metadata_id': instance.pk
+            }, request=self.context['request'], format=self.context['format']
         )
 
     def validate(self, attrs):
@@ -174,5 +180,7 @@ class NewDocumentMetadataSerializer(serializers.ModelSerializer):
             instance.full_clean()
         except DjangoValidationError as exception:
             raise ValidationError(exception)
+
+        attrs['value'] = instance.value
 
         return attrs

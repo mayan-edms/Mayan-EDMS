@@ -1,52 +1,61 @@
-from __future__ import unicode_literals
-
 from django.conf.urls import url
 
 from .api_views import (
     APIAdvancedSearchView, APISearchModelList, APISearchView
 )
 from .views import (
-    AdvancedSearchView, ResultsView, SearchAgainView, SearchView
+    AdvancedSearchView, ResultsView, SearchAgainView,
+    SearchBackendReindexView, SearchView
 )
 
-urlpatterns = [
+urlpatterns_search = [
     url(
-        regex=r'^search/(?P<search_model>[\.\w]+)/$', view=SearchView.as_view(),
-        name='search'
+        regex=r'^again/(?P<search_model_name>[\.\w]+)/$', name='search_again',
+        view=SearchAgainView.as_view()
     ),
     url(
-        regex=r'^advanced/(?P<search_model>[\.\w]+)/$',
-        view=AdvancedSearchView.as_view(), name='search_advanced'
+        regex=r'^advanced/(?P<search_model_name>[\.\w]+)/$',
+        name='search_advanced', view=AdvancedSearchView.as_view()
     ),
     url(
-        regex=r'^advanced/$',
-        view=AdvancedSearchView.as_view(), name='search_advanced'
+        regex=r'^advanced/$', name='search_advanced',
+        view=AdvancedSearchView.as_view()
     ),
     url(
-        regex=r'^again/(?P<search_model>[\.\w]+)/$',
-        view=SearchAgainView.as_view(), name='search_again'
+        regex=r'^results/$', name='results', view=ResultsView.as_view()
     ),
     url(
-        regex=r'^results/$',
-        view=ResultsView.as_view(), name='results'
+        regex=r'^results/(?P<search_model_name>[\.\w]+)/$', name='results',
+        view=ResultsView.as_view()
     ),
     url(
-        regex=r'^results/(?P<search_model>[\.\w]+)/$',
-        view=ResultsView.as_view(), name='results'
-    ),
+        regex=r'^search/(?P<search_model_name>[\.\w]+)/$', name='search',
+        view=SearchView.as_view()
+    )
 ]
+
+urlpatterns_tools = [
+    url(
+        regex=r'^backend/reindex/$', name='search_backend_reindex',
+        view=SearchBackendReindexView.as_view()
+    )
+]
+
+urlpatterns = []
+urlpatterns.extend(urlpatterns_search)
+urlpatterns.extend(urlpatterns_tools)
 
 api_urls = [
     url(
-        regex=r'^search_models/$', view=APISearchModelList.as_view(),
-        name='searchmodel-list'
+        regex=r'^search/(?P<search_model_name>[\.\w]+)/$', name='search-view',
+        view=APISearchView.as_view()
     ),
     url(
-        regex=r'^search/(?P<search_model>[\.\w]+)/$',
-        view=APISearchView.as_view(), name='search-view'
+        regex=r'^search/advanced/(?P<search_model_name>[\.\w]+)/$',
+        name='advanced-search-view', view=APIAdvancedSearchView.as_view()
     ),
     url(
-        regex=r'^search/advanced/(?P<search_model>[\.\w]+)/$',
-        view=APIAdvancedSearchView.as_view(), name='advanced-search-view'
-    ),
+        regex=r'^search_models/$', name='searchmodel-list',
+        view=APISearchModelList.as_view()
+    )
 ]

@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
 
@@ -14,6 +12,11 @@ class EventSubscriptionManager(models.Manager):
         return self.filter(
             stored_event_type=stored_event_type, user=user
         )
+
+
+class NotificationManager(models.Manager):
+    def get_unread(self):
+        return self.filter(read=False)
 
 
 class ObjectEventSubscriptionManager(models.Manager):

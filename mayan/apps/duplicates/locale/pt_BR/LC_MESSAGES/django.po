@@ -1,0 +1,1247 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# Translators:
+# Aline Freitas <aline@alinefreitas.com.br>, 2016
+# Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017
+# José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2018-2019
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019-2020
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-30 04:39+0000\n"
+"PO-Revision-Date: 2020-10-26 13:26+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/pt_BR/)\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: apps.py:25 apps.py:39 links.py:14
+msgid "Duplicates"
+msgstr "Duplicados"
+
+#: links.py:18 models.py:20 models.py:30 views.py:75
+msgid "Duplicated documents"
+msgstr "Documentos duplicados"
+
+#: links.py:24 queues.py:13
+msgid "Duplicated document scan"
+msgstr "Busca por documentos duplicados"
+
+#: models.py:17
+msgid "Document"
+msgstr "Documento"
+
+#: models.py:23
+msgid "Added"
+msgstr "Adicionado"
+
+#: models.py:29
+msgid "Duplicated document"
+msgstr "Documento duplicado"
+
+#: queues.py:8
+msgid "Clean empty duplicate lists"
+msgstr "Limpar listas duplicadas vazias"
+
+#: queues.py:18
+msgid "Scan document duplicates"
+msgstr "Varrer duplicados do documento"
+
+#: views.py:36
+msgid "Only exact copies of this document will be shown in the this list."
+msgstr "Apenas cópias exatas deste documento serão mostradas nesta lista."
+
+#: views.py:40
+msgid "There are no duplicates for this document"
+msgstr "Não há duplicados deste documento."
+
+#: views.py:44
+#, python-format
+msgid "Duplicates for document: %s"
+msgstr "Duplicados do documento: %s"
+
+#: views.py:66
+msgid ""
+"Duplicates are documents that are composed of the exact same file, down to "
+"the last byte. Files that have the same text or OCR but are not identical or "
+"were saved using a different file format will not appear as duplicates."
+msgstr ""
+"Duplicados são documentos que possuem exatamente o mesmo arquivo, byte por "
+"byte. Arquivos que possuem o mesmo texto ou OCR mas não são idênticos ou "
+"foram gravados usando um formato de arquivo diferente não aparecerão como "
+"duplicados."
+
+#: views.py:73
+msgid "There are no duplicated documents"
+msgstr "Não há documentos duplicados"
+
+#: views.py:83
+msgid "Scan for duplicated documents?"
+msgstr "Varrer em busca de duplicados?"
+
+#: views.py:90
+msgid "Duplicated document scan queued successfully."
+msgstr "Fila de duplicados varrida com sucesso."
+
+#~ msgid "Documents"
+#~ msgstr "Documentos"
+
+#~ msgid "Decorations"
+#~ msgstr "Decorações"
+
+#~ msgid "Create a document type"
+#~ msgstr "Criar tipo de documento"
+
+#~ msgid ""
+#~ "Every uploaded document must be assigned a document type, it is the basic "
+#~ "way Mayan EDMS categorizes documents."
+#~ msgstr ""
+#~ "A cada documento carregado deve ser atribuído um tipo de documento. Esta "
+#~ "é forma básica pela qual o Mayan EDMS categoriza os documentos."
+
+#~ msgid "Versions comment"
+#~ msgstr "Comentário de versões"
+
+#~ msgid "Versions encoding"
+#~ msgstr "Codificação de versões"
+
+#~ msgid "Versions mime type"
+#~ msgstr "Mimetype de versões"
+
+#~ msgid "Versions timestamp"
+#~ msgstr "Registro de data e hora das versões"
+
+#~ msgid "Document version"
+#~ msgstr "Versão do Documento"
+
+#~ msgid "Page number"
+#~ msgstr "Número da página"
+
+#~ msgid "Return the lastest version of the document."
+#~ msgstr "Retorna a última versão do documento."
+
+#~ msgid "Latest version"
+#~ msgstr "Última versão"
+
+#~ msgid "Return the document instance."
+#~ msgstr "Retornar a instância do documento."
+
+#~ msgid "Thumbnail"
+#~ msgstr "Miniatura"
+
+#~ msgid "Pages"
+#~ msgstr "Páginas"
+
+#~ msgid "Type"
+#~ msgstr "Tipo"
+
+#~ msgid "Original"
+#~ msgstr "Original"
+
+#~ msgid "Keeps the original filename of the uploaded file."
+#~ msgstr "Mantém o nome do arquivo original do arquivo carregado."
+
+#~ msgid "UUID"
+#~ msgstr "UUID"
+
+#~ msgid "Generate an immutable, random UUID (RFC 4122) for each file."
+#~ msgstr "Gere um UUID imutável e aleatório (RFC 4122) para cada arquivo."
+
+#~ msgid "Total pages"
+#~ msgstr "Total de páginas"
+
+#~ msgid "Total documents"
+#~ msgstr "Total de documentos"
+
+#~ msgid "Documents in trash"
+#~ msgstr "Documentos na lixeira"
+
+#~ msgid "Document types"
+#~ msgstr "Tipos de documentos"
+
+#~ msgid "New documents this month"
+#~ msgstr "Novos documentos deste mês"
+
+#~ msgid "New pages this month"
+#~ msgstr "Novas páginas deste mês"
+
+#~ msgid "Document created"
+#~ msgstr "Documento criado "
+
+#~ msgid "Document downloaded"
+#~ msgstr "Documento baixado"
+
+#~ msgid "New version uploaded"
+#~ msgstr "Nova versão carregada"
+
+#~ msgid "New version created"
+#~ msgstr "Nova versão criada"
+
+#~ msgid "Document properties edited"
+#~ msgstr "Propriedades do documento editadas"
+
+#~ msgid "Document trashed"
+#~ msgstr "Documento na lixeira"
+
+#~ msgid "Document type changed"
+#~ msgstr "Tipo de documento alterado"
+
+#~ msgid "Document type created"
+#~ msgstr "Tipo de documento criado"
+
+#~ msgid "Document type edited"
+#~ msgstr "Tipo de documento editado"
+
+#~ msgid "Document version reverted"
+#~ msgstr "Versão de documento revertida"
+
+#~ msgid "Document viewed"
+#~ msgstr "Documento visualizado"
+
+#~ msgid "Compress"
+#~ msgstr "Compactar"
+
+#~ msgid ""
+#~ "Download the document in the original format or in a compressed manner. "
+#~ "This option is selectable only when downloading one document, for "
+#~ "multiple documents, the bundle will always be downloads as a compressed "
+#~ "file."
+#~ msgstr ""
+#~ "Faça o download do documento no formato original ou de forma compactada. "
+#~ "Esta opção só pode ser selecionada quando o download de um documento. "
+#~ "Para vários documentos, o pacote sempre será baixado como um arquivo "
+#~ "compactado."
+
+#~ msgid "Compressed filename"
+#~ msgstr "Nome do arquivo compactado"
+
+#~ msgid ""
+#~ "The filename of the compressed file that will contain the documents to be "
+#~ "downloaded, if the previous option is selected."
+#~ msgstr ""
+#~ "O nome do arquivo compactado que conterá os documentos a serem baixados, "
+#~ "se a opção anterior for selecionada."
+
+#~ msgid "Quick document rename"
+#~ msgstr "Renomear documento rapidamente"
+
+#~ msgid "Preserve extension"
+#~ msgstr "Preservar a extensão"
+
+#~ msgid ""
+#~ "Takes the file extension and moves it to the end of the filename allowing "
+#~ "operating systems that rely on file extensions to open document correctly."
+#~ msgstr ""
+#~ "Toma e move a extensão do arquivo para o final do seu nome, permitindo "
+#~ "aos sistemas operacionais que utilizam extensões de arquivo abrir o "
+#~ "documento corretamente."
+
+#~ msgid "Date added"
+#~ msgstr "Data de adição"
+
+#~ msgid "Language"
+#~ msgstr "Idioma"
+
+#~ msgid "File mimetype"
+#~ msgstr "Mimetype do arquivo"
+
+#~ msgid "None"
+#~ msgstr "Nenhum"
+
+#~ msgid "File encoding"
+#~ msgstr "Codificação de arquivo"
+
+#~ msgid "File size"
+#~ msgstr "Tamanho do arquivo"
+
+#~ msgid "Exists in storage"
+#~ msgstr "Existe no armazenamento"
+
+#~ msgid "File path in storage"
+#~ msgstr "Caminho do arquivo no armazenamento"
+
+#~ msgid "Checksum"
+#~ msgstr "Checksum"
+
+#~ msgid "Page range"
+#~ msgstr "Intervalo de páginas"
+
+#~ msgid ""
+#~ "Page number from which all the transformations will be cloned. Existing "
+#~ "transformations will be lost."
+#~ msgstr ""
+#~ "Número de página a partir do qual todas as transformações serão clonadas. "
+#~ "Transformações existentes serão perdidas."
+
+#~ msgid "Document type"
+#~ msgstr "Tipo de Documento"
+
+#~ msgid ""
+#~ "Takes the file extension and moves it to the end of the filename allowing "
+#~ "operating systems that rely on file extensions to open the downloaded "
+#~ "document version correctly."
+#~ msgstr ""
+#~ "Toma e move a extensão do arquivo para o final do seu nome, permitindo "
+#~ "aos sistemas operacionais que utilizam extensões de arquivo abrir a "
+#~ "versão baixada do documento corretamente."
+
+#~ msgid "Clear transformations"
+#~ msgstr "Remover transformações"
+
+#~ msgid "Clone transformations"
+#~ msgstr "Clonar transformações"
+
+#~ msgid "Change type"
+#~ msgstr "Mudar o tipo"
+
+#~ msgid "Advanced download"
+#~ msgstr "Download avançado"
+
+#~ msgid "Edit properties"
+#~ msgstr "Editar propriedades"
+
+#~ msgid "All documents"
+#~ msgstr "Todos os documentos"
+
+#~ msgid "Recently accessed"
+#~ msgstr "Acessado recentemente"
+
+#~ msgid "Recently added"
+#~ msgstr "Adicionado recentemente"
+
+#~ msgid "Preview"
+#~ msgstr "Pré-visualizar"
+
+#~ msgid "Properties"
+#~ msgstr "Propriedades"
+
+#~ msgid "Print"
+#~ msgstr "Imprimir"
+
+#~ msgid "Quick download"
+#~ msgstr "Download rápido"
+
+#~ msgid "Create document type"
+#~ msgstr "Criar Tipo de documento"
+
+#~ msgid "Delete"
+#~ msgstr "Excluir"
+
+#~ msgid "Deletion policies"
+#~ msgstr "Políticas de exclusão"
+
+#~ msgid "Edit"
+#~ msgstr "Editar"
+
+#~ msgid "Add quick label to document type"
+#~ msgstr "Adicionar etiqueta rápida ao tipo de documento"
+
+#~ msgid "Quick labels"
+#~ msgstr "Etiquetas rápidas"
+
+#~ msgid "Filename generation"
+#~ msgstr "Geração de nome de arquivo"
+
+#~ msgid "Versions"
+#~ msgstr "Versões"
+
+#~ msgid "Download version"
+#~ msgstr "Baixar a versão"
+
+#~ msgid "Revert"
+#~ msgstr "Reverter"
+
+#~ msgid "Disable page"
+#~ msgstr "Desabilitar página"
+
+#~ msgid "Disable pages"
+#~ msgstr "Desabilitar páginas"
+
+#~ msgid "Enable page"
+#~ msgstr "Habilitar página"
+
+#~ msgid "Enable pages"
+#~ msgstr "Habilitar páginas"
+
+#~ msgid "First page"
+#~ msgstr "Primeira página"
+
+#~ msgid "Last page"
+#~ msgstr "Última pagina"
+
+#~ msgid "Previous page"
+#~ msgstr "Página anterior"
+
+#~ msgid "Next page"
+#~ msgstr "Próxima pagina"
+
+#~ msgid "Rotate left"
+#~ msgstr "Girar para a esquerda"
+
+#~ msgid "Rotate right"
+#~ msgstr "Girar para a direita"
+
+#~ msgid "Page image"
+#~ msgstr "Imagem da página"
+
+#~ msgid "Reset view"
+#~ msgstr "Redefinir visualização"
+
+#~ msgid "Zoom in"
+#~ msgstr "Mais zoom"
+
+#~ msgid "Zoom out"
+#~ msgstr "Menos zoom"
+
+#~ msgid "Recalculate page count"
+#~ msgstr "Recalcular a contagem de páginas"
+
+#~ msgid "Favorites"
+#~ msgstr "Favoritos"
+
+#~ msgid "Add to favorites"
+#~ msgstr "Adicionar aos favoritos"
+
+#~ msgid "Remove from favorites"
+#~ msgstr "Remover dos favoritos"
+
+#~ msgid "Move to trash"
+#~ msgstr "Mover para a lixeira"
+
+#~ msgid "Trash can"
+#~ msgstr "Lixeira"
+
+#~ msgid "Restore"
+#~ msgstr "Restaurar"
+
+#~ msgid "Empty trash"
+#~ msgstr "Esvaziar a lixeira"
+
+#~ msgid "Default"
+#~ msgstr "Padrão"
+
+#~ msgid "All pages"
+#~ msgstr "Todas as páginas"
+
+#~ msgid ""
+#~ "UUID of a document, universally Unique ID. An unique identifier generated "
+#~ "for each document."
+#~ msgstr ""
+#~ "UUID de um documento, Universally Unique Identity - Identidade Universal "
+#~ "Única. Um identificador único gerado para cada documento."
+
+#~ msgid "The document type of the document."
+#~ msgstr "O tipo de documento do documento."
+
+#~ msgid "The name of the document."
+#~ msgstr "O nome do documento."
+
+#~ msgid "Label"
+#~ msgstr "Rótulo"
+
+#~ msgid "An optional short text describing a document."
+#~ msgstr "Texto opcional descrevendo um documento."
+
+#~ msgid "Description"
+#~ msgstr "Descrição"
+
+#~ msgid ""
+#~ "The server date and time when the document was finally processed and "
+#~ "added to the system."
+#~ msgstr ""
+#~ "Data e hora do servidor quando o documento foi definitivamente processado "
+#~ "e adicionado ao sistema."
+
+#~ msgid "The dominant language in the document."
+#~ msgstr "O idioma preponderante no documento."
+
+#~ msgid "Whether or not this document is in the trash."
+#~ msgstr "Se o documento está ou não na lixeira."
+
+#~ msgid "In trash?"
+#~ msgstr "Na lixeira?"
+
+#~ msgid "The server date and time when the document was moved to the trash."
+#~ msgstr ""
+#~ "Data e hora do servidor quando o documento foi movido para a lixeira."
+
+#~ msgid "Date and time trashed"
+#~ msgstr "Data e hora de envio à lixeira"
+
+#~ msgid ""
+#~ "A document stub is a document with an entry on the database but no file "
+#~ "uploaded. This could be an interrupted upload or a deferred upload via "
+#~ "the API."
+#~ msgstr ""
+#~ "Um rascunho de documento é um documento com uma entrada no banco de "
+#~ "dados, mas nenhum arquivo carregado. Isso pode ser um envio interrompido "
+#~ "ou um envio diferido por meio da API."
+
+#~ msgid "Is stub?"
+#~ msgstr "É um rascunho?"
+
+#~ msgid "Document stub, id: %d"
+#~ msgstr "Rascunho de documento, id: %d"
+
+#~ msgid "Enabled"
+#~ msgstr "Habilitado"
+
+#~ msgid "Document page"
+#~ msgstr "Página do documento"
+
+#~ msgid "Document pages"
+#~ msgstr "Páginas do documento"
+
+#~ msgid "Page %(page_num)d out of %(total_pages)d of %(document)s"
+#~ msgstr "Pagina %(page_num)d de %(total_pages)d em %(document)s"
+
+#~ msgid "The name of the document type."
+#~ msgstr "O nome do tipo de documento."
+
+#~ msgid ""
+#~ "Amount of time after which documents of this type will be moved to the "
+#~ "trash."
+#~ msgstr ""
+#~ "Tempo após o qual documentos deste tipo serão enviados para a lixeira."
+
+#~ msgid "Trash time period"
+#~ msgstr "Tempo até o envio para a lixeira"
+
+#~ msgid "Trash time unit"
+#~ msgstr "Unidade de tempo na lixeira"
+
+#~ msgid ""
+#~ "Amount of time after which documents of this type in the trash will be "
+#~ "deleted."
+#~ msgstr "Tempo após a qual documentos deste tipo serão excluídos."
+
+#~ msgid "Delete time period"
+#~ msgstr "Tempo de exclusão"
+
+#~ msgid "Delete time unit"
+#~ msgstr "Unidade de tempo de exclusão"
+
+#~ msgid ""
+#~ "The class responsible for producing the actual filename used to store the "
+#~ "uploaded documents."
+#~ msgstr ""
+#~ "A classe responsável por produzir o nome do arquivo real usado para "
+#~ "armazenar os documentos carregados."
+
+#~ msgid "Filename generator backend"
+#~ msgstr "Backend do gerador de nome de arquivo"
+
+#~ msgid ""
+#~ "The arguments for the filename generator backend as a YAML dictionary."
+#~ msgstr ""
+#~ "Os argumentos para o backend do gerador de nome de arquivo como um "
+#~ "dicionário YAML."
+
+#~ msgid "Filename generator backend arguments"
+#~ msgstr "Argumentos de backend do gerador de nome de arquivo"
+
+#~ msgid "Documents types"
+#~ msgstr "Tipos de Documentos"
+
+#~ msgid "Quick label"
+#~ msgstr "Rótulo rápido"
+
+#~ msgid "The server date and time when the document version was processed."
+#~ msgstr ""
+#~ "Data e hora do servidor quando a versão do documento foi processada."
+
+#~ msgid "Timestamp"
+#~ msgstr "Registro de data e hora"
+
+#~ msgid "An optional short text describing the document version."
+#~ msgstr "Um texto curto opcional descrevendo a versão do documento."
+
+#~ msgid "Comment"
+#~ msgstr "Comentário"
+
+#~ msgid "File"
+#~ msgstr "Arquivo"
+
+#~ msgid ""
+#~ "The document version's file mimetype. MIME types are a standard way to "
+#~ "describe the format of a file, in this case the file format of the "
+#~ "document. Some examples: \"text/plain\" or \"image/jpeg\". "
+#~ msgstr ""
+#~ "O arquivo MIME type da versão do documento. MIME types são uma forma de "
+#~ "descrever o formato de um arquivo, neste caso o formato do documento. "
+#~ "Alguns exemplos: \"text/plain\" ou \"image/jpeg\"."
+
+#~ msgid "MIME type"
+#~ msgstr "MIME type"
+
+#~ msgid ""
+#~ "The document version file encoding. binary 7-bit, binary 8-bit, text, "
+#~ "base64, etc."
+#~ msgstr ""
+#~ "A codificação do arquivo da versão do documento: binary 7-bit, binary 8-"
+#~ "bit, text, base64, etc."
+
+#~ msgid "Encoding"
+#~ msgstr "Codificação"
+
+#~ msgid "User"
+#~ msgstr "Usuário"
+
+#~ msgid "Favorite document"
+#~ msgstr "Documento favorito"
+
+#~ msgid "Favorite documents"
+#~ msgstr "Documentos favoritos"
+
+#~ msgid "Accessed"
+#~ msgstr "Acessado"
+
+#~ msgid "Recent document"
+#~ msgstr "Documento recente"
+
+#~ msgid "Recent documents"
+#~ msgstr "Documentos recentes"
+
+#~ msgid "Create documents"
+#~ msgstr "Criar documentos"
+
+#~ msgid "Delete documents"
+#~ msgstr "Excluir documentos"
+
+#~ msgid "Trash documents"
+#~ msgstr "Mover documentos para a lixeira"
+
+#~ msgid "Download documents"
+#~ msgstr "Baixar documentos"
+
+#~ msgid "Edit documents"
+#~ msgstr "Editar documentos"
+
+#~ msgid "Create new document versions"
+#~ msgstr "Criar novas versões de documentos"
+
+#~ msgid "Edit document properties"
+#~ msgstr "Editar propriedades de documento"
+
+#~ msgid "Print documents"
+#~ msgstr "Imprimir documentos"
+
+#~ msgid "Restore trashed document"
+#~ msgstr "Restaurar documentos da lixeira"
+
+#~ msgid "Execute document modifying tools"
+#~ msgstr "Executar as ferramentas de modificação de documento"
+
+#~ msgid "Revert documents to a previous version"
+#~ msgstr "Reverter documentos para uma versão anterior"
+
+#~ msgid "View documents' versions list"
+#~ msgstr "Ver lista de versões do documento"
+
+#~ msgid "View documents"
+#~ msgstr "Ver documentos"
+
+#~ msgid "Create document types"
+#~ msgstr "Criar tipos de documentos"
+
+#~ msgid "Delete document types"
+#~ msgstr "Excluir tipos de documentos"
+
+#~ msgid "Edit document types"
+#~ msgstr "Editar tipos de documentos"
+
+#~ msgid "View document types"
+#~ msgstr "Ver tipos de documentos"
+
+#~ msgid "Converter"
+#~ msgstr "Conversor"
+
+#~ msgid "Documents periodic"
+#~ msgstr "Documentos periódicos"
+
+#~ msgid "Uploads"
+#~ msgstr "Arquivos carregados"
+
+#~ msgid "Generate document page image"
+#~ msgstr "Gerar imagem de página do documento"
+
+#~ msgid "Delete a document"
+#~ msgstr "Excluir um documento"
+
+#~ msgid "Empty the trash can"
+#~ msgstr "Esvazia a lixeira"
+
+#~ msgid "Check document type delete periods"
+#~ msgstr "Verificar períodos de exclusão do tipo de documento"
+
+#~ msgid "Check document type trash periods"
+#~ msgstr "Verificar períodos na lixeira para tipo de documento"
+
+#~ msgid "Delete document stubs"
+#~ msgstr "Excluir rascunhos do documento"
+
+#~ msgid "Update document page count"
+#~ msgstr "Atualizar contagem de páginas do documento"
+
+#~ msgid "Upload new document version"
+#~ msgstr "Carregar nova versão do documento"
+
+#~ msgid "Document type label"
+#~ msgstr "Etiqueta de tipo de documento"
+
+#~ msgid ""
+#~ "The threshold at which the DOCUMENT_CACHE_STORAGE_BACKEND will start "
+#~ "deleting the oldest document image cache files. Specify the size in bytes."
+#~ msgstr ""
+#~ "O limiar a partir do qual o DOCUMENT_CACHE_STORAGE_BACKEND irá começar a "
+#~ "apagar os mais antigos arquivos de imagem de cache de documentos. "
+#~ "Especifique o tamanho em bytes."
+
+#~ msgid ""
+#~ "Path to the Storage subclass to use when storing the cached document "
+#~ "image files."
+#~ msgstr ""
+#~ "Caminho para a subclasse de Storage que será usada para armazenar os "
+#~ "arquivos de imagens de documento em cache."
+
+#~ msgid "Arguments to pass to the DOCUMENT_CACHE_STORAGE_BACKEND."
+#~ msgstr "Argumentos a serem passados para DOCUMENT_CACHE_STORAGE_BACKEND."
+
+#~ msgid "Maximum number of favorite documents to remember per user."
+#~ msgstr "Número máximo de documentos favoritos por usuário."
+
+#~ msgid ""
+#~ "Detect the orientation of each of the document's pages and create a "
+#~ "corresponding rotation transformation to display it rightside up. This is "
+#~ "an experimental feature and it is disabled by default."
+#~ msgstr ""
+#~ "Detecta a orientação de cada página do documento e cria uma transformação "
+#~ "de rotação correspondente para exibí-lo com a orientação correta. Isso é "
+#~ "uma funcionalidade experimental e está desabilitada por padrão."
+
+#~ msgid ""
+#~ "Size of blocks to use when calculating the document file's checksum. A "
+#~ "value of 0 disables the block calculation and the entire file will be "
+#~ "loaded into memory."
+#~ msgstr ""
+#~ "Tamanhos dos blocos a serem usados ao se calcular o checksum do arquivo "
+#~ "do documento. Um valor 0 irá desabilitar o cálculo em blocos e todo "
+#~ "arquivo será carregado na memória."
+
+#~ msgid "Default documents language (in ISO639-3 format)."
+#~ msgstr "Idioma padrão do documento (em formato ISO639-3)."
+
+#~ msgid "List of supported document languages. In ISO639-3 format."
+#~ msgstr "Lista de idiomas de documento suportados. Em formato ISO639-3."
+
+#~ msgid ""
+#~ "Time in seconds that the browser should cache the supplied document "
+#~ "images. The default of 31559626 seconds corresponde to 1 year."
+#~ msgstr ""
+#~ "Tempo em segundos que o browser deverá guardar em cache as imagens de "
+#~ "documento fornecidas. O padrão de 31559626 segundos corresponde a um ano."
+
+#~ msgid ""
+#~ "Maximum number of recently accessed (created, edited, viewed) documents "
+#~ "to remember per user."
+#~ msgstr ""
+#~ "Número máximo de documentos recentemente acessados (criado, editado, "
+#~ "visualizado) a serem lembrados por usuário."
+
+#~ msgid "Maximum number of recently created documents to show."
+#~ msgstr "Número máximo de documentos recém-criados a serem mostrados."
+
+#~ msgid "Amount in degrees to rotate a document page per user interaction."
+#~ msgstr ""
+#~ "Valor em graus para girar uma página do documento por interação do "
+#~ "usuário."
+
+#~ msgid "Path to the Storage subclass to use when storing document files."
+#~ msgstr ""
+#~ "Caminho para a subclasse de Storage que será usada para armazenar os "
+#~ "arquivos de documento."
+
+#~ msgid "Arguments to pass to the DOCUMENT_STORAGE_BACKEND."
+#~ msgstr "Argumentos a serem passados para DOCUMENT_STORAGE_BACKEND."
+
+#~ msgid ""
+#~ "Time after which a document stub will be considered invalid and deleted."
+#~ msgstr ""
+#~ "Tempo até que um rascunho de um documento seja considerado inválido e "
+#~ "deverá ser apagado."
+
+#~ msgid ""
+#~ "Amount of time in seconds, a failed document page image task will wait "
+#~ "before retrying."
+#~ msgstr ""
+#~ "Quantidade de tempo em segundos, que uma tarefa de imagem de página de "
+#~ "documento com falha aguardará antes de se tentada novamente."
+
+#~ msgid "Height in pixels of the document thumbnail image."
+#~ msgstr "Altura em pixels da miniatura do documento."
+
+#~ msgid ""
+#~ "Maximum amount in percent (%) to allow user to zoom in a document page "
+#~ "interactively."
+#~ msgstr ""
+#~ "Valor máximo em porcentagem (%) para permitir ao usuário aumentar o zoom "
+#~ "em uma página do documento de forma interativa."
+
+#~ msgid ""
+#~ "Minimum amount in percent (%) to allow user to zoom out a document page "
+#~ "interactively."
+#~ msgstr ""
+#~ "Valor mínimo em porcentagem (%) para permitir ao usuário diminuir o zoom "
+#~ "em uma página do documento de forma interativa."
+
+#~ msgid ""
+#~ "Amount in percent zoom in or out a document page per user interaction."
+#~ msgstr ""
+#~ "Quantidade em porcentagem (%) de zoom em uma página ou documento por "
+#~ "interação do usuário."
+
+#~ msgid "January"
+#~ msgstr "Janeiro"
+
+#~ msgid "February"
+#~ msgstr "Fevereiro"
+
+#~ msgid "March"
+#~ msgstr "Março"
+
+#~ msgid "April"
+#~ msgstr "Abril"
+
+#~ msgid "May"
+#~ msgstr "Maio"
+
+#~ msgid "June"
+#~ msgstr "Junho"
+
+#~ msgid "July"
+#~ msgstr "Julho"
+
+#~ msgid "August"
+#~ msgstr "Agosto"
+
+#~ msgid "September"
+#~ msgstr "Setembro"
+
+#~ msgid "October"
+#~ msgstr "Outubro"
+
+#~ msgid "November"
+#~ msgstr "Novembro"
+
+#~ msgid "December"
+#~ msgstr "Dezembro"
+
+#~ msgid "New documents per month"
+#~ msgstr "Novos documentos por mês"
+
+#~ msgid "New document versions per month"
+#~ msgstr "Novas versões de documentos por mês"
+
+#~ msgid "New document pages per month"
+#~ msgstr "Novas páginas de documentos por mês"
+
+#~ msgid "Total documents at each month"
+#~ msgstr "Total de documentos por mês"
+
+#~ msgid "Total document versions at each month"
+#~ msgstr "Total de versões de documentos por mês"
+
+#~ msgid "Total document pages at each month"
+#~ msgstr "Total de páginas de documentos por mês"
+
+#~ msgid ""
+#~ "Unable to initialize the document image storage. Check the settings {} "
+#~ "and {} for formatting errors."
+#~ msgstr ""
+#~ "Não foi possível inicializar o armazenamento da imagem do documento. "
+#~ "Verifique as configurações {} e {} para erros de formatação."
+
+#~ msgid "Document images"
+#~ msgstr "Imagens do documento"
+
+#~ msgid ""
+#~ "Unable to initialize the document version storage. Check the settings {} "
+#~ "and {} for formatting errors."
+#~ msgstr ""
+#~ "Não foi possível inicializar o armazenamento da versão do documento. "
+#~ "Verifique as configurações {} e {} para erros de formatação."
+
+#~ msgid "Document version files"
+#~ msgstr "Arquivos de versão do documento"
+
+#~ msgid "Document page image preview"
+#~ msgstr "Pré-visualização da página do documento"
+
+#~ msgid ""
+#~ "\n"
+#~ "                    Page %(page_number)s of %(total_pages)s\n"
+#~ "                "
+#~ msgstr ""
+#~ "\n"
+#~ "                    Página %(page_number)s de %(total_pages)s\n"
+#~ "                "
+
+#~ msgid "No pages to display"
+#~ msgstr "Não há páginas a exibir"
+
+#~ msgid "Document image"
+#~ msgstr "Imagem do documento"
+
+#~ msgid "Unknown language \"%s\""
+#~ msgstr "Idioma desconhecido \"%s\""
+
+#~ msgid ""
+#~ "This could mean that the document is of a format that is not supported, "
+#~ "that it is corrupted or that the upload process was interrupted. Use the "
+#~ "document page recalculation action to attempt to introspect the page "
+#~ "count again."
+#~ msgstr ""
+#~ "Isso pode significar que o documento é de um formato não suportado, está "
+#~ "corrompido ou que o processo de upload foi interrompido. Use a ação de "
+#~ "recálculo das páginas para tentar averiguar a contagem de páginas "
+#~ "novamente."
+
+#~ msgid "No document pages available"
+#~ msgstr "Não há páginas disponíveis do documento"
+
+#~ msgid "Pages for document: %s"
+#~ msgstr "Páginas por documento: %s"
+
+#~ msgid "There are no more pages in this document"
+#~ msgstr "Não há mais páginas neste documento"
+
+#~ msgid "You are already at the first page of this document"
+#~ msgstr "Você já está na primeira página deste documento"
+
+#~ msgid "Image of: %s"
+#~ msgstr "Imagem de: %s"
+
+#~ msgid "Disable the selected document page?"
+#~ msgid_plural "Disable the selected document pages?"
+#~ msgstr[0] "Disabilitar as páginas do documento selecionadas?"
+#~ msgstr[1] "Desabilitar as páginas selecionadas do documento?"
+
+#~ msgid "Enable the selected document page?"
+#~ msgid_plural "Enable the selected document pages?"
+#~ msgstr[0] "Habilitar as páginas selecionadas do documento?"
+#~ msgstr[1] "Habilitar as páginas selecionadas do documento?"
+
+#~ msgid "Documents of type: %s"
+#~ msgstr "Documentos do tipo: %s"
+
+#~ msgid ""
+#~ "Document types are the most basic units of configuration. Everything in "
+#~ "the system will depend on them. Define a document type for each type of "
+#~ "physical document you intend to upload. Example document types: invoice, "
+#~ "receipt, manual, prescription, balance sheet."
+#~ msgstr ""
+#~ "Tipos de documentos são a unidade mais básica de configuração. Tudo no "
+#~ "sistema depende dos tipos. Defina um tipo de documento para cada tipo de "
+#~ "documento físico que você pretende carregar. Exemplos: fatura, recibo, "
+#~ "manual, contrato, notificação, precrição."
+
+#~ msgid "No document types available"
+#~ msgstr "Não há tipos de documentos disponíveis."
+
+#~ msgid "All documents of this type will be deleted too."
+#~ msgstr "Todos os documentos deste tipo serão excluídos também."
+
+#~ msgid "Delete the document type: %s?"
+#~ msgstr "Remove o documento do tipo: %s?"
+
+#~ msgid "Edit document type: %s"
+#~ msgstr "Editar o tipo de documento: %s"
+
+#~ msgid "Deletion policies for document type: %s"
+#~ msgstr "Políticas de exclusão para o tipo de documento: %s"
+
+#~ msgid "Create quick label for document type: %s"
+#~ msgstr "Criar uma etiqueta rápida para o documento tipo: %s"
+
+#~ msgid ""
+#~ "Delete the quick label: %(label)s, from document type \"%(document_type)s"
+#~ "\"?"
+#~ msgstr ""
+#~ "Apagar a etiqueta rápida: %(label)s, do documento tipo \"%(document_type)s"
+#~ "\"?"
+
+#~ msgid ""
+#~ "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
+#~ msgstr ""
+#~ "Editar etiqueta rápida \"%(filename)s\" para documento do tipo "
+#~ "\"%(document_type)s\""
+
+#~ msgid ""
+#~ "Quick labels are predetermined filenames that allow the quick renaming of "
+#~ "documents as they are uploaded by selecting them from a list. Quick "
+#~ "labels can also be used after the documents have been uploaded."
+#~ msgstr ""
+#~ "Rótulos rápidos (quick labels) são nomes de arquivos predeterminados que "
+#~ "permitem que os documentos sejam rapidadamente renomeados ao serem "
+#~ "selecionados de uma lista. O rótulos rápidos também podem ser usados "
+#~ "depois que os documentos foram carregados."
+
+#~ msgid "There are no quick labels for this document type"
+#~ msgstr "Não há rótulos rápidos para este tipo de documento"
+
+#~ msgid "Quick labels for document type: %s"
+#~ msgstr "Etiquetas rápidas para documento do tipo: %s"
+
+#~ msgid "Filename generation setup for document type: %s"
+#~ msgstr ""
+#~ "Configuração de geração de nome de arquivo para tipo de documento: %s"
+
+#~ msgid "Download document version"
+#~ msgstr "Baixar a versão do documento"
+
+#~ msgid "Versions of document: %s"
+#~ msgstr "Versões do documento: %s"
+
+#~ msgid "All later version after this one will be deleted too."
+#~ msgstr "Todas as versões posteriores após esta serão excluídas também."
+
+#~ msgid "Revert to this version?"
+#~ msgstr "Reverter para esta versão?"
+
+#~ msgid "Document version reverted successfully"
+#~ msgstr "Versão do documento revertida com sucesso"
+
+#~ msgid "Error reverting document version; %s"
+#~ msgstr "Erro ao reverter versão do documento; %s"
+
+#~ msgid "Preview of document version: %s"
+#~ msgstr "Pré-visualização da versão do documento: %s"
+
+#~ msgid "Error retrieving document list: %(exception)s."
+#~ msgstr "Erro ao recuperar a lista de documentos: %(exception)s"
+
+#~ msgid ""
+#~ "This could mean that no documents have been uploaded or that your user "
+#~ "account has not been granted the view permission for any document or "
+#~ "document type."
+#~ msgstr ""
+#~ "Isso pode significar que nenhum documento foi carregado ou que sua conta "
+#~ "de usuário não tem permissões para ver nenhum documento ou tipo de "
+#~ "documento."
+
+#~ msgid "No documents available"
+#~ msgstr "Não há documentos disponíveis"
+
+#~ msgid "Document type change request performed on %(count)d document"
+#~ msgstr ""
+#~ "Pedido de alteração de tipo de documento executado em %(count)d documento"
+
+#~ msgid "Document type change request performed on %(count)d documents"
+#~ msgstr ""
+#~ "Pedido de alteração de tipo de documento executado em %(count)d documentos"
+
+#~ msgid "Change"
+#~ msgstr "Mudança"
+
+#~ msgid "Change the type of the selected document"
+#~ msgid_plural "Change the type of the selected documents"
+#~ msgstr[0] "Alterar o tipo de documentos selecionados"
+#~ msgstr[1] "Alterar o tipo de documentos selecionados"
+
+#~ msgid "Change the type of the document: %s"
+#~ msgstr "Alterar o tipo do documento: %s"
+
+#~ msgid "Document type for \"%s\" changed successfully."
+#~ msgstr "Tipo de documento para \"%s\" alterado com sucesso."
+
+#~ msgid "Download"
+#~ msgstr "Baixar"
+
+#~ msgid "Preview of document: %s"
+#~ msgstr "Pré-visualização do documento:%s "
+
+#~ msgid "Edit properties of document: %s"
+#~ msgstr "Editar propriedades do documento: %s"
+
+#~ msgid "Properties for document: %s"
+#~ msgstr "Propriedades do documento:%s"
+
+#~ msgid "%(count)d document queued for page count recalculation"
+#~ msgstr "%(count)d documento em fila para recálculo de contagem de página"
+
+#~ msgid "%(count)d documents queued for page count recalculation"
+#~ msgstr "%(count)d documentos em fila para recálculo de contagem de página"
+
+#~ msgid "Recalculate the page count of the selected document?"
+#~ msgid_plural "Recalculate the page count of the selected documents?"
+#~ msgstr[0] "Recalcular a contagem de páginas do documento selecionado?"
+#~ msgstr[1] "Recalcular a contagem de páginas dos documentos selecionados?"
+
+#~ msgid "Recalculate the page count of the document: %s?"
+#~ msgstr "Recalcular a contagem de páginas do documento: %s?"
+
+#~ msgid ""
+#~ "Document \"%(document)s\" is empty. Upload at least one document version "
+#~ "before attempting to detect the page count."
+#~ msgstr ""
+#~ "O documento \"%(document)s\" está vazio. Carregue ao menos uma versão do "
+#~ "documento antes de tentar detectar o número de páginas."
+
+#~ msgid "Transformation clear request processed for %(count)d document"
+#~ msgstr ""
+#~ "Solicitação de remoção de transformação processada para o ducumento"
+#~ "%(count)d"
+
+#~ msgid "Transformation clear request processed for %(count)d documents"
+#~ msgstr ""
+#~ "Solicitação de remoção de transformação processada para %(count)d "
+#~ "documentos"
+
+#~ msgid "Clear all the page transformations for the selected document?"
+#~ msgid_plural "Clear all the page transformations for the selected document?"
+#~ msgstr[0] ""
+#~ "Limpar todas as transformações de página para o documento selecionado?"
+#~ msgstr[1] ""
+#~ "Limpar todas as transformações de página para o documento selecionado?"
+
+#~ msgid "Clear all the page transformations for the document: %s?"
+#~ msgstr "Limpar todas as transformações de página para o documento: %s?"
+
+#~ msgid ""
+#~ "Error deleting the page transformations for document: %(document)s; "
+#~ "%(error)s."
+#~ msgstr ""
+#~ "Erro ao excluir as transformações de página para o documento: "
+#~ "%(document)s; %(error)s ."
+
+#~ msgid ""
+#~ "Error cloning the page transformations for document: %(document)s; "
+#~ "%(error)s."
+#~ msgstr ""
+#~ "Erro ao clonar as transformações de página para o documento: "
+#~ "%(document)s; %(error)s."
+
+#~ msgid "Transformations cloned successfully."
+#~ msgstr "Transformações clonadas com sucesso."
+
+#~ msgid "Submit"
+#~ msgstr "Submeter"
+
+#~ msgid "Clone page transformations for document: %s"
+#~ msgstr "Clonar transformações de página para o documento: %s"
+
+#~ msgid "Print: %s"
+#~ msgstr "Imprimir: %s"
+
+#~ msgid ""
+#~ "This view will list the latest documents viewed or manipulated in any way "
+#~ "by this user account."
+#~ msgstr ""
+#~ "Esta visualização irá listar os últimos documentos vistos ou manuseados "
+#~ "de qualquer forma por esta conta de usuário."
+
+#~ msgid "There are no recently accessed document"
+#~ msgstr "Não há documentos acessados recentemente"
+
+#~ msgid "This view will list the latest documents uploaded in the system."
+#~ msgstr ""
+#~ "Esta visualização irá listar os últimos documentos carregados no sistema."
+
+#~ msgid "There are no recently added document"
+#~ msgstr "Não há documentos adicionados recentemente"
+
+#~ msgid ""
+#~ "Favorited documents will be listed in this view. Up to %(count)d "
+#~ "documents can be favorited per user. "
+#~ msgstr ""
+#~ "Documentos favoritos serão listados nesta visualização. Até %(count)d "
+#~ "podem ser marcados como favoritos pelo usuário."
+
+#~ msgid "There are no favorited documents."
+#~ msgstr "Não há documentos adicionados aos favoritos."
+
+#~ msgid "%(count)d document added to favorites."
+#~ msgstr "%(count)d documento adicionado aos favoritos."
+
+#~ msgid "%(count)d documents added to favorites."
+#~ msgstr "%(count)d documentos adicionados aos favoritos."
+
+#~ msgid "Add"
+#~ msgstr "Adicionar"
+
+#~ msgid "Document \"%(instance)s\" is not in favorites."
+#~ msgstr "O documento \"%(instance)s\" não está nos favoritos."
+
+#~ msgid "%(count)d document removed from favorites."
+#~ msgstr "%(count)d documentos removidos dos favoritos."
+
+#~ msgid "%(count)d documents removed from favorites."
+#~ msgstr "%(count)d documentos removidos dos favoritos."
+
+#~ msgid "Remove"
+#~ msgstr "Remover"
+
+#~ msgid "%(count)d document moved to the trash."
+#~ msgstr "%(count)d documento movido para a lixeira."
+
+#~ msgid "%(count)d documents moved to the trash."
+#~ msgstr "%(count)d documentos movidos para a lixeira."
+
+#~ msgid "Move the selected document to the trash?"
+#~ msgid_plural "Move the selected documents to the trash?"
+#~ msgstr[0] "Mover os documentos selecionados para a lixeira?"
+#~ msgstr[1] "Mover os documentos selecionados para a lixeira?"
+
+#~ msgid "Empty trash?"
+#~ msgstr "Esvaziar a lixeira?"
+
+#~ msgid "The trash emptying task has been queued."
+#~ msgstr "A tarefa de esvaziamento da lixeira foi colocada na fila."
+
+#~ msgid "%(count)d trashed document submitted for deletion."
+#~ msgstr "%(count)d documento da lixeria enviado para exclusão."
+
+#~ msgid "%(count)d trashed documents submitted for deletion."
+#~ msgstr "%(count)d documentos da lixeria enviados para exclusão."
+
+#~ msgid "Delete the selected trashed document?"
+#~ msgid_plural "Delete the selected trashed documents?"
+#~ msgstr[0] "Excluir o documento da lixeira selecionado?"
+#~ msgstr[1] "Excluir os documentos selecionados da lixeira?"
+
+#~ msgid ""
+#~ "To avoid loss of data, documents are not deleted instantly. First, they "
+#~ "are placed in the trash can. From here they can be then finally deleted "
+#~ "or restored."
+#~ msgstr ""
+#~ "Para evitar a perda de dados, documentos não são excluídos imediatamente. "
+#~ "Primeiro, eles são colocados na lixeira. Depois disso eles podem ser "
+#~ "finalmente exluídos ou restaurados."
+
+#~ msgid "There are no documents in the trash can"
+#~ msgstr "Não há documentos na lixeira"
+
+#~ msgid "%(count)d trashed document restored."
+#~ msgstr "%(count)d documento da lixeira restaurado"
+
+#~ msgid "%(count)d trashed documents restored."
+#~ msgstr "%(count)d documentos da lixeira restaurados."
+
+#~ msgid "Restore the selected trashed document?"
+#~ msgid_plural "Restore the selected trashed documents?"
+#~ msgstr[0] "Selecionar o documento selecionado da lixeira?"
+#~ msgstr[1] "Restaurar os documentos selecionados da lixeira?"
+
+#~ msgid "Pages: %d"
+#~ msgstr "Páginas: %d"
+
+#~ msgid "Send document to trash"
+#~ msgstr "Enviar documento para a lixeira"

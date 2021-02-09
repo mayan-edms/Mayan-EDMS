@@ -5,14 +5,16 @@
 # 
 # Translators:
 # Roberto Rosario, 2020
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
+# e6bc1d20d3f0031709c3c11db1061ebc_be0a371 <8b4e580508477646e97982ebad39e3af_312311>, 2020
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 01:37-0400\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2019-04-14 04:06+0000\n"
-"Last-Translator: Roberto Rosario, 2020\n"
+"Last-Translator: e6bc1d20d3f0031709c3c11db1061ebc_be0a371 <8b4e580508477646e97982ebad39e3af_312311>, 2020\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,49 +22,54 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:15 settings.py:9
+#: apps.py:13 settings.py:7
 msgid "Auto administrator"
-msgstr ""
+msgstr "Auto administrator"
 
 #: auth/allauth.py:54
 msgid ""
 "Welcome Admin! You have been given superuser privileges. Use them with "
 "caution."
 msgstr ""
+"Welkom Admin! U hebt superuser privileges gekregen. Gebruik ze voorzichtig!"
 
-#: models.py:15
+#: models.py:13
 msgid "Account"
 msgstr "Account"
 
-#: models.py:18
+#: models.py:16
 msgid "Password"
 msgstr "Wachtwoord"
 
-#: models.py:21
+#: models.py:19
 msgid "Password hash"
 msgstr "Wachtwoord-hash"
 
-#: models.py:27
+#: models.py:25
 msgid "Autoadmin properties"
-msgstr ""
+msgstr "Autoadmin eigenschappen"
 
-#: settings.py:14
+#: settings.py:11
 msgid "Sets the email of the automatically created super user account."
 msgstr ""
+"Stelt de e-mail in van het automatisch aangemaakte supergebruikersaccount."
 
-#: settings.py:20
+#: settings.py:16
 msgid ""
 "The password of the automatically created super user account. If it is equal"
 " to None, the password is randomly generated."
 msgstr ""
+"Het wachtwoord van het automatisch aangemaakte supergebruikersaccount. Als "
+"het gelijk is aan \"None\", wordt het wachtwoord willekeurig gegenereerd."
 
-#: settings.py:27
+#: settings.py:22
 msgid "The username of the automatically created super user account."
 msgstr ""
+"De gebruikersnaam van het automatisch aangemaakte supergebruikersaccount."
 
 #: templates/autoadmin/credentials.html:11
 msgid "Automatic credentials"
-msgstr ""
+msgstr "Automatische referenties"
 
 #: templates/autoadmin/credentials.html:16
 #, python-format

@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 import logging
 
 from django.utils.translation import ugettext_lazy as _
@@ -12,7 +10,7 @@ from mayan.apps.document_states.exceptions import WorkflowStateActionError
 
 from .models import DetachedSignature, EmbeddedSignature
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class DocumentSignatureDetachedAction(WorkflowAction):
@@ -22,7 +20,7 @@ class DocumentSignatureDetachedAction(WorkflowAction):
             'class': 'django.forms.ModelChoiceField', 'kwargs': {
                 'help_text': _(
                     'Private key that will be used to sign the document '
-                    'version.'
+                    'file.'
                 ), 'queryset': Key.objects.none(),
             },
         }, 'passphrase': {
@@ -30,7 +28,7 @@ class DocumentSignatureDetachedAction(WorkflowAction):
             'class': 'django.forms.CharField', 'kwargs': {
                 'help_text': _(
                     'The passphrase to unlock the key and allow it to be '
-                    'used to sign the document version.'
+                    'used to sign the document file.'
                 ), 'required': False
             },
         },
@@ -44,38 +42,36 @@ class DocumentSignatureDetachedAction(WorkflowAction):
     }
 
     def get_arguments(self, context):
-        latest_version = context['document'].latest_version
-        if not latest_version:
+        latest_file = context['document'].file_latest
+        if not latest_file:
             raise WorkflowStateActionError(
                 _(
-                    'Document has no version to sign. You might be trying to '
+                    'Document has no file to sign. You might be trying to '
                     'use this action in an initial state before the created '
                     'document is yet to be processed.'
                 )
             )
 
         return {
-            'document_version': latest_version,
+            'document_file': latest_file,
             'key': Key.objects.get(pk=self.form_data['key']),
             'passphrase': self.form_data.get('passphrase')
         }
 
-    def get_form_schema(self, request):
-        user = request.user
-        logger.debug('user: %s', user)
+    def get_form_schema(self, **kwargs):
+        result = super().get_form_schema(**kwargs)
 
         queryset = AccessControlList.objects.restrict_queryset(
             permission=permission_key_sign, queryset=Key.objects.all(),
-            user=user
+            user=kwargs['request'].user
         )
 
-        self.fields['key']['kwargs']['queryset'] = queryset
-        return super(DocumentSignatureDetachedAction, self).get_form_schema(
-            request=request
-        )
+        result['fields']['key']['kwargs']['queryset'] = queryset
+
+        return result
 
     def execute(self, context):
-        DetachedSignature.objects.sign_document_version(
+        DetachedSignature.objects.sign_document_file(
             **self.get_arguments(context=context)
         )
 
@@ -84,6 +80,6 @@ class DocumentSignatureEmbeddedAction(DocumentSignatureDetachedAction):
     label = _('Sign document (embedded)')
 
     def execute(self, context):
-        EmbeddedSignature.objects.sign_document_version(
+        EmbeddedSignature.objects.sign_document_file(
             **self.get_arguments(context=context)
         )

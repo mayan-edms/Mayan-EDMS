@@ -1,16 +1,14 @@
-from __future__ import unicode_literals
-
 import logging
 
 from django.apps import apps
 
+from mayan.apps.lock_manager.backends.base import LockingBackend
 from mayan.apps.lock_manager.exceptions import LockError
-from mayan.apps.lock_manager.runtime import locking_backend
 from mayan.celery import app
 
 from .literals import CHECKOUT_EXPIRATION_LOCK_EXPIRE
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 @app.task(ignore_result=True)
@@ -23,7 +21,7 @@ def task_check_expired_check_outs():
     lock_id = 'task_expired_check_outs'
     try:
         logger.debug('trying to acquire lock: %s', lock_id)
-        lock = locking_backend.acquire_lock(
+        lock = LockingBackend.get_instance().acquire_lock(
             name=lock_id, timeout=CHECKOUT_EXPIRATION_LOCK_EXPIRE
         )
         logger.debug('acquired lock: %s', lock_id)

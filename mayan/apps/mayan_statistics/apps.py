@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.apps import MayanAppConfig
@@ -11,30 +9,37 @@ from .links import (
     link_execute, link_namespace_details, link_namespace_list,
     link_statistics, link_view
 )
-from .tasks import task_execute_statistic  # NOQA - Force registration of task
 
 
 class StatisticsApp(MayanAppConfig):
     app_namespace = 'statistics'
     app_url = 'statistics'
+    has_static_media = True
     has_tests = True
     name = 'mayan.apps.mayan_statistics'
+    static_media_ignore_patterns = (
+        'statistics/node_modules/chart.js/book.*',
+        'statistics/node_modules/chart.js/karma.conf.*',
+        'statistics/node_modules/chart.js/samples/*',
+        'statistics/node_modules/chart.js/src/*',
+        'statistics/node_modules/chart.js/*docs*',
+    )
     verbose_name = _('Statistics')
 
     def ready(self):
-        super(StatisticsApp, self).ready()
+        super().ready()
 
         SourceColumn(
             attribute='schedule',
             # Translators: Schedule here is a noun, the 'schedule' at
             # which the statistic will be updated
-            label=_('Schedule'),
-            source=StatisticLineChart,
+            include_label=True, label=_('Schedule'),
+            source=StatisticLineChart
         )
 
         SourceColumn(
-            attribute='get_last_update', label=_('Last update'),
-            source=StatisticLineChart,
+            attribute='get_last_update', include_label=True,
+            label=_('Last update'), source=StatisticLineChart
         )
 
         menu_object.bind_links(

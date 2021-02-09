@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import logging
 
 from django.utils.translation import ugettext_lazy as _
@@ -11,7 +9,7 @@ from mayan.apps.documents.models.document_models import DocumentType
 
 from .models import StagingFolderSource, WebFormSource
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class StagingFolderFileUploadSerializer(serializers.Serializer):
@@ -90,7 +88,7 @@ class WebFormSourceSerializer(serializers.Serializer):
         model = WebFormSource
 
 
-class NewDocumentSerializer(serializers.Serializer):
+class DocumentCreateSerializer(serializers.Serializer):
     source = serializers.IntegerField()
     document_type = serializers.IntegerField(required=False)
     description = serializers.CharField(required=False)

@@ -5,14 +5,14 @@
 # 
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2019
-# Pierre Lhoste <inactive+peterhost@transifex.com>, 2019
+# 0041b687dd284925c1885ba94464aacd_fde037b <fc746b00d74cefecce9698255909a24f_28512>, 2019
 # Frédéric Sheedy <sheedf@gmail.com>, 2019
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 01:38-0400\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2019-04-14 03:23+0000\n"
 "Last-Translator: Frédéric Sheedy <sheedf@gmail.com>, 2019\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -22,11 +22,11 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:14
+#: apps.py:12
 msgid "Dashboards"
 msgstr "Tableaux de bord"
 
-#: dashboards.py:7
+#: dashboards.py:5
 msgid "Main"
 msgstr "Principal"
 

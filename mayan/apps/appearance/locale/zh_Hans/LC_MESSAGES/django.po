@@ -3,14 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Haiyuan Zhang <zhanghaiyuan@gmail.com>, 2019
+# yan songwei <yansw@vip.163.com>, 2020
 # yulin Gong <540538248@qq.com>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 01:37-0400\n"
-"PO-Revision-Date: 2020-02-21 05:39+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-09-27 08:36+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-edms/language/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
@@ -19,93 +21,217 @@ msgstr ""
 "Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:11 settings.py:9
+#: apps.py:59 events.py:5 permissions.py:5 settings.py:7
 msgid "Appearance"
 msgstr "外观"
 
-#: dependencies.py:10
+#: dependencies.py:8
 msgid "Lato font"
 msgstr "Lato字体"
 
-#: dependencies.py:14
+#: dependencies.py:12
 msgid "Bootstrap"
-msgstr ""
+msgstr "引导程序"
 
-#: dependencies.py:18
+#: dependencies.py:16
 msgid "Bootswatch"
 msgstr ""
 
-#: dependencies.py:32
+#: dependencies.py:30
 msgid "Fancybox"
 msgstr ""
 
-#: dependencies.py:36
+#: dependencies.py:34
 msgid "FontAwesome"
 msgstr ""
 
-#: dependencies.py:40
+#: dependencies.py:38
 msgid "jQuery"
-msgstr ""
+msgstr "jQuery"
 
-#: dependencies.py:43
+#: dependencies.py:41
 msgid "JQuery Form"
-msgstr ""
+msgstr "jQuery表单"
 
-#: dependencies.py:47
+#: dependencies.py:45
 msgid "jQuery Lazy Load"
 msgstr ""
 
-#: dependencies.py:51
+#: dependencies.py:49
 msgid "JQuery Match Height"
-msgstr ""
+msgstr "jQuery匹配高度"
 
-#: dependencies.py:55
+#: dependencies.py:53
 msgid "Select 2"
-msgstr ""
+msgstr "选择2"
 
-#: dependencies.py:59
+#: dependencies.py:57
 msgid "Toastr"
 msgstr ""
 
-#: dependencies.py:62
+#: dependencies.py:60
 msgid "URI.js"
+msgstr "URI.js"
+
+#: events.py:8
+msgid "Theme created"
 msgstr ""
 
-#: settings.py:14
-msgid "Maximum number of characters that will be displayed as the view title."
-msgstr "将显示为视图标题的最大字符数。"
+#: events.py:11
+msgid "Theme edited"
+msgstr ""
 
-#: settings.py:21
+#: links.py:15
+msgid "Theme settings"
+msgstr ""
+
+#: links.py:20
+msgid "Edit theme settings"
+msgstr ""
+
+#: links.py:27 views.py:47
+msgid "Create new theme"
+msgstr ""
+
+#: links.py:33
+msgid "Delete"
+msgstr "删除"
+
+#: links.py:39
+msgid "Edit"
+msgstr "编辑"
+
+#: links.py:43 links.py:47 models.py:25 views.py:111
+msgid "Themes"
+msgstr ""
+
+#: models.py:12
+msgid "A short text describing the theme."
+msgstr ""
+
+#: models.py:13
+msgid "Label"
+msgstr "标签"
+
+#: models.py:17
+msgid ""
+"The CSS stylesheet to change the appearance of the different user interface "
+"elements."
+msgstr ""
+
+#: models.py:19
+msgid "Stylesheet"
+msgstr ""
+
+#: models.py:24 models.py:60
+msgid "Theme"
+msgstr ""
+
+#: models.py:56
+msgid "User"
+msgstr "用户"
+
+#: models.py:64
+msgid "User theme setting"
+msgstr ""
+
+#: models.py:65
+msgid "User theme settings"
+msgstr ""
+
+#: permissions.py:8
+msgid "Create new themes"
+msgstr ""
+
+#: permissions.py:11
+msgid "Delete themes"
+msgstr ""
+
+#: permissions.py:14
+msgid "Edit themes"
+msgstr ""
+
+#: permissions.py:17
+msgid "View existing themes"
+msgstr ""
+
+#: settings.py:12
+msgid "Maximum number of characters that will be displayed as the view title."
+msgstr "显示视图标题的最大字符数。"
+
+#: settings.py:19
 msgid ""
 "Position where the system message will be displayed. Options are: top-left, "
 "top-center, top-right, bottom-left, bottom-center, bottom-right."
-msgstr ""
+msgstr "显示系统消息的位置。选项包括：左上，顶部居中，右上，左下，底部居中，右下。"
 
-#: templates/403.html:5 templates/403.html:9
-msgid "Insufficient permissions"
+#: templates/403.html:5 templates/403.html:30
+msgid "Insufficient permission"
 msgstr "权限不足"
 
-#: templates/403.html:11
+#: templates/403.html:32
 msgid "You don't have enough permissions for this operation."
 msgstr "您没有足够的权限执行此操作。"
 
-#: templates/404.html:5 templates/404.html:9
+#: templates/404.html:5 templates/404.html:30
 msgid "Page not found"
 msgstr "页面未找到"
 
-#: templates/404.html:11
-msgid "Sorry, but the requested page could not be found."
-msgstr "抱歉，找不到请求的页面。"
+#: templates/404.html:32
+msgid "The requested page could not be found."
+msgstr "所请求的页面无法找到。"
 
-#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:56
+#: templates/404.html:40
+msgid "Possible reasons"
+msgstr "可能的原因"
+
+#: templates/404.html:44
+msgid "The location of the item is incorrect."
+msgstr "项目的位置不正确。"
+
+#: templates/404.html:45
+msgid "The location is correct, but the item no longer exists."
+msgstr "位置正确，但是该项目不存在。"
+
+#: templates/404.html:46
+msgid ""
+"The location is be correct, but your account does not have the required "
+"permission to access it."
+msgstr "位置正确，但是您的帐户没有访问权限。"
+
+#: templates/500.html:5 templates/500.html:30
+#: templates/appearance/root.html:58
 msgid "Server error"
 msgstr "服务器错误"
 
-#: templates/500.html:11
-msgid ""
-"There's been an error. It's been reported to the site administrators via "
-"e-mail and should be fixed shortly. Thanks for your patience."
-msgstr "出现了错误。它已通过电子邮件报告给网站管理员，应该很快就会修复。谢谢你的耐心。"
+#: templates/500.html:32
+msgid "There's been an unexpected error."
+msgstr "发生意外错误。"
+
+#: templates/500.html:40
+msgid "What to do next?"
+msgstr "接下来做什么？"
+
+#: templates/500.html:44
+msgid "Refresh the page."
+msgstr "刷新页面。"
+
+#: templates/500.html:45
+msgid "Wait a bit. The system might be overloaded."
+msgstr "稍等一会儿，系统可能过载。"
+
+#: templates/500.html:46
+msgid "Contact your system administrator."
+msgstr "请与系统管理员联系。"
+
+#: templates/500.html:47
+msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
+msgstr "检查日志中是否带有标签“ ERROR”-错误，“ CRITICAL”-关键或“ FATAL”-致命的消息。"
+
+#: templates/500.html:48
+#, python-format
+msgid "Open a ticket using the <a href=\"%(issue_url)s\">issue tracker</a>."
+msgstr ""
 
 #: templates/appearance/about.html:10
 msgid "About"
@@ -188,26 +314,38 @@ msgid ""
 "            "
 msgstr ""
 
-#: templates/appearance/base.html:35 templates/appearance/base.html:59
+#: templates/appearance/base.html:43 templates/appearance/base.html:67
 msgid "Warning"
 msgstr "警告"
 
-#: templates/appearance/base.html:49
+#: templates/appearance/base.html:57
 msgid "Click here to fix this."
-msgstr ""
+msgstr "单击此处修复此问题。"
 
-#: templates/appearance/base.html:59
+#: templates/appearance/base.html:67
 msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."
 msgstr ""
 
-#: templates/appearance/base.html:72
+#: templates/appearance/base.html:75
+#, python-format
+msgid ""
+"\n"
+"                                        Impersonating user \"%(user)s\".\n"
+"                                    "
+msgstr ""
+
+#: templates/appearance/base.html:78
+msgid "Click here when finished"
+msgstr "完成后请点击这里"
+
+#: templates/appearance/base.html:92
 #: templates/appearance/generic_list_items_subtemplate.html:66
 msgid "Actions"
 msgstr "操作"
 
-#: templates/appearance/base.html:74
+#: templates/appearance/base.html:94
 #: templates/appearance/generic_list_items_subtemplate.html:68
 #: templates/appearance/list_toolbar.html:67
 msgid "Toggle Dropdown"
@@ -282,18 +420,22 @@ msgstr "总计（%(start)s  -  %(end)s，%(total)s）（第%(page_number)s页，
 msgid "Total: %(total)s"
 msgstr "总计：%(total)s"
 
-#: templates/appearance/list_toolbar.html:16
+#: templates/appearance/list_toolbar.html:13
 msgid "Select/Deselect all"
 msgstr "全选/全不选"
+
+#: templates/appearance/list_toolbar.html:17
+msgid "Toggle list display mode"
+msgstr "切换列表显示模式"
 
 #: templates/appearance/list_toolbar.html:60
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
-msgstr ""
+msgstr "选择项目激活批量操作。使用Shift +单击以选择多个。"
 
 #: templates/appearance/list_toolbar.html:65
 msgid "Bulk actions"
-msgstr ""
+msgstr "批量操作"
 
 #: templates/appearance/menu_topbar.html:11
 msgid "Toggle navigation"
@@ -303,18 +445,45 @@ msgstr "切换导航"
 msgid "No results"
 msgstr "没有结果"
 
-#: templates/appearance/root.html:61
+#: templates/appearance/root.html:63
 msgid "Close"
 msgstr "关闭"
 
-#: templates/appearance/root.html:71
+#: templates/appearance/root.html:73
 msgid "Server communication error"
 msgstr "服务器通信错误"
 
-#: templates/appearance/root.html:73
+#: templates/appearance/root.html:75
 msgid "Check you network connection and try again in a few moments."
 msgstr "检查网络连接，并稍后再试。"
 
-#: templatetags/appearance_tags.py:17
+#: templatetags/appearance_tags.py:44
 msgid "None"
 msgstr "没有"
+
+#: views.py:29
+msgid "Current user theme settings details"
+msgstr ""
+
+#: views.py:35
+msgid "Edit current user theme settings details"
+msgstr ""
+
+#: views.py:69
+#, python-format
+msgid "Delete theme: %s"
+msgstr ""
+
+#: views.py:85
+#, python-format
+msgid "Edit theme: %s"
+msgstr ""
+
+#: views.py:105
+msgid ""
+"Themes allow changing the visual appearance without requiring code changes."
+msgstr ""
+
+#: views.py:109
+msgid "There are no themes"
+msgstr ""

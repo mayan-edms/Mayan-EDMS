@@ -1,18 +1,16 @@
-from __future__ import unicode_literals
-
 from django.apps import apps
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.http import URL
-from mayan.apps.sources.wizards import WizardStep
+from mayan.apps.sources.classes import DocumentCreateWizardStep
+from mayan.apps.views.http import URL
 
 from .forms import TagMultipleSelectionForm
 from .models import Tag
 from .permissions import permission_tag_attach
 
 
-class WizardStepTags(WizardStep):
+class DocumentCreateWizardStepTags(DocumentCreateWizardStep):
     form_class = TagMultipleSelectionForm
     label = _('Select tags')
     name = 'tag_selection'
@@ -38,7 +36,7 @@ class WizardStepTags(WizardStep):
         cleaned_data = wizard.get_cleaned_data_for_step(cls.name)
         if cleaned_data:
             result['tags'] = [
-                force_text(tag.pk) for tag in cleaned_data['tags']
+                force_text(s=tag.pk) for tag in cleaned_data['tags']
             ]
 
         return result
@@ -53,4 +51,4 @@ class WizardStepTags(WizardStep):
             tag.documents.add(document)
 
 
-WizardStep.register(step=WizardStepTags)
+DocumentCreateWizardStep.register(step=DocumentCreateWizardStepTags)

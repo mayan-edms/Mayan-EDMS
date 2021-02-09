@@ -1,11 +1,9 @@
-from __future__ import unicode_literals
-
 from django.core import mail
 
 from actstream.models import Action
 
-from mayan.apps.common.tests.base import GenericViewTestCase
 from mayan.apps.documents.tests.base import DocumentTestMixin
+from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..permissions import (
     permission_mailing_send_document, permission_user_mailer_use
@@ -16,11 +14,14 @@ from ..events import event_email_sent
 from .mixins import MailerTestMixin, MailerViewTestMixin
 
 
-class MailerEventsTestCase(DocumentTestMixin, MailerTestMixin, MailerViewTestMixin, GenericViewTestCase):
-    auto_upload_document = False
+class MailerEventsTestCase(
+    DocumentTestMixin, MailerTestMixin, MailerViewTestMixin,
+    GenericViewTestCase
+):
+    auto_upload_test_document = False
 
     def setUp(self):
-        super(MailerEventsTestCase, self).setUp()
+        super().setUp()
         self._create_test_user_mailer()
 
     def test_email_send_event(self):
@@ -42,13 +43,14 @@ class MailerEventsTestCase(DocumentTestMixin, MailerTestMixin, MailerViewTestMix
         self.assertEqual(action.action_object, None)
 
     def test_document_email_send_event(self):
-        self.upload_document()
+        self._upload_test_document()
 
         self.grant_access(
             obj=self.test_user_mailer, permission=permission_user_mailer_use
         )
         self.grant_access(
-            obj=self.test_document, permission=permission_mailing_send_document
+            obj=self.test_document,
+            permission=permission_mailing_send_document
         )
         Action.objects.all().delete()
 

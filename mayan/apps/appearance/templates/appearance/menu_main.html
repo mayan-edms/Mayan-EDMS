@@ -28,7 +28,7 @@
                                                 {% if link.icon %}
                                                 <i class="hidden-xs hidden-sm hidden-md {{ link.icon }}"></i>
                                                 {% endif %}
-                                                {% if link.icon_class %}{{ link.icon_class.render }}{% endif %}
+                                                {% if link.icon %}{{ link.icon.render }}{% endif %}
                                                 {{ link.label }}
                                             </div>
                                             <div class="accordion-indicator pull-right"><span class="caret"></span></div>

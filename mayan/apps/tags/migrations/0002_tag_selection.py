@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.db import migrations
 
 import colorful.fields
@@ -33,13 +31,12 @@ RGB_VALUES = {
 def operation_convert_color_names_to_rgb(apps, schema_editor):
     Tag = apps.get_model(app_label='tags', model_name='Tag')
 
-    for tag in Tag.objects.using(schema_editor.connection.alias).all():
+    for tag in Tag.objects.using(alias=schema_editor.connection.alias).all():
         tag.selection = RGB_VALUES[tag.color]
         tag.save()
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('tags', '0001_initial'),
     ]

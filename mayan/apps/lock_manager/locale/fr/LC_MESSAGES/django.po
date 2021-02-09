@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015
 # Frédéric Sheedy <sheedf@gmail.com>, 2019
 # Olivier W, 2019
@@ -11,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 01:40-0400\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2019-12-08 19:22+0000\n"
 "Last-Translator: Olivier W\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
@@ -21,39 +22,39 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:10 settings.py:9
+#: apps.py:9 settings.py:10
 msgid "Lock manager"
 msgstr "Gestionnaire de verrou"
 
-#: models.py:18
+#: models.py:14
 msgid "Creation datetime"
 msgstr "Date et heure de création"
 
-#: models.py:21
+#: models.py:18
 msgid "Timeout"
 msgstr "Délai d'attente dépassé"
 
-#: models.py:24
+#: models.py:21
 msgid "Name"
 msgstr "Nom"
 
-#: models.py:30
+#: models.py:27
 msgid "Lock"
 msgstr "Verrou"
 
-#: models.py:31
+#: models.py:28
 msgid "Locks"
 msgstr "Verrous"
 
-#: settings.py:14
+#: settings.py:15
 msgid "Path to the class to use when to request and release resource locks."
 msgstr "Chemin vers la classe à utiliser lors d'une requête ou d'un retrait de verrou."
 
-#: settings.py:20
+#: settings.py:22
 msgid "Arguments to pass to the LOCK_MANAGER_BACKEND."
 msgstr "Arguments à transmettre au LOCK_MANAGER_BACKEND."
 
-#: settings.py:26
+#: settings.py:28
 msgid ""
 "Default amount of time in seconds after which a resource lock will be "
 "automatically released."

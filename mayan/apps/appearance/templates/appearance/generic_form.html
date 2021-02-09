@@ -1,6 +1,6 @@
 {% extends 'appearance/base.html' %}
 
-{% load common_tags %}
+{% load views_tags %}
 
 {% block title %}{% include 'appearance/calculate_form_title.html' with non_html_title=True %}{% endblock %}
 {% block content %}
@@ -17,7 +17,7 @@
             {% else %}
                 <div class="col-xs-12">
             {% endif %}
-                {% common_render_subtemplate subtemplate.name subtemplate.context as rendered_subtemplate %}
+                {% views_render_subtemplate subtemplate.name subtemplate.context as rendered_subtemplate %}
                 {{ rendered_subtemplate }}
             </div>
         {% endfor %}

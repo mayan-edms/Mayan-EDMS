@@ -1,54 +1,33 @@
-from __future__ import unicode_literals
-
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.permissions import permission_document_create
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
-from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH
 from mayan.apps.sources.models import WebFormSource
 from mayan.apps.sources.tests.literals import (
     TEST_SOURCE_LABEL, TEST_SOURCE_UNCOMPRESS_N
 )
-from mayan.apps.sources.wizards import WizardStep
+from mayan.apps.sources.wizards import DocumentCreateWizardStep
 
-from ..models import Cabinet
-from ..wizard_steps import WizardStepCabinets
+from ..wizard_steps import DocumentCreateWizardStepCabinets
 
-from .mixins import CabinetTestMixin
-
-
-class CabinetDocumentUploadTestMixin(object):
-    def _request_upload_interactive_document_create_view(self):
-        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-            return self.post(
-                viewname='sources:document_upload_interactive', kwargs={
-                    'source_id': self.test_source.pk
-                }, data={
-                    'document_type_id': self.test_document_type.pk,
-                    'source-file': file_object,
-                    'cabinets': Cabinet.objects.values_list('pk', flat=True)
-                }
-            )
-
-    def _request_wizard_view(self):
-        return self.get(viewname='sources:document_create_multiple')
+from .mixins import CabinetDocumentUploadWizardStepTestMixin, CabinetTestMixin
 
 
 class CabinetDocumentUploadTestCase(
-    CabinetTestMixin, CabinetDocumentUploadTestMixin,
+    CabinetTestMixin, CabinetDocumentUploadWizardStepTestMixin,
     GenericDocumentViewTestCase
 ):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def setUp(self):
-        super(CabinetDocumentUploadTestCase, self).setUp()
+        super().setUp()
         self.test_source = WebFormSource.objects.create(
             enabled=True, label=TEST_SOURCE_LABEL,
             uncompress=TEST_SOURCE_UNCOMPRESS_N
         )
 
     def tearDown(self):
-        super(CabinetDocumentUploadTestCase, self).tearDown()
-        WizardStep.reregister_all()
+        super().tearDown()
+        DocumentCreateWizardStep.reregister_all()
 
     def test_upload_interactive_view_with_access(self):
         self._create_test_cabinet()
@@ -67,8 +46,8 @@ class CabinetDocumentUploadTestCase(
         )
 
     def test_upload_interactive_cabinet_selection_view_with_access(self):
-        WizardStep.deregister_all()
-        WizardStep.reregister(name=WizardStepCabinets.name)
+        DocumentCreateWizardStep.deregister_all()
+        DocumentCreateWizardStep.reregister(name=DocumentCreateWizardStepCabinets.name)
 
         self._create_test_cabinet()
         self.grant_access(

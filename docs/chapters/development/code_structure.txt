@@ -35,8 +35,6 @@ Example:
 
 .. code-block:: bash
 
-    from __future__ import absolute_import
-
     # Standard Python library
     import base64
 
@@ -167,23 +165,6 @@ to a file it should be named as follows:
 Flash messages should end with a period as applicable for the language.
 Only exception is when the tail of the message contains an exceptions message
 as passed directly from the exception object.
-
-
-Steps to deploy a development version
-=====================================
-
-.. code-block:: bash
-
-    $ git clone |SOURCE_CODE_GIT|
-    $ cd mayan-edms
-    $ git checkout <Corresponding branch>
-    $ virtualenv venv
-    $ source venv/bin/activate
-    $ pip install -r requirements.txt
-    $ ./manage.py initialsetup
-    $ ./manage.py preparestatic
-    $ ./manage.py runserver
-
 
 
 Debugging

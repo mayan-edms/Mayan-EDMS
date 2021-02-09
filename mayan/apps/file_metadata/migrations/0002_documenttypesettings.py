@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.db import migrations
 
 
@@ -11,10 +9,10 @@ def operation_create_file_metadata_setting_for_existing_document_types(apps, sch
         app_label='file_metadata', model_name='DocumentTypeSettings'
     )
 
-    for document_type in DocumentType.objects.using(schema_editor.connection.alias).all():
+    for document_type in DocumentType.objects.using(alias=schema_editor.connection.alias).all():
         try:
             DocumentTypeSettings.objects.using(
-                schema_editor.connection.alias
+                alias=schema_editor.connection.alias
             ).get_or_create(document_type=document_type)
         except DocumentTypeSettings.DoesNotExist:
             pass
@@ -28,10 +26,10 @@ def operation_delete_file_metadata_setting_for_existing_document_types(apps, sch
         app_label='file_metadata', model_name='DocumentTypeSettings'
     )
 
-    for document_type in DocumentType.objects.using(schema_editor.connection.alias).all():
+    for document_type in DocumentType.objects.using(alias=schema_editor.connection.alias).all():
         try:
             DocumentTypeSettings.objects.using(
-                schema_editor.connection.alias
+                alias=schema_editor.connection.alias
             ).get(document_type=document_type).delete()
         except DocumentTypeSettings.DoesNotExist:
             pass

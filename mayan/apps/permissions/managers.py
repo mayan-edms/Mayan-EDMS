@@ -1,10 +1,8 @@
-from __future__ import unicode_literals
-
 import logging
 
 from django.db import models
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class RoleManager(models.Manager):

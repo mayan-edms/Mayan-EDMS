@@ -1,16 +1,20 @@
-from __future__ import unicode_literals
-
 from django.conf.urls import url
 
 from .api_views import (
-    APIObjectACLListView, APIObjectACLPermissionListView,
-    APIObjectACLPermissionView, APIObjectACLView
+    APIClassPermissionList, APIObjectACLListView,
+    APIObjectACLPermissionListView, APIObjectACLPermissionView,
+    APIObjectACLView
 )
 from .views import (
-    ACLCreateView, ACLDeleteView, ACLListView, ACLPermissionsView
+    ACLCreateView, ACLDeleteView, ACLListView, ACLPermissionsView,
+    GlobalACLListView
 )
 
 urlpatterns = [
+    url(
+        regex=r'^acls/global/', name='global_acl_list',
+        view=GlobalACLListView.as_view()
+    ),
     url(
         regex=r'^acls/(?P<acl_id>\d+)/delete/$', name='acl_delete',
         view=ACLDeleteView.as_view()
@@ -31,20 +35,24 @@ urlpatterns = [
 
 api_urls = [
     url(
+        regex=r'^objects/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/permissions/$',
+        name='class-permission-list', view=APIClassPermissionList.as_view()
+    ),
+    url(
         regex=r'^objects/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/(?P<object_id>\d+)/acls/$',
         name='accesscontrollist-list', view=APIObjectACLListView.as_view()
     ),
     url(
-        regex=r'^objects/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/(?P<object_id>\d+)/acls/(?P<pk>\d+)/$',
+        regex=r'^objects/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/(?P<object_id>\d+)/acls/(?P<acl_id>\d+)/$',
         name='accesscontrollist-detail', view=APIObjectACLView.as_view()
     ),
     url(
-        regex=r'^objects/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/(?P<object_id>\d+)/acls/(?P<pk>\d+)/permissions/$',
+        regex=r'^objects/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/(?P<object_id>\d+)/acls/(?P<acl_id>\d+)/permissions/$',
         name='accesscontrollist-permission-list',
         view=APIObjectACLPermissionListView.as_view()
     ),
     url(
-        regex=r'^objects/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/(?P<object_id>\d+)/acls/(?P<pk>\d+)/permissions/(?P<permission_pk>\d+)/$',
+        regex=r'^objects/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/(?P<object_id>\d+)/acls/(?P<acl_id>\d+)/permissions/(?P<permission_id>\d+)/$',
         name='accesscontrollist-permission-detail',
         view=APIObjectACLPermissionView.as_view()
     ),

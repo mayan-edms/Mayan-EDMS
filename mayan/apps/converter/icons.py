@@ -1,6 +1,9 @@
-from __future__ import absolute_import, unicode_literals
-
 from mayan.apps.appearance.classes import Icon
+
+icon_asset_create = Icon(driver_name='fontawesome', symbol='save')
+icon_asset_delete = Icon(driver_name='fontawesome', symbol='times')
+icon_asset_edit = Icon(driver_name='fontawesome', symbol='pencil-alt')
+icon_asset_list = Icon(driver_name='fontawesome', symbol='save')
 
 icon_transformations = Icon(driver_name='fontawesome', symbol='crop')
 

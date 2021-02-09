@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.shortcuts import get_object_or_404
 
 from mayan.apps.acls.models import AccessControlList
@@ -45,7 +43,7 @@ class APIDocumentMetadataListView(generics.ListCreateAPIView):
         )
 
         return get_object_or_404(
-            klass=queryset, pk=self.kwargs['document_pk']
+            klass=queryset, pk=self.kwargs['document_id']
         )
 
     def get_queryset(self):
@@ -55,7 +53,7 @@ class APIDocumentMetadataListView(generics.ListCreateAPIView):
         if not self.request:
             return None
 
-        return super(APIDocumentMetadataListView, self).get_serializer(*args, **kwargs)
+        return super().get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -67,7 +65,7 @@ class APIDocumentMetadataListView(generics.ListCreateAPIView):
         """
         Extra context provided to the serializer class.
         """
-        context = super(APIDocumentMetadataListView, self).get_serializer_context()
+        context = super().get_serializer_context()
         if self.kwargs:
             context.update(
                 {
@@ -88,7 +86,7 @@ class APIDocumentMetadataView(generics.RetrieveUpdateDestroyAPIView):
     patch: Edit the selected document metadata type and value.
     put: Edit the selected document metadata type and value.
     """
-    lookup_url_kwarg = 'metadata_pk'
+    lookup_url_kwarg = 'metadata_id'
     mayan_object_permissions = {
         'DELETE': (permission_document_metadata_remove,),
         'GET': (permission_document_metadata_view,),
@@ -112,7 +110,7 @@ class APIDocumentMetadataView(generics.RetrieveUpdateDestroyAPIView):
         )
 
         return get_object_or_404(
-            klass=queryset, pk=self.kwargs['document_pk']
+            klass=queryset, pk=self.kwargs['document_id']
         )
 
     def get_queryset(self):
@@ -122,7 +120,7 @@ class APIDocumentMetadataView(generics.RetrieveUpdateDestroyAPIView):
         if not self.request:
             return None
 
-        return super(APIDocumentMetadataView, self).get_serializer(*args, **kwargs)
+        return super().get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -149,7 +147,7 @@ class APIMetadataTypeView(generics.RetrieveUpdateDestroyAPIView):
     patch: Edit the selected metadata type.
     put: Edit the selected metadata type.
     """
-    lookup_url_kwarg = 'metadata_type_pk'
+    lookup_url_kwarg = 'metadata_type_id'
     mayan_object_permissions = {
         'GET': (permission_metadata_type_view,),
         'PUT': (permission_metadata_type_edit,),
@@ -165,7 +163,7 @@ class APIDocumentTypeMetadataTypeListView(generics.ListCreateAPIView):
     get: Returns a list of selected document type's metadata types.
     post: Add a metadata type to the selected document type.
     """
-    lookup_url_kwarg = 'metadata_type_pk'
+    lookup_url_kwarg = 'metadata_type_id'
 
     def get_document_type(self):
         if self.request.method == 'GET':
@@ -174,7 +172,7 @@ class APIDocumentTypeMetadataTypeListView(generics.ListCreateAPIView):
             permission_required = permission_document_type_edit
 
         document_type = get_object_or_404(
-            klass=DocumentType, pk=self.kwargs['document_type_pk']
+            klass=DocumentType, pk=self.kwargs['document_type_id']
         )
 
         AccessControlList.objects.check_access(
@@ -191,9 +189,7 @@ class APIDocumentTypeMetadataTypeListView(generics.ListCreateAPIView):
         if not self.request:
             return None
 
-        return super(
-            APIDocumentTypeMetadataTypeListView, self
-        ).get_serializer(*args, **kwargs)
+        return super().get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -205,7 +201,7 @@ class APIDocumentTypeMetadataTypeListView(generics.ListCreateAPIView):
         """
         Extra context provided to the serializer class.
         """
-        context = super(APIDocumentTypeMetadataTypeListView, self).get_serializer_context()
+        context = super().get_serializer_context()
         if self.kwargs:
             context.update(
                 {
@@ -223,7 +219,7 @@ class APIDocumentTypeMetadataTypeView(generics.RetrieveUpdateDestroyAPIView):
     patch: Edit the selected document type metadata type.
     put: Edit the selected document type metadata type.
     """
-    lookup_url_kwarg = 'metadata_type_pk'
+    lookup_url_kwarg = 'metadata_type_id'
     serializer_class = DocumentTypeMetadataTypeSerializer
 
     def get_document_type(self):
@@ -233,7 +229,7 @@ class APIDocumentTypeMetadataTypeView(generics.RetrieveUpdateDestroyAPIView):
             permission_required = permission_document_type_edit
 
         document_type = get_object_or_404(
-            klass=DocumentType, pk=self.kwargs['document_type_pk']
+            klass=DocumentType, pk=self.kwargs['document_type_id']
         )
 
         AccessControlList.objects.check_access(
@@ -250,7 +246,7 @@ class APIDocumentTypeMetadataTypeView(generics.RetrieveUpdateDestroyAPIView):
         if not self.request:
             return None
 
-        return super(APIDocumentTypeMetadataTypeView, self).get_serializer(*args, **kwargs)
+        return super().get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':

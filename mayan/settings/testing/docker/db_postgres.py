@@ -1,5 +1,3 @@
-from __future__ import absolute_import
-
 from .base import *  # NOQA
 
 DATABASES = {
@@ -8,6 +6,7 @@ DATABASES = {
         'NAME': 'postgres',
         'USER': 'postgres',
         'HOST': 'localhost',
+        'PASSWORD': 'mayanuserpass',
         'PORT': '5432',
     }
 }

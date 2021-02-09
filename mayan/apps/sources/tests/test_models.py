@@ -1,11 +1,9 @@
-from __future__ import unicode_literals
-
 import fcntl
 from multiprocessing import Process
+from pathlib import Path
 import shutil
 
 import mock
-from pathlib2 import Path
 
 from django.core import mail
 from django.utils.encoding import force_bytes, force_text
@@ -14,6 +12,7 @@ from django_celery_beat.models import PeriodicTask
 
 from mayan.apps.common.serialization import yaml_dump
 from mayan.apps.documents.models import Document
+from mayan.apps.documents.storages import storage_document_files
 from mayan.apps.documents.tests.base import GenericDocumentTestCase
 from mayan.apps.documents.tests.literals import (
     TEST_COMPRESSED_DOCUMENT_PATH, TEST_NON_ASCII_DOCUMENT_FILENAME,
@@ -21,7 +20,6 @@ from mayan.apps.documents.tests.literals import (
     TEST_SMALL_DOCUMENT_FILENAME, TEST_SMALL_DOCUMENT_PATH
 )
 from mayan.apps.metadata.models import MetadataType
-from mayan.apps.storage.utils import mkdtemp
 
 from ..literals import SOURCE_UNCOMPRESS_CHOICE_Y
 from ..models.email_sources import EmailBaseModel, IMAPEmail, POP3Email
@@ -39,13 +37,13 @@ from .mocks import MockIMAPServer, MockPOP3Mailbox
 
 
 class CompressedUploadsTestCase(SourceTestMixin, GenericDocumentTestCase):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def test_upload_compressed_file(self):
         self.test_source.uncompress = SOURCE_UNCOMPRESS_CHOICE_Y
         self.test_source.save()
 
-        with open(TEST_COMPRESSED_DOCUMENT_PATH, mode='rb') as file_object:
+        with open(file=TEST_COMPRESSED_DOCUMENT_PATH, mode='rb') as file_object:
             self.test_source.handle_upload(
                 document_type=self.test_document_type,
                 file_object=file_object,
@@ -68,7 +66,7 @@ class CompressedUploadsTestCase(SourceTestMixin, GenericDocumentTestCase):
 
 
 class EmailBaseTestCase(GenericDocumentTestCase):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def _create_email_source(self):
         self.source = EmailBaseModel(
@@ -95,7 +93,7 @@ class EmailBaseTestCase(GenericDocumentTestCase):
             source=self.source, message_text=TEST_EMAIL_NO_CONTENT_TYPE
         )
         self.assertTrue(
-            TEST_EMAIL_NO_CONTENT_TYPE_STRING in Document.objects.first().open().read()
+            TEST_EMAIL_NO_CONTENT_TYPE_STRING in Document.objects.first().file_latest.open().read()
         )
 
     def test_decode_email_zero_length_attachment(self):
@@ -264,7 +262,7 @@ class EmailBaseTestCase(GenericDocumentTestCase):
 
 
 class IMAPSourceTestCase(GenericDocumentTestCase):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     @mock.patch('imaplib.IMAP4_SSL', autospec=True)
     def test_download_document(self, mock_imaplib):
@@ -281,15 +279,7 @@ class IMAPSourceTestCase(GenericDocumentTestCase):
 
 
 class IntervalSourceTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
-    auto_upload_document = False
-
-    def setUp(self):
-        super(IntervalSourceTestCase, self).setUp()
-        self.temporary_directory = mkdtemp()
-
-    def tearDown(self):
-        shutil.rmtree(self.temporary_directory)
-        super(IntervalSourceTestCase, self).tearDown()
+    auto_upload_test_document = False
 
     def test_periodic_task_create(self):
         periodic_task_count = PeriodicTask.objects.count()
@@ -305,30 +295,8 @@ class IntervalSourceTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
         self.assertTrue(PeriodicTask.objects.count() < periodic_task_count)
 
 
-class SANESourceTestCase(GenericDocumentTestCase):
-    auto_upload_document = False
-
-    def _create_test_scanner_source(self):
-        self.test_source = SaneScanner.objects.create(
-            label='', device_name='test'
-        )
-
-    def test_command(self):
-        self._create_test_scanner_source()
-        file_object = self.test_source.execute_command(arguments=('-V',))
-        self.assertTrue(force_bytes('sane') in file_object.read())
-
-    def test_scan(self):
-        self._create_test_scanner_source()
-
-        file_object = self.test_source.get_upload_file_object(
-            form_data={'document_type': self.test_document_type.pk}
-        )
-        self.assertTrue(file_object.size > 0)
-
-
 class POP3SourceTestCase(GenericDocumentTestCase):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     @mock.patch('poplib.POP3_SSL', autospec=True)
     def test_download_document(self, mock_poplib):
@@ -344,16 +312,30 @@ class POP3SourceTestCase(GenericDocumentTestCase):
         )
 
 
+class SANESourceTestCase(GenericDocumentTestCase):
+    auto_upload_test_document = False
+
+    def _create_test_scanner_source(self):
+        self.test_source = SaneScanner.objects.create(
+            label='', device_name='test'
+        )
+
+    def test_command(self):
+        self._create_test_scanner_source()
+        file_object = self.test_source.execute_command(arguments=('-V',))
+        self.assertTrue(force_bytes(s='sane') in file_object.read())
+
+    def test_scan(self):
+        self._create_test_scanner_source()
+
+        file_object = self.test_source.get_upload_file_object(
+            form_data={'document_type': self.test_document_type.pk}
+        )
+        self.assertTrue(file_object.size > 0)
+
+
 class WatchFolderTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
-    auto_upload_document = False
-
-    def setUp(self):
-        super(WatchFolderTestCase, self).setUp()
-        self.temporary_directory = mkdtemp()
-
-    def tearDown(self):
-        shutil.rmtree(self.temporary_directory)
-        super(WatchFolderTestCase, self).tearDown()
+    auto_upload_test_document = False
 
     def test_subfolder_support_disabled(self):
         self._create_test_watchfolder()
@@ -362,7 +344,9 @@ class WatchFolderTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
         test_subfolder = test_path.joinpath(TEST_WATCHFOLDER_SUBFOLDER)
         test_subfolder.mkdir()
 
-        shutil.copy(TEST_SMALL_DOCUMENT_PATH, force_text(test_subfolder))
+        shutil.copy(
+            src=TEST_SMALL_DOCUMENT_PATH, dst=force_text(s=test_subfolder)
+        )
         self.test_watch_folder.check_source()
         self.assertEqual(Document.objects.count(), 0)
 
@@ -375,19 +359,21 @@ class WatchFolderTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
         test_subfolder = test_path.joinpath(TEST_WATCHFOLDER_SUBFOLDER)
         test_subfolder.mkdir()
 
-        shutil.copy(TEST_SMALL_DOCUMENT_PATH, force_text(test_subfolder))
+        shutil.copy(
+            src=TEST_SMALL_DOCUMENT_PATH, dst=force_text(s=test_subfolder)
+        )
         self.test_watch_folder.check_source()
         self.assertEqual(Document.objects.count(), 1)
 
         document = Document.objects.first()
 
-        self.assertEqual(document.exists(), True)
-        self.assertEqual(document.size, 17436)
+        self.assertEqual(document.file_latest.exists(), True)
+        self.assertEqual(document.file_latest.size, 17436)
 
-        self.assertEqual(document.file_mimetype, 'image/png')
-        self.assertEqual(document.file_mime_encoding, 'binary')
+        self.assertEqual(document.file_latest.mimetype, 'image/png')
+        self.assertEqual(document.file_latest.encoding, 'binary')
         self.assertEqual(document.label, TEST_SMALL_DOCUMENT_FILENAME)
-        self.assertEqual(document.page_count, 1)
+        self.assertEqual(document.file_latest.pages.count(), 1)
 
     def test_issue_gh_163(self):
         """
@@ -396,19 +382,21 @@ class WatchFolderTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
         """
         self._create_test_watchfolder()
 
-        shutil.copy(TEST_NON_ASCII_DOCUMENT_PATH, self.temporary_directory)
+        shutil.copy(
+            src=TEST_NON_ASCII_DOCUMENT_PATH, dst=self.temporary_directory
+        )
         self.test_watch_folder.check_source()
         self.assertEqual(Document.objects.count(), 1)
 
         document = Document.objects.first()
 
-        self.assertEqual(document.exists(), True)
-        self.assertEqual(document.size, 17436)
+        self.assertEqual(document.file_latest.exists(), True)
+        self.assertEqual(document.file_latest.size, 17436)
 
-        self.assertEqual(document.file_mimetype, 'image/png')
-        self.assertEqual(document.file_mime_encoding, 'binary')
+        self.assertEqual(document.file_latest.mimetype, 'image/png')
+        self.assertEqual(document.file_latest.encoding, 'binary')
         self.assertEqual(document.label, TEST_NON_ASCII_DOCUMENT_FILENAME)
-        self.assertEqual(document.page_count, 1)
+        self.assertEqual(document.file_latest.pages.count(), 1)
 
     def test_issue_gh_163_expanded(self):
         """
@@ -417,26 +405,26 @@ class WatchFolderTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
         self._create_test_watchfolder()
 
         shutil.copy(
-            TEST_NON_ASCII_COMPRESSED_DOCUMENT_PATH, self.temporary_directory
+            src=TEST_NON_ASCII_COMPRESSED_DOCUMENT_PATH,
+            dst=self.temporary_directory
         )
         self.test_watch_folder.check_source()
         self.assertEqual(Document.objects.count(), 1)
 
         document = Document.objects.first()
 
-        self.assertEqual(document.exists(), True)
-        self.assertEqual(document.size, 17436)
-
-        self.assertEqual(document.file_mimetype, 'image/png')
-        self.assertEqual(document.file_mime_encoding, 'binary')
+        self.assertEqual(document.file_latest.exists(), True)
+        self.assertEqual(document.file_latest.size, 17436)
+        self.assertEqual(document.file_latest.mimetype, 'image/png')
+        self.assertEqual(document.file_latest.encoding, 'binary')
         self.assertEqual(document.label, TEST_NON_ASCII_DOCUMENT_FILENAME)
-        self.assertEqual(document.page_count, 1)
+        self.assertEqual(document.file_latest.pages.count(), 1)
 
     def test_locking_support(self):
         self._create_test_watchfolder()
 
         shutil.copy(
-            TEST_SMALL_DOCUMENT_PATH, self.temporary_directory
+            src=TEST_SMALL_DOCUMENT_PATH, dst=self.temporary_directory
         )
 
         path_test_file = Path(
@@ -450,3 +438,30 @@ class WatchFolderTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
             process.join()
 
             self.assertEqual(Document.objects.count(), 0)
+
+
+class SourceModelTestCase(SourceTestMixin, GenericDocumentTestCase):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self.document_version_storage_instance = storage_document_files.get_storage_instance()
+
+    def _get_document_version_storage_file_count(self):
+        return len(
+            self.document_version_storage_instance.listdir(path='')[1]
+        )
+
+    def test_single_storage_file_creation(self):
+        document_version_file_count = self._get_document_version_storage_file_count()
+
+        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+            self.test_source.handle_upload(
+                file_object=file_object,
+                document_type=self.test_document_type
+            )
+
+        self.assertEqual(
+            self._get_document_version_storage_file_count(),
+            document_version_file_count + 1
+        )

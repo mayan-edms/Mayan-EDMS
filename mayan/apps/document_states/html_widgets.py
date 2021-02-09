@@ -1,7 +1,6 @@
-from __future__ import unicode_literals
-
-from django.template.loader import render_to_string
 from django.utils.html import format_html_join
+
+from mayan.apps.navigation.html_widgets import SourceColumnWidget
 
 
 def widget_transition_events(transition):
@@ -14,12 +13,5 @@ def widget_transition_events(transition):
     )
 
 
-class WorkflowLogExtraDataWidget(object):
+class WorkflowLogExtraDataWidget(SourceColumnWidget):
     template_name = 'document_states/extra_data.html'
-
-    def render(self, name=None, value=None):
-        return render_to_string(
-            template_name=self.template_name, context={
-                'value': value
-            }
-        )

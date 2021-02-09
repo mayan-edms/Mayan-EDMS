@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 import logging
 
 from django.apps import apps
@@ -16,7 +14,7 @@ from mayan.apps.permissions.models import Role
 from .classes import ModelPermission
 from .permissions import permission_acl_edit
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class GrantAccessAction(WorkflowAction):
@@ -108,7 +106,7 @@ class GrantAccessAction(WorkflowAction):
         self.fields['permissions']['kwargs']['choices'] = Permission.all(
             as_choices=True
         )
-        return super(GrantAccessAction, self).get_form_schema(*args, **kwargs)
+        return super().get_form_schema(*args, **kwargs)
 
     def get_execute_data(self):
         ContentType = apps.get_model(
@@ -189,7 +187,7 @@ class GrantDocumentAccessAction(WorkflowAction):
         self.fields['permissions']['kwargs']['choices'] = ModelPermission.get_for_class(
             klass=Document, as_choices=True
         )
-        return super(GrantDocumentAccessAction, self).get_form_schema(*args, **kwargs)
+        return super().get_form_schema(*args, **kwargs)
 
     def get_execute_data(self):
         self.roles = Role.objects.filter(pk__in=self.form_data['roles'])

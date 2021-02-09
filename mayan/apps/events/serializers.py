@@ -1,7 +1,3 @@
-from __future__ import unicode_literals
-
-from django.utils.six import string_types
-
 from actstream.models import Action
 from rest_framework import serializers
 from rest_framework.reverse import reverse
@@ -47,16 +43,12 @@ class EventTypeSerializer(serializers.Serializer):
 
     def to_representation(self, instance):
         if isinstance(instance, EventType):
-            return super(EventTypeSerializer, self).to_representation(
-                instance
-            )
+            return super().to_representation(instance=instance)
         elif isinstance(instance, StoredEventType):
-            return super(EventTypeSerializer, self).to_representation(
-                instance.get_class()
-            )
-        elif isinstance(instance, string_types):
-            return super(EventTypeSerializer, self).to_representation(
-                EventType.get(name=instance)
+            return super().to_representation(instance=instance.get_class())
+        elif isinstance(instance, str):
+            return super().to_representation(
+                instance=EventType.get(name=instance)
             )
 
 

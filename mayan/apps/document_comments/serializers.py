@@ -1,9 +1,7 @@
-from __future__ import unicode_literals
-
 from rest_framework import serializers
 from rest_framework.reverse import reverse
 
-from mayan.apps.documents.serializers import DocumentSerializer
+from mayan.apps.documents.serializers.document_serializers import DocumentSerializer
 from mayan.apps.user_management.serializers import UserSerializer
 
 from .models import Comment
@@ -17,23 +15,24 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         fields = (
-            'comment', 'document', 'document_comments_url', 'id',
-            'submit_date', 'url', 'user'
+            'document', 'document_comments_url', 'id', 'submit_date',
+            'text', 'url', 'user'
         )
         model = Comment
 
     def get_document_comments_url(self, instance):
         return reverse(
-            'rest_api:comment-list', args=(
-                instance.document.pk,
-            ), request=self.context['request'], format=self.context['format']
+            viewname='rest_api:comment-list', kwargs={
+                'document_id': instance.document_id,
+            }, request=self.context['request'], format=self.context['format']
         )
 
     def get_url(self, instance):
         return reverse(
-            'rest_api:comment-detail', args=(
-                instance.document.pk, instance.pk
-            ), request=self.context['request'], format=self.context['format']
+            viewname='rest_api:comment-detail', kwargs={
+                'document_id': instance.document_id,
+                'comment_id': instance.pk
+            }, request=self.context['request'], format=self.context['format']
         )
 
 
@@ -45,8 +44,8 @@ class WritableCommentSerializer(serializers.ModelSerializer):
 
     class Meta:
         fields = (
-            'comment', 'document', 'document_comments_url', 'id',
-            'submit_date', 'url', 'user'
+            'document', 'document_comments_url', 'id', 'submit_date',
+            'text', 'url', 'user'
         )
         model = Comment
         read_only_fields = ('document',)
@@ -54,18 +53,19 @@ class WritableCommentSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         validated_data['document'] = self.context['document']
         validated_data['user'] = self.context['request'].user
-        return super(WritableCommentSerializer, self).create(validated_data)
+        return super().create(validated_data)
 
     def get_document_comments_url(self, instance):
         return reverse(
-            'rest_api:comment-list', args=(
-                instance.document.pk,
-            ), request=self.context['request'], format=self.context['format']
+            viewname='rest_api:comment-list', kwargs={
+                'document_id': instance.document_id,
+            }, request=self.context['request'], format=self.context['format']
         )
 
     def get_url(self, instance):
         return reverse(
-            'rest_api:comment-detail', args=(
-                instance.document.pk, instance.pk
-            ), request=self.context['request'], format=self.context['format']
+            viewname='rest_api:comment-detail', kwargs={
+                'document_id': instance.document_id,
+                'comment_id': instance.pk
+            }, request=self.context['request'], format=self.context['format']
         )

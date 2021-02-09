@@ -3,16 +3,19 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
+# Daniel Flores (PhD.) <dfloresbr@gmail.com>, 2020
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017
 # José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2018
+# Roberto Rosario, 2020
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 01:37-0400\n"
-"PO-Revision-Date: 2020-02-23 18:24+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-10-01 22:15+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -21,93 +24,217 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:11 settings.py:9
+#: apps.py:59 events.py:5 permissions.py:5 settings.py:7
 msgid "Appearance"
 msgstr "Aparência"
 
-#: dependencies.py:10
+#: dependencies.py:8
 msgid "Lato font"
 msgstr "Lato font"
 
-#: dependencies.py:14
+#: dependencies.py:12
 msgid "Bootstrap"
 msgstr "Bootstrap"
 
-#: dependencies.py:18
+#: dependencies.py:16
 msgid "Bootswatch"
 msgstr "Bootswatch"
 
-#: dependencies.py:32
+#: dependencies.py:30
 msgid "Fancybox"
 msgstr "Fancybox"
 
-#: dependencies.py:36
+#: dependencies.py:34
 msgid "FontAwesome"
 msgstr "FontAwesome"
 
-#: dependencies.py:40
+#: dependencies.py:38
 msgid "jQuery"
 msgstr "jQuery"
 
-#: dependencies.py:43
+#: dependencies.py:41
 msgid "JQuery Form"
 msgstr "jQuery Form"
 
-#: dependencies.py:47
+#: dependencies.py:45
 msgid "jQuery Lazy Load"
 msgstr "jQuery Lazy Load"
 
-#: dependencies.py:51
+#: dependencies.py:49
 msgid "JQuery Match Height"
 msgstr "JQuery Match Height"
 
-#: dependencies.py:55
+#: dependencies.py:53
 msgid "Select 2"
 msgstr "Select 2"
 
-#: dependencies.py:59
+#: dependencies.py:57
 msgid "Toastr"
 msgstr "Toastr"
 
-#: dependencies.py:62
+#: dependencies.py:60
 msgid "URI.js"
 msgstr "URI.js"
 
-#: settings.py:14
+#: events.py:8
+msgid "Theme created"
+msgstr "Tema criado"
+
+#: events.py:11
+msgid "Theme edited"
+msgstr "Tema editado"
+
+#: links.py:15
+msgid "Theme settings"
+msgstr "Configurações do Tema"
+
+#: links.py:20
+msgid "Edit theme settings"
+msgstr "Editar Configurações do Tema"
+
+#: links.py:27 views.py:47
+msgid "Create new theme"
+msgstr "Criar novo Tema"
+
+#: links.py:33
+msgid "Delete"
+msgstr "Excluir"
+
+#: links.py:39
+msgid "Edit"
+msgstr "Editar"
+
+#: links.py:43 links.py:47 models.py:25 views.py:111
+msgid "Themes"
+msgstr "Temas"
+
+#: models.py:12
+msgid "A short text describing the theme."
+msgstr "Um texto curto descrevendo o tema."
+
+#: models.py:13
+msgid "Label"
+msgstr "Rótulo"
+
+#: models.py:17
+msgid ""
+"The CSS stylesheet to change the appearance of the different user interface "
+"elements."
+msgstr "A folha de estilo CSS para alterar a aparência dos diferentes elementos da interface do usuário."
+
+#: models.py:19
+msgid "Stylesheet"
+msgstr "Folha de estilo"
+
+#: models.py:24 models.py:60
+msgid "Theme"
+msgstr "Tema"
+
+#: models.py:56
+msgid "User"
+msgstr "Usuário"
+
+#: models.py:64
+msgid "User theme setting"
+msgstr "Configuração do tema do usuário"
+
+#: models.py:65
+msgid "User theme settings"
+msgstr "Configurações de tema do usuário"
+
+#: permissions.py:8
+msgid "Create new themes"
+msgstr "Criar novos temas"
+
+#: permissions.py:11
+msgid "Delete themes"
+msgstr "Excluir temas"
+
+#: permissions.py:14
+msgid "Edit themes"
+msgstr "Editar temas"
+
+#: permissions.py:17
+msgid "View existing themes"
+msgstr "Ver temas existentes"
+
+#: settings.py:12
 msgid "Maximum number of characters that will be displayed as the view title."
 msgstr "Número máximo de caracteres que serão mostrados como o título da tela ou visualização."
 
-#: settings.py:21
+#: settings.py:19
 msgid ""
 "Position where the system message will be displayed. Options are: top-left, "
 "top-center, top-right, bottom-left, bottom-center, bottom-right."
 msgstr "Posição na qual a mensagem do sistema será exibida. Opções são: top-left, top-center, top-right, bottom-left, bottom-center, bottom-right."
 
-#: templates/403.html:5 templates/403.html:9
-msgid "Insufficient permissions"
-msgstr "Permissões insuficientes"
+#: templates/403.html:5 templates/403.html:30
+msgid "Insufficient permission"
+msgstr "Permissão insuficiente"
 
-#: templates/403.html:11
+#: templates/403.html:32
 msgid "You don't have enough permissions for this operation."
 msgstr "Você não tem permissões suficientes para essa operação."
 
-#: templates/404.html:5 templates/404.html:9
+#: templates/404.html:5 templates/404.html:30
 msgid "Page not found"
 msgstr "Página não encontrada"
 
-#: templates/404.html:11
-msgid "Sorry, but the requested page could not be found."
-msgstr "Desculpe, mas a página solicitada não pôde ser encontrada."
+#: templates/404.html:32
+msgid "The requested page could not be found."
+msgstr "A página solicitada não pôde ser encontrada."
 
-#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:56
+#: templates/404.html:40
+msgid "Possible reasons"
+msgstr "Razões possíveis"
+
+#: templates/404.html:44
+msgid "The location of the item is incorrect."
+msgstr "A localização do item está incorreta."
+
+#: templates/404.html:45
+msgid "The location is correct, but the item no longer exists."
+msgstr "A localização está correta, mas o item não existe mais."
+
+#: templates/404.html:46
+msgid ""
+"The location is be correct, but your account does not have the required "
+"permission to access it."
+msgstr "O local está correto, mas sua conta não tem a permissão necessária para acessá-lo."
+
+#: templates/500.html:5 templates/500.html:30
+#: templates/appearance/root.html:58
 msgid "Server error"
 msgstr "Erro de servidor"
 
-#: templates/500.html:11
-msgid ""
-"There's been an error. It's been reported to the site administrators via "
-"e-mail and should be fixed shortly. Thanks for your patience."
-msgstr "Houve um erro. Os administradores da página foram informados por e-mail e deverão corrigir em breve. Obrigado pela paciência."
+#: templates/500.html:32
+msgid "There's been an unexpected error."
+msgstr "Ocorreu um erro inesperado."
+
+#: templates/500.html:40
+msgid "What to do next?"
+msgstr "o que fazer a seguir?"
+
+#: templates/500.html:44
+msgid "Refresh the page."
+msgstr "Recarregue a página."
+
+#: templates/500.html:45
+msgid "Wait a bit. The system might be overloaded."
+msgstr "Espere um pouco. O sistema pode estar sobrecarregado."
+
+#: templates/500.html:46
+msgid "Contact your system administrator."
+msgstr "Entre em contato com o administrador do sistema."
+
+#: templates/500.html:47
+msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
+msgstr "Verifique os logs em busca de mensagens com as etiquetas \"ERROR\", \"CRITICA\" ou \"FATAL\"."
+
+#: templates/500.html:48
+#, python-format
+msgid "Open a ticket using the <a href=\"%(issue_url)s\">issue tracker</a>."
+msgstr "Abra um ticket usando o <a href=\"%(issue_url)s\">rastreador de problemas</a> ."
 
 #: templates/appearance/about.html:10
 msgid "About"
@@ -190,26 +317,38 @@ msgid ""
 "            "
 msgstr "\n                Divulgue. Converse com seus amigos e colegas sobre como o%(project_title)s é sensacional!\n            "
 
-#: templates/appearance/base.html:35 templates/appearance/base.html:59
+#: templates/appearance/base.html:43 templates/appearance/base.html:67
 msgid "Warning"
 msgstr "Advertência"
 
-#: templates/appearance/base.html:49
+#: templates/appearance/base.html:57
 msgid "Click here to fix this."
 msgstr "Clique aqui para corrigir isso"
 
-#: templates/appearance/base.html:59
+#: templates/appearance/base.html:67
 msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."
 msgstr "Settings foram atualizados. Reinicie sua instalação e recarregue seu navegador para que as mudanças sejam aplicadas"
 
-#: templates/appearance/base.html:72
+#: templates/appearance/base.html:75
+#, python-format
+msgid ""
+"\n"
+"                                        Impersonating user \"%(user)s\".\n"
+"                                    "
+msgstr "\nUtilizando o usuário \"%(user)s\"."
+
+#: templates/appearance/base.html:78
+msgid "Click here when finished"
+msgstr "Clique aqui quando terminar"
+
+#: templates/appearance/base.html:92
 #: templates/appearance/generic_list_items_subtemplate.html:66
 msgid "Actions"
 msgstr "Ações"
 
-#: templates/appearance/base.html:74
+#: templates/appearance/base.html:94
 #: templates/appearance/generic_list_items_subtemplate.html:68
 #: templates/appearance/list_toolbar.html:67
 msgid "Toggle Dropdown"
@@ -284,9 +423,13 @@ msgstr "Total (%(start)s - %(end)s de %(total)s) (Página %(page_number)s de %(t
 msgid "Total: %(total)s"
 msgstr "Total: %(total)s"
 
-#: templates/appearance/list_toolbar.html:16
+#: templates/appearance/list_toolbar.html:13
 msgid "Select/Deselect all"
 msgstr "Selecionar/Desmarcar todos"
+
+#: templates/appearance/list_toolbar.html:17
+msgid "Toggle list display mode"
+msgstr "Alternar modo de exibição de lista"
 
 #: templates/appearance/list_toolbar.html:60
 msgid ""
@@ -305,18 +448,45 @@ msgstr "Ativar/desativar navegação"
 msgid "No results"
 msgstr "Nenhum resultado"
 
-#: templates/appearance/root.html:61
+#: templates/appearance/root.html:63
 msgid "Close"
 msgstr "Fechar"
 
-#: templates/appearance/root.html:71
+#: templates/appearance/root.html:73
 msgid "Server communication error"
 msgstr "Erro na comunicação com o servidor"
 
-#: templates/appearance/root.html:73
+#: templates/appearance/root.html:75
 msgid "Check you network connection and try again in a few moments."
 msgstr "Verifique sua conexão de rede e tente novamente em alguns instantes. "
 
-#: templatetags/appearance_tags.py:17
+#: templatetags/appearance_tags.py:44
 msgid "None"
 msgstr "Nenhum"
+
+#: views.py:29
+msgid "Current user theme settings details"
+msgstr "Detalhes de configurações do tema do usuário atual"
+
+#: views.py:35
+msgid "Edit current user theme settings details"
+msgstr "Editar os detalhes das configurações do tema do usuário atual"
+
+#: views.py:69
+#, python-format
+msgid "Delete theme: %s"
+msgstr "Excluir tema: %s"
+
+#: views.py:85
+#, python-format
+msgid "Edit theme: %s"
+msgstr "Editar tema: %s"
+
+#: views.py:105
+msgid ""
+"Themes allow changing the visual appearance without requiring code changes."
+msgstr "Os temas permitem alterar a aparência visual sem exigir alterações de código."
+
+#: views.py:109
+msgid "There are no themes"
+msgstr "Não há temas"

@@ -1,28 +1,27 @@
 'use strict';
 
 jQuery(document).ready(function() {
-    var fieldNameID = '[data-template-fields="model_attribute"]';
-    $(fieldNameID).change(function(event) {
-        var $idModelProperty = $(this);
-        var $idTemplate = $('[data-template-fields="template"]');
+    $('[data-autocopy="true"]').change(function(event) {
+        var $this = $(this);
+        var $idTemplate = $this.siblings('[data-template-fields="template"]');
         var templateCursorPosition = $idTemplate.prop('selectionStart');
         var templateValue = $idTemplate.val();
-        var modelVariable = $idTemplate.data('model-variable');
-        var propertyText = '{{ ' + modelVariable + '.' + $idModelProperty.val() + ' }}';
+        var fieldText = eval('`' + $this.data('field-template') + '`');
 
         templateValue = templateValue.slice(
             0, templateCursorPosition
-        ) + propertyText + templateValue.slice(
+        ) + fieldText + templateValue.slice(
             templateCursorPosition
         );
         $idTemplate.val(templateValue);
         $idTemplate.focus();
         $idTemplate.prop(
-            'selectionStart', templateCursorPosition + propertyText.length
+            'selectionStart', templateCursorPosition + fieldText.length
         );
         $idTemplate.prop(
-            'selectionEnd', templateCursorPosition + propertyText.length
+            'selectionEnd', templateCursorPosition + fieldText.length
         );
-        $(fieldNameID + ' option')[0].selected = true;
+
+        $this.val('');
     });
 });

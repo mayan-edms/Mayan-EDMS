@@ -1,13 +1,11 @@
-from __future__ import unicode_literals
-
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.html_widgets import TwoStateWidget
 from mayan.apps.common.menus import menu_secondary, menu_setup, menu_object
 from mayan.apps.navigation.classes import SourceColumn
+from mayan.apps.views.html_widgets import TwoStateWidget
 
-from .classes import Namespace, Setting
+from .classes import SettingNamespace, Setting
 from .links import (
     link_namespace_detail, link_namespace_list, link_namespace_root_list,
     link_setting_edit
@@ -23,34 +21,37 @@ class SmartSettingsApp(MayanAppConfig):
     verbose_name = _('Smart settings')
 
     def ready(self):
-        super(SmartSettingsApp, self).ready()
+        super().ready()
 
-        Namespace.initialize()
+        SettingNamespace.load_modules()
 
         SourceColumn(
-            source=Namespace, label=_('Setting count'),
-            func=lambda context: len(context['object'].settings)
+            func=lambda context: len(context['object'].settings),
+            label=_('Setting count'), include_label=True,
+            source=SettingNamespace
         )
         SourceColumn(
-            source=Setting, label=_('Name'),
-            func=lambda context: setting_widget(context['object'])
+            func=lambda context: setting_widget(context['object']),
+            label=_('Name'), is_identifier=True, source=Setting
         )
         SourceColumn(
-            attribute='serialized_value', label=_('Value'), source=Setting
+            attribute='serialized_value', include_label=True,
+            label=_('Value'), source=Setting
         )
         SourceColumn(
-            attribute='is_overridden', source=Setting, widget=TwoStateWidget
+            attribute='is_overridden', include_label=True, source=Setting,
+            widget=TwoStateWidget
         )
 
         menu_object.bind_links(
-            links=(link_namespace_detail,), sources=(Namespace,)
+            links=(link_namespace_detail,), sources=(SettingNamespace,)
         )
         menu_object.bind_links(
             links=(link_setting_edit,), sources=(Setting,)
         )
         menu_secondary.bind_links(
             links=(link_namespace_root_list,), sources=(
-                Namespace, Setting, 'settings:namespace_list',
+                SettingNamespace, Setting, 'settings:namespace_list',
             )
         )
         menu_setup.bind_links(links=(link_namespace_list,))

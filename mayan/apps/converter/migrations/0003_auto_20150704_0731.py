@@ -1,12 +1,9 @@
-from __future__ import unicode_literals
-
 from django.db import models, migrations
 
-import mayan.apps.converter.validators
+import mayan.apps.common.validators
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('converter', '0002_auto_20150608_1943'),
     ]
@@ -19,7 +16,7 @@ class Migration(migrations.Migration):
                 default='', help_text='Enter the arguments for the '
                 'transformation as a YAML dictionary. ie: {"degrees": 180}',
                 blank=True, verbose_name='Arguments', validators=[
-                    mayan.apps.converter.validators.YAMLValidator
+                    mayan.apps.common.validators.YAMLValidator
                 ]
             ),
             preserve_default=False,

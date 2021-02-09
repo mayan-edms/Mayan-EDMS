@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import io
 
 import gnupg
@@ -7,8 +5,8 @@ import mock
 
 from django.utils.encoding import force_bytes
 
-from mayan.apps.common.tests.base import BaseTestCase
 from mayan.apps.storage.utils import TemporaryFile
+from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..exceptions import (
     DecryptionError, KeyDoesNotExist, NeedPassphrase, PassphraseError,
@@ -60,13 +58,13 @@ class KeyTestCase(BaseTestCase):
         cleartext_file.write(b'test')
         cleartext_file.seek(0)
 
-        with self.assertRaises(VerificationError):
+        with self.assertRaises(expected_exception=VerificationError):
             Key.objects.verify_file(file_object=cleartext_file)
 
         cleartext_file.close()
 
     def test_embedded_verification_no_key(self):
-        with open(TEST_SIGNED_FILE, mode='rb') as signed_file:
+        with open(file=TEST_SIGNED_FILE, mode='rb') as signed_file:
             result = Key.objects.verify_file(signed_file)
 
         self.assertTrue(result.key_id in TEST_KEY_PRIVATE_FINGERPRINT)
@@ -74,7 +72,7 @@ class KeyTestCase(BaseTestCase):
     def test_embedded_verification_with_key(self):
         Key.objects.create(key_data=TEST_KEY_PRIVATE_DATA)
 
-        with open(TEST_SIGNED_FILE, mode='rb') as signed_file:
+        with open(file=TEST_SIGNED_FILE, mode='rb') as signed_file:
             result = Key.objects.verify_file(signed_file)
 
         self.assertEqual(result.fingerprint, TEST_KEY_PRIVATE_FINGERPRINT)
@@ -82,7 +80,7 @@ class KeyTestCase(BaseTestCase):
     def test_embedded_verification_with_correct_fingerprint(self):
         Key.objects.create(key_data=TEST_KEY_PRIVATE_DATA)
 
-        with open(TEST_SIGNED_FILE, mode='rb') as signed_file:
+        with open(file=TEST_SIGNED_FILE, mode='rb') as signed_file:
             result = Key.objects.verify_file(
                 signed_file, key_fingerprint=TEST_KEY_PRIVATE_FINGERPRINT
             )
@@ -93,14 +91,14 @@ class KeyTestCase(BaseTestCase):
     def test_embedded_verification_with_incorrect_fingerprint(self):
         Key.objects.create(key_data=TEST_KEY_PRIVATE_DATA)
 
-        with open(TEST_SIGNED_FILE, mode='rb') as signed_file:
-            with self.assertRaises(KeyDoesNotExist):
+        with open(file=TEST_SIGNED_FILE, mode='rb') as signed_file:
+            with self.assertRaises(expected_exception=KeyDoesNotExist):
                 Key.objects.verify_file(signed_file, key_fingerprint='999')
 
     def test_signed_file_decryption(self):
         Key.objects.create(key_data=TEST_KEY_PRIVATE_DATA)
 
-        with open(TEST_SIGNED_FILE, mode='rb') as signed_file:
+        with open(file=TEST_SIGNED_FILE, mode='rb') as signed_file:
             result = Key.objects.decrypt_file(file_object=signed_file)
 
         self.assertEqual(result.read(), TEST_SIGNED_FILE_CONTENT)
@@ -110,14 +108,14 @@ class KeyTestCase(BaseTestCase):
         cleartext_file.write(b'test')
         cleartext_file.seek(0)
 
-        with self.assertRaises(DecryptionError):
+        with self.assertRaises(expected_exception=DecryptionError):
             Key.objects.decrypt_file(file_object=cleartext_file)
 
         cleartext_file.close()
 
     def test_detached_verification_no_key(self):
-        with open(TEST_DETACHED_SIGNATURE, mode='rb') as signature_file:
-            with open(TEST_FILE, mode='rb') as test_file:
+        with open(file=TEST_DETACHED_SIGNATURE, mode='rb') as signature_file:
+            with open(file=TEST_FILE, mode='rb') as test_file:
                 result = Key.objects.verify_file(
                     file_object=test_file, signature_file=signature_file
                 )
@@ -127,8 +125,8 @@ class KeyTestCase(BaseTestCase):
     def test_detached_verification_with_key(self):
         Key.objects.create(key_data=TEST_KEY_PRIVATE_DATA)
 
-        with open(TEST_DETACHED_SIGNATURE, mode='rb') as signature_file:
-            with open(TEST_FILE, mode='rb') as test_file:
+        with open(file=TEST_DETACHED_SIGNATURE, mode='rb') as signature_file:
+            with open(file=TEST_FILE, mode='rb') as test_file:
                 result = Key.objects.verify_file(
                     file_object=test_file, signature_file=signature_file
                 )
@@ -139,8 +137,8 @@ class KeyTestCase(BaseTestCase):
     def test_detached_signing_no_passphrase(self):
         key = Key.objects.create(key_data=TEST_KEY_PRIVATE_DATA)
 
-        with self.assertRaises(NeedPassphrase):
-            with open(TEST_FILE, mode='rb') as test_file:
+        with self.assertRaises(expected_exception=NeedPassphrase):
+            with open(file=TEST_FILE, mode='rb') as test_file:
                 key.sign_file(
                     file_object=test_file, detached=True,
                 )
@@ -148,8 +146,8 @@ class KeyTestCase(BaseTestCase):
     def test_detached_signing_bad_passphrase(self):
         key = Key.objects.create(key_data=TEST_KEY_PRIVATE_DATA)
 
-        with self.assertRaises(PassphraseError):
-            with open(TEST_FILE, mode='rb') as test_file:
+        with self.assertRaises(expected_exception=PassphraseError):
+            with open(file=TEST_FILE, mode='rb') as test_file:
                 key.sign_file(
                     file_object=test_file, detached=True,
                     passphrase='bad passphrase'
@@ -158,17 +156,17 @@ class KeyTestCase(BaseTestCase):
     def test_detached_signing_with_passphrase(self):
         key = Key.objects.create(key_data=TEST_KEY_PRIVATE_DATA)
 
-        with open(TEST_FILE, mode='rb') as test_file:
+        with open(file=TEST_FILE, mode='rb') as test_file:
             detached_signature = key.sign_file(
                 file_object=test_file, detached=True,
                 passphrase=TEST_KEY_PRIVATE_PASSPHRASE
             )
 
         signature_file = io.BytesIO()
-        signature_file.write(force_bytes(detached_signature))
+        signature_file.write(force_bytes(s=detached_signature))
         signature_file.seek(0)
 
-        with open(TEST_FILE, mode='rb') as test_file:
+        with open(file=TEST_FILE, mode='rb') as test_file:
             result = Key.objects.verify_file(
                 file_object=test_file, signature_file=signature_file
             )
@@ -176,3 +174,8 @@ class KeyTestCase(BaseTestCase):
         signature_file.close()
         self.assertTrue(result)
         self.assertEqual(result.fingerprint, TEST_KEY_PRIVATE_FINGERPRINT)
+
+    def test_method_get_absolute_url(self):
+        key = Key.objects.create(key_data=TEST_KEY_PRIVATE_DATA)
+
+        self.assertTrue(key.get_absolute_url())

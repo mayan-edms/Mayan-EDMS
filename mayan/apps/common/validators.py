@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import json
 import re
 import yaml
@@ -16,9 +14,6 @@ from django.utils.deconstruct import deconstructible
 from django.utils.functional import SimpleLazyObject
 from django.utils.translation import ugettext_lazy as _
 
-# These values, if given to validate(), will trigger the self.required check.
-EMPTY_VALUES = (None, '', [], (), {})
-
 
 def _lazy_re_compile(regex, flags=0):
     """Lazily compile a regex with flags."""
@@ -33,14 +28,14 @@ def _lazy_re_compile(regex, flags=0):
 
 
 @deconstructible
-class JSONValidator(object):
+class JSONValidator:
     """
     Validates that the input is JSON compliant.
     """
     def __call__(self, value):
         value = value.strip()
         try:
-            json.loads(stream=value)
+            json.loads(s=value)
         except ValueError:
             raise ValidationError(
                 _('Enter a valid JSON value.'),
@@ -57,7 +52,7 @@ class JSONValidator(object):
 
 
 @deconstructible
-class YAMLValidator(object):
+class YAMLValidator:
     """
     Validates that the input is YAML compliant.
     """

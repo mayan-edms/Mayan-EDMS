@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 TEST_CASE_ROLE_LABEL = 'test case role label'
 TEST_INVALID_PERMISSION_NAMESPACE_NAME = 'invalid namespace'
 TEST_INVALID_PERMISSION_NAME = 'invalid name'

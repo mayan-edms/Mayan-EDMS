@@ -1,25 +1,20 @@
-from __future__ import unicode_literals
-
 from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.document_indexing.tasks import task_index_document
 from mayan.apps.events.classes import EventType
 
-from .literals import (
-    WORKFLOW_IMAGE_CACHE_STORAGE_INSTANCE_PATH, WORKFLOW_IMAGE_CACHE_NAME
-)
+from .literals import STORAGE_NAME_WORKFLOW_CACHE
 from .settings import setting_workflow_image_cache_maximum_size
+from .tasks import task_launch_all_workflow_for
 
 
 def handler_create_workflow_image_cache(sender, **kwargs):
     Cache = apps.get_model(app_label='file_caching', model_name='Cache')
     Cache.objects.update_or_create(
         defaults={
-            'label': _('Workflow images'),
-            'storage_instance_path': WORKFLOW_IMAGE_CACHE_STORAGE_INSTANCE_PATH,
             'maximum_size': setting_workflow_image_cache_maximum_size.value,
-        }, name=WORKFLOW_IMAGE_CACHE_NAME,
+        }, defined_storage_name=STORAGE_NAME_WORKFLOW_CACHE,
     )
 
 
@@ -32,12 +27,10 @@ def handler_index_document(sender, **kwargs):
 
 
 def handler_launch_workflow(sender, instance, created, **kwargs):
-    Workflow = apps.get_model(
-        app_label='document_states', model_name='Workflow'
-    )
-
     if created:
-        Workflow.objects.launch_for(document=instance)
+        task_launch_all_workflow_for.apply_async(
+            kwargs={'document_id': instance.pk}
+        )
 
 
 def handler_trigger_transition(sender, **kwargs):

@@ -1,9 +1,7 @@
-from __future__ import unicode_literals
-
 import json
 
 
-class ChartRenderer(object):
+class ChartRenderer:
     def __init__(self, data):
         self.data = data
 
@@ -30,7 +28,7 @@ class ChartJSLine(ChartRenderer):
         labels = []
         datasets = []
 
-        for count, serie in enumerate(self.data['series'].items()):
+        for count, serie in enumerate(iterable=self.data['series'].items()):
             series_name, series_data = serie
             dataset_labels = []
             dataset_values = []
@@ -58,4 +56,4 @@ class ChartJSLine(ChartRenderer):
 
         }
 
-        return json.dumps(data)
+        return json.dumps(obj=data)

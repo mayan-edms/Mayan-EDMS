@@ -1,8 +1,5 @@
-from __future__ import unicode_literals
-
 import errno
 import hashlib
-from importlib import import_module
 import logging
 import os
 import re
@@ -10,26 +7,26 @@ import sys
 
 import yaml
 
-from django.apps import apps
 from django.conf import settings
 from django.utils.functional import Promise
 from django.utils.encoding import (
-    force_bytes, force_text, python_2_unicode_compatible
+    force_bytes, force_text
 )
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
 from mayan.apps.common.serialization import yaml_dump, yaml_load
 
 from .literals import (
     NAMESPACE_VERSION_INITIAL, SMART_SETTINGS_NAMESPACES_NAME
 )
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 def read_configuration_file(filepath):
     try:
-        with open(filepath) as file_object:
+        with open(file=filepath) as file_object:
             file_object.seek(0, os.SEEK_END)
             if file_object.tell():
                 file_object.seek(0)
@@ -49,21 +46,9 @@ def read_configuration_file(filepath):
             raise
 
 
-@python_2_unicode_compatible
-class Namespace(object):
+class SettingNamespace(AppsModuleLoaderMixin):
+    _loader_module_name = 'settings'
     _registry = {}
-
-    @staticmethod
-    def initialize():
-        for app in apps.get_app_configs():
-            try:
-                import_module('{}.settings'.format(app.name))
-            except ImportError as exception:
-                if force_text(exception) not in ('No module named settings', 'No module named \'{}.settings\''.format(app.name)):
-                    logger.error(
-                        'Error importing %s settings.py file; %s', app.name,
-                        exception
-                    )
 
     @classmethod
     def get(cls, name):
@@ -102,13 +87,13 @@ class Namespace(object):
         self._settings = []
 
     def __str__(self):
-        return force_text(self.label)
+        return force_text(s=self.label)
 
     def add_setting(self, **kwargs):
         return Setting(namespace=self, **kwargs)
 
     def get_config_version(self):
-        return Namespace.get_namespace_config(name=self.name).get(
+        return SettingNamespace.get_namespace_config(name=self.name).get(
             'version', NAMESPACE_VERSION_INITIAL
         )
 
@@ -125,7 +110,7 @@ class Namespace(object):
         return sorted(self._settings, key=lambda x: x.global_name)
 
 
-class NamespaceMigration(object):
+class SettingNamespaceMigration:
     @staticmethod
     def get_method_name(setting):
         return setting.global_name.lower()
@@ -141,7 +126,7 @@ class NamespaceMigration(object):
 
     def migrate(self, setting):
         if self.namespace.get_config_version() != self.namespace.version:
-            setting_method_name = NamespaceMigration.get_method_name(
+            setting_method_name = SettingNamespaceMigration.get_method_name(
                 setting=setting
             )
 
@@ -180,8 +165,7 @@ class NamespaceMigration(object):
             setting.raw_value = value
 
 
-@python_2_unicode_compatible
-class Setting(object):
+class Setting:
     _registry = {}
     _cache_hash = None
     _config_file_cache = None
@@ -198,7 +182,7 @@ class Setting(object):
         if isinstance(value, (list, tuple)):
             return [Setting.express_promises(item) for item in value]
         elif isinstance(value, Promise):
-            return force_text(value)
+            return force_text(s=value)
         else:
             return value
 
@@ -210,7 +194,7 @@ class Setting(object):
         )
         # safe_dump returns bytestrings
         # Disregard the last 3 dots that mark the end of the YAML document
-        if force_text(result).endswith('...\n'):
+        if force_text(s=result).endswith('...\n'):
             result = result[:-4]
 
         return result
@@ -228,7 +212,7 @@ class Setting(object):
 
         if not namespace:
             namespace_dictionary = {}
-            for _namespace in Namespace.get_all():
+            for _namespace in SettingNamespace.get_all():
                 namespace_dictionary[_namespace.name] = {
                     'version': _namespace.version
                 }
@@ -266,7 +250,7 @@ class Setting(object):
     @classmethod
     def get_hash(cls):
         return force_text(
-            hashlib.sha256(force_bytes(cls.dump_data())).hexdigest()
+            s=hashlib.sha256(force_bytes(s=cls.dump_data())).hexdigest()
         )
 
     @classmethod
@@ -275,7 +259,7 @@ class Setting(object):
             path = settings.CONFIGURATION_FILEPATH
 
         try:
-            with open(path, mode='w') as file_object:
+            with open(file=path, mode='w') as file_object:
                 file_object.write(cls.dump_data())
         except IOError as exception:
             if exception.errno == errno.ENOENT:
@@ -308,10 +292,12 @@ class Setting(object):
         self.__class__._registry[global_name] = self
 
     def __str__(self):
-        return force_text(self.global_name)
+        return force_text(s=self.global_name)
 
-    def cache_value(self):
-        environment_value = os.environ.get('MAYAN_{}'.format(self.global_name))
+    def cache_value(self, global_name=None):
+        global_name = global_name or self.global_name
+
+        environment_value = os.environ.get('MAYAN_{}'.format(global_name))
         if environment_value:
             self.environment_variable = True
             try:
@@ -320,18 +306,18 @@ class Setting(object):
                 raise type(exception)(
                     'Error interpreting environment variable: {} with '
                     'value: {}; {}'.format(
-                        self.global_name, environment_value, exception
+                        global_name, environment_value, exception
                     )
                 )
         else:
             try:
                 # Try the config file
-                self.raw_value = self.get_config_file_content()[self.global_name]
+                self.raw_value = self.get_config_file_content()[global_name]
             except KeyError:
                 try:
                     # Try the Django settings variable
                     self.raw_value = getattr(
-                        settings, self.global_name
+                        settings, global_name
                     )
                 except AttributeError:
                     # Finally set to the default value
@@ -367,6 +353,9 @@ class Setting(object):
             self.cache_value()
 
         return self.yaml
+
+    def set(self, value):
+        self.value = Setting.serialize_value(value=value)
 
     @property
     def value(self):

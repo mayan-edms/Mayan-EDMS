@@ -1,8 +1,6 @@
-from __future__ import unicode_literals
-
 from django import forms
 
-from mayan.apps.common.widgets import TextAreaDiv
+from mayan.apps.views.widgets import TextAreaDiv
 
 from .classes import Dependency
 
@@ -19,7 +17,7 @@ class DependenciesLicensesForm(forms.Form):
     )
 
     def __init__(self, *args, **kwargs):
-        super(DependenciesLicensesForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         copyright_texts = []
 
         for dependency in Dependency.get_all():

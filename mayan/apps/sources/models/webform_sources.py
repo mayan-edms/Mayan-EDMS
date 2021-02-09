@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import logging
 
 from django.db import models
@@ -13,7 +11,7 @@ from ..literals import (
 from .base import InteractiveSource
 
 __all__ = ('WebFormSource',)
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class WebFormSource(InteractiveSource):

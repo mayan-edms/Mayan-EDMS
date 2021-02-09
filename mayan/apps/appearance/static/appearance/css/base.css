@@ -69,11 +69,6 @@ img.lazy-load-carousel {
     text-align: center;
 }
 
-.label-tag {
-    text-shadow: 0px 0px 2px #000;
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
-}
-
 .fancybox-nav span {
     visibility: visible;
 }
@@ -117,14 +112,6 @@ a i {
 
 .dashboard-widget-icon {
     font-size: 200%;
-}
-
-.select2-container--default .select2-selection--multiple .select2-selection__choice .label {
-    padding-bottom: 1px;
-}
-
-.tag-container .label {
-    margin-right: 2px;
 }
 
 /* Notifications */
@@ -194,6 +181,7 @@ a i {
 
 .panel-item {
     box-shadow: 2px 2px 18px rgba(0, 0, 0, .2);
+    transition: all .2s ease;
 }
 
 .panel-item > .panel-heading {
@@ -202,6 +190,7 @@ a i {
 
 .panel-item > .panel-body {
     padding: 10px;
+    word-wrap: break-word;
 }
 
 .list-extra-column-label {
@@ -245,11 +234,6 @@ a i {
 .spinner-container > .spinner-icon {
     margin-left: 4px;
     margin-top: 3px;
-}
-
-/* Cabinets */
-.cabinet-display {
-    font-style: italic;
 }
 
 .staging-file-thumbnail-container {
@@ -377,12 +361,12 @@ a i {
         position: fixed;
         right: 0;
         top: 100px;
-        width: 150px;
+        width: 160px;
         z-index: 1000;
     }
 
     .has-sidebar {
-        padding-right: 150px;
+        padding-right: 160px;
     }
 }
 
@@ -422,8 +406,16 @@ a i {
     color: #fff;
 }
 
-.btn-list {
+.btn-list > .btn {
     margin-bottom: 2px;
+}
+
+.btn-list > .btn:not(:last-child) {
+    margin-right: 4px;
+}
+
+.btn-xs {
+    padding: 1px 5px 0px;
 }
 
 /*
@@ -558,6 +550,11 @@ a i {
 }
 
 #accordion-sidebar a {
+    outline: none;
+}
+
+#accordion-sidebar > .panel > div > div > ul > li > a,
+#accordion-sidebar > .panel > div > h4 > a {
     text-decoration: none;
     outline: none;
     position: relative;
@@ -572,14 +569,16 @@ a i {
 
 #accordion-sidebar .panel-heading:hover {
     background-color: #517394;
-}
-
-#accordion-sidebar > .panel > div > .panel-body > ul > li > a:hover {
-    background-color: #517394;
+    transition: .1s ease;
 }
 
 #accordion-sidebar > .panel > div > .panel-body > ul > li.active {
    background: #1a242f;
+}
+
+#accordion-sidebar > .panel > div > .panel-body > ul > li:hover {
+    background-color: #517394;
+    transition: .1s ease;
 }
 
 #accordion-sidebar .panel-title {
@@ -590,20 +589,24 @@ a i {
     font-size: 13px;
     border: 0px;
     background-color: #2c3e50;
-    padding-top: 5px;
+    padding-top: 3px;
     padding-left: 20px;
     padding-right: 0px;
     padding-bottom: 0px;
 }
 
+#accordion-sidebar ul.list-unstyled {
+    margin-bottom: 0px;
+}
+
 #accordion-sidebar .panel-body li {
-    padding: 0px;
+    padding: 9px;
 }
 
 #accordion-sidebar .panel-body a {
     color: white;
     text-decoration: none;
-    padding: 9px;
+    padding: 0px;
 }
 
 .navbar-fixed-top {
@@ -625,15 +628,6 @@ a i {
     margin-top: 10px;
 }
 
-/* jstree - cabinets */
-#jstree {
-    max-width: 100%;
-    overflow: auto;
-    font: 11px Verdana, sans-serif;
-    padding: 0px;
-    padding-bottom: 10px; /* Padding for scrollbar */
-}
-
 /* appearance - JavaScript server error */
 .banner-server-error {
     margin-top: 10px;
@@ -643,4 +637,15 @@ a i {
 #list-toolbar.affix {
     top: 60px;  /* OuterHeight of navbar */
     z-index: 90;
+}
+
+.dropdown-menu > li > a {
+    color: #585e5e;
+}
+
+.dropdown-header {
+    text-align:center;
+    padding-top: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
 }

@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import os
 import sys
 
@@ -34,8 +32,9 @@ environment_secret_key = os.environ.get('MAYAN_SECRET_KEY')
 if environment_secret_key:
     SECRET_KEY = environment_secret_key
 else:
+    SECRET_KEY_PATH = os.path.join(MEDIA_ROOT, SYSTEM_DIR, SECRET_KEY_FILENAME)
     try:
-        with open(os.path.join(MEDIA_ROOT, SYSTEM_DIR, SECRET_KEY_FILENAME)) as file_object:  # NOQA: F821
+        with open(file=SECRET_KEY_PATH) as file_object:  # NOQA: F821
             SECRET_KEY = file_object.read().strip()
     except IOError:
         SECRET_KEY = DEFAULT_SECRET_KEY
@@ -49,7 +48,6 @@ INSTALLED_APPS = (
     'mayan.apps.appearance',
     # Django
     'django.contrib.admin',
-    'django.contrib.admindocs',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.messages',
@@ -85,16 +83,22 @@ INSTALLED_APPS = (
     'mayan.apps.dynamic_search',
     'mayan.apps.events',
     'mayan.apps.file_caching',
+    'mayan.apps.locales',
     'mayan.apps.lock_manager',
+    'mayan.apps.logging',
     'mayan.apps.mimetype',
     'mayan.apps.navigation',
     'mayan.apps.permissions',
     'mayan.apps.platform',
+    'mayan.apps.quotas',
     'mayan.apps.rest_api',
     'mayan.apps.smart_settings',
+    'mayan.apps.storage',
     'mayan.apps.task_manager',
     'mayan.apps.templating',
+    'mayan.apps.testing',
     'mayan.apps.user_management',
+    'mayan.apps.views',
     # Project apps
     'mayan.apps.motd',
     # Document apps
@@ -106,6 +110,7 @@ INSTALLED_APPS = (
     'mayan.apps.document_signatures',
     'mayan.apps.document_states',
     'mayan.apps.documents',
+    'mayan.apps.duplicates',
     'mayan.apps.file_metadata',
     'mayan.apps.linking',
     'mayan.apps.mailer',
@@ -115,7 +120,6 @@ INSTALLED_APPS = (
     'mayan.apps.ocr',
     'mayan.apps.redactions',
     'mayan.apps.sources',
-    'mayan.apps.storage',
     'mayan.apps.tags',
     'mayan.apps.web_links',
     # Placed after rest_api to allow template overriding
@@ -123,7 +127,7 @@ INSTALLED_APPS = (
 )
 
 MIDDLEWARE = (
-    'mayan.apps.common.middleware.error_logging.ErrorLoggingMiddleware',
+    'mayan.apps.logging.middleware.error_logging.ErrorLoggingMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -131,10 +135,11 @@ MIDDLEWARE = (
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'mayan.apps.authentication.middleware.impersonate.ImpersonateMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
-    'mayan.apps.common.middleware.timezone.TimezoneMiddleware',
+    'mayan.apps.locales.middleware.timezone.TimezoneMiddleware',
     'stronghold.middleware.LoginRequiredMiddleware',
     'mayan.apps.common.middleware.ajax_redirect.AjaxRedirect',
 )
@@ -237,12 +242,12 @@ STATIC_ROOT = os.environ.get(
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'mayan.apps.views.finders.MayanAppDirectoriesFinder',
 )
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-TEST_RUNNER = 'mayan.apps.common.tests.runner.MayanTestRunner'
+TEST_RUNNER = 'mayan.apps.testing.runner.MayanTestRunner'
 
 # ---------- Django REST framework -----------
 
@@ -252,8 +257,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.BasicAuthentication',
     ),
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10,
+    'DEFAULT_PAGINATION_CLASS': 'mayan.apps.rest_api.pagination.MayanPageNumberPagination',
 }
 
 # --------- Pagination --------
@@ -290,7 +294,7 @@ TIMEZONE_SESSION_KEY = 'django_timezone'
 
 # ----- Stronghold -------
 
-STRONGHOLD_PUBLIC_URLS = (r'^/docs/.+$', r'^/favicon\.ico$')
+STRONGHOLD_PUBLIC_URLS = (r'^/favicon\.ico$',)
 
 # ----- Swagger --------
 
@@ -303,6 +307,8 @@ SWAGGER_SETTINGS = {
 # ----- AJAX REDIRECT -----
 
 AJAX_REDIRECT_CODE = 278
+
+# ------ End -----
 
 BASE_INSTALLED_APPS = INSTALLED_APPS
 

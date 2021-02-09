@@ -1,17 +1,14 @@
-from __future__ import unicode_literals
-
 import shlex
 
 from django.core.exceptions import ValidationError
 from django.db import models, transaction
-from django.template import Context, Template
 from django.urls import reverse
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
 from django.utils.module_loading import import_string
-from django.utils.six import PY2
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.documents.models import Document, DocumentType
+from mayan.apps.templating.classes import Template
 
 from .classes import MetadataLookup
 from .events import (
@@ -37,7 +34,6 @@ def parser_choices():
     )
 
 
-@python_2_unicode_compatible
 class MetadataType(models.Model):
     """
     Model to store a type of metadata. Metadata are user defined properties
@@ -57,23 +53,15 @@ class MetadataType(models.Model):
         max_length=48, verbose_name=_('Label')
     )
     default = models.CharField(
-        blank=True, max_length=128, null=True,
-        help_text=_(
-            'Enter a template to render. '
-            'Use Django\'s default templating language '
-            '(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)'
-        ),
-        verbose_name=_('Default')
+        blank=True, max_length=128, null=True, help_text=_(
+            'Enter a template to render.'
+        ), verbose_name=_('Default')
     )
     lookup = models.TextField(
-        blank=True, null=True,
-        help_text=_(
-            'Enter a template to render. '
-            'Must result in a comma delimited string. '
-            'Use Django\'s default templating language '
-            '(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/).'
-        ),
-        verbose_name=_('Lookup')
+        blank=True, null=True, help_text=_(
+            'Enter a template to render. Must result in a comma delimited '
+            'string.'
+        ), verbose_name=_('Lookup')
     )
     validation = models.CharField(
         blank=True, choices=validation_choices(),
@@ -99,41 +87,30 @@ class MetadataType(models.Model):
     def __str__(self):
         return self.label
 
+    @staticmethod
+    def comma_splitter(string):
+        splitter = shlex.shlex(string, posix=True)
+        splitter.whitespace = ','
+        splitter.whitespace_split = True
+        splitter.commenters = ''
+        return [force_text(s=e) for e in splitter]
+
     def get_absolute_url(self):
         return reverse(
             viewname='metadata:setup_metadata_type_edit', kwargs={
-                'pk': self.pk
+                'metadata_type_id': self.pk
             }
         )
 
-    if PY2:
-        # Python 2 non unicode version
-        @staticmethod
-        def comma_splitter(string):
-            splitter = shlex.shlex(string.encode('utf-8'), posix=True)
-            splitter.whitespace = ','.encode('utf-8')
-            splitter.whitespace_split = True
-            splitter.commenters = ''.encode('utf-8')
-            return [force_text(e) for e in splitter]
-    else:
-        # Python 3 unicode version
-        @staticmethod
-        def comma_splitter(string):
-            splitter = shlex.shlex(string, posix=True)
-            splitter.whitespace = ','
-            splitter.whitespace_split = True
-            splitter.commenters = ''
-            return [force_text(e) for e in splitter]
-
     def get_default_value(self):
-        template = Template(self.default)
-        context = Context()
-        return template.render(context=context)
+        template = Template(template_string=self.default)
+        return template.render()
 
     def get_lookup_values(self):
-        template = Template(self.lookup)
-        context = Context(MetadataLookup.get_as_context())
-        return MetadataType.comma_splitter(template.render(context=context))
+        template = Template(template_string=self.lookup)
+        return MetadataType.comma_splitter(
+            template.render(context=MetadataLookup.get_as_context())
+        )
 
     def get_required_for(self, document_type):
         """
@@ -152,7 +129,7 @@ class MetadataType(models.Model):
         created = not self.pk
 
         with transaction.atomic():
-            result = super(MetadataType, self).save(*args, **kwargs)
+            result = super().save(*args, **kwargs)
 
             if created:
                 event_metadata_type_created.commit(
@@ -184,17 +161,16 @@ class MetadataType(models.Model):
                 )
 
         if self.validation:
-            validator = import_string(self.validation)()
+            validator = import_string(dotted_path=self.validation)()
             validator.validate(value)
 
         if self.parser:
-            parser = import_string(self.parser)()
+            parser = import_string(dotted_path=self.parser)()
             value = parser.parse(value)
 
         return value
 
 
-@python_2_unicode_compatible
 class DocumentMetadata(models.Model):
     """
     Model used to link an instance of a metadata type with a value to a
@@ -221,10 +197,10 @@ class DocumentMetadata(models.Model):
         verbose_name_plural = _('Document metadata')
 
     def __str__(self):
-        return force_text(self.metadata_type)
+        return force_text(s=self.metadata_type)
 
     def clean_fields(self, *args, **kwargs):
-        super(DocumentMetadata, self).clean_fields(*args, **kwargs)
+        super().clean_fields(*args, **kwargs)
 
         self.value = self.metadata_type.validate_value(
             document_type=self.document.document_type, value=self.value
@@ -244,7 +220,7 @@ class DocumentMetadata(models.Model):
 
         _user = kwargs.pop('_user', None)
         with transaction.atomic():
-            result = super(DocumentMetadata, self).delete(*args, **kwargs)
+            result = super().delete(*args, **kwargs)
 
             event_document_metadata_removed.commit(
                 action_object=self.metadata_type, actor=_user,
@@ -267,7 +243,7 @@ class DocumentMetadata(models.Model):
         )
 
     def save(self, *args, **kwargs):
-        if self.metadata_type.pk not in self.document.document_type.metadata.values_list('metadata_type', flat=True):
+        if not self.document.document_type.metadata.filter(metadata_type=self.metadata_type).exists():
             raise ValidationError(
                 _('Metadata type is not valid for this document type.')
             )
@@ -276,7 +252,7 @@ class DocumentMetadata(models.Model):
         created = not self.pk
 
         with transaction.atomic():
-            result = super(DocumentMetadata, self).save(*args, **kwargs)
+            result = super().save(*args, **kwargs)
 
             if created:
                 event_document_metadata_added.commit(
@@ -292,7 +268,6 @@ class DocumentMetadata(models.Model):
             return result
 
 
-@python_2_unicode_compatible
 class DocumentTypeMetadataType(models.Model):
     """
     Model used to store the relationship between a metadata type and a
@@ -303,7 +278,7 @@ class DocumentTypeMetadataType(models.Model):
         verbose_name=_('Document type')
     )
     metadata_type = models.ForeignKey(
-        on_delete=models.CASCADE, to=MetadataType,
+        on_delete=models.CASCADE, related_name='document_types', to=MetadataType,
         verbose_name=_('Metadata type')
     )
     required = models.BooleanField(default=False, verbose_name=_('Required'))
@@ -317,13 +292,13 @@ class DocumentTypeMetadataType(models.Model):
         verbose_name_plural = _('Document type metadata types options')
 
     def __str__(self):
-        return force_text(self.metadata_type)
+        return force_text(s=self.metadata_type)
 
     def delete(self, *args, **kwargs):
         _user = kwargs.pop('_user', None)
 
         with transaction.atomic():
-            result = super(DocumentTypeMetadataType, self).delete(*args, **kwargs)
+            result = super().delete(*args, **kwargs)
 
             event_metadata_type_relationship.commit(
                 action_object=self.document_type, actor=_user,
@@ -336,7 +311,7 @@ class DocumentTypeMetadataType(models.Model):
         _user = kwargs.pop('_user', None)
 
         with transaction.atomic():
-            result = super(DocumentTypeMetadataType, self).save(*args, **kwargs)
+            result = super().save(*args, **kwargs)
 
             event_metadata_type_relationship.commit(
                 action_object=self.document_type, actor=_user,

@@ -1,15 +1,12 @@
-from __future__ import unicode_literals
-
-from mayan.apps.common.tests.base import BaseTestCase
+from mayan.apps.documents.tests.base import GenericDocumentTestCase
 from mayan.apps.documents.tests.literals import TEST_PDF_DOCUMENT_FILENAME
-from mayan.apps.documents.tests.mixins import DocumentTestMixin
 
 from .literals import (
     TEST_PDF_FILE_METADATA_DOTTED_NAME, TEST_PDF_FILE_METADATA_VALUE
 )
 
 
-class EXIFToolDriverTestCase(DocumentTestMixin, BaseTestCase):
+class EXIFToolDriverTestCase(GenericDocumentTestCase):
     test_document_filename = TEST_PDF_DOCUMENT_FILENAME
 
     def test_driver_entries(self):

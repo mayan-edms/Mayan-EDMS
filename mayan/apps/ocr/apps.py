@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import logging
 
 from django.apps import apps
@@ -10,15 +8,14 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import ModelFieldRelated, ModelProperty
 from mayan.apps.common.menus import (
-    menu_facet, menu_list_facet, menu_multi_item, menu_secondary, menu_tools
+    menu_list_facet, menu_multi_item, menu_secondary, menu_tools
 )
-from mayan.apps.documents.search import document_search, document_page_search
-from mayan.apps.documents.signals import post_version_upload
+from mayan.apps.documents.signals import signal_post_document_version_remap
 from mayan.apps.events.classes import ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
 
 from .events import (
-    event_ocr_document_content_deleted, event_ocr_document_version_finish,
+    event_ocr_document_version_content_deleted, event_ocr_document_version_finish,
     event_ocr_document_version_submit
 )
 from .handlers import (
@@ -26,24 +23,24 @@ from .handlers import (
     handler_ocr_document_version,
 )
 from .links import (
-    link_document_page_ocr_content, link_document_ocr_content,
-    link_document_ocr_content_delete,
-    link_document_ocr_content_delete_multiple, link_document_ocr_download,
-    link_document_ocr_errors_list, link_document_submit,
-    link_document_submit_multiple, link_document_type_ocr_settings,
+    link_document_version_page_ocr_content_view, link_document_version_ocr_content_view,
+    link_document_version_ocr_content_delete,
+    link_document_version_multiple_ocr_content_delete, link_document_version_ocr_download,
+    link_document_version_ocr_errors_list, link_document_version_ocr_submit,
+    link_document_version_multiple_ocr_submit, link_document_type_ocr_settings,
     link_document_type_submit, link_entry_list
 )
 from .methods import (
     method_document_ocr_submit, method_document_version_ocr_submit
 )
 from .permissions import (
-    permission_document_type_ocr_setup, permission_ocr_document,
-    permission_ocr_content_view
+    permission_document_type_ocr_setup, permission_document_version_ocr,
+    permission_document_version_ocr_content_view
 )
-from .signals import post_document_version_ocr
+from .signals import signal_post_document_version_ocr
 from .utils import get_instance_ocr_content
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class OCRApp(MayanAppConfig):
@@ -55,22 +52,22 @@ class OCRApp(MayanAppConfig):
     verbose_name = _('OCR')
 
     def ready(self):
-        super(OCRApp, self).ready()
+        super().ready()
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'
         )
-        DocumentPage = apps.get_model(
-            app_label='documents', model_name='DocumentPage'
-        )
         DocumentType = apps.get_model(
             app_label='documents', model_name='DocumentType'
         )
-        DocumentTypeSettings = self.get_model(
-            model_name='DocumentTypeSettings'
+        DocumentTypeOCRSettings = self.get_model(
+            model_name='DocumentTypeOCRSettings'
         )
         DocumentVersion = apps.get_model(
             app_label='documents', model_name='DocumentVersion'
+        )
+        DocumentVersionPage = apps.get_model(
+            app_label='documents', model_name='DocumentVersionPage'
         )
 
         DocumentVersionOCRError = self.get_model(
@@ -92,7 +89,7 @@ class OCRApp(MayanAppConfig):
 
         ModelEventType.register(
             model=Document, event_types=(
-                event_ocr_document_content_deleted,
+                event_ocr_document_version_content_deleted,
                 event_ocr_document_version_finish,
                 event_ocr_document_version_submit
             )
@@ -103,15 +100,19 @@ class OCRApp(MayanAppConfig):
             name='versions__version_pages__ocr_content__content'
         )
         ModelProperty(
+            description=_('The OCR content.'), label='OCR content',
+            model=DocumentVersionPage, name='ocr_content.content'
+        )
+        ModelProperty(
             description=_(
                 'A generator returning the document\'s pages OCR content.'
             ), label=_('OCR content'), model=Document,
-            name='content'
+            name='ocr_content'
         )
 
         ModelPermission.register(
             model=Document, permissions=(
-                permission_ocr_document, permission_ocr_content_view
+                permission_document_version_ocr, permission_document_version_ocr_content_view
             )
         )
         ModelPermission.register(
@@ -120,7 +121,7 @@ class OCRApp(MayanAppConfig):
             )
         )
         ModelPermission.register_inheritance(
-            model=DocumentTypeSettings, related='document_type',
+            model=DocumentTypeOCRSettings, related='document_type',
         )
 
         SourceColumn(
@@ -136,39 +137,33 @@ class OCRApp(MayanAppConfig):
             attribute='result'
         )
 
-        document_search.add_model_field(
-            field='versions__version_pages__ocr_content__content', label=_('OCR')
-        )
-
-        document_page_search.add_model_field(
-            field='ocr_content__content', label=_('OCR')
-        )
-
-        menu_facet.bind_links(
-            links=(link_document_ocr_content,), sources=(Document,)
+        menu_list_facet.bind_links(
+            links=(link_document_version_ocr_content_view,), sources=(DocumentVersion,)
         )
         menu_list_facet.bind_links(
-            links=(link_document_page_ocr_content,), sources=(DocumentPage,)
+            links=(link_document_version_page_ocr_content_view,), sources=(DocumentVersionPage,)
         )
         menu_list_facet.bind_links(
             links=(link_document_type_ocr_settings,), sources=(DocumentType,)
         )
         menu_multi_item.bind_links(
             links=(
-                link_document_ocr_content_delete_multiple,
-                link_document_submit_multiple,
-            ), sources=(Document,)
+                link_document_version_multiple_ocr_content_delete,
+                link_document_version_multiple_ocr_submit,
+            ), sources=(DocumentVersion,)
         )
         menu_secondary.bind_links(
             links=(
-                link_document_ocr_content_delete,
-                link_document_ocr_errors_list,
-                link_document_ocr_download, link_document_submit
+                link_document_version_ocr_content_delete,
+                link_document_version_ocr_errors_list,
+                link_document_version_ocr_download, link_document_version_ocr_submit
             ),
             sources=(
-                'ocr:document_ocr_content_delete',
-                'ocr:document_ocr_content', 'ocr:document_ocr_download',
-                'ocr:document_ocr_error_list', 'ocr:document_submit',
+                'ocr:document_version_ocr_content_view_delete',
+                'ocr:document_version_ocr_content_view',
+                'ocr:document_version_ocr_download',
+                'ocr:document_version_ocr_error_list',
+                'ocr:document_version_ocr_submit',
             )
         )
         menu_secondary.bind_links(
@@ -184,17 +179,17 @@ class OCRApp(MayanAppConfig):
             )
         )
 
-        post_document_version_ocr.connect(
-            dispatch_uid='ocr_handler_index_document',
-            receiver=handler_index_document_version,
-            sender=DocumentVersion
-        )
         post_save.connect(
             dispatch_uid='ocr_handler_initialize_new_ocr_settings',
             receiver=handler_initialize_new_ocr_settings,
             sender=DocumentType
         )
-        post_version_upload.connect(
+        signal_post_document_version_ocr.connect(
+            dispatch_uid='ocr_handler_index_document_version',
+            receiver=handler_index_document_version,
+            sender=DocumentVersion
+        )
+        signal_post_document_version_remap.connect(
             dispatch_uid='ocr_handler_ocr_document_version',
             receiver=handler_ocr_document_version,
             sender=DocumentVersion

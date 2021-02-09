@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.apps import apps
 from django.db.models.signals import pre_delete, pre_save
 from django.utils.translation import ugettext_lazy as _
@@ -15,7 +13,7 @@ class MirroringApp(MayanAppConfig):
     verbose_name = _('Mirroring')
 
     def ready(self):
-        super(MirroringApp, self).ready()
+        super().ready()
 
         Document = apps.get_model(app_label='documents', model_name='Document')
         IndexInstanceNode = apps.get_model(

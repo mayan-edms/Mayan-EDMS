@@ -1,10 +1,8 @@
-from __future__ import unicode_literals
-
 from django import forms
 from django.utils.html import escape
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.forms import DetailForm
+from mayan.apps.views.forms import DetailForm
 
 from .models import Key
 
@@ -35,7 +33,7 @@ class KeyDetailForm(DetailForm):
         )
 
         kwargs['extra_fields'] = extra_fields
-        super(KeyDetailForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     class Meta:
         fields = ()

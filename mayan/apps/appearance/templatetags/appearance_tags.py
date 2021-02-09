@@ -1,10 +1,36 @@
-from __future__ import unicode_literals
+import bleach
 
+from django.apps import apps
+from django.conf import settings
 from django.template import Library
+from django.template.exceptions import TemplateDoesNotExist
+from django.template.loader import get_template
 from django.utils.module_loading import import_string
+from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
+app_templates_cache = {}
 register = Library()
+
+
+@register.simple_tag(takes_context=True)
+def appearance_app_templates(context, template_name):
+    result = []
+
+    for app in apps.get_app_configs():
+        template_id = '{}.{}'.format(app.label, template_name)
+        if template_id not in app_templates_cache or settings.DEBUG:
+            try:
+                app_templates_cache[template_id] = get_template(
+                    '{}/app/{}.html'.format(app.label, template_name)
+                ).render(request=context.get('request'))
+            except TemplateDoesNotExist:
+                """Non fatal"""
+                app_templates_cache[template_id] = ''
+
+        result.append(app_templates_cache[template_id])
+
+    return mark_safe('\n'.join(result))
 
 
 @register.filter
@@ -28,8 +54,22 @@ def appearance_get_icon(icon_path):
 
 
 @register.simple_tag
-def appearance_icon_render(icon_class, enable_shadow=False):
-    return icon_class.render(extra_context={'enable_shadow': enable_shadow})
+def appearance_get_user_theme_stylesheet(user):
+    if user and user.is_authenticated:
+        theme = user.theme_settings.theme
+
+        if theme:
+            return bleach.clean(
+                text=user.theme_settings.theme.stylesheet,
+                tags=('style',)
+            )
+
+    return ''
+
+
+@register.simple_tag
+def appearance_icon_render(icon, enable_shadow=False):
+    return icon.render(extra_context={'enable_shadow': enable_shadow})
 
 
 @register.filter

@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.template import Library
 
 from ..classes import Menu, SourceColumn
@@ -12,8 +10,10 @@ def navigation_get_sort_field_querystring(context, column):
     return column.get_sort_field_querystring(context=context)
 
 
-@register.simple_tag(takes_context=True)
-def navigation_get_source_columns(context, source, exclude_identifier=False, only_identifier=False):
+@register.simple_tag
+def navigation_get_source_columns(
+    source, exclude_identifier=False, only_identifier=False
+):
     try:
         # Is it a query set?
         source = source.model
@@ -33,7 +33,7 @@ def navigation_get_source_columns(context, source, exclude_identifier=False, onl
             pass
 
     return SourceColumn.get_for_source(
-        context=context, source=source, exclude_identifier=exclude_identifier,
+        source=source, exclude_identifier=exclude_identifier,
         only_identifier=only_identifier
     )
 

@@ -1,11 +1,8 @@
-from __future__ import absolute_import, unicode_literals
-
 import logging
 
 from django.db import models, transaction
-from django.template import Context, Template
 from django.urls import reverse
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext, ugettext_lazy as _
 
 from mptt.fields import TreeForeignKey
@@ -15,18 +12,18 @@ from mayan.apps.acls.models import AccessControlList
 from mayan.apps.documents.events import event_document_type_edited
 from mayan.apps.documents.models import Document, DocumentType
 from mayan.apps.documents.permissions import permission_document_view
+from mayan.apps.lock_manager.backends.base import LockingBackend
 from mayan.apps.lock_manager.exceptions import LockError
-from mayan.apps.lock_manager.runtime import locking_backend
+from mayan.apps.templating.classes import Template
 
 from .events import event_index_template_created, event_index_template_edited
 from .managers import (
     DocumentIndexInstanceNodeManager, IndexManager, IndexInstanceNodeManager
 )
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
-@python_2_unicode_compatible
 class Index(models.Model):
     """
     Parent model that defines an index and hold all the relationship for its
@@ -89,8 +86,9 @@ class Index(models.Model):
     def get_absolute_url(self):
         try:
             return reverse(
-                viewname='indexing:index_instance_node_view',
-                kwargs={'pk': self.instance_root.pk}
+                viewname='indexing:index_instance_node_view', kwargs={
+                    'index_instance_node_id': self.instance_root.pk
+                }
             )
         except IndexInstanceNode.DoesNotExist:
             return '#'
@@ -98,7 +96,7 @@ class Index(models.Model):
     def get_document_types_names(self):
         return ', '.join(
             [
-                force_text(document_type) for document_type in self.document_types.all()
+                force_text(s=document_type) for document_type in self.document_types.all()
             ] or ['None']
         )
 
@@ -113,19 +111,21 @@ class Index(models.Model):
         """
         logger.debug('Index; Indexing document: %s', document)
 
-        self.initialize_instance_root()
+        if Document.valid.filter(pk=document.pk).exists():
+            # Only index valid documents
+            self.initialize_instance_root()
 
-        with transaction.atomic():
-            # Remove the document from all instance nodes from
-            # this index
-            for index_instance_node in IndexInstanceNode.objects.filter(index_template_node__index=self, documents=document):
-                index_instance_node.remove_document(document=document)
+            with transaction.atomic():
+                # Remove the document from all instance nodes from
+                # this index
+                for index_instance_node in IndexInstanceNode.objects.filter(index_template_node__index=self, documents=document):
+                    index_instance_node.remove_document(document=document)
 
-            # Delete all empty nodes. Starting from the bottom up
-            for index_instance_node in self.instance_root.get_leafnodes():
-                index_instance_node.delete_empty()
+                # Delete all empty nodes. Starting from the bottom up
+                for index_instance_node in self.instance_root.get_leafnodes():
+                    index_instance_node.delete_empty()
 
-        self.template_root.index_document(document=document)
+            self.template_root.index_document(document=document)
 
     def initialize_instance_root(self):
         return self.template_root.initialize_index_instance_root_node()
@@ -176,7 +176,7 @@ class Index(models.Model):
 
         with transaction.atomic():
             is_new = not self.pk
-            super(Index, self).save(*args, **kwargs)
+            super().save(*args, **kwargs)
             if is_new:
                 # Automatically create the root index template node
                 IndexTemplateNode.objects.get_or_create(parent=None, index=self)
@@ -199,31 +199,6 @@ class Index(models.Model):
         return self.node_templates.get(parent=None)
 
 
-class IndexInstance(Index):
-    """
-    Model that represents an evaluated index. This is an index whose nodes
-    have been evaluated against a series of documents. If is a proxy model
-    at the moment.
-    """
-    class Meta:
-        proxy = True
-        verbose_name = _('Index instance')
-        verbose_name_plural = _('Index instances')
-
-    def get_instance_node_count(self):
-        try:
-            return self.instance_root.get_descendant_count()
-        except IndexInstanceNode.DoesNotExist:
-            return 0
-
-    def get_item_count(self, user):
-        try:
-            return self.instance_root.get_item_count(user=user)
-        except IndexInstanceNode.DoesNotExist:
-            return 0
-
-
-@python_2_unicode_compatible
 class IndexTemplateNode(MPTTModel):
     """
     The template to generate an index. Each entry represents a level in a
@@ -231,7 +206,8 @@ class IndexTemplateNode(MPTTModel):
     documents but not both.
     """
     parent = TreeForeignKey(
-        blank=True, null=True, on_delete=models.CASCADE, to='self',
+        blank=True, null=True, on_delete=models.CASCADE,
+        related_name='children', to='self',
     )
     index = models.ForeignKey(
         on_delete=models.CASCADE, related_name='node_templates', to=Index,
@@ -283,8 +259,8 @@ class IndexTemplateNode(MPTTModel):
         # the database.
         try:
             if acquire_lock:
-                lock = locking_backend.acquire_lock(
-                    self.get_lock_string()
+                lock = LockingBackend.get_instance().acquire_lock(
+                    name=self.get_lock_string()
                 )
         except LockError:
             raise
@@ -317,9 +293,12 @@ class IndexTemplateNode(MPTTModel):
                         )
 
                         try:
-                            context = Context({'document': document})
-                            template = Template(self.expression)
-                            result = template.render(context=context)
+                            template = Template(
+                                template_string=self.expression
+                            )
+                            result = template.render(
+                                context={'document': document}
+                            )
                         except Exception as exception:
                             logger.debug('Evaluating error: %s', exception)
                             error_message = _(
@@ -356,7 +335,42 @@ class IndexTemplateNode(MPTTModel):
         self.index_instance_nodes.get_or_create(parent=None)
 
 
-@python_2_unicode_compatible
+class IndexInstance(Index):
+    """
+    Model that represents an evaluated index. This is an index whose nodes
+    have been evaluated against a series of documents. If is a proxy model
+    at the moment.
+    """
+    class Meta:
+        proxy = True
+        verbose_name = _('Index instance')
+        verbose_name_plural = _('Index instances')
+
+    def get_children(self):
+        root_node_queryset = self.get_nodes().filter(parent=None)
+        if root_node_queryset.exists():
+            return root_node_queryset.first().get_children()
+        else:
+            return root_node_queryset
+
+    def get_nodes(self):
+        return IndexInstanceNode.objects.filter(
+            index_template_node__index=self
+        )
+
+    def get_instance_node_count(self):
+        try:
+            return self.instance_root.get_descendant_count()
+        except IndexInstanceNode.DoesNotExist:
+            return 0
+
+    def get_item_count(self, user):
+        try:
+            return self.instance_root.get_item_count(user=user)
+        except IndexInstanceNode.DoesNotExist:
+            return 0
+
+
 class IndexInstanceNode(MPTTModel):
     """
     This model represent one instance node from a index template node. That is
@@ -365,7 +379,8 @@ class IndexInstanceNode(MPTTModel):
     model also point to the original node template.
     """
     parent = TreeForeignKey(
-        blank=True, null=True, on_delete=models.CASCADE, to='self',
+        blank=True, null=True, on_delete=models.CASCADE,
+        related_name='children', to='self'
     )
     index_template_node = models.ForeignKey(
         on_delete=models.CASCADE, related_name='index_instance_nodes',
@@ -382,8 +397,8 @@ class IndexInstanceNode(MPTTModel):
     objects = IndexInstanceNodeManager()
 
     class Meta:
-        verbose_name = _('Index node instance')
-        verbose_name_plural = _('Indexes node instances')
+        verbose_name = _('Index instance node')
+        verbose_name_plural = _('Indexes instances node')
 
     def __str__(self):
         return self.value
@@ -394,14 +409,14 @@ class IndexInstanceNode(MPTTModel):
         """
         # Prevent another process to delete this node.
         try:
-            lock = locking_backend.acquire_lock(
-                self.index_template_node.get_lock_string()
+            lock = LockingBackend.get_instance().acquire_lock(
+                name=self.index_template_node.get_lock_string()
             )
         except LockError:
             raise
         else:
             try:
-                if self.documents.count() == 0 and self.get_children().count() == 0:
+                if self.get_documents().count() == 0 and self.get_children().count() == 0:
                     if not self.is_root_node():
                         # I'm not a root node, I can be deleted
                         self.delete()
@@ -415,7 +430,7 @@ class IndexInstanceNode(MPTTModel):
     def get_absolute_url(self):
         return reverse(
             viewname='indexing:index_instance_node_view', kwargs={
-                'pk': self.pk
+                'index_instance_node_id': self.pk
             }
         )
 
@@ -435,21 +450,28 @@ class IndexInstanceNode(MPTTModel):
             ), user=user
         ).count()
 
+    def get_documents(self):
+        return Document.valid.filter(pk__in=self.documents.values('pk'))
+
     def get_full_path(self):
         result = []
         for node in self.get_ancestors(include_self=True):
             if node.is_root_node():
-                result.append(force_text(self.index()))
+                result.append(force_text(s=self.index()))
             else:
-                result.append(force_text(node))
+                result.append(force_text(s=node))
 
         return ' / '.join(result)
+    get_full_path.help_text = _(
+        'The path to the index including all ancestors.'
+    )
+    get_full_path.short_description = _('Full path')
 
     def get_item_count(self, user):
         if self.index_template_node.link_documents:
             queryset = AccessControlList.objects.restrict_queryset(
-                permission=permission_document_view, queryset=self.documents,
-                user=user
+                permission=permission_document_view,
+                queryset=self.get_documents(), user=user
             )
 
             return queryset.count()
@@ -475,8 +497,8 @@ class IndexInstanceNode(MPTTModel):
         # Prevent another process to work on this node. We use the node's
         # parent template node for the lock
         try:
-            lock = locking_backend.acquire_lock(
-                self.index_template_node.get_lock_string()
+            lock = LockingBackend.get_instance().acquire_lock(
+                name=self.index_template_node.get_lock_string()
             )
         except LockError:
             raise
@@ -499,3 +521,10 @@ class DocumentIndexInstanceNode(IndexInstanceNode):
         proxy = True
         verbose_name = _('Document index node instance')
         verbose_name_plural = _('Document indexes node instances')
+
+
+class IndexInstanceNodeSearchResult(IndexInstanceNode):
+    class Meta:
+        proxy = True
+        verbose_name = _('Index instance node')
+        verbose_name_plural = _('Index instance nodes')

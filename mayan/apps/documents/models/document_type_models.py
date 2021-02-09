@@ -1,28 +1,37 @@
-from __future__ import absolute_import, unicode_literals
-
 import logging
 
 from django.apps import apps
-from django.db import models, transaction
+from django.db import models
 from django.urls import reverse
-from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.common.literals import TIME_DELTA_UNIT_CHOICES
+from mayan.apps.common.model_mixins import ExtraDataModelMixin
+from mayan.apps.common.serialization import yaml_load
+from mayan.apps.common.validators import YAMLValidator
+from mayan.apps.events.classes import (
+    EventManagerMethodAfter, EventManagerSave
+)
+from mayan.apps.events.decorators import method_event
 
-from ..events import event_document_type_created, event_document_type_edited
+from ..classes import BaseDocumentFilenameGenerator
+from ..events import (
+    event_document_type_created, event_document_type_edited,
+    event_document_type_quick_label_created,
+    event_document_type_quick_label_deleted,
+    event_document_type_quick_label_edited
+)
 from ..literals import DEFAULT_DELETE_PERIOD, DEFAULT_DELETE_TIME_UNIT
 from ..managers import DocumentTypeManager
 from ..permissions import permission_document_view
 from ..settings import setting_language
 
 __all__ = ('DocumentType', 'DocumentTypeFilename')
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
-@python_2_unicode_compatible
-class DocumentType(models.Model):
+class DocumentType(ExtraDataModelMixin, models.Model):
     """
     Define document types or classes to which a specific set of
     properties can be attached
@@ -52,6 +61,20 @@ class DocumentType(models.Model):
         default=DEFAULT_DELETE_TIME_UNIT, max_length=8, null=True,
         verbose_name=_('Delete time unit')
     )
+    filename_generator_backend = models.CharField(
+        default=BaseDocumentFilenameGenerator.get_default(), help_text=_(
+            'The class responsible for producing the actual filename used '
+            'to store the uploaded documents.'
+        ), max_length=224, verbose_name=_('Filename generator backend')
+    )
+    filename_generator_backend_arguments = models.TextField(
+        blank=True, help_text=_(
+            'The arguments for the filename generator backend as a '
+            'YAML dictionary.'
+        ), validators=[YAMLValidator()], verbose_name=_(
+            'Filename generator backend arguments'
+        )
+    )
 
     objects = DocumentTypeManager()
 
@@ -64,20 +87,22 @@ class DocumentType(models.Model):
         return self.label
 
     def delete(self, *args, **kwargs):
-        Document = apps.get_model(app_label='documents', model_name='Document')
-
-        for document in Document.passthrough.filter(document_type=self):
-            document.delete(to_trash=False)
-
-        return super(DocumentType, self).delete(*args, **kwargs)
-
-    @property
-    def deleted_documents(self):
-        DeletedDocument = apps.get_model(
-            app_label='documents', model_name='DeletedDocument'
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
         )
 
-        return DeletedDocument.objects.filter(document_type=self)
+        for document in Document.objects.filter(document_type=self):
+            document.delete(to_trash=False)
+
+        return super().delete(*args, **kwargs)
+
+    @property
+    def trashed_documents(self):
+        TrashedDocument = apps.get_model(
+            app_label='documents', model_name='TrashedDocument'
+        )
+
+        return TrashedDocument.objects.filter(document_type=self)
 
     def get_absolute_url(self):
         return reverse(
@@ -94,21 +119,39 @@ class DocumentType(models.Model):
 
         return queryset.count()
 
+    def get_upload_filename(self, instance, filename):
+        generator_klass = BaseDocumentFilenameGenerator.get(
+            name=self.filename_generator_backend
+        )
+        generator_instance = generator_klass(
+            **yaml_load(
+                stream=self.filename_generator_backend_arguments or '{}'
+            )
+        )
+        return generator_instance.upload_to(
+            instance=instance, filename=filename
+        )
+
     def natural_key(self):
         return (self.label,)
 
-    def new_document(self, file_object, label=None, description=None, language=None, _user=None):
-        try:
-            with transaction.atomic():
-                document = self.documents.create(
-                    description=description or '',
-                    label=label or file_object.name,
-                    language=language or setting_language.value
-                )
-                document.save(_user=_user)
+    def new_document(
+        self, file_object, label=None, description=None, language=None,
+        _user=None
+    ):
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
+        )
 
-                document.new_version(file_object=file_object, _user=_user)
-                return document
+        try:
+            document = Document(
+                description=description or '', document_type=self,
+                label=label or file_object.name,
+                language=language or setting_language.value
+            )
+            document._event_keep_attributes = ('_event_actor',)
+            document._event_actor = _user
+            document.save()
         except Exception as exception:
             logger.critical(
                 'Unexpected exception while trying to create new document '
@@ -116,27 +159,37 @@ class DocumentType(models.Model):
                 label or file_object.name, self, exception
             )
             raise
-
-    def save(self, *args, **kwargs):
-        user = kwargs.pop('_user', None)
-        created = not self.pk
-
-        result = super(DocumentType, self).save(*args, **kwargs)
-
-        if created:
-            event_document_type_created.commit(
-                actor=user, target=self
-            )
         else:
-            event_document_type_edited.commit(
-                actor=user, target=self
-            )
+            try:
+                document_file = document.file_new(
+                    file_object=file_object, filename=label, _user=_user
+                )
+            except Exception as exception:
+                logger.critical(
+                    'Unexpected exception while trying to create initial '
+                    'file for document %s; %s',
+                    label or file_object.name, exception
+                )
+                raise
+            else:
+                return document, document_file
 
-        return result
+    @method_event(
+        event_manager_class=EventManagerSave,
+        created={
+            'event': event_document_type_created,
+            'target': 'self'
+        },
+        edited={
+            'event': event_document_type_edited,
+            'target': 'self'
+        }
+    )
+    def save(self, *args, **kwargs):
+        return super().save(*args, **kwargs)
 
 
-@python_2_unicode_compatible
-class DocumentTypeFilename(models.Model):
+class DocumentTypeFilename(ExtraDataModelMixin, models.Model):
     """
     List of labels available to a specific document type for the
     quick rename functionality
@@ -158,3 +211,27 @@ class DocumentTypeFilename(models.Model):
 
     def __str__(self):
         return self.filename
+
+    @method_event(
+        event_manager_class=EventManagerMethodAfter,
+        event=event_document_type_quick_label_deleted,
+        target='document_type',
+    )
+    def delete(self, *args, **kwargs):
+        return super().delete(*args, **kwargs)
+
+    @method_event(
+        event_manager_class=EventManagerSave,
+        created={
+            'event': event_document_type_quick_label_created,
+            'action_object': 'document_type',
+            'target': 'self'
+        },
+        edited={
+            'event': event_document_type_quick_label_edited,
+            'action_object': 'document_type',
+            'target': 'self'
+        }
+    )
+    def save(self, *args, **kwargs):
+        return super().save(*args, **kwargs)

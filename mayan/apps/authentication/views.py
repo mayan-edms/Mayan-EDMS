@@ -1,29 +1,38 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.contrib import messages
-from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import SetPasswordForm
 from django.contrib.auth.views import (
     LoginView, LogoutView, PasswordChangeDoneView, PasswordChangeView,
-    PasswordResetCompleteView, PasswordResetConfirmView, PasswordResetDoneView,
-    PasswordResetView
+    PasswordResetCompleteView, PasswordResetConfirmView,
+    PasswordResetDoneView, PasswordResetView
 )
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import ungettext, ugettext_lazy as _
+from django.views.generic.base import View
 
 from stronghold.views import StrongholdPublicMixin
 
 import mayan
-from mayan.apps.common.generics import MultipleObjectFormActionView
 from mayan.apps.common.settings import (
     setting_home_view, setting_project_title, setting_project_url
 )
 from mayan.apps.user_management.permissions import permission_user_edit
+from mayan.apps.user_management.querysets import get_user_queryset
+from mayan.apps.views.http import URL
+from mayan.apps.views.generics import FormView, MultipleObjectFormActionView
+from mayan.apps.views.mixins import ExternalObjectViewMixin, RedirectionViewMixin
 
-from .forms import EmailAuthenticationForm, UsernameAuthenticationForm
+from .forms import (
+    EmailAuthenticationForm, UsernameAuthenticationForm,
+    UserImpersonationOptionsForm, UserImpersonationSelectionForm,
+)
+from .literals import (
+    USER_IMPERSONATE_VARIABLE_ID, USER_IMPERSONATE_VARIABLE_DISABLE,
+    USER_IMPERSONATE_VARIABLE_PERMANENT
+)
+from .permissions import permission_users_impersonate
 from .settings import (
     setting_disable_password_reset, setting_login_method,
     setting_maximum_session_length
@@ -42,7 +51,7 @@ class MayanLoginView(StrongholdPublicMixin, LoginView):
     redirect_authenticated_user = True
 
     def form_valid(self, form):
-        result = super(MayanLoginView, self).form_valid(form=form)
+        result = super().form_valid(form=form)
         remember_me = form.cleaned_data.get('remember_me')
 
         # remember_me values:
@@ -96,7 +105,7 @@ class MayanPasswordChangeView(PasswordChangeView):
                 redirect_to=reverse(viewname=setting_home_view.view)
             )
 
-        return super(MayanPasswordChangeView, self).dispatch(*args, **kwargs)
+        return super().dispatch(*args, **kwargs)
 
 
 class MayanPasswordResetCompleteView(StrongholdPublicMixin, PasswordResetCompleteView):
@@ -143,18 +152,19 @@ class MayanPasswordResetView(StrongholdPublicMixin, PasswordResetView):
     def get(self, *args, **kwargs):
         if setting_disable_password_reset.value:
             return redirect(to=setting_home_view.value)
-        return super(MayanPasswordResetView, self).get(*args, **kwargs)
+        return super().get(*args, **kwargs)
 
     def post(self, *args, **kwargs):
         if setting_disable_password_reset.value:
             return redirect(to=setting_home_view.value)
-        return super(MayanPasswordResetView, self).post(*args, **kwargs)
+        return super().post(*args, **kwargs)
 
 
 class UserSetPasswordView(MultipleObjectFormActionView):
     form_class = SetPasswordForm
-    model = get_user_model()
     object_permission = permission_user_edit
+    pk_url_kwarg = 'user_id'
+    source_queryset = get_user_queryset()
     success_message = _('Password change request performed on %(count)d user')
     success_message_plural = _(
         'Password change request performed on %(count)d users'
@@ -193,22 +203,13 @@ class UserSetPasswordView(MultipleObjectFormActionView):
 
     def object_action(self, form, instance):
         try:
-            if instance.is_superuser or instance.is_staff:
-                messages.error(
-                    message=_(
-                        'Super user and staff user password '
-                        'reseting is not allowed, use the admin '
-                        'interface for these cases.'
-                    ), request=self.request
-                )
-            else:
-                instance.set_password(form.cleaned_data['new_password1'])
-                instance.save()
-                messages.success(
-                    message=_(
-                        'Successful password reset for user: %s.'
-                    ) % instance, request=self.request
-                )
+            instance.set_password(form.cleaned_data['new_password1'])
+            instance.save()
+            messages.success(
+                message=_(
+                    'Successful password reset for user: %s.'
+                ) % instance, request=self.request
+            )
         except Exception as exception:
             messages.error(
                 message=_(
@@ -217,3 +218,62 @@ class UserSetPasswordView(MultipleObjectFormActionView):
                     'user': instance, 'error': exception
                 }, request=self.request
             )
+
+
+class UserImpersonateEndView(RedirectionViewMixin, View):
+    def get(self, request, *args, **kwargs):
+        url = URL(
+            viewname=setting_home_view.value, query={
+                USER_IMPERSONATE_VARIABLE_DISABLE: ''
+            }
+        )
+        return HttpResponseRedirect(redirect_to=url.to_string())
+
+
+class UserImpersonateFormStartView(FormView):
+    form_class = UserImpersonationSelectionForm
+
+    def form_valid(self, form):
+        query = {
+            USER_IMPERSONATE_VARIABLE_ID: form.cleaned_data['user_to_impersonate'].pk
+        }
+        if form.cleaned_data['permanent']:
+            query[USER_IMPERSONATE_VARIABLE_PERMANENT] = ''
+
+        url = URL(
+            viewname=setting_home_view.value, query=query
+        )
+        return HttpResponseRedirect(redirect_to=url.to_string())
+
+    def get_extra_context(self):
+        return {
+            'title': _('Impersonate user')
+        }
+
+    def get_form_extra_kwargs(self):
+        return {
+            'user': self.request.user
+        }
+
+
+class UserImpersonateStartView(ExternalObjectViewMixin, FormView):
+    external_object_queryset = get_user_queryset()
+    external_object_permission = permission_users_impersonate
+    external_object_pk_url_kwarg = 'user_id'
+    form_class = UserImpersonationOptionsForm
+
+    def form_valid(self, form):
+        query = {USER_IMPERSONATE_VARIABLE_ID: self.external_object.pk}
+        if form.cleaned_data['permanent']:
+            query[USER_IMPERSONATE_VARIABLE_PERMANENT] = ''
+
+        url = URL(
+            viewname=setting_home_view.value, query=query
+        )
+        return HttpResponseRedirect(redirect_to=url.to_string())
+
+    def get_extra_context(self):
+        return {
+            'object': self.external_object,
+            'title': _('Impersonate user: %s') % self.external_object
+        }

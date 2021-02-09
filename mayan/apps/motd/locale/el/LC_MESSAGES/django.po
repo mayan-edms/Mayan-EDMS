@@ -3,13 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
+# pyrotech <anastasios@tutamail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 01:41-0400\n"
-"PO-Revision-Date: 2018-09-12 07:48+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-12-27 16:45+0000\n"
+"Last-Translator: pyrotech <anastasios@tutamail.com>\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,23 +19,35 @@ msgstr ""
 "Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:35 links.py:36 permissions.py:7
+#: apps.py:40 links.py:38 permissions.py:5
 msgid "Message of the day"
 msgstr "Το μήνυμα της ημέρας"
 
-#: apps.py:57 apps.py:61
+#: apps.py:77 apps.py:81
 msgid "None"
 msgstr "Κανένα"
 
-#: links.py:16 views.py:32
+#: events.py:5 models.py:40 views.py:123
+msgid "Messages"
+msgstr "Μηνύματα"
+
+#: events.py:8
+msgid "Message created"
+msgstr "Δημιουργήθηκε μήνυμα"
+
+#: events.py:11
+msgid "Message edited"
+msgstr "Τροποποιήθηκε μήνυμα"
+
+#: links.py:14 views.py:31
 msgid "Create message"
 msgstr "Δημιουργία μηνύματος"
 
-#: links.py:22
+#: links.py:18 links.py:24
 msgid "Delete"
 msgstr "Διαγραφή"
 
-#: links.py:27
+#: links.py:29
 msgid "Edit"
 msgstr "Τροποποίηση"
 
@@ -47,7 +61,7 @@ msgstr "Ετικέτα"
 
 #: models.py:21
 msgid "The actual message to be displayed."
-msgstr "Το μήνυμα που θα εμφανιστεί."
+msgstr "Το μήνυμα που θα προβληθεί."
 
 #: models.py:22 models.py:39
 msgid "Message"
@@ -59,7 +73,7 @@ msgstr "Ενεργοποιημένο"
 
 #: models.py:27
 msgid "Date and time after which this message will be displayed."
-msgstr "Ημέρα και ώρα κατά την οποία θα εμφανιστεί αυτό το μήνυμα."
+msgstr "Ημέρα και ώρα μετά από την οποία θα εμφανιστεί αυτό το μήνυμα."
 
 #: models.py:28
 msgid "Start date time"
@@ -73,25 +87,21 @@ msgstr "Ημέρα και ώρα μέχρι την οποία θα εμφανί�
 msgid "End date time"
 msgstr "Ημερομηνία και ώρα λήξης"
 
-#: models.py:40 views.py:80
-msgid "Messages"
-msgstr "Μηύματα"
-
-#: permissions.py:10
+#: permissions.py:8
 msgid "Create messages"
 msgstr "Δημιουργία μηνυμάτων"
 
-#: permissions.py:13
+#: permissions.py:11
 msgid "Delete messages"
-msgstr "Διαγραφήμηνυμάτων"
+msgstr "Διαγραφή μηνυμάτων"
 
-#: permissions.py:16
+#: permissions.py:14
 msgid "Edit messages"
 msgstr "Τροποποίηση μηνυμάτων"
 
-#: permissions.py:19
+#: permissions.py:17
 msgid "View messages"
-msgstr "Εμφάνηση μηνυμάτων"
+msgstr "Προβολή μηνυμάτων"
 
 #: templates/motd/messages.html:8
 msgid "Messages of the day"
@@ -99,21 +109,47 @@ msgstr "Μηνύματα της ημέρας"
 
 #: views.py:45
 #, python-format
-msgid "Delete the message: %s?"
-msgstr "Διαγραφή του μηνύματος: %s;"
+msgid "Delete request performed on %(count)d message"
+msgstr "Αίτημα διαγραφής πραγματοποιήθηκε για %(count)d μήνυμα"
 
-#: views.py:58
+#: views.py:47
+#, python-format
+msgid "Delete request performed on %(count)d messages"
+msgstr "Αίτημα διαγραφής πραγματοποιήθηκε για %(count)d μηνύματα"
+
+#: views.py:54
+msgid "Delete the selected message?"
+msgid_plural "Delete the selected messages?"
+msgstr[0] "Διαγραφή των επιλεγμένων μηνυμάτων"
+msgstr[1] "Διαγραφή των επιλεγμένων μηνυμάτων;"
+
+#: views.py:64
+#, python-format
+msgid "Delete message: %s?"
+msgstr "Διαγραφή μηνύματος: %s;"
+
+#: views.py:75
+#, python-format
+msgid "Message \"%s\" deleted successfully."
+msgstr "Το μηνύμα \"%s\" διαγράφηκε επιτυχώς."
+
+#: views.py:80
+#, python-format
+msgid "Error deleting message \"%(message)s\": %(error)s"
+msgstr "Σφάλμα διαγραφής μηνύματος \"%(message)s\": %(error)s"
+
+#: views.py:96
 #, python-format
 msgid "Edit message: %s"
 msgstr "Τροποποίηση μηνύματος: %s"
 
-#: views.py:75
+#: views.py:118
 msgid ""
 "Messages are displayed in the login view. You can use messages to convery "
 "information about your organzation, announcements or usage guidelines for "
 "your users."
-msgstr ""
+msgstr "Τα μηνύματα προβάλλονται στην οθόνη εισόδου. Μπορείτε να χρησιμοποιήσετε μηνύματα για να παρέχετε πληροφορίες σχετικές με τον οργανισμό σας, ανακοινώσεις ή οδηγίες χρήσης για τους χρήστες σας."
 
-#: views.py:79
+#: views.py:122
 msgid "No messages available"
-msgstr ""
+msgstr "Δεν υπάρχουν διαθέσιμα μηνύματα"

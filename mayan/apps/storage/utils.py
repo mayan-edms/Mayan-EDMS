@@ -1,33 +1,90 @@
-from __future__ import unicode_literals
-
+import dbm
 import logging
 import os
+from pathlib import Path
 import shutil
 import tempfile
 
-from pathlib2 import Path
+from django.apps import apps
+from django.utils.module_loading import import_string
 
-try:
-    from django.utils.module_loading import import_string
-    from django.utils.six import PY3
-except ImportError:
-    # This is being imported outside of Django
-    import sys
-    PY3 = sys.version_info[0] == 3
-else:
-    from .settings import setting_temporary_directory
+from .classes import DefinedStorage, PassthroughStorage
+from .settings import setting_temporary_directory
 
-logger = logging.getLogger(__name__)
-
-
-def TemporaryFile(*args, **kwargs):
-    kwargs.update({'dir': setting_temporary_directory.value})
-    return tempfile.TemporaryFile(*args, **kwargs)
+logger = logging.getLogger(name=__name__)
 
 
 def NamedTemporaryFile(*args, **kwargs):
     kwargs.update({'dir': setting_temporary_directory.value})
     return tempfile.NamedTemporaryFile(*args, **kwargs)
+
+
+class PassthroughStorageProcessor:
+    def __init__(
+        self, app_label, defined_storage_name, log_file, model_name,
+        file_attribute='file'
+    ):
+        self.app_label = app_label
+        self.defined_storage_name = defined_storage_name
+        self.file_attribute = file_attribute
+        self.log_file = log_file
+        self.model_name = model_name
+
+    def _update_entry(self, key):
+        if not self.reverse:
+            self.database[key] = '1'
+        else:
+            try:
+                del self.database[key]
+            except KeyError:
+                pass
+
+    def _inclusion_condition(self, key):
+        if self.reverse:
+            return key in self.database
+        else:
+            return key not in self.database
+
+    def execute(self, reverse=False):
+        self.reverse = reverse
+        model = apps.get_model(
+            app_label=self.app_label, model_name=self.model_name
+        )
+
+        storage_instance = DefinedStorage.get(
+            name=self.defined_storage_name
+        ).get_storage_instance()
+
+        if isinstance(storage_instance, PassthroughStorage):
+            ContentType = apps.get_model(
+                app_label='contenttypes', model_name='ContentType'
+            )
+            content_type = ContentType.objects.get_for_model(model=model)
+
+            self.database = dbm.open(file=self.log_file, flag='c')
+
+            for instance in model.objects.all():
+                key = '{}.{}'.format(content_type.name, instance.pk)
+                if self._inclusion_condition(key=key):
+                    file_name = getattr(instance, self.file_attribute).name
+
+                    content = storage_instance.open(
+                        name=file_name, mode='rb',
+                        _direct=not self.reverse
+                    )
+                    storage_instance.delete(name=file_name)
+                    storage_instance.save(
+                        name=file_name, content=content,
+                        _direct=self.reverse
+                    )
+                    self._update_entry(key=key)
+
+            self.database.close
+
+
+def TemporaryFile(*args, **kwargs):
+    kwargs.update({'dir': setting_temporary_directory.value})
+    return tempfile.TemporaryFile(*args, **kwargs)
 
 
 def fs_cleanup(filename, suppress_exceptions=True):
@@ -38,7 +95,7 @@ def fs_cleanup(filename, suppress_exceptions=True):
         os.remove(filename)
     except OSError:
         try:
-            shutil.rmtree(filename)
+            shutil.rmtree(path=filename)
         except OSError:
             if suppress_exceptions:
                 pass
@@ -50,13 +107,13 @@ def get_storage_subclass(dotted_path):
     """
     Import a storage class and return a subclass that will always return eq
     True to avoid creating a new migration when for runtime storage class
-    changes.
+    changes. Used now only by historic migrations.
     """
     imported_storage_class = import_string(dotted_path=dotted_path)
 
     class StorageSubclass(imported_storage_class):
         def __init__(self, *args, **kwargs):
-            return super(StorageSubclass, self).__init__(*args, **kwargs)
+            return super().__init__(*args, **kwargs)
 
         def __eq__(self, other):
             return True
@@ -79,6 +136,11 @@ def mkdtemp(*args, **kwargs):
 
 
 def mkstemp(*args, **kwargs):
+    """
+    Creates a temporary file in the most secure manner possible.
+    There are no race conditions in the file’s creation, assuming that
+    the platform properly implements the os.O_EXCL flag for os.open().
+    """
     kwargs.update({'dir': setting_temporary_directory.value})
     return tempfile.mkstemp(*args, **kwargs)
 
@@ -98,10 +160,7 @@ def patch_files(path=None, replace_list=None):
         }
     ]
     """
-    if PY3:
-        file_open_mode = 'r+'
-    else:
-        file_open_mode = 'rb+'
+    file_open_mode = 'r+'
 
     path_object = Path(path)
     for replace_entry in replace_list or []:
@@ -142,7 +201,10 @@ def patch_files(path=None, replace_list=None):
                             source_file_object.seek(0)
                             source_file_object.truncate()
                             temporary_file_object.seek(0)
-                            shutil.copyfileobj(fsrc=temporary_file_object, fdst=source_file_object)
+                            shutil.copyfileobj(
+                                fsrc=temporary_file_object,
+                                fdst=source_file_object
+                            )
 
 
 def validate_path(path):

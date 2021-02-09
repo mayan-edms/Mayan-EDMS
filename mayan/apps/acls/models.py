@@ -1,12 +1,9 @@
-from __future__ import absolute_import, unicode_literals
-
 import logging
 
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.db import models, transaction
 from django.urls import reverse
-from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.permissions.models import Role, StoredPermission
@@ -14,10 +11,9 @@ from mayan.apps.permissions.models import Role, StoredPermission
 from .events import event_acl_created, event_acl_edited
 from .managers import AccessControlListManager
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
-@python_2_unicode_compatible
 class AccessControlList(models.Model):
     """
     ACL means Access Control List it is a more fine-grained method of
@@ -44,7 +40,9 @@ class AccessControlList(models.Model):
         verbose_name=_('Permissions')
     )
     role = models.ForeignKey(
-        on_delete=models.CASCADE, related_name='acls', to=Role,
+        help_text=_(
+            'Role to which the access is granted for the specified object.'
+        ), on_delete=models.CASCADE, related_name='acls', to=Role,
         verbose_name=_('Role')
     )
 
@@ -93,7 +91,7 @@ class AccessControlList(models.Model):
 
         with transaction.atomic():
             is_new = not self.pk
-            super(AccessControlList, self).save(*args, **kwargs)
+            super().save(*args, **kwargs)
             if is_new:
                 event_acl_created.commit(
                     actor=_user, target=self
@@ -102,3 +100,8 @@ class AccessControlList(models.Model):
                 event_acl_edited.commit(
                     actor=_user, target=self
                 )
+
+
+class GlobalAccessControlListProxy(AccessControlList):
+    class Meta:
+        proxy = True

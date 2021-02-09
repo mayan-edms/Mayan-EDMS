@@ -1,31 +1,37 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.contrib.contenttypes.models import ContentType
 
-from mayan.apps.common.tests.base import GenericViewTestCase
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
+from mayan.apps.testing.tests.base import GenericViewTestCase
 
+from ..models import Notification
 from ..permissions import permission_events_view
 
+from .mixins import (
+    EventTypeTestMixin, EventsViewTestMixin, NotificationTestMixin,
+    NotificationViewTestMixin, UserEventViewsTestMixin
+)
 
-class EventsViewTestCase(GenericDocumentViewTestCase):
-    auto_upload_document = False
+
+class EventsViewTestCase(
+    EventTypeTestMixin, EventsViewTestMixin, GenericDocumentViewTestCase
+):
+    auto_upload_test_document = False
 
     def setUp(self):
-        super(EventsViewTestCase, self).setUp()
+        super().setUp()
+        self._create_test_event_type()
+        self._create_test_user()
         self.test_object = self.test_document_type
 
         content_type = ContentType.objects.get_for_model(model=self.test_object)
 
         self.view_arguments = {
             'app_label': content_type.app_label,
-            'model': content_type.model,
+            'model_name': content_type.model,
             'object_id': self.test_object.pk
         }
-
-    def _request_events_for_object_view(self):
-        return self.get(
-            viewname='events:events_for_object', kwargs=self.view_arguments
+        self.test_event_type.commit(
+            actor=self.test_user, action_object=self.test_object
         )
 
     def test_events_for_object_view_no_permission(self):
@@ -34,7 +40,7 @@ class EventsViewTestCase(GenericDocumentViewTestCase):
             response=response, text=self.test_object.label, status_code=404
         )
 
-    def test_events_for_object_view_with_permission(self):
+    def test_events_for_object_view_with_access(self):
         self.grant_access(
             obj=self.test_object, permission=permission_events_view
         )
@@ -45,9 +51,51 @@ class EventsViewTestCase(GenericDocumentViewTestCase):
         )
 
 
-class UserEventViewsTestCase(GenericViewTestCase):
-    def test_user_event_type_subscription_list_view(self):
-        response = self.get(
-            viewname='events:event_types_user_subcriptions_list'
+class NotificationViewTestCase(
+    NotificationTestMixin, NotificationViewTestMixin,
+    GenericDocumentViewTestCase
+):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_event_type()
+        self._create_test_user()
+
+        self.test_event_type.commit(
+            actor=self.test_user, action_object=self.test_document_type
         )
+
+    def test_notification_list_view(self):
+        response = self._request_test_notification_list_view()
+        self.assertEqual(response.status_code, 200)
+
+    def test_notification_mark_read_all_view(self):
+        self._create_test_notification()
+        notification_count = Notification.objects.get_unread().count()
+
+        response = self._request_test_notification_mark_read_all_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(
+            Notification.objects.get_unread().count(),
+            notification_count - 1
+        )
+
+    def test_notification_mark_read_view(self):
+        self._create_test_notification()
+        notification_count = Notification.objects.get_unread().count()
+
+        response = self._request_test_notification_mark_read()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(
+            Notification.objects.get_unread().count(),
+            notification_count - 1
+        )
+
+
+class UserEventViewsTestCase(UserEventViewsTestMixin, GenericViewTestCase):
+    def test_user_event_type_subscription_list_view(self):
+        response = self._request_test_user_event_type_subscription_list_view()
         self.assertEqual(response.status_code, 200)

@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.apps import apps
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
@@ -11,7 +9,7 @@ from .permissions import permission_role_view
 
 
 class DashboardWidgetRoleTotal(DashboardWidgetNumeric):
-    icon_class = icon_role_list
+    icon = icon_role_list
     label = _('Total roles')
     link = reverse_lazy(viewname='permissions:role_list')
 
@@ -27,4 +25,4 @@ class DashboardWidgetRoleTotal(DashboardWidgetNumeric):
             permission=permission_role_view, user=request.user,
             queryset=Role.objects.all()
         ).count()
-        return super(DashboardWidgetRoleTotal, self).render(request)
+        return super().render(request)

@@ -1,10 +1,8 @@
-from __future__ import unicode_literals
-
 from rest_framework import status
 
 from mayan.apps.documents.models.document_models import Document
 from mayan.apps.documents.permissions import permission_document_create
-from mayan.apps.documents.tests.mixins import DocumentTestMixin
+from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
 from ..models.staging_folder_sources import StagingFolderSource
@@ -45,7 +43,7 @@ class StagingFolderAPIViewTestCase(
             StagingFolderSource.objects.count(), staging_folder_count + 1
         )
 
-    def test_staging_folder_delete_api_view_no_access(self):
+    def test_staging_folder_delete_api_view_no_permission(self):
         self._create_test_staging_folder()
 
         staging_folder_count = StagingFolderSource.objects.count()
@@ -71,7 +69,7 @@ class StagingFolderAPIViewTestCase(
             StagingFolderSource.objects.count(), staging_folder_count - 1
         )
 
-    def test_staging_folder_edit_api_view_via_patch_no_access(self):
+    def test_staging_folder_edit_api_view_via_patch_no_permission(self):
         self._create_test_staging_folder()
 
         staging_folder_label = self.test_staging_folder.label
@@ -97,7 +95,7 @@ class StagingFolderAPIViewTestCase(
             self.test_staging_folder.label, staging_folder_label
         )
 
-    def test_staging_folder_edit_api_view_via_put_no_access(self):
+    def test_staging_folder_edit_api_view_via_put_no_permission(self):
         self._create_test_staging_folder()
 
         staging_folder_label = self.test_staging_folder.label
@@ -159,7 +157,7 @@ class StagingFolderFileAPIViewTestCase(
     StagingFolderTestMixin, BaseAPITestCase
 ):
     auto_create_test_document_type = False
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def test_staging_folder_file_delete_api_view_no_permission(self):
         self._create_test_staging_folder()

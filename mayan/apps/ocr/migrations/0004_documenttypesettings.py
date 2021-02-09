@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.db import models, migrations
 
 
@@ -11,17 +9,16 @@ def operation_create_ocr_setting_for_existing_document_types(apps, schema_editor
         app_label='ocr', model_name='DocumentTypeSettings'
     )
 
-    for document_type in DocumentType.objects.using(schema_editor.connection.alias).all():
+    for document_type in DocumentType.objects.using(alias=schema_editor.connection.alias).all():
         try:
             DocumentTypeSettings.objects.using(
-                schema_editor.connection.alias
+                alias=schema_editor.connection.alias
             ).create(document_type=document_type)
         except DocumentTypeSettings.DoesNotExist:
             pass
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('documents', '0016_auto_20150708_0325'),
         ('ocr', '0003_auto_20150617_0401'),
@@ -33,8 +30,8 @@ class Migration(migrations.Migration):
             fields=[
                 (
                     'id', models.AutoField(
-                        verbose_name='ID', serialize=False, auto_created=True,
-                        primary_key=True
+                        auto_created=True, primary_key=True, serialize=False,
+                        verbose_name='ID'
                     )
                 ),
                 (

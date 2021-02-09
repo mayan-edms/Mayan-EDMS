@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 TEST_ADMIN_USER_EMAIL = 'testemail@example.com'
 TEST_ADMIN_USER_PASSWORD = 'test admin user password'
 TEST_ADMIN_USER_USERNAME = 'test_admin_user_username'

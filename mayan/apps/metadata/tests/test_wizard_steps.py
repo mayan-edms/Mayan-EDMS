@@ -1,8 +1,5 @@
-from __future__ import unicode_literals
-
 from django.urls import reverse
 
-from mayan.apps.common.http import URL
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.permissions import permission_document_create
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
@@ -11,6 +8,7 @@ from mayan.apps.sources.models import WebFormSource
 from mayan.apps.sources.tests.literals import (
     TEST_SOURCE_LABEL, TEST_SOURCE_UNCOMPRESS_N,
 )
+from mayan.apps.views.http import URL
 
 from .literals import (
     TEST_METADATA_VALUE_UNICODE, TEST_METADATA_VALUE_WITH_AMPERSAND
@@ -19,10 +17,10 @@ from .mixins import MetadataTypeTestMixin
 
 
 class DocumentUploadMetadataTestCase(MetadataTypeTestMixin, GenericDocumentViewTestCase):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def setUp(self):
-        super(DocumentUploadMetadataTestCase, self).setUp()
+        super().setUp()
         self.source = WebFormSource.objects.create(
             enabled=True, label=TEST_SOURCE_LABEL,
             uncompress=TEST_SOURCE_UNCOMPRESS_N
@@ -44,7 +42,7 @@ class DocumentUploadMetadataTestCase(MetadataTypeTestMixin, GenericDocumentViewT
         )
 
         # Upload the test document
-        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             response = self.post(
                 path=url.to_string(), data={
                     'document-language': 'eng', 'source-file': file_object,
@@ -71,7 +69,7 @@ class DocumentUploadMetadataTestCase(MetadataTypeTestMixin, GenericDocumentViewT
         )
 
         # Upload the test document
-        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             response = self.post(
                 path=url.to_string(), data={
                     'document-language': 'eng', 'source-file': file_object,

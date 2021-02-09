@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.contrib.contenttypes.models import ContentType
 from django.http import Http404
 from django.shortcuts import get_object_or_404
@@ -45,7 +43,7 @@ class APIObjectEventListView(generics.ListAPIView):
             user=self.request.user
         )
 
-        return any_stream(obj)
+        return any_stream(obj=obj)
 
 
 class APIEventTypeNamespaceDetailView(generics.RetrieveAPIView):

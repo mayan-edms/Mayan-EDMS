@@ -1,22 +1,19 @@
-from __future__ import unicode_literals
-
-from mayan.apps.common.tests.base import BaseTestCase
+from mayan.apps.documents.tests.base import GenericDocumentTestCase
 from mayan.apps.documents.tests.literals import TEST_HYBRID_DOCUMENT
-from mayan.apps.documents.tests.mixins import DocumentTestMixin
 
 from ..parsers import PopplerParser
 
 from .literals import TEST_DOCUMENT_CONTENT
 
 
-class ParserTestCase(DocumentTestMixin, BaseTestCase):
+class ParserTestCase(GenericDocumentTestCase):
     test_document_filename = TEST_HYBRID_DOCUMENT
 
     def test_poppler_parser(self):
         parser = PopplerParser()
 
-        parser.process_document_version(self.test_document.latest_version)
+        parser.process_document_file(self.test_document_file)
 
         self.assertTrue(
-            TEST_DOCUMENT_CONTENT in self.test_document.pages.first().content.content
+            TEST_DOCUMENT_CONTENT in self.test_document_file.pages.first().content.content
         )

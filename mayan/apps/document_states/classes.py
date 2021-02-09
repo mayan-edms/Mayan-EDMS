@@ -1,16 +1,18 @@
-from __future__ import unicode_literals
-
-from importlib import import_module
 import logging
 
 from django.apps import apps
+from django.db.utils import OperationalError, ProgrammingError
 from django.utils import six
-from django.utils.encoding import force_text
+from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
 from mayan.apps.common.classes import PropertyHelper
+from mayan.apps.templating.classes import Template
+
+from .exceptions import WorkflowStateActionError
 
 __all__ = ('WorkflowAction',)
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class DocumentStateHelper(PropertyHelper):
@@ -27,7 +29,7 @@ class WorkflowActionMetaclass(type):
     _registry = {}
 
     def __new__(mcs, name, bases, attrs):
-        new_class = super(WorkflowActionMetaclass, mcs).__new__(
+        new_class = super().__new__(
             mcs, name, bases, attrs
         )
 
@@ -39,11 +41,23 @@ class WorkflowActionMetaclass(type):
         return new_class
 
 
-class WorkflowActionBase(object):
+class WorkflowActionBase(AppsModuleLoaderMixin):
     fields = ()
 
 
-class WorkflowAction(six.with_metaclass(WorkflowActionMetaclass, WorkflowActionBase)):
+class WorkflowAction(
+    six.with_metaclass(WorkflowActionMetaclass, WorkflowActionBase)
+):
+    _loader_module_name = 'workflow_actions'
+    previous_dotted_paths = ()
+
+    @classmethod
+    def load_modules(cls):
+        super().load_modules()
+
+        for action_class in WorkflowAction.get_all():
+            action_class.migrate()
+
     @classmethod
     def clean(cls, request, form_data=None):
         return form_data
@@ -57,32 +71,75 @@ class WorkflowAction(six.with_metaclass(WorkflowActionMetaclass, WorkflowActionB
         return sorted(cls._registry.values(), key=lambda x: x.label)
 
     @classmethod
+    def get_choices(cls):
+        apps_name_map = {
+            app.name: app for app in apps.get_app_configs()
+        }
+
+        # Match each workflow action to an app
+        apps_workflow_action_map = {}
+
+        for klass in WorkflowAction.get_all():
+            for app_name, app in apps_name_map.items():
+                if klass.__module__.startswith(app_name):
+                    apps_workflow_action_map.setdefault(app, [])
+                    apps_workflow_action_map[app].append((klass.id(), klass.label))
+
+        result = [
+            (app.verbose_name, workflow_actions) for app, workflow_actions in apps_workflow_action_map.items()
+        ]
+
+        # Sort by app, then by workflow action
+        return sorted(result, key=lambda x: (x[0], x[1]))
+
+    @classmethod
     def id(cls):
         return '{}.{}'.format(cls.__module__, cls.__name__)
 
-    @staticmethod
-    def initialize():
-        for app in apps.get_app_configs():
+    @classmethod
+    def migrate(cls):
+        WorkflowStateAction = apps.get_model(
+            app_label='document_states', model_name='WorkflowStateAction'
+        )
+        for previous_dotted_path in cls.previous_dotted_paths:
             try:
-                import_module('{}.workflow_actions'.format(app.name))
-            except ImportError as exception:
-                if force_text(exception) not in ('No module named workflow_actions', 'No module named \'{}.workflow_actions\''.format(app.name)):
-                    logger.error(
-                        'Error importing %s workflow_actions.py file; %s',
-                        app.name, exception
-                    )
+                WorkflowStateAction.objects.filter(
+                    action_path=previous_dotted_path
+                ).update(action_path=cls.id())
+            except (OperationalError, ProgrammingError):
+                # Ignore errors during the database migration and
+                # quit further attempts.
+                return
 
     def __init__(self, form_data=None):
         self.form_data = form_data
 
-    def get_form_schema(self, request=None):
+    def get_form_schema(self, workflow_state, request=None):
         result = {
-            'fields': self.fields or (),
+            'fields': self.fields or {},
             'media': getattr(self, 'media', {}),
             'widgets': getattr(self, 'widgets', {}),
         }
 
         if hasattr(self, 'field_order'):
             result['field_order'] = self.field_order
+
+        return result
+
+    def render_field(self, field_name, context):
+        try:
+            result = Template(
+                template_string=self.form_data.get(field_name, '')
+            ).render(
+                context=context
+            )
+        except Exception as exception:
+            raise WorkflowStateActionError(
+                _('%(field_name)s template error: %(exception)s') % {
+                    'field_name': field_name, 'exception': exception
+                }
+            )
+
+        logger.debug('%s template result: %s', field_name, result)
 
         return result

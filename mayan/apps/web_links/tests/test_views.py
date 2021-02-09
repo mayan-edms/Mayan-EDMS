@@ -1,11 +1,10 @@
-from __future__ import unicode_literals
-
 from django.utils.encoding import force_text
 
-from mayan.apps.common.tests.base import GenericViewTestCase
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
+from mayan.apps.testing.tests.base import GenericViewTestCase
 
-from ..models import WebLink
+from ..links import link_web_link_instance_view
+from ..models import ResolvedWebLink, WebLink
 from ..permissions import (
     permission_web_link_create, permission_web_link_delete,
     permission_web_link_edit, permission_web_link_view,
@@ -19,7 +18,7 @@ from .mixins import WebLinkTestMixin, WebLinkViewTestMixin
 class WebLinkViewTestCase(
     WebLinkTestMixin, WebLinkViewTestMixin, GenericViewTestCase
 ):
-    def test_web_link_create_view_no_permissions(self):
+    def test_web_link_create_view_no_permission(self):
         web_link_count = WebLink.objects.count()
 
         response = self._request_test_web_link_create_view()
@@ -37,7 +36,7 @@ class WebLinkViewTestCase(
 
         self.assertEqual(WebLink.objects.count(), web_link_count + 1)
 
-    def test_web_link_delete_view_no_permissions(self):
+    def test_web_link_delete_view_no_permission(self):
         self._create_test_web_link()
 
         web_link_count = WebLink.objects.count()
@@ -61,7 +60,7 @@ class WebLinkViewTestCase(
 
         self.assertEqual(WebLink.objects.count(), web_link_count - 1)
 
-    def test_web_link_edit_view_no_permissions(self):
+    def test_web_link_edit_view_no_permission(self):
         self._create_test_web_link()
 
         web_link_label = self.test_web_link.label
@@ -110,18 +109,17 @@ class DocumentWebLinkViewTestCase(
     WebLinkTestMixin, WebLinkViewTestMixin, GenericDocumentViewTestCase
 ):
     def setUp(self):
-        super(DocumentWebLinkViewTestCase, self).setUp()
-        self._create_test_web_link()
-        self.test_web_link.document_types.add(self.test_document_type)
+        super().setUp()
+        self._create_test_web_link(add_document_type=True)
 
-    def test_document_web_links_list_view_no_permissions(self):
+    def test_document_web_links_list_view_no_permission(self):
         response = self._request_test_document_web_link_list_view()
         self.assertNotContains(
-            response=response, text=force_text(self.test_document),
+            response=response, text=force_text(s=self.test_document),
             status_code=404
         )
         self.assertNotContains(
-            response=response, text=force_text(self.test_web_link),
+            response=response, text=force_text(s=self.test_web_link),
             status_code=404
         )
 
@@ -133,11 +131,11 @@ class DocumentWebLinkViewTestCase(
 
         response = self._request_test_document_web_link_list_view()
         self.assertContains(
-            response=response, text=force_text(self.test_document),
+            response=response, text=force_text(s=self.test_document),
             status_code=200
         )
         self.assertNotContains(
-            response=response, text=force_text(self.test_web_link),
+            response=response, text=force_text(s=self.test_web_link),
             status_code=200
         )
 
@@ -149,11 +147,11 @@ class DocumentWebLinkViewTestCase(
 
         response = self._request_test_document_web_link_list_view()
         self.assertNotContains(
-            response=response, text=force_text(self.test_document),
+            response=response, text=force_text(s=self.test_document),
             status_code=404
         )
         self.assertNotContains(
-            response=response, text=force_text(self.test_web_link),
+            response=response, text=force_text(s=self.test_web_link),
             status_code=404
         )
 
@@ -169,15 +167,42 @@ class DocumentWebLinkViewTestCase(
 
         response = self._request_test_document_web_link_list_view()
         self.assertContains(
-            response=response, text=force_text(self.test_document),
+            response=response, text=force_text(s=self.test_document),
             status_code=200
         )
         self.assertContains(
-            response=response, text=force_text(self.test_web_link),
+            response=response, text=force_text(s=self.test_web_link),
+            status_code=200
+        )
+        # Test if a valid resolved link navigate link is present.
+        # Ensures the view is returning ResolvedWebLink proxies and not the
+        # base model WebLink.
+        context = self._get_context_from_test_response(response=response)
+        context['object'] = ResolvedWebLink.objects.get_for(
+            document=self.test_document, user=self._test_case_user
+        ).first()
+        resolved_web_link_link = link_web_link_instance_view.resolve(context=context)
+        self.assertContains(
+            response=response, text=resolved_web_link_link.url,
             status_code=200
         )
 
-    def test_document_resolved_web_link_view_no_permissions(self):
+    def test_trashed_document_web_links_list_view_with_full_access(self):
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_web_link_instance_view
+        )
+        self.grant_access(
+            obj=self.test_web_link,
+            permission=permission_web_link_instance_view
+        )
+
+        self.test_document.delete()
+
+        response = self._request_test_document_web_link_list_view()
+        self.assertEqual(response.status_code, 404)
+
+    def test_document_resolved_web_link_view_no_permission(self):
         response = self._request_test_document_web_link_instance_view()
         self.assertEqual(response.status_code, 404)
 
@@ -213,6 +238,21 @@ class DocumentWebLinkViewTestCase(
         self.assertEqual(response.status_code, 302)
         self.assertEqual(
             response.url, TEST_WEB_LINK_TEMPLATE.replace(
-                '{{ document.uuid }}', force_text(self.test_document.uuid)
+                '{{ document.uuid }}', force_text(s=self.test_document.uuid)
             )
         )
+
+    def test_trashed_document_resolved_web_link_view_with_full_access(self):
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_web_link_instance_view
+        )
+        self.grant_access(
+            obj=self.test_web_link,
+            permission=permission_web_link_instance_view
+        )
+
+        self.test_document.delete()
+
+        response = self._request_test_document_web_link_instance_view()
+        self.assertEqual(response.status_code, 404)

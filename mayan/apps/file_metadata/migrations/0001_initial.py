@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.db import migrations, models
 import django.db.models.deletion
 
@@ -12,9 +10,9 @@ def operation_initialize_file_metadata_settings(apps, schema_editor):
         app_label='file_metadata', model_name='DocumentTypeSettings'
     )
 
-    for document_type in DocumentType.objects.using(schema_editor.connection.alias).all():
+    for document_type in DocumentType.objects.using(alias=schema_editor.connection.alias).all():
         DocumentTypeSettings.objects.using(
-            schema_editor.connection.alias
+            alias=schema_editor.connection.alias
         ).create(document_type=document_type)
 
 
@@ -22,11 +20,10 @@ def operation_initialize_file_metadata_settings_reverse(apps, schema_editor):
     DocumentTypeSettings = apps.get_model(
         app_label='file_metadata', model_name='DocumentTypeSettings'
     )
-    DocumentTypeSettings.objects.using(schema_editor.connection.alias).delete()
+    DocumentTypeSettings.objects.using(alias=schema_editor.connection.alias).delete()
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -45,8 +42,8 @@ class Migration(migrations.Migration):
                 ),
                 (
                     'auto_process', models.BooleanField(
-                        default=True, verbose_name='Automatically queue newly '
-                        'created documents for processing.'
+                        default=True, verbose_name='Automatically queue '
+                        'newly created documents for processing.'
                     )
                 ),
                 (

@@ -1,10 +1,7 @@
-from __future__ import unicode_literals
-
 from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('metadata', '0002_auto_20150708_0118'),
     ]

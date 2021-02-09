@@ -1,22 +1,109 @@
-from __future__ import unicode_literals
-
 import logging
 
 from django.apps import apps
 from django.contrib.auth import get_user_model
 from django.core.exceptions import PermissionDenied
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from actstream import action
 
+from mayan.apps.common.utils import return_attrib
+
+from .literals import EVENT_MANAGER_ORDER_AFTER
 from .permissions import permission_events_view
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
-@python_2_unicode_compatible
-class EventTypeNamespace(object):
+class EventManager:
+    EVENT_ATTRIBUTES = ('ignore', 'keep_attributes',)
+    EVENT_ARGUMENTS = ('actor', 'action_object', 'target')
+
+    def __init__(self, instance, **kwargs):
+        self.instance = instance
+        self.kwargs = kwargs
+
+    def commit(self):
+        if not self.instance_event_attributes['ignore']:
+            self._commit()
+
+    def get_event_arguments(self, argument_map):
+        result = {}
+
+        for argument in self.EVENT_ARGUMENTS:
+            # Grab the static argument value from the argument map.
+            # If the argument is not in the map, it is dynamic and must be
+            # obtained from the instance attributes.
+            value = argument_map.get(
+                argument, self.instance_event_attributes[argument]
+            )
+
+            if value == 'self':
+                result[argument] = self.instance
+            elif isinstance(value, str):
+                result[argument] = return_attrib(obj=self.instance, attrib=value)
+            else:
+                result[argument] = value
+
+        return result
+
+    def pop_event_attributes(self):
+        self.instance_event_attributes = {}
+
+        for attribute in self.EVENT_ATTRIBUTES:
+            full_name = '_event_{}'.format(attribute)
+            value = self.instance.__dict__.pop(full_name, None)
+            self.instance_event_attributes[attribute] = value
+
+        keep_attributes = self.instance_event_attributes['keep_attributes'] or ()
+
+        for attribute in self.EVENT_ARGUMENTS:
+            full_name = '_event_{}'.format(attribute)
+            if full_name in keep_attributes:
+                value = self.instance.__dict__.get(full_name, None)
+            else:
+                value = self.instance.__dict__.pop(full_name, None)
+            self.instance_event_attributes[attribute] = value
+
+    def prepare(self):
+        """Optional method to gather information before the actual commit"""
+
+
+class EventManagerMethodAfter(EventManager):
+    order = EVENT_MANAGER_ORDER_AFTER
+
+    def _commit(self):
+        self.kwargs['event'].commit(
+            **self.get_event_arguments(argument_map=self.kwargs)
+        )
+
+
+class EventManagerSave(EventManager):
+    order = EVENT_MANAGER_ORDER_AFTER
+
+    def _commit(self):
+        if self.created:
+            self.kwargs['created']['event'].commit(
+                **self.get_event_arguments(argument_map=self.kwargs['created'])
+            )
+        else:
+            self.kwargs['edited']['event'].commit(
+                **self.get_event_arguments(argument_map=self.kwargs['edited'])
+            )
+
+    def prepare(self):
+        self.created = not self.instance.pk
+
+
+class EventModelRegistry:
+    @staticmethod
+    def register(model):
+        from actstream import registry
+        registry.register(model)
+
+
+class EventTypeNamespace:
     _registry = {}
 
     @classmethod
@@ -37,7 +124,7 @@ class EventTypeNamespace(object):
         return self.label < other.label
 
     def __str__(self):
-        return force_text(self.label)
+        return force_text(s=self.label)
 
     def add_event_type(self, name, label):
         event_type = EventType(namespace=self, name=name, label=label)
@@ -48,8 +135,7 @@ class EventTypeNamespace(object):
         return EventType.sort(event_type_list=self.event_types)
 
 
-@python_2_unicode_compatible
-class EventType(object):
+class EventType:
     _registry = {}
 
     @staticmethod
@@ -74,7 +160,7 @@ class EventType(object):
     def refresh(cls):
         for event_type in cls.all():
             # Invalidate cache and recreate store events while repopulating
-            # cache
+            # cache.
             event_type.stored_event_type = None
             event_type.get_stored_event_type()
 
@@ -86,96 +172,102 @@ class EventType(object):
         self.__class__._registry[self.id] = self
 
     def __str__(self):
-        return force_text('{}: {}'.format(self.namespace.label, self.label))
+        return '{}: {}'.format(self.namespace.label, self.label)
 
     def commit(self, actor=None, action_object=None, target=None):
         AccessControlList = apps.get_model(
             app_label='acls', model_name='AccessControlList'
         )
-        Action = apps.get_model(
-            app_label='actstream', model_name='Action'
-        )
-        ContentType = apps.get_model(
-            app_label='contenttypes', model_name='ContentType'
+        EventSubscription = apps.get_model(
+            app_label='events', model_name='EventSubscription'
         )
         Notification = apps.get_model(
             app_label='events', model_name='Notification'
         )
+        ObjectEventSubscription = apps.get_model(
+            app_label='events', model_name='ObjectEventSubscription'
+        )
+        User = get_user_model()
 
-        results = action.send(
+        if actor is None and target is None:
+            # If the actor and the target are None there is no way to
+            # create a new event.
+            return
+
+        result = action.send(
             actor or target, actor=actor, verb=self.id,
             action_object=action_object, target=target
+        )[0][1]
+        # The [0][1] means: get the first and only action from the list
+        # and ignore the handler.
+
+        # Create notifications for the actions created by the event committed.
+
+        # Gather the users subscribed globally to the event.
+        user_queryset = User.objects.filter(
+            id__in=EventSubscription.objects.filter(
+                stored_event_type__name=result.verb
+            ).values('user')
         )
 
-        for handler, result in results:
-            if isinstance(result, Action):
-                for user in get_user_model().objects.all():
-                    notification = None
+        # Gather the users subscribed to the target object event.
+        if result.target:
+            user_queryset = user_queryset | User.objects.filter(
+                id__in=ObjectEventSubscription.objects.filter(
+                    content_type=result.target_content_type,
+                    object_id=result.target.pk,
+                    stored_event_type__name=result.verb
+                ).values('user')
+            )
 
-                    if user.event_subscriptions.filter(stored_event_type__name=result.verb).exists():
-                        if result.target:
-                            try:
-                                AccessControlList.objects.check_access(
-                                    obj=result.target,
-                                    permissions=(permission_events_view,),
-                                    user=user
-                                )
-                            except PermissionDenied:
-                                pass
-                            else:
-                                notification, created = Notification.objects.get_or_create(
-                                    action=result, user=user
-                                )
-                        else:
-                            notification, created = Notification.objects.get_or_create(
-                                action=result, user=user
-                            )
+        # Gather the users subscribed to the action object event.
+        if result.action_object:
+            user_queryset = user_queryset | User.objects.filter(
+                id__in=ObjectEventSubscription.objects.filter(
+                    content_type=result.action_object_content_type,
+                    object_id=result.action_object.pk,
+                    stored_event_type__name=result.verb
+                ).values('user')
+            )
 
-                    if result.target:
-                        content_type = ContentType.objects.get_for_model(model=result.target)
+        for user in user_queryset:
+            if result.target:
+                try:
+                    AccessControlList.objects.check_access(
+                        obj=result.target,
+                        permissions=(permission_events_view,),
+                        user=user
+                    )
+                except PermissionDenied:
+                    """
+                    User is subscribed to the event but does
+                    not have permissions for the event's target.
+                    """
+                else:
+                    Notification.objects.create(action=result, user=user)
+                    # Don't check or add any other notification for the
+                    # same user-event-object.
+                    continue
 
-                        relationship = user.object_subscriptions.filter(
-                            content_type=content_type,
-                            object_id=result.target.pk,
-                            stored_event_type__name=result.verb
-                        )
+            if result.action_object:
+                try:
+                    AccessControlList.objects.check_access(
+                        obj=result.action_object,
+                        permissions=(permission_events_view,),
+                        user=user
+                    )
+                except PermissionDenied:
+                    """
+                    User is subscribed to the event but does
+                    not have permissions for the event's action_object.
+                    """
+                else:
+                    Notification.objects.create(action=result, user=user)
+                    # Don't check or add any other notification for the
+                    # same user-event-object.
+                    continue
 
-                        if relationship.exists():
-                            try:
-                                AccessControlList.objects.check_access(
-                                    obj=result.target,
-                                    permissions=(permission_events_view,),
-                                    user=user
-                                )
-                            except PermissionDenied:
-                                pass
-                            else:
-                                notification, created = Notification.objects.get_or_create(
-                                    action=result, user=user
-                                )
-
-                    if not notification and result.action_object:
-                        content_type = ContentType.objects.get_for_model(model=result.action_object)
-
-                        relationship = user.object_subscriptions.filter(
-                            content_type=content_type,
-                            object_id=result.action_object.pk,
-                            stored_event_type__name=result.verb
-                        )
-
-                        if relationship.exists():
-                            try:
-                                AccessControlList.objects.check_access(
-                                    obj=result.action_object,
-                                    permissions=(permission_events_view,),
-                                    user=user
-                                )
-                            except PermissionDenied:
-                                pass
-                            else:
-                                notification, created = Notification.objects.get_or_create(
-                                    action=result, user=user
-                                )
+        return result
 
     def get_stored_event_type(self):
         if not self.stored_event_type:
@@ -194,7 +286,7 @@ class EventType(object):
         return '%s.%s' % (self.namespace.name, self.name)
 
 
-class ModelEventType(object):
+class ModelEventType:
     """
     Class to allow matching a model to a specific set of events.
     """

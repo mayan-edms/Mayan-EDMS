@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.utils.translation import ugettext_lazy as _
 
 from rest_framework import serializers
@@ -14,18 +12,18 @@ from .models import DetachedSignature, EmbeddedSignature
 
 
 class BaseSignatureSerializer(serializers.HyperlinkedModelSerializer):
-    document_version_url = MultiKwargHyperlinkedIdentityField(
+    document_file_url = MultiKwargHyperlinkedIdentityField(
         view_kwargs=(
             {
-                'lookup_field': 'document_version_id',
-                'lookup_url_kwarg': 'version_pk',
+                'lookup_field': 'document_file_id',
+                'lookup_url_kwarg': 'document_file_id',
             },
             {
-                'lookup_field': 'document_version.document.pk',
-                'lookup_url_kwarg': 'pk',
+                'lookup_field': 'document_file.document_id',
+                'lookup_url_kwarg': 'document_id',
             }
         ),
-        view_name='rest_api:documentversion-detail'
+        view_name='rest_api:documentfile-detail'
     )
 
 
@@ -33,7 +31,7 @@ class BaseSignSerializer(serializers.HyperlinkedModelSerializer):
     passphrase = serializers.CharField(
         help_text=_(
             'The passphrase to unlock the key and allow it to be used to '
-            'sign the document version.'
+            'sign the document file.'
         ),
         required=False, write_only=True
     )
@@ -43,12 +41,12 @@ class DetachedSignatureSerializer(BaseSignatureSerializer):
     url = MultiKwargHyperlinkedIdentityField(
         view_kwargs=(
             {
-                'lookup_field': 'document_version.document.pk',
+                'lookup_field': 'document_file.document_id',
                 'lookup_url_kwarg': 'document_id',
             },
             {
-                'lookup_field': 'document_version_id',
-                'lookup_url_kwarg': 'document_version_id',
+                'lookup_field': 'document_file_id',
+                'lookup_url_kwarg': 'document_file_id',
             },
             {
                 'lookup_field': 'pk',
@@ -63,43 +61,42 @@ class DetachedSignatureSerializer(BaseSignatureSerializer):
             'signature_file': {'write_only': True},
         }
         fields = (
-            'date', 'document_version_url', 'key_id', 'signature_file',
+            'date_time', 'document_file_url', 'key_id', 'signature_file',
             'signature_id', 'public_key_fingerprint', 'url'
         )
         model = DetachedSignature
         read_only_fields = ('key_id',)
 
     def create(self, validated_data):
-        validated_data['document_version'] = self.context['document_version']
-        return super(DetachedSignatureSerializer, self).create(
+        validated_data['document_file'] = self.context['document_file']
+        return super().create(
             validated_data=validated_data
         )
 
 
 class EmbeddedSignatureSerializer(serializers.HyperlinkedModelSerializer):
-    document_version_url = MultiKwargHyperlinkedIdentityField(
+    document_file_url = MultiKwargHyperlinkedIdentityField(
         view_kwargs=(
             {
-                'lookup_field': 'document_version_id',
-                'lookup_url_kwarg': 'version_pk',
+                'lookup_field': 'document_file_id',
+                'lookup_url_kwarg': 'document_file_id',
             },
             {
-                'lookup_field': 'document_version.document.pk',
-                'lookup_url_kwarg': 'pk',
+                'lookup_field': 'document_file.document.pk',
+                'lookup_url_kwarg': 'document_id',
             }
         ),
-        view_name='rest_api:documentversion-detail'
+        view_name='rest_api:documentfile-detail'
     )
-
     url = MultiKwargHyperlinkedIdentityField(
         view_kwargs=(
             {
-                'lookup_field': 'document_version.document.pk',
+                'lookup_field': 'document_file.document.pk',
                 'lookup_url_kwarg': 'document_id',
             },
             {
-                'lookup_field': 'document_version_id',
-                'lookup_url_kwarg': 'document_version_id',
+                'lookup_field': 'document_file_id',
+                'lookup_url_kwarg': 'document_file_id',
             },
             {
                 'lookup_field': 'pk',
@@ -112,7 +109,7 @@ class EmbeddedSignatureSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         fields = (
-            'date', 'document_version_url', 'key_id', 'signature_id',
+            'date_time', 'document_file_url', 'key_id', 'signature_id',
             'passphrase', 'public_key_fingerprint', 'url'
         )
         model = EmbeddedSignature
@@ -137,8 +134,8 @@ class EmbeddedSignatureSerializer(serializers.HyperlinkedModelSerializer):
                 }, code='invalid'
             )
 
-        signature = EmbeddedSignature.objects.sign_document_version(
-            document_version=self.context['document_version'], key=key,
+        signature = EmbeddedSignature.objects.sign_document_file(
+            document_file=self.context['document_file'], key=key,
             passphrase=passphrase, user=self.context['request'].user
         )
 
@@ -148,7 +145,7 @@ class EmbeddedSignatureSerializer(serializers.HyperlinkedModelSerializer):
 class SignDetachedSerializer(BaseSignatureSerializer, BaseSignSerializer):
     class Meta:
         fields = (
-            'date', 'document_version_url', 'key_id', 'signature_id',
+            'date_time', 'document_file_url', 'key_id', 'signature_id',
             'passphrase', 'public_key_fingerprint', 'url'
         )
         model = DetachedSignature
@@ -170,8 +167,8 @@ class SignDetachedSerializer(BaseSignatureSerializer, BaseSignSerializer):
                 }, code='invalid'
             )
 
-        return DetachedSignature.objects.sign_document_version(
-            document_version=self.context['document_version'], key=key,
+        return DetachedSignature.objects.sign_document_file(
+            document_file=self.context['document_file'], key=key,
             passphrase=passphrase, user=self.context['request'].user
         )
 
@@ -179,7 +176,7 @@ class SignDetachedSerializer(BaseSignatureSerializer, BaseSignSerializer):
 class SignEmbeddedSerializer(SignDetachedSerializer):
     class Meta:
         fields = (
-            'date', 'document_version_url', 'key_id', 'signature_id',
+            'date_time', 'document_file_url', 'key_id', 'signature_id',
             'passphrase', 'public_key_fingerprint', 'url'
         )
         model = EmbeddedSignature
@@ -201,7 +198,7 @@ class SignEmbeddedSerializer(SignDetachedSerializer):
                 }, code='invalid'
             )
 
-        return EmbeddedSignature.objects.sign_document_version(
-            document_version=self.context['document_version'], key=key,
+        return EmbeddedSignature.objects.sign_document_file(
+            document_file=self.context['document_file'], key=key,
             passphrase=passphrase, user=self.context['request'].user
         )

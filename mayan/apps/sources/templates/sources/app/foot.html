@@ -1,0 +1,70 @@
+{% load i18n %}
+{% load static %}
+
+<script src="{% static 'sources/node_modules/dropzone/dist/dropzone.js' %}" type="text/javascript"></script>
+
+<script type="text/x-template" id="previewTemplate">
+    <div class="dz-preview dz-file-preview">
+        <i class="far fa-file fa-10x"></i>
+        <div class="dz-details">
+            <div class="dz-filename"><span data-dz-name></span></div>
+            <div class="dz-size" data-dz-size></div>
+            <img data-dz-thumbnail />
+        </div>
+
+        <div class="dz-progress">
+            <span class="dz-upload" data-dz-uploadprogress>
+                <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" style="width: 100%">
+                </div>
+            </span>
+        </div>
+
+        <div class="dz-success-mark">
+            <span>
+                <i class="text-success fa fa-4x fa-check-circle"></i>
+            </span>
+        </div>
+        <div class="dz-error-mark">
+            <span>
+                <i class="text-danger fa fa-4x fa-times-circle"></i>
+            </span>
+        </div>
+        <div class="dz-error-message">
+            <span data-dz-errormessage>
+            </span>
+        </div>
+    </div>
+</script>
+
+<script>
+    var messageCancelUpload = "{% trans 'Cancel upload' %}";
+    var messageCancelUploadConfirmation = "{% trans 'Are you sure you want to cancel this upload?' %}";
+    var messageDefaultMessage = "{% trans 'Drop files or click here to upload files' %}";
+    var messageFallbackMessage = "{% trans 'Your browser does not support drag and drop file uploads.' %}";
+    var messageFallbackText = "{% trans 'Please use the fallback form below to upload your files.' %}";
+    var messageRemoveFile = "{% trans 'Clear' %}";
+    var messageResponseError = "{% trans 'Server responded with {{statusCode}} code.' %}";
+    var previewTemplate = document.querySelector('#previewTemplate').innerHTML;
+
+    Dropzone.autoDiscover = false;
+
+    $('#ajax-content').on('change', function (event) {
+        {% verbatim %}
+            $('.dropzone').dropzone({
+                addRemoveLinks: true,
+                createImageThumbnails: false,
+                dictCancelUpload: messageCancelUpload,
+                dictCancelUploadConfirmation: messageCancelUploadConfirmation,
+                dictDefaultMessage: '<i class="fa fa-cloud-upload-alt"></i> ' + messageDefaultMessage,
+                dictFallbackMessage: messageFallbackMessage,
+                dictFallbackText: messageFallbackText,
+                dictRemoveFile: messageRemoveFile,
+                dictResponseError: messageResponseError,
+                maxFilesize: null,
+                paramName: 'source-file',
+                previewTemplate: previewTemplate,
+                timeout: 1200000
+            });
+        {% endverbatim %}
+    });
+</script>

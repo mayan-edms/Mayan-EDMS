@@ -1,112 +1,64 @@
-from __future__ import unicode_literals
-
 import logging
-import sys
-import traceback
 
 from django.apps import apps
-from django.conf import settings
 from django.db import models, transaction
 
-from mayan.apps.documents.literals import DOCUMENT_IMAGE_TASK_TIMEOUT
-from mayan.apps.documents.tasks import task_generate_document_page_image
+from .classes import OCRBackendBase
+from .events import event_ocr_document_version_content_deleted
 
-from .events import (
-    event_ocr_document_content_deleted, event_ocr_document_version_finish
-)
-from .runtime import ocr_backend
-from .signals import post_document_version_ocr
-
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
-class DocumentPageOCRContentManager(models.Manager):
-    def delete_content_for(self, document, user=None):
+class DocumentVersionPageOCRContentManager(models.Manager):
+    def delete_content_for(self, document_version, user=None):
         with transaction.atomic():
-            for document_page in document.pages.all():
-                self.filter(document_page=document_page).delete()
+            for document_version_page in document_version.pages.all():
+                self.filter(
+                    document_version_page=document_version_page
+                ).delete()
 
-            event_ocr_document_content_deleted.commit(
-                actor=user, target=document
+            event_ocr_document_version_content_deleted.commit(
+                actor=user, action_object=document_version.document,
+                target=document_version
             )
 
-    def process_document_page(self, document_page):
+    def process_document_version_page(
+        self, cache_filename, document_version_page
+    ):
         logger.info(
             'Processing page: %d of document version: %s',
-            document_page.page_number, document_page.document_version
+            document_version_page.page_number,
+            document_version_page.document_version
         )
 
-        DocumentPageOCRContent = apps.get_model(
-            app_label='ocr', model_name='DocumentPageOCRContent'
+        DocumentVersionPageOCRContent = apps.get_model(
+            app_label='ocr', model_name='DocumentVersionPageOCRContent'
         )
-
-        task = task_generate_document_page_image.apply_async(
-            kwargs=dict(
-                document_page_id=document_page.pk
-            )
-        )
-
-        cache_filename = task.get(
-            timeout=DOCUMENT_IMAGE_TASK_TIMEOUT, disable_sync_subtasks=False
-        )
-
-        with document_page.cache_partition.get_file(filename=cache_filename).open() as file_object:
-            ocr_content = ocr_backend.execute(
-                file_object=file_object,
-                language=document_page.document.language
-            )
-            DocumentPageOCRContent.objects.update_or_create(
-                document_page=document_page, defaults={
-                    'content': ocr_content
-                }
-            )
-
-        logger.info(
-            'Finished processing page: %d of document version: %s',
-            document_page.page_number, document_page.document_version
-        )
-
-    def process_document_version(self, document_version):
-        logger.info('Starting OCR for document version: %s', document_version)
-        logger.debug('document version: %d', document_version.pk)
 
         try:
-            for document_page in document_version.pages.all():
-                self.process_document_page(document_page=document_page)
-
-            logger.info(
-                'OCR complete for document version: %s', document_version
-            )
-            document_version.ocr_errors.all().delete()
-
-            with transaction.atomic():
-                event_ocr_document_version_finish.commit(
-                    action_object=document_version.document,
-                    target=document_version
+            with document_version_page.cache_partition.get_file(filename=cache_filename).open() as file_object:
+                ocr_content = OCRBackendBase.get_instance().execute(
+                    file_object=file_object,
+                    language=document_version_page.document_version.document.language
                 )
-
-                transaction.on_commit(
-                    lambda: post_document_version_ocr.send(
-                        sender=document_version.__class__,
-                        instance=document_version
-                    )
+                DocumentVersionPageOCRContent.objects.update_or_create(
+                    document_version_page=document_version_page, defaults={
+                        'content': ocr_content
+                    }
                 )
         except Exception as exception:
             logger.error(
-                'OCR error for document version: %d; %s', document_version.pk,
+                'OCR error for document page: %d; %s',
+                document_version_page.pk,
                 exception
             )
-
-            if settings.DEBUG:
-                result = []
-                type, value, tb = sys.exc_info()
-                result.append('%s: %s' % (type.__name__, value))
-                result.extend(traceback.format_tb(tb))
-                document_version.ocr_errors.create(
-                    result='\n'.join(result)
-                )
-            else:
-                document_version.ocr_errors.create(result=exception)
+            raise
+        else:
+            logger.info(
+                'Finished processing page: %d of document version: %s',
+                document_version_page.page_number,
+                document_version_page.document_version
+            )
 
 
 class DocumentTypeSettingsManager(models.Manager):
@@ -115,7 +67,9 @@ class DocumentTypeSettingsManager(models.Manager):
             app_label='documents', model_name='DocumentType'
         )
         try:
-            document_type = DocumentType.objects.get_by_natural_key(document_type_natural_key)
+            document_type = DocumentType.objects.get_by_natural_key(
+                document_type_natural_key
+            )
         except DocumentType.DoesNotExist:
             raise self.model.DoesNotExist
 

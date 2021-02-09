@@ -6,13 +6,42 @@ The easiest way to use Mayan EDMS is by using the official Docker_ image.
 Make sure Docker is properly installed and working before attempting to install
 Mayan EDMS.
 
-Minimum hardware requirements
-=============================
+Requirements
+============
 
-- 2 Gigabytes of RAM (1 Gigabyte if OCR is turned off).
-- Multiple core CPU (64 bit, faster than 1 GHz recommended).
-- Unix-like operating system like GNU/Linux. For other operating systems
-  user container technologies like Docker or virtual machines.
+Minimum
+-------
+
+- RAM: 2 GB.
+- CPU: dual core, 64 bit, 1 GHz, Intel Core 2 Duo or similar.
+- Debian 9 GNU/Linux, or a derivative distribution for direct operating system
+  installations. Other distributions or operating systems can be used if
+  they serve as host for a virtual machine or for the official Docker image.
+- Python version 3.5.
+- PostgreSQL 9.6.
+
+.. note::
+
+   Installation on devices with even lower specifications (like single
+   board computer with ARM CPUs) is possible with below minimal performance
+   and user experience expectations.
+
+.. note::
+
+   Due to the way container and virtualization technologies work, expected
+   a performance penalty if these are used. For best results, use hardware
+   that includes optimizations for virtualization.
+
+
+Recommended
+-----------
+
+- RAM: 4 GB or more.
+- CPU: more than 2 cores, 2 GHz or faster, Intel Core i3 or better.
+- Debian 10.
+- Python version 3.8.
+- Storage: solid state storage.
+- PostgreSQL 12 or later.
 
 
 Installation methods
@@ -26,11 +55,20 @@ virtualization also known as containerization. It allows independent
 "containers" to run within a single Linux instance, avoiding the overhead
 of starting and maintaining virtual machines (VMs).
 
+.. note::
+
+   Starting with version 3.4, the preferred method of installation when using
+   Docker is with Docker Compose. The installation script at
+   ``https://get.mayan-edms.com`` and the :ref:`docker_install` are
+   deprecated and will be removed in the future.
+
+- :ref:`docker_compose_install`
 - :ref:`docker_install`
 
 .. toctree::
     :hidden:
 
+    ../chapters/docker/install_docker_compose
     ../chapters/docker/install_simple
 
 

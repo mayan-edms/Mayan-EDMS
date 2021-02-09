@@ -1,10 +1,10 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.contrib.contenttypes.models import ContentType
 from django.shortcuts import get_object_or_404
 
+from mayan.apps.permissions.serializers import PermissionSerializer
 from mayan.apps.rest_api import generics
 
+from .classes import ModelPermission
 from .models import AccessControlList
 from .permissions import permission_acl_edit, permission_acl_view
 from .serializers import (
@@ -12,6 +12,24 @@ from .serializers import (
     WritableAccessControlListPermissionSerializer,
     WritableAccessControlListSerializer
 )
+
+
+class APIClassPermissionList(generics.ListAPIView):
+    """
+    Returns a list of all the available permissions for a class.
+    """
+    serializer_class = PermissionSerializer
+
+    def get_content_type(self):
+        return get_object_or_404(
+            klass=ContentType, app_label=self.kwargs['app_label'],
+            model=self.kwargs['model_name']
+        )
+
+    def get_queryset(self):
+        return ModelPermission.get_for_class(
+            klass=self.get_content_type().model_class()
+        )
 
 
 class APIObjectACLListView(generics.ListCreateAPIView):
@@ -48,7 +66,7 @@ class APIObjectACLListView(generics.ListCreateAPIView):
         """
         Extra context provided to the serializer class.
         """
-        context = super(APIObjectACLListView, self).get_serializer_context()
+        context = super().get_serializer_context()
         if self.kwargs:
             context.update(
                 {
@@ -62,7 +80,7 @@ class APIObjectACLListView(generics.ListCreateAPIView):
         if not self.request:
             return None
 
-        return super(APIObjectACLListView, self).get_serializer(
+        return super().get_serializer(
             *args, **kwargs
         )
 
@@ -78,6 +96,7 @@ class APIObjectACLView(generics.RetrieveDestroyAPIView):
     delete: Delete the selected access control list.
     get: Returns the details of the selected access control list.
     """
+    lookup_url_kwarg = 'acl_id'
     serializer_class = AccessControlListSerializer
 
     def get_content_object(self):
@@ -113,7 +132,7 @@ class APIObjectACLPermissionListView(generics.ListCreateAPIView):
     """
     def get_acl(self):
         return get_object_or_404(
-            klass=self.get_content_object().acls, pk=self.kwargs['pk']
+            klass=self.get_content_object().acls, pk=self.kwargs['acl_id']
         )
 
     def get_content_object(self):
@@ -145,7 +164,7 @@ class APIObjectACLPermissionListView(generics.ListCreateAPIView):
         if not self.request:
             return None
 
-        return super(APIObjectACLPermissionListView, self).get_serializer(*args, **kwargs)
+        return super().get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -154,9 +173,7 @@ class APIObjectACLPermissionListView(generics.ListCreateAPIView):
             return WritableAccessControlListPermissionSerializer
 
     def get_serializer_context(self):
-        context = super(
-            APIObjectACLPermissionListView, self
-        ).get_serializer_context()
+        context = super().get_serializer_context()
         if self.kwargs:
             context.update(
                 {
@@ -172,12 +189,12 @@ class APIObjectACLPermissionView(generics.RetrieveDestroyAPIView):
     delete: Remove the permission from the selected access control list.
     get: Returns the details of the selected access control list permission.
     """
-    lookup_url_kwarg = 'permission_pk'
+    lookup_url_kwarg = 'permission_id'
     serializer_class = AccessControlListPermissionSerializer
 
     def get_acl(self):
         return get_object_or_404(
-            klass=self.get_content_object().acls, pk=self.kwargs['pk']
+            klass=self.get_content_object().acls, pk=self.kwargs['acl_id']
         )
 
     def get_content_object(self):
@@ -206,9 +223,7 @@ class APIObjectACLPermissionView(generics.RetrieveDestroyAPIView):
         return self.get_acl().permissions.all()
 
     def get_serializer_context(self):
-        context = super(
-            APIObjectACLPermissionView, self
-        ).get_serializer_context()
+        context = super().get_serializer_context()
         if self.kwargs:
             context.update(
                 {

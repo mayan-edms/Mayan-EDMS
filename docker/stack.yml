@@ -13,7 +13,7 @@ services:
       POSTGRES_DB: mayan
       POSTGRES_PASSWORD: mayandbpass
       POSTGRES_USER: mayan
-    image: postgres
+    image: postgres:10.14-alpine
     volumes:
       - db:/var/lib/postgresql/data
 
@@ -22,7 +22,7 @@ services:
       MAYAN_CELERY_BROKER_URL: redis://redis:6379/1
       MAYAN_CELERY_RESULT_BACKEND: redis://redis:6379/0
       MAYAN_DATABASES: "{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'mayan','PASSWORD':'mayandbpass','USER':'mayan','HOST':'db'}}"
-    image: mayanedms/mayanedms:latest
+    image: mayanedms/mayanedms:s4.0
     ports:
       - 80:8000
     volumes:
@@ -31,10 +31,12 @@ services:
   redis:
     command:
       - redis-server
+      - --appendonly
+      - "no"
       - --databases
       - "2"
       - --maxmemory-policy
       - allkeys-lru
       - --save
       - ""
-    image: redis:5.0
+    image: redis:5.0-alpine

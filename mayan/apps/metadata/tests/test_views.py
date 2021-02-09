@@ -1,11 +1,8 @@
-from __future__ import unicode_literals
-
 from furl import furl
 
 from django.urls import reverse
 
 from mayan.apps.common.settings import setting_home_view
-from mayan.apps.common.tests.base import GenericViewTestCase
 from mayan.apps.documents.models import DocumentType
 from mayan.apps.documents.permissions import (
     permission_document_properties_edit, permission_document_type_edit,
@@ -13,6 +10,7 @@ from mayan.apps.documents.permissions import (
 )
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 from mayan.apps.documents.tests.literals import TEST_DOCUMENT_TYPE_2_LABEL
+from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..models import MetadataType
 from ..permissions import (
@@ -27,34 +25,65 @@ from .literals import (
     TEST_METADATA_TYPE_NAME_2, TEST_METADATA_VALUE_EDITED
 )
 from .mixins import (
-    DocumentMetadataViewTestMixin, MetadataTypeTestMixin,
-    MetadataTypeViewTestMixin
+    DocumentMetadataMixin, DocumentMetadataViewTestMixin,
+    MetadataTypeTestMixin, MetadataTypeViewTestMixin
 )
 
 
 class DocumentMetadataViewTestCase(
-    DocumentMetadataViewTestMixin, MetadataTypeTestMixin,
-    GenericDocumentViewTestCase
+    DocumentMetadataMixin, DocumentMetadataViewTestMixin,
+    MetadataTypeTestMixin, GenericDocumentViewTestCase
 ):
-    def setUp(self):
-        super(DocumentMetadataViewTestCase, self).setUp()
-        self._create_test_metadata_type()
-        self.test_document_type.metadata.create(
-            metadata_type=self.test_metadata_type
-        )
+    auto_upload_test_document = False
 
-    def _create_test_document_metadata(self):
-        self.test_document_metadata = self.test_document.metadata.create(
-            metadata_type=self.test_metadata_type, value=''
-        )
+    def setUp(self):
+        super().setUp()
+        self._create_test_document_stub()
+        self._create_test_metadata_type(add_test_document_type=True)
 
     def test_document_metadata_add_get_view_no_permission(self):
+        document_metadata_count = self.test_document.metadata.count()
+
         response = self._request_test_document_metadata_add_get_view()
         self.assertEqual(response.status_code, 404)
 
-        self.assertEqual(self.test_document.metadata.count(), 0)
+        self.assertEqual(
+            self.test_document.metadata.count(), document_metadata_count
+        )
+
+    def test_document_metadata_add_get_view_with_document_access(self):
+        document_metadata_count = self.test_document.metadata.count()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_metadata_add
+        )
+
+        response = self._request_test_document_metadata_add_get_view()
+        self.assertEqual(response.status_code, 200)
+
+        self.assertEqual(
+            self.test_document.metadata.count(), document_metadata_count
+        )
+
+    def test_document_metadata_add_get_view_with_metadata_type_access(self):
+        document_metadata_count = self.test_document.metadata.count()
+
+        self.grant_access(
+            obj=self.test_metadata_type,
+            permission=permission_document_metadata_add
+        )
+
+        response = self._request_test_document_metadata_add_get_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertEqual(
+            self.test_document.metadata.count(), document_metadata_count
+        )
 
     def test_document_metadata_add_get_view_with_full_access(self):
+        document_metadata_count = self.test_document.metadata.count()
+
         self.grant_access(
             obj=self.test_document,
             permission=permission_document_metadata_add
@@ -67,15 +96,44 @@ class DocumentMetadataViewTestCase(
         response = self._request_test_document_metadata_add_get_view()
         self.assertEqual(response.status_code, 200)
 
-        self.assertEqual(self.test_document.metadata.count(), 0)
+        self.assertEqual(
+            self.test_document.metadata.count(), document_metadata_count
+        )
+
+    def test_trashed_document_metadata_add_get_view_with_full_access(self):
+        document_metadata_count = self.test_document.metadata.count()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_metadata_add
+        )
+        self.grant_access(
+            obj=self.test_metadata_type,
+            permission=permission_document_metadata_add
+        )
+
+        self.test_document.delete()
+
+        response = self._request_test_document_metadata_add_get_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertEqual(
+            self.test_document.metadata.count(), document_metadata_count
+        )
 
     def test_document_metadata_add_post_view_no_permission(self):
+        document_metadata_count = self.test_document.metadata.count()
+
         response = self._request_test_document_metadata_add_post_view()
         self.assertEqual(response.status_code, 404)
 
-        self.assertEqual(self.test_document.metadata.count(), 0)
+        self.assertEqual(
+            self.test_document.metadata.count(), document_metadata_count
+        )
 
     def test_document_metadata_add_post_view_with_document_access(self):
+        document_metadata_count = self.test_document.metadata.count()
+
         self.grant_access(
             obj=self.test_document,
             permission=permission_document_metadata_add
@@ -84,9 +142,13 @@ class DocumentMetadataViewTestCase(
         response = self._request_test_document_metadata_add_post_view()
         self.assertEqual(response.status_code, 302)
 
-        self.assertEqual(self.test_document.metadata.count(), 0)
+        self.assertEqual(
+            self.test_document.metadata.count(), document_metadata_count
+        )
 
     def test_document_metadata_add_post_view_with_metadata_type_access(self):
+        document_metadata_count = self.test_document.metadata.count()
+
         self.grant_access(
             obj=self.test_metadata_type,
             permission=permission_document_metadata_add
@@ -95,9 +157,13 @@ class DocumentMetadataViewTestCase(
         response = self._request_test_document_metadata_add_post_view()
         self.assertEqual(response.status_code, 404)
 
-        self.assertEqual(self.test_document.metadata.count(), 0)
+        self.assertEqual(
+            self.test_document.metadata.count(), document_metadata_count
+        )
 
     def test_document_metadata_add_post_view_with_full_access(self):
+        document_metadata_count = self.test_document.metadata.count()
+
         self.grant_access(
             obj=self.test_document,
             permission=permission_document_metadata_add
@@ -110,7 +176,30 @@ class DocumentMetadataViewTestCase(
         response = self._request_test_document_metadata_add_post_view()
         self.assertEqual(response.status_code, 302)
 
-        self.assertEqual(self.test_document.metadata.count(), 1)
+        self.assertEqual(
+            self.test_document.metadata.count(), document_metadata_count + 1
+        )
+
+    def test_trashed_document_metadata_add_post_view_with_full_access(self):
+        document_metadata_count = self.test_document.metadata.count()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_metadata_add
+        )
+        self.grant_access(
+            obj=self.test_metadata_type,
+            permission=permission_document_metadata_add
+        )
+
+        self.test_document.delete()
+
+        response = self._request_test_document_metadata_add_post_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertEqual(
+            self.test_document.metadata.count(), document_metadata_count
+        )
 
     def test_document_metadata_add_redirect(self):
         self.grant_access(
@@ -127,14 +216,14 @@ class DocumentMetadataViewTestCase(
         self.assertRedirects(
             response=response, expected_url=reverse(
                 viewname='metadata:metadata_edit', kwargs={
-                    'pk': self.test_document.pk
+                    'document_id': self.test_document.pk
                 }
             ), status_code=302,
             target_status_code=404
         )
 
     def test_document_multiple_metadata_add_redirect(self):
-        self.upload_document()
+        self._create_test_document_stub()
 
         self.grant_access(
             obj=self.test_documents[0],
@@ -163,7 +252,10 @@ class DocumentMetadataViewTestCase(
         )
 
     def test_document_multiple_metadata_add_post_view_with_document_access(self):
-        self.upload_document()
+        self._create_test_document_stub()
+
+        document_0_metadata_count = self.test_documents[0].metadata.count()
+        document_1_metadata_count = self.test_documents[1].metadata.count()
 
         self.grant_access(
             obj=self.test_documents[0],
@@ -177,11 +269,16 @@ class DocumentMetadataViewTestCase(
         response = self._request_test_document_multiple_metadata_add_post_view()
         self.assertEqual(response.status_code, 302)
 
-        self.assertEqual(self.test_documents[0].metadata.count(), 0)
-        self.assertEqual(self.test_documents[1].metadata.count(), 0)
+        self.assertEqual(
+            self.test_documents[0].metadata.count(), document_0_metadata_count
+        )
+        self.assertEqual(
+            self.test_documents[1].metadata.count(), document_1_metadata_count
+        )
 
     def test_document_metadata_multiple_add_post_view_with_full_access(self):
         self._create_test_metadata_type()
+
         self.test_document_type.metadata.create(
             metadata_type=self.test_metadata_types[1]
         )
@@ -201,7 +298,9 @@ class DocumentMetadataViewTestCase(
 
     def test_document_metadata_edit_post_view_no_permission(self):
         self._create_test_document_metadata()
+
         document_metadata_value = self.test_document.metadata.first().value
+
         response = self._request_test_document_metadata_edit_post_view()
         self.assertEqual(response.status_code, 404)
 
@@ -213,7 +312,9 @@ class DocumentMetadataViewTestCase(
 
     def test_document_metadata_edit_post_view_with_document_access(self):
         self._create_test_document_metadata()
+
         document_metadata_value = self.test_document.metadata.first().value
+
         self.grant_access(
             obj=self.test_document,
             permission=permission_document_metadata_edit
@@ -230,7 +331,9 @@ class DocumentMetadataViewTestCase(
 
     def test_document_metadata_edit_post_view_with_metadata_type_access(self):
         self._create_test_document_metadata()
+
         document_metadata_value = self.test_document.metadata.first().value
+
         self.grant_access(
             obj=self.test_metadata_type,
             permission=permission_document_metadata_edit
@@ -247,7 +350,9 @@ class DocumentMetadataViewTestCase(
 
     def test_document_metadata_edit_post_view_with_full_access(self):
         self._create_test_document_metadata()
+
         document_metadata_value = self.test_document.metadata.first().value
+
         self.grant_access(
             obj=self.test_document,
             permission=permission_document_metadata_edit
@@ -263,6 +368,31 @@ class DocumentMetadataViewTestCase(
         self.test_document.metadata.first().refresh_from_db()
 
         self.assertNotEqual(
+            self.test_document.metadata.first().value, document_metadata_value
+        )
+
+    def test_trashed_document_metadata_edit_post_view_with_full_access(self):
+        self._create_test_document_metadata()
+
+        document_metadata_value = self.test_document.metadata.first().value
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_metadata_edit
+        )
+        self.grant_access(
+            obj=self.test_metadata_type,
+            permission=permission_document_metadata_edit
+        )
+
+        self.test_document.delete()
+
+        response = self._request_test_document_metadata_edit_post_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.test_document.metadata.first().refresh_from_db()
+
+        self.assertEqual(
             self.test_document.metadata.first().value, document_metadata_value
         )
 
@@ -286,17 +416,17 @@ class DocumentMetadataViewTestCase(
             metadata_type=metadata_type_2, required=True
         )
 
-        self.test_document.set_document_type(document_type=document_type_2)
+        self.test_document.document_type_change(document_type=document_type_2)
 
         response = self.get(
             viewname='metadata:metadata_edit', kwargs={
-                'pk': self.test_document.pk
+                'document_id': self.test_document.pk
             }, follow=True
         )
         self.assertContains(response=response, text='Edit', status_code=200)
 
         response = self.post(
-            'metadata:metadata_edit', kwargs={'pk': self.test_document.pk},
+            'metadata:metadata_edit', kwargs={'document_id': self.test_document.pk},
             data={
                 'form-0-id': document_metadata_2.metadata_type.pk,
                 'form-0-update': True,
@@ -330,14 +460,14 @@ class DocumentMetadataViewTestCase(
         self.assertRedirects(
             response=response, expected_url=reverse(
                 viewname='metadata:metadata_view', kwargs={
-                    'pk': self.test_document.pk
+                    'document_id': self.test_document.pk
                 }
             ), status_code=302,
             target_status_code=404
         )
 
     def test_document_multiple_metadata_edit_redirect(self):
-        self.upload_document()
+        self._create_test_document_stub()
 
         self.grant_access(
             obj=self.test_documents[0],
@@ -365,7 +495,7 @@ class DocumentMetadataViewTestCase(
             set([self.test_documents[0].pk, self.test_documents[1].pk])
         )
 
-    def test_document_metadata_list_view_no_access(self):
+    def test_document_metadata_list_view_no_permission(self):
         self._create_test_document_metadata()
 
         response = self._request_test_document_metadata_list_view()
@@ -440,6 +570,23 @@ class DocumentMetadataViewTestCase(
             status_code=200
         )
 
+    def test_trashed_document_metadata_list_view_with_full_access(self):
+        self._create_test_document_metadata()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_metadata_view
+        )
+        self.grant_access(
+            obj=self.test_metadata_type,
+            permission=permission_document_metadata_view
+        )
+
+        self.test_document.delete()
+
+        response = self._request_test_document_metadata_list_view()
+        self.assertEqual(response.status_code, 404)
+
     def test_document_metadata_remove_get_view_no_permission(self):
         self._create_test_document_metadata()
 
@@ -471,6 +618,30 @@ class DocumentMetadataViewTestCase(
         self.assertContains(
             response, text=self.test_metadata_type.label, status_code=200
         )
+        self.assertTrue(
+            self.test_document_metadata in self.test_document.metadata.all()
+        )
+
+    def test_trashed_document_metadata_remove_get_view_with_full_access(self):
+        self._create_test_document_metadata()
+
+        self.grant_access(
+            obj=self.test_metadata_type,
+            permission=permission_document_metadata_remove,
+        )
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_metadata_remove,
+        )
+
+        # Silence unrelated logging
+        self._silence_logger(name='mayan.apps.navigation.classes')
+
+        self.test_document.delete()
+
+        response = self._request_test_document_metadata_remove_get_view()
+        self.assertEqual(response.status_code, 404)
+
         self.assertTrue(
             self.test_document_metadata in self.test_document.metadata.all()
         )
@@ -533,6 +704,27 @@ class DocumentMetadataViewTestCase(
             self.test_document_metadata not in self.test_document.metadata.all()
         )
 
+    def test_trashed_document_metadata_remove_post_view_with_full_access(self):
+        self._create_test_document_metadata()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_metadata_remove
+        )
+        self.grant_access(
+            obj=self.test_metadata_type,
+            permission=permission_document_metadata_remove
+        )
+
+        self.test_document.delete()
+
+        response = self._request_test_document_metadata_remove_post_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertTrue(
+            self.test_document_metadata in self.test_document.metadata.all()
+        )
+
     def test_document_metadata_remove_redirect(self):
         self._create_test_document_metadata()
 
@@ -550,14 +742,14 @@ class DocumentMetadataViewTestCase(
         self.assertRedirects(
             response=response, expected_url=reverse(
                 viewname='metadata:metadata_view', kwargs={
-                    'pk': self.test_document.pk
+                    'document_id': self.test_document.pk
                 }
             ), status_code=302,
             target_status_code=404
         )
 
     def test_document_multiple_metadata_remove_redirect(self):
-        self.upload_document()
+        self._create_test_document_stub()
 
         self.test_documents[0].metadata.create(
             metadata_type=self.test_metadata_type
@@ -591,7 +783,7 @@ class DocumentMetadataViewTestCase(
         self.grant_permission(permission=permission_document_view)
         self.grant_permission(permission=permission_document_metadata_remove)
 
-        self.upload_document()
+        self._create_test_document_stub()
 
         document_metadata = self.test_documents[0].metadata.create(
             metadata_type=self.test_metadata_type
@@ -628,7 +820,7 @@ class DocumentMetadataViewTestCase(
         self.assertEqual(self.test_documents[1].metadata.count(), 0)
 
     def test_multiple_document_metadata_edit(self):
-        self.upload_document()
+        self._create_test_document_stub()
 
         self.grant_permission(permission=permission_document_view)
         self.grant_permission(permission=permission_document_metadata_add)
@@ -667,25 +859,24 @@ class DocumentMetadataViewTestCase(
         self.assertEqual(response.status_code, 200)
 
         self.assertEqual(
-            self.test_documents[0].metadata.first().value, TEST_METADATA_VALUE_EDITED
+            self.test_documents[0].metadata.first().value,
+            TEST_METADATA_VALUE_EDITED
         )
         self.assertEqual(
-            self.test_documents[1].metadata.first().value, TEST_METADATA_VALUE_EDITED
+            self.test_documents[1].metadata.first().value,
+            TEST_METADATA_VALUE_EDITED
         )
 
 
 class DocumentMetadataRequiredTestCase(
-    DocumentMetadataViewTestMixin, MetadataTypeTestMixin, GenericDocumentViewTestCase
+    DocumentMetadataViewTestMixin, MetadataTypeTestMixin,
+    GenericDocumentViewTestCase
 ):
     def setUp(self):
-        super(DocumentMetadataRequiredTestCase, self).setUp()
-        self._create_test_metadata_type()
-        self._create_test_metadata_type()
-        self.test_document_type.metadata.create(
-            metadata_type=self.test_metadata_types[0]
-        )
-        self.test_document_type.metadata.create(
-            metadata_type=self.test_metadata_types[1], required=True
+        super().setUp()
+        self._create_test_metadata_type(add_test_document_type=True)
+        self._create_test_metadata_type(
+            add_test_document_type=True, required=True
         )
 
     def _create_test_document_metadata(self):
@@ -763,10 +954,76 @@ class DocumentMetadataRequiredTestCase(
         )
 
 
+class DocumentTypeMetadataTypeViewTestCase(
+    MetadataTypeViewTestMixin, MetadataTypeTestMixin,
+    GenericDocumentViewTestCase
+):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_metadata_type()
+        self._create_test_document_stub()
+
+    def test_document_type_relationship_view_no_permission(self):
+        response = self._request_test_document_type_relationship_edit_view()
+        self.assertEqual(response.status_code, 403)
+
+        self.test_document_type.refresh_from_db()
+        self.assertEqual(self.test_document_type.metadata.count(), 0)
+
+    def test_document_type_relationship_view_with_metadata_type_access(self):
+        self.grant_access(
+            obj=self.test_metadata_type,
+            permission=permission_metadata_type_edit
+        )
+
+        response = self._request_test_document_type_relationship_edit_view()
+        self.assertEqual(response.status_code, 403)
+
+        self.test_document_type.refresh_from_db()
+        self.assertEqual(self.test_document_type.metadata.count(), 0)
+
+    def test_document_type_relationship_view_with_document_type_access(self):
+        self.grant_access(
+            obj=self.test_document_type, permission=permission_document_type_edit
+        )
+
+        response = self._request_test_document_type_relationship_edit_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.test_document_type.refresh_from_db()
+        self.assertEqual(self.test_document_type.metadata.count(), 0)
+
+    def test_document_type_relationship_view_with_document_type_and_metadata_type_access(self):
+        self.grant_access(
+            obj=self.test_document_type, permission=permission_document_type_edit
+        )
+        self.grant_access(
+            obj=self.test_metadata_type,
+            permission=permission_metadata_type_edit
+        )
+
+        response = self._request_test_document_type_relationship_edit_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.test_document_type.refresh_from_db()
+        self.assertQuerysetEqual(
+            qs=self.test_document_type.metadata.values(
+                'metadata_type', 'required'
+            ),
+            values=[
+                {
+                    'metadata_type': self.test_metadata_type.pk,
+                    'required': True,
+                }
+            ], transform=dict
+        )
+
+
 class MetadataTypeViewTestCase(
     MetadataTypeViewTestMixin, MetadataTypeTestMixin, GenericViewTestCase
 ):
-
     def test_metadata_type_create_view_no_permission(self):
         metadata_type_count = MetadataType.objects.count()
 
@@ -878,12 +1135,14 @@ class MetadataTypeDocumentTypeViewTestCase(
     MetadataTypeViewTestMixin, MetadataTypeTestMixin,
     GenericDocumentViewTestCase
 ):
-    auto_upload_document = False
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_metadata_type()
+        self._create_test_document_stub()
 
     def test_metadata_type_relationship_view_no_permission(self):
-        self._create_test_metadata_type()
-        self.upload_document()
-
         response = self._request_test_metadata_type_relationship_edit_view()
         self.assertEqual(response.status_code, 403)
 
@@ -891,9 +1150,6 @@ class MetadataTypeDocumentTypeViewTestCase(
         self.assertEqual(self.test_document_type.metadata.count(), 0)
 
     def test_metadata_type_relationship_view_with_document_type_access(self):
-        self._create_test_metadata_type()
-        self.upload_document()
-
         self.grant_access(
             obj=self.test_document_type,
             permission=permission_document_type_edit
@@ -906,9 +1162,6 @@ class MetadataTypeDocumentTypeViewTestCase(
         self.assertEqual(self.test_document_type.metadata.count(), 0)
 
     def test_metadata_type_relationship_view_with_metadata_type_access(self):
-        self._create_test_metadata_type()
-        self.upload_document()
-
         self.grant_access(
             obj=self.test_metadata_type, permission=permission_metadata_type_edit
         )
@@ -920,9 +1173,6 @@ class MetadataTypeDocumentTypeViewTestCase(
         self.assertEqual(self.test_document_type.metadata.count(), 0)
 
     def test_metadata_type_relationship_view_with_metadata_type_and_document_type_access(self):
-        self._create_test_metadata_type()
-        self.upload_document()
-
         self.grant_access(
             obj=self.test_metadata_type, permission=permission_metadata_type_edit
         )
@@ -936,7 +1186,9 @@ class MetadataTypeDocumentTypeViewTestCase(
 
         self.test_document_type.refresh_from_db()
         self.assertQuerysetEqual(
-            qs=self.test_document_type.metadata.values('metadata_type', 'required'),
+            qs=self.test_document_type.metadata.values(
+                'metadata_type', 'required'
+            ),
             values=[
                 {
                     'metadata_type': self.test_metadata_type.pk,

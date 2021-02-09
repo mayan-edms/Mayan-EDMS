@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.apps import apps
 from django.contrib.auth import get_user_model
 from django.urls import reverse_lazy
@@ -12,7 +10,7 @@ from .permissions import permission_group_view, permission_user_view
 
 
 class DashboardWidgetUserTotal(DashboardWidgetNumeric):
-    icon_class = icon_user_list
+    icon = icon_user_list
     label = _('Total users')
     link = reverse_lazy(viewname='user_management:user_list')
 
@@ -24,11 +22,11 @@ class DashboardWidgetUserTotal(DashboardWidgetNumeric):
             permission=permission_user_view, user=request.user,
             queryset=get_user_model().objects.all()
         ).count()
-        return super(DashboardWidgetUserTotal, self).render(request)
+        return super().render(request)
 
 
 class DashboardWidgetGroupTotal(DashboardWidgetNumeric):
-    icon_class = icon_group_list
+    icon = icon_group_list
     label = _('Total groups')
     link = reverse_lazy(viewname='user_management:group_list')
 
@@ -43,4 +41,4 @@ class DashboardWidgetGroupTotal(DashboardWidgetNumeric):
             permission=permission_group_view, user=request.user,
             queryset=Group.objects.all()
         ).count()
-        return super(DashboardWidgetGroupTotal, self).render(request)
+        return super().render(request)

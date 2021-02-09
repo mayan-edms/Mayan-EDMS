@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from functools import reduce
 import logging
 import operator
@@ -22,7 +20,7 @@ from mayan.apps.permissions.models import StoredPermission
 from .exceptions import PermissionNotValidForClass
 from .classes import ModelPermission
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class AccessControlListManager(models.Manager):
@@ -113,7 +111,7 @@ class AccessControlListManager(models.Manager):
                     result.append(Q(**{field_lookup: acl_filter}))
 
                 # Case 5: Related field, has an inherited related field itself
-                # Bubble up permssion check
+                # Bubble up permission check
                 # Recurse and reduce
                 # TODO: Add relationship support: OR or AND
                 # TODO: OR for document pages, version, doc, and types
@@ -230,7 +228,7 @@ class AccessControlListManager(models.Manager):
                 ugettext(
                     'Object "%s" is not a model and cannot be checked for '
                     'access.'
-                ) % force_text(obj)
+                ) % force_text(s=obj)
             )
             return True
         else:

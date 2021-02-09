@@ -1,14 +1,14 @@
-from __future__ import absolute_import, unicode_literals
-
+import copy
+from contextlib import contextmanager
 import os
 
 from django.conf import settings
 from django.utils.encoding import force_bytes
 
-from mayan.apps.common.tests.mixins import EnvironmentTestCaseMixin
+from mayan.apps.testing.tests.mixins import EnvironmentTestCaseMixin
 from mayan.apps.storage.utils import fs_cleanup, NamedTemporaryFile
 
-from ..classes import Namespace, Setting
+from ..classes import SettingNamespace, Setting
 from ..utils import BaseSetting, SettingNamespaceSingleton
 
 from .literals import (
@@ -17,7 +17,7 @@ from .literals import (
 )
 
 
-class BoostrapSettingTestMixin(object):
+class BoostrapSettingTestMixin:
     def _create_test_bootstrap_singleton(self):
         self.test_globals = {}
         self.test_globals['BASE_DIR'] = ''
@@ -33,10 +33,10 @@ class BoostrapSettingTestMixin(object):
         )
 
 
-class SmartSettingsTestCaseMixin(object):
+class SmartSettingsTestCaseMixin:
     def setUp(self):
-        super(SmartSettingsTestCaseMixin, self).setUp()
-        Namespace.invalidate_cache_all()
+        super().setUp()
+        SettingNamespace.invalidate_cache_all()
 
         with NamedTemporaryFile(delete=False) as self.test_setting_config_file_object:
             settings.CONFIGURATION_FILEPATH = self.test_setting_config_file_object.name
@@ -45,7 +45,23 @@ class SmartSettingsTestCaseMixin(object):
 
     def tearDown(self):
         fs_cleanup(filename=self.test_setting_config_file_object.name)
-        super(SmartSettingsTestCaseMixin, self).tearDown()
+        SettingNamespace.invalidate_cache_all()
+        super().tearDown()
+
+    @contextmanager
+    def override_setting(self, global_name, method=None, value=None):
+        setting = Setting.get(global_name=global_name)
+        old_value = copy.copy(setting.value)
+        if method is None:
+            setting.set(value=value)
+        else:
+            current_value = setting.value
+            getattr(current_value, method)(value)
+            setting.set(value=current_value)
+        try:
+            yield
+        finally:
+            setting.set(value=old_value)
 
 
 class SmartSettingTestMixin(EnvironmentTestCaseMixin):
@@ -55,7 +71,7 @@ class SmartSettingTestMixin(EnvironmentTestCaseMixin):
     def tearDown(self):
         if self.test_config_file_object:
             fs_cleanup(filename=self.test_config_file_object.name)
-        super(SmartSettingTestMixin, self).tearDown()
+        super().tearDown()
 
     def _create_test_config_file(self, callback=None):
         if not self.test_setting_global_name:
@@ -76,7 +92,7 @@ class SmartSettingTestMixin(EnvironmentTestCaseMixin):
             )
             test_config_file_object.write(
                 force_bytes(
-                    Setting.serialize_value(value=test_config_entry)
+                    s=Setting.serialize_value(value=test_config_entry)
                 )
             )
             test_config_file_object.seek(0)
@@ -87,14 +103,14 @@ class SmartSettingTestMixin(EnvironmentTestCaseMixin):
 
     def _create_test_settings_namespace(self, **kwargs):
         try:
-            self.test_settings_namespace = Namespace.get(
+            self.test_settings_namespace = SettingNamespace.get(
                 name=TEST_NAMESPACE_NAME
             )
             self.test_settings_namespace.migration_class = None
             self.test_settings_namespace.version = None
             self.test_settings_namespace.__dict__.update(kwargs)
         except KeyError:
-            self.test_settings_namespace = Namespace(
+            self.test_settings_namespace = SettingNamespace(
                 label=TEST_NAMESPACE_LABEL, name=TEST_NAMESPACE_NAME,
                 **kwargs
             )
@@ -106,7 +122,7 @@ class SmartSettingTestMixin(EnvironmentTestCaseMixin):
         )
 
 
-class SmartSettingViewTestMixin(object):
+class SmartSettingViewTestMixin:
     def _request_namespace_list_view(self):
         return self.get(viewname='settings:namespace_list')
 

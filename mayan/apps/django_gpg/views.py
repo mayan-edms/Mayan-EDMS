@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 import logging
 
 from django.contrib import messages
@@ -7,12 +5,15 @@ from django.template import RequestContext
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.generics import (
+from mayan.apps.views.generics import (
     ConfirmView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectDetailView, SingleObjectDownloadView, SingleObjectListView,
     SimpleView
 )
+from mayan.apps.events.classes import EventManagerMethodAfter
+from mayan.apps.events.decorators import method_event
 
+from .events import event_key_downloaded
 from .forms import KeyDetailForm, KeySearchForm
 from .icons import (
     icon_key_setup, icon_keyserver_search, icon_private_keys,
@@ -26,18 +27,19 @@ from .permissions import (
     permission_key_upload, permission_key_view, permission_keyserver_query
 )
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class KeyDeleteView(SingleObjectDeleteView):
     model = Key
     object_permission = permission_key_delete
+    pk_url_kwarg = 'key_id'
 
     def get_extra_context(self):
-        return {'title': _('Delete key: %s') % self.get_object()}
+        return {'title': _('Delete key: %s') % self.object}
 
     def get_post_action_redirect(self):
-        if self.get_object().key_type == KEY_TYPE_PUBLIC:
+        if self.object.key_type == KEY_TYPE_PUBLIC:
             return reverse_lazy(viewname='django_gpg:key_public_list')
         else:
             return reverse_lazy(viewname='django_gpg:key_private_list')
@@ -47,17 +49,25 @@ class KeyDetailView(SingleObjectDetailView):
     form_class = KeyDetailForm
     model = Key
     object_permission = permission_key_view
+    pk_url_kwarg = 'key_id'
 
     def get_extra_context(self):
         return {
-            'title': _('Details for key: %s') % self.get_object(),
+            'title': _('Details for key: %s') % self.object,
         }
 
 
 class KeyDownloadView(SingleObjectDownloadView):
     model = Key
     object_permission = permission_key_download
+    pk_url_kwarg = 'key_id'
 
+    @method_event(
+        actor='request.user',
+        event_manager_class=EventManagerMethodAfter,
+        event=event_key_downloaded,
+        target='object'
+    )
     def get_download_file_object(self):
         return self.object.key_data
 
@@ -131,7 +141,7 @@ class KeyQueryView(SimpleView):
         return {
             'form': self.get_form(),
             'form_action': reverse(viewname='django_gpg:key_query_results'),
-            'submit_icon_class': icon_keyserver_search,
+            'submit_icon': icon_keyserver_search,
             'submit_label': _('Search'),
             'submit_method': 'GET',
             'title': _('Query key server'),
@@ -154,6 +164,11 @@ class KeyUploadView(SingleObjectCreateView):
     def get_extra_context(self):
         return {
             'title': _('Upload new key'),
+        }
+
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user
         }
 
 

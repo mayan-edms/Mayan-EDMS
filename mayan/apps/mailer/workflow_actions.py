@@ -1,19 +1,15 @@
-from __future__ import absolute_import, unicode_literals
-
 import logging
 
-from django.template import Template, Context
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.document_states.classes import WorkflowAction
-from mayan.apps.document_states.exceptions import WorkflowStateActionError
 
 from .models import UserMailer
 from .permissions import permission_user_mailer_use
 
 __all__ = ('EmailAction',)
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class EmailAction(WorkflowAction):
@@ -36,6 +32,30 @@ class EmailAction(WorkflowAction):
                 'required': True
             }
         },
+        'cc': {
+            'label': _('CC'),
+            'class': 'django.forms.CharField', 'kwargs': {
+                'help_text': _(
+                    'Address used in the "Bcc" header when sending the '
+                    'email. Can be multiple addresses '
+                    'separated by comma or semicolon. A template can be used '
+                    'to reference properties of the document.'
+                ),
+                'required': False
+            }
+        },
+        'bcc': {
+            'label': _('BCC'),
+            'class': 'django.forms.CharField', 'kwargs': {
+                'help_text': _(
+                    'Address used in the "Bcc" header when sending the '
+                    'email. Can be multiple addresses '
+                    'separated by comma or semicolon. A template can be used '
+                    'to reference properties of the document.'
+                ),
+                'required': False
+            }
+        },
         'subject': {
             'label': _('Subject'),
             'class': 'django.forms.CharField', 'kwargs': {
@@ -55,7 +75,9 @@ class EmailAction(WorkflowAction):
             }
         },
     }
-    field_order = ('mailing_profile', 'recipient', 'subject', 'body')
+    field_order = (
+        'mailing_profile', 'recipient', 'cc', 'bcc', 'subject', 'body'
+    )
     label = _('Send email')
     widgets = {
         'body': {
@@ -65,60 +87,42 @@ class EmailAction(WorkflowAction):
     permission = permission_user_mailer_use
 
     def execute(self, context):
-        try:
-            recipient = Template(self.form_data['recipient']).render(
-                context=Context(context)
-            )
-        except Exception as exception:
-            raise WorkflowStateActionError(
-                _('Recipient template error: %s') % exception
-            )
-        else:
-            logger.debug('Recipient result: %s', recipient)
+        recipient = self.render_field(
+            field_name='recipient', context=context
+        )
 
-        try:
-            subject = Template(self.form_data['subject']).render(
-                context=Context(context)
-            )
-        except Exception as exception:
-            raise WorkflowStateActionError(
-                _('Subject template error: %s') % exception
-            )
-        else:
-            logger.debug('Subject result: %s', subject)
+        cc = self.render_field(
+            field_name='cc', context=context
+        )
 
-        try:
-            body = Template(self.form_data['body']).render(
-                context=Context(context)
-            )
-        except Exception as exception:
-            raise WorkflowStateActionError(
-                _('Body template error: %s') % exception
-            )
-        else:
-            logger.debug('Body result: %s', body)
+        bcc = self.render_field(
+            field_name='bcc', context=context
+        )
+
+        subject = self.render_field(
+            field_name='subject', context=context
+        )
+
+        body = self.render_field(
+            field_name='body', context=context
+        )
 
         user_mailer = self.get_user_mailer()
         user_mailer.send(
-            to=recipient, subject=subject, body=body,
+            to=recipient, cc=cc, bcc=bcc, subject=subject, body=body
         )
 
-    def get_form_schema(self, request):
-        user = request.user
-        logger.debug('user: %s', user)
+    def get_form_schema(self, **kwargs):
+        result = super().get_form_schema(**kwargs)
 
         queryset = AccessControlList.objects.restrict_queryset(
             permission=self.permission, queryset=UserMailer.objects.all(),
-            user=user
+            user=kwargs['request'].user
         )
 
-        self.fields['mailing_profile']['kwargs']['queryset'] = queryset
+        result['fields']['mailing_profile']['kwargs']['queryset'] = queryset
 
-        return {
-            'field_order': self.field_order,
-            'fields': self.fields,
-            'widgets': self.widgets
-        }
+        return result
 
     def get_user_mailer(self):
         return UserMailer.objects.get(pk=self.form_data['mailing_profile'])

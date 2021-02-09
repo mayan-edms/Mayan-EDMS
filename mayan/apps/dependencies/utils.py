@@ -1,24 +1,17 @@
-from __future__ import unicode_literals
+from xmlrpc import client
 
-from django.utils.six.moves import xmlrpc_client
 from django.utils.translation import ugettext_lazy as _
 
 import mayan
 
 from .exceptions import DependenciesException
-from .literals import MAYAN_PYPI_NAME, PYPI_URL
-
-MESSAGE_NOT_LATEST = '''The version you are using is outdated. The latest
-version is %s'''
-MESSAGE_UNKNOWN_VERSION = '''It is not possible to determine the latest
-version available.'''
-MESSAGE_UNEXPECTED_ERROR = '''Unexpected error trying to determine the
-latest version available. Make sure your installation has a connection to
-the internet; %s'''
-MESSAGE_UP_TO_DATE = 'Your version is up-to-date.'
+from .literals import (
+    MAYAN_PYPI_NAME, MESSAGE_NOT_LATEST, MESSAGE_UNKNOWN_VERSION,
+    MESSAGE_UNEXPECTED_ERROR, MESSAGE_UP_TO_DATE, PYPI_URL
+)
 
 
-class PyPIClient(object):
+class PyPIClient:
     class NotLatestVersion(DependenciesException):
         """
         The installed version is not the latest available version
@@ -56,7 +49,7 @@ class PyPIClient(object):
         return message
 
     def get_server_proxy(self):
-        return xmlrpc_client.ServerProxy(PYPI_URL)
+        return client.ServerProxy(uri=PYPI_URL)
 
     def get_versions(self):
         server_proxy = self.get_server_proxy()

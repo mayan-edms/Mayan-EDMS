@@ -1,8 +1,9 @@
-from __future__ import unicode_literals
-
 import shutil
 
-from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH
+from mayan.apps.documents.literals import DOCUMENT_FILE_ACTION_PAGES_NEW
+from mayan.apps.documents.tests.literals import (
+    TEST_DOCUMENT_DESCRIPTION, TEST_SMALL_DOCUMENT_PATH
+)
 from mayan.apps.storage.utils import fs_cleanup, mkdtemp
 
 from ..literals import SOURCE_CHOICE_WEB_FORM, SOURCE_UNCOMPRESS_CHOICE_Y
@@ -16,9 +17,32 @@ from .literals import (
 )
 
 
-class DocumentUploadWizardViewTestMixin(object):
+class DocumentUploadIssueTestMixin:
+    def _request_test_source_create_view(self):
+        return self.post(
+            viewname='sources:setup_source_create', kwargs={
+                'source_type_name': SOURCE_CHOICE_WEB_FORM
+            }, data={
+                'enabled': True, 'label': 'test', 'uncompress': 'n'
+            }
+        )
+
+    def _request_test_source_edit_view(self):
+        return self.post(
+            viewname='documents:document_properties_edit', kwargs={
+                'document_id': self.test_document.pk
+            },
+            data={
+                'description': TEST_DOCUMENT_DESCRIPTION,
+                'label': self.test_document.label,
+                'language': self.test_document.language
+            }
+        )
+
+
+class DocumentUploadWizardViewTestMixin:
     def _request_upload_wizard_view(self, document_path=TEST_SMALL_DOCUMENT_PATH):
-        with open(document_path, mode='rb') as file_object:
+        with open(file=document_path, mode='rb') as file_object:
             return self.post(
                 viewname='sources:document_upload_interactive', kwargs={
                     'source_id': self.test_source.pk
@@ -36,9 +60,34 @@ class DocumentUploadWizardViewTestMixin(object):
         )
 
 
-class StagingFolderAPIViewTestMixin(object):
+class DocumentFileUploadViewTestMixin:
+    def _request_document_file_upload_view(self):
+        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+            return self.post(
+                viewname='sources:document_file_upload', kwargs={
+                    'document_id': self.test_document.pk,
+                    'source_id': self.test_source.pk,
+                }, data={
+                    'document-action': DOCUMENT_FILE_ACTION_PAGES_NEW,
+                    'source-file': file_object
+                }
+            )
+
+    def _request_document_file_upload_no_source_view(self):
+        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+            return self.post(
+                viewname='sources:document_file_upload', kwargs={
+                    'document_id': self.test_document.pk,
+                }, data={
+                    'document-action': DOCUMENT_FILE_ACTION_PAGES_NEW,
+                    'source-file': file_object
+                }
+            )
+
+
+class StagingFolderAPIViewTestMixin:
     def setUp(self):
-        super(StagingFolderTestMixin, self).setUp()
+        super().setUp()
         self.test_staging_folders = []
 
     def tearDown(self):
@@ -46,7 +95,7 @@ class StagingFolderAPIViewTestMixin(object):
             fs_cleanup(filename=test_staging_folder.folder_path)
             self.test_staging_folders.remove(test_staging_folder)
 
-        super(StagingFolderAPIViewTestMixin, self).tearDown()
+        super().tearDown()
 
     def _request_test_staging_folder_create_api_view(self):
         return self.post(
@@ -86,7 +135,7 @@ class StagingFolderAPIViewTestMixin(object):
         return self.get(viewname='rest_api:stagingfolder-list')
 
 
-class StagingFolderFileAPIViewTestMixin(object):
+class StagingFolderFileAPIViewTestMixin:
     def _request_test_staging_folder_file_delete_api_view(self):
         return self.delete(
             viewname='rest_api:stagingfolderfile-detail', kwargs={
@@ -112,9 +161,9 @@ class StagingFolderFileAPIViewTestMixin(object):
         )
 
 
-class StagingFolderTestMixin(object):
+class StagingFolderTestMixin:
     def setUp(self):
-        super(StagingFolderTestMixin, self).setUp()
+        super().setUp()
         self.test_staging_folders = []
 
     def tearDown(self):
@@ -122,7 +171,7 @@ class StagingFolderTestMixin(object):
             fs_cleanup(filename=test_staging_folder.folder_path)
             self.test_staging_folders.remove(test_staging_folder)
 
-        super(StagingFolderTestMixin, self).tearDown()
+        super().tearDown()
 
     def _create_test_staging_folder(self):
         self.test_staging_folder = StagingFolderSource.objects.create(
@@ -143,7 +192,7 @@ class StagingFolderTestMixin(object):
         )[0]
 
 
-class StagingFolderViewTestMixin(object):
+class StagingFolderViewTestMixin:
     def _request_test_staging_file_delete_view(self, staging_folder, staging_file):
         return self.post(
             viewname='sources:staging_file_delete', kwargs={
@@ -153,11 +202,11 @@ class StagingFolderViewTestMixin(object):
         )
 
 
-class SourceTestMixin(object):
+class SourceTestMixin:
     auto_create_test_source = True
 
     def setUp(self):
-        super(SourceTestMixin, self).setUp()
+        super().setUp()
         if self.auto_create_test_source:
             self._create_test_source()
 
@@ -168,12 +217,19 @@ class SourceTestMixin(object):
         )
 
 
-class SourceViewTestMixin(object):
+class SourceViewTestMixin:
     def _request_setup_source_list_view(self):
         return self.get(viewname='sources:setup_source_list')
 
     def _request_setup_source_check_get_view(self):
         return self.get(
+            viewname='sources:setup_source_check', kwargs={
+                'source_id': self.test_source.pk
+            }
+        )
+
+    def _request_setup_source_check_post_view(self):
+        return self.post(
             viewname='sources:setup_source_check', kwargs={
                 'source_id': self.test_source.pk
             }
@@ -207,7 +263,15 @@ class SourceViewTestMixin(object):
         )
 
 
-class WatchFolderTestMixin(object):
+class WatchFolderTestMixin:
+    def setUp(self):
+        super().setUp()
+        self.temporary_directory = mkdtemp()
+
+    def tearDown(self):
+        shutil.rmtree(self.temporary_directory)
+        super().tearDown()
+
     def _create_test_watchfolder(self):
         self.test_watch_folder = WatchFolderSource.objects.create(
             document_type=self.test_document_type,

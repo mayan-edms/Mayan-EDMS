@@ -1,52 +1,13 @@
-from __future__ import unicode_literals
-
 from django.contrib import messages
 from django.http import Http404
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.generics import FormView, SingleObjectListView
+from mayan.apps.views.generics import FormView, SingleObjectListView
 
-from .classes import Namespace, Setting
+from .classes import SettingNamespace, Setting
 from .forms import SettingForm
 from .permissions import permission_settings_edit, permission_settings_view
-
-
-class NamespaceDetailView(SingleObjectListView):
-    view_permission = permission_settings_view
-
-    def get_extra_context(self):
-        return {
-            'hide_object': True,
-            'object': self.get_namespace(),
-            'subtitle': _(
-                'Settings inherited from an environment variable take '
-                'precedence and cannot be changed in this view. '
-            ),
-            'title': _('Settings in namespace: %s') % self.get_namespace(),
-        }
-
-    def get_namespace(self):
-        try:
-            return Namespace.get(name=self.kwargs['namespace_name'])
-        except KeyError:
-            raise Http404(
-                _('Namespace: %s, not found') % self.kwargs['namespace_name']
-            )
-
-    def get_source_queryset(self):
-        return self.get_namespace().settings
-
-
-class NamespaceListView(SingleObjectListView):
-    extra_context = {
-        'hide_link': True,
-        'title': _('Setting namespaces'),
-    }
-    view_permission = permission_settings_view
-
-    def get_source_queryset(self):
-        return Namespace.get_all()
 
 
 class SettingEditView(FormView):
@@ -60,7 +21,7 @@ class SettingEditView(FormView):
             message=_('Setting updated successfully.'),
             request=self.request
         )
-        return super(SettingEditView, self).form_valid(form=form)
+        return super().form_valid(form=form)
 
     def get_extra_context(self):
         return {
@@ -81,3 +42,40 @@ class SettingEditView(FormView):
                 'namespace_name': self.get_object().namespace.name
             }
         )
+
+
+class SettingNamespaceDetailView(SingleObjectListView):
+    view_permission = permission_settings_view
+
+    def get_extra_context(self):
+        return {
+            'hide_object': True,
+            'object': self.get_namespace(),
+            'subtitle': _(
+                'Settings inherited from an environment variable take '
+                'precedence and cannot be changed in this view. '
+            ),
+            'title': _('Settings in namespace: %s') % self.get_namespace(),
+        }
+
+    def get_namespace(self):
+        try:
+            return SettingNamespace.get(name=self.kwargs['namespace_name'])
+        except KeyError:
+            raise Http404(
+                _('Namespace: %s, not found') % self.kwargs['namespace_name']
+            )
+
+    def get_source_queryset(self):
+        return self.get_namespace().settings
+
+
+class SettingNamespaceListView(SingleObjectListView):
+    extra_context = {
+        'hide_link': True,
+        'title': _('Setting namespaces'),
+    }
+    view_permission = permission_settings_view
+
+    def get_source_queryset(self):
+        return SettingNamespace.get_all()

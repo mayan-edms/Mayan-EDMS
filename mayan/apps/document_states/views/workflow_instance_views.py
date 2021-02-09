@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
@@ -8,10 +6,10 @@ from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.common.forms import DynamicForm
-from mayan.apps.common.generics import FormView, SingleObjectListView
-from mayan.apps.common.mixins import ExternalObjectMixin
 from mayan.apps.documents.models import Document
+from mayan.apps.views.forms import DynamicForm
+from mayan.apps.views.generics import FormView, SingleObjectListView
+from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from ..forms import WorkflowInstanceTransitionSelectForm
 from ..icons import icon_workflow_instance_detail, icon_workflow_template_list
@@ -21,19 +19,11 @@ from ..models import WorkflowInstance
 from ..permissions import permission_workflow_view
 
 
-class WorkflowInstanceListView(SingleObjectListView):
-    def dispatch(self, request, *args, **kwargs):
-        AccessControlList.objects.check_access(
-            obj=self.get_document(), permissions=(permission_workflow_view,),
-            user=request.user
-        )
-
-        return super(
-            WorkflowInstanceListView, self
-        ).dispatch(request, *args, **kwargs)
-
-    def get_document(self):
-        return get_object_or_404(klass=Document, pk=self.kwargs['pk'])
+class WorkflowInstanceListView(ExternalObjectViewMixin, SingleObjectListView):
+    external_object_permission = permission_workflow_view
+    external_object_pk_url_kwarg = 'document_id'
+    external_object_queryset = Document.valid
+    object_permission = permission_workflow_view
 
     def get_extra_context(self):
         return {
@@ -44,28 +34,22 @@ class WorkflowInstanceListView(SingleObjectListView):
                 'to have this document execute those workflows. '
             ),
             'no_results_title': _(
-                'There are no workflow for this document'
+                'There are no workflows for this document'
             ),
-            'object': self.get_document(),
+            'object': self.external_object,
             'title': _(
                 'Workflows for document: %s'
-            ) % self.get_document(),
+            ) % self.external_object,
         }
 
     def get_source_queryset(self):
-        return self.get_document().workflows.all()
+        return self.external_object.workflows.all()
 
 
-class WorkflowInstanceDetailView(SingleObjectListView):
-    def dispatch(self, request, *args, **kwargs):
-        AccessControlList.objects.check_access(
-            obj=self.get_workflow_instance().document,
-            permissions=(permission_workflow_view,), user=request.user
-        )
-
-        return super(
-            WorkflowInstanceDetailView, self
-        ).dispatch(request, *args, **kwargs)
+class WorkflowInstanceDetailView(ExternalObjectViewMixin, SingleObjectListView):
+    external_object_permission = permission_workflow_view
+    external_object_pk_url_kwarg = 'workflow_instance_id'
+    object_permission = permission_workflow_view
 
     def get_extra_context(self):
         return {
@@ -74,7 +58,7 @@ class WorkflowInstanceDetailView(SingleObjectListView):
             'no_results_icon': icon_workflow_instance_detail,
             'no_results_main_link': link_workflow_instance_transition.resolve(
                 context=RequestContext(
-                    dict_={'object': self.get_workflow_instance()},
+                    dict_={'object': self.external_object},
                     request=self.request
                 )
             ),
@@ -85,18 +69,26 @@ class WorkflowInstanceDetailView(SingleObjectListView):
             'no_results_title': _(
                 'There are no details for this workflow instance'
             ),
-            'object': self.get_workflow_instance().document,
+            'object': self.external_object.document,
             'title': _('Detail of workflow: %(workflow)s') % {
-                'workflow': self.get_workflow_instance()
+                'workflow': self.external_object
             },
-            'workflow_instance': self.get_workflow_instance(),
+            'workflow_instance': self.external_object,
         }
 
-    def get_source_queryset(self):
-        return self.get_workflow_instance().log_entries.order_by('-datetime')
+    def get_external_object_queryset(self):
+        document_queryset = AccessControlList.objects.restrict_queryset(
+            queryset=Document.valid.all(),
+            permission=permission_workflow_view,
+            user=self.request.user
+        )
 
-    def get_workflow_instance(self):
-        return get_object_or_404(klass=WorkflowInstance, pk=self.kwargs['pk'])
+        return WorkflowInstance.objects.filter(
+            document_id__in=document_queryset.values('pk')
+        )
+
+    def get_source_queryset(self):
+        return self.external_object.log_entries.order_by('-datetime')
 
 
 class WorkflowInstanceTransitionExecuteView(FormView):
@@ -177,19 +169,20 @@ class WorkflowInstanceTransitionExecuteView(FormView):
 
     def get_workflow_instance(self):
         return get_object_or_404(
-            klass=WorkflowInstance, pk=self.kwargs['workflow_instance_pk']
+            klass=WorkflowInstance.valid, pk=self.kwargs['workflow_instance_id']
         )
 
     def get_workflow_transition(self):
         return get_object_or_404(
             klass=self.get_workflow_instance().get_transition_choices(
                 _user=self.request.user
-            ), pk=self.kwargs['workflow_transition_pk']
+            ), pk=self.kwargs['workflow_transition_id']
         )
 
 
-class WorkflowInstanceTransitionSelectView(ExternalObjectMixin, FormView):
-    external_object_class = WorkflowInstance
+class WorkflowInstanceTransitionSelectView(ExternalObjectViewMixin, FormView):
+    external_object_pk_url_kwarg = 'workflow_instance_id'
+    external_object_queryset = WorkflowInstance.valid
     form_class = WorkflowInstanceTransitionSelectForm
     template_name = 'appearance/generic_form.html'
 
@@ -198,8 +191,8 @@ class WorkflowInstanceTransitionSelectView(ExternalObjectMixin, FormView):
             redirect_to=reverse(
                 viewname='document_states:workflow_instance_transition_execute',
                 kwargs={
-                    'workflow_instance_pk': self.external_object.pk,
-                    'workflow_transition_pk': form.cleaned_data['transition'].pk
+                    'workflow_instance_id': self.external_object.pk,
+                    'workflow_transition_id': form.cleaned_data['transition'].pk
                 }
             )
         )

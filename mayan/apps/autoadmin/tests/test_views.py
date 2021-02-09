@@ -1,17 +1,10 @@
-from __future__ import unicode_literals
-
-from mayan.apps.common.settings import setting_home_view
-from mayan.apps.common.tests.base import GenericViewTestCase
-from mayan.apps.common.tests.utils import mute_stdout
+from mayan.apps.testing.tests.base import GenericViewTestCase
+from mayan.apps.testing.tests.utils import mute_stdout
 
 from ..models import AutoAdminSingleton
 
 from .literals import TEST_FIRST_TIME_LOGIN_TEXT, TEST_MOCK_VIEW_TEXT
-
-
-class AutoAdminViewMixing(object):
-    def _request_home_view(self):
-        return self.get(viewname=setting_home_view.value, follow=True)
+from .mixins import AutoAdminViewMixing
 
 
 class AutoAdminViewCase(AutoAdminViewMixing, GenericViewTestCase):
@@ -20,7 +13,7 @@ class AutoAdminViewCase(AutoAdminViewMixing, GenericViewTestCase):
     auto_login_user = False
 
     def setUp(self):
-        super(AutoAdminViewCase, self).setUp()
+        super().setUp()
         with mute_stdout():
             AutoAdminSingleton.objects.create_autoadmin()
 

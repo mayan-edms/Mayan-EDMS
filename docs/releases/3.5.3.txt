@@ -1,0 +1,256 @@
+Version 3.5.3
+=============
+
+Released: November 11, 2020
+
+
+Changes
+-------
+
+Dependencies
+^^^^^^^^^^^^
+
+Update Dropzone from version 5.4.0 to 5.7.2. Fix column display issue in the
+dependency list views.
+
+
+Navigation
+^^^^^^^^^^
+
+The severity of the ``VariableDoesNotExist`` exception was lowered when
+resolving links. This exception does not is indicative of an error in the
+code. It is used to catch missing object during the view object resolution
+phase when resolving navigation links.
+
+
+Sources
+^^^^^^^
+
+The custom upload template used by the sources app was removed and the app
+template loader used instead.
+
+With the Dropzone upgrade, it is was possible to remove the upload size
+limit.
+
+The CSS of the Dropzone error message box was tweaked to widen it and increase
+the area of error message texts.
+
+An issue that resulted in new documents having two versions was fixed. This
+issue was introduced in ``865ae60fcef38e07bbf6d09bd6032017e3603698`` when
+support for adding document stubs in signal handlers was added. This
+issue causes new documents to contain two versions instead of one. The
+only consequence of this issue is extra storage usage, no data loss occurs.
+The extra document version can be safely deleted by using the document
+version revert feature. Doing this will delete the extra document version
+from the database and from the storage.
+
+
+Tags
+^^^^
+
+Ensure the document tag list view return ``DocumentTag`` instances and not
+regular ``Tag`` instances. This last ones include editing links not meant for
+the view.
+
+
+Workflows
+^^^^^^^^^
+
+The initial state column for workflow proxies was removed as it did not
+added valuable information but caused confusion in users.
+
+
+Other
+^^^^^
+
+Merge improvements and fixes from version 3.4.20.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrading process
+-----------------
+
+
+Upgrading from Mayan EDMS 3.2.x or earlier
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. Stop supervisord::
+
+    sudo systemctl stop supervisor
+
+#. Update the Redis configuration:
+
+   Configure Redis to discard data when it runs out of memory, not save its
+   database, and only keep 2 database:
+
+   .. code-block:: bash
+
+       echo "maxmemory-policy allkeys-lru" | sudo tee -a /etc/redis/redis.conf
+       echo "save \"\"" | sudo tee -a /etc/redis/redis.conf
+       echo "databases 2" | sudo tee -a /etc/redis/redis.conf
+       echo "requirepass |DEFAULT_REDIS_PASSWORD|" | sudo tee -a /etc/redis/redis.conf
+       sudo systemctl restart redis
+
+
+#. Install the Python 3 development OS package:
+
+   .. code-block:: bash
+
+    sudo apt-get install python3-dev
+
+
+#. Update the virtualenv to use Python 3:
+
+   .. code-block:: bash
+
+    sudo -u |DEFAULT_OS_USERNAME| virtualenv --clear /opt/mayan-edms -p /usr/bin/python3
+
+
+#. Create a home directory for the Mayan EDMS system user:
+
+   .. code-block:: bash
+
+    mkdir /home/mayan
+
+
+#. Grant ownership to the Mayan EDMS system user:
+
+   .. code-block:: bash
+
+    chown mayan:mayan /home/mayan
+
+#. Reinstall the Python client for PostgreSQL and Redis:
+
+   .. code-block:: bash
+
+       sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install psycopg2==|PYTHON_PSYCOPG2_VERSION| redis==|PYTHON_REDIS_VERSION|
+
+   .. note::
+
+       Platforms with the ARM CPU might also need additional requirements:
+
+       .. code-block:: bash
+
+           sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install psutil==|PYTHON_PSUTIL_VERSION|
+
+
+#. Reinstall the Python client for RabbitMQ if you are using RabbitMQ as a broker:
+
+   .. code-block:: bash
+
+       sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install amqp==|PYTHON_AMQP_VERSION|
+
+
+Upgrading from Mayan EDMS 3.4.x or 3.3.x
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. Stop supervisord::
+
+    sudo systemctl stop supervisor
+
+#. Upgrade to the latest pip version:
+
+   .. code-block:: bash
+
+       sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install -U pip
+
+
+#. Update the Redis configuration to enable password protection:
+
+   .. code-block:: bash
+
+       echo "requirepass mayanredispassword" | sudo tee -a /etc/redis/redis.conf
+       sudo systemctl restart redis
+
+
+#. Remove deprecated requirements:
+
+   .. code-block:: bash
+
+    sudo -u |DEFAULT_OS_USERNAME| curl |SOURCE_CODE_REPOSITORY|raw/master/removals.txt -o /tmp/removals.txt \
+    && sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| uninstall -y -r /tmp/removals.txt
+
+
+#. Update the Mayan EDMS Python package:
+
+   .. code-block:: bash
+
+    sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install mayan-edms==3.5.3
+
+   the requirements will also be updated automatically.
+
+
+#. Make a backup of your supervisord file:
+
+   .. code-block:: bash
+
+       sudo cp |MAYAN_SUPERVISOR_CONF| |MAYAN_SUPERVISOR_CONF|.bck
+
+
+#. Update the supervisord configuration file. Replace the environment
+   variables values show here with your respective settings. This step will refresh
+   the supervisord configuration file with the new queues and the latest
+   recommended layout:
+
+   .. code-block:: bash
+
+       sudo -u |DEFAULT_OS_USERNAME| MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=|DEFAULT_DATABASE_NAME| \
+       MAYAN_DATABASE_PASSWORD=|DEFAULT_DATABASE_PASSWORD| MAYAN_DATABASE_USER=|DEFAULT_DATABASE_USER| \
+       MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| platformtemplate supervisord | sudo sh -c "cat > |MAYAN_SUPERVISOR_CONF|"
+
+   or:
+
+   .. code-block:: bash
+
+       sudo -u |DEFAULT_OS_USERNAME| MAYAN_DATABASES=\"{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'|DEFAULT_DATABASE_NAME|','PASSWORD':'|DEFAULT_DATABASE_PASSWORD|','USER':'|DEFAULT_DATABASE_USER|','HOST':'127.0.0.1'}}\" \
+       MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| platformtemplate supervisord | sudo sh -c "cat > |MAYAN_SUPERVISOR_CONF|"
+
+
+#. Edit the supervisord configuration file and update any setting specific to your installation:
+
+   .. code-block:: bash
+
+       sudo vi |MAYAN_SUPERVISOR_CONF|
+
+
+#. Migrate existing database schema and static media files with:
+
+   .. code-block:: bash
+
+       sudo -u |DEFAULT_OS_USERNAME| MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=|DEFAULT_DATABASE_NAME| \
+       MAYAN_DATABASE_PASSWORD=|DEFAULT_DATABASE_PASSWORD| MAYAN_DATABASE_USER=|DEFAULT_DATABASE_USER| \
+       MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| performupgrade
+
+   or:
+
+   .. code-block:: bash
+
+       sudo -u |DEFAULT_OS_USERNAME| MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'|DEFAULT_DATABASE_NAME|','PASSWORD':'|DEFAULT_DATABASE_PASSWORD|','USER':'|DEFAULT_DATABASE_USER|','HOST':'127.0.0.1'}}" \
+       MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+      |MAYAN_BIN| performupgrade
+
+
+#. Start supervisord:
+
+   .. code-block:: bash
+
+       sudo systemctl start supervisor
+
+#. Clear the browser cache to avoid loading old web assets.
+
+The upgrade procedure is now complete.
+
+Issues closed
+-------------
+
+- :gitlab-issue:`895` Duplicate versions created on document upload via web
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

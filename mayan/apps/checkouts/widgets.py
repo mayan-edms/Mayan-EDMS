@@ -1,6 +1,3 @@
-from __future__ import unicode_literals
-
-from collections import OrderedDict
 import datetime
 
 from django import forms
@@ -8,7 +5,7 @@ from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.literals import TIME_DELTA_UNIT_CHOICES
-from mayan.apps.common.widgets import NamedMultiWidget
+from mayan.apps.views.widgets import NamedMultiWidget
 
 
 class SplitTimeDeltaWidget(NamedMultiWidget):
@@ -16,19 +13,17 @@ class SplitTimeDeltaWidget(NamedMultiWidget):
     A Widget that splits a timedelta input into two field: one for unit of
     time and another for the amount of units.
     """
-    def __init__(self, attrs=None):
-        widgets = OrderedDict()
-        widgets['unit'] = forms.widgets.Select(
+    subwidgets = {
+        'unit': forms.widgets.Select(
             attrs={'style': 'width: 8em;'}, choices=TIME_DELTA_UNIT_CHOICES
-        )
-        widgets['amount'] = forms.widgets.NumberInput(
+        ),
+        'amount': forms.widgets.NumberInput(
             attrs={
                 'maxlength': 4, 'style': 'width: 8em;',
                 'placeholder': _('Amount')
             }
         )
-
-        super(SplitTimeDeltaWidget, self).__init__(widgets=widgets, attrs=attrs)
+    }
 
     def decompress(self, value):
         return {

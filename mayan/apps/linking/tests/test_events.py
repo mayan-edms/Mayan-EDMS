@@ -1,9 +1,7 @@
-from __future__ import unicode_literals
-
 from actstream.models import Action
 
-from mayan.apps.common.tests.base import GenericViewTestCase
 from mayan.apps.documents.tests.base import DocumentTestMixin
+from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..permissions import (
     permission_smart_link_create, permission_smart_link_edit,
@@ -14,8 +12,11 @@ from ..events import event_smart_link_created, event_smart_link_edited
 from .mixins import SmartLinkTestMixin, SmartLinkViewTestMixin
 
 
-class SmartLinkTemplateEventsTestCase(DocumentTestMixin, SmartLinkTestMixin, SmartLinkViewTestMixin, GenericViewTestCase):
-    auto_upload_document = False
+class SmartLinkTemplateEventsTestCase(
+    DocumentTestMixin, SmartLinkTestMixin, SmartLinkViewTestMixin,
+    GenericViewTestCase
+):
+    auto_upload_test_document = False
 
     def test_smart_link_create_event(self):
         self.grant_permission(

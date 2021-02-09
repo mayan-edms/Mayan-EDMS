@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Māris Teivāns <maris.teivans@gmail.com>, 2019
+# Translators:
+# Māris Teivāns <maris.teivans@gmail.com>, 2019-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 01:37-0400\n"
-"PO-Revision-Date: 2020-02-21 05:39+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-12-01 13:17+0000\n"
+"Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,93 +19,217 @@ msgstr ""
 "Language: lv\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
-#: apps.py:11 settings.py:9
+#: apps.py:59 events.py:5 permissions.py:5 settings.py:7
 msgid "Appearance"
 msgstr "Izskats"
 
-#: dependencies.py:10
+#: dependencies.py:8
 msgid "Lato font"
 msgstr "Lato fonts"
 
-#: dependencies.py:14
+#: dependencies.py:12
 msgid "Bootstrap"
 msgstr "Bootstrap"
 
-#: dependencies.py:18
+#: dependencies.py:16
 msgid "Bootswatch"
 msgstr "Bootswatch"
 
-#: dependencies.py:32
+#: dependencies.py:30
 msgid "Fancybox"
 msgstr "Fancybox"
 
-#: dependencies.py:36
+#: dependencies.py:34
 msgid "FontAwesome"
 msgstr "FontAwesome"
 
-#: dependencies.py:40
+#: dependencies.py:38
 msgid "jQuery"
 msgstr "jQuery"
 
-#: dependencies.py:43
+#: dependencies.py:41
 msgid "JQuery Form"
 msgstr "JQuery veidlapa"
 
-#: dependencies.py:47
+#: dependencies.py:45
 msgid "jQuery Lazy Load"
 msgstr "jQuery Lazy Load"
 
-#: dependencies.py:51
+#: dependencies.py:49
 msgid "JQuery Match Height"
 msgstr "JQuery Match Height"
 
-#: dependencies.py:55
+#: dependencies.py:53
 msgid "Select 2"
 msgstr "Select 2"
 
-#: dependencies.py:59
+#: dependencies.py:57
 msgid "Toastr"
 msgstr "Toastr"
 
-#: dependencies.py:62
+#: dependencies.py:60
 msgid "URI.js"
 msgstr "URI.js"
 
-#: settings.py:14
+#: events.py:8
+msgid "Theme created"
+msgstr "Tēma ir izveidota"
+
+#: events.py:11
+msgid "Theme edited"
+msgstr "Tēma ir rediģēta"
+
+#: links.py:15
+msgid "Theme settings"
+msgstr "Tēmas iestatījumi"
+
+#: links.py:20
+msgid "Edit theme settings"
+msgstr "Rediģēt tēmas iestatījumus"
+
+#: links.py:27 views.py:47
+msgid "Create new theme"
+msgstr "Izveidot jaunu tēmu"
+
+#: links.py:33
+msgid "Delete"
+msgstr "Dzēst"
+
+#: links.py:39
+msgid "Edit"
+msgstr "Rediģēt"
+
+#: links.py:43 links.py:47 models.py:25 views.py:111
+msgid "Themes"
+msgstr "Tēmas"
+
+#: models.py:12
+msgid "A short text describing the theme."
+msgstr "Īss teksts, kas apraksta tēmu."
+
+#: models.py:13
+msgid "Label"
+msgstr "Etiķete"
+
+#: models.py:17
+msgid ""
+"The CSS stylesheet to change the appearance of the different user interface "
+"elements."
+msgstr "CSS stila lapa, lai mainītu dažādu lietotāja interfeisa elementu izskatu."
+
+#: models.py:19
+msgid "Stylesheet"
+msgstr "Stila lapa"
+
+#: models.py:24 models.py:60
+msgid "Theme"
+msgstr "Tēma"
+
+#: models.py:56
+msgid "User"
+msgstr "Lietotājs"
+
+#: models.py:64
+msgid "User theme setting"
+msgstr "Lietotāja tēmas iestatījums"
+
+#: models.py:65
+msgid "User theme settings"
+msgstr "Lietotāja tēmas iestatījumi"
+
+#: permissions.py:8
+msgid "Create new themes"
+msgstr "Izveidot jaunas tēmas"
+
+#: permissions.py:11
+msgid "Delete themes"
+msgstr "Dzēst tēmas"
+
+#: permissions.py:14
+msgid "Edit themes"
+msgstr "Rediģēt tēmas"
+
+#: permissions.py:17
+msgid "View existing themes"
+msgstr "Skatīt esošās tēmas"
+
+#: settings.py:12
 msgid "Maximum number of characters that will be displayed as the view title."
 msgstr "Maksimālais rakstzīmju skaits, kas tiks attēlots kā skata nosaukums."
 
-#: settings.py:21
+#: settings.py:19
 msgid ""
 "Position where the system message will be displayed. Options are: top-left, "
 "top-center, top-right, bottom-left, bottom-center, bottom-right."
 msgstr "Pozīcija, kur tiks parādīts sistēmas ziņojums. Iespējas ir: augšā pa kreisi, augšā centrā, augšā pa labi, apakšā pa kreisi, apakšā centrā, apakšā pa labi."
 
-#: templates/403.html:5 templates/403.html:9
-msgid "Insufficient permissions"
-msgstr "Nepietiekamas atļaujas"
+#: templates/403.html:5 templates/403.html:30
+msgid "Insufficient permission"
+msgstr "Nepietiekamas tiesības"
 
-#: templates/403.html:11
+#: templates/403.html:32
 msgid "You don't have enough permissions for this operation."
 msgstr "Jums nav pietiekamu atļauju šai darbībai."
 
-#: templates/404.html:5 templates/404.html:9
+#: templates/404.html:5 templates/404.html:30
 msgid "Page not found"
 msgstr "Lapa nav atrasta"
 
-#: templates/404.html:11
-msgid "Sorry, but the requested page could not be found."
-msgstr "Diemžēl pieprasīto lapu nevarēja atrast."
+#: templates/404.html:32
+msgid "The requested page could not be found."
+msgstr "Pieprasīto lapu nevarēja atrast."
 
-#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:56
+#: templates/404.html:40
+msgid "Possible reasons"
+msgstr "Iespējamie iemesli"
+
+#: templates/404.html:44
+msgid "The location of the item is incorrect."
+msgstr "Vienuma atrašanās vieta nav pareiza."
+
+#: templates/404.html:45
+msgid "The location is correct, but the item no longer exists."
+msgstr "Atrašanās vieta ir pareiza, taču vienums vairs nepastāv."
+
+#: templates/404.html:46
+msgid ""
+"The location is be correct, but your account does not have the required "
+"permission to access it."
+msgstr "Atrašanās vieta ir pareiza, taču jūsu kontam nav vajadzīgās atļaujas, lai tai piekļūtu."
+
+#: templates/500.html:5 templates/500.html:30
+#: templates/appearance/root.html:58
 msgid "Server error"
 msgstr "Servera kļūda"
 
-#: templates/500.html:11
-msgid ""
-"There's been an error. It's been reported to the site administrators via "
-"e-mail and should be fixed shortly. Thanks for your patience."
-msgstr "Radusies kļūda. Par to ir ziņots vietnes administratoriem, izmantojot e-pastu, un drīzumā tai būtu jābūt atrisinātai. Paldies par pacietību."
+#: templates/500.html:32
+msgid "There's been an unexpected error."
+msgstr "Notika negaidīta kļūda."
+
+#: templates/500.html:40
+msgid "What to do next?"
+msgstr "Ko darīt tālāk?"
+
+#: templates/500.html:44
+msgid "Refresh the page."
+msgstr "Atsvaidziniet lapu."
+
+#: templates/500.html:45
+msgid "Wait a bit. The system might be overloaded."
+msgstr "Pagaidiet mazliet. Sistēma var būt pārslogota."
+
+#: templates/500.html:46
+msgid "Contact your system administrator."
+msgstr "Sazinieties ar sistēmas administratoru."
+
+#: templates/500.html:47
+msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
+msgstr "Pārbaudiet, vai žurnālos nav ziņojumu ar tagiem \"ERROR\", \"CRITICAL\" vai \"FATAL\"."
+
+#: templates/500.html:48
+#, python-format
+msgid "Open a ticket using the <a href=\"%(issue_url)s\">issue tracker</a>."
+msgstr "Atveriet biļeti, izmantojot <a href=\"%(issue_url)s\">problēmu izsekotāju</a> ."
 
 #: templates/appearance/about.html:10
 msgid "About"
@@ -145,7 +270,7 @@ msgid ""
 "\n"
 "                It takes great effort to make %(project_title)s as feature-rich as it is.\n"
 "            "
-msgstr ""
+msgstr "\nLai padarītu %(project_title)s tikpat bagātu kā tas ir, ir jāpieliek lielas pūles."
 
 #: templates/appearance/about.html:111
 #, python-format
@@ -153,7 +278,7 @@ msgid ""
 "\n"
 "                If you use %(project_title)s please <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">make a donation %(icon_social_paypal)s</a>\n"
 "            "
-msgstr ""
+msgstr "\nJa izmantojat %(project_title)s, lūdzu, <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">veiciet ziedojumu %(icon_social_paypal)s</a>"
 
 #: templates/appearance/about.html:117
 #, python-format
@@ -169,7 +294,7 @@ msgid ""
 "\n"
 "                For questions check the <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
 "            "
-msgstr ""
+msgstr "\nJa rodas jautājumi, skatiet <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">dokumentāciju %(icon_documentation)s</a> ."
 
 #: templates/appearance/about.html:129
 #, python-format
@@ -185,28 +310,40 @@ msgid ""
 "\n"
 "                Spread the word. Talk to your friends and colleagues about how awesome %(project_title)s is!\n"
 "            "
-msgstr ""
+msgstr "\nIzplatiet vārdu. Runājiet ar draugiem un kolēģiem par to, cik satriecošs ir %(project_title)s!"
 
-#: templates/appearance/base.html:35 templates/appearance/base.html:59
+#: templates/appearance/base.html:43 templates/appearance/base.html:67
 msgid "Warning"
 msgstr "Brīdinājums"
 
-#: templates/appearance/base.html:49
+#: templates/appearance/base.html:57
 msgid "Click here to fix this."
-msgstr ""
+msgstr "Noklikšķiniet šeit, lai to labotu."
 
-#: templates/appearance/base.html:59
+#: templates/appearance/base.html:67
 msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."
 msgstr "Iestatījumi ir atjaunināti, restartējiet instalēšanu un atsvaidziniet pārlūku, lai izmaiņas stātos spēkā."
 
-#: templates/appearance/base.html:72
+#: templates/appearance/base.html:75
+#, python-format
+msgid ""
+"\n"
+"                                        Impersonating user \"%(user)s\".\n"
+"                                    "
+msgstr "\nUzdodas par lietotāju &quot;%(user)s&quot;."
+
+#: templates/appearance/base.html:78
+msgid "Click here when finished"
+msgstr "Kad esat pabeidzis, noklikšķiniet šeit"
+
+#: templates/appearance/base.html:92
 #: templates/appearance/generic_list_items_subtemplate.html:66
 msgid "Actions"
 msgstr "Darbības"
 
-#: templates/appearance/base.html:74
+#: templates/appearance/base.html:94
 #: templates/appearance/generic_list_items_subtemplate.html:68
 #: templates/appearance/list_toolbar.html:67
 msgid "Toggle Dropdown"
@@ -281,9 +418,13 @@ msgstr "Kopā (%(start)s - %(end)s no %(total)s) (lappuse %(page_number)s no %(t
 msgid "Total: %(total)s"
 msgstr "Kopā: %(total)s"
 
-#: templates/appearance/list_toolbar.html:16
+#: templates/appearance/list_toolbar.html:13
 msgid "Select/Deselect all"
 msgstr "Atlasīt / noņemt atlasi visiem"
+
+#: templates/appearance/list_toolbar.html:17
+msgid "Toggle list display mode"
+msgstr "Pārslēgt saraksta skata režīmu"
 
 #: templates/appearance/list_toolbar.html:60
 msgid ""
@@ -302,18 +443,45 @@ msgstr "Pārslēgt navigāciju"
 msgid "No results"
 msgstr "Nav rezultātu"
 
-#: templates/appearance/root.html:61
+#: templates/appearance/root.html:63
 msgid "Close"
 msgstr "Aizvērt"
 
-#: templates/appearance/root.html:71
+#: templates/appearance/root.html:73
 msgid "Server communication error"
 msgstr "Servera sakaru kļūda"
 
-#: templates/appearance/root.html:73
+#: templates/appearance/root.html:75
 msgid "Check you network connection and try again in a few moments."
 msgstr "Pārbaudiet tīkla savienojumu un pēc brīža mēģiniet vēlreiz."
 
-#: templatetags/appearance_tags.py:17
+#: templatetags/appearance_tags.py:44
 msgid "None"
 msgstr "Nav neviens"
+
+#: views.py:29
+msgid "Current user theme settings details"
+msgstr "Informācija par pašreizējo lietotāja tēmas iestatījumu"
+
+#: views.py:35
+msgid "Edit current user theme settings details"
+msgstr "Rediģēt pašreizējo lietotāja tēmas iestatījumu informāciju"
+
+#: views.py:69
+#, python-format
+msgid "Delete theme: %s"
+msgstr "Dzēst tēmu: %s"
+
+#: views.py:85
+#, python-format
+msgid "Edit theme: %s"
+msgstr "Rediģēt tēmu: %s"
+
+#: views.py:105
+msgid ""
+"Themes allow changing the visual appearance without requiring code changes."
+msgstr "Tēmas ļauj mainīt vizuālo izskatu, neprasot koda izmaiņas."
+
+#: views.py:109
+msgid "There are no themes"
+msgstr "Nav tēmu"

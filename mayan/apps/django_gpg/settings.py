@@ -1,27 +1,26 @@
-from __future__ import unicode_literals
-
-import os
-
-from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.smart_settings.classes import Namespace
+from mayan.apps.smart_settings.classes import SettingNamespace
 
-namespace = Namespace(label=_('Signatures'), name='django_gpg')
-
-setting_gpg_home = namespace.add_setting(
-    global_name='SIGNATURES_GPG_HOME',
-    default=os.path.join(settings.MEDIA_ROOT, 'gpg_home'),
-    help_text=_(
-        'Home directory used to store keys as well as configuration files.'
-    ),
-    is_path=True
+from .literals import (
+    DEFAULT_SIGNATURES_BACKEND, DEFAULT_DEFAULT_GPG_PATH,
+    DEFAULT_SIGNATURES_KEYSERVER
 )
-setting_gpg_path = namespace.add_setting(
-    global_name='SIGNATURES_GPG_PATH', default='/usr/bin/gpg1',
-    help_text=_('Path to the GPG binary.'), is_path=True
+
+namespace = SettingNamespace(label=_('Signatures'), name='django_gpg')
+
+setting_gpg_backend = namespace.add_setting(
+    default=DEFAULT_SIGNATURES_BACKEND,
+    global_name='SIGNATURES_BACKEND',
+    help_text=_(
+        'Full path to the backend to be used to handle keys and signatures.'
+    )
+)
+setting_gpg_backend_arguments = namespace.add_setting(
+    default=DEFAULT_DEFAULT_GPG_PATH,
+    global_name='SIGNATURES_BACKEND_ARGUMENTS',
 )
 setting_keyserver = namespace.add_setting(
-    global_name='SIGNATURES_KEYSERVER', default='pool.sks-keyservers.net',
+    default=DEFAULT_SIGNATURES_KEYSERVER, global_name='SIGNATURES_KEYSERVER',
     help_text=_('Keyserver used to query for keys.')
 )

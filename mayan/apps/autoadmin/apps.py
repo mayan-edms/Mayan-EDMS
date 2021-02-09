@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.conf import settings
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
@@ -15,7 +13,7 @@ class AutoAdminAppConfig(MayanAppConfig):
     verbose_name = _('Auto administrator')
 
     def ready(self):
-        super(AutoAdminAppConfig, self).ready()
+        super().ready()
 
         post_save.connect(
             dispatch_uid='autoadmin_handler_account_password_change',

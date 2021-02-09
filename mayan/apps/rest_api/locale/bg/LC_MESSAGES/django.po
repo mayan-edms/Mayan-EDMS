@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Lyudmil Antonov <lantonov.here@gmail.com>, 2019-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 01:42-0400\n"
-"PO-Revision-Date: 2020-02-11 14:44+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-12-09 08:58+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -18,24 +19,24 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:21 links.py:19 settings.py:8
+#: apps.py:23 links.py:17 settings.py:8
 msgid "REST API"
 msgstr "REST API"
 
-#: fields.py:33
+#: fields.py:30
 #, python-format
 msgid "Unable to find serializer class for: %s"
 msgstr "Не може да се намери клас на сериализатор за: %s"
 
-#: links.py:23
+#: links.py:21
 msgid "API Documentation (Swagger)"
 msgstr "Документация за API (Swagger)"
 
-#: links.py:29
+#: links.py:27
 msgid "API Documentation (ReDoc)"
 msgstr "Документация за API (ReDoc)"
 
-#: schemas.py:11
+#: schemas.py:9
 #, python-format
 msgid "%s API"
 msgstr "%s API"

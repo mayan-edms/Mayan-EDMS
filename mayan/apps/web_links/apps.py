@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
@@ -7,17 +5,22 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.html_widgets import TwoStateWidget
+from mayan.apps.common.classes import ModelCopy
 from mayan.apps.common.menus import (
-    menu_facet, menu_list_facet, menu_object, menu_secondary, menu_setup
+    menu_facet, menu_list_facet, menu_object, menu_related, menu_secondary,
+    menu_setup
 )
-from mayan.apps.events.classes import ModelEventType
+from mayan.apps.documents.links.document_type_links import (
+    link_document_type_list
+)
+from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list
 )
 from mayan.apps.navigation.classes import SourceColumn
+from mayan.apps.views.html_widgets import TwoStateWidget
 
-from .events import event_web_link_edited
+from .events import event_web_link_edited, event_web_link_navigated
 from .links import (
     link_document_type_web_links, link_document_web_link_list,
     link_web_link_create, link_web_link_delete, link_web_link_document_types,
@@ -33,14 +36,13 @@ from .permissions import (
 class WebLinksApp(MayanAppConfig):
     app_namespace = 'web_links'
     app_url = 'web_links'
-    has_rest_api = False
+    has_rest_api = True
     has_tests = True
     name = 'mayan.apps.web_links'
     verbose_name = _('Links')
 
     def ready(self):
-        super(WebLinksApp, self).ready()
-        from actstream import registry
+        super().ready()
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'
@@ -52,9 +54,20 @@ class WebLinksApp(MayanAppConfig):
         ResolvedWebLink = self.get_model(model_name='ResolvedWebLink')
         WebLink = self.get_model(model_name='WebLink')
 
+        EventModelRegistry.register(model=ResolvedWebLink)
+        EventModelRegistry.register(model=WebLink)
+
+        ModelCopy(
+            model=WebLink, bind_link=True, register_permission=True
+        ).add_fields(
+            field_names=(
+                'label', 'template', 'enabled', 'document_types',
+            ),
+        )
+
         ModelEventType.register(
             event_types=(
-                event_web_link_edited,
+                event_web_link_edited, event_web_link_navigated
             ), model=WebLink
         )
 
@@ -84,10 +97,12 @@ class WebLinksApp(MayanAppConfig):
             attribute='label', is_identifier=True, is_sortable=True,
             source=WebLink
         )
-        SourceColumn(
-            attribute='enabled', is_sortable=True, source=WebLink,
+        source_column_enabled = SourceColumn(
+            attribute='enabled', include_label=True, is_sortable=True,
+            source=WebLink,
             widget=TwoStateWidget
         )
+        source_column_enabled.add_exclude(source=ResolvedWebLink)
 
         menu_facet.bind_links(
             links=(link_document_web_link_list,),
@@ -117,6 +132,20 @@ class WebLinksApp(MayanAppConfig):
                 link_web_link_delete, link_web_link_edit
             ), sources=(ResolvedWebLink,)
         )
+        menu_related.bind_links(
+            links=(link_web_link_list,),
+            sources=(
+                DocumentType, 'documents:document_type_list',
+                'documents:document_type_create'
+            )
+        )
+        menu_related.bind_links(
+            links=(link_document_type_list,),
+            sources=(
+                WebLink, 'web_links:web_link_list',
+                'web_links:web_link_create'
+            )
+        )
         menu_secondary.bind_links(
             links=(link_web_link_list, link_web_link_create),
             sources=(
@@ -125,6 +154,3 @@ class WebLinksApp(MayanAppConfig):
             )
         )
         menu_setup.bind_links(links=(link_web_link_setup,))
-
-        registry.register(ResolvedWebLink)
-        registry.register(WebLink)

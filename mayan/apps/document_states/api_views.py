@@ -1,5 +1,4 @@
-from __future__ import absolute_import, unicode_literals
-
+from django.conf import settings
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.views.decorators.cache import cache_control, patch_cache_control
@@ -19,6 +18,7 @@ from .serializers import (
     NewWorkflowDocumentTypeSerializer, WorkflowDocumentTypeSerializer,
     WorkflowInstanceSerializer, WorkflowInstanceLogEntrySerializer,
     WorkflowSerializer, WorkflowStateSerializer, WorkflowTransitionSerializer,
+    WorkflowTransitionFieldSerializer,
     WritableWorkflowInstanceLogEntrySerializer, WritableWorkflowSerializer,
     WritableWorkflowTransitionSerializer
 )
@@ -38,7 +38,7 @@ class APIDocumentTypeWorkflowRuntimeProxyListView(generics.ListAPIView):
 
     def get_document_type(self):
         document_type = get_object_or_404(
-            klass=DocumentType, pk=self.kwargs['pk']
+            klass=DocumentType, pk=self.kwargs['document_type_id']
         )
 
         AccessControlList.objects.check_access(
@@ -71,7 +71,7 @@ class APIWorkflowDocumentTypeList(generics.ListCreateAPIView):
         if not self.request:
             return None
 
-        return super(APIWorkflowDocumentTypeList, self).get_serializer(*args, **kwargs)
+        return super().get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -83,7 +83,7 @@ class APIWorkflowDocumentTypeList(generics.ListCreateAPIView):
         """
         Extra context provided to the serializer class.
         """
-        context = super(APIWorkflowDocumentTypeList, self).get_serializer_context()
+        context = super().get_serializer_context()
         if self.kwargs:
             context.update(
                 {
@@ -103,7 +103,9 @@ class APIWorkflowDocumentTypeList(generics.ListCreateAPIView):
         else:
             permission_required = permission_workflow_edit
 
-        workflow = get_object_or_404(klass=Workflow, pk=self.kwargs['pk'])
+        workflow = get_object_or_404(
+            klass=Workflow, pk=self.kwargs['workflow_template_id']
+        )
 
         AccessControlList.objects.check_access(
             obj=workflow, permissions=(permission_required,),
@@ -118,7 +120,7 @@ class APIWorkflowDocumentTypeView(generics.RetrieveDestroyAPIView):
     delete: Remove a document type from the selected workflow.
     get: Returns the details of the selected workflow document type.
     """
-    lookup_url_kwarg = 'document_type_pk'
+    lookup_url_kwarg = 'document_type_id'
     mayan_object_permissions = {
         'GET': (permission_document_type_view,),
     }
@@ -131,7 +133,7 @@ class APIWorkflowDocumentTypeView(generics.RetrieveDestroyAPIView):
         """
         Extra context provided to the serializer class.
         """
-        context = super(APIWorkflowDocumentTypeView, self).get_serializer_context()
+        context = super().get_serializer_context()
         if self.kwargs:
             context.update(
                 {
@@ -155,7 +157,9 @@ class APIWorkflowDocumentTypeView(generics.RetrieveDestroyAPIView):
         else:
             permission_required = permission_workflow_edit
 
-        workflow = get_object_or_404(klass=Workflow, pk=self.kwargs['pk'])
+        workflow = get_object_or_404(
+            klass=Workflow, pk=self.kwargs['workflow_template_id']
+        )
 
         AccessControlList.objects.check_access(
             obj=workflow, permissions=(permission_required,),
@@ -176,6 +180,7 @@ class APIWorkflowImageView(generics.RetrieveAPIView):
     """
     get: Returns an image representation of the selected workflow.
     """
+    lookup_url_kwarg = 'workflow_template_id'
     mayan_object_permissions = {
         'GET': (permission_workflow_view,),
     }
@@ -195,7 +200,14 @@ class APIWorkflowImageView(generics.RetrieveAPIView):
             )
         )
 
-        cache_filename = task.get(timeout=WORKFLOW_IMAGE_TASK_TIMEOUT)
+        kwargs = {'timeout': WORKFLOW_IMAGE_TASK_TIMEOUT}
+        if settings.DEBUG:
+            # In debug more, task are run synchronously, causing this method
+            # to be called inside another task. Disable the check of nested
+            # tasks when using debug mode.
+            kwargs['disable_sync_subtasks'] = False
+
+        cache_filename = task.get(**kwargs)
         cache_file = self.get_object().cache_partition.get_file(filename=cache_filename)
         with cache_file.open() as file_object:
             response = HttpResponse(file_object.read(), content_type='image')
@@ -220,7 +232,7 @@ class APIWorkflowRuntimeProxyListView(generics.ListCreateAPIView):
         if not self.request:
             return None
 
-        return super(APIWorkflowRuntimeProxyListView, self).get_serializer(*args, **kwargs)
+        return super().get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -236,6 +248,7 @@ class APIWorkflowView(generics.RetrieveUpdateDestroyAPIView):
     patch: Edit the selected workflow.
     put: Edit the selected workflow.
     """
+    lookup_url_kwarg = 'workflow_template_id'
     mayan_object_permissions = {
         'DELETE': (permission_workflow_delete,),
         'GET': (permission_workflow_view,),
@@ -248,7 +261,7 @@ class APIWorkflowView(generics.RetrieveUpdateDestroyAPIView):
         if not self.request:
             return None
 
-        return super(APIWorkflowView, self).get_serializer(*args, **kwargs)
+        return super().get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -274,7 +287,7 @@ class APIWorkflowStateListView(generics.ListCreateAPIView):
         """
         Extra context provided to the serializer class.
         """
-        context = super(APIWorkflowStateListView, self).get_serializer_context()
+        context = super().get_serializer_context()
         if self.kwargs:
             context.update(
                 {
@@ -290,7 +303,9 @@ class APIWorkflowStateListView(generics.ListCreateAPIView):
         else:
             permission_required = permission_workflow_edit
 
-        workflow = get_object_or_404(klass=Workflow, pk=self.kwargs['pk'])
+        workflow = get_object_or_404(
+            klass=Workflow, pk=self.kwargs['workflow_template_id']
+        )
 
         AccessControlList.objects.check_access(
             obj=workflow, permissions=(permission_required,),
@@ -307,7 +322,7 @@ class APIWorkflowStateView(generics.RetrieveUpdateDestroyAPIView):
     patch: Edit the selected workflow state.
     put: Edit the selected workflow state.
     """
-    lookup_url_kwarg = 'state_pk'
+    lookup_url_kwarg = 'workflow_template_state_id'
     serializer_class = WorkflowStateSerializer
 
     def get_queryset(self):
@@ -317,7 +332,7 @@ class APIWorkflowStateView(generics.RetrieveUpdateDestroyAPIView):
         """
         Extra context provided to the serializer class.
         """
-        context = super(APIWorkflowStateView, self).get_serializer_context()
+        context = super().get_serializer_context()
         if self.kwargs:
             context.update(
                 {
@@ -333,7 +348,9 @@ class APIWorkflowStateView(generics.RetrieveUpdateDestroyAPIView):
         else:
             permission_required = permission_workflow_edit
 
-        workflow = get_object_or_404(klass=Workflow, pk=self.kwargs['pk'])
+        workflow = get_object_or_404(
+            klass=Workflow, pk=self.kwargs['workflow_template_id']
+        )
 
         AccessControlList.objects.check_access(
             obj=workflow, permissions=(permission_required,),
@@ -358,7 +375,7 @@ class APIWorkflowTransitionListView(generics.ListCreateAPIView):
         if not self.request:
             return None
 
-        return super(APIWorkflowTransitionListView, self).get_serializer(*args, **kwargs)
+        return super().get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -370,7 +387,7 @@ class APIWorkflowTransitionListView(generics.ListCreateAPIView):
         """
         Extra context provided to the serializer class.
         """
-        context = super(APIWorkflowTransitionListView, self).get_serializer_context()
+        context = super().get_serializer_context()
         if self.kwargs:
             context.update(
                 {
@@ -386,7 +403,9 @@ class APIWorkflowTransitionListView(generics.ListCreateAPIView):
         else:
             permission_required = permission_workflow_edit
 
-        workflow = get_object_or_404(klass=Workflow, pk=self.kwargs['pk'])
+        workflow = get_object_or_404(
+            klass=Workflow, pk=self.kwargs['workflow_template_id']
+        )
 
         AccessControlList.objects.check_access(
             obj=workflow, permissions=(permission_required,),
@@ -403,7 +422,7 @@ class APIWorkflowTransitionView(generics.RetrieveUpdateDestroyAPIView):
     patch: Edit the selected workflow transition.
     put: Edit the selected workflow transition.
     """
-    lookup_url_kwarg = 'transition_pk'
+    lookup_url_kwarg = 'workflow_template_transition_id'
 
     def get_queryset(self):
         return self.get_workflow().transitions.all()
@@ -412,7 +431,7 @@ class APIWorkflowTransitionView(generics.RetrieveUpdateDestroyAPIView):
         if not self.request:
             return None
 
-        return super(APIWorkflowTransitionView, self).get_serializer(*args, **kwargs)
+        return super().get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -424,7 +443,7 @@ class APIWorkflowTransitionView(generics.RetrieveUpdateDestroyAPIView):
         """
         Extra context provided to the serializer class.
         """
-        context = super(APIWorkflowTransitionView, self).get_serializer_context()
+        context = super().get_serializer_context()
         if self.kwargs:
             context.update(
                 {
@@ -440,7 +459,9 @@ class APIWorkflowTransitionView(generics.RetrieveUpdateDestroyAPIView):
         else:
             permission_required = permission_workflow_edit
 
-        workflow = get_object_or_404(klass=Workflow, pk=self.kwargs['pk'])
+        workflow = get_object_or_404(
+            klass=Workflow, pk=self.kwargs['workflow_template_id']
+        )
 
         AccessControlList.objects.check_access(
             obj=workflow, permissions=(permission_required,),
@@ -450,6 +471,134 @@ class APIWorkflowTransitionView(generics.RetrieveUpdateDestroyAPIView):
         return workflow
 
 
+# Workflow transition fields
+
+class APIWorkflowTransitionFieldListView(generics.ListCreateAPIView):
+    """
+    get: Returns a list of all the workflow transition fields.
+    post: Create a new workflow transition field.
+    """
+    serializer_class = WorkflowTransitionFieldSerializer
+
+    def get_instance_extra_data(self):
+        # This method is only called during POST, therefore filter only by
+        # edit permission.
+        # TODO: Add actor of the event when merged with version 4.0.
+        return {
+            'transition': self.get_workflow_transition()
+        }
+
+    def get_queryset(self):
+        return self.get_workflow_transition().fields.all()
+
+    def get_serializer(self, *args, **kwargs):
+        if not self.request:
+            return None
+
+        return super().get_serializer(*args, **kwargs)
+
+    def get_serializer_context(self):
+        """
+        Extra context provided to the serializer class.
+        """
+        context = super().get_serializer_context()
+        if self.kwargs:
+            context.update(
+                {
+                    'workflow': self.get_workflow(),
+                }
+            )
+
+        return context
+
+    def get_workflow(self):
+        if self.request.method == 'GET':
+            permission_required = permission_workflow_view
+        else:
+            permission_required = permission_workflow_edit
+
+        workflow = get_object_or_404(
+            klass=Workflow, pk=self.kwargs['workflow_template_id']
+        )
+
+        AccessControlList.objects.check_access(
+            obj=workflow, permissions=(permission_required,),
+            user=self.request.user
+        )
+
+        return workflow
+
+    def get_workflow_transition(self):
+        return get_object_or_404(
+            klass=self.get_workflow().transitions,
+            pk=self.kwargs['workflow_template_transition_id']
+        )
+
+    # TODO: Remove this after merge with version 4.0 as it is already
+    # includes in the API view class.
+    def perform_create(self, serializer):
+        if hasattr(self, 'get_instance_extra_data'):
+            serializer.validated_data.update(self.get_instance_extra_data())
+
+        return super().perform_create(serializer=serializer)
+
+
+class APIWorkflowTransitionFieldDetailView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    delete: Delete the selected workflow transition field.
+    get: Return the details of the selected workflow transition field.
+    patch: Edit the selected workflow transition field.
+    put: Edit the selected workflow transition field.
+    """
+    lookup_url_kwarg = 'workflow_template_transition_field_id'
+    serializer_class = WorkflowTransitionFieldSerializer
+
+    def get_queryset(self):
+        return self.get_workflow_transition().fields.all()
+
+    def get_serializer(self, *args, **kwargs):
+        if not self.request:
+            return None
+
+        return super().get_serializer(*args, **kwargs)
+
+    def get_serializer_context(self):
+        """
+        Extra context provided to the serializer class.
+        """
+        context = super().get_serializer_context()
+        if self.kwargs:
+            context.update(
+                {
+                    'workflow': self.get_workflow(),
+                }
+            )
+
+        return context
+
+    def get_workflow(self):
+        if self.request.method == 'GET':
+            permission_required = permission_workflow_view
+        else:
+            permission_required = permission_workflow_edit
+
+        workflow = get_object_or_404(
+            klass=Workflow, pk=self.kwargs['workflow_template_id']
+        )
+
+        AccessControlList.objects.check_access(
+            obj=workflow, permissions=(permission_required,),
+            user=self.request.user
+        )
+
+        return workflow
+
+    def get_workflow_transition(self):
+        return get_object_or_404(
+            klass=self.get_workflow().transitions,
+            pk=self.kwargs['workflow_template_transition_id']
+        )
+
 # Document workflow views
 
 
@@ -457,13 +606,15 @@ class APIWorkflowInstanceListView(generics.ListAPIView):
     """
     get: Returns a list of all the document workflows.
     """
-    serializer_class = WorkflowInstanceSerializer
     mayan_object_permissions = {
         'GET': (permission_workflow_view,),
     }
+    serializer_class = WorkflowInstanceSerializer
 
     def get_document(self):
-        document = get_object_or_404(klass=Document, pk=self.kwargs['pk'])
+        document = get_object_or_404(
+            klass=Document, pk=self.kwargs['document_id']
+        )
 
         AccessControlList.objects.check_access(
             obj=document, permissions=(permission_workflow_view,),
@@ -480,14 +631,16 @@ class APIWorkflowInstanceView(generics.RetrieveAPIView):
     """
     get: Return the details of the selected document workflow.
     """
-    lookup_url_kwarg = 'workflow_pk'
+    lookup_url_kwarg = 'workflow_instance_id'
     mayan_object_permissions = {
         'GET': (permission_workflow_view,),
     }
     serializer_class = WorkflowInstanceSerializer
 
     def get_document(self):
-        document = get_object_or_404(klass=Document, pk=self.kwargs['pk'])
+        document = get_object_or_404(
+            klass=Document, pk=self.kwargs['document_id']
+        )
 
         AccessControlList.objects.check_access(
             obj=document, permissions=(permission_workflow_view,),
@@ -506,7 +659,9 @@ class APIWorkflowInstanceLogEntryListView(generics.ListCreateAPIView):
     post: Transition a document workflow by creating a new document workflow log entry.
     """
     def get_document(self):
-        document = get_object_or_404(klass=Document, pk=self.kwargs['pk'])
+        document = get_object_or_404(
+            klass=Document, pk=self.kwargs['document_id']
+        )
 
         if self.request.method == 'GET':
             """
@@ -529,7 +684,7 @@ class APIWorkflowInstanceLogEntryListView(generics.ListCreateAPIView):
         if not self.request:
             return None
 
-        return super(APIWorkflowInstanceLogEntryListView, self).get_serializer(*args, **kwargs)
+        return super().get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -538,7 +693,7 @@ class APIWorkflowInstanceLogEntryListView(generics.ListCreateAPIView):
             return WritableWorkflowInstanceLogEntrySerializer
 
     def get_serializer_context(self):
-        context = super(APIWorkflowInstanceLogEntryListView, self).get_serializer_context()
+        context = super().get_serializer_context()
         if self.kwargs:
             context.update(
                 {
@@ -553,7 +708,7 @@ class APIWorkflowInstanceLogEntryListView(generics.ListCreateAPIView):
 
     def get_workflow_instance(self):
         workflow = get_object_or_404(
-            klass=self.get_document().workflows, pk=self.kwargs['workflow_pk']
+            klass=self.get_document().workflows, pk=self.kwargs['workflow_instance_id']
         )
 
         return workflow

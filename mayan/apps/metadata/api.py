@@ -1,8 +1,6 @@
-from __future__ import unicode_literals
-
 from django.shortcuts import get_object_or_404
 
-from mayan.apps.common.http import URL
+from mayan.apps.views.http import URL
 
 from .models import DocumentMetadata, MetadataType
 

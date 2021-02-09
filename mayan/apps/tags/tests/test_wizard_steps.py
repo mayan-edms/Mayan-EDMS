@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.permissions import permission_document_create
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
@@ -8,17 +6,17 @@ from mayan.apps.sources.tests.literals import (
     TEST_SOURCE_LABEL, TEST_SOURCE_UNCOMPRESS_N
 )
 
-from .mixins import TagTestMixin, TaggedDocumentUploadViewTestMixin
+from .mixins import TagTestMixin, TaggedDocumentUploadWizardStepViewTestMixin
 
 
 class TaggedDocumentUploadViewTestCase(
-    TaggedDocumentUploadViewTestMixin, TagTestMixin,
+    TaggedDocumentUploadWizardStepViewTestMixin, TagTestMixin,
     GenericDocumentViewTestCase
 ):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def setUp(self):
-        super(TaggedDocumentUploadViewTestCase, self).setUp()
+        super().setUp()
         self.test_source = WebFormSource.objects.create(
             enabled=True, label=TEST_SOURCE_LABEL,
             uncompress=TEST_SOURCE_UNCOMPRESS_N

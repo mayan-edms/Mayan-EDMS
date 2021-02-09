@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 import json
 
 from django import forms
@@ -9,57 +7,65 @@ from django.forms.formsets import formset_factory
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.forms import DynamicModelForm
+from mayan.apps.templating.fields import ModelTemplateField
+from mayan.apps.views.forms import DynamicModelForm, FilteredSelectionForm
 
 from .classes import WorkflowAction
 from .fields import WorfklowImageField
 from .models import (
-    Workflow, WorkflowState, WorkflowStateAction, WorkflowTransition
+    Workflow, WorkflowInstance, WorkflowState, WorkflowStateAction,
+    WorkflowTransition
 )
 
 
 class WorkflowActionSelectionForm(forms.Form):
     klass = forms.ChoiceField(
         choices=(), help_text=_('The action type for this action entry.'),
-        label=_('Action')
+        label=_('Action'), widget=forms.Select(attrs={'class': 'select2'})
     )
 
     def __init__(self, *args, **kwargs):
-        super(WorkflowActionSelectionForm, self).__init__(*args, **kwargs)
-
-        self.fields['klass'].choices = [
-            (
-                klass.id(), klass.label
-            ) for klass in WorkflowAction.get_all()
-        ]
+        super().__init__(*args, **kwargs)
+        self.fields['klass'].choices = WorkflowAction.get_choices()
 
 
 class WorkflowForm(forms.ModelForm):
     class Meta:
-        fields = ('label', 'internal_name')
+        fields = ('label', 'internal_name', 'auto_launch')
         model = Workflow
+
+
+class WorkflowMultipleSelectionForm(FilteredSelectionForm):
+    class Meta:
+        allow_multiple = True
+        field_name = 'workflows'
+        label = _('Workflows')
+        required = False
+        widget_attributes = {'class': 'select2'}
 
 
 class WorkflowStateActionDynamicForm(DynamicModelForm):
     class Meta:
-        fields = ('label', 'when', 'enabled', 'action_data')
+        fields = ('label', 'when', 'enabled', 'condition', 'action_data')
         model = WorkflowStateAction
         widgets = {'action_data': forms.widgets.HiddenInput}
 
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop('request')
         self.action_path = kwargs.pop('action_path')
-        result = super(
-            WorkflowStateActionDynamicForm, self
-        ).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         if self.instance.action_data:
-            for key, value in json.loads(self.instance.action_data).items():
+            for key, value in json.loads(s=self.instance.action_data).items():
                 self.fields[key].initial = value
 
-        return result
+        self.fields['condition'] = ModelTemplateField(
+            initial_help_text=self.fields['condition'].help_text,
+            label=self.fields['condition'].label, model=WorkflowInstance,
+            model_variable='workflow_instance', required=False
+        )
 
     def clean(self):
-        data = super(WorkflowStateActionDynamicForm, self).clean()
+        data = super().clean()
 
         # Consolidate the dynamic fields into a single JSON field called
         # 'action_data'.
@@ -79,11 +85,10 @@ class WorkflowStateActionDynamicForm(DynamicModelForm):
                 action_data[field_name] = action_data[field_name].pk
 
         data['action_data'] = action_data
-        data = import_string(self.action_path).clean(
+        data = import_string(dotted_path=self.action_path).clean(
             form_data=data, request=self.request
         )
-        self.action_path
-        data['action_data'] = json.dumps(action_data)
+        data['action_data'] = json.dumps(obj=action_data)
 
         return data
 
@@ -97,7 +102,7 @@ class WorkflowStateForm(forms.ModelForm):
 class WorkflowTransitionForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         workflow = kwargs.pop('workflow')
-        super(WorkflowTransitionForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.fields[
             'origin_state'
         ].queryset = self.fields[
@@ -109,9 +114,15 @@ class WorkflowTransitionForm(forms.ModelForm):
         ].queryset = self.fields[
             'destination_state'
         ].queryset.filter(workflow=workflow)
+
+        self.fields['condition'] = ModelTemplateField(
+            initial_help_text=self.fields['condition'].help_text,
+            label=self.fields['condition'].label, model=WorkflowInstance,
+            model_variable='workflow_instance', required=False
+        )
 
     class Meta:
-        fields = ('label', 'origin_state', 'destination_state')
+        fields = ('label', 'origin_state', 'destination_state', 'condition')
         model = WorkflowTransition
 
 
@@ -133,9 +144,7 @@ class WorkflowTransitionTriggerEventRelationshipForm(forms.Form):
     )
 
     def __init__(self, *args, **kwargs):
-        super(WorkflowTransitionTriggerEventRelationshipForm, self).__init__(
-            *args, **kwargs
-        )
+        super().__init__(*args, **kwargs)
 
         self.fields['namespace'].initial = self.initial['event_type'].namespace
         self.fields['label'].initial = self.initial['event_type'].label
@@ -164,7 +173,7 @@ class WorkflowTransitionTriggerEventRelationshipForm(forms.Form):
 
 
 WorkflowTransitionTriggerEventRelationshipFormSet = formset_factory(
-    WorkflowTransitionTriggerEventRelationshipForm, extra=0
+    form=WorkflowTransitionTriggerEventRelationshipForm, extra=0
 )
 
 
@@ -172,7 +181,7 @@ class WorkflowInstanceTransitionSelectForm(forms.Form):
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user')
         workflow_instance = kwargs.pop('workflow_instance')
-        super(WorkflowInstanceTransitionSelectForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.fields[
             'transition'
         ].queryset = workflow_instance.get_transition_choices(_user=user)
@@ -188,5 +197,5 @@ class WorkflowPreviewForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         instance = kwargs.pop('instance', None)
-        super(WorkflowPreviewForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.fields['workflow'].initial = instance

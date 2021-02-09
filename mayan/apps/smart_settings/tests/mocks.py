@@ -1,14 +1,12 @@
-from __future__ import absolute_import, unicode_literals
-
-from ..classes import NamespaceMigration
+from ..classes import SettingNamespaceMigration
 
 
-class TestNamespaceMigrationOne(NamespaceMigration):
+class TestNamespaceMigrationOne(SettingNamespaceMigration):
     def smart_settings_test_setting_0001(self, value):
         return '{}_0001'.format(value)
 
 
-class TestNamespaceMigrationTwo(NamespaceMigration):
+class TestNamespaceMigrationTwo(SettingNamespaceMigration):
     def smart_settings_test_setting_0001(self, value):
         return '{}_0001'.format(value)
 
@@ -16,11 +14,11 @@ class TestNamespaceMigrationTwo(NamespaceMigration):
         return '{}_0002'.format(value)
 
 
-class TestNamespaceMigrationInvalid(NamespaceMigration):
+class TestNamespaceMigrationInvalid(SettingNamespaceMigration):
     def smart_settings_test_setting(self, value):
         return 'invalid migration'
 
 
-class TestNamespaceMigrationInvalidDual(NamespaceMigration):
+class TestNamespaceMigrationInvalidDual(SettingNamespaceMigration):
     def smart_settings_test_setting_with_longer_name(self, value):
         return 'invalid migration'

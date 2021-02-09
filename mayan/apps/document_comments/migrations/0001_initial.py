@@ -1,11 +1,8 @@
-from __future__ import unicode_literals
-
 from django.db import models, migrations
 from django.conf import settings
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('documents', '0026_auto_20150729_2140'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),

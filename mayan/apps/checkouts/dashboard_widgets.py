@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.apps import apps
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
@@ -12,7 +10,7 @@ from .permissions import permission_document_check_out_detail_view
 
 
 class DashboardWidgetTotalCheckouts(DashboardWidgetNumeric):
-    icon_class = icon_dashboard_check_outs
+    icon = icon_dashboard_check_outs
     label = _('Checked out documents')
     link = reverse_lazy(viewname='checkouts:check_out_list')
 
@@ -33,4 +31,4 @@ class DashboardWidgetTotalCheckouts(DashboardWidgetNumeric):
             user=request.user
         )
         self.count = queryset.count()
-        return super(DashboardWidgetTotalCheckouts, self).render(request)
+        return super().render(request)

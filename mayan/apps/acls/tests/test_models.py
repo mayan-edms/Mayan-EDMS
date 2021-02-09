@@ -1,9 +1,7 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.core.exceptions import PermissionDenied
 from django.db import models
 
-from mayan.apps.common.tests.base import BaseTestCase
+from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..classes import ModelPermission
 from ..models import AccessControlList
@@ -12,12 +10,12 @@ from .mixins import ACLTestMixin
 
 
 class PermissionTestCase(ACLTestMixin, BaseTestCase):
-    auto_create_test_object = False
+    auto_create_acl_test_object = False
 
     def test_check_access_without_permissions(self):
-        self._setup_test_object()
+        self._create_acl_test_object()
 
-        with self.assertRaises(PermissionDenied):
+        with self.assertRaises(expected_exception=PermissionDenied):
             AccessControlList.objects.check_access(
                 obj=self.test_object,
                 permissions=(self.test_permission,),
@@ -25,7 +23,7 @@ class PermissionTestCase(ACLTestMixin, BaseTestCase):
             )
 
     def test_filtering_without_permissions(self):
-        self._setup_test_object()
+        self._create_acl_test_object()
 
         self.assertEqual(
             AccessControlList.objects.restrict_queryset(
@@ -36,7 +34,7 @@ class PermissionTestCase(ACLTestMixin, BaseTestCase):
         )
 
     def test_check_access_with_acl(self):
-        self._setup_test_object()
+        self._create_acl_test_object()
 
         self.grant_access(
             obj=self.test_object, permission=self.test_permission
@@ -51,7 +49,7 @@ class PermissionTestCase(ACLTestMixin, BaseTestCase):
             self.fail('PermissionDenied exception was not expected.')
 
     def test_filtering_with_permissions(self):
-        self._setup_test_object()
+        self._create_acl_test_object()
 
         self.grant_access(
             obj=self.test_object, permission=self.test_permission
@@ -164,6 +162,12 @@ class PermissionTestCase(ACLTestMixin, BaseTestCase):
             user=self._test_case_user,
         )
         self.assertTrue(self.test_object_child in result)
+
+    def test_method_get_absolute_url(self):
+        self._create_acl_test_object()
+        self._create_test_acl()
+
+        self.assertTrue(self.test_acl.get_absolute_url())
 
 
 class InheritedPermissionTestCase(ACLTestMixin, BaseTestCase):
@@ -306,8 +310,8 @@ class InheritedPermissionTestCase(ACLTestMixin, BaseTestCase):
 
 class ProxyModelPermissionTestCase(ACLTestMixin, BaseTestCase):
     def test_proxy_model_filtering_no_permission(self):
-        self._setup_test_object_base()
-        self._setup_test_object_proxy()
+        self._create_acl_test_object_base()
+        self._create_acl_test_object_proxy()
 
         proxy_object = self.TestModelProxy.objects.get(pk=self.test_object.pk)
 
@@ -320,8 +324,8 @@ class ProxyModelPermissionTestCase(ACLTestMixin, BaseTestCase):
         )
 
     def test_proxy_model_filtering_with_access(self):
-        self._setup_test_object_base()
-        self._setup_test_object_proxy()
+        self._create_acl_test_object_base()
+        self._create_acl_test_object_proxy()
 
         self.grant_access(
             obj=self.test_object, permission=self.test_permission

@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from mayan.apps.rest_api import generics
 
 from .models import Key
@@ -19,12 +17,18 @@ class APIKeyListView(generics.ListCreateAPIView):
     queryset = Key.objects.all()
     serializer_class = KeySerializer
 
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user
+        }
+
 
 class APIKeyView(generics.RetrieveDestroyAPIView):
     """
     delete: Delete the selected key.
     get: Return the details of the selected key.
     """
+    lookup_url_kwarg = 'key_id'
     mayan_object_permissions = {
         'DELETE': (permission_key_delete,),
         'GET': (permission_key_view,),

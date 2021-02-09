@@ -1,6 +1,4 @@
-from __future__ import unicode_literals
-
-from mayan.apps.common.tests.base import GenericViewTestCase
+from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..permissions import (
     permission_cache_purge, permission_cache_view
@@ -32,7 +30,7 @@ class CacheViewTestCase(
             response=response, text=self.test_cache.label, status_code=200
         )
 
-    def test_cache_purge_view_no_permissions(self):
+    def test_cache_purge_view_no_permission(self):
         self._create_test_cache()
         self._create_test_cache_partition()
         self._create_test_cache_partition_file()
@@ -60,7 +58,7 @@ class CacheViewTestCase(
 
         self.assertNotEqual(cache_total_size, self.test_cache.get_total_size())
 
-    def test_cache_multiple_purge_view_no_permissions(self):
+    def test_cache_multiple_purge_view_no_permission(self):
         self._create_test_cache()
         self._create_test_cache_partition()
         self._create_test_cache_partition_file()

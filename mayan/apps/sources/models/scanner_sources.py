@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import logging
 import subprocess
 
@@ -20,7 +18,7 @@ from ..settings import setting_scanimage_path
 from .base import InteractiveSource
 
 __all__ = ('SaneScanner',)
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class SaneScanner(InteractiveSource):
@@ -100,10 +98,11 @@ class SaneScanner(InteractiveSource):
                     'command_line': ' '.join(command_line),
                     'error_message': error_message
                 }
-                self.logs.create(message=message)
+                self.error_log.create(text=message)
                 raise SourceException(message)
             else:
                 stdout_file_object.seek(0)
+                self.error_log.all().delete()
                 return stdout_file_object
 
     def get_upload_file_object(self, form_data):

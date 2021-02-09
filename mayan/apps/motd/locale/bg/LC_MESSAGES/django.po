@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Lyudmil Antonov <lantonov.here@gmail.com>, 2019
+# Translators:
+# Lyudmil Antonov <lantonov.here@gmail.com>, 2019-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 01:41-0400\n"
-"PO-Revision-Date: 2019-10-17 09:05+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-10-02 20:05+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -18,23 +19,35 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:35 links.py:36 permissions.py:7
+#: apps.py:40 links.py:38 permissions.py:5
 msgid "Message of the day"
 msgstr "Съобщение на деня"
 
-#: apps.py:57 apps.py:61
+#: apps.py:77 apps.py:81
 msgid "None"
 msgstr "Няма"
 
-#: links.py:16 views.py:32
+#: events.py:5 models.py:40 views.py:123
+msgid "Messages"
+msgstr "Съобщения"
+
+#: events.py:8
+msgid "Message created"
+msgstr "Съобщението е създадено"
+
+#: events.py:11
+msgid "Message edited"
+msgstr "Съобщението е редактирано"
+
+#: links.py:14 views.py:31
 msgid "Create message"
 msgstr "Създаване на съобщение"
 
-#: links.py:22
+#: links.py:18 links.py:24
 msgid "Delete"
 msgstr "Изтрийте"
 
-#: links.py:27
+#: links.py:29
 msgid "Edit"
 msgstr "Редактиране"
 
@@ -74,23 +87,19 @@ msgstr "Дата и час до показване на това съобщен�
 msgid "End date time"
 msgstr "Крайни дата и час"
 
-#: models.py:40 views.py:80
-msgid "Messages"
-msgstr "Съобщения"
-
-#: permissions.py:10
+#: permissions.py:8
 msgid "Create messages"
 msgstr "Създаване на съобщения"
 
-#: permissions.py:13
+#: permissions.py:11
 msgid "Delete messages"
 msgstr "Изтриване на съобщения"
 
-#: permissions.py:16
+#: permissions.py:14
 msgid "Edit messages"
 msgstr "Редактиране на съобщения"
 
-#: permissions.py:19
+#: permissions.py:17
 msgid "View messages"
 msgstr "Преглед на съобщения"
 
@@ -100,21 +109,47 @@ msgstr "Съобщения за деня"
 
 #: views.py:45
 #, python-format
-msgid "Delete the message: %s?"
-msgstr "Изтриване на съобщението: %s?"
+msgid "Delete request performed on %(count)d message"
+msgstr "Изтриване на заявка, изпълнена на%(count)dсъобщение"
 
-#: views.py:58
+#: views.py:47
+#, python-format
+msgid "Delete request performed on %(count)d messages"
+msgstr "Изтриване на заявка, изпълнена на %(count)dсъобщения"
+
+#: views.py:54
+msgid "Delete the selected message?"
+msgid_plural "Delete the selected messages?"
+msgstr[0] "Да се изтрие ли избраното съобщение?"
+msgstr[1] "Да се изтрият ли избраните съобщения?"
+
+#: views.py:64
+#, python-format
+msgid "Delete message: %s?"
+msgstr "Изтриване на съобщение: %s?"
+
+#: views.py:75
+#, python-format
+msgid "Message \"%s\" deleted successfully."
+msgstr "Съобщението &quot;%s&quot; беше изтрито успешно."
+
+#: views.py:80
+#, python-format
+msgid "Error deleting message \"%(message)s\": %(error)s"
+msgstr "Грешка при изтриване на съобщение „%(message)s“: %(error)s"
+
+#: views.py:96
 #, python-format
 msgid "Edit message: %s"
 msgstr "Редактиране на съобщението: %s"
 
-#: views.py:75
+#: views.py:118
 msgid ""
 "Messages are displayed in the login view. You can use messages to convery "
 "information about your organzation, announcements or usage guidelines for "
 "your users."
 msgstr "Съобщенията се показват в екрана за вход. Можете да използвате съобщения, за да съхранявате информация за вашата организация, съобщения или указания за употреба за вашите потребители."
 
-#: views.py:79
+#: views.py:122
 msgid "No messages available"
 msgstr "Няма налични съобщения"

@@ -1,17 +1,15 @@
-from __future__ import unicode_literals
-
 from django.utils.encoding import force_text
 
 from rest_framework.exceptions import ParseError
 
 from mayan.apps.rest_api import generics
 
-from .classes import SearchModel
-from .mixins import SearchModelMixin
+from .api_view_mixins import SearchModelAPIViewMixin
+from .classes import SearchBackend, SearchModel
 from .serializers import SearchModelSerializer
 
 
-class APISearchView(SearchModelMixin, generics.ListAPIView):
+class APISearchView(SearchModelAPIViewMixin, generics.ListAPIView):
     """
     get: Perform a search operation
     """
@@ -26,22 +24,23 @@ class APISearchView(SearchModelMixin, generics.ListAPIView):
             self.mayan_object_permissions = {'GET': (search_model.permission,)}
 
         try:
-            queryset = search_model.search(
+            queryset = SearchBackend.get_instance().search(
+                search_model=search_model,
                 query_string=self.request.GET, user=self.request.user
             )
         except Exception as exception:
-            raise ParseError(force_text(exception))
+            raise ParseError(force_text(s=exception))
 
         return queryset
 
     def get_serializer(self, *args, **kwargs):
         if self.get_search_model_name():
-            return super(APISearchView, self).get_serializer(*args, **kwargs)
+            return super().get_serializer(*args, **kwargs)
         else:
             return None
 
 
-class APIAdvancedSearchView(SearchModelMixin, generics.ListAPIView):
+class APIAdvancedSearchView(SearchModelAPIViewMixin, generics.ListAPIView):
     """
     get: Perform an advanced search operation
     """
@@ -63,18 +62,19 @@ class APIAdvancedSearchView(SearchModelMixin, generics.ListAPIView):
             global_and_search = False
 
         try:
-            queryset = self.search_model.search(
+            queryset = SearchBackend.get_instance().search(
                 global_and_search=global_and_search,
-                query_string=self.request.GET, user=self.request.user
+                query_string=self.request.GET,
+                search_model=self.search_model, user=self.request.user
             )
         except Exception as exception:
-            raise ParseError(force_text(exception))
+            raise ParseError(force_text(s=exception))
 
         return queryset
 
     def get_serializer(self, *args, **kwargs):
         if self.get_search_model_name():
-            return super(APIAdvancedSearchView, self).get_serializer(*args, **kwargs)
+            return super().get_serializer(*args, **kwargs)
         else:
             return None
 
@@ -84,4 +84,8 @@ class APISearchModelList(generics.ListAPIView):
     get: Returns a list of all the available search models.
     """
     serializer_class = SearchModelSerializer
-    queryset = SearchModel.all()
+
+    def get_queryset(self):
+        # This changes after the initial startup as search models are
+        # automatically loaded.
+        return SearchModel.all()

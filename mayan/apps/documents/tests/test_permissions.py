@@ -1,9 +1,9 @@
-from __future__ import unicode_literals
-
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.permissions import permission_acl_edit
-from mayan.apps.acls.tests.mixins import ACLTestMixin
-from mayan.apps.common.tests.base import BaseTestCase
+from mayan.apps.acls.tests.mixins import (
+    ACLTestMixin, AccessControlListViewTestMixin
+)
+from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..models import DocumentType
 from ..permissions import permission_document_view
@@ -18,20 +18,18 @@ class DocumentTypeACLPermissionsTestCase(BaseTestCase):
 
 
 class DocumentTypeACLPermissionsViewTestCase(
-    ACLTestMixin, GenericDocumentViewTestCase
+    ACLTestMixin, AccessControlListViewTestMixin, GenericDocumentViewTestCase
 ):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
-    def test_document_type_acl_permission_view_test(self):
+    def test_document_type_acl_permission_view_with_access(self):
         self.test_object = self.test_document_type
         self._create_test_acl()
         self.grant_access(
             obj=self.test_object, permission=permission_acl_edit
         )
 
-        response = self.get(
-            viewname='acls:acl_permissions', kwargs={'pk': self.test_acl.pk}
-        )
+        response = self._request_test_acl_permission_list_get_view()
         self.assertContains(
             response=response, text=permission_document_view.label,
             status_code=200

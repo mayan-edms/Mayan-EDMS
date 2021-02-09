@@ -1,14 +1,12 @@
-from __future__ import unicode_literals
-
 from django.utils.encoding import force_text
 
-from mayan.apps.common.tests.base import BaseTestCase
 from mayan.apps.documents.tests.base import DocumentTestMixin
 from mayan.apps.documents.tests.literals import (
     TEST_DOCUMENT_DESCRIPTION, TEST_DOCUMENT_DESCRIPTION_EDITED,
     TEST_DOCUMENT_LABEL_EDITED, TEST_SMALL_DOCUMENT_PATH
 )
 from mayan.apps.metadata.models import MetadataType, DocumentTypeMetadataType
+from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..models import Index, IndexInstanceNode, IndexTemplateNode
 
@@ -72,13 +70,13 @@ class IndexTestCase(IndexTestMixin, DocumentTestMixin, BaseTestCase):
 
         level_year = self.test_index.node_templates.create(
             parent=self.test_index.template_root,
-            expression='{{ document.date_added|date:"Y" }}',
+            expression='{{ document.datetime_created|date:"Y" }}',
             link_documents=False
         )
 
         self.test_index.node_templates.create(
             parent=level_year,
-            expression='{{ document.date_added|date:"m" }}',
+            expression='{{ document.datetime_created|date:"m" }}',
             link_documents=True
         )
         # Index the document created by default
@@ -87,13 +85,13 @@ class IndexTestCase(IndexTestMixin, DocumentTestMixin, BaseTestCase):
         self.test_document.delete()
 
         # Uploading a new should not trigger an error
-        self.upload_document()
+        self._upload_test_document()
 
         self.assertEqual(
             list(IndexInstanceNode.objects.values_list('value', flat=True)),
             [
-                '', force_text(self.test_document.date_added.year),
-                '{:02}'.format(self.test_document.date_added.month)
+                '', force_text(s=self.test_document.datetime_created.year),
+                '{:02}'.format(self.test_document.datetime_created.month)
             ]
         )
 
@@ -107,8 +105,8 @@ class IndexTestCase(IndexTestMixin, DocumentTestMixin, BaseTestCase):
         values and two second levels with the same value but as separate
         children of each of the first levels. GitLab issue #391
         """
-        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
-            self.test_document_2 = self.test_document_type.new_document(
+        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+            self.test_document_2, document_file = self.test_document_type.new_document(
                 file_object=file_object
             )
 
@@ -133,8 +131,8 @@ class IndexTestCase(IndexTestMixin, DocumentTestMixin, BaseTestCase):
             set(IndexInstanceNode.objects.values_list('value', flat=True)),
             set(
                 [
-                    '', force_text(self.test_document_2.uuid), self.test_document_2.label,
-                    force_text(self.test_document.uuid), self.test_document.label
+                    '', force_text(s=self.test_document_2.uuid), self.test_document_2.label,
+                    force_text(s=self.test_document.uuid), self.test_document.label
                 ]
             )
         )
@@ -285,3 +283,8 @@ class IndexTestCase(IndexTestMixin, DocumentTestMixin, BaseTestCase):
         self.assertQuerysetEqual(
             instance_node.documents.all(), [repr(self.test_document)]
         )
+
+    def test_method_get_absolute_url(self):
+        self._create_test_index()
+
+        self.assertTrue(self.test_index.get_absolute_url())

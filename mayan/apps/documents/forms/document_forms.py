@@ -1,54 +1,17 @@
-from __future__ import absolute_import, unicode_literals
-
 import logging
 import os
 
 from django import forms
-from django.template.defaultfilters import filesizeformat
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.forms import DetailForm
+from mayan.apps.views.forms import DetailForm
 
-from ..fields import DocumentField
-from ..models import Document
-from ..literals import DEFAULT_ZIP_FILENAME, PAGE_RANGE_ALL, PAGE_RANGE_CHOICES
+from ..models.document_models import Document
 from ..settings import setting_language
 from ..utils import get_language, get_language_choices
 
-__all__ = (
-    'DocumentDownloadForm', 'DocumentForm', 'DocumentPreviewForm',
-    'DocumentPropertiesForm', 'DocumentPrintForm'
-)
-logger = logging.getLogger(__name__)
-
-
-class DocumentDownloadForm(forms.Form):
-    compressed = forms.BooleanField(
-        label=_('Compress'), required=False,
-        help_text=_(
-            'Download the document in the original format or in a compressed '
-            'manner. This option is selectable only when downloading one '
-            'document, for multiple documents, the bundle will always be '
-            'downloads as a compressed file.'
-        )
-    )
-    zip_filename = forms.CharField(
-        initial=DEFAULT_ZIP_FILENAME, label=_('Compressed filename'),
-        required=False,
-        help_text=_(
-            'The filename of the compressed file that will contain the '
-            'documents to be downloaded, if the previous option is selected.'
-        )
-    )
-
-    def __init__(self, *args, **kwargs):
-        self.queryset = kwargs.pop('queryset', None)
-        super(DocumentDownloadForm, self).__init__(*args, **kwargs)
-        if self.queryset.count() > 1:
-            self.fields['compressed'].initial = True
-            self.fields['compressed'].widget.attrs.update(
-                {'disabled': 'disabled'}
-            )
+__all__ = ('DocumentForm', 'DocumentPropertiesForm',)
+logger = logging.getLogger(name=__name__)
 
 
 class DocumentForm(forms.ModelForm):
@@ -62,7 +25,7 @@ class DocumentForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         document_type = kwargs.pop('document_type', None)
 
-        super(DocumentForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
         # Is a document (documents app edit) and has been saved (sources
         # app upload)?
@@ -129,15 +92,6 @@ class DocumentForm(forms.ModelForm):
         return filename
 
 
-class DocumentPreviewForm(forms.Form):
-    def __init__(self, *args, **kwargs):
-        document = kwargs.pop('instance', None)
-        super(DocumentPreviewForm, self).__init__(*args, **kwargs)
-        self.fields['document'].initial = document
-
-    document = DocumentField()
-
-
 class DocumentPropertiesForm(DetailForm):
     """
     Detail class form to display a document file based properties
@@ -147,8 +101,8 @@ class DocumentPropertiesForm(DetailForm):
 
         extra_fields = [
             {
-                'label': _('Date added'),
-                'field': 'date_added',
+                'label': _('Date created'),
+                'field': 'datetime_created',
                 'widget': forms.widgets.DateTimeInput
             },
             {'label': _('UUID'), 'field': 'uuid'},
@@ -158,44 +112,9 @@ class DocumentPropertiesForm(DetailForm):
             },
         ]
 
-        if document.latest_version:
-            extra_fields += (
-                {
-                    'label': _('File mimetype'),
-                    'field': lambda x: document.file_mimetype or _('None')
-                },
-                {
-                    'label': _('File encoding'),
-                    'field': lambda x: document.file_mime_encoding or _(
-                        'None'
-                    )
-                },
-                {
-                    'label': _('File size'),
-                    'field': lambda document: filesizeformat(
-                        document.size
-                    ) if document.size else '-'
-                },
-                {'label': _('Exists in storage'), 'field': 'exists'},
-                {
-                    'label': _('File path in storage'),
-                    'field': 'latest_version.file'
-                },
-                {'label': _('Checksum'), 'field': 'checksum'},
-                {'label': _('Pages'), 'field': 'page_count'},
-            )
-
         kwargs['extra_fields'] = extra_fields
-        super(DocumentPropertiesForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     class Meta:
         fields = ('document_type', 'description')
         model = Document
-
-
-class DocumentPrintForm(forms.Form):
-    page_group = forms.ChoiceField(
-        choices=PAGE_RANGE_CHOICES, initial=PAGE_RANGE_ALL,
-        widget=forms.RadioSelect
-    )
-    page_range = forms.CharField(label=_('Page range'), required=False)

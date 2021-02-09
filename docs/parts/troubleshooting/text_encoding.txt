@@ -1,0 +1,16 @@
+=============
+Text encoding
+=============
+
+Error: ``UnicodeEncodeError: 'ascii' codec can't encode characters in position ...``
+====================================================================================
+
+The operating system locale must support the Unicode character set. For Debian
+based distributions, modify the locale file ``/etc/default/locale``:
+
+.. code-block:: console
+
+    LANG="en_US.UTF-8"
+    LC_ALL="en_US.UTF-8"
+
+

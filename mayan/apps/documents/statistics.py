@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.apps import apps
 from django.utils import timezone
 from django.utils.encoding import force_text
@@ -13,21 +11,17 @@ from mayan.apps.mayan_statistics.classes import (
 
 from .permissions import permission_document_view
 
-MONTH_NAMES = [
-    _('January'), _('February'), _('March'), _('April'), _('May'),
-    _('June'), _('July'), _('August'), _('September'), _('October'),
-    _('November'), _('December')
-]
+from .literals import MONTH_NAMES
 
 
 def get_month_name(month_number):
-    return force_text(MONTH_NAMES[month_number - 1])
+    return force_text(s=MONTH_NAMES[month_number - 1])
 
 
 def new_documents_per_month():
     Document = apps.get_model(app_label='documents', model_name='Document')
 
-    qss = qsstats.QuerySetStats(Document.passthrough.all(), 'date_added')
+    qss = qsstats.QuerySetStats(Document.valid.all(), 'datetime_created')
 
     now = timezone.now().date()
     start = timezone.datetime(year=now.year, month=1, day=1).date()
@@ -43,12 +37,12 @@ def new_documents_per_month():
 
 
 def new_document_pages_per_month():
-    DocumentPage = apps.get_model(
-        app_label='documents', model_name='DocumentPage'
+    DocumentFilePage = apps.get_model(
+        app_label='documents', model_name='DocumentFilePage'
     )
 
     qss = qsstats.QuerySetStats(
-        DocumentPage.objects.all(), 'document_version__document__date_added'
+        DocumentFilePage.valid.all(), 'document_file__document__datetime_created'
     )
 
     now = timezone.now().date()
@@ -70,7 +64,7 @@ def new_documents_this_month(user=None):
     )
     Document = apps.get_model(app_label='documents', model_name='Document')
 
-    queryset = Document.objects.all()
+    queryset = Document.valid.all()
 
     if user:
         queryset = AccessControlList.objects.restrict_queryset(
@@ -78,17 +72,17 @@ def new_documents_this_month(user=None):
             queryset=queryset
         )
 
-    qss = qsstats.QuerySetStats(queryset, 'date_added')
+    qss = qsstats.QuerySetStats(queryset, 'datetime_created')
     return qss.this_month() or '0'
 
 
-def new_document_versions_per_month():
-    DocumentVersion = apps.get_model(
-        app_label='documents', model_name='DocumentVersion'
+def new_document_files_per_month():
+    DocumentFile = apps.get_model(
+        app_label='documents', model_name='DocumentFile'
     )
 
     qss = qsstats.QuerySetStats(
-        DocumentVersion.objects.all(), 'document__date_added'
+        DocumentFile.valid.all(), 'document__datetime_created'
     )
 
     now = timezone.now().date()
@@ -96,7 +90,7 @@ def new_document_versions_per_month():
 
     return {
         'series': {
-            'Versions': map(
+            'Files': map(
                 lambda x: {get_month_name(month_number=x[0].month): x[1]},
                 qss.time_series(start=start, end=now, interval='months')
             )
@@ -108,11 +102,11 @@ def new_document_pages_this_month(user=None):
     AccessControlList = apps.get_model(
         app_label='acls', model_name='AccessControlList'
     )
-    DocumentPage = apps.get_model(
-        app_label='documents', model_name='DocumentPage'
+    DocumentFilePage = apps.get_model(
+        app_label='documents', model_name='DocumentFilePage'
     )
 
-    queryset = DocumentPage.objects.all()
+    queryset = DocumentFilePage.valid.all()
 
     if user:
         queryset = AccessControlList.objects.restrict_queryset(
@@ -121,7 +115,7 @@ def new_document_pages_this_month(user=None):
         )
 
     qss = qsstats.QuerySetStats(
-        queryset, 'document_version__document__date_added'
+        queryset, 'document_file__document__datetime_created'
     )
     return qss.this_month() or '0'
 
@@ -129,7 +123,7 @@ def new_document_pages_this_month(user=None):
 def total_document_per_month():
     Document = apps.get_model(app_label='documents', model_name='Document')
 
-    qss = qsstats.QuerySetStats(Document.objects.all(), 'date_added')
+    qss = qsstats.QuerySetStats(Document.valid.all(), 'datetime_created')
     now = timezone.now()
 
     result = []
@@ -159,13 +153,13 @@ def total_document_per_month():
     }
 
 
-def total_document_version_per_month():
-    DocumentVersion = apps.get_model(
-        app_label='documents', model_name='DocumentVersion'
+def total_document_file_per_month():
+    DocumentFile = apps.get_model(
+        app_label='documents', model_name='DocumentFile'
     )
 
     qss = qsstats.QuerySetStats(
-        DocumentVersion.objects.all(), 'document__date_added'
+        DocumentFile.valid.all(), 'document__datetime_created'
     )
     now = timezone.now()
 
@@ -191,18 +185,18 @@ def total_document_version_per_month():
 
     return {
         'series': {
-            'Versions': result
+            'Files': result
         }
     }
 
 
 def total_document_page_per_month():
-    DocumentPage = apps.get_model(
-        app_label='documents', model_name='DocumentPage'
+    DocumentFilePage = apps.get_model(
+        app_label='documents', model_name='DocumentFilePage'
     )
 
     qss = qsstats.QuerySetStats(
-        DocumentPage.objects.all(), 'document_version__document__date_added'
+        DocumentFilePage.valid.all(), 'document_file__document__datetime_created'
     )
     now = timezone.now()
 
@@ -243,9 +237,9 @@ namespace.add_statistic(
 )
 namespace.add_statistic(
     klass=StatisticLineChart,
-    slug='new-document-versions-per-month',
-    label=_('New document versions per month'),
-    func=new_document_versions_per_month,
+    slug='new-document-files-per-month',
+    label=_('New document files per month'),
+    func=new_document_files_per_month,
     minute='0'
 )
 namespace.add_statistic(
@@ -264,9 +258,9 @@ namespace.add_statistic(
 )
 namespace.add_statistic(
     klass=StatisticLineChart,
-    slug='total-document-versions-at-each-month',
-    label=_('Total document versions at each month'),
-    func=total_document_version_per_month,
+    slug='total-document-files-at-each-month',
+    label=_('Total document files at each month'),
+    func=total_document_file_per_month,
     minute='0'
 )
 namespace.add_statistic(

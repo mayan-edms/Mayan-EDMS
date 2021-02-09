@@ -1,12 +1,10 @@
-from __future__ import unicode_literals
-
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 
-from mayan.apps.common.tests.base import GenericViewTestCase
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 from mayan.apps.metadata.permissions import permission_document_metadata_edit
 from mayan.apps.metadata.tests.mixins import MetadataTypeTestMixin
+from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..permissions import (
     permission_group_create, permission_group_delete, permission_group_edit,
@@ -160,7 +158,7 @@ class GroupViewsTestCase(
 
 class SuperUserViewTestCase(UserViewTestMixin, GenericViewTestCase):
     def setUp(self):
-        super(SuperUserViewTestCase, self).setUp()
+        super().setUp()
         self._create_test_superuser()
 
     def test_superuser_delete_view_with_access(self):
@@ -213,7 +211,7 @@ class UserViewTestCase(UserViewTestMixin, GenericViewTestCase):
 
         self.assertEqual(get_user_model().objects.count(), user_count + 1)
 
-    def test_user_delete_view_no_access(self):
+    def test_user_delete_view_no_permission(self):
         self._create_test_user()
 
         user_count = get_user_model().objects.count()
@@ -235,7 +233,7 @@ class UserViewTestCase(UserViewTestMixin, GenericViewTestCase):
 
         self.assertEqual(get_user_model().objects.count(), user_count - 1)
 
-    def test_user_multiple_delete_view_no_access(self):
+    def test_user_multiple_delete_view_no_permission(self):
         self._create_test_user()
 
         user_count = get_user_model().objects.count()
@@ -314,11 +312,37 @@ class UserGroupViewTestCase(
         )
 
 
+class UserOptionsViewTestCase(
+    UserViewTestMixin, GenericViewTestCase
+):
+    def test_user_options_view_no_permission(self):
+        self._create_test_user()
+
+        response = self._request_test_user_options_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.test_user.user_options.refresh_from_db()
+        self.assertFalse(self.test_user.user_options.block_password_change)
+
+    def test_user_options_view_with_access(self):
+        self._create_test_user()
+
+        self.grant_access(
+            obj=self.test_user, permission=permission_user_edit
+        )
+
+        response = self._request_test_user_options_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.test_user.user_options.refresh_from_db()
+        self.assertTrue(self.test_user.user_options.block_password_change)
+
+
 class MetadataLookupIntegrationTestCase(
     MetadataTypeTestMixin, GenericDocumentViewTestCase
 ):
     def setUp(self):
-        super(MetadataLookupIntegrationTestCase, self).setUp()
+        super().setUp()
         self._create_test_metadata_type()
         self.test_document_type.metadata.create(
             metadata_type=self.test_metadata_type
@@ -342,7 +366,7 @@ class MetadataLookupIntegrationTestCase(
 
         response = self.get(
             viewname='metadata:metadata_edit', kwargs={
-                'pk': self.test_document.pk
+                'document_id': self.test_document.pk
             }
         )
         self.assertContains(
@@ -368,7 +392,7 @@ class MetadataLookupIntegrationTestCase(
 
         response = self.get(
             viewname='metadata:metadata_edit', kwargs={
-                'pk': self.test_document.pk
+                'document_id': self.test_document.pk
             }
         )
 

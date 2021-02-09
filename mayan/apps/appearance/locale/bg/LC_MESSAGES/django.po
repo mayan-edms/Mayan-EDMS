@@ -3,13 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Lyudmil Antonov <lantonov.here@gmail.com>, 2019-2020
+# Roberto Rosario, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 01:37-0400\n"
-"PO-Revision-Date: 2020-02-24 13:32+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-10-02 19:21+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -18,93 +20,217 @@ msgstr ""
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:11 settings.py:9
+#: apps.py:59 events.py:5 permissions.py:5 settings.py:7
 msgid "Appearance"
 msgstr "Изглед"
 
-#: dependencies.py:10
+#: dependencies.py:8
 msgid "Lato font"
 msgstr "Шрифт Lato"
 
-#: dependencies.py:14
+#: dependencies.py:12
 msgid "Bootstrap"
 msgstr "Bootstrap"
 
-#: dependencies.py:18
+#: dependencies.py:16
 msgid "Bootswatch"
 msgstr "Bootswatch"
 
-#: dependencies.py:32
+#: dependencies.py:30
 msgid "Fancybox"
 msgstr "Fancybox"
 
-#: dependencies.py:36
+#: dependencies.py:34
 msgid "FontAwesome"
 msgstr "FontAwesome"
 
-#: dependencies.py:40
+#: dependencies.py:38
 msgid "jQuery"
 msgstr "jQuery"
 
-#: dependencies.py:43
+#: dependencies.py:41
 msgid "JQuery Form"
 msgstr "jQuery формуляр"
 
-#: dependencies.py:47
+#: dependencies.py:45
 msgid "jQuery Lazy Load"
 msgstr "jQuery мързеливо зареждане"
 
-#: dependencies.py:51
+#: dependencies.py:49
 msgid "JQuery Match Height"
 msgstr "jQuery съответствие на височина"
 
-#: dependencies.py:55
+#: dependencies.py:53
 msgid "Select 2"
 msgstr "Избиране 2"
 
-#: dependencies.py:59
+#: dependencies.py:57
 msgid "Toastr"
 msgstr "Toastr"
 
-#: dependencies.py:62
+#: dependencies.py:60
 msgid "URI.js"
 msgstr "URI.js"
 
-#: settings.py:14
+#: events.py:8
+msgid "Theme created"
+msgstr "Темата е създадена"
+
+#: events.py:11
+msgid "Theme edited"
+msgstr "Темата е редактирана"
+
+#: links.py:15
+msgid "Theme settings"
+msgstr "Настройки на темата"
+
+#: links.py:20
+msgid "Edit theme settings"
+msgstr "Редактирайте настройките на темата"
+
+#: links.py:27 views.py:47
+msgid "Create new theme"
+msgstr "Създайте нова тема"
+
+#: links.py:33
+msgid "Delete"
+msgstr "Изтрийте"
+
+#: links.py:39
+msgid "Edit"
+msgstr "Редактиране"
+
+#: links.py:43 links.py:47 models.py:25 views.py:111
+msgid "Themes"
+msgstr "Теми"
+
+#: models.py:12
+msgid "A short text describing the theme."
+msgstr "Кратък текст, описващ темата."
+
+#: models.py:13
+msgid "Label"
+msgstr "Етикет"
+
+#: models.py:17
+msgid ""
+"The CSS stylesheet to change the appearance of the different user interface "
+"elements."
+msgstr "CSS таблицата със стилове за промяна на външния вид на различните елементи на потребителския интерфейс."
+
+#: models.py:19
+msgid "Stylesheet"
+msgstr "Таблица със стилове"
+
+#: models.py:24 models.py:60
+msgid "Theme"
+msgstr "Тема"
+
+#: models.py:56
+msgid "User"
+msgstr "Потребител"
+
+#: models.py:64
+msgid "User theme setting"
+msgstr "Настройка на потребителска тема"
+
+#: models.py:65
+msgid "User theme settings"
+msgstr "Настройки на потребителска тема"
+
+#: permissions.py:8
+msgid "Create new themes"
+msgstr "Създайте нови теми"
+
+#: permissions.py:11
+msgid "Delete themes"
+msgstr "Изтрийте теми"
+
+#: permissions.py:14
+msgid "Edit themes"
+msgstr "Редактирайте теми"
+
+#: permissions.py:17
+msgid "View existing themes"
+msgstr "Вижте съществуващите теми"
+
+#: settings.py:12
 msgid "Maximum number of characters that will be displayed as the view title."
 msgstr "Максимален брой на знаците, които ще се изобразят в заглавката на изгледа."
 
-#: settings.py:21
+#: settings.py:19
 msgid ""
 "Position where the system message will be displayed. Options are: top-left, "
 "top-center, top-right, bottom-left, bottom-center, bottom-right."
 msgstr "Позиция, където ще се показва системното съобщение. Опциите са: горе вляво, горе в центъра, горе вдясно, отдолу вляво, отдолу в центъра, отдолу вдясно."
 
-#: templates/403.html:5 templates/403.html:9
-msgid "Insufficient permissions"
-msgstr "Недостатъчни разрешения"
+#: templates/403.html:5 templates/403.html:30
+msgid "Insufficient permission"
+msgstr "Недостатъчно разрешение"
 
-#: templates/403.html:11
+#: templates/403.html:32
 msgid "You don't have enough permissions for this operation."
 msgstr "Нямате достатъчни разрешения за тази операция."
 
-#: templates/404.html:5 templates/404.html:9
+#: templates/404.html:5 templates/404.html:30
 msgid "Page not found"
 msgstr "Страницата не е намерена"
 
-#: templates/404.html:11
-msgid "Sorry, but the requested page could not be found."
-msgstr "Съжалявам, но заявената страница не може да бъде намерена."
+#: templates/404.html:32
+msgid "The requested page could not be found."
+msgstr "Заявената страница не можа да бъде намерена."
 
-#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:56
+#: templates/404.html:40
+msgid "Possible reasons"
+msgstr "Възможни причини"
+
+#: templates/404.html:44
+msgid "The location of the item is incorrect."
+msgstr "Местоположението на обекта е неправилно."
+
+#: templates/404.html:45
+msgid "The location is correct, but the item no longer exists."
+msgstr "Местоположението е правилно, но обектът вече не съществува."
+
+#: templates/404.html:46
+msgid ""
+"The location is be correct, but your account does not have the required "
+"permission to access it."
+msgstr "Местоположението е правилно, но акаунтът ви няма необходимото разрешение за достъп до него."
+
+#: templates/500.html:5 templates/500.html:30
+#: templates/appearance/root.html:58
 msgid "Server error"
 msgstr "Грешка в сървъра"
 
-#: templates/500.html:11
-msgid ""
-"There's been an error. It's been reported to the site administrators via "
-"e-mail and should be fixed shortly. Thanks for your patience."
-msgstr "Има грешка. Тя е съобщена на администраторите на сайта чрез електронно съобщение и ще бъде отстранена скоро. Благодарим за търпението."
+#: templates/500.html:32
+msgid "There's been an unexpected error."
+msgstr "Възникна неочаквана грешка."
+
+#: templates/500.html:40
+msgid "What to do next?"
+msgstr "Какво да правя след това?"
+
+#: templates/500.html:44
+msgid "Refresh the page."
+msgstr "Обновете страницата."
+
+#: templates/500.html:45
+msgid "Wait a bit. The system might be overloaded."
+msgstr "Изчакай малко. Системата може да е претоварена."
+
+#: templates/500.html:46
+msgid "Contact your system administrator."
+msgstr "Свържете се с вашия системен администратор."
+
+#: templates/500.html:47
+msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
+msgstr "Проверете дневниците за съобщения с тагове \"ERROR\", \"CRITICAL\" или \"FATAL\"."
+
+#: templates/500.html:48
+#, python-format
+msgid "Open a ticket using the <a href=\"%(issue_url)s\">issue tracker</a>."
+msgstr "Отворете билет с помощта на <a href=\"%(issue_url)s\">проследяване на проблем</a> ."
 
 #: templates/appearance/about.html:10
 msgid "About"
@@ -187,26 +313,38 @@ msgid ""
 "            "
 msgstr "\nРазпространете информация за този проект. Говорете с вашите приятели и колеги за това колко страхотен е %(project_title)s!"
 
-#: templates/appearance/base.html:35 templates/appearance/base.html:59
+#: templates/appearance/base.html:43 templates/appearance/base.html:67
 msgid "Warning"
 msgstr "Предупреждение"
 
-#: templates/appearance/base.html:49
+#: templates/appearance/base.html:57
 msgid "Click here to fix this."
 msgstr "Кликнете тук, за да поправите това."
 
-#: templates/appearance/base.html:59
+#: templates/appearance/base.html:67
 msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."
 msgstr "Настройките са актуализирани, рестартирайте инсталацията и опреснете браузъра си, за да влязат в сила промените."
 
-#: templates/appearance/base.html:72
+#: templates/appearance/base.html:75
+#, python-format
+msgid ""
+"\n"
+"                                        Impersonating user \"%(user)s\".\n"
+"                                    "
+msgstr "\nПредставляващ се потребител „%(user)s“."
+
+#: templates/appearance/base.html:78
+msgid "Click here when finished"
+msgstr "Щракнете тук, когато приключите"
+
+#: templates/appearance/base.html:92
 #: templates/appearance/generic_list_items_subtemplate.html:66
 msgid "Actions"
 msgstr "Действия"
 
-#: templates/appearance/base.html:74
+#: templates/appearance/base.html:94
 #: templates/appearance/generic_list_items_subtemplate.html:68
 #: templates/appearance/list_toolbar.html:67
 msgid "Toggle Dropdown"
@@ -281,9 +419,13 @@ msgstr "Общо (%(start)s - %(end)s от %(total)s) (Страница %(page_n
 msgid "Total: %(total)s"
 msgstr "Общо: %(total)s"
 
-#: templates/appearance/list_toolbar.html:16
+#: templates/appearance/list_toolbar.html:13
 msgid "Select/Deselect all"
 msgstr "Изберете / премахнете избора на всички"
+
+#: templates/appearance/list_toolbar.html:17
+msgid "Toggle list display mode"
+msgstr "Превключване на режима на показване на списък"
 
 #: templates/appearance/list_toolbar.html:60
 msgid ""
@@ -302,18 +444,45 @@ msgstr "Превключване на навигацията"
 msgid "No results"
 msgstr "Няма резултати"
 
-#: templates/appearance/root.html:61
+#: templates/appearance/root.html:63
 msgid "Close"
 msgstr "Затваряне"
 
-#: templates/appearance/root.html:71
+#: templates/appearance/root.html:73
 msgid "Server communication error"
 msgstr "Грешка при свързването със сървъра"
 
-#: templates/appearance/root.html:73
+#: templates/appearance/root.html:75
 msgid "Check you network connection and try again in a few moments."
 msgstr "Проверете връзката с мрежата и опитайте отново след няколко секунди."
 
-#: templatetags/appearance_tags.py:17
+#: templatetags/appearance_tags.py:44
 msgid "None"
 msgstr "Няма"
+
+#: views.py:29
+msgid "Current user theme settings details"
+msgstr "Подробности за текущите настройки на потребителската тема"
+
+#: views.py:35
+msgid "Edit current user theme settings details"
+msgstr "Редактирайте подробности за текущите настройки на потребителската тема"
+
+#: views.py:69
+#, python-format
+msgid "Delete theme: %s"
+msgstr "Изтриване на тема: %s"
+
+#: views.py:85
+#, python-format
+msgid "Edit theme: %s"
+msgstr "Редактиране на тема: %s"
+
+#: views.py:105
+msgid ""
+"Themes allow changing the visual appearance without requiring code changes."
+msgstr "Темите позволяват промяна на визуалния облик, без да се изискват промени в кода."
+
+#: views.py:109
+msgid "There are no themes"
+msgstr "Няма теми"

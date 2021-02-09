@@ -1,10 +1,8 @@
-from __future__ import absolute_import, unicode_literals
-
 from rest_framework import status
 
-from mayan.apps.permissions.tests.literals import TEST_ROLE_LABEL
 from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
+from ..classes import ModelPermission
 from ..models import AccessControlList
 from ..permissions import permission_acl_edit, permission_acl_view
 
@@ -12,7 +10,7 @@ from .mixins import ACLAPIViewTestMixin, ACLTestMixin
 
 
 class ACLAPIViewTestCase(ACLTestMixin, ACLAPIViewTestMixin, BaseAPITestCase):
-    auto_create_test_object = True
+    auto_create_acl_test_object = True
 
     def test_acl_create_api_view_no_permission(self):
         acl_count = AccessControlList.objects.count()
@@ -98,7 +96,7 @@ class ACLAPIViewTestCase(ACLTestMixin, ACLAPIViewTestMixin, BaseAPITestCase):
             self.test_object_content_type.app_label
         )
         self.assertEqual(
-            response.data['role']['label'], TEST_ROLE_LABEL
+            response.data['role']['label'], self.test_role.label
         )
 
     def test_acl_list_api_view_no_permission(self):
@@ -123,7 +121,7 @@ class ACLAPIViewTestCase(ACLTestMixin, ACLAPIViewTestMixin, BaseAPITestCase):
             response=response, text=self.test_acl.role.label
         )
 
-    def test_acl_permission_delete_view_with_access(self):
+    def test_acl_permission_delete_api_view_with_access(self):
         self._create_test_acl()
         self.test_acl.permissions.add(self.test_permission.stored_permission)
 
@@ -174,3 +172,28 @@ class ACLAPIViewTestCase(ACLTestMixin, ACLAPIViewTestMixin, BaseAPITestCase):
         self.assertTrue(
             self.test_permission.stored_permission in self.test_acl.permissions.all()
         )
+
+
+class ClassPermissionAPIViewTestCase(ACLTestMixin, BaseAPITestCase):
+    auto_create_test_object = True
+
+    def test_class_permission_list_api_view(self):
+        class_permissions = [
+            permission.pk for permission in ModelPermission.get_for_class(
+                klass=self.test_object_content_type.model_class()
+            )
+        ]
+
+        response = self.get(
+            viewname='rest_api:class-permission-list', kwargs={
+                'app_label': self.test_object_content_type.app_label,
+                'model_name': self.test_object_content_type.model,
+            }
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        response_permissions = [
+            permission['pk'] for permission in response.data['results']
+        ]
+
+        self.assertEqual(class_permissions, response_permissions)

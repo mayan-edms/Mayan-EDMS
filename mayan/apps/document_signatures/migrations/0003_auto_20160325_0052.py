@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.db import migrations, models
 from django.core.files.storage import FileSystemStorage
 
@@ -7,7 +5,6 @@ import mayan.apps.document_signatures.models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('documents', '0033_auto_20160325_0052'),
         ('document_signatures', '0002_auto_20150608_1902'),

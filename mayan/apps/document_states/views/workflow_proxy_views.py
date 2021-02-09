@@ -1,12 +1,10 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.generics import SingleObjectListView
-from mayan.apps.common.mixins import ExternalObjectMixin
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.views.document_views import DocumentListView
+from mayan.apps.views.generics import SingleObjectListView
+from mayan.apps.views.mixins import ExternalObjectViewMixin
 
 from ..icons import icon_workflow_template_list
 from ..links import link_workflow_template_create, link_workflow_template_state_create
@@ -15,20 +13,19 @@ from ..permissions import permission_workflow_view
 
 
 class WorkflowRuntimeProxyDocumentListView(
-    ExternalObjectMixin, DocumentListView
+    ExternalObjectViewMixin, DocumentListView
 ):
     external_object_class = WorkflowRuntimeProxy
     external_object_permission = permission_workflow_view
+    external_object_pk_url_kwarg = 'workflow_runtime_proxy_id'
 
     def get_document_queryset(self):
-        return Document.objects.filter(
+        return Document.valid.filter(
             workflows__workflow=self.external_object
         )
 
     def get_extra_context(self):
-        context = super(
-            WorkflowRuntimeProxyDocumentListView, self
-        ).get_extra_context()
+        context = super().get_extra_context()
         context.update(
             {
                 'no_results_text': _(
@@ -48,6 +45,7 @@ class WorkflowRuntimeProxyDocumentListView(
 
 
 class WorkflowRuntimeProxyListView(SingleObjectListView):
+    model = WorkflowRuntimeProxy
     object_permission = permission_workflow_view
 
     def get_extra_context(self):
@@ -66,23 +64,19 @@ class WorkflowRuntimeProxyListView(SingleObjectListView):
             'title': _('Workflows'),
         }
 
-    def get_source_queryset(self):
-        return WorkflowRuntimeProxy.objects.all()
-
 
 class WorkflowRuntimeProxyStateDocumentListView(
-    ExternalObjectMixin, DocumentListView
+    ExternalObjectViewMixin, DocumentListView
 ):
     external_object_class = WorkflowStateRuntimeProxy
     external_object_permission = permission_workflow_view
+    external_object_pk_url_kwarg = 'workflow_runtime_proxy_state_id'
 
     def get_document_queryset(self):
         return self.external_object.get_documents()
 
     def get_extra_context(self):
-        context = super(
-            WorkflowRuntimeProxyStateDocumentListView, self
-        ).get_extra_context()
+        context = super().get_extra_context()
         context.update(
             {
                 'object': self.external_object,
@@ -104,10 +98,11 @@ class WorkflowRuntimeProxyStateDocumentListView(
 
 
 class WorkflowRuntimeProxyStateListView(
-    ExternalObjectMixin, SingleObjectListView
+    ExternalObjectViewMixin, SingleObjectListView
 ):
     external_object_class = WorkflowRuntimeProxy
     external_object_permission = permission_workflow_view
+    external_object_pk_url_kwarg = 'workflow_runtime_proxy_id'
 
     def get_extra_context(self):
         return {

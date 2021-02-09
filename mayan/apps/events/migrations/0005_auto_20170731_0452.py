@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import re
 
 from django.db import migrations
@@ -22,13 +20,13 @@ def operation_update_event_types_names(apps, schema_editor):
 
     pattern = re.compile('|'.join(known_namespaces.keys()))
 
-    for event_type in StoredEventType.objects.using(schema_editor.connection.alias).all():
+    for event_type in StoredEventType.objects.using(alias=schema_editor.connection.alias).all():
         event_type.name = pattern.sub(
             lambda x: known_namespaces[x.group()], event_type.name
         )
         event_type.save()
 
-    for action in Action.objects.using(schema_editor.connection.alias).all():
+    for action in Action.objects.using(alias=schema_editor.connection.alias).all():
         action.verb = pattern.sub(
             lambda x: known_namespaces[x.group()], action.verb
         )
@@ -52,7 +50,7 @@ def operation_revert_event_types_names(apps, schema_editor):
 
     pattern = re.compile('|'.join(known_namespaces.keys()))
 
-    for event_type in StoredEventType.objects.using(schema_editor.connection.alias).all():
+    for event_type in StoredEventType.objects.using(alias=schema_editor.connection.alias).all():
         old_name = event_type.name
         new_name = pattern.sub(
             lambda x: known_namespaces[x.group().replace('.', '\\.')],
@@ -64,7 +62,7 @@ def operation_revert_event_types_names(apps, schema_editor):
         else:
             event_type.save()
 
-    for action in Action.objects.using(schema_editor.connection.alias).all():
+    for action in Action.objects.using(alias=schema_editor.connection.alias).all():
         new_name = pattern.sub(
             lambda x: known_namespaces[x.group().replace('.', '\\.')],
             action.verb
@@ -74,7 +72,6 @@ def operation_revert_event_types_names(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('events', '0004_auto_20170731_0423'),
         ('actstream', '0001_initial'),

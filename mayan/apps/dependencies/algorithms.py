@@ -1,12 +1,10 @@
-from __future__ import print_function, unicode_literals
-
 import base64
 import hashlib
 
 from django.utils.encoding import force_text
 
 
-class HashAlgorithm(object):
+class HashAlgorithm:
     DEFAULT_BLOCK_SIZE = 65535
     _registry = {}
     hash_factory = None
@@ -33,7 +31,7 @@ class HashAlgorithm(object):
             self.hash_object.update(data)
 
     def get_digest(self):
-        return force_text(self._get_digest())
+        return force_text(s=self._get_digest())
 
 
 class SHA1Algorithm(HashAlgorithm):

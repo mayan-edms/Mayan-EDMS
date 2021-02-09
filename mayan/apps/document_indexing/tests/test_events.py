@@ -1,9 +1,7 @@
-from __future__ import unicode_literals
-
 from actstream.models import Action
 
-from mayan.apps.common.tests.base import GenericViewTestCase
-from mayan.apps.documents.tests.mixins import DocumentTestMixin
+from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
+from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..permissions import (
     permission_document_indexing_create, permission_document_indexing_edit,
@@ -15,7 +13,7 @@ from .mixins import IndexTestMixin, IndexViewTestMixin
 
 
 class IndexTemplateEventsTestCase(DocumentTestMixin, IndexTestMixin, IndexViewTestMixin, GenericViewTestCase):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def test_index_template_create_event(self):
         Action.objects.all().delete()

@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import logging
 
 from django.contrib.auth import get_user_model
@@ -8,7 +6,7 @@ from django.db import models
 
 from .settings import setting_email, setting_password, setting_username
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class AutoAdminSingletonManager(models.Manager):

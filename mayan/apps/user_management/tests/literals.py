@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 TEST_CASE_GROUP_NAME = 'test case group'
 
 TEST_CASE_SUPERUSER_EMAIL = 'test_case_superuser@example.com'

@@ -1,18 +1,17 @@
-from __future__ import print_function, unicode_literals
+from pathlib import Path
 
-from pathlib2 import Path
 import shutil
 
-from mayan.apps.common.tests.base import BaseTestCase
-from mayan.apps.common.tests.utils import mute_stdout
 from mayan.apps.storage.utils import mkdtemp
+from mayan.apps.testing.tests.base import BaseTestCase
+from mayan.apps.testing.tests.utils import mute_stdout
 
 from .mocks import TestDependency
 
 
 class DependencyClassTestCase(BaseTestCase):
     def setUp(self):
-        super(DependencyClassTestCase, self).setUp()
+        super().setUp()
 
         self.test_replace_text = 'replaced_text'
 
@@ -29,8 +28,8 @@ class DependencyClassTestCase(BaseTestCase):
         )
 
     def tearDown(self):
-        super(DependencyClassTestCase, self).tearDown()
-        shutil.rmtree(self.temporary_directory, ignore_errors=True)
+        super().tearDown()
+        shutil.rmtree(path=self.temporary_directory, ignore_errors=True)
 
     def _patch_test_file(self):
         replace_list = [

@@ -1,30 +1,28 @@
-from __future__ import unicode_literals
-
 import logging
 import uuid
 
 from django.db import models
 from django.urls import reverse
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from model_utils.managers import InheritanceManager
 
 from mayan.apps.django_gpg.exceptions import VerificationError
 from mayan.apps.django_gpg.models import Key
-from mayan.apps.documents.models import DocumentVersion
+from mayan.apps.documents.models import DocumentFile
+from mayan.apps.storage.classes import DefinedStorageLazy
 
+from .literals import STORAGE_NAME_DOCUMENT_SIGNATURES_DETACHED_SIGNATURE
 from .managers import DetachedSignatureManager, EmbeddedSignatureManager
-from .storages import storage_detachedsignature
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 def upload_to(*args, **kwargs):
-    return force_text(uuid.uuid4())
+    return force_text(s=uuid.uuid4())
 
 
-@python_2_unicode_compatible
 class SignatureBaseModel(models.Model):
     """
     Fields:
@@ -35,13 +33,15 @@ class SignatureBaseModel(models.Model):
     it will generate a unique signature ID. No two signature IDs are the same,
     even when using the same key.
     """
-    document_version = models.ForeignKey(
+    document_file = models.ForeignKey(
         editable=False, on_delete=models.CASCADE, related_name='signatures',
-        to=DocumentVersion, verbose_name=_('Document version')
+        to=DocumentFile, verbose_name=_('Document file')
     )
     # Basic fields
-    date = models.DateField(
-        blank=True, editable=False, null=True, verbose_name=_('Date signed')
+    date_time = models.DateTimeField(
+        blank=True, editable=False, null=True, verbose_name=_(
+            'Date and time signed'
+        )
     )
     key_id = models.CharField(
         help_text=_('ID of the key that will be used to sign the document.'),
@@ -61,16 +61,16 @@ class SignatureBaseModel(models.Model):
 
     class Meta:
         ordering = ('pk',)
-        verbose_name = _('Document version signature')
-        verbose_name_plural = _('Document version signatures')
+        verbose_name = _('Document file signature')
+        verbose_name_plural = _('Document file signatures')
 
     def __str__(self):
-        return self.signature_id or '{} - {}'.format(self.date, self.key_id)
+        return self.signature_id or '{} - {}'.format(self.date_time, self.key_id)
 
     def get_absolute_url(self):
         return reverse(
-            viewname='document_signatures:document_version_signature_detail',
-            kwargs={'pk': self.pk}
+            viewname='signatures:document_file_signature_details',
+            kwargs={'signature_id': self.pk}
         )
 
     def get_key_id(self):
@@ -98,8 +98,8 @@ class EmbeddedSignature(SignatureBaseModel):
     objects = EmbeddedSignatureManager()
 
     class Meta:
-        verbose_name = _('Document version embedded signature')
-        verbose_name_plural = _('Document version embedded signatures')
+        verbose_name = _('Document file embedded signature')
+        verbose_name_plural = _('Document file embedded signatures')
 
     def save(self, *args, **kwargs):
         logger.debug(msg='checking for embedded signature')
@@ -109,7 +109,7 @@ class EmbeddedSignature(SignatureBaseModel):
         else:
             raw = False
 
-        with self.document_version.open(raw=raw) as file_object:
+        with self.document_file.open(raw=raw) as file_object:
             try:
                 verify_result = Key.objects.verify_file(
                     file_object=file_object
@@ -120,39 +120,41 @@ class EmbeddedSignature(SignatureBaseModel):
                     'embedded signature verification error; %s', exception
                 )
             else:
-                self.date = verify_result.date
+                self.date_time = verify_result.date_time
                 self.key_id = verify_result.key_id
                 self.signature_id = verify_result.signature_id
                 self.public_key_fingerprint = verify_result.pubkey_fingerprint
 
-                super(EmbeddedSignature, self).save(*args, **kwargs)
+                # Return must be under the else: context to ensure that an
+                # embedded signature instance is created only when valid.
+                return super().save(*args, **kwargs)
 
 
-@python_2_unicode_compatible
 class DetachedSignature(SignatureBaseModel):
     signature_file = models.FileField(
         blank=True, help_text=_(
             'Signature file previously generated.'
-        ), null=True, storage=storage_detachedsignature,
-        upload_to=upload_to, verbose_name=_('Signature file')
+        ), null=True, storage=DefinedStorageLazy(
+            name=STORAGE_NAME_DOCUMENT_SIGNATURES_DETACHED_SIGNATURE
+        ), upload_to=upload_to, verbose_name=_('Signature file')
     )
 
     objects = DetachedSignatureManager()
 
     class Meta:
-        verbose_name = _('Document version detached signature')
-        verbose_name_plural = _('Document version detached signatures')
+        verbose_name = _('Document file detached signature')
+        verbose_name_plural = _('Document file detached signatures')
 
     def __str__(self):
-        return '{}-{}'.format(self.document_version, _('signature'))
+        return '{}-{}'.format(self.document_file, _('signature'))
 
     def delete(self, *args, **kwargs):
         if self.signature_file.name:
             self.signature_file.storage.delete(name=self.signature_file.name)
-        super(DetachedSignature, self).delete(*args, **kwargs)
+        super().delete(*args, **kwargs)
 
     def save(self, *args, **kwargs):
-        with self.document_version.open() as file_object:
+        with self.document_file.open() as file_object:
             try:
                 verify_result = Key.objects.verify_file(
                     file_object=file_object, signature_file=self.signature_file
@@ -165,9 +167,10 @@ class DetachedSignature(SignatureBaseModel):
             else:
                 self.signature_file.seek(0)
 
-                self.date = verify_result.date
+                # Invalid signatures do not have a date attribute
+                self.date_time = getattr(verify_result, 'date_time', None)
                 self.key_id = verify_result.key_id
                 self.signature_id = verify_result.signature_id
                 self.public_key_fingerprint = verify_result.pubkey_fingerprint
 
-        return super(DetachedSignature, self).save(*args, **kwargs)
+        return super().save(*args, **kwargs)

@@ -1,15 +1,11 @@
-from __future__ import unicode_literals
-
 from django.db import models
-from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
-from .literals import DEFAULT_LOCK_TIMEOUT_VALUE
+from .literals import DEFAULT_LOCK_MANAGER_DEFAULT_LOCK_TIMEOUT
 from .managers import LockManager
 from .settings import setting_default_lock_timeout
 
 
-@python_2_unicode_compatible
 class Lock(models.Model):
     """
     Model to provide distributed resource locking using the database.
@@ -18,10 +14,11 @@ class Lock(models.Model):
         auto_now_add=True, verbose_name=_('Creation datetime')
     )
     timeout = models.IntegerField(
-        default=DEFAULT_LOCK_TIMEOUT_VALUE, verbose_name=_('Timeout')
+        default=DEFAULT_LOCK_MANAGER_DEFAULT_LOCK_TIMEOUT,
+        verbose_name=_('Timeout')
     )
     name = models.CharField(
-        max_length=64, unique=True, verbose_name=_('Name')
+        max_length=255, unique=True, verbose_name=_('Name')
     )
 
     objects = LockManager()
@@ -51,4 +48,4 @@ class Lock(models.Model):
         if not self.timeout and not kwargs.get('timeout'):
             self.timeout = setting_default_lock_timeout.value
 
-        super(Lock, self).save(*args, **kwargs)
+        super().save(*args, **kwargs)

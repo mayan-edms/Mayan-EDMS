@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import warnings
 
 from django import forms
@@ -7,6 +5,11 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.forms.widgets import EmailInput
 from django.utils.translation import ugettext_lazy as _
+
+from mayan.apps.user_management.querysets import get_user_queryset
+from mayan.apps.views.forms import FilteredSelectionForm
+
+from .permissions import permission_users_impersonate
 
 
 class EmailAuthenticationForm(forms.Form):
@@ -34,7 +37,7 @@ class EmailAuthenticationForm(forms.Form):
         """
         self.request = request
         self.user_cache = None
-        super(EmailAuthenticationForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def clean(self):
         email = self.cleaned_data.get('email')
@@ -67,6 +70,35 @@ class EmailAuthenticationForm(forms.Form):
 
     def get_user(self):
         return self.user_cache
+
+
+class UserImpersonationOptionsForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['permanent'] = forms.BooleanField(
+            label=_('Permanent'), help_text=_(
+                'If selected, disables ending impersonation.'
+            ), required=False
+        )
+
+
+class UserImpersonationSelectionForm(
+    FilteredSelectionForm, UserImpersonationOptionsForm
+):
+    class Meta:
+        allow_multiple = False
+        field_name = 'user_to_impersonate'
+        label = _('User')
+        queryset = get_user_queryset().none()
+        permission = permission_users_impersonate
+        required = True
+        widget_attributes = {'class': 'select2'}
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        queryset = get_user_queryset().exclude(pk=kwargs['user'].pk)
+        self.fields['user_to_impersonate'].queryset = queryset
+        self.order_fields(field_order=('user_to_impersonate', 'permanent'))
 
 
 class UsernameAuthenticationForm(AuthenticationForm):

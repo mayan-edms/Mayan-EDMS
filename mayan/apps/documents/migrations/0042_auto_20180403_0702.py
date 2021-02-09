@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import uuid
 
 import django.core.files.storage
@@ -8,7 +6,6 @@ from django.utils.encoding import force_text
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('documents', '0041_auto_20170823_1855'),
     ]
@@ -20,7 +17,7 @@ class Migration(migrations.Migration):
             field=models.FileField(
                 storage=django.core.files.storage.FileSystemStorage(
                     location=b'mayan/media/document_storage'
-                ), upload_to=force_text(uuid.uuid4()), verbose_name='File'
+                ), upload_to=force_text(s=uuid.uuid4()), verbose_name='File'
             ),
         ),
     ]

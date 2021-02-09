@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
 
 from django.core.exceptions import ValidationError
 
-from mayan.apps.common.tests.base import BaseTestCase
 from mayan.apps.documents.models import DocumentType
 from mayan.apps.documents.tests.literals import TEST_DOCUMENT_TYPE_2_LABEL
-from mayan.apps.documents.tests.mixins import DocumentTestMixin
+from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
+from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..models import DocumentMetadata
 
@@ -18,9 +17,14 @@ from .literals import (
 from .mixins import MetadataTypeTestMixin
 
 
-class MetadataTypeTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCase):
+class MetadataTypeTestCase(
+    DocumentTestMixin, MetadataTypeTestMixin, BaseTestCase
+):
+    auto_upload_test_document = False
+
     def setUp(self):
-        super(MetadataTypeTestCase, self).setUp()
+        super().setUp()
+        self._create_test_document_stub()
         self._create_test_metadata_type()
         self.test_document_type.metadata.create(
             metadata_type=self.test_metadata_type
@@ -68,7 +72,7 @@ class MetadataTypeTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCas
             value=TEST_INCORRECT_LOOKUP_VALUE
         )
 
-        with self.assertRaises(ValidationError):
+        with self.assertRaises(expected_exception=ValidationError):
             # Should return error
             document_metadata.full_clean()
             document_metadata.save()
@@ -115,7 +119,7 @@ class MetadataTypeTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCas
             value=TEST_INVALID_DATE
         )
 
-        with self.assertRaises(ValidationError):
+        with self.assertRaises(expected_exception=ValidationError):
             # Should return error
             document_metadata.full_clean()
             document_metadata.save()
@@ -140,7 +144,7 @@ class MetadataTypeTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCas
             value=TEST_INVALID_DATE
         )
 
-        with self.assertRaises(ValidationError):
+        with self.assertRaises(expected_exception=ValidationError):
             # Should return error
             document_metadata.full_clean()
             document_metadata.save()
@@ -210,7 +214,7 @@ class MetadataTypeTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCas
             metadata_type=self.test_metadata_type, required=True
         )
 
-        self.test_document.set_document_type(document_type=self.test_document_type_2)
+        self.test_document.document_type_change(document_type=self.test_document_type_2)
 
         self.assertEqual(self.test_document.metadata.count(), 1)
         self.assertEqual(
@@ -236,7 +240,7 @@ class MetadataTypeTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCas
 
         self.test_document_type_2.metadata.create(metadata_type=self.test_metadata_type)
 
-        self.test_document.set_document_type(document_type=self.test_document_type_2)
+        self.test_document.document_type_change(document_type=self.test_document_type_2)
 
         self.assertEqual(self.test_document.metadata.count(), 1)
         self.assertEqual(
@@ -263,7 +267,7 @@ class MetadataTypeTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCas
             label=TEST_DOCUMENT_TYPE_2_LABEL
         )
 
-        self.test_document.set_document_type(document_type=self.test_document_type_2)
+        self.test_document.document_type_change(document_type=self.test_document_type_2)
 
         self.assertEqual(self.test_document.metadata.count(), 0)
 
@@ -288,7 +292,7 @@ class MetadataTypeTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCas
             metadata_type=self.test_metadata_type, required=True
         )
 
-        self.test_document.set_document_type(document_type=self.test_document_type_2)
+        self.test_document.document_type_change(document_type=self.test_document_type_2)
 
         self.assertEqual(self.test_document.metadata.count(), 1)
         self.assertEqual(
@@ -329,3 +333,8 @@ class MetadataTypeTestCase(DocumentTestMixin, MetadataTypeTestMixin, BaseTestCas
 
         # Must not raise an error
         document_metadata.delete()
+
+    def test_method_get_absolute_url(self):
+        self._create_test_metadata_type()
+
+        self.assertTrue(self.test_metadata_type.get_absolute_url())

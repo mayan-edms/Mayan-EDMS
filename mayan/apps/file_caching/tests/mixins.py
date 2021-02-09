@@ -1,38 +1,44 @@
-from __future__ import unicode_literals
-
-from django.core.files.storage import FileSystemStorage
 from django.utils.encoding import force_bytes
 
+from mayan.apps.storage.classes import DefinedStorage
 from mayan.apps.storage.utils import fs_cleanup, mkdtemp
 
 from ..models import Cache
 
 from .literals import (
-    TEST_CACHE_LABEL, TEST_CACHE_MAXIMUM_SIZE, TEST_CACHE_NAME,
-    TEST_CACHE_PARTITION_FILE_FILENAME, TEST_CACHE_PARTITION_FILE_SIZE,
-    TEST_CACHE_PARTITION_NAME, TEST_CACHE_STORAGE_INSTANCE_PATH
+    TEST_CACHE_MAXIMUM_SIZE, TEST_CACHE_PARTITION_FILE_FILENAME,
+    TEST_CACHE_PARTITION_FILE_SIZE, TEST_CACHE_PARTITION_NAME,
+    TEST_STORAGE_NAME_FILE_CACHING_TEST_STORAGE
 )
 
-test_storage = None
+
+class CachePartitionViewTestMixin:
+    def _request_test_object_file_cache_partition_purge_view(self):
+        return self.post(
+            viewname='file_caching:cache_partitions_purge',
+            kwargs=self.test_object_view_kwargs
+        )
 
 
-class CacheTestMixin(object):
+class CacheTestMixin:
     def setUp(self):
-        super(CacheTestMixin, self).setUp()
-        global test_storage
+        super().setUp()
         self.temporary_directory = mkdtemp()
-        test_storage = FileSystemStorage(location=self.temporary_directory)
+        DefinedStorage(
+            dotted_path='django.core.files.storage.FileSystemStorage',
+            label='File caching test storage',
+            name=TEST_STORAGE_NAME_FILE_CACHING_TEST_STORAGE,
+            kwargs={'location': self.temporary_directory}
+        )
 
     def tearDown(self):
         fs_cleanup(filename=self.temporary_directory)
-        super(CacheTestMixin, self).tearDown()
+        super().tearDown()
 
     def _create_test_cache(self):
         self.test_cache = Cache.objects.create(
-            label=TEST_CACHE_LABEL,
-            storage_instance_path=TEST_CACHE_STORAGE_INSTANCE_PATH,
             maximum_size=TEST_CACHE_MAXIMUM_SIZE,
-            name=TEST_CACHE_NAME,
+            defined_storage_name=TEST_STORAGE_NAME_FILE_CACHING_TEST_STORAGE,
         )
 
     def _create_test_cache_partition(self):
@@ -43,7 +49,7 @@ class CacheTestMixin(object):
     def _create_test_cache_partition_file(self):
         with self.test_cache_partition.create_file(filename=TEST_CACHE_PARTITION_FILE_FILENAME) as file_object:
             file_object.write(
-                force_bytes(' ' * TEST_CACHE_PARTITION_FILE_SIZE)
+                force_bytes(s=' ' * TEST_CACHE_PARTITION_FILE_SIZE)
             )
 
         self.test_cache_partition_file = self.test_cache_partition.files.get(
@@ -51,7 +57,7 @@ class CacheTestMixin(object):
         )
 
 
-class CacheViewTestMixin(object):
+class CacheViewTestMixin:
     def _request_test_cache_list_view(self):
         return self.get(viewname='file_caching:cache_list')
 

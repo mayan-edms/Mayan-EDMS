@@ -1,24 +1,21 @@
-from __future__ import unicode_literals
-
 from django.db import models
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.documents.models import (
-    DocumentPage, DocumentType, DocumentVersion
-)
+from mayan.apps.documents.models.document_file_models import DocumentFile
+from mayan.apps.documents.models.document_file_page_models import DocumentFilePage
+from mayan.apps.documents.models.document_type_models import DocumentType
 
-from .managers import DocumentPageContentManager, DocumentTypeSettingsManager
+from .managers import DocumentFilePageContentManager, DocumentTypeSettingsManager
 
 
-@python_2_unicode_compatible
-class DocumentPageContent(models.Model):
+class DocumentFilePageContent(models.Model):
     """
     This model store's the parsed content of a document page.
     """
-    document_page = models.OneToOneField(
-        on_delete=models.CASCADE, related_name='content', to=DocumentPage,
-        verbose_name=_('Document page')
+    document_file_page = models.OneToOneField(
+        on_delete=models.CASCADE, related_name='content', to=DocumentFilePage,
+        verbose_name=_('Document file page')
     )
     content = models.TextField(
         blank=True, help_text=_(
@@ -27,14 +24,14 @@ class DocumentPageContent(models.Model):
         ), verbose_name=_('Content')
     )
 
-    objects = DocumentPageContentManager()
+    objects = DocumentFilePageContentManager()
 
     class Meta:
-        verbose_name = _('Document page content')
-        verbose_name_plural = _('Document pages contents')
+        verbose_name = _('Document file page content')
+        verbose_name_plural = _('Document file page contents')
 
     def __str__(self):
-        return force_text(self.document_page)
+        return force_text(s=self.document_file_page)
 
 
 class DocumentTypeSettings(models.Model):
@@ -62,15 +59,14 @@ class DocumentTypeSettings(models.Model):
         verbose_name_plural = _('Document types settings')
 
 
-@python_2_unicode_compatible
-class DocumentVersionParseError(models.Model):
+class DocumentFileParseError(models.Model):
     """
     This module stores the errors captures when attempting to parse a
-    document version.
+    document file.
     """
-    document_version = models.ForeignKey(
+    document_file = models.ForeignKey(
         on_delete=models.CASCADE, related_name='parsing_errors',
-        to=DocumentVersion, verbose_name=_('Document version')
+        to=DocumentFile, verbose_name=_('Document file')
     )
     datetime_submitted = models.DateTimeField(
         auto_now_add=True, db_index=True, verbose_name=_('Date time submitted')
@@ -79,8 +75,8 @@ class DocumentVersionParseError(models.Model):
 
     class Meta:
         ordering = ('datetime_submitted',)
-        verbose_name = _('Document version parse error')
-        verbose_name_plural = _('Document version parse errors')
+        verbose_name = _('Document file parse error')
+        verbose_name_plural = _('Document file parse errors')
 
     def __str__(self):
-        return force_text(self.document_version)
+        return force_text(s=self.document_file)

@@ -63,7 +63,7 @@ templating sandbox.
 Testing
 ^^^^^^^
 
-The of creating the temporary config file used in setting tests has been
+The process of creating the temporary config file used in setting tests has been
 unified. All setting tests create the test config file in a predictable way
 now.
 

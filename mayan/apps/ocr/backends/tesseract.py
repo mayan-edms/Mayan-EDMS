@@ -1,6 +1,5 @@
-from __future__ import absolute_import, unicode_literals
-
 import logging
+import os
 import shutil
 
 import sh
@@ -12,33 +11,32 @@ from mayan.apps.storage.utils import TemporaryFile
 
 from ..classes import OCRBackendBase
 from ..exceptions import OCRError
-from ..settings import setting_ocr_backend_arguments
 
 from .literals import DEFAULT_TESSERACT_BINARY_PATH, DEFAULT_TESSERACT_TIMEOUT
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class Tesseract(OCRBackendBase):
     def __init__(self, *args, **kwargs):
-        auto_initialize = kwargs.pop('auto_initialize', True)
-        super(Tesseract, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
+        self.read_settings()
 
-        if auto_initialize:
+        if kwargs.get('auto_initialize', True):
             self.initialize()
 
     def execute(self, *args, **kwargs):
         """
         Execute the command line binary of tesseract
         """
-        super(Tesseract, self).execute(*args, **kwargs)
+        super().execute(*args, **kwargs)
 
         if self.command_tesseract:
             image = self.converter.get_page()
 
             try:
                 temporary_image_file = TemporaryFile()
-                shutil.copyfileobj(image, temporary_image_file)
+                shutil.copyfileobj(fsrc=image, fdst=temporary_image_file)
                 temporary_image_file.seek(0)
 
                 arguments = ['-', '-']
@@ -51,12 +49,15 @@ class Tesseract(OCRBackendBase):
                 if self.language:
                     keyword_arguments['l'] = self.language
 
-                try:
+                environment = os.environ.copy()
+                environment.update(self.environment)
+                keyword_arguments['_env'] = environment
 
+                try:
                     result = self.command_tesseract(
                         *arguments, **keyword_arguments
                     )
-                    return force_text(result.stdout)
+                    return force_text(s=result.stdout)
                 except Exception as exception:
                     error_message = (
                         'Exception calling Tesseract with language option: {}; {}'
@@ -79,8 +80,6 @@ class Tesseract(OCRBackendBase):
 
     def initialize(self):
         self.languages = ()
-
-        self.read_settings()
 
         try:
             self.command_tesseract = sh.Command(path=self.tesseract_binary_path)
@@ -105,15 +104,15 @@ class Tesseract(OCRBackendBase):
 
             # Extaction: strip last line, split by newline, discard the first
             # line
-            self.languages = force_text(result.stdout).strip().split('\n')[1:]
+            self.languages = force_text(s=result.stdout).strip().split('\n')[1:]
 
             logger.debug('Available languages: %s', ', '.join(self.languages))
 
     def read_settings(self):
-        self.tesseract_binary_path = setting_ocr_backend_arguments.value.get(
-            'tesseract_path', DEFAULT_TESSERACT_BINARY_PATH
-        )
-
-        self.command_timeout = setting_ocr_backend_arguments.value.get(
+        self.command_timeout = self.kwargs.get(
             'timeout', DEFAULT_TESSERACT_TIMEOUT
+        )
+        self.environment = self.kwargs.get('environment', {})
+        self.tesseract_binary_path = self.kwargs.get(
+            'tesseract_path', DEFAULT_TESSERACT_BINARY_PATH
         )

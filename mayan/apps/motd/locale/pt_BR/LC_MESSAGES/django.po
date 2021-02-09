@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
-# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 01:41-0400\n"
-"PO-Revision-Date: 2019-12-26 19:15+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-10-01 20:56+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -19,23 +20,35 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:35 links.py:36 permissions.py:7
+#: apps.py:40 links.py:38 permissions.py:5
 msgid "Message of the day"
 msgstr "Mensagem do dia"
 
-#: apps.py:57 apps.py:61
+#: apps.py:77 apps.py:81
 msgid "None"
 msgstr "Nenhum"
 
-#: links.py:16 views.py:32
+#: events.py:5 models.py:40 views.py:123
+msgid "Messages"
+msgstr "Mensagens"
+
+#: events.py:8
+msgid "Message created"
+msgstr "Mensagem criada"
+
+#: events.py:11
+msgid "Message edited"
+msgstr "Mensagem editada"
+
+#: links.py:14 views.py:31
 msgid "Create message"
 msgstr "Criar mensagem"
 
-#: links.py:22
+#: links.py:18 links.py:24
 msgid "Delete"
 msgstr "Excluir"
 
-#: links.py:27
+#: links.py:29
 msgid "Edit"
 msgstr "Editar"
 
@@ -75,23 +88,19 @@ msgstr "Data e hora até no qual esta mensagem será exibida."
 msgid "End date time"
 msgstr "Data final"
 
-#: models.py:40 views.py:80
-msgid "Messages"
-msgstr "Mensagens"
-
-#: permissions.py:10
+#: permissions.py:8
 msgid "Create messages"
 msgstr "Criar mensagens"
 
-#: permissions.py:13
+#: permissions.py:11
 msgid "Delete messages"
 msgstr "Apagar mensagens"
 
-#: permissions.py:16
+#: permissions.py:14
 msgid "Edit messages"
 msgstr "Editar mensagens"
 
-#: permissions.py:19
+#: permissions.py:17
 msgid "View messages"
 msgstr "Visualizar mensagens"
 
@@ -101,21 +110,47 @@ msgstr "Mensagem do dia"
 
 #: views.py:45
 #, python-format
-msgid "Delete the message: %s?"
-msgstr "Apagar a mensagem: %s?"
+msgid "Delete request performed on %(count)d message"
+msgstr "Solicitação de exclusão realizada em mensagem %(count)d"
 
-#: views.py:58
+#: views.py:47
+#, python-format
+msgid "Delete request performed on %(count)d messages"
+msgstr "Solicitação de exclusão realizada em mensagens %(count)d"
+
+#: views.py:54
+msgid "Delete the selected message?"
+msgid_plural "Delete the selected messages?"
+msgstr[0] "Excluir a mensagem selecionada?"
+msgstr[1] "Excluir as mensagens selecionadas?"
+
+#: views.py:64
+#, python-format
+msgid "Delete message: %s?"
+msgstr "Excluir mensagem: %s?"
+
+#: views.py:75
+#, python-format
+msgid "Message \"%s\" deleted successfully."
+msgstr "Mensagem \"%s\" excluída com sucesso."
+
+#: views.py:80
+#, python-format
+msgid "Error deleting message \"%(message)s\": %(error)s"
+msgstr "Erro ao excluir mensagem \"%(message)s\" %(error)s"
+
+#: views.py:96
 #, python-format
 msgid "Edit message: %s"
 msgstr "Editar mensagem: %s"
 
-#: views.py:75
+#: views.py:118
 msgid ""
 "Messages are displayed in the login view. You can use messages to convery "
 "information about your organzation, announcements or usage guidelines for "
 "your users."
 msgstr "Mensagens são exibidas na tela de login. Você pode usar mensagens para transmitir informações sobre sua organização, anúncios ou orientações para seus usuários."
 
-#: views.py:79
+#: views.py:122
 msgid "No messages available"
 msgstr "Nenhuma mensagem disponível"

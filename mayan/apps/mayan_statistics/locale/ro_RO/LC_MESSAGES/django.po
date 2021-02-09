@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Badea Gabriel <gcbadea@gmail.com>, 2013
 # Harald Ersch, 2019
 # Stefaniu Criste <gupi@hangar.ro>, 2016
@@ -10,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 01:41-0400\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2019-05-17 18:50+0000\n"
 "Last-Translator: Harald Ersch\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
@@ -20,67 +21,67 @@ msgstr ""
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: apps.py:22 links.py:33 permissions.py:7 queues.py:9
+#: apps.py:27 links.py:31 permissions.py:5 queues.py:7
 msgid "Statistics"
 msgstr "Statistică"
 
 #. Translators: Schedule here is a noun, the 'schedule' at
 #. which the statistic will be updated
-#: apps.py:31
+#: apps.py:36
 msgid "Schedule"
 msgstr "Orar"
 
-#: apps.py:36
+#: apps.py:42
 msgid "Last update"
 msgstr "Ultima actualizare"
 
-#: classes.py:150
+#: classes.py:146
 msgid "Never"
 msgstr "niciodată"
 
-#: links.py:12
+#: links.py:10
 msgid "Queue"
 msgstr "Coadă"
 
-#: links.py:17
+#: links.py:15
 msgid "View"
 msgstr "Vedere"
 
-#: links.py:22
+#: links.py:20
 msgid "Namespace details"
 msgstr "Detalii privind spațiul pentru nume"
 
-#: links.py:27
+#: links.py:25
 msgid "Namespace list"
 msgstr "Lista de spații de nume"
 
 #. Translators: 'Slug' refers to the URL valid ID of the statistic
 #. More info: https://docs.djangoproject.com/en/1.7/glossary/#term-slug
-#: models.py:14
+#: models.py:10
 msgid "Slug"
 msgstr "Slug"
 
-#: models.py:16
+#: models.py:12
 msgid "Date time"
 msgstr "Data și ora"
 
-#: models.py:18
+#: models.py:14
 msgid "Data"
 msgstr "Data"
 
-#: models.py:21
+#: models.py:17
 msgid "Statistics result"
 msgstr "Rezultat statistici"
 
-#: models.py:22
+#: models.py:18
 msgid "Statistics results"
 msgstr "Rezultate statistici"
 
-#: permissions.py:10
+#: permissions.py:8
 msgid "View statistics"
 msgstr "Afișare statistici"
 
-#: queues.py:13
+#: queues.py:12
 msgid "Execute statistic"
 msgstr "Executați statistici"
 

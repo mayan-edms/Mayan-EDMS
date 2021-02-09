@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Atdhe Tabaku <Atdhe617@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 01:41-0400\n"
-"PO-Revision-Date: 2020-02-14 02:21+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-09-27 06:47+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (http://www.transifex.com/rosarior/mayan-edms/language/bs/)\n"
 "MIME-Version: 1.0\n"
@@ -18,23 +19,35 @@ msgstr ""
 "Language: bs\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:35 links.py:36 permissions.py:7
+#: apps.py:40 links.py:38 permissions.py:5
 msgid "Message of the day"
 msgstr "Poruka dana"
 
-#: apps.py:57 apps.py:61
+#: apps.py:77 apps.py:81
 msgid "None"
 msgstr "Nijedno"
 
-#: links.py:16 views.py:32
+#: events.py:5 models.py:40 views.py:123
+msgid "Messages"
+msgstr "Poruke"
+
+#: events.py:8
+msgid "Message created"
+msgstr ""
+
+#: events.py:11
+msgid "Message edited"
+msgstr ""
+
+#: links.py:14 views.py:31
 msgid "Create message"
 msgstr "Kreirajte poruku"
 
-#: links.py:22
+#: links.py:18 links.py:24
 msgid "Delete"
 msgstr "Obriši"
 
-#: links.py:27
+#: links.py:29
 msgid "Edit"
 msgstr "Urediti"
 
@@ -74,23 +87,19 @@ msgstr "Datum i vreme do trenutka kada se ova poruka prikazuje."
 msgid "End date time"
 msgstr "Vreme završetka "
 
-#: models.py:40 views.py:80
-msgid "Messages"
-msgstr "Poruke"
-
-#: permissions.py:10
+#: permissions.py:8
 msgid "Create messages"
 msgstr "Kreirajte poruke"
 
-#: permissions.py:13
+#: permissions.py:11
 msgid "Delete messages"
 msgstr "Brisanje poruka"
 
-#: permissions.py:16
+#: permissions.py:14
 msgid "Edit messages"
 msgstr "Uredite poruke"
 
-#: permissions.py:19
+#: permissions.py:17
 msgid "View messages"
 msgstr "Pregledajte poruke"
 
@@ -100,21 +109,48 @@ msgstr "Poruke dana"
 
 #: views.py:45
 #, python-format
-msgid "Delete the message: %s?"
-msgstr "Obrišite poruku: %s?"
+msgid "Delete request performed on %(count)d message"
+msgstr ""
 
-#: views.py:58
+#: views.py:47
+#, python-format
+msgid "Delete request performed on %(count)d messages"
+msgstr ""
+
+#: views.py:54
+msgid "Delete the selected message?"
+msgid_plural "Delete the selected messages?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: views.py:64
+#, python-format
+msgid "Delete message: %s?"
+msgstr ""
+
+#: views.py:75
+#, python-format
+msgid "Message \"%s\" deleted successfully."
+msgstr ""
+
+#: views.py:80
+#, python-format
+msgid "Error deleting message \"%(message)s\": %(error)s"
+msgstr ""
+
+#: views.py:96
 #, python-format
 msgid "Edit message: %s"
 msgstr "Uredite poruku: %s"
 
-#: views.py:75
+#: views.py:118
 msgid ""
 "Messages are displayed in the login view. You can use messages to convery "
 "information about your organzation, announcements or usage guidelines for "
 "your users."
 msgstr ""
 
-#: views.py:79
+#: views.py:122
 msgid "No messages available"
 msgstr ""

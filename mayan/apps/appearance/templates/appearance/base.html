@@ -1,9 +1,13 @@
 {% load i18n %}
 {% load static %}
 
+{% load appearance_tags %}
 {% load common_tags %}
 {% load navigation_tags %}
 {% load smart_settings_tags %}
+{% load templating_tags %}
+
+{% spaceless %}
 
 <script>
     if (typeof partialNavigation === 'undefined') {
@@ -19,46 +23,23 @@
 
 {% block stylesheets %}{% endblock %}
 
+<style>
+    {% appearance_get_user_theme_stylesheet user=request.user %}
+</style>
+
 {% if appearance_type == 'plain' %}
     {% block content_plain %}{% endblock %}
 {% else %}
     <div class="">
-        {% navigation_resolve_menus names='facet,list facet' sort_results=True as facet_menus_link_results %}
+        {% navigation_resolve_menus names='facet,list facet,related,return,sources' sort_results=True as facet_menus_link_results %}
         <div class="row zero-margin">
             <div class="col-xs-12 {% if facet_menus_link_results %}has-sidebar{% endif %}" id="viewport">
                 <div class="row zero-margin">
                     <div class="col-xs-12">
-                        {% common_check_sqlite as check_sqlite %}
-                        {% if common_check_sqlite %}
-                            <div class="alert alert-dismissible alert-warning">
-                                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                <p><strong>{% trans 'Warning' %}</strong> {{ check_sqlite }}</p>
-                            </div>
-                        {% endif %}
                         {% block messages %}
                         {% endblock %}
 
-                        {% common_get_missing_items as missing_items %}
-
-                        {% if missing_items %}
-                            <div class="alert alert-warning">
-                                {% for item in missing_items %}
-                                    <p><strong>{{ item.label }}</strong> </p>
-                                    <p>
-                                        {{ item.description }}
-                                        {% if item.view %}<a class="btn btn-primary" href="{% url item.view %}">{% trans 'Click here to fix this.' %}</a>{% endif %}
-                                    </p>
-                            {% endfor %}
-                            </div>
-                        {% endif %}
-
-                        {% smart_settings_check_changed as settings_changed %}
-                        {% if settings_changed %}
-                            <div class="alert alert-dismissible alert-warning">
-                                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                <p><strong>{% trans 'Warning' %}</strong> {% trans 'Settings updated, restart your installation and refresh your browser for changes to take effect.' %}</p>
-                            </div>
-                        {% endif %}
+                        {% appearance_app_templates template_name='viewport' %}
                     </div>
                 </div>
 
@@ -68,47 +49,7 @@
                 {% navigation_resolve_menus names='object,secondary' sort_results=True as action_menus_link_results %}
                 {% if action_menus_link_results %}
                     <div class="pull-right btn-group" id="menu-actions">
-                        <button aria-expanded="true" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown" type="button">
-                            {% trans 'Actions' %}
-                            <span class="caret"></span>
-                            <span class="sr-only">{% trans 'Toggle Dropdown' %}</span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                            {% for menus_link_result in action_menus_link_results %}
-                                {% if action_menus_link_results|length > 1 %}
-                                    <li class="dropdown-header">{{ menus_link_result.menu.label }}</li>
-                                {% endif %}
-
-                                {% for link_group in menus_link_result.link_groups %}
-                                    {% if navigation_object_list %}
-
-                                        {% ifchanged link_group.object %}
-                                        {% common_get_object_verbose_name obj=link_group.object as link_group_object_verbose_name %}
-                                            {% if link_group_object_verbose_name %}<li class="dropdown-header">{{ link_group_object_verbose_name }}</li>{% endif %}
-                                        {% endifchanged %}
-                                    {% endif %}
-
-                                    {% with link_group.links as object_navigation_links %}
-                                    {% with 'true' as as_li %}
-                                    {% with 'true' as hide_active_anchor %}
-                                    {% with 'btn-sm' as link_classes %}
-                                        {% include 'navigation/generic_navigation.html' %}
-                                    {% endwith %}
-                                    {% endwith %}
-                                    {% endwith %}
-                                    {% endwith %}
-
-                                    {% if not forloop.last and link_group %}
-                                        <li class="divider"></li>
-                                    {% endif %}
-
-                                {% endfor %}
-                                {% if not forloop.last and menus_link_result %}
-                                    <li class="divider"></li>
-                                {% endif %}
-                            {% endfor %}
-
-                        </ul>
+                        {% include 'appearance/partials/actions_dropdown.html' %}
                     </div>
                     <div class="clearfix"></div>
                 {% endif %}
@@ -121,7 +62,23 @@
                 <div id="sidebar">
                     <div class="list-group">
                         {% for menu_link_result in facet_menus_link_results %}
+                            {% if facet_menus_link_results|length > 1 %}
+                                {% if menu_link_result.menu.name not in 'facet,list facet'|split:"," %}
+                                    <li class="dropdown-header">{{ menu_link_result.menu.label }}</li>
+                                {% else %}
+                                        {% ifchanged menu_link_result.link_groups.0.object %}
+                                            {% common_get_object_verbose_name obj=menu_link_result.link_groups.0.object as link_group_object_verbose_name %}
+                                            <li class="dropdown-header">{% if link_group_object_verbose_name %}{{ link_group_object_verbose_name }}{% else %}{% trans 'Object' %}{% endif %}</li>
+                                        {% endifchanged %}
+                                {% endif %}
+                            {% else %}
+                                {% if menu_link_result.menu.name not in 'facet,list facet'|split:"," %}
+                                    <li class="dropdown-header">{{ menu_link_result.menu.label }}</li>
+                                {% endif %}
+                            {% endif %}
+
                             {% for link_group in menu_link_result.link_groups %}
+
                                 {% with link_group.links as object_navigation_links %}
                                 {% with 'true' as hide_active_anchor %}
                                 {% with 'active' as link_class_active %}
@@ -161,3 +118,4 @@
     document.title = document.title.replace(/&(?:[a-z\d]+|#\d+|#x[a-f\d]+);/ig, '');
     afterBaseLoad();
 </script>
+{% endspaceless %}

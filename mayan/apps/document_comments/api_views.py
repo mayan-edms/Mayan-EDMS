@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.shortcuts import get_object_or_404
 
 from mayan.apps.acls.models import AccessControlList
@@ -25,7 +23,7 @@ class APICommentListView(generics.ListCreateAPIView):
             permission_required = permission_document_comment_create
 
         document = get_object_or_404(
-            klass=Document, pk=self.kwargs['document_pk']
+            klass=Document, pk=self.kwargs['document_id']
         )
 
         AccessControlList.objects.check_access(
@@ -42,7 +40,7 @@ class APICommentListView(generics.ListCreateAPIView):
         if not self.request:
             return None
 
-        return super(APICommentListView, self).get_serializer(*args, **kwargs)
+        return super().get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -54,7 +52,7 @@ class APICommentListView(generics.ListCreateAPIView):
         """
         Extra context provided to the serializer class.
         """
-        context = super(APICommentListView, self).get_serializer_context()
+        context = super().get_serializer_context()
         if self.kwargs:
             context.update(
                 {
@@ -70,7 +68,7 @@ class APICommentView(generics.RetrieveUpdateDestroyAPIView):
     delete: Delete the selected document comment.
     get: Returns the details of the selected document comment.
     """
-    lookup_url_kwarg = 'comment_pk'
+    lookup_url_kwarg = 'comment_id'
     serializer_class = CommentSerializer
 
     def get_document(self):
@@ -82,7 +80,7 @@ class APICommentView(generics.RetrieveUpdateDestroyAPIView):
             permission_required = permission_document_comment_view
 
         document = get_object_or_404(
-            klass=Document, pk=self.kwargs['document_pk']
+            klass=Document, pk=self.kwargs['document_id']
         )
 
         AccessControlList.objects.check_access(
@@ -94,3 +92,11 @@ class APICommentView(generics.RetrieveUpdateDestroyAPIView):
 
     def get_queryset(self):
         return self.get_document().comments.all()
+
+    def perform_destroy(self, instance):
+        instance._event_actor = self.request.user
+        return super().perform_destroy(instance=instance)
+
+    def perform_update(self, serializer):
+        serializer.validated_data['_event_actor'] = self.request.user
+        return super().perform_update(serializer=serializer)

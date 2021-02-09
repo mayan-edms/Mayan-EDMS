@@ -1,20 +1,18 @@
-from __future__ import absolute_import, unicode_literals
-
 import logging
 
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.forms import DetailForm, FilteredSelectionForm
 from mayan.apps.django_gpg.models import Key
 from mayan.apps.django_gpg.permissions import permission_key_sign
+from mayan.apps.views.forms import DetailForm, FilteredSelectionForm
 
 from .models import SignatureBaseModel
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
-class DocumentVersionSignatureCreateForm(FilteredSelectionForm):
+class DocumentFileSignatureCreateForm(FilteredSelectionForm):
     key = forms.ModelChoiceField(
         label=_('Key'), queryset=Key.objects.none()
     )
@@ -22,7 +20,7 @@ class DocumentVersionSignatureCreateForm(FilteredSelectionForm):
     passphrase = forms.CharField(
         help_text=_(
             'The passphrase to unlock the key and allow it to be used to '
-            'sign the document version.'
+            'sign the document file.'
         ), label=_('Passphrase'), required=False,
         widget=forms.widgets.PasswordInput
     )
@@ -32,7 +30,7 @@ class DocumentVersionSignatureCreateForm(FilteredSelectionForm):
         field_name = 'key'
         label = _('Key')
         help_text = _(
-            'Private key that will be used to sign this document version.'
+            'Private key that will be used to sign this document file.'
         )
         permission = permission_key_sign
         queryset = Key.objects.private_keys()
@@ -40,13 +38,13 @@ class DocumentVersionSignatureCreateForm(FilteredSelectionForm):
         widget_attributes = {'class': 'select2'}
 
 
-class DocumentVersionSignatureDetailForm(DetailForm):
+class DocumentFileSignatureDetailForm(DetailForm):
     def __init__(self, *args, **kwargs):
         extra_fields = (
             {'label': _('Signature is embedded?'), 'field': 'is_embedded'},
             {
-                'label': _('Signature date'), 'field': 'date',
-                'widget': forms.widgets.DateInput
+                'label': _('Signature date'), 'field': 'date_time',
+                'widget': forms.widgets.DateTimeInput
             },
             {'label': _('Signature key ID'), 'field': 'key_id'},
             {
@@ -69,12 +67,12 @@ class DocumentVersionSignatureDetailForm(DetailForm):
                 {
                     'label': _('Key creation date'),
                     'field': lambda x: key.creation_date,
-                    'widget': forms.widgets.DateInput
+                    'widget': forms.widgets.DateTimeInput
                 },
                 {
                     'label': _('Key expiration date'),
                     'field': lambda x: key.expiration_date or _('None'),
-                    'widget': forms.widgets.DateInput
+                    'widget': forms.widgets.DateTimeInput
                 },
                 {
                     'label': _('Key length'),
@@ -95,9 +93,7 @@ class DocumentVersionSignatureDetailForm(DetailForm):
             )
 
         kwargs['extra_fields'] = extra_fields
-        super(
-            DocumentVersionSignatureDetailForm, self
-        ).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     class Meta:
         fields = ()

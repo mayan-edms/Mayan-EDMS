@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from mayan.apps.rest_api import generics
 
 from .classes import Permission
@@ -34,7 +32,7 @@ class APIRoleListView(generics.ListCreateAPIView):
         if not self.request:
             return None
 
-        return super(APIRoleListView, self).get_serializer(*args, **kwargs)
+        return super().get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -50,6 +48,7 @@ class APIRoleView(generics.RetrieveUpdateDestroyAPIView):
     patch: Edit the selected role.
     put: Edit the selected role.
     """
+    lookup_url_kwarg = 'role_id'
     mayan_object_permissions = {
         'GET': (permission_role_view,),
         'PUT': (permission_role_edit,),
@@ -62,7 +61,7 @@ class APIRoleView(generics.RetrieveUpdateDestroyAPIView):
         if not self.request:
             return None
 
-        return super(APIRoleView, self).get_serializer(*args, **kwargs)
+        return super().get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':

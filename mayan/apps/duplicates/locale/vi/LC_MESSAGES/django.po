@@ -1,0 +1,1143 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# Translators:
+# Thanh Long Hoàng <hoangthanhlong@gmail.com>, 2020
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-30 04:39+0000\n"
+"PO-Revision-Date: 2020-10-26 13:26+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Vietnamese (http://www.transifex.com/rosarior/mayan-edms/"
+"language/vi/)\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps.py:25 apps.py:39 links.py:14
+msgid "Duplicates"
+msgstr "Trùng lặp"
+
+#: links.py:18 models.py:20 models.py:30 views.py:75
+msgid "Duplicated documents"
+msgstr "Các tài liệu trùng lặp"
+
+#: links.py:24 queues.py:13
+msgid "Duplicated document scan"
+msgstr "Quét tài liệu trùng lặp"
+
+#: models.py:17
+msgid "Document"
+msgstr "Tài liệu"
+
+#: models.py:23
+msgid "Added"
+msgstr "Đã thêm"
+
+#: models.py:29
+msgid "Duplicated document"
+msgstr "Tài liệu trùng lặp"
+
+#: queues.py:8
+msgid "Clean empty duplicate lists"
+msgstr "Dọn danh sách trùng lặp rỗng"
+
+#: queues.py:18
+msgid "Scan document duplicates"
+msgstr "Tìm tài liệu trùng lặp"
+
+#: views.py:36
+msgid "Only exact copies of this document will be shown in the this list."
+msgstr "Chỉ có bản sao y của tài liệu này xuất hiện trong danh sách."
+
+#: views.py:40
+msgid "There are no duplicates for this document"
+msgstr "Không có tài liệu nào trùng lặp với tài liệu này"
+
+#: views.py:44
+#, python-format
+msgid "Duplicates for document: %s"
+msgstr "Các tài liệu trùng lặp với: %s"
+
+#: views.py:66
+msgid ""
+"Duplicates are documents that are composed of the exact same file, down to "
+"the last byte. Files that have the same text or OCR but are not identical or "
+"were saved using a different file format will not appear as duplicates."
+msgstr ""
+"Tài liệu trùng lặp bao gồm tệp tin giống hệt, tính theo từng byte. Các tệp "
+"tin có cùng nội dung chữ hoặc OCR nhưng không giống hệt hoặc được lưu ở định "
+"dạng khác sẽ không được coi là trùng lặp."
+
+#: views.py:73
+msgid "There are no duplicated documents"
+msgstr "Không có tài liệu trùng lặp"
+
+#: views.py:83
+msgid "Scan for duplicated documents?"
+msgstr "Tìm tài liệu trùng lặp?"
+
+#: views.py:90
+msgid "Duplicated document scan queued successfully."
+msgstr "Hoàn thành tìm tài liệu trùng lặp."
+
+#~ msgid "Documents"
+#~ msgstr "Tài liệu"
+
+#~ msgid "Create a document type"
+#~ msgstr "Tạo một kiểu Tài liệu"
+
+#~ msgid ""
+#~ "Every uploaded document must be assigned a document type, it is the basic "
+#~ "way Mayan EDMS categorizes documents."
+#~ msgstr ""
+#~ "Mỗi tài liệu tải lên phải được gán vào một kiểu tài liệu, đây là cách cơ "
+#~ "bản Mayan EDMS phân loại tài liệu"
+
+#~ msgid "Versions comment"
+#~ msgstr "Ghi chú cho các phiên bản"
+
+#~ msgid "Versions encoding"
+#~ msgstr "Mã hóa của phiên bản"
+
+#~ msgid "Versions mime type"
+#~ msgstr "Kiểu dữ liệu của phiên bản"
+
+#~ msgid "Versions timestamp"
+#~ msgstr "Thời gian của phiên bản"
+
+#~ msgid "Document version"
+#~ msgstr "Phiên bản của tài liệu"
+
+#~ msgid "Page number"
+#~ msgstr "Số trang"
+
+#~ msgid "Return the lastest version of the document."
+#~ msgstr "Quay về phiên bản mới nhất của tài liệu."
+
+#~ msgid "Latest version"
+#~ msgstr "Phiên bản mới nhất"
+
+#~ msgid "Thumbnail"
+#~ msgstr "Hình xem trước"
+
+#~ msgid "Pages"
+#~ msgstr "Trang"
+
+#~ msgid "Type"
+#~ msgstr "Kiểu"
+
+#~ msgid "UUID"
+#~ msgstr "UUID"
+
+#~ msgid "Total pages"
+#~ msgstr "Tổng số trang"
+
+#~ msgid "Total documents"
+#~ msgstr "Tổng số tài liệu"
+
+#~ msgid "Documents in trash"
+#~ msgstr "Tài liệu trong thùng rác"
+
+#~ msgid "Document types"
+#~ msgstr "Các kiểu tài liệu"
+
+#~ msgid "New documents this month"
+#~ msgstr "Tài liệu mới trong tháng này"
+
+#~ msgid "New pages this month"
+#~ msgstr "Các trang mới trong tháng này"
+
+#~ msgid "Document created"
+#~ msgstr "Tài liệu đã được tạo"
+
+#~ msgid "Document downloaded"
+#~ msgstr "Tài liệu đã tải xuống"
+
+#~ msgid "New version uploaded"
+#~ msgstr "Có phiên bản mới được tải lên"
+
+#~ msgid "New version created"
+#~ msgstr "Phiên bản mới được tạo ra"
+
+#~ msgid "Document properties edited"
+#~ msgstr "Thuộc tính tài liệu đã được sửa"
+
+#~ msgid "Document trashed"
+#~ msgstr "Tài liệu đã bị đưa vào thùng rác"
+
+#~ msgid "Document type changed"
+#~ msgstr "Kiểu tài liệu đã thay đổi"
+
+#~ msgid "Document type created"
+#~ msgstr "Kiểu tài liệu đã được tạo"
+
+#~ msgid "Document type edited"
+#~ msgstr "Kiểu tài liệu đã được sửa"
+
+#~ msgid "Document version reverted"
+#~ msgstr "Phiên bản tài liệu đã được phục hồi"
+
+#~ msgid "Document viewed"
+#~ msgstr "Tài liệu đã được xem"
+
+#~ msgid "Compress"
+#~ msgstr "Nén"
+
+#~ msgid ""
+#~ "Download the document in the original format or in a compressed manner. "
+#~ "This option is selectable only when downloading one document, for "
+#~ "multiple documents, the bundle will always be downloads as a compressed "
+#~ "file."
+#~ msgstr ""
+#~ "Tải xuống tài liệu ở dạng nguyên gốc hoặc dạng nén. Tùy chọn này chỉ chọn "
+#~ "được khi tải xuống một tài liệu, đối với nhiều tài liệu, dạng tệp nén sẽ "
+#~ "luôn được tải xuống."
+
+#~ msgid "Compressed filename"
+#~ msgstr "Tên tệp nén"
+
+#~ msgid ""
+#~ "The filename of the compressed file that will contain the documents to be "
+#~ "downloaded, if the previous option is selected."
+#~ msgstr ""
+#~ "Tên tệp nén sẽ chứa các tài liệu được tải xuống, nếu chọn tải tệp nén."
+
+#~ msgid "Quick document rename"
+#~ msgstr "Đổi tên nhanh tài liệu"
+
+#~ msgid "Preserve extension"
+#~ msgstr "Giữ phần mở rộng"
+
+#~ msgid ""
+#~ "Takes the file extension and moves it to the end of the filename allowing "
+#~ "operating systems that rely on file extensions to open document correctly."
+#~ msgstr ""
+#~ "Lấy phần mở rộng của tệp tin và đưa nó vào cuối tên tệp cho phép một số "
+#~ "hệ điều hành mở tài liệu đúng cách."
+
+#~ msgid "Date added"
+#~ msgstr "Ngày thêm"
+
+#~ msgid "Language"
+#~ msgstr "Ngôn ngữ"
+
+#~ msgid "File mimetype"
+#~ msgstr "Kiểu dữ liệu của tệp tin"
+
+#~ msgid "None"
+#~ msgstr "None"
+
+#~ msgid "File encoding"
+#~ msgstr "Mã hóa của tệp tin"
+
+#~ msgid "File size"
+#~ msgstr "Kích thước tệp tin"
+
+#~ msgid "Exists in storage"
+#~ msgstr "Đã tồn tại trong bộ nhớ"
+
+#~ msgid "File path in storage"
+#~ msgstr "Đường dẫn trong bộ nhớ"
+
+#~ msgid "Checksum"
+#~ msgstr "Checksum"
+
+#~ msgid "Page range"
+#~ msgstr "Khoảng trang"
+
+#~ msgid ""
+#~ "Page number from which all the transformations will be cloned. Existing "
+#~ "transformations will be lost."
+#~ msgstr ""
+#~ "Số trang mà thao tác biến đổi sẽ sao chép. Những biến đổi hiện tại sẽ bị "
+#~ "mất."
+
+#~ msgid "Document type"
+#~ msgstr "Kiểu tài liệu"
+
+#~ msgid ""
+#~ "Takes the file extension and moves it to the end of the filename allowing "
+#~ "operating systems that rely on file extensions to open the downloaded "
+#~ "document version correctly."
+#~ msgstr ""
+#~ "Lấy phần mở rộng của tệp tin và đưa nó vào cuối tên tệp cho phép một số "
+#~ "hệ điều hành mở tài liệu đúng cách."
+
+#~ msgid "Clear transformations"
+#~ msgstr "Xóa các biến đổi"
+
+#~ msgid "Clone transformations"
+#~ msgstr "Sao chép các biến đổi"
+
+#~ msgid "Change type"
+#~ msgstr "Đổi loại"
+
+#~ msgid "Advanced download"
+#~ msgstr "Tải xuống nâng cao"
+
+#~ msgid "Edit properties"
+#~ msgstr "Sửa thuộc tính"
+
+#~ msgid "All documents"
+#~ msgstr "Tất cả tài liệu"
+
+#~ msgid "Recently accessed"
+#~ msgstr "Truy cập gần đây"
+
+#~ msgid "Recently added"
+#~ msgstr "Đã thêm gần đây"
+
+#~ msgid "Preview"
+#~ msgstr "Xem trước"
+
+#~ msgid "Properties"
+#~ msgstr "Thuộc tính"
+
+#~ msgid "Print"
+#~ msgstr "In ấn"
+
+#~ msgid "Quick download"
+#~ msgstr "Tải xuống nhanh"
+
+#~ msgid "Create document type"
+#~ msgstr "Tạo kiểu tài liệu"
+
+#~ msgid "Delete"
+#~ msgstr "Xóa"
+
+#~ msgid "Deletion policies"
+#~ msgstr "Chính sách xóa"
+
+#~ msgid "Edit"
+#~ msgstr "Sửa"
+
+#~ msgid "Add quick label to document type"
+#~ msgstr "Thêm nhãn nhanh vào kiểu tài liệu"
+
+#~ msgid "Quick labels"
+#~ msgstr "Nhãn nhanh"
+
+#~ msgid "Versions"
+#~ msgstr "Các phiên bản"
+
+#~ msgid "Download version"
+#~ msgstr "Phiên bản tải xuống"
+
+#~ msgid "Revert"
+#~ msgstr "Quay lại phiên bản cũ"
+
+#~ msgid "Disable page"
+#~ msgstr "Vô hiệu hóa trang"
+
+#~ msgid "Disable pages"
+#~ msgstr "Vô hiệu hóa các trang"
+
+#~ msgid "Enable page"
+#~ msgstr "Kích hoạt trang"
+
+#~ msgid "Enable pages"
+#~ msgstr "Kích hoạt các trang"
+
+#~ msgid "First page"
+#~ msgstr "Trang đầu"
+
+#~ msgid "Last page"
+#~ msgstr "Trang cuối"
+
+#~ msgid "Previous page"
+#~ msgstr "Trang trước"
+
+#~ msgid "Next page"
+#~ msgstr "Trang sau"
+
+#~ msgid "Rotate left"
+#~ msgstr "Xoay trái"
+
+#~ msgid "Rotate right"
+#~ msgstr "Xoay phải"
+
+#~ msgid "Page image"
+#~ msgstr "Ảnh của trang"
+
+#~ msgid "Reset view"
+#~ msgstr "Đặt lại khung nhìn"
+
+#~ msgid "Zoom in"
+#~ msgstr "Phóng to"
+
+#~ msgid "Zoom out"
+#~ msgstr "Thu nhỏ"
+
+#~ msgid "Recalculate page count"
+#~ msgstr "Tính lại số trang"
+
+#~ msgid "Favorites"
+#~ msgstr "Yêu thích"
+
+#~ msgid "Add to favorites"
+#~ msgstr "Thêm vào Yêu thích"
+
+#~ msgid "Remove from favorites"
+#~ msgstr "Xóa khỏi Yêu thích"
+
+#~ msgid "Move to trash"
+#~ msgstr "Chuyển vào thùng rác"
+
+#~ msgid "Trash can"
+#~ msgstr "Thùng rác"
+
+#~ msgid "Restore"
+#~ msgstr "Phục hồi"
+
+#~ msgid "Empty trash"
+#~ msgstr "Xóa toàn bộ thùng rác"
+
+#~ msgid "Default"
+#~ msgstr "Mặc định"
+
+#~ msgid "All pages"
+#~ msgstr "Tất cả các trang"
+
+#~ msgid ""
+#~ "UUID of a document, universally Unique ID. An unique identifier generated "
+#~ "for each document."
+#~ msgstr ""
+#~ "UUID (universally Unique ID) của một tài liệu. Là định danh duy nhất được "
+#~ "tạo ra cho mỗi tài liệu."
+
+#~ msgid "The document type of the document."
+#~ msgstr "Kiểu tài liệu."
+
+#~ msgid "The name of the document."
+#~ msgstr "Tên tài liệu"
+
+#~ msgid "Label"
+#~ msgstr "Nhãn"
+
+#~ msgid "An optional short text describing a document."
+#~ msgstr "Mô tả ngắn về tài liệu (tùy chọn)."
+
+#~ msgid "Description"
+#~ msgstr "Mô tả"
+
+#~ msgid ""
+#~ "The server date and time when the document was finally processed and "
+#~ "added to the system."
+#~ msgstr "Ngày giờ của máy chủ khi tài liệu được xử lý và thêm vào hệ thống."
+
+#~ msgid "The dominant language in the document."
+#~ msgstr "Ngôn ngữ chính của tài liệu."
+
+#~ msgid "Whether or not this document is in the trash."
+#~ msgstr "Tài liệu này có ở trong thùng rác hay không."
+
+#~ msgid "In trash?"
+#~ msgstr "Có trong thùng rác?"
+
+#~ msgid "The server date and time when the document was moved to the trash."
+#~ msgstr "Ngày giờ của máy chủ khi tài liệu được đưa vào thùng rác."
+
+#~ msgid "Date and time trashed"
+#~ msgstr "Ngày giờ xóa"
+
+#~ msgid ""
+#~ "A document stub is a document with an entry on the database but no file "
+#~ "uploaded. This could be an interrupted upload or a deferred upload via "
+#~ "the API."
+#~ msgstr ""
+#~ "Tài liệu rỗng là tài liệu có bản ghi trong cơ sở dữ liệu nhưng không có "
+#~ "tệp tin được tải lên. Có thể do việc tải lên bị gián đoạn hoặc bị trì "
+#~ "hoãn thông qua API."
+
+#~ msgid "Is stub?"
+#~ msgstr "Có phải tài liệu rỗng?"
+
+#~ msgid "Document stub, id: %d"
+#~ msgstr "Tài liệu rỗng, id: %d"
+
+#~ msgid "Enabled"
+#~ msgstr "Đã kích hoạt"
+
+#~ msgid "Document page"
+#~ msgstr "Trang tài liệu"
+
+#~ msgid "Document pages"
+#~ msgstr "Trang tài liệu"
+
+#~ msgid "Page %(page_num)d out of %(total_pages)d of %(document)s"
+#~ msgstr "Trang %(page_num)d trong %(total_pages)d của %(document)s"
+
+#~ msgid "The name of the document type."
+#~ msgstr "Tên của kiểu tài liệu."
+
+#~ msgid ""
+#~ "Amount of time after which documents of this type will be moved to the "
+#~ "trash."
+#~ msgstr ""
+#~ "Thời lượng mà sau đó các tài liệu của kiểu này sẽ được đưa vào thùng rác."
+
+#~ msgid "Trash time period"
+#~ msgstr "Thời gian đưa vào thùng rác"
+
+#~ msgid "Trash time unit"
+#~ msgstr "Đơn vị thời gian đưa vào thùng rác"
+
+#~ msgid ""
+#~ "Amount of time after which documents of this type in the trash will be "
+#~ "deleted."
+#~ msgstr "Thời lượng mà sau đó các tài liệu của kiểu này sẽ bị xóa."
+
+#~ msgid "Delete time period"
+#~ msgstr "Thời gian xóa"
+
+#~ msgid "Delete time unit"
+#~ msgstr "Đơn vị thời gian xóa"
+
+#~ msgid "Documents types"
+#~ msgstr "Các kiểu tài liệu"
+
+#~ msgid "Quick label"
+#~ msgstr "Nhãn nhanh"
+
+#~ msgid "The server date and time when the document version was processed."
+#~ msgstr "Ngày giờ máy chủ khi phiên bản của tài liệu được xử lý."
+
+#~ msgid "Timestamp"
+#~ msgstr "Thời gian"
+
+#~ msgid "An optional short text describing the document version."
+#~ msgstr "Mô tả ngắn về phiên bản của tài liệu (tùy chọn)."
+
+#~ msgid "Comment"
+#~ msgstr "Ghi chú"
+
+#~ msgid "File"
+#~ msgstr "Tệp tin"
+
+#~ msgid ""
+#~ "The document version's file mimetype. MIME types are a standard way to "
+#~ "describe the format of a file, in this case the file format of the "
+#~ "document. Some examples: \"text/plain\" or \"image/jpeg\". "
+#~ msgstr ""
+#~ "Mimetype của tệp tin phiên bản tài liệu. MIME type là cách tiêu chuẩn để "
+#~ "mô tả định dạng của tệp tin, trong trường hợp này là định dạng của tài "
+#~ "liệu. Ví dụ: \"text/plain\" hoặc \"image/jpeg\"."
+
+#~ msgid "MIME type"
+#~ msgstr "MIME type"
+
+#~ msgid ""
+#~ "The document version file encoding. binary 7-bit, binary 8-bit, text, "
+#~ "base64, etc."
+#~ msgstr ""
+#~ "Mã hóa của phiên bản của tài liệu. nhị phân 7-bit, nhị phân 8-bit, ký tự, "
+#~ "base64,..."
+
+#~ msgid "Encoding"
+#~ msgstr "Mã hóa"
+
+#~ msgid "User"
+#~ msgstr "Người dùng"
+
+#~ msgid "Favorite document"
+#~ msgstr "Tài liệu yêu thích"
+
+#~ msgid "Favorite documents"
+#~ msgstr "Các tài liệu yêu thích"
+
+#~ msgid "Accessed"
+#~ msgstr "Đã truy cập"
+
+#~ msgid "Recent document"
+#~ msgstr "Tài liệu gần đây"
+
+#~ msgid "Recent documents"
+#~ msgstr "Các tài liệu gần đây"
+
+#~ msgid "Create documents"
+#~ msgstr "Tạo tài liệu"
+
+#~ msgid "Delete documents"
+#~ msgstr "Xóa tài liệu"
+
+#~ msgid "Trash documents"
+#~ msgstr "Chuyển tài liệu vào thùng rác"
+
+#~ msgid "Download documents"
+#~ msgstr "Tải xuống tài liệu"
+
+#~ msgid "Edit documents"
+#~ msgstr "Sửa tài liệu"
+
+#~ msgid "Create new document versions"
+#~ msgstr "Tạo phiên bản mới của tài liệu"
+
+#~ msgid "Edit document properties"
+#~ msgstr "Sửa thuộc tính tài liệu"
+
+#~ msgid "Print documents"
+#~ msgstr "In tài liệu"
+
+#~ msgid "Restore trashed document"
+#~ msgstr "Khôi phục tài liệu từ thùng rác"
+
+#~ msgid "Execute document modifying tools"
+#~ msgstr "Sử dụng các công cụ chỉnh sửa tài liệu"
+
+#~ msgid "Revert documents to a previous version"
+#~ msgstr "Quay lại phiên bản trước của tài liệu"
+
+#~ msgid "View documents' versions list"
+#~ msgstr "Xem danh sách các phiên bản của tài liệu"
+
+#~ msgid "View documents"
+#~ msgstr "Xem tài liệu"
+
+#~ msgid "Create document types"
+#~ msgstr "Tạo kiểu tài liệu"
+
+#~ msgid "Delete document types"
+#~ msgstr "Xóa kiểu tài liệu"
+
+#~ msgid "Edit document types"
+#~ msgstr "Sửa kiểu tài liệu"
+
+#~ msgid "View document types"
+#~ msgstr "Xem kiểu tài liệu"
+
+#~ msgid "Converter"
+#~ msgstr "Trình chuyển đổi"
+
+#~ msgid "Documents periodic"
+#~ msgstr "Chu kỳ của tài liệu"
+
+#~ msgid "Uploads"
+#~ msgstr "Tải lên"
+
+#~ msgid "Generate document page image"
+#~ msgstr "Tạo hình ảnh trang tài liệu"
+
+#~ msgid "Delete a document"
+#~ msgstr "Xóa một tài liệu"
+
+#~ msgid "Check document type delete periods"
+#~ msgstr "Kiểm tra chu kỳ xóa kiểu tài liệu"
+
+#~ msgid "Check document type trash periods"
+#~ msgstr "Kiểm tra chu kỳ chuyển kiểu tài liệu vào thùng rác"
+
+#~ msgid "Delete document stubs"
+#~ msgstr "Xóa tài liệu rỗng"
+
+#~ msgid "Update document page count"
+#~ msgstr "Cập nhật số trang của tài liệu"
+
+#~ msgid "Upload new document version"
+#~ msgstr "Tải lên phiên bản mới của tài liệu"
+
+#~ msgid ""
+#~ "The threshold at which the DOCUMENT_CACHE_STORAGE_BACKEND will start "
+#~ "deleting the oldest document image cache files. Specify the size in bytes."
+#~ msgstr ""
+#~ "Giới hạn mà DOCUMENT_CACHE_STORAGE_BACKEND sẽ bắt đầu xóa hình ảnh tạm "
+#~ "thời cũ nhất của tài liệu. Chỉ định kích thước ở đơn vị bytes."
+
+#~ msgid ""
+#~ "Path to the Storage subclass to use when storing the cached document "
+#~ "image files."
+#~ msgstr ""
+#~ "Đường dẫn tới class Storage để dùng khi lưu hình ảnh tạm thời của tài "
+#~ "liệu."
+
+#~ msgid "Arguments to pass to the DOCUMENT_CACHE_STORAGE_BACKEND."
+#~ msgstr "Các tham số truyền tới DOCUMENT_CACHE_STORAGE_BACKEND."
+
+#~ msgid "Maximum number of favorite documents to remember per user."
+#~ msgstr "Số tài liệu yêu thích tối đa cho mỗi người dùng."
+
+#~ msgid ""
+#~ "Detect the orientation of each of the document's pages and create a "
+#~ "corresponding rotation transformation to display it rightside up. This is "
+#~ "an experimental feature and it is disabled by default."
+#~ msgstr ""
+#~ "Phát hiện hướng của mỗi trang của tài liệu và biến đổi tương ứng để thể "
+#~ "hiện đúng chiều. Đây là tính năng thử nghiệm và mặc định được vô hiệu hóa."
+
+#~ msgid ""
+#~ "Size of blocks to use when calculating the document file's checksum. A "
+#~ "value of 0 disables the block calculation and the entire file will be "
+#~ "loaded into memory."
+#~ msgstr ""
+#~ "Kích cỡ block dùng để tính toán checksum của tệp tin tài liệu. Giá trị 0 "
+#~ "vô hiệu hóa tính toán theo block và toàn bộ tệp tin sẽ được tải vào bộ "
+#~ "nhớ."
+
+#~ msgid "Default documents language (in ISO639-3 format)."
+#~ msgstr "Ngôn ngữ mặc định của tài liệu (ở định dạng ISO639-3)."
+
+#~ msgid "List of supported document languages. In ISO639-3 format."
+#~ msgstr "Danh sách ngôn ngữ của tài liệu được hỗ trợ. Ở định dạng ISO639-3."
+
+#~ msgid ""
+#~ "Time in seconds that the browser should cache the supplied document "
+#~ "images. The default of 31559626 seconds corresponde to 1 year."
+#~ msgstr ""
+#~ "Thời gian tính theo giây mà trình duyệt lưu tạm hình ảnh của tài liệu. "
+#~ "Giá trị mặc định 31559626 giây tương ứng với 1 năm."
+
+#~ msgid ""
+#~ "Maximum number of recently accessed (created, edited, viewed) documents "
+#~ "to remember per user."
+#~ msgstr "Số tài liệu vừa truy cập tối đa (tạo, sửa, xem) cho mỗi người dùng."
+
+#~ msgid "Maximum number of recently created documents to show."
+#~ msgstr "Số lượng tài liệu vừa tạo tối đa."
+
+#~ msgid "Amount in degrees to rotate a document page per user interaction."
+#~ msgstr "Số độ để xoay trang tài liệu cho mỗi thao tác của người dùng."
+
+#~ msgid "Path to the Storage subclass to use when storing document files."
+#~ msgstr "Đường dẫn tới class Storage để dùng khi lưu tệp tin tài liệu."
+
+#~ msgid "Arguments to pass to the DOCUMENT_STORAGE_BACKEND."
+#~ msgstr "Các tham số truyền tới DOCUMENT_STORAGE_BACKEND."
+
+#~ msgid ""
+#~ "Time after which a document stub will be considered invalid and deleted."
+#~ msgstr "Thời gian mà sau đó tài liệu rỗng sẽ bị coi là vô hiệu và bị xóa."
+
+#~ msgid "Height in pixels of the document thumbnail image."
+#~ msgstr "Chiều cao tính bằng pixel của hình xem trước của tài liệu."
+
+#~ msgid ""
+#~ "Maximum amount in percent (%) to allow user to zoom in a document page "
+#~ "interactively."
+#~ msgstr ""
+#~ "Số phần trăm (%) tối đa cho phép người dùng phóng to trang tài liệu khi "
+#~ "xem."
+
+#~ msgid ""
+#~ "Minimum amount in percent (%) to allow user to zoom out a document page "
+#~ "interactively."
+#~ msgstr ""
+#~ "Số phần trăm (%) tối thiểu cho phép người dùng thu nhỏ trang tài liệu khi "
+#~ "xem."
+
+#~ msgid ""
+#~ "Amount in percent zoom in or out a document page per user interaction."
+#~ msgstr ""
+#~ "Số phần trăm phóng to hoặc thu nhỏ trang tài liệu với mỗi thao tác của "
+#~ "người dùng."
+
+#~ msgid "January"
+#~ msgstr "Tháng Một"
+
+#~ msgid "February"
+#~ msgstr "Tháng Hai"
+
+#~ msgid "March"
+#~ msgstr "Tháng Ba"
+
+#~ msgid "April"
+#~ msgstr "Tháng Tư"
+
+#~ msgid "May"
+#~ msgstr "Tháng Năm"
+
+#~ msgid "June"
+#~ msgstr "Tháng Sáu"
+
+#~ msgid "July"
+#~ msgstr "Tháng Bảy"
+
+#~ msgid "August"
+#~ msgstr "Tháng Tám"
+
+#~ msgid "September"
+#~ msgstr "Tháng Chín"
+
+#~ msgid "October"
+#~ msgstr "Tháng Mười"
+
+#~ msgid "November"
+#~ msgstr "Tháng Mười Một"
+
+#~ msgid "December"
+#~ msgstr "Tháng Mười Hai"
+
+#~ msgid "New documents per month"
+#~ msgstr "Tài liệu mới mỗi tháng"
+
+#~ msgid "New document versions per month"
+#~ msgstr "Phiên bản tài liệu mới mỗi tháng"
+
+#~ msgid "New document pages per month"
+#~ msgstr "Trang tài liệu mới mỗi tháng"
+
+#~ msgid "Total documents at each month"
+#~ msgstr "Tổng số tài liệu mỗi tháng"
+
+#~ msgid "Total document versions at each month"
+#~ msgstr "Tổng số phiên bản tài liệu mỗi tháng"
+
+#~ msgid "Total document pages at each month"
+#~ msgstr "Tổng số trang tài liệu mỗi tháng"
+
+#~ msgid ""
+#~ "Unable to initialize the document image storage. Check the settings {} "
+#~ "and {} for formatting errors."
+#~ msgstr ""
+#~ "Không thể kích hoạt nơi lưu trữ hình ảnh của tài liệu. Kiểm tra cài đặt "
+#~ "{} và {} để tìm lỗi định dạng."
+
+#~ msgid "Document images"
+#~ msgstr "Hình ảnh của tài liệu"
+
+#~ msgid ""
+#~ "Unable to initialize the document version storage. Check the settings {} "
+#~ "and {} for formatting errors."
+#~ msgstr ""
+#~ "Không thể kích hoạt nơi lưu trữ phiên bản của tài liệu. Kiểm tra cài đặt "
+#~ "{} và {} để tìm lỗi định dạng.\n"
+#~ " "
+
+#~ msgid "Document version files"
+#~ msgstr "Tệp tin phiên bản của tài liệu"
+
+#~ msgid "Document page image preview"
+#~ msgstr "Hình ảnh xem trước của tài liệu"
+
+#~ msgid ""
+#~ "\n"
+#~ "                    Page %(page_number)s of %(total_pages)s\n"
+#~ "                "
+#~ msgstr ""
+#~ "\n"
+#~ "                    Trang %(page_number)s của %(total_pages)s"
+
+#~ msgid "No pages to display"
+#~ msgstr "Không có trang nào để hiển thị"
+
+#~ msgid "Document image"
+#~ msgstr "Hình ảnh của tài liệu"
+
+#~ msgid "Unknown language \"%s\""
+#~ msgstr "Ngôn ngữ không xác định \"%s\""
+
+#~ msgid ""
+#~ "This could mean that the document is of a format that is not supported, "
+#~ "that it is corrupted or that the upload process was interrupted. Use the "
+#~ "document page recalculation action to attempt to introspect the page "
+#~ "count again."
+#~ msgstr ""
+#~ "Điều này có thể do định dạng tài liệu không được hỗ trợ, hoặc bị hỏng "
+#~ "hoặc quá trình tải lên bị gián đoạn. Hãy thử dùng hành động tính toán lại "
+#~ "số trang."
+
+#~ msgid "No document pages available"
+#~ msgstr "Không có trang tài liệu nào khả dụng"
+
+#~ msgid "Pages for document: %s"
+#~ msgstr "Trang cho tài liệu: %s"
+
+#~ msgid "There are no more pages in this document"
+#~ msgstr "Không còn thêm trang nào của tài liệu này"
+
+#~ msgid "You are already at the first page of this document"
+#~ msgstr "Bạn đang ở trang đầu tiên của tài liệu"
+
+#~ msgid "Image of: %s"
+#~ msgstr "Hình ảnh của: %s"
+
+#~ msgid "Disable the selected document page?"
+#~ msgid_plural "Disable the selected document pages?"
+#~ msgstr[0] "Vô hiệu hóa các trang tài liệu được chọn?"
+
+#~ msgid "Enable the selected document page?"
+#~ msgid_plural "Enable the selected document pages?"
+#~ msgstr[0] "Kích hoạt các trang tài liệu được chọn?"
+
+#~ msgid "Documents of type: %s"
+#~ msgstr "Tài liệu kiểu: %s"
+
+#~ msgid ""
+#~ "Document types are the most basic units of configuration. Everything in "
+#~ "the system will depend on them. Define a document type for each type of "
+#~ "physical document you intend to upload. Example document types: invoice, "
+#~ "receipt, manual, prescription, balance sheet."
+#~ msgstr ""
+#~ "Kiểu tài liệu là đơn vị cài đặt cơ bản nhất. Mọi thứ trong hệ thống đều "
+#~ "phụ thuộc vào nó. Định nghĩa một kiểu tài liệu điện tử cho mỗi kiểu tài "
+#~ "liệu thực tế bạn định tải lên. Ví dụ các kiểu tài liệu: hóa đơn, biên "
+#~ "lai, hướng dẫn sử dụng, đơn thuốc, bảng cân đối kế toán."
+
+#~ msgid "No document types available"
+#~ msgstr "Không có kiểu tài liệu nào khả dụng"
+
+#~ msgid "All documents of this type will be deleted too."
+#~ msgstr "Tất cả tài liệu của kiểu này cũng sẽ bị xóa."
+
+#~ msgid "Delete the document type: %s?"
+#~ msgstr "Xóa kiểu tài liệu: %s?"
+
+#~ msgid "Edit document type: %s"
+#~ msgstr "Sửa kiểu tài liệu: %s"
+
+#~ msgid "Deletion policies for document type: %s"
+#~ msgstr "Quy định xóa cho kiểu tài liệu: %s"
+
+#~ msgid "Create quick label for document type: %s"
+#~ msgstr "Tạo nhãn nhanh cho kiểu tài liệu: %s"
+
+#~ msgid ""
+#~ "Delete the quick label: %(label)s, from document type \"%(document_type)s"
+#~ "\"?"
+#~ msgstr "Xóa nhãn nhanh: %(label)s, từ kiểu tài liệu \"%(document_type)s\"?"
+
+#~ msgid ""
+#~ "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
+#~ msgstr ""
+#~ "Sửa nhãn nhanh: %(filename)s, từ kiểu tài liệu \"%(document_type)s\"?"
+
+#~ msgid ""
+#~ "Quick labels are predetermined filenames that allow the quick renaming of "
+#~ "documents as they are uploaded by selecting them from a list. Quick "
+#~ "labels can also be used after the documents have been uploaded."
+#~ msgstr ""
+#~ "Nhãn nhanh là những tên tệp tin định nghĩa sẵn, cho phép đổi tên nhanh "
+#~ "tài liệu khi chúng được tải lên, bằng cách chọn từ một danh sách. Nhãn "
+#~ "nhanh cũng có thể được dùng sau khi tài liệu được tải lên."
+
+#~ msgid "There are no quick labels for this document type"
+#~ msgstr "Không có nhãn nhanh nào cho kiểu tài liệu này"
+
+#~ msgid "Quick labels for document type: %s"
+#~ msgstr "Nhãn nhanh cho kiểu tài liệu: %s"
+
+#~ msgid "Download document version"
+#~ msgstr "Tải xuống phiên bản tài liệu"
+
+#~ msgid "Versions of document: %s"
+#~ msgstr "Các phiên bản của tài liệu: %s"
+
+#~ msgid "All later version after this one will be deleted too."
+#~ msgstr "Tất cả phiên bản sau phiên bản này sẽ bị xóa."
+
+#~ msgid "Revert to this version?"
+#~ msgstr "Quay lại phiên bản này?"
+
+#~ msgid "Document version reverted successfully"
+#~ msgstr "Phiên bản tài liệu được phục hồi thành công"
+
+#~ msgid "Error reverting document version; %s"
+#~ msgstr "Lỗi phục hồi phiên bản tài liệu; %s"
+
+#~ msgid "Preview of document version: %s"
+#~ msgstr "Xem trước phiên bản tài liệu: %s"
+
+#~ msgid "Error retrieving document list: %(exception)s."
+#~ msgstr "Lỗi tạo danh sách tài liệu: %(exception)s."
+
+#~ msgid ""
+#~ "This could mean that no documents have been uploaded or that your user "
+#~ "account has not been granted the view permission for any document or "
+#~ "document type."
+#~ msgstr ""
+#~ "Điều này có thể do chưa có tài liệu nào được tải lên hoặc tài khoản của "
+#~ "bạn không có quyền xem bất kỳ tài liệu hoặc kiểu tài liệu nào."
+
+#~ msgid "No documents available"
+#~ msgstr "Không có tài liệu nào"
+
+#~ msgid "Document type change request performed on %(count)d document"
+#~ msgstr "Yêu cầu thay đổi kiểu tài liệu cho %(count)d tài liệu"
+
+#~ msgid "Document type change request performed on %(count)d documents"
+#~ msgstr "Yêu cầu thay đổi kiểu tài liệu cho %(count)d tài liệu"
+
+#~ msgid "Change"
+#~ msgstr "Thay đổi"
+
+#~ msgid "Change the type of the selected document"
+#~ msgid_plural "Change the type of the selected documents"
+#~ msgstr[0] "Thay đổi kiểu của các tài liệu được chọn"
+
+#~ msgid "Change the type of the document: %s"
+#~ msgstr "Thay đổi kiểu của tài liệu: %s"
+
+#~ msgid "Document type for \"%s\" changed successfully."
+#~ msgstr "Kiểu của tài liệu \"%s\" đã thay đổi thành công."
+
+#~ msgid "Download"
+#~ msgstr "Tải xuống"
+
+#~ msgid "Preview of document: %s"
+#~ msgstr "Xem trước tài liệu: %s"
+
+#~ msgid "Edit properties of document: %s"
+#~ msgstr "Sửa thuộc tính tài liệu: %s"
+
+#~ msgid "Properties for document: %s"
+#~ msgstr "Thuộc tính của tài liệu: %s"
+
+#~ msgid "%(count)d document queued for page count recalculation"
+#~ msgstr "%(count)d tài liệu chờ tính toán số trang"
+
+#~ msgid "%(count)d documents queued for page count recalculation"
+#~ msgstr "%(count)d tài liệu chờ tính toán số trang"
+
+#~ msgid "Recalculate the page count of the selected document?"
+#~ msgid_plural "Recalculate the page count of the selected documents?"
+#~ msgstr[0] "Tính toán lại số trang của các tài liệu được chọn?"
+
+#~ msgid "Recalculate the page count of the document: %s?"
+#~ msgstr "Tính toán lại số trang của tài liệu: %s?"
+
+#~ msgid ""
+#~ "Document \"%(document)s\" is empty. Upload at least one document version "
+#~ "before attempting to detect the page count."
+#~ msgstr ""
+#~ "Tài liệu \"%(document)s\" rỗng. Tải lên ít nhất một phiên bản trước khi "
+#~ "thử phát hiện số trang."
+
+#~ msgid "Transformation clear request processed for %(count)d document"
+#~ msgstr ""
+#~ "Đã xử lý yêu cầu đặt lại biến đổi (xoay, thu phóng) cho %(count)d tài liệu"
+
+#~ msgid "Transformation clear request processed for %(count)d documents"
+#~ msgstr ""
+#~ "Đã xử lý yêu cầu đặt lại biến đổi (xoay, thu phóng) cho %(count)d tài liệu"
+
+#~ msgid "Clear all the page transformations for the selected document?"
+#~ msgid_plural "Clear all the page transformations for the selected document?"
+#~ msgstr[0] "Xóa tất cả biến đối trang của các tài liệu được chọn?"
+
+#~ msgid "Clear all the page transformations for the document: %s?"
+#~ msgstr "Xóa tất cả biến đối trang của tài liệu: %s?"
+
+#~ msgid ""
+#~ "Error deleting the page transformations for document: %(document)s; "
+#~ "%(error)s."
+#~ msgstr "Lỗi xóa biến đổi trang của tài liệu: %(document)s; %(error)s."
+
+#~ msgid ""
+#~ "Error cloning the page transformations for document: %(document)s; "
+#~ "%(error)s."
+#~ msgstr "Lỗi nhân bản biến đổi trang của tài liệu: %(document)s; %(error)s."
+
+#~ msgid "Transformations cloned successfully."
+#~ msgstr "Biến đổi được nhân bản thành công."
+
+#~ msgid "Submit"
+#~ msgstr "Gửi"
+
+#~ msgid "Clone page transformations for document: %s"
+#~ msgstr "Nhân bản biến đổi trang của tài liệu: %s"
+
+#~ msgid "Print: %s"
+#~ msgstr "In: %s"
+
+#~ msgid ""
+#~ "This view will list the latest documents viewed or manipulated in any way "
+#~ "by this user account."
+#~ msgstr ""
+#~ "Trang này liệt kê các tài liệu mới xem hoặc thao tác gần đây bởi người "
+#~ "dùng này."
+
+#~ msgid "There are no recently accessed document"
+#~ msgstr "Không có tài liệu vừa truy cập"
+
+#~ msgid "This view will list the latest documents uploaded in the system."
+#~ msgstr "Trang này liệt kê tài liệu mới tải lên hệ thống."
+
+#~ msgid "There are no recently added document"
+#~ msgstr "Không có tài liệu vừa được thêm"
+
+#~ msgid ""
+#~ "Favorited documents will be listed in this view. Up to %(count)d "
+#~ "documents can be favorited per user. "
+#~ msgstr ""
+#~ "Tài liệu yêu thích được liệt kê ở trang này. Tối đa %(count)d tài liệu "
+#~ "yêu thích với mỗi người dùng."
+
+#~ msgid "There are no favorited documents."
+#~ msgstr "Không có tài liệu yêu thích."
+
+#~ msgid "%(count)d document added to favorites."
+#~ msgstr "%(count)d tài liệu được thêm vào yêu thích."
+
+#~ msgid "%(count)d documents added to favorites."
+#~ msgstr "%(count)d tài liệu được thêm vào yêu thích."
+
+#~ msgid "Add"
+#~ msgstr "Thêm"
+
+#~ msgid "Document \"%(instance)s\" is not in favorites."
+#~ msgstr "Tài liệu \"%(instance)s\" không nằm trong mục yêu thích."
+
+#~ msgid "%(count)d document removed from favorites."
+#~ msgstr "%(count)d tài liệu bị loại khỏi yêu thích."
+
+#~ msgid "%(count)d documents removed from favorites."
+#~ msgstr "%(count)d tài liệu bị loại khỏi yêu thích."
+
+#~ msgid "Remove"
+#~ msgstr "Xóa"
+
+#~ msgid "%(count)d document moved to the trash."
+#~ msgstr "%(count)d tài liệu được chuyển vào thùng rác."
+
+#~ msgid "%(count)d documents moved to the trash."
+#~ msgstr "%(count)d tài liệu được chuyển vào thùng rác."
+
+#~ msgid "Move the selected document to the trash?"
+#~ msgid_plural "Move the selected documents to the trash?"
+#~ msgstr[0] "Chuyển tài liệu được chọn vào thùng rác?"
+
+#~ msgid "Empty trash?"
+#~ msgstr "Xóa sạch thùng rác?"
+
+#~ msgid "%(count)d trashed document submitted for deletion."
+#~ msgstr "%(count)d tài liệu trong thùng rác được yêu cầu xóa."
+
+#~ msgid "%(count)d trashed documents submitted for deletion."
+#~ msgstr "%(count)d tài liệu trong thùng rác được yêu cầu xóa."
+
+#~ msgid "Delete the selected trashed document?"
+#~ msgid_plural "Delete the selected trashed documents?"
+#~ msgstr[0] "Xóa các tài liệu được chọn?"
+
+#~ msgid ""
+#~ "To avoid loss of data, documents are not deleted instantly. First, they "
+#~ "are placed in the trash can. From here they can be then finally deleted "
+#~ "or restored."
+#~ msgstr ""
+#~ "Để tránh mất dữ liệu, tài liệu không được xóa ngay lập tức. Đầu tiên, "
+#~ "chúng được đưa vào thùng rác. Từ đó chúng có thể được khôi phục hoặc xóa "
+#~ "vĩnh viễn."
+
+#~ msgid "There are no documents in the trash can"
+#~ msgstr "Không có tài liệu trong thùng rác"
+
+#~ msgid "%(count)d trashed document restored."
+#~ msgstr "%(count)d tài liệu được khôi phục."
+
+#~ msgid "%(count)d trashed documents restored."
+#~ msgstr "%(count)d tài liệu được khôi phục."
+
+#~ msgid "Restore the selected trashed document?"
+#~ msgid_plural "Restore the selected trashed documents?"
+#~ msgstr[0] "Khôi phục các tài liệu được chọn?"
+
+#~ msgid "Pages: %d"
+#~ msgstr "Số trang: %d"
+
+#~ msgid "Send document to trash"
+#~ msgstr "Đưa tài liệu vào thùng rác"

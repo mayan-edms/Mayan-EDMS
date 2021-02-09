@@ -3,15 +3,18 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
+# Alex Chigrin <chalex84@mail.ru>, 2020
 # mizhgan <i@mizhgan.ru>, 2018
 # lilo.panic, 2016
+# OLeg Si <olegsm35@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 01:38-0400\n"
-"PO-Revision-Date: 2020-02-21 05:40+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-11-19 11:10+0000\n"
+"Last-Translator: Alex Chigrin <chalex84@mail.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,294 +22,172 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:87 permissions_runtime.py:7 settings.py:15
+#: apps.py:133 permissions.py:5 settings.py:13
 msgid "Common"
 msgstr "Общий"
 
-#: classes.py:185
+#: classes.py:456
 msgid "Model properties"
-msgstr ""
+msgstr "Свойства модели"
 
-#: classes.py:190
+#: classes.py:461
 msgid "Model fields"
-msgstr ""
+msgstr "Поля модели"
 
-#: classes.py:233
+#: classes.py:504
 msgid "Model related fields"
+msgstr "Поля, связанные с моделью"
+
+#: classes.py:509
+msgid "Model reverse fields"
 msgstr ""
 
-#: dependencies.py:308
+#: dependencies.py:195
 msgid "Used to allow offline translation of the code text strings."
-msgstr ""
+msgstr "Используется для разрешения автономного перевода текстовых строк кода."
 
-#: dependencies.py:313
+#: dependencies.py:204
 msgid "Provides style checking."
-msgstr ""
+msgstr "Обеспечивает проверку стиля."
 
-#: dependencies.py:318
+#: dependencies.py:209
 msgid "Command line environment with autocompletion."
-msgstr ""
+msgstr "Среда командной строки с автозаполнением."
 
-#: dependencies.py:323
+#: dependencies.py:214
 msgid "Checks proper formatting of the README file."
 msgstr ""
 
-#: forms.py:27
-msgid "Selection"
-msgstr "Выбор"
-
-#: forms.py:103
-msgid "None"
-msgstr "Ничего"
-
-#: generics.py:148
-msgid ""
-"Select entries to be removed. Hold Control to select multiple entries. Once "
-"the selection is complete, click the button below or double click the list "
-"to activate the action."
-msgstr ""
-
-#: generics.py:153
-msgid ""
-"Select entries to be added. Hold Control to select multiple entries. Once "
-"the selection is complete, click the button below or double click the list "
-"to activate the action."
-msgstr ""
-
-#: generics.py:286
-msgid "Add all"
-msgstr ""
-
-#: generics.py:295
-msgid "Add"
-msgstr "Добавить"
-
-#: generics.py:305
-msgid "Remove all"
-msgstr ""
-
-#: generics.py:314
-msgid "Remove"
-msgstr "Удалить"
-
-#: generics.py:524
-#, python-format
-msgid "Duplicate data error: %(error)s"
-msgstr ""
-
-#: generics.py:546
-#, python-format
-msgid "%(object)s not created, error: %(error)s"
-msgstr "%(object)s не создан, ошибка: %(error)s"
-
-#: generics.py:559
-#, python-format
-msgid "%(object)s created successfully."
-msgstr "%(object)s успешно создан."
-
-#: generics.py:598
-#, python-format
-msgid "%(object)s not deleted, error: %(error)s."
-msgstr "%(object)s не удалён, ошибка: %(error)s."
-
-#: generics.py:607
-#, python-format
-msgid "%(object)s deleted successfully."
-msgstr "%(object)s успешно удалён."
-
-#: generics.py:743
-#, python-format
-msgid "%(object)s not updated, error: %(error)s."
-msgstr "%(object)s не обновлён, ошибка: %(error)s."
-
-#: generics.py:754
-#, python-format
-msgid "%(object)s updated successfully."
-msgstr "%(object)s успешно обновлён."
-
-#: links.py:36
+#: links.py:31
 msgid "About this"
 msgstr "Информация"
 
-#: links.py:39
+#: links.py:34
 msgid "Get the book"
 msgstr ""
 
-#: links.py:44
+#: links.py:39
 msgid "Locale profile"
 msgstr "Профиль локали"
 
-#: links.py:49
+#: links.py:44
 msgid "Edit locale profile"
 msgstr "Редактировать локаль"
 
-#: links.py:54
+#: links.py:49
 msgid "Documentation"
 msgstr "Документация"
 
-#: links.py:59
-msgid "Errors"
-msgstr "Ошибки"
-
-#: links.py:65
-msgid "Clear all"
-msgstr "Очистить все"
-
-#: links.py:69
+#: links.py:52
 msgid "Forum"
 msgstr "Форум"
 
-#: links.py:73 views.py:105
+#: links.py:56 views.py:106
 msgid "License"
 msgstr "Лицензия"
 
-#: links.py:76
+#: links.py:61
+msgid "Copy"
+msgstr "Копировать"
+
+#: links.py:64
 msgid "Setup"
 msgstr "Настройки"
 
-#: links.py:79
+#: links.py:67
 msgid "Source code"
 msgstr "Исходные коды"
 
-#: links.py:83
-msgid "Get support"
+#: links.py:71
+msgid "Online store"
 msgstr ""
 
-#: links.py:87 queues.py:15 views.py:214
+#: links.py:75
+msgid "Get support"
+msgstr "Получить поддержку"
+
+#: links.py:79 queues.py:9 views.py:175
 msgid "Tools"
 msgstr "Инструменты"
 
-#: literals.py:14
+#: literals.py:18
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
-msgstr ""
+msgstr "Эта функция устарела и будет удалена в будущей версии."
 
-#: literals.py:17
+#: literals.py:21
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
 msgstr "В качестве базы данных задан SQLite. SQLite не должен использоваться в рабочем окружении, только для разработки и тестирования!"
 
-#: literals.py:35
+#: literals.py:30
 msgid "Days"
 msgstr "Дней"
 
-#: literals.py:36
+#: literals.py:31
 msgid "Hours"
 msgstr "Часов"
 
-#: literals.py:37
+#: literals.py:32
 msgid "Minutes"
 msgstr "Минут"
 
-#: menus.py:10
+#: menus.py:8
 msgid "System"
-msgstr ""
+msgstr "Система"
 
-#: menus.py:12 menus.py:13
+#: menus.py:10 menus.py:11
 msgid "Facet"
 msgstr ""
 
-#: menus.py:16
+#: menus.py:14
 msgid "Actions"
 msgstr "Действия"
 
-#: menus.py:17
-msgid "Secondary"
-msgstr ""
+#: menus.py:15
+msgid "Related"
+msgstr "Связанный"
 
-#: menus.py:22 models.py:93
+#: menus.py:16
+msgid "Secondary"
+msgstr "Вторичный"
+
+#: menus.py:21 models.py:25
 msgid "User"
 msgstr "Пользователь"
 
-#: mixins.py:292
-#, python-format
-msgid "No %(verbose_name)s found matching the query"
-msgstr ""
-
-#: mixins.py:405
-msgid "Object"
-msgstr "Объект"
-
-#: models.py:28
-msgid "Namespace"
-msgstr "Пространство имен"
-
-#: models.py:39 models.py:63
-msgid "Date time"
-msgstr "Дата и время"
-
-#: models.py:41 views.py:151
-msgid "Result"
-msgstr "Результат"
-
-#: models.py:47
-msgid "Error log entry"
-msgstr ""
-
-#: models.py:48
-msgid "Error log entries"
-msgstr ""
-
-#: models.py:59
-msgid "File"
-msgstr "Файл"
-
-#: models.py:61
-msgid "Filename"
-msgstr "Имя файла"
-
-#: models.py:67
-msgid "Shared uploaded file"
-msgstr "Загруженный файл совместного пользования"
-
-#: models.py:68
-msgid "Shared uploaded files"
-msgstr "Загруженные файлы совместного пользования"
-
-#: models.py:97
+#: models.py:29
 msgid "Timezone"
 msgstr "Часовой пояс"
 
-#: models.py:100
+#: models.py:32
 msgid "Language"
 msgstr "Язык"
 
-#: models.py:106
+#: models.py:38
 msgid "User locale profile"
 msgstr "Профиль локали пользователя"
 
-#: models.py:107
+#: models.py:39
 msgid "User locale profiles"
 msgstr "Профили локали пользователей"
 
-#: permissions_runtime.py:10
-msgid "View error log"
-msgstr ""
+#: permissions.py:8
+msgid "Copy object"
+msgstr "Копировать объект"
 
-#: queues.py:13
+#: queues.py:7
 msgid "Default"
 msgstr "Умолчание"
 
-#: queues.py:17
-msgid "Common periodic"
-msgstr ""
-
-#: queues.py:22
-msgid "Delete stale uploads"
-msgstr ""
-
-#: settings.py:22
-msgid "Automatically enable logging to all apps."
-msgstr "Автоматически разрешать всем установленным приложениям делать записи в журнале."
-
-#: settings.py:28
+#: settings.py:19
 msgid ""
 "Time to delay background tasks that depend on a database commit to "
 "propagate."
 msgstr "Время задержки фоновых задач зависящих от процесса распространения записанных в БД данных."
 
-#: settings.py:36
+#: settings.py:26
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
@@ -314,7 +195,7 @@ msgid ""
 " containing an application."
 msgstr ""
 
-#: settings.py:46
+#: settings.py:36
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
@@ -322,139 +203,86 @@ msgid ""
 " containing an application."
 msgstr ""
 
-#: settings.py:55
+#: settings.py:45
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
 msgstr ""
 
-#: settings.py:64
-msgid "The number objects that will be displayed per page."
-msgstr ""
-
-#: settings.py:71
-msgid "Enable error logging outside of the system error logging capabilities."
-msgstr ""
-
-#: settings.py:78
-msgid "Path to the logfile that will track errors during production."
-msgstr ""
-
-#: settings.py:85
+#: settings.py:53
 msgid "Name to be displayed in the main menu."
-msgstr ""
+msgstr "Имя, отображаемое в главном меню."
 
-#: settings.py:91
+#: settings.py:59
 msgid "URL of the installation or homepage of the project."
-msgstr ""
+msgstr "URL-адрес установки или домашней страницы проекта."
 
-#: settings.py:97
-msgid "A storage backend that all workers can use to share files."
-msgstr "Бекенд хранения, который каждый может использовать для хранения файлов."
+#: settings.py:64
+msgid "Base URL path to use for all views."
+msgstr "Базовый URL-путь для использования во всех представлениях."
 
-#: templatetags/common_tags.py:29
-msgid "Confirm delete"
-msgstr "Подтвердить удаление"
-
-#: templatetags/common_tags.py:34
-#, python-format
-msgid "Edit %s"
-msgstr ""
-
-#: templatetags/common_tags.py:37
-msgid "Confirm"
-msgstr "Подтверждать"
-
-#: templatetags/common_tags.py:41
-#, python-format
-msgid "Details for: %s"
-msgstr ""
-
-#: templatetags/common_tags.py:45
-#, python-format
-msgid "Edit: %s"
-msgstr ""
-
-#: templatetags/common_tags.py:48
-msgid "Create"
-msgstr "Создать"
-
-#: validators.py:46
+#: validators.py:44
 msgid "Enter a valid JSON value."
-msgstr ""
+msgstr "Введите допустимое JSON-значение."
 
-#: validators.py:70
+#: validators.py:68
 msgid "Enter a valid YAML value."
 msgstr "Введите допустимое YAML-значение."
 
-#: validators.py:86
+#: validators.py:84
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
-msgstr ""
+msgstr "Введите допустимое «внутреннее имя», состоящее из букв, цифр и знаков подчеркивания."
 
-#: views.py:27
+#: views.py:29
 msgid "About"
 msgstr "Инфо"
 
-#: views.py:40
+#: views.py:42
 msgid "Current user locale profile details"
 msgstr "Настройки локали текущего пользователя"
 
-#: views.py:46
+#: views.py:48
 msgid "Edit current user locale profile details"
 msgstr "Редактировать настройки локали текущего пользователя"
 
-#: views.py:96
+#: views.py:97
 msgid "Dashboard"
 msgstr "Панель управления"
 
-#: views.py:114
+#: views.py:118
 #, python-format
-msgid "Clear error log entries for: %s"
-msgstr ""
+msgid "Fields to be copied: %s"
+msgstr "Поля для копирования: %s"
 
-#: views.py:131
-msgid "Object error log cleared successfully"
-msgstr ""
-
-#: views.py:150
-msgid "Date and time"
-msgstr "Дата и время"
-
-#: views.py:156
-msgid ""
-"This view displays the error log of different object. An empty list is a "
-"good thing."
-msgstr ""
-
-#: views.py:160
-msgid "There are no error log entries"
-msgstr ""
-
-#: views.py:163
+#: views.py:127
 #, python-format
-msgid "Error log entries for: %s"
-msgstr ""
+msgid "Make a copy of %(object_name)s \"%(object)s\"?"
+msgstr "Сделать копию %(object_name)s \"%(object)s\"?"
 
-#: views.py:191
-msgid "No setup options available."
-msgstr ""
+#: views.py:136
+msgid "Object copied successfully."
+msgstr "Объект успешно скопирован."
 
-#: views.py:193
+#: views.py:153
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
-msgstr ""
+msgstr "Отсутствие результатов означает, что у вас нет необходимых разрешений для выполнения административной задачи."
 
-#: views.py:199
+#: views.py:156
+msgid "No setup options available."
+msgstr "Параметры настройки недоступны."
+
+#: views.py:160
 msgid "Setup items"
 msgstr "Элементы настроек"
 
-#: views.py:201
+#: views.py:162
 msgid "Here you can configure all aspects of the system."
-msgstr ""
+msgstr "Здесь вы можете настроить все аспекты системы."
 
-#: views.py:216
+#: views.py:177
 msgid "These modules are used to do system maintenance."
-msgstr ""
+msgstr "Эти модули используются для обслуживания системы."

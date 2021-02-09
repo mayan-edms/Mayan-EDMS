@@ -94,11 +94,11 @@ class PartialNavigation {
                     if (response.getResponseHeader('Content-Disposition')) {
                         window.location = this.url;
                     } else {
-                        $('#ajax-content').html(data);
+                        $('#ajax-content').html(data).change();
                     }
                 }
             },
-            error: function (jqXHR, textStatus, errorThrown){
+            error: function (jqXHR, textStatus, errorThrown) {
                 app.processAjaxRequestError(jqXHR);
             },
             dataType: 'html',
@@ -158,7 +158,6 @@ class PartialNavigation {
          * Method to process an AJAX request and make it presentable to the
          * user.
          */
-
         if (djangoDEBUG) {
             var errorMessage = null;
 
@@ -182,15 +181,18 @@ class PartialNavigation {
                 '
             );
         } else {
-          if (jqXHR.status == 0) {
-              $('#modal-server-error .modal-body').html($('#template-error').html());
-              $('#modal-server-error').modal('show')
-          } else {
-              $('#ajax-content').html(jqXHR.statusText);
-          }
+            if (jqXHR.status == 0) {
+                $('#modal-server-error .modal-body').html($('#template-error').html());
+                $('#modal-server-error').modal('show')
+            } else {
+                if ([403, 404, 500].indexOf(jqXHR.status !== -1)) {
+                    $('#ajax-content').html(jqXHR.responseText);
+                } else {
+                    $('#ajax-content').html(jqXHR.statusText);
+                }
+            }
         }
     }
-
 
     setLocation (newLocation, pushState) {
         /*
@@ -244,17 +246,32 @@ class PartialNavigation {
                 var uri = new URI(location);
                 var uriFragment = uri.fragment();
                 var url = $form.attr('action') || uriFragment;
+                var finalUrl = new URI(url);
+                var formQueryString = new URLSearchParams(decodeURIComponent($form.serialize()));
 
                 options.url = url;
-                lastAjaxFormData.url = url + '?' + decodeURIComponent($form.serialize());
+
+                // Merge the URL and the form values in a smart way instead
+                // of just blindly adding a '?' between them.
+                formQueryString.forEach(function(value, key) {
+                    finalUrl.addQuery(key, value);
+                });
+
+                lastAjaxFormData.url = finalUrl.toString();
 
                 if ($form.attr('target') == '_blank') {
                     // If the form has a target attribute we emulate it by
                     // opening a new window and passing the form serialized
                     // data as the query.
-                    window.open(
-                        $form.attr('action') + '?' + decodeURIComponent($form.serialize())
-                    );
+                    var finalUrl = new URI($form.attr('action'));
+                    var formQueryString = new URLSearchParams(decodeURIComponent($form.serialize()));
+
+                    // Merge the URL and the form values in a smart way instead
+                    // of just blindly adding a '?' between them.
+                    formQueryString.forEach(function(value, key) {
+                        finalUrl.addQuery(key, value);
+                    });
+                    window.open(finalUrl.toString());
 
                     return false;
                 }
@@ -280,7 +297,7 @@ class PartialNavigation {
                     var currentUri = new URI(window.location.hash);
                     currentUri.fragment(lastAjaxFormData.url);
                     history.pushState({}, '', currentUri);
-                    $('#ajax-content').html(data);
+                    $('#ajax-content').html(data).change();
                 }
             }
         });

@@ -2,7 +2,7 @@
 
 <div class="{% if div_class %}{{ div_class }}{% else %}col-xs-12 col-sm-6 col-md-4 col-lg-3{% endif %}">
     <a class="btn btn-primary btn-lg btn-block {% if 'new_window' in link.tags %}new_window{% endif %}" href="{{ link.url }}" style="">
-        {% if link.icon_class %}<span style="font-size: 200%;">{% appearance_icon_render link.icon_class enable_shadow=True %}</span>{% endif %}
+        {% if link.icon %}<span style="font-size: 200%;">{% appearance_icon_render link.icon enable_shadow=True %}</span>{% endif %}
         <br>
         {{ link.text }}
     </a>

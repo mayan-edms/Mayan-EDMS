@@ -109,5 +109,5 @@ The graphical representation of a workflow is similar to a flowchart. The
 states are represented with circles. The transitions are represented with
 arrows. Circle with a double border represent the initial state of the workflow.
 
-To view the graphical representations of workflow use **Preview** button of
-the workflow in the setup view.
+To view the graphical representations of workflow use :guilabel:`Preview`
+button of the workflow in the setup view.

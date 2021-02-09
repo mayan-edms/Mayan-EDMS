@@ -1,26 +1,34 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.apps import apps
-from django.template.loader import render_to_string
+from django.core.exceptions import PermissionDenied
+
+from mayan.apps.navigation.html_widgets import SourceColumnWidget
 
 from .permissions import permission_document_metadata_view
 
 
-def widget_document_metadata(context):
+class DocumentMetadataWidget(SourceColumnWidget):
     """
-    A widget that displays the metadata for the given document
+    A widget that displays the metadata for the given document.
     """
-    AccessControlList = apps.get_model(
-        app_label='acls', model_name='AccessControlList'
-    )
-    queryset = AccessControlList.objects.restrict_queryset(
-        queryset=context['object'].metadata.all(),
-        permission=permission_document_metadata_view,
-        user=context['user']
-    )
+    template_name = 'metadata/document_metadata_widget.html'
 
-    return render_to_string(
-        template_name='metadata/document_metadata_widget.html', context={
-            'queryset': queryset
-        }
-    )
+    def get_extra_context(self):
+        AccessControlList = apps.get_model(
+            app_label='acls', model_name='AccessControlList'
+        )
+
+        try:
+            AccessControlList.objects.check_access(
+                obj=self.value,
+                permissions=(permission_document_metadata_view,),
+                user=self.request.user
+            )
+        except PermissionDenied:
+            queryset = self.value.metadata.none()
+        else:
+            queryset = self.value.get_metadata(
+                permission=permission_document_metadata_view,
+                user=self.request.user
+            )
+
+        return {'queryset': queryset}

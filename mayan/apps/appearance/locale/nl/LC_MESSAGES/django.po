@@ -3,6 +3,10 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
+# bwakkie <bwakkie@gmail.com>, 2020
+# e6bc1d20d3f0031709c3c11db1061ebc_be0a371 <8b4e580508477646e97982ebad39e3af_312311>, 2020
+# j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
 # Johan Braeken, 2017
 # Justin Albstbstmeijer <justin@albstmeijer.nl>, 2016
 # Martin Horseling <martin.horseling@gmail.com>, 2018
@@ -10,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 01:37-0400\n"
-"PO-Revision-Date: 2020-02-21 05:39+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-09-27 08:36+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -20,97 +24,221 @@ msgstr ""
 "Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:11 settings.py:9
+#: apps.py:59 events.py:5 permissions.py:5 settings.py:7
 msgid "Appearance"
 msgstr "Uiterlijk"
 
-#: dependencies.py:10
+#: dependencies.py:8
 msgid "Lato font"
-msgstr ""
+msgstr "Lato font"
 
-#: dependencies.py:14
+#: dependencies.py:12
 msgid "Bootstrap"
 msgstr "Bootstrap"
 
-#: dependencies.py:18
+#: dependencies.py:16
 msgid "Bootswatch"
-msgstr ""
+msgstr "Bootswatch"
 
-#: dependencies.py:32
+#: dependencies.py:30
 msgid "Fancybox"
-msgstr ""
+msgstr "Fancybox"
 
-#: dependencies.py:36
+#: dependencies.py:34
 msgid "FontAwesome"
-msgstr ""
+msgstr "FontAwesome"
 
-#: dependencies.py:40
+#: dependencies.py:38
 msgid "jQuery"
-msgstr ""
+msgstr "jQuery"
 
-#: dependencies.py:43
+#: dependencies.py:41
 msgid "JQuery Form"
-msgstr ""
+msgstr "JQuery Form"
 
-#: dependencies.py:47
+#: dependencies.py:45
 msgid "jQuery Lazy Load"
-msgstr ""
+msgstr "jQuery Lazy Load"
 
-#: dependencies.py:51
+#: dependencies.py:49
 msgid "JQuery Match Height"
-msgstr ""
+msgstr "JQuery Match Height"
 
-#: dependencies.py:55
+#: dependencies.py:53
 msgid "Select 2"
-msgstr ""
+msgstr "Select 2"
 
-#: dependencies.py:59
+#: dependencies.py:57
 msgid "Toastr"
-msgstr ""
+msgstr "Toastr"
 
-#: dependencies.py:62
+#: dependencies.py:60
 msgid "URI.js"
+msgstr "URI.js"
+
+#: events.py:8
+msgid "Theme created"
 msgstr ""
 
-#: settings.py:14
+#: events.py:11
+msgid "Theme edited"
+msgstr ""
+
+#: links.py:15
+msgid "Theme settings"
+msgstr ""
+
+#: links.py:20
+msgid "Edit theme settings"
+msgstr ""
+
+#: links.py:27 views.py:47
+msgid "Create new theme"
+msgstr ""
+
+#: links.py:33
+msgid "Delete"
+msgstr "Verwijderen"
+
+#: links.py:39
+msgid "Edit"
+msgstr "Bewerken"
+
+#: links.py:43 links.py:47 models.py:25 views.py:111
+msgid "Themes"
+msgstr ""
+
+#: models.py:12
+msgid "A short text describing the theme."
+msgstr ""
+
+#: models.py:13
+msgid "Label"
+msgstr "Label"
+
+#: models.py:17
+msgid ""
+"The CSS stylesheet to change the appearance of the different user interface "
+"elements."
+msgstr ""
+
+#: models.py:19
+msgid "Stylesheet"
+msgstr ""
+
+#: models.py:24 models.py:60
+msgid "Theme"
+msgstr ""
+
+#: models.py:56
+msgid "User"
+msgstr "Gebruiker"
+
+#: models.py:64
+msgid "User theme setting"
+msgstr ""
+
+#: models.py:65
+msgid "User theme settings"
+msgstr ""
+
+#: permissions.py:8
+msgid "Create new themes"
+msgstr ""
+
+#: permissions.py:11
+msgid "Delete themes"
+msgstr ""
+
+#: permissions.py:14
+msgid "Edit themes"
+msgstr ""
+
+#: permissions.py:17
+msgid "View existing themes"
+msgstr ""
+
+#: settings.py:12
 msgid "Maximum number of characters that will be displayed as the view title."
-msgstr ""
+msgstr "Mamximum aantal tekens dat in de titel wordt weergegeven."
 
-#: settings.py:21
+#: settings.py:19
 msgid ""
 "Position where the system message will be displayed. Options are: top-left, "
 "top-center, top-right, bottom-left, bottom-center, bottom-right."
-msgstr ""
+msgstr "Positie waar systeemberichten worden weergegeven.\nOpties zijn: links-boven, rechts-boven, links-onder, midden-onder, rechts-onder."
 
-#: templates/403.html:5 templates/403.html:9
-msgid "Insufficient permissions"
-msgstr "Permissies zijn ontoereikend"
+#: templates/403.html:5 templates/403.html:30
+msgid "Insufficient permission"
+msgstr "Onvoldoende permissies"
 
-#: templates/403.html:11
+#: templates/403.html:32
 msgid "You don't have enough permissions for this operation."
 msgstr "U heeft niet genoeg permissies voor deze operatie."
 
-#: templates/404.html:5 templates/404.html:9
+#: templates/404.html:5 templates/404.html:30
 msgid "Page not found"
 msgstr "Pagina niet gevonden"
 
-#: templates/404.html:11
-msgid "Sorry, but the requested page could not be found."
-msgstr "Excuses, maar de opgevraagde pagina kan niet worden gevonden."
+#: templates/404.html:32
+msgid "The requested page could not be found."
+msgstr "De gevraagde pagina is niet gevonden."
 
-#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:56
+#: templates/404.html:40
+msgid "Possible reasons"
+msgstr "Mogelijke oorzaken"
+
+#: templates/404.html:44
+msgid "The location of the item is incorrect."
+msgstr "De locatie van het onderdeel is onjuist."
+
+#: templates/404.html:45
+msgid "The location is correct, but the item no longer exists."
+msgstr "De locatie is juist, maar het onderdeel bestaat niet meer."
+
+#: templates/404.html:46
+msgid ""
+"The location is be correct, but your account does not have the required "
+"permission to access it."
+msgstr "De locatie is juist, maar uw account mist de benodigde permissies om het te benaderen."
+
+#: templates/500.html:5 templates/500.html:30
+#: templates/appearance/root.html:58
 msgid "Server error"
 msgstr "Server fout"
 
-#: templates/500.html:11
-msgid ""
-"There's been an error. It's been reported to the site administrators via "
-"e-mail and should be fixed shortly. Thanks for your patience."
-msgstr "Er heeft een fout plaatsgevonden. Dit is gerapporteerd via email aan de beheerders van deze site en zou snel verholpen moeten worden. Bedankt voor uw geduld."
+#: templates/500.html:32
+msgid "There's been an unexpected error."
+msgstr "Er is een onverwachte fout."
+
+#: templates/500.html:40
+msgid "What to do next?"
+msgstr "Wat nu?"
+
+#: templates/500.html:44
+msgid "Refresh the page."
+msgstr "Ververs de pagina."
+
+#: templates/500.html:45
+msgid "Wait a bit. The system might be overloaded."
+msgstr "Even wachten. Het systeem kan te druk bezig zijn."
+
+#: templates/500.html:46
+msgid "Contact your system administrator."
+msgstr "Neem contact op met uw systeembeheerder."
+
+#: templates/500.html:47
+msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
+msgstr "Bekijk de logs voor berichten met de labels \"ERROR\", \"CRITICAL\" of \"FATAL\"."
+
+#: templates/500.html:48
+#, python-format
+msgid "Open a ticket using the <a href=\"%(issue_url)s\">issue tracker</a>."
+msgstr "Open een ticket in de <a href=\"%(issue_url)s\">issue tracker</a>."
 
 #: templates/appearance/about.html:10
 msgid "About"
-msgstr "Informatie"
+msgstr "Over"
 
 #: templates/appearance/about.html:73
 #, python-format
@@ -118,7 +246,7 @@ msgid ""
 "\n"
 "                    %(setting_project_title)s is based on %(project_title)s\n"
 "                "
-msgstr ""
+msgstr "\n%(setting_project_title)s is gebaseerd op %(project_title)s"
 
 #: templates/appearance/about.html:78
 msgid "Version"
@@ -139,7 +267,7 @@ msgid ""
 "\n"
 "                %(project_title)s is a free and open-source software brought to you with <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
 "            "
-msgstr ""
+msgstr "\n%(project_title)s is gratis en open-source software die u wordt aangeboden <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> door Roberto Rosario en medewerkers."
 
 #: templates/appearance/about.html:105
 #, python-format
@@ -147,7 +275,7 @@ msgid ""
 "\n"
 "                It takes great effort to make %(project_title)s as feature-rich as it is.\n"
 "            "
-msgstr ""
+msgstr "\nHet kost veel moeite om %(project_title)s zo rijk aan functies te maken als het is."
 
 #: templates/appearance/about.html:111
 #, python-format
@@ -155,7 +283,7 @@ msgid ""
 "\n"
 "                If you use %(project_title)s please <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">make a donation %(icon_social_paypal)s</a>\n"
 "            "
-msgstr ""
+msgstr "\nAls je %(project_title)s gebruikt overweeg <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">dan een donatie %(icon_social_paypal)s</a>"
 
 #: templates/appearance/about.html:117
 #, python-format
@@ -163,7 +291,7 @@ msgid ""
 "\n"
 "                The complete list of changes is available via the <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> or the short version <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
 "            "
-msgstr ""
+msgstr "\nDe complete lijst met aanpassingen is beschikbaar via de <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> of de verkorte versie <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a>."
 
 #: templates/appearance/about.html:123
 #, python-format
@@ -171,7 +299,7 @@ msgid ""
 "\n"
 "                For questions check the <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
 "            "
-msgstr ""
+msgstr "\nVoor vragen bekijk de  <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentatie %(icon_documentation)s</a>."
 
 #: templates/appearance/about.html:129
 #, python-format
@@ -179,7 +307,7 @@ msgid ""
 "\n"
 "                If you found a bug or have a feature idea, visit the <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository %(icon_source_code)s</a>.\n"
 "            "
-msgstr ""
+msgstr "\nZiet u een fout of heeft u ideeën? Bezoek het <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> of open een melding via het <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Broncode opslagplaats %(icon_source_code)s</a>."
 
 #: templates/appearance/about.html:134
 #, python-format
@@ -187,28 +315,40 @@ msgid ""
 "\n"
 "                Spread the word. Talk to your friends and colleagues about how awesome %(project_title)s is!\n"
 "            "
-msgstr ""
+msgstr "\nVertel het verder. Laat je vrienden en collega's weten hoe fantastisch %(project_title)s is!"
 
-#: templates/appearance/base.html:35 templates/appearance/base.html:59
+#: templates/appearance/base.html:43 templates/appearance/base.html:67
 msgid "Warning"
 msgstr "Waarschuwing"
 
-#: templates/appearance/base.html:49
+#: templates/appearance/base.html:57
 msgid "Click here to fix this."
-msgstr ""
+msgstr "Klik hier om dit te herstellen."
 
-#: templates/appearance/base.html:59
+#: templates/appearance/base.html:67
 msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."
-msgstr ""
+msgstr "Instellingen bijgewerkt. Herstart uw installatie en ververs de browser om te activeren."
 
-#: templates/appearance/base.html:72
+#: templates/appearance/base.html:75
+#, python-format
+msgid ""
+"\n"
+"                                        Impersonating user \"%(user)s\".\n"
+"                                    "
+msgstr "\nFunctioneer als gebruiker \"%(user)s\"."
+
+#: templates/appearance/base.html:78
+msgid "Click here when finished"
+msgstr "Klik hier indien voltooid"
+
+#: templates/appearance/base.html:92
 #: templates/appearance/generic_list_items_subtemplate.html:66
 msgid "Actions"
 msgstr "Acties"
 
-#: templates/appearance/base.html:74
+#: templates/appearance/base.html:94
 #: templates/appearance/generic_list_items_subtemplate.html:68
 #: templates/appearance/list_toolbar.html:67
 msgid "Toggle Dropdown"
@@ -216,11 +356,11 @@ msgstr "Toggle Dropdown"
 
 #: templates/appearance/calculate_form_title.html:10
 msgid "Open main menu"
-msgstr ""
+msgstr "Open hoofdmenu"
 
 #: templates/appearance/generic_confirm.html:14
 msgid "Are you sure?"
-msgstr ""
+msgstr "Weet u het zeker?"
 
 #: templates/appearance/generic_confirm.html:38
 msgid "Yes"
@@ -247,12 +387,12 @@ msgstr "Opslaan"
 #: templates/appearance/generic_form_subtemplate.html:96
 #: templates/appearance/generic_multiform_subtemplate.html:59
 msgid "Submit"
-msgstr "Verstuur"
+msgstr "Indienen"
 
 #: templates/appearance/generic_form_subtemplate.html:87
 #: templates/appearance/generic_multiform_subtemplate.html:63
 msgid "Cancel"
-msgstr "Onderbreek"
+msgstr "Annuleren"
 
 #: templates/appearance/generic_list_subtemplate.html:28
 msgid "Identifier"
@@ -283,39 +423,70 @@ msgstr "Totaal (%(start)s - %(end)s van %(total)s) (Pagina %(page_number)s van %
 msgid "Total: %(total)s"
 msgstr "Totaal: %(total)s"
 
-#: templates/appearance/list_toolbar.html:16
+#: templates/appearance/list_toolbar.html:13
 msgid "Select/Deselect all"
-msgstr ""
+msgstr "Alle selecteren/deselecteren"
+
+#: templates/appearance/list_toolbar.html:17
+msgid "Toggle list display mode"
+msgstr "Wissel lijst modus"
 
 #: templates/appearance/list_toolbar.html:60
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
-msgstr ""
+msgstr "Selecteer onderdelen voor bulk acties. Gebruik Shift + Klik om meerdere te selecteren."
 
 #: templates/appearance/list_toolbar.html:65
 msgid "Bulk actions"
-msgstr ""
+msgstr "Bulk acties"
 
 #: templates/appearance/menu_topbar.html:11
 msgid "Toggle navigation"
-msgstr "Toggle navigatie"
+msgstr "Wissel navigatie"
 
 #: templates/appearance/no_results.html:18
 msgid "No results"
 msgstr "Geen resultaten"
 
-#: templates/appearance/root.html:61
+#: templates/appearance/root.html:63
 msgid "Close"
 msgstr "Sluiten"
 
-#: templates/appearance/root.html:71
+#: templates/appearance/root.html:73
 msgid "Server communication error"
 msgstr "Server communicatie probleem"
 
-#: templates/appearance/root.html:73
+#: templates/appearance/root.html:75
 msgid "Check you network connection and try again in a few moments."
-msgstr "Controleer uw netwerkverbinding en probeer nog eens een beetje later."
+msgstr "Controleer uw netwerkverbinding en probeer het later nog eens."
 
-#: templatetags/appearance_tags.py:17
+#: templatetags/appearance_tags.py:44
 msgid "None"
 msgstr "Geen"
+
+#: views.py:29
+msgid "Current user theme settings details"
+msgstr ""
+
+#: views.py:35
+msgid "Edit current user theme settings details"
+msgstr ""
+
+#: views.py:69
+#, python-format
+msgid "Delete theme: %s"
+msgstr ""
+
+#: views.py:85
+#, python-format
+msgid "Edit theme: %s"
+msgstr ""
+
+#: views.py:105
+msgid ""
+"Themes allow changing the visual appearance without requiring code changes."
+msgstr ""
+
+#: views.py:109
+msgid "There are no themes"
+msgstr ""

@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ValidationError as DjangoValidationError
 from django.utils.encoding import force_text
@@ -38,18 +36,22 @@ class AccessControlListSerializer(serializers.ModelSerializer):
 
     def get_permissions_url(self, instance):
         return reverse(
-            'rest_api:accesscontrollist-permission-list', args=(
-                instance.content_type.app_label, instance.content_type.model,
-                instance.object_id, instance.pk
-            ), request=self.context['request'], format=self.context['format']
+            viewname='rest_api:accesscontrollist-permission-list', kwargs={
+                'app_label': instance.content_type.app_label,
+                'model_name': instance.content_type.model,
+                'object_id': instance.object_id,
+                'acl_id': instance.pk
+            }, request=self.context['request'], format=self.context['format']
         )
 
     def get_url(self, instance):
         return reverse(
-            'rest_api:accesscontrollist-detail', args=(
-                instance.content_type.app_label, instance.content_type.model,
-                instance.object_id, instance.pk
-            ), request=self.context['request'], format=self.context['format']
+            viewname='rest_api:accesscontrollist-detail', kwargs={
+                'app_label': instance.content_type.app_label,
+                'model_name': instance.content_type.model,
+                'object_id': instance.object_id,
+                'acl_id': instance.pk
+            }, request=self.context['request'], format=self.context['format']
         )
 
 
@@ -65,21 +67,23 @@ class AccessControlListPermissionSerializer(PermissionSerializer):
 
     def get_acl_permission_url(self, instance):
         return reverse(
-            'rest_api:accesscontrollist-permission-detail', args=(
-                self.context['acl'].content_type.app_label,
-                self.context['acl'].content_type.model,
-                self.context['acl'].object_id, self.context['acl'].pk,
-                instance.stored_permission.pk
-            ), request=self.context['request'], format=self.context['format']
+            viewname='rest_api:accesscontrollist-permission-detail', kwargs={
+                'app_label': self.context['acl'].content_type.app_label,
+                'model_name': self.context['acl'].content_type.model,
+                'object_id': self.context['acl'].object_id,
+                'acl_id': self.context['acl'].pk,
+                'permission_id': instance.stored_permission.pk
+            }, request=self.context['request'], format=self.context['format']
         )
 
     def get_acl_url(self, instance):
         return reverse(
-            'rest_api:accesscontrollist-detail', args=(
-                self.context['acl'].content_type.app_label,
-                self.context['acl'].content_type.model,
-                self.context['acl'].object_id, self.context['acl'].pk
-            ), request=self.context['request'], format=self.context['format']
+            viewname='rest_api:accesscontrollist-detail', kwargs={
+                'app_label': self.context['acl'].content_type.app_label,
+                'model_name': self.context['acl'].content_type.model,
+                'object_id': self.context['acl'].object_id,
+                'acl_id': self.context['acl'].pk
+            }, request=self.context['request'], format=self.context['format']
         )
 
 
@@ -155,18 +159,22 @@ class WritableAccessControlListSerializer(serializers.ModelSerializer):
 
     def get_permissions_url(self, instance):
         return reverse(
-            'rest_api:accesscontrollist-permission-list', args=(
-                instance.content_type.app_label, instance.content_type.model,
-                instance.object_id, instance.pk
-            ), request=self.context['request'], format=self.context['format']
+            viewname='rest_api:accesscontrollist-permission-list', kwargs={
+                'app_label': instance.content_type.app_label,
+                'model_name': instance.content_type.model,
+                'object_id': instance.object_id,
+                'acl_id': instance.pk
+            }, request=self.context['request'], format=self.context['format']
         )
 
     def get_url(self, instance):
         return reverse(
-            'rest_api:accesscontrollist-detail', args=(
-                instance.content_type.app_label, instance.content_type.model,
-                instance.object_id, instance.pk
-            ), request=self.context['request'], format=self.context['format']
+            viewname='rest_api:accesscontrollist-detail', kwargs={
+                'app_label': instance.content_type.app_label,
+                'model_name': instance.content_type.model,
+                'object_id': instance.object_id,
+                'acl_id': instance.pk
+            }, request=self.context['request'], format=self.context['format']
         )
 
     def validate(self, attrs):
@@ -178,7 +186,7 @@ class WritableAccessControlListSerializer(serializers.ModelSerializer):
         try:
             attrs['role'] = Role.objects.get(pk=attrs.pop('role_pk'))
         except Role.DoesNotExist as exception:
-            raise ValidationError(force_text(exception))
+            raise ValidationError(force_text(s=exception))
 
         permissions_pk_list = attrs.pop('permissions_pk_list', None)
         permissions_result = []

@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import logging
 import os
 
@@ -14,7 +12,7 @@ from ..literals import (
 from .base import InteractiveSource
 
 __all__ = ('StagingFolderSource',)
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class StagingFolderSource(InteractiveSource):

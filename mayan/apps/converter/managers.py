@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import logging
 
 from django.apps import apps
@@ -13,7 +11,7 @@ from mayan.apps.common.serialization import yaml_load
 from .classes import Layer
 from .transformations import BaseTransformation
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class LayerTransformationManager(models.Manager):
@@ -49,16 +47,23 @@ class LayerTransformationManager(models.Manager):
             )
 
         for stored_layer in access_layers:
-            access_permission = stored_layer.get_layer().permissions.get(
-                'access_permission', None
-            )
-            if access_permission:
-                try:
-                    AccessControlList.objects.check_access(
-                        obj=obj, permissions=(access_permission,), user=user
-                    )
-                except PermissionDenied:
-                    access_layers = access_layers.exclude(pk=stored_layer.pk)
+            try:
+                layer_class = stored_layer.get_layer()
+            except KeyError:
+                """
+                This was a class defined but later erased. Ignore it.
+                """
+            else:
+                access_permission = layer_class.permissions.get(
+                    'access_permission', None
+                )
+                if access_permission:
+                    try:
+                        AccessControlList.objects.check_access(
+                            obj=obj, permissions=(access_permission,), user=user
+                        )
+                    except PermissionDenied:
+                        access_layers = access_layers.exclude(pk=stored_layer.pk)
 
         for stored_layer in exclude_layers:
             exclude_permission = stored_layer.get_layer().permissions.get(
@@ -127,3 +132,13 @@ class LayerTransformationManager(models.Manager):
             return result
         else:
             return transformations
+
+
+class ObjectLayerManager(models.Manager):
+    def get_for(self, layer, obj):
+        content_type = ContentType.objects.get_for_model(model=obj)
+
+        return self.get_or_create(
+            content_type=content_type, object_id=obj.pk,
+            stored_layer=layer.stored_layer
+        )

@@ -7,11 +7,10 @@ except ImportError:
     print('ERROR: This authentication adapter requires django-allauth.')
     raise
 
-from django.conf import settings
 from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
 
-ADMIN_EMAIL_ADDRESSES = [email for name, email in settings.ADMINS]
+from .literals import ADMIN_EMAIL_ADDRESSES
 
 
 class AutoadminAccountAdapter(DefaultAccountAdapter):
@@ -40,9 +39,7 @@ class AutoadminAccountAdapter(DefaultAccountAdapter):
         Give superuser privileges automagically if the email address of a
         user confirming their email is listed in ``settings.ADMINS``.
         """
-        super(AutoadminAccountAdapter, self).confirm_email(
-            request=request, email_address=email_address
-        )
+        super().confirm_email(request=request, email_address=email_address)
 
         if email_address.email in ADMIN_EMAIL_ADDRESSES:
             user = email_address.user

@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.apps import apps
 from django.db import models
 
@@ -21,6 +19,11 @@ class MetadataTypeManager(models.Manager):
                 'metadata_type', flat=True
             )
         )
+
+    def get_for_document_types(self, queryset):
+        return self.filter(
+            document_types__document_type__in=queryset.values('pk')
+        ).distinct()
 
 
 class DocumentTypeMetadataTypeManager(models.Manager):

@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.conf.urls import url
 
 from .api_views import (
@@ -9,85 +7,90 @@ from .api_views import (
 )
 
 from .views import (
-    AllDocumentSignatureVerifyView, DocumentVersionDetachedSignatureCreateView,
-    DocumentVersionEmbeddedSignatureCreateView,
-    DocumentVersionSignatureDeleteView, DocumentVersionSignatureDetailView,
-    DocumentVersionSignatureDownloadView, DocumentVersionSignatureListView,
-    DocumentVersionSignatureUploadView
+    AllDocumentSignatureRefreshView, AllDocumentSignatureVerifyView,
+    DocumentFileDetachedSignatureCreateView,
+    DocumentFileEmbeddedSignatureCreateView, DocumentFileSignatureDeleteView,
+    DocumentFileSignatureDetailView, DocumentFileSignatureDownloadView,
+    DocumentFileSignatureListView, DocumentFileSignatureUploadView
 )
 
 urlpatterns = [
     url(
-        regex=r'^signatures/(?P<pk>\d+)/details/$',
-        view=DocumentVersionSignatureDetailView.as_view(),
-        name='document_version_signature_details'
+        regex=r'^documents/files/(?P<document_file_id>\d+)/signatures/$',
+        name='document_file_signature_list',
+        view=DocumentFileSignatureListView.as_view()
     ),
     url(
-        regex=r'^signatures/(?P<pk>\d+)/download/$',
-        view=DocumentVersionSignatureDownloadView.as_view(),
-        name='document_version_signature_download'
+        regex=r'^documents/files/(?P<document_file_id>\d+)/signatures/detached/create/$',
+        name='document_file_signature_detached_create',
+        view=DocumentFileDetachedSignatureCreateView.as_view()
     ),
     url(
-        regex=r'^documents/versions/(?P<pk>\d+)/signatures/$',
-        view=DocumentVersionSignatureListView.as_view(),
-        name='document_version_signature_list'
+        regex=r'^documents/files/(?P<document_file_id>\d+)/signatures/detached/upload/$',
+        name='document_file_signature_upload',
+        view=DocumentFileSignatureUploadView.as_view()
     ),
     url(
-        regex=r'^documents/versions/(?P<pk>\d+)/signatures/detached/upload/$',
-        view=DocumentVersionSignatureUploadView.as_view(),
-        name='document_version_signature_upload'
+        regex=r'^documents/files/(?P<document_file_id>\d+)/signatures/embedded/create/$',
+        name='document_file_signature_embedded_create',
+        view=DocumentFileEmbeddedSignatureCreateView.as_view()
     ),
     url(
-        regex=r'^documents/versions/(?P<pk>\d+)/signatures/detached/create/$',
-        view=DocumentVersionDetachedSignatureCreateView.as_view(),
-        name='document_version_signature_detached_create'
+        regex=r'^signatures/(?P<signature_id>\d+)/delete/$',
+        name='document_file_signature_delete',
+        view=DocumentFileSignatureDeleteView.as_view()
     ),
     url(
-        regex=r'^documents/versions/(?P<pk>\d+)/signatures/embedded/create/$',
-        view=DocumentVersionEmbeddedSignatureCreateView.as_view(),
-        name='document_version_signature_embedded_create'
+        regex=r'^signatures/(?P<signature_id>\d+)/details/$',
+        name='document_file_signature_details',
+        view=DocumentFileSignatureDetailView.as_view()
     ),
     url(
-        regex=r'^signatures/(?P<pk>\d+)/delete/$',
-        view=DocumentVersionSignatureDeleteView.as_view(),
-        name='document_version_signature_delete'
+        regex=r'^signatures/(?P<signature_id>\d+)/download/$',
+        name='document_file_signature_download',
+        view=DocumentFileSignatureDownloadView.as_view()
     ),
     url(
-        regex=r'^tools/all/document/version/signature/verify/$',
-        view=AllDocumentSignatureVerifyView.as_view(),
-        name='all_document_version_signature_verify'
+        regex=r'^tools/all/document/file/signature/refresh/$',
+        name='all_document_file_signature_refresh',
+        view=AllDocumentSignatureRefreshView.as_view()
     ),
+    url(
+        regex=r'^tools/all/document/file/signature/verify/$',
+        name='all_document_file_signature_verify',
+        view=AllDocumentSignatureVerifyView.as_view()
+    )
 ]
 
 api_urls = [
     url(
-        regex=r'^documents/(?P<document_id>[0-9]+)/versions/(?P<document_version_id>[0-9]+)/signatures/detached/$',
-        view=APIDocumentDetachedSignatureListView.as_view(),
-        name='document-version-signature-detached-list'
+        regex=r'^documents/(?P<document_id>[0-9]+)/files/(?P<document_file_id>[0-9]+)/signatures/detached/$',
+        name='document-file-signature-detached-list',
+        view=APIDocumentDetachedSignatureListView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<document_id>[0-9]+)/versions/(?P<document_version_id>[0-9]+)/signatures/detached/sign/$',
-        view=APIDocumentSignDetachedView.as_view(),
-        name='document-version-signature-detached-sign'
+        regex=r'^documents/(?P<document_id>[0-9]+)/files/(?P<document_file_id>[0-9]+)/signatures/detached/sign/$',
+        name='document-file-signature-detached-sign',
+        view=APIDocumentSignDetachedView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<document_id>[0-9]+)/versions/(?P<document_version_id>[0-9]+)/signatures/detached/(?P<detached_signature_id>[0-9]+)/$',
-        view=APIDocumentDetachedSignatureView.as_view(),
-        name='detachedsignature-detail'
+        regex=r'^documents/(?P<document_id>[0-9]+)/files/(?P<document_file_id>[0-9]+)/signatures/detached/(?P<detached_signature_id>[0-9]+)/$',
+        name='detachedsignature-detail',
+        view=APIDocumentDetachedSignatureView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<document_id>[0-9]+)/versions/(?P<document_version_id>[0-9]+)/signatures/embedded/$',
-        view=APIDocumentEmbeddedSignatureListView.as_view(),
-        name='document-version-signature-embedded-list'
+        regex=r'^documents/(?P<document_id>[0-9]+)/files/(?P<document_file_id>[0-9]+)/signatures/embedded/$',
+        name='document-file-signature-embedded-list',
+        view=APIDocumentEmbeddedSignatureListView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<document_id>[0-9]+)/versions/(?P<document_version_id>[0-9]+)/signatures/embedded/sign/$',
-        view=APIDocumentSignEmbeddedView.as_view(),
-        name='document-version-signature-embedded-sign'
+        regex=r'^documents/(?P<document_id>[0-9]+)/files/(?P<document_file_id>[0-9]+)/signatures/embedded/sign/$',
+        name='document-file-signature-embedded-sign',
+        view=APIDocumentSignEmbeddedView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<document_id>[0-9]+)/versions/(?P<document_version_id>[0-9]+)/signatures/embedded/(?P<embedded_signature_id>[0-9]+)/$',
-        view=APIDocumentEmbeddedSignatureView.as_view(),
-        name='embeddedsignature-detail'
+        regex=r'^documents/(?P<document_id>[0-9]+)/files/(?P<document_file_id>[0-9]+)/signatures/embedded/(?P<embedded_signature_id>[0-9]+)/$',
+        name='embeddedsignature-detail',
+        view=APIDocumentEmbeddedSignatureView.as_view()
     ),
 ]

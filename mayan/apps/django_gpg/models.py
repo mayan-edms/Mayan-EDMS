@@ -1,28 +1,32 @@
-from __future__ import absolute_import, unicode_literals
-
-from datetime import date
+from datetime import datetime
 import logging
 
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.urls import reverse
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
+from django.utils.timezone import make_aware
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.common.model_mixins import ExtraDataModelMixin
+from mayan.apps.events.classes import EventManagerSave
+from mayan.apps.events.decorators import method_event
+
+from .classes import GPGBackend
+from .events import event_key_created
 from .exceptions import NeedPassphrase, PassphraseError
 from .literals import (
-    ERROR_MSG_NEED_PASSPHRASE, ERROR_MSG_BAD_PASSPHRASE,
-    ERROR_MSG_GOOD_PASSPHRASE, KEY_TYPE_CHOICES, KEY_TYPE_SECRET,
+    ERROR_MSG_BAD_PASSPHRASE, ERROR_MSG_GOOD_PASSPHRASE,
+    ERROR_MSG_MISSING_PASSPHRASE, KEY_TYPE_CHOICES, KEY_TYPE_SECRET,
     OUTPUT_MESSAGE_CONTAINS_PRIVATE_KEY
 )
+
 from .managers import KeyManager
-from .runtime import gpg_backend
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
-@python_2_unicode_compatible
-class Key(models.Model):
+class Key(ExtraDataModelMixin, models.Model):
     """
     Fields:
     * key_type - Will show private or public, the only two types of keys in
@@ -32,10 +36,10 @@ class Key(models.Model):
         help_text=_('ASCII armored version of the key.'),
         verbose_name=_('Key data')
     )
-    creation_date = models.DateField(
+    creation_date = models.DateTimeField(
         editable=False, verbose_name=_('Creation date')
     )
-    expiration_date = models.DateField(
+    expiration_date = models.DateTimeField(
         blank=True, editable=False, null=True,
         verbose_name=_('Expiration date')
     )
@@ -68,7 +72,7 @@ class Key(models.Model):
         """
         Validate the key before saving.
         """
-        import_results = gpg_backend.import_key(key_data=self.key_data)
+        import_results = GPGBackend.get_instance().import_key(key_data=self.key_data)
 
         if not import_results.count:
             raise ValidationError(_('Invalid key data'))
@@ -77,7 +81,9 @@ class Key(models.Model):
             raise ValidationError(_('Key already exists.'))
 
     def get_absolute_url(self):
-        return reverse(viewname='django_gpg:key_detail', kwargs={'pk': self.pk})
+        return reverse(
+            viewname='django_gpg:key_detail', kwargs={'key_id': self.pk}
+        )
 
     @property
     def key_id(self):
@@ -86,18 +92,24 @@ class Key(models.Model):
         """
         return self.fingerprint[-8:]
 
-    def save(self, *args, **kwargs):
+    def introspect_key_data(self):
         # Fix the encoding of the key data stream.
-        self.key_data = force_text(self.key_data)
-        import_results, key_info = gpg_backend.import_and_list_keys(
+        self.key_data = force_text(s=self.key_data)
+        import_results, key_info = GPGBackend.get_instance().import_and_list_keys(
             key_data=self.key_data
         )
         logger.debug('key_info: %s', key_info)
 
         self.algorithm = key_info['algo']
-        self.creation_date = date.fromtimestamp(int(key_info['date']))
+        self.creation_date = make_aware(
+            value=datetime.fromtimestamp(int(key_info['date']))
+        )
         if key_info['expires']:
-            self.expiration_date = date.fromtimestamp(int(key_info['expires']))
+            self.expiration_date = make_aware(
+                value=datetime.fromtimestamp(
+                    int(key_info['expires'])
+                )
+            )
         self.fingerprint = key_info['fingerprint']
         self.length = int(key_info['length'])
         self.user_id = key_info['uids'][0]
@@ -106,9 +118,21 @@ class Key(models.Model):
         else:
             self.key_type = key_info['type']
 
-        super(Key, self).save(*args, **kwargs)
+    @method_event(
+        event_manager_class=EventManagerSave,
+        created={
+            'event': event_key_created,
+            'target': 'self'
+        },
+    )
+    def save(self, *args, **kwargs):
+        self.introspect_key_data()
+        super().save(*args, **kwargs)
 
-    def sign_file(self, file_object, passphrase=None, clearsign=False, detached=False, binary=False, output=None):
+    def sign_file(
+        self, file_object, passphrase=None, clearsign=False, detached=False,
+        binary=False, output=None
+    ):
         """
         Digitally sign a file
         WARNING: using clearsign=True and subsequent decryption corrupts the
@@ -118,7 +142,7 @@ class Key(models.Model):
         file, and appear to be due to random data being inserted in the
         output data stream."
         """
-        file_sign_results = gpg_backend.sign_file(
+        file_sign_results = GPGBackend.get_instance().sign_file(
             file_object=file_object, key_data=self.key_data,
             passphrase=passphrase, clearsign=clearsign, detached=detached,
             binary=binary, output=output
@@ -126,10 +150,11 @@ class Key(models.Model):
 
         logger.debug('file_sign_results.stderr: %s', file_sign_results.stderr)
 
-        if ERROR_MSG_NEED_PASSPHRASE in file_sign_results.stderr:
-            if ERROR_MSG_BAD_PASSPHRASE in file_sign_results.stderr:
-                raise PassphraseError
-            elif ERROR_MSG_GOOD_PASSPHRASE not in file_sign_results.stderr:
+        if ERROR_MSG_MISSING_PASSPHRASE in file_sign_results.stderr:
+            if ERROR_MSG_GOOD_PASSPHRASE not in file_sign_results.stderr:
                 raise NeedPassphrase
+
+        if ERROR_MSG_BAD_PASSPHRASE in file_sign_results.stderr:
+            raise PassphraseError
 
         return file_sign_results

@@ -1,11 +1,13 @@
-from __future__ import unicode_literals
-
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.apps import MayanAppConfig
-from mayan.apps.common.menus import menu_facet, menu_secondary
+from mayan.apps.common.menus import menu_facet, menu_secondary, menu_tools
 
-from .links import link_search, link_search_advanced, link_search_again
+from .classes import SearchModel
+from .links import (
+    link_search, link_search_advanced, link_search_again,
+    link_search_backend_reindex
+)
 
 
 class DynamicSearchApp(MayanAppConfig):
@@ -17,7 +19,10 @@ class DynamicSearchApp(MayanAppConfig):
     verbose_name = _('Dynamic search')
 
     def ready(self):
-        super(DynamicSearchApp, self).ready()
+        super().ready()
+
+        SearchModel.load_modules()
+        SearchModel.initialize()
 
         menu_facet.bind_links(
             links=(link_search, link_search_advanced),
@@ -27,4 +32,7 @@ class DynamicSearchApp(MayanAppConfig):
         )
         menu_secondary.bind_links(
             links=(link_search_again,), sources=('search:results',)
+        )
+        menu_tools.bind_links(
+            links=(link_search_backend_reindex,),
         )

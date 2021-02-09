@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
@@ -47,7 +45,7 @@ def handler_post_save_index_document(sender, **kwargs):
     """
     Reindex documents when they get edited. For indexing documents
     when they are first created the handler_index_document is called
-    from the custom post_document_created signal.
+    from the custom signal_post_document_created signal.
     """
     if not kwargs['created']:
         task_index_document.apply_async(

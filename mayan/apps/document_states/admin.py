@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.contrib import admin
 
 from .models import (
@@ -30,7 +28,9 @@ class WorkflowAdmin(admin.ModelAdmin):
 
     filter_horizontal = ('document_types',)
     inlines = (WorkflowStateInline, WorkflowTransitionInline)
-    list_display = ('label', 'internal_name', 'document_types_list')
+    list_display = (
+        'label', 'internal_name', 'document_types_list', 'auto_launch'
+    )
 
 
 @admin.register(WorkflowInstance)

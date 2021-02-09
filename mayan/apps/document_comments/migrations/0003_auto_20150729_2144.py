@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.db import migrations
 from django.conf import settings
 
@@ -24,10 +22,10 @@ def operation_migrate_old_comments(apps, schema_editor):
         )
         User = apps.get_model(*settings.AUTH_USER_MODEL.split('.'))
 
-        for old_comment in OldComment.objects.using(schema_editor.connection.alias).all():
+        for old_comment in OldComment.objects.using(alias=schema_editor.connection.alias).all():
             comment = Comment(
                 document=Document.objects.using(
-                    schema_editor.connection.alias
+                    alias=schema_editor.connection.alias
                 ).get(pk=old_comment.object_pk),
                 user=User(old_comment.user.pk),
                 comment=old_comment.comment,
@@ -37,7 +35,6 @@ def operation_migrate_old_comments(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('document_comments', '0002_auto_20150729_2144'),
         ('documents', '0001_initial'),

@@ -1,10 +1,10 @@
-from __future__ import unicode_literals
-
 from django import forms
 from django.core.exceptions import ValidationError
 from django.forms.formsets import formset_factory
 from django.utils.text import format_lazy
 from django.utils.translation import ugettext_lazy as _
+
+from mayan.apps.templating.fields import TemplateField
 
 from .classes import MetadataLookup
 from .models import DocumentTypeMetadataType, MetadataType
@@ -30,7 +30,7 @@ class DocumentMetadataForm(forms.Form):
         js = ('metadata/js/metadata_form.js',)
 
     def __init__(self, *args, **kwargs):
-        super(DocumentMetadataForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
         # Set form fields initial values
         if 'initial' in kwargs:
@@ -115,7 +115,7 @@ class DocumentMetadataForm(forms.Form):
         return self.cleaned_data
 
 
-DocumentMetadataFormSet = formset_factory(DocumentMetadataForm, extra=0)
+DocumentMetadataFormSet = formset_factory(form=DocumentMetadataForm, extra=0)
 
 
 class DocumentMetadataAddForm(forms.Form):
@@ -139,7 +139,7 @@ class DocumentMetadataAddForm(forms.Form):
         else:
             queryset = MetadataType.objects.none()
 
-        super(DocumentMetadataAddForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
         self.fields['metadata_type'].queryset = queryset
 
@@ -150,7 +150,7 @@ class DocumentMetadataRemoveForm(DocumentMetadataForm):
     )
 
     def __init__(self, *args, **kwargs):
-        super(DocumentMetadataRemoveForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.fields.pop('value')
 
     def clean(self):
@@ -158,18 +158,23 @@ class DocumentMetadataRemoveForm(DocumentMetadataForm):
 
 
 DocumentMetadataRemoveFormSet = formset_factory(
-    DocumentMetadataRemoveForm, extra=0
+    form=DocumentMetadataRemoveForm, extra=0
 )
 
 
 class MetadataTypeForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
-        super(MetadataTypeForm, self).__init__(*args, **kwargs)
-        self.fields['lookup'].help_text = format_lazy(
-            '{}{}{}',
-            self.fields['lookup'].help_text,
-            _(' Available template context variables: '),
-            MetadataLookup.get_as_help_text()
+        super().__init__(*args, **kwargs)
+        self.fields['default'] = TemplateField(
+            initial_help_text=self.fields['default'].help_text, required=False
+        )
+        self.fields['lookup'] = TemplateField(
+            initial_help_text=format_lazy(
+                '{}{}{}',
+                self.fields['lookup'].help_text,
+                _(' Available template context variables: '),
+                MetadataLookup.get_as_help_text()
+            ), required=False
         )
 
     class Meta:
@@ -198,7 +203,7 @@ class DocumentTypeMetadataTypeRelationshipForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         self._user = kwargs.pop('_user')
-        super(DocumentTypeMetadataTypeRelationshipForm, self).__init__(
+        super().__init__(
             *args, **kwargs
         )
 
@@ -272,12 +277,12 @@ class DocumentTypeMetadataTypeRelationshipForm(forms.Form):
 
 
 DocumentTypeMetadataTypeRelationshipFormSetBase = formset_factory(
-    DocumentTypeMetadataTypeRelationshipForm, extra=0
+    form=DocumentTypeMetadataTypeRelationshipForm, extra=0
 )
 
 
 class DocumentTypeMetadataTypeRelationshipFormSet(DocumentTypeMetadataTypeRelationshipFormSetBase):
     def __init__(self, *args, **kwargs):
         _user = kwargs.pop('_user')
-        super(DocumentTypeMetadataTypeRelationshipFormSet, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.form_kwargs.update({'_user': _user})

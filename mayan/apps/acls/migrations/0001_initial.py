@@ -1,10 +1,7 @@
-from __future__ import unicode_literals
-
 from django.db import models, migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('contenttypes', '0001_initial'),
         ('permissions', '__first__'),
@@ -41,8 +38,8 @@ class Migration(migrations.Migration):
                 (
                     'permission', models.ForeignKey(
                         on_delete=models.CASCADE,
-                        verbose_name='Permission',
-                        to='permissions.StoredPermission'
+                        to='permissions.StoredPermission',
+                        verbose_name='Permission'
                     )
                 ),
             ],
@@ -95,8 +92,8 @@ class Migration(migrations.Migration):
                 (
                     'permission', models.ForeignKey(
                         on_delete=models.CASCADE,
-                        verbose_name='Permission',
-                        to='permissions.StoredPermission'
+                        to='permissions.StoredPermission',
+                        verbose_name='Permission'
                     )
                 ),
             ],

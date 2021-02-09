@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.apps import MayanAppConfig
@@ -14,4 +12,4 @@ class PlatformApp(MayanAppConfig):
     verbose_name = _('Platform')
 
     def ready(self):
-        super(PlatformApp, self).ready()
+        super().ready()

@@ -1,9 +1,7 @@
-from __future__ import unicode_literals
-
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.forms import DetailForm
+from mayan.apps.views.forms import DetailForm
 
 from .literals import STATE_LABELS
 from .models import DocumentCheckout
@@ -12,7 +10,7 @@ from .widgets import SplitTimeDeltaWidget
 
 class DocumentCheckOutForm(forms.ModelForm):
     class Meta:
-        fields = ('expiration_datetime', 'block_new_version')
+        fields = ('expiration_datetime', 'block_new_file')
         model = DocumentCheckout
         widgets = {
             'expiration_datetime': SplitTimeDeltaWidget()
@@ -50,13 +48,13 @@ class DocumentCheckOutDetailForm(DetailForm):
                     'widget': forms.widgets.DateTimeInput
                 },
                 {
-                    'label': _('New versions allowed?'),
-                    'field': lambda instance: _('Yes') if not checkout_info.block_new_version else _('No')
+                    'label': _('New files allowed?'),
+                    'field': lambda instance: _('Yes') if not checkout_info.block_new_file else _('No')
                 },
             )
 
         kwargs['extra_fields'] = extra_fields
-        super(DocumentCheckOutDetailForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     class Meta:
         fields = ()

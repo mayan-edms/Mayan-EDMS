@@ -3,8 +3,9 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Marcin Lozynski <mlozynski@wp.pl>, 2019
-# Tomasz Szymanowicz <alakdae@gmail.com>, 2019
+# Tomasz Szymanowicz <alakdae@gmail.com>, 2019-2020
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016,2018,2020
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2017
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016
@@ -12,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 01:37-0400\n"
-"PO-Revision-Date: 2020-02-21 05:39+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-12-09 16:28+0000\n"
+"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,93 +23,217 @@ msgstr ""
 "Language: pl\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: apps.py:11 settings.py:9
+#: apps.py:59 events.py:5 permissions.py:5 settings.py:7
 msgid "Appearance"
 msgstr "Wygląd"
 
-#: dependencies.py:10
+#: dependencies.py:8
 msgid "Lato font"
 msgstr "Czcionka Lato"
 
-#: dependencies.py:14
+#: dependencies.py:12
 msgid "Bootstrap"
 msgstr "Bootstrap"
 
-#: dependencies.py:18
+#: dependencies.py:16
 msgid "Bootswatch"
 msgstr "Bootswatch"
 
-#: dependencies.py:32
+#: dependencies.py:30
 msgid "Fancybox"
 msgstr "Fancybox"
 
-#: dependencies.py:36
+#: dependencies.py:34
 msgid "FontAwesome"
 msgstr "FontAwesome"
 
-#: dependencies.py:40
+#: dependencies.py:38
 msgid "jQuery"
 msgstr "jQuery"
 
-#: dependencies.py:43
+#: dependencies.py:41
 msgid "JQuery Form"
 msgstr "Formularz JQuery"
 
-#: dependencies.py:47
+#: dependencies.py:45
 msgid "jQuery Lazy Load"
-msgstr "jQuery Opóźnione Ładowanie"
+msgstr "Opóźnione ładowanie jQuery"
 
-#: dependencies.py:51
+#: dependencies.py:49
 msgid "JQuery Match Height"
-msgstr "JQuery Wyrównaj Wysokość"
+msgstr "Wyrównaj wysokość jQuery"
 
-#: dependencies.py:55
+#: dependencies.py:53
 msgid "Select 2"
 msgstr "Wybierz 2"
 
-#: dependencies.py:59
+#: dependencies.py:57
 msgid "Toastr"
 msgstr "Toastr"
 
-#: dependencies.py:62
+#: dependencies.py:60
 msgid "URI.js"
 msgstr "URI.js"
 
-#: settings.py:14
+#: events.py:8
+msgid "Theme created"
+msgstr "Motyw utworzony"
+
+#: events.py:11
+msgid "Theme edited"
+msgstr "Motyw zmodyfikowany"
+
+#: links.py:15
+msgid "Theme settings"
+msgstr "Ustawienia motywu"
+
+#: links.py:20
+msgid "Edit theme settings"
+msgstr "Modyfikuj ustawienia motywu"
+
+#: links.py:27 views.py:47
+msgid "Create new theme"
+msgstr "Utwórz nowy motyw"
+
+#: links.py:33
+msgid "Delete"
+msgstr "Usuń"
+
+#: links.py:39
+msgid "Edit"
+msgstr "Edytuj"
+
+#: links.py:43 links.py:47 models.py:25 views.py:111
+msgid "Themes"
+msgstr "Motywy"
+
+#: models.py:12
+msgid "A short text describing the theme."
+msgstr "Krótki opis motywu."
+
+#: models.py:13
+msgid "Label"
+msgstr "Etykieta"
+
+#: models.py:17
+msgid ""
+"The CSS stylesheet to change the appearance of the different user interface "
+"elements."
+msgstr "Arkusz stylów CSS zmieniający wygląd różnych elementów interfejsu użytkownika"
+
+#: models.py:19
+msgid "Stylesheet"
+msgstr "Arkusz stylów"
+
+#: models.py:24 models.py:60
+msgid "Theme"
+msgstr "Motyw"
+
+#: models.py:56
+msgid "User"
+msgstr "Użytkownik"
+
+#: models.py:64
+msgid "User theme setting"
+msgstr "Ustawienie użytkownika dla motywu"
+
+#: models.py:65
+msgid "User theme settings"
+msgstr "Ustawienia użytkownika dla motywu"
+
+#: permissions.py:8
+msgid "Create new themes"
+msgstr "Utwórz nowe motywy"
+
+#: permissions.py:11
+msgid "Delete themes"
+msgstr "Usuń motywy"
+
+#: permissions.py:14
+msgid "Edit themes"
+msgstr "Modyfikuj motywy"
+
+#: permissions.py:17
+msgid "View existing themes"
+msgstr "Przeglądaj motywy"
+
+#: settings.py:12
 msgid "Maximum number of characters that will be displayed as the view title."
 msgstr "Wyświetlono maksymalną liczbę znaków"
 
-#: settings.py:21
+#: settings.py:19
 msgid ""
 "Position where the system message will be displayed. Options are: top-left, "
 "top-center, top-right, bottom-left, bottom-center, bottom-right."
 msgstr "Pozycja na ekranie, w której będzie wyświetlany komunikat systemowy. Dostępne opcje: top-left (góra-lewy róg), top-center (góra-środek), top-right (góra-prawy róg), bottom-left (dół-lewy róg), bottom-center (dół-środek), bottom-right (dół-prawy róg)."
 
-#: templates/403.html:5 templates/403.html:9
-msgid "Insufficient permissions"
+#: templates/403.html:5 templates/403.html:30
+msgid "Insufficient permission"
 msgstr "Niewystarczające uprawnienia"
 
-#: templates/403.html:11
+#: templates/403.html:32
 msgid "You don't have enough permissions for this operation."
 msgstr "Nie masz wystarczających uprawnień do tej operacji."
 
-#: templates/404.html:5 templates/404.html:9
+#: templates/404.html:5 templates/404.html:30
 msgid "Page not found"
 msgstr "Nie znaleziono strony"
 
-#: templates/404.html:11
-msgid "Sorry, but the requested page could not be found."
-msgstr "Niestety, żądana strona nie została znaleziona."
+#: templates/404.html:32
+msgid "The requested page could not be found."
+msgstr "Żądana strona nie została znaleziona."
 
-#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:56
+#: templates/404.html:40
+msgid "Possible reasons"
+msgstr "Możliwe przyczyny"
+
+#: templates/404.html:44
+msgid "The location of the item is incorrect."
+msgstr "Lokalizacja elementu jest nieprawidłowa."
+
+#: templates/404.html:45
+msgid "The location is correct, but the item no longer exists."
+msgstr "Lokalizacja jest poprawna, ale element już nie istnieje."
+
+#: templates/404.html:46
+msgid ""
+"The location is be correct, but your account does not have the required "
+"permission to access it."
+msgstr "Lokalizacja jest poprawna, ale twoje konto nie ma wymaganych uprawnień, aby uzyskać do niej dostęp."
+
+#: templates/500.html:5 templates/500.html:30
+#: templates/appearance/root.html:58
 msgid "Server error"
 msgstr "Błąd serwera"
 
-#: templates/500.html:11
-msgid ""
-"There's been an error. It's been reported to the site administrators via "
-"e-mail and should be fixed shortly. Thanks for your patience."
-msgstr "Wystąpił błąd. Wiadomość o tym została przekazana do administratorów i wkrótce problem zostanie rozwiązany. Dziękujemy za cierpliwość."
+#: templates/500.html:32
+msgid "There's been an unexpected error."
+msgstr "Wystąpił nieoczekiwany błąd."
+
+#: templates/500.html:40
+msgid "What to do next?"
+msgstr "Co zrobić dalej?"
+
+#: templates/500.html:44
+msgid "Refresh the page."
+msgstr "Odśwież stronę."
+
+#: templates/500.html:45
+msgid "Wait a bit. The system might be overloaded."
+msgstr "Poczekaj chwilę. System może być przeciążony."
+
+#: templates/500.html:46
+msgid "Contact your system administrator."
+msgstr "Skontaktuj się z administratorem systemu."
+
+#: templates/500.html:47
+msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
+msgstr "Sprawdź, czy w dziennikach nie ma wiadomości zawierających tagi „ERROR”, „CRITICAL” lub „FATAL”."
+
+#: templates/500.html:48
+#, python-format
+msgid "Open a ticket using the <a href=\"%(issue_url)s\">issue tracker</a>."
+msgstr "Otwórz wątek za pomocą narzędzia do <a href=\"%(issue_url)s\">śledzenia problemów</a> ."
 
 #: templates/appearance/about.html:10
 msgid "About"
@@ -133,7 +258,7 @@ msgstr "Numer wersji: %(build_number)s"
 
 #: templates/appearance/about.html:93
 msgid "Released under the license:"
-msgstr "Opublikowane na podstawie licencji:"
+msgstr "Opublikowany na podstawie licencji:"
 
 #: templates/appearance/about.html:99
 #, python-format
@@ -141,7 +266,7 @@ msgid ""
 "\n"
 "                %(project_title)s is a free and open-source software brought to you with <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
 "            "
-msgstr "\n%(project_title)s jest darmowym oprogramowaniem typu open source dostarczonym z <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> przez Roberto Rosario i współpracowników."
+msgstr "\n%(project_title)s jest darmowym oprogramowaniem typu open source dostarczonym z <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> przez Roberto Rosario i współtwórców."
 
 #: templates/appearance/about.html:105
 #, python-format
@@ -149,7 +274,7 @@ msgid ""
 "\n"
 "                It takes great effort to make %(project_title)s as feature-rich as it is.\n"
 "            "
-msgstr ""
+msgstr "\nAby projekt %(project_title)s był tak bogaty w funkcje, jakie oferuje, wymaga wiele pracy."
 
 #: templates/appearance/about.html:111
 #, python-format
@@ -157,7 +282,7 @@ msgid ""
 "\n"
 "                If you use %(project_title)s please <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">make a donation %(icon_social_paypal)s</a>\n"
 "            "
-msgstr ""
+msgstr "\nJeśli używasz %(project_title)s, przekaż <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">darowiznę %(icon_social_paypal)s</a>"
 
 #: templates/appearance/about.html:117
 #, python-format
@@ -165,7 +290,7 @@ msgid ""
 "\n"
 "                The complete list of changes is available via the <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> or the short version <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
 "            "
-msgstr "\nPełna lista zmian jest dostępna w <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">informacjach o wersji %(icon_documentation)s</a> lub w krótkiej wersji <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Dziennik zmian %(icon_documentation)s</a> ."
+msgstr "\nPełna lista zmian jest dostępna w <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">informacjach o wersji %(icon_documentation)s</a> lub w krótkiej wersji <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">dziennika zmian%(icon_documentation)s</a> ."
 
 #: templates/appearance/about.html:123
 #, python-format
@@ -173,7 +298,7 @@ msgid ""
 "\n"
 "                For questions check the <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
 "            "
-msgstr ""
+msgstr "\nW razie pytań sprawdź <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">dokumentację %(icon_documentation)s</a> ."
 
 #: templates/appearance/about.html:129
 #, python-format
@@ -181,7 +306,7 @@ msgid ""
 "\n"
 "                If you found a bug or have a feature idea, visit the <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository %(icon_source_code)s</a>.\n"
 "            "
-msgstr "\nJeśli znalazłeś błąd lub masz pomysł na funkcję, odwiedź <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">forum %(icon_forum)s</a> lub otwórz zgłoszenie w <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">repozytorium kodu źródłowego %(icon_source_code)s</a> ."
+msgstr "\nJeśli znalazłeś błąd lub masz pomysł na dodatkową funkcję w programie, odwiedź <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">forum %(icon_forum)s</a> lub otwórz zgłoszenie w <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">repozytorium kodu źródłowego %(icon_source_code)s</a> ."
 
 #: templates/appearance/about.html:134
 #, python-format
@@ -189,28 +314,40 @@ msgid ""
 "\n"
 "                Spread the word. Talk to your friends and colleagues about how awesome %(project_title)s is!\n"
 "            "
-msgstr ""
+msgstr "\nPrzekaż innym. Porozmawiaj ze znajomymi i kolegami o tym, jak niesamowity jest %(project_title)s!"
 
-#: templates/appearance/base.html:35 templates/appearance/base.html:59
+#: templates/appearance/base.html:43 templates/appearance/base.html:67
 msgid "Warning"
 msgstr "Ostrzeżenie"
 
-#: templates/appearance/base.html:49
+#: templates/appearance/base.html:57
 msgid "Click here to fix this."
 msgstr "Kliknij, aby to naprawić."
 
-#: templates/appearance/base.html:59
+#: templates/appearance/base.html:67
 msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."
 msgstr "Ustawienia zostały zaktualizowane. Uruchom ponownie instalację i odśwież przeglądarkę internetową, aby zmiany przyniosły efekt."
 
-#: templates/appearance/base.html:72
+#: templates/appearance/base.html:75
+#, python-format
+msgid ""
+"\n"
+"                                        Impersonating user \"%(user)s\".\n"
+"                                    "
+msgstr "\nPodszywanie się pod użytkownika „%(user)s”."
+
+#: templates/appearance/base.html:78
+msgid "Click here when finished"
+msgstr "Kliknij tutaj po zakończeniu"
+
+#: templates/appearance/base.html:92
 #: templates/appearance/generic_list_items_subtemplate.html:66
 msgid "Actions"
 msgstr "Akcje"
 
-#: templates/appearance/base.html:74
+#: templates/appearance/base.html:94
 #: templates/appearance/generic_list_items_subtemplate.html:68
 #: templates/appearance/list_toolbar.html:67
 msgid "Toggle Dropdown"
@@ -285,18 +422,22 @@ msgstr "Razem (%(start)s - %(end)s z %(total)s) (Strona %(page_number)s z %(tota
 msgid "Total: %(total)s"
 msgstr "Razem: %(total)s"
 
-#: templates/appearance/list_toolbar.html:16
+#: templates/appearance/list_toolbar.html:13
 msgid "Select/Deselect all"
 msgstr "Zaznacz/Odznacz wszystko"
+
+#: templates/appearance/list_toolbar.html:17
+msgid "Toggle list display mode"
+msgstr "Przełącz tryb wyświetlania listy"
 
 #: templates/appearance/list_toolbar.html:60
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
-msgstr "Zaznacz elementy, aby uaktywnić akcję masową. Użyj Shift + click, aby zaznaczyć wiele elementów."
+msgstr "Zaznacz elementy, aby uaktywnić akcję zbiorczą. Użyj Shift + click, aby zaznaczyć wiele elementów."
 
 #: templates/appearance/list_toolbar.html:65
 msgid "Bulk actions"
-msgstr "Akcje masowe"
+msgstr "Akcje zbiorcze"
 
 #: templates/appearance/menu_topbar.html:11
 msgid "Toggle navigation"
@@ -306,18 +447,45 @@ msgstr "Rozwiń nawigację"
 msgid "No results"
 msgstr "Brak wyników"
 
-#: templates/appearance/root.html:61
+#: templates/appearance/root.html:63
 msgid "Close"
 msgstr "Zamknij"
 
-#: templates/appearance/root.html:71
+#: templates/appearance/root.html:73
 msgid "Server communication error"
 msgstr "Błąd komunikacji z serwerem"
 
-#: templates/appearance/root.html:73
+#: templates/appearance/root.html:75
 msgid "Check you network connection and try again in a few moments."
 msgstr "Sprawdź połączenie z siecią i spróbuj za chwilę."
 
-#: templatetags/appearance_tags.py:17
+#: templatetags/appearance_tags.py:44
 msgid "None"
 msgstr "Brak"
+
+#: views.py:29
+msgid "Current user theme settings details"
+msgstr "Szczegóły ustawień motywu bieżącego użytkownika"
+
+#: views.py:35
+msgid "Edit current user theme settings details"
+msgstr "Modyfikuj szczegóły ustawień motywu bieżącego użytkownika"
+
+#: views.py:69
+#, python-format
+msgid "Delete theme: %s"
+msgstr "Usuń motyw: %s"
+
+#: views.py:85
+#, python-format
+msgid "Edit theme: %s"
+msgstr "Modyfikuj motyw: %s"
+
+#: views.py:105
+msgid ""
+"Themes allow changing the visual appearance without requiring code changes."
+msgstr "Motywy umożliwiają zmianę wyglądu bez dokonywania zmian w kodzie aplikacji."
+
+#: views.py:109
+msgid "There are no themes"
+msgstr "Brak motywów"

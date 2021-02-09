@@ -1,14 +1,11 @@
-from __future__ import unicode_literals
-
-from importlib import import_module
 import logging
 
-from django.apps import apps
 from django.utils import six
-from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
-logger = logging.getLogger(__name__)
+from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
+
+logger = logging.getLogger(name=__name__)
 
 
 __all__ = ('MailerBackend',)
@@ -18,7 +15,7 @@ class MailerBackendMetaclass(type):
     _registry = {}
 
     def __new__(mcs, name, bases, attrs):
-        new_class = super(MailerBackendMetaclass, mcs).__new__(
+        new_class = super().__new__(
             mcs, name, bases, attrs
         )
         if not new_class.__module__ == 'mayan.apps.mailer.classes':
@@ -29,7 +26,7 @@ class MailerBackendMetaclass(type):
         return new_class
 
 
-class MailerBackendBase(object):
+class MailerBackendBase(AppsModuleLoaderMixin):
     """
     Base class for the mailing backends. This class is mainly a wrapper
     for other Django backends that adds a few metadata to specify the
@@ -55,7 +52,11 @@ class MailerBackendBase(object):
         return getattr(cls, 'class_fields', backend_field_list)
 
 
-class MailerBackend(six.with_metaclass(MailerBackendMetaclass, MailerBackendBase)):
+class MailerBackend(
+    six.with_metaclass(MailerBackendMetaclass, MailerBackendBase)
+):
+    _loader_module_name = 'mailers'
+
     @classmethod
     def get(cls, name):
         return cls._registry[name]
@@ -64,17 +65,15 @@ class MailerBackend(six.with_metaclass(MailerBackendMetaclass, MailerBackendBase
     def get_all(cls):
         return cls._registry
 
-    @staticmethod
-    def initialize():
-        for app in apps.get_app_configs():
-            try:
-                import_module('{}.mailers'.format(app.name))
-            except ImportError as exception:
-                if force_text(exception) not in ('No module named mailers', 'No module named \'{}.mailers\''.format(app.name)):
-                    logger.error(
-                        'Error importing %s mailers.py file; %s', app.name,
-                        exception
-                    )
+    @classmethod
+    def get_choices(cls):
+        return sorted(
+            [
+                (
+                    key, backend.label
+                ) for key, backend in cls.get_all().items()
+            ], key=lambda x: x[1]
+        )
 
 
 class NullBackend(MailerBackend):

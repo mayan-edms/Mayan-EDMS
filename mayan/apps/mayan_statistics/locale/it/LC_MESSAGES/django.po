@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2016
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 01:41-0400\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
 "PO-Revision-Date: 2019-05-17 05:51+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
@@ -19,67 +20,67 @@ msgstr ""
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:22 links.py:33 permissions.py:7 queues.py:9
+#: apps.py:27 links.py:31 permissions.py:5 queues.py:7
 msgid "Statistics"
 msgstr "Statistiche "
 
 #. Translators: Schedule here is a noun, the 'schedule' at
 #. which the statistic will be updated
-#: apps.py:31
+#: apps.py:36
 msgid "Schedule"
 msgstr "Programma "
 
-#: apps.py:36
+#: apps.py:42
 msgid "Last update"
 msgstr ""
 
-#: classes.py:150
+#: classes.py:146
 msgid "Never"
 msgstr "Mai"
 
-#: links.py:12
+#: links.py:10
 msgid "Queue"
 msgstr "Coda "
 
-#: links.py:17
+#: links.py:15
 msgid "View"
 msgstr "Vista "
 
-#: links.py:22
+#: links.py:20
 msgid "Namespace details"
 msgstr "Dettagli spazio dei nomi "
 
-#: links.py:27
+#: links.py:25
 msgid "Namespace list"
 msgstr "Lista spazio dei nomi "
 
 #. Translators: 'Slug' refers to the URL valid ID of the statistic
 #. More info: https://docs.djangoproject.com/en/1.7/glossary/#term-slug
-#: models.py:14
+#: models.py:10
 msgid "Slug"
 msgstr "Titolo URL (Slug)"
 
-#: models.py:16
+#: models.py:12
 msgid "Date time"
 msgstr "Appuntamento "
 
-#: models.py:18
+#: models.py:14
 msgid "Data"
 msgstr "Dati "
 
-#: models.py:21
+#: models.py:17
 msgid "Statistics result"
 msgstr "Risultato statistiche "
 
-#: models.py:22
+#: models.py:18
 msgid "Statistics results"
 msgstr "Risultati statistiche "
 
-#: permissions.py:10
+#: permissions.py:8
 msgid "View statistics"
 msgstr "Vedi statistiche "
 
-#: queues.py:13
+#: queues.py:12
 msgid "Execute statistic"
 msgstr ""
 

@@ -1,8 +1,8 @@
 {% load i18n %}
 
-{% load common_tags %}
+{% load views_tags %}
 
-{% common_calculate_title as result %}
+{% views_calculate_title as result %}
 
 {% if not non_html_title %}
     <div style="display: flex;">
@@ -12,14 +12,14 @@
         </button>
 {% endif %}
 
-{% if not non_html_title %}
+{% if not non_html_title and result.title %}
         <div>
             <h3 id="content-title" title='{{ result.title_full }}'>
 {% endif %}
 
                 {{ result.title }}
 
-{% if not non_html_title %}
+{% if not non_html_title and result.title %}
             </h3>
             {% if subtitle %}
                 <p>
@@ -31,5 +31,5 @@
 {% if not non_html_title %}
         </div>
     </div>
-    <hr/>
+    {% if title or subtitle %}<hr/>{% endif %}
 {% endif %}

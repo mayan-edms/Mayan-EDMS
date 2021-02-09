@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 import logging
 
 from django.template import RequestContext
@@ -7,27 +5,27 @@ from django.urls import reverse
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.generics import (
+from mayan.apps.permissions.models import Role
+from mayan.apps.views.generics import (
     AddRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectListView
 )
-from mayan.apps.common.mixins import (
-    ContentTypeViewMixin, ExternalObjectMixin
+from mayan.apps.views.mixins import (
+    ContentTypeViewMixin, ExternalObjectViewMixin
 )
-from mayan.apps.permissions.models import Role
 
 from .classes import ModelPermission
 from .forms import ACLCreateForm
 from .icons import icon_acl_list
 from .links import link_acl_create
-from .models import AccessControlList
+from .models import AccessControlList, GlobalAccessControlListProxy
 from .permissions import permission_acl_edit, permission_acl_view
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class ACLCreateView(
-    ContentTypeViewMixin, ExternalObjectMixin, SingleObjectCreateView
+    ContentTypeViewMixin, ExternalObjectViewMixin, SingleObjectCreateView
 ):
     content_type_url_kw_args = {
         'app_label': 'app_label',
@@ -107,7 +105,7 @@ class ACLDeleteView(SingleObjectDeleteView):
         )
 
 
-class ACLListView(ContentTypeViewMixin, ExternalObjectMixin, SingleObjectListView):
+class ACLListView(ContentTypeViewMixin, ExternalObjectViewMixin, SingleObjectListView):
     content_type_url_kw_args = {
         'app_label': 'app_label',
         'model_name': 'model_name'
@@ -178,7 +176,7 @@ class ACLPermissionsView(AddRemoveView):
             namespaces_dictionary[
                 permission.volatile_permission.namespace.label
             ].append(
-                (permission.pk, force_text(permission))
+                (permission.pk, force_text(s=permission))
             )
 
         # Sort permissions by their translatable namespace label
@@ -216,7 +214,7 @@ class ACLPermissionsView(AddRemoveView):
                 'parent object\'s ACL or from them role via the Setup menu.'
             )
         else:
-            return super(ACLPermissionsView, self).get_list_added_help_text()
+            return super().get_list_added_help_text()
 
     def get_list_added_queryset(self):
         """
@@ -228,7 +226,7 @@ class ACLPermissionsView(AddRemoveView):
         remove from the parent first to enable the choice in the form,
         remove it from the ACL and then re-add it to the parent ACL.
         """
-        queryset_acl = super(ACLPermissionsView, self).get_list_added_queryset()
+        queryset_acl = super().get_list_added_queryset()
 
         return (
             queryset_acl | self.main_object.get_inherited_permissions()
@@ -238,3 +236,26 @@ class ACLPermissionsView(AddRemoveView):
         return ModelPermission.get_for_instance(
             instance=self.main_object.content_object
         )
+
+
+class GlobalACLListView(SingleObjectListView):
+    model = GlobalAccessControlListProxy
+    object_permission = permission_acl_view
+
+    def get_extra_context(self):
+        return {
+            'hide_object': True,
+            'no_results_icon': icon_acl_list,
+            'no_results_title': _(
+                'There are no ACLs'
+            ),
+            'no_results_text': _(
+                'ACL stands for Access Control List and is a precise method '
+                'to control user access to objects in the system. ACLs '
+                'allow granting a permission to a role but only for a '
+                'specific object or set of objects.'
+            ),
+            'title': _(
+                'Global access control lists'
+            ),
+        }

@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.apps import apps
 from django.utils.encoding import force_text
 from django.utils.html import mark_safe, escape
@@ -52,7 +50,7 @@ def node_level(node):
             [
                 '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' * node.get_level(),
                 '' if node.is_root_node() else icon_index_level_up.render(),
-                force_text(node)
+                force_text(s=node)
             ]
         )
     )

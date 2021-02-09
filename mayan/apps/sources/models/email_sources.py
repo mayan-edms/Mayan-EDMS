@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import imaplib
 import logging
 import poplib
@@ -26,7 +24,7 @@ from ..literals import (
 from .base import IntervalBaseModel
 
 __all__ = ('IMAPEmail', 'POP3Email')
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class EmailBaseModel(IntervalBaseModel):
@@ -89,7 +87,7 @@ class EmailBaseModel(IntervalBaseModel):
 
         metadata_dictionary = {}
 
-        message = mime.from_string(force_bytes(message_text))
+        message = mime.from_string(force_bytes(s=message_text))
 
         if source.from_metadata_type:
             metadata_dictionary[
@@ -168,7 +166,7 @@ class EmailBaseModel(IntervalBaseModel):
                     label = 'email_body.txt'
 
                 if source.store_body:
-                    with ContentFile(content=force_bytes(message.body), name=label) as file_object:
+                    with ContentFile(content=force_bytes(s=message.body), name=label) as file_object:
                         documents = source.handle_upload(
                             document_type=source.document_type,
                             expand=SOURCE_UNCOMPRESS_CHOICE_N,
@@ -251,8 +249,7 @@ class IMAPEmail(EmailBaseModel):
         verbose_name = _('IMAP email')
         verbose_name_plural = _('IMAP email')
 
-    # http://www.doughellmann.com/PyMOTW/imaplib/
-    def check_source(self, test=False):
+    def _check_source(self, test=False):
         logger.debug(msg='Starting IMAP email fetch')
         logger.debug('host: %s', self.host)
         logger.debug('ssl: %s', self.ssl)
@@ -358,7 +355,7 @@ class POP3Email(EmailBaseModel):
         verbose_name = _('POP email')
         verbose_name_plural = _('POP email')
 
-    def check_source(self, test=False):
+    def _check_source(self, test=False):
         logger.debug(msg='Starting POP3 email fetch')
         logger.debug('host: %s', self.host)
         logger.debug('ssl: %s', self.ssl)
@@ -388,7 +385,7 @@ class POP3Email(EmailBaseModel):
             logger.debug('message_size: %s', message_size)
 
             message_lines = server.retr(which=message_number)[1]
-            message_complete = force_text(b'\n'.join(message_lines))
+            message_complete = force_text(s=b'\n'.join(message_lines))
 
             EmailBaseModel.process_message(
                 source=self, message_text=message_complete

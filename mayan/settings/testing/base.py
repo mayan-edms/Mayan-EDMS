@@ -1,18 +1,14 @@
-from __future__ import absolute_import, unicode_literals
-
 from .. import *  # NOQA
 
+CELERY_BROKER_URL = 'memory://'
 CELERY_TASK_ALWAYS_EAGER = True
 CELERY_TASK_EAGER_PROPAGATES = True
-BROKER_BACKEND = 'memory'
 
 COMMON_PRODUCTION_ERROR_LOG_PATH = '/tmp/mayan-errors.log'
 
 DOCUMENT_PARSING_AUTO_PARSING = False
 
 FILE_METADATA_AUTO_PROCESS = False
-
-INSTALLED_APPS += ('test_without_migrations',)  # NOQA: F405
 
 INSTALLED_APPS = [
     cls for cls in INSTALLED_APPS if cls != 'whitenoise.runserver_nostatic'
@@ -56,3 +52,5 @@ TEMPLATES[0]['OPTIONS']['loaders'] = (  # NOQA: F405
         )
     ),
 )
+
+TESTING = True  # Silence the error logger for non critical HTTP404 and PermissionDenied

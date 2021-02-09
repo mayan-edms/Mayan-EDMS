@@ -1,10 +1,10 @@
-from __future__ import unicode_literals
-
 from django.contrib.humanize.templatetags.humanize import intcomma
 from django.template import loader
 
+from .icons import icon_dashboard_link_icon
 
-class Dashboard(object):
+
+class Dashboard:
     _registry = {}
 
     @classmethod
@@ -50,7 +50,7 @@ class Dashboard(object):
         )
 
 
-class BaseDashboardWidget(object):
+class BaseDashboardWidget:
     _registry = {}
     context = {}
     template_name = None
@@ -79,16 +79,18 @@ class BaseDashboardWidget(object):
 
 class DashboardWidgetNumeric(BaseDashboardWidget):
     count = 0
-    icon_class = None
+    icon = None
     label = None
     link = None
+    link_icon = icon_dashboard_link_icon
     template_name = 'dashboards/numeric_widget.html'
 
     def get_context(self):
         return {
             'count': intcomma(value=self.count),
             'count_raw': self.count,
-            'icon_class': self.icon_class,
+            'icon': self.icon,
             'label': self.label,
             'link': self.link,
+            'link_icon': self.link_icon
         }

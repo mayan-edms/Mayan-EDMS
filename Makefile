@@ -5,8 +5,8 @@ ifndef MODULE
 override MODULE = --mayan-apps
 endif
 
-ifndef NOMIGRATIONS
-override NOMIGRATIONS = --nomigrations
+ifndef SKIPMIGRATIONS
+override SKIPMIGRATIONS = --skip-migrations
 endif
 
 ifndef SETTINGS
@@ -39,7 +39,7 @@ clean-pyc: ## Remove Python artifacts.
 # Testing
 
 _test-command:
-	./manage.py test $(MODULE) --settings=$(SETTINGS) $(NOMIGRATIONS) $(DEBUG) $(ARGUMENTS)
+	./manage.py test $(MODULE) --settings=$(SETTINGS) $(SKIPMIGRATIONS) $(DEBUG) $(ARGUMENTS)
 
 test: ## MODULE=<python module name> - Run tests for a single app, module or test class.
 test: clean-pyc _test-command
@@ -57,13 +57,13 @@ test-all-debug: clean-pyc _test-command
 
 test-all-migrations: ## Run all migration tests.
 test-all-migrations: ARGUMENTS=--no-exclude --tag=migration
-test-all-migrations: NOMIGRATIONS=
+test-all-migrations: SKIPMIGRATIONS=
 test-all-migrations: clean-pyc _test-command
 
 test-launch-postgres:
 	@docker rm -f test-postgres || true
 	@docker volume rm test-postgres || true
-	@docker run -d --name test-postgres -p 5432:5432 -v test-postgres:/var/lib/postgresql/data $(DOCKER_POSTGRES_IMAGE_VERSION)
+	@docker run -d --name test-postgres -p 5432:5432 -e POSTGRES_HOST_AUTH_METHOD=trust -v test-postgres:/var/lib/postgresql/data $(DOCKER_POSTGRES_IMAGE_VERSION)
 	@echo "* Installing libpq-dev client"
 	@sudo apt-get install -qq libpq-dev
 	@echo "* Installing Python client"
@@ -73,13 +73,13 @@ test-launch-postgres:
 
 test-with-postgres: ## MODULE=<python module name> - Run tests for a single app, module or test class against a PostgreSQL database container.
 test-with-postgres: test-launch-postgres
-	./manage.py test $(MODULE) --settings=mayan.settings.testing.docker.db_postgres --nomigrations
+	./manage.py test $(MODULE) --settings=mayan.settings.testing.docker.db_postgres --skip-migrations
 	@docker rm -f test-postgres || true
 	@docker volume rm test-postgres || true
 
 test-with-postgres-all: ## Run all tests against a PostgreSQL database container.
 test-with-postgres-all: test-launch-postgres
-	./manage.py test --mayan-apps --settings=mayan.settings.testing.docker.db_postgres --nomigrations
+	./manage.py test --mayan-apps --settings=mayan.settings.testing.docker.db_postgres --skip-migrations
 	@docker rm -f test-postgres || true
 	@docker volume rm test-postgres || true
 
@@ -104,13 +104,13 @@ test-launch-mysql:
 
 test-with-mysql: ## MODULE=<python module name> - Run tests for a single app, module or test class against a MySQL database container.
 test-with-mysql: test-launch-mysql
-	./manage.py test $(MODULE) --settings=mayan.settings.testing.docker.db_mysql --nomigrations
+	./manage.py test $(MODULE) --settings=mayan.settings.testing.docker.db_mysql --skip-migrations
 	@docker rm -f test-mysql || true
 	@docker volume rm test-mysql || true
 
 test-with-mysql-all: ## Run all tests against a MySQL database container.
 test-with-mysql-all: test-launch-mysql
-	./manage.py test --mayan-apps --settings=mayan.settings.testing.docker.db_mysql --nomigrations
+	./manage.py test --mayan-apps --settings=mayan.settings.testing.docker.db_mysql --skip-migrations
 	@docker rm -f test-mysql || true
 	@docker volume rm test-mysql || true
 
@@ -131,25 +131,25 @@ test-launch-oracle:
 
 test-with-oracle: ## MODULE=<python module name> - Run tests for a single app, module or test class against a Oracle database container.
 test-with-oracle: test-launch-oracle
-	./manage.py test $(MODULE) --settings=mayan.settings.testing.docker.db_oracle --nomigrations
+	./manage.py test $(MODULE) --settings=mayan.settings.testing.docker.db_oracle --skip-migrations
 	@docker rm -f test-oracle || true
 	@docker volume rm test-oracle || true
 
 test-with-oracle-all: ## Run all tests against a Oracle database container.
 test-with-oracle-all: test-launch-oracle
-	./manage.py test --mayan-apps --settings=mayan.settings.testing.docker.db_oracle --nomigrations
+	./manage.py test --mayan-apps --settings=mayan.settings.testing.docker.db_oracle --skip-migrations
 	@docker rm -f test-oracle || true
 	@docker volume rm test-oracle || true
 
 gitlab-ci-run: ## Execute a GitLab CI job locally
 gitlab-ci-run:
-	@if [ -z "$$(docker images gitlab-runner-helper:11.2.0)" ]; then \
+	@if [ -z "$$(docker images -q gitlab-runner-helper:11.2.0)" ]; then \
 	echo "1) Make sure to download the corresponding helper image from https://hub.docker.com/r/gitlab/gitlab-runner-helper/tags"; \
 	echo "2) Tag the download image as gitlab-runner-helper:11.2.0"; \
 	exit 1; \
 	fi; \
 	if [ -z $(GITLAB_CI_JOB) ]; then echo "Specify the job to execute using GITLAB_CI_JOB."; exit 1; fi; \
-	gitlab-runner exec docker --docker-volumes $$PWD/gitlab-ci-volume:/builds $(GITLAB_CI_JOB)
+	gitlab-runner exec docker --docker-privileged --docker-volumes /var/run/docker.sock:/var/run/docker.sock --docker-volumes $$PWD/gitlab-ci-volume:/builds $(GITLAB_CI_JOB)
 
 # Coverage
 
@@ -177,11 +177,14 @@ translations-source-clear: ## Clear the msgstr of the source file
 translations-fuzzy-remove: ## Remove fuzzy makers
 	sed -i  '/#, fuzzy/d' mayan/apps/*/locale/*/LC_MESSAGES/django.po
 
+translations-check: ## Check that all app have a Transifex entry
+	contrib/scripts/transifex_helper.py
+
 translations-make: ## Refresh all translation files.
-	contrib/scripts/process_messages.py -m
+	contrib/scripts/process_messages.py make
 
 translations-compile: ## Compile all translation files.
-	contrib/scripts/process_messages.py -c
+	contrib/scripts/process_messages.py compile
 
 translations-push: ## Upload all translation files to Transifex.
 	tx push -s
@@ -190,7 +193,7 @@ translations-pull: ## Download all translation files from Transifex.
 	tx pull -f
 
 translations-all: ## Execute all translations targets.
-translations-all: translations-source-clear translations-fuzzy-remove translations-make translations-push translations-pull translations-compile
+translations-all: translations-source-clear translations-fuzzy-remove translations-check translations-make translations-push translations-pull translations-compile
 
 # Releases
 
@@ -222,7 +225,7 @@ python-wheel: clean python-sdist
 	ls -l dist
 
 python-release-test-via-docker-ubuntu: ## Package (sdist and wheel) and upload to the PyPI test server using an Ubuntu Docker builder.
-	docker run --rm --name mayan_release -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source ubuntu:16.04 /bin/bash -c "\
+	docker run --rm --name mayan_release -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source $(DOCKER_LINUX_IMAGE_VERSION) /bin/bash -c "\
 	echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale && \
 	locale-gen en_US.UTF-8 && \
 	update-locale LANG=en_US.UTF-8 && \
@@ -235,7 +238,7 @@ python-release-test-via-docker-ubuntu: ## Package (sdist and wheel) and upload t
 	make test-release"
 
 python-release-via-docker-ubuntu: ## Package (sdist and wheel) and upload to PyPI using an Ubuntu Docker builder.
-	docker run --rm --name mayan_release -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source ubuntu:16.04 /bin/bash -c "\
+	docker run --rm --name mayan_release -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source $(DOCKER_LINUX_IMAGE_VERSION) /bin/bash -c "\
 	apt-get update && \
 	apt-get -y install locales && \
 	echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale && \
@@ -249,7 +252,7 @@ python-release-via-docker-ubuntu: ## Package (sdist and wheel) and upload to PyP
 	make release"
 
 test-sdist-via-docker-ubuntu: ## Make an sdist package and test it using an Ubuntu Docker container.
-	docker run --rm --name mayan_sdist_test -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source ubuntu:16.04 /bin/bash -c "\
+	docker run --rm --name mayan_sdist_test -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source $(DOCKER_LINUX_IMAGE_VERSION) /bin/bash -c "\
 	cp -r /host_source/* . && \
 	echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale && \
 	locale-gen en_US.UTF-8 && \
@@ -258,11 +261,12 @@ test-sdist-via-docker-ubuntu: ## Make an sdist package and test it using an Ubun
 	apt-get update && \
 	apt-get install make python-pip libreoffice tesseract-ocr tesseract-ocr-deu poppler-utils -y && \
 	pip install -r requirements/development.txt && \
+        pip install -r requirements/testing.txt && \
 	make sdist-test-suit \
 	"
 
 test-wheel-via-docker-ubuntu: ## Make a wheel package and test it using an Ubuntu Docker container.
-	docker run --rm --name mayan_wheel_test -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source ubuntu:16.04 /bin/bash -c "\
+	docker run --rm --name mayan_wheel_test -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source $(DOCKER_LINUX_IMAGE_VERSION) /bin/bash -c "\
 	cp -r /host_source/* . && \
 	echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale && \
 	locale-gen en_US.UTF-8 && \
@@ -271,20 +275,23 @@ test-wheel-via-docker-ubuntu: ## Make a wheel package and test it using an Ubunt
 	apt-get update && \
 	apt-get install make python-pip libreoffice tesseract-ocr tesseract-ocr-deu poppler-utils -y && \
 	pip install -r requirements/development.txt && \
+        pip install -r requirements/testing.txt && \
 	make wheel-test-suit \
 	"
 
-python-sdist-test-suit: sdist
+python-sdist-test-suit: ## Run the test suit from a built sdist package
+python-sdist-test-suit: python-sdist
 	rm -f -R _virtualenv
 	virtualenv _virtualenv
 	sh -c '\
 	. _virtualenv/bin/activate; \
 	pip install `ls dist/*.gz`; \
 	_virtualenv/bin/mayan-edms.py initialsetup; \
-	pip install mock==2.0.0; \
+        pip install -r requirements/testing.txt; \
 	_virtualenv/bin/mayan-edms.py test --mayan-apps \
 	'
 
+python-wheel-test-suit: ## Run the test suit from a built wheel package
 python-wheel-test-suit: wheel
 	rm -f -R _virtualenv
 	virtualenv _virtualenv
@@ -305,7 +312,6 @@ generate-requirements: ## Generate all requirements files from the project deped
 	@./manage.py generaterequirements build > requirements/build.txt
 	@./manage.py generaterequirements development > requirements/development.txt
 	@./manage.py generaterequirements documentation > requirements/documentation.txt
-	@./manage.py generaterequirements production --only=pathlib2 >> requirements/documentation.txt
 	@./manage.py generaterequirements testing > requirements/testing-base.txt
 	@./manage.py generaterequirements production --exclude=django > requirements/base.txt
 	@./manage.py generaterequirements production --only=django > requirements/common.txt
@@ -338,7 +344,39 @@ gitlab-release-all:
 	git push origin :releases/all || true
 	git push origin HEAD:releases/all
 
+# Minor releases
+
+gitlab-release-docker-minor: ## Trigger the Docker image build and publication of a minor version using GitLab CI
+gitlab-release-docker-minor:
+	git push
+	git push --tags
+	git push origin :releases/docker_minor || true
+	git push origin HEAD:releases/docker_minor
+
+gitlab-release-python-minor: ## Trigger the Python package build and publication of a minor version using GitLab CI
+gitlab-release-python-minor:
+	git push
+	git push --tags
+	git push origin :releases/python_minor || true
+	git push origin HEAD:releases/python_minor
+
+gitlab-release-all-minor: ## Trigger the Python package, Docker image build and publication of a minor version using GitLab CI
+gitlab-release-all-minor:
+	git push
+	git push --tags
+	git push origin :releases/all_minor || true
+	git push origin HEAD:releases/all_minor
+
 # Dev server
+
+manage: ## Run a command with the development settings.
+	./manage.py $(filter-out $@,$(MAKECMDGOALS)) --settings=mayan.settings.development
+
+manage-docker-mysql: ## Run the development server using a Docker PostgreSQL container.
+	./manage.py $(filter-out $@,$(MAKECMDGOALS)) --settings=mayan.settings.development.docker.db_mysql
+
+manage-docker-postgres: ## Run the development server using a Docker PostgreSQL container.
+	./manage.py $(filter-out $@,$(MAKECMDGOALS)) --settings=mayan.settings.development.docker.db_postgres
 
 runserver: ## Run the development server.
 	./manage.py runserver --settings=mayan.settings.development $(ADDRPORT)
@@ -377,7 +415,7 @@ docker-mysql-off: ## Stop and delete the MySQL Docker container.
 	docker rm mysql
 
 docker-postgres-on: ## Launch and initialize a PostgreSQL Docker container.
-	docker run -d --name postgres -p 5432:5432 $(DOCKER_POSTGRES_IMAGE_VERSION)
+	docker run -d --name postgres -e=POSTGRES_PASSWORD=$(DEFAULT_DATABASE_PASSWORD) -p 5432:5432 $(DOCKER_POSTGRES_IMAGE_VERSION)
 	while ! nc -z 127.0.0.1 5432; do sleep 1; done
 
 docker-postgres-off: ## Stop and delete the PostgreSQL Docker container.
@@ -394,11 +432,11 @@ safety-check: ## Run a package safety check.
 # Other
 find-gitignores: ## Find stray .gitignore files.
 	@export FIND_GITIGNORES=`find -name '.gitignore'| wc -l`; \
-	if [ $${FIND_GITIGNORES} -gt 1 ] ;then echo "More than one .gitignore found."; fi
+	if [ $${FIND_GITIGNORES} -gt 1 ] ;then echo "More than one .gitignore found: $$FIND_GITIGNORES"; fi
 
 python-build:
 	docker rm -f mayan-edms-build || true && \
-	docker run --rm --name mayan-edms-build -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source python:2-slim sh -c "\
+	docker run --rm --name mayan-edms-build -v $(HOME):/host_home:ro -v `pwd`:/host_source -w /source $(DOCKER_PYTHON_IMAGE_VERSION) sh -c "\
 	rm /host_source/dist -R || true && \
 	mkdir /host_source/dist || true && \
 	export LC_ALL=C.UTF-8 && \
@@ -415,8 +453,15 @@ check-readme: ## Checks validity of the README.rst file for PyPI publication.
 check-missing-migrations: ## Make sure all models have proper migrations.
 	./manage.py makemigrations --dry-run --noinput --check
 
+check-missing-inits: ## Find missing __init__.py files from modules.
+check-missing-inits:
+	@contrib/scripts/find_missing_inits.py
+
+
 setup-dev-environment: ## Bootstrap a virtualenv by install all dependencies to start developing.
+	sudo apt-get install -y firefox-geckodriver gcc gettext gitlab-runner gnupg1 poppler-utils python3-dev tesseract-ocr-deu
 	pip install -r requirements.txt -r requirements/development.txt -r requirements/testing-base.txt -r requirements/documentation.txt -r requirements/build.txt
-	sudo apt-get install -y firefox-geckodriver
+	docker pull gitlab/gitlab-runner-helper:x86_64-281644e9
+	docker tag gitlab/gitlab-runner-helper:x86_64-281644e9 gitlab-runner-helper:11.2.0
 
 -include docker/Makefile

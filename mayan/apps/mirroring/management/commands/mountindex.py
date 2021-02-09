@@ -1,5 +1,3 @@
-from __future__ import print_function, unicode_literals
-
 import logging
 
 from fuse import FUSE
@@ -9,7 +7,7 @@ from django.core.management.base import CommandError
 
 from ...filesystems import IndexFilesystem
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class Command(management.BaseCommand):
@@ -29,16 +27,43 @@ class Command(management.BaseCommand):
             help='Mount access is limited to the user mounting the index and '
             'root. This option and --allow-other are mutually exclusive.'
         )
+        parser.add_argument(
+            '--background', action='store_true', dest='background',
+            default=False,
+            help='Mounts and serves the index as a background process.'
+        )
+        parser.add_argument(
+            '--log-level', action='store', dest='log_level',
+            default='ERROR',
+            help='Changes the level of logging. Options: CRITICAL, '
+            'ERROR, WARNING, INFO, DEBUG, NOTSET. Default is ERROR.'
+        )
 
     def handle(self, *args, **options):
         if not options.get('slug') or not options.get('mount_point'):
             self.stderr.write(self.style.ERROR('Incorrect number of arguments'))
             exit(1)
 
+        foreground = not options['background']
+
+        if foreground:
+            self.stdout.write(
+                'Mounting index in the foreground. No further '
+                'output will be generated.'
+            )
+
+        level = getattr(logging, options['log_level'], None)
+        if not level:
+            self.stderr.write(self.style.ERROR('Unknown log level {}'.format(level)))
+            exit(1)
+
+        logging.basicConfig(level=level)
+
         try:
             FUSE(
                 operations=IndexFilesystem(index_slug=options['slug']),
-                mountpoint=options['mount_point'], nothreads=True, foreground=True,
+                mountpoint=options['mount_point'], nothreads=True,
+                foreground=not options['background'],
                 allow_other=options['allow_other'],
                 allow_root=options['allow_root']
             )

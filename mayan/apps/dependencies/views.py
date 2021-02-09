@@ -1,9 +1,7 @@
-from __future__ import unicode_literals
-
 from django.http import Http404
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.generics import SimpleView, SingleObjectListView
+from mayan.apps.views.generics import SimpleView, SingleObjectListView
 
 from .classes import DependencyGroup
 from .forms import DependenciesLicensesForm

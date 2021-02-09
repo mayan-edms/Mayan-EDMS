@@ -1,11 +1,9 @@
-from __future__ import absolute_import, unicode_literals
-
 import os
 
 from django.template import loader
 from django.template.base import Template
 from django.template.context import Context
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
 from django.utils.html import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
@@ -15,8 +13,10 @@ from mayan.apps.task_manager.settings import (
     setting_celery_broker_url, setting_celery_result_backend
 )
 
+from .literals import DEFAULT_GUNICORN_WORKER_CLASS
 
-class Variable(object):
+
+class Variable:
     def __init__(self, name, default, environment_name):
         self.name = name
         self.default = default
@@ -42,8 +42,7 @@ class YAMLVariable(Variable):
         ).replace('...\n', '').replace('\n', '')
 
 
-@python_2_unicode_compatible
-class PlatformTemplate(object):
+class PlatformTemplate:
     _registry = {}
     context = {}
     context_defaults = {}
@@ -67,7 +66,7 @@ class PlatformTemplate(object):
         cls._registry[klass.name] = klass
 
     def __str__(self):
-        return force_text(self.get_label())
+        return force_text(s=self.get_label())
 
     def get_context(self):
         return self.context
@@ -132,6 +131,11 @@ class PlatformTemplateSupervisord(PlatformTemplate):
     )
     variables = (
         Variable(
+            name='GUNICORN_WORKER_CLASS',
+            default=DEFAULT_GUNICORN_WORKER_CLASS,
+            environment_name='MAYAN_GUNICORN_WORKER_CLASS'
+        ),
+        Variable(
             name='GUNICORN_WORKERS', default=2,
             environment_name='MAYAN_GUNICORN_WORKERS'
         ),
@@ -150,12 +154,12 @@ class PlatformTemplateSupervisord(PlatformTemplate):
         ),
         YAMLVariable(
             name='CELERY_BROKER_URL',
-            default='redis://127.0.0.1:6379/0',
+            default='redis://:mayanredispassword@127.0.0.1:6379/0',
             environment_name='MAYAN_CELERY_BROKER_URL'
         ),
         YAMLVariable(
             name='CELERY_RESULT_BACKEND',
-            default='redis://127.0.0.1:6379/1',
+            default='redis://:mayanredispassword@127.0.0.1:6379/1',
             environment_name='MAYAN_CELERY_RESULT_BACKEND'
         ),
         YAMLVariable(

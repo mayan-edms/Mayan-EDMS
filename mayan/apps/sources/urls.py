@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.conf.urls import url
 
 from .api_views import (
@@ -8,9 +6,9 @@ from .api_views import (
     APIStagingSourceView
 )
 from .views import (
-    SetupSourceCheckView, SetupSourceCreateView, SetupSourceDeleteView,
-    SetupSourceEditView, SetupSourceListView, SourceLogListView,
-    StagingFileDeleteView, DocumentVersionUploadInteractiveView, UploadInteractiveView
+    SourceCheckView, SourceCreateView, SourceDeleteView,
+    SourceEditView, SourceListView, StagingFileDeleteView,
+    DocumentFileUploadInteractiveView, UploadInteractiveView
 )
 from .wizards import DocumentCreateWizard
 
@@ -37,41 +35,37 @@ urlpatterns = [
         view=UploadInteractiveView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<document_pk>\d+)/versions/upload/interactive/(?P<source_id>\d+)/$',
-        name='document_version_upload',
-        view=DocumentVersionUploadInteractiveView.as_view()
+        regex=r'^documents/(?P<document_id>\d+)/files/upload/interactive/(?P<source_id>\d+)/$',
+        name='document_file_upload',
+        view=DocumentFileUploadInteractiveView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<document_id>\d+)/versions/upload/interactive/$',
-        name='document_version_upload',
-        view=DocumentVersionUploadInteractiveView.as_view()
+        regex=r'^documents/(?P<document_id>\d+)/files/upload/interactive/$',
+        name='document_file_upload',
+        view=DocumentFileUploadInteractiveView.as_view()
     ),
 
     # Setup views
 
     url(
         regex=r'^sources/$', name='setup_source_list',
-        view=SetupSourceListView.as_view()
+        view=SourceListView.as_view()
     ),
     url(
-        regex=r'^source_types/(?P<source_type_name>\w+)/create/$',
-        name='setup_source_create', view=SetupSourceCreateView.as_view()
+        regex=r'^sources/create/(?P<source_type_name>\w+)/$',
+        name='setup_source_create', view=SourceCreateView.as_view()
     ),
     url(
         regex=r'^sources/(?P<source_id>\d+)/check/$',
-        name='setup_source_check', view=SetupSourceCheckView.as_view()
+        name='setup_source_check', view=SourceCheckView.as_view()
     ),
     url(
         regex=r'^sources/(?P<source_id>\d+)/delete/$',
-        name='setup_source_delete', view=SetupSourceDeleteView.as_view()
+        name='setup_source_delete', view=SourceDeleteView.as_view()
     ),
     url(
         regex=r'^sources/(?P<source_id>\d+)/edit/$', name='setup_source_edit',
-        view=SetupSourceEditView.as_view()
-    ),
-    url(
-        regex=r'^sources/(?P<source_id>\d+)/logs/$', name='setup_source_logs',
-        view=SourceLogListView.as_view()
+        view=SourceEditView.as_view()
     ),
 ]
 

@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
 
+DOCUMENT_METADATA_ADD_ACTION_CLASS_PATH = 'mayan.apps.metadata.workflow_actions.DocumentMetadataAddAction'
+DOCUMENT_METADATA_EDIT_ACTION_CLASS_PATH = 'mayan.apps.metadata.workflow_actions.DocumentMetadataEditAction'
+DOCUMENT_METADATA_REMOVE_ACTION_CLASS_PATH = 'mayan.apps.metadata.workflow_actions.DocumentMetadataRemoveAction'
 TEST_CORRECT_LOOKUP_VALUE = '1'
 TEST_DATE_PARSER = 'mayan.apps.metadata.parsers.DateParser'
 TEST_DATE_VALIDATOR = 'mayan.apps.metadata.validators.DateValidator'
@@ -9,6 +11,7 @@ TEST_DEFAULT_VALUE = 'test'
 TEST_INCORRECT_LOOKUP_VALUE = '0'
 TEST_INVALID_DATE = '___________'
 TEST_LOOKUP_TEMPLATE = '1,2,3'
+TEST_METADATA_TYPE_DEFAULT_VALUE = 'default value'
 TEST_METADATA_TYPES_FIXTURES = [
     {'name': 'test_metadata_type_1', 'label': 'test metadata type 1'},
     {'name': 'test_metadata_type_2', 'label': 'test metadata type 2'},

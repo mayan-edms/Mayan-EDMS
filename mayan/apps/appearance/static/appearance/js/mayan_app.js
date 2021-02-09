@@ -29,6 +29,28 @@ class MayanApp {
         }
     }
 
+    static setupDropdownDirectionChange () {
+        $('body').on('shown.bs.dropdown', '.dropdown', function () {
+            var $this = $(this);
+            var $elementMenu = $this.children('.dropdown-menu');
+            var $elementMenuButton = $this.children('.dropdown-toggle');
+            var elemenMenuOffset = $elementMenu.offset();
+            var sizeDownwards = elemenMenuOffset.top + $elementMenu.height() + 5;
+            var sizeUpwards = elemenMenuOffset.top - $elementMenu.height() - $elementMenuButton.height();
+
+            var spaceDownwards = $(window).scrollTop() + $(window).height() - sizeDownwards;
+            var spaceUpwards = sizeUpwards - $(window).scrollTop();
+
+            if ((spaceUpwards >= 0 || spaceUpwards > spaceDownwards) && spaceDownwards < 0) {
+              $this.addClass('dropup');
+            }
+        });
+
+        $('body').on('hidden.bs.dropdown', '.dropdown', function() {
+            $(this).removeClass('dropup');
+        });
+    }
+
     static setupMultiItemActions () {
         $('body').on('change', '.check-all-slave', function () {
             MayanApp.countChecked();
@@ -48,24 +70,24 @@ class MayanApp {
     }
 
     static setupNavBarState () {
-        $('body').on('click', '.a-main-menu-accordion-link', function (event) {
-            $('.a-main-menu-accordion-link').each(function (index, value) {
-                $(this).parent().removeClass('active');
+        $('body').on('click', '#accordion-sidebar a', function (event) {
+            $('#accordion-sidebar a').each(function (index, value) {
+                $(this).parents('li').removeClass('active');
             });
 
-            $(this).parent().addClass('active');
+            $(this).parents('li').addClass('active');
         });
     }
 
     static updateNavbarState () {
         var uri = new URI(window.location.hash);
         var uriFragment = uri.fragment();
-        $('.a-main-menu-accordion-link').each(function (index, value) {
+        $('#accordion-sidebar a').each(function (index, value) {
             if (value.pathname === uriFragment) {
                 var $this = $(this);
 
                 $this.closest('.collapse').addClass('in').parent().find('.collapsed').removeClass('collapsed').attr('aria-expanded', 'true');
-                $this.parent().addClass('active');
+                $this.parents('li').addClass('active');
             }
         });
     }
@@ -173,6 +195,7 @@ class MayanApp {
         var self = this;
 
         this.setupAJAXSpinner();
+        MayanApp.setupDropdownDirectionChange();
         this.setupFormHotkeys();
         this.setupFullHeightResizing();
         this.setupItemsSelector();
@@ -372,40 +395,43 @@ class MayanApp {
         });
 
         $('body').on('click', '.panel-item', function (event) {
-            var $this = $(this);
-            var targetSrc = $(event.target).prop('src');
-            var targetHref = $(event.target).prop('href');
-            var targetIsButton = event.target.tagName === 'BUTTON';
-            var lastChecked = null;
+            var targetSelection = window.getSelection().toString();
+            if (!targetSelection) {
+                var $this = $(this);
+                var targetSrc = $(event.target).prop('src');
+                var targetHref = $(event.target).prop('href');
+                var targetIsButton = event.target.tagName === 'BUTTON';
+                var lastChecked = null;
 
-            if ((targetSrc === undefined) && (targetHref === undefined) && (targetIsButton === false)) {
-                var $checkbox = $this.find('.check-all-slave');
-                var checked = $checkbox.prop('checked');
+                if ((targetSrc === undefined) && (targetHref === undefined) && (targetIsButton === false)) {
+                    var $checkbox = $this.find('.check-all-slave');
+                    var checked = $checkbox.prop('checked');
 
-                if (checked) {
-                    $checkbox.prop('checked', '');
-                    $checkbox.trigger('change');
-                } else {
-                    $checkbox.prop('checked', 'checked');
-                    $checkbox.trigger('change');
-                }
+                    if (checked) {
+                        $checkbox.prop('checked', '');
+                        $checkbox.trigger('change');
+                    } else {
+                        $checkbox.prop('checked', 'checked');
+                        $checkbox.trigger('change');
+                    }
 
-                if(!app.lastChecked) {
+                    if(!app.lastChecked) {
+                        app.lastChecked = $checkbox;
+                    }
+
+                    if (event.shiftKey) {
+                        var $checkBoxes = $('.check-all-slave');
+
+                        var start = $checkBoxes.index($checkbox);
+                        var end = $checkBoxes.index(app.lastChecked);
+
+                        $checkBoxes.slice(
+                            Math.min(start, end), Math.max(start, end) + 1
+                        ).prop('checked', app.lastChecked.prop('checked')).trigger('change');
+                    }
                     app.lastChecked = $checkbox;
+                    window.getSelection().removeAllRanges();
                 }
-
-                if (event.shiftKey) {
-                    var $checkBoxes = $('.check-all-slave');
-
-                    var start = $checkBoxes.index($checkbox);
-                    var end = $checkBoxes.index(app.lastChecked);
-
-                    $checkBoxes.slice(
-                        Math.min(start, end), Math.max(start, end) + 1
-                    ).prop('checked', app.lastChecked.prop('checked')).trigger('change');
-                }
-                app.lastChecked = $checkbox;
-                window.getSelection().removeAllRanges();
             }
         });
     }

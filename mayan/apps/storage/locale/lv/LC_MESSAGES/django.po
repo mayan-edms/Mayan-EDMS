@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Māris Teivāns <maris.teivans@gmail.com>, 2019
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 01:42-0400\n"
-"PO-Revision-Date: 2019-05-31 12:51+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-09-27 06:47+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
 "Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
 "MIME-Version: 1.0\n"
@@ -18,12 +19,80 @@ msgstr ""
 "Language: lv\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
-#: apps.py:10 settings.py:9
+#: apps.py:11 settings.py:10
 msgid "Storage"
 msgstr "Glabāšana"
 
-#: settings.py:14
+#: classes.py:86 classes.py:107
+#, python-format
+msgid ""
+"Unable to initialize storage: %(name)s. Check the storage backend dotted "
+"path and arguments."
+msgstr ""
+
+#: management/commands/storage_process.py:13
+msgid "Name of the app to process."
+msgstr ""
+
+#: management/commands/storage_process.py:19
+msgid ""
+"Path of the database (.dbm) file that will be created/read to keep track of "
+"items processed."
+msgstr ""
+
+#: management/commands/storage_process.py:26
+msgid "Process a specific model."
+msgstr ""
+
+#: management/commands/storage_process.py:32
+msgid ""
+"Process the files in reverse to undo the storage pipeline transformations."
+msgstr ""
+
+#: management/commands/storage_process.py:38
+msgid "Name of the storage to process."
+msgstr ""
+
+#: models.py:23
+msgid "File"
+msgstr "Fails"
+
+#: models.py:25
+msgid "Filename"
+msgstr "Faila nosaukums"
+
+#: models.py:27
+msgid "Date time"
+msgstr "Datums Laiks"
+
+#: models.py:31
+msgid "Shared uploaded file"
+msgstr "Koplietotais augšupielādētais fails"
+
+#: models.py:32 storages.py:19
+msgid "Shared uploaded files"
+msgstr "Koplietotie augšupielādētie faili"
+
+#: queues.py:11
+msgid "Storage periodic"
+msgstr ""
+
+#: queues.py:16
+msgid "Delete stale uploads"
+msgstr "Dzēst nostāvējušās augšupielādes"
+
+#: settings.py:15
+msgid "A storage backend that all workers can use to share files."
+msgstr "Uzglabāšanas backend, ko visi darbinieki var izmantot, lai koplietotu failus."
+
+#: settings.py:25
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files."
 msgstr "Pagaidu katalogs, ko izmanto vietnes platumā, lai saglabātu sīktēlus, priekšskatījumus un pagaidu failus."
+
+#: storages.py:12
+msgid ""
+"Unable to initialize the shared uploaded file storage. Check the settings {}"
+" and {} for formatting errors."
+msgstr ""

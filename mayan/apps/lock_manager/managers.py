@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import datetime
 import logging
 
@@ -9,7 +7,7 @@ from django.utils.timezone import now
 
 from .exceptions import LockError
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class LockManager(models.Manager):

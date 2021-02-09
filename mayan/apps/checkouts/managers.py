@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 import logging
 
 from django.apps import apps
@@ -19,7 +17,7 @@ from .permissions import (
     permission_document_check_in, permission_document_check_in_override
 )
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class DocumentCheckoutBusinessLogicManager(models.Manager):
@@ -68,21 +66,13 @@ class DocumentCheckoutBusinessLogicManager(models.Manager):
 
 
 class DocumentCheckoutManager(models.Manager):
-    def are_document_new_versions_allowed(self, document, user=None):
-        try:
-            check_out_info = self.document_check_out_info(document=document)
-        except DocumentNotCheckedOut:
-            return True
-        else:
-            return not check_out_info.block_new_version
-
     def check_in_expired_check_outs(self):
         for document in self.expired_check_outs():
             document.check_in()
 
-    def check_out_document(self, document, expiration_datetime, user, block_new_version=True):
+    def check_out_document(self, document, expiration_datetime, user, block_new_file=True):
         return self.create(
-            block_new_version=block_new_version, document=document,
+            block_new_file=block_new_file, document=document,
             expiration_datetime=expiration_datetime, user=user
         )
 
@@ -130,25 +120,3 @@ class DocumentCheckoutManager(models.Manager):
 
     def is_checked_out(self, document):
         return self.filter(document=document).exists()
-
-
-class NewVersionBlockManager(models.Manager):
-    def block(self, document):
-        self.get_or_create(document=document)
-
-    def is_blocked(self, document):
-        return self.filter(document=document).exists()
-
-    def get_by_natural_key(self, document_natural_key):
-        Document = apps.get_model(
-            app_label='documents', model_name='Document'
-        )
-        try:
-            document = Document.objects.get_by_natural_key(document_natural_key)
-        except Document.DoesNotExist:
-            raise self.model.DoesNotExist
-
-        return self.get(document__pk=document.pk)
-
-    def unblock(self, document):
-        self.filter(document=document).delete()

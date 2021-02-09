@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import io
 import logging
 import shutil
@@ -23,13 +21,13 @@ from ..literals import (
     DEFAULT_PDFINFO_PATH, DEFAULT_PILLOW_MAXIMUM_IMAGE_PIXELS
 )
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 pdftoppm_path = setting_graphics_backend_arguments.value.get(
     'pdftoppm_path', DEFAULT_PDFTOPPM_PATH
 )
 
 try:
-    pdftoppm = sh.Command(pdftoppm_path)
+    pdftoppm = sh.Command(path=pdftoppm_path)
 except sh.CommandNotFound:
     pdftoppm = None
 else:
@@ -52,7 +50,7 @@ pdfinfo_path = setting_graphics_backend_arguments.value.get(
 )
 
 try:
-    pdfinfo = sh.Command(pdfinfo_path)
+    pdfinfo = sh.Command(path=pdfinfo_path)
 except sh.CommandNotFound:
     pdfinfo = None
 
@@ -65,7 +63,7 @@ Image.MAX_IMAGE_PIXELS = pillow_maximum_image_pixels
 
 class Python(ConverterBase):
     def convert(self, *args, **kwargs):
-        super(Python, self).convert(*args, **kwargs)
+        super().convert(*args, **kwargs)
 
         if self.mime_type == 'application/pdf' and pdftoppm:
             new_file_object = NamedTemporaryFile()
@@ -82,44 +80,12 @@ class Python(ConverterBase):
                     l=self.page_number + 1, _out=image_buffer
                 )
                 image_buffer.seek(0)
-                return Image.open(image_buffer)
+                return Image.open(fp=image_buffer)
             finally:
                 new_file_object.close()
 
-    def detect_orientation(self, page_number):
-        # Default rotation: 0 degrees
-        result = 0
-
-        # Use different ways depending on the file type
-        if self.mime_type == 'application/pdf':
-            pdf = PyPDF2.PdfFileReader(self.file_object)
-            try:
-                result = pdf.getPage(page_number - 1).get('/Rotate', 0)
-                if isinstance(result, PyPDF2.generic.IndirectObject):
-                    result = result.getObject()
-            except Exception as exception:
-                self.file_object.seek(0)
-                pdf = PyPDF2.PdfFileReader(self.file_object)
-                if force_text(exception) == 'File has not been decrypted':
-                    # File is encrypted, try to decrypt using a blank
-                    # password.
-                    try:
-                        pdf.decrypt(password=b'')
-                    except Exception as exception:
-                        logger.error(
-                            'Unable to detect PDF orientation; %s', exception
-                        )
-                else:
-                    logger.error(
-                        'Unable to detect PDF orientation; %s', exception
-                    )
-            finally:
-                self.file_object.seek(0)
-
-        return result
-
     def get_page_count(self):
-        super(Python, self).get_page_count()
+        super().get_page_count()
 
         page_count = 1
 
@@ -136,7 +102,7 @@ class Python(ConverterBase):
                 )
                 page_count = pdf_reader.getNumPages()
             except Exception as exception:
-                if force_text(exception) == 'File has not been decrypted':
+                if force_text(s=exception) == 'File has not been decrypted':
                     # File is encrypted, try to decrypt using a blank
                     # password.
                     file_object.seek(0)
@@ -148,7 +114,7 @@ class Python(ConverterBase):
                         page_count = pdf_reader.getNumPages()
                     except Exception as exception:
                         file_object.seek(0)
-                        if force_text(exception) == 'only algorithm code 1 and 2 are supported':
+                        if force_text(s=exception) == 'only algorithm code 1 and 2 are supported':
                             # PDF uses an unsupported encryption
                             # Try poppler-util's pdfinfo
                             page_count = self.get_pdfinfo_page_count(file_object)
@@ -159,7 +125,7 @@ class Python(ConverterBase):
                             ) % exception
                             logger.error(error_message)
                             raise PageCountError(error_message)
-                elif force_text(exception) == 'EOF marker not found':
+                elif force_text(s=exception) == 'EOF marker not found':
                     # PyPDF2 issue: https://github.com/mstamy2/PyPDF2/issues/177
                     # Try poppler-util's pdfinfo
                     logger.debug('PyPDF2 GitHub issue #177 : EOF marker not found')
@@ -179,7 +145,7 @@ class Python(ConverterBase):
                 file_object.seek(0)
         else:
             try:
-                image = Image.open(self.file_object)
+                image = Image.open(fp=self.file_object)
             except IOError as exception:
                 error_message = _(
                     'Exception determining page count using Pillow; %s'
@@ -213,7 +179,7 @@ class Python(ConverterBase):
         page_count = int(
             list(filter(
                 lambda line: line.startswith('Pages:'),
-                force_text(process.stdout).split('\n')
+                force_text(s=process.stdout).split('\n')
             ))[0].replace('Pages:', '')
         )
         file_object.seek(0)

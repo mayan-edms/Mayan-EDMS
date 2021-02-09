@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import redis
 
 from django.utils.encoding import force_text
@@ -16,7 +14,7 @@ from .literals import REDIS_LOCK_VERSION_REQUIRED
 class RedisLock(LockingBackend):
     @classmethod
     def acquire_lock(cls, name, timeout=None):
-        super(RedisLock, cls).acquire_lock(name=name, timeout=timeout)
+        super().acquire_lock(name=name, timeout=timeout)
         return RedisLock(name=name, timeout=timeout)
 
     @classmethod
@@ -29,7 +27,7 @@ class RedisLock(LockingBackend):
 
     @classmethod
     def purge_locks(cls):
-        super(RedisLock, cls).purge_locks()
+        super().purge_locks()
 
     def __init__(self, name, timeout):
         if redis.VERSION < REDIS_LOCK_VERSION_REQUIRED:
@@ -50,7 +48,7 @@ class RedisLock(LockingBackend):
             raise LockError
 
     def release(self):
-        super(RedisLock, self).release()
+        super().release()
         try:
             self.redis_lock_instance.release()
         except redis.exceptions.LockNotOwnedError:

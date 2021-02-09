@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
 
 TEST_PERMISSION_NAMESPACE_NAME = 'test namespace name'
 TEST_PERMISSION_NAMESPACE_TEXT = 'test namespace text'

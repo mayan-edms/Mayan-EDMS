@@ -1,0 +1,661 @@
+Version 3.5
+===========
+
+Released: September 30, 2020
+
+
+Changes
+-------
+
+Appearance
+^^^^^^^^^^
+
+Support for themes was added. This allows administrator to create CSS themes
+that modify the appearance without making code changes. The users can select
+what theme they want to apply from the "users" menu. The themes are sanitized
+using the ``bleach`` library to avoid JavaScript code to be inserted along
+with the theme markup.
+
+A new action level section called "Related" was added. This section will
+display links to other apps that hold a relation with the current view.
+For example, this allows quickly switching from the roles, groups, and users
+views, in a single click.
+
+Each app now has the ability to specify their own static media ignore patterns
+via the app config attribute ``static_media_ignore_patterns``. This new
+option allowed the removal of more unused media files, lowering the static
+media folder size from 83MB to 51MB.
+
+
+Converter
+^^^^^^^^^
+
+A new layer called "Decorations" was added. This layer allows adding images
+as overlays on top of document page images. Overlay images are added via
+the new Setup option named "Assets".
+
+Two initial decoration transformations were added. The first allows
+displaying an asset over a document page image. This transformation is
+useful for things like stamps. The other transformation allows displaying
+an asset as a watermark. This transformation will display multiple copies
+of the asset of the entire document image page. Both transformations support
+rotation and opacity settings.
+
+A new workflow action was added to add transformation to document pages.
+
+The transformation view was updated to disable the "Edit" button for invalid
+transformations and transformations that do not support arguments.
+
+
+Dashboard
+^^^^^^^^^
+
+Add support to change the dashboard widget details link icon.
+
+
+Database
+^^^^^^^^
+
+A new class was added named ``ModelQueryFields``. This class allows apps to
+specify which fields should be prefetched on database access, lowering
+memory and improving database access.
+
+At the low level, this class interfaces with Django's ``select_related`` and
+``prefetch_related`` features.
+
+
+Dependencies
+^^^^^^^^^^^^
+
+The following dependencies version were updated:
+
+    - Celery from 4.3.0 to 4.4.7
+    - chart.js from 2.7.2 to 2.7.3
+    - coverage from 5.0.4 to 5.1
+    - coveralls from 1.11.1 to 2.0.0
+    - drf-yasg from 1.6.0 to 1.17.1
+    - djangorestframework from 3.7.7 to 3.11.0
+    - django-extensions from 2.2.8 to 2.2.9
+    - django-rosetta from 0.9.3 to 0.9.4
+    - flake8 from 3.7.9 to 3.8.3
+    - flex from 6.14.0 to 6.14.1
+    - gevent from 1.4.0 to 20.4.0
+    - graphviz from 0.13.2 to 0.14
+    - ipython from 7.13.0 to 7.15.0
+    - PostgreSQL client from 2.8.4 to 2.8.6
+    - python_gnupg from 0.4.5 to 0.4.6
+    - pytz from 2019.1 to 2020.1
+    - Redis client from 3.4.1 to 3.5.3
+    - safety from 1.8.7 to 1.9.0
+    - select2 from 4.0.3 to 4.0.13
+    - sh from 1.12.14 to 1.13.1
+    - sphinxcontrib-spelling from 4.3.0 to 5.0.0
+    - swagger-spec-validator from 2.4.3 to 2.5.0
+    - transifex-client from 0.13.8 to 0.13.10
+    - tox from 3.14.5 to 3.14.6
+
+The dependency settings for kombu were removed. This dependency is now
+automatically installed by Celery.
+
+
+Docker
+^^^^^^
+
+The Docker image was updated from Debian 10.3 to 10.5.
+
+The image was also updated to use the headless version of Libre Office
+to reduce the image size.
+
+
+Documents
+^^^^^^^^^
+
+Support was added for document type filename generators. These allow users
+to specify how documents are physically named when uploaded to Mayan. Two
+backend are provided. One preserves the existing behavior of using an unique
+name generated at the time of upload, and a new one that will preserve
+the filename of the document uploaded. The filename generator can be set
+for each individual document type.
+
+Resource locking was added to the document page image generation to avoid a
+race condition when system are under heavy load.
+
+Document image generation is now also retried after failure. The new setting
+named ``DOCUMENT_TASK_GENERATE_DOCUMENT_PAGE_IMAGE_RETRY_DELAY`` controls
+the retry delay of the document page image generation task.
+
+Document stubs can now be accessed. These allow manipulating documents even
+when they have not yet been fully processed. These are useful when
+uploading many documents over the REST API.
+
+Support was added to search document types.
+
+The document trash empty action was converted into a background task to avoid
+blocking the user interface on large number of documents.
+
+
+File metadata
+^^^^^^^^^^^^^^
+
+The default document file parser was updated to preserve and store the
+original document filename as part of the document file metadata.
+
+
+Logging
+^^^^^^^
+
+The error logging code was moved from the "Common" app to a new app called
+"Logging". Besides system logging, this app also provides a new unified
+database logging and logging user interface view for apps.
+
+The new logging app allows changing the level of the logging.
+
+With the addition of the "Logging" app some settings were renamed. The
+``COMMON_AUTO_LOGGING`` and ``COMMON_PRODUCTION_ERROR_LOGGING``
+have been merged into ``LOGGING_ENABLE``.
+``COMMON_PRODUCTION_ERROR_LOG_PATH`` is now
+``LOGGING_LOG_FILE_PATH`` and continues to default to the
+``MEDIA_ROOT/error.log`` path. The new setting ``LOGGING_LEVEL`` controls
+the log level. A second new setting named ``LOGGING_HANDLERS`` controls
+the list of output log handlers. It defaults to ``console`` but also
+supports a second one named ``logfile``. The ``logfile`` handler
+is the same one that previously enabled when setting the setting
+``COMMON_PRODUCTION_ERROR_LOGGING`` to ``true``.
+
+
+Mailing
+^^^^^^^
+
+The mailer app was updated to use the new logging app and user interface.
+
+
+Memory
+^^^^^^
+
+The paradigm of using ``runtime.py`` modules in each app was removed. Instead
+each consumer must instantiate the class. This change avoids keeping long
+lived objects in memory, and help the garbage collector reclaim memory areas
+easier.
+
+
+Metadata
+^^^^^^^^
+
+Workflow actions were added to add, edit, and remove metadata from documents.
+
+
+Mirroring
+^^^^^^^^^
+
+The ``mountindex`` command can now be set to run in the background.
+
+When running the command in the foreground, a message is now displayed to
+avoid confusion and ensure the task is not frozen.
+
+
+OCR
+^^^
+
+The OCR task was refactored to use Celery canvas. This change allows launching
+an OCR task for each page of the document. This increases the scalability
+potential of the OCR and avoid long running background tasks.
+
+Tesseract's multi threading support is now disabled by default. This speeds
+up the page OCR and lower the CPU requirements.
+
+A workflow action was added that allows updating the document OCR content.
+
+
+Object copying
+^^^^^^^^^^^^^^
+
+Support was added to allow copying objects. Object supported are: document
+types, groups, mailing profiles, metadata types, messages of the day,
+workflows, quotas, roles, smart links, tags, web links.
+
+
+Platform
+^^^^^^^^
+
+It is now possible to change the Gunicorn worker class via the environment
+variable ``MAYAN_GUNICORN_WORKER_CLASS``.
+
+
+Python 3
+^^^^^^^^
+
+More Python 2 code removals landed in this version.
+
+Explicit checks and conditional code for Python 3 was removed.
+
+Conditional assignment of FileNotFoundErrorException was removed. Python 3's
+FileNotFoundError is now used directly.
+
+Casting of dict_type and dictionary_type was removed.
+
+Usage of the ``python_2_unicode_compatible`` wrapper was removed from the
+models.
+
+Explicitly subclassing from ``object`` was removed
+
+Usage of ``django.utils.six`` was removed.
+
+
+Roles
+^^^^^
+
+Columns showing the number of groups and permissions of a role were added.
+
+
+Search
+^^^^^^
+
+The search system refactor is now complete. On top of this refactor a new
+search backend was added. This new backend allows using the "Whoosh" search
+engine. The setting ``SEARCH_BACKEND`` controls which backend is used.
+To enable the use of "Whoosh", change this to
+``mayan.apps.dynamic_search.backends.whoosh.WhooshSearchBackend``.
+
+This backend will be the default one in a future release.
+
+The search form now sorts the search fields. Icons for the search, advanced
+search and search again links were added.
+
+To speed up round trips during search sessions, the search again link is now
+displayed on the empty results view.
+
+The search again link now redirects to the same search form used instead to
+always redirect to the advanced form.
+
+New setting was added to limit the number of search results returned. This
+setting avoids runaway CPU usage on ambiguous search terms. The setting
+name is ``SEARCH_RESULTS_LIMIT`` and defaults to 100.
+
+
+Sources
+^^^^^^^
+
+The sources app was updated to use the new unified logging.
+
+An error will be raised if the watch folder doesn't exists or is not a
+directory.
+
+
+Statistics
+^^^^^^^^^^
+
+The statistics queue was moved from the slow worker to the medium worker.
+This allows getting statistics updates even during heavy load.
+
+
+Storage
+^^^^^^^
+
+The ``SharedUpload`` model was moved to the storage app. The setting
+``COMMON_SHARED_STORAGE`` is now ``STORAGE_SHARED_STORAGE``, and
+``COMMON_SHARED_STORAGE_ARGUMENTS`` is now
+``STORAGE_SHARED_STORAGE_ARGUMENTS``.
+
+
+Task manager
+^^^^^^^^^^^^
+
+Celery's ``BROKER_LOGIN_METHOD`` and ``BROKER_USE_SSL`` settings are now
+exposed via the new ``CELERY_BROKER_LOGIN_METHOD`` and
+``CELERY_BROKER_USE_SSL`` settings. ``CELERY_BROKER_LOGIN_METHOD``
+defaults to ``AMQPLAIN`` and ``CELERY_BROKER_USE_SSL`` defaults to ``None``.
+
+
+Templating
+^^^^^^^^^^
+
+New tags and filters were added or made available by default for the
+templating system.
+
+The ``mathfilers`` are enabled by default.
+
+Add a ``set`` tag was added to allow setting template variables.
+
+A ``dict_get`` filter was added that returns a given dictionary key.
+
+A tag named ``{% method %}`` was added to allow calling an object's method
+with or without keyword arguments.
+
+A set of regular expression tags were added. These are ``regex_findall``,
+``regex_match``, ``regex_search``, and ``regex_sub``. Each regular expression
+tag support the flags ``ascii``, ``ignorecase``, ``locale``, ``multiline``,
+``dotall``, and ``verbose``.
+
+A new ``split`` filter was added to split a value by a delimiter.
+
+A new tag/filter dropdown list was added to the template widget to make
+selection easier during template markup editing.
+
+
+Testing
+^^^^^^^
+
+All test related code was moved to a new app called "Testing".
+
+
+Views
+^^^^^
+
+All view generation code was moved to a new app called "Views". Due to this
+change the setting ``COMMON_PAGINATE_BY`` is now named ``VIEWS_PAGINATE_BY``.
+The new views app controls generic views, view mixins, forms, and widgets.
+
+
+Web links
+^^^^^^^^^
+
+The web link navigated event is now enabled to use for subscription and as
+workflow trigger.
+
+Web link were updated to enforce label uniqueness. A data migration is
+included to de-duplicate the labels before altering the schema.
+
+
+Workflows
+^^^^^^^^^
+
+The workflow context code was updated to only instantiate valid workflow
+transition fields from an existing workflow instance context. This avoids
+problems when a workflow had a transition field with data, and that fields
+is later deleted from the workflow template.
+
+A columns was added to workflow transitions showing the fields it supports.
+
+Workflow actions are now grouped by app and ``select2`` support was added
+to allow autocompletion search.
+
+A new workflow action was added that allows a workflow to launch other
+workflows.
+
+The code that instantiates workflow has been converted to a background task.
+This speeds up uploading documents in bulk.
+
+A boolean field was added to workflows to control whether or not they will
+launch when a new document is created. This change along with the new action
+to launch workflows, allows creating complex layouts where a workflow can
+launch subworkflows.
+
+
+Other
+^^^^^
+
+- Trigger the workflow edited event when making changes to the workflow
+  states, state actions, transitions, or transition fields.
+- Add events to the message of the day app.
+- Add helper script to find missing __init__.py files.
+- Move mailing profile choice generation from the form to the class.
+- Add "No results" text for empty file metadata driver lists.
+- Re query search queryset after it has been sliced to workaround the ORM
+  "Cannot filter a query once a slice has been taken".
+- Add search template tag to pass the search model URL and query string
+  variable to the search template and avoid hardcoding it.
+- Add file metadata submit link for "No results" file metadata driver
+  template.
+- Remove ``converter.validators`` and replace it with ``common.validators``.
+- Autoimport search.py modules from apps.
+- Update the workflow action ``.get_form_schema()`` to accept the workflow state
+  for which the action is being created.
+- Move dependencies to their respective app:
+
+  - django-mathfilters from common to templating
+  - extract-msg from common to storage
+  - gevent, gunicorn, whitenoise from common to platform
+
+- Consolidate app module loading using AppsModuleLoaderMixin.
+- Add django-silk as a development dependency.
+  Add a development setting for django-silk.
+- Rename ``smart_settings.classes.Namespace`` to ``SettingNamespace``.
+- Rename ``smart_settings.classes.NamespaceMigration`` to
+  ``SettingNamespaceMigration``.
+- Add keyword arguments to all the ``open()`` and ``delete()`` methods
+  and functions.
+- Prefix all signals with ``signal_``.
+- Move the apps search setup to their own module.
+- Add ``subwidgets_order`` to ``NamedMultiWidget`` class.
+- Move compressed file related code to the storage app.
+- Use ``TemplateField`` for metadata type's default and lookup fields.
+- Add support for excluding model proxies from menu link resolving via the
+  ``.add_proxy_exclusion()`` menu method.
+- Use proxy exclusion to disable the normal multi item document
+  links from being displayed for trashed documents.
+- Update the statistics icon.
+- Fix icon for the add document to favorites link.
+- Add the workflow action to the context of the initial state actions.
+- Add multiple workflow delete view.
+- Add multiple message delete view.
+- Add internal FUSE logging and allow control of the log level.
+- Make ``SearchField`` label optional. If not specified, the ``verbose_name``
+  of the model field will be used instead.
+- Add views to launch workflows for single or multiple documents.
+- Workflow to document type matching is now enforced when launching workflows.
+- Move the column help text mark up into its own partial template.
+- Unify the spacing of the list columns for all variations of sort columns
+  and columns with help text.
+- Improve and unify the way icon shadows is produced. Removed the
+  ``shadow_class`` and ``shadow_class_transformation_list`` arguments.
+- Improve main menu styling and JavaScript code. Improve hover highlighting
+  and maximize space.
+- Make transformation order column sortable.
+- Update the redactions layer to use an order of 0.
+- Remove transformation choices from layer model.
+- Remove transformation order field default. An empty value is more intuitive
+  to the purpose of the field.
+- Add asset paste transformation by coordinates and by percentage.
+- Add asset watermark transformation by coordinates.
+
+
+Removals
+--------
+
+- Remove settings ``DOCUMENTS_DISABLE_BASE_IMAGE_CACHE`` and
+  ``DOCUMENTS_DISABLE_TRANSFORMED_IMAGE_CACHE``.
+- Remove the ``django-test-without-migrations`` package.
+- Remove the ``noopocr.NoOpOCR`` OCR backend.
+- Remove the ``pyocr`` OCR backend.
+
+
+Upgrading process
+-----------------
+
+#. Stop supervisord::
+
+    sudo systemctl stop supervisor
+
+#. Edit the ``config.yml`` file and create the setting
+   ``STORAGE_SHARED_STORAGE`` with the value of ``COMMON_SHARED_STORAGE``
+   and the setting ``STORAGE_SHARED_STORAGE_ARGUMENTS`` with the value of
+   ``COMMON_SHARED_STORAGE_ARGUMENTS``.
+
+
+Upgrading from Mayan EDMS 3.2.x or earlier
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. Update the Redis configuration:
+
+   Configure Redis to discard data when it runs out of memory, not save its
+   database, and only keep 2 database:
+
+   .. code-block:: bash
+
+       echo "maxmemory-policy allkeys-lru" | sudo tee -a /etc/redis/redis.conf
+       echo "save \"\"" | sudo tee -a /etc/redis/redis.conf
+       echo "databases 2" | sudo tee -a /etc/redis/redis.conf
+       echo "requirepass |DEFAULT_REDIS_PASSWORD|" | sudo tee -a /etc/redis/redis.conf
+       sudo systemctl restart redis
+
+
+#. Install the Python 3 development OS package:
+
+   .. code-block:: bash
+
+    sudo apt-get install python3-dev
+
+
+#. Update the virtualenv to use Python 3:
+
+   .. code-block:: bash
+
+    sudo -u |DEFAULT_OS_USERNAME| virtualenv --clear /opt/mayan-edms -p /usr/bin/python3
+
+
+#. Create a home directory for the Mayan EDMS system user:
+
+   .. code-block:: bash
+
+    mkdir /home/mayan
+
+
+#. Grant ownership to the Mayan EDMS system user:
+
+   .. code-block:: bash
+
+    chown mayan:mayan /home/mayan
+
+#. Reinstall the Python client for PostgreSQL and Redis:
+
+   .. code-block:: bash
+
+       sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install psycopg2==|PYTHON_PSYCOPG2_VERSION| redis==|PYTHON_REDIS_VERSION|
+
+   .. note::
+
+       Platforms with the ARM CPU might also need additional requirements:
+
+       .. code-block:: bash
+
+           sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install psutil==|PYTHON_PSUTIL_VERSION|
+
+
+#. Reinstall the Python client for RabbitMQ if you are using RabbitMQ as a broker:
+
+   .. code-block:: bash
+
+       sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install amqp==|PYTHON_AMQP_VERSION|
+
+
+Upgrading from Mayan EDMS 3.3.x
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. Upgrade to the latest pip version:
+
+   .. code-block:: bash
+
+       sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install -U pip
+
+
+#. Update the Redis configuration to enable password protection:
+
+   .. code-block:: bash
+
+       echo "requirepass mayanredispassword" | sudo tee -a /etc/redis/redis.conf
+       sudo systemctl restart redis
+
+
+#. Remove deprecated requirements:
+
+   .. code-block:: bash
+
+    sudo -u |DEFAULT_OS_USERNAME| curl |SOURCE_CODE_REPOSITORY|raw/master/removals.txt -o /tmp/removals.txt \
+    && sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| uninstall -y -r /tmp/removals.txt
+
+
+#. Update the Mayan EDMS Python package:
+
+   .. code-block:: bash
+
+    sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install mayan-edms==3.5
+
+   the requirements will also be updated automatically.
+
+
+#. Make a backup of your supervisord file:
+
+   .. code-block:: bash
+
+       sudo cp |MAYAN_SUPERVISOR_CONF| |MAYAN_SUPERVISOR_CONF|.bck
+
+
+#. Update the supervisord configuration file. Replace the environment
+   variables values show here with your respective settings. This step will refresh
+   the supervisord configuration file with the new queues and the latest
+   recommended layout:
+
+   .. code-block:: bash
+
+       sudo -u |DEFAULT_OS_USERNAME| MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=|DEFAULT_DATABASE_NAME| \
+       MAYAN_DATABASE_PASSWORD=|DEFAULT_DATABASE_PASSWORD| MAYAN_DATABASE_USER=|DEFAULT_DATABASE_USER| \
+       MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| platformtemplate supervisord | sudo sh -c "cat > |MAYAN_SUPERVISOR_CONF|"
+
+   or:
+
+   .. code-block:: bash
+
+       sudo -u |DEFAULT_OS_USERNAME| MAYAN_DATABASES=\"{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'|DEFAULT_DATABASE_NAME|','PASSWORD':'|DEFAULT_DATABASE_PASSWORD|','USER':'|DEFAULT_DATABASE_USER|','HOST':'127.0.0.1'}}\" \
+       MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| platformtemplate supervisord | sudo sh -c "cat > |MAYAN_SUPERVISOR_CONF|"
+
+
+#. Edit the supervisord configuration file and update any setting specific to your installation:
+
+   .. code-block:: bash
+
+       sudo vi |MAYAN_SUPERVISOR_CONF|
+
+
+#. Migrate existing database schema and static media files with:
+
+   .. code-block:: bash
+
+       sudo -u |DEFAULT_OS_USERNAME| MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=|DEFAULT_DATABASE_NAME| \
+       MAYAN_DATABASE_PASSWORD=|DEFAULT_DATABASE_PASSWORD| MAYAN_DATABASE_USER=|DEFAULT_DATABASE_USER| \
+       MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| performupgrade
+
+   or:
+
+   .. code-block:: bash
+
+       sudo -u |DEFAULT_OS_USERNAME| MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'|DEFAULT_DATABASE_NAME|','PASSWORD':'|DEFAULT_DATABASE_PASSWORD|','USER':'|DEFAULT_DATABASE_USER|','HOST':'127.0.0.1'}}" \
+       MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+      |MAYAN_BIN| performupgrade
+
+
+#. Start supervisord:
+
+   .. code-block:: bash
+
+       sudo systemctl start supervisor
+
+#. Clear the browser cache to avoid loading old web assets.
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+-----------------------------
+
+- The settings ``COMMON_SHARED_STORAGE`` and
+  ``COMMON_SHARED_STORAGE_ARGUMENTS`` have been removed and substituted by
+  the settings ``STORAGE_SHARED_STORAGE`` and
+  ``STORAGE_SHARED_STORAGE_ARGUMENTS``.
+
+
+Issues closed
+-------------
+
+- :gitlab-issue:`209` Increase atomicity of the OCR task
+- :gitlab-issue:`477` Add document image overlay support. Such as watermarks.
+- :gitlab-issue:`741` Search is slow on large pagesets - Limited by Postgres' single core limitations
+- :gitlab-issue:`745` Feature request: file metadata
+- :gitlab-issue:`570` Allow user-generated stylesheets
+- :gitlab-issue:`638` Server communication error when using default search
+- :gitlab-issue:`804` Feature Request: Action to Copy anything (Documenttypes, Roles, Groups, Workflows, ...)
+- :gitlab-issue:`858` Update CI Docker run_tests to test against PostgreSQL
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

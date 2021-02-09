@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH
 
 from ..models import Tag
@@ -10,7 +8,7 @@ from .literals import (
 )
 
 
-class DocumentTagViewTestMixin(object):
+class DocumentTagViewTestMixin:
     def _request_test_document_tag_attach_view(self):
         return self.post(
             viewname='tags:tag_attach', kwargs={
@@ -53,57 +51,74 @@ class DocumentTagViewTestMixin(object):
             }
         )
 
+    def _request_test_tag_document_list_view(self):
+        return self.get(
+            viewname='tags:tag_document_list', kwargs={
+                'tag_id': self.test_tag.pk
+            }
+        )
 
-class TagAPIViewTestMixin(object):
+
+class TagAPIViewTestMixin:
     def _request_test_document_attach_tag_api_view(self):
         return self.post(
             viewname='rest_api:document-tag-list', kwargs={
-                'document_pk': self.test_document.pk
+                'document_id': self.test_document.pk
             }, data={'tag_pk': self.test_tag.pk}
         )
 
     def _request_test_document_tag_detail_api_view(self):
         return self.get(
             viewname='rest_api:document-tag-detail', kwargs={
-                'document_pk': self.test_document.pk, 'pk': self.test_tag.pk
+                'document_id': self.test_document.pk,
+                'tag_id': self.test_tag.pk
             }
         )
 
     def _request_test_document_tag_list_api_view(self):
         return self.get(
             viewname='rest_api:document-tag-list', kwargs={
-                'document_pk': self.test_document.pk
+                'document_id': self.test_document.pk
             }
         )
 
     def _request_test_document_tag_remove_api_view(self):
         return self.delete(
             viewname='rest_api:document-tag-detail', kwargs={
-                'document_pk': self.test_document.pk, 'pk': self.test_tag.pk
+                'document_id': self.test_document.pk,
+                'tag_id': self.test_tag.pk
             }
         )
 
     def _request_test_tag_create_api_view(self):
-        return self.post(
+        pk_list = list(Tag.objects.values_list('pk', flat=True))
+
+        response = self.post(
             viewname='rest_api:tag-list', data={
                 'label': TEST_TAG_LABEL, 'color': TEST_TAG_COLOR
             }
         )
 
+        self.test_tag = Tag.objects.exclude(pk__in=pk_list).first()
+
+        return response
+
     def _request_test_tag_delete_api_view(self):
         return self.delete(
-            viewname='rest_api:tag-detail', kwargs={'pk': self.test_tag.pk}
+            viewname='rest_api:tag-detail',
+            kwargs={'tag_id': self.test_tag.pk}
         )
 
     def _request_test_tag_detail_api_view(self):
         return self.get(
-            viewname='rest_api:tag-detail', kwargs={'pk': self.test_tag.pk}
+            viewname='rest_api:tag-detail',
+            kwargs={'tag_id': self.test_tag.pk}
         )
 
     def _request_test_tag_document_list_api_view(self):
         return self.get(
             viewname='rest_api:tag-document-list', kwargs={
-                'pk': self.test_tag.pk
+                'tag_id': self.test_tag.pk
             }
         )
 
@@ -117,7 +132,8 @@ class TagAPIViewTestMixin(object):
             data.update(extra_data)
 
         return getattr(self, verb)(
-            viewname='rest_api:tag-detail', kwargs={'pk': self.test_tag.pk},
+            viewname='rest_api:tag-detail',
+            kwargs={'tag_id': self.test_tag.pk},
             data=data
         )
 
@@ -125,11 +141,13 @@ class TagAPIViewTestMixin(object):
         return self.get(viewname='rest_api:tag-list')
 
 
-class TagTestMixin(object):
-    def _create_test_tag(self):
+class TagTestMixin:
+    def _create_test_tag(self, add_test_document=False):
         self.test_tag = Tag.objects.create(
             color=TEST_TAG_COLOR, label=TEST_TAG_LABEL
         )
+        if add_test_document:
+            self.test_tag.documents.add(self.test_document)
 
     def _create_test_tag_2(self):
         self.test_tag_2 = Tag.objects.create(
@@ -137,7 +155,7 @@ class TagTestMixin(object):
         )
 
 
-class TagViewTestMixin(object):
+class TagViewTestMixin:
     def _request_test_tag_create_view(self):
         return self.post(
             viewname='tags:tag_create', data={
@@ -158,13 +176,6 @@ class TagViewTestMixin(object):
             },
         )
 
-    def _request_test_tag_document_list_view(self):
-        return self.get(
-            viewname='tags:tag_document_list', kwargs={
-                'tag_id': self.test_tag.pk
-            }
-        )
-
     def _request_test_tag_edit_view(self):
         return self.post(
             viewname='tags:tag_edit', kwargs={
@@ -178,9 +189,9 @@ class TagViewTestMixin(object):
         return self.get(viewname='tags:tag_list')
 
 
-class TaggedDocumentUploadViewTestMixin(object):
+class TaggedDocumentUploadWizardStepViewTestMixin:
     def _request_upload_interactive_document_create_view(self):
-        with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
+        with open(file=TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             return self.post(
                 viewname='sources:document_upload_interactive', kwargs={
                     'source_id': self.test_source.pk

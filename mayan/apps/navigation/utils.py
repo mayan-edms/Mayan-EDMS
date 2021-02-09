@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 import logging
 
 from django.apps import apps
@@ -9,7 +7,7 @@ from django.urls import Resolver404, resolve
 
 from mayan.apps.permissions import Permission
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 def get_cascade_condition(
@@ -58,6 +56,33 @@ def get_cascade_condition(
         return queryset.count() > 0
 
     return condition
+
+
+def get_content_type_kwargs_factory(
+    variable_name='resolved_object', result_map=None
+):
+    if not result_map:
+        result_map = {
+            'app_label': 'app_label',
+            'model_name': 'model_name',
+            'object_id': 'object_id'
+        }
+
+    def get_kwargs(context):
+        ContentType = apps.get_model(
+            app_label='contenttypes', model_name='ContentType'
+        )
+
+        content_type = ContentType.objects.get_for_model(
+            context[variable_name]
+        )
+        return {
+            result_map['app_label']: '"{}"'.format(content_type.app_label),
+            result_map['model_name']: '"{}"'.format(content_type.model),
+            result_map['object_id']: '{}.pk'.format(variable_name)
+        }
+
+    return get_kwargs
 
 
 def get_current_view_name(request):

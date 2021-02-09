@@ -1,12 +1,10 @@
-from __future__ import unicode_literals
-
 from django.apps import apps
 
 from .classes import Permission
 
 
 def handler_permission_initialize(**kwargs):
-    Permission.initialize()
+    Permission.load_modules()
 
 
 def handler_purge_permissions(**kwargs):

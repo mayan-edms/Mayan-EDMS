@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import logging
 
 from django import forms
@@ -7,14 +5,15 @@ from django.utils.encoding import force_text
 from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.documents.forms import DocumentForm
+from mayan.apps.documents.forms.document_forms import DocumentForm
+from mayan.apps.documents.literals import DOCUMENT_FILE_ACTION_PAGE_CHOICES
 
 from .models import (
     IMAPEmail, POP3Email, SaneScanner, StagingFolderSource, WebFormSource,
     WatchFolderSource
 )
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class NewDocumentForm(DocumentForm):
@@ -22,11 +21,18 @@ class NewDocumentForm(DocumentForm):
         exclude = ('label', 'description')
 
 
-class NewVersionForm(forms.Form):
+class NewFileForm(forms.Form):
     comment = forms.CharField(
         help_text=_('An optional comment to explain the upload.'),
         label=_('Comment'), required=False,
         widget=forms.widgets.Textarea(attrs={'rows': 4}),
+    )
+    action = forms.ChoiceField(
+        choices=DOCUMENT_FILE_ACTION_PAGE_CHOICES, label=_('Action'),
+        help_text=_(
+            'The action to take in regards to the pages of the new file '
+            'being uploaded.'
+        )
     )
 
 
@@ -35,7 +41,7 @@ class UploadBaseForm(forms.Form):
         show_expand = kwargs.pop('show_expand', False)
         self.source = kwargs.pop('source')
 
-        super(UploadBaseForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
         if show_expand:
             self.fields['expand'] = forms.BooleanField(
@@ -53,11 +59,11 @@ class StagingUploadForm(UploadBaseForm):
     StagingFile class passed as 'cls' argument
     """
     def __init__(self, *args, **kwargs):
-        super(StagingUploadForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
         try:
             self.fields['staging_file_id'].choices = [
-                (staging_file.encoded_filename, force_text(staging_file)) for staging_file in self.source.get_files()
+                (staging_file.encoded_filename, force_text(s=staging_file)) for staging_file in self.source.get_files()
             ]
         except Exception as exception:
             logger.error('exception: %s', exception)

@@ -1,13 +1,14 @@
-from __future__ import unicode_literals
-
 from mayan.apps.documents.tests.base import GenericDocumentTestCase
 
 from .mixins import SmartLinkTestMixin
 
 
 class SmartLinkTestCase(SmartLinkTestMixin, GenericDocumentTestCase):
+    auto_upload_test_document = False
+
     def setUp(self):
-        super(SmartLinkTestCase, self).setUp()
+        super().setUp()
+        self._create_test_document_stub()
         self._create_test_smart_link(add_test_document_type=True)
 
     def test_smart_link_dynamic_label(self):

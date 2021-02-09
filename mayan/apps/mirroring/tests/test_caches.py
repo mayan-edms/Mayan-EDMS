@@ -1,8 +1,6 @@
-from __future__ import absolute_import, unicode_literals
-
 import warnings
 
-from mayan.apps.common.tests.base import BaseTestCase
+from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..caches import IndexFilesystemCache
 
@@ -12,17 +10,17 @@ from .literals import (
 )
 
 
-class MockDocument(object):
+class MockDocument:
     pk = TEST_DOCUMENT_PK
 
 
-class MockNode(object):
+class MockNode:
     pk = TEST_NODE_PK
 
 
 class IndexFilesystemCacheTestCase(BaseTestCase):
     def setUp(self):
-        super(IndexFilesystemCacheTestCase, self).setUp()
+        super().setUp()
         self.cache = IndexFilesystemCache()
         self.test_document = MockDocument()
         self.node = MockNode()

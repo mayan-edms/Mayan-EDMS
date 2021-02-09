@@ -1,11 +1,9 @@
-from __future__ import unicode_literals
-
 from django.utils.encoding import force_text
 
 from rest_framework import status
 
 from mayan.apps.documents.permissions import permission_document_view
-from mayan.apps.documents.tests.mixins import DocumentTestMixin
+from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
 from ..permissions import (
@@ -124,7 +122,7 @@ class CheckoutsAPITestCase(
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             response.data['document']['uuid'],
-            force_text(self.test_document.uuid)
+            force_text(s=self.test_document.uuid)
         )
 
     def test_document_check_out_list_api_view_no_permission(self):

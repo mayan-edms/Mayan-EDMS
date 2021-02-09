@@ -1,24 +1,22 @@
-from __future__ import unicode_literals
-
 from django import forms
 from django.utils.encoding import force_text
 from django.utils.html import conditional_escape
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _, ugettext
 
-from mayan.apps.common.widgets import TextAreaDiv
+from mayan.apps.views.widgets import TextAreaDiv
 
-from .models import DocumentPageContent
+from .models import DocumentFilePageContent
 
 
-class DocumentContentForm(forms.Form):
+class DocumentFileContentForm(forms.Form):
     """
     Form that concatenates all of a document pages' text content into a
     single textarea widget
     """
     def __init__(self, *args, **kwargs):
         self.document = kwargs.pop('instance', None)
-        super(DocumentContentForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         content = []
         self.fields['contents'].initial = ''
         try:
@@ -29,10 +27,10 @@ class DocumentContentForm(forms.Form):
         for page in document_pages:
             try:
                 page_content = page.content.content
-            except DocumentPageContent.DoesNotExist:
+            except DocumentFilePageContent.DoesNotExist:
                 pass
             else:
-                content.append(conditional_escape(force_text(page_content)))
+                content.append(conditional_escape(force_text(s=page_content)))
                 content.append(
                     '\n\n\n<hr/><div class="document-page-content-divider">- %s -</div><hr/>\n\n\n' % (
                         ugettext(
@@ -54,7 +52,7 @@ class DocumentContentForm(forms.Form):
     )
 
 
-class DocumentPageContentForm(forms.Form):
+class DocumentFilePageContentForm(forms.Form):
     contents = forms.CharField(
         label=_('Contents'),
         widget=TextAreaDiv(
@@ -67,15 +65,15 @@ class DocumentPageContentForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         document_page = kwargs.pop('instance', None)
-        super(DocumentPageContentForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         content = ''
         self.fields['contents'].initial = ''
 
         try:
             page_content = document_page.content.content
-        except DocumentPageContent.DoesNotExist:
+        except DocumentFilePageContent.DoesNotExist:
             pass
         else:
-            content = conditional_escape(force_text(page_content))
+            content = conditional_escape(force_text(s=page_content))
 
         self.fields['contents'].initial = mark_safe(content)

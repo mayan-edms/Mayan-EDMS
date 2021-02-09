@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.conf import settings
 from django.db import migrations, models
 import django.db.models.deletion
@@ -11,9 +9,9 @@ def operation_add_user_options_to_existing_users(apps, schema_editor):
         app_label='user_management', model_name='UserOptions'
     )
 
-    for user in User.objects.using(schema_editor.connection.alias).all():
+    for user in User.objects.using(alias=schema_editor.connection.alias).all():
         UserOptions.objects.using(
-            schema_editor.connection.alias
+            alias=schema_editor.connection.alias
         ).create(user=user)
 
 
@@ -23,9 +21,9 @@ def operation_remove_user_options_from_existing_users(apps, schema_editor):
         app_label='user_management', model_name='UserOptions'
     )
 
-    for user in User.objects.using(schema_editor.connection.alias).all():
+    for user in User.objects.using(alias=schema_editor.connection.alias).all():
         UserOptions.objects.using(
-            schema_editor.connection.alias
+            alias=schema_editor.connection.alias
         ).filter(user=user).delete()
 
 

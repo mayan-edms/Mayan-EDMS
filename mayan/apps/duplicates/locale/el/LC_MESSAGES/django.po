@@ -1,0 +1,700 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# Translators:
+# Hmayag Antonian <hmayag@freemail.gr>, 2018
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-30 04:39+0000\n"
+"PO-Revision-Date: 2020-10-26 13:26+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/"
+"el/)\n"
+"Language: el\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:25 apps.py:39 links.py:14
+msgid "Duplicates"
+msgstr "Αντίγραφα"
+
+#: links.py:18 models.py:20 models.py:30 views.py:75
+msgid "Duplicated documents"
+msgstr "Διπλο-καταχωρημένα έγγραφα"
+
+#: links.py:24 queues.py:13
+msgid "Duplicated document scan"
+msgstr "Ανίχνευση για διπλές καταχωρήσεις εγγράφων"
+
+#: models.py:17
+msgid "Document"
+msgstr "Έγγραφο"
+
+#: models.py:23
+msgid "Added"
+msgstr "Προστέθηκε"
+
+#: models.py:29
+msgid "Duplicated document"
+msgstr "Διπλότυπα έγγραφα"
+
+#: queues.py:8
+msgid "Clean empty duplicate lists"
+msgstr ""
+
+#: queues.py:18
+msgid "Scan document duplicates"
+msgstr ""
+
+#: views.py:36
+msgid "Only exact copies of this document will be shown in the this list."
+msgstr ""
+
+#: views.py:40
+msgid "There are no duplicates for this document"
+msgstr ""
+
+#: views.py:44
+#, python-format
+msgid "Duplicates for document: %s"
+msgstr "Διπλότυπα του εγγράφου: %s"
+
+#: views.py:66
+msgid ""
+"Duplicates are documents that are composed of the exact same file, down to "
+"the last byte. Files that have the same text or OCR but are not identical or "
+"were saved using a different file format will not appear as duplicates."
+msgstr ""
+
+#: views.py:73
+msgid "There are no duplicated documents"
+msgstr ""
+
+#: views.py:83
+msgid "Scan for duplicated documents?"
+msgstr "Αναζήτηση για διπλότυπα έγγραφα;"
+
+#: views.py:90
+msgid "Duplicated document scan queued successfully."
+msgstr ""
+"Αίτημα αναζήτησης για διπλότυπα έγγραφα καταχωρήθηκε στην λίστα με επιτυχία."
+
+#~ msgid "Documents"
+#~ msgstr "Έγγραφα"
+
+#~ msgid "Create a document type"
+#~ msgstr "Δημιουργία τύπου εγγράφου"
+
+#~ msgid ""
+#~ "Every uploaded document must be assigned a document type, it is the basic "
+#~ "way Mayan EDMS categorizes documents."
+#~ msgstr ""
+#~ "Σε κάθε έγγραφο που ανεβάσατε πρέπει να ανατεθεί ένας τύπος εγγράφου. "
+#~ "Αυτός είναι ο βασικός τρόπος κατηγοριοποίησης που χρησιμοποιεί το Mayan "
+#~ "ΕDMS "
+
+#~ msgid "Document version"
+#~ msgstr "Έκδοση εγγράφου"
+
+#~ msgid "Page number"
+#~ msgstr "Αριθμός σελίδας"
+
+#~ msgid "Thumbnail"
+#~ msgstr "Μικρογραφία"
+
+#~ msgid "Pages"
+#~ msgstr "Σελίδες"
+
+#~ msgid "Type"
+#~ msgstr "Τύπος"
+
+#~ msgid "UUID"
+#~ msgstr "Μοναδικό αναγνωριστικό"
+
+#~ msgid "Total documents"
+#~ msgstr "Σύνολο εγγράφων"
+
+#~ msgid "Documents in trash"
+#~ msgstr "Έγγραφα στα απορρίμματα"
+
+#~ msgid "Document types"
+#~ msgstr "Τύποι εγγράφων"
+
+#~ msgid "New documents this month"
+#~ msgstr "Νέα έγγραφα αυτό τον μήνα"
+
+#~ msgid "New pages this month"
+#~ msgstr "Νέες σελίδες αυτό τον μήνα"
+
+#~ msgid "Document created"
+#~ msgstr "Έγγραφα που δημιουργήθηκαν"
+
+#~ msgid "Document downloaded"
+#~ msgstr "Κατεβασμένα έγγραφα"
+
+#~ msgid "New version uploaded"
+#~ msgstr "Ανεβασμένες εκδόσεις εγγράφων"
+
+#~ msgid "Document properties edited"
+#~ msgstr "Τροποποιημένες ιδιότητες εγγράφων"
+
+#~ msgid "Document type changed"
+#~ msgstr "Αλλαγές τύπου εγγράφων"
+
+#~ msgid "Document version reverted"
+#~ msgstr "Επαναφορές εκδόσεων εγγράφων"
+
+#~ msgid "Document viewed"
+#~ msgstr "Παρουσιάσεις εγγράφων"
+
+#~ msgid "Compress"
+#~ msgstr "Συμπίεση"
+
+#~ msgid ""
+#~ "Download the document in the original format or in a compressed manner. "
+#~ "This option is selectable only when downloading one document, for "
+#~ "multiple documents, the bundle will always be downloads as a compressed "
+#~ "file."
+#~ msgstr ""
+#~ "Κατέβασμα του αρχείου στη αρχική μορφή ή συμπιεσμένο. Η επιλογή αυτή "
+#~ "είναι εφικτή μόνο όταν κατεβάζετε ένα έγγραφο. Τα πολλαπλά έγγραφα "
+#~ "συμπιέζονται από το σύστημα σε ένα αρχείο."
+
+#~ msgid "Compressed filename"
+#~ msgstr "Όνομα συμπιεσμένου αρχείου"
+
+#~ msgid ""
+#~ "The filename of the compressed file that will contain the documents to be "
+#~ "downloaded, if the previous option is selected."
+#~ msgstr ""
+#~ "Το όνομα του συμπιεσμένου αρχείου που θα περιέχει τα έγγραφα που "
+#~ "επιλέχθηκαν για κατέβασμα, αν η επιλογή για συμπίεση είναι ενεργή. "
+
+#~ msgid "Quick document rename"
+#~ msgstr "Γρήγορη μετονομασία εγγράφων"
+
+#~ msgid "Preserve extension"
+#~ msgstr "Διατήρηση επέκτασης αρχείου"
+
+#~ msgid "Date added"
+#~ msgstr "Ημερομηνία προσθήκης"
+
+#~ msgid "Language"
+#~ msgstr "Γλώσσα"
+
+#~ msgid "File mimetype"
+#~ msgstr "Τύπος ΜΙΜΕ του αρχείου"
+
+#~ msgid "None"
+#~ msgstr "Κανένα"
+
+#~ msgid "File encoding"
+#~ msgstr "Κωδικοποίηση του αρχείου"
+
+#~ msgid "File size"
+#~ msgstr "Μέγεθος του αρχείου"
+
+#~ msgid "Exists in storage"
+#~ msgstr "Υπάρχει στον χώρο αποθήκευσης"
+
+#~ msgid "File path in storage"
+#~ msgstr "Διαδρομή αρχείου στον χώρο αποθήκευσης"
+
+#~ msgid "Checksum"
+#~ msgstr "Άθροισμα ελέγχου"
+
+#~ msgid "Page range"
+#~ msgstr "Εύρος σελίδων"
+
+#~ msgid "Document type"
+#~ msgstr "Τύπος εγγράφου"
+
+#~ msgid ""
+#~ "Takes the file extension and moves it to the end of the filename allowing "
+#~ "operating systems that rely on file extensions to open the downloaded "
+#~ "document version correctly."
+#~ msgstr ""
+#~ "Μεταφέρει την επέκταση του αρχείου στο τέλος ώστε λειτουργικά συστήματα "
+#~ "που χρειάζονται την επέκταση να διαχειρίζονται το αρχείο σωστά."
+
+#~ msgid "Clear transformations"
+#~ msgstr "Καθαρισμός μετασχηματισμών"
+
+#~ msgid "Clone transformations"
+#~ msgstr "Αντιγραφή μετασχηματισμών"
+
+#~ msgid "Change type"
+#~ msgstr "Αλλαγή τύπου"
+
+#~ msgid "Edit properties"
+#~ msgstr "Τροποποίηση ιδιοτήτων"
+
+#~ msgid "All documents"
+#~ msgstr "Όλα τα έγγραφα"
+
+#~ msgid "Preview"
+#~ msgstr "Προεπισκόπηση"
+
+#~ msgid "Properties"
+#~ msgstr "Ιδιότητες"
+
+#~ msgid "Print"
+#~ msgstr "Εκτύπωση"
+
+#~ msgid "Create document type"
+#~ msgstr "Δημιουργία τύπου εγγράφου"
+
+#~ msgid "Delete"
+#~ msgstr "Διαγραφή"
+
+#~ msgid "Edit"
+#~ msgstr "Τροποποίηση"
+
+#~ msgid "Add quick label to document type"
+#~ msgstr "Προσθήκη γρήγορης ετικέτας στον τύπο εγγράφου"
+
+#~ msgid "Quick labels"
+#~ msgstr "Γρήγορες ετικέτες"
+
+#~ msgid "Versions"
+#~ msgstr "Εκδόσεις"
+
+#~ msgid "Download version"
+#~ msgstr "Κατέβασμα έκδοσης"
+
+#~ msgid "Revert"
+#~ msgstr "Επαναφορά"
+
+#~ msgid "First page"
+#~ msgstr "Πρώτη σελίδα"
+
+#~ msgid "Last page"
+#~ msgstr "Τελευταία σελίδα"
+
+#~ msgid "Previous page"
+#~ msgstr "Προηγούμενη σελίδα"
+
+#~ msgid "Next page"
+#~ msgstr "Επόμενη σελίδα"
+
+#~ msgid "Rotate left"
+#~ msgstr "Περιστροφή αριστερά"
+
+#~ msgid "Rotate right"
+#~ msgstr "Περιστροφή δεξιά"
+
+#~ msgid "Page image"
+#~ msgstr "Εικόνα σελίδας"
+
+#~ msgid "Reset view"
+#~ msgstr "Επαναφορά εμφάνησης"
+
+#~ msgid "Zoom in"
+#~ msgstr "Μεγένθυνση"
+
+#~ msgid "Zoom out"
+#~ msgstr "Σμίκρυνση"
+
+#~ msgid "Recalculate page count"
+#~ msgstr "Επανυπολογισμός αριθμού σελίδψν"
+
+#~ msgid "Move to trash"
+#~ msgstr "Μετφορά στα απορρίμματα"
+
+#~ msgid "Trash can"
+#~ msgstr "Απορρίμματα"
+
+#~ msgid "Restore"
+#~ msgstr "Επαναφορά"
+
+#~ msgid "Empty trash"
+#~ msgstr "Καθαρισμός απορριμμάτων"
+
+#~ msgid "Default"
+#~ msgstr "Προκαθορισμένο"
+
+#~ msgid "All pages"
+#~ msgstr "Όλες οι σελίδες"
+
+#~ msgid "Label"
+#~ msgstr "Ετικέτα"
+
+#~ msgid "Description"
+#~ msgstr "Περιγραφή"
+
+#~ msgid "In trash?"
+#~ msgstr "Στα απορρίμματα;"
+
+#~ msgid "Date and time trashed"
+#~ msgstr "Ημερομηνία και ώρα μεταφοράς στα απορρίμματα"
+
+#~ msgid ""
+#~ "A document stub is a document with an entry on the database but no file "
+#~ "uploaded. This could be an interrupted upload or a deferred upload via "
+#~ "the API."
+#~ msgstr ""
+#~ "Απομεινάρι είναι ένα έγγραφο για το οποίο υπάρχει καταχώρηση στην βάση "
+#~ "δεδομένων αλλά δεν υπάρχει το έγγραφο καθεαυτό. Αυτό μπορεί να συμβεί αν "
+#~ "η μεταφόρτωση/ανέβασμα έχει διακοπεί ή αν έγινε καταχώρηση του εγγράφου "
+#~ "μέσω API και θα μεταφορτωθεί αργότερα."
+
+#~ msgid "Is stub?"
+#~ msgstr "Είναι απομεινάρι;"
+
+#~ msgid "Document stub, id: %d"
+#~ msgstr "Απομεινάρι εγγράφου, id: %d"
+
+#~ msgid "Enabled"
+#~ msgstr "Ενεργοποιημένο"
+
+#~ msgid "Document page"
+#~ msgstr "Σελίδα εγγράφου"
+
+#~ msgid "Document pages"
+#~ msgstr "Σελίδες εγγράφου"
+
+#~ msgid "Page %(page_num)d out of %(total_pages)d of %(document)s"
+#~ msgstr "Σελίδα %(page_num)d από %(total_pages)d από %(document)s"
+
+#~ msgid ""
+#~ "Amount of time after which documents of this type will be moved to the "
+#~ "trash."
+#~ msgstr ""
+#~ "Χρονική περίοδος πέραν της οποίας έγγραφα αυτού του τύπου θα "
+#~ "μετακινούνται στα απορρίμματα."
+
+#~ msgid "Trash time period"
+#~ msgstr "Περίοδος για απορρίμματα"
+
+#~ msgid "Trash time unit"
+#~ msgstr "Μονάδα μέτρησης χρόνου για μεταφορά στα απορρίμματα"
+
+#~ msgid ""
+#~ "Amount of time after which documents of this type in the trash will be "
+#~ "deleted."
+#~ msgstr ""
+#~ "Χρονική περίοδος πέραν της οποίας έγγραφα αυτού του τύπου θα διαγράφονται "
+#~ "από τα απορρίμματα"
+
+#~ msgid "Delete time period"
+#~ msgstr "Περίοδος για διαγραφή"
+
+#~ msgid "Delete time unit"
+#~ msgstr "Μονάδα μέτρησης χρόνου διαγραφής"
+
+#~ msgid "Documents types"
+#~ msgstr "Τύποι εγγράφων"
+
+#~ msgid "Quick label"
+#~ msgstr "Γρήγορη ετικέτα"
+
+#~ msgid "Timestamp"
+#~ msgstr "Χρονική σήμανση"
+
+#~ msgid "Comment"
+#~ msgstr "Σχόλιο"
+
+#~ msgid "File"
+#~ msgstr "Αρχείο"
+
+#~ msgid "MIME type"
+#~ msgstr "Τύπος ΜΙΜΕ"
+
+#~ msgid "Encoding"
+#~ msgstr "Κωδικοποίηση"
+
+#~ msgid "User"
+#~ msgstr "Χρήστης"
+
+#~ msgid "Accessed"
+#~ msgstr "Προσπελάστηκε"
+
+#~ msgid "Recent document"
+#~ msgstr "Πρόσφατα έγγραφα"
+
+#~ msgid "Recent documents"
+#~ msgstr "Πρόσφατα έγγραφα"
+
+#~ msgid "Create documents"
+#~ msgstr "Δημιουργία εγγράφων"
+
+#~ msgid "Delete documents"
+#~ msgstr "Διαγραφή εγγράφων"
+
+#~ msgid "Trash documents"
+#~ msgstr "Μεταφορά εγγράφων στα απορρίμματα"
+
+#~ msgid "Download documents"
+#~ msgstr "Κατέβασμα εγγράφων"
+
+#~ msgid "Edit documents"
+#~ msgstr "Τροποποίηση εγγράφων"
+
+#~ msgid "Create new document versions"
+#~ msgstr "Δημιουργία νέας έκδοσης εγγράφου"
+
+#~ msgid "Edit document properties"
+#~ msgstr "Τροποποίηση ιδιοτήτων εγγράφου"
+
+#~ msgid "Print documents"
+#~ msgstr "Εκτύπωση εγγράφων"
+
+#~ msgid "Restore trashed document"
+#~ msgstr "Επαναφορά εγγράφου από τα απορρίμματα"
+
+#~ msgid "Execute document modifying tools"
+#~ msgstr "Εκτέλεση εργαλείων τροποποίησης εγγράφου"
+
+#~ msgid "Revert documents to a previous version"
+#~ msgstr "Επαναφορά εγγράφων σε προηγούμενη έκδοση"
+
+#~ msgid "View documents' versions list"
+#~ msgstr "Εμφάνιση λίστας εκδόσεων εγγράφου"
+
+#~ msgid "View documents"
+#~ msgstr "Εμφάνιση εγγράφων"
+
+#~ msgid "Create document types"
+#~ msgstr "Δημιουργία τύπων εγγράφου"
+
+#~ msgid "Delete document types"
+#~ msgstr "Διαγραφή τύπων εγγράφου"
+
+#~ msgid "Edit document types"
+#~ msgstr "Τροποπίηση τύπων εγγράφου"
+
+#~ msgid "View document types"
+#~ msgstr "Εμφάνηση τύπων εγγράφου"
+
+#~ msgid "Converter"
+#~ msgstr "Μετατροπέας"
+
+#~ msgid "Documents periodic"
+#~ msgstr "Έγγραφα"
+
+#~ msgid "Uploads"
+#~ msgstr "Μεταφορτωμένα/ανεβασμένα"
+
+#~ msgid "Generate document page image"
+#~ msgstr "Δημιουργία εικόνας σελίδων εγγράφου"
+
+#~ msgid "Delete a document"
+#~ msgstr "Διαγραφή ενός εγγράφου"
+
+#~ msgid "Check document type delete periods"
+#~ msgstr "Έλεγχος χρόνων διαγρφής εγγράφων από τα απορρίμματα"
+
+#~ msgid "Check document type trash periods"
+#~ msgstr "Έλεγχος χρόνων μεταφοράς εγγράφων στα απορρίμματα"
+
+#~ msgid "Delete document stubs"
+#~ msgstr "Διαγραφή απομειναριών"
+
+#~ msgid "Update document page count"
+#~ msgstr "Ενημέρωση αριθμού σελίδων εγγράφου"
+
+#~ msgid "Upload new document version"
+#~ msgstr "Μεταφόρτωση/ανέβασμα νέας έκδοσης εγγράφου"
+
+#~ msgid "Amount in degrees to rotate a document page per user interaction."
+#~ msgstr ""
+#~ "Αριθμός μοιρών για περιστροφή μιας σελίδας εγγράφου από τον χρήστη ανά "
+#~ "αλληλεπίδραση"
+
+#~ msgid ""
+#~ "Maximum amount in percent (%) to allow user to zoom in a document page "
+#~ "interactively."
+#~ msgstr ""
+#~ "Μέγιστο επιτρεπτό ποσοστό (%) μεγένθυνσης σε μια σελίδα από τονχρήστη."
+
+#~ msgid ""
+#~ "Minimum amount in percent (%) to allow user to zoom out a document page "
+#~ "interactively."
+#~ msgstr ""
+#~ "Ελλάχιστο επιτρεπτό ποσοστό (%) σμύκρινσης σε μια σελίδα από τονχρήστη."
+
+#~ msgid ""
+#~ "Amount in percent zoom in or out a document page per user interaction."
+#~ msgstr "Βαθμός μεγένθυνσης / σμύκρινσης σε μια σελίδα εγγράφου ανά χρήστη."
+
+#~ msgid "New documents per month"
+#~ msgstr "Νέα έγγραφα τον μήνα"
+
+#~ msgid "New document versions per month"
+#~ msgstr "Νέες εκδόσεις εγγράφων τον μήνα"
+
+#~ msgid "New document pages per month"
+#~ msgstr "Νέες σελίδες εγγράφων τον μήνα"
+
+#~ msgid "Total documents at each month"
+#~ msgstr "Σϋνολο εγγράφων κάθε μήνα"
+
+#~ msgid "Total document versions at each month"
+#~ msgstr "Σύνολο εκδόσεων εγγράφων κάθε μήνα"
+
+#~ msgid "Total document pages at each month"
+#~ msgstr "Σύνολο σελίδων εγγράφων κάθε μήνα"
+
+#~ msgid "Pages for document: %s"
+#~ msgstr "Σελίδες για έγγραφο: %s"
+
+#~ msgid "There are no more pages in this document"
+#~ msgstr "Το έγγραφο δεν έχει άλλες σελίδες"
+
+#~ msgid "You are already at the first page of this document"
+#~ msgstr "Βρίσκεστε ήδη στην πρώτη σελίδα του εγγράφου"
+
+#~ msgid "Image of: %s"
+#~ msgstr "Εικόνα του: %s"
+
+#~ msgid "Documents of type: %s"
+#~ msgstr "Έγγραφα τύπου: %s"
+
+#~ msgid "All documents of this type will be deleted too."
+#~ msgstr "Όλα τα έγγραφα αυτού του τύπου θα διαγραφούν."
+
+#~ msgid "Delete the document type: %s?"
+#~ msgstr "Διαγραφή του τύπου εγγράφων: %s;"
+
+#~ msgid "Edit document type: %s"
+#~ msgstr "Τροποποίηση τύπου εγγράφων: %s"
+
+#~ msgid "Create quick label for document type: %s"
+#~ msgstr "Δημηουργία γρήγορης ετικέτας στον τύπο εγγράφου: %s"
+
+#~ msgid ""
+#~ "Delete the quick label: %(label)s, from document type \"%(document_type)s"
+#~ "\"?"
+#~ msgstr ""
+#~ "Διαγραφή της γρήγορης ετικέτας: %(label)s, απότον τύπο εγγράφων "
+#~ "\"%(document_type)s\";"
+
+#~ msgid ""
+#~ "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
+#~ msgstr ""
+#~ "Τροποποίηση γρήγορης ετικέτας \"%(filename)s\" από τον τύπο εγγράφων "
+#~ "\"%(document_type)s\""
+
+#~ msgid "Quick labels for document type: %s"
+#~ msgstr "Γρήγορες ετικέτες για τον τύπο εγγράφων: %s"
+
+#~ msgid "Download document version"
+#~ msgstr "Κατέβασμα έκδοσης εγγράφου"
+
+#~ msgid "Versions of document: %s"
+#~ msgstr "Εκδόσεις του εγγράφου: %s"
+
+#~ msgid "All later version after this one will be deleted too."
+#~ msgstr "Όλες οι μεταγενέστερες εκδόσεις θα διαγραφούν."
+
+#~ msgid "Revert to this version?"
+#~ msgstr "Επαναφορά σε αυτή την έκδοση;"
+
+#~ msgid "Document version reverted successfully"
+#~ msgstr "Επαναφορά στην επιλεγμένη έκδοση πργματοποιήθηκε επιτυχώς"
+
+#~ msgid "Error reverting document version; %s"
+#~ msgstr "Σφάλμα κατά την επαναφορά στην έκδοση εγγράφου, %s"
+
+#~ msgid "Preview of document version: %s"
+#~ msgstr "Προεπισκόπηση της έκδοσης εγγράφου: %s"
+
+#~ msgid "Document type change request performed on %(count)d document"
+#~ msgstr "Πραγματοποιήθηκε αλλαγή τύπου εγγράφου για %(count)d έγραφο"
+
+#~ msgid "Document type change request performed on %(count)d documents"
+#~ msgstr "Πραγματοποιήθηκε αλλαγή τύπου εγγράφου για %(count)d έγραφα"
+
+#~ msgid "Change"
+#~ msgstr "Αλλαγή"
+
+#~ msgid "Change the type of the selected document"
+#~ msgid_plural "Change the type of the selected documents"
+#~ msgstr[0] "Αλλαγή τύπου του επιλεγμένου έγγραφο"
+#~ msgstr[1] "Αλλαγή τύπου των επιλεγμένων εγγράφων"
+
+#~ msgid "Change the type of the document: %s"
+#~ msgstr "Αλλαγή τύπου του εγγράφου: %s"
+
+#~ msgid "Document type for \"%s\" changed successfully."
+#~ msgstr "Αλλαγή τύπου εγγράφου για το \"%s\" πραγματοποιήθηκε με επιτυχία."
+
+#~ msgid "Download"
+#~ msgstr "Κατέβασμα"
+
+#~ msgid "Preview of document: %s"
+#~ msgstr "Προεπισκόπηση του εγγράφου: %s"
+
+#~ msgid "Edit properties of document: %s"
+#~ msgstr "Τροποποίηση ιδιοτήτων του εγγράφου: %s"
+
+#~ msgid "Properties for document: %s"
+#~ msgstr "Ιδιότητες για το έγγραφο: %s"
+
+#~ msgid "%(count)d document queued for page count recalculation"
+#~ msgstr "%(count)d έγγραφο στην λίστα για επανυπολογισμό αριθμού σελίδων"
+
+#~ msgid "%(count)d documents queued for page count recalculation"
+#~ msgstr "%(count)d έγγραφα στην λίστα για επανυπολογισμό αριθμού σελίδων"
+
+#~ msgid "Recalculate the page count of the selected document?"
+#~ msgid_plural "Recalculate the page count of the selected documents?"
+#~ msgstr[0] "Επανυπολογισμός των σελίδων του επιλεγμένου εγγράφου;"
+#~ msgstr[1] "Επανυπολογισμός των σελίδων των επιλεγμένων εγγράφων;"
+
+#~ msgid "Recalculate the page count of the document: %s?"
+#~ msgstr "Επανυπολογισμός του αριθμού σελίδων του εγγράφου: %s;"
+
+#~ msgid "Transformation clear request processed for %(count)d document"
+#~ msgstr ""
+#~ "Αίτημα καθαρισμού μετασχηματισμών ολοκληρώθηκε για %(count)d έγγραφο"
+
+#~ msgid "Transformation clear request processed for %(count)d documents"
+#~ msgstr ""
+#~ "Αίτημα καθαρισμού μετασχηματισμών ολοκληρώθηκε για %(count)d έγγραφα"
+
+#~ msgid "Clear all the page transformations for the selected document?"
+#~ msgid_plural "Clear all the page transformations for the selected document?"
+#~ msgstr[0] ""
+#~ "Καθαρισμός όλων των μετασχηματισμών σελίδας  για το επιλεγμένο έγγραφο: "
+#~ "%s;"
+#~ msgstr[1] ""
+#~ "Καθαρισμός όλων των μετασχηματισμών σελίδας  για τα επιλεγμένα έγγραφα: "
+#~ "%s;"
+
+#~ msgid "Clear all the page transformations for the document: %s?"
+#~ msgstr "Καθαρισμός όλων των μετασχηματισμών σελίδας  για το έγγραφο: %s;"
+
+#~ msgid ""
+#~ "Error deleting the page transformations for document: %(document)s; "
+#~ "%(error)s."
+#~ msgstr ""
+#~ "Σφάλμα κατά την διαγραφή των μετασχηματισμών σελίδας για το έγγραφο: "
+#~ "%(document)s, %(error)s."
+
+#~ msgid "Transformations cloned successfully."
+#~ msgstr "Ο μετασχηματισμός αντιγράφτηκε με επιτυχία."
+
+#~ msgid "Submit"
+#~ msgstr "Υποβολή"
+
+#~ msgid "Clone page transformations for document: %s"
+#~ msgstr "Αντιγραφή μετασχηματισμών σελίδας για το έγγραφο: %s"
+
+#~ msgid "Print: %s"
+#~ msgstr "Εκτύπωση: %s"
+
+#~ msgid "Add"
+#~ msgstr "Προσθήκη"
+
+#~ msgid "Remove"
+#~ msgstr "Αφαίρεση"
+
+#~ msgid "Empty trash?"
+#~ msgstr "Άδειασμα απορρημάτων;"

@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import logging
 
 import pycountry
@@ -8,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from .settings import setting_language_codes
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 def get_language(language_code):

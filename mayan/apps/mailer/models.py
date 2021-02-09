@@ -1,40 +1,24 @@
-from __future__ import unicode_literals
-
 import json
 import logging
 
 from furl import furl
 
+from django.conf import settings
 from django.core import mail
 from django.db import models, transaction
-from django.template import Context, Template
 from django.utils.html import strip_tags
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.settings import setting_project_url
+from mayan.apps.templating.classes import Template
 
 from .classes import NullBackend
 from .events import event_email_sent
 from .managers import UserMailerManager
 from .utils import split_recipient_list
 
-logger = logging.getLogger(__name__)
-
-
-class LogEntry(models.Model):
-    datetime = models.DateTimeField(
-        auto_now_add=True, editable=False, verbose_name=_('Date time')
-    )
-    message = models.TextField(
-        blank=True, editable=False, verbose_name=_('Message')
-    )
-
-    class Meta:
-        get_latest_by = 'datetime'
-        ordering = ('-datetime',)
-        verbose_name = _('Log entry')
-        verbose_name_plural = _('Log entries')
+logger = logging.getLogger(name=__name__)
 
 
 class UserMailer(models.Model):
@@ -82,18 +66,19 @@ class UserMailer(models.Model):
         """
         return self.get_backend().label
 
-    backend_label.short_description = _('Backend label')
+    backend_label.short_description = _('Backend')
+    backend_label.help_text = _('The backend class for this entry.')
 
     def dumps(self, data):
         """
         Serialize the backend configuration data.
         """
-        self.backend_data = json.dumps(data)
+        self.backend_data = json.dumps(obj=data)
         self.save()
 
     def get_class_data(self):
         """
-        Return the actual mailing class initialization data
+        Return the actual mailing class initialization data.
         """
         backend = self.get_backend()
         return {
@@ -102,10 +87,10 @@ class UserMailer(models.Model):
 
     def get_backend(self):
         """
-        Retrieves the backend by importing the module and the class
+        Retrieves the backend by importing the module and the class.
         """
         try:
-            return import_string(self.backend_path)
+            return import_string(dotted_path=self.backend_path)
         except ImportError:
             return NullBackend
 
@@ -123,7 +108,7 @@ class UserMailer(models.Model):
         """
         Deserialize the stored backend data.
         """
-        return json.loads(self.backend_data)
+        return json.loads(s=self.backend_data)
 
     def natural_key(self):
         return (self.label,)
@@ -134,22 +119,36 @@ class UserMailer(models.Model):
                 default=False
             )
 
-        return super(UserMailer, self).save(*args, **kwargs)
+        return super().save(*args, **kwargs)
 
-    def send(self, to, subject='', body='', attachments=None, _event_action_object=None, _user=None):
+    def send(
+        self, to, subject='', body='', cc=None, bcc=None, attachments=None,
+        _event_action_object=None, _user=None
+    ):
         """
         Send a simple email. There is no document or template knowledge.
         attachments is a list of dictionaries with the keys:
         filename, content, and  mimetype.
         """
         recipient_list = split_recipient_list(recipients=[to])
+
+        if cc:
+            cc_list = split_recipient_list(recipients=[cc])
+        else:
+            cc_list = None
+
+        if bcc:
+            bcc_list = split_recipient_list(recipients=[bcc])
+        else:
+            bcc_list = bcc
+
         backend_data = self.loads()
 
         with self.get_connection() as connection:
             email_message = mail.EmailMultiAlternatives(
                 body=strip_tags(body), connection=connection,
                 from_email=backend_data.get('from'), subject=subject,
-                to=recipient_list,
+                to=recipient_list, cc=cc_list, bcc=bcc_list
             )
 
             for attachment in attachments or []:
@@ -165,7 +164,11 @@ class UserMailer(models.Model):
             try:
                 email_message.send()
             except Exception as exception:
-                self.error_log.create(message=exception)
+                self.error_log.create(
+                    text='{}; {}'.format(
+                        exception.__class__.__name__, exception
+                    )
+                )
             else:
                 self.error_log.all().delete()
                 event_email_sent.commit(
@@ -173,7 +176,10 @@ class UserMailer(models.Model):
                     target=self
                 )
 
-    def send_document(self, document, to, subject='', body='', as_attachment=False, _user=None):
+    def send_document(
+        self, document, to, subject='', body='', cc=None, bcc=None,
+        as_attachment=False, _user=None
+    ):
         """
         Send a document using this user mailing profile.
         """
@@ -184,29 +190,31 @@ class UserMailer(models.Model):
             'document': document
         }
 
-        context = Context(context_dictionary)
+        body_template = Template(template_string=body)
+        body_html_content = body_template.render(
+            context=context_dictionary
+        )
 
-        body_template = Template(body)
-        body_html_content = body_template.render(context)
-
-        subject_template = Template(subject)
-        subject_text = strip_tags(subject_template.render(context))
+        subject_template = Template(template_string=subject)
+        subject_text = strip_tags(
+            subject_template.render(context=context_dictionary)
+        )
 
         attachments = []
         if as_attachment:
-            with document.open() as file_object:
+            with document.file_latest.open() as file_object:
                 attachments.append(
                     {
                         'content': file_object.read(),
                         'filename': document.label,
-                        'mimetype': document.file_mimetype
+                        'mimetype': document.file_latest.mimetype
                     }
                 )
 
         return self.send(
             attachments=attachments, body=body_html_content,
-            subject=subject_text, to=to, _event_action_object=document,
-            _user=_user
+            subject=subject_text, to=to, cc=cc, bcc=bcc,
+            _event_action_object=document, _user=_user
         )
 
     def test(self, to):
@@ -214,23 +222,15 @@ class UserMailer(models.Model):
         Send a test message to make sure the mailing profile settings are
         correct.
         """
-        self.send(subject=_('Test email from Mayan EDMS'), to=to)
-
-
-class UserMailerLogEntry(models.Model):
-    user_mailer = models.ForeignKey(
-        on_delete=models.CASCADE, related_name='error_log', to=UserMailer,
-        verbose_name=_('User mailer')
-    )
-    datetime = models.DateTimeField(
-        auto_now_add=True, editable=False, verbose_name=_('Date time')
-    )
-    message = models.TextField(
-        blank=True, editable=False, verbose_name=_('Message')
-    )
-
-    class Meta:
-        get_latest_by = 'datetime'
-        ordering = ('-datetime',)
-        verbose_name = _('User mailer log entry')
-        verbose_name_plural = _('User mailer log entries')
+        try:
+            self.send(subject=_('Test email from Mayan EDMS'), to=to)
+        except Exception as exception:
+            self.error_log.create(
+                text='{}; {}'.format(
+                    exception.__class__.__name__, exception
+                )
+            )
+            if settings.DEBUG:
+                raise
+        else:
+            self.error_log.all().delete()

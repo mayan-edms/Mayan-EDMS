@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
@@ -8,8 +6,7 @@ from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import (
     menu_facet, menu_list_facet, menu_object, menu_secondary
 )
-from mayan.apps.documents.search import document_page_search, document_search
-from mayan.apps.events.classes import ModelEventType
+from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list
 )
@@ -39,14 +36,15 @@ class DocumentCommentsApp(MayanAppConfig):
     verbose_name = _('Document comments')
 
     def ready(self):
-        super(DocumentCommentsApp, self).ready()
-        from actstream import registry
+        super().ready()
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'
         )
 
         Comment = self.get_model(model_name='Comment')
+
+        EventModelRegistry.register(model=Comment)
 
         ModelEventType.register(
             model=Comment, event_types=(
@@ -75,18 +73,15 @@ class DocumentCommentsApp(MayanAppConfig):
             )
         )
 
-        SourceColumn(attribute='submit_date', source=Comment)
-        SourceColumn(attribute='get_user_label', source=Comment)
-        SourceColumn(attribute='comment', source=Comment)
-
-        document_page_search.add_model_field(
-            field='document_version__document__comments__comment',
-            label=_('Comments')
+        SourceColumn(
+            attribute='submit_date', is_identifier=True, is_sortable=True,
+            source=Comment
         )
-        document_search.add_model_field(
-            field='comments__comment',
-            label=_('Comments')
+        SourceColumn(
+            attribute='get_user_label', is_sortable=True,
+            include_label=True, sort_field='user', source=Comment
         )
+        SourceColumn(attribute='text', include_label=True, source=Comment)
 
         menu_facet.bind_links(
             links=(link_comments_for_document,), sources=(Document,)
@@ -111,5 +106,3 @@ class DocumentCommentsApp(MayanAppConfig):
         menu_object.bind_links(
             links=(link_comment_delete, link_comment_edit), sources=(Comment,)
         )
-
-        registry.register(Comment)

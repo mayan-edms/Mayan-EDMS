@@ -1,10 +1,7 @@
-from __future__ import unicode_literals
-
 from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('ocr', '0007_auto_20170827_1617'),
     ]
@@ -18,4 +15,7 @@ class Migration(migrations.Migration):
                 'the OCR backend.', verbose_name='Content'
             ),
         ),
+    ]
+    run_before = [
+        ('documents', '0057_auto_20200916_1057'),
     ]

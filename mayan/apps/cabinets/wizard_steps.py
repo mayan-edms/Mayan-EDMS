@@ -1,18 +1,16 @@
-from __future__ import unicode_literals
-
 from django.apps import apps
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.http import URL
-from mayan.apps.sources.wizards import WizardStep
+from mayan.apps.sources.classes import DocumentCreateWizardStep
+from mayan.apps.views.http import URL
 
 from .forms import CabinetListForm
 from .models import Cabinet
 from .permissions import permission_cabinet_add_document
 
 
-class WizardStepCabinets(WizardStep):
+class DocumentCreateWizardStepCabinets(DocumentCreateWizardStep):
     form_class = CabinetListForm
     label = _('Select cabinets')
     name = 'cabinet_selection'
@@ -40,7 +38,7 @@ class WizardStepCabinets(WizardStep):
         cleaned_data = wizard.get_cleaned_data_for_step(cls.name)
         if cleaned_data:
             result['cabinets'] = [
-                force_text(cabinet.pk) for cabinet in cleaned_data['cabinets']
+                force_text(s=cabinet.pk) for cabinet in cleaned_data['cabinets']
             ]
 
         return result
@@ -54,4 +52,4 @@ class WizardStepCabinets(WizardStep):
             cabinet.documents.add(document)
 
 
-WizardStep.register(WizardStepCabinets)
+DocumentCreateWizardStep.register(DocumentCreateWizardStepCabinets)

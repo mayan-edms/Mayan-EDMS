@@ -1,15 +1,13 @@
-from __future__ import unicode_literals
-
 from django.db import migrations, models
 
 
 def operation_make_labels_unique(apps, schema_editor):
     Source = apps.get_model(app_label='sources', model_name='Source')
 
-    for source in Source.objects.using(schema_editor.connection.alias).all():
+    for source in Source.objects.using(alias=schema_editor.connection.alias).all():
         # Look for sources with the same label
         duplicate_queryset = Source.objects.using(
-            schema_editor.connection.alias
+            alias=schema_editor.connection.alias
         ).filter(label=source.label).exclude(pk=source.pk)
         if duplicate_queryset:
             # If a duplicate is found, append the id to the original source
@@ -21,14 +19,13 @@ def operation_make_labels_unique(apps, schema_editor):
 def operation_make_labels_unique_reverse(apps, schema_editor):
     Source = apps.get_model(app_label='sources', model_name='Source')
 
-    for source in Source.objects.using(schema_editor.connection.alias).all():
+    for source in Source.objects.using(alias=schema_editor.connection.alias).all():
         if source.label.endswith('__{}'.format(source.pk)):
             source.label = source.label.replace('__{}'.format(source.pk), '')
             source.save()
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('sources', '0018_auto_20180608_0057'),
     ]

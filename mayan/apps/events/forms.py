@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django import forms
 from django.forms.formsets import formset_factory
 from django.utils.translation import ugettext_lazy as _
@@ -25,7 +23,7 @@ class EventTypeUserRelationshipForm(forms.Form):
     )
 
     def __init__(self, *args, **kwargs):
-        super(EventTypeUserRelationshipForm, self).__init__(
+        super().__init__(
             *args, **kwargs
         )
 
@@ -60,7 +58,7 @@ class EventTypeUserRelationshipForm(forms.Form):
 
 
 EventTypeUserRelationshipFormSet = formset_factory(
-    EventTypeUserRelationshipForm, extra=0
+    form=EventTypeUserRelationshipForm, extra=0
 )
 
 
@@ -82,7 +80,7 @@ class ObjectEventTypeUserRelationshipForm(forms.Form):
     )
 
     def __init__(self, *args, **kwargs):
-        super(ObjectEventTypeUserRelationshipForm, self).__init__(
+        super().__init__(
             *args, **kwargs
         )
 
@@ -119,5 +117,5 @@ class ObjectEventTypeUserRelationshipForm(forms.Form):
 
 
 ObjectEventTypeUserRelationshipFormSet = formset_factory(
-    ObjectEventTypeUserRelationshipForm, extra=0
+    form=ObjectEventTypeUserRelationshipForm, extra=0
 )

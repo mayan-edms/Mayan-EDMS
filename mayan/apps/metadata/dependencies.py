@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from __future__ import absolute_import, unicode_literals
 
 from mayan.apps.dependencies.classes import PythonDependency
 
@@ -36,5 +35,5 @@ PythonDependency(
         LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
         NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
         SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-    ''', module=__name__, name='python-dateutil', version_string='==2.8.0'
+    ''', module=__name__, name='python-dateutil', version_string='==2.8.1'
 )

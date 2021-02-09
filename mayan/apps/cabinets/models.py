@@ -1,26 +1,21 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.core.exceptions import NON_FIELD_ERRORS, ValidationError
 from django.db import connection, models, transaction
 from django.urls import reverse
-from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.documents.models import Document
+from mayan.apps.documents.models.document_models import Document
 from mayan.apps.documents.permissions import permission_document_view
 
 from .events import (
     event_cabinet_created, event_cabinet_edited, event_cabinet_add_document,
     event_cabinet_remove_document
 )
-from .search import cabinet_search  # NOQA
 
 
-@python_2_unicode_compatible
 class Cabinet(MPTTModel):
     """
     Model to store a hierarchical tree of document containers. Each container
@@ -86,17 +81,24 @@ class Cabinet(MPTTModel):
         Return numeric count of the total documents in a cabinet. The count
         is filtered by access.
         """
-        return self.get_documents_queryset(user=user).count()
+        return self.get_documents_queryset(
+            permission=permission_document_view, user=user
+        ).count()
 
-    def get_documents_queryset(self, user):
+    def get_documents_queryset(self, permission=None, user=None):
         """
         Provide a queryset of the documents in a cabinet. The queryset is
         filtered by access.
         """
-        return AccessControlList.objects.restrict_queryset(
-            permission=permission_document_view, queryset=self.documents,
-            user=user
-        )
+        queryset = self.documents.all()
+
+        if permission and user:
+            queryset = AccessControlList.objects.restrict_queryset(
+                permission=permission_document_view, queryset=queryset,
+                user=user
+            )
+
+        return Document.valid.filter(pk__in=queryset.values('pk'))
 
     def get_full_path(self):
         """
@@ -108,13 +110,17 @@ class Cabinet(MPTTModel):
             result.append(node.label)
 
         return ' / '.join(result)
+    get_full_path.help_text = _(
+        'The path to the cabinet including all ancestors.'
+    )
+    get_full_path.short_description = _('Full path')
 
     def save(self, *args, **kwargs):
         _user = kwargs.pop('_user', None)
 
         with transaction.atomic():
             is_new = not self.pk
-            super(Cabinet, self).save(*args, **kwargs)
+            super().save(*args, **kwargs)
             if is_new:
                 event_cabinet_created.commit(
                     actor=_user, target=self
@@ -154,6 +160,18 @@ class Cabinet(MPTTModel):
                         ],
                     },
                 )
+
+
+class CabinetSearchResult(Cabinet):
+    """
+    Represent a cabinet's search result. This model is a proxy model from
+    Cabinet and is used as an alias to map columns to it without having to
+    map them to the base Cabinet model.
+    """
+    class Meta:
+        proxy = True
+        verbose_name = _('Cabinet')
+        verbose_name_plural = _('Cabinets')
 
 
 class DocumentCabinet(Cabinet):

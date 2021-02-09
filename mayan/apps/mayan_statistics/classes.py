@@ -1,7 +1,5 @@
-from __future__ import unicode_literals
-
 from django.apps import apps
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from celery.schedules import crontab
@@ -11,8 +9,7 @@ from mayan.celery import app
 from .renderers import ChartJSLine
 
 
-@python_2_unicode_compatible
-class StatisticNamespace(object):
+class StatisticNamespace:
     _registry = {}
 
     @classmethod
@@ -30,7 +27,7 @@ class StatisticNamespace(object):
         self.__class__._registry[slug] = self
 
     def __str__(self):
-        return force_text(self.label)
+        return force_text(s=self.label)
 
     def add_statistic(self, klass, *args, **kwargs):
         statistic = klass(*args, **kwargs)
@@ -42,8 +39,7 @@ class StatisticNamespace(object):
         return self._statistics
 
 
-@python_2_unicode_compatible
-class Statistic(object):
+class Statistic:
     _registry = {}
     renderer = None
 
@@ -128,7 +124,7 @@ class Statistic(object):
         self.__class__._registry[slug] = self
 
     def __str__(self):
-        return force_text(self.label)
+        return force_text(s=self.label)
 
     def execute(self):
         results = self.func()

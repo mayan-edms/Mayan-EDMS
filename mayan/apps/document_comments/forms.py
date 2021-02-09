@@ -1,8 +1,6 @@
-from __future__ import absolute_import, unicode_literals
-
 from django import forms
 
-from mayan.apps.common.forms import DetailForm
+from mayan.apps.views.forms import DetailForm
 
 from .models import Comment
 
@@ -10,7 +8,7 @@ from .models import Comment
 class DocumentCommentDetailForm(DetailForm):
 
     class Meta:
-        fields = ('comment',)
+        fields = ('text',)
         extra_fields = (
             {'field': 'submit_date', 'widget': forms.widgets.DateTimeInput},
             {'field': 'user'},

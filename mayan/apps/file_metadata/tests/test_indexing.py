@@ -1,9 +1,7 @@
-from __future__ import unicode_literals
-
-from mayan.apps.common.tests.base import BaseTransactionTestCase
 from mayan.apps.document_indexing.models import Index, IndexInstanceNode
 from mayan.apps.document_indexing.tests.literals import TEST_INDEX_LABEL
 from mayan.apps.documents.tests.base import DocumentTestMixin
+from mayan.apps.testing.tests.base import BaseTransactionTestCase
 
 from .literals import (
     TEST_FILE_METADATA_INDEX_NODE_TEMPLATE, TEST_FILE_METADATA_VALUE
@@ -11,7 +9,7 @@ from .literals import (
 
 
 class IndexingTestCase(DocumentTestMixin, BaseTransactionTestCase):
-    auto_upload_document = False
+    auto_upload_test_document = False
 
     def test_indexing(self):
         self.test_index = Index.objects.create(label=TEST_INDEX_LABEL)
@@ -23,7 +21,7 @@ class IndexingTestCase(DocumentTestMixin, BaseTransactionTestCase):
             link_documents=True
         )
 
-        self.upload_document()
+        self._upload_test_document()
 
         self.test_document.submit_for_file_metadata_processing()
 

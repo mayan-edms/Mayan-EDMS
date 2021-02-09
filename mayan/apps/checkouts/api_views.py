@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.rest_api import generics
@@ -23,7 +21,7 @@ class APICheckedoutDocumentListView(generics.ListCreateAPIView):
         if not self.request:
             return None
 
-        return super(APICheckedoutDocumentListView, self).get_serializer(*args, **kwargs)
+        return super().get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'POST':
@@ -51,6 +49,7 @@ class APICheckedoutDocumentView(generics.RetrieveDestroyAPIView):
     get: Retrieve the details of the selected checked out document entry.
     delete: Checkin a document.
     """
+    lookup_url_kwarg = 'checkout_id'
     serializer_class = DocumentCheckoutSerializer
 
     def get_queryset(self):
@@ -88,6 +87,4 @@ class APICheckedoutDocumentView(generics.RetrieveDestroyAPIView):
                 user=request.user
             )
 
-        return super(
-            APICheckedoutDocumentView, self
-        ).delete(request, *args, **kwargs)
+        return super().delete(request, *args, **kwargs)

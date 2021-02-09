@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
@@ -9,7 +7,7 @@ from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import (
     menu_list_facet, menu_multi_item, menu_object, menu_secondary, menu_tools
 )
-from mayan.apps.events.classes import ModelEventType
+from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.events.links import (
     link_events_for_object, link_object_event_types_user_subcriptions_list
 )
@@ -30,10 +28,11 @@ class FileCachingConfig(MayanAppConfig):
     verbose_name = _('File caching')
 
     def ready(self):
-        super(FileCachingConfig, self).ready()
-        from actstream import registry
+        super().ready()
 
         Cache = self.get_model(model_name='Cache')
+
+        EventModelRegistry.register(model=Cache)
 
         ModelEventType.register(
             event_types=(event_cache_edited, event_cache_purged,),
@@ -47,16 +46,17 @@ class FileCachingConfig(MayanAppConfig):
             )
         )
 
-        SourceColumn(attribute='label', is_sortable=True, source=Cache)
-        SourceColumn(attribute='name', is_sortable=True, source=Cache)
         SourceColumn(
-            attribute='storage_instance_path', is_sortable=True, source=Cache
+            attribute='label', is_identifier=True, source=Cache
         )
         SourceColumn(
-            attribute='get_maximum_size_display', is_sortable=True,
-            sort_field='maximum_size', source=Cache
+            attribute='get_maximum_size_display', include_label=True,
+            is_sortable=True, sort_field='maximum_size', source=Cache
         )
-        SourceColumn(attribute='get_total_size_display', source=Cache)
+        SourceColumn(
+            attribute='get_total_size_display', include_label=True,
+            source=Cache
+        )
 
         menu_list_facet.bind_links(
             links=(
@@ -80,5 +80,3 @@ class FileCachingConfig(MayanAppConfig):
         )
 
         menu_tools.bind_links(links=(link_caches_list,))
-
-        registry.register(Cache)

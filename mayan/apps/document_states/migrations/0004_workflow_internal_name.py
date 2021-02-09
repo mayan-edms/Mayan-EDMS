@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.db import migrations, models
 from django.utils.text import slugify
 
@@ -12,7 +10,7 @@ def operation_generate_internal_name(apps, schema_editor):
     )
     internal_names = []
 
-    for workflow in Workflow.objects.using(schema_editor.connection.alias).all():
+    for workflow in Workflow.objects.using(alias=schema_editor.connection.alias).all():
         # Slugify and replace dashes (not allowed) by underscores
         workflow.internal_name = slugify(workflow.label).replace('-', '_')
         if workflow.internal_name in internal_names:

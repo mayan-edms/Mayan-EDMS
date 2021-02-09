@@ -1,11 +1,9 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.apps import apps
-from django.db.models.signals import pre_save
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.apps import MayanAppConfig
+from mayan.apps.common.classes import ModelQueryFields
 from mayan.apps.common.menus import (
     menu_facet, menu_main, menu_multi_item, menu_secondary
 )
@@ -18,7 +16,7 @@ from .events import (
     event_document_auto_check_in, event_document_check_in,
     event_document_check_out, event_document_forceful_check_in
 )
-from .handlers import handler_check_new_version_creation
+from .hooks import hook_is_new_file_allowed
 from .links import (
     link_check_in_document, link_check_in_document_multiple,
     link_check_out_document, link_check_out_document_multiple,
@@ -32,8 +30,6 @@ from .permissions import (
     permission_document_check_in, permission_document_check_in_override,
     permission_document_check_out, permission_document_check_out_detail_view
 )
-from .tasks import task_check_expired_check_outs  # NOQA
-# This import is required so that celerybeat can find the task
 
 
 class CheckoutsApp(MayanAppConfig):
@@ -45,15 +41,15 @@ class CheckoutsApp(MayanAppConfig):
     verbose_name = _('Checkouts')
 
     def ready(self):
-        super(CheckoutsApp, self).ready()
+        super().ready()
 
         CheckedOutDocument = self.get_model(model_name='CheckedOutDocument')
         DocumentCheckout = self.get_model(model_name='DocumentCheckout')
         Document = apps.get_model(
             app_label='documents', model_name='Document'
         )
-        DocumentVersion = apps.get_model(
-            app_label='documents', model_name='DocumentVersion'
+        DocumentFile = apps.get_model(
+            app_label='documents', model_name='DocumentFile'
         )
 
         Document.add_to_class(name='check_in', value=method_check_in)
@@ -65,6 +61,10 @@ class CheckoutsApp(MayanAppConfig):
         )
         Document.add_to_class(
             name='is_checked_out', value=method_is_checked_out
+        )
+
+        DocumentFile.register_pre_create_hook(
+            func=hook_is_new_file_allowed
         )
 
         ModelEventType.register(
@@ -85,6 +85,9 @@ class CheckoutsApp(MayanAppConfig):
         ModelPermission.register_inheritance(
             model=DocumentCheckout, related='document'
         )
+
+        model_query_fields_document = ModelQueryFields(model=Document)
+        model_query_fields_document.add_select_related_field(field_name='documentcheckout')
 
         SourceColumn(
             attribute='get_user_display', include_label=True, order=99,
@@ -129,10 +132,4 @@ class CheckoutsApp(MayanAppConfig):
                 'checkouts:check_out_info', 'checkouts:check_out_document',
                 'checkouts:check_in_document'
             )
-        )
-
-        pre_save.connect(
-            dispatch_uid='checkouts_handler_check_new_version_creation',
-            receiver=handler_check_new_version_creation,
-            sender=DocumentVersion
         )

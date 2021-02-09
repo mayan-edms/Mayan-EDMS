@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import uuid
 
 from django.db import connection, migrations, models
@@ -26,7 +24,7 @@ class Migration(migrations.Migration):
     ]
 
     def __init__(self, *args, **kwargs):
-        super(Migration, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
         if connection.vendor == 'postgresql':
             self.operations.insert(

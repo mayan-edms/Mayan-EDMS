@@ -1,16 +1,14 @@
-from __future__ import unicode_literals
-
-from mayan.apps.documents.tests.test_models import GenericDocumentTestCase
+from mayan.apps.documents.tests.base import GenericDocumentTestCase
 
 
 class ActionTestCase(GenericDocumentTestCase):
     def setUp(self):
-        super(ActionTestCase, self).setUp()
+        super().setUp()
 
-        class MockWorkflowInstance(object):
+        class MockWorkflowInstance:
             document = self.test_document
 
-        class MockEntryLog(object):
+        class MockEntryLog:
             workflow_instance = MockWorkflowInstance()
 
         self.entry_log = MockEntryLog()

@@ -1,19 +1,18 @@
-from __future__ import unicode_literals
-
 from django.db import models, transaction
-from django.template import Context, Template
+from django.http import HttpResponseRedirect
 from django.urls import reverse
-from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.documents.events import event_document_type_edited
 from mayan.apps.documents.models import DocumentType
+from mayan.apps.templating.classes import Template
 
-from .events import event_web_link_created, event_web_link_edited
+from .events import (
+    event_web_link_created, event_web_link_edited, event_web_link_navigated
+)
 from .managers import WebLinkManager
 
 
-@python_2_unicode_compatible
 class WebLink(models.Model):
     """
     This model stores the basic fields for a web link. Web links allow
@@ -21,7 +20,7 @@ class WebLink(models.Model):
     """
     label = models.CharField(
         db_index=True, help_text=_('A short text describing the web link.'),
-        max_length=96, verbose_name=_('Label')
+        max_length=96, unique=True, verbose_name=_('Label')
     )
     template = models.TextField(
         help_text=_(
@@ -34,8 +33,6 @@ class WebLink(models.Model):
         related_name='web_links', to=DocumentType,
         verbose_name=_('Document types')
     )
-
-    objects = WebLinkManager()
 
     class Meta:
         ordering = ('label',)
@@ -69,8 +66,8 @@ class WebLink(models.Model):
 
     def get_absolute_url(self):
         return reverse(
-            viewname='weblinks:web_link_edit', kwargs={
-                'pk': self.pk
+            viewname='web_links:web_link_edit', kwargs={
+                'web_link_id': self.pk
             }
         )
 
@@ -79,7 +76,7 @@ class WebLink(models.Model):
 
         with transaction.atomic():
             is_new = not self.pk
-            super(WebLink, self).save(*args, **kwargs)
+            super().save(*args, **kwargs)
             if is_new:
                 event_web_link_created.commit(
                     actor=_user, target=self
@@ -95,10 +92,21 @@ class ResolvedWebLink(WebLink):
     Proxy model to represent an already resolved web link. Used for easier
     colums registration.
     """
+    objects = WebLinkManager()
+
     class Meta:
         proxy = True
 
-    def get_url_for(self, document):
-        context = Context({'document': document})
+    def get_redirect(self, document, user):
+        event_web_link_navigated.commit(
+            actor=user, action_object=document,
+            target=self
+        )
+        return HttpResponseRedirect(
+            redirect_to=self.get_redirect_url_for(document=document)
+        )
 
-        return Template(self.template).render(context=context)
+    def get_redirect_url_for(self, document):
+        return Template(template_string=self.template).render(
+            context={'document': document}
+        )

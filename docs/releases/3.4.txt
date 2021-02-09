@@ -1,0 +1,440 @@
+Version 3.4
+===========
+
+Released: March 30, 2020
+
+
+
+Changes
+-------
+
+
+Checkouts
+^^^^^^^^^
+
+The Checkouts and Sources app have been decoupled. It is now possible to
+disable the Checkouts app.
+
+
+Compressed files
+^^^^^^^^^^^^^^^^
+
+Support was added to expand Outlook .msg files, and have its individual
+content uploaded as separate documents. This support add a new dependency,
+the ``extract-msg`` Python library.
+
+
+Converter
+^^^^^^^^^
+
+The converter system was updated to support generating previews of Outlook
+.msg is they are uploaded as a single file. The converter will now generate
+a preview show to the first text member of the file.
+
+
+Dependencies
+^^^^^^^^^^^^
+
+The project was updated to run on Django 2.2.10 as Django 1.11 is about to
+reach end-of-life status.
+
+Django 2.2 is an LTS release and will be supported for several years.
+Since Django 2.2 itself doesn't support Python 2.7, likewise this version of
+Mayan EDMS is Python 3 only. Although Django 1.11 is approaching end-of-life
+status, Mayan EDMS version 3.3 (based on Django 1.11) will continue to receive
+security and bug fixes, but no new features will be developed for it.
+
+Besides Django, almost every dependency was also updated to their most
+recent version.
+
+- python-gnupg from 0.3.9 to 0.4.5
+- Django stronghold to 0.4.0
+- Python Redis from 3.3.11 to 3.4.1
+- PyYAML from 5.1.2 to 5.3.1
+- django-formtools from 2.1 to 2.2
+  django-mathfilters from 0.4.0 to 1.0.0
+- django-model-utils from 3.1.2 to 4.0.0
+- django-mptt from 0.9.1 to 0.11.0
+- django-qsstats-magic from 1.0.0 to 1.1.0
+- django-widget-tweaks from 1.4.5 to 1.4.8
+- furl from 2.0.0 to 2.1.0
+- gunicorn from 19.9.0 to 20.0.4
+- mock from 2.0.0 to 4.0.2
+- pycountry from 18.12.8 to 19.8.18
+- requests from 2.21.0 to 2.23.0
+- whitenoise from 4.1.4 to 5.0.1,
+- devpi-server from 5.4.0 to 5.4.1,
+- Pillow from 6.2.2 to 7.0.0,
+- node-semver from 0.6.1 to 0.8.0,
+- graphviz from 0.10.1 to 0.13.2
+- python-dateutil from 2.8.0 to 2.8.1,
+- flanker from 0.9.0 to 0.9.11,
+- django-activity-stream from 0.7.0 to 0.8.0
+
+Some dependencies were removed:
+
+- Python library django-timezone-field
+- codecov
+- pathlib2 (it is now part of the standard Python library)
+- Django's admindocs app
+
+
+Docker
+^^^^^^
+
+Docker Compose is now the prefered method of installation. The installation
+documentation was updated to reflect this. A Docker Compose files is
+provided along with new instructions. Data in Docker containers using the
+existing methods is safe and will be read when reinstalling using the Docker
+Compose method.
+
+With the Docker Compose, the current Docker installation script is now
+deprecated and will be removed in the future.
+
+
+File caching
+^^^^^^^^^^^^
+
+The maximum size of the file caches was increased. The file cache model now
+uses a BigIntegerField instance for the size and supports up to
+9223372036854775807 bytes or 8,192 PetaBytes per cache entry.
+
+A column showing the percentage of usage of each cache entry was added.
+
+
+Installation
+^^^^^^^^^^^^
+
+The command ``preparestatic`` is now execute as part of the ``initialsetup``
+and ``performupgrade`` commands, thus removing one installation and one
+upgrade step from direct deployments.
+
+
+Quotas
+^^^^^^
+
+A new app was added to support quotas. Quotas allow limiting usage of system
+resources. Following Mayan EDMS's philosophy and like most apps, the quotas
+app works using backend and can be extended easily.
+
+Two quotas backends are included, one to limit the document count and another
+to limit the size of documents that can be created. Both quotas backends
+support further logic filtering by allowing the quota to apply to all or some
+users, all or some groups, and all of some document types.
+
+
+Search
+^^^^^^
+
+This version ships another incremental update of the search system. The
+search system now supports backend and the original search code that
+used the database is in itself a backend.
+
+The support for search backends adds two new settings: ``SEARCH_BACKEND``
+(which defaults to ``mayan.apps.dynamic_search.backends.django.DjangoSearchBackend``)
+and ``SEARCH_BACKEND_ARGUMENTS``.
+
+This brings the search code closer to the roadmap goal of supporting
+dedicated full text search engines.
+
+
+Signatures
+^^^^^^^^^^
+
+The key manager app was updated to support backends. The GnuPG code was
+converted into a backend and it is enabled by default. This change
+allowing integrators to add support for their own GPG key implementations
+without having to rewrite core code.
+
+This update adds two new settings: ``SIGNATURES_BACKEND`` and
+``SIGNATURES_BACKEND_ARGUMENTS``. This change also removes two settings:
+``SIGNATURES_GPG_HOME`` and ``SIGNATURES_GPG_PATH``. ``SIGNATURES_GPG_HOME``
+has already been deprecated and was inactive. ``SIGNATURES_GPG_PATH`` is now
+the component ``gpg_path`` of the setting ``SIGNATURES_BACKEND_ARGUMENTS``.
+
+The binary path for ``gpg`` now changes based on the operating system
+detected and provides sane default paths for Linux, FreeBSD, OpenBSD, and
+MaCOS.
+
+
+Storage
+^^^^^^^
+
+The storage system was updated to centralize even more how apps use storage.
+All app now register their storage in an uniform manner using the
+DefinedStorage system.
+
+One of the advantages of the new DefinedStorage system is that storage
+usage is very deterministic. This allows to add stages to a storage setup.
+The existing compressed storage backend was updated to take advantage of this
+and now behaves like a storage stage and not as a final storage. This
+allows compressing files transparently regardless of the final type storage
+(block, object) or location (local, remote).
+
+Similar to the compression stage, an encryption stage was added. This
+encryption stage uses AES and can transparently encrypt any storage stream (
+document files, preview images, cached files). With this encryption stage
+Mayan EDMS can now provide ecnryption-at-a-rest regardless of the final
+storage medium.
+
+
+User impersonation
+^^^^^^^^^^^^^^^^^^
+
+Support for user impersonation was added. This new feature make testing
+permission setup very easily. It removeds the need to login using multiple
+browser windows to test a user access configuration.
+
+The user impersonation features also allows using Mayan EDMS inside a portal
+very easy as only one account is used for the integration. Any content
+being shown in the portal, will be limited to the user being impersonated
+not the user account used for the integration.
+
+
+User interface
+^^^^^^^^^^^^^^
+
+Support was added to switch a view from the list mode to item mode and
+viceversa. A new icon is displayed in the list toolbal. Almost all views
+support this feature.
+
+
+The icons of several app were improve using icon composition for a more
+intuitive visual languge. Some of the apps that received these icon updates
+were the OCR, file metadata, and document parsing apps.
+
+The login view will now detect and stop redirect loops.
+
+
+Workflows
+^^^^^^^^^
+
+The HTTP request workflow action was updated to support any HTTP method.
+The HTTP method field is left open to use the most common methods like
+GET, POST, PUT, PATCH, DELETE, but can also be used for any method supported
+by the destination host.
+
+The workflows now support conditional execution in two elements. The
+conditional support for transitions will cause transitions to be disabled
+or enabled depending on the result of their conditional code. This multiplies
+the usability of the transitions as they can be toggled based on document
+properties like metadata values or past workflow actions using the workflow
+context and workflow fields.
+
+Like transitions, workflow state actions now also support conditional
+execution. This allows for multiple actions in a single state to be
+execute based on their respective conditional code results.
+
+With conditional support is now possible to execute external actions, send
+emails or classify documents based on their content in a general manner,
+using the same solution.
+
+A new workflow action was added to send documents to the trash can. Like all
+workflow actions, this one also supports conditional execution.
+
+
+Other
+^^^^^
+
+All apps were updated to use explicit URL parameters. This is only important
+for integrators if using direct URL requests instead of the API.
+
+The document document type and document models where updated to avoid a
+double save when creating a new document. This results in a small optimization
+that is very benefitial when doing massive imports.
+
+Several classes were updated to detect misconfiguration and provide
+explantions to help integrator pinpoint the source.
+
+The SourceColumn class will now detect and halt using non field attributes
+as sortable columns.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrading process
+-----------------
+
+#. Stop supervisord::
+
+    sudo systemctl stop supervisor
+
+
+Upgrading from Mayan EDMS 3.2.x or earlier
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. Update the Redis configuration:
+
+   Configure Redis to discard data when it runs out of memory, not save its
+   database, and only keep 2 database:
+
+   .. code-block:: bash
+
+       echo "maxmemory-policy allkeys-lru" | sudo tee -a /etc/redis/redis.conf
+       echo "save \"\"" | sudo tee -a /etc/redis/redis.conf
+       echo "databases 2" | sudo tee -a /etc/redis/redis.conf
+       echo "requirepass |DEFAULT_REDIS_PASSWORD|" | sudo tee -a /etc/redis/redis.conf
+       sudo systemctl restart redis
+
+
+#. Install the Python 3 development OS package:
+
+   .. code-block:: bash
+
+    sudo apt-get install python3-dev
+
+
+#. Update the virtualenv to use Python 3:
+
+   .. code-block:: bash
+
+    sudo -u |DEFAULT_OS_USERNAME| virtualenv --clear /opt/mayan-edms -p /usr/bin/python3
+
+
+#. Create a home directory for the Mayan EDMS system user:
+
+   .. code-block:: bash
+
+    mkdir /home/mayan
+
+
+#. Grant ownership to the Mayan EDMS system user:
+
+   .. code-block:: bash
+
+    chown mayan:mayan /home/mayan
+
+#. Reinstall the Python client for PostgreSQL and Redis:
+
+   .. code-block:: bash
+
+       sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install psycopg2==|PYTHON_PSYCOPG2_VERSION| redis==|PYTHON_REDIS_VERSION|
+
+   .. note::
+
+       Platforms with the ARM CPU might also need additional requirements:
+
+       .. code-block:: bash
+
+           sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install psutil==|PYTHON_PSUTIL_VERSION|
+
+
+#. Reinstall the Python client for RabbitMQ if you are using RabbitMQ as a broker:
+
+   .. code-block:: bash
+
+       sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install amqp==|PYTHON_AMQP_VERSION|
+
+
+Upgrading from Mayan EDMS 3.3.x
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. Update the Redis configuration to enable password protection:
+
+   .. code-block:: bash
+
+       echo "requirepass mayanredispassword" | sudo tee -a /etc/redis/redis.conf
+       sudo systemctl restart redis
+
+
+#. Remove deprecated requirements:
+
+   .. code-block:: bash
+
+    sudo -u |DEFAULT_OS_USERNAME| curl |SOURCE_CODE_REPOSITORY|raw/master/removals.txt -o /tmp/removals.txt \
+    && sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| uninstall -y -r /tmp/removals.txt
+
+
+#. Update the Mayan EDMS Python package:
+
+   .. code-block:: bash
+
+    sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install mayan-edms==3.4
+
+   the requirements will also be updated automatically.
+
+
+#. Make a backup of your supervisord file:
+
+   .. code-block:: bash
+
+       sudo cp |MAYAN_SUPERVISOR_CONF| |MAYAN_SUPERVISOR_CONF|.bck
+
+
+#. Update the supervisord configuration file. Replace the environment
+   variables values show here with your respective settings. This step will refresh
+   the supervisord configuration file with the new queues and the latest
+   recommended layout:
+
+   .. code-block:: bash
+
+       sudo -u |DEFAULT_OS_USERNAME| MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=|DEFAULT_DATABASE_NAME| \
+       MAYAN_DATABASE_PASSWORD=|DEFAULT_DATABASE_PASSWORD| MAYAN_DATABASE_USER=|DEFAULT_DATABASE_USER| \
+       MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| platformtemplate supervisord | sudo sh -c "cat > |MAYAN_SUPERVISOR_CONF|"
+
+   or:
+
+   .. code-block:: bash
+
+       sudo -u |DEFAULT_OS_USERNAME| MAYAN_DATABASES=\"{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'|DEFAULT_DATABASE_NAME|','PASSWORD':'|DEFAULT_DATABASE_PASSWORD|','USER':'|DEFAULT_DATABASE_USER|','HOST':'127.0.0.1'}}\" \
+       MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| platformtemplate supervisord | sudo sh -c "cat > |MAYAN_SUPERVISOR_CONF|"
+
+
+#. Edit the supervisord configuration file and update any setting specific to your installation:
+
+   .. code-block:: bash
+
+       sudo vi |MAYAN_SUPERVISOR_CONF|
+
+
+#. Migrate existing database schema and static media files with:
+
+   .. code-block:: bash
+
+       sudo -u |DEFAULT_OS_USERNAME| MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=|DEFAULT_DATABASE_NAME| \
+       MAYAN_DATABASE_PASSWORD=|DEFAULT_DATABASE_PASSWORD| MAYAN_DATABASE_USER=|DEFAULT_DATABASE_USER| \
+       MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| performupgrade
+
+   or:
+
+   .. code-block:: bash
+
+       sudo -u |DEFAULT_OS_USERNAME| MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'|DEFAULT_DATABASE_NAME|','PASSWORD':'|DEFAULT_DATABASE_PASSWORD|','USER':'|DEFAULT_DATABASE_USER|','HOST':'127.0.0.1'}}" \
+       MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+      |MAYAN_BIN| performupgrade
+
+
+#. Start supervisord:
+
+   .. code-block:: bash
+
+       sudo systemctl start supervisor
+
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- :gitlab-issue:`143` Encrypted document storage
+- :gitlab-issue:`236` Add the 'Attach tags to documents' permission in the Tag ACLs rather than the Role permissions.
+- :gitlab-issue:`537` Auto-Tagging
+- :gitlab-issue:`691` django 2.2 support
+- :gitlab-issue:`782` OCR error when uploading document
+
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

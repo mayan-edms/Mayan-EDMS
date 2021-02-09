@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 
-from __future__ import print_function, unicode_literals
-
 import doctest
 import re
 import sys
@@ -11,7 +9,7 @@ VERSION_PART_MINOR = 1
 VERSION_PART_MICRO = 2
 
 
-class Version(object):
+class Version:
     """
     >>> Version('1')
     Version: 1

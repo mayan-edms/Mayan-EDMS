@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.contrib.auth.models import Group
 from django.utils.translation import ugettext_lazy as _
 
@@ -19,11 +17,11 @@ class PermissionSerializer(serializers.Serializer):
 
     def to_representation(self, instance):
         if isinstance(instance, StoredPermission):
-            return super(PermissionSerializer, self).to_representation(
+            return super().to_representation(
                 instance.volatile_permission
             )
         else:
-            return super(PermissionSerializer, self).to_representation(
+            return super().to_representation(
                 instance
             )
 
@@ -34,7 +32,10 @@ class RoleSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         extra_kwargs = {
-            'url': {'view_name': 'rest_api:role-detail'},
+            'url': {
+                'lookup_url_kwarg': 'role_id',
+                'view_name': 'rest_api:role-detail'
+            }
         }
         fields = ('groups', 'id', 'label', 'permissions', 'url')
         model = Role
@@ -65,7 +66,7 @@ class WritableRoleSerializer(serializers.HyperlinkedModelSerializer):
             'permissions_pk_list', ''
         )
 
-        instance = super(WritableRoleSerializer, self).create(validated_data)
+        instance = super().create(validated_data)
 
         if self.groups_pk_list:
             self._add_groups(instance=instance)
@@ -97,8 +98,8 @@ class WritableRoleSerializer(serializers.HyperlinkedModelSerializer):
             'permissions_pk_list', ''
         )
 
-        result = super(WritableRoleSerializer, self).update(
-            instance, validated_data
+        result = super().update(
+            instance=instance, validated_data=validated_data
         )
 
         if self.groups_pk_list:

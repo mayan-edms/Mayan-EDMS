@@ -1,11 +1,14 @@
-from __future__ import unicode_literals
+from django.utils.encoding import force_text
 
-from mayan.apps.documents.permissions import permission_document_view
+from mayan.apps.documents.models import DocumentFile
+from mayan.apps.documents.permissions import (
+    permission_document_file_new, permission_document_file_view,
+    permission_document_view
+)
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
-from mayan.apps.sources.links import link_document_version_upload
 
+from ..exceptions import DocumentAlreadyCheckedOut, DocumentNotCheckedOut
 from ..literals import STATE_CHECKED_OUT, STATE_LABELS
-from ..models import DocumentCheckout
 from ..permissions import (
     permission_document_check_in, permission_document_check_in_override,
     permission_document_check_out, permission_document_check_out_detail_view
@@ -22,9 +25,7 @@ class DocumentCheckoutViewTestCase(
         self._check_out_test_document()
 
         response = self._request_test_document_check_in_get_view()
-        self.assertNotContains(
-            response=response, text=self.test_document.label, status_code=404
-        )
+        self.assertEqual(response.status_code, 404)
 
         self.assertTrue(self.test_document.is_checked_out())
 
@@ -39,6 +40,20 @@ class DocumentCheckoutViewTestCase(
         self.assertContains(
             response=response, text=self.test_document.label, status_code=200
         )
+
+        self.assertTrue(self.test_document.is_checked_out())
+
+    def test_trashed_document_check_in_get_view_with_access(self):
+        self._check_out_test_document()
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_check_in
+        )
+
+        self.test_document.delete()
+
+        response = self._request_test_document_check_in_get_view()
+        self.assertEqual(response.status_code, 404)
 
         self.assertTrue(self.test_document.is_checked_out())
 
@@ -61,15 +76,24 @@ class DocumentCheckoutViewTestCase(
         self.assertEqual(response.status_code, 302)
 
         self.assertFalse(self.test_document.is_checked_out())
-        self.assertFalse(
-            DocumentCheckout.objects.is_checked_out(
-                document=self.test_document
-            )
+
+    def test_trashed_document_check_in_post_view_with_access(self):
+        self._check_out_test_document()
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_check_in
         )
+
+        self.test_document.delete()
+
+        response = self._request_test_document_check_in_post_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertTrue(self.test_document.is_checked_out())
 
     def test_document_multiple_check_in_post_view_no_permission(self):
         # Upload second document
-        self.upload_document()
+        self._upload_test_document()
 
         self._check_out_test_document(document=self.test_documents[0])
         self._check_out_test_document(document=self.test_documents[1])
@@ -79,20 +103,10 @@ class DocumentCheckoutViewTestCase(
 
         self.assertTrue(self.test_documents[0].is_checked_out())
         self.assertTrue(self.test_documents[1].is_checked_out())
-        self.assertTrue(
-            DocumentCheckout.objects.is_checked_out(
-                document=self.test_documents[0]
-            )
-        )
-        self.assertTrue(
-            DocumentCheckout.objects.is_checked_out(
-                document=self.test_documents[1]
-            )
-        )
 
     def test_document_multiple_check_in_post_view_with_document_0_access(self):
         # Upload second document
-        self.upload_document()
+        self._upload_test_document()
 
         self._check_out_test_document(document=self.test_documents[0])
         self._check_out_test_document(document=self.test_documents[1])
@@ -106,20 +120,10 @@ class DocumentCheckoutViewTestCase(
 
         self.assertFalse(self.test_documents[0].is_checked_out())
         self.assertTrue(self.test_documents[1].is_checked_out())
-        self.assertFalse(
-            DocumentCheckout.objects.is_checked_out(
-                document=self.test_documents[0]
-            )
-        )
-        self.assertTrue(
-            DocumentCheckout.objects.is_checked_out(
-                document=self.test_documents[1]
-            )
-        )
 
     def test_document_multiple_check_in_post_view_with_access(self):
         # Upload second document
-        self.upload_document()
+        self._upload_test_document()
 
         self._check_out_test_document(document=self.test_documents[0])
         self._check_out_test_document(document=self.test_documents[1])
@@ -136,16 +140,6 @@ class DocumentCheckoutViewTestCase(
 
         self.assertFalse(self.test_documents[0].is_checked_out())
         self.assertFalse(self.test_documents[1].is_checked_out())
-        self.assertFalse(
-            DocumentCheckout.objects.is_checked_out(
-                document=self.test_documents[0]
-            )
-        )
-        self.assertFalse(
-            DocumentCheckout.objects.is_checked_out(
-                document=self.test_documents[1]
-            )
-        )
 
     def test_document_check_out_get_view_no_permission(self):
         response = self._request_test_document_check_out_get_view()
@@ -160,6 +154,18 @@ class DocumentCheckoutViewTestCase(
 
         response = self._request_test_document_check_out_get_view()
         self.assertEqual(response.status_code, 200)
+
+        self.assertFalse(self.test_document.is_checked_out())
+
+    def test_trashed_document_check_out_get_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_check_out
+        )
+
+        self.test_document.delete()
+
+        response = self._request_test_document_check_out_get_view()
+        self.assertEqual(response.status_code, 404)
 
         self.assertFalse(self.test_document.is_checked_out())
 
@@ -183,9 +189,25 @@ class DocumentCheckoutViewTestCase(
 
         self.assertTrue(self.test_document.is_checked_out())
 
+    def test_trashed_document_check_out_post_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_check_out
+        )
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_check_out_detail_view
+        )
+
+        self.test_document.delete()
+
+        response = self._request_test_document_check_out_post_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertFalse(self.test_document.is_checked_out())
+
     def test_document_multiple_check_out_post_view_no_permission(self):
         # Upload second document
-        self.upload_document()
+        self._upload_test_document()
 
         self.grant_access(
             obj=self.test_documents[0],
@@ -201,20 +223,10 @@ class DocumentCheckoutViewTestCase(
 
         self.assertFalse(self.test_documents[0].is_checked_out())
         self.assertFalse(self.test_documents[1].is_checked_out())
-        self.assertFalse(
-            DocumentCheckout.objects.is_checked_out(
-                document=self.test_documents[0]
-            )
-        )
-        self.assertFalse(
-            DocumentCheckout.objects.is_checked_out(
-                document=self.test_documents[1]
-            )
-        )
 
     def test_document_multiple_check_out_post_view_with_document_access(self):
         # Upload second document
-        self.upload_document()
+        self._upload_test_document()
 
         self.grant_access(
             obj=self.test_documents[0], permission=permission_document_check_out
@@ -233,20 +245,10 @@ class DocumentCheckoutViewTestCase(
 
         self.assertTrue(self.test_documents[0].is_checked_out())
         self.assertFalse(self.test_documents[1].is_checked_out())
-        self.assertTrue(
-            DocumentCheckout.objects.is_checked_out(
-                document=self.test_documents[0]
-            )
-        )
-        self.assertFalse(
-            DocumentCheckout.objects.is_checked_out(
-                document=self.test_documents[1]
-            )
-        )
 
     def test_document_multiple_check_out_post_view_with_access(self):
         # Upload second document
-        self.upload_document()
+        self._upload_test_document()
 
         self.grant_access(
             obj=self.test_documents[0], permission=permission_document_check_out
@@ -268,16 +270,6 @@ class DocumentCheckoutViewTestCase(
 
         self.assertTrue(self.test_documents[0].is_checked_out())
         self.assertTrue(self.test_documents[1].is_checked_out())
-        self.assertTrue(
-            DocumentCheckout.objects.is_checked_out(
-                document=self.test_documents[0]
-            )
-        )
-        self.assertTrue(
-            DocumentCheckout.objects.is_checked_out(
-                document=self.test_documents[1]
-            )
-        )
 
     def test_document_check_out_detail_view_no_permission(self):
         self._check_out_test_document()
@@ -300,6 +292,19 @@ class DocumentCheckoutViewTestCase(
         self.assertContains(
             response, text=STATE_LABELS[STATE_CHECKED_OUT], status_code=200
         )
+
+    def test_trashed_document_check_out_detail_view_with_access(self):
+        self._check_out_test_document()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_check_out_detail_view
+        )
+
+        self.test_document.delete()
+
+        response = self._request_test_document_check_out_detail_view()
+        self.assertEqual(response.status_code, 404)
 
     def test_document_check_out_list_view_no_permission(self):
         self._check_out_test_document()
@@ -331,6 +336,25 @@ class DocumentCheckoutViewTestCase(
             response=response, text=self.test_document.label, status_code=200
         )
 
+    def test_trashed_document_check_out_list_view_with_access(self):
+        self._check_out_test_document()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_check_out_detail_view
+        )
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_view
+        )
+
+        self.test_document.delete()
+
+        response = self._request_test_document_check_out_list_view()
+        self.assertNotContains(
+            response=response, text=self.test_document.label, status_code=200
+        )
+
     def test_document_check_in_forcefull_view_no_permission(self):
         # Gitlab issue #237
         # Forcefully checking in a document by a user without adequate
@@ -343,11 +367,7 @@ class DocumentCheckoutViewTestCase(
             obj=self.test_document, permission=permission_document_check_in
         )
 
-        response = self.post(
-            viewname='checkouts:check_in_document', kwargs={
-                'pk': self.test_document.pk
-            }
-        )
+        response = self._request_test_document_check_in_post_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertTrue(self.test_document.is_checked_out())
@@ -363,55 +383,133 @@ class DocumentCheckoutViewTestCase(
         )
 
         # Check in document as test_case_user
-        response = self.post(
-            viewname='checkouts:check_in_document', kwargs={
-                'pk': self.test_document.pk
-            }
-        )
+        response = self._request_test_document_check_in_post_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertFalse(self.test_document.is_checked_out())
 
+    def test_trashed_document_check_in_forcefull_view_with_access(self):
+        self._create_test_user()
+        # Check out document as test_user
+        self._check_out_test_document(user=self.test_user)
 
-class NewVersionBlockViewTestCase(
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_check_in_override
+        )
+
+        self.test_document.delete()
+
+        # Check in document as test_case_user
+        response = self._request_test_document_check_in_post_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertTrue(self.test_document.is_checked_out())
+
+    def test_check_in_of_non_checked_out_document_view(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_check_in
+        )
+
+        response = self._request_test_document_check_in_post_view(follow=True)
+        self.assertContains(
+            response=response, status_code=200,
+            text=force_text(s=DocumentNotCheckedOut())
+        )
+
+    def test_check_in_of_non_checked_out_trashed_document_view(self):
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_check_in
+        )
+
+        self.test_document.delete()
+
+        response = self._request_test_document_check_in_post_view(follow=True)
+        self.assertEqual(response.status_code, 404)
+
+    def test_check_out_of_checked_out_document_view(self):
+        self._create_test_user()
+        self._check_out_test_document(user=self.test_user)
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_check_out
+        )
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_check_out_detail_view
+        )
+
+        response = self._request_test_document_check_out_post_view(follow=True)
+        self.assertContains(
+            response=response, status_code=200,
+            text=force_text(s=DocumentAlreadyCheckedOut())
+        )
+
+    def test_check_out_of_checked_out_trashed_document(self):
+        self._create_test_user()
+        self._check_out_test_document(user=self.test_user)
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_check_out
+        )
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_check_out_detail_view
+        )
+
+        self.test_document.delete()
+
+        response = self._request_test_document_check_out_post_view(follow=True)
+        self.assertEqual(response.status_code, 404)
+
+
+class DocumentCheckoutOptionsViewTestCase(
     DocumentCheckoutTestMixin, DocumentCheckoutViewTestMixin,
     GenericDocumentViewTestCase
 ):
-    def test_document_check_out_block_new_version(self):
-        """
-        Gitlab issue #231
-        User shown option to upload new version of a document even though it
-        is blocked by checkout - v2.0.0b2
+    def test_document_check_out_block_new_file_view(self):
+        self._create_test_user()
+        self._check_out_test_document(user=self.test_user)
+        file_count = DocumentFile.objects.count()
 
-        Expected results:
-            - Link to upload version view should not resolve
-            - Upload version view should reject request
-        """
-        self._create_test_case_superuser()
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_file_new
+        )
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_file_view
+        )
+        response = self.post(
+            viewname='sources:document_file_upload', kwargs={
+                'document_id': self.test_document.pk
+            }, follow=True
+        )
+        self.assertContains(
+            response=response, status_code=200,
+            text='Unable to upload new files'
+        )
+
+        self.assertEqual(DocumentFile.objects.count(), file_count)
+
+    def test_trashed_document_check_out_block_new_version(self):
         self._check_out_test_document()
-        self.login_superuser()
+        file_count = DocumentFile.objects.count()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_file_new
+        )
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_file_view
+        )
+
+        self.test_document.delete()
 
         response = self.post(
-            viewname='sources:document_version_upload', kwargs={
-                'document_pk': self.test_document.pk
+            viewname='sources:document_file_upload', kwargs={
+                'document_id': self.test_document.pk
             }, follow=True
         )
+        self.assertEqual(response.status_code, 404)
 
-        self.assertContains(
-            response=response, text='blocked from uploading',
-            status_code=200
-        )
-
-        response = self.get(
-            viewname='documents:document_version_list', kwargs={
-                'pk': self.test_document.pk
-            }, follow=True
-        )
-
-        # Needed by the url view resolver
-        response.context.current_app = None
-        resolved_link = link_document_version_upload.resolve(
-            context=response.context
-        )
-
-        self.assertEqual(resolved_link, None)
+        self.assertEqual(DocumentFile.objects.count(), file_count)

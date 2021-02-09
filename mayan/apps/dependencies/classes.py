@@ -1,28 +1,25 @@
-from __future__ import print_function, unicode_literals
-
 import json
-from importlib import import_module
+from io import BytesIO
 import logging
+from packaging import version
+from pathlib import Path
 import pkg_resources
 import shutil
 import sys
 import tarfile
 
 from furl import furl
-from pathlib2 import Path
 import requests
 from semver import max_satisfying
 
 from django.apps import apps
-from django.utils.encoding import (
-    force_bytes, force_text, python_2_unicode_compatible
-)
+from django.utils.encoding import force_text
 from django.utils.functional import cached_property
 from django.utils.module_loading import import_string
-from django.utils.six import PY3
+from django.utils.termcolors import colorize
 from django.utils.translation import ugettext_lazy as _, ugettext
 
-from mayan.apps.common.compat import FileNotFoundErrorException
+from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
 from mayan.apps.common.utils import resolve_attribute
 from mayan.apps.storage.utils import mkdtemp, patch_files as storage_patch_files
 
@@ -30,10 +27,10 @@ from .algorithms import HashAlgorithm
 from .environments import environment_production
 from .exceptions import DependenciesException
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
-class Provider(object):
+class Provider:
     """Base provider class"""
 
 
@@ -53,8 +50,7 @@ class OperatingSystemProvider(Provider):
     """Placeholder for the OS provider"""
 
 
-@python_2_unicode_compatible
-class DependencyGroup(object):
+class DependencyGroup:
     _registry = {}
 
     @classmethod
@@ -74,7 +70,7 @@ class DependencyGroup(object):
         self.__class__._registry[name] = self
 
     def __str__(self):
-        return force_text(self.label)
+        return force_text(s=self.label)
 
     def get_entries(self):
         results = Dependency.get_values_of_attribute(
@@ -100,8 +96,7 @@ class DependencyGroup(object):
         raise KeyError('Entry not found.')
 
 
-@python_2_unicode_compatible
-class DependencyGroupEntry(object):
+class DependencyGroupEntry:
     def __init__(self, dependency_group, label, name, help_text=None):
         self.dependency_group = dependency_group
         self.help_text = help_text or ''
@@ -109,7 +104,7 @@ class DependencyGroupEntry(object):
         self.name = name
 
     def __str__(self):
-        return force_text(self.label)
+        return force_text(s=self.label)
 
     def get_dependencies(self):
         dependencies = Dependency.get_for_attribute(
@@ -120,30 +115,24 @@ class DependencyGroupEntry(object):
         return Dependency.return_sorted(dependencies=dependencies)
 
 
-class Dependency(object):
+class Dependency(AppsModuleLoaderMixin):
+    _loader_module_name = 'dependencies'
     _registry = {}
-
-    @staticmethod
-    def initialize():
-        for app in apps.get_app_configs():
-            try:
-                import_module('{}.dependencies'.format(app.name))
-            except ImportError as exception:
-                if force_text(exception) not in ('No module named dependencies', 'No module named \'{}.dependencies\''.format(app.name)):
-                    logger.error(
-                        'Error importing %s dependencies.py file; %s', app.name,
-                        exception
-                    )
 
     @staticmethod
     def return_sorted(dependencies):
         return sorted(dependencies, key=lambda x: x.get_label())
 
     @classmethod
-    def check_all(cls):
-        template = '{:<35}{:<11} {:<15} {:<20} {:<15} {:<30} {:<10}'
+    def check_all(cls, as_csv=False, use_color=False):
+        if as_csv:
+            template = '{},{},{},{},{},{},{}'
+        else:
+            template = '{:<35}{:<11} {:<15} {:<20} {:<15} {:<30} {:<10}'
 
-        print('\n  ', end='')
+        if not as_csv:
+            print('\n  ', end='')
+
         print(
             template.format(
                 ugettext('Name'), ugettext('Type'), ugettext('Version'),
@@ -151,21 +140,35 @@ class Dependency(object):
                 ugettext('Other data'), ugettext('Check')
             )
         )
-        print('-' * 140)
+        if not as_csv:
+            print('-' * 140)
 
         for dependency in cls.get_all():
-            print('* ', end='')
+            check = dependency.check()
+
+            if not as_csv and not check and dependency.environment.mark_missing:
+                check = '* {} *'.format(check)
+
+                if use_color:
+                    check = colorize(
+                        text=check, fg='red', opts=('bold', 'blink', 'reverse')
+                    )
+
+            if not as_csv:
+                print('* ', end='')
+
             print(
                 template.format(
                     dependency.name,
-                    force_text(dependency.class_name_verbose_name),
-                    force_text(dependency.get_version_string()),
-                    force_text(dependency.app_label_verbose_name()),
-                    force_text(dependency.get_environment_verbose_name()),
-                    force_text(dependency.get_other_data()),
-                    force_text(dependency.check()),
+                    force_text(s=dependency.class_name_verbose_name),
+                    force_text(s=dependency.get_version_string()),
+                    force_text(s=dependency.app_label_verbose_name()),
+                    force_text(s=dependency.get_environment_verbose_name()),
+                    force_text(s=dependency.get_other_data()),
+                    force_text(s=check),
                 )
             )
+
             sys.stdout.flush()
 
     @classmethod
@@ -400,7 +403,7 @@ class BinaryDependency(Dependency):
 
     def __init__(self, *args, **kwargs):
         self.path = kwargs.pop('path')
-        super(BinaryDependency, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def _check(self):
         return Path(self.path).exists()
@@ -420,20 +423,16 @@ class JavaScriptDependency(Dependency):
 
     def __init__(self, *args, **kwargs):
         self.static_folder = kwargs.pop('static_folder', None)
-        return super(JavaScriptDependency, self).__init__(*args, **kwargs)
+        return super().__init__(*args, **kwargs)
 
     def _check(self):
         try:
             package_info = self._read_package_file()
-        except FileNotFoundErrorException:
+        except FileNotFoundError:
             return False
 
-        if PY3:
-            versions = [package_info['version']]
-            version_string = self.version_string
-        else:
-            versions = [force_bytes(package_info['version'])]
-            version_string = force_bytes(self.version_string)
+        versions = [package_info['version']]
+        version_string = self.version_string
 
         return max_satisfying(
             versions=versions, range_=version_string,
@@ -470,7 +469,7 @@ class JavaScriptDependency(Dependency):
         temporary_directory = mkdtemp()
         path_compressed_file = self.get_tar_file_path()
 
-        with tarfile.open(name=force_text(path_compressed_file), mode='r') as file_object:
+        with tarfile.open(name=force_text(s=path_compressed_file), mode='r') as file_object:
             file_object.extractall(path=temporary_directory)
 
         self.patch_files(path=temporary_directory, replace_list=replace_list)
@@ -478,7 +477,7 @@ class JavaScriptDependency(Dependency):
         path_install = self.get_install_path()
 
         # Clear the installation path of previous content
-        shutil.rmtree(path=force_text(path_install), ignore_errors=True)
+        shutil.rmtree(path=force_text(s=path_install), ignore_errors=True)
 
         # Scoped packages are nested under a parent directory
         # create it to avoid rename errors.
@@ -489,11 +488,12 @@ class JavaScriptDependency(Dependency):
         # We do a copy and delete instead of move because os.rename doesn't
         # support renames across filesystems.
         path_uncompressed_package = Path(temporary_directory, 'package')
-        shutil.rmtree(force_text(path_install))
+        shutil.rmtree(path=force_text(s=path_install))
         shutil.copytree(
-            force_text(path_uncompressed_package), force_text(path_install)
+            src=force_text(s=path_uncompressed_package),
+            dst=force_text(s=path_install)
         )
-        shutil.rmtree(force_text(path_uncompressed_package))
+        shutil.rmtree(path=force_text(s=path_uncompressed_package))
 
         # Clean up temporary directory used for download
         shutil.rmtree(path=temporary_directory, ignore_errors=True)
@@ -508,17 +508,8 @@ class JavaScriptDependency(Dependency):
                 shutil.copyfileobj(fsrc=response.raw, fdst=file_object)
 
     def get_best_version(self):
-        # PY3
-        # node-semver does a direct str() comparison which means
-        # different things on PY2 and PY3
-        # Typecast to str in PY3 which is unicode and
-        # bytes in PY2 which is str to fool node-semver
-        if PY3:
-            versions = self.versions
-            version_string = self.version_string
-        else:
-            versions = [force_bytes(version) for version in self.versions]
-            version_string = force_bytes(self.version_string)
+        versions = self.versions
+        version_string = self.version_string
 
         return max_satisfying(
             versions=versions, range_=version_string, loose=True
@@ -529,14 +520,14 @@ class JavaScriptDependency(Dependency):
 
         for entry in path_install_path.glob(pattern='LICENSE*'):
             with entry.open(mode='rb') as file_object:
-                return force_text(file_object.read())
+                return force_text(s=file_object.read())
 
         copyright_text = []
 
         try:
             package_info = self._read_package_file()
-        except FileNotFoundErrorException:
-            return super(JavaScriptDependency, self).get_copyright()
+        except FileNotFoundError:
+            return super().get_copyright()
         else:
             copyright_text.append(
                 package_info.get('license') or package_info.get(
@@ -558,8 +549,8 @@ class JavaScriptDependency(Dependency):
 
         try:
             description = self._read_package_file().get('description')
-        except FileNotFoundErrorException:
-            return super(JavaScriptDependency, self).get_help_text()
+        except FileNotFoundError:
+            return super().get_help_text()
         else:
             return description
 
@@ -631,6 +622,14 @@ class JavaScriptDependency(Dependency):
             )
 
 
+class PythonVersion:
+    def __init__(self, string):
+        self.version = version.parse(string)
+
+    def __lt__(self, other):
+        return self.version < other.version
+
+
 class PythonDependency(Dependency):
     class_name = 'python'
     class_name_help_text = _(
@@ -641,7 +640,7 @@ class PythonDependency(Dependency):
 
     def __init__(self, *args, **kwargs):
         self.copyright_attribute = kwargs.pop('copyright_attribute', None)
-        super(PythonDependency, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def _check(self):
         try:
@@ -657,7 +656,17 @@ class PythonDependency(Dependency):
         if self.copyright_attribute:
             return import_string(dotted_path=self.copyright_attribute)
         else:
-            return super(PythonDependency, self).get_copyright()
+            return super().get_copyright()
+
+    def get_latest_version(self):
+        url = 'https://pypi.python.org/pypi/{}/json'.format(self.name)
+        response = requests.get(url=url)
+        versions = list(response.json()['releases'])
+        versions.sort(key=PythonVersion)
+        return versions[-1]
+
+    def is_latest_version(self):
+        return self.version_string == '=={}'.format(self.get_latest_version())
 
 
 class GoogleFontDependency(Dependency):
@@ -676,7 +685,7 @@ class GoogleFontDependency(Dependency):
     def __init__(self, *args, **kwargs):
         self.url = kwargs.pop('url')
         self.static_folder = kwargs.pop('static_folder', None)
-        super(GoogleFontDependency, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def _check(self):
         return self.get_install_path().exists()
@@ -701,7 +710,7 @@ class GoogleFontDependency(Dependency):
         with self.path_import_file.open(mode='w') as file_object:
             for agent_name, agent_string in self.user_agents.items():
                 import_file = force_text(
-                    requests.get(
+                    s=requests.get(
                         self.url, headers={
                             'User-Agent': agent_string
                         }
@@ -711,13 +720,20 @@ class GoogleFontDependency(Dependency):
                 for line in import_file.split('\n'):
                     if 'url' in line:
                         font_url = line.split(' ')[-2][4:-1]
-                        url = furl(force_text(font_url))
+                        url = furl(force_text(s=font_url))
                         font_filename = url.path.segments[-1]
 
                         path_font_filename = self.path_cache / font_filename
                         with path_font_filename.open(mode='wb') as font_file_object:
                             with requests.get(font_url, stream=True) as response:
-                                shutil.copyfileobj(fsrc=response.raw, fdst=font_file_object)
+                                # Use response.content instead of response.raw
+                                # to allow requests to handle gzip and deflate
+                                # content.
+                                # https://2.python-requests.org/en/master/user/quickstart/#binary-response-content
+                                shutil.copyfileobj(
+                                    fsrc=BytesIO(response.content),
+                                    fdst=font_file_object
+                                )
 
                         line = line.replace(font_url, font_filename)
 
@@ -727,12 +743,12 @@ class GoogleFontDependency(Dependency):
         path_install = self.get_install_path()
 
         # Clear the installation path of previous content
-        shutil.rmtree(path=force_text(path_install), ignore_errors=True)
+        shutil.rmtree(path=force_text(s=path_install), ignore_errors=True)
 
         shutil.copytree(
-            force_text(self.path_cache), force_text(path_install)
+            src=force_text(s=self.path_cache), dst=force_text(s=path_install)
         )
-        shutil.rmtree(force_text(self.path_cache), ignore_errors=True)
+        shutil.rmtree(path=force_text(s=self.path_cache), ignore_errors=True)
 
     def get_install_path(self):
         app = apps.get_app_config(app_label=self.app_label)

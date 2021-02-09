@@ -1,12 +1,9 @@
-from __future__ import unicode_literals
-
 from django.conf import settings
 from django.db import migrations, models
 import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('events', '0003_notification'),
     ]
@@ -32,8 +29,8 @@ class Migration(migrations.Migration):
             name='stored_event_type',
             field=models.ForeignKey(
                 default=1, on_delete=django.db.models.deletion.CASCADE,
-                related_name='event_subscriptions', to='events.StoredEventType',
-                verbose_name='Event type'
+                related_name='event_subscriptions',
+                to='events.StoredEventType', verbose_name='Event type'
             ),
             preserve_default=False,
         ),
@@ -42,8 +39,8 @@ class Migration(migrations.Migration):
             name='user',
             field=models.ForeignKey(
                 on_delete=django.db.models.deletion.CASCADE,
-                related_name='event_subscriptions', to=settings.AUTH_USER_MODEL,
-                verbose_name='User'
+                related_name='event_subscriptions',
+                to=settings.AUTH_USER_MODEL, verbose_name='User'
             ),
         ),
     ]

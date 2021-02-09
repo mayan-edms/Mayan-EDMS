@@ -4,7 +4,7 @@
 # base_image - Bare bones image with the base packages needed to run Mayan EDMS
 ####
 
-FROM debian:10.0-slim as base_image
+FROM debian:10.7-slim as base_image
 
 LABEL maintainer="Roberto Rosario roberto.rosario@mayan-edms.com"
 
@@ -21,21 +21,31 @@ RUN set -x \
     then echo "Acquire::http { Proxy \"http://${APT_PROXY}\"; };" > /etc/apt/apt.conf.d/01proxy \
 ; fi \
 # Install base OS packages to run Mayan EDMS
+&& echo "deb http://deb.debian.org/debian buster-backports main contrib non-free" >> /etc/apt/sources.list \
+&& echo "deb-src http://deb.debian.org/debian buster-backports main contrib non-free" >> /etc/apt/sources.list \
 && DEBIAN_FRONTEND=noninteractive \
 apt-get update \
+&& apt-get install -y --no-install-recommends -t buster-backports \
+    libreoffice-calc-nogui \
+    libreoffice-draw-nogui \
+    libreoffice-impress-nogui \
+    libreoffice-math-nogui \
+    libreoffice-writer-nogui \
 && apt-get install -y --no-install-recommends \
     ca-certificates \
     exiftool \
     fonts-arphic-uming \
     fonts-arphic-ukai \
+    fonts-unfonts-core \
     ghostscript \
+    git-core \
     gpgv \
     gnupg1 \
     graphviz \
+    libarchive-zip-perl \
     libfuse2 \
     libmagic1 \
     libmariadb3 \
-    libreoffice \
     libpq5 \
     poppler-utils \
     python3-distutils \
@@ -95,12 +105,13 @@ apt-get install -y --no-install-recommends \
     libpng-dev \
     libpq-dev \
     libtiff-dev \
-    zlib1g-dev \
     libssl-dev \
     g++ \
     gcc \
+    make \
     python3-dev \
     python3-venv \
+    zlib1g-dev \
 && mkdir -p "${PROJECT_INSTALL_DIR}" \
 && chown -R mayan:mayan "${PROJECT_INSTALL_DIR}" \
 && chown -R mayan:mayan /src
@@ -127,8 +138,9 @@ RUN set -a \
 && pip install --no-cache-dir -r /src/requirements/build.txt \
 # Build Mayan EDMS
 && python3 setup.py sdist \
+&& pip wheel --no-index --no-deps --wheel-dir dist dist/mayan-edms-*.tar.gz \
 # Install the built Mayan EDMS package
-&& pip install --no-cache-dir dist/mayan* \
+&& pip install --no-cache-dir dist/mayan_edms-*.whl \
 # Install the static content
 && mayan-edms.py installdependencies \
 && MAYAN_STATIC_ROOT=${PROJECT_INSTALL_DIR}/static mayan-edms.py preparestatic --link --noinput
@@ -160,6 +172,6 @@ RUN ${PROJECT_INSTALL_DIR}/bin/mayan-edms.py platformtemplate supervisord_docker
 && rm -rf /var/lib/apt/lists/* \
 && rm -f /var/cache/apt/archives/*.deb \
 # Remove temporary files owned by root from the platformtemplate step
-&& rm /tmp/* \
+&& rm -f /tmp/* \
 # Keep displaying log messages to stdout
 && find /var/log -type f | while read f; do echo -ne '' > $f; done;

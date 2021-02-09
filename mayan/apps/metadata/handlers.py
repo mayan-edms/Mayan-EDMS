@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.apps import apps
 
 import logging
@@ -8,7 +6,7 @@ from mayan.apps.document_indexing.tasks import task_index_document
 
 from .tasks import task_add_required_metadata_type, task_remove_metadata_type
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 def handler_index_document(sender, **kwargs):
@@ -18,7 +16,7 @@ def handler_index_document(sender, **kwargs):
 
 
 def handler_post_document_type_change_metadata(sender, instance, **kwargs):
-    logger.debug('received post_document_type_change')
+    logger.debug('received signal_post_document_type_change')
     logger.debug('instance: %s', instance)
 
     # Delete existing document metadata types not found in the new document

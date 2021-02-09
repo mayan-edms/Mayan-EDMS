@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from mayan.apps.dependencies.classes import PythonDependency
 
 PythonDependency(
@@ -33,5 +31,5 @@ PythonDependency(
         (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
         OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     ''', module=__name__, name='django-activity-stream',
-    version_string='==0.7.0'
+    version_string='==0.8.0'
 )

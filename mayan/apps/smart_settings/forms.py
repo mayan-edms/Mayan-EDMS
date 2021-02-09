@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import yaml
 
 from django import forms
@@ -16,7 +14,7 @@ class SettingForm(forms.Form):
     )
 
     def __init__(self, *args, **kwargs):
-        super(SettingForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.setting = self.initial['setting']
         self.fields['value'].help_text = self.setting.help_text
         self.fields['value'].initial = self.setting.serialized_value

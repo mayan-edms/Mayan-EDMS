@@ -1,83 +1,26 @@
-from __future__ import absolute_import, unicode_literals
-
-from django.conf import settings
 from django.contrib import messages
-from django.contrib.contenttypes.models import ContentType
-from django.shortcuts import get_object_or_404
 from django.templatetags.static import static
-from django.urls import reverse_lazy
-from django.utils import timezone, translation
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import RedirectView
 
-from mayan.apps.acls.models import AccessControlList
+from stronghold.views import StrongholdPublicMixin
 
-from .forms import (
-    LicenseForm, LocaleProfileForm, LocaleProfileForm_view,
+from mayan.apps.views.generics import ConfirmView, SimpleView
+from mayan.apps.views.mixins import (
+    ExternalContentTypeObjectViewMixin, ObjectNameViewMixin
 )
-from .generics import (
-    ConfirmView, SingleObjectEditView, SingleObjectListView, SimpleView
-)
-from .icons import icon_object_errors, icon_setup
+
+from .classes import ModelCopy
+from .forms import LicenseForm
+from .icons import icon_setup
 from .menus import menu_tools, menu_setup
-from .permissions_runtime import permission_error_log_view
+from .permissions import permission_object_copy
 from .settings import setting_home_view
 
 
 class AboutView(SimpleView):
     extra_context = {'title': _('About')}
     template_name = 'appearance/about.html'
-
-
-class CurrentUserLocaleProfileDetailsView(SimpleView):
-    template_name = 'appearance/generic_form.html'
-
-    def get_extra_context(self, **kwargs):
-        return {
-            'form': LocaleProfileForm_view(
-                instance=self.request.user.locale_profile
-            ),
-            'read_only': True,
-            'title': _('Current user locale profile details'),
-        }
-
-
-class CurrentUserLocaleProfileEditView(SingleObjectEditView):
-    extra_context = {
-        'title': _('Edit current user locale profile details')
-    }
-    form_class = LocaleProfileForm
-    post_action_redirect = reverse_lazy(
-        viewname='common:current_user_locale_profile_details'
-    )
-
-    def form_valid(self, form):
-        form.save()
-
-        timezone.activate(timezone=form.cleaned_data['timezone'])
-        translation.activate(language=form.cleaned_data['language'])
-
-        if hasattr(self.request, 'session'):
-            self.request.session[
-                translation.LANGUAGE_SESSION_KEY
-            ] = form.cleaned_data['language']
-            self.request.session[
-                settings.TIMEZONE_SESSION_KEY
-            ] = form.cleaned_data['timezone']
-        else:
-            self.request.set_cookie(
-                settings.LANGUAGE_COOKIE_NAME, form.cleaned_data['language']
-            )
-            self.request.set_cookie(
-                settings.TIMEZONE_COOKIE_NAME, form.cleaned_data['timezone']
-            )
-
-        return super(CurrentUserLocaleProfileEditView, self).form_valid(
-            form=form
-        )
-
-    def get_object(self):
-        return self.request.user.locale_profile
 
 
 class FaviconRedirectView(RedirectView):
@@ -107,77 +50,37 @@ class LicenseView(SimpleView):
     template_name = 'appearance/generic_form.html'
 
 
-class ObjectErrorLogEntryListClearView(ConfirmView):
+class ObjectCopyView(ExternalContentTypeObjectViewMixin, ObjectNameViewMixin, ConfirmView):
+    external_object_permission = permission_object_copy
+
     def get_extra_context(self):
-        return {
-            'object': self.get_object(),
-            'title': _('Clear error log entries for: %s' % self.get_object()),
+        model_copy = ModelCopy.get(model=self.external_object._meta.model)
+        context = {
+            'object': self.external_object,
+            'subtitle': _('Fields to be copied: %s') % ', '.join(
+                sorted(
+                    map(
+                        str, model_copy.get_fields_verbose_names()
+                    )
+                )
+            )
         }
 
-    def get_object(self):
-        content_type = get_object_or_404(
-            klass=ContentType, app_label=self.kwargs['app_label'],
-            model=self.kwargs['model']
-        )
+        context['title'] = _('Make a copy of %(object_name)s "%(object)s"?') % {
+            'object_name': self.get_object_name(context=context), 'object': self.external_object
+        }
 
-        return get_object_or_404(
-            klass=content_type.model_class(),
-            pk=self.kwargs['object_id']
-        )
+        return context
 
     def view_action(self):
-        self.get_object().error_logs.all().delete()
+        self.external_object.copy_instance()
         messages.success(
-            message=_('Object error log cleared successfully'),
+            message=_('Object copied successfully.'),
             request=self.request
         )
 
 
-class ObjectErrorLogEntryListView(SingleObjectListView):
-    def dispatch(self, request, *args, **kwargs):
-        AccessControlList.objects.check_access(
-            obj=self.get_object(), permissions=(permission_error_log_view,),
-            user=request.user
-        )
-
-        return super(ObjectErrorLogEntryListView, self).dispatch(
-            request, *args, **kwargs
-        )
-
-    def get_extra_context(self):
-        return {
-            'extra_columns': (
-                {'name': _('Date and time'), 'attribute': 'datetime'},
-                {'name': _('Result'), 'attribute': 'result'},
-            ),
-            'hide_object': True,
-            'no_results_icon': icon_object_errors,
-            'no_results_text': _(
-                'This view displays the error log of different object. '
-                'An empty list is a good thing.'
-            ),
-            'no_results_title': _(
-                'There are no error log entries'
-            ),
-            'object': self.get_object(),
-            'title': _('Error log entries for: %s' % self.get_object()),
-        }
-
-    def get_object(self):
-        content_type = get_object_or_404(
-            klass=ContentType, app_label=self.kwargs['app_label'],
-            model=self.kwargs['model']
-        )
-
-        return get_object_or_404(
-            klass=content_type.model_class(), pk=self.kwargs['object_id']
-        )
-
-    def get_source_queryset(self):
-        return self.get_object().error_logs.all()
-
-
-class RootView(SimpleView):
+class RootView(StrongholdPublicMixin, SimpleView):
     extra_context = {'home_view': setting_home_view.value}
     template_name = 'appearance/root.html'
 
@@ -188,11 +91,11 @@ class SetupListView(SimpleView):
     def get_extra_context(self, **kwargs):
         return {
             'no_results_icon': icon_setup,
-            'no_results_label': _('No setup options available.'),
             'no_results_text': _(
                 'No results here means that don\'t have the required '
                 'permissions to perform administrative task.'
             ),
+            'no_results_title': _('No setup options available.'),
             'resolved_links': menu_setup.resolve(
                 request=self.request, sort_results=True
             ),

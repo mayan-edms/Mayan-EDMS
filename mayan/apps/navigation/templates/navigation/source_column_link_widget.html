@@ -1,1 +1,1 @@
-<a href="{{ column.absolute_url }}">{{ value }}</a>
+{% if column.absolute_url %}<a href="{{ column.absolute_url }}">{{ value }}</a>{% endif %}

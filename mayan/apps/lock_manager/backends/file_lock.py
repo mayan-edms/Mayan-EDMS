@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import hashlib
 import logging
 import json
@@ -20,14 +18,14 @@ from ..settings import setting_default_lock_timeout
 from .base import LockingBackend
 
 lock = threading.Lock()
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 lock_file = os.path.join(
     setting_temporary_directory.value, hashlib.sha256(
-        force_bytes(settings.SECRET_KEY)
+        force_bytes(s=settings.SECRET_KEY)
     ).hexdigest()
 )
-open(lock_file, 'a').close()
+open(file=lock_file, mode='a').close()
 logger.debug('lock_file: %s', lock_file)
 
 
@@ -36,7 +34,7 @@ class FileLock(LockingBackend):
 
     @classmethod
     def acquire_lock(cls, name, timeout=None):
-        super(FileLock, cls).acquire_lock(name=name, timeout=timeout)
+        super().acquire_lock(name=name, timeout=timeout)
         instance = FileLock(
             name=name, timeout=timeout or setting_default_lock_timeout.value
         )
@@ -44,9 +42,9 @@ class FileLock(LockingBackend):
 
     @classmethod
     def purge_locks(cls):
-        super(FileLock, cls).purge_locks()
+        super().purge_locks()
         lock.acquire()
-        with open(cls.lock_file, 'r+') as file_object:
+        with open(file=cls.lock_file, mode='r+') as file_object:
             locks.lock(f=file_object, flags=locks.LOCK_EX)
             file_object.seek(0)
             file_object.truncate()
@@ -69,16 +67,16 @@ class FileLock(LockingBackend):
     def __init__(self, name, timeout=None):
         self.name = name
         self.timeout = timeout or setting_default_lock_timeout.value
-        self.uuid = force_text(uuid.uuid4())
+        self.uuid = force_text(s=uuid.uuid4())
 
         lock.acquire()
-        with open(self.__class__.lock_file, 'r+') as file_object:
+        with open(file=self.__class__.lock_file, mode='r+') as file_object:
             locks.lock(f=file_object, flags=locks.LOCK_EX)
 
             data = file_object.read()
 
             if data:
-                file_locks = json.loads(data)
+                file_locks = json.loads(s=data)
             else:
                 file_locks = {}
 
@@ -95,17 +93,17 @@ class FileLock(LockingBackend):
 
             file_object.seek(0)
             file_object.truncate()
-            file_object.write(json.dumps(file_locks))
+            file_object.write(json.dumps(obj=file_locks))
             lock.release()
 
     def release(self):
-        super(FileLock, self).release()
+        super().release()
 
         lock.acquire()
-        with open(self.__class__.lock_file, 'r+') as file_object:
+        with open(file=self.__class__.lock_file, mode='r+') as file_object:
             locks.lock(f=file_object, flags=locks.LOCK_EX)
             try:
-                file_locks = json.loads(file_object.read())
+                file_locks = json.loads(s=file_object.read())
             except EOFError:
                 file_locks = {}
 
@@ -121,5 +119,5 @@ class FileLock(LockingBackend):
 
             file_object.seek(0)
             file_object.truncate()
-            file_object.write(json.dumps(file_locks))
+            file_object.write(json.dumps(obj=file_locks))
             lock.release()

@@ -1,11 +1,9 @@
-from __future__ import unicode_literals
-
 from django.utils.encoding import force_bytes, force_text
 
-from .literals import TEST_EMAIL_BASE64_FILENAME
+from .literals import TEST_EMAIL_BASE64_FILENAME, TEST_STAGING_PREVIEW_WIDTH
 
 
-class MockIMAPMessage(object):
+class MockIMAPMessage:
     def __init__(self, uid):
         self.flags = []
         self.mailbox = None
@@ -34,7 +32,7 @@ class MockIMAPMessage(object):
         return list(self.mailbox.messages.values()).index(self)
 
 
-class MockIMAPMailbox(object):
+class MockIMAPMailbox:
     messages = {}
 
     def __init__(self, name='INBOX'):
@@ -57,7 +55,7 @@ class MockIMAPMailbox(object):
         self.messages[uid].mailbox = self
 
 
-class MockIMAPServer(object):
+class MockIMAPServer:
     def __init__(self):
         self.mailboxes = {
             'INBOX': MockIMAPMailbox(name='INBOX')
@@ -78,7 +76,7 @@ class MockIMAPServer(object):
                 flag_modified.append(message)
 
             message_number = message.get_number()
-            message_numbers.append(force_text(message_number))
+            message_numbers.append(force_text(s=message_number))
             uid = message.uid
             uids.append(uid)
             body = TEST_EMAIL_BASE64_FILENAME
@@ -109,9 +107,7 @@ class MockIMAPServer(object):
         for message in self.mailbox_selected.get_messages():
             if '\\Deleted' in message.flags:
                 result.append(
-                    force_text(
-                        message.get_number()
-                    )
+                    force_text(s=message.get_number())
                 )
                 message.delete()
 
@@ -153,7 +149,7 @@ class MockIMAPServer(object):
 
         message_sequences = []
         for message in results:
-            message_sequences.append(force_text(message.get_number()))
+            message_sequences.append(force_text(s=message.get_number()))
 
         return ('OK', ' '.join(message_sequences))
 
@@ -218,7 +214,7 @@ class MockIMAPServer(object):
             return ('OK', [' '.join(message_sequences)])
 
 
-class MockPOP3Mailbox(object):
+class MockPOP3Mailbox:
     """RFC 1725"""
     messages = {
         1: [TEST_EMAIL_BASE64_FILENAME]
@@ -229,7 +225,7 @@ class MockPOP3Mailbox(object):
 
     def getwelcome(self):
         return force_bytes(
-            '+OK server ready for requests from 127.0.0.0 xxxxxxxxxxxxxxxxx'
+            s='+OK server ready for requests from 127.0.0.0 xxxxxxxxxxxxxxxxx'
         )
 
     def list(self, which=None):
@@ -254,7 +250,7 @@ class MockPOP3Mailbox(object):
 
             messages_total_size = messages_total_size + message_size
             message_list.append(
-                force_bytes('{} {}'.format(message_number, message_size))
+                force_bytes(s='{} {}'.format(message_number, message_size))
             )
 
             message_number = message_number + 1
@@ -266,17 +262,17 @@ class MockPOP3Mailbox(object):
 
         return (
             force_bytes(
-                '+OK {} messages ({} bytes)'.format(
+                s='+OK {} messages ({} bytes)'.format(
                     len(self.messages), messages_total_size
                 )
             ), message_list, result_size
         )
 
     def user(self, user):
-        return force_bytes('+OK send PASS')
+        return force_bytes(s='+OK send PASS')
 
     def pass_(self, pswd):
-        return force_bytes('+OK Welcome.')
+        return force_bytes(s='+OK Welcome.')
 
     def quit(self):
         return
@@ -285,5 +281,8 @@ class MockPOP3Mailbox(object):
         return (None, self.messages[which], None)
 
 
-class MockStagingFolder(object):
+class MockStagingFolder:
     """Mock of a StagingFolder model"""
+    pk = 1
+    preview_height = None
+    preview_width = TEST_STAGING_PREVIEW_WIDTH

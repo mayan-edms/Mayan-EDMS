@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 
@@ -15,13 +13,17 @@ from .permissions import permission_tag_attach
 
 class TagSerializer(serializers.HyperlinkedModelSerializer):
     documents_url = serializers.HyperlinkedIdentityField(
+        lookup_url_kwarg='tag_id',
         view_name='rest_api:tag-document-list'
     )
     documents_count = serializers.SerializerMethodField()
 
     class Meta:
         extra_kwargs = {
-            'url': {'view_name': 'rest_api:tag-detail'},
+            'url': {
+                'lookup_url_kwarg': 'tag_id',
+                'view_name': 'rest_api:tag-detail'
+            },
         }
         fields = (
             'color', 'documents_count', 'documents_url', 'id', 'label', 'url'
@@ -47,14 +49,16 @@ class WritableTagSerializer(serializers.ModelSerializer):
         model = Tag
 
     def _add_documents(self, documents_pk_list, instance):
-        instance.documents.add(
-            *Document.objects.filter(pk__in=documents_pk_list.split(','))
-        )
+        for document in Document.objects.filter(pk__in=documents_pk_list.split(',')):
+            instance.attach_to(
+                document=document,
+                user=self.context['request'].user
+            )
 
     def create(self, validated_data):
         documents_pk_list = validated_data.pop('documents_pk_list', '')
 
-        instance = super(WritableTagSerializer, self).create(validated_data)
+        instance = super().create(validated_data)
 
         if documents_pk_list:
             self._add_documents(
@@ -66,7 +70,7 @@ class WritableTagSerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         documents_pk_list = validated_data.pop('documents_pk_list', '')
 
-        instance = super(WritableTagSerializer, self).update(
+        instance = super().update(
             instance, validated_data
         )
 
@@ -94,9 +98,10 @@ class DocumentTagSerializer(TagSerializer):
 
     def get_document_tag_url(self, instance):
         return reverse(
-            viewname='rest_api:document-tag-detail', args=(
-                self.context['document'].pk, instance.pk
-            ), request=self.context['request'], format=self.context['format']
+            viewname='rest_api:document-tag-detail', kwargs={
+                'document_id': self.context['document'].pk,
+                'tag_id': instance.pk
+            }, request=self.context['request'], format=self.context['format']
         )
 
 
@@ -112,6 +117,9 @@ class NewDocumentTagSerializer(serializers.Serializer):
         )
         tag = get_object_or_404(klass=queryset, pk=validated_data['tag_pk'])
 
-        tag.documents.add(validated_data['document'])
+        tag.attach_to(
+            document=validated_data['document'],
+            user=self.context['request'].user
+        )
 
         return {'tag_pk': tag.pk}

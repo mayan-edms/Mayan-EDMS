@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Atdhe Tabaku <Atdhe617@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 01:37-0400\n"
-"PO-Revision-Date: 2020-02-21 05:39+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-09-27 08:36+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (http://www.transifex.com/rosarior/mayan-edms/language/bs/)\n"
 "MIME-Version: 1.0\n"
@@ -18,93 +19,217 @@ msgstr ""
 "Language: bs\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:11 settings.py:9
+#: apps.py:59 events.py:5 permissions.py:5 settings.py:7
 msgid "Appearance"
 msgstr "Izgled"
 
-#: dependencies.py:10
+#: dependencies.py:8
 msgid "Lato font"
 msgstr ""
 
-#: dependencies.py:14
+#: dependencies.py:12
 msgid "Bootstrap"
 msgstr "Bootstrap"
 
-#: dependencies.py:18
+#: dependencies.py:16
 msgid "Bootswatch"
 msgstr ""
 
-#: dependencies.py:32
+#: dependencies.py:30
 msgid "Fancybox"
 msgstr ""
 
-#: dependencies.py:36
+#: dependencies.py:34
 msgid "FontAwesome"
 msgstr ""
 
-#: dependencies.py:40
+#: dependencies.py:38
 msgid "jQuery"
 msgstr ""
 
-#: dependencies.py:43
+#: dependencies.py:41
 msgid "JQuery Form"
 msgstr ""
 
-#: dependencies.py:47
+#: dependencies.py:45
 msgid "jQuery Lazy Load"
 msgstr ""
 
-#: dependencies.py:51
+#: dependencies.py:49
 msgid "JQuery Match Height"
 msgstr ""
 
-#: dependencies.py:55
+#: dependencies.py:53
 msgid "Select 2"
 msgstr ""
 
-#: dependencies.py:59
+#: dependencies.py:57
 msgid "Toastr"
 msgstr ""
 
-#: dependencies.py:62
+#: dependencies.py:60
 msgid "URI.js"
 msgstr ""
 
-#: settings.py:14
+#: events.py:8
+msgid "Theme created"
+msgstr ""
+
+#: events.py:11
+msgid "Theme edited"
+msgstr ""
+
+#: links.py:15
+msgid "Theme settings"
+msgstr ""
+
+#: links.py:20
+msgid "Edit theme settings"
+msgstr ""
+
+#: links.py:27 views.py:47
+msgid "Create new theme"
+msgstr ""
+
+#: links.py:33
+msgid "Delete"
+msgstr "Obriši"
+
+#: links.py:39
+msgid "Edit"
+msgstr "Urediti"
+
+#: links.py:43 links.py:47 models.py:25 views.py:111
+msgid "Themes"
+msgstr ""
+
+#: models.py:12
+msgid "A short text describing the theme."
+msgstr ""
+
+#: models.py:13
+msgid "Label"
+msgstr "Labela"
+
+#: models.py:17
+msgid ""
+"The CSS stylesheet to change the appearance of the different user interface "
+"elements."
+msgstr ""
+
+#: models.py:19
+msgid "Stylesheet"
+msgstr ""
+
+#: models.py:24 models.py:60
+msgid "Theme"
+msgstr ""
+
+#: models.py:56
+msgid "User"
+msgstr "Korisnik"
+
+#: models.py:64
+msgid "User theme setting"
+msgstr ""
+
+#: models.py:65
+msgid "User theme settings"
+msgstr ""
+
+#: permissions.py:8
+msgid "Create new themes"
+msgstr ""
+
+#: permissions.py:11
+msgid "Delete themes"
+msgstr ""
+
+#: permissions.py:14
+msgid "Edit themes"
+msgstr ""
+
+#: permissions.py:17
+msgid "View existing themes"
+msgstr ""
+
+#: settings.py:12
 msgid "Maximum number of characters that will be displayed as the view title."
 msgstr ""
 
-#: settings.py:21
+#: settings.py:19
 msgid ""
 "Position where the system message will be displayed. Options are: top-left, "
 "top-center, top-right, bottom-left, bottom-center, bottom-right."
 msgstr ""
 
-#: templates/403.html:5 templates/403.html:9
-msgid "Insufficient permissions"
-msgstr "Nedovoljno dozvola"
+#: templates/403.html:5 templates/403.html:30
+msgid "Insufficient permission"
+msgstr ""
 
-#: templates/403.html:11
+#: templates/403.html:32
 msgid "You don't have enough permissions for this operation."
 msgstr "Nemate odgovarajuca prava za ovu operaciju."
 
-#: templates/404.html:5 templates/404.html:9
+#: templates/404.html:5 templates/404.html:30
 msgid "Page not found"
 msgstr "Stranica nije pronađena"
 
-#: templates/404.html:11
-msgid "Sorry, but the requested page could not be found."
-msgstr "Žao nam je, ali tražena stranica ne može biti pronađena."
+#: templates/404.html:32
+msgid "The requested page could not be found."
+msgstr ""
 
-#: templates/500.html:5 templates/500.html:9 templates/appearance/root.html:56
+#: templates/404.html:40
+msgid "Possible reasons"
+msgstr ""
+
+#: templates/404.html:44
+msgid "The location of the item is incorrect."
+msgstr ""
+
+#: templates/404.html:45
+msgid "The location is correct, but the item no longer exists."
+msgstr ""
+
+#: templates/404.html:46
+msgid ""
+"The location is be correct, but your account does not have the required "
+"permission to access it."
+msgstr ""
+
+#: templates/500.html:5 templates/500.html:30
+#: templates/appearance/root.html:58
 msgid "Server error"
 msgstr "Greška u serveru"
 
-#: templates/500.html:11
-msgid ""
-"There's been an error. It's been reported to the site administrators via "
-"e-mail and should be fixed shortly. Thanks for your patience."
-msgstr "Došlo je do greške. Prijavljeno je administratoru sajta putem e-pošte i trebalo bi da se popravi uskoro. Hvala na strpljenju."
+#: templates/500.html:32
+msgid "There's been an unexpected error."
+msgstr ""
+
+#: templates/500.html:40
+msgid "What to do next?"
+msgstr ""
+
+#: templates/500.html:44
+msgid "Refresh the page."
+msgstr ""
+
+#: templates/500.html:45
+msgid "Wait a bit. The system might be overloaded."
+msgstr ""
+
+#: templates/500.html:46
+msgid "Contact your system administrator."
+msgstr ""
+
+#: templates/500.html:47
+msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
+msgstr ""
+
+#: templates/500.html:48
+#, python-format
+msgid "Open a ticket using the <a href=\"%(issue_url)s\">issue tracker</a>."
+msgstr ""
 
 #: templates/appearance/about.html:10
 msgid "About"
@@ -187,26 +312,38 @@ msgid ""
 "            "
 msgstr ""
 
-#: templates/appearance/base.html:35 templates/appearance/base.html:59
+#: templates/appearance/base.html:43 templates/appearance/base.html:67
 msgid "Warning"
 msgstr "Upozorenje"
 
-#: templates/appearance/base.html:49
+#: templates/appearance/base.html:57
 msgid "Click here to fix this."
 msgstr ""
 
-#: templates/appearance/base.html:59
+#: templates/appearance/base.html:67
 msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."
 msgstr ""
 
-#: templates/appearance/base.html:72
+#: templates/appearance/base.html:75
+#, python-format
+msgid ""
+"\n"
+"                                        Impersonating user \"%(user)s\".\n"
+"                                    "
+msgstr ""
+
+#: templates/appearance/base.html:78
+msgid "Click here when finished"
+msgstr ""
+
+#: templates/appearance/base.html:92
 #: templates/appearance/generic_list_items_subtemplate.html:66
 msgid "Actions"
 msgstr "Akcije"
 
-#: templates/appearance/base.html:74
+#: templates/appearance/base.html:94
 #: templates/appearance/generic_list_items_subtemplate.html:68
 #: templates/appearance/list_toolbar.html:67
 msgid "Toggle Dropdown"
@@ -281,8 +418,12 @@ msgstr "Total (%(start)s - %(end)s od %(total)s) (Strana%(page_number)s od %(tot
 msgid "Total: %(total)s"
 msgstr "Total: %(total)s"
 
-#: templates/appearance/list_toolbar.html:16
+#: templates/appearance/list_toolbar.html:13
 msgid "Select/Deselect all"
+msgstr ""
+
+#: templates/appearance/list_toolbar.html:17
+msgid "Toggle list display mode"
 msgstr ""
 
 #: templates/appearance/list_toolbar.html:60
@@ -302,18 +443,45 @@ msgstr "Prebacite navigaciju"
 msgid "No results"
 msgstr "Nema rezultata"
 
-#: templates/appearance/root.html:61
+#: templates/appearance/root.html:63
 msgid "Close"
 msgstr "Zatvori"
 
-#: templates/appearance/root.html:71
+#: templates/appearance/root.html:73
 msgid "Server communication error"
 msgstr "Problem u komunikaciji sa serverom"
 
-#: templates/appearance/root.html:73
+#: templates/appearance/root.html:75
 msgid "Check you network connection and try again in a few moments."
 msgstr "Proverite mrežnu vezu i pokušajte ponovo za nekoliko trenutaka."
 
-#: templatetags/appearance_tags.py:17
+#: templatetags/appearance_tags.py:44
 msgid "None"
 msgstr "Nijedno"
+
+#: views.py:29
+msgid "Current user theme settings details"
+msgstr ""
+
+#: views.py:35
+msgid "Edit current user theme settings details"
+msgstr ""
+
+#: views.py:69
+#, python-format
+msgid "Delete theme: %s"
+msgstr ""
+
+#: views.py:85
+#, python-format
+msgid "Edit theme: %s"
+msgstr ""
+
+#: views.py:105
+msgid ""
+"Themes allow changing the visual appearance without requiring code changes."
+msgstr ""
+
+#: views.py:109
+msgid "There are no themes"
+msgstr ""

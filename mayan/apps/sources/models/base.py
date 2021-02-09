@@ -1,30 +1,26 @@
-from __future__ import unicode_literals
-
 import json
 import logging
 
 from django.db import models, transaction
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from django_celery_beat.models import PeriodicTask, IntervalSchedule
 from model_utils.managers import InheritanceManager
 
-from mayan.apps.common.compressed_files import Archive
-from mayan.apps.common.exceptions import NoMIMETypeMatch
 from mayan.apps.converter.layers import layer_saved_transformations
-from mayan.apps.documents.models import Document, DocumentType
-from mayan.apps.documents.settings import setting_language
+from mayan.apps.documents.models import DocumentType
+from mayan.apps.storage.compressed_files import Archive
+from mayan.apps.storage.exceptions import NoMIMETypeMatch
 
+from ..classes import DocumentCreateWizardStep
 from ..literals import (
     DEFAULT_INTERVAL, SOURCE_CHOICES, SOURCE_UNCOMPRESS_CHOICES
 )
-from ..wizards import WizardStep
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
-@python_2_unicode_compatible
 class Source(models.Model):
     label = models.CharField(
         db_index=True, help_text=_('A short text to describe this source.'),
@@ -44,7 +40,7 @@ class Source(models.Model):
 
     @classmethod
     def class_fullname(cls):
-        return force_text(dict(SOURCE_CHOICES).get(cls.source_type))
+        return force_text(s=dict(SOURCE_CHOICES).get(cls.source_type))
 
     def clean_up_upload_file(self, upload_file_object):
         pass
@@ -76,7 +72,7 @@ class Source(models.Model):
                 for compressed_file_child in compressed_file.members():
                     with compressed_file.open_member(filename=compressed_file_child) as file_object:
                         kwargs.update(
-                            {'label': force_text(compressed_file_child)}
+                            {'label': force_text(s=compressed_file_child)}
                         )
                         documents.append(
                             self.upload_document(
@@ -108,47 +104,33 @@ class Source(models.Model):
         """
         Upload an individual document
         """
+        document = None
         try:
-            with transaction.atomic():
-                document = Document(
-                    description=description or '', document_type=document_type,
-                    label=label or file_object.name,
-                    language=language or setting_language.value
-                )
-                document.save(_user=user)
+            document, document_file = document_type.new_document(
+                file_object=file_object, label=label,
+                description=description, language=language,
+                _user=user
+            )
         except Exception as exception:
             logger.critical(
                 'Unexpected exception while trying to create new document '
                 '"%s" from source "%s"; %s',
                 label or file_object.name, self, exception
             )
+            if document:
+                document.delete(to_trash=False)
             raise
         else:
-            try:
-                document_version = document.new_version(
-                    file_object=file_object, _user=user,
-                )
+            if user:
+                document.add_as_recent_document_for_user(user=user)
 
-                if user:
-                    document.add_as_recent_document_for_user(user=user)
-
-                layer_saved_transformations.copy_transformations(
-                    source=self, targets=document_version.pages.all()
-                )
-
-            except Exception as exception:
-                logger.critical(
-                    'Unexpected exception while trying to create version for '
-                    'new document "%s" from source "%s"; %s',
-                    label or file_object.name, self, exception, exc_info=True
-                )
-                document.delete(to_trash=False)
-                raise
-            else:
-                WizardStep.post_upload_process(
-                    document=document, querystring=querystring
-                )
-                return document
+            layer_saved_transformations.copy_transformations(
+                source=self, targets=document_file.pages.all()
+            )
+            DocumentCreateWizardStep.post_upload_process(
+                document=document, querystring=querystring
+            )
+            return document
 
 
 class InteractiveSource(Source):
@@ -215,16 +197,29 @@ class IntervalBaseModel(OutOfProcessSource):
     def _get_periodic_task_name(self, pk=None):
         return 'check_interval_source-%i' % (pk or self.pk)
 
+    def check_source(self, test=False):
+        try:
+            self._check_source(test=test)
+        except Exception as exception:
+            self.error_log.create(
+                text='{}; {}'.format(
+                    exception.__class__.__name__, exception
+                )
+            )
+            raise
+        else:
+            self.error_log.all().delete()
+
     def delete(self, *args, **kwargs):
         pk = self.pk
         with transaction.atomic():
-            super(IntervalBaseModel, self).delete(*args, **kwargs)
+            super().delete(*args, **kwargs)
             self._delete_periodic_task(pk=pk)
 
     def save(self, *args, **kwargs):
         new_source = not self.pk
         with transaction.atomic():
-            super(IntervalBaseModel, self).save(*args, **kwargs)
+            super().save(*args, **kwargs)
 
             if not new_source:
                 self._delete_periodic_task()
@@ -237,24 +232,5 @@ class IntervalBaseModel(OutOfProcessSource):
                 name=self._get_periodic_task_name(),
                 interval=interval_instance,
                 task='mayan.apps.sources.tasks.task_check_interval_source',
-                kwargs=json.dumps({'source_id': self.pk})
+                kwargs=json.dumps(obj={'source_id': self.pk})
             )
-
-
-class SourceLog(models.Model):
-    source = models.ForeignKey(
-        on_delete=models.CASCADE, related_name='logs', to=Source,
-        verbose_name=_('Source')
-    )
-    datetime = models.DateTimeField(
-        auto_now_add=True, editable=False, verbose_name=_('Date time')
-    )
-    message = models.TextField(
-        blank=True, editable=False, verbose_name=_('Message')
-    )
-
-    class Meta:
-        get_latest_by = 'datetime'
-        ordering = ('-datetime',)
-        verbose_name = _('Log entry')
-        verbose_name_plural = _('Log entries')

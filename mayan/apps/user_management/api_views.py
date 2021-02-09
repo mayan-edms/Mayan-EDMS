@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from django.shortcuts import get_object_or_404
@@ -48,6 +46,7 @@ class APIGroupView(generics.RetrieveUpdateDestroyAPIView):
     patch: Partially edit the selected group.
     put: Edit the selected group.
     """
+    lookup_url_kwarg = 'group_id'
     mayan_object_permissions = {
         'GET': (permission_group_view,),
         'PUT': (permission_group_edit,),
@@ -76,6 +75,7 @@ class APIUserView(generics.RetrieveUpdateDestroyAPIView):
     patch: Partially edit the selected user.
     put: Edit the selected user.
     """
+    lookup_url_kwarg = 'user_id'
     mayan_object_permissions = {
         'GET': (permission_user_view,),
         'PUT': (permission_user_edit,),
@@ -95,7 +95,7 @@ class APIUserGroupList(generics.ListCreateAPIView):
         if not self.request:
             return None
 
-        return super(APIUserGroupList, self).get_serializer(*args, **kwargs)
+        return super().get_serializer(*args, **kwargs)
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -107,7 +107,7 @@ class APIUserGroupList(generics.ListCreateAPIView):
         """
         Extra context provided to the serializer class.
         """
-        context = super(APIUserGroupList, self).get_serializer_context()
+        context = super().get_serializer_context()
         if self.kwargs:
             context.update(
                 {
@@ -131,7 +131,9 @@ class APIUserGroupList(generics.ListCreateAPIView):
         else:
             permission = permission_user_edit
 
-        user = get_object_or_404(klass=get_user_model(), pk=self.kwargs['pk'])
+        user = get_object_or_404(
+            klass=get_user_model(), pk=self.kwargs['user_id']
+        )
 
         AccessControlList.objects.check_access(
             obj=user, permissions=(permission,), user=self.request.user

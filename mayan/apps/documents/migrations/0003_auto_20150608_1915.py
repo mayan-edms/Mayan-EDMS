@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 import uuid
 
 from django.db import models, migrations
@@ -8,7 +6,6 @@ from django.utils.encoding import force_text
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('documents', '0002_auto_20150608_1902'),
     ]
@@ -18,7 +15,7 @@ class Migration(migrations.Migration):
             model_name='document',
             name='uuid',
             field=models.CharField(
-                default=force_text(uuid.uuid4()), max_length=48,
+                default=force_text(s=uuid.uuid4()), max_length=48,
                 editable=False
             ),
             preserve_default=True,
@@ -27,7 +24,7 @@ class Migration(migrations.Migration):
             model_name='documentversion',
             name='file',
             field=models.FileField(
-                upload_to=force_text(uuid.uuid4()),
+                upload_to=force_text(s=uuid.uuid4()),
                 storage=FileSystemStorage(),
                 verbose_name='File'
             ),

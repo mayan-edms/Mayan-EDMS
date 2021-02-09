@@ -1,5 +1,3 @@
-from __future__ import absolute_import, unicode_literals
-
 import io
 import logging
 import shutil
@@ -8,15 +6,14 @@ from django.db import models
 
 from mayan.apps.storage.utils import NamedTemporaryFile
 
-from .classes import KeyStub, SignatureVerification
+from .classes import GPGBackend, KeyStub, SignatureVerification
 from .exceptions import (
     DecryptionError, KeyDoesNotExist, KeyFetchingError, VerificationError
 )
 from .literals import KEY_TYPE_PUBLIC, KEY_TYPE_SECRET
-from .runtime import gpg_backend
 from .settings import setting_keyserver
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(name=__name__)
 
 
 class KeyManager(models.Manager):
@@ -45,12 +42,14 @@ class KeyManager(models.Manager):
 
         return keys
 
-    def decrypt_file(self, file_object, all_keys=False, key_fingerprint=None, key_id=None):
+    def decrypt_file(
+        self, file_object, all_keys=False, key_fingerprint=None, key_id=None
+    ):
         keys = self._preload_keys(
             all_keys=all_keys, key_fingerprint=key_fingerprint, key_id=key_id
         )
 
-        decrypt_result = gpg_backend.decrypt_file(
+        decrypt_result = GPGBackend.get_instance().decrypt_file(
             file_object=file_object, keys=keys
         )
 
@@ -70,7 +69,7 @@ class KeyManager(models.Manager):
         return self.filter(key_type=KEY_TYPE_PUBLIC)
 
     def receive_key(self, key_id):
-        key_data = gpg_backend.recv_keys(
+        key_data = GPGBackend.get_instance().recv_keys(
             keyserver=setting_keyserver.value, key_id=key_id
         )
 
@@ -80,7 +79,7 @@ class KeyManager(models.Manager):
             return self.create(key_data=key_data)
 
     def search(self, query):
-        key_data_list = gpg_backend.search_keys(
+        key_data_list = GPGBackend.get_instance().search_keys(
             keyserver=setting_keyserver.value, query=query
         )
 
@@ -90,7 +89,10 @@ class KeyManager(models.Manager):
 
         return result
 
-    def verify_file(self, file_object, signature_file=None, all_keys=False, key_fingerprint=None, key_id=None):
+    def verify_file(
+        self, file_object, signature_file=None, all_keys=False,
+        key_fingerprint=None, key_id=None
+    ):
         keys = self._preload_keys(
             all_keys=all_keys, key_fingerprint=key_fingerprint, key_id=key_id
         )
@@ -107,14 +109,14 @@ class KeyManager(models.Manager):
             signature_file_buffer.write(signature_file.read())
             signature_file_buffer.seek(0)
             signature_file.seek(0)
-            verify_result = gpg_backend.verify_file(
+            verify_result = GPGBackend.get_instance().verify_file(
                 file_object=signature_file_buffer,
                 data_filename=temporary_filename, keys=keys
             )
             signature_file_buffer.close()
             temporary_file_object.close()
         else:
-            verify_result = gpg_backend.verify_file(
+            verify_result = GPGBackend.get_instance().verify_file(
                 file_object=file_object, keys=keys
             )
 
@@ -128,7 +130,10 @@ class KeyManager(models.Manager):
             # Signed but key not present, retry with key fetch
             logger.debug(msg='no public key')
             file_object.seek(0)
-            return self.verify_file(file_object=file_object, signature_file=signature_file, key_id=verify_result.key_id)
+            return self.verify_file(
+                file_object=file_object, signature_file=signature_file,
+                key_id=verify_result.key_id
+            )
         elif verify_result.key_id:
             # Signed, retried and key still not found
             logger.debug(msg='signed, retried and key still not found')

@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.conf import settings
 from django.conf.urls import include, url
 
@@ -23,4 +21,14 @@ if 'debug_toolbar' in settings.INSTALLED_APPS:
     else:
         urlpatterns += [  # NOQA
             url(regex=r'^__debug__/', view=include(debug_toolbar.urls))
+        ]
+
+if 'silk' in settings.INSTALLED_APPS:
+    try:
+        import silk
+    except ImportError:
+        pass
+    else:
+        urlpatterns += [  # NOQA
+            url(regex=r'^silk/', view=include('silk.urls', namespace='silk'))
         ]

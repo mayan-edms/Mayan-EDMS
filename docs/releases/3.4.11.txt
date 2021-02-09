@@ -1,0 +1,234 @@
+Version 3.4.11
+==============
+
+Released: July 18, 2020
+
+Changes
+-------
+
+
+Cabinets
+^^^^^^^^
+
+The CSS for cabinet names in document cards was updated to wrap around
+long cabinet names that would not normally fit in the card.
+
+
+Mirroring
+^^^^^^^^^
+
+The mirroring test code was updated to not assume that a local filesystem
+was being used. Documents files are now deleted in the test using the document
+storage driver entry from the database.
+
+
+Translations
+^^^^^^^^^^^^
+
+Include non Mayan app translations when switching locales. This change
+allows password forms that contain translated texts processed outside Mayan,
+to properly switch language when the user locale is updated.
+
+
+Workflows
+^^^^^^^^^
+
+A fix was added to avoid document references in workflows that use a
+cascade of state actions, to become stale as each state action modifies the
+document.
+
+
+Removals
+--------
+
+- None
+
+
+Upgrading process
+-----------------
+
+#. Stop supervisord::
+
+    sudo systemctl stop supervisor
+
+
+Upgrading from Mayan EDMS 3.2.x or earlier
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. Update the Redis configuration:
+
+   Configure Redis to discard data when it runs out of memory, not save its
+   database, and only keep 2 database:
+
+   .. code-block:: bash
+
+       echo "maxmemory-policy allkeys-lru" | sudo tee -a /etc/redis/redis.conf
+       echo "save \"\"" | sudo tee -a /etc/redis/redis.conf
+       echo "databases 2" | sudo tee -a /etc/redis/redis.conf
+       echo "requirepass |DEFAULT_REDIS_PASSWORD|" | sudo tee -a /etc/redis/redis.conf
+       sudo systemctl restart redis
+
+
+#. Install the Python 3 development OS package:
+
+   .. code-block:: bash
+
+    sudo apt-get install python3-dev
+
+
+#. Update the virtualenv to use Python 3:
+
+   .. code-block:: bash
+
+    sudo -u |DEFAULT_OS_USERNAME| virtualenv --clear /opt/mayan-edms -p /usr/bin/python3
+
+
+#. Create a home directory for the Mayan EDMS system user:
+
+   .. code-block:: bash
+
+    mkdir /home/mayan
+
+
+#. Grant ownership to the Mayan EDMS system user:
+
+   .. code-block:: bash
+
+    chown mayan:mayan /home/mayan
+
+#. Reinstall the Python client for PostgreSQL and Redis:
+
+   .. code-block:: bash
+
+       sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install psycopg2==|PYTHON_PSYCOPG2_VERSION| redis==|PYTHON_REDIS_VERSION|
+
+   .. note::
+
+       Platforms with the ARM CPU might also need additional requirements:
+
+       .. code-block:: bash
+
+           sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install psutil==|PYTHON_PSUTIL_VERSION|
+
+
+#. Reinstall the Python client for RabbitMQ if you are using RabbitMQ as a broker:
+
+   .. code-block:: bash
+
+       sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install amqp==|PYTHON_AMQP_VERSION|
+
+
+Upgrading from Mayan EDMS 3.3.x
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. Upgrade to the latest pip version:
+
+   .. code-block:: bash
+
+       sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install -U pip
+
+
+#. Update the Redis configuration to enable password protection:
+
+   .. code-block:: bash
+
+       echo "requirepass mayanredispassword" | sudo tee -a /etc/redis/redis.conf
+       sudo systemctl restart redis
+
+
+#. Remove deprecated requirements:
+
+   .. code-block:: bash
+
+    sudo -u |DEFAULT_OS_USERNAME| curl |SOURCE_CODE_REPOSITORY|raw/master/removals.txt -o /tmp/removals.txt \
+    && sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| uninstall -y -r /tmp/removals.txt
+
+
+#. Update the Mayan EDMS Python package:
+
+   .. code-block:: bash
+
+    sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install mayan-edms==3.4.11
+
+   the requirements will also be updated automatically.
+
+
+#. Make a backup of your supervisord file:
+
+   .. code-block:: bash
+
+       sudo cp |MAYAN_SUPERVISOR_CONF| |MAYAN_SUPERVISOR_CONF|.bck
+
+
+#. Update the supervisord configuration file. Replace the environment
+   variables values show here with your respective settings. This step will refresh
+   the supervisord configuration file with the new queues and the latest
+   recommended layout:
+
+   .. code-block:: bash
+
+       sudo -u |DEFAULT_OS_USERNAME| MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=|DEFAULT_DATABASE_NAME| \
+       MAYAN_DATABASE_PASSWORD=|DEFAULT_DATABASE_PASSWORD| MAYAN_DATABASE_USER=|DEFAULT_DATABASE_USER| \
+       MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| platformtemplate supervisord | sudo sh -c "cat > |MAYAN_SUPERVISOR_CONF|"
+
+   or:
+
+   .. code-block:: bash
+
+       sudo -u |DEFAULT_OS_USERNAME| MAYAN_DATABASES=\"{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'|DEFAULT_DATABASE_NAME|','PASSWORD':'|DEFAULT_DATABASE_PASSWORD|','USER':'|DEFAULT_DATABASE_USER|','HOST':'127.0.0.1'}}\" \
+       MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| platformtemplate supervisord | sudo sh -c "cat > |MAYAN_SUPERVISOR_CONF|"
+
+
+#. Edit the supervisord configuration file and update any setting specific to your installation:
+
+   .. code-block:: bash
+
+       sudo vi |MAYAN_SUPERVISOR_CONF|
+
+
+#. Migrate existing database schema and static media files with:
+
+   .. code-block:: bash
+
+       sudo -u |DEFAULT_OS_USERNAME| MAYAN_DATABASE_ENGINE=django.db.backends.postgresql MAYAN_DATABASE_NAME=|DEFAULT_DATABASE_NAME| \
+       MAYAN_DATABASE_PASSWORD=|DEFAULT_DATABASE_PASSWORD| MAYAN_DATABASE_USER=|DEFAULT_DATABASE_USER| \
+       MAYAN_DATABASE_HOST=127.0.0.1 MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+       |MAYAN_BIN| performupgrade
+
+   or:
+
+   .. code-block:: bash
+
+       sudo -u |DEFAULT_OS_USERNAME| MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'|DEFAULT_DATABASE_NAME|','PASSWORD':'|DEFAULT_DATABASE_PASSWORD|','USER':'|DEFAULT_DATABASE_USER|','HOST':'127.0.0.1'}}" \
+       MAYAN_MEDIA_ROOT=|MAYAN_MEDIA_ROOT| \
+      |MAYAN_BIN| performupgrade
+
+
+#. Start supervisord:
+
+   .. code-block:: bash
+
+       sudo systemctl start supervisor
+
+#. Clear the browser cache to avoid loading old web assets.
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+-----------------------------
+
+- None
+
+
+Issues closed
+-------------
+
+- :gitlab-issue:`841` Stale document model when workflow actions trigger further actions
+- :gitlab-issue:`843` Long cabinet full path overflows document card
+- :gitlab-issue:`848` Translations: imported translations from django.contrib.auth.views not displayed
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/
+

@@ -1,66 +1,68 @@
-from __future__ import absolute_import, unicode_literals
+from django.db import models
 
-from django.contrib.auth import get_user_model
-from django.contrib.contenttypes.models import ContentType
+from mayan.apps.testing.tests.base import GenericViewTestCase
+from mayan.apps.testing.tests.mixins import TestModelTestCaseMixin
 
-from mayan.apps.acls.classes import ModelPermission
+from ..classes import ModelCopy
+from ..permissions import permission_object_copy
 
-from ..models import ErrorLogEntry
-from ..permissions_runtime import permission_error_log_view
-
-from .base import GenericViewTestCase
-from .literals import TEST_ERROR_LOG_ENTRY_RESULT
+from .literals import TEST_OBJECT_LABEL
+from .mixins import CommonViewTestMixin, ObjectCopyViewTestMixin
 
 
-class CommonViewTestCase(GenericViewTestCase):
-    def _request_about_view(self):
-        return self.get(viewname='common:about_view')
-
+class CommonViewTestCase(CommonViewTestMixin, GenericViewTestCase):
     def test_about_view(self):
         response = self._request_about_view()
         self.assertContains(response=response, text='About', status_code=200)
 
-    def _create_error_log_entry(self):
-        ModelPermission.register(
-            model=get_user_model(), permissions=(permission_error_log_view,)
-        )
-        ErrorLogEntry.objects.register(model=get_user_model())
 
-        self.error_log_entry = self.test_user.error_logs.create(
-            result=TEST_ERROR_LOG_ENTRY_RESULT
-        )
+class ObjectCopyViewTestCase(
+    ObjectCopyViewTestMixin, TestModelTestCaseMixin, GenericViewTestCase
+):
+    auto_create_test_object = True
+    auto_create_test_object_fields = {
+        'label': models.CharField(max_length=32, unique=True)
+    }
+    auto_create_test_object_instance_kwargs = {
+        'label': TEST_OBJECT_LABEL
+    }
 
-    def _request_object_error_log_list(self):
-        content_type = ContentType.objects.get_for_model(model=self.test_user)
-
-        return self.get(
-            viewname='common:object_error_list', kwargs={
-                'app_label': content_type.app_label,
-                'model': content_type.model,
-                'object_id': self.test_user.pk
-            }
+    def setUp(self):
+        super().setUp()
+        ModelCopy(model=self.TestModel, register_permission=True).add_fields(
+            field_names=('label',)
         )
 
-    def test_object_error_list_view_no_permissions(self):
-        self._create_test_user()
-        self._create_error_log_entry()
+    def test_object_copy_view_no_permission(self):
+        test_object_count = self.TestModel.objects.count()
+        response = self._request_object_copy_view()
+        self.assertTrue(response.status_code, 404)
 
-        response = self._request_object_error_log_list()
-        self.assertNotContains(
-            response=response, text=TEST_ERROR_LOG_ENTRY_RESULT,
-            status_code=403
+        queryset = self.TestModel.objects.all()
+        self.assertEqual(queryset.count(), test_object_count)
+        test_object_labels = queryset.values_list('label', flat=True)
+
+        self.assertTrue(
+            TEST_OBJECT_LABEL in test_object_labels
+        )
+        self.assertFalse(
+            '{}_1'.format(TEST_OBJECT_LABEL) in test_object_labels
         )
 
-    def test_object_error_list_view_with_access(self):
-        self._create_test_user()
-        self._create_error_log_entry()
+    def test_object_copy_view_with_access(self):
+        self.grant_access(obj=self.test_object, permission=permission_object_copy)
 
-        self.grant_access(
-            obj=self.test_user, permission=permission_error_log_view
+        test_object_count = self.TestModel.objects.count()
+        response = self._request_object_copy_view()
+        self.assertTrue(response.status_code, 302)
+
+        queryset = self.TestModel.objects.all()
+        self.assertEqual(queryset.count(), test_object_count + 1)
+        test_object_labels = queryset.values_list('label', flat=True)
+
+        self.assertTrue(
+            TEST_OBJECT_LABEL in test_object_labels
         )
-
-        response = self._request_object_error_log_list()
-        self.assertContains(
-            response=response, text=TEST_ERROR_LOG_ENTRY_RESULT,
-            status_code=200
+        self.assertTrue(
+            '{}_1'.format(TEST_OBJECT_LABEL) in test_object_labels
         )

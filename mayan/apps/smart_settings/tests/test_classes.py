@@ -1,13 +1,11 @@
-from __future__ import absolute_import, unicode_literals
-
-from pathlib2 import Path
+from pathlib import Path
 
 from django.conf import settings
 from django.utils.encoding import force_text
 
-from mayan.apps.common.settings import setting_paginate_by
-from mayan.apps.common.tests.base import BaseTestCase
 from mayan.apps.storage.utils import fs_cleanup
+from mayan.apps.testing.tests.base import BaseTestCase
+from mayan.apps.views.settings import setting_paginate_by
 
 from ..classes import Setting
 
@@ -52,14 +50,14 @@ class ClassesTestCase(SmartSettingTestMixin, BaseTestCase):
 
     def test_config_backup_creation(self):
         path_config_backup = Path(settings.CONFIGURATION_LAST_GOOD_FILEPATH)
-        fs_cleanup(filename=force_text(path_config_backup))
+        fs_cleanup(filename=force_text(s=path_config_backup))
 
         Setting.save_last_known_good()
         self.assertTrue(path_config_backup.exists())
 
     def test_config_backup_creation_no_tags(self):
         path_config_backup = Path(settings.CONFIGURATION_LAST_GOOD_FILEPATH)
-        fs_cleanup(filename=force_text(path_config_backup))
+        fs_cleanup(filename=force_text(s=path_config_backup))
 
         Setting.save_last_known_good()
         self.assertTrue(path_config_backup.exists())
@@ -81,7 +79,7 @@ class ClassesTestCase(SmartSettingTestMixin, BaseTestCase):
         self.assertTrue(Setting.check_changed())
 
 
-class NamespaceMigrationTestCase(SmartSettingTestMixin, BaseTestCase):
+class SettingNamespaceMigrationTestCase(SmartSettingTestMixin, BaseTestCase):
     def test_environment_migration(self):
         self._set_environment_variable(
             name='MAYAN_{}'.format(TEST_SETTING_GLOBAL_NAME),

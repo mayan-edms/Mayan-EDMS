@@ -1,11 +1,8 @@
-from __future__ import unicode_literals
-
-from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ImproperlyConfigured
 
-from mayan.apps.common.tests.mixins import TestModelTestMixin
+from mayan.apps.testing.tests.mixins import TestModelTestCaseMixin
 from mayan.apps.permissions.tests.mixins import (
-    PermissionTestMixin, RoleTestCaseMixin, RoleTestMixin
+    RoleTestCaseMixin, RoleTestMixin
 )
 from mayan.apps.user_management.tests.mixins import UserTestCaseMixin
 
@@ -14,7 +11,7 @@ from ..models import AccessControlList
 from ..permissions import permission_acl_edit, permission_acl_view
 
 
-class ACLAPIViewTestMixin(object):
+class ACLAPIViewTestMixin:
     def _request_test_acl_create_api_view(self, extra_data=None):
         data = {'role_pk': self.test_role.pk}
 
@@ -23,7 +20,7 @@ class ACLAPIViewTestMixin(object):
 
         return self.post(
             viewname='rest_api:accesscontrollist-list',
-            kwargs=self.test_content_object_view_kwargs, data=data
+            kwargs=self.test_object_view_kwargs, data=data
         )
 
     def _request_test_acl_delete_api_view(self):
@@ -32,7 +29,7 @@ class ACLAPIViewTestMixin(object):
                 'app_label': self.test_object_content_type.app_label,
                 'model_name': self.test_object_content_type.model,
                 'object_id': self.test_object.pk,
-                'pk': self.test_acl.pk
+                'acl_id': self.test_acl.pk
             }
         )
 
@@ -42,7 +39,7 @@ class ACLAPIViewTestMixin(object):
                 'app_label': self.test_object_content_type.app_label,
                 'model_name': self.test_object_content_type.model,
                 'object_id': self.test_object.pk,
-                'pk': self.test_acl.pk
+                'acl_id': self.test_acl.pk
             }
         )
 
@@ -61,8 +58,8 @@ class ACLAPIViewTestMixin(object):
                 'app_label': self.test_object_content_type.app_label,
                 'model_name': self.test_object_content_type.model,
                 'object_id': self.test_object.pk,
-                'pk': self.test_acl.pk,
-                'permission_pk': self.test_permission.stored_permission.pk
+                'acl_id': self.test_acl.pk,
+                'permission_id': self.test_permission.stored_permission.pk
             }
         )
 
@@ -72,8 +69,8 @@ class ACLAPIViewTestMixin(object):
                 'app_label': self.test_object_content_type.app_label,
                 'model_name': self.test_object_content_type.model,
                 'object_id': self.test_object.pk,
-                'pk': self.test_acl.pk,
-                'permission_pk': self.test_acl.permissions.first().pk
+                'acl_id': self.test_acl.pk,
+                'permission_id': self.test_acl.permissions.first().pk
             }
         )
 
@@ -83,7 +80,7 @@ class ACLAPIViewTestMixin(object):
                 'app_label': self.test_object_content_type.app_label,
                 'model_name': self.test_object_content_type.model,
                 'object_id': self.test_object.pk,
-                'pk': self.test_acl.pk
+                'acl_id': self.test_acl.pk
             }
         )
 
@@ -93,14 +90,14 @@ class ACLAPIViewTestMixin(object):
                 'app_label': self.test_object_content_type.app_label,
                 'model_name': self.test_object_content_type.model,
                 'object_id': self.test_object.pk,
-                'pk': self.test_acl.pk
+                'acl_id': self.test_acl.pk
             }, data={'permission_pk': self.test_permission.pk}
         )
 
 
 class ACLTestCaseMixin(RoleTestCaseMixin, UserTestCaseMixin):
     def setUp(self):
-        super(ACLTestCaseMixin, self).setUp()
+        super().setUp()
         if hasattr(self, '_test_case_user'):
             self._test_case_role.groups.add(self._test_case_group)
 
@@ -115,38 +112,35 @@ class ACLTestCaseMixin(RoleTestCaseMixin, UserTestCaseMixin):
             obj=obj, permission=permission, role=self._test_case_role
         )
 
+    def revoke_access(self, obj, permission):
+        self._test_case_acl = AccessControlList.objects.revoke(
+            obj=obj, permission=permission, role=self._test_case_role
+        )
 
-class ACLTestMixin(PermissionTestMixin, RoleTestMixin, TestModelTestMixin):
+
+class ACLTestMixin(RoleTestMixin, TestModelTestCaseMixin):
     auto_create_test_role = True
-    auto_create_test_object = False
+    auto_create_acl_test_object = False
 
     def setUp(self):
-        super(ACLTestMixin, self).setUp()
+        super().setUp()
         if self.auto_create_test_role:
             self._create_test_role()
 
-        if self.auto_create_test_object:
-            self._setup_test_object()
+        if self.auto_create_acl_test_object:
+            self._create_acl_test_object()
 
     def _create_test_acl(self):
         self.test_acl = AccessControlList.objects.create(
             content_object=self.test_object, role=self.test_role
         )
 
-    def _inject_test_object_content_type(self):
-        self.test_object_content_type = ContentType.objects.get_for_model(
-            model=self.test_object
-        )
+    def _create_acl_test_object(
+        self, model_name=None, create_test_permission=True,
+        register_model_permissions=True
+    ):
+        self._create_test_object(create_test_permission=create_test_permission)
 
-        self.test_content_object_view_kwargs = {
-            'app_label': self.test_object_content_type.app_label,
-            'model_name': self.test_object_content_type.model,
-            'object_id': self.test_object.pk
-        }
-
-    def _setup_test_object(self, model_name=None, register_model_permissions=True):
-        self.TestModel = self._create_test_model(model_name=model_name)
-        self.test_object = self.TestModel.objects.create()
         if register_model_permissions:
             ModelPermission.register(
                 model=self.TestModel, permissions=(
@@ -154,23 +148,12 @@ class ACLTestMixin(PermissionTestMixin, RoleTestMixin, TestModelTestMixin):
                 )
             )
 
-        self._create_test_permission()
-
-        if register_model_permissions:
-            ModelPermission.register(
-                model=self.TestModel, permissions=(
-                    self.test_permission,
-                )
-            )
-
-        self._inject_test_object_content_type()
-
-    def _setup_test_object_base(self):
-        self.test_object_base = self._setup_test_object(
+    def _create_acl_test_object_base(self):
+        self.test_object_base = self._create_acl_test_object(
             model_name='TestModelBase'
         )
 
-    def _setup_test_object_proxy(self):
+    def _create_acl_test_object_proxy(self):
         self.TestModelProxy = self._create_test_model(
             base_class=self.TestModel, model_name='TestModelProxy',
             options={
@@ -180,11 +163,11 @@ class ACLTestMixin(PermissionTestMixin, RoleTestMixin, TestModelTestMixin):
         self.test_object_proxy = self.TestModelProxy.objects.create()
 
 
-class AccessControlListViewTestMixin(object):
+class AccessControlListViewTestMixin:
     def _request_test_acl_create_get_view(self):
         return self.get(
             viewname='acls:acl_create',
-            kwargs=self.test_content_object_view_kwargs, data={
+            kwargs=self.test_object_view_kwargs, data={
                 'role': self.test_role.pk
             }
         )
@@ -192,7 +175,7 @@ class AccessControlListViewTestMixin(object):
     def _request_test_acl_create_post_view(self):
         return self.post(
             viewname='acls:acl_create',
-            kwargs=self.test_content_object_view_kwargs, data={
+            kwargs=self.test_object_view_kwargs, data={
                 'role': self.test_role.pk
             }
         )
@@ -205,5 +188,17 @@ class AccessControlListViewTestMixin(object):
     def _request_test_acl_list_view(self):
         return self.get(
             viewname='acls:acl_list',
-            kwargs=self.test_content_object_view_kwargs
+            kwargs=self.test_object_view_kwargs
+        )
+
+    def _request_test_acl_permission_list_get_view(self):
+        return self.get(
+            viewname='acls:acl_permissions', kwargs={
+                'acl_id': self.test_acl.pk
+            }
+        )
+
+    def _request_test_global_acl_list_view(self):
+        return self.get(
+            viewname='acls:global_acl_list',
         )

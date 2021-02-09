@@ -1,11 +1,8 @@
-from __future__ import unicode_literals
-
 import errno
 import os
 
 import yaml
 
-from mayan.apps.common.compat import dict_type
 from mayan.apps.common.serialization import yaml_load
 
 from .literals import (
@@ -13,7 +10,7 @@ from .literals import (
 )
 
 
-class SettingNamespaceSingleton(object):
+class SettingNamespaceSingleton:
     """
     Self hosting bootstrap setting class.
     Allow managing setting in a compatible way before Mayan EDMS starts.
@@ -27,7 +24,7 @@ class SettingNamespaceSingleton(object):
     @classmethod
     def load_config_file(cls, filepath):
         try:
-            with open(filepath) as file_object:
+            with open(file=filepath) as file_object:
                 file_object.seek(0, os.SEEK_END)
                 if file_object.tell():
                     file_object.seek(0)
@@ -119,7 +116,7 @@ class SettingNamespaceSingleton(object):
         self.global_symbol_table.update(result)
 
 
-class BaseSetting(object):
+class BaseSetting:
     def __init__(
         self, name, critical=False, has_default=False, default_value=None
     ):
@@ -221,7 +218,7 @@ class MediaBootstrapSetting(FilesystemBootstrapSetting):
 
 
 def smart_yaml_load(value):
-    if isinstance(value, dict_type):
+    if isinstance(value, dict):
         return value
     else:
         return yaml_load(
@@ -264,6 +261,9 @@ SettingNamespaceSingleton.register_setting(
 )
 SettingNamespaceSingleton.register_setting(
     name='AUTH_PASSWORD_VALIDATORS', klass=BaseSetting,
+)
+SettingNamespaceSingleton.register_setting(
+    name='AUTHENTICATION_BACKENDS', klass=BaseSetting,
 )
 SettingNamespaceSingleton.register_setting(
     name='DATA_UPLOAD_MAX_MEMORY_SIZE', klass=BaseSetting,
@@ -338,6 +338,12 @@ SettingNamespaceSingleton.register_setting(
     name='LANGUAGE_CODE', klass=BaseSetting,
 )
 SettingNamespaceSingleton.register_setting(
+    name='SESSION_COOKIE_NAME', klass=BaseSetting,
+)
+SettingNamespaceSingleton.register_setting(
+    name='SESSION_ENGINE', klass=BaseSetting,
+)
+SettingNamespaceSingleton.register_setting(
     name='STATIC_URL', klass=BaseSetting,
 )
 SettingNamespaceSingleton.register_setting(
@@ -358,7 +364,15 @@ SettingNamespaceSingleton.register_setting(
     }
 )
 SettingNamespaceSingleton.register_setting(
-    name='CELERY_BROKER_URL', klass=BaseSetting
+    name='CELERY_BROKER_LOGIN_METHOD', klass=BaseSetting
+)
+SettingNamespaceSingleton.register_setting(
+    name='CELERY_BROKER_URL', klass=BaseSetting, kwargs={
+        'has_default': True, 'default_value': 'memory://'
+    }
+)
+SettingNamespaceSingleton.register_setting(
+    name='CELERY_BROKER_USE_SSL', klass=BaseSetting
 )
 SettingNamespaceSingleton.register_setting(
     name='CELERY_RESULT_BACKEND', klass=BaseSetting
@@ -409,5 +423,10 @@ SettingNamespaceSingleton.register_setting(
 SettingNamespaceSingleton.register_setting(
     name='DATABASE_CONN_MAX_AGE', klass=BaseSetting, kwargs={
         'has_default': True, 'default_value': 0
+    }
+)
+SettingNamespaceSingleton.register_setting(
+    name='TESTING', klass=BaseSetting, kwargs={
+        'has_default': True, 'default_value': False
     }
 )

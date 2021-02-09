@@ -1,76 +1,88 @@
-from __future__ import absolute_import, unicode_literals
-
+from collections import Iterable
 import logging
 
 from django.apps import apps
-from django.db.models import Q
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.db.models.signals import post_save, pre_delete
+from django.utils.encoding import force_text
+from django.utils.functional import cached_property
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext as _
 
-from mayan.apps.common.literals import LIST_MODE_CHOICE_LIST
-
-from .literals import (
-    QUERY_OPERATION_AND, QUERY_OPERATION_OR, TERM_NEGATION_CHARACTER,
-    TERM_OPERATION_OR, TERM_OPERATIONS, TERM_QUOTES, TERM_SPACE_CHARACTER
+from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
+from mayan.apps.common.exceptions import ResolverPipelineError
+from mayan.apps.common.utils import (
+    ResolverPipelineModelAttribute, get_related_field
 )
+from mayan.apps.views.literals import LIST_MODE_CHOICE_LIST
 
-logger = logging.getLogger(__name__)
-
-
-@python_2_unicode_compatible
-class FieldQuery(object):
-    def __init__(self, search_field, search_term_collection):
-        query_operation = QUERY_OPERATION_AND
-        self.query = None
-        self.parts = []
-
-        for term in search_term_collection.terms:
-            if term.is_meta:
-                # It is a meta term, modifies the query operation
-                # and is not searched
-                if term.string == TERM_OPERATION_OR:
-                    query_operation = QUERY_OPERATION_OR
-            else:
-                if search_field.transformation_function:
-                    term_string = search_field.transformation_function(
-                        term_string=term.string
-                    )
-                else:
-                    term_string = term.string
-
-                q_object = Q(
-                    **{'%s__%s' % (search_field.field, 'icontains'): term_string}
-                )
-                if term.negated:
-                    q_object = ~q_object
-
-                if self.query is None:
-                    self.query = q_object
-                else:
-                    if query_operation == QUERY_OPERATION_AND:
-                        self.query = self.query & q_object
-                    else:
-                        self.query = self.query | q_object
-
-            if not term.is_meta:
-                self.parts.append(force_text(search_field.label))
-                self.parts.append(force_text(term))
-            else:
-                self.parts.append(term.string)
-
-    def __str__(self):
-        return ' '.join(self.parts)
+from .settings import (
+    setting_backend, setting_backend_arguments,
+    setting_results_limit
+)
+logger = logging.getLogger(name=__name__)
 
 
-class SearchField(object):
+class SearchBackend:
+    @staticmethod
+    def get_instance():
+        return import_string(dotted_path=setting_backend.value)(
+            **setting_backend_arguments.value
+        )
+
+    @staticmethod
+    def limit_queryset(queryset):
+        pk_list = queryset.values('pk')[:setting_results_limit.value]
+        return queryset.filter(pk__in=pk_list)
+
+    def __init__(self, **kwargs):
+        self.kwargs = kwargs
+
+    def _search(self, global_and_search, search_model, query_string, user):
+        raise NotImplementedError
+
+    def deindex_instance(self, instance):
+        raise NotImplementedError
+
+    def index_instance(self, instance):
+        raise NotImplementedError
+
+    def search(
+        self, search_model, query_string, user, global_and_search=False
+    ):
+        AccessControlList = apps.get_model(
+            app_label='acls', model_name='AccessControlList'
+        )
+
+        # Clean up the query_string
+        # The original query_string is immutable, create a new
+        # mutable copy
+        query_string = query_string.copy()
+        query_string.pop('_match_all', None)
+
+        queryset = self._search(
+            global_and_search=global_and_search, search_model=search_model,
+            query_string=query_string, user=user
+        )
+
+        if search_model.permission:
+            queryset = AccessControlList.objects.restrict_queryset(
+                permission=search_model.permission, queryset=queryset,
+                user=user
+            )
+
+        return queryset
+
+
+class SearchField:
     """
     Search for terms in fields that directly belong to the parent SearchModel
     """
-    def __init__(self, search_model, field, label, transformation_function=None):
+    def __init__(
+        self, search_model, field, label=None, transformation_function=None
+    ):
         self.search_model = search_model
         self.field = field
-        self.label = label
+        self._label = label
         self.transformation_function = transformation_function
 
     def get_full_name(self):
@@ -79,14 +91,75 @@ class SearchField(object):
     def get_model(self):
         return self.search_model.model
 
+    def get_model_field(self):
+        return get_related_field(
+            model=self.get_model(), related_field_name=self.field
+        )
 
-@python_2_unicode_compatible
-class SearchModel(object):
+    @property
+    def label(self):
+        return self._label or self.get_model_field().verbose_name
+
+
+class SearchModel(AppsModuleLoaderMixin):
+    _loader_module_name = 'search'
+    _model_search_relationships = {}
     _registry = {}
+
+    @staticmethod
+    def flatten_list(value):
+        if isinstance(value, (str, bytes)):
+            yield value
+        else:
+            for item in value:
+                if isinstance(item, Iterable) and not isinstance(item, (str, bytes)):
+                    yield from SearchModel.flatten_list(value=item)
+                else:
+                    yield item
+
+    @staticmethod
+    def function_return_same(value):
+        return value
+
+    @staticmethod
+    def initialize():
+        # Hide a circular import
+        from .handlers import (
+            handler_factory_deindex_instance, handler_index_instance
+        )
+
+        for search_model in SearchModel.all():
+            post_save.connect(
+                dispatch_uid='search_handler_index_instance_{}'.format(search_model),
+                receiver=handler_index_instance,
+                sender=search_model.model
+            )
+            pre_delete.connect(
+                dispatch_uid='search_handler_deindex_instance_{}'.format(search_model),
+                receiver=handler_factory_deindex_instance(search_model=search_model),
+                sender=search_model.model,
+                weak=False
+            )
+            for proxy in search_model.proxies:
+                post_save.connect(
+                    dispatch_uid='search_handler_index_instance_{}'.format(search_model),
+                    receiver=handler_index_instance,
+                    sender=proxy
+                )
+                pre_delete.connect(
+                    dispatch_uid='search_handler_deindex_instance_{}'.format(search_model),
+                    receiver=handler_factory_deindex_instance(search_model=search_model),
+                    sender=proxy,
+                    weak=False
+                )
+
+            search_model._initialize()
 
     @classmethod
     def all(cls):
-        return sorted(list(cls._registry.values()), key=lambda x: x.label)
+        return sorted(
+            list(set(cls._registry.values())), key=lambda x: x.label
+        )
 
     @classmethod
     def as_choices(cls):
@@ -99,27 +172,69 @@ class SearchModel(object):
         except KeyError:
             raise KeyError(_('No search model matching the query'))
         if not hasattr(result, 'serializer'):
-            result.serializer = import_string(result.serializer_path)
+            result.serializer = import_string(dotted_path=result.serializer_path)
 
         return result
 
+    @classmethod
+    def get_default(cls):
+        for search_class in cls.all():
+            if search_class.default:
+                return search_class
+
+    @classmethod
+    def get_for_model(cls, instance):
+        return cls.get(name=instance._meta.label)
+
     def __init__(
-        self, app_label, model_name, serializer_path, label=None,
-        list_mode=None, permission=None, queryset=None
+        self, app_label, model_name, serializer_path, default=False,
+        label=None, list_mode=None, permission=None, queryset=None
     ):
+        self.default = default
+        self._label = label
         self.app_label = app_label
         self.list_mode = list_mode or LIST_MODE_CHOICE_LIST
         self.model_name = model_name
-        self.search_fields = []
-        self._model = None  # Lazy
-        self._label = label
-        self.serializer_path = serializer_path
+        self._proxies = []  # Lazy
         self.permission = permission
         self.queryset = queryset
+        self.search_fields = []
+        self.serializer_path = serializer_path
+
+        if default:
+            for search_class in self.__class__._registry.values():
+                search_class.default = False
+
         self.__class__._registry[self.get_full_name()] = self
 
+    def __repr__(self):
+        return '<{}: {}>'.format(
+            self.__class__.__name__, self.label
+        )
+
     def __str__(self):
-        return force_text(self.label)
+        return force_text(s=self.label)
+
+    def _initialize(self):
+        for search_field in self.search_fields:
+            related_model = get_related_field(
+                model=self.model, related_field_name=search_field.field
+            ).model
+
+            if related_model != self.model:
+                self.__class__._model_search_relationships.setdefault(
+                    self.model, set()
+                )
+                self.__class__._model_search_relationships[self.model].add(
+                    related_model
+                )
+
+                self.__class__._model_search_relationships.setdefault(
+                    related_model, set()
+                )
+                self.__class__._model_search_relationships[related_model].add(
+                    self.model
+                )
 
     def add_model_field(self, *args, **kwargs):
         """
@@ -128,18 +243,29 @@ class SearchModel(object):
         search_field = SearchField(self, *args, **kwargs)
         self.search_fields.append(search_field)
 
+    def add_proxy_model(self, app_label, model_name):
+        self._proxies.append(
+            {
+                'app_label': app_label, 'model_name': model_name
+            }
+        )
+
+        self.__class__._registry['{}.{}'.format(app_label, model_name)] = self
+
     def get_fields_simple_list(self):
         """
         Returns a list of the fields for the SearchModel
         """
         result = []
         for search_field in self.search_fields:
-            result.append((search_field.get_full_name(), search_field.label))
+            result.append(
+                (search_field.get_full_name(), search_field.label)
+            )
 
-        return result
+        return sorted(result, key=lambda x: x[1])
 
     def get_full_name(self):
-        return '%s.%s' % (self.app_label, self.model_name)
+        return '{}.{}'.format(self.app_label, self.model_name)
 
     def get_queryset(self):
         if self.queryset:
@@ -153,196 +279,60 @@ class SearchModel(object):
         except KeyError:
             raise KeyError('No search field named: %s' % full_name)
 
-    def get_search_query(self, query_string, global_and_search=False):
-        return SearchQuery(
-            query_string=query_string, search_model=self,
-            global_and_search=global_and_search
-        )
-
-    @property
+    @cached_property
     def label(self):
         if not self._label:
             self._label = self.model._meta.verbose_name
         return self._label
 
-    @property
+    @cached_property
     def model(self):
-        if not self._model:
-            self._model = apps.get_model(self.app_label, self.model_name)
-        return self._model
+        return apps.get_model(
+            app_label=self.app_label, model_name=self.model_name
+        )
 
-    @property
+    @cached_property
     def pk(self):
         return self.get_full_name()
 
-    def search(self, query_string, user, global_and_search=False):
-        AccessControlList = apps.get_model(
-            app_label='acls', model_name='AccessControlList'
-        )
-
-        search_query = self.get_search_query(
-            query_string=query_string, global_and_search=global_and_search
-        )
-
-        queryset = self.get_queryset().filter(search_query.query).distinct()
-
-        if self.permission:
-            queryset = AccessControlList.objects.restrict_queryset(
-                permission=self.permission, queryset=queryset, user=user
-            )
-
-        return queryset
-
-
-@python_2_unicode_compatible
-class SearchQuery(object):
-    def __init__(self, query_string, search_model, global_and_search=False):
-        self.query = None
-        self.text = []
-
-        for search_field in search_model.search_fields:
-            search_term_collection = SearchTermCollection(
-                text=query_string.get(
-                    search_field.field, query_string.get('q', '')
-                ).strip()
-            )
-
-            field_query = FieldQuery(
-                search_field=search_field,
-                search_term_collection=search_term_collection
-            )
-
-            if field_query.query:
-                self.text.append('({})'.format(force_text(field_query)))
-
-                if global_and_search:
-                    self.text.append('AND')
-                else:
-                    self.text.append('OR')
-
-                if self.query is None:
-                    self.query = field_query.query
-                else:
-                    if global_and_search:
-                        self.query = self.query & field_query.query
-                    else:
-                        self.query = self.query | field_query.query
-
-        self.query = self.query or Q()
-
-    def __str__(self):
-        return ' '.join(self.text[:-1])
-
-
-@python_2_unicode_compatible
-class SearchTerm(object):
-    def __init__(self, negated, string, is_meta):
-        self.negated = negated
-        self.string = string
-        self.is_meta = is_meta
-
-    def __str__(self):
-        if self.is_meta:
-            return ''
-        else:
-            return '{}contains "{}"'.format(
-                'does not ' if self.negated else '', self.string
-            )
-
-
-@python_2_unicode_compatible
-class SearchTermCollection(object):
-    def __init__(self, text):
-        """
-        Takes a text string and returns a list of dictionaries.
-        Each dictionary has two key "negated" and "string"
-
-        String 'a "b c" d "e" \'f g\' h -i -"j k" l -\'m n\' o OR p'
-
-        Results in:
-        [
-            {'negated': False, 'string': 'a'}, {'negated': False, 'string': 'b c'},
-            {'negated': False, 'string': 'd'}, {'negated': False, 'string': 'e'},
-            {'negated': False, 'string': 'f g'}, {'negated': False, 'string': 'h'},
-            {'negated': True, 'string': 'i'}, {'negated': True, 'string': 'j k'},
-            {'negated': False, 'string': 'l'}, {'negated': True, 'string': 'm n'},
-            {'negated': False, 'string': 'o'}, {'negated': False, 'string': 'OR'},
-            {'negated': False, 'string': 'p'}
-        ]
-        """
-        inside_quotes = False
-        negated = False
-        term_letters = []
-        self.terms = []
-
-        for letter in text:
-            if letter in TERM_QUOTES:
-                if inside_quotes:
-                    if term_letters:
-                        term_string = ''.join(term_letters)
-                        negated = False
-                        if term_string.startswith(TERM_NEGATION_CHARACTER):
-                            term_string = term_string[1:]
-                            negated = True
-
-                        self.terms.append(
-                            SearchTerm(
-                                is_meta=False, negated=negated,
-                                string=term_string
-                            )
-                        )
-                        negated = False
-                        term_letters = []
-
-                inside_quotes = not inside_quotes
-            else:
-                if not inside_quotes and letter == TERM_SPACE_CHARACTER:
-                    if term_letters:
-                        term_string = ''.join(term_letters)
-                        if term_string in TERM_OPERATIONS:
-                            is_meta = True
-                        else:
-                            is_meta = False
-
-                        if is_meta:
-                            negated = False
-                        else:
-                            negated = False
-                            if term_string.startswith(TERM_NEGATION_CHARACTER):
-                                term_string = term_string[1:]
-                                negated = True
-
-                        self.terms.append(
-                            SearchTerm(
-                                is_meta=is_meta, negated=negated,
-                                string=term_string
-                            )
-                        )
-                        negated = False
-                        term_letters = []
-                else:
-                    term_letters.append(letter)
-
-        if term_letters:
-            term_string = ''.join(term_letters)
-            negated = False
-            if term_string.startswith(TERM_NEGATION_CHARACTER):
-                term_string = term_string[1:]
-                negated = True
-
-            self.terms.append(
-                SearchTerm(
-                    is_meta=False, negated=negated,
-                    string=term_string
+    @cached_property
+    def proxies(self):
+        result = []
+        for proxy in self._proxies:
+            result.append(
+                apps.get_model(
+                    app_label=proxy['app_label'], model_name=proxy['model_name']
                 )
             )
+        return result
 
-    def __str__(self):
-        result = []
-        for term in self.terms:
-            if term.is_meta:
-                result.append(term.string)
+    def sieve(self, field_map, instance):
+        """
+        Method that receives an instance and a field map dictionary
+        consisting of attribute names and transformations to apply.
+        Returns a dictionary of the instance values with their respective
+        transformations. Makes it easy to pre process an instance before
+        indexing it.
+        """
+        result = {}
+        for field in field_map:
+            try:
+                value = ResolverPipelineModelAttribute.resolve(
+                    attribute=field, obj=instance
+                )
+                try:
+                    value = list(SearchModel.flatten_list(value))
+                    if value == [None]:
+                        value = None
+                    else:
+                        value = ''.join(value)
+                except TypeError:
+                    """Value is not a list"""
+            except ResolverPipelineError:
+                """Not fatal"""
             else:
-                result.append(force_text(term))
+                result[field] = field_map[field].get(
+                    'transformation', SearchModel.function_return_same
+                )(value)
 
-        return ' '.join(result)
+        return result

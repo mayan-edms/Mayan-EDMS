@@ -3,17 +3,18 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Emerson Soares <on.emersonsoares@gmail.com>, 2011
 # Jadson Ribeiro <jadsonbr@outlook.com.br>, 2017
-# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019
+# Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2019-2020
 # Rogerio Falcone <rogerio@falconeit.com.br>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-01 01:40-0400\n"
-"PO-Revision-Date: 2019-12-26 18:26+0000\n"
+"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"PO-Revision-Date: 2020-10-01 20:46+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -22,64 +23,102 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:17
+#: apps.py:19
 msgid "Dynamic search"
 msgstr "Busca dinâmica"
 
-#: classes.py:100
+#: classes.py:154
 msgid "No search model matching the query"
 msgstr "Nenhum modelo de pesquisa que corresponda à consulta"
 
-#: forms.py:9
+#: forms.py:7
 msgid "Match all"
 msgstr "Corresponder a todos"
 
-#: forms.py:10
+#: forms.py:8
 msgid ""
 "When checked, only results that match all fields will be returned. When "
 "unchecked results that match at least one field will be returned."
 msgstr "Quando marcado, somente os resultados que correspondem a todos os campos serão retornados. Quando os resultados não verificados correspondentes a pelo menos um campo serão retornados."
 
-#: forms.py:29 templates/dynamic_search/search_box.html:39
+#: forms.py:27 templates/dynamic_search/search_box.html:39
 msgid "Search terms"
 msgstr "Termos de pesquisa"
 
-#: links.py:8 settings.py:7 templates/dynamic_search/search_box.html:43
-#: views.py:59 views.py:72
+#: links.py:13 permissions.py:5 queues.py:7 settings.py:10
+#: templates/dynamic_search/search_box.html:43 views.py:117 views.py:130
 msgid "Search"
 msgstr "Pesquisa"
 
-#: links.py:11 templates/dynamic_search/search_box.html:45 views.py:86
+#: links.py:17 templates/dynamic_search/search_box.html:45 views.py:144
 msgid "Advanced search"
 msgstr "pesquisa avançada"
 
-#: links.py:15
+#: links.py:21
 msgid "Search again"
 msgstr "Buscar novamente"
 
-#: settings.py:12
+#: links.py:25 views.py:90
+msgid "Reindex search backend"
+msgstr "Reindexar backend de pesquisa"
+
+#: permissions.py:8
+msgid "Execute search tools"
+msgstr "Executar ferramentas de pesquisa"
+
+#: queues.py:11
+msgid "Remove a model instance from the search engine."
+msgstr "Remova uma instância de modelo do mecanismo de pesquisa."
+
+#: queues.py:16
+msgid "Index a model instance to the search engine."
+msgstr "Indexar uma instância de modelo para o mecanismo de pesquisa."
+
+#: settings.py:15
+msgid "Full path to the backend to be used to handle the search."
+msgstr "Caminho completo do backend usado para manipular a busca."
+
+#: settings.py:25
 msgid ""
 "Disables the single term bar search leaving only the advanced search button."
 msgstr "Desabilita a busca por termo único e deixa apenas a busca avançada."
+
+#: settings.py:31
+msgid "Maximum number search results to fetch and display."
+msgstr "Número máximo de resultados de pesquisa para buscar e exibir."
 
 #: templates/dynamic_search/search_box.html:45
 msgid "Advanced"
 msgstr "Avançada"
 
-#: views.py:25
+#: views.py:38
 msgid "Try again using different terms. "
 msgstr "Tentar novamente usando termos diferentes."
 
-#: views.py:27
+#: views.py:40
 msgid "No search results"
 msgstr "Não há resultados de busca"
 
-#: views.py:29
+#: views.py:42
 #, python-format
 msgid "Search results for: %s"
 msgstr "Resultados da pesquisa para: %s"
 
-#: views.py:74
+#: views.py:86
+msgid ""
+"This tool is required only for some search backends. Search results will be "
+"affected while the backend is being reindexed."
+msgstr "Essa ferramenta é necessária apenas para alguns back-ends de pesquisa. Os resultados da pesquisa serão afetados enquanto o backend está sendo reindexado."
+
+#: views.py:92
+msgid "This tool erases and populates the search backend's internal index."
+msgstr "Essa ferramenta apaga e preenche o índice interno do backend de pesquisa."
+
+#: views.py:110
+msgid "Search backend reindexing queued."
+msgstr "Reindexação de backend da pesquisa enfileirada."
+
+#: views.py:132
 #, python-format
 msgid "Search for: %s"
 msgstr "Buscar por: %s"

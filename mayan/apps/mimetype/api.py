@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from shutil import copyfileobj
 
 import magic

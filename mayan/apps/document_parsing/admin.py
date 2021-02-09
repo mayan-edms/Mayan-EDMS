@@ -1,18 +1,16 @@
-from __future__ import unicode_literals
-
 from django.contrib import admin
 
 from .models import (
-    DocumentPageContent, DocumentVersionParseError
+    DocumentFilePageContent, DocumentFileParseError
 )
 
 
-@admin.register(DocumentPageContent)
-class DocumentPageContentAdmin(admin.ModelAdmin):
-    list_display = ('document_page',)
+@admin.register(DocumentFilePageContent)
+class DocumentFilePageContentAdmin(admin.ModelAdmin):
+    list_display = ('document_file_page',)
 
 
-@admin.register(DocumentVersionParseError)
-class DocumentVersionParseErrorAdmin(admin.ModelAdmin):
-    list_display = ('document_version', 'datetime_submitted')
-    readonly_fields = ('document_version', 'datetime_submitted', 'result')
+@admin.register(DocumentFileParseError)
+class DocumentFileParseErrorAdmin(admin.ModelAdmin):
+    list_display = ('document_file', 'datetime_submitted')
+    readonly_fields = ('document_file', 'datetime_submitted', 'result')

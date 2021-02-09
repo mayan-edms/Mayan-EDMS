@@ -1,0 +1,555 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# Translators:
+# Adek Lanin, 2019
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-30 04:39+0000\n"
+"PO-Revision-Date: 2020-10-26 13:26+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/id/)\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps.py:25 apps.py:39 links.py:14
+msgid "Duplicates"
+msgstr "Duplikat"
+
+#: links.py:18 models.py:20 models.py:30 views.py:75
+msgid "Duplicated documents"
+msgstr "Dokumen terduplikasi"
+
+#: links.py:24 queues.py:13
+msgid "Duplicated document scan"
+msgstr "Dokumen pindai terduplikasi"
+
+#: models.py:17
+msgid "Document"
+msgstr "Dokumen"
+
+#: models.py:23
+msgid "Added"
+msgstr "Ditambahkan"
+
+#: models.py:29
+msgid "Duplicated document"
+msgstr "Dokumen duplikasi"
+
+#: queues.py:8
+msgid "Clean empty duplicate lists"
+msgstr "Bersihkan daftar duplikat"
+
+#: queues.py:18
+msgid "Scan document duplicates"
+msgstr ""
+
+#: views.py:36
+msgid "Only exact copies of this document will be shown in the this list."
+msgstr ""
+
+#: views.py:40
+msgid "There are no duplicates for this document"
+msgstr ""
+
+#: views.py:44
+#, python-format
+msgid "Duplicates for document: %s"
+msgstr ""
+
+#: views.py:66
+msgid ""
+"Duplicates are documents that are composed of the exact same file, down to "
+"the last byte. Files that have the same text or OCR but are not identical or "
+"were saved using a different file format will not appear as duplicates."
+msgstr ""
+
+#: views.py:73
+msgid "There are no duplicated documents"
+msgstr ""
+
+#: views.py:83
+msgid "Scan for duplicated documents?"
+msgstr ""
+
+#: views.py:90
+msgid "Duplicated document scan queued successfully."
+msgstr ""
+
+#~ msgid "Documents"
+#~ msgstr "Dokumen"
+
+#~ msgid "Create a document type"
+#~ msgstr "Buat tipe dokumen"
+
+#~ msgid "Versions comment"
+#~ msgstr "Komentar versi"
+
+#~ msgid "Versions encoding"
+#~ msgstr "Pengkodean versi"
+
+#~ msgid "Versions mime type"
+#~ msgstr "Tipe MIME versi"
+
+#~ msgid "Document version"
+#~ msgstr "Versi dokumen"
+
+#~ msgid "Page number"
+#~ msgstr "Nomor halaman"
+
+#~ msgid "Pages"
+#~ msgstr "Halaman-halaman"
+
+#~ msgid "Type"
+#~ msgstr "Tipe"
+
+#~ msgid "UUID"
+#~ msgstr "UUID"
+
+#~ msgid "Total pages"
+#~ msgstr "Total halaman"
+
+#~ msgid "Total documents"
+#~ msgstr "Total dokumen"
+
+#~ msgid "Documents in trash"
+#~ msgstr "Dokumen dalam tong sampah"
+
+#~ msgid "Document types"
+#~ msgstr "Tipe dokumen"
+
+#~ msgid "New documents this month"
+#~ msgstr "Dokumen terbaru bulan ini"
+
+#~ msgid "New pages this month"
+#~ msgstr "Halaman terbaru bulan ini"
+
+#~ msgid "Document created"
+#~ msgstr "Dokumen dibuat"
+
+#~ msgid "Document downloaded"
+#~ msgstr "Dokumen diunduh"
+
+#~ msgid "New version uploaded"
+#~ msgstr "Versi baru diunggah"
+
+#~ msgid "Document properties edited"
+#~ msgstr "Properti dokumen disunting"
+
+#~ msgid "Document type changed"
+#~ msgstr "Tipe dokumen diubah"
+
+#~ msgid "Document type created"
+#~ msgstr "Tipe dokumen dibuat"
+
+#~ msgid "Document type edited"
+#~ msgstr "Tipe dokumen disunting"
+
+#~ msgid "Document version reverted"
+#~ msgstr "Versi dokumen dikembalikan"
+
+#~ msgid "Document viewed"
+#~ msgstr "Dokumen diriviu"
+
+#~ msgid "Compress"
+#~ msgstr "Kompresi"
+
+#~ msgid "Compressed filename"
+#~ msgstr "Nama berkas terkompresi"
+
+#~ msgid ""
+#~ "The filename of the compressed file that will contain the documents to be "
+#~ "downloaded, if the previous option is selected."
+#~ msgstr ""
+#~ "Nama berkas dari berkas terkompresi yang mengandung dokumen-dokumen yang "
+#~ "akan diunduh, bila pilihan sebelumnya terpilih."
+
+#~ msgid "Quick document rename"
+#~ msgstr "Cara cepat mengganti nama dokumen"
+
+#~ msgid "Preserve extension"
+#~ msgstr "Ekstensi dipertahankan"
+
+#~ msgid "Date added"
+#~ msgstr "Tanggal ditambahkan"
+
+#~ msgid "Language"
+#~ msgstr "Bahasa"
+
+#~ msgid "File mimetype"
+#~ msgstr "Jenis mime berkas"
+
+#~ msgid "None"
+#~ msgstr "Nihil"
+
+#~ msgid "File encoding"
+#~ msgstr "Pengkodean berkas"
+
+#~ msgid "File size"
+#~ msgstr "Ukuran berkas"
+
+#~ msgid "Exists in storage"
+#~ msgstr "Ada di penyimpanan"
+
+#~ msgid "File path in storage"
+#~ msgstr "Lokasi berkas pada penyimpanan"
+
+#~ msgid "Page range"
+#~ msgstr "Jangkauan halaman"
+
+#~ msgid "Document type"
+#~ msgstr "Jenis dokumen"
+
+#~ msgid "Change type"
+#~ msgstr "Ubah tipe"
+
+#~ msgid "Edit properties"
+#~ msgstr "Sunting properti"
+
+#~ msgid "All documents"
+#~ msgstr "Semua dokumen"
+
+#~ msgid "Recently accessed"
+#~ msgstr "Baru saja diakses"
+
+#~ msgid "Recently added"
+#~ msgstr "Baru saja ditambahkan"
+
+#~ msgid "Preview"
+#~ msgstr "Pratinjau"
+
+#~ msgid "Properties"
+#~ msgstr "Properti"
+
+#~ msgid "Print"
+#~ msgstr "Cetak"
+
+#~ msgid "Quick download"
+#~ msgstr "Unduh cepat"
+
+#~ msgid "Create document type"
+#~ msgstr "Buat tipe dokumen"
+
+#~ msgid "Delete"
+#~ msgstr "Hapus"
+
+#~ msgid "Edit"
+#~ msgstr "Sunting"
+
+#~ msgid "Add quick label to document type"
+#~ msgstr "Tambah cepat label ke tipe dokumen"
+
+#~ msgid "Versions"
+#~ msgstr "Versi"
+
+#~ msgid "Download version"
+#~ msgstr "Unduh versi"
+
+#~ msgid "First page"
+#~ msgstr "Halaman pertama"
+
+#~ msgid "Last page"
+#~ msgstr "Halaman terakhir"
+
+#~ msgid "Previous page"
+#~ msgstr "Halaman sebelumnya"
+
+#~ msgid "Next page"
+#~ msgstr "Halaman berikutnya"
+
+#~ msgid "Rotate left"
+#~ msgstr "Rotasi kekiri"
+
+#~ msgid "Rotate right"
+#~ msgstr "Rotasi kekanan"
+
+#~ msgid "Page image"
+#~ msgstr "Gambar halaman"
+
+#~ msgid "Zoom in"
+#~ msgstr "Besarkan"
+
+#~ msgid "Zoom out"
+#~ msgstr "Kecilkan"
+
+#~ msgid "Recalculate page count"
+#~ msgstr "Hitung ulang jumlah halaman"
+
+#~ msgid "Favorites"
+#~ msgstr "Favorit"
+
+#~ msgid "Add to favorites"
+#~ msgstr "Tambah ke favorit"
+
+#~ msgid "Remove from favorites"
+#~ msgstr "Buang dari favorit"
+
+#~ msgid "Move to trash"
+#~ msgstr "Pindahkan ke tong sampah"
+
+#~ msgid "Trash can"
+#~ msgstr "Tong sampah"
+
+#~ msgid "Restore"
+#~ msgstr "Pulihkan"
+
+#~ msgid "Empty trash"
+#~ msgstr "Kosongkan tempat sampah"
+
+#~ msgid "Default"
+#~ msgstr "Bawaan"
+
+#~ msgid "All pages"
+#~ msgstr "Semua halaman"
+
+#~ msgid "The name of the document."
+#~ msgstr "Nama suatu dokumen."
+
+#~ msgid "Label"
+#~ msgstr "Label"
+
+#~ msgid "An optional short text describing a document."
+#~ msgstr "Teks penjelasan singkat mengenai dokumen."
+
+#~ msgid "Description"
+#~ msgstr "Deskripsi"
+
+#~ msgid ""
+#~ "The server date and time when the document was finally processed and "
+#~ "added to the system."
+#~ msgstr ""
+#~ "Tanggal dan waktu pada peladen saat dokumen selesai diproses dan "
+#~ "ditambahkan ke sistem."
+
+#~ msgid "The dominant language in the document."
+#~ msgstr "Bahasa dominan pada dokumen."
+
+#~ msgid "Whether or not this document is in the trash."
+#~ msgstr "Ya atau tidak dokumen ini ada di tong sampah."
+
+#~ msgid "In trash?"
+#~ msgstr "Pada tong sampah?"
+
+#~ msgid "The server date and time when the document was moved to the trash."
+#~ msgstr "Tanggal dan waktu pada peladen saat dipindahkan ke tong sampah."
+
+#~ msgid "Date and time trashed"
+#~ msgstr "Tanggal dan waktu dihapus"
+
+#~ msgid "Document page"
+#~ msgstr "Halaman dokumen"
+
+#~ msgid "Document pages"
+#~ msgstr "Halaman dokumen"
+
+#~ msgid "Page %(page_num)d out of %(total_pages)d of %(document)s"
+#~ msgstr "Halaman %(page_num)d dari %(total_pages)d untuk %(document)s"
+
+#~ msgid "The name of the document type."
+#~ msgstr "Nama tipe dokumen."
+
+#~ msgid ""
+#~ "Amount of time after which documents of this type will be moved to the "
+#~ "trash."
+#~ msgstr ""
+#~ "Waktu yang dibutuhkan saat dokumen dari tipe ini akan dipindahkan ke tong "
+#~ "sampah."
+
+#~ msgid ""
+#~ "Amount of time after which documents of this type in the trash will be "
+#~ "deleted."
+#~ msgstr ""
+#~ "Waktu yang dibutuhkan setelah dokumen dari tipe ini pada tong sampah akan "
+#~ "dihapus."
+
+#~ msgid "Delete time period"
+#~ msgstr "Periode waktu hapus"
+
+#~ msgid "Delete time unit"
+#~ msgstr "Unit waktu hapus"
+
+#~ msgid "Documents types"
+#~ msgstr "Tipe dokumen"
+
+#~ msgid "Quick label"
+#~ msgstr "Label cepat"
+
+#~ msgid "The server date and time when the document version was processed."
+#~ msgstr "Tanggal dan waktu pada peladen saat versi dokumen diproses."
+
+#~ msgid "An optional short text describing the document version."
+#~ msgstr "Teks penjelasan singkat mengenai versi dokumen."
+
+#~ msgid "Comment"
+#~ msgstr "Komentar"
+
+#~ msgid "File"
+#~ msgstr "File"
+
+#~ msgid "MIME type"
+#~ msgstr "Tipe MIME"
+
+#~ msgid ""
+#~ "The document version file encoding. binary 7-bit, binary 8-bit, text, "
+#~ "base64, etc."
+#~ msgstr ""
+#~ "Pengkodean versi dokumen. binari 7-bit, binari 8-bit, teks, base64, dll."
+
+#~ msgid "Encoding"
+#~ msgstr "Pengkodean"
+
+#~ msgid "User"
+#~ msgstr "Pengguna"
+
+#~ msgid "Favorite document"
+#~ msgstr "Dokumen favorit"
+
+#~ msgid "Favorite documents"
+#~ msgstr "Dokumen favorit"
+
+#~ msgid "Accessed"
+#~ msgstr "Diakses"
+
+#~ msgid "Recent document"
+#~ msgstr "Dokumen terbaru"
+
+#~ msgid "Recent documents"
+#~ msgstr "Dokumen terbaru"
+
+#~ msgid "Create documents"
+#~ msgstr "Buat dokumen"
+
+#~ msgid "Delete documents"
+#~ msgstr "Hapus dokumen"
+
+#~ msgid "Trash documents"
+#~ msgstr "Hapus dokumen"
+
+#~ msgid "Download documents"
+#~ msgstr "Unduh dokumen"
+
+#~ msgid "Edit documents"
+#~ msgstr "Sunting dokumen"
+
+#~ msgid "Create new document versions"
+#~ msgstr "Buat versi dokumen baru"
+
+#~ msgid "Edit document properties"
+#~ msgstr "Sunting properti dokumen"
+
+#~ msgid "Print documents"
+#~ msgstr "Cetak dokumen"
+
+#~ msgid "Restore trashed document"
+#~ msgstr "Pulihkan dokumen terhapus"
+
+#~ msgid "Execute document modifying tools"
+#~ msgstr "Jalankan peralatan pengubah dokumen"
+
+#~ msgid "Revert documents to a previous version"
+#~ msgstr "kembalikan dokumen ke versi sebelumnya"
+
+#~ msgid "View documents' versions list"
+#~ msgstr "Lihat daftar versi dokumen"
+
+#~ msgid "View documents"
+#~ msgstr "Lihat dokumen"
+
+#~ msgid "Create document types"
+#~ msgstr "Buat jenis dokumen"
+
+#~ msgid "Delete document types"
+#~ msgstr "Hapus jenis dokumen"
+
+#~ msgid "Edit document types"
+#~ msgstr "Sunting jenis dokumen"
+
+#~ msgid "View document types"
+#~ msgstr "Lihat jenis-jenis dokumen"
+
+#~ msgid "Converter"
+#~ msgstr "Pengkonversi"
+
+#~ msgid "Documents periodic"
+#~ msgstr "Periode dokumen"
+
+#~ msgid "Uploads"
+#~ msgstr "Unggah"
+
+#~ msgid "Generate document page image"
+#~ msgstr "Hasilkan gambar halaman dokumen"
+
+#~ msgid "Delete a document"
+#~ msgstr "Hapus dokumen"
+
+#~ msgid "Update document page count"
+#~ msgstr "Perbarui jumlah halaman dokumen"
+
+#~ msgid "Upload new document version"
+#~ msgstr "Unggah versi terbaru dokumen"
+
+#~ msgid "Maximum number of favorite documents to remember per user."
+#~ msgstr "Jumlah maksimum dokumen favorit per pengguna"
+
+#~ msgid "Amount in degrees to rotate a document page per user interaction."
+#~ msgstr ""
+#~ "Jumlah dalam derajat untuk memutar halaman dokumen per interaksi pengguna."
+
+#~ msgid ""
+#~ "Maximum amount in percent (%) to allow user to zoom in a document page "
+#~ "interactively."
+#~ msgstr ""
+#~ "Jumlah maksimal dalam persen (%) yang diperbolehkan bagi pengguna untuk "
+#~ "memperbesar tampilan halaman dokumen secara interaktif"
+
+#~ msgid ""
+#~ "Minimum amount in percent (%) to allow user to zoom out a document page "
+#~ "interactively."
+#~ msgstr ""
+#~ "Jumlah minimal dalam persen (%) yang diperbolehkan bagi pengguna untuk "
+#~ "memperkecil tampilan halaman dokumen secara interaktif."
+
+#~ msgid ""
+#~ "Amount in percent zoom in or out a document page per user interaction."
+#~ msgstr ""
+#~ "Satuan dalam persen untuk memperbesar atau memperkecil tampilan halaman "
+#~ "dokumen per interaksi pengguna."
+
+#~ msgid "There are no more pages in this document"
+#~ msgstr "Tidak ada halaman lagi dalam dokumen ini"
+
+#~ msgid "You are already at the first page of this document"
+#~ msgstr "Anda telah berada pada halaman pertama dari dokumen ini"
+
+#~ msgid "All later version after this one will be deleted too."
+#~ msgstr "Semua versi sebelum versi yang ini akan ikut dihapus juga."
+
+#~ msgid "Document version reverted successfully"
+#~ msgstr "Versi dokumen berhasil dikembalikan."
+
+#~ msgid "Error reverting document version; %s"
+#~ msgstr "Masalah dalam mengembalikan versi dokumen; %s"
+
+#~ msgid "Download"
+#~ msgstr "Unduh"
+
+#~ msgid ""
+#~ "Error deleting the page transformations for document: %(document)s; "
+#~ "%(error)s."
+#~ msgstr ""
+#~ "Masalah dalam menghapus transformasi-transformasi untuk halaman: "
+#~ "%(document)s; %(error)s."
+
+#~ msgid "Add"
+#~ msgstr "tambah"
+
+#~ msgid "Remove"
+#~ msgstr "hapus"

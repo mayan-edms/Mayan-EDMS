@@ -1,21 +1,19 @@
-from __future__ import unicode_literals
-
 from django.conf import settings
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
-from django.utils.encoding import force_text, python_2_unicode_compatible
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from actstream.models import Action
 
 from .classes import EventType
 from .managers import (
-    EventSubscriptionManager, ObjectEventSubscriptionManager
+    EventSubscriptionManager, NotificationManager,
+    ObjectEventSubscriptionManager
 )
 
 
-@python_2_unicode_compatible
 class StoredEventType(models.Model):
     """
     Model to mirror the real event classes as database objects.
@@ -29,7 +27,7 @@ class StoredEventType(models.Model):
         verbose_name_plural = _('Stored event types')
 
     def __str__(self):
-        return force_text(self.get_class())
+        return force_text(s=self.get_class())
 
     def get_class(self):
         return EventType.get(name=self.name)
@@ -43,7 +41,6 @@ class StoredEventType(models.Model):
         return self.get_class().namespace
 
 
-@python_2_unicode_compatible
 class EventSubscription(models.Model):
     """
     This model stores the event subscriptions of a user for the entire
@@ -66,10 +63,9 @@ class EventSubscription(models.Model):
         verbose_name_plural = _('Event subscriptions')
 
     def __str__(self):
-        return force_text(self.stored_event_type)
+        return force_text(s=self.stored_event_type)
 
 
-@python_2_unicode_compatible
 class Notification(models.Model):
     """
     This model keeps track of the notifications for a user. Notifications are
@@ -87,16 +83,17 @@ class Notification(models.Model):
     )
     read = models.BooleanField(default=False, verbose_name=_('Read'))
 
+    objects = NotificationManager()
+
     class Meta:
         ordering = ('-action__timestamp',)
         verbose_name = _('Notification')
         verbose_name_plural = _('Notifications')
 
     def __str__(self):
-        return force_text(self.action)
+        return force_text(s=self.action)
 
 
-@python_2_unicode_compatible
 class ObjectEventSubscription(models.Model):
     content_type = models.ForeignKey(
         on_delete=models.CASCADE, to=ContentType,
@@ -123,4 +120,4 @@ class ObjectEventSubscription(models.Model):
         verbose_name_plural = _('Object event subscriptions')
 
     def __str__(self):
-        return force_text(self.stored_event_type)
+        return force_text(s=self.stored_event_type)

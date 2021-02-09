@@ -1,12 +1,10 @@
-from __future__ import absolute_import
-
 # Ensure this file is not saved as "ldap.py" or you will run
 # into name conflicts (https://gitlab.com/mayan-edms/mayan-edms/issues/743)
 # Install Python LDAP with:
 # $ pip install python-ldap
 # or if using Docker, pass the following environment variables:
-# -e MAYAN_PIP_INSTALLS=python-ldap
-# -e MAYAN_APT_INSTALLS=libsasl2-dev python3-dev libldap2-dev libssl-dev libgle3 build-essential autoconf libtool pkg-config gcc
+# -e MAYAN_PIP_INSTALLS="python-ldap django_auth_ldap"
+# -e MAYAN_APT_INSTALLS="libsasl2-dev python3-dev libldap2-dev libssl-dev libgle3 build-essential autoconf libtool pkg-config gcc"
 # -e MAYAN_SETTINGS_MODULE=mayan_settings.ldap_connection_settings
 import ldap
 
