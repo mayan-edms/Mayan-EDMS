@@ -20,7 +20,7 @@ from .events import (
     event_cabinet_edited, event_cabinet_add_document,
     event_cabinet_remove_document
 )
-from .html_widgets import widget_document_cabinets
+from .html_widgets import DocumentCabinetWidget
 from .links import (
     link_cabinet_list, link_document_cabinet_list,
     link_document_cabinet_remove, link_document_cabinet_add,
@@ -68,10 +68,10 @@ class CabinetsApp(MayanAppConfig):
             app_label='documents', model_name='DocumentFilePageSearchResult'
         )
         DocumentVersionSearchResult = apps.get_model(
-            app_label='documents', model_name='DocumentVersionPageSearchResult'
+            app_label='documents', model_name='DocumentVersionSearchResult'
         )
         DocumentVersionPageSearchResult = apps.get_model(
-            app_label='documents', model_name='DocumentVersionSearchResult'
+            app_label='documents', model_name='DocumentVersionPageSearchResult'
         )
 
         # Add explicit order_by as DocumentCabinet ordering Meta option has no
@@ -152,23 +152,26 @@ class CabinetsApp(MayanAppConfig):
         )
 
         SourceColumn(
-            func=lambda context: widget_document_cabinets(
-                document=context['object'], user=context['request'].user
-            ), label=_('Cabinets'), order=1, source=Document
+            label=_('Cabinets'), order=1, source=Document,
+            widget=DocumentCabinetWidget
         )
-
-        #SourceColumn(
-        #    func=lambda context: widget_document_cabinets(
-        #        document=context['object'].document,
-        #        user=context['request'].user
-        #    ), label=_('Cabinets'), order=1, source=DocumentFilePageResult
-        #)
-        #SourceColumn(
-        #    func=lambda context: widget_document_cabinets(
-        #        document=context['object'].document,
-        #        user=context['request'].user
-        #    ), label=_('Cabinets'), order=1, source=DocumentVersionPageResult
-        #)
+        SourceColumn(
+            attribute='document', label=_('Cabinets'), order=1,
+            source=DocumentFileSearchResult, widget=DocumentCabinetWidget
+        )
+        SourceColumn(
+            attribute='document_file__document', label=_('Cabinets'), order=1,
+            source=DocumentFilePageSearchResult, widget=DocumentCabinetWidget
+        )
+        SourceColumn(
+            attribute='document', label=_('Cabinets'), order=1,
+            source=DocumentVersionSearchResult, widget=DocumentCabinetWidget
+        )
+        SourceColumn(
+            attribute='document_version__document', label=_('Cabinets'),
+            order=1, source=DocumentVersionPageSearchResult,
+            widget=DocumentCabinetWidget
+        )
 
         menu_facet.bind_links(
             links=(link_document_cabinet_list,), sources=(Document,)
