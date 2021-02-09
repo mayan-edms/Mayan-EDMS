@@ -445,7 +445,7 @@ class DocumentCabinetViewTestCase(
         self.test_document.cabinets.add(self.test_cabinet)
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self.test_document, permission=permission_cabinet_view
         )
 
         response = self._request_test_document_cabinet_list_view()
@@ -475,7 +475,7 @@ class DocumentCabinetViewTestCase(
         self.test_document.cabinets.add(self.test_cabinet)
 
         self.grant_access(
-            obj=self.test_document, permission=permission_document_view
+            obj=self.test_document, permission=permission_cabinet_view
         )
         self.grant_access(
             obj=self.test_cabinet, permission=permission_cabinet_view

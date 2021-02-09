@@ -110,7 +110,7 @@ class CabinetsApp(MayanAppConfig):
         ModelPermission.register(
             model=Document, permissions=(
                 permission_cabinet_add_document,
-                permission_cabinet_remove_document,
+                permission_cabinet_remove_document, permission_cabinet_view,
                 permission_events_view
             )
         )

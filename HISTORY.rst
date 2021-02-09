@@ -184,3 +184,6 @@
 - Move time delays from test and into its own test mixin. Remove MySQL test delays.
 - Standardize a class for the widgets of the class ``SourceColumn`` named
   ``SourceColumnWidget``.
+- The cabinet view permission is now required for a document, to be able to
+  view which cabinets contain that document. This change mirrors the
+  permission layout of the metadata and tag apps.
