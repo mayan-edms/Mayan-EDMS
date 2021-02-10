@@ -111,10 +111,13 @@ class DocumentVersion(ExtraDataModelMixin, models.Model):
 
     def export(self, file_object):
         first_page = self.pages.first()
-        first_page.export(file_object=file_object)
 
-        for page in self.pages[1:]:
-            page.export(append=True, file_object=file_object)
+        # Only export the version if there is at least one page.
+        if first_page:
+            first_page.export(file_object=file_object)
+
+            for page in self.pages[1:]:
+                page.export(append=True, file_object=file_object)
 
     def get_absolute_url(self):
         return reverse(
