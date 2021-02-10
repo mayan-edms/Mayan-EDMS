@@ -1,5 +1,5 @@
 from django.urls import reverse
-from django.utils.translation import ugettext_lazy as _, ungettext
+from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.documents.models import Document
@@ -21,35 +21,36 @@ from .permissions import (
 
 
 class DocumentCheckInView(MultipleObjectConfirmActionView):
-    error_message = 'Unable to check in document "%(instance)s". %(exception)s'
+    error_message = _(
+        'Unable to check in document "%(instance)s"; %(exception)s'
+    )
     pk_url_kwarg = 'document_id'
-    success_message_singular = 'Check in requested for %(count)d document.'
-    success_message_plural = 'Check in requested for %(count)d documents.'
+    success_message_single = _(
+        'Document "%(object)s" checked in successfully.'
+    )
+    success_message_singular = _(
+        '%(count)d document checked in successfully.'
+    )
+    success_message_plural = _(
+        '%(count)d documents checked in successfully.'
+    )
+    title_single = _('Check in document "%(object)s".')
+    title_singular = _('Check in %(count)d document.')
+    title_plural = _('Check in %(count)d documents.')
 
     def get_extra_context(self):
-        queryset = self.get_object_list()
-
-        result = {
-            'title': ungettext(
-                singular='Check in %(count)d document',
-                plural='Check in %(count)d documents',
-                number=queryset.count()
-            ) % {
-                'count': queryset.count(),
-            }
+        context = {
+            'submit_label': _('Check in'),
         }
 
-        if queryset.count() == 1:
-            result.update(
+        if self.object_list.count() == 1:
+            context.update(
                 {
-                    'object': queryset.first(),
-                    'title': _(
-                        'Check in document: %s'
-                    ) % queryset.first()
+                    'object': self.object_list.first(),
                 }
             )
 
-        return result
+        return context
 
     def get_post_object_action_url(self):
         if self.action_count == 1:
@@ -88,38 +89,39 @@ class DocumentCheckInView(MultipleObjectConfirmActionView):
 
 
 class DocumentCheckOutView(MultipleObjectFormActionView):
-    error_message = 'Unable to checkout document "%(instance)s". %(exception)s'
+    error_message = _(
+        'Unable to checkout document "%(instance)s"; %(exception)s'
+    )
     form_class = DocumentCheckOutForm
     object_permission = permission_document_check_out
     pk_url_kwarg = 'document_id'
     source_queryset = Document.valid
-    success_message_singular = '%(count)d document checked out.'
-    success_message_plural = '%(count)d documents checked out.'
+    success_message_single = _(
+        'Document "%(object)s" checked out successfully.'
+    )
+    success_message_singular = _(
+        '%(count)d document checked out successfully.'
+    )
+    success_message_plural = _(
+        '%(count)d documents checked out successfully.'
+    )
+    title_single = _('Checkout document "%(object)s".')
+    title_singular = _('Checkout %(count)d document.')
+    title_plural = _('Checkout %(count)d documents.')
 
     def get_extra_context(self):
-        queryset = self.get_object_list()
-
-        result = {
-            'title': ungettext(
-                singular='Checkout %(count)d document',
-                plural='Checkout %(count)d documents',
-                number=queryset.count()
-            ) % {
-                'count': queryset.count(),
-            }
+        context = {
+            'submit_label': _('Checkout'),
         }
 
-        if queryset.count() == 1:
-            result.update(
+        if self.object_list.count() == 1:
+            context.update(
                 {
-                    'object': queryset.first(),
-                    'title': _(
-                        'Check out document: %s'
-                    ) % queryset.first()
+                    'object': self.object_list.first(),
                 }
             )
 
-        return result
+        return context
 
     def get_post_object_action_url(self):
         if self.action_count == 1:
