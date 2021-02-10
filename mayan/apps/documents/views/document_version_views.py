@@ -34,6 +34,7 @@ from ..permissions import (
 from ..tasks import task_document_version_export
 
 from .misc_views import PrintFormView, DocumentPrintView
+from .mixins import RecentDocumentViewMixin
 
 __all__ = (
     'DocumentVersionCreateView', 'DocumentVersionListView',
@@ -92,6 +93,18 @@ class DocumentVersionDeleteView(MultipleObjectDeleteView):
     object_permission = permission_document_version_delete
     pk_url_kwarg = 'document_version_id'
     source_queryset = DocumentVersion.valid
+    success_message_single = _(
+        'Document version "%(object)s" deleted successfully.'
+    )
+    success_message_singular = _(
+        '%(count)d document version deleted successfully.'
+    )
+    success_message_plural = _(
+        '%(count)d document versions deleted successfully.'
+    )
+    title_single = _('Delete document version "%(object)s".')
+    title_singular = _('Delete %(count)d document version.')
+    title_plural = _('Delete %(count)d document versions.')
 
     def get_instance_extra_data(self):
         return {
@@ -135,12 +148,18 @@ class DocumentVersionExportView(MultipleObjectConfirmActionView):
     object_permission = permission_document_version_export
     pk_url_kwarg = 'document_version_id'
     source_queryset = DocumentVersion.valid
-    success_message = _(
-        '%(count)d document version queued for export.'
+    success_message_single = _(
+        'Document version "%(object)s" export successfully queued.'
+    )
+    success_message_singular = _(
+        '%(count)d document version export successfully queued.'
     )
     success_message_plural = _(
-        '%(count)d document versions queued for export.'
+        '%(count)d document versions exports successfully queued.'
     )
+    title_single = _('Export document version "%(object)s".')
+    title_singular = _('Export %(count)d document version.')
+    title_plural = _('Export %(count)d document versions.')
 
     def get_extra_context(self):
         context = {
@@ -148,11 +167,6 @@ class DocumentVersionExportView(MultipleObjectConfirmActionView):
                 'The process will be performed in the background. '
                 'The exported file will be available in the downloads area.'
             ),
-            'title': ungettext(
-                singular='Export the selected document version?',
-                plural='Export the selected document versions?',
-                number=self.object_list.count()
-            )
         }
 
         if self.object_list.count() == 1:
@@ -166,15 +180,13 @@ class DocumentVersionExportView(MultipleObjectConfirmActionView):
         )
 
 
-class DocumentVersionListView(ExternalObjectViewMixin, SingleObjectListView):
+class DocumentVersionListView(
+    ExternalObjectViewMixin, RecentDocumentViewMixin, SingleObjectListView
+):
     external_object_permission = permission_document_version_view
     external_object_pk_url_kwarg = 'document_id'
     external_object_queryset = Document.valid
-
-    def get_document(self):
-        document = self.external_object
-        document.add_as_recent_document_for_user(user=self.request.user)
-        return document
+    recent_document_view_document_property_name = 'external_object'
 
     def get_extra_context(self):
         return {
@@ -182,20 +194,23 @@ class DocumentVersionListView(ExternalObjectViewMixin, SingleObjectListView):
             'list_as_items': True,
             'no_results_icon': icon_document_version_list,
             'no_results_main_link': link_document_version_create.resolve(
-                context=RequestContext(request=self.request)
+                context=RequestContext(
+                    dict_={'object': self.external_object},
+                    request=self.request
+                )
             ),
             'no_results_text': _(
                 'Versions are views that can display document file pages as '
                 'they are, remap or merge them into different layouts.'
             ),
             'no_results_title': _('No versions available'),
-            'object': self.get_document(),
+            'object': self.external_object,
             'table_cell_container_classes': 'td-container-thumbnail',
-            'title': _('Versions of document: %s') % self.get_document(),
+            'title': _('Versions of document: %s') % self.external_object,
         }
 
     def get_source_queryset(self):
-        return self.get_document().versions.order_by('-timestamp')
+        return self.external_object.versions.order_by('-timestamp')
 
 
 class DocumentVersionPreviewView(SingleObjectDetailView):
