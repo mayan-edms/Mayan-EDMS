@@ -455,8 +455,9 @@ class MultipleObjectFormActionView(
 
 
 class MultipleObjectConfirmActionView(
-    ExtraContextViewMixin, ObjectActionViewMixin, ViewPermissionCheckViewMixin,
-    RestrictedQuerysetViewMixin, MultipleObjectViewMixin, RedirectionViewMixin, TemplateView
+    ExtraContextViewMixin, ObjectActionViewMixin,
+    ViewPermissionCheckViewMixin, RestrictedQuerysetViewMixin,
+    MultipleObjectViewMixin, RedirectionViewMixin, TemplateView
 ):
     template_name = 'appearance/generic_confirm.html'
 

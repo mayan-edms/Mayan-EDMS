@@ -346,14 +346,14 @@ class ObjectActionViewMixin:
     """
     Mixin that performs a user action to a queryset
     """
-    error_message = 'Unable to perform operation on object %(instance)s; %(exception)s.'
+    error_message = _('Unable to perform operation on object %(instance)s; %(exception)s.')
     post_object_action_url = None
-    success_message_single = 'Operation performed on %(object)s.'
-    success_message_singular = 'Operation performed on %(count)d object.'
-    success_message_plural = 'Operation performed on %(count)d objects.'
-    title_single = 'Perform operation on %(object)s.'
-    title_singular = 'Perform operation on %(count)d object.'
-    title_plural = 'Perform operation on %(count)d objects.'
+    success_message_single = _('Operation performed on %(object)s.')
+    success_message_singular = _('Operation performed on %(count)d object.')
+    success_message_plural = _('Operation performed on %(count)d objects.')
+    title_single = _('Perform operation on %(object)s.')
+    title_singular = _('Perform operation on %(count)d object.')
+    title_plural = _('Perform operation on %(count)d objects.')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
