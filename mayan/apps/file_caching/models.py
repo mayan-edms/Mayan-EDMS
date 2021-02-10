@@ -157,8 +157,8 @@ class CachePartition(models.Model):
             try:
                 self.cache.prune()
 
-                # Since open "wb+" doesn't create files force the creation of an
-                # empty file.
+                # Since open "wb+" doesn't create files force the creation of
+                # an empty file.
                 self.cache.storage.delete(
                     name=self.get_full_filename(filename=filename)
                 )
@@ -167,21 +167,28 @@ class CachePartition(models.Model):
                     content=ContentFile(content='')
                 )
 
+                partition_file = None
+
                 try:
                     with transaction.atomic():
                         partition_file = self.files.create(filename=filename)
                         yield partition_file.open(mode='wb')
-
                 except Exception as exception:
                     logger.error(
                         'Unexpected exception while trying to save new '
                         'cache file; %s', exception
                     )
-                    self.cache.storage.delete(
-                        name=self.get_full_filename(filename=filename)
-                    )
+                    if partition_file:
+                        partition_file.delete()
+                    else:
+                        # If the CachePartitionFile entry was not created
+                        # do manual clean up of the empty storage file
+                        # created in line 165 with `self.cache.storage.save`.
+                        self.cache.storage.delete(
+                            name=self.get_full_filename(filename=filename)
+                        )
                     raise
-                finally:
+                else:
                     partition_file.close()
                     partition_file.update_size()
             finally:
