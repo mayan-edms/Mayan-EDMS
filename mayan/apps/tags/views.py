@@ -1,10 +1,9 @@
 import logging
 
-from django.contrib import messages
 from django.shortcuts import reverse
 from django.template import RequestContext
 from django.urls import reverse_lazy
-from django.utils.translation import ugettext_lazy as _, ungettext
+from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.common.classes import ModelQueryFields
@@ -33,96 +32,70 @@ class TagAttachActionView(MultipleObjectFormActionView):
     object_permission = permission_tag_attach
     pk_url_kwarg = 'document_id'
     source_queryset = Document.valid
-    success_message = _('Tag attach request performed on %(count)d document')
-    success_message_plural = _(
-        'Tag attach request performed on %(count)d documents'
+    success_message_single = _(
+        'Tags attached to document "%(object)s" successfully.'
     )
+    success_message_singular = _(
+        'Tags attached to %(count)d document successfully.'
+    )
+    success_message_plural = _(
+        'Tags attached to %(count)d documents successfully.'
+    )
+    title_single = _('Attach tags to document: %(object)s')
+    title_singular = _('Attach tags to %(count)d document.')
+    title_plural = _('Attach tags to %(count)d documents.')
 
     def get_extra_context(self):
-        queryset = self.object_list
-
-        result = {
+        context = {
             'submit_label': _('Attach'),
-            'title': ungettext(
-                singular='Attach tags to %(count)d document',
-                plural='Attach tags to %(count)d documents',
-                number=queryset.count()
-            ) % {
-                'count': queryset.count(),
-            }
         }
 
-        if queryset.count() == 1:
-            result.update(
+        if self.object_list.count() == 1:
+            context.update(
                 {
-                    'object': queryset.first(),
-                    'title': _('Attach tags to document: %s') % queryset.first()
+                    'object': self.object_list.first(),
                 }
             )
 
-        return result
+        return context
 
     def get_form_extra_kwargs(self):
-        queryset = self.object_list
-        result = {
+        kwargs = {
             'help_text': _('Tags to be attached.'),
             'permission': permission_tag_attach,
             'queryset': Tag.objects.all(),
             'user': self.request.user
         }
 
-        if queryset.count() == 1:
-            result.update(
+        if self.object_list.count() == 1:
+            kwargs.update(
                 {
                     'queryset': Tag.objects.exclude(
-                        pk__in=queryset.first().tags.all()
+                        pk__in=self.object_list.first().tags.all()
                     )
                 }
             )
 
-        return result
+        return kwargs
 
     def get_post_action_redirect(self):
-        queryset = self.object_list
-        if queryset.count() == 1:
+        if self.object_list.count() == 1:
             return reverse(
                 viewname='tags:document_tag_list', kwargs={
-                    'document_id': queryset.first().pk
+                    'document_id': self.object_list.first().pk
                 }
             )
         else:
             return super().get_post_action_redirect()
 
     def object_action(self, form, instance):
-        attached_tags = instance.get_tags(
-            permission=permission_tag_attach, user=self.request.user
-        )
-
         for tag in form.cleaned_data['tags']:
             AccessControlList.objects.check_access(
                 obj=tag, permissions=(permission_tag_attach,),
                 user=self.request.user
             )
 
-            if tag in attached_tags:
-                messages.warning(
-                    message=_(
-                        'Document "%(document)s" is already tagged as '
-                        '"%(tag)s"'
-                    ) % {
-                        'document': instance, 'tag': tag
-                    }, request=self.request
-                )
-            else:
-                tag.attach_to(document=instance, user=self.request.user)
-                messages.success(
-                    message=_(
-                        'Tag "%(tag)s" attached successfully to document '
-                        '"%(document)s".'
-                    ) % {
-                        'document': instance, 'tag': tag
-                    }, request=self.request
-                )
+            tag.attach_to(document=instance, user=self.request.user)
 
 
 class TagCreateView(SingleObjectCreateView):
@@ -137,52 +110,35 @@ class TagCreateView(SingleObjectCreateView):
 
 
 class TagDeleteActionView(MultipleObjectConfirmActionView):
+    error_message = _('Error deleting tag "%(instance)s"; %(exception)s')
     model = Tag
     object_permission = permission_tag_delete
     pk_url_kwarg = 'tag_id'
     post_action_redirect = reverse_lazy(viewname='tags:tag_list')
-    success_message = _('Tag delete request performed on %(count)d tag')
-    success_message_plural = _(
-        'Tag delete request performed on %(count)d tags'
-    )
+    success_message_single = _('Tag "%(object)s" deleted successfully.')
+    success_message_singular = _('%(count)d tag deleted successfully.')
+    success_message_plural = _('%(count)d tags deleted successfully.')
+    title_single = _('Delete tag: %(object)s.')
+    title_singular = _('Delete the %(count)d selected tag?')
+    title_plural = _('Delete the %(count)d selected tags?')
 
     def get_extra_context(self):
-        queryset = self.object_list
-
-        result = {
+        context = {
             'delete_view': True,
             'message': _('Will be removed from all documents.'),
-            'title': ungettext(
-                singular='Delete the selected tag?',
-                plural='Delete the selected tags?',
-                number=queryset.count()
-            )
         }
 
-        if queryset.count() == 1:
-            result.update(
+        if self.object_list.count() == 1:
+            context.update(
                 {
-                    'object': queryset.first(),
-                    'title': _('Delete tag: %s?') % queryset.first()
+                    'object': self.object_list.first(),
                 }
             )
 
-        return result
+        return context
 
     def object_action(self, instance, form=None):
-        try:
-            instance.delete()
-            messages.success(
-                message=_(
-                    'Tag "%s" deleted successfully.'
-                ) % instance, request=self.request
-            )
-        except Exception as exception:
-            messages.error(
-                message=_('Error deleting tag "%(tag)s": %(error)s') % {
-                    'tag': instance, 'error': exception
-                }, request=self.request
-            )
+        instance.delete()
 
 
 class TagEditView(SingleObjectEditView):
@@ -292,91 +248,66 @@ class TagRemoveActionView(MultipleObjectFormActionView):
     object_permission = permission_tag_remove
     pk_url_kwarg = 'document_id'
     source_queryset = Document.valid
-    success_message = _('Tag remove request performed on %(count)d document')
-    success_message_plural = _(
-        'Tag remove request performed on %(count)d documents'
+    success_message_single = _(
+        'Tags removed from document "%(object)s" successfully.'
     )
+    success_message_singular = _(
+        'Tags removed from %(count)d document successfully.'
+    )
+    success_message_plural = _(
+        'Tags removed from %(count)d documents successfully.'
+    )
+    title_single = _('Remove tags from document: %(object)s')
+    title_singular = _('Remove tags from %(count)d document.')
+    title_plural = _('Remove tags from %(count)d documents.')
 
     def get_extra_context(self):
-        queryset = self.object_list
-
-        result = {
+        context = {
             'submit_icon': icon_document_tag_remove_submit,
             'submit_label': _('Remove'),
-            'title': ungettext(
-                singular='Remove tags from %(count)d document',
-                plural='Remove tags from %(count)d documents',
-                number=queryset.count()
-            ) % {
-                'count': queryset.count(),
-            }
         }
 
-        if queryset.count() == 1:
-            result.update(
+        if self.object_list.count() == 1:
+            context.update(
                 {
-                    'object': queryset.first(),
-                    'title': _('Remove tags from document: %s') % queryset.first()
+                    'object': self.object_list.first(),
                 }
             )
 
-        return result
+        return context
 
     def get_form_extra_kwargs(self):
-        queryset = self.object_list
-        result = {
+        kwargs = {
             'help_text': _('Tags to be removed.'),
             'permission': permission_tag_remove,
             'queryset': Tag.objects.all(),
             'user': self.request.user
         }
 
-        if queryset.count() == 1:
-            result.update(
+        if self.object_list.count() == 1:
+            kwargs.update(
                 {
-                    'queryset': queryset.first().tags.all()
+                    'queryset': self.object_list.first().tags.all()
                 }
             )
 
-        return result
+        return kwargs
 
     def get_post_action_redirect(self):
-        queryset = self.object_list
-        if queryset.count() == 1:
+        if self.object_list.count() == 1:
             return reverse(
                 viewname='tags:document_tag_list', kwargs={
-                    'document_id': queryset.first().pk
+                    'document_id': self.object_list.first().pk
                 }
             )
         else:
             return super().get_post_action_redirect()
 
     def object_action(self, form, instance):
-        attached_tags = instance.get_tags(
-            permission=permission_tag_remove, user=self.request.user
-        )
-
         for tag in form.cleaned_data['tags']:
             AccessControlList.objects.check_access(
                 obj=tag, permissions=(permission_tag_remove,),
                 user=self.request.user
             )
 
-            if tag not in attached_tags:
-                messages.warning(
-                    message=_(
-                        'Document "%(document)s" wasn\'t tagged as "%(tag)s'
-                    ) % {
-                        'document': instance, 'tag': tag
-                    }, request=self.request
-                )
-            else:
-                tag.remove_from(document=instance, user=self.request.user)
-                messages.success(
-                    message=_(
-                        'Tag "%(tag)s" removed successfully from document '
-                        '"%(document)s".'
-                    ) % {
-                        'document': instance, 'tag': tag
-                    }, request=self.request
-                )
+            tag.remove_from(document=instance, user=self.request.user)
