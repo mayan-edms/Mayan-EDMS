@@ -50,7 +50,9 @@ class LicenseView(SimpleView):
     template_name = 'appearance/generic_form.html'
 
 
-class ObjectCopyView(ExternalContentTypeObjectViewMixin, ObjectNameViewMixin, ConfirmView):
+class ObjectCopyView(
+    ExternalContentTypeObjectViewMixin, ObjectNameViewMixin, ConfirmView
+):
     external_object_permission = permission_object_copy
 
     def get_extra_context(self):
@@ -66,8 +68,11 @@ class ObjectCopyView(ExternalContentTypeObjectViewMixin, ObjectNameViewMixin, Co
             )
         }
 
-        context['title'] = _('Make a copy of %(object_name)s "%(object)s"?') % {
-            'object_name': self.get_object_name(context=context), 'object': self.external_object
+        context['title'] = _(
+            'Make a copy of %(object_name)s "%(object)s"?'
+        ) % {
+            'object_name': self.get_object_name(context=context),
+            'object': self.external_object
         }
 
         return context

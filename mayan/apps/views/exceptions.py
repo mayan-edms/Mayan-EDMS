@@ -2,7 +2,6 @@ class BaseViewsException(Exception):
     """
     Base exception for the views app.
     """
-    pass
 
 
 class ActionError(BaseViewsException):

@@ -389,9 +389,12 @@ class AddRemoveView(
 
 
 class ConfirmView(
-    RestrictedQuerysetViewMixin, ViewPermissionCheckViewMixin, ExtraContextViewMixin,
-    RedirectionViewMixin, TemplateView
+    RestrictedQuerysetViewMixin, ViewPermissionCheckViewMixin,
+    ExtraContextViewMixin, RedirectionViewMixin, TemplateView
 ):
+    """
+    View that will execute an view action upon user Yes/No confirmation.
+    """
     template_name = 'appearance/generic_confirm.html'
 
     def get_context_data(self, **kwargs):
@@ -411,11 +414,16 @@ class FormView(
     ViewPermissionCheckViewMixin, ExtraContextViewMixin, RedirectionViewMixin,
     FormExtraKwargsViewMixin, DjangoFormView
 ):
+    """
+    Basic form view that will check for view level permission, allow
+    providing extra context, extra keyword arguments for the forms, and
+    customizable redirection.
+    """
     template_name = 'appearance/generic_form.html'
 
 
 class DynamicFormView(DynamicFormViewMixin, FormView):
-    pass
+    """Form view that uses a single dynamic form."""
 
 
 class MultipleObjectFormActionView(
@@ -425,7 +433,7 @@ class MultipleObjectFormActionView(
 ):
     """
     This view will present a form and upon receiving a POST request will
-    perform an action on an object or queryset
+    perform an action on an object or queryset.
     """
     template_name = 'appearance/generic_form.html'
 
@@ -459,6 +467,10 @@ class MultipleObjectConfirmActionView(
     ViewPermissionCheckViewMixin, RestrictedQuerysetViewMixin,
     MultipleObjectViewMixin, RedirectionViewMixin, TemplateView
 ):
+    """
+    Form that will execute an action to a queryset upon user Yes/No
+    confirmation.
+    """
     template_name = 'appearance/generic_confirm.html'
 
     def __init__(self, *args, **kwargs):
@@ -488,7 +500,7 @@ class MultipleObjectConfirmActionView(
 
 class SimpleView(ViewPermissionCheckViewMixin, ExtraContextViewMixin, TemplateView):
     """
-    Basic template view class with permission check and extra context
+    Basic template view class with permission check and extra context.
     """
 
 
@@ -701,7 +713,10 @@ class MultipleObjectDownloadView(
 class SingleObjectDynamicFormCreateView(
     DynamicFormViewMixin, SingleObjectCreateView
 ):
-    pass
+    """
+    A form that will allow creation of a single instance from the values
+    of a dynamic field form.
+    """
 
 
 class SingleObjectEditView(
@@ -762,13 +777,19 @@ class SingleObjectEditView(
 class SingleObjectDynamicFormEditView(
     DynamicFormViewMixin, SingleObjectEditView
 ):
-    pass
-
+    """
+    A form that will allow editing a single instance from the values
+    of a dynamic field form.
+    """
 
 class SingleObjectListView(
     ListModeViewMixin, PaginationMixin, ViewPermissionCheckViewMixin,
-    RestrictedQuerysetViewMixin, ExtraContextViewMixin, RedirectionViewMixin, ListView
+    RestrictedQuerysetViewMixin, ExtraContextViewMixin, RedirectionViewMixin,
+    ListView
 ):
+    """
+    A view that will generate a list of instances from a queryset.
+    """
     template_name = 'appearance/generic_list.html'
 
     def __init__(self, *args, **kwargs):
@@ -836,16 +857,18 @@ class SingleObjectListView(
 
 
 class MultipleObjectDeleteView(MultipleObjectConfirmActionView):
+    success_message_single = _('"%(object)s" deleted successfully.')
+    success_message_singular = _('%(count)d object deleted successfully.')
+    success_message_plural = _('%(count)d objects deleted successfully.')
+    title_single = _('Delete "%(object)s".')
+    title_singular = _('Delete %(count)d object.')
+    title_plural = _('Delete %(count)d objects.')
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context.update(
             {
                 'delete_view': True,
-                'title': ungettext(
-                    singular='Delete the selected object?',
-                    plural='Delete the selected objects?',
-                    number=self.object_list.count()
-                )
             }
         )
 
@@ -853,7 +876,6 @@ class MultipleObjectDeleteView(MultipleObjectConfirmActionView):
             context.update(
                 {
                     'object': self.object_list.first(),
-                    'title': _('Delete: %s?') % self.object_list.first()
                 }
             )
 

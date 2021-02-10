@@ -41,7 +41,9 @@ class Dashboard:
         self.removed_widgets.append(widget)
 
     def render(self, request):
-        rendered_widgets = [widget().render(request=request) for widget in self.get_widgets()]
+        rendered_widgets = [
+            widget().render(request=request) for widget in self.get_widgets()
+        ]
 
         return loader.render_to_string(
             template_name='dashboards/dashboard.html', context={
