@@ -527,9 +527,9 @@ class RestrictedQuerysetViewMixin:
                 return self.model._default_manager.all()
             else:
                 raise ImproperlyConfigured(
-                    "%(cls)s is missing a QuerySet. Define "
-                    "%(cls)s.model, %(cls)s.source_queryset, or override "
-                    "%(cls)s.get_source_queryset()." % {
+                    '%(cls)s is missing a QuerySet. Define '
+                    '%(cls)s.model, %(cls)s.source_queryset, or override '
+                    '%(cls)s.get_source_queryset().' % {
                         'cls': self.__class__.__name__
                     }
                 )
