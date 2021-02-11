@@ -198,4 +198,4 @@
   file creation error, which would raise a hard to understand and diagnose
   missing file entry error. The model now avoids updating cache size on
   either model or storage file creation error.
-
+- Support disabling form help texts via ``form_hide_help_text``.
