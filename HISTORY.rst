@@ -187,3 +187,15 @@
 - The cabinet view permission is now required for a document, to be able to
   view which cabinets contain that document. This change mirrors the
   permission layout of the metadata and tag apps.
+- File caching now uses the same lock for all file methods. This ensures that
+  a cache file that is being deleted or purge is not open for reading and
+  viceversa.
+- A method decorator was added to the lock manager app to ease usage of the
+  same lock workflow in methods of the same class.
+- The error handling of the ``CachePartitionFile`` methods was improved.
+  This ensures proper clean up of stray storage files on model file creation
+  error. The model now avoids accessing the model file for clean up on model
+  file creation error, which would raise a hard to understand and diagnose
+  missing file entry error. The model now avoids updating cache size on
+  either model or storage file creation error.
+
