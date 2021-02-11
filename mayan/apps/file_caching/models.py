@@ -12,6 +12,7 @@ from django.utils.text import format_lazy
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.lock_manager.backends.base import LockingBackend
+from mayan.apps.lock_manager.decorators import locked_class_method
 from mayan.apps.lock_manager.exceptions import LockError
 from mayan.apps.storage.classes import DefinedStorage
 
@@ -147,18 +148,21 @@ class CachePartition(models.Model):
     def get_combined_filename(parent, filename):
         return '{}-{}'.format(parent, filename)
 
+    def _lock_manager_get_lock_name(self, filename):
+        return self.get_file_lock_name(filename=filename)
+
     @contextmanager
     def create_file(self, filename):
-        lock_id = 'cache_partition-create_file-{}-{}'.format(self.pk, filename)
+        lock_name = self.get_file_lock_name(filename=filename)
         try:
-            logger.debug('trying to acquire lock: %s', lock_id)
-            lock = LockingBackend.get_instance().acquire_lock(name=lock_id)
-            logger.debug('acquired lock: %s', lock_id)
+            logger.debug('trying to acquire lock: %s', lock_name)
+            lock = LockingBackend.get_instance().acquire_lock(name=lock_name)
+            logger.debug('acquired lock: %s', lock_name)
             try:
                 self.cache.prune()
 
-                # Since open "wb+" doesn't create files force the creation of
-                # an empty file.
+                # Since open "wb+" doesn't create files, force the creation
+                # of an empty file.
                 self.cache.storage.delete(
                     name=self.get_full_filename(filename=filename)
                 )
@@ -170,31 +174,30 @@ class CachePartition(models.Model):
                 partition_file = None
 
                 try:
-                    with transaction.atomic():
-                        partition_file = self.files.create(filename=filename)
-                        yield partition_file.open(mode='wb')
+                    partition_file = self.files.create(filename=filename)
+                    yield partition_file.open(mode='wb', _acquire_lock=False)
                 except Exception as exception:
                     logger.error(
                         'Unexpected exception while trying to save new '
                         'cache file; %s', exception
                     )
                     if partition_file:
-                        partition_file.delete()
+                        partition_file.delete(_acquire_lock=False)
                     else:
                         # If the CachePartitionFile entry was not created
                         # do manual clean up of the empty storage file
-                        # created in line 165 with `self.cache.storage.save`.
+                        # created with the previous`self.cache.storage.save`.
                         self.cache.storage.delete(
                             name=self.get_full_filename(filename=filename)
                         )
                     raise
                 else:
-                    partition_file.close()
-                    partition_file.update_size()
+                    partition_file.close(_acquire_lock=False)
+                    partition_file.update_size(_acquire_lock=False)
             finally:
                 lock.release()
         except LockError:
-            logger.debug('unable to obtain lock: %s' % lock_id)
+            logger.debug('unable to obtain lock: %s' % lock_name)
             raise
 
     def delete(self, *args, **kwargs):
@@ -207,6 +210,9 @@ class CachePartition(models.Model):
         except self.files.model.DoesNotExist:
             return None
 
+    def get_file_lock_name(self, filename):
+        return 'cache_partition-file-{}-{}'.format(self.pk, filename)
+
     def get_full_filename(self, filename):
         return CachePartition.get_combined_filename(
             parent=self.name, filename=filename
@@ -218,6 +224,8 @@ class CachePartition(models.Model):
 
 
 class CachePartitionFile(models.Model):
+    _storage_object = None
+
     partition = models.ForeignKey(
         on_delete=models.CASCADE, related_name='files',
         to=CachePartition, verbose_name=_('Cache partition')
@@ -230,18 +238,21 @@ class CachePartitionFile(models.Model):
         default=0, verbose_name=_('File size')
     )
 
-    _storage_object = None
-
     class Meta:
         get_latest_by = 'datetime'
         unique_together = ('partition', 'filename')
         verbose_name = _('Cache partition file')
         verbose_name_plural = _('Cache partition files')
 
+    def _lock_manager_get_lock_name(self, *args, **kwargs):
+        return self.partition.get_file_lock_name(filename=self.filename)
+
+    @locked_class_method
     def delete(self, *args, **kwargs):
         self.partition.cache.storage.delete(name=self.full_filename)
         return super().delete(*args, **kwargs)
 
+    @locked_class_method
     def exists(self):
         return self.partition.cache.storage.exists(name=self.full_filename)
 
@@ -251,6 +262,7 @@ class CachePartitionFile(models.Model):
             parent=self.partition.name, filename=self.filename
         )
 
+    @locked_class_method
     def open(self, mode='rb'):
         # Open the file for reading. If the file is written to, the
         # .update_size() must be called.
@@ -265,11 +277,13 @@ class CachePartitionFile(models.Model):
             )
             raise
 
+    @locked_class_method
     def close(self):
         if self._storage_object is not None:
             self._storage_object.close()
         self._storage_object = None
 
+    @locked_class_method
     def update_size(self):
         self.file_size = self.partition.cache.storage.size(
             name=self.full_filename
