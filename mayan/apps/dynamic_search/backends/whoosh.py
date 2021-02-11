@@ -163,7 +163,7 @@ class WhooshSearchBackend(SearchBackend):
             raise
         else:
             try:
-                # Use a shadow method to allow using a single lock for
+                # Use a private method to allow using a single lock for
                 # all recursions.
                 self._index_instance(
                     instance=instance, exclude_set=exclude_set
@@ -175,7 +175,7 @@ class WhooshSearchBackend(SearchBackend):
         if not exclude_set:
             exclude_set = set()
 
-        # Avoid infite recursion
+        # Avoid infinite recursion.
         if instance in exclude_set:
             return
 
@@ -198,8 +198,18 @@ class WhooshSearchBackend(SearchBackend):
                 field_map=self.get_resolved_field_map(search_model=search_model), instance=instance
             )
             writer.delete_by_term('id', str(instance.pk))
-            writer.add_document(**kwargs)
-            writer.commit()
+            try:
+                writer.add_document(**kwargs)
+                writer.commit()
+            except Exception as exception:
+                logger.error(
+                    'Unexpected exception while indexing object id: %s, '
+                    'search model: %s, index data: %s, raw data: %s, '
+                    'field map: %s', search_model.get_full_name(),
+                    instance.pk, kwargs, instance.__dict__,
+                    self.get_resolved_field_map(search_model=search_model)
+                )
+                raise
 
         for field_class in instance._meta.get_fields():
             # Only to recursive indexing for related models that are
