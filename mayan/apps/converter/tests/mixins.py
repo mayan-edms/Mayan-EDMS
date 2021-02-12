@@ -108,6 +108,13 @@ class AssetViewTestMixin:
             }
         )
 
+    def _request_test_asset_detail_view(self):
+        return self.get(
+            viewname='converter:asset_detail', kwargs={
+                'asset_id': self.test_asset.pk
+            }
+        )
+
     def _request_test_asset_edit_view(self):
         return self.post(
             viewname='converter:asset_edit', kwargs={

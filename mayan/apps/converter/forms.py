@@ -12,7 +12,7 @@ from .models import Asset, LayerTransformation
 from .transformations import BaseTransformation
 
 
-class AsssetDetailForm(DetailForm):
+class AssetDetailForm(DetailForm):
     preview = AssetImageField(label=_('Preview'))
 
     def __init__(self, *args, **kwargs):

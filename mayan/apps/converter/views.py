@@ -14,7 +14,7 @@ from mayan.apps.views.generics import (
 from mayan.apps.views.mixins import ExternalContentTypeObjectViewMixin
 
 from .forms import (
-    AsssetDetailForm, LayerTransformationForm, LayerTransformationSelectForm
+    AssetDetailForm, LayerTransformationForm, LayerTransformationSelectForm
 )
 from .icons import icon_asset_list
 from .links import link_asset_create, link_transformation_select
@@ -92,7 +92,7 @@ class AssetDeleteView(MultipleObjectConfirmActionView):
 
 
 class AssetDetailView(SingleObjectDetailView):
-    form_class = AsssetDetailForm
+    form_class = AssetDetailForm
     model = Asset
     object_permission = permission_asset_view
     pk_url_kwarg = 'asset_id'

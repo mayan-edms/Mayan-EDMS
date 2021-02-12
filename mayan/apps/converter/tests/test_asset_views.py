@@ -78,6 +78,36 @@ class AssetViewTestCase(
         event = self._get_test_object_event()
         self.assertEqual(event, None)
 
+    def test_asset_detail_view_no_permission(self):
+        self._create_test_asset()
+
+        self._clear_events()
+
+        response = self._request_test_asset_detail_view()
+        self.assertNotContains(
+            response=response, text=self.test_asset.label, status_code=404
+        )
+
+        event = self._get_test_object_event()
+        self.assertEqual(event, None)
+
+    def test_asset_detail_view_with_access(self):
+        self._create_test_asset()
+
+        self.grant_access(
+            obj=self.test_asset, permission=permission_asset_view
+        )
+
+        self._clear_events()
+
+        response = self._request_test_asset_detail_view()
+        self.assertContains(
+            response=response, text=self.test_asset.label, status_code=200
+        )
+
+        event = self._get_test_object_event()
+        self.assertEqual(event, None)
+
     def test_asset_edit_view_no_permission(self):
         self._create_test_asset()
 
