@@ -12,6 +12,12 @@ class CacheModelTestCase(CacheTestMixin, BaseTestCase):
         Exception to force the cache file creation to fail but not the
         test itself.
         """
+
+    def test_asset_get_absolute_url_method(self):
+        self._create_test_cache()
+
+        self.test_cache.get_absolute_url()
+
     def test_cache_purge(self):
         self._create_test_cache()
         self._create_test_cache_partition()

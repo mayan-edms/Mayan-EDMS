@@ -1,10 +1,16 @@
 from django.conf.urls import url
 
-from .views import CacheListView, CachePartitionPurgeView, CachePurgeView
+from .views import (
+    CacheDetailView, CacheListView, CachePartitionPurgeView, CachePurgeView
+)
 
 urlpatterns = [
     url(
         regex=r'^caches/$', name='cache_list', view=CacheListView.as_view()
+    ),
+    url(
+        regex=r'^caches/(?P<cache_id>\d+)/detail/$', name='cache_detail',
+        view=CacheDetailView.as_view()
     ),
     url(
         regex=r'^caches/(?P<cache_id>\d+)/purge/$', name='cache_purge',

@@ -58,6 +58,13 @@ class CacheTestMixin:
 
 
 class CacheViewTestMixin:
+    def _request_test_cache_detail_view(self):
+        return self.get(
+            viewname='file_caching:cache_detail', kwargs={
+                'cache_id': self.test_cache.pk
+            }
+        )
+
     def _request_test_cache_list_view(self):
         return self.get(viewname='file_caching:cache_list')
 

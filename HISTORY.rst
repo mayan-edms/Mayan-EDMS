@@ -204,3 +204,4 @@
 - Added API endpoints for the Assets model.
 - Added cached image generation for assets.
 - Added asset detail view with image preview.
+- Added a detail view for the cache model.

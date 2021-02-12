@@ -3,10 +3,12 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext
 
 from mayan.apps.views.generics import (
-    ConfirmView, MultipleObjectConfirmActionView, SingleObjectListView
+    ConfirmView, MultipleObjectConfirmActionView, SingleObjectDetailView,
+    SingleObjectListView
 )
 from mayan.apps.views.mixins import ContentTypeViewMixin, ExternalObjectViewMixin
 
+from .forms import CacheDetailForm
 from .models import Cache
 from .permissions import (
     permission_cache_partition_purge, permission_cache_purge,
@@ -14,6 +16,32 @@ from .permissions import (
 )
 
 from .tasks import task_cache_partition_purge, task_cache_purge
+
+
+class CacheDetailView(SingleObjectDetailView):
+    form_class = CacheDetailForm
+    form_extra_kwargs = {
+        'extra_fields': [
+            {
+                'field': 'label',
+            },
+            {
+                'field': 'get_maximum_size_display',
+            },
+            {
+                'field': 'get_total_size_display',
+            },
+        ]
+    }
+    model = Cache
+    object_permission = permission_cache_view
+    pk_url_kwarg = 'cache_id'
+
+    def get_extra_context(self):
+        return {
+            'object': self.object,
+            'title': _('Details cache: %s') % self.object,
+        }
 
 
 class CacheListView(SingleObjectListView):
