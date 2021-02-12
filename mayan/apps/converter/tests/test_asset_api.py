@@ -44,6 +44,7 @@ class AssetAPIViewTestCase(
 
         event = self._get_test_object_event()
         self.assertEqual(event.actor, self._test_case_user)
+        self.assertEqual(event.action_object, None)
         self.assertEqual(event.target, self.test_asset)
         self.assertEqual(event.verb, event_asset_created.id)
 
@@ -139,6 +140,7 @@ class AssetAPIViewTestCase(
 
         event = self._get_test_object_event()
         self.assertEqual(event.actor, self._test_case_user)
+        self.assertEqual(event.action_object, None)
         self.assertEqual(event.target, self.test_asset)
         self.assertEqual(event.verb, event_asset_edited.id)
 
@@ -175,6 +177,7 @@ class AssetAPIViewTestCase(
 
         event = self._get_test_object_event()
         self.assertEqual(event.actor, self._test_case_user)
+        self.assertEqual(event.action_object, None)
         self.assertEqual(event.target, self.test_asset)
         self.assertEqual(event.verb, event_asset_edited.id)
 
