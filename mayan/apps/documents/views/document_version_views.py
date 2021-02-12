@@ -176,7 +176,10 @@ class DocumentVersionExportView(MultipleObjectConfirmActionView):
 
     def object_action(self, form, instance):
         task_document_version_export.apply_async(
-            kwargs={'document_version_id': instance.pk}
+            kwargs={
+                'document_version_id': instance.pk,
+                'user_id': self.request.user.pk
+            }
         )
 
 

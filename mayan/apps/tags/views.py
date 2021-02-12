@@ -119,8 +119,8 @@ class TagDeleteActionView(MultipleObjectConfirmActionView):
     success_message_singular = _('%(count)d tag deleted successfully.')
     success_message_plural = _('%(count)d tags deleted successfully.')
     title_single = _('Delete tag: %(object)s.')
-    title_singular = _('Delete the %(count)d selected tag?')
-    title_plural = _('Delete the %(count)d selected tags?')
+    title_singular = _('Delete the %(count)d selected tag.')
+    title_plural = _('Delete the %(count)d selected tags.')
 
     def get_extra_context(self):
         context = {

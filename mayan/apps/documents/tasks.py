@@ -199,35 +199,25 @@ def task_document_version_page_list_reset(document_version_id):
 
 
 @app.task(ignore_result=True)
-def task_document_version_export(document_version_id):
+def task_document_version_export(document_version_id, user_id=None):
     DownloadFile = apps.get_model(
         app_label='storage', model_name='DownloadFile'
     )
     DocumentVersion = apps.get_model(
         app_label='documents', model_name='DocumentVersion'
     )
+    User = get_user_model()
+
+    if user_id:
+        user = User.objects.get(pk=user_id)
+    else:
+        user = None
 
     document_version = DocumentVersion.objects.get(
         pk=document_version_id
     )
 
-    with transaction.atomic():
-        download_file = DownloadFile.objects.create(
-            content_object=document_version,
-            filename='{}.pdf'.format(document_version),
-            label=_('Document version export to PDF'),
-            permission=permission_document_version_export.stored_permission
-        )
-
-        with download_file.open(mode='wb+') as file_object:
-            document_version.export(file_object=file_object)
-
-        transaction.on_commit(
-            lambda: event_document_version_exported.commit(
-                action_object=download_file,
-                target=document_version
-            )
-        )
+    document_version.export_to_download_file(user=user)
 
 
 # Document version page

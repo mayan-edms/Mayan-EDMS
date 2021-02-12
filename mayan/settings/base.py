@@ -86,6 +86,7 @@ INSTALLED_APPS = (
     'mayan.apps.locales',
     'mayan.apps.lock_manager',
     'mayan.apps.logging',
+    'mayan.apps.messaging',
     'mayan.apps.mimetype',
     'mayan.apps.navigation',
     'mayan.apps.permissions',
