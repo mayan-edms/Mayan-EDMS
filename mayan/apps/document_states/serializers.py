@@ -219,6 +219,10 @@ class WorkflowSerializer(serializers.HyperlinkedModelSerializer):
         lookup_url_kwarg='workflow_template_id',
         view_name='rest_api:workflow-document-type-list'
     )
+    image_url = serializers.HyperlinkedIdentityField(
+        lookup_url_kwarg='workflow_template_id',
+        view_name='rest_api:workflow-image'
+    )
     states = WorkflowStateSerializer(many=True, required=False)
     transitions = WorkflowTransitionSerializer(many=True, required=False)
 
@@ -230,8 +234,8 @@ class WorkflowSerializer(serializers.HyperlinkedModelSerializer):
             }
         }
         fields = (
-            'document_types_url', 'id', 'internal_name', 'label', 'states',
-            'transitions', 'url'
+            'document_types_url', 'id', 'image_url', 'internal_name',
+            'label', 'states', 'transitions', 'url'
         )
         model = Workflow
 

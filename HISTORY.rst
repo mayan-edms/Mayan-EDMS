@@ -205,3 +205,4 @@
 - Added cached image generation for assets.
 - Added asset detail view with image preview.
 - Added a detail view for the cache model.
+- Added the ``image_url`` field to the Workflow template serializer.
