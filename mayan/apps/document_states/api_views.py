@@ -23,7 +23,7 @@ from .serializers import (
     WritableWorkflowTransitionSerializer
 )
 
-from .settings import settings_workflow_image_cache_time
+from .settings import setting_workflow_image_cache_time
 from .tasks import task_generate_workflow_image
 
 
@@ -214,7 +214,7 @@ class APIWorkflowImageView(generics.RetrieveAPIView):
             if '_hash' in request.GET:
                 patch_cache_control(
                     response,
-                    max_age=settings_workflow_image_cache_time.value
+                    max_age=setting_workflow_image_cache_time.value
                 )
             return response
 

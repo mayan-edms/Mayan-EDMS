@@ -29,7 +29,7 @@ setting_workflow_image_cache_maximum_size = namespace.add_setting(
         'Specify the size in bytes.'
     ), post_edit_function=callback_update_workflow_image_cache_size
 )
-settings_workflow_image_cache_time = namespace.add_setting(
+setting_workflow_image_cache_time = namespace.add_setting(
     default=DEFAULT_WORKFLOWS_IMAGE_CACHE_TIME,
     global_name='WORKFLOWS_IMAGE_CACHE_TIME',
     help_text=_(
