@@ -60,7 +60,7 @@ setting_document_file_page_image_cache_time = namespace.add_setting(
     default=DEFAULT_DOCUMENTS_FILE_PAGE_IMAGE_CACHE_TIME,
     global_name='DOCUMENTS_FILE_PAGE_IMAGE_CACHE_TIME', help_text=_(
         'Time in seconds that the browser should cache the supplied document '
-        'file page images. The default of 31559626 seconds corresponde to '
+        'file page images. The default of 31559626 seconds correspond to '
         '1 year.'
     )
 )
@@ -126,7 +126,7 @@ setting_document_version_page_image_cache_time = namespace.add_setting(
     default=DEFAULT_DOCUMENTS_VERSION_PAGE_IMAGE_CACHE_TIME,
     global_name='DOCUMENTS_VERSION_PAGE_IMAGE_CACHE_TIME', help_text=_(
         'Time in seconds that the browser should cache the supplied document '
-        'version page images. The default of 31559626 seconds corresponde '
+        'version page images. The default of 31559626 seconds correspond '
         'to 1 year.'
     )
 )
