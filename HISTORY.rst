@@ -199,3 +199,8 @@
   missing file entry error. The model now avoids updating cache size on
   either model or storage file creation error.
 - Support disabling form help texts via ``form_hide_help_text``.
+- Docker image tagging layout has been updated. Images are tagged by version
+  and series. Series have the 's' prefix and versions have the 'v' prefix.
+- Added API endpoints for the Assets model.
+- Added cached image generation for assets.
+- Added asset detail view with image preview.
