@@ -139,7 +139,7 @@ class SignatureTestMixin:
         with open(file=TEST_SIGNATURE_FILE_PATH, mode='rb') as file_object:
             self.test_signature = DetachedSignature.objects.create(
                 document_file=self.test_document.file_latest,
-                signature_file=File(file_object)
+                signature_file=File(file=file_object)
             )
 
 

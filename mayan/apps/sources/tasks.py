@@ -112,7 +112,7 @@ def task_source_handle_upload(self, document_type_id, shared_uploaded_file_id, s
 
                         try:
                             child_shared_uploaded_file = SharedUploadedFile.objects.create(
-                                file=File(compressed_file_child)
+                                file=File(file=compressed_file_child)
                             )
                         except OperationalError as exception:
                             logger.warning(

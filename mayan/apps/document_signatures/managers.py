@@ -26,7 +26,7 @@ class DetachedSignatureManager(models.Manager):
             temporary_file_object.seek(0)
             return self.create(
                 document_file=document_file,
-                signature_file=File(temporary_file_object)
+                signature_file=File(file=temporary_file_object)
             )
 
 

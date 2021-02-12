@@ -58,7 +58,7 @@ class BufferedEncryptedFile(BufferedFile):
             self.cipher = AES.new(key=self.key, mode=AES.MODE_CBC)
             self.file_object.write(self.cipher.iv)
 
-        content = ContentFile(data)
+        content = ContentFile(content=data)
 
         count = 0
         while True:
