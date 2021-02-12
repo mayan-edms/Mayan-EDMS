@@ -248,10 +248,6 @@ class DocumentFilePage(PagedModelMixin, models.Model):
                 )
                 raise
 
-    @property
-    def is_in_trash(self):
-        return self.document_file.document.is_in_trash
-
     def get_label(self):
         return _(
             '%(document_file)s - page %(page_num)d of %(total_pages)d'
@@ -261,6 +257,10 @@ class DocumentFilePage(PagedModelMixin, models.Model):
             'total_pages': self.get_pages_last_number() or 1
         }
     get_label.short_description = _('Label')
+
+    @property
+    def is_in_trash(self):
+        return self.document_file.document.is_in_trash
 
     def natural_key(self):
         return (self.page_number, self.document_file.natural_key())
