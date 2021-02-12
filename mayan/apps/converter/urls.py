@@ -1,8 +1,9 @@
 from django.conf.urls import url
 
+from .api_views import APIAssetListView, APIAssetDetailView, APIAssetImageView
 from .views import (
-    AssetCreateView, AssetDeleteView, AssetEditView, AssetListView,
-    TransformationCreateView, TransformationDeleteView,
+    AssetCreateView, AssetDeleteView, AssetDetailView, AssetEditView,
+    AssetListView, TransformationCreateView, TransformationDeleteView,
     TransformationEditView, TransformationListView, TransformationSelectView
 )
 
@@ -18,6 +19,10 @@ urlpatterns_assets = [
     url(
         regex=r'^assets/(?P<asset_id>\d+)/delete/$',
         name='asset_single_delete', view=AssetDeleteView.as_view()
+    ),
+    url(
+        regex=r'^assets/(?P<asset_id>\d+)/detail/$',
+        name='asset_detail', view=AssetDetailView.as_view()
     ),
     url(
         regex=r'^assets/multiple/delete/$',
@@ -55,3 +60,21 @@ urlpatterns_transformations = [
 urlpatterns = []
 urlpatterns.extend(urlpatterns_assets)
 urlpatterns.extend(urlpatterns_transformations)
+
+api_urls_assets = [
+    url(
+        regex=r'^assets/$', name='asset-list',
+        view=APIAssetListView.as_view()
+    ),
+    url(
+        regex=r'^assets/(?P<asset_id>[0-9]+)/$',
+        name='asset-detail', view=APIAssetDetailView.as_view()
+    ),
+    url(
+        regex=r'^assets/(?P<asset_id>\d+)/image/$',
+        name='asset-image', view=APIAssetImageView.as_view()
+    ),
+]
+
+api_urls = []
+api_urls.extend(api_urls_assets)

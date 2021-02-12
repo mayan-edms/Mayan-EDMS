@@ -163,33 +163,32 @@ class AssertTransformationMixin:
             logger.error('Asset "%s" not found.', asset_name)
             raise
         else:
-            with asset.open() as file_object:
-                image_asset = Image.open(fp=file_object)
+            image_asset = asset.get_image()
 
-                if image_asset.mode != 'RGBA':
-                    image_asset.putalpha(alpha=255)
+            if image_asset.mode != 'RGBA':
+                image_asset.putalpha(alpha=255)
 
-                image_asset = image_asset.rotate(
-                    angle=360 - rotation, resample=Image.BICUBIC,
-                    expand=True
+            image_asset = image_asset.rotate(
+                angle=360 - rotation, resample=Image.BICUBIC,
+                expand=True
+            )
+
+            if zoom != 100.0:
+                decimal_value = zoom / 100.0
+                image_asset = image_asset.resize(
+                    (
+                        int(image_asset.size[0] * decimal_value),
+                        int(image_asset.size[1] * decimal_value)
+                    ), Image.ANTIALIAS
                 )
 
-                if zoom != 100.0:
-                    decimal_value = zoom / 100.0
-                    image_asset = image_asset.resize(
-                        (
-                            int(image_asset.size[0] * decimal_value),
-                            int(image_asset.size[1] * decimal_value)
-                        ), Image.ANTIALIAS
-                    )
+            paste_mask = image_asset.getchannel(channel='A').point(
+                lambda i: i * transparency / 100.0
+            )
 
-                paste_mask = image_asset.getchannel(channel='A').point(
-                    lambda i: i * transparency / 100.0
-                )
-
-                return {
-                    'image_asset': image_asset, 'paste_mask': paste_mask
-                }
+            return {
+                'image_asset': image_asset, 'paste_mask': paste_mask
+            }
 
 
 class TransformationAssetPaste(AssertTransformationMixin, BaseTransformation):

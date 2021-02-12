@@ -1,5 +1,6 @@
 from django.contrib.contenttypes.models import ContentType
 from django.core.files import File
+from django.db.models import Q
 
 from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.permissions.tests.mixins import PermissionTestMixin
@@ -16,13 +17,68 @@ from .literals import (
 )
 
 
+class AssetAPIViewTestMixin:
+    def _request_test_asset_create_api_view(self):
+        pk_list = list(Asset.objects.values_list('pk', flat=True))
+
+        with open(file=TEST_ASSET_PATH, mode='rb') as file_object:
+            response = self.post(
+                viewname='rest_api:asset-list', data={
+                    'label': TEST_ASSET_LABEL,
+                    'internal_name': TEST_ASSET_INTERNAL_NAME,
+                    'file': File(file=file_object)
+                }
+            )
+
+        try:
+            self.test_asset = Asset.objects.get(~Q(pk__in=pk_list))
+        except Asset.DoesNotExist:
+            self.test_asset = None
+
+        return response
+
+    def _request_test_asset_delete_api_view(self):
+        return self.delete(
+            viewname='rest_api:asset-detail',
+            kwargs={'asset_id': self.test_asset.pk}
+        )
+
+    def _request_test_asset_detail_api_view(self):
+        return self.get(
+            viewname='rest_api:asset-detail',
+            kwargs={'asset_id': self.test_asset.pk}
+        )
+
+    def _request_test_asset_edit_via_patch_api_view(self):
+        return self.patch(
+            viewname='rest_api:asset-detail', kwargs={
+                'asset_id': self.test_asset.pk
+            }, data={'label': TEST_ASSET_LABEL_EDITED}
+        )
+
+    def _request_test_asset_edit_via_put_api_view(self):
+        with open(file=TEST_ASSET_PATH, mode='rb') as file_object:
+            return self.put(
+                viewname='rest_api:asset-detail', kwargs={
+                    'asset_id': self.test_asset.pk
+                }, data={
+                    'label': TEST_ASSET_LABEL_EDITED,
+                    'internal_name': TEST_ASSET_INTERNAL_NAME,
+                    'file': File(file=file_object)
+                }
+            )
+
+    def _request_test_asset_list_api_view(self):
+        return self.get(viewname='rest_api:asset-list')
+
+
 class AssetTestMixin:
     def _create_test_asset(self):
         with open(file=TEST_ASSET_PATH, mode='rb') as file_object:
             self.test_asset = Asset.objects.create(
                 label=TEST_ASSET_LABEL,
                 internal_name=TEST_ASSET_INTERNAL_NAME,
-                file=File(file_object)
+                file=File(file=file_object)
             )
 
 

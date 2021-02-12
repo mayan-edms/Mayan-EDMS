@@ -1,12 +1,21 @@
+import hashlib
+import io
 import logging
 import uuid
 
+from PIL import Image
+from furl import furl
+
+from django.apps import apps
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.db.models import Max
+from django.urls import reverse
+from django.utils.functional import cached_property
 from django.utils.translation import ugettext, ugettext_lazy as _
 
+from mayan.apps.common.model_mixins import ExtraDataModelMixin
 from mayan.apps.common.validators import (
     YAMLValidator, validate_internal_name
 )
@@ -16,7 +25,7 @@ from mayan.apps.storage.classes import DefinedStorageLazy
 
 from .classes import Layer
 from .events import event_asset_created, event_asset_edited
-from .literals import STORAGE_NAME_ASSETS
+from .literals import STORAGE_NAME_ASSETS, STORAGE_NAME_ASSETS_CACHE
 from .managers import LayerTransformationManager, ObjectLayerManager
 from .transformations import BaseTransformation
 
@@ -27,7 +36,7 @@ def upload_to(instance, filename):
     return 'converter-asset-{}'.format(uuid.uuid4().hex)
 
 
-class Asset(models.Model):
+class Asset(ExtraDataModelMixin, models.Model):
     """
     This model keeps track of files that will be available for use with
     transformations.
@@ -55,9 +64,75 @@ class Asset(models.Model):
     def __str__(self):
         return self.label
 
+    @cached_property
+    def cache(self):
+        Cache = apps.get_model(app_label='file_caching', model_name='Cache')
+        return Cache.objects.get(
+            defined_storage_name=STORAGE_NAME_ASSETS_CACHE
+        )
+
+    @cached_property
+    def cache_partition(self):
+        partition, created = self.cache.partitions.get_or_create(
+            name='{}'.format(self.pk)
+        )
+        return partition
+
     def delete(self, *args, **kwargs):
+        self.cache_partition.delete()
         self.file.storage.delete(name=self.file.name)
         return super().delete(*args, **kwargs)
+
+    def generate_image(self):
+        cache_filename = '{}'.format(self.get_hash())
+
+        if self.cache_partition.get_file(filename=cache_filename):
+            logger.debug(
+                'asset cache file "%s" found', cache_filename
+            )
+        else:
+            logger.debug(
+                'asset cache file "%s" not found', cache_filename
+            )
+
+            image = self.get_image()
+            image_buffer = io.BytesIO()
+            image.save(image_buffer, format='PNG')
+            with self.cache_partition.create_file(filename=cache_filename) as file_object:
+                file_object.write(image_buffer.getvalue())
+
+        return cache_filename
+
+    def get_absolute_url(self):
+        return reverse(
+            viewname='converter:asset_detail', kwargs={
+                'asset_id': self.pk
+            }
+        )
+
+    def get_api_image_url(self, *args, **kwargs):
+        final_url = furl()
+        final_url.args = kwargs
+        final_url.path = reverse(
+            viewname='rest_api:asset-image',
+            kwargs={'asset_id': self.pk}
+        )
+        final_url.args['_hash'] = self.get_hash()
+
+        return final_url.tostr()
+
+    def get_hash(self):
+        with self.open() as file_object:
+            return hashlib.sha256(file_object.read()).hexdigest()
+
+    def get_image(self):
+        with self.open() as file_object:
+            image = Image.open(fp=file_object)
+
+            if image.mode != 'RGBA':
+                image.putalpha(alpha=255)
+
+            return image
 
     def open(self):
         return self.file.storage.open(name=self.file.name)

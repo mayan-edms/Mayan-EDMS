@@ -4,6 +4,8 @@ import platform
 
 from django.conf import settings
 
+ASSET_IMAGE_TASK_TIMEOUT = 60  # seconds
+
 CONVERTER_OFFICE_FILE_MIMETYPES = (
     'application/msword',
     'application/mswrite',
@@ -60,10 +62,17 @@ else:
     DEFAULT_PDFINFO_PATH = '/usr/bin/pdfinfo'
     DEFAULT_PDFTOPPM_PATH = '/usr/bin/pdftoppm'
 
+DEFAULT_CONVERTER_ASSET_CACHE_MAXIMUM_SIZE = 10 * 2 ** 20  # 10 Megabytes
+DEFAULT_CONVERTER_ASSET_CACHE_TIME = '31556926'
+DEFAULT_CONVERTER_ASSET_CACHE_STORAGE_BACKEND = 'django.core.files.storage.FileSystemStorage'
+DEFAULT_CONVERTER_ASSET_CACHE_STORAGE_BACKEND_ARGUMENTS = {
+    'location': os.path.join(settings.MEDIA_ROOT, 'converter_assets_cache')
+}
 DEFAULT_CONVERTER_ASSET_STORAGE_BACKEND = 'django.core.files.storage.FileSystemStorage'
 DEFAULT_CONVERTER_ASSET_STORAGE_BACKEND_ARGUMENTS = {
     'location': os.path.join(settings.MEDIA_ROOT, 'converter_assets')
 }
+
 DEFAULT_CONVERTER_GRAPHICS_BACKEND = 'mayan.apps.converter.backends.python.Python'
 DEFAULT_PAGE_NUMBER = 1
 DEFAULT_PDFTOPPM_DPI = 300
@@ -84,3 +93,6 @@ DEFAULT_CONVERTER_GRAPHICS_BACKEND_ARGUMENTS = {
 }
 
 STORAGE_NAME_ASSETS = 'converter__assets'
+STORAGE_NAME_ASSETS_CACHE = 'converter__assets_cache'
+
+TASK_ASSET_IMAGE_GENERATE_RETRY_DELAY = 10

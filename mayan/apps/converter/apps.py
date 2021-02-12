@@ -1,3 +1,4 @@
+from django.db.models.signals import post_migrate
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
@@ -19,6 +20,7 @@ from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
 
 from .events import event_asset_edited
+from .handlers import handler_create_asset_cache
 from .links import (
     link_asset_create, link_asset_multiple_delete,
     link_asset_single_delete, link_asset_edit, link_asset_list,
@@ -34,6 +36,7 @@ from .permissions import (
 class ConverterApp(MayanAppConfig):
     app_namespace = 'converter'
     app_url = 'converter'
+    has_rest_api = True
     has_tests = True
     name = 'mayan.apps.converter'
     verbose_name = _('Converter')
@@ -66,11 +69,12 @@ class ConverterApp(MayanAppConfig):
         )
 
         SourceColumn(
-            attribute='label', is_identifier=True, is_sortable=True,
-            source=Asset
+            attribute='label', is_identifier=True,
+            is_object_absolute_url=True, is_sortable=True, source=Asset
         )
         SourceColumn(
-            attribute='internal_name', is_sortable=True, source=Asset
+            attribute='internal_name', include_label=True,
+            is_object_absolute_url=True, is_sortable=True, source=Asset
         )
 
         SourceColumn(
@@ -126,4 +130,9 @@ class ConverterApp(MayanAppConfig):
                 'converter:transformation_create',
                 'converter:transformation_list'
             )
+        )
+
+        post_migrate.connect(
+            dispatch_uid='converter_handler_create_asset_cache',
+            receiver=handler_create_asset_cache,
         )
