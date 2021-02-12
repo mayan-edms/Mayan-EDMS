@@ -43,6 +43,7 @@ from .settings import setting_paginate_by
 
 # Required by other views, moved to the top
 class MultiFormView(DjangoFormView):
+    form_extra_kwargs = None
     prefix = None
     prefixes = {}
     template_name = 'appearance/generic_form.html'
@@ -92,7 +93,7 @@ class MultiFormView(DjangoFormView):
         return self.form_classes
 
     def get_form_extra_kwargs(self, form_name):
-        return None
+        return self.form_extra_kwargs
 
     def get_form_kwargs(self, form_name):
         kwargs = {}
