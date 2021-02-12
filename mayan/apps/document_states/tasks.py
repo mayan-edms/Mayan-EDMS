@@ -4,18 +4,29 @@ from django.apps import apps
 
 from mayan.celery import app
 
+from .literals import TASK_GENERATE_WORKFLOW_IMAGE_RETRY_DELAY
+
 logger = logging.getLogger(name=__name__)
 
 
-@app.task()
-def task_generate_workflow_image(document_state_id):
+@app.task(
+    bind=True, default_retry_delay=TASK_GENERATE_WORKFLOW_IMAGE_RETRY_DELAY
+)
+def task_generate_workflow_image(self, document_state_id):
     Workflow = apps.get_model(
         app_label='document_states', model_name='Workflow'
     )
 
     workflow = Workflow.objects.get(pk=document_state_id)
 
-    return workflow.generate_image()
+    try:
+        return workflow.generate_image()
+    except LockError as exception:
+        logger.warning(
+            'LockError during attempt to generate workflow "%s" image. '
+            'Retrying.', workflow.internal_name
+        )
+        raise self.retry(exc=exception)
 
 
 @app.task(ignore_result=True)

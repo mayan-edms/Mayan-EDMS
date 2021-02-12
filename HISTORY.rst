@@ -206,3 +206,4 @@
 - Added asset detail view with image preview.
 - Added a detail view for the cache model.
 - Added the ``image_url`` field to the Workflow template serializer.
+- Added retry support for the workflow preview generation task.
