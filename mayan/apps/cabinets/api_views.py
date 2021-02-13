@@ -102,6 +102,17 @@ class APICabinetDocumentListView(generics.ListCreateAPIView):
         'POST': (permission_cabinet_add_document,)
     }
 
+    def get_cabinet(self):
+        return get_object_or_404(klass=Cabinet, pk=self.kwargs['cabinet_id'])
+
+    def get_queryset(self):
+        cabinet = self.get_cabinet()
+
+        return AccessControlList.objects.restrict_queryset(
+            permission=permission_document_view,
+            queryset=cabinet.documents.all(), user=self.request.user
+        )
+
     def get_serializer(self, *args, **kwargs):
         if not self.request:
             return None
@@ -127,17 +138,6 @@ class APICabinetDocumentListView(generics.ListCreateAPIView):
             )
 
         return context
-
-    def get_cabinet(self):
-        return get_object_or_404(klass=Cabinet, pk=self.kwargs['cabinet_id'])
-
-    def get_queryset(self):
-        cabinet = self.get_cabinet()
-
-        return AccessControlList.objects.restrict_queryset(
-            permission=permission_document_view,
-            queryset=cabinet.documents.all(), user=self.request.user
-        )
 
     def perform_create(self, serializer):
         serializer.save(cabinet=self.get_cabinet())
