@@ -13,7 +13,7 @@ class CacheModelTestCase(CacheTestMixin, BaseTestCase):
         test itself.
         """
 
-    def test_asset_get_absolute_url_method(self):
+    def test_cache_get_absolute_url_method(self):
         self._create_test_cache()
 
         self.test_cache.get_absolute_url()
