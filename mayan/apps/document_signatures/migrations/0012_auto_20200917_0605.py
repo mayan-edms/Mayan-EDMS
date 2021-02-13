@@ -3,7 +3,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('document_signatures', '0011_rename_signaturebasemodel_field'),
     ]
