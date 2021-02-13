@@ -211,3 +211,5 @@
   template hook. This allows the autoadmin app to show login information
   without directly modifying the login template.
 - Update tags app to improve user event tracking on view and API.
+- Support deleting multiple document files.
+- Track document file deletion event user in views.

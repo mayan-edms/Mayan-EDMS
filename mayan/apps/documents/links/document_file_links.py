@@ -25,6 +25,11 @@ link_document_file_delete = Link(
     permissions=(permission_document_file_delete,), tags='dangerous',
     text=_('Delete'), view='documents:document_file_delete',
 )
+link_document_file_delete_multiple = Link(
+    icon=icon_document_file_delete,
+    permissions=(permission_document_file_delete,), tags='dangerous',
+    text=_('Delete'), view='documents:document_file_delete_multiple',
+)
 link_document_file_edit = Link(
     args='object.pk', icon=icon_document_file_edit,
     permissions=(permission_document_file_edit,),

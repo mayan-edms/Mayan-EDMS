@@ -28,9 +28,9 @@ class DocumentAPIViewTestCase(
     auto_upload_test_document = False
 
     def test_document_create_api_view_no_permission(self):
-        self._clear_events()
-
         document_count = Document.objects.count()
+
+        self._clear_events()
 
         response = self._request_test_document_create_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)

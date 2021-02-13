@@ -9,7 +9,10 @@ from mayan.apps.file_caching.permissions import permission_cache_partition_purge
 from mayan.apps.file_caching.tests.mixins import CachePartitionViewTestMixin
 from mayan.apps.testing.tests.mixins import ContentTypeTestCaseMixin
 
-from ..events import event_document_file_downloaded
+from ..events import (
+    event_document_file_deleted, event_document_file_downloaded,
+    event_document_file_edited,
+)
 from ..permissions import (
     permission_document_file_delete, permission_document_file_download,
     permission_document_file_edit, permission_document_file_print,
@@ -27,16 +30,27 @@ class DocumentFileViewTestCase(
     DocumentFileTestMixin, DocumentFileViewTestMixin,
     GenericDocumentViewTestCase
 ):
+    _test_event_object_name = 'test_document'
+
     def test_document_file_delete_no_permission(self):
         first_file = self.test_document.file_latest
         self._upload_new_file()
+
+        test_document_file_count = self.test_document.files.count()
+
+        self._clear_events()
 
         response = self._request_test_document_file_delete_view(
             document_file=first_file
         )
         self.assertEqual(response.status_code, 404)
 
-        self.assertEqual(self.test_document.files.count(), 2)
+        self.assertEqual(
+            self.test_document.files.count(), test_document_file_count
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_document_file_delete_with_access(self):
         first_file = self.test_document.file_latest
@@ -47,15 +61,75 @@ class DocumentFileViewTestCase(
             permission=permission_document_file_delete
         )
 
+        test_document_file_count = self.test_document.files.count()
+
+        self._clear_events()
+
         response = self._request_test_document_file_delete_view(
             document_file=first_file
         )
         self.assertEqual(response.status_code, 302)
 
-        self.assertEqual(self.test_document.files.count(), 1)
+        self.assertEqual(
+            self.test_document.files.count(), test_document_file_count - 1
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_document)
+        self.assertEqual(events[0].verb, event_document_file_deleted.id)
+
+    def test_document_file_delete_multiple_no_permission(self):
+        self._upload_new_file()
+
+        test_document_file_count = self.test_document.files.count()
+
+        self._clear_events()
+
+        response = self._request_test_document_file_delete_multiple_view()
+
+        self.assertEqual(response.status_code, 404)
+
+        self.assertEqual(
+            self.test_document.files.count(), test_document_file_count
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_file_delete_multiple_with_access(self):
+        self._upload_new_file()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_file_delete
+        )
+
+        test_document_file_count = self.test_document.files.count()
+
+        self._clear_events()
+
+        response = self._request_test_document_file_delete_multiple_view()
+
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(
+            self.test_document.files.count(), test_document_file_count - 1
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_document)
+        self.assertEqual(events[0].verb, event_document_file_deleted.id)
 
     def test_document_file_edit_view_no_permission(self):
         document_file_comment = self.test_document_file.comment
+
+        self._clear_events()
 
         response = self._request_test_document_file_edit_view()
         self.assertEqual(response.status_code, 404)
@@ -66,6 +140,9 @@ class DocumentFileViewTestCase(
             document_file_comment
         )
 
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
     def test_document_file_edit_view_with_access(self):
         self.grant_access(
             obj=self.test_document_file,
@@ -74,6 +151,8 @@ class DocumentFileViewTestCase(
 
         document_file_comment = self.test_document_file.comment
         document_file_filename = self.test_document_file.filename
+
+        self._clear_events()
 
         response = self._request_test_document_file_edit_view()
         self.assertEqual(response.status_code, 302)
@@ -88,9 +167,21 @@ class DocumentFileViewTestCase(
             document_file_filename
         )
 
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+        self.assertEqual(events[0].action_object, self.test_document)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_document_file)
+        self.assertEqual(events[0].verb, event_document_file_edited.id)
+
     def test_document_file_list_no_permission(self):
+        self._clear_events()
+
         response = self._request_test_document_file_list_view()
         self.assertEqual(response.status_code, 404)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_document_file_list_with_access(self):
         self.grant_access(
@@ -98,13 +189,20 @@ class DocumentFileViewTestCase(
             permission=permission_document_file_view
         )
 
+        self._clear_events()
+
         response = self._request_test_document_file_list_view()
         self.assertContains(
             response=response, status_code=200,
             text=str(self.test_document_file)
         )
 
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
     def test_document_file_print_form_view_no_permission(self):
+        self._clear_events()
+
         response = self._request_test_document_file_print_form_view()
         self.assertEqual(response.status_code, 404)
 
@@ -114,12 +212,22 @@ class DocumentFileViewTestCase(
             permission=permission_document_file_print
         )
 
+        self._clear_events()
+
         response = self._request_test_document_file_print_form_view()
         self.assertEqual(response.status_code, 200)
 
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
     def test_document_file_print_view_no_permission(self):
+        self._clear_events()
+
         response = self._request_test_document_file_print_view()
         self.assertEqual(response.status_code, 404)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_document_file_print_view_with_access(self):
         self.grant_access(
@@ -127,8 +235,13 @@ class DocumentFileViewTestCase(
             permission=permission_document_file_print
         )
 
+        self._clear_events()
+
         response = self._request_test_document_file_print_view()
         self.assertEqual(response.status_code, 200)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
 
 class DocumentFileDownloadViewTestCase(

@@ -12,7 +12,7 @@ from mayan.apps.converter.permissions import (
 )
 from mayan.apps.sources.links import link_document_file_upload
 from mayan.apps.views.generics import (
-    FormView, MultipleObjectConfirmActionView, SingleObjectDeleteView,
+    FormView, MultipleObjectConfirmActionView, MultipleObjectDeleteView,
     SingleObjectDetailView, SingleObjectDownloadView, SingleObjectEditView,
     SingleObjectListView
 )
@@ -41,25 +41,52 @@ __all__ = (
 logger = logging.getLogger(name=__name__)
 
 
-class DocumentFileDeleteView(SingleObjectDeleteView):
+class DocumentFileDeleteView(MultipleObjectDeleteView):
+    error_message = _(
+        'Error deleting document file "%(instance)s"; %(exception)s'
+    )
     object_permission = permission_document_file_delete
     pk_url_kwarg = 'document_file_id'
     source_queryset = DocumentFile.valid
+    success_message_single = _(
+        'Document file "%(object)s" deleted successfully.'
+    )
+    success_message_singular = _(
+        '%(count)d document file deleted successfully.'
+    )
+    success_message_plural = _(
+        '%(count)d document files deleted successfully.'
+    )
+    title_single = _('Delete document file: %(object)s.')
+    title_singular = _('Delete the %(count)d selected document file.')
+    title_plural = _('Delete the %(count)d selected document files.')
 
     def get_extra_context(self):
-        return {
+        context = {
             'message': _(
                 'All document files pages from this document file and the '
                 'document version pages linked to them will be deleted too.'
-            ),
-            'object': self.object,
-            'title': _('Delete document file %s ?') % self.object,
+            )
+        }
+
+        if self.object_list.count() == 1:
+            context.update(
+                {
+                    'object': self.object_list.first()
+                }
+            )
+
+        return context
+
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user
         }
 
     def get_post_action_redirect(self):
         return reverse(
             viewname='documents:document_file_list', kwargs={
-                'document_id': self.object.document.pk
+                'document_id': self.object_list.first().document.pk
             }
         )
 

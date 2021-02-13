@@ -105,6 +105,11 @@ urlpatterns_document_files = [
         view=DocumentFileDeleteView.as_view()
     ),
     url(
+        regex=r'^documents/files/multiple/delete/$',
+        name='document_file_delete_multiple',
+        view=DocumentFileDeleteView.as_view()
+    ),
+    url(
         regex=r'^documents/files/(?P<document_file_id>\d+)/download/$',
         name='document_file_download',
         view=DocumentFileDownloadView.as_view()

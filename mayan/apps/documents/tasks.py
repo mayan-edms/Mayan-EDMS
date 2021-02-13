@@ -2,17 +2,14 @@ import logging
 
 from django.apps import apps
 from django.contrib.auth import get_user_model
-from django.db import OperationalError, transaction
-from django.utils.translation import ugettext_lazy as _
+from django.db import OperationalError
 
 from mayan.apps.lock_manager.exceptions import LockError
 from mayan.celery import app
 
-from .events import event_document_version_exported
 from .literals import (
     UPDATE_PAGE_COUNT_RETRY_DELAY, UPLOAD_NEW_VERSION_RETRY_DELAY
 )
-from .permissions import permission_document_version_export
 from .settings import (
     setting_task_document_file_page_image_generate_retry_delay,
     setting_task_document_version_page_image_generate_retry_delay
@@ -200,9 +197,6 @@ def task_document_version_page_list_reset(document_version_id):
 
 @app.task(ignore_result=True)
 def task_document_version_export(document_version_id, user_id=None):
-    DownloadFile = apps.get_model(
-        app_label='storage', model_name='DownloadFile'
-    )
     DocumentVersion = apps.get_model(
         app_label='documents', model_name='DocumentVersion'
     )
