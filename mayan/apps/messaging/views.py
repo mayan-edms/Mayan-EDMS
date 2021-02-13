@@ -52,7 +52,7 @@ class MessageDeleteView(MultipleObjectConfirmActionView):
     success_message_plural = _('%(count)d messages deleted successfully.')
     title_single = _('Delete message: %(object)s.')
     title_singular = _('Delete the %(count)d selected message.')
-    title_plural = _('Delete the %(count)d selected message.')
+    title_plural = _('Delete the %(count)d selected messages.')
 
     def get_extra_context(self):
         context = {
@@ -143,7 +143,7 @@ class MessageMarkReadView(MultipleObjectConfirmActionView):
     )
     title_single = _('Mark the message "%(object)s" as read.')
     title_singular = _('Mark the %(count)d selected message as read.')
-    title_plural = _('Mark the %(count)d selected message as read.')
+    title_plural = _('Mark the %(count)d selected messages as read.')
 
     def get_extra_context(self):
         context = {}

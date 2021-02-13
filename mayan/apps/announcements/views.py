@@ -57,7 +57,7 @@ class AnnouncementDeleteView(MultipleObjectConfirmActionView):
     )
     title_single = _('Delete announcement: %(object)s.')
     title_singular = _('Delete the %(count)d selected announcement.')
-    title_plural = _('Delete the %(count)d selected announcement.')
+    title_plural = _('Delete the %(count)d selected announcements.')
 
     def get_extra_context(self):
         context = {
