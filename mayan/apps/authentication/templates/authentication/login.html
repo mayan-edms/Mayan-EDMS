@@ -4,7 +4,6 @@
 {% load static %}
 
 {% load appearance_tags %}
-{% load autoadmin_tags %}
 {% load common_tags %}
 {% load smart_settings_tags %}
 
@@ -13,8 +12,6 @@
 {% block project_name %}{% endblock %}
 
 {% block content_plain %}
-    {% autoadmin_partial %}
-
     {% appearance_app_templates template_name='login_content' %}
 
     <div class="row">

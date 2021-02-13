@@ -207,3 +207,6 @@
 - Added a detail view for the cache model.
 - Added the ``image_url`` field to the Workflow template serializer.
 - Added retry support for the workflow preview generation task.
+- Updated the autoadmin app to use the login template ``login_content``
+  template hook. This allows the autoadmin app to show login information
+  without directly modifying the login template.
