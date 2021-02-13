@@ -37,3 +37,9 @@ class Migration(migrations.Migration):
             ),
         ),
     ]
+
+    run_before = [
+        # In this migration EventType becomes StoredEventType. Therefore this
+        # migration needs to run before the source is renamed.
+        ('events', '0004_auto_20170731_0423')
+    ]
