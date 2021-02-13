@@ -37,14 +37,14 @@ setting_workflow_image_cache_time = namespace.add_setting(
         'images. The default of 31559626 seconds correspond to 1 year.'
     )
 )
-setting_workflowimagecache_storage = namespace.add_setting(
+setting_workflow_image_cache_storage_backend = namespace.add_setting(
     default=DEFAULT_WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND,
     global_name='WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND', help_text=_(
         'Path to the Storage subclass to use when storing the cached '
         'workflow image files.'
     )
 )
-setting_workflowimagecache_storage_arguments = namespace.add_setting(
+setting_workflow_image_cache_storage_backend_arguments = namespace.add_setting(
     default=DEFAULT_WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND_ARGUMENTS,
     global_name='WORKFLOWS_IMAGE_CACHE_STORAGE_BACKEND_ARGUMENTS',
     help_text=_(

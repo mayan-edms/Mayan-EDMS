@@ -189,7 +189,7 @@
   permission layout of the metadata and tag apps.
 - File caching now uses the same lock for all file methods. This ensures that
   a cache file that is being deleted or purge is not open for reading and
-  viceversa.
+  vice versa.
 - A method decorator was added to the lock manager app to ease usage of the
   same lock workflow in methods of the same class.
 - The error handling of the ``CachePartitionFile`` methods was improved.
@@ -213,3 +213,5 @@
 - Update tags app to improve user event tracking on view and API.
 - Support deleting multiple document files.
 - Track document file deletion event user in views.
+- Rename ``setting_workflowimagecache_storage`` to
+  ``setting_workflow_image_cache_storage_backend``.

@@ -4,15 +4,15 @@ from mayan.apps.storage.tests.mixins import StorageSettingTestMixin
 from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..literals import STORAGE_NAME_WORKFLOW_CACHE
-from ..settings import setting_workflowimagecache_storage_arguments
+from ..settings import setting_workflow_image_cache_storage_backend_arguments
 
 
 class WorkflowStorageSettingsTestCase(
     SmartSettingTestMixin, StorageSettingTestMixin, BaseTestCase
 ):
-    def test_setting_workflowimagecache_storage_arguments_invalid_value(self):
+    def test_setting_workflow_image_cache_storage_backend_arguments_invalid_value(self):
         assertion = self._test_storage_setting_with_invalid_value(
-            setting=setting_workflowimagecache_storage_arguments,
+            setting=setting_workflow_image_cache_storage_backend_arguments,
             storage_module=storages,
             storage_name=STORAGE_NAME_WORKFLOW_CACHE
         )
