@@ -1,5 +1,7 @@
 from mayan.apps.documents.tests.literals import TEST_SMALL_DOCUMENT_PATH
 
+from django.db.models import Q
+
 from ..models import Tag
 
 from .literals import (
@@ -91,7 +93,7 @@ class TagAPIViewTestMixin:
         )
 
     def _request_test_tag_create_api_view(self):
-        pk_list = list(Tag.objects.values_list('pk', flat=True))
+        pk_list = list(Tag.objects.values('pk'))
 
         response = self.post(
             viewname='rest_api:tag-list', data={
@@ -99,7 +101,12 @@ class TagAPIViewTestMixin:
             }
         )
 
-        self.test_tag = Tag.objects.exclude(pk__in=pk_list).first()
+        try:
+            self.test_tag = Tag.objects.get(
+                ~Q(pk__in=pk_list)
+            )
+        except Tag.DoesNotExist:
+            self.test_tag = None
 
         return response
 
@@ -157,12 +164,23 @@ class TagTestMixin:
 
 class TagViewTestMixin:
     def _request_test_tag_create_view(self):
-        return self.post(
+        pk_list = list(Tag.objects.values('pk'))
+
+        response = self.post(
             viewname='tags:tag_create', data={
                 'label': TEST_TAG_LABEL,
                 'color': TEST_TAG_COLOR
             }
         )
+
+        try:
+            self.test_tag = Tag.objects.get(
+                ~Q(pk__in=pk_list)
+            )
+        except Tag.DoesNotExist:
+            self.test_tag = None
+
+        return response
 
     def _request_test_tag_delete_view(self):
         return self.post(

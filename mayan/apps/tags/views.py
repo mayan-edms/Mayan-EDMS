@@ -105,8 +105,10 @@ class TagCreateView(SingleObjectCreateView):
     post_action_redirect = reverse_lazy(viewname='tags:tag_list')
     view_permission = permission_tag_create
 
-    def get_save_extra_data(self):
-        return {'_user': self.request.user}
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user
+        }
 
 
 class TagDeleteActionView(MultipleObjectConfirmActionView):
@@ -154,8 +156,10 @@ class TagEditView(SingleObjectEditView):
             'title': _('Edit tag: %s') % self.object,
         }
 
-    def get_save_extra_data(self):
-        return {'_user': self.request.user}
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user
+        }
 
 
 class TagListView(SingleObjectListView):

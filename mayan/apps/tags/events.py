@@ -4,7 +4,7 @@ from mayan.apps.events.classes import EventTypeNamespace
 
 namespace = EventTypeNamespace(label=_('Tags'), name='tags')
 
-event_tag_attach = namespace.add_event_type(
+event_tag_attached = namespace.add_event_type(
     label=_('Tag attached to document'), name='attach'
 )
 event_tag_created = namespace.add_event_type(

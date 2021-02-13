@@ -210,3 +210,4 @@
 - Updated the autoadmin app to use the login template ``login_content``
   template hook. This allows the autoadmin app to show login information
   without directly modifying the login template.
+- Update tags app to improve user event tracking on view and API.

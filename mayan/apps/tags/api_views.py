@@ -31,6 +31,11 @@ class APITagListView(generics.ListCreateAPIView):
     mayan_view_permissions = {'POST': (permission_tag_create,)}
     queryset = Tag.objects.all()
 
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user
+        }
+
     def get_serializer_class(self):
         if self.request.method == 'GET':
             return TagSerializer
@@ -53,6 +58,11 @@ class APITagView(generics.RetrieveUpdateDestroyAPIView):
         'PUT': (permission_tag_edit,)
     }
     queryset = Tag.objects.all()
+
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user
+        }
 
     def get_serializer_class(self):
         if self.request.method == 'GET':

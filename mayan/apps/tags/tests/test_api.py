@@ -7,7 +7,7 @@ from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
 from ..events import (
-    event_tag_attach, event_tag_created, event_tag_edited, event_tag_removed
+    event_tag_attached, event_tag_created, event_tag_edited, event_tag_removed
 )
 from ..models import Tag
 from ..permissions import (
@@ -47,7 +47,8 @@ class TagAPIViewTestCase(TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase):
         self.assertEqual(Tag.objects.count(), tag_count + 1)
 
         event = self._get_test_object_event()
-        self.assertEqual(event.actor, self.test_tag)
+        self.assertEqual(event.actor, self._test_case_user)
+        self.assertEqual(event.action_object, None)
         self.assertEqual(event.target, self.test_tag)
         self.assertEqual(event.verb, event_tag_created.id)
 
@@ -146,7 +147,8 @@ class TagAPIViewTestCase(TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase):
         self.assertNotEqual(self.test_tag.color, tag_color)
 
         event = self._get_test_object_event()
-        self.assertEqual(event.actor, self.test_tag)
+        self.assertEqual(event.actor, self._test_case_user)
+        self.assertEqual(event.action_object, None)
         self.assertEqual(event.target, self.test_tag)
         self.assertEqual(event.verb, event_tag_edited.id)
 
@@ -186,7 +188,8 @@ class TagAPIViewTestCase(TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase):
         self.assertNotEqual(self.test_tag.color, tag_color)
 
         event = self._get_test_object_event()
-        self.assertEqual(event.actor, self.test_tag)
+        self.assertEqual(event.actor, self._test_case_user)
+        self.assertEqual(event.action_object, None)
         self.assertEqual(event.target, self.test_tag)
         self.assertEqual(event.verb, event_tag_edited.id)
 
@@ -353,7 +356,7 @@ class TagDocumentAPIViewTestCase(
         self.assertEqual(event.actor, self._test_case_user)
         self.assertEqual(event.action_object, self.test_tag)
         self.assertEqual(event.target, self.test_document)
-        self.assertEqual(event.verb, event_tag_attach.id)
+        self.assertEqual(event.verb, event_tag_attached.id)
 
     def test_document_tag_detail_api_view_no_permission(self):
         self.test_tag.documents.add(self.test_document)

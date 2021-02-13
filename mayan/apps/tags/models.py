@@ -1,20 +1,23 @@
-from django.db import models, transaction
+from django.db import models
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
 from colorful.fields import RGBColorField
 
 from mayan.apps.acls.models import AccessControlList
+from mayan.apps.common.model_mixins import ExtraDataModelMixin
+from mayan.apps.events.classes import EventManagerSave
+from mayan.apps.events.decorators import method_event
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.permissions import permission_document_view
 
 from .events import (
-    event_tag_attach, event_tag_created, event_tag_edited, event_tag_removed
+    event_tag_attached, event_tag_created, event_tag_edited, event_tag_removed
 )
 from .html_widgets import widget_single_tag
 
 
-class Tag(models.Model):
+class Tag(ExtraDataModelMixin, models.Model):
     """
     This model represents a binary property that can be applied to a document.
     The tag can have a label and a color.
@@ -45,7 +48,7 @@ class Tag(models.Model):
         Attach a tag to a document and commit the corresponding event.
         """
         self.documents.add(document)
-        event_tag_attach.commit(
+        event_tag_attached.commit(
             action_object=self, actor=user, target=document
         )
 
@@ -88,19 +91,19 @@ class Tag(models.Model):
             action_object=self, actor=user, target=document
         )
 
+    @method_event(
+        event_manager_class=EventManagerSave,
+        created={
+            'event': event_tag_created,
+            'target': 'self',
+        },
+        edited={
+            'event': event_tag_edited,
+            'target': 'self',
+        }
+    )
     def save(self, *args, **kwargs):
-        _user = kwargs.pop('_user', None)
-        created = not self.pk
-
-        with transaction.atomic():
-            result = super().save(*args, **kwargs)
-
-            if created:
-                event_tag_created.commit(actor=_user, target=self)
-            else:
-                event_tag_edited.commit(actor=_user, target=self)
-
-            return result
+        return super().save(*args, **kwargs)
 
 
 class DocumentTag(Tag):
