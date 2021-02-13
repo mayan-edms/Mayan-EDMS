@@ -101,6 +101,7 @@ INSTALLED_APPS = (
     'mayan.apps.user_management',
     'mayan.apps.views',
     # Project apps
+    'mayan.apps.announcements',
     'mayan.apps.motd',
     # Document apps
     'mayan.apps.cabinets',

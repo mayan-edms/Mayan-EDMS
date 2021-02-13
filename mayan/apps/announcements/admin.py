@@ -1,8 +1,8 @@
 from django.contrib import admin
 
-from .models import Message
+from .models import Announcement
 
 
-@admin.register(Message)
-class MessageAdmin(admin.ModelAdmin):
+@admin.register(Announcement)
+class AnnouncementAdmin(admin.ModelAdmin):
     list_display = ('label', 'enabled', 'start_datetime', 'end_datetime')
