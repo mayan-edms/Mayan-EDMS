@@ -10,6 +10,11 @@
 - Update file caching migration 0005 to have Django generate the SQL query
   for each respective backend. Closes GitLab issue #964. Thanks to forum
   user @lsmoker for the report and research.
+- Backports from version 4.0:
+
+    - Added a check to the task manager app to ensure all defined tasks are
+      properly configure in their respective ``queues.py`` modules.
+    - Fix dynamic search task names during queue registration.
 
 3.5.6 (2021-03-14)
 ==================

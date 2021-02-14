@@ -2,6 +2,7 @@ import logging
 
 from kombu import Exchange, Queue
 
+from django.core.exceptions import ImproperlyConfigured
 from django.utils.encoding import force_text
 from django.utils.module_loading import import_string
 
@@ -56,6 +57,7 @@ class Task:
 class CeleryQueue(AppsModuleLoaderMixin):
     _loader_module_name = 'queues'
     _registry = {}
+    _registry_task_types = {}
 
     @classmethod
     def all(cls):
@@ -71,6 +73,14 @@ class CeleryQueue(AppsModuleLoaderMixin):
     def load_modules(cls):
         super().load_modules()
         CeleryQueue.update_celery()
+
+        for task_name, task in celery_app.tasks.items():
+            if not task_name.startswith('celery') and task_name not in cls._registry_task_types:
+                raise ImproperlyConfigured(
+                    'Task `{}` is not properly configured.'.format(
+                        task_name
+                    )
+                )
 
     @classmethod
     def update_celery(cls):
@@ -102,6 +112,7 @@ class CeleryQueue(AppsModuleLoaderMixin):
     def add_task_type(self, *args, **kwargs):
         task_type = TaskType(*args, **kwargs)
         self.task_types.append(task_type)
+        self.__class__._registry_task_types[task_type.dotted_path] = self
         return task_type
 
     def _update_celery(self):
