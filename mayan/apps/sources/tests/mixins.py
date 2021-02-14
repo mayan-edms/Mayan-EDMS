@@ -267,15 +267,20 @@ class WatchFolderTestMixin:
     def setUp(self):
         super().setUp()
         self.temporary_directory = mkdtemp()
+        self.test_watch_folders = []
 
     def tearDown(self):
         shutil.rmtree(self.temporary_directory)
         super().tearDown()
 
-    def _create_test_watchfolder(self):
-        self.test_watch_folder = WatchFolderSource.objects.create(
+    def _create_test_watchfolder(self, label=None):
+        kwargs = dict(
             document_type=self.test_document_type,
             folder_path=self.temporary_directory,
             include_subdirectories=False,
+            label=label or 'test source',
             uncompress=SOURCE_UNCOMPRESS_CHOICE_Y
         )
+
+        self.test_watch_folder = WatchFolderSource.objects.create(**kwargs)
+        self.test_watch_folders.append(self.test_watch_folder)

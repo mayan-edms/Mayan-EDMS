@@ -8,7 +8,7 @@ import mock
 from django.core import mail
 from django.utils.encoding import force_bytes, force_text
 
-from django_celery_beat.models import PeriodicTask
+from django_celery_beat.models import IntervalSchedule, PeriodicTask
 
 from mayan.apps.common.serialization import yaml_dump
 from mayan.apps.documents.models import Document
@@ -285,14 +285,30 @@ class IntervalSourceTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
         periodic_task_count = PeriodicTask.objects.count()
 
         self._create_test_watchfolder()
-        self.assertTrue(PeriodicTask.objects.count() > periodic_task_count)
+        self.assertEqual(PeriodicTask.objects.count(), periodic_task_count + 1)
 
     def test_periodic_task_delete(self):
         self._create_test_watchfolder()
         periodic_task_count = PeriodicTask.objects.count()
 
         self.test_document_type.delete()
-        self.assertTrue(PeriodicTask.objects.count() < periodic_task_count)
+        self.assertEqual(PeriodicTask.objects.count(), periodic_task_count - 1)
+
+    def test_interval_schedule_preseve(self):
+        internal_schedule_count = IntervalSchedule.objects.count()
+
+        self._create_test_watchfolder(label='test source 1')
+        self._create_test_watchfolder(label='test source 2')
+
+        self.assertEqual(IntervalSchedule.objects.count(), internal_schedule_count + 1)
+
+        self.test_watch_folders[1].delete()
+
+        self.assertEqual(IntervalSchedule.objects.count(), internal_schedule_count + 1)
+
+        self.test_watch_folders[0].delete()
+
+        self.assertEqual(IntervalSchedule.objects.count(), internal_schedule_count)
 
 
 class POP3SourceTestCase(GenericDocumentTestCase):

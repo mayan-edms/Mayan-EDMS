@@ -181,7 +181,7 @@ class IntervalBaseModel(OutOfProcessSource):
 
             interval_instance = periodic_task.interval
 
-            if tuple(interval_instance.periodictask_set.values_list('id', flat=True)) == (periodic_task.pk,):
+            if interval_instance.periodictask_set.count() == 1:
                 # Only delete the interval if nobody else is using it.
                 interval_instance.delete()
             else:
