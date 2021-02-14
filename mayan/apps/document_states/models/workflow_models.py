@@ -6,15 +6,18 @@ from graphviz import Digraph
 
 from django.apps import apps
 from django.core import serializers
-from django.db import IntegrityError, models, transaction
+from django.db import IntegrityError, models
 from django.urls import reverse
 from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
+from mayan.apps.common.model_mixins import ExtraDataModelMixin
 from mayan.apps.common.validators import validate_internal_name
 from mayan.apps.documents.models import Document, DocumentType
 from mayan.apps.documents.permissions import permission_document_view
+from mayan.apps.events.classes import EventManagerSave
+from mayan.apps.events.decorators import method_event
 from ..events import event_workflow_created, event_workflow_edited
 from ..literals import (
     STORAGE_NAME_WORKFLOW_CACHE, SYMBOL_MATH_CONDITIONAL,
@@ -26,7 +29,7 @@ __all__ = ('Workflow', 'WorkflowRuntimeProxy')
 logger = logging.getLogger(name=__name__)
 
 
-class Workflow(models.Model):
+class Workflow(ExtraDataModelMixin, models.Model):
     """
     Fields:
     * label - Identifier. A name/label to call the workflow
@@ -253,6 +256,21 @@ class Workflow(models.Model):
 
         return diagram.pipe()
 
+    @method_event(
+        event_manager_class=EventManagerSave,
+        created={
+            'event': event_workflow_created,
+            'target': 'self',
+        },
+        edited={
+            'event': event_workflow_edited,
+            'target': 'self',
+        }
+    )
+    def save(self, *args, **kwargs):
+        return super().save(*args, **kwargs)
+
+    '''
     def save(self, *args, **kwargs):
         _user = kwargs.pop('_user', None)
         created = not self.pk
@@ -266,6 +284,7 @@ class Workflow(models.Model):
                 event_workflow_edited.commit(actor=_user, target=self)
 
             return result
+    '''
 
 
 class WorkflowRuntimeProxy(Workflow):

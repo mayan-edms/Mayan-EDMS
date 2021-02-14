@@ -4,6 +4,8 @@ from django.apps import apps
 
 from mayan.celery import app
 
+from mayan.apps.lock_manager.exceptions import LockError
+
 from .literals import TASK_GENERATE_WORKFLOW_IMAGE_RETRY_DELAY
 
 logger = logging.getLogger(name=__name__)

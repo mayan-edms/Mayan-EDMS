@@ -1,5 +1,11 @@
+from django.db.models import Q
+
 from ..classes import WorkflowAction
-from ..models import Workflow, WorkflowRuntimeProxy, WorkflowStateRuntimeProxy
+from ..models import (
+    Workflow, WorkflowRuntimeProxy, WorkflowStateRuntimeProxy,
+    WorkflowTransitionField
+)
+
 
 from .literals import (
     DOCUMENT_WORKFLOW_LAUNCH_ACTION_CLASS_PATH,
@@ -98,9 +104,20 @@ class WorkflowAPIViewTestMixin:
         if extra_data:
             data.update(extra_data)
 
-        return self.post(
+        pk_list = list(Workflow.objects.values('pk'))
+
+        response = self.post(
             viewname='rest_api:workflow-list', data=data
         )
+
+        try:
+            self.test_workflow = Workflow.objects.get(
+                ~Q(pk__in=pk_list)
+            )
+        except Workflow.DoesNotExist:
+            self.test_workflow = None
+
+        return response
 
     def _request_test_workflow_delete_api_view(self):
         return self.delete(
@@ -519,7 +536,9 @@ class WorkflowTransitionEventViewTestMixin:
 
 class WorkflowTransitionFieldViewTestMixin:
     def _request_workflow_transition_field_create_view(self):
-        return self.post(
+        pk_list = list(WorkflowTransitionField.objects.values('pk'))
+
+        response = self.post(
             viewname='document_states:workflow_template_transition_field_create',
             kwargs={
                 'workflow_template_transition_id': self.test_workflow_transition.pk
@@ -530,6 +549,15 @@ class WorkflowTransitionFieldViewTestMixin:
                 'help_text': TEST_WORKFLOW_TRANSITION_FIELD_HELP_TEXT
             }
         )
+
+        try:
+            self.test_workflow_transition_field = WorkflowTransitionField.objects.get(
+                ~Q(pk__in=pk_list)
+            )
+        except WorkflowTransitionField.DoesNotExist:
+            self.test_workflow_transition_field = None
+
+        return response
 
     def _request_workflow_transition_field_delete_view(self):
         return self.post(
@@ -625,7 +653,9 @@ class WorkflowTransitionAPIViewTestMixin:
 
 class WorkflowTransitionFieldAPIViewTestMixin:
     def _request_test_workflow_transition_field_create_api_view(self):
-        return self.post(
+        pk_list = list(WorkflowTransitionField.objects.values('pk'))
+
+        response = self.post(
             viewname='rest_api:workflowtransitionfield-list', kwargs={
                 'workflow_template_id': self.test_workflow.pk,
                 'workflow_template_transition_id': self.test_workflow_transition.pk,
@@ -636,6 +666,15 @@ class WorkflowTransitionFieldAPIViewTestMixin:
                 'help_text': TEST_WORKFLOW_TRANSITION_FIELD_HELP_TEXT
             }
         )
+
+        try:
+            self.test_workflow_transition_field = WorkflowTransitionField.objects.get(
+                ~Q(pk__in=pk_list)
+            )
+        except WorkflowTransitionField.DoesNotExist:
+            self.test_workflow_transition_field = None
+
+        return response
 
     def _request_test_workflow_transition_field_delete_api_view(self):
         return self.delete(

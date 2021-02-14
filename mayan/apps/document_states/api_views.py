@@ -228,6 +228,11 @@ class APIWorkflowRuntimeProxyListView(generics.ListCreateAPIView):
     mayan_view_permissions = {'POST': (permission_workflow_create,)}
     queryset = Workflow.objects.all()
 
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user,
+        }
+
     def get_serializer(self, *args, **kwargs):
         if not self.request:
             return None
@@ -256,6 +261,11 @@ class APIWorkflowView(generics.RetrieveUpdateDestroyAPIView):
         'PUT': (permission_workflow_edit,)
     }
     queryset = Workflow.objects.all()
+
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user,
+        }
 
     def get_serializer(self, *args, **kwargs):
         if not self.request:
@@ -484,6 +494,7 @@ class APIWorkflowTransitionFieldListView(generics.ListCreateAPIView):
         # This method is only called during POST, therefore filter only by
         # edit permission.
         return {
+            '_event_actor': self.request.user,
             'transition': self.get_workflow_transition()
         }
 
@@ -533,12 +544,6 @@ class APIWorkflowTransitionFieldListView(generics.ListCreateAPIView):
             pk=self.kwargs['workflow_template_transition_id']
         )
 
-    def perform_create(self, serializer):
-        if hasattr(self, 'get_instance_extra_data'):
-            serializer.validated_data.update(self.get_instance_extra_data())
-
-        return super().perform_create(serializer=serializer)
-
 
 class APIWorkflowTransitionFieldDetailView(generics.RetrieveUpdateDestroyAPIView):
     """
@@ -549,6 +554,11 @@ class APIWorkflowTransitionFieldDetailView(generics.RetrieveUpdateDestroyAPIView
     """
     lookup_url_kwarg = 'workflow_template_transition_field_id'
     serializer_class = WorkflowTransitionFieldSerializer
+
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user,
+        }
 
     def get_queryset(self):
         return self.get_workflow_transition().fields.all()
