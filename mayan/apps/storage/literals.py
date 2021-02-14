@@ -13,7 +13,6 @@ DEFAULT_STORAGE_SHARED_STORAGE_ARGUMENTS = {
     'location': os.path.join(settings.MEDIA_ROOT, 'shared_files')
 }
 DEFAULT_STORAGE_TEMPORARY_DIRECTORY = tempfile.gettempdir()
-# TODO: Rename this to INTERVAL_XXXX
 DELETE_STALE_UPLOADS_INTERVAL = 60 * 10  # 10 minutes
 INTERVAL_DOWNLOAD_FILE_EXPIRATION = 60 * 24 * 2  # 2 days
 INTERVAL_SHARED_UPLOAD_STALE = 60 * 60 * 24 * 7  # 7 days

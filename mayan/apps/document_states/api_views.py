@@ -483,7 +483,6 @@ class APIWorkflowTransitionFieldListView(generics.ListCreateAPIView):
     def get_instance_extra_data(self):
         # This method is only called during POST, therefore filter only by
         # edit permission.
-        # TODO: Add actor of the event when merged with version 4.0.
         return {
             'transition': self.get_workflow_transition()
         }
@@ -534,8 +533,6 @@ class APIWorkflowTransitionFieldListView(generics.ListCreateAPIView):
             pk=self.kwargs['workflow_template_transition_id']
         )
 
-    # TODO: Remove this after merge with version 4.0 as it is already
-    # includes in the API view class.
     def perform_create(self, serializer):
         if hasattr(self, 'get_instance_extra_data'):
             serializer.validated_data.update(self.get_instance_extra_data())

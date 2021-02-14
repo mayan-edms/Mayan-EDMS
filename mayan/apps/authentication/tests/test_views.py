@@ -181,9 +181,6 @@ class UserLoginTestCase(UserLoginTestMixin, GenericViewTestCase):
     Test that users can login via the supported authentication methods
     """
     authenticated_url = reverse(viewname='common:home')
-    # Unquote directly until furl 2.1.0 is released which will include
-    # the tostr() argument query_dont_quote=True
-    # TODO: Remove after release and update to furl 2.1.0
     authentication_url = urlunquote_plus(
         furl(
             path=reverse(settings.LOGIN_URL), args={

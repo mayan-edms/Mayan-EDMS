@@ -56,7 +56,6 @@ class DocumentSerializer(
 
 
 class DocumentChangeTypeSerializer(serializers.ModelSerializer):
-    #TODO: Filter primary keys
     document_type_id = serializers.PrimaryKeyRelatedField(
         queryset=DocumentType.objects.all(), write_only=True
     )

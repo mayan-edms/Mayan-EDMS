@@ -7,9 +7,6 @@ from .literals import SOURCE_UNCOMPRESS_CHOICE_ASK
 
 
 def handler_copy_transformations_to_file(sender, instance, **kwargs):
-    # TODO: Fix this, source should be previous file
-    # TODO: Fix this, shouldn't this be at the documents app
-
     layer_saved_transformations.copy_transformations(
         source=instance.document, targets=instance.pages.all()
     )

@@ -27,7 +27,6 @@ class WebFormSource(InteractiveSource):
     is_interactive = True
     source_type = SOURCE_CHOICE_WEB_FORM
 
-    # TODO: unify uncompress as an InteractiveSource field
     uncompress = models.CharField(
         choices=SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES,
         help_text=_('Whether to expand or not compressed archives.'),

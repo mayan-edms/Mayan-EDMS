@@ -93,17 +93,11 @@ class UserManagementApp(MayanAppConfig):
         EventModelRegistry.register(model=Group)
         EventModelRegistry.register(model=User)
 
-        # Silence UnorderedObjectListWarning
-        # "Pagination may yield inconsistent result"
-        # TODO: Remove on Django 2.x
         Group._meta.ordering = ('name',)
         Group._meta.verbose_name = _('Group')
         Group._meta.verbose_name_plural = _('Groups')
         Group._meta.get_field('name').verbose_name = _('Name')
 
-        # Silence UnorderedObjectListWarning
-        # "Pagination may yield inconsistent result"
-        # TODO: Remove on Django 2.x
         User._meta.ordering = ('pk',)
         User._meta.verbose_name = _('User')
         User._meta.verbose_name_plural = _('Users')

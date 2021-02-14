@@ -36,7 +36,7 @@ class AccessControlListManager(models.Manager):
         AccessControlList model to determine if there are ACL entries for the
         members of the queryset's model provided.
         """
-        # Determine which of the cases we need to address
+        # Determine which of the cases we need to address:
         # 1: No related field
         # 2: Related field
         # 3: Related field that is Generic Foreign Key
@@ -55,7 +55,7 @@ class AccessControlListManager(models.Manager):
 
             if isinstance(related_field, GenericForeignKey):
                 # Case 3: Generic Foreign Key, multiple ContentTypes + object
-                # id combinations
+                # id combinations.
                 # Also handles case #6 using the parent related field
                 # reference template.
 
@@ -95,7 +95,7 @@ class AccessControlListManager(models.Manager):
                 result.append(Q(**{field_lookup: acl_filter}))
             else:
                 # Case 2: Related field of a single type, single ContentType,
-                # multiple object id
+                # multiple object id.
                 content_type = ContentType.objects.get_for_model(
                     model=related_field.related_model
                 )
@@ -111,11 +111,8 @@ class AccessControlListManager(models.Manager):
                     result.append(Q(**{field_lookup: acl_filter}))
 
                 # Case 5: Related field, has an inherited related field itself
-                # Bubble up permission check
-                # Recurse and reduce
-                # TODO: Add relationship support: OR or AND
-                # TODO: OR for document pages, version, doc, and types
-                # TODO: AND for new cabinet levels ACLs
+                # Bubble up permission check.
+                # Recurse and reduce.
                 try:
                     related_field_model_related_fields = (
                         ModelPermission.get_inheritance(
@@ -144,7 +141,7 @@ class AccessControlListManager(models.Manager):
                     if relation_result:
                         result.append(reduce(operator.or_, relation_result))
         else:
-            # Case 1: Original model, single ContentType, multiple object id
+            # Case 1: Original model, single ContentType, multiple object id.
             content_type = ContentType.objects.get_for_model(
                 model=queryset.model
             )
@@ -155,7 +152,7 @@ class AccessControlListManager(models.Manager):
             ).values('object_id')
             result.append(Q(**{field_lookup: acl_filter}))
 
-            # Case 4: Original model, has an inherited related field
+            # Case 4: Original model, has an inherited related field.
             try:
                 related_fields = (
                     ModelPermission.get_inheritance(
@@ -190,7 +187,7 @@ class AccessControlListManager(models.Manager):
             else:
                 function_results = field_query_function()
 
-                # Filter by the model's content type
+                # Filter by the model's content type.
                 content_type = ContentType.objects.get_for_model(
                     model=queryset.model
                 )
@@ -198,7 +195,7 @@ class AccessControlListManager(models.Manager):
                     content_type=content_type, permissions=stored_permission,
                     role__groups__user=user
                 ).values('object_id')
-                # Obtain an queryset of filtered, authorized model instances
+                # Obtain an queryset of filtered, authorized model instances.
                 acl_queryset = queryset.model._meta.default_manager.filter(
                     id__in=acl_filter
                 ).filter(**function_results['acl_filter'])
@@ -209,7 +206,7 @@ class AccessControlListManager(models.Manager):
                     )
 
                 # Get the final query using the filtered queryset as the
-                # reference
+                # reference.
                 result.append(
                     Q(**{function_results['field_lookup']: acl_queryset})
                 )
@@ -237,8 +234,7 @@ class AccessControlListManager(models.Manager):
 
         restricted_queryset = manager.none()
         for permission in permissions:
-            # Default relationship betweens permissions is OR
-            # TODO: Add support for AND relationship
+            # Default relationship betweens permissions is OR.
             restricted_queryset = restricted_queryset | self.restrict_queryset(
                 permission=permission, queryset=source_queryset, user=user
             )
@@ -276,18 +272,18 @@ class AccessControlListManager(models.Manager):
 
             return queryset.filter(final_query)
         else:
-            # User has direct permission assignment via a role, is superuser or
-            # is staff. Return the entire queryset.
+            # User has direct permission assignment via a role, is superuser
+            # or is staff. Return the entire queryset.
             return queryset
 
     def get_inherited_permissions(self, obj, role):
-        # Get permission inherited from a related object's ACLs
+        # Get permission inherited from a related object's ACLs.
         queryset = self._get_inherited_object_permissions(obj=obj, role=role)
 
         # Get permission granted to the role
         queryset = queryset | role.permissions.all()
 
-        # Filter the permissions to the ones that apply to the model
+        # Filter the permissions to the ones that apply to the model.
         queryset = ModelPermission.get_for_instance(
             instance=obj
         ).filter(
@@ -331,7 +327,7 @@ class AccessControlListManager(models.Manager):
                 pass
 
             if type(parent_object) == type(obj):
-                # Object and parent are of the same type. Break recursion
+                # Object and parent are of the same type. Break recursion.
                 return queryset
             else:
                 queryset = queryset | self._get_inherited_object_permissions(

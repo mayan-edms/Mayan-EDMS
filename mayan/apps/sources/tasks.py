@@ -103,8 +103,9 @@ def task_source_handle_upload(self, document_type_id, shared_uploaded_file_id, s
             try:
                 compressed_file = Archive.open(file_object=file_object)
                 for compressed_file_child in compressed_file.get_members():
-                    # TODO: find way to uniquely identify child files
-                    # Use filename in the meantime.
+                    # Use filename in the meantime while a better way to
+                    # uniquely indentify the archive content/child files
+                    # is found.
                     if force_text(s=compressed_file_child) not in skip_list:
                         kwargs.update(
                             {'label': force_text(s=compressed_file_child)}
@@ -120,8 +121,6 @@ def task_source_handle_upload(self, document_type_id, shared_uploaded_file_id, s
                                 'child document: %s. Rescheduling.', exception
                             )
 
-                            # TODO: Don't call the task itself again
-                            # Update to use celery's retry feature
                             task_source_handle_upload.delay(
                                 document_type_id=document_type_id,
                                 shared_uploaded_file_id=shared_uploaded_file_id,

@@ -44,7 +44,6 @@ class Source(models.Model):
 
     def clean_up_upload_file(self, upload_file_object):
         pass
-        # TODO: Should raise NotImplementedError?
 
     def fullname(self):
         return ' '.join([self.class_fullname(), '"%s"' % self.label])
@@ -95,7 +94,6 @@ class Source(models.Model):
 
     def get_upload_file_object(self, form_data):
         pass
-        # TODO: Should raise NotImplementedError?
 
     def upload_document(
         self, file_object, document_type, description=None, label=None,
@@ -184,7 +182,7 @@ class IntervalBaseModel(OutOfProcessSource):
             interval_instance = periodic_task.interval
 
             if tuple(interval_instance.periodictask_set.values_list('id', flat=True)) == (periodic_task.pk,):
-                # Only delete the interval if nobody else is using it
+                # Only delete the interval if nobody else is using it.
                 interval_instance.delete()
             else:
                 periodic_task.delete()
@@ -227,7 +225,7 @@ class IntervalBaseModel(OutOfProcessSource):
             interval_instance, created = IntervalSchedule.objects.get_or_create(
                 every=self.interval, period='seconds'
             )
-            # Create a new interval or reuse someone else's
+            # Create a new interval or reuse someone else's.
             PeriodicTask.objects.create(
                 name=self._get_periodic_task_name(),
                 interval=interval_instance,

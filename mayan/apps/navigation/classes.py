@@ -141,9 +141,6 @@ class Link:
         if self.view:
             view_name = Variable('"{}"'.format(self.view))
             if isinstance(self.args, list) or isinstance(self.args, tuple):
-                # TODO: Don't check for instance check for iterable in try/except
-                # block. This update required changing all 'args' argument in
-                # links.py files to be iterables and not just strings.
                 args = [Variable(var=arg) for arg in self.args]
             else:
                 args = [Variable(var=self.args)]
