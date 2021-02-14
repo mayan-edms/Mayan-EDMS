@@ -4,6 +4,7 @@
 {% load appearance_tags %}
 {% load common_tags %}
 {% load navigation_tags %}
+{% load smart_settings_tags %}
 
 <div class="row">
     <div class="col-xs-12">
@@ -117,25 +118,58 @@
 
                                     {% if not hide_links %}
                                         <td class="last">
-                                            <div class="btn-list">
+                                           <div class="btn-list">
                                                 {% navigation_resolve_menu name='list facet' sort_results=True source=object as facet_menus_results %}
-                                                {% for facet_menu_results in facet_menus_results %}
-                                                    {% for link_group in facet_menu_results.link_groups %}
-                                                        {% with link_group.links as object_navigation_links %}
-                                                        {% with 'btn btn-default btn-outline btn-xs' as link_classes %}
-                                                            {% include 'navigation/generic_navigation.html' %}
+
+                                                {% smart_setting "COMMON_COLLAPSE_LIST_MENU_LIST_FACET" as setting_common_collapse_list_menu_list_facet %}
+                                                {% if setting_common_collapse_list_menu_list_facet %}
+                                                    {% if facet_menus_results %}
+                                                        {% with facet_menus_results as action_menus_link_results %}
+                                                            <div class="btn btn-xs dropdown">
+                                                                {% with 'btn btn-default btn-outline btn-xs' as action_dropdown_classes %}
+                                                                {% with 'true' as action_menu_disable_labels %}
+                                                                {% trans 'Facets' as action_dropdown_label %}
+                                                                    {% include 'appearance/partials/actions_dropdown.html' %}
+                                                                {% endwith %}
+                                                                {% endwith %}
+                                                            </div>
                                                         {% endwith %}
-                                                        {% endwith %}
+                                                    {% endif %}
+                                                {% else %}
+                                                    {% for facet_menu_results in facet_menus_results %}
+                                                        {% for link_group in facet_menu_results.link_groups %}
+                                                            {% with link_group.links as object_navigation_links %}
+                                                            {% with 'btn btn-default btn-outline btn-xs' as link_classes %}
+                                                                {% include 'navigation/generic_navigation.html' %}
+                                                            {% endwith %}
+                                                            {% endwith %}
+                                                        {% endfor %}
                                                     {% endfor %}
-                                                {% endfor %}
-                                                {% navigation_resolve_menu name='object' source=object as object_menus_results %}
-                                                {% for object_menu_results in object_menus_results %}
-                                                    {% for link_group in object_menu_results.link_groups %}
-                                                        {% with link_group.links as object_navigation_links %}
-                                                            {% include 'navigation/generic_navigation.html' %}
+                                                {% endif %}
+
+                                                {% navigation_resolve_menu name='object' source=object sort_results=True as object_menus_results %}
+                                                {% smart_setting "COMMON_COLLAPSE_LIST_MENU_OBJECT" as setting_common_collapse_list_menu_object %}
+                                                {% if setting_common_collapse_list_menu_object %}
+                                                    {% if object_menus_results %}
+                                                        {% with object_menus_results as action_menus_link_results %}
+                                                            <div class="btn btn-xs dropdown">
+                                                                {% with 'btn btn-default btn-xs btn-danger' as action_dropdown_classes %}
+                                                                {% with 'true' as action_menu_disable_labels %}
+                                                                    {% include 'appearance/partials/actions_dropdown.html' %}
+                                                                {% endwith %}
+                                                                {% endwith %}
+                                                            </div>
                                                         {% endwith %}
+                                                    {% endif %}
+                                                {% else %}
+                                                    {% for object_menu_results in object_menus_results %}
+                                                        {% for link_group in object_menu_results.link_groups %}
+                                                            {% with link_group.links as object_navigation_links %}
+                                                                {% include 'navigation/generic_navigation.html' %}
+                                                            {% endwith %}
+                                                        {% endfor %}
                                                     {% endfor %}
-                                                {% endfor %}
+                                                {% endif %}
                                             </div>
                                         </td>
                                     {% endif %}

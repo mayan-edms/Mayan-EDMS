@@ -3,6 +3,8 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.smart_settings.classes import SettingNamespace
 
 from .literals import (
+    DEFAULT_COMMON_COLLAPSE_LIST_MENU_LIST_FACET,
+    DEFAULT_COMMON_COLLAPSE_LIST_MENU_OBJECT,
     DEFAULT_COMMON_DB_SYNC_TASK_DELAY, DEFAULT_COMMON_DISABLED_APPS,
     DEFAULT_COMMON_EXTRA_APPS, DEFAULT_COMMON_HOME_VIEW,
     DEFAULT_COMMON_PROJECT_TITLE, DEFAULT_COMMON_PROJECT_URL,
@@ -13,6 +15,22 @@ namespace = SettingNamespace(
     label=_('Common'), name='common', version='0002'
 )
 
+setting_collapse_list_menu_list_facet = namespace.add_setting(
+    default=DEFAULT_COMMON_COLLAPSE_LIST_MENU_LIST_FACET,
+    global_name='COMMON_COLLAPSE_LIST_MENU_LIST_FACET',
+    help_text=_(
+        'In list mode, show the "list facet" menu options as a dropdown '
+        'menu instead of individual buttons.'
+    )
+)
+setting_collapse_list_menu_object = namespace.add_setting(
+    default=DEFAULT_COMMON_COLLAPSE_LIST_MENU_OBJECT,
+    global_name='COMMON_COLLAPSE_LIST_MENU_OBJECT',
+    help_text=_(
+        'In list mode, show the "object" menu options as a dropdown menu '
+        'instead of individual buttons.'
+    )
+)
 settings_db_sync_task_delay = namespace.add_setting(
     default=DEFAULT_COMMON_DB_SYNC_TASK_DELAY,
     global_name='COMMON_DB_SYNC_TASK_DELAY', help_text=_(

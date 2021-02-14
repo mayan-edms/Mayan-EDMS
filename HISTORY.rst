@@ -215,3 +215,7 @@
 - Track document file deletion event user in views.
 - Rename ``setting_workflowimagecache_storage`` to
   ``setting_workflow_image_cache_storage_backend``.
+- Support collapsing the options of the menus "list facet" and "object" when
+  in list view mode. This behavior is controlled with the new settings:
+  ``COMMON_COLLAPSE_LIST_MENU_LIST_FACET`` and
+  ``COMMON_COLLAPSE_LIST_MENU_OBJECT``. Both default to ``False``.
