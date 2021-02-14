@@ -219,3 +219,5 @@
   in list view mode. This behavior is controlled with the new settings:
   ``COMMON_COLLAPSE_LIST_MENU_LIST_FACET`` and
   ``COMMON_COLLAPSE_LIST_MENU_OBJECT``. Both default to ``False``.
+- Added a check to the task manager app to ensure all defined tasks are
+  properly configure in their respective ``queues.py`` modules.

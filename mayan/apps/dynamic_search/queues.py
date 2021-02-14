@@ -9,10 +9,15 @@ queue_search = CeleryQueue(
 queue_search.add_task_type(
     dotted_path='mayan.apps.dynamic_search.tasks.task_deindex_instance',
     label=_('Remove a model instance from the search engine.'),
-    name='task_index_instance',
+    name='task_deindex_instance',
 )
 queue_search.add_task_type(
     dotted_path='mayan.apps.dynamic_search.tasks.task_index_instance',
     label=_('Index a model instance to the search engine.'),
-    name='task_deindex_instance',
+    name='task_index_instance',
+)
+queue_search.add_task_type(
+    dotted_path='mayan.apps.dynamic_search.tasks.task_index_search_model',
+    label=_('Index all instances of a search model to the search engine.'),
+    name='task_index_search_model',
 )
