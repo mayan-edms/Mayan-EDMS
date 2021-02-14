@@ -116,12 +116,6 @@ class DocumentSignaturesApp(MayanAppConfig):
         )
         menu_object.bind_links(
             links=(
-                link_document_file_signature_detached_create,
-                link_document_file_signature_embedded_create
-            ), sources=(DocumentFile,)
-        )
-        menu_object.bind_links(
-            links=(
                 link_document_file_signature_details,
                 link_document_file_signature_download,
                 link_document_file_signature_delete,
@@ -129,7 +123,9 @@ class DocumentSignaturesApp(MayanAppConfig):
         )
         menu_secondary.bind_links(
             links=(
-                link_document_file_signature_upload,
+                link_document_file_signature_detached_create,
+                link_document_file_signature_embedded_create,
+                link_document_file_signature_upload
             ), sources=(DocumentFile,)
         )
         menu_tools.bind_links(
