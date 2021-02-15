@@ -16,6 +16,35 @@ from .permissions import permission_events_view
 logger = logging.getLogger(name=__name__)
 
 
+DEFAULT_ACTION_EXPORTER_FIELD_NAMES = (
+    'timestamp', 'actor_content_type', 'actor_object_id', 'actor',
+    'target_content_type', 'target_object_id', 'target', 'verb',
+    'action_object_content_type', 'action_object_object_id', 'action_object'
+)
+
+
+class ActionExporter:
+    def __init__(self, queryset, field_names=None):
+        self.field_names = field_names or DEFAULT_ACTION_EXPORTER_FIELD_NAMES
+        self.queryset = queryset
+
+    def export(self):
+        with open(file='/tmp/test.csv', mode='w', newline='') as file_object:
+            # Write header
+            file_object.write(','.join(self.field_names + ('\n',)))
+
+            for entry in self.queryset.iterator():
+                row = ','.join(
+                    [
+                        str(
+                            getattr(entry, field_name)
+                        ) for field_name in self.field_names
+                    ]
+                )
+                file_object.write(row)
+                file_object.write('\n')
+
+
 class EventManager:
     EVENT_ATTRIBUTES = ('ignore', 'keep_attributes',)
     EVENT_ARGUMENTS = ('actor', 'action_object', 'target')
