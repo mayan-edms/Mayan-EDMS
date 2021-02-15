@@ -41,13 +41,12 @@ def code_copy_messages(apps, schema_editor):
             content_type=message_content_type, object_id=message.pk
         )
 
-        # Copy the ACLs.
-        for message_acls in message_acls_queryset:
-            announcement_acl = AccessControlList.objects.create(
-                content_type=announcement_content_type, object_id=announcement.pk,
-                role=message_acls.role
-            )
-            announcement_acl.permissions.set(message_acls.permissions.all())
+        # Update the ACLs.
+        for message_acl in message_acls_queryset:
+            message_acl._event_ignore = True
+            message_acl.content_type = announcement_content_type
+            message_acl.object_id = announcement.pk
+            message_acl.save()
 
         message_action_queryset = Action.objects.using(
             alias=schema_editor.connection.alias
@@ -56,39 +55,32 @@ def code_copy_messages(apps, schema_editor):
             target_object_id=message.pk
         )
 
-        # Copy the actions.
+        # Update the actions.
         for message_action in message_action_queryset:
-            Action.objects.create(
-                actor_content_type=message_action.actor_content_type,
-                actor_object_id=message_action.actor_object_id,
-                description=message_action.description,
-                target_content_type=announcement_content_type,
-                target_object_id=announcement.pk,
-                action_object_content_type=message_action.action_object_content_type,
-                action_object_object_id=message_action.action_object_object_id,
-                timestamp=message_action.timestamp,
-                public=message_action.public,
-                verb=message_action.verb
-            )
+            message_action.target_content_type = announcement_content_type
+            message_action.target_object_id = announcement.pk
+            message_action.save()
 
         stored_event_queryset = StoredEventType.objects.using(
             alias=schema_editor.connection.alias
         ).filter(name__startswith='motd')
 
-        # Update the stored events of the MOTD app.
-        for stored_event_type in stored_event_queryset:
-            stored_event_type.name.replace('motd', 'announcements').replace('message', 'announcement')
-            stored_event_type.save()
+        message.delete()
 
-        stored_permission_queryset = StoredPermission.objects.using(
-            alias=schema_editor.connection.alias
-        ).filter(namespace='motd')
+    # Update the stored events of the MOTD app.
+    for stored_event_type in stored_event_queryset:
+        stored_event_type.name.replace('motd', 'announcements').replace('message', 'announcement')
+        stored_event_type.save()
 
-        # Update the stored permissions of the MOTD app.
-        for stored_permission in stored_permission_queryset:
-            stored_permission.namespace.replace('motd', 'announcements')
-            stored_permission.name.replace('message', 'announcement')
-            stored_permission.save()
+    stored_permission_queryset = StoredPermission.objects.using(
+        alias=schema_editor.connection.alias
+    ).filter(namespace='motd')
+
+    # Update the stored permissions of the MOTD app.
+    for stored_permission in stored_permission_queryset:
+        stored_permission.namespace.replace('motd', 'announcements')
+        stored_permission.name.replace('message', 'announcement')
+        stored_permission.save()
 
 
 def reverse_code_copy_messages(apps, schema_editor):
@@ -133,13 +125,12 @@ def reverse_code_copy_messages(apps, schema_editor):
             content_type=announcement_content_type, object_id=announcement.pk
         )
 
-        # Copy the ACLs.
-        for announcement_acls in announcement_acls_queryset.all():
-            message_acl = AccessControlList.objects.create(
-                content_type=message_content_type, object_id=message.pk,
-                role=announcement_acls.role
-            )
-            message_acl.permissions.set(announcement_acls.permissions.all())
+        # Update the ACLs.
+        for announcement_acl in announcement_acls_queryset:
+            announcement_acl._event_ignore = True
+            announcement_acl.content_type = message_content_type
+            announcement_acl.object_id = message.pk
+            announcement_acl.save()
 
         announcement_action_queryset = Action.objects.using(
             alias=schema_editor.connection.alias
@@ -148,39 +139,32 @@ def reverse_code_copy_messages(apps, schema_editor):
             target_object_id=announcement.pk
         )
 
-        # Update the stored events of the announcements app.
-        for announcement_action in announcement_action_queryset.all():
-            Action.objects.create(
-                actor_content_type=announcement_action.actor_content_type,
-                actor_object_id=announcement_action.actor_object_id,
-                description=announcement_action.description,
-                target_content_type=message_content_type,
-                target_object_id=message.pk,
-                action_object_content_type=announcement_action.action_object_content_type,
-                action_object_object_id=announcement_action.action_object_object_id,
-                timestamp=announcement_action.timestamp,
-                public=announcement_action.public,
-                verb=announcement_action.verb
-            )
+        # Update the actions.
+        for announcement_action in announcement_action_queryset:
+            announcement_action.target_content_type = message_content_type
+            announcement_action.target_object_id = message.pk
+            announcement_action.save()
 
         stored_event_queryset = StoredEventType.objects.using(
             alias=schema_editor.connection.alias
         ).filter(name__startswith='motd')
 
-        # Update the stored events of the announcements app.
-        for stored_event_type in stored_event_queryset:
-            stored_event_type.name.replace('announcements', 'motd').replace('announcement', 'message')
-            stored_event_type.save()
+        announcement.delete()
 
-        stored_permission_queryset = StoredPermission.objects.using(
-            alias=schema_editor.connection.alias
-        ).filter(namespace='announcements')
+    # Update the stored events of the announcements app.
+    for stored_event_type in stored_event_queryset:
+        stored_event_type.name.replace('announcements', 'motd').replace('announcement', 'message')
+        stored_event_type.save()
 
-        # Update the stored permissions of the announcements app.
-        for stored_permission in stored_permission_queryset:
-            stored_permission.namespace.replace('announcements', 'motd')
-            stored_permission.name.replace('announcement', 'message')
-            stored_permission.save()
+    stored_permission_queryset = StoredPermission.objects.using(
+        alias=schema_editor.connection.alias
+    ).filter(namespace='announcements')
+
+    # Update the stored permissions of the announcements app.
+    for stored_permission in stored_permission_queryset:
+        stored_permission.namespace.replace('announcements', 'motd')
+        stored_permission.name.replace('announcement', 'message')
+        stored_permission.save()
 
 
 class Migration(migrations.Migration):
