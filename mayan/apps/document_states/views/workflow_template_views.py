@@ -230,8 +230,10 @@ class WorkflowTemplateEditView(SingleObjectEditView):
             ) % self.object,
         }
 
-    def get_save_extra_data(self):
-        return {'_user': self.request.user}
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user
+        }
 
 
 class WorkflowTemplateDocumentTypesView(AddRemoveView):

@@ -270,22 +270,6 @@ class Workflow(ExtraDataModelMixin, models.Model):
     def save(self, *args, **kwargs):
         return super().save(*args, **kwargs)
 
-    '''
-    def save(self, *args, **kwargs):
-        _user = kwargs.pop('_user', None)
-        created = not self.pk
-
-        with transaction.atomic():
-            result = super().save(*args, **kwargs)
-
-            if created:
-                event_workflow_created.commit(actor=_user, target=self)
-            else:
-                event_workflow_edited.commit(actor=_user, target=self)
-
-            return result
-    '''
-
 
 class WorkflowRuntimeProxy(Workflow):
     class Meta:

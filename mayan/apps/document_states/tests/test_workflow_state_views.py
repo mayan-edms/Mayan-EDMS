@@ -13,26 +13,27 @@ from .mixins import WorkflowStateViewTestMixin, WorkflowTestMixin
 class WorkflowStateViewTestCase(
     WorkflowTestMixin, WorkflowStateViewTestMixin, GenericViewTestCase
 ):
-    _test_event_object_name = 'test_workflow'
-
     def test_workflow_state_create_view_no_permission(self):
         self._create_test_workflow()
+
         self._clear_events()
 
         response = self._request_test_workflow_state_create_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(WorkflowState.objects.count(), 0)
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_workflow_state_create_view_with_access(self):
         self._create_test_workflow()
-        self._clear_events()
 
         self.grant_access(
             obj=self.test_workflow, permission=permission_workflow_edit
         )
+
+        self._clear_events()
 
         response = self._request_test_workflow_state_create_view()
         self.assertEqual(response.status_code, 302)
@@ -45,17 +46,22 @@ class WorkflowStateViewTestCase(
             WorkflowState.objects.all()[0].completion,
             TEST_WORKFLOW_STATE_COMPLETION
         )
-        event = self._get_test_object_event()
-        self.assertEqual(event.verb, event_workflow_edited.id)
-        self.assertEqual(event.actor, self._test_case_user)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+        self.assertEqual(events[0].action_object, self.test_workflow_state)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_workflow)
+        self.assertEqual(events[0].verb, event_workflow_edited.id)
 
     def test_workflow_state_create_invalid_completion_view_with_access(self):
         self._create_test_workflow()
-        self._clear_events()
 
         self.grant_access(
             obj=self.test_workflow, permission=permission_workflow_edit
         )
+
+        self._clear_events()
 
         response = self._request_test_workflow_state_create_view(
             extra_data={'completion': ''}
@@ -69,44 +75,57 @@ class WorkflowStateViewTestCase(
         self.assertEqual(
             WorkflowState.objects.all()[0].completion, 0
         )
-        event = self._get_test_object_event()
-        self.assertEqual(event.verb, event_workflow_edited.id)
-        self.assertEqual(event.actor, self._test_case_user)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+        self.assertEqual(events[0].action_object, self.test_workflow_state)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_workflow)
+        self.assertEqual(events[0].verb, event_workflow_edited.id)
 
     def test_workflow_state_delete_view_no_permission(self):
         self._create_test_workflow()
         self._create_test_workflow_states()
+
         self._clear_events()
 
         response = self._request_test_workflow_state_delete_view()
         self.assertEqual(response.status_code, 404)
 
         self.assertEqual(WorkflowState.objects.count(), 2)
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_workflow_state_delete_view_with_access(self):
         self._create_test_workflow()
         self._create_test_workflow_states()
-        self._clear_events()
 
         self.grant_access(
             obj=self.test_workflow, permission=permission_workflow_edit
         )
 
+        self._clear_events()
+
         response = self._request_test_workflow_state_delete_view()
         self.assertEqual(response.status_code, 302)
+
         self.assertEqual(WorkflowState.objects.count(), 1)
-        event = self._get_test_object_event()
-        self.assertEqual(event.verb, event_workflow_edited.id)
-        self.assertEqual(event.actor, self._test_case_user)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_workflow)
+        self.assertEqual(events[0].verb, event_workflow_edited.id)
 
     def test_workflow_state_edit_view_no_permission(self):
         self._create_test_workflow()
         self._create_test_workflow_states()
-        self._clear_events()
 
         workflow_state_label = self.test_workflow_state_1.label
+
+        self._clear_events()
 
         response = self._request_test_workflow_state_edit_view()
         self.assertEqual(response.status_code, 404)
@@ -115,19 +134,21 @@ class WorkflowStateViewTestCase(
         self.assertEqual(
             self.test_workflow_state_1.label, workflow_state_label
         )
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_workflow_state_edit_view_with_access(self):
         self._create_test_workflow()
         self._create_test_workflow_states()
-        self._clear_events()
 
         self.grant_access(
             obj=self.test_workflow, permission=permission_workflow_edit
         )
 
         workflow_state_label = self.test_workflow_state_1.label
+
+        self._clear_events()
 
         response = self._request_test_workflow_state_edit_view()
         self.assertEqual(response.status_code, 302)
@@ -136,33 +157,39 @@ class WorkflowStateViewTestCase(
         self.assertNotEquals(
             self.test_workflow_state_1.label, workflow_state_label
         )
-        event = self._get_test_object_event()
-        self.assertEqual(event.verb, event_workflow_edited.id)
-        self.assertEqual(event.actor, self._test_case_user)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+        self.assertEqual(events[0].action_object, self.test_workflow_state_1)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_workflow)
+        self.assertEqual(events[0].verb, event_workflow_edited.id)
 
     def test_workflow_state_list_view_no_permission(self):
         self._create_test_workflow()
         self._create_test_workflow_states()
+
         self._clear_events()
 
         response = self._request_test_workflow_state_list_view()
         self.assertEqual(response.status_code, 404)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_workflow_state_list_view_with_access(self):
         self._create_test_workflow()
         self._create_test_workflow_states()
-        self._clear_events()
 
         self.grant_access(
             obj=self.test_workflow, permission=permission_workflow_view
         )
 
+        self._clear_events()
+
         response = self._request_test_workflow_state_list_view()
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, text=self.test_workflow_state_1.label)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)

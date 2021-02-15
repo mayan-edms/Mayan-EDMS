@@ -2,8 +2,8 @@ from django.db.models import Q
 
 from ..classes import WorkflowAction
 from ..models import (
-    Workflow, WorkflowRuntimeProxy, WorkflowStateRuntimeProxy,
-    WorkflowTransitionField
+    Workflow, WorkflowRuntimeProxy, WorkflowState, WorkflowStateAction,
+    WorkflowStateRuntimeProxy, WorkflowTransition, WorkflowTransitionField
 )
 
 
@@ -300,13 +300,24 @@ class WorkflowStateActionViewTestMixin:
         if extra_data:
             data.update(extra_data)
 
-        return self.post(
+        pk_list = list(WorkflowStateAction.objects.values_list('pk', flat=True))
+
+        response = self.post(
             viewname='document_states:workflow_template_state_action_create',
             kwargs={
                 'workflow_template_state_id': self.test_workflow_state.pk,
                 'class_path': class_path
             }, data=data
         )
+
+        try:
+            self.test_workflow_state_action = WorkflowStateAction.objects.get(
+                ~Q(pk__in=pk_list)
+            )
+        except WorkflowStateAction.DoesNotExist:
+            self.test_workflow_state_action = None
+
+        return response
 
     def _request_test_worflow_template_state_action_delete_view(self):
         return self.post(
@@ -402,6 +413,8 @@ class WorkflowStateAPIViewTestMixin:
 
 class WorkflowStateViewTestMixin:
     def _request_test_workflow_state_create_view(self, extra_data=None):
+        pk_list = list(WorkflowState.objects.values_list('pk', flat=True))
+
         data = {
             'label': TEST_WORKFLOW_STATE_LABEL,
             'completion': TEST_WORKFLOW_STATE_COMPLETION,
@@ -409,10 +422,19 @@ class WorkflowStateViewTestMixin:
         if extra_data:
             data.update(extra_data)
 
-        return self.post(
+        response = self.post(
             viewname='document_states:workflow_template_state_create',
             kwargs={'workflow_template_id': self.test_workflow.pk}, data=data
         )
+
+        try:
+            self.test_workflow_state = WorkflowState.objects.get(
+                ~Q(pk__in=pk_list)
+            )
+        except WorkflowState.DoesNotExist:
+            self.test_workflow_state = None
+
+        return response
 
     def _request_test_workflow_state_delete_view(self):
         return self.post(
@@ -536,7 +558,7 @@ class WorkflowTransitionEventViewTestMixin:
 
 class WorkflowTransitionFieldViewTestMixin:
     def _request_workflow_transition_field_create_view(self):
-        pk_list = list(WorkflowTransitionField.objects.values('pk'))
+        pk_list = list(WorkflowTransitionField.objects.values_list('pk', flat=True))
 
         response = self.post(
             viewname='document_states:workflow_template_transition_field_create',
@@ -591,7 +613,9 @@ class WorkflowTransitionFieldViewTestMixin:
 
 class WorkflowTransitionAPIViewTestMixin:
     def _request_test_workflow_transition_create_api_view(self):
-        return self.post(
+        pk_list = list(WorkflowTransition.objects.values_list('pk', flat=True))
+
+        response = self.post(
             viewname='rest_api:workflowtransition-list',
             kwargs={'workflow_template_id': self.test_workflow.pk}, data={
                 'label': TEST_WORKFLOW_TRANSITION_LABEL,
@@ -599,6 +623,15 @@ class WorkflowTransitionAPIViewTestMixin:
                 'destination_state_pk': self.test_workflow_state_2.pk,
             }
         )
+
+        try:
+            self.test_workflow_transition = WorkflowTransition.objects.get(
+                ~Q(pk__in=pk_list)
+            )
+        except WorkflowTransition.DoesNotExist:
+            self.test_workflow_transition = None
+
+        return response
 
     def _request_test_workflow_transition_delete_api_view(self):
         return self.delete(
@@ -653,7 +686,7 @@ class WorkflowTransitionAPIViewTestMixin:
 
 class WorkflowTransitionFieldAPIViewTestMixin:
     def _request_test_workflow_transition_field_create_api_view(self):
-        pk_list = list(WorkflowTransitionField.objects.values('pk'))
+        pk_list = list(WorkflowTransitionField.objects.values_list('pk'))
 
         response = self.post(
             viewname='rest_api:workflowtransitionfield-list', kwargs={
@@ -733,7 +766,9 @@ class WorkflowTransitionFieldTestMixin:
 
 class WorkflowTransitionViewTestMixin:
     def _request_test_workflow_transition_create_view(self):
-        return self.post(
+        pk_list = list(WorkflowTransition.objects.values_list('pk', flat=True))
+
+        response = self.post(
             viewname='document_states:workflow_template_transition_create',
             kwargs={'workflow_template_id': self.test_workflow.pk}, data={
                 'label': TEST_WORKFLOW_TRANSITION_LABEL,
@@ -741,6 +776,15 @@ class WorkflowTransitionViewTestMixin:
                 'destination_state': self.test_workflow_state_2.pk,
             }
         )
+
+        try:
+            self.test_workflow_transition = WorkflowTransition.objects.get(
+                ~Q(pk__in=pk_list)
+            )
+        except WorkflowTransition.DoesNotExist:
+            self.test_workflow_transition = None
+
+        return response
 
     def _request_test_workflow_transition_delete_view(self):
         return self.post(
@@ -790,6 +834,7 @@ class WorkflowViewTestMixin:
             viewname='document_states:workflow_template_edit', kwargs={
                 'workflow_template_id': self.test_workflow.pk,
             }, data={
+                'auto_launch': True,
                 'label': TEST_WORKFLOW_LABEL_EDITED,
                 'internal_name': self.test_workflow.internal_name
             }
