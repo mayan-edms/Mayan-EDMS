@@ -198,7 +198,11 @@ class Document(
         DocumentFile = apps.get_model(
             app_label='documents', model_name='DocumentFile'
         )
-        #transaction.atomic
+
+        DocumentVersion = apps.get_model(
+            app_label='documents', model_name='DocumentVersion'
+        )
+
         try:
             document_file = DocumentFile(
                 document=self, comment=comment, file=File(file=file_object),
@@ -220,11 +224,19 @@ class Document(
             )
 
             if action == DOCUMENT_FILE_ACTION_PAGES_NEW:
-                document_version = self.versions.create(comment=comment)
+                document_version = DocumentVersion(
+                    document=self, comment=comment
+                )
+                document_version._event_actor = _user
+                document_version.save()
+
+                annotated_content_object_list = DocumentVersion.annotate_content_object_list(
+                    content_object_list=document_file.pages.all()
+                )
+
                 document_version.pages_remap(
-                    annotated_content_object_list=DocumentVersion.annotate_content_object_list(
-                        content_object_list=document_file.pages.all()
-                    )
+                    annotated_content_object_list=annotated_content_object_list,
+                    _user=_user
                 )
             elif action == DOCUMENT_FILE_ACTION_PAGES_APPEND:
                 annotated_content_object_list = []
@@ -241,9 +253,15 @@ class Document(
                     )
                 )
 
-                document_version = self.versions.create(comment=comment)
+                document_version = DocumentVersion(
+                    document=self, comment=comment
+                )
+                document_version._event_actor = _user
+                document_version.save()
+
                 document_version.pages_remap(
-                    annotated_content_object_list=annotated_content_object_list
+                    annotated_content_object_list=annotated_content_object_list,
+                    _user=_user
                 )
             elif action == DOCUMENT_FILE_ACTION_PAGES_KEEP:
                 return document_file

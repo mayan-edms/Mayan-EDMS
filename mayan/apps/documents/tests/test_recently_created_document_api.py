@@ -15,8 +15,6 @@ class RecentlyCreatedDocumentAPIViewTestCase(
     DocumentTestMixin, RecentlyCreatedDocumentAPIViewTestMixin,
     BaseAPITestCase
 ):
-    _test_event_object_name = 'test_document'
-
     def test_recently_created_document_api_list_view_no_permission(self):
         recently_created_document_count = RecentlyCreatedDocument.objects.count()
 
@@ -28,8 +26,8 @@ class RecentlyCreatedDocumentAPIViewTestCase(
             response.data['count'], recently_created_document_count - 1
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_recently_created_document_api_list_view_with_access(self):
         recently_created_document_count = RecentlyCreatedDocument.objects.count()
@@ -49,5 +47,5 @@ class RecentlyCreatedDocumentAPIViewTestCase(
             response.data['results'][0]['id'], self.test_document.pk
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)

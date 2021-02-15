@@ -282,11 +282,12 @@ class DocumentFileDownloadViewTestCase(
                 mime_type=self.test_document.file_latest.mimetype
             )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event.action_object, self.test_document)
-        self.assertEqual(event.actor, self._test_case_user)
-        self.assertEqual(event.target, self.test_document_file)
-        self.assertEqual(event.verb, event_document_file_downloaded.id)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+        self.assertEqual(events[0].action_object, self.test_document)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_document_file)
+        self.assertEqual(events[0].verb, event_document_file_downloaded.id)
 
 
 class DocumentFileTransformationViewTestCase(
@@ -302,6 +303,8 @@ class DocumentFileTransformationViewTestCase(
             obj=self.test_document_file.pages.first()
         ).count()
 
+        self._clear_events()
+
         response = self._request_test_document_file_transformations_clear_view()
         self.assertEqual(response.status_code, 404)
 
@@ -310,6 +313,9 @@ class DocumentFileTransformationViewTestCase(
                 obj=self.test_document_file.pages.first()
             ).count(), transformation_count
         )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_document_file_transformations_clear_view_with_access(self):
         self._create_document_file_transformation()
@@ -323,6 +329,8 @@ class DocumentFileTransformationViewTestCase(
             permission=permission_transformation_delete
         )
 
+        self._clear_events()
+
         response = self._request_test_document_file_transformations_clear_view()
         self.assertEqual(response.status_code, 302)
 
@@ -332,12 +340,17 @@ class DocumentFileTransformationViewTestCase(
             ).count(), transformation_count - 1
         )
 
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
     def test_document_file_multiple_transformations_clear_view_no_permission(self):
         self._create_document_file_transformation()
 
         transformation_count = layer_saved_transformations.get_transformations_for(
             obj=self.test_document_file.pages.first()
         ).count()
+
+        self._clear_events()
 
         response = self._request_test_document_file_multiple_transformations_clear_view()
         self.assertEqual(response.status_code, 404)
@@ -347,6 +360,9 @@ class DocumentFileTransformationViewTestCase(
                 obj=self.test_document_file.pages.first()
             ).count(), transformation_count
         )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_document_file_multiple_transformations_clear_view_with_access(self):
         self._create_document_file_transformation()
@@ -364,6 +380,8 @@ class DocumentFileTransformationViewTestCase(
             permission=permission_transformation_delete
         )
 
+        self._clear_events()
+
         response = self._request_test_document_file_multiple_transformations_clear_view()
         self.assertEqual(response.status_code, 302)
 
@@ -372,6 +390,9 @@ class DocumentFileTransformationViewTestCase(
                 obj=self.test_document_file.pages.first()
             ).count(), transformation_count - 1,
         )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_document_file_transformations_clone_view_no_permission(self):
         self._create_document_file_transformation()
@@ -382,6 +403,8 @@ class DocumentFileTransformationViewTestCase(
         page_last_transformation_count = layer_saved_transformations.get_transformations_for(
             obj=self.test_document_file.pages.last()
         ).count()
+
+        self._clear_events()
 
         response = self._request_test_document_file_transformations_clone_view()
         self.assertEqual(response.status_code, 404)
@@ -396,6 +419,9 @@ class DocumentFileTransformationViewTestCase(
                 obj=self.test_document_file.pages.last()
             ).count(), page_last_transformation_count
         )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_document_file_transformations_clone_view_with_access(self):
         self._create_document_file_transformation()
@@ -412,6 +438,8 @@ class DocumentFileTransformationViewTestCase(
             permission=permission_transformation_edit
         )
 
+        self._clear_events()
+
         response = self._request_test_document_file_transformations_clone_view()
         self.assertEqual(response.status_code, 302)
 
@@ -425,6 +453,9 @@ class DocumentFileTransformationViewTestCase(
                 obj=self.test_document_file.pages.last()
             ).count(), page_last_transformation_count + 1
         )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
 
 class DocumentFileCachePurgeViewTestCase(
@@ -443,6 +474,8 @@ class DocumentFileCachePurgeViewTestCase(
             partition__in=test_document_file_cache_partitions
         ).count()
 
+        self._clear_events()
+
         response = self._request_test_object_file_cache_partition_purge_view()
         self.assertEqual(response.status_code, 404)
 
@@ -451,6 +484,9 @@ class DocumentFileCachePurgeViewTestCase(
                 partition__in=test_document_file_cache_partitions
             ).count(), cache_partition_file_count
         )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_document_file_cache_purge_with_access(self):
         self.test_object = self.test_document_file
@@ -469,6 +505,8 @@ class DocumentFileCachePurgeViewTestCase(
             partition__in=test_document_file_cache_partitions
         ).count()
 
+        self._clear_events()
+
         response = self._request_test_object_file_cache_partition_purge_view()
         self.assertEqual(response.status_code, 302)
 
@@ -477,3 +515,6 @@ class DocumentFileCachePurgeViewTestCase(
                 partition__in=test_document_file_cache_partitions
             ).count(), cache_partition_file_count
         )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)

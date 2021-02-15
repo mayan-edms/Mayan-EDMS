@@ -15,8 +15,6 @@ class RecentlyAccessedDocumentAPIViewTestCase(
     DocumentTestMixin, RecentlyAccessedDocumentAPIViewTestMixin,
     BaseAPITestCase
 ):
-    _test_event_object_name = 'test_document'
-
     def test_recently_accessed_document_api_list_view_no_activity(self):
         recently_accessed_document_count = RecentlyAccessedDocument.objects.count()
 
@@ -31,8 +29,8 @@ class RecentlyAccessedDocumentAPIViewTestCase(
             recently_accessed_document_count
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_recently_accessed_document_api_list_view_with_activity_no_permission(self):
         recently_accessed_document_count = RecentlyAccessedDocument.objects.count()
@@ -52,8 +50,8 @@ class RecentlyAccessedDocumentAPIViewTestCase(
             recently_accessed_document_count + 1
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_recently_accessed_document_api_list_view_with_activity_with_access(self):
         recently_accessed_document_count = RecentlyAccessedDocument.objects.count()
@@ -79,5 +77,5 @@ class RecentlyAccessedDocumentAPIViewTestCase(
             recently_accessed_document_count + 1
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)

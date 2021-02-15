@@ -232,7 +232,11 @@ class DocumentVersion(ExtraDataModelMixin, models.Model):
         queryset = ModelQueryFields.get(model=DocumentVersionPage).get_queryset()
         return queryset.filter(pk__in=self.version_pages.all())
 
-    def pages_remap(self, annotated_content_object_list=None):
+    def pages_remap(self, annotated_content_object_list=None, _user=None):
+        DocumentVersionPage = apps.get_model(
+            app_label='documents', model_name='DocumentVersionPage'
+        )
+
         for page in self.pages.all():
             page.delete()
 
@@ -240,10 +244,13 @@ class DocumentVersion(ExtraDataModelMixin, models.Model):
             annotated_content_object_list = ()
 
         for content_object_entry in annotated_content_object_list:
-            self.version_pages.create(
+            version_page = DocumentVersionPage(
+                document_version=self,
                 content_object=content_object_entry['content_object'],
                 page_number=content_object_entry['page_number']
             )
+            version_page._event_actor = _user
+            version_page.save()
 
         signal_post_document_version_remap.send(
             sender=DocumentVersion, instance=self

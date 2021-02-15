@@ -15,8 +15,6 @@ class FavoriteDocumentAPIViewTestCase(
     FavoriteDocumentAPIViewTestMixin, FavoriteDocumentTestMixin,
     DocumentTestMixin, BaseAPITestCase
 ):
-    _test_event_object_name = 'test_document'
-
     def test_favorite_document_create_api_view_no_permission(self):
         favorite_document_count = FavoriteDocument.objects.count()
 
@@ -29,8 +27,8 @@ class FavoriteDocumentAPIViewTestCase(
         self.assertEqual(
             FavoriteDocument.objects.count(), favorite_document_count
         )
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_favorite_document_create_api_view_with_access(self):
         favorite_document_count = FavoriteDocument.objects.count()
@@ -52,8 +50,8 @@ class FavoriteDocumentAPIViewTestCase(
             self.test_favorite_document.document.pk, self.test_document.pk
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_favorite_document_delete_api_view_no_permission(self):
         self._test_document_favorite_add()
@@ -69,8 +67,8 @@ class FavoriteDocumentAPIViewTestCase(
             FavoriteDocument.objects.count(), favorite_document_count
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_favorite_document_delete_api_view_with_access(self):
         self._test_document_favorite_add()
@@ -91,8 +89,8 @@ class FavoriteDocumentAPIViewTestCase(
             FavoriteDocument.objects.count(), favorite_document_count - 1
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_favorite_document_detail_api_view_no_permission(self):
         self._test_document_favorite_add()
@@ -102,8 +100,8 @@ class FavoriteDocumentAPIViewTestCase(
         response = self._request_test_favorite_document_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_favorite_document_detail_api_view_with_access(self):
         self._test_document_favorite_add()
@@ -122,8 +120,8 @@ class FavoriteDocumentAPIViewTestCase(
             self.test_document.label
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_favorite_document_list_api_view_no_permission(self):
         self._test_document_favorite_add()
@@ -136,8 +134,8 @@ class FavoriteDocumentAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['count'], favorite_document_count - 1)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_favorite_document_list_api_view_with_access(self):
         self._test_document_favorite_add()
@@ -159,5 +157,5 @@ class FavoriteDocumentAPIViewTestCase(
             self.test_document.label
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)

@@ -24,7 +24,6 @@ from .mixins.document_mixins import (
 class DocumentAPIViewTestCase(
     DocumentAPIViewTestMixin, DocumentTestMixin, BaseAPITestCase
 ):
-    _test_event_object_name = 'test_document'
     auto_upload_test_document = False
 
     def test_document_create_api_view_no_permission(self):
@@ -39,8 +38,8 @@ class DocumentAPIViewTestCase(
             Document.objects.count(), document_count
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_document_create_api_view_with_access(self):
         self.grant_access(
@@ -59,11 +58,12 @@ class DocumentAPIViewTestCase(
             Document.objects.count(), document_count + 1
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event.action_object, self.test_document_type)
-        self.assertEqual(event.actor, self._test_case_user)
-        self.assertEqual(event.target, self.test_document)
-        self.assertEqual(event.verb, event_document_created.id)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+        self.assertEqual(events[0].action_object, self.test_document_type)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_document)
+        self.assertEqual(events[0].verb, event_document_created.id)
 
     def test_document_change_type_api_view_no_permission(self):
         self._upload_test_document()
@@ -83,8 +83,8 @@ class DocumentAPIViewTestCase(
             self.test_document_type_2
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_document_change_type_api_view_with_access(self):
         self._upload_test_document()
@@ -108,11 +108,10 @@ class DocumentAPIViewTestCase(
             self.test_document_type_2
         )
 
-        events = self._get_test_object_events()
+        events = self._get_test_events()
         # Only the change event, should not have an event for the first
         # .save() method call.
         self.assertEqual(events.count(), 1)
-
         self.assertEqual(events[0].action_object, self.test_document_type_2)
         self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].target, self.test_document)
@@ -126,8 +125,8 @@ class DocumentAPIViewTestCase(
         response = self._request_test_document_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_document_detail_api_view_with_access(self):
         self._upload_test_document()
@@ -146,8 +145,8 @@ class DocumentAPIViewTestCase(
             response.data['id'], self.test_document.pk
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_document_edit_via_patch_api_view_no_permission(self):
         self._upload_test_document()
@@ -164,8 +163,8 @@ class DocumentAPIViewTestCase(
             self.test_document.description, document_description
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_document_edit_via_patch_api_view_with_access(self):
         self._upload_test_document()
@@ -187,11 +186,12 @@ class DocumentAPIViewTestCase(
             self.test_document.description, document_description
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event.action_object, None)
-        self.assertEqual(event.actor, self._test_case_user)
-        self.assertEqual(event.target, self.test_document)
-        self.assertEqual(event.verb, event_document_edited.id)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_document)
+        self.assertEqual(events[0].verb, event_document_edited.id)
 
     def test_document_edit_via_put_api_view_no_permission(self):
         self._upload_test_document()
@@ -208,8 +208,8 @@ class DocumentAPIViewTestCase(
             self.test_document.description, document_description
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_document_edit_via_put_api_view_with_access(self):
         self._upload_test_document()
@@ -231,11 +231,12 @@ class DocumentAPIViewTestCase(
             self.test_document.description, document_description
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event.action_object, None)
-        self.assertEqual(event.actor, self._test_case_user)
-        self.assertEqual(event.target, self.test_document)
-        self.assertEqual(event.verb, event_document_edited.id)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_document)
+        self.assertEqual(events[0].verb, event_document_edited.id)
 
     def test_document_list_api_view_no_permission(self):
         self._upload_test_document()
@@ -247,8 +248,8 @@ class DocumentAPIViewTestCase(
 
         self.assertEqual(response.data['count'], 0)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_document_list_api_view_with_access(self):
         self._upload_test_document()
@@ -266,13 +267,13 @@ class DocumentAPIViewTestCase(
             response.data['results'][0]['id'], self.test_document.pk
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_document_upload_api_view_no_permission(self):
-        self._clear_events()
-
         document_count = Document.objects.count()
+
+        self._clear_events()
 
         response = self._request_test_document_upload_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
@@ -281,17 +282,17 @@ class DocumentAPIViewTestCase(
             Document.objects.count(), document_count
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_document_upload_api_view_with_access(self):
         self.grant_access(
             obj=self.test_document_type, permission=permission_document_create
         )
 
-        self._clear_events()
-
         document_count = Document.objects.count()
+
+        self._clear_events()
 
         response = self._request_test_document_upload_api_view()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
@@ -319,6 +320,7 @@ class DocumentAPIViewTestCase(
         )
 
         events = self._get_test_events()
+        self.assertEqual(events.count(), 5)
 
         # Document created
 
@@ -337,22 +339,21 @@ class DocumentAPIViewTestCase(
         # Document file edited (MIME type, page count update)
 
         self.assertEqual(events[2].action_object, self.test_document)
-        self.assertEqual(events[2].actor, self.test_document.file_latest)
+        self.assertEqual(events[2].actor, self._test_case_user)
         self.assertEqual(events[2].target, self.test_document.file_latest)
         self.assertEqual(events[2].verb, event_document_file_edited.id)
 
         # Document version created
 
         self.assertEqual(events[3].action_object, self.test_document)
-        self.assertEqual(events[3].actor, self.test_document.version_active)
+        self.assertEqual(events[3].actor, self._test_case_user)
         self.assertEqual(events[3].target, self.test_document.version_active)
         self.assertEqual(events[3].verb, event_document_version_created.id)
 
         # Document version page created
 
         self.assertEqual(
-            events[4].actor,
-            self.test_document.version_active.version_pages.first()
+            events[4].actor, self._test_case_user
         )
         self.assertEqual(
             events[4].action_object, self.test_document.version_active

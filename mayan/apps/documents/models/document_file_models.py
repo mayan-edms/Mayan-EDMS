@@ -432,6 +432,7 @@ class DocumentFile(
                     )
                     self.checksum_update(save=False)
                     self.mimetype_update(save=False)
+                    self._event_actor = user
                     self.save()
                     self.page_count_update(save=False)
 

@@ -19,8 +19,6 @@ from .mixins.document_version_mixins import (
 class DocumentVersionPageAPIViewTestCase(
     DocumentVersionPageAPIViewTestMixin, DocumentTestMixin, BaseAPITestCase
 ):
-    _test_event_object_name = 'test_document_version_page'
-
     def test_document_version_page_create_api_view_no_permission(self):
         document_version_count_page = self.test_document.version_active.version_pages.count()
 
@@ -34,8 +32,8 @@ class DocumentVersionPageAPIViewTestCase(
             document_version_count_page
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_document_version_page_create_api_view_with_access(self):
         self.grant_access(
@@ -55,11 +53,12 @@ class DocumentVersionPageAPIViewTestCase(
             document_version_count_page + 1
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event.action_object, self.test_document_version)
-        self.assertEqual(event.actor, self._test_case_user)
-        self.assertEqual(event.target, self.test_document_version_page)
-        self.assertEqual(event.verb, event_document_version_page_created.id)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+        self.assertEqual(events[0].action_object, self.test_document_version)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_document_version_page)
+        self.assertEqual(events[0].verb, event_document_version_page_created.id)
 
     def test_document_version_page_delete_api_view_no_permission(self):
         document_version_count_page = self.test_document.version_active.version_pages.count()
@@ -74,8 +73,8 @@ class DocumentVersionPageAPIViewTestCase(
             document_version_count_page
         )
 
-        event = self._get_test_object_event(object_name='test_document_version')
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_document_version_page_delete_api_view_with_access(self):
         self.grant_access(
@@ -95,10 +94,12 @@ class DocumentVersionPageAPIViewTestCase(
             document_version_count_page - 1
         )
 
-        event = self._get_test_object_event(object_name='test_document_version')
-        self.assertEqual(event.actor, self._test_case_user)
-        self.assertEqual(event.target, self.test_document_version)
-        self.assertEqual(event.verb, event_document_version_page_deleted.id)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_document_version)
+        self.assertEqual(events[0].verb, event_document_version_page_deleted.id)
 
     def test_document_version_page_detail_api_view_no_permission(self):
         self._clear_events()
@@ -106,8 +107,8 @@ class DocumentVersionPageAPIViewTestCase(
         response = self._request_test_document_version_page_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_document_version_page_detail_api_view_with_access(self):
         self.grant_access(
@@ -120,13 +121,13 @@ class DocumentVersionPageAPIViewTestCase(
         response = self._request_test_document_version_page_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_document_version_page_edit_via_patch_api_view_no_permission(self):
-        self._clear_events()
-
         document_version_page_number = self.test_document_version_page.page_number
+
+        self._clear_events()
 
         response = self._request_test_document_version_page_edit_via_patch_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
@@ -137,8 +138,8 @@ class DocumentVersionPageAPIViewTestCase(
             document_version_page_number
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_document_version_page_edit_via_patch_api_view_with_access(self):
         self.grant_access(
@@ -146,9 +147,9 @@ class DocumentVersionPageAPIViewTestCase(
             permission=permission_document_version_edit
         )
 
-        self._clear_events()
-
         document_version_page_number = self.test_document_version_page.page_number
+
+        self._clear_events()
 
         response = self._request_test_document_version_page_edit_via_patch_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -159,15 +160,17 @@ class DocumentVersionPageAPIViewTestCase(
             document_version_page_number
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event.actor, self._test_case_user)
-        self.assertEqual(event.target, self.test_document_version_page)
-        self.assertEqual(event.verb, event_document_version_page_edited.id)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+        self.assertEqual(events[0].action_object, self.test_document_version)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_document_version_page)
+        self.assertEqual(events[0].verb, event_document_version_page_edited.id)
 
     def test_document_version_page_edit_via_put_api_view_no_permission(self):
-        self._clear_events()
-
         document_version_page_number = self.test_document_version_page.page_number
+
+        self._clear_events()
 
         response = self._request_test_document_version_page_edit_via_put_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
@@ -178,8 +181,8 @@ class DocumentVersionPageAPIViewTestCase(
             document_version_page_number
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_document_version_page_edit_via_put_api_view_with_access(self):
         self.grant_access(
@@ -187,9 +190,9 @@ class DocumentVersionPageAPIViewTestCase(
             permission=permission_document_version_edit
         )
 
-        self._clear_events()
-
         document_version_page_number = self.test_document_version_page.page_number
+
+        self._clear_events()
 
         response = self._request_test_document_version_page_edit_via_put_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -200,10 +203,12 @@ class DocumentVersionPageAPIViewTestCase(
             document_version_page_number
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event.actor, self._test_case_user)
-        self.assertEqual(event.target, self.test_document_version_page)
-        self.assertEqual(event.verb, event_document_version_page_edited.id)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+        self.assertEqual(events[0].action_object, self.test_document_version)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_document_version_page)
+        self.assertEqual(events[0].verb, event_document_version_page_edited.id)
 
     def test_document_version_page_image_api_view_no_permission(self):
         self._clear_events()
@@ -211,8 +216,8 @@ class DocumentVersionPageAPIViewTestCase(
         response = self._request_test_document_version_page_image_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_document_version_page_image_api_view_with_access(self):
         self.grant_access(
@@ -225,8 +230,8 @@ class DocumentVersionPageAPIViewTestCase(
         response = self._request_test_document_version_page_image_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_document_version_page_list_api_view_no_permission(self):
         self._clear_events()
@@ -234,8 +239,8 @@ class DocumentVersionPageAPIViewTestCase(
         response = self._request_test_document_version_page_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_document_version_page_list_api_view_with_access(self):
         self.grant_access(
@@ -253,5 +258,5 @@ class DocumentVersionPageAPIViewTestCase(
             self.test_document_version_page.id
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)

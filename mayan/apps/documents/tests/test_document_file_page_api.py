@@ -11,16 +11,14 @@ from .mixins.document_file_mixins import DocumentFilePageAPIViewTestMixin
 class DocumentFilePageAPIViewTestCase(
     DocumentFilePageAPIViewTestMixin, DocumentTestMixin, BaseAPITestCase
 ):
-    _test_event_object_name = 'test_document_file_page'
-
     def test_document_file_page_detail_api_view_no_permission(self):
         self._clear_events()
 
         response = self._request_test_document_file_page_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_document_file_page_detail_api_view_with_access(self):
         self.grant_access(
@@ -33,8 +31,8 @@ class DocumentFilePageAPIViewTestCase(
         response = self._request_test_document_file_page_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_document_file_page_image_api_view_no_permission(self):
         self._clear_events()
@@ -42,8 +40,8 @@ class DocumentFilePageAPIViewTestCase(
         response = self._request_test_document_file_page_image_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_document_file_page_image_api_view_with_access(self):
         self.grant_access(
@@ -55,8 +53,8 @@ class DocumentFilePageAPIViewTestCase(
         response = self._request_test_document_file_page_image_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_document_file_page_list_api_view_no_permission(self):
         self._clear_events()
@@ -64,8 +62,8 @@ class DocumentFilePageAPIViewTestCase(
         response = self._request_test_document_file_page_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_document_file_page_list_api_view_with_access(self):
         self.grant_access(
@@ -83,5 +81,5 @@ class DocumentFilePageAPIViewTestCase(
             self.test_document_file_page.id
         )
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
