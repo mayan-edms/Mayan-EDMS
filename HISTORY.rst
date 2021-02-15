@@ -221,3 +221,9 @@
   ``COMMON_COLLAPSE_LIST_MENU_OBJECT``. Both default to ``False``.
 - Added a check to the task manager app to ensure all defined tasks are
   properly configure in their respective ``queues.py`` modules.
+- ACL apps updates: Add ACL deleted event, track action actor in API and
+  views. Simply API views using REST API mixins. Update API views to return
+  404 errors instead of 403, move global ACL list to the setup menu,
+  model that are registered for ACLs are now also automatically register
+  events in order to receive the ACL deleted event, improve tests and add more
+  test cases.

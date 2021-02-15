@@ -72,6 +72,7 @@ class ACLCreateView(
 
     def get_instance_extra_data(self):
         return {
+            '_event_actor': self.request.user,
             'content_object': self.external_object
         }
 
@@ -93,6 +94,11 @@ class ACLDeleteView(SingleObjectDeleteView):
             'navigation_object_list': ('object', 'acl'),
             'object': self.object.content_object,
             'title': _('Delete ACL: %s') % self.object,
+        }
+
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user
         }
 
     def get_post_action_redirect(self):

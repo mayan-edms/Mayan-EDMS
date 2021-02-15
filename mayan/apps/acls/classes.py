@@ -7,6 +7,7 @@ from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.utils import get_related_field
+from mayan.apps.events.classes import EventModelRegistry
 
 logger = logging.getLogger(name=__name__)
 
@@ -144,6 +145,9 @@ class ModelPermission:
         )
 
         ModelCopy.add_fields_lazy(model=model, field_names=('acls',))
+
+        # Allow the model to be used as the action_object for the ACL events.
+        EventModelRegistry.register(model=model)
 
     @classmethod
     def register_field_query_function(cls, model, function):

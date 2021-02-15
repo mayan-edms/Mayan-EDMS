@@ -64,6 +64,7 @@ class AccessControlListPermissionSerializer(PermissionSerializer):
         )
     )
     acl_url = serializers.SerializerMethodField()
+    id = serializers.SerializerMethodField()
 
     def get_acl_permission_url(self, instance):
         return reverse(
@@ -86,6 +87,9 @@ class AccessControlListPermissionSerializer(PermissionSerializer):
             }, request=self.context['request'], format=self.context['format']
         )
 
+    def get_id(self, instance):
+        return instance.stored_permission.pk
+
 
 class WritableAccessControlListPermissionSerializer(
     AccessControlListPermissionSerializer
@@ -103,7 +107,9 @@ class WritableAccessControlListPermissionSerializer(
 
     def create(self, validated_data):
         for permission in validated_data['permissions']:
-            self.context['acl'].permissions.add(permission)
+            self.context['acl'].permissions_add(
+                queryset=(permission,), _user=self.context['request'].user
+            )
 
         return validated_data['permissions'][0]
 

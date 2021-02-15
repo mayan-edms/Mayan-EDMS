@@ -2,10 +2,10 @@ from django.contrib.contenttypes.models import ContentType
 from django.shortcuts import get_object_or_404
 
 from mayan.apps.permissions.serializers import PermissionSerializer
+from mayan.apps.rest_api.api_view_mixins import ExternalContentTypeObjectAPIViewMixin
 from mayan.apps.rest_api import generics
 
 from .classes import ModelPermission
-from .models import AccessControlList
 from .permissions import permission_acl_edit, permission_acl_view
 from .serializers import (
     AccessControlListPermissionSerializer, AccessControlListSerializer,
@@ -32,35 +32,25 @@ class APIClassPermissionList(generics.ListAPIView):
         )
 
 
-class APIObjectACLListView(generics.ListCreateAPIView):
+class APIObjectACLListView(
+    ExternalContentTypeObjectAPIViewMixin, generics.ListCreateAPIView
+):
     """
     get: Returns a list of all the object's access control lists
     post: Create a new access control list for the selected object.
     """
-    def get_content_object(self):
-        content_type = get_object_or_404(
-            klass=ContentType, app_label=self.kwargs['app_label'],
-            model=self.kwargs['model_name']
-        )
+    mayan_external_object_permissions = {
+        'GET': (permission_acl_view,),
+        'POST': (permission_acl_edit,)
+    }
 
-        content_object = get_object_or_404(
-            klass=content_type.model_class(), pk=self.kwargs['object_id']
-        )
-
-        if self.request.method == 'GET':
-            permission_required = permission_acl_view
-        else:
-            permission_required = permission_acl_edit
-
-        AccessControlList.objects.check_access(
-            obj=content_object, permissions=(permission_required,),
-            user=self.request.user
-        )
-
-        return content_object
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user
+        }
 
     def get_queryset(self):
-        return self.get_content_object().acls.all()
+        return self.external_object.acls.all()
 
     def get_serializer_context(self):
         """
@@ -70,7 +60,7 @@ class APIObjectACLListView(generics.ListCreateAPIView):
         if self.kwargs:
             context.update(
                 {
-                    'content_object': self.get_content_object(),
+                    'content_object': self.external_object,
                 }
             )
 
@@ -91,71 +81,45 @@ class APIObjectACLListView(generics.ListCreateAPIView):
             return WritableAccessControlListSerializer
 
 
-class APIObjectACLView(generics.RetrieveDestroyAPIView):
+class APIObjectACLView(
+    ExternalContentTypeObjectAPIViewMixin, generics.RetrieveDestroyAPIView
+):
     """
     delete: Delete the selected access control list.
     get: Returns the details of the selected access control list.
     """
     lookup_url_kwarg = 'acl_id'
+    mayan_external_object_permissions = {
+        'DELETE': (permission_acl_edit,),
+        'GET': (permission_acl_view,)
+    }
     serializer_class = AccessControlListSerializer
 
-    def get_content_object(self):
-        if self.request.method == 'GET':
-            permission_required = permission_acl_view
-        else:
-            permission_required = permission_acl_edit
-
-        content_type = get_object_or_404(
-            klass=ContentType, app_label=self.kwargs['app_label'],
-            model=self.kwargs['model_name']
-        )
-
-        content_object = get_object_or_404(
-            klass=content_type.model_class(), pk=self.kwargs['object_id']
-        )
-
-        AccessControlList.objects.check_access(
-            obj=content_object, permissions=(permission_required,),
-            user=self.request.user
-        )
-
-        return content_object
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user
+        }
 
     def get_queryset(self):
-        return self.get_content_object().acls.all()
+        return self.external_object.acls.all()
 
 
-class APIObjectACLPermissionListView(generics.ListCreateAPIView):
+class APIObjectACLPermissionListView(
+    ExternalContentTypeObjectAPIViewMixin, generics.ListCreateAPIView
+):
     """
     get: Returns the access control list permission list.
     post: Add a new permission to the selected access control list.
     """
+    mayan_external_object_permissions = {
+        'GET': (permission_acl_view,),
+        'POST': (permission_acl_edit,)
+    }
+
     def get_acl(self):
         return get_object_or_404(
-            klass=self.get_content_object().acls, pk=self.kwargs['acl_id']
+            klass=self.external_object.acls, pk=self.kwargs['acl_id']
         )
-
-    def get_content_object(self):
-        content_type = get_object_or_404(
-            klass=ContentType, app_label=self.kwargs['app_label'],
-            model=self.kwargs['model_name']
-        )
-
-        content_object = get_object_or_404(
-            klass=content_type.model_class(), pk=self.kwargs['object_id']
-        )
-
-        if self.request.method == 'GET':
-            permission = permission_acl_view
-        else:
-            permission = permission_acl_edit
-
-        AccessControlList.objects.check_access(
-            obj=content_object, permissions=(permission,),
-            user=self.request.user
-        )
-
-        return content_object
 
     def get_queryset(self):
         return self.get_acl().permissions.all()
@@ -184,40 +148,24 @@ class APIObjectACLPermissionListView(generics.ListCreateAPIView):
         return context
 
 
-class APIObjectACLPermissionView(generics.RetrieveDestroyAPIView):
+class APIObjectACLPermissionView(
+    ExternalContentTypeObjectAPIViewMixin, generics.RetrieveDestroyAPIView
+):
     """
     delete: Remove the permission from the selected access control list.
     get: Returns the details of the selected access control list permission.
     """
     lookup_url_kwarg = 'permission_id'
+    mayan_external_object_permissions = {
+        'DELETE': (permission_acl_edit,),
+        'GET': (permission_acl_view,)
+    }
     serializer_class = AccessControlListPermissionSerializer
 
     def get_acl(self):
         return get_object_or_404(
-            klass=self.get_content_object().acls, pk=self.kwargs['acl_id']
+            klass=self.external_object.acls, pk=self.kwargs['acl_id']
         )
-
-    def get_content_object(self):
-        content_type = get_object_or_404(
-            klass=ContentType, app_label=self.kwargs['app_label'],
-            model=self.kwargs['model_name']
-        )
-
-        content_object = get_object_or_404(
-            klass=content_type.model_class(), pk=self.kwargs['object_id']
-        )
-
-        if self.request.method == 'GET':
-            permission = permission_acl_view
-        else:
-            permission = permission_acl_edit
-
-        AccessControlList.objects.check_access(
-            obj=content_object, permissions=(permission,),
-            user=self.request.user
-        )
-
-        return content_object
 
     def get_queryset(self):
         return self.get_acl().permissions.all()
@@ -232,3 +180,9 @@ class APIObjectACLPermissionView(generics.RetrieveDestroyAPIView):
             )
 
         return context
+
+    def perform_destroy(self, instance):
+        self.get_acl().permissions_remove(
+            queryset=(instance,), _user=self.request.user
+        )
+        instance.delete()

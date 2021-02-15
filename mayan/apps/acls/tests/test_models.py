@@ -1,6 +1,7 @@
 from django.core.exceptions import PermissionDenied
 from django.db import models
 
+from mayan.apps.events.classes import EventModelRegistry
 from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..classes import ModelPermission
@@ -173,6 +174,7 @@ class PermissionTestCase(ACLTestMixin, BaseTestCase):
 class InheritedPermissionTestCase(ACLTestMixin, BaseTestCase):
     def test_retrieve_inherited_role_permission_not_model_applicable(self):
         self.TestModel = self._create_test_model()
+        EventModelRegistry.register(model=self.TestModel)
         self.test_object = self.TestModel.objects.create()
         self._create_test_acl()
         self._create_test_permission()
@@ -188,6 +190,7 @@ class InheritedPermissionTestCase(ACLTestMixin, BaseTestCase):
 
     def test_retrieve_inherited_role_permission_model_applicable(self):
         self.TestModel = self._create_test_model()
+        EventModelRegistry.register(model=self.TestModel)
         self.test_object = self.TestModel.objects.create()
         self._create_test_acl()
         self._create_test_permission()
