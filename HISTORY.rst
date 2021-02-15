@@ -227,3 +227,6 @@
   model that are registered for ACLs are now also automatically register
   events in order to receive the ACL deleted event, improve tests and add more
   test cases.
+- Update AddRemoveView to only call the underlying add or remove methods only
+  if there are objects to act upon instead of calling the method with an
+  empty queryset which would trigger unwanted events.

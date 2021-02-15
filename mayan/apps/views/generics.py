@@ -234,23 +234,30 @@ class AddRemoveView(
         return result
 
     def forms_valid(self, forms):
+        selection_add = None
+        selection_remove = None
+
         if 'available-add_all' in self.request.POST:
             selection_add = self.get_list_available_queryset()
         else:
-            selection_add = self.get_list_available_queryset().filter(
-                pk__in=forms['form_available'].cleaned_data['selection']
-            )
+            if 'available-selection' in self.request.POST:
+                selection_add = self.get_list_available_queryset().filter(
+                    pk__in=forms['form_available'].cleaned_data['selection']
+                )
 
-        self._action_add(queryset=selection_add)
+        if selection_add:
+            self._action_add(queryset=selection_add)
 
         if 'added-remove_all' in self.request.POST:
             selection_remove = self.get_list_added_queryset()
         else:
-            selection_remove = self.get_list_added_queryset().filter(
-                pk__in=forms['form_added'].cleaned_data['selection']
-            )
+            if 'added-selection' in self.request.POST:
+                selection_remove = self.get_list_added_queryset().filter(
+                    pk__in=forms['form_added'].cleaned_data['selection']
+                )
 
-        self._action_remove(queryset=selection_remove)
+        if selection_remove:
+            self._action_remove(queryset=selection_remove)
 
         return super().forms_valid(forms=forms)
 
