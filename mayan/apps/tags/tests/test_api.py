@@ -47,8 +47,8 @@ class TagAPIViewTestCase(TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase):
         self.assertEqual(Tag.objects.count(), tag_count + 1)
 
         event = self._get_test_object_event()
-        self.assertEqual(event.actor, self._test_case_user)
         self.assertEqual(event.action_object, None)
+        self.assertEqual(event.actor, self._test_case_user)
         self.assertEqual(event.target, self.test_tag)
         self.assertEqual(event.verb, event_tag_created.id)
 
@@ -147,8 +147,8 @@ class TagAPIViewTestCase(TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase):
         self.assertNotEqual(self.test_tag.color, tag_color)
 
         event = self._get_test_object_event()
-        self.assertEqual(event.actor, self._test_case_user)
         self.assertEqual(event.action_object, None)
+        self.assertEqual(event.actor, self._test_case_user)
         self.assertEqual(event.target, self.test_tag)
         self.assertEqual(event.verb, event_tag_edited.id)
 
@@ -188,8 +188,8 @@ class TagAPIViewTestCase(TagAPIViewTestMixin, TagTestMixin, BaseAPITestCase):
         self.assertNotEqual(self.test_tag.color, tag_color)
 
         event = self._get_test_object_event()
-        self.assertEqual(event.actor, self._test_case_user)
         self.assertEqual(event.action_object, None)
+        self.assertEqual(event.actor, self._test_case_user)
         self.assertEqual(event.target, self.test_tag)
         self.assertEqual(event.verb, event_tag_edited.id)
 
@@ -353,8 +353,8 @@ class TagDocumentAPIViewTestCase(
         self.assertTrue(self.test_tag in self.test_document.tags.all())
 
         event = self._get_test_object_event()
-        self.assertEqual(event.actor, self._test_case_user)
         self.assertEqual(event.action_object, self.test_tag)
+        self.assertEqual(event.actor, self._test_case_user)
         self.assertEqual(event.target, self.test_document)
         self.assertEqual(event.verb, event_tag_attached.id)
 
@@ -532,7 +532,7 @@ class TagDocumentAPIViewTestCase(
         self.assertFalse(self.test_tag in self.test_document.tags.all())
 
         event = self._get_test_object_event()
-        self.assertEqual(event.actor, self._test_case_user)
         self.assertEqual(event.action_object, self.test_tag)
+        self.assertEqual(event.actor, self._test_case_user)
         self.assertEqual(event.target, self.test_document)
         self.assertEqual(event.verb, event_tag_removed.id)
