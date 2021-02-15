@@ -1,3 +1,4 @@
+from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ImproperlyConfigured
 
 from rest_framework import status
@@ -72,6 +73,26 @@ class AsymmetricSerializerAPIViewMixin:
             return self.write_serializer_class
 
 
+class ContentTypeAPIViewMixin:
+    """
+    This mixin makes it easier for API views to retrieve a content type from
+    the URL pattern.
+    """
+    content_type_url_kw_args = {
+        'app_label': 'app_label',
+        'model_name': 'model_name'
+    }
+
+    def get_content_type(self):
+        return get_object_or_404(
+            queryset=ContentType, app_label=self.kwargs[
+                self.content_type_url_kw_args['app_label']
+            ], model=self.kwargs[
+                self.content_type_url_kw_args['model_name']
+            ]
+        )
+
+
 class ExternalObjectAPIViewMixin(ExternalObjectViewMixin):
     """
     Override get_external_object to use REST API get_object_or_404.
@@ -87,12 +108,30 @@ class ExternalObjectAPIViewMixin(ExternalObjectViewMixin):
 
         return result
 
-    def get_external_object(self, permission=None):
+    def get_external_object(self):
         return get_object_or_404(
-            queryset=self.get_external_object_queryset_filtered(
-                permission=permission
-            ), **self.get_pk_url_kwargs()
+            queryset=self.get_external_object_queryset_filtered(),
+            **self.get_pk_url_kwargs()
         )
+
+    def get_external_object_permission(self):
+        return getattr(
+            self, 'mayan_external_object_permissions', {}
+        ).get(self.request.method, (None,))[0]
+
+
+class ExternalContentTypeObjectAPIViewMixin(
+    ContentTypeAPIViewMixin, ExternalObjectAPIViewMixin
+):
+    """
+    Mixin to retrieve an external object by content type from the URL pattern.
+    """
+    external_object_pk_url_kwarg = 'object_id'
+
+    def get_external_object_queryset(self):
+        content_type = self.get_content_type()
+        self.external_object_class = content_type.model_class()
+        return super().get_external_object_queryset()
 
 
 class InstanceExtraDataAPIViewMixin:

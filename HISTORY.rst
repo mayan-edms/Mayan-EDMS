@@ -230,3 +230,6 @@
 - Update AddRemoveView to only call the underlying add or remove methods only
   if there are objects to act upon instead of calling the method with an
   empty queryset which would trigger unwanted events.
+- Add ``ExternalContentTypeObjectAPIViewMixin`` to the REST API app. This
+  mixin simplifies working with models that act upon another object via
+  their Content Type, such as the ACLs.
