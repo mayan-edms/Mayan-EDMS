@@ -233,3 +233,6 @@
 - Add ``ExternalContentTypeObjectAPIViewMixin`` to the REST API app. This
   mixin simplifies working with models that act upon another object via
   their Content Type, such as the ACLs.
+- Update the ACL app to support multiple foreign object permission
+  inheritance. Support for ``GenericForeignKey`` non default ``ct_field``,
+  and ``fk_field`` was also added.
