@@ -1,6 +1,7 @@
 from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import (
     menu_object, menu_secondary, menu_tools, menu_topbar, menu_user
@@ -29,6 +30,16 @@ class EventsApp(MayanAppConfig):
         Action = apps.get_model(app_label='actstream', model_name='Action')
         Notification = self.get_model(model_name='Notification')
         StoredEventType = self.get_model(model_name='StoredEventType')
+
+        ModelPermission.register_inheritance(
+            model=Action, related='action_object',
+        )
+        ModelPermission.register_inheritance(
+            model=Action, related='actor',
+        )
+        ModelPermission.register_inheritance(
+            model=Action, related='target',
+        )
 
         # Add labels to Action model, they are not marked translatable in the
         # upstream package.

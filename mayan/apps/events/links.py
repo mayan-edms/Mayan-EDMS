@@ -38,8 +38,7 @@ link_events_for_object = Link(
     view='events:events_for_object',
 )
 link_events_list = Link(
-    icon=icon_events_list, permissions=(permission_events_view,),
-    text=_('Events'), view='events:events_list'
+    icon=icon_events_list, text=_('Events'), view='events:events_list'
 )
 link_event_types_subscriptions_list = Link(
     icon=icon_event_types_subscriptions_list,

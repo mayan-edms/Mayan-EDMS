@@ -1,3 +1,4 @@
+import csv
 import logging
 
 from django.apps import apps
@@ -17,7 +18,7 @@ logger = logging.getLogger(name=__name__)
 
 
 DEFAULT_ACTION_EXPORTER_FIELD_NAMES = (
-    'timestamp', 'actor_content_type', 'actor_object_id', 'actor',
+    'timestamp', 'id', 'actor_content_type', 'actor_object_id', 'actor',
     'target_content_type', 'target_object_id', 'target', 'verb',
     'action_object_content_type', 'action_object_object_id', 'action_object'
 )
@@ -30,19 +31,18 @@ class ActionExporter:
 
     def export(self):
         with open(file='/tmp/test.csv', mode='w', newline='') as file_object:
-            # Write header
+            writer = csv.writer(
+                file_object, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL
+            )
             file_object.write(','.join(self.field_names + ('\n',)))
 
             for entry in self.queryset.iterator():
-                row = ','.join(
-                    [
-                        str(
-                            getattr(entry, field_name)
-                        ) for field_name in self.field_names
-                    ]
-                )
-                file_object.write(row)
-                file_object.write('\n')
+                row = [
+                    str(
+                        getattr(entry, field_name)
+                    ) for field_name in self.field_names
+                ]
+                writer.writerow(row)
 
 
 class EventManager:
@@ -221,6 +221,10 @@ class EventType:
         if actor is None and target is None:
             # If the actor and the target are None there is no way to
             # create a new event.
+            logger.warning(
+                'Attempting to commit event "%s" without an actor or a '
+                'target. This is not yet supported.', self
+            )
             return
 
         result = action.send(
