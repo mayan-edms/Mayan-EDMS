@@ -63,20 +63,20 @@ class AccessControlListManager(models.Manager):
                 # field in the case where multiple related fields are
                 # associated.
                 # Example: object_layer__content_type
-                recuisive_related_reference = '__'.join(related_field_name.split('__')[0:-1])
+                recursive_related_reference = '__'.join(related_field_name.split('__')[0:-1])
 
                 # If there is at least one parent related field we add a
                 # double underscore to make it a valid filter template.
-                if recuisive_related_reference:
-                    recuisive_related_reference = '{}__'.format(recuisive_related_reference)
+                if recursive_related_reference:
+                    recursive_related_reference = '{}__'.format(recursive_related_reference)
 
                 content_type_object_id_queryset = queryset.annotate(
                     ct_fk_combination=Concat(
                         '{}{}'.format(
-                            recuisive_related_reference, related_field.ct_field
+                            recursive_related_reference, related_field.ct_field
                         ), Value('-'),
                         '{}{}'.format(
-                            recuisive_related_reference, related_field.fk_field
+                            recursive_related_reference, related_field.fk_field
                         ), output_field=CharField()
                     )
                 ).values('ct_fk_combination')
@@ -91,7 +91,9 @@ class AccessControlListManager(models.Manager):
                     ct_fk_combination__in=content_type_object_id_queryset
                 ).values('object_id')
 
-                field_lookup = '{}object_id__in'.format(recuisive_related_reference)
+                field_lookup = '{}{}__in'.format(
+                    recursive_related_reference, related_field.fk_field
+                )
                 result.append(Q(**{field_lookup: acl_filter}))
             else:
                 # Case 2: Related field of a single type, single ContentType,
@@ -115,9 +117,9 @@ class AccessControlListManager(models.Manager):
                 # Recurse and reduce.
                 try:
                     related_field_model_related_fields = (
-                        ModelPermission.get_inheritance(
+                        ModelPermission.get_inheritances(
                             model=related_field.related_model
-                        ),
+                        )
                     )
                 except KeyError:
                     pass
@@ -155,9 +157,9 @@ class AccessControlListManager(models.Manager):
             # Case 4: Original model, has an inherited related field.
             try:
                 related_fields = (
-                    ModelPermission.get_inheritance(
+                    ModelPermission.get_inheritances(
                         model=queryset.model
-                    ),
+                    )
                 )
             except KeyError:
                 pass
@@ -299,40 +301,41 @@ class AccessControlListManager(models.Manager):
             return queryset
 
         try:
-            related_field = ModelPermission.get_inheritance(
+            related_fields = ModelPermission.get_inheritances(
                 model=type(obj)
             )
         except KeyError:
-            pass
+            """Does not have inheritance to other models."""
         else:
-            try:
-                parent_object = resolve_attribute(
-                    obj=obj, attribute=related_field
+            for related_field in related_fields:
+                try:
+                    parent_object = resolve_attribute(
+                        obj=obj, attribute=related_field
+                    )
+                except AttributeError:
+                    # Parent accessor is not an attribute, try it as a related
+                    # field.
+                    parent_object = return_related(
+                        instance=obj, related_field=related_field
+                    )
+                content_type = ContentType.objects.get_for_model(
+                    model=parent_object
                 )
-            except AttributeError:
-                # Parent accessor is not an attribute, try it as a related
-                # field.
-                parent_object = return_related(
-                    instance=obj, related_field=related_field
-                )
-            content_type = ContentType.objects.get_for_model(
-                model=parent_object
-            )
-            try:
-                queryset = queryset | self.get(
-                    content_type=content_type, object_id=parent_object.pk,
-                    role=role
-                ).permissions.all()
-            except self.model.DoesNotExist:
-                pass
+                try:
+                    queryset = queryset | self.get(
+                        content_type=content_type, object_id=parent_object.pk,
+                        role=role
+                    ).permissions.all()
+                except self.model.DoesNotExist:
+                    pass
 
-            if type(parent_object) == type(obj):
-                # Object and parent are of the same type. Break recursion.
-                return queryset
-            else:
-                queryset = queryset | self._get_inherited_object_permissions(
-                    obj=parent_object, role=role
-                )
+                if type(parent_object) == type(obj):
+                    # Object and parent are of the same type. Break recursion.
+                    return queryset
+                else:
+                    queryset = queryset | self._get_inherited_object_permissions(
+                        obj=parent_object, role=role
+                    )
 
         return queryset
 

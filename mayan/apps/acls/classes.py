@@ -88,7 +88,7 @@ class ModelPermission:
         return StoredPermission.objects.filter(pk__in=pks)
 
     @classmethod
-    def get_inheritance(cls, model):
+    def get_inheritances(cls, model):
         # Proxy models get the inheritance from their base model
         if model._meta.proxy:
             model = model._meta.proxy_for_model
@@ -161,7 +161,8 @@ class ModelPermission:
         cls._inheritances_reverse.setdefault(model_reverse, [])
         cls._inheritances_reverse[model_reverse].append(model)
 
-        cls._inheritances[model] = related
+        cls._inheritances.setdefault(model, [])
+        cls._inheritances[model].append(related)
 
     @classmethod
     def register_manager(cls, model, manager_name):

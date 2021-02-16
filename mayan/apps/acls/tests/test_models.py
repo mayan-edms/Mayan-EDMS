@@ -1,3 +1,5 @@
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import PermissionDenied
 from django.db import models
 
@@ -309,6 +311,124 @@ class InheritedPermissionTestCase(ACLTestMixin, BaseTestCase):
         )
 
         self.assertTrue(self.test_permission.stored_permission in queryset)
+
+
+class GenericForeignKeyFieldModelTestCase(ACLTestMixin, BaseTestCase):
+    auto_create_acl_test_object = False
+
+    def test_generic_foreign_key_model_with_alternate_ct_and_fk(self):
+        self._create_test_permission()
+
+        self.TestModelExternal = self._create_test_model(
+            model_name='TestModelExternal'
+        )
+        self.TestModelChild = self._create_test_model(
+            fields={
+                'content_type_1': models.ForeignKey(
+                    on_delete=models.CASCADE, related_name='object_content_type',
+                    to=ContentType
+                ),
+                'object_id_1': models.PositiveIntegerField(),
+                'content_object_1': GenericForeignKey(
+                    ct_field='content_type_1', fk_field='object_id_1',
+                )
+            }, model_name='TestModelChild'
+        )
+
+        ModelPermission.register(
+            model=self.TestModelExternal, permissions=(
+                self.test_permission,
+            )
+        )
+        ModelPermission.register(
+            model=self.TestModelChild, permissions=(
+                self.test_permission,
+            )
+        )
+
+        ModelPermission.register_inheritance(
+            model=self.TestModelChild, related='content_object_1',
+        )
+
+        test_external_object = self.TestModelExternal.objects.create()
+        test_object = self.TestModelChild.objects.create(
+            content_object_1=test_external_object
+        )
+
+        self.grant_access(
+            obj=test_external_object, permission=self.test_permission
+        )
+
+        queryset = AccessControlList.objects.restrict_queryset(
+            queryset=self.TestModelChild.objects.all(),
+            permission=self.test_permission, user=self._test_case_user
+        )
+
+        self.assertTrue(test_object in queryset)
+
+    def test_generic_foreign_key_model_with_multiple_alternate_ct_and_fk(self):
+        self._create_test_permission()
+
+        self.TestModelExternal = self._create_test_model(
+            model_name='TestModelExternal'
+        )
+        self.TestModelChild = self._create_test_model(
+            fields={
+                'content_type_1': models.ForeignKey(
+                    on_delete=models.CASCADE,
+                    related_name='object_content_type', to=ContentType
+                ),
+                'object_id_1': models.PositiveIntegerField(),
+                'content_object_1': GenericForeignKey(
+                    ct_field='content_type_1', fk_field='object_id_1',
+                ),
+                'content_type_2': models.ForeignKey(
+                    blank=True, null=True, on_delete=models.CASCADE,
+                    related_name='object_content_type',
+                    to=ContentType
+                ),
+                'object_id_2': models.PositiveIntegerField(
+                    blank=True, null=True
+                ),
+                'content_object_2': GenericForeignKey(
+                    ct_field='content_type_2', fk_field='object_id_2',
+                )
+            }, model_name='TestModelChild'
+        )
+
+        ModelPermission.register(
+            model=self.TestModelExternal, permissions=(
+                self.test_permission,
+            )
+        )
+        ModelPermission.register(
+            model=self.TestModelChild, permissions=(
+                self.test_permission,
+            )
+        )
+
+        ModelPermission.register_inheritance(
+            model=self.TestModelChild, related='content_object_1',
+        )
+        ModelPermission.register_inheritance(
+            model=self.TestModelChild, related='content_object_2',
+        )
+
+        test_external_object = self.TestModelExternal.objects.create()
+        test_object = self.TestModelChild.objects.create(
+            content_object_1=test_external_object
+        )
+
+        self.grant_access(
+            obj=test_external_object, permission=self.test_permission
+        )
+
+        queryset = AccessControlList.objects.restrict_queryset(
+            queryset=self.TestModelChild.objects.all(),
+            permission=self.test_permission, user=self._test_case_user
+        )
+
+        self.assertTrue(test_object in queryset)
 
 
 class ProxyModelPermissionTestCase(ACLTestMixin, BaseTestCase):
