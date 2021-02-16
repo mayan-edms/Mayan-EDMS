@@ -4,8 +4,6 @@ CELERY_BROKER_URL = 'memory://'
 CELERY_TASK_ALWAYS_EAGER = True
 CELERY_TASK_EAGER_PROPAGATES = True
 
-COMMON_PRODUCTION_ERROR_LOG_PATH = '/tmp/mayan-errors.log'
-
 DOCUMENT_PARSING_AUTO_PARSING = False
 
 FILE_METADATA_AUTO_PROCESS = False
@@ -13,6 +11,9 @@ FILE_METADATA_AUTO_PROCESS = False
 INSTALLED_APPS = [
     cls for cls in INSTALLED_APPS if cls != 'whitenoise.runserver_nostatic'
 ]
+
+LOGGING_LOG_FILE_PATH = '/tmp/mayan-errors.log'
+LOGGING_LEVEL = 'WARNING'
 
 # Remove whitenoise from middlewares. Causes out of memory errors during test
 # suit
