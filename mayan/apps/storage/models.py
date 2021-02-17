@@ -63,7 +63,10 @@ class DownloadFile(DatabaseFileModelMixin, ExtraDataModelMixin, models.Model):
         verbose_name_plural = _('Download files')
 
     def __str__(self):
-        return str(self.content_object) or self.filename or self.label
+        if self.content_object:
+            return str(self.content_object)
+        else:
+            return self.filename or self.label
 
     @method_event(
         event_manager_class=EventManagerMethodAfter,
