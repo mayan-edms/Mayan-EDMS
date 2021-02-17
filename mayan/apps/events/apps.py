@@ -11,8 +11,9 @@ from mayan.apps.views.html_widgets import ObjectLinkWidget, TwoStateWidget
 
 from .html_widgets import widget_event_actor_link, widget_event_type_link
 from .links import (
-    link_current_user_events, link_event_types_subscriptions_list,
-    link_events_list, link_notification_mark_read,
+    link_current_user_events, link_current_user_events_export,
+    link_event_types_subscriptions_list, link_events_list,
+    link_events_list_export, link_notification_mark_read,
     link_notification_mark_read_all, link_user_notifications_list,
 )
 
@@ -110,6 +111,20 @@ class EventsApp(MayanAppConfig):
                 'events:notification_mark_read',
                 'events:notification_mark_read_all',
                 'events:user_notifications_list'
+            )
+        )
+        menu_secondary.bind_links(
+            links=(link_current_user_events_export,),
+            sources=(
+                'events:current_user_events',
+                'events:current_user_events_export',
+            )
+        )
+        menu_secondary.bind_links(
+            links=(link_events_list_export,),
+            sources=(
+                'events:events_list',
+                'events:events_list_export',
             )
         )
         menu_tools.bind_links(links=(link_events_list,))

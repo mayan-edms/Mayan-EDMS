@@ -1,59 +1,87 @@
+from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
 
-from actstream.models import Action, any_stream
+from actstream.models import Action
 
-from mayan.apps.acls.models import AccessControlList
+from mayan.apps.common.classes import QuerysetParametersSerializer
 from mayan.apps.views.generics import ConfirmView
 from mayan.apps.views.mixins import ExternalContentTypeObjectViewMixin
 
-from ..classes import ActionExporter, EventType
+from ..classes import EventType
 from ..permissions import permission_events_export
+from ..tasks import task_event_queryset_export
 
 __all__ = (
     'CurrentUserEventExportView', 'EventListExportView',
     'ObjectEventExportView', 'VerbEventExportView'
 )
 
-#TODO Add event export permission
-
 
 class EventExportBaseView(ConfirmView):
     object_permission = permission_events_export
 
-    def get_queryset(self):
-        return AccessControlList.objects.restrict_queryset(
-            queryset=self.get_source_queryset(),
-            permission=permission_events_export,
-            user=self.request.user
-        )
+    def get_extra_context(self):
+        return {
+            'message': _(
+                'The process will be performed in the background. '
+                'The exported events will be available in the downloads area.'
+            )
+        }
 
     def view_action(self):
-        ActionExporter(queryset=self.get_queryset()).export()
+        decomposed_queryset = QuerysetParametersSerializer.decompose(
+            _model=Action, **self.get_queryset_parameters()
+        )
+
+        task_event_queryset_export.apply_async(
+            kwargs={
+                'decomposed_queryset': decomposed_queryset,
+                'user_id': self.request.user.pk
+            }
+        )
+
+        messages.success(
+            request=self.request, message=_(
+                'Event list export task queued successfully.'
+            )
+        )
 
 
 class EventListExportView(EventExportBaseView):
     object_permission = permission_events_export
 
     def get_extra_context(self):
-        return {
-            'title': _('Export events'),
-        }
+        context = super().get_extra_context()
+        context.update(
+            {
+                'title': _('Export events'),
+            }
+        )
+        return context
 
-    def get_source_queryset(self):
-        return Action.objects.all()
+    def get_queryset_parameters(self):
+        return {
+            '_method_name': 'all'
+        }
 
 
 class ObjectEventExportView(
     ExternalContentTypeObjectViewMixin, EventExportBaseView
 ):
     def get_extra_context(self):
-        return {
-            'object': self.external_object,
-            'title': _('Export events for: %s') % self.external_object,
-        }
+        context = super().get_extra_context()
+        context.update(
+            {
+                'object': self.external_object,
+                'title': _('Export events for: %s') % self.external_object,
+            }
+        )
+        return context
 
-    def get_source_queryset(self):
-        return any_stream(obj=self.external_object)
+    def get_queryset_parameters(self):
+        return {
+            '_method_name': 'any', 'obj': self.external_object
+        }
 
 
 class CurrentUserEventExportView(ObjectEventExportView):
@@ -62,15 +90,25 @@ class CurrentUserEventExportView(ObjectEventExportView):
     def get_external_object(self):
         return self.request.user
 
+    def get_queryset_parameters(self):
+        return {
+            '_method_name': 'actor', 'obj': self.external_object
+        }
+
 
 class VerbEventExportView(EventExportBaseView):
     def get_extra_context(self):
-        return {
-            #'hide_object': True,
-            'title': _(
-                'Events of type: %s'
-            ) % EventType.get(name=self.kwargs['verb']),
-        }
+        context = super().get_extra_context()
+        context.update(
+            {
+                'title': _(
+                    'Events of type: %s'
+                ) % EventType.get(name=self.kwargs['verb']),
+            }
+        )
+        return context
 
-    def get_source_queryset(self):
-        return Action.objects.filter(verb=self.kwargs['verb'])
+    def get_queryset_parameters(self):
+        return {
+            '_method_name': 'filter', 'verb': self.kwargs['verb']
+        }

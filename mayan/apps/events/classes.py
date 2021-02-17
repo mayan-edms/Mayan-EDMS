@@ -1,18 +1,24 @@
 import csv
 import logging
 
+from furl import furl
+
 from django.apps import apps
 from django.contrib.auth import get_user_model
 from django.core.exceptions import PermissionDenied
+from django.urls import reverse
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from actstream import action
 
+from mayan.apps.common.settings import setting_project_url
 from mayan.apps.common.utils import return_attrib
 
-from .literals import EVENT_MANAGER_ORDER_AFTER
-from .permissions import permission_events_view
+from .literals import (
+    DEFAULT_EVENT_LIST_EXPORT_FILENAME, EVENT_MANAGER_ORDER_AFTER
+)
+from .permissions import permission_events_export, permission_events_view
 
 logger = logging.getLogger(name=__name__)
 
@@ -29,20 +35,90 @@ class ActionExporter:
         self.field_names = field_names or DEFAULT_ACTION_EXPORTER_FIELD_NAMES
         self.queryset = queryset
 
-    def export(self):
-        with open(file='/tmp/test.csv', mode='w', newline='') as file_object:
-            writer = csv.writer(
-                file_object, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL
+    def export(self, file_object, user=None):
+        AccessControlList = apps.get_model(
+            app_label='acls', model_name='AccessControlList'
+        )
+        if user:
+            self.queryset = AccessControlList.objects.restrict_queryset(
+                queryset=self.queryset,
+                permission=permission_events_export,
+                user=user
             )
-            file_object.write(','.join(self.field_names + ('\n',)))
 
-            for entry in self.queryset.iterator():
-                row = [
-                    str(
-                        getattr(entry, field_name)
-                    ) for field_name in self.field_names
-                ]
-                writer.writerow(row)
+        writer = csv.writer(
+            file_object, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL
+        )
+        file_object.write(','.join(self.field_names + ('\n',)))
+
+        for entry in self.queryset.iterator():
+            row = [
+                str(
+                    getattr(entry, field_name)
+                ) for field_name in self.field_names
+            ]
+            writer.writerow(row)
+
+    def export_to_download_file(self, user=None):
+        # Avoid circular import
+        from .events import event_events_exported
+
+        Action = apps.get_model(
+            app_label='actstream', model_name='Action'
+        )
+        ContentType = apps.get_model(
+            app_label='contenttypes', model_name='ContentType'
+        )
+        DownloadFile = apps.get_model(
+            app_label='storage', model_name='DownloadFile'
+        )
+        Message = apps.get_model(
+            app_label='messaging', model_name='Message'
+        )
+
+        download_file = DownloadFile(
+            content_type=ContentType.objects.get_for_model(
+                model=Action
+            ), filename=DEFAULT_EVENT_LIST_EXPORT_FILENAME,
+            label=_('Event list export to CSV'),
+            permission=permission_events_export.stored_permission
+        )
+        download_file._event_actor = user
+        download_file.save()
+
+        with download_file.open(mode='w') as file_object:
+            self.export(file_object=file_object, user=user)
+
+        event_events_exported.commit(
+            actor=user, target=download_file
+        )
+
+        if user:
+            download_list_url = furl(setting_project_url.value).join(
+                reverse(
+                    viewname='storage:download_file_list'
+                )
+            ).tostr()
+            download_url = furl(setting_project_url.value).join(
+                reverse(
+                    viewname='storage:download_file_download',
+                    kwargs={'download_file_id': download_file.pk}
+                )
+            ).tostr()
+
+            Message.objects.create(
+                sender_object=download_file,
+                user=user,
+                subject=_('Events exported.'),
+                body=_(
+                    'The event list has been exported and is available '
+                    'for download using the link: %(download_url)s or from '
+                    'the downloads area (%(download_list_url)s).'
+                ) % {
+                    'download_list_url': download_list_url,
+                    'download_url': download_url,
+                }
+            )
 
 
 class EventManager:

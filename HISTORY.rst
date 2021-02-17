@@ -236,3 +236,5 @@
 - Update the ACL app to support multiple foreign object permission
   inheritance. Support for ``GenericForeignKey`` non default ``ct_field``,
   and ``fk_field`` was also added.
+- Added support to export the global events list, object events list and
+  user events list.
