@@ -1,3 +1,4 @@
+from django.apps import apps
 from django.contrib import contenttypes
 from django.core.exceptions import ImproperlyConfigured
 from django.db import models
@@ -532,6 +533,77 @@ class ModelQueryFields:
             queryset = queryset.prefetch_related(*self.prefetch_related_fields)
 
         return queryset
+
+
+class QuerysetParametersSerializer:
+    @staticmethod
+    def decompose(_model, _method_name, _manager_name=None, **kwargs):
+        ContentType = apps.get_model(
+            app_label='contenttypes', model_name='ContentType'
+        )
+
+        _manager_name = _manager_name or _model._meta.default_manager.name
+
+        serialized_kwargs = []
+        for name, value in kwargs.items():
+            try:
+                content_type = ContentType.objects.get_for_model(model=value)
+            except AttributeError:
+                """The value is not a model instance, pass it as-is."""
+                serialized_kwargs.append(
+                    {
+                        'name': name,
+                        'value': value
+                    }
+                )
+            else:
+                serialized_kwargs.append(
+                    {
+                        'name': name,
+                        'content_type_id': content_type.pk,
+                        'object_id': value.pk
+                    }
+                )
+
+        return {
+            'model_content_type_id': ContentType.objects.get_for_model(
+                model=_model
+            ).pk,
+            'manager_name': _manager_name,
+            'method_name': _method_name,
+            'kwargs': serialized_kwargs
+        }
+
+    @staticmethod
+    def rebuild(decomposed_queryset):
+        ContentType = apps.get_model(
+            app_label='contenttypes', model_name='ContentType'
+        )
+
+        model = ContentType.objects.get(
+            pk=decomposed_queryset['model_content_type_id']
+        ).model_class()
+
+        queryset = getattr(model, decomposed_queryset['manager_name'])
+
+        kwargs = {}
+
+        for parameter in decomposed_queryset.get('kwargs', ()):
+            if 'content_type_id' in parameter:
+                content_type = ContentType.objects.get(
+                    pk=parameter['content_type_id']
+                )
+                value = content_type.get_object_for_this_type(
+                    pk=parameter['object_id']
+                )
+            else:
+                value = parameter['value']
+
+            kwargs[parameter['name']] = value
+
+        return getattr(
+            queryset, decomposed_queryset['method_name']
+        )(**kwargs)
 
 
 ModelAttribute.register(klass=ModelProperty)
