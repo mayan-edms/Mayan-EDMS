@@ -67,12 +67,6 @@ class ActionExporter:
         # Avoid circular import
         from .events import event_events_exported
 
-        Action = apps.get_model(
-            app_label='actstream', model_name='Action'
-        )
-        ContentType = apps.get_model(
-            app_label='contenttypes', model_name='ContentType'
-        )
         DownloadFile = apps.get_model(
             app_label='storage', model_name='DownloadFile'
         )
@@ -81,9 +75,7 @@ class ActionExporter:
         )
 
         download_file = DownloadFile(
-            content_type=ContentType.objects.get_for_model(
-                model=Action
-            ), filename=DEFAULT_EVENT_LIST_EXPORT_FILENAME,
+            filename=DEFAULT_EVENT_LIST_EXPORT_FILENAME,
             label=_('Event list export to CSV'),
             permission=permission_events_export.stored_permission
         )
