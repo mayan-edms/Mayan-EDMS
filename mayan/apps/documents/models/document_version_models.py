@@ -15,6 +15,7 @@ from mayan.apps.common.settings import setting_project_url
 from mayan.apps.events.classes import EventManagerMethodAfter, EventManagerSave
 from mayan.apps.events.decorators import method_event
 from mayan.apps.messaging.models import Message
+from mayan.apps.storage.models import DownloadFile
 from mayan.apps.templating.classes import Template
 
 from ..events import (
@@ -125,52 +126,49 @@ class DocumentVersion(ExtraDataModelMixin, models.Model):
                 page.export(append=True, file_object=file_object)
 
     def export_to_download_file(self, user=None):
-        from mayan.apps.storage.models import DownloadFile
+        download_file = DownloadFile(
+            content_object=self, filename='{}.pdf'.format(self),
+            label=_('Document version export to PDF'),
+            permission=permission_document_version_export.stored_permission
+        )
+        download_file._event_actor = user
+        download_file.save()
 
-        with transaction.atomic():
-            download_file = DownloadFile.objects.create(
-                content_object=self, filename='{}.pdf'.format(self),
-                label=_('Document version export to PDF'),
-                permission=permission_document_version_export.stored_permission
-            )
+        with download_file.open(mode='wb+') as file_object:
+            self.export(file_object=file_object)
 
-            with download_file.open(mode='wb+') as file_object:
-                self.export(file_object=file_object)
+        event_document_version_exported.commit(
+            action_object=download_file, actor=user,
+            target=self
+        )
 
-            if user:
-                download_list_url = furl(setting_project_url.value).join(
-                    reverse(
-                        viewname='storage:download_file_list'
-                    )
-                ).tostr()
-                download_url = furl(setting_project_url.value).join(
-                    reverse(
-                        viewname='storage:download_file_download',
-                        kwargs={'download_file_id': download_file.pk}
-                    )
-                ).tostr()
-
-                Message.objects.create(
-                    sender_object=download_file,
-                    user=user,
-                    subject=_('Document exported.'),
-                    body=_(
-                        'Document version "%(document_version)s" has been '
-                        'exported and is available for download using the '
-                        'link: %(download_url)s or from '
-                        'the downloads area (%(download_list_url)s).'
-                    ) % {
-                        'download_list_url': download_list_url,
-                        'download_url': download_url,
-                        'document_version': self
-                    }
+        if user:
+            download_list_url = furl(setting_project_url.value).join(
+                reverse(
+                    viewname='storage:download_file_list'
                 )
-
-            transaction.on_commit(
-                lambda: event_document_version_exported.commit(
-                    action_object=download_file,
-                    target=self
+            ).tostr()
+            download_url = furl(setting_project_url.value).join(
+                reverse(
+                    viewname='storage:download_file_download',
+                    kwargs={'download_file_id': download_file.pk}
                 )
+            ).tostr()
+
+            Message.objects.create(
+                sender_object=download_file,
+                user=user,
+                subject=_('Document exported.'),
+                body=_(
+                    'Document version "%(document_version)s" has been '
+                    'exported and is available for download using the '
+                    'link: %(download_url)s or from '
+                    'the downloads area (%(download_list_url)s).'
+                ) % {
+                    'download_list_url': download_list_url,
+                    'download_url': download_url,
+                    'document_version': self
+                }
             )
 
     def get_absolute_url(self):

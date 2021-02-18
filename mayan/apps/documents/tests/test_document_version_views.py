@@ -1,6 +1,8 @@
 from mayan.apps.file_caching.models import CachePartitionFile
 from mayan.apps.file_caching.permissions import permission_cache_partition_purge
 from mayan.apps.file_caching.tests.mixins import CachePartitionViewTestMixin
+from mayan.apps.messaging.events import event_message_created
+from mayan.apps.messaging.models import Message
 from mayan.apps.storage.events import event_download_file_created
 from mayan.apps.storage.models import DownloadFile
 from mayan.apps.testing.tests.mixins import ContentTypeTestCaseMixin
@@ -222,7 +224,6 @@ class DocumentVersionExportViewTestCase(
     `captureOnCommitCallbacks` when upgraded to Django 3.2:
     https://github.com/django/django/commit/e906ff6fca291fc0bfa0d52f05817ee9dae0335d
     """
-    _test_event_object_name = 'test_document_version'
 
     def test_document_version_export_view_no_permission(self):
         download_file_count = DownloadFile.objects.count()
@@ -236,7 +237,7 @@ class DocumentVersionExportViewTestCase(
             DownloadFile.objects.count(), download_file_count
         )
 
-        events = self._get_test_object_events()
+        events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
     def test_document_version_export_view_with_access(self):
@@ -257,18 +258,25 @@ class DocumentVersionExportViewTestCase(
         )
 
         test_download_file = DownloadFile.objects.first()
+        test_message = Message.objects.first()
 
-        events = self._get_test_object_events()
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 3)
 
         self.assertEqual(events[0].action_object, self.test_document_version)
-        self.assertEqual(events[0].actor, test_download_file)
+        self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].target, test_download_file)
         self.assertEqual(events[0].verb, event_download_file_created.id)
 
         self.assertEqual(events[1].action_object, test_download_file)
-        self.assertEqual(events[1].actor, self.test_document_version)
+        self.assertEqual(events[1].actor, self._test_case_user)
         self.assertEqual(events[1].target, self.test_document_version)
         self.assertEqual(events[1].verb, event_document_version_exported.id)
+
+        self.assertEqual(events[2].action_object, None)
+        self.assertEqual(events[2].actor, test_message)
+        self.assertEqual(events[2].target, test_message)
+        self.assertEqual(events[2].verb, event_message_created.id)
 
 
 class DocumentVersionCachePurgeViewTestCase(
