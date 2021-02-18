@@ -59,6 +59,7 @@ class DownloadFile(DatabaseFileModelMixin, ExtraDataModelMixin, models.Model):
     objects = DownloadFileManager()
 
     class Meta:
+        ordering = ('-datetime',)
         verbose_name = _('Download file')
         verbose_name_plural = _('Download files')
 
