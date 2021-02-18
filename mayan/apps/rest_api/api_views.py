@@ -4,12 +4,20 @@ from rest_framework import permissions, renderers
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.schemas.generators import EndpointEnumerator
 
+import mayan
 from mayan.apps.common.settings import setting_url_base_path
 
 from .classes import Endpoint
-from .generics import ListAPIView
-from .serializers import EndpointSerializer
+from .generics import RetrieveAPIView, ListAPIView
+from .serializers import AppInformationSerializer, EndpointSerializer
 from .schemas import openapi_info
+
+
+class AppInformationAPIView(RetrieveAPIView):
+    serializer_class = AppInformationSerializer
+
+    def get_object(self):
+        return mayan
 
 
 class APIRoot(ListAPIView):
@@ -21,14 +29,14 @@ class APIRoot(ListAPIView):
         get: Return a list of all API root endpoints. This includes the
         API version root and root services.
         """
-        endpoint_version = Endpoint(
-            label='API version root', viewname='rest_api:api_version_root'
-        )
-        endpoint_swagger = Endpoint(
-            label='Swagger UI', viewname='rest_api:schema-swagger-ui'
+        endpoint_app_information = Endpoint(
+            label='App information', viewname='rest_api:app_information'
         )
         endpoint_redoc = Endpoint(
             label='ReDoc UI', viewname='rest_api:schema-redoc'
+        )
+        endpoint_swagger = Endpoint(
+            label='Swagger UI', viewname='rest_api:schema-swagger-ui'
         )
         endpoint_swagger_schema_json = Endpoint(
             label='API schema (JSON)', viewname='rest_api:schema-json',
@@ -38,8 +46,12 @@ class APIRoot(ListAPIView):
             label='API schema (YAML)', viewname='rest_api:schema-json',
             kwargs={'format': '.yaml'}
         )
+        endpoint_version = Endpoint(
+            label='API version root', viewname='rest_api:api_version_root'
+        )
         return [
             endpoint_version,
+            endpoint_app_information,
             endpoint_swagger,
             endpoint_redoc,
             endpoint_swagger_schema_json,

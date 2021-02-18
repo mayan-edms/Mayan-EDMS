@@ -1,16 +1,17 @@
 from django.conf.urls import include, url
 
 from .api_views import (
-    APIRoot, APIVersionRoot, BrowseableObtainAuthToken, schema_view
+    AppInformationAPIView, APIRoot, APIVersionRoot,
+    BrowseableObtainAuthToken, schema_view
 )
 from .literals import API_VERSION
 
 
 api_version_urls = [
-    url(regex=r'^$', view=APIVersionRoot.as_view(), name='api_version_root'),
+    url(regex=r'^$', name='api_version_root', view=APIVersionRoot.as_view()),
     url(
-        regex=r'^auth/token/obtain/$', view=BrowseableObtainAuthToken.as_view(),
-        name='auth_token_obtain'
+        regex=r'^auth/token/obtain/$', name='auth_token_obtain',
+        view=BrowseableObtainAuthToken.as_view()
     )
 ]
 
@@ -20,7 +21,11 @@ api_urls = [
         view=schema_view.without_ui(cache_timeout=None),
     ),
     url(regex=r'^v{}/'.format(API_VERSION), view=include(api_version_urls)),
-    url(regex=r'^$', view=APIRoot.as_view(), name='api_root'),
+    url(
+        regex=r'^app$', name='app_information',
+        view=AppInformationAPIView.as_view()
+    ),
+    url(regex=r'^$', name='api_root', view=APIRoot.as_view()),
 ]
 
 urlpatterns = [
@@ -32,6 +37,5 @@ urlpatterns = [
         regex=r'^redoc/ui/$', name='schema-redoc',
         view=schema_view.with_ui('redoc', cache_timeout=None)
     ),
-
     url(regex=r'^', view=include(api_urls)),
 ]
