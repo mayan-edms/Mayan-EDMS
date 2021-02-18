@@ -8,9 +8,6 @@ from mayan.apps.common.menus import (
     menu_list_facet, menu_multi_item, menu_object, menu_secondary, menu_tools
 )
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
-from mayan.apps.events.links import (
-    link_events_for_object, link_object_event_types_user_subcriptions_list
-)
 from mayan.apps.navigation.classes import SourceColumn
 
 from .events import event_cache_edited, event_cache_purged
@@ -59,10 +56,7 @@ class FileCachingConfig(MayanAppConfig):
         )
 
         menu_list_facet.bind_links(
-            links=(
-                link_acl_list, link_events_for_object,
-                link_object_event_types_user_subcriptions_list,
-            ), sources=(Cache,)
+            links=(link_acl_list,), sources=(Cache,)
         )
 
         menu_object.bind_links(

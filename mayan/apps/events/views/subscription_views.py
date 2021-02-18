@@ -3,38 +3,22 @@ from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.http import Http404
 from django.shortcuts import get_object_or_404
-from django.template import RequestContext
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
-from actstream.models import Action, any_stream
-
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.views.generics import (
-    ConfirmView, FormView, SingleObjectListView
-)
+from mayan.apps.views.generics import FormView
 
-from .classes import EventType, ModelEventType
-from .forms import (
+from ..classes import EventType, ModelEventType
+from ..forms import (
     EventTypeUserRelationshipFormSet, ObjectEventTypeUserRelationshipFormSet
 )
-from .icons import icon_events_list, icon_user_notifications_list
-from .links import link_event_types_subscriptions_list
-from .models import StoredEventType
-from .permissions import permission_events_view
+from ..models import StoredEventType
+from ..permissions import permission_events_view
 
-
-class EventListView(SingleObjectListView):
-    view_permission = permission_events_view
-
-    def get_extra_context(self):
-        return {
-            'hide_object': True,
-            'title': _('Events'),
-        }
-
-    def get_source_queryset(self):
-        return Action.objects.all()
+__all__ = (
+    'EventTypeSubscriptionListView', 'ObjectEventTypeSubscriptionListView'
+)
 
 
 class EventTypeSubscriptionListView(FormView):
@@ -113,115 +97,6 @@ class EventTypeSubscriptionListView(FormView):
         return queryset.order_by('sort_index')
 
 
-class NotificationListView(SingleObjectListView):
-    def get_extra_context(self):
-        return {
-            'hide_object': True,
-            'no_results_icon': icon_user_notifications_list,
-            'no_results_main_link': link_event_types_subscriptions_list.resolve(
-                context=RequestContext(request=self.request)
-            ),
-            'no_results_text': _(
-                'Subscribe to global or object events to receive '
-                'notifications.'
-            ),
-            'no_results_title': _('There are no notifications'),
-            'object': self.request.user,
-            'title': _('Notifications'),
-        }
-
-    def get_source_queryset(self):
-        return self.request.user.notifications.all()
-
-
-class NotificationMarkRead(ConfirmView):
-    post_action_redirect = reverse_lazy(
-        viewname='events:user_notifications_list'
-    )
-
-    def get_extra_context(self):
-        return {
-            'title': _('Mark the selected notification as read?')
-        }
-
-    def get_queryset(self):
-        return self.request.user.notifications.all()
-
-    def view_action(self, form=None):
-        self.get_queryset().filter(
-            pk=self.kwargs['notification_id']
-        ).update(read=True)
-
-        messages.success(
-            message=_('Notification marked as read.'), request=self.request
-        )
-
-
-class NotificationMarkReadAll(ConfirmView):
-    post_action_redirect = reverse_lazy(
-        viewname='events:user_notifications_list'
-    )
-
-    def get_extra_context(self):
-        return {
-            'title': _('Mark all notification as read?')
-        }
-
-    def get_queryset(self):
-        return self.request.user.notifications.all()
-
-    def view_action(self, form=None):
-        self.get_queryset().update(read=True)
-
-        messages.success(
-            message=_('All notifications marked as read.'),
-            request=self.request
-        )
-
-
-class ObjectEventListView(EventListView):
-    view_permission = None
-
-    def dispatch(self, request, *args, **kwargs):
-        self.object = self.get_object()
-        return super().dispatch(request, *args, **kwargs)
-
-    def get_extra_context(self):
-        context = super().get_extra_context()
-        context.update(
-            {
-                'hide_object': True,
-                'no_results_icon': icon_events_list,
-                'no_results_text': _(
-                    'Events are actions that have been performed to this object '
-                    'or using this object.'
-                ),
-                'no_results_title': _('There are no events for this object'),
-                'object': self.object,
-                'title': _('Events for: %s') % self.object,
-            }
-        )
-        return context
-
-    def get_object(self):
-        content_type = get_object_or_404(
-            klass=ContentType, app_label=self.kwargs['app_label'],
-            model=self.kwargs['model_name']
-        )
-
-        queryset = AccessControlList.objects.restrict_queryset(
-            permission=permission_events_view,
-            queryset=content_type.model_class().objects.all(),
-            user=self.request.user
-        )
-        return get_object_or_404(
-            klass=queryset, pk=self.kwargs['object_id']
-        )
-
-    def get_source_queryset(self):
-        return any_stream(obj=self.object)
-
-
 class ObjectEventTypeSubscriptionListView(FormView):
     form_class = ObjectEventTypeUserRelationshipFormSet
 
@@ -293,21 +168,3 @@ class ObjectEventTypeSubscriptionListView(FormView):
 
     def get_queryset(self):
         return ModelEventType.get_for_instance(instance=self.get_object())
-
-
-class CurrentUserEventListView(ObjectEventListView):
-    def get_object(self):
-        return self.request.user
-
-
-class VerbEventListView(SingleObjectListView):
-    def get_extra_context(self):
-        return {
-            'hide_object': True,
-            'title': _(
-                'Events of type: %s'
-            ) % EventType.get(name=self.kwargs['verb']),
-        }
-
-    def get_source_queryset(self):
-        return Action.objects.filter(verb=self.kwargs['verb'])

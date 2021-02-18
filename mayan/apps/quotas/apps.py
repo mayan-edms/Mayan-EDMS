@@ -13,9 +13,6 @@ from mayan.apps.common.menus import (
     menu_list_facet, menu_object, menu_secondary, menu_setup
 )
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
-from mayan.apps.events.links import (
-    link_events_for_object, link_object_event_types_user_subcriptions_list
-)
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.views.html_widgets import TwoStateWidget
 
@@ -100,10 +97,7 @@ class QuotasApp(MayanAppConfig):
         )
 
         menu_list_facet.bind_links(
-            links=(
-                link_acl_list, link_events_for_object,
-                link_object_event_types_user_subcriptions_list,
-            ), sources=(Quota,)
+            links=(link_acl_list,), sources=(Quota,)
         )
 
         menu_object.bind_links(

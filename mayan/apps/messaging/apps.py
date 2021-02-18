@@ -6,10 +6,9 @@ from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import (
-    menu_list_facet, menu_multi_item, menu_object, menu_secondary, menu_topbar
+    menu_multi_item, menu_object, menu_secondary, menu_topbar
 )
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
-from mayan.apps.events.links import link_events_for_object
 from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.views.html_widgets import TwoStateWidget
@@ -69,12 +68,6 @@ class MessagingApp(MayanAppConfig):
         SourceColumn(
             attribute='read', include_label=True, is_sortable=True,
             source=Message, widget=TwoStateWidget
-        )
-
-        menu_list_facet.bind_links(
-            links=(
-                link_events_for_object,
-            ), sources=(Message,)
         )
 
         menu_multi_item.bind_links(

@@ -64,6 +64,10 @@ class EventTypeNamespaceAPITestMixin:
 
 
 class EventTypeTestMixin:
+    def setUp(self):
+        super().setUp()
+        self.test_actions = []
+
     def _create_test_event_type(self):
         self.test_event_type_namespace = EventTypeNamespace(
             label=TEST_EVENT_TYPE_NAMESPACE_LABEL,
@@ -75,10 +79,48 @@ class EventTypeTestMixin:
         )
 
 
-class EventsViewTestMixin:
+class EventViewTestMixin:
+    def _request_test_current_user_events_view(self):
+        return self.get(
+            viewname='events:current_user_events'
+        )
+
+    def _request_test_events_by_verb_view(self):
+        return self.get(
+            viewname='events:events_by_verb', kwargs={
+                'verb': self.test_event_type.id
+            }
+        )
+
+    def _request_test_events_list_view(self):
+        return self.get(viewname='events:events_list')
+
     def _request_events_for_object_view(self):
         return self.get(
             viewname='events:events_for_object', kwargs=self.view_arguments
+        )
+
+
+class EventsExportViewTestMixin:
+    def _request_test_current_user_events_export_view(self):
+        return self.post(
+            viewname='events:current_user_events_export'
+        )
+
+    def _request_test_events_by_verb_export_view(self):
+        return self.post(
+            viewname='events:events_by_verb_export', kwargs={
+                'verb': self.test_event_type.id
+            }
+        )
+
+    def _request_test_events_list_export_view(self):
+        return self.post(viewname='events:events_list_export')
+
+    def _request_events_for_object_export_view(self):
+        return self.post(
+            viewname='events:events_for_object_export',
+            kwargs=self.view_arguments
         )
 
 

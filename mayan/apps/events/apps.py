@@ -1,6 +1,7 @@
 from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.acls.classes import ModelPermission
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import (
     menu_object, menu_secondary, menu_tools, menu_topbar, menu_user
@@ -10,9 +11,10 @@ from mayan.apps.views.html_widgets import ObjectLinkWidget, TwoStateWidget
 
 from .html_widgets import widget_event_actor_link, widget_event_type_link
 from .links import (
-    link_current_user_events, link_event_types_subscriptions_list,
-    link_events_list, link_notification_mark_read,
-    link_notification_mark_read_all, link_user_notifications_list,
+    link_current_user_events, link_current_user_events_export,
+    link_event_types_subscriptions_list, link_events_for_object_export,
+    link_events_list, link_events_list_export, link_notification_mark_read,
+    link_notification_mark_read_all, link_user_notifications_list
 )
 
 
@@ -29,6 +31,16 @@ class EventsApp(MayanAppConfig):
         Action = apps.get_model(app_label='actstream', model_name='Action')
         Notification = self.get_model(model_name='Notification')
         StoredEventType = self.get_model(model_name='StoredEventType')
+
+        ModelPermission.register_inheritance(
+            model=Action, related='action_object',
+        )
+        ModelPermission.register_inheritance(
+            model=Action, related='actor',
+        )
+        ModelPermission.register_inheritance(
+            model=Action, related='target',
+        )
 
         # Add labels to Action model, they are not marked translatable in the
         # upstream package.
@@ -101,6 +113,28 @@ class EventsApp(MayanAppConfig):
                 'events:user_notifications_list'
             )
         )
+        menu_secondary.bind_links(
+            links=(link_current_user_events_export,),
+            sources=(
+                'events:current_user_events',
+                'events:current_user_events_export',
+            )
+        )
+        menu_secondary.bind_links(
+            links=(link_events_list_export,),
+            sources=(
+                'events:events_list',
+                'events:events_list_export',
+            )
+        )
+        menu_secondary.bind_links(
+            links=(link_events_for_object_export,),
+            sources=(
+                'events:events_for_object',
+                'events:events_for_object_export'
+            )
+        )
+
         menu_tools.bind_links(links=(link_events_list,))
         menu_user.bind_links(
             links=(

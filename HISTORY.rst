@@ -236,3 +236,9 @@
 - Update the ACL app to support multiple foreign object permission
   inheritance. Support for ``GenericForeignKey`` non default ``ct_field``,
   and ``fk_field`` was also added.
+- Added support to export the global events list, object events list and
+  user events list.
+- Registering a model to receive events will cause it to have the object
+  event view and object event subscription links bound too. This can
+  be disabled with the `bind_links` argument. The default menu to bind the
+  links is the "List facet". This can be changed via the ``menu`` argument.

@@ -12,9 +12,6 @@ from mayan.apps.common.menus import (
 )
 from mayan.apps.documents.links.document_type_links import link_document_type_list
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
-from mayan.apps.events.links import (
-    link_events_for_object, link_object_event_types_user_subcriptions_list
-)
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.views.html_widgets import TwoStateWidget
 
@@ -131,10 +128,8 @@ class LinkingApp(MayanAppConfig):
         )
         menu_list_facet.bind_links(
             links=(
-                link_acl_list, link_events_for_object,
-                link_smart_link_document_types,
-                link_object_event_types_user_subcriptions_list,
-                link_smart_link_condition_list,
+                link_acl_list, link_smart_link_document_types,
+                link_smart_link_condition_list
             ), sources=(SmartLink,)
         )
         menu_list_facet.bind_links(

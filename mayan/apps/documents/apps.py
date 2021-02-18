@@ -24,9 +24,6 @@ from mayan.apps.converter.permissions import (
 )
 from mayan.apps.dashboards.dashboards import dashboard_main
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
-from mayan.apps.events.links import (
-    link_events_for_object, link_object_event_types_user_subcriptions_list,
-)
 from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.file_caching.links import link_cache_partition_purge
 from mayan.apps.file_caching.permissions import permission_cache_partition_purge
@@ -732,8 +729,6 @@ class DocumentsApp(MayanAppConfig):
         )
         menu_facet.bind_links(
             links=(
-                link_events_for_object,
-                link_object_event_types_user_subcriptions_list,
                 link_document_file_list, link_document_version_list
             ), sources=(Document,), position=2
         )
@@ -768,9 +763,7 @@ class DocumentsApp(MayanAppConfig):
         menu_list_facet.bind_links(
             links=(
                 link_document_file_page_list, link_document_file_properties,
-                link_document_file_preview,
-                link_acl_list, link_object_event_types_user_subcriptions_list,
-                link_events_for_object
+                link_document_file_preview, link_acl_list
             ), sources=(DocumentFile,)
         )
         menu_multi_item.bind_links(
@@ -838,9 +831,7 @@ class DocumentsApp(MayanAppConfig):
             links=(
                 link_document_type_filename_list,
                 link_document_type_policies,
-                link_document_type_filename_generator,
-                link_acl_list, link_object_event_types_user_subcriptions_list,
-                link_events_for_object,
+                link_document_type_filename_generator, link_acl_list
             ), sources=(DocumentType,)
         )
 
@@ -880,9 +871,8 @@ class DocumentsApp(MayanAppConfig):
 
         menu_list_facet.bind_links(
             links=(
-                link_document_version_page_list, link_document_version_preview,
-                link_acl_list, link_object_event_types_user_subcriptions_list,
-                link_events_for_object
+                link_document_version_page_list,
+                link_document_version_preview, link_acl_list
             ),
             sources=(DocumentVersion,)
         )

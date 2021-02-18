@@ -34,19 +34,18 @@ class ACLsApp(MayanAppConfig):
             model_name='GlobalAccessControlListProxy'
         )
 
-        EventModelRegistry.register(model=AccessControlList)
+        EventModelRegistry.register(model=AccessControlList, menu=menu_object)
 
         ModelCopy(model=AccessControlList).add_fields(
             field_names=(
                 'content_object', 'permissions', 'role'
-            ),
+            )
         )
 
         ModelEventType.register(
             event_types=(
                 event_acl_deleted, event_acl_edited
-            ),
-            model=AccessControlList
+            ), model=AccessControlList
         )
 
         ModelPermission.register_inheritance(
@@ -71,11 +70,8 @@ class ACLsApp(MayanAppConfig):
 
         menu_object.bind_links(
             links=(
-                link_acl_permissions, link_acl_delete,
-                link_events_for_object,
-                link_object_event_types_user_subcriptions_list
-            ),
-            sources=(AccessControlList, GlobalAccessControlListProxy)
+                link_acl_permissions, link_acl_delete
+            ), sources=(AccessControlList, GlobalAccessControlListProxy)
         )
         menu_secondary.bind_links(
             links=(link_acl_create,), sources=('acls:acl_list',)

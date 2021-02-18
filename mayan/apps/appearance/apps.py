@@ -13,9 +13,6 @@ from mayan.apps.common.menus import (
     menu_list_facet, menu_object, menu_secondary, menu_setup, menu_user
 )
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
-from mayan.apps.events.links import (
-    link_events_for_object, link_object_event_types_user_subcriptions_list
-)
 from mayan.apps.navigation.classes import SourceColumn
 
 from .events import event_theme_edited
@@ -97,10 +94,7 @@ class AppearanceApp(MayanAppConfig):
         )
 
         menu_list_facet.bind_links(
-            links=(
-                link_acl_list, link_events_for_object,
-                link_object_event_types_user_subcriptions_list,
-            ), sources=(Theme,)
+            links=(link_acl_list,), sources=(Theme,)
         )
         menu_object.bind_links(
             links=(

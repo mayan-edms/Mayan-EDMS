@@ -5,12 +5,9 @@ from mayan.apps.acls.links import link_acl_list
 from mayan.apps.acls.permissions import permission_acl_edit, permission_acl_view
 from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import (
-    menu_list_facet, menu_object, menu_related, menu_secondary, menu_setup
+    menu_object, menu_related, menu_secondary, menu_setup
 )
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
-from mayan.apps.events.links import (
-    link_events_for_object, link_object_event_types_user_subcriptions_list,
-)
 from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
 
@@ -92,12 +89,6 @@ class DjangoGPGApp(MayanAppConfig):
         menu_object.bind_links(
             links=(link_acl_list, link_key_delete, link_key_download,),
             sources=(Key,)
-        )
-        menu_list_facet.bind_links(
-            links=(
-                link_events_for_object,
-                link_object_event_types_user_subcriptions_list,
-            ), sources=(Key, KeyStub,), position=2
         )
         menu_related.bind_links(
             links=(link_private_keys, link_public_keys),

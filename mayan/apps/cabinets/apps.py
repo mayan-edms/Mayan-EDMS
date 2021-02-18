@@ -10,9 +10,6 @@ from mayan.apps.common.menus import (
     menu_secondary
 )
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
-from mayan.apps.events.links import (
-    link_events_for_object, link_object_event_types_user_subcriptions_list,
-)
 from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
 
@@ -184,9 +181,7 @@ class CabinetsApp(MayanAppConfig):
         )
         menu_list_facet.bind_links(
             links=(
-                link_cabinet_view, link_custom_acl_list,
-                link_events_for_object,
-                link_object_event_types_user_subcriptions_list,
+                link_cabinet_view, link_custom_acl_list
             ),
             sources=(Cabinet,)
         )
