@@ -8,7 +8,7 @@ icon_acl_new = Icon(
     secondary_symbol='plus'
 )
 icon_acl_permissions = icon_permission
-icon_global_acl_list = icon_acl_new = Icon(
+icon_global_acl_list = Icon(
     driver_name='fontawesome-dual', primary_symbol='lock',
     secondary_symbol='globe'
 )
