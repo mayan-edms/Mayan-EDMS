@@ -8,6 +8,9 @@ from django.utils.encoding import force_text
 from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.common.model_mixins import ExtraDataModelMixin
+from mayan.apps.events.classes import EventManagerSave
+from mayan.apps.events.decorators import method_event
 from mayan.apps.user_management.events import event_group_edited
 from mayan.apps.user_management.permissions import permission_group_view
 
@@ -88,7 +91,7 @@ class StoredPermission(models.Model):
             return False
 
 
-class Role(models.Model):
+class Role(ExtraDataModelMixin, models.Model):
     """
     This model represents a Role. Roles are permission units. They are the
     only object to which permissions can be granted. They are themselves
@@ -196,17 +199,16 @@ class Role(models.Model):
     def revoke(self, permission):
         self.permissions.remove(permission.stored_permission)
 
+    @method_event(
+        event_manager_class=EventManagerSave,
+        created={
+            'event': event_role_created,
+            'target': 'self',
+        },
+        edited={
+            'event': event_role_edited,
+            'target': 'self',
+        }
+    )
     def save(self, *args, **kwargs):
-        _user = kwargs.pop('_user', None)
-
-        with transaction.atomic():
-            is_new = not self.pk
-            super().save(*args, **kwargs)
-            if is_new:
-                event_role_created.commit(
-                    actor=_user, target=self
-                )
-            else:
-                event_role_edited.commit(
-                    actor=_user, target=self
-                )
+        return super().save(*args, **kwargs)

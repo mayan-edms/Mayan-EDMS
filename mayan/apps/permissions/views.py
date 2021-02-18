@@ -31,14 +31,14 @@ class GroupRolesView(AddRemoveView):
     list_added_title = _('Group roles')
     related_field = 'roles'
 
-    def get_actions_extra_kwargs(self):
-        return {'_user': self.request.user}
-
     def get_extra_context(self):
         return {
             'object': self.main_object,
             'title': _('Roles of group: %s') % self.main_object,
         }
+
+    def get_instance_extra_data(self):
+        return {'_event_actor': self.request.user}
 
 
 class RoleCreateView(SingleObjectCreateView):
@@ -50,8 +50,8 @@ class RoleCreateView(SingleObjectCreateView):
     def get_extra_context(self):
         return {'title': _('Create new role')}
 
-    def get_save_extra_data(self):
-        return {'_user': self.request.user}
+    def get_instance_extra_data(self):
+        return {'_event_actor': self.request.user}
 
 
 class RoleDeleteView(SingleObjectDeleteView):
@@ -67,8 +67,8 @@ class RoleEditView(SingleObjectEditView):
     object_permission = permission_role_edit
     pk_url_kwarg = 'role_id'
 
-    def get_save_extra_data(self):
-        return {'_user': self.request.user}
+    def get_instance_extra_data(self):
+        return {'_event_actor': self.request.user}
 
 
 class SetupRoleMembersView(AddRemoveView):

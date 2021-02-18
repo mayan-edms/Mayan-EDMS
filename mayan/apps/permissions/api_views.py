@@ -28,6 +28,9 @@ class APIRoleListView(generics.ListCreateAPIView):
     mayan_view_permissions = {'POST': (permission_role_create,)}
     queryset = Role.objects.all()
 
+    def get_instance_extra_data(self):
+        return {'_event_actor': self.request.user}
+
     def get_serializer(self, *args, **kwargs):
         if not self.request:
             return None
@@ -56,6 +59,9 @@ class APIRoleView(generics.RetrieveUpdateDestroyAPIView):
         'DELETE': (permission_role_delete,)
     }
     queryset = Role.objects.all()
+
+    def get_instance_extra_data(self):
+        return {'_event_actor': self.request.user}
 
     def get_serializer(self, *args, **kwargs):
         if not self.request:

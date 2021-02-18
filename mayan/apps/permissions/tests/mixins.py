@@ -1,3 +1,5 @@
+from django.db.models import Q
+
 from ..classes import Permission, PermissionNamespace
 from ..models import Role
 
@@ -53,6 +55,8 @@ class PermissionTestCaseMixin:
 
 class RoleAPIViewTestMixin:
     def _request_test_role_create_api_view(self, extra_data=None):
+        pk_list = list(Role.objects.values_list('pk', flat=True))
+
         data = {
             'label': TEST_ROLE_LABEL
         }
@@ -60,9 +64,18 @@ class RoleAPIViewTestMixin:
         if extra_data:
             data.update(extra_data)
 
-        return self.post(
+        response = self.post(
             viewname='rest_api:role-list', data=data
         )
+
+        try:
+            self.test_role = Role.objects.get(
+                ~Q(pk__in=pk_list)
+            )
+        except Role.DoesNotExist:
+            self.test_role = None
+
+        return response
 
     def _request_test_role_create_api_view_extra_data(self):
         extra_data = {
