@@ -10,25 +10,28 @@ STORAGE_NAME_DOCUMENT_IMAGE = 'documents__documentimagecache'
 def operation_purge_and_delete_file_cache(apps, schema_editor):
     Cache = apps.get_model(app_label='file_caching', model_name='Cache')
 
-    cache = Cache.objects.get(
-        defined_storage_name=STORAGE_NAME_DOCUMENT_IMAGE
-    )
-
     try:
-        DefinedStorage.get(name=cache.defined_storage_name)
-    except KeyError:
-        """
-        Unknown or deleted storage. Must not be purged otherwise only
-        the database data will be erased but the actual storage files
-        will remain.
-        """
+        cache = Cache.objects.get(
+            defined_storage_name=STORAGE_NAME_DOCUMENT_IMAGE
+        )
+    except Cache.DoesNotExist:
+        return
     else:
-        for partition in cache.partitions.all():
+        try:
+            DefinedStorage.get(name=cache.defined_storage_name)
+        except KeyError:
+            """
+            Unknown or deleted storage. Must not be purged otherwise only
+            the database data will be erased but the actual storage files
+            will remain.
+            """
+        else:
+            for partition in cache.partitions.all():
 
-            for parition_file in partition.files.all():
-                parition_file.delete()
+                for parition_file in partition.files.all():
+                    parition_file.delete()
 
-    cache.delete()
+        cache.delete()
 
 
 def operation_purge_and_delete_file_cache_reverse(apps, schema_editor):

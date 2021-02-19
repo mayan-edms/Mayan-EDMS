@@ -61,11 +61,11 @@ def code_copy_messages(apps, schema_editor):
             message_action.target_object_id = announcement.pk
             message_action.save()
 
-        stored_event_queryset = StoredEventType.objects.using(
-            alias=schema_editor.connection.alias
-        ).filter(name__startswith='motd')
-
         message.delete()
+
+    stored_event_queryset = StoredEventType.objects.using(
+        alias=schema_editor.connection.alias
+    ).filter(name__startswith='motd')
 
     # Update the stored events of the MOTD app.
     for stored_event_type in stored_event_queryset:
@@ -145,11 +145,11 @@ def reverse_code_copy_messages(apps, schema_editor):
             announcement_action.target_object_id = message.pk
             announcement_action.save()
 
-        stored_event_queryset = StoredEventType.objects.using(
-            alias=schema_editor.connection.alias
-        ).filter(name__startswith='motd')
-
         announcement.delete()
+
+    stored_event_queryset = StoredEventType.objects.using(
+        alias=schema_editor.connection.alias
+    ).filter(name__startswith='motd')
 
     # Update the stored events of the announcements app.
     for stored_event_type in stored_event_queryset:
