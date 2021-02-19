@@ -123,6 +123,7 @@ class EventManager:
 
     def __init__(self, instance, **kwargs):
         self.instance = instance
+        self.instance_event_attributes = {}
         self.kwargs = kwargs
 
     def commit(self):
@@ -150,8 +151,6 @@ class EventManager:
         return result
 
     def pop_event_attributes(self):
-        self.instance_event_attributes = {}
-
         for attribute in self.EVENT_ATTRIBUTES:
             full_name = '_event_{}'.format(attribute)
             value = self.instance.__dict__.pop(full_name, None)
@@ -160,12 +159,15 @@ class EventManager:
         keep_attributes = self.instance_event_attributes['keep_attributes'] or ()
 
         for attribute in self.EVENT_ARGUMENTS:
-            full_name = '_event_{}'.format(attribute)
-            if full_name in keep_attributes:
-                value = self.instance.__dict__.get(full_name, None)
-            else:
-                value = self.instance.__dict__.pop(full_name, None)
-            self.instance_event_attributes[attribute] = value
+            # If the attribute is not set or is set but is None.
+            if not self.instance_event_attributes.get(attribute, None):
+                full_name = '_event_{}'.format(attribute)
+                if full_name in keep_attributes:
+                    value = self.instance.__dict__.get(full_name, None)
+                else:
+                    value = self.instance.__dict__.pop(full_name, None)
+
+                self.instance_event_attributes[attribute] = value
 
     def prepare(self):
         """Optional method to gather information before the actual commit"""

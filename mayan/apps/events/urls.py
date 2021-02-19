@@ -6,15 +6,11 @@ from .api_views import (
     APINotificationListView, APIObjectEventListView
 )
 from .views import (
-    CurrentUserEventListView, EventListView, EventTypeSubscriptionListView,
-    NotificationListView, NotificationMarkRead, NotificationMarkReadAll,
+    CurrentUserEventListView, CurrentUserEventExportView, EventListView,
+    EventListExportView, EventTypeSubscriptionListView, NotificationListView,
+    NotificationMarkRead, NotificationMarkReadAll, ObjectEventExportView,
     ObjectEventListView, ObjectEventTypeSubscriptionListView,
-    VerbEventListView,
-
-    EventListExportView,
-    ObjectEventExportView,
-    VerbEventExportView,
-    CurrentUserEventExportView
+    VerbEventExportView, VerbEventListView
 )
 
 urlpatterns_events = [
