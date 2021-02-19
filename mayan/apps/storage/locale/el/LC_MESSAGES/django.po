@@ -5,12 +5,13 @@
 # Translators:
 # Translators:
 # pyrotech <anastasios@tutamail.com>, 2021
+# pyrotech <anastasios@tutamail.com>, 2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-20 07:34+0000\n"
-"PO-Revision-Date: 2021-01-09 17:34+0000\n"
+"POT-Creation-Date: 2021-02-19 08:14+0000\n"
+"PO-Revision-Date: 2021-01-30 16:23+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
@@ -28,7 +29,7 @@ msgstr "Αποθηκευτικός χώρος"
 msgid ""
 "Unable to initialize storage: %(name)s. Check the storage backend dotted "
 "path and arguments."
-msgstr "Αποτυχία αρχικοποίησης αποθηκευτικού χώρου: %(name)s. Ελέγξτε την backend διαδρομή του αποθηκευτικού χώρου και των ορισμάτων."
+msgstr "Αποτυχία αρχικοποίησης αποθηκευτικού χώρου: %(name)s. Ελέγξτε τα ορίσματα και την πλήρη διαδρομή στο υποκείμενο σύστημα του αποθηκευτικού χώρου."
 
 #: management/commands/storage_process.py:13
 msgid "Name of the app to process."

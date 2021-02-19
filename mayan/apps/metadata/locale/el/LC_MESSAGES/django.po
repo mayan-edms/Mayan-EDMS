@@ -5,12 +5,13 @@
 # Translators:
 # Translators:
 # pyrotech <anastasios@tutamail.com>, 2021
+# pyrotech <anastasios@tutamail.com>, 2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-20 07:34+0000\n"
-"PO-Revision-Date: 2021-01-10 12:03+0000\n"
+"POT-Creation-Date: 2021-02-19 08:14+0000\n"
+"PO-Revision-Date: 2021-01-30 17:30+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
@@ -22,47 +23,47 @@ msgstr ""
 #: apps.py:65 apps.py:180 apps.py:185 events.py:5 links.py:46 permissions.py:5
 #: queues.py:7 settings.py:9
 msgid "Metadata"
-msgstr ""
+msgstr "Μεταδεδομένα"
 
 #: apps.py:116
 msgid "Return the value of a specific document metadata."
-msgstr ""
+msgstr "Επιστροφή της τιμής ενός συγκεκριμένου μεταδεδομένου εγγράφου."
 
 #: apps.py:117
 msgid "Metadata value of"
-msgstr ""
+msgstr "Τιμή μεταδεδομένωντου"
 
 #: apps.py:122
 msgid "Metadata type name"
-msgstr ""
+msgstr "Όνομα τύπου μεταδεδομένων"
 
 #: apps.py:126
 msgid "Metadata type value"
-msgstr ""
+msgstr "Τιμή τύπου μεταδεδομένων"
 
 #: events.py:8
 msgid "Document metadata added"
-msgstr ""
+msgstr "Προστέθηκαν μεταδεδομένα εγγράφου"
 
 #: events.py:11
 msgid "Document metadata edited"
-msgstr ""
+msgstr "Τροποποιήθηκαν μεταδεδομένα εγγράφου"
 
 #: events.py:14
 msgid "Document metadata removed"
-msgstr ""
+msgstr "Καταργήθηκαν μεταδεδομένα εγγράφου"
 
 #: events.py:17
 msgid "Metadata type created"
-msgstr ""
+msgstr "Τύπος μεταδεδομένων δημιουργήθηκε"
 
 #: events.py:20
 msgid "Metadata type edited"
-msgstr ""
+msgstr "Τύπος μεταδεδομένων τροποποιήθηκε"
 
 #: events.py:23
 msgid "Metadata type relationship updated"
-msgstr ""
+msgstr "Η σχέση τύπου μεταδεδομένων ενημερώθηκε"
 
 #: forms.py:14
 msgid "ID"
@@ -82,22 +83,22 @@ msgstr "Ενημέρωση"
 
 #: forms.py:47 forms.py:192 models.py:284
 msgid "Required"
-msgstr "απαιτείται"
+msgstr "Απαιτείται"
 
 #: forms.py:76
 #, python-format
 msgid "Lookup value error: %s"
-msgstr ""
+msgstr "Σφάλμα τιμής αναζήτησης: %s"
 
 #: forms.py:89
 #, python-format
 msgid "Default value error: %s"
-msgstr ""
+msgstr "Σφάλμα προεπιλεγμένης τιμής:%s"
 
 #: forms.py:105 models.py:152
 #, python-format
 msgid "\"%s\" is required for this document type."
-msgstr ""
+msgstr "Απαιτείται \"%s\" για αυτόν τον τύπο εγγράφου."
 
 #: forms.py:123
 msgid "Metadata types to be added to the selected documents."
@@ -106,7 +107,7 @@ msgstr "Τύποι μεταδεδομένων που θα προστεθούν �
 #: forms.py:124 models.py:84 models.py:282 search.py:9 search.py:17
 #: workflow_actions.py:86
 msgid "Metadata type"
-msgstr ""
+msgstr "Τύπος μεταδεδομένων"
 
 #: forms.py:149 views.py:403
 msgid "Remove"
@@ -114,7 +115,7 @@ msgstr "Αφαίρεση"
 
 #: forms.py:175
 msgid " Available template context variables: "
-msgstr ""
+msgstr "Διαθέσιμες μεταβλητές περιεχομένου προτύπου:"
 
 #: forms.py:190
 msgid "None"
@@ -130,24 +131,24 @@ msgstr "Ετικέτα"
 
 #: forms.py:200
 msgid "Relationship"
-msgstr ""
+msgstr "Σχέση"
 
 #: links.py:16 links.py:27 workflow_actions.py:30
 msgid "Add metadata"
-msgstr ""
+msgstr "Προσθήκη μεταδεδομένων"
 
 #: links.py:23 links.py:31 workflow_actions.py:104
 msgid "Edit metadata"
-msgstr ""
+msgstr "Τροποποίηση μεταδεδομένων"
 
 #: links.py:35 links.py:41 workflow_actions.py:177
 msgid "Remove metadata"
-msgstr ""
+msgstr "Κατάργηση μεταδεδομένων"
 
 #: links.py:53 links.py:81 models.py:85 views.py:573 workflow_actions.py:23
 #: workflow_actions.py:170
 msgid "Metadata types"
-msgstr ""
+msgstr "Τύποι μεταδεδομένων"
 
 #: links.py:59
 msgid "Document types"
@@ -173,51 +174,51 @@ msgstr "Τα επιλεγμένα έγγραφα πρέπει να είναι τ
 msgid ""
 "Name used by other apps to reference this metadata type. Do not use python "
 "reserved words, or spaces."
-msgstr ""
+msgstr "Όνομα που χρησιμοποιείται από άλλες εφαρμογές για αναφορά αυτού του τύπου μεταδεδομένων. Μην χρησιμοποιείτε δεσμευμένες λέξεις της python ή κενά διαστήματα."
 
 #: models.py:52
 msgid "Short description of this metadata type."
-msgstr ""
+msgstr "Σύντομη περιγραφή αυτού του τύπου μεταδεδομένων."
 
 #: models.py:57
 msgid "Enter a template to render."
-msgstr ""
+msgstr "Εισαγάγετε ένα πρότυπο για απόδοση."
 
 #: models.py:58 search.py:37
 msgid "Default"
-msgstr "Προκαθορισμένο"
+msgstr "Προεπιλογή"
 
 #: models.py:62
 msgid "Enter a template to render. Must result in a comma delimited string."
-msgstr ""
+msgstr "Εισαγάγετε ένα πρότυπο για απόδοση. Θα πρέπει να είναι μια συμβολοσειρά χωρισμένη με κόμμα."
 
 #: models.py:64 search.py:40
 msgid "Lookup"
-msgstr ""
+msgstr "Αναζήτηση"
 
 #: models.py:69
 msgid ""
 "The validator will reject data entry if the value entered does not conform "
 "to the expected format."
-msgstr ""
+msgstr "Ο επικυρωτής θα απορρίψει την καταχώριση δεδομένων εάν η τιμή που εισάγεται δεν συμμορφώνεται με την αναμενόμενη μορφή."
 
 #: models.py:71 search.py:43
 msgid "Validator"
-msgstr ""
+msgstr "Επικυρωτής"
 
 #: models.py:75
 msgid ""
 "The parser will reformat the value entered to conform to the expected "
 "format."
-msgstr ""
+msgstr "Ο αναλυτής θα διαμορφώσει ξανά την τιμή που έχει εισαχθεί για να συμμορφώνεται με την αναμενόμενη μορφή."
 
 #: models.py:77 search.py:46
 msgid "Parser"
-msgstr ""
+msgstr "Αναλυτής"
 
 #: models.py:160
 msgid "Value is not one of the provided options."
-msgstr ""
+msgstr "Η τιμή δεν ανήκει στις διαθέσιμες επιλογές."
 
 #: models.py:181
 msgid "Document"
@@ -229,19 +230,19 @@ msgstr "Τύπος"
 
 #: models.py:188
 msgid "The actual value stored in the metadata type field for the document."
-msgstr ""
+msgstr "Η πραγματική τιμή που είναι αποθηκευμένη στο πεδίο τύπου μεταδεδομένων για το έγγραφο."
 
 #: models.py:196 models.py:197
 msgid "Document metadata"
-msgstr ""
+msgstr "Μεταδεδομένα εγγράφου"
 
 #: models.py:218
 msgid "Metadata type is required for this document type."
-msgstr ""
+msgstr "Απαιτείται τύπος μεταδεδομένων για αυτόν τον τύπο εγγράφου."
 
 #: models.py:248
 msgid "Metadata type is not valid for this document type."
-msgstr ""
+msgstr "Ο τύπος μεταδεδομένων δεν είναι έγκυρος για αυτόν τον τύπο εγγράφου."
 
 #: models.py:278
 msgid "Document type"
@@ -249,77 +250,77 @@ msgstr "Τύπος εγγράφου"
 
 #: models.py:291
 msgid "Document type metadata type options"
-msgstr ""
+msgstr "Επιλογές τύπου μεταδεδομένων τύπου εγγράφου"
 
 #: models.py:292
 msgid "Document type metadata types options"
-msgstr ""
+msgstr "Επιλογές τύπων μεταδεδομένων τύπου εγγράφου"
 
 #: permissions.py:8
 msgid "Add metadata to a document"
-msgstr ""
+msgstr "Προσθήκη μεταδεδομένων σε ένα έγγραφο"
 
 #: permissions.py:11
 msgid "Edit a document's metadata"
-msgstr ""
+msgstr "Τροποποίηση μεταδεδομένων ενός εγγράφου"
 
 #: permissions.py:14
 msgid "Remove metadata from a document"
-msgstr ""
+msgstr "Αφαίρεση μεταδεδομένων από ένα έγγραφο"
 
 #: permissions.py:18
 msgid "View metadata from a document"
-msgstr ""
+msgstr "Προβολή μεταδεδομένων ενός εγγράφου"
 
 #: permissions.py:22
 msgid "Metadata setup"
-msgstr ""
+msgstr "Ρύθμιση μεταδεδομένων"
 
 #: permissions.py:26
 msgid "Edit metadata types"
-msgstr ""
+msgstr "Επεξεργασία τύπων μεταδεδομένων"
 
 #: permissions.py:29
 msgid "Create new metadata types"
-msgstr ""
+msgstr "Δημιουργία νέων τύπων μεταδεδομένων"
 
 #: permissions.py:32
 msgid "Delete metadata types"
-msgstr ""
+msgstr "Διαγραφή τύπων μεταδεδομένων"
 
 #: permissions.py:35
 msgid "View metadata types"
-msgstr ""
+msgstr "Προβολή τύπων μεταδεδομένων"
 
 #: queues.py:10
 msgid "Remove metadata type"
-msgstr ""
+msgstr "Κατάργηση τύπου μεταδεδομένων"
 
 #: queues.py:14
 msgid "Add required metadata type"
-msgstr ""
+msgstr "Προσθήκη απαιτούμενου τύπου μεταδεδομένων"
 
 #: search.py:12 search.py:21
 msgid "Metadata value"
-msgstr ""
+msgstr "Τιμή μεταδεδομένων"
 
 #: serializers.py:52
 msgid "Primary key of the metadata type to be added."
-msgstr ""
+msgstr "Πρωτεύον κλειδί του τύπου μεταδεδομένων που θα προστεθεί."
 
 #: serializers.py:135
 msgid "Primary key of the metadata type to be added to the document."
-msgstr ""
+msgstr "Πρωτεύον κλειδί του τύπου μεταδεδομένων που θα προστεθεί στο έγγραφο."
 
 #: views.py:55
 #, python-format
 msgid "Metadata add request performed on %(count)d document"
-msgstr ""
+msgstr "Το αίτημα προσθήκης μεταδεδομένων πραγματοποιήθηκε σε %(count)d έγγραφο"
 
 #: views.py:57
 #, python-format
 msgid "Metadata add request performed on %(count)d documents"
-msgstr ""
+msgstr "Η αίτηση προσθήκης μεταδεδομένων πραγματοποιήθηκε σε %(count)d έγγραφα "
 
 #: views.py:65
 msgid "Add"
@@ -328,139 +329,139 @@ msgstr "Προσθήκη"
 #: views.py:67
 msgid "Add metadata types to document"
 msgid_plural "Add metadata types to documents"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Προσθέστε τύπους μεταδεδομένων στο έγγραφο"
+msgstr[1] "Προσθέστε τύπους μεταδεδομένων σε έγγραφα"
 
 #: views.py:78
 #, python-format
 msgid "Add metadata types to document: %s"
-msgstr ""
+msgstr "Προσθέστε τύπους μεταδεδομένων στο έγγραφο: %s"
 
 #: views.py:156
 #, python-format
 msgid ""
 "Error adding metadata type \"%(metadata_type)s\" to document: %(document)s; "
 "%(exception)s"
-msgstr ""
+msgstr "Σφάλμα κατά την προσθήκη τύπου μεταδεδομένων \"%(metadata_type)s\" στο έγγραφο: %(document)s; %(exception)s"
 
 #: views.py:171
 #, python-format
 msgid ""
 "Metadata type: %(metadata_type)s successfully added to document "
 "%(document)s."
-msgstr ""
+msgstr "Τύπος μεταδεδομένων: %(metadata_type)s προστέθηκε με επιτυχία στο έγγραφο %(document)s."
 
 #: views.py:181
 #, python-format
 msgid ""
 "Metadata type: %(metadata_type)s already present in document %(document)s."
-msgstr ""
+msgstr "Τύπος μεταδεδομένων: %(metadata_type)s υπάρχει ήδη στο έγγραφο %(document)s."
 
 #: views.py:198
 #, python-format
 msgid "Metadata edit request performed on %(count)d document"
-msgstr ""
+msgstr "Η αίτηση επεξεργασίας μεταδεδομένων εκτελέστηκε σε %(count)d έγγραφο"
 
 #: views.py:201
 #, python-format
 msgid "Metadata edit request performed on %(count)d documents"
-msgstr ""
+msgstr "Η αίτηση επεξεργασίας μεταδεδομένων πραγματοποιήθηκε σε %(count)d έγγραφα"
 
 #: views.py:232
 msgid ""
 "Add metadata types available for this document's type and assign them "
 "corresponding values."
-msgstr ""
+msgstr "Προσθέστε διαθέσιμους τύπους μεταδεδομένων για αυτόν τον τύπο εγγράφου και εκχωρήστε τους αντίστοιχες τιμές."
 
 #: views.py:235
 msgid "There is no metadata to edit"
-msgstr ""
+msgstr "Δεν υπάρχουν μεταδεδομένα για επεξεργασία"
 
 #: views.py:239
 msgid "Edit document metadata"
 msgid_plural "Edit documents metadata"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Επεξεργασία μεταδεδομένων εγγράφου"
+msgstr[1] "Επεξεργασία μεταδεδομένων εγγράφων"
 
 #: views.py:250
 #, python-format
 msgid "Edit metadata for document: %s"
-msgstr ""
+msgstr "Επεξεργασία μεταδεδομένων για έγγραφο: %s"
 
 #: views.py:335
 #, python-format
 msgid "Error editing metadata for document: %(document)s; %(exception)s."
-msgstr ""
+msgstr "Σφάλμα κατά την επεξεργασία μεταδεδομένων για έγγραφο: %(document)s; %(exception)s."
 
 #: views.py:345
 #, python-format
 msgid "Metadata for document %s edited successfully."
-msgstr ""
+msgstr "Τα μεταδεδομένα για το έγγραφο %s επεξεργάστηκαν με επιτυχία."
 
 #: views.py:370
 msgid ""
 "Add metadata types this document's type to be able to add them to individual"
 " documents. Once added to individual document, you can then edit their "
 "values."
-msgstr ""
+msgstr "Προσθέστε τύπους μεταδεδομένων αυτού του τύπου εγγράφου για να μπορείτε να τα προσθέσετε σε μεμονωμένα έγγραφα. Μόλις προστεθεί σε ένα μεμονωμένο έγγραφο, μπορείτε στη συνέχεια να επεξεργαστείτε τις τιμές τους."
 
 #: views.py:375
 msgid "This document doesn't have any metadata"
-msgstr ""
+msgstr "Αυτό το έγγραφο δεν έχει μεταδεδομένα"
 
 #: views.py:376
 #, python-format
 msgid "Metadata for document: %s"
-msgstr ""
+msgstr "Μεταδεδομένα για έγγραφο: %s"
 
 #: views.py:391
 #, python-format
 msgid "Metadata remove request performed on %(count)d document"
-msgstr ""
+msgstr "Το αίτημα κατάργησης μεταδεδομένων πραγματοποιήθηκε σε %(count)d έγγραφο"
 
 #: views.py:394
 #, python-format
 msgid "Metadata remove request performed on %(count)d documents"
-msgstr ""
+msgstr "Η αίτηση κατάργησης μεταδεδομένων πραγματοποιήθηκε σε %(count)d έγγραφα"
 
 #: views.py:405
 msgid "Remove metadata types from the document"
 msgid_plural "Remove metadata types from the documents"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Καταργήστε τους τύπους μεταδεδομένων από το έγγραφο"
+msgstr[1] "Κατάργηση τύπων μεταδεδομένων από τα έγγραφα"
 
 #: views.py:416
 #, python-format
 msgid "Remove metadata types from the document: %s"
-msgstr ""
+msgstr "Κατάργηση τύπων μεταδεδομένων από το έγγραφο: %s"
 
 #: views.py:481
 #, python-format
 msgid ""
 "Successfully remove metadata type \"%(metadata_type)s\" from document: "
 "%(document)s."
-msgstr ""
+msgstr "Καταργήθηκε με επιτυχία ο τύποως μεταδεδομένων \"%(metadata_type)s\" από το έγγραφο: %(document)s."
 
 #: views.py:490
 #, python-format
 msgid ""
 "Error removing metadata type \"%(metadata_type)s\" from document: "
 "%(document)s; %(exception)s"
-msgstr ""
+msgstr "Σφάλμα κατά την κατάργηση των μεταδεδομένων τύπου \"%(metadata_type)s\" από το έγγραφο: %(document)s; %(exception)s"
 
 #: views.py:501
 msgid "Create metadata type"
-msgstr ""
+msgstr "Δημιουργία τύπου μεταδεδομένων"
 
 #: views.py:527
 #, python-format
 msgid "Delete the metadata type: %s?"
-msgstr ""
+msgstr "Διαγραφή του τύπου μεταδεδομένων: %s;"
 
 #: views.py:543
 #, python-format
 msgid "Edit metadata type: %s"
-msgstr ""
+msgstr "Επεξεργασία τύπου μεταδεδομένων: %s"
 
 #: views.py:565
 msgid ""
@@ -469,39 +470,39 @@ msgid ""
 "or required, for each. Setting a metadata type as required for a document "
 "type will block the upload of documents of that type until a metadata value "
 "is provided."
-msgstr ""
+msgstr "Οι τύποι μεταδεδομένων είναι ιδιότητες που ορίζονται από τους χρήστες και στους οποίους μπορούν να εκχωρηθούν τιμές. Μόλις δημιουργηθούν, πρέπει να συσχετίζονται με τύπους εγγράφων, είτε ως προαιρετικοί είτε απαιτούμενοι. Ο ορισμός ενός τύπου μεταδεδομένων ως απαιτούμενου για έναν τύπο εγγράφου θα αποκλείσει την ανάρτηση εγγράφων αυτού του τύπου έως ότου καταχωρηθεί μια τιμή μεταδεδομένων."
 
 #: views.py:572
 msgid "There are no metadata types"
-msgstr ""
+msgstr "Δεν υπάρχουν τύποι μεταδεδομένων"
 
 #: views.py:593
 #, python-format
 msgid "Error updating relationship; %s"
-msgstr ""
+msgstr "Σφάλμα κατά την ενημέρωση της σχέσης. %s"
 
 #: views.py:598
 msgid "Relationships updated successfully"
-msgstr ""
+msgstr "Οι σχέσεις ενημερώθηκαν με επιτυχία"
 
 #: views.py:614
 msgid ""
 "Create metadata types to be able to associate them to this document type."
-msgstr ""
+msgstr "Δημιουργήστε τύπους μεταδεδομένων για να μπορείτε να τους συσχετίσετε με αυτόν τον τύπο εγγράφου."
 
 #: views.py:617
 msgid "There are no metadata types available"
-msgstr ""
+msgstr "Δεν υπάρχουν διαθέσιμοι τύποι μεταδεδομένων"
 
 #: views.py:620
 #, python-format
 msgid "Metadata types for document type: %s"
-msgstr ""
+msgstr "Τύποι μεταδεδομένων για τύπο εγγράφου: %s"
 
 #: views.py:676
 #, python-format
 msgid "Document types for metadata type: %s"
-msgstr ""
+msgstr "Τύποι εγγράφων για τύπο μεταδεδομένων: %s"
 
 #: wizard_steps.py:13
 msgid "Enter document metadata"
@@ -509,23 +510,23 @@ msgstr "Εισαγωγή μεταδεδομένων εγγράφου"
 
 #: workflow_actions.py:25
 msgid "Metadata types to add to the document."
-msgstr ""
+msgstr "Τύποι μεταδεδομένων για προσθήκη στο έγγραφο."
 
 #: workflow_actions.py:49
 #, python-format
 msgid ""
 "Unable to add metadata type \"%(metadata_type)s\" from document: "
 "%(document)s. Exception: %(exception)s"
-msgstr ""
+msgstr "Δεν είναι δυνατή η προσθήκη τύπου μεταδεδομένων \"%(metadata_type)s\" από το έγγραφο: %(document)s. Εξαίρεση: %(exception)s"
 
 #: workflow_actions.py:88
 msgid "Metadata types to edit."
-msgstr ""
+msgstr "Τύποι μεταδεδομένων για επεξεργασία."
 
 #: workflow_actions.py:96
 msgid ""
 "Value to assign to the metadata. Can be a literal value or template code."
-msgstr ""
+msgstr "Τιμή για εκχώρηση στα μεταδεδομένα. Μπορεί να είναι κυριολεκτική τιμή ή κωδικός προτύπου."
 
 #: workflow_actions.py:128
 #, python-format
@@ -533,15 +534,15 @@ msgid ""
 "Unable to edit metadata type \"%(metadata_type)s\" from document: "
 "%(document)s. Document does not have the metadata type to be edit. "
 "Exception: %(exception)s"
-msgstr ""
+msgstr "Δεν είναι δυνατή η επεξεργασία του τύπου μεταδεδομένων \"%(metadata_type)s\" από το έγγραφο: %(document)s. Το έγγραφο δεν έχει τον τύπο μεταδεδομένων προς επεξεργασία. Εξαίρεση: %(exception)s"
 
 #: workflow_actions.py:172
 msgid "Metadata types to remove from the document."
-msgstr ""
+msgstr "Τύποι μεταδεδομένων για κατάργηση από το έγγραφο."
 
 #: workflow_actions.py:192
 #, python-format
 msgid ""
 "Unable to remove metadata type \"%(metadata_type)s\" from document: "
 "%(document)s. Exception: %(exception)s"
-msgstr ""
+msgstr "Δεν είναι δυνατή η κατάργηση των μεταδεδομένων τύπου \"%(metadata_type)s\"  από το έγγραφο: %(document)s. Εξαίρεση: %(exception)s"

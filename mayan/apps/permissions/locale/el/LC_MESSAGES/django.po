@@ -5,12 +5,13 @@
 # Translators:
 # Translators:
 # pyrotech <anastasios@tutamail.com>, 2021
+# pyrotech <anastasios@tutamail.com>, 2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-20 07:34+0000\n"
-"PO-Revision-Date: 2021-01-10 19:04+0000\n"
+"POT-Creation-Date: 2021-02-19 08:14+0000\n"
+"PO-Revision-Date: 2021-02-15 14:38+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +26,7 @@ msgstr "Δικαιώματα χρήσης"
 
 #: apps.py:99 models.py:142
 msgid "Group count"
-msgstr ""
+msgstr "Αριθμός ομάδων"
 
 #: classes.py:85
 msgid "Insufficient permissions."
@@ -37,11 +38,11 @@ msgstr "Σύνολο ρόλων"
 
 #: events.py:10
 msgid "Role created"
-msgstr ""
+msgstr "Ο ρόλος δημιουργήθηκε"
 
 #: events.py:13
 msgid "Role edited"
-msgstr ""
+msgstr "Ο ρόλος τροποποιήθηκε"
 
 #: links.py:14 links.py:38 models.py:115 views.py:171
 msgid "Roles"
@@ -69,7 +70,7 @@ msgstr "Δικαιώματα ρόλου"
 
 #: models.py:26
 msgid "Namespace"
-msgstr ""
+msgstr "Χώρος ονομάτων"
 
 #: models.py:27
 msgid "Name"
@@ -81,7 +82,7 @@ msgstr "Δικαιώματα"
 
 #: models.py:99
 msgid "A short text describing the role."
-msgstr ""
+msgstr "Σύντομο κείμενο που περιγράφει το ρόλο."
 
 #: models.py:100 search.py:14
 msgid "Label"
@@ -93,7 +94,7 @@ msgstr "Ρόλος"
 
 #: models.py:150
 msgid "Permission count"
-msgstr ""
+msgstr "Αριθμός αδειών"
 
 #: permissions.py:8
 msgid "Create roles"
@@ -109,7 +110,7 @@ msgstr "Τροποποίηση ρόλων"
 
 #: permissions.py:17
 msgid "View roles"
-msgstr "Εμφάνηση ρόλων"
+msgstr "Προβολή ρόλων"
 
 #: search.py:18
 msgid "Group name"
@@ -119,11 +120,11 @@ msgstr "Όνομα ομάδας"
 msgid ""
 "Comma separated list of groups primary keys to add to, or replace in this "
 "role."
-msgstr "Λίστα (χωρισμένη με κόμμα) πρωτευόντων κλειδιών ομάδων όπου θα προστεθούν ή θα τροποποιηθούν σε αυτό τον ρόλο."
+msgstr "Λίστα χωρισμένη με κόμμα, πρωτευόντων κλειδιών ομάδων, όπου θα προστεθούν ή θα τροποποιηθούν σε αυτό τον ρόλο."
 
 #: serializers.py:51
 msgid "Comma separated list of permission primary keys to grant to this role."
-msgstr "Λίστα (χωρισμένη με κόμμα) πρωτευόντων κλειδιών δικαιωμάτων που θα εκχωρηθούν σε αυτό τον ρόλο."
+msgstr "Λίστα χωρισμένη με κόμμα. πρωτευόντων κλειδιών δικαιωμάτων, που θα εκχωρηθούν σε αυτό τον ρόλο."
 
 #: serializers.py:88
 #, python-format
@@ -132,16 +133,16 @@ msgstr "Άγνωστο δικαίωμα: %s"
 
 #: views.py:30
 msgid "Available roles"
-msgstr ""
+msgstr "Διαθέσιμοι ρόλοι"
 
 #: views.py:31
 msgid "Group roles"
-msgstr ""
+msgstr "Ρόλοι ομάδας"
 
 #: views.py:40
 #, python-format
 msgid "Roles of group: %s"
-msgstr ""
+msgstr "Ρόλοι ομάδας: %s"
 
 #: views.py:82
 msgid "Available groups"
@@ -149,7 +150,7 @@ msgstr "Διαθέσιμες ομάδες"
 
 #: views.py:83
 msgid "Role groups"
-msgstr "Ομάδες ρόλων"
+msgstr "Ομάδες ρόλου"
 
 #: views.py:92
 #, python-format
@@ -160,7 +161,7 @@ msgstr "Ομάδες ρόλου: %s"
 msgid ""
 "Add groups to be part of a role. They will inherit the role's permissions "
 "and access controls."
-msgstr ""
+msgstr "Προσθέστε ομάδες ώστε να ανήκουν σε έναν ρόλο. Θα κληρονομήσουν τα δικαιώματα του ρόλου και ελέγχους πρόσβασης."
 
 #: views.py:107
 msgid "Available permissions"
@@ -168,12 +169,12 @@ msgstr "Διαθέσιμα δικαιώματα"
 
 #: views.py:108
 msgid "Granted permissions"
-msgstr "Χωρηγημένα δικαιώματα"
+msgstr "Εκχωρημένα δικαιώματα"
 
 #: views.py:143
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
-msgstr ""
+msgstr "Τα δικαιώματα που χορηγούνται εδώ θα ισχύουν για ολόκληρο το σύστημα και για όλα τα αντικείμενα."
 
 #: views.py:146
 #, python-format
@@ -186,8 +187,8 @@ msgid ""
 "role permissions for the entire system. Roles can also part of access "
 "controls lists. Access controls list are permissions granted to a role for "
 "specific objects which its group members inherit."
-msgstr ""
+msgstr "Οι ρόλοι είναι μονάδες εξουσιοδότησης. Περιέχουν ομάδες χρηστών που κληρονομούν τα δικαιώματα ρόλου για ολόκληρο το σύστημα. Οι ρόλοι μπορούν επίσης να αποτελούν μέρος των λιστών ελέγχου πρόσβασης. Η λίστα ελέγχου πρόσβασης αποτελούν δικαιώματα που εκχωρούνται σε έναν ρόλο για συγκεκριμένα αντικείμενα που κληρονομούν τα μέλη της ομάδας του."
 
 #: views.py:170
 msgid "There are no roles"
-msgstr ""
+msgstr "Δεν υπάρχουν ρόλοι"

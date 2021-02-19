@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-20 07:34+0000\n"
-"PO-Revision-Date: 2021-01-17 16:10+0000\n"
+"POT-Creation-Date: 2021-02-19 08:14+0000\n"
+"PO-Revision-Date: 2021-01-22 19:36+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
@@ -325,7 +325,7 @@ msgid ""
 "Documents of this type will appear in the indexes linked when these are "
 "updated. Events of the documents of this type will trigger updates in the "
 "linked indexes."
-msgstr "Τα έγγραφα αυτού του τύπου θα εμφανιστούν στα συνδεδεμένα ευρετήρια  όταν αυτά ανανεωθούν. Συμβάντα των εγγράφων αυτού του τύπου θα εκκινήσουν την ανανέωση των συνδεδεμένων ευρετηρίων."
+msgstr "Τα έγγραφα αυτού του τύπου θα εμφανιστούν στα συνδεδεμένα ευρετήρια  όταν αυτά ανανεωθούν. Συμβάντα των εγγράφων αυτού του τύπου θα προκαλέσουν την ανανέωση των συνδεδεμένων ευρετηρίων."
 
 #: views.py:80
 #, python-format
@@ -375,7 +375,7 @@ msgid ""
 "Only the documents of the types selected will be shown in the index when "
 "built. Only the events of the documents of the types select will trigger "
 "updates in the index."
-msgstr "Μόνο τα έγγραφα των επιλεγμένων τύπων θα εμφανιστούν στο ευρετήριο όταν αυτό δομηθεί. Μόνο τα γεγονότα των εγγράφων των επιλεγμένων τύπων θα εκκινήσουν ανανεώσεις στο ευρετήριο."
+msgstr "Μόνο τα έγγραφα των επιλεγμένων τύπων θα εμφανιστούν στο ευρετήριο όταν αυτό δομηθεί. Μόνο τα γεγονότα των εγγράφων των επιλεγμένων τύπων θα προκαλέσουν ανανεώσεις στο ευρετήριο."
 
 #: views.py:209
 #, python-format

@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-20 07:34+0000\n"
-"PO-Revision-Date: 2021-01-17 16:11+0000\n"
+"POT-Creation-Date: 2021-02-19 08:14+0000\n"
+"PO-Revision-Date: 2021-01-30 16:11+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
@@ -397,7 +397,7 @@ msgstr ""
 
 #: models/scanner_sources.py:31
 msgid "Device name as returned by the SANE backend."
-msgstr "Όνομα συσκευής όπως επιστρέφεται από το SANE υποκείμνου συστήματος."
+msgstr "Όνομα συσκευής όπως επιστρέφεται από το SANE υποκείμενου συστήματος."
 
 #: models/scanner_sources.py:32
 msgid "Device name"

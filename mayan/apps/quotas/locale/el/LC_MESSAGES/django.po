@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-20 07:34+0000\n"
+"POT-Creation-Date: 2021-02-19 08:14+0000\n"
 "PO-Revision-Date: 2020-03-28 07:24+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
@@ -227,7 +227,7 @@ msgstr ""
 
 #: views.py:24
 msgid "New quota backend selection"
-msgstr ""
+msgstr "Υποκείμενο σύστημα νέων ποσοστώσεων"
 
 #: views.py:54
 #, python-format

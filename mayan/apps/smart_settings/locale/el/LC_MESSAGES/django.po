@@ -4,12 +4,13 @@
 # 
 # Translators:
 # Translators:
+# pyrotech <anastasios@tutamail.com>, 2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-20 07:34+0000\n"
-"PO-Revision-Date: 2021-01-11 07:43+0000\n"
+"POT-Creation-Date: 2021-02-19 08:14+0000\n"
+"PO-Revision-Date: 2021-01-30 16:26+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
@@ -110,7 +111,7 @@ msgstr ""
 msgid ""
 "A list of authentication backend classes (as strings) to use when attempting"
 " to authenticate a user."
-msgstr ""
+msgstr "Μια λίστα κλάσεων υποκείμενων συστημάτων ελέγχου ταυτότητας (ως συμβολοσειρές) για χρήση κατά την απόπειρα ελέγχου ταυτότητας ενός χρήστη."
 
 #: settings.py:72
 msgid ""
@@ -155,7 +156,7 @@ msgstr ""
 msgid ""
 "Default: 'django.core.mail.backends.smtp.EmailBackend'. The backend to use "
 "for sending emails."
-msgstr ""
+msgstr "Προεπιλογή: 'django.core.mail.backends.smtp.EmailBackend'. Το υποκείμενο σύστημα που χρησιμοποιείται για την αποστολή email."
 
 #: settings.py:126
 msgid "Default: 'localhost'. The host to use for sending email."
@@ -278,7 +279,7 @@ msgstr ""
 msgid ""
 "Default: 'django.contrib.sessions.backends.db'. Controls where Django stores"
 " session data."
-msgstr ""
+msgstr "Προεπιλογή: 'django.contrib.sessions.backends.db'. Ελέγχει το μέρος αποθήκευσης των δεδομένων συνεδρίας του Django."
 
 #: settings.py:269
 msgid ""
@@ -302,7 +303,7 @@ msgid ""
 "collectstatic management command. A ready-to-use instance of the storage "
 "backend defined in this setting can be found at "
 "django.contrib.staticfiles.storage.staticfiles_storage."
-msgstr ""
+msgstr "Η μηχανή αποθήκευσης αρχείων για χρήση κατά τη συλλογή στατικών αρχείων με την εντολή διαχείρισης collectstatic. Ένα έτοιμο προς χρήση στιγμιότυπο του συστήματος αποθήκευσης που ορίζεται σε αυτήν τη ρύθμιση βρίσκεται στο django.contrib.staticfiles.storage.staticfiles_storage."
 
 #: settings.py:296
 msgid ""
