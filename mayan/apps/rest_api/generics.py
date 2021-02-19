@@ -68,7 +68,7 @@ class ObjectActionAPIView(GenericAPIView):
         except (TypeError, KeyError):
             return {}
 
-    def object_action(self):
+    def object_action(self, serializer):
         raise NotImplementedError
 
     def post(self, request, *args, **kwargs):
@@ -77,11 +77,14 @@ class ObjectActionAPIView(GenericAPIView):
     def view_action(self, request, *args, **kwargs):
         self.object = self.get_object()
 
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
         if hasattr(self, 'get_instance_extra_data'):
             for key, value in self.get_instance_extra_data().items():
                 setattr(self.object, key, value)
 
-        result = self.object_action(request=request)
+        result = self.object_action(request=request, serializer=serializer)
 
         if result:
             # If object action returned serializer.data
