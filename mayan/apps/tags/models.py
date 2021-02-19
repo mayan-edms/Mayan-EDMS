@@ -6,7 +6,7 @@ from colorful.fields import RGBColorField
 
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.common.model_mixins import ExtraDataModelMixin
-from mayan.apps.events.classes import EventManagerSave
+from mayan.apps.events.classes import EventManagerMethodAfter, EventManagerSave
 from mayan.apps.events.decorators import method_event
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.permissions import permission_document_view
@@ -43,14 +43,14 @@ class Tag(ExtraDataModelMixin, models.Model):
     def __str__(self):
         return self.label
 
-    def attach_to(self, document, user=None):
-        """
-        Attach a tag to a document and commit the corresponding event.
-        """
+    @method_event(
+        action_object='self',
+        event=event_tag_attached,
+        event_manager_class=EventManagerMethodAfter,
+    )
+    def attach_to(self, document):
+        self._event_target = document
         self.documents.add(document)
-        event_tag_attached.commit(
-            action_object=self, actor=user, target=document
-        )
 
     def get_absolute_url(self):
         return reverse(
@@ -62,34 +62,34 @@ class Tag(ExtraDataModelMixin, models.Model):
         Return the numeric count of documents that have this tag attached.
         The count is filtered by access.
         """
-        queryset = AccessControlList.objects.restrict_queryset(
-            permission=permission_document_view, queryset=self.documents,
-            user=user
-        )
+        return self.get_documents(permission=permission_document_view, user=user).count()
 
-        return queryset.count()
-
-    def get_documents(self, user):
+    def get_documents(self, user, permission=None):
         """
         Return a filtered queryset documents that have this tag attached.
         """
-        return AccessControlList.objects.restrict_queryset(
-            permission=permission_document_view, queryset=self.documents.all(),
-            user=user
-        )
+        queryset = self.documents.all()
+
+        if permission:
+            queryset = AccessControlList.objects.restrict_queryset(
+                permission=permission_document_view, queryset=queryset,
+                user=user
+            )
+
+        return queryset
 
     def get_preview_widget(self):
         return widget_single_tag(tag=self)
     get_preview_widget.short_description = _('Preview')
 
-    def remove_from(self, document, user=None):
-        """
-        Remove a tag from a document and commit the corresponding event.
-        """
+    @method_event(
+        action_object='self',
+        event=event_tag_removed,
+        event_manager_class=EventManagerMethodAfter,
+    )
+    def remove_from(self, document):
+        self._event_target = document
         self.documents.remove(document)
-        event_tag_removed.commit(
-            action_object=self, actor=user, target=document
-        )
 
     @method_event(
         event_manager_class=EventManagerSave,

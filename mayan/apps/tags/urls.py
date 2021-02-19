@@ -1,8 +1,9 @@
 from django.conf.urls import url
 
 from .api_views import (
-    APIDocumentTagView, APIDocumentTagListView, APITagDocumentListView,
-    APITagListView, APITagView
+    APIDocumentTagAttachView, APIDocumentTagRemoveView,
+    APIDocumentTagListView, APITagDocumentListView, APITagListView,
+    APITagView
 )
 from .views import (
     DocumentTagListView, TagAttachActionView, TagCreateView,
@@ -72,7 +73,11 @@ api_urls = [
         view=APIDocumentTagListView.as_view(), name='document-tag-list'
     ),
     url(
-        regex=r'^documents/(?P<document_id>[0-9]+)/tags/(?P<tag_id>[0-9]+)/$',
-        view=APIDocumentTagView.as_view(), name='document-tag-detail'
+        regex=r'^documents/(?P<document_id>[0-9]+)/tags/attach/$',
+        name='document-tag-attach', view=APIDocumentTagAttachView.as_view()
+    ),
+    url(
+        regex=r'^documents/(?P<document_id>[0-9]+)/tags/remove/$',
+        name='document-tag-remove', view=APIDocumentTagRemoveView.as_view()
     ),
 ]

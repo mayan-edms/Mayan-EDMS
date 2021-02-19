@@ -95,7 +95,8 @@ class TagAttachActionView(MultipleObjectFormActionView):
                 user=self.request.user
             )
 
-            tag.attach_to(document=instance, user=self.request.user)
+            tag._event_actor = self.request.user
+            tag.attach_to(document=instance)
 
 
 class TagCreateView(SingleObjectCreateView):
@@ -198,7 +199,7 @@ class TagDocumentListView(ExternalObjectViewMixin, DocumentListView):
     def get_document_queryset(self):
         return Document.valid.filter(
             pk__in=self.get_tag().get_documents(
-                user=self.request.user
+                permission=permission_tag_view, user=self.request.user
             ).values('pk')
         )
 
@@ -314,4 +315,5 @@ class TagRemoveActionView(MultipleObjectFormActionView):
                 user=self.request.user
             )
 
-            tag.remove_from(document=instance, user=self.request.user)
+            tag._event_actor = self.request.user
+            tag.remove_from(document=instance)
