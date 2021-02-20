@@ -56,5 +56,5 @@ class APITrashedDocumentRestoreView(generics.ObjectActionAPIView):
             '_event_actor': self.request.user
         }
 
-    def object_action(self, request):
+    def object_action(self, request, serializer):
         self.object.restore()
