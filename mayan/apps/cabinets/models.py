@@ -7,16 +7,19 @@ from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
 
 from mayan.apps.acls.models import AccessControlList
+from mayan.apps.common.model_mixins import ExtraDataModelMixin
 from mayan.apps.documents.models.document_models import Document
 from mayan.apps.documents.permissions import permission_document_view
+from mayan.apps.events.classes import EventManagerMethodAfter, EventManagerSave
+from mayan.apps.events.decorators import method_event
 
 from .events import (
-    event_cabinet_created, event_cabinet_edited, event_cabinet_add_document,
-    event_cabinet_remove_document
+    event_cabinet_created, event_cabinet_edited, event_cabinet_document_added,
+    event_cabinet_document_removed
 )
 
 
-class Cabinet(MPTTModel):
+class Cabinet(ExtraDataModelMixin, MPTTModel):
     """
     Model to store a hierarchical tree of document containers. Each container
     can store an unlimited number of documents using an M2M field. Only
@@ -47,27 +50,23 @@ class Cabinet(MPTTModel):
     def __str__(self):
         return self.get_full_path()
 
-    def document_add(self, document, _user=None):
-        """
-        Add a document to a container. This can be done without using this
-        method but this method provides the event commit already coded.
-        """
-        with transaction.atomic():
-            self.documents.add(document)
-            event_cabinet_add_document.commit(
-                action_object=self, actor=_user, target=document
-            )
+    @method_event(
+        action_object='self',
+        event=event_cabinet_document_added,
+        event_manager_class=EventManagerMethodAfter,
+    )
+    def document_add(self, document):
+        self._event_target = document
+        self.documents.add(document)
 
-    def document_remove(self, document, _user=None):
-        """
-        Remove a document from a cabinet. This method provides the
-        corresponding event commit.
-        """
-        with transaction.atomic():
-            self.documents.remove(document)
-            event_cabinet_remove_document.commit(
-                action_object=self, actor=_user, target=document
-            )
+    @method_event(
+        action_object='self',
+        event=event_cabinet_document_removed,
+        event_manager_class=EventManagerMethodAfter,
+    )
+    def document_remove(self, document):
+        self._event_target = document
+        self.documents.remove(document)
 
     def get_absolute_url(self):
         return reverse(
@@ -115,20 +114,19 @@ class Cabinet(MPTTModel):
     )
     get_full_path.short_description = _('Full path')
 
+    @method_event(
+        event_manager_class=EventManagerSave,
+        created={
+            'event': event_cabinet_created,
+            'target': 'self',
+        },
+        edited={
+            'event': event_cabinet_edited,
+            'target': 'self',
+        }
+    )
     def save(self, *args, **kwargs):
-        _user = kwargs.pop('_user', None)
-
-        with transaction.atomic():
-            is_new = not self.pk
-            super().save(*args, **kwargs)
-            if is_new:
-                event_cabinet_created.commit(
-                    actor=_user, target=self
-                )
-            else:
-                event_cabinet_edited.commit(
-                    actor=_user, target=self
-                )
+        return super().save(*args, **kwargs)
 
     def validate_unique(self, exclude=None):
         """

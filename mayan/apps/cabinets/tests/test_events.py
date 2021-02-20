@@ -4,8 +4,8 @@ from mayan.apps.documents.tests.base import GenericDocumentTestCase
 from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..events import (
-    event_cabinet_created, event_cabinet_edited, event_cabinet_add_document,
-    event_cabinet_remove_document
+    event_cabinet_created, event_cabinet_edited, event_cabinet_document_added,
+    event_cabinet_document_removed
 )
 from ..models import Cabinet
 from ..permissions import permission_cabinet_create, permission_cabinet_edit
@@ -91,7 +91,7 @@ class CabinetDocumentsEventsTestCase(
         self.assertEqual(Action.objects.last().target, self.test_document)
         self.assertEqual(
             Action.objects.last().verb,
-            event_cabinet_add_document.id
+            event_cabinet_document_added.id
         )
 
     def test_document_cabinet_remove_event(self):
@@ -104,5 +104,5 @@ class CabinetDocumentsEventsTestCase(
         self.assertEqual(Action.objects.first().target, self.test_document)
         self.assertEqual(
             Action.objects.first().verb,
-            event_cabinet_remove_document.id
+            event_cabinet_document_removed.id
         )

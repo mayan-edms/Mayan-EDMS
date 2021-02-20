@@ -14,8 +14,8 @@ from mayan.apps.events.permissions import permission_events_view
 from mayan.apps.navigation.classes import SourceColumn
 
 from .events import (
-    event_cabinet_edited, event_cabinet_add_document,
-    event_cabinet_remove_document
+    event_cabinet_edited, event_cabinet_document_added,
+    event_cabinet_document_removed
 )
 from .html_widgets import DocumentCabinetWidget
 from .links import (
@@ -99,8 +99,8 @@ class CabinetsApp(MayanAppConfig):
 
         ModelEventType.register(
             model=Cabinet, event_types=(
-                event_cabinet_edited, event_cabinet_add_document,
-                event_cabinet_remove_document
+                event_cabinet_edited, event_cabinet_document_added,
+                event_cabinet_document_removed
             )
         )
 

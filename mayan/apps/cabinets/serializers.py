@@ -1,15 +1,16 @@
-from django.db import connection, transaction
 from django.utils.translation import ugettext_lazy as _
 
 from rest_framework import serializers
 from rest_framework.reverse import reverse
-from rest_framework.settings import api_settings
 from rest_framework_recursive.fields import RecursiveField
 
 from mayan.apps.documents.models import Document
-from mayan.apps.documents.serializers.document_serializers import DocumentSerializer
+from mayan.apps.rest_api.relations import FilteredPrimaryKeyRelatedField
 
 from .models import Cabinet
+from .permissions import (
+    permission_cabinet_add_document, permission_cabinet_remove_document
+)
 
 
 class CabinetSerializer(serializers.ModelSerializer):
@@ -33,6 +34,12 @@ class CabinetSerializer(serializers.ModelSerializer):
         view_name='rest_api:cabinet-document-list'
     )
     parent_url = serializers.SerializerMethodField()
+
+    # This is here because parent is optional in the model but the serializer
+    # sets it as required.
+    parent = serializers.PrimaryKeyRelatedField(
+        allow_null=True, queryset=Cabinet.objects.all(), required=False
+    )
 
     class Meta:
         extra_kwargs = {
@@ -65,138 +72,15 @@ class CabinetSerializer(serializers.ModelSerializer):
             return ''
 
 
-class WritableCabinetSerializer(serializers.ModelSerializer):
-    documents_pk_list = serializers.CharField(
-        help_text=_(
-            'Comma separated list of document primary keys to add to this '
-            'cabinet.'
-        ), required=False
+class CabinetDocumentAddSerializer(serializers.Serializer):
+    document = FilteredPrimaryKeyRelatedField(
+        source_queryset=Document.valid,
+        source_permission=permission_cabinet_add_document
     )
 
-    # This is here because parent is optional in the model but the serializer
-    # sets it as required.
-    parent = serializers.PrimaryKeyRelatedField(
-        allow_null=True, queryset=Cabinet.objects.all(), required=False
+
+class CabinetDocumentRemoveSerializer(serializers.Serializer):
+    document = FilteredPrimaryKeyRelatedField(
+        source_queryset=Document.valid,
+        source_permission=permission_cabinet_remove_document
     )
-
-    class Meta:
-        fields = ('documents_pk_list', 'label', 'id', 'parent')
-        model = Cabinet
-
-    def _add_documents(self, documents_pk_list, instance):
-        instance.documents.add(
-            *Document.objects.filter(pk__in=documents_pk_list.split(','))
-        )
-
-    def create(self, validated_data):
-        documents_pk_list = validated_data.pop('documents_pk_list', '')
-
-        instance = super().create(validated_data=validated_data)
-
-        if documents_pk_list:
-            self._add_documents(
-                documents_pk_list=documents_pk_list, instance=instance
-            )
-
-        return instance
-
-    def update(self, instance, validated_data):
-        documents_pk_list = validated_data.pop('documents_pk_list', '')
-
-        instance = super().update(
-            instance=instance, validated_data=validated_data
-        )
-
-        if documents_pk_list:
-            instance.documents.clear()
-            self._add_documents(
-                documents_pk_list=documents_pk_list, instance=instance
-            )
-
-        return instance
-
-    def run_validation(self, data=None):
-        # Copy data into a new dictionary since data is an immutable type
-        result = data.copy()
-
-        # Add None parent to keep validation from failing.
-        # This is here because parent is optional in the model but the serializer
-        # sets it as required.
-        result.setdefault('parent')
-
-        data = super().run_validation(data=result)
-
-        # Explicit validation of uniqueness of parent+label as the provided
-        # unique_together check in Meta is not working for all 100% cases
-        # when there is a FK in the unique_together tuple
-        # https://code.djangoproject.com/ticket/1751
-        with transaction.atomic():
-            if connection.vendor == 'oracle':
-                queryset = Cabinet.objects.filter(parent=data['parent'], label=data['label'])
-            else:
-                queryset = Cabinet.objects.select_for_update().filter(parent=data['parent'], label=data['label'])
-
-            if queryset.exists():
-                params = {
-                    'model_name': _('Cabinet'),
-                    'field_labels': _('Parent and Label')
-                }
-                raise serializers.ValidationError(
-                    {
-                        api_settings.NON_FIELD_ERRORS_KEY: [
-                            _(
-                                '%(model_name)s with this %(field_labels)s '
-                                'already exists.'
-                            ) % params
-                        ],
-                    },
-                )
-
-        return data
-
-
-class CabinetDocumentSerializer(DocumentSerializer):
-    cabinet_document_url = serializers.SerializerMethodField(
-        help_text=_(
-            'API URL pointing to a document in relation to the cabinet '
-            'storing it. This URL is different than the canonical document '
-            'URL.'
-        )
-    )
-
-    class Meta(DocumentSerializer.Meta):
-        fields = DocumentSerializer.Meta.fields + ('cabinet_document_url',)
-        read_only_fields = DocumentSerializer.Meta.fields
-
-    def get_cabinet_document_url(self, instance):
-        return reverse(
-            viewname='rest_api:cabinet-document', kwargs={
-                'cabinet_id': self.context['cabinet'].pk,
-                'document_id': instance.pk
-            }, request=self.context['request'], format=self.context['format']
-        )
-
-
-class NewCabinetDocumentSerializer(serializers.Serializer):
-    documents_pk_list = serializers.CharField(
-        help_text=_(
-            'Comma separated list of document primary keys to add to this '
-            'cabinet.'
-        )
-    )
-
-    def _add_documents(self, documents_pk_list, instance):
-        instance.documents.add(
-            *Document.objects.filter(pk__in=documents_pk_list.split(','))
-        )
-
-    def create(self, validated_data):
-        documents_pk_list = validated_data['documents_pk_list']
-
-        if documents_pk_list:
-            self._add_documents(
-                documents_pk_list=documents_pk_list,
-                instance=validated_data['cabinet']
-            )
-
-        return {'documents_pk_list': documents_pk_list}

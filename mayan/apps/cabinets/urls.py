@@ -1,8 +1,9 @@
 from django.conf.urls import url
 
 from .api_views import (
-    APIDocumentCabinetListView, APICabinetDocumentListView,
-    APICabinetDocumentView, APICabinetListView, APICabinetView
+    APICabinetDocumentAddView, APICabinetDocumentListView,
+    APICabinetDocumentRemoveView, APICabinetListView, APICabinetView,
+    APIDocumentCabinetListView
 )
 from .views import (
     DocumentCabinetAddView, DocumentCabinetListView,
@@ -69,8 +70,12 @@ urlpatterns.extend(urlpatterns_documents_cabinets)
 
 api_urls = [
     url(
-        regex=r'^cabinets/(?P<cabinet_id>[0-9]+)/documents/(?P<document_id>[0-9]+)/$',
-        name='cabinet-document', view=APICabinetDocumentView.as_view()
+        regex=r'^cabinets/(?P<cabinet_id>[0-9]+)/$', name='cabinet-detail',
+        view=APICabinetView.as_view()
+    ),
+    url(
+        regex=r'^cabinets/$', name='cabinet-list',
+        view=APICabinetListView.as_view()
     ),
     url(
         regex=r'^cabinets/(?P<cabinet_id>[0-9]+)/documents/$',
@@ -78,12 +83,12 @@ api_urls = [
         view=APICabinetDocumentListView.as_view()
     ),
     url(
-        regex=r'^cabinets/(?P<cabinet_id>[0-9]+)/$', name='cabinet-detail',
-        view=APICabinetView.as_view()
+        regex=r'^cabinets/(?P<cabinet_id>[0-9]+)/documents/add/$',
+        name='cabinet-document-add', view=APICabinetDocumentAddView.as_view()
     ),
     url(
-        regex=r'^cabinets/$', name='cabinet-list',
-        view=APICabinetListView.as_view()
+        regex=r'^cabinets/(?P<cabinet_id>[0-9]+)/documents/remove/$',
+        name='cabinet-document-remove', view=APICabinetDocumentRemoveView.as_view()
     ),
     url(
         regex=r'^documents/(?P<document_id>[0-9]+)/cabinets/$',
