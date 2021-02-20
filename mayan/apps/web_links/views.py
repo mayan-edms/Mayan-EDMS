@@ -115,7 +115,7 @@ class WebLinkDocumentTypesView(AddRemoveView):
     related_field = 'document_types'
 
     def get_actions_extra_kwargs(self):
-        return {'_user': self.request.user}
+        return {'_event_actor': self.request.user}
 
     def get_extra_context(self):
         return {

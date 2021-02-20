@@ -2,7 +2,8 @@ from django.conf.urls import url
 
 from .api_views import (
     APIResolvedWebLinkListView, APIResolvedWebLinkNavigateView,
-    APIResolvedWebLinkView, APIWebLinkView, APIWebLinkListView
+    APIResolvedWebLinkView, APIWebLinkDocumentTypeAddView,
+    APIWebLinkDocumentTypeRemoveView, APIWebLinkView, APIWebLinkListView
 )
 from .views import (
     DocumentWebLinkListView, DocumentTypeWebLinksView, ResolvedWebLinkView,
@@ -70,5 +71,13 @@ api_urls = [
     url(
         regex=r'^web_links/(?P<web_link_id>[0-9]+)/$',
         view=APIWebLinkView.as_view(), name='web_link-detail'
+    ),
+    url(
+        regex=r'^web_links/(?P<web_link_id>[0-9]+)/document_types/add/$',
+        view=APIWebLinkDocumentTypeAddView.as_view(), name='web_link-document_type-add'
+    ),
+    url(
+        regex=r'^web_links/(?P<web_link_id>[0-9]+)/document_types/remove/$',
+        view=APIWebLinkDocumentTypeRemoveView.as_view(), name='web_link-document_type-remove'
     ),
 ]

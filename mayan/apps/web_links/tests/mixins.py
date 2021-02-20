@@ -1,3 +1,5 @@
+from django.db.models import Q
+
 from ..models import WebLink
 
 from .literals import (
@@ -35,12 +37,23 @@ class ResolvedWebLinkAPIViewTestMixin(object):
 
 class WebLinkAPIViewTestMixin(object):
     def _request_test_web_link_create_api_view(self):
-        return self.post(
+        pk_list = list(WebLink.objects.values('pk'))
+
+        response = self.post(
             viewname='rest_api:web_link-list', data={
                 'label': TEST_WEB_LINK_LABEL,
                 'template': TEST_WEB_LINK_TEMPLATE
             }
         )
+
+        try:
+            self.test_web_link = WebLink.objects.get(
+                ~Q(pk__in=pk_list)
+            )
+        except WebLink.DoesNotExist:
+            self.test_web_link = None
+
+        return response
 
     def _request_test_web_link_create_with_document_type_api_view(self):
         return self.post(
@@ -65,22 +78,38 @@ class WebLinkAPIViewTestMixin(object):
             }
         )
 
-    def _request_test_web_link_edit_patch_api_view(self):
+    def _request_test_web_link_edit_via_patch_api_view(self):
         return self.patch(
             viewname='rest_api:web_link-detail',
             kwargs={'web_link_id': self.test_web_link.pk}, data={
                 'label': TEST_WEB_LINK_LABEL_EDITED,
-                'document_types_pk_list': self.test_document_type.pk
             }
         )
 
-    def _request_test_web_link_edit_put_api_view(self):
+    def _request_test_web_link_edit_via_put_api_view(self):
         return self.put(
             viewname='rest_api:web_link-detail',
             kwargs={'web_link_id': self.test_web_link.pk}, data={
                 'label': TEST_WEB_LINK_LABEL_EDITED,
-                'document_types_pk_list': self.test_document_type.pk,
                 'template': TEST_WEB_LINK_TEMPLATE
+            }
+        )
+
+
+class WebLinkDocumentTypeAPIViewMixin:
+    def _request_test_web_link_document_type_add_api_view(self):
+        return self.post(
+            viewname='rest_api:web_link-document_type-add',
+            kwargs={'web_link_id': self.test_web_link.pk}, data={
+                'document_type': self.test_document_type.pk
+            }
+        )
+
+    def _request_test_web_link_document_type_remove_api_view(self):
+        return self.post(
+            viewname='rest_api:web_link-document_type-remove',
+            kwargs={'web_link_id': self.test_web_link.pk}, data={
+                'document_type': self.test_document_type.pk
             }
         )
 

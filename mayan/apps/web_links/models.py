@@ -1,10 +1,12 @@
-from django.db import models, transaction
+from django.db import models
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.documents.events import event_document_type_edited
+from mayan.apps.common.model_mixins import ExtraDataModelMixin
 from mayan.apps.documents.models import DocumentType
+from mayan.apps.events.classes import EventManagerSave
+from mayan.apps.events.decorators import method_event
 from mayan.apps.templating.classes import Template
 
 from .events import (
@@ -13,7 +15,7 @@ from .events import (
 from .managers import WebLinkManager
 
 
-class WebLink(models.Model):
+class WebLink(ExtraDataModelMixin, models.Model):
     """
     This model stores the basic fields for a web link. Web links allow
     generating links from documents to external resources.
@@ -42,27 +44,19 @@ class WebLink(models.Model):
     def __str__(self):
         return self.label
 
-    def document_types_add(self, queryset, _user=None):
-        with transaction.atomic():
+    def document_types_add(self, queryset):
+        for obj in queryset:
+            self.document_types.add(obj)
             event_web_link_edited.commit(
-                actor=_user, target=self
+                action_object=obj, actor=self._event_actor, target=self
             )
-            for obj in queryset:
-                self.document_types.add(obj)
-                event_document_type_edited.commit(
-                    actor=_user, action_object=self, target=obj
-                )
 
-    def document_types_remove(self, queryset, _user=None):
-        with transaction.atomic():
+    def document_types_remove(self, queryset):
+        for obj in queryset:
+            self.document_types.remove(obj)
             event_web_link_edited.commit(
-                actor=_user, target=self
+                action_object=obj, actor=self._event_actor, target=self
             )
-            for obj in queryset:
-                self.document_types.remove(obj)
-                event_document_type_edited.commit(
-                    actor=_user, action_object=self, target=obj
-                )
 
     def get_absolute_url(self):
         return reverse(
@@ -71,20 +65,19 @@ class WebLink(models.Model):
             }
         )
 
+    @method_event(
+        event_manager_class=EventManagerSave,
+        created={
+            'event': event_web_link_created,
+            'target': 'self',
+        },
+        edited={
+            'event': event_web_link_edited,
+            'target': 'self',
+        }
+    )
     def save(self, *args, **kwargs):
-        _user = kwargs.pop('_user', None)
-
-        with transaction.atomic():
-            is_new = not self.pk
-            super().save(*args, **kwargs)
-            if is_new:
-                event_web_link_created.commit(
-                    actor=_user, target=self
-                )
-            else:
-                event_web_link_edited.commit(
-                    actor=_user, target=self
-                )
+        return super().save(*args, **kwargs)
 
 
 class ResolvedWebLink(WebLink):
