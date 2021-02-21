@@ -1,16 +1,9 @@
 from django.conf.urls import url
 
 from .api_views import (
-    APIACLDetailView,
-    APIACLListView,
-
-    APIACLPermissionAddView,
-    APIACLPermissionListView,
-    APIACLPermissionRemoveView,
-
-    APIClassPermissionList,
-
-
+    APIACLDetailView, APIACLListView, APIACLPermissionAddView,
+    APIACLPermissionListView, APIACLPermissionRemoveView,
+    APIClassPermissionList
 )
 from .views import (
     ACLCreateView, ACLDeleteView, ACLListView, ACLPermissionsView,
