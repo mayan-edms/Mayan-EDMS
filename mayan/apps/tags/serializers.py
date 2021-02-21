@@ -1,3 +1,5 @@
+from django.utils.translation import ugettext_lazy as _
+
 from rest_framework import serializers
 
 from mayan.apps.rest_api.relations import FilteredPrimaryKeyRelatedField
@@ -27,11 +29,15 @@ class TagSerializer(serializers.HyperlinkedModelSerializer):
 
 class DocumentTagAttachSerializer(serializers.Serializer):
     tag = FilteredPrimaryKeyRelatedField(
-        source_model=Tag, source_permission=permission_tag_attach,
+        help_text=_(
+            'Primary key of the tag to add to the document.'
+        ), source_model=Tag, source_permission=permission_tag_attach
     )
 
 
 class DocumentTagRemoveSerializer(serializers.Serializer):
     tag = FilteredPrimaryKeyRelatedField(
-        source_model=Tag, source_permission=permission_tag_remove,
+        help_text=_(
+            'Primary key of the tag to remove from the document.'
+        ), source_model=Tag, source_permission=permission_tag_remove
     )
