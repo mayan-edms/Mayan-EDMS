@@ -1,5 +1,9 @@
 from mayan.apps.documents.models.document_models import Document
 from mayan.apps.documents.models.document_type_models import DocumentType
+from mayan.apps.documents.permissions import permission_document_type_view
+from mayan.apps.documents.serializers.document_type_serializers import (
+    DocumentTypeSerializer
+)
 from mayan.apps.rest_api import generics
 from mayan.apps.rest_api.api_view_mixins import ExternalObjectAPIViewMixin
 
@@ -128,7 +132,25 @@ class APIWebLinkDocumentTypeAddView(generics.ObjectActionAPIView):
     def object_action(self, request, serializer):
         document_type = serializer.validated_data['document_type']
         self.object._event_actor = self.request.user
-        self.object.document_types_add(queryset=DocumentType.objects.filter(pk=document_type.pk))
+        self.object.document_types_add(
+            queryset=DocumentType.objects.filter(pk=document_type.pk)
+        )
+
+
+class APIWebLinkDocumentTypeListView(
+    ExternalObjectAPIViewMixin, generics.ListAPIView
+):
+    """
+    get: Return a list of the selected web link document types.
+    """
+    external_object_class = WebLink
+    external_object_pk_url_kwarg = 'web_link_id'
+    mayan_external_object_permissions = {'GET': (permission_web_link_view,)}
+    mayan_object_permissions = {'GET': (permission_document_type_view,)}
+    serializer_class = DocumentTypeSerializer
+
+    def get_queryset(self):
+        return self.external_object.document_types.all()
 
 
 class APIWebLinkDocumentTypeRemoveView(generics.ObjectActionAPIView):
@@ -145,4 +167,6 @@ class APIWebLinkDocumentTypeRemoveView(generics.ObjectActionAPIView):
     def object_action(self, request, serializer):
         document_type = serializer.validated_data['document_type']
         self.object._event_actor = self.request.user
-        self.object.document_types_remove(queryset=DocumentType.objects.filter(pk=document_type.pk))
+        self.object.document_types_remove(
+            queryset=DocumentType.objects.filter(pk=document_type.pk)
+        )

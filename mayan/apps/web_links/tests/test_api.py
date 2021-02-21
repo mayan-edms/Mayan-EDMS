@@ -1,6 +1,8 @@
 from rest_framework import status
 
-from mayan.apps.documents.permissions import permission_document_type_edit
+from mayan.apps.documents.permissions import (
+    permission_document_type_edit, permission_document_type_view
+)
 from mayan.apps.documents.tests.base import DocumentTestMixin
 from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
@@ -304,6 +306,76 @@ class WebLinkDocumentTypeAPIViewTestCase(
         self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].target, self.test_web_link)
         self.assertEqual(events[0].verb, event_web_link_edited.id)
+
+    def test_web_link_permission_list_api_view_no_permission(self):
+        self._create_test_web_link()
+        self.test_web_link.document_types.add(self.test_document_type)
+
+        self._clear_events()
+
+        response = self._request_test_web_link_document_type_list_api_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_web_link_permission_list_api_view_with_document_type_access(self):
+        self._create_test_web_link()
+        self.test_web_link.document_types.add(self.test_document_type)
+
+        self.grant_access(
+            obj=self.test_document_type,
+            permission=permission_document_type_view
+        )
+
+        self._clear_events()
+
+        response = self._request_test_web_link_document_type_list_api_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_web_link_permission_list_api_view_with_web_link_access(self):
+        self._create_test_web_link()
+        self.test_web_link.document_types.add(self.test_document_type)
+
+        self.grant_access(
+            obj=self.test_web_link, permission=permission_web_link_view
+        )
+
+        self._clear_events()
+
+        response = self._request_test_web_link_document_type_list_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['count'], 0)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_web_link_permission_list_api_view_with_full_access(self):
+        self._create_test_web_link()
+        self.test_web_link.document_types.add(self.test_document_type)
+
+        self.grant_access(
+            obj=self.test_document_type,
+            permission=permission_document_type_view
+        )
+        self.grant_access(
+            obj=self.test_web_link, permission=permission_web_link_view
+        )
+
+        self._clear_events()
+
+        response = self._request_test_web_link_document_type_list_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(
+            response.data['results'][0]['id'],
+            self.test_document_type.pk
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_web_link_document_type_remove_api_view_no_permission(self):
         self._create_test_web_link(add_document_type=True)

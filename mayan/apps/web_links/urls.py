@@ -3,7 +3,8 @@ from django.conf.urls import url
 from .api_views import (
     APIResolvedWebLinkListView, APIResolvedWebLinkNavigateView,
     APIResolvedWebLinkView, APIWebLinkDocumentTypeAddView,
-    APIWebLinkDocumentTypeRemoveView, APIWebLinkView, APIWebLinkListView
+    APIWebLinkDocumentTypeListView, APIWebLinkDocumentTypeRemoveView,
+    APIWebLinkView, APIWebLinkListView
 )
 from .views import (
     DocumentWebLinkListView, DocumentTypeWebLinksView, ResolvedWebLinkView,
@@ -65,19 +66,26 @@ api_urls = [
         view=APIResolvedWebLinkNavigateView.as_view()
     ),
     url(
-        regex=r'^web_links/$', view=APIWebLinkListView.as_view(),
-        name='web_link-list'
+        regex=r'^web_links/$', name='web_link-list',
+        view=APIWebLinkListView.as_view()
     ),
     url(
         regex=r'^web_links/(?P<web_link_id>[0-9]+)/$',
-        view=APIWebLinkView.as_view(), name='web_link-detail'
+        name='web_link-detail', view=APIWebLinkView.as_view()
+    ),
+    url(
+        regex=r'^web_links/(?P<web_link_id>[0-9]+)/document_types/$',
+        name='web_link-document_type-list',
+        view=APIWebLinkDocumentTypeListView.as_view()
     ),
     url(
         regex=r'^web_links/(?P<web_link_id>[0-9]+)/document_types/add/$',
-        view=APIWebLinkDocumentTypeAddView.as_view(), name='web_link-document_type-add'
+        name='web_link-document_type-add',
+        view=APIWebLinkDocumentTypeAddView.as_view()
     ),
     url(
         regex=r'^web_links/(?P<web_link_id>[0-9]+)/document_types/remove/$',
-        view=APIWebLinkDocumentTypeRemoveView.as_view(), name='web_link-document_type-remove'
+        name='web_link-document_type-remove',
+        view=APIWebLinkDocumentTypeRemoveView.as_view()
     ),
 ]

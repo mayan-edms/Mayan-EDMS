@@ -55,15 +55,6 @@ class WebLinkAPIViewTestMixin(object):
 
         return response
 
-    def _request_test_web_link_create_with_document_type_api_view(self):
-        return self.post(
-            viewname='rest_api:web_link-list', data={
-                'label': TEST_WEB_LINK_LABEL,
-                'document_types_pk_list': self.test_document_type.pk,
-                'template': TEST_WEB_LINK_TEMPLATE
-            },
-        )
-
     def _request_test_web_link_delete_api_view(self):
         return self.delete(
             viewname='rest_api:web_link-detail', kwargs={
@@ -105,6 +96,13 @@ class WebLinkDocumentTypeAPIViewMixin:
             }
         )
 
+    def _request_test_web_link_document_type_list_api_view(self):
+        return self.get(
+            viewname='rest_api:web_link-document_type-list', kwargs={
+                'web_link_id': self.test_web_link.pk,
+            }
+        )
+
     def _request_test_web_link_document_type_remove_api_view(self):
         return self.post(
             viewname='rest_api:web_link-document_type-remove',
@@ -121,6 +119,28 @@ class WebLinkTestMixin:
         )
         if add_document_type:
             self.test_web_link.document_types.add(self.test_document_type)
+
+
+class WebLinkDocumentTypeViewTestMixin:
+    def _request_test_web_link_document_type_add_view(self):
+        return self.post(
+            viewname='web_links:web_link_document_types', kwargs={
+                'web_link_id': self.test_web_link.pk,
+            }, data={
+                'available-submit': 'true',
+                'available-selection': self.test_document_type.pk
+            }
+        )
+
+    def _request_test_web_link_document_type_remove_view(self):
+        return self.post(
+            viewname='web_links:web_link_document_types', kwargs={
+                'web_link_id': self.test_web_link.pk,
+            }, data={
+                'added-submit': 'true',
+                'added-selection': self.test_document_type.pk
+            }
+        )
 
 
 class WebLinkViewTestMixin:
