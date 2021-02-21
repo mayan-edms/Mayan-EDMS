@@ -8,6 +8,7 @@ from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.class_mixins import AppsModuleLoaderMixin
+from mayan.apps.common.collections import ClassCollection
 
 from .exceptions import InvalidNamespace
 
@@ -56,7 +57,7 @@ class Permission(AppsModuleLoaderMixin):
     @classmethod
     def all(cls, as_choices=False):
         if as_choices:
-            results = []
+            results = PermissionCollection()
 
             for namespace, permissions in itertools.groupby(cls.all(), lambda entry: entry.namespace):
                 permission_options = [
@@ -69,8 +70,10 @@ class Permission(AppsModuleLoaderMixin):
             return results
         else:
             # Return sorted permissions by namespace.name
-            return sorted(
-                cls._permissions.values(), key=lambda x: x.namespace.name
+            return PermissionCollection(
+                sorted(
+                    cls._permissions.values(), key=lambda x: x.namespace.name
+                )
             )
 
     @classmethod
@@ -146,3 +149,7 @@ class Permission(AppsModuleLoaderMixin):
                 stored permissions during the initial creation of the
                 database. Can be safely ignore under that situation.
                 """
+
+
+class PermissionCollection(ClassCollection):
+    klass = Permission

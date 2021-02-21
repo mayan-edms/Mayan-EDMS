@@ -46,12 +46,14 @@ class PermissionsApp(MayanAppConfig):
         super().ready()
 
         Role = self.get_model('Role')
+        StoredPermission = self.get_model('StoredPermission')
         Group = apps.get_model(app_label='auth', model_name='Group')
 
         Group.add_to_class(name='roles_add', value=method_group_roles_add)
         Group.add_to_class(name='roles_remove', value=method_group_roles_remove)
 
         EventModelRegistry.register(model=Role)
+        EventModelRegistry.register(model=StoredPermission)
 
         ModelCopy(
             model=Role, bind_link=True, register_permission=True
