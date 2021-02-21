@@ -47,32 +47,6 @@ class ACLAPIViewTestCase(ACLTestMixin, ACLAPIViewTestMixin, BaseAPITestCase):
         self.assertEqual(events[0].target, self.test_acl)
         self.assertEqual(events[0].verb, event_acl_created.id)
 
-    def test_acl_create_api_view_extra_data_with_access(self):
-        self.grant_access(
-            obj=self.test_object, permission=permission_acl_edit
-        )
-
-        self._clear_events()
-
-        response = self._request_test_acl_create_api_view(
-            extra_data={'permissions_pk_list': permission_acl_view.pk}
-        )
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-
-        self.assertEqual(self.test_acl.content_object, self.test_object)
-        self.assertEqual(self.test_acl.role, self.test_role)
-        self.assertEqual(
-            self.test_acl.permissions.first(),
-            permission_acl_view.stored_permission
-        )
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 1)
-        self.assertEqual(events[0].action_object, self.test_object)
-        self.assertEqual(events[0].actor, self._test_case_user)
-        self.assertEqual(events[0].target, self.test_acl)
-        self.assertEqual(events[0].verb, event_acl_created.id)
-
     def test_acl_delete_api_view_no_permission(self):
         self._create_test_acl()
 
@@ -205,7 +179,7 @@ class ACLPermissionAPIViewTestCase(
         self._clear_events()
 
         response = self._request_test_acl_permission_add_api_view()
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.assertTrue(
             self.test_permission.stored_permission in self.test_acl.permissions.all()
@@ -213,41 +187,13 @@ class ACLPermissionAPIViewTestCase(
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
-        self.assertEqual(events[0].action_object, None)
+
+        self.assertEqual(
+            events[0].action_object, self.test_permission.stored_permission
+        )
         self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].target, self.test_acl)
         self.assertEqual(events[0].verb, event_acl_edited.id)
-
-    def test_acl_permission_detail_api_view_no_permission(self):
-        self._create_test_acl()
-        self.test_acl.permissions.add(self.test_permission.stored_permission)
-
-        self._clear_events()
-
-        response = self._request_test_acl_permission_detail_api_view()
-        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
-
-    def test_acl_permission_detail_api_view_with_access(self):
-        self._create_test_acl()
-        self.test_acl.permissions.add(self.test_permission.stored_permission)
-
-        self.grant_access(
-            obj=self.test_object, permission=permission_acl_view
-        )
-
-        self._clear_events()
-
-        response = self._request_test_acl_permission_detail_api_view()
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(
-            response.data['pk'], self.test_permission.pk
-        )
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
 
     def test_acl_permission_list_api_view_no_permission(self):
         self._create_test_acl()
@@ -255,7 +201,7 @@ class ACLPermissionAPIViewTestCase(
 
         self._clear_events()
 
-        response = self._request_test_acl_permission_list_api_get_view()
+        response = self._request_test_acl_permission_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         events = self._get_test_events()
@@ -271,7 +217,7 @@ class ACLPermissionAPIViewTestCase(
 
         self._clear_events()
 
-        response = self._request_test_acl_permission_list_api_get_view()
+        response = self._request_test_acl_permission_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
             response.data['results'][0]['pk'],
@@ -289,7 +235,7 @@ class ACLPermissionAPIViewTestCase(
 
         self._clear_events()
 
-        response = self._request_test_acl_permission_delete_api_view()
+        response = self._request_test_acl_permission_remove_api_view()
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
         self.assertEqual(
@@ -309,8 +255,8 @@ class ACLPermissionAPIViewTestCase(
 
         self._clear_events()
 
-        response = self._request_test_acl_permission_delete_api_view()
-        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+        response = self._request_test_acl_permission_remove_api_view()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.assertEqual(
             self.test_acl.permissions.count(), acl_permission_count - 1
@@ -318,7 +264,10 @@ class ACLPermissionAPIViewTestCase(
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 1)
-        self.assertEqual(events[0].action_object, None)
+
+        self.assertEqual(
+            events[0].action_object, self.test_permission.stored_permission
+        )
         self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].target, self.test_acl)
         self.assertEqual(events[0].verb, event_acl_edited.id)

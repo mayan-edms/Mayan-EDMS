@@ -13,17 +13,14 @@ from ..permissions import permission_acl_edit, permission_acl_view
 
 
 class ACLAPIViewTestMixin:
-    def _request_test_acl_create_api_view(self, extra_data=None):
-        data = {'role_pk': self.test_role.pk}
-
-        if extra_data:
-            data.update(extra_data)
-
+    def _request_test_acl_create_api_view(self):
         pk_list = list(AccessControlList.objects.values_list('pk', flat=True))
 
         response = self.post(
             viewname='rest_api:accesscontrollist-list',
-            kwargs=self.test_object_view_kwargs, data=data
+            kwargs=self.test_object_view_kwargs, data={
+                'role_id': self.test_role.pk
+            }
         )
 
         try:
@@ -64,46 +61,34 @@ class ACLAPIViewTestMixin:
             }
         )
 
-    def _request_test_acl_permission_delete_api_view(self):
-        return self.delete(
-            viewname='rest_api:accesscontrollist-permission-detail', kwargs={
-                'app_label': self.test_object_content_type.app_label,
-                'model_name': self.test_object_content_type.model,
-                'object_id': self.test_object.pk,
-                'acl_id': self.test_acl.pk,
-                'permission_id': self.test_permission.stored_permission.pk
-            }
-        )
-
-    def _request_test_acl_permission_detail_api_view(self):
-        return self.get(
-            viewname='rest_api:accesscontrollist-permission-detail', kwargs={
-                'app_label': self.test_object_content_type.app_label,
-                'model_name': self.test_object_content_type.model,
-                'object_id': self.test_object.pk,
-                'acl_id': self.test_acl.pk,
-                'permission_id': self.test_acl.permissions.first().pk
-            }
-        )
-
-    def _request_test_acl_permission_list_api_get_view(self):
-        return self.get(
-            viewname='rest_api:accesscontrollist-permission-list', kwargs={
-                'app_label': self.test_object_content_type.app_label,
-                'model_name': self.test_object_content_type.model,
-                'object_id': self.test_object.pk,
-                'acl_id': self.test_acl.pk
-            }
-        )
-
     def _request_test_acl_permission_add_api_view(self):
         return self.post(
+            viewname='rest_api:accesscontrollist-permission-add', kwargs={
+                'app_label': self.test_object_content_type.app_label,
+                'model_name': self.test_object_content_type.model,
+                'object_id': self.test_object.pk,
+                'acl_id': self.test_acl.pk
+            }, data={'permission': self.test_permission.pk}
+        )
+
+    def _request_test_acl_permission_list_api_view(self):
+        return self.get(
             viewname='rest_api:accesscontrollist-permission-list', kwargs={
                 'app_label': self.test_object_content_type.app_label,
                 'model_name': self.test_object_content_type.model,
                 'object_id': self.test_object.pk,
                 'acl_id': self.test_acl.pk
-            }, data={'permission_pk': self.test_permission.pk}
+            }
+        )
+
+    def _request_test_acl_permission_remove_api_view(self):
+        return self.post(
+            viewname='rest_api:accesscontrollist-permission-remove', kwargs={
+                'app_label': self.test_object_content_type.app_label,
+                'model_name': self.test_object_content_type.model,
+                'object_id': self.test_object.pk,
+                'acl_id': self.test_acl.pk
+            }, data={'permission': self.test_permission.pk}
         )
 
     def _request_test_class_permission_list_api_view(self):

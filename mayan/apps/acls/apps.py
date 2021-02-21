@@ -4,9 +4,6 @@ from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.classes import ModelCopy
 from mayan.apps.common.menus import menu_object, menu_secondary, menu_setup
 from mayan.apps.events.classes import EventModelRegistry, ModelEventType
-from mayan.apps.events.links import (
-    link_events_for_object, link_object_event_types_user_subcriptions_list
-)
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.views.html_widgets import ObjectLinkWidget
 

@@ -1,9 +1,16 @@
 from django.conf.urls import url
 
 from .api_views import (
-    APIClassPermissionList, APIObjectACLListView,
-    APIObjectACLPermissionListView, APIObjectACLPermissionView,
-    APIObjectACLView
+    APIACLDetailView,
+    APIACLListView,
+
+    APIACLPermissionAddView,
+    APIACLPermissionListView,
+    APIACLPermissionRemoveView,
+
+    APIClassPermissionList,
+
+
 )
 from .views import (
     ACLCreateView, ACLDeleteView, ACLListView, ACLPermissionsView,
@@ -40,20 +47,25 @@ api_urls = [
     ),
     url(
         regex=r'^objects/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/(?P<object_id>\d+)/acls/$',
-        name='accesscontrollist-list', view=APIObjectACLListView.as_view()
+        name='accesscontrollist-list', view=APIACLListView.as_view()
     ),
     url(
         regex=r'^objects/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/(?P<object_id>\d+)/acls/(?P<acl_id>\d+)/$',
-        name='accesscontrollist-detail', view=APIObjectACLView.as_view()
+        name='accesscontrollist-detail', view=APIACLDetailView.as_view()
+    ),
+    url(
+        regex=r'^objects/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/(?P<object_id>\d+)/acls/(?P<acl_id>\d+)/permissions/add/$',
+        name='accesscontrollist-permission-add',
+        view=APIACLPermissionAddView.as_view()
     ),
     url(
         regex=r'^objects/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/(?P<object_id>\d+)/acls/(?P<acl_id>\d+)/permissions/$',
         name='accesscontrollist-permission-list',
-        view=APIObjectACLPermissionListView.as_view()
+        view=APIACLPermissionListView.as_view()
     ),
     url(
-        regex=r'^objects/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/(?P<object_id>\d+)/acls/(?P<acl_id>\d+)/permissions/(?P<permission_id>\d+)/$',
-        name='accesscontrollist-permission-detail',
-        view=APIObjectACLPermissionView.as_view()
+        regex=r'^objects/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/(?P<object_id>\d+)/acls/(?P<acl_id>\d+)/permissions/remove/$',
+        name='accesscontrollist-permission-remove',
+        view=APIACLPermissionRemoveView.as_view()
     ),
 ]

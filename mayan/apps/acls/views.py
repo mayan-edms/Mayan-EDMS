@@ -189,7 +189,7 @@ class ACLPermissionsView(AddRemoveView):
         return sorted(namespaces_dictionary.items())
 
     def get_actions_extra_kwargs(self):
-        return {'_user': self.request.user}
+        return {'_event_actor': self.request.user}
 
     def get_disabled_choices(self):
         """
