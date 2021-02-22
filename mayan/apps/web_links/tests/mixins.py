@@ -160,12 +160,23 @@ class WebLinkViewTestMixin:
         )
 
     def _request_test_web_link_create_view(self):
-        return self.post(
+        pk_list = list(WebLink.objects.values('pk'))
+
+        response = self.post(
             viewname='web_links:web_link_create', data={
                 'label': TEST_WEB_LINK_LABEL,
                 'template_template': TEST_WEB_LINK_TEMPLATE,
             }
         )
+
+        try:
+            self.test_web_link = WebLink.objects.get(
+                ~Q(pk__in=pk_list)
+            )
+        except WebLink.DoesNotExist:
+            self.test_web_link = None
+
+        return response
 
     def _request_test_web_link_delete_view(self):
         return self.post(
