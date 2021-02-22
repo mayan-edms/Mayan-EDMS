@@ -40,8 +40,8 @@ class CabinetCreateView(SingleObjectCreateView):
             'title': _('Create cabinet'),
         }
 
-    def get_save_extra_data(self):
-        return {'_user': self.request.user}
+    def get_instance_extra_data(self):
+        return {'_event_actor': self.request.user}
 
 
 class CabinetChildAddView(ExternalObjectViewMixin, SingleObjectCreateView):
@@ -60,16 +60,12 @@ class CabinetChildAddView(ExternalObjectViewMixin, SingleObjectCreateView):
 
     def get_instance_extra_data(self):
         return {
-            'parent': self.external_object,
+            '_event_actor': self.request.user,
+            'parent': self.external_object
         }
 
     def get_queryset(self):
         return self.external_object.get_descendants()
-
-    def get_save_extra_data(self):
-        return {
-            '_user': self.request.user
-        }
 
 
 class CabinetDeleteView(SingleObjectDeleteView):
@@ -131,8 +127,8 @@ class CabinetDetailView(ExternalObjectViewMixin, DocumentListView):
 
         return context
 
-    def get_save_extra_data(self):
-        return {'_user': self.request.user}
+    #def get_save_extra_data(self):
+    #    return {'_user': self.request.user}
 
 
 class CabinetEditView(SingleObjectEditView):
@@ -148,8 +144,8 @@ class CabinetEditView(SingleObjectEditView):
             'title': _('Edit cabinet: %s') % self.object,
         }
 
-    def get_save_extra_data(self):
-        return {'_user': self.request.user}
+    def get_instance_extra_data(self):
+        return {'_event_actor': self.request.user}
 
 
 class CabinetListView(SingleObjectListView):
@@ -237,9 +233,9 @@ class DocumentCabinetAddView(MultipleObjectFormActionView):
                 obj=cabinet, permissions=(permission_cabinet_add_document,),
                 user=self.request.user
             )
-            cabinet.document_add(
-                document=instance, _user=self.request.user
-            )
+
+            cabinet._event_actor = self.request.user
+            cabinet.document_add(document=instance)
 
 
 class DocumentCabinetListView(ExternalObjectViewMixin, CabinetListView):
@@ -334,6 +330,5 @@ class DocumentCabinetRemoveView(MultipleObjectFormActionView):
                 user=self.request.user
             )
 
-            cabinet.document_remove(
-                document=instance, _user=self.request.user
-            )
+            cabinet._event_actor = self.request.user
+            cabinet.document_remove(document=instance)
