@@ -53,7 +53,7 @@ def operation_document_version_page_create(apps, schema_editor):
         app_label='documents', model_name='DocumentVersionPage'
     )
 
-    content_type = ContentType.objects.get(model='documentfilepage')
+    content_type = ContentType.objects.get_for_model(model=DocumentFilePage)
 
     document_id_iterator = Document.objects.using(alias=schema_editor.connection.alias).all().only('id').values_list('id', flat=True).iterator()
 
@@ -78,6 +78,7 @@ def operation_document_version_page_create_reverse(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
+        ('contenttypes', '0002_remove_content_type_name'),
         ('documents', '0062_auto_20200920_0614'),
     ]
 
