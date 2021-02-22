@@ -149,6 +149,22 @@ class IndexTestMixin:
             self.test_index_instance_node = self.test_index.instance_root.get_children().first()
 
 
+class IndexTemplateActionAPIViewTestMixin:
+    def _request_test_index_template_rebuild_api_view(self):
+        return self.post(
+            viewname='rest_api:indextemplate-rebuild', kwargs={
+                'index_template_id': self.test_index.pk
+            }
+        )
+
+    def _request_test_index_template_reset_api_view(self):
+        return self.post(
+            viewname='rest_api:indextemplate-reset', kwargs={
+                'index_template_id': self.test_index.pk
+            }
+        )
+
+
 class IndexTemplateAPIViewTestMixin:
     def _request_test_index_template_create_api_view(self):
         return self.post(

@@ -4,19 +4,20 @@ from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.rest_api.tests.base import BaseAPITestCase
 
-from ..models import Index, IndexTemplateNode
+from ..models import Index, IndexInstanceNode, IndexTemplateNode
 from ..permissions import (
     permission_document_indexing_create, permission_document_indexing_delete,
     permission_document_indexing_edit,
     permission_document_indexing_instance_view,
-    permission_document_indexing_view
+    permission_document_indexing_rebuild, permission_document_indexing_view
 )
 
 from .literals import TEST_INDEX_LABEL
 from .mixins import (
     DocumentIndexAPIViewTestMixin, IndexInstanceAPIViewTestMixin,
     IndexInstanceNodeAPIViewTestMixin, IndexTestMixin,
-    IndexTemplateAPIViewTestMixin, IndexTemplateNodeAPITestMixin
+    IndexTemplateActionAPIViewTestMixin, IndexTemplateAPIViewTestMixin,
+    IndexTemplateNodeAPITestMixin
 )
 
 
@@ -120,6 +121,7 @@ class IndexInstanceNodeAPIViewTestCase(
     IndexTestMixin, IndexInstanceNodeAPIViewTestMixin, DocumentTestMixin,
     BaseAPITestCase
 ):
+
     def setUp(self):
         super().setUp()
         self._create_test_index()
@@ -303,6 +305,113 @@ class IndexTemplateAPIViewTestCase(
         self.assertEqual(
             response.data['results'][0]['id'], self.test_index.pk
         )
+
+
+class IndexTemplateRebuildAPIViewTestCase(
+    IndexTestMixin, IndexTemplateActionAPIViewTestMixin, DocumentTestMixin,
+    BaseAPITestCase
+):
+    auto_upload_test_document = False
+
+    def test_index_template_rebuild_api_view_no_permission(self):
+        self._upload_test_document()
+        self._create_test_index()
+        self._create_test_index_template_node()
+
+        test_index_instance_node_count = IndexInstanceNode.objects.count()
+
+        self._clear_events()
+
+        response = self._request_test_index_template_rebuild_api_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        self.assertEqual(
+            IndexInstanceNode.objects.count(), test_index_instance_node_count
+        )
+        self.assertEqual(IndexInstanceNode.objects.first().parent, None)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_index_template_rebuild_api_view_with_access(self):
+        self._upload_test_document()
+        self._create_test_index()
+        self._create_test_index_template_node()
+
+        self.grant_access(
+            obj=self.test_index,
+            permission=permission_document_indexing_rebuild
+        )
+
+        test_index_instance_node_count = IndexInstanceNode.objects.count()
+
+        self._clear_events()
+
+        response = self._request_test_index_template_rebuild_api_view()
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.assertEqual(
+            IndexInstanceNode.objects.count(),
+            test_index_instance_node_count + 1
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+
+class IndexTemplateResetAPIViewTestCase(
+    IndexTestMixin, IndexTemplateActionAPIViewTestMixin, DocumentTestMixin,
+    BaseAPITestCase
+):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+
+        self._create_test_index()
+        self._create_test_index_template_node()
+
+        self._create_test_document_stub()
+        self.test_index.rebuild()
+
+    def test_index_template_reset_api_view_no_permission(self):
+        test_index_instance_node_count = self.test_index.instance_root.get_children_count()
+
+        self._clear_events()
+
+        response = self._request_test_index_template_reset_api_view()
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+        self.assertEqual(
+            self.test_index.instance_root.get_children_count(),
+            test_index_instance_node_count
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_index_template_reset_api_view_with_access(self):
+        self.grant_access(
+            obj=self.test_index,
+            permission=permission_document_indexing_rebuild
+        )
+
+        test_index_instance_node_count = self.test_index.instance_root.get_children_count()
+
+        self._clear_events()
+
+        response = self._request_test_index_template_reset_api_view()
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.assertEqual(
+            self.test_index.instance_root.get_children_count(),
+            test_index_instance_node_count - 1
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
 
 class IndexTemplateNodeAPIViewTestCase(

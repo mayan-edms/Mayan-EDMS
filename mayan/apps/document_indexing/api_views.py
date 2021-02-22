@@ -12,13 +12,14 @@ from .permissions import (
     permission_document_indexing_create, permission_document_indexing_delete,
     permission_document_indexing_edit,
     permission_document_indexing_instance_view,
-    permission_document_indexing_view
+    permission_document_indexing_rebuild, permission_document_indexing_view
 )
 from .serializers import (
     IndexInstanceNodeSerializer, IndexInstanceSerializer,
     IndexTemplateSerializer, IndexTemplateNodeSerializer,
     IndexTemplateNodeWriteSerializer, IndexTemplateWriteSerializer
 )
+from .tasks import task_rebuild_index
 
 
 class APIDocumentIndexInstanceNodeListView(generics.ListAPIView):
@@ -156,6 +157,36 @@ class APIIndexTemplateDetailView(
         'DELETE': (permission_document_indexing_delete,)
     }
     queryset = Index.objects.all()
+
+
+class APIIndexTemplateRebuildView(generics.ObjectActionAPIView):
+    """
+    post: Rebuild the selected index template.
+    """
+    lookup_url_kwarg = 'index_template_id'
+    mayan_object_permissions = {
+        'POST': (permission_document_indexing_rebuild,)
+    }
+    queryset = Index.objects.all()
+
+    def object_action(self, request, serializer):
+        task_rebuild_index.apply_async(
+            kwargs=dict(index_id=self.object.pk)
+        )
+
+
+class APIIndexTemplateResetView(generics.ObjectActionAPIView):
+    """
+    post: Reset the selected index template.
+    """
+    lookup_url_kwarg = 'index_template_id'
+    mayan_object_permissions = {
+        'POST': (permission_document_indexing_rebuild,)
+    }
+    queryset = Index.objects.all()
+
+    def object_action(self, request, serializer):
+        self.object.reset()
 
 
 class APIIndexTemplateNodeViewMixin(AsymmetricSerializerAPIViewMixin):

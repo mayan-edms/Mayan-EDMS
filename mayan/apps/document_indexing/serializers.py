@@ -205,6 +205,14 @@ class IndexTemplateNodeWriteSerializer(serializers.ModelSerializer):
 
 class IndexTemplateSerializer(serializers.HyperlinkedModelSerializer):
     nodes_url = serializers.SerializerMethodField(read_only=True)
+    rebuild_url = serializers.HyperlinkedIdentityField(
+        lookup_url_kwarg='index_template_id',
+        view_name='rest_api:indextemplate-rebuild',
+    )
+    reset_url = serializers.HyperlinkedIdentityField(
+        lookup_url_kwarg='index_template_id',
+        view_name='rest_api:indextemplate-reset',
+    )
     url = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
@@ -215,8 +223,8 @@ class IndexTemplateSerializer(serializers.HyperlinkedModelSerializer):
             },
         }
         fields = (
-            'document_types', 'enabled', 'id', 'label', 'nodes_url', 'slug',
-            'url'
+            'document_types', 'enabled', 'id', 'label', 'nodes_url',
+            'rebuild_url', 'reset_url', 'slug', 'url'
         )
         model = Index
 

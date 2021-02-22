@@ -5,7 +5,8 @@ from .api_views import (
     APIIndexInstanceListView, APIIndexInstanceNodeDetailView,
     APIIndexInstanceNodeListView, APIIndexInstanceNodeDocumentListView,
     APIIndexTemplateDetailView, APIIndexTemplateListView,
-    APIIndexTemplateNodeListView, APIIndexTemplateNodeDetailView
+    APIIndexTemplateNodeListView, APIIndexTemplateNodeDetailView,
+    APIIndexTemplateRebuildView, APIIndexTemplateResetView
 )
 from .views import (
     DocumentIndexNodeListView, DocumentTypeIndexesView, IndexInstanceNodeView,
@@ -131,11 +132,23 @@ api_urls = [
     ),
     url(
         regex=r'^index_templates/(?P<index_template_id>[0-9]+)/$',
-        name='indextemplate-detail', view=APIIndexTemplateDetailView.as_view()
+        name='indextemplate-detail',
+        view=APIIndexTemplateDetailView.as_view()
+    ),
+    url(
+        regex=r'^index_templates/(?P<index_template_id>[0-9]+)/rebuild/$',
+        name='indextemplate-rebuild',
+        view=APIIndexTemplateRebuildView.as_view()
+    ),
+    url(
+        regex=r'^index_templates/(?P<index_template_id>[0-9]+)/reset/$',
+        name='indextemplate-reset',
+        view=APIIndexTemplateResetView.as_view()
     ),
     url(
         regex=r'^index_templates/(?P<index_template_id>[0-9]+)/nodes/$',
-        name='indextemplatenode-list', view=APIIndexTemplateNodeListView.as_view()
+        name='indextemplatenode-list',
+        view=APIIndexTemplateNodeListView.as_view()
     ),
     url(
         regex=r'^index_templates/(?P<index_template_id>[0-9]+)/nodes/(?P<index_template_node_id>[0-9]+)/$',
