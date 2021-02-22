@@ -148,7 +148,8 @@ class DocumentMetadataAddView(
                         document=instance,
                         metadata_type=metadata_type,
                     )
-                    document_metadata.save(_user=self.request.user)
+                    document_metadata._event_actor = self.request.user
+                    document_metadata.save()
                     created = True
             except Exception as exception:
                 messages.error(
@@ -321,24 +322,24 @@ class DocumentMetadataEditView(
                     except Exception as exception:
                         errors.append(exception)
 
-        for error in errors:
-            if settings.DEBUG:
-                raise
-            else:
-                if isinstance(error, ValidationError):
-                    exception_message = ', '.join(error.messages)
-                else:
-                    exception_message = force_text(s=error)
+                        if settings.DEBUG or settings.TESTING:
+                            raise
 
-                messages.error(
-                    message=_(
-                        'Error editing metadata for document: '
-                        '%(document)s; %(exception)s.'
-                    ) % {
-                        'document': instance,
-                        'exception': exception_message
-                    }, request=self.request
-                )
+        for error in errors:
+            if isinstance(error, ValidationError):
+                exception_message = ', '.join(error.messages)
+            else:
+                exception_message = force_text(s=error)
+
+            messages.error(
+                message=_(
+                    'Error editing metadata for document: '
+                    '%(document)s; %(exception)s.'
+                ) % {
+                    'document': instance,
+                    'exception': exception_message
+                }, request=self.request
+            )
         else:
             messages.success(
                 message=_(
@@ -475,7 +476,8 @@ class DocumentMetadataRemoveView(
                     document_metadata = DocumentMetadata.objects.get(
                         document=instance, metadata_type=metadata_type
                     )
-                    document_metadata.delete(_user=self.request.user)
+                    document_metadata._event_actor = self.request.user
+                    document_metadata.delete()
                     messages.success(
                         message=_(
                             'Successfully remove metadata type "%(metadata_type)s" from document: %(document)s.'
@@ -506,9 +508,9 @@ class MetadataTypeCreateView(SingleObjectCreateView):
     )
     view_permission = permission_metadata_type_create
 
-    def get_save_extra_data(self):
+    def get_instance_extra_data(self):
         return {
-            '_user': self.request.user,
+            '_event_actor': self.request.user,
         }
 
 
@@ -543,9 +545,9 @@ class MetadataTypeEditView(SingleObjectEditView):
             'title': _('Edit metadata type: %s') % self.object,
         }
 
-    def get_save_extra_data(self):
+    def get_instance_extra_data(self):
         return {
-            '_user': self.request.user,
+            '_event_actor': self.request.user,
         }
 
 

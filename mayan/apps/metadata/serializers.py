@@ -1,18 +1,18 @@
 from django.core.exceptions import ValidationError as DjangoValidationError
-from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 from rest_framework.reverse import reverse
 
-from mayan.apps.acls.models import AccessControlList
 from mayan.apps.documents.serializers.document_serializers import (
     DocumentSerializer
 )
 from mayan.apps.documents.serializers.document_type_serializers import (
     DocumentTypeSerializer
 )
+from mayan.apps.rest_api.serializer_mixins import CreateOnlyFieldSerializerMixin
+from mayan.apps.rest_api.relations import FilteredPrimaryKeyRelatedField
 
 from .models import DocumentMetadata, DocumentTypeMetadataType, MetadataType
 from .permissions import permission_document_metadata_add
@@ -52,7 +52,7 @@ class DocumentTypeMetadataTypeSerializer(serializers.HyperlinkedModelSerializer)
 
 
 class NewDocumentTypeMetadataTypeSerializer(serializers.ModelSerializer):
-    metadata_type_pk = serializers.IntegerField(
+    metadata_type_id = serializers.IntegerField(
         help_text=_('Primary key of the metadata type to be added.'),
         write_only=True
     )
@@ -60,7 +60,7 @@ class NewDocumentTypeMetadataTypeSerializer(serializers.ModelSerializer):
 
     class Meta:
         fields = (
-            'id', 'metadata_type_pk', 'required', 'url'
+            'id', 'metadata_type_id', 'required', 'url'
         )
         model = DocumentTypeMetadataType
 
@@ -75,7 +75,7 @@ class NewDocumentTypeMetadataTypeSerializer(serializers.ModelSerializer):
     def validate(self, attrs):
         attrs['document_type'] = self.context['document_type']
         attrs['metadata_type'] = MetadataType.objects.get(
-            pk=attrs.pop('metadata_type_pk')
+            pk=attrs.pop('metadata_type_id')
         )
 
         instance = DocumentTypeMetadataType(**attrs)
@@ -105,13 +105,25 @@ class WritableDocumentTypeMetadataTypeSerializer(serializers.ModelSerializer):
         )
 
 
-class DocumentMetadataSerializer(serializers.HyperlinkedModelSerializer):
+class DocumentMetadataSerializer(
+    CreateOnlyFieldSerializerMixin, serializers.HyperlinkedModelSerializer
+):
+    metadata_type_id = FilteredPrimaryKeyRelatedField(
+        help_text=_(
+            'Primary key of the metadata type to be added to the document.'
+        ), source_model=MetadataType,
+        source_permission=permission_document_metadata_add
+    )
     document = DocumentSerializer(read_only=True)
     metadata_type = MetadataTypeSerializer(read_only=True)
     url = serializers.SerializerMethodField()
 
     class Meta:
-        fields = ('document', 'id', 'metadata_type', 'url', 'value')
+        create_only_fields = ('metadata_type_id',)
+        fields = (
+            'document', 'id', 'metadata_type', 'metadata_type_id', 'url',
+            'value'
+        )
         model = DocumentMetadata
         read_only_fields = ('document', 'metadata_type',)
 
@@ -124,63 +136,29 @@ class DocumentMetadataSerializer(serializers.HyperlinkedModelSerializer):
         )
 
     def validate(self, attrs):
-        self.instance.value = attrs['value']
+        if self.instance:
+            self.instance.value = attrs['value']
 
-        try:
-            self.instance.full_clean()
-        except DjangoValidationError as exception:
-            raise ValidationError(exception)
+            try:
+                self.instance.full_clean()
+            except DjangoValidationError as exception:
+                raise ValidationError(exception)
 
-        attrs['value'] = self.instance.value
+            attrs['value'] = self.instance.value
 
-        return attrs
+            return attrs
+        else:
+            attrs['document'] = self.context['external_object']
+            attrs['metadata_type'] = MetadataType.objects.get(
+                pk=attrs.pop('metadata_type_id').pk
+            )
 
+            instance = DocumentMetadata(**attrs)
+            try:
+                instance.full_clean()
+            except DjangoValidationError as exception:
+                raise ValidationError(exception)
 
-class NewDocumentMetadataSerializer(serializers.ModelSerializer):
-    metadata_type_pk = serializers.IntegerField(
-        help_text=_(
-            'Primary key of the metadata type to be added to the document.'
-        ),
-        write_only=True
-    )
-    url = serializers.SerializerMethodField()
+            attrs['value'] = instance.value
 
-    class Meta:
-        fields = ('id', 'metadata_type_pk', 'url', 'value')
-        model = DocumentMetadata
-
-    def create(self, validated_data):
-        queryset = AccessControlList.objects.restrict_queryset(
-            queryset=MetadataType.objects.all(),
-            permission=permission_document_metadata_add,
-            user=self.context['request'].user
-        )
-        get_object_or_404(
-            klass=queryset, pk=validated_data['metadata_type'].pk
-        )
-
-        return super().create(validated_data=validated_data)
-
-    def get_url(self, instance):
-        return reverse(
-            viewname='rest_api:documentmetadata-detail', kwargs={
-                'document_id': instance.document.pk,
-                'metadata_id': instance.pk
-            }, request=self.context['request'], format=self.context['format']
-        )
-
-    def validate(self, attrs):
-        attrs['document'] = self.context['document']
-        attrs['metadata_type'] = MetadataType.objects.get(
-            pk=attrs.pop('metadata_type_pk')
-        )
-
-        instance = DocumentMetadata(**attrs)
-        try:
-            instance.full_clean()
-        except DjangoValidationError as exception:
-            raise ValidationError(exception)
-
-        attrs['value'] = instance.value
-
-        return attrs
+            return attrs

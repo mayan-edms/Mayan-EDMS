@@ -1,13 +1,16 @@
 import shlex
 
 from django.core.exceptions import ValidationError
-from django.db import models, transaction
+from django.db import models
 from django.urls import reverse
 from django.utils.encoding import force_text
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
+from mayan.apps.common.model_mixins import ExtraDataModelMixin
 from mayan.apps.documents.models import Document, DocumentType
+from mayan.apps.events.classes import EventManagerMethodAfter, EventManagerSave
+from mayan.apps.events.decorators import method_event
 from mayan.apps.templating.classes import Template
 
 from .classes import MetadataLookup
@@ -34,7 +37,7 @@ def parser_choices():
     )
 
 
-class MetadataType(models.Model):
+class MetadataType(ExtraDataModelMixin, models.Model):
     """
     Model to store a type of metadata. Metadata are user defined properties
     that can be assigned a value for each document. Metadata types need
@@ -124,23 +127,19 @@ class MetadataType(models.Model):
     def natural_key(self):
         return (self.name,)
 
+    @method_event(
+        event_manager_class=EventManagerSave,
+        created={
+            'event': event_metadata_type_created,
+            'target': 'self',
+        },
+        edited={
+            'event': event_metadata_type_edited,
+            'target': 'self',
+        }
+    )
     def save(self, *args, **kwargs):
-        _user = kwargs.pop('_user', None)
-        created = not self.pk
-
-        with transaction.atomic():
-            result = super().save(*args, **kwargs)
-
-            if created:
-                event_metadata_type_created.commit(
-                    actor=_user, target=self
-                )
-            else:
-                event_metadata_type_edited.commit(
-                    actor=_user, target=self
-                )
-
-            return result
+        return super().save(*args, **kwargs)
 
     def validate_value(self, document_type, value):
         # Check default
@@ -171,7 +170,7 @@ class MetadataType(models.Model):
         return value
 
 
-class DocumentMetadata(models.Model):
+class DocumentMetadata(ExtraDataModelMixin, models.Model):
     """
     Model used to link an instance of a metadata type with a value to a
     document.
@@ -206,6 +205,12 @@ class DocumentMetadata(models.Model):
             document_type=self.document.document_type, value=self.value
         )
 
+    @method_event(
+        event_manager_class=EventManagerMethodAfter,
+        action_object='metadata_type',
+        event=event_document_metadata_removed,
+        target='document'
+    )
     def delete(self, enforce_required=True, *args, **kwargs):
         """
         Delete a metadata from a document. enforce_required which defaults
@@ -218,15 +223,7 @@ class DocumentMetadata(models.Model):
                 _('Metadata type is required for this document type.')
             )
 
-        _user = kwargs.pop('_user', None)
-        with transaction.atomic():
-            result = super().delete(*args, **kwargs)
-
-            event_document_metadata_removed.commit(
-                action_object=self.metadata_type, actor=_user,
-                target=self.document,
-            )
-            return result
+        return super().delete(*args, **kwargs)
 
     def natural_key(self):
         return self.document.natural_key() + self.metadata_type.natural_key()
@@ -242,33 +239,29 @@ class DocumentMetadata(models.Model):
             document_type=self.document.document_type
         )
 
+    @method_event(
+        event_manager_class=EventManagerSave,
+        created={
+            'action_object': 'metadata_type',
+            'event': event_document_metadata_added,
+            'target': 'document'
+        },
+        edited={
+            'action_object': 'metadata_type',
+            'event': event_document_metadata_edited,
+            'target': 'document'
+        }
+    )
     def save(self, *args, **kwargs):
         if not self.document.document_type.metadata.filter(metadata_type=self.metadata_type).exists():
             raise ValidationError(
                 _('Metadata type is not valid for this document type.')
             )
 
-        _user = kwargs.pop('_user', None)
-        created = not self.pk
-
-        with transaction.atomic():
-            result = super().save(*args, **kwargs)
-
-            if created:
-                event_document_metadata_added.commit(
-                    action_object=self.metadata_type, actor=_user,
-                    target=self.document,
-                )
-            else:
-                event_document_metadata_edited.commit(
-                    action_object=self.metadata_type, actor=_user,
-                    target=self.document,
-                )
-
-            return result
+        return super().save(*args, **kwargs)
 
 
-class DocumentTypeMetadataType(models.Model):
+class DocumentTypeMetadataType(ExtraDataModelMixin, models.Model):
     """
     Model used to store the relationship between a metadata type and a
     document type.
@@ -294,28 +287,27 @@ class DocumentTypeMetadataType(models.Model):
     def __str__(self):
         return force_text(s=self.metadata_type)
 
+    @method_event(
+        event_manager_class=EventManagerMethodAfter,
+        action_object='metadata_type',
+        event=event_metadata_type_relationship,
+        target='document_type'
+    )
     def delete(self, *args, **kwargs):
-        _user = kwargs.pop('_user', None)
+        return super().delete(*args, **kwargs)
 
-        with transaction.atomic():
-            result = super().delete(*args, **kwargs)
-
-            event_metadata_type_relationship.commit(
-                action_object=self.document_type, actor=_user,
-                target=self.metadata_type,
-            )
-
-            return result
-
+    @method_event(
+        event_manager_class=EventManagerSave,
+        created={
+            'action_object': 'metadata_type',
+            'event': event_metadata_type_relationship,
+            'target': 'document_type'
+        },
+        edited={
+            'action_object': 'metadata_type',
+            'event': event_metadata_type_relationship,
+            'target': 'document_type'
+        }
+    )
     def save(self, *args, **kwargs):
-        _user = kwargs.pop('_user', None)
-
-        with transaction.atomic():
-            result = super().save(*args, **kwargs)
-
-            event_metadata_type_relationship.commit(
-                action_object=self.document_type, actor=_user,
-                target=self.metadata_type,
-            )
-
-            return result
+        return super().save(*args, **kwargs)

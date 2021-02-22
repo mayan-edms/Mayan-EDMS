@@ -1,6 +1,8 @@
 import copy
 
-from ..models import MetadataType
+from django.db.models import Q
+
+from ..models import DocumentTypeMetadataType, MetadataType
 
 from .literals import (
     TEST_METADATA_TYPE_LABEL_EDITED, TEST_METADATA_TYPE_NAME_EDITED,
@@ -12,7 +14,7 @@ from .literals import (
 class DocumentMetadataAPIViewTestMixin:
     def _request_document_metadata_create_api_view(self, extra_data=None):
         data = {
-            'metadata_type_pk': self.test_metadata_type.pk,
+            'metadata_type_id': self.test_metadata_type.pk,
             'value': TEST_METADATA_VALUE
         }
         data.update(extra_data or {})
@@ -182,13 +184,24 @@ class DocumentMetadataViewTestMixin:
 
 class DocumentTypeMetadataTypeAPIViewTestMixin:
     def _request_document_type_metadata_type_create_api_view(self):
-        return self.post(
+        pk_list = list(DocumentTypeMetadataType.objects.values_list('pk', flat=True))
+
+        response = self.post(
             viewname='rest_api:documenttypemetadatatype-list',
             kwargs={'document_type_id': self.test_document_type.pk}, data={
-                'metadata_type_pk': self.test_metadata_type.pk,
+                'metadata_type_id': self.test_metadata_type.pk,
                 'required': False
             }
         )
+
+        try:
+            self.test_document_type_metadata_type = DocumentTypeMetadataType.objects.get(
+                ~Q(pk__in=pk_list)
+            )
+        except DocumentTypeMetadataType.DoesNotExist:
+            self.test_document_type_metadata_type = None
+
+        return response
 
     def _request_document_type_metadata_type_delete_api_view(self):
         return self.delete(
@@ -237,10 +250,21 @@ class MetadataTypeAPIViewTestMixin:
         )
 
     def _request_test_metadata_type_create_api_view(self):
-        return self.post(
+        pk_list = list(MetadataType.objects.values('pk'))
+
+        response = self.post(
             viewname='rest_api:metadatatype-list',
             data=self.test_metadata_types_fixtures_api_views.pop()
         )
+
+        try:
+            self.test_metadata_type = MetadataType.objects.get(
+                ~Q(pk__in=pk_list)
+            )
+        except MetadataType.DoesNotExist:
+            self.test_metadata_type = None
+
+        return response
 
     def _request_test_metadata_type_delete_api_view(self):
         return self.delete(
