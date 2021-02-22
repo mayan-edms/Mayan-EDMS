@@ -1,6 +1,3 @@
-from django.shortcuts import get_object_or_404
-
-from mayan.apps.acls.models import AccessControlList
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.serializers.document_serializers import (
@@ -59,22 +56,22 @@ class APITagView(generics.RetrieveUpdateDestroyAPIView):
         }
 
 
-class APITagDocumentListView(generics.ListAPIView):
+class APITagDocumentListView(
+    ExternalObjectAPIViewMixin, generics.ListAPIView
+):
     """
     get: Returns a list of all the documents tagged by a particular tag.
     """
+    external_object_class = Tag
+    external_object_pk_url_kwarg = 'tag_id'
+    mayan_external_object_permissions = {'GET': (permission_tag_view,)}
     mayan_object_permissions = {'GET': (permission_document_view,)}
     serializer_class = DocumentSerializer
 
     def get_queryset(self):
-        queryset = AccessControlList.objects.restrict_queryset(
-            queryset=Tag.objects.all(), permission=permission_tag_view,
-            user=self.request.user
+        return Document.valid.filter(
+            pk__in=self.external_object.documents.only('pk')
         )
-
-        tag = get_object_or_404(klass=queryset, pk=self.kwargs['tag_id'])
-
-        return tag.documents.all()
 
 
 class APIDocumentTagAttachView(generics.ObjectActionAPIView):
