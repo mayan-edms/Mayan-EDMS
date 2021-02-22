@@ -74,9 +74,18 @@ class EmailAction(WorkflowAction):
                 'required': True
             }
         },
+        'attachment': {
+            'label': _('Attachment'),
+            'class': 'django.forms.BooleanField', 'default': False,
+            'help_text': _(
+                'Attach the document to the mail.'
+            ),
+            'required': False
+        },
     }
     field_order = (
-        'mailing_profile', 'recipient', 'cc', 'bcc', 'subject', 'body'
+        'mailing_profile', 'recipient', 'cc', 'bcc', 'subject', 'body',
+        'attachment'
     )
     label = _('Send email')
     widgets = {
@@ -108,9 +117,22 @@ class EmailAction(WorkflowAction):
         )
 
         user_mailer = self.get_user_mailer()
-        user_mailer.send(
-            to=recipient, cc=cc, bcc=bcc, subject=subject, body=body
-        )
+
+        kwargs = {
+            'bcc': bcc, 'cc': cc, 'body': body, 'subject': subject,
+            'to': recipient
+        }
+
+        if self.form_data.get('attachment', False):
+            kwargs.update(
+                {
+                    'as_attachment': True,
+                    'document': context['document']
+                }
+            )
+            user_mailer.send_document(**kwargs)
+        else:
+            user_mailer.send(**kwargs)
 
     def get_form_schema(self, **kwargs):
         result = super().get_form_schema(**kwargs)

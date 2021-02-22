@@ -114,6 +114,9 @@ class WorkflowAction(
     def __init__(self, form_data=None):
         self.form_data = form_data
 
+    def execute(self, context):
+        raise NotImplementedError
+
     def get_form_schema(self, workflow_state, request=None):
         result = {
             'fields': self.fields or {},

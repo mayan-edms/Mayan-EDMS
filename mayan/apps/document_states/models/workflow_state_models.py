@@ -242,7 +242,7 @@ class WorkflowStateAction(models.Model):
                     )
                 )
 
-                if settings.DEBUG:
+                if settings.DEBUG or settings.TESTING:
                     raise
             else:
                 self.error_log.all().delete()

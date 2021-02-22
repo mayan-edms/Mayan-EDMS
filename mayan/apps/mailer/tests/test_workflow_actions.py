@@ -2,6 +2,7 @@ import json
 
 from django.core import mail
 
+from mayan.apps.documents.tests.base import GenericDocumentTestCase
 from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.document_states.literals import WORKFLOW_ACTION_ON_ENTRY
 from mayan.apps.document_states.permissions import permission_workflow_edit
@@ -22,8 +23,13 @@ from .literals import (
 from .mixins import MailerTestMixin
 
 
-class EmailActionTestCase(MailerTestMixin, WorkflowTestMixin, ActionTestCase):
+class EmailActionTestCase(
+    MailerTestMixin, WorkflowTestMixin, GenericDocumentTestCase
+):
+    auto_upload_test_document = False
+
     def test_email_action_literal_text(self):
+        self._create_test_document_stub()
         self._create_test_user_mailer()
 
         action = EmailAction(
@@ -40,6 +46,7 @@ class EmailActionTestCase(MailerTestMixin, WorkflowTestMixin, ActionTestCase):
         self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
 
     def test_email_action_literal_text_cc_field(self):
+        self._create_test_document_stub()
         self._create_test_user_mailer()
 
         action = EmailAction(
@@ -58,6 +65,7 @@ class EmailActionTestCase(MailerTestMixin, WorkflowTestMixin, ActionTestCase):
         self.assertEqual(mail.outbox[0].cc, [TEST_EMAIL_ADDRESS])
 
     def test_email_action_literal_text_bcc_field(self):
+        self._create_test_document_stub()
         self._create_test_user_mailer()
 
         action = EmailAction(
@@ -97,7 +105,7 @@ class EmailActionTestCase(MailerTestMixin, WorkflowTestMixin, ActionTestCase):
         self.test_workflow_state.save()
         self.test_workflow.document_types.add(self.test_document_type)
 
-        self._upload_test_document()
+        self._create_test_document_stub()
 
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
@@ -190,6 +198,37 @@ class EmailActionTemplateTestCase(
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
         self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
         self.assertEqual(mail.outbox[0].body, TEST_EMAIL_BODY)
+
+    def test_email_action_attachment(self):
+        self._create_test_metadata_type()
+        self.test_document_type.metadata.create(
+            metadata_type=self.test_metadata_type
+        )
+        self.test_document.metadata.create(
+            metadata_type=self.test_metadata_type, value=TEST_EMAIL_SUBJECT
+        )
+
+        self._create_test_user_mailer()
+
+        action = EmailAction(
+            form_data={
+                'mailing_profile': self.test_user_mailer.pk,
+                'recipient': TEST_EMAIL_ADDRESS,
+                'subject': '{{{{ document.metadata_value_of.{} }}}}'.format(
+                    self.test_metadata_type.name
+                ),
+                'body': '',
+                'attachment': True
+            }
+        )
+        action.execute(context={'document': self.test_document})
+        self.assertEqual(len(mail.outbox), 1)
+        self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
+        self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
+        self.assertEqual(
+            mail.outbox[0].subject, self.test_document.metadata.first().value
+        )
+        self.assertEqual(len(mail.outbox[0].attachments), 1)
 
 
 class EmailActionViewTestCase(
