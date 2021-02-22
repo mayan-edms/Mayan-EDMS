@@ -242,3 +242,7 @@
   event view and object event subscription links bound too. This can
   be disabled with the `bind_links` argument. The default menu to bind the
   links is the "List facet". This can be changed via the ``menu`` argument.
+- Change the format of the ``file_metadata_value_of`` helper. The driver
+  and metadata entry are now separated by a double underscore instead of a
+  single underscore. This allows supporting drivers and entries that might
+  contain an underscore themselves.

@@ -18,7 +18,6 @@ class FileMetadataHelper(PropertyHelper):
         return FileMetadataHelper(*args, **kwargs)
 
     def get_result(self, name):
-        name = name.replace('_', '.')
         result = self.instance.get_file_metadata(dotted_name=name)
         return result
 

@@ -41,7 +41,7 @@ method_get_document_file_metadata.help_text = _(
 
 
 def method_get_document_file_file_metadata(self, dotted_name):
-    parts = dotted_name.split('.', 1)
+    parts = dotted_name.split('__', 1)
 
     if len(parts) < 2:
         return
