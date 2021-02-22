@@ -25,8 +25,11 @@ class DocumentIndexAPIViewTestCase(
     DocumentIndexAPIViewTestMixin, DocumentTestMixin, IndexTestMixin,
     BaseAPITestCase
 ):
+    auto_upload_test_document = False
+
     def setUp(self):
         super().setUp()
+        self._create_test_document_stub()
         self._create_test_index()
         self._create_test_index_template_node(rebuild=True)
 
@@ -99,12 +102,12 @@ class IndexInstanceAPIViewTestCase(
             response.data['id'], self.test_index.pk
         )
 
-    def test_index_template_list_api_view_no_permission(self):
+    def test_index_instance_list_api_view_no_permission(self):
         response = self._request_test_index_instance_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['count'], 0)
 
-    def test_index_template_list_api_view_with_access(self):
+    def test_index_instance_list_api_view_with_access(self):
         self.grant_access(
             obj=self.test_index, permission=permission_document_indexing_instance_view
         )
@@ -121,9 +124,11 @@ class IndexInstanceNodeAPIViewTestCase(
     IndexTestMixin, IndexInstanceNodeAPIViewTestMixin, DocumentTestMixin,
     BaseAPITestCase
 ):
+    auto_upload_test_document = False
 
     def setUp(self):
         super().setUp()
+        self._create_test_document_stub()
         self._create_test_index()
         self._create_test_index_template_node(rebuild=True)
 
@@ -313,11 +318,14 @@ class IndexTemplateRebuildAPIViewTestCase(
 ):
     auto_upload_test_document = False
 
-    def test_index_template_rebuild_api_view_no_permission(self):
+    def setUp(self):
+        super().setUp()
+
         self._upload_test_document()
         self._create_test_index()
         self._create_test_index_template_node()
 
+    def test_index_template_rebuild_api_view_no_permission(self):
         test_index_instance_node_count = IndexInstanceNode.objects.count()
 
         self._clear_events()
@@ -334,10 +342,6 @@ class IndexTemplateRebuildAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_index_template_rebuild_api_view_with_access(self):
-        self._upload_test_document()
-        self._create_test_index()
-        self._create_test_index_template_node()
-
         self.grant_access(
             obj=self.test_index,
             permission=permission_document_indexing_rebuild

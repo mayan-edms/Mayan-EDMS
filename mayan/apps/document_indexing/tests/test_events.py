@@ -12,7 +12,9 @@ from ..events import event_index_template_created, event_index_template_edited
 from .mixins import IndexTestMixin, IndexViewTestMixin
 
 
-class IndexTemplateEventsTestCase(DocumentTestMixin, IndexTestMixin, IndexViewTestMixin, GenericViewTestCase):
+class IndexTemplateEventsTestCase(
+    DocumentTestMixin, IndexTestMixin, IndexViewTestMixin, GenericViewTestCase
+):
     auto_upload_test_document = False
 
     def test_index_template_create_event(self):

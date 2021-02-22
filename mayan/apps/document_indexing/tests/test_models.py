@@ -20,6 +20,12 @@ from .mixins import IndexTestMixin
 
 
 class IndexTestCase(IndexTestMixin, DocumentTestMixin, BaseTestCase):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_document_stub()
+
     def test_document_description_index(self):
         self._create_test_index()
 
