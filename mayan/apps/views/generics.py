@@ -5,7 +5,7 @@ from django.db import transaction
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.utils.encoding import force_text
-from django.utils.translation import ugettext_lazy as _, ungettext
+from django.utils.translation import ugettext_lazy as _
 from django.views.generic import (
     FormView as DjangoFormView, DetailView, TemplateView
 )
@@ -789,6 +789,7 @@ class SingleObjectDynamicFormEditView(
     A form that will allow editing a single instance from the values
     of a dynamic field form.
     """
+
 
 class SingleObjectListView(
     ListModeViewMixin, PaginationMixin, ViewPermissionCheckViewMixin,

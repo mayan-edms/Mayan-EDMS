@@ -205,9 +205,10 @@ class WhooshSearchBackend(SearchBackend):
                 logger.error(
                     'Unexpected exception while indexing object id: %s, '
                     'search model: %s, index data: %s, raw data: %s, '
-                    'field map: %s', search_model.get_full_name(),
+                    'field map: %s; %s', search_model.get_full_name(),
                     instance.pk, kwargs, instance.__dict__,
-                    self.get_resolved_field_map(search_model=search_model)
+                    self.get_resolved_field_map(search_model=search_model),
+                    exception
                 )
                 raise
 
