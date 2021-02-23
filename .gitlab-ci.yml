@@ -208,7 +208,7 @@ job_build_python:
 job_push_python:
   before_script:
     - apt-get -qq update
-    - apt-get install -qq make python3-venv python3-dev
+    - apt-get install -qq make python3-venv python3-dev rustc
     - python3 -m venv venv
     - . venv/bin/activate
   image: debian:10.7-slim
