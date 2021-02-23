@@ -199,6 +199,7 @@ job_build_python:
     - releases/all
     - releases/all_minor
     - releases/python
+    - releases/testing
   script:
     - pip install --requirement requirements/build.txt
     - make python-wheel
@@ -215,6 +216,7 @@ job_push_python:
     - releases/all
     - releases/all_minor
     - releases/python
+    - releases/testing
   script:
     - pip install --requirement requirements/build.txt
     - echo "$PYPIRC" > ~/.pypirc
