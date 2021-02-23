@@ -99,6 +99,7 @@ COPY --chown=mayan:mayan mayan /src/mayan
 # Install development packages needed to build the Python packages
 RUN DEBIAN_FRONTEND=noninteractive \
 apt-get install -y --no-install-recommends \
+    cargo \
     default-libmysqlclient-dev \
     libffi-dev \
     libjpeg-dev \
