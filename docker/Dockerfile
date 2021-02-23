@@ -111,6 +111,7 @@ apt-get install -y --no-install-recommends \
     make \
     python3-dev \
     python3-venv \
+    rustc \
     zlib1g-dev \
 && mkdir -p "${PROJECT_INSTALL_DIR}" \
 && chown -R mayan:mayan "${PROJECT_INSTALL_DIR}" \
