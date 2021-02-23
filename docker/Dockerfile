@@ -10,8 +10,9 @@ LABEL maintainer="Roberto Rosario roberto.rosario@mayan-edms.com"
 
 COPY config.env /config.env
 
-ENV PYTHONUNBUFFERED=1 \
+ENV CRYPTOGRAPHY_DONT_BUILD_RUST=1 \
     LC_ALL=C.UTF-8 \
+    PYTHONUNBUFFERED=1 \
     PROJECT_INSTALL_DIR=/opt/mayan-edms
 
 # Debian package caching
