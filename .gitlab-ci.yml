@@ -190,8 +190,9 @@ job_build_python:
     paths:
     - dist
   before_script:
+    - export CRYPTOGRAPHY_DONT_BUILD_RUST=1
     - apt-get -qq update
-    - apt-get install -qq libssl-dev make python3-venv python3-dev rustc
+    - apt-get install -qq make python3-venv python3-dev rustc
     - python3 -m venv venv
     - . venv/bin/activate
   image: debian:10.7-slim
@@ -207,6 +208,7 @@ job_build_python:
 
 job_push_python:
   before_script:
+    - export CRYPTOGRAPHY_DONT_BUILD_RUST=1
     - apt-get -qq update
     - apt-get install -qq make python3-venv python3-dev rustc
     - python3 -m venv venv
