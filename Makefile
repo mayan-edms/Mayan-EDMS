@@ -143,13 +143,11 @@ test-with-oracle-all: test-launch-oracle
 
 gitlab-ci-run: ## Execute a GitLab CI job locally
 gitlab-ci-run:
-	@if [ -z "$$(docker images -q gitlab-runner-helper:11.2.0)" ]; then \
-	echo "1) Make sure to download the corresponding helper image from https://hub.docker.com/r/gitlab/gitlab-runner-helper/tags"; \
-	echo "2) Tag the download image as gitlab-runner-helper:11.2.0"; \
-	exit 1; \
-	fi; \
 	if [ -z $(GITLAB_CI_JOB) ]; then echo "Specify the job to execute using GITLAB_CI_JOB."; exit 1; fi; \
-	gitlab-runner exec docker --docker-privileged --docker-volumes /var/run/docker.sock:/var/run/docker.sock --docker-volumes $$PWD/gitlab-ci-volume:/builds $(GITLAB_CI_JOB)
+	docker rm -f gitlab-runner || true
+	docker run -d --name gitlab-runner --restart no -v $$PWD:$$PWD -v /var/run/docker.sock:/var/run/docker.sock gitlab/gitlab-runner:latest
+	docker exec -it -w $$PWD gitlab-runner gitlab-runner exec docker --docker-privileged --docker-volumes /var/run/docker.sock:/var/run/docker.sock --docker-volumes $$PWD/gitlab-ci-volume:/builds $(GITLAB_CI_JOB)
+	docker rm -f gitlab-runner || true
 
 # Coverage
 
