@@ -11,24 +11,23 @@ stages:
 # Docker
 
 job_docker_build:
-  before_script:
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   image: docker:latest
   only:
     - releases/all
     - releases/all_minor
     - releases/docker
   script:
-    - docker build --pull -t "$CI_REGISTRY_IMAGE" -f docker/Dockerfile .
+    - docker build --pull -t "mayanedms" -f docker/Dockerfile .
     - DOCKER_VERSION=`cat docker/rootfs/version`
-    - docker tag "$CI_REGISTRY_IMAGE" "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
+    - docker tag "mayanedms" "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
     - SERVICE_POSTGRES_IP=$(cat /etc/hosts | awk '{if ($2 == "postgres") print $1;}')
     - docker run --rm --add-host="postgres:$SERVICE_POSTGRES_IP" -e MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql_psycopg2','NAME':'mayan_edms','USER':'postgres','PASSWORD':'postgres','HOST':'postgres'}}" "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" run_tests
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
     - docker push "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
     - docker logout
   services:
-    - docker:dind
-    - postgres:9.6-alpine
+    - docker:20-dind
+    - postgres:10.15-alpine
   stage: stage_build_docker
   tags:
     - postgres
@@ -62,7 +61,7 @@ job_docker_push_major:
     - docker push registry-1.docker.io/mayanedms/mayanedms:s"$MAJOR_VERSION"
     - docker push registry-1.docker.io/mayanedms/mayanedms:s"$MINOR_VERSION"
   services:
-    - docker:dind
+    - docker:20-dind
   stage: stage_push_docker
 
 job_docker_push_minor:
@@ -88,7 +87,7 @@ job_docker_push_minor:
     - docker push registry-1.docker.io/mayanedms/mayanedms:latest
     - docker push registry-1.docker.io/mayanedms/mayanedms:s"$MINOR_VERSION"
   services:
-    - docker:dind
+    - docker:20-dind
   stage: push_docker
 
 job_docker_push_minor:
@@ -109,7 +108,7 @@ job_docker_push_minor:
     - docker push registry-1.docker.io/mayanedms/mayanedms:"$DOCKER_VERSION"
   stage: stage_push_docker
   services:
-    - docker:dind
+    - docker:20-dind
 
 job_docker_nightly:
   before_script:
@@ -123,7 +122,7 @@ job_docker_nightly:
     - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
     - docker logout
   services:
-    - docker:dind
+    - docker:20-dind
   stage: stage_build_docker
 
 job_docker_testing:
@@ -139,7 +138,7 @@ job_docker_testing:
     - docker push "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
     - docker logout
   services:
-    - docker:dind
+    - docker:20-dind
   stage: stage_build_docker
 
 # Documentation
@@ -154,7 +153,7 @@ job_documentation_build:
     - apt-get install -qq enchant make python3-venv python3-dev
     - python3 -m venv venv
     - . venv/bin/activate
-  image: debian:10.7-slim
+  image: debian:10.8-slim
   only:
     - releases/all
     - releases/documentation
@@ -173,7 +172,7 @@ job_documentation_push:
     - 'which ssh-agent || ( apt-get update --yes && apt-get install -qq openssh-client rsync --yes )'
     - eval $(ssh-agent -s)
     - echo "$DOCUMENTATION_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
-  image: debian:10.7-slim
+  image: debian:10.8-slim
   only:
     - releases/all
     - releases/documentation
@@ -184,18 +183,19 @@ job_documentation_push:
 
 # Python
 
-job_build_python:
+job_python_build:
   artifacts:
     expire_in: 2 hr
     paths:
     - dist
   before_script:
-    - export CRYPTOGRAPHY_DONT_BUILD_RUST=1
+    - set -a && . ./config.env && set +a
     - apt-get -qq update
-    - apt-get install -qq make python3-venv python3-dev rustc
+    - apt-get install -qq make python3-venv python3-dev
     - python3 -m venv venv
     - . venv/bin/activate
-  image: debian:10.7-slim
+    - pip install pip==$PYTHON_PIP_VERSION
+  image: debian:10.8-slim
   only:
     - releases/all
     - releases/all_minor
@@ -206,14 +206,15 @@ job_build_python:
     - make python-wheel
   stage: stage_build_python
 
-job_push_python:
+job_python_push_pypi:
   before_script:
-    - export CRYPTOGRAPHY_DONT_BUILD_RUST=1
+    - set -a && . ./config.env && set +a
     - apt-get -qq update
-    - apt-get install -qq make python3-venv python3-dev rustc
+    - apt-get install -qq make python3-venv python3-dev
     - python3 -m venv venv
     - . venv/bin/activate
-  image: debian:10.7-slim
+    - pip install pip==$PYTHON_PIP_VERSION
+  image: debian:10.8-slim
   only:
     - releases/all
     - releases/all_minor
@@ -227,7 +228,7 @@ job_push_python:
 
 # Test upgrade from the latest public version to the local version
 
-.job_test_upgrade_base: &job_test_upgrade_base
+.job_base_upgrade_test: &job_base_upgrade_test
   before_script:
     - set -a && . ./config.env && set +a
     - echo "deb http://deb.debian.org/debian buster-backports main contrib non-free" >> /etc/apt/sources.list
@@ -244,7 +245,7 @@ job_push_python:
     paths:
       - ~/.cache/pip/
       - /var/cache/apt/archives/
-  image: debian:10.7-slim
+  image: debian:10.8-slim
   only:
     - releases/all
     - releases/all_minor
@@ -255,8 +256,8 @@ job_push_python:
     - releases/staging
   stage: stage_test
 
-job_test_upgrade_mysql:
-  <<: *job_test_upgrade_base
+job_mysql_upgrade_test:
+  <<: *job_base_upgrade_test
   script:
     - apt-get install -qq default-libmysqlclient-dev default-mysql-client libssl-dev
     - . venv/bin/activate
@@ -273,8 +274,8 @@ job_test_upgrade_mysql:
     MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     MYSQL_DATABASE: "mayan_edms"
 
-job_test_upgrade_postgres:
-  <<: *job_test_upgrade_base
+job_postgres_upgrade_test:
+  <<: *job_base_upgrade_test
   script:
     - apt-get install -qq libpq-dev
     - . venv/bin/activate
@@ -283,15 +284,15 @@ job_test_upgrade_postgres:
     - pip install dist/mayan_edms-*.whl
     - mayan-edms.py performupgrade --settings=mayan.settings.testing.gitlab-ci.db_postgres
   services:
-    - postgres:9.6-alpine
+    - postgres:10.15-alpine
   tags:
     - postgres
   variables:
     POSTGRES_DB: "mayan_edms"
     POSTGRES_PASSWORD: "postgres"
 
-job_test_upgrade_sqlite:
-  <<: *job_test_upgrade_base
+job_sqlite_upgrade_test:
+  <<: *job_base_upgrade_test
   script:
     - . venv/bin/activate
     - mayan-edms.py initialsetup --settings=mayan.settings.testing.gitlab-ci
@@ -300,7 +301,7 @@ job_test_upgrade_sqlite:
 
 # Run the test suit
 
-.job_test_base: &job_test_base
+.job_base_test: &job_base_test
   before_script:
     - set -a && . ./config.env && set +a
     - echo "deb http://deb.debian.org/debian buster-backports main contrib non-free" >> /etc/apt/sources.list
@@ -310,12 +311,13 @@ job_test_upgrade_sqlite:
     - apt-get install --yes --no-install-recommends -qq curl exiftool gcc ghostscript gnupg1 graphviz libfuse2 libjpeg-dev libmagic1 libpng-dev libtiff-dev make poppler-utils python3-venv python3-dev sane-utils tesseract-ocr tesseract-ocr-deu
     - python3 -m venv venv
     - . venv/bin/activate
+    - pip install pip=$PYTHON_PIP_VERSION
     - pip install --requirement requirements.txt --requirement requirements/testing-base.txt --requirement requirements/build.txt
   cache:
     paths:
       - ~/.cache/pip/
       - /var/cache/apt/archives/
-  image: debian:10.7-slim
+  image: debian:10.8-slim
   only:
     - releases/all
     - releases/all_minor
@@ -326,8 +328,8 @@ job_test_upgrade_sqlite:
     - releases/staging
   stage: stage_test
 
-job_test_postgres:
-  <<: *job_test_base
+job_postgres_test:
+  <<: *job_base_test
   script:
     - apt-get install -qq libpq-dev
     - . venv/bin/activate
@@ -335,15 +337,15 @@ job_test_postgres:
     - make test-all SETTINGS=mayan.settings.testing.gitlab-ci.db_postgres
     - make test-all-migrations SETTINGS=mayan.settings.testing.gitlab-ci.db_postgres
   services:
-    - postgres:9.6-alpine
+    - postgres:10.15-alpine
   tags:
     - postgres
   variables:
     POSTGRES_DB: "mayan_edms"
     POSTGRES_PASSWORD: "postgres"
 
-job_test_sqlite:
-  <<: *job_test_base
+job_sqlite_test:
+  <<: *job_base_test
   script:
     - . venv/bin/activate
     - python manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci --skip-migrations
@@ -352,7 +354,7 @@ job_test_sqlite:
 
 # Deploy
 
-job_deploy_demo:
+job_demo_deploy:
   before_script:
     - mkdir -p ~/.ssh
     - echo "${DEMO_SSH_KNOWN_HOST}" > ~/.ssh/known_hosts
@@ -367,7 +369,7 @@ job_deploy_demo:
   stage: stage_deploy
   when: manual
 
-job_deploy_staging:
+job_staging_deploy:
   before_script:
     - mkdir -p ~/.ssh
     - echo "${STAGING_SSH_KNOWN_HOST}" > ~/.ssh/known_hosts
