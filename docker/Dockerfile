@@ -10,8 +10,8 @@ LABEL maintainer="Roberto Rosario roberto.rosario@mayan-edms.com"
 
 COPY config.env /config.env
 
-ENV PYTHONUNBUFFERED=1 \
-    LC_ALL=C.UTF-8 \
+ENV LC_ALL=C.UTF-8 \
+    PYTHONUNBUFFERED=1 \
     PROJECT_INSTALL_DIR=/opt/mayan-edms
 
 # Debian package caching
@@ -114,6 +114,7 @@ RUN set -a \
 && python3 -m venv "${PROJECT_INSTALL_DIR}" \
 && . "${PROJECT_INSTALL_DIR}/bin/activate" \
 && pip install --no-cache-dir \
+    pip==$PYTHON_PIP_VERSION \
     amqp==$PYTHON_AMQP_VERSION \
     mysqlclient==$PYTHON_MYSQL_VERSION \
     psycopg2==$PYTHON_PSYCOPG2_VERSION \
