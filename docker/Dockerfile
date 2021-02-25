@@ -10,8 +10,7 @@ LABEL maintainer="Roberto Rosario roberto.rosario@mayan-edms.com"
 
 COPY config.env /config.env
 
-ENV CRYPTOGRAPHY_DONT_BUILD_RUST=1 \
-    LC_ALL=C.UTF-8 \
+ENV LC_ALL=C.UTF-8 \
     PYTHONUNBUFFERED=1 \
     PROJECT_INSTALL_DIR=/opt/mayan-edms
 
@@ -100,7 +99,6 @@ COPY --chown=mayan:mayan mayan /src/mayan
 # Install development packages needed to build the Python packages
 RUN DEBIAN_FRONTEND=noninteractive \
 apt-get install -y --no-install-recommends \
-    cargo \
     default-libmysqlclient-dev \
     libffi-dev \
     libjpeg-dev \
@@ -113,7 +111,6 @@ apt-get install -y --no-install-recommends \
     make \
     python3-dev \
     python3-venv \
-    rustc \
     zlib1g-dev \
 && mkdir -p "${PROJECT_INSTALL_DIR}" \
 && chown -R mayan:mayan "${PROJECT_INSTALL_DIR}" \
@@ -127,6 +124,7 @@ RUN set -a \
 && python3 -m venv "${PROJECT_INSTALL_DIR}" \
 && . "${PROJECT_INSTALL_DIR}/bin/activate" \
 && pip install --no-cache-dir \
+    pip==$PYTHON_PIP_VERSION \
     amqp==$PYTHON_AMQP_VERSION \
     mysqlclient==$PYTHON_MYSQL_VERSION \
     psycopg2==$PYTHON_PSYCOPG2_VERSION \
