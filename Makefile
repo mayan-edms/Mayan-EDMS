@@ -385,23 +385,24 @@ runserver_plus: ## Run the Django extension's development server.
 shell_plus: ## Run the shell_plus command.
 	./manage.py shell_plus --settings=mayan.settings.development
 
-test-with-docker-services-on: ## Launch and initialize production-like services using Docker (Postgres and Redis).
+staging-start: ## Launch and initialize production-like services using Docker (Postgres and Redis).
+staging-start: staging-stop
 	docker run -d --name redis -p 6379:6379 $(DOCKER_REDIS_IMAGE_VERSION)
-	docker run -d --name postgres -p 5432:5432 $(DOCKER_POSTGRES_IMAGE_VERSION)
+	docker run -d --name postgres -p 5432:5432 -e POSTGRES_DB=mayan-staging -e POSTGRES_PASSWORD=mayan-staging -e POSTGRES_USER=mayan-staging $(DOCKER_POSTGRES_IMAGE_VERSION)
 	while ! nc -z 127.0.0.1 6379; do sleep 1; done
 	while ! nc -z 127.0.0.1 5432; do sleep 1; done
 	sleep 4
 	pip install psycopg2==$(PYTHON_PSYCOPG2_VERSION) redis==$(PYTHON_REDIS_VERSION)
 	./manage.py initialsetup --settings=mayan.settings.staging.docker
 
-test-with-docker-services-off: ## Stop and delete the Docker production-like services.
-	docker stop postgres redis
-	docker rm postgres redis
+staging-stop: ## Stop and delete the Docker production-like services.
+	docker stop postgres redis || true
+	docker rm postgres redis || true
 
-test-with-docker-frontend: ## Launch a front end instance that uses the production-like services.
+staging-frontend: ## Launch a front end instance that uses the production-like services.
 	./manage.py runserver --settings=mayan.settings.staging.docker
 
-test-with-docker-worker: ## Launch a worker instance that uses the production-like services.
+staging-worker: ## Launch a worker instance that uses the production-like services.
 	DJANGO_SETTINGS_MODULE=mayan.settings.staging.docker ./manage.py celery worker -A mayan -B -l INFO -O fair
 
 docker-mysql-on: ## Launch and initialize a MySQL Docker container.

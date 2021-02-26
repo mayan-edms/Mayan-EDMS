@@ -3,10 +3,11 @@ from ..production import *  # NOQA
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'USER': 'postgres',
+        'NAME': 'mayan-staging',
         'HOST': 'localhost',
         'PORT': '5432',
+        'PASSWORD': 'mayan-staging',
+        'USER': 'mayan-staging'
     }
 }
 
