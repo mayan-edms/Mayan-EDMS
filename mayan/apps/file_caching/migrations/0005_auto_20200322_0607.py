@@ -1,3 +1,6 @@
+import logging
+
+from django.core.files.storage import Storage
 from django.db import migrations
 from django.utils.module_loading import import_string
 
@@ -5,6 +8,15 @@ STORAGE_PATH_UPDATE_MAP = {
     'mayan.apps.document_states.storages.storage_workflowimagecache': 'mayan.apps.document_states.storages.storage_workflow_image',
     'mayan.apps.documents.storages.storage_documentimagecache': 'mayan.apps.documents.storages.storage_document_image_cache'
 }
+logger = logging.getLogger(name=__name__)
+
+
+class DummyStorage(Storage):
+    def delete(self, name):
+        """
+        Do nothing. This dummy storage avoids an if in the
+        `cache_partition_file` loop.
+        """
 
 
 def operation_purge_and_delete_caches(apps, schema_editor):
@@ -20,9 +32,16 @@ def operation_purge_and_delete_caches(apps, schema_editor):
 
     cache_storages = {}
     for cache in Cache.objects.using(alias=schema_editor.connection.alias).all():
-        cache_storages[cache.pk] = import_string(
-            dotted_path=cache.storage_instance_path
-        ).get_storage_instance()
+        try:
+            cache_storages[cache.pk] = import_string(
+                dotted_path=cache.storage_instance_path
+            ).get_storage_instance()
+        except ImportError as exception:
+            logger.error(
+                'Storage "%s" not found. Remove the files from this '
+                'storage manually.', cache.storage_instance_path
+            )
+            cache_storages[cache.pk] = DummyStorage()
 
     for cache_partition_file in CachePartitionFile.objects.using(alias=schema_editor.connection.alias).all():
         cache_storages[
