@@ -44,9 +44,9 @@ def operation_duplicated_document_old_copy(apps, schema_editor):
                 ','.join(['(%s,%s)'] * len(results))
             )
             data = []
-            for i in results:
+            for result in results:
                 data.append(new_instance.pk)
-                data.append(i[0])
+                data.append(result[0])
 
             cursor_secondary.execute(
                 insert_query_final, data
@@ -57,22 +57,52 @@ def operation_duplicated_document_old_copy_reverse(apps, schema_editor):
     DuplicatedDocumentOld = apps.get_model(
         app_label='documents', model_name='DuplicatedDocumentOld'
     )
-    DuplicatedDocument = apps.get_model(
-        app_label='duplicates', model_name='DuplicatedDocument'
-    )
 
-    model_iterator = DuplicatedDocument.objects.using(
-        alias=schema_editor.connection.alias
-    ).all().only('document_id', 'datetime_added').iterator()
+    cursor_primary = schema_editor.connection.cursor()
+    cursor_secondary = schema_editor.connection.cursor()
+    query = '''
+        SELECT
+            "duplicates_duplicateddocument"."id",
+            "duplicates_duplicateddocument"."datetime_added",
+            "duplicates_duplicateddocument"."document_id"
+        FROM "duplicates_duplicateddocument"
+    '''
+    cursor_primary.execute(query)
 
-    for model_instance in model_iterator:
+    for row in cursor_primary.fetchall():
         new_instance = DuplicatedDocumentOld.objects.create(
-            document_id=model_instance.document_id,
-            datetime_added=model_instance.datetime_added
+            document_id=row[2],
+            datetime_added=row[1]
         )
-        new_instance.documents.add(
-            *model_instance.documents.only('pk').values_list('id', flat=True)
-        )
+
+        query = '''
+            SELECT DISTINCT
+                "duplicates_duplicateddocument_documents"."document_id"
+            FROM
+                "duplicates_duplicateddocument_documents"
+            WHERE
+                "duplicates_duplicateddocument_documents"."duplicateddocument_id" = %s
+        '''
+        cursor_secondary.execute(query, (row[0],))
+        results = cursor_secondary.fetchall()
+
+        if results:
+            insert_query = '''
+                INSERT INTO documents_duplicateddocumentold_documents (
+                    duplicateddocumentold_id,document_id
+                ) VALUES {};
+            '''
+            insert_query_final = insert_query.format(
+                ','.join(['(%s,%s)'] * len(results))
+            )
+            data = []
+            for result in results:
+                data.append(new_instance.pk)
+                data.append(result[0])
+
+            cursor_secondary.execute(
+                insert_query_final, data
+            )
 
 
 class Migration(migrations.Migration):
