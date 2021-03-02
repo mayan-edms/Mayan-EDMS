@@ -14,6 +14,9 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterModelOptions(
             name='duplicatebackendentry',
-            options={'verbose_name': 'Duplicated backend entry', 'verbose_name_plural': 'Duplicated backend entries'},
+            options={
+                'verbose_name': 'Duplicated backend entry',
+                'verbose_name_plural': 'Duplicated backend entries'
+            },
         ),
     ]

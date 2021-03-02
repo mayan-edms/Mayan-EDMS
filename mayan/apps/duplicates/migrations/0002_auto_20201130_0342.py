@@ -24,7 +24,7 @@ def operation_duplicated_document_old_copy(apps, schema_editor):
         )
 
         query = '''
-            SELECT DISTINCT
+            SELECT
                 "documents_duplicateddocumentold_documents"."document_id"
             FROM
                 "documents_duplicateddocumentold_documents"
@@ -51,6 +51,16 @@ def operation_duplicated_document_old_copy(apps, schema_editor):
             cursor_secondary.execute(
                 insert_query_final, data
             )
+
+    query = '''
+        DELETE FROM "documents_duplicateddocumentold_documents";
+    '''
+    cursor_secondary.execute(query)
+
+    query = '''
+        DELETE FROM "documents_duplicateddocumentold";
+    '''
+    cursor_secondary.execute(query)
 
 
 def operation_duplicated_document_old_copy_reverse(apps, schema_editor):
@@ -103,6 +113,16 @@ def operation_duplicated_document_old_copy_reverse(apps, schema_editor):
             cursor_secondary.execute(
                 insert_query_final, data
             )
+
+    query = '''
+        DELETE FROM "duplicates_duplicateddocument_documents";
+    '''
+    cursor_secondary.execute(query)
+
+    query = '''
+        DELETE FROM "duplicates_duplicateddocument";
+    '''
+    cursor_secondary.execute(query)
 
 
 class Migration(migrations.Migration):
