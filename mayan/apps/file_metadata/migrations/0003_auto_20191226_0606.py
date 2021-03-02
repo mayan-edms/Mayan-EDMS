@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from django.db import migrations, models, transaction
+from django.db import migrations, models
 
 
 def operation_remove_duplicates(apps, schema_editor):
@@ -13,12 +13,9 @@ def operation_remove_duplicates(apps, schema_editor):
 
     driver = StoredDriver.objects.first()
     if driver:
-        with transaction.atomic():
-            for driver_entry in DocumentVersionDriverEntry.objects.using(schema_editor.connection.alias).all():
-                driver_entry.driver = driver
-                driver_entry.save()
+        DocumentVersionDriverEntry.objects.using(schema_editor.connection.alias).update(driver=driver)
 
-            StoredDriver.objects.exclude(pk=driver.id).delete()
+        StoredDriver.objects.exclude(pk=driver.id).delete()
 
 
 class Migration(migrations.Migration):
