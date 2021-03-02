@@ -7,4 +7,4 @@ flake8==3.7.9
 ipython==5.8.0
 readme==0.7.1
 safety==1.8.5
-transifex-client==0.13.6
+transifex-client==0.13.7

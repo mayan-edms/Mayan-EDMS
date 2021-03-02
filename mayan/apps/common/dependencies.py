@@ -329,7 +329,7 @@ PythonDependency(
 )
 PythonDependency(
     environment=environment_development,
-    module=__name__, name='transifex-client', version_string='==0.13.6'
+    module=__name__, name='transifex-client', version_string='==0.13.7'
 )
 
 # Testing
