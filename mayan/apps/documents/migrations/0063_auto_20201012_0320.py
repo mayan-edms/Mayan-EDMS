@@ -78,12 +78,13 @@ def operation_document_version_page_create(apps, schema_editor):
 
         page_number = page_number + 1
 
-    final_query = document_version_page_insert_query.format(
-        ','.join(['(%s,%s,%s,%s)'] * (page_number - 1))
-    )
-    cursor_document_version_page.execute(
-        final_query, document_version_page_values
-    )
+    if page_number > 1:
+        final_query = document_version_page_insert_query.format(
+            ','.join(['(%s,%s,%s,%s)'] * (page_number - 1))
+        )
+        cursor_document_version_page.execute(
+            final_query, document_version_page_values
+        )
 
 
 def operation_document_version_page_create_reverse(apps, schema_editor):
