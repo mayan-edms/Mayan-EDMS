@@ -19,7 +19,6 @@ def operation_document_file_filename_copy(apps, schema_editor):
     cursor_main.execute(query)
 
     for row in cursor_main.fetchall():
-
         cursor_document_file.execute(
             query_document_file, row
         )

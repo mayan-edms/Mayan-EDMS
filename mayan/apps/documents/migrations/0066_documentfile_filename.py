@@ -10,7 +10,9 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='documentfile',
             name='filename',
-            field=models.CharField(default='', max_length=255, verbose_name='Filename'),
+            field=models.CharField(
+                default='', max_length=255, verbose_name='Filename'
+            ),
             preserve_default=False,
         ),
     ]

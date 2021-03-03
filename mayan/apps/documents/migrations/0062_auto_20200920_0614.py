@@ -17,11 +17,19 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='documentfile',
             name='file',
-            field=models.FileField(storage=mayan.apps.storage.classes.DefinedStorageLazy(name='documents__documentfiles'), upload_to=mayan.apps.documents.models.document_file_models.upload_to, verbose_name='File'),
+            field=models.FileField(
+                storage=mayan.apps.storage.classes.DefinedStorageLazy(
+                    name='documents__documentfiles'
+                ), upload_to=mayan.apps.documents.models.document_file_models.upload_to,
+                verbose_name='File'
+            ),
         ),
         migrations.AlterField(
             model_name='documentversionpage',
             name='page_number',
-            field=models.PositiveIntegerField(db_index=True, default=1, editable=False, verbose_name='Page number'),
+            field=models.PositiveIntegerField(
+                db_index=True, default=1, editable=False,
+                verbose_name='Page number'
+            ),
         ),
     ]

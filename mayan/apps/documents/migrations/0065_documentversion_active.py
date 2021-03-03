@@ -10,6 +10,9 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='documentversion',
             name='active',
-            field=models.BooleanField(default=True, help_text='Determines the active version of the document.', verbose_name='Active'),
+            field=models.BooleanField(
+                default=True, help_text='Determines the active version '
+                'of the document.', verbose_name='Active'
+            ),
         ),
     ]
