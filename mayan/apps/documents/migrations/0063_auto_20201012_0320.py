@@ -88,11 +88,11 @@ def operation_document_version_page_create(apps, schema_editor):
 
 
 def operation_document_version_page_create_reverse(apps, schema_editor):
-    DocumentVersionPage = apps.get_model(
-        app_label='documents', model_name='DocumentVersionPage'
+    DocumentVersion = apps.get_model(
+        app_label='documents', model_name='DocumentVersion'
     )
 
-    DocumentVersionPage.objects.using(schema_editor.connection.alias).all().delete()
+    DocumentVersion.objects.using(schema_editor.connection.alias).all().delete()
 
 
 class Migration(migrations.Migration):
