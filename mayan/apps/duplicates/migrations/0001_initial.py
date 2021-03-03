@@ -13,10 +13,30 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='DuplicatedDocument',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('datetime_added', models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Added')),
-                ('document', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='duplicates', to='documents.Document', verbose_name='Document')),
-                ('documents', models.ManyToManyField(to='documents.Document', verbose_name='Duplicated documents')),
+                (
+                    'id', models.AutoField(
+                        auto_created=True, primary_key=True, serialize=False,
+                        verbose_name='ID'
+                    )
+                ),
+                (
+                    'datetime_added', models.DateTimeField(
+                        auto_now_add=True, db_index=True, verbose_name='Added'
+                    )
+                ),
+                (
+                    'document', models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name='duplicates', to='documents.Document',
+                        verbose_name='Document'
+                    )
+                ),
+                (
+                    'documents', models.ManyToManyField(
+                        to='documents.Document',
+                        verbose_name='Duplicated documents'
+                    )
+                ),
             ],
             options={
                 'verbose_name': 'Duplicated document',
