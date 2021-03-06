@@ -141,7 +141,7 @@ class SetupIndexListView(SingleObjectListView):
                 context=RequestContext(request=self.request)
             ),
             'no_results_text': _(
-                'Indexes group document automatically into levels. Indexe are '
+                'Indexes group document automatically into levels. Indexes are '
                 'defined using template whose markers are replaced with '
                 'direct properties of documents like label or description, or '
                 'that of extended properties like metadata.'
@@ -326,7 +326,7 @@ class IndexListView(SingleObjectListView):
             ),
             'no_results_text': _(
                 'This could mean that no index templates have been '
-                'created or that there index templates '
+                'created or that there are index templates '
                 'but they are no properly defined.'
             ),
             'no_results_title': _('There are no index instances available.'),
