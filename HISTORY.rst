@@ -1,6 +1,11 @@
 3.5.6 (2021-XX-XX)
 ==================
-- Update Django from version 2.2.16 to 2.2.17.
+- Port improvements from Series 3.4:
+  - Update Django from version 2.2.16 to 2.2.19.
+  - Optimize file caching migration 0005
+  - Optimize file metadata migration 0003
+
+- Make the ``ObjectActionMixin`` messages translatable.
 
 3.5.5 (2021-01-05)
 ==================
