@@ -1,3 +1,6 @@
+import logging
+
+from django.core.files.storage import Storage
 from django.db import migrations
 from django.utils.module_loading import import_string
 
@@ -5,38 +8,64 @@ STORAGE_PATH_UPDATE_MAP = {
     'mayan.apps.document_states.storages.storage_workflowimagecache': 'mayan.apps.document_states.storages.storage_workflow_image',
     'mayan.apps.documents.storages.storage_documentimagecache': 'mayan.apps.documents.storages.storage_document_image_cache'
 }
+logger = logging.getLogger(name=__name__)
+
+
+class DummyStorage(Storage):
+    def delete(self, name):
+        """
+        Do nothing. This dummy storage avoids an if in the
+        `cache_partition_file` loop.
+        """
 
 
 def operation_purge_and_delete_caches(apps, schema_editor):
     Cache = apps.get_model(
         app_label='file_caching', model_name='Cache'
     )
-    CachePartition = apps.get_model(
-        app_label='file_caching', model_name='CachePartition'
-    )
-    CachePartitionFile = apps.get_model(
-        app_label='file_caching', model_name='CachePartitionFile'
-    )
+
+    cursor_primary = schema_editor.connection.cursor()
+
+    query = '''
+        SELECT
+            "file_caching_cachepartition"."name",
+            "file_caching_cachepartitionfile"."filename",
+            "file_caching_cachepartition"."cache_id"
+        FROM "file_caching_cachepartitionfile"
+        INNER JOIN
+            "file_caching_cachepartition" ON (
+                "file_caching_cachepartitionfile"."partition_id" = "file_caching_cachepartition"."id"
+            )
+    '''
 
     cache_storages = {}
     for cache in Cache.objects.using(alias=schema_editor.connection.alias).all():
-        cache_storages[cache.pk] = import_string(
-            dotted_path=cache.storage_instance_path
-        ).get_storage_instance()
+        try:
+            cache_storages[cache.pk] = import_string(
+                dotted_path=cache.storage_instance_path
+            ).get_storage_instance()
+        except ImportError as exception:
+            logger.error(
+                'Storage "%s" not found. Remove the files from this '
+                'storage manually.; %s', cache.storage_instance_path,
+                exception
+            )
+            cache_storages[cache.pk] = DummyStorage()
 
-    for cache_partition_file in CachePartitionFile.objects.using(alias=schema_editor.connection.alias).all():
+    cursor_primary.execute(query)
+    for partition_name, filename, cache_id in cursor_primary.fetchall():
         cache_storages[
-            cache_partition_file.partition.cache.pk
+            cache_id
         ].delete(
             name='{}-{}'.format(
-                cache_partition_file.partition.name,
-                cache_partition_file.filename
+                partition_name,
+                filename
             )
         )
-        cache_partition_file.delete()
 
-    CachePartition.objects.using(alias=schema_editor.connection.alias).all().delete()
-    Cache.objects.using(alias=schema_editor.connection.alias).all().delete()
+    cursor_primary.execute('DELETE FROM "file_caching_cachepartitionfile";')
+    cursor_primary.execute('DELETE FROM "file_caching_cachepartition";')
+    cursor_primary.execute('DELETE FROM "file_caching_cache";')
 
 
 def operation_update_storage_paths(apps, schema_editor):
