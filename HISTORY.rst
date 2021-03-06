@@ -1,3 +1,9 @@
+3.4.22 (2021-03-06)
+===================
+- Optimize file metadata migration 0003.
+- Update the MySQL client packages for Debian.
+- Update Django from version 2.2.16 to 2.2.19.
+
 3.4.21 (2020-12-31)
 ===================
 - Improve the Single Page App AJAX content escape logic. 
