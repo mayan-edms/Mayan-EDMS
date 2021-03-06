@@ -4,14 +4,15 @@
 # 
 # Translators:
 # Translators:
+# Ilya Pavlov <spirkaa@gmail.com>, 2021
 # lilo.panic, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-19 08:14+0000\n"
-"PO-Revision-Date: 2020-09-27 08:06+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-03-06 06:12+0000\n"
+"PO-Revision-Date: 2021-03-01 09:19+0000\n"
+"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -35,11 +36,11 @@ msgstr "Ошибка при определении числа страниц PDF
 #: backends/python.py:183
 #, python-format
 msgid "Exception determining page count using Pillow; %s"
-msgstr ""
+msgstr "Ошибка Pillow при определении числа страниц; %s"
 
 #: classes.py:135
 msgid "LibreOffice not installed or not found."
-msgstr ""
+msgstr "LibreOffice не установлен или не найден."
 
 #: classes.py:236
 msgid "Not an office file format."
@@ -49,7 +50,7 @@ msgstr "Не является файлом офисного формата."
 msgid ""
 "Transformations allow changing the visual appearance of documents without "
 "making permanent changes to the document file themselves."
-msgstr ""
+msgstr "Преобразования позволяют изменить отображение документа на сайте без внесения изменений в исходный файл документа."
 
 #: classes.py:407
 msgid "transformation"
@@ -57,47 +58,47 @@ msgstr "преобразование"
 
 #: dependencies.py:14
 msgid "Utility from the poppler-utils package used to inspect PDF files."
-msgstr ""
+msgstr "Утилита из пакета poppler-utils, используемая для инспектирования файлов PDF."
 
 #: dependencies.py:19
 msgid ""
 "Utility from the popper-utils package used to extract pages from PDF files "
 "into PPM format images."
-msgstr ""
+msgstr "Утилита из пакета poppler-utils, используемая для извлечения страниц из файлов PDF в формате изображений PPM."
 
 #: events.py:8
 msgid "Asset created"
-msgstr ""
+msgstr "Ресурс создан"
 
 #: events.py:11
 msgid "Asset edited"
-msgstr ""
+msgstr "Ресурс изменен"
 
 #: forms.py:22
 msgid "Available transformations for this layer."
-msgstr ""
+msgstr "Доступные преобразования для этого слоя."
 
 #: forms.py:59 workflow_actions.py:74
 #, python-format
 msgid "\"%s\" not a valid entry."
-msgstr ""
+msgstr "Недопустимое значение \"%s\""
 
 #: layers.py:11
 msgid ""
 "Decorations are visual elements that add contextual information to images."
-msgstr ""
+msgstr "Декорации - это визуальные элементы, которые добавляют к изображениям контекстную информацию."
 
 #: layers.py:13
 msgid "Decorations"
-msgstr ""
+msgstr "Декорации"
 
 #: layers.py:24
 msgid "Saved transformations"
-msgstr ""
+msgstr "Сохраненные преобразования"
 
 #: links.py:31 views.py:36
 msgid "Create asset"
-msgstr ""
+msgstr "Создать ресурс"
 
 #: links.py:35 links.py:41 links.py:65
 msgid "Delete"
@@ -109,7 +110,7 @@ msgstr "Редактировать"
 
 #: links.py:55 models.py:53 storages.py:19 views.py:127
 msgid "Assets"
-msgstr ""
+msgstr "Ресурсы"
 
 #: links.py:77
 msgid "Transformations"
@@ -117,7 +118,7 @@ msgstr "Преобразования"
 
 #: links.py:83
 msgid "Select new transformation"
-msgstr ""
+msgstr "Выбрать новое преобразование"
 
 #: models.py:36
 msgid "Label"
@@ -127,7 +128,7 @@ msgstr "Ярлык"
 msgid ""
 "This value will be used when referencing this asset. Can only contain "
 "letters, numbers, and underscores."
-msgstr ""
+msgstr "Это значение будет использоваться для ссылки на этот ресурс. Может содержать только латинские буквы, цифры и знак подчеркивания."
 
 #: models.py:43
 msgid "Internal name"
@@ -139,7 +140,7 @@ msgstr "Файл"
 
 #: models.py:52
 msgid "Asset"
-msgstr ""
+msgstr "Ресурс"
 
 #: models.py:82 models.py:153
 msgid "Name"
@@ -151,11 +152,11 @@ msgstr "Порядок"
 
 #: models.py:90 models.py:109
 msgid "Stored layer"
-msgstr ""
+msgstr "Сохраненный слой"
 
 #: models.py:91
 msgid "Stored layers"
-msgstr ""
+msgstr "Сохраненные слои"
 
 #: models.py:106 models.py:160
 msgid "Enabled"
@@ -163,11 +164,11 @@ msgstr "Доступно"
 
 #: models.py:117 models.py:145
 msgid "Object layer"
-msgstr ""
+msgstr "Слой объекта"
 
 #: models.py:118
 msgid "Object layers"
-msgstr ""
+msgstr "Слои объекта"
 
 #: models.py:149
 msgid ""
@@ -187,31 +188,31 @@ msgstr "Аргументы"
 
 #: models.py:167
 msgid "Layer transformation"
-msgstr ""
+msgstr "Слой трансформации"
 
 #: models.py:168
 msgid "Layer transformations"
-msgstr ""
+msgstr "Слои трансформации"
 
 #: models.py:174
 msgid "Unknown transformation class"
-msgstr ""
+msgstr "Неизвестный класс преобразования"
 
 #: permissions.py:8
 msgid "Create new assets"
-msgstr ""
+msgstr "Создать новые ресурсы"
 
 #: permissions.py:11
 msgid "Delete assets"
-msgstr ""
+msgstr "Удалить ресурсы"
 
 #: permissions.py:14
 msgid "Edit assets"
-msgstr ""
+msgstr "Редактировать ресурсы"
 
 #: permissions.py:17
 msgid "View existing assets"
-msgstr ""
+msgstr "Просмотр существующих ресурсов"
 
 #: permissions.py:21
 msgid "Create new transformations"
@@ -223,7 +224,7 @@ msgstr "Удалить преобразования"
 
 #: permissions.py:27
 msgid "Edit transformations"
-msgstr "Изменить преобразования"
+msgstr "Редактировать преобразования"
 
 #: permissions.py:30
 msgid "View existing transformations"
@@ -231,37 +232,37 @@ msgstr "Просмотр существующих преобразований"
 
 #: settings.py:21
 msgid "Graphics conversion backend to use."
-msgstr "Бекенд, который будет использован для графических преобразований."
+msgstr "Бэкэнд преобразования графики."
 
 #: settings.py:27
 msgid "Configuration options for the graphics conversion backend."
-msgstr ""
+msgstr "Параметры бэкэнда преобразования графики."
 
 #: settings.py:33
 msgid "Path to the Storage subclass to use when storing assets."
-msgstr ""
+msgstr "Путь к подклассу Storage для использования при хранении ресурсов."
 
 #: settings.py:39
 msgid "Arguments to pass to the CONVERTER_ASSET_STORAGE_BACKEND."
-msgstr ""
+msgstr "Аргументы, передаваемые в CONVERTER_ASSET_STORAGE_BACKEND."
 
 #: storages.py:13
 msgid ""
 "Unable to initialize the converter asset storage. Check the settings {} and "
 "{} for formatting errors."
-msgstr ""
+msgstr "Невозможно инициализировать хранилище ресурсов конвертера. Проверьте настройки {} и {} на наличие ошибок форматирования."
 
 #: transformations.py:197
 msgid "Paste an asset"
-msgstr ""
+msgstr "Вставить ресурс"
 
 #: transformations.py:248
 msgid "Paste an asset (percents coordinates)"
-msgstr ""
+msgstr "Вставить ресурс (координаты в процентах)"
 
 #: transformations.py:291
 msgid "Paste an asset as watermark"
-msgstr ""
+msgstr "Наложить ресурс как водяной знак"
 
 #: transformations.py:351
 msgid "Crop"
@@ -269,51 +270,51 @@ msgstr "Кадрировать"
 
 #: transformations.py:429
 msgid "Draw rectangle"
-msgstr ""
+msgstr "Нарисовать прямоугольник"
 
 #: transformations.py:531
 msgid "Draw rectangle (percents coordinates)"
-msgstr ""
+msgstr "Нарисовать прямоугольник (координаты в процентах)"
 
 #: transformations.py:628
 msgid "Flip"
-msgstr ""
+msgstr "Перевернуть"
 
 #: transformations.py:639
 msgid "Gaussian blur"
-msgstr ""
+msgstr "Размытие по Гауссу"
 
 #: transformations.py:649
 msgid "Line art"
-msgstr ""
+msgstr "Штриховый рисунок"
 
 #: transformations.py:660
 msgid "Mirror"
-msgstr ""
+msgstr "Отразить"
 
 #: transformations.py:671
 msgid "Resize"
-msgstr "Изменение размера"
+msgstr "Изменить размер"
 
 #: transformations.py:698
 msgid "Rotate"
-msgstr "Вращать"
+msgstr "Повернуть"
 
 #: transformations.py:724
 msgid "Rotate 90 degrees"
-msgstr ""
+msgstr "Повернуть на 90 градусов"
 
 #: transformations.py:735
 msgid "Rotate 180 degrees"
-msgstr ""
+msgstr "Повернуть на 180 градусов"
 
 #: transformations.py:746
 msgid "Rotate 270 degrees"
-msgstr ""
+msgstr "Повернуть на 270 градусов"
 
 #: transformations.py:756
 msgid "Unsharp masking"
-msgstr ""
+msgstr "Нерезкая маска"
 
 #: transformations.py:772
 msgid "Zoom"
@@ -322,62 +323,62 @@ msgstr "Увеличить"
 #: views.py:50
 #, python-format
 msgid "Delete request performed on %(count)d asset"
-msgstr ""
+msgstr "Запрос на удаление %(count)d ресурса выполнен"
 
 #: views.py:52
 #, python-format
 msgid "Delete request performed on %(count)d assets"
-msgstr ""
+msgstr "Запрос на удаление %(count)d ресурсов выполнен"
 
 #: views.py:59
 msgid "Delete the selected asset?"
 msgid_plural "Delete the selected assets?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Удалить выбранный ресурс?"
+msgstr[1] "Удалить выбранные ресурсы?"
+msgstr[2] "Удалить выбранные ресурсы?"
+msgstr[3] "Удалить выбранные ресурсы?"
 
 #: views.py:69
 #, python-format
 msgid "Delete asset: %s?"
-msgstr ""
+msgstr "Удалить ресурс: %s?"
 
 #: views.py:80
 #, python-format
 msgid "Asset \"%s\" deleted successfully."
-msgstr ""
+msgstr "Ресурс \"%s\" удален."
 
 #: views.py:85
 #, python-format
 msgid "Error deleting asset \"%(asset)s\": %(error)s"
-msgstr ""
+msgstr "Ошибка при удалении ресурса \"%(asset)s\": %(error)s"
 
 #: views.py:101
 #, python-format
 msgid "Edit asset: %s"
-msgstr ""
+msgstr "Редактировать ресурс: %s"
 
 #: views.py:123
 msgid ""
 "Assets are files that can be used in conjuction with certain "
 "transformations."
-msgstr ""
+msgstr "Ресурсы - это файлы, которые можно использовать в сочетании с определенными преобразованиями."
 
 #: views.py:126
 msgid "No assets available"
-msgstr ""
+msgstr "Нет доступных ресурсов"
 
 #: views.py:151
 #, python-format
 msgid "Error creating transformation: %s."
-msgstr ""
+msgstr "Ошибка при создании преобразования: %s"
 
 #: views.py:168
 #, python-format
 msgid ""
 "Create layer \"%(layer)s\" transformation \"%(transformation)s\" for: "
 "%(object)s"
-msgstr ""
+msgstr "Создать слой \"%(layer)s\" преобразования \"%(transformation)s\" для: %(object)s"
 
 #: views.py:224
 #, python-format
@@ -387,30 +388,30 @@ msgstr "Удалить преобразование \"%(transformation)s\" дл�
 #: views.py:273
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
-msgstr "Изменить преобразование \"%(transformation)s\" for: %(content_object)sjavascript:;"
+msgstr "Изменить преобразование \"%(transformation)s\" для: %(content_object)s"
 
 #: views.py:327
 #, python-format
 msgid "There are no entries for layer \"%(layer_name)s\""
-msgstr ""
+msgstr "Слой \"%(layer_name)s\" не содержит записей"
 
 #: views.py:330
 #, python-format
 msgid "Layer \"%(layer)s\" transformations for: %(object)s"
-msgstr ""
+msgstr "Слой преобразования \"%(layer)s\" для: %(object)s"
 
 #: views.py:375
 msgid "Transformation created successfully."
-msgstr ""
+msgstr "Преобразование создано."
 
 #: views.py:399
 msgid "Select"
-msgstr "Выбор"
+msgstr "Выбрать"
 
 #: views.py:401
 #, python-format
 msgid "Select new layer \"%(layer)s\" transformation for: %(object)s"
-msgstr ""
+msgstr "Выбрать новое преобразование на слое \"%(layer)s\" для: %(object)s"
 
 #: workflow_actions.py:22
 msgid "Pages"
@@ -420,20 +421,20 @@ msgstr "Страницы"
 msgid ""
 "Pages to which the new transformations will be added. Separate by commas "
 "and/or use a dashes for a ranges. Leave blank to select all pages."
-msgstr ""
+msgstr "Номера страниц, на которые будет добавлено преобразование. Используйте запятую для разделения или дефис для указания диапазона. Оставьте поле пустым, чтобы выбрать все страницы."
 
 #: workflow_actions.py:32
 msgid "Transformation class"
-msgstr ""
+msgstr "Преобразование"
 
 #: workflow_actions.py:37
 msgid "Type of transformation to add."
-msgstr ""
+msgstr "Какой тип преобразования использовать."
 
 #: workflow_actions.py:42
 msgid "Transformation arguments"
-msgstr ""
+msgstr "Аргументы преобразования"
 
 #: workflow_actions.py:51
 msgid "Add transformation"
-msgstr ""
+msgstr "Добавить преобразование"

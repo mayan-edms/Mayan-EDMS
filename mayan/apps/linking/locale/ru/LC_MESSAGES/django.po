@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# Ilya Pavlov <spirkaa@gmail.com>, 2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-19 08:14+0000\n"
-"PO-Revision-Date: 2020-09-29 21:47+0000\n"
-"Last-Translator: Alex Chigrin <chalex84@mail.ru>\n"
+"POT-Creation-Date: 2021-03-06 06:12+0000\n"
+"PO-Revision-Date: 2021-03-01 10:41+0000\n"
+"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,7 +25,7 @@ msgstr "Связывание"
 
 #: apps.py:96 models.py:25
 msgid "Label"
-msgstr "Надпись"
+msgstr "Ярлык"
 
 #: events.py:6 links.py:18 links.py:77 links.py:82 links.py:87 models.py:44
 #: permissions.py:5 views.py:203
@@ -141,7 +142,7 @@ msgstr "В регулярном выражении (без учета регис
 
 #: models.py:24
 msgid "A short text describing the smart link."
-msgstr ""
+msgstr "Краткое описание отношения."
 
 #: models.py:29
 msgid ""

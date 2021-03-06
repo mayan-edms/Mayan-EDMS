@@ -4,15 +4,16 @@
 # 
 # Translators:
 # Translators:
+# Ilya Pavlov <spirkaa@gmail.com>, 2021
 # lilo.panic, 2016
 # OLeg Si <olegsm35@gmail.com>, 2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-19 08:14+0000\n"
-"PO-Revision-Date: 2020-10-12 08:50+0000\n"
-"Last-Translator: OLeg Si <olegsm35@gmail.com>\n"
+"POT-Creation-Date: 2021-03-06 06:12+0000\n"
+"PO-Revision-Date: 2021-03-01 09:03+0000\n"
+"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,27 +33,27 @@ msgstr "Документы"
 
 #: events.py:8
 msgid "Tag attached to document"
-msgstr ""
+msgstr "Метка прикреплена к документу"
 
 #: events.py:11
 msgid "Tag created"
-msgstr ""
+msgstr "Метка создана"
 
 #: events.py:14
 msgid "Tag edited"
-msgstr ""
+msgstr "Метка изменена"
 
 #: events.py:17
 msgid "Tag removed from document"
-msgstr ""
+msgstr "Метка снята с документа"
 
 #: links.py:14 workflow_actions.py:68
 msgid "Remove tag"
-msgstr "Снять метку"
+msgstr "Снять метки"
 
 #: links.py:18 links.py:35
 msgid "Attach tags"
-msgstr ""
+msgstr "Прикрепить метки"
 
 #: links.py:29
 msgid "Remove tags"
@@ -84,15 +85,15 @@ msgstr ""
 
 #: models.py:24
 msgid "A short text used as the tag name."
-msgstr ""
+msgstr "Краткий текст с именем метки."
 
 #: models.py:25
 msgid "Label"
-msgstr "Надпись"
+msgstr "Ярлык"
 
 #: models.py:28
 msgid "The RGB color values for the tag."
-msgstr ""
+msgstr "Значения цвета RGB для метки."
 
 #: models.py:29
 msgid "Color"
@@ -116,7 +117,7 @@ msgstr "Метки документов"
 
 #: permissions.py:8
 msgid "Create new tags"
-msgstr "Создание новых меток"
+msgstr "Создать метки"
 
 #: permissions.py:11
 msgid "Delete tags"
@@ -124,7 +125,7 @@ msgstr "Удалить метки"
 
 #: permissions.py:14
 msgid "View tags"
-msgstr "Посмотреть метки"
+msgstr "Просмотр меток"
 
 #: permissions.py:17
 msgid "Edit tags"
@@ -136,7 +137,7 @@ msgstr "Прикрепить метки к документам"
 
 #: permissions.py:23
 msgid "Remove tags from documents"
-msgstr "Удаление меток из документов"
+msgstr "Снять метки с документов"
 
 #: serializers.py:36
 msgid ""
@@ -184,7 +185,7 @@ msgstr "Прикрепить метки к документу: %s"
 
 #: views.py:68 wizard_steps.py:27
 msgid "Tags to be attached."
-msgstr ""
+msgstr "Метки, которые нужно прикрепить."
 
 #: views.py:110
 #, python-format
@@ -212,7 +213,7 @@ msgstr ""
 
 #: views.py:154
 msgid "Will be removed from all documents."
-msgstr "Будет удален из всех документов."
+msgstr "Будет удалено из всех документов."
 
 #: views.py:156
 msgid "Delete the selected tag?"
@@ -225,12 +226,12 @@ msgstr[3] "Удалить выбранные метки?"
 #: views.py:166
 #, python-format
 msgid "Delete tag: %s?"
-msgstr ""
+msgstr "Удалить метку: %s?"
 
 #: views.py:177
 #, python-format
 msgid "Tag \"%s\" deleted successfully."
-msgstr "Метка \"%s\"удалён."
+msgstr "Метка \"%s\" удалена."
 
 #: views.py:182
 #, python-format
@@ -240,17 +241,17 @@ msgstr "Ошибка при удалении метки \"%(tag)s\": %(error)s"
 #: views.py:198
 #, python-format
 msgid "Edit tag: %s"
-msgstr "Редактировать метку %s"
+msgstr "Редактировать метку: %s"
 
 #: views.py:218
 msgid ""
 "Tags are color coded properties that can be attached or removed from "
 "documents."
-msgstr ""
+msgstr "Метки являются цветными свойствами, которые могут быть прикреплены или сняты с документов."
 
 #: views.py:221
 msgid "No tags available"
-msgstr ""
+msgstr "Нет доступных меток"
 
 #: views.py:250
 #, python-format
@@ -259,7 +260,7 @@ msgstr "Документы с меткой: %s"
 
 #: views.py:275
 msgid "Document has no tags attached"
-msgstr ""
+msgstr "Документ не имеет меток"
 
 #: views.py:278
 #, python-format
@@ -284,24 +285,24 @@ msgstr "Удалить"
 #, python-format
 msgid "Remove tags from %(count)d document"
 msgid_plural "Remove tags from %(count)d documents"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Снять метки с %(count)d документа"
+msgstr[1] "Снять метки с %(count)d документов"
+msgstr[2] "Снять метки с %(count)d документов"
+msgstr[3] "Снять метки с %(count)d документов"
 
 #: views.py:319
 #, python-format
 msgid "Remove tags from document: %s"
-msgstr ""
+msgstr "Снять метки с документа: %s"
 
 #: views.py:328
 msgid "Tags to be removed."
-msgstr ""
+msgstr "Метки, которые нужно снять."
 
 #: views.py:368
 #, python-format
 msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s"
-msgstr ""
+msgstr "Документ \"%(document)s\" не помечен как \"%(tag)s\""
 
 #: views.py:377
 #, python-format
@@ -310,11 +311,11 @@ msgstr "Метка \"%(tag)s\" снята с документа \"%(document)s\"
 
 #: wizard_steps.py:15
 msgid "Select tags"
-msgstr ""
+msgstr "Выберите метки"
 
 #: workflow_actions.py:20
 msgid "Tags to attach to the document"
-msgstr ""
+msgstr "Метки, прикрепляемые к документу"
 
 #: workflow_actions.py:25
 msgid "Attach tag"
@@ -322,4 +323,4 @@ msgstr "Прикрепить метку"
 
 #: workflow_actions.py:63
 msgid "Tags to remove from the document"
-msgstr ""
+msgstr "Метки, снимаемые с документа"

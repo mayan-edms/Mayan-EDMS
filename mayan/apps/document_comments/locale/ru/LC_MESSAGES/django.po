@@ -4,14 +4,15 @@
 # 
 # Translators:
 # Translators:
+# Ilya Pavlov <spirkaa@gmail.com>, 2021
 # lilo.panic, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-19 08:14+0000\n"
-"PO-Revision-Date: 2019-05-17 05:50+0000\n"
-"Last-Translator: Sergey Glita <gsv70@mail.ru>\n"
+"POT-Creation-Date: 2021-03-06 06:12+0000\n"
+"PO-Revision-Date: 2021-02-28 14:09+0000\n"
+"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,19 +22,19 @@ msgstr ""
 
 #: apps.py:36 events.py:6
 msgid "Document comments"
-msgstr "Комментарии документа"
+msgstr "Комментарии к документу"
 
 #: events.py:10
 msgid "Document comment created"
-msgstr "Комментарий документа создан"
+msgstr "Комментарий к документу создан"
 
 #: events.py:13
 msgid "Document comment deleted"
-msgstr "Комментарий документа удалён"
+msgstr "Комментарий к документу удалён"
 
 #: events.py:16
 msgid "Document comment edited"
-msgstr ""
+msgstr "Комментарий к документу изменен"
 
 #: links.py:16
 msgid "Add comment"
@@ -66,7 +67,7 @@ msgstr "Комментарий"
 
 #: models.py:39
 msgid "Date time submitted"
-msgstr "Дата и время отправления"
+msgstr "Дата и время отправки"
 
 #: permissions.py:8
 msgid "Create new comments"
@@ -87,7 +88,7 @@ msgstr "Просмотр комментариев"
 #: views.py:31
 #, python-format
 msgid "Add comment to document: %s"
-msgstr "Добавить комментарий на документ: %s"
+msgstr "Добавить комментарий к документу: %s"
 
 #: views.py:59
 #, python-format
@@ -97,24 +98,24 @@ msgstr "Удалить комментарий: %s?"
 #: views.py:90
 #, python-format
 msgid "Details for comment: %s?"
-msgstr ""
+msgstr "Подробности комментария: %s?"
 
 #: views.py:109
 #, python-format
 msgid "Edit comment: %s?"
-msgstr ""
+msgstr "Редактировать комментарий: %s?"
 
 #: views.py:144
 msgid ""
 "Document comments are timestamped text entries from users. They are great "
 "for collaboration."
-msgstr ""
+msgstr "Комментарии к документу - это текстовые сообщения с отметкой времени от пользователей. Они отлично подходят для совместной работы."
 
 #: views.py:147
 msgid "There are no comments"
-msgstr ""
+msgstr "Нет комментариев"
 
 #: views.py:149
 #, python-format
 msgid "Comments for document: %s"
-msgstr "Комментарии для документа: %s"
+msgstr "Комментарии к документу: %s"

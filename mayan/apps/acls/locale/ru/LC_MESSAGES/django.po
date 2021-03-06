@@ -5,14 +5,15 @@
 # Translators:
 # Translators:
 # Alex Chigrin <chalex84@mail.ru>, 2020
+# Ilya Pavlov <spirkaa@gmail.com>, 2021
 # lilo.panic, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-19 08:14+0000\n"
-"PO-Revision-Date: 2020-09-29 21:38+0000\n"
-"Last-Translator: Alex Chigrin <chalex84@mail.ru>\n"
+"POT-Creation-Date: 2021-03-06 06:12+0000\n"
+"PO-Revision-Date: 2021-03-01 09:01+0000\n"
+"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +23,7 @@ msgstr ""
 
 #: apps.py:23 classes.py:142 links.py:26
 msgid "ACLs"
-msgstr "ACLs"
+msgstr "Списки контроля доступа"
 
 #: events.py:6 permissions.py:5
 msgid "Access control lists"
@@ -30,11 +31,11 @@ msgstr "Списки контроля доступа"
 
 #: events.py:10
 msgid "ACL created"
-msgstr "ACL создан"
+msgstr "Список контроля доступа создан"
 
 #: events.py:13
 msgid "ACL edited"
-msgstr "ACL отредактирован"
+msgstr "Список контроля доступа изменен"
 
 #: forms.py:13 models.py:44 views.py:67
 msgid "Role"
@@ -42,7 +43,7 @@ msgstr "Роль"
 
 #: links.py:15
 msgid "New ACL"
-msgstr "Новый ACL"
+msgstr "Новый список контроля доступа"
 
 #: links.py:20
 msgid "Delete"
@@ -73,26 +74,26 @@ msgstr "Элементы доступа"
 #: models.py:57
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\""
-msgstr "Права роли \"%(role)s\" для \"%(object)s\""
+msgstr "Разрешения роли \"%(role)s\" для \"%(object)s\""
 
 #: permissions.py:8
 msgid "Edit ACLs"
-msgstr "Изменить списки ACL"
+msgstr "Редактировать списки контроля доступа"
 
 #: permissions.py:11
 msgid "View ACLs"
-msgstr "Просмотр списков ACL"
+msgstr "Просмотр списков контроля доступа"
 
 #: serializers.py:24 serializers.py:134
 msgid ""
 "API URL pointing to the list of permissions for this access control list."
-msgstr ""
+msgstr "URL-адрес API, указывающий на список разрешений для этого списка управления доступом."
 
 #: serializers.py:57
 msgid ""
 "API URL pointing to a permission in relation to the access control list to "
 "which it is attached. This URL is different than the canonical workflow URL."
-msgstr ""
+msgstr "URL-адрес API, указывающий на разрешение относительно списка управления доступом, к которому оно прикреплено. Этот URL-адрес отличается от канонического URL-адреса рабочего процесса."
 
 #: serializers.py:89
 msgid "Primary key of the new permission to grant to the access control list."
@@ -118,28 +119,28 @@ msgstr "Первичные ключи роли, к которой привяза
 msgid ""
 "An ACL for \"%(object)s\" using role \"%(role)s\" already exists. Edit that "
 "ACL entry instead."
-msgstr "ACL для «%(object)s» с использованием Роли «%(role)s» уже существует. Вместо этого измените эту запись ACL."
+msgstr "Список контроля доступа для \"%(object)s\" с использованием роли \"%(role)s\" уже существует. Отредактируйте этот существующий список."
 
 #: views.py:53
 #, python-format
 msgid "New access control lists for: %s"
-msgstr "Новые списки контроля доступа для: %s"
+msgstr "Новый список контроля доступа для: %s"
 
 #: views.py:95
 #, python-format
 msgid "Delete ACL: %s"
-msgstr "Удалить ACL: %s"
+msgstr "Удалить список контроля доступа: %s"
 
 #: views.py:133
 msgid "There are no ACLs for this object"
-msgstr "Для этого объекта нет списков ACL"
+msgstr "Для этого объекта нет списков контроля доступа"
 
 #: views.py:136
 msgid ""
 "ACL stands for Access Control List and is a precise method to control user "
 "access to objects in the system. ACLs allow granting a permission to a role "
 "but only for a specific object or set of objects."
-msgstr "ACL это аббревиатура от Access Control List  переводится как \"список управления доступом\"  является точным методом управления доступом пользователей к объектам в системе. Списки ACL позволяют предоставлять разрешение Роли, но только для определенного объекта или набора объектов."
+msgstr "Список контроля доступа, он же ACL или Access Control List, является точным методом управления доступом пользователей к объектам в системе. Списки контроля доступа предоставляют разрешения роли, но только для определенного объекта или группы объектов."
 
 #: views.py:143
 #, python-format
@@ -157,7 +158,7 @@ msgstr "Доступные разрешения"
 #: views.py:202
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\"."
-msgstr "Разрешение роли «%(role)s» для «%(object)s»."
+msgstr "Разрешения роли \"%(role)s\" для \"%(object)s\""
 
 #: views.py:211
 msgid ""
@@ -165,7 +166,7 @@ msgid ""
 "to the role and can't be removed from this view. Inherited permissions need "
 "to be removed from the parent object's ACL or from them role via the Setup "
 "menu."
-msgstr "Отключенные разрешения наследуются от родительского объекта или напрямую предоставляются Роли и не могут быть удалены из этого представления. Унаследованные разрешения должны быть удалены из ACL родительского объекта или из Роли через меню Настройка."
+msgstr "Отключенные разрешения унаследованы от родительского объекта или предоставлены роли напрямую, и не могут быть удалены из этого представления. Унаследованные разрешения должны быть удалены из списка контроля доступа родительского объекта или из роли через меню Настройки."
 
 #: workflow_actions.py:23
 msgid "Object type"
@@ -173,7 +174,7 @@ msgstr "Тип объекта"
 
 #: workflow_actions.py:26
 msgid "Type of the object for which the access will be modified."
-msgstr "Тип объекта, для которого будет изменен доступ."
+msgstr "Тип объекта, к которому будет изменен доступ."
 
 #: workflow_actions.py:32
 msgid "Object ID"
@@ -182,7 +183,7 @@ msgstr "ID объекта"
 #: workflow_actions.py:35
 msgid ""
 "Numeric identifier of the object for which the access will be modified."
-msgstr "Числовой идентификатор объекта, доступ к которому будет изменен."
+msgstr "Числовой идентификатор объекта, к которому будет изменен доступ."
 
 #: workflow_actions.py:40 workflow_actions.py:155
 msgid "Roles"
@@ -190,12 +191,12 @@ msgstr "Роли"
 
 #: workflow_actions.py:42 workflow_actions.py:157
 msgid "Roles whose access will be modified."
-msgstr "Роли, доступ к которым будет изменен."
+msgstr "Роли, для которых будет изменен доступ к объекту или документу."
 
 #: workflow_actions.py:49 workflow_actions.py:164
 msgid ""
 "Permissions to grant/revoke to/from the role for the object selected above."
-msgstr "Разрешения на предоставление/отзыв у роли для выбранного выше объекта."
+msgstr "Разрешения роли, которые будут предоставлены/отменены для выбранного выше объекта."
 
 #: workflow_actions.py:57
 msgid "Grant object access"

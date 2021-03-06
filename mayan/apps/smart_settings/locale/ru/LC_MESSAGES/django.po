@@ -4,14 +4,15 @@
 # 
 # Translators:
 # Translators:
+# Ilya Pavlov <spirkaa@gmail.com>, 2021
 # lilo.panic, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-19 08:14+0000\n"
-"PO-Revision-Date: 2020-05-25 06:18+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-03-06 06:12+0000\n"
+"PO-Revision-Date: 2021-02-28 14:22+0000\n"
+"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,11 +22,11 @@ msgstr ""
 
 #: apps.py:21 permissions.py:6
 msgid "Smart settings"
-msgstr "Гибкие настройки"
+msgstr "Умные настройки"
 
 #: apps.py:30
 msgid "Setting count"
-msgstr "Количество настроек"
+msgstr "Количество параметров"
 
 #: apps.py:35
 msgid "Name"
@@ -37,20 +38,20 @@ msgstr "Значение"
 
 #: classes.py:336
 msgid "Overridden"
-msgstr ""
+msgstr "Переопределено"
 
 #: classes.py:338
 msgid "Is this settings being overridden by an environment variable?"
-msgstr ""
+msgstr "Этот параметр переопределен с помощью переменной окружения?"
 
 #: forms.py:12
 msgid "Enter the new setting value."
-msgstr ""
+msgstr "Введите новое значение параметра."
 
 #: forms.py:28
 #, python-format
 msgid "\"%s\" not a valid entry."
-msgstr ""
+msgstr "Недопустимое значение \"%s\""
 
 #: links.py:12 links.py:16
 msgid "Settings"
@@ -58,7 +59,7 @@ msgstr "Настройки"
 
 #: links.py:22
 msgid "Namespaces"
-msgstr ""
+msgstr "Пространства имен"
 
 #: links.py:26
 msgid "Edit"
@@ -66,7 +67,7 @@ msgstr "Редактировать"
 
 #: permissions.py:10
 msgid "Edit settings"
-msgstr ""
+msgstr "Редактировать настройки"
 
 #: permissions.py:13
 msgid "View settings"
@@ -337,18 +338,18 @@ msgstr ""
 
 #: views.py:21
 msgid "Setting updated successfully."
-msgstr ""
+msgstr "Параметр обновлен."
 
 #: views.py:30
 #, python-format
 msgid "Edit setting: %s"
-msgstr ""
+msgstr "Редактировать параметр: %s"
 
 #: views.py:55
 msgid ""
 "Settings inherited from an environment variable take precedence and cannot "
 "be changed in this view. "
-msgstr ""
+msgstr "Параметры, унаследованные от переменной окружения, имеют приоритет и не могут быть изменены в этом представлении."
 
 #: views.py:58
 #, python-format
@@ -358,7 +359,7 @@ msgstr "Параметры в пространстве имён: %s"
 #: views.py:66
 #, python-format
 msgid "Namespace: %s, not found"
-msgstr "Пространство имён: %s, не найдено"
+msgstr "Пространство имён \"%s\" не найдено"
 
 #: views.py:76
 msgid "Setting namespaces"

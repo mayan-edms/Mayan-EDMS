@@ -5,6 +5,7 @@
 # Translators:
 # Translators:
 # Alex Chigrin <chalex84@mail.ru>, 2020
+# Ilya Pavlov <spirkaa@gmail.com>, 2021
 # mizhgan <i@mizhgan.ru>, 2018
 # lilo.panic, 2016
 # OLeg Si <olegsm35@gmail.com>, 2020
@@ -12,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-02-19 08:14+0000\n"
-"PO-Revision-Date: 2020-11-19 11:10+0000\n"
-"Last-Translator: Alex Chigrin <chalex84@mail.ru>\n"
+"POT-Creation-Date: 2021-03-06 06:12+0000\n"
+"PO-Revision-Date: 2021-03-01 08:55+0000\n"
+"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +23,7 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:133 permissions.py:5 settings.py:13
+#: apps.py:165 permissions.py:5 settings.py:13
 msgid "Common"
 msgstr "Общий"
 
@@ -36,11 +37,11 @@ msgstr "Поля модели"
 
 #: classes.py:504
 msgid "Model related fields"
-msgstr "Поля, связанные с моделью"
+msgstr "Связанные поля модели"
 
 #: classes.py:509
 msgid "Model reverse fields"
-msgstr ""
+msgstr "Обратные поля модели"
 
 #: dependencies.py:195
 msgid "Used to allow offline translation of the code text strings."
@@ -52,19 +53,19 @@ msgstr "Обеспечивает проверку стиля."
 
 #: dependencies.py:209
 msgid "Command line environment with autocompletion."
-msgstr "Среда командной строки с автозаполнением."
+msgstr "Среда командной строки с автодополнением."
 
 #: dependencies.py:214
 msgid "Checks proper formatting of the README file."
-msgstr ""
+msgstr "Проверяет правильность форматирования файла README."
 
 #: links.py:31
 msgid "About this"
-msgstr "Информация"
+msgstr "О программе"
 
 #: links.py:34
 msgid "Get the book"
-msgstr ""
+msgstr "Купить книгу"
 
 #: links.py:39
 msgid "Locale profile"
@@ -96,11 +97,11 @@ msgstr "Настройки"
 
 #: links.py:67
 msgid "Source code"
-msgstr "Исходные коды"
+msgstr "Исходный код"
 
 #: links.py:71
 msgid "Online store"
-msgstr ""
+msgstr "Магазин"
 
 #: links.py:75
 msgid "Get support"
@@ -123,15 +124,15 @@ msgstr "В качестве базы данных задан SQLite. SQLite не
 
 #: literals.py:30
 msgid "Days"
-msgstr "Дней"
+msgstr "Дни"
 
 #: literals.py:31
 msgid "Hours"
-msgstr "Часов"
+msgstr "Часы"
 
 #: literals.py:32
 msgid "Minutes"
-msgstr "Минут"
+msgstr "Минуты"
 
 #: menus.py:8
 msgid "System"
@@ -139,7 +140,7 @@ msgstr "Система"
 
 #: menus.py:10 menus.py:11
 msgid "Facet"
-msgstr ""
+msgstr "Грань"
 
 #: menus.py:14
 msgid "Actions"
@@ -167,11 +168,11 @@ msgstr "Язык"
 
 #: models.py:38
 msgid "User locale profile"
-msgstr "Профиль локали пользователя"
+msgstr "Локаль профиля пользователя"
 
 #: models.py:39
 msgid "User locale profiles"
-msgstr "Профили локали пользователей"
+msgstr "Локаль профилей пользователей"
 
 #: permissions.py:8
 msgid "Copy object"
@@ -179,13 +180,13 @@ msgstr "Копировать объект"
 
 #: queues.py:7
 msgid "Default"
-msgstr "Умолчание"
+msgstr "По умолчанию"
 
 #: settings.py:19
 msgid ""
 "Time to delay background tasks that depend on a database commit to "
 "propagate."
-msgstr "Время задержки фоновых задач зависящих от процесса распространения записанных в БД данных."
+msgstr "Время задержки фоновых задач, зависящих от процесса распространения записанных в БД данных."
 
 #: settings.py:26
 msgid ""
@@ -193,7 +194,7 @@ msgid ""
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
 "Python path to: an application configuration class (preferred), or a package"
 " containing an application."
-msgstr ""
+msgstr "Список строк, обозначающих приложения, которые должны быть удалены из списка, стандартно устанавливаемого Mayan EDMS. Каждая строка должна быть разделенным точками путем Python к: классу конфигурации приложения (предпочтительно) или пакету, содержащему приложение."
 
 #: settings.py:36
 msgid ""
@@ -201,17 +202,17 @@ msgid ""
 "those normally installed by Mayan EDMS. Each string should be a dotted "
 "Python path to: an application configuration class (preferred), or a package"
 " containing an application."
-msgstr ""
+msgstr "Список строк, обозначающих приложения, которые установлены помимо тех, которые обычно устанавливаются Mayan EDMS. Каждая строка должна быть разделенным точками путем Python к: классу конфигурации приложения (предпочтительно) или пакету, содержащему приложение."
 
 #: settings.py:45
 msgid ""
 "Name of the view attached to the brand anchor in the main menu. This is also"
 " the view to which users will be redirected after log in."
-msgstr ""
+msgstr "Название представления, прикрепленного к названию сайта в главном меню. Это также представление, на которое пользователи будут перенаправлены после входа в систему."
 
 #: settings.py:53
 msgid "Name to be displayed in the main menu."
-msgstr "Имя, отображаемое в главном меню."
+msgstr "Название сайта, отображаемое в главном меню."
 
 #: settings.py:59
 msgid "URL of the installation or homepage of the project."
@@ -233,11 +234,11 @@ msgstr "Введите допустимое YAML-значение."
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
-msgstr "Введите допустимое «внутреннее имя», состоящее из букв, цифр и знаков подчеркивания."
+msgstr "Введите допустимое \"внутреннее имя\", состоящее из латинских букв, цифр и знака подчеркивания."
 
 #: views.py:29
 msgid "About"
-msgstr "Инфо"
+msgstr "О программе"
 
 #: views.py:42
 msgid "Current user locale profile details"
@@ -249,12 +250,12 @@ msgstr "Редактировать настройки локали текуще�
 
 #: views.py:97
 msgid "Dashboard"
-msgstr "Панель управления"
+msgstr "Дашборд"
 
 #: views.py:118
 #, python-format
 msgid "Fields to be copied: %s"
-msgstr "Поля для копирования: %s"
+msgstr "Будут скопированы поля: %s"
 
 #: views.py:127
 #, python-format
@@ -269,15 +270,15 @@ msgstr "Объект успешно скопирован."
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
-msgstr "Отсутствие результатов означает, что у вас нет необходимых разрешений для выполнения административной задачи."
+msgstr "Отсутствие элементов здесь означает, что у вас нет необходимых разрешений для выполнения административных задач."
 
 #: views.py:156
 msgid "No setup options available."
-msgstr "Параметры настройки недоступны."
+msgstr "Нет доступных для настройки параметров."
 
 #: views.py:160
 msgid "Setup items"
-msgstr "Элементы настроек"
+msgstr "Настройки"
 
 #: views.py:162
 msgid "Here you can configure all aspects of the system."
