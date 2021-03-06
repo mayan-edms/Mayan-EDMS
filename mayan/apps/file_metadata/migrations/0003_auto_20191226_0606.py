@@ -13,7 +13,7 @@ def operation_remove_duplicates(apps, schema_editor):
 
     driver = StoredDriver.objects.first()
     if driver:
-        DocumentVersionDriverEntry.objects.using(schema_editor.connection.alias).update(driver=driver)
+        DocumentVersionDriverEntry.objects.using(alias=schema_editor.connection.alias).update(driver=driver)
 
         StoredDriver.objects.exclude(pk=driver.id).delete()
 
