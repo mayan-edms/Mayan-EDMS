@@ -1,21 +1,14 @@
 from django.conf.urls import url
 
 from .api_views import (
-    APIDocumentIndexInstanceNodeListView,
-    APIIndexInstanceDetailView,
-    APIIndexInstanceListView,
-    APIIndexInstanceNodeDetailView,
-    APIIndexInstanceNodeDocumentListView,
-    APIIndexInstanceNodeListView,
-    APIIndexTemplateDetailView,
-    APIIndexTemplateDocumentTypeAddView,
+    APIDocumentIndexInstanceNodeListView, APIIndexInstanceDetailView,
+    APIIndexInstanceListView, APIIndexInstanceNodeDetailView,
+    APIIndexInstanceNodeDocumentListView, APIIndexInstanceNodeListView,
+    APIIndexTemplateDetailView, APIIndexTemplateDocumentTypeAddView,
     APIIndexTemplateDocumentTypeListView,
-    APIIndexTemplateDocumentTypeRemoveView,
-    APIIndexTemplateListView,
-    APIIndexTemplateNodeListView,
-    APIIndexTemplateNodeDetailView,
-    APIIndexTemplateRebuildView,
-    APIIndexTemplateResetView
+    APIIndexTemplateDocumentTypeRemoveView, APIIndexTemplateListView,
+    APIIndexTemplateNodeListView, APIIndexTemplateNodeDetailView,
+    APIIndexTemplateRebuildView, APIIndexTemplateResetView
 )
 
 from .views.index_instance_views import (

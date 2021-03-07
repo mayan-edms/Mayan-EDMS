@@ -8,6 +8,9 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+        migrations.DeleteModel(
+            name='IndexInstance',
+        ),
         migrations.RenameModel(
             old_name='Index',
             new_name='IndexTemplate',
