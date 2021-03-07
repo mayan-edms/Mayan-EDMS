@@ -462,7 +462,7 @@ class WorkflowStateViewTestMixin:
 
 
 class WorkflowTestMixin:
-    def _create_test_workflow(self, add_document_type=False, auto_launch=True):
+    def _create_test_workflow(self, add_test_document_type=False, auto_launch=True):
         self.test_workflow = Workflow.objects.create(
             auto_launch=auto_launch, label=TEST_WORKFLOW_LABEL,
             internal_name=TEST_WORKFLOW_INTERNAL_NAME
@@ -471,7 +471,7 @@ class WorkflowTestMixin:
             pk=self.test_workflow.pk
         )
 
-        if add_document_type:
+        if add_test_document_type:
             self.test_workflow.document_types.add(self.test_document_type)
 
     def _create_test_workflow_state(self):

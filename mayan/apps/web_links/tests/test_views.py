@@ -361,7 +361,7 @@ class DocumentWebLinkViewTestCase(
 ):
     def setUp(self):
         super().setUp()
-        self._create_test_web_link(add_document_type=True)
+        self._create_test_web_link(add_test_document_type=True)
 
     def test_document_web_links_list_view_no_permission(self):
         response = self._request_test_document_web_link_list_view()
