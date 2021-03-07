@@ -7,6 +7,35 @@ from .literals import (
 )
 
 
+class DocumentTypeAddRemoveWebLinkViewTestMixin:
+    def _request_test_document_type_web_link_add_remove_get_view(self):
+        return self.get(
+            viewname='web_links:document_type_web_links', kwargs={
+                'document_type_id': self.test_document_type.pk,
+            }
+        )
+
+    def _request_test_document_type_web_link_add_view(self):
+        return self.post(
+            viewname='web_links:document_type_web_links', kwargs={
+                'document_type_id': self.test_document_type.pk,
+            }, data={
+                'available-submit': 'true',
+                'available-selection': self.test_web_link.pk
+            }
+        )
+
+    def _request_test_document_type_web_link_remove_view(self):
+        return self.post(
+            viewname='web_links:document_type_web_links', kwargs={
+                'document_type_id': self.test_document_type.pk,
+            }, data={
+                'added-submit': 'true',
+                'added-selection': self.test_web_link.pk
+            }
+        )
+
+
 class ResolvedWebLinkAPIViewTestMixin(object):
     def _request_resolved_web_link_detail_api_view(self):
         return self.get(

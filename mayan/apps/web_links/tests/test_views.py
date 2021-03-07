@@ -15,8 +15,271 @@ from ..permissions import (
 
 from .literals import TEST_WEB_LINK_TEMPLATE
 from .mixins import (
+    DocumentTypeAddRemoveWebLinkViewTestMixin,
     WebLinkDocumentTypeViewTestMixin, WebLinkTestMixin, WebLinkViewTestMixin
 )
+
+
+class DocumentTypeAddRemoveWebLinkViewTestCase(
+    DocumentTypeAddRemoveWebLinkViewTestMixin, WebLinkTestMixin,
+    GenericDocumentViewTestCase
+):
+    auto_upload_test_document = False
+
+    def setUp(self):
+        super().setUp()
+        self._create_test_web_link()
+
+    def test_document_type_web_link_add_remove_get_view_no_permission(self):
+        self.test_document_type.web_links.add(self.test_web_link)
+
+        self._clear_events()
+
+        response = self._request_test_document_type_web_link_add_remove_get_view()
+        self.assertNotContains(
+            response=response, text=str(self.test_document_type),
+            status_code=404
+        )
+        self.assertNotContains(
+            response=response, text=str(self.test_web_link),
+            status_code=404
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_type_web_link_add_remove_get_view_with_document_type_access(self):
+        self.test_document_type.web_links.add(self.test_web_link)
+
+        self.grant_access(
+            obj=self.test_document_type,
+            permission=permission_document_type_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_document_type_web_link_add_remove_get_view()
+        self.assertContains(
+            response=response, text=str(self.test_document_type),
+            status_code=200
+        )
+        self.assertNotContains(
+            response=response, text=str(self.test_web_link),
+            status_code=200
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_type_web_link_add_remove_get_view_with_web_link_access(self):
+        self.test_document_type.web_links.add(self.test_web_link)
+
+        self.grant_access(
+            obj=self.test_web_link,
+            permission=permission_web_link_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_document_type_web_link_add_remove_get_view()
+        self.assertNotContains(
+            response=response, text=str(self.test_document_type),
+            status_code=404
+        )
+        self.assertNotContains(
+            response=response, text=str(self.test_web_link),
+            status_code=404
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_type_web_link_add_remove_get_view_with_full_access(self):
+        self.test_document_type.web_links.add(self.test_web_link)
+
+        self.grant_access(
+            obj=self.test_document_type,
+            permission=permission_document_type_edit
+        )
+        self.grant_access(
+            obj=self.test_web_link,
+            permission=permission_web_link_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_document_type_web_link_add_remove_get_view()
+        self.assertContains(
+            response=response, text=str(self.test_document_type),
+            status_code=200
+        )
+        self.assertContains(
+            response=response, text=str(self.test_web_link),
+            status_code=200
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_type_web_link_add_view_no_permission(self):
+        self._clear_events()
+
+        response = self._request_test_document_type_web_link_add_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertTrue(
+            self.test_web_link not in self.test_document_type.web_links.all()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_type_web_link_add_view_with_document_type_access(self):
+        self.grant_access(
+            obj=self.test_document_type,
+            permission=permission_document_type_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_document_type_web_link_add_view()
+        self.assertEqual(response.status_code, 200)
+
+        self.assertTrue(
+            self.test_web_link not in self.test_document_type.web_links.all()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_type_web_link_add_view_with_web_link_access(self):
+        self.grant_access(
+            obj=self.test_web_link,
+            permission=permission_web_link_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_document_type_web_link_add_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertTrue(
+            self.test_web_link not in self.test_document_type.web_links.all()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_type_web_link_add_view_with_full_access(self):
+        self.grant_access(
+            obj=self.test_document_type,
+            permission=permission_document_type_edit
+        )
+        self.grant_access(
+            obj=self.test_web_link,
+            permission=permission_web_link_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_document_type_web_link_add_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertTrue(
+            self.test_web_link in self.test_document_type.web_links.all()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, self.test_document_type)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_web_link)
+        self.assertEqual(events[0].verb, event_web_link_edited.id)
+
+    def test_document_type_web_link_remove_view_no_permission(self):
+        self.test_document_type.web_links.add(self.test_web_link)
+
+        self._clear_events()
+
+        response = self._request_test_document_type_web_link_remove_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertTrue(
+            self.test_web_link in self.test_document_type.web_links.all()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_type_web_link_remove_view_with_document_type_access(self):
+        self.test_document_type.web_links.add(self.test_web_link)
+
+        self.grant_access(
+            obj=self.test_document_type,
+            permission=permission_document_type_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_document_type_web_link_remove_view()
+        self.assertEqual(response.status_code, 200)
+
+        self.assertTrue(
+            self.test_web_link in self.test_document_type.web_links.all()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_type_web_link_remove_view_with_web_link_access(self):
+        self.test_document_type.web_links.add(self.test_web_link)
+
+        self.grant_access(
+            obj=self.test_web_link,
+            permission=permission_web_link_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_document_type_web_link_remove_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertTrue(
+            self.test_web_link in self.test_document_type.web_links.all()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_type_web_link_remove_view_with_full_access(self):
+        self.test_document_type.web_links.add(self.test_web_link)
+
+        self.grant_access(
+            obj=self.test_document_type,
+            permission=permission_document_type_edit
+        )
+        self.grant_access(
+            obj=self.test_web_link,
+            permission=permission_web_link_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_document_type_web_link_remove_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertTrue(
+            self.test_web_link not in self.test_document_type.web_links.all()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, self.test_document_type)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_web_link)
+        self.assertEqual(events[0].verb, event_web_link_edited.id)
 
 
 class WebLinkViewTestCase(
