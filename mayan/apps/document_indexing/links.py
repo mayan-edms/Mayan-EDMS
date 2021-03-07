@@ -37,7 +37,7 @@ link_document_type_index_templates = Link(
 
 link_index_instance_menu = Link(
     condition=get_cascade_condition(
-        app_label='document_indexing', model_name='Index',
+        app_label='document_indexing', model_name='IndexTemplate',
         object_permission=permission_index_instance_view,
     ), icon=icon_index,
     text=_('Indexes'), view='indexing:index_list'
@@ -49,7 +49,7 @@ link_index_instance_rebuild = Link(
 )
 link_index_instances_rebuild = Link(
     condition=get_cascade_condition(
-        app_label='document_indexing', model_name='Index',
+        app_label='document_indexing', model_name='IndexTemplate',
         object_permission=permission_index_template_rebuild,
     ), description=_(
         'Deletes and creates from scratch all the document indexes.'
@@ -58,7 +58,7 @@ link_index_instances_rebuild = Link(
 )
 link_index_instances_reset = Link(
     condition=get_cascade_condition(
-        app_label='document_indexing', model_name='Index',
+        app_label='document_indexing', model_name='IndexTemplate',
         object_permission=permission_index_template_rebuild,
     ), description=_(
         'Deletes and creates from scratch all the document indexes.'
@@ -68,7 +68,7 @@ link_index_instances_reset = Link(
 
 link_index_template_setup = Link(
     condition=get_cascade_condition(
-        app_label='document_indexing', model_name='Index',
+        app_label='document_indexing', model_name='IndexTemplate',
         object_permission=permission_index_template_view,
         view_permission=permission_index_template_create,
     ), icon=icon_index, text=_('Indexes'),

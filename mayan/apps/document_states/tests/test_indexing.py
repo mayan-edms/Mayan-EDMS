@@ -1,5 +1,7 @@
 from mayan.apps.documents.tests.base import GenericDocumentTestCase
-from mayan.apps.document_indexing.models import Index, IndexInstanceNode
+from mayan.apps.document_indexing.models import (
+    IndexInstanceNode, IndexTemplate
+)
 
 from ..models import Workflow
 
@@ -43,14 +45,16 @@ class DocumentStateIndexingTestCase(GenericDocumentTestCase):
 
     def _create_test_index_template(self):
         # Create empty index
-        index = Index.objects.create(label=TEST_INDEX_TEMPLATE_LABEL)
+        index_template = IndexTemplate.objects.create(
+            label=TEST_INDEX_TEMPLATE_LABEL
+        )
 
         # Add our document type to the new index
-        index.document_types.add(self.test_document_type)
+        index_template.document_types.add(self.test_document_type)
 
         # Create simple index template
-        root = index.template_root
-        index.node_templates.create(
+        root = index_template.template_root
+        index_template.node_templates.create(
             parent=root, expression=TEST_INDEX_TEMPLATE_METADATA_EXPRESSION,
             link_documents=True
         )
