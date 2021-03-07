@@ -9,7 +9,7 @@ from django.urls import reverse
 from django.utils.timezone import now
 from django.utils.translation import ugettext, ugettext_lazy as _
 
-from mayan.apps.common.model_mixins import ExtraDataModelMixin
+from mayan.apps.databases.model_mixins import ExtraDataModelMixin
 from mayan.apps.common.signals import signal_mayan_pre_save
 from mayan.apps.events.classes import EventManagerSave
 from mayan.apps.events.decorators import method_event

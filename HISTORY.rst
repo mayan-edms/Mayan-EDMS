@@ -246,3 +246,4 @@
   and metadata entry are now separated by a double underscore instead of a
   single underscore. This allows supporting drivers and entries that might
   contain an underscore themselves.
+- Add ``databases`` app to group data and models related code.
