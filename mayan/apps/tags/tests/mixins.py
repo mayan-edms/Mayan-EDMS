@@ -5,7 +5,7 @@ from django.db.models import Q
 from ..models import Tag
 
 from .literals import (
-    TEST_TAG_COLOR, TEST_TAG_COLOR_EDITED, TEST_TAG_LABEL, TEST_TAG_LABEL_2,
+    TEST_TAG_COLOR, TEST_TAG_COLOR_EDITED, TEST_TAG_LABEL,
     TEST_TAG_LABEL_EDITED
 )
 
@@ -140,17 +140,22 @@ class TagAPIViewTestMixin:
 
 
 class TagTestMixin:
+    def setUp(self):
+        super().setUp()
+        self.test_tags = []
+
     def _create_test_tag(self, add_test_document=False):
+        total_test_labels = len(self.test_tags)
+        label = '{}_{}'.format(TEST_TAG_LABEL, total_test_labels)
+
         self.test_tag = Tag.objects.create(
-            color=TEST_TAG_COLOR, label=TEST_TAG_LABEL
+            color=TEST_TAG_COLOR, label=label
         )
+
+        self.test_tags.append(self.test_tag)
+
         if add_test_document:
             self.test_tag.documents.add(self.test_document)
-
-    def _create_test_tag_2(self):
-        self.test_tag_2 = Tag.objects.create(
-            color=TEST_TAG_COLOR, label=TEST_TAG_LABEL_2
-        )
 
 
 class TagViewTestMixin:

@@ -1,8 +1,6 @@
 from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
-from mayan.apps.document_indexing.models import (
-    IndexInstanceNode, IndexTemplate
-)
-from mayan.apps.document_indexing.tests.literals import TEST_INDEX_TEMPLATE_LABEL
+from mayan.apps.document_indexing.models import IndexInstanceNode
+from mayan.apps.document_indexing.tests.mixins import IndexTemplateTestMixin
 from mayan.apps.testing.tests.base import BaseTestCase
 
 from .literals import (
@@ -12,15 +10,14 @@ from .literals import (
 from .mixins import TagTestMixin
 
 
-class TagSignalIndexingTestCase(DocumentTestMixin, TagTestMixin, BaseTestCase):
+class TagSignalIndexingTestCase(
+    DocumentTestMixin, IndexTemplateTestMixin, TagTestMixin, BaseTestCase
+):
     auto_upload_test_document = False
 
     def test_tag_indexing(self):
         self._create_test_tag()
-        self.test_index_template = IndexTemplate.objects.create(
-            label=TEST_INDEX_TEMPLATE_LABEL
-        )
-        self.test_index_template.document_types.add(self.test_document_type)
+        self._create_test_index_template(add_test_document_type=True)
 
         root = self.test_index_template.template_root
         self.test_index_template.node_templates.create(
@@ -28,7 +25,7 @@ class TagSignalIndexingTestCase(DocumentTestMixin, TagTestMixin, BaseTestCase):
             link_documents=True
         )
 
-        self._upload_test_document()
+        self._create_test_document_stub()
 
         self.assertTrue(
             self.test_document in IndexInstanceNode.objects.get(
