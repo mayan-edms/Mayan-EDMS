@@ -2,45 +2,50 @@ from django.shortcuts import get_object_or_404
 
 from mayan.apps.acls.models import AccessControlList
 from mayan.apps.documents.models import Document
-from mayan.apps.documents.permissions import permission_document_view
+from mayan.apps.documents.permissions import (
+    permission_document_type_view, permission_document_view
+)
 from mayan.apps.documents.serializers.document_serializers import DocumentSerializer
+from mayan.apps.documents.serializers.document_type_serializers import DocumentTypeSerializer
 from mayan.apps.rest_api import generics
-from mayan.apps.rest_api.api_view_mixins import AsymmetricSerializerAPIViewMixin
+from mayan.apps.rest_api.api_view_mixins import (
+    AsymmetricSerializerAPIViewMixin, ExternalObjectAPIViewMixin
+)
 
-from .models import Index, IndexInstance
+from .models import IndexTemplate, IndexInstance
 from .permissions import (
-    permission_document_indexing_create, permission_document_indexing_delete,
-    permission_document_indexing_edit,
-    permission_document_indexing_instance_view,
-    permission_document_indexing_rebuild, permission_document_indexing_view
+    permission_index_template_create, permission_index_template_delete,
+    permission_index_template_edit,
+    permission_index_instance_view,
+    permission_index_template_rebuild, permission_index_template_view
 )
 from .serializers import (
+    DocumentTypeAddSerializer, DocumentTypeRemoveSerializer,
     IndexInstanceNodeSerializer, IndexInstanceSerializer,
     IndexTemplateSerializer, IndexTemplateNodeSerializer,
-    IndexTemplateNodeWriteSerializer, IndexTemplateWriteSerializer
+    IndexTemplateNodeWriteSerializer
 )
 from .tasks import task_rebuild_index
 
 
-class APIDocumentIndexInstanceNodeListView(generics.ListAPIView):
+class APIDocumentIndexInstanceNodeListView(
+    ExternalObjectAPIViewMixin, generics.ListAPIView
+):
     """
     Returns a list of all the indexes instance nodes where this document is found.
     """
-    mayan_object_permissions = {'GET': (permission_document_indexing_instance_view,)}
+    external_object_pk_url_kwarg = 'document_id'
+    external_object_queryset = Document.valid
+    mayan_external_object_permissions = {
+        'GET': (permission_index_instance_view,)
+    }
+    mayan_object_permissions = {
+        'GET': (permission_index_instance_view,)
+    }
     serializer_class = IndexInstanceNodeSerializer
 
-    def get_document(self):
-        queryset = AccessControlList.objects.restrict_queryset(
-            permission=permission_document_view,
-            queryset=Document.objects.all(), user=self.request.user
-        )
-
-        return get_object_or_404(
-            klass=queryset, pk=self.kwargs['document_id']
-        )
-
     def get_queryset(self):
-        return self.get_document().index_instance_nodes.all()
+        return self.external_object.index_instance_nodes.all()
 
 
 class APIIndexInstanceDetailView(generics.RetrieveAPIView):
@@ -48,7 +53,7 @@ class APIIndexInstanceDetailView(generics.RetrieveAPIView):
     get: Returns the details of the selected index instance.
     """
     lookup_url_kwarg = 'index_instance_id'
-    mayan_object_permissions = {'GET': (permission_document_indexing_instance_view,)}
+    mayan_object_permissions = {'GET': (permission_index_instance_view,)}
     queryset = IndexInstance.objects.all()
     serializer_class = IndexInstanceSerializer
 
@@ -57,7 +62,7 @@ class APIIndexInstanceListView(generics.ListAPIView):
     """
     get: Returns a list of all the indexes instances.
     """
-    mayan_object_permissions = {'GET': (permission_document_indexing_instance_view,)}
+    mayan_object_permissions = {'GET': (permission_index_instance_view,)}
     queryset = IndexInstance.objects.all()
     serializer_class = IndexInstanceSerializer
 
@@ -67,7 +72,7 @@ class APIIndexInstanceNodeViewMixin:
 
     def get_index_instance(self):
         queryset = AccessControlList.objects.restrict_queryset(
-            permission=permission_document_indexing_instance_view,
+            permission=permission_index_instance_view,
             queryset=IndexInstance.objects.all(), user=self.request.user
         )
 
@@ -122,27 +127,23 @@ class APIIndexInstanceNodeDocumentListView(
         return self.get_node().documents.all()
 
 
-class APIIndexTemplateViewMixin(AsymmetricSerializerAPIViewMixin):
-    queryset = Index.objects.all()
-    read_serializer_class = IndexTemplateSerializer
-    write_serializer_class = IndexTemplateWriteSerializer
-
-
-class APIIndexTemplateListView(
-    APIIndexTemplateViewMixin, generics.ListCreateAPIView
-):
+class APIIndexTemplateListView(generics.ListCreateAPIView):
     """
     get: Returns a list of all the defined indexes template.
     post: Create a new index template.
     """
-    mayan_object_permissions = {'GET': (permission_document_indexing_view,)}
-    mayan_view_permissions = {'POST': (permission_document_indexing_create,)}
-    queryset = Index.objects.all()
+    mayan_object_permissions = {'GET': (permission_index_template_view,)}
+    mayan_view_permissions = {'POST': (permission_index_template_create,)}
+    queryset = IndexTemplate.objects.all()
+    serializer_class = IndexTemplateSerializer
+
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user
+        }
 
 
-class APIIndexTemplateDetailView(
-    APIIndexTemplateViewMixin, generics.RetrieveUpdateDestroyAPIView
-):
+class APIIndexTemplateDetailView(generics.RetrieveUpdateDestroyAPIView):
     """
     delete: Delete the selected index template.
     get: Returns the details of the selected index template.
@@ -151,12 +152,70 @@ class APIIndexTemplateDetailView(
     """
     lookup_url_kwarg = 'index_template_id'
     mayan_object_permissions = {
-        'GET': (permission_document_indexing_view,),
-        'PUT': (permission_document_indexing_edit,),
-        'PATCH': (permission_document_indexing_edit,),
-        'DELETE': (permission_document_indexing_delete,)
+        'GET': (permission_index_template_view,),
+        'PUT': (permission_index_template_edit,),
+        'PATCH': (permission_index_template_edit,),
+        'DELETE': (permission_index_template_delete,)
     }
-    queryset = Index.objects.all()
+    queryset = IndexTemplate.objects.all()
+    serializer_class = IndexTemplateSerializer
+
+    def get_instance_extra_data(self):
+        return {
+            '_event_actor': self.request.user
+        }
+
+
+class APIIndexTemplateDocumentTypeListView(
+    ExternalObjectAPIViewMixin, generics.ListAPIView
+):
+    """
+    get: Returns a list of the document types associated with this index template.
+    """
+    external_object_class = IndexTemplate
+    external_object_pk_url_kwarg = 'index_template_id'
+    mayan_external_object_permissions = {
+        'GET': (permission_index_template_view,)
+    }
+    mayan_object_permissions = {'GET': (permission_document_type_view,)}
+    serializer_class = DocumentTypeSerializer
+
+    def get_queryset(self):
+        return self.external_object.document_types.all()
+
+
+class APIIndexTemplateDocumentTypeAddView(generics.ObjectActionAPIView):
+    """
+    post: Add a document type to an index template.
+    """
+    lookup_url_kwarg = 'index_template_id'
+    mayan_object_permissions = {
+        'POST': (permission_index_template_edit,)
+    }
+    serializer_class = DocumentTypeAddSerializer
+    queryset = IndexTemplate.objects.all()
+
+    def object_action(self, request, serializer):
+        document_type = serializer.validated_data['document_type']
+        self.object._event_actor = self.request.user
+        self.object.document_types_add(queryset=[document_type])
+
+
+class APIIndexTemplateDocumentTypeRemoveView(generics.ObjectActionAPIView):
+    """
+    post: Remove a document type from an index template.
+    """
+    lookup_url_kwarg = 'index_template_id'
+    mayan_object_permissions = {
+        'POST': (permission_index_template_edit,)
+    }
+    serializer_class = DocumentTypeRemoveSerializer
+    queryset = IndexTemplate.objects.all()
+
+    def object_action(self, request, serializer):
+        document_type = serializer.validated_data['document_type']
+        self.object._event_actor = self.request.user
+        self.object.document_types_remove(queryset=[document_type])
 
 
 class APIIndexTemplateRebuildView(generics.ObjectActionAPIView):
@@ -165,9 +224,9 @@ class APIIndexTemplateRebuildView(generics.ObjectActionAPIView):
     """
     lookup_url_kwarg = 'index_template_id'
     mayan_object_permissions = {
-        'POST': (permission_document_indexing_rebuild,)
+        'POST': (permission_index_template_rebuild,)
     }
-    queryset = Index.objects.all()
+    queryset = IndexTemplate.objects.all()
 
     def object_action(self, request, serializer):
         task_rebuild_index.apply_async(
@@ -181,9 +240,9 @@ class APIIndexTemplateResetView(generics.ObjectActionAPIView):
     """
     lookup_url_kwarg = 'index_template_id'
     mayan_object_permissions = {
-        'POST': (permission_document_indexing_rebuild,)
+        'POST': (permission_index_template_rebuild,)
     }
-    queryset = Index.objects.all()
+    queryset = IndexTemplate.objects.all()
 
     def object_action(self, request, serializer):
         self.object.reset()
@@ -191,11 +250,11 @@ class APIIndexTemplateResetView(generics.ObjectActionAPIView):
 
 class APIIndexTemplateNodeViewMixin(AsymmetricSerializerAPIViewMixin):
     object_permissions = {
-        'GET': permission_document_indexing_view,
-        'PATCH': permission_document_indexing_edit,
-        'PUT': permission_document_indexing_edit,
-        'POST': permission_document_indexing_edit,
-        'DELETE': permission_document_indexing_edit
+        'GET': permission_index_template_view,
+        'PATCH': permission_index_template_edit,
+        'PUT': permission_index_template_edit,
+        'POST': permission_index_template_edit,
+        'DELETE': permission_index_template_edit
     }
     read_serializer_class = IndexTemplateNodeSerializer
     write_serializer_class = IndexTemplateNodeWriteSerializer
@@ -211,7 +270,7 @@ class APIIndexTemplateNodeViewMixin(AsymmetricSerializerAPIViewMixin):
             permission = self.object_permissions[self.request.method]
 
             queryset = AccessControlList.objects.restrict_queryset(
-                permission=permission, queryset=Index.objects.all(),
+                permission=permission, queryset=IndexTemplate.objects.all(),
                 user=self.request.user
             )
 

@@ -5,8 +5,8 @@ from mayan.apps.documents.models import Document
 from mayan.apps.templating.fields import ModelTemplateField
 from mayan.apps.views.forms import FilteredSelectionForm
 
-from .models import Index, IndexTemplateNode
-from .permissions import permission_document_indexing_rebuild
+from .models import IndexTemplate, IndexTemplateNode
+from .permissions import permission_index_template_rebuild
 
 
 class IndexTemplateFilteredForm(FilteredSelectionForm):
@@ -15,8 +15,8 @@ class IndexTemplateFilteredForm(FilteredSelectionForm):
         field_name = 'index_templates'
         help_text = _('Index templates to be queued for rebuilding.')
         label = _('Index templates')
-        queryset = Index.objects.filter(enabled=True)
-        permission = permission_document_indexing_rebuild
+        queryset = IndexTemplate.objects.filter(enabled=True)
+        permission = permission_index_template_rebuild
         widget_attributes = {'class': 'select2'}
 
 

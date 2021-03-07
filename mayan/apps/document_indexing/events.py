@@ -7,8 +7,8 @@ namespace = EventTypeNamespace(
 )
 
 event_index_template_created = namespace.add_event_type(
-    label=_('Index created'), name='index_created'
+    label=_('Index template created'), name='index_created'
 )
 event_index_template_edited = namespace.add_event_type(
-    label=_('Index edited'), name='index_edited'
+    label=_('Index template edited'), name='index_edited'
 )

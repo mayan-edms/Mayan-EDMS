@@ -9,22 +9,25 @@ from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.documents.events import event_document_type_edited
+from mayan.apps.common.model_mixins import ExtraDataModelMixin
 from mayan.apps.documents.models import Document, DocumentType
 from mayan.apps.documents.permissions import permission_document_view
+from mayan.apps.events.classes import EventManagerSave
+from mayan.apps.events.decorators import method_event
 from mayan.apps.lock_manager.backends.base import LockingBackend
 from mayan.apps.lock_manager.exceptions import LockError
 from mayan.apps.templating.classes import Template
 
 from .events import event_index_template_created, event_index_template_edited
 from .managers import (
-    DocumentIndexInstanceNodeManager, IndexManager, IndexInstanceNodeManager
+    DocumentIndexInstanceNodeManager, IndexTemplateManager,
+    IndexInstanceNodeManager
 )
 
 logger = logging.getLogger(name=__name__)
 
 
-class Index(models.Model):
+class IndexTemplate(ExtraDataModelMixin, models.Model):
     """
     Parent model that defines an index and hold all the relationship for its
     template and instance when resolved.
@@ -47,11 +50,11 @@ class Index(models.Model):
         verbose_name=_('Enabled')
     )
     document_types = models.ManyToManyField(
-        related_name='indexes', to=DocumentType,
+        related_name='index_templates', to=DocumentType,
         verbose_name=_('Document types')
     )
 
-    objects = IndexManager()
+    objects = IndexTemplateManager()
 
     class Meta:
         ordering = ('label',)
@@ -61,27 +64,23 @@ class Index(models.Model):
     def __str__(self):
         return self.label
 
-    def document_types_add(self, queryset, _user=None):
-        with transaction.atomic():
-            event_index_template_edited.commit(
-                actor=_user, target=self
-            )
-            for obj in queryset:
-                self.document_types.add(obj)
-                event_document_type_edited.commit(
-                    actor=_user, action_object=self, target=obj
-                )
+    def document_types_add(self, queryset, _event_actor=None):
+        for document_type in queryset:
+            self.document_types.add(document_type)
 
-    def document_types_remove(self, queryset, _user=None):
-        with transaction.atomic():
             event_index_template_edited.commit(
-                actor=_user, target=self
+                action_object=document_type,
+                actor=_event_actor or self._event_actor, target=self
             )
-            for obj in queryset:
-                self.document_types.remove(obj)
-                event_document_type_edited.commit(
-                    actor=_user, action_object=self, target=obj
-                )
+
+    def document_types_remove(self, queryset, _event_actor=None):
+        for document_type in queryset:
+            self.document_types.remove(document_type)
+
+            event_index_template_edited.commit(
+                action_object=document_type,
+                actor=_event_actor or self._event_actor, target=self
+            )
 
     def get_absolute_url(self):
         try:
@@ -171,23 +170,23 @@ class Index(models.Model):
         # Create the new root index instance node
         self.template_root.index_instance_nodes.create()
 
+    @method_event(
+        event_manager_class=EventManagerSave,
+        created={
+            'event': event_index_template_created,
+            'target': 'self',
+        },
+        edited={
+            'event': event_index_template_edited,
+            'target': 'self',
+        }
+    )
     def save(self, *args, **kwargs):
-        _user = kwargs.pop('_user', None)
-
-        with transaction.atomic():
-            is_new = not self.pk
-            super().save(*args, **kwargs)
-            if is_new:
-                # Automatically create the root index template node
-                IndexTemplateNode.objects.get_or_create(parent=None, index=self)
-
-                event_index_template_created.commit(
-                    actor=_user, target=self
-                )
-            else:
-                event_index_template_edited.commit(
-                    actor=_user, target=self
-                )
+        is_new = not self.pk
+        super().save(*args, **kwargs)
+        if is_new:
+            # Automatically create the root index template node
+            IndexTemplateNode.objects.get_or_create(parent=None, index=self)
 
         self.initialize_instance_root()
 
@@ -210,8 +209,8 @@ class IndexTemplateNode(MPTTModel):
         related_name='children', to='self',
     )
     index = models.ForeignKey(
-        on_delete=models.CASCADE, related_name='node_templates', to=Index,
-        verbose_name=_('Index')
+        on_delete=models.CASCADE, related_name='node_templates',
+        to=IndexTemplate, verbose_name=_('Index')
     )
     expression = models.TextField(
         help_text=_(
@@ -335,7 +334,7 @@ class IndexTemplateNode(MPTTModel):
         self.index_instance_nodes.get_or_create(parent=None)
 
 
-class IndexInstance(Index):
+class IndexInstance(IndexTemplate):
     """
     Model that represents an evaluated index. This is an index whose nodes
     have been evaluated against a series of documents. If is a proxy model

@@ -1,5 +1,5 @@
 from mayan.apps.document_indexing.models import Index, IndexInstanceNode
-from mayan.apps.document_indexing.tests.literals import TEST_INDEX_LABEL
+from mayan.apps.document_indexing.tests.literals import TEST_INDEX_TEMPLATE_LABEL
 from mayan.apps.documents.tests.base import DocumentTestMixin
 from mayan.apps.testing.tests.base import BaseTransactionTestCase
 
@@ -12,11 +12,11 @@ class IndexingTestCase(DocumentTestMixin, BaseTransactionTestCase):
     auto_upload_test_document = False
 
     def test_indexing(self):
-        self.test_index = Index.objects.create(label=TEST_INDEX_LABEL)
-        self.test_index.document_types.add(self.test_document_type)
+        self.test_index_template = Index.objects.create(label=TEST_INDEX_TEMPLATE_LABEL)
+        self.test_index_template.document_types.add(self.test_document_type)
 
-        root = self.test_index.template_root
-        self.test_index.node_templates.create(
+        root = self.test_index_template.template_root
+        self.test_index_template.node_templates.create(
             parent=root, expression=TEST_FILE_METADATA_INDEX_NODE_TEMPLATE,
             link_documents=True
         )
