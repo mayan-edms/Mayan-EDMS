@@ -13,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-06 06:12+0000\n"
-"PO-Revision-Date: 2020-10-01 22:14+0000\n"
-"Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
+"POT-Creation-Date: 2021-03-07 03:26+0000\n"
+"PO-Revision-Date: 2021-03-06 15:21+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -347,10 +347,10 @@ msgstr "Editar Indice: %s"
 
 #: views.py:144
 msgid ""
-"Indexes group document automatically into levels. Indexe are defined using "
+"Indexes group document automatically into levels. Indexes are defined using "
 "template whose markers are replaced with direct properties of documents like"
 " label or description, or that of extended properties like metadata."
-msgstr "Índices agrupam documentos automaticamente em níveis. Índices são definidos usando modelos cujos marcadores são substituídos por propriedades diretas de documentos, como rótulo ou descrição, ou propriedades estendidas, como metadados."
+msgstr ""
 
 #: views.py:149
 msgid "There are no indexes."
@@ -407,9 +407,9 @@ msgstr "Editar o nó de template de índice: %s?"
 
 #: views.py:328
 msgid ""
-"This could mean that no index templates have been created or that there "
+"This could mean that no index templates have been created or that there are "
 "index templates but they are no properly defined."
-msgstr "Isso pode significar que nenhum template de índice foi criado ou que existem templates de índice, mas eles não foram definidos apropriadamente."
+msgstr ""
 
 #: views.py:332
 msgid "There are no index instances available."

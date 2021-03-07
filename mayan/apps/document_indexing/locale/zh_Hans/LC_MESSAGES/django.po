@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-06 06:12+0000\n"
-"PO-Revision-Date: 2020-09-27 06:46+0000\n"
+"POT-Creation-Date: 2021-03-07 03:26+0000\n"
+"PO-Revision-Date: 2021-03-06 15:21+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-edms/language/zh-Hans/)\n"
 "MIME-Version: 1.0\n"
@@ -344,10 +344,10 @@ msgstr "编辑索引：%s"
 
 #: views.py:144
 msgid ""
-"Indexes group document automatically into levels. Indexe are defined using "
+"Indexes group document automatically into levels. Indexes are defined using "
 "template whose markers are replaced with direct properties of documents like"
 " label or description, or that of extended properties like metadata."
-msgstr "索引将文档自动分组到级别。 索引是使用模板定义的，其标记被替换为标签或描述等文档的直接属性，或者像元数据等的扩展属性。"
+msgstr ""
 
 #: views.py:149
 msgid "There are no indexes."
@@ -404,9 +404,9 @@ msgstr "编辑索引模板节点：%s？"
 
 #: views.py:328
 msgid ""
-"This could mean that no index templates have been created or that there "
+"This could mean that no index templates have been created or that there are "
 "index templates but they are no properly defined."
-msgstr "这可能意味着没有创建索引模板或索引模板没有正确定义。"
+msgstr ""
 
 #: views.py:332
 msgid "There are no index instances available."

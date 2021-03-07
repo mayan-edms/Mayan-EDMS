@@ -6,13 +6,13 @@
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # Lory977 <helga.carrero@gmail.com>, 2015
-# Roberto Rosario, 2016-2020
+# Roberto Rosario, 2016-2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-06 06:12+0000\n"
-"PO-Revision-Date: 2020-09-27 07:00+0000\n"
+"POT-Creation-Date: 2021-03-07 03:26+0000\n"
+"PO-Revision-Date: 2021-03-06 15:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -345,10 +345,10 @@ msgstr "Editar índice: %s"
 
 #: views.py:144
 msgid ""
-"Indexes group document automatically into levels. Indexe are defined using "
+"Indexes group document automatically into levels. Indexes are defined using "
 "template whose markers are replaced with direct properties of documents like"
 " label or description, or that of extended properties like metadata."
-msgstr "Los índices agrupan el documento automáticamente en niveles. Los índices se definen mediante una plantilla cuyos marcadores se reemplazan con propiedades directas de documentos como etiqueta o descripción, o el de propiedades extendidas como metadatos."
+msgstr "Los índices agrupan el documento automáticamente en niveles. Los índices se definen utilizando una plantilla cuyos marcadores se reemplazan con propiedades directas de documentos como etiqueta o descripción, o propiedades extendidas como metadatos."
 
 #: views.py:149
 msgid "There are no indexes."
@@ -405,9 +405,9 @@ msgstr "¿Editar el nodo de plantilla de indice: %s?"
 
 #: views.py:328
 msgid ""
-"This could mean that no index templates have been created or that there "
+"This could mean that no index templates have been created or that there are "
 "index templates but they are no properly defined."
-msgstr "Esto podría significar que no se han creado plantillas de índice o que existen plantillas de índice, pero no están definidas correctamente."
+msgstr "Esto podría significar que no se han creado plantillas de índice o que hay plantillas de índice pero no están definidas correctamente."
 
 #: views.py:332
 msgid "There are no index instances available."

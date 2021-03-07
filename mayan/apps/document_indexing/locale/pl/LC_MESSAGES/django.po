@@ -12,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-06 06:12+0000\n"
-"PO-Revision-Date: 2020-11-06 18:43+0000\n"
-"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
+"POT-Creation-Date: 2021-03-07 03:26+0000\n"
+"PO-Revision-Date: 2021-03-06 15:21+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -346,10 +346,10 @@ msgstr "Edytuj indeks: %s"
 
 #: views.py:144
 msgid ""
-"Indexes group document automatically into levels. Indexe are defined using "
+"Indexes group document automatically into levels. Indexes are defined using "
 "template whose markers are replaced with direct properties of documents like"
 " label or description, or that of extended properties like metadata."
-msgstr "Indeksuje dokumenty grupowe automatycznie według poziomów. Indexy są definiowane przy użyciu szablonu, którego znaczniki są zastępowane bezpośrednimi właściwościami dokumentów, takich jak etykieta lub opis, lub właściwości rozszerzonych, takich jak metadane."
+msgstr ""
 
 #: views.py:149
 msgid "There are no indexes."
@@ -406,9 +406,9 @@ msgstr "Edytować węzeł szablonu indeksu: %s?"
 
 #: views.py:328
 msgid ""
-"This could mean that no index templates have been created or that there "
+"This could mean that no index templates have been created or that there are "
 "index templates but they are no properly defined."
-msgstr "Może to oznaczać, że nie utworzono żadnych szablonów indeksów lub że istnieją szablony indeksów, ale nie są one odpowiednio zdefiniowane."
+msgstr ""
 
 #: views.py:332
 msgid "There are no index instances available."

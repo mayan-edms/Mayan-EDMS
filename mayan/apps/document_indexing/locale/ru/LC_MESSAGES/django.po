@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-06 06:12+0000\n"
-"PO-Revision-Date: 2021-03-03 11:52+0000\n"
-"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
+"POT-Creation-Date: 2021-03-07 03:26+0000\n"
+"PO-Revision-Date: 2021-03-06 15:21+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -344,10 +344,10 @@ msgstr "Редактировать индекс: %s"
 
 #: views.py:144
 msgid ""
-"Indexes group document automatically into levels. Indexe are defined using "
+"Indexes group document automatically into levels. Indexes are defined using "
 "template whose markers are replaced with direct properties of documents like"
 " label or description, or that of extended properties like metadata."
-msgstr "Индексы автоматически группируют документы по уровням. Индексы определяются с использованием шаблонов, маркеры которых заменяются прямыми свойствами документов, такими как заголовок или описание, или расширенными свойствами, такими как метаданные."
+msgstr ""
 
 #: views.py:149
 msgid "There are no indexes."
@@ -404,9 +404,9 @@ msgstr "Редактировать узел шаблона индекса: %s?"
 
 #: views.py:328
 msgid ""
-"This could mean that no index templates have been created or that there "
+"This could mean that no index templates have been created or that there are "
 "index templates but they are no properly defined."
-msgstr "Это может означать, что шаблоны индексов не были созданы или есть шаблоны индексов, но они не определены должным образом."
+msgstr ""
 
 #: views.py:332
 msgid "There are no index instances available."

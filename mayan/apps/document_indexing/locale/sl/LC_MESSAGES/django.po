@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-06 06:12+0000\n"
-"PO-Revision-Date: 2020-12-25 10:59+0000\n"
-"Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>\n"
+"POT-Creation-Date: 2021-03-07 03:26+0000\n"
+"PO-Revision-Date: 2021-03-06 15:21+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Slovenian (http://www.transifex.com/rosarior/mayan-edms/language/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -343,10 +343,10 @@ msgstr "Uredi kazalo: %s"
 
 #: views.py:144
 msgid ""
-"Indexes group document automatically into levels. Indexe are defined using "
+"Indexes group document automatically into levels. Indexes are defined using "
 "template whose markers are replaced with direct properties of documents like"
 " label or description, or that of extended properties like metadata."
-msgstr "Kazalo samodejno razvrsti dokument v ravni. Indeksi so definirani z uporabo predloge, katere oznake so nadomeščene z neposrednimi lastnostmi dokumentov, kot so nalepka ali opis, ali razširjenimi lastnostmi, kot so metapodatki."
+msgstr ""
 
 #: views.py:149
 msgid "There are no indexes."
@@ -403,9 +403,9 @@ msgstr "Uredi vozlišče predloge kazala: %s?"
 
 #: views.py:328
 msgid ""
-"This could mean that no index templates have been created or that there "
+"This could mean that no index templates have been created or that there are "
 "index templates but they are no properly defined."
-msgstr "To lahko pomeni, da predloge kazala niso bile ustvarjene ali da obstajajo predloge kazala, vendar niso pravilno definirane."
+msgstr ""
 
 #: views.py:332
 msgid "There are no index instances available."

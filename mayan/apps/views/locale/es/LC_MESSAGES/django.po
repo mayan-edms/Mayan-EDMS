@@ -5,15 +5,15 @@
 # 
 # Translators:
 # Lory977 <helga.carrero@gmail.com>, 2020
-# Roberto Rosario, 2020
+# Roberto Rosario, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-06 06:12+0000\n"
+"POT-Creation-Date: 2021-03-07 03:26+0000\n"
 "PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Roberto Rosario, 2020\n"
+"Last-Translator: Roberto Rosario, 2021\n"
 "Language-Team: Spanish (https://www.transifex.com/rosarior/teams/13584/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -113,36 +113,37 @@ msgstr "No se encontró %(verbose_name)s que coincida con la consulta"
 #, python-format
 msgid "Unable to perform operation on object %(instance)s; %(exception)s."
 msgstr ""
+"No se puede realizar la operación en el objeto %(instance)s; %(exception)s."
 
 #: mixins.py:351
 #, python-format
 msgid "Operation performed on %(object)s."
-msgstr ""
+msgstr "Operación realizada en %(object)s."
 
 #: mixins.py:352
 #, python-format
 msgid "Operation performed on %(count)d object."
-msgstr ""
+msgstr "Operación realizada en %(count)d objeto."
 
 #: mixins.py:353
 #, python-format
 msgid "Operation performed on %(count)d objects."
-msgstr ""
+msgstr "Operación realizada en %(count)d objetos."
 
 #: mixins.py:354
 #, python-format
 msgid "Perform operation on %(object)s."
-msgstr ""
+msgstr "Realizar operación en %(object)s."
 
 #: mixins.py:355
 #, python-format
 msgid "Perform operation on %(count)d object."
-msgstr ""
+msgstr "Realizar operación en %(count)d objeto."
 
 #: mixins.py:356
 #, python-format
 msgid "Perform operation on %(count)d objects."
-msgstr ""
+msgstr "Realizar la operación en %(count)d objetos."
 
 #: mixins.py:438
 msgid "Object"
