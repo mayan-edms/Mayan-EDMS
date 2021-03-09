@@ -247,3 +247,11 @@
   single underscore. This allows supporting drivers and entries that might
   contain an underscore themselves.
 - Add ``databases`` app to group data and models related code.
+- Add sorting support to the API.
+- Updated how the user interface column sorting works. The code was
+  simplified by using a single query variable. The code was expanded
+  to support multiple fields in the future. The URL query key used for
+  column sorting was changed to match the API sorting.a
+- Added the ``databases`` app. This app groups data and models related code.
+- Added a patch for Django's ``Migration`` class to display time delta for
+  each migration during development.
