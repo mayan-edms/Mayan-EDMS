@@ -26,6 +26,7 @@ class APIRoleListView(generics.ListCreateAPIView):
     """
     mayan_object_permissions = {'GET': (permission_role_view,)}
     mayan_view_permissions = {'POST': (permission_role_create,)}
+    ordering_fields = ('label',)
     queryset = Role.objects.all()
 
     def get_instance_extra_data(self):

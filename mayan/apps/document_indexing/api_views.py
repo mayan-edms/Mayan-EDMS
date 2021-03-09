@@ -88,6 +88,8 @@ class APIIndexInstanceNodeListView(
     get: Returns a list of all the template nodes for the selected index.
     post: Create a new index template node.
     """
+    ordering_fields = ('values',)
+
     def get_queryset(self):
         return self.get_index_instance().get_children()
 
@@ -134,6 +136,7 @@ class APIIndexTemplateListView(generics.ListCreateAPIView):
     """
     mayan_object_permissions = {'GET': (permission_index_template_view,)}
     mayan_view_permissions = {'POST': (permission_index_template_create,)}
+    ordering_fields = ('enabled', 'label', 'slug')
     queryset = IndexTemplate.objects.all()
     serializer_class = IndexTemplateSerializer
 
@@ -218,36 +221,6 @@ class APIIndexTemplateDocumentTypeRemoveView(generics.ObjectActionAPIView):
         self.object.document_types_remove(queryset=[document_type])
 
 
-class APIIndexTemplateRebuildView(generics.ObjectActionAPIView):
-    """
-    post: Rebuild the selected index template.
-    """
-    lookup_url_kwarg = 'index_template_id'
-    mayan_object_permissions = {
-        'POST': (permission_index_template_rebuild,)
-    }
-    queryset = IndexTemplate.objects.all()
-
-    def object_action(self, request, serializer):
-        task_rebuild_index.apply_async(
-            kwargs=dict(index_id=self.object.pk)
-        )
-
-
-class APIIndexTemplateResetView(generics.ObjectActionAPIView):
-    """
-    post: Reset the selected index template.
-    """
-    lookup_url_kwarg = 'index_template_id'
-    mayan_object_permissions = {
-        'POST': (permission_index_template_rebuild,)
-    }
-    queryset = IndexTemplate.objects.all()
-
-    def object_action(self, request, serializer):
-        self.object.reset()
-
-
 class APIIndexTemplateNodeViewMixin(AsymmetricSerializerAPIViewMixin):
     object_permissions = {
         'GET': permission_index_template_view,
@@ -291,6 +264,8 @@ class APIIndexTemplateNodeListView(
     get: Returns a list of all the template nodes for the selected index.
     post: Create a new index template node.
     """
+    ordering_fields = ('enabled', 'link_documents')
+
     def get_queryset(self):
         return self.get_index_template().template_root.get_children()
 
@@ -308,3 +283,33 @@ class APIIndexTemplateNodeDetailView(
 
     def get_queryset(self):
         return self.get_index_template().node_templates.all()
+
+
+class APIIndexTemplateRebuildView(generics.ObjectActionAPIView):
+    """
+    post: Rebuild the selected index template.
+    """
+    lookup_url_kwarg = 'index_template_id'
+    mayan_object_permissions = {
+        'POST': (permission_index_template_rebuild,)
+    }
+    queryset = IndexTemplate.objects.all()
+
+    def object_action(self, request, serializer):
+        task_rebuild_index.apply_async(
+            kwargs=dict(index_id=self.object.pk)
+        )
+
+
+class APIIndexTemplateResetView(generics.ObjectActionAPIView):
+    """
+    post: Reset the selected index template.
+    """
+    lookup_url_kwarg = 'index_template_id'
+    mayan_object_permissions = {
+        'POST': (permission_index_template_rebuild,)
+    }
+    queryset = IndexTemplate.objects.all()
+
+    def object_action(self, request, serializer):
+        self.object.reset()

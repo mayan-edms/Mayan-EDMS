@@ -26,6 +26,7 @@ class APIAssetListView(generics.ListCreateAPIView):
     """
     mayan_object_permissions = {'GET': (permission_asset_view,)}
     mayan_view_permissions = {'POST': (permission_asset_create,)}
+    ordering_fields = ('internal_name', 'label')
     queryset = Asset.objects.all()
     serializer_class = AssetSerializer
 

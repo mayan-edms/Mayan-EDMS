@@ -24,6 +24,7 @@ class APITagListView(generics.ListCreateAPIView):
     """
     mayan_object_permissions = {'GET': (permission_tag_view,)}
     mayan_view_permissions = {'POST': (permission_tag_create,)}
+    ordering_fields = ('label',)
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
 

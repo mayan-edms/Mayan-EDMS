@@ -560,7 +560,7 @@ class DocumentsApp(MayanAppConfig):
 
         SourceColumn(
             attribute='document_type', include_label=True, is_sortable=True,
-            label=_('Type'), order=-9, source=Document,
+            label=_('Type'), order=-9, source=Document
         )
         SourceColumn(
             func=lambda context: context['object'].pages.count(),

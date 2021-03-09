@@ -152,6 +152,7 @@ class APISmartLinkConditionListView(generics.ListCreateAPIView):
     get: Returns a list of all the smart link conditions.
     post: Create a new smart link condition.
     """
+    ordering_fields = ('enabled',)
     serializer_class = SmartLinkConditionSerializer
 
     def get_queryset(self):
@@ -270,6 +271,7 @@ class APISmartLinkView(generics.RetrieveUpdateDestroyAPIView):
         'PATCH': (permission_smart_link_edit,),
         'PUT': (permission_smart_link_edit,)
     }
+    ordering_fields = ('dynamic_label', 'enabled', 'label')
     queryset = SmartLink.objects.all()
 
     def get_serializer(self, *args, **kwargs):

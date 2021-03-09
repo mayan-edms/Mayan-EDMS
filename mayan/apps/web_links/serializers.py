@@ -84,4 +84,3 @@ class ResolvedWebLinkSerializer(serializers.HyperlinkedModelSerializer):
             }, request=self.context['request'],
             format=self.context['format']
         )
-    #####

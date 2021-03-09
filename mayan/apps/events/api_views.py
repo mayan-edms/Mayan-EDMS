@@ -20,6 +20,7 @@ class APIObjectEventListView(generics.ListAPIView):
     """
     get: Return a list of events for the specified object.
     """
+    ordering_fields = ('timestamp',)
     serializer_class = EventSerializer
 
     def get_object(self):
@@ -116,6 +117,7 @@ class APIEventListView(generics.ListAPIView):
     get: Returns a list of all the available events.
     """
     mayan_view_permissions = {'GET': (permission_events_view,)}
+    ordering_fields = ('timestamp',)
     queryset = Action.objects.all()
     serializer_class = EventSerializer
 
@@ -131,6 +133,7 @@ class APINotificationListView(generics.ListAPIView):
     """
     get: Return a list of notifications for the current user.
     """
+    ordering_fields = ('action__timestamp', 'read')
     serializer_class = NotificationSerializer
 
     def get_queryset(self):
