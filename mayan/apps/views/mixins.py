@@ -18,7 +18,8 @@ from .exceptions import ActionError
 from .forms import DynamicForm
 from .literals import (
     PK_LIST_SEPARATOR, TEXT_CHOICE_ITEMS, TEXT_CHOICE_LIST,
-    TEXT_LIST_AS_ITEMS_PARAMETER, TEXT_LIST_AS_ITEMS_VARIABLE_NAME
+    TEXT_LIST_AS_ITEMS_PARAMETER, TEXT_LIST_AS_ITEMS_VARIABLE_NAME,
+    TEXT_SORT_FIELD_PARAMETER, TEXT_SORT_FIELD_VARIABLE_NAME,
 )
 
 
@@ -535,6 +536,30 @@ class RestrictedQuerysetViewMixin:
                 )
 
         return self.source_queryset.all()
+
+
+class SortingViewMixin:
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context.update(
+            {
+                TEXT_SORT_FIELD_VARIABLE_NAME: self.get_sort_fields(),
+            }
+        )
+        return context
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        sort_fields = self.get_sort_fields()
+        if sort_fields:
+            queryset = queryset.order_by(*sort_fields.split(','))
+
+        return queryset
+
+    def get_sort_fields(self):
+        return self.request.GET.get(TEXT_SORT_FIELD_PARAMETER)
 
 
 class ViewPermissionCheckViewMixin:

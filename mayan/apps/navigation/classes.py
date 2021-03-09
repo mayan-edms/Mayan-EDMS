@@ -20,10 +20,9 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.common.settings import setting_home_view
 from mayan.apps.common.utils import get_related_field, resolve_attribute
 from mayan.apps.permissions import Permission
+from mayan.apps.views.icons import icon_sort_down, icon_sort_up
 from mayan.apps.views.literals import (
-    TEXT_SORT_FIELD_PARAMETER, TEXT_SORT_FIELD_VARIABLE_NAME,
-    TEXT_SORT_ORDER_CHOICE_ASCENDING, TEXT_SORT_ORDER_CHOICE_DESCENDING,
-    TEXT_SORT_ORDER_PARAMETER, TEXT_SORT_ORDER_VARIABLE_NAME
+    TEXT_SORT_FIELD_PARAMETER, TEXT_SORT_FIELD_VARIABLE_NAME
 )
 
 from .html_widgets import SourceColumnLinkWidget
@@ -799,6 +798,16 @@ class SourceColumn:
             if result:
                 return result.get_absolute_url()
 
+    def get_previous_sort_fields(self, context):
+        previous_sort_fields = context.get(TEXT_SORT_FIELD_VARIABLE_NAME, None)
+
+        if previous_sort_fields:
+            previous_sort_fields = previous_sort_fields.split(',')
+        else:
+            previous_sort_fields = ()
+
+        return previous_sort_fields
+
     def get_sort_field(self):
         if self.sort_field:
             return self.sort_field
@@ -809,23 +818,27 @@ class SourceColumn:
         # We do this to get an mutable copy we can modify
         querystring = context.request.GET.copy()
 
-        previous_sort_field = context.get(TEXT_SORT_FIELD_VARIABLE_NAME, None)
-        previous_sort_order = context.get(
-            TEXT_SORT_ORDER_VARIABLE_NAME, TEXT_SORT_ORDER_CHOICE_DESCENDING
-        )
+        previous_sort_fields = self.get_previous_sort_fields(context=context)
 
-        if previous_sort_field != self.get_sort_field():
-            sort_order = TEXT_SORT_ORDER_CHOICE_ASCENDING
+        sort_field = self.get_sort_field()
+
+        if sort_field in previous_sort_fields:
+            result = '-{}'.format(sort_field)
         else:
-            if previous_sort_order == TEXT_SORT_ORDER_CHOICE_DESCENDING:
-                sort_order = TEXT_SORT_ORDER_CHOICE_ASCENDING
-            else:
-                sort_order = TEXT_SORT_ORDER_CHOICE_DESCENDING
+            result = '{}'.format(sort_field)
 
-        querystring[TEXT_SORT_FIELD_PARAMETER] = self.get_sort_field()
-        querystring[TEXT_SORT_ORDER_PARAMETER] = sort_order
+        querystring[TEXT_SORT_FIELD_PARAMETER] = result
 
         return '?{}'.format(querystring.urlencode())
+
+    def get_sort_icon(self, context):
+        previous_sort_fields = self.get_previous_sort_fields(context=context)
+        sort_field = self.get_sort_field()
+
+        if sort_field in previous_sort_fields:
+            return icon_sort_down
+        elif '-{}'.format(sort_field) in previous_sort_fields:
+            return icon_sort_up
 
     def resolve(self, context):
         if self.attribute:

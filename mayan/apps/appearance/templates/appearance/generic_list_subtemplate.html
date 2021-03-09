@@ -34,9 +34,10 @@
                                                 <span style="white-space: nowrap">
                                                     {% if source_column.is_sortable %}
                                                         <a href="{% navigation_get_sort_field_querystring column=source_column %}">{{ source_column.label }}</a>
-                                                            {% if source_column.get_sort_field == sort_field %}
+                                                            {% navigation_source_column_get_sort_icon column=source_column as icon_sort %}
+                                                            {% if icon_sort %}
                                                                 <span class="appearance-list-column-sort-icon">
-                                                                    {% if icon_sort %}{{ icon_sort.render }}{% endif %}
+                                                                    {{ icon_sort.render }}
                                                                 </span>
                                                             {% endif %}
                                                     {% else %}
@@ -55,9 +56,10 @@
                                                 <span style="white-space: nowrap">
                                                     {% if source_column.is_sortable %}
                                                         <a href="{% navigation_get_sort_field_querystring column=source_column %}">{{ source_column.label }}</a>
-                                                            {% if source_column.get_sort_field == sort_field %}
+                                                            {% navigation_source_column_get_sort_icon column=source_column as icon_sort %}
+                                                            {% if icon_sort %}
                                                                 <span class="appearance-list-column-sort-icon">
-                                                                    {% if icon_sort %}{{ icon_sort.render }}{% endif %}
+                                                                    {{ icon_sort.render }}
                                                                 </span>
                                                             {% endif %}
                                                     {% else %}

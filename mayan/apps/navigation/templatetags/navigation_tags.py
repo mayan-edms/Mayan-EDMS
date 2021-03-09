@@ -68,6 +68,15 @@ def navigation_resolve_menus(context, names, source=None, sort_results=None):
 
 
 @register.simple_tag(takes_context=True)
+def navigation_source_column_get_sort_icon(context, column):
+    if column:
+        result = column.get_sort_icon(context=context)
+        return result
+    else:
+        return ''
+
+
+@register.simple_tag(takes_context=True)
 def navigation_source_column_resolve(context, column):
     if column:
         result = column.resolve(context=context)
