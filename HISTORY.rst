@@ -6,6 +6,8 @@
   - Optimize file metadata migration 0003
 
 - Make the ``ObjectActionMixin`` messages translatable.
+- Use recent PIP to avoid installing Rust.
+- Specify which PIP version to use.
 
 3.5.5 (2021-01-05)
 ==================
