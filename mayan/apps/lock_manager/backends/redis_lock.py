@@ -5,15 +5,19 @@ from django.utils.encoding import force_text
 from mayan.apps.dependencies.exceptions import DependenciesException
 
 from ..exceptions import LockError
-from ..settings import setting_backend_arguments
+from ..settings import setting_backend_arguments, setting_default_lock_timeout
 
 from .base import LockingBackend
 from .literals import REDIS_LOCK_VERSION_REQUIRED
+
+SCAN_KEYS_COUNT = 5000
+REDIS_LOCK_NAME_PREFIX = '_mayan_lock:'
 
 
 class RedisLock(LockingBackend):
     @classmethod
     def acquire_lock(cls, name, timeout=None):
+        timeout = timeout or setting_default_lock_timeout.value
         super().acquire_lock(name=name, timeout=timeout)
         return RedisLock(name=name, timeout=timeout)
 
@@ -28,6 +32,20 @@ class RedisLock(LockingBackend):
     @classmethod
     def purge_locks(cls):
         super().purge_locks()
+        cache = cls.get_redis_connection()
+
+        cursor = '0'
+        while True:
+            cursor, keys = cache.scan(
+                count=SCAN_KEYS_COUNT, cursor=cursor, match='{}*'.format(
+                    REDIS_LOCK_NAME_PREFIX
+                )
+            )
+            if keys:
+                cache.delete(*keys)
+
+            if cursor == 0:
+                break
 
     def __init__(self, name, timeout):
         if redis.VERSION < REDIS_LOCK_VERSION_REQUIRED:
@@ -39,8 +57,9 @@ class RedisLock(LockingBackend):
             )
 
         self.name = name
-        redis_lock_instance = self.get_redis_connection().lock(
-            name=name, timeout=timeout, sleep=0.1, blocking_timeout=0.1
+        redis_lock_instance = self.__class__.get_redis_connection().lock(
+            name='{}{}'.format(REDIS_LOCK_NAME_PREFIX, name),
+            timeout=timeout, sleep=0.1, blocking_timeout=0.1
         )
         if redis_lock_instance.acquire():
             self.redis_lock_instance = redis_lock_instance

@@ -35,6 +35,7 @@ class FileLock(LockingBackend):
     @classmethod
     def acquire_lock(cls, name, timeout=None):
         super().acquire_lock(name=name, timeout=timeout)
+
         instance = FileLock(
             name=name, timeout=timeout or setting_default_lock_timeout.value
         )
