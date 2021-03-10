@@ -13,7 +13,6 @@ from django.utils.encoding import force_bytes, force_text
 from mayan.apps.storage.settings import setting_temporary_directory
 
 from ..exceptions import LockError
-from ..settings import setting_default_lock_timeout
 
 from .base import LockingBackend
 
@@ -33,16 +32,12 @@ class FileLock(LockingBackend):
     lock_file = lock_file
 
     @classmethod
-    def acquire_lock(cls, name, timeout=None):
-        super(FileLock, cls).acquire_lock(name=name, timeout=timeout)
-        instance = FileLock(
-            name=name, timeout=timeout or setting_default_lock_timeout.value
-        )
+    def _acquire_lock(cls, name, timeout):
+        instance = FileLock(name=name, timeout=timeout)
         return instance
 
     @classmethod
-    def purge_locks(cls):
-        super(FileLock, cls).purge_locks()
+    def _purge_locks(cls):
         lock.acquire()
         with open(file=cls.lock_file, mode='r+') as file_object:
             locks.lock(f=file_object, flags=locks.LOCK_EX)
@@ -64,9 +59,9 @@ class FileLock(LockingBackend):
 
         return result
 
-    def __init__(self, name, timeout=None):
+    def __init__(self, name, timeout):
         self.name = name
-        self.timeout = timeout or setting_default_lock_timeout.value
+        self.timeout = timeout
         self.uuid = force_text(s=uuid.uuid4())
 
         lock.acquire()
@@ -96,9 +91,7 @@ class FileLock(LockingBackend):
             file_object.write(json.dumps(obj=file_locks))
             lock.release()
 
-    def release(self):
-        super(FileLock, self).release()
-
+    def _release(self):
         lock.acquire()
         with open(file=self.__class__.lock_file, mode='r+') as file_object:
             locks.lock(f=file_object, flags=locks.LOCK_EX)

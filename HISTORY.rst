@@ -24,6 +24,12 @@
       Don't remove arguments from overloaded .save(). Pass all arguments to
       the super class save method. Scrapping the arguments hide errors
       during testing.
+    - 9fc9288b52d63aa288e430a9cc1f8fd1a4295747
+      Test communication with the locking backend when the app loads.
+      Add support for purging ``RedisLock`` backend locks.
+      Prefix all locks in the ``RedisLock`` backend to avoid name clashing
+      when using the same database.
+      Ensure the default timeout setting is used by the backends.
 
 - Move task manager app to the top of the installed apps. This ensures all
   queues are created before any other app tries to use them. Fixes the error:
@@ -1091,6 +1097,7 @@
 - Make file metadata StoredDriver fields unique. Relates to GitLab issue #720
   Thanks to Rob de Canha-Knight (@rssfed23) for the report and debug
   information.
+<<<<<<< HEAD
 - Fix the POP3 source under Python 3. GitLab issue #724. Thanks to Kevin
   Pawsey (@kevinpawsey) for the report and debug information.
 - Merge NFS troubleshooting section. Thanks to Rob de Canha-Knight
