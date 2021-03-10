@@ -30,10 +30,6 @@ class DocumentTypeQuickLabelSerializer(serializers.ModelSerializer):
 
 
 class DocumentTypeSerializer(serializers.HyperlinkedModelSerializer):
-    documents_url = serializers.HyperlinkedIdentityField(
-        lookup_url_kwarg='document_type_id',
-        view_name='rest_api:documenttype-document-list'
-    )
     quick_label_list_url = serializers.HyperlinkedIdentityField(
         lookup_url_kwarg='document_type_id',
         view_name='rest_api:documenttype-quicklabel-list'
@@ -47,8 +43,8 @@ class DocumentTypeSerializer(serializers.HyperlinkedModelSerializer):
             },
         }
         fields = (
-            'delete_time_period', 'delete_time_unit', 'documents_url',
-            'id', 'label', 'quick_label_list_url', 'trash_time_period',
-            'trash_time_unit', 'url'
+            'delete_time_period', 'delete_time_unit', 'id', 'label',
+            'quick_label_list_url', 'trash_time_period', 'trash_time_unit',
+            'url'
         )
         model = DocumentType
