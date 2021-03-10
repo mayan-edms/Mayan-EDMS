@@ -255,3 +255,4 @@
 - Added the ``databases`` app. This app groups data and models related code.
 - Added a patch for Django's ``Migration`` class to display time delta for
   each migration during development.
+- The Whoosh search backend is now the default search backend.
