@@ -1,4 +1,4 @@
-from django.db import migrations, models
+from django.db import migrations, models, reset_queries
 import django.db.models.deletion
 
 
@@ -9,7 +9,7 @@ def code_remap_document_version_pages_ocr_content(apps, schema_editor):
     document version page that is connected to the original document file
     page.
     """
-    cursor_primary = schema_editor.connection.create_cursor()
+    cursor_primary = schema_editor.connection.create_cursor(name='merged_content_page_id')
     cursor_secondary = schema_editor.connection.cursor()
 
     query = '''
@@ -17,7 +17,7 @@ def code_remap_document_version_pages_ocr_content(apps, schema_editor):
             "ocr_documentpageocrcontent"."content",
             "documents_documentversionpage"."id"
         FROM "ocr_documentpageocrcontent"
-        INNER JOIN
+        LEFT OUTER JOIN
             "documents_documentversionpage" ON (
                 "documents_documentversionpage"."object_id" = "ocr_documentpageocrcontent"."document_page_id"
             )
@@ -30,10 +30,11 @@ def code_remap_document_version_pages_ocr_content(apps, schema_editor):
         ) VALUES {};
     '''
 
-    FETCH_SIZE = 5000
+    FETCH_SIZE = 10000
 
     while True:
         rows = cursor_primary.fetchmany(FETCH_SIZE)
+
         if not rows:
             break
 
@@ -46,6 +47,7 @@ def code_remap_document_version_pages_ocr_content(apps, schema_editor):
             tuples += row
 
         cursor_secondary.execute(insert_query_final, tuples)
+        reset_queries()
 
 
 class Migration(migrations.Migration):
