@@ -24,7 +24,8 @@ def operation_purge_and_delete_caches(apps, schema_editor):
         app_label='file_caching', model_name='Cache'
     )
 
-    cursor_primary = schema_editor.connection.cursor()
+    cursor_primary = schema_editor.connection.create_cursor(name='file_caching_partition_files')
+    cursor_secondary = schema_editor.connection.cursor()
 
     query = '''
         SELECT
@@ -63,9 +64,9 @@ def operation_purge_and_delete_caches(apps, schema_editor):
             )
         )
 
-    cursor_primary.execute('DELETE FROM "file_caching_cachepartitionfile";')
-    cursor_primary.execute('DELETE FROM "file_caching_cachepartition";')
-    cursor_primary.execute('DELETE FROM "file_caching_cache";')
+    cursor_secondary.execute('DELETE FROM "file_caching_cachepartitionfile";')
+    cursor_secondary.execute('DELETE FROM "file_caching_cachepartition";')
+    cursor_secondary.execute('DELETE FROM "file_caching_cache";')
 
 
 def operation_update_storage_paths(apps, schema_editor):
