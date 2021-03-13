@@ -83,7 +83,7 @@ job_docker_push_minor:
     - docker push registry-1.docker.io/mayanedms/mayanedms:v"$DOCKER_VERSION"
   services:
     - docker:20-dind
-  stage: push_docker
+  stage: stage_push_docker
 
 job_docker_nightly:
   before_script:
