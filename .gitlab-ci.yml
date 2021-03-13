@@ -326,9 +326,8 @@ job_sqlite_test:
   <<: *job_base_test
   script:
     - . venv/bin/activate
-    - python manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci --nomigrations
-    - make test-all
-    - make test-all-migrations
+    - make test-all SETTINGS=mayan.settings.testing.gitlab-ci
+    - make test-all-migrations SETTINGS=mayan.settings.testing.gitlab-ci
 
 # Deploy
 
