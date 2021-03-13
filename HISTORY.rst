@@ -1,4 +1,4 @@
-3.4.22 (2021-03-06)
+3.4.22 (2021-03-13)
 ===================
 - Optimize file metadata migration 0003.
 - Update the MySQL client packages for Debian.
@@ -7,7 +7,7 @@
 
 3.4.21 (2020-12-31)
 ===================
-- Improve the Single Page App AJAX content escape logic. 
+- Improve the Single Page App AJAX content escape logic.
   This avoids an infinite login redirect loop on some browsers.
 - Avoid self-referencing dictionaries when resolving primary key
   URL keyword arguments.
@@ -399,6 +399,15 @@
 - Remove codecov dependency.
 - Remove pathlib2 dependency, it is now part of the standard Python library.
 - Remove Django's admindocs app
+
+3.3.18 (2021-03-13)
+===================
+- Optimize file metadata migration 0003.
+- Update Transifex client to version 0.13.7.
+- Specify which PIP version to use.
+- Use recent PIP to avoid installing Rust.
+- Backport GitLab CI improvements.
+- Backport Makefile improvements.
 
 3.3.17 (2020-04-09)
 ===================
