@@ -287,7 +287,7 @@ job_sqlite_upgrade_test:
     - apt-get install --yes --no-install-recommends -qq curl exiftool gcc ghostscript gnupg1 graphviz libfuse2 libjpeg-dev libmagic1 libpng-dev libtiff-dev make poppler-utils python3-venv python3-dev sane-utils tesseract-ocr tesseract-ocr-deu
     - python3 -m venv venv
     - . venv/bin/activate
-    - pip install pip=$PYTHON_PIP_VERSION
+    - pip install pip==$PYTHON_PIP_VERSION
     - pip install --requirement requirements.txt --requirement requirements/testing-base.txt --requirement requirements/build.txt
   cache:
     paths:
