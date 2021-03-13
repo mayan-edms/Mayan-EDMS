@@ -1,211 +1,257 @@
 stages:
-  - test
-  - build_python
-  - build_docker
-  - build_documentation
-  - push_python
-  - push_docker
-  - push_documentation
-  - deploy
+  - stage_test
+  - stage_build_python
+  - stage_build_docker
+  - stage_build_documentation
+  - stage_push_python
+  - stage_push_docker
+  - stage_push_documentation
+  - stage_deploy
 
 # Docker
+
 job_docker_build:
-  stage: build_docker
   image: docker:latest
-  services:
-    - docker:dind
-  before_script:
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  only:
+    - releases/all_major
+    - releases/all_minor
+    - releases/docker_major
+    - releases/docker_minor
   script:
-    - docker build --pull -t "$CI_REGISTRY_IMAGE" -f docker/Dockerfile .
+    - docker build --pull -t "mayanedms" -f docker/Dockerfile .
     - DOCKER_VERSION=`cat docker/rootfs/version`
-    - docker tag "$CI_REGISTRY_IMAGE" "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
-    - docker run --rm "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" run_tests
+    - docker tag "mayanedms" "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
+    - SERVICE_POSTGRES_IP=$(cat /etc/hosts | awk '{if ($2 == "postgres") print $1;}')
+    - docker run --rm --add-host="postgres:$SERVICE_POSTGRES_IP" -e MAYAN_DATABASES="{'default':{'ENGINE':'django.db.backends.postgresql_psycopg2','NAME':'mayan_edms','USER':'postgres','PASSWORD':'postgres','HOST':'postgres'}}" "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" run_tests
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
     - docker push "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
     - docker logout
-  only:
-    - releases/all
-    - releases/docker
-
-job_docker_push:
-  stage: push_docker
-  image: docker:latest
   services:
-    - docker:dind
+    - docker:20-dind
+    - postgres:10.15-alpine
+  stage: stage_build_docker
+  tags:
+    - postgres
+  variables:
+    POSTGRES_DB: "mayan_edms"
+    POSTGRES_PASSWORD: "postgres"
+
+job_docker_push_major:
   before_script:
     - apk add --no-cache python3
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  image: docker:latest
+  only:
+    - releases/all_major
+    - releases/docker_major
+  script:
+    - PYTHON_BIN=/usr/bin/python3
+    - DOCKER_VERSION=`cat docker/rootfs/version`
+    - docker pull "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
+    - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:v"$DOCKER_VERSION"
+    - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:latest
+    - VERSION_SCRIPT_BIN=contrib/scripts/version.py
+    - MAJOR_VERSION=$($PYTHON_BIN $VERSION_SCRIPT_BIN $DOCKER_VERSION major);
+    - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:s"$MAJOR_VERSION"
+    - MINOR_VERSION=$($PYTHON_BIN $VERSION_SCRIPT_BIN $DOCKER_VERSION minor);
+    - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:s"$MINOR_VERSION"
+    - docker logout
+    - docker login -u "$DOCKER_HUB_USERNAME" -p "$DOCKER_HUB_PASSWORD" https://registry-1.docker.io
+    - docker push registry-1.docker.io/mayanedms/mayanedms:v"$DOCKER_VERSION"
+    - docker push registry-1.docker.io/mayanedms/mayanedms:latest
+    - docker push registry-1.docker.io/mayanedms/mayanedms:s"$MAJOR_VERSION"
+    - docker push registry-1.docker.io/mayanedms/mayanedms:s"$MINOR_VERSION"
+  services:
+    - docker:20-dind
+  stage: stage_push_docker
+
+job_docker_push_minor:
+  before_script:
+    - apk add --no-cache python3
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  image: docker:latest
+  only:
+    - releases/all_minor
+    - releases/docker_minor
   script:
     - PYTHON_BIN=/usr/bin/python3
     - DOCKER_VERSION=`cat docker/rootfs/version`
     - docker pull "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
     - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:"$DOCKER_VERSION"
-    - VERSION_SCRIPT_BIN=contrib/scripts/version.py
-    - MINOR_VERSION=$($PYTHON_BIN $VERSION_SCRIPT_BIN $DOCKER_VERSION minor);
-    - if [ -z MINOR_VERSION ]; then docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:"$MINOR_VERSION";fi
     - docker logout
     - docker login -u "$DOCKER_HUB_USERNAME" -p "$DOCKER_HUB_PASSWORD" https://registry-1.docker.io
-    - docker push registry-1.docker.io/mayanedms/mayanedms:"$DOCKER_VERSION"
-    - if [ -z MINOR_VERSION ]; then docker push registry-1.docker.io/mayanedms/mayanedms:"$MINOR_VERSION";fi
-  only:
-    - releases/all
-    - releases/docker
+    - docker push registry-1.docker.io/mayanedms/mayanedms:v"$DOCKER_VERSION"
+  services:
+    - docker:20-dind
+  stage: push_docker
 
 job_docker_nightly:
-  stage: build_docker
-  image: docker:latest
-  services:
-    - docker:dind
   before_script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  image: docker:latest
+  only:
+    - releases/nightly
+    - releases/staging
   script:
     - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" -f docker/Dockerfile .
-    - docker run --rm "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" run_tests
     - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
+    - docker logout
+  services:
+    - docker:20-dind
+  stage: stage_build_docker
+
+job_docker_testing:
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  image: docker:latest
   only:
-    - nightly
-    - staging
+    - releases/testing
+  script:
+    - PYTHON_BIN=/usr/bin/python3
+    - DOCKER_VERSION=`cat docker/rootfs/version`
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" -f docker/Dockerfile .
+    - docker push "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
+    - docker logout
+  services:
+    - docker:20-dind
+  stage: stage_build_docker
 
 # Documentation
+
 job_documentation_build:
-  stage: build_documentation
-  image: ubuntu:18.04
   artifacts:
-    expire_in: 1 hr
+    expire_in: 2 hr
     paths:
     - docs
   before_script:
     - apt-get -qq update
-    - apt-get install -qq locales make python-pip enchant
-    - echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale
-    - locale-gen en_US.UTF-8
-    - update-locale LANG=en_US.UTF-8
-    - export LC_ALL=en_US.UTF-8
+    - apt-get install -qq enchant make python3-venv python3-dev
+    - python3 -m venv venv
+    - . venv/bin/activate
+  image: debian:10.8-slim
+  only:
+    - releases/all_major
+    - releases/documentation
   script:
-    - pip install -r requirements/documentation.txt
+    - pip install --requirement requirements/documentation.txt
     - cd docs
     - make html
-  only:
-    - releases/all
-    - releases/documentation
+  stage: stage_build_documentation
 
 job_documentation_push:
-  stage: push_documentation
-  image: ubuntu:18.04
   before_script:
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
     - echo "$DOCUMENTATION_SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
-    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client rsync -y )'
+    - 'which ssh-agent || ( apt-get update --yes && apt-get install -qq openssh-client rsync --yes )'
     - eval $(ssh-agent -s)
     - echo "$DOCUMENTATION_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+  image: debian:10.8-slim
+  only:
+    - releases/all_major
+    - releases/documentation
   script:
     - ssh mayandocs@docs.mayan-edms.com "rm -Rf /home/rosarior/webapps/mayan_docs/*"
     - rsync -avzP --progress -e ssh docs/_build/html/* mayandocs@docs.mayan-edms.com:/home/rosarior/webapps/mayan_docs
-  only:
-    - releases/all
-    - releases/documentation
+  stage: stage_push_documentation
 
 # Python
-job_build_python:
-  stage: build_python
-  image: ubuntu:18.04
+
+job_python_build:
   artifacts:
-    expire_in: 1 hr
+    expire_in: 2 hr
     paths:
     - dist
   before_script:
+    - set -a && . ./config.env && set +a
     - apt-get -qq update
-    - apt-get install -qq locales make python-pip
-  script:
-    - echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale
-    - locale-gen en_US.UTF-8
-    - update-locale LANG=en_US.UTF-8
-    - export LC_ALL=en_US.UTF-8
-    - pip install -r requirements/build.txt
-    - make python-wheel
+    - apt-get install -qq make python3-venv python3-dev
+    - python3 -m venv venv
+    - . venv/bin/activate
+    - pip install pip==$PYTHON_PIP_VERSION
+  image: debian:10.8-slim
   only:
-    - releases/all
+    - releases/all_major
+    - releases/all_minor
     - releases/python
-
-job_push_python:
-  stage: push_python
-  image: ubuntu:18.04
-  before_script:
-    - apt-get -qq update
-    - apt-get install -qq python-pip
+    - releases/testing
   script:
-    - pip install -r requirements/build.txt
+    - pip install --requirement requirements/build.txt
+    - make python-wheel
+  stage: stage_build_python
+
+
+job_python_push_pypi:
+  before_script:
+    - set -a && . ./config.env && set +a
+    - apt-get -qq update
+    - apt-get install -qq make python3-venv python3-dev
+    - python3 -m venv venv
+    - . venv/bin/activate
+    - pip install pip==$PYTHON_PIP_VERSION
+  image: debian:10.8-slim
+  only:
+    - releases/all_major
+    - releases/all_minor
+    - releases/python
+    - releases/testing
+  script:
+    - pip install --requirement requirements/build.txt
     - echo "$PYPIRC" > ~/.pypirc
     - twine upload dist/* -r pypi
-  only:
-    - releases/all
-    - releases/python
+  stage: stage_push_python
 
 # Test upgrade from the latest public version to the local version
-.test_upgrade_base: &test_upgrade_base
-  stage: test
-  image: ubuntu:18.04
+
+.job_base_upgrade_test: &job_base_upgrade_test
+  before_script:
+    - set -a && . ./config.env && set +a
+    - echo "deb http://deb.debian.org/debian buster-backports main contrib non-free" >> /etc/apt/sources.list
+    - echo "deb-src http://deb.debian.org/debian buster-backports main contrib non-free" >> /etc/apt/sources.list
+    - apt-get -qq update
+    - apt-get install -qq curl exiftool gcc ghostscript gnupg1 libjpeg-dev libmagic1 libpng-dev libtiff-dev make poppler-utils python3-venv python3-dev tesseract-ocr
+    - python3 -m venv venv
+    - . venv/bin/activate
+    - DOCKER_VERSION=`cat docker/rootfs/version`
+    - pip install "mayan-edms<$DOCKER_VERSION"
+    - pip install --requirement requirements/build.txt --requirement requirements/testing-base.txt --requirement requirements/build.txt
+    - make python-wheel
   cache:
     paths:
       - ~/.cache/pip/
       - /var/cache/apt/archives/
-  before_script:
-    - set -a && . ./config.env && set +a
-    - apt-get -qq update
-    - apt-get install -qq locales
-    - echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale
-    - locale-gen en_US.UTF-8
-    - update-locale LANG=en_US.UTF-8
-    - export LC_ALL=en_US.UTF-8
-    - apt-get install -qq curl exiftool gcc ghostscript gnupg1 libjpeg-dev libmagic1 libpng-dev libtiff-dev poppler-utils python-dev python-virtualenv python3-dev tesseract-ocr
-    - virtualenv venv -p /usr/bin/python3
-    - . venv/bin/activate
-    - DOCKER_VERSION=`cat docker/rootfs/version`
-    - pip install "mayan-edms<$DOCKER_VERSION"
-    - pip install -r requirements/build.txt -r requirements/testing-base.txt
-    - make python-wheel
+  image: debian:10.8-slim
   only:
-    - releases/all
+    - releases/all_major
+    - releases/all_minor
     - releases/docker
+    - releases/docker_minor
     - releases/python
-    - staging
-    - nightly
+    - releases/python_minor
+    - releases/staging
+  stage: stage_test
 
-test_upgrade_sqlite:
-  <<: *test_upgrade_base
+job_mysql_upgrade_test:
+  <<: *job_base_upgrade_test
   script:
-    - . venv/bin/activate
-    - mayan-edms.py initialsetup
-    - pip install dist/mayan_edms-*.whl
-    - mayan-edms.py performupgrade
-
-test_upgrade_mysql:
-  <<: *test_upgrade_base
-  variables:
-    MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-    MYSQL_DATABASE: "mayan_edms"
-  services:
-    - mysql:5.7
-  script:
-    - apt-get install -qq libmysqlclient-dev libssl-dev mysql-client
+    - apt-get install -qq default-libmysqlclient-dev default-mysql-client libssl-dev
     - . venv/bin/activate
     - pip install mysqlclient==$PYTHON_MYSQL_VERSION
     - mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD" -e "set global character_set_server=utf8mb4;"
     - mayan-edms.py initialsetup --settings=mayan.settings.testing.gitlab-ci.db_mysql
     - pip install dist/mayan_edms-*.whl
     - mayan-edms.py performupgrade --settings=mayan.settings.testing.gitlab-ci.db_mysql
+  services:
+    - mysql:5.7
   tags:
     - mysql
-
-test_upgrade_postgres:
-  <<: *test_upgrade_base
   variables:
-    POSTGRES_DB: "mayan_edms"
-    POSTGRES_PASSWORD: "postgres"
-  services:
-    - postgres:9.6-alpine
+    MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    MYSQL_DATABASE: "mayan_edms"
+
+job_postgres_upgrade_test:
+  <<: *job_base_upgrade_test
   script:
     - apt-get install -qq libpq-dev
     - . venv/bin/activate
@@ -213,104 +259,104 @@ test_upgrade_postgres:
     - mayan-edms.py initialsetup --settings=mayan.settings.testing.gitlab-ci.db_postgres
     - pip install dist/mayan_edms-*.whl
     - mayan-edms.py performupgrade --settings=mayan.settings.testing.gitlab-ci.db_postgres
+  services:
+    - postgres:10.15-alpine
   tags:
     - postgres
+  variables:
+    POSTGRES_DB: "mayan_edms"
+    POSTGRES_PASSWORD: "postgres"
+
+job_sqlite_upgrade_test:
+  <<: *job_base_upgrade_test
+  script:
+    - . venv/bin/activate
+    - mayan-edms.py initialsetup --settings=mayan.settings.testing.gitlab-ci
+    - pip install dist/mayan_edms-*.whl
+    - mayan-edms.py performupgrade --settings=mayan.settings.testing.gitlab-ci
 
 # Run the test suit
-.test_base: &test_base
-  stage: test
-  image: ubuntu:18.04
+
+.job_base_test: &job_base_test
+  before_script:
+    - set -a && . ./config.env && set +a
+    - echo "deb http://deb.debian.org/debian buster-backports main contrib non-free" >> /etc/apt/sources.list
+    - echo "deb-src http://deb.debian.org/debian buster-backports main contrib non-free" >> /etc/apt/sources.list
+    - apt-get -qq update
+    - apt-get install --yes --no-install-recommends --target-release buster-backports -qq libreoffice-calc-nogui libreoffice-draw-nogui libreoffice-impress-nogui libreoffice-math-nogui libreoffice-writer-nogui
+    - apt-get install --yes --no-install-recommends -qq curl exiftool gcc ghostscript gnupg1 graphviz libfuse2 libjpeg-dev libmagic1 libpng-dev libtiff-dev make poppler-utils python3-venv python3-dev sane-utils tesseract-ocr tesseract-ocr-deu
+    - python3 -m venv venv
+    - . venv/bin/activate
+    - pip install pip=$PYTHON_PIP_VERSION
+    - pip install --requirement requirements.txt --requirement requirements/testing-base.txt --requirement requirements/build.txt
   cache:
     paths:
       - ~/.cache/pip/
       - /var/cache/apt/archives/
-  before_script:
-    - set -a && . ./config.env && set +a
-    - apt-get -qq update
-    - apt-get install -qq locales
-    - echo "LC_ALL=\"en_US.UTF-8\"" >> /etc/default/locale
-    - locale-gen en_US.UTF-8
-    - update-locale LANG=en_US.UTF-8
-    - export LC_ALL=en_US.UTF-8
-    - apt-get install -qq curl exiftool firefox-geckodriver gcc ghostscript gnupg1 graphviz libfuse2 libjpeg-dev libmagic1 libpng-dev libtiff-dev libreoffice poppler-utils python-dev python-virtualenv python3-dev sane-utils tesseract-ocr tesseract-ocr-deu
-    - virtualenv venv -p /usr/bin/python3
-    - . venv/bin/activate
-    - pip install -r requirements.txt -r requirements/testing-base.txt
+  image: debian:10.8-slim
   only:
-    - releases/all
+    - releases/all_major
+    - releases/all_minor
     - releases/docker
+    - releases/docker_minor
     - releases/python
-    - staging
-    - nightly
+    - releases/python_minor
+    - releases/staging
+  stage: stage_test
 
-test-mysql:
-  <<: *test_base
-  variables:
-    MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-    MYSQL_DATABASE: "mayan_edms"
-  services:
-    - mysql:5.7
-  script:
-    - apt-get install -qq libmysqlclient-dev libssl-dev mysql-client
-    - . venv/bin/activate
-    - pip install mysqlclient==$PYTHON_MYSQL_VERSION
-    - mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD" -e "set global character_set_server=utf8mb4;"
-    - make test-all SETTINGS=mayan.settings.testing.gitlab-ci.db_mysql
-    - make test-all-migrations SETTINGS=mayan.settings.testing.gitlab-ci.db_mysql
-  tags:
-    - mysql
-
-test-postgres:
-  <<: *test_base
-  variables:
-    POSTGRES_DB: "mayan_edms"
-    POSTGRES_PASSWORD: "postgres"
-  services:
-    - postgres:9.6-alpine
+job_postgres_test:
+  <<: *job_base_test
   script:
     - apt-get install -qq libpq-dev
     - . venv/bin/activate
     - pip install psycopg2==$PYTHON_PSYCOPG2_VERSION
     - make test-all SETTINGS=mayan.settings.testing.gitlab-ci.db_postgres
     - make test-all-migrations SETTINGS=mayan.settings.testing.gitlab-ci.db_postgres
+  services:
+    - postgres:10.15-alpine
   tags:
     - postgres
+  variables:
+    POSTGRES_DB: "mayan_edms"
+    POSTGRES_PASSWORD: "postgres"
 
-test-sqlite:
-  <<: *test_base
+job_sqlite_test:
+  <<: *job_base_test
   script:
     - . venv/bin/activate
-    - python manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci --nomigrations
+    - python manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci --skip-migrations
     - make test-all
     - make test-all-migrations
 
 # Deploy
-deploy_demo:
-  environment:
-    name: demo
-  stage: deploy
+
+job_demo_deploy:
   before_script:
     - mkdir -p ~/.ssh
     - echo "${DEMO_SSH_KNOWN_HOST}" > ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
     - echo "${DEMO_PRIVATE_KEY}" > ~/.ssh/id_rsa
     - chmod 600 ~/.ssh/id_rsa
+  environment:
+    name: demo
   script:
     - scp contrib/scripts/install/docker.sh root@$DEMO_IP_ADDRESS:~
     - ssh root@$DEMO_IP_ADDRESS "DELETE_VOLUMES=true ./docker.sh"
+  stage: stage_deploy
   when: manual
 
-deploy_staging:
-  environment:
-    name: staging
-  stage: deploy
+job_staging_deploy:
   before_script:
     - mkdir -p ~/.ssh
     - echo "${STAGING_SSH_KNOWN_HOST}" > ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
     - echo "${STAGING_PRIVATE_KEY}" > ~/.ssh/id_rsa
     - chmod 600 ~/.ssh/id_rsa
+  environment:
+    name: staging
   script:
     - scp contrib/scripts/install/docker.sh root@$STAGING_IP_ADDRESS:~
     - ssh root@$STAGING_IP_ADDRESS "DOCKER_MAYAN_IMAGE=registry.gitlab.com/mayan-edms/mayan-edms:staging ./docker.sh"
+  stage: stage_deploy
   when: manual
+
