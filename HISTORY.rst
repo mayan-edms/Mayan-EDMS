@@ -3,6 +3,7 @@
 - Update the MySQL client packages for Debian.
 - Update Django from version 2.2.16 to 2.2.19.
 - Optimize file caching migration 0005.
+- Improvements from version 3.3.
 
 3.4.21 (2020-12-31)
 ===================
