@@ -213,7 +213,7 @@ job_python_push_pypi:
     - apt-get install -qq curl exiftool gcc ghostscript gnupg1 libjpeg-dev libmagic1 libpng-dev libtiff-dev make poppler-utils python3-venv python3-dev tesseract-ocr
     - python3 -m venv venv
     - . venv/bin/activate
-    - pip install pip==$PYTHON_PIP_VERSION
+    - pip install pip==$PYTHON_PIP_VERSION      
     - DOCKER_VERSION=`cat docker/rootfs/version`
     - pip install "mayan-edms<$DOCKER_VERSION"
     - pip install --requirement requirements/build.txt --requirement requirements/testing-base.txt --requirement requirements/build.txt
@@ -325,7 +325,7 @@ job_sqlite_test:
   <<: *job_base_test
   script:
     - . venv/bin/activate
-    - python manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci --skip-migrations
+    - python manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci --nomigrations
     - make test-all
     - make test-all-migrations
 
