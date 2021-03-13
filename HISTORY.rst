@@ -1,3 +1,12 @@
+3.3.18 (2021-03-13)
+===================
+- Optimize file metadata migration 0003.
+- Update Transifex client to version 0.13.7.
+- Specify which PIP version to use.
+- Use recent PIP to avoid installing Rust.
+- Backport GitLab CI improvements.
+- Backport Makefile improvements.
+
 3.3.17 (2020-04-09)
 ===================
 - Removed a possible race condition when returning the signature of just
