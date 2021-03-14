@@ -237,6 +237,7 @@ job_python_push_pypi:
     - apt-get install -qq curl exiftool gcc ghostscript gnupg1 libjpeg-dev libmagic1 libpng-dev libtiff-dev make poppler-utils python3-venv python3-dev tesseract-ocr
     - python3 -m venv venv
     - . venv/bin/activate
+    - pip install pip=$PYTHON_PIP_VERSION
     - DOCKER_VERSION=`cat docker/rootfs/version`
     - pip install "mayan-edms<$DOCKER_VERSION"
     - pip install --requirement requirements/build.txt --requirement requirements/testing-base.txt --requirement requirements/build.txt
