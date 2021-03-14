@@ -13,6 +13,7 @@ Changes
 
 Dependencies
 ^^^^^^^^^^^^
+
 Updated the Transifex client to version 0.13.7. Version 0.13.6 appears to
 have been deleted, this caused the build scripts to stop.
 
@@ -23,12 +24,14 @@ script will now use PIP version 21.0.1 to accomplish this.
 
 File metadata
 ^^^^^^^^^^^^^
+
 Migration 0003 of the File metadata was optimized to reduce time and memory
 usage.
 
 
 GitLab CI
 ^^^^^^^^^
+
 Improvements from more recent version were backported to allow this series
 to continue build.
 
