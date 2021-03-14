@@ -48,19 +48,19 @@ job_docker_push_major:
     - PYTHON_BIN=/usr/bin/python3
     - DOCKER_VERSION=`cat docker/rootfs/version`
     - docker pull "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
-    - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:v"$DOCKER_VERSION"
+    - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:"$DOCKER_VERSION"
     - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:latest
     - VERSION_SCRIPT_BIN=contrib/scripts/version.py
     - MAJOR_VERSION=$($PYTHON_BIN $VERSION_SCRIPT_BIN $DOCKER_VERSION major);
-    - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:s"$MAJOR_VERSION"
+    - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:"$MAJOR_VERSION"
     - MINOR_VERSION=$($PYTHON_BIN $VERSION_SCRIPT_BIN $DOCKER_VERSION minor);
-    - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:s"$MINOR_VERSION"
+    - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:"$MINOR_VERSION"
     - docker logout
     - docker login -u "$DOCKER_HUB_USERNAME" -p "$DOCKER_HUB_PASSWORD" https://registry-1.docker.io
-    - docker push registry-1.docker.io/mayanedms/mayanedms:v"$DOCKER_VERSION"
+    - docker push registry-1.docker.io/mayanedms/mayanedms:"$DOCKER_VERSION"
     - docker push registry-1.docker.io/mayanedms/mayanedms:latest
-    - docker push registry-1.docker.io/mayanedms/mayanedms:s"$MAJOR_VERSION"
-    - docker push registry-1.docker.io/mayanedms/mayanedms:s"$MINOR_VERSION"
+    - docker push registry-1.docker.io/mayanedms/mayanedms:"$MAJOR_VERSION"
+    - docker push registry-1.docker.io/mayanedms/mayanedms:"$MINOR_VERSION"
   services:
     - docker:20-dind
   stage: stage_push_docker
