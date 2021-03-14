@@ -116,7 +116,6 @@ job_docker_testing:
     - docker:20-dind
   stage: stage_build_docker
 
-
 # Documentation
 
 job_documentation_build:
