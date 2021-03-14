@@ -35,7 +35,6 @@ clean-pyc: ## Remove Python artifacts.
 	find . -name '*~' -exec rm -f {} +
 	find . -name '__pycache__' -exec rm -R -f {} +
 
-
 # Testing
 
 _test-command:
@@ -143,13 +142,11 @@ test-with-oracle-all: test-launch-oracle
 
 gitlab-ci-run: ## Execute a GitLab CI job locally
 gitlab-ci-run:
-	@if [ -z "$$(docker images -q gitlab-runner-helper:11.2.0)" ]; then \
-	echo "1) Make sure to download the corresponding helper image from https://hub.docker.com/r/gitlab/gitlab-runner-helper/tags"; \
-	echo "2) Tag the download image as gitlab-runner-helper:11.2.0"; \
-	exit 1; \
-	fi; \
 	if [ -z $(GITLAB_CI_JOB) ]; then echo "Specify the job to execute using GITLAB_CI_JOB."; exit 1; fi; \
-	gitlab-runner exec docker --docker-privileged --docker-volumes /var/run/docker.sock:/var/run/docker.sock --docker-volumes $$PWD/gitlab-ci-volume:/builds $(GITLAB_CI_JOB)
+	docker rm -f gitlab-runner || true
+	docker run -d --name gitlab-runner --restart no -v $$PWD:$$PWD -v /var/run/docker.sock:/var/run/docker.sock gitlab/gitlab-runner:latest
+	docker exec -it -w $$PWD gitlab-runner gitlab-runner exec docker --docker-privileged --docker-volumes /var/run/docker.sock:/var/run/docker.sock --docker-volumes $$PWD/gitlab-ci-volume:/builds $(GITLAB_CI_JOB)
+	docker rm -f gitlab-runner || true
 
 # Coverage
 
@@ -316,6 +313,8 @@ generate-requirements: ## Generate all requirements files from the project deped
 	@./manage.py generaterequirements production --exclude=django > requirements/base.txt
 	@./manage.py generaterequirements production --only=django > requirements/common.txt
 
+# Major releases
+
 gitlab-release-documentation: ## Trigger the documentation build and publication using GitLab CI
 gitlab-release-documentation:
 	git push
@@ -323,26 +322,26 @@ gitlab-release-documentation:
 	git push origin :releases/documentation || true
 	git push origin HEAD:releases/documentation
 
-gitlab-release-docker: ## Trigger the Docker image build and publication using GitLab CI
-gitlab-release-docker:
+gitlab-release-docker-major: ## Trigger the Docker image build and publication using GitLab CI
+gitlab-release-docker-major:
 	git push
 	git push --tags
-	git push origin :releases/docker || true
-	git push origin HEAD:releases/docker
+	git push origin :releases/docker_major || true
+	git push origin HEAD:releases/docker_major
 
-gitlab-release-python: ## Trigger the Python package build and publication using GitLab CI
-gitlab-release-python:
+gitlab-release-python-major: ## Trigger the Python package build and publication using GitLab CI
+gitlab-release-python-major:
 	git push
 	git push --tags
-	git push origin :releases/python || true
+	git push origin :releases/python_major || true
 	git push origin HEAD:releases/python
 
-gitlab-release-all: ## Trigger the Python package, Docker image, and documentation build and publication using GitLab CI
-gitlab-release-all:
+gitlab-release-all-major: ## Trigger the Python package, Docker image, and documentation build and publication using GitLab CI
+gitlab-release-all-major:
 	git push
 	git push --tags
-	git push origin :releases/all || true
-	git push origin HEAD:releases/all
+	git push origin :releases/all_major || true
+	git push origin HEAD:releases/all_major
 
 # Minor releases
 
@@ -422,14 +421,13 @@ docker-postgres-off: ## Stop and delete the PostgreSQL Docker container.
 	docker stop postgres
 	docker rm postgres
 
-
 # Security
 
 safety-check: ## Run a package safety check.
 	safety check
 
-
 # Other
+
 find-gitignores: ## Find stray .gitignore files.
 	@export FIND_GITIGNORES=`find -name '.gitignore'| wc -l`; \
 	if [ $${FIND_GITIGNORES} -gt 1 ] ;then echo "More than one .gitignore found: $$FIND_GITIGNORES"; fi
@@ -457,11 +455,8 @@ check-missing-inits: ## Find missing __init__.py files from modules.
 check-missing-inits:
 	@contrib/scripts/find_missing_inits.py
 
-
 setup-dev-environment: ## Bootstrap a virtualenv by install all dependencies to start developing.
-	sudo apt-get install -y firefox-geckodriver gcc gettext gitlab-runner gnupg1 poppler-utils python3-dev tesseract-ocr-deu
+	sudo apt-get install -y exiftool firefox-geckodriver gcc gettext gnupg1 graphviz poppler-utils python3-dev tesseract-ocr-deu
 	pip install -r requirements.txt -r requirements/development.txt -r requirements/testing-base.txt -r requirements/documentation.txt -r requirements/build.txt
-	docker pull gitlab/gitlab-runner-helper:x86_64-281644e9
-	docker tag gitlab/gitlab-runner-helper:x86_64-281644e9 gitlab-runner-helper:11.2.0
 
 -include docker/Makefile

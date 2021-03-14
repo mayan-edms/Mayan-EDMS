@@ -370,6 +370,13 @@
 - Default ``DEFAULT_CELERY_BROKER_URL`` to ``'memory://'``.
   This ensures operation even when there is no broker available.
 
+3.4.22 (2021-03-13)
+===================
+- Update the MySQL client packages for Debian.
+- Update Django from version 2.2.16 to 2.2.19.
+- Optimize file caching migration 0005.
+- Improvements from version 3.3.
+
 3.4.21 (2020-12-31)
 ===================
 - Improve the Single Page App AJAX content escape logic.
@@ -768,6 +775,15 @@
 - Remove codecov dependency.
 - Remove pathlib2 dependency, it is now part of the standard Python library.
 - Remove Django's admindocs app
+
+3.3.18 (2021-03-13)
+===================
+- Optimize file metadata migration 0003.
+- Update Transifex client to version 0.13.7.
+- Specify which PIP version to use.
+- Use recent PIP to avoid installing Rust.
+- Backport GitLab CI improvements.
+- Backport Makefile improvements.
 
 3.3.17 (2020-04-09)
 ===================
