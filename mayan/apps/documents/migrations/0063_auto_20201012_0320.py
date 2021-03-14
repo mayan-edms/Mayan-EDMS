@@ -1,4 +1,4 @@
-from django.db import migrations
+from django.db import migrations, reset_queries
 
 
 def operation_document_version_page_create(apps, schema_editor):
@@ -14,7 +14,7 @@ def operation_document_version_page_create(apps, schema_editor):
 
     content_type = ContentType.objects.get_for_model(model=DocumentFilePage)
     content_type_id = content_type.id
-    cursor_main = schema_editor.connection.cursor()
+    cursor_main = schema_editor.connection.create_cursor(name='document_file_to_version')
     cursor_document_version_page = schema_editor.connection.cursor()
 
     query = '''
@@ -44,43 +44,50 @@ def operation_document_version_page_create(apps, schema_editor):
     document_version_page_values = []
     page_number = 1
 
-    for row in cursor_main.fetchall():
-        document_id, document_file_id, document_file_page_id = row
+    FETCH_SIZE = 100000
 
-        if document_id_last != document_id:
-            document_version.active = True
-            document_version.save()
-            document_id_last = document_id
+    while True:
+        rows = cursor_main.fetchmany(FETCH_SIZE)
 
-        if document_file_id_last != document_file_id:
-            document_version = DocumentVersion.objects.create(document_id=document_id)
-            document_version_id = document_version.pk
-            document_file_id_last = document_file_id
-            if document_version_page_values:
-                final_query = document_version_page_insert_query.format(
-                    ','.join(['(%s,%s,%s,%s)'] * (page_number - 1))
-                )
+        if not rows:
+            break
 
-                page_number = 1
+        for row in rows:
+            document_id, document_file_id, document_file_page_id = row
 
-                cursor_document_version_page.execute(
-                    final_query, document_version_page_values
-                )
+            if document_id_last != document_id:
+                document_version.active = True
+                document_version.save()
+                document_id_last = document_id
 
-            document_version_page_values = []
+            if document_file_id_last != document_file_id:
+                document_version = DocumentVersion.objects.create(document_id=document_id)
+                document_version_id = document_version.pk
+                document_file_id_last = document_file_id
+                if document_version_page_values:
+                    final_query = document_version_page_insert_query.format(
+                        ('(%s,%s,%s,%s),' * (page_number - 1))[:-1]
+                    )
 
-        document_version_page_values.extend(
-            (
+                    page_number = 1
+
+                    cursor_document_version_page.execute(
+                        final_query, document_version_page_values
+                    )
+                    reset_queries()
+
+                document_version_page_values = []
+
+            document_version_page_values += (
                 document_version_id, content_type_id, document_file_page_id,
                 page_number
             )
-        )
 
-        page_number = page_number + 1
+            page_number += 1
 
     if page_number > 1:
         final_query = document_version_page_insert_query.format(
-            ','.join(['(%s,%s,%s,%s)'] * (page_number - 1))
+            ('(%s,%s,%s,%s),' * (page_number - 1))[:-1]
         )
         cursor_document_version_page.execute(
             final_query, document_version_page_values
