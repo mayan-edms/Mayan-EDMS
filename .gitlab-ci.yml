@@ -174,7 +174,8 @@ job_python_build:
   only:
     - releases/all_major
     - releases/all_minor
-    - releases/python
+    - releases/python_major
+    - releases/python_minor
     - releases/testing
   script:
     - pip install --requirement requirements/build.txt
@@ -193,7 +194,8 @@ job_python_push_pypi:
   only:
     - releases/all_major
     - releases/all_minor
-    - releases/python
+    - releases/python_major
+    - releases/python_minor
     - releases/testing
   script:
     - pip install --requirement requirements/build.txt
@@ -223,7 +225,7 @@ job_python_push_pypi:
       - /var/cache/apt/archives/
   image: debian:10.8-slim
   only:
-    - releases/all
+    - releases/all_major
     - releases/all_minor
     - releases/docker_major
     - releases/docker_minor
