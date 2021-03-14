@@ -80,7 +80,7 @@ job_docker_push_minor:
     - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:"$DOCKER_VERSION"
     - docker logout
     - docker login -u "$DOCKER_HUB_USERNAME" -p "$DOCKER_HUB_PASSWORD" https://registry-1.docker.io
-    - docker push registry-1.docker.io/mayanedms/mayanedms:v"$DOCKER_VERSION"
+    - docker push registry-1.docker.io/mayanedms/mayanedms:"$DOCKER_VERSION"
   services:
     - docker:20-dind
   stage: stage_push_docker
