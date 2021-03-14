@@ -1,4 +1,4 @@
-3.5.6 (2021-XX-XX)
+3.5.6 (2021-03-14)
 ==================
 - Port improvements from Series 3.4:
   - Update Django from version 2.2.16 to 2.2.19.
