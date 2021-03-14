@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-07 03:26+0000\n"
+"POT-Creation-Date: 2021-03-14 04:39+0000\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -99,8 +99,7 @@ msgstr "Страница документа"
 #: models.py:22
 msgid "The actual text content as extracted by the document parsing backend."
 msgstr ""
-"Фактическое текстовое содержимое, извлеченное бэкэндом для анализа "
-"документа."
+"Фактическое текстовое содержимое, извлеченное бэкэндом анализа документов."
 
 #: models.py:30
 msgid "Document page content"
@@ -117,7 +116,7 @@ msgstr "Тип документа"
 #: models.py:47
 msgid "Automatically queue newly created documents for parsing."
 msgstr ""
-"Автоматически ставить в очередь вновь созданные документы для анализа."
+"Автоматически ставить вновь созданные документы в очередь для анализа."
 
 #: models.py:58
 msgid "Document type settings"

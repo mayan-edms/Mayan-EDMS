@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-07 03:26+0000\n"
-"PO-Revision-Date: 2021-03-01 10:42+0000\n"
+"POT-Creation-Date: 2021-03-14 04:39+0000\n"
+"PO-Revision-Date: 2021-03-08 10:34+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -51,7 +51,7 @@ msgstr "Кодировка версии"
 
 #: apps.py:224
 msgid "Versions mime type"
-msgstr "Тип MIME версии"
+msgstr "MIME тип версии"
 
 #: apps.py:228
 msgid "Versions timestamp"
@@ -664,7 +664,7 @@ msgstr "MIME тип"
 msgid ""
 "The document version file encoding. binary 7-bit, binary 8-bit, text, "
 "base64, etc."
-msgstr "Кодировка файла версии документа. binary 7-bit, binary 8-bit, text, base64, и т.д."
+msgstr "Кодировка файла версии документа. Например, binary 7-bit, binary 8-bit, text, base64."
 
 #: models/document_version_models.py:100
 msgid "Encoding"
@@ -753,19 +753,19 @@ msgstr "Просмотр документов"
 
 #: permissions.py:57
 msgid "Create document types"
-msgstr "Создать типы документа"
+msgstr "Создать типы документов"
 
 #: permissions.py:60
 msgid "Delete document types"
-msgstr "Удалить типы документа"
+msgstr "Удалить типы документов"
 
 #: permissions.py:63
 msgid "Edit document types"
-msgstr "Редактировать типы документа"
+msgstr "Редактировать типы документов"
 
 #: permissions.py:66
 msgid "View document types"
-msgstr "Просмотр типов документа"
+msgstr "Просмотр типов документов"
 
 #: queues.py:15
 msgid "Converter"
@@ -896,7 +896,7 @@ msgstr "Аргументы, передаваемые в DOCUMENT_STORAGE_BACKEND
 #: settings.py:149
 msgid ""
 "Time after which a document stub will be considered invalid and deleted."
-msgstr "Время, по истечении которого заглушка документа будет считаться недействительной и удалена."
+msgstr "Время, по истечении которого заглушка документа становится недействительной и будет удалена."
 
 #: settings.py:157
 msgid ""
@@ -1132,7 +1132,7 @@ msgstr "Создать быстрый ярлык для типа докумен�
 #, python-format
 msgid ""
 "Delete the quick label: %(label)s, from document type \"%(document_type)s\"?"
-msgstr "Удалить быстрый ярлык \"%(label)s\" с типа документа \"%(document_type)s\"?"
+msgstr "Удалить быстрый ярлык \"%(label)s\" для типа документа \"%(document_type)s\"?"
 
 #: views/document_type_views.py:216
 #, python-format
@@ -1355,7 +1355,7 @@ msgstr "Отсутствуют последние просмотренные д�
 
 #: views/document_views.py:644
 msgid "This view will list the latest documents uploaded in the system."
-msgstr "Здесь отображаются последние загруженные в систему документы."
+msgstr "Здесь отображаются последние добавленные в систему документы."
 
 #: views/document_views.py:648
 msgid "There are no recently added document"
@@ -1482,12 +1482,12 @@ msgstr "Задача очистки корзины поставлена в оч�
 #: views/trashed_document_views.py:94
 #, python-format
 msgid "%(count)d trashed document submitted for deletion."
-msgstr "%(count)d документ в корзине будет окончательно удален."
+msgstr "%(count)d документ будет окончательно удален из корзины."
 
 #: views/trashed_document_views.py:97
 #, python-format
 msgid "%(count)d trashed documents submitted for deletion."
-msgstr "%(count)d документов будут окончательно удалены."
+msgstr "%(count)d документов будут окончательно удалены из корзины."
 
 #: views/trashed_document_views.py:103
 msgid "Delete the selected trashed document?"
@@ -1502,7 +1502,7 @@ msgid ""
 "To avoid loss of data, documents are not deleted instantly. First, they are "
 "placed in the trash can. From here they can be then finally deleted or "
 "restored."
-msgstr "Чтобы избежать потери данных, документы не удаляются мгновенно. Сначала они перемещаются в корзину. Отсюда их можно окончательно удалить или восстановить."
+msgstr "Чтобы избежать потери данных, документы не удаляются мгновенно, а сначала перемещаются в корзину. Здесь их можно восстановить или удалить окончательно."
 
 #: views/trashed_document_views.py:142
 msgid "There are no documents in the trash can"
