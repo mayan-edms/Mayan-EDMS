@@ -8,6 +8,7 @@
 - Make the ``ObjectActionMixin`` messages translatable.
 - Use recent PIP to avoid installing Rust.
 - Specify which PIP version to use.
+- Improvements merged from series 3.3 and 3.4.
 
 3.5.5 (2021-01-05)
 ==================
