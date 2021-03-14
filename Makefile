@@ -35,7 +35,6 @@ clean-pyc: ## Remove Python artifacts.
 	find . -name '*~' -exec rm -f {} +
 	find . -name '__pycache__' -exec rm -R -f {} +
 
-
 # Testing
 
 _test-command:
@@ -321,12 +320,12 @@ gitlab-release-documentation:
 	git push origin :releases/documentation || true
 	git push origin HEAD:releases/documentation
 
-gitlab-release-docker: ## Trigger the Docker image build and publication using GitLab CI
-gitlab-release-docker:
+gitlab-release-docker-major: ## Trigger the Docker image build and publication using GitLab CI
+gitlab-release-docker-major:
 	git push
 	git push --tags
-	git push origin :releases/docker || true
-	git push origin HEAD:releases/docker
+	git push origin :releases/docker_major || true
+	git push origin HEAD:releases/docker_major
 
 gitlab-release-python: ## Trigger the Python package build and publication using GitLab CI
 gitlab-release-python:
@@ -335,12 +334,12 @@ gitlab-release-python:
 	git push origin :releases/python || true
 	git push origin HEAD:releases/python
 
-gitlab-release-all: ## Trigger the Python package, Docker image, and documentation build and publication using GitLab CI
-gitlab-release-all:
+gitlab-release-all-major: ## Trigger the Python package, Docker image, and documentation build and publication using GitLab CI
+gitlab-release-all-major:
 	git push
 	git push --tags
-	git push origin :releases/all || true
-	git push origin HEAD:releases/all
+	git push origin :releases/all_major || true
+	git push origin HEAD:releases/all_major
 
 # Minor releases
 
