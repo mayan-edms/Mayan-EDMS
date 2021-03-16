@@ -13,9 +13,10 @@ stages:
 job_docker_build:
   image: docker:latest
   only:
-    - releases/all
+    - releases/all_major
     - releases/all_minor
-    - releases/docker
+    - releases/docker_major
+    - releases/docker_minor
   script:
     - docker build --pull -t "mayanedms" -f docker/Dockerfile .
     - DOCKER_VERSION=`cat docker/rootfs/version`
@@ -41,8 +42,8 @@ job_docker_push_major:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
   image: docker:latest
   only:
-    - releases/all
-    - releases/docker
+    - releases/all_major
+    - releases/docker_major
   script:
     - PYTHON_BIN=/usr/bin/python3
     - DOCKER_VERSION=`cat docker/rootfs/version`
@@ -88,27 +89,7 @@ job_docker_push_minor:
     - docker push registry-1.docker.io/mayanedms/mayanedms:s"$MINOR_VERSION"
   services:
     - docker:20-dind
-  stage: push_docker
-
-job_docker_push_minor:
-  before_script:
-    - apk add --no-cache python3
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
-  image: docker:latest
-  only:
-    - releases/all_minor
-    - releases/docker
-  script:
-    - PYTHON_BIN=/usr/bin/python3
-    - DOCKER_VERSION=`cat docker/rootfs/version`
-    - docker pull "$CI_REGISTRY_IMAGE:$DOCKER_VERSION"
-    - docker tag "$CI_REGISTRY_IMAGE:$DOCKER_VERSION" registry-1.docker.io/mayanedms/mayanedms:"$DOCKER_VERSION"
-    - docker logout
-    - docker login -u "$DOCKER_HUB_USERNAME" -p "$DOCKER_HUB_PASSWORD" https://registry-1.docker.io
-    - docker push registry-1.docker.io/mayanedms/mayanedms:"$DOCKER_VERSION"
   stage: stage_push_docker
-  services:
-    - docker:20-dind
 
 job_docker_nightly:
   before_script:
@@ -155,7 +136,7 @@ job_documentation_build:
     - . venv/bin/activate
   image: debian:10.8-slim
   only:
-    - releases/all
+    - releases/all_major
     - releases/documentation
   script:
     - pip install --requirement requirements/documentation.txt
@@ -174,7 +155,7 @@ job_documentation_push:
     - echo "$DOCUMENTATION_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
   image: debian:10.8-slim
   only:
-    - releases/all
+    - releases/all_major
     - releases/documentation
   script:
     - ssh mayandocs@docs.mayan-edms.com "rm -Rf /home/rosarior/webapps/mayan_docs/*"
@@ -197,9 +178,10 @@ job_python_build:
     - pip install pip==$PYTHON_PIP_VERSION
   image: debian:10.8-slim
   only:
-    - releases/all
+    - releases/all_major
     - releases/all_minor
-    - releases/python
+    - releases/python_major
+    - releases/python_minor
     - releases/testing
   script:
     - pip install --requirement requirements/build.txt
@@ -216,9 +198,10 @@ job_python_push_pypi:
     - pip install pip==$PYTHON_PIP_VERSION
   image: debian:10.8-slim
   only:
-    - releases/all
+    - releases/all_major
     - releases/all_minor
-    - releases/python
+    - releases/python_major
+    - releases/python_minor
     - releases/testing
   script:
     - pip install --requirement requirements/build.txt
@@ -237,7 +220,7 @@ job_python_push_pypi:
     - apt-get install -qq curl exiftool gcc ghostscript gnupg1 libjpeg-dev libmagic1 libpng-dev libtiff-dev make poppler-utils python3-venv python3-dev tesseract-ocr
     - python3 -m venv venv
     - . venv/bin/activate
-    - pip install pip=$PYTHON_PIP_VERSION
+    - pip install pip==$PYTHON_PIP_VERSION
     - DOCKER_VERSION=`cat docker/rootfs/version`
     - pip install "mayan-edms<$DOCKER_VERSION"
     - pip install --requirement requirements/build.txt --requirement requirements/testing-base.txt --requirement requirements/build.txt
@@ -248,11 +231,11 @@ job_python_push_pypi:
       - /var/cache/apt/archives/
   image: debian:10.8-slim
   only:
-    - releases/all
+    - releases/all_major
     - releases/all_minor
-    - releases/docker
+    - releases/docker_major
     - releases/docker_minor
-    - releases/python
+    - releases/python_major
     - releases/python_minor
     - releases/staging
   stage: stage_test
@@ -312,7 +295,7 @@ job_sqlite_upgrade_test:
     - apt-get install --yes --no-install-recommends -qq curl exiftool gcc ghostscript gnupg1 graphviz libfuse2 libjpeg-dev libmagic1 libpng-dev libtiff-dev make poppler-utils python3-venv python3-dev sane-utils tesseract-ocr tesseract-ocr-deu
     - python3 -m venv venv
     - . venv/bin/activate
-    - pip install pip=$PYTHON_PIP_VERSION
+    - pip install pip==$PYTHON_PIP_VERSION
     - pip install --requirement requirements.txt --requirement requirements/testing-base.txt --requirement requirements/build.txt
   cache:
     paths:
@@ -320,11 +303,11 @@ job_sqlite_upgrade_test:
       - /var/cache/apt/archives/
   image: debian:10.8-slim
   only:
-    - releases/all
+    - releases/all_major
     - releases/all_minor
-    - releases/docker
+    - releases/docker_major
     - releases/docker_minor
-    - releases/python
+    - releases/python_major
     - releases/python_minor
     - releases/staging
   stage: stage_test
@@ -349,9 +332,8 @@ job_sqlite_test:
   <<: *job_base_test
   script:
     - . venv/bin/activate
-    - python manage.py test --mayan-apps --settings=mayan.settings.testing.gitlab-ci --skip-migrations
-    - make test-all
-    - make test-all-migrations
+    - make test-all SETTINGS=mayan.settings.testing.gitlab-ci
+    - make test-all-migrations SETTINGS=mayan.settings.testing.gitlab-ci
 
 # Deploy
 

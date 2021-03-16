@@ -430,7 +430,7 @@ class WorkflowAPIViewTestCase(
         self._create_test_workflow()
 
         self.grant_access(
-            permission=permission_workflow_edit, obj=self.test_workflow
+            obj=self.test_workflow, permission=permission_workflow_edit
         )
 
         self._clear_events()
@@ -503,7 +503,7 @@ class DocumentTypeWorkflowAPIViewTestCase(
         self._create_test_workflow(add_test_document_type=False)
 
         self.grant_access(
-            permission=permission_workflow_edit, obj=self.test_workflow
+            obj=self.test_workflow, permission=permission_workflow_edit
         )
 
         response = self._request_test_workflow_document_type_list_create_api_view()
@@ -527,7 +527,7 @@ class DocumentTypeWorkflowAPIViewTestCase(
         self._create_test_workflow(add_test_document_type=True)
 
         self.grant_access(
-            permission=permission_workflow_edit, obj=self.test_workflow
+            obj=self.test_workflow, permission=permission_workflow_edit
         )
 
         response = self._request_test_workflow_document_type_delete_api_view()
@@ -695,7 +695,7 @@ class WorkflowStatesAPIViewTestCase(
         self._create_test_workflow()
 
         self.grant_access(
-            permission=permission_workflow_edit, obj=self.test_workflow
+            obj=self.test_workflow, permission=permission_workflow_edit
         )
 
         response = self._request_test_workflow_state_create_api_view()
@@ -765,7 +765,9 @@ class WorkflowStatesAPIViewTestCase(
         self._create_test_workflow()
         self._create_test_workflow_state()
 
-        self.grant_access(permission=permission_workflow_view, obj=self.test_workflow)
+        self.grant_access(
+            obj=self.test_workflow, permission=permission_workflow_view
+        )
 
         response = self._request_test_workflow_state_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -789,7 +791,9 @@ class WorkflowStatesAPIViewTestCase(
         self._create_test_workflow()
         self._create_test_workflow_state()
 
-        self.grant_access(permission=permission_workflow_edit, obj=self.test_workflow)
+        self.grant_access(
+            obj=self.test_workflow, permission=permission_workflow_edit
+        )
 
         response = self._request_test_workflow_state_edit_patch_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -815,7 +819,9 @@ class WorkflowStatesAPIViewTestCase(
         self._create_test_workflow()
         self._create_test_workflow_state()
 
-        self.grant_access(permission=permission_workflow_edit, obj=self.test_workflow)
+        self.grant_access(
+            obj=self.test_workflow, permission=permission_workflow_edit
+        )
 
         response = self._request_test_workflow_state_edit_put_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)

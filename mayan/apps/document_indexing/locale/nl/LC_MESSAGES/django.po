@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-04 23:49+0000\n"
-"PO-Revision-Date: 2020-09-27 06:46+0000\n"
+"POT-Creation-Date: 2021-03-14 04:39+0000\n"
+"PO-Revision-Date: 2021-03-06 15:21+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -347,10 +347,10 @@ msgstr "Bewerk index: %s"
 
 #: views.py:144
 msgid ""
-"Indexes group document automatically into levels. Indexe are defined using "
+"Indexes group document automatically into levels. Indexes are defined using "
 "template whose markers are replaced with direct properties of documents like"
 " label or description, or that of extended properties like metadata."
-msgstr "Indexeringen groeperen documenten automatisch in niveau's. Indexeringen worden vastgelegd m.b.v. een sjabloon waarbij variabelen worden vervangen door eigenschappen van documenten zoals label of beschrijving, of die van uitgebreide eigenschappen zoals metadata."
+msgstr ""
 
 #: views.py:149
 msgid "There are no indexes."
@@ -407,9 +407,9 @@ msgstr "Bewerk de indexsjabloon node: %s?"
 
 #: views.py:328
 msgid ""
-"This could mean that no index templates have been created or that there "
+"This could mean that no index templates have been created or that there are "
 "index templates but they are no properly defined."
-msgstr "Dit kan betekenen dat er geen indexsjablonen zijn aangemaakt of dat er wel indexsjablonen zijn maar dat deze niet juist zijn gedefinieerd."
+msgstr ""
 
 #: views.py:332
 msgid "There are no index instances available."

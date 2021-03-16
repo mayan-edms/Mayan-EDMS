@@ -70,6 +70,7 @@ class FavoriteDocumentsTestCase(
 
     def test_trashed_document_favorite_list_view_with_access(self):
         self._test_document_favorite_add()
+
         self.grant_access(
             obj=self.test_document, permission=permission_document_view
         )
@@ -77,6 +78,7 @@ class FavoriteDocumentsTestCase(
         self.test_document.delete()
 
         response = self._request_test_document_favorites_list_view()
+
         self.assertNotContains(
             response=response, text=self.test_document.label, status_code=200
         )
@@ -110,6 +112,7 @@ class FavoriteDocumentsTestCase(
 
     def test_trashed_document_favorite_remove_view_with_access(self):
         self._test_document_favorite_add()
+
         favorite_document_count = FavoriteDocument.objects.count()
         self.grant_access(
             obj=self.test_document, permission=permission_document_view

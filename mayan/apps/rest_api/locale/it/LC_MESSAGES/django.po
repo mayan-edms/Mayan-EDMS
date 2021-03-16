@@ -6,12 +6,13 @@
 # Translators:
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2016
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2017
+# Roberto Rosario, 2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-04 23:49+0000\n"
-"PO-Revision-Date: 2020-01-31 04:43+0000\n"
+"POT-Creation-Date: 2021-03-14 04:40+0000\n"
+"PO-Revision-Date: 2021-01-19 03:51+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -31,17 +32,17 @@ msgstr "Impossibile trovare il serializzatore per la classe: %s"
 
 #: links.py:21
 msgid "API Documentation (Swagger)"
-msgstr ""
+msgstr "Documentazione API (Swagger)"
 
 #: links.py:27
 msgid "API Documentation (ReDoc)"
-msgstr ""
+msgstr "Documentazione API (ReDoc)"
 
 #: schemas.py:9
 #, python-format
 msgid "%s API"
-msgstr ""
+msgstr "%s API"
 
 #: settings.py:14
 msgid "Disable the REST API links in the tools menu."
-msgstr ""
+msgstr "Disabilita i collegamenti API REST nel menu strumenti."

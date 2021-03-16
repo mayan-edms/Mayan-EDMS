@@ -313,6 +313,8 @@ generate-requirements: ## Generate all requirements files from the project deped
 	@./manage.py generaterequirements production --exclude=django > requirements/base.txt
 	@./manage.py generaterequirements production --only=django > requirements/common.txt
 
+# Major releases
+
 gitlab-release-documentation: ## Trigger the documentation build and publication using GitLab CI
 gitlab-release-documentation:
 	git push
@@ -327,11 +329,11 @@ gitlab-release-docker-major:
 	git push origin :releases/docker_major || true
 	git push origin HEAD:releases/docker_major
 
-gitlab-release-python: ## Trigger the Python package build and publication using GitLab CI
-gitlab-release-python:
+gitlab-release-python-major: ## Trigger the Python package build and publication using GitLab CI
+gitlab-release-python-major:
 	git push
 	git push --tags
-	git push origin :releases/python || true
+	git push origin :releases/python_major || true
 	git push origin HEAD:releases/python
 
 gitlab-release-all-major: ## Trigger the Python package, Docker image, and documentation build and publication using GitLab CI
@@ -420,14 +422,13 @@ docker-postgres-off: ## Stop and delete the PostgreSQL Docker container.
 	docker stop postgres
 	docker rm postgres
 
-
 # Security
 
 safety-check: ## Run a package safety check.
 	safety check
 
-
 # Other
+
 find-gitignores: ## Find stray .gitignore files.
 	@export FIND_GITIGNORES=`find -name '.gitignore'| wc -l`; \
 	if [ $${FIND_GITIGNORES} -gt 1 ] ;then echo "More than one .gitignore found: $$FIND_GITIGNORES"; fi
@@ -454,7 +455,6 @@ check-missing-migrations: ## Make sure all models have proper migrations.
 check-missing-inits: ## Find missing __init__.py files from modules.
 check-missing-inits:
 	@contrib/scripts/find_missing_inits.py
-
 
 setup-dev-environment: ## Bootstrap a virtualenv by install all dependencies to start developing.
 	sudo apt-get install -y exiftool firefox-geckodriver gcc gettext gnupg1 graphviz poppler-utils python3-dev tesseract-ocr-deu

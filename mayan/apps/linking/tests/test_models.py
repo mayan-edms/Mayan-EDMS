@@ -8,6 +8,7 @@ class SmartLinkTestCase(SmartLinkTestMixin, GenericDocumentTestCase):
 
     def setUp(self):
         super().setUp()
+
         self._create_test_document_stub()
         self._create_test_smart_link(add_test_document_type=True)
 

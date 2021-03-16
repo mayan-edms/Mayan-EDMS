@@ -95,6 +95,13 @@ class DocumentFileDetachedSignatureCreateView(ExternalObjectViewMixin, FormView)
 
         return super().form_valid(form)
 
+        AccessControlList.objects.check_access(
+            obj=document_version,
+            permissions=(permission_document_version_sign_detached,),
+            user=self.request.user
+        )
+        return document_version
+
     def get_extra_context(self):
         return {
             'object': self.external_object,

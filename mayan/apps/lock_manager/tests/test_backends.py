@@ -5,6 +5,7 @@ from django.utils.module_loading import import_string
 from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..exceptions import LockError
+from ..settings import setting_default_lock_timeout
 
 from .literals import TEST_LOCK_1, TEST_LOCK_LONG_NAME
 
@@ -95,10 +96,11 @@ class BaseLockBackendTestMixin:
 
 
 class DefaultTimeoutTestMixin:
-    @override_settings(LOCK_MANAGER_DEFAULT_LOCK_TIMEOUT=1)
     def setUp(self):
         super().setUp()
         self.locking_backend = import_string(dotted_path=self.backend_string)
+        setting_default_lock_timeout.set(value=1)
+        self.assertEqual(setting_default_lock_timeout.value, 1)
 
     def test_default_timeout_expired(self):
         self.locking_backend.acquire_lock(name=TEST_LOCK_1, timeout=None)

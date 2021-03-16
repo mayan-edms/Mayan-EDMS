@@ -2,7 +2,7 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # mic <winterfall24@gmail.com>, 2020
 # Roberto Rosario, 2020
@@ -10,12 +10,12 @@
 # Marcin Lozynski <mlozynski@wp.pl>, 2020
 # Tomasz Szymanowicz <alakdae@gmail.com>, 2020
 # Wojciech Warczakowski <w.warczakowski@gmail.com>, 2020
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"POT-Creation-Date: 2021-03-14 04:40+0000\n"
 "PO-Revision-Date: 2020-09-27 06:47+0000\n"
 "Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>, 2020\n"
 "Language-Team: Polish (https://www.transifex.com/rosarior/teams/13584/pl/)\n"
@@ -112,6 +112,41 @@ msgstr "%(object)s zaktualizowano pomyślnie."
 #, python-format
 msgid "No %(verbose_name)s found matching the query"
 msgstr "Nie znaleziono %(verbose_name)s pasującego do zapytania"
+
+#: mixins.py:349
+#, python-format
+msgid "Unable to perform operation on object %(instance)s; %(exception)s."
+msgstr ""
+
+#: mixins.py:351
+#, python-format
+msgid "Operation performed on %(object)s."
+msgstr ""
+
+#: mixins.py:352
+#, python-format
+msgid "Operation performed on %(count)d object."
+msgstr ""
+
+#: mixins.py:353
+#, python-format
+msgid "Operation performed on %(count)d objects."
+msgstr ""
+
+#: mixins.py:354
+#, python-format
+msgid "Perform operation on %(object)s."
+msgstr ""
+
+#: mixins.py:355
+#, python-format
+msgid "Perform operation on %(count)d object."
+msgstr ""
+
+#: mixins.py:356
+#, python-format
+msgid "Perform operation on %(count)d objects."
+msgstr ""
 
 #: mixins.py:438
 msgid "Object"

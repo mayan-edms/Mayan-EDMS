@@ -160,6 +160,7 @@ class FileMetadataViewsTestCase(
 
     def test_trashed_document_submit_view_with_access(self):
         self.test_document.file_latest.file_metadata_drivers.all().delete()
+
         self.grant_access(
             permission=permission_file_metadata_submit, obj=self.test_document
         )
@@ -207,6 +208,7 @@ class FileMetadataViewsTestCase(
 
     def test_trashed_document_multiple_document_submit_view_with_access(self):
         self.test_document.file_latest.file_metadata_drivers.all().delete()
+
         self.grant_access(
             permission=permission_file_metadata_submit, obj=self.test_document
         )

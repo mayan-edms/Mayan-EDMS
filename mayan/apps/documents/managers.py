@@ -189,6 +189,7 @@ class RecentlyAccessedDocumentManager(models.Manager):
             )[
                 setting_recently_accessed_document_count.value:
             ]
+
             self.filter(pk__in=list(recent_to_delete)).delete()
         return new_recent
 

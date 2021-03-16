@@ -185,6 +185,7 @@ class DocumentType(ExtraDataModelMixin, models.Model):
             'target': 'self'
         }
     )
+
     def save(self, *args, **kwargs):
         return super().save(*args, **kwargs)
 

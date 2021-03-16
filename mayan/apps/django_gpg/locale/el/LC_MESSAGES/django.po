@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# pyrotech <anastasios@tutamail.com>, 2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-04 23:49+0000\n"
-"PO-Revision-Date: 2020-04-14 08:31+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-03-14 04:39+0000\n"
+"PO-Revision-Date: 2021-01-09 16:37+0000\n"
+"Last-Translator: pyrotech <anastasios@tutamail.com>\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +21,7 @@ msgstr ""
 
 #: apps.py:30
 msgid "Django GPG"
-msgstr ""
+msgstr "Django GPG"
 
 #: apps.py:46 apps.py:52 forms.py:15
 msgid "Key ID"
@@ -52,7 +53,7 @@ msgstr "Αναγνωριστικό χρήστη"
 
 #: dependencies.py:10
 msgid "GNU privacy guard - a PGP implementation."
-msgstr ""
+msgstr "GNU privacy guard - μία PGP υλοποίηση."
 
 #: forms.py:26
 msgid "None"
@@ -64,7 +65,7 @@ msgstr "Δακτυλικό αποτύπωμα"
 
 #: forms.py:31 models.py:48
 msgid "Algorithm"
-msgstr "Αλγόρυθμος"
+msgstr "Αλγόριθμος"
 
 #: forms.py:45
 msgid "Term"
@@ -84,11 +85,11 @@ msgstr "Λεπτομέρειες"
 
 #: links.py:27
 msgid "Download"
-msgstr "Κατέβασμα"
+msgstr "Λήψη"
 
 #: links.py:32 permissions.py:26
 msgid "Query keyservers"
-msgstr "Ερώτημα προς διακομηστές"
+msgstr "Αναζήτηση στους διακομιστές"
 
 #: links.py:37
 msgid "Import"
@@ -96,15 +97,15 @@ msgstr "Εισαγωγή"
 
 #: links.py:42 permissions.py:5
 msgid "Key management"
-msgstr "Διαχείρηση κλειδιών"
+msgstr "Διαχείριση κλειδιών"
 
 #: links.py:46
 msgid "Upload key"
-msgstr "Ανέβασμα κλειδιού"
+msgstr "Φόρτωση κλειδιού"
 
 #: links.py:50 views.py:180
 msgid "Private keys"
-msgstr "Προσωπικά κλειδιά"
+msgstr "Ιδιωτικά κλειδιά"
 
 #: links.py:54 views.py:204
 msgid "Public keys"
@@ -112,7 +113,7 @@ msgstr "Δημόσια κλειδιά"
 
 #: literals.py:23 literals.py:31
 msgid "Public"
-msgstr "Δημόσια"
+msgstr "Δημόσιο"
 
 #: literals.py:24 literals.py:32
 msgid "Secret"
@@ -120,23 +121,23 @@ msgstr "Μυστική φράση"
 
 #: literals.py:40 literals.py:45
 msgid "RSA"
-msgstr ""
+msgstr "RSA"
 
 #: literals.py:41
 msgid "DSA"
-msgstr ""
+msgstr "DSA"
 
 #: literals.py:46
 msgid "Elgamal"
-msgstr ""
+msgstr "Elgamal"
 
 #: literals.py:62
 msgid "Bad signature."
-msgstr "Άκυρη υπογραφή"
+msgstr "Μη έγκυρη υπογραφή."
 
 #: literals.py:65
 msgid "Document not signed or invalid signature."
-msgstr "Ανυπόγραφο έγγραφο ή άκυρη υπογραφή"
+msgstr "Ανυπόγραφο έγγραφο ή μη έγκυρη υπογραφή."
 
 #: literals.py:68
 msgid "Signature error."
@@ -144,19 +145,19 @@ msgstr "Σφάλμα υπογραφής."
 
 #: literals.py:72
 msgid "Document is signed but no public key is available for verification."
-msgstr "Το έγγραφο είναι ψηφιακά υπογεγραμμένο αλλά δεν υπάρχει διαθέσιμο δημόσιο κλειδί για επαλήθευση."
+msgstr "Το έγγραφο είναι υπογεγραμμένο αλλά δεν υπάρχει διαθέσιμο δημόσιο κλειδί για επαλήθευση."
 
 #: literals.py:77
 msgid "Document is signed, and signature is good."
-msgstr "Το έγγρφο είναι υπογεγραμμένο ψηφιακά και η υπογραφή είναι έγκυρη."
+msgstr "Το έγγραφο είναι υπογεγραμμένο και η υπογραφή είναι εντάξει."
 
 #: literals.py:80
 msgid "Document is signed with a valid signature."
-msgstr "Το έγγραφο είναι υπογεγραμμένο με έγκυρη ψηφιακή υπογραφή."
+msgstr "Το έγγραφο είναι υπογεγραμμένο με έγκυρη υπογραφή."
 
 #: models.py:30
 msgid "ASCII armored version of the key."
-msgstr "Το κλειδί σε μορφή ASCII armored,"
+msgstr "ASCII armored έκδοση κλειδιού."
 
 #: models.py:31
 msgid "Key data"
@@ -172,7 +173,7 @@ msgstr "Κλειδιά"
 
 #: models.py:72
 msgid "Invalid key data"
-msgstr "Άκυρα δεδομένα κλειδιού"
+msgstr "Μη έγκυρα δεδομένα κλειδιού"
 
 #: models.py:75
 msgid "Key already exists."
@@ -184,11 +185,11 @@ msgstr "Διαγραφή κλειδιών"
 
 #: permissions.py:11
 msgid "Download keys"
-msgstr "Κατέβασμακλειδιών"
+msgstr "Λήψη κλειδιών"
 
 #: permissions.py:14
 msgid "Import keys from keyservers"
-msgstr "Εισαγωγή κλειδιών από διακομιστή"
+msgstr "Εισαγωγή κλειδιών από διακομιστές κλειδιών"
 
 #: permissions.py:17
 msgid "Use keys to sign content"
@@ -196,7 +197,7 @@ msgstr "Χρήση κλειδιών για υπογραφή περιεχομέν
 
 #: permissions.py:20
 msgid "Upload keys"
-msgstr "Ανέβασμα κλειδιών"
+msgstr "Φόρτωση κλειδιών"
 
 #: permissions.py:23
 msgid "View keys"
@@ -208,11 +209,11 @@ msgstr "Υπογραφές"
 
 #: settings.py:16
 msgid "Full path to the backend to be used to handle keys and signatures."
-msgstr ""
+msgstr "Πλήρης διαδρομή στο backend που θα χρησιμοποιηθεί για την διαχείριση κλειδιών και υπογραφών."
 
 #: settings.py:25
 msgid "Keyserver used to query for keys."
-msgstr "Διακομηστής που θα χρησιμοποιηθεί γιααναζήτηση κλειδιών."
+msgstr "Διακομιστής κλειδιών που θα χρησιμοποιηθεί για αναζήτηση κλειδιών."
 
 #: views.py:36
 #, python-format
@@ -241,21 +242,21 @@ msgstr "Αδυναμία εισαγωγής κλειδιού: %(key_id)s, %(erro
 #: views.py:93
 #, python-format
 msgid "Successfully received key: %(key_id)s"
-msgstr "Επιτυχής παραλαβή κλειδιού: %(key_id)s"
+msgstr "Επιτυχής λήψη κλειδιού: %(key_id)s"
 
 #: views.py:110
 msgid ""
 "Use names, last names, key ids or emails to search public keys to import "
 "from the keyserver."
-msgstr ""
+msgstr "Χρησιμοποιήστε ονόματα, επώνυμα, αναγνωριστικά ταυτότητας ή emails για αναζήτηση δημοσίων κλειδιών προς εισαγωγή από τον διακομιστή κλειδιών."
 
 #: views.py:114
 msgid "No results returned"
-msgstr ""
+msgstr "Δεν βρέθηκαν αποτελέσματα"
 
 #: views.py:116
 msgid "Key query results"
-msgstr "Αποτελέσματα ερωτήματος"
+msgstr "Αποτελέσματα αναζήτησης κλειδιών"
 
 #: views.py:136
 msgid "Search"
@@ -263,29 +264,29 @@ msgstr "Αναζήτηση"
 
 #: views.py:138
 msgid "Query key server"
-msgstr "Ερώτημα προς διακομηστή κλειδιών"
+msgstr "Ερώτημα προς διακομιστή κλειδιών"
 
 #: views.py:157
 msgid "Upload new key"
-msgstr "Ανέβασμανέου κλειδιού"
+msgstr "Φόρτωση νέου κλειδιού"
 
 #: views.py:173
 msgid ""
 "Private keys are used to signed documents. Private keys can only be uploaded"
 " by the user. The view to upload private and public keys is the same."
-msgstr ""
+msgstr "Τα ιδιωτικά κλειδιά χρησιμοποιούνται για την υπογραφή εγγράφων. Τα ιδιωτικά κλειδιά μπορούν να φορτωθούν μόνο από τον χρήστη. Η προβολή για φόρτωση ιδιωτικών και δημοσίων κλειδιών είναι η ίδια."
 
 #: views.py:178
 msgid "There no private keys"
-msgstr ""
+msgstr "Δεν υπάρχουν ιδιωτικά κλειδιά"
 
 #: views.py:196
 msgid ""
 "Public keys are used to verify signed documents. Public keys can be uploaded"
 " by the user or downloaded from keyservers. The view to upload private and "
 "public keys is the same."
-msgstr ""
+msgstr "Τα δημόσια κλειδιά χρησιμοποιούνται για την επαλήθευση υπογεγραμμένων εγγράφων. Τα δημόσια κλειδιά μπορού να φορτωθούν από τον χρήστη ή να μεταφορτωθούν από τους διακομιστές κλειδιών. Η προβολή για την φόρτωση ιδιωτικών και δημοσίων κλειδιών είναι η ίδια."
 
 #: views.py:202
 msgid "There no public keys"
-msgstr ""
+msgstr "Δεν υπάρχουν δημόσια κλειδιά"

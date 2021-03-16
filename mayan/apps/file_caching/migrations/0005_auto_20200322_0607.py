@@ -48,20 +48,21 @@ def operation_purge_and_delete_caches(apps, schema_editor):
         except ImportError as exception:
             logger.error(
                 'Storage "%s" not found. Remove the files from this '
-                'storage manually.', cache.storage_instance_path
+                'storage manually.; %s', cache.storage_instance_path,
+                exception
             )
             cache_storages[cache.pk] = DummyStorage()
 
-    for cache_partition_file in CachePartitionFile.objects.using(alias=schema_editor.connection.alias).all():
+    cursor_primary.execute(query)
+    for partition_name, filename, cache_id in cursor_primary.fetchall():
         cache_storages[
-            cache_partition_file.partition.cache.pk
+            cache_id
         ].delete(
             name='{}-{}'.format(
-                cache_partition_file.partition.name,
-                cache_partition_file.filename
+                partition_name,
+                filename
             )
         )
-        cache_partition_file.delete()
 
     cursor_secondary.execute('DELETE FROM "file_caching_cachepartitionfile";')
     cursor_secondary.execute('DELETE FROM "file_caching_cachepartition";')

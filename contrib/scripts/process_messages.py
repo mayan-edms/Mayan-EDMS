@@ -2,6 +2,7 @@
 
 import os
 import optparse
+from pathlib import Path
 import sys
 
 import sh
@@ -117,18 +118,24 @@ class MessageProcessor:
             app_path = os.path.join(settings.BASE_DIR, 'apps', app)
             os.chdir(app_path)
 
-            print(
-                'Doing languages: {}'.format(
-                    ', '.join(self.selected_languages)
+            path = Path(app_path) / 'locale'
+            if path.exists():
+                print(
+                    'Doing languages: {}'.format(
+                        ', '.join(self.selected_languages)
+                    )
                 )
-            )
 
-            environment = os.environ.copy()
-            environment.pop('DJANGO_SETTINGS_MODULE')
+                environment = os.environ.copy()
+                environment.pop('DJANGO_SETTINGS_MODULE')
 
-            self.command_compilemessages(
-                _env=environment, *self.get_django_language_argument()
-            )
+                self.command_compilemessages(
+                    _env=environment, *self.get_django_language_argument()
+                )
+            else:
+                print(
+                    'Skipping app: {}, missing `locale` folder'.format(app)
+                )
 
     def do_makemessages(self):
         print('Making messages')
@@ -138,18 +145,24 @@ class MessageProcessor:
             app_path = os.path.join(settings.BASE_DIR, 'apps', app)
             os.chdir(app_path)
 
-            print(
-                'Doing languages: {}'.format(
-                    ', '.join(self.selected_languages)
+            path = Path(app_path) / 'locale'
+            if path.exists():
+                print(
+                    'Doing languages: {}'.format(
+                        ', '.join(self.selected_languages)
+                    )
                 )
-            )
 
-            environment = os.environ.copy()
-            environment.pop('DJANGO_SETTINGS_MODULE')
+                environment = os.environ.copy()
+                environment.pop('DJANGO_SETTINGS_MODULE')
 
-            self.command_makemessages(
-                _env=environment, *self.get_django_language_argument()
-            )
+                self.command_makemessages(
+                    _env=environment, *self.get_django_language_argument()
+                )
+            else:
+                print(
+                    'Skipping app: {}, missing `locale` folder'.format(app)
+                )
 
     def do_pull_translations(self):
         print('Pulling translations')

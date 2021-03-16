@@ -5,7 +5,7 @@ from django.utils.encoding import force_text
 from mayan.apps.dependencies.exceptions import DependenciesException
 
 from ..exceptions import LockError
-from ..settings import setting_backend_arguments, setting_default_lock_timeout
+from ..settings import setting_backend_arguments
 
 from .base import LockingBackend
 from .literals import REDIS_LOCK_VERSION_REQUIRED
@@ -16,9 +16,7 @@ REDIS_LOCK_NAME_PREFIX = '_mayan_lock:'
 
 class RedisLock(LockingBackend):
     @classmethod
-    def acquire_lock(cls, name, timeout=None):
-        timeout = timeout or setting_default_lock_timeout.value
-        super().acquire_lock(name=name, timeout=timeout)
+    def _acquire_lock(cls, name, timeout):
         return RedisLock(name=name, timeout=timeout)
 
     @classmethod
@@ -30,8 +28,7 @@ class RedisLock(LockingBackend):
         return server
 
     @classmethod
-    def purge_locks(cls):
-        super().purge_locks()
+    def _purge_locks(cls):
         cache = cls.get_redis_connection()
 
         cursor = '0'
@@ -66,8 +63,7 @@ class RedisLock(LockingBackend):
         else:
             raise LockError
 
-    def release(self):
-        super().release()
+    def _release(self):
         try:
             self.redis_lock_instance.release()
         except redis.exceptions.LockNotOwnedError:

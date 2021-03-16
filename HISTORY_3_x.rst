@@ -1,3 +1,15 @@
+3.5.6 (2021-03-14)
+==================
+- Port improvements from Series 3.4:
+  - Update Django from version 2.2.16 to 2.2.19.
+  - Optimize file caching migration 0005
+  - Optimize file metadata migration 0003
+
+- Make the ``ObjectActionMixin`` messages translatable.
+- Use recent PIP to avoid installing Rust.
+- Specify which PIP version to use.
+- Improvements merged from series 3.3 and 3.4.
+
 3.5.5 (2021-01-05)
 ==================
 - Merge improvements and fixes from the 3.4 series.
@@ -358,6 +370,21 @@
   with ``CELERY_BROKER_URL``.
 - Default ``DEFAULT_CELERY_BROKER_URL`` to ``'memory://'``.
   This ensures operation even when there is no broker available.
+
+3.4.22 (2021-03-13)
+===================
+- Update the MySQL client packages for Debian.
+- Update Django from version 2.2.16 to 2.2.19.
+- Optimize file caching migration 0005.
+- Improvements from version 3.3.
+
+3.4.21 (2020-12-31)
+===================
+- Improve the Single Page App AJAX content escape logic.
+  This avoids an infinite login redirect loop on some browsers.
+- Avoid self-referencing dictionaries when resolving primary key
+  URL keyword arguments.
+- Backport GitLab CI improvements from version 3.5.
 
 3.4.20 (2020-11-11)
 ===================
@@ -749,6 +776,15 @@
 - Remove codecov dependency.
 - Remove pathlib2 dependency, it is now part of the standard Python library.
 - Remove Django's admindocs app
+
+3.3.18 (2021-03-13)
+===================
+- Optimize file metadata migration 0003.
+- Update Transifex client to version 0.13.7.
+- Specify which PIP version to use.
+- Use recent PIP to avoid installing Rust.
+- Backport GitLab CI improvements.
+- Backport Makefile improvements.
 
 3.3.17 (2020-04-09)
 ===================

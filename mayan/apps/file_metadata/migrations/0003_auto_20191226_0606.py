@@ -41,7 +41,6 @@ class Migration(migrations.Migration):
                 verbose_name='Internal name'
             ),
         ),
-
     ]
     run_before = [
         ('documents', '0057_auto_20200916_1057'),

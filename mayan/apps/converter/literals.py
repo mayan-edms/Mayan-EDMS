@@ -72,7 +72,6 @@ DEFAULT_CONVERTER_ASSET_STORAGE_BACKEND = 'django.core.files.storage.FileSystemS
 DEFAULT_CONVERTER_ASSET_STORAGE_BACKEND_ARGUMENTS = {
     'location': os.path.join(settings.MEDIA_ROOT, 'converter_assets')
 }
-
 DEFAULT_CONVERTER_GRAPHICS_BACKEND = 'mayan.apps.converter.backends.python.Python'
 DEFAULT_PAGE_NUMBER = 1
 DEFAULT_PDFTOPPM_DPI = 300

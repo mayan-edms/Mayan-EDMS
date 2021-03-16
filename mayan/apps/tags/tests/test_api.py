@@ -267,6 +267,8 @@ class TagDocumentAPIViewTestCase(
     def test_tag_document_list_api_view_with_document_access(self):
         self.test_tag.documents.add(self.test_document)
 
+        self._clear_events()
+
         self.grant_access(
             obj=self.test_document, permission=permission_document_view
         )

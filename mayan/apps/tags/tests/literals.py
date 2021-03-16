@@ -16,6 +16,6 @@ TEST_TAG_INDEX_NODE_TEMPLATE = '''
 {no_tag}
 {{% endfor %}}
 '''.format(
-    tag_label=TEST_TAG_LABEL, has_tag=TEST_TAG_INDEX_HAS_TAG,
+    tag_label='{}_0'.format(TEST_TAG_LABEL), has_tag=TEST_TAG_INDEX_HAS_TAG,
     no_tag=TEST_TAG_INDEX_NO_TAG
 ).replace('\n', '')

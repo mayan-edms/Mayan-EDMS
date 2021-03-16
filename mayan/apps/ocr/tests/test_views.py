@@ -18,37 +18,6 @@ class DocumentOCRViewsTestCase(
     # Disable descriptor leak test until fixed in upstream
     _skip_file_descriptor_test = True
 
-    def test_document_content_view_no_permission(self):
-        self.test_document.submit_for_ocr()
-
-        response = self._request_test_document_version_ocr_content_view()
-        self.assertEqual(response.status_code, 404)
-
-    def test_document_content_view_with_access(self):
-        self.test_document.submit_for_ocr()
-        self.grant_access(
-            obj=self.test_document,
-            permission=permission_document_version_ocr_content_view
-        )
-
-        response = self._request_test_document_version_ocr_content_view()
-        self.assertContains(
-            response=response, text=TEST_DOCUMENT_VERSION_OCR_CONTENT,
-            status_code=200
-        )
-
-    def test_trashed_document_content_view_with_access(self):
-        self.test_document.submit_for_ocr()
-        self.grant_access(
-            obj=self.test_document,
-            permission=permission_document_version_ocr_content_view
-        )
-
-        self.test_document.delete()
-
-        response = self._request_test_document_version_ocr_content_view()
-        self.assertEqual(response.status_code, 404)
-
     def test_document_content_delete_view_no_permission(self):
         self.test_document.submit_for_ocr()
 
@@ -92,6 +61,37 @@ class DocumentOCRViewsTestCase(
                 document_version_page=self.test_document_version.pages.first()
             ).exists()
         )
+
+    def test_document_content_view_no_permission(self):
+        self.test_document.submit_for_ocr()
+
+        response = self._request_test_document_version_ocr_content_view()
+        self.assertEqual(response.status_code, 404)
+
+    def test_document_content_view_with_access(self):
+        self.test_document.submit_for_ocr()
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_version_ocr_content_view
+        )
+
+        response = self._request_test_document_version_ocr_content_view()
+        self.assertContains(
+            response=response, text=TEST_DOCUMENT_VERSION_OCR_CONTENT,
+            status_code=200
+        )
+
+    def test_trashed_document_content_view_with_access(self):
+        self.test_document.submit_for_ocr()
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_version_ocr_content_view
+        )
+
+        self.test_document.delete()
+
+        response = self._request_test_document_version_ocr_content_view()
+        self.assertEqual(response.status_code, 404)
 
     def test_document_page_content_view_no_permission(self):
         self.test_document.submit_for_ocr()
