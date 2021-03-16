@@ -7,14 +7,15 @@
 # Roberto Rosario, 2020
 # e6bc1d20d3f0031709c3c11db1061ebc_be0a371 <8b4e580508477646e97982ebad39e3af_312311>, 2020
 # j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
+# bwakkie <bwakkie@gmail.com>, 2021
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-04 23:49+0000\n"
+"POT-Creation-Date: 2021-03-14 04:39+0000\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
-"Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020\n"
+"Last-Translator: bwakkie <bwakkie@gmail.com>, 2021\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -212,7 +213,7 @@ msgstr ""
 
 #: views.py:52
 msgid "No file metadata available"
-msgstr ""
+msgstr "Geen bestands metagegevens beschikbaar"
 
 #: views.py:55
 #, python-format
@@ -225,10 +226,13 @@ msgid ""
 "the driver does not support any metadata field for the file type of this "
 "document."
 msgstr ""
+"Dit kan betekenen dat de bestands metagegevens detectie nog niet klaar is of"
+" dat de onderliggende driver geen metagegevens voor dit bestandstype "
+"ondersteund. "
 
 #: views.py:86
 msgid "No file metadata available for this driver"
-msgstr ""
+msgstr "Geen bestands metagegevens beschikbaar voor deze driver "
 
 #: views.py:90
 #, python-format

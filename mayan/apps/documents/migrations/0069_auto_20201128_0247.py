@@ -77,31 +77,53 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='document',
             name='label',
-            field=models.CharField(blank=True, db_index=True, default='', help_text='A short text identifying the document. By default, will be set to the filename of the first file uploaded to the document.', max_length=255, verbose_name='Label'),
+            field=models.CharField(
+                blank=True, db_index=True, default='',
+                help_text='A short text identifying the document. By '
+                'default, will be set to the filename of the first file '
+                'uploaded to the document.', max_length=255,
+                verbose_name='Label'
+            ),
         ),
         migrations.AlterField(
             model_name='document',
             name='language',
-            field=models.CharField(blank=True, default='eng', help_text='The primary language in the document.', max_length=8, verbose_name='Language'),
+            field=models.CharField(
+                blank=True, default='eng',
+                help_text='The primary language in the document.',
+                max_length=8, verbose_name='Language'
+            ),
         ),
         migrations.AlterField(
             model_name='documentfile',
             name='filename',
-            field=models.CharField(blank=True, max_length=255, verbose_name='Filename'),
+            field=models.CharField(
+                blank=True, max_length=255, verbose_name='Filename'
+            ),
         ),
         migrations.AlterField(
             model_name='documentversionpage',
             name='content_type',
-            field=models.ForeignKey(help_text='Content type for the source object of the page.', on_delete=django.db.models.deletion.CASCADE, to='contenttypes.ContentType'),
+            field=models.ForeignKey(
+                help_text='Content type for the source object of the page.',
+                on_delete=django.db.models.deletion.CASCADE,
+                to='contenttypes.ContentType'
+            ),
         ),
         migrations.AlterField(
             model_name='documentversionpage',
             name='object_id',
-            field=models.PositiveIntegerField(help_text='ID for the source object of the page.'),
+            field=models.PositiveIntegerField(
+                help_text='ID for the source object of the page.'
+            ),
         ),
         migrations.AlterField(
             model_name='documentversionpage',
             name='page_number',
-            field=models.PositiveIntegerField(db_index=True, default=1, help_text='Unique integer number for the page. Pages are ordered by this number.', verbose_name='Page number'),
+            field=models.PositiveIntegerField(
+                db_index=True, default=1,
+                help_text='Unique integer number for the page. Pages are '
+                'ordered by this number.', verbose_name='Page number'
+            ),
         ),
     ]

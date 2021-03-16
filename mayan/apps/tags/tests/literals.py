@@ -3,8 +3,6 @@ TEST_TAG_LABEL_EDITED = 'test-tag-edited'
 TEST_TAG_COLOR = '#001122'
 TEST_TAG_COLOR_EDITED = '#221100'
 
-TEST_TAG_LABEL_2 = 'test-tag-2'
-
 TEST_TAG_INDEX_HAS_TAG = 'HAS_TAG'
 TEST_TAG_INDEX_NO_TAG = 'NO_TAG'
 TEST_TAG_INDEX_NODE_TEMPLATE = '''
@@ -18,5 +16,6 @@ TEST_TAG_INDEX_NODE_TEMPLATE = '''
 {no_tag}
 {{% endfor %}}
 '''.format(
-    tag_label=TEST_TAG_LABEL, has_tag=TEST_TAG_INDEX_HAS_TAG, no_tag=TEST_TAG_INDEX_NO_TAG,
+    tag_label='{}_0'.format(TEST_TAG_LABEL), has_tag=TEST_TAG_INDEX_HAS_TAG,
+    no_tag=TEST_TAG_INDEX_NO_TAG
 ).replace('\n', '')

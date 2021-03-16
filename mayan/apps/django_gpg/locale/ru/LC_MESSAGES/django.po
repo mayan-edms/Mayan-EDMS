@@ -4,14 +4,15 @@
 # 
 # Translators:
 # Translators:
+# Ilya Pavlov <spirkaa@gmail.com>, 2021
 # lilo.panic, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-04 23:49+0000\n"
-"PO-Revision-Date: 2020-04-14 08:31+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-03-14 04:39+0000\n"
+"PO-Revision-Date: 2021-03-01 10:13+0000\n"
+"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -53,7 +54,7 @@ msgstr "Идентификатор пользователя"
 
 #: dependencies.py:10
 msgid "GNU privacy guard - a PGP implementation."
-msgstr ""
+msgstr "GNU Privacy Guard"
 
 #: forms.py:26
 msgid "None"
@@ -69,11 +70,11 @@ msgstr "Алгоритм"
 
 #: forms.py:45
 msgid "Term"
-msgstr "Term"
+msgstr "Условие"
 
 #: forms.py:46
 msgid "Name, e-mail, key ID or key fingerprint to look for."
-msgstr "Имя, e-mail, ID ключа или отпечаток для поиска."
+msgstr "Имя, фамилия, адрес электронной почты, ID или отпечаток ключа"
 
 #: links.py:17
 msgid "Delete"
@@ -81,7 +82,7 @@ msgstr "Удалить"
 
 #: links.py:22
 msgid "Details"
-msgstr "Детали"
+msgstr "Подробности"
 
 #: links.py:27
 msgid "Download"
@@ -105,7 +106,7 @@ msgstr "Загрузить ключ"
 
 #: links.py:50 views.py:180
 msgid "Private keys"
-msgstr "Секретные ключи"
+msgstr "Закрытые ключи"
 
 #: links.py:54 views.py:204
 msgid "Public keys"
@@ -117,7 +118,7 @@ msgstr "Открытый"
 
 #: literals.py:24 literals.py:32
 msgid "Secret"
-msgstr "секретный"
+msgstr "Закрытый"
 
 #: literals.py:40 literals.py:45
 msgid "RSA"
@@ -157,7 +158,7 @@ msgstr "Документ подписан допустимой подписью.
 
 #: models.py:30
 msgid "ASCII armored version of the key."
-msgstr ""
+msgstr "Версия ключа в формате ASCII"
 
 #: models.py:31
 msgid "Key data"
@@ -209,11 +210,11 @@ msgstr "Подписи"
 
 #: settings.py:16
 msgid "Full path to the backend to be used to handle keys and signatures."
-msgstr ""
+msgstr "Полный путь к бэкэнду, который будет использоваться для обработки ключей и подписей."
 
 #: settings.py:25
 msgid "Keyserver used to query for keys."
-msgstr "Сервер ключей используемый для запроса ключей."
+msgstr "Сервер ключей, используемый для запроса ключей."
 
 #: views.py:36
 #, python-format
@@ -223,16 +224,16 @@ msgstr "Удалить ключ: %s"
 #: views.py:53
 #, python-format
 msgid "Details for key: %s"
-msgstr "Подробности для ключа: %s"
+msgstr "Подробности ключа: %s"
 
 #: views.py:75
 #, python-format
 msgid "Import key ID: %s?"
-msgstr "Получить ключ ID: %s?"
+msgstr "Импортировать ключ: %s?"
 
 #: views.py:76
 msgid "Import key"
-msgstr "Получить ключ"
+msgstr "Импортировать ключ"
 
 #: views.py:85
 #, python-format
@@ -248,11 +249,11 @@ msgstr "Успешно получен ключ: %(key_id)s"
 msgid ""
 "Use names, last names, key ids or emails to search public keys to import "
 "from the keyserver."
-msgstr ""
+msgstr "Используйте имена, фамилии, ID ключей или адреса электронной почты для поиска публичных ключей и их импорта с сервера ключей."
 
 #: views.py:114
 msgid "No results returned"
-msgstr ""
+msgstr "Нет результатов"
 
 #: views.py:116
 msgid "Key query results"
@@ -264,7 +265,7 @@ msgstr "Поиск"
 
 #: views.py:138
 msgid "Query key server"
-msgstr "Запросить сервер ключей"
+msgstr "Запрос к серверу ключей"
 
 #: views.py:157
 msgid "Upload new key"
@@ -274,19 +275,19 @@ msgstr "Загрузить новый ключ"
 msgid ""
 "Private keys are used to signed documents. Private keys can only be uploaded"
 " by the user. The view to upload private and public keys is the same."
-msgstr ""
+msgstr "Закрытые ключи используются для подписи документов. Закрытые ключи могут быть загружены только пользователем. Представление для загрузки закрытого и открытого ключей одинаковое."
 
 #: views.py:178
 msgid "There no private keys"
-msgstr ""
+msgstr "Нет закрытых ключей"
 
 #: views.py:196
 msgid ""
 "Public keys are used to verify signed documents. Public keys can be uploaded"
 " by the user or downloaded from keyservers. The view to upload private and "
 "public keys is the same."
-msgstr ""
+msgstr "Открытые ключи используются для проверки подписанных документов. Открытые ключи могут быть загружены пользователем или скачаны с серверов ключей. Представление для загрузки закрытого и открытого ключей одинаковое."
 
 #: views.py:202
 msgid "There no public keys"
-msgstr ""
+msgstr "Нет открытых ключей"

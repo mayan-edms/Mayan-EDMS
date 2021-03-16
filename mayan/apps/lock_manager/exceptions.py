@@ -1,2 +1,2 @@
 class LockError(Exception):
-    pass
+    """Raised when it is not possible to acquire a lock."""

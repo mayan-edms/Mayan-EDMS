@@ -89,6 +89,7 @@ class APIDocumentVersionListView(
     get: Return a list of the selected document's versions.
     post: Create a new document version.
     """
+    ordering_fields = ('active', 'comment')
     serializer_class = DocumentVersionSerializer
 
     def get_instance_extra_data(self):

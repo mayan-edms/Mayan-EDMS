@@ -201,6 +201,7 @@ class SmartLinkDocumentViewTestCase(
 
     def setUp(self):
         super().setUp()
+
         self._create_test_document_stub()
         self._create_test_smart_links(add_test_document_type=True)
 

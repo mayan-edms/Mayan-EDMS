@@ -4,7 +4,9 @@ from mayan.apps.common.queues import queue_tools
 from mayan.apps.task_manager.classes import CeleryQueue
 from mayan.apps.task_manager.workers import worker_medium
 
-queue_indexing = CeleryQueue(label=_('Indexing'), name='indexing', worker=worker_medium)
+queue_indexing = CeleryQueue(
+    label=_('Indexing'), name='indexing', worker=worker_medium
+)
 
 queue_indexing.add_task_type(
     label=_('Delete empty index nodes'),

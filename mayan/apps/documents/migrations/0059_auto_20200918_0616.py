@@ -29,6 +29,10 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterModelOptions(
             name='documentfilepage',
-            options={'ordering': ('page_number',), 'verbose_name': 'Document file page', 'verbose_name_plural': 'Document file pages'},
+            options={
+                'ordering': ('page_number',),
+                'verbose_name': 'Document file page',
+                'verbose_name_plural': 'Document file pages'
+            },
         ),
     ]

@@ -4,13 +4,15 @@
 # 
 # Translators:
 # Translators:
+# pyrotech <anastasios@tutamail.com>, 2021
+# pyrotech <anastasios@tutamail.com>, 2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-04 23:49+0000\n"
-"PO-Revision-Date: 2019-04-27 22:53+0000\n"
-"Last-Translator: Hmayag Antonian <hmayag@freemail.gr>\n"
+"POT-Creation-Date: 2021-03-14 04:39+0000\n"
+"PO-Revision-Date: 2021-01-30 16:55+0000\n"
+"Last-Translator: pyrotech <anastasios@tutamail.com>\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,11 +30,11 @@ msgstr "Ημερομηνία και ώρα"
 
 #: apps.py:42 apps.py:70
 msgid "Actor"
-msgstr ""
+msgstr "Ενεργών"
 
 #: apps.py:46 apps.py:75
 msgid "Event"
-msgstr ""
+msgstr "Συμβάν"
 
 #: apps.py:50 apps.py:80
 msgid "Target"
@@ -40,11 +42,11 @@ msgstr "Στόχος"
 
 #: apps.py:54
 msgid "Action object"
-msgstr "Αντικείμενο ενέργιας"
+msgstr "Αντικείμενο ενέργειας"
 
 #: apps.py:59 forms.py:10 forms.py:67
 msgid "Namespace"
-msgstr ""
+msgstr "Χώρος ονομάτων"
 
 #: apps.py:62 forms.py:14 forms.py:71
 msgid "Label"
@@ -52,16 +54,16 @@ msgstr "Ετικέτα"
 
 #: apps.py:86
 msgid "Seen"
-msgstr ""
+msgstr "Αναγνωσμένο"
 
 #: classes.py:142
 #, python-format
 msgid "Unknown or obsolete event type: %s"
-msgstr ""
+msgstr "Άγνωστος ή ξεπερασμένος τύπος συμβάντος: %s"
 
 #: forms.py:18 forms.py:75
 msgid "Subscription"
-msgstr ""
+msgstr "Εγγραφή"
 
 #: forms.py:20 forms.py:77
 msgid "No"
@@ -69,7 +71,7 @@ msgstr "Όχι"
 
 #: forms.py:21 forms.py:78
 msgid "Subscribed"
-msgstr ""
+msgstr "Εγγεγραμμένος"
 
 #: html_widgets.py:57
 msgid "System"
@@ -77,23 +79,23 @@ msgstr "Σύστημα"
 
 #: links.py:28
 msgid "My events"
-msgstr ""
+msgstr "Τα συμβάντα μου"
 
 #: links.py:46 models.py:63 views.py:74
 msgid "Event subscriptions"
-msgstr ""
+msgstr "Εγγραφές σε συμβάντα"
 
 #: links.py:51
 msgid "Mark as seen"
-msgstr ""
+msgstr "Σημείωση ως αναγνωσμένο"
 
 #: links.py:54
 msgid "Mark all as seen"
-msgstr ""
+msgstr "Σημείωση όλων ως αναγνωσμένα"
 
 #: links.py:60
 msgid "Subscriptions"
-msgstr ""
+msgstr "Εγγραφές"
 
 #: models.py:22
 msgid "Name"
@@ -101,11 +103,11 @@ msgstr "Όνομα"
 
 #: models.py:26
 msgid "Stored event type"
-msgstr ""
+msgstr "Αποθηκευμένος τύπος συμβάντος"
 
 #: models.py:27
 msgid "Stored event types"
-msgstr ""
+msgstr "Αποθηκευμένοι τύποι συμβάντων"
 
 #: models.py:52 models.py:78 models.py:109
 msgid "User"
@@ -117,7 +119,7 @@ msgstr "Τύπος συμβάντος"
 
 #: models.py:62
 msgid "Event subscription"
-msgstr ""
+msgstr "Εγγραφή σε συμβάν"
 
 #: models.py:82
 msgid "Action"
@@ -125,23 +127,23 @@ msgstr "Ενέργεια"
 
 #: models.py:84
 msgid "Read"
-msgstr ""
+msgstr "Ανάγνωση"
 
 #: models.py:90
 msgid "Notification"
-msgstr ""
+msgstr "Ενημέρωση"
 
 #: models.py:91 views.py:132
 msgid "Notifications"
-msgstr ""
+msgstr "Ενημερώσεις"
 
 #: models.py:119
 msgid "Object event subscription"
-msgstr ""
+msgstr "Εγγραφή σε συμβάν αντικειμένου"
 
 #: models.py:120
 msgid "Object event subscriptions"
-msgstr ""
+msgstr "Εγγραφές στα συμβάντα αντικειμένου"
 
 #: permissions.py:8
 msgid "Access the events of an object"
@@ -150,29 +152,29 @@ msgstr "Προσπέλαση συμβάντων ενός αντικειμένο�
 #: views.py:56
 #, python-format
 msgid "Error updating event subscription; %s"
-msgstr ""
+msgstr "Σφάλμα κατά την ενημέρωση της εγγραφής σε συμβάν. %s"
 
 #: views.py:61
 msgid "Event subscriptions updated successfully"
-msgstr ""
+msgstr "Εγγραφές σε συμβάντα ανανεώθηκαν επιτυχώς"
 
 #: views.py:127
 msgid "Subscribe to global or object events to receive notifications."
-msgstr ""
+msgstr "Εγγραφή σε καθολικά συμβάντα ή συμβάντα αντικειμένου για την λήψη ειδοποιήσεων."
 
 #: views.py:130
 msgid "There are no notifications"
-msgstr ""
+msgstr "Δεν υπάρχουν ειδοποιήσεις"
 
 #: views.py:179
 msgid ""
 "Events are actions that have been performed to this object or using this "
 "object."
-msgstr ""
+msgstr "Τα συμβάντα είναι ενέργειες που έχουν εκτελεστεί σε αυτό το αντικείμενο ή χρησιμοποιούν αυτό το αντικείμενο."
 
 #: views.py:182
 msgid "There are no events for this object"
-msgstr ""
+msgstr "Δεν υπάρχουν συμβάντα για αυτό το αντικείμενο"
 
 #: views.py:184
 #, python-format
@@ -182,16 +184,16 @@ msgstr "Συμβάντα για: %s"
 #: views.py:224
 #, python-format
 msgid "Error updating object event subscription; %s"
-msgstr ""
+msgstr "Σφάλμα κατά την ενημέρωση της εγγραφής σε συμβάντα του αντικειμένου. %s"
 
 #: views.py:230
 msgid "Object event subscriptions updated successfully"
-msgstr ""
+msgstr "Εγγραφές συμβάντων αντικειμένου ανανεώθηκαν επιτυχώς"
 
 #: views.py:243
 #, python-format
 msgid "Event subscriptions for: %s"
-msgstr ""
+msgstr "Εγγραφές σε συμβάντα για: %s"
 
 #: views.py:295
 #, python-format

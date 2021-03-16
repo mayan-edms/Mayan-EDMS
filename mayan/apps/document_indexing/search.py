@@ -3,7 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.dynamic_search.classes import SearchModel
 
-from .permissions import permission_document_indexing_instance_view
+from .permissions import permission_index_instance_view
 
 
 def transformation_format_uuid(term_string):
@@ -15,7 +15,7 @@ def transformation_format_uuid(term_string):
 
 index_instance_node_search = SearchModel(
     app_label='document_indexing', model_name='IndexInstanceNodeSearchResult',
-    permission=permission_document_indexing_instance_view,
+    permission=permission_index_instance_view,
     serializer_path='mayan.apps.document_indexing.serializers.IndexInstanceNodeSerializer'
 )
 index_instance_node_search.add_proxy_model(

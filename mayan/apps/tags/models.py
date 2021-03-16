@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from colorful.fields import RGBColorField
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.common.model_mixins import ExtraDataModelMixin
+from mayan.apps.databases.model_mixins import ExtraDataModelMixin
 from mayan.apps.events.classes import EventManagerMethodAfter, EventManagerSave
 from mayan.apps.events.decorators import method_event
 from mayan.apps.documents.models import Document

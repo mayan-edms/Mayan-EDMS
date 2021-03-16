@@ -27,7 +27,7 @@ class DocumentSignatureWorkflowActionTestCase(
     auto_upload_test_document = False
 
     def test_document_signature_detached_action_create_view(self):
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
         self._create_test_workflow_state()
         self.grant_access(
             obj=self.test_workflow, permission=permission_workflow_edit
@@ -39,7 +39,7 @@ class DocumentSignatureWorkflowActionTestCase(
         self.assertEqual(request.status_code, 200)
 
     def test_document_signature_embedded_action_create_view(self):
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
         self._create_test_workflow_state()
         self.grant_access(
             obj=self.test_workflow, permission=permission_workflow_edit
@@ -79,8 +79,7 @@ class DocumentSignatureWorkflowActionTestCase(
         self.assertNotEqual(signature_count, EmbeddedSignature.objects.count())
 
     def test_document_signature_detached_action_via_workflow(self):
-        self._create_test_workflow()
-        self.test_workflow.document_types.add(self.test_document_type)
+        self._create_test_workflow(add_test_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transitions()
         self._create_test_key_private()
@@ -108,8 +107,7 @@ class DocumentSignatureWorkflowActionTestCase(
         self.assertNotEqual(signature_count, DetachedSignature.objects.count())
 
     def test_document_signature_embedded_action_via_workflow(self):
-        self._create_test_workflow()
-        self.test_workflow.document_types.add(self.test_document_type)
+        self._create_test_workflow(add_test_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transitions()
         self._create_test_key_private()

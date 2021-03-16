@@ -285,14 +285,18 @@ class IntervalSourceTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
         periodic_task_count = PeriodicTask.objects.count()
 
         self._create_test_watchfolder()
-        self.assertEqual(PeriodicTask.objects.count(), periodic_task_count + 1)
+        self.assertEqual(
+            PeriodicTask.objects.count(), periodic_task_count + 1
+        )
 
     def test_periodic_task_delete(self):
         self._create_test_watchfolder()
         periodic_task_count = PeriodicTask.objects.count()
 
         self.test_document_type.delete()
-        self.assertEqual(PeriodicTask.objects.count(), periodic_task_count - 1)
+        self.assertEqual(
+            PeriodicTask.objects.count(), periodic_task_count - 1
+        )
 
     def test_interval_schedule_preseve(self):
         internal_schedule_count = IntervalSchedule.objects.count()
@@ -300,15 +304,21 @@ class IntervalSourceTestCase(WatchFolderTestMixin, GenericDocumentTestCase):
         self._create_test_watchfolder(label='test source 1')
         self._create_test_watchfolder(label='test source 2')
 
-        self.assertEqual(IntervalSchedule.objects.count(), internal_schedule_count + 1)
+        self.assertEqual(
+            IntervalSchedule.objects.count(), internal_schedule_count + 1
+        )
 
         self.test_watch_folders[1].delete()
 
-        self.assertEqual(IntervalSchedule.objects.count(), internal_schedule_count + 1)
+        self.assertEqual(
+            IntervalSchedule.objects.count(), internal_schedule_count + 1
+        )
 
         self.test_watch_folders[0].delete()
 
-        self.assertEqual(IntervalSchedule.objects.count(), internal_schedule_count)
+        self.assertEqual(
+            IntervalSchedule.objects.count(), internal_schedule_count
+        )
 
 
 class POP3SourceTestCase(GenericDocumentTestCase):
@@ -461,15 +471,15 @@ class SourceModelTestCase(SourceTestMixin, GenericDocumentTestCase):
 
     def setUp(self):
         super().setUp()
-        self.document_version_storage_instance = storage_document_files.get_storage_instance()
+        self.storage_document_files_instance = storage_document_files.get_storage_instance()
 
-    def _get_document_version_storage_file_count(self):
+    def _get_storage_document_files_count(self):
         return len(
-            self.document_version_storage_instance.listdir(path='')[1]
+            self.storage_document_files_instance.listdir(path='')[1]
         )
 
     def test_single_storage_file_creation(self):
-        document_version_file_count = self._get_document_version_storage_file_count()
+        document_file_count = self._get_storage_document_files_count()
 
         with open(TEST_SMALL_DOCUMENT_PATH, mode='rb') as file_object:
             self.test_source.handle_upload(
@@ -478,6 +488,6 @@ class SourceModelTestCase(SourceTestMixin, GenericDocumentTestCase):
             )
 
         self.assertEqual(
-            self._get_document_version_storage_file_count(),
-            document_version_file_count + 1
+            self._get_storage_document_files_count(),
+            document_file_count + 1
         )

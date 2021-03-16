@@ -27,7 +27,7 @@ from .settings import setting_workflow_image_cache_time
 from .tasks import task_generate_workflow_image
 
 
-class APIDocumentTypeWorkflowRuntimeProxyListView(generics.ListAPIView):
+class APIDocumentTypeWorkflowListView(generics.ListAPIView):
     """
     get: Returns a list of all the document type workflows.
     """
@@ -219,13 +219,14 @@ class APIWorkflowImageView(generics.RetrieveAPIView):
             return response
 
 
-class APIWorkflowRuntimeProxyListView(generics.ListCreateAPIView):
+class APIWorkflowListView(generics.ListCreateAPIView):
     """
     get: Returns a list of all the workflows.
     post: Create a new workflow.
     """
     mayan_object_permissions = {'GET': (permission_workflow_view,)}
     mayan_view_permissions = {'POST': (permission_workflow_create,)}
+    ordering_fields = ('internal_name', 'label')
     queryset = Workflow.objects.all()
 
     def get_instance_extra_data(self):
@@ -288,6 +289,7 @@ class APIWorkflowStateListView(generics.ListCreateAPIView):
     get: Returns a list of all the workflow states.
     post: Create a new workflow state.
     """
+    ordering_fields = ('completion', 'initial', 'label')
     serializer_class = WorkflowStateSerializer
 
     def get_queryset(self):
@@ -378,6 +380,8 @@ class APIWorkflowTransitionListView(generics.ListCreateAPIView):
     get: Returns a list of all the workflow transitions.
     post: Create a new workflow transition.
     """
+    ordering_fields = ('destination_state', 'label', 'origin_state')
+
     def get_queryset(self):
         return self.get_workflow().transitions.all()
 
@@ -488,6 +492,7 @@ class APIWorkflowTransitionFieldListView(generics.ListCreateAPIView):
     get: Returns a list of all the workflow transition fields.
     post: Create a new workflow transition field.
     """
+    ordering_fields = ('label', 'name', 'required', 'widget_kwargs')
     serializer_class = WorkflowTransitionFieldSerializer
 
     def get_instance_extra_data(self):
@@ -665,6 +670,11 @@ class APIWorkflowInstanceLogEntryListView(generics.ListCreateAPIView):
     get: Returns a list of all the document workflows log entries.
     post: Transition a document workflow by creating a new document workflow log entry.
     """
+    ordering_fields = (
+        'comment', 'transition', 'transition__destination_state',
+        'transition__origin_state'
+    )
+
     def get_document(self):
         document = get_object_or_404(
             klass=Document, pk=self.kwargs['document_id']

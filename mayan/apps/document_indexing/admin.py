@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
-from .models import Index, IndexTemplateNode
+from .models import IndexTemplate, IndexTemplateNode
 
 
 class IndexTemplateNodeInline(admin.StackedInline):
@@ -10,8 +10,8 @@ class IndexTemplateNodeInline(admin.StackedInline):
     model = IndexTemplateNode
 
 
-@admin.register(Index)
-class IndexAdmin(admin.ModelAdmin):
+@admin.register(IndexTemplate)
+class IndexTemplateAdmin(admin.ModelAdmin):
     filter_horizontal = ('document_types',)
     inlines = (IndexTemplateNodeInline,)
     list_display = ('label', 'enabled', 'get_document_types')

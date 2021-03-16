@@ -15,7 +15,7 @@ from django.urls import reverse
 from django.utils.functional import cached_property
 from django.utils.translation import ugettext, ugettext_lazy as _
 
-from mayan.apps.common.model_mixins import ExtraDataModelMixin
+from mayan.apps.databases.model_mixins import ExtraDataModelMixin
 from mayan.apps.common.validators import (
     YAMLValidator, validate_internal_name
 )

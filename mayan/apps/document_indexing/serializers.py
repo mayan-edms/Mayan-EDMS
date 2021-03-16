@@ -5,7 +5,13 @@ from rest_framework.exceptions import ValidationError
 from rest_framework.reverse import reverse
 from rest_framework_recursive.fields import RecursiveField
 
-from .models import Index, IndexInstance, IndexInstanceNode, IndexTemplateNode
+from mayan.apps.documents.models.document_type_models import DocumentType
+from mayan.apps.documents.permissions import permission_document_type_edit
+from mayan.apps.rest_api.relations import FilteredPrimaryKeyRelatedField
+
+from .models import (
+    IndexInstance, IndexInstanceNode, IndexTemplate, IndexTemplateNode
+)
 
 
 class IndexInstanceSerializer(serializers.ModelSerializer):
@@ -204,6 +210,27 @@ class IndexTemplateNodeWriteSerializer(serializers.ModelSerializer):
 
 
 class IndexTemplateSerializer(serializers.HyperlinkedModelSerializer):
+    document_types_url = serializers.HyperlinkedIdentityField(
+        help_text=_(
+            'URL of the API endpoint showing the list document types '
+            'associated with this index template.'
+        ), lookup_url_kwarg='index_template_id',
+        view_name='rest_api:indextemplate-documenttype-list'
+    )
+    document_types_add_url = serializers.HyperlinkedIdentityField(
+        help_text=_(
+            'URL of the API endpoint to add document types '
+            'to this index template.'
+        ), lookup_url_kwarg='index_template_id',
+        view_name='rest_api:indextemplate-documenttype-add'
+    )
+    document_types_remove_url = serializers.HyperlinkedIdentityField(
+        help_text=_(
+            'URL of the API endpoint to remove document types '
+            'from this index template.'
+        ), lookup_url_kwarg='index_template_id',
+        view_name='rest_api:indextemplate-documenttype-remove'
+    )
     nodes_url = serializers.SerializerMethodField(read_only=True)
     rebuild_url = serializers.HyperlinkedIdentityField(
         lookup_url_kwarg='index_template_id',
@@ -223,10 +250,11 @@ class IndexTemplateSerializer(serializers.HyperlinkedModelSerializer):
             },
         }
         fields = (
-            'document_types', 'enabled', 'id', 'label', 'nodes_url',
-            'rebuild_url', 'reset_url', 'slug', 'url'
+            'document_types_add_url', 'document_types_url',
+            'document_types_remove_url', 'enabled', 'id', 'label',
+            'nodes_url', 'rebuild_url', 'reset_url', 'slug', 'url'
         )
-        model = Index
+        model = IndexTemplate
 
     def get_url(self, obj):
         return reverse(
@@ -243,20 +271,19 @@ class IndexTemplateSerializer(serializers.HyperlinkedModelSerializer):
         )
 
 
-class IndexTemplateWriteSerializer(serializers.ModelSerializer):
-    url = serializers.SerializerMethodField(read_only=True)
+class DocumentTypeAddSerializer(serializers.Serializer):
+    document_type = FilteredPrimaryKeyRelatedField(
+        help_text=_(
+            'Primary key of the document type to add to the index template.'
+        ), source_model=DocumentType,
+        source_permission=permission_document_type_edit
+    )
 
-    class Meta:
-        fields = (
-            'document_types', 'enabled', 'label', 'id',
-            'slug', 'url'
-        )
-        model = Index
-        read_only_fields = ('id',)
 
-    def get_url(self, obj):
-        return reverse(
-            viewname='rest_api:indextemplate-detail', kwargs={
-                'index_template_id': obj.pk,
-            }, format=self.context['format'], request=self.context['request']
-        )
+class DocumentTypeRemoveSerializer(serializers.Serializer):
+    document_type = FilteredPrimaryKeyRelatedField(
+        help_text=_(
+            'Primary key of the document type to remove from the index template.'
+        ), source_model=DocumentType,
+        source_permission=permission_document_type_edit
+    )

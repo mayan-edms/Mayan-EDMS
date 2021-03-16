@@ -507,15 +507,6 @@ class DocumentTransformationViewTestCase(
         self.grant_access(
             obj=self.test_document, permission=permission_document_version_print
         )
-
-        response = self._request_test_document_print_view()
-        self.assertEqual(response.status_code, 200)
-
-    def test_document_preview_view_no_permission(self):
-        response = self._request_test_document_preview_view()
-        self.assertEqual(response.status_code, 404)
-
-    def test_document_preview_view_with_access(self):
         self.grant_access(
             obj=self.test_document, permission=permission_transformation_delete
         )

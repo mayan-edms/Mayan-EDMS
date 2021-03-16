@@ -10,9 +10,8 @@ from .api_views.document_file_api_views import (
     APIDocumentFilePageDetailView, APIDocumentFilePageListView
 )
 from .api_views.document_type_api_views import (
-    APIDocumentTypeDetailView, APIDocumentTypeDocumentListView,
-    APIDocumentTypeListView, APIDocumentTypeQuickLabelDetailView,
-    APIDocumentTypeQuickLabelListView
+    APIDocumentTypeDetailView, APIDocumentTypeListView,
+    APIDocumentTypeQuickLabelDetailView, APIDocumentTypeQuickLabelListView
 )
 from .api_views.document_version_api_views import (
     APIDocumentVersionDetailView, APIDocumentVersionExportView,
@@ -598,11 +597,6 @@ api_urls_document_types = [
     url(
         regex=r'^document_types/(?P<document_type_id>[0-9]+)/$',
         name='documenttype-detail', view=APIDocumentTypeDetailView.as_view()
-    ),
-    url(
-        regex=r'^document_types/(?P<document_type_id>[0-9]+)/documents/$',
-        name='documenttype-document-list',
-        view=APIDocumentTypeDocumentListView.as_view()
     ),
     url(
         regex=r'^document_types/(?P<document_type_id>[0-9]+)/quick_labels/$',

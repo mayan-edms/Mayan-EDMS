@@ -10,11 +10,13 @@ from ..settings import setting_backend_arguments
 from .base import LockingBackend
 from .literals import REDIS_LOCK_VERSION_REQUIRED
 
+SCAN_KEYS_COUNT = 5000
+REDIS_LOCK_NAME_PREFIX = '_mayan_lock:'
+
 
 class RedisLock(LockingBackend):
     @classmethod
-    def acquire_lock(cls, name, timeout=None):
-        super().acquire_lock(name=name, timeout=timeout)
+    def _acquire_lock(cls, name, timeout):
         return RedisLock(name=name, timeout=timeout)
 
     @classmethod
@@ -26,8 +28,21 @@ class RedisLock(LockingBackend):
         return server
 
     @classmethod
-    def purge_locks(cls):
-        super().purge_locks()
+    def _purge_locks(cls):
+        cache = cls.get_redis_connection()
+
+        cursor = '0'
+        while True:
+            cursor, keys = cache.scan(
+                count=SCAN_KEYS_COUNT, cursor=cursor, match='{}*'.format(
+                    REDIS_LOCK_NAME_PREFIX
+                )
+            )
+            if keys:
+                cache.delete(*keys)
+
+            if cursor == 0:
+                break
 
     def __init__(self, name, timeout):
         if redis.VERSION < REDIS_LOCK_VERSION_REQUIRED:
@@ -39,16 +54,16 @@ class RedisLock(LockingBackend):
             )
 
         self.name = name
-        redis_lock_instance = self.get_redis_connection().lock(
-            name=name, timeout=timeout, sleep=0.1, blocking_timeout=0.1
+        redis_lock_instance = self.__class__.get_redis_connection().lock(
+            name='{}{}'.format(REDIS_LOCK_NAME_PREFIX, name),
+            timeout=timeout, sleep=0.1, blocking_timeout=0.1
         )
         if redis_lock_instance.acquire():
             self.redis_lock_instance = redis_lock_instance
         else:
             raise LockError
 
-    def release(self):
-        super().release()
+    def _release(self):
         try:
             self.redis_lock_instance.release()
         except redis.exceptions.LockNotOwnedError:

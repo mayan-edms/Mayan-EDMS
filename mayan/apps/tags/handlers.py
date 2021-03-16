@@ -8,7 +8,7 @@ logger = logging.getLogger(name=__name__)
 def handler_index_document(sender, **kwargs):
     if kwargs['action'] in ('post_add', 'post_remove'):
         for pk in kwargs['pk_set']:
-            task_index_document.apply_async(kwargs=dict(document_id=pk))
+            task_index_document.apply_async(kwargs={'document_id': pk})
 
 
 def handler_tag_pre_delete(sender, **kwargs):

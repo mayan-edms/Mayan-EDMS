@@ -304,7 +304,9 @@ class DocumentPropertiesEditActionTestCase(
         self._create_test_document_stub()
 
         test_workflow_instance = self.test_document.workflows.first()
-        test_workflow_instance.do_transition(transition=self.test_workflow_transition)
+        test_workflow_instance.do_transition(
+            transition=self.test_workflow_transition
+        )
 
         self.assertEqual(
             self.test_document.label,
@@ -322,7 +324,9 @@ class DocumentWorkflowLaunchActionTestCase(
     auto_upload_test_document = False
 
     def test_document_workflow_launch_action(self):
-        self._create_test_workflow(add_document_type=True, auto_launch=False)
+        self._create_test_workflow(
+            add_test_document_type=True, auto_launch=False
+        )
         self._create_test_workflow_state()
 
         self._create_test_document_stub()
@@ -347,7 +351,9 @@ class DocumentWorkflowLaunchActionViewTestCase(
     auto_upload_test_document = False
 
     def test_document_workflow_launch_action_view_with_full_access(self):
-        self._create_test_workflow(add_document_type=True, auto_launch=False)
+        self._create_test_workflow(
+            add_test_document_type=True, auto_launch=False
+        )
         self._create_test_workflow_state()
 
         self.grant_access(

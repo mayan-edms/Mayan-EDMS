@@ -10,10 +10,34 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='DocumentVersion',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('timestamp', models.DateTimeField(auto_now_add=True, db_index=True, help_text='The server date and time when the document version was created.', verbose_name='Timestamp')),
-                ('comment', models.TextField(blank=True, default='', help_text='An optional short text describing the document version.', verbose_name='Comment')),
-                ('document', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='versions', to='documents.Document', verbose_name='Document')),
+                (
+                    'id', models.AutoField(
+                        auto_created=True, primary_key=True, serialize=False,
+                        verbose_name='ID'
+                    )
+                ),
+                (
+                    'timestamp', models.DateTimeField(
+                        auto_now_add=True, db_index=True,
+                        help_text='The server date and time when the '
+                        'document version was created.',
+                        verbose_name='Timestamp'
+                    )
+                ),
+                (
+                    'comment', models.TextField(
+                        blank=True, default='',
+                        help_text='An optional short text describing '
+                        'the document version.', verbose_name='Comment'
+                    )
+                ),
+                (
+                    'document', models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name='versions', to='documents.Document',
+                        verbose_name='Document'
+                    )
+                ),
             ],
             options={
                 'verbose_name': 'Document version',

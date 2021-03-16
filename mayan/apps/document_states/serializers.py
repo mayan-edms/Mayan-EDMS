@@ -118,6 +118,41 @@ class WorkflowTransitionFieldSerializer(serializers.HyperlinkedModelSerializer):
         )
 
 
+class WorkflowTransitionFieldSerializer(serializers.HyperlinkedModelSerializer):
+    url = serializers.SerializerMethodField()
+    workflow_transition_url = serializers.SerializerMethodField()
+
+    class Meta:
+        extra_kwargs = {
+            'url': {
+                'lookup_url_kwarg': 'workflow_transition_field_id',
+                'view_name': 'rest_api:workflowtransitionfield-detail'
+            },
+        }
+        fields = (
+            'field_type', 'name', 'help_text', 'id', 'label', 'required',
+            'url', 'widget', 'widget_kwargs', 'workflow_transition_url'
+        )
+        model = WorkflowTransitionField
+
+    def get_url(self, instance):
+        return reverse(
+            'rest_api:workflowtransitionfield-detail', kwargs={
+                'workflow_template_id': instance.transition.workflow_id,
+                'workflow_template_transition_id': instance.transition_id,
+                'workflow_template_transition_field_id': instance.pk
+            }, request=self.context['request'], format=self.context['format']
+        )
+
+    def get_workflow_transition_url(self, instance):
+        return reverse(
+            'rest_api:workflowtransition-detail', kwargs={
+                'workflow_template_id': instance.transition.workflow_id,
+                'workflow_template_transition_id': instance.transition_id,
+            }, request=self.context['request'], format=self.context['format']
+        )
+
+
 class WorkflowTransitionSerializer(serializers.HyperlinkedModelSerializer):
     destination_state = WorkflowStateSerializer()
     field_list_url = serializers.SerializerMethodField()

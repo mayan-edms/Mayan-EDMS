@@ -23,19 +23,14 @@ from mayan.apps.acls.models import AccessControlList
 from .forms import ChoiceForm
 from .icons import (
     icon_add_all, icon_confirm_form_cancel, icon_confirm_form_submit,
-    icon_remove_all, icon_assign_remove_add,
-    icon_assign_remove_remove, icon_sort_down, icon_sort_up
-)
-from .literals import (
-    TEXT_SORT_FIELD_PARAMETER, TEXT_SORT_FIELD_VARIABLE_NAME,
-    TEXT_SORT_ORDER_CHOICE_ASCENDING, TEXT_SORT_ORDER_PARAMETER,
-    TEXT_SORT_ORDER_VARIABLE_NAME
+    icon_remove_all, icon_assign_remove_add, icon_assign_remove_remove
 )
 from .mixins import (
     ExtraDataDeleteViewMixin, DownloadViewMixin, DynamicFormViewMixin,
     ExternalObjectViewMixin, ExtraContextViewMixin, FormExtraKwargsViewMixin,
-    ListModeViewMixin, MultipleObjectViewMixin, ObjectActionViewMixin, ObjectNameViewMixin,
-    RedirectionViewMixin, RestrictedQuerysetViewMixin, ViewPermissionCheckViewMixin
+    ListModeViewMixin, MultipleObjectViewMixin, ObjectActionViewMixin,
+    ObjectNameViewMixin, RedirectionViewMixin, RestrictedQuerysetViewMixin,
+    SortingViewMixin, ViewPermissionCheckViewMixin
 )
 
 from .settings import setting_paginate_by
@@ -792,9 +787,9 @@ class SingleObjectDynamicFormEditView(
 
 
 class SingleObjectListView(
-    ListModeViewMixin, PaginationMixin, ViewPermissionCheckViewMixin,
-    RestrictedQuerysetViewMixin, ExtraContextViewMixin, RedirectionViewMixin,
-    ListView
+    SortingViewMixin, ListModeViewMixin, PaginationMixin,
+    ViewPermissionCheckViewMixin, RestrictedQuerysetViewMixin,
+    ExtraContextViewMixin, RedirectionViewMixin, ListView
 ):
     """
     A view that will generate a list of instances from a queryset.
@@ -814,18 +809,6 @@ class SingleObjectListView(
 
         return result
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-
-        context.update(
-            {
-                TEXT_SORT_FIELD_VARIABLE_NAME: self.get_sort_field(),
-                TEXT_SORT_ORDER_VARIABLE_NAME: self.get_sort_order(),
-                'icon_sort': self.get_sort_icon(),
-            }
-        )
-        return context
-
     def get_paginate_by(self, queryset):
         return setting_paginate_by.value
 
@@ -836,33 +819,7 @@ class SingleObjectListView(
             self.queryset = self.get_source_queryset()
             queryset = super().get_queryset()
 
-        self.field_name = self.get_sort_field()
-        if self.get_sort_order() == TEXT_SORT_ORDER_CHOICE_ASCENDING:
-            sort_order = ''
-        else:
-            sort_order = '-'
-
-        if self.field_name:
-            queryset = queryset.order_by(
-                '{}{}'.format(sort_order, self.field_name)
-            )
-
         return queryset
-
-    def get_sort_field(self):
-        return self.request.GET.get(TEXT_SORT_FIELD_PARAMETER)
-
-    def get_sort_icon(self):
-        sort_order = self.get_sort_order()
-        if not sort_order:
-            return
-        elif sort_order == TEXT_SORT_ORDER_CHOICE_ASCENDING:
-            return icon_sort_down
-        else:
-            return icon_sort_up
-
-    def get_sort_order(self):
-        return self.request.GET.get(TEXT_SORT_ORDER_PARAMETER)
 
 
 class MultipleObjectDeleteView(MultipleObjectConfirmActionView):

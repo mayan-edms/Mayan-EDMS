@@ -10,11 +10,11 @@ def handler_create_default_document_index(sender, **kwargs):
     DocumentType = apps.get_model(
         app_label='documents', model_name='DocumentType'
     )
-    Index = apps.get_model(
-        app_label='document_indexing', model_name='Index'
+    IndexTemplate = apps.get_model(
+        app_label='document_indexing', model_name='IndexTemplate'
     )
 
-    index = Index.objects.create(
+    index = IndexTemplate.objects.create(
         label=_('Creation date'), slug='creation_date'
     )
     for document_type in DocumentType.objects.all():
@@ -39,18 +39,6 @@ def handler_index_document(sender, **kwargs):
     task_index_document.apply_async(
         kwargs=dict(document_id=kwargs['instance'].pk)
     )
-
-
-def handler_post_save_index_document(sender, **kwargs):
-    """
-    Reindex documents when they get edited. For indexing documents
-    when they are first created the handler_index_document is called
-    from the custom signal_post_document_created signal.
-    """
-    if not kwargs['created']:
-        task_index_document.apply_async(
-            kwargs=dict(document_id=kwargs['instance'].pk)
-        )
 
 
 def handler_remove_document(sender, **kwargs):

@@ -53,6 +53,7 @@ class APIDocumentListView(generics.ListCreateAPIView):
     mayan_object_permissions = {
         'GET': (permission_document_view,),
     }
+    ordering_fields = ('datetime_created', 'document_type', 'label')
     queryset = Document.objects.all()
     serializer_class = DocumentSerializer
 

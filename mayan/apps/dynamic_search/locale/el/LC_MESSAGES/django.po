@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# pyrotech <anastasios@tutamail.com>, 2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-04 23:49+0000\n"
-"PO-Revision-Date: 2020-09-27 06:46+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-03-14 04:39+0000\n"
+"PO-Revision-Date: 2021-01-30 16:07+0000\n"
+"Last-Translator: pyrotech <anastasios@tutamail.com>\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -28,13 +29,13 @@ msgstr "Δεν βρέθηκε μοντέλο αναζήτησης που να τ
 
 #: forms.py:7
 msgid "Match all"
-msgstr "Ταίριαξε με όλα"
+msgstr "Ταίριασμα όλων"
 
 #: forms.py:8
 msgid ""
 "When checked, only results that match all fields will be returned. When "
 "unchecked results that match at least one field will be returned."
-msgstr "Αν επιλεχθεί, θα επιστραφούν μόνο αποτελέσματα που ταιριάζουν με όλα τα πεδία. Αν δεν επιλεχθεί, θα επιστραφούν αποτελέσματα που ταιριάζουν σε τουλάχιστον ένα πεδίο."
+msgstr "Όταν επιλεγεί, θα επιστραφούν μόνο αποτελέσματα που ταιριάζουν με όλα τα πεδία. Αν δεν επιλεγεί, θα επιστραφούν αποτελέσματα που ταιριάζουν σε τουλάχιστον ένα πεδίο."
 
 #: forms.py:27 templates/dynamic_search/search_box.html:39
 msgid "Search terms"
@@ -55,44 +56,44 @@ msgstr "Αναζήτηση πάλι"
 
 #: links.py:25 views.py:90
 msgid "Reindex search backend"
-msgstr ""
+msgstr "Αναδημιουργία ευρετηρίου αναζήτησης υποκείμενου συστήματος"
 
 #: permissions.py:8
 msgid "Execute search tools"
-msgstr ""
+msgstr "Εκτέλεση εργαλείων αναζήτησης"
 
 #: queues.py:11
 msgid "Remove a model instance from the search engine."
-msgstr ""
+msgstr "Κατάργηση στιγμιοτύπου ενός μοντέλου από τη μηχανή αναζήτησης."
 
 #: queues.py:16
 msgid "Index a model instance to the search engine."
-msgstr ""
+msgstr "Δημιουργία ευρετηρίου ενός στιγμιοτύπου μοντέλου στη μηχανή αναζήτησης."
 
 #: settings.py:15
 msgid "Full path to the backend to be used to handle the search."
-msgstr ""
+msgstr "Πλήρης διαδρομή προς το υποκείμενο σύστημα που θα χρησιμοποιηθεί για τη διαχείριση της αναζήτησης."
 
 #: settings.py:25
 msgid ""
 "Disables the single term bar search leaving only the advanced search button."
-msgstr ""
+msgstr "Απενεργοποιεί την αναζήτηση μεμονωμένου όρου αφήνοντας μόνο το κουμπί σύνθετης αναζήτησης."
 
 #: settings.py:31
 msgid "Maximum number search results to fetch and display."
-msgstr ""
+msgstr "Μέγιστος αριθμός αποτελεσμάτων αναζήτησης για ανάκτηση και προβολή."
 
 #: templates/dynamic_search/search_box.html:45
 msgid "Advanced"
-msgstr "Προχωρημένα"
+msgstr "Προχωρημένη"
 
 #: views.py:38
 msgid "Try again using different terms. "
-msgstr ""
+msgstr "Δοκιμάστε ξανά χρησιμοποιώντας διαφορετικούς όρους."
 
 #: views.py:40
 msgid "No search results"
-msgstr ""
+msgstr "Δεν υπάρχουν αποτελέσματα αναζήτησης"
 
 #: views.py:42
 #, python-format
@@ -103,15 +104,15 @@ msgstr "Αποτελέσματα αναζήτησης για: %s"
 msgid ""
 "This tool is required only for some search backends. Search results will be "
 "affected while the backend is being reindexed."
-msgstr ""
+msgstr "Αυτό το εργαλείο απαιτείται μόνο για ορισμένα υποκείμενα συστήματα αναζήτησης. Τα αποτελέσματα αναζήτησης θα επηρεαστούν όσο διαρκεί η αναδημιουργία του ευρετηρίου του υποκείμενου συστήματος."
 
 #: views.py:92
 msgid "This tool erases and populates the search backend's internal index."
-msgstr ""
+msgstr "Αυτό το εργαλείο διαγράφει και ενημερώνει τον εσωτερικό δείκτη του ευρετηρίου αναζήτησης του υποκείμενου συστήματος."
 
 #: views.py:110
 msgid "Search backend reindexing queued."
-msgstr ""
+msgstr "Η αναδημιουργεία ευρετηρίου του υποκείμενου συστήματος αναζήτησης τέθηκε σε ουρά αναμονής."
 
 #: views.py:132
 #, python-format

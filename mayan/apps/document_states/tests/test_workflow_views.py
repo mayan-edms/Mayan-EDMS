@@ -222,7 +222,7 @@ class WorkflowTemplateDocumentViewTestCase(
         self._create_test_document_stub()
 
     def test_workflows_launch_view_no_permission(self):
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
 
@@ -236,7 +236,7 @@ class WorkflowTemplateDocumentViewTestCase(
         )
 
     def test_workflows_launch_view_with_permission(self):
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
 
@@ -254,7 +254,7 @@ class WorkflowTemplateDocumentViewTestCase(
         )
 
     def test_trashed_document_workflows_launch_view_with_permission(self):
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
 
@@ -284,7 +284,7 @@ class WorkflowToolViewTestCase(
         self._create_test_document_stub()
 
     def test_tool_launch_workflows_view_no_permission(self):
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
 
@@ -298,7 +298,7 @@ class WorkflowToolViewTestCase(
         )
 
     def test_tool_launch_workflows_view_with_permission(self):
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
 
@@ -314,7 +314,7 @@ class WorkflowToolViewTestCase(
         )
 
     def test_trashed_document_tool_launch_workflows_view_with_permission(self):
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
 

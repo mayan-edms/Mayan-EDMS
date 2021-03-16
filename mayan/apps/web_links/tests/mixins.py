@@ -7,6 +7,35 @@ from .literals import (
 )
 
 
+class DocumentTypeAddRemoveWebLinkViewTestMixin:
+    def _request_test_document_type_web_link_add_remove_get_view(self):
+        return self.get(
+            viewname='web_links:document_type_web_links', kwargs={
+                'document_type_id': self.test_document_type.pk,
+            }
+        )
+
+    def _request_test_document_type_web_link_add_view(self):
+        return self.post(
+            viewname='web_links:document_type_web_links', kwargs={
+                'document_type_id': self.test_document_type.pk,
+            }, data={
+                'available-submit': 'true',
+                'available-selection': self.test_web_link.pk
+            }
+        )
+
+    def _request_test_document_type_web_link_remove_view(self):
+        return self.post(
+            viewname='web_links:document_type_web_links', kwargs={
+                'document_type_id': self.test_document_type.pk,
+            }, data={
+                'added-submit': 'true',
+                'added-selection': self.test_web_link.pk
+            }
+        )
+
+
 class ResolvedWebLinkAPIViewTestMixin(object):
     def _request_resolved_web_link_detail_api_view(self):
         return self.get(
@@ -113,11 +142,11 @@ class WebLinkDocumentTypeAPIViewMixin:
 
 
 class WebLinkTestMixin:
-    def _create_test_web_link(self, add_document_type=False):
+    def _create_test_web_link(self, add_test_document_type=False):
         self.test_web_link = WebLink.objects.create(
             label=TEST_WEB_LINK_LABEL, template=TEST_WEB_LINK_TEMPLATE,
         )
-        if add_document_type:
+        if add_test_document_type:
             self.test_web_link.document_types.add(self.test_document_type)
 
 

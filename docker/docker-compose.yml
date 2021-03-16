@@ -17,8 +17,10 @@ services:
       # To use RabbitMQ as broker, disable Redis as broker
       MAYAN_CELERY_BROKER_URL: redis://:${MAYAN_REDIS_PASSWORD:-mayanredispassword}@redis:6379/0
       MAYAN_CELERY_RESULT_BACKEND: redis://:${MAYAN_REDIS_PASSWORD:-mayanredispassword}@redis:6379/1
-      MAYAN_DATABASES: "{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'${MAYAN_DATABASE_DB:-mayan}','PASSWORD':'${MAYAN_DATABASE_PASSWORD:-mayandbpass}','USER':'${MAYAN_DATABASE_USER:-mayan}','HOST':'postgresql'}}"
+      MAYAN_DATABASES: "{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'${MAYAN_DATABASE_DB:-mayan}','PASSWORD':'${MAYAN_DATABASE_PASSWORD:-mayandbpass}','USER':'${MAYAN_DATABASE_USER:-mayan}','HOST':'${MAYAN_DATABASE_HOST:-postgresql'}}"
       MAYAN_DOCKER_WAIT: "postgresql:5432 redis:6379"
+      MAYAN_LOCK_MANAGER_BACKEND: mayan.apps.lock_manager.backends.redis_lock.RedisLock
+      MAYAN_LOCK_MANAGER_BACKEND_ARGUMENTS: "{'redis_url':'redis://:${MAYAN_REDIS_PASSWORD:-mayanredispassword}@redis:6379/2'}"
       # Replace with the line below when using RabbitMQ
       # MAYAN_DOCKER_WAIT: "postgresql:5432 redis:6379 rabbitmq:5672"
       # To add operating system packages, like additional OCR language,
@@ -26,7 +28,7 @@ services:
       # MAYAN_APT_INSTALLS: "tesseract-ocr-deu tesseract-ocr-nld"
       # To add Python libraries, like LDAP, put then in the variable below.
       # MAYAN_PIP_INSTALLS: "python-ldap"
-    image: mayanedms/mayanedms:s4.0
+    image: mayanedms/mayanedms:${MAYAN_DOCKER_IMAGE_TAG:-s4.0}
     networks:
       - bridge
     ports:
@@ -56,7 +58,7 @@ services:
       - --appendonly
       - "no"
       - --databases
-      - "2"
+      - "3"
       - --maxmemory
       - "100mb"
       - --maxclients
@@ -89,7 +91,7 @@ services:
   #     # - rabbitmq
   #   environment:
   #     <<: *mayan_env
-  #   image: mayanedms/mayanedms:3
+  #   image: mayanedms/mayanedms:${MAYAN_DOCKER_IMAGE_TAG:-s4.0}
   #   networks:
   #     - bridge
   #   ports:
@@ -121,7 +123,7 @@ services:
   #     # - rabbitmq
   #   environment:
   #     <<: *mayan_env
-  #   image: mayanedms/mayanedms:s4.0
+  #   image: mayanedms/mayanedms:${MAYAN_DOCKER_IMAGE_TAG:-s4.0}
   #   networks:
   #     - bridge
   #   restart: unless-stopped
@@ -139,7 +141,7 @@ services:
   #     # - rabbitmq
   #   environment:
   #     <<: *mayan_env
-  #   image: mayanedms/mayanedms:s4.0
+  #   image: mayanedms/mayanedms:${MAYAN_DOCKER_IMAGE_TAG:-s4.0}
   #   networks:
   #     - bridge
   #   ports:

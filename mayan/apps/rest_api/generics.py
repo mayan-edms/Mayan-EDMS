@@ -7,7 +7,7 @@ from .api_view_mixins import (
     InstanceExtraDataAPIViewMixin, SerializerExtraContextAPIViewMixin,
     SchemaInspectionAPIViewMixin
 )
-from .filters import MayanObjectPermissionsFilter
+from .filters import MayanObjectPermissionsFilter, MayanSortingFilter
 from .permissions import MayanPermission
 from .serializers import BlankSerializer
 
@@ -38,7 +38,7 @@ class ListAPIView(
     requires:
         object_permission = {'GET': ...}
     """
-    filter_backends = (MayanObjectPermissionsFilter,)
+    filter_backends = (MayanObjectPermissionsFilter, MayanSortingFilter)
     # permission_classes is required for the EventListAPIView
     # when Actions objects support ACLs then this can be removed
     # as was intented.
@@ -55,7 +55,7 @@ class ListCreateAPIView(
         object_permission = {'GET': ...}
         view_permission = {'POST': ...}
     """
-    filter_backends = (MayanObjectPermissionsFilter,)
+    filter_backends = (MayanObjectPermissionsFilter, MayanSortingFilter)
     permission_classes = (MayanPermission,)
 
 

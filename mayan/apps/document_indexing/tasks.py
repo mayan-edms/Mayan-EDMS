@@ -34,8 +34,8 @@ def task_index_document(self, document_id):
     Document = apps.get_model(
         app_label='documents', model_name='Document'
     )
-    Index = apps.get_model(
-        app_label='document_indexing', model_name='Index'
+    IndexTemplate = apps.get_model(
+        app_label='document_indexing', model_name='IndexTemplate'
     )
 
     try:
@@ -46,7 +46,7 @@ def task_index_document(self, document_id):
         pass
     else:
         try:
-            Index.objects.index_document(document=document)
+            IndexTemplate.objects.index_document(document=document)
         except OperationalError as exception:
             logger.warning(
                 'Operational error while trying to index document: '
@@ -66,12 +66,12 @@ def task_index_document(self, document_id):
     ignore_result=True
 )
 def task_rebuild_index(self, index_id):
-    Index = apps.get_model(
-        app_label='document_indexing', model_name='Index'
+    IndexTemplate = apps.get_model(
+        app_label='document_indexing', model_name='IndexTemplate'
     )
 
     try:
-        index = Index.objects.get(pk=index_id)
+        index = IndexTemplate.objects.get(pk=index_id)
         index.rebuild()
     except LockError as exception:
         # This index is being rebuilt by another task, retry later

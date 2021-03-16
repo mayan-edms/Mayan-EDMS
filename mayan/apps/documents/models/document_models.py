@@ -9,7 +9,7 @@ from django.urls import reverse
 from django.utils.timezone import now
 from django.utils.translation import ugettext, ugettext_lazy as _
 
-from mayan.apps.common.model_mixins import ExtraDataModelMixin
+from mayan.apps.databases.model_mixins import ExtraDataModelMixin
 from mayan.apps.common.signals import signal_mayan_pre_save
 from mayan.apps.events.classes import EventManagerSave
 from mayan.apps.events.decorators import method_event
@@ -279,6 +279,11 @@ class Document(
         version_active = self.version_active
         if version_active:
             return version_active.get_api_image_url(*args, **kwargs)
+
+    def get_label(self):
+        return self.label or ugettext('Document stub, id: %d') % self.pk
+
+    get_label.short_description = _('Label')
 
     def get_label(self):
         return self.label or ugettext('Document stub, id: %d') % self.pk

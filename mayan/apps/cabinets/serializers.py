@@ -17,9 +17,6 @@ class CabinetSerializer(serializers.ModelSerializer):
     children = RecursiveField(
         help_text=_('List of children cabinets.'), many=True, read_only=True
     )
-    documents_count = serializers.SerializerMethodField(
-        help_text=_('Number of documents on this cabinet level.')
-    )
     full_path = serializers.SerializerMethodField(
         help_text=_(
             'The name of this cabinet level appended to the names of its '
@@ -49,13 +46,10 @@ class CabinetSerializer(serializers.ModelSerializer):
             },
         }
         fields = (
-            'children', 'documents_count', 'documents_url', 'full_path', 'id',
-            'label', 'parent', 'parent_url', 'url'
+            'children', 'documents_url', 'full_path', 'id', 'label',
+            'parent', 'parent_url', 'url'
         )
         model = Cabinet
-
-    def get_documents_count(self, obj):
-        return obj.get_document_count(user=self.context['request'].user)
 
     def get_full_path(self, obj):
         return obj.get_full_path()

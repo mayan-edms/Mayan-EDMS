@@ -33,7 +33,7 @@ class DocumentWorkflowsAPIViewTestCase(
     auto_upload_test_document = False
 
     def test_workflow_instance_detail_api_view_no_permission(self):
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
         self._create_test_document_stub()
@@ -43,7 +43,7 @@ class DocumentWorkflowsAPIViewTestCase(
         self.assertFalse('workflow' in response.data)
 
     def test_workflow_instance_detail_api_view_with_workflow_access(self):
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
         self._create_test_document_stub()
@@ -57,7 +57,7 @@ class DocumentWorkflowsAPIViewTestCase(
         self.assertFalse('workflow' in response.data)
 
     def test_workflow_instance_detail_api_view_with_document_access(self):
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
         self._create_test_document_stub()
@@ -71,7 +71,7 @@ class DocumentWorkflowsAPIViewTestCase(
         self.assertFalse('workflow' in response.data)
 
     def test_workflow_instance_detail_api_view_with_full_access(self):
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
         self._create_test_document_stub()
@@ -91,7 +91,7 @@ class DocumentWorkflowsAPIViewTestCase(
         )
 
     def test_workflow_instance_list_api_view_no_permission(self):
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
         self._create_test_document_stub()
@@ -101,7 +101,7 @@ class DocumentWorkflowsAPIViewTestCase(
         self.assertFalse('result' in response.data)
 
     def test_workflow_instance_list_api_view_with_document_access(self):
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
         self._create_test_document_stub()
@@ -115,7 +115,7 @@ class DocumentWorkflowsAPIViewTestCase(
         self.assertEqual(response.data['count'], 0)
 
     def test_workflow_instance_list_api_view_with_workflow_access(self):
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
         self._create_test_document_stub()
@@ -129,7 +129,7 @@ class DocumentWorkflowsAPIViewTestCase(
         self.assertFalse('result' in response.data)
 
     def test_workflow_instance_list_api_view_with_full_access(self):
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
         self._create_test_document_stub()
@@ -149,7 +149,7 @@ class DocumentWorkflowsAPIViewTestCase(
         )
 
     def test_workflow_instance_log_entries_create_api_view_no_permission(self):
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
         self._create_test_document_stub()
@@ -165,7 +165,7 @@ class DocumentWorkflowsAPIViewTestCase(
         self.assertEqual(workflow_instance.log_entries.count(), 0)
 
     def test_workflow_instance_log_entries_create_api_view_with_workflow_access(self):
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
         self._create_test_document_stub()
@@ -187,7 +187,7 @@ class DocumentWorkflowsAPIViewTestCase(
         )
 
     def test_workflow_instance_log_entries_list_api_view_no_permission(self):
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
         self._create_test_document_stub()
@@ -198,7 +198,7 @@ class DocumentWorkflowsAPIViewTestCase(
         self.assertFalse('results' in response.data)
 
     def test_workflow_instance_log_entries_list_api_view_with_document_access(self):
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
         self._create_test_document_stub()
@@ -357,7 +357,7 @@ class WorkflowAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_workflow_image_api_view_no_permission(self):
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
 
         self._clear_events()
 
@@ -368,7 +368,7 @@ class WorkflowAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_workflow_image_api_view_with_access(self):
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
 
         self.grant_access(
             obj=self.test_workflow, permission=permission_workflow_view
@@ -430,7 +430,7 @@ class WorkflowAPIViewTestCase(
         self._create_test_workflow()
 
         self.grant_access(
-            permission=permission_workflow_edit, obj=self.test_workflow
+            obj=self.test_workflow, permission=permission_workflow_edit
         )
 
         self._clear_events()
@@ -492,7 +492,7 @@ class DocumentTypeWorkflowAPIViewTestCase(
     auto_upload_test_document = False
 
     def test_workflow_document_type_create_api_view_no_permission(self):
-        self._create_test_workflow(add_document_type=False)
+        self._create_test_workflow(add_test_document_type=False)
 
         response = self._request_test_workflow_document_type_list_create_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
@@ -500,10 +500,10 @@ class DocumentTypeWorkflowAPIViewTestCase(
         self.assertEqual(self.test_workflow.document_types.count(), 0)
 
     def test_workflow_document_type_create_api_view_with_access(self):
-        self._create_test_workflow(add_document_type=False)
+        self._create_test_workflow(add_test_document_type=False)
 
         self.grant_access(
-            permission=permission_workflow_edit, obj=self.test_workflow
+            obj=self.test_workflow, permission=permission_workflow_edit
         )
 
         response = self._request_test_workflow_document_type_list_create_api_view()
@@ -515,7 +515,7 @@ class DocumentTypeWorkflowAPIViewTestCase(
         )
 
     def test_workflow_document_type_delete_api_view_no_permission(self):
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
 
         response = self._request_test_workflow_document_type_delete_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
@@ -524,10 +524,10 @@ class DocumentTypeWorkflowAPIViewTestCase(
         self.assertEqual(self.test_workflow.document_types.count(), 1)
 
     def test_workflow_document_type_delete_api_view_with_access(self):
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
 
         self.grant_access(
-            permission=permission_workflow_edit, obj=self.test_workflow
+            obj=self.test_workflow, permission=permission_workflow_edit
         )
 
         response = self._request_test_workflow_document_type_delete_api_view()
@@ -537,14 +537,14 @@ class DocumentTypeWorkflowAPIViewTestCase(
         self.assertEqual(self.test_workflow.document_types.count(), 0)
 
     def test_workflow_document_type_detail_api_view_no_permission(self):
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
 
         response = self._request_test_workflow_document_type_detail_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertFalse('label' in response.data)
 
     def test_workflow_document_type_detail_api_view_with_workflow_access(self):
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
 
         self.grant_access(
             obj=self.test_workflow, permission=permission_workflow_view
@@ -555,7 +555,7 @@ class DocumentTypeWorkflowAPIViewTestCase(
         self.assertFalse('label' in response.data)
 
     def test_workflow_document_type_detail_api_view_with_document_access(self):
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
 
         self.grant_access(
             obj=self.test_document_type,
@@ -567,7 +567,7 @@ class DocumentTypeWorkflowAPIViewTestCase(
         self.assertFalse('label' in response.data)
 
     def test_workflow_document_type_detail_api_view_with_access(self):
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
 
         self.grant_access(
             obj=self.test_document_type,
@@ -584,13 +584,13 @@ class DocumentTypeWorkflowAPIViewTestCase(
         )
 
     def test_workflow_document_type_list_api_view_no_permission(self):
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
 
         response = self._request_test_workflow_document_type_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_workflow_document_type_list_api_view_with_workflow_access(self):
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
 
         self.grant_access(
             obj=self.test_workflow, permission=permission_workflow_view
@@ -601,7 +601,7 @@ class DocumentTypeWorkflowAPIViewTestCase(
         self.assertEqual(response.data['count'], 0)
 
     def test_workflow_document_type_list_api_view_with_document_access(self):
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
 
         self.grant_access(
             obj=self.test_document_type,
@@ -612,7 +612,7 @@ class DocumentTypeWorkflowAPIViewTestCase(
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
 
     def test_workflow_document_type_list_api_view_with_access(self):
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
 
         self.grant_access(
             obj=self.test_document_type,
@@ -629,14 +629,14 @@ class DocumentTypeWorkflowAPIViewTestCase(
         )
 
     def test_document_type_workflow_list_api_view_no_permission(self):
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
 
         response = self._request_test_document_type_workflow_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertFalse('results' in response.data)
 
     def test_document_type_workflow_list_api_view_with_workflow_access(self):
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
 
         self.grant_access(
             obj=self.test_workflow, permission=permission_workflow_view
@@ -647,7 +647,7 @@ class DocumentTypeWorkflowAPIViewTestCase(
         self.assertFalse('results' in response.data)
 
     def test_document_type_workflow_list_api_view_with_document_access(self):
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
 
         self.grant_access(
             obj=self.test_document_type,
@@ -659,7 +659,7 @@ class DocumentTypeWorkflowAPIViewTestCase(
         self.assertEqual(response.data['count'], 0)
 
     def test_document_type_workflow_list_api_view_with_access(self):
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
 
         self.grant_access(
             obj=self.test_workflow, permission=permission_workflow_view
@@ -695,7 +695,7 @@ class WorkflowStatesAPIViewTestCase(
         self._create_test_workflow()
 
         self.grant_access(
-            permission=permission_workflow_edit, obj=self.test_workflow
+            obj=self.test_workflow, permission=permission_workflow_edit
         )
 
         response = self._request_test_workflow_state_create_api_view()
@@ -765,7 +765,9 @@ class WorkflowStatesAPIViewTestCase(
         self._create_test_workflow()
         self._create_test_workflow_state()
 
-        self.grant_access(permission=permission_workflow_view, obj=self.test_workflow)
+        self.grant_access(
+            obj=self.test_workflow, permission=permission_workflow_view
+        )
 
         response = self._request_test_workflow_state_list_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -789,7 +791,9 @@ class WorkflowStatesAPIViewTestCase(
         self._create_test_workflow()
         self._create_test_workflow_state()
 
-        self.grant_access(permission=permission_workflow_edit, obj=self.test_workflow)
+        self.grant_access(
+            obj=self.test_workflow, permission=permission_workflow_edit
+        )
 
         response = self._request_test_workflow_state_edit_patch_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -815,7 +819,9 @@ class WorkflowStatesAPIViewTestCase(
         self._create_test_workflow()
         self._create_test_workflow_state()
 
-        self.grant_access(permission=permission_workflow_edit, obj=self.test_workflow)
+        self.grant_access(
+            obj=self.test_workflow, permission=permission_workflow_edit
+        )
 
         response = self._request_test_workflow_state_edit_put_api_view()
         self.assertEqual(response.status_code, status.HTTP_200_OK)

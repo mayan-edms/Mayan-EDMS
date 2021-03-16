@@ -131,7 +131,8 @@ class TrashedDocumentViewTestCase(
         trashed_document_count = TrashedDocument.objects.count()
 
         self.grant_access(
-            obj=self.test_document, permission=permission_trashed_document_delete
+            obj=self.test_document,
+            permission=permission_trashed_document_delete
         )
 
         response = self._request_test_trashed_document_delete_get_view()
@@ -172,6 +173,26 @@ class TrashedDocumentViewTestCase(
         self.assertEqual(Document.valid.count(), document_count)
         self.assertEqual(
             TrashedDocument.objects.count(), trashed_document_count - 1
+        )
+
+    def test_trashed_document_list_view_no_permission(self):
+        self.test_document.delete()
+
+        response = self._request_test_trashed_document_list_view()
+        self.assertNotContains(
+            response=response, text=self.test_document.label, status_code=200
+        )
+
+    def test_trashed_document_list_view_with_access(self):
+        self.test_document.delete()
+
+        self.grant_access(
+            obj=self.test_document, permission=permission_document_view
+        )
+
+        response = self._request_test_trashed_document_list_view()
+        self.assertContains(
+            response=response, text=self.test_document.label, status_code=200
         )
 
     def test_trashed_document_restore_get_view_no_permission(self):
@@ -236,26 +257,6 @@ class TrashedDocumentViewTestCase(
         self.assertEqual(Document.valid.count(), document_count + 1)
         self.assertEqual(
             TrashedDocument.objects.count(), trashed_document_count - 1
-        )
-
-    def test_trashed_document_list_view_no_permission(self):
-        self.test_document.delete()
-
-        response = self._request_test_trashed_document_list_view()
-        self.assertNotContains(
-            response=response, text=self.test_document.label, status_code=200
-        )
-
-    def test_trashed_document_list_view_with_access(self):
-        self.test_document.delete()
-
-        self.grant_access(
-            obj=self.test_document, permission=permission_document_view
-        )
-
-        response = self._request_test_trashed_document_list_view()
-        self.assertContains(
-            response=response, text=self.test_document.label, status_code=200
         )
 
 

@@ -1,4 +1,4 @@
-from django.db import migrations
+from django.db import migrations, reset_queries
 
 
 def operation_document_version_page_create(apps, schema_editor):
@@ -11,13 +11,11 @@ def operation_document_version_page_create(apps, schema_editor):
     DocumentVersion = apps.get_model(
         app_label='documents', model_name='DocumentVersion'
     )
-    DocumentVersionPage = apps.get_model(
-        app_label='documents', model_name='DocumentVersionPage'
-    )
 
     content_type = ContentType.objects.get_for_model(model=DocumentFilePage)
     content_type_id = content_type.id
-    cursor_main = schema_editor.connection.cursor()
+    cursor_main = schema_editor.connection.create_cursor(name='document_file_to_version')
+    cursor_document_version_page = schema_editor.connection.cursor()
 
     query = '''
     SELECT
@@ -39,36 +37,72 @@ def operation_document_version_page_create(apps, schema_editor):
     document_id_last = None
     document_version = DummyDocumentVersion()
 
-    for row in cursor_main.fetchall():
-        document_id, document_file_id, document_file_page_id = row
+    document_version_page_insert_query = '''
+        INSERT INTO documents_documentversionpage (
+            document_version_id,content_type_id,object_id,page_number
+        ) VALUES {};
+    '''
+    document_version_page_values = []
+    page_number = 1
 
-        if document_id_last != document_id:
-            document_version.active = True
-            document_version.save()
-            document_id_last = document_id
+    FETCH_SIZE = 100000
 
-        if document_file_id_last != document_file_id:
-            document_version = DocumentVersion.objects.create(document_id=document_id)
-            document_version_id = document_version.pk
-            page_number = 1
-            document_file_id_last = document_file_id
+    while True:
+        rows = cursor_main.fetchmany(FETCH_SIZE)
 
-        DocumentVersionPage.objects.create(
-            document_version_id=document_version_id,
-            content_type_id=content_type_id,
-            object_id=document_file_page_id,
-            page_number=page_number
+        if not rows:
+            break
+
+        for row in rows:
+            document_id, document_file_id, document_file_page_id = row
+
+            if document_id_last != document_id:
+                document_version.active = True
+                document_version.save()
+                document_id_last = document_id
+
+            if document_file_id_last != document_file_id:
+                document_version = DocumentVersion.objects.create(document_id=document_id)
+                document_version_id = document_version.pk
+                document_file_id_last = document_file_id
+                if document_version_page_values:
+                    final_query = document_version_page_insert_query.format(
+                        ('(%s,%s,%s,%s),' * (page_number - 1))[:-1]
+                    )
+
+                    page_number = 1
+
+                    cursor_document_version_page.execute(
+                        final_query, document_version_page_values
+                    )
+                    reset_queries()
+
+                document_version_page_values = []
+
+            document_version_page_values += (
+                document_version_id, content_type_id, document_file_page_id,
+                page_number
+            )
+
+            page_number += 1
+
+    if page_number > 1:
+        final_query = document_version_page_insert_query.format(
+            ('(%s,%s,%s,%s),' * (page_number - 1))[:-1]
+        )
+        cursor_document_version_page.execute(
+            final_query, document_version_page_values
         )
 
         page_number = page_number + 1
 
 
 def operation_document_version_page_create_reverse(apps, schema_editor):
-    DocumentVersionPage = apps.get_model(
-        app_label='documents', model_name='DocumentVersionPage'
+    DocumentVersion = apps.get_model(
+        app_label='documents', model_name='DocumentVersion'
     )
 
-    DocumentVersionPage.objects.using(schema_editor.connection.alias).all().delete()
+    DocumentVersion.objects.using(schema_editor.connection.alias).all().delete()
 
 
 class Migration(migrations.Migration):

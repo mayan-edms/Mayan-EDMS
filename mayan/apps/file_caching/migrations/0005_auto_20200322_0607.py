@@ -23,12 +23,21 @@ def operation_purge_and_delete_caches(apps, schema_editor):
     Cache = apps.get_model(
         app_label='file_caching', model_name='Cache'
     )
-    CachePartition = apps.get_model(
-        app_label='file_caching', model_name='CachePartition'
-    )
-    CachePartitionFile = apps.get_model(
-        app_label='file_caching', model_name='CachePartitionFile'
-    )
+
+    cursor_primary = schema_editor.connection.create_cursor(name='file_caching_partition_files')
+    cursor_secondary = schema_editor.connection.cursor()
+
+    query = '''
+        SELECT
+            "file_caching_cachepartition"."name",
+            "file_caching_cachepartitionfile"."filename",
+            "file_caching_cachepartition"."cache_id"
+        FROM "file_caching_cachepartitionfile"
+        INNER JOIN
+            "file_caching_cachepartition" ON (
+                "file_caching_cachepartitionfile"."partition_id" = "file_caching_cachepartition"."id"
+            )
+    '''
 
     cache_storages = {}
     for cache in Cache.objects.using(alias=schema_editor.connection.alias).all():
@@ -39,23 +48,25 @@ def operation_purge_and_delete_caches(apps, schema_editor):
         except ImportError as exception:
             logger.error(
                 'Storage "%s" not found. Remove the files from this '
-                'storage manually.', cache.storage_instance_path
+                'storage manually.; %s', cache.storage_instance_path,
+                exception
             )
             cache_storages[cache.pk] = DummyStorage()
 
-    for cache_partition_file in CachePartitionFile.objects.using(alias=schema_editor.connection.alias).all():
+    cursor_primary.execute(query)
+    for partition_name, filename, cache_id in cursor_primary.fetchall():
         cache_storages[
-            cache_partition_file.partition.cache.pk
+            cache_id
         ].delete(
             name='{}-{}'.format(
-                cache_partition_file.partition.name,
-                cache_partition_file.filename
+                partition_name,
+                filename
             )
         )
-        cache_partition_file.delete()
 
-    CachePartition.objects.using(alias=schema_editor.connection.alias).all().delete()
-    Cache.objects.using(alias=schema_editor.connection.alias).all().delete()
+    cursor_secondary.execute('DELETE FROM "file_caching_cachepartitionfile";')
+    cursor_secondary.execute('DELETE FROM "file_caching_cachepartition";')
+    cursor_secondary.execute('DELETE FROM "file_caching_cache";')
 
 
 def operation_update_storage_paths(apps, schema_editor):

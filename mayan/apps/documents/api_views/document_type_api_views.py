@@ -25,6 +25,7 @@ class APIDocumentTypeListView(generics.ListCreateAPIView):
     """
     mayan_object_permissions = {'GET': (permission_document_type_view,)}
     mayan_view_permissions = {'POST': (permission_document_type_create,)}
+    ordering_fields = ('label',)
     queryset = DocumentType.objects.all()
     serializer_class = DocumentTypeSerializer
 
@@ -57,21 +58,6 @@ class APIDocumentTypeDetailView(generics.RetrieveUpdateDestroyAPIView):
         }
 
 
-class APIDocumentTypeDocumentListView(
-    ParentObjectDocumentTypeAPIViewMixin, generics.ListAPIView
-):
-    """
-    Returns a list of all the documents of a particular document type.
-    """
-    mayan_object_permissions = {'GET': (permission_document_view,)}
-    serializer_class = DocumentSerializer
-
-    def get_queryset(self):
-        return self.get_document_type(
-            permission=permission_document_type_view
-        ).documents.all()
-
-
 class APIDocumentTypeQuickLabelDetailView(
     ParentObjectDocumentTypeAPIViewMixin, generics.RetrieveUpdateDestroyAPIView
 ):
@@ -88,6 +74,7 @@ class APIDocumentTypeQuickLabelDetailView(
         'PATCH': (permission_document_type_edit,),
         'PUT': (permission_document_type_edit,)
     }
+    ordering_fields = ('filename', 'enabled')
     serializer_class = DocumentTypeQuickLabelSerializer
 
     def get_instance_extra_data(self):

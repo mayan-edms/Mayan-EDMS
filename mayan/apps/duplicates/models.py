@@ -3,7 +3,7 @@ import logging
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.model_mixins import BackendModelMixin
+from mayan.apps.databases.model_mixins import BackendModelMixin
 from mayan.apps.documents.models.document_models import Document
 
 from .classes import NullBackend

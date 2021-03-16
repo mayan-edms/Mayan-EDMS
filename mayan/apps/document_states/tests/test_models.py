@@ -212,7 +212,7 @@ class WorkflowTransitionFieldModelTestCase(
 
     def setUp(self):
         super().setUp()
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
         self._create_test_workflow_states()
         self._create_test_workflow_transition()
         self._create_test_workflow_transition_field()

@@ -1,4 +1,4 @@
-from rest_framework.filters import BaseFilterBackend
+from rest_framework.filters import BaseFilterBackend, OrderingFilter
 
 from mayan.apps.acls.models import AccessControlList
 
@@ -16,3 +16,10 @@ class MayanObjectPermissionsFilter(BaseFilterBackend):
             )
         else:
             return queryset
+
+
+class MayanSortingFilter(OrderingFilter):
+    ordering_param = '_ordering'
+
+    def get_default_valid_fields(self, queryset, view, context={}):
+        return ()

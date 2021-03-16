@@ -1,16 +1,17 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
-# pyrotech <anastasios@tutamail.com>, 2020
+# pyrotech <anastasios@tutamail.com>, 2021
+# pyrotech <anastasios@tutamail.com>, 2020-2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-04 23:49+0000\n"
-"PO-Revision-Date: 2020-12-27 16:14+0000\n"
+"POT-Creation-Date: 2021-03-14 04:39+0000\n"
+"PO-Revision-Date: 2021-01-10 17:31+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
@@ -115,11 +116,11 @@ msgstr "Ετικέτα"
 msgid ""
 "The CSS stylesheet to change the appearance of the different user interface "
 "elements."
-msgstr ""
+msgstr "Το CSS stylesheet για αλλαγή της εμφάνισης των διαφόρων στοιχείων διεπαφής χρήστη."
 
 #: models.py:19
 msgid "Stylesheet"
-msgstr ""
+msgstr "Stylesheet"
 
 #: models.py:24 models.py:60
 msgid "Theme"
@@ -131,41 +132,41 @@ msgstr "Χρήστης"
 
 #: models.py:64
 msgid "User theme setting"
-msgstr ""
+msgstr "Ρύθμιση θέματος χρήστη"
 
 #: models.py:65
 msgid "User theme settings"
-msgstr ""
+msgstr "Ρυθμίσεις θέματος χρήστη"
 
 #: permissions.py:8
 msgid "Create new themes"
-msgstr ""
+msgstr "Δημιουργία νέων θεμάτων"
 
 #: permissions.py:11
 msgid "Delete themes"
-msgstr ""
+msgstr "Διαγραφή θεμάτων"
 
 #: permissions.py:14
 msgid "Edit themes"
-msgstr ""
+msgstr "Τροποποίηση θεμάτων"
 
 #: permissions.py:17
 msgid "View existing themes"
-msgstr ""
+msgstr "Προβολή υπαρχόντων θεμάτων"
 
 #: settings.py:12
 msgid "Maximum number of characters that will be displayed as the view title."
-msgstr ""
+msgstr "Μέγιστος αριθμός χαρακτήρων που θα προβληθών ως τίτλος προβολής."
 
 #: settings.py:19
 msgid ""
 "Position where the system message will be displayed. Options are: top-left, "
 "top-center, top-right, bottom-left, bottom-center, bottom-right."
-msgstr ""
+msgstr "Θέση στην οποία θα προβληθεί το μήνυμα συστήματος. Διαθέσιμες επιλογές: top-left, top-center, top-right, bottom-left, bottom-center, bottom-right."
 
 #: templates/403.html:5 templates/403.html:30
 msgid "Insufficient permission"
-msgstr ""
+msgstr "Ανεπαρκές δικαίωμα"
 
 #: templates/403.html:32
 msgid "You don't have enough permissions for this operation."
@@ -177,25 +178,25 @@ msgstr "Η σελίδα δεν βρέθηκε"
 
 #: templates/404.html:32
 msgid "The requested page could not be found."
-msgstr ""
+msgstr "Η ζητούμενη σελίδα δεν βρέθηκε."
 
 #: templates/404.html:40
 msgid "Possible reasons"
-msgstr ""
+msgstr "Πιθανές αιτίες"
 
 #: templates/404.html:44
 msgid "The location of the item is incorrect."
-msgstr ""
+msgstr "Η τοποθεσία του αντικειμένου δεν είναι σωστή."
 
 #: templates/404.html:45
 msgid "The location is correct, but the item no longer exists."
-msgstr ""
+msgstr "Η τοποθεσία είναι σωστή, όμως το αντικείμενο δεν υπάρχει πια."
 
 #: templates/404.html:46
 msgid ""
 "The location is be correct, but your account does not have the required "
 "permission to access it."
-msgstr ""
+msgstr "Η τοποθεσία είναι σωστή, όμως ο λογαριασμός σας δεν έχει το απαιτούμενο δικαίωμα πρόσβασης."
 
 #: templates/500.html:5 templates/500.html:30
 #: templates/appearance/root.html:58
@@ -204,32 +205,32 @@ msgstr "Σφάλμα διακομηστή"
 
 #: templates/500.html:32
 msgid "There's been an unexpected error."
-msgstr ""
+msgstr "Έχει προκύψει έναν απροσδόκητο σφάλμα."
 
 #: templates/500.html:40
 msgid "What to do next?"
-msgstr ""
+msgstr "Τι είναι το επόμενο που πρέπει αν γίνει;"
 
 #: templates/500.html:44
 msgid "Refresh the page."
-msgstr ""
+msgstr "Ανανέωση σελίδας."
 
 #: templates/500.html:45
 msgid "Wait a bit. The system might be overloaded."
-msgstr ""
+msgstr "Αναμείνατε. Το σύστημα μπορεί να έχει υπερφορτωθεί."
 
 #: templates/500.html:46
 msgid "Contact your system administrator."
-msgstr ""
+msgstr "Επικοινωνήστε με τον διαχειριστή του συστήματος."
 
 #: templates/500.html:47
 msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
-msgstr ""
+msgstr "Ελέγξτε τις καταγραφές - logs - για μηνύματα με τις ακόλουθες επισημάνσεις \"ERROR\", \"CRITICAL\" or \"FATAL\"."
 
 #: templates/500.html:48
 #, python-format
 msgid "Open a ticket using the <a href=\"%(issue_url)s\">issue tracker</a>."
-msgstr ""
+msgstr "Δημιουργήστε νέο ticket χρησιμοποιόντας το <a href=\"%(issue_url)s\">issue tracker</a>."
 
 #: templates/appearance/about.html:10
 msgid "About"
@@ -241,7 +242,7 @@ msgid ""
 "\n"
 "                    %(setting_project_title)s is based on %(project_title)s\n"
 "                "
-msgstr ""
+msgstr "\n                    το %(setting_project_title)s βασίζεται στο %(project_title)s\n                "
 
 #: templates/appearance/about.html:78
 msgid "Version"
@@ -250,11 +251,11 @@ msgstr "Έκδοση"
 #: templates/appearance/about.html:80
 #, python-format
 msgid "Build number: %(build_number)s"
-msgstr ""
+msgstr "Αριθμός build: %(build_number)s"
 
 #: templates/appearance/about.html:93
 msgid "Released under the license:"
-msgstr ""
+msgstr "Διανέμεται υπό την άδεια:"
 
 #: templates/appearance/about.html:99
 #, python-format
@@ -262,7 +263,7 @@ msgid ""
 "\n"
 "                %(project_title)s is a free and open-source software brought to you with <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
 "            "
-msgstr ""
+msgstr "\n                Το %(project_title)s είναι ένα δωρεάν και ανοιχτού κώδικα λογισμικό που προσφέρεται σε εσάς με <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> από τον  Roberto Rosario και τους συνεισφέροντες.\n            "
 
 #: templates/appearance/about.html:105
 #, python-format
@@ -270,7 +271,7 @@ msgid ""
 "\n"
 "                It takes great effort to make %(project_title)s as feature-rich as it is.\n"
 "            "
-msgstr ""
+msgstr "\n                Απαιτείται πολύ προσπάθεια για την δημιουργία του %(project_title)s με το πλήθος των δυνατοτήτων που περιέχει.\n            "
 
 #: templates/appearance/about.html:111
 #, python-format
@@ -278,7 +279,7 @@ msgid ""
 "\n"
 "                If you use %(project_title)s please <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">make a donation %(icon_social_paypal)s</a>\n"
 "            "
-msgstr ""
+msgstr "\n               Εάν χρησιμοποιείτε το %(project_title)s παρακαλώ <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">κάντε μια δωρεά %(icon_social_paypal)s</a>\n            "
 
 #: templates/appearance/about.html:117
 #, python-format
@@ -286,7 +287,7 @@ msgid ""
 "\n"
 "                The complete list of changes is available via the <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> or the short version <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
 "            "
-msgstr ""
+msgstr "\n                Η πλήρης λίστα αλλαγών είναι διαθέσιμη στις <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Σημειώσεις έκδοσης %(icon_documentation)s</a> ενώ η σύντομη έκδοση των αλλαγών στις <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Αλλαγές έκδοσης %(icon_documentation)s</a>.\n            "
 
 #: templates/appearance/about.html:123
 #, python-format
@@ -294,7 +295,7 @@ msgid ""
 "\n"
 "                For questions check the <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
 "            "
-msgstr ""
+msgstr "\n                Για ερωτήματα ελέγξτε την <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Τεκμηρίωση %(icon_documentation)s</a>.\n            "
 
 #: templates/appearance/about.html:129
 #, python-format
@@ -302,7 +303,7 @@ msgid ""
 "\n"
 "                If you found a bug or have a feature idea, visit the <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository %(icon_source_code)s</a>.\n"
 "            "
-msgstr ""
+msgstr "\n                Εάν έχετε εντοπίσει κάποιο σφάλμα (bug) ή έχετε προτάσεις για νέα χαρακτηριστικά, επισκεφθείτε το <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Φόρουμ %(icon_forum)s</a> ή δημιουργήστε ένα νέο ticket στο <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Αποθετήριο κώδικα %(icon_source_code)s</a>.\n            "
 
 #: templates/appearance/about.html:134
 #, python-format
@@ -310,21 +311,21 @@ msgid ""
 "\n"
 "                Spread the word. Talk to your friends and colleagues about how awesome %(project_title)s is!\n"
 "            "
-msgstr ""
+msgstr "\n                Διαδώστε. Μιλήστε στους φίλους και συναδέλφους για το %(project_title)s! \n            "
 
 #: templates/appearance/base.html:43 templates/appearance/base.html:67
 msgid "Warning"
-msgstr ""
+msgstr "Προειδοποίηση"
 
 #: templates/appearance/base.html:57
 msgid "Click here to fix this."
-msgstr ""
+msgstr "Κάντε κλικ εδώ για επιδιόρθωση."
 
 #: templates/appearance/base.html:67
 msgid ""
 "Settings updated, restart your installation and refresh your browser for "
 "changes to take effect."
-msgstr ""
+msgstr "Οι ρυθμίσεις ενημερώθηκαν, επανακινήστε την εγκατάσταση και ανανεώστε περιηγητή σας ώστε να τεθούν σε εφαρμογή οι αλλαγές."
 
 #: templates/appearance/base.html:75
 #, python-format
@@ -332,11 +333,11 @@ msgid ""
 "\n"
 "                                        Impersonating user \"%(user)s\".\n"
 "                                    "
-msgstr ""
+msgstr "\n                                        Μίμιση χρήστη \"%(user)s\".\n                                    "
 
 #: templates/appearance/base.html:78
 msgid "Click here when finished"
-msgstr ""
+msgstr "Για ολοκλήρηση κάντε κλικ εδώ"
 
 #: templates/appearance/base.html:92
 #: templates/appearance/generic_list_items_subtemplate.html:66
@@ -347,15 +348,15 @@ msgstr "Ενέργειες"
 #: templates/appearance/generic_list_items_subtemplate.html:68
 #: templates/appearance/list_toolbar.html:67
 msgid "Toggle Dropdown"
-msgstr ""
+msgstr "Εναλλαγή αναδυόμενης λίστας"
 
 #: templates/appearance/calculate_form_title.html:10
 msgid "Open main menu"
-msgstr ""
+msgstr "Άνοιγμα κεντρικού μενού"
 
 #: templates/appearance/generic_confirm.html:14
 msgid "Are you sure?"
-msgstr ""
+msgstr "Είστε βέβαιως;"
 
 #: templates/appearance/generic_confirm.html:38
 msgid "Yes"
@@ -387,7 +388,7 @@ msgstr "Υποβολή"
 #: templates/appearance/generic_form_subtemplate.html:87
 #: templates/appearance/generic_multiform_subtemplate.html:63
 msgid "Cancel"
-msgstr "Άκυρο"
+msgstr "Ακύρωση"
 
 #: templates/appearance/generic_list_subtemplate.html:28
 msgid "Identifier"
@@ -403,7 +404,7 @@ msgstr "Ξεκινώντας"
 
 #: templates/appearance/home.html:29
 msgid "Before you can fully use Mayan EDMS you need the following:"
-msgstr "Προτού μπορέσετε να χρησιμοποιήσετε πλήρως το Mayan EDMS χρειάζεστε τα εξής:"
+msgstr "Πριν μπορέσετε να χρησιμοποιήσετε πλήρως το Mayan EDMS χρειάζεστε τα εξής:"
 
 #: templates/appearance/list_header.html:12
 #, python-format
@@ -420,20 +421,20 @@ msgstr "Σύνολο: %(total)s"
 
 #: templates/appearance/list_toolbar.html:13
 msgid "Select/Deselect all"
-msgstr ""
+msgstr "Επιλογή/Αποεπιλογή όλων"
 
 #: templates/appearance/list_toolbar.html:17
 msgid "Toggle list display mode"
-msgstr ""
+msgstr "Εναλλαγή προβολής λίστας"
 
 #: templates/appearance/list_toolbar.html:60
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
-msgstr ""
+msgstr "Επιλέξτε αντικείμενα για την ενεργοποίηση μαζικών ενεργειών."
 
 #: templates/appearance/list_toolbar.html:65
 msgid "Bulk actions"
-msgstr ""
+msgstr "Μαζικές ενέργειες"
 
 #: templates/appearance/menu_topbar.html:11
 msgid "Toggle navigation"
@@ -445,15 +446,15 @@ msgstr "Κανένα αποτέλεσμα"
 
 #: templates/appearance/root.html:63
 msgid "Close"
-msgstr ""
+msgstr "Κλείσιμο"
 
 #: templates/appearance/root.html:73
 msgid "Server communication error"
-msgstr ""
+msgstr "Σφάλμα επικοινωνίας διακομιστή"
 
 #: templates/appearance/root.html:75
 msgid "Check you network connection and try again in a few moments."
-msgstr ""
+msgstr "Ελέγξτε την σύνδεση δικτύου σας και δοκιμάστε ξανά σε λίγα λεπτά."
 
 #: templatetags/appearance_tags.py:44
 msgid "None"
@@ -461,27 +462,27 @@ msgstr "Κανένα"
 
 #: views.py:29
 msgid "Current user theme settings details"
-msgstr ""
+msgstr "Λεπτομέρειες ρυθμίσεων θέματος τρέχοντος χρήστη"
 
 #: views.py:35
 msgid "Edit current user theme settings details"
-msgstr ""
+msgstr "Τροποποίηση ρυθμίσεων θέματος τρέχοντος χρήστη"
 
 #: views.py:69
 #, python-format
 msgid "Delete theme: %s"
-msgstr ""
+msgstr "Διαγραφή θέματος: %s"
 
 #: views.py:85
 #, python-format
 msgid "Edit theme: %s"
-msgstr ""
+msgstr "Τροποποίηση θέματος: %s"
 
 #: views.py:105
 msgid ""
 "Themes allow changing the visual appearance without requiring code changes."
-msgstr ""
+msgstr "Τα θέματα επιτρέπουν την αλλαγή της εμφάνισης χωρίς να απαιτείται  αλλαγή στον κώδικα."
 
 #: views.py:109
 msgid "There are no themes"
-msgstr ""
+msgstr "Δεν υπάρχουν διαθέσιμα θέματα"

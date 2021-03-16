@@ -86,6 +86,7 @@ class APIWebLinkListView(generics.ListCreateAPIView):
     """
     mayan_object_permissions = {'GET': (permission_web_link_view,)}
     mayan_view_permissions = {'POST': (permission_web_link_create,)}
+    ordering_fields = ('enabled', 'label',)
     queryset = WebLink.objects.all()
     serializer_class = WebLinkSerializer
 

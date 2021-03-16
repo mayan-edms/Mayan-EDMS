@@ -8,7 +8,7 @@ from django.utils.encoding import force_text
 from django.utils.timezone import make_aware
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.common.model_mixins import ExtraDataModelMixin
+from mayan.apps.databases.model_mixins import ExtraDataModelMixin
 from mayan.apps.events.classes import EventManagerSave
 from mayan.apps.events.decorators import method_event
 

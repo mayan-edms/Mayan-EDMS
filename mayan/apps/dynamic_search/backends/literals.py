@@ -19,6 +19,7 @@ DJANGO_TO_WHOOSH_FIELD_MAP = {
         'field': whoosh.fields.ID(stored=True), 'transformation': str
     },
     models.CharField: {'field': whoosh.fields.TEXT},
+    models.EmailField: {'field': whoosh.fields.TEXT},
     models.TextField: {'field': whoosh.fields.TEXT},
     models.UUIDField: {'field': whoosh.fields.TEXT, 'transformation': str},
     RGBColorField: {'field': whoosh.fields.TEXT},

@@ -30,7 +30,7 @@ class WorkflowRuntimeProxyLinkTestCase(
     def test_workflow_runtime_proxy_document_list_link_no_permission(self):
         self.test_link = link_workflow_runtime_proxy_document_list
 
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
 
         self._resolve_test_link(test_object=self.test_workflow_runtime_proxy)
 
@@ -39,7 +39,7 @@ class WorkflowRuntimeProxyLinkTestCase(
     def test_workflow_runtime_proxy_document_list_link_with_access(self):
         self.test_link = link_workflow_runtime_proxy_document_list
 
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
 
         self.grant_access(
             obj=self.test_workflow, permission=permission_workflow_view
@@ -60,7 +60,7 @@ class WorkflowRuntimeProxyLinkTestCase(
     def test_workflow_runtime_proxy_link_no_permission(self):
         self.test_link = link_workflow_runtime_proxy_list
 
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
 
         self._resolve_test_link()
         self.assertEqual(self.resolved_test_link, None)
@@ -68,7 +68,7 @@ class WorkflowRuntimeProxyLinkTestCase(
     def test_workflow_runtime_proxy_link_with_access(self):
         self.test_link = link_workflow_runtime_proxy_list
 
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
 
         self.grant_access(
             obj=self.test_workflow, permission=permission_workflow_view
@@ -87,7 +87,7 @@ class WorkflowRuntimeProxyLinkTestCase(
     def test_workflow_runtime_proxy_state_document_list_link_no_permission(self):
         self.test_link = link_workflow_runtime_proxy_state_document_list
 
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
         self._create_test_workflow_state()
 
         self._resolve_test_link(test_object=self.test_workflow_state_runtime_proxy)
@@ -97,7 +97,7 @@ class WorkflowRuntimeProxyLinkTestCase(
     def test_workflow_runtime_proxy_state_document_list_link_with_access(self):
         self.test_link = link_workflow_runtime_proxy_state_document_list
 
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
         self._create_test_workflow_state()
 
         self.grant_access(
@@ -119,7 +119,7 @@ class WorkflowRuntimeProxyLinkTestCase(
     def test_workflow_runtime_proxy_state_list_link_no_permission(self):
         self.test_link = link_workflow_runtime_proxy_state_list
 
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
 
         self._resolve_test_link(test_object=self.test_workflow_runtime_proxy)
         self.assertEqual(self.resolved_test_link, None)
@@ -127,7 +127,7 @@ class WorkflowRuntimeProxyLinkTestCase(
     def test_workflow_runtime_proxy_state_list_link_with_access(self):
         self.test_link = link_workflow_runtime_proxy_state_list
 
-        self._create_test_workflow(add_document_type=True)
+        self._create_test_workflow(add_test_document_type=True)
 
         self.grant_access(
             obj=self.test_workflow, permission=permission_workflow_view

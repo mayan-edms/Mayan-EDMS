@@ -16,10 +16,6 @@ DEFAULT_COMMON_URL_BASE_PATH = ''
 
 DJANGO_SQLITE_BACKEND = 'django.db.backends.sqlite3'
 
-IMPORT_ERROR_EXCLUSION_TEXTS = (
-    'doesn\'t look like a module path', 'No module named'
-)
-
 MESSAGE_DEPRECATION_WARNING = _(
     'This feature has been deprecated and will be removed in a future version.'
 )

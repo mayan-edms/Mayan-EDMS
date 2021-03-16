@@ -4,13 +4,15 @@
 # 
 # Translators:
 # Translators:
+# pyrotech <anastasios@tutamail.com>, 2021
+# pyrotech <anastasios@tutamail.com>, 2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-04 23:49+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2021-03-14 04:40+0000\n"
+"PO-Revision-Date: 2021-02-15 14:55+0000\n"
+"Last-Translator: pyrotech <anastasios@tutamail.com>\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,15 +32,15 @@ msgstr "Έγγραφα"
 
 #: events.py:8
 msgid "Tag attached to document"
-msgstr "ετικέτα προσαρτήθηκε στο έγγραφο"
+msgstr "Ετικέτα επισυνάφθηκε στο έγγραφο"
 
 #: events.py:11
 msgid "Tag created"
-msgstr ""
+msgstr "Η ετικέτα δημιουργήθηκε"
 
 #: events.py:14
 msgid "Tag edited"
-msgstr ""
+msgstr "Η ετικέτα τροποποιήθηκε"
 
 #: events.py:17
 msgid "Tag removed from document"
@@ -50,7 +52,7 @@ msgstr "Αφαίρεση ετικέτας"
 
 #: links.py:18 links.py:35
 msgid "Attach tags"
-msgstr "Επικόληση ετικέτας"
+msgstr "Επισύναψη ετικέτας"
 
 #: links.py:29
 msgid "Remove tags"
@@ -70,19 +72,19 @@ msgstr "Τροποποίηση"
 
 #: links.py:61
 msgid "All"
-msgstr "Όλα"
+msgstr "Όλες"
 
 #: methods.py:18
 msgid "Return the tags attached to the document."
-msgstr ""
+msgstr "Επιστροφή ετικετών συνημμένων στο έγγραφο."
 
 #: methods.py:20
 msgid "get_tags()"
-msgstr ""
+msgstr "get_tags()"
 
 #: models.py:24
 msgid "A short text used as the tag name."
-msgstr ""
+msgstr "Σύντομο κείμενο που χρησιμοποιείται ως όνομα ετικέτας."
 
 #: models.py:25
 msgid "Label"
@@ -90,11 +92,11 @@ msgstr "Ετικέτα"
 
 #: models.py:28
 msgid "The RGB color values for the tag."
-msgstr ""
+msgstr "Οι τιμές χρώματος RGB για την ετικέτα."
 
 #: models.py:29
 msgid "Color"
-msgstr "Έγχρωμο"
+msgstr "Χρώμα"
 
 #: models.py:37
 msgid "Tag"
@@ -130,7 +132,7 @@ msgstr "Τροποποίηση ετικετών"
 
 #: permissions.py:20
 msgid "Attach tags to documents"
-msgstr "Προσάρτηση ετικετών σε έγγραφα"
+msgstr "Επισύναψη ετικετών σε έγγραφα"
 
 #: permissions.py:23
 msgid "Remove tags from documents"
@@ -140,52 +142,52 @@ msgstr "Αφαίρεση ετικετών από έγγραφα"
 msgid ""
 "Comma separated list of document primary keys to which this tag will be "
 "attached."
-msgstr "Λίστα (χωρισμένη με κόμμα) πρωτευόντων κελιδιών εγγράφων στα οποία θα προσαρτηθεί αυτή η ετικέτα."
+msgstr "Λίστα χωρισμένη με κόμμα πρωτευόντων κλειδιών εγγράφων στα οποία θα επισυναφθεί αυτή η ετικέτα."
 
 #: serializers.py:85
 msgid ""
 "API URL pointing to a tag in relation to the document attached to it. This "
 "URL is different than the canonical tag URL."
-msgstr ""
+msgstr "URL API που δείχνει σε μια ετικέτα σχετική με το έγγραφο που επισυνάπτεται σε αυτήν. Αυτό το URL είναι διαφορετικό από το κανονικό URL ετικέτας."
 
 #: serializers.py:105
 msgid "Primary key of the tag to be added."
-msgstr "Πρωτέυον κλειδί της ετικέτας που θα προσαρτηθεί."
+msgstr "Πρωτεύον κλειδί της ετικέτας που θα προστεθεί."
 
 #: views.py:36
 #, python-format
 msgid "Tag attach request performed on %(count)d document"
-msgstr "Αίτημα προσάρτησης ετικέτας πραγματοποιήθηκε σε %(count)d έγγραφο"
+msgstr "Αίτημα επισύναψης ετικέτας πραγματοποιήθηκε σε %(count)d έγγραφο"
 
 #: views.py:38
 #, python-format
 msgid "Tag attach request performed on %(count)d documents"
-msgstr "Αίτημα προσάρτησης ετικέτας πραγματοποιήθηκε σε %(count)d έγγραφα"
+msgstr "Αίτημα επισύναψης ετικέτας πραγματοποιήθηκε σε %(count)d έγγραφα"
 
 #: views.py:45
 msgid "Attach"
-msgstr "Προσάρτηση"
+msgstr "Επισύναψη"
 
 #: views.py:47
 #, python-format
 msgid "Attach tags to %(count)d document"
 msgid_plural "Attach tags to %(count)d documents"
 msgstr[0] "Προσάρτησε ετικέτες σε %(count)d έγγραφο"
-msgstr[1] "Προσάρτησε ετικέτες σε %(count)d έγγραφα"
+msgstr[1] "Επισύναψη ετικετών σε %(count)d έγγραφα"
 
 #: views.py:59
 #, python-format
 msgid "Attach tags to document: %s"
-msgstr "Προσάρτηση ετικετών στο έγγραφο: %s"
+msgstr "Επισύναψη ετικετών στο έγγραφο: %s"
 
 #: views.py:68 wizard_steps.py:27
 msgid "Tags to be attached."
-msgstr "Ετικέτες που θα επικοληθούν."
+msgstr "Ετικέτες προς επισύναψη."
 
 #: views.py:110
 #, python-format
 msgid "Document \"%(document)s\" is already tagged as \"%(tag)s\""
-msgstr "Έγγραφο \"%(document)s\" είναι ήδη σημασμένο ως \"%(tag)s\""
+msgstr "Έγγραφο \"%(document)s\" είναι ήδη επισημασμένο ως \"%(tag)s\""
 
 #: views.py:120
 #, python-format
@@ -219,7 +221,7 @@ msgstr[1] "Διαγραφή των επιλεγμένων ετικετών;"
 #: views.py:166
 #, python-format
 msgid "Delete tag: %s?"
-msgstr ""
+msgstr "Διαγραφή ετικέτας: %s;"
 
 #: views.py:177
 #, python-format
@@ -240,11 +242,11 @@ msgstr "Τροποποίηση ετικέτας: %s"
 msgid ""
 "Tags are color coded properties that can be attached or removed from "
 "documents."
-msgstr ""
+msgstr "Οι ετικέτες είναι  ιδιότητες με χρωμοκώδικα που μπορούν να επισυναφθούν ή να αφαιρεθούν από έγγραφα."
 
 #: views.py:221
 msgid "No tags available"
-msgstr ""
+msgstr "Δεν υπάρχουν διαθέσιμες ετικέτες"
 
 #: views.py:250
 #, python-format
@@ -253,7 +255,7 @@ msgstr "Έγγραφα με την ετικέτα: %s"
 
 #: views.py:275
 msgid "Document has no tags attached"
-msgstr ""
+msgstr "Το έγγραφο δεν έχει συνημμένες ετικέτες"
 
 #: views.py:278
 #, python-format
@@ -278,8 +280,8 @@ msgstr "Αφαίρεση"
 #, python-format
 msgid "Remove tags from %(count)d document"
 msgid_plural "Remove tags from %(count)d documents"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Αφαίρεσεη ετικετών από %(count)d έγγραφα"
+msgstr[1] "Αφαίρεση ετικετών από %(count)d έγγραφα"
 
 #: views.py:319
 #, python-format
@@ -293,7 +295,7 @@ msgstr "Ετικέτες που θα αφαιρεθούν."
 #: views.py:368
 #, python-format
 msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s"
-msgstr "Το έγγραφο \"%(document)s\" δεν ήταν σημασμένο ως \"%(tag)s\""
+msgstr "Το έγγραφο \"%(document)s\" δεν ήταν επισημασμένο ως \"%(tag)s\""
 
 #: views.py:377
 #, python-format
@@ -302,7 +304,7 @@ msgstr "Η ετικέτα \"%(tag)s\" αφαιρέθηκε επιτυχώς απ
 
 #: wizard_steps.py:15
 msgid "Select tags"
-msgstr ""
+msgstr "Επιλογή ετικετών"
 
 #: workflow_actions.py:20
 msgid "Tags to attach to the document"

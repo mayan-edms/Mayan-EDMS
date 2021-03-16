@@ -378,7 +378,7 @@ class WebLinkDocumentTypeAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_web_link_document_type_remove_api_view_no_permission(self):
-        self._create_test_web_link(add_document_type=True)
+        self._create_test_web_link(add_test_document_type=True)
         self.grant_access(
             obj=self.test_document_type,
             permission=permission_document_type_edit
@@ -402,7 +402,7 @@ class WebLinkDocumentTypeAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_web_link_document_type_remove_api_view_with_document_type_access(self):
-        self._create_test_web_link(add_document_type=True)
+        self._create_test_web_link(add_test_document_type=True)
         self.grant_access(
             obj=self.test_document_type,
             permission=permission_document_type_edit
@@ -426,7 +426,7 @@ class WebLinkDocumentTypeAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_web_link_document_type_remove_api_view_with_web_link_access(self):
-        self._create_test_web_link(add_document_type=True)
+        self._create_test_web_link(add_test_document_type=True)
 
         self.grant_access(
             obj=self.test_web_link, permission=permission_web_link_edit
@@ -450,7 +450,7 @@ class WebLinkDocumentTypeAPIViewTestCase(
         self.assertEqual(events.count(), 0)
 
     def test_web_link_document_type_remove_api_view_with_full_access(self):
-        self._create_test_web_link(add_document_type=True)
+        self._create_test_web_link(add_test_document_type=True)
         self.grant_access(
             obj=self.test_document_type,
             permission=permission_document_type_edit
@@ -488,7 +488,7 @@ class ResolvedWebLinkAPIViewTestCase(
 ):
     def setUp(self):
         super().setUp()
-        self._create_test_web_link(add_document_type=True)
+        self._create_test_web_link(add_test_document_type=True)
 
     def test_resolved_web_link_detail_api_view_no_permission(self):
         self._clear_events()
