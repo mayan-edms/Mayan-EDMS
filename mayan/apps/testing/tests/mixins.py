@@ -578,7 +578,7 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
                 instance.id = instance.pk
 
                 kwargs['force_insert'] = True
-                return instance.save_base(*args, **kargs)
+                return instance.save_base(*args, **kwargs)
         return save
 
 
