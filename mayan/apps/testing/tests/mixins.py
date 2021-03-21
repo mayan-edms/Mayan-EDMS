@@ -289,7 +289,9 @@ class RandomPrimaryKeyModelMonkeyPatchMixin:
                     )
                     instance.id = instance.pk
 
-                    result = instance.save_base(force_insert=True)
+                    kwargs['force_insert'] = True
+
+                    result = instance.save_base(*args, **kwargs)
                     instance._meta.auto_created = False
 
                     post_save.send(
@@ -548,7 +550,8 @@ class TestModelTestMixin(PermissionTestMixin):
                 )
                 instance.id = instance.pk
 
-                return instance.save_base(force_insert=True)
+                kwargs['force_insert'] = True
+                return instance.save_base(*args, **kargs)
         return save
 
     def _inject_test_object_content_type(self):
