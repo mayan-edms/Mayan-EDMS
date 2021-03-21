@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.core.exceptions import ImproperlyConfigured, ValidationError
 from django.db import transaction
 from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
@@ -499,6 +500,57 @@ class MultipleObjectConfirmActionView(
     def post(self, request, *args, **kwargs):
         self.view_action()
         return HttpResponseRedirect(redirect_to=self.get_success_url())
+
+
+class RelationshipView(FormView):
+    form_class = None
+    model = None
+    model_permission = None
+    pk_url_kwarg = None
+    relationship_related_field = None
+    relationship_related_query_field = None
+    sub_model = None
+    sub_model_permission = None
+
+    def form_valid(self, forms):
+        super_result = super().form_valid(form=forms)
+
+        try:
+            for form in forms:
+                form.save()
+        except Exception as exception:
+            messages.error(
+                message=_(
+                    'Error updating relationship; %s'
+                ) % exception, request=self.request
+            )
+            if settings.DEBUG or settings.TESTING:
+                raise
+        else:
+            messages.success(
+                message=_('Relationships updated successfully'),
+                request=self.request
+            )
+
+        return super_result
+
+    def get_object(self):
+        queryset = AccessControlList.objects.restrict_queryset(
+            permission=self.model_permission,
+            queryset=self.model._meta.default_manager.all(),
+            user=self.request.user
+        )
+
+        return get_object_or_404(
+            klass=queryset, pk=self.kwargs[self.pk_url_kwarg]
+        )
+
+    def get_sub_model_queryset(self):
+        queryset = self.sub_model.objects.all()
+        return AccessControlList.objects.restrict_queryset(
+            permission=self.sub_model_permission,
+            user=self.request.user, queryset=queryset
+        )
 
 
 class SimpleView(ViewPermissionCheckViewMixin, ExtraContextViewMixin, TemplateView):

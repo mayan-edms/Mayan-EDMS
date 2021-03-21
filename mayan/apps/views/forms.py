@@ -273,3 +273,65 @@ class FilteredSelectionForm(forms.Form):
             widget=widget_class(attrs=opts.widget_attributes),
             **extra_kwargs
         )
+
+
+class RelationshipForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        self._event_actor = kwargs.pop('_event_actor')
+        super().__init__(*args, **kwargs)
+
+        self.fields['label'] = forms.CharField(
+            label=_('Label'), required=False,
+            widget=forms.TextInput(attrs={'readonly': 'readonly'})
+        )
+        self.fields['relationship_type'] = forms.ChoiceField(
+            label=_('Relationship'),
+            widget=forms.RadioSelect(), choices=self.RELATIONSHIP_CHOICES
+        )
+
+        self.sub_object = self.initial.get('sub_object')
+        if self.sub_object:
+            self.fields['label'].initial = str(self.sub_object)
+
+            self.initial_relationship_type = self.get_relationship_type()
+
+            self.fields['relationship_type'].initial = self.initial_relationship_type
+
+    def get_new_relationship_instance(self):
+        related_manager = getattr(
+            self.initial.get('object'), self.initial['relationship_related_field']
+        )
+        main_field_name = related_manager.field.name
+
+        return related_manager.model(
+            **{
+                main_field_name: self.initial.get('object'),
+                self.initial['relationship_related_query_field']: self.initial.get('sub_object')
+            }
+        )
+
+    def get_relationship_queryset(self):
+        return getattr(
+            self.initial.get('object'), self.initial['relationship_related_field']
+        ).filter(
+            **{
+                self.initial['relationship_related_query_field']: self.initial.get('sub_object')
+            }
+        )
+
+    def get_relationship_instance(self):
+        relationship_queryset = self.get_relationship_queryset()
+        if relationship_queryset.exists():
+            return relationship_queryset.get()
+        else:
+            return self.get_new_relationship_instance()
+
+    def save(self):
+        if self.sub_object:
+            if self.cleaned_data['relationship_type'] != self.initial_relationship_type:
+                save_method = getattr(
+                    self, 'save_relationship_{}'.format(
+                        self.cleaned_data['relationship_type']
+                    )
+                )
+                save_method()
