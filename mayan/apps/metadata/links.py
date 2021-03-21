@@ -49,35 +49,35 @@ link_metadata_view = Link(
     permissions=(permission_document_metadata_view,), text=_('Metadata'),
     view='metadata:metadata_view',
 )
-link_setup_document_type_metadata_types = Link(
+link_document_type_metadata_type_relationship = Link(
     args='resolved_object.pk',
     icon=icon_document_type_metadata_type_list,
     permissions=(permission_document_type_edit,),
-    text=_('Metadata types'), view='metadata:setup_document_type_metadata_types',
+    text=_('Metadata types'), view='metadata:document_type_metadata_type_relationship',
 )
-link_setup_metadata_type_document_types = Link(
+link_metadata_type_document_type_relationship = Link(
     args='resolved_object.pk',
     icon=icon_metadata_type_document_type_list,
     permissions=(permission_document_type_edit,),
-    text=_('Document types'), view='metadata:setup_metadata_type_document_types',
+    text=_('Document types'), view='metadata:metadata_type_document_type_relationship',
 )
-link_setup_metadata_type_create = Link(
+link_metadata_type_create = Link(
     icon=icon_metadata_type_create,
     permissions=(permission_metadata_type_create,), text=_('Create new'),
-    view='metadata:setup_metadata_type_create'
+    view='metadata:metadata_type_create'
 )
-link_setup_metadata_type_delete = Link(
+link_metadata_type_delete = Link(
     args='object.pk', icon=icon_metadata_type_delete,
     permissions=(permission_metadata_type_delete,),
-    tags='dangerous', text=_('Delete'), view='metadata:setup_metadata_type_delete',
+    tags='dangerous', text=_('Delete'), view='metadata:metadata_type_delete',
 )
-link_setup_metadata_type_edit = Link(
+link_metadata_type_edit = Link(
     args='object.pk', icon=icon_metadata_type_edit,
     permissions=(permission_metadata_type_edit,),
-    text=_('Edit'), view='metadata:setup_metadata_type_edit'
+    text=_('Edit'), view='metadata:metadata_type_edit'
 )
-link_setup_metadata_type_list = Link(
+link_metadata_type_list = Link(
     icon=icon_metadata_type_list,
     permissions=(permission_metadata_type_view,),
-    text=_('Metadata types'), view='metadata:setup_metadata_type_list'
+    text=_('Metadata types'), view='metadata:metadata_type_list'
 )

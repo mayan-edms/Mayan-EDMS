@@ -19,7 +19,7 @@ event_metadata_type_created = namespace.add_event_type(
 event_metadata_type_edited = namespace.add_event_type(
     label=_('Metadata type edited'), name='metadata_type_edited'
 )
-event_metadata_type_relationship = namespace.add_event_type(
+event_metadata_type_relationship_updated = namespace.add_event_type(
     label=_('Metadata type relationship updated'),
     name='metadata_type_relationship'
 )

@@ -9,15 +9,15 @@ from .views import (
     DocumentMetadataAddView, DocumentMetadataEditView,
     DocumentMetadataListView, DocumentMetadataRemoveView,
     MetadataTypeCreateView, MetadataTypeDeleteView, MetadataTypeEditView,
-    MetadataTypeListView, SetupDocumentTypeMetadataTypes,
-    SetupMetadataTypesDocumentTypes
+    MetadataTypeListView, DocumentTypeMetadataTypeRelationshipView,
+    MetadataTypesDocumentTypeRelationshipView
 )
 
 urlpatterns = [
     url(
         regex=r'^document_types/(?P<document_type_id>\d+)/metadata_types/$',
-        name='setup_document_type_metadata_types',
-        view=SetupDocumentTypeMetadataTypes.as_view()
+        name='document_type_metadata_type_relationship',
+        view=DocumentTypeMetadataTypeRelationshipView.as_view()
     ),
     url(
         regex=r'^documents/(?P<document_id>\d+)/metadata/edit/$',
@@ -49,26 +49,26 @@ urlpatterns = [
         view=DocumentMetadataRemoveView.as_view()
     ),
     url(
-        regex=r'^metadata_types/$', name='setup_metadata_type_list',
+        regex=r'^metadata_types/$', name='metadata_type_list',
         view=MetadataTypeListView.as_view()
     ),
     url(
-        regex=r'^metadata_types/create/$', name='setup_metadata_type_create',
+        regex=r'^metadata_types/create/$', name='metadata_type_create',
         view=MetadataTypeCreateView.as_view()
     ),
     url(
         regex=r'^metadata_types/(?P<metadata_type_id>\d+)/edit/$',
-        name='setup_metadata_type_edit', view=MetadataTypeEditView.as_view()
+        name='metadata_type_edit', view=MetadataTypeEditView.as_view()
     ),
     url(
         regex=r'^metadata_types/(?P<metadata_type_id>\d+)/delete/$',
-        name='setup_metadata_type_delete',
+        name='metadata_type_delete',
         view=MetadataTypeDeleteView.as_view()
     ),
     url(
         regex=r'^metadata_types/(?P<metadata_type_id>\d+)/document_types/$',
-        name='setup_metadata_type_document_types',
-        view=SetupMetadataTypesDocumentTypes.as_view()
+        name='metadata_type_document_type_relationship',
+        view=MetadataTypesDocumentTypeRelationshipView.as_view()
     )
 ]
 

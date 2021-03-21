@@ -336,12 +336,25 @@ class MetadataTypeViewTestMixin:
             TEST_METADATA_TYPES_FIXTURES
         )
 
+    def _request_test_document_type_relationship_delete_view(self):
+        # This request assumes there is only one document type and
+        # blindly sets the first form of the formset.
+
+        return self.post(
+            viewname='metadata:document_type_metadata_type_relationship',
+            kwargs={'document_type_id': self.test_document_type.pk}, data={
+                'form-TOTAL_FORMS': '1',
+                'form-INITIAL_FORMS': '0',
+                'form-0-relationship_type': 'none'
+            }
+        )
+
     def _request_test_document_type_relationship_edit_view(self):
         # This request assumes there is only one document type and
         # blindly sets the first form of the formset.
 
         return self.post(
-            viewname='metadata:setup_document_type_metadata_types',
+            viewname='metadata:document_type_metadata_type_relationship',
             kwargs={'document_type_id': self.test_document_type.pk}, data={
                 'form-TOTAL_FORMS': '1',
                 'form-INITIAL_FORMS': '0',
@@ -351,20 +364,20 @@ class MetadataTypeViewTestMixin:
 
     def _request_test_metadata_type_create_view(self):
         return self.post(
-            viewname='metadata:setup_metadata_type_create',
+            viewname='metadata:metadata_type_create',
             data=self.test_metadata_types_fixtures_views.pop()
         )
 
     def _request_test_metadata_type_delete_view(self):
         return self.post(
-            viewname='metadata:setup_metadata_type_delete', kwargs={
+            viewname='metadata:metadata_type_delete', kwargs={
                 'metadata_type_id': self.test_metadata_type.pk
             }
         )
 
     def _request_test_metadata_type_edit_view(self):
         return self.post(
-            viewname='metadata:setup_metadata_type_edit', kwargs={
+            viewname='metadata:metadata_type_edit', kwargs={
                 'metadata_type_id': self.test_metadata_type.pk
             }, data={
                 'label': TEST_METADATA_TYPE_LABEL_EDITED,
@@ -374,15 +387,28 @@ class MetadataTypeViewTestMixin:
 
     def _request_metadata_type_list_view(self):
         return self.get(
-            viewname='metadata:setup_metadata_type_list',
+            viewname='metadata:metadata_type_list',
         )
 
-    def _request_test_metadata_type_relationship_edit_view(self):
+    def _request_test_metadata_type_document_type_relationship_delete_view(self):
         # This request assumes there is only one document type and
         # blindly sets the first form of the formset.
 
         return self.post(
-            viewname='metadata:setup_metadata_type_document_types',
+            viewname='metadata:metadata_type_document_type_relationship',
+            kwargs={'metadata_type_id': self.test_metadata_type.pk}, data={
+                'form-TOTAL_FORMS': '1',
+                'form-INITIAL_FORMS': '0',
+                'form-0-relationship_type': 'none'
+            }
+        )
+
+    def _request_test_metadata_type_document_type_relationship_edit_view(self):
+        # This request assumes there is only one document type and
+        # blindly sets the first form of the formset.
+
+        return self.post(
+            viewname='metadata:metadata_type_document_type_relationship',
             kwargs={'metadata_type_id': self.test_metadata_type.pk}, data={
                 'form-TOTAL_FORMS': '1',
                 'form-INITIAL_FORMS': '0',

@@ -5,6 +5,7 @@ from django.utils.text import format_lazy
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.templating.fields import TemplateField
+from mayan.apps.views.forms import RelationshipForm
 
 from .classes import MetadataLookup
 from .models import DocumentTypeMetadataType, MetadataType
@@ -182,7 +183,7 @@ class MetadataTypeForm(forms.ModelForm):
         model = MetadataType
 
 
-class DocumentTypeMetadataTypeRelationshipForm(forms.Form):
+class DocumentTypeMetadataTypeRelationshipForm(RelationshipForm):
     RELATIONSHIP_TYPE_NONE = 'none'
     RELATIONSHIP_TYPE_OPTIONAL = 'optional'
     RELATIONSHIP_TYPE_REQUIRED = 'required'
@@ -192,88 +193,33 @@ class DocumentTypeMetadataTypeRelationshipForm(forms.Form):
         (RELATIONSHIP_TYPE_REQUIRED, _('Required')),
     )
 
-    label = forms.CharField(
-        label=_('Label'), required=False,
-        widget=forms.TextInput(attrs={'readonly': 'readonly'})
-    )
-    relationship_type = forms.ChoiceField(
-        label=_('Relationship'),
-        widget=forms.RadioSelect(), choices=RELATIONSHIP_CHOICES
-    )
-
-    def __init__(self, *args, **kwargs):
-        self._user = kwargs.pop('_user')
-        super().__init__(
-            *args, **kwargs
-        )
-
-        if 'main_model' in self.initial:
-            if self.initial['main_model'] == 'metadata_type':
-                self.fields['label'].initial = self.initial['document_type'].label
-            else:
-                self.fields['label'].initial = self.initial['metadata_type'].label
-
-            self.initial_relationship_type = self.get_relationship_type()
-            self.fields['relationship_type'].initial = self.initial_relationship_type
-
-    def get_relationship(self):
-        return self.initial['document_type'].metadata.filter(
-            metadata_type=self.initial['metadata_type']
-        )
-
-    def get_relationship_choices(self):
-        return self.initial['document_type'].metadata.filter(
-            metadata_type=self.initial['metadata_type']
-        )
-
     def get_relationship_type(self):
-        relationship = self.get_relationship()
+        relationship_queryset = self.get_relationship_queryset()
 
-        if relationship.exists():
-            if relationship.get().required:
+        if relationship_queryset.exists():
+            if relationship_queryset.get().required:
                 return self.RELATIONSHIP_TYPE_REQUIRED
             else:
                 return self.RELATIONSHIP_TYPE_OPTIONAL
         else:
             return self.RELATIONSHIP_TYPE_NONE
 
-    def save(self):
-        relationship = self.get_relationship()
+    def save_relationship_none(self):
+        instance = self.get_relationship_instance()
+        instance._event_actor = self._event_actor
+        instance.delete()
 
-        if self.cleaned_data['relationship_type'] != self.initial_relationship_type:
-            getattr(
-                self, 'save_relationship_{}'.format(
-                    self.cleaned_data['relationship_type']
-                )
-            )(relationship=relationship)
+    def save_relationship_optional(self):
+        instance = self.get_relationship_instance()
+        instance.required = False
+        instance._event_actor = self._event_actor
+        instance.save()
 
-    def save_relationship_none(self, relationship):
-        relationship.get().delete(_user=self._user)
-
-    def save_relationship_optional(self, relationship):
-        if relationship.exists():
-            instance = relationship.get()
-            instance.required = False
-            instance.save(_user=self._user)
-        else:
-            relationship = DocumentTypeMetadataType(
-                document_type=self.initial['document_type'],
-                metadata_type=self.initial['metadata_type'],
-            )
-            relationship.save(_user=self._user)
-
-    def save_relationship_required(self, relationship):
-        if relationship.exists():
-            instance = relationship.get()
-            instance.required = True
-            instance.save(_user=self._user)
-        else:
-            relationship = DocumentTypeMetadataType(
-                document_type=self.initial['document_type'],
-                metadata_type=self.initial['metadata_type'],
-                required=True,
-            )
-            relationship.save(_user=self._user)
+    def save_relationship_required(self):
+        instance = self.get_relationship_instance()
+        instance.required = True
+        instance._event_actor = self._event_actor
+        instance.save()
 
 
 DocumentTypeMetadataTypeRelationshipFormSetBase = formset_factory(
@@ -283,6 +229,6 @@ DocumentTypeMetadataTypeRelationshipFormSetBase = formset_factory(
 
 class DocumentTypeMetadataTypeRelationshipFormSet(DocumentTypeMetadataTypeRelationshipFormSetBase):
     def __init__(self, *args, **kwargs):
-        _user = kwargs.pop('_user')
+        _event_actor = kwargs.pop('_event_actor')
         super().__init__(*args, **kwargs)
-        self.form_kwargs.update({'_user': _user})
+        self.form_kwargs.update({'_event_actor': _event_actor})

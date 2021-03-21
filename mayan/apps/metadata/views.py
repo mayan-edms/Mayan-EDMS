@@ -15,8 +15,9 @@ from mayan.apps.documents.permissions import (
     permission_document_type_edit
 )
 from mayan.apps.views.generics import (
-    FormView, MultipleObjectFormActionView, SingleObjectCreateView,
-    SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
+    FormView, MultipleObjectFormActionView, RelationshipView,
+    SingleObjectCreateView, SingleObjectDeleteView, SingleObjectEditView,
+    SingleObjectListView
 )
 from mayan.apps.views.mixins import ExternalObjectViewMixin
 from mayan.apps.views.utils import convert_to_id_list
@@ -33,7 +34,7 @@ from .icons import (
 )
 from .links import (
     link_metadata_add, link_metadata_multiple_add,
-    link_setup_metadata_type_create
+    link_metadata_type_create
 )
 from .mixins import DocumentMetadataSameTypeViewMixin
 from .models import DocumentMetadata, MetadataType
@@ -504,7 +505,7 @@ class MetadataTypeCreateView(SingleObjectCreateView):
     form_class = MetadataTypeForm
     model = MetadataType
     post_action_redirect = reverse_lazy(
-        viewname='metadata:setup_metadata_type_list'
+        viewname='metadata:metadata_type_list'
     )
     view_permission = permission_metadata_type_create
 
@@ -519,7 +520,7 @@ class MetadataTypeDeleteView(SingleObjectDeleteView):
     object_permission = permission_metadata_type_delete
     pk_url_kwarg = 'metadata_type_id'
     post_action_redirect = reverse_lazy(
-        viewname='metadata:setup_metadata_type_list'
+        viewname='metadata:metadata_type_list'
     )
 
     def get_extra_context(self):
@@ -536,7 +537,7 @@ class MetadataTypeEditView(SingleObjectEditView):
     object_permission = permission_metadata_type_edit
     pk_url_kwarg = 'metadata_type_id'
     post_action_redirect = reverse_lazy(
-        viewname='metadata:setup_metadata_type_list'
+        viewname='metadata:metadata_type_list'
     )
 
     def get_extra_context(self):
@@ -560,7 +561,7 @@ class MetadataTypeListView(SingleObjectListView):
             'hide_link': True,
             'hide_object': True,
             'no_results_icon': icon_metadata,
-            'no_results_main_link': link_setup_metadata_type_create.resolve(
+            'no_results_main_link': link_metadata_type_create.resolve(
                 context=RequestContext(request=self.request)
             ),
             'no_results_text': _(
@@ -576,104 +577,77 @@ class MetadataTypeListView(SingleObjectListView):
         }
 
 
-class SetupDocumentTypeMetadataTypes(FormView):
+class DocumentTypeMetadataTypeRelationshipView(RelationshipView):
     form_class = DocumentTypeMetadataTypeRelationshipFormSet
-    main_model = 'document_type'
     model = DocumentType
     model_permission = permission_document_type_edit
     pk_url_kwarg = 'document_type_id'
-    submodel = MetadataType
-    submodel_permission = permission_metadata_type_edit
-
-    def form_valid(self, form):
-        try:
-            for instance in form:
-                instance.save()
-        except Exception as exception:
-            messages.error(
-                message=_(
-                    'Error updating relationship; %s'
-                ) % exception, request=self.request
-            )
-        else:
-            messages.success(
-                message=_('Relationships updated successfully'),
-                request=self.request
-            )
-
-        return super().form_valid(form=form)
+    relationship_related_field = 'metadata'
+    relationship_related_query_field = 'metadata_type'
+    sub_model = MetadataType
+    sub_model_permission = permission_metadata_type_edit
 
     def get_extra_context(self):
         return {
             'form_display_mode_table': True,
             'no_results_icon': icon_metadata,
-            'no_results_main_link': link_setup_metadata_type_create.resolve(
+            'no_results_main_link': link_metadata_type_create.resolve(
                 context=RequestContext(request=self.request)
             ),
             'no_results_text': _(
-                'Create metadata types to be able to associate them '
-                'to this document type.'
+                'Create metadata type relationships to be able to associate '
+                'them to this document type.'
             ),
-            'no_results_title': _('There are no metadata types available'),
+            'no_results_title': _(
+                'There are no metadata type relationships available'
+            ),
             'object': self.get_object(),
             'title': _(
-                'Metadata types for document type: %s'
+                'Metadata type relationships for document type: %s'
             ) % self.get_object()
         }
 
     def get_form_extra_kwargs(self):
         return {
-            '_user': self.request.user,
+            '_event_actor': self.request.user,
         }
 
     def get_initial(self):
         obj = self.get_object()
         initial = []
 
-        for element in self.get_queryset():
-            initial.append({
-                'document_type': obj,
-                'main_model': self.main_model,
-                'metadata_type': element,
-            })
+        for element in self.get_sub_model_queryset():
+            initial.append(
+                {
+                    'object': obj,
+                    'relationship_related_field': self.relationship_related_field,
+                    'relationship_related_query_field': self.relationship_related_query_field,
+                    'sub_object': element,
+                }
+            )
         return initial
-
-    def get_object(self):
-        obj = get_object_or_404(
-            klass=self.model, pk=self.kwargs[self.pk_url_kwarg]
-        )
-
-        AccessControlList.objects.check_access(
-            obj=obj, permissions=(self.model_permission,),
-            user=self.request.user
-        )
-        return obj
 
     def get_post_action_redirect(self):
         return reverse(viewname='documents:document_type_list')
 
-    def get_queryset(self):
-        queryset = self.submodel.objects.all()
-        return AccessControlList.objects.restrict_queryset(
-            permission=self.submodel_permission,
-            user=self.request.user, queryset=queryset
-        )
 
-
-class SetupMetadataTypesDocumentTypes(SetupDocumentTypeMetadataTypes):
-    main_model = 'metadata_type'
+class MetadataTypesDocumentTypeRelationshipView(
+    DocumentTypeMetadataTypeRelationshipView
+):
     model = MetadataType
     model_permission = permission_metadata_type_edit
     pk_url_kwarg = 'metadata_type_id'
-    submodel = DocumentType
-    submodel_permission = permission_document_type_edit
+    relationship_related_field = 'document_types'
+    relationship_related_query_field = 'document_type'
+    sub_model = DocumentType
+    sub_model_permission = permission_document_type_edit
 
     def get_extra_context(self):
         return {
             'form_display_mode_table': True,
             'object': self.get_object(),
             'title': _(
-                'Document types for metadata type: %s'
+                'Document type relationships for metadata type: %s'
             ) % self.get_object()
         }
 
@@ -681,13 +655,16 @@ class SetupMetadataTypesDocumentTypes(SetupDocumentTypeMetadataTypes):
         obj = self.get_object()
         initial = []
 
-        for element in self.get_queryset():
-            initial.append({
-                'document_type': element,
-                'main_model': self.main_model,
-                'metadata_type': obj,
-            })
+        for element in self.get_sub_model_queryset():
+            initial.append(
+                {
+                    'object': obj,
+                    'relationship_related_field': self.relationship_related_field,
+                    'relationship_related_query_field': self.relationship_related_query_field,
+                    'sub_object': element,
+                }
+            )
         return initial
 
     def get_post_action_redirect(self):
-        return reverse(viewname='metadata:setup_metadata_type_list')
+        return reverse(viewname='metadata:metadata_type_list')
