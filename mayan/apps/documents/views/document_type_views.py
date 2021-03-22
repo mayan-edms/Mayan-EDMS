@@ -29,9 +29,10 @@ from .document_views import DocumentListView
 
 __all__ = (
     'DocumentTypeDocumentListView', 'DocumentTypeListView',
-    'DocumentTypeCreateView', 'DocumentTypeDeleteView', 'DocumentTypeEditView',
-    'DocumentTypeFilenameCreateView', 'DocumentTypeFilenameEditView',
-    'DocumentTypeFilenameDeleteView', 'DocumentTypeFilenameListView'
+    'DocumentTypeCreateView', 'DocumentTypeDeleteView',
+    'DocumentTypeEditView', 'DocumentTypeFilenameCreateView',
+    'DocumentTypeFilenameEditView', 'DocumentTypeFilenameDeleteView',
+    'DocumentTypeFilenameListView'
 )
 logger = logging.getLogger(name=__name__)
 
@@ -92,9 +93,9 @@ class DocumentTypeCreateView(SingleObjectCreateView):
             'title': _('Create document type'),
         }
 
-    def get_save_extra_data(self):
+    def get_instance_extra_data(self):
         return {
-            '_user': self.request.user,
+            '_event_actor': self.request.user,
         }
 
 
@@ -102,7 +103,9 @@ class DocumentTypeDeleteView(SingleObjectDeleteView):
     model = DocumentType
     object_permission = permission_document_type_delete
     pk_url_kwarg = 'document_type_id'
-    post_action_redirect = reverse_lazy(viewname='documents:document_type_list')
+    post_action_redirect = reverse_lazy(
+        viewname='documents:document_type_list'
+    )
 
     def get_extra_context(self):
         return {
@@ -117,7 +120,9 @@ class DocumentTypeEditView(SingleObjectEditView):
     model = DocumentType
     object_permission = permission_document_type_edit
     pk_url_kwarg = 'document_type_id'
-    post_action_redirect = reverse_lazy(viewname='documents:document_type_list')
+    post_action_redirect = reverse_lazy(
+        viewname='documents:document_type_list'
+    )
 
     def get_extra_context(self):
         return {
@@ -155,7 +160,9 @@ class DocumentTypeDeletionPoliciesEditView(SingleObjectEditView):
         }
 
 
-class DocumentTypeFilenameCreateView(ExternalObjectViewMixin, SingleObjectCreateView):
+class DocumentTypeFilenameCreateView(
+    ExternalObjectViewMixin, SingleObjectCreateView
+):
     external_object_class = DocumentType
     external_object_permission = permission_document_type_edit
     external_object_pk_url_kwarg = 'document_type_id'
@@ -229,7 +236,9 @@ class DocumentTypeFilenameEditView(SingleObjectEditView):
         )
 
 
-class DocumentTypeFilenameListView(ExternalObjectViewMixin, SingleObjectListView):
+class DocumentTypeFilenameListView(
+    ExternalObjectViewMixin, SingleObjectListView
+):
     external_object_class = DocumentType
     external_object_permission = permission_document_type_view
     external_object_pk_url_kwarg = 'document_type_id'
@@ -271,7 +280,9 @@ class DocumentTypeFileGeneratorEditView(SingleObjectEditView):
     model = DocumentType
     object_permission = permission_document_type_edit
     pk_url_kwarg = 'document_type_id'
-    post_action_redirect = reverse_lazy(viewname='documents:document_type_list')
+    post_action_redirect = reverse_lazy(
+        viewname='documents:document_type_list'
+    )
 
     def get_extra_context(self):
         return {

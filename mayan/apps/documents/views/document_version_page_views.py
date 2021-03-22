@@ -386,7 +386,9 @@ class DocumentVersionPageViewResetView(RedirectView):
     pattern_name = 'documents:document_version_page_view'
 
 
-class DocumentVersionPageInteractiveTransformation(ExternalObjectViewMixin, RedirectView):
+class DocumentVersionPageInteractiveTransformation(
+    ExternalObjectViewMixin, RedirectView
+):
     external_object_permission = permission_document_version_view
     external_object_pk_url_kwarg = 'document_version_page_id'
     external_object_queryset = DocumentVersionPage.valid
@@ -416,7 +418,9 @@ class DocumentVersionPageInteractiveTransformation(ExternalObjectViewMixin, Redi
         return url.tostr()
 
 
-class DocumentVersionPageZoomInView(DocumentVersionPageInteractiveTransformation):
+class DocumentVersionPageZoomInView(
+    DocumentVersionPageInteractiveTransformation
+):
     def transformation_function(self, query_dict):
         zoom = int(query_dict['zoom']) + setting_zoom_percent_step.value
 
@@ -426,7 +430,9 @@ class DocumentVersionPageZoomInView(DocumentVersionPageInteractiveTransformation
         query_dict['zoom'] = zoom
 
 
-class DocumentVersionPageZoomOutView(DocumentVersionPageInteractiveTransformation):
+class DocumentVersionPageZoomOutView(
+    DocumentVersionPageInteractiveTransformation
+):
     def transformation_function(self, query_dict):
         zoom = int(query_dict['zoom']) - setting_zoom_percent_step.value
 
@@ -436,14 +442,18 @@ class DocumentVersionPageZoomOutView(DocumentVersionPageInteractiveTransformatio
         query_dict['zoom'] = zoom
 
 
-class DocumentVersionPageRotateLeftView(DocumentVersionPageInteractiveTransformation):
+class DocumentVersionPageRotateLeftView(
+    DocumentVersionPageInteractiveTransformation
+):
     def transformation_function(self, query_dict):
         query_dict['rotation'] = (
             int(query_dict['rotation']) - setting_rotation_step.value
         ) % 360
 
 
-class DocumentVersionPageRotateRightView(DocumentVersionPageInteractiveTransformation):
+class DocumentVersionPageRotateRightView(
+    DocumentVersionPageInteractiveTransformation
+):
     def transformation_function(self, query_dict):
         query_dict['rotation'] = (
             int(query_dict['rotation']) + setting_rotation_step.value
