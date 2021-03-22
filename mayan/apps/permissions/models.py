@@ -106,16 +106,20 @@ class Role(ExtraDataModelMixin, models.Model):
     natural_key.dependencies = ['auth.Group', 'permissions.StoredPermission']
 
     def permissions_add(self, queryset, _event_actor=None):
-        self.permissions.add(*queryset)
-        event_role_edited.commit(
-            actor=_event_actor or self._event_actor, target=self
-        )
+        for obj in queryset:
+            self.permissions.add(obj)
+            event_role_edited.commit(
+                action_object=obj, actor=_event_actor or self._event_actor,
+                target=self
+            )
 
     def permissions_remove(self, queryset, _event_actor=None):
-        self.permissions.remove(*queryset)
-        event_role_edited.commit(
-            actor=_event_actor or self._event_actor, target=self
-        )
+        for obj in queryset:
+            self.permissions.remove(obj)
+            event_role_edited.commit(
+                action_object=obj, actor=_event_actor or self._event_actor,
+                target=self
+            )
 
     def revoke(self, permission):
         self.permissions.remove(permission.stored_permission)
