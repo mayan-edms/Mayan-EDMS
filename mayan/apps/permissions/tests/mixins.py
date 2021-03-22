@@ -77,13 +77,6 @@ class RoleAPIViewTestMixin:
 
         return response
 
-    def _request_test_role_create_api_view_extra_data(self):
-        extra_data = {
-            'groups_pk_list': '{}'.format(self.test_group.pk),
-            'permissions_pk_list': '{}'.format(self.test_permission.pk)
-        }
-        return self._request_test_role_create_api_view(extra_data=extra_data)
-
     def _request_test_role_delete_api_view(self):
         return self.delete(
             viewname='rest_api:role-detail', kwargs={
@@ -127,6 +120,52 @@ class RoleAPIViewTestMixin:
 
     def _request_test_role_list_api_view(self):
         return self.get(viewname='rest_api:role-list')
+
+
+class RoleGroupAPIViewTestMixin:
+    def _request_test_role_group_add_api_view(self):
+        return self.post(
+            viewname='rest_api:role-group-add', kwargs={
+                'role_id': self.test_role.pk
+            }, data={'group': self.test_group.pk}
+        )
+
+    def _request_test_role_group_list_api_view(self):
+        return self.get(
+            viewname='rest_api:role-group-list', kwargs={
+                'role_id': self.test_role.pk
+            }
+        )
+
+    def _request_test_role_group_remove_api_view(self):
+        return self.post(
+            viewname='rest_api:role-group-remove', kwargs={
+                'role_id': self.test_role.pk
+            }, data={'group': self.test_group.pk}
+        )
+
+
+class RolePermissionAPIViewTestMixin:
+    def _request_test_role_permission_add_api_view(self):
+        return self.post(
+            viewname='rest_api:role-permission-add', kwargs={
+                'role_id': self.test_role.pk
+            }, data={'permission': self.test_permission.pk}
+        )
+
+    def _request_test_role_permission_list_api_view(self):
+        return self.get(
+            viewname='rest_api:role-permission-list', kwargs={
+                'role_id': self.test_role.pk
+            }
+        )
+
+    def _request_test_role_permission_remove_api_view(self):
+        return self.post(
+            viewname='rest_api:role-permission-remove', kwargs={
+                'role_id': self.test_role.pk
+            }, data={'permission': self.test_permission.pk}
+        )
 
 
 class RoleTestCaseMixin:
