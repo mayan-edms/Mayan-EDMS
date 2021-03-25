@@ -1,3 +1,10 @@
+3.5.7 (2021-XX-XX)
+==================
+- Update the sample LDAP settings file to add note about package 
+  version pinning required by the use of the Buster Backports.
+  Closes GitLab issue #693. Thanks to Ryan Showalter (@ryanshow) for
+  the report and Ilya Pavlov (@spirkaa) for a solution.
+
 3.5.6 (2021-03-14)
 ==================
 - Port improvements from Series 3.4:
