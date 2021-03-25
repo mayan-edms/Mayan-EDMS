@@ -1,0 +1,10 @@
+# To use block storage.
+# MAYAN_PIP_INSTALLS="django-storages==1.10 boto3==1.14.58"
+# MAYAN_DOCUMENTS_STORAGE_BACKEND="storages.backends.s3boto3.S3Boto3Storage"
+# MAYAN_DOCUMENTS_STORAGE_BACKEND_ARGUMENTS="{'access_key':'<access key>','secret_key':'<secret key>','bucket_name':'mayan','endpoint_url':'http://<URL:port>','verify':'False'}"  # 'verify':'False' for local servers with self signed SSL certificate
+
+# To add operating system packages, like additional OCR language,
+# packages, put then in the variable below.
+# MAYAN_APT_INSTALLS="tesseract-ocr-deu tesseract-ocr-nld"
+# To add Python libraries, like LDAP, put then in the variable below.
+# MAYAN_PIP_INSTALLS="python-ldap"
