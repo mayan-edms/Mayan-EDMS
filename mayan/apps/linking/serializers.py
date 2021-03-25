@@ -1,23 +1,38 @@
 from django.utils.translation import ugettext_lazy as _
 
 from rest_framework import serializers
-from rest_framework.exceptions import ValidationError
 from rest_framework.reverse import reverse
 
 from mayan.apps.documents.models import DocumentType
+from mayan.apps.documents.permissions import permission_document_type_edit
 from mayan.apps.documents.serializers.document_serializers import (
     DocumentSerializer
 )
-from mayan.apps.documents.serializers.document_type_serializers import (
-    DocumentTypeSerializer
+from mayan.apps.rest_api.relations import (
+    FilteredPrimaryKeyRelatedField, MultiKwargHyperlinkedIdentityField
 )
 
 from .models import SmartLink, SmartLinkCondition
 
 
 class SmartLinkConditionSerializer(serializers.HyperlinkedModelSerializer):
-    smart_link_url = serializers.SerializerMethodField()
-    url = serializers.SerializerMethodField()
+    smart_link_url = serializers.HyperlinkedIdentityField(
+        lookup_url_kwarg='smart_link_id',
+        view_name='rest_api:smartlink-detail'
+    )
+    url = MultiKwargHyperlinkedIdentityField(
+        view_kwargs=(
+            {
+                'lookup_field': 'smart_link_id',
+                'lookup_url_kwarg': 'smart_link_id',
+            },
+            {
+                'lookup_field': 'pk',
+                'lookup_url_kwarg': 'smart_link_condition_id',
+            }
+        ),
+        view_name='rest_api:smartlinkcondition-detail'
+    )
 
     class Meta:
         fields = (
@@ -30,20 +45,23 @@ class SmartLinkConditionSerializer(serializers.HyperlinkedModelSerializer):
         validated_data['smart_link'] = self.context['smart_link']
         return super().create(validated_data)
 
-    def get_smart_link_url(self, instance):
-        return reverse(
-            viewname='rest_api:smartlink-detail', kwargs={
-                'smart_link_id': instance.smart_link.pk
-            }, request=self.context['request'], format=self.context['format']
-        )
 
-    def get_url(self, instance):
-        return reverse(
-            viewname='rest_api:smartlinkcondition-detail', kwargs={
-                'smart_link_id': instance.smart_link.pk,
-                'smart_link_condition_id': instance.pk,
-            }, request=self.context['request'], format=self.context['format']
-        )
+class SmartLinkDocumentTypeAddSerializer(serializers.Serializer):
+    document_type = FilteredPrimaryKeyRelatedField(
+        help_text=_(
+            'Primary key of the document type to add to the smart link.'
+        ), source_model=DocumentType,
+        source_permission=permission_document_type_edit
+    )
+
+
+class SmartLinkDocumentTypeRemoveSerializer(serializers.Serializer):
+    document_type = FilteredPrimaryKeyRelatedField(
+        help_text=_(
+            'Primary key of the document type to remove from the smart link.'
+        ), source_model=DocumentType,
+        source_permission=permission_document_type_edit
+    )
 
 
 class SmartLinkSerializer(serializers.HyperlinkedModelSerializer):
@@ -51,7 +69,18 @@ class SmartLinkSerializer(serializers.HyperlinkedModelSerializer):
         lookup_url_kwarg='smart_link_id',
         view_name='rest_api:smartlinkcondition-list'
     )
-    document_types = DocumentTypeSerializer(read_only=True, many=True)
+    document_types_url = serializers.HyperlinkedIdentityField(
+        lookup_url_kwarg='smart_link_id',
+        view_name='rest_api:smartlink-document_type-list'
+    )
+    document_types_add_url = serializers.HyperlinkedIdentityField(
+        lookup_url_kwarg='smart_link_id',
+        view_name='rest_api:smartlink-document_type-add'
+    )
+    document_types_remove_url = serializers.HyperlinkedIdentityField(
+        lookup_url_kwarg='smart_link_id',
+        view_name='rest_api:smartlink-document_type-remove'
+    )
 
     class Meta:
         extra_kwargs = {
@@ -61,7 +90,8 @@ class SmartLinkSerializer(serializers.HyperlinkedModelSerializer):
             }
         }
         fields = (
-            'conditions_url', 'document_types', 'dynamic_label', 'enabled',
+            'conditions_url', 'document_types_url', 'document_types_add_url',
+            'document_types_remove_url', 'dynamic_label', 'enabled',
             'label', 'id', 'url'
         )
         model = SmartLink
@@ -119,48 +149,3 @@ class ResolvedSmartLinkSerializer(SmartLinkSerializer):
                 'smart_link_id': instance.pk
             }, request=self.context['request'], format=self.context['format']
         )
-
-
-class WritableSmartLinkSerializer(serializers.ModelSerializer):
-    conditions_url = serializers.HyperlinkedIdentityField(
-        lookup_url_kwarg='smart_link_id',
-        view_name='rest_api:smartlinkcondition-list'
-    )
-    document_types_pk_list = serializers.CharField(
-        help_text=_(
-            'Comma separated list of document type primary keys to which this '
-            'smart link will be attached.'
-        ), required=False
-    )
-
-    class Meta:
-        extra_kwargs = {
-            'url': {
-                'lookup_url_kwarg': 'smart_link_id',
-                'view_name': 'rest_api:smartlink-detail'
-            }
-        }
-        fields = (
-            'conditions_url', 'document_types_pk_list', 'dynamic_label',
-            'enabled', 'label', 'id', 'url'
-        )
-        model = SmartLink
-
-    def validate(self, attrs):
-        document_types_pk_list = attrs.pop('document_types_pk_list', None)
-        document_types_result = []
-
-        if document_types_pk_list:
-            for pk in document_types_pk_list.split(','):
-                try:
-                    document_type = DocumentType.objects.get(pk=pk)
-                except DocumentType.DoesNotExist:
-                    raise ValidationError(_('No such document type: %s') % pk)
-                else:
-                    # Accumulate valid stored document_type pks
-                    document_types_result.append(document_type.pk)
-
-        attrs['document_types'] = DocumentType.objects.filter(
-            pk__in=document_types_result
-        )
-        return attrs
