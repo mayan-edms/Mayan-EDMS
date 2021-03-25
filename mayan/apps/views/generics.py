@@ -800,7 +800,7 @@ class SingleObjectEditView(
         try:
             self.object.save(**save_extra_data)
         except Exception as exception:
-            if settings.DEBUG:
+            if settings.DEBUG or settings.TESTING:
                 raise
             else:
                 messages.error(
