@@ -4,13 +4,10 @@
 # $ pip install python-ldap
 # or if using Docker, pass the following environment variables:
 # -e MAYAN_PIP_INSTALLS="python-ldap django_auth_ldap"
-# -e MAYAN_APT_INSTALLS="python3-dev libldap2-dev libssl-dev libgle3 build-essential autoconf libtool pkg-config gcc"
-# For Mayan EDMS version 3.5 use
-# -e MAYAN_APT_INSTALLS: build-essential libsasl2-dev libssl-dev libldap2-dev/buster-backports python3-dev
-# or
-# -e MAYAN_APT_INSTALLS: gcc libldap-2.4-2=2.4.47+dfsg-3+deb10u6 libldap2-dev libsasl2-dev python3-dev
+# -e MAYAN_APT_INSTALLS="gcc libldap2-dev/buster-backports libsasl2-dev python3-dev"
 # Finally instruct Mayan to use this file.
 # -e MAYAN_SETTINGS_MODULE=mayan_settings.ldap_connection_settings
+
 import ldap
 
 from django_auth_ldap.config import (
