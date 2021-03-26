@@ -551,7 +551,7 @@ class TestModelTestMixin(PermissionTestMixin):
                 instance.id = instance.pk
 
                 kwargs['force_insert'] = True
-                return instance.save_base(*args, **kargs)
+                return instance.save_base(*args, **kwargs)
         return save
 
     def _inject_test_object_content_type(self):
