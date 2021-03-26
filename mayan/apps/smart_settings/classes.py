@@ -354,6 +354,7 @@ class Setting:
 
     def set(self, value):
         self.value = Setting.serialize_value(value=value)
+        self.loaded = True
 
     @property
     def value(self):
