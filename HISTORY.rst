@@ -4,6 +4,9 @@
   version pinning required by the use of the Buster Backports.
   Closes GitLab issue #693. Thanks to Ryan Showalter (@ryanshow) for
   the report and Ilya Pavlov (@spirkaa) for a solution.
+  The package list for ``MAYAN_APT_INSTALLS`` for the LDAP setting file
+  is now "gcc libldap2-dev/buster-backports libsasl2-dev python3-dev".
+- Update Docker base image from debian:10.7-slim to debian:10.8-slim.
 
 3.5.6 (2021-03-14)
 ==================
