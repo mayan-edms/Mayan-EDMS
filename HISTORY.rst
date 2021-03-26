@@ -12,9 +12,22 @@
   user @lsmoker for the report and research.
 - Backports from version 4.0:
 
-    - Added a check to the task manager app to ensure all defined tasks are
-      properly configure in their respective ``queues.py`` modules.
+    - 432ec35eb7bb0b8da4765f86cb6491e7667b4831
+      Ensure all tasks are properly configured. Added a check to the task
+      manager app to ensure all defined tasks are properly configure in
+      their respective ``queues.py`` modules.
     - Fix dynamic search task names during queue registration.
+    - b883c647e943be0ef62096c456118f86ef3534ac
+      1e7d85175d7379fc7dca454462497db960635e3e
+      Raise object creation and edit exceptions during testing.
+    - 14bdcb704269c43b8e9553aaf905e54ca7f16ced
+      Don't remove arguments from overloaded .save(). Pass all arguments to
+      the super class save method. Scrapping the arguments hide errors
+      during testing.
+
+- Move task manager app to the top of the installed apps. This ensures all
+  queues are created before any other app tries to use them. Fixes the error:
+  `celery.exceptions.QueueNotFound: "Queue 'default' missing from task_queues"`
 
 3.5.6 (2021-03-14)
 ==================
