@@ -198,5 +198,6 @@ Issues closed
 -------------
 
 - :gitlab-issue:`963` Mayan 3.5 breaks ldap installation in docker
+- :gitlab-issue:`964` Problem in 3.5.6 performupgrade in file_caching migration
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

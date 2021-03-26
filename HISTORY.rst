@@ -1,12 +1,15 @@
 3.5.7 (2021-XX-XX)
 ==================
-- Update the sample LDAP settings file to add note about package 
+- Update the sample LDAP settings file to add note about package
   version pinning required by the use of the Buster Backports.
   Closes GitLab issue #693. Thanks to Ryan Showalter (@ryanshow) for
   the report and Ilya Pavlov (@spirkaa) for a solution.
   The package list for ``MAYAN_APT_INSTALLS`` for the LDAP setting file
   is now "gcc libldap2-dev/buster-backports libsasl2-dev python3-dev".
 - Update Docker base image from debian:10.7-slim to debian:10.8-slim.
+- Update file caching migration 0005 to have Django generate the SQL query
+  for each respective backend. Closes GitLab issue #964. Thanks to forum
+  user @lsmoker for the report and research.
 
 3.5.6 (2021-03-14)
 ==================
