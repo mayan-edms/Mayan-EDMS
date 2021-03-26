@@ -72,6 +72,9 @@ INSTALLED_APPS = (
     'stronghold',
     'widget_tweaks',
     # Base apps
+    # Task manager goes first to ensure all queues are created before any
+    # other app tries to use them.
+    'mayan.apps.task_manager',
     'mayan.apps.acls',
     'mayan.apps.authentication',
     'mayan.apps.autoadmin',
@@ -92,7 +95,6 @@ INSTALLED_APPS = (
     'mayan.apps.quotas',
     'mayan.apps.rest_api',
     'mayan.apps.smart_settings',
-    'mayan.apps.task_manager',
     'mayan.apps.templating',
     'mayan.apps.testing',
     'mayan.apps.user_management',
