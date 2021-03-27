@@ -1,4 +1,4 @@
-3.5.7 (2021-XX-XX)
+3.5.7 (2021-XX-X)
 ==================
 - Update the sample LDAP settings file to add note about package
   version pinning required by the use of the Buster Backports.
@@ -34,6 +34,12 @@
 - Move task manager app to the top of the installed apps. This ensures all
   queues are created before any other app tries to use them. Fixes the error:
   `celery.exceptions.QueueNotFound: "Queue 'default' missing from task_queues"`
+- Add connectivity check for the Celery broker URL and the result backend
+  settings. Closes GitLab issue #940. Thanks to Vadim Radu (@vd-rd) for the
+  report.
+- Update the Docker Compose file to allow specifying a different database
+  host as well as a different image tag for the Mayan, PostgreSQL and Redis
+  containers.
 
 3.5.6 (2021-03-14)
 ==================
