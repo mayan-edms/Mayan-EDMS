@@ -1,4 +1,3 @@
-import logging
 import sys
 
 from django.utils.translation import ugettext_lazy as _
@@ -8,8 +7,6 @@ from mayan.apps.common.apps import MayanAppConfig
 from .backends.base import LockingBackend
 from .literals import PURGE_LOCKS_COMMAND, TEST_LOCK_NAME
 from .settings import setting_backend
-
-logger = logging.getLogger(name=__name__)
 
 
 class LockManagerApp(MayanAppConfig):
@@ -30,8 +27,8 @@ class LockManagerApp(MayanAppConfig):
                 )
                 lock.release()
             except Exception as exception:
-                logger.critical(
-                    'Error initializing the locking backend: %s; %s',
-                    setting_backend.value, exception
-                )
-                raise
+                raise RuntimeError(
+                    'Error initializing the locking backend: {}; {}'.format(
+                        setting_backend.value, exception
+                    )
+                ) from exception
