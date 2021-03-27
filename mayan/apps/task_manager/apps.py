@@ -1,3 +1,7 @@
+import logging
+
+from kombu import Connection
+
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.common.apps import MayanAppConfig
@@ -7,6 +11,12 @@ from mayan.apps.views.html_widgets import TwoStateWidget
 
 from .classes import CeleryQueue, Task
 from .links import link_task_manager
+from .settings import (
+    setting_celery_broker_login_method, setting_celery_broker_url,
+    setting_celery_broker_use_ssl
+)
+
+logger = logging.getLogger(name=__name__)
 
 
 class TaskManagerApp(MayanAppConfig):
@@ -15,8 +25,31 @@ class TaskManagerApp(MayanAppConfig):
     name = 'mayan.apps.task_manager'
     verbose_name = _('Task manager')
 
+    def check_connectivity(self):
+        celery_broker_url = setting_celery_broker_url.value
+
+        try:
+            connection = Connection(
+                celery_broker_url, connect_timeout=0.1,
+                login_method=setting_celery_broker_login_method.value,
+                ssl=setting_celery_broker_use_ssl.value
+            )
+            connection.ensure_connection(
+                interval_step=0, interval_max=0, interval_start=0, timeout=0.1
+            )
+        except Exception as exception:
+            raise RuntimeError(
+                'Failed to connect to the Celery broker instance at {}; {}'.format(
+                    celery_broker_url, exception
+                )
+            ) from exception
+        else:
+            connection.release()
+
     def ready(self):
         super(TaskManagerApp, self).ready()
+
+        self.check_connectivity()
 
         CeleryQueue.load_modules()
 
