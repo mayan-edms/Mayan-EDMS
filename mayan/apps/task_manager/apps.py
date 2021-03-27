@@ -1,6 +1,6 @@
 import logging
 
-from kombu import Connection
+from celery.backends.base import DisabledBackend
 
 from django.utils.translation import ugettext_lazy as _
 
@@ -8,13 +8,11 @@ from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import menu_tools
 from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.views.html_widgets import TwoStateWidget
+from mayan.celery import app as celery_app
 
 from .classes import CeleryQueue, Task
 from .links import link_task_manager
-from .settings import (
-    setting_celery_broker_login_method, setting_celery_broker_url,
-    setting_celery_broker_use_ssl
-)
+from .literals import TEST_CELERY_RESULT_KEY, TEST_CELERY_RESULT_VALUE
 
 logger = logging.getLogger(name=__name__)
 
@@ -25,31 +23,52 @@ class TaskManagerApp(MayanAppConfig):
     name = 'mayan.apps.task_manager'
     verbose_name = _('Task manager')
 
-    def check_connectivity(self):
-        celery_broker_url = setting_celery_broker_url.value
+    def check_broker_connectivity(self):
+        connection = celery_app.connection()
 
         try:
-            connection = Connection(
-                celery_broker_url, connect_timeout=0.1,
-                login_method=setting_celery_broker_login_method.value,
-                ssl=setting_celery_broker_use_ssl.value
-            )
             connection.ensure_connection(
                 interval_step=0, interval_max=0, interval_start=0, timeout=0.1
             )
         except Exception as exception:
             raise RuntimeError(
-                'Failed to connect to the Celery broker instance at {}; {}'.format(
-                    celery_broker_url, exception
+                'Failed to connect to the Celery broker at {}; {}'.format(
+                    connection.as_uri(), exception
                 )
             ) from exception
         else:
             connection.release()
 
+    def check_results_backend_connectivity(self):
+        backend = celery_app.backend
+
+        if not isinstance(backend, DisabledBackend):
+            retry_policy = backend.retry_policy
+
+            backend.retry_policy = {
+                'max_retries': 0, 'interval_start': 0, 'interval_step': 1,
+                'interval_max': 1
+            }
+
+            try:
+                backend.set(
+                    key=TEST_CELERY_RESULT_KEY, value=TEST_CELERY_RESULT_VALUE
+                )
+            except Exception as exception:
+                raise RuntimeError(
+                    'Failed to connect to the Celery result backend at {}; {}'.format(
+                        backend.as_uri(), exception
+                    )
+                ) from exception
+            else:
+                backend.delete(key=TEST_CELERY_RESULT_KEY)
+                backend.retry_policy = retry_policy
+
     def ready(self):
         super(TaskManagerApp, self).ready()
 
-        self.check_connectivity()
+        self.check_broker_connectivity()
+        self.check_results_backend_connectivity()
 
         CeleryQueue.load_modules()
 
