@@ -1116,7 +1116,6 @@
 - Make file metadata StoredDriver fields unique. Relates to GitLab issue #720
   Thanks to Rob de Canha-Knight (@rssfed23) for the report and debug
   information.
-<<<<<<< HEAD
 - Fix the POP3 source under Python 3. GitLab issue #724. Thanks to Kevin
   Pawsey (@kevinpawsey) for the report and debug information.
 - Merge NFS troubleshooting section. Thanks to Rob de Canha-Knight
