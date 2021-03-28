@@ -45,6 +45,14 @@
 - Added a default env_file with some examples uses.
 - Ensure logging is available early. Move logging init to the logging app
   and move the logging app to the top of the app list.
+- Backport multiple test document types code.
+- Allow not updating required metadata with value. A validation was raised
+  when metadata update checkbox was disable and the metadata was required.
+  This behavior is now fine tuned to not raise a validation error if the
+  metadata already has a value which would comply with the original purpose
+  of required metadata. Closes GitLab issue #936. Thanks to Raimar Sandner
+  (@PiQuer)for the report.
+- Make the metadata type id usage more explicit in formsets.
 
 3.5.6 (2021-03-14)
 ==================

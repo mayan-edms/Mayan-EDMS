@@ -10,6 +10,18 @@ Changes
 -------
 
 
+- Allow not updating required metadata with value. A validation was raised
+  when metadata update checkbox was disable and the metadata was required.
+  This behavior is now fine tuned to not raise a validation error if the
+  metadata already has a value which would comply with the original purpose
+  of required metadata. Closes GitLab issue #936. Thanks to Raimar Sandner
+  (@PiQuer)for the report.
+- Make the metadata type id usage more explicit in formsets.
+
+
+
+
+
 Backports
 ^^^^^^^^^
 
@@ -86,6 +98,13 @@ sporadic upgrade error:
 
 Added connectivity check for the Celery broker URL and the result backend
 settings.
+
+
+Testing
+^^^^^^^
+
+Backport multiple test document types code.
+
 
 
 Other
@@ -276,6 +295,7 @@ The upgrade procedure is now complete.
 Issues closed
 -------------
 
+- :gitlab-issue:`936` Bulk editing of metadata: error when "update" option of a required field is unchecked
 - :gitlab-issue:`940` Connectivity check on install
 - :gitlab-issue:`963` Mayan 3.5 breaks ldap installation in docker
 - :gitlab-issue:`964` Problem in 3.5.6 performupgrade in file_caching migration
