@@ -26,6 +26,7 @@ class TaskManagerApp(MayanAppConfig):
     def check_broker_connectivity(self):
         connection = celery_app.connection()
 
+        logger.debug('Starting Redis broker connectivity test')
         try:
             connection.ensure_connection(
                 interval_step=0, interval_max=0, interval_start=0, timeout=0.1
@@ -50,6 +51,7 @@ class TaskManagerApp(MayanAppConfig):
                 'interval_max': 1
             }
 
+            logger.debug('Starting Redis result backend connectivity test')
             try:
                 backend.set(
                     key=TEST_CELERY_RESULT_KEY, value=TEST_CELERY_RESULT_VALUE
