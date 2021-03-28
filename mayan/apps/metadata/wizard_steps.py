@@ -50,7 +50,7 @@ class WizardStepMetadata(WizardStep):
         if cleaned_data:
             for identifier, metadata in enumerate(wizard.get_cleaned_data_for_step(cls.name)):
                 if metadata.get('update'):
-                    result['metadata%s_id' % identifier] = metadata['id']
+                    result['metadata%s_metadata_type_id' % identifier] = metadata['metadata_type_id']
                     result['metadata%s_value' % identifier] = metadata['value']
 
         return result

@@ -312,7 +312,7 @@ class DocumentMetadataEditView(
         errors = []
         for form in form.forms:
             if form.cleaned_data['update']:
-                if document_metadata_queryset.filter(metadata_type=form.cleaned_data['id']).exists():
+                if document_metadata_queryset.filter(metadata_type=form.cleaned_data['metadata_type_id']).exists():
                     try:
                         save_metadata_list(
                             metadata_list=[form.cleaned_data], document=instance,
@@ -322,23 +322,22 @@ class DocumentMetadataEditView(
                         errors.append(exception)
 
         for error in errors:
-            if settings.DEBUG:
-                raise
+            if isinstance(error, ValidationError):
+                exception_message = ', '.join(error.messages)
             else:
-                if isinstance(error, ValidationError):
-                    exception_message = ', '.join(error.messages)
-                else:
-                    exception_message = force_text(s=error)
+                exception_message = force_text(s=error)
 
-                messages.error(
-                    message=_(
-                        'Error editing metadata for document: '
-                        '%(document)s; %(exception)s.'
-                    ) % {
-                        'document': instance,
-                        'exception': exception_message
-                    }, request=self.request
-                )
+            messages.error(
+                message=_(
+                    'Error editing metadata for document: '
+                    '%(document)s; %(exception)s.'
+                ) % {
+                    'document': instance,
+                    'exception': exception_message
+                }, request=self.request
+            )
+            if settings.DEBUG or settings.TESTING:
+                raise error
         else:
             messages.success(
                 message=_(
@@ -469,7 +468,7 @@ class DocumentMetadataRemoveView(
                     user=self.request.user
                 )
                 metadata_type = get_object_or_404(
-                    klass=queryset, pk=form.cleaned_data['id']
+                    klass=queryset, pk=form.cleaned_data['metadata_type_id']
                 )
                 try:
                     document_metadata = DocumentMetadata.objects.get(
