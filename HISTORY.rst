@@ -1,4 +1,4 @@
-3.5.7 (2021-XX-X)
+3.5.7 (2021-03-28)
 ==================
 - Update the sample LDAP settings file to add note about package
   version pinning required by the use of the Buster Backports.
@@ -40,6 +40,11 @@
 - Update the Docker Compose file to allow specifying a different database
   host as well as a different image tag for the Mayan, PostgreSQL and Redis
   containers.
+- Added the ``fuse`` package to the Docker image.
+- Updated the Docker Compose file to load an env file.
+- Added a default env_file with some examples uses.
+- Ensure logging is available early. Move logging init to the logging app
+  and move the logging app to the top of the app list.
 
 3.5.6 (2021-03-14)
 ==================
