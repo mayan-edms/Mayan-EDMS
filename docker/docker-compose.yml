@@ -148,6 +148,34 @@ services:
   #   volumes:
   #     - ${MAYAN_APP_VOLUME:-app}:/var/lib/mayan
 
+  # Enable to run standalone workers
+  mountindex:
+    cap_add:
+      - SYS_ADMIN
+    devices:
+      - "/dev/fuse:/dev/fuse"
+    security_opt:
+      - apparmor:unconfined
+    command:
+      - run_command
+      - "mountindex --allow-other projects /mounted_index"
+    depends_on:
+      - postgresql
+      - redis
+      # Enable to use RabbitMQ
+      # - rabbitmq
+    environment:
+      <<: *mayan_env
+    image: mayanedms/mayanedms:${MAYAN_DOCKER_IMAGE_TAG:-s4.0}
+    networks:
+      - bridge
+    privileged: true
+    profiles:
+      - mountindex
+    restart: unless-stopped
+    volumes:
+      - ${MAYAN_APP_VOLUME:-app}:/var/lib/mayan
+
 volumes:
   app:
   postgres:
