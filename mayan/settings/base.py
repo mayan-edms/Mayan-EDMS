@@ -72,7 +72,10 @@ INSTALLED_APPS = (
     'stronghold',
     'widget_tweaks',
     # Base apps
-    # Task manager goes first to ensure all queues are created before any
+    # Moved to the top to ensure Mayan app logging is initialized and
+    # available as soon as possible.
+    'mayan.apps.logging',
+    # Task manager goes to the top to ensure all queues are created before any
     # other app tries to use them.
     'mayan.apps.task_manager',
     'mayan.apps.acls',
@@ -87,7 +90,6 @@ INSTALLED_APPS = (
     'mayan.apps.events',
     'mayan.apps.file_caching',
     'mayan.apps.lock_manager',
-    'mayan.apps.logging',
     'mayan.apps.mimetype',
     'mayan.apps.navigation',
     'mayan.apps.permissions',
