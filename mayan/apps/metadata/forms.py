@@ -12,7 +12,6 @@ from .models import DocumentTypeMetadataType, MetadataType
 
 class DocumentMetadataForm(forms.Form):
     id = forms.CharField(label=_('ID'), widget=forms.HiddenInput)
-
     name = forms.CharField(
         label=_('Name'), required=False,
         widget=forms.TextInput(attrs={'readonly': 'readonly'})
@@ -99,7 +98,9 @@ class DocumentMetadataForm(forms.Form):
             required = self.metadata_type.get_required_for(
                 document_type=self.document_type
             )
-            if required and not self.cleaned_data.get('update'):
+
+            # Enfore required only if the metadata has no previous value.
+            if required and not self.cleaned_data.get('update') and not self.cleaned_data['value']:
                 raise ValidationError(
                     _(
                         '"%s" is required for this document type.'
