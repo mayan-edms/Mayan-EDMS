@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-14 04:39+0000\n"
+"POT-Creation-Date: 2021-03-28 13:01+0000\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: apps.py:24 links.py:41 permissions.py:5
 msgid "Dependencies"
-msgstr ""
+msgstr "Εξαρτήσεις"
 
 #: apps.py:32 apps.py:69 apps.py:78
 msgid "Label"
@@ -43,11 +43,11 @@ msgstr "Τύπος"
 
 #: apps.py:49 classes.py:140
 msgid "Other data"
-msgstr ""
+msgstr "Λοιπά δεδομένα"
 
 #: apps.py:53
 msgid "Declared by"
-msgstr ""
+msgstr "Δηλώθηκε από"
 
 #: apps.py:57 classes.py:138
 msgid "Version"
@@ -55,11 +55,11 @@ msgstr "Έκδοση"
 
 #: apps.py:61 classes.py:139 classes.py:781
 msgid "Environment"
-msgstr ""
+msgstr "Περιβάλλον"
 
 #: apps.py:64 classes.py:140
 msgid "Check"
-msgstr ""
+msgstr "Έλεγχος"
 
 #: classes.py:138
 msgid "Name"
@@ -67,37 +67,37 @@ msgstr "Όνομα"
 
 #: classes.py:139
 msgid "App"
-msgstr ""
+msgstr "Εφαρμογή"
 
 #: classes.py:254
 msgid "Need to specify at least one: app_label or module."
-msgstr ""
+msgstr "Πρέπει να προσδιορίσετε τουλάχιστον ένα: app_label ή module."
 
 #: classes.py:259
 #, python-format
 msgid "Dependency \"%s\" already registered."
-msgstr ""
+msgstr "Η εξάρτηση \"%s\" είναι ήδη εγγεγραμμένη."
 
 #: classes.py:285
 #, python-format
 msgid "Installing package: %s... "
-msgstr ""
+msgstr "Εγκατάσταση πακέτου: %s ..."
 
 #: classes.py:290
 msgid "Already installed."
-msgstr ""
+msgstr "Ήδη εγκατεστημένο."
 
 #: classes.py:293 classes.py:298 classes.py:302
 msgid "Complete."
-msgstr ""
+msgstr "Ολοκληρώθηκε"
 
 #: classes.py:328
 msgid "Installed and correct version"
-msgstr ""
+msgstr "Εγκατεστημένη και σωστή έκδοση"
 
 #: classes.py:330
 msgid "Missing or incorrect version"
-msgstr ""
+msgstr "Μη εγκατεστημένη ή λανθασμένη έκδοση"
 
 #: classes.py:359
 msgid "None"
@@ -105,79 +105,83 @@ msgstr "Κανένα"
 
 #: classes.py:368
 msgid "Not specified"
-msgstr ""
+msgstr "Μη καθορισμένο"
 
 #: classes.py:371
 msgid "Patching files... "
-msgstr ""
+msgstr "Επιδιόρθωση αρχείων ..."
 
 #: classes.py:399
 msgid "Executables that are called directly by the code."
-msgstr ""
+msgstr "Εκτελέσιμα που καλούνται απευθείας από τον κώδικα."
 
 #: classes.py:401
 msgid "Binary"
-msgstr ""
+msgstr "Εκτελέσιμο"
 
 #: classes.py:418
 msgid ""
 "JavaScript libraries downloaded the from NPM registry and used for front-end"
 " functionality."
 msgstr ""
+"Οι βιβλιοθήκες JavaScript ελήφθησαν από το μητρώο NPM και χρησιμοποιήθηκαν "
+"για λειτουργίες διεπαφής."
 
 #: classes.py:421
 msgid "JavaScript"
-msgstr ""
+msgstr "JavaScript"
 
 #: classes.py:451 classes.py:694
 msgid "Downloading... "
-msgstr ""
+msgstr "Λήψη..."
 
 #: classes.py:454
 msgid "Verifying... "
-msgstr ""
+msgstr "Επαλήθευση..."
 
 #: classes.py:457 classes.py:697
 msgid "Extracting... "
-msgstr ""
+msgstr "Εξαγωγή..."
 
 #: classes.py:636
 msgid "Python packages downloaded from PyPI."
-msgstr ""
+msgstr "Πακέτα Python ελήφθησαν από το PyPI."
 
 #: classes.py:638
 msgid "Python"
-msgstr ""
+msgstr "Python"
 
 #: classes.py:675
 msgid "Fonts downloaded from fonts.googleapis.com."
-msgstr ""
+msgstr "Ελήφθησαν γραμματοσειρές από το fonts.googleapis.com."
 
 #: classes.py:677
 msgid "Google font"
-msgstr ""
+msgstr "Γραμματοσειρά Google"
 
 #: classes.py:763
 msgid "Declared in app"
-msgstr ""
+msgstr "Δηλώθηκε στην εφαρμογή"
 
 #: classes.py:764
 msgid "Show dependencies by the app that declared them."
-msgstr ""
+msgstr "Εμφάνιση εξαρτήσεων από την εφαρμογή που τις δηλώνει."
 
 #: classes.py:768
 msgid "Class"
-msgstr ""
+msgstr "Κλάση"
 
 #: classes.py:769
 msgid ""
 "Show the different classes of dependencies. Classes are usually divided by "
 "language or the file types of the dependency."
 msgstr ""
+"Εμφάνιση των διαφορετικών κλάσεων εξαρτήσεων. Οι κλάσεις διαιρούνται συνήθως"
+" ανά γλώσσα ή τους τύπους αρχείων της εξάρτησης."
 
 #: classes.py:774
 msgid "State"
-msgstr ""
+msgstr "Κατάσταση"
 
 #: classes.py:775
 msgid ""
@@ -185,38 +189,52 @@ msgid ""
 "dependencies is installed and is of a correct version. False means the "
 "dependencies is missing or an incorrect version is present."
 msgstr ""
+"Εμφάνιση των διαφορετικών καταστάσεων των εξαρτήσεων. Η τιμή True δηλώνει "
+"ότι οι εξαρτήσεις είναι εγκατεστημένες και έχουν σωστή έκδοση. Η τιμή False "
+"σημαίνει ότι λείπουν οι εξαρτήσεις ή υπάρχει λανθασμένη έκδοση."
 
 #: classes.py:782
 msgid ""
 "Dependencies required for an environment might not be required for another. "
 "Example environments: Production, Development."
 msgstr ""
+"Εξαρτήσεις που απαιτούνται για ένα περιβάλλον μπορεί να μην απαιτούνται για "
+"κάποιο άλλο. Παραδείγματα περιβάλλοντος: Παραγωγή, Ανάπτυξη."
 
 #: environments.py:18
 msgid ""
 "Environment used for building distributable packages of the software. End "
 "users can ignore missing dependencies under this environment."
 msgstr ""
+"Περιβάλλον που χρησιμοποιείται για την κατασκευή πακέτων με δυνατότητα "
+"διανομής του λογισμικού. Οι τελικοί χρήστες μπορούν να αγνοήσουν τις "
+"εξαρτήσεις που λείπουν σε αυτό το περιβάλλον."
 
 #: environments.py:21
 msgid "Build"
-msgstr ""
+msgstr "Έκδοση"
 
 #: environments.py:25
 msgid ""
 "Environment used for developers to make code changes. End users can ignore "
 "missing dependencies under this environment."
 msgstr ""
+"Περιβάλλον που χρησιμοποιείται από προγραμματιστές για αλλαγές κώδικα. Οι "
+"τελικοί χρήστες μπορούν να αγνοήσουν τις εξαρτήσεις που λείπουν σε αυτό το "
+"περιβάλλον."
 
 #: environments.py:27
 msgid "Development"
-msgstr ""
+msgstr "Ανάπτυξη"
 
 #: environments.py:31
 msgid ""
 "Environment used for building the documentation. End users can ignore "
 "missing dependencies under this environment."
 msgstr ""
+"Περιβάλλον που χρησιμοποιείται για την δημιουργία της τεκμηρίωσης. Οι "
+"τελικοί χρήστες μπορούν να αγνοήσουν τις εξαρτήσεις που λείπουν σε αυτό το "
+"περιβάλλον."
 
 #: environments.py:33
 msgid "Documentation"
@@ -227,10 +245,13 @@ msgid ""
 "Normal environment for end users. A missing dependency under this "
 "environment will result in issues and errors during normal use."
 msgstr ""
+"Κανονικό περιβάλλον για τελικούς χρήστες. Μια εξάρτηση που λείπει από αυτό "
+"το περιβάλλον θα έχει ως αποτέλεσμα ζητήματα και σφάλματα κατά την κανονική "
+"χρήση."
 
 #: environments.py:39
 msgid "Production"
-msgstr ""
+msgstr "Παραγωγή"
 
 #: environments.py:43
 msgid ""
@@ -238,6 +259,9 @@ msgid ""
 "code. Dependencies in this environment are not needed for normal production "
 "usage."
 msgstr ""
+"Περιβάλλον που χρησιμοποιήται για την εκτέλεση της δοκιμαστικής σουίτας για "
+"την επαλήθευση της λειτουργικότητας του κώδικα. Δεν απαιτούνται εξαρτήσεις "
+"σε αυτό το περιβάλλον για κανονική χρήση παραγωγής."
 
 #: environments.py:46
 msgid "Testing"
@@ -253,7 +277,7 @@ msgstr "Ομάδες"
 
 #: links.py:23
 msgid "Entries"
-msgstr ""
+msgstr "Καταχωρήσεις"
 
 #: links.py:31
 msgid "Details"
@@ -265,54 +289,58 @@ msgstr "Άδειες χρήσης εξαρτήσεων"
 
 #: management/commands/checkdependencies.py:13
 msgid "Outputs the dependencies as a comma delimited values list."
-msgstr ""
+msgstr "Εξάγει τις εξαρτήσεις ως λίστα τιμών διαχωρισμένων με κόμμα."
 
 #: management/commands/generaterequirements.py:14
 msgid ""
 "Comma separated names of dependencies to exclude from the list generated."
 msgstr ""
+"Διαχωρισμένα με κόμμα ονόματα εξαρτήσεων για εξαίρεση από την δημιουργημένη "
+"λίστα."
 
 #: management/commands/generaterequirements.py:20
 msgid ""
 "Comma separated names of dependencies to show in the list while excluding "
 "every other one."
 msgstr ""
+"Διαχωρισμένα με κόμμα ονόματα εξαρτήσεων για εμφάνιση στη λίστα, ενώ θα "
+"αποκλείεται οποιαδήποτε άλλη."
 
 #: management/commands/installdependencies.py:13
 msgid "Process a specific app."
-msgstr ""
+msgstr "Επεξεργασία συγκεκριμένης εφαρμογής."
 
 #: management/commands/installdependencies.py:17
 msgid "Force installation even if already installed."
-msgstr ""
+msgstr "Υποχρεωτική εγκατάσταση ακόμη και αν έχει ήδη εγκατασταθεί."
 
 #: permissions.py:8
 msgid "View dependencies"
-msgstr ""
+msgstr "Προβολή εξαρτήσεων"
 
 #: views.py:31
 #, python-format
 msgid "Entries for dependency group: %s"
-msgstr ""
+msgstr "Καταχωρήσεις για ομάδα εξαρτήσεων: %s"
 
 #: views.py:44 views.py:89
 #, python-format
 msgid "Group %s not found."
-msgstr ""
+msgstr "Η ομάδα %s δεν βρέθηκε."
 
 #: views.py:57
 msgid "Dependency groups"
-msgstr ""
+msgstr "Ομάδες εξάρτησεων"
 
 #: views.py:77
 #, python-format
 msgid "Dependency group and entry: %(group)s, %(entry)s"
-msgstr ""
+msgstr "Ομάδα εξαρτήσεων και είσοδος: %(group)s, %(entry)s"
 
 #: views.py:101
 #, python-format
 msgid "Entry %s not found."
-msgstr ""
+msgstr "Η καταχώριση %s δεν βρέθηκε."
 
 #: views.py:119
 msgid "Other packages licenses"

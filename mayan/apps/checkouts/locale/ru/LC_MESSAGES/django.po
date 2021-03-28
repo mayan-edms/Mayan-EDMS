@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-14 04:39+0000\n"
-"PO-Revision-Date: 2021-03-01 08:23+0000\n"
+"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"PO-Revision-Date: 2021-03-17 11:17+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -62,7 +62,7 @@ msgstr "Пользователь"
 
 #: forms.py:41
 msgid "Check out time"
-msgstr "Время бронивания"
+msgstr "Начало бронирования"
 
 #: forms.py:46
 msgid "Check out expiration"
@@ -98,7 +98,7 @@ msgstr "Освободить"
 
 #: links.py:60
 msgid "Check in/out"
-msgstr "Освободить/забронировать"
+msgstr "Бронирование"
 
 #: literals.py:10
 msgid "Checked out"
@@ -106,7 +106,7 @@ msgstr "Забронирован"
 
 #: literals.py:11
 msgid "Checked in/available"
-msgstr "Освобождён/доступен"
+msgstr "Свободен (доступен для бронирования)"
 
 #: models.py:28 models.py:111
 msgid "Document"
@@ -114,7 +114,7 @@ msgstr "Документ"
 
 #: models.py:31
 msgid "Check out date and time"
-msgstr "Дата и время брониварония"
+msgstr "Дата и время бронирования"
 
 #: models.py:35
 msgid "Amount of time to hold the document checked out in minutes."
@@ -154,11 +154,11 @@ msgstr "Блокировки загрузки новых версий"
 
 #: models.py:138
 msgid "Checkout time and date"
-msgstr "Дата и время бронирования"
+msgstr "Начало бронирования"
 
 #: models.py:143
 msgid "Checkout expiration"
-msgstr "Истечение бронирования"
+msgstr "Окончание бронирования"
 
 #: permissions.py:8
 msgid "Check in documents"
@@ -214,18 +214,18 @@ msgstr[3] "Забронировать %(count)d документов"
 #: views.py:119
 #, python-format
 msgid "Check out document: %s"
-msgstr "Бронирование документа: %s"
+msgstr "Забронировать документ: %s"
 
 #: views.py:158
 #, python-format
 msgid "Check out details for document: %s"
-msgstr "Подробности бронирования документа: %s"
+msgstr "Бронирование документа: %s"
 
 #: views.py:178
 msgid ""
 "Checking out a document, blocks certain operations for a predetermined "
 "amount of time."
-msgstr "Бронирование документа блокирует определенные операции на заранее установленный период времени."
+msgstr "Бронирование документа блокирует на определенный срок отдельные операции с ним."
 
 #: views.py:181
 msgid "No documents have been checked out"

@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-14 04:39+0000\n"
-"PO-Revision-Date: 2021-01-04 16:34+0000\n"
+"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"PO-Revision-Date: 2021-03-28 13:02+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -73,6 +73,10 @@ msgstr "Rimuovi un'istanza del modello dal motore di ricerca."
 #: queues.py:16
 msgid "Index a model instance to the search engine."
 msgstr "Indicizza un'istanza del modello nel motore di ricerca."
+
+#: queues.py:21
+msgid "Index all instances of a search model to the search engine."
+msgstr ""
 
 #: settings.py:15
 msgid "Full path to the backend to be used to handle the search."

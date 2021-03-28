@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-14 04:40+0000\n"
+"POT-Creation-Date: 2021-03-28 13:01+0000\n"
 "PO-Revision-Date: 2017-06-30 22:04+0000\n"
 "Last-Translator: Marco Camplese <marco.camplese.mc@gmail.com>, 2017\n"
 "Language-Team: Italian (https://www.transifex.com/rosarior/teams/13584/it/)\n"
@@ -23,47 +23,47 @@ msgstr ""
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:16 links.py:10 permissions.py:5
+#: apps.py:24 links.py:10 permissions.py:5
 msgid "Task manager"
 msgstr "Task manager"
 
-#: apps.py:24
+#: apps.py:78
 msgid "Label"
 msgstr "Etichetta"
 
-#: apps.py:28
+#: apps.py:82
 msgid "Name"
 msgstr "Nome "
 
-#: apps.py:33
+#: apps.py:87
 msgid "Default queue?"
 msgstr "Coda predefinita?"
 
-#: apps.py:38
+#: apps.py:92
 msgid "Is transient?"
 msgstr "è transitorio?"
 
-#: apps.py:42
+#: apps.py:96
 msgid "Type"
 msgstr "Tipo"
 
-#: apps.py:47
+#: apps.py:101
 msgid "Start time"
 msgstr "Ora d'inizio"
 
-#: apps.py:51
+#: apps.py:105
 msgid "Host"
 msgstr "Host"
 
-#: apps.py:55
+#: apps.py:109
 msgid "Arguments"
 msgstr "Argomenti"
 
-#: apps.py:59
+#: apps.py:113
 msgid "Keyword arguments"
 msgstr ""
 
-#: apps.py:63
+#: apps.py:117
 msgid "Worker process ID"
 msgstr ""
 

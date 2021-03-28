@@ -6,7 +6,7 @@
 # Translators:
 # Roberto Rosario, 2019
 # Sergey Glita <gsv70@mail.ru>, 2019
-# panasoft <cc072aa3@opayq.com>, 2019
+# Panasoft, 2019
 # Roman Z <clubtat@mail.ru>, 2019
 # D Muzzle <muzzlerator@gmail.com>, 2019
 # lilo.panic, 2019
@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-14 04:39+0000\n"
+"POT-Creation-Date: 2021-03-28 13:01+0000\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -63,7 +63,7 @@ msgstr "Версия"
 
 #: apps.py:61 classes.py:139 classes.py:781
 msgid "Environment"
-msgstr ""
+msgstr "Среда"
 
 #: apps.py:64 classes.py:140
 msgid "Check"
@@ -261,7 +261,7 @@ msgstr "Группы"
 
 #: links.py:23
 msgid "Entries"
-msgstr ""
+msgstr "Записи"
 
 #: links.py:31
 msgid "Details"
@@ -269,7 +269,7 @@ msgstr "Подробности"
 
 #: links.py:36
 msgid "Dependencies licenses"
-msgstr ""
+msgstr "Лицензии зависимостей"
 
 #: management/commands/checkdependencies.py:13
 msgid "Outputs the dependencies as a comma delimited values list."
@@ -310,7 +310,7 @@ msgstr ""
 
 #: views.py:57
 msgid "Dependency groups"
-msgstr ""
+msgstr "Зависимости по группам"
 
 #: views.py:77
 #, python-format
