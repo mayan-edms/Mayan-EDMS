@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-14 04:39+0000\n"
-"PO-Revision-Date: 2020-09-27 07:47+0000\n"
+"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"PO-Revision-Date: 2021-03-28 13:02+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -72,6 +72,10 @@ msgstr "Elimina una instancia de modelo del motor de búsqueda."
 #: queues.py:16
 msgid "Index a model instance to the search engine."
 msgstr "Indexar una instancia de modelo en el motor de búsqueda."
+
+#: queues.py:21
+msgid "Index all instances of a search model to the search engine."
+msgstr ""
 
 #: settings.py:15
 msgid "Full path to the backend to be used to handle the search."

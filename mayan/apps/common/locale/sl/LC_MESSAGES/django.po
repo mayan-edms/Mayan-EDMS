@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-14 04:39+0000\n"
+"POT-Creation-Date: 2021-03-28 13:01+0000\n"
 "PO-Revision-Date: 2020-12-25 10:52+0000\n"
 "Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>\n"
 "Language-Team: Slovenian (http://www.transifex.com/rosarior/mayan-edms/language/sl/)\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Language: sl\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
-#: apps.py:133 permissions.py:5 settings.py:13
+#: apps.py:131 permissions.py:5 settings.py:13
 msgid "Common"
 msgstr "Običajni"
 
