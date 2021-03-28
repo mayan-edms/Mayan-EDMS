@@ -9,19 +9,6 @@ Status: Stable
 Changes
 -------
 
-
-- Allow not updating required metadata with value. A validation was raised
-  when metadata update checkbox was disable and the metadata was required.
-  This behavior is now fine tuned to not raise a validation error if the
-  metadata already has a value which would comply with the original purpose
-  of required metadata. Closes GitLab issue #936. Thanks to Raimar Sandner
-  (@PiQuer)for the report.
-- Make the metadata type id usage more explicit in formsets.
-
-
-
-
-
 Backports
 ^^^^^^^^^
 
@@ -51,7 +38,8 @@ Ensure the default timeout setting is used by all the backends.
 Docker
 ^^^^^^
 
-Updated the Docker base image from debian:10.7-slim to debian:10.8-slim.
+Updated the Docker base image from ``debian:10.7-slim`` to
+``debian:10.8-slim``.
 
 Updated the Docker Compose file to allow specifying a different database
 host as well as a different image tag for the Mayan, PostgreSQL and Redis
@@ -81,6 +69,20 @@ Ensure logging is available early. Moved the logging init to the logging
 app and moved the logging app to the top of the app list.
 
 
+Metadata
+^^^^^^^^
+
+The behavior of the bulk metadata edit was updated. Previously, a validation
+was raised when the metadata update checkbox was disabled for a required
+metadata. This was changed to not raise a validation error if the
+metadata already has a value which would comply with the original purpose
+of required metadata feature.
+
+Make the metadata type id usage more explicit in formsets. Instead of just
+using a field named ``id``, the metadata form now uses a more readable
+``metadata_type_id`` name.
+
+
 Migrations
 ^^^^^^^^^^
 
@@ -103,8 +105,8 @@ settings.
 Testing
 ^^^^^^^
 
-Backport multiple test document types code.
-
+Backport multiple test document types code. This makes it easier to create
+multiple test document types for the tests that use them.
 
 
 Other
@@ -297,6 +299,7 @@ Issues closed
 
 - :gitlab-issue:`936` Bulk editing of metadata: error when "update" option of a required field is unchecked
 - :gitlab-issue:`940` Connectivity check on install
+- :gitlab-issue:`951` upgrade to 3.5: platformtemplate step hangs
 - :gitlab-issue:`963` Mayan 3.5 breaks ldap installation in docker
 - :gitlab-issue:`964` Problem in 3.5.6 performupgrade in file_caching migration
 
