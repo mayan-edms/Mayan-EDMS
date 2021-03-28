@@ -1,3 +1,5 @@
+import logging
+
 from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import ImproperlyConfigured, ValidationError
@@ -39,6 +41,8 @@ from .mixins import (
 )
 
 from .settings import setting_paginate_by
+
+logger = logging.getLogger(name=__name__)
 
 
 # Required by other views, moved to the top
@@ -441,6 +445,12 @@ class MultipleObjectFormActionView(
             )
 
         return result
+
+    def form_invalid(self, form):
+        if settings.DEBUG or settings.TESTING:
+            logger.debug('Form invalid; %s', form.errors)
+
+        return super().form_invalid(form=form)
 
     def form_valid(self, form):
         self.view_action(form=form)
