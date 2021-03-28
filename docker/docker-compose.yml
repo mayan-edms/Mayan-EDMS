@@ -11,6 +11,7 @@ services:
       - redis
       # Enable to use RabbitMQ
       #- rabbitmq
+    env_file: env_file
     environment: &mayan_env
       # Enable to use RabbitMQ
       # MAYAN_CELERY_BROKER_URL: amqp://${MAYAN_RABBITMQ_USER:-mayan}:${MAYAN_RABBITMQ_PASSWORD:-mayanrabbitpass}@rabbitmq:5672/${MAYAN_RABBITMQ_VHOST:-mayan}
@@ -87,6 +88,7 @@ services:
   #     - redis
   #     # Enable to use RabbitMQ
   #     # - rabbitmq
+  #   env_file: env_file
   #   environment:
   #     <<: *mayan_env
   #   image: mayanedms/mayanedms:${MAYAN_DOCKER_IMAGE_TAG:-3}
@@ -119,9 +121,10 @@ services:
   #     - redis
   #     # Enable to use RabbitMQ
   #     # - rabbitmq
+  #   env_file: env_file
   #   environment:
   #     <<: *mayan_env
-  #  image: mayanedms/mayanedms:${MAYAN_DOCKER_IMAGE_TAG:-3}
+  #   image: mayanedms/mayanedms:${MAYAN_DOCKER_IMAGE_TAG:-3}
   #   networks:
   #     - bridge
   #   restart: unless-stopped
@@ -137,6 +140,7 @@ services:
   #     - redis
   #     # Enable to use RabbitMQ
   #     # - rabbitmq
+  #   env_file: env_file
   #   environment:
   #     <<: *mayan_env
   #   image: mayanedms/mayanedms:${MAYAN_DOCKER_IMAGE_TAG:-3}
