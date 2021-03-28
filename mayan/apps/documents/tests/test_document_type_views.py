@@ -9,8 +9,8 @@ from ..permissions import (
 
 from .base import GenericDocumentViewTestCase
 from .literals import (
-    TEST_DOCUMENT_TYPE_LABEL, TEST_DOCUMENT_TYPE_LABEL_EDITED,
-    TEST_DOCUMENT_TYPE_QUICK_LABEL, TEST_DOCUMENT_TYPE_QUICK_LABEL_EDITED
+    TEST_DOCUMENT_TYPE_LABEL, TEST_DOCUMENT_TYPE_QUICK_LABEL,
+    TEST_DOCUMENT_TYPE_QUICK_LABEL_EDITED
 )
 from .mixins import (
     DocumentQuickLabelViewTestMixin,
@@ -102,16 +102,20 @@ class DocumentTypeViewsTestCase(
         self.assertEqual(DocumentType.objects.count(), 0)
 
     def test_document_type_edit_view_no_permission(self):
+        test_document_type_label = self.test_document_type.label
+
         response = self._request_test_document_type_edit_view()
 
         self.assertEqual(response.status_code, 404)
-        self.test_document_type.refresh_from_db()
 
+        self.test_document_type.refresh_from_db()
         self.assertEqual(
-            self.test_document_type.label, TEST_DOCUMENT_TYPE_LABEL
+            self.test_document_type.label, test_document_type_label
         )
 
     def test_document_type_edit_view_with_access(self):
+        test_document_type_label = self.test_document_type.label
+
         self.grant_access(
             obj=self.test_document_type,
             permission=permission_document_type_edit
@@ -121,8 +125,8 @@ class DocumentTypeViewsTestCase(
         self.assertEqual(response.status_code, 302)
 
         self.test_document_type.refresh_from_db()
-        self.assertEqual(
-            self.test_document_type.label, TEST_DOCUMENT_TYPE_LABEL_EDITED
+        self.assertNotEqual(
+            self.test_document_type.label, test_document_type_label
         )
 
     def test_document_type_list_view_no_permission(self):

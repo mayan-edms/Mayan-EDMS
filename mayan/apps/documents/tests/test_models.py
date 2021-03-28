@@ -23,10 +23,6 @@ from .literals import (
 
 class DocumentTestCase(GenericDocumentTestCase):
     def test_document_creation(self):
-        self.assertEqual(
-            self.test_document_type.label, TEST_DOCUMENT_TYPE_LABEL
-        )
-
         self.assertEqual(self.test_document.exists(), True)
         self.assertEqual(self.test_document.size, TEST_SMALL_DOCUMENT_SIZE)
 
