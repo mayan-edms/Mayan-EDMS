@@ -177,6 +177,7 @@ class DocumentTestMixin:
         Layer.invalidate_cache()
 
         self.test_documents = []
+        self.test_document_types = []
 
         if self.auto_create_test_document_type:
             self._create_test_document_type()
@@ -196,10 +197,14 @@ class DocumentTestMixin:
         self.test_document = self.test_document_stub
         self.test_documents.append(self.test_document)
 
-    def _create_test_document_type(self):
-        self.test_document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE_LABEL
+    def _create_test_document_type(self, label=None):
+        total_test_document_types = len(self.test_document_types)
+        label = label or '{}_{}'.format(
+            TEST_DOCUMENT_TYPE_LABEL, total_test_document_types
         )
+
+        self.test_document_type = DocumentType.objects.create(label=label)
+        self.test_document_types.append(self.test_document_type)
 
     def _calculate_test_document_path(self):
         if not self.test_document_path:
