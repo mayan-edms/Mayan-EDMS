@@ -1,4 +1,34 @@
-version: '3.7'
+version: '3.9'
+
+x-mayan-container:
+  &mayan-container
+  depends_on:
+    - postgresql
+    - redis
+    # Enable to use RabbitMQ
+    #- rabbitmq
+  env_file: env_file
+  environment:
+    # Enable to use RabbitMQ
+    # MAYAN_CELERY_BROKER_URL: amqp://${MAYAN_RABBITMQ_USER:-mayan}:${MAYAN_RABBITMQ_PASSWORD:-mayanrabbitpass}@rabbitmq:5672/${MAYAN_RABBITMQ_VHOST:-mayan}
+    # To use RabbitMQ as broker, disable Redis as broker
+    MAYAN_CELERY_BROKER_URL: redis://:${MAYAN_REDIS_PASSWORD:-mayanredispassword}@redis:6379/0
+    MAYAN_CELERY_RESULT_BACKEND: redis://:${MAYAN_REDIS_PASSWORD:-mayanredispassword}@redis:6379/1
+    MAYAN_DATABASES: "{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'${MAYAN_DATABASE_NAME:-mayan}','PASSWORD':'${MAYAN_DATABASE_PASSWORD:-mayandbpass}','USER':'${MAYAN_DATABASE_USER:-mayan}','HOST':'${MAYAN_DATABASE_HOST:-postgresql}'}}"
+    MAYAN_DOCKER_WAIT: "${MAYAN_DATABASE_HOST:-postgresql}:5432 redis:6379"
+    MAYAN_LOCK_MANAGER_BACKEND: mayan.apps.lock_manager.backends.redis_lock.RedisLock
+    MAYAN_LOCK_MANAGER_BACKEND_ARGUMENTS: "{'redis_url':'redis://:${MAYAN_REDIS_PASSWORD:-mayanredispassword}@redis:6379/2'}"
+    # Replace with the line below when using RabbitMQ
+    # MAYAN_DOCKER_WAIT: "${MAYAN_DATABASE_HOST:-postgresql}:5432 redis:6379 rabbitmq:5672"
+  image: mayanedms/mayanedms:${MAYAN_DOCKER_IMAGE_TAG:-s4.0}
+  networks:
+    - bridge
+  restart: unless-stopped
+  volumes:
+    - ${MAYAN_APP_VOLUME:-app}:/var/lib/mayan
+    # Optional volumes to access external data like staging or watch folders
+    # - /opt/staging_files:/staging_files
+    # - /opt/watch_folder:/watch_folder
 
 networks:
   bridge:
@@ -6,35 +36,9 @@ networks:
 
 services:
   app:
-    depends_on:
-      - postgresql
-      - redis
-      # Enable to use RabbitMQ
-      #- rabbitmq
-    env_file: env_file
-    environment: &mayan_env
-      # Enable to use RabbitMQ
-      # MAYAN_CELERY_BROKER_URL: amqp://${MAYAN_RABBITMQ_USER:-mayan}:${MAYAN_RABBITMQ_PASSWORD:-mayanrabbitpass}@rabbitmq:5672/${MAYAN_RABBITMQ_VHOST:-mayan}
-      # To use RabbitMQ as broker, disable Redis as broker
-      MAYAN_CELERY_BROKER_URL: redis://:${MAYAN_REDIS_PASSWORD:-mayanredispassword}@redis:6379/0
-      MAYAN_CELERY_RESULT_BACKEND: redis://:${MAYAN_REDIS_PASSWORD:-mayanredispassword}@redis:6379/1
-      MAYAN_DATABASES: "{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'${MAYAN_DATABASE_NAME:-mayan}','PASSWORD':'${MAYAN_DATABASE_PASSWORD:-mayandbpass}','USER':'${MAYAN_DATABASE_USER:-mayan}','HOST':'${MAYAN_DATABASE_HOST:-postgresql}'}}"
-      MAYAN_DOCKER_WAIT: "${MAYAN_DATABASE_HOST:-postgresql}:5432" redis:5379"
-      MAYAN_LOCK_MANAGER_BACKEND: mayan.apps.lock_manager.backends.redis_lock.RedisLock
-      MAYAN_LOCK_MANAGER_BACKEND_ARGUMENTS: "{'redis_url':'redis://:${MAYAN_REDIS_PASSWORD:-mayanredispassword}@redis:6379/2'}"
-      # Replace with the line below when using RabbitMQ
-      # MAYAN_DOCKER_WAIT: "postgresql:5432 redis:6379 rabbitmq:5672"
-    image: mayanedms/mayanedms:${MAYAN_DOCKER_IMAGE_TAG:-s4.0}
-    networks:
-      - bridge
+    <<: *mayan-container
     ports:
       - "80:8000"
-    restart: unless-stopped
-    volumes:
-      - ${MAYAN_APP_VOLUME:-app}:/var/lib/mayan
-      # Optional volumes to access external data like staging or watch folders
-      # - /opt/staging_files:/staging_files
-      # - /opt/watch_folder:/watch_folder
 
   postgresql:
     environment:
@@ -74,26 +78,72 @@ services:
     volumes:
       - ${MAYAN_REDIS_VOLUME:-redis}:/data
 
-  # Optional services
+  # Celery flower a monitor for Celery
+  celery_flower:
+    <<: *mayan-container
+    command:
+      - run_celery
+      - flower
+    ports:
+      - "5555:5555"
+    profiles:
+      - celery_flower
 
-  # celery_flower:
-  #   command:
-  #     - run_celery
-  #     - flower
-  #   depends_on:
-  #     - postgresql
-  #     - redis
-  #     # Enable to use RabbitMQ
-  #     # - rabbitmq
-  #   env_file: env_file
-  #   environment:
-  #     <<: *mayan_env
-  #   image: mayanedms/mayanedms:${MAYAN_DOCKER_IMAGE_TAG:-s4.0}
-  #   networks:
-  #     - bridge
-  #   ports:
-  #     - "5555:5555"
-  #   restart: unless-stopped
+  # Run a frontend gunicorn container
+  frontend:
+    <<: *mayan-container
+    command:
+      - run_worker
+      - fast
+    ports:
+      - "81:8000"
+    profiles:
+      - extra_frontend
+
+  # Run a separate worker servicing the fast queues
+  worker_fast:
+    <<: *mayan-container
+    command:
+      - run_worker
+      - fast
+    profiles:
+      - extra_worker_fast
+
+  # Run a separate worker servicing the medium queues
+  worker_medium:
+    <<: *mayan-container
+    command:
+      - run_worker
+      - medium
+    profiles:
+      - extra_worker_medium
+
+  # Run a separate worker servicing the slow queues
+  worker_slow:
+    <<: *mayan-container
+    command:
+      - run_worker
+      - slow
+    profiles:
+      - extra_worker_slow
+
+  # Enable to run standalone workers
+  mountindex:
+    <<: *mayan-container
+    cap_add:
+      - SYS_ADMIN
+    command:
+      - run_command
+      - "mountindex --allow-other projects /mounted_index"
+    devices:
+      - "/dev/fuse:/dev/fuse"
+    privileged: true
+    profiles:
+      - mountindex
+    security_opt:
+      - apparmor:unconfined
+
+  # Optional services
 
   # Enable to use RabbitMQ
   # rabbitmq:
@@ -107,75 +157,6 @@ services:
   #   restart: unless-stopped
   #   volumes:
   #      - ${MAYAN_RABBITMQ_VOLUME:-rabbitmq}:/var/lib/rabbitmq
-
-  # Enable to run standalone workers
-  # worker_fast:
-  #   command:
-  #     - run_worker
-  #     - fast
-  #   depends_on:
-  #     - postgresql
-  #     - redis
-  #     # Enable to use RabbitMQ
-  #     # - rabbitmq
-  #   env_file: env_file
-  #   environment:
-  #     <<: *mayan_env
-  #   image: mayanedms/mayanedms:${MAYAN_DOCKER_IMAGE_TAG:-s4.0}
-  #   networks:
-  #     - bridge
-  #   restart: unless-stopped
-  #   volumes:
-  #     - ${MAYAN_APP_VOLUME:-app}:/var/lib/mayan
-
-  # Enable to run frontend gunicorn
-  # frontend:
-  #   command:
-  #     - run_frontend
-  #   depends_on:
-  #     - postgresql
-  #     - redis
-  #     # Enable to use RabbitMQ
-  #     # - rabbitmq
-  #   env_file: env_file
-  #   environment:
-  #     <<: *mayan_env
-  #   image: mayanedms/mayanedms:${MAYAN_DOCKER_IMAGE_TAG:-s4.0}
-  #   networks:
-  #     - bridge
-  #   ports:
-  #     - "81:8000"
-  #   restart: unless-stopped
-  #   volumes:
-  #     - ${MAYAN_APP_VOLUME:-app}:/var/lib/mayan
-
-  # Enable to run standalone workers
-  mountindex:
-    cap_add:
-      - SYS_ADMIN
-    devices:
-      - "/dev/fuse:/dev/fuse"
-    security_opt:
-      - apparmor:unconfined
-    command:
-      - run_command
-      - "mountindex --allow-other projects /mounted_index"
-    depends_on:
-      - postgresql
-      - redis
-      # Enable to use RabbitMQ
-      # - rabbitmq
-    environment:
-      <<: *mayan_env
-    image: mayanedms/mayanedms:${MAYAN_DOCKER_IMAGE_TAG:-s4.0}
-    networks:
-      - bridge
-    privileged: true
-    profiles:
-      - mountindex
-    restart: unless-stopped
-    volumes:
-      - ${MAYAN_APP_VOLUME:-app}:/var/lib/mayan
 
 volumes:
   app:
