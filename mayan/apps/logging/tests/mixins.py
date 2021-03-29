@@ -8,7 +8,7 @@ from .literals import TEST_ERROR_LOG_ENTRY_RESULT
 
 
 class LoggingTextMixin:
-    def _create_test_object(self):
+    def _create_error_log_test_object(self):
         self._create_test_user()
         self.test_model = get_user_model()
         self.test_object = self.test_user
