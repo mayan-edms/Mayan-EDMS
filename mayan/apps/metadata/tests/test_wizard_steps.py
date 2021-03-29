@@ -34,7 +34,7 @@ class DocumentUploadMetadataTestCase(MetadataTypeTestMixin, GenericDocumentViewT
         url = URL(
             path=reverse(viewname='sources:document_upload_interactive')
         )
-        url.args['metadata0_id'] = self.test_metadata_type.pk
+        url.args['metadata0_metadata_type_id'] = self.test_metadata_type.pk
         url.args['metadata0_value'] = TEST_METADATA_VALUE_UNICODE
 
         self.grant_access(
@@ -61,7 +61,7 @@ class DocumentUploadMetadataTestCase(MetadataTypeTestMixin, GenericDocumentViewT
         url = URL(
             path=reverse(viewname='sources:document_upload_interactive')
         )
-        url.args['metadata0_id'] = self.test_metadata_type.pk
+        url.args['metadata0_metadata_type_id'] = self.test_metadata_type.pk
         url.args['metadata0_value'] = TEST_METADATA_VALUE_WITH_AMPERSAND
 
         self.grant_access(

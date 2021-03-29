@@ -23,11 +23,23 @@ def operation_purge_and_delete_caches(apps, schema_editor):
     Cache = apps.get_model(
         app_label='file_caching', model_name='Cache'
     )
+    CachePartitionFile = apps.get_model(
+        app_label='file_caching', model_name='CachePartitionFile'
+    )
 
-    cursor_primary = schema_editor.connection.create_cursor(name='file_caching_partition_files')
+    cursor_primary = schema_editor.connection.create_cursor(
+        name='file_caching_partition_files'
+    )
     cursor_secondary = schema_editor.connection.cursor()
 
-    query = '''
+    query = str(
+        CachePartitionFile.objects.values(
+            'partition__name', 'filename', 'partition__cache_id'
+        ).query
+    )
+
+    '''
+    Expected resulting query:
         SELECT
             "file_caching_cachepartition"."name",
             "file_caching_cachepartitionfile"."filename",
@@ -53,7 +65,7 @@ def operation_purge_and_delete_caches(apps, schema_editor):
             )
             cache_storages[cache.pk] = DummyStorage()
 
-    cursor_primary.execute(query)
+    cursor_primary.execute(query=query)
     for partition_name, filename, cache_id in cursor_primary.fetchall():
         cache_storages[
             cache_id
@@ -64,9 +76,19 @@ def operation_purge_and_delete_caches(apps, schema_editor):
             )
         )
 
-    cursor_secondary.execute('DELETE FROM "file_caching_cachepartitionfile";')
-    cursor_secondary.execute('DELETE FROM "file_caching_cachepartition";')
-    cursor_secondary.execute('DELETE FROM "file_caching_cache";')
+    table_names = (
+        'file_caching_cachepartitionfile', 'file_caching_cachepartition',
+        'file_caching_cache'
+    )
+
+    for table_name in table_names:
+        cursor_secondary.execute(
+            sql='DELETE FROM {};'.format(
+                schema_editor.connection.ops.quote_name(
+                    name=table_name
+                )
+            )
+        )
 
 
 def operation_update_storage_paths(apps, schema_editor):
