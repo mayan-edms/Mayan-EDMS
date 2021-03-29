@@ -833,6 +833,7 @@ class DocumentMetadataRequiredTestCase(
         self._create_test_metadata_type(add_test_document_type=True)
         self._create_test_metadata_type(
             add_test_document_type=True, required=True
+        )
         self._create_test_document_stub()
 
     def _create_test_document_metadata(self):
