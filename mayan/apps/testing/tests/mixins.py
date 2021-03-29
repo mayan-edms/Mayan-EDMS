@@ -486,7 +486,9 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
         options=None
     ):
         test_model_count = len(self._test_models)
-        self._test_model_name = model_name or '{}_{}'.format('TestModel', test_model_count)
+        self._test_model_name = model_name or '{}_{}'.format(
+            'TestModel', test_model_count
+        )
 
         self.options = options
         # Obtain the app_config and app_label from the test's module path
@@ -512,7 +514,9 @@ class TestModelTestCaseMixin(ContentTypeTestCaseMixin, PermissionTestMixin):
         # Clear previous model registration before re-registering it again to
         # avoid conflict with test models with the same name, in the same app
         # but from another test module.
-        apps.all_models[self.app_config.label].pop(self._test_model_name.lower(), None)
+        apps.all_models[self.app_config.label].pop(
+            self._test_model_name.lower(), None
+        )
 
         model = type(
             self._test_model_name, (base_class,), attrs

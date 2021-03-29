@@ -13,8 +13,6 @@ from .permissions import permission_group_view
 
 
 class GroupSerializer(serializers.HyperlinkedModelSerializer):
-    users_count = serializers.SerializerMethodField()
-
     class Meta:
         extra_kwargs = {
             'url': {
@@ -22,11 +20,8 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
                 'view_name': 'rest_api:group-detail'
             }
         }
-        fields = ('id', 'name', 'url', 'users_count')
+        fields = ('id', 'name', 'url')
         model = Group
-
-    def get_users_count(self, instance):
-        return instance.user_set.count()
 
 
 class UserGroupListSerializer(serializers.Serializer):

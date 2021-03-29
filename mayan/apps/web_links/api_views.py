@@ -14,7 +14,7 @@ from .permissions import (
     permission_web_link_instance_view
 )
 from .serializers import (
-    ResolvedWebLinkSerializer, WebLinkDocumentTypeAttachSerializer,
+    ResolvedWebLinkSerializer, WebLinkDocumentTypeAddSerializer,
     WebLinkDocumentTypeRemoveSerializer, WebLinkSerializer
 )
 
@@ -127,7 +127,7 @@ class APIWebLinkDocumentTypeAddView(generics.ObjectActionAPIView):
     mayan_object_permissions = {
         'POST': (permission_web_link_edit,)
     }
-    serializer_class = WebLinkDocumentTypeAttachSerializer
+    serializer_class = WebLinkDocumentTypeAddSerializer
     queryset = WebLink.objects.all()
 
     def object_action(self, request, serializer):

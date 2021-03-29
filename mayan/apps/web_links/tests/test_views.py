@@ -432,6 +432,125 @@ class WebLinkDocumentTypeViewTestCase(
         super().setUp()
         self._create_test_web_link()
 
+    def test_web_link_document_type_add_remove_get_view_no_permission(self):
+        self.test_web_link.document_types.add(self.test_document_type)
+
+        test_web_link_document_type_count = self.test_web_link.document_types.count()
+
+        self._clear_events()
+
+        response = self._request_test_web_link_document_type_add_remove_get_view()
+        self.assertNotContains(
+            response=response, text=str(self.test_document_type),
+            status_code=404
+        )
+        self.assertNotContains(
+            response=response, text=str(self.test_web_link),
+            status_code=404
+        )
+
+        self.assertEqual(
+            self.test_web_link.document_types.count(),
+            test_web_link_document_type_count
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_web_link_document_type_add_remove_get_view_with_document_type_access(self):
+        self.test_web_link.document_types.add(self.test_document_type)
+
+        test_web_link_document_type_count = self.test_web_link.document_types.count()
+
+        self.grant_access(
+            obj=self.test_document_type,
+            permission=permission_document_type_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_web_link_document_type_add_remove_get_view()
+        self.assertNotContains(
+            response=response, text=str(self.test_document_type),
+            status_code=404
+        )
+        self.assertNotContains(
+            response=response, text=str(self.test_web_link),
+            status_code=404
+        )
+
+        self.assertEqual(
+            self.test_web_link.document_types.count(),
+            test_web_link_document_type_count
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_web_link_document_type_add_remove_get_view_with_web_link_access(self):
+        self.test_web_link.document_types.add(self.test_document_type)
+
+        test_web_link_document_type_count = self.test_web_link.document_types.count()
+
+        self.grant_access(
+            obj=self.test_web_link,
+            permission=permission_web_link_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_web_link_document_type_add_remove_get_view()
+        self.assertNotContains(
+            response=response, text=str(self.test_document_type),
+            status_code=200
+        )
+        self.assertContains(
+            response=response, text=str(self.test_web_link),
+            status_code=200
+        )
+
+        self.assertEqual(
+            self.test_web_link.document_types.count(),
+            test_web_link_document_type_count
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_web_link_document_type_add_remove_get_view_with_full_access(self):
+        self.test_web_link.document_types.add(self.test_document_type)
+
+        test_web_link_document_type_count = self.test_web_link.document_types.count()
+
+        self.grant_access(
+            obj=self.test_document_type,
+            permission=permission_document_type_edit
+        )
+        self.grant_access(
+            obj=self.test_web_link,
+            permission=permission_web_link_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_web_link_document_type_add_remove_get_view()
+        self.assertContains(
+            response=response, text=str(self.test_document_type),
+            status_code=200
+        )
+        self.assertContains(
+            response=response, text=str(self.test_web_link),
+            status_code=200
+        )
+
+        self.assertEqual(
+            self.test_web_link.document_types.count(),
+            test_web_link_document_type_count
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
     def test_web_link_document_type_add_view_no_permission(self):
         test_web_link_document_type_count = self.test_web_link.document_types.count()
 

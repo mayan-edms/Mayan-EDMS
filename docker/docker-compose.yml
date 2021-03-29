@@ -18,7 +18,7 @@ services:
       # To use RabbitMQ as broker, disable Redis as broker
       MAYAN_CELERY_BROKER_URL: redis://:${MAYAN_REDIS_PASSWORD:-mayanredispassword}@redis:6379/0
       MAYAN_CELERY_RESULT_BACKEND: redis://:${MAYAN_REDIS_PASSWORD:-mayanredispassword}@redis:6379/1
-      MAYAN_DATABASES: "{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'${MAYAN_DATABASE_DB:-mayan}','PASSWORD':'${MAYAN_DATABASE_PASSWORD:-mayandbpass}','USER':'${MAYAN_DATABASE_USER:-mayan}','HOST':'${MAYAN_DATABASE_HOST:-postgresql}'}}"
+      MAYAN_DATABASES: "{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'${MAYAN_DATABASE_NAME:-mayan}','PASSWORD':'${MAYAN_DATABASE_PASSWORD:-mayandbpass}','USER':'${MAYAN_DATABASE_USER:-mayan}','HOST':'${MAYAN_DATABASE_HOST:-postgresql}'}}"
       MAYAN_DOCKER_WAIT: "${MAYAN_DATABASE_HOST:-postgresql}:5432" redis:5379"
       MAYAN_LOCK_MANAGER_BACKEND: mayan.apps.lock_manager.backends.redis_lock.RedisLock
       MAYAN_LOCK_MANAGER_BACKEND_ARGUMENTS: "{'redis_url':'redis://:${MAYAN_REDIS_PASSWORD:-mayanredispassword}@redis:6379/2'}"
@@ -38,10 +38,10 @@ services:
 
   postgresql:
     environment:
-      POSTGRES_DB: ${MAYAN_DATABASE_DB:-mayan}
+      POSTGRES_DB: ${MAYAN_DATABASE_NAME:-mayan}
       POSTGRES_PASSWORD: ${MAYAN_DATABASE_PASSWORD:-mayandbpass}
       POSTGRES_USER: ${MAYAN_DATABASE_USER:-mayan}
-    image: postgres:10.15-alpine
+    image: postgres:${MAYAN_DOCKER_POSTGRES_TAG:-10.15-alpine}
     networks:
       - bridge
     restart: unless-stopped
@@ -67,7 +67,7 @@ services:
       - "256"
       - --requirepass
       - "${MAYAN_REDIS_PASSWORD:-mayanredispassword}"
-    image: redis:6.0-alpine
+    image: redis:${MAYAN_DOCKER_REDIS_TAG:-6.0-alpine}
     networks:
       - bridge
     restart: unless-stopped
@@ -85,6 +85,7 @@ services:
   #     - redis
   #     # Enable to use RabbitMQ
   #     # - rabbitmq
+  #   env_file: env_file
   #   environment:
   #     <<: *mayan_env
   #   image: mayanedms/mayanedms:${MAYAN_DOCKER_IMAGE_TAG:-s4.0}
@@ -108,24 +109,24 @@ services:
   #      - ${MAYAN_RABBITMQ_VOLUME:-rabbitmq}:/var/lib/rabbitmq
 
   # Enable to run standalone workers
-  #worker_fast:
-  #  command:
-  #    - run_worker
-  #    - fast
-  #  depends_on:
-  #    #- postgresql
-  #    - redis
-  #    # Enable to use RabbitMQ
-  #    # - rabbitmq
-  #  env_file: env_file
-  #  environment:
-  #    <<: *mayan_env
-  #  image: mayanedms/mayanedms:${MAYAN_DOCKER_IMAGE_TAG:-s4.0}
-  #  networks:
-  #    - bridge
-  #  restart: unless-stopped
-  #  volumes:
-  #    - ${MAYAN_APP_VOLUME:-app}:/var/lib/mayan
+  # worker_fast:
+  #   command:
+  #     - run_worker
+  #     - fast
+  #   depends_on:
+  #     - postgresql
+  #     - redis
+  #     # Enable to use RabbitMQ
+  #     # - rabbitmq
+  #   env_file: env_file
+  #   environment:
+  #     <<: *mayan_env
+  #   image: mayanedms/mayanedms:${MAYAN_DOCKER_IMAGE_TAG:-s4.0}
+  #   networks:
+  #     - bridge
+  #   restart: unless-stopped
+  #   volumes:
+  #     - ${MAYAN_APP_VOLUME:-app}:/var/lib/mayan
 
   # Enable to run frontend gunicorn
   # frontend:

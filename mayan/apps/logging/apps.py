@@ -5,9 +5,10 @@ from mayan.apps.common.menus import menu_secondary
 from mayan.apps.navigation.classes import SourceColumn
 
 from .links import link_object_error_list_clear
+from .mixins import LoggingAppConfigMixin
 
 
-class LoggingApp(MayanAppConfig):
+class LoggingApp(LoggingAppConfigMixin, MayanAppConfig):
     app_namespace = 'logging'
     app_url = 'logging'
     has_tests = True

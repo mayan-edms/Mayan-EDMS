@@ -37,6 +37,7 @@ apt-get update \
     fonts-arphic-uming \
     fonts-arphic-ukai \
     fonts-unfonts-core \
+    fuse \
     ghostscript \
     git-core \
     gpgv \

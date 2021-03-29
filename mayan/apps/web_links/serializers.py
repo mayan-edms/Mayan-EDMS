@@ -10,7 +10,7 @@ from mayan.apps.rest_api.relations import FilteredPrimaryKeyRelatedField
 from .models import ResolvedWebLink, WebLink
 
 
-class WebLinkDocumentTypeAttachSerializer(serializers.Serializer):
+class WebLinkDocumentTypeAddSerializer(serializers.Serializer):
     document_type = FilteredPrimaryKeyRelatedField(
         help_text=_(
             'Primary key of the document type to add to the web link.'
