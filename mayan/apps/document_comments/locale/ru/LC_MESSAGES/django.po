@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-14 04:39+0000\n"
-"PO-Revision-Date: 2021-02-28 14:09+0000\n"
+"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"PO-Revision-Date: 2021-03-17 10:53+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -71,7 +71,7 @@ msgstr "Дата и время отправки"
 
 #: permissions.py:8
 msgid "Create new comments"
-msgstr "Создать новые комментарии"
+msgstr "Создать комментарии"
 
 #: permissions.py:11
 msgid "Delete comments"

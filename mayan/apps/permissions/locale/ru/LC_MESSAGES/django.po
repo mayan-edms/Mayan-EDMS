@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-14 04:40+0000\n"
-"PO-Revision-Date: 2021-03-01 10:40+0000\n"
+"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"PO-Revision-Date: 2021-03-22 06:57+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -26,23 +26,23 @@ msgstr "Разрешения"
 
 #: apps.py:99 models.py:142
 msgid "Group count"
-msgstr ""
+msgstr "Количество групп"
 
 #: classes.py:85
 msgid "Insufficient permissions."
-msgstr "Недостаточно разрешений."
+msgstr "Недостаточно прав."
 
 #: dashboard_widgets.py:13
 msgid "Total roles"
-msgstr ""
+msgstr "Всего ролей"
 
 #: events.py:10
 msgid "Role created"
-msgstr ""
+msgstr "Роль создана"
 
 #: events.py:13
 msgid "Role edited"
-msgstr ""
+msgstr "Роль изменена"
 
 #: links.py:14 links.py:38 models.py:115 views.py:171
 msgid "Roles"
@@ -50,7 +50,7 @@ msgstr "Роли"
 
 #: links.py:21 views.py:51
 msgid "Create new role"
-msgstr "Создать новую роль"
+msgstr "Создать роль"
 
 #: links.py:27
 msgid "Delete"
@@ -94,15 +94,15 @@ msgstr "Роль"
 
 #: models.py:150
 msgid "Permission count"
-msgstr ""
+msgstr "Количество разрешений"
 
 #: permissions.py:8
 msgid "Create roles"
-msgstr "Создание ролей"
+msgstr "Создать роли"
 
 #: permissions.py:11
 msgid "Delete roles"
-msgstr "Удаление ролей"
+msgstr "Удалить роли"
 
 #: permissions.py:14
 msgid "Edit roles"
@@ -114,17 +114,17 @@ msgstr "Просмотр ролей"
 
 #: search.py:18
 msgid "Group name"
-msgstr ""
+msgstr "Имя группы"
 
 #: serializers.py:44
 msgid ""
 "Comma separated list of groups primary keys to add to, or replace in this "
 "role."
-msgstr ""
+msgstr "Разделенный запятыми список первичных ключей групп, которые нужно добавить или заменить в этой роли."
 
 #: serializers.py:51
 msgid "Comma separated list of permission primary keys to grant to this role."
-msgstr ""
+msgstr "Разделенный запятыми список первичных ключей разрешений, предоставляемых этой роли."
 
 #: serializers.py:88
 #, python-format
@@ -133,16 +133,16 @@ msgstr "Нет такого разрешения: %s"
 
 #: views.py:30
 msgid "Available roles"
-msgstr ""
+msgstr "Доступные роли"
 
 #: views.py:31
 msgid "Group roles"
-msgstr ""
+msgstr "Роли группы"
 
 #: views.py:40
 #, python-format
 msgid "Roles of group: %s"
-msgstr ""
+msgstr "Роли группы: %s"
 
 #: views.py:82
 msgid "Available groups"
@@ -161,7 +161,7 @@ msgstr "Группы роли: %s"
 msgid ""
 "Add groups to be part of a role. They will inherit the role's permissions "
 "and access controls."
-msgstr ""
+msgstr "Добавьте группы, чтобы они стали частью роли. Они унаследуют разрешения и контроль доступа роли."
 
 #: views.py:107
 msgid "Available permissions"
@@ -174,7 +174,7 @@ msgstr "Предоставленные разрешения"
 #: views.py:143
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
-msgstr ""
+msgstr "Предоставленные здесь разрешения будут применяться ко всей системе и ко всем объектам."
 
 #: views.py:146
 #, python-format
@@ -187,8 +187,8 @@ msgid ""
 "role permissions for the entire system. Roles can also part of access "
 "controls lists. Access controls list are permissions granted to a role for "
 "specific objects which its group members inherit."
-msgstr ""
+msgstr "Роли - это единицы авторизации. Они содержат группы пользователей, которые наследуют разрешения ролей для всей системы. Роли также могут быть частью списков контроля доступа. Список контроля доступа - это разрешения, предоставленные роли для определенных объектов, которые наследуются членами ее группы."
 
 #: views.py:170
 msgid "There are no roles"
-msgstr ""
+msgstr "Нет ролей"

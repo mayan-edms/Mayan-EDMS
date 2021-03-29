@@ -4,14 +4,15 @@
 # 
 # Translators:
 # Translators:
+# Ilya Pavlov <spirkaa@gmail.com>, 2021
 # lilo.panic, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-14 04:40+0000\n"
-"PO-Revision-Date: 2020-09-27 06:47+0000\n"
-"Last-Translator: lilo.panic\n"
+"POT-Creation-Date: 2021-03-28 13:02+0000\n"
+"PO-Revision-Date: 2021-03-17 10:55+0000\n"
+"Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -122,7 +123,7 @@ msgstr "Редактировать сведения"
 
 #: links.py:22 views.py:54
 msgid "Create new group"
-msgstr "Создать новую группу"
+msgstr "Создать группу"
 
 #: links.py:29 links.py:62 links.py:83
 msgid "Delete"
@@ -134,7 +135,7 @@ msgstr "Редактировать"
 
 #: links.py:55 views.py:152
 msgid "Create new user"
-msgstr "Создать нового пользователя"
+msgstr "Создать пользователя"
 
 #: links.py:90
 msgid "User options"

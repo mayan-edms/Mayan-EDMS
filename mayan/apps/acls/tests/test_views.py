@@ -1,5 +1,6 @@
 from django.utils.encoding import force_text
 
+from mayan.apps.events.classes import EventModelRegistry
 from mayan.apps.testing.tests.base import GenericViewTestCase
 
 from ..events import event_acl_created, event_acl_deleted, event_acl_edited
@@ -327,11 +328,12 @@ class OrphanAccessControlListViewTestCase(
     def test_orphan_acl_create_view_with_permission(self):
         """
         Test creating an ACL entry for an object with no model permissions.
-        Result: Should display a blank permissions list (not optgroup)
+        Result: Should display a blank permissions list (no optgroup)
         """
         self._create_acl_test_object(
             create_test_permission=False, register_model_permissions=False
         )
+        EventModelRegistry.register(model=self.TestModel)
 
         self.grant_permission(permission=permission_acl_edit)
 
@@ -339,19 +341,22 @@ class OrphanAccessControlListViewTestCase(
 
         self._clear_events()
 
-        response = self.post(
-            viewname='acls:acl_create',
-            kwargs=self.test_object_view_kwargs, data={
-                'role': self.test_role.pk
-            }, follow=True
-        )
+        reponse = self._request_test_acl_create_post_view()
+        self.assertEqual(reponse.status_code, 302)
+
+        response = self._request_test_acl_create_get_view()
         self.assertNotContains(
             response=response, text='optgroup', status_code=200
         )
 
         self.assertEqual(
-            AccessControlList.objects.count(), test_acl_count
+            AccessControlList.objects.count(), test_acl_count + 1
         )
 
         events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, self.test_object)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_acl)
+        self.assertEqual(events[0].verb, event_acl_created.id)

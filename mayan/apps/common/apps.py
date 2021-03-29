@@ -10,7 +10,6 @@ from django.utils.encoding import force_text
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
-from mayan.apps.logging.mixins import LoggingAppConfigMixin
 from mayan.apps.templating.classes import AJAXTemplate
 
 from .handlers import handler_pre_initial_setup, handler_pre_upgrade
@@ -114,7 +113,7 @@ class MayanAppConfig(apps.AppConfig):
             )
 
 
-class CommonApp(LoggingAppConfigMixin, MayanAppConfig):
+class CommonApp(MayanAppConfig):
     app_namespace = 'common'
     app_url = ''
     has_rest_api = True

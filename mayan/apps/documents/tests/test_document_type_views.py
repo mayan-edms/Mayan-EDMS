@@ -128,7 +128,7 @@ class DocumentTypeViewsTestCase(
         self.assertEqual(DocumentType.objects.count(), 0)
 
     def test_document_type_edit_view_no_permission(self):
-        document_type_label = self.test_document_type.label
+        test_document_type_label = self.test_document_type.label
 
         response = self._request_test_document_type_edit_view()
 
@@ -136,10 +136,12 @@ class DocumentTypeViewsTestCase(
 
         self.test_document_type.refresh_from_db()
         self.assertEqual(
-            self.test_document_type.label, document_type_label
+            self.test_document_type.label, test_document_type_label
         )
 
     def test_document_type_edit_view_with_access(self):
+        test_document_type_label = self.test_document_type.label
+
         self.grant_access(
             obj=self.test_document_type,
             permission=permission_document_type_edit
@@ -152,7 +154,7 @@ class DocumentTypeViewsTestCase(
 
         self.test_document_type.refresh_from_db()
         self.assertNotEqual(
-            self.test_document_type.label, document_type_label
+            self.test_document_type.label, test_document_type_label
         )
 
     def test_document_type_list_view_no_permission(self):
