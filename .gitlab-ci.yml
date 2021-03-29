@@ -234,6 +234,24 @@ job_python_push_pypi:
     - releases/staging
   stage: stage_test
 
+job_mysql_upgrade_test:
+  <<: *job_base_upgrade_test
+  script:
+    - apt-get install -qq default-libmysqlclient-dev default-mysql-client libssl-dev
+    - . venv/bin/activate
+    - pip install mysqlclient==$PYTHON_MYSQL_VERSION
+    - mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD" -e "set global character_set_server=utf8mb4;"
+    - mayan-edms.py initialsetup --settings=mayan.settings.testing.gitlab-ci.db_mysql
+    - pip install dist/mayan_edms-*.whl
+    - mayan-edms.py performupgrade --settings=mayan.settings.testing.gitlab-ci.db_mysql
+  services:
+    - mysql:5.7
+  tags:
+    - mysql
+  variables:
+    MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    MYSQL_DATABASE: "mayan_edms"
+
 job_postgres_upgrade_test:
   <<: *job_base_upgrade_test
   script:
