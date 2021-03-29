@@ -6,7 +6,7 @@
 # Translators:
 # Roberto Rosario, 2017
 # D Muzzle <muzzlerator@gmail.com>, 2017
-# Panasoft, 2017
+# panasoft <cc072aa3@opayq.com>, 2017
 # Daler Abdulloev <abdulloevdaler@gmail.com>, 2019
 # Sergey Glita <gsv70@mail.ru>, 2020
 # OLeg Si <olegsm35@gmail.com>, 2020
@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-03-14 04:39+0000\n"
 "PO-Revision-Date: 2017-04-21 16:25+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:02+0000\n"
+"POT-Creation-Date: 2021-03-14 04:40+0000\n"
 "PO-Revision-Date: 2020-09-27 06:47+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
@@ -33,7 +33,7 @@ msgstr "Επιλογή"
 msgid "None"
 msgstr "Κανένα"
 
-#: generics.py:150
+#: generics.py:146
 msgid ""
 "Select entries to be removed. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
@@ -44,7 +44,7 @@ msgstr ""
 "παρακάτω κουμπί ή κάντε διπλό κλικ στην λίστα για να ολοκληρώσετε την "
 "ενέργεια."
 
-#: generics.py:155
+#: generics.py:151
 msgid ""
 "Select entries to be added. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
@@ -55,53 +55,53 @@ msgstr ""
 "παρακάτω κουμπί ή κάντε διπλό κλικ στην λίστα για να ολοκληρώσετε την "
 "ενέργεια."
 
-#: generics.py:288
+#: generics.py:284
 msgid "Add all"
 msgstr "Προσθήκη όλων"
 
-#: generics.py:297
+#: generics.py:293
 msgid "Add"
 msgstr "Προσθήκη"
 
-#: generics.py:307
+#: generics.py:303
 msgid "Remove all"
 msgstr "Αφαίρεση όλων"
 
-#: generics.py:316
+#: generics.py:312
 msgid "Remove"
 msgstr "Αφαίρεση"
 
-#: generics.py:532
+#: generics.py:522
 #, python-format
 msgid "Duplicate data error: %(error)s"
 msgstr "Σφάλμα διπλοκαταχώρησης: %(error)s"
 
-#: generics.py:553
+#: generics.py:543
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
 msgstr "%(object)s δεν δημιουργήθηκε, σφάλμα: %(error)s"
 
-#: generics.py:566
+#: generics.py:556
 #, python-format
 msgid "%(object)s created successfully."
 msgstr "%(object)s δημιουργήθηκε επιτυχώς."
 
-#: generics.py:605
+#: generics.py:595
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
 msgstr "%(object)s δεν διαγράφηκε, σφάλμα: %(error)s"
 
-#: generics.py:614
+#: generics.py:604
 #, python-format
 msgid "%(object)s deleted successfully."
 msgstr "%(object)s διαγράφηκε επιτυχώς."
 
-#: generics.py:750
+#: generics.py:740
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
 msgstr "%(object)s δεν ενημερώθηκε,σφάλμα: %(error)s"
 
-#: generics.py:761
+#: generics.py:751
 #, python-format
 msgid "%(object)s updated successfully."
 msgstr "%(object)s ενημερώθηκε επιτυχώς."
@@ -115,38 +115,36 @@ msgstr "Κανένα %(verbose_name)s δεν βρέθηκε να αντιστο�
 #, python-format
 msgid "Unable to perform operation on object %(instance)s; %(exception)s."
 msgstr ""
-"Δεν είναι δυνατή η εκτέλεση λειτουργίας στο αντικείμενο %(instance)s; "
-"%(exception)s."
 
 #: mixins.py:351
 #, python-format
 msgid "Operation performed on %(object)s."
-msgstr "Η λειτουργία πραγματοποιήθηκε σε %(object)s."
+msgstr ""
 
 #: mixins.py:352
 #, python-format
 msgid "Operation performed on %(count)d object."
-msgstr "Η λειτουργία πραγματοποιήθηκε σε %(count)d αντικείμενο ."
+msgstr ""
 
 #: mixins.py:353
 #, python-format
 msgid "Operation performed on %(count)d objects."
-msgstr "Η λειτουργία πραγματοποιήθηκε σε %(count)d αντικείμενα ."
+msgstr ""
 
 #: mixins.py:354
 #, python-format
 msgid "Perform operation on %(object)s."
-msgstr "Εκτέλεση λειτουργίας σε %(object)s."
+msgstr ""
 
 #: mixins.py:355
 #, python-format
 msgid "Perform operation on %(count)d object."
-msgstr "Εκτέλεση λειτουργίας σε %(count)d αντικείμενο ."
+msgstr ""
 
 #: mixins.py:356
 #, python-format
 msgid "Perform operation on %(count)d objects."
-msgstr "Εκτέλεση λειτουργίας σε %(count)d αντικείμενα ."
+msgstr ""
 
 #: mixins.py:438
 msgid "Object"

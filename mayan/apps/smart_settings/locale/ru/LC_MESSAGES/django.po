@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
-"PO-Revision-Date: 2021-03-22 08:20+0000\n"
+"POT-Creation-Date: 2021-03-14 04:40+0000\n"
+"PO-Revision-Date: 2021-02-28 14:22+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -75,7 +75,7 @@ msgstr "Просмотр настроек"
 
 #: settings.py:26
 msgid "Django"
-msgstr "Django"
+msgstr ""
 
 #: settings.py:30
 msgid ""
@@ -363,4 +363,4 @@ msgstr "Пространство имён \"%s\" не найдено"
 
 #: views.py:76
 msgid "Setting namespaces"
-msgstr "Пространства имён параметров"
+msgstr "Пространство имён параметра"

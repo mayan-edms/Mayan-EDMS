@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-03-14 04:39+0000\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>, 2021\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -90,7 +90,7 @@ msgstr "Настройки анализа"
 
 #: links.py:75
 msgid "Parse documents per type"
-msgstr "Проанализировать документы указанного типа"
+msgstr "Проанализировать документы по типу"
 
 #: models.py:18
 msgid "Document page"
@@ -132,7 +132,7 @@ msgstr "Версия документа"
 
 #: models.py:72
 msgid "Date time submitted"
-msgstr "Дата и время отправки"
+msgstr "Дата и время отправления"
 
 #: models.py:78
 msgid "Document version parse error"
@@ -174,9 +174,7 @@ msgstr "Анализ версии документа"
 
 #: settings.py:15
 msgid "Set new document types to perform parsing automatically by default."
-msgstr ""
-"Включить по умолчанию автоматический запуск анализа для вновь создаваемых "
-"типов документов."
+msgstr "Запускать анализ автоматически для вновь создаваемых типов документов"
 
 #: settings.py:21
 msgid ""

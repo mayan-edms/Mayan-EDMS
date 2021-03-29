@@ -11,7 +11,7 @@ class LoggingViewTestCase(
 ):
     def setUp(self):
         super().setUp()
-        self._create_error_log_test_object()
+        self._create_test_object()
         self._create_error_log_entry()
 
     def test_object_error_list_view_no_permission(self):

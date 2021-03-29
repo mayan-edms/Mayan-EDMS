@@ -5,14 +5,14 @@
 # 
 # Translators:
 # D Muzzle <muzzlerator@gmail.com>, 2017
-# Panasoft, 2017
+# panasoft <cc072aa3@opayq.com>, 2017
 # lilo.panic, 2017
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-03-14 04:40+0000\n"
 "PO-Revision-Date: 2017-06-30 22:04+0000\n"
 "Last-Translator: lilo.panic, 2017\n"
 "Language-Team: Russian (https://www.transifex.com/rosarior/teams/13584/ru/)\n"
@@ -22,47 +22,47 @@ msgstr ""
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:24 links.py:10 permissions.py:5
+#: apps.py:16 links.py:10 permissions.py:5
 msgid "Task manager"
 msgstr ""
 
-#: apps.py:78
+#: apps.py:24
 msgid "Label"
 msgstr "Ярлык"
 
-#: apps.py:82
+#: apps.py:28
 msgid "Name"
 msgstr "Название"
 
-#: apps.py:87
+#: apps.py:33
 msgid "Default queue?"
 msgstr ""
 
-#: apps.py:92
+#: apps.py:38
 msgid "Is transient?"
 msgstr ""
 
-#: apps.py:96
+#: apps.py:42
 msgid "Type"
 msgstr "Тип"
 
-#: apps.py:101
+#: apps.py:47
 msgid "Start time"
 msgstr ""
 
-#: apps.py:105
+#: apps.py:51
 msgid "Host"
 msgstr "Хост"
 
-#: apps.py:109
+#: apps.py:55
 msgid "Arguments"
 msgstr "Аргументы"
 
-#: apps.py:113
+#: apps.py:59
 msgid "Keyword arguments"
 msgstr ""
 
-#: apps.py:117
+#: apps.py:63
 msgid "Worker process ID"
 msgstr ""
 

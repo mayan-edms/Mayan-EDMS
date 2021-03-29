@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:02+0000\n"
+"POT-Creation-Date: 2021-03-14 04:40+0000\n"
 "PO-Revision-Date: 2020-09-27 06:47+0000\n"
 "Last-Translator: Benoît GROUSSET <benoit@grousset.xyz>, 2021\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -39,7 +39,7 @@ msgstr "Sélection"
 msgid "None"
 msgstr "Aucun"
 
-#: generics.py:150
+#: generics.py:146
 msgid ""
 "Select entries to be removed. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
@@ -49,7 +49,7 @@ msgstr ""
 "sélectionner plusieurs entrées. Une fois la sélection terminée, cliquez sur "
 "le bouton ci-dessous ou double-cliquez sur la liste pour activer l'action."
 
-#: generics.py:155
+#: generics.py:151
 msgid ""
 "Select entries to be added. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
@@ -59,53 +59,53 @@ msgstr ""
 "sélectionner plusieurs entrées. Une fois la sélection terminée, cliquez sur "
 "le bouton ci-dessous ou double-cliquez sur la liste pour activer l'action."
 
-#: generics.py:288
+#: generics.py:284
 msgid "Add all"
 msgstr "Ajouter tout"
 
-#: generics.py:297
+#: generics.py:293
 msgid "Add"
 msgstr "Ajouter"
 
-#: generics.py:307
+#: generics.py:303
 msgid "Remove all"
 msgstr "Tout retirer"
 
-#: generics.py:316
+#: generics.py:312
 msgid "Remove"
 msgstr "Retirer"
 
-#: generics.py:532
+#: generics.py:522
 #, python-format
 msgid "Duplicate data error: %(error)s"
 msgstr "Erreur de données en double: %(error)s"
 
-#: generics.py:553
+#: generics.py:543
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
 msgstr "%(object)s n'a pas été créé, erreur : %(error)s"
 
-#: generics.py:566
+#: generics.py:556
 #, python-format
 msgid "%(object)s created successfully."
 msgstr "%(object)s créé avec succès."
 
-#: generics.py:605
+#: generics.py:595
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
 msgstr "%(object)s n'a pas été supprimé, erreur : %(error)s."
 
-#: generics.py:614
+#: generics.py:604
 #, python-format
 msgid "%(object)s deleted successfully."
 msgstr "%(object)s supprimé avec succès."
 
-#: generics.py:750
+#: generics.py:740
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
 msgstr "%(object)s n'a pas été mis à jour, erreur : %(error)s."
 
-#: generics.py:761
+#: generics.py:751
 #, python-format
 msgid "%(object)s updated successfully."
 msgstr "%(object)s mis à jour avec succès."

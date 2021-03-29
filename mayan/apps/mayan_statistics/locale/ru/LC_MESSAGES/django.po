@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
-"PO-Revision-Date: 2021-03-22 07:15+0000\n"
+"POT-Creation-Date: 2021-03-14 04:40+0000\n"
+"PO-Revision-Date: 2021-03-01 10:56+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -29,11 +29,11 @@ msgstr "Статистика"
 #. which the statistic will be updated
 #: apps.py:36
 msgid "Schedule"
-msgstr "Расписание"
+msgstr "Запланировать"
 
 #: apps.py:42
 msgid "Last update"
-msgstr "Последнее обновление"
+msgstr ""
 
 #: classes.py:146
 msgid "Never"
@@ -41,7 +41,7 @@ msgstr "Никогда"
 
 #: links.py:10
 msgid "Queue"
-msgstr "Поставить в очередь"
+msgstr "Очередь"
 
 #: links.py:15
 msgid "View"
@@ -49,11 +49,11 @@ msgstr "Просмотр"
 
 #: links.py:20
 msgid "Namespace details"
-msgstr "Подробности пространства имён"
+msgstr "Подробности пространства имен"
 
 #: links.py:25
 msgid "Namespace list"
-msgstr "Список пространств имён"
+msgstr ""
 
 #. Translators: 'Slug' refers to the URL valid ID of the statistic
 #. More info: https://docs.djangoproject.com/en/1.7/glossary/#term-slug
@@ -71,11 +71,11 @@ msgstr "Данные"
 
 #: models.py:17
 msgid "Statistics result"
-msgstr "Результат статистики"
+msgstr ""
 
 #: models.py:18
 msgid "Statistics results"
-msgstr "Результаты статистики"
+msgstr ""
 
 #: permissions.py:8
 msgid "View statistics"
@@ -83,16 +83,16 @@ msgstr "Просмотр статистики"
 
 #: queues.py:12
 msgid "Execute statistic"
-msgstr "Сбор статистики"
+msgstr ""
 
 #: templates/statistics/renderers/chartjs/line.html:14
 msgid "No data available."
-msgstr "Данные недоступны."
+msgstr ""
 
 #: templates/statistics/renderers/chartjs/line.html:16
 #, python-format
 msgid "Last update: %(datetime)s"
-msgstr "Последнее обновление: %(datetime)s"
+msgstr ""
 
 #: views.py:17
 msgid "Statistics namespaces"
@@ -101,7 +101,7 @@ msgstr "Статистика пространств имён"
 #: views.py:33
 #, python-format
 msgid "Namespace details for: %s"
-msgstr "Подробности пространства имён: %s"
+msgstr "Детали пространства имён для: %s"
 
 #: views.py:55
 #, python-format
@@ -116,9 +116,9 @@ msgstr "Статистика \"%s\" не найдена."
 #: views.py:80
 #, python-format
 msgid "Queue statistic \"%s\" to be updated?"
-msgstr "Поставить статистику \"%s\" в очередь для обновления?"
+msgstr ""
 
 #: views.py:94
 #, python-format
 msgid "Statistic \"%s\" queued successfully for update."
-msgstr "Статистика \"%s\" поставлена в очередь для обновления."
+msgstr ""

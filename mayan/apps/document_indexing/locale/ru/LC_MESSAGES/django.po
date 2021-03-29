@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
-"PO-Revision-Date: 2021-03-17 10:56+0000\n"
+"POT-Creation-Date: 2021-03-14 04:39+0000\n"
+"PO-Revision-Date: 2021-03-08 10:00+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -62,11 +62,11 @@ msgstr "Индекс изменен"
 
 #: forms.py:16
 msgid "Index templates to be queued for rebuilding."
-msgstr "Шаблоны индексы, которые будут перестроены."
+msgstr "Задача перестроения шаблонов индексации поставлена в очередь."
 
 #: forms.py:17 links.py:27
 msgid "Index templates"
-msgstr "Шаблоны индекса"
+msgstr "Шаблоны индексирования"
 
 #: forms.py:32
 msgid "Template"
@@ -239,7 +239,7 @@ msgstr "Индексация"
 
 #: permissions.py:8
 msgid "Create new document indexes"
-msgstr "Создать индексы документов"
+msgstr "Создать новый индекс документов"
 
 #: permissions.py:11
 msgid "Edit document indexes"
@@ -360,7 +360,7 @@ msgstr "Перестроить индекс: %s"
 
 #: views.py:182
 msgid "Index queued for rebuild."
-msgstr "Индекс поставлен в очередь для перестроения."
+msgstr "Зада перестроения индекса поставлена в очередь."
 
 #: views.py:194
 msgid "Available document types"

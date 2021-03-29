@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-03-14 04:40+0000\n"
 "PO-Revision-Date: 2020-09-27 08:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-edms/language/zh-Hans/)\n"
@@ -69,67 +69,67 @@ msgstr "元数据类型关系已更新"
 msgid "ID"
 msgstr "ID"
 
-#: forms.py:16 models.py:49 search.py:31
+#: forms.py:17 models.py:49 search.py:31
 msgid "Name"
 msgstr "名称"
 
-#: forms.py:20 models.py:190 workflow_actions.py:93
+#: forms.py:21 models.py:190 workflow_actions.py:93
 msgid "Value"
 msgstr "值"
 
-#: forms.py:25
+#: forms.py:26
 msgid "Update"
 msgstr "更新"
 
-#: forms.py:46 forms.py:193 models.py:284
+#: forms.py:47 forms.py:192 models.py:284
 msgid "Required"
 msgstr "需要的"
 
-#: forms.py:75
+#: forms.py:76
 #, python-format
 msgid "Lookup value error: %s"
 msgstr "查找值错误：%s"
 
-#: forms.py:88
+#: forms.py:89
 #, python-format
 msgid "Default value error: %s"
 msgstr "默认值错误：%s"
 
-#: forms.py:106 models.py:152
+#: forms.py:105 models.py:152
 #, python-format
 msgid "\"%s\" is required for this document type."
 msgstr "此文档类型需要“%s”。"
 
-#: forms.py:124
+#: forms.py:123
 msgid "Metadata types to be added to the selected documents."
 msgstr "要添加到所选文档的元数据类型。"
 
-#: forms.py:125 models.py:84 models.py:282 search.py:9 search.py:17
+#: forms.py:124 models.py:84 models.py:282 search.py:9 search.py:17
 #: workflow_actions.py:86
 msgid "Metadata type"
 msgstr "元数据类型"
 
-#: forms.py:150 views.py:402
+#: forms.py:149 views.py:403
 msgid "Remove"
 msgstr "移除"
 
-#: forms.py:176
+#: forms.py:175
 msgid " Available template context variables: "
 msgstr " 可用模板情景变量："
 
-#: forms.py:191
+#: forms.py:190
 msgid "None"
 msgstr "没有"
 
-#: forms.py:192
+#: forms.py:191
 msgid "Optional"
 msgstr "可选的"
 
-#: forms.py:197 models.py:53 search.py:34
+#: forms.py:196 models.py:53 search.py:34
 msgid "Label"
 msgstr "标签"
 
-#: forms.py:201
+#: forms.py:200
 msgid "Relationship"
 msgstr "关系"
 
@@ -145,7 +145,7 @@ msgstr "编辑元数据"
 msgid "Remove metadata"
 msgstr "删除元数据"
 
-#: links.py:53 links.py:81 models.py:85 views.py:572 workflow_actions.py:23
+#: links.py:53 links.py:81 models.py:85 views.py:573 workflow_actions.py:23
 #: workflow_actions.py:170
 msgid "Metadata types"
 msgstr "元数据类型"
@@ -386,81 +386,81 @@ msgstr[0] "编辑文档元数据"
 msgid "Edit metadata for document: %s"
 msgstr "编辑%s文档的元数据"
 
-#: views.py:332
+#: views.py:335
 #, python-format
 msgid "Error editing metadata for document: %(document)s; %(exception)s."
 msgstr "编辑文档元数据时出错：%(document)s; %(exception)s。"
 
-#: views.py:344
+#: views.py:345
 #, python-format
 msgid "Metadata for document %s edited successfully."
 msgstr "文档%s的元数据已成功编辑。"
 
-#: views.py:369
+#: views.py:370
 msgid ""
 "Add metadata types this document's type to be able to add them to individual"
 " documents. Once added to individual document, you can then edit their "
 "values."
 msgstr "添加元数据类型至此文档的类型，以便能够将它们添加到单个文档中。一旦添加到单个文档，您就可以编辑它们的值。"
 
-#: views.py:374
+#: views.py:375
 msgid "This document doesn't have any metadata"
 msgstr "本文档没有任何元数据"
 
-#: views.py:375
+#: views.py:376
 #, python-format
 msgid "Metadata for document: %s"
 msgstr "文档%s的元数据"
 
-#: views.py:390
+#: views.py:391
 #, python-format
 msgid "Metadata remove request performed on %(count)d document"
 msgstr "在%(count)d文档上执行的元数据删除请求"
 
-#: views.py:393
+#: views.py:394
 #, python-format
 msgid "Metadata remove request performed on %(count)d documents"
 msgstr "在%(count)d文档上执行的元数据删除请求"
 
-#: views.py:404
+#: views.py:405
 msgid "Remove metadata types from the document"
 msgid_plural "Remove metadata types from the documents"
 msgstr[0] "从文档中删除元数据类型"
 
-#: views.py:415
+#: views.py:416
 #, python-format
 msgid "Remove metadata types from the document: %s"
 msgstr "从文档中删除元数据类型：%s"
 
-#: views.py:480
+#: views.py:481
 #, python-format
 msgid ""
 "Successfully remove metadata type \"%(metadata_type)s\" from document: "
 "%(document)s."
 msgstr "从文档:%(document)s中成功删除元数据类型“%(metadata_type)s”。"
 
-#: views.py:489
+#: views.py:490
 #, python-format
 msgid ""
 "Error removing metadata type \"%(metadata_type)s\" from document: "
 "%(document)s; %(exception)s"
 msgstr "从文档中删除元数据类型“%(metadata_type)s”时出错：%(document)s; %(exception)s"
 
-#: views.py:500
+#: views.py:501
 msgid "Create metadata type"
 msgstr "创建元数据类型"
 
-#: views.py:526
+#: views.py:527
 #, python-format
 msgid "Delete the metadata type: %s?"
 msgstr "删除元数据类型：%s？"
 
-#: views.py:542
+#: views.py:543
 #, python-format
 msgid "Edit metadata type: %s"
 msgstr "编辑元数据类型：%s"
 
-#: views.py:564
+#: views.py:565
 msgid ""
 "Metadata types are users defined properties that can be assigned values. "
 "Once created they must be associated to document types, either as optional "
@@ -469,34 +469,34 @@ msgid ""
 "is provided."
 msgstr "元数据类型是可以为其分配值的用户定义属性。创建后，它们必须与文档类型相关联，可以是每个文档类型的可选项或必需项。设置元数据类型作为文档类型的必需项将阻止上传该类型的文档，直到提供元数据值。"
 
-#: views.py:571
+#: views.py:572
 msgid "There are no metadata types"
 msgstr "没有元数据类型"
 
-#: views.py:592
+#: views.py:593
 #, python-format
 msgid "Error updating relationship; %s"
 msgstr "更新关系时出错; %s"
 
-#: views.py:597
+#: views.py:598
 msgid "Relationships updated successfully"
 msgstr "关系已成功更新"
 
-#: views.py:613
+#: views.py:614
 msgid ""
 "Create metadata types to be able to associate them to this document type."
 msgstr "创建元数据类型以便能够将它们与此文档类型相关联。"
 
-#: views.py:616
+#: views.py:617
 msgid "There are no metadata types available"
 msgstr "没有可用的元数据类型"
 
-#: views.py:619
+#: views.py:620
 #, python-format
 msgid "Metadata types for document type: %s"
 msgstr "文档类型%s的元数据类型"
 
-#: views.py:675
+#: views.py:676
 #, python-format
 msgid "Document types for metadata type: %s"
 msgstr "元数据类型%s的文档类型"

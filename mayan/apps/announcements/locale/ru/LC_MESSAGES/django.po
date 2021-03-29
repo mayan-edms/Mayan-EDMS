@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
-"PO-Revision-Date: 2021-03-22 08:18+0000\n"
+"POT-Creation-Date: 2021-03-14 04:40+0000\n"
+"PO-Revision-Date: 2021-03-01 10:40+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: apps.py:40 links.py:38 permissions.py:5
 msgid "Message of the day"
-msgstr "Объявление"
+msgstr "Объявление дня"
 
 #: apps.py:77 apps.py:81
 msgid "None"
@@ -34,11 +34,11 @@ msgstr "Объявления"
 
 #: events.py:8
 msgid "Message created"
-msgstr "Объявление создано"
+msgstr ""
 
 #: events.py:11
 msgid "Message edited"
-msgstr "Сообщение изменено"
+msgstr ""
 
 #: links.py:14 views.py:31
 msgid "Create message"
@@ -58,11 +58,11 @@ msgstr "Краткое описание объявления."
 
 #: models.py:18
 msgid "Label"
-msgstr "Заголовок"
+msgstr "Ярлык"
 
 #: models.py:21
 msgid "The actual message to be displayed."
-msgstr "Сообщение, которое будет отображаться."
+msgstr "Тело объявления, которое будет отображаться."
 
 #: models.py:22 models.py:39
 msgid "Message"
@@ -106,40 +106,40 @@ msgstr "Просмотр объявлений"
 
 #: templates/motd/messages.html:8
 msgid "Messages of the day"
-msgstr "Объявления"
+msgstr "Объявления дня"
 
 #: views.py:45
 #, python-format
 msgid "Delete request performed on %(count)d message"
-msgstr "Запрос на удаление выполнен для %(count)d объявления"
+msgstr ""
 
 #: views.py:47
 #, python-format
 msgid "Delete request performed on %(count)d messages"
-msgstr "Запрос на удаление, выполненный для %(count)d объявлений"
+msgstr ""
 
 #: views.py:54
 msgid "Delete the selected message?"
 msgid_plural "Delete the selected messages?"
-msgstr[0] "Удалить выбранное объявление?"
-msgstr[1] "Удалить выбранные объявления?"
-msgstr[2] "Удалить выбранные объявления?"
-msgstr[3] "Удалить выбранные объявления?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: views.py:64
 #, python-format
 msgid "Delete message: %s?"
-msgstr "Удалить объявление: %s?"
+msgstr ""
 
 #: views.py:75
 #, python-format
 msgid "Message \"%s\" deleted successfully."
-msgstr "Объявление \"%s\" удалено."
+msgstr ""
 
 #: views.py:80
 #, python-format
 msgid "Error deleting message \"%(message)s\": %(error)s"
-msgstr "Ошибка при удалении объявления \"%(message)s\": %(error)s"
+msgstr ""
 
 #: views.py:96
 #, python-format
@@ -151,8 +151,8 @@ msgid ""
 "Messages are displayed in the login view. You can use messages to convery "
 "information about your organzation, announcements or usage guidelines for "
 "your users."
-msgstr "Объявления отображаются на странице входа в систему. Вы можете использовать объявления для передачи информации о вашей организации, объявлений или руководств по использованию для ваших пользователей."
+msgstr ""
 
 #: views.py:122
 msgid "No messages available"
-msgstr "Нет доступных объявлений"
+msgstr ""

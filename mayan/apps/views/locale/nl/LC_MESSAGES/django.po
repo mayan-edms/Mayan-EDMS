@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:02+0000\n"
+"POT-Creation-Date: 2021-03-14 04:40+0000\n"
 "PO-Revision-Date: 2020-09-27 06:47+0000\n"
 "Last-Translator: bwakkie <bwakkie@gmail.com>, 2021\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
@@ -34,7 +34,7 @@ msgstr "Selectie"
 msgid "None"
 msgstr "Geen"
 
-#: generics.py:150
+#: generics.py:146
 msgid ""
 "Select entries to be removed. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
@@ -44,7 +44,7 @@ msgstr ""
 "meerdere items te selecteren. Zodra de selectie is voltooid, klikt u op de "
 "onderstaande knop of dubbelklikt u op de lijst om de actie te activeren."
 
-#: generics.py:155
+#: generics.py:151
 msgid ""
 "Select entries to be added. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
@@ -54,53 +54,53 @@ msgstr ""
 "meerdere items te selecteren. Zodra de selectie is voltooid, klikt u op de "
 "onderstaande knop of dubbelklikt u op de lijst om de actie te activeren."
 
-#: generics.py:288
+#: generics.py:284
 msgid "Add all"
 msgstr "Alle toevoegen"
 
-#: generics.py:297
+#: generics.py:293
 msgid "Add"
 msgstr "Toevoegen"
 
-#: generics.py:307
+#: generics.py:303
 msgid "Remove all"
 msgstr "Alle verwijderen"
 
-#: generics.py:316
+#: generics.py:312
 msgid "Remove"
 msgstr "Verwijderen"
 
-#: generics.py:532
+#: generics.py:522
 #, python-format
 msgid "Duplicate data error: %(error)s"
 msgstr "Dubbele gegevensfout: %(error)s"
 
-#: generics.py:553
+#: generics.py:543
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
 msgstr "%(object)s niet aangemaakt, foutmelding: %(error)s."
 
-#: generics.py:566
+#: generics.py:556
 #, python-format
 msgid "%(object)s created successfully."
 msgstr "%(object)s met succes aangemaakt."
 
-#: generics.py:605
+#: generics.py:595
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
 msgstr "%(object)s niet verwijderd, foutmelding: %(error)s."
 
-#: generics.py:614
+#: generics.py:604
 #, python-format
 msgid "%(object)s deleted successfully."
 msgstr "%(object)s met succes verwijderd."
 
-#: generics.py:750
+#: generics.py:740
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
 msgstr "%(object)s niet bijgewerkt, foutmelding: %(error)s."
 
-#: generics.py:761
+#: generics.py:751
 #, python-format
 msgid "%(object)s updated successfully."
 msgstr "%(object)s werden met succes bijgewerkt."

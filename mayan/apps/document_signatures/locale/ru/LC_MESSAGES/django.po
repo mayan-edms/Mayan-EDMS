@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
-"PO-Revision-Date: 2021-03-19 10:00+0000\n"
+"POT-Creation-Date: 2021-03-14 04:39+0000\n"
+"PO-Revision-Date: 2021-03-05 10:06+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -110,7 +110,7 @@ msgstr "Тип ключа"
 
 #: links.py:30
 msgid "Verify all documents"
-msgstr "Проверить подписи документов"
+msgstr "Проверить все документы"
 
 #: links.py:37 links.py:77 queues.py:8
 msgid "Signatures"
@@ -122,7 +122,7 @@ msgstr "Удалить"
 
 #: links.py:50
 msgid "Sign detached"
-msgstr "Подписать отделённой"
+msgstr "Подпись отделена"
 
 #: links.py:57
 msgid "Details"
@@ -134,7 +134,7 @@ msgstr "Скачать"
 
 #: links.py:70
 msgid "Sign embedded"
-msgstr "Подписать встроенной"
+msgstr "Подпись встроена"
 
 #: links.py:83
 msgid "Upload signature"
@@ -210,15 +210,15 @@ msgstr "Подписать документы встроенными подпи�
 
 #: permissions.py:18
 msgid "Delete detached signatures"
-msgstr "Удалить отделённые подписи"
+msgstr "Удалить отделенные подписи"
 
 #: permissions.py:22
 msgid "Download detached document signatures"
-msgstr "Скачать отделённые подписи документов"
+msgstr "Скачать отделенные подписи документов"
 
 #: permissions.py:26
 msgid "Upload detached document signatures"
-msgstr "Загрузить отделённые подписи документов"
+msgstr "Загрузить отделенные подписи документов"
 
 #: permissions.py:30
 msgid "Verify document signatures"
@@ -246,7 +246,7 @@ msgstr "Проверить отсутствующие встроенные по�
 
 #: settings.py:20
 msgid "Path to the Storage subclass to use when storing detached signatures."
-msgstr "Путь к подклассу Storage для использования при хранении отделённых подписей."
+msgstr "Путь к подклассу Storage для использования при хранении отделенных подписей."
 
 #: settings.py:27
 msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND."
@@ -256,11 +256,11 @@ msgstr "Аргументы, передаваемые в SIGNATURE_STORAGE_BACKEN
 msgid ""
 "Unable to initialize the detached signatures storage. Check the settings {} "
 "and {} for formatting errors."
-msgstr "Невозможно инициализировать хранилище отделённых подписей. Проверьте настройки {} и {} на наличие ошибок форматирования."
+msgstr "Невозможно инициализировать хранилище отделенных подписей. Проверьте настройки {} и {} на наличие ошибок форматирования."
 
 #: storages.py:20
 msgid "Detached signatures"
-msgstr "Отделённые подписи"
+msgstr "Отделенные подписи"
 
 #: views.py:68 views.py:159
 msgid "Passphrase is needed to unlock this key."

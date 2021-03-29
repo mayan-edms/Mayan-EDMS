@@ -4,14 +4,13 @@
 # 
 # Translators:
 # Translators:
-# Ilya Pavlov <spirkaa@gmail.com>, 2021
 # lilo.panic, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
-"PO-Revision-Date: 2021-03-22 07:29+0000\n"
+"POT-Creation-Date: 2021-03-14 04:39+0000\n"
+"PO-Revision-Date: 2021-02-28 11:09+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -34,7 +33,7 @@ msgstr "Субъект"
 
 #: apps.py:46 apps.py:75
 msgid "Event"
-msgstr "Событие"
+msgstr ""
 
 #: apps.py:50 apps.py:80
 msgid "Target"
@@ -42,7 +41,7 @@ msgstr "Объект"
 
 #: apps.py:54
 msgid "Action object"
-msgstr "Объект действия"
+msgstr ""
 
 #: apps.py:59 forms.py:10 forms.py:67
 msgid "Namespace"
@@ -54,16 +53,16 @@ msgstr "Ярлык"
 
 #: apps.py:86
 msgid "Seen"
-msgstr "Просмотрено"
+msgstr ""
 
 #: classes.py:142
 #, python-format
 msgid "Unknown or obsolete event type: %s"
-msgstr "Неизвестный или устаревший тип события: %s"
+msgstr ""
 
 #: forms.py:18 forms.py:75
 msgid "Subscription"
-msgstr "Подписка"
+msgstr ""
 
 #: forms.py:20 forms.py:77
 msgid "No"
@@ -71,7 +70,7 @@ msgstr "Нет"
 
 #: forms.py:21 forms.py:78
 msgid "Subscribed"
-msgstr "Подписан"
+msgstr ""
 
 #: html_widgets.py:57
 msgid "System"
@@ -79,23 +78,23 @@ msgstr "Система"
 
 #: links.py:28
 msgid "My events"
-msgstr "Мои события"
+msgstr ""
 
 #: links.py:46 models.py:63 views.py:74
 msgid "Event subscriptions"
-msgstr "Подписки на события"
+msgstr ""
 
 #: links.py:51
 msgid "Mark as seen"
-msgstr "Отметить как просмотренное"
+msgstr ""
 
 #: links.py:54
 msgid "Mark all as seen"
-msgstr "Отметить все как просмотренные"
+msgstr ""
 
 #: links.py:60
 msgid "Subscriptions"
-msgstr "Подписки"
+msgstr ""
 
 #: models.py:22
 msgid "Name"
@@ -103,11 +102,11 @@ msgstr "Название"
 
 #: models.py:26
 msgid "Stored event type"
-msgstr "Тип сохраненного события"
+msgstr ""
 
 #: models.py:27
 msgid "Stored event types"
-msgstr "Типы сохраненных событий"
+msgstr ""
 
 #: models.py:52 models.py:78 models.py:109
 msgid "User"
@@ -119,7 +118,7 @@ msgstr "Тип события"
 
 #: models.py:62
 msgid "Event subscription"
-msgstr "Подписка на событие"
+msgstr ""
 
 #: models.py:82
 msgid "Action"
@@ -127,23 +126,23 @@ msgstr "Действие"
 
 #: models.py:84
 msgid "Read"
-msgstr "Прочитано"
+msgstr ""
 
 #: models.py:90
 msgid "Notification"
-msgstr "Уведомление"
+msgstr ""
 
 #: models.py:91 views.py:132
 msgid "Notifications"
-msgstr "Уведомления"
+msgstr ""
 
 #: models.py:119
 msgid "Object event subscription"
-msgstr "Подписка на событие объекта"
+msgstr ""
 
 #: models.py:120
 msgid "Object event subscriptions"
-msgstr "Подписки на события объекта"
+msgstr ""
 
 #: permissions.py:8
 msgid "Access the events of an object"
@@ -152,29 +151,29 @@ msgstr "Доступ к событиям объекта"
 #: views.py:56
 #, python-format
 msgid "Error updating event subscription; %s"
-msgstr "Ошибка обновления подписки на событие; %s"
+msgstr ""
 
 #: views.py:61
 msgid "Event subscriptions updated successfully"
-msgstr "Подписки на события обновлены"
+msgstr ""
 
 #: views.py:127
 msgid "Subscribe to global or object events to receive notifications."
-msgstr "Подпишитесь на глобальные события или события объектов, чтобы получать уведомления."
+msgstr ""
 
 #: views.py:130
 msgid "There are no notifications"
-msgstr "Нет уведомлений"
+msgstr ""
 
 #: views.py:179
 msgid ""
 "Events are actions that have been performed to this object or using this "
 "object."
-msgstr "События - это действия, которые были выполнены с этим объектом или с использованием этого объекта."
+msgstr ""
 
 #: views.py:182
 msgid "There are no events for this object"
-msgstr "Для этого объекта нет событий"
+msgstr ""
 
 #: views.py:184
 #, python-format
@@ -184,16 +183,16 @@ msgstr "События для: %s"
 #: views.py:224
 #, python-format
 msgid "Error updating object event subscription; %s"
-msgstr "Ошибка обновления подписки на событие объекта; %s"
+msgstr ""
 
 #: views.py:230
 msgid "Object event subscriptions updated successfully"
-msgstr "Подписки на события объекта обновлены"
+msgstr ""
 
 #: views.py:243
 #, python-format
 msgid "Event subscriptions for: %s"
-msgstr "Подписки на события для: %s"
+msgstr ""
 
 #: views.py:295
 #, python-format

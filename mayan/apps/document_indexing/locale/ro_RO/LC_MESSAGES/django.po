@@ -5,14 +5,14 @@
 # Translators:
 # Translators:
 # Badea Gabriel <gcbadea@gmail.com>, 2013
-# Harald Ersch, 2019-2021
+# Harald Ersch, 2019-2020
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
-"PO-Revision-Date: 2021-03-25 13:14+0000\n"
-"Last-Translator: Harald Ersch\n"
+"POT-Creation-Date: 2021-03-14 04:39+0000\n"
+"PO-Revision-Date: 2021-03-06 15:21+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -347,7 +347,7 @@ msgid ""
 "Indexes group document automatically into levels. Indexes are defined using "
 "template whose markers are replaced with direct properties of documents like"
 " label or description, or that of extended properties like metadata."
-msgstr "Indexează grupul de documente automat pe niveluri. Indexurile sunt definite folosind șablonul ale cărui markere sunt înlocuite cu proprietăți directe ale documentelor precum eticheta sau descrierea sau cu proprietățile extinse precum metadatele."
+msgstr ""
 
 #: views.py:149
 msgid "There are no indexes."
@@ -406,7 +406,7 @@ msgstr "Editați nodul șablonului index: %s?"
 msgid ""
 "This could mean that no index templates have been created or that there are "
 "index templates but they are no properly defined."
-msgstr "Acest lucru ar putea însemna că nu au fost create șabloane de index sau că există șabloane de index, dar nu sunt definite corect."
+msgstr ""
 
 #: views.py:332
 msgid "There are no index instances available."

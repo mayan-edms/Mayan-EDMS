@@ -4,13 +4,12 @@
 # 
 # Translators:
 # Translators:
-# Ilya Pavlov <spirkaa@gmail.com>, 2021
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
-"PO-Revision-Date: 2021-03-28 13:02+0000\n"
+"POT-Creation-Date: 2021-03-14 04:39+0000\n"
+"PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -21,21 +20,21 @@ msgstr ""
 
 #: apps.py:19
 msgid "Dynamic search"
-msgstr "Поиск"
+msgstr ""
 
 #: classes.py:154
 msgid "No search model matching the query"
-msgstr "Нет поисковой модели, соответствующей запросу"
+msgstr ""
 
 #: forms.py:7
 msgid "Match all"
-msgstr "Соответствовать всем"
+msgstr ""
 
 #: forms.py:8
 msgid ""
 "When checked, only results that match all fields will be returned. When "
 "unchecked results that match at least one field will be returned."
-msgstr "Если этот флажок установлен, будут возвращены только результаты, соответствующие всем полям. Если флажок снят, будут возвращены результаты, соответствующие хотя бы одному полю."
+msgstr ""
 
 #: forms.py:27 templates/dynamic_search/search_box.html:39
 msgid "Search terms"
@@ -48,44 +47,40 @@ msgstr "Поиск"
 
 #: links.py:17 templates/dynamic_search/search_box.html:45 views.py:144
 msgid "Advanced search"
-msgstr "Расширенный поиск"
+msgstr ""
 
 #: links.py:21
 msgid "Search again"
-msgstr "Искать снова"
+msgstr ""
 
 #: links.py:25 views.py:90
 msgid "Reindex search backend"
-msgstr "Перестроить индекс поиска"
+msgstr ""
 
 #: permissions.py:8
 msgid "Execute search tools"
-msgstr "Запускать инструменты поиска"
+msgstr ""
 
 #: queues.py:11
 msgid "Remove a model instance from the search engine."
-msgstr "Удалить экземпляр модели из поиска."
+msgstr ""
 
 #: queues.py:16
 msgid "Index a model instance to the search engine."
-msgstr "Проиндексировать экземпляр модели для поиска."
-
-#: queues.py:21
-msgid "Index all instances of a search model to the search engine."
 msgstr ""
 
 #: settings.py:15
 msgid "Full path to the backend to be used to handle the search."
-msgstr "Полный путь к бэкэнду, который будет использоваться для поиска."
+msgstr ""
 
 #: settings.py:25
 msgid ""
 "Disables the single term bar search leaving only the advanced search button."
-msgstr "Отключить простой поиск и оставить только кнопку расширенного поиска."
+msgstr ""
 
 #: settings.py:31
 msgid "Maximum number search results to fetch and display."
-msgstr "Максимальное количество результатов поиска для извлечения и отображения."
+msgstr ""
 
 #: templates/dynamic_search/search_box.html:45
 msgid "Advanced"
@@ -93,32 +88,32 @@ msgstr "Дополнительно"
 
 #: views.py:38
 msgid "Try again using different terms. "
-msgstr "Измените запрос и попробуйте еще раз."
+msgstr ""
 
 #: views.py:40
 msgid "No search results"
-msgstr "Нет результатов поиска"
+msgstr ""
 
 #: views.py:42
 #, python-format
 msgid "Search results for: %s"
-msgstr "Результаты поиска: %s"
+msgstr ""
 
 #: views.py:86
 msgid ""
 "This tool is required only for some search backends. Search results will be "
 "affected while the backend is being reindexed."
-msgstr "Это требуется только для некоторых бэкэндов поиска. До конца выполнения результаты поиска могут быть неполными."
+msgstr ""
 
 #: views.py:92
 msgid "This tool erases and populates the search backend's internal index."
-msgstr "Этот инструмент стирает и заново наполняет внутренний индекс поисковой системы."
+msgstr ""
 
 #: views.py:110
 msgid "Search backend reindexing queued."
-msgstr "Перестроение индекса поиска поставлено в очередь."
+msgstr ""
 
 #: views.py:132
 #, python-format
 msgid "Search for: %s"
-msgstr "Поиск: %s"
+msgstr ""

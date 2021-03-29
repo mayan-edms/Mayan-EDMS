@@ -11,7 +11,6 @@ services:
       - redis
       # Enable to use RabbitMQ
       #- rabbitmq
-    env_file: env_file
     environment: &mayan_env
       # Enable to use RabbitMQ
       # MAYAN_CELERY_BROKER_URL: amqp://${MAYAN_RABBITMQ_USER:-mayan}:${MAYAN_RABBITMQ_PASSWORD:-mayanrabbitpass}@rabbitmq:5672/${MAYAN_RABBITMQ_VHOST:-mayan}
@@ -19,7 +18,7 @@ services:
       MAYAN_CELERY_BROKER_URL: redis://:${MAYAN_REDIS_PASSWORD:-mayanredispassword}@redis:6379/0
       MAYAN_CELERY_RESULT_BACKEND: redis://:${MAYAN_REDIS_PASSWORD:-mayanredispassword}@redis:6379/1
       MAYAN_DATABASES: "{'default':{'ENGINE':'django.db.backends.postgresql','NAME':'${MAYAN_DATABASE_NAME:-mayan}','PASSWORD':'${MAYAN_DATABASE_PASSWORD:-mayandbpass}','USER':'${MAYAN_DATABASE_USER:-mayan}','HOST':'${MAYAN_DATABASE_HOST:-postgresql'}}"
-      MAYAN_DOCKER_WAIT: "${MAYAN_DATABASE_HOST:-postgresql}:5432 redis:6379"
+      MAYAN_DOCKER_WAIT: "postgresql:5432 redis:6379"
       MAYAN_LOCK_MANAGER_BACKEND: mayan.apps.lock_manager.backends.redis_lock.RedisLock
       MAYAN_LOCK_MANAGER_BACKEND_ARGUMENTS: "{'redis_url':'redis://:${MAYAN_REDIS_PASSWORD:-mayanredispassword}@redis:6379/2'}"
       # Replace with the line below when using RabbitMQ
@@ -46,7 +45,7 @@ services:
       POSTGRES_DB: ${MAYAN_DATABASE_NAME:-mayan}
       POSTGRES_PASSWORD: ${MAYAN_DATABASE_PASSWORD:-mayandbpass}
       POSTGRES_USER: ${MAYAN_DATABASE_USER:-mayan}
-    image: postgres:${MAYAN_DOCKER_POSTGRES_TAG:-10.15-alpine}
+    image: postgres:10.15-alpine
     networks:
       - bridge
     restart: unless-stopped
@@ -72,7 +71,7 @@ services:
       - "256"
       - --requirepass
       - "${MAYAN_REDIS_PASSWORD:-mayanredispassword}"
-    image: redis:${MAYAN_DOCKER_REDIS_TAG:-6.0-alpine}
+    image: redis:6.0-alpine
     networks:
       - bridge
     restart: unless-stopped
@@ -90,7 +89,6 @@ services:
   #     - redis
   #     # Enable to use RabbitMQ
   #     # - rabbitmq
-  #   env_file: env_file
   #   environment:
   #     <<: *mayan_env
   #   image: mayanedms/mayanedms:${MAYAN_DOCKER_IMAGE_TAG:-s4.0}
@@ -123,7 +121,6 @@ services:
   #     - redis
   #     # Enable to use RabbitMQ
   #     # - rabbitmq
-  #   env_file: env_file
   #   environment:
   #     <<: *mayan_env
   #   image: mayanedms/mayanedms:${MAYAN_DOCKER_IMAGE_TAG:-s4.0}
@@ -142,7 +139,6 @@ services:
   #     - redis
   #     # Enable to use RabbitMQ
   #     # - rabbitmq
-  #   env_file: env_file
   #   environment:
   #     <<: *mayan_env
   #   image: mayanedms/mayanedms:${MAYAN_DOCKER_IMAGE_TAG:-s4.0}

@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
-"PO-Revision-Date: 2021-03-19 11:30+0000\n"
+"POT-Creation-Date: 2021-03-14 04:40+0000\n"
+"PO-Revision-Date: 2021-03-08 10:05+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -28,15 +28,15 @@ msgstr "Распознавание текста"
 
 #: apps.py:103
 msgid "The OCR content."
-msgstr "Распознанное содержимое."
+msgstr ""
 
 #: apps.py:108
 msgid "A generator returning the document's pages OCR content."
-msgstr "Генератор, возвращающий  распознанное содержимое страниц документа."
+msgstr ""
 
 #: apps.py:109
 msgid "OCR content"
-msgstr "Распознанное содержимое"
+msgstr ""
 
 #: apps.py:133
 msgid "Date and time"
@@ -48,27 +48,27 @@ msgstr "Результат"
 
 #: backends/tesseract.py:89
 msgid "Tesseract OCR not found."
-msgstr "Tesseract OCR не найден."
+msgstr ""
 
 #: dependencies.py:23
 msgid "Free Open Source OCR Engine"
-msgstr "Свободно распространяемая система распознавания текста с открытым исходным кодом"
+msgstr ""
 
 #: events.py:8
 msgid "Document OCR content deleted"
-msgstr "Распознанное содержимое документа удалено"
+msgstr ""
 
 #: events.py:12
 msgid "Document version submitted for OCR"
-msgstr "Версия документа отправлена на распознавание"
+msgstr "Версия документа для OCR"
 
 #: events.py:16
 msgid "Document version OCR finished"
-msgstr "Распознавание версии документа завершено"
+msgstr "ORC версии документа завершен"
 
 #: forms.py:14 forms.py:45
 msgid "Contents"
-msgstr "Содержимое"
+msgstr "Содержание"
 
 #: forms.py:74
 #, python-format
@@ -77,7 +77,7 @@ msgstr "Страница %(page_number)d"
 
 #: links.py:30 links.py:35
 msgid "Delete OCR content"
-msgstr "Удалить распознанное содержимое"
+msgstr ""
 
 #: links.py:41 links.py:46
 msgid "Submit for OCR"
@@ -89,7 +89,7 @@ msgstr "Настройки распознавания"
 
 #: links.py:56
 msgid "OCR documents per type"
-msgstr "Распознать документы указанного типа"
+msgstr "Распознавание документов с определенным типом"
 
 #: links.py:61 links.py:67 views.py:217
 msgid "OCR errors"
@@ -121,7 +121,7 @@ msgstr "Страница документа"
 
 #: models.py:46
 msgid "The actual text content extracted by the OCR backend."
-msgstr "Фактическое текстовое содержимое, извлеченное бэкэндом распознавания."
+msgstr ""
 
 #: models.py:47
 msgid "Content"
@@ -141,7 +141,7 @@ msgstr "Версия документа"
 
 #: models.py:70
 msgid "Date time submitted"
-msgstr "Дата и время отправки"
+msgstr "Дата и время отправления"
 
 #: models.py:76
 msgid "Document version OCR error"
@@ -153,7 +153,7 @@ msgstr "Ошибки распознавания для версий докуме
 
 #: permissions.py:8
 msgid "Submit documents for OCR"
-msgstr "Отправить документы на распознавание текста"
+msgstr "Отправить документы для распознавания текста"
 
 #: permissions.py:11
 msgid "View the transcribed text from document"
@@ -161,50 +161,50 @@ msgstr "Просмотр распознанного текста докумен�
 
 #: permissions.py:15
 msgid "Change document type OCR settings"
-msgstr "Изменить настройки распознавания для типа документа"
+msgstr "Изменить настройки распознавания документа"
 
 #: queues.py:10
 msgid "Finish document version OCR"
-msgstr "Завершить распознавание версии документа"
+msgstr ""
 
 #: queues.py:14
 msgid "Document version page OCR"
-msgstr "Распознать страницу версии документа"
+msgstr ""
 
 #: queues.py:18
 msgid "Document version OCR"
-msgstr "Распознать версию документа"
+msgstr "Распознавание версии документа"
 
 #: settings.py:17
 msgid "Set new document types to perform OCR automatically by default."
-msgstr "Включить по умолчанию автоматический запуск распознавания текста для вновь создаваемых типов документов."
+msgstr "Задать новые типы документов для которых распознавание будет запускаться по умолчанию. "
 
 #: settings.py:22
 msgid "Full path to the backend to be used to do OCR."
-msgstr "Полный путь к бэкэнду, который будет использоваться для распознавания текста."
+msgstr "Полный путь до бэкэнда, выполняющего OCR."
 
 #: views.py:35
 msgid "Delete the OCR content of the selected document?"
 msgid_plural "Delete the OCR content of the selected documents?"
-msgstr[0] "Удалить распознанное содержимое выбранного документа?"
-msgstr[1] "Удалить распознанное содержимое выбранных документов?"
-msgstr[2] "Удалить распознанное содержимое выбранных документов?"
-msgstr[3] "Удалить распознанное содержимое выбранных документов?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
 #: views.py:70
 #, python-format
 msgid "OCR result for document: %s"
-msgstr "Распознанный текст документа: %s"
+msgstr "Результат распозанвания для документа: %s"
 
 #: views.py:95
 #, python-format
 msgid "OCR errors for document: %s"
-msgstr "Ошибки распознавания документа: %s"
+msgstr "Ошибки распознавания для документа: %s"
 
 #: views.py:121
 #, python-format
 msgid "OCR result for document page: %s"
-msgstr "Распознанный текст страницы документа: %s"
+msgstr "Результат распознавания для страницы документа: %s"
 
 #: views.py:137
 msgid "Submit the selected document to the OCR queue?"
@@ -216,21 +216,21 @@ msgstr[3] "Отправить выделенные документы в оче�
 
 #: views.py:154
 msgid "Submit all documents of a type for OCR"
-msgstr "Отправить все документы указанного типа на распознавание"
+msgstr "Отправить все документы определённого типа на распознавание"
 
 #: views.py:171
 #, python-format
 msgid "%(count)d documents added to the OCR queue."
-msgstr "%(count)d документов добавлено в очередь для распознавания"
+msgstr ""
 
 #: views.py:206
 #, python-format
 msgid "Edit OCR settings for document type: %s."
-msgstr "Изменить настройки распознавания для типа документа: %s"
+msgstr ""
 
 #: workflow_actions.py:15
 msgid "Page condition"
-msgstr "Состояние страницы"
+msgstr ""
 
 #: workflow_actions.py:19
 msgid ""
@@ -239,16 +239,16 @@ msgid ""
 "page. Conditions that do not return any value, that return the Python "
 "logical None, or an empty string ('') are considered to be logical false, "
 "any other value is considered to be the logical true."
-msgstr "Условие, которое определяет, будет ли изменено распознанное содержимое страницы или нет. Условие оценивается по итерированной странице документа. Условия, которые не возвращают никакого значения, которые возвращают логическое значение Python None или пустую строку (''), считаются логическим ЛОЖЬ, любое другое значение считается логическим ИСТИНА."
+msgstr ""
 
 #: workflow_actions.py:31
 msgid "Page content"
-msgstr "Содержимое страницы"
+msgstr ""
 
 #: workflow_actions.py:35
 msgid "A template that will generate the OCR content to be saved."
-msgstr "Шаблон, генерирующий распознанное содержимое для сохранения."
+msgstr ""
 
 #: workflow_actions.py:43
 msgid "Update document page OCR content"
-msgstr "Обновить распознанное содержимое страницы документа"
+msgstr ""

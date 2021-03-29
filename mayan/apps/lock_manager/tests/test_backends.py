@@ -118,15 +118,11 @@ class DefaultTimeoutTestMixin:
         lock_2.release()
 
 
-class FileLockBackendTestCase(
-    BaseLockBackendTestMixin, DefaultTimeoutTestMixin, BaseTestCase
-):
+class FileLockBackendTestCase(BaseLockBackendTestMixin, DefaultTimeoutTestMixin, BaseTestCase):
     backend_string = 'mayan.apps.lock_manager.backends.file_lock.FileLock'
 
 
-class ModelLockBackendTestCase(
-    BaseLockBackendTestMixin, DefaultTimeoutTestMixin, BaseTestCase
-):
+class ModelLockBackendTestCase(BaseLockBackendTestMixin, DefaultTimeoutTestMixin, BaseTestCase):
     backend_string = 'mayan.apps.lock_manager.backends.model_lock.ModelLock'
 
 
@@ -134,7 +130,5 @@ class ModelLockBackendTestCase(
 @override_settings(
     LOCK_MANAGER_BACKEND_ARGUMENTS={'redis_url': 'redis://127.0.0.1:6379/0'}
 )
-class RedisLockBackendTestCase(
-    BaseLockBackendTestMixin, DefaultTimeoutTestMixin, BaseTestCase
-):
+class RedisLockBackendTestCase(BaseLockBackendTestMixin, DefaultTimeoutTestMixin, BaseTestCase):
     backend_string = 'mayan.apps.lock_manager.backends.redis_lock.RedisLock'
