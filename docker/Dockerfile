@@ -68,7 +68,8 @@ apt-get update \
 && if [ "$(uname -m)" = "armv7l" ]; then \
     ln -s /usr/lib/arm-linux-gnueabihf/libz.so /usr/lib/ \
     && ln -s /usr/lib/arm-linux-gnueabihf/libjpeg.so /usr/lib/ \
-; fi
+; fi \
+&& sed -i 's/#user_allow_other/user_allow_other/g' /etc/fuse.conf
 
 ####
 # builder_image - This image builds the Python package and is discarded afterwards
