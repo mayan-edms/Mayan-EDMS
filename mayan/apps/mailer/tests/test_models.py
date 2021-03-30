@@ -99,3 +99,16 @@ class ModelTestCase(MailerTestMixin, GenericDocumentTestCase):
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
         self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
         self.assertEqual(mail.outbox[0].bcc, [TEST_EMAIL_ADDRESS])
+
+    def test_send_with_reply_to(self):
+        self._create_test_user_mailer()
+        self.test_user_mailer.send(
+            to=TEST_EMAIL_ADDRESS, reply_to=TEST_EMAIL_ADDRESS
+        )
+
+        self.assertEqual(len(mail.outbox), 1)
+        self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
+        self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
+        self.assertEqual(mail.outbox[0].reply_to, [TEST_EMAIL_ADDRESS])
+
+

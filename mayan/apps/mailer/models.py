@@ -122,8 +122,8 @@ class UserMailer(models.Model):
         return super().save(*args, **kwargs)
 
     def send(
-        self, to, subject='', body='', cc=None, bcc=None, attachments=None,
-        _event_action_object=None, _user=None
+        self, to, attachments=None, subject='', body='', cc=None, bcc=None,
+        reply_to=None, _event_action_object=None, _user=None
     ):
         """
         Send a simple email. There is no document or template knowledge.
@@ -140,7 +140,12 @@ class UserMailer(models.Model):
         if bcc:
             bcc_list = split_recipient_list(recipients=[bcc])
         else:
-            bcc_list = bcc
+            bcc_list = None
+
+        if reply_to:
+            reply_to_list = split_recipient_list(recipients=[reply_to])
+        else:
+            reply_to_list = None
 
         backend_data = self.loads()
 
@@ -148,7 +153,8 @@ class UserMailer(models.Model):
             email_message = mail.EmailMultiAlternatives(
                 body=strip_tags(body), connection=connection,
                 from_email=backend_data.get('from'), subject=subject,
-                to=recipient_list, cc=cc_list, bcc=bcc_list
+                to=recipient_list, cc=cc_list, bcc=bcc_list,
+                reply_to=reply_to_list
             )
 
             for attachment in attachments or []:
@@ -177,8 +183,8 @@ class UserMailer(models.Model):
                 )
 
     def send_document(
-        self, document, to, subject='', body='', cc=None, bcc=None,
-        as_attachment=False, _user=None
+        self, document, to, as_attachment=False, body='', cc=None, bcc=None,
+        reply_to=None, subject='', _user=None
     ):
         """
         Send a document using this user mailing profile.
@@ -212,8 +218,8 @@ class UserMailer(models.Model):
                 )
 
         return self.send(
-            attachments=attachments, body=body_html_content,
-            subject=subject_text, to=to, cc=cc, bcc=bcc,
+            attachments=attachments, cc=cc, bcc=bcc, body=body_html_content,
+            reply_to=reply_to, subject=subject_text, to=to,
             _event_action_object=document, _user=_user
         )
 

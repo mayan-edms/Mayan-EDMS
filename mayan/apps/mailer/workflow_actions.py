@@ -56,6 +56,18 @@ class EmailAction(WorkflowAction):
                 'required': False
             }
         },
+        'reply_to': {
+            'label': _('Reply to'),
+            'class': 'django.forms.CharField', 'kwargs': {
+                'help_text': _(
+                    'Address used in the "Reply-To" header when sending the '
+                    'email. Can be multiple addresses '
+                    'separated by comma or semicolon. A template can be used '
+                    'to reference properties of the document.'
+                ),
+                'required': False
+            }
+        },
         'subject': {
             'label': _('Subject'),
             'class': 'django.forms.CharField', 'kwargs': {
@@ -84,8 +96,8 @@ class EmailAction(WorkflowAction):
         },
     }
     field_order = (
-        'mailing_profile', 'recipient', 'cc', 'bcc', 'subject', 'body',
-        'attachment'
+        'mailing_profile', 'recipient', 'cc', 'bcc', 'reply_to', 'subject',
+        'body', 'attachment'
     )
     label = _('Send email')
     widgets = {
@@ -99,28 +111,26 @@ class EmailAction(WorkflowAction):
         recipient = self.render_field(
             field_name='recipient', context=context
         )
-
         cc = self.render_field(
             field_name='cc', context=context
         )
-
         bcc = self.render_field(
             field_name='bcc', context=context
         )
-
+        reply_to = self.render_field(
+            field_name='reply_to', context=context
+        )
         subject = self.render_field(
             field_name='subject', context=context
         )
-
         body = self.render_field(
             field_name='body', context=context
         )
-
         user_mailer = self.get_user_mailer()
 
         kwargs = {
-            'bcc': bcc, 'cc': cc, 'body': body, 'subject': subject,
-            'to': recipient
+            'bcc': bcc, 'cc': cc, 'body': body, 'reply_to': reply_to,
+            'subject': subject, 'to': recipient
         }
 
         if self.form_data.get('attachment', False):

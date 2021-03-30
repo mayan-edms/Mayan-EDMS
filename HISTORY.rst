@@ -120,6 +120,8 @@
 - Add a third document filename generator that used an UUID plus the original
   filename of the uploaded file. This generator has the advantage of producing
   unique filename while also preserving the original filename for reference.
-
+- Add support for the "Reply To" field for sending documents via email and
+  for the mailing workflow actions. Closes GitLab issue #864. Thanks to
+  Kevin Pawsey (@kevinpawsey) for the request.
 
 
