@@ -70,6 +70,28 @@ class DocumentVersionViewTestCase(
         self.assertEqual(event.target, self.test_document_version)
         self.assertEqual(event.verb, event_document_version_edited.id)
 
+    def test_trashed_document_version_active_view_with_access(self):
+        self._create_test_document_version()
+
+        self.test_document.versions.first().active_set()
+
+        self.grant_access(
+            obj=self.test_document_version,
+            permission=permission_document_version_edit
+        )
+
+        self.test_document.delete()
+        self._clear_events()
+
+        response = self._request_test_document_version_active_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.test_document_version.refresh_from_db()
+        self.assertFalse(self.test_document_version.active)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
     def test_document_version_edit_view_no_permission(self):
         document_version_comment = self.test_document_version.comment
 
@@ -112,6 +134,29 @@ class DocumentVersionViewTestCase(
         self.assertEqual(event.target, self.test_document_version)
         self.assertEqual(event.verb, event_document_version_edited.id)
 
+    def test_trashed_document_version_edit_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document_version,
+            permission=permission_document_version_edit
+        )
+
+        document_version_comment = self.test_document_version.comment
+
+        self.test_document.delete()
+        self._clear_events()
+
+        response = self._request_test_document_version_edit_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.test_document_version.refresh_from_db()
+        self.assertEqual(
+            self.test_document_version.comment,
+            document_version_comment
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
     def test_document_version_list_view_no_permission(self):
         self._clear_events()
 
@@ -138,14 +183,29 @@ class DocumentVersionViewTestCase(
         event = self._get_test_object_event()
         self.assertEqual(event, None)
 
+    def test_trashed_document_version_list_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_version_view
+        )
+
+        self.test_document.delete()
+        self._clear_events()
+
+        response = self._request_test_document_version_list_view()
+        self.assertEqual(response.status_code, 404)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
     def test_document_version_preview_view_no_permission(self):
         self._clear_events()
 
         response = self._request_test_document_version_preview_view()
         self.assertEqual(response.status_code, 404)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_document_version_preview_view_with_access(self):
         self.grant_access(
@@ -167,14 +227,29 @@ class DocumentVersionViewTestCase(
         self.assertEqual(event.target, self.test_document)
         self.assertEqual(event.verb, event_document_viewed.id)
 
+    def test_trashed_document_version_preview_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document_version,
+            permission=permission_document_version_view
+        )
+
+        self.test_document.delete()
+        self._clear_events()
+
+        response = self._request_test_document_version_preview_view()
+        self.assertEqual(response.status_code, 404)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
     def test_document_version_print_form_view_no_permission(self):
         self._clear_events()
 
         response = self._request_test_document_version_print_form_view()
         self.assertEqual(response.status_code, 404)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_document_version_print_form_view_with_access(self):
         self.grant_access(
@@ -187,8 +262,23 @@ class DocumentVersionViewTestCase(
         response = self._request_test_document_version_print_form_view()
         self.assertEqual(response.status_code, 200)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_trashed_document_version_print_form_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document_version,
+            permission=permission_document_version_print
+        )
+
+        self.test_document.delete()
+        self._clear_events()
+
+        response = self._request_test_document_version_print_form_view()
+        self.assertEqual(response.status_code, 404)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_document_version_print_view_no_permission(self):
         self._clear_events()
@@ -196,8 +286,8 @@ class DocumentVersionViewTestCase(
         response = self._request_test_document_version_print_view()
         self.assertEqual(response.status_code, 404)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_document_version_print_view_with_access(self):
         self.grant_access(
@@ -210,8 +300,23 @@ class DocumentVersionViewTestCase(
         response = self._request_test_document_version_print_view()
         self.assertEqual(response.status_code, 200)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_trashed_document_version_print_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document_version,
+            permission=permission_document_version_print
+        )
+
+        self.test_document.delete()
+        self._clear_events()
+
+        response = self._request_test_document_version_print_view()
+        self.assertEqual(response.status_code, 404)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
 
 class DocumentVersionExportViewTestCase(
@@ -277,6 +382,27 @@ class DocumentVersionExportViewTestCase(
         self.assertEqual(events[2].actor, test_message)
         self.assertEqual(events[2].target, test_message)
         self.assertEqual(events[2].verb, event_message_created.id)
+
+    def test_trashed_document_version_export_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document_version,
+            permission=permission_document_version_export
+        )
+
+        download_file_count = DownloadFile.objects.count()
+
+        self.test_document.delete()
+        self._clear_events()
+
+        response = self._request_test_document_version_export_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertEqual(
+            DownloadFile.objects.count(), download_file_count
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
 
 class DocumentVersionCachePurgeViewTestCase(
