@@ -214,7 +214,7 @@ class IndexFilesystem(LoggingMixIn, Operations):
 
         try:
             self.index_template = IndexTemplate.objects.get(slug=index_slug)
-        except Index.DoesNotExist:
+        except IndexTemplate.DoesNotExist:
             print('Unknown index slug: {}.'.format(index_slug))
             exit(1)
 
