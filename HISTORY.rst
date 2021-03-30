@@ -115,4 +115,11 @@
     - A new container was added to mount an index.
     - Added support for Traefik.
     - Added sample .env file.
+    - Update required Docker Compose to version 1.28.
+
+- Add a third document filename generator that used an UUID plus the original
+  filename of the uploaded file. This generator has the advantage of producing
+  unique filename while also preserving the original filename for reference.
+
+
 
