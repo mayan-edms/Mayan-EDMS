@@ -37,6 +37,11 @@ networks:
 services:
   app:
     <<: *mayan-container
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.app.rule=Host(`www.example.com`)"  # Replace this with your published URL
+      - "traefik.http.routers.mayan.rule=Host(`mayan.app`)"
+      - "traefik.http.routers.mayan.entrypoints=web"
     ports:
       - "80:8000"
 
@@ -100,6 +105,28 @@ services:
     profiles:
       - extra_frontend
 
+  # Enable to run standalone workers
+  mountindex:
+    <<: *mayan-container
+    cap_add:
+      - SYS_ADMIN
+    devices:
+      - "/dev/fuse:/dev/fuse"
+    entrypoint:
+      - /bin/bash
+      - -c
+      - 'mkdir --parents /mnt/index && chown mayan:mayan /mnt/index && /usr/local/bin/entrypoint.sh run_command "mountindex --allow-other creation_date /mnt/index"'  # Replace "creation_date" with the index of your choice.
+    profiles:
+      - mountindex
+    security_opt:
+      - apparmor:unconfined
+    volumes:
+      - type: bind
+        source: /mnt/mayan_indexes/creation_date  # Host location where the index will show up.
+        target: /mnt/index  # Location inside the container where the index will be mounted. Must the same is in the "entrypoint" section.
+        bind:
+          propagation: shared
+
   # Run a separate worker servicing the fast queues
   worker_fast:
     <<: *mayan-container
@@ -127,23 +154,24 @@ services:
     profiles:
       - extra_worker_slow
 
-  # Enable to run standalone workers
-  mountindex:
-    <<: *mayan-container
-    cap_add:
-      - SYS_ADMIN
-    command:
-      - run_command
-      - "mountindex --allow-other projects /mounted_index"
-    devices:
-      - "/dev/fuse:/dev/fuse"
-    privileged: true
-    profiles:
-      - mountindex
-    security_opt:
-      - apparmor:unconfined
-
   # Optional services
+
+  traefik:
+    container_name: "traefik"
+    command:
+      #- "--log.level=DEBUG"
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+    image: "traefik:v2.4"
+    ports:
+      - "80:80"
+      - "8080:8080"
+    profiles:
+      - traefik
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
 
   # Enable to use RabbitMQ
   # rabbitmq:
@@ -161,5 +189,6 @@ services:
 volumes:
   app:
   postgres:
+  mountindex:
   rabbitmq:
   redis:
