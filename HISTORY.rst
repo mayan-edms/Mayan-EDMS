@@ -108,5 +108,11 @@
   to ``DOCUMENTS_RECENTLY_CREATED_COUNT``. Config file migrations and
   migration tests were added. Environment and supervisor settings need to be
   manually updated.
+- Docker Compose updates:
 
+    - Use profiles for extra containers.
+    - Converted to use extensions to remove duplicated markup.
+    - A new container was added to mount an index.
+    - Added support for Traefik.
+    - Added sample .env file.
 
