@@ -22,11 +22,11 @@ def handler_create_default_document_index(sender, **kwargs):
 
     root_template_node = index.template_root
     node = root_template_node.get_children().create(
-        expression='{{ document.date_added|date:"Y" }}', index=index,
+        expression='{{ document.datetime_created|date:"Y" }}', index=index,
         parent=root_template_node
     )
     node.get_children().create(
-        expression='{{ document.date_added|date:"m" }}',
+        expression='{{ document.datetime_created|date:"m" }}',
         index=index, link_documents=True, parent=node
     )
 
