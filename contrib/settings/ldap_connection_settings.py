@@ -6,7 +6,7 @@
 # -e MAYAN_PIP_INSTALLS="python-ldap django_auth_ldap"
 # -e MAYAN_APT_INSTALLS="gcc libldap2-dev/buster-backports libsasl2-dev python3-dev"
 # Finally instruct Mayan to use this file.
-# -e MAYAN_SETTINGS_MODULE=mayan_settings.ldap_connection_settings
+# -e MAYAN_SETTINGS_MODULE=user_settings.ldap_connection_settings
 
 import ldap
 

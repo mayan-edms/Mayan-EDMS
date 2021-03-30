@@ -13,10 +13,10 @@
 # MAYAN_APT_INSTALLS="tesseract-ocr-deu tesseract-ocr-nld"
 
 # To use LDAP authentication.
-# Create a folder named `mayan_settings` in the `media` folder.
+# Create a folder named `user_settings` in the `media` folder.
 # Copy the file `contrib/settings/ldap_connection_settings.py` from the online
-# repository and place in the new `mayan_settings` folder.
-# Edit the `mayan_settings/ldap_connection_settings' file to work with your
+# repository and place in the new `user_settings` folder.
+# Edit the `user_settings/ldap_connection_settings' file to work with your
 # LDAP server.
 # Example: https://django-auth-ldap.readthedocs.io/en/latest/example.html
 # Enable the following environment variables and restart the stack.
