@@ -25,8 +25,8 @@ class DocumentTypeQuickLabelSerializer(serializers.ModelSerializer):
     )
 
     class Meta:
-        model = DocumentTypeFilename
         fields = ('document_type_url', 'enabled', 'filename', 'id', 'url')
+        model = DocumentTypeFilename
 
 
 class DocumentTypeSerializer(serializers.HyperlinkedModelSerializer):
@@ -43,7 +43,9 @@ class DocumentTypeSerializer(serializers.HyperlinkedModelSerializer):
             },
         }
         fields = (
-            'delete_time_period', 'delete_time_unit', 'id', 'label',
+            'delete_time_period', 'delete_time_unit',
+            'filename_generator_backend',
+            'filename_generator_backend_arguments', 'id', 'label',
             'quick_label_list_url', 'trash_time_period', 'trash_time_unit',
             'url'
         )
