@@ -5,6 +5,7 @@ from rest_framework import serializers
 from mayan.apps.rest_api.relations import MultiKwargHyperlinkedIdentityField
 from mayan.apps.rest_api.serializer_mixins import CreateOnlyFieldSerializerMixin
 
+from ..literals import DOCUMENT_FILE_ACTION_PAGE_CHOICES
 from ..models.document_file_models import DocumentFile
 from ..models.document_file_page_models import DocumentFilePage
 
@@ -12,6 +13,9 @@ from ..models.document_file_page_models import DocumentFilePage
 class DocumentFileSerializer(
     CreateOnlyFieldSerializerMixin, serializers.HyperlinkedModelSerializer
 ):
+    action = serializers.ChoiceField(
+        choices=DOCUMENT_FILE_ACTION_PAGE_CHOICES
+    )
     document_url = serializers.HyperlinkedIdentityField(
         lookup_url_kwarg='document_id',
         view_name='rest_api:document-detail'
@@ -62,12 +66,12 @@ class DocumentFileSerializer(
     )
 
     class Meta:
-        create_only_fields = ('file_new',)
+        create_only_fields = ('action', 'file_new',)
         extra_kwargs = {
             'file': {'use_url': False},
         }
         fields = (
-            'checksum', 'comment', 'document_url', 'download_url', 'encoding',
+            'action', 'checksum', 'comment', 'document_url', 'download_url', 'encoding',
             'file', 'filename', 'file_new', 'id', 'mimetype', 'page_list_url',
             'size', 'timestamp', 'url'
         )
