@@ -4,6 +4,7 @@ import os
 from furl import furl
 
 from django.apps import apps
+from django.contrib.contenttypes.models import ContentType
 from django.db import models, transaction
 from django.urls import reverse
 from django.utils.functional import cached_property
@@ -12,6 +13,7 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.common.classes import ModelQueryFields
 from mayan.apps.databases.model_mixins import ExtraDataModelMixin
 from mayan.apps.common.settings import setting_project_url
+from mayan.apps.converter.exceptions import AppImageError
 from mayan.apps.events.classes import EventManagerMethodAfter, EventManagerSave
 from mayan.apps.events.decorators import method_event
 from mayan.apps.messaging.models import Message
@@ -22,11 +24,15 @@ from ..events import (
     event_document_version_created, event_document_version_deleted,
     event_document_version_edited, event_document_version_exported
 )
-from ..literals import STORAGE_NAME_DOCUMENT_VERSION_PAGE_IMAGE_CACHE
+from ..literals import (
+    IMAGE_ERROR_NO_VERSION_PAGES,
+    STORAGE_NAME_DOCUMENT_VERSION_PAGE_IMAGE_CACHE
+)
 from ..managers import ValidDocumentVersionManager
 from ..permissions import permission_document_version_export
 from ..signals import signal_post_document_version_remap
 
+from .document_file_page_models import DocumentFilePage
 from .document_models import Document
 
 __all__ = ('DocumentVersion', 'DocumentVersionSearchResult')
@@ -182,6 +188,8 @@ class DocumentVersion(ExtraDataModelMixin, models.Model):
         first_page = self.pages.first()
         if first_page:
             return first_page.get_api_image_url(*args, **kwargs)
+        else:
+            raise AppImageError(error_name=IMAGE_ERROR_NO_VERSION_PAGES)
 
     def get_cache_partitions(self):
         result = [self.cache_partition]
@@ -209,6 +217,24 @@ class DocumentVersion(ExtraDataModelMixin, models.Model):
                 context={'instance': self}
             )
     get_label.short_description = _('Label')
+
+    def get_source_content_object_dictionary_list(self):
+        content_object_dictionary_list = []
+
+        document_file_page_content_type = ContentType.objects.get_for_model(
+            model=DocumentFilePage
+        )
+
+        for document_file in self.document.files.all():
+            for document_file_page in document_file.pages.all():
+                content_object_dictionary_list.append(
+                    {
+                        'content_type': document_file_page_content_type,
+                        'object_id': document_file_page.pk
+                    }
+                )
+
+        return content_object_dictionary_list
 
     @property
     def is_in_trash(self):

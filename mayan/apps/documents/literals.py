@@ -79,6 +79,9 @@ DOCUMENT_FILE_ACTION_PAGE_CHOICES = (
 )
 DOCUMENT_IMAGE_TASK_TIMEOUT = 120
 
+IMAGE_ERROR_NO_ACTIVE_VERSION = 'document_no_active_version'
+IMAGE_ERROR_NO_VERSION_PAGES = 'document_no_version_pages'
+
 MONTH_NAMES = (
     _('January'), _('February'), _('March'), _('April'), _('May'),
     _('June'), _('July'), _('August'), _('September'), _('October'),

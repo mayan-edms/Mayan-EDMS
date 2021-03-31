@@ -9,6 +9,7 @@ from PIL import Image
 import sh
 
 from django.apps import apps
+from django.contrib.staticfiles.storage import staticfiles_storage
 from django.core.exceptions import ImproperlyConfigured
 from django.db import transaction
 from django.utils.encoding import force_text
@@ -43,6 +44,29 @@ libreoffice_path = setting_graphics_backend_arguments.value.get(
 )
 
 logger = logging.getLogger(name=__name__)
+
+
+class AppImageErrorImage:
+    _registry = {}
+
+    @classmethod
+    def get(cls, name):
+        return cls._registry[name]
+
+    def __init__(self, name, image_path=None, template_name=None):
+        if name in self.__class__._registry:
+            raise ImproperlyConfigured(
+                '{} already has a entry named `{}`'.format(__class__, name)
+            )
+
+        self.name = name
+        self.image_path = image_path
+        self.template_name = template_name
+
+        self.__class__._registry[name] = self
+
+    def open(self):
+        return staticfiles_storage.open(name=self.image_path, mode='rb')
 
 
 class ConverterBase:

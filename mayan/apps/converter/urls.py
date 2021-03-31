@@ -1,6 +1,9 @@
 from django.conf.urls import url
 
-from .api_views import APIAssetListView, APIAssetDetailView, APIAssetImageView
+from .api_views import (
+    APIAppImageErrorImageView, APIAssetListView, APIAssetDetailView,
+    APIAssetImageView
+)
 from .views import (
     AssetCreateView, AssetDeleteView, AssetDetailView, AssetEditView,
     AssetListView, TransformationCreateView, TransformationDeleteView,
@@ -62,6 +65,10 @@ urlpatterns.extend(urlpatterns_assets)
 urlpatterns.extend(urlpatterns_transformations)
 
 api_urls_assets = [
+    url(
+        regex=r'^app_image_error/(?P<app_image_error_name>[-\w]+)/image/$',
+        name='app-image-error-image', view=APIAppImageErrorImageView.as_view()
+    ),
     url(
         regex=r'^assets/$', name='asset-list',
         view=APIAssetListView.as_view()

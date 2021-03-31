@@ -4,7 +4,7 @@
 {% load static %}
 
 {% load common_tags %}
-{% load documents_tags %}
+{% load converter_tags %}
 
 {% block title %}{{ title }}{% endblock title %}
 
@@ -33,7 +33,7 @@
 
 {% block content %}
     <div class="cropper-main">
-        <img id="cropper-img" src="{% documents_get_api_image_url obj=content_object maximum_layer_order=layer.order %}">
+        <img id="cropper-img" src="{% converter_get_object_image_data.url obj=content_object maximum_layer_order=layer.order %}">
     </div>
 
     <br>

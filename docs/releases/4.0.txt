@@ -205,6 +205,7 @@ Issues closed
 - :gitlab-issue:`865` Possible bug: Adding a new version of a document via scanner
 - :gitlab-issue:`864` Feature Request: allow REPLY-TO field in mailing profile
 - :gitlab-issue:`867` Rename document comment model "comment" field to "text"
+- :gitlab-issue:`921` Feature Request: Version information
 - :gitlab-issue:`929` COMMON_EXTRA_APPS env variable not doing anything
 - :gitlab-issue:`939` Using db as lock manager, "name" column in table "lock_manager_lock" too small
 - :gitlab-issue:`941` Include time of document signature

@@ -33,12 +33,6 @@ class DocumentVersionPageMappingForm(forms.Form):
         label=_('Source'), required=False,
         widget=forms.TextInput(attrs={'readonly': 'readonly'})
     )
-    source_page_number = forms.IntegerField(
-        label=_('Source page number'), required=False,
-        widget=forms.TextInput(
-            attrs={'readonly': 'readonly', 'size': 1}
-        )
-    )
     source_thumbnail = ThumbnailFormField(required=False)
     target_page_number = forms.ChoiceField(
         choices=(), label=_('Destination page number'), required=False,

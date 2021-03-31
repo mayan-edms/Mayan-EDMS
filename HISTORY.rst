@@ -123,5 +123,8 @@
 - Add support for the "Reply To" field for sending documents via email and
   for the mailing workflow actions. Closes GitLab issue #864. Thanks to
   Kevin Pawsey (@kevinpawsey) for the request.
-
+- Allow customization of the error condition when generating document images.
+  This allows displaying more icons in addition to the generic document
+  image error with additional contextual information and popup messages
+  explaining the actual error condition.
 

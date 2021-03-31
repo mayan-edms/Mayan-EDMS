@@ -1,25 +1,35 @@
-{% load documents_tags %}
+{% load converter_tags %}
 
 {% if instance %}
-    <a
-        class="fancybox"
-        {% if disable_title_link %}
-            data-caption="{{ instance }}"
+
+    {% converter_get_object_image_data obj=instance width=size_preview_width height=size_preview_height as object_image_data %}
+    {% if 'app_image_error_image' in object_image_data %}
+        {% if object_image_data.app_image_error_image.template_name %}
+            {% include object_image_data.app_image_error_image.template_name %}
         {% else %}
-            data-caption="<a class='a-caption' href='{{ instance.get_absolute_url }}'>{{ instance }} <i class='fa fa-external-link-alt'></i></a>"
+            {% include "documents/invalid_document.html" %}
         {% endif %}
-        href="{% documents_get_api_image_url instance width=size_preview_width height=size_preview_height %}"
-        data-type="image"
-        {% if gallery_name %}data-fancybox="{{ gallery_name }}"{% endif %}
-    >
-        {% with 'lazy-load thin_border-thumbnail' as image_classes %}
-        {% with '200px' as image_max_height %}
-        {% with size_thumbnail_width as image_width %}
-        {% with size_thumbnail_height as image_height %}
-            {% include 'documents/forms/widgets/page_image.html' %}
-        {% endwith %}
-        {% endwith %}
-        {% endwith %}
-        {% endwith %}
-    </a>
+    {% else %}
+        <a
+            class="fancybox"
+            {% if disable_title_link %}
+                data-caption="{{ instance }}"
+            {% else %}
+                data-caption="<a class='a-caption' href='{{ instance.get_absolute_url }}'>{{ instance }} <i class='fa fa-external-link-alt'></i></a>"
+            {% endif %}
+            href="{{ object_image_data.url }}"
+            data-type="image"
+            {% if gallery_name %}data-fancybox="{{ gallery_name }}"{% endif %}
+        >
+            {% with 'lazy-load thin_border-thumbnail' as image_classes %}
+            {% with '200px' as image_max_height %}
+            {% with size_thumbnail_width as image_width %}
+            {% with size_thumbnail_height as image_height %}
+                {% include 'documents/forms/widgets/page_image.html' %}
+            {% endwith %}
+            {% endwith %}
+            {% endwith %}
+            {% endwith %}
+        </a>
+    {% endif %}
 {% endif %}

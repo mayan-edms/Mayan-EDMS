@@ -8,7 +8,7 @@ class MayanImage {
 
     static intialize (options) {
         this.options = options || {};
-        this.options.templateInvalidDocument = this.options.templateInvalidDocument || '<span>Error loading document image</span>';
+        this.options.templateInvalidImage = this.options.templateInvalidImage || '<span>Error loading image</span>';
 
         $().fancybox({
             afterShow: function (instance, current) {
@@ -69,7 +69,7 @@ class MayanImage {
         var dataURL = this.element.attr('data-url');
 
         if (dataURL === '') {
-            container.html(MayanImage.options.templateInvalidDocument);
+            container.html(MayanImage.options.templateInvalidImage);
         } else {
             this.element.attr('src', dataURL);
             setTimeout(function () {
@@ -82,7 +82,7 @@ class MayanImage {
                         this.src = dataURL;
                     } else {
                         container.html(
-                            MayanImage.options.templateInvalidDocument
+                            MayanImage.options.templateInvalidImage
                         );
                     }
                 });
@@ -94,4 +94,3 @@ class MayanImage {
 MayanImage.timer = setTimeout(null);
 
 $.fn.matchHeight._maintainScroll = true;
-
