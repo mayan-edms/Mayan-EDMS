@@ -9,7 +9,7 @@ from mayan.apps.rest_api.tests.base import BaseAPITestCase
 from ..events import (
     event_document_metadata_added, event_document_metadata_edited,
     event_document_metadata_removed, event_metadata_type_created,
-    event_metadata_type_edited, event_metadata_type_relationship
+    event_metadata_type_edited, event_metadata_type_relationship_updated
 )
 from ..models import DocumentTypeMetadataType, MetadataType
 from ..permissions import (
@@ -299,7 +299,7 @@ class DocumentTypeMetadataTypeAPITestCase(
         self.assertEqual(events[0].action_object, self.test_metadata_type)
         self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].target, self.test_document_type)
-        self.assertEqual(events[0].verb, event_metadata_type_relationship.id)
+        self.assertEqual(events[0].verb, event_metadata_type_relationship_updated.id)
 
     def test_document_type_metadata_type_create_dupicate_api_view(self):
         self._create_test_document_type_metadata_type()
@@ -348,7 +348,7 @@ class DocumentTypeMetadataTypeAPITestCase(
         self.assertEqual(events[0].action_object, self.test_metadata_type)
         self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].target, self.test_document_type)
-        self.assertEqual(events[0].verb, event_metadata_type_relationship.id)
+        self.assertEqual(events[0].verb, event_metadata_type_relationship_updated.id)
 
     def test_document_type_metadata_type_list_api_view_no_permission(self):
         self._create_test_document_type_metadata_type()
@@ -415,7 +415,7 @@ class DocumentTypeMetadataTypeAPITestCase(
         self.assertEqual(events[0].action_object, self.test_metadata_type)
         self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].target, self.test_document_type)
-        self.assertEqual(events[0].verb, event_metadata_type_relationship.id)
+        self.assertEqual(events[0].verb, event_metadata_type_relationship_updated.id)
 
     def test_document_type_metadata_type_put_api_view_no_permission(self):
         self._create_test_document_type_metadata_type()
@@ -451,7 +451,7 @@ class DocumentTypeMetadataTypeAPITestCase(
         self.assertEqual(events[0].action_object, self.test_metadata_type)
         self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].target, self.test_document_type)
-        self.assertEqual(events[0].verb, event_metadata_type_relationship.id)
+        self.assertEqual(events[0].verb, event_metadata_type_relationship_updated.id)
 
 
 class DocumentMetadataAPIViewTestCase(

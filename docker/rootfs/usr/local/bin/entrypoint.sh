@@ -143,14 +143,6 @@ pip_installs || true
 
 case "$1" in
 
-run_initialsetup)
-    initialsetup
-    ;;
-
-run_performupgrade)
-    performupgrade
-    ;;
-
 run_all)
     make_ready
     run_all
@@ -168,6 +160,14 @@ run_frontend)
     run_frontend.sh
     ;;
 
+run_initialsetup)
+    initialsetup
+    ;;
+
+run_performupgrade)
+    performupgrade
+    ;;
+
 run_tests)
     make_ready
     run_tests.sh "${@:2}"
@@ -178,7 +178,7 @@ run_worker)
     ;;
 
 *)
-    su mayan -c "$@"
+    "$@"
     ;;
 
 esac

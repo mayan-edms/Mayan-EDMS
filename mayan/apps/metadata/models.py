@@ -17,7 +17,7 @@ from .classes import MetadataLookup
 from .events import (
     event_document_metadata_added, event_document_metadata_edited,
     event_document_metadata_removed, event_metadata_type_created,
-    event_metadata_type_edited, event_metadata_type_relationship
+    event_metadata_type_edited, event_metadata_type_relationship_updated
 )
 from .managers import DocumentTypeMetadataTypeManager, MetadataTypeManager
 from .settings import setting_available_parsers, setting_available_validators
@@ -100,7 +100,7 @@ class MetadataType(ExtraDataModelMixin, models.Model):
 
     def get_absolute_url(self):
         return reverse(
-            viewname='metadata:setup_metadata_type_edit', kwargs={
+            viewname='metadata:metadata_type_edit', kwargs={
                 'metadata_type_id': self.pk
             }
         )
@@ -290,7 +290,7 @@ class DocumentTypeMetadataType(ExtraDataModelMixin, models.Model):
     @method_event(
         event_manager_class=EventManagerMethodAfter,
         action_object='metadata_type',
-        event=event_metadata_type_relationship,
+        event=event_metadata_type_relationship_updated,
         target='document_type'
     )
     def delete(self, *args, **kwargs):
@@ -300,12 +300,12 @@ class DocumentTypeMetadataType(ExtraDataModelMixin, models.Model):
         event_manager_class=EventManagerSave,
         created={
             'action_object': 'metadata_type',
-            'event': event_metadata_type_relationship,
+            'event': event_metadata_type_relationship_updated,
             'target': 'document_type'
         },
         edited={
             'action_object': 'metadata_type',
-            'event': event_metadata_type_relationship,
+            'event': event_metadata_type_relationship_updated,
             'target': 'document_type'
         }
     )

@@ -2,7 +2,7 @@ import logging
 
 from django.apps import apps
 from django.contrib.auth.models import Group
-from django.db import models, transaction
+from django.db import models
 from django.urls import reverse
 from django.utils.encoding import force_text
 from django.utils.functional import cached_property
@@ -11,7 +11,6 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.apps.databases.model_mixins import ExtraDataModelMixin
 from mayan.apps.events.classes import EventManagerSave
 from mayan.apps.events.decorators import method_event
-from mayan.apps.user_management.events import event_group_edited
 from mayan.apps.user_management.permissions import permission_group_view
 
 from .classes import Permission
@@ -86,45 +85,41 @@ class Role(ExtraDataModelMixin, models.Model):
     def grant(self, permission):
         self.permissions.add(permission.stored_permission)
 
-    def groups_add(self, queryset, _user=None):
-        with transaction.atomic():
+    def groups_add(self, queryset, _event_actor=None):
+        for obj in queryset:
+            self.groups.add(obj)
             event_role_edited.commit(
-                actor=_user, target=self
+                action_object=obj, actor=_event_actor or self._event_actor,
+                target=self
             )
-            for obj in queryset:
-                self.groups.add(obj)
-                event_group_edited.commit(
-                    actor=_user, action_object=self, target=obj
-                )
 
-    def groups_remove(self, queryset, _user=None):
-        with transaction.atomic():
+    def groups_remove(self, queryset, _event_actor=None):
+        for obj in queryset:
+            self.groups.remove(obj)
             event_role_edited.commit(
-                actor=_user, target=self
+                action_object=obj, actor=_event_actor or self._event_actor,
+                target=self
             )
-            for obj in queryset:
-                self.groups.remove(obj)
-                event_group_edited.commit(
-                    actor=_user, action_object=self, target=obj
-                )
 
     def natural_key(self):
         return (self.label,)
     natural_key.dependencies = ['auth.Group', 'permissions.StoredPermission']
 
-    def permissions_add(self, queryset, _user=None):
-        with transaction.atomic():
+    def permissions_add(self, queryset, _event_actor=None):
+        for obj in queryset:
+            self.permissions.add(obj)
             event_role_edited.commit(
-                actor=_user, target=self
+                action_object=obj, actor=_event_actor or self._event_actor,
+                target=self
             )
-            self.permissions.add(*queryset)
 
-    def permissions_remove(self, queryset, _user=None):
-        with transaction.atomic():
+    def permissions_remove(self, queryset, _event_actor=None):
+        for obj in queryset:
+            self.permissions.remove(obj)
             event_role_edited.commit(
-                actor=_user, target=self
+                action_object=obj, actor=_event_actor or self._event_actor,
+                target=self
             )
-            self.permissions.remove(*queryset)
 
     def revoke(self, permission):
         self.permissions.remove(permission.stored_permission)

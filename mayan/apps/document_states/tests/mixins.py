@@ -818,7 +818,7 @@ class WorkflowViewTestMixin:
         return self.post(
             viewname='document_states:workflow_template_create', data={
                 'label': TEST_WORKFLOW_LABEL,
-                'internal_name': TEST_WORKFLOW_INTERNAL_NAME,
+                'internal_name': TEST_WORKFLOW_INTERNAL_NAME
             }
         )
 

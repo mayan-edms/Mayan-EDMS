@@ -9,6 +9,7 @@ from django.urls import reverse
 from django.utils.timezone import now
 from django.utils.translation import ugettext, ugettext_lazy as _
 
+from mayan.apps.converter.exceptions import AppImageError
 from mayan.apps.databases.model_mixins import ExtraDataModelMixin
 from mayan.apps.common.signals import signal_mayan_pre_save
 from mayan.apps.events.classes import EventManagerSave
@@ -21,7 +22,8 @@ from ..events import (
 )
 from ..literals import (
     DEFAULT_LANGUAGE, DOCUMENT_FILE_ACTION_PAGES_APPEND,
-    DOCUMENT_FILE_ACTION_PAGES_KEEP, DOCUMENT_FILE_ACTION_PAGES_NEW
+    DOCUMENT_FILE_ACTION_PAGES_KEEP, DOCUMENT_FILE_ACTION_PAGES_NEW,
+    IMAGE_ERROR_NO_ACTIVE_VERSION
 )
 from ..managers import (
     DocumentManager, RecentlyCreatedDocumentManager, TrashCanManager,
@@ -279,6 +281,8 @@ class Document(
         version_active = self.version_active
         if version_active:
             return version_active.get_api_image_url(*args, **kwargs)
+        else:
+            raise AppImageError(error_name=IMAGE_ERROR_NO_ACTIVE_VERSION)
 
     def get_label(self):
         return self.label or ugettext('Document stub, id: %d') % self.pk

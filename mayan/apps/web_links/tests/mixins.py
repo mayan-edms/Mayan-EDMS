@@ -36,7 +36,7 @@ class DocumentTypeAddRemoveWebLinkViewTestMixin:
         )
 
 
-class ResolvedWebLinkAPIViewTestMixin(object):
+class ResolvedWebLinkAPIViewTestMixin:
     def _request_resolved_web_link_detail_api_view(self):
         return self.get(
             viewname='rest_api:resolved_web_link-detail',
@@ -64,7 +64,7 @@ class ResolvedWebLinkAPIViewTestMixin(object):
         )
 
 
-class WebLinkAPIViewTestMixin(object):
+class WebLinkAPIViewTestMixin:
     def _request_test_web_link_create_api_view(self):
         pk_list = list(WebLink.objects.values('pk'))
 
@@ -151,6 +151,13 @@ class WebLinkTestMixin:
 
 
 class WebLinkDocumentTypeViewTestMixin:
+    def _request_test_web_link_document_type_add_remove_get_view(self):
+        return self.get(
+            viewname='web_links:web_link_document_types', kwargs={
+                'web_link_id': self.test_web_link.pk
+            }
+        )
+
     def _request_test_web_link_document_type_add_view(self):
         return self.post(
             viewname='web_links:web_link_document_types', kwargs={

@@ -14,7 +14,8 @@ from .literals import (
 class DocumentTestCase(GenericDocumentTestCase):
     def test_document_creation(self):
         self.assertEqual(
-            self.test_document_type.label, TEST_DOCUMENT_TYPE_LABEL
+            self.test_document.document_type.label,
+            self.test_document_type.label
         )
 
         self.assertEqual(self.test_document.file_latest.exists(), True)

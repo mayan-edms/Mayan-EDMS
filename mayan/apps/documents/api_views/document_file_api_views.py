@@ -55,6 +55,7 @@ class APIDocumentFileListView(
 
         task_document_file_upload.apply_async(
             kwargs={
+                'action': serializer.validated_data['action'],
                 'comment': serializer.validated_data.get('comment', ''),
                 'document_id': self.get_document(
                     permission=permission_document_file_new

@@ -4,7 +4,7 @@
 # base_image - Bare bones image with the base packages needed to run Mayan EDMS
 ####
 
-FROM debian:10.7-slim as base_image
+FROM debian:10.8-slim as base_image
 
 LABEL maintainer="Roberto Rosario roberto.rosario@mayan-edms.com"
 
@@ -37,6 +37,7 @@ apt-get update \
     fonts-arphic-uming \
     fonts-arphic-ukai \
     fonts-unfonts-core \
+    fuse \
     ghostscript \
     git-core \
     gpgv \
@@ -67,7 +68,8 @@ apt-get update \
 && if [ "$(uname -m)" = "armv7l" ]; then \
     ln -s /usr/lib/arm-linux-gnueabihf/libz.so /usr/lib/ \
     && ln -s /usr/lib/arm-linux-gnueabihf/libjpeg.so /usr/lib/ \
-; fi
+; fi \
+&& sed -i 's/#user_allow_other/user_allow_other/g' /etc/fuse.conf
 
 ####
 # builder_image - This image builds the Python package and is discarded afterwards

@@ -2,14 +2,12 @@ import logging
 
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
-from django.db import transaction
 from django.shortcuts import get_object_or_404
 from django.template import RequestContext
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.documents.events import event_document_type_edited
 from mayan.apps.documents.models import Document, DocumentType
 from mayan.apps.documents.permissions import (
     permission_document_type_edit, permission_document_view
@@ -34,9 +32,7 @@ from .permissions import (
 logger = logging.getLogger(name=__name__)
 
 
-class DocumentTypeSmartLinksView(AddRemoveView):
-    main_object_method_add = 'smart_link_add'
-    main_object_method_remove = 'smart_link_remove'
+class DocumentTypeSmartLinkAddRemoveView(AddRemoveView):
     main_object_permission = permission_document_type_edit
     main_object_model = DocumentType
     main_object_pk_url_kwarg = 'document_type_id'
@@ -46,30 +42,24 @@ class DocumentTypeSmartLinksView(AddRemoveView):
     list_added_title = _('Smart links enabled')
     related_field = 'smart_links'
 
-    def action_add(self, queryset, _user):
-        with transaction.atomic():
-            event_document_type_edited.commit(
-                actor=_user, target=self.main_object
+    def action_add(self, queryset, _event_actor):
+        for obj in queryset:
+            self.main_object.smart_links.add(obj)
+            event_smart_link_edited.commit(
+                actor=_event_actor or self._event_actor,
+                action_object=self.main_object, target=obj
             )
-            for obj in queryset:
-                self.main_object.smart_links.add(obj)
-                event_smart_link_edited.commit(
-                    actor=_user, action_object=self.main_object, target=obj
-                )
 
-    def action_remove(self, queryset, _user):
-        with transaction.atomic():
-            event_document_type_edited.commit(
-                actor=_user, target=self.main_object
+    def action_remove(self, queryset, _event_actor):
+        for obj in queryset:
+            self.main_object.smart_links.remove(obj)
+            event_smart_link_edited.commit(
+                actor=_event_actor or self._event_actor,
+                action_object=self.main_object, target=obj
             )
-            for obj in queryset:
-                self.main_object.smart_links.remove(obj)
-                event_smart_link_edited.commit(
-                    actor=_user, action_object=self.main_object, target=obj
-                )
 
     def get_actions_extra_kwargs(self):
-        return {'_user': self.request.user}
+        return {'_event_actor': self.request.user}
 
     def get_extra_context(self):
         return {
@@ -152,7 +142,7 @@ class ResolvedSmartLinkView(ExternalObjectViewMixin, DocumentListView):
         )
 
 
-class SmartLinkDocumentTypesView(AddRemoveView):
+class SmartLinkDocumentTypeAddRemoveView(AddRemoveView):
     main_object_method_add = 'document_types_add'
     main_object_method_remove = 'document_types_remove'
     main_object_permission = permission_smart_link_edit
@@ -165,7 +155,7 @@ class SmartLinkDocumentTypesView(AddRemoveView):
     related_field = 'document_types'
 
     def get_actions_extra_kwargs(self):
-        return {'_user': self.request.user}
+        return {'_event_actor': self.request.user}
 
     def get_extra_context(self):
         return {
@@ -241,8 +231,8 @@ class SmartLinkCreateView(SingleObjectCreateView):
     )
     view_permission = permission_smart_link_create
 
-    def get_save_extra_data(self):
-        return {'_user': self.request.user}
+    def get_instance_extra_data(self):
+        return {'_event_actor': self.request.user}
 
 
 class SmartLinkDeleteView(SingleObjectDeleteView):
@@ -275,8 +265,8 @@ class SmartLinkEditView(SingleObjectEditView):
             'title': _('Edit smart link: %s') % self.object
         }
 
-    def get_save_extra_data(self):
-        return {'_user': self.request.user}
+    def get_instance_extra_data(self):
+        return {'_event_actor': self.request.user}
 
 
 class SmartLinkConditionListView(ExternalObjectViewMixin, SingleObjectListView):
@@ -330,7 +320,10 @@ class SmartLinkConditionCreateView(
         }
 
     def get_instance_extra_data(self):
-        return {'smart_link': self.external_object}
+        return {
+            '_event_actor': self.request.user,
+            'smart_link': self.external_object
+        }
 
     def get_post_action_redirect(self):
         return reverse(
@@ -358,6 +351,9 @@ class SmartLinkConditionDeleteView(SingleObjectDeleteView):
             ) % self.object,
         }
 
+    def get_instance_extra_data(self):
+        return {'_event_actor': self.request.user}
+
     def get_post_action_redirect(self):
         return reverse(
             viewname='linking:smart_link_condition_list', kwargs={
@@ -379,6 +375,9 @@ class SmartLinkConditionEditView(SingleObjectEditView):
             'object': self.object.smart_link,
             'title': _('Edit smart link condition'),
         }
+
+    def get_instance_extra_data(self):
+        return {'_event_actor': self.request.user}
 
     def get_post_action_redirect(self):
         return reverse(

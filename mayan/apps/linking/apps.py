@@ -54,6 +54,7 @@ class LinkingApp(MayanAppConfig):
         SmartLinkCondition = self.get_model(model_name='SmartLinkCondition')
 
         EventModelRegistry.register(model=SmartLink)
+        EventModelRegistry.register(model=SmartLinkCondition)
 
         ModelCopy(
             model=SmartLinkCondition

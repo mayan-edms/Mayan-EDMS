@@ -2,15 +2,17 @@ from django.conf.urls import url
 
 from .api_views import (
     APIResolvedSmartLinkView, APIResolvedSmartLinkDocumentListView,
-    APIResolvedSmartLinkListView, APISmartLinkListView, APISmartLinkView,
-    APISmartLinkConditionListView, APISmartLinkConditionView
+    APIResolvedSmartLinkListView, APISmartLinkListView, APISmartLinkDetailView,
+    APISmartLinkConditionListView, APISmartLinkConditionView,
+    APISmartLinkDocumentTypeAddView, APISmartLinkDocumentTypeListView,
+    APISmartLinkDocumentTypeRemoveView
 )
 from .views import (
-    DocumentSmartLinkListView, DocumentTypeSmartLinksView,
+    DocumentSmartLinkListView, DocumentTypeSmartLinkAddRemoveView,
     ResolvedSmartLinkView, SmartLinkConditionListView,
     SmartLinkConditionCreateView, SmartLinkConditionEditView,
     SmartLinkConditionDeleteView, SmartLinkCreateView, SmartLinkDeleteView,
-    SmartLinkDocumentTypesView, SmartLinkEditView, SmartLinkListView
+    SmartLinkDocumentTypeAddRemoveView, SmartLinkEditView, SmartLinkListView
 )
 
 urlpatterns = [
@@ -26,7 +28,7 @@ urlpatterns = [
     url(
         regex=r'^document_types/(?P<document_type_id>\d+)/smart_links/$',
         name='document_type_smart_links',
-        view=DocumentTypeSmartLinksView.as_view()
+        view=DocumentTypeSmartLinkAddRemoveView.as_view()
     ),
     url(
         regex=r'^smart_links/$', name='smart_link_list',
@@ -43,7 +45,7 @@ urlpatterns = [
     url(
         regex=r'^smart_links/(?P<smart_link_id>\d+)/document_types/$',
         name='smart_link_document_types',
-        view=SmartLinkDocumentTypesView.as_view()
+        view=SmartLinkDocumentTypeAddRemoveView.as_view()
     ),
     url(
         regex=r'^smart_links/(?P<smart_link_id>\d+)/edit/$',
@@ -78,7 +80,7 @@ api_urls = [
     ),
     url(
         regex=r'^smart_links/(?P<smart_link_id>[0-9]+)/$', name='smartlink-detail',
-        view=APISmartLinkView.as_view()
+        view=APISmartLinkDetailView.as_view()
     ),
     url(
         regex=r'^smart_links/(?P<smart_link_id>[0-9]+)/conditions/$',
@@ -89,6 +91,21 @@ api_urls = [
         regex=r'^smart_links/(?P<smart_link_id>[0-9]+)/conditions/(?P<smart_link_condition_id>[0-9]+)/$',
         name='smartlinkcondition-detail',
         view=APISmartLinkConditionView.as_view()
+    ),
+    url(
+        regex=r'^smart_links/(?P<smart_link_id>[0-9]+)/document_types/$',
+        name='smartlink-document_type-list',
+        view=APISmartLinkDocumentTypeListView.as_view()
+    ),
+    url(
+        regex=r'^smart_links/(?P<smart_link_id>[0-9]+)/document_types/add/$',
+        name='smartlink-document_type-add',
+        view=APISmartLinkDocumentTypeAddView.as_view()
+    ),
+    url(
+        regex=r'^smart_links/(?P<smart_link_id>[0-9]+)/document_types/remove/$',
+        name='smartlink-document_type-remove',
+        view=APISmartLinkDocumentTypeRemoveView.as_view()
     ),
     url(
         regex=r'^documents/(?P<document_id>[0-9]+)/resolved_smart_links/$',

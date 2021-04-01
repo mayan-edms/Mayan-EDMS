@@ -15,6 +15,7 @@ from mayan.apps.common.menus import (
     menu_secondary, menu_setup, menu_multi_item
 )
 from mayan.apps.common.signals import signal_post_initial_setup
+from mayan.apps.converter.classes import AppImageErrorImage
 from mayan.apps.converter.layers import layer_decorations
 from mayan.apps.converter.links import link_transformation_list
 from mayan.apps.converter.permissions import (
@@ -153,7 +154,9 @@ from .links.trashed_document_links import (
     link_document_multiple_trash, link_document_restore, link_document_trash,
     link_trash_can_empty
 )
-
+from .literals import (
+    IMAGE_ERROR_NO_ACTIVE_VERSION, IMAGE_ERROR_NO_VERSION_PAGES
+)
 from .menus import menu_documents
 
 # Documents
@@ -245,6 +248,15 @@ class DocumentsApp(MayanAppConfig):
             model_name='RecentlyCreatedDocument'
         )
         TrashedDocument = self.get_model(model_name='TrashedDocument')
+
+        AppImageErrorImage(
+            name=IMAGE_ERROR_NO_ACTIVE_VERSION,
+            template_name='documents/errors/no_valid_version.html'
+        )
+        AppImageErrorImage(
+            name=IMAGE_ERROR_NO_VERSION_PAGES,
+            template_name='documents/errors/no_version_pages.html'
+        )
 
         AJAXTemplate(
             name='invalid_document',
@@ -527,10 +539,6 @@ class DocumentsApp(MayanAppConfig):
             source=Document
         )
         SourceColumn(
-            #func=lambda context: thumbnail_widget.render(
-            #    instance=context['object']
-            #), html_extra_classes='text-center document-thumbnail-list',
-            #),
             html_extra_classes='text-center document-thumbnail-list',
             label=_('Thumbnail'), order=-99, source=Document,
             widget=ThumbnailWidget

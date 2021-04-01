@@ -81,6 +81,33 @@ class DocumentFileViewTestCase(
         self.assertEqual(events[0].target, self.test_document)
         self.assertEqual(events[0].verb, event_document_file_deleted.id)
 
+    def test_trashed_document_file_delete_with_access(self):
+        first_file = self.test_document.file_latest
+        self._upload_new_file()
+
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_file_delete
+        )
+
+        test_document_file_count = self.test_document.files.count()
+
+        self.test_document.delete()
+
+        self._clear_events()
+
+        response = self._request_test_document_file_delete_view(
+            document_file=first_file
+        )
+        self.assertEqual(response.status_code, 404)
+
+        self.assertEqual(
+            self.test_document.files.count(), test_document_file_count
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
     def test_document_file_delete_multiple_no_permission(self):
         self._upload_new_file()
 
@@ -174,6 +201,35 @@ class DocumentFileViewTestCase(
         self.assertEqual(events[0].target, self.test_document_file)
         self.assertEqual(events[0].verb, event_document_file_edited.id)
 
+    def test_trashed_document_file_edit_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document_file,
+            permission=permission_document_file_edit
+        )
+
+        document_file_comment = self.test_document_file.comment
+        document_file_filename = self.test_document_file.filename
+
+        self.test_document.delete()
+
+        self._clear_events()
+
+        response = self._request_test_document_file_edit_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.test_document_file.refresh_from_db()
+        self.assertEqual(
+            self.test_document_file.comment,
+            document_file_comment
+        )
+        self.assertEqual(
+            self.test_document_file.filename,
+            document_file_filename
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
     def test_document_file_list_no_permission(self):
         self._clear_events()
 
@@ -200,6 +256,22 @@ class DocumentFileViewTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
+    def test_trashed_document_file_list_with_access(self):
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_file_view
+        )
+
+        self.test_document.delete()
+
+        self._clear_events()
+
+        response = self._request_test_document_file_list_view()
+        self.assertEqual(response.status_code, 404)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
     def test_document_file_print_form_view_no_permission(self):
         self._clear_events()
 
@@ -216,6 +288,22 @@ class DocumentFileViewTestCase(
 
         response = self._request_test_document_file_print_form_view()
         self.assertEqual(response.status_code, 200)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_trashed_document_file_print_form_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document_file,
+            permission=permission_document_file_print
+        )
+
+        self.test_document.delete()
+
+        self._clear_events()
+
+        response = self._request_test_document_file_print_form_view()
+        self.assertEqual(response.status_code, 404)
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
@@ -243,6 +331,21 @@ class DocumentFileViewTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
+    def test_trashed_document_file_print_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document_file,
+            permission=permission_document_file_print
+        )
+
+        self.test_document.delete()
+        self._clear_events()
+
+        response = self._request_test_document_file_print_view()
+        self.assertEqual(response.status_code, 404)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
 
 class DocumentFileDownloadViewTestCase(
     DocumentFileViewTestMixin, GenericDocumentViewTestCase
@@ -255,8 +358,8 @@ class DocumentFileDownloadViewTestCase(
         response = self._request_test_document_file_download_view()
         self.assertEqual(response.status_code, 404)
 
-        event = self._get_test_object_event()
-        self.assertEqual(event, None)
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
     def test_document_file_download_view_with_permission(self):
         # Set the expected_content_types for
@@ -288,6 +391,22 @@ class DocumentFileDownloadViewTestCase(
         self.assertEqual(events[0].actor, self._test_case_user)
         self.assertEqual(events[0].target, self.test_document_file)
         self.assertEqual(events[0].verb, event_document_file_downloaded.id)
+
+    def test_trashed_document_file_download_view_with_permission(self):
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_file_download
+        )
+
+        self.test_document.delete()
+
+        self._clear_events()
+
+        response = self._request_test_document_file_download_view()
+        self.assertEqual(response.status_code, 404)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
 
 class DocumentFileTransformationViewTestCase(
@@ -338,6 +457,34 @@ class DocumentFileTransformationViewTestCase(
             layer_saved_transformations.get_transformations_for(
                 obj=self.test_document_file.pages.first()
             ).count(), transformation_count - 1
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_trashed_document_file_transformations_clear_view_with_access(self):
+        self._create_document_file_transformation()
+
+        transformation_count = layer_saved_transformations.get_transformations_for(
+            obj=self.test_document_file.pages.first()
+        ).count()
+
+        self.grant_access(
+            obj=self.test_document_file,
+            permission=permission_transformation_delete
+        )
+
+        self.test_document.delete()
+
+        self._clear_events()
+
+        response = self._request_test_document_file_transformations_clear_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertEqual(
+            layer_saved_transformations.get_transformations_for(
+                obj=self.test_document_file.pages.first()
+            ).count(), transformation_count
         )
 
         events = self._get_test_events()

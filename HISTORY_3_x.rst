@@ -1,3 +1,59 @@
+3.5.7 (2021-03-28)
+==================
+- Update the sample LDAP settings file to add note about package
+  version pinning required by the use of the Buster Backports.
+  Closes GitLab issue #693. Thanks to Ryan Showalter (@ryanshow) for
+  the report and Ilya Pavlov (@spirkaa) for a solution.
+  The package list for ``MAYAN_APT_INSTALLS`` for the LDAP setting file
+  is now "gcc libldap2-dev/buster-backports libsasl2-dev python3-dev".
+- Update Docker base image from debian:10.7-slim to debian:10.8-slim.
+- Update file caching migration 0005 to have Django generate the SQL query
+  for each respective backend. Closes GitLab issue #964. Thanks to forum
+  user @lsmoker for the report and research.
+- Backports from version 4.0:
+
+    - 432ec35eb7bb0b8da4765f86cb6491e7667b4831
+      Ensure all tasks are properly configured. Added a check to the task
+      manager app to ensure all defined tasks are properly configure in
+      their respective ``queues.py`` modules.
+    - Fix dynamic search task names during queue registration.
+    - b883c647e943be0ef62096c456118f86ef3534ac
+      1e7d85175d7379fc7dca454462497db960635e3e
+      Raise object creation and edit exceptions during testing.
+    - 14bdcb704269c43b8e9553aaf905e54ca7f16ced
+      Don't remove arguments from overloaded .save(). Pass all arguments to
+      the super class save method. Scrapping the arguments hide errors
+      during testing.
+    - 9fc9288b52d63aa288e430a9cc1f8fd1a4295747
+      Test communication with the locking backend when the app loads.
+      Add support for purging ``RedisLock`` backend locks.
+      Prefix all locks in the ``RedisLock`` backend to avoid name clashing
+      when using the same database.
+      Ensure the default timeout setting is used by the backends.
+
+- Move task manager app to the top of the installed apps. This ensures all
+  queues are created before any other app tries to use them. Fixes the error:
+  `celery.exceptions.QueueNotFound: "Queue 'default' missing from task_queues"`
+- Add connectivity check for the Celery broker URL and the result backend
+  settings. Closes GitLab issue #940. Thanks to Vadim Radu (@vd-rd) for the
+  report.
+- Update the Docker Compose file to allow specifying a different database
+  host as well as a different image tag for the Mayan, PostgreSQL and Redis
+  containers.
+- Added the ``fuse`` package to the Docker image.
+- Updated the Docker Compose file to load an env file.
+- Added a default env_file with some examples uses.
+- Ensure logging is available early. Move logging init to the logging app
+  and move the logging app to the top of the app list.
+- Backport multiple test document types code.
+- Allow not updating required metadata with value. A validation was raised
+  when metadata update checkbox was disable and the metadata was required.
+  This behavior is now fine tuned to not raise a validation error if the
+  metadata already has a value which would comply with the original purpose
+  of required metadata. Closes GitLab issue #936. Thanks to Raimar Sandner
+  (@PiQuer)for the report.
+- Make the metadata type id usage more explicit in formsets.
+
 3.5.6 (2021-03-14)
 ==================
 - Port improvements from Series 3.4:

@@ -184,30 +184,34 @@ class DocumentVersionPageListRemapView(ExternalObjectViewMixin, FormView):
     def get_initial(self):
         initial = []
 
-        for document_file in self.external_object.document.files.all():
-            for document_file_page in document_file.pages.all():
-                content_type = ContentType.objects.get_for_model(
-                    model=document_file_page
-                )
-                document_version_page = self.external_object.pages.filter(
-                    content_type=content_type, object_id=document_file_page.pk
-                )
+        content_object_dictionary_list = self.external_object.get_source_content_object_dictionary_list()
 
-                if document_version_page:
-                    document_version_page_page_number = document_version_page.first().page_number
-                else:
-                    document_version_page_page_number = 0
+        for content_object_dictionary in content_object_dictionary_list:
+            content_object = content_object_dictionary['content_type'].get_object_for_this_type(
+                id=content_object_dictionary['object_id']
+            )
 
-                row = {
-                    'source_content_type': content_type.pk,
-                    'source_object_id': document_file_page.pk,
-                    'source_thumbnail': document_file_page,
-                    'source_label': '{} - {}'.format(content_type.name, document_file.file),
-                    'source_page_number': document_file_page.page_number,
-                    'target_page_number': document_version_page_page_number
-                }
+            # The same source object could have been assigned to multiple
+            # document version pages.
+            document_version_pages = self.external_object.pages.filter(
+                content_type=content_object_dictionary['content_type'],
+                object_id=content_object_dictionary['object_id']
+            )
 
-                initial.append(row)
+            if document_version_pages:
+                document_version_page_page_number = document_version_pages.first().page_number
+            else:
+                document_version_page_page_number = 0
+
+            row = {
+                'source_content_type': content_object_dictionary['content_type'].pk,
+                'source_object_id': content_object_dictionary['object_id'],
+                'source_thumbnail': content_object,
+                'source_label': '{}: {}'.format(content_object_dictionary['content_type'].name, content_object),
+                'target_page_number': document_version_page_page_number
+            }
+
+            initial.append(row)
 
         return initial
 
@@ -386,7 +390,9 @@ class DocumentVersionPageViewResetView(RedirectView):
     pattern_name = 'documents:document_version_page_view'
 
 
-class DocumentVersionPageInteractiveTransformation(ExternalObjectViewMixin, RedirectView):
+class DocumentVersionPageInteractiveTransformation(
+    ExternalObjectViewMixin, RedirectView
+):
     external_object_permission = permission_document_version_view
     external_object_pk_url_kwarg = 'document_version_page_id'
     external_object_queryset = DocumentVersionPage.valid
@@ -416,7 +422,9 @@ class DocumentVersionPageInteractiveTransformation(ExternalObjectViewMixin, Redi
         return url.tostr()
 
 
-class DocumentVersionPageZoomInView(DocumentVersionPageInteractiveTransformation):
+class DocumentVersionPageZoomInView(
+    DocumentVersionPageInteractiveTransformation
+):
     def transformation_function(self, query_dict):
         zoom = int(query_dict['zoom']) + setting_zoom_percent_step.value
 
@@ -426,7 +434,9 @@ class DocumentVersionPageZoomInView(DocumentVersionPageInteractiveTransformation
         query_dict['zoom'] = zoom
 
 
-class DocumentVersionPageZoomOutView(DocumentVersionPageInteractiveTransformation):
+class DocumentVersionPageZoomOutView(
+    DocumentVersionPageInteractiveTransformation
+):
     def transformation_function(self, query_dict):
         zoom = int(query_dict['zoom']) - setting_zoom_percent_step.value
 
@@ -436,14 +446,18 @@ class DocumentVersionPageZoomOutView(DocumentVersionPageInteractiveTransformatio
         query_dict['zoom'] = zoom
 
 
-class DocumentVersionPageRotateLeftView(DocumentVersionPageInteractiveTransformation):
+class DocumentVersionPageRotateLeftView(
+    DocumentVersionPageInteractiveTransformation
+):
     def transformation_function(self, query_dict):
         query_dict['rotation'] = (
             int(query_dict['rotation']) - setting_rotation_step.value
         ) % 360
 
 
-class DocumentVersionPageRotateRightView(DocumentVersionPageInteractiveTransformation):
+class DocumentVersionPageRotateRightView(
+    DocumentVersionPageInteractiveTransformation
+):
     def transformation_function(self, query_dict):
         query_dict['rotation'] = (
             int(query_dict['rotation']) + setting_rotation_step.value

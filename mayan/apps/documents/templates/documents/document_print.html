@@ -2,15 +2,16 @@
 
 {% load i18n %}
 
-{% load documents_tags %}
+{% load converter_tags %}
 
 {% block title %}{{ title }}{% endblock title %}
 
 {% block content_plain %}
     {% for page in pages %}
+        {% converter_get_object_image_data obj=page width=width height=height as object_image_data %}
         <img
             alt="{% trans 'Document page image preview' %}"
-            src="{% documents_get_api_image_url page width=width height=height %}" style="width: 100%;"
+            src="{{ object_image_data.url }}" style="width: 100%;"
         />
     {% endfor %}
 {% endblock %}

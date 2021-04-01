@@ -3,15 +3,14 @@ from furl import furl
 from django.urls import reverse
 
 from mayan.apps.common.settings import setting_home_view
-from mayan.apps.documents.models import DocumentType
 from mayan.apps.documents.permissions import (
     permission_document_properties_edit, permission_document_type_edit,
     permission_document_view
 )
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
-from mayan.apps.documents.tests.literals import TEST_DOCUMENT_TYPE_2_LABEL
 from mayan.apps.testing.tests.base import GenericViewTestCase
 
+from ..events import event_metadata_type_relationship_updated
 from ..models import MetadataType
 from ..permissions import (
     permission_document_metadata_add, permission_document_metadata_remove,
@@ -20,10 +19,7 @@ from ..permissions import (
     permission_metadata_type_edit, permission_metadata_type_view
 )
 
-from .literals import (
-    TEST_DOCUMENT_METADATA_VALUE_2, TEST_METADATA_TYPE_LABEL_2,
-    TEST_METADATA_TYPE_NAME_2, TEST_METADATA_VALUE_EDITED
-)
+from .literals import TEST_METADATA_VALUE, TEST_METADATA_VALUE_EDITED
 from .mixins import (
     DocumentMetadataMixin, DocumentMetadataViewTestMixin,
     MetadataTypeTestMixin, MetadataTypeViewTestMixin
@@ -38,8 +34,8 @@ class DocumentMetadataViewTestCase(
 
     def setUp(self):
         super().setUp()
-        self._create_test_document_stub()
         self._create_test_metadata_type(add_test_document_type=True)
+        self._create_test_document_stub()
 
     def test_document_metadata_add_get_view_no_permission(self):
         document_metadata_count = self.test_document.metadata.count()
@@ -404,19 +400,16 @@ class DocumentMetadataViewTestCase(
         self.grant_permission(permission=permission_document_metadata_edit)
         self.grant_permission(permission=permission_document_metadata_view)
 
-        document_type_2 = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE_2_LABEL
+        self._create_test_document_type()
+        self._create_test_metadata_type()
+
+        test_document_metadata_2 = self.test_document_types[1].metadata.create(
+            metadata_type=self.test_metadata_types[1], required=True
         )
 
-        metadata_type_2 = MetadataType.objects.create(
-            name=TEST_METADATA_TYPE_NAME_2, label=TEST_METADATA_TYPE_LABEL_2
+        self.test_document.document_type_change(
+            document_type=self.test_document_types[1]
         )
-
-        document_metadata_2 = document_type_2.metadata.create(
-            metadata_type=metadata_type_2, required=True
-        )
-
-        self.test_document.document_type_change(document_type=document_type_2)
 
         response = self.get(
             viewname='metadata:metadata_edit', kwargs={
@@ -425,24 +418,20 @@ class DocumentMetadataViewTestCase(
         )
         self.assertContains(response=response, text='Edit', status_code=200)
 
-        response = self.post(
-            'metadata:metadata_edit', kwargs={'document_id': self.test_document.pk},
-            data={
-                'form-0-id': document_metadata_2.metadata_type.pk,
-                'form-0-update': True,
-                'form-0-value': TEST_DOCUMENT_METADATA_VALUE_2,
-                'form-TOTAL_FORMS': '1',
-                'form-INITIAL_FORMS': '0',
-                'form-MAX_NUM_FORMS': '',
+        response = self._request_test_document_metadata_edit_post_view(
+            extra_data={
+                'form-0-metadata_type_id': test_document_metadata_2.metadata_type.pk,
             }, follow=True
         )
+
         self.assertContains(
             response=response, text='Metadata for document', status_code=200
         )
 
         self.assertEqual(
-            self.test_document.metadata.get(metadata_type=metadata_type_2).value,
-            TEST_DOCUMENT_METADATA_VALUE_2
+            self.test_document.metadata.get(
+                metadata_type=self.test_metadata_types[1]
+            ).value, TEST_METADATA_VALUE_EDITED
         )
 
     def test_document_metadata_edit_redirect(self):
@@ -785,35 +774,18 @@ class DocumentMetadataViewTestCase(
 
         self._create_test_document_stub()
 
-        document_metadata = self.test_documents[0].metadata.create(
+        self.test_documents[0].metadata.create(
             metadata_type=self.test_metadata_type
         )
         self.test_documents[1].metadata.create(
             metadata_type=self.test_metadata_type
         )
 
-        response = self.get(
-            viewname='metadata:metadata_multiple_remove', data={
-                'id_list': '{},{}'.format(
-                    self.test_documents[0].pk, self.test_documents[0].pk
-                )
-            }
-        )
+        response = self._request_test_document_multiple_metadata_remove_get_view()
         self.assertEqual(response.status_code, 200)
 
         # Test post to metadata removal view
-        response = self.post(
-            viewname='metadata:metadata_multiple_remove', data={
-                'id_list': '{},{}'.format(
-                    self.test_documents[0].pk, self.test_documents[1].pk
-                ),
-                'form-0-id': document_metadata.metadata_type.pk,
-                'form-0-update': True,
-                'form-TOTAL_FORMS': '1',
-                'form-INITIAL_FORMS': '0',
-                'form-MAX_NUM_FORMS': '',
-            }
-        )
+        response = self._request_test_document_multiple_metadata_remove_post_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(self.test_documents[0].metadata.count(), 0)
@@ -826,37 +798,19 @@ class DocumentMetadataViewTestCase(
         self.grant_permission(permission=permission_document_metadata_add)
         self.grant_permission(permission=permission_document_metadata_edit)
 
-        document_metadata = self.test_documents[0].metadata.create(
+        self.test_documents[0].metadata.create(
             metadata_type=self.test_metadata_type
         )
         self.test_documents[1].metadata.create(
             metadata_type=self.test_metadata_type
         )
 
-        response = self.get(
-            viewname='metadata:metadata_multiple_edit', data={
-                'id_list': '{},{}'.format(
-                    self.test_documents[0].pk, self.test_documents[1].pk
-                )
-            }
-        )
+        response = self._request_test_document_multiple_metadata_edit_get_view()
         self.assertContains(response=response, text='Edit', status_code=200)
 
         # Test post to metadata removal view
-        response = self.post(
-            viewname='metadata:metadata_multiple_edit', data={
-                'id_list': '{},{}'.format(
-                    self.test_documents[0].pk, self.test_documents[1].pk
-                ),
-                'form-0-id': document_metadata.metadata_type.pk,
-                'form-0-value': TEST_METADATA_VALUE_EDITED,
-                'form-0-update': True,
-                'form-TOTAL_FORMS': '1',
-                'form-INITIAL_FORMS': '0',
-                'form-MAX_NUM_FORMS': '',
-            }, follow=True
-        )
-        self.assertEqual(response.status_code, 200)
+        response = self._request_test_document_multiple_metadata_edit_post_view()
+        self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
             self.test_documents[0].metadata.first().value,
@@ -872,19 +826,25 @@ class DocumentMetadataRequiredTestCase(
     DocumentMetadataViewTestMixin, MetadataTypeTestMixin,
     GenericDocumentViewTestCase
 ):
+    auto_upload_test_document = False
+
     def setUp(self):
         super().setUp()
         self._create_test_metadata_type(add_test_document_type=True)
         self._create_test_metadata_type(
             add_test_document_type=True, required=True
         )
+        self._create_test_document_stub()
 
     def _create_test_document_metadata(self):
-        self.test_document_metadata = self.test_document.metadata.get_or_create(
-            metadata_type=self.test_metadata_types[0]
+        self.test_document.metadata.update_or_create(
+            metadata_type=self.test_metadata_types[0],
+            defaults={'value': TEST_METADATA_VALUE}
         )
-        self.test_document.metadata.get_or_create(
-            metadata_type=self.test_metadata_types[1]
+
+        self.test_document.metadata.update_or_create(
+            metadata_type=self.test_metadata_types[1],
+            defaults={'value': TEST_METADATA_VALUE}
         )
 
     def test_document_metadata_remove_post_view_with_access_non_required_from_dual(self):
@@ -953,8 +913,54 @@ class DocumentMetadataRequiredTestCase(
             ).exists()
         )
 
+    def test_document_multiple_metadata_edit_mixed_required_non_selection_required_view(self):
+        # Tried to edit the multiple metadata from two documents, deselecting
+        # the update checkmark from the required metadata which already has
+        # a value. GitLab issue #936
+        # "Bulk editing of metadata: error when "update" option of a required field is unchecked"
+        self._create_test_document_metadata()
 
-class DocumentTypeMetadataTypeViewTestCase(
+        self.grant_access(
+            obj=self.test_document,
+            permission=permission_document_metadata_edit
+        )
+        self.grant_access(
+            obj=self.test_metadata_types[0],
+            permission=permission_document_metadata_edit
+        )
+        self.grant_access(
+            obj=self.test_metadata_types[1],
+            permission=permission_document_metadata_edit
+        )
+
+        response = self._request_test_document_metadata_edit_post_view(
+            extra_data={
+                'form-0-metadata_type_id': self._test_document_type_metadata_type_relationships[0].metadata_type.pk,
+                'form-0-update': True,
+                'form-0-value': TEST_METADATA_VALUE_EDITED,
+                'form-1-metadata_type_id': self._test_document_type_metadata_type_relationships[1].metadata_type.pk,  # Required
+                'form-1-update': False,
+                'form-1-value': TEST_METADATA_VALUE_EDITED,
+                'form-TOTAL_FORMS': '2',
+                'form-INITIAL_FORMS': '0',
+                'form-MAX_NUM_FORMS': '',
+            }
+        )
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(
+            self.test_document.metadata.get(
+                metadata_type=self.test_metadata_types[0],
+            ).value, TEST_METADATA_VALUE_EDITED
+        )
+        self.assertEqual(
+            self.test_document.metadata.get(
+                metadata_type=self.test_metadata_types[1],
+            ).value, TEST_METADATA_VALUE
+        )
+
+
+class DocumentTypeMetadataTypeRelationshipViewTestCase(
     MetadataTypeViewTestMixin, MetadataTypeTestMixin,
     GenericDocumentViewTestCase
 ):
@@ -963,51 +969,199 @@ class DocumentTypeMetadataTypeViewTestCase(
     def setUp(self):
         super().setUp()
         self._create_test_metadata_type()
-        self._create_test_document_stub()
 
-    def test_document_type_relationship_view_no_permission(self):
-        response = self._request_test_document_type_relationship_edit_view()
-        self.assertEqual(response.status_code, 403)
+    def test_document_type_relationship_delete_view_no_permission(self):
+        self.test_document_type.metadata.create(
+            metadata_type=self.test_metadata_type
+        )
+
+        test_document_type_metadata_type_relationship_count = self.test_document_type.metadata.count()
+
+        self._clear_events()
+
+        response = self._request_test_document_type_relationship_delete_view()
+        self.assertEqual(response.status_code, 404)
 
         self.test_document_type.refresh_from_db()
-        self.assertEqual(self.test_document_type.metadata.count(), 0)
+        self.assertEqual(
+            self.test_document_type.metadata.count(),
+            test_document_type_metadata_type_relationship_count
+        )
 
-    def test_document_type_relationship_view_with_metadata_type_access(self):
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_type_relationship_delete_view_with_metadata_type_access(self):
+        self.test_document_type.metadata.create(
+            metadata_type=self.test_metadata_type
+        )
+
+        test_document_type_metadata_type_relationship_count = self.test_document_type.metadata.count()
+
         self.grant_access(
             obj=self.test_metadata_type,
             permission=permission_metadata_type_edit
         )
 
-        response = self._request_test_document_type_relationship_edit_view()
-        self.assertEqual(response.status_code, 403)
+        self._clear_events()
+
+        response = self._request_test_document_type_relationship_delete_view()
+        self.assertEqual(response.status_code, 404)
 
         self.test_document_type.refresh_from_db()
-        self.assertEqual(self.test_document_type.metadata.count(), 0)
-
-    def test_document_type_relationship_view_with_document_type_access(self):
-        self.grant_access(
-            obj=self.test_document_type, permission=permission_document_type_edit
+        self.assertEqual(
+            self.test_document_type.metadata.count(),
+            test_document_type_metadata_type_relationship_count
         )
 
-        response = self._request_test_document_type_relationship_edit_view()
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_type_relationship_delete_view_with_document_type_access(self):
+        self.test_document_type.metadata.create(
+            metadata_type=self.test_metadata_type
+        )
+
+        test_document_type_metadata_type_relationship_count = self.test_document_type.metadata.count()
+
+        self.grant_access(
+            obj=self.test_document_type,
+            permission=permission_document_type_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_document_type_relationship_delete_view()
         self.assertEqual(response.status_code, 302)
 
         self.test_document_type.refresh_from_db()
-        self.assertEqual(self.test_document_type.metadata.count(), 0)
+        self.assertEqual(
+            self.test_document_type.metadata.count(),
+            test_document_type_metadata_type_relationship_count
+        )
 
-    def test_document_type_relationship_view_with_document_type_and_metadata_type_access(self):
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_type_relationship_delete_view_with_full_access(self):
+        self.test_document_type.metadata.create(
+            metadata_type=self.test_metadata_type
+        )
+
+        test_document_type_metadata_type_relationship_count = self.test_document_type.metadata.count()
+
         self.grant_access(
-            obj=self.test_document_type, permission=permission_document_type_edit
+            obj=self.test_document_type,
+            permission=permission_document_type_edit
         )
         self.grant_access(
             obj=self.test_metadata_type,
             permission=permission_metadata_type_edit
         )
 
+        self._clear_events()
+
+        response = self._request_test_document_type_relationship_delete_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.test_document_type.refresh_from_db()
+        self.assertEqual(
+            self.test_document_type.metadata.count(),
+            test_document_type_metadata_type_relationship_count - 1
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, self.test_metadata_type)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_document_type)
+        self.assertEqual(events[0].verb, event_metadata_type_relationship_updated.id)
+
+    def test_document_type_relationship_edit_view_no_permission(self):
+        test_document_type_metadata_type_relationship_count = self.test_document_type.metadata.count()
+
+        self._clear_events()
+
+        response = self._request_test_document_type_relationship_edit_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.test_document_type.refresh_from_db()
+        self.assertEqual(
+            self.test_document_type.metadata.count(),
+            test_document_type_metadata_type_relationship_count
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_type_relationship_edit_view_with_metadata_type_access(self):
+        test_document_type_metadata_type_relationship_count = self.test_document_type.metadata.count()
+
+        self.grant_access(
+            obj=self.test_metadata_type,
+            permission=permission_metadata_type_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_document_type_relationship_edit_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.test_document_type.refresh_from_db()
+        self.assertEqual(
+            self.test_document_type.metadata.count(),
+            test_document_type_metadata_type_relationship_count
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_type_relationship_edit_view_with_document_type_access(self):
+        test_document_type_metadata_type_relationship_count = self.test_document_type.metadata.count()
+
+        self.grant_access(
+            obj=self.test_document_type,
+            permission=permission_document_type_edit
+        )
+
+        self._clear_events()
+
         response = self._request_test_document_type_relationship_edit_view()
         self.assertEqual(response.status_code, 302)
 
         self.test_document_type.refresh_from_db()
+        self.assertEqual(
+            self.test_document_type.metadata.count(),
+            test_document_type_metadata_type_relationship_count
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_type_relationship_edit_view_with_full_access(self):
+        test_document_type_metadata_type_relationship_count = self.test_document_type.metadata.count()
+
+        self.grant_access(
+            obj=self.test_document_type,
+            permission=permission_document_type_edit
+        )
+        self.grant_access(
+            obj=self.test_metadata_type,
+            permission=permission_metadata_type_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_document_type_relationship_edit_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.test_document_type.refresh_from_db()
+        self.assertEqual(
+            self.test_document_type.metadata.count(),
+            test_document_type_metadata_type_relationship_count + 1
+        )
+
         self.assertQuerysetEqual(
             qs=self.test_document_type.metadata.values(
                 'metadata_type', 'required'
@@ -1019,6 +1173,14 @@ class DocumentTypeMetadataTypeViewTestCase(
                 }
             ], transform=dict
         )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, self.test_metadata_type)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_document_type)
+        self.assertEqual(events[0].verb, event_metadata_type_relationship_updated.id)
 
 
 class MetadataTypeViewTestCase(
@@ -1131,7 +1293,7 @@ class MetadataTypeViewTestCase(
         )
 
 
-class MetadataTypeDocumentTypeViewTestCase(
+class MetadataTypeDocumentTypeRelationshipViewTestCase(
     MetadataTypeViewTestMixin, MetadataTypeTestMixin,
     GenericDocumentViewTestCase
 ):
@@ -1140,39 +1302,178 @@ class MetadataTypeDocumentTypeViewTestCase(
     def setUp(self):
         super().setUp()
         self._create_test_metadata_type()
-        self._create_test_document_stub()
 
-    def test_metadata_type_relationship_view_no_permission(self):
-        response = self._request_test_metadata_type_relationship_edit_view()
-        self.assertEqual(response.status_code, 403)
+    def test_metadata_type_relationship_delete_view_no_permission(self):
+        self.test_metadata_type.document_types.create(
+            document_type=self.test_document_type
+        )
 
-        self.test_document_type.refresh_from_db()
-        self.assertEqual(self.test_document_type.metadata.count(), 0)
+        test_metadata_type_document_type_relationship_count = self.test_metadata_type.document_types.count()
 
-    def test_metadata_type_relationship_view_with_document_type_access(self):
+        self._clear_events()
+
+        response = self._request_test_metadata_type_document_type_relationship_delete_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.test_metadata_type.refresh_from_db()
+        self.assertEqual(
+            self.test_metadata_type.document_types.count(),
+            test_metadata_type_document_type_relationship_count
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_metadata_type_relationship_delete_view_with_document_type_access(self):
+        self.test_metadata_type.document_types.create(
+            document_type=self.test_document_type
+        )
+
+        test_metadata_type_document_type_relationship_count = self.test_metadata_type.document_types.count()
+
         self.grant_access(
             obj=self.test_document_type,
             permission=permission_document_type_edit
         )
 
-        response = self._request_test_metadata_type_relationship_edit_view()
-        self.assertEqual(response.status_code, 403)
+        self._clear_events()
+
+        response = self._request_test_metadata_type_document_type_relationship_delete_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.test_metadata_type.refresh_from_db()
+        self.assertEqual(
+            self.test_metadata_type.document_types.count(),
+            test_metadata_type_document_type_relationship_count
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_metadata_type_relationship_delete_view_with_metadata_type_access(self):
+        self.test_metadata_type.document_types.create(
+            document_type=self.test_document_type
+        )
+
+        test_metadata_type_document_type_relationship_count = self.test_metadata_type.document_types.count()
+
+        self.grant_access(
+            obj=self.test_metadata_type,
+            permission=permission_metadata_type_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_metadata_type_document_type_relationship_delete_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.test_metadata_type.refresh_from_db()
+        self.assertEqual(
+            self.test_metadata_type.document_types.count(),
+            test_metadata_type_document_type_relationship_count
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_metadata_type_relationship_delete_view_with_full_access(self):
+        self.test_metadata_type.document_types.create(
+            document_type=self.test_document_type
+        )
+
+        test_metadata_type_document_type_relationship_count = self.test_metadata_type.document_types.count()
+
+        self.grant_access(
+            obj=self.test_metadata_type,
+            permission=permission_metadata_type_edit
+        )
+        self.grant_access(
+            obj=self.test_document_type,
+            permission=permission_document_type_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_metadata_type_document_type_relationship_delete_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.test_metadata_type.refresh_from_db()
+        self.assertEqual(
+            self.test_metadata_type.document_types.count(),
+            test_metadata_type_document_type_relationship_count - 1
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, self.test_metadata_type)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_document_type)
+        self.assertEqual(events[0].verb, event_metadata_type_relationship_updated.id)
+
+    def test_metadata_type_document_type_relationship_view_no_permission(self):
+        test_metadata_type_document_type_relationship_count = self.test_metadata_type.document_types.count()
+
+        self._clear_events()
+
+        response = self._request_test_metadata_type_document_type_relationship_edit_view()
+        self.assertEqual(response.status_code, 404)
 
         self.test_document_type.refresh_from_db()
-        self.assertEqual(self.test_document_type.metadata.count(), 0)
+        self.assertEqual(
+            self.test_metadata_type.document_types.count(),
+            test_metadata_type_document_type_relationship_count
+        )
 
-    def test_metadata_type_relationship_view_with_metadata_type_access(self):
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_metadata_type_document_type_relationship_view_with_document_type_access(self):
+        test_metadata_type_document_type_relationship_count = self.test_metadata_type.document_types.count()
+
+        self.grant_access(
+            obj=self.test_document_type,
+            permission=permission_document_type_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_metadata_type_document_type_relationship_edit_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.test_document_type.refresh_from_db()
+        self.assertEqual(
+            self.test_metadata_type.document_types.count(),
+            test_metadata_type_document_type_relationship_count
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_metadata_type_document_type_relationship_view_with_metadata_type_access(self):
+        test_metadata_type_document_type_relationship_count = self.test_metadata_type.document_types.count()
+
         self.grant_access(
             obj=self.test_metadata_type, permission=permission_metadata_type_edit
         )
 
-        response = self._request_test_metadata_type_relationship_edit_view()
+        self._clear_events()
+
+        response = self._request_test_metadata_type_document_type_relationship_edit_view()
         self.assertEqual(response.status_code, 302)
 
         self.test_document_type.refresh_from_db()
-        self.assertEqual(self.test_document_type.metadata.count(), 0)
+        self.assertEqual(
+            self.test_metadata_type.document_types.count(),
+            test_metadata_type_document_type_relationship_count
+        )
 
-    def test_metadata_type_relationship_view_with_metadata_type_and_document_type_access(self):
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_metadata_type_document_type_relationship_view_with_full_access(self):
+        test_metadata_type_document_type_relationship_count = self.test_metadata_type.document_types.count()
+
         self.grant_access(
             obj=self.test_metadata_type, permission=permission_metadata_type_edit
         )
@@ -1181,10 +1482,17 @@ class MetadataTypeDocumentTypeViewTestCase(
             permission=permission_document_type_edit
         )
 
-        response = self._request_test_metadata_type_relationship_edit_view()
+        self._clear_events()
+
+        response = self._request_test_metadata_type_document_type_relationship_edit_view()
         self.assertEqual(response.status_code, 302)
 
         self.test_document_type.refresh_from_db()
+        self.assertEqual(
+            self.test_metadata_type.document_types.count(),
+            test_metadata_type_document_type_relationship_count + 1
+        )
+
         self.assertQuerysetEqual(
             qs=self.test_document_type.metadata.values(
                 'metadata_type', 'required'
@@ -1196,3 +1504,11 @@ class MetadataTypeDocumentTypeViewTestCase(
                 }
             ], transform=dict
         )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, self.test_metadata_type)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_document_type)
+        self.assertEqual(events[0].verb, event_metadata_type_relationship_updated.id)

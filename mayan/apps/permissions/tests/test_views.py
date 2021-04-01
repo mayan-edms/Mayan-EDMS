@@ -9,32 +9,11 @@ from ..permissions import (
     permission_role_view
 )
 
-from .mixins import GroupRoleViewTestMixin, RoleTestMixin, RoleViewTestMixin
-
-
-class RolePermissionViewsTestCase(
-    RoleTestMixin, RoleViewTestMixin, GenericViewTestCase
-):
-    def test_role_permissions_view_with_access(self):
-        """
-        Tests that a defined permission is available before it is ever used
-        or referenced. Tests the runtime permission to stored permission
-        cache initialization.
-        https://forum.mayan-edms.com/viewtopic.php?f=7&t=1614
-        GitLab issue #757 "Permissions list does not show an object until
-        one has been created"
-        """
-        self._create_test_role()
-
-        self.grant_access(
-            obj=self.test_role, permission=permission_role_edit
-        )
-
-        response = self._request_test_role_permissions_view()
-        self.assertContains(
-            response=response, status_code=200,
-            text=permission_role_view.label
-        )
+from .mixins import (
+    GroupRoleAddRemoveViewTestMixin, PermissionTestMixin,
+    RoleGroupAddRemoveViewTestMixin, RolePermissionAddRemoveViewTestMixin,
+    RoleTestMixin, RoleViewTestMixin
+)
 
 
 class RoleViewsTestCase(
@@ -171,81 +150,663 @@ class RoleViewsTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_role_permissions_view_no_permission(self):
-        self._create_test_role()
 
-        self._clear_events()
-
-        response = self._request_test_role_permissions_view()
-        self.assertEqual(response.status_code, 404)
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
-
-    def test_role_permissions_view_with_access(self):
-        self._create_test_role()
-        self.grant_access(
-            obj=self.test_role, permission=permission_role_edit
-        )
-
-        self._clear_events()
-
-        response = self._request_test_role_permissions_view()
-        self.assertEqual(response.status_code, 200)
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
-
-    def test_role_groups_view_no_permission(self):
-        self._create_test_role()
-
-        self._clear_events()
-
-        response = self._request_test_role_groups_view()
-        self.assertEqual(response.status_code, 404)
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
-
-    def test_role_groups_view_with_access(self):
-        self._create_test_role()
-        self.grant_access(
-            obj=self.test_role, permission=permission_role_edit
-        )
-
-        self._clear_events()
-
-        response = self._request_test_role_groups_view()
-        self.assertEqual(response.status_code, 200)
-
-        events = self._get_test_events()
-        self.assertEqual(events.count(), 0)
-
-
-class GroupRoleViewTestCase(
-    GroupTestMixin, GroupRoleViewTestMixin, RoleTestMixin, GenericViewTestCase
+class RoleGroupAddRemoveViewTestCase(
+    GroupTestMixin, RoleGroupAddRemoveViewTestMixin, RoleTestMixin,
+    GenericViewTestCase
 ):
-    def test_group_roles_view_no_permission(self):
+    def setUp(self):
+        super().setUp()
+        self._create_test_role()
         self._create_test_group()
+
+    def test_role_group_add_remove_get_view_no_permission(self):
+        self.test_role.groups.add(self.test_group)
 
         self._clear_events()
 
-        response = self._request_test_group_roles_view()
-        self.assertEqual(response.status_code, 404)
+        response = self._request_test_role_group_add_remove_get_view()
+        self.assertNotContains(
+            response=response, text=str(self.test_role),
+            status_code=404
+        )
+        self.assertNotContains(
+            response=response, text=str(self.test_group),
+            status_code=404
+        )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
-    def test_group_roles_view_with_access(self):
-        self._create_test_group()
+    def test_role_group_add_remove_get_view_with_role_access(self):
+        self.test_role.groups.add(self.test_group)
+
         self.grant_access(
-            obj=self.test_group, permission=permission_group_edit
+            obj=self.test_role,
+            permission=permission_role_edit
         )
 
         self._clear_events()
 
-        response = self._request_test_group_roles_view()
-        self.assertEqual(response.status_code, 200)
+        response = self._request_test_role_group_add_remove_get_view()
+        self.assertContains(
+            response=response, text=str(self.test_role),
+            status_code=200
+        )
+        self.assertNotContains(
+            response=response, text=str(self.test_group),
+            status_code=200
+        )
 
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
+
+    def test_role_group_add_remove_get_view_with_group_access(self):
+        self.test_role.groups.add(self.test_group)
+
+        self.grant_access(
+            obj=self.test_group,
+            permission=permission_group_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_role_group_add_remove_get_view()
+        self.assertNotContains(
+            response=response, text=str(self.test_role),
+            status_code=404
+        )
+        self.assertNotContains(
+            response=response, text=str(self.test_group),
+            status_code=404
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_role_group_add_remove_get_view_with_full_access(self):
+        self.test_role.groups.add(self.test_group)
+
+        self.grant_access(
+            obj=self.test_role,
+            permission=permission_role_edit
+        )
+        self.grant_access(
+            obj=self.test_group,
+            permission=permission_group_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_role_group_add_remove_get_view()
+        self.assertContains(
+            response=response, text=str(self.test_role),
+            status_code=200
+        )
+        self.assertContains(
+            response=response, text=str(self.test_group),
+            status_code=200
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_role_group_add_view_no_permission(self):
+        self._clear_events()
+
+        response = self._request_test_role_group_add_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertTrue(
+            self.test_group not in self.test_role.groups.all()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_role_group_add_view_with_role_access(self):
+        self.grant_access(
+            obj=self.test_role,
+            permission=permission_role_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_role_group_add_view()
+        self.assertEqual(response.status_code, 200)
+
+        self.assertTrue(
+            self.test_group not in self.test_role.groups.all()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_role_group_add_view_with_group_access(self):
+        self.grant_access(
+            obj=self.test_group,
+            permission=permission_group_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_role_group_add_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertTrue(
+            self.test_group not in self.test_role.groups.all()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_role_group_add_view_with_full_access(self):
+        self.grant_access(
+            obj=self.test_role,
+            permission=permission_role_edit
+        )
+        self.grant_access(
+            obj=self.test_group,
+            permission=permission_group_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_role_group_add_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertTrue(
+            self.test_group in self.test_role.groups.all()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, self.test_group)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_role)
+        self.assertEqual(events[0].verb, event_role_edited.id)
+
+    def test_role_group_remove_view_no_permission(self):
+        self.test_role.groups.add(self.test_group)
+
+        self._clear_events()
+
+        response = self._request_test_role_group_remove_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertTrue(
+            self.test_group in self.test_role.groups.all()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_role_group_remove_view_with_role_access(self):
+        self.test_role.groups.add(self.test_group)
+
+        self.grant_access(
+            obj=self.test_role,
+            permission=permission_role_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_role_group_remove_view()
+        self.assertEqual(response.status_code, 200)
+
+        self.assertTrue(
+            self.test_group in self.test_role.groups.all()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_role_group_remove_view_with_group_access(self):
+        self.test_role.groups.add(self.test_group)
+
+        self.grant_access(
+            obj=self.test_group,
+            permission=permission_group_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_role_group_remove_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertTrue(
+            self.test_group in self.test_role.groups.all()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_role_group_remove_view_with_full_access(self):
+        self.test_role.groups.add(self.test_group)
+
+        self.grant_access(
+            obj=self.test_role,
+            permission=permission_role_edit
+        )
+        self.grant_access(
+            obj=self.test_group,
+            permission=permission_group_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_role_group_remove_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertTrue(
+            self.test_group not in self.test_role.groups.all()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, self.test_group)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_role)
+        self.assertEqual(events[0].verb, event_role_edited.id)
+
+
+class RolePermissionAddRemoveViewTestCase(
+    PermissionTestMixin, RolePermissionAddRemoveViewTestMixin, RoleTestMixin,
+    GenericViewTestCase
+):
+    def setUp(self):
+        super().setUp()
+        self._create_test_role()
+        self._create_test_permission()
+
+    def test_role_permission_add_remove_get_view_no_permission(self):
+        self.test_role.permissions.add(self.test_permission.stored_permission)
+
+        self._clear_events()
+
+        response = self._request_test_role_permission_add_remove_get_view()
+        self.assertNotContains(
+            response=response, text=str(self.test_role),
+            status_code=404
+        )
+        self.assertNotContains(
+            response=response, text=str(self.test_permission),
+            status_code=404
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_role_permission_add_remove_get_view_with_access(self):
+        """
+        Tests that a defined permission is available before it is ever used
+        or referenced. Tests the runtime permission to stored permission
+        cache initialization.
+        https://forum.mayan-edms.com/viewtopic.php?f=7&t=1614
+        GitLab issue #757 "Permissions list does not show an object until
+        one has been created"
+        """
+        self.test_role.permissions.add(self.test_permission.stored_permission)
+
+        self.grant_access(
+            obj=self.test_role,
+            permission=permission_role_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_role_permission_add_remove_get_view()
+        self.assertContains(
+            response=response, text=str(self.test_role),
+            status_code=200
+        )
+        self.assertContains(
+            response=response, text=str(self.test_permission),
+            status_code=200
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_role_permission_add_view_no_permission(self):
+        self._clear_events()
+
+        response = self._request_test_role_permission_add_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertTrue(
+            self.test_permission.stored_permission not in self.test_role.permissions.all()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_role_permission_add_view_with_access(self):
+        self.grant_access(
+            obj=self.test_role,
+            permission=permission_role_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_role_permission_add_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertTrue(
+            self.test_permission.stored_permission in self.test_role.permissions.all()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(
+            events[0].action_object, self.test_permission.stored_permission
+        )
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_role)
+        self.assertEqual(events[0].verb, event_role_edited.id)
+
+    def test_role_permission_remove_view_no_permission(self):
+        self.test_role.permissions.add(self.test_permission.stored_permission)
+
+        self._clear_events()
+
+        response = self._request_test_role_permission_remove_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertTrue(
+            self.test_permission.stored_permission in self.test_role.permissions.all()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_role_permission_remove_view_with_access(self):
+        self.test_role.permissions.add(self.test_permission.stored_permission)
+
+        self.grant_access(
+            obj=self.test_role,
+            permission=permission_role_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_role_permission_remove_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertTrue(
+            self.test_permission.stored_permission not in self.test_role.permissions.all()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(
+            events[0].action_object, self.test_permission.stored_permission
+        )
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_role)
+        self.assertEqual(events[0].verb, event_role_edited.id)
+
+
+class GroupRoleAddRemoveViewTestCase(
+    GroupTestMixin, GroupRoleAddRemoveViewTestMixin, RoleTestMixin,
+    GenericViewTestCase
+):
+    def setUp(self):
+        super().setUp()
+        self._create_test_group()
+        self._create_test_role()
+
+    def test_group_role_add_remove_get_view_no_permission(self):
+        self.test_group.roles.add(self.test_role)
+
+        self._clear_events()
+
+        response = self._request_test_group_role_add_remove_get_view()
+        self.assertNotContains(
+            response=response, text=str(self.test_group),
+            status_code=404
+        )
+        self.assertNotContains(
+            response=response, text=str(self.test_role),
+            status_code=404
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_group_role_add_remove_get_view_with_group_access(self):
+        self.test_group.roles.add(self.test_role)
+
+        self.grant_access(
+            obj=self.test_group,
+            permission=permission_group_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_group_role_add_remove_get_view()
+        self.assertContains(
+            response=response, text=str(self.test_group),
+            status_code=200
+        )
+        self.assertNotContains(
+            response=response, text=str(self.test_role),
+            status_code=200
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_group_role_add_remove_get_view_with_role_access(self):
+        self.test_group.roles.add(self.test_role)
+
+        self.grant_access(
+            obj=self.test_role,
+            permission=permission_role_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_group_role_add_remove_get_view()
+        self.assertNotContains(
+            response=response, text=str(self.test_group),
+            status_code=404
+        )
+        self.assertNotContains(
+            response=response, text=str(self.test_role),
+            status_code=404
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_group_role_add_remove_get_view_with_full_access(self):
+        self.test_group.roles.add(self.test_role)
+
+        self.grant_access(
+            obj=self.test_group,
+            permission=permission_group_edit
+        )
+        self.grant_access(
+            obj=self.test_role,
+            permission=permission_role_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_group_role_add_remove_get_view()
+        self.assertContains(
+            response=response, text=str(self.test_group),
+            status_code=200
+        )
+        self.assertContains(
+            response=response, text=str(self.test_role),
+            status_code=200
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_group_role_add_view_no_permission(self):
+        self._clear_events()
+
+        response = self._request_test_group_role_add_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertTrue(
+            self.test_role not in self.test_group.roles.all()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_group_role_add_view_with_group_access(self):
+        self.grant_access(
+            obj=self.test_group,
+            permission=permission_group_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_group_role_add_view()
+        self.assertEqual(response.status_code, 200)
+
+        self.assertTrue(
+            self.test_role not in self.test_group.roles.all()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_group_role_add_view_with_role_access(self):
+        self.grant_access(
+            obj=self.test_role,
+            permission=permission_role_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_group_role_add_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertTrue(
+            self.test_role not in self.test_group.roles.all()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_group_role_add_view_with_full_access(self):
+        self.grant_access(
+            obj=self.test_group,
+            permission=permission_group_edit
+        )
+        self.grant_access(
+            obj=self.test_role,
+            permission=permission_role_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_group_role_add_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertTrue(
+            self.test_role in self.test_group.roles.all()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, self.test_group)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_role)
+        self.assertEqual(events[0].verb, event_role_edited.id)
+
+    def test_group_role_remove_view_no_permission(self):
+        self.test_group.roles.add(self.test_role)
+
+        self._clear_events()
+
+        response = self._request_test_group_role_remove_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertTrue(
+            self.test_role in self.test_group.roles.all()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_group_role_remove_view_with_group_access(self):
+        self.test_group.roles.add(self.test_role)
+
+        self.grant_access(
+            obj=self.test_group,
+            permission=permission_group_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_group_role_remove_view()
+        self.assertEqual(response.status_code, 200)
+
+        self.assertTrue(
+            self.test_role in self.test_group.roles.all()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_group_role_remove_view_with_role_access(self):
+        self.test_group.roles.add(self.test_role)
+
+        self.grant_access(
+            obj=self.test_role,
+            permission=permission_role_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_group_role_remove_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertTrue(
+            self.test_role in self.test_group.roles.all()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_group_role_remove_view_with_full_access(self):
+        self.test_group.roles.add(self.test_role)
+
+        self.grant_access(
+            obj=self.test_group,
+            permission=permission_group_edit
+        )
+        self.grant_access(
+            obj=self.test_role,
+            permission=permission_role_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_group_role_remove_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertTrue(
+            self.test_role not in self.test_group.roles.all()
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, self.test_group)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_role)
+        self.assertEqual(events[0].verb, event_role_edited.id)
