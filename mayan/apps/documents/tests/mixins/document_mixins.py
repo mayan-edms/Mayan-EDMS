@@ -143,9 +143,12 @@ class DocumentTestMixin:
         self.test_documents.append(self.test_document)
 
     def _create_test_document_type(self, label=None):
-        self.test_document_type = DocumentType.objects.create(
-            label=label or TEST_DOCUMENT_TYPE_LABEL
+        total_document_types = len(self.test_document_types)
+        label = label or '{}_{}'.format(
+            TEST_DOCUMENT_TYPE_LABEL, total_document_types
         )
+
+        self.test_document_type = DocumentType.objects.create(label=label)
         self.test_document_types.append(self.test_document_type)
 
     def _calculate_test_document_path(self):

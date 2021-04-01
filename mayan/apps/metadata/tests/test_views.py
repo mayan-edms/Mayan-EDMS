@@ -851,6 +851,8 @@ class DocumentMetadataRequiredTestCase(
         # Adds two metadata types to the document type: one required and
         # one optional. Add both to a document. Attempts to remove the optional
         # one.
+        self._create_test_document_metadata()
+
         self.grant_access(
             obj=self.test_document,
             permission=permission_document_metadata_remove
@@ -882,6 +884,8 @@ class DocumentMetadataRequiredTestCase(
         # Adds two metadata types to the document type: one required and
         # one optional. Add both to a document. Attempts to remove the required
         # one.
+        self._create_test_document_metadata()
+
         self.grant_access(
             obj=self.test_document,
             permission=permission_document_metadata_remove
@@ -914,7 +918,6 @@ class DocumentMetadataRequiredTestCase(
         # the update checkmark from the required metadata which already has
         # a value. GitLab issue #936
         # "Bulk editing of metadata: error when "update" option of a required field is unchecked"
-
         self._create_test_document_metadata()
 
         self.grant_access(
@@ -932,10 +935,10 @@ class DocumentMetadataRequiredTestCase(
 
         response = self._request_test_document_metadata_edit_post_view(
             extra_data={
-                'form-0-metadata_type_id': self._test_document_type_metadata_types[0].metadata_type.pk,
+                'form-0-metadata_type_id': self._test_document_type_metadata_type_relationships[0].metadata_type.pk,
                 'form-0-update': True,
                 'form-0-value': TEST_METADATA_VALUE_EDITED,
-                'form-1-metadata_type_id': self._test_document_type_metadata_types[1].metadata_type.pk,  # Required
+                'form-1-metadata_type_id': self._test_document_type_metadata_type_relationships[1].metadata_type.pk,  # Required
                 'form-1-update': False,
                 'form-1-value': TEST_METADATA_VALUE_EDITED,
                 'form-TOTAL_FORMS': '2',

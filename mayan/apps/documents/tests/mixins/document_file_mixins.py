@@ -6,9 +6,10 @@ from ...literals import PAGE_RANGE_ALL
 from ...models.document_file_models import DocumentFile
 
 from ..literals import (
-    TEST_DOCUMENT_FILE_COMMENT, TEST_DOCUMENT_FILE_COMMENT_EDITED,
-    TEST_DOCUMENT_FILE_FILENAME_EDITED, TEST_SMALL_DOCUMENT_PATH,
-    TEST_TRANSFORMATION_ARGUMENT, TEST_TRANSFORMATION_CLASS
+    TEST_DOCUMENT_FILE_ACTION, TEST_DOCUMENT_FILE_COMMENT,
+    TEST_DOCUMENT_FILE_COMMENT_EDITED, TEST_DOCUMENT_FILE_FILENAME_EDITED,
+    TEST_SMALL_DOCUMENT_PATH, TEST_TRANSFORMATION_ARGUMENT,
+    TEST_TRANSFORMATION_CLASS
 )
 
 
@@ -52,7 +53,8 @@ class DocumentFileAPIViewTestMixin:
                 viewname='rest_api:documentfile-list', kwargs={
                     'document_id': self.test_document.pk,
                 }, data={
-                    'comment': '', 'file_new': file_descriptor,
+                    'action': TEST_DOCUMENT_FILE_ACTION, 'comment': '',
+                    'file_new': file_descriptor,
                 }
             )
 

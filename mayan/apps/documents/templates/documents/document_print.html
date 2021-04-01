@@ -8,9 +8,10 @@
 
 {% block content_plain %}
     {% for page in pages %}
+        {% converter_get_object_image_data obj=page width=width height=height as object_image_data %}
         <img
             alt="{% trans 'Document page image preview' %}"
-            src="{% converter_get_object_image_data.url obj=page width=width height=height %}" style="width: 100%;"
+            src="{{ object_image_data.url }}" style="width: 100%;"
         />
     {% endfor %}
 {% endblock %}

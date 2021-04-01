@@ -9,7 +9,7 @@ from mayan.apps.converter.transformations import TransformationRotate
 
 from ..literals import (
     DEFAULT_DOCUMENTS_RECENTLY_ACCESSED_COUNT,
-    DEFAULT_DOCUMENTS_RECENTLY_CREATED_COUNT
+    DEFAULT_DOCUMENTS_RECENTLY_CREATED_COUNT, DOCUMENT_FILE_ACTION_PAGES_NEW
 )
 
 # Filenames
@@ -98,4 +98,6 @@ TEST_DOCUMENT_TYPE_CHANGE_ACTION_DOTTED_PATH = 'mayan.apps.documents.workflow_ac
 TEST_TRASH_DOCUMENT_WORKFLOW_ACTION_DOTTED_PATH = 'mayan.apps.documents.workflow_actions.TrashDocumentAction'
 
 # Others
+
+TEST_DOCUMENT_FILE_ACTION = DOCUMENT_FILE_ACTION_PAGES_NEW
 TEST_VERSION_COMMENT = 'test file comment'

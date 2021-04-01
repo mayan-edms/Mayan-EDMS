@@ -324,6 +324,7 @@ class MetadataTypeTestMixin:
     def setUp(self):
         super().setUp()
         self.test_metadata_types = []
+        self._test_document_type_metadata_type_relationships = []
 
     def _get_test_metadata_type_queryset(self):
         return MetadataType.objects.filter(
@@ -349,8 +350,10 @@ class MetadataTypeTestMixin:
         self.test_metadata_types.append(self.test_metadata_type)
 
         if add_test_document_type:
-            self.test_document_type.metadata.create(
-                metadata_type=self.test_metadata_type, required=required
+            self._test_document_type_metadata_type_relationships.append(
+                self.test_document_type.metadata.create(
+                    metadata_type=self.test_metadata_type, required=required
+                )
             )
 
 
