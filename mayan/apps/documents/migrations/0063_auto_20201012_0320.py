@@ -94,8 +94,6 @@ def operation_document_version_page_create(apps, schema_editor):
             final_query, document_version_page_values
         )
 
-        page_number = page_number + 1
-
 
 def operation_document_version_page_create_reverse(apps, schema_editor):
     DocumentVersion = apps.get_model(
