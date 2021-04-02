@@ -189,13 +189,15 @@ class EventManagerSave(EventManager):
 
     def _commit(self):
         if self.created:
-            self.kwargs['created']['event'].commit(
-                **self.get_event_arguments(argument_map=self.kwargs['created'])
-            )
+            if 'created' in self.kwargs:
+                self.kwargs['created']['event'].commit(
+                    **self.get_event_arguments(argument_map=self.kwargs['created'])
+                )
         else:
-            self.kwargs['edited']['event'].commit(
-                **self.get_event_arguments(argument_map=self.kwargs['edited'])
-            )
+            if 'edited' in self.kwargs:
+                self.kwargs['edited']['event'].commit(
+                    **self.get_event_arguments(argument_map=self.kwargs['edited'])
+                )
 
     def prepare(self):
         self.created = not self.instance.pk
