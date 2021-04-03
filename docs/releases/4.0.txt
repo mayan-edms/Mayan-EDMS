@@ -209,5 +209,6 @@ Issues closed
 - :gitlab-issue:`929` COMMON_EXTRA_APPS env variable not doing anything
 - :gitlab-issue:`939` Using db as lock manager, "name" column in table "lock_manager_lock" too small
 - :gitlab-issue:`941` Include time of document signature
+- :forum-topic:`5085` Rest API: Detailed list of signatures
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

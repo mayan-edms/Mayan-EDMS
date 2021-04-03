@@ -9,6 +9,12 @@ from mayan.apps.django_gpg.models import Key
 from mayan.apps.documents.models import DocumentFile
 from mayan.apps.storage.utils import NamedTemporaryFile, mkstemp
 
+from .events import (
+    event_detached_signature_created,
+    event_embedded_signature_created
+)
+
+
 logger = logging.getLogger(name=__name__)
 
 
@@ -24,10 +30,17 @@ class DetachedSignatureManager(models.Manager):
                     passphrase=passphrase
                 )
             temporary_file_object.seek(0)
-            return self.create(
+
+            instance = self.model(
                 document_file=document_file,
                 signature_file=File(file=temporary_file_object)
             )
+            instance._event_ignore = True
+            instance.save()
+            event_detached_signature_created.commit(
+                action_object=instance, actor=user, target=document_file
+            )
+            return instance
 
 
 class EmbeddedSignatureManager(models.Manager):
@@ -70,7 +83,11 @@ class EmbeddedSignatureManager(models.Manager):
                 document_file.document.file_new(
                     file_object=file_object, _user=user
                 )
-            return self.get(signature_id=result.signature_id)
+            instance = self.get(signature_id=result.signature_id)
+            event_embedded_signature_created.commit(
+                action_object=instance, actor=user, target=document_file
+            )
+            return instance
         finally:
             os.unlink(temporary_filename)
 

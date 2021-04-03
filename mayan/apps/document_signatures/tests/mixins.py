@@ -8,16 +8,6 @@ from .literals import TEST_SIGNATURE_FILE_PATH
 
 
 class DetachedSignatureAPIViewTestMixin:
-    def _request_test_document_signature_detached_create_view(self):
-        with open(file=TEST_SIGNATURE_FILE_PATH, mode='rb') as file_object:
-            return self.post(
-                viewname='rest_api:document-file-signature-detached-list',
-                kwargs={
-                    'document_id': self.test_document.pk,
-                    'document_file_id': self.test_document_file.pk
-                }, data={'signature_file': file_object}
-            )
-
     def _request_test_document_signature_detached_delete_view(self):
         return self.delete(
             viewname='rest_api:detachedsignature-detail',
@@ -54,10 +44,20 @@ class DetachedSignatureAPIViewTestMixin:
                 'document_id': self.test_document.pk,
                 'document_file_id': self.test_document_file.pk
             }, data={
-                'key_id': self.test_key_private.key_id,
+                'key': self.test_key_private.pk,
                 'passphrase': TEST_KEY_PRIVATE_PASSPHRASE
             }
         )
+
+    def _request_test_document_signature_detached_upload_view(self):
+        with open(file=TEST_SIGNATURE_FILE_PATH, mode='rb') as file_object:
+            return self.post(
+                viewname='rest_api:document-file-signature-detached-upload',
+                kwargs={
+                    'document_id': self.test_document.pk,
+                    'document_file_id': self.test_document_file.pk
+                }, data={'signature_file': file_object}
+            )
 
 
 class DetachedSignatureViewTestMixin:
@@ -115,7 +115,7 @@ class EmbeddedSignatureAPIViewTestMixin:
                 'document_id': self.test_document.pk,
                 'document_file_id': self.test_document_file.pk
             }, data={
-                'key_id': self.test_key_private.key_id,
+                'key': self.test_key_private.pk,
                 'passphrase': TEST_KEY_PRIVATE_PASSPHRASE
             }
         )

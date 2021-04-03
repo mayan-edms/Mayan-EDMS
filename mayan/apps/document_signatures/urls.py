@@ -1,9 +1,12 @@
 from django.conf.urls import url
 
 from .api_views import (
-    APIDocumentSignDetachedView, APIDocumentDetachedSignatureListView,
-    APIDocumentDetachedSignatureView, APIDocumentEmbeddedSignatureListView,
-    APIDocumentEmbeddedSignatureView, APIDocumentSignEmbeddedView
+    APIDocumentFileDetachedSignatureDetailView,
+    APIDocumentFileDetachedSignatureListView,
+    APIDocumentFileDetachedSignatureUploadView,
+    APIDocumentFileEmbeddedSignatureDetailView,
+    APIDocumentFileEmbeddedSignatureListView,
+    APIDocumentFileSignDetachedView, APIDocumentFileSignEmbeddedView
 )
 
 from .views import (
@@ -66,31 +69,36 @@ api_urls = [
     url(
         regex=r'^documents/(?P<document_id>[0-9]+)/files/(?P<document_file_id>[0-9]+)/signatures/detached/$',
         name='document-file-signature-detached-list',
-        view=APIDocumentDetachedSignatureListView.as_view()
+        view=APIDocumentFileDetachedSignatureListView.as_view()
     ),
     url(
         regex=r'^documents/(?P<document_id>[0-9]+)/files/(?P<document_file_id>[0-9]+)/signatures/detached/sign/$',
         name='document-file-signature-detached-sign',
-        view=APIDocumentSignDetachedView.as_view()
+        view=APIDocumentFileSignDetachedView.as_view()
+    ),
+    url(
+        regex=r'^documents/(?P<document_id>[0-9]+)/files/(?P<document_file_id>[0-9]+)/signatures/detached/upload/$',
+        name='document-file-signature-detached-upload',
+        view=APIDocumentFileDetachedSignatureUploadView.as_view()
     ),
     url(
         regex=r'^documents/(?P<document_id>[0-9]+)/files/(?P<document_file_id>[0-9]+)/signatures/detached/(?P<detached_signature_id>[0-9]+)/$',
         name='detachedsignature-detail',
-        view=APIDocumentDetachedSignatureView.as_view()
+        view=APIDocumentFileDetachedSignatureDetailView.as_view()
     ),
     url(
         regex=r'^documents/(?P<document_id>[0-9]+)/files/(?P<document_file_id>[0-9]+)/signatures/embedded/$',
         name='document-file-signature-embedded-list',
-        view=APIDocumentEmbeddedSignatureListView.as_view()
+        view=APIDocumentFileEmbeddedSignatureListView.as_view()
     ),
     url(
         regex=r'^documents/(?P<document_id>[0-9]+)/files/(?P<document_file_id>[0-9]+)/signatures/embedded/sign/$',
         name='document-file-signature-embedded-sign',
-        view=APIDocumentSignEmbeddedView.as_view()
+        view=APIDocumentFileSignEmbeddedView.as_view()
     ),
     url(
         regex=r'^documents/(?P<document_id>[0-9]+)/files/(?P<document_file_id>[0-9]+)/signatures/embedded/(?P<embedded_signature_id>[0-9]+)/$',
         name='embeddedsignature-detail',
-        view=APIDocumentEmbeddedSignatureView.as_view()
+        view=APIDocumentFileEmbeddedSignatureDetailView.as_view()
     ),
 ]

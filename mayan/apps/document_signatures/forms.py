@@ -53,11 +53,9 @@ class DocumentFileSignatureDetailForm(DetailForm):
             },
         )
 
-        if kwargs['instance'].public_key_fingerprint:
-            key = Key.objects.get(
-                fingerprint=kwargs['instance'].public_key_fingerprint
-            )
+        key = kwargs['instance'].key
 
+        if key:
             extra_fields += (
                 {'label': _('Signature ID'), 'field': 'signature_id'},
                 {
@@ -66,7 +64,7 @@ class DocumentFileSignatureDetailForm(DetailForm):
                 },
                 {
                     'label': _('Key creation date'),
-                    'field': lambda x: key.creation_date,
+                    'field': 'key_creation_date',
                     'widget': forms.widgets.DateTimeInput
                 },
                 {
@@ -76,15 +74,15 @@ class DocumentFileSignatureDetailForm(DetailForm):
                 },
                 {
                     'label': _('Key length'),
-                    'field': lambda x: key.length
+                    'field': 'key_length'
                 },
                 {
                     'label': _('Key algorithm'),
-                    'field': lambda x: key.algorithm
+                    'field': 'key_algorithm'
                 },
                 {
                     'label': _('Key user ID'),
-                    'field': lambda x: key.user_id
+                    'field': 'key_user_id'
                 },
                 {
                     'label': _('Key type'),

@@ -9,8 +9,13 @@ from mayan.apps.common.apps import MayanAppConfig
 from mayan.apps.common.menus import (
     menu_list_facet, menu_object, menu_secondary, menu_tools
 )
+from mayan.apps.events.classes import EventModelRegistry, ModelEventType
 from mayan.apps.navigation.classes import SourceColumn
 
+from .events import (
+    event_detached_signature_created, event_detached_signature_uploaded,
+    event_embedded_signature_created
+)
 from .handlers import (
     handler_unverify_key_signatures, handler_verify_key_signatures
 )
@@ -64,7 +69,7 @@ class DocumentSignaturesApp(MayanAppConfig):
         )
 
         DetachedSignature = self.get_model(model_name='DetachedSignature')
-
+        EmbeddedSignature = self.get_model(model_name='EmbeddedSignature')
         SignatureBaseModel = self.get_model(model_name='SignatureBaseModel')
 
         DocumentFile.register_post_save_hook(
@@ -72,6 +77,17 @@ class DocumentSignaturesApp(MayanAppConfig):
         )
         DocumentFile.register_pre_open_hook(
             func=hook_decrypt_document_file, order=1
+        )
+
+        EventModelRegistry.register(model=DetachedSignature)
+        EventModelRegistry.register(model=EmbeddedSignature)
+
+        ModelEventType.register(
+            model=DocumentFile, event_types=(
+                event_detached_signature_created,
+                event_detached_signature_uploaded,
+                event_embedded_signature_created
+            )
         )
 
         ModelPermission.register(

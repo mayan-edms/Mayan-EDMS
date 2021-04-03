@@ -8,11 +8,15 @@ from django.utils.translation import ugettext_lazy as _
 
 from model_utils.managers import InheritanceManager
 
+from mayan.apps.databases.model_mixins import ExtraDataModelMixin
 from mayan.apps.django_gpg.exceptions import VerificationError
 from mayan.apps.django_gpg.models import Key
 from mayan.apps.documents.models import DocumentFile
+from mayan.apps.events.classes import EventManagerSave
+from mayan.apps.events.decorators import method_event
 from mayan.apps.storage.classes import DefinedStorageLazy
 
+from .events import event_detached_signature_uploaded
 from .literals import STORAGE_NAME_DOCUMENT_SIGNATURES_DETACHED_SIGNATURE
 from .managers import DetachedSignatureManager, EmbeddedSignatureManager
 
@@ -93,6 +97,111 @@ class SignatureBaseModel(models.Model):
     def is_embedded(self):
         return not hasattr(self, 'signature_file')
 
+    @property
+    def key(self):
+        try:
+            return Key.objects.get(
+                fingerprint=self.public_key_fingerprint
+            )
+        except Key.DoesNotExist:
+            return None
+
+    @property
+    def key_algorithm(self):
+        key = self.key
+
+        if key:
+            return key.algorithm
+
+    @property
+    def key_creation_date(self):
+        key = self.key
+
+        if key:
+            return key.creation_date
+
+    @property
+    def key_expiration_date(self):
+        key = self.key
+
+        if key:
+            return key.expiration_date
+
+    @property
+    def key_length(self):
+        key = self.key
+
+        if key:
+            return key.length
+
+    @property
+    def key_type(self):
+        key = self.key
+
+        if key:
+            return key.get_key_type_display()
+
+    @property
+    def key_user_id(self):
+        key = self.key
+
+        if key:
+            return key.user_id
+
+
+class DetachedSignature(ExtraDataModelMixin, SignatureBaseModel):
+    signature_file = models.FileField(
+        blank=True, help_text=_(
+            'Signature file previously generated.'
+        ), null=True, storage=DefinedStorageLazy(
+            name=STORAGE_NAME_DOCUMENT_SIGNATURES_DETACHED_SIGNATURE
+        ), upload_to=upload_to, verbose_name=_('Signature file')
+    )
+
+    objects = DetachedSignatureManager()
+
+    class Meta:
+        verbose_name = _('Document file detached signature')
+        verbose_name_plural = _('Document file detached signatures')
+
+    def __str__(self):
+        return '{}-{}'.format(self.document_file, _('signature'))
+
+    def delete(self, *args, **kwargs):
+        if self.signature_file.name:
+            self.signature_file.storage.delete(name=self.signature_file.name)
+        super().delete(*args, **kwargs)
+
+    @method_event(
+        event_manager_class=EventManagerSave,
+        created={
+            'action_object': 'self',
+            'event': event_detached_signature_uploaded,
+            'target': 'document_file'
+        },
+    )
+    def save(self, *args, **kwargs):
+        with self.document_file.open() as file_object:
+            try:
+                verify_result = Key.objects.verify_file(
+                    file_object=file_object, signature_file=self.signature_file
+                )
+            except VerificationError as exception:
+                # Not signed
+                logger.debug(
+                    'detached signature verification error; %s', exception
+                )
+            else:
+                self.signature_file.seek(0)
+
+                # Invalid signatures do not have a date attribute
+                self.date_time = getattr(verify_result, 'date_time', None)
+                self.key_id = verify_result.key_id
+                self.signature_id = verify_result.signature_id
+                self.public_key_fingerprint = verify_result.pubkey_fingerprint
+
+        return super().save(*args, **kwargs)
+
 
 class EmbeddedSignature(SignatureBaseModel):
     objects = EmbeddedSignatureManager()
@@ -128,49 +237,3 @@ class EmbeddedSignature(SignatureBaseModel):
                 # Return must be under the else: context to ensure that an
                 # embedded signature instance is created only when valid.
                 return super().save(*args, **kwargs)
-
-
-class DetachedSignature(SignatureBaseModel):
-    signature_file = models.FileField(
-        blank=True, help_text=_(
-            'Signature file previously generated.'
-        ), null=True, storage=DefinedStorageLazy(
-            name=STORAGE_NAME_DOCUMENT_SIGNATURES_DETACHED_SIGNATURE
-        ), upload_to=upload_to, verbose_name=_('Signature file')
-    )
-
-    objects = DetachedSignatureManager()
-
-    class Meta:
-        verbose_name = _('Document file detached signature')
-        verbose_name_plural = _('Document file detached signatures')
-
-    def __str__(self):
-        return '{}-{}'.format(self.document_file, _('signature'))
-
-    def delete(self, *args, **kwargs):
-        if self.signature_file.name:
-            self.signature_file.storage.delete(name=self.signature_file.name)
-        super().delete(*args, **kwargs)
-
-    def save(self, *args, **kwargs):
-        with self.document_file.open() as file_object:
-            try:
-                verify_result = Key.objects.verify_file(
-                    file_object=file_object, signature_file=self.signature_file
-                )
-            except VerificationError as exception:
-                # Not signed
-                logger.debug(
-                    'detached signature verification error; %s', exception
-                )
-            else:
-                self.signature_file.seek(0)
-
-                # Invalid signatures do not have a date attribute
-                self.date_time = getattr(verify_result, 'date_time', None)
-                self.key_id = verify_result.key_id
-                self.signature_id = verify_result.signature_id
-                self.public_key_fingerprint = verify_result.pubkey_fingerprint
-
-        return super().save(*args, **kwargs)

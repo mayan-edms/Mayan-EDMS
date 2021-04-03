@@ -127,4 +127,10 @@
   This allows displaying more icons in addition to the generic document
   image error with additional contextual information and popup messages
   explaining the actual error condition.
-
+- Add key attributes to the document signature serializers. Forum topic 5085.
+  Thanks to forum user @qra for the request.
+- Added key attributes to the document signature model as calculated
+  properties.
+- Move detached signature upload from the created endpoint to a
+  new /uploaded endpoint.
+- Added document signature events.
