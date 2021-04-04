@@ -263,7 +263,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.BasicAuthentication',
     ),
-    'DEFAULT_PAGINATION_CLASS': 'mayan.apps.rest_api.pagination.MayanPageNumberPagination',
+    'DEFAULT_PAGINATION_CLASS': 'mayan.apps.rest_api.pagination.MayanPageNumberPagination'
 }
 
 # --------- Pagination --------
@@ -307,7 +307,7 @@ STRONGHOLD_PUBLIC_URLS = (r'^/favicon\.ico$',)
 SWAGGER_SETTINGS = {
     'DEFAULT_INFO': 'rest_api.schemas.openapi_info',
     'DEFAULT_MODEL_DEPTH': 1,
-    'DOC_EXPANSION': 'None',
+    'DOC_EXPANSION': 'None'
 }
 
 # ----- AJAX REDIRECT -----
