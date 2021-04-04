@@ -1,11 +1,11 @@
 from django.test import override_settings
 from django.utils.encoding import force_text
 
-from mayan.apps.testing.tests.base import BaseTestCase
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.documents.search import document_search
 from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.storage.utils import fs_cleanup, mkdtemp
+from mayan.apps.testing.tests.base import BaseTestCase
 
 from ..classes import SearchBackend
 from ..settings import setting_backend_arguments

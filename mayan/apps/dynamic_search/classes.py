@@ -15,6 +15,10 @@ from mayan.apps.common.utils import (
 )
 from mayan.apps.views.literals import LIST_MODE_CHOICE_LIST
 
+from .literals import (
+    DEFAULT_SCOPE_OPERATOR, DELIMITER, SCOPE_DELIMITER,
+    SCOPE_OPERATOR_CHOICES
+)
 from .settings import (
     setting_backend, setting_backend_arguments,
     setting_results_limit
@@ -59,9 +63,75 @@ class SearchBackend:
         query_string = query_string.copy()
         query_string.pop('_match_all', None)
 
-        queryset = self._search(
-            global_and_search=global_and_search, search_model=search_model,
-            query_string=query_string, user=user
+        # Turn scoped query dictionary into a series of unscoped queries.
+        scopes = {}
+        operators = []
+
+        operator_marker = '{}operator'.format(SCOPE_DELIMITER)
+        result_marker = '{}result'.format(SCOPE_DELIMITER)
+        result = 0
+
+        unscoped_entry = False
+
+        for key, value in query_string.items():
+            # Check if the entry is a special operator key.
+            if key.startswith(operator_marker):
+                scope_sources = list(
+                    map(
+                        int, key[len(operator_marker) + 1:].split(DELIMITER)
+                    )
+                )
+
+                operator, result = value.split(DELIMITER)
+
+                operators.append(
+                    {
+                        'scope_sources': scope_sources,
+                        'function': SCOPE_OPERATOR_CHOICES[operator],
+                        'result': int(result)
+                    }
+                )
+            elif key.startswith(result_marker):
+                result = value
+            else:
+                # Detect scope markers. Example: _0 or _10.
+                if key.startswith(SCOPE_DELIMITER):
+                    # Scoped entry found.
+                    scope_index, unscoped_key = key[len(SCOPE_DELIMITER):].split(DELIMITER, 1)
+
+                    try:
+                        scope_index = int(scope_index)
+                    except ValueError:
+                        # Found a non numeric key. Default to non scoped key.
+                        scope_index = 0
+                        unscoped_key = key
+                        unscoped_entry = True
+                else:
+                    # Non scoped query entries are assigned to scope 0.
+                    scope_index = 0
+                    unscoped_key = key
+                    unscoped_entry = True
+
+                scopes.setdefault(scope_index, {'query': {}})
+                scopes[scope_index]['query'][unscoped_key] = value
+
+        if unscoped_entry:
+            operators.append(
+                {
+                    'scope_sources': [0, 0],
+                    'function': SCOPE_OPERATOR_CHOICES[DEFAULT_SCOPE_OPERATOR],
+                    'result': 0
+                }
+            )
+
+        # Recursive call to the backend's search using queries as unscoped
+        # and then merge then using the corresponding operator.
+        queryset = search_model.model._meta.default_manager.none()
+
+        queryset = self.solve_scope(
+            global_and_search=global_and_search, operators=operators,
+            result=result, search_model=search_model, scopes=scopes,
+            user=user
         )
 
         if search_model.permission:
@@ -71,6 +141,28 @@ class SearchBackend:
             )
 
         return queryset
+
+    def solve_scope(self, global_and_search, search_model, user, result, scopes, operators):
+        queryset = search_model.model._meta.default_manager.none()
+
+        for operator in operators:
+            if result == operator['result']:
+
+                for scope_index in operator['scope_sources']:
+                    results = self._search(
+                        global_and_search=global_and_search,
+                        search_model=search_model, query_string=scopes[scope_index]['query'],
+                        user=user
+                    )
+
+                    if not queryset:
+                        queryset = results
+                    else:
+                        queryset = operator['function'](queryset, results)
+
+                return queryset
+
+        raise KeyError('Result `{}` not found.'.format(result))
 
 
 class SearchField:
