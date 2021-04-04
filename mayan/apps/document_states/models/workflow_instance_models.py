@@ -90,7 +90,7 @@ class WorkflowInstance(models.Model):
         self.document.refresh_from_db()
         context = {
             'document': self.document, 'workflow': self.workflow,
-            'workflow_instance': self,
+            'workflow_instance': self
         }
         context['workflow_instance_context'] = self.loads()
         return context

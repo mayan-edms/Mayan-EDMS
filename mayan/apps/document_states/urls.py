@@ -1,8 +1,7 @@
 from django.conf.urls import url
 
 from .api_views import (
-    APIDocumentTypeWorkflowListView, APIWorkflowDocumentTypeList,
-    APIWorkflowDocumentTypeView, APIWorkflowImageView,
+    APIWorkflowDocumentTypeList, APIWorkflowImageView,
     APIWorkflowInstanceListView, APIWorkflowInstanceView,
     APIWorkflowInstanceLogEntryListView, APIWorkflowListView,
     APIWorkflowStateListView, APIWorkflowStateView,
@@ -281,11 +280,6 @@ api_urls = [
         view=APIWorkflowDocumentTypeList.as_view()
     ),
     url(
-        regex=r'^workflows/(?P<workflow_template_id>[0-9]+)/document_types/(?P<document_type_id>[0-9]+)/$',
-        name='workflow-document-type-detail',
-        view=APIWorkflowDocumentTypeView.as_view()
-    ),
-    url(
         regex=r'^workflows/(?P<workflow_template_id>\d+)/image/$',
         name='workflow-image', view=APIWorkflowImageView.as_view()
     ),
@@ -332,9 +326,4 @@ api_urls = [
         name='workflowinstancelogentry-list',
         view=APIWorkflowInstanceLogEntryListView.as_view()
     ),
-    url(
-        regex=r'^document_types/(?P<document_type_id>[0-9]+)/workflows/$',
-        name='documenttype-workflow-list',
-        view=APIDocumentTypeWorkflowListView.as_view()
-    )
 ]

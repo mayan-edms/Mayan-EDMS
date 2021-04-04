@@ -1,3 +1,5 @@
+import json
+
 from django.core.exceptions import ValidationError as DjangoValidationError
 from django.utils.translation import ugettext_lazy as _
 
@@ -14,43 +16,7 @@ from .models import (
     WorkflowTransition, WorkflowTransitionField
 )
 
-
-class NewWorkflowDocumentTypeSerializer(serializers.Serializer):
-    document_type_pk = serializers.IntegerField(
-        help_text=_('Primary key of the document type to be added.')
-    )
-
-    def create(self, validated_data):
-        document_type = DocumentType.objects.get(
-            pk=validated_data['document_type_pk']
-        )
-        self.context['workflow'].document_types.add(document_type)
-
-        return validated_data
-
-
-class WorkflowDocumentTypeSerializer(DocumentTypeSerializer):
-    workflow_document_type_url = serializers.SerializerMethodField(
-        help_text=_(
-            'API URL pointing to a document type in relation to the '
-            'workflow to which it is attached. This URL is different than '
-            'the canonical document type URL.'
-        )
-    )
-
-    class Meta(DocumentTypeSerializer.Meta):
-        fields = DocumentTypeSerializer.Meta.fields + (
-            'workflow_document_type_url',
-        )
-        read_only_fields = DocumentTypeSerializer.Meta.fields
-
-    def get_workflow_document_type_url(self, instance):
-        return reverse(
-            viewname='rest_api:workflow-document-type-detail', kwargs={
-                'workflow_template_id': self.context['workflow'].pk,
-                'document_type_id': instance.pk
-            }, request=self.context['request'], format=self.context['format']
-        )
+#TODO:Add workflow document type add and remove views
 
 
 class WorkflowStateSerializer(serializers.HyperlinkedModelSerializer):
@@ -258,8 +224,8 @@ class WorkflowSerializer(serializers.HyperlinkedModelSerializer):
         lookup_url_kwarg='workflow_template_id',
         view_name='rest_api:workflow-image'
     )
-    states = WorkflowStateSerializer(many=True, required=False)
-    transitions = WorkflowTransitionSerializer(many=True, required=False)
+    states_url = serializers.SerializerMethodField()
+    transitions_url = serializers.SerializerMethodField()
 
     class Meta:
         extra_kwargs = {
@@ -270,11 +236,27 @@ class WorkflowSerializer(serializers.HyperlinkedModelSerializer):
         }
         fields = (
             'document_types_url', 'id', 'image_url', 'internal_name',
-            'label', 'states', 'transitions', 'url'
+            'label', 'states_url', 'transitions_url', 'url'
         )
         model = Workflow
 
+    def get_states_url(self, instance):
+        return reverse(
+            viewname='rest_api:workflowstate-list', kwargs={
+                'workflow_template_id': instance.pk,
+            }, request=self.context['request'], format=self.context['format']
+        )
 
+    def get_transitions_url(self, instance):
+        return reverse(
+            viewname='rest_api:workflowtransition-list', kwargs={
+                'workflow_template_id': instance.pk,
+            }, request=self.context['request'], format=self.context['format']
+        )
+
+
+#TODO: transition list from WorkflowInstanceTransitionSelectForm
+#TODO: Add extra_data=extra_data
 class WorkflowInstanceLogEntrySerializer(serializers.ModelSerializer):
     document_workflow_url = serializers.SerializerMethodField()
     transition = WorkflowTransitionSerializer(read_only=True)
@@ -297,16 +279,11 @@ class WorkflowInstanceLogEntrySerializer(serializers.ModelSerializer):
 
 
 class WorkflowInstanceSerializer(serializers.ModelSerializer):
+    context = serializers.SerializerMethodField()
     current_state = WorkflowStateSerializer(
         read_only=True, source='get_current_state'
     )
-    document_workflow_url = serializers.SerializerMethodField(
-        help_text=_(
-            'API URL pointing to a workflow in relation to the '
-            'document to which it is attached. This URL is different than '
-            'the canonical workflow URL.'
-        )
-    )
+    document_url = serializers.SerializerMethodField()
     last_log_entry = WorkflowInstanceLogEntrySerializer(
         read_only=True, source='get_last_log_entry'
     )
@@ -316,22 +293,31 @@ class WorkflowInstanceSerializer(serializers.ModelSerializer):
     transition_choices = WorkflowTransitionSerializer(
         many=True, read_only=True, source='get_transition_choices'
     )
-    workflow = WorkflowSerializer(read_only=True)
+    workflow_url = serializers.SerializerMethodField()
+    url = serializers.SerializerMethodField(
+        help_text=_(
+            'API URL pointing to a workflow in relation to the '
+            'document to which it is attached. This URL is different than '
+            'the canonical workflow URL.'
+        )
+    )
 
     class Meta:
         fields = (
-            'current_state', 'document_workflow_url', 'last_log_entry',
-            'log_entries_url', 'transition_choices', 'workflow',
+            'context', 'current_state', 'document_url', 'last_log_entry',
+            'log_entries_url', 'transition_choices', 'url', 'workflow_url'
         )
         model = WorkflowInstance
 
-    def get_document_workflow_url(self, instance):
+    def get_document_url(self, instance):
         return reverse(
-            viewname='rest_api:workflowinstance-detail', kwargs={
-                'document_id': instance.document.pk,
-                'workflow_instance_id': instance.pk
+            viewname='rest_api:document-detail', kwargs={
+                'document_id': instance.document.pk
             }, request=self.context['request'], format=self.context['format']
         )
+
+    def get_context(self, instance):
+        return {'workflow_instance_context': instance.loads()}
 
     def get_log_entries_url(self, instance):
         return reverse(
@@ -341,85 +327,39 @@ class WorkflowInstanceSerializer(serializers.ModelSerializer):
             }, request=self.context['request'], format=self.context['format']
         )
 
-
-class WritableWorkflowSerializer(serializers.ModelSerializer):
-    document_types_pk_list = serializers.CharField(
-        help_text=_(
-            'Comma separated list of document type primary keys to which this '
-            'workflow will be attached.'
-        ), required=False
-    )
-
-    class Meta:
-        extra_kwargs = {
-            'url': {
-                'lookup_url_kwarg': 'workflow_template_id',
-                'view_name': 'rest_api:workflow-detail'
-            }
-        }
-        fields = (
-            'document_types_pk_list', 'label', 'id', 'internal_name', 'url',
-        )
-        model = Workflow
-
-    def _add_document_types(self, document_types_pk_list, instance):
-        instance.document_types.add(
-            *DocumentType.objects.filter(
-                pk__in=document_types_pk_list.split(',')
-            )
+    def get_url(self, instance):
+        return reverse(
+            viewname='rest_api:workflowinstance-detail', kwargs={
+                'document_id': instance.document.pk,
+                'workflow_instance_id': instance.pk
+            }, request=self.context['request'], format=self.context['format']
         )
 
-    def create(self, validated_data):
-        document_types_pk_list = validated_data.pop(
-            'document_types_pk_list', ''
+    def get_workflow_url(self, instance):
+        return reverse(
+            viewname='rest_api:workflow-detail', kwargs={
+                'workflow_template_id': instance.workflow.pk
+            }, request=self.context['request'], format=self.context['format']
         )
-
-        instance = super().create(validated_data=validated_data)
-
-        if document_types_pk_list:
-            self._add_document_types(
-                document_types_pk_list=document_types_pk_list,
-                instance=instance
-            )
-
-        return instance
-
-    def update(self, instance, validated_data):
-        document_types_pk_list = validated_data.pop(
-            'document_types_pk_list', ''
-        )
-
-        instance = super().update(
-            instance=instance, validated_data=validated_data
-        )
-
-        if document_types_pk_list:
-            instance.documents.clear()
-            self._add_documents(
-                document_types_pk_list=document_types_pk_list,
-                instance=instance
-            )
-
-        return instance
 
 
 class WritableWorkflowInstanceLogEntrySerializer(serializers.ModelSerializer):
-    document_workflow_url = serializers.SerializerMethodField()
     transition_pk = serializers.IntegerField(
         help_text=_('Primary key of the transition to be added.'),
         write_only=True
     )
     transition = WorkflowTransitionSerializer(read_only=True)
+    url = serializers.SerializerMethodField()
     user = UserSerializer(read_only=True)
 
     class Meta:
         fields = (
-            'comment', 'datetime', 'document_workflow_url', 'transition',
-            'transition_pk', 'user'
+            'comment', 'datetime', 'transition', 'transition_pk', 'user',
+            'url'
         )
         model = WorkflowInstanceLogEntry
 
-    def get_document_workflow_url(self, instance):
+    def get_url(self, instance):
         return reverse(
             viewname='rest_api:workflowinstance-detail', kwargs={
                 'document_id': instance.workflow_instance.document.pk,
