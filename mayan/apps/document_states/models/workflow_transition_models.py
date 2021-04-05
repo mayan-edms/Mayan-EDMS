@@ -17,7 +17,7 @@ from mayan.apps.events.models import StoredEventType
 
 from mayan.apps.templating.classes import Template
 
-from ..events import event_workflow_edited
+from ..events import event_workflow_template_edited
 from ..literals import FIELD_TYPE_CHOICES, WIDGET_CLASS_CHOICES
 
 from .workflow_models import Workflow
@@ -30,7 +30,7 @@ __all__ = (
 logger = logging.getLogger(name=__name__)
 
 
-class WorkflowTransition(models.Model):
+class WorkflowTransition(ExtraDataModelMixin, models.Model):
     workflow = models.ForeignKey(
         on_delete=models.CASCADE, related_name='transitions', to=Workflow,
         verbose_name=_('Workflow')
@@ -72,7 +72,7 @@ class WorkflowTransition(models.Model):
     @method_event(
         action_object='self',
         event_manager_class=EventManagerMethodAfter,
-        event=event_workflow_edited,
+        event=event_workflow_template_edited,
         target='workflow',
     )
     def delete(self, *args, **kwargs):
@@ -117,12 +117,12 @@ class WorkflowTransition(models.Model):
         event_manager_class=EventManagerSave,
         created={
             'action_object': 'self',
-            'event': event_workflow_edited,
+            'event': event_workflow_template_edited,
             'target': 'workflow',
         },
         edited={
             'action_object': 'self',
-            'event': event_workflow_edited,
+            'event': event_workflow_template_edited,
             'target': 'workflow',
         }
     )
@@ -183,7 +183,7 @@ class WorkflowTransitionField(ExtraDataModelMixin, models.Model):
     @method_event(
         action_object='self',
         event_manager_class=EventManagerMethodAfter,
-        event=event_workflow_edited,
+        event=event_workflow_template_edited,
         target='transition.workflow',
     )
     def delete(self, *args, **kwargs):
@@ -201,12 +201,12 @@ class WorkflowTransitionField(ExtraDataModelMixin, models.Model):
         event_manager_class=EventManagerSave,
         created={
             'action_object': 'self',
-            'event': event_workflow_edited,
+            'event': event_workflow_template_edited,
             'target': 'transition.workflow',
         },
         edited={
             'action_object': 'self',
-            'event': event_workflow_edited,
+            'event': event_workflow_template_edited,
             'target': 'transition.workflow',
         }
     )

@@ -12,7 +12,7 @@ from mayan.apps.acls.models import AccessControlList
 from mayan.apps.documents.models import Document
 
 from ..managers import ValidWorkflowInstanceManager
-from ..permissions import permission_workflow_transition
+from ..permissions import permission_workflow_instance_transition
 
 from .workflow_models import Workflow
 from .workflow_transition_models import (
@@ -144,7 +144,7 @@ class WorkflowInstance(models.Model):
                     """
                     AccessControlList.objects.check_access(
                         obj=self.workflow,
-                        permissions=(permission_workflow_transition,),
+                        permissions=(permission_workflow_instance_transition,),
                         user=_user
                     )
                 except PermissionDenied:
@@ -153,7 +153,7 @@ class WorkflowInstance(models.Model):
                     options by each transition ACL access
                     """
                     queryset = AccessControlList.objects.restrict_queryset(
-                        permission=permission_workflow_transition,
+                        permission=permission_workflow_instance_transition,
                         queryset=queryset,
                         user=_user
                     )

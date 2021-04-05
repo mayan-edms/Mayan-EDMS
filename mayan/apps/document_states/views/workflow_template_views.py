@@ -16,7 +16,7 @@ from mayan.apps.views.generics import (
 )
 from mayan.apps.views.mixins import ExternalObjectViewMixin
 
-from ..events import event_workflow_edited
+from ..events import event_workflow_template_edited
 from ..forms import (
     WorkflowForm, WorkflowMultipleSelectionForm, WorkflowPreviewForm
 )
@@ -24,9 +24,9 @@ from ..icons import icon_workflow_template_list
 from ..links import link_workflow_template_create
 from ..models import Workflow
 from ..permissions import (
-    permission_workflow_create, permission_workflow_delete,
-    permission_workflow_edit, permission_workflow_tools,
-    permission_workflow_view,
+    permission_workflow_template_create, permission_workflow_template_delete,
+    permission_workflow_template_edit, permission_workflow_tools,
+    permission_workflow_template_view,
 )
 from ..tasks import (
     task_launch_all_workflows, task_launch_workflow, task_launch_workflow_for
@@ -35,16 +35,46 @@ from ..tasks import (
 
 class DocumentTypeWorkflowTemplatesView(AddRemoveView):
     main_object_permission = permission_document_type_edit
+    main_object_method_add_name_name = 'document_types_add'
+    main_object_method_remove_name_name = 'document_types_remove'
     main_object_model = DocumentType
     main_object_pk_url_kwarg = 'document_type_id'
     secondary_object_model = Workflow
-    secondary_object_permission = permission_workflow_edit
+    secondary_object_permission = permission_workflow_template_edit
     list_available_title = _('Available workflows')
     list_added_title = _('Workflows assigned this document type')
     related_field = 'workflows'
 
+    # ~ def action_add(self, queryset, _user):
+        # ~ with transaction.atomic():
+            # ~ event_document_type_edited.commit(
+                # ~ actor=_user, target=self.main_object
+            # ~ )
+
+            # ~ for obj in queryset:
+                # ~ self.main_object.workflows.add(obj)
+                # ~ event_workflow_template_edited.commit(
+                    # ~ action_object=self.main_object, actor=_user, target=obj
+                # ~ )
+
+    # ~ def action_remove(self, queryset, _user):
+        # ~ with transaction.atomic():
+            # ~ event_document_type_edited.commit(
+                # ~ actor=_user, target=self.main_object
+            # ~ )
+
+            # ~ for obj in queryset:
+                # ~ self.main_object.workflows.remove(obj)
+                # ~ event_workflow_template_edited.commit(
+                    # ~ action_object=self.main_object, actor=_user,
+                    # ~ target=obj
+                # ~ )
+                # ~ obj.instances.filter(
+                    # ~ document__document_type=self.main_object
+                # ~ ).delete()
+
     def get_actions_extra_kwargs(self):
-        return {'_user': self.request.user}
+        return {'_event_actor': self.request.user}
 
     def get_extra_context(self):
         return {
@@ -58,33 +88,6 @@ class DocumentTypeWorkflowTemplatesView(AddRemoveView):
             ) % self.main_object,
         }
 
-    def action_add(self, queryset, _user):
-        with transaction.atomic():
-            event_document_type_edited.commit(
-                actor=_user, target=self.main_object
-            )
-
-            for obj in queryset:
-                self.main_object.workflows.add(obj)
-                event_workflow_edited.commit(
-                    action_object=self.main_object, actor=_user, target=obj
-                )
-
-    def action_remove(self, queryset, _user):
-        with transaction.atomic():
-            event_document_type_edited.commit(
-                actor=_user, target=self.main_object
-            )
-
-            for obj in queryset:
-                self.main_object.workflows.remove(obj)
-                event_workflow_edited.commit(
-                    action_object=self.main_object, actor=_user,
-                    target=obj
-                )
-                obj.instances.filter(
-                    document__document_type=self.main_object
-                ).delete()
 
 
 class DocumentWorkflowTemplatesLaunchView(MultipleObjectFormActionView):
@@ -159,7 +162,7 @@ class WorkflowTemplateCreateView(SingleObjectCreateView):
     post_action_redirect = reverse_lazy(
         viewname='document_states:workflow_template_list'
     )
-    view_permission = permission_workflow_create
+    view_permission = permission_workflow_template_create
 
     def get_instance_extra_data(self):
         return {
@@ -169,7 +172,7 @@ class WorkflowTemplateCreateView(SingleObjectCreateView):
 
 class WorkflowTemplateDeleteView(MultipleObjectConfirmActionView):
     model = Workflow
-    object_permission = permission_workflow_delete
+    object_permission = permission_workflow_template_delete
     pk_url_kwarg = 'workflow_template_id'
     post_action_redirect = reverse_lazy(
         viewname='document_states:workflow_template_list'
@@ -219,7 +222,7 @@ class WorkflowTemplateDeleteView(MultipleObjectConfirmActionView):
 class WorkflowTemplateEditView(SingleObjectEditView):
     form_class = WorkflowForm
     model = Workflow
-    object_permission = permission_workflow_edit
+    object_permission = permission_workflow_template_edit
     pk_url_kwarg = 'workflow_template_id'
     post_action_redirect = reverse_lazy(
         viewname='document_states:workflow_template_list'
@@ -239,7 +242,7 @@ class WorkflowTemplateEditView(SingleObjectEditView):
 
 
 class WorkflowTemplateDocumentTypesView(AddRemoveView):
-    main_object_permission = permission_workflow_edit
+    main_object_permission = permission_workflow_template_edit
     main_object_model = Workflow
     main_object_pk_url_kwarg = 'workflow_template_id'
     secondary_object_model = DocumentType
@@ -266,7 +269,7 @@ class WorkflowTemplateDocumentTypesView(AddRemoveView):
 
     def action_add(self, queryset, _user):
         with transaction.atomic():
-            event_workflow_edited.commit(
+            event_workflow_template_edited.commit(
                 actor=_user, target=self.main_object
             )
 
@@ -278,7 +281,7 @@ class WorkflowTemplateDocumentTypesView(AddRemoveView):
 
     def action_remove(self, queryset, _user):
         with transaction.atomic():
-            event_workflow_edited.commit(
+            event_workflow_template_edited.commit(
                 actor=_user, target=self.main_object
             )
 
@@ -321,7 +324,7 @@ class WorkflowTemplateLaunchView(ExternalObjectViewMixin, ConfirmView):
 
 class WorkflowTemplateListView(SingleObjectListView):
     model = Workflow
-    object_permission = permission_workflow_view
+    object_permission = permission_workflow_template_view
 
     def get_extra_context(self):
         return {
@@ -345,7 +348,7 @@ class WorkflowTemplateListView(SingleObjectListView):
 class WorkflowTemplatePreviewView(SingleObjectDetailView):
     form_class = WorkflowPreviewForm
     model = Workflow
-    object_permission = permission_workflow_view
+    object_permission = permission_workflow_template_view
     pk_url_kwarg = 'workflow_template_id'
 
     def get_extra_context(self):

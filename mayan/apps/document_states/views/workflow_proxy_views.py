@@ -9,14 +9,14 @@ from mayan.apps.views.mixins import ExternalObjectViewMixin
 from ..icons import icon_workflow_template_list
 from ..links import link_workflow_template_create, link_workflow_template_state_create
 from ..models import WorkflowRuntimeProxy, WorkflowStateRuntimeProxy
-from ..permissions import permission_workflow_view
+from ..permissions import permission_workflow_template_view
 
 
 class WorkflowRuntimeProxyDocumentListView(
     ExternalObjectViewMixin, DocumentListView
 ):
     external_object_class = WorkflowRuntimeProxy
-    external_object_permission = permission_workflow_view
+    external_object_permission = permission_workflow_template_view
     external_object_pk_url_kwarg = 'workflow_runtime_proxy_id'
 
     def get_document_queryset(self):
@@ -46,7 +46,7 @@ class WorkflowRuntimeProxyDocumentListView(
 
 class WorkflowRuntimeProxyListView(SingleObjectListView):
     model = WorkflowRuntimeProxy
-    object_permission = permission_workflow_view
+    object_permission = permission_workflow_template_view
 
     def get_extra_context(self):
         return {
@@ -69,7 +69,7 @@ class WorkflowRuntimeProxyStateDocumentListView(
     ExternalObjectViewMixin, DocumentListView
 ):
     external_object_class = WorkflowStateRuntimeProxy
-    external_object_permission = permission_workflow_view
+    external_object_permission = permission_workflow_template_view
     external_object_pk_url_kwarg = 'workflow_runtime_proxy_state_id'
 
     def get_document_queryset(self):
@@ -101,7 +101,7 @@ class WorkflowRuntimeProxyStateListView(
     ExternalObjectViewMixin, SingleObjectListView
 ):
     external_object_class = WorkflowRuntimeProxy
-    external_object_permission = permission_workflow_view
+    external_object_permission = permission_workflow_template_view
     external_object_pk_url_kwarg = 'workflow_runtime_proxy_id'
 
     def get_extra_context(self):
