@@ -18,7 +18,7 @@ class DocumentStateIndexingTestCase(GenericDocumentTestCase):
     auto_upload_test_document = False
 
     def _create_test_workflow_template(self):
-        self.test_workflow = Workflow.objects.create(
+        self.test_workflow_template = Workflow.objects.create(
             label=TEST_WORKFLOW_TEMPLATE_LABEL,
             internal_name=TEST_WORKFLOW_TEMPLATE_INTERNAL_NAME
         )

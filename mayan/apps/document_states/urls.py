@@ -69,7 +69,7 @@ urlpatterns_workflow_instances = [
         view=WorkflowInstanceTransitionSelectView.as_view()
     ),
     url(
-        regex=r'^documents/workflows/(?P<workflow_instance_id>\d+)/transitions/(?P<workflow_transition_id>\d+)/execute/$',
+        regex=r'^documents/workflows/(?P<workflow_instance_id>\d+)/transitions/(?P<workflow_template_transition_id>\d+)/execute/$',
         name='workflow_instance_transition_execute',
         view=WorkflowInstanceTransitionExecuteView.as_view()
     )

@@ -289,8 +289,10 @@ class DocumentPropertiesEditActionTestCase(
 
     def test_document_properties_edit_action_workflow_execute(self):
         self._create_test_workflow_template()
-        self._create_test_workflow_template_states()
-        self._create_test_workflow_template_transitions()
+        self._create_test_workflow_template_state()
+        self._create_test_workflow_template_state()
+        self._create_test_workflow_template_transition()
+        self._create_test_workflow_template_transition()
 
         self.test_workflow_template_states[1].actions.create(
             action_data=json.dumps(

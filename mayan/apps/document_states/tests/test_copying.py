@@ -14,8 +14,11 @@ class WorkflowTemplateCopyTestCase(
     def setUp(self):
         super().setUp()
         self._create_test_workflow_template()
-        self._create_test_workflow_template_states()
+        self._create_test_workflow_template_state()
+        self._create_test_workflow_template_state()
         self._create_test_workflow_template_transition()
         self._create_test_workflow_template_state_action()
-        self.test_workflow_template.document_types.add(self.test_document_type)
-        self.test_object = self.test_workflow
+        self.test_workflow_template.document_types.add(
+            self.test_document_type
+        )
+        self.test_object = self.test_workflow_template

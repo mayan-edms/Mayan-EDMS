@@ -9,8 +9,7 @@ from .literals import (
     TEST_DOCUMENT_EDIT_WORKFLOW_TEMPLATE_STATE_ACTION_DOTTED_PATH,
     TEST_DOCUMENT_EDIT_WORKFLOW_TEMPLATE_STATE_ACTION_TEXT_LABEL,
     TEST_DOCUMENT_EDIT_WORKFLOW_TEMPLATE_STATE_ACTION_TEXT_DESCRIPTION,
-    TEST_WORKFLOW_TEMPLATE_STATE_ACTION_LABEL,
-    TEST_WORKFLOW_TEMPLATE_STATE_ACTION_LABEL_2
+    TEST_WORKFLOW_TEMPLATE_STATE_ACTION_LABEL
 )
 from .mixins import (
     WorkflowTemplateStateActionTestMixin, WorkflowTemplateTestMixin,
@@ -26,7 +25,8 @@ class WorkflowInstanceModelTestCase(
     def setUp(self):
         super().setUp()
         self._create_test_workflow_template()
-        self._create_test_workflow_template_states()
+        self._create_test_workflow_template_state()
+        self._create_test_workflow_template_state()
         self._create_test_workflow_template_transition()
         self.test_workflow_template.document_types.add(self.test_document_type)
 
@@ -90,7 +90,8 @@ class WorkflowStateActionModelTestCase(
     def setUp(self):
         super().setUp()
         self._create_test_workflow_template()
-        self._create_test_workflow_template_states()
+        self._create_test_workflow_template_state()
+        self._create_test_workflow_template_state()
         self._create_test_workflow_template_transition()
         self.test_workflow_template.document_types.add(self.test_document_type)
 
@@ -128,59 +129,80 @@ class WorkflowStateActionModelTestCase(
         self.assertTrue(self._get_test_workflow_state_action_execute_flag())
 
     def test_workflow_state_action_no_condition(self):
-        self._create_test_workflow_template_state_action(workflow_state_index=1)
+        self._create_test_workflow_template_state_action(
+            workflow_state_index=1
+        )
         self.test_workflow_instance = self.test_workflow_template.launch_for(
             document=self.test_document
         )
-        self.test_workflow_instance.do_transition(transition=self.test_workflow_template_transition)
+        self.test_workflow_instance.do_transition(
+            transition=self.test_workflow_template_transition
+        )
         self.assertTrue(self._get_test_workflow_state_action_execute_flag())
 
     def test_workflow_state_action_false_condition(self):
-        self._create_test_workflow_template_state_action(workflow_state_index=1)
+        self._create_test_workflow_template_state_action(
+            workflow_state_index=1
+        )
         self.test_workflow_template_state_action.condition = '{{ invalid_variable }}'
         self.test_workflow_template_state_action.save()
 
         self.test_workflow_instance = self.test_workflow_template.launch_for(
             document=self.test_document
         )
-        self.test_workflow_instance.do_transition(transition=self.test_workflow_template_transition)
+        self.test_workflow_instance.do_transition(
+            transition=self.test_workflow_template_transition
+        )
         self.assertFalse(self._get_test_workflow_state_action_execute_flag())
 
     def test_workflow_state_action_true_condition(self):
-        self._create_test_workflow_template_state_action(workflow_state_index=1)
+        self._create_test_workflow_template_state_action(
+            workflow_state_index=1
+        )
         self.test_workflow_template_state_action.condition = '{{ workflow_instance }}'
         self.test_workflow_template_state_action.save()
 
         self.test_workflow_instance = self.test_workflow_template.launch_for(
             document=self.test_document
         )
-        self.test_workflow_instance.do_transition(transition=self.test_workflow_template_transition)
+        self.test_workflow_instance.do_transition(
+            transition=self.test_workflow_template_transition
+        )
         self.assertTrue(self._get_test_workflow_state_action_execute_flag())
 
     def test_workflow_state_action_event_trigger(self):
         # actions 1 and 2 both trigger the transition event, to make this
         # test case independent of the order of execution of actions 1 and 2
-        state_1_action_data = json.dumps(obj={
-            'document_label': TEST_DOCUMENT_EDIT_WORKFLOW_TEMPLATE_STATE_ACTION_TEXT_LABEL
-        })
-        self.test_workflow_template_state_1.actions.create(
-            label=TEST_WORKFLOW_TEMPLATE_STATE_ACTION_LABEL,
-            action_path=TEST_DOCUMENT_EDIT_WORKFLOW_TEMPLATE_STATE_ACTION_DOTTED_PATH,
-            action_data=state_1_action_data
-        )
-        self.test_workflow_template_state_1.actions.create(
-            label=TEST_WORKFLOW_TEMPLATE_STATE_ACTION_LABEL_2,
-            action_path=TEST_DOCUMENT_EDIT_WORKFLOW_TEMPLATE_STATE_ACTION_DOTTED_PATH,
-            action_data=state_1_action_data
+        state_1_action_data = json.dumps(
+            obj={
+                'document_label': TEST_DOCUMENT_EDIT_WORKFLOW_TEMPLATE_STATE_ACTION_TEXT_LABEL
+            }
         )
 
-        state_2_action_data = json.dumps(obj={
-            'document_description': TEST_DOCUMENT_EDIT_WORKFLOW_TEMPLATE_STATE_ACTION_TEXT_DESCRIPTION
-        })
-        self.test_workflow_template_state_2.actions.create(
-            label=TEST_WORKFLOW_TEMPLATE_STATE_ACTION_LABEL,
-            action_path=TEST_DOCUMENT_EDIT_WORKFLOW_TEMPLATE_STATE_ACTION_DOTTED_PATH,
-            action_data=state_2_action_data
+        self._create_test_workflow_template_state_action(
+            extra_data={
+                'action_path': TEST_DOCUMENT_EDIT_WORKFLOW_TEMPLATE_STATE_ACTION_DOTTED_PATH,
+                'action_data': state_1_action_data
+            }
+        )
+        self._create_test_workflow_template_state_action(
+            extra_data={
+                'action_path': TEST_DOCUMENT_EDIT_WORKFLOW_TEMPLATE_STATE_ACTION_DOTTED_PATH,
+                'action_data': state_1_action_data
+            }
+        )
+
+        state_2_action_data = json.dumps(
+            obj={
+                'document_description': TEST_DOCUMENT_EDIT_WORKFLOW_TEMPLATE_STATE_ACTION_TEXT_DESCRIPTION
+            }
+        )
+
+        self._create_test_workflow_template_state_action(
+            extra_data={
+                'action_path': TEST_DOCUMENT_EDIT_WORKFLOW_TEMPLATE_STATE_ACTION_DOTTED_PATH,
+                'action_data': state_2_action_data
+            }, workflow_state_index=1
         )
 
         EventType.refresh()
@@ -213,7 +235,8 @@ class WorkflowTransitionFieldModelTestCase(
     def setUp(self):
         super().setUp()
         self._create_test_workflow_template(add_test_document_type=True)
-        self._create_test_workflow_template_states()
+        self._create_test_workflow_template_state()
+        self._create_test_workflow_template_state()
         self._create_test_workflow_template_transition()
         self._create_test_workflow_template_transition_field()
         self._create_test_document_stub()

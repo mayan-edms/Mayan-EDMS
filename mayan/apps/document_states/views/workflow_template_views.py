@@ -1,5 +1,4 @@
 from django.contrib import messages
-from django.db import transaction
 from django.template import RequestContext
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _, ungettext
@@ -35,8 +34,8 @@ from ..tasks import (
 
 class DocumentTypeWorkflowTemplatesView(AddRemoveView):
     main_object_permission = permission_document_type_edit
-    main_object_method_add_name_name = 'document_types_add'
-    main_object_method_remove_name_name = 'document_types_remove'
+    main_object_method_add_name = 'document_types_add'
+    main_object_method_remove_name = 'document_types_remove'
     main_object_model = DocumentType
     main_object_pk_url_kwarg = 'document_type_id'
     secondary_object_model = Workflow
@@ -242,8 +241,10 @@ class WorkflowTemplateEditView(SingleObjectEditView):
 
 
 class WorkflowTemplateDocumentTypesView(AddRemoveView):
-    main_object_permission = permission_workflow_template_edit
+    main_object_method_add_name = 'document_types_add'
+    main_object_method_remove_name = 'document_types_remove'
     main_object_model = Workflow
+    main_object_permission = permission_workflow_template_edit
     main_object_pk_url_kwarg = 'workflow_template_id'
     secondary_object_model = DocumentType
     secondary_object_permission = permission_document_type_edit
@@ -252,7 +253,7 @@ class WorkflowTemplateDocumentTypesView(AddRemoveView):
     related_field = 'document_types'
 
     def get_actions_extra_kwargs(self):
-        return {'_user': self.request.user}
+        return {'_event_actor': self.request.user}
 
     def get_extra_context(self):
         return {
@@ -266,34 +267,6 @@ class WorkflowTemplateDocumentTypesView(AddRemoveView):
                 'Document types assigned the workflow: %s'
             ) % self.main_object,
         }
-
-    def action_add(self, queryset, _user):
-        with transaction.atomic():
-            event_workflow_template_edited.commit(
-                actor=_user, target=self.main_object
-            )
-
-            for obj in queryset:
-                self.main_object.document_types.add(obj)
-                event_document_type_edited.commit(
-                    action_object=self.main_object, actor=_user, target=obj
-                )
-
-    def action_remove(self, queryset, _user):
-        with transaction.atomic():
-            event_workflow_template_edited.commit(
-                actor=_user, target=self.main_object
-            )
-
-            for obj in queryset:
-                self.main_object.document_types.remove(obj)
-                event_document_type_edited.commit(
-                    action_object=self.main_object, actor=_user,
-                    target=obj
-                )
-                self.main_object.instances.filter(
-                    document__document_type=obj
-                ).delete()
 
 
 class WorkflowTemplateLaunchView(ExternalObjectViewMixin, ConfirmView):

@@ -4,7 +4,7 @@ from django.shortcuts import get_object_or_404
 from django.views.decorators.cache import cache_control, patch_cache_control
 
 from mayan.apps.acls.models import AccessControlList
-from mayan.apps.documents.models import Document, DocumentType
+from mayan.apps.documents.models import Document
 from mayan.apps.documents.permissions import permission_document_type_view
 from mayan.apps.documents.serializers.document_type_serializers import DocumentTypeSerializer
 from mayan.apps.rest_api.api_view_mixins import ExternalObjectAPIViewMixin
@@ -297,7 +297,6 @@ class APIWorkflowTemplateTransitionView(
         return self.external_object.transitions.all()
 
 
-
 # Workflow template transition fields
 
 
@@ -319,7 +318,6 @@ class APIWorkflowTemplateTransitionFieldListView(generics.ListCreateAPIView):
 
     def get_queryset(self):
         return self.get_workflow_template_transition().fields.all()
-
 
     def get_workflow_template(self):
         if self.request.method == 'GET':
@@ -356,7 +354,7 @@ class APIWorkflowTemplateTransitionFieldDetailView(generics.RetrieveUpdateDestro
     def get_instance_extra_data(self):
         return {
             '_event_actor': self.request.user,
-    }
+        }
 
     def get_queryset(self):
         return self.get_workflow_template_transition().fields.all()

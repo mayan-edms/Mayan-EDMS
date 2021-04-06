@@ -154,24 +154,22 @@ class WorkflowTransitionFieldSerializer(serializers.HyperlinkedModelSerializer):
         model = WorkflowTransitionField
 
 
-#TODO: Limit origin_state_id and destination_state_id choices
 class WorkflowTemplateTransitionSerializer(serializers.HyperlinkedModelSerializer):
     destination_state = WorkflowTemplateStateSerializer(read_only=True)
-    field_list_url = serializers.SerializerMethodField()
-    origin_state = WorkflowTemplateStateSerializer(read_only=True)
-    url = serializers.SerializerMethodField()
-    workflow_template_url = serializers.SerializerMethodField()
-
     destination_state_id = FilteredPrimaryKeyRelatedField(
         help_text=_(
             'Primary key of the destination state to be added.'
-        ), source_model=WorkflowState,
+        ), source_queryset_method='get_workflow_template_state_queryset'
     )
+    field_list_url = serializers.SerializerMethodField()
+    origin_state = WorkflowTemplateStateSerializer(read_only=True)
     origin_state_id = FilteredPrimaryKeyRelatedField(
         help_text=_(
             'Primary key of the origin state to be added.'
-        ), source_model=WorkflowState,
+        ), source_queryset_method='get_workflow_template_state_queryset'
     )
+    url = serializers.SerializerMethodField()
+    workflow_template_url = serializers.SerializerMethodField()
 
     class Meta:
         fields = (
@@ -214,6 +212,9 @@ class WorkflowTemplateTransitionSerializer(serializers.HyperlinkedModelSerialize
                 'workflow_template_transition_id': instance.pk
             }, request=self.context['request'], format=self.context['format']
         )
+
+    def get_workflow_template_state_queryset(self):
+        return self.context['external_object'].states.all()
 
     def get_workflow_template_url(self, instance):
         return reverse(
