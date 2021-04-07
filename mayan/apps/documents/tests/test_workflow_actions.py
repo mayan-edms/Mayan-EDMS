@@ -1,6 +1,6 @@
 import json
 
-from mayan.apps.document_states.tests.mixins import WorkflowTestMixin
+from mayan.apps.document_states.tests.mixins import WorkflowTemplateTestMixin
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 from mayan.apps.document_states.literals import WORKFLOW_ACTION_ON_ENTRY
 
@@ -14,7 +14,7 @@ from .literals import (
 
 
 class WorkflowActionActionTestCase(
-    WorkflowTestMixin, GenericDocumentViewTestCase
+    WorkflowTemplateTestMixin, GenericDocumentViewTestCase
 ):
     auto_upload_test_document = False
 
@@ -38,23 +38,23 @@ class WorkflowActionActionTestCase(
     def test_document_type_change_action_execution(self):
         self._create_test_document_type(label='document type 2')
 
-        self._create_test_workflow()
-        self._create_test_workflow_states()
-        self._create_test_workflow_transition()
-        self.test_workflow_states[1].actions.create(
+        self._create_test_workflow_template()
+        self._create_test_workflow_template_states()
+        self._create_test_workflow_template_transition()
+        self.test_workflow_template_states[1].actions.create(
             action_data=json.dumps(obj={'document_type': self.test_document_types[1].pk}),
             action_path=TEST_DOCUMENT_TYPE_CHANGE_ACTION_DOTTED_PATH,
             label='', when=WORKFLOW_ACTION_ON_ENTRY,
 
         )
-        self.test_workflow.document_types.add(self.test_document_types[0])
+        self.test_workflow_template.document_types.add(self.test_document_types[0])
 
         self._upload_test_document(document_type=self.test_document_types[0])
 
         document_type = self.test_document.document_type
 
         self.test_document.workflows.first().do_transition(
-            transition=self.test_workflow_transition
+            transition=self.test_workflow_template_transition
         )
 
         self.assertNotEqual(
@@ -75,21 +75,21 @@ class WorkflowActionActionTestCase(
         )
 
     def test_trash_document_action_workflow_execution(self):
-        self._create_test_workflow()
-        self._create_test_workflow_states()
-        self._create_test_workflow_transition()
-        self.test_workflow_states[1].actions.create(
+        self._create_test_workflow_template()
+        self._create_test_workflow_template_states()
+        self._create_test_workflow_template_transition()
+        self.test_workflow_template_states[1].actions.create(
             action_path=TEST_TRASH_DOCUMENT_WORKFLOW_ACTION_DOTTED_PATH,
             label='', when=WORKFLOW_ACTION_ON_ENTRY,
         )
-        self.test_workflow.document_types.add(self.test_document_type)
+        self.test_workflow_template.document_types.add(self.test_document_type)
 
         trashed_document_count = TrashedDocument.objects.count()
 
         self._upload_test_document()
 
         self.test_document.workflows.first().do_transition(
-            transition=self.test_workflow_transition
+            transition=self.test_workflow_template_transition
         )
 
         self.assertEqual(

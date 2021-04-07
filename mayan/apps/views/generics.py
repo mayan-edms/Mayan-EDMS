@@ -172,8 +172,8 @@ class AddRemoveView(
     secondary_object_source_queryset = None
 
     # Main object methods to use to add and remove selections
-    main_object_method_add = None
-    main_object_method_remove = None
+    main_object_method_add_name = None
+    main_object_method_remove_name = None
 
     # If a method is not specified, use this related field to add and remove
     # selections
@@ -196,15 +196,14 @@ class AddRemoveView(
         kwargs.update(self.get_actions_extra_kwargs())
 
         if hasattr(self, 'action_add'):
-            with transaction.atomic():
-                self.action_add(**kwargs)
-        elif self.main_object_method_add:
-            getattr(self.main_object, self.main_object_method_add)(**kwargs)
+            self.action_add(**kwargs)
+        elif self.main_object_method_add_name:
+            getattr(self.main_object, self.main_object_method_add_name)(**kwargs)
         elif self.related_field:
             getattr(self.main_object, self.related_field).add(*queryset)
         else:
             raise ImproperlyConfigured(
-                'View {} must be called with a main_object_method_add, a '
+                'View {} must be called with a main_object_method_add_name, a '
                 'related_field, or an action_add '
                 'method.'.format(self.__class__.__name__)
             )
@@ -215,15 +214,14 @@ class AddRemoveView(
         kwargs.update(self.get_actions_extra_kwargs())
 
         if hasattr(self, 'action_remove'):
-            with transaction.atomic():
-                self.action_remove(**kwargs)
-        elif self.main_object_method_remove:
-            getattr(self.main_object, self.main_object_method_remove)(**kwargs)
+            self.action_remove(**kwargs)
+        elif self.main_object_method_remove_name:
+            getattr(self.main_object, self.main_object_method_remove_name)(**kwargs)
         elif self.related_field:
             getattr(self.main_object, self.related_field).remove(*queryset)
         else:
             raise ImproperlyConfigured(
-                'View {} must be called with a main_object_method_remove, a '
+                'View {} must be called with a main_object_method_remove_name, a '
                 'related_field, or an action_remove '
                 'method.'.format(self.__class__.__name__)
             )

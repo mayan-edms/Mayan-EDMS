@@ -1,6 +1,6 @@
 import json
 
-from mayan.apps.document_states.tests.mixins import WorkflowTestMixin
+from mayan.apps.document_states.tests.mixins import WorkflowTemplateTestMixin
 from mayan.apps.document_states.literals import WORKFLOW_ACTION_ON_ENTRY
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 
@@ -15,7 +15,7 @@ from .literals import (
 
 
 class UpdateDocumentPageOCRActionTestCase(
-    WorkflowTestMixin, GenericDocumentViewTestCase
+    WorkflowTemplateTestMixin, GenericDocumentViewTestCase
 ):
     auto_upload_test_document = False
 
@@ -90,10 +90,10 @@ class UpdateDocumentPageOCRActionTestCase(
         )
 
     def test_workflow_action_update_document_version_page_execution(self):
-        self._create_test_workflow()
-        self._create_test_workflow_states()
-        self._create_test_workflow_transition()
-        self.test_workflow_states[1].actions.create(
+        self._create_test_workflow_template()
+        self._create_test_workflow_template_states()
+        self._create_test_workflow_template_transition()
+        self.test_workflow_template_states[1].actions.create(
             action_data=json.dumps(
                 obj={
                     'page_condition': True,
@@ -102,12 +102,12 @@ class UpdateDocumentPageOCRActionTestCase(
             ), action_path=TEST_UPDATE_DOCUMENT_PAGE_OCR_ACTION_DOTTED_PATH,
             label='', when=WORKFLOW_ACTION_ON_ENTRY
         )
-        self.test_workflow.document_types.add(self.test_document_type)
+        self.test_workflow_template.document_types.add(self.test_document_type)
 
         self._upload_test_document()
 
         self.test_document.workflows.first().do_transition(
-            transition=self.test_workflow_transition
+            transition=self.test_workflow_template_transition
         )
 
         self.assertEqual(

@@ -1,7 +1,7 @@
-from mayan.apps.document_states.permissions import permission_workflow_edit
+from mayan.apps.document_states.permissions import permission_workflow_template_edit
 from mayan.apps.document_states.tests.base import ActionTestCase
 from mayan.apps.document_states.tests.mixins import (
-    WorkflowStateActionViewTestMixin, WorkflowTestMixin
+    WorkflowTemplateStateActionViewTestMixin, WorkflowTemplateTestMixin
 )
 from mayan.apps.testing.tests.base import GenericViewTestCase
 
@@ -54,13 +54,13 @@ class TransformationActionTestCase(ActionTestCase):
 
 
 class TransformationActionViewTestCase(
-    WorkflowStateActionViewTestMixin, WorkflowTestMixin, GenericViewTestCase
+    WorkflowTemplateStateActionViewTestMixin, WorkflowTemplateTestMixin, GenericViewTestCase
 ):
     def test_transformation_add_pages_all_action_create_view(self):
-        self._create_test_workflow()
-        self._create_test_workflow_state()
+        self._create_test_workflow_template()
+        self._create_test_workflow_template_state()
         self.grant_access(
-            obj=self.test_workflow, permission=permission_workflow_edit
+            obj=self.test_workflow_template, permission=permission_workflow_template_edit
         )
 
         response = self._request_test_workflow_template_state_action_create_post_view(
@@ -74,10 +74,10 @@ class TransformationActionViewTestCase(
         self.assertEqual(response.status_code, 302)
 
     def test_transformation_add_pages_first_action_create_view(self):
-        self._create_test_workflow()
-        self._create_test_workflow_state()
+        self._create_test_workflow_template()
+        self._create_test_workflow_template_state()
         self.grant_access(
-            obj=self.test_workflow, permission=permission_workflow_edit
+            obj=self.test_workflow_template, permission=permission_workflow_template_edit
         )
 
         response = self._request_test_workflow_template_state_action_create_post_view(

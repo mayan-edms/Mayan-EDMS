@@ -20,8 +20,8 @@ from .permissions import (
 
 
 class GroupRolesView(AddRemoveView):
-    main_object_method_add = 'roles_add'
-    main_object_method_remove = 'roles_remove'
+    main_object_method_add_name = 'roles_add'
+    main_object_method_remove_name = 'roles_remove'
     main_object_model = Group
     main_object_permission = permission_group_edit
     main_object_pk_url_kwarg = 'group_id'
@@ -72,8 +72,8 @@ class RoleEditView(SingleObjectEditView):
 
 
 class SetupRoleMembersView(AddRemoveView):
-    main_object_method_add = 'groups_add'
-    main_object_method_remove = 'groups_remove'
+    main_object_method_add_name = 'groups_add'
+    main_object_method_remove_name = 'groups_remove'
     main_object_model = Role
     main_object_permission = permission_role_edit
     main_object_pk_url_kwarg = 'role_id'
@@ -99,8 +99,8 @@ class SetupRoleMembersView(AddRemoveView):
 
 class SetupRolePermissionsView(AddRemoveView):
     grouped = True
-    main_object_method_add = 'permissions_add'
-    main_object_method_remove = 'permissions_remove'
+    main_object_method_add_name = 'permissions_add'
+    main_object_method_remove_name = 'permissions_remove'
     main_object_model = Role
     main_object_permission = permission_role_edit
     main_object_pk_url_kwarg = 'role_id'

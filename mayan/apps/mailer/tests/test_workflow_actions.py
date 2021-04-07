@@ -5,10 +5,10 @@ from django.core import mail
 from mayan.apps.documents.tests.base import GenericDocumentTestCase
 from mayan.apps.documents.tests.mixins.document_mixins import DocumentTestMixin
 from mayan.apps.document_states.literals import WORKFLOW_ACTION_ON_ENTRY
-from mayan.apps.document_states.permissions import permission_workflow_edit
+from mayan.apps.document_states.permissions import permission_workflow_template_edit
 from mayan.apps.document_states.tests.base import ActionTestCase
 from mayan.apps.document_states.tests.mixins import (
-    WorkflowStateActionViewTestMixin, WorkflowTestMixin
+    WorkflowTemplateStateActionViewTestMixin, WorkflowTemplateTestMixin
 )
 from mayan.apps.metadata.tests.mixins import MetadataTypeTestMixin
 from mayan.apps.testing.tests.base import GenericViewTestCase
@@ -24,7 +24,7 @@ from .mixins import MailerTestMixin
 
 
 class EmailActionTestCase(
-    MailerTestMixin, WorkflowTestMixin, GenericDocumentTestCase
+    MailerTestMixin, WorkflowTemplateTestMixin, GenericDocumentTestCase
 ):
     auto_upload_test_document = False
 
@@ -84,11 +84,11 @@ class EmailActionTestCase(
         self.assertEqual(mail.outbox[0].bcc, [TEST_EMAIL_ADDRESS])
 
     def test_email_action_workflow_execute(self):
-        self._create_test_workflow()
-        self._create_test_workflow_state()
+        self._create_test_workflow_template()
+        self._create_test_workflow_template_state()
         self._create_test_user_mailer()
 
-        self.test_workflow_state.actions.create(
+        self.test_workflow_template_state.actions.create(
             action_data=json.dumps(
                 obj={
                     'mailing_profile': self.test_user_mailer.pk,
@@ -101,9 +101,9 @@ class EmailActionTestCase(
             label='test email action', when=WORKFLOW_ACTION_ON_ENTRY,
         )
 
-        self.test_workflow_state.initial = True
-        self.test_workflow_state.save()
-        self.test_workflow.document_types.add(self.test_document_type)
+        self.test_workflow_template_state.initial = True
+        self.test_workflow_template_state.save()
+        self.test_workflow_template.document_types.add(self.test_document_type)
 
         self._create_test_document_stub()
 
@@ -113,7 +113,7 @@ class EmailActionTestCase(
 
 
 class EmailActionTemplateTestCase(
-    MetadataTypeTestMixin, MailerTestMixin, WorkflowTestMixin, ActionTestCase
+    MetadataTypeTestMixin, MailerTestMixin, WorkflowTemplateTestMixin, ActionTestCase
 ):
     def test_email_action_recipient_template(self):
         self._create_test_metadata_type()
@@ -232,17 +232,17 @@ class EmailActionTemplateTestCase(
 
 
 class EmailActionViewTestCase(
-    DocumentTestMixin, MailerTestMixin, WorkflowStateActionViewTestMixin,
-    WorkflowTestMixin, GenericViewTestCase
+    DocumentTestMixin, MailerTestMixin, WorkflowTemplateStateActionViewTestMixin,
+    WorkflowTemplateTestMixin, GenericViewTestCase
 ):
     auto_upload_test_document = False
 
     def test_email_action_create_get_view(self):
-        self._create_test_workflow()
-        self._create_test_workflow_state()
+        self._create_test_workflow_template()
+        self._create_test_workflow_template_state()
         self._create_test_user_mailer()
         self.grant_access(
-            obj=self.test_workflow, permission=permission_workflow_edit
+            obj=self.test_workflow_template, permission=permission_workflow_template_edit
         )
 
         response = self._request_test_workflow_template_state_action_create_get_view(
@@ -250,17 +250,17 @@ class EmailActionViewTestCase(
         )
         self.assertEqual(response.status_code, 200)
 
-        self.assertEqual(self.test_workflow_state.actions.count(), 0)
+        self.assertEqual(self.test_workflow_template_state.actions.count(), 0)
 
     def test_email_action_create_post_view(self):
-        self._create_test_workflow()
-        self._create_test_workflow_state()
+        self._create_test_workflow_template()
+        self._create_test_workflow_template_state()
         self._create_test_user_mailer()
         self.grant_access(
             obj=self.test_user_mailer, permission=permission_user_mailer_use
         )
         self.grant_access(
-            obj=self.test_workflow, permission=permission_workflow_edit
+            obj=self.test_workflow_template, permission=permission_workflow_template_edit
         )
 
         response = self._request_test_workflow_template_state_action_create_post_view(
@@ -274,4 +274,4 @@ class EmailActionViewTestCase(
         )
         self.assertEqual(response.status_code, 302)
 
-        self.assertEqual(self.test_workflow_state.actions.count(), 1)
+        self.assertEqual(self.test_workflow_template_state.actions.count(), 1)

@@ -3,9 +3,9 @@ import json
 from mayan.apps.django_gpg.tests.literals import TEST_KEY_PRIVATE_PASSPHRASE
 from mayan.apps.django_gpg.tests.mixins import KeyTestMixin
 from mayan.apps.document_states.literals import WORKFLOW_ACTION_ON_ENTRY
-from mayan.apps.document_states.permissions import permission_workflow_edit
+from mayan.apps.document_states.permissions import permission_workflow_template_edit
 from mayan.apps.document_states.tests.mixins import (
-    WorkflowTestMixin, WorkflowStateActionViewTestMixin
+    WorkflowTemplateTestMixin, WorkflowTemplateStateActionViewTestMixin
 )
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 
@@ -21,16 +21,16 @@ from .literals import (
 
 
 class DocumentSignatureWorkflowActionTestCase(
-    GenericDocumentViewTestCase, KeyTestMixin, WorkflowTestMixin,
-    WorkflowStateActionViewTestMixin
+    GenericDocumentViewTestCase, KeyTestMixin, WorkflowTemplateTestMixin,
+    WorkflowTemplateStateActionViewTestMixin
 ):
     auto_upload_test_document = False
 
     def test_document_signature_detached_action_create_view(self):
-        self._create_test_workflow(add_test_document_type=True)
-        self._create_test_workflow_state()
+        self._create_test_workflow_template(add_test_document_type=True)
+        self._create_test_workflow_template_state()
         self.grant_access(
-            obj=self.test_workflow, permission=permission_workflow_edit
+            obj=self.test_workflow_template, permission=permission_workflow_template_edit
         )
 
         request = self._request_test_workflow_template_state_action_create_get_view(
@@ -39,10 +39,10 @@ class DocumentSignatureWorkflowActionTestCase(
         self.assertEqual(request.status_code, 200)
 
     def test_document_signature_embedded_action_create_view(self):
-        self._create_test_workflow(add_test_document_type=True)
-        self._create_test_workflow_state()
+        self._create_test_workflow_template(add_test_document_type=True)
+        self._create_test_workflow_template_state()
         self.grant_access(
-            obj=self.test_workflow, permission=permission_workflow_edit
+            obj=self.test_workflow_template, permission=permission_workflow_template_edit
         )
 
         request = self._request_test_workflow_template_state_action_create_get_view(
@@ -79,12 +79,12 @@ class DocumentSignatureWorkflowActionTestCase(
         self.assertNotEqual(signature_count, EmbeddedSignature.objects.count())
 
     def test_document_signature_detached_action_via_workflow(self):
-        self._create_test_workflow(add_test_document_type=True)
-        self._create_test_workflow_states()
-        self._create_test_workflow_transitions()
+        self._create_test_workflow_template(add_test_document_type=True)
+        self._create_test_workflow_template_states()
+        self._create_test_workflow_template_transitions()
         self._create_test_key_private()
 
-        self.test_workflow_state_2.actions.create(
+        self.test_workflow_template_state_2.actions.create(
             label='test action', when=WORKFLOW_ACTION_ON_ENTRY,
             enabled=True,
             action_path='mayan.apps.document_signatures.workflow_actions.DocumentSignatureDetachedAction',
@@ -102,17 +102,17 @@ class DocumentSignatureWorkflowActionTestCase(
         signature_count = DetachedSignature.objects.count()
 
         self.test_workflow_instance.do_transition(
-            transition=self.test_workflow_transition
+            transition=self.test_workflow_template_transition
         )
         self.assertNotEqual(signature_count, DetachedSignature.objects.count())
 
     def test_document_signature_embedded_action_via_workflow(self):
-        self._create_test_workflow(add_test_document_type=True)
-        self._create_test_workflow_states()
-        self._create_test_workflow_transitions()
+        self._create_test_workflow_template(add_test_document_type=True)
+        self._create_test_workflow_template_states()
+        self._create_test_workflow_template_transitions()
         self._create_test_key_private()
 
-        self.test_workflow_state_2.actions.create(
+        self.test_workflow_template_state_2.actions.create(
             label='test action', when=WORKFLOW_ACTION_ON_ENTRY,
             enabled=True,
             action_path='mayan.apps.document_signatures.workflow_actions.DocumentSignatureEmbeddedAction',
@@ -130,6 +130,6 @@ class DocumentSignatureWorkflowActionTestCase(
         signature_count = EmbeddedSignature.objects.count()
 
         self.test_workflow_instance.do_transition(
-            transition=self.test_workflow_transition
+            transition=self.test_workflow_template_transition
         )
         self.assertNotEqual(signature_count, EmbeddedSignature.objects.count())

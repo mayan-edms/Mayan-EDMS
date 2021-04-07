@@ -155,8 +155,8 @@ class ACLListView(ContentTypeViewMixin, ExternalObjectViewMixin, SingleObjectLis
 
 
 class ACLPermissionsView(AddRemoveView):
-    main_object_method_add = 'permissions_add'
-    main_object_method_remove = 'permissions_remove'
+    main_object_method_add_name = 'permissions_add'
+    main_object_method_remove_name = 'permissions_remove'
     main_object_model = AccessControlList
     main_object_permission = permission_acl_edit
     main_object_pk_url_kwarg = 'acl_id'

@@ -1,6 +1,6 @@
-from mayan.apps.document_states.permissions import permission_workflow_edit
+from mayan.apps.document_states.permissions import permission_workflow_template_edit
 from mayan.apps.document_states.tests.mixins import (
-    WorkflowTestMixin, WorkflowStateActionViewTestMixin
+    WorkflowTemplateTestMixin, WorkflowTemplateStateActionViewTestMixin
 )
 from mayan.apps.documents.tests.base import GenericDocumentViewTestCase
 
@@ -91,7 +91,7 @@ class DocumentMetadataActionTestCase(
 
 class DocumentMetadataActionViewTestCase(
     DocumentMetadataMixin, MetadataTypeTestMixin,
-    WorkflowStateActionViewTestMixin, WorkflowTestMixin,
+    WorkflowTemplateStateActionViewTestMixin, WorkflowTemplateTestMixin,
     GenericDocumentViewTestCase
 ):
     auto_upload_test_document = False
@@ -99,19 +99,19 @@ class DocumentMetadataActionViewTestCase(
     def setUp(self):
         super().setUp()
         self._create_test_document_stub()
-        self._create_test_workflow()
-        self._create_test_workflow_state()
+        self._create_test_workflow_template()
+        self._create_test_workflow_template_state()
         self._create_test_metadata_type()
         self.test_document_type.metadata.create(
             metadata_type=self.test_metadata_type
         )
-        self.test_workflow.document_types.add(
+        self.test_workflow_template.document_types.add(
             self.test_document_type
         )
 
     def test_document_metadata_add_action_create_view(self):
         self.grant_access(
-            obj=self.test_workflow, permission=permission_workflow_edit
+            obj=self.test_workflow_template, permission=permission_workflow_template_edit
         )
         self.grant_access(
             obj=self.test_metadata_type,
@@ -129,7 +129,7 @@ class DocumentMetadataActionViewTestCase(
         self._create_test_document_metadata()
 
         self.grant_access(
-            obj=self.test_workflow, permission=permission_workflow_edit
+            obj=self.test_workflow_template, permission=permission_workflow_template_edit
         )
         self.grant_access(
             obj=self.test_metadata_type,
@@ -148,7 +148,7 @@ class DocumentMetadataActionViewTestCase(
         self._create_test_document_metadata()
 
         self.grant_access(
-            obj=self.test_workflow, permission=permission_workflow_edit
+            obj=self.test_workflow_template, permission=permission_workflow_template_edit
         )
         self.grant_access(
             obj=self.test_metadata_type,

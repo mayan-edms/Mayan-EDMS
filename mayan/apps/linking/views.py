@@ -143,8 +143,8 @@ class ResolvedSmartLinkView(ExternalObjectViewMixin, DocumentListView):
 
 
 class SmartLinkDocumentTypeAddRemoveView(AddRemoveView):
-    main_object_method_add = 'document_types_add'
-    main_object_method_remove = 'document_types_remove'
+    main_object_method_add_name = 'document_types_add'
+    main_object_method_remove_name = 'document_types_remove'
     main_object_permission = permission_smart_link_edit
     main_object_model = SmartLink
     main_object_pk_url_kwarg = 'smart_link_id'

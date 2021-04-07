@@ -45,19 +45,19 @@ class WebLink(ExtraDataModelMixin, models.Model):
         return self.label
 
     def document_types_add(self, queryset, _event_actor=None):
-        for obj in queryset:
-            self.document_types.add(obj)
+        for document_type in queryset:
+            self.document_types.add(document_type)
             event_web_link_edited.commit(
-                action_object=obj, actor=_event_actor or self._event_actor,
-                target=self
+                action_object=document_type,
+                actor=_event_actor or self._event_actor, target=self
             )
 
     def document_types_remove(self, queryset, _event_actor=None):
-        for obj in queryset:
-            self.document_types.remove(obj)
+        for document_type in queryset:
+            self.document_types.remove(document_type)
             event_web_link_edited.commit(
-                action_object=obj, actor=_event_actor or self._event_actor,
-                target=self
+                action_object=document_type,
+                actor=_event_actor or self._event_actor, target=self
             )
 
     def get_absolute_url(self):
