@@ -282,3 +282,19 @@
 - Move detached signature upload from the created endpoint to a
   new /uploaded endpoint.
 - Added document signature events.
+- Refactored the workflows app.
+
+    - Rebalance permissions needed to transition a workflow instance.
+      The workflow instance transition permission is now needed for
+      the document and for either the transition or the workflow.
+    - Add more tests including trashed document tests.
+    - Split API tests into instance and template tests.
+    - Add `workflow-instance-log-entry-detail` end point.
+    - Add parent URL fields to serializers.
+    - Allow passing extra data when transitioning a workflow via the API.
+    - Limit state options to workflow when using the API. This matches
+      the UI behavior.
+  
+- Renamed the AddRemove view ``main_object_method_add`` to
+  ``main_object_method_add_name`` and ``main_object_method_remove`` to
+  ``main_object_method_add_remove_name``.
