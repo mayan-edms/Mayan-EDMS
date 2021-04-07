@@ -8,17 +8,17 @@ from mayan.apps.testing.tests.mocks import request_method_factory
 
 from ..literals import WORKFLOW_ACTION_ON_ENTRY
 from ..models import Workflow
-from ..permissions import permission_workflow_edit
+from ..permissions import permission_workflow_template_edit
 from ..workflow_actions import (
     DocumentPropertiesEditAction, DocumentWorkflowLaunchAction, HTTPAction
 )
 
 from .literals import (
-    TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_DOTTED_PATH,
-    TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_TEXT_LABEL,
-    TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_TEXT_DESCRIPTION,
-    TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_TEXT_DATA,
-    TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_TEMPLATE_DATA,
+    TEST_DOCUMENT_EDIT_WORKFLOW_TEMPLATE_STATE_ACTION_DOTTED_PATH,
+    TEST_DOCUMENT_EDIT_WORKFLOW_TEMPLATE_STATE_ACTION_TEXT_LABEL,
+    TEST_DOCUMENT_EDIT_WORKFLOW_TEMPLATE_STATE_ACTION_TEXT_DESCRIPTION,
+    TEST_DOCUMENT_EDIT_WORKFLOW_TEMPLATE_STATE_ACTION_TEXT_DATA,
+    TEST_DOCUMENT_EDIT_WORKFLOW_TEMPLATE_STATE_ACTION_TEMPLATE_DATA,
     TEST_HEADERS_AUTHENTICATION_KEY, TEST_HEADERS_AUTHENTICATION_VALUE,
     TEST_HEADERS_KEY, TEST_HEADERS_JSON, TEST_HEADERS_JSON_TEMPLATE,
     TEST_HEADERS_JSON_TEMPLATE_KEY, TEST_HEADERS_VALUE, TEST_PAYLOAD_JSON,
@@ -26,13 +26,13 @@ from .literals import (
     TEST_SERVER_PASSWORD
 )
 from .mixins import (
-    DocumentWorkflowLaunchActionViewTestMixin,
-    WorkflowStateActionViewTestMixin, WorkflowTestMixin
+    WorkflowTemplateLaunchActionViewTestMixin,
+    WorkflowTemplateStateActionViewTestMixin, WorkflowTemplateTestMixin
 )
 
 
 class HTTPWorkflowActionTestCase(
-    TestServerTestCaseMixin, GenericDocumentViewTestCase, WorkflowTestMixin,
+    TestServerTestCaseMixin, GenericDocumentViewTestCase, WorkflowTemplateTestMixin,
 ):
     auto_upload_test_document = False
     auto_add_test_view = True
@@ -200,15 +200,15 @@ class HTTPWorkflowActionTestCase(
 
 
 class HTTPWorkflowActionViewTestCase(
-    WorkflowTestMixin, WorkflowStateActionViewTestMixin, GenericViewTestCase
+    WorkflowTemplateTestMixin, WorkflowTemplateStateActionViewTestMixin, GenericViewTestCase
 ):
     def setUp(self):
         super().setUp()
-        self._create_test_workflow()
-        self._create_test_workflow_state()
+        self._create_test_workflow_template()
+        self._create_test_workflow_template_state()
 
     def test_http_workflow_state_action_create_post_view_no_permission(self):
-        action_count = self.test_workflow_state.actions.count()
+        action_count = self.test_workflow_template_state.actions.count()
 
         response = self._request_test_workflow_template_state_action_create_post_view(
             class_path='mayan.apps.document_states.workflow_actions.HTTPAction',
@@ -218,16 +218,16 @@ class HTTPWorkflowActionViewTestCase(
         )
         self.assertEqual(response.status_code, 404)
 
-        self.test_workflow_state.refresh_from_db()
+        self.test_workflow_template_state.refresh_from_db()
         self.assertEqual(
-            self.test_workflow_state.actions.count(), action_count
+            self.test_workflow_template_state.actions.count(), action_count
         )
 
     def test_http_workflow_state_action_create_post_view_with_access(self):
         self.grant_access(
-            obj=self.test_workflow, permission=permission_workflow_edit
+            obj=self.test_workflow_template, permission=permission_workflow_template_edit
         )
-        action_count = self.test_workflow_state.actions.count()
+        action_count = self.test_workflow_template_state.actions.count()
 
         response = self._request_test_workflow_template_state_action_create_post_view(
             class_path='mayan.apps.document_states.workflow_actions.HTTPAction',
@@ -237,14 +237,14 @@ class HTTPWorkflowActionViewTestCase(
         )
         self.assertEqual(response.status_code, 302)
 
-        self.test_workflow_state.refresh_from_db()
+        self.test_workflow_template_state.refresh_from_db()
         self.assertEqual(
-            self.test_workflow_state.actions.count(), action_count + 1
+            self.test_workflow_template_state.actions.count(), action_count + 1
         )
 
 
 class DocumentPropertiesEditActionTestCase(
-    WorkflowTestMixin, GenericDocumentViewTestCase
+    WorkflowTemplateTestMixin, GenericDocumentViewTestCase
 ):
     auto_upload_test_document = False
 
@@ -252,7 +252,7 @@ class DocumentPropertiesEditActionTestCase(
         self._create_test_document_stub()
 
         action = DocumentPropertiesEditAction(
-            form_data=TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_TEXT_DATA
+            form_data=TEST_DOCUMENT_EDIT_WORKFLOW_TEMPLATE_STATE_ACTION_TEXT_DATA
         )
 
         test_values = self._model_instance_to_dictionary(
@@ -274,7 +274,7 @@ class DocumentPropertiesEditActionTestCase(
         label = self.test_document.label
 
         action = DocumentPropertiesEditAction(
-            form_data=TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_TEMPLATE_DATA
+            form_data=TEST_DOCUMENT_EDIT_WORKFLOW_TEMPLATE_STATE_ACTION_TEMPLATE_DATA
         )
         action.execute(context={'document': self.test_document})
 
@@ -288,46 +288,48 @@ class DocumentPropertiesEditActionTestCase(
         )
 
     def test_document_properties_edit_action_workflow_execute(self):
-        self._create_test_workflow()
-        self._create_test_workflow_states()
-        self._create_test_workflow_transitions()
+        self._create_test_workflow_template()
+        self._create_test_workflow_template_state()
+        self._create_test_workflow_template_state()
+        self._create_test_workflow_template_transition()
+        self._create_test_workflow_template_transition()
 
-        self.test_workflow_states[1].actions.create(
+        self.test_workflow_template_states[1].actions.create(
             action_data=json.dumps(
-                obj=TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_TEXT_DATA
+                obj=TEST_DOCUMENT_EDIT_WORKFLOW_TEMPLATE_STATE_ACTION_TEXT_DATA
             ),
-            action_path=TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_DOTTED_PATH,
+            action_path=TEST_DOCUMENT_EDIT_WORKFLOW_TEMPLATE_STATE_ACTION_DOTTED_PATH,
             label='', when=WORKFLOW_ACTION_ON_ENTRY,
         )
-        self.test_workflow.document_types.add(self.test_document_type)
+        self.test_workflow_template.document_types.add(self.test_document_type)
 
         self._create_test_document_stub()
 
         test_workflow_instance = self.test_document.workflows.first()
         test_workflow_instance.do_transition(
-            transition=self.test_workflow_transition
+            transition=self.test_workflow_template_transition
         )
 
         self.assertEqual(
             self.test_document.label,
-            TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_TEXT_LABEL
+            TEST_DOCUMENT_EDIT_WORKFLOW_TEMPLATE_STATE_ACTION_TEXT_LABEL
         )
         self.assertEqual(
             self.test_document.description,
-            TEST_DOCUMENT_EDIT_WORKFLOW_ACTION_TEXT_DESCRIPTION
+            TEST_DOCUMENT_EDIT_WORKFLOW_TEMPLATE_STATE_ACTION_TEXT_DESCRIPTION
         )
 
 
 class DocumentWorkflowLaunchActionTestCase(
-    WorkflowTestMixin, GenericDocumentViewTestCase
+    WorkflowTemplateTestMixin, GenericDocumentViewTestCase
 ):
     auto_upload_test_document = False
 
     def test_document_workflow_launch_action(self):
-        self._create_test_workflow(
+        self._create_test_workflow_template(
             add_test_document_type=True, auto_launch=False
         )
-        self._create_test_workflow_state()
+        self._create_test_workflow_template_state()
 
         self._create_test_document_stub()
 
@@ -345,26 +347,26 @@ class DocumentWorkflowLaunchActionTestCase(
 
 
 class DocumentWorkflowLaunchActionViewTestCase(
-    DocumentWorkflowLaunchActionViewTestMixin, WorkflowTestMixin,
+    WorkflowTemplateLaunchActionViewTestMixin, WorkflowTemplateTestMixin,
     GenericDocumentViewTestCase
 ):
     auto_upload_test_document = False
 
     def test_document_workflow_launch_action_view_with_full_access(self):
-        self._create_test_workflow(
+        self._create_test_workflow_template(
             add_test_document_type=True, auto_launch=False
         )
-        self._create_test_workflow_state()
+        self._create_test_workflow_template_state()
 
         self.grant_access(
-            obj=self.test_workflow, permission=permission_workflow_edit
+            obj=self.test_workflow_template, permission=permission_workflow_template_edit
         )
 
-        action_count = self.test_workflow_state.actions.count()
+        action_count = self.test_workflow_template_state.actions.count()
 
-        response = self._request_document_workflow_launch_action_create_view()
+        response = self._request_document_workflow_template_launch_action_create_view()
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
-            self.test_workflow_state.actions.count(), action_count + 1
+            self.test_workflow_template_state.actions.count(), action_count + 1
         )

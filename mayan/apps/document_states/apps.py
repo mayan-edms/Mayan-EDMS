@@ -20,7 +20,7 @@ from mayan.apps.navigation.classes import SourceColumn
 from mayan.apps.views.html_widgets import TwoStateWidget
 
 from .classes import DocumentStateHelper, WorkflowAction
-from .events import event_workflow_edited
+from .events import event_workflow_template_edited
 from .handlers import (
     handler_create_workflow_image_cache, handler_index_document,
     handler_launch_workflow, handler_trigger_transition
@@ -29,34 +29,37 @@ from .html_widgets import WorkflowLogExtraDataWidget, widget_transition_events
 from .links import (
     link_document_multiple_workflow_templates_launch,
     link_document_single_workflow_templates_launch,
-    link_workflow_instance_list, link_document_type_workflow_templates,
-    link_workflow_template_document_types, link_workflow_template_create,
-    link_workflow_template_multiple_delete,
-    link_workflow_template_single_delete, link_workflow_template_edit,
-    link_workflow_template_launch, link_workflow_template_list,
+    link_tool_launch_workflows, link_workflow_instance_list,
+    link_workflow_instance_detail, link_workflow_instance_transition,
+    link_workflow_runtime_proxy_document_list,
+    link_workflow_runtime_proxy_list, link_workflow_template_preview,
+    link_workflow_runtime_proxy_state_document_list,
+    link_workflow_runtime_proxy_state_list,
+    link_document_type_workflow_templates, link_workflow_template_create,
+    link_workflow_template_document_types, link_workflow_template_edit,
+    link_workflow_template_multiple_delete, link_workflow_template_launch,
+    link_workflow_template_list, link_workflow_template_single_delete,
     link_workflow_template_state_list,
     link_workflow_template_state_action_delete,
     link_workflow_template_state_action_edit,
     link_workflow_template_state_action_list,
     link_workflow_template_state_action_selection,
     link_workflow_template_state_create, link_workflow_template_state_delete,
-    link_workflow_template_state_edit, link_workflow_template_transition_list,
+    link_workflow_template_state_edit,
     link_workflow_template_transition_create,
-    link_workflow_template_transition_delete, link_workflow_template_transition_edit,
+    link_workflow_template_transition_delete,
+    link_workflow_template_transition_edit,
+    link_workflow_template_transition_list,
+    link_workflow_template_transition_events,
     link_workflow_template_transition_field_create,
     link_workflow_template_transition_field_delete,
     link_workflow_template_transition_field_edit,
-    link_workflow_template_transition_field_list,
-    link_tool_launch_workflows, link_workflow_instance_detail,
-    link_workflow_instance_transition, link_workflow_runtime_proxy_document_list,
-    link_workflow_runtime_proxy_list, link_workflow_template_preview,
-    link_workflow_runtime_proxy_state_document_list, link_workflow_runtime_proxy_state_list,
-    link_workflow_template_transition_events
+    link_workflow_template_transition_field_list
 )
 from .permissions import (
-    permission_workflow_delete, permission_workflow_edit,
-    permission_workflow_tools, permission_workflow_transition,
-    permission_workflow_view
+    permission_workflow_template_delete, permission_workflow_template_edit,
+    permission_workflow_tools, permission_workflow_instance_transition,
+    permission_workflow_template_view
 )
 
 
@@ -159,7 +162,7 @@ class DocumentStatesApp(MayanAppConfig):
         )
 
         ModelEventType.register(
-            event_types=(event_workflow_edited,), model=Workflow
+            event_types=(event_workflow_template_edited,), model=Workflow
         )
 
         ModelProperty(
@@ -180,19 +183,22 @@ class DocumentStatesApp(MayanAppConfig):
 
         ModelPermission.register(
             model=Document, permissions=(
-                permission_workflow_tools, permission_workflow_view,
+                permission_workflow_instance_transition,
+                permission_workflow_template_view,
+                permission_workflow_tools
             )
         )
         ModelPermission.register(
             model=Workflow, permissions=(
-                permission_error_log_view, permission_workflow_delete,
-                permission_workflow_edit, permission_workflow_tools,
-                permission_workflow_transition, permission_workflow_view
+                permission_error_log_view, permission_workflow_template_delete,
+                permission_workflow_template_edit, permission_workflow_tools,
+                permission_workflow_instance_transition,
+                permission_workflow_template_view
             )
         )
         ModelPermission.register(
             model=WorkflowTransition,
-            permissions=(permission_workflow_transition,)
+            permissions=(permission_workflow_instance_transition,)
         )
 
         ModelPermission.register_inheritance(

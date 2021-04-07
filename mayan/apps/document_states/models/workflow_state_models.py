@@ -11,6 +11,7 @@ from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.apps.acls.models import AccessControlList
+from mayan.apps.databases.model_mixins import ExtraDataModelMixin
 from mayan.apps.documents.models import Document
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.events.classes import (
@@ -20,7 +21,7 @@ from mayan.apps.events.decorators import method_event
 
 from mayan.apps.templating.classes import Template
 
-from ..events import event_workflow_edited
+from ..events import event_workflow_template_edited
 from ..literals import (
     WORKFLOW_ACTION_WHEN_CHOICES, WORKFLOW_ACTION_ON_ENTRY,
     WORKFLOW_ACTION_ON_EXIT
@@ -34,7 +35,7 @@ __all__ = (
 logger = logging.getLogger(name=__name__)
 
 
-class WorkflowState(models.Model):
+class WorkflowState(ExtraDataModelMixin, models.Model):
     """
     Fields:
     * completion - Completion Amount - A user defined numerical value to help
@@ -79,7 +80,7 @@ class WorkflowState(models.Model):
     @method_event(
         action_object='self',
         event_manager_class=EventManagerMethodAfter,
-        event=event_workflow_edited,
+        event=event_workflow_template_edited,
         target='workflow',
     )
     def delete(self, *args, **kwargs):
@@ -136,12 +137,12 @@ class WorkflowState(models.Model):
         event_manager_class=EventManagerSave,
         created={
             'action_object': 'self',
-            'event': event_workflow_edited,
+            'event': event_workflow_template_edited,
             'target': 'workflow',
         },
         edited={
             'action_object': 'self',
-            'event': event_workflow_edited,
+            'event': event_workflow_template_edited,
             'target': 'workflow',
         }
     )
@@ -161,7 +162,7 @@ class WorkflowState(models.Model):
         return super().save(*args, **kwargs)
 
 
-class WorkflowStateAction(models.Model):
+class WorkflowStateAction(ExtraDataModelMixin, models.Model):
     state = models.ForeignKey(
         on_delete=models.CASCADE, related_name='actions', to=WorkflowState,
         verbose_name=_('Workflow state')
@@ -208,7 +209,7 @@ class WorkflowStateAction(models.Model):
     @method_event(
         action_object='self',
         event_manager_class=EventManagerMethodAfter,
-        event=event_workflow_edited,
+        event=event_workflow_template_edited,
         target='state.workflow',
     )
     def delete(self, *args, **kwargs):
@@ -274,12 +275,12 @@ class WorkflowStateAction(models.Model):
         event_manager_class=EventManagerSave,
         created={
             'action_object': 'self',
-            'event': event_workflow_edited,
+            'event': event_workflow_template_edited,
             'target': 'state.workflow',
         },
         edited={
             'action_object': 'self',
-            'event': event_workflow_edited,
+            'event': event_workflow_template_edited,
             'target': 'state.workflow',
         }
     )

@@ -14,20 +14,20 @@ from mayan.apps.views.mixins import ExternalObjectViewMixin
 from ..forms import (
     WorkflowTransitionForm, WorkflowTransitionTriggerEventRelationshipFormSet
 )
-from ..icons import icon_workflow_transition, icon_workflow_transition_field
+from ..icons import icon_workflow_template_transition, icon_workflow_template_transition_field
 from ..links import (
     link_workflow_template_transition_create,
     link_workflow_template_transition_field_create,
 )
 from ..models import Workflow, WorkflowTransition, WorkflowTransitionField
-from ..permissions import permission_workflow_edit, permission_workflow_view
+from ..permissions import permission_workflow_template_edit, permission_workflow_template_view
 
 
 class WorkflowTemplateTransitionCreateView(
     ExternalObjectViewMixin, SingleObjectCreateView
 ):
     external_object_class = Workflow
-    external_object_permission = permission_workflow_edit
+    external_object_permission = permission_workflow_template_edit
     external_object_pk_url_kwarg = 'workflow_template_id'
     form_class = WorkflowTransitionForm
 
@@ -67,7 +67,7 @@ class WorkflowTemplateTransitionCreateView(
 
 class WorkflowTemplateTransitionDeleteView(SingleObjectDeleteView):
     model = WorkflowTransition
-    object_permission = permission_workflow_edit
+    object_permission = permission_workflow_template_edit
     pk_url_kwarg = 'workflow_template_transition_id'
 
     def get_extra_context(self):
@@ -95,7 +95,7 @@ class WorkflowTemplateTransitionDeleteView(SingleObjectDeleteView):
 class WorkflowTemplateTransitionEditView(SingleObjectEditView):
     form_class = WorkflowTransitionForm
     model = WorkflowTransition
-    object_permission = permission_workflow_edit
+    object_permission = permission_workflow_template_edit
     pk_url_kwarg = 'workflow_template_transition_id'
 
     def get_extra_context(self):
@@ -129,14 +129,14 @@ class WorkflowTemplateTransitionListView(
     ExternalObjectViewMixin, SingleObjectListView
 ):
     external_object_class = Workflow
-    external_object_permission = permission_workflow_view
+    external_object_permission = permission_workflow_template_view
     external_object_pk_url_kwarg = 'workflow_template_id'
-    object_permission = permission_workflow_view
+    object_permission = permission_workflow_template_view
 
     def get_extra_context(self):
         return {
             'hide_object': True,
-            'no_results_icon': icon_workflow_transition,
+            'no_results_icon': icon_workflow_template_transition,
             'no_results_main_link': link_workflow_template_transition_create.resolve(
                 context=RequestContext(
                     self.request, {'workflow': self.external_object}
@@ -164,7 +164,7 @@ class WorkflowTemplateTransitionTriggerEventListView(
     ExternalObjectViewMixin, FormView
 ):
     external_object_class = WorkflowTransition
-    external_object_permission = permission_workflow_edit
+    external_object_permission = permission_workflow_template_edit
     external_object_pk_url_kwarg = 'workflow_template_transition_id'
     form_class = WorkflowTransitionTriggerEventRelationshipFormSet
 
@@ -240,7 +240,7 @@ class WorkflowTemplateTransitionFieldCreateView(
     ExternalObjectViewMixin, SingleObjectCreateView
 ):
     external_object_class = WorkflowTransition
-    external_object_permission = permission_workflow_edit
+    external_object_permission = permission_workflow_template_edit
     external_object_pk_url_kwarg = 'workflow_template_transition_id'
     fields = (
         'name', 'label', 'field_type', 'help_text', 'required', 'widget',
@@ -277,18 +277,18 @@ class WorkflowTemplateTransitionFieldCreateView(
 
 class WorkflowTemplateTransitionFieldDeleteView(SingleObjectDeleteView):
     model = WorkflowTransitionField
-    object_permission = permission_workflow_edit
+    object_permission = permission_workflow_template_edit
     pk_url_kwarg = 'workflow_template_transition_field_id'
 
     def get_extra_context(self):
         return {
             'navigation_object_list': (
-                'object', 'workflow_transition', 'workflow'
+                'object', 'workflow_template_transition', 'workflow'
             ),
             'object': self.object,
             'title': _('Delete workflow transition field: %s') % self.object,
             'workflow': self.object.transition.workflow,
-            'workflow_transition': self.object.transition,
+            'workflow_template_transition': self.object.transition,
         }
 
     def get_instance_extra_data(self):
@@ -311,18 +311,18 @@ class WorkflowTemplateTransitionFieldEditView(SingleObjectEditView):
         'widget_kwargs'
     )
     model = WorkflowTransitionField
-    object_permission = permission_workflow_edit
+    object_permission = permission_workflow_template_edit
     pk_url_kwarg = 'workflow_template_transition_field_id'
 
     def get_extra_context(self):
         return {
             'navigation_object_list': (
-                'object', 'workflow_transition', 'workflow'
+                'object', 'workflow_template_transition', 'workflow'
             ),
             'object': self.object,
             'title': _('Edit workflow transition field: %s') % self.object,
             'workflow': self.object.transition.workflow,
-            'workflow_transition': self.object.transition,
+            'workflow_template_transition': self.object.transition,
         }
 
     def get_instance_extra_data(self):
@@ -343,14 +343,14 @@ class WorkflowTemplateTransitionFieldListView(
     ExternalObjectViewMixin, SingleObjectListView
 ):
     external_object_class = WorkflowTransition
-    external_object_permission = permission_workflow_edit
+    external_object_permission = permission_workflow_template_edit
     external_object_pk_url_kwarg = 'workflow_template_transition_id'
 
     def get_extra_context(self):
         return {
             'hide_object': True,
             'navigation_object_list': ('object', 'workflow'),
-            'no_results_icon': icon_workflow_transition_field,
+            'no_results_icon': icon_workflow_template_transition_field,
             'no_results_main_link': link_workflow_template_transition_field_create.resolve(
                 context=RequestContext(
                     request=self.request, dict_={

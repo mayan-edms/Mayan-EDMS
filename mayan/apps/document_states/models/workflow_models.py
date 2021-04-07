@@ -18,7 +18,7 @@ from mayan.apps.documents.models import Document, DocumentType
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.events.classes import EventManagerSave
 from mayan.apps.events.decorators import method_event
-from ..events import event_workflow_created, event_workflow_edited
+from ..events import event_workflow_template_created, event_workflow_template_edited
 from ..literals import (
     STORAGE_NAME_WORKFLOW_CACHE, SYMBOL_MATH_CONDITIONAL,
     WORKFLOW_ACTION_ON_ENTRY
@@ -84,6 +84,27 @@ class Workflow(ExtraDataModelMixin, models.Model):
         self.cache_partition.delete()
         return super().delete(*args, **kwargs)
 
+    def document_types_add(self, queryset, _event_actor=None):
+        for document_type in queryset.all():
+            self.document_types.add(document_type)
+            event_workflow_template_edited.commit(
+                action_object=document_type,
+                actor=_event_actor or self._event_actor,
+                target=self
+            )
+
+    def document_types_remove(self, queryset, _event_actor=None):
+        for document_type in queryset.all():
+            self.document_types.remove(document_type)
+            event_workflow_template_edited.commit(
+                action_object=document_type,
+                actor=_event_actor or self._event_actor,
+                target=self
+            )
+            self.instances.filter(
+                document__document_type_id=document_type.pk
+            ).delete()
+
     def generate_image(self):
         cache_filename = '{}'.format(self.get_hash())
 
@@ -106,7 +127,7 @@ class Workflow(ExtraDataModelMixin, models.Model):
         final_url = furl()
         final_url.args = kwargs
         final_url.path = reverse(
-            viewname='rest_api:workflow-image',
+            viewname='rest_api:workflow-template-image',
             kwargs={'workflow_template_id': self.pk}
         )
         final_url.args['_hash'] = self.get_hash()
@@ -259,11 +280,11 @@ class Workflow(ExtraDataModelMixin, models.Model):
     @method_event(
         event_manager_class=EventManagerSave,
         created={
-            'event': event_workflow_created,
+            'event': event_workflow_template_created,
             'target': 'self',
         },
         edited={
-            'event': event_workflow_edited,
+            'event': event_workflow_template_edited,
             'target': 'self',
         }
     )

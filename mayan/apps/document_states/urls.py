@@ -1,14 +1,22 @@
 from django.conf.urls import url
 
 from .api_views import (
-    APIDocumentTypeWorkflowListView, APIWorkflowDocumentTypeList,
-    APIWorkflowDocumentTypeView, APIWorkflowImageView,
-    APIWorkflowInstanceListView, APIWorkflowInstanceView,
-    APIWorkflowInstanceLogEntryListView, APIWorkflowListView,
-    APIWorkflowStateListView, APIWorkflowStateView,
-    APIWorkflowTransitionListView, APIWorkflowTransitionView,
-    APIWorkflowTransitionFieldDetailView, APIWorkflowTransitionFieldListView,
-    APIWorkflowView
+    APIWorkflowInstanceListView,
+    APIWorkflowInstanceDetailView,
+    APIWorkflowInstanceLogEntryDetailView,
+    APIWorkflowInstanceLogEntryListView,
+    APIWorkflowTemplateDetailView,
+    APIWorkflowTemplateDocumentTypeAddView,
+    APIWorkflowTemplateDocumentTypeListView,
+    APIWorkflowTemplateDocumentTypeRemoveView,
+    APIWorkflowTemplateImageView,
+    APIWorkflowTemplateListView,
+    APIWorkflowTemplateStateListView,
+    APIWorkflowTemplateStateView,
+    APIWorkflowTemplateTransitionListView,
+    APIWorkflowTemplateTransitionView,
+    APIWorkflowTemplateTransitionFieldDetailView,
+    APIWorkflowTemplateTransitionFieldListView
 )
 from .views.workflow_instance_views import (
     WorkflowInstanceDetailView, WorkflowInstanceListView,
@@ -62,7 +70,7 @@ urlpatterns_workflow_instances = [
         view=WorkflowInstanceTransitionSelectView.as_view()
     ),
     url(
-        regex=r'^documents/workflows/(?P<workflow_instance_id>\d+)/transitions/(?P<workflow_transition_id>\d+)/execute/$',
+        regex=r'^documents/workflows/(?P<workflow_instance_id>\d+)/transitions/(?P<workflow_template_transition_id>\d+)/execute/$',
         name='workflow_instance_transition_execute',
         view=WorkflowInstanceTransitionExecuteView.as_view()
     )
@@ -268,73 +276,81 @@ urlpatterns.extend(urlpatterns_workflow_transition_fields)
 
 api_urls = [
     url(
-        regex=r'^workflows/$', name='workflow-list',
-        view=APIWorkflowListView.as_view()
+        regex=r'^workflow_templates/$', name='workflow-template-list',
+        view=APIWorkflowTemplateListView.as_view()
     ),
     url(
-        regex=r'^workflows/(?P<workflow_template_id>[0-9]+)/$', name='workflow-detail',
-        view=APIWorkflowView.as_view()
+        regex=r'^workflow_templates/(?P<workflow_template_id>[0-9]+)/$',
+        name='workflow-template-detail', view=APIWorkflowTemplateDetailView.as_view()
     ),
     url(
-        regex=r'^workflows/(?P<workflow_template_id>[0-9]+)/document_types/$',
-        name='workflow-document-type-list',
-        view=APIWorkflowDocumentTypeList.as_view()
+        regex=r'^workflow_templates/(?P<workflow_template_id>[0-9]+)/document_types/$',
+        name='workflow-template-document-type-list',
+        view=APIWorkflowTemplateDocumentTypeListView.as_view()
     ),
     url(
-        regex=r'^workflows/(?P<workflow_template_id>[0-9]+)/document_types/(?P<document_type_id>[0-9]+)/$',
-        name='workflow-document-type-detail',
-        view=APIWorkflowDocumentTypeView.as_view()
+        regex=r'^workflow_templates/(?P<workflow_template_id>[0-9]+)/document_types/add/$',
+        name='workflow-template-document-type-add',
+        view=APIWorkflowTemplateDocumentTypeAddView.as_view()
     ),
     url(
-        regex=r'^workflows/(?P<workflow_template_id>\d+)/image/$',
-        name='workflow-image', view=APIWorkflowImageView.as_view()
+        regex=r'^workflow_templates/(?P<workflow_template_id>[0-9]+)/document_types/remove/$',
+        name='workflow-template-document-type-remove',
+        view=APIWorkflowTemplateDocumentTypeRemoveView.as_view()
     ),
     url(
-        regex=r'^workflows/(?P<workflow_template_id>[0-9]+)/states/$',
-        name='workflowstate-list', view=APIWorkflowStateListView.as_view()
+        regex=r'^workflow_templates/(?P<workflow_template_id>\d+)/image/$',
+        name='workflow-template-image',
+        view=APIWorkflowTemplateImageView.as_view()
     ),
     url(
-        regex=r'^workflows/(?P<workflow_template_id>[0-9]+)/states/(?P<workflow_template_state_id>[0-9]+)/$',
-        name='workflowstate-detail', view=APIWorkflowStateView.as_view()
+        regex=r'^workflow_templates/(?P<workflow_template_id>[0-9]+)/states/$',
+        name='workflow-template-state-list',
+        view=APIWorkflowTemplateStateListView.as_view()
     ),
     url(
-        regex=r'^workflows/(?P<workflow_template_id>[0-9]+)/transitions/$',
-        name='workflowtransition-list',
-        view=APIWorkflowTransitionListView.as_view()
+        regex=r'^workflow_templates/(?P<workflow_template_id>[0-9]+)/states/(?P<workflow_template_state_id>[0-9]+)/$',
+        name='workflow-template-state-detail',
+        view=APIWorkflowTemplateStateView.as_view()
     ),
     url(
-        regex=r'^workflows/(?P<workflow_template_id>[0-9]+)/transitions/(?P<workflow_template_transition_id>[0-9]+)/$',
-        name='workflowtransition-detail',
-        view=APIWorkflowTransitionView.as_view()
+        regex=r'^workflow_templates/(?P<workflow_template_id>[0-9]+)/transitions/$',
+        name='workflow-template-transition-list',
+        view=APIWorkflowTemplateTransitionListView.as_view()
     ),
     url(
-        regex=r'^workflows/(?P<workflow_template_id>[0-9]+)/transitions/(?P<workflow_template_transition_id>[0-9]+)/fields/$',
-        name='workflowtransitionfield-list',
-        view=APIWorkflowTransitionFieldListView.as_view()
+        regex=r'^workflow_templates/(?P<workflow_template_id>[0-9]+)/transitions/(?P<workflow_template_transition_id>[0-9]+)/$',
+        name='workflow-template-transition-detail',
+        view=APIWorkflowTemplateTransitionView.as_view()
     ),
     url(
-        regex=r'^workflows/(?P<workflow_template_id>[0-9]+)/transitions/(?P<workflow_template_transition_id>[0-9]+)/fields/(?P<workflow_template_transition_field_id>[0-9]+)$',
-        name='workflowtransitionfield-detail',
-        view=APIWorkflowTransitionFieldDetailView.as_view()
+        regex=r'^workflow_templates/(?P<workflow_template_id>[0-9]+)/transitions/(?P<workflow_template_transition_id>[0-9]+)/fields/$',
+        name='workflow-template-transition-field-list',
+        view=APIWorkflowTemplateTransitionFieldListView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<document_id>[0-9]+)/workflows/$',
-        name='workflowinstance-list',
+        regex=r'^workflow_templates/(?P<workflow_template_id>[0-9]+)/transitions/(?P<workflow_template_transition_id>[0-9]+)/fields/(?P<workflow_template_transition_field_id>[0-9]+)$',
+        name='workflow-template-transition-field-detail',
+        view=APIWorkflowTemplateTransitionFieldDetailView.as_view()
+    ),
+    url(
+        regex=r'^documents/(?P<document_id>[0-9]+)/workflow_instances/$',
+        name='workflow-instance-list',
         view=APIWorkflowInstanceListView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<document_id>[0-9]+)/workflows/(?P<workflow_instance_id>[0-9]+)/$',
-        name='workflowinstance-detail',
-        view=APIWorkflowInstanceView.as_view()
+        regex=r'^documents/(?P<document_id>[0-9]+)/workflow_instances/(?P<workflow_instance_id>[0-9]+)/$',
+        name='workflow-instance-detail',
+        view=APIWorkflowInstanceDetailView.as_view()
     ),
     url(
-        regex=r'^documents/(?P<document_id>[0-9]+)/workflows/(?P<workflow_instance_id>[0-9]+)/log_entries/$',
-        name='workflowinstancelogentry-list',
+        regex=r'^documents/(?P<document_id>[0-9]+)/workflow_instances/(?P<workflow_instance_id>[0-9]+)/log_entries/$',
+        name='workflow-instance-log-entry-list',
         view=APIWorkflowInstanceLogEntryListView.as_view()
     ),
     url(
-        regex=r'^document_types/(?P<document_type_id>[0-9]+)/workflows/$',
-        name='documenttype-workflow-list',
-        view=APIDocumentTypeWorkflowListView.as_view()
-    )
+        regex=r'^documents/(?P<document_id>[0-9]+)/workflow_instances/(?P<workflow_instance_id>[0-9]+)/log_entries/(?P<workflow_instance_log_entry_id>[0-9]+)/$',
+        name='workflow-instance-log-entry-detail',
+        view=APIWorkflowInstanceLogEntryDetailView.as_view()
+    ),
 ]

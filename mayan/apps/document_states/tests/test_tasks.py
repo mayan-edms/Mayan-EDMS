@@ -6,7 +6,7 @@ from ..tasks import (
     task_launch_workflow, task_launch_workflow_for
 )
 
-from .mixins import WorkflowTestMixin
+from .mixins import WorkflowTemplateTestMixin
 
 
 class WorkflowTaskTestCaseMixin:
@@ -23,7 +23,7 @@ class WorkflowTaskTestCaseMixin:
     def _execute_task_launch_workflow(self):
         task_launch_workflow.apply_async(
             kwargs={
-                'workflow_id': self.test_workflow.pk
+                'workflow_id': self.test_workflow_template.pk
             }
         ).get()
 
@@ -31,21 +31,21 @@ class WorkflowTaskTestCaseMixin:
         task_launch_workflow_for.apply_async(
             kwargs={
                 'document_id': self.test_document.pk,
-                'workflow_id': self.test_workflow.pk
+                'workflow_id': self.test_workflow_template.pk
             }
         ).get()
 
 
 class WorkflowTaskTestCase(
-    WorkflowTaskTestCaseMixin, WorkflowTestMixin, GenericDocumentTestCase
+    WorkflowTaskTestCaseMixin, WorkflowTemplateTestMixin, GenericDocumentTestCase
 ):
     auto_upload_test_document = False
 
     def setUp(self):
         super().setUp()
         self._create_test_document_stub()
-        self._create_test_workflow(add_test_document_type=True)
-        self._create_test_workflow_state()
+        self._create_test_workflow_template(add_test_document_type=True)
+        self._create_test_workflow_template_state()
 
     def test_task_launch_all_workflows(self):
         workflow_instance_count = self.test_document.workflows.count()

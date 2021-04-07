@@ -2,8 +2,8 @@ import json
 import logging
 
 from django.conf import settings
-from django.core.exceptions import PermissionDenied, ValidationError
-from django.db import models, transaction
+from django.core.exceptions import ValidationError
+from django.db import models
 from django.urls import reverse
 from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
@@ -12,7 +12,7 @@ from mayan.apps.acls.models import AccessControlList
 from mayan.apps.documents.models import Document
 
 from ..managers import ValidWorkflowInstanceManager
-from ..permissions import permission_workflow_transition
+from ..permissions import permission_workflow_instance_transition
 
 from .workflow_models import Workflow
 from .workflow_transition_models import (
@@ -51,23 +51,22 @@ class WorkflowInstance(models.Model):
     def do_transition(
         self, transition, comment=None, extra_data=None, user=None
     ):
-        with transaction.atomic():
-            try:
-                if transition in self.get_current_state().origin_transitions.all():
-                    if extra_data:
-                        context = self.loads()
-                        context.update(extra_data)
-                        self.dumps(context=context)
+        try:
+            if transition in self.get_transition_choices(_user=user).all():
+                if extra_data:
+                    context = self.loads()
+                    context.update(extra_data)
+                    self.dumps(context=context)
 
-                    self.log_entries.create(
-                        comment=comment or '',
-                        extra_data=json.dumps(obj=extra_data or {}),
-                        transition=transition, user=user
-                    )
-            except AttributeError:
-                # No initial state has been set for this workflow
-                if settings.DEBUG:
-                    raise
+                return self.log_entries.create(
+                    comment=comment or '',
+                    extra_data=json.dumps(obj=extra_data or {}),
+                    transition=transition, user=user
+                )
+        except AttributeError:
+            # No initial state has been set for this workflow
+            if settings.DEBUG:
+                raise
 
     def dumps(self, context):
         """
@@ -90,7 +89,7 @@ class WorkflowInstance(models.Model):
         self.document.refresh_from_db()
         context = {
             'document': self.document, 'workflow': self.workflow,
-            'workflow_instance': self,
+            'workflow_instance': self
         }
         context['workflow_instance_context'] = self.loads()
         return context
@@ -137,26 +136,10 @@ class WorkflowInstance(models.Model):
             queryset = current_state.origin_transitions.all()
 
             if _user:
-                try:
-                    """
-                    Check for ACL access to the workflow, if true, allow
-                    all transition options.
-                    """
-                    AccessControlList.objects.check_access(
-                        obj=self.workflow,
-                        permissions=(permission_workflow_transition,),
-                        user=_user
-                    )
-                except PermissionDenied:
-                    """
-                    If not ACL access to the workflow, filter transition
-                    options by each transition ACL access
-                    """
-                    queryset = AccessControlList.objects.restrict_queryset(
-                        permission=permission_workflow_transition,
-                        queryset=queryset,
-                        user=_user
-                    )
+                queryset = AccessControlList.objects.restrict_queryset(
+                    permission=permission_workflow_instance_transition,
+                    queryset=queryset, user=_user
+                )
 
             # Remove the transitions with a false return value
             for entry in queryset:
@@ -239,33 +222,32 @@ class WorkflowInstanceLogEntry(models.Model):
         return json.loads(s=self.extra_data or '{}')
 
     def save(self, *args, **kwargs):
-        with transaction.atomic():
-            result = super().save(*args, **kwargs)
-            context = self.workflow_instance.get_context()
+        result = super().save(*args, **kwargs)
+        context = self.workflow_instance.get_context()
+        context.update(
+            {
+                'entry_log': self
+            }
+        )
+
+        for action in self.transition.origin_state.exit_actions.filter(enabled=True):
             context.update(
                 {
-                    'entry_log': self
+                    'action': action,
                 }
             )
+            action.execute(
+                context=context, workflow_instance=self.workflow_instance
+            )
 
-            for action in self.transition.origin_state.exit_actions.filter(enabled=True):
-                context.update(
-                    {
-                        'action': action,
-                    }
-                )
-                action.execute(
-                    context=context, workflow_instance=self.workflow_instance
-                )
+        for action in self.transition.destination_state.entry_actions.filter(enabled=True):
+            context.update(
+                {
+                    'action': action,
+                }
+            )
+            action.execute(
+                context=context, workflow_instance=self.workflow_instance
+            )
 
-            for action in self.transition.destination_state.entry_actions.filter(enabled=True):
-                context.update(
-                    {
-                        'action': action,
-                    }
-                )
-                action.execute(
-                    context=context, workflow_instance=self.workflow_instance
-                )
-
-            return result
+        return result
