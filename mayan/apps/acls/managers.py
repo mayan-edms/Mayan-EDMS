@@ -126,11 +126,11 @@ class AccessControlListManager(models.Manager):
                 else:
                     relation_result = []
                     for related_field_model_related_field_name in related_field_model_related_fields:
-                        related_field_name = '{}__{}'.format(related_field_name, related_field_model_related_field_name)
+                        new_related_field_name = '{}__{}'.format(related_field_name, related_field_model_related_field_name)
                         related_field_inherited_acl_queries = self._get_acl_filters(
                             queryset=queryset,
                             stored_permission=stored_permission, user=user,
-                            related_field_name=related_field_name
+                            related_field_name=new_related_field_name
                         )
                         if related_field_inherited_acl_queries:
                             relation_result.append(
