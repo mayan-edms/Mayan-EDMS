@@ -473,10 +473,16 @@ class DocumentsApp(MayanAppConfig):
             model=DocumentFile, related='document',
         )
         ModelPermission.register_inheritance(
+            model=DocumentFile, related='document__document_type',
+        )
+        ModelPermission.register_inheritance(
             model=DocumentFilePage, related='document_file',
         )
         ModelPermission.register_inheritance(
             model=DocumentVersion, related='document',
+        )
+        ModelPermission.register_inheritance(
+            model=DocumentVersion, related='document__document_type',
         )
         ModelPermission.register_inheritance(
             model=RecentlyAccessedDocument, related='document',
