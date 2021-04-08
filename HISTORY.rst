@@ -1,4 +1,4 @@
-4.0 (2021-02-XX)
+4.0 (2021-04-XX)
 ================
 - Add document version page list reset.
 - Add document version page delete.
@@ -294,7 +294,7 @@
     - Allow passing extra data when transitioning a workflow via the API.
     - Limit state options to workflow when using the API. This matches
       the UI behavior.
-  
+
 - Renamed the AddRemove view ``main_object_method_add`` to
   ``main_object_method_add_name`` and ``main_object_method_remove`` to
   ``main_object_method_add_remove_name``.

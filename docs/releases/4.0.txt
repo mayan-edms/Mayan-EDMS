@@ -1,19 +1,571 @@
 Version 4.0
 ===========
 
-Released: February XX, 2021
+Released: April XX, 2021
 
 
 Changes
 -------
 
-- Refresh signatures after upgrade.
-- Control document version by ACL.
+
+ACLs
+^^^^
+
+A tool to audit the ACLs in the system was added. This tools is called
+"Global ACLs" and in found under the "Tools" menu. It will display and allow
+modification to all the ACLs defined in the system regardless of their origin
+object or view.
+
+
+API
+^^^
+
+The API is now versioned with a top level entry. Since Mayan uses semantic
+versioning and API changes only occur on major versions, the API version will
+match the major version of the release. For this release and for
+every release of the series 4.x the API version will be "v4".
+
+Support was added for API result sorting. Like the user interface, only
+indexed database fields support. The "OPTION" verb can be used to determine
+with fields are sortable.
+
+
+Converter
+^^^^^^^^^
+
+API endpoints were added for the Assets model. Cached image generation was
+also added for faster assets usage.
+
+An asset detail view with image preview was added.
+
+Previously, when displaying images, only one error condition was represented
+regardless of the underlying cause. This was done using the paper icon with
+the red cross. The converter was updated to allow app to specify their own
+error conditions and the corresponding visual indicator. This is now used
+when generating document images and allows displaying different icons and
+popup messages when there are no active document versions or the active
+document version has no pages defined.
+
+
+Documents
+^^^^^^^^^
+
+The biggest change for this version is the addition of what we call "document
+page composition".
+
+Historically, Mayan has equated each uploaded file of a document as an
+individual version of the document too, with the same one to one relationship
+applying to the document pages. This version breaks that one to one
+relationship and introduces the concept of document files.
+
+Now, every file of a document, there does not need to be a corresponding
+new version, instead the pages of the uploaded files can be mapped to one or
+to any number of new document versions.
+
+This system allows for non-destructive page composition and reordering. The
+actual file uploaded will not be modified and its pages can be mapped to a
+new or an existing document version. This allows for the historical use case
+of creating a new version for each file uploaded, but also allows for
+reordering the pages of a version, disabling pages of a version, or even
+appending pages from multiple document files into a single document version.
+
+Due to this change certain operations might now only be performed on document
+files while other might only be performed on document versions. These are
+as follows:
+
+
+.. list-table::
+   :widths: 50 50
+   :header-rows: 1
+
+   * - Function
+     - Object
+   * - Download
+     - Document files
+   * - Export to PDF (new)
+     - Document versions
+   * - OCR
+     - Document versions
+   * - File metadata
+     - Document files
+   * - Parsing
+     - Document files
+   * - Transformations, decorations, and redactions
+     - Both
+   * - Page detection
+     - Document files
+
+
+Transformations applied to a document file page will be reflected on any
+document version page. However transformations applied a document version page
+will not be reflected on the source document version file.
+
+This change also means that document versions and file uploads are not longer
+lineal. Any document version or document file may be deleted at any time.
+
+The caches of the file pages and version pages images are now two separate
+storages. This allows keeping the document files in one location such as
+object storage and the document version pages in a faster or local storage
+for a combination of low cost long term storage for files and volatile fast
+storage for image previews.
+
+In the past, when downloading a document, the actual filename of the download
+was the document label. Now, when a document file is uploaded the actual
+filename of the file is retained and used as the download filename including
+its original extensions if any. This solves downloading and display issues
+with operating systems that rely on file extensions to identify the type of
+a file.
+
+With the separation of files and version, other features are now possible.
+Support was added to grant access to individual versions of a document via
+ACLs.
+
+Favorites documents now track the date and time of selection to ensure
+deterministic ordering when deleting the oldest favorites. This also allows
+displaying the favorite documents from most recently favorited to least
+recently favorited. The favorite documents feature also received its own API.
+
+Some aspects of the recently added and accessed documents were renamed to
+make it more clear. As a result the setting ``DOCUMENTS_RECENT_ACCESS_COUNT``
+was renamed to ``DOCUMENTS_RECENTLY_ACCESSED_COUNT``, and
+``DOCUMENTS_RECENT_ADDED_COUNT`` to ``DOCUMENTS_RECENTLY_CREATED_COUNT``.
+Configuration file migrations and migration tests were added. Environment
+and supervisor settings need to be manually updated.
+
+A new document workflow action was added to change the type of a document.
+
+Add a third document filename generator was added that uses an UUID plus the
+original filename of the uploaded file. This generator has the advantage of
+producing unique filename while also preserving the original filename for
+reference.
+
+
+Duplicates
+^^^^^^^^^^
+
+The duplicated documents code was moved to its own new app. Along with this,
+support was added for duplication backends. These backends allow adding
+more methods of determining what is to be considered a duplicated document.
+This allows for duplication logic that might be domain specific.
+
+An dedicated API endpoint was added for the duplicates app.
+
+
+Docker
+^^^^^^
+
+The MySQL Docker image was updated from version 5.7 to 8.0, the PostreSQL
+image from version 10.14 to 10.15, and the Redis image from version 5.0 to
+6.0.
+
+The default version of PostgreSQL will be incremented in each subsequent
+minor release to catch up to the target version of 12.0.
+
+A database backup is needed when moving from one version of PostgreSQL to
+another (https://www.postgresql.org/docs/10/backup-dump.html).
+
+The Docker image tagging layout has been updated to differentiate between
+released versions and series. Series have the 's' prefix and versions have
+the 'v' prefix. The version 4.0 image will have the tags v4.0 and s4. The
+version 4.1 image will have the tags v4.1 and s4. This change will allow
+users to have their deployments pinned to a specific version or to a specific
+series instead of relying on the "latest" tag.
+
+The Docker Compose file was updated to use profiles for the extra containers
+(https://docs.docker.com/compose/profiles/). Profiles allow running extra
+containers with none or minimal modification of the Docker Compose file.
+
+The Docker Compose file was also updated to use extension fields to remove
+duplicated markup
+(https://docs.docker.com/compose/compose-file/compose-file-v3/#extension-fields).
+
+An entra container was added to mount and index and expose it to the host
+operating system.
+
+A container and markup for Traefik was added. This makes for easier deployment
+of SSL using a single Docker Compose file.
+
+A sample .env file was added to pass environment variables to the
+Docker Compose file YAML parser
+(https://docs.docker.com/compose/compose-file/compose-file-v3/#environment).
+
+Support for an env_file was also added to allow passing environment variables
+to the running containers
+(https://docs.docker.com/compose/compose-file/compose-file-v3/#env_file).
+
+These changes require Docker Compose version 1.28 or later.
+
+
+Downloads
+^^^^^^^^^
+
+A new tool was added to hold generated files for download. This tool allows
+performing document version exports in the background. Users will received a
+message when their download is ready.
+
+
+Events
+^^^^^^
+
+To improve auditing, support was added to export and download the global
+events list, the object events list, and user events list. The event list
+is exported as a CSV file.
+
+
+File caching
+^^^^^^^^^^^^
+
+In addition to the existing tool to purge caches, it is now possible to purge
+specific document files or document version caches. This can be achieve with
+the new action link and requires the cache purge permission for the object.
+
+
+File metadata
+^^^^^^^^^^^^^
+
+The format of the ``file_metadata_value_of`` helper was changed. The driver
+and metadata entry are now separated by a double underscore instead of a
+single underscore. This allows supporting drivers and entries that might
+contain an underscore themselves.
+
+Templates using this file metadata helper need to be manually updated.
+
+
+Keys
+^^^^
+
+The key creation and expiration fields were converted to date and time fields.
+Events for key creation and key download were for added. Support for key
+event subscription was added.
+
+
+Mailing
+^^^^^^^
+
+Support for the "Reply To" field was added when sending documents via email
+and for the mailing workflow actions.
+
+
+Messaging
+^^^^^^^^^
+
+A new app was added to allowing sending messages to users. At the moment this
+app is only used by the downloads app to let users know their download is
+ready. This is a first stage app and we plan to expand the use of this app
+in subsequent versions.
+
+
+OCR
+^^^
+
+The document app and OCR app migrations dependency was inverted. This makes
+the OCR migration dependent on the documents app migration instead of the
+other way around. This allows for completely disabling the OCR app if desired.
+
+
+Search
+^^^^^^
+
+Backend support was added for scoped and nested searches. Scoped searches
+allow using the search app for very complex search patterns. The scopes
+behave like a binary tree where each operator collapses the term pair into a
+new runtime scope.
+
+The mathematical representation of search scopes would be as follows:
+
+result of scope X = ((Scope 0) Operator (Scope 1)) Operator ((Scope 2) Operator (Scope 3))
+
+Each scope pair is resolved in reverse as a new runtime scope until the
+resulting scope requested by the user becomes available.
+
+result of scope 30 = ((Scope 0) Operator (Scope 1) = Scope 10) Operator ((Scope 2) Operator (Scope 3) = Scope 20) = Scope 30
+
+becomes:
+
+result of scope 30 = (Scope 10) Operator (Scope 20) = Scope 30
+
+result of scope 30 = Scope 30
+
+An actual application of the scopes searches is to search for documents with
+a multiple metadata type and metadata value combinations.
+
+The actual query string would be as follows:
+
+/search/results/documents.DocumentSearchResult/?__0_metadata__metadata_type__name=building&__0_metadata__value=100&__operator_0_1=AND_10&__1_metadata__metadata_type__name=zone&__1_metadata__value=2&__result=10
+
+This means: search for documents with a metadata value of 100 for the
+metadata type of "building" and that also have a value of 2 for the
+metadata type of "zone".
+
+Which can also be represented as:
+
+(metadata_type__name=building AND metadata__value=100) AND (metadata_type__name=zone AND metadata__value=2)
+
+When not specified, the search terms are assigned a scope of 0, which
+preserves the existing search behavior.
+
+This feature was a late addition and the user interface part continues in
+development. However the backend section is feature complete and accessible
+via the normal search views and the search API.
+
+This feature is search backend independent.
+
+
+Signatures
+^^^^^^^^^^
+
+Support was added to refresh the database representation of a signatures.
+This is useful for upgrades when a new signature field is added. Refreshing
+the signature will allow existing signatures to display proper values for
+these new fields.
+
+The key attributes corresponding to a signature are now displayed as part
+of the signature serializer in the API.
+
+The API action to upload a detached signature is now its own API endpoint.
+
+Support for document signature events and signature events subscriptions was
+added.
+
+
+Sources
+^^^^^^^
+
+It is now possible to use staging folders as sources for new document file
+uploads.
+
+The sources app now has its own menu. This allows switching from different
+sources easier when uploading new documents or new document files. Conditional
+source link highlighting was added to better identify which source is
+currently active.
+
+
+User impersonation
+^^^^^^^^^^^^^^^^^^
+
+Support was added to subscribing to user impersonation events.
+
+It is now possible to enable impersonation permission for individual users.
+
+Impersonating users can now be also performed from the user list view, user
+the "Setup" menu.
+
+
+User interface
+^^^^^^^^^^^^^^
+
+A new sub menu was added. We call this menu "Related" as is meant to allow
+for quicker navigation by displaying object that are related to the one being
+displayed. For example, when viewing a list of document types, the related
+menu will show a links to the metadata types setup view.
+
+Another menu that was added to improve navigation was the "Return" menu.
+Return links was are added to this menu for object contained by other objects
+such as the case of document files and document version. When navigating a
+document file or document version a link will be displayed that will quickly
+return the user to the parent document. These links are decorated with a left
+oriented chevron for easier identification.
+
+Support was added for collapsing the options of the menus "list facet" and
+"object" when in list view mode. This behavior is controlled with the new
+settings: ``COMMON_COLLAPSE_LIST_MENU_LIST_FACET`` and
+``COMMON_COLLAPSE_LIST_MENU_OBJECT``. Both default to ``False`` to preserve
+the existing behavior.
+
+
+The URL query key used for sorting results was updated to match the key
+used for sorting in the API. The new sort key is "_ordering".
+
+
+Workflows
+^^^^^^^^^
+
+The workflows app and API were refactored. The permissions needed to
+transition a workflow instance were updated. The workflow instance transition
+permission is now needed for the document and for either the transition or
+the workflow template. This dual requirement matches the same logic used in
+other apps such as the metadata and tags apps.
+
+The way workflows are transitioned via the API was improved. The same model
+methods are now called and transitioning a workflow via the API behaves in
+the exact manner as transitioning an API via the user interface.
+
+An API endpoint named ``workflow-instance-log-entry-detail`` was added to
+allow inspection of the individual workflow log events.
+
+The workflow API now allows passing extra data when transitioning a workflow,
+and the context of the workflow instance is also available.
+
+The state and transition options when using the API are also limited to valid
+ones as it is done when using the user interface.
+
+
+Other
+^^^^^
+
+- Several renames for consistency. Use the major, minor, verb order
+  for variable names in more places.
+- Point document to latest document version. This removes the document page
+  views and makes them aliases of the document version pages views.
+- New event ignore and keep attribute options
+- Convert document model save method to use event decorator.
+- Add a generic multi item delete view.
+- Longer document file action texts.
+- Document stub recalculation by file save and delete.
+- Reorganize and split document model tests.
+- Add file upload mixin method.
+- Unify the action dropdown instances into a new partial called
+  ``appearance/partials/actions_dropdown.html``.
+- Add ``mode`` argument to SharedUploadedFile.
+- Split document app model tests into separate modules.
+- Split document app test mixins into separate modules.
+- Fix the appearance of the automatically generated view titles.
+- Add document version edit view. Allows editing the document version comment.
+- Rename all instances of ``icon_class`` to ``icon`` as only icon instances
+  are used now in every app.
+- Switch both view to mark notification as read to use the POST request
+  via a confirmation view.
+- Return the event type subscription list sorted by namespace label and event
+  type label.
+- Make the search fields more uniform and add missing ones.
+- Add full label for search parent fields.
+- Add events for the document type quick label model.
+- Add dedicated API endpoints for the document type quick label model.
+- Update the file cache partition purge view to be a generic view that can
+  be called using the content type of an object. Adds a new file cache
+  partition purge permission.
+- Added ``ContentTypeTestCaseMixin``.
+- Include ``EventTestCaseMixin`` as part of the base test case mixin.
+- Rename usage of "recent document" to the more explicit "recently
+  accessed document". This was done at the mode, view and API level.
+  The recently accessed document API will now require the document view
+  permission.
+- Rename the document model ``date_added`` field to ``datetime_created`` to
+  better reflect the purpose of the field.
+- Add a ``RecentlyCreatedDocument`` proxy and associate the recent document
+  columns to it.
+- Move the recently created document query calculation to its own model
+  manager.
+- Split the ``document_api_views.py`` modules into ``document_api_views.py``
+  and ``trashed_document_api_views.py``.
+- Document stubs without a label will now display their ID as the label.
+  This allows documents without files or versions to be accessible via the
+  user interface.
+- Add the reusable ObjectActionAPIView API view. This is a view that can
+  execute an action on an object from a queryset from a POST request.
+- Improve proxy model menu link resolution. Proxy model don't need at least
+  one bound link anymore to trigger resolution of all the parent model links.
+  The inclusion logic is now reverse and defaults to exclusion. Menu need to
+  be configured explicitly enable to proxy model link resolution using the new
+  ``.add_proxy_inclusions(source)`` method.
+- Add support for search model proxy registration.
+- Remove the ``views`` arguments from the SourceColumn class. Use models
+  proxies instead to customize the columns of a model based on the view
+  displayed.
+- Renamed WizardStep to DocumentCreateWizardStep. This change better reflects
+  its purpose and interface.
+- Moved DocumentCreateWizardStep to the sources.classes module.
+- Add automatic loading support for the ``wizard_step`` modules. It is no
+  longer necessary to import these modules inside the App's .ready() method.
+- Update API endpoints to use explicit primary key URL keyword arguments.
+- Split workflow models module into separate modules.
+- Remove usage of Document.save(_user). The event_actor attribute is used
+  instead.
+- Moved ``ObjectLinkWidget`` to the views app.
+- ``appearance_app_templates`` now passes the request to the templates being
+  rendered.
+- Remove the user impersonation fragment form the ``base.html`` template and
+  moved it to its own viewport template.
+- Update jQuery from version 3.4.1 to 3.5.1.
+- Move user language and timezone code from the `common` app to a new app
+  called `locales`.
+- Move common and smart settings app `base` template markup to their own
+  apps via the `viewport` app template.
+- Rename document comment model's `comment` field to `text`.
+- Support sorting document comments by user or by date.
+- Increase the size of the ``Lock`` lock manager model ``name`` field to a
+  255 char field. Closes GitLab issue #939. Thanks to Will Wright
+  (@fireatwill) for the report and investigation.
+- Add example usage for the ``COMMON_EXTRA_APPS`` and
+  ``COMMON_DISABLED_APPS``. Closes GitLab issue #929. Thanks to Francesco
+  Musella (@francesco.musella-biztems) for the report.
+- Reorganize mixins. Add a suffix to specify the purpose of the mixin and
+  move them to different module when appropriate.
+- Refactored the notification generation for efficiency, scalability and
+  simplicity. Only users subscribed to events are queued for notifications.
+  Content types of event targets and action objects are reused from the action
+  model instead of gathering from inspection. Nested loop removed and reduced
+  to a single loop.
+- Optimize SourceColumn resolution. Support column exclusion for all object
+  types. Ensure columns are not repeated when resolved even if they were
+  defined multiple times. Improve docstring for the resolution logic in each
+  level. Remove unused ``context`` parameter. Add SourceColumn tests.
+- Support defining the default ``SearchModel``. This allows removing the hard
+  coded search model name from the search template and allows third party
+  apps to define their own default ``SearchModel``.
+- Move time delays from test and into its own test mixin. Remove MySQL test delays.
+- Standardize a class for the widgets of the class ``SourceColumn`` named
+  ``SourceColumnWidget``.
+- The cabinet view permission is now required for a document, to be able to
+  view which cabinets contain that document. This change mirrors the
+  permission layout of the metadata and tag apps.
+- File caching now uses the same lock for all file methods. This ensures that
+  a cache file that is being deleted or purge is not open for reading and
+  vice versa.
+- A method decorator was added to the lock manager app to ease usage of the
+  same lock workflow in methods of the same class.
+- The error handling of the ``CachePartitionFile`` methods was improved.
+  This ensures proper clean up of stray storage files on model file creation
+  error. The model now avoids accessing the model file for clean up on model
+  file creation error, which would raise a hard to understand and diagnose
+  missing file entry error. The model now avoids updating cache size on
+  either model or storage file creation error.
+- Support disabling form help texts via ``form_hide_help_text``.
+- Added the ``image_url`` field to the Workflow template serializer.
+- Added retry support for the workflow preview generation task.
+- Updated the autoadmin app to use the login template ``login_content``
+  template hook. This allows the autoadmin app to show login information
+  without directly modifying the login template.
+- Update tags app to improve user event tracking on view and API.
+- Support deleting multiple document files.
+- Track document file deletion event user in views.
+- Rename ``setting_workflowimagecache_storage`` to
+  ``setting_workflow_image_cache_storage_backend``.
+- Added a check to the task manager app to ensure all defined tasks are
+  properly configure in their respective ``queues.py`` modules.
+- ACL apps updates: Add ACL deleted event, track action actor in API and
+  views. Simplify API views using REST API mixins. Update API views to return
+  404 errors instead of 403, move global ACL list to the setup menu,
+  model that are registered for ACLs are now also automatically register
+  events in order to receive the ACL deleted event, improve tests and add more
+  test cases.
+- Update AddRemoveView to call the underlying add or remove methods only
+  if there are objects to act upon instead of calling the method with an
+  empty queryset which would trigger unwanted events.
+- Add ``ExternalContentTypeObjectAPIViewMixin`` to the REST API app. This
+  mixin simplifies working with models that act upon another object via
+  their Content Type, such as the ACLs.
+- Update the ACL app to support multiple foreign object permission
+  inheritance. Support for ``GenericForeignKey`` non default ``ct_field``,
+  and ``fk_field`` was also added.
+- Registering a model to receive events will cause it to have the object
+  event view and object event subscription links bound too. This can
+  be disabled with the `bind_links` argument. The default menu to bind the
+  links is the "List facet". This can be changed via the ``menu`` argument.
+- Add ``databases`` app to group data and models related code.
+- Added the ``databases`` app. This app groups data and models related code.
+- Added a patch for Django's ``Migration`` class to display time delta for
+  each migration during development.
+- Renamed the AddRemove view ``main_object_method_add`` to
+  ``main_object_method_add_name`` and ``main_object_method_remove`` to
+  ``main_object_method_add_remove_name``.
+
 
 Removals
 --------
 
 - Document storage and caching settings.
+- Remove all remaining orientation support. Remove rotation test files.
 
 
 Upgrading process
