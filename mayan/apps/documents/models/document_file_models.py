@@ -301,7 +301,7 @@ class DocumentFile(
             except Exception as exception:
                 logger.error(
                     'Error creating intermediate file "%s"; %s.',
-                    cache_filename, exception
+                    cache_filename, exception, exc_info=True
                 )
                 cache_file = self.cache_partition.get_file(filename=cache_filename)
                 if cache_file:
@@ -454,7 +454,7 @@ class DocumentFile(
         except Exception as exception:
             logger.error(
                 'Error creating new document file for document "%s"; %s',
-                self.document, exception
+                self.document, exception, exc_info=True
             )
             raise
         else:

@@ -142,7 +142,8 @@ def task_document_file_upload(
             # This except and else block emulate a finally:
             logger.error(
                 'Unexpected error during attempt to create new document '
-                'file for document: %s; %s', document, exception
+                'file for document: %s; %s', document, exception,
+                exc_info=True
             )
             try:
                 shared_file.delete()

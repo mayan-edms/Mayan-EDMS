@@ -81,7 +81,7 @@ class Quota(models.Model):
         try:
             return self.get_backend_class()(**self.loads())
         except Exception as exception:
-            logger.error(exception)
+            logger.error(exception, exc_info=True)
 
             return NullBackend()
 

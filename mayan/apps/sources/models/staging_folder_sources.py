@@ -74,11 +74,9 @@ class StagingFolderSource(InteractiveSource):
             except Exception as exception:
                 logger.error(
                     'Error deleting staging file: %s; %s',
-                    upload_file_object, exception
+                    upload_file_object, exception, exc_info=True
                 )
-                raise Exception(
-                    _('Error deleting staging file; %s') % exception
-                )
+                raise
 
     def get_file(self, *args, **kwargs):
         return StagingFile(staging_folder=self, *args, **kwargs)
@@ -92,9 +90,7 @@ class StagingFolderSource(InteractiveSource):
                 'Unable get list of staging files from source: %s; %s',
                 self, exception
             )
-            raise Exception(
-                _('Unable get list of staging files: %s') % exception
-            )
+            raise
 
     def get_upload_file_object(self, form_data):
         staging_file = self.get_file(

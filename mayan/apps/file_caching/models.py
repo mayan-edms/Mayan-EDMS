@@ -187,7 +187,7 @@ class CachePartition(models.Model):
                 except Exception as exception:
                     logger.error(
                         'Unexpected exception while trying to save new '
-                        'cache file; %s', exception
+                        'cache file; %s', exception, exc_info=True
                     )
                     if partition_file:
                         partition_file.delete(_acquire_lock=False)
@@ -281,7 +281,8 @@ class CachePartitionFile(models.Model):
             return self._storage_object
         except Exception as exception:
             logger.error(
-                'Unexpected exception opening the cache file; %s', exception
+                'Unexpected exception opening the cache file; %s', exception,
+                exc_info=True
             )
             raise
 

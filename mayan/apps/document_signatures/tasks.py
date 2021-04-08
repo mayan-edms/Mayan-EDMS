@@ -95,7 +95,8 @@ def task_refresh_signature_information():
         except Exception as exception:
             logger.error(
                 'Error refreshing detached signature {} for document file ID {}; {}'.format(
-                    signanture, signanture.document_file_id, exception
+                    signanture, signanture.document_file_id, exception,
+                    exc_info=True
                 )
             )
             raise
@@ -106,7 +107,8 @@ def task_refresh_signature_information():
         except Exception as exception:
             logger.error(
                 'Error refreshing embedded signature {} for document file ID {}; {}'.format(
-                    signanture, signanture.document_file_id, exception
+                    signanture, signanture.document_file_id, exception,
+                    exc_info=True
                 )
             )
             raise

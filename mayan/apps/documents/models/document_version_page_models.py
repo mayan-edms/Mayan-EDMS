@@ -292,8 +292,9 @@ class DocumentVersionPage(
             except Exception as exception:
                 # Cleanup in case of error
                 logger.error(
-                    'Error creating page cache version "%s"; %s',
-                    cache_filename, exception
+                    'Error creating document version page cache file '
+                    'named "%s"; %s', cache_filename, exception,
+                    exc_info=True
                 )
                 raise
 

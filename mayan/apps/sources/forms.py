@@ -66,7 +66,7 @@ class StagingUploadForm(UploadBaseForm):
                 (staging_file.encoded_filename, force_text(s=staging_file)) for staging_file in self.source.get_files()
             ]
         except Exception as exception:
-            logger.error('exception: %s', exception)
+            logger.error('exception: %s', exception, exc_info=True)
 
     staging_file_id = forms.ChoiceField(label=_('Staging file'))
 

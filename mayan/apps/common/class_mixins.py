@@ -39,7 +39,7 @@ class AppsModuleLoaderMixin:
                     if force_text(s=exception) not in non_fatal_messages:
                         logger.error(
                             'Error importing %s %s.py file; %s', app.name,
-                            cls._loader_module_name, exception
+                            cls._loader_module_name, exception, exc_info=True
                         )
                         raise
                 finally:

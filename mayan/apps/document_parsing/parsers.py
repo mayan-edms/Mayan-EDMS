@@ -88,7 +88,7 @@ class Parser:
             document_file_page_content.save()
         except Exception as exception:
             error_message = _('Exception parsing page; %s') % exception
-            logger.error(error_message)
+            logger.error(error_message, exc_info=True)
             raise ParserError(error_message)
         finally:
             file_object.close()

@@ -123,7 +123,7 @@ class Python(ConverterBase):
                             error_message = _(
                                 'Exception determining PDF page count; %s'
                             ) % exception
-                            logger.error(error_message)
+                            logger.error(error_message, exc_info=True)
                             raise PageCountError(error_message)
                 elif force_text(s=exception) == 'EOF marker not found':
                     # PyPDF2 issue: https://github.com/mstamy2/PyPDF2/issues/177
@@ -136,7 +136,7 @@ class Python(ConverterBase):
                     error_message = _(
                         'Exception determining PDF page count; %s'
                     ) % exception
-                    logger.error(error_message)
+                    logger.error(error_message, exc_info=True)
                     raise PageCountError(error_message)
             else:
                 logger.debug('Document contains %d pages', page_count)

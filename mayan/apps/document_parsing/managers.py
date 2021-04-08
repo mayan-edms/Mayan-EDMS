@@ -52,7 +52,7 @@ class DocumentFilePageContentManager(models.Manager):
         except Exception as exception:
             logger.error(
                 'Parsing error for document file: %d; %s',
-                document_file.pk, exception,
+                document_file.pk, exception, exc_info=True
             )
 
             if settings.DEBUG:

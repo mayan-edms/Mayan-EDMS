@@ -126,7 +126,7 @@ class LayerTransformationManager(models.Manager):
                             'Error while parsing transformation "%s", '
                             'arguments "%s", for object "%s"; %s',
                             transformation, transformation.arguments, obj,
-                            exception
+                            exception, exc_info=True
                         )
 
             return result

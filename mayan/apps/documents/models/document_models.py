@@ -215,7 +215,7 @@ class Document(
         except Exception as exception:
             logger.error(
                 'Error creating new file for document: %s; %s', self,
-                exception
+                exception, exc_info=True
             )
             raise
         else:

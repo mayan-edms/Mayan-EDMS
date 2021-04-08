@@ -53,7 +53,7 @@ class EXIFToolDriver(FileMetadataDriver):
             except Exception as exception:
                 logger.error(
                     'Error processing document file: %s; %s',
-                    document_file, exception
+                    document_file, exception, exc_info=True
                 )
                 raise
             finally:

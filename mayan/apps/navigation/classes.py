@@ -172,7 +172,8 @@ class Link:
                 )
             except Exception as exception:
                 logger.error(
-                    'Error resolving link "%s" URL; %s', self.text, exception
+                    'Error resolving link "%s" URL; %s', self.text, exception,
+                    exc_info=True
                 )
         elif self.url:
             resolved_link.url = self.url

@@ -44,7 +44,8 @@ def task_check_interval_source(source_id, test=False):
                 source.check_source(test=test)
         except Exception as exception:
             logger.error(
-                'Error processing source id: %s; %s', source_id, exception
+                'Error processing source id: %s; %s', source_id, exception,
+                exc_info=True
             )
             if settings.DEBUG:
                 raise

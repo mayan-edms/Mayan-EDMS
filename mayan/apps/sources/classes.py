@@ -239,7 +239,7 @@ class StagingFile:
             # Cleanup in case of error
             logger.error(
                 'Error creating staging file cache "%s"; %s',
-                cache_filename, exception
+                cache_filename, exception, exc_info=True
             )
             self.storage.delete(cache_filename)
             if file_object:

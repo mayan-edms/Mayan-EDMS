@@ -208,7 +208,7 @@ class WhooshSearchBackend(SearchBackend):
                     'field map: %s; %s', search_model.get_full_name(),
                     instance.pk, kwargs, instance.__dict__,
                     self.get_resolved_field_map(search_model=search_model),
-                    exception
+                    exception, exc_info=True
                 )
                 raise
 

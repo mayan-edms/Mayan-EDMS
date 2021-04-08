@@ -71,7 +71,7 @@ class Tesseract(OCRBackendBase):
                             error_message, self.language
                         )
 
-                    logger.error(error_message)
+                    logger.error(error_message, exc_info=True)
                     raise OCRError(error_message)
                 else:
                     return result

@@ -243,8 +243,8 @@ class DocumentFilePage(PagedModelMixin, models.Model):
             except Exception as exception:
                 # Cleanup in case of error
                 logger.error(
-                    'Error creating page cache file "%s"; %s',
-                    cache_filename, exception
+                    'Error creating document file page cache file named '
+                    '"%s"; %s', cache_filename, exception, exc_info=True
                 )
                 raise
 

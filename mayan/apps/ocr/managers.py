@@ -48,9 +48,8 @@ class DocumentVersionPageOCRContentManager(models.Manager):
                 )
         except Exception as exception:
             logger.error(
-                'OCR error for document page: %d; %s',
-                document_version_page.pk,
-                exception
+                'OCR error for document version page: %d; %s',
+                document_version_page.pk, exception, exc_info=True
             )
             raise
         else:

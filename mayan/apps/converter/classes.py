@@ -190,7 +190,10 @@ class ConverterBase:
                 raise OfficeConversionError(exception)
             except Exception as exception:
                 temporary_file_object.close()
-                logger.error('Exception launching Libre Office; %s', exception)
+                logger.error(
+                    'Exception launching Libre Office; %s', exception,
+                    exc_info=True
+                )
                 raise
             finally:
                 fs_cleanup(filename=libreoffice_home_directory)

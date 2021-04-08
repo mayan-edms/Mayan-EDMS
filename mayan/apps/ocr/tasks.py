@@ -18,7 +18,7 @@ logger = logging.getLogger(name=__name__)
 @app.task(bind=True, default_retry_delay=DO_OCR_RETRY_DELAY, ignore_result=True)
 def task_document_version_ocr_process(self, document_version_id):
     logger.info(
-        'Starting OCR for document file page: %s', document_version_id
+        'Starting OCR for document version page ID: %s', document_version_id
     )
     DocumentVersion = apps.get_model(
         app_label='documents', model_name='DocumentVersion'
@@ -51,7 +51,7 @@ def task_document_version_ocr_process(self, document_version_id):
         raise
     except OperationalError as exception:
         logger.warning(
-            'OCR operational error for document file: %d; %s. Retrying.',
+            'OCR operational error for document version: %d; %s. Retrying.',
             document_version_id, exception
         )
         raise self.retry(exc=exception)
@@ -83,7 +83,7 @@ def task_document_version_page_ocr_process(
 @app.task(bind=True, ignore_result=True)
 def task_document_version_ocr_finished(self, results, document_version_id):
     logger.info(
-        'OCR complete for document file: %s', document_version_id
+        'OCR complete for document version ID: %s', document_version_id
     )
 
     DocumentVersion = apps.get_model(
@@ -105,15 +105,14 @@ def task_document_version_ocr_finished(self, results, document_version_id):
         )
     except Exception as exception:
         logger.error(
-            'Exception in OCR finish for document file: %d; %s',
-            document_version_id,
-            exception
+            'Exception in OCR finish for document version: %d; %s',
+            document_version_id, exception, exc_info=True
         )
         document_version.ocr_errors.create(result=exception)
         raise
     except OperationalError as exception:
         logger.warning(
-            'Operational error in OCR finish for document file: %d; %s. '
+            'Operational error in OCR finish for document version: %d; %s. '
             'Retrying.', document_version, exception
         )
         raise self.retry(exc=exception)

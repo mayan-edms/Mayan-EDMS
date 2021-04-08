@@ -79,7 +79,7 @@ class StagingFolderSerializer(serializers.HyperlinkedModelSerializer):
                 StagingFolderFileSerializer(entry, context=self.context).data for entry in obj.get_files()
             ]
         except Exception as exception:
-            logger.error('unhandled exception: %s', exception)
+            logger.error('unhandled exception: %s', exception, exc_info=True)
             return []
 
 
