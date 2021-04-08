@@ -57,7 +57,7 @@ def task_document_version_ocr_process(self, document_version_id):
         raise self.retry(exc=exception)
 
 
-@app.task(bind=True, default_retry_delay=DO_OCR_RETRY_DELAY, ignore_result=True)
+@app.task(bind=True, default_retry_delay=DO_OCR_RETRY_DELAY)
 def task_document_version_page_ocr_process(
     self, cache_filename, document_version_page_id
 ):
