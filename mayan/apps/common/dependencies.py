@@ -153,7 +153,7 @@ PythonDependency(
 
 PythonDependency(
     module=__name__, environment=environment_development, name='devpi-server',
-    version_string='==5.5.0'
+    version_string='==5.5.1'
 )
 PythonDependency(
     environment=environment_development, module=__name__,
