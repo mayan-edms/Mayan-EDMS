@@ -21,8 +21,8 @@ from .literals import (
 
 
 class DocumentSignatureWorkflowActionTestCase(
-    GenericDocumentViewTestCase, KeyTestMixin, WorkflowTemplateTestMixin,
-    WorkflowTemplateStateActionViewTestMixin
+    KeyTestMixin, WorkflowTemplateTestMixin,
+    WorkflowTemplateStateActionViewTestMixin, GenericDocumentViewTestCase
 ):
     auto_upload_test_document = False
 
@@ -80,11 +80,12 @@ class DocumentSignatureWorkflowActionTestCase(
 
     def test_document_signature_detached_action_via_workflow(self):
         self._create_test_workflow_template(add_test_document_type=True)
-        self._create_test_workflow_template_states()
-        self._create_test_workflow_template_transitions()
+        self._create_test_workflow_template_state()
+        self._create_test_workflow_template_state()
+        self._create_test_workflow_template_transition()
         self._create_test_key_private()
 
-        self.test_workflow_template_state_2.actions.create(
+        self.test_workflow_template_states[1].actions.create(
             label='test action', when=WORKFLOW_ACTION_ON_ENTRY,
             enabled=True,
             action_path='mayan.apps.document_signatures.workflow_actions.DocumentSignatureDetachedAction',
@@ -108,11 +109,12 @@ class DocumentSignatureWorkflowActionTestCase(
 
     def test_document_signature_embedded_action_via_workflow(self):
         self._create_test_workflow_template(add_test_document_type=True)
-        self._create_test_workflow_template_states()
-        self._create_test_workflow_template_transitions()
+        self._create_test_workflow_template_state()
+        self._create_test_workflow_template_state()
+        self._create_test_workflow_template_transition()
         self._create_test_key_private()
 
-        self.test_workflow_template_state_2.actions.create(
+        self.test_workflow_template_states[1].actions.create(
             label='test action', when=WORKFLOW_ACTION_ON_ENTRY,
             enabled=True,
             action_path='mayan.apps.document_signatures.workflow_actions.DocumentSignatureEmbeddedAction',

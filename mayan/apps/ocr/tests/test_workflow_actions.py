@@ -91,7 +91,8 @@ class UpdateDocumentPageOCRActionTestCase(
 
     def test_workflow_action_update_document_version_page_execution(self):
         self._create_test_workflow_template()
-        self._create_test_workflow_template_states()
+        self._create_test_workflow_template_state()
+        self._create_test_workflow_template_state()
         self._create_test_workflow_template_transition()
         self.test_workflow_template_states[1].actions.create(
             action_data=json.dumps(
