@@ -213,10 +213,7 @@ class CachePartition(models.Model):
         return super().delete(*args, **kwargs)
 
     def get_file(self, filename):
-        try:
-            return self.files.get(filename=filename)
-        except self.files.model.DoesNotExist:
-            return None
+        return self.files.get(filename=filename)
 
     def get_file_lock_name(self, filename):
         return 'cache_partition-file-{}-{}'.format(self.pk, filename)
