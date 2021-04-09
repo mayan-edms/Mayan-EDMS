@@ -127,7 +127,7 @@ class DocumentVersionOCRSubmitView(MultipleObjectConfirmActionView):
         return result
 
     def object_action(self, form, instance):
-        instance.submit_for_ocr()
+        instance.submit_for_ocr(_user=self.request.user)
 
 
 class DocumentVersionPageOCRContentView(SingleObjectDetailView):
@@ -167,7 +167,7 @@ class DocumentTypeSubmitView(FormView):
 
         for document_type in form.cleaned_data['document_type']:
             for document in document_type.documents.filter(pk__in=valid_documents_queryset.values('pk')):
-                document.submit_for_ocr()
+                document.submit_for_ocr(_user=self.request.user)
                 count += 1
 
         messages.success(

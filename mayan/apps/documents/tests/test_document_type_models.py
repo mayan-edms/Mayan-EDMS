@@ -53,6 +53,7 @@ class DocumentTypeDeletionPoliciesTestCase(GenericDocumentTestCase):
 
 class DocumentTypeModelFilenameGeneratorTestCase(GenericDocumentTestCase):
     auto_upload_test_document = False
+
     def test_original_filename_generator(self):
         self.test_document_type.filename_generator_backend = OriginalDocumentFilenameGenerator.name
         self.test_document_type.save()
