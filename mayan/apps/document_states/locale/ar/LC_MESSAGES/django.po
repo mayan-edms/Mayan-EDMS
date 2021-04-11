@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 06:04+0000\n"
+"POT-Creation-Date: 2021-04-11 10:37+0000\n"
 "PO-Revision-Date: 2020-12-24 01:42+0000\n"
 "Last-Translator: Marwan Rahhal <Marwanr@sssit.net>\n"
 "Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -22,7 +22,7 @@ msgstr ""
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: apps.py:72 events.py:6 forms.py:42 links.py:46 links.py:87 links.py:240
-#: links.py:264 models/workflow_models.py:65 settings.py:14
+#: links.py:264 models/workflow_models.py:64 settings.py:14
 #: views/workflow_proxy_views.py:64 views/workflow_template_views.py:261
 #: workflow_actions.py:74
 msgid "Workflows"
@@ -155,7 +155,7 @@ msgstr "إجراء "
 msgid "Namespace"
 msgstr "مساحة الاسم"
 
-#: forms.py:135 models/workflow_models.py:52 models/workflow_state_models.py:55
+#: forms.py:135 models/workflow_models.py:51 models/workflow_state_models.py:55
 #: models/workflow_state_models.py:172 models/workflow_transition_models.py:40
 #: models/workflow_transition_models.py:150
 msgid "Label"
@@ -196,7 +196,7 @@ msgstr "إنشاء المسار"
 msgid "Delete"
 msgstr "حذف"
 
-#: links.py:69 models/workflow_models.py:56
+#: links.py:69 models/workflow_models.py:55
 msgid "Document types"
 msgstr "أنواع الوثائق"
 
@@ -288,7 +288,7 @@ msgstr "عند الدخول"
 msgid "On exit"
 msgstr "عند الخروج"
 
-#: models/workflow_instance_models.py:29 models/workflow_models.py:64
+#: models/workflow_instance_models.py:29 models/workflow_models.py:63
 #: models/workflow_state_models.py:51 models/workflow_transition_models.py:36
 msgid "Workflow"
 msgstr "المسار"
@@ -333,15 +333,15 @@ msgstr "إدخالات سجل المسار المتشابه"
 msgid "Not a valid transition choice."
 msgstr "ليس اختيار انتقال صالح."
 
-#: models/workflow_models.py:40
+#: models/workflow_models.py:39
 msgid "Launch workflow when document is created."
 msgstr "تشغيل المسار عند إنشاء الوثيقة"
 
-#: models/workflow_models.py:41
+#: models/workflow_models.py:40
 msgid "Auto launch"
 msgstr "تشغيل تلقائي"
 
-#: models/workflow_models.py:45
+#: models/workflow_models.py:44
 msgid ""
 "This value will be used by other apps to reference this workflow. Can only "
 "contain letters, numbers, and underscores."
@@ -349,23 +349,23 @@ msgstr ""
 "سيتم استخدام هذه القيمة بواسطة التطبيقات الأخرى للإشارة إلى سير العمل هذا. "
 "لا يمكن أن يحتوي إلا على أحرف وأرقام وشرطات سفلية."
 
-#: models/workflow_models.py:48 models/workflow_transition_models.py:145
+#: models/workflow_models.py:47 models/workflow_transition_models.py:145
 msgid "Internal name"
 msgstr "الإسم الداخلي"
 
-#: models/workflow_models.py:51
+#: models/workflow_models.py:50
 msgid "A short text to describe the workflow."
 msgstr "وصف المسار"
 
-#: models/workflow_models.py:160
+#: models/workflow_models.py:157
 msgid "Initial state"
 msgstr "الحالة الأولية"
 
-#: models/workflow_models.py:301
+#: models/workflow_models.py:298
 msgid "Workflow runtime proxy"
 msgstr "وقت تشغيل المسار"
 
-#: models/workflow_models.py:302
+#: models/workflow_models.py:299
 msgid "Workflow runtime proxies"
 msgstr " وقت تشغيل المسار"
 

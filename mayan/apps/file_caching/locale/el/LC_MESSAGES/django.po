@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 06:04+0000\n"
+"POT-Creation-Date: 2021-04-11 10:37+0000\n"
 "PO-Revision-Date: 2019-12-03 05:23+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
@@ -93,7 +93,7 @@ msgstr "Τρέχον μέγεθος της προσωρινής μνήμης."
 msgid "Name"
 msgstr "Όνομα"
 
-#: models.py:152 models.py:236
+#: models.py:152 models.py:239
 msgid "Cache partition"
 msgstr "Κατάτμηση προσωρινής μνήμης"
 
@@ -101,23 +101,23 @@ msgstr "Κατάτμηση προσωρινής μνήμης"
 msgid "Cache partitions"
 msgstr "Κατατμήσεις προσωρινής μνήμης"
 
-#: models.py:239
+#: models.py:242
 msgid "Date time"
 msgstr "Ηερομηνία ώρα"
 
-#: models.py:241
+#: models.py:244
 msgid "Filename"
 msgstr "Όνομα αρχείου"
 
-#: models.py:243
+#: models.py:246
 msgid "File size"
 msgstr "Μέγεθος του αρχείου"
 
-#: models.py:249
+#: models.py:252
 msgid "Cache partition file"
 msgstr "Αρχείο κατάτμησης προσωρινής μνήμης"
 
-#: models.py:250
+#: models.py:253
 msgid "Cache partition files"
 msgstr "Αρχεία κατάτμησης προσωρινής μνήμης"
 

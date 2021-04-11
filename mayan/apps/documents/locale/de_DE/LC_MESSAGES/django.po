@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 06:04+0000\n"
+"POT-Creation-Date: 2021-04-11 10:37+0000\n"
 "PO-Revision-Date: 2020-10-26 13:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
@@ -29,7 +29,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:209 apps.py:642 events.py:5 menus.py:8 models/document_models.py:130
+#: apps.py:209 apps.py:617 events.py:5 menus.py:8 models/document_models.py:130
 #: permissions.py:5 queues.py:24 settings.py:38 statistics.py:230
 msgid "Documents"
 msgstr "Dokumente"
@@ -53,59 +53,59 @@ msgstr ""
 #: apps.py:384
 #, fuzzy
 #| msgid "File mimetype"
-msgid "Files comment"
+msgid "File comments"
 msgstr "Datei MIME Type"
 
 #: apps.py:388
 #, fuzzy
 #| msgid "File encoding"
-msgid "Files encoding"
+msgid "File encodings"
 msgstr "Dateikodierung"
 
 #: apps.py:392
 #, fuzzy
 #| msgid "File mimetype"
-msgid "Files mime type"
+msgid "File mime types"
 msgstr "Datei MIME Type"
 
 #: apps.py:396
 #, fuzzy
 #| msgid "Versions timestamp"
-msgid "Files timestamp"
+msgid "File timestamps"
 msgstr "Versionszeitstempel"
 
 #: apps.py:401 links/document_file_page_links.py:79
-#: models/document_file_models.py:120 models/document_file_page_models.py:42
+#: models/document_file_models.py:119 models/document_file_page_models.py:40
 #: search.py:51
 #, fuzzy
 #| msgid "Document image"
 msgid "Document file"
 msgstr "Dokumentenbild"
 
-#: apps.py:405 models/document_file_page_models.py:46
-#: models/document_version_page_models.py:58
+#: apps.py:405 models/document_file_page_models.py:44
+#: models/document_version_page_models.py:56
 msgid "Page number"
 msgstr "Seitennummer"
 
-#: apps.py:409
+#: apps.py:410
 #, fuzzy
 #| msgid "Return the lastest version of the document."
-msgid "Return the lastest file of the document."
+msgid "Return the latest file of the document."
 msgstr "Die letzte Version des Dokuments anzeigen."
 
-#: apps.py:410
+#: apps.py:411
 #, fuzzy
 #| msgid "Latest version"
 msgid "Latest file"
 msgstr "Letzte Version"
 
-#: apps.py:413
+#: apps.py:414
 msgid "Return the document instance."
 msgstr ""
 
-#: apps.py:414 links/document_file_links.py:63
+#: apps.py:415 links/document_file_links.py:63
 #: links/document_file_page_links.py:73 links/document_version_links.py:75
-#: links/document_version_page_links.py:96 models/document_file_models.py:76
+#: links/document_version_page_links.py:96 models/document_file_models.py:75
 #: models/document_models.py:129 models/document_version_models.py:45
 #: models/duplicated_document_models.py:18
 #: models/favorite_document_models.py:28
@@ -113,32 +113,15 @@ msgstr ""
 msgid "Document"
 msgstr "Dokument"
 
-#: apps.py:549 apps.py:599 apps.py:628 apps.py:662 apps.py:687
+#: apps.py:546 apps.py:574 apps.py:603 apps.py:637 apps.py:662
 msgid "Thumbnail"
 msgstr "Miniaturbild"
 
-#: apps.py:559 links/document_file_links.py:47 links/document_file_links.py:69
-#, fuzzy
-#| msgid "File"
-msgid "Files"
-msgstr "Datei"
-
-#: apps.py:563 links/document_version_links.py:59
-#: links/document_version_links.py:81
-msgid "Versions"
-msgstr "Versionen"
-
-#: apps.py:567
-#, fuzzy
-#| msgid "Is stub?"
-msgid "Is stub"
-msgstr "Inkomplett"
-
-#: apps.py:577
+#: apps.py:552
 msgid "Type"
 msgstr "Typ"
 
-#: apps.py:581 apps.py:604 apps.py:667 forms/document_file_forms.py:62
+#: apps.py:556 apps.py:579 apps.py:642 forms/document_file_forms.py:63
 #: links/document_file_page_links.py:122
 #: links/document_version_page_links.py:51
 msgid "Pages"
@@ -360,7 +343,7 @@ msgstr "Hinzugefügt am"
 msgid "Mimetype"
 msgstr "Datei MIME Type"
 
-#: forms/document_file_forms.py:47 models/document_file_models.py:108
+#: forms/document_file_forms.py:47 models/document_file_models.py:107
 msgid "Encoding"
 msgstr "Kodierung"
 
@@ -378,7 +361,7 @@ msgstr "Im Dateispeicher"
 msgid "Path in storage"
 msgstr "Pfad im Dateispeicher"
 
-#: forms/document_file_forms.py:61 models/document_file_models.py:115
+#: forms/document_file_forms.py:61 models/document_file_models.py:114
 msgid "Checksum"
 msgstr "Prüfsumme"
 
@@ -466,6 +449,12 @@ msgstr "Bearbeiten"
 msgid "Quick download"
 msgstr "Schnelldownload"
 
+#: links/document_file_links.py:47 links/document_file_links.py:69
+#, fuzzy
+#| msgid "File"
+msgid "Files"
+msgstr "Datei"
+
 #: links/document_file_links.py:51 links/document_version_links.py:69
 msgid "Print"
 msgstr "Drucken"
@@ -504,8 +493,8 @@ msgstr "Vorherige Seite"
 msgid "Next page"
 msgstr "Nächste Seite"
 
-#: links/document_file_page_links.py:86 models/document_file_page_models.py:54
-#: models/document_file_page_models.py:317
+#: links/document_file_page_links.py:86 models/document_file_page_models.py:52
+#: models/document_file_page_models.py:283
 #, fuzzy
 #| msgid "Document pages"
 msgid "Document file pages"
@@ -601,6 +590,10 @@ msgstr "Neue Dokumentenversion erstellen"
 msgid "Export"
 msgstr ""
 
+#: links/document_version_links.py:59 links/document_version_links.py:81
+msgid "Versions"
+msgstr "Versionen"
+
 #: links/document_version_page_links.py:56
 #, fuzzy
 #| msgid "Total pages"
@@ -615,13 +608,13 @@ msgstr "Letzte Seite"
 
 #: links/document_version_page_links.py:102
 #: models/document_version_models.py:65
-#: models/document_version_page_models.py:52 search.py:117
+#: models/document_version_page_models.py:50 search.py:117
 msgid "Document version"
 msgstr "Dokumentenversion"
 
 #: links/document_version_page_links.py:108
-#: models/document_version_page_models.py:75
-#: models/document_version_page_models.py:402
+#: models/document_version_page_models.py:73
+#: models/document_version_page_models.py:344
 #, fuzzy
 #| msgid "Document version files"
 msgid "Document version pages"
@@ -723,37 +716,37 @@ msgstr "Dezember"
 msgid "All pages"
 msgstr "Alle Seiten"
 
-#: models/document_file_models.py:80
+#: models/document_file_models.py:79
 #, fuzzy
 #| msgid "The server date and time when the document version was processed."
 msgid "The server date and time when the document file was processed."
 msgstr "Serverdatum und -zeit der Verarbeitung der Dokumentenversion."
 
-#: models/document_file_models.py:81 models/document_version_models.py:50
+#: models/document_file_models.py:80 models/document_version_models.py:50
 msgid "Timestamp"
 msgstr "Zeitstempel"
 
-#: models/document_file_models.py:85
+#: models/document_file_models.py:84
 #, fuzzy
 #| msgid "An optional short text describing the document version."
 msgid "An optional short text describing the document file."
 msgstr "Ein optionaler kurzer Text, der die Dokumentenversion beschreibt."
 
-#: models/document_file_models.py:86 models/document_version_models.py:55
+#: models/document_file_models.py:85 models/document_version_models.py:55
 msgid "Comment"
 msgstr "Kommentar"
 
-#: models/document_file_models.py:91
+#: models/document_file_models.py:90
 msgid "File"
 msgstr "Datei"
 
-#: models/document_file_models.py:94
+#: models/document_file_models.py:93
 #, fuzzy
 #| msgid "File"
 msgid "Filename"
 msgstr "Datei"
 
-#: models/document_file_models.py:98
+#: models/document_file_models.py:97
 #, fuzzy
 #| msgid ""
 #| "The document version's file mimetype. MIME types are a standard way to "
@@ -768,11 +761,11 @@ msgstr ""
 "standardisierte Art zur Beschreibung des Dateiformats, in diesem Fall des "
 "Dokuments. Besipiele: \"text/plain\" oder \"image/jpeg\"."
 
-#: models/document_file_models.py:102
+#: models/document_file_models.py:101
 msgid "MIME type"
 msgstr "MIME Typ"
 
-#: models/document_file_models.py:106
+#: models/document_file_models.py:105
 #, fuzzy
 #| msgid ""
 #| "The document version file encoding. binary 7-bit, binary 8-bit, text, "
@@ -784,28 +777,28 @@ msgstr ""
 "Die Kodierung der Datei der Dokumentenversion. binary 7-bit, binary 8-bit, "
 "text, base64, etc."
 
-#: models/document_file_models.py:121 storages.py:27
+#: models/document_file_models.py:120 storages.py:27
 #, fuzzy
 #| msgid "Document images"
 msgid "Document files"
 msgstr "Dokumentenbilder"
 
-#: models/document_file_models.py:321 models/document_file_page_models.py:277
+#: models/document_file_models.py:313 models/document_file_page_models.py:259
 #: models/document_models.py:70 models/document_models.py:290
 #: models/document_models.py:295 models/document_type_models.py:41
 #: models/document_type_models.py:202 models/document_version_models.py:219
-#: models/document_version_page_models.py:351
+#: models/document_version_page_models.py:309
 msgid "Label"
 msgstr "Bezeichner"
 
-#: models/document_file_page_models.py:53
-#: models/document_file_page_models.py:316 search.py:78
+#: models/document_file_page_models.py:51
+#: models/document_file_page_models.py:282 search.py:78
 #, fuzzy
 #| msgid "Document page"
 msgid "Document file page"
 msgstr "Dokumentenseite"
 
-#: models/document_file_page_models.py:271
+#: models/document_file_page_models.py:253
 #, fuzzy, python-format
 #| msgid "Page %(page_num)d out of %(total_pages)d of %(document)s"
 msgid "%(document_file)s - page %(page_num)d of %(total_pages)d"
@@ -1008,26 +1001,26 @@ msgid ""
 "(%(download_list_url)s)."
 msgstr ""
 
-#: models/document_version_page_models.py:56
+#: models/document_version_page_models.py:54
 msgid "Unique integer number for the page. Pages are ordered by this number."
 msgstr ""
 
-#: models/document_version_page_models.py:61
+#: models/document_version_page_models.py:59
 msgid "Content type for the source object of the page."
 msgstr ""
 
-#: models/document_version_page_models.py:65
+#: models/document_version_page_models.py:63
 msgid "ID for the source object of the page."
 msgstr ""
 
-#: models/document_version_page_models.py:74
-#: models/document_version_page_models.py:401 search.py:141
+#: models/document_version_page_models.py:72
+#: models/document_version_page_models.py:343 search.py:141
 #, fuzzy
 #| msgid "Document version"
 msgid "Document version page"
 msgstr "Dokumentenversion"
 
-#: models/document_version_page_models.py:345
+#: models/document_version_page_models.py:303
 #, fuzzy, python-format
 #| msgid "Page %(page_num)d out of %(total_pages)d of %(document)s"
 msgid "%(document_version)s page %(page_number)d of %(total_pages)d"
@@ -2444,6 +2437,11 @@ msgstr "Dokumententypen erstellen"
 #: workflow_actions.py:37
 msgid "Send document to trash"
 msgstr "Dokument in den Papierkorb werfen"
+
+#, fuzzy
+#~| msgid "Is stub?"
+#~ msgid "Is stub"
+#~ msgstr "Inkomplett"
 
 #~ msgid "Versions comment"
 #~ msgstr "Versionskommentar"

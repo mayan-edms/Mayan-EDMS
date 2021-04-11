@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 06:04+0000\n"
+"POT-Creation-Date: 2021-04-11 10:37+0000\n"
 "PO-Revision-Date: 2019-12-03 05:23+0000\n"
 "Last-Translator: Pavlin Koldamov <pkoldamov@gmail.com>, 2020\n"
 "Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/"
@@ -92,7 +92,7 @@ msgstr "Текущ размер на кеша."
 msgid "Name"
 msgstr "Име"
 
-#: models.py:152 models.py:236
+#: models.py:152 models.py:239
 msgid "Cache partition"
 msgstr "Раздел на кеша"
 
@@ -100,23 +100,23 @@ msgstr "Раздел на кеша"
 msgid "Cache partitions"
 msgstr "Раздели на кеша"
 
-#: models.py:239
+#: models.py:242
 msgid "Date time"
 msgstr "Дата час"
 
-#: models.py:241
+#: models.py:244
 msgid "Filename"
 msgstr "Име на файл"
 
-#: models.py:243
+#: models.py:246
 msgid "File size"
 msgstr "Размер на файла"
 
-#: models.py:249
+#: models.py:252
 msgid "Cache partition file"
 msgstr "Файл за раздели на кеша"
 
-#: models.py:250
+#: models.py:253
 msgid "Cache partition files"
 msgstr "Флове с раздели на кешове"
 

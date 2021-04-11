@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 06:04+0000\n"
+"POT-Creation-Date: 2021-04-11 10:37+0000\n"
 "PO-Revision-Date: 2019-12-03 05:23+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>, 2020\n"
 "Language-Team: Czech (https://www.transifex.com/rosarior/teams/13584/cs/)\n"
@@ -89,7 +89,7 @@ msgstr "Aktuální velikost mezipaměti."
 msgid "Name"
 msgstr "název"
 
-#: models.py:152 models.py:236
+#: models.py:152 models.py:239
 msgid "Cache partition"
 msgstr "Oddíl mezipaměti"
 
@@ -97,23 +97,23 @@ msgstr "Oddíl mezipaměti"
 msgid "Cache partitions"
 msgstr "Oddíly mezipaměti"
 
-#: models.py:239
+#: models.py:242
 msgid "Date time"
 msgstr "Datum a čas"
 
-#: models.py:241
+#: models.py:244
 msgid "Filename"
 msgstr "Název souboru"
 
-#: models.py:243
+#: models.py:246
 msgid "File size"
 msgstr "Velikost souboru"
 
-#: models.py:249
+#: models.py:252
 msgid "Cache partition file"
 msgstr "Soubor mezipaměti"
 
-#: models.py:250
+#: models.py:253
 msgid "Cache partition files"
 msgstr "Soubory mezipaměti"
 

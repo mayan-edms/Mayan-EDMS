@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 06:04+0000\n"
+"POT-Creation-Date: 2021-04-11 10:37+0000\n"
 "PO-Revision-Date: 2019-12-03 05:23+0000\n"
 "Last-Translator: bwakkie <bwakkie@gmail.com>, 2021\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
@@ -90,7 +90,7 @@ msgstr "Huidige omvang van de cache."
 msgid "Name"
 msgstr "Naam"
 
-#: models.py:152 models.py:236
+#: models.py:152 models.py:239
 msgid "Cache partition"
 msgstr "Partitie cachen"
 
@@ -98,23 +98,23 @@ msgstr "Partitie cachen"
 msgid "Cache partitions"
 msgstr "Partities cachen"
 
-#: models.py:239
+#: models.py:242
 msgid "Date time"
 msgstr "Datum en tijd"
 
-#: models.py:241
+#: models.py:244
 msgid "Filename"
 msgstr "Bestandsnaam"
 
-#: models.py:243
+#: models.py:246
 msgid "File size"
 msgstr "Bestandgrootte"
 
-#: models.py:249
+#: models.py:252
 msgid "Cache partition file"
 msgstr "Partitiebestand cachen"
 
-#: models.py:250
+#: models.py:253
 msgid "Cache partition files"
 msgstr "Partitiebestanden cachen"
 

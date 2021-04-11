@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 06:04+0000\n"
+"POT-Creation-Date: 2021-04-11 10:37+0000\n"
 "PO-Revision-Date: 2019-12-03 05:23+0000\n"
 "Last-Translator: Roberto Rosario, 2020\n"
 "Language-Team: French (https://www.transifex.com/rosarior/teams/13584/fr/)\n"
@@ -93,7 +93,7 @@ msgstr "Taille actuelle du cache."
 msgid "Name"
 msgstr "Nom"
 
-#: models.py:152 models.py:236
+#: models.py:152 models.py:239
 msgid "Cache partition"
 msgstr "Partition du cache"
 
@@ -101,23 +101,23 @@ msgstr "Partition du cache"
 msgid "Cache partitions"
 msgstr "Partitions du cache"
 
-#: models.py:239
+#: models.py:242
 msgid "Date time"
 msgstr "Date et heure"
 
-#: models.py:241
+#: models.py:244
 msgid "Filename"
 msgstr "Nom de fichier"
 
-#: models.py:243
+#: models.py:246
 msgid "File size"
 msgstr "Taille du fichier"
 
-#: models.py:249
+#: models.py:252
 msgid "Cache partition file"
 msgstr ""
 
-#: models.py:250
+#: models.py:253
 msgid "Cache partition files"
 msgstr ""
 

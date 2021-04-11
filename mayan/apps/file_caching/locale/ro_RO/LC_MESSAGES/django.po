@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 06:04+0000\n"
+"POT-Creation-Date: 2021-04-11 10:37+0000\n"
 "PO-Revision-Date: 2019-12-03 05:23+0000\n"
 "Last-Translator: Badea Gabriel <gcbadea@gmail.com>, 2020\n"
 "Language-Team: Romanian (Romania) (https://www.transifex.com/rosarior/"
@@ -93,7 +93,7 @@ msgstr "Dimensiunea actuală a memoriei cache."
 msgid "Name"
 msgstr "Nume"
 
-#: models.py:152 models.py:236
+#: models.py:152 models.py:239
 msgid "Cache partition"
 msgstr "Partiția cache"
 
@@ -101,23 +101,23 @@ msgstr "Partiția cache"
 msgid "Cache partitions"
 msgstr "Partiții cache"
 
-#: models.py:239
+#: models.py:242
 msgid "Date time"
 msgstr "Data și ora"
 
-#: models.py:241
+#: models.py:244
 msgid "Filename"
 msgstr "Nume fişier"
 
-#: models.py:243
+#: models.py:246
 msgid "File size"
 msgstr "Marime fişier"
 
-#: models.py:249
+#: models.py:252
 msgid "Cache partition file"
 msgstr "Fișier partiție cache"
 
-#: models.py:250
+#: models.py:253
 msgid "Cache partition files"
 msgstr "Fișiere de partiție cache"
 

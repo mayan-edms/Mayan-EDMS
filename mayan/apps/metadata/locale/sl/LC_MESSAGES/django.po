@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 06:04+0000\n"
+"POT-Creation-Date: 2021-04-11 10:38+0000\n"
 "PO-Revision-Date: 2020-12-25 11:58+0000\n"
 "Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>\n"
 "Language-Team: Slovenian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -109,7 +109,7 @@ msgstr "Vrste metapodatkov, ki jih je treba dodati izbranim dokumentom."
 msgid "Metadata type"
 msgstr "Vrsta metapodatkov"
 
-#: forms.py:151 views.py:408
+#: forms.py:151 views.py:407
 msgid "Remove"
 msgstr "Odstrani"
 
@@ -137,7 +137,7 @@ msgstr "Uredi metapodatke"
 msgid "Remove metadata"
 msgstr "Odstranite metapodatke"
 
-#: links.py:56 links.py:82 models.py:88 views.py:579 workflow_actions.py:23
+#: links.py:56 links.py:82 models.py:88 views.py:578 workflow_actions.py:23
 #: workflow_actions.py:170
 msgid "Metadata types"
 msgstr "Vrste metapodatkov"
@@ -154,7 +154,7 @@ msgstr "Ustvari novo"
 msgid "Delete"
 msgstr "Izbriši"
 
-#: links.py:77 views.py:239
+#: links.py:77 views.py:238
 msgid "Edit"
 msgstr "Uredi"
 
@@ -339,21 +339,21 @@ msgstr "Primarni ključ vrste metapodatkov, ki ga je treba dodati."
 msgid "Primary key of the metadata type to be added to the document."
 msgstr "Primarni ključ vrste metapodatkov, ki ga je treba dodati v dokument."
 
-#: views.py:56
+#: views.py:55
 #, python-format
 msgid "Metadata add request performed on %(count)d document"
 msgstr "Zahteva za dodajanje metapodatkov, izvedena v dokumentu %(count)d"
 
-#: views.py:58
+#: views.py:57
 #, python-format
 msgid "Metadata add request performed on %(count)d documents"
 msgstr "Zahteva za dodajanje metapodatkov, izvedena na dokumentih %(count)d"
 
-#: views.py:66
+#: views.py:65
 msgid "Add"
 msgstr "Dodaj"
 
-#: views.py:68
+#: views.py:67
 msgid "Add metadata types to document"
 msgid_plural "Add metadata types to documents"
 msgstr[0] "V dokument dodajte vrste metapodatkov"
@@ -361,12 +361,12 @@ msgstr[1] "V dokumente dodajte vrste metapodatkov"
 msgstr[2] "V dokumente dodajte vrste metapodatkov"
 msgstr[3] "V dokumente dodajte vrste metapodatkov"
 
-#: views.py:79
+#: views.py:78
 #, python-format
 msgid "Add metadata types to document: %s"
 msgstr "V dokument dodajte vrste metapodatkov: %s"
 
-#: views.py:158
+#: views.py:157
 #, python-format
 msgid ""
 "Error adding metadata type \"%(metadata_type)s\" to document: %(document)s; "
@@ -375,7 +375,7 @@ msgstr ""
 "Napaka pri dodajanju vrste metapodatkov &quot;%(metadata_type)s&quot; v "
 "dokument: %(document)s; %(exception)s"
 
-#: views.py:173
+#: views.py:172
 #, python-format
 msgid ""
 "Metadata type: %(metadata_type)s successfully added to document %(document)s."
@@ -383,7 +383,7 @@ msgstr ""
 "Vrsta metapodatkov: %(metadata_type)s je uspešno dodana v dokument "
 "%(document)s."
 
-#: views.py:183
+#: views.py:182
 #, python-format
 msgid ""
 "Metadata type: %(metadata_type)s already present in document %(document)s."
@@ -391,17 +391,17 @@ msgstr ""
 "Tip metapodatkov: %(metadata_type)s, ki je že prisoten v dokumentu "
 "%(document)s."
 
-#: views.py:200
+#: views.py:199
 #, python-format
 msgid "Metadata edit request performed on %(count)d document"
 msgstr "Zahteva za urejanje metapodatkov, izvedena na dokumentu %(count)d"
 
-#: views.py:203
+#: views.py:202
 #, python-format
 msgid "Metadata edit request performed on %(count)d documents"
 msgstr "Zahteva za urejanje metapodatkov, izvedena za dokumente %(count)d"
 
-#: views.py:234
+#: views.py:233
 msgid ""
 "Add metadata types available for this document's type and assign them "
 "corresponding values."
@@ -409,11 +409,11 @@ msgstr ""
 "Dodajte vrste metapodatkov, ki so na voljo za vrsto tega dokumenta, in jim "
 "dodelite ustrezne vrednosti."
 
-#: views.py:237
+#: views.py:236
 msgid "There is no metadata to edit"
 msgstr "Ni metapodatkov za urejanje"
 
-#: views.py:241
+#: views.py:240
 msgid "Edit document metadata"
 msgid_plural "Edit documents metadata"
 msgstr[0] "Urejanje metapodatkov dokumenta"
@@ -421,23 +421,23 @@ msgstr[1] "Urejanje metapodatkov dokumentov"
 msgstr[2] "Urejanje metapodatkov dokumentov"
 msgstr[3] "Urejanje metapodatkov dokumentov"
 
-#: views.py:252
+#: views.py:251
 #, python-format
 msgid "Edit metadata for document: %s"
 msgstr "Uredi metapodatke za dokument: %s"
 
-#: views.py:337
+#: views.py:336
 #, python-format
 msgid "Error editing metadata for document: %(document)s; %(exception)s."
 msgstr ""
 "Napaka pri urejanju metapodatkov za dokument: %(document)s; %(exception)s."
 
-#: views.py:350
+#: views.py:349
 #, python-format
 msgid "Metadata for document %s edited successfully."
 msgstr "Metapodatki za dokument %s so bili uspešno urejeni."
 
-#: views.py:375
+#: views.py:374
 msgid ""
 "Add metadata types this document's type to be able to add them to individual "
 "documents. Once added to individual document, you can then edit their values."
@@ -446,26 +446,26 @@ msgstr ""
 "posameznim dokumentom. Ko so dodani posameznemu dokumentu, lahko nato "
 "uredite njihove vrednosti."
 
-#: views.py:380
+#: views.py:379
 msgid "This document doesn't have any metadata"
 msgstr "Ta dokument nima nobenih metapodatkov"
 
-#: views.py:381
+#: views.py:380
 #, python-format
 msgid "Metadata for document: %s"
 msgstr "Metapodatki za dokument: %s"
 
-#: views.py:396
+#: views.py:395
 #, python-format
 msgid "Metadata remove request performed on %(count)d document"
 msgstr "Zahteva za odstranitev metapodatkov, izvedena v dokumentu %(count)d"
 
-#: views.py:399
+#: views.py:398
 #, python-format
 msgid "Metadata remove request performed on %(count)d documents"
 msgstr "Zahteva za odstranitev metapodatkov, izvedena za dokumente %(count)d"
 
-#: views.py:410
+#: views.py:409
 msgid "Remove metadata types from the document"
 msgid_plural "Remove metadata types from the documents"
 msgstr[0] "Iz dokumenta odstranite vrste metapodatkov"
@@ -473,12 +473,12 @@ msgstr[1] "Iz dokumentov odstranite vrste metapodatkov"
 msgstr[2] "Iz dokumentov odstranite vrste metapodatkov"
 msgstr[3] "Iz dokumentov odstranite vrste metapodatkov"
 
-#: views.py:421
+#: views.py:420
 #, python-format
 msgid "Remove metadata types from the document: %s"
 msgstr "Odstranite vrste metapodatkov iz dokumenta: %s"
 
-#: views.py:487
+#: views.py:486
 #, python-format
 msgid ""
 "Successfully remove metadata type \"%(metadata_type)s\" from document: "
@@ -487,7 +487,7 @@ msgstr ""
 "Uspešno odstranite vrsto metapodatkov &quot;%(metadata_type)s&quot; iz "
 "dokumenta: %(document)s."
 
-#: views.py:496
+#: views.py:495
 #, python-format
 msgid ""
 "Error removing metadata type \"%(metadata_type)s\" from document: "
@@ -496,21 +496,21 @@ msgstr ""
 "Napaka pri odstranjevanju metapodatkov vrste &quot;%(metadata_type)s&quot; "
 "iz dokumenta: %(document)s; %(exception)s"
 
-#: views.py:507
+#: views.py:506
 msgid "Create metadata type"
 msgstr "Ustvari vrsto metapodatkov"
 
-#: views.py:533
+#: views.py:532
 #, python-format
 msgid "Delete the metadata type: %s?"
 msgstr "Izbrišite vrsto metapodatkov: %s?"
 
-#: views.py:549
+#: views.py:548
 #, python-format
 msgid "Edit metadata type: %s"
 msgstr "Uredi vrsto metapodatkov: %s"
 
-#: views.py:571
+#: views.py:570
 msgid ""
 "Metadata types are users defined properties that can be assigned values. "
 "Once created they must be associated to document types, either as optional "
@@ -524,11 +524,11 @@ msgstr ""
 "metapodatkov, kot je potrebna za vrsto dokumenta, bo blokirala nalaganje "
 "dokumentov te vrste, dokler ne dobite vrednosti metapodatkov."
 
-#: views.py:578
+#: views.py:577
 msgid "There are no metadata types"
 msgstr "Ni metapodatkov"
 
-#: views.py:601
+#: views.py:600
 #, fuzzy
 #| msgid ""
 #| "Create metadata types to be able to associate them to this document type."
@@ -539,19 +539,19 @@ msgstr ""
 "Ustvarite vrste metapodatkov, da jih boste lahko povezali s to vrsto "
 "dokumenta."
 
-#: views.py:605
+#: views.py:604
 #, fuzzy
 #| msgid "There are no metadata types available"
 msgid "There are no metadata type relationships available"
 msgstr "Na voljo ni nobenih vrst metapodatkov"
 
-#: views.py:609
+#: views.py:608
 #, fuzzy, python-format
 #| msgid "Metadata types for document type: %s"
 msgid "Metadata type relationships for document type: %s"
 msgstr "Vrste metapodatkov za vrsto dokumenta: %s"
 
-#: views.py:653
+#: views.py:652
 #, fuzzy, python-format
 #| msgid "Document types for metadata type: %s"
 msgid "Document type relationships for metadata type: %s"

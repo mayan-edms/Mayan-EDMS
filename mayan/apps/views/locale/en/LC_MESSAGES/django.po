@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 06:05+0000\n"
+"POT-Creation-Date: 2021-04-11 10:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,106 +36,106 @@ msgstr ""
 msgid "Relationship"
 msgstr ""
 
-#: generics.py:147
+#: generics.py:146
 msgid ""
 "Select entries to be removed. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr ""
 
-#: generics.py:152
+#: generics.py:151
 msgid ""
 "Select entries to be added. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr ""
 
-#: generics.py:290
+#: generics.py:289
 msgid "Add all"
 msgstr ""
 
-#: generics.py:299
+#: generics.py:298
 msgid "Add"
 msgstr ""
 
-#: generics.py:309
+#: generics.py:308
 msgid "Remove all"
 msgstr ""
 
-#: generics.py:318
+#: generics.py:317
 msgid "Remove"
 msgstr ""
 
-#: generics.py:532
+#: generics.py:531
 #, python-format
 msgid "Error updating relationship; %s"
 msgstr ""
 
-#: generics.py:539
+#: generics.py:538
 msgid "Relationships updated successfully"
 msgstr ""
 
-#: generics.py:598
+#: generics.py:597
 #, python-format
 msgid "Duplicate data error: %(error)s"
 msgstr ""
 
-#: generics.py:617
+#: generics.py:616
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
 msgstr ""
 
-#: generics.py:628
+#: generics.py:627
 #, python-format
 msgid "%(object)s created successfully."
 msgstr ""
 
-#: generics.py:667
+#: generics.py:666
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
 msgstr ""
 
-#: generics.py:676
+#: generics.py:675
 #, python-format
 msgid "%(object)s deleted successfully."
 msgstr ""
 
-#: generics.py:815
+#: generics.py:814
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
 msgstr ""
 
-#: generics.py:824
+#: generics.py:823
 #, python-format
 msgid "%(object)s updated successfully."
 msgstr ""
 
-#: generics.py:886
+#: generics.py:885
 #, python-format
 msgid "\"%(object)s\" deleted successfully."
 msgstr ""
 
-#: generics.py:887
+#: generics.py:886
 #, python-format
 msgid "%(count)d object deleted successfully."
 msgstr ""
 
-#: generics.py:888
+#: generics.py:887
 #, python-format
 msgid "%(count)d objects deleted successfully."
 msgstr ""
 
-#: generics.py:889
+#: generics.py:888
 #, python-format
 msgid "Delete \"%(object)s\"."
 msgstr ""
 
-#: generics.py:890
+#: generics.py:889
 #, python-format
 msgid "Delete %(count)d object."
 msgstr ""
 
-#: generics.py:891
+#: generics.py:890
 #, python-format
 msgid "Delete %(count)d objects."
 msgstr ""

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 06:04+0000\n"
+"POT-Creation-Date: 2021-04-11 10:37+0000\n"
 "PO-Revision-Date: 2020-04-28 03:38+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
@@ -204,14 +204,12 @@ msgid "Check in document \"%(object)s\"."
 msgstr ""
 
 #: views.py:38
-#| msgid "Check in %(count)d document"
-#| msgid_plural "Check in %(count)d documents"
+#, python-format
 msgid "Check in %(count)d document."
 msgstr ""
 
 #: views.py:39
-#| msgid "Check in %(count)d document"
-#| msgid_plural "Check in %(count)d documents"
+#, python-format
 msgid "Check in %(count)d documents."
 msgstr ""
 
@@ -241,14 +239,12 @@ msgid "Checkout document \"%(object)s\"."
 msgstr ""
 
 #: views.py:109
-#| msgid "Checkout %(count)d document"
-#| msgid_plural "Checkout %(count)d documents"
+#, python-format
 msgid "Checkout %(count)d document."
 msgstr ""
 
 #: views.py:110
-#| msgid "Checkout %(count)d document"
-#| msgid_plural "Checkout %(count)d documents"
+#, python-format
 msgid "Checkout %(count)d documents."
 msgstr ""
 

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 06:04+0000\n"
+"POT-Creation-Date: 2021-04-11 10:37+0000\n"
 "PO-Revision-Date: 2021-01-19 03:48+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -23,7 +23,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:72 events.py:6 forms.py:42 links.py:46 links.py:87 links.py:240
-#: links.py:264 models/workflow_models.py:65 settings.py:14
+#: links.py:264 models/workflow_models.py:64 settings.py:14
 #: views/workflow_proxy_views.py:64 views/workflow_template_views.py:261
 #: workflow_actions.py:74
 msgid "Workflows"
@@ -161,7 +161,7 @@ msgstr "Azione"
 msgid "Namespace"
 msgstr "Namespace"
 
-#: forms.py:135 models/workflow_models.py:52 models/workflow_state_models.py:55
+#: forms.py:135 models/workflow_models.py:51 models/workflow_state_models.py:55
 #: models/workflow_state_models.py:172 models/workflow_transition_models.py:40
 #: models/workflow_transition_models.py:150
 msgid "Label"
@@ -202,7 +202,7 @@ msgstr "Crea workflow"
 msgid "Delete"
 msgstr "Cancella"
 
-#: links.py:69 models/workflow_models.py:56
+#: links.py:69 models/workflow_models.py:55
 msgid "Document types"
 msgstr "Tipi di documento"
 
@@ -294,7 +294,7 @@ msgstr "All'entrata"
 msgid "On exit"
 msgstr "All'uscita"
 
-#: models/workflow_instance_models.py:29 models/workflow_models.py:64
+#: models/workflow_instance_models.py:29 models/workflow_models.py:63
 #: models/workflow_state_models.py:51 models/workflow_transition_models.py:36
 msgid "Workflow"
 msgstr "Workflow"
@@ -339,15 +339,15 @@ msgstr "Voci log istanza workflow"
 msgid "Not a valid transition choice."
 msgstr "Non è una scelta valida per la transizione"
 
-#: models/workflow_models.py:40
+#: models/workflow_models.py:39
 msgid "Launch workflow when document is created."
 msgstr "Avvia il flusso di lavoro quando viene creato il documento."
 
-#: models/workflow_models.py:41
+#: models/workflow_models.py:40
 msgid "Auto launch"
 msgstr "Avvio automatico"
 
-#: models/workflow_models.py:45
+#: models/workflow_models.py:44
 msgid ""
 "This value will be used by other apps to reference this workflow. Can only "
 "contain letters, numbers, and underscores."
@@ -355,23 +355,23 @@ msgstr ""
 "Questo valore sarà usato da altre applicazioni per riferirsi a questo "
 "workflow. Può contenere solo lettere, numeri e underscore (trattino basso)."
 
-#: models/workflow_models.py:48 models/workflow_transition_models.py:145
+#: models/workflow_models.py:47 models/workflow_transition_models.py:145
 msgid "Internal name"
 msgstr "Nome interno"
 
-#: models/workflow_models.py:51
+#: models/workflow_models.py:50
 msgid "A short text to describe the workflow."
 msgstr "Un breve testo per descrivere il flusso di lavoro."
 
-#: models/workflow_models.py:160
+#: models/workflow_models.py:157
 msgid "Initial state"
 msgstr "Stato iniziale"
 
-#: models/workflow_models.py:301
+#: models/workflow_models.py:298
 msgid "Workflow runtime proxy"
 msgstr "Proxy di runtime del flusso di lavoro"
 
-#: models/workflow_models.py:302
+#: models/workflow_models.py:299
 msgid "Workflow runtime proxies"
 msgstr "Proxy di runtime del flusso di lavoro"
 
