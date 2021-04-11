@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Māris Teivāns <maris.teivans@gmail.com>, 2019
@@ -9,61 +9,67 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2021-03-06 15:21+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
+"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/lv/)\n"
+"Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: lv\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
+"2);\n"
 
 #: admin.py:22
 msgid "None"
 msgstr "Nav neviens"
 
-#: admin.py:24 links.py:93 models.py:51
+#: admin.py:24 links.py:94 models.py:54
 msgid "Document types"
 msgstr "Dokumentu veidi"
 
-#: apps.py:55 events.py:6 settings.py:8
+#: apps.py:51 events.py:6 settings.py:8
 msgid "Document indexing"
 msgstr "Dokumentu indeksēšana"
 
-#: apps.py:146
+#: apps.py:147
 msgid "Total levels"
 msgstr "Kopējais līmenis"
 
-#: apps.py:153
+#: apps.py:154
 msgid "Total documents"
 msgstr "Kopā dokumenti"
 
-#: apps.py:159 apps.py:173 apps.py:193 apps.py:203
+#: apps.py:160 apps.py:174 apps.py:204 apps.py:214
 msgid "Level"
 msgstr "Līmenis"
 
-#: apps.py:181
+#: apps.py:183
 msgid "Levels"
 msgstr "Līmeņi"
 
-#: apps.py:188 models.py:394
+#: apps.py:195 models.py:393
 msgid "Documents"
 msgstr "Dokumenti"
 
 #: events.py:10
-msgid "Index created"
-msgstr "Indekss izveidots"
+#, fuzzy
+#| msgid "Index template node"
+msgid "Index template created"
+msgstr "Indeksa veidnes mezgls"
 
 #: events.py:13
-msgid "Index edited"
-msgstr "Indekss rediģēts"
+#, fuzzy
+#| msgid "Index template node"
+msgid "Index template edited"
+msgstr "Indeksa veidnes mezgls"
 
 #: forms.py:16
 msgid "Index templates to be queued for rebuilding."
 msgstr "Indeksa veidnes, kas jāveido rindā atjaunošanai."
 
-#: forms.py:17 links.py:27
+#: forms.py:17 links.py:35 views/index_template_views.py:96
 msgid "Index templates"
 msgstr "Indeksu veidnes"
 
@@ -75,376 +81,430 @@ msgstr ""
 msgid "Creation date"
 msgstr "Izveidošanas datums"
 
-#: links.py:21 links.py:36 links.py:73 links.py:77 models.py:59 views.py:150
-#: views.py:333
+#: links.py:29 links.py:43 links.py:74 links.py:78 models.py:62
+#: views/index_instance_views.py:43
 msgid "Indexes"
 msgstr "Indeksi"
 
-#: links.py:42 queues.py:22
+#: links.py:48 queues.py:24
 msgid "Rebuild index"
 msgstr "Atjaunot indeksu"
 
-#: links.py:51 links.py:62
+#: links.py:55 links.py:64
 msgid "Deletes and creates from scratch all the document indexes."
 msgstr "Izdzēš un izveido visus dokumenta indeksus."
 
-#: links.py:53 views.py:453
+#: links.py:56
 msgid "Rebuild indexes"
 msgstr "Atjaunot indeksus"
 
-#: links.py:64 views.py:488
+#: links.py:65 views/index_template_views.py:345
 msgid "Reset indexes"
 msgstr ""
 
-#: links.py:81 views.py:86
+#: links.py:84 views/index_template_views.py:101
 msgid "Create index"
 msgstr "Izveidot indeksu"
 
-#: links.py:88 links.py:118
+#: links.py:89 links.py:114
 msgid "Delete"
 msgstr "Dzēst"
 
-#: links.py:99 links.py:123
+#: links.py:98 links.py:118
 msgid "Edit"
 msgstr "Rediģēt"
 
-#: links.py:106
+#: links.py:104
 msgid "Tree template"
 msgstr "Koku veidne"
 
-#: links.py:112
+#: links.py:109
 msgid "New child node"
 msgstr "Jauns bērnu mezgls"
 
-#: models.py:33
+#: models.py:36
 msgid "Short description of this index."
 msgstr ""
 
-#: models.py:34
+#: models.py:37
 msgid "Label"
 msgstr "Etiķete"
 
-#: models.py:38
+#: models.py:41
 msgid "This value will be used by other apps to reference this index."
 msgstr "Šo vērtību izmantos citas lietotnes, lai atsauktos uz šo rādītāju."
 
-#: models.py:39
+#: models.py:42
 msgid "Slug"
 msgstr "Lode"
 
-#: models.py:44
-msgid ""
-"Causes this index to be visible and updated when document data changes."
+#: models.py:47
+msgid "Causes this index to be visible and updated when document data changes."
 msgstr "Indekss ir redzams un atjaunināts, kad mainās dokumentu dati."
 
-#: models.py:47 models.py:230
+#: models.py:50 models.py:229
 msgid "Enabled"
 msgstr "Iespējots"
 
-#: models.py:58 models.py:214
+#: models.py:61 models.py:213
 msgid "Index"
 msgstr "Indekss"
 
-#: models.py:218
+#: models.py:217
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
-msgstr "Ievadiet veidni, kas jāpiešķir. Izmantojiet Django noklusējuma veidnes valodu (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
+msgstr ""
+"Ievadiet veidni, kas jāpiešķir. Izmantojiet Django noklusējuma veidnes "
+"valodu (https://docs.djangoproject.com/en/1.11/ref/templates/builtins/)"
 
-#: models.py:222
+#: models.py:221
 msgid "Indexing expression"
 msgstr "Indeksācijas izteiksme"
 
-#: models.py:227
+#: models.py:226
 msgid "Causes this node to be visible and updated when document data changes."
 msgstr "Šāda mezgls ir redzams un atjaunināts, kad mainās dokumentu dati."
 
-#: models.py:235
+#: models.py:234
 msgid ""
-"Check this option to have this node act as a container for documents and not"
-" as a parent for further nodes."
-msgstr "Atzīmējiet šo opciju, lai šis mezgls darbotos kā konteiners dokumentiem un nevis kā vecāks turpmākajiem mezgliem."
+"Check this option to have this node act as a container for documents and not "
+"as a parent for further nodes."
+msgstr ""
+"Atzīmējiet šo opciju, lai šis mezgls darbotos kā konteiners dokumentiem un "
+"nevis kā vecāks turpmākajiem mezgliem."
 
-#: models.py:238
+#: models.py:237
 msgid "Link documents"
 msgstr "Saite dokumentus"
 
-#: models.py:242
+#: models.py:241
 msgid "Index node template"
 msgstr "Indeksa mezgla veidne"
 
-#: models.py:243
+#: models.py:242
 msgid "Indexes node template"
 msgstr "Indeksu mezglu veidne"
 
-#: models.py:247
+#: models.py:246
 msgid "Root"
 msgstr "Sakne"
 
-#: models.py:305
+#: models.py:304
 #, python-format
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
-msgstr "Kļūdas indeksēšanas dokuments: %(document)s; izteiksme: %(expression)s; %(exception)s"
+msgstr ""
+"Kļūdas indeksēšanas dokuments: %(document)s; izteiksme: %(expression)s; "
+"%(exception)s"
 
-#: models.py:346
+#: models.py:345
 msgid "Index instance"
 msgstr "Indeksa piemērs"
 
-#: models.py:347
+#: models.py:346
 msgid "Index instances"
 msgstr "Indeksa gadījumi"
 
-#: models.py:387
+#: models.py:386
 msgid "Index template node"
 msgstr "Indeksa veidnes mezgls"
 
-#: models.py:390 search.py:23
+#: models.py:389 search.py:26
 msgid "Value"
 msgstr "Vērtība"
 
-#: models.py:400 models.py:529
+#: models.py:399 models.py:528
 msgid "Index instance node"
 msgstr ""
 
-#: models.py:401
+#: models.py:400
 msgid "Indexes instances node"
 msgstr ""
 
-#: models.py:466
+#: models.py:465
 msgid "The path to the index including all ancestors."
 msgstr ""
 
-#: models.py:468
+#: models.py:467
 msgid "Full path"
 msgstr "Pilns ceļš"
 
-#: models.py:522
+#: models.py:521
 msgid "Document index node instance"
 msgstr "Dokumenta indeksa mezgla piemērs"
 
-#: models.py:523
+#: models.py:522
 msgid "Document indexes node instances"
 msgstr "Dokumenta indeksu mezglu gadījumi"
 
-#: models.py:530
+#: models.py:529
 msgid "Index instance nodes"
 msgstr ""
 
-#: permissions.py:5 queues.py:7
+#: permissions.py:5 queues.py:8
 msgid "Indexing"
 msgstr "Indeksācija"
 
 #: permissions.py:8
-msgid "Create new document indexes"
-msgstr "Izveidojiet jaunus dokumentu indeksus"
-
-#: permissions.py:11
-msgid "Edit document indexes"
-msgstr "Rediģēt dokumentu indeksus"
-
-#: permissions.py:14
-msgid "Delete document indexes"
-msgstr "Dzēst dokumentu indeksus"
-
-#: permissions.py:17
-msgid "View document index instances"
+#, fuzzy
+#| msgid "View document index instances"
+msgid "View index instances"
 msgstr "Skatīt dokumentu indeksu gadījumus"
 
-#: permissions.py:21
-msgid "View document indexes"
-msgstr "Skatīt dokumentu indeksus"
+#: permissions.py:11
+#, fuzzy
+#| msgid "Delete the index template node: %s?"
+msgid "Create new index templates"
+msgstr "Dzēst indeksa veidnes mezglu: %s?"
 
-#: permissions.py:24
-msgid "Rebuild document indexes"
-msgstr "Atjaunot dokumentu indeksus"
+#: permissions.py:14
+#, fuzzy
+#| msgid "Index templates"
+msgid "Edit index templates"
+msgstr "Indeksu veidnes"
 
-#: queues.py:10
+#: permissions.py:17
+#, fuzzy
+#| msgid "Delete the index template node: %s?"
+msgid "Delete index templates"
+msgstr "Dzēst indeksa veidnes mezglu: %s?"
+
+#: permissions.py:20
+#, fuzzy
+#| msgid "Index templates"
+msgid "View index templates"
+msgstr "Indeksu veidnes"
+
+#: permissions.py:23 views/index_template_views.py:310
+#, fuzzy
+#| msgid "Rebuild indexes"
+msgid "Rebuild index templates"
+msgstr "Atjaunot indeksus"
+
+#: queues.py:12
 msgid "Delete empty index nodes"
 msgstr "Dzēst tukšu indeksa mezglus"
 
-#: queues.py:14
+#: queues.py:16
 msgid "Remove document"
 msgstr "Noņemt dokumentu"
 
-#: queues.py:18
+#: queues.py:20
 msgid "Index document"
 msgstr "Indeksa dokuments"
 
-#: search.py:27
+#: search.py:30
 msgid "Document type"
 msgstr "Dokumenta veids"
 
-#: search.py:30
+#: search.py:33
 msgid "Document MIME type"
 msgstr "Dokumenta MIME tips"
 
-#: search.py:33
+#: search.py:36
 msgid "Document label"
 msgstr "Dokumenta etiķete"
 
-#: search.py:36
+#: search.py:39
 msgid "Document description"
 msgstr "Dokumenta apraksts"
 
-#: search.py:39
+#: search.py:42
 msgid "Document UUID"
 msgstr "Dokumenta UUID"
 
-#: search.py:43
+#: search.py:46
 msgid "Document checksum"
 msgstr "Dokumenta kontrolsumma"
 
-#: serializers.py:191
+#: serializers.py:197
 msgid "Parent cannot be empty."
 msgstr ""
 
-#: serializers.py:198
+#: serializers.py:204
 msgid "Parent must be from the same index template."
+msgstr ""
+
+#: serializers.py:215
+msgid ""
+"URL of the API endpoint showing the list document types associated with this "
+"index template."
+msgstr ""
+
+#: serializers.py:222
+msgid "URL of the API endpoint to add document types to this index template."
+msgstr ""
+
+#: serializers.py:229
+msgid ""
+"URL of the API endpoint to remove document types from this index template."
+msgstr ""
+
+#: serializers.py:277
+msgid "Primary key of the document type to add to the index template."
+msgstr ""
+
+#: serializers.py:286
+msgid "Primary key of the document type to remove from the index template."
 msgstr ""
 
 #: settings.py:14
 msgid ""
-"Amount of time in seconds, a failed indexing task will wait before retrying."
-" Lower values will increase the speed at which documents are indexed but "
-"will cause a higher count of failed/retried tasks in the queue."
+"Amount of time in seconds, a failed indexing task will wait before retrying. "
+"Lower values will increase the speed at which documents are indexed but will "
+"cause a higher count of failed/retried tasks in the queue."
 msgstr ""
 
-#: views.py:45
-msgid "Available indexes"
-msgstr "Pieejamie rādītāji"
-
-#: views.py:46
-msgid "Indexes linked"
-msgstr "Indeksi ir saistīti"
-
-#: views.py:76
-msgid ""
-"Documents of this type will appear in the indexes linked when these are "
-"updated. Events of the documents of this type will trigger updates in the "
-"linked indexes."
-msgstr "Šāda veida dokumenti parādīsies indeksos, kas saistīti, kad tie tiek atjaunināti. Šāda veida dokumentu notikumi izraisīs saistīto indeksu atjauninājumus."
-
-#: views.py:80
-#, python-format
-msgid "Indexes linked to document type: %s"
-msgstr "Indeksi, kas saistīti ar dokumenta tipu: %s"
-
-#: views.py:109
-#, python-format
-msgid "Delete the index: %s?"
-msgstr "Dzēst indeksu: %s?"
-
-#: views.py:125
-#, python-format
-msgid "Edit index: %s"
-msgstr "Rediģēt indeksu: %s"
-
-#: views.py:144
-msgid ""
-"Indexes group document automatically into levels. Indexes are defined using "
-"template whose markers are replaced with direct properties of documents like"
-" label or description, or that of extended properties like metadata."
-msgstr ""
-
-#: views.py:149
-msgid "There are no indexes."
-msgstr "Nav indeksu."
-
-#: views.py:162
-#, python-format
-msgid "Rebuild index: %s"
-msgstr ""
-
-#: views.py:182
-msgid "Index queued for rebuild."
-msgstr ""
-
-#: views.py:194
-msgid "Available document types"
-msgstr "Pieejamie dokumentu veidi"
-
-#: views.py:195
-msgid "Document types linked"
-msgstr "Saistītie dokumentu veidi"
-
-#: views.py:205
-msgid ""
-"Only the documents of the types selected will be shown in the index when "
-"built. Only the events of the documents of the types select will trigger "
-"updates in the index."
-msgstr "Kad būvēts, indeksā tiks parādīti tikai atlasīto tipu dokumenti. Indeksā tiks atjaunināti tikai atlasīto tipu dokumentu notikumi."
-
-#: views.py:209
-#, python-format
-msgid "Document types linked to index: %s"
-msgstr "Dokumentu veidi, kas saistīti ar indeksu: %s"
-
-#: views.py:226
-#, python-format
-msgid "Tree template nodes for index: %s"
-msgstr "Koku veidņu mezgli indeksam: %s"
-
-#: views.py:254
-#, python-format
-msgid "Create child node of: %s"
-msgstr "Izveidot bērnu mezglu: %s"
-
-#: views.py:280
-#, python-format
-msgid "Delete the index template node: %s?"
-msgstr "Dzēst indeksa veidnes mezglu: %s?"
-
-#: views.py:304
-#, python-format
-msgid "Edit the index template node: %s?"
-msgstr "Rediģējiet indeksa veidnes mezglu: %s?"
-
-#: views.py:328
+#: views/index_instance_views.py:38
 msgid ""
 "This could mean that no index templates have been created or that there are "
 "index templates but they are no properly defined."
 msgstr ""
 
-#: views.py:332
+#: views/index_instance_views.py:42
 msgid "There are no index instances available."
 msgstr "Nav pieejami indeksu gadījumi."
 
-#: views.py:372
+#: views/index_instance_views.py:80
 #, python-format
 msgid "Navigation: %s"
 msgstr "Navigācija: %s"
 
-#: views.py:378
+#: views/index_instance_views.py:86
 #, python-format
 msgid "Contents for index: %s"
 msgstr "Indeksa saturs: %s"
 
-#: views.py:432
+#: views/index_instance_views.py:140
 msgid ""
 "Assign the document type of this document to an index to have it appear in "
 "instances of those indexes organization units. "
-msgstr "Piešķiriet šī dokumenta dokumenta tipu indeksam, lai tas parādītos šo indeksu organizācijas vienību gadījumos."
+msgstr ""
+"Piešķiriet šī dokumenta dokumenta tipu indeksam, lai tas parādītos šo "
+"indeksu organizācijas vienību gadījumos."
 
-#: views.py:437
+#: views/index_instance_views.py:145
 msgid "This document is not in any index"
 msgstr "Šis dokuments nav nevienā indeksā"
 
-#: views.py:441
+#: views/index_instance_views.py:149
 #, python-format
 msgid "Indexes nodes containing document: %s"
 msgstr "Indeksu mezgli, kas satur dokumentu: %s"
 
-#: views.py:467
+#: views/index_template_views.py:45
+msgid "Available indexes"
+msgstr "Pieejamie rādītāji"
+
+#: views/index_template_views.py:46
+msgid "Indexes linked"
+msgstr "Indeksi ir saistīti"
+
+#: views/index_template_views.py:70
+msgid ""
+"Documents of this type will appear in the indexes linked when these are "
+"updated. Events of the documents of this type will trigger updates in the "
+"linked indexes."
+msgstr ""
+"Šāda veida dokumenti parādīsies indeksos, kas saistīti, kad tie tiek "
+"atjaunināti. Šāda veida dokumentu notikumi izraisīs saistīto indeksu "
+"atjauninājumus."
+
+#: views/index_template_views.py:74
 #, python-format
-msgid "%(count)d index queued for rebuild."
-msgid_plural "%(count)d indexes queued for rebuild."
+msgid "Indexes linked to document type: %s"
+msgstr "Indeksi, kas saistīti ar dokumenta tipu: %s"
+
+#: views/index_template_views.py:90
+msgid ""
+"Indexes group document automatically into levels. Indexes are defined using "
+"template whose markers are replaced with direct properties of documents like "
+"label or description, or that of extended properties like metadata."
+msgstr ""
+
+#: views/index_template_views.py:95
+#, fuzzy
+#| msgid "There are no indexes."
+msgid "There are no index templates."
+msgstr "Nav indeksu."
+
+#: views/index_template_views.py:124
+#, python-format
+msgid "Delete the index: %s?"
+msgstr "Dzēst indeksu: %s?"
+
+#: views/index_template_views.py:136
+msgid "Available document types"
+msgstr "Pieejamie dokumentu veidi"
+
+#: views/index_template_views.py:137
+msgid "Document types linked"
+msgstr "Saistītie dokumentu veidi"
+
+#: views/index_template_views.py:147
+msgid ""
+"Only the documents of the types selected will be shown in the index when "
+"built. Only the events of the documents of the types select will trigger "
+"updates in the index."
+msgstr ""
+"Kad būvēts, indeksā tiks parādīti tikai atlasīto tipu dokumenti. Indeksā "
+"tiks atjaunināti tikai atlasīto tipu dokumentu notikumi."
+
+#: views/index_template_views.py:151
+#, python-format
+msgid "Document types linked to index: %s"
+msgstr "Dokumentu veidi, kas saistīti ar indeksu: %s"
+
+#: views/index_template_views.py:167
+#, python-format
+msgid "Edit index: %s"
+msgstr "Rediģēt indeksu: %s"
+
+#: views/index_template_views.py:187
+#, python-format
+msgid "Tree template nodes for index: %s"
+msgstr "Koku veidņu mezgli indeksam: %s"
+
+#: views/index_template_views.py:213
+#, python-format
+msgid "Create child node of: %s"
+msgstr "Izveidot bērnu mezglu: %s"
+
+#: views/index_template_views.py:239
+#, python-format
+msgid "Delete the index template node: %s?"
+msgstr "Dzēst indeksa veidnes mezglu: %s?"
+
+#: views/index_template_views.py:263
+#, python-format
+msgid "Edit the index template node: %s?"
+msgstr "Rediģējiet indeksa veidnes mezglu: %s?"
+
+#: views/index_template_views.py:283
+#, fuzzy, python-format
+#| msgid "Rebuild indexes"
+msgid "Rebuild index template: %s"
+msgstr "Atjaunot indeksus"
+
+#: views/index_template_views.py:303
+#, fuzzy
+#| msgid "Index templates to be queued for rebuilding."
+msgid "Index template queued for rebuild."
+msgstr "Indeksa veidnes, kas jāveido rindā atjaunošanai."
+
+#: views/index_template_views.py:324
+#, fuzzy, python-format
+#| msgid "%(count)d index queued for rebuild."
+#| msgid_plural "%(count)d indexes queued for rebuild."
+msgid "%(count)d index template queued for rebuild."
+msgid_plural "%(count)d index templates queued for rebuild."
 msgstr[0] "%(count)d indeksi tiek atjaunoti."
 msgstr[1] "%(count)d indekss, kas rindā ir atjaunots."
 msgstr[2] "%(count)d indeksi tiek atjaunoti."
 
-#: views.py:500
+#: views/index_template_views.py:357
 #, python-format
 msgid "%(count)d index reset."
 msgid_plural "%(count)d indexes reset."
@@ -452,6 +512,27 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: views.py:513
+#: views/index_template_views.py:370
 msgid "Index templates for which their instances will be deleted."
 msgstr ""
+
+#~ msgid "Index created"
+#~ msgstr "Indekss izveidots"
+
+#~ msgid "Index edited"
+#~ msgstr "Indekss rediģēts"
+
+#~ msgid "Create new document indexes"
+#~ msgstr "Izveidojiet jaunus dokumentu indeksus"
+
+#~ msgid "Edit document indexes"
+#~ msgstr "Rediģēt dokumentu indeksus"
+
+#~ msgid "Delete document indexes"
+#~ msgstr "Dzēst dokumentu indeksus"
+
+#~ msgid "View document indexes"
+#~ msgstr "Skatīt dokumentu indeksus"
+
+#~ msgid "Rebuild document indexes"
+#~ msgstr "Atjaunot dokumentu indeksus"

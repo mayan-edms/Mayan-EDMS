@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2017
@@ -15,25 +15,26 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2020-09-27 06:47+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
+"fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:46 events.py:6 models.py:35 models.py:104 permissions.py:5
+#: apps.py:43 events.py:6 models.py:37 models.py:157 permissions.py:5
 msgid "Permissions"
 msgstr "Droits"
 
-#: apps.py:99 models.py:142
+#: apps.py:98 models.py:75
 msgid "Group count"
 msgstr ""
 
-#: classes.py:85
+#: classes.py:88
 msgid "Insufficient permissions."
 msgstr "Droits insuffisants"
 
@@ -49,15 +50,15 @@ msgstr "Rôle créé"
 msgid "Role edited"
 msgstr "Rôle modifié"
 
-#: links.py:14 links.py:38 models.py:115 views.py:171
+#: links.py:17 links.py:37 models.py:48 views.py:171
 msgid "Roles"
 msgstr "Rôles"
 
-#: links.py:21 views.py:51
+#: links.py:23 views.py:51
 msgid "Create new role"
 msgstr "Créer un nouveau rôle"
 
-#: links.py:27
+#: links.py:28
 msgid "Delete"
 msgstr "Supprimer"
 
@@ -65,41 +66,41 @@ msgstr "Supprimer"
 msgid "Edit"
 msgstr "Modifier"
 
-#: links.py:43 models.py:107
+#: links.py:41 models.py:40
 msgid "Groups"
 msgstr "Groupes"
 
-#: links.py:50
+#: links.py:47
 msgid "Role permissions"
 msgstr "Autorisations du rôle"
 
-#: models.py:26
-msgid "Namespace"
-msgstr "Espace de nommage"
-
-#: models.py:27
-msgid "Name"
-msgstr "Nom"
-
-#: models.py:34
-msgid "Permission"
-msgstr "Autorisation"
-
-#: models.py:99
+#: models.py:32
 msgid "A short text describing the role."
 msgstr "Un court texte décrivant le rôle."
 
-#: models.py:100 search.py:14
+#: models.py:33 search.py:14
 msgid "Label"
 msgstr "Étiquette"
 
-#: models.py:114
+#: models.py:47
 msgid "Role"
 msgstr "Rôle"
 
-#: models.py:150
+#: models.py:83
 msgid "Permission count"
 msgstr ""
+
+#: models.py:148
+msgid "Namespace"
+msgstr "Espace de nommage"
+
+#: models.py:149
+msgid "Name"
+msgstr "Nom"
+
+#: models.py:156
+msgid "Permission"
+msgstr "Autorisation"
 
 #: permissions.py:8
 msgid "Create roles"
@@ -121,20 +122,21 @@ msgstr "Afficher les rôles"
 msgid "Group name"
 msgstr "Nom du groupe"
 
-#: serializers.py:44
-msgid ""
-"Comma separated list of groups primary keys to add to, or replace in this "
-"role."
-msgstr "La liste séparée par une virgule des groupes de clés primaires à ajouter ou à remplacer dans ce rôle."
+#: serializers.py:31
+msgid "Primary key of the group to add to the role."
+msgstr ""
 
-#: serializers.py:51
-msgid "Comma separated list of permission primary keys to grant to this role."
-msgstr "Liste séparée par des virgules des clés primaires d'autorisation pour autoriser ce rôle."
+#: serializers.py:39
+msgid "Primary key of the group to remove from the role."
+msgstr ""
 
-#: serializers.py:88
-#, python-format
-msgid "No such permission: %s"
-msgstr "Aucune autorisation de ce genre: %s"
+#: serializers.py:47
+msgid "Primary key of the permission to add to the role."
+msgstr ""
+
+#: serializers.py:54
+msgid "Primary key of the permission to remove from the role."
+msgstr ""
 
 #: views.py:30
 msgid "Available roles"
@@ -166,7 +168,9 @@ msgstr "Groupes ayant le rôle : %s"
 msgid ""
 "Add groups to be part of a role. They will inherit the role's permissions "
 "and access controls."
-msgstr "Ajoutez des groupes à faire partie d'un rôle. Ils hériteront des autorisations et des contrôles d'accès du rôle."
+msgstr ""
+"Ajoutez des groupes à faire partie d'un rôle. Ils hériteront des "
+"autorisations et des contrôles d'accès du rôle."
 
 #: views.py:107
 msgid "Available permissions"
@@ -179,7 +183,9 @@ msgstr "Autorisations accordées"
 #: views.py:143
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
-msgstr "Les autorisations accordées ici s'appliqueront à l'ensemble du système et à tous les objets."
+msgstr ""
+"Les autorisations accordées ici s'appliqueront à l'ensemble du système et à "
+"tous les objets."
 
 #: views.py:146
 #, python-format
@@ -192,8 +198,30 @@ msgid ""
 "role permissions for the entire system. Roles can also part of access "
 "controls lists. Access controls list are permissions granted to a role for "
 "specific objects which its group members inherit."
-msgstr "Les rôles sont des unités d'autorisation. Ils contiennent des groupes d'utilisateurs qui héritent des autorisations de rôle pour l'ensemble du système. Les rôles peuvent également faire partie des listes de contrôles d'accès. Une liste des contrôles d'accès correspond aux autorisations accordées à un rôle pour des objets spécifiques dont les membres du groupe héritent."
+msgstr ""
+"Les rôles sont des unités d'autorisation. Ils contiennent des groupes "
+"d'utilisateurs qui héritent des autorisations de rôle pour l'ensemble du "
+"système. Les rôles peuvent également faire partie des listes de contrôles "
+"d'accès. Une liste des contrôles d'accès correspond aux autorisations "
+"accordées à un rôle pour des objets spécifiques dont les membres du groupe "
+"héritent."
 
 #: views.py:170
 msgid "There are no roles"
 msgstr "Il n'y a pas de rôles"
+
+#~ msgid ""
+#~ "Comma separated list of groups primary keys to add to, or replace in this "
+#~ "role."
+#~ msgstr ""
+#~ "La liste séparée par une virgule des groupes de clés primaires à ajouter "
+#~ "ou à remplacer dans ce rôle."
+
+#~ msgid ""
+#~ "Comma separated list of permission primary keys to grant to this role."
+#~ msgstr ""
+#~ "Liste séparée par des virgules des clés primaires d'autorisation pour "
+#~ "autoriser ce rôle."
+
+#~ msgid "No such permission: %s"
+#~ msgstr "Aucune autorisation de ce genre: %s"

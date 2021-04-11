@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2018
@@ -14,61 +14,67 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2020-09-27 08:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:39 events.py:5 permissions.py:5 settings.py:14
+#: apps.py:39 events.py:5 permissions.py:5 queues.py:7 settings.py:19
 msgid "Converter"
 msgstr "Konverter"
 
-#: apps.py:82 forms.py:23
+#: apps.py:83 forms.py:37
 msgid "Transformation"
 msgstr "Transformation"
 
-#: backends/python.py:156 backends/python.py:169
+#: backends/python.py:124 backends/python.py:137
 #, python-format
 msgid "Exception determining PDF page count; %s"
 msgstr "Ausnahme bei der Ermittlung der PDF-Seitenanzahl: %s"
 
-#: backends/python.py:183
+#: backends/python.py:151
 #, python-format
 msgid "Exception determining page count using Pillow; %s"
 msgstr "Fehler bei der Ermittlung der Seitenanzahl; %s"
 
-#: classes.py:135
+#: classes.py:155
 msgid "LibreOffice not installed or not found."
 msgstr "Libre Office ist nicht installiert oder wurde nicht gefunden."
 
-#: classes.py:236
+#: classes.py:259
 msgid "Not an office file format."
 msgstr "Kein Office-Dateiformat"
 
-#: classes.py:359
+#: classes.py:385
 msgid ""
 "Transformations allow changing the visual appearance of documents without "
 "making permanent changes to the document file themselves."
-msgstr "Transformationen erlauben Veränderungen in der visuellen Darstellung eines Dokuments ohne diese im Dokument selbst zu speichern."
+msgstr ""
+"Transformationen erlauben Veränderungen in der visuellen Darstellung eines "
+"Dokuments ohne diese im Dokument selbst zu speichern."
 
-#: classes.py:407
+#: classes.py:433
 msgid "transformation"
 msgstr "Transformation"
 
 #: dependencies.py:14
 msgid "Utility from the poppler-utils package used to inspect PDF files."
-msgstr "Programm aus dem poppler-utils Paket für die Inspektion von PDF Dateien."
+msgstr ""
+"Programm aus dem poppler-utils Paket für die Inspektion von PDF Dateien."
 
 #: dependencies.py:19
 msgid ""
 "Utility from the popper-utils package used to extract pages from PDF files "
 "into PPM format images."
-msgstr "Programm aus dem poppler-utils Paket für die Extraktion von Seiten aus PDF-Dateien in PPM-Bilder."
+msgstr ""
+"Programm aus dem poppler-utils Paket für die Extraktion von Seiten aus PDF-"
+"Dateien in PPM-Bilder."
 
 #: events.py:8
 msgid "Asset created"
@@ -78,11 +84,15 @@ msgstr ""
 msgid "Asset edited"
 msgstr ""
 
-#: forms.py:22
+#: forms.py:16
+msgid "Preview"
+msgstr ""
+
+#: forms.py:36
 msgid "Available transformations for this layer."
 msgstr "Verfügbare Transformationen für diese Ebene."
 
-#: forms.py:59 workflow_actions.py:74
+#: forms.py:73 workflow_actions.py:74
 #, python-format
 msgid "\"%s\" not a valid entry."
 msgstr "\"%s\" ist kein gültiger Eintrag."
@@ -100,19 +110,19 @@ msgstr ""
 msgid "Saved transformations"
 msgstr "Gespeicherte Transformationen"
 
-#: links.py:31 views.py:36
+#: links.py:35 views.py:39
 msgid "Create asset"
 msgstr ""
 
-#: links.py:35 links.py:41 links.py:65
+#: links.py:38 links.py:44 links.py:64
 msgid "Delete"
 msgstr "Löschen"
 
-#: links.py:46 links.py:73
+#: links.py:48 links.py:72
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: links.py:55 models.py:53 storages.py:19 views.py:127
+#: links.py:56 models.py:62 storages.py:21 views.py:143
 msgid "Assets"
 msgstr ""
 
@@ -120,85 +130,89 @@ msgstr ""
 msgid "Transformations"
 msgstr "Transformationen"
 
-#: links.py:83
+#: links.py:82
 msgid "Select new transformation"
 msgstr "Neue Transformation auswählen"
 
-#: models.py:36
+#: models.py:45
 msgid "Label"
 msgstr "Bezeichner"
 
-#: models.py:40
+#: models.py:49
 msgid ""
 "This value will be used when referencing this asset. Can only contain "
 "letters, numbers, and underscores."
 msgstr ""
 
-#: models.py:43
+#: models.py:52
 msgid "Internal name"
 msgstr "Interner Name"
 
-#: models.py:47
+#: models.py:56
 msgid "File"
 msgstr "Datei"
 
-#: models.py:52
+#: models.py:61
 msgid "Asset"
 msgstr ""
 
-#: models.py:82 models.py:153
+#: models.py:157 models.py:228
 msgid "Name"
 msgstr "Name"
 
-#: models.py:85 models.py:151
+#: models.py:160 models.py:226
 msgid "Order"
 msgstr "Reihenfolge"
 
-#: models.py:90 models.py:109
+#: models.py:165 models.py:184
 msgid "Stored layer"
 msgstr "Gespeicherte Ebene"
 
-#: models.py:91
+#: models.py:166
 msgid "Stored layers"
 msgstr "Gespeicherte Ebenen"
 
-#: models.py:106 models.py:160
+#: models.py:181 models.py:235
 msgid "Enabled"
 msgstr "Aktiviert"
 
-#: models.py:117 models.py:145
+#: models.py:192 models.py:220
 msgid "Object layer"
 msgstr "Objektebene"
 
-#: models.py:118
+#: models.py:193
 msgid "Object layers"
 msgstr "Objektebenen"
 
-#: models.py:149
+#: models.py:224
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
-msgstr "Reihenfolge in der die Transformationen ausgeführt werden. Ohne Eintrag wird automatisch eine Reihenfolge zugewiesen."
+msgstr ""
+"Reihenfolge in der die Transformationen ausgeführt werden. Ohne Eintrag wird "
+"automatisch eine Reihenfolge zugewiesen."
 
-#: models.py:156 workflow_actions.py:45
+#: models.py:231 workflow_actions.py:45
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
-msgstr "Argumemte für die Transformation als YAML dictionary eingeben, z.B: {\"degrees\": 180}"
+msgstr ""
+"Argumemte für die Transformation als YAML dictionary eingeben, z.B: "
+"{\"degrees\": 180}"
 
-#: models.py:158
+#: models.py:233
 msgid "Arguments"
 msgstr "Argumente"
 
-#: models.py:167
+#: models.py:242
 msgid "Layer transformation"
 msgstr "Ebenentransformation"
 
-#: models.py:168
+#: models.py:243
 msgid "Layer transformations"
 msgstr "Ebenentransformationen"
 
-#: models.py:174
+#: models.py:249
 msgid "Unknown transformation class"
 msgstr ""
 
@@ -234,183 +248,227 @@ msgstr "Transformationen bearbeiten"
 msgid "View existing transformations"
 msgstr "Transformationen anzeigen"
 
-#: settings.py:21
-msgid "Graphics conversion backend to use."
-msgstr "Zu benutzendes Bildverarbeitungs-Backend"
+#: queues.py:11
+msgid "Generate a image of an asset."
+msgstr ""
 
-#: settings.py:27
-msgid "Configuration options for the graphics conversion backend."
-msgstr "Einstellungsmöglichkeiten für das Konvertierungsbackend."
+#: settings.py:28
+msgid ""
+"The threshold at which the CONVERTER_ASSET_CACHE_STORAGE_BACKEND will start "
+"deleting the oldest asset cache files. Specify the size in bytes."
+msgstr ""
 
-#: settings.py:33
+#: settings.py:37
+msgid ""
+"Time in seconds that the browser should cache the supplied asset. The "
+"default of 31559626 seconds correspond to 1 year."
+msgstr ""
+
+#: settings.py:44
+msgid ""
+"Path to the Storage subclass to use when storing the cached asset files."
+msgstr ""
+
+#: settings.py:52
+msgid "Arguments to pass to the CONVERTER_ASSET_CACHE_STORAGE_BACKEND."
+msgstr ""
+
+#: settings.py:58
 msgid "Path to the Storage subclass to use when storing assets."
 msgstr ""
 
-#: settings.py:39
+#: settings.py:64
 msgid "Arguments to pass to the CONVERTER_ASSET_STORAGE_BACKEND."
 msgstr ""
 
-#: storages.py:13
+#: settings.py:70
+msgid "Graphics conversion backend to use."
+msgstr "Zu benutzendes Bildverarbeitungs-Backend"
+
+#: settings.py:76
+msgid "Configuration options for the graphics conversion backend."
+msgstr "Einstellungsmöglichkeiten für das Konvertierungsbackend."
+
+#: storages.py:15
 msgid ""
 "Unable to initialize the converter asset storage. Check the settings {} and "
 "{} for formatting errors."
 msgstr ""
 
-#: transformations.py:197
+#: storages.py:28
+msgid ""
+"Unable to initialize the converter asset cachestorage. Check the settings {} "
+"and {} for formatting errors."
+msgstr ""
+
+#: storages.py:34
+msgid "Assets cache"
+msgstr ""
+
+#: transformations.py:196
 msgid "Paste an asset"
 msgstr ""
 
-#: transformations.py:248
+#: transformations.py:247
 msgid "Paste an asset (percents coordinates)"
 msgstr ""
 
-#: transformations.py:291
+#: transformations.py:290
 msgid "Paste an asset as watermark"
 msgstr ""
 
-#: transformations.py:351
+#: transformations.py:350
 msgid "Crop"
 msgstr "Zuschneiden"
 
-#: transformations.py:429
+#: transformations.py:428
 msgid "Draw rectangle"
 msgstr "Zeichne Rechteck"
 
-#: transformations.py:531
+#: transformations.py:530
 msgid "Draw rectangle (percents coordinates)"
 msgstr "Zeichne Rechteck (Prozent-Koordinaten)"
 
-#: transformations.py:628
+#: transformations.py:627
 msgid "Flip"
 msgstr "Drehen"
 
-#: transformations.py:639
+#: transformations.py:638
 msgid "Gaussian blur"
 msgstr "Gaußsche Unschärfe"
 
-#: transformations.py:649
+#: transformations.py:648
 msgid "Line art"
 msgstr "Liniengrafik"
 
-#: transformations.py:660
+#: transformations.py:659
 msgid "Mirror"
 msgstr "Spiegeln"
 
-#: transformations.py:671
+#: transformations.py:670
 msgid "Resize"
 msgstr "Größe ändern"
 
-#: transformations.py:698
+#: transformations.py:697
 msgid "Rotate"
 msgstr "Drehen"
 
-#: transformations.py:724
+#: transformations.py:723
 msgid "Rotate 90 degrees"
 msgstr "Um 90° drehen"
 
-#: transformations.py:735
+#: transformations.py:734
 msgid "Rotate 180 degrees"
 msgstr "Um 180° drehen"
 
-#: transformations.py:746
+#: transformations.py:745
 msgid "Rotate 270 degrees"
 msgstr "Um 270° drehen"
 
-#: transformations.py:756
+#: transformations.py:755
 msgid "Unsharp masking"
 msgstr "Unscharf maskieren"
 
-#: transformations.py:772
+#: transformations.py:771
 msgid "Zoom"
 msgstr "Zoom"
 
-#: views.py:50
+#: views.py:53
 #, python-format
 msgid "Delete request performed on %(count)d asset"
 msgstr ""
 
-#: views.py:52
+#: views.py:55
 #, python-format
 msgid "Delete request performed on %(count)d assets"
 msgstr ""
 
-#: views.py:59
+#: views.py:62
 msgid "Delete the selected asset?"
 msgid_plural "Delete the selected assets?"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:69
+#: views.py:72
 #, python-format
 msgid "Delete asset: %s?"
 msgstr ""
 
-#: views.py:80
+#: views.py:83
 #, python-format
 msgid "Asset \"%s\" deleted successfully."
 msgstr ""
 
-#: views.py:85
+#: views.py:88
 #, python-format
 msgid "Error deleting asset \"%(asset)s\": %(error)s"
 msgstr ""
 
-#: views.py:101
+#: views.py:103
+#, python-format
+msgid "Details asset: %s"
+msgstr ""
+
+#: views.py:117
 #, python-format
 msgid "Edit asset: %s"
 msgstr ""
 
-#: views.py:123
+#: views.py:139
 msgid ""
-"Assets are files that can be used in conjuction with certain "
-"transformations."
+"Assets are files that can be used in conjuction with certain transformations."
 msgstr ""
 
-#: views.py:126
+#: views.py:142
 msgid "No assets available"
 msgstr ""
 
-#: views.py:151
+#: views.py:167
 #, python-format
 msgid "Error creating transformation: %s."
 msgstr "Fehler bei Erstellung von Transformation %s."
 
-#: views.py:168
+#: views.py:184
 #, python-format
 msgid ""
 "Create layer \"%(layer)s\" transformation \"%(transformation)s\" for: "
 "%(object)s"
-msgstr "Erzeuge Ebene \"%(layer)s\", Transformation \"%(transformation)s\" für: %(object)s"
+msgstr ""
+"Erzeuge Ebene \"%(layer)s\", Transformation \"%(transformation)s\" für: "
+"%(object)s"
 
-#: views.py:224
+#: views.py:240
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
-msgstr "Transformation \"%(transformation)s\" für %(content_object)s wirklich löschen?"
+msgstr ""
+"Transformation \"%(transformation)s\" für %(content_object)s wirklich "
+"löschen?"
 
-#: views.py:273
+#: views.py:289
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
-msgstr "Transformation \"%(transformation)s\" für %(content_object)s bearbeiten"
+msgstr ""
+"Transformation \"%(transformation)s\" für %(content_object)s bearbeiten"
 
-#: views.py:327
+#: views.py:343
 #, python-format
 msgid "There are no entries for layer \"%(layer_name)s\""
 msgstr "Keine Einträge für Ebene \"%(layer_name)s\" vorhanden"
 
-#: views.py:330
+#: views.py:346
 #, python-format
 msgid "Layer \"%(layer)s\" transformations for: %(object)s"
 msgstr "Transformationen für Ebene \"%(layer)s\":  %(object)s"
 
-#: views.py:375
+#: views.py:391
 msgid "Transformation created successfully."
 msgstr "Transformation erfolgreich erstellt."
 
-#: views.py:399
+#: views.py:415
 msgid "Select"
 msgstr "Auswählen"
 
-#: views.py:401
+#: views.py:417
 #, python-format
 msgid "Select new layer \"%(layer)s\" transformation for: %(object)s"
 msgstr "Neue Transformation für Ebene \"%(layer)s\" auswählen: %(object)s"
@@ -421,8 +479,8 @@ msgstr "Seiten"
 
 #: workflow_actions.py:25
 msgid ""
-"Pages to which the new transformations will be added. Separate by commas "
-"and/or use a dashes for a ranges. Leave blank to select all pages."
+"Pages to which the new transformations will be added. Separate by commas and/"
+"or use a dashes for a ranges. Leave blank to select all pages."
 msgstr ""
 
 #: workflow_actions.py:32

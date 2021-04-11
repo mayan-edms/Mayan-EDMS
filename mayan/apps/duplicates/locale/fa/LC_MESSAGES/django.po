@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-30 04:39+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2020-10-26 13:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -20,11 +20,33 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:25 apps.py:39 links.py:14
+#: apps.py:30 apps.py:56 links.py:14
 msgid "Duplicates"
 msgstr "تکراری"
 
-#: links.py:18 models.py:20 models.py:30 views.py:75
+#: apps.py:62
+#, fuzzy
+#| msgid "Duplicated document"
+msgid "Duplicate backend"
+msgstr "سند تکثیر شده"
+
+#: classes.py:83
+msgid "Null backend"
+msgstr ""
+
+#: duplicate_backends.py:9
+#, fuzzy
+#| msgid "Edit document type: %s"
+msgid "Exact document file checksum"
+msgstr "ویرایش نوع سند : %s"
+
+#: duplicate_backends.py:28
+#, fuzzy
+#| msgid "Edit document types"
+msgid "Exact document label"
+msgstr "ویرایش انواع سند"
+
+#: links.py:18 models.py:40 views.py:77
 msgid "Duplicated documents"
 msgstr "اسناد تکراری"
 
@@ -32,17 +54,33 @@ msgstr "اسناد تکراری"
 msgid "Duplicated document scan"
 msgstr "اسکن سند تکراری"
 
-#: models.py:17
+#: models.py:23 models.py:33
+#, fuzzy
+#| msgid "Scan for duplicated documents?"
+msgid "Stored duplicate backend"
+msgstr "برای اسناد تکراری اسکن کنید؟"
+
+#: models.py:24
+#, fuzzy
+#| msgid "Scan for duplicated documents?"
+msgid "Stored duplicate backends"
+msgstr "برای اسناد تکراری اسکن کنید؟"
+
+#: models.py:37
 msgid "Document"
 msgstr "سند"
 
-#: models.py:23
-msgid "Added"
-msgstr "اضافه شده"
-
-#: models.py:29
-msgid "Duplicated document"
+#: models.py:47
+#, fuzzy
+#| msgid "Duplicated document"
+msgid "Duplicated backend entry"
 msgstr "سند تکثیر شده"
+
+#: models.py:48
+#, fuzzy
+#| msgid "Duplicated documents"
+msgid "Duplicated backend entries"
+msgstr "اسناد تکراری"
 
 #: queues.py:8
 msgid "Clean empty duplicate lists"
@@ -65,24 +103,27 @@ msgstr ""
 msgid "Duplicates for document: %s"
 msgstr "تکراری برای سند: %s"
 
-#: views.py:66
+#: views.py:68
 msgid ""
 "Duplicates are documents that are composed of the exact same file, down to "
 "the last byte. Files that have the same text or OCR but are not identical or "
 "were saved using a different file format will not appear as duplicates."
 msgstr ""
 
-#: views.py:73
+#: views.py:75
 msgid "There are no duplicated documents"
 msgstr ""
 
-#: views.py:83
+#: views.py:85
 msgid "Scan for duplicated documents?"
 msgstr "برای اسناد تکراری اسکن کنید؟"
 
-#: views.py:90
+#: views.py:92
 msgid "Duplicated document scan queued successfully."
 msgstr "اسکن کپی اسکن شده با موفقیت انجام شد."
+
+#~ msgid "Added"
+#~ msgstr "اضافه شده"
 
 #~ msgid "Documents"
 #~ msgstr "اسناد"
@@ -458,9 +499,6 @@ msgstr "اسکن کپی اسکن شده با موفقیت انجام شد."
 #~ msgid "Delete document types"
 #~ msgstr "حذف انواع سند"
 
-#~ msgid "Edit document types"
-#~ msgstr "ویرایش انواع سند"
-
 #~ msgid "View document types"
 #~ msgstr "بازدید انواع سند"
 
@@ -553,9 +591,6 @@ msgstr "اسکن کپی اسکن شده با موفقیت انجام شد."
 
 #~ msgid "Delete the document type: %s?"
 #~ msgstr "نوع سند را حذف کنید: %s؟"
-
-#~ msgid "Edit document type: %s"
-#~ msgstr "ویرایش نوع سند : %s"
 
 #~ msgid "Create quick label for document type: %s"
 #~ msgstr "برچسب سریع برای نوع سند را ایجاد کنید: %s"

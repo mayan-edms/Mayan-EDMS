@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Ilya Pavlov <spirkaa@gmail.com>, 2021
@@ -10,56 +10,83 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2021-03-22 07:29+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/ru/)\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:27 links.py:32 links.py:37 links.py:42 permissions.py:5 views.py:33
+#: apps.py:27 events.py:5 links.py:38 links.py:43 links.py:53 permissions.py:5
+#: queues.py:7 views/event_views.py:30
 msgid "Events"
 msgstr "События"
 
-#: apps.py:39 apps.py:67
+#: apps.py:49 apps.py:77
 msgid "Date and time"
 msgstr "Дата и время"
 
-#: apps.py:42 apps.py:70
+#: apps.py:52 apps.py:80
 msgid "Actor"
 msgstr "Субъект"
 
-#: apps.py:46 apps.py:75
+#: apps.py:56 apps.py:85
 msgid "Event"
 msgstr "Событие"
 
-#: apps.py:50 apps.py:80
+#: apps.py:60 apps.py:90
 msgid "Target"
 msgstr "Объект"
 
-#: apps.py:54
+#: apps.py:64 apps.py:94
 msgid "Action object"
 msgstr "Объект действия"
 
-#: apps.py:59 forms.py:10 forms.py:67
+#: apps.py:69 forms.py:10 forms.py:67
 msgid "Namespace"
 msgstr "Пространство имен"
 
-#: apps.py:62 forms.py:14 forms.py:71
+#: apps.py:72 forms.py:14 forms.py:71
 msgid "Label"
 msgstr "Ярлык"
 
-#: apps.py:86
+#: apps.py:99
 msgid "Seen"
 msgstr "Просмотрено"
 
-#: classes.py:142
+#: classes.py:79
+msgid "Event list export to CSV"
+msgstr ""
+
+#: classes.py:108
+#, fuzzy
+#| msgid "Event type"
+msgid "Events exported."
+msgstr "Тип события"
+
+#: classes.py:110
+#, python-format
+msgid ""
+"The event list has been exported and is available for download using the "
+"link: %(download_url)s or from the downloads area (%(download_list_url)s)."
+msgstr ""
+
+#: classes.py:274
 #, python-format
 msgid "Unknown or obsolete event type: %s"
 msgstr "Неизвестный или устаревший тип события: %s"
+
+#: events.py:8
+#, fuzzy
+#| msgid "Event type"
+msgid "Events exported"
+msgstr "Тип события"
 
 #: forms.py:18 forms.py:75
 msgid "Subscription"
@@ -73,27 +100,33 @@ msgstr "Нет"
 msgid "Subscribed"
 msgstr "Подписан"
 
-#: html_widgets.py:57
+#: html_widgets.py:22
 msgid "System"
 msgstr "Система"
 
-#: links.py:28
+#: links.py:30
 msgid "My events"
 msgstr "Мои события"
 
-#: links.py:46 models.py:63 views.py:74
+#: links.py:34 links.py:49 links.py:56 views/export_views.py:57
+#, fuzzy
+#| msgid "My events"
+msgid "Export events"
+msgstr "Мои события"
+
+#: links.py:61 models.py:63 views/subscription_views.py:56
 msgid "Event subscriptions"
 msgstr "Подписки на события"
 
-#: links.py:51
+#: links.py:66
 msgid "Mark as seen"
 msgstr "Отметить как просмотренное"
 
-#: links.py:54
+#: links.py:69
 msgid "Mark all as seen"
 msgstr "Отметить все как просмотренные"
 
-#: links.py:60
+#: links.py:75
 msgid "Subscriptions"
 msgstr "Подписки"
 
@@ -133,7 +166,7 @@ msgstr "Прочитано"
 msgid "Notification"
 msgstr "Уведомление"
 
-#: models.py:91 views.py:132
+#: models.py:91 views/notification_views.py:30
 msgid "Notifications"
 msgstr "Уведомления"
 
@@ -146,56 +179,124 @@ msgid "Object event subscriptions"
 msgstr "Подписки на события объекта"
 
 #: permissions.py:8
+#, fuzzy
+#| msgid "Access the events of an object"
+msgid "Export the events of an object"
+msgstr "Доступ к событиям объекта"
+
+#: permissions.py:11
 msgid "Access the events of an object"
 msgstr "Доступ к событиям объекта"
 
-#: views.py:56
-#, python-format
-msgid "Error updating event subscription; %s"
-msgstr "Ошибка обновления подписки на событие; %s"
+#: queues.py:13
+#, fuzzy
+#| msgid "Stored event types"
+msgid "Export event querysets"
+msgstr "Типы сохраненных событий"
 
-#: views.py:61
-msgid "Event subscriptions updated successfully"
-msgstr "Подписки на события обновлены"
+#: views/event_views.py:26
+#, fuzzy
+#| msgid ""
+#| "Events are actions that have been performed to this object or using this "
+#| "object."
+msgid "Events track actions that have been performed on, to, or with objects."
+msgstr ""
+"События - это действия, которые были выполнены с этим объектом или с "
+"использованием этого объекта."
 
-#: views.py:127
-msgid "Subscribe to global or object events to receive notifications."
-msgstr "Подпишитесь на глобальные события или события объектов, чтобы получать уведомления."
-
-#: views.py:130
-msgid "There are no notifications"
+#: views/event_views.py:29
+#, fuzzy
+#| msgid "There are no notifications"
+msgid "There are no events"
 msgstr "Нет уведомлений"
 
-#: views.py:179
-msgid ""
-"Events are actions that have been performed to this object or using this "
-"object."
-msgstr "События - это действия, которые были выполнены с этим объектом или с использованием этого объекта."
-
-#: views.py:182
+#: views/event_views.py:44
 msgid "There are no events for this object"
 msgstr "Для этого объекта нет событий"
 
-#: views.py:184
+#: views/event_views.py:46
 #, python-format
 msgid "Events for: %s"
 msgstr "События для: %s"
 
-#: views.py:224
+#: views/event_views.py:68
+#, fuzzy
+#| msgid "There are no events for this object"
+msgid "There are no events of this type"
+msgstr "Для этого объекта нет событий"
+
+#: views/event_views.py:70 views/export_views.py:105
+#, python-format
+msgid "Events of type: %s"
+msgstr "События с типом: %s"
+
+#: views/export_views.py:26
+msgid ""
+"The process will be performed in the background. The exported events will be "
+"available in the downloads area."
+msgstr ""
+
+#: views/export_views.py:45
+#, fuzzy
+#| msgid "Event subscriptions updated successfully"
+msgid "Event list export task queued successfully."
+msgstr "Подписки на события обновлены"
+
+#: views/export_views.py:76
+#, fuzzy, python-format
+#| msgid "Events for: %s"
+msgid "Export events for: %s"
+msgstr "События для: %s"
+
+#: views/notification_views.py:25
+msgid "Subscribe to global or object events to receive notifications."
+msgstr ""
+"Подпишитесь на глобальные события или события объектов, чтобы получать "
+"уведомления."
+
+#: views/notification_views.py:28
+msgid "There are no notifications"
+msgstr "Нет уведомлений"
+
+#: views/notification_views.py:44
+msgid "Mark the selected notification as read?"
+msgstr ""
+
+#: views/notification_views.py:56
+#, fuzzy
+#| msgid "Notifications"
+msgid "Notification marked as read."
+msgstr "Уведомления"
+
+#: views/notification_views.py:67
+#, fuzzy
+#| msgid "There are no notifications"
+msgid "Mark all notification as read?"
+msgstr "Нет уведомлений"
+
+#: views/notification_views.py:77
+msgid "All notifications marked as read."
+msgstr ""
+
+#: views/subscription_views.py:40
+#, python-format
+msgid "Error updating event subscription; %s"
+msgstr "Ошибка обновления подписки на событие; %s"
+
+#: views/subscription_views.py:45
+msgid "Event subscriptions updated successfully"
+msgstr "Подписки на события обновлены"
+
+#: views/subscription_views.py:114
 #, python-format
 msgid "Error updating object event subscription; %s"
 msgstr "Ошибка обновления подписки на событие объекта; %s"
 
-#: views.py:230
+#: views/subscription_views.py:120
 msgid "Object event subscriptions updated successfully"
 msgstr "Подписки на события объекта обновлены"
 
-#: views.py:243
+#: views/subscription_views.py:131
 #, python-format
 msgid "Event subscriptions for: %s"
 msgstr "Подписки на события для: %s"
-
-#: views.py:295
-#, python-format
-msgid "Events of type: %s"
-msgstr "События с типом: %s"

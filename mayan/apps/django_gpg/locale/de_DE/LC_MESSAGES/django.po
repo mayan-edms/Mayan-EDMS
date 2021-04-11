@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Bjoern Kowarsch <bjoern.kowarsch@gmail.com>, 2018
@@ -15,45 +15,46 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2020-08-17 15:08+0000\n"
 "Last-Translator: Marvin Haschker <marvin@haschker.me>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:30
+#: apps.py:33
 msgid "Django GPG"
 msgstr "Django GPG"
 
-#: apps.py:46 apps.py:52 forms.py:15
+#: apps.py:56 apps.py:62 forms.py:15
 msgid "Key ID"
 msgstr "Schlüssel-ID"
 
-#: apps.py:56 forms.py:32 models.py:53
+#: apps.py:66 forms.py:32 models.py:59
 msgid "Type"
 msgstr "Typ"
 
-#: apps.py:60 forms.py:21 models.py:34
+#: apps.py:70 forms.py:21 models.py:40
 msgid "Creation date"
 msgstr "Erstellungsdatum"
 
-#: apps.py:64
+#: apps.py:74
 msgid "No expiration"
 msgstr "Ohne Ablaufdatum"
 
-#: apps.py:65 forms.py:25 models.py:38
+#: apps.py:75 forms.py:25 models.py:44
 msgid "Expiration date"
 msgstr "Ablaufdatum"
 
-#: apps.py:68 forms.py:30 models.py:45
+#: apps.py:78 forms.py:30 models.py:51
 msgid "Length"
 msgstr "Länge"
 
-#: apps.py:73 forms.py:17 models.py:50
+#: apps.py:83 forms.py:17 models.py:56
 msgid "User ID"
 msgstr "Benutzer-ID"
 
@@ -61,15 +62,31 @@ msgstr "Benutzer-ID"
 msgid "GNU privacy guard - a PGP implementation."
 msgstr "GNU Privacy Guard - eine PGP-Implementierung."
 
+#: events.py:5 links.py:42 permissions.py:5
+msgid "Key management"
+msgstr "Schlüssel-Management"
+
+#: events.py:8
+#, fuzzy
+#| msgid "Key data"
+msgid "Key created"
+msgstr "Schlüssel-Daten"
+
+#: events.py:12
+#, fuzzy
+#| msgid "Download"
+msgid "Key downloaded"
+msgstr "Herunterladen"
+
 #: forms.py:26
 msgid "None"
 msgstr "Keine"
 
-#: forms.py:29 models.py:42
+#: forms.py:29 models.py:48
 msgid "Fingerprint"
 msgstr "Fingerabdruck"
 
-#: forms.py:31 models.py:48
+#: forms.py:31 models.py:54
 msgid "Algorithm"
 msgstr "Verfahren"
 
@@ -79,7 +96,9 @@ msgstr "Begriff"
 
 #: forms.py:46
 msgid "Name, e-mail, key ID or key fingerprint to look for."
-msgstr "Name, E-Mail, Schlüssel-ID oder Fingerabdruck des Schlüssels, der gesucht wird."
+msgstr ""
+"Name, E-Mail, Schlüssel-ID oder Fingerabdruck des Schlüssels, der gesucht "
+"wird."
 
 #: links.py:17
 msgid "Delete"
@@ -101,19 +120,15 @@ msgstr "Schlüsselserver abfragen"
 msgid "Import"
 msgstr "Importieren"
 
-#: links.py:42 permissions.py:5
-msgid "Key management"
-msgstr "Schlüssel-Management"
-
 #: links.py:46
 msgid "Upload key"
 msgstr "Schlüssel hochladen"
 
-#: links.py:50 views.py:180
+#: links.py:50 views.py:194
 msgid "Private keys"
 msgstr "Private Schlüssel"
 
-#: links.py:54 views.py:204
+#: links.py:54 views.py:218
 msgid "Public keys"
 msgstr "Öffentliche Schlüssel"
 
@@ -151,7 +166,9 @@ msgstr "Signaturfehler."
 
 #: literals.py:72
 msgid "Document is signed but no public key is available for verification."
-msgstr "Das Dokument ist signiert, aber kein öffentlicher Schlüssel zur Überprüfung verfügbar."
+msgstr ""
+"Das Dokument ist signiert, aber kein öffentlicher Schlüssel zur Überprüfung "
+"verfügbar."
 
 #: literals.py:77
 msgid "Document is signed, and signature is good."
@@ -161,27 +178,27 @@ msgstr "Dokument ist signiert mit gültiger Unterschrift."
 msgid "Document is signed with a valid signature."
 msgstr "Das Dokument ist mit einer gültigen Signatur signiert."
 
-#: models.py:30
+#: models.py:36
 msgid "ASCII armored version of the key."
 msgstr "ASCII Version des Schlüssels."
 
-#: models.py:31
+#: models.py:37
 msgid "Key data"
 msgstr "Schlüssel-Daten"
 
-#: models.py:59
+#: models.py:65
 msgid "Key"
 msgstr "Schlüssel"
 
-#: models.py:60
+#: models.py:66
 msgid "Keys"
 msgstr "Schlüssel"
 
-#: models.py:72
+#: models.py:78
 msgid "Invalid key data"
 msgstr "Ungültige Schlüssel-Daten"
 
-#: models.py:75
+#: models.py:81
 msgid "Key already exists."
 msgstr "Schlüssel existiert bereits."
 
@@ -215,84 +232,96 @@ msgstr "Unterschriften"
 
 #: settings.py:16
 msgid "Full path to the backend to be used to handle keys and signatures."
-msgstr "Vollständiger Pfad zum Backend, welcher für die Behandlung von Schlüsseln und Signaturen verwendet werden soll."
+msgstr ""
+"Vollständiger Pfad zum Backend, welcher für die Behandlung von Schlüsseln "
+"und Signaturen verwendet werden soll."
 
 #: settings.py:25
 msgid "Keyserver used to query for keys."
 msgstr "Server, der nach unbekannten Schlüsseln durchsucht wird."
 
-#: views.py:36
+#: views.py:39
 #, python-format
 msgid "Delete key: %s"
 msgstr "Schlüssel löschen: %s"
 
-#: views.py:53
+#: views.py:56
 #, python-format
 msgid "Details for key: %s"
 msgstr "Details für Schlüssel %s"
 
-#: views.py:75
+#: views.py:84
 #, python-format
 msgid "Import key ID: %s?"
 msgstr "Schlüssel-ID %s importieren?"
 
-#: views.py:76
+#: views.py:85
 msgid "Import key"
 msgstr "Schlüssel importieren"
 
-#: views.py:85
+#: views.py:94
 #, python-format
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr "Schlüssel-ID %(key_id)s konnte nicht importiert werden: %(error)s"
 
-#: views.py:93
+#: views.py:102
 #, python-format
 msgid "Successfully received key: %(key_id)s"
 msgstr "Schlüssel %(key_id)s erfolgreich heruntergeladen"
 
-#: views.py:110
+#: views.py:119
 msgid ""
 "Use names, last names, key ids or emails to search public keys to import "
 "from the keyserver."
-msgstr "Namen, Nachnamen, Schlüssel-IDs oder E-Mail-Adressen bei der Suche nach öffentlichen Schlüsseln verwenden, um diese vom Schlüsselserver zu importieren."
+msgstr ""
+"Namen, Nachnamen, Schlüssel-IDs oder E-Mail-Adressen bei der Suche nach "
+"öffentlichen Schlüsseln verwenden, um diese vom Schlüsselserver zu "
+"importieren."
 
-#: views.py:114
+#: views.py:123
 msgid "No results returned"
 msgstr "Keine Ergebnisse"
 
-#: views.py:116
+#: views.py:125
 msgid "Key query results"
 msgstr "Ergebnis Schlüsselsuche"
 
-#: views.py:136
+#: views.py:145
 msgid "Search"
 msgstr "Suche"
 
-#: views.py:138
+#: views.py:147
 msgid "Query key server"
 msgstr "Schlüsselserver abfragen"
 
-#: views.py:157
+#: views.py:166
 msgid "Upload new key"
 msgstr "Neuen Schlüssel hochladen"
 
-#: views.py:173
+#: views.py:187
 msgid ""
-"Private keys are used to signed documents. Private keys can only be uploaded"
-" by the user. The view to upload private and public keys is the same."
-msgstr "Private Schlüssel werden für die Signatur von Dokumenten verwendet. Private Schlüssel können nur vom Benutzer selbst hochgeladen werden. Das Formular für das Hochladen von privaten und öffentlichen Schlüsseln ist dasselbe."
+"Private keys are used to signed documents. Private keys can only be uploaded "
+"by the user. The view to upload private and public keys is the same."
+msgstr ""
+"Private Schlüssel werden für die Signatur von Dokumenten verwendet. Private "
+"Schlüssel können nur vom Benutzer selbst hochgeladen werden. Das Formular "
+"für das Hochladen von privaten und öffentlichen Schlüsseln ist dasselbe."
 
-#: views.py:178
+#: views.py:192
 msgid "There no private keys"
 msgstr "Keine privaten Schlüssel vorhanden"
 
-#: views.py:196
+#: views.py:210
 msgid ""
-"Public keys are used to verify signed documents. Public keys can be uploaded"
-" by the user or downloaded from keyservers. The view to upload private and "
+"Public keys are used to verify signed documents. Public keys can be uploaded "
+"by the user or downloaded from keyservers. The view to upload private and "
 "public keys is the same."
-msgstr "Öffentliche Schlüssel werden zur Verifzierung von signierten Dokumenten benutzt. Sie können von Benutzern hochgeladen oder von Schlüsselservern heruntergeladen werden. Die Ansicht zum Hochladen von privaten und öffentlichen Schlüssel ist identisch."
+msgstr ""
+"Öffentliche Schlüssel werden zur Verifzierung von signierten Dokumenten "
+"benutzt. Sie können von Benutzern hochgeladen oder von Schlüsselservern "
+"heruntergeladen werden. Die Ansicht zum Hochladen von privaten und "
+"öffentlichen Schlüssel ist identisch."
 
-#: views.py:202
+#: views.py:216
 msgid "There no public keys"
 msgstr "Keine öffentlichen Schlüssel vorhanden"

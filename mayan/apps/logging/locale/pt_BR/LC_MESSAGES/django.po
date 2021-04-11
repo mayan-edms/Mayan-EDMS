@@ -2,35 +2,36 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Roberto Rosario, 2020
 # José Samuel Facundo da Silva <samuel.facundo@ufca.edu.br>, 2020
 # Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2020
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>, 2020\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/teams/13584/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/rosarior/"
+"teams/13584/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:16 permissions.py:5 settings.py:10
 msgid "Logging"
 msgstr "Logging"
 
-#: links.py:12
+#: links.py:13
 msgid "Errors"
 msgstr "Erros"
 
-#: links.py:18
+#: links.py:19
 msgid "Clear errors"
 msgstr "Limpar erros"
 
@@ -97,16 +98,16 @@ msgstr "Nível de logging do sistema."
 msgid "Path to the logfile that will track errors during production."
 msgstr "Caminho para o arquivo de log que rastreará erros durante a produção."
 
-#: views.py:17
+#: views.py:20
 #, python-format
 msgid "Clear error log entries for: %s"
 msgstr "Limpar entradas de log de erros para: %s"
 
-#: views.py:23
+#: views.py:27
 msgid "Object error log cleared successfully"
 msgstr "O log de erros do objeto foi apagado com sucesso."
 
-#: views.py:36
+#: views.py:42
 msgid ""
 "This view displays the error log of different object. An empty list is a "
 "good thing."
@@ -114,11 +115,11 @@ msgstr ""
 "Esta tela exibe o log de erros de objeto diferente. Uma lista vazia é uma "
 "coisa boa"
 
-#: views.py:40
+#: views.py:46
 msgid "There are no error log entries"
 msgstr "Não há entradas no log de erros"
 
-#: views.py:43
+#: views.py:49
 #, python-format
 msgid "Error log entries for: %s"
 msgstr "Entradas de log de erros para: %s"

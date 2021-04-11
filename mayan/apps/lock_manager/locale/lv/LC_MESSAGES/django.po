@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Māris Teivāns <maris.teivans@gmail.com>, 2019
@@ -9,17 +9,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2019-12-03 05:23+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
+"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/lv/)\n"
+"Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: lv\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
+"2);\n"
 
-#: apps.py:19 settings.py:10
+#: apps.py:18 settings.py:10
 msgid "Lock manager"
 msgstr "Bloķēšanas pārvaldnieks"
 
@@ -45,7 +47,8 @@ msgstr "Slēdzenes"
 
 #: settings.py:15
 msgid "Path to the class to use when to request and release resource locks."
-msgstr "Ceļš uz klasi, ko izmantot, kad pieprasīt un atbrīvot resursu slēdzenes."
+msgstr ""
+"Ceļš uz klasi, ko izmantot, kad pieprasīt un atbrīvot resursu slēdzenes."
 
 #: settings.py:22
 msgid "Arguments to pass to the LOCK_MANAGER_BACKEND."
@@ -55,4 +58,6 @@ msgstr ""
 msgid ""
 "Default amount of time in seconds after which a resource lock will be "
 "automatically released."
-msgstr "Noklusējuma laiks sekundēs, pēc kura automātiski tiks atbrīvota resursu bloķēšana."
+msgstr ""
+"Noklusējuma laiks sekundēs, pēc kura automātiski tiks atbrīvota resursu "
+"bloķēšana."

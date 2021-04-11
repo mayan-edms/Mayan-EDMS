@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Māris Teivāns <maris.teivans@gmail.com>, 2019-2020
@@ -9,17 +9,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2020-12-04 08:40+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
-"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
+"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/lv/)\n"
+"Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: lv\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
+"2);\n"
 
-#: apps.py:25 events.py:6 permissions.py:6 settings.py:10
+#: apps.py:32 events.py:6 permissions.py:6 settings.py:10
 msgid "Authentication"
 msgstr "Autentifikācija"
 
@@ -31,57 +33,61 @@ msgstr "Uzdošanās par lietotāju ir beigusies"
 msgid "User impersonation started"
 msgstr "Tika sākta uzdošanās par lietotāju"
 
-#: forms.py:17
+#: forms.py:20
 msgid "Email"
 msgstr "E-pasts"
 
-#: forms.py:20
+#: forms.py:23
 msgid "Password"
 msgstr "Parole"
 
-#: forms.py:22 forms.py:89
+#: forms.py:25 forms.py:105
 msgid "Remember me"
 msgstr "Atceries mani"
 
-#: forms.py:25
+#: forms.py:28
 msgid ""
 "Please enter a correct email and password. Note that the password field is "
 "case-sensitive."
-msgstr "Lūdzu, ievadiet pareizu e-pasta adresi un paroli. Ņemiet vērā, ka paroles lauks ir reģistrjutīgs."
+msgstr ""
+"Lūdzu, ievadiet pareizu e-pasta adresi un paroli. Ņemiet vērā, ka paroles "
+"lauks ir reģistrjutīgs."
 
-#: forms.py:27
+#: forms.py:30
 msgid "This account is inactive."
 msgstr "Šis konts ir neaktīvs."
 
-#: forms.py:78
-msgid "User"
-msgstr "Lietotājs"
-
-#: forms.py:78
-msgid "User to be impersonated."
-msgstr "Lietotājs, uz kuru uzdodas."
-
-#: forms.py:82
+#: forms.py:79
 msgid "Permanent"
 msgstr "Pastāvīgs"
 
-#: forms.py:83
+#: forms.py:80
 msgid "If selected, disables ending impersonation."
 msgstr "Ja tas ir atlasīts, atspējo uzdošanās izbeigšanu."
 
-#: links.py:25
+#: forms.py:91
+msgid "User"
+msgstr "Lietotājs"
+
+#: links.py:24
 msgid "Logout"
 msgstr "Izrakstīties"
 
-#: links.py:30
+#: links.py:29
 msgid "Change password"
 msgstr "Mainīt paroli"
 
-#: links.py:35 views.py:68
+#: links.py:34 views.py:250
 msgid "Impersonate user"
 msgstr "Uzdoties par lietotāju"
 
-#: links.py:40 links.py:47
+#: links.py:39
+#, fuzzy
+#| msgid "Impersonate user"
+msgid "Impersonate"
+msgstr "Uzdoties par lietotāju"
+
+#: links.py:44 links.py:48
 msgid "Set password"
 msgstr "Uzstādīt paroli"
 
@@ -93,30 +99,48 @@ msgstr "Uzdoties par lietotājiem"
 msgid ""
 "Controls the mechanism used to authenticated user. Options are: username, "
 "email"
-msgstr "Kontrolē lietotāja autentifikācijas mehānismu. Iespējas ir: lietotājvārds, e-pasts"
+msgstr ""
+"Kontrolē lietotāja autentifikācijas mehānismu. Iespējas ir: lietotājvārds, e-"
+"pasts"
 
 #: settings.py:22
 msgid ""
-"Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
-" in. Value is time in seconds."
-msgstr "Maksimālais laiks, uz kādu lietotājs, noklikšķinot uz izvēles rūtiņas „Atcerēties mani”, paliks pieteicies. Vērtība ir laiks sekundēs."
+"Maximum time a user clicking the \"Remember me\" checkbox will remain logged "
+"in. Value is time in seconds."
+msgstr ""
+"Maksimālais laiks, uz kādu lietotājs, noklikšķinot uz izvēles rūtiņas "
+"„Atcerēties mani”, paliks pieteicies. Vērtība ir laiks sekundēs."
 
 #: settings.py:29
 msgid ""
 "Remove the \"Forgot your password?\" link on the login form used to trigger "
 "the password reset."
-msgstr "Noņemiet “Aizmirsāt paroli?” saite pieteikšanās veidlapā, ko izmanto, lai aktivizētu paroles atiestatīšanu."
+msgstr ""
+"Noņemiet “Aizmirsāt paroli?” saite pieteikšanās veidlapā, ko izmanto, lai "
+"aktivizētu paroles atiestatīšanu."
 
-#: templates/authentication/login.html:11
+#: templates/authentication/app/viewport.html:11
+#, python-format
+msgid ""
+"\n"
+"                Impersonating user \"%(user)s\".\n"
+"            "
+msgstr ""
+
+#: templates/authentication/app/viewport.html:14
+msgid "Click here when finished"
+msgstr ""
+
+#: templates/authentication/login.html:10
 msgid "Login"
 msgstr "Pierakstīties"
 
-#: templates/authentication/login.html:23
-#: templates/authentication/login.html:32
+#: templates/authentication/login.html:21
+#: templates/authentication/login.html:30
 msgid "Sign in"
 msgstr "Pierakstīties"
 
-#: templates/authentication/login.html:39
+#: templates/authentication/login.html:37
 msgid "Forgot your password?"
 msgstr "Aizmirsāt savu paroli?"
 
@@ -131,14 +155,16 @@ msgstr "Paroles atiestatīšana"
 
 #: templates/authentication/password_reset_complete.html:15
 msgid "Password reset complete! Click the link below to login."
-msgstr "Paroles atiestatīšana pabeigta! Lai pierakstītos, noklikšķiniet uz tālāk redzamās saites."
+msgstr ""
+"Paroles atiestatīšana pabeigta! Lai pierakstītos, noklikšķiniet uz tālāk "
+"redzamās saites."
 
 #: templates/authentication/password_reset_complete.html:17
 msgid "Login page"
 msgstr "Pierakstīšanās lapa"
 
 #: templates/authentication/password_reset_confirm.html:29
-#: templates/authentication/password_reset_form.html:29 views.py:212
+#: templates/authentication/password_reset_form.html:29 views.py:177
 msgid "Submit"
 msgstr "Iesniegt"
 
@@ -146,52 +172,62 @@ msgstr "Iesniegt"
 msgid "Password reset email sent!"
 msgstr "Paroles atiestatīšanas e-pasts nosūtīts!"
 
-#: views.py:121
+#: views.py:86
 msgid "Your password has been successfully changed."
 msgstr "Jūsu parole ir veiksmīgi mainīta."
 
-#: views.py:128
+#: views.py:93
 msgid "Current user password change"
 msgstr "Pašreizējā lietotāja paroles maiņa"
 
-#: views.py:136
+#: views.py:101
 msgid "Changing the password is not allowed for this account."
 msgstr "Paroles maiņa šim kontam nav atļauta."
 
-#: views.py:203
+#: views.py:168
 #, python-format
 msgid "Password change request performed on %(count)d user"
 msgstr "%(count)d lietotājam veikts paroles maiņas pieprasījums"
 
-#: views.py:205
+#: views.py:170
 #, python-format
 msgid "Password change request performed on %(count)d users"
 msgstr "%(count)d lietotājiem veikts paroles maiņas pieprasījums"
 
-#: views.py:214
+#: views.py:179
 msgid "Change user password"
 msgid_plural "Change users passwords"
 msgstr[0] "Mainīt lietotāju paroles"
 msgstr[1] "Mainīt lietotāja paroli"
 msgstr[2] "Mainīt lietotāju paroles"
 
-#: views.py:224
+#: views.py:189
 #, python-format
 msgid "Change password for user: %s"
 msgstr "Mainīt paroli lietotājam: %s"
 
-#: views.py:244
-msgid ""
-"Super user and staff user password reseting is not allowed, use the admin "
-"interface for these cases."
-msgstr "Super lietotāju un darbinieku lietotāju paroles atiestatīšana nav atļauta, šajos gadījumos izmantojiet admin saskarni."
-
-#: views.py:254
+#: views.py:210
 #, python-format
 msgid "Successful password reset for user: %s."
 msgstr "Veiksmīga paroles atiestatīšana lietotājam: %s."
 
-#: views.py:260
+#: views.py:216
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "Atiestatot paroli lietotājam \"%(user)s\", radās kļūda: %(error)s"
+
+#: views.py:278
+#, fuzzy, python-format
+#| msgid "Impersonate users"
+msgid "Impersonate user: %s"
+msgstr "Uzdoties par lietotājiem"
+
+#~ msgid "User to be impersonated."
+#~ msgstr "Lietotājs, uz kuru uzdodas."
+
+#~ msgid ""
+#~ "Super user and staff user password reseting is not allowed, use the admin "
+#~ "interface for these cases."
+#~ msgstr ""
+#~ "Super lietotāju un darbinieku lietotāju paroles atiestatīšana nav "
+#~ "atļauta, šajos gadījumos izmantojiet admin saskarni."

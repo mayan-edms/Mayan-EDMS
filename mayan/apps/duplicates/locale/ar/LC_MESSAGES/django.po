@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-30 04:39+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2020-10-26 13:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -21,11 +21,33 @@ msgstr ""
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: apps.py:25 apps.py:39 links.py:14
+#: apps.py:30 apps.py:56 links.py:14
 msgid "Duplicates"
 msgstr "النسخ المكررة"
 
-#: links.py:18 models.py:20 models.py:30 views.py:75
+#: apps.py:62
+#, fuzzy
+#| msgid "Duplicates"
+msgid "Duplicate backend"
+msgstr "النسخ المكررة"
+
+#: classes.py:83
+msgid "Null backend"
+msgstr ""
+
+#: duplicate_backends.py:9
+#, fuzzy
+#| msgid "Execute document modifying tools"
+msgid "Exact document file checksum"
+msgstr "تشغيل أدوات تعديل الوثيقة"
+
+#: duplicate_backends.py:28
+#, fuzzy
+#| msgid "Edit document types"
+msgid "Exact document label"
+msgstr "تحرير أنواع الوثائق"
+
+#: links.py:18 models.py:40 views.py:77
 msgid "Duplicated documents"
 msgstr ""
 
@@ -33,16 +55,24 @@ msgstr ""
 msgid "Duplicated document scan"
 msgstr ""
 
-#: models.py:17
+#: models.py:23 models.py:33
+msgid "Stored duplicate backend"
+msgstr ""
+
+#: models.py:24
+msgid "Stored duplicate backends"
+msgstr ""
+
+#: models.py:37
 msgid "Document"
 msgstr ""
 
-#: models.py:23
-msgid "Added"
+#: models.py:47
+msgid "Duplicated backend entry"
 msgstr ""
 
-#: models.py:29
-msgid "Duplicated document"
+#: models.py:48
+msgid "Duplicated backend entries"
 msgstr ""
 
 #: queues.py:8
@@ -66,22 +96,22 @@ msgstr ""
 msgid "Duplicates for document: %s"
 msgstr ""
 
-#: views.py:66
+#: views.py:68
 msgid ""
 "Duplicates are documents that are composed of the exact same file, down to "
 "the last byte. Files that have the same text or OCR but are not identical or "
 "were saved using a different file format will not appear as duplicates."
 msgstr ""
 
-#: views.py:73
+#: views.py:75
 msgid "There are no duplicated documents"
 msgstr ""
 
-#: views.py:83
+#: views.py:85
 msgid "Scan for duplicated documents?"
 msgstr ""
 
-#: views.py:90
+#: views.py:92
 msgid "Duplicated document scan queued successfully."
 msgstr ""
 
@@ -210,9 +240,6 @@ msgstr ""
 #~ msgid "Edit document properties"
 #~ msgstr "تحرير خصائص الوثيقة"
 
-#~ msgid "Execute document modifying tools"
-#~ msgstr "تشغيل أدوات تعديل الوثيقة"
-
 #~ msgid "Revert documents to a previous version"
 #~ msgstr "أعد الوثيقة لإصدار قديم"
 
@@ -224,9 +251,6 @@ msgstr ""
 
 #~ msgid "Delete document types"
 #~ msgstr "حذف أنواع الوثائق"
-
-#~ msgid "Edit document types"
-#~ msgstr "تحرير أنواع الوثائق"
 
 #~ msgid "View document types"
 #~ msgstr "عرض أنواع الوثائق"

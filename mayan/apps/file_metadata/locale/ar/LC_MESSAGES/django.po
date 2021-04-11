@@ -2,49 +2,50 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Roberto Rosario, 2019
 # Mohammed ALDOUB <voulnet@gmail.com>, 2019
 # Yaman Sanobar <yman.snober@gmail.com>, 2019
 # Marwan Rahhal <Marwanr@sssit.net>, 2020
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2020\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
+"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ar\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: admin.py:13
 msgid "Label"
 msgstr "العنوان"
 
-#: apps.py:49 events.py:6 links.py:17 permissions.py:5 queues.py:7
+#: apps.py:48 events.py:6 links.py:17 permissions.py:5 queues.py:7
 #: settings.py:12
 msgid "File metadata"
 msgstr "بيانات الملف"
 
-#: apps.py:99 search.py:7 search.py:16
+#: apps.py:98 search.py:11 search.py:22 search.py:33
 msgid "File metadata key"
 msgstr "وصف بيانات الملف"
 
-#: apps.py:103 search.py:11 search.py:20
+#: apps.py:102 search.py:15 search.py:26 search.py:37
 msgid "File metadata value"
 msgstr "قيم بيانات الملف"
 
-#: apps.py:130
+#: apps.py:129
 msgid "Return the value of a specific file metadata."
 msgstr "اعادة قيم بيانات الملف"
 
-#: apps.py:131
+#: apps.py:130
 msgid "File metadata value of"
 msgstr "قيم وصف بيانات الملف"
 
@@ -58,26 +59,30 @@ msgid "EXIF Tool"
 msgstr "أداة"
 
 #: events.py:10
-msgid "Document version submitted for file metadata processing"
+#, fuzzy
+#| msgid "Document version submitted for file metadata processing"
+msgid "Document file submitted for file metadata processing"
 msgstr "معالجة بيانات الوثيقة"
 
 #: events.py:14
-msgid "Document version file metadata processing finished"
+#, fuzzy
+#| msgid "Document version file metadata processing finished"
+msgid "Document file file metadata processing finished"
 msgstr "الانتهاء من معالجة بيانات الوثيقة"
 
 #: links.py:23
 msgid "Attributes"
 msgstr "متغيرات"
 
-#: links.py:30 links.py:33
+#: links.py:30 links.py:35
 msgid "Submit for file metadata"
 msgstr "اعتماد البيانات الوصفية"
 
-#: links.py:40
+#: links.py:42
 msgid "Setup file metadata"
 msgstr "إعدادت ملف البيانات الوصفية"
 
-#: links.py:45
+#: links.py:47
 msgid "File metadata processing per type"
 msgstr "معالج البيانات الوصفية حسب النوع"
 
@@ -90,8 +95,10 @@ msgid "Return the specified document file metadata entry."
 msgstr "التراجع عن إدخال البيانات للملف المحدد"
 
 #: methods.py:66
-msgid "Return the specified document version file metadata entry."
-msgstr "إعادة البيانات الوصفية للوضع الإفتراضي"
+#, fuzzy
+#| msgid "Return the specified document file metadata entry."
+msgid "Return the specified document file file metadata entry."
+msgstr "التراجع عن إدخال البيانات للملف المحدد"
 
 #: models.py:18
 msgid "Driver path"
@@ -126,15 +133,21 @@ msgid "Document types settings"
 msgstr "اعدادات انواع الوثائق"
 
 #: models.py:74
-msgid "Document version"
-msgstr "نسخة الوثيقة"
+#, fuzzy
+#| msgid "Document type"
+msgid "Document file"
+msgstr "نوع الوثيقة"
 
 #: models.py:80 models.py:95
-msgid "Document version driver entry"
+#, fuzzy
+#| msgid "Document version driver entry"
+msgid "Document file driver entry"
 msgstr "تحديد مسار الوثيقة"
 
 #: models.py:81
-msgid "Document version driver entries"
+#, fuzzy
+#| msgid "Document version driver entries"
+msgid "Document file driver entries"
 msgstr "تحديد مسار الوثائق"
 
 #: models.py:88
@@ -178,7 +191,9 @@ msgid "View file metadata"
 msgstr "إستعراض البيانات الوصفية للملف"
 
 #: queues.py:10
-msgid "Process document version"
+#, fuzzy
+#| msgid "Process document version"
+msgid "Process document file"
 msgstr "معالجة البيانات "
 
 #: settings.py:18
@@ -193,15 +208,17 @@ msgstr "تم إدراج المحددات"
 
 #: views.py:44
 msgid ""
-"File metadata are the attributes of the document's file. They can range from"
-" camera information used to take a photo to the author that created a file. "
+"File metadata are the attributes of the document's file. They can range from "
+"camera information used to take a photo to the author that created a file. "
 "File metadata are set when the document's file was first created. File "
 "metadata attributes reside in the file itself. They are not the same as the "
 "document metadata, which are user defined and reside in the database."
 msgstr "يتم تحديد البيانات الوصفية للوثائق وإجراء التعديلات اللازمة عليها  "
 
 #: views.py:52
-msgid "No file metadata available"
+#, fuzzy
+#| msgid "No file metadata available"
+msgid "No file metadata available."
 msgstr "لا توجد بيانات وصفية مضافة"
 
 #: views.py:55
@@ -217,17 +234,23 @@ msgid ""
 msgstr "لم يتم إكمال البيانات الوصفية للوثيقة"
 
 #: views.py:86
-msgid "No file metadata available for this driver"
+#, fuzzy
+#| msgid "No file metadata available for this driver"
+msgid "No file metadata available for this driver."
 msgstr "لا توجد بيانات وصفية للملف"
 
 #: views.py:90
-#, python-format
-msgid "File metadata attribures for: %(document)s, for driver: %(driver)s"
+#, fuzzy, python-format
+#| msgid "File metadata attribures for: %(document)s, for driver: %(driver)s"
+msgid "File metadata attributes for: %(document_file)s with driver: %(driver)s"
 msgstr "ملف التعريف : %(document)s, مسار الملف : %(driver)s"
 
 #: views.py:119
-msgid "Submit the selected document to the file metadata queue?"
-msgid_plural "Submit the selected documents to the file metadata queue?"
+#, fuzzy
+#| msgid "Submit the selected document to the file metadata queue?"
+#| msgid_plural "Submit the selected documents to the file metadata queue?"
+msgid "Submit the selected document file to the file metadata queue?"
+msgid_plural "Submit the selected documents files to the file metadata queue?"
 msgstr[0] "إرسال المستندات المحددة إلى قائمة انتظار البيانات الوصفية للملف؟"
 msgstr[1] "إرسال المستند المحدد إلى قائمة انتظار البيانات الوصفية للملف؟"
 msgstr[2] "إرسال المستندات المحددة إلى قائمة انتظار البيانات الوصفية للملف؟"
@@ -248,3 +271,9 @@ msgstr "تم ارسال جميع الوثائق للمعالجة"
 #, python-format
 msgid "%(count)d documents added to the file metadata processing queue."
 msgstr "%(count)d تم إضافة الملف للمعالجة"
+
+#~ msgid "Return the specified document version file metadata entry."
+#~ msgstr "إعادة البيانات الوصفية للوضع الإفتراضي"
+
+#~ msgid "Document version"
+#~ msgstr "نسخة الوثيقة"

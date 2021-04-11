@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Ilya Pavlov <spirkaa@gmail.com>, 2021
@@ -9,44 +9,50 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2021-03-28 13:02+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/ru/)\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:19
 msgid "Dynamic search"
 msgstr "Поиск"
 
-#: classes.py:154
+#: classes.py:265
 msgid "No search model matching the query"
 msgstr "Нет поисковой модели, соответствующей запросу"
 
-#: forms.py:7
+#: forms.py:9
 msgid "Match all"
 msgstr "Соответствовать всем"
 
-#: forms.py:8
+#: forms.py:10
 msgid ""
 "When checked, only results that match all fields will be returned. When "
 "unchecked results that match at least one field will be returned."
-msgstr "Если этот флажок установлен, будут возвращены только результаты, соответствующие всем полям. Если флажок снят, будут возвращены результаты, соответствующие хотя бы одному полю."
+msgstr ""
+"Если этот флажок установлен, будут возвращены только результаты, "
+"соответствующие всем полям. Если флажок снят, будут возвращены результаты, "
+"соответствующие хотя бы одному полю."
 
-#: forms.py:27 templates/dynamic_search/search_box.html:39
+#: forms.py:31 templates/dynamic_search/search_box.html:41
 msgid "Search terms"
 msgstr "Условия поиска"
 
-#: links.py:13 permissions.py:5 queues.py:7 settings.py:10
-#: templates/dynamic_search/search_box.html:43 views.py:117 views.py:130
+#: links.py:13 permissions.py:5 queues.py:7 settings.py:11
+#: templates/dynamic_search/search_box.html:45 views.py:117 views.py:130
 msgid "Search"
 msgstr "Поиск"
 
-#: links.py:17 templates/dynamic_search/search_box.html:45 views.py:144
+#: links.py:17 templates/dynamic_search/search_box.html:47 views.py:144
 msgid "Advanced search"
 msgstr "Расширенный поиск"
 
@@ -74,20 +80,25 @@ msgstr "Проиндексировать экземпляр модели для 
 msgid "Index all instances of a search model to the search engine."
 msgstr ""
 
-#: settings.py:15
+#: settings.py:16
 msgid "Full path to the backend to be used to handle the search."
 msgstr "Полный путь к бэкэнду, который будет использоваться для поиска."
 
-#: settings.py:25
+#: settings.py:26
 msgid ""
 "Disables the single term bar search leaving only the advanced search button."
 msgstr "Отключить простой поиск и оставить только кнопку расширенного поиска."
 
-#: settings.py:31
-msgid "Maximum number search results to fetch and display."
-msgstr "Максимальное количество результатов поиска для извлечения и отображения."
+#: settings.py:33
+msgid "Sets the default state of the \"Match all\" checkbox."
+msgstr ""
 
-#: templates/dynamic_search/search_box.html:45
+#: settings.py:37
+msgid "Maximum number search results to fetch and display."
+msgstr ""
+"Максимальное количество результатов поиска для извлечения и отображения."
+
+#: templates/dynamic_search/search_box.html:47
 msgid "Advanced"
 msgstr "Дополнительно"
 
@@ -108,11 +119,15 @@ msgstr "Результаты поиска: %s"
 msgid ""
 "This tool is required only for some search backends. Search results will be "
 "affected while the backend is being reindexed."
-msgstr "Это требуется только для некоторых бэкэндов поиска. До конца выполнения результаты поиска могут быть неполными."
+msgstr ""
+"Это требуется только для некоторых бэкэндов поиска. До конца выполнения "
+"результаты поиска могут быть неполными."
 
 #: views.py:92
 msgid "This tool erases and populates the search backend's internal index."
-msgstr "Этот инструмент стирает и заново наполняет внутренний индекс поисковой системы."
+msgstr ""
+"Этот инструмент стирает и заново наполняет внутренний индекс поисковой "
+"системы."
 
 #: views.py:110
 msgid "Search backend reindexing queued."

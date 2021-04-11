@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Badea Gabriel <gcbadea@gmail.com>, 2013
@@ -10,57 +10,87 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2020-09-29 12:57+0000\n"
 "Last-Translator: Harald Ersch\n"
-"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
+"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/ro_RO/)\n"
+"Language: ro_RO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ro_RO\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
+"2:1));\n"
 
-#: apps.py:49 permissions.py:6 settings.py:12
+#: apps.py:54 events.py:6 permissions.py:6 settings.py:12
 msgid "Document signatures"
 msgstr "Document de semnături"
 
-#: apps.py:95
-msgid "Date"
-msgstr "Data"
+#: apps.py:111
+msgid "Date and time"
+msgstr ""
 
-#: apps.py:98 models.py:46
+#: apps.py:115 models.py:52
 msgid "Key ID"
 msgstr "ID cheie"
 
-#: apps.py:102 forms.py:62 models.py:51
-msgid "Signature ID"
-msgstr "ID-ul de semnătură"
-
-#: apps.py:103 forms.py:74
+#: apps.py:119 forms.py:72
 msgid "None"
 msgstr "Nici unul"
 
-#: apps.py:106
+#: apps.py:120 forms.py:60 models.py:57
+msgid "Signature ID"
+msgstr "ID-ul de semnătură"
+
+#: apps.py:125
 msgid "Type"
 msgstr "Tip"
+
+#: events.py:10
+#, fuzzy
+#| msgid "Detached signatures"
+msgid "Detached signature created"
+msgstr "Semnături detașate"
+
+#: events.py:13
+#, fuzzy
+#| msgid "Detached signatures"
+msgid "Detached signature uploaded"
+msgstr "Semnături detașate"
+
+#: events.py:17
+#, fuzzy
+#| msgid "Signature date"
+msgid "Embedded signature created"
+msgstr "Data semnăturii"
 
 #: forms.py:17 forms.py:31 workflow_actions.py:19
 msgid "Key"
 msgstr "Cheie"
 
-#: forms.py:22 serializers.py:33 workflow_actions.py:30
+#: forms.py:22 serializers.py:66 workflow_actions.py:30
+#, fuzzy
+#| msgid ""
+#| "The passphrase to unlock the key and allow it to be used to sign the "
+#| "document version."
 msgid ""
 "The passphrase to unlock the key and allow it to be used to sign the "
-"document version."
-msgstr "Fraza de acces pentru a debloca cheia și a permite utilizarea acesteia pentru a semna versiunea documentului."
+"document file."
+msgstr ""
+"Fraza de acces pentru a debloca cheia și a permite utilizarea acesteia "
+"pentru a semna versiunea documentului."
 
 #: forms.py:24 workflow_actions.py:27
 msgid "Passphrase"
 msgstr "Expresie de acces"
 
 #: forms.py:33
-msgid "Private key that will be used to sign this document version."
-msgstr "Cheia privată care va fi utilizată pentru a semna această versiune a documentului."
+#, fuzzy
+#| msgid "Private key that will be used to sign this document version."
+msgid "Private key that will be used to sign this document file."
+msgstr ""
+"Cheia privată care va fi utilizată pentru a semna această versiune a "
+"documentului."
 
 #: forms.py:44
 msgid "Signature is embedded?"
@@ -78,125 +108,147 @@ msgstr "ID-ul cheii de semnătură"
 msgid "Signature key present?"
 msgstr "Cheia de semnătură prezentă?"
 
-#: forms.py:64
+#: forms.py:62
 msgid "Key fingerprint"
 msgstr "Amprenta digitală a cheii"
 
-#: forms.py:68
+#: forms.py:66
 msgid "Key creation date"
 msgstr "Data creării cheii"
 
-#: forms.py:73
+#: forms.py:71
 msgid "Key expiration date"
 msgstr "Data expirării cheii"
 
-#: forms.py:78
+#: forms.py:76
 msgid "Key length"
 msgstr "Lungimea cheii"
 
-#: forms.py:82
+#: forms.py:80
 msgid "Key algorithm"
 msgstr "Algoritmul cheii"
 
-#: forms.py:86
+#: forms.py:84
 msgid "Key user ID"
 msgstr "Cod de identificare cheie"
 
-#: forms.py:90
+#: forms.py:88
 msgid "Key type"
 msgstr "Tipul cheii"
 
-#: links.py:30
+#: links.py:40
+#, fuzzy
+#| msgid "Verify key signatures"
+msgid "Refresh all signatures"
+msgstr "Verificați semnăturile cheie"
+
+#: links.py:46
 msgid "Verify all documents"
 msgstr "Verificați toate documentele"
 
-#: links.py:37 links.py:77 queues.py:8
-msgid "Signatures"
-msgstr "Semnături"
-
-#: links.py:43
+#: links.py:53
 msgid "Delete"
 msgstr "Șterge"
 
-#: links.py:50
+#: links.py:60
 msgid "Sign detached"
 msgstr "Semnează detașat"
 
-#: links.py:57
+#: links.py:67
 msgid "Details"
 msgstr "Detalii"
 
-#: links.py:64
+#: links.py:74
 msgid "Download"
 msgstr "Descarcă"
 
-#: links.py:70
+#: links.py:80
 msgid "Sign embedded"
 msgstr "Semnează încorporat"
 
-#: links.py:83
+#: links.py:86 queues.py:8
+msgid "Signatures"
+msgstr "Semnături"
+
+#: links.py:92
 msgid "Upload signature"
 msgstr "Încărcați semnătura"
 
-#: models.py:38
-msgid "Document version"
+#: models.py:42
+#, fuzzy
+#| msgid "Document version"
+msgid "Document file"
 msgstr "Versiune document"
 
-#: models.py:42
-msgid "Date signed"
+#: models.py:47
+#, fuzzy
+#| msgid "Date signed"
+msgid "Date and time signed"
 msgstr "Data semnăturii"
 
-#: models.py:45
+#: models.py:51
 msgid "ID of the key that will be used to sign the document."
 msgstr "ID-ul cheii care va fi folosit pentru semnarea documentului."
 
-#: models.py:55
+#: models.py:61
 msgid "Public key fingerprint"
 msgstr "Amprenta digitală a cheii publice"
 
-#: models.py:62
-msgid "Document version signature"
-msgstr "Semnarea versiunii de document"
+#: models.py:68
+#, fuzzy
+#| msgid "Document signatures"
+msgid "Document file signature"
+msgstr "Document de semnături"
 
-#: models.py:63
-msgid "Document version signatures"
-msgstr "Semnăturile versiunii de document"
+#: models.py:69
+#, fuzzy
+#| msgid "Document signatures"
+msgid "Document file signatures"
+msgstr "Document de semnături"
 
-#: models.py:82
+#: models.py:88
 msgid "Detached"
 msgstr "Detașat"
 
-#: models.py:84
+#: models.py:90
 msgid "Embedded"
 msgstr "Încorporat"
 
-#: models.py:99
-msgid "Document version embedded signature"
-msgstr "Semnătură încorporată a versiunii de document"
-
-#: models.py:100
-msgid "Document version embedded signatures"
-msgstr "Semnături încorporate a versiunii de document"
-
-#: models.py:132
+#: models.py:155
 msgid "Signature file previously generated."
 msgstr "Fișier de semnătură generat anterior."
 
-#: models.py:135
+#: models.py:158
 msgid "Signature file"
 msgstr "Fisier semnătura"
 
-#: models.py:141
-msgid "Document version detached signature"
+#: models.py:164
+#, fuzzy
+#| msgid "Document version detached signature"
+msgid "Document file detached signature"
 msgstr "Semnătură detașată a documentului"
 
-#: models.py:142
-msgid "Document version detached signatures"
+#: models.py:165
+#, fuzzy
+#| msgid "Document version detached signatures"
+msgid "Document file detached signatures"
 msgstr "Semnături detașate a versiunii de document"
 
-#: models.py:145
+#: models.py:168
 msgid "signature"
 msgstr "semnătură"
+
+#: models.py:210
+#, fuzzy
+#| msgid "Document version embedded signature"
+msgid "Document file embedded signature"
+msgstr "Semnătură încorporată a versiunii de document"
+
+#: models.py:211
+#, fuzzy
+#| msgid "Document version embedded signatures"
+msgid "Document file embedded signatures"
+msgstr "Semnături încorporate a versiunii de document"
 
 #: permissions.py:10
 msgid "Sign documents with detached signatures"
@@ -235,16 +287,33 @@ msgid "Unverify key signatures"
 msgstr "Anulați verificarea semnăturilor cheie"
 
 #: queues.py:21
-msgid "Verify document version"
+#, fuzzy
+#| msgid "Verify document version"
+msgid "Verify document file"
 msgstr "Verificați versiunea documentului"
 
 #: queues.py:26
 msgid "Verify missing embedded signature"
 msgstr "Verificați semnatura încorporată lipsă"
 
+#: queues.py:30
+#, fuzzy
+#| msgid "There are no signatures for this document."
+msgid "Refresh existing signature information"
+msgstr "Nu există semnături pentru acest document."
+
+#: serializers.py:60
+#, fuzzy
+#| msgid "Private key that will be used to sign the document version."
+msgid "Primary key of the tag to add to the document."
+msgstr ""
+"Cheie privată care va fi folosită pentru a semna versiunea documentului."
+
 #: settings.py:20
 msgid "Path to the Storage subclass to use when storing detached signatures."
-msgstr "Calea către subclasa de stocare care trebuie utilizată la stocarea semnăturilor detașate."
+msgstr ""
+"Calea către subclasa de stocare care trebuie utilizată la stocarea "
+"semnăturilor detașate."
 
 #: settings.py:27
 msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND."
@@ -254,95 +323,140 @@ msgstr "Parametri de transmis la SIGNATURE_STORAGE_BACKEND."
 msgid ""
 "Unable to initialize the detached signatures storage. Check the settings {} "
 "and {} for formatting errors."
-msgstr "Imposibil de inițializat stocarea de semnături detașate. Verificați setările {} și {} pentru erori de formatare."
+msgstr ""
+"Imposibil de inițializat stocarea de semnături detașate. Verificați setările "
+"{} și {} pentru erori de formatare."
 
 #: storages.py:20
 msgid "Detached signatures"
 msgstr "Semnături detașate"
 
-#: views.py:68 views.py:159
+#: views.py:66 views.py:135
 msgid "Passphrase is needed to unlock this key."
 msgstr "Fraza de acces este necesară pentru a debloca această cheie."
 
-#: views.py:81 views.py:172
+#: views.py:79 views.py:148
 msgid "Passphrase is incorrect."
 msgstr "Fraza de acces este incorectă."
 
-#: views.py:94 views.py:185
-msgid "Document version signed successfully."
+#: views.py:92 views.py:161
+#, fuzzy
+#| msgid "Document version signed successfully."
+msgid "Document file signed successfully."
 msgstr "Versiunea de document a fost semnată cu succes."
 
-#: views.py:125 views.py:223
+#: views.py:102 views.py:178
 msgid "Sign"
 msgstr "Semnați"
 
-#: views.py:127
-#, python-format
-msgid "Sign document version \"%s\" with a detached signature"
+#: views.py:104
+#, fuzzy, python-format
+#| msgid "Sign document version \"%s\" with a detached signature"
+msgid "Sign document file \"%s\" with a detached signature"
 msgstr "Semnează versiunea documentului \"%s\" cu semnătura detașată"
 
-#: views.py:225
-#, python-format
-msgid "Sign document version \"%s\" with a embedded signature"
+#: views.py:180
+#, fuzzy, python-format
+#| msgid "Sign document version \"%s\" with a embedded signature"
+msgid "Sign document file \"%s\" with a embedded signature"
 msgstr "Semnează versiunea documentului \"%s\" cu o semnătura încorporată"
 
-#: views.py:241
+#: views.py:196
 #, python-format
 msgid "Delete detached signature: %s"
 msgstr "Ștergeți semnătura detașată: %s"
 
-#: views.py:271
+#: views.py:226
 #, python-format
 msgid "Details for signature: %s"
 msgstr "Detalii pentru semnătura: %s"
 
-#: views.py:313
+#: views.py:268
 msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
 "document itself or uploaded as a separate file."
-msgstr "Semnăturile vă ajută să furnizați dovezi de autorizare și detectarea fraudelor. Sunt foarte sigure și greu de falsificat. O semnătură poate fi încorporată ca parte a documentului sau încărcată ca fișier separat."
+msgstr ""
+"Semnăturile vă ajută să furnizați dovezi de autorizare și detectarea "
+"fraudelor. Sunt foarte sigure și greu de falsificat. O semnătură poate fi "
+"încorporată ca parte a documentului sau încărcată ca fișier separat."
 
-#: views.py:342
-msgid "There are no signatures for this document."
+#: views.py:297
+#, fuzzy
+#| msgid "There are no signatures for this document."
+msgid "There are no signatures for this document file."
 msgstr "Nu există semnături pentru acest document."
 
-#: views.py:346
-#, python-format
-msgid "Signatures for document version: %s"
+#: views.py:301
+#, fuzzy, python-format
+#| msgid "Signatures for document version: %s"
+msgid "Signatures for document file: %s"
 msgstr "Semnături pentru versiunea documentului: %s"
 
-#: views.py:381
-#, python-format
-msgid "Upload detached signature for document version: %s"
+#: views.py:322
+#, fuzzy, python-format
+#| msgid "Upload detached signature for document version: %s"
+msgid "Upload detached signature for document file: %s"
 msgstr "Încărcați semnătura detașată pentru versiunea documentului: %s"
 
-#: views.py:399
+#: views.py:340 views.py:359
 msgid "On large databases this operation may take some time to execute."
-msgstr "Pe baze de date mari, această operație poate dura ceva timp pentru a executa."
+msgstr ""
+"Pe baze de date mari, această operație poate dura ceva timp pentru a executa."
 
-#: views.py:400
+#: views.py:341
+#, fuzzy
+#| msgid "There are no signatures for this document."
+msgid "Refresh all signatures information?"
+msgstr "Nu există semnături pentru acest document."
+
+#: views.py:351
+#, fuzzy
+#| msgid "Signature verification queued successfully."
+msgid "Signature information refresh queued successfully."
+msgstr "Verificarea semnăturilor a intrat în coada de așteptare."
+
+#: views.py:360
 msgid "Verify all document for signatures?"
 msgstr "Verificați toate documentele pentru semnături?"
 
-#: views.py:410
+#: views.py:370
 msgid "Signature verification queued successfully."
 msgstr "Verificarea semnăturilor a intrat în coada de așteptare."
 
 #: workflow_actions.py:22
-msgid "Private key that will be used to sign the document version."
-msgstr "Cheie privată care va fi folosită pentru a semna versiunea documentului."
+#, fuzzy
+#| msgid "Private key that will be used to sign the document version."
+msgid "Private key that will be used to sign the document file."
+msgstr ""
+"Cheie privată care va fi folosită pentru a semna versiunea documentului."
 
 #: workflow_actions.py:37
 msgid "Sign document (detached)"
 msgstr "Semnare document (detașat)"
 
 #: workflow_actions.py:49
+#, fuzzy
+#| msgid ""
+#| "Document has no version to sign. You might be trying to use this action "
+#| "in an initial state before the created document is yet to be processed."
 msgid ""
-"Document has no version to sign. You might be trying to use this action in "
-"an initial state before the created document is yet to be processed."
-msgstr "Documentul nu are o versiune de semnat. Este posibil să încercați să utilizați această acțiune într-o stare inițială înainte ca documentul creat să fie încă procesat."
+"Document has no file to sign. You might be trying to use this action in an "
+"initial state before the created document is yet to be processed."
+msgstr ""
+"Documentul nu are o versiune de semnat. Este posibil să încercați să "
+"utilizați această acțiune într-o stare inițială înainte ca documentul creat "
+"să fie încă procesat."
 
 #: workflow_actions.py:80
 msgid "Sign document (embedded)"
 msgstr "Semnare document (încorporat)"
+
+#~ msgid "Date"
+#~ msgstr "Data"
+
+#~ msgid "Document version signature"
+#~ msgstr "Semnarea versiunii de document"
+
+#~ msgid "Document version signatures"
+#~ msgstr "Semnăturile versiunii de document"

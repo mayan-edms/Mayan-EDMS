@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Ilya Pavlov <spirkaa@gmail.com>, 2021
@@ -10,17 +10,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2021-03-22 08:11+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/ru/)\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:40
+#: apps.py:37
 msgid "Mailer"
 msgstr "Почта"
 
@@ -38,19 +41,21 @@ msgstr "Письмо отправлено"
 
 #: forms.py:60 forms.py:120
 msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma"
-" or semicolon."
-msgstr "Адрес получателя. Можно указать несколько адресов, разделенных запятой или точкой с запятой."
+"Email address of the recipient. Can be multiple addresses separated by comma "
+"or semicolon."
+msgstr ""
+"Адрес получателя. Можно указать несколько адресов, разделенных запятой или "
+"точкой с запятой."
 
 #: forms.py:62 forms.py:122
 msgid "Email address"
 msgstr "Адрес электронной почты"
 
-#: forms.py:64 workflow_actions.py:36
+#: forms.py:64 workflow_actions.py:72
 msgid "Subject"
 msgstr "Тема"
 
-#: forms.py:66 workflow_actions.py:45
+#: forms.py:66 workflow_actions.py:81
 msgid "Body"
 msgstr "Тело письма"
 
@@ -70,31 +75,31 @@ msgstr "Бэкэнд, используемый для отправки писе�
 msgid "Backend"
 msgstr "Бэкэнд"
 
-#: links.py:16 links.py:26
+#: links.py:20 links.py:28
 msgid "Email document"
 msgstr "Отправить документ"
 
-#: links.py:22 links.py:30
+#: links.py:25 links.py:32
 msgid "Email link"
 msgstr "Отправить ссылку"
 
-#: links.py:35
+#: links.py:38
 msgid "Create mailing profile"
 msgstr "Создать профиль рассылки"
 
-#: links.py:41
+#: links.py:44
 msgid "Delete"
 msgstr "Удалить"
 
-#: links.py:47
+#: links.py:48
 msgid "Edit"
 msgstr "Редактировать"
 
-#: links.py:52
+#: links.py:54
 msgid "Mailing profiles list"
 msgstr "Список профилей рассылки"
 
-#: links.py:57 models.py:56
+#: links.py:58 models.py:56
 msgid "Mailing profiles"
 msgstr "Профили рассылки"
 
@@ -109,7 +114,9 @@ msgid ""
 "\n"
 " --------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr "Документ во вложении: {{document}} -------- Это письмо было отправлено из %(project_title)s (%(project_website)s)"
+msgstr ""
+"Документ во вложении: {{document}} -------- Это письмо было отправлено из "
+"%(project_title)s (%(project_website)s)"
 
 #: literals.py:9
 msgid "Document: {{ document }}"
@@ -122,7 +129,12 @@ msgid ""
 "\n"
 "--------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr "Чтобы получить доступ к документу, перейдите по следующей ссылке: {{ link }}\n\n--------\nЭто письмо было отправлено из %(project_title)s (%(project_website)s)"
+msgstr ""
+"Чтобы получить доступ к документу, перейдите по следующей ссылке: "
+"{{ link }}\n"
+"\n"
+"--------\n"
+"Это письмо было отправлено из %(project_title)s (%(project_website)s)"
 
 #: literals.py:15
 msgid "Link for document: {{ document }}"
@@ -134,9 +146,11 @@ msgstr "От"
 
 #: mailers.py:22 mailers.py:111
 msgid ""
-"The sender's address. Some system will refuse to send messages if this value"
-" is not set."
-msgstr "Адрес отправителя. Некоторые системы откажутся отправлять сообщения, если это значение не установлено или отличается от имени пользователя."
+"The sender's address. Some system will refuse to send messages if this value "
+"is not set."
+msgstr ""
+"Адрес отправителя. Некоторые системы откажутся отправлять сообщения, если "
+"это значение не установлено или отличается от имени пользователя."
 
 #: mailers.py:28
 msgid "Host"
@@ -162,7 +176,10 @@ msgstr "Использовать TLS"
 msgid ""
 "Whether to use a TLS (secure) connection when talking to the SMTP server. "
 "This is used for explicit TLS connections, generally on port 587."
-msgstr "Следует ли использовать соединение TLS (безопасное) при подключении к серверу SMTP. Это используется для явных подключений TLS, обычно на порту 587."
+msgstr ""
+"Следует ли использовать соединение TLS (безопасное) при подключении к "
+"серверу SMTP. Это используется для явных подключений TLS, обычно на порту "
+"587."
 
 #: mailers.py:48
 msgid "Use SSL"
@@ -174,9 +191,15 @@ msgid ""
 "server. In most email documentation this type of TLS connection is referred "
 "to as SSL. It is generally used on port 465. If you are experiencing "
 "problems, see the explicit TLS setting \"Use TLS\". Note that \"Use TLS\" "
-"and \"Use SSL\" are mutually exclusive, so only set one of those settings to"
-" True."
-msgstr "Следует ли использовать неявное соединение TLS (безопасное) при подключении к серверу SMTP. В большей части документации по электронной почте этот тип TLS-соединения называется SSL. Обычно он используется на порту 465. Если у вас возникли проблемы, см. явную настройку TLS \"Использовать TLS\". Обратите внимание, что опции \"Использовать TLS\" и \"Использовать SSL\" являются взаимоисключающими, поэтому следует указать что-то одно."
+"and \"Use SSL\" are mutually exclusive, so only set one of those settings to "
+"True."
+msgstr ""
+"Следует ли использовать неявное соединение TLS (безопасное) при подключении "
+"к серверу SMTP. В большей части документации по электронной почте этот тип "
+"TLS-соединения называется SSL. Обычно он используется на порту 465. Если у "
+"вас возникли проблемы, см. явную настройку TLS \"Использовать TLS\". "
+"Обратите внимание, что опции \"Использовать TLS\" и \"Использовать SSL\" "
+"являются взаимоисключающими, поэтому следует указать что-то одно."
 
 #: mailers.py:60
 msgid "Username"
@@ -186,7 +209,9 @@ msgstr "Имя пользователя"
 msgid ""
 "Username to use for the SMTP server. If empty, authentication won't "
 "attempted."
-msgstr "Имя пользователя для сервера SMTP. Если не указано, проверка подлинности выполняться не будет."
+msgstr ""
+"Имя пользователя для сервера SMTP. Если не указано, проверка подлинности "
+"выполняться не будет."
 
 #: mailers.py:69
 msgid "Password"
@@ -195,9 +220,12 @@ msgstr "Пароль"
 #: mailers.py:72
 msgid ""
 "Password to use for the SMTP server. This setting is used in conjunction "
-"with the username when authenticating to the SMTP server. If either of these"
-" settings is empty, authentication won't be attempted."
-msgstr "Пароль для сервера SMTP. Этот параметр используется вместе с именем пользователя при аутентификации на сервере SMTP. Если не указан любой из этих параметров, проверка подлинности выполняться не будет."
+"with the username when authenticating to the SMTP server. If either of these "
+"settings is empty, authentication won't be attempted."
+msgstr ""
+"Пароль для сервера SMTP. Этот параметр используется вместе с именем "
+"пользователя при аутентификации на сервере SMTP. Если не указан любой из "
+"этих параметров, проверка подлинности выполняться не будет."
 
 #: mailers.py:81
 msgid "Django SMTP backend"
@@ -223,7 +251,9 @@ msgstr "Ярлык"
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
-msgstr "Если отмечено, в форме отправки документов этот профиль будет выбран по умолчанию."
+msgstr ""
+"Если отмечено, в форме отправки документов этот профиль будет выбран по "
+"умолчанию."
 
 #: models.py:39
 msgid "Default"
@@ -249,7 +279,7 @@ msgstr "Параметры бэкэнда"
 msgid "The backend class for this entry."
 msgstr "Класс бэкэнда для этой записи."
 
-#: models.py:209
+#: models.py:232
 msgid "Test email from Mayan EDMS"
 msgstr "Тестовое письмо от Mayan EDMS"
 
@@ -299,7 +329,9 @@ msgstr "Шаблон темы для формы отправки ссылки н
 
 #: settings.py:33
 msgid "Template for the document link email form body text. Can include HTML."
-msgstr "Шаблон тела письма для формы отправки ссылки на документ. Может включать HTML."
+msgstr ""
+"Шаблон тела письма для формы отправки ссылки на документ. Может включать "
+"HTML."
 
 #: validators.py:12
 #, python-format
@@ -314,7 +346,8 @@ msgstr "%(count)d документ поставлен в очередь отпр
 #: views.py:41
 #, python-format
 msgid "%(count)d documents queued for email delivery"
-msgstr "%(count)d документов поставлено в очередь отправки по электронной почте"
+msgstr ""
+"%(count)d документов поставлено в очередь отправки по электронной почте"
 
 #: views.py:52
 msgid "Send"
@@ -323,12 +356,16 @@ msgstr "Отправить"
 #: views.py:98
 #, python-format
 msgid "%(count)d document link queued for email delivery"
-msgstr "%(count)d ссылка на документ поставлена в очередь отправки по электронной почте"
+msgstr ""
+"%(count)d ссылка на документ поставлена в очередь отправки по электронной "
+"почте"
 
 #: views.py:100
 #, python-format
 msgid "%(count)d document links queued for email delivery"
-msgstr "%(count)d ссылок на документы поставлены в очередь отправки по электронной почте"
+msgstr ""
+"%(count)d ссылок на документы поставлены в очередь отправки по электронной "
+"почте"
 
 #: views.py:109
 msgid "New mailing profile backend selection"
@@ -353,7 +390,10 @@ msgstr "Редактировать профиль рассылки: %s"
 msgid ""
 "Mailing profiles are email configurations. Mailing profiles allow sending "
 "documents as attachments or as links via email."
-msgstr "Профили рассылки - это конфигурации электронной почты. Профили рассылки позволяют отправлять документы в виде вложений или ссылок по электронной почте."
+msgstr ""
+"Профили рассылки - это конфигурации электронной почты. Профили рассылки "
+"позволяют отправлять документы в виде вложений или ссылок по электронной "
+"почте."
 
 #: views.py:211
 msgid "No mailing profiles available"
@@ -378,19 +418,70 @@ msgstr "Получатель"
 
 #: workflow_actions.py:28
 msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma"
-" or semicolon. A template can be used to reference properties of the "
-"document."
-msgstr "Адрес получателя. Можно указать несколько адресов, разделенных запятой или точкой с запятой. Можно использовать шаблон для ссылки на свойства документа."
+"Email address of the recipient. Can be multiple addresses separated by comma "
+"or semicolon. A template can be used to reference properties of the document."
+msgstr ""
+"Адрес получателя. Можно указать несколько адресов, разделенных запятой или "
+"точкой с запятой. Можно использовать шаблон для ссылки на свойства документа."
 
-#: workflow_actions.py:39
+#: workflow_actions.py:36
+msgid "CC"
+msgstr ""
+
+#: workflow_actions.py:39 workflow_actions.py:51
+#, fuzzy
+#| msgid ""
+#| "Email address of the recipient. Can be multiple addresses separated by "
+#| "comma or semicolon. A template can be used to reference properties of the "
+#| "document."
+msgid ""
+"Address used in the \"Bcc\" header when sending the email. Can be multiple "
+"addresses separated by comma or semicolon. A template can be used to "
+"reference properties of the document."
+msgstr ""
+"Адрес получателя. Можно указать несколько адресов, разделенных запятой или "
+"точкой с запятой. Можно использовать шаблон для ссылки на свойства документа."
+
+#: workflow_actions.py:48
+msgid "BCC"
+msgstr ""
+
+#: workflow_actions.py:60
+msgid "Reply to"
+msgstr ""
+
+#: workflow_actions.py:63
+#, fuzzy
+#| msgid ""
+#| "Email address of the recipient. Can be multiple addresses separated by "
+#| "comma or semicolon. A template can be used to reference properties of the "
+#| "document."
+msgid ""
+"Address used in the \"Reply-To\" header when sending the email. Can be "
+"multiple addresses separated by comma or semicolon. A template can be used "
+"to reference properties of the document."
+msgstr ""
+"Адрес получателя. Можно указать несколько адресов, разделенных запятой или "
+"точкой с запятой. Можно использовать шаблон для ссылки на свойства документа."
+
+#: workflow_actions.py:75
 msgid "Subject of the email. Can be a string or a template."
 msgstr "Тема письма. Может быть строкой или шаблоном."
 
-#: workflow_actions.py:48
+#: workflow_actions.py:84
 msgid "Body of the email to send. Can be a string or a template."
 msgstr "Тело письма. Может быть строкой или шаблоном."
 
-#: workflow_actions.py:55
+#: workflow_actions.py:90
+msgid "Attachment"
+msgstr ""
+
+#: workflow_actions.py:93
+#, fuzzy
+#| msgid "Send document via email"
+msgid "Attach the document to the mail."
+msgstr "Отправить документ по электронной почте"
+
+#: workflow_actions.py:102
 msgid "Send email"
 msgstr "Отправить письмо"

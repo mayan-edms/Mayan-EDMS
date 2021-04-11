@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # 295005be79b88987cac803400975dbae_87f6b64 <412e4e8df9c702a35ac89972be5f12ff_27148>, 2012
@@ -10,25 +10,26 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2020-12-09 18:51+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
-"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
+"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/bg/)\n"
+"Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:46 events.py:6 models.py:35 models.py:104 permissions.py:5
+#: apps.py:43 events.py:6 models.py:37 models.py:157 permissions.py:5
 msgid "Permissions"
 msgstr "Разрешения"
 
-#: apps.py:99 models.py:142
+#: apps.py:98 models.py:75
 msgid "Group count"
 msgstr "Брой групи"
 
-#: classes.py:85
+#: classes.py:88
 msgid "Insufficient permissions."
 msgstr "Недостатъчни разрешения."
 
@@ -44,15 +45,15 @@ msgstr "Роля създадена"
 msgid "Role edited"
 msgstr "Роля редактирана"
 
-#: links.py:14 links.py:38 models.py:115 views.py:171
+#: links.py:17 links.py:37 models.py:48 views.py:171
 msgid "Roles"
 msgstr "Роли"
 
-#: links.py:21 views.py:51
+#: links.py:23 views.py:51
 msgid "Create new role"
 msgstr "Създайте нова роля"
 
-#: links.py:27
+#: links.py:28
 msgid "Delete"
 msgstr "Изтрийте"
 
@@ -60,41 +61,41 @@ msgstr "Изтрийте"
 msgid "Edit"
 msgstr "Редактиране"
 
-#: links.py:43 models.py:107
+#: links.py:41 models.py:40
 msgid "Groups"
 msgstr "Групи"
 
-#: links.py:50
+#: links.py:47
 msgid "Role permissions"
 msgstr "Разрешения за роли"
 
-#: models.py:26
-msgid "Namespace"
-msgstr "Именно пространство"
-
-#: models.py:27
-msgid "Name"
-msgstr "Име"
-
-#: models.py:34
-msgid "Permission"
-msgstr "Разрешение"
-
-#: models.py:99
+#: models.py:32
 msgid "A short text describing the role."
 msgstr "Кратък текст, описващ ролята."
 
-#: models.py:100 search.py:14
+#: models.py:33 search.py:14
 msgid "Label"
 msgstr "Етикет"
 
-#: models.py:114
+#: models.py:47
 msgid "Role"
 msgstr "Роля"
 
-#: models.py:150
+#: models.py:83
 msgid "Permission count"
 msgstr "Брой разрешения"
+
+#: models.py:148
+msgid "Namespace"
+msgstr "Именно пространство"
+
+#: models.py:149
+msgid "Name"
+msgstr "Име"
+
+#: models.py:156
+msgid "Permission"
+msgstr "Разрешение"
 
 #: permissions.py:8
 msgid "Create roles"
@@ -116,20 +117,21 @@ msgstr "Преглед на роли"
 msgid "Group name"
 msgstr "Име на групата"
 
-#: serializers.py:44
-msgid ""
-"Comma separated list of groups primary keys to add to, or replace in this "
-"role."
-msgstr "Разделен със запетаи списък на групи към които да се добавят основни ключове за добавяне или замяна в тази роля."
+#: serializers.py:31
+msgid "Primary key of the group to add to the role."
+msgstr ""
 
-#: serializers.py:51
-msgid "Comma separated list of permission primary keys to grant to this role."
-msgstr "Разделен със запетаи списък от разрешения които основните ключове да дадат на тази роля."
+#: serializers.py:39
+msgid "Primary key of the group to remove from the role."
+msgstr ""
 
-#: serializers.py:88
-#, python-format
-msgid "No such permission: %s"
-msgstr "Няма такова разрешение: %s"
+#: serializers.py:47
+msgid "Primary key of the permission to add to the role."
+msgstr ""
+
+#: serializers.py:54
+msgid "Primary key of the permission to remove from the role."
+msgstr ""
 
 #: views.py:30
 msgid "Available roles"
@@ -161,7 +163,9 @@ msgstr "Групи за роля: %s"
 msgid ""
 "Add groups to be part of a role. They will inherit the role's permissions "
 "and access controls."
-msgstr "Добавете групи, които да бъдат част от роля. Те ще наследят разрешенията на ролите и контрола за достъп."
+msgstr ""
+"Добавете групи, които да бъдат част от роля. Те ще наследят разрешенията на "
+"ролите и контрола за достъп."
 
 #: views.py:107
 msgid "Available permissions"
@@ -174,7 +178,9 @@ msgstr "Дадени разрешения"
 #: views.py:143
 msgid ""
 "Permissions granted here will apply to the entire system and all objects."
-msgstr "Разрешенията, предоставени тук, ще се прилагат за цялата система и всички обекти."
+msgstr ""
+"Разрешенията, предоставени тук, ще се прилагат за цялата система и всички "
+"обекти."
 
 #: views.py:146
 #, python-format
@@ -187,8 +193,29 @@ msgid ""
 "role permissions for the entire system. Roles can also part of access "
 "controls lists. Access controls list are permissions granted to a role for "
 "specific objects which its group members inherit."
-msgstr "Ролите са групи разрешения. Те съдържат потребителски групи, които наследяват разрешенията за роли за цялата система. Ролите могат също да са част от списъци за контрол на достъпа. Списъкът за контрол на достъпа са разрешения, предоставени на роля за конкретни обекти, които членовете на нейната група наследяват."
+msgstr ""
+"Ролите са групи разрешения. Те съдържат потребителски групи, които "
+"наследяват разрешенията за роли за цялата система. Ролите могат също да са "
+"част от списъци за контрол на достъпа. Списъкът за контрол на достъпа са "
+"разрешения, предоставени на роля за конкретни обекти, които членовете на "
+"нейната група наследяват."
 
 #: views.py:170
 msgid "There are no roles"
 msgstr "Няма роли"
+
+#~ msgid ""
+#~ "Comma separated list of groups primary keys to add to, or replace in this "
+#~ "role."
+#~ msgstr ""
+#~ "Разделен със запетаи списък на групи към които да се добавят основни "
+#~ "ключове за добавяне или замяна в тази роля."
+
+#~ msgid ""
+#~ "Comma separated list of permission primary keys to grant to this role."
+#~ msgstr ""
+#~ "Разделен със запетаи списък от разрешения които основните ключове да "
+#~ "дадат на тази роля."
+
+#~ msgid "No such permission: %s"
+#~ msgstr "Няма такова разрешение: %s"

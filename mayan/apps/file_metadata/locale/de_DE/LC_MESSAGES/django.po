@@ -2,50 +2,51 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Roberto Rosario, 2019
 # Tobias Paepke <tobias.paepke@paepke.net>, 2019
 # Berny <berny@bernhard-marx.de>, 2019
 # Mathias Behrle <mathiasb@m9s.biz>, 2019
 # Ingo Buchholz <ingo.buchholz@takwa.de>, 2020
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Ingo Buchholz <ingo.buchholz@takwa.de>, 2020\n"
-"Language-Team: German (Germany) (https://www.transifex.com/rosarior/teams/13584/de_DE/)\n"
+"Language-Team: German (Germany) (https://www.transifex.com/rosarior/"
+"teams/13584/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin.py:13
 msgid "Label"
 msgstr "Bezeichner"
 
-#: apps.py:49 events.py:6 links.py:17 permissions.py:5 queues.py:7
+#: apps.py:48 events.py:6 links.py:17 permissions.py:5 queues.py:7
 #: settings.py:12
 msgid "File metadata"
 msgstr "Dateimetadaten"
 
-#: apps.py:99 search.py:7 search.py:16
+#: apps.py:98 search.py:11 search.py:22 search.py:33
 msgid "File metadata key"
 msgstr "Dateimetadaten Schlüsselwort"
 
-#: apps.py:103 search.py:11 search.py:20
+#: apps.py:102 search.py:15 search.py:26 search.py:37
 msgid "File metadata value"
 msgstr "Dateimetadaten Wert"
 
-#: apps.py:130
+#: apps.py:129
 msgid "Return the value of a specific file metadata."
 msgstr "Gebe den Wert spezifischer Dateimetadaten zurück."
 
-#: apps.py:131
+#: apps.py:130
 msgid "File metadata value of"
 msgstr "Dateimetadatenwert von"
 
@@ -61,26 +62,30 @@ msgid "EXIF Tool"
 msgstr "EXIF Tool"
 
 #: events.py:10
-msgid "Document version submitted for file metadata processing"
+#, fuzzy
+#| msgid "Document version submitted for file metadata processing"
+msgid "Document file submitted for file metadata processing"
 msgstr "Dokumentenversion für Dateimetadatenverarbeitung eingestellt"
 
 #: events.py:14
-msgid "Document version file metadata processing finished"
+#, fuzzy
+#| msgid "Document version file metadata processing finished"
+msgid "Document file file metadata processing finished"
 msgstr "Verarbeitung von Dateimetadaten für Dokumentenversion beendet"
 
 #: links.py:23
 msgid "Attributes"
 msgstr "Attribute"
 
-#: links.py:30 links.py:33
+#: links.py:30 links.py:35
 msgid "Submit for file metadata"
 msgstr "Für die Verarbeitung von Dateimetadaten einstellen"
 
-#: links.py:40
+#: links.py:42
 msgid "Setup file metadata"
 msgstr "Dateimetadaten einstellen"
 
-#: links.py:45
+#: links.py:47
 msgid "File metadata processing per type"
 msgstr "Dateimetadatenverarbeitung nach Typ"
 
@@ -93,8 +98,10 @@ msgid "Return the specified document file metadata entry."
 msgstr "Gib den Metadatenwert für das angegebene Dokument zurück."
 
 #: methods.py:66
-msgid "Return the specified document version file metadata entry."
-msgstr "Gib den Metadatenwert für die angegebene Dokumentenversion zurück."
+#, fuzzy
+#| msgid "Return the specified document file metadata entry."
+msgid "Return the specified document file file metadata entry."
+msgstr "Gib den Metadatenwert für das angegebene Dokument zurück."
 
 #: models.py:18
 msgid "Driver path"
@@ -129,15 +136,21 @@ msgid "Document types settings"
 msgstr "Einstellungen für Dokumententypen"
 
 #: models.py:74
-msgid "Document version"
-msgstr "Dokumentenversion"
+#, fuzzy
+#| msgid "Document type"
+msgid "Document file"
+msgstr "Dokumententyp"
 
 #: models.py:80 models.py:95
-msgid "Document version driver entry"
+#, fuzzy
+#| msgid "Document version driver entry"
+msgid "Document file driver entry"
 msgstr "Eintrag für den Dokumentenversionstreiber"
 
 #: models.py:81
-msgid "Document version driver entries"
+#, fuzzy
+#| msgid "Document version driver entries"
+msgid "Document file driver entries"
 msgstr "Einträge für die Dokumentenversionstreiber"
 
 #: models.py:88
@@ -181,7 +194,9 @@ msgid "View file metadata"
 msgstr "Dateimetadaten ansehen"
 
 #: queues.py:10
-msgid "Process document version"
+#, fuzzy
+#| msgid "Process document version"
+msgid "Process document file"
 msgstr "Dokumentenversion verarbeiten"
 
 #: settings.py:18
@@ -198,8 +213,8 @@ msgstr "Argumente die an den Treiber übergeben werden."
 
 #: views.py:44
 msgid ""
-"File metadata are the attributes of the document's file. They can range from"
-" camera information used to take a photo to the author that created a file. "
+"File metadata are the attributes of the document's file. They can range from "
+"camera information used to take a photo to the author that created a file. "
 "File metadata are set when the document's file was first created. File "
 "metadata attributes reside in the file itself. They are not the same as the "
 "document metadata, which are user defined and reside in the database."
@@ -212,8 +227,10 @@ msgstr ""
 "festgelegt werden und in der Datenbank abgespeichert werden."
 
 #: views.py:52
-msgid "No file metadata available"
-msgstr ""
+#, fuzzy
+#| msgid "File metadata value"
+msgid "No file metadata available."
+msgstr "Dateimetadaten Wert"
 
 #: views.py:55
 #, python-format
@@ -228,17 +245,21 @@ msgid ""
 msgstr ""
 
 #: views.py:86
-msgid "No file metadata available for this driver"
+msgid "No file metadata available for this driver."
 msgstr ""
 
 #: views.py:90
-#, python-format
-msgid "File metadata attribures for: %(document)s, for driver: %(driver)s"
+#, fuzzy, python-format
+#| msgid "File metadata attribures for: %(document)s, for driver: %(driver)s"
+msgid "File metadata attributes for: %(document_file)s with driver: %(driver)s"
 msgstr "Dateimetadaten für %(document)s für Treiber %(driver)s"
 
 #: views.py:119
-msgid "Submit the selected document to the file metadata queue?"
-msgid_plural "Submit the selected documents to the file metadata queue?"
+#, fuzzy
+#| msgid "Submit the selected document to the file metadata queue?"
+#| msgid_plural "Submit the selected documents to the file metadata queue?"
+msgid "Submit the selected document file to the file metadata queue?"
+msgid_plural "Submit the selected documents files to the file metadata queue?"
 msgstr[0] ""
 "Dokument in die Warteschlange für Dateimetadatenverarbeitung einstellen?"
 msgstr[1] ""
@@ -252,8 +273,7 @@ msgstr "Dateimetadatenverarbeitung für Dokumententyp %s bearbeiten"
 #: views.py:156
 msgid "Submit all documents of a type for file metadata processing."
 msgstr ""
-"Alle Dokumente eines Typs für die Verarbeitung von Dateimetadaten "
-"einstellen."
+"Alle Dokumente eines Typs für die Verarbeitung von Dateimetadaten einstellen."
 
 #: views.py:180
 #, python-format
@@ -261,3 +281,9 @@ msgid "%(count)d documents added to the file metadata processing queue."
 msgstr ""
 "%(count)d Dokumente in die Warteschlange für Metadatenverarbeitung "
 "eingestellt."
+
+#~ msgid "Return the specified document version file metadata entry."
+#~ msgstr "Gib den Metadatenwert für die angegebene Dokumentenversion zurück."
+
+#~ msgid "Document version"
+#~ msgstr "Dokumentenversion"

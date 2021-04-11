@@ -2,23 +2,23 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Hmayag Antonian <hmayag@freemail.gr>, 2019
 # pyrotech <anastasios@tutamail.com>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2017-08-25 00:49+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>, 2021\n"
 "Language-Team: Greek (https://www.transifex.com/rosarior/teams/13584/el/)\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:53 events.py:6 permissions.py:6 settings.py:10
@@ -31,11 +31,11 @@ msgstr ""
 "Μία γεννήτρια που επιστρέφει το αναλυμένο περιεχόμενο των σελίδων του "
 "εγγράφου."
 
-#: apps.py:106 links.py:19 links.py:36 models.py:24 search.py:6 search.py:10
+#: apps.py:106 links.py:21 links.py:43 models.py:24 search.py:10
 msgid "Content"
 msgstr "Περιεχόμενο"
 
-#: apps.py:134 models.py:74
+#: apps.py:135 models.py:74
 msgid "Result"
 msgstr "Αποτέλεσμα"
 
@@ -51,11 +51,15 @@ msgid "Document parsed content deleted"
 msgstr "Το αναλυμένο περιεχόμενο του εγγράφου διαγράφηκε"
 
 #: events.py:14
-msgid "Document version submitted for parsing"
+#, fuzzy
+#| msgid "Document version submitted for parsing"
+msgid "Document file submitted for parsing"
 msgstr "Έκδοση εγγράφου υποβλήθηκε για ανάλυση"
 
 #: events.py:17
-msgid "Document version parsing finished"
+#, fuzzy
+#| msgid "Document version parsing finished"
+msgid "Document file parsing finished"
 msgstr "Ανάλυση έκδοσης εγγράφου ολοκληρώθηκε"
 
 #: forms.py:37
@@ -67,32 +71,34 @@ msgstr "Σελίδα %(page_number)d"
 msgid "Contents"
 msgstr "Περιεχόμενα"
 
-#: links.py:25 links.py:30
+#: links.py:27 links.py:31
 msgid "Delete parsed content"
 msgstr "Διαγραφή αναλυμένου περιεχομένου"
 
-#: links.py:42 links.py:80 views.py:233
-msgid "Parsing errors"
-msgstr "Σφάλματα ανάλυσης"
-
-#: links.py:48
+#: links.py:37
 msgid "Download content"
 msgstr "Λήψη περιεχομένου"
 
-#: links.py:53 links.py:60
+#: links.py:49 links.py:82 views.py:235
+msgid "Parsing errors"
+msgstr "Σφάλματα ανάλυσης"
+
+#: links.py:54 links.py:61
 msgid "Submit for parsing"
 msgstr "Υποβολή προς ανάλυση"
 
-#: links.py:66
+#: links.py:68
 msgid "Setup parsing"
 msgstr "Ρύθμιση ανάλυσης περιεχομένου"
 
-#: links.py:75
+#: links.py:77
 msgid "Parse documents per type"
 msgstr "Ανάλυση εγγράφων ανά τύπο"
 
 #: models.py:18
-msgid "Document page"
+#, fuzzy
+#| msgid "Document page"
+msgid "Document file page"
 msgstr "Σελίδα εγγράφου"
 
 #: models.py:22
@@ -102,11 +108,15 @@ msgstr ""
 "ανάλυσης εγγράφων."
 
 #: models.py:30
-msgid "Document page content"
+#, fuzzy
+#| msgid "Document page content"
+msgid "Document file page content"
 msgstr "Περιεχόμενο σελίδας εγγράφου"
 
 #: models.py:31
-msgid "Document pages contents"
+#, fuzzy
+#| msgid "Document pages contents"
+msgid "Document file page contents"
 msgstr "Περιεχόμενα σελίδων εγγράφου"
 
 #: models.py:43
@@ -126,19 +136,25 @@ msgid "Document types settings"
 msgstr "Ρυθμίσεις τύπων εγγράφου."
 
 #: models.py:69
-msgid "Document version"
-msgstr "Έκδοση εγγράφου"
+#, fuzzy
+#| msgid "Document page"
+msgid "Document file"
+msgstr "Σελίδα εγγράφου"
 
 #: models.py:72
 msgid "Date time submitted"
 msgstr "Ημερομηνία και ώρα υποβολής"
 
 #: models.py:78
-msgid "Document version parse error"
+#, fuzzy
+#| msgid "Document version parse error"
+msgid "Document file parse error"
 msgstr "Σφάλμα ανάλυσης έκδοσης εγγράφου"
 
 #: models.py:79
-msgid "Document version parse errors"
+#, fuzzy
+#| msgid "Document version parse errors"
+msgid "Document file parse errors"
 msgstr "Σφάλματα ανάλυσης έκδοσης εγγράφου"
 
 #: parsers.py:90
@@ -152,24 +168,36 @@ msgid "Cannot find pdftotext executable at: %s"
 msgstr "Δεν βρέθηκε το εκτελέσιμο pdftotext στο: %s"
 
 #: permissions.py:10
-msgid "View the content of a document"
+#, fuzzy
+#| msgid "View the content of a document"
+msgid "View the content of a document file"
 msgstr "Εμφάνiση περιεχομένου ενός εγγράφου"
 
 #: permissions.py:13
+#, fuzzy
+#| msgid "Parse the content of a document"
+msgid "Parse the content of a document file"
+msgstr "Αναλυση του περιεχομένου ενός εγγράφου"
+
+#: permissions.py:16
 msgid "Change document type parsing settings"
 msgstr "Αλλαγή ρυθμίσεων ανάλυσης για τον τύπο εγγράφου"
-
-#: permissions.py:17
-msgid "Parse the content of a document"
-msgstr "Αναλυση του περιεχομένου ενός εγγράφου"
 
 #: queues.py:6
 msgid "Parsing"
 msgstr "Ανάλυση"
 
 #: queues.py:9
-msgid "Document version parsing"
-msgstr "Ανάλυση έκδοσης εγγράφου"
+#, fuzzy
+#| msgid "Document parsing"
+msgid "Document file parsing"
+msgstr "Ανάλυση εγγράφου"
+
+#: search.py:16 search.py:23
+#, fuzzy
+#| msgid "Document page content"
+msgid "Document file content"
+msgstr "Περιεχόμενο σελίδας εγγράφου"
 
 #: settings.py:15
 msgid "Set new document types to perform parsing automatically by default."
@@ -179,64 +207,80 @@ msgstr ""
 
 #: settings.py:21
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF "
-"files."
+"File path to poppler's pdftotext program used to extract text from PDF files."
 msgstr ""
 "Διαδρομή του προγράμματος pdftotext για την εξαγωγή κειμένου από αρχεία PDF."
 
-#: views.py:35
-msgid "Delete the parsed content of the selected document?"
-msgid_plural "Delete the parsed content of the selected documents?"
+#: views.py:39
+#, fuzzy
+#| msgid "Delete the parsed content of the selected document?"
+#| msgid_plural "Delete the parsed content of the selected documents?"
+msgid "Delete the parsed content of the selected document file?"
+msgid_plural "Delete the parsed content of the selected document files?"
 msgstr[0] "Διαγραφή του αναλυμένου περιεχομένου των επιλεγμένων εγγράφων;"
 msgstr[1] "Διαγραφή του αναλυμένου περιεχομένου των επιλεγμένων εγγράφων;"
 
-#: views.py:70
-#, python-format
-msgid "Content for document: %s"
+#: views.py:85
+#, fuzzy, python-format
+#| msgid "Content for document: %s"
+msgid "Content for document file: %s"
 msgstr "Περιεχόμενο για το εγγραφο: %s"
 
-#: views.py:104
-#, python-format
-msgid "Content for document page: %s"
+#: views.py:106
+#, fuzzy, python-format
+#| msgid "Content for document page: %s"
+msgid "Content for document file page: %s"
 msgstr "Περιεχόμενο για σελίδα εγγράφου: %s"
 
-#: views.py:126
-#, python-format
-msgid "Parsing errors for document: %s"
+#: views.py:128
+#, fuzzy, python-format
+#| msgid "Parsing errors for document: %s"
+msgid "Parsing errors for document file: %s"
 msgstr "Σφάλματα ανάλυσης του εγγράφου: %s"
 
-#: views.py:139
-#, python-format
-msgid "%(count)d document added to the parsing queue"
+#: views.py:141
+#, fuzzy, python-format
+#| msgid "%(count)d document added to the parsing queue"
+msgid "%(count)d document file added to the parsing queue"
 msgstr "%(count)d έγγραφο προστέθηκε στην ουρά αναμονής προς ανάλυση"
 
-#: views.py:142
-#, python-format
-msgid "%(count)d documents added to the parsing queue"
+#: views.py:144
+#, fuzzy, python-format
+#| msgid "%(count)d documents added to the parsing queue"
+msgid "%(count)d documents files added to the parsing queue"
 msgstr "%(count)d έγγραφα προστέθηκαν στην ουρά αναμονής προς ανάλυση"
 
-#: views.py:150
-#, python-format
-msgid "Submit %(count)d document to the parsing queue?"
-msgid_plural "Submit %(count)d documents to the parsing queue?"
+#: views.py:152
+#, fuzzy, python-format
+#| msgid "Submit %(count)d document to the parsing queue?"
+#| msgid_plural "Submit %(count)d documents to the parsing queue?"
+msgid "Submit %(count)d document file to the parsing queue?"
+msgid_plural "Submit %(count)d documents files to the parsing queue?"
 msgstr[0] "Υποβολή %(count)d εγγράφων στην ουρά αναμονής;"
 msgstr[1] "Υποβολή %(count)d εγγράφων στην ουρά αναμονής;"
 
-#: views.py:163
-#, python-format
-msgid "Submit document \"%s\" to the parsing queue"
+#: views.py:165
+#, fuzzy, python-format
+#| msgid "Submit document \"%s\" to the parsing queue"
+msgid "Submit document file \"%s\" to the parsing queue"
 msgstr "Υποβολή εγγράφου \"%s\" στην ουρά αναμονής προς ανάλυση"
 
-#: views.py:190
+#: views.py:192
 #, python-format
 msgid "Edit parsing settings for document type: %s."
 msgstr "Τροποποίηση ρυθμίσεων ανάλυσης για έγγραφα τύπου: %s."
 
-#: views.py:200
+#: views.py:202
 msgid "Submit all documents of a type for parsing"
 msgstr "Υποβολή όλων των εγγράφων ενός τύπου προς ανάλυση"
 
-#: views.py:221
+#: views.py:223
 #, python-format
 msgid "%(count)d documents added to the parsing queue."
 msgstr "%(count)d έγγραφα προστέθηκαν στην ουρά αναμονής."
+
+#~ msgid "Document version"
+#~ msgstr "Έκδοση εγγράφου"
+
+#~ msgid "Document version parsing"
+#~ msgstr "Ανάλυση έκδοσης εγγράφου"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2017
@@ -10,17 +10,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2020-03-28 07:23+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/fa/)\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:25 events.py:6 permissions.py:6 settings.py:10
+#: apps.py:32 events.py:6 permissions.py:6 settings.py:10
 msgid "Authentication"
 msgstr "احراز هویت"
 
@@ -32,57 +33,59 @@ msgstr ""
 msgid "User impersonation started"
 msgstr ""
 
-#: forms.py:17
+#: forms.py:20
 msgid "Email"
 msgstr "ایمیل"
 
-#: forms.py:20
+#: forms.py:23
 msgid "Password"
 msgstr "کلمه عبور"
 
-#: forms.py:22 forms.py:89
+#: forms.py:25 forms.py:105
 msgid "Remember me"
 msgstr "مرا به خاطر بسپار"
 
-#: forms.py:25
+#: forms.py:28
 msgid ""
 "Please enter a correct email and password. Note that the password field is "
 "case-sensitive."
-msgstr "لطفا یک ایمیل و کلمه عبور معتبر وارد کنید. توجه کنید که کلمه عبور به حروف کوچک و بزرگ حساس است."
+msgstr ""
+"لطفا یک ایمیل و کلمه عبور معتبر وارد کنید. توجه کنید که کلمه عبور به حروف "
+"کوچک و بزرگ حساس است."
 
-#: forms.py:27
+#: forms.py:30
 msgid "This account is inactive."
 msgstr "این حساب کاربری غیرفعال است."
 
-#: forms.py:78
-msgid "User"
-msgstr "کاربر"
-
-#: forms.py:78
-msgid "User to be impersonated."
-msgstr ""
-
-#: forms.py:82
+#: forms.py:79
 msgid "Permanent"
 msgstr ""
 
-#: forms.py:83
+#: forms.py:80
 msgid "If selected, disables ending impersonation."
 msgstr ""
 
-#: links.py:25
+#: forms.py:91
+msgid "User"
+msgstr "کاربر"
+
+#: links.py:24
 msgid "Logout"
 msgstr "خروج"
 
-#: links.py:30
+#: links.py:29
 msgid "Change password"
 msgstr "تغییر کلمه عبور"
 
-#: links.py:35 views.py:68
+#: links.py:34 views.py:250
 msgid "Impersonate user"
 msgstr ""
 
-#: links.py:40 links.py:47
+#: links.py:39
+msgid "Impersonate"
+msgstr ""
+
+#: links.py:44 links.py:48
 msgid "Set password"
 msgstr "قراردادن رمز عبور"
 
@@ -94,12 +97,14 @@ msgstr ""
 msgid ""
 "Controls the mechanism used to authenticated user. Options are: username, "
 "email"
-msgstr "کنترل مکانیزم مورد استفاده برای تأیید هویت کاربر. گزینه ها عبارتند از: نام کاربری، ایمیل"
+msgstr ""
+"کنترل مکانیزم مورد استفاده برای تأیید هویت کاربر. گزینه ها عبارتند از: نام "
+"کاربری، ایمیل"
 
 #: settings.py:22
 msgid ""
-"Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
-" in. Value is time in seconds."
+"Maximum time a user clicking the \"Remember me\" checkbox will remain logged "
+"in. Value is time in seconds."
 msgstr ""
 
 #: settings.py:29
@@ -108,16 +113,28 @@ msgid ""
 "the password reset."
 msgstr ""
 
-#: templates/authentication/login.html:11
+#: templates/authentication/app/viewport.html:11
+#, python-format
+msgid ""
+"\n"
+"                Impersonating user \"%(user)s\".\n"
+"            "
+msgstr ""
+
+#: templates/authentication/app/viewport.html:14
+msgid "Click here when finished"
+msgstr ""
+
+#: templates/authentication/login.html:10
 msgid "Login"
 msgstr "لاگین"
 
-#: templates/authentication/login.html:23
-#: templates/authentication/login.html:32
+#: templates/authentication/login.html:21
+#: templates/authentication/login.html:30
 msgid "Sign in"
 msgstr "ورود"
 
-#: templates/authentication/login.html:39
+#: templates/authentication/login.html:37
 msgid "Forgot your password?"
 msgstr "رمز عبور خود را فراموش کرده اید؟"
 
@@ -139,7 +156,7 @@ msgid "Login page"
 msgstr "صفحه ورود"
 
 #: templates/authentication/password_reset_confirm.html:29
-#: templates/authentication/password_reset_form.html:29 views.py:212
+#: templates/authentication/password_reset_form.html:29 views.py:177
 msgid "Submit"
 msgstr "ارسال"
 
@@ -147,51 +164,57 @@ msgstr "ارسال"
 msgid "Password reset email sent!"
 msgstr "ایمیل فرستادن تنظیم مجدد"
 
-#: views.py:121
+#: views.py:86
 msgid "Your password has been successfully changed."
 msgstr "کلمه عبور شما با موفقیت عوض شد."
 
-#: views.py:128
+#: views.py:93
 msgid "Current user password change"
 msgstr "تغییر کلمه عبور کاربر جاری"
 
-#: views.py:136
+#: views.py:101
 msgid "Changing the password is not allowed for this account."
 msgstr ""
 
-#: views.py:203
+#: views.py:168
 #, python-format
 msgid "Password change request performed on %(count)d user"
 msgstr "درخواست تغییر رمز عبور بر روی کاربر %(count)d انجام می شود"
 
-#: views.py:205
+#: views.py:170
 #, python-format
 msgid "Password change request performed on %(count)d users"
 msgstr "درخواست تغییر رمز عبور بر روی کاربران %(count)d انجام شد"
 
-#: views.py:214
+#: views.py:179
 msgid "Change user password"
 msgid_plural "Change users passwords"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:224
+#: views.py:189
 #, python-format
 msgid "Change password for user: %s"
 msgstr "تغییر رمز عبور برای کاربر: %s"
 
-#: views.py:244
-msgid ""
-"Super user and staff user password reseting is not allowed, use the admin "
-"interface for these cases."
-msgstr "بازپروری کاربر با کاربر و کارکنان فوق العاده مجاز نیست، از رابط کاربری مدیریت برای این موارد استفاده کنید."
-
-#: views.py:254
+#: views.py:210
 #, python-format
 msgid "Successful password reset for user: %s."
 msgstr ""
 
-#: views.py:260
+#: views.py:216
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "خطای بازنشانی گذرواژه کاربر «%(user)s»: %(error)s"
+
+#: views.py:278
+#, python-format
+msgid "Impersonate user: %s"
+msgstr ""
+
+#~ msgid ""
+#~ "Super user and staff user password reseting is not allowed, use the admin "
+#~ "interface for these cases."
+#~ msgstr ""
+#~ "بازپروری کاربر با کاربر و کارکنان فوق العاده مجاز نیست، از رابط کاربری "
+#~ "مدیریت برای این موارد استفاده کنید."

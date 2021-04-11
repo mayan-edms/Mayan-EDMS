@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2020-05-25 06:18+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
@@ -34,11 +34,11 @@ msgstr ""
 msgid "Value"
 msgstr ""
 
-#: classes.py:336
+#: classes.py:338
 msgid "Overridden"
 msgstr ""
 
-#: classes.py:338
+#: classes.py:340
 msgid "Is this settings being overridden by an environment variable?"
 msgstr ""
 
@@ -331,6 +331,16 @@ msgid ""
 "servers (e.g. runserver) will use. The django-admin startproject management "
 "command will create a simple wsgi.py file with an application callable in "
 "it, and point this setting to that application."
+msgstr ""
+
+#: templates/smart_settings/app/viewport.html:9
+msgid "Warning"
+msgstr ""
+
+#: templates/smart_settings/app/viewport.html:9
+msgid ""
+"Settings updated, restart your installation and refresh your browser for "
+"changes to take effect."
 msgstr ""
 
 #: views.py:21

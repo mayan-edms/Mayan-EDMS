@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015-2016
@@ -19,124 +19,121 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:131 permissions.py:5 settings.py:13
+#: apps.py:125 permissions.py:5 settings.py:15
 msgid "Common"
 msgstr "Allgemein"
 
-#: classes.py:456
+#: classes.py:408
 msgid "Model properties"
 msgstr "Modelleigenschaften"
 
-#: classes.py:461
+#: classes.py:413
 msgid "Model fields"
 msgstr "Modellfelder"
 
-#: classes.py:504
+#: classes.py:456
 msgid "Model related fields"
 msgstr "Verknüpfte Felder des Modells"
 
-#: classes.py:509
+#: classes.py:461
 msgid "Model reverse fields"
 msgstr ""
 
-#: dependencies.py:195
+#: dependencies.py:168
 msgid "Used to allow offline translation of the code text strings."
 msgstr "Ermöglicht die Offline Übersetzung von Zeichenketten im Code."
 
-#: dependencies.py:204
+#: dependencies.py:177
 msgid "Provides style checking."
 msgstr "Ermöglicht Stilüberprüfung."
 
-#: dependencies.py:209
+#: dependencies.py:182
 msgid "Command line environment with autocompletion."
 msgstr "Kommandozeilenumgebung mit Autovervollständigung."
 
-#: dependencies.py:214
+#: dependencies.py:187
 msgid "Checks proper formatting of the README file."
 msgstr "Überprüft die korrekte Formatierung der README-Datei."
 
-#: links.py:31
+#: links.py:30
 msgid "About this"
 msgstr "Über Mayan"
 
-#: links.py:34
+#: links.py:33
 msgid "Get the book"
 msgstr "Holen Sie sich das Buch"
 
-#: links.py:39
-msgid "Locale profile"
-msgstr "Lokalisierungsprofil"
-
-#: links.py:44
-msgid "Edit locale profile"
-msgstr "Lokalisierungsprofil bearbeiten"
-
-#: links.py:49
+#: links.py:38
 msgid "Documentation"
 msgstr "Dokumentation"
 
-#: links.py:52
+#: links.py:41
 msgid "Forum"
 msgstr "Forum"
 
-#: links.py:56 views.py:106
+#: links.py:45 views.py:48
 msgid "License"
 msgstr "Lizenz"
 
-#: links.py:61
+#: links.py:50
 msgid "Copy"
 msgstr ""
 
-#: links.py:64
+#: links.py:53
 msgid "Setup"
 msgstr "Einrichtung"
 
-#: links.py:67
+#: links.py:56
 msgid "Source code"
 msgstr "Quelltext"
 
-#: links.py:71
+#: links.py:60
 msgid "Online store"
 msgstr "Online-Shop"
 
-#: links.py:75
+#: links.py:64
 msgid "Get support"
 msgstr "Support erhalten"
 
-#: links.py:79 queues.py:9 views.py:175
+#: links.py:68 queues.py:9 views.py:122
 msgid "Tools"
 msgstr "Werkzeuge"
 
-#: literals.py:18
+#: literals.py:20
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
-msgstr "Diese Funktion ist veraltet und wird in einer zukünftigen Version entfernt."
+msgstr ""
+"Diese Funktion ist veraltet und wird in einer zukünftigen Version entfernt."
 
-#: literals.py:21
+#: literals.py:23
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
-msgstr "Sie benutzen SQLite als Datenbank-Backend. SQLite sollte nur für Entwicklungs- und Testzwecke verwendet werden, jedoch nicht in Produktivumgebungen."
+msgstr ""
+"Sie benutzen SQLite als Datenbank-Backend. SQLite sollte nur für "
+"Entwicklungs- und Testzwecke verwendet werden, jedoch nicht in "
+"Produktivumgebungen."
 
-#: literals.py:30
+#: literals.py:32
 msgid "Days"
 msgstr "Tage"
 
-#: literals.py:31
+#: literals.py:33
 msgid "Hours"
 msgstr "Stunden"
 
-#: literals.py:32
+#: literals.py:34
 msgid "Minutes"
 msgstr "Minuten"
 
@@ -160,25 +157,13 @@ msgstr ""
 msgid "Secondary"
 msgstr "Sekundär"
 
-#: menus.py:21 models.py:25
+#: menus.py:18
+msgid "Return"
+msgstr ""
+
+#: menus.py:22
 msgid "User"
 msgstr "Benutzer"
-
-#: models.py:29
-msgid "Timezone"
-msgstr "Zeitzone"
-
-#: models.py:32
-msgid "Language"
-msgstr "Sprache"
-
-#: models.py:38
-msgid "User locale profile"
-msgstr "Benutzerlokalisierungsprofil"
-
-#: models.py:39
-msgid "User locale profiles"
-msgstr "Benutzerlokalisierungsprofile"
 
 #: permissions.py:8
 msgid "Copy object"
@@ -188,108 +173,173 @@ msgstr ""
 msgid "Default"
 msgstr "Standard"
 
-#: settings.py:19
+#: settings.py:22
 msgid ""
-"Time to delay background tasks that depend on a database commit to "
-"propagate."
-msgstr "Zeit für die Verzögerung von Hintergrundaufgaben, die für ihre Fortsetzung auf einen Datenbankcommit warten."
+"In list mode, show the \"list facet\" menu options as a dropdown menu "
+"instead of individual buttons."
+msgstr ""
 
-#: settings.py:26
+#: settings.py:30
+msgid ""
+"In list mode, show the \"object\" menu options as a dropdown menu instead of "
+"individual buttons."
+msgstr ""
+
+#: settings.py:37
+msgid ""
+"Time to delay background tasks that depend on a database commit to propagate."
+msgstr ""
+"Zeit für die Verzögerung von Hintergrundaufgaben, die für ihre Fortsetzung "
+"auf einen Datenbankcommit warten."
+
+#: settings.py:44
+#, fuzzy
+#| msgid ""
+#| "A list of strings designating all applications that are to be removed "
+#| "from the list normally installed by Mayan EDMS. Each string should be a "
+#| "dotted Python path to: an application configuration class (preferred), or "
+#| "a package containing an application."
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package"
-" containing an application."
-msgstr "Eine Liste mit Strings aller Applikationen, welche für diese Django-Installation aktiviert sind. Jede Zeichenfolge muss ein punktuierter Pythonpfad zu einer Anwendungskonfigurationsklasse (bevorzugt) oder einem Anwendungspaket sein."
+"Python path to: an application configuration class (preferred), or a package "
+"containing an application. Example: ['app_1', 'app_2']"
+msgstr ""
+"Eine Liste mit Strings aller Applikationen, welche für diese Django-"
+"Installation aktiviert sind. Jede Zeichenfolge muss ein punktuierter "
+"Pythonpfad zu einer Anwendungskonfigurationsklasse (bevorzugt) oder einem "
+"Anwendungspaket sein."
 
-#: settings.py:36
+#: settings.py:54
+#, fuzzy
+#| msgid ""
+#| "A list of strings designating all applications that are installed beyond "
+#| "those normally installed by Mayan EDMS. Each string should be a dotted "
+#| "Python path to: an application configuration class (preferred), or a "
+#| "package containing an application."
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package"
-" containing an application."
-msgstr "Eine Liste von Strings, die alle Anwendungen angeben, die über die normalerweise von Mayan EDMS installierten Anwendungen hinaus installiert wurden. Jede Zeichenfolge sollte ein punktuierter Python-Pfad sein zu: einer Anwendungskonfigurationsklasse (bevorzugt) oder einem Paket, das eine Anwendung enthält."
+"Python path to: an application configuration class (preferred), or a package "
+"containing an application. Example: ['app_1', 'app_2']"
+msgstr ""
+"Eine Liste von Strings, die alle Anwendungen angeben, die über die "
+"normalerweise von Mayan EDMS installierten Anwendungen hinaus installiert "
+"wurden. Jede Zeichenfolge sollte ein punktuierter Python-Pfad sein zu: einer "
+"Anwendungskonfigurationsklasse (bevorzugt) oder einem Paket, das eine "
+"Anwendung enthält."
 
-#: settings.py:45
+#: settings.py:64
 msgid ""
-"Name of the view attached to the brand anchor in the main menu. This is also"
-" the view to which users will be redirected after log in."
-msgstr "Name des Formulars, das mit dem Markenanker im Hauptmenü verknüpft ist. Zu diesem Formular werden die Benutzer auch nach dem Anmeldevorgang weitergeleitet."
+"Name of the view attached to the brand anchor in the main menu. This is also "
+"the view to which users will be redirected after log in."
+msgstr ""
+"Name des Formulars, das mit dem Markenanker im Hauptmenü verknüpft ist. Zu "
+"diesem Formular werden die Benutzer auch nach dem Anmeldevorgang "
+"weitergeleitet."
 
-#: settings.py:53
+#: settings.py:72
 msgid "Name to be displayed in the main menu."
 msgstr "Der im Hauptmenü angezeigte Name."
 
-#: settings.py:59
+#: settings.py:78
 msgid "URL of the installation or homepage of the project."
 msgstr "Die URL der Installation oder Webseite des Projekts."
 
-#: settings.py:64
+#: settings.py:83
 msgid "Base URL path to use for all views."
 msgstr "Basis-URL-Pfad für alle Seiten."
 
-#: validators.py:44
+#: templates/common/app/viewport.html:9
+msgid "Warning"
+msgstr ""
+
+#: templates/common/app/viewport.html:21
+msgid "Click here to fix this."
+msgstr ""
+
+#: validators.py:41
 msgid "Enter a valid JSON value."
 msgstr "Geben Sie einen gültigen JSON-Wert ein."
 
-#: validators.py:68
+#: validators.py:65
 msgid "Enter a valid YAML value."
 msgstr "Geben Sie einen gültigen YAML-Wert ein."
 
-#: validators.py:84
+#: validators.py:81
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
-msgstr "Bitte geben Sie einen gültigen 'Internen Namen' an, bestehend aus Buchstaben, Zahlen und einem Unterstrich."
+msgstr ""
+"Bitte geben Sie einen gültigen 'Internen Namen' an, bestehend aus "
+"Buchstaben, Zahlen und einem Unterstrich."
 
-#: views.py:29
+#: views.py:22
 msgid "About"
 msgstr "Über"
 
-#: views.py:42
-msgid "Current user locale profile details"
-msgstr "Aktuelle Benutzerlokalisierungsdetails"
-
-#: views.py:48
-msgid "Edit current user locale profile details"
-msgstr "Aktuelle Benutzerlokalisierungsdetails bearbeiten"
-
-#: views.py:97
+#: views.py:39
 msgid "Dashboard"
 msgstr "Dashboard"
 
-#: views.py:118
+#: views.py:62
 #, python-format
 msgid "Fields to be copied: %s"
 msgstr ""
 
-#: views.py:127
+#: views.py:72
 #, python-format
 msgid "Make a copy of %(object_name)s \"%(object)s\"?"
 msgstr ""
 
-#: views.py:136
+#: views.py:83
 msgid "Object copied successfully."
 msgstr ""
 
-#: views.py:153
+#: views.py:100
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
-msgstr "Falls keine Ergebnisse angezeigt werden besitzen Sie nicht die erforderlichen Rechte für administrative Aufgaben."
+msgstr ""
+"Falls keine Ergebnisse angezeigt werden besitzen Sie nicht die "
+"erforderlichen Rechte für administrative Aufgaben."
 
-#: views.py:156
+#: views.py:103
 msgid "No setup options available."
 msgstr "Keine Einstellungsoptionen verfügbar."
 
-#: views.py:160
+#: views.py:107
 msgid "Setup items"
 msgstr "Einrichtungsdetails"
 
-#: views.py:162
+#: views.py:109
 msgid "Here you can configure all aspects of the system."
 msgstr "Hier können sämtliche Aspekte des Systems konfiguriert werden."
 
-#: views.py:177
+#: views.py:124
 msgid "These modules are used to do system maintenance."
 msgstr "Diese Module werden für die Wartung des Systems verwendet."
+
+#~ msgid "Locale profile"
+#~ msgstr "Lokalisierungsprofil"
+
+#~ msgid "Edit locale profile"
+#~ msgstr "Lokalisierungsprofil bearbeiten"
+
+#~ msgid "Timezone"
+#~ msgstr "Zeitzone"
+
+#~ msgid "Language"
+#~ msgstr "Sprache"
+
+#~ msgid "User locale profile"
+#~ msgstr "Benutzerlokalisierungsprofil"
+
+#~ msgid "User locale profiles"
+#~ msgstr "Benutzerlokalisierungsprofile"
+
+#~ msgid "Current user locale profile details"
+#~ msgstr "Aktuelle Benutzerlokalisierungsdetails"
+
+#~ msgid "Edit current user locale profile details"
+#~ msgstr "Aktuelle Benutzerlokalisierungsdetails bearbeiten"

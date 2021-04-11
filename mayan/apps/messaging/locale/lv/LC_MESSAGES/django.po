@@ -1,0 +1,216 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
+"2);\n"
+
+#: apps.py:34 events.py:5 permissions.py:5
+msgid "Messaging"
+msgstr ""
+
+#: apps.py:56
+msgid "None"
+msgstr ""
+
+#: apps.py:62
+msgid "Sender"
+msgstr ""
+
+#: events.py:8
+msgid "Message created"
+msgstr ""
+
+#: events.py:11
+msgid "Message edited"
+msgstr ""
+
+#: forms.py:9 models.py:38
+msgid "Body"
+msgstr ""
+
+#: links.py:28 views.py:33
+msgid "Create message"
+msgstr ""
+
+#: links.py:31 links.py:37
+msgid "Delete"
+msgstr ""
+
+#: links.py:45 links.py:49
+msgid "Mark as read"
+msgstr ""
+
+#: links.py:53
+msgid "Mark all as read"
+msgstr ""
+
+#: models.py:30
+msgid "User"
+msgstr ""
+
+#: models.py:33
+msgid "Short description of this message."
+msgstr ""
+
+#: models.py:34
+msgid "Subject"
+msgstr ""
+
+#: models.py:37
+msgid "The actual content of the message."
+msgstr ""
+
+#: models.py:42
+msgid "This field determines if the message has been read or not."
+msgstr ""
+
+#: models.py:43
+msgid "Read"
+msgstr ""
+
+#: models.py:47
+msgid "Date and time of the message creation."
+msgstr ""
+
+#: models.py:48
+msgid "Creation date and time"
+msgstr ""
+
+#: models.py:53
+msgid "Message"
+msgstr ""
+
+#: models.py:54 views.py:121
+msgid "Messages"
+msgstr ""
+
+#: models.py:70
+msgid "Label"
+msgstr ""
+
+#: models.py:91
+#, python-format
+msgid "Template error; %(exception)s"
+msgstr ""
+
+#: permissions.py:8
+msgid "Create messages"
+msgstr ""
+
+#: permissions.py:11
+msgid "Delete messages"
+msgstr ""
+
+#: permissions.py:14
+msgid "View messages"
+msgstr ""
+
+#: views.py:34
+msgid "Send"
+msgstr ""
+
+#: views.py:46
+#, python-format
+msgid "Error deleting message \"%(instance)s\"; %(exception)s"
+msgstr ""
+
+#: views.py:50
+#, python-format
+msgid "Message \"%(object)s\" deleted successfully."
+msgstr ""
+
+#: views.py:51
+#, python-format
+msgid "%(count)d message deleted successfully."
+msgstr ""
+
+#: views.py:52
+#, python-format
+msgid "%(count)d messages deleted successfully."
+msgstr ""
+
+#: views.py:53
+#, python-format
+msgid "Delete message: %(object)s."
+msgstr ""
+
+#: views.py:54
+#, python-format
+msgid "Delete the %(count)d selected message."
+msgstr ""
+
+#: views.py:55
+#, python-format
+msgid "Delete the %(count)d selected messages."
+msgstr ""
+
+#: views.py:88
+#, python-format
+msgid "Details of message: %s"
+msgstr ""
+
+#: views.py:116
+msgid "Here you will find text messages from other users or from the system."
+msgstr ""
+
+#: views.py:119
+msgid "There are no messages"
+msgstr ""
+
+#: views.py:130
+#, python-format
+msgid "Error marking message \"%(instance)s\" as read; %(exception)s"
+msgstr ""
+
+#: views.py:136
+#, python-format
+msgid "Message \"%(object)s\" marked as read successfully."
+msgstr ""
+
+#: views.py:139
+#, python-format
+msgid "%(count)d message marked as read successfully."
+msgstr ""
+
+#: views.py:142
+#, python-format
+msgid "%(count)d messages marked as read successfully."
+msgstr ""
+
+#: views.py:144
+#, python-format
+msgid "Mark the message \"%(object)s\" as read."
+msgstr ""
+
+#: views.py:145
+#, python-format
+msgid "Mark the %(count)d selected message as read."
+msgstr ""
+
+#: views.py:146
+#, python-format
+msgid "Mark the %(count)d selected messages as read."
+msgstr ""
+
+#: views.py:172
+msgid "Mark all message as read?"
+msgstr ""
+
+#: views.py:188
+msgid "All messages marked as read."
+msgstr ""

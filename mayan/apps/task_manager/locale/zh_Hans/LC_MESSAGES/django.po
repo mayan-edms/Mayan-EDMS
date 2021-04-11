@@ -2,22 +2,23 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Roberto Rosario, 2020
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2017-06-30 22:04+0000\n"
 "Last-Translator: Roberto Rosario, 2020\n"
-"Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/teams/13584/zh-Hans/)\n"
+"Language-Team: Chinese Simplified (https://www.transifex.com/rosarior/"
+"teams/13584/zh-Hans/)\n"
+"Language: zh-Hans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh-Hans\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:24 links.py:10 permissions.py:5
@@ -78,13 +79,14 @@ msgstr ""
 
 #: settings.py:21
 msgid ""
-"Default: \"amqp://\". Default broker URL. This must be a URL in the form of:"
-" transport://userid:password@hostname:port/virtual_host Only the scheme part"
-" (transport://) is required, the rest is optional, and defaults to the "
+"Default: \"amqp://\". Default broker URL. This must be a URL in the form of: "
+"transport://userid:password@hostname:port/virtual_host Only the scheme part "
+"(transport://) is required, the rest is optional, and defaults to the "
 "specific transports default values."
 msgstr ""
-"默认值：“amqp：//”。默认代理URL。这必须是以下形式的URL：transport:// userid:password @ "
-"hostname:port / virtual_host只需要方案部分（transport://），其余部分是可选的，默认为特定传输的默认值。"
+"默认值：“amqp：//”。默认代理URL。这必须是以下形式的URL：transport:// userid:"
+"password @ hostname:port / virtual_host只需要方案部分（transport://），其余部"
+"分是可选的，默认为特定传输的默认值。"
 
 #: settings.py:30
 msgid ""
@@ -95,12 +97,11 @@ msgstr ""
 #: settings.py:38
 msgid ""
 "Default: No result backend enabled by default. The backend used to store "
-"task results (tombstones). Refer to "
-"http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-"
-"backend"
+"task results (tombstones). Refer to http://docs.celeryproject.org/en/v4.1.0/"
+"userguide/configuration.html#result-backend"
 msgstr ""
-"默认值：默认情况下未启用结果后端。后端用于存储任务结果（墓碑）。请参阅http://docs.celeryproject.org/en/v4.1.0/userguide/configuration.html"
-"#result-backend"
+"默认值：默认情况下未启用结果后端。后端用于存储任务结果（墓碑）。请参阅http://"
+"docs.celeryproject.org/en/v4.1.0/userguide/configuration.html#result-backend"
 
 #: tests/literals.py:3
 msgid "Test queue"

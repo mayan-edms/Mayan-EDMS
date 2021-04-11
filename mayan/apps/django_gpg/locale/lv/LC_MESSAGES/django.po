@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Māris Teivāns <maris.teivans@gmail.com>, 2019
@@ -9,45 +9,47 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2020-04-14 08:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
+"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/lv/)\n"
+"Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: lv\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
+"2);\n"
 
-#: apps.py:30
+#: apps.py:33
 msgid "Django GPG"
 msgstr "Django GPG"
 
-#: apps.py:46 apps.py:52 forms.py:15
+#: apps.py:56 apps.py:62 forms.py:15
 msgid "Key ID"
 msgstr "Atslēgas ID"
 
-#: apps.py:56 forms.py:32 models.py:53
+#: apps.py:66 forms.py:32 models.py:59
 msgid "Type"
 msgstr "Tips"
 
-#: apps.py:60 forms.py:21 models.py:34
+#: apps.py:70 forms.py:21 models.py:40
 msgid "Creation date"
 msgstr "Izveidošanas datums"
 
-#: apps.py:64
+#: apps.py:74
 msgid "No expiration"
 msgstr "Nav beidzies derīguma termiņš"
 
-#: apps.py:65 forms.py:25 models.py:38
+#: apps.py:75 forms.py:25 models.py:44
 msgid "Expiration date"
 msgstr "Derīguma termiņš"
 
-#: apps.py:68 forms.py:30 models.py:45
+#: apps.py:78 forms.py:30 models.py:51
 msgid "Length"
 msgstr "Garums"
 
-#: apps.py:73 forms.py:17 models.py:50
+#: apps.py:83 forms.py:17 models.py:56
 msgid "User ID"
 msgstr "Lietotāja ID"
 
@@ -55,15 +57,31 @@ msgstr "Lietotāja ID"
 msgid "GNU privacy guard - a PGP implementation."
 msgstr ""
 
+#: events.py:5 links.py:42 permissions.py:5
+msgid "Key management"
+msgstr "Atslēgu pārvaldība"
+
+#: events.py:8
+#, fuzzy
+#| msgid "Key data"
+msgid "Key created"
+msgstr "Galvenie dati"
+
+#: events.py:12
+#, fuzzy
+#| msgid "Download"
+msgid "Key downloaded"
+msgstr "Lejupielādēt"
+
 #: forms.py:26
 msgid "None"
 msgstr "Nav neviens"
 
-#: forms.py:29 models.py:42
+#: forms.py:29 models.py:48
 msgid "Fingerprint"
 msgstr "Pirkstu nospiedumi"
 
-#: forms.py:31 models.py:48
+#: forms.py:31 models.py:54
 msgid "Algorithm"
 msgstr "Algoritms"
 
@@ -95,19 +113,15 @@ msgstr "Vaicājumu atslēgas serveri"
 msgid "Import"
 msgstr "Importēt"
 
-#: links.py:42 permissions.py:5
-msgid "Key management"
-msgstr "Atslēgu pārvaldība"
-
 #: links.py:46
 msgid "Upload key"
 msgstr "Augšupielādes atslēga"
 
-#: links.py:50 views.py:180
+#: links.py:50 views.py:194
 msgid "Private keys"
 msgstr "Privātās atslēgas"
 
-#: links.py:54 views.py:204
+#: links.py:54 views.py:218
 msgid "Public keys"
 msgstr "Publiskās atslēgas"
 
@@ -145,7 +159,8 @@ msgstr "Paraksta kļūda."
 
 #: literals.py:72
 msgid "Document is signed but no public key is available for verification."
-msgstr "Dokuments ir parakstīts, bet verifikācijai nav pieejama publiska atslēga."
+msgstr ""
+"Dokuments ir parakstīts, bet verifikācijai nav pieejama publiska atslēga."
 
 #: literals.py:77
 msgid "Document is signed, and signature is good."
@@ -155,27 +170,27 @@ msgstr "Dokuments ir parakstīts, un paraksts ir labs."
 msgid "Document is signed with a valid signature."
 msgstr "Dokumentu paraksta ar derīgu parakstu."
 
-#: models.py:30
+#: models.py:36
 msgid "ASCII armored version of the key."
 msgstr "ASCII bruņu versija."
 
-#: models.py:31
+#: models.py:37
 msgid "Key data"
 msgstr "Galvenie dati"
 
-#: models.py:59
+#: models.py:65
 msgid "Key"
 msgstr "Atslēga"
 
-#: models.py:60
+#: models.py:66
 msgid "Keys"
 msgstr "Taustiņi"
 
-#: models.py:72
+#: models.py:78
 msgid "Invalid key data"
 msgstr "Nederīgi galvenie dati"
 
-#: models.py:75
+#: models.py:81
 msgid "Key already exists."
 msgstr "Atslēga jau eksistē."
 
@@ -215,78 +230,83 @@ msgstr ""
 msgid "Keyserver used to query for keys."
 msgstr "Keyserver izmantoja atslēgvārdu vaicājumam."
 
-#: views.py:36
+#: views.py:39
 #, python-format
 msgid "Delete key: %s"
 msgstr "Dzēst taustiņu: %s"
 
-#: views.py:53
+#: views.py:56
 #, python-format
 msgid "Details for key: %s"
 msgstr "Sīkāka informācija par atslēgu: %s"
 
-#: views.py:75
+#: views.py:84
 #, python-format
 msgid "Import key ID: %s?"
 msgstr "Importēt atslēgas ID: %s?"
 
-#: views.py:76
+#: views.py:85
 msgid "Import key"
 msgstr "Importēt atslēgu"
 
-#: views.py:85
+#: views.py:94
 #, python-format
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr "Nevar importēt atslēgu: %(key_id)s; %(error)s"
 
-#: views.py:93
+#: views.py:102
 #, python-format
 msgid "Successfully received key: %(key_id)s"
 msgstr "Veiksmīgi saņemtais taustiņš: %(key_id)s"
 
-#: views.py:110
+#: views.py:119
 msgid ""
 "Use names, last names, key ids or emails to search public keys to import "
 "from the keyserver."
-msgstr "Izmantojiet vārdus, uzvārdus, atslēgas ID vai e-pastus, lai meklētu publiskās atslēgas, lai importētu no atslēgas servera."
+msgstr ""
+"Izmantojiet vārdus, uzvārdus, atslēgas ID vai e-pastus, lai meklētu "
+"publiskās atslēgas, lai importētu no atslēgas servera."
 
-#: views.py:114
+#: views.py:123
 msgid "No results returned"
 msgstr "Rezultāti netiek atgriezti"
 
-#: views.py:116
+#: views.py:125
 msgid "Key query results"
 msgstr "Galvenie vaicājuma rezultāti"
 
-#: views.py:136
+#: views.py:145
 msgid "Search"
 msgstr "Meklēt"
 
-#: views.py:138
+#: views.py:147
 msgid "Query key server"
 msgstr "Vaicājuma atslēgu serveris"
 
-#: views.py:157
+#: views.py:166
 msgid "Upload new key"
 msgstr "Augšupielādējiet jaunu atslēgu"
 
-#: views.py:173
+#: views.py:187
 msgid ""
-"Private keys are used to signed documents. Private keys can only be uploaded"
-" by the user. The view to upload private and public keys is the same."
+"Private keys are used to signed documents. Private keys can only be uploaded "
+"by the user. The view to upload private and public keys is the same."
 msgstr ""
 
-#: views.py:178
+#: views.py:192
 msgid "There no private keys"
 msgstr "Nav privāto atslēgu"
 
-#: views.py:196
+#: views.py:210
 msgid ""
-"Public keys are used to verify signed documents. Public keys can be uploaded"
-" by the user or downloaded from keyservers. The view to upload private and "
+"Public keys are used to verify signed documents. Public keys can be uploaded "
+"by the user or downloaded from keyservers. The view to upload private and "
 "public keys is the same."
-msgstr "Publiskās atslēgas tiek izmantotas, lai pārbaudītu parakstītos dokumentus. Publiskās atslēgas var augšupielādēt lietotājs vai lejupielādēt no atslēgas serveriem. Privāto un publisko atslēgu augšupielāde ir tāda pati."
+msgstr ""
+"Publiskās atslēgas tiek izmantotas, lai pārbaudītu parakstītos dokumentus. "
+"Publiskās atslēgas var augšupielādēt lietotājs vai lejupielādēt no atslēgas "
+"serveriem. Privāto un publisko atslēgu augšupielāde ir tāda pati."
 
-#: views.py:202
+#: views.py:216
 msgid "There no public keys"
 msgstr "Nav publisko atslēgu"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-30 04:39+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2020-10-26 13:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -20,11 +20,33 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:25 apps.py:39 links.py:14
+#: apps.py:30 apps.py:56 links.py:14
 msgid "Duplicates"
 msgstr "Дубликати"
 
-#: links.py:18 models.py:20 models.py:30 views.py:75
+#: apps.py:62
+#, fuzzy
+#| msgid "Duplicated document"
+msgid "Duplicate backend"
+msgstr "Дублиран документ"
+
+#: classes.py:83
+msgid "Null backend"
+msgstr ""
+
+#: duplicate_backends.py:9
+#, fuzzy
+#| msgid "Edit document type: %s"
+msgid "Exact document file checksum"
+msgstr "Редактиране на тип документ: %s"
+
+#: duplicate_backends.py:28
+#, fuzzy
+#| msgid "Edit document types"
+msgid "Exact document label"
+msgstr "Редактиране на типове документи"
+
+#: links.py:18 models.py:40 views.py:77
 msgid "Duplicated documents"
 msgstr "Дублирани документи"
 
@@ -32,17 +54,33 @@ msgstr "Дублирани документи"
 msgid "Duplicated document scan"
 msgstr "Дублирано сканиране на документи"
 
-#: models.py:17
+#: models.py:23 models.py:33
+#, fuzzy
+#| msgid "Scan for duplicated documents?"
+msgid "Stored duplicate backend"
+msgstr "Да сканирате ли за дублирани документи?"
+
+#: models.py:24
+#, fuzzy
+#| msgid "Scan for duplicated documents?"
+msgid "Stored duplicate backends"
+msgstr "Да сканирате ли за дублирани документи?"
+
+#: models.py:37
 msgid "Document"
 msgstr "Документ"
 
-#: models.py:23
-msgid "Added"
-msgstr "Добавен"
-
-#: models.py:29
-msgid "Duplicated document"
+#: models.py:47
+#, fuzzy
+#| msgid "Duplicated document"
+msgid "Duplicated backend entry"
 msgstr "Дублиран документ"
+
+#: models.py:48
+#, fuzzy
+#| msgid "Duplicated documents"
+msgid "Duplicated backend entries"
+msgstr "Дублирани документи"
 
 #: queues.py:8
 msgid "Clean empty duplicate lists"
@@ -65,7 +103,7 @@ msgstr "Няма дубликати за този документ"
 msgid "Duplicates for document: %s"
 msgstr "Дубликати за документ: %s"
 
-#: views.py:66
+#: views.py:68
 msgid ""
 "Duplicates are documents that are composed of the exact same file, down to "
 "the last byte. Files that have the same text or OCR but are not identical or "
@@ -75,17 +113,20 @@ msgstr ""
 "Файлове, които имат един и същ текст или OCR, но не са идентични или са "
 "запазени с различен файлов формат, няма да се появят като дубликати."
 
-#: views.py:73
+#: views.py:75
 msgid "There are no duplicated documents"
 msgstr "Няма дублирани документи"
 
-#: views.py:83
+#: views.py:85
 msgid "Scan for duplicated documents?"
 msgstr "Да сканирате ли за дублирани документи?"
 
-#: views.py:90
+#: views.py:92
 msgid "Duplicated document scan queued successfully."
 msgstr "Дублираните сканове на документи са поставени на опашка успешно."
+
+#~ msgid "Added"
+#~ msgstr "Добавен"
 
 #~ msgid "Documents"
 #~ msgstr "Документи"
@@ -648,9 +689,6 @@ msgstr "Дублираните сканове на документи са по�
 #~ msgid "Delete document types"
 #~ msgstr "Изтриване на типове документи"
 
-#~ msgid "Edit document types"
-#~ msgstr "Редактиране на типове документи"
-
 #~ msgid "View document types"
 #~ msgstr "Преглед на типовете документи"
 
@@ -954,9 +992,6 @@ msgstr "Дублираните сканове на документи са по�
 
 #~ msgid "Delete the document type: %s?"
 #~ msgstr "Изтриване на тип документ: %s?"
-
-#~ msgid "Edit document type: %s"
-#~ msgstr "Редактиране на тип документ: %s"
 
 #~ msgid "Deletion policies for document type: %s"
 #~ msgstr "Политики за изтриване за тип документ: %s"

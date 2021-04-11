@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2020-03-28 07:23+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:40
+#: apps.py:37
 msgid "Mailer"
 msgstr ""
 
@@ -44,11 +44,11 @@ msgstr ""
 msgid "Email address"
 msgstr ""
 
-#: forms.py:64 workflow_actions.py:36
+#: forms.py:64 workflow_actions.py:72
 msgid "Subject"
 msgstr ""
 
-#: forms.py:66 workflow_actions.py:45
+#: forms.py:66 workflow_actions.py:81
 msgid "Body"
 msgstr ""
 
@@ -68,31 +68,31 @@ msgstr ""
 msgid "Backend"
 msgstr ""
 
-#: links.py:16 links.py:26
+#: links.py:20 links.py:28
 msgid "Email document"
 msgstr ""
 
-#: links.py:22 links.py:30
+#: links.py:25 links.py:32
 msgid "Email link"
 msgstr ""
 
-#: links.py:35
+#: links.py:38
 msgid "Create mailing profile"
 msgstr ""
 
-#: links.py:41
+#: links.py:44
 msgid "Delete"
 msgstr ""
 
-#: links.py:47
+#: links.py:48
 msgid "Edit"
 msgstr ""
 
-#: links.py:52
+#: links.py:54
 msgid "Mailing profiles list"
 msgstr ""
 
-#: links.py:57 models.py:56
+#: links.py:58 models.py:56
 msgid "Mailing profiles"
 msgstr ""
 
@@ -247,7 +247,7 @@ msgstr ""
 msgid "The backend class for this entry."
 msgstr ""
 
-#: models.py:209
+#: models.py:232
 msgid "Test email from Mayan EDMS"
 msgstr ""
 
@@ -380,14 +380,48 @@ msgid ""
 "or semicolon. A template can be used to reference properties of the document."
 msgstr ""
 
-#: workflow_actions.py:39
-msgid "Subject of the email. Can be a string or a template."
+#: workflow_actions.py:36
+msgid "CC"
+msgstr ""
+
+#: workflow_actions.py:39 workflow_actions.py:51
+msgid ""
+"Address used in the \"Bcc\" header when sending the email. Can be multiple "
+"addresses separated by comma or semicolon. A template can be used to "
+"reference properties of the document."
 msgstr ""
 
 #: workflow_actions.py:48
+msgid "BCC"
+msgstr ""
+
+#: workflow_actions.py:60
+msgid "Reply to"
+msgstr ""
+
+#: workflow_actions.py:63
+msgid ""
+"Address used in the \"Reply-To\" header when sending the email. Can be "
+"multiple addresses separated by comma or semicolon. A template can be used "
+"to reference properties of the document."
+msgstr ""
+
+#: workflow_actions.py:75
+msgid "Subject of the email. Can be a string or a template."
+msgstr ""
+
+#: workflow_actions.py:84
 msgid "Body of the email to send. Can be a string or a template."
 msgstr ""
 
-#: workflow_actions.py:55
+#: workflow_actions.py:90
+msgid "Attachment"
+msgstr ""
+
+#: workflow_actions.py:93
+msgid "Attach the document to the mail."
+msgstr ""
+
+#: workflow_actions.py:102
 msgid "Send email"
 msgstr ""

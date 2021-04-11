@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # pyrotech <anastasios@tutamail.com>, 2021
@@ -10,17 +10,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2021-01-22 19:37+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>\n"
-"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
+"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/"
+"el/)\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:25 events.py:6 permissions.py:6 settings.py:10
+#: apps.py:32 events.py:6 permissions.py:6 settings.py:10
 msgid "Authentication"
 msgstr "Πιστοποίηση"
 
@@ -32,57 +33,61 @@ msgstr "Η μίμηση χρήστη έληξε"
 msgid "User impersonation started"
 msgstr "Η μίμηση χρήστη ξεκίνησε"
 
-#: forms.py:17
+#: forms.py:20
 msgid "Email"
 msgstr "Λογαριασμός email"
 
-#: forms.py:20
+#: forms.py:23
 msgid "Password"
 msgstr "Κωδικός πρόσβασης"
 
-#: forms.py:22 forms.py:89
+#: forms.py:25 forms.py:105
 msgid "Remember me"
 msgstr "Να με θυμάσαι"
 
-#: forms.py:25
+#: forms.py:28
 msgid ""
 "Please enter a correct email and password. Note that the password field is "
 "case-sensitive."
-msgstr "Παρακαλώ εισάγετε το email και τον κωδικό σας. Σημειώστε ότι το πεδίο του κωδικού κάνει διάκριση μεταξύ κεφαλαίων και πεζών χαρακτήρων."
+msgstr ""
+"Παρακαλώ εισάγετε το email και τον κωδικό σας. Σημειώστε ότι το πεδίο του "
+"κωδικού κάνει διάκριση μεταξύ κεφαλαίων και πεζών χαρακτήρων."
 
-#: forms.py:27
+#: forms.py:30
 msgid "This account is inactive."
 msgstr "Αυτός ο λογαριασμός είναι ανενεργός."
 
-#: forms.py:78
-msgid "User"
-msgstr "Χρήστης"
-
-#: forms.py:78
-msgid "User to be impersonated."
-msgstr "Επιλογή χρήστη προς μίμηση."
-
-#: forms.py:82
+#: forms.py:79
 msgid "Permanent"
 msgstr "Μόνιμα"
 
-#: forms.py:83
+#: forms.py:80
 msgid "If selected, disables ending impersonation."
 msgstr "Εάν επιλεγεί, απενεργοποιεί την δυνατότητα τερματισμού μίμησης χρήστη."
 
-#: links.py:25
+#: forms.py:91
+msgid "User"
+msgstr "Χρήστης"
+
+#: links.py:24
 msgid "Logout"
 msgstr "Αποσύνδεση"
 
-#: links.py:30
+#: links.py:29
 msgid "Change password"
 msgstr "Αλλαγή κωδικού πρόσβασης"
 
-#: links.py:35 views.py:68
+#: links.py:34 views.py:250
 msgid "Impersonate user"
 msgstr "Μίμηση χρήστη"
 
-#: links.py:40 links.py:47
+#: links.py:39
+#, fuzzy
+#| msgid "Impersonate user"
+msgid "Impersonate"
+msgstr "Μίμηση χρήστη"
+
+#: links.py:44 links.py:48
 msgid "Set password"
 msgstr "Ορισμός κωδικού"
 
@@ -94,30 +99,48 @@ msgstr "Μίμηση χρηστών"
 msgid ""
 "Controls the mechanism used to authenticated user. Options are: username, "
 "email"
-msgstr "Ελέγχει τον μηχανισμό που χρησιμοποιείται για την πιστοποίηση των χρηστών. Οι διαθέσιμες επιλογές είναι: Όνομα χρήστη, email"
+msgstr ""
+"Ελέγχει τον μηχανισμό που χρησιμοποιείται για την πιστοποίηση των χρηστών. "
+"Οι διαθέσιμες επιλογές είναι: Όνομα χρήστη, email"
 
 #: settings.py:22
 msgid ""
-"Maximum time a user clicking the \"Remember me\" checkbox will remain logged"
-" in. Value is time in seconds."
-msgstr "Μέγιστος χρόνος για τον οποίο θα παραμείνει συνδεδεμένος ένα χρήστης με την επιλογή \"Να με θυμάσαι\". Η τιμή είναι σε δευτερόλεπτα."
+"Maximum time a user clicking the \"Remember me\" checkbox will remain logged "
+"in. Value is time in seconds."
+msgstr ""
+"Μέγιστος χρόνος για τον οποίο θα παραμείνει συνδεδεμένος ένα χρήστης με την "
+"επιλογή \"Να με θυμάσαι\". Η τιμή είναι σε δευτερόλεπτα."
 
 #: settings.py:29
 msgid ""
 "Remove the \"Forgot your password?\" link on the login form used to trigger "
 "the password reset."
-msgstr "Αφαίρεση  συνδέσμου \"Ξεχάσατε τον κωδικό σας;\" από την φόρμα εισαγωγής, για την επαναφορά κωδικού."
+msgstr ""
+"Αφαίρεση  συνδέσμου \"Ξεχάσατε τον κωδικό σας;\" από την φόρμα εισαγωγής, "
+"για την επαναφορά κωδικού."
 
-#: templates/authentication/login.html:11
+#: templates/authentication/app/viewport.html:11
+#, python-format
+msgid ""
+"\n"
+"                Impersonating user \"%(user)s\".\n"
+"            "
+msgstr ""
+
+#: templates/authentication/app/viewport.html:14
+msgid "Click here when finished"
+msgstr ""
+
+#: templates/authentication/login.html:10
 msgid "Login"
 msgstr "Σύνδεση"
 
-#: templates/authentication/login.html:23
-#: templates/authentication/login.html:32
+#: templates/authentication/login.html:21
+#: templates/authentication/login.html:30
 msgid "Sign in"
 msgstr "Συνδεθείτε"
 
-#: templates/authentication/login.html:39
+#: templates/authentication/login.html:37
 msgid "Forgot your password?"
 msgstr "Ξεχάσατε τον κωδικό σας;"
 
@@ -132,14 +155,16 @@ msgstr "Επαναφορά κωδικού πρόσβασης"
 
 #: templates/authentication/password_reset_complete.html:15
 msgid "Password reset complete! Click the link below to login."
-msgstr "Η επαναφορά του κωδικού πρόσβασης ολοκληρώθηκε! Επιλέξτε τον παρακάτω σύνδεσμο για να συνδεθείτε."
+msgstr ""
+"Η επαναφορά του κωδικού πρόσβασης ολοκληρώθηκε! Επιλέξτε τον παρακάτω "
+"σύνδεσμο για να συνδεθείτε."
 
 #: templates/authentication/password_reset_complete.html:17
 msgid "Login page"
 msgstr "Σελίδα σύνδεσης"
 
 #: templates/authentication/password_reset_confirm.html:29
-#: templates/authentication/password_reset_form.html:29 views.py:212
+#: templates/authentication/password_reset_form.html:29 views.py:177
 msgid "Submit"
 msgstr "Υποβολή"
 
@@ -147,51 +172,64 @@ msgstr "Υποβολή"
 msgid "Password reset email sent!"
 msgstr "Μήνυμα ηλεκτρονικού ταχυδρομείου επαναφοράς κωδικού εστάλει!"
 
-#: views.py:121
+#: views.py:86
 msgid "Your password has been successfully changed."
 msgstr "Η αλλαγή κωδικού πραγματοποιήθηκε με επιτυχία."
 
-#: views.py:128
+#: views.py:93
 msgid "Current user password change"
 msgstr "Αλλαγή κωδικού πρόσβασης του συνδεδεμένου χρήστη."
 
-#: views.py:136
+#: views.py:101
 msgid "Changing the password is not allowed for this account."
 msgstr "Η αλλαγή κωδικού πρόσβασης δεν επιτρέπεται για αυτόν τον χρήστη."
 
-#: views.py:203
+#: views.py:168
 #, python-format
 msgid "Password change request performed on %(count)d user"
 msgstr "Αίτημα αλλαγής κωδικού πραγματοποιήθηκε για %(count)d χρήστη"
 
-#: views.py:205
+#: views.py:170
 #, python-format
 msgid "Password change request performed on %(count)d users"
 msgstr "Αίτημα αλλαγής κωδικού πραγματοποιήθηκε για %(count)d χρήστες"
 
-#: views.py:214
+#: views.py:179
 msgid "Change user password"
 msgid_plural "Change users passwords"
 msgstr[0] "Αλλαγή κωδικών χρηστών"
 msgstr[1] "Αλλαγή κωδικών χρηστών"
 
-#: views.py:224
+#: views.py:189
 #, python-format
 msgid "Change password for user: %s"
 msgstr "Αλλαγή κωδικού για τον χρήστη: %s"
 
-#: views.py:244
-msgid ""
-"Super user and staff user password reseting is not allowed, use the admin "
-"interface for these cases."
-msgstr "Η επαναφορά κωδικών για τον υπερχρήστη και τον χρήστη προσωπικού δεν επιτρέπεται. Κάντε χρήση του περιβάλλοντος διαχείρισης γι' αυτές τις περιπτώσεις."
-
-#: views.py:254
+#: views.py:210
 #, python-format
 msgid "Successful password reset for user: %s."
 msgstr "Επιτυχής επαναφορά κωδικού για τον χρήστη: %s"
 
-#: views.py:260
+#: views.py:216
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
-msgstr "Σφάλμα κατά την αρχικοποίηση του κωδικού για τον χρήστη \"%(user)s\": %(error)s"
+msgstr ""
+"Σφάλμα κατά την αρχικοποίηση του κωδικού για τον χρήστη \"%(user)s\": "
+"%(error)s"
+
+#: views.py:278
+#, fuzzy, python-format
+#| msgid "Impersonate users"
+msgid "Impersonate user: %s"
+msgstr "Μίμηση χρηστών"
+
+#~ msgid "User to be impersonated."
+#~ msgstr "Επιλογή χρήστη προς μίμηση."
+
+#~ msgid ""
+#~ "Super user and staff user password reseting is not allowed, use the admin "
+#~ "interface for these cases."
+#~ msgstr ""
+#~ "Η επαναφορά κωδικών για τον υπερχρήστη και τον χρήστη προσωπικού δεν "
+#~ "επιτρέπεται. Κάντε χρήση του περιβάλλοντος διαχείρισης γι' αυτές τις "
+#~ "περιπτώσεις."

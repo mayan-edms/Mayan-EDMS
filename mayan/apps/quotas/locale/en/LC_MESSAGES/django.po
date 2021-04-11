@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:39 events.py:6 links.py:33 models.py:32 permissions.py:5
+#: apps.py:36 events.py:6 links.py:34 models.py:32 permissions.py:5
 #: views.py:136
 msgid "Quotas"
 msgstr ""
@@ -30,7 +30,7 @@ msgstr ""
 msgid "Does not apply"
 msgstr ""
 
-#: classes.py:161 classes.py:168
+#: classes.py:161 classes.py:165
 msgid "Null backend"
 msgstr ""
 
@@ -50,19 +50,19 @@ msgstr ""
 msgid "The quota driver for this entry."
 msgstr ""
 
-#: links.py:13
+#: links.py:16
 msgid "Create quota"
 msgstr ""
 
-#: links.py:18
+#: links.py:21
 msgid "Delete"
 msgstr ""
 
-#: links.py:22
+#: links.py:25
 msgid "Edit"
 msgstr ""
 
-#: links.py:28
+#: links.py:30
 msgid "Quotas list"
 msgstr ""
 
@@ -181,41 +181,41 @@ msgstr ""
 msgid "View a quota"
 msgstr ""
 
-#: quota_backends.py:68 quota_backends.py:168
+#: quota_backends.py:70 quota_backends.py:170
 msgid "Document count quota exceeded."
 msgstr ""
 
-#: quota_backends.py:72
+#: quota_backends.py:74
 msgid "Documents limit"
 msgstr ""
 
-#: quota_backends.py:75
+#: quota_backends.py:77
 msgid "Maximum number of documents."
 msgstr ""
 
-#: quota_backends.py:79
+#: quota_backends.py:81
 msgid "Document count limit"
 msgstr ""
 
-#: quota_backends.py:104
+#: quota_backends.py:106
 #, python-format
 msgid "document count: %(document_count)s"
 msgstr ""
 
-#: quota_backends.py:178 quota_backends.py:183
+#: quota_backends.py:180 quota_backends.py:185
 msgid "Document size limit"
 msgstr ""
 
-#: quota_backends.py:180
+#: quota_backends.py:182
 msgid "Maximum document size in megabytes (MB)."
 msgstr ""
 
-#: quota_backends.py:208
+#: quota_backends.py:210
 #, python-format
 msgid "document size: %(formatted_file_size)s"
 msgstr ""
 
-#: quota_backends.py:228
+#: quota_backends.py:230
 msgid "Document size quota exceeded."
 msgstr ""
 

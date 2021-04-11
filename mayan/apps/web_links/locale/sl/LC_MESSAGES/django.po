@@ -2,31 +2,33 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Roberto Rosario, 2020
 # Jože Detečnik <joze.detecnik@3tav.si>, 2020
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:02+0000\n"
+"POT-Creation-Date: 2021-04-11 06:05+0000\n"
 "PO-Revision-Date: 2019-12-03 05:24+0000\n"
 "Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2020\n"
-"Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
+"Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/"
+"sl/)\n"
+"Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sl\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+"%100==4 ? 2 : 3);\n"
 
-#: apps.py:42
+#: apps.py:39
 msgid "Links"
 msgstr "Povezave"
 
-#: events.py:6 links.py:14 links.py:20 links.py:54 links.py:58 models.py:40
-#: permissions.py:5 views.py:148
+#: events.py:6 links.py:19 links.py:24 links.py:54 links.py:59 models.py:42
+#: permissions.py:5 views.py:182
 msgid "Web links"
 msgstr "Spletne povezave"
 
@@ -42,15 +44,15 @@ msgstr "Spletna povezava urejena"
 msgid "Web link navigated"
 msgstr "Spletna povezava krmarjena"
 
-#: links.py:26 views.py:189
+#: links.py:29 views.py:94
 msgid "Create new web link"
 msgstr "Ustvari novo spletno povezavo"
 
-#: links.py:32
+#: links.py:35
 msgid "Delete"
 msgstr "Izbriši"
 
-#: links.py:38 models.py:34
+#: links.py:39 models.py:36
 msgid "Document types"
 msgstr "Vrste dokumentov"
 
@@ -58,32 +60,32 @@ msgstr "Vrste dokumentov"
 msgid "Edit"
 msgstr "Uredi"
 
-#: links.py:50
+#: links.py:51
 msgid "Navigate"
 msgstr "Krmarite"
 
-#: models.py:22
+#: models.py:24
 msgid "A short text describing the web link."
 msgstr "Kratko besedilo, ki opisuje spletno povezavo."
 
-#: models.py:23
+#: models.py:25
 msgid "Label"
 msgstr "Oznaka"
 
-#: models.py:27
+#: models.py:29
 msgid "Template that will be used to craft the final URL of the web link."
 msgstr ""
 "Predloga, ki bo uporabljena za izdelavo končnega URL-ja spletne povezave."
 
-#: models.py:29
+#: models.py:31
 msgid "Template"
 msgstr "Predloga"
 
-#: models.py:31
+#: models.py:33
 msgid "Enabled"
 msgstr "Omogočeno"
 
-#: models.py:39
+#: models.py:41
 msgid "Web link"
 msgstr "Spletna povezava"
 
@@ -107,68 +109,74 @@ msgstr "Oglejte si obstoječe spletne povezave"
 msgid "View web link instances"
 msgstr "Oglejte si primerke spletnih povezav"
 
-#: serializers.py:62
-msgid ""
-"Comma separated list of document type primary keys to which this web link "
-"will be attached."
+#: serializers.py:16
+msgid "Primary key of the document type to add to the web link."
 msgstr ""
-"Seznam primarnih ključev vrste dokumentov, na katere bo priložena ta spletna"
-" povezava, ločen z vejicami."
 
-#: views.py:42
+#: serializers.py:25
+msgid "Primary key of the document type to remove from the web link."
+msgstr ""
+
+#: views.py:38
 msgid "Available web links"
 msgstr "Razpoložljive spletne povezave"
 
-#: views.py:43
+#: views.py:39
 msgid "Web links enabled"
 msgstr "Spletne povezave so omogočene"
 
-#: views.py:75
+#: views.py:63
 #, python-format
 msgid "Web links to enable for document type: %s"
 msgstr "Spletne povezave za omogočanje vrste dokumenta: %s"
 
-#: views.py:113
+#: views.py:116
+#, python-format
+msgid "Delete web link: %s"
+msgstr "Izbriši spletno povezavo: %s"
+
+#: views.py:128
 msgid "Available document types"
 msgstr "Razpoložljive vrste dokumentov"
 
-#: views.py:114
+#: views.py:129
 msgid "Document types enabled"
 msgstr "Vrste dokumentov omogočene"
 
-#: views.py:124
+#: views.py:139
 #, python-format
 msgid "Document type for which to enable web link: %s"
 msgstr "Vrsta dokumenta, za katerega je treba omogočiti spletno povezavo: %s"
 
-#: views.py:141 views.py:171
+#: views.py:156
+#, python-format
+msgid "Edit web link: %s"
+msgstr "Uredi spletno povezavo: %s"
+
+#: views.py:175 views.py:205
 msgid ""
 "Web links allow generating HTTP links from documents to external resources. "
 "The link URL's can contain document properties values."
 msgstr ""
 "Spletne povezave omogočajo ustvarjanje povezav HTTP iz dokumentov do "
-"zunanjih virov. URL-ji povezav lahko vsebujejo vrednosti lastnosti "
-"dokumenta."
+"zunanjih virov. URL-ji povezav lahko vsebujejo vrednosti lastnosti dokumenta."
 
-#: views.py:146
+#: views.py:180
 msgid "There are no web links"
 msgstr "Spletnih povezav ni"
 
-#: views.py:176
+#: views.py:210
 msgid "There are no web links for this document"
 msgstr "Za ta dokument ni spletnih povezav"
 
-#: views.py:179
+#: views.py:213
 #, python-format
 msgid "Web links for document: %s"
 msgstr "Spletne povezave do dokumenta: %s"
 
-#: views.py:211
-#, python-format
-msgid "Delete web link: %s"
-msgstr "Izbriši spletno povezavo: %s"
-
-#: views.py:227
-#, python-format
-msgid "Edit web link: %s"
-msgstr "Uredi spletno povezavo: %s"
+#~ msgid ""
+#~ "Comma separated list of document type primary keys to which this web link "
+#~ "will be attached."
+#~ msgstr ""
+#~ "Seznam primarnih ključev vrste dokumentov, na katere bo priložena ta "
+#~ "spletna povezava, ločen z vejicami."

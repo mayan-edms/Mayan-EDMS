@@ -12,14 +12,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:02+0000\n"
+"POT-Creation-Date: 2021-04-11 06:05+0000\n"
 "PO-Revision-Date: 2020-09-27 06:47+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2020\n"
-"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
+"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/"
+"bg/)\n"
+"Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:15 settings.py:7
@@ -34,17 +35,25 @@ msgstr "Избиране"
 msgid "None"
 msgstr "Няма"
 
-#: generics.py:150
+#: forms.py:284
+msgid "Label"
+msgstr ""
+
+#: forms.py:288
+msgid "Relationship"
+msgstr ""
+
+#: generics.py:147
 msgid ""
 "Select entries to be removed. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr ""
-"Изберете записи, които ще бъдат премахнати. Задръжте Control, за да изберете"
-" няколко записа. След като избирането приключи, щракнете върху бутона по-"
-"долу или щракнете двукратно върху списъка, за да активирате действието."
+"Изберете записи, които ще бъдат премахнати. Задръжте Control, за да изберете "
+"няколко записа. След като избирането приключи, щракнете върху бутона по-долу "
+"или щракнете двукратно върху списъка, за да активирате действието."
 
-#: generics.py:155
+#: generics.py:152
 msgid ""
 "Select entries to be added. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
@@ -54,98 +63,142 @@ msgstr ""
 "записа. След като избирането приключи, щракнете върху бутона по-долу или "
 "щракнете двукратно върху списъка, за да активирате действието."
 
-#: generics.py:288
+#: generics.py:290
 msgid "Add all"
 msgstr "Добавете всички"
 
-#: generics.py:297
+#: generics.py:299
 msgid "Add"
 msgstr "Добавете"
 
-#: generics.py:307
+#: generics.py:309
 msgid "Remove all"
 msgstr "Премахнете всички"
 
-#: generics.py:316
+#: generics.py:318
 msgid "Remove"
 msgstr "Премахнете"
 
 #: generics.py:532
 #, python-format
+msgid "Error updating relationship; %s"
+msgstr ""
+
+#: generics.py:539
+#, fuzzy
+#| msgid "%(object)s updated successfully."
+msgid "Relationships updated successfully"
+msgstr "%(object)s актуализиран успешно."
+
+#: generics.py:598
+#, python-format
 msgid "Duplicate data error: %(error)s"
 msgstr "Грешка в дублиращи данни: %(error)s"
 
-#: generics.py:553
+#: generics.py:617
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
 msgstr "%(object)s не е създаден, грешка: %(error)s"
 
-#: generics.py:566
+#: generics.py:628
 #, python-format
 msgid "%(object)s created successfully."
 msgstr "%(object)s е създаден успешно."
 
-#: generics.py:605
+#: generics.py:667
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
 msgstr "%(object)s не е изтрит, грешка: %(error)s."
 
-#: generics.py:614
+#: generics.py:676
 #, python-format
 msgid "%(object)s deleted successfully."
 msgstr "%(object)s изтрит успешно."
 
-#: generics.py:750
+#: generics.py:815
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
 msgstr "%(object)s не е актуализиран, грешка: %(error)s."
 
-#: generics.py:761
+#: generics.py:824
 #, python-format
 msgid "%(object)s updated successfully."
 msgstr "%(object)s актуализиран успешно."
 
-#: mixins.py:324
+#: generics.py:886
+#, fuzzy, python-format
+#| msgid "%(object)s deleted successfully."
+msgid "\"%(object)s\" deleted successfully."
+msgstr "%(object)s изтрит успешно."
+
+#: generics.py:887
+#, fuzzy, python-format
+#| msgid "%(object)s deleted successfully."
+msgid "%(count)d object deleted successfully."
+msgstr "%(object)s изтрит успешно."
+
+#: generics.py:888
+#, fuzzy, python-format
+#| msgid "%(object)s deleted successfully."
+msgid "%(count)d objects deleted successfully."
+msgstr "%(object)s изтрит успешно."
+
+#: generics.py:889
+#, python-format
+msgid "Delete \"%(object)s\"."
+msgstr ""
+
+#: generics.py:890
+#, python-format
+msgid "Delete %(count)d object."
+msgstr ""
+
+#: generics.py:891
+#, python-format
+msgid "Delete %(count)d objects."
+msgstr ""
+
+#: mixins.py:325
 #, python-format
 msgid "No %(verbose_name)s found matching the query"
 msgstr "Не е намерен %(verbose_name)s, отговарящ на заявката"
 
-#: mixins.py:349
+#: mixins.py:350
 #, python-format
 msgid "Unable to perform operation on object %(instance)s; %(exception)s."
 msgstr ""
 
-#: mixins.py:351
+#: mixins.py:352
 #, python-format
 msgid "Operation performed on %(object)s."
 msgstr ""
 
-#: mixins.py:352
+#: mixins.py:353
 #, python-format
 msgid "Operation performed on %(count)d object."
 msgstr ""
 
-#: mixins.py:353
+#: mixins.py:354
 #, python-format
 msgid "Operation performed on %(count)d objects."
 msgstr ""
 
-#: mixins.py:354
+#: mixins.py:355
 #, python-format
 msgid "Perform operation on %(object)s."
 msgstr ""
 
-#: mixins.py:355
+#: mixins.py:356
 #, python-format
 msgid "Perform operation on %(count)d object."
 msgstr ""
 
-#: mixins.py:356
+#: mixins.py:357
 #, python-format
 msgid "Perform operation on %(count)d objects."
 msgstr ""
 
-#: mixins.py:438
+#: mixins.py:439
 msgid "Object"
 msgstr "Обект"
 

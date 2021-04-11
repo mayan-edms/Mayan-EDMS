@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Māris Teivāns <maris.teivans@gmail.com>, 2019
@@ -9,17 +9,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2020-11-11 01:45+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
+"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/lv/)\n"
+"Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: lv\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
+"2);\n"
 
-#: apps.py:40
+#: apps.py:37
 msgid "Mailer"
 msgstr "Mailer"
 
@@ -37,19 +39,21 @@ msgstr "Epasts nosūtīts"
 
 #: forms.py:60 forms.py:120
 msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma"
-" or semicolon."
-msgstr "Saņēmēja e-pasta adrese. Var būt vairākas adreses, kas atdalītas ar komatu vai semikolu."
+"Email address of the recipient. Can be multiple addresses separated by comma "
+"or semicolon."
+msgstr ""
+"Saņēmēja e-pasta adrese. Var būt vairākas adreses, kas atdalītas ar komatu "
+"vai semikolu."
 
 #: forms.py:62 forms.py:122
 msgid "Email address"
 msgstr "Epasta adrese"
 
-#: forms.py:64 workflow_actions.py:36
+#: forms.py:64 workflow_actions.py:72
 msgid "Subject"
 msgstr "Temats"
 
-#: forms.py:66 workflow_actions.py:45
+#: forms.py:66 workflow_actions.py:81
 msgid "Body"
 msgstr "Ķermenis"
 
@@ -69,31 +73,31 @@ msgstr ""
 msgid "Backend"
 msgstr "Backend"
 
-#: links.py:16 links.py:26
+#: links.py:20 links.py:28
 msgid "Email document"
 msgstr "E-pasta dokuments"
 
-#: links.py:22 links.py:30
+#: links.py:25 links.py:32
 msgid "Email link"
 msgstr "E-pasta saite"
 
-#: links.py:35
+#: links.py:38
 msgid "Create mailing profile"
 msgstr ""
 
-#: links.py:41
+#: links.py:44
 msgid "Delete"
 msgstr "Dzēst"
 
-#: links.py:47
+#: links.py:48
 msgid "Edit"
 msgstr "Rediģēt"
 
-#: links.py:52
+#: links.py:54
 msgid "Mailing profiles list"
 msgstr "Pasta profilu profils"
 
-#: links.py:57 models.py:56
+#: links.py:58 models.py:56
 msgid "Mailing profiles"
 msgstr "Pasta profili"
 
@@ -108,7 +112,9 @@ msgid ""
 "\n"
 " --------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr "Šim e-pastam pievienots dokuments: {{document}} -------- Šis e-pasts ir nosūtīts no %(project_title)s (%(project_website)s)"
+msgstr ""
+"Šim e-pastam pievienots dokuments: {{document}} -------- Šis e-pasts ir "
+"nosūtīts no %(project_title)s (%(project_website)s)"
 
 #: literals.py:9
 msgid "Document: {{ document }}"
@@ -121,7 +127,9 @@ msgid ""
 "\n"
 "--------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr "Lai piekļūtu šim dokumentam, noklikšķiniet uz šādas saites: {{link}} -------- Šis e-pasts ir nosūtīts no %(project_title)s (%(project_website)s)"
+msgstr ""
+"Lai piekļūtu šim dokumentam, noklikšķiniet uz šādas saites: {{link}} "
+"-------- Šis e-pasts ir nosūtīts no %(project_title)s (%(project_website)s)"
 
 #: literals.py:15
 msgid "Link for document: {{ document }}"
@@ -133,9 +141,11 @@ msgstr "No"
 
 #: mailers.py:22 mailers.py:111
 msgid ""
-"The sender's address. Some system will refuse to send messages if this value"
-" is not set."
-msgstr "Sūtītāja adrese. Dažas sistēmas atsakās sūtīt ziņojumus, ja šī vērtība nav iestatīta."
+"The sender's address. Some system will refuse to send messages if this value "
+"is not set."
+msgstr ""
+"Sūtītāja adrese. Dažas sistēmas atsakās sūtīt ziņojumus, ja šī vērtība nav "
+"iestatīta."
 
 #: mailers.py:28
 msgid "Host"
@@ -161,7 +171,9 @@ msgstr "Izmantojiet TLS"
 msgid ""
 "Whether to use a TLS (secure) connection when talking to the SMTP server. "
 "This is used for explicit TLS connections, generally on port 587."
-msgstr "Vai lietojat TLS (drošu) savienojumu, runājot ar SMTP serveri. Tas tiek izmantots skaidriem TLS savienojumiem, parasti portā 587."
+msgstr ""
+"Vai lietojat TLS (drošu) savienojumu, runājot ar SMTP serveri. Tas tiek "
+"izmantots skaidriem TLS savienojumiem, parasti portā 587."
 
 #: mailers.py:48
 msgid "Use SSL"
@@ -173,9 +185,15 @@ msgid ""
 "server. In most email documentation this type of TLS connection is referred "
 "to as SSL. It is generally used on port 465. If you are experiencing "
 "problems, see the explicit TLS setting \"Use TLS\". Note that \"Use TLS\" "
-"and \"Use SSL\" are mutually exclusive, so only set one of those settings to"
-" True."
-msgstr "Vai, runājot ar SMTP serveri, izmantojiet netiešu TLS (drošu) savienojumu. Vairumā e-pasta dokumentāciju šāda veida TLS savienojums tiek saukts par SSL. To parasti izmanto 465. portā. Ja rodas problēmas, skatiet skaidru TLS iestatījumu \"Lietot TLS\". Ņemiet vērā, ka \"Lietot TLS\" un \"Lietot SSL\" ir savstarpēji izslēdzoši, tāpēc tikai vienu no šiem iestatījumiem iestatiet uz True."
+"and \"Use SSL\" are mutually exclusive, so only set one of those settings to "
+"True."
+msgstr ""
+"Vai, runājot ar SMTP serveri, izmantojiet netiešu TLS (drošu) savienojumu. "
+"Vairumā e-pasta dokumentāciju šāda veida TLS savienojums tiek saukts par "
+"SSL. To parasti izmanto 465. portā. Ja rodas problēmas, skatiet skaidru TLS "
+"iestatījumu \"Lietot TLS\". Ņemiet vērā, ka \"Lietot TLS\" un \"Lietot SSL\" "
+"ir savstarpēji izslēdzoši, tāpēc tikai vienu no šiem iestatījumiem iestatiet "
+"uz True."
 
 #: mailers.py:60
 msgid "Username"
@@ -194,9 +212,12 @@ msgstr "Parole"
 #: mailers.py:72
 msgid ""
 "Password to use for the SMTP server. This setting is used in conjunction "
-"with the username when authenticating to the SMTP server. If either of these"
-" settings is empty, authentication won't be attempted."
-msgstr "SMTP servera lietojama parole. Šis iestatījums tiek izmantots kopā ar lietotājvārdu, autentificējot to SMTP serverī. Ja kāds no šiem iestatījumiem ir tukšs, autentifikācija netiks mēģināta."
+"with the username when authenticating to the SMTP server. If either of these "
+"settings is empty, authentication won't be attempted."
+msgstr ""
+"SMTP servera lietojama parole. Šis iestatījums tiek izmantots kopā ar "
+"lietotājvārdu, autentificējot to SMTP serverī. Ja kāds no šiem iestatījumiem "
+"ir tukšs, autentifikācija netiks mēģināta."
 
 #: mailers.py:81
 msgid "Django SMTP backend"
@@ -222,7 +243,9 @@ msgstr "Etiķete"
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
-msgstr "Noklusējuma gadījumā šis pasta profils tiks iepriekš atlasīts dokumentu sūtīšanas veidlapā."
+msgstr ""
+"Noklusējuma gadījumā šis pasta profils tiks iepriekš atlasīts dokumentu "
+"sūtīšanas veidlapā."
 
 #: models.py:39
 msgid "Default"
@@ -248,7 +271,7 @@ msgstr "Backend dati"
 msgid "The backend class for this entry."
 msgstr ""
 
-#: models.py:209
+#: models.py:232
 msgid "Test email from Mayan EDMS"
 msgstr "Testa e-pasts no Mayan EDMS"
 
@@ -352,7 +375,9 @@ msgstr "Rediģēt pasta profilu: %s"
 msgid ""
 "Mailing profiles are email configurations. Mailing profiles allow sending "
 "documents as attachments or as links via email."
-msgstr "Pasta profili ir e-pasta konfigurācijas. Pasta profili ļauj sūtīt dokumentus kā pielikumus vai kā saites pa e-pastu."
+msgstr ""
+"Pasta profili ir e-pasta konfigurācijas. Pasta profili ļauj sūtīt dokumentus "
+"kā pielikumus vai kā saites pa e-pastu."
 
 #: views.py:211
 msgid "No mailing profiles available"
@@ -377,19 +402,54 @@ msgstr ""
 
 #: workflow_actions.py:28
 msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma"
-" or semicolon. A template can be used to reference properties of the "
-"document."
+"Email address of the recipient. Can be multiple addresses separated by comma "
+"or semicolon. A template can be used to reference properties of the document."
 msgstr ""
 
-#: workflow_actions.py:39
-msgid "Subject of the email. Can be a string or a template."
+#: workflow_actions.py:36
+msgid "CC"
+msgstr ""
+
+#: workflow_actions.py:39 workflow_actions.py:51
+msgid ""
+"Address used in the \"Bcc\" header when sending the email. Can be multiple "
+"addresses separated by comma or semicolon. A template can be used to "
+"reference properties of the document."
 msgstr ""
 
 #: workflow_actions.py:48
+msgid "BCC"
+msgstr ""
+
+#: workflow_actions.py:60
+msgid "Reply to"
+msgstr ""
+
+#: workflow_actions.py:63
+msgid ""
+"Address used in the \"Reply-To\" header when sending the email. Can be "
+"multiple addresses separated by comma or semicolon. A template can be used "
+"to reference properties of the document."
+msgstr ""
+
+#: workflow_actions.py:75
+msgid "Subject of the email. Can be a string or a template."
+msgstr ""
+
+#: workflow_actions.py:84
 msgid "Body of the email to send. Can be a string or a template."
 msgstr ""
 
-#: workflow_actions.py:55
+#: workflow_actions.py:90
+msgid "Attachment"
+msgstr ""
+
+#: workflow_actions.py:93
+#, fuzzy
+#| msgid "Send document via email"
+msgid "Attach the document to the mail."
+msgstr "Sūtiet dokumentu pa e-pastu"
+
+#: workflow_actions.py:102
 msgid "Send email"
 msgstr ""

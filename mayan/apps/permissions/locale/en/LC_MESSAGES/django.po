@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2019-12-13 05:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/rosarior/mayan-edms/"
@@ -18,15 +18,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:46 events.py:6 models.py:35 models.py:104 permissions.py:5
+#: apps.py:43 events.py:6 models.py:37 models.py:157 permissions.py:5
 msgid "Permissions"
 msgstr ""
 
-#: apps.py:99 models.py:142
+#: apps.py:98 models.py:75
 msgid "Group count"
 msgstr ""
 
-#: classes.py:85
+#: classes.py:88
 msgid "Insufficient permissions."
 msgstr ""
 
@@ -42,15 +42,15 @@ msgstr ""
 msgid "Role edited"
 msgstr ""
 
-#: links.py:14 links.py:38 models.py:115 views.py:171
+#: links.py:17 links.py:37 models.py:48 views.py:171
 msgid "Roles"
 msgstr ""
 
-#: links.py:21 views.py:51
+#: links.py:23 views.py:51
 msgid "Create new role"
 msgstr ""
 
-#: links.py:27
+#: links.py:28
 msgid "Delete"
 msgstr ""
 
@@ -58,40 +58,40 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: links.py:43 models.py:107
+#: links.py:41 models.py:40
 msgid "Groups"
 msgstr ""
 
-#: links.py:50
+#: links.py:47
 msgid "Role permissions"
 msgstr ""
 
-#: models.py:26
-msgid "Namespace"
-msgstr ""
-
-#: models.py:27
-msgid "Name"
-msgstr ""
-
-#: models.py:34
-msgid "Permission"
-msgstr ""
-
-#: models.py:99
+#: models.py:32
 msgid "A short text describing the role."
 msgstr ""
 
-#: models.py:100 search.py:14
+#: models.py:33 search.py:14
 msgid "Label"
 msgstr ""
 
-#: models.py:114
+#: models.py:47
 msgid "Role"
 msgstr ""
 
-#: models.py:150
+#: models.py:83
 msgid "Permission count"
+msgstr ""
+
+#: models.py:148
+msgid "Namespace"
+msgstr ""
+
+#: models.py:149
+msgid "Name"
+msgstr ""
+
+#: models.py:156
+msgid "Permission"
 msgstr ""
 
 #: permissions.py:8
@@ -114,19 +114,20 @@ msgstr ""
 msgid "Group name"
 msgstr ""
 
-#: serializers.py:44
-msgid ""
-"Comma separated list of groups primary keys to add to, or replace in this "
-"role."
+#: serializers.py:31
+msgid "Primary key of the group to add to the role."
 msgstr ""
 
-#: serializers.py:51
-msgid "Comma separated list of permission primary keys to grant to this role."
+#: serializers.py:39
+msgid "Primary key of the group to remove from the role."
 msgstr ""
 
-#: serializers.py:88
-#, python-format
-msgid "No such permission: %s"
+#: serializers.py:47
+msgid "Primary key of the permission to add to the role."
+msgstr ""
+
+#: serializers.py:54
+msgid "Primary key of the permission to remove from the role."
 msgstr ""
 
 #: views.py:30

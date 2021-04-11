@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # bwakkie <bwakkie@gmail.com>, 2020
@@ -11,56 +11,83 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2020-09-04 12:51+0000\n"
 "Last-Translator: bwakkie <bwakkie@gmail.com>\n"
-"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
+"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/"
+"nl/)\n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:49 permissions.py:6 settings.py:12
+#: apps.py:54 events.py:6 permissions.py:6 settings.py:12
 msgid "Document signatures"
 msgstr "Documenthandtekeningen"
 
-#: apps.py:95
-msgid "Date"
-msgstr "Datum"
+#: apps.py:111
+msgid "Date and time"
+msgstr ""
 
-#: apps.py:98 models.py:46
+#: apps.py:115 models.py:52
 msgid "Key ID"
 msgstr "Sleutel-ID"
 
-#: apps.py:102 forms.py:62 models.py:51
-msgid "Signature ID"
-msgstr "Handtekening-ID"
-
-#: apps.py:103 forms.py:74
+#: apps.py:119 forms.py:72
 msgid "None"
 msgstr "Geen"
 
-#: apps.py:106
+#: apps.py:120 forms.py:60 models.py:57
+msgid "Signature ID"
+msgstr "Handtekening-ID"
+
+#: apps.py:125
 msgid "Type"
 msgstr "Type"
+
+#: events.py:10
+#, fuzzy
+#| msgid "Detached signatures"
+msgid "Detached signature created"
+msgstr "Ontkoppelde handtekeningen"
+
+#: events.py:13
+#, fuzzy
+#| msgid "Detached signatures"
+msgid "Detached signature uploaded"
+msgstr "Ontkoppelde handtekeningen"
+
+#: events.py:17
+#, fuzzy
+#| msgid "Signature date"
+msgid "Embedded signature created"
+msgstr "Datum van handtekening"
 
 #: forms.py:17 forms.py:31 workflow_actions.py:19
 msgid "Key"
 msgstr "Sleutel"
 
-#: forms.py:22 serializers.py:33 workflow_actions.py:30
+#: forms.py:22 serializers.py:66 workflow_actions.py:30
+#, fuzzy
+#| msgid ""
+#| "The passphrase to unlock the key and allow it to be used to sign the "
+#| "document version."
 msgid ""
 "The passphrase to unlock the key and allow it to be used to sign the "
-"document version."
-msgstr "De wachtwoordzin waarmee de sleutel ontgrendeld wordt en gebruikt ka worden om de documentversie te tekenen."
+"document file."
+msgstr ""
+"De wachtwoordzin waarmee de sleutel ontgrendeld wordt en gebruikt ka worden "
+"om de documentversie te tekenen."
 
 #: forms.py:24 workflow_actions.py:27
 msgid "Passphrase"
 msgstr "Wachtwoordzin"
 
 #: forms.py:33
-msgid "Private key that will be used to sign this document version."
+#, fuzzy
+#| msgid "Private key that will be used to sign this document version."
+msgid "Private key that will be used to sign this document file."
 msgstr "Privésleutel die wordt gebruikt om deze documentversie te tekenen. "
 
 #: forms.py:44
@@ -79,125 +106,147 @@ msgstr "Handtekening sleutel-ID"
 msgid "Signature key present?"
 msgstr "Handtekening sleutel aanwezig?"
 
-#: forms.py:64
+#: forms.py:62
 msgid "Key fingerprint"
 msgstr "Sleutel vingerafdruk"
 
-#: forms.py:68
+#: forms.py:66
 msgid "Key creation date"
 msgstr "Sleutel aanmaakdatum"
 
-#: forms.py:73
+#: forms.py:71
 msgid "Key expiration date"
 msgstr "Sleutelverloopdatum"
 
-#: forms.py:78
+#: forms.py:76
 msgid "Key length"
 msgstr "Sleutellengte"
 
-#: forms.py:82
+#: forms.py:80
 msgid "Key algorithm"
 msgstr "Sleutelalgoritme"
 
-#: forms.py:86
+#: forms.py:84
 msgid "Key user ID"
 msgstr "Sleutel gebruikers-ID"
 
-#: forms.py:90
+#: forms.py:88
 msgid "Key type"
 msgstr "Sleuteltype"
 
-#: links.py:30
+#: links.py:40
+#, fuzzy
+#| msgid "Verify key signatures"
+msgid "Refresh all signatures"
+msgstr "Sleutel handtekeningen verifiëren"
+
+#: links.py:46
 msgid "Verify all documents"
 msgstr "Alle documenten verifiëren"
 
-#: links.py:37 links.py:77 queues.py:8
-msgid "Signatures"
-msgstr "Handtekeningen"
-
-#: links.py:43
+#: links.py:53
 msgid "Delete"
 msgstr "Verwijderen"
 
-#: links.py:50
+#: links.py:60
 msgid "Sign detached"
 msgstr "Ondertekening ontkoppeld"
 
-#: links.py:57
+#: links.py:67
 msgid "Details"
 msgstr "Details"
 
-#: links.py:64
+#: links.py:74
 msgid "Download"
 msgstr "Downloaden"
 
-#: links.py:70
+#: links.py:80
 msgid "Sign embedded"
 msgstr "Ondertekening ingesloten"
 
-#: links.py:83
+#: links.py:86 queues.py:8
+msgid "Signatures"
+msgstr "Handtekeningen"
+
+#: links.py:92
 msgid "Upload signature"
 msgstr "Handtekening uploaden"
 
-#: models.py:38
-msgid "Document version"
+#: models.py:42
+#, fuzzy
+#| msgid "Document version"
+msgid "Document file"
 msgstr "Documentversie"
 
-#: models.py:42
-msgid "Date signed"
+#: models.py:47
+#, fuzzy
+#| msgid "Date signed"
+msgid "Date and time signed"
 msgstr "Datum ondertekend"
 
-#: models.py:45
+#: models.py:51
 msgid "ID of the key that will be used to sign the document."
 msgstr "ID van de sleutel die wordt gebruikt om document te tekenen."
 
-#: models.py:55
+#: models.py:61
 msgid "Public key fingerprint"
 msgstr "Openbare sleutel vingerafdruk"
 
-#: models.py:62
-msgid "Document version signature"
-msgstr "Documentversie handtekening"
+#: models.py:68
+#, fuzzy
+#| msgid "Document signatures"
+msgid "Document file signature"
+msgstr "Documenthandtekeningen"
 
-#: models.py:63
-msgid "Document version signatures"
-msgstr "Documentversie handtekeningen"
+#: models.py:69
+#, fuzzy
+#| msgid "Document signatures"
+msgid "Document file signatures"
+msgstr "Documenthandtekeningen"
 
-#: models.py:82
+#: models.py:88
 msgid "Detached"
 msgstr "Ontkoppeld"
 
-#: models.py:84
+#: models.py:90
 msgid "Embedded"
 msgstr "Ingesloten"
 
-#: models.py:99
-msgid "Document version embedded signature"
-msgstr "Documentversie ingesloten handtekening"
-
-#: models.py:100
-msgid "Document version embedded signatures"
-msgstr "Documentversie ingesloten handtekeningen"
-
-#: models.py:132
+#: models.py:155
 msgid "Signature file previously generated."
 msgstr "Voorheen gegenereerd handtekeningbestand."
 
-#: models.py:135
+#: models.py:158
 msgid "Signature file"
 msgstr "Handtekeningbestand"
 
-#: models.py:141
-msgid "Document version detached signature"
+#: models.py:164
+#, fuzzy
+#| msgid "Document version detached signature"
+msgid "Document file detached signature"
 msgstr "Documentversie ontkoppelde handtekening"
 
-#: models.py:142
-msgid "Document version detached signatures"
+#: models.py:165
+#, fuzzy
+#| msgid "Document version detached signatures"
+msgid "Document file detached signatures"
 msgstr "Documentversie ontkoppelde handtekeningen"
 
-#: models.py:145
+#: models.py:168
 msgid "signature"
 msgstr "handtekening"
+
+#: models.py:210
+#, fuzzy
+#| msgid "Document version embedded signature"
+msgid "Document file embedded signature"
+msgstr "Documentversie ingesloten handtekening"
+
+#: models.py:211
+#, fuzzy
+#| msgid "Document version embedded signatures"
+msgid "Document file embedded signatures"
+msgstr "Documentversie ingesloten handtekeningen"
 
 #: permissions.py:10
 msgid "Sign documents with detached signatures"
@@ -236,16 +285,32 @@ msgid "Unverify key signatures"
 msgstr "Sleutel handtekeningen verifiëren ongedaan maken"
 
 #: queues.py:21
-msgid "Verify document version"
+#, fuzzy
+#| msgid "Verify document version"
+msgid "Verify document file"
 msgstr "Documentversie verifiëren"
 
 #: queues.py:26
 msgid "Verify missing embedded signature"
 msgstr "Ontbrekende ingesloten handtekening verifiëren"
 
+#: queues.py:30
+#, fuzzy
+#| msgid "There are no signatures for this document."
+msgid "Refresh existing signature information"
+msgstr "Er zijn geen handtekeningen voor dit document."
+
+#: serializers.py:60
+#, fuzzy
+#| msgid "Private key that will be used to sign the document version."
+msgid "Primary key of the tag to add to the document."
+msgstr "Privésleutel die wordt gebruikt om deze documentversie te tekenen."
+
 #: settings.py:20
 msgid "Path to the Storage subclass to use when storing detached signatures."
-msgstr "Pad naar de Storage subclass die gebruikt wordt om ontkoppelde handtekeningen op te slaan."
+msgstr ""
+"Pad naar de Storage subclass die gebruikt wordt om ontkoppelde "
+"handtekeningen op te slaan."
 
 #: settings.py:27
 msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND."
@@ -255,83 +320,111 @@ msgstr "Argumenten om door te geven aan de SIGNATURE_STORAGE_BACKEND."
 msgid ""
 "Unable to initialize the detached signatures storage. Check the settings {} "
 "and {} for formatting errors."
-msgstr "Niet mogelijk de ontkoppelde handtekeningen opslag te initialiseren. Controleer de instellingen {} en {} op opmaakfouten."
+msgstr ""
+"Niet mogelijk de ontkoppelde handtekeningen opslag te initialiseren. "
+"Controleer de instellingen {} en {} op opmaakfouten."
 
 #: storages.py:20
 msgid "Detached signatures"
 msgstr "Ontkoppelde handtekeningen"
 
-#: views.py:68 views.py:159
+#: views.py:66 views.py:135
 msgid "Passphrase is needed to unlock this key."
 msgstr "Wachtwoordzin is nodig om deze sleutel te ontgrendelen."
 
-#: views.py:81 views.py:172
+#: views.py:79 views.py:148
 msgid "Passphrase is incorrect."
 msgstr "Wachtwoordzin is onjuist."
 
-#: views.py:94 views.py:185
-msgid "Document version signed successfully."
+#: views.py:92 views.py:161
+#, fuzzy
+#| msgid "Document version signed successfully."
+msgid "Document file signed successfully."
 msgstr "Documentversie met succes ondertekend."
 
-#: views.py:125 views.py:223
+#: views.py:102 views.py:178
 msgid "Sign"
 msgstr "Tekenen"
 
-#: views.py:127
-#, python-format
-msgid "Sign document version \"%s\" with a detached signature"
+#: views.py:104
+#, fuzzy, python-format
+#| msgid "Sign document version \"%s\" with a detached signature"
+msgid "Sign document file \"%s\" with a detached signature"
 msgstr "Teken documentversie \"%s\" met een ontkoppelde handtekening"
 
-#: views.py:225
-#, python-format
-msgid "Sign document version \"%s\" with a embedded signature"
+#: views.py:180
+#, fuzzy, python-format
+#| msgid "Sign document version \"%s\" with a embedded signature"
+msgid "Sign document file \"%s\" with a embedded signature"
 msgstr "Teken documentversie \"%s\" met een ingesloten handtekening"
 
-#: views.py:241
+#: views.py:196
 #, python-format
 msgid "Delete detached signature: %s"
 msgstr "Verwijder ontkoppelde handtekening: %s"
 
-#: views.py:271
+#: views.py:226
 #, python-format
 msgid "Details for signature: %s"
 msgstr "Details voor handtekening: %s"
 
-#: views.py:313
+#: views.py:268
 msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
 "document itself or uploaded as a separate file."
-msgstr "Handtekeningen helpen door het bieden van bewijs van auteurschap en saboteren van detectie. Ze zijn erg veilig en moeilijk te kraken. Een handtekening kan ingesloten worden als deel van het document of als apart bestand worden geüpload."
+msgstr ""
+"Handtekeningen helpen door het bieden van bewijs van auteurschap en "
+"saboteren van detectie. Ze zijn erg veilig en moeilijk te kraken. Een "
+"handtekening kan ingesloten worden als deel van het document of als apart "
+"bestand worden geüpload."
 
-#: views.py:342
-msgid "There are no signatures for this document."
+#: views.py:297
+#, fuzzy
+#| msgid "There are no signatures for this document."
+msgid "There are no signatures for this document file."
 msgstr "Er zijn geen handtekeningen voor dit document."
 
-#: views.py:346
-#, python-format
-msgid "Signatures for document version: %s"
+#: views.py:301
+#, fuzzy, python-format
+#| msgid "Signatures for document version: %s"
+msgid "Signatures for document file: %s"
 msgstr "Handtekeningen voor documentversie: %s"
 
-#: views.py:381
-#, python-format
-msgid "Upload detached signature for document version: %s"
+#: views.py:322
+#, fuzzy, python-format
+#| msgid "Upload detached signature for document version: %s"
+msgid "Upload detached signature for document file: %s"
 msgstr "Ontkoppelde handtekening uploaden voor documentversie: %s"
 
-#: views.py:399
+#: views.py:340 views.py:359
 msgid "On large databases this operation may take some time to execute."
 msgstr "Voor grote databases kan deze operatie lang duren."
 
-#: views.py:400
+#: views.py:341
+#, fuzzy
+#| msgid "There are no signatures for this document."
+msgid "Refresh all signatures information?"
+msgstr "Er zijn geen handtekeningen voor dit document."
+
+#: views.py:351
+#, fuzzy
+#| msgid "Signature verification queued successfully."
+msgid "Signature information refresh queued successfully."
+msgstr "Handtekeningverificatie met succes in wachtrij."
+
+#: views.py:360
 msgid "Verify all document for signatures?"
 msgstr "Alle documenten op handtekeningen verifiëren?"
 
-#: views.py:410
+#: views.py:370
 msgid "Signature verification queued successfully."
 msgstr "Handtekeningverificatie met succes in wachtrij."
 
 #: workflow_actions.py:22
-msgid "Private key that will be used to sign the document version."
+#, fuzzy
+#| msgid "Private key that will be used to sign the document version."
+msgid "Private key that will be used to sign the document file."
 msgstr "Privésleutel die wordt gebruikt om deze documentversie te tekenen."
 
 #: workflow_actions.py:37
@@ -339,11 +432,27 @@ msgid "Sign document (detached)"
 msgstr "Document tekenen (ontkoppeld)"
 
 #: workflow_actions.py:49
+#, fuzzy
+#| msgid ""
+#| "Document has no version to sign. You might be trying to use this action "
+#| "in an initial state before the created document is yet to be processed."
 msgid ""
-"Document has no version to sign. You might be trying to use this action in "
-"an initial state before the created document is yet to be processed."
-msgstr "Document heeft geen versie om te tekenen. Misschien probeert u deze actie te gebruiken op een initiële status voordat het aangemaakte document is verwerkt."
+"Document has no file to sign. You might be trying to use this action in an "
+"initial state before the created document is yet to be processed."
+msgstr ""
+"Document heeft geen versie om te tekenen. Misschien probeert u deze actie te "
+"gebruiken op een initiële status voordat het aangemaakte document is "
+"verwerkt."
 
 #: workflow_actions.py:80
 msgid "Sign document (embedded)"
 msgstr "Document tekenen (ingesloten)"
+
+#~ msgid "Date"
+#~ msgstr "Datum"
+
+#~ msgid "Document version signature"
+#~ msgstr "Documentversie handtekening"
+
+#~ msgid "Document version signatures"
+#~ msgstr "Documentversie handtekeningen"

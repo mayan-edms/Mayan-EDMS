@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016
@@ -10,147 +10,220 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2021-01-19 03:50+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/it/)\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:40 links.py:38 permissions.py:5
-msgid "Message of the day"
-msgstr "Messaggio del giorno"
+#: apps.py:37 events.py:5 links.py:40 models.py:41 permissions.py:6
+#: templates/announcements/announcements.html:8 views.py:119
+msgid "Announcements"
+msgstr ""
 
-#: apps.py:77 apps.py:81
+#: apps.py:74 apps.py:78
 msgid "None"
 msgstr "Nessuna "
 
-#: events.py:5 models.py:40 views.py:123
-msgid "Messages"
-msgstr "Messaggi"
-
 #: events.py:8
-msgid "Message created"
-msgstr "Messaggio creato"
+msgid "Announcement created"
+msgstr ""
 
 #: events.py:11
-msgid "Message edited"
-msgstr "Messaggio modificato"
+msgid "Announcement edited"
+msgstr ""
 
-#: links.py:14 views.py:31
-msgid "Create message"
-msgstr "Crea messaggio"
+#: links.py:17 views.py:30
+msgid "Create announcement"
+msgstr ""
 
-#: links.py:18 links.py:24
+#: links.py:20 links.py:26
 msgid "Delete"
 msgstr "Cancella"
 
-#: links.py:29
+#: links.py:31
 msgid "Edit"
 msgstr "Modifica"
 
-#: models.py:17
-msgid "Short description of this message."
+#: models.py:18
+#, fuzzy
+#| msgid "Short description of this message."
+msgid "Short description of this announcement."
 msgstr "Descrizione breve di questo messaggio"
 
-#: models.py:18
+#: models.py:19
 msgid "Label"
 msgstr "Etichetta"
 
-#: models.py:21
-msgid "The actual message to be displayed."
+#: models.py:22
+#, fuzzy
+#| msgid "The actual message to be displayed."
+msgid "The actual test to be displayed."
 msgstr "Messaggio effettivo da visualizzare."
 
-#: models.py:22 models.py:39
-msgid "Message"
-msgstr "Messaggio"
+#: models.py:23
+msgid "Text"
+msgstr ""
 
-#: models.py:24
+#: models.py:25
 msgid "Enabled"
 msgstr "Abilitato"
 
-#: models.py:27
-msgid "Date and time after which this message will be displayed."
+#: models.py:28
+#, fuzzy
+#| msgid "Date and time after which this message will be displayed."
+msgid "Date and time after which this announcement will be displayed."
 msgstr "Orario di inizio visualizzazione di questo messaggio."
 
-#: models.py:28
+#: models.py:29
 msgid "Start date time"
 msgstr "Data e ora inizio"
 
-#: models.py:32
-msgid "Date and time until when this message is to be displayed."
+#: models.py:33
+#, fuzzy
+#| msgid "Date and time until when this message is to be displayed."
+msgid "Date and time until when this announcement is to be displayed."
 msgstr "Orario di fine visualizzazione di questo messaggio."
 
-#: models.py:33
+#: models.py:34
 msgid "End date time"
 msgstr "Data e ora fine"
 
-#: permissions.py:8
-msgid "Create messages"
-msgstr "Crea messaggi"
+#: models.py:40
+msgid "Announcement"
+msgstr ""
 
-#: permissions.py:11
-msgid "Delete messages"
-msgstr "Cancella messaggi"
+#: permissions.py:10
+msgid "Create announcements"
+msgstr ""
 
-#: permissions.py:14
-msgid "Edit messages"
-msgstr "Modifica messaggi"
+#: permissions.py:13
+msgid "Delete announcements"
+msgstr ""
 
-#: permissions.py:17
-msgid "View messages"
-msgstr "Vedi messaggi"
+#: permissions.py:16
+msgid "Edit announcements"
+msgstr ""
 
-#: templates/motd/messages.html:8
-msgid "Messages of the day"
-msgstr "Messaggi del giorno"
+#: permissions.py:19
+msgid "View announcements"
+msgstr ""
 
-#: views.py:45
-#, python-format
-msgid "Delete request performed on %(count)d message"
-msgstr "Richiesta di eliminazione eseguita sul %(count)d messaggio"
-
-#: views.py:47
-#, python-format
-msgid "Delete request performed on %(count)d messages"
-msgstr "Richiesta di eliminazione eseguita sui %(count)d messaggi "
-
-#: views.py:54
-msgid "Delete the selected message?"
-msgid_plural "Delete the selected messages?"
-msgstr[0] "Eliminare il messaggio selezionato?"
-msgstr[1] "Eliminare i messaggi selezionati?"
-
-#: views.py:64
-#, python-format
-msgid "Delete message: %s?"
-msgstr "Eliminare il messaggio: %s?"
-
-#: views.py:75
-#, python-format
-msgid "Message \"%s\" deleted successfully."
-msgstr "Messaggio \"%s\" eliminato correttamente."
-
-#: views.py:80
-#, python-format
-msgid "Error deleting message \"%(message)s\": %(error)s"
+#: views.py:41
+#, fuzzy, python-format
+#| msgid "Error deleting message \"%(message)s\": %(error)s"
+msgid "Error deleting announcement \"%(instance)s\"; %(exception)s"
 msgstr "Errore durante l'eliminazione del messaggio \"%(message)s\": %(error)s"
 
-#: views.py:96
+#: views.py:50
+#, fuzzy, python-format
+#| msgid "Message \"%s\" deleted successfully."
+msgid "Announcement \"%(object)s\" deleted successfully."
+msgstr "Messaggio \"%s\" eliminato correttamente."
+
+#: views.py:53
+#, fuzzy, python-format
+#| msgid "Message \"%s\" deleted successfully."
+msgid "%(count)d announcement deleted successfully."
+msgstr "Messaggio \"%s\" eliminato correttamente."
+
+#: views.py:56
+#, fuzzy, python-format
+#| msgid "Message \"%s\" deleted successfully."
+msgid "%(count)d announcements deleted successfully."
+msgstr "Messaggio \"%s\" eliminato correttamente."
+
+#: views.py:58
 #, python-format
-msgid "Edit message: %s"
-msgstr "Modificare il messaggio: %s?"
+msgid "Delete announcement: %(object)s."
+msgstr ""
+
+#: views.py:59
+#, fuzzy, python-format
+#| msgid "Delete the selected message?"
+#| msgid_plural "Delete the selected messages?"
+msgid "Delete the %(count)d selected announcement."
+msgstr "Eliminare il messaggio selezionato?"
+
+#: views.py:60
+#, fuzzy, python-format
+#| msgid "Delete the selected message?"
+#| msgid_plural "Delete the selected messages?"
+msgid "Delete the %(count)d selected announcements."
+msgstr "Eliminare il messaggio selezionato?"
+
+#: views.py:92
+#, python-format
+msgid "Edit announcement: %s"
+msgstr ""
+
+#: views.py:114
+#, fuzzy
+#| msgid ""
+#| "Messages are displayed in the login view. You can use messages to convery "
+#| "information about your organzation, announcements or usage guidelines for "
+#| "your users."
+msgid ""
+"Announcements are displayed in the login view. You can use announcements to "
+"convery information about your organzation, announcements or usage "
+"guidelines for your users."
+msgstr ""
+"I messaggi vengono visualizzati nella vista di accesso. È possibile "
+"utilizzare i messaggi per trasmettere informazioni sulla propria "
+"organizzazione, annunci o linee guida sull'utilizzo per gli utenti."
 
 #: views.py:118
-msgid ""
-"Messages are displayed in the login view. You can use messages to convery "
-"information about your organzation, announcements or usage guidelines for "
-"your users."
-msgstr "I messaggi vengono visualizzati nella vista di accesso. È possibile utilizzare i messaggi per trasmettere informazioni sulla propria organizzazione, annunci o linee guida sull'utilizzo per gli utenti."
-
-#: views.py:122
-msgid "No messages available"
+#, fuzzy
+#| msgid "No messages available"
+msgid "No announcements available"
 msgstr "Nessun messaggio disponibile"
+
+#~ msgid "Message of the day"
+#~ msgstr "Messaggio del giorno"
+
+#~ msgid "Messages"
+#~ msgstr "Messaggi"
+
+#~ msgid "Message created"
+#~ msgstr "Messaggio creato"
+
+#~ msgid "Message edited"
+#~ msgstr "Messaggio modificato"
+
+#~ msgid "Create message"
+#~ msgstr "Crea messaggio"
+
+#~ msgid "Message"
+#~ msgstr "Messaggio"
+
+#~ msgid "Create messages"
+#~ msgstr "Crea messaggi"
+
+#~ msgid "Delete messages"
+#~ msgstr "Cancella messaggi"
+
+#~ msgid "Edit messages"
+#~ msgstr "Modifica messaggi"
+
+#~ msgid "View messages"
+#~ msgstr "Vedi messaggi"
+
+#~ msgid "Messages of the day"
+#~ msgstr "Messaggi del giorno"
+
+#~ msgid "Delete request performed on %(count)d message"
+#~ msgstr "Richiesta di eliminazione eseguita sul %(count)d messaggio"
+
+#~ msgid "Delete request performed on %(count)d messages"
+#~ msgstr "Richiesta di eliminazione eseguita sui %(count)d messaggi "
+
+#~ msgid "Delete message: %s?"
+#~ msgstr "Eliminare il messaggio: %s?"
+
+#~ msgid "Edit message: %s"
+#~ msgstr "Modificare il messaggio: %s?"

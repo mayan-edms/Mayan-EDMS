@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # mic <winterfall24@gmail.com>, 2012
@@ -11,57 +11,87 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2020-10-14 18:23+0000\n"
 "Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
+"pl/)\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
+"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
+"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: apps.py:49 permissions.py:6 settings.py:12
+#: apps.py:54 events.py:6 permissions.py:6 settings.py:12
 msgid "Document signatures"
 msgstr "Document signatures"
 
-#: apps.py:95
-msgid "Date"
-msgstr "Data"
+#: apps.py:111
+msgid "Date and time"
+msgstr ""
 
-#: apps.py:98 models.py:46
+#: apps.py:115 models.py:52
 msgid "Key ID"
 msgstr "Key ID"
 
-#: apps.py:102 forms.py:62 models.py:51
-msgid "Signature ID"
-msgstr "ID podpisu"
-
-#: apps.py:103 forms.py:74
+#: apps.py:119 forms.py:72
 msgid "None"
 msgstr "Brak"
 
-#: apps.py:106
+#: apps.py:120 forms.py:60 models.py:57
+msgid "Signature ID"
+msgstr "ID podpisu"
+
+#: apps.py:125
 msgid "Type"
 msgstr "Typ"
+
+#: events.py:10
+#, fuzzy
+#| msgid "Detached signatures"
+msgid "Detached signature created"
+msgstr "Odłączone podpisy"
+
+#: events.py:13
+#, fuzzy
+#| msgid "Detached signatures"
+msgid "Detached signature uploaded"
+msgstr "Odłączone podpisy"
+
+#: events.py:17
+#, fuzzy
+#| msgid "Signature date"
+msgid "Embedded signature created"
+msgstr "Data podpisania"
 
 #: forms.py:17 forms.py:31 workflow_actions.py:19
 msgid "Key"
 msgstr "Klucz"
 
-#: forms.py:22 serializers.py:33 workflow_actions.py:30
+#: forms.py:22 serializers.py:66 workflow_actions.py:30
+#, fuzzy
+#| msgid ""
+#| "The passphrase to unlock the key and allow it to be used to sign the "
+#| "document version."
 msgid ""
 "The passphrase to unlock the key and allow it to be used to sign the "
-"document version."
-msgstr "Hasło do odblokowania klucza i umożliwienia jego użycia do podpisania wersji dokumentu."
+"document file."
+msgstr ""
+"Hasło do odblokowania klucza i umożliwienia jego użycia do podpisania wersji "
+"dokumentu."
 
 #: forms.py:24 workflow_actions.py:27
 msgid "Passphrase"
 msgstr "Hasło"
 
 #: forms.py:33
-msgid "Private key that will be used to sign this document version."
-msgstr "Klucz prywatny, który zostanie użyty do podpisania tej wersji dokumentu."
+#, fuzzy
+#| msgid "Private key that will be used to sign this document version."
+msgid "Private key that will be used to sign this document file."
+msgstr ""
+"Klucz prywatny, który zostanie użyty do podpisania tej wersji dokumentu."
 
 #: forms.py:44
 msgid "Signature is embedded?"
@@ -79,125 +109,147 @@ msgstr "ID klucza podpisu"
 msgid "Signature key present?"
 msgstr "Obecny klucz podpisu?"
 
-#: forms.py:64
+#: forms.py:62
 msgid "Key fingerprint"
 msgstr "Odcisk klucza"
 
-#: forms.py:68
+#: forms.py:66
 msgid "Key creation date"
 msgstr "Data utworzenia klucza"
 
-#: forms.py:73
+#: forms.py:71
 msgid "Key expiration date"
 msgstr "Data ważności klucza"
 
-#: forms.py:78
+#: forms.py:76
 msgid "Key length"
 msgstr "Długość klucza"
 
-#: forms.py:82
+#: forms.py:80
 msgid "Key algorithm"
 msgstr "Algorytm klucza"
 
-#: forms.py:86
+#: forms.py:84
 msgid "Key user ID"
 msgstr "ID użytkownika klucza"
 
-#: forms.py:90
+#: forms.py:88
 msgid "Key type"
 msgstr "Typ klucza"
 
-#: links.py:30
+#: links.py:40
+#, fuzzy
+#| msgid "Verify key signatures"
+msgid "Refresh all signatures"
+msgstr "Sprawdź podpisy kluczy"
+
+#: links.py:46
 msgid "Verify all documents"
 msgstr "Zweryfikuj wszystkie dokumenty"
 
-#: links.py:37 links.py:77 queues.py:8
-msgid "Signatures"
-msgstr "Podpisy"
-
-#: links.py:43
+#: links.py:53
 msgid "Delete"
 msgstr "Usuń"
 
-#: links.py:50
+#: links.py:60
 msgid "Sign detached"
 msgstr "Podpis odłączony"
 
-#: links.py:57
+#: links.py:67
 msgid "Details"
 msgstr "Szczegóły"
 
-#: links.py:64
+#: links.py:74
 msgid "Download"
 msgstr "Pobierz"
 
-#: links.py:70
+#: links.py:80
 msgid "Sign embedded"
 msgstr "Podpis osadzone"
 
-#: links.py:83
+#: links.py:86 queues.py:8
+msgid "Signatures"
+msgstr "Podpisy"
+
+#: links.py:92
 msgid "Upload signature"
 msgstr "Prześlij podpis"
 
-#: models.py:38
-msgid "Document version"
+#: models.py:42
+#, fuzzy
+#| msgid "Document version"
+msgid "Document file"
 msgstr "Wersja dokumentu"
 
-#: models.py:42
-msgid "Date signed"
+#: models.py:47
+#, fuzzy
+#| msgid "Date signed"
+msgid "Date and time signed"
 msgstr "Data podpisu"
 
-#: models.py:45
+#: models.py:51
 msgid "ID of the key that will be used to sign the document."
 msgstr "ID klucza, który będzie używany do podpisania dokumentu."
 
-#: models.py:55
+#: models.py:61
 msgid "Public key fingerprint"
 msgstr "Odcisk klucza publicznego"
 
-#: models.py:62
-msgid "Document version signature"
-msgstr "Podpis wersji dokumentu"
+#: models.py:68
+#, fuzzy
+#| msgid "Document signatures"
+msgid "Document file signature"
+msgstr "Document signatures"
 
-#: models.py:63
-msgid "Document version signatures"
-msgstr "Podpisy wersji dokumentu"
+#: models.py:69
+#, fuzzy
+#| msgid "Document signatures"
+msgid "Document file signatures"
+msgstr "Document signatures"
 
-#: models.py:82
+#: models.py:88
 msgid "Detached"
 msgstr "Usunięty"
 
-#: models.py:84
+#: models.py:90
 msgid "Embedded"
 msgstr "Osadzony"
 
-#: models.py:99
-msgid "Document version embedded signature"
-msgstr "Wersja dokumentu z podpisem osadzonym"
-
-#: models.py:100
-msgid "Document version embedded signatures"
-msgstr "Wersja dokumentu z podpisami osadzonymi"
-
-#: models.py:132
+#: models.py:155
 msgid "Signature file previously generated."
 msgstr "Wcześniej wygenerowany plik podpisu."
 
-#: models.py:135
+#: models.py:158
 msgid "Signature file"
 msgstr "Signature file"
 
-#: models.py:141
-msgid "Document version detached signature"
+#: models.py:164
+#, fuzzy
+#| msgid "Document version detached signature"
+msgid "Document file detached signature"
 msgstr "Wersja dokumentu z odłączonym podpisem"
 
-#: models.py:142
-msgid "Document version detached signatures"
+#: models.py:165
+#, fuzzy
+#| msgid "Document version detached signatures"
+msgid "Document file detached signatures"
 msgstr "Wersja dokumentu z odłączonymi podpisami"
 
-#: models.py:145
+#: models.py:168
 msgid "signature"
 msgstr "podpis"
+
+#: models.py:210
+#, fuzzy
+#| msgid "Document version embedded signature"
+msgid "Document file embedded signature"
+msgstr "Wersja dokumentu z podpisem osadzonym"
+
+#: models.py:211
+#, fuzzy
+#| msgid "Document version embedded signatures"
+msgid "Document file embedded signatures"
+msgstr "Wersja dokumentu z podpisami osadzonymi"
 
 #: permissions.py:10
 msgid "Sign documents with detached signatures"
@@ -236,16 +288,32 @@ msgid "Unverify key signatures"
 msgstr "Nie weryfikuj kluczy podpisów"
 
 #: queues.py:21
-msgid "Verify document version"
+#, fuzzy
+#| msgid "Verify document version"
+msgid "Verify document file"
 msgstr "Sprawdź wersję dokumentu"
 
 #: queues.py:26
 msgid "Verify missing embedded signature"
 msgstr "Sprawdź brak podpisu osadzonego"
 
+#: queues.py:30
+#, fuzzy
+#| msgid "There are no signatures for this document."
+msgid "Refresh existing signature information"
+msgstr "Brak podpisów dla tego dokumentu."
+
+#: serializers.py:60
+#, fuzzy
+#| msgid "Private key that will be used to sign the document version."
+msgid "Primary key of the tag to add to the document."
+msgstr "Klucz prywatny, który będzie używany do podpisania wersji dokumentu."
+
 #: settings.py:20
 msgid "Path to the Storage subclass to use when storing detached signatures."
-msgstr "Ścieżka do podklasy Storage używana podczas przechowywania odłączonych podpisów."
+msgstr ""
+"Ścieżka do podklasy Storage używana podczas przechowywania odłączonych "
+"podpisów."
 
 #: settings.py:27
 msgid "Arguments to pass to the SIGNATURE_STORAGE_BACKEND."
@@ -255,83 +323,110 @@ msgstr "Argumenty dla SIGNATURE_STORAGE_BACKEND."
 msgid ""
 "Unable to initialize the detached signatures storage. Check the settings {} "
 "and {} for formatting errors."
-msgstr "Nie można zainicjować magazynu odłączonych podpisów. Sprawdź ustawienia {} i {} pod kątem błędów formatowania."
+msgstr ""
+"Nie można zainicjować magazynu odłączonych podpisów. Sprawdź ustawienia {} i "
+"{} pod kątem błędów formatowania."
 
 #: storages.py:20
 msgid "Detached signatures"
 msgstr "Odłączone podpisy"
 
-#: views.py:68 views.py:159
+#: views.py:66 views.py:135
 msgid "Passphrase is needed to unlock this key."
 msgstr "Aby odblokować ten klucz, potrzebne jest hasło."
 
-#: views.py:81 views.py:172
+#: views.py:79 views.py:148
 msgid "Passphrase is incorrect."
 msgstr "Hasło jest niepoprawne."
 
-#: views.py:94 views.py:185
-msgid "Document version signed successfully."
+#: views.py:92 views.py:161
+#, fuzzy
+#| msgid "Document version signed successfully."
+msgid "Document file signed successfully."
 msgstr "Wersja dokumentu podpisana pomyślnie."
 
-#: views.py:125 views.py:223
+#: views.py:102 views.py:178
 msgid "Sign"
 msgstr "Podpisz"
 
-#: views.py:127
-#, python-format
-msgid "Sign document version \"%s\" with a detached signature"
+#: views.py:104
+#, fuzzy, python-format
+#| msgid "Sign document version \"%s\" with a detached signature"
+msgid "Sign document file \"%s\" with a detached signature"
 msgstr "Podpisz wersję dokumentu „%s” odłączonym podpisem"
 
-#: views.py:225
-#, python-format
-msgid "Sign document version \"%s\" with a embedded signature"
+#: views.py:180
+#, fuzzy, python-format
+#| msgid "Sign document version \"%s\" with a embedded signature"
+msgid "Sign document file \"%s\" with a embedded signature"
 msgstr "Podpisz wersję dokumentu „%s” za pomocą osadzonego podpisu"
 
-#: views.py:241
+#: views.py:196
 #, python-format
 msgid "Delete detached signature: %s"
 msgstr "Usuń odłączony podpis: %s"
 
-#: views.py:271
+#: views.py:226
 #, python-format
 msgid "Details for signature: %s"
 msgstr "Szczegóły podpisu: %s"
 
-#: views.py:313
+#: views.py:268
 msgid ""
 "Signatures help provide authorship evidence and tamper detection. They are "
 "very secure and hard to forge. A signature can be embedded as part of the "
 "document itself or uploaded as a separate file."
-msgstr "Podpisy pomagają zapewnić dowody autorstwa i wykrywanie sabotażu. Są bardzo bezpieczne i trudne do zafałszowania. Podpis może zostać osadzony jako część samego dokumentu lub przesłany jako osobny plik."
+msgstr ""
+"Podpisy pomagają zapewnić dowody autorstwa i wykrywanie sabotażu. Są bardzo "
+"bezpieczne i trudne do zafałszowania. Podpis może zostać osadzony jako część "
+"samego dokumentu lub przesłany jako osobny plik."
 
-#: views.py:342
-msgid "There are no signatures for this document."
+#: views.py:297
+#, fuzzy
+#| msgid "There are no signatures for this document."
+msgid "There are no signatures for this document file."
 msgstr "Brak podpisów dla tego dokumentu."
 
-#: views.py:346
-#, python-format
-msgid "Signatures for document version: %s"
+#: views.py:301
+#, fuzzy, python-format
+#| msgid "Signatures for document version: %s"
+msgid "Signatures for document file: %s"
 msgstr "Podpisy dla wersji dokumentu: %s"
 
-#: views.py:381
-#, python-format
-msgid "Upload detached signature for document version: %s"
+#: views.py:322
+#, fuzzy, python-format
+#| msgid "Upload detached signature for document version: %s"
+msgid "Upload detached signature for document file: %s"
 msgstr "Prześlij odłączony podpis dla wersji dokumentu: %s"
 
-#: views.py:399
+#: views.py:340 views.py:359
 msgid "On large databases this operation may take some time to execute."
 msgstr "Na dużych bazach danych operacja może chwilę potrwać."
 
-#: views.py:400
+#: views.py:341
+#, fuzzy
+#| msgid "There are no signatures for this document."
+msgid "Refresh all signatures information?"
+msgstr "Brak podpisów dla tego dokumentu."
+
+#: views.py:351
+#, fuzzy
+#| msgid "Signature verification queued successfully."
+msgid "Signature information refresh queued successfully."
+msgstr "Weryfikacja podpisu w kolejce powiodła się."
+
+#: views.py:360
 msgid "Verify all document for signatures?"
 msgstr "Zweryfikować cały dokument pod kątem podpisów?"
 
-#: views.py:410
+#: views.py:370
 msgid "Signature verification queued successfully."
 msgstr "Weryfikacja podpisu w kolejce powiodła się."
 
 #: workflow_actions.py:22
-msgid "Private key that will be used to sign the document version."
+#, fuzzy
+#| msgid "Private key that will be used to sign the document version."
+msgid "Private key that will be used to sign the document file."
 msgstr "Klucz prywatny, który będzie używany do podpisania wersji dokumentu."
 
 #: workflow_actions.py:37
@@ -339,11 +434,26 @@ msgid "Sign document (detached)"
 msgstr "Podpisz dokument (odłączony)"
 
 #: workflow_actions.py:49
+#, fuzzy
+#| msgid ""
+#| "Document has no version to sign. You might be trying to use this action "
+#| "in an initial state before the created document is yet to be processed."
 msgid ""
-"Document has no version to sign. You might be trying to use this action in "
-"an initial state before the created document is yet to be processed."
-msgstr "Dokument nie ma wersji do podpisania. Być może próbujesz użyć tej akcji w stanie początkowym, zanim utworzony dokument nie został jeszcze przetworzony."
+"Document has no file to sign. You might be trying to use this action in an "
+"initial state before the created document is yet to be processed."
+msgstr ""
+"Dokument nie ma wersji do podpisania. Być może próbujesz użyć tej akcji w "
+"stanie początkowym, zanim utworzony dokument nie został jeszcze przetworzony."
 
 #: workflow_actions.py:80
 msgid "Sign document (embedded)"
 msgstr "Podpisz dokument (osadzony)"
+
+#~ msgid "Date"
+#~ msgstr "Data"
+
+#~ msgid "Document version signature"
+#~ msgstr "Podpis wersji dokumentu"
+
+#~ msgid "Document version signatures"
+#~ msgstr "Podpisy wersji dokumentu"

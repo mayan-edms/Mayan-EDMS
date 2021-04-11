@@ -2,33 +2,34 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Lyudmil Antonov <lantonov.here@gmail.com>, 2020
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>, 2020\n"
-"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/bg/)\n"
+"Language-Team: Bulgarian (https://www.transifex.com/rosarior/teams/13584/"
+"bg/)\n"
+"Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:16 permissions.py:5 settings.py:10
 msgid "Logging"
 msgstr "Регистрация"
 
-#: links.py:12
+#: links.py:13
 msgid "Errors"
 msgstr "Грешки"
 
-#: links.py:18
+#: links.py:19
 msgid "Clear errors"
 msgstr "Изчистване на грешки"
 
@@ -97,16 +98,16 @@ msgstr ""
 "Път към файла на дневника, който ще проследява грешките по време на "
 "производството."
 
-#: views.py:17
+#: views.py:20
 #, python-format
 msgid "Clear error log entries for: %s"
 msgstr "Изчистване на записите в дневника за грешки за: %s"
 
-#: views.py:23
+#: views.py:27
 msgid "Object error log cleared successfully"
 msgstr "Дневникът за грешки в обекта е изчистен успешно"
 
-#: views.py:36
+#: views.py:42
 msgid ""
 "This view displays the error log of different object. An empty list is a "
 "good thing."
@@ -114,11 +115,11 @@ msgstr ""
 "Този изглед показва дневника на грешките на различен обект. Празен списък е "
 "нещо добро."
 
-#: views.py:40
+#: views.py:46
 msgid "There are no error log entries"
 msgstr "Няма записи в дневника за грешки"
 
-#: views.py:43
+#: views.py:49
 #, python-format
 msgid "Error log entries for: %s"
 msgstr "Записи в дневника за грешки за: %s"

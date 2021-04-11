@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Dezső József <dejo60@gmail.com>, 2013
@@ -10,17 +10,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2019-05-17 05:51+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/language/hu/)\n"
+"Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/hu/)\n"
+"Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:27 links.py:31 permissions.py:5 queues.py:7
+#: apps.py:27 links.py:34 permissions.py:5 queues.py:7
 msgid "Statistics"
 msgstr "Statisztika"
 
@@ -38,19 +39,19 @@ msgstr ""
 msgid "Never"
 msgstr "Sohasem"
 
-#: links.py:10
+#: links.py:14
 msgid "Queue"
 msgstr "Munkasor"
 
-#: links.py:15
+#: links.py:19
 msgid "View"
 msgstr "Nézet"
 
-#: links.py:20
+#: links.py:24
 msgid "Namespace details"
 msgstr "Névtér részletek"
 
-#: links.py:25
+#: links.py:29
 msgid "Namespace list"
 msgstr "Névtérlista"
 

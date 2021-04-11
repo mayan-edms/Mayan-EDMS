@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Marco Camplese <marco.camplese.mc@gmail.com>, 2016
@@ -10,17 +10,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2021-01-19 03:49+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/it/)\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:19 settings.py:10
+#: apps.py:18 settings.py:10
 msgid "Lock manager"
 msgstr "Gestore blocco"
 
@@ -46,7 +47,9 @@ msgstr "Blocchi"
 
 #: settings.py:15
 msgid "Path to the class to use when to request and release resource locks."
-msgstr "Percorso della classe da utilizzare quando richiedere e rilasciare i blocchi delle risorse."
+msgstr ""
+"Percorso della classe da utilizzare quando richiedere e rilasciare i blocchi "
+"delle risorse."
 
 #: settings.py:22
 msgid "Arguments to pass to the LOCK_MANAGER_BACKEND."
@@ -56,4 +59,6 @@ msgstr "Argomenti da passare a LOCK_MANAGER_BACKEND."
 msgid ""
 "Default amount of time in seconds after which a resource lock will be "
 "automatically released."
-msgstr "Tempo predefinito in secondi dopo il quale verrà rilasciato automaticamente un blocco delle risorse."
+msgstr ""
+"Tempo predefinito in secondi dopo il quale verrà rilasciato automaticamente "
+"un blocco delle risorse."

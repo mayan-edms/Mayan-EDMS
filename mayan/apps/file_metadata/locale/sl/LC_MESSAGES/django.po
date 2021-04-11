@@ -2,47 +2,49 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Roberto Rosario, 2020
 # Jože Detečnik <joze.detecnik@3tav.si>, 2020
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2019-04-27 22:54+0000\n"
 "Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>, 2020\n"
-"Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/sl/)\n"
+"Language-Team: Slovenian (https://www.transifex.com/rosarior/teams/13584/"
+"sl/)\n"
+"Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sl\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+"%100==4 ? 2 : 3);\n"
 
 #: admin.py:13
 msgid "Label"
 msgstr "Oznaka"
 
-#: apps.py:49 events.py:6 links.py:17 permissions.py:5 queues.py:7
+#: apps.py:48 events.py:6 links.py:17 permissions.py:5 queues.py:7
 #: settings.py:12
 msgid "File metadata"
 msgstr "Datotečni metapodatki"
 
-#: apps.py:99 search.py:7 search.py:16
+#: apps.py:98 search.py:11 search.py:22 search.py:33
 msgid "File metadata key"
 msgstr "Ključ metapodatkov datoteke"
 
-#: apps.py:103 search.py:11 search.py:20
+#: apps.py:102 search.py:15 search.py:26 search.py:37
 msgid "File metadata value"
 msgstr "Vrednost metapodatkov datoteke"
 
-#: apps.py:130
+#: apps.py:129
 msgid "Return the value of a specific file metadata."
 msgstr "Vrne vrednost metapodatkov določene datoteke."
 
-#: apps.py:131
+#: apps.py:130
 msgid "File metadata value of"
 msgstr "Vrednost metapodatkov datoteke"
 
@@ -58,26 +60,30 @@ msgid "EXIF Tool"
 msgstr "Orodje EXIF"
 
 #: events.py:10
-msgid "Document version submitted for file metadata processing"
+#, fuzzy
+#| msgid "Document version submitted for file metadata processing"
+msgid "Document file submitted for file metadata processing"
 msgstr "Različica dokumenta, predložena v obdelavo metapodatkov datoteke"
 
 #: events.py:14
-msgid "Document version file metadata processing finished"
+#, fuzzy
+#| msgid "Document version file metadata processing finished"
+msgid "Document file file metadata processing finished"
 msgstr "Obdelava metapodatkov datoteke različice dokumenta je končana"
 
 #: links.py:23
 msgid "Attributes"
 msgstr "Lastnosti"
 
-#: links.py:30 links.py:33
+#: links.py:30 links.py:35
 msgid "Submit for file metadata"
 msgstr "Predložite za metapodatke o datoteki"
 
-#: links.py:40
+#: links.py:42
 msgid "Setup file metadata"
 msgstr "Metapodatki o nastavitveni datoteki"
 
-#: links.py:45
+#: links.py:47
 msgid "File metadata processing per type"
 msgstr "Obdelava metapodatkov datoteke glede na vrsto"
 
@@ -90,8 +96,10 @@ msgid "Return the specified document file metadata entry."
 msgstr "Vrnite vnos metapodatkov za navedeno datoteko dokumenta."
 
 #: methods.py:66
-msgid "Return the specified document version file metadata entry."
-msgstr "Vrnite vnos metapodatkov za navedeno datoteko različice dokumenta."
+#, fuzzy
+#| msgid "Return the specified document file metadata entry."
+msgid "Return the specified document file file metadata entry."
+msgstr "Vrnite vnos metapodatkov za navedeno datoteko dokumenta."
 
 #: models.py:18
 msgid "Driver path"
@@ -127,15 +135,21 @@ msgid "Document types settings"
 msgstr "Nastavitve vrst dokumentov"
 
 #: models.py:74
-msgid "Document version"
-msgstr "Različica dokumenta"
+#, fuzzy
+#| msgid "Document type"
+msgid "Document file"
+msgstr "Tip dokumenta"
 
 #: models.py:80 models.py:95
-msgid "Document version driver entry"
+#, fuzzy
+#| msgid "Document version driver entry"
+msgid "Document file driver entry"
 msgstr "Vnos gonilnika različice dokumenta"
 
 #: models.py:81
-msgid "Document version driver entries"
+#, fuzzy
+#| msgid "Document version driver entries"
+msgid "Document file driver entries"
 msgstr "Vnosi gonilnika različice dokumenta"
 
 #: models.py:88
@@ -179,7 +193,9 @@ msgid "View file metadata"
 msgstr "Ogled metapodatkov datoteke"
 
 #: queues.py:10
-msgid "Process document version"
+#, fuzzy
+#| msgid "Process document version"
+msgid "Process document file"
 msgstr "Obdelaj različico dokumenta"
 
 #: settings.py:18
@@ -196,8 +212,8 @@ msgstr "Argumenti za posredovanje voznikom."
 
 #: views.py:44
 msgid ""
-"File metadata are the attributes of the document's file. They can range from"
-" camera information used to take a photo to the author that created a file. "
+"File metadata are the attributes of the document's file. They can range from "
+"camera information used to take a photo to the author that created a file. "
 "File metadata are set when the document's file was first created. File "
 "metadata attributes reside in the file itself. They are not the same as the "
 "document metadata, which are user defined and reside in the database."
@@ -210,7 +226,9 @@ msgstr ""
 "uporabnik in se nahajajo v bazi podatkov."
 
 #: views.py:52
-msgid "No file metadata available"
+#, fuzzy
+#| msgid "No file metadata available"
+msgid "No file metadata available."
 msgstr "Na voljo niso nobeni metapodatki o datoteki"
 
 #: views.py:55
@@ -229,18 +247,24 @@ msgstr ""
 "dokumenta."
 
 #: views.py:86
-msgid "No file metadata available for this driver"
+#, fuzzy
+#| msgid "No file metadata available for this driver"
+msgid "No file metadata available for this driver."
 msgstr "Za ta gonilnik ni na voljo metapodatkov o datoteki"
 
 #: views.py:90
-#, python-format
-msgid "File metadata attribures for: %(document)s, for driver: %(driver)s"
+#, fuzzy, python-format
+#| msgid "File metadata attribures for: %(document)s, for driver: %(driver)s"
+msgid "File metadata attributes for: %(document_file)s with driver: %(driver)s"
 msgstr ""
 "Datoteke atributov metapodatkov za: %(document)s, za gonilnik: %(driver)s"
 
 #: views.py:119
-msgid "Submit the selected document to the file metadata queue?"
-msgid_plural "Submit the selected documents to the file metadata queue?"
+#, fuzzy
+#| msgid "Submit the selected document to the file metadata queue?"
+#| msgid_plural "Submit the selected documents to the file metadata queue?"
+msgid "Submit the selected document file to the file metadata queue?"
+msgid_plural "Submit the selected documents files to the file metadata queue?"
 msgstr[0] ""
 "Želite poslati izbrani dokument v čakalno vrsto metapodatkov datoteke?"
 msgstr[1] "Želite poslati izbrane dokumente v čakalno vrsto metapodatkov?"
@@ -262,3 +286,9 @@ msgid "%(count)d documents added to the file metadata processing queue."
 msgstr ""
 "%(count)d dokumenti, dodani v čakalno vrsto za obdelavo metapodatkov "
 "datoteke."
+
+#~ msgid "Return the specified document version file metadata entry."
+#~ msgstr "Vrnite vnos metapodatkov za navedeno datoteko različice dokumenta."
+
+#~ msgid "Document version"
+#~ msgstr "Različica dokumenta"

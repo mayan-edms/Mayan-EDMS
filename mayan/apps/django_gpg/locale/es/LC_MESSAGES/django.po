@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
@@ -11,45 +11,46 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2020-04-15 02:32+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
+"language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:30
+#: apps.py:33
 msgid "Django GPG"
 msgstr "Django GPG"
 
-#: apps.py:46 apps.py:52 forms.py:15
+#: apps.py:56 apps.py:62 forms.py:15
 msgid "Key ID"
 msgstr "Identificador de llave"
 
-#: apps.py:56 forms.py:32 models.py:53
+#: apps.py:66 forms.py:32 models.py:59
 msgid "Type"
 msgstr "Tipo"
 
-#: apps.py:60 forms.py:21 models.py:34
+#: apps.py:70 forms.py:21 models.py:40
 msgid "Creation date"
 msgstr "Fecha de creación"
 
-#: apps.py:64
+#: apps.py:74
 msgid "No expiration"
 msgstr "No expira"
 
-#: apps.py:65 forms.py:25 models.py:38
+#: apps.py:75 forms.py:25 models.py:44
 msgid "Expiration date"
 msgstr "Fecha de expiración"
 
-#: apps.py:68 forms.py:30 models.py:45
+#: apps.py:78 forms.py:30 models.py:51
 msgid "Length"
 msgstr "Tamaño"
 
-#: apps.py:73 forms.py:17 models.py:50
+#: apps.py:83 forms.py:17 models.py:56
 msgid "User ID"
 msgstr "ID de usuario"
 
@@ -57,15 +58,31 @@ msgstr "ID de usuario"
 msgid "GNU privacy guard - a PGP implementation."
 msgstr "GNU Privacy Guard: una implementación de PGP."
 
+#: events.py:5 links.py:42 permissions.py:5
+msgid "Key management"
+msgstr "Gestión de llaves"
+
+#: events.py:8
+#, fuzzy
+#| msgid "Key data"
+msgid "Key created"
+msgstr "Datos de llave"
+
+#: events.py:12
+#, fuzzy
+#| msgid "Download"
+msgid "Key downloaded"
+msgstr "Descargar"
+
 #: forms.py:26
 msgid "None"
 msgstr "Ninguno"
 
-#: forms.py:29 models.py:42
+#: forms.py:29 models.py:48
 msgid "Fingerprint"
 msgstr "Huella"
 
-#: forms.py:31 models.py:48
+#: forms.py:31 models.py:54
 msgid "Algorithm"
 msgstr "Algoritmo"
 
@@ -75,7 +92,9 @@ msgstr "Término"
 
 #: forms.py:46
 msgid "Name, e-mail, key ID or key fingerprint to look for."
-msgstr "Nombre, dirección de correo electrónico, identificador de llave o huella digital de llave a buscar."
+msgstr ""
+"Nombre, dirección de correo electrónico, identificador de llave o huella "
+"digital de llave a buscar."
 
 #: links.py:17
 msgid "Delete"
@@ -97,19 +116,15 @@ msgstr "Hacer búsquedas en servidores de llaves"
 msgid "Import"
 msgstr "Importar"
 
-#: links.py:42 permissions.py:5
-msgid "Key management"
-msgstr "Gestión de llaves"
-
 #: links.py:46
 msgid "Upload key"
 msgstr "Subir llave"
 
-#: links.py:50 views.py:180
+#: links.py:50 views.py:194
 msgid "Private keys"
 msgstr "Llaves privadas"
 
-#: links.py:54 views.py:204
+#: links.py:54 views.py:218
 msgid "Public keys"
 msgstr "Llaves públicas"
 
@@ -147,7 +162,9 @@ msgstr "Error de firma."
 
 #: literals.py:72
 msgid "Document is signed but no public key is available for verification."
-msgstr "El documento ha sido firmado pero no hay llave pública disponible para verificación."
+msgstr ""
+"El documento ha sido firmado pero no hay llave pública disponible para "
+"verificación."
 
 #: literals.py:77
 msgid "Document is signed, and signature is good."
@@ -157,27 +174,27 @@ msgstr "El documento ha sido firmado y la firma está en buen estado."
 msgid "Document is signed with a valid signature."
 msgstr "El documento ha sido firmado y la firma ha sido validada."
 
-#: models.py:30
+#: models.py:36
 msgid "ASCII armored version of the key."
 msgstr "Versión ASCII de la llave"
 
-#: models.py:31
+#: models.py:37
 msgid "Key data"
 msgstr "Datos de llave"
 
-#: models.py:59
+#: models.py:65
 msgid "Key"
 msgstr "Llave"
 
-#: models.py:60
+#: models.py:66
 msgid "Keys"
 msgstr "Llaves"
 
-#: models.py:72
+#: models.py:78
 msgid "Invalid key data"
 msgstr "Datos de llave invalidos"
 
-#: models.py:75
+#: models.py:81
 msgid "Key already exists."
 msgstr "Llave ya existe."
 
@@ -211,84 +228,95 @@ msgstr "Firmas"
 
 #: settings.py:16
 msgid "Full path to the backend to be used to handle keys and signatures."
-msgstr "Ruta completa al controlador que se utilizará para manejar llaves y firmas."
+msgstr ""
+"Ruta completa al controlador que se utilizará para manejar llaves y firmas."
 
 #: settings.py:25
 msgid "Keyserver used to query for keys."
 msgstr "Servidor usado para buscar llaves."
 
-#: views.py:36
+#: views.py:39
 #, python-format
 msgid "Delete key: %s"
 msgstr "Borrar llave: %s"
 
-#: views.py:53
+#: views.py:56
 #, python-format
 msgid "Details for key: %s"
 msgstr "Detalles para llave: %s"
 
-#: views.py:75
+#: views.py:84
 #, python-format
 msgid "Import key ID: %s?"
 msgstr "¿Importar llave: %s?"
 
-#: views.py:76
+#: views.py:85
 msgid "Import key"
 msgstr "Importar llave"
 
-#: views.py:85
+#: views.py:94
 #, python-format
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr "No se pudo importar la llave: %(key_id)s; %(error)s "
 
-#: views.py:93
+#: views.py:102
 #, python-format
 msgid "Successfully received key: %(key_id)s"
 msgstr "Llave: %(key_id)s, recibida con éxito"
 
-#: views.py:110
+#: views.py:119
 msgid ""
 "Use names, last names, key ids or emails to search public keys to import "
 "from the keyserver."
-msgstr "Utilice nombres, apellidos, identificaciones de llaves o correos electrónicos para buscar llaves públicas para importar desde el servidor de llaves."
+msgstr ""
+"Utilice nombres, apellidos, identificaciones de llaves o correos "
+"electrónicos para buscar llaves públicas para importar desde el servidor de "
+"llaves."
 
-#: views.py:114
+#: views.py:123
 msgid "No results returned"
 msgstr "No hay resultados devueltos"
 
-#: views.py:116
+#: views.py:125
 msgid "Key query results"
 msgstr "Resultado de búsqueda de llaves"
 
-#: views.py:136
+#: views.py:145
 msgid "Search"
 msgstr "Búsqueda"
 
-#: views.py:138
+#: views.py:147
 msgid "Query key server"
 msgstr "Consultar servidor de llaves"
 
-#: views.py:157
+#: views.py:166
 msgid "Upload new key"
 msgstr "Subir una nueva llave"
 
-#: views.py:173
+#: views.py:187
 msgid ""
-"Private keys are used to signed documents. Private keys can only be uploaded"
-" by the user. The view to upload private and public keys is the same."
-msgstr "Las llaves privadas se utilizan para firmar documentos. Las llaves privadas solo pueden ser cargadas por el usuario. La vista para cargar llaves privadas y públicas es la misma."
+"Private keys are used to signed documents. Private keys can only be uploaded "
+"by the user. The view to upload private and public keys is the same."
+msgstr ""
+"Las llaves privadas se utilizan para firmar documentos. Las llaves privadas "
+"solo pueden ser cargadas por el usuario. La vista para cargar llaves "
+"privadas y públicas es la misma."
 
-#: views.py:178
+#: views.py:192
 msgid "There no private keys"
 msgstr "No hay llaves privadas"
 
-#: views.py:196
+#: views.py:210
 msgid ""
-"Public keys are used to verify signed documents. Public keys can be uploaded"
-" by the user or downloaded from keyservers. The view to upload private and "
+"Public keys are used to verify signed documents. Public keys can be uploaded "
+"by the user or downloaded from keyservers. The view to upload private and "
 "public keys is the same."
-msgstr "Las llaves públicas se utilizan para verificar documentos firmados. Las llaves públicas pueden ser cargadas por el usuario o descargadas de los servidores de llaves. La vista para subir llaves privadas y públicas es la misma."
+msgstr ""
+"Las llaves públicas se utilizan para verificar documentos firmados. Las "
+"llaves públicas pueden ser cargadas por el usuario o descargadas de los "
+"servidores de llaves. La vista para subir llaves privadas y públicas es la "
+"misma."
 
-#: views.py:202
+#: views.py:216
 msgid "There no public keys"
 msgstr "No hay llaves publicas"

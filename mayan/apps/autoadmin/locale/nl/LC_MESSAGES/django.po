@@ -2,31 +2,32 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Roberto Rosario, 2020
 # j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
 # e6bc1d20d3f0031709c3c11db1061ebc_be0a371 <8b4e580508477646e97982ebad39e3af_312311>, 2020
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2019-04-14 04:06+0000\n"
-"Last-Translator: e6bc1d20d3f0031709c3c11db1061ebc_be0a371 <8b4e580508477646e97982ebad39e3af_312311>, 2020\n"
+"Last-Translator: e6bc1d20d3f0031709c3c11db1061ebc_be0a371 "
+"<8b4e580508477646e97982ebad39e3af_312311>, 2020\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:13 settings.py:7
 msgid "Auto administrator"
 msgstr "Auto administrator"
 
-#: auth/allauth.py:54
+#: auth/allauth.py:51
 msgid ""
 "Welcome Admin! You have been given superuser privileges. Use them with "
 "caution."
@@ -56,8 +57,8 @@ msgstr ""
 
 #: settings.py:16
 msgid ""
-"The password of the automatically created super user account. If it is equal"
-" to None, the password is randomly generated."
+"The password of the automatically created super user account. If it is equal "
+"to None, the password is randomly generated."
 msgstr ""
 "Het wachtwoord van het automatisch aangemaakte supergebruikersaccount. Als "
 "het gelijk is aan \"None\", wordt het wachtwoord willekeurig gegenereerd."

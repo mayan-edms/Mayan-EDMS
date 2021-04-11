@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Michal Švábík <snadno@lehce.cz>, 2019
@@ -9,149 +9,198 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2020-09-27 06:47+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
+"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/"
+"cs/)\n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: cs\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
+"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:40 links.py:38 permissions.py:5
-msgid "Message of the day"
-msgstr "Zpráva dne"
+#: apps.py:37 events.py:5 links.py:40 models.py:41 permissions.py:6
+#: templates/announcements/announcements.html:8 views.py:119
+msgid "Announcements"
+msgstr ""
 
-#: apps.py:77 apps.py:81
+#: apps.py:74 apps.py:78
 msgid "None"
 msgstr "žádný"
 
-#: events.py:5 models.py:40 views.py:123
-msgid "Messages"
-msgstr "Zprávy"
-
 #: events.py:8
-msgid "Message created"
+msgid "Announcement created"
 msgstr ""
 
 #: events.py:11
-msgid "Message edited"
+msgid "Announcement edited"
 msgstr ""
 
-#: links.py:14 views.py:31
-msgid "Create message"
-msgstr "Vytvořit zprávu"
+#: links.py:17 views.py:30
+msgid "Create announcement"
+msgstr ""
 
-#: links.py:18 links.py:24
+#: links.py:20 links.py:26
 msgid "Delete"
 msgstr "Odstranit"
 
-#: links.py:29
+#: links.py:31
 msgid "Edit"
 msgstr "Editovat"
 
-#: models.py:17
-msgid "Short description of this message."
+#: models.py:18
+#, fuzzy
+#| msgid "Short description of this message."
+msgid "Short description of this announcement."
 msgstr "Stručný popis této zprávy."
 
-#: models.py:18
+#: models.py:19
 msgid "Label"
 msgstr "Označení"
 
-#: models.py:21
-msgid "The actual message to be displayed."
+#: models.py:22
+#, fuzzy
+#| msgid "The actual message to be displayed."
+msgid "The actual test to be displayed."
 msgstr "Skutečná zpráva, která se má zobrazit."
 
-#: models.py:22 models.py:39
-msgid "Message"
-msgstr "Zpráva"
+#: models.py:23
+msgid "Text"
+msgstr ""
 
-#: models.py:24
+#: models.py:25
 msgid "Enabled"
 msgstr "Povoleno"
 
-#: models.py:27
-msgid "Date and time after which this message will be displayed."
+#: models.py:28
+#, fuzzy
+#| msgid "Date and time after which this message will be displayed."
+msgid "Date and time after which this announcement will be displayed."
 msgstr "Datum a čas, po kterém se tato zpráva zobrazí."
 
-#: models.py:28
+#: models.py:29
 msgid "Start date time"
 msgstr "Počáteční datum"
 
-#: models.py:32
-msgid "Date and time until when this message is to be displayed."
+#: models.py:33
+#, fuzzy
+#| msgid "Date and time until when this message is to be displayed."
+msgid "Date and time until when this announcement is to be displayed."
 msgstr "Datum a čas, do kdy se má tato zpráva zobrazit."
 
-#: models.py:33
+#: models.py:34
 msgid "End date time"
 msgstr "Datum ukončení"
 
-#: permissions.py:8
-msgid "Create messages"
-msgstr "Vytvořit zprávy"
-
-#: permissions.py:11
-msgid "Delete messages"
-msgstr "Mazat zprávy"
-
-#: permissions.py:14
-msgid "Edit messages"
-msgstr "Upravovat zprávy"
-
-#: permissions.py:17
-msgid "View messages"
-msgstr "Zobrazit zprávy"
-
-#: templates/motd/messages.html:8
-msgid "Messages of the day"
-msgstr "Zprávy dne"
-
-#: views.py:45
-#, python-format
-msgid "Delete request performed on %(count)d message"
+#: models.py:40
+msgid "Announcement"
 msgstr ""
 
-#: views.py:47
-#, python-format
-msgid "Delete request performed on %(count)d messages"
+#: permissions.py:10
+msgid "Create announcements"
 msgstr ""
 
-#: views.py:54
-msgid "Delete the selected message?"
-msgid_plural "Delete the selected messages?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-
-#: views.py:64
-#, python-format
-msgid "Delete message: %s?"
+#: permissions.py:13
+msgid "Delete announcements"
 msgstr ""
 
-#: views.py:75
-#, python-format
-msgid "Message \"%s\" deleted successfully."
+#: permissions.py:16
+msgid "Edit announcements"
 msgstr ""
 
-#: views.py:80
-#, python-format
-msgid "Error deleting message \"%(message)s\": %(error)s"
+#: permissions.py:19
+msgid "View announcements"
 msgstr ""
 
-#: views.py:96
+#: views.py:41
 #, python-format
-msgid "Edit message: %s"
-msgstr "Upravit zprávu: %s"
+msgid "Error deleting announcement \"%(instance)s\"; %(exception)s"
+msgstr ""
+
+#: views.py:50
+#, python-format
+msgid "Announcement \"%(object)s\" deleted successfully."
+msgstr ""
+
+#: views.py:53
+#, python-format
+msgid "%(count)d announcement deleted successfully."
+msgstr ""
+
+#: views.py:56
+#, python-format
+msgid "%(count)d announcements deleted successfully."
+msgstr ""
+
+#: views.py:58
+#, python-format
+msgid "Delete announcement: %(object)s."
+msgstr ""
+
+#: views.py:59
+#, python-format
+msgid "Delete the %(count)d selected announcement."
+msgstr ""
+
+#: views.py:60
+#, python-format
+msgid "Delete the %(count)d selected announcements."
+msgstr ""
+
+#: views.py:92
+#, python-format
+msgid "Edit announcement: %s"
+msgstr ""
+
+#: views.py:114
+#, fuzzy
+#| msgid ""
+#| "Messages are displayed in the login view. You can use messages to convery "
+#| "information about your organzation, announcements or usage guidelines for "
+#| "your users."
+msgid ""
+"Announcements are displayed in the login view. You can use announcements to "
+"convery information about your organzation, announcements or usage "
+"guidelines for your users."
+msgstr ""
+"Zprávy se zobrazují v přihlašovacím zobrazení. Pomocí zpráv můžete zdělit "
+"informace o své organizaci, oznámeních nebo pokynech pro použití pro vaše "
+"uživatele."
 
 #: views.py:118
-msgid ""
-"Messages are displayed in the login view. You can use messages to convery "
-"information about your organzation, announcements or usage guidelines for "
-"your users."
-msgstr "Zprávy se zobrazují v přihlašovacím zobrazení. Pomocí zpráv můžete zdělit informace o své organizaci, oznámeních nebo pokynech pro použití pro vaše uživatele."
-
-#: views.py:122
-msgid "No messages available"
+#, fuzzy
+#| msgid "No messages available"
+msgid "No announcements available"
 msgstr "Nejsou k dispozici žádné zprávy"
+
+#~ msgid "Message of the day"
+#~ msgstr "Zpráva dne"
+
+#~ msgid "Messages"
+#~ msgstr "Zprávy"
+
+#~ msgid "Create message"
+#~ msgstr "Vytvořit zprávu"
+
+#~ msgid "Message"
+#~ msgstr "Zpráva"
+
+#~ msgid "Create messages"
+#~ msgstr "Vytvořit zprávy"
+
+#~ msgid "Delete messages"
+#~ msgstr "Mazat zprávy"
+
+#~ msgid "Edit messages"
+#~ msgstr "Upravovat zprávy"
+
+#~ msgid "View messages"
+#~ msgstr "Zobrazit zprávy"
+
+#~ msgid "Messages of the day"
+#~ msgstr "Zprávy dne"
+
+#~ msgid "Edit message: %s"
+#~ msgstr "Upravit zprávu: %s"

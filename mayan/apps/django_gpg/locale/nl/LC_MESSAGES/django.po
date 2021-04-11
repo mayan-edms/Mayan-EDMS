@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
@@ -11,45 +11,46 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2020-05-02 12:56+0000\n"
 "Last-Translator: j jacobs <j.jacobs@rijnlandslyceum-rls.nl>\n"
-"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
+"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/"
+"nl/)\n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:30
+#: apps.py:33
 msgid "Django GPG"
 msgstr "Django GPG"
 
-#: apps.py:46 apps.py:52 forms.py:15
+#: apps.py:56 apps.py:62 forms.py:15
 msgid "Key ID"
 msgstr "Sleutel-ID"
 
-#: apps.py:56 forms.py:32 models.py:53
+#: apps.py:66 forms.py:32 models.py:59
 msgid "Type"
 msgstr "Type"
 
-#: apps.py:60 forms.py:21 models.py:34
+#: apps.py:70 forms.py:21 models.py:40
 msgid "Creation date"
 msgstr "Aanmaakdatum"
 
-#: apps.py:64
+#: apps.py:74
 msgid "No expiration"
 msgstr "Geen verloop"
 
-#: apps.py:65 forms.py:25 models.py:38
+#: apps.py:75 forms.py:25 models.py:44
 msgid "Expiration date"
 msgstr "Verloopdatu"
 
-#: apps.py:68 forms.py:30 models.py:45
+#: apps.py:78 forms.py:30 models.py:51
 msgid "Length"
 msgstr "Lengte"
 
-#: apps.py:73 forms.py:17 models.py:50
+#: apps.py:83 forms.py:17 models.py:56
 msgid "User ID"
 msgstr "Gebruikers-ID"
 
@@ -57,15 +58,31 @@ msgstr "Gebruikers-ID"
 msgid "GNU privacy guard - a PGP implementation."
 msgstr "GNU privacybewaking - een PGP-implementatie."
 
+#: events.py:5 links.py:42 permissions.py:5
+msgid "Key management"
+msgstr "Sleutelbeheer"
+
+#: events.py:8
+#, fuzzy
+#| msgid "Key data"
+msgid "Key created"
+msgstr "Sleutelgegevens"
+
+#: events.py:12
+#, fuzzy
+#| msgid "Download"
+msgid "Key downloaded"
+msgstr "Download"
+
 #: forms.py:26
 msgid "None"
 msgstr "Geen"
 
-#: forms.py:29 models.py:42
+#: forms.py:29 models.py:48
 msgid "Fingerprint"
 msgstr "Vingerafdruk"
 
-#: forms.py:31 models.py:48
+#: forms.py:31 models.py:54
 msgid "Algorithm"
 msgstr "Algoritme"
 
@@ -97,19 +114,15 @@ msgstr "Sleutelservers raadplegen"
 msgid "Import"
 msgstr "Importeren"
 
-#: links.py:42 permissions.py:5
-msgid "Key management"
-msgstr "Sleutelbeheer"
-
 #: links.py:46
 msgid "Upload key"
 msgstr "Sleutel uploaden"
 
-#: links.py:50 views.py:180
+#: links.py:50 views.py:194
 msgid "Private keys"
 msgstr "Privésleutels"
 
-#: links.py:54 views.py:204
+#: links.py:54 views.py:218
 msgid "Public keys"
 msgstr "Openbare sleutels"
 
@@ -147,7 +160,9 @@ msgstr "Handtekeningfout."
 
 #: literals.py:72
 msgid "Document is signed but no public key is available for verification."
-msgstr "Document is ondertekend, maar er is geen publieke sleutel beschikbaar voor verificatie."
+msgstr ""
+"Document is ondertekend, maar er is geen publieke sleutel beschikbaar voor "
+"verificatie."
 
 #: literals.py:77
 msgid "Document is signed, and signature is good."
@@ -157,27 +172,27 @@ msgstr "Document is getekend, en handtekening is goed."
 msgid "Document is signed with a valid signature."
 msgstr "Document is getekend met een geldige handtekening."
 
-#: models.py:30
+#: models.py:36
 msgid "ASCII armored version of the key."
 msgstr "ASCII \"armor\" versie van de sleutel."
 
-#: models.py:31
+#: models.py:37
 msgid "Key data"
 msgstr "Sleutelgegevens"
 
-#: models.py:59
+#: models.py:65
 msgid "Key"
 msgstr "Sleutel"
 
-#: models.py:60
+#: models.py:66
 msgid "Keys"
 msgstr "Sleutels"
 
-#: models.py:72
+#: models.py:78
 msgid "Invalid key data"
 msgstr "Ongeldige sleutelgegevens"
 
-#: models.py:75
+#: models.py:81
 msgid "Key already exists."
 msgstr "Sleutel bestaat al."
 
@@ -211,84 +226,95 @@ msgstr "Handtekeningen"
 
 #: settings.py:16
 msgid "Full path to the backend to be used to handle keys and signatures."
-msgstr "Volledige pad naar backend die gebruikt wordt om sleutels en handtekeningen af te handelen."
+msgstr ""
+"Volledige pad naar backend die gebruikt wordt om sleutels en handtekeningen "
+"af te handelen."
 
 #: settings.py:25
 msgid "Keyserver used to query for keys."
 msgstr "Sleutelserver om naar sleutels te zoeken."
 
-#: views.py:36
+#: views.py:39
 #, python-format
 msgid "Delete key: %s"
 msgstr "Verwijder sleutel: %s"
 
-#: views.py:53
+#: views.py:56
 #, python-format
 msgid "Details for key: %s"
 msgstr "Details voor sleutel: %s"
 
-#: views.py:75
+#: views.py:84
 #, python-format
 msgid "Import key ID: %s?"
 msgstr "Sleutel ID importeren: %s?"
 
-#: views.py:76
+#: views.py:85
 msgid "Import key"
 msgstr "Sleutel importeren"
 
-#: views.py:85
+#: views.py:94
 #, python-format
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr "Niet mogelijk om sleutel te importeren: %(key_id)s; %(error)s"
 
-#: views.py:93
+#: views.py:102
 #, python-format
 msgid "Successfully received key: %(key_id)s"
 msgstr "Sleutel met succes ontvangen: %(key_id)s"
 
-#: views.py:110
+#: views.py:119
 msgid ""
 "Use names, last names, key ids or emails to search public keys to import "
 "from the keyserver."
-msgstr "Gebruik namen, achternamen, sleutel-ids of e-mail om op openbare sleutels te zoeken om te importeren van de sleutelserver."
+msgstr ""
+"Gebruik namen, achternamen, sleutel-ids of e-mail om op openbare sleutels te "
+"zoeken om te importeren van de sleutelserver."
 
-#: views.py:114
+#: views.py:123
 msgid "No results returned"
 msgstr "Geen resultaten"
 
-#: views.py:116
+#: views.py:125
 msgid "Key query results"
 msgstr "Resultaten van de sleutel zoekopdracht"
 
-#: views.py:136
+#: views.py:145
 msgid "Search"
 msgstr "Zoeken"
 
-#: views.py:138
+#: views.py:147
 msgid "Query key server"
 msgstr "Sleutelserver doorzoeken"
 
-#: views.py:157
+#: views.py:166
 msgid "Upload new key"
 msgstr "Nieuwe sleutel uploaden"
 
-#: views.py:173
+#: views.py:187
 msgid ""
-"Private keys are used to signed documents. Private keys can only be uploaded"
-" by the user. The view to upload private and public keys is the same."
-msgstr "Privésleutels worden gebruikt om documenten te tekenen. Privésleutels kunnen alleen door de gebruiker worden geüpload. Het overzicht om privé en openbare sleutels te uploaden is hetzelfde."
+"Private keys are used to signed documents. Private keys can only be uploaded "
+"by the user. The view to upload private and public keys is the same."
+msgstr ""
+"Privésleutels worden gebruikt om documenten te tekenen. Privésleutels kunnen "
+"alleen door de gebruiker worden geüpload. Het overzicht om privé en openbare "
+"sleutels te uploaden is hetzelfde."
 
-#: views.py:178
+#: views.py:192
 msgid "There no private keys"
 msgstr "Er zijn geen privésleutels"
 
-#: views.py:196
+#: views.py:210
 msgid ""
-"Public keys are used to verify signed documents. Public keys can be uploaded"
-" by the user or downloaded from keyservers. The view to upload private and "
+"Public keys are used to verify signed documents. Public keys can be uploaded "
+"by the user or downloaded from keyservers. The view to upload private and "
 "public keys is the same."
-msgstr "Openbare sleutels worden gebruikt om getekende documenten te verifiëren. Openbare sleutels kunnen zowel geüpload worden door de gebruiken als gedownload van sleutelservers. Het overzicht om privé en openbare sleutels te uploaden is hetzelfde."
+msgstr ""
+"Openbare sleutels worden gebruikt om getekende documenten te verifiëren. "
+"Openbare sleutels kunnen zowel geüpload worden door de gebruiken als "
+"gedownload van sleutelservers. Het overzicht om privé en openbare sleutels "
+"te uploaden is hetzelfde."
 
-#: views.py:202
+#: views.py:216
 msgid "There no public keys"
 msgstr "Er zijn geen openbare sleutels"

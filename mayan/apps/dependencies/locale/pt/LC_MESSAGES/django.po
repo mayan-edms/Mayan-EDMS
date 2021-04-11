@@ -2,28 +2,29 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Roberto Rosario, 2019
 # Emerson Soares <on.emersonsoares@gmail.com>, 2019
 # 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2019
 # Bruno Martins <bruno.martins@bewgpt.com.pt>, 2020
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2019-04-27 22:53+0000\n"
 "Last-Translator: Bruno Martins <bruno.martins@bewgpt.com.pt>, 2020\n"
-"Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/pt/)\n"
+"Language-Team: Portuguese (https://www.transifex.com/rosarior/teams/13584/"
+"pt/)\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:24 links.py:41 permissions.py:5
+#: apps.py:24 links.py:38 permissions.py:5
 msgid "Dependencies"
 msgstr "Dependências"
 
@@ -123,8 +124,8 @@ msgstr "Binário"
 
 #: classes.py:418
 msgid ""
-"JavaScript libraries downloaded the from NPM registry and used for front-end"
-" functionality."
+"JavaScript libraries downloaded the from NPM registry and used for front-end "
+"functionality."
 msgstr ""
 "Bibliotecas de JavaScript transferidas do registo NPM e utilizadas para "
 "funcionalidade front-end."
@@ -265,11 +266,11 @@ msgstr ""
 msgid "Testing"
 msgstr "Testar"
 
-#: links.py:9 views.py:17
+#: links.py:13 views.py:17
 msgid "Check for updates"
 msgstr "Verificar existência de atualizações "
 
-#: links.py:15
+#: links.py:18
 msgid "Groups"
 msgstr "Grupos"
 
@@ -277,11 +278,11 @@ msgstr "Grupos"
 msgid "Entries"
 msgstr "Entradas"
 
-#: links.py:31
+#: links.py:29
 msgid "Details"
 msgstr "Detalhes"
 
-#: links.py:36
+#: links.py:33
 msgid "Dependencies licenses"
 msgstr "Licenças das dependências"
 

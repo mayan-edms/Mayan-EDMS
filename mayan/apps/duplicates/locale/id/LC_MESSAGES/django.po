@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-30 04:39+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2020-10-26 13:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -20,11 +20,33 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:25 apps.py:39 links.py:14
+#: apps.py:30 apps.py:56 links.py:14
 msgid "Duplicates"
 msgstr "Duplikat"
 
-#: links.py:18 models.py:20 models.py:30 views.py:75
+#: apps.py:62
+#, fuzzy
+#| msgid "Duplicated document"
+msgid "Duplicate backend"
+msgstr "Dokumen duplikasi"
+
+#: classes.py:83
+msgid "Null backend"
+msgstr ""
+
+#: duplicate_backends.py:9
+#, fuzzy
+#| msgid "Execute document modifying tools"
+msgid "Exact document file checksum"
+msgstr "Jalankan peralatan pengubah dokumen"
+
+#: duplicate_backends.py:28
+#, fuzzy
+#| msgid "Edit document types"
+msgid "Exact document label"
+msgstr "Sunting jenis dokumen"
+
+#: links.py:18 models.py:40 views.py:77
 msgid "Duplicated documents"
 msgstr "Dokumen terduplikasi"
 
@@ -32,17 +54,29 @@ msgstr "Dokumen terduplikasi"
 msgid "Duplicated document scan"
 msgstr "Dokumen pindai terduplikasi"
 
-#: models.py:17
+#: models.py:23 models.py:33
+msgid "Stored duplicate backend"
+msgstr ""
+
+#: models.py:24
+msgid "Stored duplicate backends"
+msgstr ""
+
+#: models.py:37
 msgid "Document"
 msgstr "Dokumen"
 
-#: models.py:23
-msgid "Added"
-msgstr "Ditambahkan"
-
-#: models.py:29
-msgid "Duplicated document"
+#: models.py:47
+#, fuzzy
+#| msgid "Duplicated document"
+msgid "Duplicated backend entry"
 msgstr "Dokumen duplikasi"
+
+#: models.py:48
+#, fuzzy
+#| msgid "Duplicated documents"
+msgid "Duplicated backend entries"
+msgstr "Dokumen terduplikasi"
 
 #: queues.py:8
 msgid "Clean empty duplicate lists"
@@ -65,24 +99,27 @@ msgstr ""
 msgid "Duplicates for document: %s"
 msgstr ""
 
-#: views.py:66
+#: views.py:68
 msgid ""
 "Duplicates are documents that are composed of the exact same file, down to "
 "the last byte. Files that have the same text or OCR but are not identical or "
 "were saved using a different file format will not appear as duplicates."
 msgstr ""
 
-#: views.py:73
+#: views.py:75
 msgid "There are no duplicated documents"
 msgstr ""
 
-#: views.py:83
+#: views.py:85
 msgid "Scan for duplicated documents?"
 msgstr ""
 
-#: views.py:90
+#: views.py:92
 msgid "Duplicated document scan queued successfully."
 msgstr ""
+
+#~ msgid "Added"
+#~ msgstr "Ditambahkan"
 
 #~ msgid "Documents"
 #~ msgstr "Dokumen"
@@ -451,9 +488,6 @@ msgstr ""
 #~ msgid "Restore trashed document"
 #~ msgstr "Pulihkan dokumen terhapus"
 
-#~ msgid "Execute document modifying tools"
-#~ msgstr "Jalankan peralatan pengubah dokumen"
-
 #~ msgid "Revert documents to a previous version"
 #~ msgstr "kembalikan dokumen ke versi sebelumnya"
 
@@ -468,9 +502,6 @@ msgstr ""
 
 #~ msgid "Delete document types"
 #~ msgstr "Hapus jenis dokumen"
-
-#~ msgid "Edit document types"
-#~ msgstr "Sunting jenis dokumen"
 
 #~ msgid "View document types"
 #~ msgstr "Lihat jenis-jenis dokumen"

@@ -2,27 +2,27 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Roberto Rosario, 2020
 # j jacobs <j.jacobs@rijnlandslyceum-rls.nl>, 2020
 # bwakkie <bwakkie@gmail.com>, 2021
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2019-12-03 05:23+0000\n"
 "Last-Translator: bwakkie <bwakkie@gmail.com>, 2021\n"
 "Language-Team: Dutch (https://www.transifex.com/rosarior/teams/13584/nl/)\n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:28 events.py:6 permissions.py:5
+#: apps.py:25 events.py:6 permissions.py:5
 msgid "File caching"
 msgstr "Bestandscaching"
 
@@ -38,99 +38,127 @@ msgstr "Cache bewerkt"
 msgid "Cache purged"
 msgstr "Cache geleegd"
 
-#: links.py:21
+#: links.py:24
 msgid "File caches"
 msgstr "Bestandscaches"
 
-#: links.py:26 links.py:30
+#: links.py:29 links.py:35 links.py:39
 msgid "Purge cache"
 msgstr "Cache legen"
 
-#: models.py:28
+#: models.py:30
 msgid "Internal name of the defined storage for this cache."
 msgstr "Interne naam van de vastgestelde opslag voor deze cache."
 
-#: models.py:29
+#: models.py:31
 msgid "Defined storage name"
 msgstr "Vastgestelde naam opslag"
 
-#: models.py:32
+#: models.py:34
 msgid "Maximum size of the cache in bytes."
 msgstr "Maximale omvang van de cache in bytes."
 
-#: models.py:34 models.py:53
+#: models.py:36 models.py:62
 msgid "Maximum size"
 msgstr "Maximale omvang"
 
-#: models.py:38 models.py:136
+#: models.py:40 models.py:144
 msgid "Cache"
 msgstr "Cache"
 
-#: models.py:39
+#: models.py:41
 msgid "Caches"
 msgstr "Caches"
 
-#: models.py:51
+#: models.py:60
 msgid "Size at which the cache will start deleting old entries."
 msgstr "Omvang waarbij de cache begint met verwijderen van oude bestanddelen."
 
-#: models.py:60
+#: models.py:69
 msgid "Unknown"
 msgstr "Onbekend"
 
-#: models.py:78
+#: models.py:86
 msgid "Current size"
 msgstr "Huidige omvang"
 
-#: models.py:79
+#: models.py:87
 msgid "Current size of the cache."
 msgstr "Huidige omvang van de cache."
 
-#: models.py:139
+#: models.py:147
 msgid "Name"
 msgstr "Naam"
 
-#: models.py:144 models.py:217
+#: models.py:152 models.py:236
 msgid "Cache partition"
 msgstr "Partitie cachen"
 
-#: models.py:145
+#: models.py:153
 msgid "Cache partitions"
 msgstr "Partities cachen"
 
-#: models.py:220
+#: models.py:239
 msgid "Date time"
 msgstr "Datum en tijd"
 
-#: models.py:222
+#: models.py:241
 msgid "Filename"
 msgstr "Bestandsnaam"
 
-#: models.py:224
+#: models.py:243
 msgid "File size"
 msgstr "Bestandgrootte"
 
-#: models.py:232
+#: models.py:249
 msgid "Cache partition file"
 msgstr "Partitiebestand cachen"
 
-#: models.py:233
+#: models.py:250
 msgid "Cache partition files"
 msgstr "Partitiebestanden cachen"
 
-#: permissions.py:8 queues.py:7
+#: permissions.py:8
+#, fuzzy
+#| msgid "Purge a file cache"
+msgid "Purge an object cache"
+msgstr "Een bestandscache legen"
+
+#: permissions.py:11 queues.py:7
 msgid "Purge a file cache"
 msgstr "Een bestandscache legen"
 
-#: permissions.py:11
+#: permissions.py:14
 msgid "View a file cache"
 msgstr "Een bestandscache bekijken"
 
-#: views.py:21
+#: queues.py:11
+#, fuzzy
+#| msgid "Purge a file cache"
+msgid "Purge a file cache partition"
+msgstr "Een bestandscache legen"
+
+#: views.py:43
+#, fuzzy, python-format
+#| msgid "File caches"
+msgid "Details cache: %s"
+msgstr "Bestandscaches"
+
+#: views.py:54
 msgid "File caches list"
 msgstr "Bestandscache lijst"
 
-#: views.py:37
+#: views.py:70
+#, fuzzy, python-format
+#| msgid "Cache partition files"
+msgid "Purge cache partitions of \"%s\"?"
+msgstr "Partitiebestanden cachen"
+
+#: views.py:84
+msgid "Object cache partitions submitted for purging."
+msgstr ""
+
+#: views.py:101
 msgid "Submit the selected cache for purging?"
 msgid_plural "Submit the selected caches for purging?"
 msgstr[0] "De geselecteerde cache voor legen indienen?"

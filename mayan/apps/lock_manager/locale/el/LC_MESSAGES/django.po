@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # pyrotech <anastasios@tutamail.com>, 2021
@@ -9,17 +9,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2021-01-11 08:15+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>\n"
-"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
+"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/"
+"el/)\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:19 settings.py:10
+#: apps.py:18 settings.py:10
 msgid "Lock manager"
 msgstr "Διαχειριστής κλειδαριών"
 
@@ -45,7 +46,9 @@ msgstr "Κλειδαριές"
 
 #: settings.py:15
 msgid "Path to the class to use when to request and release resource locks."
-msgstr "Διαδρομή της κλάσης για χρήση όταν χρειαστεί να ζητηθούν και να αποδεσμευθούν πόροι κλειδαριών."
+msgstr ""
+"Διαδρομή της κλάσης για χρήση όταν χρειαστεί να ζητηθούν και να "
+"αποδεσμευθούν πόροι κλειδαριών."
 
 #: settings.py:22
 msgid "Arguments to pass to the LOCK_MANAGER_BACKEND."
@@ -55,4 +58,6 @@ msgstr "Ορίσματα που θα διαβιβαστούν στο LOCK_MANAGE
 msgid ""
 "Default amount of time in seconds after which a resource lock will be "
 "automatically released."
-msgstr "Το εξ'ορισμού χρονικό διάστημα σε δευτερόλεπτα μετά από το οποίο ένας πόρος κλειδαριάς θα αποδεσμευθεί αυτόματα."
+msgstr ""
+"Το εξ'ορισμού χρονικό διάστημα σε δευτερόλεπτα μετά από το οποίο ένας πόρος "
+"κλειδαριάς θα αποδεσμευθεί αυτόματα."

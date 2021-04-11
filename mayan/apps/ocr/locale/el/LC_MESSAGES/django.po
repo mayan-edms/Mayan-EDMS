@@ -10,18 +10,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2021-02-15 14:27+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>\n"
-"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
+"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/"
+"el/)\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:52 events.py:5 links.py:18 links.py:24 permissions.py:5 queues.py:6
-#: search.py:6 search.py:10 settings.py:11
+#: apps.py:52 events.py:5 links.py:39 links.py:81 permissions.py:5 queues.py:6
+#: search.py:17 settings.py:11
 msgid "OCR"
 msgstr "OCR"
 
@@ -31,7 +32,8 @@ msgstr "Περιεχόμενο OCR."
 
 #: apps.py:108
 msgid "A generator returning the document's pages OCR content."
-msgstr "Μια γεννήτρια που επιστρέφει το περιεχόμενο OCR των σελίδων του εγγράφου."
+msgstr ""
+"Μια γεννήτρια που επιστρέφει το περιεχόμενο OCR των σελίδων του εγγράφου."
 
 #: apps.py:109
 msgid "OCR content"
@@ -41,7 +43,7 @@ msgstr "Περιεχόμενο OCR"
 msgid "Date and time"
 msgstr "Ημερομηνία και ώρα"
 
-#: apps.py:136 models.py:72
+#: apps.py:136 models.py:50
 msgid "Result"
 msgstr "Αποτέλεσμα"
 
@@ -58,11 +60,15 @@ msgid "Document OCR content deleted"
 msgstr "Το περιεχόμενο του εγγράφου OCR διαγράφηκε"
 
 #: events.py:12
-msgid "Document version submitted for OCR"
+#, fuzzy
+#| msgid "Document version submitted for OCR"
+msgid "Document file submitted for OCR"
 msgstr "Έκδοση εγγράφου υποβλήθηκε για οπτική αναγνώριση χαρακτήρων"
 
 #: events.py:16
-msgid "Document version OCR finished"
+#, fuzzy
+#| msgid "Document version OCR finished"
+msgid "Document file OCR finished"
 msgstr "Η οπτική αναγνώριση χαρακτήρων του εγγράφου ολοκληρώθηκε"
 
 #: forms.py:14 forms.py:45
@@ -74,81 +80,91 @@ msgstr "Περιεχόμενα"
 msgid "Page %(page_number)d"
 msgstr "Σελίδα %(page_number)d"
 
-#: links.py:30 links.py:35
-msgid "Delete OCR content"
-msgstr "Διαγραφή περιεχομένου OCR"
-
-#: links.py:41 links.py:46
-msgid "Submit for OCR"
-msgstr "Υποβολή προς οπτική αναγνώριση χαρακτήρων"
-
-#: links.py:51
+#: links.py:24
 msgid "Setup OCR"
 msgstr "Ρύθμιση OCR"
 
-#: links.py:56
+#: links.py:30
 msgid "OCR documents per type"
 msgstr "Έγγραφα OCR ανά τύπο"
 
-#: links.py:61 links.py:67 views.py:217
+#: links.py:45 links.py:50
+msgid "Delete OCR content"
+msgstr "Διαγραφή περιεχομένου OCR"
+
+#: links.py:56 links.py:61
+msgid "Submit for OCR"
+msgstr "Υποβολή προς οπτική αναγνώριση χαρακτήρων"
+
+#: links.py:67 links.py:88 views.py:221
 msgid "OCR errors"
 msgstr "Σφάλματα οπτικής αναγνώρισης χαρακτήρων"
 
-#: links.py:73
+#: links.py:72
 msgid "Download OCR text"
 msgstr "Λήψη κειμένου OCR"
 
-#: models.py:18
+#: models.py:20
 msgid "Document type"
 msgstr "Τύπος εγγράφου"
 
-#: models.py:22
+#: models.py:24
 msgid "Automatically queue newly created documents for OCR."
-msgstr "Αυτόματη προσθήκη προσφάτως δημιουργημένων εγγράφων προς οπτική αναγνώριση χαρακτήρων."
+msgstr ""
+"Αυτόματη προσθήκη προσφάτως δημιουργημένων εγγράφων προς οπτική αναγνώριση "
+"χαρακτήρων."
 
-#: models.py:28
+#: models.py:30
 msgid "Document type settings"
 msgstr "Ρυθμίσεις τύπου εγγράφου"
 
-#: models.py:29
+#: models.py:31
 msgid "Document types settings"
 msgstr "Ρυθμίσεις τύπων εγγράφου."
 
-#: models.py:42
-msgid "Document page"
-msgstr "Σελίδα εγγράφου"
-
-#: models.py:46
-msgid "The actual text content extracted by the OCR backend."
-msgstr "Το πραγματικό περιεχόμενο κειμένου που εξάγεται από το υποκείμενο σύστημα του OCR."
-
-#: models.py:47
-msgid "Content"
-msgstr "Περιεχόμενο"
-
-#: models.py:53
-msgid "Document page OCR content"
-msgstr "Περιεχόμενα OCR σελίδας εγγράφου"
-
-#: models.py:54
-msgid "Document pages OCR contents"
-msgstr "Περιεχόμενα OCR σελίδων εγγράφου"
-
-#: models.py:67
+#: models.py:45
 msgid "Document version"
 msgstr "Έκδοση εγγράφου"
 
-#: models.py:70
+#: models.py:48
 msgid "Date time submitted"
 msgstr "Ημερομηνία και ώρα υποβολής"
 
-#: models.py:76
+#: models.py:54
 msgid "Document version OCR error"
 msgstr "Σφάλμα OCR έκδοσης εγγράφου"
 
-#: models.py:77
+#: models.py:55
 msgid "Document version OCR errors"
 msgstr "Σφάλματα OCR έκδοσης εγγράφου"
+
+#: models.py:67
+#, fuzzy
+#| msgid "Document version page OCR"
+msgid "Document version page"
+msgstr "OCR σελίδας έκδοσης εγγράφου"
+
+#: models.py:71
+msgid "The actual text content extracted by the OCR backend."
+msgstr ""
+"Το πραγματικό περιεχόμενο κειμένου που εξάγεται από το υποκείμενο σύστημα "
+"του OCR."
+
+#: models.py:72
+msgid "Content"
+msgstr "Περιεχόμενο"
+
+#: models.py:78
+#, fuzzy
+#| msgid "Document version page OCR"
+msgid "Document version page OCR content"
+msgstr "OCR σελίδας έκδοσης εγγράφου"
+
+#: models.py:79
+#, fuzzy
+#| msgid "Document pages OCR contents"
+msgid "Document version pages OCR contents"
+msgstr "Περιεχόμενα OCR σελίδων εγγράφου"
 
 #: permissions.py:8
 msgid "Submit documents for OCR"
@@ -163,62 +179,85 @@ msgid "Change document type OCR settings"
 msgstr "Τροποποίηση ρυθμίσεων τύπου εγγράφου OCR"
 
 #: queues.py:10
-msgid "Finish document version OCR"
+#, fuzzy
+#| msgid "Finish document version OCR"
+msgid "Finish document file OCR"
 msgstr "Ολοκλήρωση οπτικής αναγνώρισης χαρακτήρων έκδοσης εγγράφου"
 
 #: queues.py:14
-msgid "Document version page OCR"
+#, fuzzy
+#| msgid "Document version page OCR"
+msgid "Document file page OCR"
 msgstr "OCR σελίδας έκδοσης εγγράφου"
 
 #: queues.py:18
+#, fuzzy
+#| msgid "Document version OCR"
+msgid "Document file OCR"
+msgstr "OCR έκδοσης εγγράφου"
+
+#: search.py:11 search.py:23
 msgid "Document version OCR"
 msgstr "OCR έκδοσης εγγράφου"
 
 #: settings.py:17
 msgid "Set new document types to perform OCR automatically by default."
-msgstr "Ορισμός νέων τύπων εγγράφου στους οποίους θα πραγματοποιείται αυτόματα οπτική αναγνώριση χαρακτήρων."
+msgstr ""
+"Ορισμός νέων τύπων εγγράφου στους οποίους θα πραγματοποιείται αυτόματα "
+"οπτική αναγνώριση χαρακτήρων."
 
 #: settings.py:22
 msgid "Full path to the backend to be used to do OCR."
-msgstr "Πλήρης διαδρομή στο υποκείμενο σύστημα που θα χρησιμοποιηθεί για οπτική αναγνώριση χαρακτήρων."
+msgstr ""
+"Πλήρης διαδρομή στο υποκείμενο σύστημα που θα χρησιμοποιηθεί για οπτική "
+"αναγνώριση χαρακτήρων."
 
-#: views.py:35
-msgid "Delete the OCR content of the selected document?"
-msgid_plural "Delete the OCR content of the selected documents?"
+#: views.py:39
+#, fuzzy
+#| msgid "Delete the OCR content of the selected document?"
+#| msgid_plural "Delete the OCR content of the selected documents?"
+msgid "Delete the OCR content of the selected document version?"
+msgid_plural "Delete the OCR content of the selected document versions?"
 msgstr[0] "Διαγραφή του περιεχομένου OCR του επιλεγμένου εγγράφου;"
 msgstr[1] "Διαγραφή του περιεχομένου OCR των επιλεγμένων εγγράφων;"
 
-#: views.py:70
+#: views.py:74
 #, python-format
 msgid "OCR result for document: %s"
 msgstr "Αποτελέσματα οπτικής αναγνώρισης χαρακτήρων του εγγράφου: %s"
 
-#: views.py:95
+#: views.py:99
 #, python-format
 msgid "OCR errors for document: %s"
 msgstr "Σφάλματα οπτικής αναγνώρισης χαρακτήρων του εγγράφου: %s"
 
-#: views.py:121
-#, python-format
-msgid "OCR result for document page: %s"
+#: views.py:118
+#, fuzzy
+#| msgid "Submit the selected document to the OCR queue?"
+#| msgid_plural "Submit the selected documents to the OCR queue?"
+msgid "Submit the selected document version to the OCR queue?"
+msgid_plural "Submit the selected document versions to the OCR queue?"
+msgstr[0] "Υποβολή του επιλεγμένου εγγράφου στην ουρά OCR;"
+msgstr[1] ""
+"Υποβολή των επιλεγμένων εγγράφων στην ουρά για οπτική αναγνώριση χαρακτήρων;"
+
+#: views.py:152
+#, fuzzy, python-format
+#| msgid "OCR result for document page: %s"
+msgid "OCR result for document version page: %s"
 msgstr "Αποτέλεσμα OCR για σελίδα εγγράφου: %s"
 
-#: views.py:137
-msgid "Submit the selected document to the OCR queue?"
-msgid_plural "Submit the selected documents to the OCR queue?"
-msgstr[0] "Υποβολή του επιλεγμένου εγγράφου στην ουρά OCR;"
-msgstr[1] "Υποβολή των επιλεγμένων εγγράφων στην ουρά για οπτική αναγνώριση χαρακτήρων;"
-
-#: views.py:154
+#: views.py:158
 msgid "Submit all documents of a type for OCR"
 msgstr "Υποβολή όλων των εγγράφων ενός τύπου προς οπτική αναγνώριση χαρακτήρων"
 
-#: views.py:171
+#: views.py:175
 #, python-format
 msgid "%(count)d documents added to the OCR queue."
-msgstr "Προστέθηκαν %(count)d έγγραφα στην ουρά για οπτική αναγνώριση χαρακτήρων."
+msgstr ""
+"Προστέθηκαν %(count)d έγγραφα στην ουρά για οπτική αναγνώριση χαρακτήρων."
 
-#: views.py:206
+#: views.py:210
 #, python-format
 msgid "Edit OCR settings for document type: %s."
 msgstr "Επεξεργασία ρυθμίσεων OCR για τύπο εγγράφου: %s."
@@ -234,7 +273,12 @@ msgid ""
 "page. Conditions that do not return any value, that return the Python "
 "logical None, or an empty string ('') are considered to be logical false, "
 "any other value is considered to be the logical true."
-msgstr "Η συνθήκη που θα καθορίσει εάν το περιεχόμενο OCR μιας σελίδας εγγράφου θα τροποποιηθεί ή όχι. Η συνθήκη αξιολογείται έναντι της επαναλαμβανόμενης σελίδας εγγράφου. Συνθήκες που δεν επιστρέφουν καμία τιμή, που επιστρέφουν την λογική τιμή None της Python ή μια κενή συμβολοσειρά ('') θεωρούνται λογικώς ψευδείς, οποιαδήποτε άλλη τιμή θεωρείται λογικώς αληθείς."
+msgstr ""
+"Η συνθήκη που θα καθορίσει εάν το περιεχόμενο OCR μιας σελίδας εγγράφου θα "
+"τροποποιηθεί ή όχι. Η συνθήκη αξιολογείται έναντι της επαναλαμβανόμενης "
+"σελίδας εγγράφου. Συνθήκες που δεν επιστρέφουν καμία τιμή, που επιστρέφουν "
+"την λογική τιμή None της Python ή μια κενή συμβολοσειρά ('') θεωρούνται "
+"λογικώς ψευδείς, οποιαδήποτε άλλη τιμή θεωρείται λογικώς αληθείς."
 
 #: workflow_actions.py:31
 msgid "Page content"
@@ -247,3 +291,9 @@ msgstr "Ένα πρότυπο που θα δημιουργήσει το περι
 #: workflow_actions.py:43
 msgid "Update document page OCR content"
 msgstr "Ενημέρωση περιεχομένου σελίδας εγγράφου OCR"
+
+#~ msgid "Document page"
+#~ msgstr "Σελίδα εγγράφου"
+
+#~ msgid "Document page OCR content"
+#~ msgstr "Περιεχόμενα OCR σελίδας εγγράφου"

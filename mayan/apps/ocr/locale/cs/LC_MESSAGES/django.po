@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Michal Švábík <snadno@lehce.cz>, 2019-2020
@@ -9,18 +9,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2020-09-29 08:40+0000\n"
 "Last-Translator: Michal Švábík <snadno@lehce.cz>\n"
-"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/cs/)\n"
+"Language-Team: Czech (http://www.transifex.com/rosarior/mayan-edms/language/"
+"cs/)\n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: cs\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n "
+"<= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: apps.py:52 events.py:5 links.py:18 links.py:24 permissions.py:5 queues.py:6
-#: search.py:6 search.py:10 settings.py:11
+#: apps.py:52 events.py:5 links.py:39 links.py:81 permissions.py:5 queues.py:6
+#: search.py:17 settings.py:11
 msgid "OCR"
 msgstr "OCR"
 
@@ -40,7 +42,7 @@ msgstr "Obsah OCR"
 msgid "Date and time"
 msgstr "Datum a čas"
 
-#: apps.py:136 models.py:72
+#: apps.py:136 models.py:50
 msgid "Result"
 msgstr "Výsledek"
 
@@ -57,11 +59,15 @@ msgid "Document OCR content deleted"
 msgstr "Obsah OCR dokumentu byl smazán"
 
 #: events.py:12
-msgid "Document version submitted for OCR"
+#, fuzzy
+#| msgid "Document version submitted for OCR"
+msgid "Document file submitted for OCR"
 msgstr "Verze dokumentu Odeslaná do OCR"
 
 #: events.py:16
-msgid "Document version OCR finished"
+#, fuzzy
+#| msgid "Document version OCR finished"
+msgid "Document file OCR finished"
 msgstr "OCR této verze dokumentu byla dokončena"
 
 #: forms.py:14 forms.py:45
@@ -73,81 +79,87 @@ msgstr "Obsah"
 msgid "Page %(page_number)d"
 msgstr "Strana %(page_number)d"
 
-#: links.py:30 links.py:35
-msgid "Delete OCR content"
-msgstr "Smazat obsah OCR"
-
-#: links.py:41 links.py:46
-msgid "Submit for OCR"
-msgstr "Odeslat do OCR"
-
-#: links.py:51
+#: links.py:24
 msgid "Setup OCR"
 msgstr "Nastavení OCR"
 
-#: links.py:56
+#: links.py:30
 msgid "OCR documents per type"
 msgstr "Dokumenty OCR podle typu"
 
-#: links.py:61 links.py:67 views.py:217
+#: links.py:45 links.py:50
+msgid "Delete OCR content"
+msgstr "Smazat obsah OCR"
+
+#: links.py:56 links.py:61
+msgid "Submit for OCR"
+msgstr "Odeslat do OCR"
+
+#: links.py:67 links.py:88 views.py:221
 msgid "OCR errors"
 msgstr "Chyby OCR"
 
-#: links.py:73
+#: links.py:72
 msgid "Download OCR text"
 msgstr "Stáhněte si text OCR"
 
-#: models.py:18
+#: models.py:20
 msgid "Document type"
 msgstr "Typ dokumentu"
 
-#: models.py:22
+#: models.py:24
 msgid "Automatically queue newly created documents for OCR."
 msgstr "Automaticky zařazuje nově vytvořené dokumenty do fronty pro OCR."
 
-#: models.py:28
+#: models.py:30
 msgid "Document type settings"
 msgstr "Nastavení typu dokumentu"
 
-#: models.py:29
+#: models.py:31
 msgid "Document types settings"
 msgstr "Nastavení typů dokumentů"
 
-#: models.py:42
-msgid "Document page"
-msgstr "Strana dokumentu"
-
-#: models.py:46
-msgid "The actual text content extracted by the OCR backend."
-msgstr "Skutečný textový obsah extrahovaný backendem OCR."
-
-#: models.py:47
-msgid "Content"
-msgstr "Obsah"
-
-#: models.py:53
-msgid "Document page OCR content"
-msgstr "Obsah OCR stránky dokumentu"
-
-#: models.py:54
-msgid "Document pages OCR contents"
-msgstr "Obsah OCR stránek dokumentu"
-
-#: models.py:67
+#: models.py:45
 msgid "Document version"
 msgstr "Verze dokumentu"
 
-#: models.py:70
+#: models.py:48
 msgid "Date time submitted"
 msgstr "Datuma čas odeslání"
 
-#: models.py:76
+#: models.py:54
 msgid "Document version OCR error"
 msgstr "Chyba OCR verze dokumentu"
 
-#: models.py:77
+#: models.py:55
 msgid "Document version OCR errors"
 msgstr "Chyby OCR verze dokumentu"
+
+#: models.py:67
+#, fuzzy
+#| msgid "Document version page OCR"
+msgid "Document version page"
+msgstr "Stránka OCR verze dokumentu"
+
+#: models.py:71
+msgid "The actual text content extracted by the OCR backend."
+msgstr "Skutečný textový obsah extrahovaný backendem OCR."
+
+#: models.py:72
+msgid "Content"
+msgstr "Obsah"
+
+#: models.py:78
+#, fuzzy
+#| msgid "Document version page OCR"
+msgid "Document version page OCR content"
+msgstr "Stránka OCR verze dokumentu"
+
+#: models.py:79
+#, fuzzy
+#| msgid "Document pages OCR contents"
+msgid "Document version pages OCR contents"
+msgstr "Obsah OCR stránek dokumentu"
 
 #: permissions.py:8
 msgid "Submit documents for OCR"
@@ -162,14 +174,24 @@ msgid "Change document type OCR settings"
 msgstr "Změna nastavení OCR pro typu dokumentu"
 
 #: queues.py:10
-msgid "Finish document version OCR"
+#, fuzzy
+#| msgid "Finish document version OCR"
+msgid "Finish document file OCR"
 msgstr "Dokončit verzi dokumentu OCR"
 
 #: queues.py:14
-msgid "Document version page OCR"
+#, fuzzy
+#| msgid "Document version page OCR"
+msgid "Document file page OCR"
 msgstr "Stránka OCR verze dokumentu"
 
 #: queues.py:18
+#, fuzzy
+#| msgid "Document version OCR"
+msgid "Document file OCR"
+msgstr "OCR verze dokumnetu"
+
+#: search.py:11 search.py:23
 msgid "Document version OCR"
 msgstr "OCR verze dokumnetu"
 
@@ -181,47 +203,54 @@ msgstr "Nastavte nové typy dokumentů tak, aby standardně prováděly OCR."
 msgid "Full path to the backend to be used to do OCR."
 msgstr "Úplná cesta k backendu, který se používá k provádění OCR."
 
-#: views.py:35
-msgid "Delete the OCR content of the selected document?"
-msgid_plural "Delete the OCR content of the selected documents?"
+#: views.py:39
+#, fuzzy
+#| msgid "Delete the OCR content of the selected document?"
+#| msgid_plural "Delete the OCR content of the selected documents?"
+msgid "Delete the OCR content of the selected document version?"
+msgid_plural "Delete the OCR content of the selected document versions?"
 msgstr[0] "Odstranit obsah OCR ve vybraném dokumentu?"
 msgstr[1] "Odstranit obsah OCR ve vybraných dokumentech?"
 msgstr[2] "Odstranit obsah OCR ve vybraných dokumentech?"
 msgstr[3] "Odstranit obsah OCR ve vybraných dokumentech?"
 
-#: views.py:70
+#: views.py:74
 #, python-format
 msgid "OCR result for document: %s"
 msgstr "Výsledek OCR pro dokument: %s"
 
-#: views.py:95
+#: views.py:99
 #, python-format
 msgid "OCR errors for document: %s"
 msgstr "Chyby OCR pro dokument: %s"
 
-#: views.py:121
-#, python-format
-msgid "OCR result for document page: %s"
-msgstr "Výsledek OCR pro stránku dokumentu: %s"
-
-#: views.py:137
-msgid "Submit the selected document to the OCR queue?"
-msgid_plural "Submit the selected documents to the OCR queue?"
+#: views.py:118
+#, fuzzy
+#| msgid "Submit the selected document to the OCR queue?"
+#| msgid_plural "Submit the selected documents to the OCR queue?"
+msgid "Submit the selected document version to the OCR queue?"
+msgid_plural "Submit the selected document versions to the OCR queue?"
 msgstr[0] "Předloží vybraný dokument do fronty OCR?"
 msgstr[1] "Předložit vybrané dokumenty do fronty OCR?"
 msgstr[2] "Předložit vybrané dokumenty do fronty OCR?"
 msgstr[3] "Odeslat vybrané dokumenty do fronty OCR?"
 
-#: views.py:154
+#: views.py:152
+#, fuzzy, python-format
+#| msgid "OCR result for document page: %s"
+msgid "OCR result for document version page: %s"
+msgstr "Výsledek OCR pro stránku dokumentu: %s"
+
+#: views.py:158
 msgid "Submit all documents of a type for OCR"
 msgstr "Odeslat všechny dokumenty určitého typu do OCR"
 
-#: views.py:171
+#: views.py:175
 #, python-format
 msgid "%(count)d documents added to the OCR queue."
 msgstr "%(count)d dokumenty přidané do fronty OCR."
 
-#: views.py:206
+#: views.py:210
 #, python-format
 msgid "Edit OCR settings for document type: %s."
 msgstr "Upravit nastavení OCR pro typ dokumentu: %s."
@@ -237,7 +266,12 @@ msgid ""
 "page. Conditions that do not return any value, that return the Python "
 "logical None, or an empty string ('') are considered to be logical false, "
 "any other value is considered to be the logical true."
-msgstr "Podmínka, která určí, zda bude obsah OCR stránky dokumentu upraven či nikoli. Podmínka se vyhodnotí oproti iterované stránce dokumentu. Podmínky, které nevracejí žádnou hodnotu, vracejí Python logický None, nebo prázdný řetězec (''), jsou považovány za logické false, jakákoli jiná hodnota je považována za logickou true."
+msgstr ""
+"Podmínka, která určí, zda bude obsah OCR stránky dokumentu upraven či "
+"nikoli. Podmínka se vyhodnotí oproti iterované stránce dokumentu. Podmínky, "
+"které nevracejí žádnou hodnotu, vracejí Python logický None, nebo prázdný "
+"řetězec (''), jsou považovány za logické false, jakákoli jiná hodnota je "
+"považována za logickou true."
 
 #: workflow_actions.py:31
 msgid "Page content"
@@ -250,3 +284,9 @@ msgstr "Šablona, která vygeneruje obsah OCR, který se má uložit."
 #: workflow_actions.py:43
 msgid "Update document page OCR content"
 msgstr "Aktualizujte obsah OCR stránky dokumentu"
+
+#~ msgid "Document page"
+#~ msgstr "Strana dokumentu"
+
+#~ msgid "Document page OCR content"
+#~ msgstr "Obsah OCR stránky dokumentu"

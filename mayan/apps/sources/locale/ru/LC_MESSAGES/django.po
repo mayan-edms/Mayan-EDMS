@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Ilya Pavlov <spirkaa@gmail.com>, 2021
@@ -11,41 +11,47 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2021-03-17 10:56+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/ru/)\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:48 links.py:63 models/base.py:36 queues.py:7 settings.py:14
-#: views.py:193
+#: apps.py:50 links.py:78 menus.py:5 models/base.py:36 queues.py:7
+#: settings.py:14 views/source_views.py:173
 msgid "Sources"
 msgstr "Источники"
 
-#: apps.py:71
+#: apps.py:76
 msgid "Create a document source"
 msgstr "Создать источник документов"
 
-#: apps.py:73
+#: apps.py:78
 msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
-msgstr "Источники документов - это способы получения Mayan EDMS новых документов. Как минимум, чтобы можно было загружать документы из браузера, создайте веб-форму."
+msgstr ""
+"Источники документов - это способы получения Mayan EDMS новых документов. "
+"Как минимум, чтобы можно было загружать документы из браузера, создайте веб-"
+"форму."
 
-#: apps.py:86
+#: apps.py:91
 msgid "Type"
 msgstr "Тип"
 
-#: apps.py:97
+#: apps.py:102
 msgid "Created"
 msgstr "Создано"
 
-#: apps.py:103
+#: apps.py:108
 msgid "Thumbnail"
 msgstr "Миниатюра"
 
@@ -55,79 +61,90 @@ msgid ""
 "obtained the scanned document image."
 msgstr ""
 
-#: forms.py:25
+#: forms.py:26
 msgid "An optional comment to explain the upload."
 msgstr ""
 
-#: forms.py:26
+#: forms.py:27
 msgid "Comment"
 msgstr "Комментарий"
 
-#: forms.py:40 serializers.py:21
+#: forms.py:31
+msgid "Action"
+msgstr ""
+
+#: forms.py:33
+msgid ""
+"The action to take in regards to the pages of the new file being uploaded."
+msgstr ""
+
+#: forms.py:48 serializers.py:21
 msgid "Expand compressed files"
 msgstr "Извлекать из архивов?"
 
-#: forms.py:42 serializers.py:22
+#: forms.py:50 serializers.py:22
 msgid "Upload a compressed file's contained files as individual documents."
 msgstr ""
 
-#: forms.py:63 views.py:205
+#: forms.py:71 views/source_views.py:185
 msgid "Staging file"
 msgstr "Промежуточный файл"
 
-#: forms.py:67 forms.py:72
+#: forms.py:75 forms.py:80
 msgid "File"
 msgstr "Файл"
 
-#: handlers.py:25
+#: handlers.py:22
 msgid "Default"
 msgstr "Умолчание"
 
-#: links.py:58
+#: links.py:73
 msgid "New document"
 msgstr "Новый документ"
 
-#: links.py:70
+#: links.py:84
 msgid "Add new IMAP email"
 msgstr "Добавить почту IMAP"
 
-#: links.py:76
+#: links.py:89
 msgid "Add new POP3 email"
 msgstr "Добавить почту POP3"
 
-#: links.py:82
+#: links.py:94
 msgid "Add new staging folder"
 msgstr "Добавить предварительную папку"
 
-#: links.py:88
+#: links.py:99
 msgid "Add new watch folder"
 msgstr "Добавить отслеживаемую папку"
 
-#: links.py:94
+#: links.py:104
 msgid "Add new webform source"
 msgstr "Добавить онлайн-форму"
 
-#: links.py:100
+#: links.py:109
 msgid "Add new SANE scanner"
 msgstr "Добавить сканер SANE"
 
-#: links.py:106 links.py:123
+#: links.py:114 links.py:130
 msgid "Delete"
 msgstr "Удалить"
 
-#: links.py:111
+#: links.py:118
 msgid "Edit"
 msgstr "Редактировать"
 
-#: links.py:116
+#: links.py:123
 msgid "Document sources"
 msgstr "Источники документов"
 
-#: links.py:130
-msgid "Upload new version"
+#: links.py:137
+#, fuzzy
+#| msgid "Upload new version"
+msgid "Upload new file"
 msgstr "Загрузить новую версию"
 
-#: links.py:135
+#: links.py:141
 msgid "Check now"
 msgstr "Проверить сейчас"
 
@@ -175,7 +192,7 @@ msgstr "Спросить пользователя"
 msgid "Scanner"
 msgstr "Сканер"
 
-#: literals.py:71 models/webform_sources.py:40
+#: literals.py:71 models/webform_sources.py:39
 msgid "Web form"
 msgstr "Веб-форма"
 
@@ -211,48 +228,49 @@ msgstr "Доступно"
 msgid "Source"
 msgstr "Источник"
 
-#: models/base.py:147
+#: models/base.py:138
 msgid "Interactive source"
 msgstr "Интерактивный источник"
 
-#: models/base.py:148
+#: models/base.py:139
 msgid "Interactive sources"
 msgstr "Интерактивные источники"
 
-#: models/base.py:157 models/base.py:158
+#: models/base.py:148 models/base.py:149
 msgid "Out of process"
 msgstr ""
 
-#: models/base.py:164
+#: models/base.py:155
 msgid "Interval in seconds between checks for new documents."
 msgstr "Временной интервал проверки на наличие новых документов."
 
-#: models/base.py:165
+#: models/base.py:156
 msgid "Interval"
 msgstr "Интервал"
 
-#: models/base.py:169
+#: models/base.py:160
 msgid "Assign a document type to documents uploaded from this source."
-msgstr "Назначить тип документов для документов, загружаемых из этого источника."
+msgstr ""
+"Назначить тип документов для документов, загружаемых из этого источника."
 
-#: models/base.py:171 serializers.py:17
+#: models/base.py:162 serializers.py:17
 msgid "Document type"
 msgstr "Тип документа"
 
-#: models/base.py:175
+#: models/base.py:166
 msgid "Whether to expand or not, compressed archives."
 msgstr "Следует ли извлекать данные из архива."
 
-#: models/base.py:176 models/staging_folder_sources.py:54
-#: models/webform_sources.py:34
+#: models/base.py:167 models/staging_folder_sources.py:54
+#: models/webform_sources.py:33
 msgid "Uncompress"
 msgstr "Распаковать"
 
-#: models/base.py:182
+#: models/base.py:173
 msgid "Interval source"
 msgstr ""
 
-#: models/base.py:183
+#: models/base.py:174
 msgid "Interval sources"
 msgstr ""
 
@@ -268,7 +286,9 @@ msgstr "SSL"
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
-msgstr "Обычно выбирают 110 для POP3, 995 для POP3 с SSL, 143 для IMAP, 993 для IMAP с SSL"
+msgstr ""
+"Обычно выбирают 110 для POP3, 995 для POP3 с SSL, 143 для IMAP, 993 для IMAP "
+"с SSL"
 
 #: models/email_sources.py:44
 msgid "Port"
@@ -363,9 +383,8 @@ msgstr ""
 #: models/email_sources.py:228
 msgid ""
 "IMAP STORE command to execute on messages after they are processed. One "
-"command per line. Use the commands specified in "
-"https://tools.ietf.org/html/rfc2060.html#section-6.4.6 or the custom "
-"commands for your IMAP server."
+"command per line. Use the commands specified in https://tools.ietf.org/html/"
+"rfc2060.html#section-6.4.6 or the custom commands for your IMAP server."
 msgstr ""
 
 #: models/email_sources.py:232
@@ -484,7 +503,7 @@ msgstr "Высота после обработки."
 msgid "Preview height"
 msgstr "Высота предпросмотра"
 
-#: models/staging_folder_sources.py:53 models/webform_sources.py:33
+#: models/staging_folder_sources.py:53 models/webform_sources.py:32
 msgid "Whether to expand or not compressed archives."
 msgstr "Независимо от того распакованы или нет архивы."
 
@@ -499,16 +518,6 @@ msgstr "Удалить после загрузки"
 #: models/staging_folder_sources.py:68
 msgid "Staging folders"
 msgstr "Промежуточные папки"
-
-#: models/staging_folder_sources.py:80
-#, python-format
-msgid "Error deleting staging file; %s"
-msgstr "Ошибка удаления промежуточного файла; %s"
-
-#: models/staging_folder_sources.py:96
-#, python-format
-msgid "Unable get list of staging files: %s"
-msgstr "Не удалось получить список промежуточных файлов: %s"
 
 #: models/watch_folder_sources.py:32
 msgid "Server side filesystem path to scan for files."
@@ -528,7 +537,7 @@ msgstr "Включить подкаталоги?"
 msgid "Watch folders"
 msgstr ""
 
-#: models/webform_sources.py:41
+#: models/webform_sources.py:40
 msgid "Web forms"
 msgstr "Веб-формы"
 
@@ -632,7 +641,82 @@ msgstr "Очистить"
 msgid "Server responded with {{statusCode}} code."
 msgstr ""
 
-#: views.py:70
+#: views/document_file_views.py:61
+#, fuzzy, python-format
+#| msgid ""
+#| "Upload a new version for document \"%(document)s\" from source: %(source)s"
+msgid "Unable to upload new files for document \"%(document)s\". %(exception)s"
+msgstr ""
+"Загрузка новой версии документа \"%(document)s\" из источника: %(source)s"
+
+#: views/document_file_views.py:125
+#, python-format
+msgid "Error executing document file upload task; %(exception)s"
+msgstr ""
+
+#: views/document_file_views.py:140
+msgid "New document file queued for upload and will be available shortly."
+msgstr ""
+
+#: views/document_file_views.py:165
+#, fuzzy, python-format
+#| msgid ""
+#| "Upload a new version for document \"%(document)s\" from source: %(source)s"
+msgid "Upload a new file for document \"%(document)s\" from source: %(source)s"
+msgstr ""
+"Загрузка новой версии документа \"%(document)s\" из источника: %(source)s"
+
+#: views/document_file_views.py:168
+msgid "Submit"
+msgstr "Подтвердить"
+
+#: views/document_views.py:79 wizards.py:50
+msgid ""
+"No interactive document sources have been defined or none have been enabled, "
+"create one before proceeding."
+msgstr ""
+"Интерактивные источники документов не были определены или включены, создайте "
+"один для продолжения."
+
+#: views/document_views.py:107 views/document_views.py:136
+#: views/document_views.py:146
+msgid "Document properties"
+msgstr "Свойства документа"
+
+#: views/document_views.py:116
+msgid ""
+"This could mean that the staging folder is empty. It could also mean that "
+"the operating system user account being used for Mayan EDMS doesn't have the "
+"necessary file system permissions for the folder."
+msgstr ""
+
+#: views/document_views.py:123
+msgid "No staging files available"
+msgstr ""
+
+#: views/document_views.py:126
+msgid "Files in staging path"
+msgstr ""
+
+#: views/document_views.py:137
+msgid "Scan"
+msgstr ""
+
+#: views/document_views.py:282
+#, python-format
+msgid "Error executing document upload task; %(exception)s"
+msgstr ""
+
+#: views/document_views.py:292
+msgid "New document queued for upload and will be available shortly."
+msgstr ""
+
+#: views/document_views.py:309
+#, python-format
+msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
+msgstr "Загрузка документа типа \"%(document_type)s\" из источника: %(source)s"
+
+#: views/source_views.py:50
 msgid ""
 "This will execute the source check code even if the source is not enabled. "
 "Sources that delete content after downloading will not do so while being "
@@ -640,31 +724,31 @@ msgid ""
 "successful test will clear the error log."
 msgstr ""
 
-#: views.py:76
+#: views/source_views.py:56
 #, python-format
 msgid "Trigger check for source \"%s\"?"
 msgstr ""
 
-#: views.py:88
+#: views/source_views.py:68
 msgid "Source check queued."
 msgstr ""
 
-#: views.py:102
+#: views/source_views.py:82
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "Создать новый источник типа: %s"
 
-#: views.py:125
+#: views/source_views.py:105
 #, python-format
 msgid "Delete the source: %s?"
 msgstr "Удалить источник: %s?"
 
-#: views.py:147
+#: views/source_views.py:127
 #, python-format
 msgid "Edit source: %s"
 msgstr "Редактировать источник: %s"
 
-#: views.py:187
+#: views/source_views.py:167
 msgid ""
 "Sources provide the means to upload documents. Some sources like the "
 "webform, are interactive and require user input to operate. Others like the "
@@ -672,94 +756,34 @@ msgid ""
 "intervention."
 msgstr ""
 
-#: views.py:192
+#: views/source_views.py:172
 msgid "No sources available"
 msgstr "Нет доступных источников"
 
-#: views.py:206
+#: views/source_views.py:186
 #, python-format
 msgid "Delete staging file \"%s\"?"
 msgstr "Удалить промежуточный файл \"%s\"?"
 
-#: views.py:257 wizards.py:152
-msgid ""
-"No interactive document sources have been defined or none have been enabled,"
-" create one before proceeding."
-msgstr "Интерактивные источники документов не были определены или включены, создайте один для продолжения."
-
-#: views.py:285 views.py:314 views.py:324
-msgid "Document properties"
-msgstr "Свойства документа"
-
-#: views.py:294
-msgid ""
-"This could mean that the staging folder is empty. It could also mean that "
-"the operating system user account being used for Mayan EDMS doesn't have the"
-" necessary file system permissions for the folder."
-msgstr ""
-
-#: views.py:301
-msgid "No staging files available"
-msgstr ""
-
-#: views.py:304
-msgid "Files in staging path"
-msgstr ""
-
-#: views.py:315
-msgid "Scan"
-msgstr ""
-
-#: views.py:462
-#, python-format
-msgid "Error executing document upload task; %(exception)s"
-msgstr ""
-
-#: views.py:472
-msgid "New document queued for upload and will be available shortly."
-msgstr ""
-
-#: views.py:489
-#, python-format
-msgid "Upload a document of type \"%(document_type)s\" from source: %(source)s"
-msgstr "Загрузка документа типа \"%(document_type)s\" из источника: %(source)s"
-
-#: views.py:551
-#, python-format
-msgid "Unable to upload new versions for document \"%(document)s\". %(exception)s"
-msgstr ""
-
-#: views.py:612
-#, python-format
-msgid "Error executing document version upload task; %(exception)s"
-msgstr ""
-
-#: views.py:627
-msgid "New document version queued for upload and will be available shortly."
-msgstr ""
-
-#: views.py:654
-#, python-format
-msgid "Upload a new version for document \"%(document)s\" from source: %(source)s"
-msgstr "Загрузка новой версии документа \"%(document)s\" из источника: %(source)s"
-
-#: views.py:657
-msgid "Submit"
-msgstr "Подтвердить"
-
-#: wizards.py:95
+#: wizard_steps.py:11
 msgid "Select document type"
 msgstr "Выберите тип документа"
 
-#: wizards.py:176
+#: wizards.py:70
 #, python-format
 msgid "Step %(step)d of %(total_steps)d: %(step_label)s"
 msgstr "Шаг %(step)d из %(total_steps)d: %(step_label)s"
 
-#: wizards.py:181
+#: wizards.py:75
 msgid "Next step"
 msgstr "Далее"
 
-#: wizards.py:183
+#: wizards.py:77
 msgid "Document upload wizard"
 msgstr "Мастер загрузки документов"
+
+#~ msgid "Error deleting staging file; %s"
+#~ msgstr "Ошибка удаления промежуточного файла; %s"
+
+#~ msgid "Unable get list of staging files: %s"
+#~ msgstr "Не удалось получить список промежуточных файлов: %s"

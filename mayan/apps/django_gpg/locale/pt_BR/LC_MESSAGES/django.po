@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Aline Freitas <aline@alinefreitas.com.br>, 2016
@@ -13,45 +13,46 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2020-04-14 15:18+0000\n"
 "Last-Translator: Roberto Vasconcelos Novaes <rvnovaes@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:30
+#: apps.py:33
 msgid "Django GPG"
 msgstr "Django GPG"
 
-#: apps.py:46 apps.py:52 forms.py:15
+#: apps.py:56 apps.py:62 forms.py:15
 msgid "Key ID"
 msgstr "ID da chave"
 
-#: apps.py:56 forms.py:32 models.py:53
+#: apps.py:66 forms.py:32 models.py:59
 msgid "Type"
 msgstr "Tipo"
 
-#: apps.py:60 forms.py:21 models.py:34
+#: apps.py:70 forms.py:21 models.py:40
 msgid "Creation date"
 msgstr "Data de criação"
 
-#: apps.py:64
+#: apps.py:74
 msgid "No expiration"
 msgstr "Sem expiração"
 
-#: apps.py:65 forms.py:25 models.py:38
+#: apps.py:75 forms.py:25 models.py:44
 msgid "Expiration date"
 msgstr "Data de expiração"
 
-#: apps.py:68 forms.py:30 models.py:45
+#: apps.py:78 forms.py:30 models.py:51
 msgid "Length"
 msgstr "Comprimento"
 
-#: apps.py:73 forms.py:17 models.py:50
+#: apps.py:83 forms.py:17 models.py:56
 msgid "User ID"
 msgstr "ID de usuário"
 
@@ -59,15 +60,31 @@ msgstr "ID de usuário"
 msgid "GNU privacy guard - a PGP implementation."
 msgstr "GNU privacy guard  - Uma implementação de PGP."
 
+#: events.py:5 links.py:42 permissions.py:5
+msgid "Key management"
+msgstr "Gerenciar  chaves"
+
+#: events.py:8
+#, fuzzy
+#| msgid "Key data"
+msgid "Key created"
+msgstr "Dados da chave"
+
+#: events.py:12
+#, fuzzy
+#| msgid "Download"
+msgid "Key downloaded"
+msgstr "Baixar"
+
 #: forms.py:26
 msgid "None"
 msgstr "Nenhum"
 
-#: forms.py:29 models.py:42
+#: forms.py:29 models.py:48
 msgid "Fingerprint"
 msgstr "Impressão digital"
 
-#: forms.py:31 models.py:48
+#: forms.py:31 models.py:54
 msgid "Algorithm"
 msgstr "Algoritmo"
 
@@ -99,19 +116,15 @@ msgstr "Consultar servidores de chaves"
 msgid "Import"
 msgstr "Importar"
 
-#: links.py:42 permissions.py:5
-msgid "Key management"
-msgstr "Gerenciar  chaves"
-
 #: links.py:46
 msgid "Upload key"
 msgstr "Enviar da chave"
 
-#: links.py:50 views.py:180
+#: links.py:50 views.py:194
 msgid "Private keys"
 msgstr "Chaves privadas"
 
-#: links.py:54 views.py:204
+#: links.py:54 views.py:218
 msgid "Public keys"
 msgstr "Chaves públicas"
 
@@ -159,27 +172,27 @@ msgstr "Documento assinado e a assinatura está em bom estado."
 msgid "Document is signed with a valid signature."
 msgstr "Documento assinado com assinatura válida."
 
-#: models.py:30
+#: models.py:36
 msgid "ASCII armored version of the key."
 msgstr "Versão ASCII da chave."
 
-#: models.py:31
+#: models.py:37
 msgid "Key data"
 msgstr "Dados da chave"
 
-#: models.py:59
+#: models.py:65
 msgid "Key"
 msgstr "Chave"
 
-#: models.py:60
+#: models.py:66
 msgid "Keys"
 msgstr "Chaves"
 
-#: models.py:72
+#: models.py:78
 msgid "Invalid key data"
 msgstr "Dados da chave inválidos"
 
-#: models.py:75
+#: models.py:81
 msgid "Key already exists."
 msgstr "A chave já existe."
 
@@ -213,84 +226,94 @@ msgstr "Assinaturas"
 
 #: settings.py:16
 msgid "Full path to the backend to be used to handle keys and signatures."
-msgstr "Caminho completo para o backend a ser usado para manipular chaves e assinaturas."
+msgstr ""
+"Caminho completo para o backend a ser usado para manipular chaves e "
+"assinaturas."
 
 #: settings.py:25
 msgid "Keyserver used to query for keys."
 msgstr "Servidor usado para procurar chaves."
 
-#: views.py:36
+#: views.py:39
 #, python-format
 msgid "Delete key: %s"
 msgstr "Apagar chave: %s"
 
-#: views.py:53
+#: views.py:56
 #, python-format
 msgid "Details for key: %s"
 msgstr "Detalhes para chave: %s"
 
-#: views.py:75
+#: views.py:84
 #, python-format
 msgid "Import key ID: %s?"
 msgstr "Importar ID da chave: %s?"
 
-#: views.py:76
+#: views.py:85
 msgid "Import key"
 msgstr "Importar chave"
 
-#: views.py:85
+#: views.py:94
 #, python-format
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr "Não foi possível importar chave: %(key_id)s; %(error)s"
 
-#: views.py:93
+#: views.py:102
 #, python-format
 msgid "Successfully received key: %(key_id)s"
 msgstr "Chave: %(key_id)s recebida com sucesso."
 
-#: views.py:110
+#: views.py:119
 msgid ""
 "Use names, last names, key ids or emails to search public keys to import "
 "from the keyserver."
-msgstr "Use nomes, sobrenomes, ID's de chaves ou e-mails para procurar chaves públicas a serem importadas do servidor de chaves."
+msgstr ""
+"Use nomes, sobrenomes, ID's de chaves ou e-mails para procurar chaves "
+"públicas a serem importadas do servidor de chaves."
 
-#: views.py:114
+#: views.py:123
 msgid "No results returned"
 msgstr "Nenhum resultado retornado"
 
-#: views.py:116
+#: views.py:125
 msgid "Key query results"
 msgstr "Resultados de busca de chave"
 
-#: views.py:136
+#: views.py:145
 msgid "Search"
 msgstr "Busca"
 
-#: views.py:138
+#: views.py:147
 msgid "Query key server"
 msgstr "Consultar servidor de chaves"
 
-#: views.py:157
+#: views.py:166
 msgid "Upload new key"
 msgstr "Carregar nova chave"
 
-#: views.py:173
+#: views.py:187
 msgid ""
-"Private keys are used to signed documents. Private keys can only be uploaded"
-" by the user. The view to upload private and public keys is the same."
-msgstr "Chaves privadas são usadas para assinaturas de documentos. Chaves privadas somente podem ser carregadas pelo usuário. A tela para carregar chaves públicas e privadas é a mesma."
+"Private keys are used to signed documents. Private keys can only be uploaded "
+"by the user. The view to upload private and public keys is the same."
+msgstr ""
+"Chaves privadas são usadas para assinaturas de documentos. Chaves privadas "
+"somente podem ser carregadas pelo usuário. A tela para carregar chaves "
+"públicas e privadas é a mesma."
 
-#: views.py:178
+#: views.py:192
 msgid "There no private keys"
 msgstr "Não há chaves privadas"
 
-#: views.py:196
+#: views.py:210
 msgid ""
-"Public keys are used to verify signed documents. Public keys can be uploaded"
-" by the user or downloaded from keyservers. The view to upload private and "
+"Public keys are used to verify signed documents. Public keys can be uploaded "
+"by the user or downloaded from keyservers. The view to upload private and "
 "public keys is the same."
-msgstr "Chaves públicas são usadas para verificar documentos assinados digitalmente. Chaves públicas podem ser carregadas pelo usuário ou baixadas de servidores de chaves. A tela para carregamento de chaves públicas e privadas é a mesma."
+msgstr ""
+"Chaves públicas são usadas para verificar documentos assinados digitalmente. "
+"Chaves públicas podem ser carregadas pelo usuário ou baixadas de servidores "
+"de chaves. A tela para carregamento de chaves públicas e privadas é a mesma."
 
-#: views.py:202
+#: views.py:216
 msgid "There no public keys"
 msgstr "Não há chaves públicas"

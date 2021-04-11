@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2017
@@ -10,124 +10,117 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/fa/)\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:131 permissions.py:5 settings.py:13
+#: apps.py:125 permissions.py:5 settings.py:15
 msgid "Common"
 msgstr "مشترک"
 
-#: classes.py:456
+#: classes.py:408
 msgid "Model properties"
 msgstr ""
 
-#: classes.py:461
+#: classes.py:413
 msgid "Model fields"
 msgstr ""
 
-#: classes.py:504
+#: classes.py:456
 msgid "Model related fields"
 msgstr ""
 
-#: classes.py:509
+#: classes.py:461
 msgid "Model reverse fields"
 msgstr ""
 
-#: dependencies.py:195
+#: dependencies.py:168
 msgid "Used to allow offline translation of the code text strings."
 msgstr ""
 
-#: dependencies.py:204
+#: dependencies.py:177
 msgid "Provides style checking."
 msgstr ""
 
-#: dependencies.py:209
+#: dependencies.py:182
 msgid "Command line environment with autocompletion."
 msgstr ""
 
-#: dependencies.py:214
+#: dependencies.py:187
 msgid "Checks proper formatting of the README file."
 msgstr ""
 
-#: links.py:31
+#: links.py:30
 msgid "About this"
 msgstr "در مورد این"
 
-#: links.py:34
+#: links.py:33
 msgid "Get the book"
 msgstr ""
 
-#: links.py:39
-msgid "Locale profile"
-msgstr "پروفایل محلی"
-
-#: links.py:44
-msgid "Edit locale profile"
-msgstr "ویرایش پروفایل محلی"
-
-#: links.py:49
+#: links.py:38
 msgid "Documentation"
 msgstr "مستندات"
 
-#: links.py:52
+#: links.py:41
 msgid "Forum"
 msgstr "انجمن"
 
-#: links.py:56 views.py:106
+#: links.py:45 views.py:48
 msgid "License"
 msgstr "لیسانس"
 
-#: links.py:61
+#: links.py:50
 msgid "Copy"
 msgstr ""
 
-#: links.py:64
+#: links.py:53
 msgid "Setup"
 msgstr "نصب"
 
-#: links.py:67
+#: links.py:56
 msgid "Source code"
 msgstr "کد منبع"
 
-#: links.py:71
+#: links.py:60
 msgid "Online store"
 msgstr ""
 
-#: links.py:75
+#: links.py:64
 msgid "Get support"
 msgstr ""
 
-#: links.py:79 queues.py:9 views.py:175
+#: links.py:68 queues.py:9 views.py:122
 msgid "Tools"
 msgstr "ابزار"
 
-#: literals.py:18
+#: literals.py:20
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
 msgstr ""
 
-#: literals.py:21
+#: literals.py:23
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
 msgstr ""
 
-#: literals.py:30
+#: literals.py:32
 msgid "Days"
 msgstr "روزها"
 
-#: literals.py:31
+#: literals.py:33
 msgid "Hours"
 msgstr "ساعات"
 
-#: literals.py:32
+#: literals.py:34
 msgid "Minutes"
 msgstr "دقایق"
 
@@ -151,25 +144,13 @@ msgstr ""
 msgid "Secondary"
 msgstr ""
 
-#: menus.py:21 models.py:25
+#: menus.py:18
+msgid "Return"
+msgstr ""
+
+#: menus.py:22
 msgid "User"
 msgstr "کاربر"
-
-#: models.py:29
-msgid "Timezone"
-msgstr "زمان محلی"
-
-#: models.py:32
-msgid "Language"
-msgstr "زبان"
-
-#: models.py:38
-msgid "User locale profile"
-msgstr "پروفایل محلی کاربر"
-
-#: models.py:39
-msgid "User locale profiles"
-msgstr "پروفایل محلی کاربر"
 
 #: permissions.py:8
 msgid "Copy object"
@@ -179,108 +160,145 @@ msgstr ""
 msgid "Default"
 msgstr "پیش فرض"
 
-#: settings.py:19
+#: settings.py:22
 msgid ""
-"Time to delay background tasks that depend on a database commit to "
-"propagate."
-msgstr "زمان برای به تاخیر انداختن وظایف پس زمینه که به پایگاه داده متعهد به انتشار است."
+"In list mode, show the \"list facet\" menu options as a dropdown menu "
+"instead of individual buttons."
+msgstr ""
 
-#: settings.py:26
+#: settings.py:30
+msgid ""
+"In list mode, show the \"object\" menu options as a dropdown menu instead of "
+"individual buttons."
+msgstr ""
+
+#: settings.py:37
+msgid ""
+"Time to delay background tasks that depend on a database commit to propagate."
+msgstr ""
+"زمان برای به تاخیر انداختن وظایف پس زمینه که به پایگاه داده متعهد به انتشار "
+"است."
+
+#: settings.py:44
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package"
-" containing an application."
+"Python path to: an application configuration class (preferred), or a package "
+"containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
 
-#: settings.py:36
+#: settings.py:54
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package"
-" containing an application."
-msgstr ""
-
-#: settings.py:45
-msgid ""
-"Name of the view attached to the brand anchor in the main menu. This is also"
-" the view to which users will be redirected after log in."
-msgstr ""
-
-#: settings.py:53
-msgid "Name to be displayed in the main menu."
-msgstr ""
-
-#: settings.py:59
-msgid "URL of the installation or homepage of the project."
+"Python path to: an application configuration class (preferred), or a package "
+"containing an application. Example: ['app_1', 'app_2']"
 msgstr ""
 
 #: settings.py:64
+msgid ""
+"Name of the view attached to the brand anchor in the main menu. This is also "
+"the view to which users will be redirected after log in."
+msgstr ""
+
+#: settings.py:72
+msgid "Name to be displayed in the main menu."
+msgstr ""
+
+#: settings.py:78
+msgid "URL of the installation or homepage of the project."
+msgstr ""
+
+#: settings.py:83
 msgid "Base URL path to use for all views."
 msgstr ""
 
-#: validators.py:44
+#: templates/common/app/viewport.html:9
+msgid "Warning"
+msgstr ""
+
+#: templates/common/app/viewport.html:21
+msgid "Click here to fix this."
+msgstr ""
+
+#: validators.py:41
 msgid "Enter a valid JSON value."
 msgstr ""
 
-#: validators.py:68
+#: validators.py:65
 msgid "Enter a valid YAML value."
 msgstr "یک مقدار معتبر YAML را وارد کنید"
 
-#: validators.py:84
+#: validators.py:81
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
 msgstr "یک نام داخلی معتبر وارد کنید که شامل حروف، اعداد و حروف زیر است."
 
-#: views.py:29
+#: views.py:22
 msgid "About"
 msgstr "درباره"
 
-#: views.py:42
-msgid "Current user locale profile details"
-msgstr "شرح پروفایل محلی کاربر فعلی"
-
-#: views.py:48
-msgid "Edit current user locale profile details"
-msgstr "ویرایش شرح پروفایل محلی کاربر فعلی"
-
-#: views.py:97
+#: views.py:39
 msgid "Dashboard"
 msgstr "داشبورد"
 
-#: views.py:118
+#: views.py:62
 #, python-format
 msgid "Fields to be copied: %s"
 msgstr ""
 
-#: views.py:127
+#: views.py:72
 #, python-format
 msgid "Make a copy of %(object_name)s \"%(object)s\"?"
 msgstr ""
 
-#: views.py:136
+#: views.py:83
 msgid "Object copied successfully."
 msgstr ""
 
-#: views.py:153
+#: views.py:100
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
 msgstr ""
 
-#: views.py:156
+#: views.py:103
 msgid "No setup options available."
 msgstr ""
 
-#: views.py:160
+#: views.py:107
 msgid "Setup items"
 msgstr "اقلام نصب"
 
-#: views.py:162
+#: views.py:109
 msgid "Here you can configure all aspects of the system."
 msgstr ""
 
-#: views.py:177
+#: views.py:124
 msgid "These modules are used to do system maintenance."
 msgstr ""
+
+#~ msgid "Locale profile"
+#~ msgstr "پروفایل محلی"
+
+#~ msgid "Edit locale profile"
+#~ msgstr "ویرایش پروفایل محلی"
+
+#~ msgid "Timezone"
+#~ msgstr "زمان محلی"
+
+#~ msgid "Language"
+#~ msgstr "زبان"
+
+#~ msgid "User locale profile"
+#~ msgstr "پروفایل محلی کاربر"
+
+#~ msgid "User locale profiles"
+#~ msgstr "پروفایل محلی کاربر"
+
+#~ msgid "Current user locale profile details"
+#~ msgstr "شرح پروفایل محلی کاربر فعلی"
+
+#~ msgid "Edit current user locale profile details"
+#~ msgstr "ویرایش شرح پروفایل محلی کاربر فعلی"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-30 04:39+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2020-10-26 13:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -20,11 +20,33 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:25 apps.py:39 links.py:14
+#: apps.py:30 apps.py:56 links.py:14
 msgid "Duplicates"
 msgstr "Αντίγραφα"
 
-#: links.py:18 models.py:20 models.py:30 views.py:75
+#: apps.py:62
+#, fuzzy
+#| msgid "Duplicated document"
+msgid "Duplicate backend"
+msgstr "Διπλότυπα έγγραφα"
+
+#: classes.py:83
+msgid "Null backend"
+msgstr ""
+
+#: duplicate_backends.py:9
+#, fuzzy
+#| msgid "Edit document type: %s"
+msgid "Exact document file checksum"
+msgstr "Τροποποίηση τύπου εγγράφων: %s"
+
+#: duplicate_backends.py:28
+#, fuzzy
+#| msgid "Edit document types"
+msgid "Exact document label"
+msgstr "Τροποπίηση τύπων εγγράφου"
+
+#: links.py:18 models.py:40 views.py:77
 msgid "Duplicated documents"
 msgstr "Διπλο-καταχωρημένα έγγραφα"
 
@@ -32,17 +54,33 @@ msgstr "Διπλο-καταχωρημένα έγγραφα"
 msgid "Duplicated document scan"
 msgstr "Ανίχνευση για διπλές καταχωρήσεις εγγράφων"
 
-#: models.py:17
+#: models.py:23 models.py:33
+#, fuzzy
+#| msgid "Scan for duplicated documents?"
+msgid "Stored duplicate backend"
+msgstr "Αναζήτηση για διπλότυπα έγγραφα;"
+
+#: models.py:24
+#, fuzzy
+#| msgid "Scan for duplicated documents?"
+msgid "Stored duplicate backends"
+msgstr "Αναζήτηση για διπλότυπα έγγραφα;"
+
+#: models.py:37
 msgid "Document"
 msgstr "Έγγραφο"
 
-#: models.py:23
-msgid "Added"
-msgstr "Προστέθηκε"
-
-#: models.py:29
-msgid "Duplicated document"
+#: models.py:47
+#, fuzzy
+#| msgid "Duplicated document"
+msgid "Duplicated backend entry"
 msgstr "Διπλότυπα έγγραφα"
+
+#: models.py:48
+#, fuzzy
+#| msgid "Duplicated documents"
+msgid "Duplicated backend entries"
+msgstr "Διπλο-καταχωρημένα έγγραφα"
 
 #: queues.py:8
 msgid "Clean empty duplicate lists"
@@ -65,25 +103,28 @@ msgstr ""
 msgid "Duplicates for document: %s"
 msgstr "Διπλότυπα του εγγράφου: %s"
 
-#: views.py:66
+#: views.py:68
 msgid ""
 "Duplicates are documents that are composed of the exact same file, down to "
 "the last byte. Files that have the same text or OCR but are not identical or "
 "were saved using a different file format will not appear as duplicates."
 msgstr ""
 
-#: views.py:73
+#: views.py:75
 msgid "There are no duplicated documents"
 msgstr ""
 
-#: views.py:83
+#: views.py:85
 msgid "Scan for duplicated documents?"
 msgstr "Αναζήτηση για διπλότυπα έγγραφα;"
 
-#: views.py:90
+#: views.py:92
 msgid "Duplicated document scan queued successfully."
 msgstr ""
 "Αίτημα αναζήτησης για διπλότυπα έγγραφα καταχωρήθηκε στην λίστα με επιτυχία."
+
+#~ msgid "Added"
+#~ msgstr "Προστέθηκε"
 
 #~ msgid "Documents"
 #~ msgstr "Έγγραφα"
@@ -466,9 +507,6 @@ msgstr ""
 #~ msgid "Delete document types"
 #~ msgstr "Διαγραφή τύπων εγγράφου"
 
-#~ msgid "Edit document types"
-#~ msgstr "Τροποπίηση τύπων εγγράφου"
-
 #~ msgid "View document types"
 #~ msgstr "Εμφάνηση τύπων εγγράφου"
 
@@ -561,9 +599,6 @@ msgstr ""
 
 #~ msgid "Delete the document type: %s?"
 #~ msgstr "Διαγραφή του τύπου εγγράφων: %s;"
-
-#~ msgid "Edit document type: %s"
-#~ msgstr "Τροποποίηση τύπου εγγράφων: %s"
 
 #~ msgid "Create quick label for document type: %s"
 #~ msgstr "Δημηουργία γρήγορης ετικέτας στον τύπο εγγράφου: %s"

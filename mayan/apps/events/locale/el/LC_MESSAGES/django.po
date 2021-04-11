@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # pyrotech <anastasios@tutamail.com>, 2021
@@ -10,56 +10,81 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2021-01-30 16:55+0000\n"
 "Last-Translator: pyrotech <anastasios@tutamail.com>\n"
-"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/el/)\n"
+"Language-Team: Greek (http://www.transifex.com/rosarior/mayan-edms/language/"
+"el/)\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: el\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:27 links.py:32 links.py:37 links.py:42 permissions.py:5 views.py:33
+#: apps.py:27 events.py:5 links.py:38 links.py:43 links.py:53 permissions.py:5
+#: queues.py:7 views/event_views.py:30
 msgid "Events"
 msgstr "Συμβάντα"
 
-#: apps.py:39 apps.py:67
+#: apps.py:49 apps.py:77
 msgid "Date and time"
 msgstr "Ημερομηνία και ώρα"
 
-#: apps.py:42 apps.py:70
+#: apps.py:52 apps.py:80
 msgid "Actor"
 msgstr "Ενεργών"
 
-#: apps.py:46 apps.py:75
+#: apps.py:56 apps.py:85
 msgid "Event"
 msgstr "Συμβάν"
 
-#: apps.py:50 apps.py:80
+#: apps.py:60 apps.py:90
 msgid "Target"
 msgstr "Στόχος"
 
-#: apps.py:54
+#: apps.py:64 apps.py:94
 msgid "Action object"
 msgstr "Αντικείμενο ενέργειας"
 
-#: apps.py:59 forms.py:10 forms.py:67
+#: apps.py:69 forms.py:10 forms.py:67
 msgid "Namespace"
 msgstr "Χώρος ονομάτων"
 
-#: apps.py:62 forms.py:14 forms.py:71
+#: apps.py:72 forms.py:14 forms.py:71
 msgid "Label"
 msgstr "Ετικέτα"
 
-#: apps.py:86
+#: apps.py:99
 msgid "Seen"
 msgstr "Αναγνωσμένο"
 
-#: classes.py:142
+#: classes.py:79
+msgid "Event list export to CSV"
+msgstr ""
+
+#: classes.py:108
+#, fuzzy
+#| msgid "Event type"
+msgid "Events exported."
+msgstr "Τύπος συμβάντος"
+
+#: classes.py:110
+#, python-format
+msgid ""
+"The event list has been exported and is available for download using the "
+"link: %(download_url)s or from the downloads area (%(download_list_url)s)."
+msgstr ""
+
+#: classes.py:274
 #, python-format
 msgid "Unknown or obsolete event type: %s"
 msgstr "Άγνωστος ή ξεπερασμένος τύπος συμβάντος: %s"
+
+#: events.py:8
+#, fuzzy
+#| msgid "Event type"
+msgid "Events exported"
+msgstr "Τύπος συμβάντος"
 
 #: forms.py:18 forms.py:75
 msgid "Subscription"
@@ -73,27 +98,33 @@ msgstr "Όχι"
 msgid "Subscribed"
 msgstr "Εγγεγραμμένος"
 
-#: html_widgets.py:57
+#: html_widgets.py:22
 msgid "System"
 msgstr "Σύστημα"
 
-#: links.py:28
+#: links.py:30
 msgid "My events"
 msgstr "Τα συμβάντα μου"
 
-#: links.py:46 models.py:63 views.py:74
+#: links.py:34 links.py:49 links.py:56 views/export_views.py:57
+#, fuzzy
+#| msgid "My events"
+msgid "Export events"
+msgstr "Τα συμβάντα μου"
+
+#: links.py:61 models.py:63 views/subscription_views.py:56
 msgid "Event subscriptions"
 msgstr "Εγγραφές σε συμβάντα"
 
-#: links.py:51
+#: links.py:66
 msgid "Mark as seen"
 msgstr "Σημείωση ως αναγνωσμένο"
 
-#: links.py:54
+#: links.py:69
 msgid "Mark all as seen"
 msgstr "Σημείωση όλων ως αναγνωσμένα"
 
-#: links.py:60
+#: links.py:75
 msgid "Subscriptions"
 msgstr "Εγγραφές"
 
@@ -133,7 +164,7 @@ msgstr "Ανάγνωση"
 msgid "Notification"
 msgstr "Ενημέρωση"
 
-#: models.py:91 views.py:132
+#: models.py:91 views/notification_views.py:30
 msgid "Notifications"
 msgstr "Ενημερώσεις"
 
@@ -146,56 +177,125 @@ msgid "Object event subscriptions"
 msgstr "Εγγραφές στα συμβάντα αντικειμένου"
 
 #: permissions.py:8
+#, fuzzy
+#| msgid "Access the events of an object"
+msgid "Export the events of an object"
+msgstr "Προσπέλαση συμβάντων ενός αντικειμένου"
+
+#: permissions.py:11
 msgid "Access the events of an object"
 msgstr "Προσπέλαση συμβάντων ενός αντικειμένου"
 
-#: views.py:56
-#, python-format
-msgid "Error updating event subscription; %s"
-msgstr "Σφάλμα κατά την ενημέρωση της εγγραφής σε συμβάν. %s"
+#: queues.py:13
+#, fuzzy
+#| msgid "Stored event types"
+msgid "Export event querysets"
+msgstr "Αποθηκευμένοι τύποι συμβάντων"
 
-#: views.py:61
-msgid "Event subscriptions updated successfully"
-msgstr "Εγγραφές σε συμβάντα ανανεώθηκαν επιτυχώς"
+#: views/event_views.py:26
+#, fuzzy
+#| msgid ""
+#| "Events are actions that have been performed to this object or using this "
+#| "object."
+msgid "Events track actions that have been performed on, to, or with objects."
+msgstr ""
+"Τα συμβάντα είναι ενέργειες που έχουν εκτελεστεί σε αυτό το αντικείμενο ή "
+"χρησιμοποιούν αυτό το αντικείμενο."
 
-#: views.py:127
-msgid "Subscribe to global or object events to receive notifications."
-msgstr "Εγγραφή σε καθολικά συμβάντα ή συμβάντα αντικειμένου για την λήψη ειδοποιήσεων."
-
-#: views.py:130
-msgid "There are no notifications"
+#: views/event_views.py:29
+#, fuzzy
+#| msgid "There are no notifications"
+msgid "There are no events"
 msgstr "Δεν υπάρχουν ειδοποιήσεις"
 
-#: views.py:179
-msgid ""
-"Events are actions that have been performed to this object or using this "
-"object."
-msgstr "Τα συμβάντα είναι ενέργειες που έχουν εκτελεστεί σε αυτό το αντικείμενο ή χρησιμοποιούν αυτό το αντικείμενο."
-
-#: views.py:182
+#: views/event_views.py:44
 msgid "There are no events for this object"
 msgstr "Δεν υπάρχουν συμβάντα για αυτό το αντικείμενο"
 
-#: views.py:184
+#: views/event_views.py:46
 #, python-format
 msgid "Events for: %s"
 msgstr "Συμβάντα για: %s"
 
-#: views.py:224
-#, python-format
-msgid "Error updating object event subscription; %s"
-msgstr "Σφάλμα κατά την ενημέρωση της εγγραφής σε συμβάντα του αντικειμένου. %s"
+#: views/event_views.py:68
+#, fuzzy
+#| msgid "There are no events for this object"
+msgid "There are no events of this type"
+msgstr "Δεν υπάρχουν συμβάντα για αυτό το αντικείμενο"
 
-#: views.py:230
-msgid "Object event subscriptions updated successfully"
-msgstr "Εγγραφές συμβάντων αντικειμένου ανανεώθηκαν επιτυχώς"
-
-#: views.py:243
-#, python-format
-msgid "Event subscriptions for: %s"
-msgstr "Εγγραφές σε συμβάντα για: %s"
-
-#: views.py:295
+#: views/event_views.py:70 views/export_views.py:105
 #, python-format
 msgid "Events of type: %s"
 msgstr "Συμβάντα τύπου: %s"
+
+#: views/export_views.py:26
+msgid ""
+"The process will be performed in the background. The exported events will be "
+"available in the downloads area."
+msgstr ""
+
+#: views/export_views.py:45
+#, fuzzy
+#| msgid "Event subscriptions updated successfully"
+msgid "Event list export task queued successfully."
+msgstr "Εγγραφές σε συμβάντα ανανεώθηκαν επιτυχώς"
+
+#: views/export_views.py:76
+#, fuzzy, python-format
+#| msgid "Events for: %s"
+msgid "Export events for: %s"
+msgstr "Συμβάντα για: %s"
+
+#: views/notification_views.py:25
+msgid "Subscribe to global or object events to receive notifications."
+msgstr ""
+"Εγγραφή σε καθολικά συμβάντα ή συμβάντα αντικειμένου για την λήψη "
+"ειδοποιήσεων."
+
+#: views/notification_views.py:28
+msgid "There are no notifications"
+msgstr "Δεν υπάρχουν ειδοποιήσεις"
+
+#: views/notification_views.py:44
+msgid "Mark the selected notification as read?"
+msgstr ""
+
+#: views/notification_views.py:56
+#, fuzzy
+#| msgid "Notifications"
+msgid "Notification marked as read."
+msgstr "Ενημερώσεις"
+
+#: views/notification_views.py:67
+#, fuzzy
+#| msgid "There are no notifications"
+msgid "Mark all notification as read?"
+msgstr "Δεν υπάρχουν ειδοποιήσεις"
+
+#: views/notification_views.py:77
+msgid "All notifications marked as read."
+msgstr ""
+
+#: views/subscription_views.py:40
+#, python-format
+msgid "Error updating event subscription; %s"
+msgstr "Σφάλμα κατά την ενημέρωση της εγγραφής σε συμβάν. %s"
+
+#: views/subscription_views.py:45
+msgid "Event subscriptions updated successfully"
+msgstr "Εγγραφές σε συμβάντα ανανεώθηκαν επιτυχώς"
+
+#: views/subscription_views.py:114
+#, python-format
+msgid "Error updating object event subscription; %s"
+msgstr ""
+"Σφάλμα κατά την ενημέρωση της εγγραφής σε συμβάντα του αντικειμένου. %s"
+
+#: views/subscription_views.py:120
+msgid "Object event subscriptions updated successfully"
+msgstr "Εγγραφές συμβάντων αντικειμένου ανανεώθηκαν επιτυχώς"
+
+#: views/subscription_views.py:131
+#, python-format
+msgid "Event subscriptions for: %s"
+msgstr "Εγγραφές σε συμβάντα για: %s"

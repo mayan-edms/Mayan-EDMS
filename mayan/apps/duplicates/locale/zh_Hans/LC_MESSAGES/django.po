@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-30 04:39+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2020-10-26 13:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese Simplified (http://www.transifex.com/rosarior/mayan-"
@@ -20,11 +20,33 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:25 apps.py:39 links.py:14
+#: apps.py:30 apps.py:56 links.py:14
 msgid "Duplicates"
 msgstr "重复"
 
-#: links.py:18 models.py:20 models.py:30 views.py:75
+#: apps.py:62
+#, fuzzy
+#| msgid "Duplicated document"
+msgid "Duplicate backend"
+msgstr "重复的文件"
+
+#: classes.py:83
+msgid "Null backend"
+msgstr ""
+
+#: duplicate_backends.py:9
+#, fuzzy
+#| msgid "Edit document type: %s"
+msgid "Exact document file checksum"
+msgstr "编辑文档类型：%s"
+
+#: duplicate_backends.py:28
+#, fuzzy
+#| msgid "Edit document types"
+msgid "Exact document label"
+msgstr "编辑文档类型"
+
+#: links.py:18 models.py:40 views.py:77
 msgid "Duplicated documents"
 msgstr "重复的文件"
 
@@ -32,16 +54,32 @@ msgstr "重复的文件"
 msgid "Duplicated document scan"
 msgstr "重复的文件扫描"
 
-#: models.py:17
+#: models.py:23 models.py:33
+#, fuzzy
+#| msgid "Scan for duplicated documents?"
+msgid "Stored duplicate backend"
+msgstr "扫描重复的文件？"
+
+#: models.py:24
+#, fuzzy
+#| msgid "Scan for duplicated documents?"
+msgid "Stored duplicate backends"
+msgstr "扫描重复的文件？"
+
+#: models.py:37
 msgid "Document"
 msgstr "文档"
 
-#: models.py:23
-msgid "Added"
-msgstr "已添加"
+#: models.py:47
+#, fuzzy
+#| msgid "Duplicated document"
+msgid "Duplicated backend entry"
+msgstr "重复的文件"
 
-#: models.py:29
-msgid "Duplicated document"
+#: models.py:48
+#, fuzzy
+#| msgid "Duplicated documents"
+msgid "Duplicated backend entries"
 msgstr "重复的文件"
 
 #: queues.py:8
@@ -65,7 +103,7 @@ msgstr "此文档没有重复项"
 msgid "Duplicates for document: %s"
 msgstr "文件重复：%s"
 
-#: views.py:66
+#: views.py:68
 msgid ""
 "Duplicates are documents that are composed of the exact same file, down to "
 "the last byte. Files that have the same text or OCR but are not identical or "
@@ -74,17 +112,20 @@ msgstr ""
 "重复项是由完全相同的文件组成的文档，直到最后一个字节。具有相同文本或OCR但不一"
 "致或使用不同文件格式保存的文件不会显示为重复项。"
 
-#: views.py:73
+#: views.py:75
 msgid "There are no duplicated documents"
 msgstr "没有重复的文档"
 
-#: views.py:83
+#: views.py:85
 msgid "Scan for duplicated documents?"
 msgstr "扫描重复的文件？"
 
-#: views.py:90
+#: views.py:92
 msgid "Duplicated document scan queued successfully."
 msgstr "重复文档扫描成功排队。"
+
+#~ msgid "Added"
+#~ msgstr "已添加"
 
 #~ msgid "Documents"
 #~ msgstr "文档"
@@ -553,9 +594,6 @@ msgstr "重复文档扫描成功排队。"
 #~ msgid "Delete document types"
 #~ msgstr "删除文档类型"
 
-#~ msgid "Edit document types"
-#~ msgstr "编辑文档类型"
-
 #~ msgid "View document types"
 #~ msgstr "查看文档类型"
 
@@ -752,9 +790,6 @@ msgstr "重复文档扫描成功排队。"
 
 #~ msgid "Delete the document type: %s?"
 #~ msgstr "删除文档类型：%s？"
-
-#~ msgid "Edit document type: %s"
-#~ msgstr "编辑文档类型：%s"
 
 #~ msgid "Create quick label for document type: %s"
 #~ msgstr "为文档类型创建快速标签：%s"

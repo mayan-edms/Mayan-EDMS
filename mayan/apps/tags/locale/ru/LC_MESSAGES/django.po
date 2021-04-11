@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Ilya Pavlov <spirkaa@gmail.com>, 2021
@@ -11,23 +11,27 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2021-03-17 13:25+0000\n"
 "Last-Translator: Ilya Pavlov <spirkaa@gmail.com>\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/ru/)\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: apps.py:50 apps.py:118 apps.py:125 events.py:5 forms.py:15 links.py:23
-#: menus.py:14 models.py:38 permissions.py:5 search.py:9 search.py:11
-#: views.py:222 workflow_actions.py:18 workflow_actions.py:61
+#: apps.py:47 apps.py:120 apps.py:124 apps.py:128 apps.py:133 apps.py:137
+#: events.py:5 forms.py:15 links.py:27 menus.py:14 models.py:41
+#: permissions.py:5 search.py:13 views.py:183 workflow_actions.py:18
+#: workflow_actions.py:61
 msgid "Tags"
 msgstr "Метки"
 
-#: apps.py:138 models.py:32
+#: apps.py:151 models.py:35
 msgid "Documents"
 msgstr "Документы"
 
@@ -47,31 +51,31 @@ msgstr "Метка изменена"
 msgid "Tag removed from document"
 msgstr "Метка снята с документа"
 
-#: links.py:14 workflow_actions.py:68
-msgid "Remove tag"
-msgstr "Снять метки"
-
-#: links.py:18 links.py:35
+#: links.py:18 links.py:37
 msgid "Attach tags"
 msgstr "Прикрепить метки"
 
-#: links.py:29
+#: links.py:22 workflow_actions.py:68
+msgid "Remove tag"
+msgstr "Снять метки"
+
+#: links.py:32
 msgid "Remove tags"
 msgstr "Снять метки"
 
-#: links.py:42
+#: links.py:43
 msgid "Create new tag"
 msgstr "Создать метку"
 
-#: links.py:48 links.py:65
+#: links.py:48 links.py:64
 msgid "Delete"
 msgstr "Удалить"
 
-#: links.py:53
+#: links.py:52
 msgid "Edit"
 msgstr "Редактировать"
 
-#: links.py:61
+#: links.py:60
 msgid "All"
 msgstr "Все"
 
@@ -83,35 +87,35 @@ msgstr ""
 msgid "get_tags()"
 msgstr ""
 
-#: models.py:24
+#: models.py:27
 msgid "A short text used as the tag name."
 msgstr "Краткий текст с именем метки."
 
-#: models.py:25
+#: models.py:28
 msgid "Label"
 msgstr "Ярлык"
 
-#: models.py:28
+#: models.py:31
 msgid "The RGB color values for the tag."
 msgstr "Значения цвета RGB для метки."
 
-#: models.py:29
+#: models.py:32
 msgid "Color"
 msgstr "Цвет"
 
-#: models.py:37
+#: models.py:40
 msgid "Tag"
 msgstr "Метка"
 
-#: models.py:80
+#: models.py:83
 msgid "Preview"
 msgstr "Предварительный просмотр"
 
-#: models.py:109
+#: models.py:112
 msgid "Document tag"
 msgstr "Метка документа"
 
-#: models.py:110
+#: models.py:113 search.py:18 search.py:24 search.py:30 search.py:36
 msgid "Document tags"
 msgstr "Метки документов"
 
@@ -139,175 +143,196 @@ msgstr "Прикрепить метки к документам"
 msgid "Remove tags from documents"
 msgstr "Снять метки с документов"
 
-#: serializers.py:36
-msgid ""
-"Comma separated list of document primary keys to which this tag will be "
-"attached."
-msgstr ""
-
-#: serializers.py:85
-msgid ""
-"API URL pointing to a tag in relation to the document attached to it. This "
-"URL is different than the canonical tag URL."
-msgstr ""
-
-#: serializers.py:105
-msgid "Primary key of the tag to be added."
+#: serializers.py:33
+#, fuzzy
+#| msgid "Primary key of the tag to be added."
+msgid "Primary key of the tag to add to the document."
 msgstr "Первичный ключ добавляемой метки."
 
-#: views.py:36
-#, python-format
-msgid "Tag attach request performed on %(count)d document"
-msgstr ""
+#: serializers.py:41
+#, fuzzy
+#| msgid "Tags to remove from the document"
+msgid "Primary key of the tag to remove from the document."
+msgstr "Метки, снимаемые с документа"
 
-#: views.py:38
-#, python-format
-msgid "Tag attach request performed on %(count)d documents"
-msgstr ""
+#: views.py:36
+#, fuzzy, python-format
+#| msgid "Tag attached to document"
+msgid "Tags attached to document \"%(object)s\" successfully."
+msgstr "Метка прикреплена к документу"
+
+#: views.py:39
+#, fuzzy, python-format
+#| msgid "Attach tags to %(count)d document"
+#| msgid_plural "Attach tags to %(count)d documents"
+msgid "Tags attached to %(count)d document successfully."
+msgstr "Прикрепите теги к документу %(count)d"
+
+#: views.py:42
+#, fuzzy, python-format
+#| msgid "Attach tags to %(count)d document"
+#| msgid_plural "Attach tags to %(count)d documents"
+msgid "Tags attached to %(count)d documents successfully."
+msgstr "Прикрепите теги к документу %(count)d"
+
+#: views.py:44
+#, fuzzy, python-format
+#| msgid "Attach tags to document: %s"
+msgid "Attach tags to document: %(object)s"
+msgstr "Прикрепить метки к документу: %s"
 
 #: views.py:45
+#, fuzzy, python-format
+#| msgid "Attach tags to %(count)d document"
+#| msgid_plural "Attach tags to %(count)d documents"
+msgid "Attach tags to %(count)d document."
+msgstr "Прикрепите теги к документу %(count)d"
+
+#: views.py:46
+#, fuzzy, python-format
+#| msgid "Attach tags to %(count)d document"
+#| msgid_plural "Attach tags to %(count)d documents"
+msgid "Attach tags to %(count)d documents."
+msgstr "Прикрепите теги к документу %(count)d"
+
+#: views.py:50
 msgid "Attach"
 msgstr "Прикрепить"
 
-#: views.py:47
-#, python-format
-msgid "Attach tags to %(count)d document"
-msgid_plural "Attach tags to %(count)d documents"
-msgstr[0] "Прикрепите теги к документу %(count)d"
-msgstr[1] "Прикрепите теги к документам %(count)d"
-msgstr[2] "Прикрепите теги к документам %(count)d"
-msgstr[3] "Прикрепить метки к %(count)dдокументам"
-
-#: views.py:59
-#, python-format
-msgid "Attach tags to document: %s"
-msgstr "Прикрепить метки к документу: %s"
-
-#: views.py:68 wizard_steps.py:27
+#: views.py:64 wizard_steps.py:27
 msgid "Tags to be attached."
 msgstr "Метки, которые нужно прикрепить."
 
-#: views.py:110
-#, python-format
-msgid "Document \"%(document)s\" is already tagged as \"%(tag)s\""
-msgstr "\"%(document)s\" уже имеет метку \"%(tag)s\""
-
-#: views.py:120
-#, python-format
-msgid "Tag \"%(tag)s\" attached successfully to document \"%(document)s\"."
-msgstr "Метка \"%(tag)s\" присвоена \"%(document)s\"."
-
-#: views.py:129
+#: views.py:103
 msgid "Create tag"
 msgstr "Создать метку"
 
-#: views.py:144
-#, python-format
-msgid "Tag delete request performed on %(count)d tag"
-msgstr ""
+#: views.py:116
+#, fuzzy, python-format
+#| msgid "Error deleting tag \"%(tag)s\": %(error)s"
+msgid "Error deleting tag \"%(instance)s\"; %(exception)s"
+msgstr "Ошибка при удалении метки \"%(tag)s\": %(error)s"
 
-#: views.py:146
-#, python-format
-msgid "Tag delete request performed on %(count)d tags"
-msgstr ""
+#: views.py:121
+#, fuzzy, python-format
+#| msgid "Tag \"%s\" deleted successfully."
+msgid "Tag \"%(object)s\" deleted successfully."
+msgstr "Метка \"%s\" удалена."
 
-#: views.py:154
+#: views.py:122
+#, fuzzy, python-format
+#| msgid "Tag \"%s\" deleted successfully."
+msgid "%(count)d tag deleted successfully."
+msgstr "Метка \"%s\" удалена."
+
+#: views.py:123
+#, fuzzy, python-format
+#| msgid "Tag \"%s\" deleted successfully."
+msgid "%(count)d tags deleted successfully."
+msgstr "Метка \"%s\" удалена."
+
+#: views.py:124
+#, fuzzy, python-format
+#| msgid "Delete tag: %s?"
+msgid "Delete tag: %(object)s."
+msgstr "Удалить метку: %s?"
+
+#: views.py:125
+#, fuzzy, python-format
+#| msgid "Delete the selected tag?"
+#| msgid_plural "Delete the selected tags?"
+msgid "Delete the %(count)d selected tag."
+msgstr "Удалить выбранную метку?"
+
+#: views.py:126
+#, fuzzy, python-format
+#| msgid "Delete the selected tag?"
+#| msgid_plural "Delete the selected tags?"
+msgid "Delete the %(count)d selected tags."
+msgstr "Удалить выбранную метку?"
+
+#: views.py:131
 msgid "Will be removed from all documents."
 msgstr "Будет удалено из всех документов."
 
-#: views.py:156
-msgid "Delete the selected tag?"
-msgid_plural "Delete the selected tags?"
-msgstr[0] "Удалить выбранную метку?"
-msgstr[1] "Удалить выбранные метки?"
-msgstr[2] "Удалить выбранные метки?"
-msgstr[3] "Удалить выбранные метки?"
-
-#: views.py:166
-#, python-format
-msgid "Delete tag: %s?"
-msgstr "Удалить метку: %s?"
-
-#: views.py:177
-#, python-format
-msgid "Tag \"%s\" deleted successfully."
-msgstr "Метка \"%s\" удалена."
-
-#: views.py:182
-#, python-format
-msgid "Error deleting tag \"%(tag)s\": %(error)s"
-msgstr "Ошибка при удалении метки \"%(tag)s\": %(error)s"
-
-#: views.py:198
+#: views.py:157
 #, python-format
 msgid "Edit tag: %s"
 msgstr "Редактировать метку: %s"
 
-#: views.py:218
+#: views.py:179
 msgid ""
 "Tags are color coded properties that can be attached or removed from "
 "documents."
-msgstr "Метки являются цветными свойствами, которые могут быть прикреплены или сняты с документов."
+msgstr ""
+"Метки являются цветными свойствами, которые могут быть прикреплены или сняты "
+"с документов."
 
-#: views.py:221
+#: views.py:182
 msgid "No tags available"
 msgstr "Нет доступных меток"
 
-#: views.py:250
+#: views.py:211
 #, python-format
 msgid "Documents with the tag: %s"
 msgstr "Документы с меткой: %s"
 
-#: views.py:275
+#: views.py:236
 msgid "Document has no tags attached"
 msgstr "Документ не имеет меток"
 
-#: views.py:278
+#: views.py:239
 #, python-format
 msgid "Tags for document: %s"
 msgstr "Метки документа: %s"
 
-#: views.py:295
-#, python-format
-msgid "Tag remove request performed on %(count)d document"
-msgstr ""
+#: views.py:257
+#, fuzzy, python-format
+#| msgid "Tag removed from document"
+msgid "Tags removed from document \"%(object)s\" successfully."
+msgstr "Метка снята с документа"
 
-#: views.py:297
-#, python-format
-msgid "Tag remove request performed on %(count)d documents"
-msgstr ""
+#: views.py:260
+#, fuzzy, python-format
+#| msgid "Remove tags from %(count)d document"
+#| msgid_plural "Remove tags from %(count)d documents"
+msgid "Tags removed from %(count)d document successfully."
+msgstr "Снять метки с %(count)d документа"
 
-#: views.py:305
+#: views.py:263
+#, fuzzy, python-format
+#| msgid "Remove tags from %(count)d document"
+#| msgid_plural "Remove tags from %(count)d documents"
+msgid "Tags removed from %(count)d documents successfully."
+msgstr "Снять метки с %(count)d документа"
+
+#: views.py:265
+#, fuzzy, python-format
+#| msgid "Remove tags from document: %s"
+msgid "Remove tags from document: %(object)s"
+msgstr "Снять метки с документа: %s"
+
+#: views.py:266
+#, fuzzy, python-format
+#| msgid "Remove tags from %(count)d document"
+#| msgid_plural "Remove tags from %(count)d documents"
+msgid "Remove tags from %(count)d document."
+msgstr "Снять метки с %(count)d документа"
+
+#: views.py:267
+#, fuzzy, python-format
+#| msgid "Remove tags from %(count)d document"
+#| msgid_plural "Remove tags from %(count)d documents"
+msgid "Remove tags from %(count)d documents."
+msgstr "Снять метки с %(count)d документа"
+
+#: views.py:272
 msgid "Remove"
 msgstr "Удалить"
 
-#: views.py:307
-#, python-format
-msgid "Remove tags from %(count)d document"
-msgid_plural "Remove tags from %(count)d documents"
-msgstr[0] "Снять метки с %(count)d документа"
-msgstr[1] "Снять метки с %(count)d документов"
-msgstr[2] "Снять метки с %(count)d документов"
-msgstr[3] "Снять метки с %(count)d документов"
-
-#: views.py:319
-#, python-format
-msgid "Remove tags from document: %s"
-msgstr "Снять метки с документа: %s"
-
-#: views.py:328
+#: views.py:286
 msgid "Tags to be removed."
 msgstr "Метки, которые нужно снять."
-
-#: views.py:368
-#, python-format
-msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s"
-msgstr "Документ \"%(document)s\" не помечен как \"%(tag)s\""
-
-#: views.py:377
-#, python-format
-msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
-msgstr "Метка \"%(tag)s\" снята с документа \"%(document)s\"."
 
 #: wizard_steps.py:15
 msgid "Select tags"
@@ -324,3 +349,15 @@ msgstr "Прикрепить метки"
 #: workflow_actions.py:63
 msgid "Tags to remove from the document"
 msgstr "Метки, снимаемые с документа"
+
+#~ msgid "Document \"%(document)s\" is already tagged as \"%(tag)s\""
+#~ msgstr "\"%(document)s\" уже имеет метку \"%(tag)s\""
+
+#~ msgid "Tag \"%(tag)s\" attached successfully to document \"%(document)s\"."
+#~ msgstr "Метка \"%(tag)s\" присвоена \"%(document)s\"."
+
+#~ msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s"
+#~ msgstr "Документ \"%(document)s\" не помечен как \"%(tag)s\""
+
+#~ msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
+#~ msgstr "Метка \"%(tag)s\" снята с документа \"%(document)s\"."

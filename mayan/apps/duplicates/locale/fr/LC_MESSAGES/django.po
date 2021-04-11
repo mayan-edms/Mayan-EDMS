@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-30 04:39+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2020-10-26 13:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -25,11 +25,33 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:25 apps.py:39 links.py:14
+#: apps.py:30 apps.py:56 links.py:14
 msgid "Duplicates"
 msgstr "Doublons"
 
-#: links.py:18 models.py:20 models.py:30 views.py:75
+#: apps.py:62
+#, fuzzy
+#| msgid "Duplicated document"
+msgid "Duplicate backend"
+msgstr "Document en double"
+
+#: classes.py:83
+msgid "Null backend"
+msgstr ""
+
+#: duplicate_backends.py:9
+#, fuzzy
+#| msgid "Edit document type: %s"
+msgid "Exact document file checksum"
+msgstr "Modifier le type de document : %s"
+
+#: duplicate_backends.py:28
+#, fuzzy
+#| msgid "Edit document types"
+msgid "Exact document label"
+msgstr "Modifier les types de documents"
+
+#: links.py:18 models.py:40 views.py:77
 msgid "Duplicated documents"
 msgstr "Documents doublons"
 
@@ -37,17 +59,33 @@ msgstr "Documents doublons"
 msgid "Duplicated document scan"
 msgstr "Numérisations de documents doublons"
 
-#: models.py:17
+#: models.py:23 models.py:33
+#, fuzzy
+#| msgid "Scan for duplicated documents?"
+msgid "Stored duplicate backend"
+msgstr "Recherche de documents dupliqués ?"
+
+#: models.py:24
+#, fuzzy
+#| msgid "Scan for duplicated documents?"
+msgid "Stored duplicate backends"
+msgstr "Recherche de documents dupliqués ?"
+
+#: models.py:37
 msgid "Document"
 msgstr "Document"
 
-#: models.py:23
-msgid "Added"
-msgstr "Ajouté"
-
-#: models.py:29
-msgid "Duplicated document"
+#: models.py:47
+#, fuzzy
+#| msgid "Duplicated document"
+msgid "Duplicated backend entry"
 msgstr "Document en double"
+
+#: models.py:48
+#, fuzzy
+#| msgid "Duplicated documents"
+msgid "Duplicated backend entries"
+msgstr "Documents doublons"
 
 #: queues.py:8
 msgid "Clean empty duplicate lists"
@@ -71,7 +109,7 @@ msgstr "Il n'y a pas de doublons pour ce document"
 msgid "Duplicates for document: %s"
 msgstr "Doublons pour le document : %s"
 
-#: views.py:66
+#: views.py:68
 msgid ""
 "Duplicates are documents that are composed of the exact same file, down to "
 "the last byte. Files that have the same text or OCR but are not identical or "
@@ -82,17 +120,20 @@ msgstr ""
 "sont pas identiques ou qui ont été enregistrés dans un format de fichier "
 "différent ne seront pas affichés comme doublons."
 
-#: views.py:73
+#: views.py:75
 msgid "There are no duplicated documents"
 msgstr "Il n'y a pas de documents en double"
 
-#: views.py:83
+#: views.py:85
 msgid "Scan for duplicated documents?"
 msgstr "Recherche de documents dupliqués ?"
 
-#: views.py:90
+#: views.py:92
 msgid "Duplicated document scan queued successfully."
 msgstr "Recherche de documents dupliqués effectuée avec succès."
+
+#~ msgid "Added"
+#~ msgstr "Ajouté"
 
 #~ msgid "Documents"
 #~ msgstr "Documents"
@@ -628,9 +669,6 @@ msgstr "Recherche de documents dupliqués effectuée avec succès."
 #~ msgid "Delete document types"
 #~ msgstr "Supprimer les types de documents"
 
-#~ msgid "Edit document types"
-#~ msgstr "Modifier les types de documents"
-
 #~ msgid "View document types"
 #~ msgstr "Afficher les types de documents"
 
@@ -912,9 +950,6 @@ msgstr "Recherche de documents dupliqués effectuée avec succès."
 
 #~ msgid "Delete the document type: %s?"
 #~ msgstr "Êtes-vous sûr de vouloir supprimer le type de document : %s ?"
-
-#~ msgid "Edit document type: %s"
-#~ msgstr "Modifier le type de document : %s"
 
 #~ msgid "Deletion policies for document type: %s"
 #~ msgstr "Règles de suppression pour le type de document: %s"

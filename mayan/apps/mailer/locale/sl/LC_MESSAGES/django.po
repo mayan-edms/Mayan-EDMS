@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Jože Detečnik <joze.detecnik@3tav.si>, 2020
@@ -9,17 +9,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2020-12-25 11:54+0000\n"
 "Last-Translator: Jože Detečnik <joze.detecnik@3tav.si>\n"
-"Language-Team: Slovenian (http://www.transifex.com/rosarior/mayan-edms/language/sl/)\n"
+"Language-Team: Slovenian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/sl/)\n"
+"Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sl\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+"%100==4 ? 2 : 3);\n"
 
-#: apps.py:40
+#: apps.py:37
 msgid "Mailer"
 msgstr "Mailer"
 
@@ -37,25 +39,28 @@ msgstr "Email poslan"
 
 #: forms.py:60 forms.py:120
 msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma"
-" or semicolon."
-msgstr "E-poštni naslov prejemnika. Lahko je več naslovov, ločenih z vejico ali podpičjem."
+"Email address of the recipient. Can be multiple addresses separated by comma "
+"or semicolon."
+msgstr ""
+"E-poštni naslov prejemnika. Lahko je več naslovov, ločenih z vejico ali "
+"podpičjem."
 
 #: forms.py:62 forms.py:122
 msgid "Email address"
 msgstr "Email naslov"
 
-#: forms.py:64 workflow_actions.py:36
+#: forms.py:64 workflow_actions.py:72
 msgid "Subject"
 msgstr "Predmet"
 
-#: forms.py:66 workflow_actions.py:45
+#: forms.py:66 workflow_actions.py:81
 msgid "Body"
 msgstr "Telo"
 
 #: forms.py:70
 msgid "The email profile that will be used to send this email."
-msgstr "E-poštni profil, ki bo uporabljen za pošiljanje tega e-poštnega sporočila."
+msgstr ""
+"E-poštni profil, ki bo uporabljen za pošiljanje tega e-poštnega sporočila."
 
 #: forms.py:71 models.py:55 views.py:212 workflow_actions.py:18
 msgid "Mailing profile"
@@ -69,31 +74,31 @@ msgstr "Gonilnik za uporabo pri pošiljanju e-pošte."
 msgid "Backend"
 msgstr "Backend"
 
-#: links.py:16 links.py:26
+#: links.py:20 links.py:28
 msgid "Email document"
 msgstr "E-poštni dokument"
 
-#: links.py:22 links.py:30
+#: links.py:25 links.py:32
 msgid "Email link"
 msgstr "E-poštna povezava"
 
-#: links.py:35
+#: links.py:38
 msgid "Create mailing profile"
 msgstr "Ustvari poštni profil"
 
-#: links.py:41
+#: links.py:44
 msgid "Delete"
 msgstr "Izbriši"
 
-#: links.py:47
+#: links.py:48
 msgid "Edit"
 msgstr "Uredi"
 
-#: links.py:52
+#: links.py:54
 msgid "Mailing profiles list"
 msgstr "Seznam poštnih profilov"
 
-#: links.py:57 models.py:56
+#: links.py:58 models.py:56
 msgid "Mailing profiles"
 msgstr "Poštni profili"
 
@@ -108,7 +113,9 @@ msgid ""
 "\n"
 " --------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr "Temu e-poštnemu sporočilu je priložen dokument: {{dokument}} -------- To e-poštno sporočilo je bilo poslano iz %(project_title)s (%(project_website)s)"
+msgstr ""
+"Temu e-poštnemu sporočilu je priložen dokument: {{dokument}} -------- To e-"
+"poštno sporočilo je bilo poslano iz %(project_title)s (%(project_website)s)"
 
 #: literals.py:9
 msgid "Document: {{ document }}"
@@ -121,7 +128,10 @@ msgid ""
 "\n"
 "--------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr "Za dostop do tega dokumenta kliknite naslednjo povezavo: {{link}} -------- To e-poštno sporočilo je bilo poslano iz %(project_title)s (%(project_website)s)"
+msgstr ""
+"Za dostop do tega dokumenta kliknite naslednjo povezavo: {{link}} -------- "
+"To e-poštno sporočilo je bilo poslano iz %(project_title)s "
+"(%(project_website)s)"
 
 #: literals.py:15
 msgid "Link for document: {{ document }}"
@@ -133,9 +143,11 @@ msgstr "Od"
 
 #: mailers.py:22 mailers.py:111
 msgid ""
-"The sender's address. Some system will refuse to send messages if this value"
-" is not set."
-msgstr "Naslov pošiljatelja. Nekateri sistem zavrne pošiljanje sporočil, če ta vrednost ni nastavljena."
+"The sender's address. Some system will refuse to send messages if this value "
+"is not set."
+msgstr ""
+"Naslov pošiljatelja. Nekateri sistem zavrne pošiljanje sporočil, če ta "
+"vrednost ni nastavljena."
 
 #: mailers.py:28
 msgid "Host"
@@ -161,7 +173,9 @@ msgstr "Uporabite TLS"
 msgid ""
 "Whether to use a TLS (secure) connection when talking to the SMTP server. "
 "This is used for explicit TLS connections, generally on port 587."
-msgstr "Ali uporabiti povezavo TLS (varno) med pogovorom s strežnikom SMTP. To se uporablja za eksplicitne povezave TLS, običajno na vratih 587."
+msgstr ""
+"Ali uporabiti povezavo TLS (varno) med pogovorom s strežnikom SMTP. To se "
+"uporablja za eksplicitne povezave TLS, običajno na vratih 587."
 
 #: mailers.py:48
 msgid "Use SSL"
@@ -173,9 +187,15 @@ msgid ""
 "server. In most email documentation this type of TLS connection is referred "
 "to as SSL. It is generally used on port 465. If you are experiencing "
 "problems, see the explicit TLS setting \"Use TLS\". Note that \"Use TLS\" "
-"and \"Use SSL\" are mutually exclusive, so only set one of those settings to"
-" True."
-msgstr "Ali uporabiti implicitno povezavo TLS (varno) med pogovorom s strežnikom SMTP. V večini e-poštne dokumentacije se ta vrsta povezave TLS imenuje SSL. Običajno se uporablja na vratih 465. Če imate težave, glejte izrecno nastavitev TLS &quot;Uporaba TLS&quot;. Upoštevajte, da se &quot;Uporabi TLS&quot; in &quot;Uporabi SSL&quot; medsebojno izključujeta, zato nastavite samo eno od teh nastavitev na True."
+"and \"Use SSL\" are mutually exclusive, so only set one of those settings to "
+"True."
+msgstr ""
+"Ali uporabiti implicitno povezavo TLS (varno) med pogovorom s strežnikom "
+"SMTP. V večini e-poštne dokumentacije se ta vrsta povezave TLS imenuje SSL. "
+"Običajno se uporablja na vratih 465. Če imate težave, glejte izrecno "
+"nastavitev TLS &quot;Uporaba TLS&quot;. Upoštevajte, da se &quot;Uporabi "
+"TLS&quot; in &quot;Uporabi SSL&quot; medsebojno izključujeta, zato nastavite "
+"samo eno od teh nastavitev na True."
 
 #: mailers.py:60
 msgid "Username"
@@ -185,7 +205,9 @@ msgstr "Uporabniško ime"
 msgid ""
 "Username to use for the SMTP server. If empty, authentication won't "
 "attempted."
-msgstr "Uporabniško ime za strežnik SMTP. Če je prazno, preverjanje pristnosti ne bo izvedeno."
+msgstr ""
+"Uporabniško ime za strežnik SMTP. Če je prazno, preverjanje pristnosti ne bo "
+"izvedeno."
 
 #: mailers.py:69
 msgid "Password"
@@ -194,9 +216,12 @@ msgstr "Geslo"
 #: mailers.py:72
 msgid ""
 "Password to use for the SMTP server. This setting is used in conjunction "
-"with the username when authenticating to the SMTP server. If either of these"
-" settings is empty, authentication won't be attempted."
-msgstr "Geslo za strežnik SMTP. Ta nastavitev se uporablja skupaj z uporabniškim imenom pri preverjanju pristnosti na strežniku SMTP. Če je katera od teh nastavitev prazna, preverjanje pristnosti ne bo izvedeno."
+"with the username when authenticating to the SMTP server. If either of these "
+"settings is empty, authentication won't be attempted."
+msgstr ""
+"Geslo za strežnik SMTP. Ta nastavitev se uporablja skupaj z uporabniškim "
+"imenom pri preverjanju pristnosti na strežniku SMTP. Če je katera od teh "
+"nastavitev prazna, preverjanje pristnosti ne bo izvedeno."
 
 #: mailers.py:81
 msgid "Django SMTP backend"
@@ -222,7 +247,9 @@ msgstr "Oznaka"
 msgid ""
 "If default, this mailing profile will be pre-selected on the document "
 "mailing form."
-msgstr "Če je privzeto, bo ta poštni profil vnaprej izbran na poštnem obrazcu za dokument."
+msgstr ""
+"Če je privzeto, bo ta poštni profil vnaprej izbran na poštnem obrazcu za "
+"dokument."
 
 #: models.py:39
 msgid "Default"
@@ -248,7 +275,7 @@ msgstr "Backend podatki"
 msgid "The backend class for this entry."
 msgstr "Razred za ta vnos."
 
-#: models.py:209
+#: models.py:232
 msgid "Test email from Mayan EDMS"
 msgstr "Preizkusite e-pošto Mayan EDMS"
 
@@ -290,15 +317,20 @@ msgstr "Predloga za vrstico z zadevo e-poštnega obrazca dokumenta."
 
 #: settings.py:21
 msgid "Template for the document email form body text. Can include HTML."
-msgstr "Predloga za osnovno besedilo e-poštnega obrazca dokumenta. Lahko vključuje HTML."
+msgstr ""
+"Predloga za osnovno besedilo e-poštnega obrazca dokumenta. Lahko vključuje "
+"HTML."
 
 #: settings.py:27
 msgid "Template for the document link email form subject line."
-msgstr "Predloga za vrstico z naslovom e-poštnega obrazca za povezavo do dokumenta."
+msgstr ""
+"Predloga za vrstico z naslovom e-poštnega obrazca za povezavo do dokumenta."
 
 #: settings.py:33
 msgid "Template for the document link email form body text. Can include HTML."
-msgstr "Predloga za osnovno besedilo e-poštnega obrazca povezave do dokumenta. Lahko vključuje HTML."
+msgstr ""
+"Predloga za osnovno besedilo e-poštnega obrazca povezave do dokumenta. Lahko "
+"vključuje HTML."
 
 #: validators.py:12
 #, python-format
@@ -352,7 +384,9 @@ msgstr "Uredi poštni profil: %s"
 msgid ""
 "Mailing profiles are email configurations. Mailing profiles allow sending "
 "documents as attachments or as links via email."
-msgstr "Poštni profili so e-poštne konfiguracije. Poštni profili omogočajo pošiljanje dokumentov kot priponk ali kot povezav po e-pošti."
+msgstr ""
+"Poštni profili so e-poštne konfiguracije. Poštni profili omogočajo "
+"pošiljanje dokumentov kot priponk ali kot povezav po e-pošti."
 
 #: views.py:211
 msgid "No mailing profiles available"
@@ -377,19 +411,71 @@ msgstr "Prejemnik"
 
 #: workflow_actions.py:28
 msgid ""
-"Email address of the recipient. Can be multiple addresses separated by comma"
-" or semicolon. A template can be used to reference properties of the "
-"document."
-msgstr "E-poštni naslov prejemnika. Lahko je več naslovov, ločenih z vejico ali podpičjem. Predloga se lahko uporablja za sklicevanje na lastnosti dokumenta."
+"Email address of the recipient. Can be multiple addresses separated by comma "
+"or semicolon. A template can be used to reference properties of the document."
+msgstr ""
+"E-poštni naslov prejemnika. Lahko je več naslovov, ločenih z vejico ali "
+"podpičjem. Predloga se lahko uporablja za sklicevanje na lastnosti dokumenta."
 
-#: workflow_actions.py:39
+#: workflow_actions.py:36
+msgid "CC"
+msgstr ""
+
+#: workflow_actions.py:39 workflow_actions.py:51
+#, fuzzy
+#| msgid ""
+#| "Email address of the recipient. Can be multiple addresses separated by "
+#| "comma or semicolon. A template can be used to reference properties of the "
+#| "document."
+msgid ""
+"Address used in the \"Bcc\" header when sending the email. Can be multiple "
+"addresses separated by comma or semicolon. A template can be used to "
+"reference properties of the document."
+msgstr ""
+"E-poštni naslov prejemnika. Lahko je več naslovov, ločenih z vejico ali "
+"podpičjem. Predloga se lahko uporablja za sklicevanje na lastnosti dokumenta."
+
+#: workflow_actions.py:48
+msgid "BCC"
+msgstr ""
+
+#: workflow_actions.py:60
+msgid "Reply to"
+msgstr ""
+
+#: workflow_actions.py:63
+#, fuzzy
+#| msgid ""
+#| "Email address of the recipient. Can be multiple addresses separated by "
+#| "comma or semicolon. A template can be used to reference properties of the "
+#| "document."
+msgid ""
+"Address used in the \"Reply-To\" header when sending the email. Can be "
+"multiple addresses separated by comma or semicolon. A template can be used "
+"to reference properties of the document."
+msgstr ""
+"E-poštni naslov prejemnika. Lahko je več naslovov, ločenih z vejico ali "
+"podpičjem. Predloga se lahko uporablja za sklicevanje na lastnosti dokumenta."
+
+#: workflow_actions.py:75
 msgid "Subject of the email. Can be a string or a template."
 msgstr "Predmet e-pošte. Lahko je niz ali predloga."
 
-#: workflow_actions.py:48
+#: workflow_actions.py:84
 msgid "Body of the email to send. Can be a string or a template."
-msgstr "Telo e-poštnega sporočila, ki ga želite poslati. Lahko je niz ali predloga."
+msgstr ""
+"Telo e-poštnega sporočila, ki ga želite poslati. Lahko je niz ali predloga."
 
-#: workflow_actions.py:55
+#: workflow_actions.py:90
+msgid "Attachment"
+msgstr ""
+
+#: workflow_actions.py:93
+#, fuzzy
+#| msgid "Send document via email"
+msgid "Attach the document to the mail."
+msgstr "Pošljite dokument po e-pošti"
+
+#: workflow_actions.py:102
 msgid "Send email"
 msgstr "Pošlji sporočilo"

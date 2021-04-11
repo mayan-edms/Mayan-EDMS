@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Lyudmil Antonov <lantonov.here@gmail.com>, 2019-2020
@@ -10,124 +10,119 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2020-10-02 19:24+0000\n"
 "Last-Translator: Lyudmil Antonov <lantonov.here@gmail.com>\n"
-"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
+"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/bg/)\n"
+"Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:131 permissions.py:5 settings.py:13
+#: apps.py:125 permissions.py:5 settings.py:15
 msgid "Common"
 msgstr "Общи"
 
-#: classes.py:456
+#: classes.py:408
 msgid "Model properties"
 msgstr "Свойства на модела"
 
-#: classes.py:461
+#: classes.py:413
 msgid "Model fields"
 msgstr "Полета на модела"
 
-#: classes.py:504
+#: classes.py:456
 msgid "Model related fields"
 msgstr "Свързани с модела полета"
 
-#: classes.py:509
+#: classes.py:461
 msgid "Model reverse fields"
 msgstr "Модел на обратни полета"
 
-#: dependencies.py:195
+#: dependencies.py:168
 msgid "Used to allow offline translation of the code text strings."
 msgstr "Използва се за разрешаване на офлайн превод на текстови низове в код."
 
-#: dependencies.py:204
+#: dependencies.py:177
 msgid "Provides style checking."
 msgstr "Осигурява проверка на стила."
 
-#: dependencies.py:209
+#: dependencies.py:182
 msgid "Command line environment with autocompletion."
 msgstr "Команден ред с автоматично довършване."
 
-#: dependencies.py:214
+#: dependencies.py:187
 msgid "Checks proper formatting of the README file."
 msgstr "Проверява правилното форматиране на файла README."
 
-#: links.py:31
+#: links.py:30
 msgid "About this"
 msgstr "Относно това"
 
-#: links.py:34
+#: links.py:33
 msgid "Get the book"
 msgstr "Вземете книгата"
 
-#: links.py:39
-msgid "Locale profile"
-msgstr "Локален профил"
-
-#: links.py:44
-msgid "Edit locale profile"
-msgstr "Редактиране на локален профил"
-
-#: links.py:49
+#: links.py:38
 msgid "Documentation"
 msgstr "Документация"
 
-#: links.py:52
+#: links.py:41
 msgid "Forum"
 msgstr "Форум"
 
-#: links.py:56 views.py:106
+#: links.py:45 views.py:48
 msgid "License"
 msgstr "Лиценз"
 
-#: links.py:61
+#: links.py:50
 msgid "Copy"
 msgstr "Копие"
 
-#: links.py:64
+#: links.py:53
 msgid "Setup"
 msgstr "Настройка"
 
-#: links.py:67
+#: links.py:56
 msgid "Source code"
 msgstr "Изходен код"
 
-#: links.py:71
+#: links.py:60
 msgid "Online store"
 msgstr "Онлайн магазин"
 
-#: links.py:75
+#: links.py:64
 msgid "Get support"
 msgstr "Поддръжка"
 
-#: links.py:79 queues.py:9 views.py:175
+#: links.py:68 queues.py:9 views.py:122
 msgid "Tools"
 msgstr "Инструменти"
 
-#: literals.py:18
+#: literals.py:20
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
 msgstr "Тази функция е оттеглена и ще бъде премахната в бъдеща версия."
 
-#: literals.py:21
+#: literals.py:23
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
-msgstr "Вашата база данни е настроена да използва SQLite. SQLite трябва да се използва само за разработка и тестване, а не за производство."
+msgstr ""
+"Вашата база данни е настроена да използва SQLite. SQLite трябва да се "
+"използва само за разработка и тестване, а не за производство."
 
-#: literals.py:30
+#: literals.py:32
 msgid "Days"
 msgstr "Дни"
 
-#: literals.py:31
+#: literals.py:33
 msgid "Hours"
 msgstr "Часове"
 
-#: literals.py:32
+#: literals.py:34
 msgid "Minutes"
 msgstr "Минути"
 
@@ -151,25 +146,13 @@ msgstr "Свързани"
 msgid "Secondary"
 msgstr "Допълнително"
 
-#: menus.py:21 models.py:25
+#: menus.py:18
+msgid "Return"
+msgstr ""
+
+#: menus.py:22
 msgid "User"
 msgstr "Потребител"
-
-#: models.py:29
-msgid "Timezone"
-msgstr "Часова зона"
-
-#: models.py:32
-msgid "Language"
-msgstr "Език"
-
-#: models.py:38
-msgid "User locale profile"
-msgstr "Профил на местоположението на потребителя"
-
-#: models.py:39
-msgid "User locale profiles"
-msgstr "Профили на местоположението на потребителя"
 
 #: permissions.py:8
 msgid "Copy object"
@@ -179,108 +162,170 @@ msgstr "Копиране на обект"
 msgid "Default"
 msgstr "По подразбиране"
 
-#: settings.py:19
+#: settings.py:22
 msgid ""
-"Time to delay background tasks that depend on a database commit to "
-"propagate."
-msgstr "Време за забавяне на фоновите задачи, които зависят от запис в базата данни, за да се изпълнят."
+"In list mode, show the \"list facet\" menu options as a dropdown menu "
+"instead of individual buttons."
+msgstr ""
 
-#: settings.py:26
+#: settings.py:30
+msgid ""
+"In list mode, show the \"object\" menu options as a dropdown menu instead of "
+"individual buttons."
+msgstr ""
+
+#: settings.py:37
+msgid ""
+"Time to delay background tasks that depend on a database commit to propagate."
+msgstr ""
+"Време за забавяне на фоновите задачи, които зависят от запис в базата данни, "
+"за да се изпълнят."
+
+#: settings.py:44
+#, fuzzy
+#| msgid ""
+#| "A list of strings designating all applications that are to be removed "
+#| "from the list normally installed by Mayan EDMS. Each string should be a "
+#| "dotted Python path to: an application configuration class (preferred), or "
+#| "a package containing an application."
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package"
-" containing an application."
-msgstr "Списък с низове, обозначаващи всички приложения, които трябва да бъдат премахнати от списъка, обикновено инсталиран от Mayan EDMS. Всеки низ трябва да бъде подчертан Python път към: клас на конфигурация на приложението (предпочитан) или пакет, съдържащ приложение."
+"Python path to: an application configuration class (preferred), or a package "
+"containing an application. Example: ['app_1', 'app_2']"
+msgstr ""
+"Списък с низове, обозначаващи всички приложения, които трябва да бъдат "
+"премахнати от списъка, обикновено инсталиран от Mayan EDMS. Всеки низ трябва "
+"да бъде подчертан Python път към: клас на конфигурация на приложението "
+"(предпочитан) или пакет, съдържащ приложение."
 
-#: settings.py:36
+#: settings.py:54
+#, fuzzy
+#| msgid ""
+#| "A list of strings designating all applications that are installed beyond "
+#| "those normally installed by Mayan EDMS. Each string should be a dotted "
+#| "Python path to: an application configuration class (preferred), or a "
+#| "package containing an application."
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package"
-" containing an application."
-msgstr "Списък на низове, обозначаващи всички приложения, които са инсталирани извън тези, които обикновено се инсталират от Mayan EDMS. Всеки низ трябва да бъде подчертан Python път към: клас на конфигурация на приложението (предпочитан) или пакет, съдържащ приложение."
+"Python path to: an application configuration class (preferred), or a package "
+"containing an application. Example: ['app_1', 'app_2']"
+msgstr ""
+"Списък на низове, обозначаващи всички приложения, които са инсталирани извън "
+"тези, които обикновено се инсталират от Mayan EDMS. Всеки низ трябва да бъде "
+"подчертан Python път към: клас на конфигурация на приложението (предпочитан) "
+"или пакет, съдържащ приложение."
 
-#: settings.py:45
+#: settings.py:64
 msgid ""
-"Name of the view attached to the brand anchor in the main menu. This is also"
-" the view to which users will be redirected after log in."
-msgstr "Име на изгледа, прикрепен към котвата на марката в главното меню. Това е и изгледът, към който потребителите ще бъдат пренасочени след влизане."
+"Name of the view attached to the brand anchor in the main menu. This is also "
+"the view to which users will be redirected after log in."
+msgstr ""
+"Име на изгледа, прикрепен към котвата на марката в главното меню. Това е и "
+"изгледът, към който потребителите ще бъдат пренасочени след влизане."
 
-#: settings.py:53
+#: settings.py:72
 msgid "Name to be displayed in the main menu."
 msgstr "Име, което се показва в главното меню."
 
-#: settings.py:59
+#: settings.py:78
 msgid "URL of the installation or homepage of the project."
 msgstr "URL адрес на инсталацията или началната страница на проекта."
 
-#: settings.py:64
+#: settings.py:83
 msgid "Base URL path to use for all views."
 msgstr "Основен път за URL адрес, който да се използва за всички изгледи."
 
-#: validators.py:44
+#: templates/common/app/viewport.html:9
+msgid "Warning"
+msgstr ""
+
+#: templates/common/app/viewport.html:21
+msgid "Click here to fix this."
+msgstr ""
+
+#: validators.py:41
 msgid "Enter a valid JSON value."
 msgstr "Въведете валидна JSON стойност."
 
-#: validators.py:68
+#: validators.py:65
 msgid "Enter a valid YAML value."
 msgstr "Въведете валидна YAML стойност."
 
-#: validators.py:84
+#: validators.py:81
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
-msgstr "Въведете валидно „вътрешно име“, състоящо се от букви, цифри и подчертавания."
+msgstr ""
+"Въведете валидно „вътрешно име“, състоящо се от букви, цифри и подчертавания."
 
-#: views.py:29
+#: views.py:22
 msgid "About"
 msgstr "Относно"
 
-#: views.py:42
-msgid "Current user locale profile details"
-msgstr "Данни от текущия локален потребителски профил "
-
-#: views.py:48
-msgid "Edit current user locale profile details"
-msgstr "Редактиране на данни за текущия локален потребителски профил"
-
-#: views.py:97
+#: views.py:39
 msgid "Dashboard"
 msgstr "Контролно табло"
 
-#: views.py:118
+#: views.py:62
 #, python-format
 msgid "Fields to be copied: %s"
 msgstr "Полета за копиране: %s"
 
-#: views.py:127
+#: views.py:72
 #, python-format
 msgid "Make a copy of %(object_name)s \"%(object)s\"?"
 msgstr "Да направя ли копие на %(object_name)s &quot;%(object)s&quot;?"
 
-#: views.py:136
+#: views.py:83
 msgid "Object copied successfully."
 msgstr "Обектът е копиран успешно."
 
-#: views.py:153
+#: views.py:100
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
-msgstr "Липса на резултати тук означава, че нямате необходимите разрешения за изпълнение на административна задача."
+msgstr ""
+"Липса на резултати тук означава, че нямате необходимите разрешения за "
+"изпълнение на административна задача."
 
-#: views.py:156
+#: views.py:103
 msgid "No setup options available."
 msgstr "Няма опции за настройка."
 
-#: views.py:160
+#: views.py:107
 msgid "Setup items"
 msgstr "Елементи за настройка"
 
-#: views.py:162
+#: views.py:109
 msgid "Here you can configure all aspects of the system."
 msgstr "Тук можете да конфигурирате всички аспекти на системата."
 
-#: views.py:177
+#: views.py:124
 msgid "These modules are used to do system maintenance."
 msgstr "Тези модули се използват за поддръжка на системата."
+
+#~ msgid "Locale profile"
+#~ msgstr "Локален профил"
+
+#~ msgid "Edit locale profile"
+#~ msgstr "Редактиране на локален профил"
+
+#~ msgid "Timezone"
+#~ msgstr "Часова зона"
+
+#~ msgid "Language"
+#~ msgstr "Език"
+
+#~ msgid "User locale profile"
+#~ msgstr "Профил на местоположението на потребителя"
+
+#~ msgid "User locale profiles"
+#~ msgstr "Профили на местоположението на потребителя"
+
+#~ msgid "Current user locale profile details"
+#~ msgstr "Данни от текущия локален потребителски профил "
+
+#~ msgid "Edit current user locale profile details"
+#~ msgstr "Редактиране на данни за текущия локален потребителски профил"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Badea Gabriel <gcbadea@gmail.com>, 2013
@@ -10,45 +10,47 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2020-04-21 07:43+0000\n"
 "Last-Translator: Harald Ersch\n"
-"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
+"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/ro_RO/)\n"
+"Language: ro_RO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ro_RO\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
+"2:1));\n"
 
-#: apps.py:30
+#: apps.py:33
 msgid "Django GPG"
 msgstr "Django GPG"
 
-#: apps.py:46 apps.py:52 forms.py:15
+#: apps.py:56 apps.py:62 forms.py:15
 msgid "Key ID"
 msgstr "ID cheie"
 
-#: apps.py:56 forms.py:32 models.py:53
+#: apps.py:66 forms.py:32 models.py:59
 msgid "Type"
 msgstr "Tip"
 
-#: apps.py:60 forms.py:21 models.py:34
+#: apps.py:70 forms.py:21 models.py:40
 msgid "Creation date"
 msgstr "Data creării"
 
-#: apps.py:64
+#: apps.py:74
 msgid "No expiration"
 msgstr "Fără dată de expirare"
 
-#: apps.py:65 forms.py:25 models.py:38
+#: apps.py:75 forms.py:25 models.py:44
 msgid "Expiration date"
 msgstr "Data expirării"
 
-#: apps.py:68 forms.py:30 models.py:45
+#: apps.py:78 forms.py:30 models.py:51
 msgid "Length"
 msgstr "Lungime"
 
-#: apps.py:73 forms.py:17 models.py:50
+#: apps.py:83 forms.py:17 models.py:56
 msgid "User ID"
 msgstr "Identificatorul utilizatorului"
 
@@ -56,15 +58,31 @@ msgstr "Identificatorul utilizatorului"
 msgid "GNU privacy guard - a PGP implementation."
 msgstr "Protecția confidențialității GNU - o implementare PGP."
 
+#: events.py:5 links.py:42 permissions.py:5
+msgid "Key management"
+msgstr "Gestionare chei"
+
+#: events.py:8
+#, fuzzy
+#| msgid "Key data"
+msgid "Key created"
+msgstr "Datele cheii"
+
+#: events.py:12
+#, fuzzy
+#| msgid "Download"
+msgid "Key downloaded"
+msgstr "Descarcă"
+
 #: forms.py:26
 msgid "None"
 msgstr "Nici unul"
 
-#: forms.py:29 models.py:42
+#: forms.py:29 models.py:48
 msgid "Fingerprint"
 msgstr "Amprentă digitală"
 
-#: forms.py:31 models.py:48
+#: forms.py:31 models.py:54
 msgid "Algorithm"
 msgstr "Algoritm"
 
@@ -96,19 +114,15 @@ msgstr "Interogare keyservers"
 msgid "Import"
 msgstr "Import"
 
-#: links.py:42 permissions.py:5
-msgid "Key management"
-msgstr "Gestionare chei"
-
 #: links.py:46
 msgid "Upload key"
 msgstr "Încărcare chei"
 
-#: links.py:50 views.py:180
+#: links.py:50 views.py:194
 msgid "Private keys"
 msgstr "Chei private"
 
-#: links.py:54 views.py:204
+#: links.py:54 views.py:218
 msgid "Public keys"
 msgstr "Chei publice"
 
@@ -146,7 +160,9 @@ msgstr "Eroare semnătură."
 
 #: literals.py:72
 msgid "Document is signed but no public key is available for verification."
-msgstr "Documentul este semnat, dar nici o cheie publică nu este disponibilă pentru verificare."
+msgstr ""
+"Documentul este semnat, dar nici o cheie publică nu este disponibilă pentru "
+"verificare."
 
 #: literals.py:77
 msgid "Document is signed, and signature is good."
@@ -156,27 +172,27 @@ msgstr "Documentul este semnat, iar semnătura este bună."
 msgid "Document is signed with a valid signature."
 msgstr "Documentul este semnat cu o semnătură validă."
 
-#: models.py:30
+#: models.py:36
 msgid "ASCII armored version of the key."
 msgstr "Versiunea blindată ASCII a cheii."
 
-#: models.py:31
+#: models.py:37
 msgid "Key data"
 msgstr "Datele cheii"
 
-#: models.py:59
+#: models.py:65
 msgid "Key"
 msgstr "Cheie"
 
-#: models.py:60
+#: models.py:66
 msgid "Keys"
 msgstr "Chei"
 
-#: models.py:72
+#: models.py:78
 msgid "Invalid key data"
 msgstr "Datele cheii sunt  incorecte"
 
-#: models.py:75
+#: models.py:81
 msgid "Key already exists."
 msgstr "Cheia există deja."
 
@@ -210,84 +226,94 @@ msgstr "Semnături"
 
 #: settings.py:16
 msgid "Full path to the backend to be used to handle keys and signatures."
-msgstr "Calea completă către backend pentru a fi folosită pentru a gestiona tastele și semnăturile."
+msgstr ""
+"Calea completă către backend pentru a fi folosită pentru a gestiona tastele "
+"și semnăturile."
 
 #: settings.py:25
 msgid "Keyserver used to query for keys."
 msgstr "Keyserver-ul  folosit la interogarea cheilor."
 
-#: views.py:36
+#: views.py:39
 #, python-format
 msgid "Delete key: %s"
 msgstr "Ștergeți cheia: %s"
 
-#: views.py:53
+#: views.py:56
 #, python-format
 msgid "Details for key: %s"
 msgstr "Detalii pentru cheia: %s"
 
-#: views.py:75
+#: views.py:84
 #, python-format
 msgid "Import key ID: %s?"
 msgstr "Importați cheia cu ID-ul:  %s?"
 
-#: views.py:76
+#: views.py:85
 msgid "Import key"
 msgstr "Import cheie"
 
-#: views.py:85
+#: views.py:94
 #, python-format
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr "Imposibil de importat cheia: %(key_id)s; %(error)s"
 
-#: views.py:93
+#: views.py:102
 #, python-format
 msgid "Successfully received key: %(key_id)s"
 msgstr "Ați primit cu succes cheia: %(key_id)s"
 
-#: views.py:110
+#: views.py:119
 msgid ""
 "Use names, last names, key ids or emails to search public keys to import "
 "from the keyserver."
-msgstr "Utilizați numele, numele de familie, identitatea cheilor sau e-mailurile pentru a căuta cheile publice de importat de pe serverul de chei."
+msgstr ""
+"Utilizați numele, numele de familie, identitatea cheilor sau e-mailurile "
+"pentru a căuta cheile publice de importat de pe serverul de chei."
 
-#: views.py:114
+#: views.py:123
 msgid "No results returned"
 msgstr "Nu s-au întors rezultate"
 
-#: views.py:116
+#: views.py:125
 msgid "Key query results"
 msgstr "Rezultatele interogării cheii"
 
-#: views.py:136
+#: views.py:145
 msgid "Search"
 msgstr "Căută"
 
-#: views.py:138
+#: views.py:147
 msgid "Query key server"
 msgstr "Interogare keyserver"
 
-#: views.py:157
+#: views.py:166
 msgid "Upload new key"
 msgstr "Încărcați o cheie nouă"
 
-#: views.py:173
+#: views.py:187
 msgid ""
-"Private keys are used to signed documents. Private keys can only be uploaded"
-" by the user. The view to upload private and public keys is the same."
-msgstr "Cheile private sunt folosite pentru a semna documente. Cheile private pot fi încărcate doar de către utilizator. Vizualizarea pentru a încărca cheile private și publice este aceeași."
+"Private keys are used to signed documents. Private keys can only be uploaded "
+"by the user. The view to upload private and public keys is the same."
+msgstr ""
+"Cheile private sunt folosite pentru a semna documente. Cheile private pot fi "
+"încărcate doar de către utilizator. Vizualizarea pentru a încărca cheile "
+"private și publice este aceeași."
 
-#: views.py:178
+#: views.py:192
 msgid "There no private keys"
 msgstr "Nu există chei private"
 
-#: views.py:196
+#: views.py:210
 msgid ""
-"Public keys are used to verify signed documents. Public keys can be uploaded"
-" by the user or downloaded from keyservers. The view to upload private and "
+"Public keys are used to verify signed documents. Public keys can be uploaded "
+"by the user or downloaded from keyservers. The view to upload private and "
 "public keys is the same."
-msgstr "Cheile publice sunt utilizate pentru a verifica documentele semnate. Cheile publice pot fi încărcate de utilizator sau descărcate de la serverele de chei. Vizualizarea pentru a încărca cheile private și publice este aceeași."
+msgstr ""
+"Cheile publice sunt utilizate pentru a verifica documentele semnate. Cheile "
+"publice pot fi încărcate de utilizator sau descărcate de la serverele de "
+"chei. Vizualizarea pentru a încărca cheile private și publice este aceeași."
 
-#: views.py:202
+#: views.py:216
 msgid "There no public keys"
 msgstr "Nu există chei publice"

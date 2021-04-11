@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2018
@@ -10,23 +10,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2020-09-27 06:47+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/fa/)\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fa\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:50 apps.py:118 apps.py:125 events.py:5 forms.py:15 links.py:23
-#: menus.py:14 models.py:38 permissions.py:5 search.py:9 search.py:11
-#: views.py:222 workflow_actions.py:18 workflow_actions.py:61
+#: apps.py:47 apps.py:120 apps.py:124 apps.py:128 apps.py:133 apps.py:137
+#: events.py:5 forms.py:15 links.py:27 menus.py:14 models.py:41
+#: permissions.py:5 search.py:13 views.py:183 workflow_actions.py:18
+#: workflow_actions.py:61
 msgid "Tags"
 msgstr "برچسب ها"
 
-#: apps.py:138 models.py:32
+#: apps.py:151 models.py:35
 msgid "Documents"
 msgstr "اسناد"
 
@@ -46,31 +48,31 @@ msgstr ""
 msgid "Tag removed from document"
 msgstr "برچسب از سند حذف شد"
 
-#: links.py:14 workflow_actions.py:68
-msgid "Remove tag"
-msgstr "برچسب را حذف کنید"
-
-#: links.py:18 links.py:35
+#: links.py:18 links.py:37
 msgid "Attach tags"
 msgstr "پیوست برچسب ها"
 
-#: links.py:29
+#: links.py:22 workflow_actions.py:68
+msgid "Remove tag"
+msgstr "برچسب را حذف کنید"
+
+#: links.py:32
 msgid "Remove tags"
 msgstr "برچسب ها را حذف کنید"
 
-#: links.py:42
+#: links.py:43
 msgid "Create new tag"
 msgstr "ایجاد تگ جدید"
 
-#: links.py:48 links.py:65
+#: links.py:48 links.py:64
 msgid "Delete"
 msgstr "حذف"
 
-#: links.py:53
+#: links.py:52
 msgid "Edit"
 msgstr "ویرایش"
 
-#: links.py:61
+#: links.py:60
 msgid "All"
 msgstr "همه"
 
@@ -82,35 +84,35 @@ msgstr ""
 msgid "get_tags()"
 msgstr ""
 
-#: models.py:24
+#: models.py:27
 msgid "A short text used as the tag name."
 msgstr ""
 
-#: models.py:25
+#: models.py:28
 msgid "Label"
 msgstr "برچسب"
 
-#: models.py:28
+#: models.py:31
 msgid "The RGB color values for the tag."
 msgstr ""
 
-#: models.py:29
+#: models.py:32
 msgid "Color"
 msgstr "رنگ"
 
-#: models.py:37
+#: models.py:40
 msgid "Tag"
 msgstr "برچسب"
 
-#: models.py:80
+#: models.py:83
 msgid "Preview"
 msgstr "پیش نمایش"
 
-#: models.py:109
+#: models.py:112
 msgid "Document tag"
 msgstr "تگ سند"
 
-#: models.py:110
+#: models.py:113 search.py:18 search.py:24 search.py:30 search.py:36
 msgid "Document tags"
 msgstr "تگ های سند"
 
@@ -138,169 +140,188 @@ msgstr "برچسب ها را به اسناد اضافه کنید"
 msgid "Remove tags from documents"
 msgstr "برچسب ها را از اسناد حذف کنید"
 
-#: serializers.py:36
-msgid ""
-"Comma separated list of document primary keys to which this tag will be "
-"attached."
-msgstr "لیست کاملی از کلیدهای اصلی اسناد که این برچسب به آن متصل می شوند جدا شده است."
-
-#: serializers.py:85
-msgid ""
-"API URL pointing to a tag in relation to the document attached to it. This "
-"URL is different than the canonical tag URL."
-msgstr "URL API اشاره به یک برچسب در رابطه با سند متصل به آن. این URL متفاوت از URL تگ های کانونی است."
-
-#: serializers.py:105
-msgid "Primary key of the tag to be added."
+#: serializers.py:33
+#, fuzzy
+#| msgid "Primary key of the tag to be added."
+msgid "Primary key of the tag to add to the document."
 msgstr "کلید اولیه تگ اضافه شده است"
 
-#: views.py:36
-#, python-format
-msgid "Tag attach request performed on %(count)d document"
-msgstr "تگ پیوست درخواست انجام شده در سند %(count)d"
+#: serializers.py:41
+#, fuzzy
+#| msgid "Tags to remove from the document"
+msgid "Primary key of the tag to remove from the document."
+msgstr "برچسب ها را از سند حذف کنید"
 
-#: views.py:38
-#, python-format
-msgid "Tag attach request performed on %(count)d documents"
+#: views.py:36
+#, fuzzy, python-format
+#| msgid "Tag attached to document"
+msgid "Tags attached to document \"%(object)s\" successfully."
+msgstr "برچسب متصل به سند"
+
+#: views.py:39
+#, fuzzy, python-format
+#| msgid "Tag attach request performed on %(count)d documents"
+msgid "Tags attached to %(count)d document successfully."
 msgstr "تگ پیوست درخواست انجام شده در اسناد %(count)d"
 
+#: views.py:42
+#, fuzzy, python-format
+#| msgid "Tag attach request performed on %(count)d documents"
+msgid "Tags attached to %(count)d documents successfully."
+msgstr "تگ پیوست درخواست انجام شده در اسناد %(count)d"
+
+#: views.py:44
+#, fuzzy, python-format
+#| msgid "Attach tags to document: %s"
+msgid "Attach tags to document: %(object)s"
+msgstr "برچسب ها را به سند اضافه کنید: %s"
+
 #: views.py:45
+#, fuzzy, python-format
+#| msgid "Attach tags to %(count)d document"
+#| msgid_plural "Attach tags to %(count)d documents"
+msgid "Attach tags to %(count)d document."
+msgstr "برچسب ها را به اسناد %(count)d اضافه کنید: "
+
+#: views.py:46
+#, fuzzy, python-format
+#| msgid "Attach tags to %(count)d document"
+#| msgid_plural "Attach tags to %(count)d documents"
+msgid "Attach tags to %(count)d documents."
+msgstr "برچسب ها را به اسناد %(count)d اضافه کنید: "
+
+#: views.py:50
 msgid "Attach"
 msgstr "پیوستن"
 
-#: views.py:47
-#, python-format
-msgid "Attach tags to %(count)d document"
-msgid_plural "Attach tags to %(count)d documents"
-msgstr[0] "برچسب ها را به اسناد %(count)d اضافه کنید: "
-msgstr[1] "برچسب ها را به اسناد %(count)d اضافه کنید: "
-
-#: views.py:59
-#, python-format
-msgid "Attach tags to document: %s"
-msgstr "برچسب ها را به سند اضافه کنید: %s"
-
-#: views.py:68 wizard_steps.py:27
+#: views.py:64 wizard_steps.py:27
 msgid "Tags to be attached."
 msgstr "برچسب ها باید متصل شوند"
 
-#: views.py:110
-#, python-format
-msgid "Document \"%(document)s\" is already tagged as \"%(tag)s\""
-msgstr "سند \"%(document)s\" در حال حاضر به عنوان \"%(tag)s\" برچسب گذاری شده است"
-
-#: views.py:120
-#, python-format
-msgid "Tag \"%(tag)s\" attached successfully to document \"%(document)s\"."
-msgstr "برچسب \"%(tag)s\" با موفقیت به پرونده \"%(document)s\" متصل شد."
-
-#: views.py:129
+#: views.py:103
 msgid "Create tag"
 msgstr "ایجاد تگ"
 
-#: views.py:144
-#, python-format
-msgid "Tag delete request performed on %(count)d tag"
-msgstr "برچسب حذف درخواست انجام شده در برچسب %(count)d"
+#: views.py:116
+#, fuzzy, python-format
+#| msgid "Error deleting tag \"%(tag)s\": %(error)s"
+msgid "Error deleting tag \"%(instance)s\"; %(exception)s"
+msgstr "خطا در حذف برچسب \"%(tag)s\": %(error)s"
 
-#: views.py:146
-#, python-format
-msgid "Tag delete request performed on %(count)d tags"
-msgstr "برچسب حذف درخواست انجام شده در تگ %(count)d"
+#: views.py:121
+#, fuzzy, python-format
+#| msgid "Tag \"%s\" deleted successfully."
+msgid "Tag \"%(object)s\" deleted successfully."
+msgstr "برچسب \"%s\" با موفقیت حذف شد"
 
-#: views.py:154
+#: views.py:122
+#, fuzzy, python-format
+#| msgid "Tag \"%s\" deleted successfully."
+msgid "%(count)d tag deleted successfully."
+msgstr "برچسب \"%s\" با موفقیت حذف شد"
+
+#: views.py:123
+#, fuzzy, python-format
+#| msgid "Tag \"%s\" deleted successfully."
+msgid "%(count)d tags deleted successfully."
+msgstr "برچسب \"%s\" با موفقیت حذف شد"
+
+#: views.py:124
+#, fuzzy, python-format
+#| msgid "Delete tags"
+msgid "Delete tag: %(object)s."
+msgstr "برچسب ها را حذف کنید"
+
+#: views.py:125
+#, fuzzy, python-format
+#| msgid "Delete the selected tag?"
+#| msgid_plural "Delete the selected tags?"
+msgid "Delete the %(count)d selected tag."
+msgstr "آیا برچسبهای انتخاب شده حذف گردد؟"
+
+#: views.py:126
+#, fuzzy, python-format
+#| msgid "Delete the selected tag?"
+#| msgid_plural "Delete the selected tags?"
+msgid "Delete the %(count)d selected tags."
+msgstr "آیا برچسبهای انتخاب شده حذف گردد؟"
+
+#: views.py:131
 msgid "Will be removed from all documents."
 msgstr "از همه مدارک حذف خواهد شد."
 
-#: views.py:156
-msgid "Delete the selected tag?"
-msgid_plural "Delete the selected tags?"
-msgstr[0] "آیا برچسبهای انتخاب شده حذف گردد؟"
-msgstr[1] "آیا برچسبهای انتخاب شده حذف گردد؟"
-
-#: views.py:166
-#, python-format
-msgid "Delete tag: %s?"
-msgstr ""
-
-#: views.py:177
-#, python-format
-msgid "Tag \"%s\" deleted successfully."
-msgstr "برچسب \"%s\" با موفقیت حذف شد"
-
-#: views.py:182
-#, python-format
-msgid "Error deleting tag \"%(tag)s\": %(error)s"
-msgstr "خطا در حذف برچسب \"%(tag)s\": %(error)s"
-
-#: views.py:198
+#: views.py:157
 #, python-format
 msgid "Edit tag: %s"
 msgstr "ویرایش تگ: %s"
 
-#: views.py:218
+#: views.py:179
 msgid ""
 "Tags are color coded properties that can be attached or removed from "
 "documents."
 msgstr ""
 
-#: views.py:221
+#: views.py:182
 msgid "No tags available"
 msgstr ""
 
-#: views.py:250
+#: views.py:211
 #, python-format
 msgid "Documents with the tag: %s"
 msgstr "اسناد با برچسب: %s"
 
-#: views.py:275
+#: views.py:236
 msgid "Document has no tags attached"
 msgstr ""
 
-#: views.py:278
+#: views.py:239
 #, python-format
 msgid "Tags for document: %s"
 msgstr "برچسب ها برای سند: %s"
 
-#: views.py:295
-#, python-format
-msgid "Tag remove request performed on %(count)d document"
-msgstr "تگ حذف درخواست انجام شده در سند %(count)d"
+#: views.py:257
+#, fuzzy, python-format
+#| msgid "Tag removed from document"
+msgid "Tags removed from document \"%(object)s\" successfully."
+msgstr "برچسب از سند حذف شد"
 
-#: views.py:297
-#, python-format
-msgid "Tag remove request performed on %(count)d documents"
+#: views.py:260
+#, fuzzy, python-format
+#| msgid "Tag remove request performed on %(count)d documents"
+msgid "Tags removed from %(count)d document successfully."
 msgstr "تگ حذف درخواست انجام شده در اسناد %(count)d"
 
-#: views.py:305
+#: views.py:263
+#, fuzzy, python-format
+#| msgid "Tag remove request performed on %(count)d documents"
+msgid "Tags removed from %(count)d documents successfully."
+msgstr "تگ حذف درخواست انجام شده در اسناد %(count)d"
+
+#: views.py:265
+#, fuzzy, python-format
+#| msgid "Remove tags from document: %s"
+msgid "Remove tags from document: %(object)s"
+msgstr "برچسب ها را از سند حذف کنید: %s"
+
+#: views.py:266
+#, fuzzy, python-format
+#| msgid "Remove tags from documents"
+msgid "Remove tags from %(count)d document."
+msgstr "برچسب ها را از اسناد حذف کنید"
+
+#: views.py:267
+#, fuzzy, python-format
+#| msgid "Remove tags from documents"
+msgid "Remove tags from %(count)d documents."
+msgstr "برچسب ها را از اسناد حذف کنید"
+
+#: views.py:272
 msgid "Remove"
 msgstr "برداشتن"
 
-#: views.py:307
-#, python-format
-msgid "Remove tags from %(count)d document"
-msgid_plural "Remove tags from %(count)d documents"
-msgstr[0] ""
-msgstr[1] ""
-
-#: views.py:319
-#, python-format
-msgid "Remove tags from document: %s"
-msgstr "برچسب ها را از سند حذف کنید: %s"
-
-#: views.py:328
+#: views.py:286
 msgid "Tags to be removed."
 msgstr "برچسب ها حذف می شوند"
-
-#: views.py:368
-#, python-format
-msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s"
-msgstr "سند \"%(document)s\" به عنوان \"%(tag)s\" برچسب گذاری نشد"
-
-#: views.py:377
-#, python-format
-msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
-msgstr "برچسب \"%(tag)s\" با موفقیت از سند \"%(document)s\" حذف شد."
 
 #: wizard_steps.py:15
 msgid "Select tags"
@@ -317,3 +338,42 @@ msgstr "ضمیمه برچسب"
 #: workflow_actions.py:63
 msgid "Tags to remove from the document"
 msgstr "برچسب ها را از سند حذف کنید"
+
+#~ msgid ""
+#~ "Comma separated list of document primary keys to which this tag will be "
+#~ "attached."
+#~ msgstr ""
+#~ "لیست کاملی از کلیدهای اصلی اسناد که این برچسب به آن متصل می شوند جدا شده "
+#~ "است."
+
+#~ msgid ""
+#~ "API URL pointing to a tag in relation to the document attached to it. "
+#~ "This URL is different than the canonical tag URL."
+#~ msgstr ""
+#~ "URL API اشاره به یک برچسب در رابطه با سند متصل به آن. این URL متفاوت از "
+#~ "URL تگ های کانونی است."
+
+#~ msgid "Tag attach request performed on %(count)d document"
+#~ msgstr "تگ پیوست درخواست انجام شده در سند %(count)d"
+
+#~ msgid "Document \"%(document)s\" is already tagged as \"%(tag)s\""
+#~ msgstr ""
+#~ "سند \"%(document)s\" در حال حاضر به عنوان \"%(tag)s\" برچسب گذاری شده است"
+
+#~ msgid "Tag \"%(tag)s\" attached successfully to document \"%(document)s\"."
+#~ msgstr "برچسب \"%(tag)s\" با موفقیت به پرونده \"%(document)s\" متصل شد."
+
+#~ msgid "Tag delete request performed on %(count)d tag"
+#~ msgstr "برچسب حذف درخواست انجام شده در برچسب %(count)d"
+
+#~ msgid "Tag delete request performed on %(count)d tags"
+#~ msgstr "برچسب حذف درخواست انجام شده در تگ %(count)d"
+
+#~ msgid "Tag remove request performed on %(count)d document"
+#~ msgstr "تگ حذف درخواست انجام شده در سند %(count)d"
+
+#~ msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s"
+#~ msgstr "سند \"%(document)s\" به عنوان \"%(tag)s\" برچسب گذاری نشد"
+
+#~ msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
+#~ msgstr "برچسب \"%(tag)s\" با موفقیت از سند \"%(document)s\" حذف شد."

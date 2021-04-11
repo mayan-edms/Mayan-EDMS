@@ -12,15 +12,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:02+0000\n"
+"POT-Creation-Date: 2021-04-11 06:05+0000\n"
 "PO-Revision-Date: 2020-09-27 06:47+0000\n"
 "Last-Translator: Marwan Rahhal <Marwanr@sssit.net>, 2020\n"
 "Language-Team: Arabic (https://www.transifex.com/rosarior/teams/13584/ar/)\n"
+"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ar\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: apps.py:15 settings.py:7
 msgid "Views"
@@ -34,118 +35,170 @@ msgstr "الاختيار"
 msgid "None"
 msgstr "لا شيء"
 
-#: generics.py:150
+#: forms.py:284
+msgid "Label"
+msgstr ""
+
+#: forms.py:288
+msgid "Relationship"
+msgstr ""
+
+#: generics.py:147
 msgid ""
 "Select entries to be removed. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr ""
 "حدد الإدخالات المراد حذفها ،  اضغط مع الاستمرار على التحكم لتحديد عدة "
-"إدخالات. بمجرد اكتمال التحديد ، انقر فوق الزر أدناه أو انقر نقرًا مزدوجًا "
-"فوق القائمة لتنشيط الإجراء"
+"إدخالات. بمجرد اكتمال التحديد ، انقر فوق الزر أدناه أو انقر نقرًا مزدوجًا فوق "
+"القائمة لتنشيط الإجراء"
 
-#: generics.py:155
+#: generics.py:152
 msgid ""
 "Select entries to be added. Hold Control to select multiple entries. Once "
 "the selection is complete, click the button below or double click the list "
 "to activate the action."
 msgstr ""
-"حدد الإدخالات لتتم إضافتها ، اضغط مع الاستمرار على التحكم لتحديد عدة إدخالات"
-" ، بمجرد اكتمال التحديد ، انقر فوق الزر أدناه أو انقر نقرًا مزدوجًا فوق "
+"حدد الإدخالات لتتم إضافتها ، اضغط مع الاستمرار على التحكم لتحديد عدة "
+"إدخالات ، بمجرد اكتمال التحديد ، انقر فوق الزر أدناه أو انقر نقرًا مزدوجًا فوق "
 "القائمة لتنشيط الإجراء"
 
-#: generics.py:288
+#: generics.py:290
 msgid "Add all"
 msgstr "إضافة الكل"
 
-#: generics.py:297
+#: generics.py:299
 msgid "Add"
 msgstr "إضافة"
 
-#: generics.py:307
+#: generics.py:309
 msgid "Remove all"
 msgstr "حذف الكل"
 
-#: generics.py:316
+#: generics.py:318
 msgid "Remove"
 msgstr "حذف"
 
 #: generics.py:532
 #, python-format
+msgid "Error updating relationship; %s"
+msgstr ""
+
+#: generics.py:539
+#, fuzzy
+#| msgid "%(object)s updated successfully."
+msgid "Relationships updated successfully"
+msgstr "%(object)s التعديل الناجح."
+
+#: generics.py:598
+#, python-format
 msgid "Duplicate data error: %(error)s"
 msgstr "تكرار خطأ في المعلومات : %(error)s"
 
-#: generics.py:553
+#: generics.py:617
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
 msgstr "%(object)s لم ينشأ , الخطأ : %(error)s"
 
-#: generics.py:566
+#: generics.py:628
 #, python-format
 msgid "%(object)s created successfully."
 msgstr "%(object)s الإنشاء الناجح."
 
-#: generics.py:605
+#: generics.py:667
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
 msgstr "%(object)s لم تحذف , الخطأ : %(error)s."
 
-#: generics.py:614
+#: generics.py:676
 #, python-format
 msgid "%(object)s deleted successfully."
 msgstr "%(object)s احذف الناجح."
 
-#: generics.py:750
+#: generics.py:815
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
 msgstr "%(object)s لم يتم التعديل, الخطأ: %(error)s."
 
-#: generics.py:761
+#: generics.py:824
 #, python-format
 msgid "%(object)s updated successfully."
 msgstr "%(object)s التعديل الناجح."
 
-#: mixins.py:324
+#: generics.py:886
+#, fuzzy, python-format
+#| msgid "%(object)s deleted successfully."
+msgid "\"%(object)s\" deleted successfully."
+msgstr "%(object)s احذف الناجح."
+
+#: generics.py:887
+#, fuzzy, python-format
+#| msgid "%(object)s deleted successfully."
+msgid "%(count)d object deleted successfully."
+msgstr "%(object)s احذف الناجح."
+
+#: generics.py:888
+#, fuzzy, python-format
+#| msgid "%(object)s deleted successfully."
+msgid "%(count)d objects deleted successfully."
+msgstr "%(object)s احذف الناجح."
+
+#: generics.py:889
+#, python-format
+msgid "Delete \"%(object)s\"."
+msgstr ""
+
+#: generics.py:890
+#, python-format
+msgid "Delete %(count)d object."
+msgstr ""
+
+#: generics.py:891
+#, python-format
+msgid "Delete %(count)d objects."
+msgstr ""
+
+#: mixins.py:325
 #, python-format
 msgid "No %(verbose_name)s found matching the query"
 msgstr "لا %(verbose_name)s ايجاد المتشابه"
 
-#: mixins.py:349
+#: mixins.py:350
 #, python-format
 msgid "Unable to perform operation on object %(instance)s; %(exception)s."
 msgstr ""
 
-#: mixins.py:351
+#: mixins.py:352
 #, python-format
 msgid "Operation performed on %(object)s."
 msgstr ""
 
-#: mixins.py:352
+#: mixins.py:353
 #, python-format
 msgid "Operation performed on %(count)d object."
 msgstr ""
 
-#: mixins.py:353
+#: mixins.py:354
 #, python-format
 msgid "Operation performed on %(count)d objects."
 msgstr ""
 
-#: mixins.py:354
+#: mixins.py:355
 #, python-format
 msgid "Perform operation on %(object)s."
 msgstr ""
 
-#: mixins.py:355
+#: mixins.py:356
 #, python-format
 msgid "Perform operation on %(count)d object."
 msgstr ""
 
-#: mixins.py:356
+#: mixins.py:357
 #, python-format
 msgid "Perform operation on %(count)d objects."
 msgstr ""
 
-#: mixins.py:438
+#: mixins.py:439
 msgid "Object"
 msgstr "عنصر"
 

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Māris Teivāns <maris.teivans@gmail.com>, 2019-2020
@@ -9,17 +9,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2020-12-01 13:17+0000\n"
 "Last-Translator: Māris Teivāns <maris.teivans@gmail.com>\n"
-"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/language/lv/)\n"
+"Language-Team: Latvian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/lv/)\n"
+"Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: lv\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
+"2);\n"
 
-#: apps.py:59 events.py:5 permissions.py:5 settings.py:7
+#: apps.py:56 events.py:5 permissions.py:5 settings.py:7
 msgid "Appearance"
 msgstr "Izskats"
 
@@ -79,11 +81,11 @@ msgstr "Tēma ir izveidota"
 msgid "Theme edited"
 msgstr "Tēma ir rediģēta"
 
-#: links.py:15
+#: links.py:16
 msgid "Theme settings"
 msgstr "Tēmas iestatījumi"
 
-#: links.py:20
+#: links.py:21
 msgid "Edit theme settings"
 msgstr "Rediģēt tēmas iestatījumus"
 
@@ -91,15 +93,15 @@ msgstr "Rediģēt tēmas iestatījumus"
 msgid "Create new theme"
 msgstr "Izveidot jaunu tēmu"
 
-#: links.py:33
+#: links.py:32
 msgid "Delete"
 msgstr "Dzēst"
 
-#: links.py:39
+#: links.py:36
 msgid "Edit"
 msgstr "Rediģēt"
 
-#: links.py:43 links.py:47 models.py:25 views.py:111
+#: links.py:40 links.py:45 models.py:25 views.py:111
 msgid "Themes"
 msgstr "Tēmas"
 
@@ -115,7 +117,8 @@ msgstr "Etiķete"
 msgid ""
 "The CSS stylesheet to change the appearance of the different user interface "
 "elements."
-msgstr "CSS stila lapa, lai mainītu dažādu lietotāja interfeisa elementu izskatu."
+msgstr ""
+"CSS stila lapa, lai mainītu dažādu lietotāja interfeisa elementu izskatu."
 
 #: models.py:19
 msgid "Stylesheet"
@@ -161,7 +164,9 @@ msgstr "Maksimālais rakstzīmju skaits, kas tiks attēlots kā skata nosaukums.
 msgid ""
 "Position where the system message will be displayed. Options are: top-left, "
 "top-center, top-right, bottom-left, bottom-center, bottom-right."
-msgstr "Pozīcija, kur tiks parādīts sistēmas ziņojums. Iespējas ir: augšā pa kreisi, augšā centrā, augšā pa labi, apakšā pa kreisi, apakšā centrā, apakšā pa labi."
+msgstr ""
+"Pozīcija, kur tiks parādīts sistēmas ziņojums. Iespējas ir: augšā pa kreisi, "
+"augšā centrā, augšā pa labi, apakšā pa kreisi, apakšā centrā, apakšā pa labi."
 
 #: templates/403.html:5 templates/403.html:30
 msgid "Insufficient permission"
@@ -195,10 +200,11 @@ msgstr "Atrašanās vieta ir pareiza, taču vienums vairs nepastāv."
 msgid ""
 "The location is be correct, but your account does not have the required "
 "permission to access it."
-msgstr "Atrašanās vieta ir pareiza, taču jūsu kontam nav vajadzīgās atļaujas, lai tai piekļūtu."
+msgstr ""
+"Atrašanās vieta ir pareiza, taču jūsu kontam nav vajadzīgās atļaujas, lai "
+"tai piekļūtu."
 
-#: templates/500.html:5 templates/500.html:30
-#: templates/appearance/root.html:58
+#: templates/500.html:5 templates/500.html:30 templates/appearance/root.html:58
 msgid "Server error"
 msgstr "Servera kļūda"
 
@@ -223,13 +229,19 @@ msgid "Contact your system administrator."
 msgstr "Sazinieties ar sistēmas administratoru."
 
 #: templates/500.html:47
-msgid "Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL\"."
-msgstr "Pārbaudiet, vai žurnālos nav ziņojumu ar tagiem \"ERROR\", \"CRITICAL\" vai \"FATAL\"."
+msgid ""
+"Check the logs for messages with the tags \"ERROR\", \"CRITICAL\" or \"FATAL"
+"\"."
+msgstr ""
+"Pārbaudiet, vai žurnālos nav ziņojumu ar tagiem \"ERROR\", \"CRITICAL\" vai "
+"\"FATAL\"."
 
 #: templates/500.html:48
 #, python-format
 msgid "Open a ticket using the <a href=\"%(issue_url)s\">issue tracker</a>."
-msgstr "Atveriet biļeti, izmantojot <a href=\"%(issue_url)s\">problēmu izsekotāju</a> ."
+msgstr ""
+"Atveriet biļeti, izmantojot <a href=\"%(issue_url)s\">problēmu izsekotāju</"
+"a> ."
 
 #: templates/appearance/about.html:10
 msgid "About"
@@ -241,7 +253,9 @@ msgid ""
 "\n"
 "                    %(setting_project_title)s is based on %(project_title)s\n"
 "                "
-msgstr "\n%(setting_project_title)s ir balstīts uz %(project_title)s"
+msgstr ""
+"\n"
+"%(setting_project_title)s ir balstīts uz %(project_title)s"
 
 #: templates/appearance/about.html:78
 msgid "Version"
@@ -260,94 +274,106 @@ msgstr "Izdots saskaņā ar licenci:"
 #, python-format
 msgid ""
 "\n"
-"                %(project_title)s is a free and open-source software brought to you with <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
+"                %(project_title)s is a free and open-source software brought "
+"to you with <i class=\"fa fa-heart text-danger\" style=\"transform: "
+"rotate(10deg);\"></i> by Roberto Rosario and contributors.\n"
 "            "
-msgstr "\n%(project_title)s ir bezmaksas un atvērtā pirmkoda programmatūra, kas jums tiek piedāvāta ar <i class=\"fa fa-heart text-danger\" style=\"transform: rotate(10deg);\"></i> Roberto Rosario un ziedotājiem."
+msgstr ""
+"\n"
+"%(project_title)s ir bezmaksas un atvērtā pirmkoda programmatūra, kas jums "
+"tiek piedāvāta ar <i class=\"fa fa-heart text-danger\" style=\"transform: "
+"rotate(10deg);\"></i> Roberto Rosario un ziedotājiem."
 
 #: templates/appearance/about.html:105
 #, python-format
 msgid ""
 "\n"
-"                It takes great effort to make %(project_title)s as feature-rich as it is.\n"
+"                It takes great effort to make %(project_title)s as feature-"
+"rich as it is.\n"
 "            "
-msgstr "\nLai padarītu %(project_title)s tikpat bagātu kā tas ir, ir jāpieliek lielas pūles."
+msgstr ""
+"\n"
+"Lai padarītu %(project_title)s tikpat bagātu kā tas ir, ir jāpieliek lielas "
+"pūles."
 
 #: templates/appearance/about.html:111
 #, python-format
 msgid ""
 "\n"
-"                If you use %(project_title)s please <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">make a donation %(icon_social_paypal)s</a>\n"
+"                If you use %(project_title)s please <a class=\"new_window\" "
+"href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-"
+"xclick&hosted_button_id=3PXN336XFXQNN\">make a donation "
+"%(icon_social_paypal)s</a>\n"
 "            "
-msgstr "\nJa izmantojat %(project_title)s, lūdzu, <a class=\"new_window\" href=\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3PXN336XFXQNN\">veiciet ziedojumu %(icon_social_paypal)s</a>"
+msgstr ""
+"\n"
+"Ja izmantojat %(project_title)s, lūdzu, <a class=\"new_window\" href="
+"\"https://www.paypal.com/cgi-bin/webscr?cmd=_s-"
+"xclick&hosted_button_id=3PXN336XFXQNN\">veiciet ziedojumu "
+"%(icon_social_paypal)s</a>"
 
 #: templates/appearance/about.html:117
 #, python-format
 msgid ""
 "\n"
-"                The complete list of changes is available via the <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> or the short version <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
+"                The complete list of changes is available via the <a class="
+"\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html"
+"\">Release notes %(icon_documentation)s</a> or the short version <a class="
+"\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/"
+"HISTORY.rst\">Changelog %(icon_documentation)s</a>.\n"
 "            "
-msgstr "\nPilns izmaiņu saraksts ir pieejams, skatot <a class=\"new_window\" href=\"https://docs.mayan-edms.com/releases/index.html\">Release notes %(icon_documentation)s</a> vai īso versiju <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst\">Changelog %(icon_documentation)s</a> ."
+msgstr ""
+"\n"
+"Pilns izmaiņu saraksts ir pieejams, skatot <a class=\"new_window\" href="
+"\"https://docs.mayan-edms.com/releases/index.html\">Release notes "
+"%(icon_documentation)s</a> vai īso versiju <a class=\"new_window\" href="
+"\"https://gitlab.com/mayan-edms/mayan-edms/blob/master/HISTORY.rst"
+"\">Changelog %(icon_documentation)s</a> ."
 
 #: templates/appearance/about.html:123
 #, python-format
 msgid ""
 "\n"
-"                For questions check the <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
+"                For questions check the <a class=\"new_window\" href="
+"\"https://docs.mayan-edms.com\">Documentation %(icon_documentation)s</a>.\n"
 "            "
-msgstr "\nJa rodas jautājumi, skatiet <a class=\"new_window\" href=\"https://docs.mayan-edms.com\">dokumentāciju %(icon_documentation)s</a> ."
+msgstr ""
+"\n"
+"Ja rodas jautājumi, skatiet <a class=\"new_window\" href=\"https://docs."
+"mayan-edms.com\">dokumentāciju %(icon_documentation)s</a> ."
 
 #: templates/appearance/about.html:129
 #, python-format
 msgid ""
 "\n"
-"                If you found a bug or have a feature idea, visit the <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum %(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository %(icon_source_code)s</a>.\n"
+"                If you found a bug or have a feature idea, visit the <a "
+"class=\"new_window\" href=\"https://forum.mayan-edms.com\">Forum "
+"%(icon_forum)s</a> or open a ticket in the <a class=\"new_window\" href="
+"\"https://gitlab.com/mayan-edms/mayan-edms\">Source code repository "
+"%(icon_source_code)s</a>.\n"
 "            "
-msgstr "\nJa atradāt kļūdu vai ir kāda funkcionalitātes ideja, apmeklējiet <a class=\"new_window\" href=\"https://forum.mayan-edms.com\">forumu %(icon_forum)s</a> vai atveriet biļeti <a class=\"new_window\" href=\"https://gitlab.com/mayan-edms/mayan-edms\">pirmkoda repozitorijā %(icon_source_code)s</a> ."
+msgstr ""
+"\n"
+"Ja atradāt kļūdu vai ir kāda funkcionalitātes ideja, apmeklējiet <a class="
+"\"new_window\" href=\"https://forum.mayan-edms.com\">forumu %(icon_forum)s</"
+"a> vai atveriet biļeti <a class=\"new_window\" href=\"https://gitlab.com/"
+"mayan-edms/mayan-edms\">pirmkoda repozitorijā %(icon_source_code)s</a> ."
 
 #: templates/appearance/about.html:134
 #, python-format
 msgid ""
 "\n"
-"                Spread the word. Talk to your friends and colleagues about how awesome %(project_title)s is!\n"
+"                Spread the word. Talk to your friends and colleagues about "
+"how awesome %(project_title)s is!\n"
 "            "
-msgstr "\nIzplatiet vārdu. Runājiet ar draugiem un kolēģiem par to, cik satriecošs ir %(project_title)s!"
-
-#: templates/appearance/base.html:43 templates/appearance/base.html:67
-msgid "Warning"
-msgstr "Brīdinājums"
-
-#: templates/appearance/base.html:57
-msgid "Click here to fix this."
-msgstr "Noklikšķiniet šeit, lai to labotu."
-
-#: templates/appearance/base.html:67
-msgid ""
-"Settings updated, restart your installation and refresh your browser for "
-"changes to take effect."
-msgstr "Iestatījumi ir atjaunināti, restartējiet instalēšanu un atsvaidziniet pārlūku, lai izmaiņas stātos spēkā."
-
-#: templates/appearance/base.html:75
-#, python-format
-msgid ""
+msgstr ""
 "\n"
-"                                        Impersonating user \"%(user)s\".\n"
-"                                    "
-msgstr "\nUzdodas par lietotāju &quot;%(user)s&quot;."
+"Izplatiet vārdu. Runājiet ar draugiem un kolēģiem par to, cik satriecošs ir "
+"%(project_title)s!"
 
-#: templates/appearance/base.html:78
-msgid "Click here when finished"
-msgstr "Kad esat pabeidzis, noklikšķiniet šeit"
-
-#: templates/appearance/base.html:92
-#: templates/appearance/generic_list_items_subtemplate.html:66
-msgid "Actions"
-msgstr "Darbības"
-
-#: templates/appearance/base.html:94
-#: templates/appearance/generic_list_items_subtemplate.html:68
-#: templates/appearance/list_toolbar.html:67
-msgid "Toggle Dropdown"
-msgstr "Toggle Dropdown"
+#: templates/appearance/base.html:71
+msgid "Object"
+msgstr ""
 
 #: templates/appearance/calculate_form_title.html:10
 msgid "Open main menu"
@@ -389,9 +415,13 @@ msgstr "Iesniegt"
 msgid "Cancel"
 msgstr "Atcelt"
 
-#: templates/appearance/generic_list_subtemplate.html:28
+#: templates/appearance/generic_list_subtemplate.html:29
 msgid "Identifier"
 msgstr "Identifikators"
+
+#: templates/appearance/generic_list_subtemplate.html:133
+msgid "Facets"
+msgstr ""
 
 #: templates/appearance/home.html:10
 msgid "Dashboard"
@@ -410,7 +440,9 @@ msgstr "Pirms jūs varat pilnībā izmantot Mayan EDMS, jums ir nepieciešams:"
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
-msgstr "Kopā (%(start)s - %(end)s no %(total)s) (lappuse %(page_number)s no %(total_pages)s)"
+msgstr ""
+"Kopā (%(start)s - %(end)s no %(total)s) (lappuse %(page_number)s no "
+"%(total_pages)s)"
 
 #: templates/appearance/list_header.html:14
 #: templates/appearance/list_header.html:17
@@ -429,11 +461,18 @@ msgstr "Pārslēgt saraksta skata režīmu"
 #: templates/appearance/list_toolbar.html:60
 msgid ""
 "Select items to activate bulk actions. Use Shift + click to select many."
-msgstr "Atlasiet vienumus, lai aktivizētu lielapjoma darbības. Izmantojiet taustiņu kombināciju Shift + noklikšķiniet, lai atlasītu daudzus."
+msgstr ""
+"Atlasiet vienumus, lai aktivizētu lielapjoma darbības. Izmantojiet taustiņu "
+"kombināciju Shift + noklikšķiniet, lai atlasītu daudzus."
 
 #: templates/appearance/list_toolbar.html:65
 msgid "Bulk actions"
 msgstr "Lielapjoma darbības"
+
+#: templates/appearance/list_toolbar.html:67
+#: templates/appearance/partials/actions_dropdown.html:12
+msgid "Toggle Dropdown"
+msgstr "Toggle Dropdown"
 
 #: templates/appearance/menu_topbar.html:11
 msgid "Toggle navigation"
@@ -442,6 +481,10 @@ msgstr "Pārslēgt navigāciju"
 #: templates/appearance/no_results.html:18
 msgid "No results"
 msgstr "Nav rezultātu"
+
+#: templates/appearance/partials/actions_dropdown.html:9
+msgid "Actions"
+msgstr "Darbības"
 
 #: templates/appearance/root.html:63
 msgid "Close"
@@ -455,7 +498,7 @@ msgstr "Servera sakaru kļūda"
 msgid "Check you network connection and try again in a few moments."
 msgstr "Pārbaudiet tīkla savienojumu un pēc brīža mēģiniet vēlreiz."
 
-#: templatetags/appearance_tags.py:44
+#: templatetags/appearance_tags.py:43
 msgid "None"
 msgstr "Nav neviens"
 
@@ -485,3 +528,27 @@ msgstr "Tēmas ļauj mainīt vizuālo izskatu, neprasot koda izmaiņas."
 #: views.py:109
 msgid "There are no themes"
 msgstr "Nav tēmu"
+
+#~ msgid "Warning"
+#~ msgstr "Brīdinājums"
+
+#~ msgid "Click here to fix this."
+#~ msgstr "Noklikšķiniet šeit, lai to labotu."
+
+#~ msgid ""
+#~ "Settings updated, restart your installation and refresh your browser for "
+#~ "changes to take effect."
+#~ msgstr ""
+#~ "Iestatījumi ir atjaunināti, restartējiet instalēšanu un atsvaidziniet "
+#~ "pārlūku, lai izmaiņas stātos spēkā."
+
+#~ msgid ""
+#~ "\n"
+#~ "                                        Impersonating user \"%(user)s\".\n"
+#~ "                                    "
+#~ msgstr ""
+#~ "\n"
+#~ "Uzdodas par lietotāju &quot;%(user)s&quot;."
+
+#~ msgid "Click here when finished"
+#~ msgstr "Kad esat pabeidzis, noklikšķiniet šeit"

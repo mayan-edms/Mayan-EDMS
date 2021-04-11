@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # bwakkie <bwakkie@gmail.com>, 2020
@@ -13,124 +13,121 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-28 13:01+0000\n"
+"POT-Creation-Date: 2021-04-11 06:04+0000\n"
 "PO-Revision-Date: 2020-09-27 06:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/nl/)\n"
+"Language-Team: Dutch (http://www.transifex.com/rosarior/mayan-edms/language/"
+"nl/)\n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:131 permissions.py:5 settings.py:13
+#: apps.py:125 permissions.py:5 settings.py:15
 msgid "Common"
 msgstr "Gemeenschappelijk"
 
-#: classes.py:456
+#: classes.py:408
 msgid "Model properties"
 msgstr "Model eigenschappen"
 
-#: classes.py:461
+#: classes.py:413
 msgid "Model fields"
 msgstr "Model velden"
 
-#: classes.py:504
+#: classes.py:456
 msgid "Model related fields"
 msgstr "Model gerelateerde velden"
 
-#: classes.py:509
+#: classes.py:461
 msgid "Model reverse fields"
 msgstr "Model omgekeerde velden"
 
-#: dependencies.py:195
+#: dependencies.py:168
 msgid "Used to allow offline translation of the code text strings."
 msgstr "Gebruikt om offline vertaling van de codetekststrings toe te staan."
 
-#: dependencies.py:204
+#: dependencies.py:177
 msgid "Provides style checking."
 msgstr "Biedt stijlcontrole."
 
-#: dependencies.py:209
+#: dependencies.py:182
 msgid "Command line environment with autocompletion."
 msgstr "Opdrachtregelomgeving met automatisch aanvullen."
 
-#: dependencies.py:214
+#: dependencies.py:187
 msgid "Checks proper formatting of the README file."
 msgstr "Controleert de juiste opmaak van het README-bestand."
 
-#: links.py:31
+#: links.py:30
 msgid "About this"
 msgstr "Over Mayan EDMS"
 
-#: links.py:34
+#: links.py:33
 msgid "Get the book"
 msgstr "Koop het boek"
 
-#: links.py:39
-msgid "Locale profile"
-msgstr "Landsinstellingen"
-
-#: links.py:44
-msgid "Edit locale profile"
-msgstr "Wijzig landsinstellingen"
-
-#: links.py:49
+#: links.py:38
 msgid "Documentation"
 msgstr "Documentatie"
 
-#: links.py:52
+#: links.py:41
 msgid "Forum"
 msgstr "Forum"
 
-#: links.py:56 views.py:106
+#: links.py:45 views.py:48
 msgid "License"
 msgstr "Licentie"
 
-#: links.py:61
+#: links.py:50
 msgid "Copy"
 msgstr ""
 
-#: links.py:64
+#: links.py:53
 msgid "Setup"
 msgstr "Setup"
 
-#: links.py:67
+#: links.py:56
 msgid "Source code"
 msgstr "Broncode"
 
-#: links.py:71
+#: links.py:60
 msgid "Online store"
 msgstr "Online opslag"
 
-#: links.py:75
+#: links.py:64
 msgid "Get support"
 msgstr "Ondersteuning"
 
-#: links.py:79 queues.py:9 views.py:175
+#: links.py:68 queues.py:9 views.py:122
 msgid "Tools"
 msgstr "Gereedschappen"
 
-#: literals.py:18
+#: literals.py:20
 msgid ""
 "This feature has been deprecated and will be removed in a future version."
-msgstr "Deze functie is achterhaald en zal worden verwijderd in een toekomstige versie."
+msgstr ""
+"Deze functie is achterhaald en zal worden verwijderd in een toekomstige "
+"versie."
 
-#: literals.py:21
+#: literals.py:23
 msgid ""
 "Your database backend is set to use SQLite. SQLite should only be used for "
 "development and testing, not for production."
-msgstr "Uw database backend is ingesteld op SQLite. SQLite dient alleen gebruikt te worden voor ontwikkeling en testen, niet voor productie-omgevingen. "
+msgstr ""
+"Uw database backend is ingesteld op SQLite. SQLite dient alleen gebruikt te "
+"worden voor ontwikkeling en testen, niet voor productie-omgevingen. "
 
-#: literals.py:30
+#: literals.py:32
 msgid "Days"
 msgstr "Dagen"
 
-#: literals.py:31
+#: literals.py:33
 msgid "Hours"
 msgstr "Uren"
 
-#: literals.py:32
+#: literals.py:34
 msgid "Minutes"
 msgstr "Minuten"
 
@@ -154,25 +151,13 @@ msgstr ""
 msgid "Secondary"
 msgstr "Secundair"
 
-#: menus.py:21 models.py:25
+#: menus.py:18
+msgid "Return"
+msgstr ""
+
+#: menus.py:22
 msgid "User"
 msgstr "Gebruiker"
-
-#: models.py:29
-msgid "Timezone"
-msgstr "Tijdzone"
-
-#: models.py:32
-msgid "Language"
-msgstr "Taal"
-
-#: models.py:38
-msgid "User locale profile"
-msgstr "Gebruikerslandsinstelling"
-
-#: models.py:39
-msgid "User locale profiles"
-msgstr "Gebruikerslandinstellingen"
 
 #: permissions.py:8
 msgid "Copy object"
@@ -182,108 +167,173 @@ msgstr ""
 msgid "Default"
 msgstr "Standaard"
 
-#: settings.py:19
+#: settings.py:22
 msgid ""
-"Time to delay background tasks that depend on a database commit to "
-"propagate."
-msgstr "Wachttijd voor achtergrondtaken die afhankelijk zijn van het verbreiden van een database commit."
+"In list mode, show the \"list facet\" menu options as a dropdown menu "
+"instead of individual buttons."
+msgstr ""
 
-#: settings.py:26
+#: settings.py:30
+msgid ""
+"In list mode, show the \"object\" menu options as a dropdown menu instead of "
+"individual buttons."
+msgstr ""
+
+#: settings.py:37
+msgid ""
+"Time to delay background tasks that depend on a database commit to propagate."
+msgstr ""
+"Wachttijd voor achtergrondtaken die afhankelijk zijn van het verbreiden van "
+"een database commit."
+
+#: settings.py:44
+#, fuzzy
+#| msgid ""
+#| "A list of strings designating all applications that are to be removed "
+#| "from the list normally installed by Mayan EDMS. Each string should be a "
+#| "dotted Python path to: an application configuration class (preferred), or "
+#| "a package containing an application."
 msgid ""
 "A list of strings designating all applications that are to be removed from "
 "the list normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package"
-" containing an application."
-msgstr "Een lijst met tekenreeksen die alle toepassingen aanduiden die moeten worden verwijderd uit de lijst die normaal door Mayan EDMS wordt geïnstalleerd. Elke string moet een Python-pad zijn naar: een toepassingsconfiguratieklasse (bij voorkeur) of een pakket met een toepassing."
+"Python path to: an application configuration class (preferred), or a package "
+"containing an application. Example: ['app_1', 'app_2']"
+msgstr ""
+"Een lijst met tekenreeksen die alle toepassingen aanduiden die moeten worden "
+"verwijderd uit de lijst die normaal door Mayan EDMS wordt geïnstalleerd. "
+"Elke string moet een Python-pad zijn naar: een toepassingsconfiguratieklasse "
+"(bij voorkeur) of een pakket met een toepassing."
 
-#: settings.py:36
+#: settings.py:54
+#, fuzzy
+#| msgid ""
+#| "A list of strings designating all applications that are installed beyond "
+#| "those normally installed by Mayan EDMS. Each string should be a dotted "
+#| "Python path to: an application configuration class (preferred), or a "
+#| "package containing an application."
 msgid ""
 "A list of strings designating all applications that are installed beyond "
 "those normally installed by Mayan EDMS. Each string should be a dotted "
-"Python path to: an application configuration class (preferred), or a package"
-" containing an application."
-msgstr "Een lijst met tekenreeksen die alle applicaties aanduiden die zijn geïnstalleerd buiten de applicaties die normaal door Mayan EDMS zijn geïnstalleerd. Elke tekenreeks moet een Python-pad zijn naar: een toepassingsconfiguratieklasse (bij voorkeur) of een pakket met een toepassing."
+"Python path to: an application configuration class (preferred), or a package "
+"containing an application. Example: ['app_1', 'app_2']"
+msgstr ""
+"Een lijst met tekenreeksen die alle applicaties aanduiden die zijn "
+"geïnstalleerd buiten de applicaties die normaal door Mayan EDMS zijn "
+"geïnstalleerd. Elke tekenreeks moet een Python-pad zijn naar: een "
+"toepassingsconfiguratieklasse (bij voorkeur) of een pakket met een "
+"toepassing."
 
-#: settings.py:45
+#: settings.py:64
 msgid ""
-"Name of the view attached to the brand anchor in the main menu. This is also"
-" the view to which users will be redirected after log in."
-msgstr "Naam van de overzicht gekoppeld aan het logo in het hoofdmenu. Dit is ook het overzicht waarnaar gebruikers worden doorgestuurd nadat ze zich hebben aangemeld."
+"Name of the view attached to the brand anchor in the main menu. This is also "
+"the view to which users will be redirected after log in."
+msgstr ""
+"Naam van de overzicht gekoppeld aan het logo in het hoofdmenu. Dit is ook "
+"het overzicht waarnaar gebruikers worden doorgestuurd nadat ze zich hebben "
+"aangemeld."
 
-#: settings.py:53
+#: settings.py:72
 msgid "Name to be displayed in the main menu."
 msgstr "Naam die wordt weergegeven in het hoofdmenu."
 
-#: settings.py:59
+#: settings.py:78
 msgid "URL of the installation or homepage of the project."
 msgstr "URL van de installatie of homepage van het project."
 
-#: settings.py:64
+#: settings.py:83
 msgid "Base URL path to use for all views."
 msgstr "Basis URL-pad voor alle overzichten."
 
-#: validators.py:44
+#: templates/common/app/viewport.html:9
+msgid "Warning"
+msgstr ""
+
+#: templates/common/app/viewport.html:21
+msgid "Click here to fix this."
+msgstr ""
+
+#: validators.py:41
 msgid "Enter a valid JSON value."
 msgstr "Voer een geldige JSON-waarde in."
 
-#: validators.py:68
+#: validators.py:65
 msgid "Enter a valid YAML value."
 msgstr "Voer een geldige YAML-waarde in."
 
-#: validators.py:84
+#: validators.py:81
 msgid ""
 "Enter a valid 'internal name' consisting of letters, numbers, and "
 "underscores."
-msgstr "Voer een geldige 'interne naam' in die bestaat uit letter, cijfers en underscores."
+msgstr ""
+"Voer een geldige 'interne naam' in die bestaat uit letter, cijfers en "
+"underscores."
 
-#: views.py:29
+#: views.py:22
 msgid "About"
 msgstr "Over"
 
-#: views.py:42
-msgid "Current user locale profile details"
-msgstr "Details landinstellingen huidige gebruiker"
-
-#: views.py:48
-msgid "Edit current user locale profile details"
-msgstr "Details landinstellingen huidige gebruiker bewerken"
-
-#: views.py:97
+#: views.py:39
 msgid "Dashboard"
 msgstr "Dashboard"
 
-#: views.py:118
+#: views.py:62
 #, python-format
 msgid "Fields to be copied: %s"
 msgstr ""
 
-#: views.py:127
+#: views.py:72
 #, python-format
 msgid "Make a copy of %(object_name)s \"%(object)s\"?"
 msgstr ""
 
-#: views.py:136
+#: views.py:83
 msgid "Object copied successfully."
 msgstr ""
 
-#: views.py:153
+#: views.py:100
 msgid ""
 "No results here means that don't have the required permissions to perform "
 "administrative task."
-msgstr "Geen resultaten betekent dat u onvoldoende verplichte toegangsrechten heeft om de beheertaak uit te voeren."
+msgstr ""
+"Geen resultaten betekent dat u onvoldoende verplichte toegangsrechten heeft "
+"om de beheertaak uit te voeren."
 
-#: views.py:156
+#: views.py:103
 msgid "No setup options available."
 msgstr "Geen instellingsopties beschikbaar."
 
-#: views.py:160
+#: views.py:107
 msgid "Setup items"
 msgstr "Setup items"
 
-#: views.py:162
+#: views.py:109
 msgid "Here you can configure all aspects of the system."
 msgstr "Hier kunt u alle aspecten van het systeem instellen."
 
-#: views.py:177
+#: views.py:124
 msgid "These modules are used to do system maintenance."
 msgstr "Deze modules worden gebruikt voor systeemonderhoud."
+
+#~ msgid "Locale profile"
+#~ msgstr "Landsinstellingen"
+
+#~ msgid "Edit locale profile"
+#~ msgstr "Wijzig landsinstellingen"
+
+#~ msgid "Timezone"
+#~ msgstr "Tijdzone"
+
+#~ msgid "Language"
+#~ msgstr "Taal"
+
+#~ msgid "User locale profile"
+#~ msgstr "Gebruikerslandsinstelling"
+
+#~ msgid "User locale profiles"
+#~ msgstr "Gebruikerslandinstellingen"
+
+#~ msgid "Current user locale profile details"
+#~ msgstr "Details landinstellingen huidige gebruiker"
+
+#~ msgid "Edit current user locale profile details"
+#~ msgstr "Details landinstellingen huidige gebruiker bewerken"
