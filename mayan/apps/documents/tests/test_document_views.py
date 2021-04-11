@@ -1,7 +1,5 @@
 from django.test import override_settings
 
-from mayan.apps.converter.tests.mixins import LayerTestMixin
-
 from ..models.document_models import Document
 from ..models.document_type_models import DocumentType
 from ..permissions import (

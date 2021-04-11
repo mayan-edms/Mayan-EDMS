@@ -98,7 +98,7 @@ def fs_cleanup(filename, suppress_exceptions=True):
             shutil.rmtree(path=filename)
         except OSError:
             if suppress_exceptions:
-                pass
+                """Ignore exception."""
             else:
                 raise
 

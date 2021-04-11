@@ -5,10 +5,8 @@ from mayan.apps.rest_api import generics
 from ..models.document_type_models import DocumentType
 from ..permissions import (
     permission_document_type_create, permission_document_type_delete,
-    permission_document_type_edit, permission_document_type_view,
-    permission_document_view
+    permission_document_type_edit, permission_document_type_view
 )
-from ..serializers.document_serializers import DocumentSerializer
 from ..serializers.document_type_serializers import (
     DocumentTypeQuickLabelSerializer, DocumentTypeSerializer,
 )

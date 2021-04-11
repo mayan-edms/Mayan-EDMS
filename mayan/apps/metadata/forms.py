@@ -8,7 +8,7 @@ from mayan.apps.templating.fields import TemplateField
 from mayan.apps.views.forms import RelationshipForm
 
 from .classes import MetadataLookup
-from .models import DocumentTypeMetadataType, MetadataType
+from .models import MetadataType
 
 
 class DocumentMetadataForm(forms.Form):

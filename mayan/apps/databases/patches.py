@@ -29,4 +29,3 @@ def patch_Migration():
     if settings.DEBUG:
         Migration.apply = _method_patched__apply
         Migration.unapply = _method_patched__unapply
-

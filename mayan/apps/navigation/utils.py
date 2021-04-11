@@ -45,7 +45,10 @@ def get_cascade_condition(
                     permissions=(view_permission,), user=request.user
                 )
             except PermissionDenied:
-                pass
+                """
+                Don't raise an error, just ignore and let
+                .restrict_queryset() perform a fine grained filtering.
+                """
             else:
                 return True
 

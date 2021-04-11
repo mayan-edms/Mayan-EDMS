@@ -29,7 +29,7 @@ class DocumentVersionPageOCRContentForm(forms.Form):
         try:
             page_content = page.ocr_content.content
         except DocumentVersionPageOCRContent.DoesNotExist:
-            pass
+            """Not critical, just ignore and proceed to next page."""
         else:
             content = conditional_escape(force_text(s=page_content))
 

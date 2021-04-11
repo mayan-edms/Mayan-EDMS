@@ -44,7 +44,7 @@ class UserGroupListSerializer(serializers.Serializer):
                         user=self.context['request'].user
                     )
                 except PermissionDenied:
-                    pass
+                    """Do nothing."""
                 else:
                     validated_data['user'].groups.add(group)
         except Exception as exception:

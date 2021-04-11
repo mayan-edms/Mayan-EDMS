@@ -1,5 +1,3 @@
-import copy
-
 from django.db.models import Q
 
 from ..models import DocumentTypeMetadataType, MetadataType

@@ -534,10 +534,6 @@ class DocumentsApp(MayanAppConfig):
             field_name='document'
         )
 
-        ## Document file and document file page thumbnail widget
-        ## Document version and document version page thumbnail widget
-        #thumbnail_widget = ThumbnailWidget()
-
         # Document
 
         SourceColumn(
@@ -550,28 +546,6 @@ class DocumentsApp(MayanAppConfig):
             label=_('Thumbnail'), order=-99, source=Document,
             widget=ThumbnailWidget
         )
-
-        ########
-        ##TEMP
-        ##TODO:REMOVE
-        #######
-        SourceColumn(
-            func=lambda context: context['object'].files.count(),
-            include_label=True, label=_('Files'), source=Document
-        )
-        SourceColumn(
-            func=lambda context: context['object'].versions.count(),
-            include_label=True, label=_('Versions'), source=Document
-        )
-        SourceColumn(
-            func=lambda context: context['object'].is_stub,
-            include_label=True, label=_('Is stub'), source=Document
-        )
-
-        ###########
-        ##TEMP -end
-        ##TODO:REMOVE
-        ###########
 
         SourceColumn(
             attribute='document_type', include_label=True, is_sortable=True,

@@ -11,6 +11,6 @@ def get_instance_ocr_content(instance):
         try:
             page_content = page.ocr_content.content
         except DocumentVersionPageOCRContent.DoesNotExist:
-            pass
+            """Not critical, just ignore and go to next page."""
         else:
             yield force_text(s=page_content)

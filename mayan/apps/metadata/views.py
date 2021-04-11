@@ -15,9 +15,8 @@ from mayan.apps.documents.permissions import (
     permission_document_type_edit
 )
 from mayan.apps.views.generics import (
-    FormView, MultipleObjectFormActionView, RelationshipView,
-    SingleObjectCreateView, SingleObjectDeleteView, SingleObjectEditView,
-    SingleObjectListView
+    MultipleObjectFormActionView, RelationshipView, SingleObjectCreateView,
+    SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
 )
 from mayan.apps.views.mixins import ExternalObjectViewMixin
 from mayan.apps.views.utils import convert_to_id_list
@@ -341,7 +340,7 @@ class DocumentMetadataEditView(
                     'exception': exception_message
                 }, request=self.request
             )
-            
+
             if settings.DEBUG or settings.TESTING:
                 raise error
         else:

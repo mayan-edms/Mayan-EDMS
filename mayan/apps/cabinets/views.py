@@ -127,9 +127,6 @@ class CabinetDetailView(ExternalObjectViewMixin, DocumentListView):
 
         return context
 
-    #def get_save_extra_data(self):
-    #    return {'_user': self.request.user}
-
 
 class CabinetEditView(SingleObjectEditView):
     fields = ('label',)

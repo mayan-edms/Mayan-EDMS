@@ -110,5 +110,3 @@ class ModelTestCase(MailerTestMixin, GenericDocumentTestCase):
         self.assertEqual(mail.outbox[0].from_email, TEST_EMAIL_FROM_ADDRESS)
         self.assertEqual(mail.outbox[0].to, [TEST_EMAIL_ADDRESS])
         self.assertEqual(mail.outbox[0].reply_to, [TEST_EMAIL_ADDRESS])
-
-

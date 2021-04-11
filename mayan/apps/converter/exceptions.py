@@ -22,7 +22,6 @@ class UnknownFileFormat(ConvertError):
     """
     Raised when the converter backend can't understand a file
     """
-    pass
 
 
 class UnkownConvertError(ConvertError):
@@ -34,13 +33,22 @@ class UnkownConvertError(ConvertError):
 
 
 class OfficeConversionError(ConvertError):
-    pass
+    """
+    Used to encapsulate errors while executing Libre Office or when Libre
+    Office is now available.
+    """
 
 
 class InvalidOfficeFormat(ConvertError):
-    pass
+    """
+    Raised by the file type introspection code to signal that the file is not
+    a office format file and that Libre Office will not be used to process
+    it.
+    """
 
 
 class PageCountError(ConvertError):
-    pass
-
+    """
+    Raised when an error is encountered while determining the page count of a
+    file.
+    """

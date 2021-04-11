@@ -87,7 +87,8 @@ class UUIDPlusOriginalFilename(BaseDocumentFilenameGenerator):
         return '{}_{}'.format(uuid.uuid4(), instance.document.label)
 
 
-
-BaseDocumentFilenameGenerator.register(klass=OriginalDocumentFilenameGenerator)
+BaseDocumentFilenameGenerator.register(
+    klass=OriginalDocumentFilenameGenerator
+)
 BaseDocumentFilenameGenerator.register(klass=UUIDDocumentFilenameGenerator)
 BaseDocumentFilenameGenerator.register(klass=UUIDPlusOriginalFilename)

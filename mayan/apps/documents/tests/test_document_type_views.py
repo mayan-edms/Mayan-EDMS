@@ -147,8 +147,6 @@ class DocumentTypeViewsTestCase(
             permission=permission_document_type_edit
         )
 
-        document_type_label = self.test_document_type.label
-
         response = self._request_test_document_type_edit_view()
         self.assertEqual(response.status_code, 302)
 
