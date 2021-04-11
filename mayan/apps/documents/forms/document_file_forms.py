@@ -59,7 +59,10 @@ class DocumentFilePropertiesForm(DetailForm):
                 'field': 'file'
             },
             {'label': _('Checksum'), 'field': 'checksum'},
-            {'label': _('Pages'), 'field': 'page_count'},
+            {
+                'label': _('Pages'),
+                'field': lambda document_file: document_file.pages.count()
+            },
         ]
         fields = ('filename', 'comment',)
         model = DocumentFile

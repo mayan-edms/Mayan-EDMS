@@ -141,6 +141,13 @@ class DocumentFileViewTestMixin:
             }
         )
 
+    def _request_test_document_file_properties_view(self):
+        return self.get(
+            viewname='documents:document_file_properties', kwargs={
+                'document_file_id': self.test_document_file.pk
+            }
+        )
+
 
 class DocumentFilePageAPIViewTestMixin:
     def _request_test_document_file_page_detail_api_view(self):

@@ -346,6 +346,47 @@ class DocumentFileViewTestCase(
         events = self._get_test_events()
         self.assertEqual(events.count(), 0)
 
+    def test_document_file_properties_view_no_permission(self):
+        self._clear_events()
+
+        response = self._request_test_document_file_properties_view()
+        self.assertEqual(response.status_code, 404)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_file_properties_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document_file,
+            permission=permission_document_file_view
+        )
+
+        self._clear_events()
+
+        response = self._request_test_document_file_properties_view()
+        self.assertContains(
+            response=response, text=self.test_document_file.filename,
+            status_code=200
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_trashed_document_file_properties_view_with_access(self):
+        self.grant_access(
+            obj=self.test_document_file,
+            permission=permission_document_file_view
+        )
+
+        self.test_document.delete()
+        self._clear_events()
+
+        response = self._request_test_document_file_properties_view()
+        self.assertEqual(response.status_code, 404)
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
 
 class DocumentFileDownloadViewTestCase(
     DocumentFileViewTestMixin, GenericDocumentViewTestCase
