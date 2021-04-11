@@ -312,6 +312,70 @@ class InheritedPermissionTestCase(ACLTestMixin, BaseTestCase):
 
         self.assertTrue(self.test_permission.stored_permission in queryset)
 
+    def test_sub_model_with_multiple_inheritance_parent_with_common_super_parent_paths(self):
+        self._create_test_permission()
+
+        self.TestModelLevel1 = self._create_test_model(
+            model_name='TestModelLevel1'
+        )
+        self.TestModelLevel2 = self._create_test_model(
+            fields={
+                'level_1': models.ForeignKey(
+                    on_delete=models.CASCADE, to='TestModelLevel1'
+                )
+            }, model_name='TestModelLevel2'
+        )
+        self.TestModelLevel3 = self._create_test_model(
+            fields={
+                'level_2': models.ForeignKey(
+                    on_delete=models.CASCADE, to='TestModelLevel2'
+                )
+            }, model_name='TestModelLevel3'
+        )
+        self.TestModelLevel4 = self._create_test_model(
+            fields={
+                'level_3': models.ForeignKey(
+                    on_delete=models.CASCADE, to='TestModelLevel3'
+                )
+            }, model_name='TestModelLevel4'
+        )
+
+        ModelPermission.register(
+            model=self.TestModelLevel2, permissions=(
+                self.test_permission,
+            )
+        )
+
+        ModelPermission.register_inheritance(
+            model=self.TestModelLevel2, related='level_1',
+        )
+        ModelPermission.register_inheritance(
+            model=self.TestModelLevel3, related='level_2__level_1',
+        )
+        ModelPermission.register_inheritance(
+            model=self.TestModelLevel3, related='level_2',
+        )
+        ModelPermission.register_inheritance(
+            model=self.TestModelLevel4, related='level_3',
+        )
+
+        level_1 = self.TestModelLevel1.objects.create()
+        level_2 = self.TestModelLevel2.objects.create(level_1=level_1)
+        level_3 = self.TestModelLevel3.objects.create(level_2=level_2)
+        level_4 = self.TestModelLevel4.objects.create(level_3=level_3)
+
+        self.grant_access(
+            obj=level_2, permission=self.test_permission
+        )
+
+        queryset = AccessControlList.objects.restrict_queryset(
+            permission=self.test_permission,
+            queryset=self.TestModelLevel4.objects.all(),
+            user=self._test_case_user
+        )
+
+        self.assertTrue(level_4 in queryset)
+
 
 class GenericForeignKeyFieldModelTestCase(ACLTestMixin, BaseTestCase):
     auto_create_acl_test_object = False
