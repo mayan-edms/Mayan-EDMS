@@ -381,19 +381,19 @@ class DocumentsApp(MayanAppConfig):
             name='files__checksum'
         )
         ModelFieldRelated(
-            model=Document, label=_('Files comment'),
+            model=Document, label=_('File comments'),
             name='files__comment'
         )
         ModelFieldRelated(
-            model=Document, label=_('Files encoding'),
+            model=Document, label=_('File encodings'),
             name='files__encoding'
         )
         ModelFieldRelated(
-            model=Document, label=_('Files mime type'),
+            model=Document, label=_('File mime types'),
             name='files__mimetype'
         )
         ModelFieldRelated(
-            model=Document, label=_('Files timestamp'),
+            model=Document, label=_('File timestamps'),
             name='files__timestamp'
         )
 
@@ -402,11 +402,12 @@ class DocumentsApp(MayanAppConfig):
             name='document_file'
         )
         ModelField(
-            model=DocumentFilePage, label=_('Page number'), name='page_number'
+            model=DocumentFilePage, label=_('Page number'),
+            name='page_number'
         )
 
         ModelProperty(
-            description=_('Return the lastest file of the document.'),
+            description=_('Return the latest file of the document.'),
             model=Document, label=_('Latest file'), name='latest_file'
         )
         ModelProperty(
