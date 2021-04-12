@@ -165,7 +165,7 @@ setting_recently_accessed_document_count = namespace.add_setting(
     default=DEFAULT_DOCUMENTS_RECENTLY_ACCESSED_COUNT,
     global_name='DOCUMENTS_RECENTLY_ACCESSED_COUNT', help_text=_(
         'Maximum number of recently accessed documents (created, edited, '
-        'viewed) documents to remember per user.'
+        'viewed) to remember per user.'
     )
 )
 setting_recently_created_document_count = namespace.add_setting(

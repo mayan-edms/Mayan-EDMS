@@ -110,7 +110,7 @@ event_document_file_pre_save = namespace.add_event_type(
     label=_('Document file created (historic)'), name='document_file_pre_save'
 )
 event_document_version_revert = namespace.add_event_type(
-    label=_('Document version revert'), name='document_version_revert'
+    label=_('Document version reverted'), name='document_version_revert'
 )
 event_document_version_new = namespace.add_event_type(
     label=_('Document version uploaded'), name='document_new_version'

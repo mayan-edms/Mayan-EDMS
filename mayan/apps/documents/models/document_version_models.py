@@ -164,7 +164,7 @@ class DocumentVersion(ExtraDataModelMixin, models.Model):
             Message.objects.create(
                 sender_object=download_file,
                 user=user,
-                subject=_('Document exported.'),
+                subject=_('Document version exported.'),
                 body=_(
                     'Document version "%(document_version)s" has been '
                     'exported and is available for download using the '

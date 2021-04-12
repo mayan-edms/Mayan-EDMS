@@ -19,4 +19,4 @@ def method_document_get_metadata(self, permission, user):
 method_document_get_metadata.help_text = _(
     'Return the metadata of the document.'
 )
-method_document_get_metadata.short_description = _('get_metadata()')
+method_document_get_metadata.short_description = 'get_metadata()'
