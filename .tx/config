@@ -146,15 +146,15 @@ source_file = mayan/apps/linking/locale/en/LC_MESSAGES/django.po
 source_lang = en
 type = PO
 
-[mayan-edms.lock_manager-4-0]
-file_filter = mayan/apps/lock_manager/locale/<lang>/LC_MESSAGES/django.po
-source_file = mayan/apps/lock_manager/locale/en/LC_MESSAGES/django.po
-source_lang = en
-type = PO
-
 [mayan-edms.locales-4-0]
 file_filter = mayan/apps/locales/locale/<lang>/LC_MESSAGES/django.po
 source_file = mayan/apps/locales/locale/en/LC_MESSAGES/django.po
+source_lang = en
+type = PO
+
+[mayan-edms.lock_manager-4-0]
+file_filter = mayan/apps/lock_manager/locale/<lang>/LC_MESSAGES/django.po
+source_file = mayan/apps/lock_manager/locale/en/LC_MESSAGES/django.po
 source_lang = en
 type = PO
 
