@@ -18,6 +18,7 @@ from mayan.apps.converter.exceptions import (
 )
 from mayan.apps.events.classes import EventManagerMethodAfter
 from mayan.apps.events.decorators import method_event
+from mayan.apps.file_caching.models import CachePartitionFile
 from mayan.apps.mimetype.api import get_mimetype
 from mayan.apps.storage.classes import DefinedStorageLazy
 
@@ -277,11 +278,10 @@ class DocumentFile(
 
     def get_intermediate_file(self):
         cache_filename = 'intermediate_file'
-        cache_file = self.cache_partition.get_file(filename=cache_filename)
-        if cache_file:
-            logger.debug('Intermediate file found.')
-            return cache_file.open()
-        else:
+
+        try:
+            cache_file = self.cache_partition.get_file(filename=cache_filename)
+        except CachePartitionFile.DoesNotExist:
             logger.debug('Intermediate file not found.')
 
             try:
@@ -303,10 +303,18 @@ class DocumentFile(
                     'Error creating intermediate file "%s"; %s.',
                     cache_filename, exception, exc_info=True
                 )
-                cache_file = self.cache_partition.get_file(filename=cache_filename)
-                if cache_file:
+                try:
+                    cache_file = self.cache_partition.get_file(
+                        filename=cache_filename
+                    )
+                except CachePartitionFile.DoesNotExist:
+                    """Non fatal, ignore."""
+                else:
                     cache_file.delete()
-                raise
+                raise exception
+        else:
+            logger.debug('Intermediate file found.')
+            return cache_file.open()
 
     def get_label(self):
         return self.filename

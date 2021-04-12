@@ -18,6 +18,7 @@ from mayan.apps.documents.models import Document, DocumentType
 from mayan.apps.documents.permissions import permission_document_view
 from mayan.apps.events.classes import EventManagerSave
 from mayan.apps.events.decorators import method_event
+from mayan.apps.file_caching.models import CachePartitionFile
 from ..events import event_workflow_template_created, event_workflow_template_edited
 from ..literals import (
     STORAGE_NAME_WORKFLOW_CACHE, SYMBOL_MATH_CONDITIONAL,
@@ -108,11 +109,9 @@ class Workflow(ExtraDataModelMixin, models.Model):
     def generate_image(self):
         cache_filename = '{}'.format(self.get_hash())
 
-        if self.cache_partition.get_file(filename=cache_filename):
-            logger.debug(
-                'workflow cache file "%s" found', cache_filename
-            )
-        else:
+        try:
+            self.cache_partition.get_file(filename=cache_filename)
+        except CachePartitionFile.DoesNotExist:
             logger.debug(
                 'workflow cache file "%s" not found', cache_filename
             )
@@ -120,6 +119,10 @@ class Workflow(ExtraDataModelMixin, models.Model):
             image = self.render()
             with self.cache_partition.create_file(filename=cache_filename) as file_object:
                 file_object.write(image)
+        else:
+            logger.debug(
+                'workflow cache file "%s" found', cache_filename
+            )
 
         return cache_filename
 

@@ -14,8 +14,10 @@ from mayan.apps.converter.transformations import (
     BaseTransformation, TransformationResize, TransformationRotate,
     TransformationZoom
 )
+from mayan.apps.file_caching.models import CachePartitionFile
 from mayan.apps.lock_manager.backends.base import LockingBackend
 
+from ..literals import DOCUMENT_IMAGE_TASK_TIMEOUT
 from ..managers import DocumentFilePageManager, ValidDocumentFilePageManager
 from ..settings import (
     setting_display_width, setting_display_height, setting_zoom_max_level,
@@ -68,45 +70,52 @@ class DocumentFilePage(PagedModelMixin, models.Model):
         self.cache_partition.delete()
         super().delete(*args, **kwargs)
 
-    def generate_image(self, user=None, **kwargs):
+    def generate_image(self, _acquire_lock=True, user=None, **kwargs):
         transformation_list = self.get_combined_transformation_list(
             user=user, **kwargs
         )
-        combined_cache_filename = BaseTransformation.combine(
-            transformations=transformation_list
+        combined_cache_filename = self.get_combined_cache_filename(
+            _transformation_list=transformation_list
         )
 
-        # Check is transformed image is available
         logger.debug(
             'transformations cache filename: %s', combined_cache_filename
         )
 
         try:
-            lock = LockingBackend.get_instance().acquire_lock(
-                name='document_file_page_generate_image_{}_{}'.format(
-                    self.pk, combined_cache_filename
+            if _acquire_lock:
+                lock_name = self.get_lock_name(
+                    _combined_cache_filename=combined_cache_filename
                 )
-            )
+                lock = LockingBackend.get_instance().acquire_lock(
+                    name=lock_name, timeout=DOCUMENT_IMAGE_TASK_TIMEOUT
+                )
         except Exception:
             raise
         else:
             # Second try block to release the lock even on fatal errors inside
             # the block.
             try:
-                if self.cache_partition.get_file(filename=combined_cache_filename):
-                    logger.debug(
-                        'transformations cache file "%s" found', combined_cache_filename
+                try:
+                    self.cache_partition.get_file(
+                        filename=combined_cache_filename
                     )
-                else:
+                except CachePartitionFile.DoesNotExist:
                     logger.debug(
                         'transformations cache file "%s" not found', combined_cache_filename
                     )
                     image = self.get_image(transformations=transformation_list)
                     with self.cache_partition.create_file(filename=combined_cache_filename) as file_object:
                         file_object.write(image.getvalue())
+                else:
+                    logger.debug(
+                        'transformations cache file "%s" found', combined_cache_filename
+                    )
+
                 return combined_cache_filename
             finally:
-                lock.release()
+                if _acquire_lock:
+                    lock.release()
 
     def get_absolute_url(self):
         return reverse(
@@ -142,6 +151,14 @@ class DocumentFilePage(PagedModelMixin, models.Model):
         final_url.args['_hash'] = transformations_hash
 
         return final_url.tostr()
+
+    def get_combined_cache_filename(self, _transformation_list=None, user=None, **kwargs):
+        transformation_list = _transformation_list or self.get_combined_transformation_list(
+            user=user, **kwargs
+        )
+        return BaseTransformation.combine(
+            transformations=transformation_list
+        )
 
     def get_combined_transformation_list(self, user=None, *args, **kwargs):
         """
@@ -200,26 +217,9 @@ class DocumentFilePage(PagedModelMixin, models.Model):
         cache_filename = 'base_image'
         logger.debug('Page cache filename: %s', cache_filename)
 
-        cache_file = self.cache_partition.get_file(filename=cache_filename)
-
-        if cache_file:
-            logger.debug('Page cache file "%s" found', cache_filename)
-
-            with cache_file.open() as file_object:
-                converter = ConverterBase.get_converter_class()(
-                    file_object=file_object
-                )
-
-                converter.seek_page(page_number=0)
-
-                # This code is also repeated below to allow using a context
-                # manager with cache_file.open and close it automatically.
-                # Apply runtime transformations
-                for transformation in transformations:
-                    converter.transform(transformation=transformation)
-
-                return converter.get_page()
-        else:
+        try:
+            cache_file = self.cache_partition.get_file(filename=cache_filename)
+        except CachePartitionFile.DoesNotExist:
             logger.debug('Page cache file "%s" not found', cache_filename)
 
             try:
@@ -241,12 +241,30 @@ class DocumentFilePage(PagedModelMixin, models.Model):
 
                     return converter.get_page()
             except Exception as exception:
-                # Cleanup in case of error
                 logger.error(
-                    'Error creating document file page cache file named '
-                    '"%s"; %s', cache_filename, exception, exc_info=True
+                    'Error creating document file page cache file from '
+                    'document file intermediate file. Expected file named '
+                    '"%s" failed to be created; %s', cache_filename,
+                    exception, exc_info=True
                 )
                 raise
+        else:
+            logger.debug('Page cache file "%s" found', cache_filename)
+
+            with cache_file.open() as file_object:
+                converter = ConverterBase.get_converter_class()(
+                    file_object=file_object
+                )
+
+                converter.seek_page(page_number=0)
+
+                # This code is also repeated below to allow using a context
+                # manager with cache_file.open and close it automatically.
+                # Apply runtime transformations
+                for transformation in transformations:
+                    converter.transform(transformation=transformation)
+
+                return converter.get_page()
 
     def get_label(self):
         return _(
@@ -257,6 +275,22 @@ class DocumentFilePage(PagedModelMixin, models.Model):
             'total_pages': self.get_pages_last_number() or 1
         }
     get_label.short_description = _('Label')
+
+    def get_lock_name(self, _combined_cache_filename=None, user=None, **kwargs):
+        if _combined_cache_filename:
+            combined_cache_filename = _combined_cache_filename
+        else:
+            transformation_list = self.get_combined_transformation_list(
+                user=user, **kwargs
+            )
+
+            combined_cache_filename = self.get_combined_cache_filename(
+                _transformation_list=transformation_list
+            )
+
+        return 'document_file_page_generate_image_{}_{}'.format(
+            self.pk, combined_cache_filename
+        )
 
     @property
     def is_in_trash(self):
