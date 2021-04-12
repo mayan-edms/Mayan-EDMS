@@ -7,6 +7,7 @@ from mayan.apps.converter.permissions import (
 from mayan.apps.converter.tests.mixins import LayerTestMixin
 from mayan.apps.documents.tests.literals import TEST_MULTI_PAGE_TIFF
 
+from ..events import event_document_version_page_deleted
 from ..literals import DOCUMENT_FILE_ACTION_PAGES_KEEP
 from ..permissions import (
     permission_document_version_edit, permission_document_version_view
@@ -15,10 +16,81 @@ from ..permissions import (
 from .base import GenericDocumentViewTestCase
 from .mixins.document_version_mixins import (
     DocumentVersionPageRemapViewTestMixin,
-    DocumentVersionPageResetViewTestMixin,
+    DocumentVersionPageResetViewTestMixin, DocumentVersionPageViewTestMixin,
     DocumentVersionTransformationTestMixin,
     DocumentVersionTransformationViewTestMixin
 )
+
+
+class DocumentVersionPageViewTestCase(
+    DocumentVersionPageViewTestMixin, GenericDocumentViewTestCase
+):
+    def test_document_version_page_delete_no_permission(self):
+        test_document_version_page_count = self.test_document_version.pages.count()
+
+        self._clear_events()
+
+        response = self._request_test_document_version_page_delete_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertEqual(
+            self.test_document_version.pages.count(),
+            test_document_version_page_count
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
+
+    def test_document_version_page_delete_with_access(self):
+        test_document_version_page_count = self.test_document_version.pages.count()
+
+        self.grant_access(
+            obj=self.test_document_version,
+            permission=permission_document_version_edit
+        )
+
+        self._clear_events()
+
+        response = self._request_test_document_version_page_delete_view()
+        self.assertEqual(response.status_code, 302)
+
+        self.assertEqual(
+            self.test_document_version.pages.count(),
+            test_document_version_page_count - 1
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 1)
+
+        self.assertEqual(events[0].action_object, None)
+        self.assertEqual(events[0].actor, self._test_case_user)
+        self.assertEqual(events[0].target, self.test_document_version)
+        self.assertEqual(
+            events[0].verb, event_document_version_page_deleted.id
+        )
+
+    def test_trashed_document_version_page_delete_with_access(self):
+        test_document_version_page_count = self.test_document_version.pages.count()
+
+        self.grant_access(
+            obj=self.test_document_version,
+            permission=permission_document_version_edit
+        )
+
+        self.test_document.delete()
+
+        self._clear_events()
+
+        response = self._request_test_document_version_page_delete_view()
+        self.assertEqual(response.status_code, 404)
+
+        self.assertEqual(
+            self.test_document_version.pages.count(),
+            test_document_version_page_count
+        )
+
+        events = self._get_test_events()
+        self.assertEqual(events.count(), 0)
 
 
 class DocumentVersionPageRemapViewTestCase(

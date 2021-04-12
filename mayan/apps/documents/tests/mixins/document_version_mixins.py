@@ -234,6 +234,17 @@ class DocumentVersionViewTestMixin:
         )
 
 
+class DocumentVersionPageViewTestMixin:
+    def _request_test_document_version_page_delete_view(self):
+        return self.post(
+            viewname='documents:document_version_page_delete', kwargs={
+                'document_version_page_id': self.test_document_version_page.pk,
+            }
+        )
+
+
+
+
 class DocumentVersionPageRemapViewTestMixin:
     def _request_test_document_version_page_list_remap_view(self, data):
         return self.post(
