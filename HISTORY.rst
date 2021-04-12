@@ -298,3 +298,6 @@
 - Renamed the AddRemove view ``main_object_method_add`` to
   ``main_object_method_add_name`` and ``main_object_method_remove`` to
   ``main_object_method_add_remove_name``.
+- Add ``has_translations`` flag to MayanAppConfig to indicate if the app
+  should have its translation files processed or ignored. Defaults to
+  ``True``.
