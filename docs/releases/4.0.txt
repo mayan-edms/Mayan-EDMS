@@ -4,6 +4,63 @@ Version 4.0
 Released: April XX, 2021
 
 
+This release is of special importance for the project as it also marks
+the 10 year anniversary of its inception.
+
+Looking back, is incredible to see how something I started back as a side
+project to help out the government agency I used to work at, has grown in to
+something used by people around the world. It has become a community. It has
+become a serious product in markets historically dominated by very big
+companies. It has become a full time job. It has become a gateway to working
+with a great team of professionals. I has become the channel by which I've
+gotten to meet and interact with incredible people I would have never met
+otherwise.
+
+There is a saying that goes: "Find something you love to do, and you'll never
+have to work a day in your life.". I have found that something in my life,
+and I have all of you to thank for turning it into my profession.
+
+Thank you.
+
+-- Roberto Rosario
+
+
+The big ticket item for this version is the new page composition feature.
+Historically, Mayan EDMS has equated an uploaded file to a document version as
+a one to one relationship, with the same relationship applying to the
+document pages. This is due to the origins and main purpose of the
+project, which has to be a static scanned document repository.
+
+As the user base and industries in which Mayan EDMS is being used expands,
+this basic philosophy had to be expanded too, but in such a way that it
+did not affected its previous uses.
+
+The result is what we call the Document Page Composition API. This new
+feature allows for document pages to be disabled, enabled, appended, removed,
+or even reordered. All of this is achieved in a non destructive way
+(the original uploaded file is never changed in any way), all of the
+changes happen only at the application level.
+
+We accomplished this by making two fundamental changes. The first is the
+creating a new object type, the document file object. The second was to allow
+for the creation of any number of document versions for a document. Now when
+a new file is upload for a document, by default a new document file object
+is created and a corresponding document version is created that points to the
+new document file. This makes the document versions behave like "views" to
+the document files contained in a document.
+
+When a new file is uploaded, the user has the choice to create a new version
+that matches the page layout of the new file, or to create a new version
+that includes the pages of the previous file as well as the pages of the
+new file. The file is uploaded and processed, users can also go to the
+document version and change its page mapping and ordering.
+
+As with every upgrade, make a backup of your database and document storage.
+More so as this release is a major one and the first of a series of big
+paradigm changes for the project. Make sure to validate your data after the
+upgrade and report any issues.
+
+
 Changes
 -------
 
@@ -12,7 +69,7 @@ ACLs
 ^^^^
 
 A tool to audit the ACLs in the system was added. This tools is called
-"Global ACLs" and in found under the "Tools" menu. It will display and allow
+"Global ACLs" and is found under the "Tools" menu. It will display and allow
 modification to all the ACLs defined in the system regardless of their origin
 object or view.
 
@@ -50,28 +107,9 @@ document version has no pages defined.
 Documents
 ^^^^^^^^^
 
-The biggest change for this version is the addition of what we call "document
-page composition".
-
-Historically, Mayan has equated each uploaded file of a document as an
-individual version of the document too, with the same one to one relationship
-applying to the document pages. This version breaks that one to one
-relationship and introduces the concept of document files.
-
-Now, every file of a document, there does not need to be a corresponding
-new version, instead the pages of the uploaded files can be mapped to one or
-to any number of new document versions.
-
-This system allows for non-destructive page composition and reordering. The
-actual file uploaded will not be modified and its pages can be mapped to a
-new or an existing document version. This allows for the historical use case
-of creating a new version for each file uploaded, but also allows for
-reordering the pages of a version, disabling pages of a version, or even
-appending pages from multiple document files into a single document version.
-
-Due to this change certain operations might now only be performed on document
-files while other might only be performed on document versions. These are
-as follows:
+Due to the addition of the Document Page Composition API, certain operations
+might now only be performed on document files while other might only be
+performed on document versions. These are as follows:
 
 
 .. list-table::
@@ -100,8 +138,9 @@ Transformations applied to a document file page will be reflected on any
 document version page. However transformations applied a document version page
 will not be reflected on the source document version file.
 
-This change also means that document versions and file uploads are not longer
-lineal. Any document version or document file may be deleted at any time.
+This new feature also changes how we things about document versions and file
+uploads ordering. These are not longer lineal. Any document version or
+document file may be deleted at any time.
 
 The caches of the file pages and version pages images are now two separate
 storages. This allows keeping the document files in one location such as
@@ -109,18 +148,29 @@ object storage and the document version pages in a faster or local storage
 for a combination of low cost long term storage for files and volatile fast
 storage for image previews.
 
-In the past, when downloading a document, the actual filename of the download
+The three storages are:
+
+  - ``DOCUMENTS_FILE_STORAGE_BACKENS`` - Stores the uploaded document files.
+  - ``DOCUMENTS_FILE_PAGE_IMAGE_CACHE_STORAGE_BACKEND - Stores the preview
+    images of the uploaded document files.
+  - ``DOCUMENTS_VERSION_PAGE_IMAGE_CACHE_STORAGE_BACKEND`` - Stores the
+    preview images of the document version pages.
+
+Setting migration have been included to transition existing values but make
+sure to double check you settings before and after the upgrade.
+
+Previously, when downloading a document, the actual filename of the download
 was the document label. Now, when a document file is uploaded the actual
 filename of the file is retained and used as the download filename including
 its original extensions if any. This solves downloading and display issues
 with operating systems that rely on file extensions to identify the type of
 a file.
 
-With the separation of files and version, other features are now possible.
+With the separation of files and versions, other features are now possible.
 Support was added to grant access to individual versions of a document via
 ACLs.
 
-Favorites documents now track the date and time of selection to ensure
+Favorite documents now track the date and time of selection to ensure
 deterministic ordering when deleting the oldest favorites. This also allows
 displaying the favorite documents from most recently favorited to least
 recently favorited. The favorite documents feature also received its own API.
@@ -559,6 +609,32 @@ Other
 - Renamed the AddRemove view ``main_object_method_add`` to
   ``main_object_method_add_name`` and ``main_object_method_remove`` to
   ``main_object_method_add_remove_name``.
+- Add ``has_translations`` flag to MayanAppConfig to indicate if the app
+  should have its translation files processed or ignored. Defaults to
+  ``True``.
+- Dependency version upgrades:
+
+  - django-rosetta to 0.9.4.
+  - Django to 2.2.20.
+  - pycounty to 20.7.3.
+  - requests to 2.25.1.
+  - sh to 1.14.1.
+  - django-debug-toolbar to 3.2.
+  - django-extensions to 3.1.2.
+  - django-silk to 4.1.0.
+  - flake8 to 3.9.0.
+  - ipython to 7.22.0.
+  - transifex-client to 0.14.2.
+  - twine to 3.4.1.
+  - wheel to 0.36.2.
+  - Sphinx to 3.5.4.
+  - sphinx-autobuild to 2021.3.14.
+  - sphinx-sitemap to 2.2.0.
+  - sphinxcontrib-spelling to 7.1.0.
+  - tornado to 6.1.
+
+- Rename the ``mayan_settings`` directory, which used to allow custom setting
+  modules, to the more intuitive ``user_settings``.
 
 
 Removals
@@ -576,72 +652,6 @@ Upgrading process
     sudo systemctl stop supervisor
 
 
-Upgrading from Mayan EDMS 3.2.x or earlier
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-#. Update the Redis configuration:
-
-   Configure Redis to discard data when it runs out of memory, not save its
-   database, and only keep 2 database:
-
-   .. code-block:: bash
-
-       echo "maxmemory-policy allkeys-lru" | sudo tee -a /etc/redis/redis.conf
-       echo "save \"\"" | sudo tee -a /etc/redis/redis.conf
-       echo "databases 2" | sudo tee -a /etc/redis/redis.conf
-       echo "requirepass |DEFAULT_REDIS_PASSWORD|" | sudo tee -a /etc/redis/redis.conf
-       sudo systemctl restart redis
-
-
-#. Install the Python 3 development OS package:
-
-   .. code-block:: bash
-
-    sudo apt-get install python3-dev
-
-
-#. Update the virtualenv to use Python 3:
-
-   .. code-block:: bash
-
-    sudo -u |DEFAULT_OS_USERNAME| virtualenv --clear /opt/mayan-edms -p /usr/bin/python3
-
-
-#. Create a home directory for the Mayan EDMS system user:
-
-   .. code-block:: bash
-
-    mkdir /home/mayan
-
-
-#. Grant ownership to the Mayan EDMS system user:
-
-   .. code-block:: bash
-
-    chown mayan:mayan /home/mayan
-
-#. Reinstall the Python client for PostgreSQL and Redis:
-
-   .. code-block:: bash
-
-       sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install psycopg2==|PYTHON_PSYCOPG2_VERSION| redis==|PYTHON_REDIS_VERSION|
-
-   .. note::
-
-       Platforms with the ARM CPU might also need additional requirements:
-
-       .. code-block:: bash
-
-           sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install psutil==|PYTHON_PSUTIL_VERSION|
-
-
-#. Reinstall the Python client for RabbitMQ if you are using RabbitMQ as a broker:
-
-   .. code-block:: bash
-
-       sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install amqp==|PYTHON_AMQP_VERSION|
-
-
 Upgrading from Mayan EDMS 3.3.x
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -650,14 +660,6 @@ Upgrading from Mayan EDMS 3.3.x
    .. code-block:: bash
 
        sudo -u |DEFAULT_OS_USERNAME| |MAYAN_PIP_BIN| install -U pip
-
-
-#. Update the Redis configuration to enable password protection:
-
-   .. code-block:: bash
-
-       echo "requirepass mayanredispassword" | sudo tee -a /etc/redis/redis.conf
-       sudo systemctl restart redis
 
 
 #. Remove deprecated requirements:
@@ -744,18 +746,18 @@ The upgrade procedure is now complete.
 Backward incompatible changes
 -----------------------------
 
-- None
+- REST API layout
 
 
 Issues closed
 -------------
 
+- :gitlab-issue:`733` Feature: Draft versions of documents
 - :gitlab-issue:`777` feature request: cleanup scanned document
 - :gitlab-issue:`853` Remove parent class and self reference from super() calls
-- :gitlab-issue:`733` Feature: Draft versions of documents
 - :gitlab-issue:`859` Convert DocumentTypeFilteredSelectForm to use generic FilteredSelectionForm
-- :gitlab-issue:`865` Possible bug: Adding a new version of a document via scanner
 - :gitlab-issue:`864` Feature Request: allow REPLY-TO field in mailing profile
+- :gitlab-issue:`865` Possible bug: Adding a new version of a document via scanner
 - :gitlab-issue:`867` Rename document comment model "comment" field to "text"
 - :gitlab-issue:`921` Feature Request: Version information
 - :gitlab-issue:`929` COMMON_EXTRA_APPS env variable not doing anything
